@@ -1,0 +1,39 @@
+#pragma once
+#include "rust/cxx.h"
+#include <memory>
+
+#include <Geom2d_Curve.hxx>
+#include <Geom2d_Ellipse.hxx>
+#include <Geom2d_TrimmedCurve.hxx>
+
+#include <gp_Ax2d.hxx>
+#include <gp_Pnt2d.hxx>
+
+using HandleGeom2d_Ellipse = opencascade::handle<Geom2d_Ellipse>;
+using HandleGeom2d_Curve = opencascade::handle<Geom2d_Curve>;
+using HandleGeom2d_TrimmedCurve = opencascade::handle<Geom2d_TrimmedCurve>;
+
+inline std::unique_ptr<HandleGeom2d_Ellipse> Geom2d_Ellipse_ctor(const gp_Ax2d &axis, double major_radius,
+                                                                 double minor_radius) {
+  return std::unique_ptr<HandleGeom2d_Ellipse>(
+      new opencascade::handle<Geom2d_Ellipse>(new Geom2d_Ellipse(axis, major_radius, minor_radius)));
+}
+
+inline std::unique_ptr<HandleGeom2d_Curve> ellipse_to_HandleGeom2d_Curve(const HandleGeom2d_Ellipse &ellipse_handle) {
+  return std::unique_ptr<HandleGeom2d_Curve>(new opencascade::handle<Geom2d_Curve>(ellipse_handle));
+}
+
+inline std::unique_ptr<HandleGeom2d_TrimmedCurve> Geom2d_TrimmedCurve_ctor(const HandleGeom2d_Curve &curve, double u1,
+                                                                           double u2) {
+  return std::unique_ptr<HandleGeom2d_TrimmedCurve>(
+      new opencascade::handle<Geom2d_TrimmedCurve>(new Geom2d_TrimmedCurve(curve, u1, u2)));
+}
+
+inline std::unique_ptr<HandleGeom2d_Curve>
+HandleGeom2d_TrimmedCurve_to_curve(const HandleGeom2d_TrimmedCurve &trimmed_curve) {
+  return std::unique_ptr<HandleGeom2d_Curve>(new opencascade::handle<Geom2d_Curve>(trimmed_curve));
+}
+
+inline std::unique_ptr<gp_Pnt2d> ellipse_value(const HandleGeom2d_Ellipse &ellipse, double u) {
+  return std::unique_ptr<gp_Pnt2d>(new gp_Pnt2d(ellipse->Value(u)));
+}
