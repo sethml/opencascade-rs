@@ -1,6 +1,7 @@
 [workspace]
 members = [
     "crates/kicad-parser", "crates/model-api",
+    "crates/occt-sys",
     "crates/opencascade",
     "crates/opencascade-sys",
     "crates/viewer", "crates/wasm-example",
