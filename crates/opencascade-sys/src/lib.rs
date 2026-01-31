@@ -1,4 +1,42 @@
 pub mod gp;
+pub mod bnd;
+pub mod brep;
+pub mod brep_adaptor;
+pub mod brep_algo_api;
+pub mod brep_bnd_lib;
+pub mod brep_builder_api;
+pub mod brep_feat;
+pub mod brep_fillet_api;
+pub mod brep_gprop;
+pub mod brep_int_curve_surface;
+pub mod brep_lib;
+pub mod brep_mesh;
+pub mod brep_offset_api;
+pub mod brep_prim_api;
+pub mod brep_tools;
+pub mod gc;
+pub mod gce2d;
+pub mod gcpnts;
+pub mod geom;
+pub mod geom2d;
+pub mod geom_abs;
+pub mod geom_api;
+pub mod gprop;
+pub mod if_select;
+pub mod iges_control;
+pub mod law;
+pub mod message;
+pub mod poly;
+pub mod shape_upgrade;
+pub mod standard;
+pub mod step_control;
+pub mod stl_api;
+pub mod tcolgp;
+pub mod top_abs;
+pub mod top_exp;
+pub mod top_loc;
+pub mod top_tools;
+pub mod topo_ds;
 
 #[cxx::bridge]
 pub mod ffi {
