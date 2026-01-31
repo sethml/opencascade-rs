@@ -1,6 +1,6 @@
 [package]
-name = "opencascade-sys"
-description = "Rust bindings to the OpenCascade CAD Kernel (auto-generated)"
+name = "opencascade-sys-old"
+description = "Rust bindings to the OpenCascade CAD Kernel (hand-written, preserved for reference)"
 authors = ["Brian Schwind <brianmschwind@gmail.com>"]
 license = "LGPL-2.1"
 version = "0.2.0"

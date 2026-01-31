@@ -2,13 +2,18 @@
 
 A Rust tool using libclang to parse OCCT headers and generate CXX bridge code, organized into per-module Rust files with type aliasing for cross-module references.
 
+## Status: Core Implementation Complete ✅
+
+The binding generator is functional and can parse OCCT headers and generate CXX bridge code.
+See **[TRANSITION_PLAN.md](./TRANSITION_PLAN.md)** for the plan to migrate `opencascade-sys` to use generated bindings.
+
 ## Goals
 
-1. Parse OCCT C++ headers and extract class/function declarations
-2. Generate `#[cxx::bridge]` modules per OCCT module (gp, TopoDS, BRep, etc.)
-3. Generate C++ wrapper functions where needed (constructors, return-by-value, static methods)
-4. Use CXX's type aliasing (`type Foo = crate::other::ffi::Foo`) for cross-module references
-5. Preserve doc comments from C++ headers
+1. ✅ Parse OCCT C++ headers and extract class/function declarations
+2. ✅ Generate `#[cxx::bridge]` modules per OCCT module (gp, TopoDS, BRep, etc.)
+3. ✅ Generate C++ wrapper functions where needed (constructors, return-by-value, static methods)
+4. ✅ Use CXX's type aliasing (`type Foo = crate::other::ffi::Foo`) for cross-module references
+5. ✅ Preserve doc comments from C++ headers
 
 ## Architecture
 

@@ -1,18 +1,6 @@
-//! Build script for opencascade-sys
-//!
-//! This script:
-//! 1. Uses pre-generated code from the `generated/` directory
-//! 2. Builds with cxx_build
-//!
-//! To regenerate the bindings, run:
-//!   DYLD_LIBRARY_PATH=/Library/Developer/CommandLineTools/usr/lib cargo run -p opencascade-binding-generator -- \
-//!     -I target/OCCT/include \
-//!     -o crates/opencascade-sys/generated \
-//!     $(cat crates/opencascade-sys/headers.txt | grep -v '^#' | grep -v '^$' | sed 's|^|target/OCCT/include/|')
-
-use std::path::PathBuf;
-
 /// Minimum compatible version of OpenCASCADE library (major, minor)
+///
+/// Pre-installed OpenCASCADE library will be checked for compatibility using semver rules.
 const OCCT_VERSION: (u8, u8) = (7, 8);
 
 /// The list of used OpenCASCADE libraries which needs to be linked with.
@@ -44,14 +32,10 @@ const OCCT_LIBS: &[&str] = &[
 ];
 
 fn main() {
-    let manifest_dir = PathBuf::from(std::env::var("CARGO_MANIFEST_DIR").expect("CARGO_MANIFEST_DIR not set"));
-    let gen_dir = manifest_dir.join("generated");
-
     let target = std::env::var("TARGET").expect("No TARGET environment variable defined");
     let is_windows = target.to_lowercase().contains("windows");
     let is_windows_gnu = target.to_lowercase().contains("windows-gnu");
 
-    // Detect OCCT installation
     let occt_config = OcctConfig::detect();
 
     println!("cargo:rustc-link-search=native={}", occt_config.library_dir.to_str().unwrap());
@@ -65,51 +49,34 @@ fn main() {
         println!("cargo:rustc-link-lib=dylib=user32");
     }
 
-    // Find all generated .rs files in generated/ directory
-    let rust_files: Vec<PathBuf> = std::fs::read_dir(&gen_dir)
-        .expect("Failed to read generated directory")
-        .filter_map(|entry| {
-            let entry = entry.ok()?;
-            let path = entry.path();
-            if path.extension()? == "rs" && path.file_name()? != "lib.rs" {
-                Some(path)
-            } else {
-                None
-            }
-        })
-        .collect();
-
-    if rust_files.is_empty() {
-        panic!("No generated .rs files found in {}. Run the binding generator first.", gen_dir.display());
-    }
-
-    // Build with CXX
-    let mut build = cxx_build::bridges(&rust_files);
+    let mut build = cxx_build::bridge("src/lib.rs");
 
     if is_windows_gnu {
         build.define("OCC_CONVERT_SIGNALS", "TRUE");
     }
 
+    if let "windows" = std::env::consts::OS {
+        let current = std::env::current_dir().unwrap();
+        build.include(current.parent().unwrap());
+    }
+
     build
         .cpp(true)
-        .flag_if_supported("-std=c++14")
+        .flag_if_supported("-std=c++11")
         .define("_USE_MATH_DEFINES", "TRUE")
-        .include(&occt_config.include_dir)
-        .include(&gen_dir)
-        .compile("opencascade_sys_wrapper");
+        .include(occt_config.include_dir)
+        .include("include")
+        .compile("wrapper");
 
-    println!("cargo:rustc-link-lib=static=opencascade_sys_wrapper");
+    println!("cargo:rustc-link-lib=static=wrapper");
 
-    // Rerun if generated files change
-    println!("cargo:rerun-if-changed=generated");
-    for rs_file in &rust_files {
-        println!("cargo:rerun-if-changed={}", rs_file.display());
-    }
+    println!("cargo:rerun-if-changed=src/lib.rs");
+    println!("cargo:rerun-if-changed=include/wrapper.hxx");
 }
 
 struct OcctConfig {
-    include_dir: PathBuf,
-    library_dir: PathBuf,
+    include_dir: std::path::PathBuf,
+    library_dir: std::path::PathBuf,
     is_dynamic: bool,
 }
 
@@ -139,8 +106,8 @@ impl OcctConfig {
 
         let mut version_major: Option<u8> = None;
         let mut version_minor: Option<u8> = None;
-        let mut include_dir: Option<PathBuf> = None;
-        let mut library_dir: Option<PathBuf> = None;
+        let mut include_dir: Option<std::path::PathBuf> = None;
+        let mut library_dir: Option<std::path::PathBuf> = None;
         let mut is_dynamic: bool = false;
 
         for line in cfg.lines() {
@@ -175,4 +142,3 @@ impl OcctConfig {
         }
     }
 }
-

@@ -1,0 +1,32 @@
+[package]
+name = "opencascade-binding-generator"
+version = "0.1.0"
+edition = "2021"
+description = "A tool using libclang to parse OCCT headers and generate CXX bridge code"
+license = "MIT"
+
+[lib]
+name = "opencascade_binding_generator"
+path = "src/lib.rs"
+
+[[bin]]
+name = "occt-bindgen"
+path = "src/main.rs"
+
+[dependencies]
+# C++ parsing via libclang
+clang = "2.0"
+
+# CLI argument parsing
+clap = { version = "4.5", features = ["derive"] }
+
+# Rust code generation
+quote = "1.0"
+proc-macro2 = "1.0"
+
+# Case conversion (snake_case, PascalCase, etc.)
+heck = "0.5"
+
+# Error handling
+anyhow = "1.0"
+thiserror = "2.0"

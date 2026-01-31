@@ -1,0 +1,255 @@
+//! Internal representation (IR) for parsed C++ declarations
+//!
+//! These types represent the parsed information from OCCT headers
+//! in a form suitable for code generation.
+
+#![allow(dead_code)] // Some fields/methods are reserved for future use
+
+use std::path::PathBuf;
+
+/// A parsed header file containing class declarations
+#[derive(Debug, Clone)]
+pub struct ParsedHeader {
+    /// Path to the header file
+    pub path: PathBuf,
+    /// Classes defined in this header
+    pub classes: Vec<ParsedClass>,
+    /// Enums defined in this header
+    pub enums: Vec<ParsedEnum>,
+}
+
+/// A parsed C++ enum
+#[derive(Debug, Clone)]
+pub struct ParsedEnum {
+    /// Full enum name (e.g., "TopAbs_ShapeEnum")
+    pub name: String,
+    /// Module name extracted from prefix
+    pub module: String,
+    /// Documentation comment from the header
+    pub comment: Option<String>,
+    /// Enum variants
+    pub variants: Vec<EnumVariant>,
+}
+
+/// A single enum variant
+#[derive(Debug, Clone)]
+pub struct EnumVariant {
+    /// Variant name (e.g., "TopAbs_COMPOUND")
+    pub name: String,
+    /// Explicit value if specified
+    pub value: Option<i64>,
+    /// Documentation comment
+    pub comment: Option<String>,
+}
+
+/// A parsed C++ class or struct
+#[derive(Debug, Clone)]
+pub struct ParsedClass {
+    /// Full class name (e.g., "gp_Pnt", "BRepPrimAPI_MakeBox")
+    pub name: String,
+    /// Module name extracted from prefix (e.g., "gp", "BRepPrimAPI")
+    pub module: String,
+    /// Documentation comment from the header
+    pub comment: Option<String>,
+    /// Constructors
+    pub constructors: Vec<Constructor>,
+    /// Instance methods
+    pub methods: Vec<Method>,
+    /// Static methods
+    pub static_methods: Vec<StaticMethod>,
+    /// Whether this type has DEFINE_STANDARD_HANDLE (is a Handle type)
+    pub is_handle_type: bool,
+}
+
+impl ParsedClass {
+    /// Get the class name without the module prefix (e.g., "Pnt" from "gp_Pnt")
+    pub fn short_name(&self) -> &str {
+        if let Some(underscore_pos) = self.name.find('_') {
+            &self.name[underscore_pos + 1..]
+        } else {
+            &self.name
+        }
+    }
+
+    /// Get a safe Rust name for this class, escaping CXX reserved names
+    pub fn safe_short_name(&self) -> String {
+        crate::type_mapping::safe_short_name(self.short_name())
+    }
+}
+
+/// A constructor declaration
+#[derive(Debug, Clone)]
+pub struct Constructor {
+    /// Documentation comment
+    pub comment: Option<String>,
+    /// Parameters
+    pub params: Vec<Param>,
+}
+
+impl Constructor {
+    /// Generate a suffix for distinguishing overloaded constructors
+    /// based on parameter types (e.g., "_dims", "_point_dims")
+    pub fn overload_suffix(&self) -> String {
+        if self.params.is_empty() {
+            return String::new();
+        }
+
+        let parts: Vec<String> = self
+            .params
+            .iter()
+            .map(|p| p.ty.short_name().to_lowercase())
+            .collect();
+
+        format!("_{}", parts.join("_"))
+    }
+}
+
+/// An instance method declaration
+#[derive(Debug, Clone)]
+pub struct Method {
+    /// Method name (e.g., "X", "SetX", "Mirrored")
+    pub name: String,
+    /// Documentation comment
+    pub comment: Option<String>,
+    /// Whether the method is const (determines &self vs Pin<&mut self>)
+    pub is_const: bool,
+    /// Parameters (excluding implicit this)
+    pub params: Vec<Param>,
+    /// Return type (None for void)
+    pub return_type: Option<Type>,
+}
+
+impl Method {
+    /// Check if this method returns by value (needs wrapper)
+    pub fn returns_by_value(&self) -> bool {
+        match &self.return_type {
+            Some(Type::Class(_)) => true,
+            Some(Type::Handle(_)) => true,
+            _ => false,
+        }
+    }
+}
+
+/// A static method declaration
+#[derive(Debug, Clone)]
+pub struct StaticMethod {
+    /// Method name
+    pub name: String,
+    /// Documentation comment
+    pub comment: Option<String>,
+    /// Parameters
+    pub params: Vec<Param>,
+    /// Return type (None for void)
+    pub return_type: Option<Type>,
+}
+
+/// A function parameter
+#[derive(Debug, Clone)]
+pub struct Param {
+    /// Parameter name
+    pub name: String,
+    /// Parameter type
+    pub ty: Type,
+}
+
+/// Representation of C++ types
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum Type {
+    /// void
+    Void,
+    /// bool / Standard_Boolean
+    Bool,
+    /// int / Standard_Integer
+    I32,
+    /// unsigned int
+    U32,
+    /// long
+    I64,
+    /// unsigned long
+    U64,
+    /// float
+    F32,
+    /// double / Standard_Real
+    F64,
+    /// const T&
+    ConstRef(Box<Type>),
+    /// T& (mutable reference)
+    MutRef(Box<Type>),
+    /// const T*
+    ConstPtr(Box<Type>),
+    /// T* (mutable pointer)
+    MutPtr(Box<Type>),
+    /// Handle<T> / opencascade::handle<T>
+    Handle(String),
+    /// An OCCT class type (e.g., "gp_Pnt", "TopoDS_Shape")
+    Class(String),
+}
+
+impl Type {
+    /// Get a short name for this type (for generating overload suffixes)
+    pub fn short_name(&self) -> String {
+        match self {
+            Type::Void => "void".to_string(),
+            Type::Bool => "bool".to_string(),
+            Type::I32 => "int".to_string(),
+            Type::U32 => "uint".to_string(),
+            Type::I64 => "long".to_string(),
+            Type::U64 => "ulong".to_string(),
+            Type::F32 => "float".to_string(),
+            Type::F64 => "real".to_string(),
+            Type::ConstRef(inner) | Type::MutRef(inner) => inner.short_name(),
+            Type::ConstPtr(inner) | Type::MutPtr(inner) => format!("{}ptr", inner.short_name()),
+            Type::Handle(name) => format!("handle{}", extract_short_name(name)),
+            Type::Class(name) => extract_short_name(name),
+        }
+    }
+
+    /// Check if this is a primitive type that can be passed by value in CXX
+    pub fn is_primitive(&self) -> bool {
+        matches!(
+            self,
+            Type::Void
+                | Type::Bool
+                | Type::I32
+                | Type::U32
+                | Type::I64
+                | Type::U64
+                | Type::F32
+                | Type::F64
+        )
+    }
+
+    /// Check if this is an OCCT class type (not primitive, not reference/pointer)
+    pub fn is_class(&self) -> bool {
+        matches!(self, Type::Class(_))
+    }
+
+    /// Check if this is a Handle type
+    pub fn is_handle(&self) -> bool {
+        matches!(self, Type::Handle(_))
+    }
+
+    /// Get the module this type belongs to (if it's an OCCT class)
+    pub fn module(&self) -> Option<String> {
+        match self {
+            Type::Class(name) | Type::Handle(name) => {
+                if let Some(underscore_pos) = name.find('_') {
+                    Some(name[..underscore_pos].to_string())
+                } else {
+                    None
+                }
+            }
+            Type::ConstRef(inner) | Type::MutRef(inner) => inner.module(),
+            _ => None,
+        }
+    }
+}
+
+/// Extract short name from a class name (e.g., "gp_Pnt" -> "pnt")
+fn extract_short_name(name: &str) -> String {
+    if let Some(underscore_pos) = name.find('_') {
+        name[underscore_pos + 1..].to_lowercase()
+    } else {
+        name.to_lowercase()
+    }
+}

@@ -1,0 +1,24 @@
+# OCCT Headers for Binding Generation
+#
+# This file lists the OCCT headers to generate bindings for.
+# One header per line. Lines starting with # are comments.
+# Headers are resolved relative to the OCCT include directory.
+
+# =============================================================================
+# Minimal set for initial build
+# =============================================================================
+
+# gp module - Points, vectors, directions, transforms
+gp_Pnt.hxx
+gp_Vec.hxx
+gp_Dir.hxx
+
+# TopAbs module - Enums
+TopAbs_ShapeEnum.hxx
+TopAbs_Orientation.hxx
+
+# TopoDS module - Topology shapes
+TopoDS_Shape.hxx
+
+# BRepPrimAPI module - Primitive shapes
+BRepPrimAPI_MakeBox.hxx
