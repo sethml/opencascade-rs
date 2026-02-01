@@ -59,6 +59,12 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
             needs_pin: false,
             source_module: None,
         },
+        Type::Usize => RustTypeMapping {
+            rust_type: "usize".to_string(),
+            needs_unique_ptr: false,
+            needs_pin: false,
+            source_module: None,
+        },
         Type::F32 => RustTypeMapping {
             rust_type: "f32".to_string(),
             needs_unique_ptr: false,
@@ -101,6 +107,15 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
             }
         }
         Type::ConstPtr(inner) => {
+            // Special case: const char* -> &str (C string returned by OCCT)
+            if matches!(inner.as_ref(), Type::Class(name) if name == "char") {
+                return RustTypeMapping {
+                    rust_type: "&str".to_string(),
+                    needs_unique_ptr: false,
+                    needs_pin: false,
+                    source_module: None,
+                };
+            }
             let inner_mapping = map_type_to_rust(inner);
             RustTypeMapping {
                 rust_type: format!("*const {}", inner_mapping.rust_type),
@@ -120,11 +135,12 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
         }
         Type::Handle(class_name) => {
             let source_module = extract_module_from_class(class_name);
-            // Handles are typically typedef'd in the bridge
-            let handle_type = format!("Handle{}", extract_short_class_name(class_name));
+            // Handles are typedef'd in the bridge
+            // Use full class name to avoid collisions (e.g., Geom_Curve vs Geom2d_Curve)
+            let handle_type = format!("Handle{}", class_name.replace("_", ""));
             RustTypeMapping {
                 rust_type: handle_type,
-                needs_unique_ptr: false, // Handles are already smart pointers
+                needs_unique_ptr: true, // CXX requires UniquePtr for any opaque C++ type returned by value
                 needs_pin: false,
                 source_module,
             }
@@ -217,12 +233,24 @@ pub struct TypeContext<'a> {
     pub current_module: &'a str,
     /// Classes defined in the current module (full C++ names like "gp_Pnt")
     pub module_classes: &'a std::collections::HashSet<String>,
+    /// All enum names across all modules (full C++ names like "TopAbs_Orientation")
+    pub all_enums: &'a std::collections::HashSet<String>,
 }
 
 /// Map a type to Rust, using short names for same-module types
 pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
     match ty {
         Type::Class(class_name) => {
+            // Check if this is actually an enum - enums don't need UniquePtr
+            if ctx.all_enums.contains(class_name) {
+                return RustTypeMapping {
+                    rust_type: class_name.clone(),
+                    needs_unique_ptr: false, // Enums are Copy and don't need UniquePtr
+                    needs_pin: false,
+                    source_module: extract_module_from_class(class_name),
+                };
+            }
+            
             let type_module = extract_module_from_class(class_name);
             let short_name = extract_short_class_name(class_name);
             
@@ -278,10 +306,11 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
         }
         Type::Handle(class_name) => {
             let source_module = extract_module_from_class(class_name);
-            let handle_type = format!("Handle{}", extract_short_class_name(class_name));
+            // Use full class name to avoid collisions (e.g., Geom_Curve vs Geom2d_Curve)
+            let handle_type = format!("Handle{}", class_name.replace("_", ""));
             RustTypeMapping {
                 rust_type: handle_type,
-                needs_unique_ptr: false,
+                needs_unique_ptr: true, // CXX requires UniquePtr for any opaque C++ type returned by value
                 needs_pin: false,
                 source_module,
             }

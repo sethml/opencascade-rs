@@ -7,6 +7,18 @@ A Rust tool using libclang to parse OCCT headers and generate CXX bridge code, o
 The binding generator is functional and can parse OCCT headers and generate CXX bridge code.
 See **[TRANSITION_PLAN.md](./TRANSITION_PLAN.md)** for the plan to migrate `opencascade-sys` to use generated bindings.
 
+## TODO
+
+- [ ] System include paths: Hardcoding include paths in the binding generator is ugly.
+  - Can we run `clang -E -v -x c++ /dev/null` to get system includes?
+  - Or use libclang's built-in include path detection?
+- [ ] `const char*` parameters: CXX can't accept `&str` directly from C++. Need C++ wrappers that:
+  - Accept `rust::Str` on the C++ side
+  - Convert to `const char*` via `std::string(str).c_str()`
+  - Affected: `BRepTools::Write`, `BRepTools::Read` (file path params)
+- [ ] `const char*` return types: These are usually debug/type-info methods.
+  - If needed later: return `rust::String` (owned, requires copy)
+
 ## Goals
 
 1. ✅ Parse OCCT C++ headers and extract class/function declarations
@@ -191,12 +203,31 @@ pub(crate) mod ffi {
     impl UniquePtr<MakeBox> {}
 }
 
-// Re-export only types owned by this module (not cross-module aliases)
+// Re-export types
 pub use ffi::MakeBox;
-pub use ffi::MakeBox_from_dims;
-pub use ffi::MakeBox_from_point_dims;
-pub use ffi::MakeBox_from_points;
-pub use ffi::MakeBox_from_ax2_dims;
+
+// Impl block provides constructor methods as associated functions
+impl MakeBox {
+    /// Make a box with a corner at 0,0,0 and the other dx,dy,dz
+    pub fn new_real3(dx: f64, dy: f64, dz: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeBox_ctor_real3(dx, dy, dz)
+    }
+
+    /// Make a box with a corner at P and size dx, dy, dz.
+    pub fn new_pnt_real3(p: &Pnt, dx: f64, dy: f64, dz: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeBox_ctor_pnt_real3(p, dx, dy, dz)
+    }
+
+    /// Make a box with corners P1, P2.
+    pub fn new_pnt2(p1: &Pnt, p2: &Pnt) -> cxx::UniquePtr<Self> {
+        ffi::MakeBox_ctor_pnt2(p1, p2)
+    }
+
+    /// Make a box with Ax2 (the left corner and the axis) and size dx, dy, dz.
+    pub fn new_ax2_real3(axes: &Ax2, dx: f64, dy: f64, dz: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeBox_ctor_ax2_real3(axes, dx, dy, dz)
+    }
+}
 ```
 
 Key conventions:
@@ -207,6 +238,8 @@ Key conventions:
 - **Doc comment includes original C++ name** for searchability
 - **Method names use snake_case** while preserving C++ name via `#[cxx_name]`
 - **Explicit `impl UniquePtr<T> {}`** for types from other modules
+- **Constructor methods** via impl blocks outside ffi: `Type::new()`, `Type::new_pnt_real3()`
+- **Compressed overload suffixes**: consecutive identical types combine (e.g., `_real3` not `_real_real_real`, `_pnt2` not `_pnt_pnt`)
 
 ### Step 5: C++ Wrapper Generation (`codegen/cpp.rs`)
 

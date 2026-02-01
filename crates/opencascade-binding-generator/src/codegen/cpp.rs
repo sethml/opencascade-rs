@@ -6,7 +6,7 @@
 //! - Static methods
 //! - Overloaded methods
 
-use crate::model::{ParsedClass, Type};
+use crate::model::{Param, ParsedClass, Type};
 use crate::module_graph::{CrossModuleType, Module};
 use std::collections::HashSet;
 use std::fmt::Write;
@@ -34,6 +34,7 @@ pub fn generate_module_header(
     module: &Module,
     classes: &[&ParsedClass],
     _cross_module_types: &[CrossModuleType],
+    all_enum_names: &HashSet<String>,
 ) -> String {
     let mut output = String::new();
 
@@ -69,7 +70,7 @@ pub fn generate_module_header(
 
     // Generate wrapper functions for each class
     for class in classes {
-        generate_class_wrappers(class, &mut output);
+        generate_class_wrappers(class, &mut output, all_enum_names);
     }
 
     output
@@ -140,7 +141,8 @@ fn collect_handle_types(classes: &[&ParsedClass]) -> Vec<(String, String)> {
     let mut result: Vec<_> = handles
         .into_iter()
         .map(|inner_class| {
-            let handle_name = format!("Handle{}", extract_short_class_name(&inner_class));
+            // Use full class name to match Rust side (e.g., HandleGeom2dCurve not HandleCurve)
+            let handle_name = format!("Handle{}", inner_class.replace("_", ""));
             (inner_class, handle_name)
         })
         .collect();
@@ -177,7 +179,11 @@ fn collect_type_headers(ty: &Option<Type>, headers: &mut HashSet<String>) {
     if let Some(ty) = ty {
         match ty {
             Type::Class(name) => {
-                headers.insert(format!("{}.hxx", name));
+                // Skip primitive types that don't have headers
+                // Also skip Standard_Address which is defined in Standard_TypeDef.hxx, not its own file
+                if !matches!(name.as_str(), "char" | "int" | "unsigned" | "void" | "Standard_Address") {
+                    headers.insert(format!("{}.hxx", name));
+                }
             }
             Type::Handle(name) => {
                 headers.insert(format!("{}.hxx", name));
@@ -192,7 +198,7 @@ fn collect_type_headers(ty: &Option<Type>, headers: &mut HashSet<String>) {
 }
 
 /// Generate C++ wrapper functions for a class
-fn generate_class_wrappers(class: &ParsedClass, output: &mut String) {
+fn generate_class_wrappers(class: &ParsedClass, output: &mut String, all_enum_names: &HashSet<String>) {
     writeln!(output, "// ========================").unwrap();
     writeln!(output, "// {} wrappers", class.name).unwrap();
     writeln!(output, "// ========================").unwrap();
@@ -202,10 +208,10 @@ fn generate_class_wrappers(class: &ParsedClass, output: &mut String) {
     generate_constructor_wrappers(class, output);
 
     // Generate wrappers for methods that return by value
-    generate_return_by_value_wrappers(class, output);
+    generate_return_by_value_wrappers(class, output, all_enum_names);
 
     // Generate static method wrappers
-    generate_static_method_wrappers(class, output);
+    generate_static_method_wrappers(class, output, all_enum_names);
 
     writeln!(output).unwrap();
 }
@@ -213,6 +219,11 @@ fn generate_class_wrappers(class: &ParsedClass, output: &mut String) {
 /// Generate constructor wrapper functions
 fn generate_constructor_wrappers(class: &ParsedClass, output: &mut String) {
     for (_i, ctor) in class.constructors.iter().enumerate() {
+        // Skip constructors with class/handle parameters passed by value (not supported by CXX)
+        if ctor.params.iter().any(|p| matches!(&p.ty, Type::Class(_) | Type::Handle(_))) {
+            continue;
+        }
+        
         let suffix = if ctor.params.is_empty() {
             "ctor".to_string()
         } else {
@@ -256,13 +267,31 @@ fn generate_constructor_wrappers(class: &ParsedClass, output: &mut String) {
 }
 
 /// Generate wrapper functions for methods that return by value
-fn generate_return_by_value_wrappers(class: &ParsedClass, output: &mut String) {
+fn generate_return_by_value_wrappers(class: &ParsedClass, output: &mut String, all_enum_names: &HashSet<String>) {
     for method in &class.methods {
         if !method.returns_by_value() {
             continue;
         }
 
+        // Skip methods with unbindable types (streams, void pointers, etc.)
+        if method.has_unbindable_types() {
+            continue;
+        }
+
         let return_type = method.return_type.as_ref().unwrap();
+        
+        // Check if return type is an enum - enums don't need unique_ptr wrapping
+        let return_type_name = match return_type {
+            Type::Class(name) => Some(name.as_str()),
+            _ => None,
+        };
+        let is_enum = return_type_name.map(|n| all_enum_names.contains(n)).unwrap_or(false);
+        
+        // Skip enum returns - they don't need wrapper functions
+        if is_enum {
+            continue;
+        }
+        
         let cpp_return_type = type_to_cpp(return_type);
         let wrapper_name = format!("{}_{}", class.name, method.name);
 
@@ -312,32 +341,65 @@ fn generate_return_by_value_wrappers(class: &ParsedClass, output: &mut String) {
 }
 
 /// Generate static method wrapper functions
-fn generate_static_method_wrappers(class: &ParsedClass, output: &mut String) {
+fn generate_static_method_wrappers(class: &ParsedClass, output: &mut String, all_enum_names: &HashSet<String>) {
     for method in &class.static_methods {
-        let wrapper_name = format!("{}_{}", class.name, method.name);
+        // Skip methods with stream parameters - CXX can't bind C++ streams
+        if method.has_unbindable_types() {
+            continue;
+        }
+        
+        // Skip static methods that return bare references - these need lifetimes
+        if method.return_type.as_ref().map(|t| t.is_reference()).unwrap_or(false) {
+            continue;
+        }
 
-        // Parameters
+        // Count how many static methods have this name to determine if suffix is needed
+        let same_name_count = class
+            .static_methods
+            .iter()
+            .filter(|m| m.name == method.name)
+            .count();
+        
+        // Generate overload suffix based on parameter types
+        let overload_suffix = if same_name_count > 1 {
+            method.overload_suffix()
+        } else {
+            String::new()
+        };
+        
+        let wrapper_name = format!("{}_{}{}", class.name, method.name, overload_suffix);
+
+        // Parameters - use type_to_cpp_param for CXX-compatible types (e.g., rust::Str)
         let params = method
             .params
             .iter()
-            .map(|p| format!("{} {}", type_to_cpp(&p.ty), p.name))
+            .map(|p| format!("{} {}", type_to_cpp_param(&p.ty), p.name))
             .collect::<Vec<_>>()
             .join(", ");
 
-        // Arguments
+        // Arguments - convert from CXX types to native C++ types
         let args = method
             .params
             .iter()
-            .map(|p| p.name.clone())
+            .map(|p| param_to_cpp_arg(p))
             .collect::<Vec<_>>()
             .join(", ");
 
-        // Return type
+        // Check if return type is an enum - enums don't need unique_ptr wrapping
+        let return_type_name = method.return_type.as_ref().and_then(|t| {
+            match t {
+                Type::Class(name) => Some(name.as_str()),
+                _ => None,
+            }
+        });
+        let is_enum_return = return_type_name.map(|n| all_enum_names.contains(n)).unwrap_or(false);
+
+        // Return type - enums don't need unique_ptr
         let return_type = method
             .return_type
             .as_ref()
             .map(|t| {
-                if t.is_class() || t.is_handle() {
+                if (t.is_class() || t.is_handle()) && !is_enum_return {
                     format!("std::unique_ptr<{}>", type_to_cpp(t))
                 } else {
                     type_to_cpp(t)
@@ -348,7 +410,7 @@ fn generate_static_method_wrappers(class: &ParsedClass, output: &mut String) {
         let is_return_by_value = method
             .return_type
             .as_ref()
-            .map(|t| t.is_class() || t.is_handle())
+            .map(|t| (t.is_class() || t.is_handle()) && !is_enum_return)
             .unwrap_or(false);
 
         writeln!(output, "inline {return_type} {wrapper_name}({params}) {{").unwrap();
@@ -385,6 +447,30 @@ fn generate_static_method_wrappers(class: &ParsedClass, output: &mut String) {
     }
 }
 
+/// Convert our Type to C++ type string for wrapper function parameters
+/// This handles the CXX bridge interface (e.g., rust::Str for string inputs)
+fn type_to_cpp_param(ty: &Type) -> String {
+    match ty {
+        // const char* parameters should accept rust::Str from CXX
+        Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
+            "rust::Str".to_string()
+        }
+        _ => type_to_cpp(ty),
+    }
+}
+
+/// Convert parameter to the argument form needed when calling OCCT functions
+/// This converts from CXX types to native C++ types (e.g., rust::Str -> const char*)
+fn param_to_cpp_arg(param: &Param) -> String {
+    match &param.ty {
+        // Convert rust::Str to const char* via std::string
+        Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
+            format!("std::string({}).c_str()", param.name)
+        }
+        _ => param.name.clone(),
+    }
+}
+
 /// Convert our Type to C++ type string
 fn type_to_cpp(ty: &Type) -> String {
     match ty {
@@ -393,7 +479,8 @@ fn type_to_cpp(ty: &Type) -> String {
         Type::I32 => "Standard_Integer".to_string(),
         Type::U32 => "unsigned int".to_string(),
         Type::I64 => "long".to_string(),
-        Type::U64 => "unsigned long".to_string(),
+        Type::U64 => "unsigned long long".to_string(),
+        Type::Usize => "size_t".to_string(),
         Type::F32 => "float".to_string(),
         Type::F64 => "Standard_Real".to_string(),
         Type::ConstRef(inner) => format!("const {}&", type_to_cpp(inner)),

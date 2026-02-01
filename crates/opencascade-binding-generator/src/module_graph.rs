@@ -23,6 +23,8 @@ pub struct Module {
     pub rust_name: String,
     /// Types defined in this module
     pub types: Vec<String>,
+    /// Enum types defined in this module (subset of types)
+    pub enum_types: HashSet<String>,
     /// Other modules this module depends on (references types from)
     pub dependencies: HashSet<String>,
 }
@@ -34,6 +36,7 @@ impl Module {
             name: name.to_string(),
             rust_name: module_to_rust_name(name),
             types: Vec::new(),
+            enum_types: HashSet::new(),
             dependencies: HashSet::new(),
         }
     }
@@ -43,6 +46,17 @@ impl Module {
         if !self.types.contains(&type_name.to_string()) {
             self.types.push(type_name.to_string());
         }
+    }
+
+    /// Add an enum type to this module
+    pub fn add_enum_type(&mut self, type_name: &str) {
+        self.add_type(type_name);
+        self.enum_types.insert(type_name.to_string());
+    }
+
+    /// Check if a type is an enum
+    pub fn is_enum(&self, type_name: &str) -> bool {
+        self.enum_types.contains(type_name)
     }
 
     /// Add a dependency on another module
@@ -68,13 +82,13 @@ impl ModuleGraph {
                 module.add_type(&class.name);
             }
 
-            // Also register enums
+            // Also register enums (use add_enum_type to track them separately)
             for enum_decl in &header.enums {
                 let module = graph
                     .modules
                     .entry(enum_decl.module.clone())
                     .or_insert_with(|| Module::new(&enum_decl.module));
-                module.add_type(&enum_decl.name);
+                module.add_enum_type(&enum_decl.name);
             }
         }
 
@@ -158,6 +172,7 @@ impl ModuleGraph {
                             cpp_name: type_name.clone(),
                             rust_name: extract_rust_type_name(type_name),
                             source_module: dep_module.rust_name.clone(),
+                            is_enum: dep_module.is_enum(type_name),
                         });
                     }
                 }
@@ -177,6 +192,8 @@ pub struct CrossModuleType {
     pub rust_name: String,
     /// Source module's Rust name (e.g., "gp")
     pub source_module: String,
+    /// Whether this is an enum (enums use full C++ names, classes use short names)
+    pub is_enum: bool,
 }
 
 /// Collect all type dependencies from a class

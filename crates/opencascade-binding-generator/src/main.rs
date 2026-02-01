@@ -140,6 +140,10 @@ fn main() -> Result<()> {
     // Collect all classes and enums by module
     let all_classes: Vec<_> = parsed.iter().flat_map(|h| &h.classes).collect();
     let all_enums: Vec<_> = parsed.iter().flat_map(|h| &h.enums).collect();
+    
+    // Collect all enum names for cross-module enum type resolution
+    let all_enum_names: std::collections::HashSet<String> = 
+        all_enums.iter().map(|e| e.name.clone()).collect();
 
     // Track generated Rust files for formatting
     let mut generated_rs_files: Vec<PathBuf> = Vec::new();
@@ -190,7 +194,7 @@ fn main() -> Result<()> {
 
         // Generate Rust code as TokenStream and convert to string
         let rust_code =
-            codegen::rust::generate_module(module, &module_classes, &module_enums, &cross_types);
+            codegen::rust::generate_module(module, &module_classes, &module_enums, &cross_types, &all_enum_names);
 
         // Write to output directory
         let rust_file = args.output.join(format!("{}.rs", module.rust_name));
@@ -199,7 +203,7 @@ fn main() -> Result<()> {
         println!("    Wrote: {}", rust_file.display());
 
         // Generate C++ header wrapper
-        let cpp_code = codegen::cpp::generate_module_header(module, &module_classes, &cross_types);
+        let cpp_code = codegen::cpp::generate_module_header(module, &module_classes, &cross_types, &all_enum_names);
         // Use wrapper_ prefix to avoid collision with OCCT headers (e.g., gp.hxx)
         let cpp_file = args.output.join(format!("wrapper_{}.hxx", module.rust_name));
         std::fs::write(&cpp_file, &cpp_code)?;
@@ -213,10 +217,11 @@ fn main() -> Result<()> {
     generated_rs_files.push(lib_rs_path.clone());
     println!("\n  Wrote: {}", lib_rs_path.display());
 
-    // Format generated Rust files with rustfmt
+    // Format generated Rust files with rustfmt (use nightly for unstable options)
     if !generated_rs_files.is_empty() {
         println!("\nFormatting generated Rust code with rustfmt...");
         let status = Command::new("rustfmt")
+            .arg("+nightly")
             .args(&generated_rs_files)
             .status();
 

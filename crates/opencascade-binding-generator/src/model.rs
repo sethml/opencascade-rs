@@ -88,17 +88,35 @@ pub struct Constructor {
 
 impl Constructor {
     /// Generate a suffix for distinguishing overloaded constructors
-    /// based on parameter types (e.g., "_dims", "_point_dims")
+    /// based on parameter types, with consecutive identical types compressed.
+    /// E.g., (f64, f64, f64) -> "_real3", (Pnt, Pnt) -> "_pnt2"
     pub fn overload_suffix(&self) -> String {
         if self.params.is_empty() {
             return String::new();
         }
 
-        let parts: Vec<String> = self
+        let type_names: Vec<String> = self
             .params
             .iter()
             .map(|p| p.ty.short_name().to_lowercase())
             .collect();
+
+        // Compress consecutive identical types: ["real", "real", "real"] -> ["real3"]
+        let mut parts: Vec<String> = Vec::new();
+        let mut i = 0;
+        while i < type_names.len() {
+            let current = &type_names[i];
+            let mut count = 1;
+            while i + count < type_names.len() && &type_names[i + count] == current {
+                count += 1;
+            }
+            if count > 1 {
+                parts.push(format!("{}{}", current, count));
+            } else {
+                parts.push(current.clone());
+            }
+            i += count;
+        }
 
         format!("_{}", parts.join("_"))
     }
@@ -128,6 +146,22 @@ impl Method {
             _ => false,
         }
     }
+
+    /// Check if this method has any unbindable types (streams, void pointers, etc.)
+    /// in parameters or return type
+    pub fn has_unbindable_types(&self) -> bool {
+        // Check params
+        if self.params.iter().any(|p| p.ty.is_unbindable()) {
+            return true;
+        }
+        // Check return type
+        if let Some(ref ret) = self.return_type {
+            if ret.is_unbindable() {
+                return true;
+            }
+        }
+        false
+    }
 }
 
 /// A static method declaration
@@ -141,6 +175,58 @@ pub struct StaticMethod {
     pub params: Vec<Param>,
     /// Return type (None for void)
     pub return_type: Option<Type>,
+}
+
+impl StaticMethod {
+    /// Check if this method has any unbindable types (streams, void pointers, etc.)
+    /// in parameters or return type
+    pub fn has_unbindable_types(&self) -> bool {
+        // Check params
+        if self.params.iter().any(|p| p.ty.is_unbindable()) {
+            return true;
+        }
+        // Check return type
+        if let Some(ref ret) = self.return_type {
+            if ret.is_unbindable() {
+                return true;
+            }
+        }
+        false
+    }
+
+    /// Generate a suffix for distinguishing overloaded static methods
+    /// based on parameter types, with consecutive identical types compressed.
+    /// E.g., (f64, f64, f64) -> "_real3", (Shape, Builder) -> "_shape_builder"
+    pub fn overload_suffix(&self) -> String {
+        if self.params.is_empty() {
+            return String::new();
+        }
+
+        let type_names: Vec<String> = self
+            .params
+            .iter()
+            .map(|p| p.ty.short_name().to_lowercase())
+            .collect();
+
+        // Compress consecutive identical types: ["real", "real", "real"] -> ["real3"]
+        let mut parts: Vec<String> = Vec::new();
+        let mut i = 0;
+        while i < type_names.len() {
+            let current = &type_names[i];
+            let mut count = 1;
+            while i + count < type_names.len() && &type_names[i + count] == current {
+                count += 1;
+            }
+            if count > 1 {
+                parts.push(format!("{}{}", current, count));
+            } else {
+                parts.push(current.clone());
+            }
+            i += count;
+        }
+
+        format!("_{}", parts.join("_"))
+    }
 }
 
 /// A function parameter
@@ -167,6 +253,8 @@ pub enum Type {
     I64,
     /// unsigned long
     U64,
+    /// size_t / Standard_Size - platform-dependent size
+    Usize,
     /// float
     F32,
     /// double / Standard_Real
@@ -195,6 +283,7 @@ impl Type {
             Type::U32 => "uint".to_string(),
             Type::I64 => "long".to_string(),
             Type::U64 => "ulong".to_string(),
+            Type::Usize => "size".to_string(),
             Type::F32 => "float".to_string(),
             Type::F64 => "real".to_string(),
             Type::ConstRef(inner) | Type::MutRef(inner) => inner.short_name(),
@@ -214,6 +303,7 @@ impl Type {
                 | Type::U32
                 | Type::I64
                 | Type::U64
+                | Type::Usize
                 | Type::F32
                 | Type::F64
         )
@@ -229,6 +319,51 @@ impl Type {
         matches!(self, Type::Handle(_))
     }
 
+    /// Check if this is a reference type (const ref or mutable ref)
+    pub fn is_reference(&self) -> bool {
+        matches!(self, Type::ConstRef(_) | Type::MutRef(_))
+    }
+
+    /// Check if this is a const char* type (C string pointer)
+    pub fn is_c_string(&self) -> bool {
+        match self {
+            Type::ConstPtr(inner) => matches!(inner.as_ref(), Type::Class(name) if name == "char"),
+            _ => false,
+        }
+    }
+
+    /// Check if this is a C++ stream type (Standard_OStream, Standard_IStream, etc.)
+    /// These can't be bound through CXX
+    pub fn is_stream(&self) -> bool {
+        match self {
+            Type::Class(name) => {
+                name.contains("OStream")
+                    || name.contains("IStream")
+                    || name.contains("ostream")
+                    || name.contains("istream")
+            }
+            Type::ConstRef(inner) | Type::MutRef(inner) => inner.is_stream(),
+            _ => false,
+        }
+    }
+
+    /// Check if this is a Standard_Address (void*) type
+    /// These can't be bound through CXX
+    pub fn is_void_ptr(&self) -> bool {
+        match self {
+            Type::Class(name) => name == "Standard_Address",
+            Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
+                inner.is_void_ptr()
+            }
+            _ => false,
+        }
+    }
+
+    /// Check if this type is unbindable through CXX (stream or void pointer)
+    pub fn is_unbindable(&self) -> bool {
+        self.is_stream() || self.is_void_ptr()
+    }
+
     /// Get the module this type belongs to (if it's an OCCT class)
     pub fn module(&self) -> Option<String> {
         match self {
@@ -241,6 +376,112 @@ impl Type {
             }
             Type::ConstRef(inner) | Type::MutRef(inner) => inner.module(),
             _ => None,
+        }
+    }
+
+    /// Convert this type to a Rust type string for use in method signatures
+    pub fn to_rust_type_string(&self) -> String {
+        match self {
+            Type::Void => "()".to_string(),
+            Type::Bool => "bool".to_string(),
+            Type::I32 => "i32".to_string(),
+            Type::U32 => "u32".to_string(),
+            Type::I64 => "i64".to_string(),
+            Type::U64 => "u64".to_string(),
+            Type::Usize => "usize".to_string(),
+            Type::F32 => "f32".to_string(),
+            Type::F64 => "f64".to_string(),
+            Type::ConstRef(inner) => {
+                let inner_str = inner.to_rust_type_string();
+                format!("&{}", inner_str)
+            }
+            Type::MutRef(inner) => {
+                let inner_str = inner.to_rust_type_string();
+                format!("&mut {}", inner_str)
+            }
+            Type::ConstPtr(inner) => {
+                let inner_str = inner.to_rust_type_string();
+                format!("*const {}", inner_str)
+            }
+            Type::MutPtr(inner) => {
+                let inner_str = inner.to_rust_type_string();
+                format!("*mut {}", inner_str)
+            }
+            Type::Handle(name) => {
+                // Extract short name from full OCCT name
+                let short = if let Some(underscore_pos) = name.find('_') {
+                    &name[underscore_pos + 1..]
+                } else {
+                    name.as_str()
+                };
+                format!("Handle{}", short)
+            }
+            Type::Class(name) => {
+                // Extract short name from full OCCT name (e.g., "gp_Pnt" -> "Pnt")
+                if let Some(underscore_pos) = name.find('_') {
+                    name[underscore_pos + 1..].to_string()
+                } else {
+                    name.clone()
+                }
+            }
+        }
+    }
+
+    /// Convert this type to a Rust type string for use outside the ffi module.
+    /// Class and Handle types are prefixed with `ffi::` since they live in the ffi module.
+    /// Uses safe short names (e.g., "gp_Vec" -> "ffi::Vec_" because Vec is reserved).
+    pub fn to_rust_ffi_type_string(&self) -> String {
+        match self {
+            Type::Void => "()".to_string(),
+            Type::Bool => "bool".to_string(),
+            Type::I32 => "i32".to_string(),
+            Type::U32 => "u32".to_string(),
+            Type::I64 => "i64".to_string(),
+            Type::U64 => "u64".to_string(),
+            Type::Usize => "usize".to_string(),
+            Type::F32 => "f32".to_string(),
+            Type::F64 => "f64".to_string(),
+            Type::ConstRef(inner) => {
+                let inner_str = inner.to_rust_ffi_type_string();
+                format!("&{}", inner_str)
+            }
+            Type::MutRef(inner) => {
+                let inner_str = inner.to_rust_ffi_type_string();
+                format!("&mut {}", inner_str)
+            }
+            Type::ConstPtr(inner) => {
+                let inner_str = inner.to_rust_ffi_type_string();
+                format!("*const {}", inner_str)
+            }
+            Type::MutPtr(inner) => {
+                let inner_str = inner.to_rust_ffi_type_string();
+                format!("*mut {}", inner_str)
+            }
+            Type::Handle(name) => {
+                // Extract short name and prefix with ffi::
+                let short = if let Some(underscore_pos) = name.find('_') {
+                    &name[underscore_pos + 1..]
+                } else {
+                    name.as_str()
+                };
+                format!("ffi::Handle{}", short)
+            }
+            Type::Class(name) => {
+                // Extract short name from full OCCT name (e.g., "gp_Pnt" -> "Pnt")
+                let short_name = if let Some(underscore_pos) = name.find('_') {
+                    &name[underscore_pos + 1..]
+                } else {
+                    name.as_str()
+                };
+                // Handle CXX reserved names (Vec, Box, String, etc.)
+                let safe_name = match short_name {
+                    "Vec" | "Box" | "String" | "Result" | "Option" | "Error" => {
+                        format!("{}_", short_name)
+                    }
+                    _ => short_name.to_string(),
+                };
+                format!("ffi::{}", safe_name)
+            }
         }
     }
 }

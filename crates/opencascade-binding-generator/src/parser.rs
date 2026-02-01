@@ -70,6 +70,10 @@ fn parse_header(
         "-Wno-pragma-once-outside-header".to_string(),
     ];
 
+    // Add system C++ standard library paths
+    // This is needed because libclang doesn't automatically include them
+    add_system_include_paths(&mut args);
+
     for include_dir in include_dirs {
         args.push(format!("-I{}", include_dir.as_ref().display()));
     }
@@ -259,8 +263,8 @@ fn parse_class(entity: &Entity, verbose: bool) -> Option<ParsedClass> {
 fn parse_enum(entity: &Entity, verbose: bool) -> Option<ParsedEnum> {
     let name = entity.get_name()?;
 
-    // Skip anonymous enums
-    if name.is_empty() {
+    // Skip anonymous enums (empty name or compiler-generated "(unnamed enum at ...)")
+    if name.is_empty() || name.starts_with("(unnamed") {
         return None;
     }
 
@@ -524,6 +528,12 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         return primitive;
     }
 
+    // Check for size_t BEFORE canonical resolution, since size_t and unsigned long
+    // are the same canonical type on some platforms but we want to preserve size_t semantics
+    if trimmed_spelling == "size_t" || trimmed_spelling == "std::size_t" {
+        return Type::Usize;
+    }
+
     // Get canonical type for resolving typedefs
     let canonical = clang_type.get_canonical_type();
     let canonical_spelling = canonical.get_display_name();
@@ -622,11 +632,91 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         "Standard_Integer" => Some(Type::I32),
         "Standard_Boolean" => Some(Type::Bool),
         "Standard_CString" => Some(Type::ConstPtr(Box::new(Type::Class("char".to_string())))),
-        "Standard_Size" => Some(Type::U64),
+        "Standard_Size" => Some(Type::Usize),
         "Standard_ShortReal" => Some(Type::F32),
         "Standard_Utf8Char" => Some(Type::Class("char".to_string())),
+        // Standard_Address is void* - can't be bound through CXX, but we need to recognize it
+        // so methods using it can be filtered out. Using a special class name that is_void_ptr() checks for.
+        "Standard_Address" => Some(Type::Class("Standard_Address".to_string())),
+        // Stream types - these can't be bound through CXX
+        "Standard_OStream" => Some(Type::Class("Standard_OStream".to_string())),
+        "Standard_IStream" => Some(Type::Class("Standard_IStream".to_string())),
+        "Standard_SStream" => Some(Type::Class("Standard_SStream".to_string())),
         _ => None,
     }
+}
+
+/// Add system C++ standard library include paths to clang arguments
+/// 
+/// libclang doesn't automatically include these paths, so we need to detect
+/// and add them manually. This is platform-specific.
+fn add_system_include_paths(args: &mut Vec<String>) {
+    #[cfg(target_os = "macos")]
+    {
+        // Try to get SDK path from xcrun
+        if let Ok(output) = std::process::Command::new("xcrun")
+            .args(["--show-sdk-path"])
+            .output()
+        {
+            if output.status.success() {
+                let sdk_path = String::from_utf8_lossy(&output.stdout).trim().to_string();
+                
+                // Add C++ standard library headers
+                let cxx_include = format!("{}/usr/include/c++/v1", sdk_path);
+                if std::path::Path::new(&cxx_include).exists() {
+                    args.push("-isystem".to_string());
+                    args.push(cxx_include);
+                }
+                
+                // Add general system headers
+                let sys_include = format!("{}/usr/include", sdk_path);
+                if std::path::Path::new(&sys_include).exists() {
+                    args.push("-isystem".to_string());
+                    args.push(sys_include);
+                }
+            }
+        }
+        
+        // Try to find clang's resource directory for built-in headers
+        if let Ok(output) = std::process::Command::new("clang")
+            .args(["--print-resource-dir"])
+            .output()
+        {
+            if output.status.success() {
+                let resource_dir = String::from_utf8_lossy(&output.stdout).trim().to_string();
+                let builtin_include = format!("{}/include", resource_dir);
+                if std::path::Path::new(&builtin_include).exists() {
+                    args.push("-isystem".to_string());
+                    args.push(builtin_include);
+                }
+            }
+        }
+    }
+    
+    #[cfg(target_os = "linux")]
+    {
+        // Common Linux C++ standard library paths
+        let paths = [
+            "/usr/include/c++/13",
+            "/usr/include/c++/12", 
+            "/usr/include/c++/11",
+            "/usr/include/c++/10",
+            "/usr/include/x86_64-linux-gnu/c++/13",
+            "/usr/include/x86_64-linux-gnu/c++/12",
+            "/usr/include/x86_64-linux-gnu/c++/11",
+            "/usr/include/x86_64-linux-gnu/c++/10",
+            "/usr/include",
+        ];
+        
+        for path in paths {
+            if std::path::Path::new(path).exists() {
+                args.push("-isystem".to_string());
+                args.push(path.to_string());
+            }
+        }
+    }
+    
+    // Windows would need different handling with MSVC paths
 }
 
 #[cfg(test)]

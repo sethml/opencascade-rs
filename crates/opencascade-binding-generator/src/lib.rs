@@ -51,6 +51,10 @@ pub fn generate_bindings(config: &GeneratorConfig) -> Result<(Vec<GeneratedModul
     // Collect all classes and enums
     let all_classes: Vec<_> = parsed.iter().flat_map(|h| &h.classes).collect();
     let all_enums: Vec<_> = parsed.iter().flat_map(|h| &h.enums).collect();
+    
+    // Collect all enum names for cross-module enum type resolution
+    let all_enum_names: std::collections::HashSet<String> = 
+        all_enums.iter().map(|e| e.name.clone()).collect();
 
     let mut modules = Vec::new();
 
@@ -80,10 +84,10 @@ pub fn generate_bindings(config: &GeneratorConfig) -> Result<(Vec<GeneratedModul
 
         // Generate Rust code
         let rust_code =
-            codegen::rust::generate_module(module, &module_classes, &module_enums, &cross_types);
+            codegen::rust::generate_module(module, &module_classes, &module_enums, &cross_types, &all_enum_names);
 
         // Generate C++ header
-        let cpp_code = codegen::cpp::generate_module_header(module, &module_classes, &cross_types);
+        let cpp_code = codegen::cpp::generate_module_header(module, &module_classes, &cross_types, &all_enum_names);
 
         modules.push(GeneratedModule {
             rust_name: module.rust_name.clone(),

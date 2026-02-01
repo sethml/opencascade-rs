@@ -7,6 +7,7 @@
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Dir.hxx>
+#include <gp_Mat.hxx>
 #include <gp_Pnt.hxx>
 #include <gp_Trsf.hxx>
 #include <gp_Vec.hxx>
@@ -24,7 +25,7 @@ inline std::unique_ptr<gp_Pnt> gp_Pnt_ctor_xyz(const gp_XYZ& theCoord) {
     return construct_unique<gp_Pnt>(theCoord);
 }
 
-inline std::unique_ptr<gp_Pnt> gp_Pnt_ctor_real_real_real(Standard_Real theXp, Standard_Real theYp, Standard_Real theZp) {
+inline std::unique_ptr<gp_Pnt> gp_Pnt_ctor_real3(Standard_Real theXp, Standard_Real theYp, Standard_Real theZp) {
     return construct_unique<gp_Pnt>(theXp, theYp, theZp);
 }
 
@@ -77,11 +78,11 @@ inline std::unique_ptr<gp_Vec> gp_Vec_ctor_xyz(const gp_XYZ& theCoord) {
     return construct_unique<gp_Vec>(theCoord);
 }
 
-inline std::unique_ptr<gp_Vec> gp_Vec_ctor_real_real_real(Standard_Real theXv, Standard_Real theYv, Standard_Real theZv) {
+inline std::unique_ptr<gp_Vec> gp_Vec_ctor_real3(Standard_Real theXv, Standard_Real theYv, Standard_Real theZv) {
     return construct_unique<gp_Vec>(theXv, theYv, theZv);
 }
 
-inline std::unique_ptr<gp_Vec> gp_Vec_ctor_pnt_pnt(const gp_Pnt& theP1, const gp_Pnt& theP2) {
+inline std::unique_ptr<gp_Vec> gp_Vec_ctor_pnt2(const gp_Pnt& theP1, const gp_Pnt& theP2) {
     return construct_unique<gp_Vec>(theP1, theP2);
 }
 
@@ -158,7 +159,7 @@ inline std::unique_ptr<gp_Dir> gp_Dir_ctor_xyz(const gp_XYZ& theCoord) {
     return construct_unique<gp_Dir>(theCoord);
 }
 
-inline std::unique_ptr<gp_Dir> gp_Dir_ctor_real_real_real(Standard_Real theXv, Standard_Real theYv, Standard_Real theZv) {
+inline std::unique_ptr<gp_Dir> gp_Dir_ctor_real3(Standard_Real theXv, Standard_Real theYv, Standard_Real theZv) {
     return construct_unique<gp_Dir>(theXv, theYv, theZv);
 }
 
@@ -192,6 +193,59 @@ inline std::unique_ptr<gp_Dir> gp_Dir_Rotated(const gp_Dir& self, const gp_Ax1& 
 
 inline std::unique_ptr<gp_Dir> gp_Dir_Transformed(const gp_Dir& self, const gp_Trsf& theT) {
     return std::make_unique<gp_Dir>(self.Transformed(theT));
+}
+
+
+// ========================
+// gp_XYZ wrappers
+// ========================
+
+inline std::unique_ptr<gp_XYZ> gp_XYZ_ctor() {
+    return construct_unique<gp_XYZ>();
+}
+
+inline std::unique_ptr<gp_XYZ> gp_XYZ_ctor_real3(Standard_Real theX, Standard_Real theY, Standard_Real theZ) {
+    return construct_unique<gp_XYZ>(theX, theY, theZ);
+}
+
+inline std::unique_ptr<gp_XYZ> gp_XYZ_Added(const gp_XYZ& self, const gp_XYZ& theOther) {
+    return std::make_unique<gp_XYZ>(self.Added(theOther));
+}
+
+inline std::unique_ptr<gp_XYZ> gp_XYZ_Crossed(const gp_XYZ& self, const gp_XYZ& theOther) {
+    return std::make_unique<gp_XYZ>(self.Crossed(theOther));
+}
+
+inline std::unique_ptr<gp_XYZ> gp_XYZ_CrossCrossed(const gp_XYZ& self, const gp_XYZ& theCoord1, const gp_XYZ& theCoord2) {
+    return std::make_unique<gp_XYZ>(self.CrossCrossed(theCoord1, theCoord2));
+}
+
+inline std::unique_ptr<gp_XYZ> gp_XYZ_Divided(const gp_XYZ& self, Standard_Real theScalar) {
+    return std::make_unique<gp_XYZ>(self.Divided(theScalar));
+}
+
+inline std::unique_ptr<gp_XYZ> gp_XYZ_Multiplied(const gp_XYZ& self, Standard_Real theScalar) {
+    return std::make_unique<gp_XYZ>(self.Multiplied(theScalar));
+}
+
+inline std::unique_ptr<gp_XYZ> gp_XYZ_Multiplied(const gp_XYZ& self, const gp_XYZ& theOther) {
+    return std::make_unique<gp_XYZ>(self.Multiplied(theOther));
+}
+
+inline std::unique_ptr<gp_XYZ> gp_XYZ_Multiplied(const gp_XYZ& self, const gp_Mat& theMatrix) {
+    return std::make_unique<gp_XYZ>(self.Multiplied(theMatrix));
+}
+
+inline std::unique_ptr<gp_XYZ> gp_XYZ_Normalized(const gp_XYZ& self) {
+    return std::make_unique<gp_XYZ>(self.Normalized());
+}
+
+inline std::unique_ptr<gp_XYZ> gp_XYZ_Reversed(const gp_XYZ& self) {
+    return std::make_unique<gp_XYZ>(self.Reversed());
+}
+
+inline std::unique_ptr<gp_XYZ> gp_XYZ_Subtracted(const gp_XYZ& self, const gp_XYZ& theOther) {
+    return std::make_unique<gp_XYZ>(self.Subtracted(theOther));
 }
 
 
