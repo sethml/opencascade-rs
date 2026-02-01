@@ -6,11 +6,26 @@
 
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
+#include <gp_Ax2d.hxx>
+#include <gp_Ax3.hxx>
+#include <gp_Circ.hxx>
 #include <gp_Dir.hxx>
+#include <gp_Dir2d.hxx>
+#include <gp_GTrsf.hxx>
+#include <gp_GTrsf2d.hxx>
+#include <gp_Lin.hxx>
 #include <gp_Mat.hxx>
+#include <gp_Mat2d.hxx>
+#include <gp_Pln.hxx>
 #include <gp_Pnt.hxx>
+#include <gp_Pnt2d.hxx>
+#include <gp_Quaternion.hxx>
 #include <gp_Trsf.hxx>
+#include <gp_Trsf2d.hxx>
+#include <gp_TrsfForm.hxx>
 #include <gp_Vec.hxx>
+#include <gp_Vec2d.hxx>
+#include <gp_XY.hxx>
 #include <gp_XYZ.hxx>
 
 // ========================
@@ -59,6 +74,51 @@ inline std::unique_ptr<gp_Pnt> gp_Pnt_Translated(const gp_Pnt& self, const gp_Ve
 
 inline std::unique_ptr<gp_Pnt> gp_Pnt_Translated(const gp_Pnt& self, const gp_Pnt& theP1, const gp_Pnt& theP2) {
     return std::make_unique<gp_Pnt>(self.Translated(theP1, theP2));
+}
+
+
+// ========================
+// gp_Pnt2d wrappers
+// ========================
+
+inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_ctor() {
+    return construct_unique<gp_Pnt2d>();
+}
+
+inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_ctor_xy(const gp_XY& theCoord) {
+    return construct_unique<gp_Pnt2d>(theCoord);
+}
+
+inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_ctor_real2(Standard_Real theXp, Standard_Real theYp) {
+    return construct_unique<gp_Pnt2d>(theXp, theYp);
+}
+
+inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_Mirrored(const gp_Pnt2d& self, const gp_Pnt2d& theP) {
+    return std::make_unique<gp_Pnt2d>(self.Mirrored(theP));
+}
+
+inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_Mirrored(const gp_Pnt2d& self, const gp_Ax2d& theA) {
+    return std::make_unique<gp_Pnt2d>(self.Mirrored(theA));
+}
+
+inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_Rotated(const gp_Pnt2d& self, const gp_Pnt2d& theP, Standard_Real theAng) {
+    return std::make_unique<gp_Pnt2d>(self.Rotated(theP, theAng));
+}
+
+inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_Scaled(const gp_Pnt2d& self, const gp_Pnt2d& theP, Standard_Real theS) {
+    return std::make_unique<gp_Pnt2d>(self.Scaled(theP, theS));
+}
+
+inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_Transformed(const gp_Pnt2d& self, const gp_Trsf2d& theT) {
+    return std::make_unique<gp_Pnt2d>(self.Transformed(theT));
+}
+
+inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_Translated(const gp_Pnt2d& self, const gp_Vec2d& theV) {
+    return std::make_unique<gp_Pnt2d>(self.Translated(theV));
+}
+
+inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_Translated(const gp_Pnt2d& self, const gp_Pnt2d& theP1, const gp_Pnt2d& theP2) {
+    return std::make_unique<gp_Pnt2d>(self.Translated(theP1, theP2));
 }
 
 
@@ -144,6 +204,79 @@ inline std::unique_ptr<gp_Vec> gp_Vec_Transformed(const gp_Vec& self, const gp_T
 
 
 // ========================
+// gp_Vec2d wrappers
+// ========================
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_ctor() {
+    return construct_unique<gp_Vec2d>();
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_ctor_dir2d(const gp_Dir2d& theV) {
+    return construct_unique<gp_Vec2d>(theV);
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_ctor_xy(const gp_XY& theCoord) {
+    return construct_unique<gp_Vec2d>(theCoord);
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_ctor_real2(Standard_Real theXv, Standard_Real theYv) {
+    return construct_unique<gp_Vec2d>(theXv, theYv);
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_ctor_pnt2d2(const gp_Pnt2d& theP1, const gp_Pnt2d& theP2) {
+    return construct_unique<gp_Vec2d>(theP1, theP2);
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_Added(const gp_Vec2d& self, const gp_Vec2d& theOther) {
+    return std::make_unique<gp_Vec2d>(self.Added(theOther));
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_Divided(const gp_Vec2d& self, Standard_Real theScalar) {
+    return std::make_unique<gp_Vec2d>(self.Divided(theScalar));
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_GetNormal(const gp_Vec2d& self) {
+    return std::make_unique<gp_Vec2d>(self.GetNormal());
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_Multiplied(const gp_Vec2d& self, Standard_Real theScalar) {
+    return std::make_unique<gp_Vec2d>(self.Multiplied(theScalar));
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_Normalized(const gp_Vec2d& self) {
+    return std::make_unique<gp_Vec2d>(self.Normalized());
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_Reversed(const gp_Vec2d& self) {
+    return std::make_unique<gp_Vec2d>(self.Reversed());
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_Subtracted(const gp_Vec2d& self, const gp_Vec2d& theRight) {
+    return std::make_unique<gp_Vec2d>(self.Subtracted(theRight));
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_Mirrored(const gp_Vec2d& self, const gp_Vec2d& theV) {
+    return std::make_unique<gp_Vec2d>(self.Mirrored(theV));
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_Mirrored(const gp_Vec2d& self, const gp_Ax2d& theA1) {
+    return std::make_unique<gp_Vec2d>(self.Mirrored(theA1));
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_Rotated(const gp_Vec2d& self, Standard_Real theAng) {
+    return std::make_unique<gp_Vec2d>(self.Rotated(theAng));
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_Scaled(const gp_Vec2d& self, Standard_Real theS) {
+    return std::make_unique<gp_Vec2d>(self.Scaled(theS));
+}
+
+inline std::unique_ptr<gp_Vec2d> gp_Vec2d_Transformed(const gp_Vec2d& self, const gp_Trsf2d& theT) {
+    return std::make_unique<gp_Vec2d>(self.Transformed(theT));
+}
+
+
+// ========================
 // gp_Dir wrappers
 // ========================
 
@@ -197,6 +330,47 @@ inline std::unique_ptr<gp_Dir> gp_Dir_Transformed(const gp_Dir& self, const gp_T
 
 
 // ========================
+// gp_Dir2d wrappers
+// ========================
+
+inline std::unique_ptr<gp_Dir2d> gp_Dir2d_ctor() {
+    return construct_unique<gp_Dir2d>();
+}
+
+inline std::unique_ptr<gp_Dir2d> gp_Dir2d_ctor_vec2d(const gp_Vec2d& theV) {
+    return construct_unique<gp_Dir2d>(theV);
+}
+
+inline std::unique_ptr<gp_Dir2d> gp_Dir2d_ctor_xy(const gp_XY& theCoord) {
+    return construct_unique<gp_Dir2d>(theCoord);
+}
+
+inline std::unique_ptr<gp_Dir2d> gp_Dir2d_ctor_real2(Standard_Real theXv, Standard_Real theYv) {
+    return construct_unique<gp_Dir2d>(theXv, theYv);
+}
+
+inline std::unique_ptr<gp_Dir2d> gp_Dir2d_Reversed(const gp_Dir2d& self) {
+    return std::make_unique<gp_Dir2d>(self.Reversed());
+}
+
+inline std::unique_ptr<gp_Dir2d> gp_Dir2d_Mirrored(const gp_Dir2d& self, const gp_Dir2d& theV) {
+    return std::make_unique<gp_Dir2d>(self.Mirrored(theV));
+}
+
+inline std::unique_ptr<gp_Dir2d> gp_Dir2d_Mirrored(const gp_Dir2d& self, const gp_Ax2d& theA) {
+    return std::make_unique<gp_Dir2d>(self.Mirrored(theA));
+}
+
+inline std::unique_ptr<gp_Dir2d> gp_Dir2d_Rotated(const gp_Dir2d& self, Standard_Real theAng) {
+    return std::make_unique<gp_Dir2d>(self.Rotated(theAng));
+}
+
+inline std::unique_ptr<gp_Dir2d> gp_Dir2d_Transformed(const gp_Dir2d& self, const gp_Trsf2d& theT) {
+    return std::make_unique<gp_Dir2d>(self.Transformed(theT));
+}
+
+
+// ========================
 // gp_XYZ wrappers
 // ========================
 
@@ -246,6 +420,525 @@ inline std::unique_ptr<gp_XYZ> gp_XYZ_Reversed(const gp_XYZ& self) {
 
 inline std::unique_ptr<gp_XYZ> gp_XYZ_Subtracted(const gp_XYZ& self, const gp_XYZ& theOther) {
     return std::make_unique<gp_XYZ>(self.Subtracted(theOther));
+}
+
+
+// ========================
+// gp_Ax1 wrappers
+// ========================
+
+inline std::unique_ptr<gp_Ax1> gp_Ax1_ctor() {
+    return construct_unique<gp_Ax1>();
+}
+
+inline std::unique_ptr<gp_Ax1> gp_Ax1_ctor_pnt_dir(const gp_Pnt& theP, const gp_Dir& theV) {
+    return construct_unique<gp_Ax1>(theP, theV);
+}
+
+inline std::unique_ptr<gp_Ax1> gp_Ax1_Reversed(const gp_Ax1& self) {
+    return std::make_unique<gp_Ax1>(self.Reversed());
+}
+
+inline std::unique_ptr<gp_Ax1> gp_Ax1_Mirrored(const gp_Ax1& self, const gp_Pnt& P) {
+    return std::make_unique<gp_Ax1>(self.Mirrored(P));
+}
+
+inline std::unique_ptr<gp_Ax1> gp_Ax1_Mirrored(const gp_Ax1& self, const gp_Ax1& A1) {
+    return std::make_unique<gp_Ax1>(self.Mirrored(A1));
+}
+
+inline std::unique_ptr<gp_Ax1> gp_Ax1_Mirrored(const gp_Ax1& self, const gp_Ax2& A2) {
+    return std::make_unique<gp_Ax1>(self.Mirrored(A2));
+}
+
+inline std::unique_ptr<gp_Ax1> gp_Ax1_Rotated(const gp_Ax1& self, const gp_Ax1& theA1, Standard_Real theAngRad) {
+    return std::make_unique<gp_Ax1>(self.Rotated(theA1, theAngRad));
+}
+
+inline std::unique_ptr<gp_Ax1> gp_Ax1_Scaled(const gp_Ax1& self, const gp_Pnt& theP, Standard_Real theS) {
+    return std::make_unique<gp_Ax1>(self.Scaled(theP, theS));
+}
+
+inline std::unique_ptr<gp_Ax1> gp_Ax1_Transformed(const gp_Ax1& self, const gp_Trsf& theT) {
+    return std::make_unique<gp_Ax1>(self.Transformed(theT));
+}
+
+inline std::unique_ptr<gp_Ax1> gp_Ax1_Translated(const gp_Ax1& self, const gp_Vec& theV) {
+    return std::make_unique<gp_Ax1>(self.Translated(theV));
+}
+
+inline std::unique_ptr<gp_Ax1> gp_Ax1_Translated(const gp_Ax1& self, const gp_Pnt& theP1, const gp_Pnt& theP2) {
+    return std::make_unique<gp_Ax1>(self.Translated(theP1, theP2));
+}
+
+
+// ========================
+// gp_Ax2 wrappers
+// ========================
+
+inline std::unique_ptr<gp_Ax2> gp_Ax2_ctor() {
+    return construct_unique<gp_Ax2>();
+}
+
+inline std::unique_ptr<gp_Ax2> gp_Ax2_ctor_pnt_dir2(const gp_Pnt& P, const gp_Dir& N, const gp_Dir& Vx) {
+    return construct_unique<gp_Ax2>(P, N, Vx);
+}
+
+inline std::unique_ptr<gp_Ax2> gp_Ax2_ctor_pnt_dir(const gp_Pnt& P, const gp_Dir& V) {
+    return construct_unique<gp_Ax2>(P, V);
+}
+
+inline std::unique_ptr<gp_Ax2> gp_Ax2_Mirrored(const gp_Ax2& self, const gp_Pnt& P) {
+    return std::make_unique<gp_Ax2>(self.Mirrored(P));
+}
+
+inline std::unique_ptr<gp_Ax2> gp_Ax2_Mirrored(const gp_Ax2& self, const gp_Ax1& A1) {
+    return std::make_unique<gp_Ax2>(self.Mirrored(A1));
+}
+
+inline std::unique_ptr<gp_Ax2> gp_Ax2_Mirrored(const gp_Ax2& self, const gp_Ax2& A2) {
+    return std::make_unique<gp_Ax2>(self.Mirrored(A2));
+}
+
+inline std::unique_ptr<gp_Ax2> gp_Ax2_Rotated(const gp_Ax2& self, const gp_Ax1& theA1, Standard_Real theAng) {
+    return std::make_unique<gp_Ax2>(self.Rotated(theA1, theAng));
+}
+
+inline std::unique_ptr<gp_Ax2> gp_Ax2_Scaled(const gp_Ax2& self, const gp_Pnt& theP, Standard_Real theS) {
+    return std::make_unique<gp_Ax2>(self.Scaled(theP, theS));
+}
+
+inline std::unique_ptr<gp_Ax2> gp_Ax2_Transformed(const gp_Ax2& self, const gp_Trsf& theT) {
+    return std::make_unique<gp_Ax2>(self.Transformed(theT));
+}
+
+inline std::unique_ptr<gp_Ax2> gp_Ax2_Translated(const gp_Ax2& self, const gp_Vec& theV) {
+    return std::make_unique<gp_Ax2>(self.Translated(theV));
+}
+
+inline std::unique_ptr<gp_Ax2> gp_Ax2_Translated(const gp_Ax2& self, const gp_Pnt& theP1, const gp_Pnt& theP2) {
+    return std::make_unique<gp_Ax2>(self.Translated(theP1, theP2));
+}
+
+
+// ========================
+// gp_Ax2d wrappers
+// ========================
+
+inline std::unique_ptr<gp_Ax2d> gp_Ax2d_ctor() {
+    return construct_unique<gp_Ax2d>();
+}
+
+inline std::unique_ptr<gp_Ax2d> gp_Ax2d_ctor_pnt2d_dir2d(const gp_Pnt2d& theP, const gp_Dir2d& theV) {
+    return construct_unique<gp_Ax2d>(theP, theV);
+}
+
+inline std::unique_ptr<gp_Ax2d> gp_Ax2d_Reversed(const gp_Ax2d& self) {
+    return std::make_unique<gp_Ax2d>(self.Reversed());
+}
+
+inline std::unique_ptr<gp_Ax2d> gp_Ax2d_Mirrored(const gp_Ax2d& self, const gp_Pnt2d& P) {
+    return std::make_unique<gp_Ax2d>(self.Mirrored(P));
+}
+
+inline std::unique_ptr<gp_Ax2d> gp_Ax2d_Mirrored(const gp_Ax2d& self, const gp_Ax2d& A) {
+    return std::make_unique<gp_Ax2d>(self.Mirrored(A));
+}
+
+inline std::unique_ptr<gp_Ax2d> gp_Ax2d_Rotated(const gp_Ax2d& self, const gp_Pnt2d& theP, Standard_Real theAng) {
+    return std::make_unique<gp_Ax2d>(self.Rotated(theP, theAng));
+}
+
+inline std::unique_ptr<gp_Ax2d> gp_Ax2d_Scaled(const gp_Ax2d& self, const gp_Pnt2d& theP, Standard_Real theS) {
+    return std::make_unique<gp_Ax2d>(self.Scaled(theP, theS));
+}
+
+inline std::unique_ptr<gp_Ax2d> gp_Ax2d_Transformed(const gp_Ax2d& self, const gp_Trsf2d& theT) {
+    return std::make_unique<gp_Ax2d>(self.Transformed(theT));
+}
+
+inline std::unique_ptr<gp_Ax2d> gp_Ax2d_Translated(const gp_Ax2d& self, const gp_Vec2d& theV) {
+    return std::make_unique<gp_Ax2d>(self.Translated(theV));
+}
+
+inline std::unique_ptr<gp_Ax2d> gp_Ax2d_Translated(const gp_Ax2d& self, const gp_Pnt2d& theP1, const gp_Pnt2d& theP2) {
+    return std::make_unique<gp_Ax2d>(self.Translated(theP1, theP2));
+}
+
+
+// ========================
+// gp_Ax3 wrappers
+// ========================
+
+inline std::unique_ptr<gp_Ax3> gp_Ax3_ctor() {
+    return construct_unique<gp_Ax3>();
+}
+
+inline std::unique_ptr<gp_Ax3> gp_Ax3_ctor_ax2(const gp_Ax2& theA) {
+    return construct_unique<gp_Ax3>(theA);
+}
+
+inline std::unique_ptr<gp_Ax3> gp_Ax3_ctor_pnt_dir2(const gp_Pnt& theP, const gp_Dir& theN, const gp_Dir& theVx) {
+    return construct_unique<gp_Ax3>(theP, theN, theVx);
+}
+
+inline std::unique_ptr<gp_Ax3> gp_Ax3_ctor_pnt_dir(const gp_Pnt& theP, const gp_Dir& theV) {
+    return construct_unique<gp_Ax3>(theP, theV);
+}
+
+inline std::unique_ptr<gp_Ax2> gp_Ax3_Ax2(const gp_Ax3& self) {
+    return std::make_unique<gp_Ax2>(self.Ax2());
+}
+
+inline std::unique_ptr<gp_Ax3> gp_Ax3_Mirrored(const gp_Ax3& self, const gp_Pnt& theP) {
+    return std::make_unique<gp_Ax3>(self.Mirrored(theP));
+}
+
+inline std::unique_ptr<gp_Ax3> gp_Ax3_Mirrored(const gp_Ax3& self, const gp_Ax1& theA1) {
+    return std::make_unique<gp_Ax3>(self.Mirrored(theA1));
+}
+
+inline std::unique_ptr<gp_Ax3> gp_Ax3_Mirrored(const gp_Ax3& self, const gp_Ax2& theA2) {
+    return std::make_unique<gp_Ax3>(self.Mirrored(theA2));
+}
+
+inline std::unique_ptr<gp_Ax3> gp_Ax3_Rotated(const gp_Ax3& self, const gp_Ax1& theA1, Standard_Real theAng) {
+    return std::make_unique<gp_Ax3>(self.Rotated(theA1, theAng));
+}
+
+inline std::unique_ptr<gp_Ax3> gp_Ax3_Scaled(const gp_Ax3& self, const gp_Pnt& theP, Standard_Real theS) {
+    return std::make_unique<gp_Ax3>(self.Scaled(theP, theS));
+}
+
+inline std::unique_ptr<gp_Ax3> gp_Ax3_Transformed(const gp_Ax3& self, const gp_Trsf& theT) {
+    return std::make_unique<gp_Ax3>(self.Transformed(theT));
+}
+
+inline std::unique_ptr<gp_Ax3> gp_Ax3_Translated(const gp_Ax3& self, const gp_Vec& theV) {
+    return std::make_unique<gp_Ax3>(self.Translated(theV));
+}
+
+inline std::unique_ptr<gp_Ax3> gp_Ax3_Translated(const gp_Ax3& self, const gp_Pnt& theP1, const gp_Pnt& theP2) {
+    return std::make_unique<gp_Ax3>(self.Translated(theP1, theP2));
+}
+
+
+// ========================
+// gp_Trsf wrappers
+// ========================
+
+inline std::unique_ptr<gp_Trsf> gp_Trsf_ctor() {
+    return construct_unique<gp_Trsf>();
+}
+
+inline std::unique_ptr<gp_Trsf> gp_Trsf_ctor_trsf2d(const gp_Trsf2d& theT) {
+    return construct_unique<gp_Trsf>(theT);
+}
+
+inline std::unique_ptr<gp_TrsfForm> gp_Trsf_Form(const gp_Trsf& self) {
+    return std::make_unique<gp_TrsfForm>(self.Form());
+}
+
+inline std::unique_ptr<gp_Quaternion> gp_Trsf_GetRotation(const gp_Trsf& self) {
+    return std::make_unique<gp_Quaternion>(self.GetRotation());
+}
+
+inline std::unique_ptr<gp_Mat> gp_Trsf_VectorialPart(const gp_Trsf& self) {
+    return std::make_unique<gp_Mat>(self.VectorialPart());
+}
+
+inline std::unique_ptr<gp_Trsf> gp_Trsf_Inverted(const gp_Trsf& self) {
+    return std::make_unique<gp_Trsf>(self.Inverted());
+}
+
+inline std::unique_ptr<gp_Trsf> gp_Trsf_Multiplied(const gp_Trsf& self, const gp_Trsf& theT) {
+    return std::make_unique<gp_Trsf>(self.Multiplied(theT));
+}
+
+inline std::unique_ptr<gp_Trsf> gp_Trsf_Powered(const gp_Trsf& self, Standard_Integer theN) {
+    return std::make_unique<gp_Trsf>(self.Powered(theN));
+}
+
+
+// ========================
+// gp_Trsf2d wrappers
+// ========================
+
+inline std::unique_ptr<gp_Trsf2d> gp_Trsf2d_ctor() {
+    return construct_unique<gp_Trsf2d>();
+}
+
+inline std::unique_ptr<gp_Trsf2d> gp_Trsf2d_ctor_trsf(const gp_Trsf& theT) {
+    return construct_unique<gp_Trsf2d>(theT);
+}
+
+inline std::unique_ptr<gp_TrsfForm> gp_Trsf2d_Form(const gp_Trsf2d& self) {
+    return std::make_unique<gp_TrsfForm>(self.Form());
+}
+
+inline std::unique_ptr<gp_Mat2d> gp_Trsf2d_VectorialPart(const gp_Trsf2d& self) {
+    return std::make_unique<gp_Mat2d>(self.VectorialPart());
+}
+
+inline std::unique_ptr<gp_Trsf2d> gp_Trsf2d_Inverted(const gp_Trsf2d& self) {
+    return std::make_unique<gp_Trsf2d>(self.Inverted());
+}
+
+inline std::unique_ptr<gp_Trsf2d> gp_Trsf2d_Multiplied(const gp_Trsf2d& self, const gp_Trsf2d& theT) {
+    return std::make_unique<gp_Trsf2d>(self.Multiplied(theT));
+}
+
+inline std::unique_ptr<gp_Trsf2d> gp_Trsf2d_Powered(gp_Trsf2d& self, Standard_Integer theN) {
+    return std::make_unique<gp_Trsf2d>(self.Powered(theN));
+}
+
+
+// ========================
+// gp_GTrsf wrappers
+// ========================
+
+inline std::unique_ptr<gp_GTrsf> gp_GTrsf_ctor() {
+    return construct_unique<gp_GTrsf>();
+}
+
+inline std::unique_ptr<gp_GTrsf> gp_GTrsf_ctor_trsf(const gp_Trsf& theT) {
+    return construct_unique<gp_GTrsf>(theT);
+}
+
+inline std::unique_ptr<gp_GTrsf> gp_GTrsf_ctor_mat_xyz(const gp_Mat& theM, const gp_XYZ& theV) {
+    return construct_unique<gp_GTrsf>(theM, theV);
+}
+
+inline std::unique_ptr<gp_TrsfForm> gp_GTrsf_Form(const gp_GTrsf& self) {
+    return std::make_unique<gp_TrsfForm>(self.Form());
+}
+
+inline std::unique_ptr<gp_GTrsf> gp_GTrsf_Inverted(const gp_GTrsf& self) {
+    return std::make_unique<gp_GTrsf>(self.Inverted());
+}
+
+inline std::unique_ptr<gp_GTrsf> gp_GTrsf_Multiplied(const gp_GTrsf& self, const gp_GTrsf& theT) {
+    return std::make_unique<gp_GTrsf>(self.Multiplied(theT));
+}
+
+inline std::unique_ptr<gp_GTrsf> gp_GTrsf_Powered(const gp_GTrsf& self, Standard_Integer theN) {
+    return std::make_unique<gp_GTrsf>(self.Powered(theN));
+}
+
+inline std::unique_ptr<gp_Trsf> gp_GTrsf_Trsf(const gp_GTrsf& self) {
+    return std::make_unique<gp_Trsf>(self.Trsf());
+}
+
+
+// ========================
+// gp_GTrsf2d wrappers
+// ========================
+
+inline std::unique_ptr<gp_GTrsf2d> gp_GTrsf2d_ctor() {
+    return construct_unique<gp_GTrsf2d>();
+}
+
+inline std::unique_ptr<gp_GTrsf2d> gp_GTrsf2d_ctor_trsf2d(const gp_Trsf2d& theT) {
+    return construct_unique<gp_GTrsf2d>(theT);
+}
+
+inline std::unique_ptr<gp_GTrsf2d> gp_GTrsf2d_ctor_mat2d_xy(const gp_Mat2d& theM, const gp_XY& theV) {
+    return construct_unique<gp_GTrsf2d>(theM, theV);
+}
+
+inline std::unique_ptr<gp_TrsfForm> gp_GTrsf2d_Form(const gp_GTrsf2d& self) {
+    return std::make_unique<gp_TrsfForm>(self.Form());
+}
+
+inline std::unique_ptr<gp_GTrsf2d> gp_GTrsf2d_Inverted(const gp_GTrsf2d& self) {
+    return std::make_unique<gp_GTrsf2d>(self.Inverted());
+}
+
+inline std::unique_ptr<gp_GTrsf2d> gp_GTrsf2d_Multiplied(const gp_GTrsf2d& self, const gp_GTrsf2d& theT) {
+    return std::make_unique<gp_GTrsf2d>(self.Multiplied(theT));
+}
+
+inline std::unique_ptr<gp_GTrsf2d> gp_GTrsf2d_Powered(const gp_GTrsf2d& self, Standard_Integer theN) {
+    return std::make_unique<gp_GTrsf2d>(self.Powered(theN));
+}
+
+inline std::unique_ptr<gp_XY> gp_GTrsf2d_Transformed(const gp_GTrsf2d& self, const gp_XY& theCoord) {
+    return std::make_unique<gp_XY>(self.Transformed(theCoord));
+}
+
+inline std::unique_ptr<gp_Trsf2d> gp_GTrsf2d_Trsf2d(const gp_GTrsf2d& self) {
+    return std::make_unique<gp_Trsf2d>(self.Trsf2d());
+}
+
+
+// ========================
+// gp_Lin wrappers
+// ========================
+
+inline std::unique_ptr<gp_Lin> gp_Lin_ctor() {
+    return construct_unique<gp_Lin>();
+}
+
+inline std::unique_ptr<gp_Lin> gp_Lin_ctor_ax1(const gp_Ax1& theA1) {
+    return construct_unique<gp_Lin>(theA1);
+}
+
+inline std::unique_ptr<gp_Lin> gp_Lin_ctor_pnt_dir(const gp_Pnt& theP, const gp_Dir& theV) {
+    return construct_unique<gp_Lin>(theP, theV);
+}
+
+inline std::unique_ptr<gp_Lin> gp_Lin_Reversed(const gp_Lin& self) {
+    return std::make_unique<gp_Lin>(self.Reversed());
+}
+
+inline std::unique_ptr<gp_Lin> gp_Lin_Normal(const gp_Lin& self, const gp_Pnt& theP) {
+    return std::make_unique<gp_Lin>(self.Normal(theP));
+}
+
+inline std::unique_ptr<gp_Lin> gp_Lin_Mirrored(const gp_Lin& self, const gp_Pnt& theP) {
+    return std::make_unique<gp_Lin>(self.Mirrored(theP));
+}
+
+inline std::unique_ptr<gp_Lin> gp_Lin_Mirrored(const gp_Lin& self, const gp_Ax1& theA1) {
+    return std::make_unique<gp_Lin>(self.Mirrored(theA1));
+}
+
+inline std::unique_ptr<gp_Lin> gp_Lin_Mirrored(const gp_Lin& self, const gp_Ax2& theA2) {
+    return std::make_unique<gp_Lin>(self.Mirrored(theA2));
+}
+
+inline std::unique_ptr<gp_Lin> gp_Lin_Rotated(const gp_Lin& self, const gp_Ax1& theA1, Standard_Real theAng) {
+    return std::make_unique<gp_Lin>(self.Rotated(theA1, theAng));
+}
+
+inline std::unique_ptr<gp_Lin> gp_Lin_Scaled(const gp_Lin& self, const gp_Pnt& theP, Standard_Real theS) {
+    return std::make_unique<gp_Lin>(self.Scaled(theP, theS));
+}
+
+inline std::unique_ptr<gp_Lin> gp_Lin_Transformed(const gp_Lin& self, const gp_Trsf& theT) {
+    return std::make_unique<gp_Lin>(self.Transformed(theT));
+}
+
+inline std::unique_ptr<gp_Lin> gp_Lin_Translated(const gp_Lin& self, const gp_Vec& theV) {
+    return std::make_unique<gp_Lin>(self.Translated(theV));
+}
+
+inline std::unique_ptr<gp_Lin> gp_Lin_Translated(const gp_Lin& self, const gp_Pnt& theP1, const gp_Pnt& theP2) {
+    return std::make_unique<gp_Lin>(self.Translated(theP1, theP2));
+}
+
+
+// ========================
+// gp_Circ wrappers
+// ========================
+
+inline std::unique_ptr<gp_Circ> gp_Circ_ctor() {
+    return construct_unique<gp_Circ>();
+}
+
+inline std::unique_ptr<gp_Circ> gp_Circ_ctor_ax2_real(const gp_Ax2& theA2, Standard_Real theRadius) {
+    return construct_unique<gp_Circ>(theA2, theRadius);
+}
+
+inline std::unique_ptr<gp_Ax1> gp_Circ_XAxis(const gp_Circ& self) {
+    return std::make_unique<gp_Ax1>(self.XAxis());
+}
+
+inline std::unique_ptr<gp_Ax1> gp_Circ_YAxis(const gp_Circ& self) {
+    return std::make_unique<gp_Ax1>(self.YAxis());
+}
+
+inline std::unique_ptr<gp_Circ> gp_Circ_Mirrored(const gp_Circ& self, const gp_Pnt& theP) {
+    return std::make_unique<gp_Circ>(self.Mirrored(theP));
+}
+
+inline std::unique_ptr<gp_Circ> gp_Circ_Mirrored(const gp_Circ& self, const gp_Ax1& theA1) {
+    return std::make_unique<gp_Circ>(self.Mirrored(theA1));
+}
+
+inline std::unique_ptr<gp_Circ> gp_Circ_Mirrored(const gp_Circ& self, const gp_Ax2& theA2) {
+    return std::make_unique<gp_Circ>(self.Mirrored(theA2));
+}
+
+inline std::unique_ptr<gp_Circ> gp_Circ_Rotated(const gp_Circ& self, const gp_Ax1& theA1, Standard_Real theAng) {
+    return std::make_unique<gp_Circ>(self.Rotated(theA1, theAng));
+}
+
+inline std::unique_ptr<gp_Circ> gp_Circ_Scaled(const gp_Circ& self, const gp_Pnt& theP, Standard_Real theS) {
+    return std::make_unique<gp_Circ>(self.Scaled(theP, theS));
+}
+
+inline std::unique_ptr<gp_Circ> gp_Circ_Transformed(const gp_Circ& self, const gp_Trsf& theT) {
+    return std::make_unique<gp_Circ>(self.Transformed(theT));
+}
+
+inline std::unique_ptr<gp_Circ> gp_Circ_Translated(const gp_Circ& self, const gp_Vec& theV) {
+    return std::make_unique<gp_Circ>(self.Translated(theV));
+}
+
+inline std::unique_ptr<gp_Circ> gp_Circ_Translated(const gp_Circ& self, const gp_Pnt& theP1, const gp_Pnt& theP2) {
+    return std::make_unique<gp_Circ>(self.Translated(theP1, theP2));
+}
+
+
+// ========================
+// gp_Pln wrappers
+// ========================
+
+inline std::unique_ptr<gp_Pln> gp_Pln_ctor() {
+    return construct_unique<gp_Pln>();
+}
+
+inline std::unique_ptr<gp_Pln> gp_Pln_ctor_ax3(const gp_Ax3& theA3) {
+    return construct_unique<gp_Pln>(theA3);
+}
+
+inline std::unique_ptr<gp_Pln> gp_Pln_ctor_pnt_dir(const gp_Pnt& theP, const gp_Dir& theV) {
+    return construct_unique<gp_Pln>(theP, theV);
+}
+
+inline std::unique_ptr<gp_Pln> gp_Pln_ctor_real4(Standard_Real theA, Standard_Real theB, Standard_Real theC, Standard_Real theD) {
+    return construct_unique<gp_Pln>(theA, theB, theC, theD);
+}
+
+inline std::unique_ptr<gp_Ax1> gp_Pln_XAxis(const gp_Pln& self) {
+    return std::make_unique<gp_Ax1>(self.XAxis());
+}
+
+inline std::unique_ptr<gp_Ax1> gp_Pln_YAxis(const gp_Pln& self) {
+    return std::make_unique<gp_Ax1>(self.YAxis());
+}
+
+inline std::unique_ptr<gp_Pln> gp_Pln_Mirrored(const gp_Pln& self, const gp_Pnt& theP) {
+    return std::make_unique<gp_Pln>(self.Mirrored(theP));
+}
+
+inline std::unique_ptr<gp_Pln> gp_Pln_Mirrored(const gp_Pln& self, const gp_Ax1& theA1) {
+    return std::make_unique<gp_Pln>(self.Mirrored(theA1));
+}
+
+inline std::unique_ptr<gp_Pln> gp_Pln_Mirrored(const gp_Pln& self, const gp_Ax2& theA2) {
+    return std::make_unique<gp_Pln>(self.Mirrored(theA2));
+}
+
+inline std::unique_ptr<gp_Pln> gp_Pln_Rotated(const gp_Pln& self, const gp_Ax1& theA1, Standard_Real theAng) {
+    return std::make_unique<gp_Pln>(self.Rotated(theA1, theAng));
+}
+
+inline std::unique_ptr<gp_Pln> gp_Pln_Scaled(const gp_Pln& self, const gp_Pnt& theP, Standard_Real theS) {
+    return std::make_unique<gp_Pln>(self.Scaled(theP, theS));
+}
+
+inline std::unique_ptr<gp_Pln> gp_Pln_Transformed(const gp_Pln& self, const gp_Trsf& theT) {
+    return std::make_unique<gp_Pln>(self.Transformed(theT));
+}
+
+inline std::unique_ptr<gp_Pln> gp_Pln_Translated(const gp_Pln& self, const gp_Vec& theV) {
+    return std::make_unique<gp_Pln>(self.Translated(theV));
+}
+
+inline std::unique_ptr<gp_Pln> gp_Pln_Translated(const gp_Pln& self, const gp_Pnt& theP1, const gp_Pnt& theP2) {
+    return std::make_unique<gp_Pln>(self.Translated(theP1, theP2));
 }
 
 

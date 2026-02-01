@@ -107,7 +107,8 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
             }
         }
         Type::ConstPtr(inner) => {
-            // Special case: const char* -> &str (C string returned by OCCT)
+            // Special case: const char* -> &str for parameters (C string input)
+            // Note: For return types, use map_c_string_return_type() instead, which returns String
             if matches!(inner.as_ref(), Type::Class(name) if name == "char") {
                 return RustTypeMapping {
                     rust_type: "&str".to_string(),
@@ -321,7 +322,18 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
 }
 
 /// Map a return type in context
+/// For const char* return types, maps to String (owned) rather than &str (borrowed)
 pub fn map_return_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
+    // Special case: const char* return -> String (CXX supports rust::String as return type)
+    if ty.is_c_string() {
+        return RustTypeMapping {
+            rust_type: "String".to_string(),
+            needs_unique_ptr: false,
+            needs_pin: false,
+            source_module: None,
+        };
+    }
+    
     let mut mapping = map_type_in_context(ty, ctx);
 
     if mapping.needs_unique_ptr {

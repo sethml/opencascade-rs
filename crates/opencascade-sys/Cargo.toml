@@ -17,3 +17,7 @@ occt-sys = { path = "../occt-sys", optional = true }
 
 [features]
 builtin = ["occt-sys"]
+
+[[example]]
+name = "point_info_3d"
+path = "examples/point_info_3d.rs"

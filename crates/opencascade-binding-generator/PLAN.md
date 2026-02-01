@@ -12,12 +12,13 @@ See **[TRANSITION_PLAN.md](./TRANSITION_PLAN.md)** for the plan to migrate `open
 - [ ] System include paths: Hardcoding include paths in the binding generator is ugly.
   - Can we run `clang -E -v -x c++ /dev/null` to get system includes?
   - Or use libclang's built-in include path detection?
-- [ ] `const char*` parameters: CXX can't accept `&str` directly from C++. Need C++ wrappers that:
+- [x] `const char*` parameters: CXX can't accept `&str` directly from C++. Need C++ wrappers that:
   - Accept `rust::Str` on the C++ side
   - Convert to `const char*` via `std::string(str).c_str()`
-  - Affected: `BRepTools::Write`, `BRepTools::Read` (file path params)
-- [ ] `const char*` return types: These are usually debug/type-info methods.
-  - If needed later: return `rust::String` (owned, requires copy)
+  - Affected: `BRepTools::Write`, `BRepTools::Read` (file path params), `IGESControl_Writer` constructor
+- [x] `const char*` return types: These are usually debug/type-info methods.
+  - C++ wrappers return `rust::String` (owned, requires copy)
+  - Rust side maps `const char*` return → `String`
 
 ## Goals
 

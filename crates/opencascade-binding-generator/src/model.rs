@@ -120,6 +120,11 @@ impl Constructor {
 
         format!("_{}", parts.join("_"))
     }
+
+    /// Check if this constructor has any unbindable types (C strings, streams, void pointers, etc.)
+    pub fn has_unbindable_types(&self) -> bool {
+        self.params.iter().any(|p| p.ty.is_unbindable())
+    }
 }
 
 /// An instance method declaration
@@ -359,9 +364,49 @@ impl Type {
         }
     }
 
-    /// Check if this type is unbindable through CXX (stream or void pointer)
+    /// Check if this type is a C-style array (e.g., gp_Pnt[8])
+    pub fn is_array(&self) -> bool {
+        match self {
+            Type::Class(name) => name.contains('[') && name.contains(']'),
+            Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
+                inner.is_array()
+            }
+            _ => false,
+        }
+    }
+
+    /// Check if this type is a raw pointer (requires unsafe in CXX)
+    /// Note: const char* is NOT considered a raw pointer here because we handle it specially
+    /// with rust::Str conversion wrappers.
+    pub fn is_raw_ptr(&self) -> bool {
+        match self {
+            // const char* is bindable - we generate wrappers
+            Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => false,
+            Type::ConstPtr(_) | Type::MutPtr(_) => true,
+            // References to raw pointers also count as problematic
+            Type::ConstRef(inner) | Type::MutRef(inner) => inner.is_raw_ptr(),
+            _ => false,
+        }
+    }
+
+    /// Check if this type is a nested/qualified type (e.g., SomeClass::value_type) or template type
+    /// that couldn't be resolved to a simple type name.
+    pub fn is_nested_type(&self) -> bool {
+        match self {
+            Type::Class(name) => name.contains("::") || name.contains('<') || name.contains('>'),
+            Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
+                inner.is_nested_type()
+            }
+            _ => false,
+        }
+    }
+
+    /// Check if this type is unbindable through CXX.
+    /// Note: const char* (C strings) ARE bindable - we generate wrappers that convert rust::Str.
+    /// Nested types are still included here as a fallback - if canonical type resolution
+    /// in the parser couldn't resolve them, they remain unbindable.
     pub fn is_unbindable(&self) -> bool {
-        self.is_stream() || self.is_void_ptr()
+        self.is_stream() || self.is_void_ptr() || self.is_array() || self.is_raw_ptr() || self.is_nested_type()
     }
 
     /// Get the module this type belongs to (if it's an OCCT class)

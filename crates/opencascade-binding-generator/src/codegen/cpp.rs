@@ -177,11 +177,19 @@ fn collect_type_handles(ty: &Option<Type>, handles: &mut HashSet<String>) {
 /// Collect headers needed for a type
 fn collect_type_headers(ty: &Option<Type>, headers: &mut HashSet<String>) {
     if let Some(ty) = ty {
+        // Skip unbindable types (arrays, streams, void pointers, raw pointers, etc.)
+        if ty.is_unbindable() {
+            return;
+        }
+
         match ty {
             Type::Class(name) => {
                 // Skip primitive types that don't have headers
                 // Also skip Standard_Address which is defined in Standard_TypeDef.hxx, not its own file
-                if !matches!(name.as_str(), "char" | "int" | "unsigned" | "void" | "Standard_Address") {
+                if !matches!(name.as_str(), 
+                    "bool" | "char" | "int" | "unsigned" | "float" | "double" | 
+                    "void" | "size_t" | "Standard_Address"
+                ) {
                     headers.insert(format!("{}.hxx", name));
                 }
             }
@@ -210,6 +218,9 @@ fn generate_class_wrappers(class: &ParsedClass, output: &mut String, all_enum_na
     // Generate wrappers for methods that return by value
     generate_return_by_value_wrappers(class, output, all_enum_names);
 
+    // Generate wrappers for methods with const char* parameters
+    generate_c_string_param_wrappers(class, output, all_enum_names);
+
     // Generate static method wrappers
     generate_static_method_wrappers(class, output, all_enum_names);
 
@@ -223,6 +234,11 @@ fn generate_constructor_wrappers(class: &ParsedClass, output: &mut String) {
         if ctor.params.iter().any(|p| matches!(&p.ty, Type::Class(_) | Type::Handle(_))) {
             continue;
         }
+
+        // Skip constructors with unbindable types (C strings, streams, void pointers, etc.)
+        if ctor.has_unbindable_types() {
+            continue;
+        }
         
         let suffix = if ctor.params.is_empty() {
             "ctor".to_string()
@@ -233,19 +249,19 @@ fn generate_constructor_wrappers(class: &ParsedClass, output: &mut String) {
         // Handle duplicate suffixes
         let wrapper_name = format!("{}_{}", class.name, suffix);
 
-        // Parameter list
+        // Parameter list - use type_to_cpp_param for CXX-compatible types (e.g., rust::Str)
         let params = ctor
             .params
             .iter()
-            .map(|p| format!("{} {}", type_to_cpp(&p.ty), p.name))
+            .map(|p| format!("{} {}", type_to_cpp_param(&p.ty), p.name))
             .collect::<Vec<_>>()
             .join(", ");
 
-        // Argument list for constructor call
+        // Argument list for constructor call - convert from CXX types to native C++ types
         let args = ctor
             .params
             .iter()
-            .map(|p| p.name.clone())
+            .map(|p| param_to_cpp_arg(p))
             .collect::<Vec<_>>()
             .join(", ");
 
@@ -302,11 +318,11 @@ fn generate_return_by_value_wrappers(class: &ParsedClass, output: &mut String, a
             format!("{}& self", class.name)
         };
 
-        // Other parameters
+        // Other parameters - use type_to_cpp_param for CXX-compatible types (e.g., rust::Str)
         let other_params = method
             .params
             .iter()
-            .map(|p| format!("{} {}", type_to_cpp(&p.ty), p.name))
+            .map(|p| format!("{} {}", type_to_cpp_param(&p.ty), p.name))
             .collect::<Vec<_>>()
             .join(", ");
 
@@ -316,11 +332,11 @@ fn generate_return_by_value_wrappers(class: &ParsedClass, output: &mut String, a
             format!("{}, {}", self_param, other_params)
         };
 
-        // Argument list for method call
+        // Argument list for method call - convert from CXX types to native C++ types
         let args = method
             .params
             .iter()
-            .map(|p| p.name.clone())
+            .map(|p| param_to_cpp_arg(p))
             .collect::<Vec<_>>()
             .join(", ");
 
@@ -340,6 +356,124 @@ fn generate_return_by_value_wrappers(class: &ParsedClass, output: &mut String, a
     }
 }
 
+/// Generate wrapper functions for methods that have C string parameters
+/// These methods need wrappers because CXX uses rust::Str which must be converted to const char*
+fn generate_c_string_param_wrappers(class: &ParsedClass, output: &mut String, all_enum_names: &HashSet<String>) {
+    for method in &class.methods {
+        // Only wrap methods that have C string parameters
+        let has_c_string_param = method.params.iter().any(|p| p.ty.is_c_string());
+        if !has_c_string_param {
+            continue;
+        }
+        
+        // Check if method is already wrapped by generate_return_by_value_wrappers
+        // That function wraps methods that return classes/handles by value, BUT it skips enums
+        let return_type = method.return_type.as_ref();
+        let is_already_wrapped = if method.returns_by_value() {
+            // Check if return type is an enum - if so, it's NOT wrapped by return_by_value_wrappers
+            let return_type_name = match return_type {
+                Some(Type::Class(name)) => Some(name.as_str()),
+                _ => None,
+            };
+            let is_enum = return_type_name.map(|n| all_enum_names.contains(n)).unwrap_or(false);
+            // It's already wrapped ONLY if it returns by value AND is NOT an enum
+            !is_enum
+        } else {
+            false
+        };
+        
+        if is_already_wrapped {
+            continue;
+        }
+
+        // Skip methods with unbindable types (streams, void pointers, etc.)
+        if method.has_unbindable_types() {
+            continue;
+        }
+
+        let wrapper_name = format!("{}_{}", class.name, method.name);
+
+        // Self parameter
+        let self_param = if method.is_const {
+            format!("const {}& self", class.name)
+        } else {
+            format!("{}& self", class.name)
+        };
+
+        // Other parameters - use type_to_cpp_param for CXX-compatible types (e.g., rust::Str)
+        let other_params = method
+            .params
+            .iter()
+            .map(|p| format!("{} {}", type_to_cpp_param(&p.ty), p.name))
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        let params = if other_params.is_empty() {
+            self_param
+        } else {
+            format!("{}, {}", self_param, other_params)
+        };
+
+        // Argument list for method call - convert from CXX types to native C++ types
+        let args = method
+            .params
+            .iter()
+            .map(|p| param_to_cpp_arg(p))
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        // Determine return type
+        let return_type_str = match &method.return_type {
+            Some(rt) => type_to_cpp(rt),
+            None => "void".to_string(),
+        };
+        
+        // Check if return type is a reference - needs special handling
+        let returns_reference = method.return_type.as_ref().map(|t| t.is_reference()).unwrap_or(false);
+        
+        if returns_reference {
+            // For reference returns, return the reference directly
+            writeln!(
+                output,
+                "inline {return_type_str} {wrapper_name}({params}) {{"
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return self.{method_name}({args});",
+                method_name = method.name,
+            )
+            .unwrap();
+        } else if return_type_str == "void" {
+            writeln!(
+                output,
+                "inline void {wrapper_name}({params}) {{"
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    self.{method_name}({args});",
+                method_name = method.name,
+            )
+            .unwrap();
+        } else {
+            writeln!(
+                output,
+                "inline {return_type_str} {wrapper_name}({params}) {{"
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return self.{method_name}({args});",
+                method_name = method.name,
+            )
+            .unwrap();
+        }
+        writeln!(output, "}}").unwrap();
+        writeln!(output).unwrap();
+    }
+}
+
 /// Generate static method wrapper functions
 fn generate_static_method_wrappers(class: &ParsedClass, output: &mut String, all_enum_names: &HashSet<String>) {
     for method in &class.static_methods {
@@ -352,6 +486,9 @@ fn generate_static_method_wrappers(class: &ParsedClass, output: &mut String, all
         if method.return_type.as_ref().map(|t| t.is_reference()).unwrap_or(false) {
             continue;
         }
+        
+        // Check if method returns const char* - needs wrapper returning rust::String
+        let returns_c_string = method.return_type.as_ref().map(|t| t.is_c_string()).unwrap_or(false);
 
         // Count how many static methods have this name to determine if suffix is needed
         let same_name_count = class
@@ -394,18 +531,25 @@ fn generate_static_method_wrappers(class: &ParsedClass, output: &mut String, all
         });
         let is_enum_return = return_type_name.map(|n| all_enum_names.contains(n)).unwrap_or(false);
 
-        // Return type - enums don't need unique_ptr
-        let return_type = method
-            .return_type
-            .as_ref()
-            .map(|t| {
-                if (t.is_class() || t.is_handle()) && !is_enum_return {
-                    format!("std::unique_ptr<{}>", type_to_cpp(t))
-                } else {
-                    type_to_cpp(t)
-                }
-            })
-            .unwrap_or_else(|| "void".to_string());
+        // Return type:
+        // - const char* -> rust::String (CXX supports rust::String as return type)
+        // - classes/handles -> std::unique_ptr<T>
+        // - enums -> direct return
+        let return_type = if returns_c_string {
+            "rust::String".to_string()
+        } else {
+            method
+                .return_type
+                .as_ref()
+                .map(|t| {
+                    if (t.is_class() || t.is_handle()) && !is_enum_return {
+                        format!("std::unique_ptr<{}>", type_to_cpp(t))
+                    } else {
+                        type_to_cpp(t)
+                    }
+                })
+                .unwrap_or_else(|| "void".to_string())
+        };
 
         let is_return_by_value = method
             .return_type
@@ -415,7 +559,16 @@ fn generate_static_method_wrappers(class: &ParsedClass, output: &mut String, all
 
         writeln!(output, "inline {return_type} {wrapper_name}({params}) {{").unwrap();
 
-        if is_return_by_value {
+        if returns_c_string {
+            // const char* -> rust::String conversion
+            writeln!(
+                output,
+                "    return rust::String({class_name}::{method_name}({args}));",
+                class_name = class.name,
+                method_name = method.name,
+            )
+            .unwrap();
+        } else if is_return_by_value {
             let inner_type = type_to_cpp(method.return_type.as_ref().unwrap());
             writeln!(
                 output,

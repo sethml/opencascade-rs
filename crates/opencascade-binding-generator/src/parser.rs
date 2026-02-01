@@ -586,17 +586,35 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         return Type::Handle(inner);
     }
 
-    // Handle elaborated types (class/struct prefix)
+    // For nested types (e.g., TColgp_Array1OfPnt::value_type) or template types,
+    // use the canonical type to get the resolved underlying type.
+    // clang resolves these for us (e.g., value_type -> gp_Pnt)
     let clean_name = spelling
         .trim_start_matches("const ")
         .trim_start_matches("class ")
         .trim_start_matches("struct ")
+        .trim_start_matches("typename ")
         .trim_end_matches(" &")
         .trim_end_matches(" *")
-        .trim()
-        .to_string();
+        .trim();
+    
+    // If the spelling contains :: or < (nested/template type), try to use canonical
+    if clean_name.contains("::") || clean_name.contains('<') {
+        let canonical_clean = canonical_spelling
+            .trim_start_matches("const ")
+            .trim_start_matches("class ")
+            .trim_start_matches("struct ")
+            .trim_end_matches(" &")
+            .trim_end_matches(" *")
+            .trim();
+        
+        // Only use canonical if it's simpler (no :: or <)
+        if !canonical_clean.contains("::") && !canonical_clean.contains('<') && !canonical_clean.is_empty() {
+            return Type::Class(canonical_clean.to_string());
+        }
+    }
 
-    Type::Class(clean_name)
+    Type::Class(clean_name.to_string())
 }
 
 /// Extract template argument from Handle<T> or similar

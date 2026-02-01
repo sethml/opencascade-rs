@@ -170,6 +170,11 @@ fn collect_referenced_types(classes: &[&ParsedClass]) -> CollectedTypes {
 
 /// Recursively collect OCCT class and Handle types from a type
 fn collect_types_from_type(ty: &Type, collected: &mut CollectedTypes) {
+    // Skip unbindable types (arrays, streams, void ptrs, etc.)
+    if ty.is_unbindable() {
+        return;
+    }
+
     match ty {
         Type::Class(name) => {
             collected.classes.insert(name.clone());
@@ -385,7 +390,14 @@ fn generate_constructors(class: &ParsedClass, ctx: &TypeContext) -> Vec<TokenStr
         .iter()
         .filter(|ctor| {
             // Skip constructors with class/handle parameters passed by value (not supported by CXX)
-            !ctor.params.iter().any(|p| matches!(&p.ty, Type::Class(_) | Type::Handle(_)))
+            if ctor.params.iter().any(|p| matches!(&p.ty, Type::Class(_) | Type::Handle(_))) {
+                return false;
+            }
+            // Skip constructors with unbindable types (C strings, streams, void pointers, etc.)
+            if ctor.has_unbindable_types() {
+                return false;
+            }
+            true
         })
         .map(|ctor| {
             let base_suffix = ctor.overload_suffix();
@@ -444,11 +456,26 @@ fn generate_constructor(class: &ParsedClass, ctor: &Constructor, suffix: &str, c
 }
 
 /// Check if a method returns a class type by value (needs wrapper function)
-fn needs_wrapper_function(method: &Method) -> bool {
+/// Enum returns don't need wrappers since CXX handles shared enums directly.
+fn needs_wrapper_function(method: &Method, all_enums: &std::collections::HashSet<String>) -> bool {
+    // Methods with const char* parameters need wrappers to convert from rust::Str
+    if method.params.iter().any(|p| p.ty.is_c_string()) {
+        return true;
+    }
+    
     method
         .return_type
         .as_ref()
-        .map(|ty| ty.is_class() || ty.is_handle())
+        .map(|ty| {
+            // Check if it's a class or handle
+            let is_class_or_handle = ty.is_class() || ty.is_handle();
+            // But exclude enums - they don't need wrappers
+            let is_enum = match ty {
+                Type::Class(name) => all_enums.contains(name),
+                _ => false,
+            };
+            is_class_or_handle && !is_enum
+        })
         .unwrap_or(false)
 }
 
@@ -470,7 +497,7 @@ fn generate_methods(class: &ParsedClass, ctx: &TypeContext) -> Vec<TokenStream> 
         .iter()
         .filter_map(|method| {
             // Skip methods that need wrapper functions - they're generated separately
-            if needs_wrapper_function(method) {
+            if needs_wrapper_function(method, ctx.all_enums) {
                 return None;
             }
             
@@ -505,7 +532,7 @@ fn generate_wrapper_methods(class: &ParsedClass, ctx: &TypeContext) -> Vec<Token
         .iter()
         .filter_map(|method| {
             // Only process methods that need wrapper functions
-            if !needs_wrapper_function(method) {
+            if !needs_wrapper_function(method, ctx.all_enums) {
                 return None;
             }
             
@@ -523,7 +550,7 @@ fn generate_wrapper_methods(class: &ParsedClass, ctx: &TypeContext) -> Vec<Token
             *count += 1;
 
             // Generate a suffix based on parameters for overloaded methods
-            let overload_suffix = generate_overload_suffix_for_wrappers(method, *count, class);
+            let overload_suffix = generate_overload_suffix_for_wrappers(method, *count, class, ctx);
 
             generate_wrapper_method(class, method, &overload_suffix, ctx)
         })
@@ -531,12 +558,12 @@ fn generate_wrapper_methods(class: &ParsedClass, ctx: &TypeContext) -> Vec<Token
 }
 
 /// Generate a suffix for overloaded wrapper methods
-fn generate_overload_suffix_for_wrappers(method: &Method, count: usize, class: &ParsedClass) -> String {
+fn generate_overload_suffix_for_wrappers(method: &Method, count: usize, class: &ParsedClass, ctx: &TypeContext) -> String {
     // Count how many wrapper methods have this name
     let same_name_count = class
         .methods
         .iter()
-        .filter(|m| m.name == method.name && needs_wrapper_function(m))
+        .filter(|m| m.name == method.name && needs_wrapper_function(m, ctx.all_enums))
         .count();
 
     if same_name_count <= 1 {
@@ -746,6 +773,9 @@ fn generate_static_method(
     if method.return_type.as_ref().map(|t| t.is_reference()).unwrap_or(false) {
         return None;
     }
+    
+    // Note: Static methods returning const char* are handled via wrappers that return rust::String
+    // The type mapping in map_return_type_in_context handles mapping const char* -> String
 
     let _cpp_name = &method.name;
     let short_name = class.safe_short_name();
@@ -852,7 +882,14 @@ fn generate_re_exports(classes: &[&ParsedClass]) -> Vec<TokenStream> {
             let methods: Vec<TokenStream> = class.constructors.iter()
                 .filter(|ctor| {
                     // Skip constructors with class/handle parameters passed by value (not supported by CXX)
-                    !ctor.params.iter().any(|p| matches!(&p.ty, Type::Class(_) | Type::Handle(_)))
+                    if ctor.params.iter().any(|p| matches!(&p.ty, Type::Class(_) | Type::Handle(_))) {
+                        return false;
+                    }
+                    // Skip constructors with unbindable types (C strings, streams, void pointers, etc.)
+                    if ctor.has_unbindable_types() {
+                        return false;
+                    }
+                    true
                 })
                 .map(|ctor| {
                 let base_suffix = ctor.overload_suffix();
@@ -951,8 +988,13 @@ fn type_to_ffi_string(ty: &Type, owned_classes: &HashSet<String>) -> String {
             format!("&mut {}", inner_str)
         }
         Type::ConstPtr(inner) => {
-            let inner_str = type_to_ffi_string(inner, owned_classes);
-            format!("*const {}", inner_str)
+            // const char* maps to &str in CXX
+            if matches!(inner.as_ref(), Type::Class(name) if name == "char") {
+                "&str".to_string()
+            } else {
+                let inner_str = type_to_ffi_string(inner, owned_classes);
+                format!("*const {}", inner_str)
+            }
         }
         Type::MutPtr(inner) => {
             let inner_str = type_to_ffi_string(inner, owned_classes);
