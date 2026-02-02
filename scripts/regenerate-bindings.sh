@@ -36,7 +36,7 @@ fi
 
 # Build the generator
 echo "Building binding generator..."
-cargo build -p opencascade-binding-generator
+cargo build --release -p opencascade-binding-generator
 
 # Read headers from headers.txt, skipping comments and empty lines
 HEADERS=()
@@ -72,7 +72,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
 fi
 
 # Run the generator
-"$REPO_ROOT/target/debug/occt-bindgen" \
+"$REPO_ROOT/target/release/occt-bindgen" \
     -I "$OCCT_INCLUDE" \
     -o "$OUTPUT_DIR" \
     "${HEADERS[@]}"

@@ -4,117 +4,220 @@
 #pragma once
 #include "common.hxx"
 
+#include <BOPAlgo_GlueEnum.hxx>
+#include <BOPAlgo_Operation.hxx>
+#include <BOPAlgo_PBuilder.hxx>
+#include <BOPAlgo_PPaveFiller.hxx>
 #include <BOPAlgo_PaveFiller.hxx>
+#include <BRepAlgoAPI_Algo.hxx>
+#include <BRepAlgoAPI_BooleanOperation.hxx>
+#include <BRepAlgoAPI_BuilderAlgo.hxx>
 #include <BRepAlgoAPI_Common.hxx>
 #include <BRepAlgoAPI_Cut.hxx>
 #include <BRepAlgoAPI_Fuse.hxx>
 #include <BRepAlgoAPI_Section.hxx>
+#include <BRepTools_History.hxx>
 #include <Geom_Surface.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Standard_Handle.hxx>
+#include <TopTools_ListOfShape.hxx>
 #include <TopoDS_Shape.hxx>
 #include <gp_Pln.hxx>
 
 // Handle type aliases
+typedef opencascade::handle<BRepTools_History> HandleBRepToolsHistory;
 typedef opencascade::handle<Geom_Surface> HandleGeomSurface;
+
+// ========================
+// BRepAlgoAPI_Algo wrappers
+// ========================
+
+inline const BRepBuilderAPI_Command& BRepAlgoAPI_Algo_as_BRepBuilderAPI_Command(const BRepAlgoAPI_Algo& self) { return self; }
+inline BRepBuilderAPI_Command& BRepAlgoAPI_Algo_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_Algo& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_Algo_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_Algo& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepAlgoAPI_Algo_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_Algo& self) { return self; }
+
+// ========================
+// BRepAlgoAPI_BuilderAlgo wrappers
+// ========================
+
+inline std::unique_ptr<BRepAlgoAPI_BuilderAlgo> BRepAlgoAPI_BuilderAlgo_ctor() {
+    return std::make_unique<BRepAlgoAPI_BuilderAlgo>();
+}
+
+inline std::unique_ptr<BRepAlgoAPI_BuilderAlgo> BRepAlgoAPI_BuilderAlgo_ctor_pavefiller(const BOPAlgo_PaveFiller& thePF) {
+    return std::make_unique<BRepAlgoAPI_BuilderAlgo>(thePF);
+}
+
+inline std::unique_ptr<opencascade::handle<BRepTools_History>> BRepAlgoAPI_BuilderAlgo_History(const BRepAlgoAPI_BuilderAlgo& self) {
+    return std::make_unique<opencascade::handle<BRepTools_History>>(self.History());
+}
+
+inline const BRepAlgoAPI_Algo& BRepAlgoAPI_BuilderAlgo_as_BRepAlgoAPI_Algo(const BRepAlgoAPI_BuilderAlgo& self) { return self; }
+inline BRepAlgoAPI_Algo& BRepAlgoAPI_BuilderAlgo_as_BRepAlgoAPI_Algo_mut(BRepAlgoAPI_BuilderAlgo& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_Command(const BRepAlgoAPI_BuilderAlgo& self) { return self; }
+inline BRepBuilderAPI_Command& BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_BuilderAlgo& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_BuilderAlgo& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_BuilderAlgo& self) { return self; }
+
+// ========================
+// BRepAlgoAPI_BooleanOperation wrappers
+// ========================
+
+inline std::unique_ptr<BRepAlgoAPI_BooleanOperation> BRepAlgoAPI_BooleanOperation_ctor() {
+    return std::make_unique<BRepAlgoAPI_BooleanOperation>();
+}
+
+inline std::unique_ptr<BRepAlgoAPI_BooleanOperation> BRepAlgoAPI_BooleanOperation_ctor_pavefiller(const BOPAlgo_PaveFiller& thePF) {
+    return std::make_unique<BRepAlgoAPI_BooleanOperation>(thePF);
+}
+
+inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_BooleanOperation& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_BooleanOperation& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_Command(const BRepAlgoAPI_BooleanOperation& self) { return self; }
+inline BRepBuilderAPI_Command& BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_BooleanOperation& self) { return self; }
+inline const BRepAlgoAPI_Algo& BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_Algo(const BRepAlgoAPI_BooleanOperation& self) { return self; }
+inline BRepAlgoAPI_Algo& BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_Algo_mut(BRepAlgoAPI_BooleanOperation& self) { return self; }
+inline const BRepAlgoAPI_BuilderAlgo& BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_BuilderAlgo(const BRepAlgoAPI_BooleanOperation& self) { return self; }
+inline BRepAlgoAPI_BuilderAlgo& BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_BuilderAlgo_mut(BRepAlgoAPI_BooleanOperation& self) { return self; }
 
 // ========================
 // BRepAlgoAPI_Common wrappers
 // ========================
 
 inline std::unique_ptr<BRepAlgoAPI_Common> BRepAlgoAPI_Common_ctor() {
-    return construct_unique<BRepAlgoAPI_Common>();
+    return std::make_unique<BRepAlgoAPI_Common>();
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Common> BRepAlgoAPI_Common_ctor_pavefiller(const BOPAlgo_PaveFiller& PF) {
-    return construct_unique<BRepAlgoAPI_Common>(PF);
+    return std::make_unique<BRepAlgoAPI_Common>(PF);
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Common> BRepAlgoAPI_Common_ctor_shape2_progressrange(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const Message_ProgressRange& theRange) {
-    return construct_unique<BRepAlgoAPI_Common>(S1, S2, theRange);
+    return std::make_unique<BRepAlgoAPI_Common>(S1, S2, theRange);
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Common> BRepAlgoAPI_Common_ctor_shape2_pavefiller_progressrange(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& PF, const Message_ProgressRange& theRange) {
-    return construct_unique<BRepAlgoAPI_Common>(S1, S2, PF, theRange);
+    return std::make_unique<BRepAlgoAPI_Common>(S1, S2, PF, theRange);
 }
 
+inline const BRepAlgoAPI_Algo& BRepAlgoAPI_Common_as_BRepAlgoAPI_Algo(const BRepAlgoAPI_Common& self) { return self; }
+inline BRepAlgoAPI_Algo& BRepAlgoAPI_Common_as_BRepAlgoAPI_Algo_mut(BRepAlgoAPI_Common& self) { return self; }
+inline const BRepAlgoAPI_BuilderAlgo& BRepAlgoAPI_Common_as_BRepAlgoAPI_BuilderAlgo(const BRepAlgoAPI_Common& self) { return self; }
+inline BRepAlgoAPI_BuilderAlgo& BRepAlgoAPI_Common_as_BRepAlgoAPI_BuilderAlgo_mut(BRepAlgoAPI_Common& self) { return self; }
+inline const BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Common_as_BRepAlgoAPI_BooleanOperation(const BRepAlgoAPI_Common& self) { return self; }
+inline BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Common_as_BRepAlgoAPI_BooleanOperation_mut(BRepAlgoAPI_Common& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_Common_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_Common& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepAlgoAPI_Common_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_Common& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepAlgoAPI_Common_as_BRepBuilderAPI_Command(const BRepAlgoAPI_Common& self) { return self; }
+inline BRepBuilderAPI_Command& BRepAlgoAPI_Common_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_Common& self) { return self; }
 
 // ========================
 // BRepAlgoAPI_Cut wrappers
 // ========================
 
 inline std::unique_ptr<BRepAlgoAPI_Cut> BRepAlgoAPI_Cut_ctor() {
-    return construct_unique<BRepAlgoAPI_Cut>();
+    return std::make_unique<BRepAlgoAPI_Cut>();
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Cut> BRepAlgoAPI_Cut_ctor_pavefiller(const BOPAlgo_PaveFiller& PF) {
-    return construct_unique<BRepAlgoAPI_Cut>(PF);
+    return std::make_unique<BRepAlgoAPI_Cut>(PF);
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Cut> BRepAlgoAPI_Cut_ctor_shape2_progressrange(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const Message_ProgressRange& theRange) {
-    return construct_unique<BRepAlgoAPI_Cut>(S1, S2, theRange);
+    return std::make_unique<BRepAlgoAPI_Cut>(S1, S2, theRange);
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Cut> BRepAlgoAPI_Cut_ctor_shape2_pavefiller_bool_progressrange(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& aDSF, Standard_Boolean bFWD, const Message_ProgressRange& theRange) {
-    return construct_unique<BRepAlgoAPI_Cut>(S1, S2, aDSF, bFWD, theRange);
+    return std::make_unique<BRepAlgoAPI_Cut>(S1, S2, aDSF, bFWD, theRange);
 }
 
+inline const BRepAlgoAPI_Algo& BRepAlgoAPI_Cut_as_BRepAlgoAPI_Algo(const BRepAlgoAPI_Cut& self) { return self; }
+inline BRepAlgoAPI_Algo& BRepAlgoAPI_Cut_as_BRepAlgoAPI_Algo_mut(BRepAlgoAPI_Cut& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepAlgoAPI_Cut_as_BRepBuilderAPI_Command(const BRepAlgoAPI_Cut& self) { return self; }
+inline BRepBuilderAPI_Command& BRepAlgoAPI_Cut_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_Cut& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_Cut_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_Cut& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepAlgoAPI_Cut_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_Cut& self) { return self; }
+inline const BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Cut_as_BRepAlgoAPI_BooleanOperation(const BRepAlgoAPI_Cut& self) { return self; }
+inline BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Cut_as_BRepAlgoAPI_BooleanOperation_mut(BRepAlgoAPI_Cut& self) { return self; }
+inline const BRepAlgoAPI_BuilderAlgo& BRepAlgoAPI_Cut_as_BRepAlgoAPI_BuilderAlgo(const BRepAlgoAPI_Cut& self) { return self; }
+inline BRepAlgoAPI_BuilderAlgo& BRepAlgoAPI_Cut_as_BRepAlgoAPI_BuilderAlgo_mut(BRepAlgoAPI_Cut& self) { return self; }
 
 // ========================
 // BRepAlgoAPI_Fuse wrappers
 // ========================
 
 inline std::unique_ptr<BRepAlgoAPI_Fuse> BRepAlgoAPI_Fuse_ctor() {
-    return construct_unique<BRepAlgoAPI_Fuse>();
+    return std::make_unique<BRepAlgoAPI_Fuse>();
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Fuse> BRepAlgoAPI_Fuse_ctor_pavefiller(const BOPAlgo_PaveFiller& PF) {
-    return construct_unique<BRepAlgoAPI_Fuse>(PF);
+    return std::make_unique<BRepAlgoAPI_Fuse>(PF);
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Fuse> BRepAlgoAPI_Fuse_ctor_shape2_progressrange(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const Message_ProgressRange& theRange) {
-    return construct_unique<BRepAlgoAPI_Fuse>(S1, S2, theRange);
+    return std::make_unique<BRepAlgoAPI_Fuse>(S1, S2, theRange);
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Fuse> BRepAlgoAPI_Fuse_ctor_shape2_pavefiller_progressrange(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& aDSF, const Message_ProgressRange& theRange) {
-    return construct_unique<BRepAlgoAPI_Fuse>(S1, S2, aDSF, theRange);
+    return std::make_unique<BRepAlgoAPI_Fuse>(S1, S2, aDSF, theRange);
 }
 
+inline const BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BooleanOperation(const BRepAlgoAPI_Fuse& self) { return self; }
+inline BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BooleanOperation_mut(BRepAlgoAPI_Fuse& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepAlgoAPI_Fuse_as_BRepBuilderAPI_Command(const BRepAlgoAPI_Fuse& self) { return self; }
+inline BRepBuilderAPI_Command& BRepAlgoAPI_Fuse_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_Fuse& self) { return self; }
+inline const BRepAlgoAPI_BuilderAlgo& BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BuilderAlgo(const BRepAlgoAPI_Fuse& self) { return self; }
+inline BRepAlgoAPI_BuilderAlgo& BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BuilderAlgo_mut(BRepAlgoAPI_Fuse& self) { return self; }
+inline const BRepAlgoAPI_Algo& BRepAlgoAPI_Fuse_as_BRepAlgoAPI_Algo(const BRepAlgoAPI_Fuse& self) { return self; }
+inline BRepAlgoAPI_Algo& BRepAlgoAPI_Fuse_as_BRepAlgoAPI_Algo_mut(BRepAlgoAPI_Fuse& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_Fuse_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_Fuse& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepAlgoAPI_Fuse_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_Fuse& self) { return self; }
 
 // ========================
 // BRepAlgoAPI_Section wrappers
 // ========================
 
 inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor() {
-    return construct_unique<BRepAlgoAPI_Section>();
+    return std::make_unique<BRepAlgoAPI_Section>();
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_pavefiller(const BOPAlgo_PaveFiller& PF) {
-    return construct_unique<BRepAlgoAPI_Section>(PF);
+    return std::make_unique<BRepAlgoAPI_Section>(PF);
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_shape2_bool(const TopoDS_Shape& S1, const TopoDS_Shape& S2, Standard_Boolean PerformNow) {
-    return construct_unique<BRepAlgoAPI_Section>(S1, S2, PerformNow);
+    return std::make_unique<BRepAlgoAPI_Section>(S1, S2, PerformNow);
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_shape2_pavefiller_bool(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& aDSF, Standard_Boolean PerformNow) {
-    return construct_unique<BRepAlgoAPI_Section>(S1, S2, aDSF, PerformNow);
+    return std::make_unique<BRepAlgoAPI_Section>(S1, S2, aDSF, PerformNow);
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_shape_pln_bool(const TopoDS_Shape& S1, const gp_Pln& Pl, Standard_Boolean PerformNow) {
-    return construct_unique<BRepAlgoAPI_Section>(S1, Pl, PerformNow);
+    return std::make_unique<BRepAlgoAPI_Section>(S1, Pl, PerformNow);
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_shape_handlesurface_bool(const TopoDS_Shape& S1, const opencascade::handle<Geom_Surface>& Sf, Standard_Boolean PerformNow) {
-    return construct_unique<BRepAlgoAPI_Section>(S1, Sf, PerformNow);
+    return std::make_unique<BRepAlgoAPI_Section>(S1, Sf, PerformNow);
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_handlesurface_shape_bool(const opencascade::handle<Geom_Surface>& Sf, const TopoDS_Shape& S2, Standard_Boolean PerformNow) {
-    return construct_unique<BRepAlgoAPI_Section>(Sf, S2, PerformNow);
+    return std::make_unique<BRepAlgoAPI_Section>(Sf, S2, PerformNow);
 }
 
 inline std::unique_ptr<BRepAlgoAPI_Section> BRepAlgoAPI_Section_ctor_handlesurface2_bool(const opencascade::handle<Geom_Surface>& Sf1, const opencascade::handle<Geom_Surface>& Sf2, Standard_Boolean PerformNow) {
-    return construct_unique<BRepAlgoAPI_Section>(Sf1, Sf2, PerformNow);
+    return std::make_unique<BRepAlgoAPI_Section>(Sf1, Sf2, PerformNow);
 }
 
+inline const BRepAlgoAPI_Algo& BRepAlgoAPI_Section_as_BRepAlgoAPI_Algo(const BRepAlgoAPI_Section& self) { return self; }
+inline BRepAlgoAPI_Algo& BRepAlgoAPI_Section_as_BRepAlgoAPI_Algo_mut(BRepAlgoAPI_Section& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepAlgoAPI_Section_as_BRepBuilderAPI_Command(const BRepAlgoAPI_Section& self) { return self; }
+inline BRepBuilderAPI_Command& BRepAlgoAPI_Section_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_Section& self) { return self; }
+inline const BRepAlgoAPI_BuilderAlgo& BRepAlgoAPI_Section_as_BRepAlgoAPI_BuilderAlgo(const BRepAlgoAPI_Section& self) { return self; }
+inline BRepAlgoAPI_BuilderAlgo& BRepAlgoAPI_Section_as_BRepAlgoAPI_BuilderAlgo_mut(BRepAlgoAPI_Section& self) { return self; }
+inline const BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Section_as_BRepAlgoAPI_BooleanOperation(const BRepAlgoAPI_Section& self) { return self; }
+inline BRepAlgoAPI_BooleanOperation& BRepAlgoAPI_Section_as_BRepAlgoAPI_BooleanOperation_mut(BRepAlgoAPI_Section& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_Section_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_Section& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepAlgoAPI_Section_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_Section& self) { return self; }
 

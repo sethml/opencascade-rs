@@ -4,14 +4,19 @@
 //! from OCCT C++ headers.
 
 use crate::model::{
-    Constructor, EnumVariant, Method, Param, ParsedClass, ParsedEnum, ParsedHeader, StaticMethod,
+    Constructor, EnumVariant, Method, Param, ParsedClass, ParsedEnum, ParsedFunction, ParsedHeader, StaticMethod,
     Type,
 };
 use anyhow::{Context, Result};
-use clang::{Clang, Entity, EntityKind, EntityVisitResult, Index, TypeKind};
+use clang::{Accessibility, Clang, Entity, EntityKind, EntityVisitResult, Index, TypeKind};
 use std::path::Path;
+use std::time::Instant;
 
 /// Parse a collection of OCCT header files
+/// 
+/// Uses batch parsing: creates a synthetic source file that includes all headers,
+/// parses once, then extracts entities from each target header. This is much faster
+/// than parsing each header separately since OCCT headers have deep include chains.
 pub fn parse_headers(
     headers: &[impl AsRef<Path>],
     include_dirs: &[impl AsRef<Path>],
@@ -21,131 +26,150 @@ pub fn parse_headers(
         Clang::new().map_err(|e| anyhow::anyhow!("Failed to initialize libclang: {}", e))?;
     let index = Index::new(&clang, false, true);
 
-    let mut results = Vec::new();
+    // Build canonical path set for target headers
+    let header_paths: Vec<std::path::PathBuf> = headers
+        .iter()
+        .map(|h| h.as_ref().canonicalize().unwrap_or_else(|_| h.as_ref().to_path_buf()))
+        .collect();
+    let header_set: std::collections::HashSet<&std::path::Path> = 
+        header_paths.iter().map(|p| p.as_path()).collect();
 
+    // Create synthetic source that includes all headers
+    let mut synthetic_source = String::new();
     for header in headers {
-        let header = header.as_ref();
-        if verbose {
-            println!("Parsing: {}", header.display());
-        }
-        let parsed = parse_header(&index, header, include_dirs, verbose)
-            .with_context(|| format!("Failed to parse header: {}", header.display()))?;
-
-        if verbose {
-            println!(
-                "  Found {} classes in {}",
-                parsed.classes.len(),
-                header.display()
-            );
-            for class in &parsed.classes {
-                println!(
-                    "    - {} ({} ctors, {} methods, {} static methods)",
-                    class.name,
-                    class.constructors.len(),
-                    class.methods.len(),
-                    class.static_methods.len()
-                );
-            }
-        }
-
-        results.push(parsed);
+        synthetic_source.push_str(&format!("#include \"{}\"\n", header.as_ref().display()));
     }
 
-    Ok(results)
-}
-
-/// Parse a single OCCT header file
-fn parse_header(
-    index: &Index,
-    header: &Path,
-    include_dirs: &[impl AsRef<Path>],
-    verbose: bool,
-) -> Result<ParsedHeader> {
     // Build clang arguments
     let mut args: Vec<String> = vec![
         "-x".to_string(),
         "c++".to_string(),
         "-std=c++17".to_string(),
-        // Suppress some warnings that aren't relevant for parsing
         "-Wno-pragma-once-outside-header".to_string(),
     ];
-
-    // Add system C++ standard library paths
-    // This is needed because libclang doesn't automatically include them
     add_system_include_paths(&mut args);
-
     for include_dir in include_dirs {
         args.push(format!("-I{}", include_dir.as_ref().display()));
     }
 
     if verbose {
-        println!("  Clang args: {:?}", args);
+        eprintln!("Clang args: {:?}", args);
     }
 
+    // Parse the synthetic source with all includes
+    let parse_start = Instant::now();
     let tu = index
-        .parser(header)
+        .parser("synthetic.cpp")
         .arguments(&args)
+        .unsaved(&[clang::Unsaved::new("synthetic.cpp", &synthetic_source)])
         .detailed_preprocessing_record(true)
         .skip_function_bodies(true)
         .parse()
         .context("Failed to parse translation unit")?;
+    let parse_time = parse_start.elapsed();
+    eprintln!("  Clang parse time: {:.2}s", parse_time.as_secs_f64());
 
     // Check for parse errors
     let diagnostics = tu.get_diagnostics();
     for diag in &diagnostics {
         if diag.get_severity() >= clang::diagnostic::Severity::Error {
             if verbose {
-                println!("  Parse error: {}", diag.get_text());
+                eprintln!("  Parse error: {}", diag.get_text());
             }
         }
     }
 
-    let header_canonical = header.canonicalize().unwrap_or_else(|_| header.to_path_buf());
+    // Initialize results - one ParsedHeader per input header
+    let mut results: Vec<ParsedHeader> = headers
+        .iter()
+        .map(|h| ParsedHeader {
+            path: h.as_ref().to_path_buf(),
+            classes: Vec::new(),
+            enums: Vec::new(),
+            functions: Vec::new(),
+        })
+        .collect();
 
-    // Walk the AST looking for class/struct declarations
+    // Build a map from canonical path to index for fast lookup
+    let path_to_index: std::collections::HashMap<&std::path::Path, usize> = header_paths
+        .iter()
+        .enumerate()
+        .map(|(i, p)| (p.as_path(), i))
+        .collect();
+
+    // Walk the AST once, distributing entities to the appropriate header
+    let visit_start = Instant::now();
     let root = tu.get_entity();
-    let mut classes = Vec::new();
-    let mut enums = Vec::new();
     
     root.visit_children(|entity, _parent| {
-        visit_top_level(&entity, &header_canonical, &mut classes, &mut enums, verbose)
+        visit_top_level_batch(&entity, &header_set, &path_to_index, &mut results, verbose)
     });
+    let visit_time = visit_start.elapsed();
 
-    Ok(ParsedHeader {
-        path: header.to_path_buf(),
-        classes,
-        enums,
-    })
+    eprintln!("\nTiming summary:");
+    eprintln!("  Total clang parse time: {:.2}s", parse_time.as_secs_f64());
+    eprintln!("  Total AST visit time: {:.2}s", visit_time.as_secs_f64());
+
+    Ok(results)
 }
 
-/// Visit top-level entities in the translation unit
-fn visit_top_level(
+/// Get the canonical path of the file an entity is located in
+fn get_entity_file(entity: &Entity) -> Option<std::path::PathBuf> {
+    let location = entity.get_location()?;
+    let file = location.get_file_location().file?;
+    let entity_path = file.get_path();
+    entity_path.canonicalize().ok().or(Some(entity_path))
+}
+
+/// Visit top-level entities for batch parsing
+/// Distributes entities to the appropriate ParsedHeader based on source file
+fn visit_top_level_batch(
     entity: &Entity,
-    source_file: &Path,
-    classes: &mut Vec<ParsedClass>,
-    enums: &mut Vec<ParsedEnum>,
+    header_set: &std::collections::HashSet<&Path>,
+    path_to_index: &std::collections::HashMap<&Path, usize>,
+    results: &mut [ParsedHeader],
     verbose: bool,
 ) -> EntityVisitResult {
-    // Only process entities from our source file (not included headers)
-    if !is_from_file(entity, source_file) {
-        return EntityVisitResult::Continue;
-    }
+    // Get the file this entity is from
+    let entity_file = match get_entity_file(entity) {
+        Some(f) => f,
+        None => return EntityVisitResult::Continue,
+    };
+    
+    // Check if this is one of our target headers
+    let index = match path_to_index.get(entity_file.as_path()) {
+        Some(&i) => i,
+        None => {
+            // Not from our target headers - but might need to recurse into namespaces
+            // because namespace declarations span multiple files
+            if entity.get_kind() == EntityKind::Namespace && entity.get_name().as_deref() != Some("std") {
+                let namespace_name = entity.get_name().unwrap_or_default();
+                entity.visit_children(|child, _| {
+                    visit_namespace_member_batch(&child, header_set, path_to_index, &namespace_name, results, verbose)
+                });
+            }
+            return EntityVisitResult::Continue;
+        }
+    };
 
     match entity.get_kind() {
         EntityKind::ClassDecl | EntityKind::StructDecl => {
-            if let Some(parsed) = parse_class(entity, verbose) {
-                classes.push(parsed);
+            if let Some(parsed) = parse_class(entity, &entity_file.file_name().unwrap_or_default().to_string_lossy(), verbose) {
+                results[index].classes.push(parsed);
             }
         }
         EntityKind::EnumDecl => {
-            if let Some(parsed) = parse_enum(entity, verbose) {
-                enums.push(parsed);
+            if let Some(parsed) = parse_enum(entity, &entity_file.file_name().unwrap_or_default().to_string_lossy(), verbose) {
+                results[index].enums.push(parsed);
             }
         }
         EntityKind::Namespace => {
             // Don't recurse into std namespace
             if entity.get_name().as_deref() != Some("std") {
-                return EntityVisitResult::Recurse;
+                let namespace_name = entity.get_name().unwrap_or_default();
+                entity.visit_children(|child, _| {
+                    visit_namespace_member_batch(&child, header_set, path_to_index, &namespace_name, results, verbose)
+                });
             }
         }
         _ => {}
@@ -154,23 +178,38 @@ fn visit_top_level(
     EntityVisitResult::Continue
 }
 
-/// Check if an entity is from the specified source file
-fn is_from_file(entity: &Entity, source_file: &Path) -> bool {
-    if let Some(location) = entity.get_location() {
-        if let Some(file) = location.get_file_location().file {
-            let entity_path = file.get_path();
-            // Compare canonical paths
-            if let Ok(entity_canonical) = entity_path.canonicalize() {
-                return entity_canonical == source_file;
-            }
-            return entity_path == source_file;
+/// Visit members of a namespace for batch parsing
+fn visit_namespace_member_batch(
+    entity: &Entity,
+    _header_set: &std::collections::HashSet<&Path>,
+    path_to_index: &std::collections::HashMap<&Path, usize>,
+    namespace: &str,
+    results: &mut [ParsedHeader],
+    verbose: bool,
+) -> EntityVisitResult {
+    // Get the file this entity is from
+    let entity_file = match get_entity_file(entity) {
+        Some(f) => f,
+        None => return EntityVisitResult::Continue,
+    };
+    
+    // Check if this is one of our target headers
+    let index = match path_to_index.get(entity_file.as_path()) {
+        Some(&i) => i,
+        None => return EntityVisitResult::Continue,
+    };
+
+    if entity.get_kind() == EntityKind::FunctionDecl {
+        if let Some(parsed) = parse_function(entity, namespace, &entity_file.file_name().unwrap_or_default().to_string_lossy(), verbose) {
+            results[index].functions.push(parsed);
         }
     }
-    false
+
+    EntityVisitResult::Continue
 }
 
 /// Parse a class or struct declaration
-fn parse_class(entity: &Entity, verbose: bool) -> Option<ParsedClass> {
+fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<ParsedClass> {
     let name = entity.get_name()?;
 
     // Skip forward declarations (no definition)
@@ -188,16 +227,64 @@ fn parse_class(entity: &Entity, verbose: bool) -> Option<ParsedClass> {
         return None;
     }
 
+    // Skip template classes and template specializations
+    // Template classes have get_template() returning Some, or get_template_kind() returning Some
+    // Also skip if the display name contains angle brackets (indicates template instantiation)
+    if entity.get_template().is_some() {
+        if verbose {
+            println!("    Skipping {} (template class)", name);
+        }
+        return None;
+    }
+    let display_name = entity.get_display_name().unwrap_or_default();
+    if display_name.contains('<') {
+        if verbose {
+            println!("    Skipping {} (template specialization)", display_name);
+        }
+        return None;
+    }
+
+    // Skip policy/trait classes used as template parameters
+    // These are not meant to be instantiated directly
+    if name.contains("Inspector") || name.contains("_Hasher") || name.contains("_Traits") {
+        if verbose {
+            println!("    Skipping {} (policy/trait class)", name);
+        }
+        return None;
+    }
+
+    // Skip internal node types that use custom allocators (can't be used with std::unique_ptr)
+    if name.ends_with("Node") && name.starts_with("NCollection_") {
+        if verbose {
+            println!("    Skipping {} (internal node type)", name);
+        }
+        return None;
+    }
+
     let comment = extract_doxygen_comment(entity);
     let module = extract_module_from_name(&name);
 
+    // Extract direct base classes for upcast generation
+    let base_classes = extract_base_classes(entity);
+    
+    // Check for protected/private destructor (indicates non-instantiable abstract base class)
+    let has_protected_destructor = check_protected_destructor(entity);
+
     if verbose {
         println!("  Parsing class: {}", name);
+        if !base_classes.is_empty() {
+            println!("    Base classes: {:?}", base_classes);
+        }
+        if has_protected_destructor {
+            println!("    Has protected destructor (non-instantiable)");
+        }
     }
 
     let mut constructors = Vec::new();
     let mut methods = Vec::new();
     let mut static_methods = Vec::new();
+    let mut all_method_names = std::collections::HashSet::new();
+    let mut is_abstract = false;
 
     // Check if there's a DEFINE_STANDARD_HANDLE for this class
     // This is typically done outside the class, so we check the name pattern
@@ -214,18 +301,26 @@ fn parse_class(entity: &Entity, verbose: bool) -> Option<ParsedClass> {
                 }
             }
             EntityKind::Method => {
-                if is_public(&child) {
-                    // Skip destructors, operators, and conversion functions
-                    if let Some(ref method_name) = child.get_name() {
-                        if method_name.starts_with('~')
-                            || method_name.starts_with("operator")
-                            || method_name == "DumpJson"
-                            || method_name == "InitFromJson"
-                        {
-                            return EntityVisitResult::Continue;
-                        }
+                // Check if this is a pure virtual method (makes the class abstract)
+                if child.is_pure_virtual_method() {
+                    is_abstract = true;
+                }
+                
+                // Skip destructors, operators, and conversion functions
+                if let Some(ref method_name) = child.get_name() {
+                    if method_name.starts_with('~')
+                        || method_name.starts_with("operator")
+                        || method_name == "DumpJson"
+                        || method_name == "InitFromJson"
+                    {
+                        return EntityVisitResult::Continue;
                     }
+                    
+                    // Always track all method names (even if not public) - used for filtering inherited methods
+                    all_method_names.insert(method_name.clone());
+                }
 
+                if is_public(&child) {
                     if child.is_static_method() {
                         if let Some(method) = parse_static_method(&child, verbose) {
                             static_methods.push(method);
@@ -252,15 +347,34 @@ fn parse_class(entity: &Entity, verbose: bool) -> Option<ParsedClass> {
         name,
         module,
         comment,
+        source_header: source_header.to_string(),
         constructors,
         methods,
         static_methods,
+        all_method_names,
         is_handle_type,
+        base_classes,
+        has_protected_destructor,
+        is_abstract,
     })
 }
 
+/// Check if a class has a protected or private destructor
+/// Classes with non-public destructors cannot be directly instantiated via UniquePtr
+fn check_protected_destructor(entity: &Entity) -> bool {
+    for child in entity.get_children() {
+        if child.get_kind() == EntityKind::Destructor {
+            // Check if the destructor is not public
+            if let Some(accessibility) = child.get_accessibility() {
+                return accessibility != clang::Accessibility::Public;
+            }
+        }
+    }
+    false
+}
+
 /// Parse an enum declaration
-fn parse_enum(entity: &Entity, verbose: bool) -> Option<ParsedEnum> {
+fn parse_enum(entity: &Entity, source_header: &str, verbose: bool) -> Option<ParsedEnum> {
     let name = entity.get_name()?;
 
     // Skip anonymous enums (empty name or compiler-generated "(unnamed enum at ...)")
@@ -271,6 +385,18 @@ fn parse_enum(entity: &Entity, verbose: bool) -> Option<ParsedEnum> {
     // Skip internal enums
     if name.starts_with('_') {
         return None;
+    }
+
+    // Skip nested enums (enums defined inside a class/struct)
+    // These are not accessible at global scope
+    if let Some(parent) = entity.get_semantic_parent() {
+        let parent_kind = parent.get_kind();
+        if parent_kind == EntityKind::ClassDecl || parent_kind == EntityKind::StructDecl {
+            if verbose {
+                println!("    Skipping {} (nested enum inside class)", name);
+            }
+            return None;
+        }
     }
 
     let comment = extract_doxygen_comment(entity);
@@ -314,21 +440,71 @@ fn parse_enum(entity: &Entity, verbose: bool) -> Option<ParsedEnum> {
         name,
         module,
         comment,
+        source_header: source_header.to_string(),
         variants,
     })
 }
 
+/// Parse a namespace-level function declaration
+fn parse_function(entity: &Entity, namespace: &str, source_header: &str, verbose: bool) -> Option<ParsedFunction> {
+    let name = entity.get_name()?;
+
+    // Skip template functions
+    if entity.get_template().is_some() {
+        return None;
+    }
+
+    // Get the function's result type
+    let result_type = entity.get_result_type()?;
+    let return_type = parse_type(&result_type);
+
+    // Parse parameters
+    let mut params = Vec::new();
+    for arg in entity.get_arguments().unwrap_or_default() {
+        let param_name = arg.get_name().unwrap_or_else(|| format!("arg{}", params.len()));
+        if let Some(param_type) = arg.get_type() {
+            params.push(Param {
+                name: param_name,
+                ty: parse_type(&param_type),
+            });
+        }
+    }
+
+    let comment = extract_doxygen_comment(entity);
+    let full_name = format!("{}::{}", namespace, name);
+    let module = namespace.to_string();
+
+    if verbose {
+        println!("  Parsing function: {}", full_name);
+    }
+
+    Some(ParsedFunction {
+        name: full_name,
+        namespace: namespace.to_string(),
+        short_name: name,
+        module,
+        comment,
+        source_header: source_header.to_string(),
+        params,
+        return_type: Some(return_type),
+    })
+}
+
 /// Check if a class is a Handle type (inherits from Standard_Transient)
+/// These are classes that can be wrapped in opencascade::handle<T>
 fn check_is_handle_type(entity: &Entity) -> bool {
     // Check base classes
     for child in entity.get_children() {
         if child.get_kind() == EntityKind::BaseSpecifier {
             if let Some(base_type) = child.get_type() {
                 let base_name = base_type.get_display_name();
-                // If it inherits from Standard_Transient or any Geom_* class, it's likely a Handle type
+                // Only classes that inherit from Standard_Transient (directly or through
+                // geometry classes) can use Handle<T>. TopoDS types are NOT Handle types -
+                // they use their own internal reference counting mechanism.
                 if base_name.contains("Standard_Transient")
                     || base_name.starts_with("Geom_")
-                    || base_name.starts_with("TopoDS_")
+                    || base_name.starts_with("Geom2d_")
+                    || base_name.starts_with("Law_")
                 {
                     return true;
                 }
@@ -336,6 +512,33 @@ fn check_is_handle_type(entity: &Entity) -> bool {
         }
     }
     false
+}
+
+/// Extract direct base classes from an entity (only public base classes)
+fn extract_base_classes(entity: &Entity) -> Vec<String> {
+    let mut base_classes = Vec::new();
+    for child in entity.get_children() {
+        if child.get_kind() == EntityKind::BaseSpecifier {
+            // Only include public base classes - protected/private bases can't be upcast to
+            let accessibility = child.get_accessibility();
+            if accessibility != Some(Accessibility::Public) {
+                continue;
+            }
+            
+            if let Some(base_type) = child.get_type() {
+                let base_name = base_type.get_display_name();
+                // Only include OCCT classes (those with underscore prefix pattern)
+                // Skip Standard_Transient and other non-shape base classes
+                if base_name.contains('_')
+                    && !base_name.contains("Standard_")
+                    && !base_name.contains("NCollection_")
+                {
+                    base_classes.push(base_name);
+                }
+            }
+        }
+    }
+    base_classes
 }
 
 /// Extract Doxygen comment from an entity
@@ -537,9 +740,16 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     // Get canonical type for resolving typedefs
     let canonical = clang_type.get_canonical_type();
     let canonical_spelling = canonical.get_display_name();
+    
+    // Strip const/volatile from canonical spelling for primitive matching
+    let canonical_clean = canonical_spelling
+        .trim()
+        .trim_start_matches("const ")
+        .trim_start_matches("volatile ")
+        .trim();
 
     // Handle primitives via canonical type
-    match canonical_spelling.as_str() {
+    match canonical_clean {
         "bool" => return Type::Bool,
         "int" => return Type::I32,
         "unsigned int" => return Type::U32,
@@ -562,6 +772,14 @@ fn parse_type(clang_type: &clang::Type) -> Type {
             } else {
                 Type::MutRef(Box::new(inner))
             };
+        }
+    }
+
+    // Handle rvalue reference types (T&&) - not bindable but we need to parse them
+    if kind == TypeKind::RValueReference {
+        if let Some(pointee) = clang_type.get_pointee_type() {
+            let inner = parse_type(&pointee);
+            return Type::RValueRef(Box::new(inner));
         }
     }
 
@@ -594,6 +812,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         .trim_start_matches("class ")
         .trim_start_matches("struct ")
         .trim_start_matches("typename ")
+        .trim_start_matches("enum ")
         .trim_end_matches(" &")
         .trim_end_matches(" *")
         .trim();
@@ -604,6 +823,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
             .trim_start_matches("const ")
             .trim_start_matches("class ")
             .trim_start_matches("struct ")
+            .trim_start_matches("enum ")
             .trim_end_matches(" &")
             .trim_end_matches(" *")
             .trim();
@@ -611,6 +831,22 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         // Only use canonical if it's simpler (no :: or <)
         if !canonical_clean.contains("::") && !canonical_clean.contains('<') && !canonical_clean.is_empty() {
             return Type::Class(canonical_clean.to_string());
+        }
+    }
+    
+    // Check if this type's declaration is nested inside a class
+    // This catches types like DESTEP_Parameters::ReadMode_ProductContext that
+    // appear as "ReadMode_ProductContext" in method signatures but are actually nested
+    if let Some(decl) = clang_type.get_declaration() {
+        if let Some(parent) = decl.get_semantic_parent() {
+            let parent_kind = parent.get_kind();
+            if parent_kind == EntityKind::ClassDecl || parent_kind == EntityKind::StructDecl {
+                // This is a nested type - include the parent class name to mark it as nested
+                if let Some(parent_name) = parent.get_name() {
+                    let nested_name = format!("{}::{}", parent_name, clean_name);
+                    return Type::Class(nested_name);
+                }
+            }
         }
     }
 
@@ -646,6 +882,7 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         .trim();
 
     match clean {
+        // OCCT standard type aliases
         "Standard_Real" => Some(Type::F64),
         "Standard_Integer" => Some(Type::I32),
         "Standard_Boolean" => Some(Type::Bool),
@@ -653,6 +890,18 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         "Standard_Size" => Some(Type::Usize),
         "Standard_ShortReal" => Some(Type::F32),
         "Standard_Utf8Char" => Some(Type::Class("char".to_string())),
+        // C++ primitive types (may appear from canonical type resolution)
+        "double" => Some(Type::F64),
+        "float" => Some(Type::F32),
+        "int" => Some(Type::I32),
+        "unsigned int" => Some(Type::U32),
+        "long" => Some(Type::I64),
+        "unsigned long" => Some(Type::U64),
+        "long long" => Some(Type::I64),
+        "unsigned long long" => Some(Type::U64),
+        "short" => Some(Type::I32),  // i16 isn't available, use i32
+        "unsigned short" => Some(Type::U32),  // u16 isn't available, use u32
+        "bool" => Some(Type::Bool),
         // Standard_Address is void* - can't be bound through CXX, but we need to recognize it
         // so methods using it can be filtered out. Using a special class name that is_void_ptr() checks for.
         "Standard_Address" => Some(Type::Class("Standard_Address".to_string())),

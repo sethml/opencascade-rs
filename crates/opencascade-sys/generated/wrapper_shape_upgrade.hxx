@@ -13,6 +13,7 @@
 
 // Handle type aliases
 typedef opencascade::handle<BRepTools_History> HandleBRepToolsHistory;
+typedef opencascade::handle<ShapeUpgrade_UnifySameDomain> HandleShapeUpgradeUnifySameDomain;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
 
 // ========================
@@ -20,15 +21,18 @@ typedef opencascade::handle<Standard_Type> HandleStandardType;
 // ========================
 
 inline std::unique_ptr<ShapeUpgrade_UnifySameDomain> ShapeUpgrade_UnifySameDomain_ctor() {
-    return construct_unique<ShapeUpgrade_UnifySameDomain>();
+    return std::make_unique<ShapeUpgrade_UnifySameDomain>();
 }
 
 inline std::unique_ptr<ShapeUpgrade_UnifySameDomain> ShapeUpgrade_UnifySameDomain_ctor_shape_bool3(const TopoDS_Shape& aShape, Standard_Boolean UnifyEdges, Standard_Boolean UnifyFaces, Standard_Boolean ConcatBSplines) {
-    return construct_unique<ShapeUpgrade_UnifySameDomain>(aShape, UnifyEdges, UnifyFaces, ConcatBSplines);
+    return std::make_unique<ShapeUpgrade_UnifySameDomain>(aShape, UnifyEdges, UnifyFaces, ConcatBSplines);
 }
 
 inline rust::String ShapeUpgrade_UnifySameDomain_get_type_name() {
     return rust::String(ShapeUpgrade_UnifySameDomain::get_type_name());
 }
 
+inline std::unique_ptr<HandleShapeUpgradeUnifySameDomain> ShapeUpgrade_UnifySameDomain_to_handle(std::unique_ptr<ShapeUpgrade_UnifySameDomain> obj) {
+    return std::make_unique<HandleShapeUpgradeUnifySameDomain>(obj.release());
+}
 

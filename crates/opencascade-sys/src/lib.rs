@@ -8,6 +8,7 @@
 //! The generated code is organized by OCCT module:
 //! - `gp` - Basic geometry types (points, vectors, directions, transforms)
 //! - `topo_ds` - Topology data structure (shapes, vertices, edges, faces, etc.)
+//! - `collections` - Iterator wrappers for OCCT collection types (ListOfShape, etc.)
 //!
 //! # Re-generation
 //!
@@ -16,7 +17,7 @@
 //! ./scripts/regenerate-bindings.sh
 //! ```
 
-// Include the generated modules
+// Include the generated modules (including collections)
 #[path = "../generated/lib.rs"]
 mod generated;
 

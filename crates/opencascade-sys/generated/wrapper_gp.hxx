@@ -33,15 +33,15 @@
 // ========================
 
 inline std::unique_ptr<gp_Pnt> gp_Pnt_ctor() {
-    return construct_unique<gp_Pnt>();
+    return std::make_unique<gp_Pnt>();
 }
 
 inline std::unique_ptr<gp_Pnt> gp_Pnt_ctor_xyz(const gp_XYZ& theCoord) {
-    return construct_unique<gp_Pnt>(theCoord);
+    return std::make_unique<gp_Pnt>(theCoord);
 }
 
 inline std::unique_ptr<gp_Pnt> gp_Pnt_ctor_real3(Standard_Real theXp, Standard_Real theYp, Standard_Real theZp) {
-    return construct_unique<gp_Pnt>(theXp, theYp, theZp);
+    return std::make_unique<gp_Pnt>(theXp, theYp, theZp);
 }
 
 inline std::unique_ptr<gp_Pnt> gp_Pnt_Mirrored(const gp_Pnt& self, const gp_Pnt& theP) {
@@ -82,15 +82,15 @@ inline std::unique_ptr<gp_Pnt> gp_Pnt_Translated(const gp_Pnt& self, const gp_Pn
 // ========================
 
 inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_ctor() {
-    return construct_unique<gp_Pnt2d>();
+    return std::make_unique<gp_Pnt2d>();
 }
 
 inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_ctor_xy(const gp_XY& theCoord) {
-    return construct_unique<gp_Pnt2d>(theCoord);
+    return std::make_unique<gp_Pnt2d>(theCoord);
 }
 
 inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_ctor_real2(Standard_Real theXp, Standard_Real theYp) {
-    return construct_unique<gp_Pnt2d>(theXp, theYp);
+    return std::make_unique<gp_Pnt2d>(theXp, theYp);
 }
 
 inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_Mirrored(const gp_Pnt2d& self, const gp_Pnt2d& theP) {
@@ -127,23 +127,23 @@ inline std::unique_ptr<gp_Pnt2d> gp_Pnt2d_Translated(const gp_Pnt2d& self, const
 // ========================
 
 inline std::unique_ptr<gp_Vec> gp_Vec_ctor() {
-    return construct_unique<gp_Vec>();
+    return std::make_unique<gp_Vec>();
 }
 
 inline std::unique_ptr<gp_Vec> gp_Vec_ctor_dir(const gp_Dir& theV) {
-    return construct_unique<gp_Vec>(theV);
+    return std::make_unique<gp_Vec>(theV);
 }
 
 inline std::unique_ptr<gp_Vec> gp_Vec_ctor_xyz(const gp_XYZ& theCoord) {
-    return construct_unique<gp_Vec>(theCoord);
+    return std::make_unique<gp_Vec>(theCoord);
 }
 
 inline std::unique_ptr<gp_Vec> gp_Vec_ctor_real3(Standard_Real theXv, Standard_Real theYv, Standard_Real theZv) {
-    return construct_unique<gp_Vec>(theXv, theYv, theZv);
+    return std::make_unique<gp_Vec>(theXv, theYv, theZv);
 }
 
 inline std::unique_ptr<gp_Vec> gp_Vec_ctor_pnt2(const gp_Pnt& theP1, const gp_Pnt& theP2) {
-    return construct_unique<gp_Vec>(theP1, theP2);
+    return std::make_unique<gp_Vec>(theP1, theP2);
 }
 
 inline std::unique_ptr<gp_Vec> gp_Vec_Added(const gp_Vec& self, const gp_Vec& theOther) {
@@ -208,23 +208,23 @@ inline std::unique_ptr<gp_Vec> gp_Vec_Transformed(const gp_Vec& self, const gp_T
 // ========================
 
 inline std::unique_ptr<gp_Vec2d> gp_Vec2d_ctor() {
-    return construct_unique<gp_Vec2d>();
+    return std::make_unique<gp_Vec2d>();
 }
 
 inline std::unique_ptr<gp_Vec2d> gp_Vec2d_ctor_dir2d(const gp_Dir2d& theV) {
-    return construct_unique<gp_Vec2d>(theV);
+    return std::make_unique<gp_Vec2d>(theV);
 }
 
 inline std::unique_ptr<gp_Vec2d> gp_Vec2d_ctor_xy(const gp_XY& theCoord) {
-    return construct_unique<gp_Vec2d>(theCoord);
+    return std::make_unique<gp_Vec2d>(theCoord);
 }
 
 inline std::unique_ptr<gp_Vec2d> gp_Vec2d_ctor_real2(Standard_Real theXv, Standard_Real theYv) {
-    return construct_unique<gp_Vec2d>(theXv, theYv);
+    return std::make_unique<gp_Vec2d>(theXv, theYv);
 }
 
 inline std::unique_ptr<gp_Vec2d> gp_Vec2d_ctor_pnt2d2(const gp_Pnt2d& theP1, const gp_Pnt2d& theP2) {
-    return construct_unique<gp_Vec2d>(theP1, theP2);
+    return std::make_unique<gp_Vec2d>(theP1, theP2);
 }
 
 inline std::unique_ptr<gp_Vec2d> gp_Vec2d_Added(const gp_Vec2d& self, const gp_Vec2d& theOther) {
@@ -281,19 +281,19 @@ inline std::unique_ptr<gp_Vec2d> gp_Vec2d_Transformed(const gp_Vec2d& self, cons
 // ========================
 
 inline std::unique_ptr<gp_Dir> gp_Dir_ctor() {
-    return construct_unique<gp_Dir>();
+    return std::make_unique<gp_Dir>();
 }
 
 inline std::unique_ptr<gp_Dir> gp_Dir_ctor_vec(const gp_Vec& theV) {
-    return construct_unique<gp_Dir>(theV);
+    return std::make_unique<gp_Dir>(theV);
 }
 
 inline std::unique_ptr<gp_Dir> gp_Dir_ctor_xyz(const gp_XYZ& theCoord) {
-    return construct_unique<gp_Dir>(theCoord);
+    return std::make_unique<gp_Dir>(theCoord);
 }
 
 inline std::unique_ptr<gp_Dir> gp_Dir_ctor_real3(Standard_Real theXv, Standard_Real theYv, Standard_Real theZv) {
-    return construct_unique<gp_Dir>(theXv, theYv, theZv);
+    return std::make_unique<gp_Dir>(theXv, theYv, theZv);
 }
 
 inline std::unique_ptr<gp_Dir> gp_Dir_Crossed(const gp_Dir& self, const gp_Dir& theRight) {
@@ -334,19 +334,19 @@ inline std::unique_ptr<gp_Dir> gp_Dir_Transformed(const gp_Dir& self, const gp_T
 // ========================
 
 inline std::unique_ptr<gp_Dir2d> gp_Dir2d_ctor() {
-    return construct_unique<gp_Dir2d>();
+    return std::make_unique<gp_Dir2d>();
 }
 
 inline std::unique_ptr<gp_Dir2d> gp_Dir2d_ctor_vec2d(const gp_Vec2d& theV) {
-    return construct_unique<gp_Dir2d>(theV);
+    return std::make_unique<gp_Dir2d>(theV);
 }
 
 inline std::unique_ptr<gp_Dir2d> gp_Dir2d_ctor_xy(const gp_XY& theCoord) {
-    return construct_unique<gp_Dir2d>(theCoord);
+    return std::make_unique<gp_Dir2d>(theCoord);
 }
 
 inline std::unique_ptr<gp_Dir2d> gp_Dir2d_ctor_real2(Standard_Real theXv, Standard_Real theYv) {
-    return construct_unique<gp_Dir2d>(theXv, theYv);
+    return std::make_unique<gp_Dir2d>(theXv, theYv);
 }
 
 inline std::unique_ptr<gp_Dir2d> gp_Dir2d_Reversed(const gp_Dir2d& self) {
@@ -375,11 +375,11 @@ inline std::unique_ptr<gp_Dir2d> gp_Dir2d_Transformed(const gp_Dir2d& self, cons
 // ========================
 
 inline std::unique_ptr<gp_XYZ> gp_XYZ_ctor() {
-    return construct_unique<gp_XYZ>();
+    return std::make_unique<gp_XYZ>();
 }
 
 inline std::unique_ptr<gp_XYZ> gp_XYZ_ctor_real3(Standard_Real theX, Standard_Real theY, Standard_Real theZ) {
-    return construct_unique<gp_XYZ>(theX, theY, theZ);
+    return std::make_unique<gp_XYZ>(theX, theY, theZ);
 }
 
 inline std::unique_ptr<gp_XYZ> gp_XYZ_Added(const gp_XYZ& self, const gp_XYZ& theOther) {
@@ -428,11 +428,11 @@ inline std::unique_ptr<gp_XYZ> gp_XYZ_Subtracted(const gp_XYZ& self, const gp_XY
 // ========================
 
 inline std::unique_ptr<gp_Ax1> gp_Ax1_ctor() {
-    return construct_unique<gp_Ax1>();
+    return std::make_unique<gp_Ax1>();
 }
 
 inline std::unique_ptr<gp_Ax1> gp_Ax1_ctor_pnt_dir(const gp_Pnt& theP, const gp_Dir& theV) {
-    return construct_unique<gp_Ax1>(theP, theV);
+    return std::make_unique<gp_Ax1>(theP, theV);
 }
 
 inline std::unique_ptr<gp_Ax1> gp_Ax1_Reversed(const gp_Ax1& self) {
@@ -477,15 +477,15 @@ inline std::unique_ptr<gp_Ax1> gp_Ax1_Translated(const gp_Ax1& self, const gp_Pn
 // ========================
 
 inline std::unique_ptr<gp_Ax2> gp_Ax2_ctor() {
-    return construct_unique<gp_Ax2>();
+    return std::make_unique<gp_Ax2>();
 }
 
 inline std::unique_ptr<gp_Ax2> gp_Ax2_ctor_pnt_dir2(const gp_Pnt& P, const gp_Dir& N, const gp_Dir& Vx) {
-    return construct_unique<gp_Ax2>(P, N, Vx);
+    return std::make_unique<gp_Ax2>(P, N, Vx);
 }
 
 inline std::unique_ptr<gp_Ax2> gp_Ax2_ctor_pnt_dir(const gp_Pnt& P, const gp_Dir& V) {
-    return construct_unique<gp_Ax2>(P, V);
+    return std::make_unique<gp_Ax2>(P, V);
 }
 
 inline std::unique_ptr<gp_Ax2> gp_Ax2_Mirrored(const gp_Ax2& self, const gp_Pnt& P) {
@@ -526,11 +526,11 @@ inline std::unique_ptr<gp_Ax2> gp_Ax2_Translated(const gp_Ax2& self, const gp_Pn
 // ========================
 
 inline std::unique_ptr<gp_Ax2d> gp_Ax2d_ctor() {
-    return construct_unique<gp_Ax2d>();
+    return std::make_unique<gp_Ax2d>();
 }
 
 inline std::unique_ptr<gp_Ax2d> gp_Ax2d_ctor_pnt2d_dir2d(const gp_Pnt2d& theP, const gp_Dir2d& theV) {
-    return construct_unique<gp_Ax2d>(theP, theV);
+    return std::make_unique<gp_Ax2d>(theP, theV);
 }
 
 inline std::unique_ptr<gp_Ax2d> gp_Ax2d_Reversed(const gp_Ax2d& self) {
@@ -571,19 +571,19 @@ inline std::unique_ptr<gp_Ax2d> gp_Ax2d_Translated(const gp_Ax2d& self, const gp
 // ========================
 
 inline std::unique_ptr<gp_Ax3> gp_Ax3_ctor() {
-    return construct_unique<gp_Ax3>();
+    return std::make_unique<gp_Ax3>();
 }
 
 inline std::unique_ptr<gp_Ax3> gp_Ax3_ctor_ax2(const gp_Ax2& theA) {
-    return construct_unique<gp_Ax3>(theA);
+    return std::make_unique<gp_Ax3>(theA);
 }
 
 inline std::unique_ptr<gp_Ax3> gp_Ax3_ctor_pnt_dir2(const gp_Pnt& theP, const gp_Dir& theN, const gp_Dir& theVx) {
-    return construct_unique<gp_Ax3>(theP, theN, theVx);
+    return std::make_unique<gp_Ax3>(theP, theN, theVx);
 }
 
 inline std::unique_ptr<gp_Ax3> gp_Ax3_ctor_pnt_dir(const gp_Pnt& theP, const gp_Dir& theV) {
-    return construct_unique<gp_Ax3>(theP, theV);
+    return std::make_unique<gp_Ax3>(theP, theV);
 }
 
 inline std::unique_ptr<gp_Ax2> gp_Ax3_Ax2(const gp_Ax3& self) {
@@ -628,11 +628,11 @@ inline std::unique_ptr<gp_Ax3> gp_Ax3_Translated(const gp_Ax3& self, const gp_Pn
 // ========================
 
 inline std::unique_ptr<gp_Trsf> gp_Trsf_ctor() {
-    return construct_unique<gp_Trsf>();
+    return std::make_unique<gp_Trsf>();
 }
 
 inline std::unique_ptr<gp_Trsf> gp_Trsf_ctor_trsf2d(const gp_Trsf2d& theT) {
-    return construct_unique<gp_Trsf>(theT);
+    return std::make_unique<gp_Trsf>(theT);
 }
 
 inline std::unique_ptr<gp_TrsfForm> gp_Trsf_Form(const gp_Trsf& self) {
@@ -665,11 +665,11 @@ inline std::unique_ptr<gp_Trsf> gp_Trsf_Powered(const gp_Trsf& self, Standard_In
 // ========================
 
 inline std::unique_ptr<gp_Trsf2d> gp_Trsf2d_ctor() {
-    return construct_unique<gp_Trsf2d>();
+    return std::make_unique<gp_Trsf2d>();
 }
 
 inline std::unique_ptr<gp_Trsf2d> gp_Trsf2d_ctor_trsf(const gp_Trsf& theT) {
-    return construct_unique<gp_Trsf2d>(theT);
+    return std::make_unique<gp_Trsf2d>(theT);
 }
 
 inline std::unique_ptr<gp_TrsfForm> gp_Trsf2d_Form(const gp_Trsf2d& self) {
@@ -698,15 +698,15 @@ inline std::unique_ptr<gp_Trsf2d> gp_Trsf2d_Powered(gp_Trsf2d& self, Standard_In
 // ========================
 
 inline std::unique_ptr<gp_GTrsf> gp_GTrsf_ctor() {
-    return construct_unique<gp_GTrsf>();
+    return std::make_unique<gp_GTrsf>();
 }
 
 inline std::unique_ptr<gp_GTrsf> gp_GTrsf_ctor_trsf(const gp_Trsf& theT) {
-    return construct_unique<gp_GTrsf>(theT);
+    return std::make_unique<gp_GTrsf>(theT);
 }
 
 inline std::unique_ptr<gp_GTrsf> gp_GTrsf_ctor_mat_xyz(const gp_Mat& theM, const gp_XYZ& theV) {
-    return construct_unique<gp_GTrsf>(theM, theV);
+    return std::make_unique<gp_GTrsf>(theM, theV);
 }
 
 inline std::unique_ptr<gp_TrsfForm> gp_GTrsf_Form(const gp_GTrsf& self) {
@@ -735,15 +735,15 @@ inline std::unique_ptr<gp_Trsf> gp_GTrsf_Trsf(const gp_GTrsf& self) {
 // ========================
 
 inline std::unique_ptr<gp_GTrsf2d> gp_GTrsf2d_ctor() {
-    return construct_unique<gp_GTrsf2d>();
+    return std::make_unique<gp_GTrsf2d>();
 }
 
 inline std::unique_ptr<gp_GTrsf2d> gp_GTrsf2d_ctor_trsf2d(const gp_Trsf2d& theT) {
-    return construct_unique<gp_GTrsf2d>(theT);
+    return std::make_unique<gp_GTrsf2d>(theT);
 }
 
 inline std::unique_ptr<gp_GTrsf2d> gp_GTrsf2d_ctor_mat2d_xy(const gp_Mat2d& theM, const gp_XY& theV) {
-    return construct_unique<gp_GTrsf2d>(theM, theV);
+    return std::make_unique<gp_GTrsf2d>(theM, theV);
 }
 
 inline std::unique_ptr<gp_TrsfForm> gp_GTrsf2d_Form(const gp_GTrsf2d& self) {
@@ -776,15 +776,15 @@ inline std::unique_ptr<gp_Trsf2d> gp_GTrsf2d_Trsf2d(const gp_GTrsf2d& self) {
 // ========================
 
 inline std::unique_ptr<gp_Lin> gp_Lin_ctor() {
-    return construct_unique<gp_Lin>();
+    return std::make_unique<gp_Lin>();
 }
 
 inline std::unique_ptr<gp_Lin> gp_Lin_ctor_ax1(const gp_Ax1& theA1) {
-    return construct_unique<gp_Lin>(theA1);
+    return std::make_unique<gp_Lin>(theA1);
 }
 
 inline std::unique_ptr<gp_Lin> gp_Lin_ctor_pnt_dir(const gp_Pnt& theP, const gp_Dir& theV) {
-    return construct_unique<gp_Lin>(theP, theV);
+    return std::make_unique<gp_Lin>(theP, theV);
 }
 
 inline std::unique_ptr<gp_Lin> gp_Lin_Reversed(const gp_Lin& self) {
@@ -833,11 +833,11 @@ inline std::unique_ptr<gp_Lin> gp_Lin_Translated(const gp_Lin& self, const gp_Pn
 // ========================
 
 inline std::unique_ptr<gp_Circ> gp_Circ_ctor() {
-    return construct_unique<gp_Circ>();
+    return std::make_unique<gp_Circ>();
 }
 
 inline std::unique_ptr<gp_Circ> gp_Circ_ctor_ax2_real(const gp_Ax2& theA2, Standard_Real theRadius) {
-    return construct_unique<gp_Circ>(theA2, theRadius);
+    return std::make_unique<gp_Circ>(theA2, theRadius);
 }
 
 inline std::unique_ptr<gp_Ax1> gp_Circ_XAxis(const gp_Circ& self) {
@@ -886,19 +886,19 @@ inline std::unique_ptr<gp_Circ> gp_Circ_Translated(const gp_Circ& self, const gp
 // ========================
 
 inline std::unique_ptr<gp_Pln> gp_Pln_ctor() {
-    return construct_unique<gp_Pln>();
+    return std::make_unique<gp_Pln>();
 }
 
 inline std::unique_ptr<gp_Pln> gp_Pln_ctor_ax3(const gp_Ax3& theA3) {
-    return construct_unique<gp_Pln>(theA3);
+    return std::make_unique<gp_Pln>(theA3);
 }
 
 inline std::unique_ptr<gp_Pln> gp_Pln_ctor_pnt_dir(const gp_Pnt& theP, const gp_Dir& theV) {
-    return construct_unique<gp_Pln>(theP, theV);
+    return std::make_unique<gp_Pln>(theP, theV);
 }
 
 inline std::unique_ptr<gp_Pln> gp_Pln_ctor_real4(Standard_Real theA, Standard_Real theB, Standard_Real theC, Standard_Real theD) {
-    return construct_unique<gp_Pln>(theA, theB, theC, theD);
+    return std::make_unique<gp_Pln>(theA, theB, theC, theD);
 }
 
 inline std::unique_ptr<gp_Ax1> gp_Pln_XAxis(const gp_Pln& self) {

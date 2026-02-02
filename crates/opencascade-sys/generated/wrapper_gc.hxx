@@ -6,8 +6,10 @@
 
 #include <GC_MakeArcOfCircle.hxx>
 #include <GC_MakeSegment.hxx>
+#include <GC_Root.hxx>
 #include <Geom_TrimmedCurve.hxx>
 #include <Standard_Handle.hxx>
+#include <gce_ErrorType.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Lin.hxx>
 #include <gp_Pnt.hxx>
@@ -21,44 +23,57 @@ typedef opencascade::handle<Geom_TrimmedCurve> HandleGeomTrimmedCurve;
 // ========================
 
 inline std::unique_ptr<GC_MakeArcOfCircle> GC_MakeArcOfCircle_ctor_circ_real2_bool(const gp_Circ& Circ, Standard_Real Alpha1, Standard_Real Alpha2, Standard_Boolean Sense) {
-    return construct_unique<GC_MakeArcOfCircle>(Circ, Alpha1, Alpha2, Sense);
+    return std::make_unique<GC_MakeArcOfCircle>(Circ, Alpha1, Alpha2, Sense);
 }
 
 inline std::unique_ptr<GC_MakeArcOfCircle> GC_MakeArcOfCircle_ctor_circ_pnt_real_bool(const gp_Circ& Circ, const gp_Pnt& P, Standard_Real Alpha, Standard_Boolean Sense) {
-    return construct_unique<GC_MakeArcOfCircle>(Circ, P, Alpha, Sense);
+    return std::make_unique<GC_MakeArcOfCircle>(Circ, P, Alpha, Sense);
 }
 
 inline std::unique_ptr<GC_MakeArcOfCircle> GC_MakeArcOfCircle_ctor_circ_pnt2_bool(const gp_Circ& Circ, const gp_Pnt& P1, const gp_Pnt& P2, Standard_Boolean Sense) {
-    return construct_unique<GC_MakeArcOfCircle>(Circ, P1, P2, Sense);
+    return std::make_unique<GC_MakeArcOfCircle>(Circ, P1, P2, Sense);
 }
 
 inline std::unique_ptr<GC_MakeArcOfCircle> GC_MakeArcOfCircle_ctor_pnt3(const gp_Pnt& P1, const gp_Pnt& P2, const gp_Pnt& P3) {
-    return construct_unique<GC_MakeArcOfCircle>(P1, P2, P3);
+    return std::make_unique<GC_MakeArcOfCircle>(P1, P2, P3);
 }
 
 inline std::unique_ptr<GC_MakeArcOfCircle> GC_MakeArcOfCircle_ctor_pnt_vec_pnt(const gp_Pnt& P1, const gp_Vec& V, const gp_Pnt& P2) {
-    return construct_unique<GC_MakeArcOfCircle>(P1, V, P2);
+    return std::make_unique<GC_MakeArcOfCircle>(P1, V, P2);
 }
 
+inline const GC_Root& GC_MakeArcOfCircle_as_GC_Root(const GC_MakeArcOfCircle& self) { return self; }
+inline GC_Root& GC_MakeArcOfCircle_as_GC_Root_mut(GC_MakeArcOfCircle& self) { return self; }
 
 // ========================
 // GC_MakeSegment wrappers
 // ========================
 
 inline std::unique_ptr<GC_MakeSegment> GC_MakeSegment_ctor_pnt2(const gp_Pnt& P1, const gp_Pnt& P2) {
-    return construct_unique<GC_MakeSegment>(P1, P2);
+    return std::make_unique<GC_MakeSegment>(P1, P2);
 }
 
 inline std::unique_ptr<GC_MakeSegment> GC_MakeSegment_ctor_lin_real2(const gp_Lin& Line, Standard_Real U1, Standard_Real U2) {
-    return construct_unique<GC_MakeSegment>(Line, U1, U2);
+    return std::make_unique<GC_MakeSegment>(Line, U1, U2);
 }
 
 inline std::unique_ptr<GC_MakeSegment> GC_MakeSegment_ctor_lin_pnt_real(const gp_Lin& Line, const gp_Pnt& Point, Standard_Real Ulast) {
-    return construct_unique<GC_MakeSegment>(Line, Point, Ulast);
+    return std::make_unique<GC_MakeSegment>(Line, Point, Ulast);
 }
 
 inline std::unique_ptr<GC_MakeSegment> GC_MakeSegment_ctor_lin_pnt2(const gp_Lin& Line, const gp_Pnt& P1, const gp_Pnt& P2) {
-    return construct_unique<GC_MakeSegment>(Line, P1, P2);
+    return std::make_unique<GC_MakeSegment>(Line, P1, P2);
+}
+
+inline const GC_Root& GC_MakeSegment_as_GC_Root(const GC_MakeSegment& self) { return self; }
+inline GC_Root& GC_MakeSegment_as_GC_Root_mut(GC_MakeSegment& self) { return self; }
+
+// ========================
+// GC_Root wrappers
+// ========================
+
+inline std::unique_ptr<gce_ErrorType> GC_Root_Status(const GC_Root& self) {
+    return std::make_unique<gce_ErrorType>(self.Status());
 }
 
 

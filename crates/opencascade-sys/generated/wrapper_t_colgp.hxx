@@ -7,34 +7,141 @@
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
 #include <TColgp_Array1OfPnt.hxx>
+#include <TColgp_Array1OfPnt2d.hxx>
+#include <TColgp_Array1OfVec.hxx>
+#include <TColgp_Array2OfPnt.hxx>
 #include <TColgp_HArray1OfPnt.hxx>
+#include <TColgp_HArray1OfPnt2d.hxx>
+#include <TColgp_HArray1OfVec.hxx>
+#include <TColgp_HArray2OfPnt.hxx>
 #include <gp_Pnt.hxx>
+#include <gp_Pnt2d.hxx>
+#include <gp_Vec.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<Standard_Type> HandleStandardType;
+typedef opencascade::handle<TColgp_HArray1OfPnt> HandleTColgpHArray1OfPnt;
+typedef opencascade::handle<TColgp_HArray1OfPnt2d> HandleTColgpHArray1OfPnt2d;
+typedef opencascade::handle<TColgp_HArray1OfVec> HandleTColgpHArray1OfVec;
+typedef opencascade::handle<TColgp_HArray2OfPnt> HandleTColgpHArray2OfPnt;
 
 // ========================
 // TColgp_HArray1OfPnt wrappers
 // ========================
 
 inline std::unique_ptr<TColgp_HArray1OfPnt> TColgp_HArray1OfPnt_ctor() {
-    return construct_unique<TColgp_HArray1OfPnt>();
+    return std::make_unique<TColgp_HArray1OfPnt>();
 }
 
 inline std::unique_ptr<TColgp_HArray1OfPnt> TColgp_HArray1OfPnt_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return construct_unique<TColgp_HArray1OfPnt>(theLower, theUpper);
+    return std::make_unique<TColgp_HArray1OfPnt>(theLower, theUpper);
 }
 
 inline std::unique_ptr<TColgp_HArray1OfPnt> TColgp_HArray1OfPnt_ctor_int2_pnt(Standard_Integer theLower, Standard_Integer theUpper, const gp_Pnt& theValue) {
-    return construct_unique<TColgp_HArray1OfPnt>(theLower, theUpper, theValue);
+    return std::make_unique<TColgp_HArray1OfPnt>(theLower, theUpper, theValue);
+}
+
+inline std::unique_ptr<TColgp_HArray1OfPnt> TColgp_HArray1OfPnt_ctor_pnt_int2_bool(const gp_Pnt& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
+    return std::make_unique<TColgp_HArray1OfPnt>(theBegin, theLower, theUpper, arg3);
 }
 
 inline std::unique_ptr<TColgp_HArray1OfPnt> TColgp_HArray1OfPnt_ctor_array1ofpnt(const TColgp_Array1OfPnt& theOther) {
-    return construct_unique<TColgp_HArray1OfPnt>(theOther);
+    return std::make_unique<TColgp_HArray1OfPnt>(theOther);
 }
 
 inline rust::String TColgp_HArray1OfPnt_get_type_name() {
     return rust::String(TColgp_HArray1OfPnt::get_type_name());
 }
 
+inline std::unique_ptr<HandleTColgpHArray1OfPnt> TColgp_HArray1OfPnt_to_handle(std::unique_ptr<TColgp_HArray1OfPnt> obj) {
+    return std::make_unique<HandleTColgpHArray1OfPnt>(obj.release());
+}
+
+// ========================
+// TColgp_HArray1OfPnt2d wrappers
+// ========================
+
+inline std::unique_ptr<TColgp_HArray1OfPnt2d> TColgp_HArray1OfPnt2d_ctor() {
+    return std::make_unique<TColgp_HArray1OfPnt2d>();
+}
+
+inline std::unique_ptr<TColgp_HArray1OfPnt2d> TColgp_HArray1OfPnt2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<TColgp_HArray1OfPnt2d>(theLower, theUpper);
+}
+
+inline std::unique_ptr<TColgp_HArray1OfPnt2d> TColgp_HArray1OfPnt2d_ctor_int2_pnt2d(Standard_Integer theLower, Standard_Integer theUpper, const gp_Pnt2d& theValue) {
+    return std::make_unique<TColgp_HArray1OfPnt2d>(theLower, theUpper, theValue);
+}
+
+inline std::unique_ptr<TColgp_HArray1OfPnt2d> TColgp_HArray1OfPnt2d_ctor_pnt2d_int2_bool(const gp_Pnt2d& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
+    return std::make_unique<TColgp_HArray1OfPnt2d>(theBegin, theLower, theUpper, arg3);
+}
+
+inline std::unique_ptr<TColgp_HArray1OfPnt2d> TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d(const TColgp_Array1OfPnt2d& theOther) {
+    return std::make_unique<TColgp_HArray1OfPnt2d>(theOther);
+}
+
+inline rust::String TColgp_HArray1OfPnt2d_get_type_name() {
+    return rust::String(TColgp_HArray1OfPnt2d::get_type_name());
+}
+
+inline std::unique_ptr<HandleTColgpHArray1OfPnt2d> TColgp_HArray1OfPnt2d_to_handle(std::unique_ptr<TColgp_HArray1OfPnt2d> obj) {
+    return std::make_unique<HandleTColgpHArray1OfPnt2d>(obj.release());
+}
+
+// ========================
+// TColgp_HArray1OfVec wrappers
+// ========================
+
+inline std::unique_ptr<TColgp_HArray1OfVec> TColgp_HArray1OfVec_ctor() {
+    return std::make_unique<TColgp_HArray1OfVec>();
+}
+
+inline std::unique_ptr<TColgp_HArray1OfVec> TColgp_HArray1OfVec_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<TColgp_HArray1OfVec>(theLower, theUpper);
+}
+
+inline std::unique_ptr<TColgp_HArray1OfVec> TColgp_HArray1OfVec_ctor_int2_vec(Standard_Integer theLower, Standard_Integer theUpper, const gp_Vec& theValue) {
+    return std::make_unique<TColgp_HArray1OfVec>(theLower, theUpper, theValue);
+}
+
+inline std::unique_ptr<TColgp_HArray1OfVec> TColgp_HArray1OfVec_ctor_vec_int2_bool(const gp_Vec& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
+    return std::make_unique<TColgp_HArray1OfVec>(theBegin, theLower, theUpper, arg3);
+}
+
+inline std::unique_ptr<TColgp_HArray1OfVec> TColgp_HArray1OfVec_ctor_array1ofvec(const TColgp_Array1OfVec& theOther) {
+    return std::make_unique<TColgp_HArray1OfVec>(theOther);
+}
+
+inline rust::String TColgp_HArray1OfVec_get_type_name() {
+    return rust::String(TColgp_HArray1OfVec::get_type_name());
+}
+
+inline std::unique_ptr<HandleTColgpHArray1OfVec> TColgp_HArray1OfVec_to_handle(std::unique_ptr<TColgp_HArray1OfVec> obj) {
+    return std::make_unique<HandleTColgpHArray1OfVec>(obj.release());
+}
+
+// ========================
+// TColgp_HArray2OfPnt wrappers
+// ========================
+
+inline std::unique_ptr<TColgp_HArray2OfPnt> TColgp_HArray2OfPnt_ctor_int4(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp) {
+    return std::make_unique<TColgp_HArray2OfPnt>(theRowLow, theRowUpp, theColLow, theColUpp);
+}
+
+inline std::unique_ptr<TColgp_HArray2OfPnt> TColgp_HArray2OfPnt_ctor_int4_pnt(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp, const gp_Pnt& theValue) {
+    return std::make_unique<TColgp_HArray2OfPnt>(theRowLow, theRowUpp, theColLow, theColUpp, theValue);
+}
+
+inline std::unique_ptr<TColgp_HArray2OfPnt> TColgp_HArray2OfPnt_ctor_array2ofpnt(const TColgp_Array2OfPnt& theOther) {
+    return std::make_unique<TColgp_HArray2OfPnt>(theOther);
+}
+
+inline rust::String TColgp_HArray2OfPnt_get_type_name() {
+    return rust::String(TColgp_HArray2OfPnt::get_type_name());
+}
+
+inline std::unique_ptr<HandleTColgpHArray2OfPnt> TColgp_HArray2OfPnt_to_handle(std::unique_ptr<TColgp_HArray2OfPnt> obj) {
+    return std::make_unique<HandleTColgpHArray2OfPnt>(obj.release());
+}
 

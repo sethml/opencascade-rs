@@ -4,6 +4,7 @@
 //! organized into per-module Rust files with type aliasing for cross-module references.
 
 pub mod codegen;
+pub mod header_deps;
 pub mod model;
 pub mod module_graph;
 pub mod parser;
@@ -35,7 +36,7 @@ pub struct GeneratorConfig<'a> {
 /// Generate bindings from OCCT headers
 ///
 /// Returns a list of generated modules (Rust + C++ code) and the common header.
-pub fn generate_bindings(config: &GeneratorConfig) -> Result<(Vec<GeneratedModule>, String)> {
+pub fn generate_bindings(config: &GeneratorConfig) -> Result<Vec<GeneratedModule>> {
     let headers: Vec<_> = config.headers.iter().map(|p| p.to_path_buf()).collect();
     let include_dirs: Vec<_> = config.include_dirs.iter().map(|p| p.to_path_buf()).collect();
 
@@ -45,16 +46,23 @@ pub fn generate_bindings(config: &GeneratorConfig) -> Result<(Vec<GeneratedModul
     // Build module dependency graph
     let graph = module_graph::ModuleGraph::from_headers(&parsed);
 
-    // Generate common header
-    let common_hxx = codegen::cpp::generate_common_header();
+    // Note: common.hxx is now hand-maintained in opencascade-sys/src/common.hxx
 
     // Collect all classes and enums
     let all_classes: Vec<_> = parsed.iter().flat_map(|h| &h.classes).collect();
     let all_enums: Vec<_> = parsed.iter().flat_map(|h| &h.enums).collect();
+    let all_functions: Vec<_> = parsed.iter().flat_map(|h| &h.functions).collect();
     
     // Collect all enum names for cross-module enum type resolution
     let all_enum_names: std::collections::HashSet<String> = 
         all_enums.iter().map(|e| e.name.clone()).collect();
+    
+    // Collect all class names for upcast filtering (skip base classes not in our set)
+    let all_class_names: std::collections::HashSet<String> =
+        all_classes.iter().map(|c| c.name.clone()).collect();
+
+    // Build global inheritance map for transitive upcast generation
+    let global_inheritance_map = codegen::cpp::build_inheritance_map(&all_classes);
 
     let mut modules = Vec::new();
 
@@ -75,28 +83,42 @@ pub fn generate_bindings(config: &GeneratorConfig) -> Result<(Vec<GeneratedModul
             .copied()
             .collect();
 
-        if module_classes.is_empty() && module_enums.is_empty() {
+        // Get functions for this module
+        let module_functions: Vec<_> = all_functions
+            .iter()
+            .filter(|f| f.module == module.name)
+            .copied()
+            .collect();
+
+        if module_classes.is_empty() && module_enums.is_empty() && module_functions.is_empty() {
             continue;
         }
 
         // Get cross-module types
         let cross_types = graph.get_cross_module_types(&module.name);
 
+        // Get collections for this module
+        let module_collections = codegen::collections::collections_for_module(&module.rust_name);
+
+        // Collect unique header names for this module (for testing, use empty list)
+        let headers_list: Vec<String> = Vec::new();
+
         // Generate Rust code
         let rust_code =
-            codegen::rust::generate_module(module, &module_classes, &module_enums, &cross_types, &all_enum_names);
+            codegen::rust::generate_module(module, &module_classes, &module_enums, &module_functions, &cross_types, &all_enum_names, &all_class_names, &all_classes, &headers_list, &module_collections);
 
-        // Generate C++ header
-        let cpp_code = codegen::cpp::generate_module_header(module, &module_classes, &cross_types, &all_enum_names);
+        // Generate C++ header (use empty known_headers for tests - headers won't be filtered)
+        let known_headers: std::collections::HashSet<String> = std::collections::HashSet::new();
+        let cpp_code = codegen::cpp::generate_module_header(module, &module_classes, &module_functions, &cross_types, &all_enum_names, &all_class_names, &global_inheritance_map, &module_collections, &known_headers);
 
         modules.push(GeneratedModule {
             rust_name: module.rust_name.clone(),
-            rust_code: rust_code.to_string(),
+            rust_code,
             cpp_code,
         });
     }
 
-    Ok((modules, common_hxx))
+    Ok(modules)
 }
 
 /// Generate the lib.rs content that includes all modules

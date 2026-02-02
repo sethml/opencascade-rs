@@ -30,32 +30,34 @@ typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 // ========================
 
 inline std::unique_ptr<IGESControl_Reader> IGESControl_Reader_ctor() {
-    return construct_unique<IGESControl_Reader>();
+    return std::make_unique<IGESControl_Reader>();
 }
 
 inline std::unique_ptr<IGESControl_Reader> IGESControl_Reader_ctor_handleworksession_bool(const opencascade::handle<XSControl_WorkSession>& WS, Standard_Boolean scratch) {
-    return construct_unique<IGESControl_Reader>(WS, scratch);
+    return std::make_unique<IGESControl_Reader>(WS, scratch);
 }
 
 inline std::unique_ptr<opencascade::handle<IGESData_IGESModel>> IGESControl_Reader_IGESModel(const IGESControl_Reader& self) {
     return std::make_unique<opencascade::handle<IGESData_IGESModel>>(self.IGESModel());
 }
 
+inline const XSControl_Reader& IGESControl_Reader_as_XSControl_Reader(const IGESControl_Reader& self) { return self; }
+inline XSControl_Reader& IGESControl_Reader_as_XSControl_Reader_mut(IGESControl_Reader& self) { return self; }
 
 // ========================
 // IGESControl_Writer wrappers
 // ========================
 
 inline std::unique_ptr<IGESControl_Writer> IGESControl_Writer_ctor() {
-    return construct_unique<IGESControl_Writer>();
+    return std::make_unique<IGESControl_Writer>();
 }
 
 inline std::unique_ptr<IGESControl_Writer> IGESControl_Writer_ctor_charptr_int(rust::Str theUnit, Standard_Integer theModecr) {
-    return construct_unique<IGESControl_Writer>(std::string(theUnit).c_str(), theModecr);
+    return std::make_unique<IGESControl_Writer>(std::string(theUnit).c_str(), theModecr);
 }
 
 inline std::unique_ptr<IGESControl_Writer> IGESControl_Writer_ctor_handleigesmodel_int(const opencascade::handle<IGESData_IGESModel>& theModel, Standard_Integer theModecr) {
-    return construct_unique<IGESControl_Writer>(theModel, theModecr);
+    return std::make_unique<IGESControl_Writer>(theModel, theModecr);
 }
 
 inline Standard_Boolean IGESControl_Writer_Write(IGESControl_Writer& self, rust::Str file, Standard_Boolean fnes) {

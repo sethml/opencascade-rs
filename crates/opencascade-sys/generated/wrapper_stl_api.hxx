@@ -13,7 +13,7 @@
 // ========================
 
 inline std::unique_ptr<StlAPI_Writer> StlAPI_Writer_ctor() {
-    return construct_unique<StlAPI_Writer>();
+    return std::make_unique<StlAPI_Writer>();
 }
 
 inline Standard_Boolean StlAPI_Writer_Write(StlAPI_Writer& self, const TopoDS_Shape& theShape, rust::Str theFileName, const Message_ProgressRange& theProgress) {

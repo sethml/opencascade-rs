@@ -1,6 +1,6 @@
 use cxx::UniquePtr;
 use glam::DVec3;
-use opencascade_sys::ffi;
+use opencascade_sys::{b_rep_bnd_lib, bnd};
 
 use crate::primitives::Shape;
 
@@ -9,30 +9,30 @@ use crate::primitives::Shape;
 /// means that the point values of a `BoundingBox` will often be slightly larger
 /// or smaller than expected of the geometry of known shapes.
 pub struct BoundingBox {
-    pub(crate) inner: UniquePtr<ffi::Bnd_Box>,
+    pub(crate) inner: UniquePtr<bnd::Box>,
 }
 impl BoundingBox {
     /// Create a new void box. A void box in OCC is defined as a box that contains no points.
     pub fn void() -> BoundingBox {
-        Self { inner: ffi::Bnd_Box_ctor() }
+        Self { inner: bnd::Box::new() }
     }
 
     pub fn is_void(&self) -> bool {
-        self.inner.IsVoid()
+        self.inner.is_void()
     }
 
     pub fn get_gap(&self) -> f64 {
-        self.inner.GetGap()
+        self.inner.get_gap()
     }
 
     pub fn min(&self) -> DVec3 {
-        let p = ffi::Bnd_Box_CornerMin(self.inner.as_ref().unwrap());
-        glam::dvec3(p.X(), p.Y(), p.Z())
+        let p = self.inner.corner_min();
+        glam::dvec3(p.x(), p.y(), p.z())
     }
 
     pub fn max(&self) -> DVec3 {
-        let p = ffi::Bnd_Box_CornerMax(self.inner.as_ref().unwrap());
-        glam::dvec3(p.X(), p.Y(), p.Z())
+        let p = self.inner.corner_max();
+        glam::dvec3(p.x(), p.y(), p.z())
     }
 
     /// Get a vector corresponding to the `gap` of this box in all dimensions.
@@ -45,7 +45,7 @@ impl BoundingBox {
 /// package.
 pub fn aabb(shape: &Shape) -> BoundingBox {
     let mut bb = BoundingBox::void();
-    ffi::BRepBndLib_Add(
+    b_rep_bnd_lib::BRepBndLib::add(
         shape.inner.as_ref().expect("Input shape ref was null"),
         bb.inner.pin_mut(),
         true,

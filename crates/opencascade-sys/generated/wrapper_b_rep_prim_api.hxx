@@ -7,9 +7,11 @@
 #include <BRepPrimAPI_MakeBox.hxx>
 #include <BRepPrimAPI_MakeCone.hxx>
 #include <BRepPrimAPI_MakeCylinder.hxx>
+#include <BRepPrimAPI_MakeOneAxis.hxx>
 #include <BRepPrimAPI_MakePrism.hxx>
 #include <BRepPrimAPI_MakeRevol.hxx>
 #include <BRepPrimAPI_MakeSphere.hxx>
+#include <BRepPrimAPI_MakeSweep.hxx>
 #include <BRepPrimAPI_MakeTorus.hxx>
 #include <BRepPrim_Cone.hxx>
 #include <BRepPrim_Cylinder.hxx>
@@ -35,78 +37,94 @@
 // ========================
 
 inline std::unique_ptr<BRepPrimAPI_MakeBox> BRepPrimAPI_MakeBox_ctor() {
-    return construct_unique<BRepPrimAPI_MakeBox>();
+    return std::make_unique<BRepPrimAPI_MakeBox>();
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeBox> BRepPrimAPI_MakeBox_ctor_real3(Standard_Real dx, Standard_Real dy, Standard_Real dz) {
-    return construct_unique<BRepPrimAPI_MakeBox>(dx, dy, dz);
+    return std::make_unique<BRepPrimAPI_MakeBox>(dx, dy, dz);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeBox> BRepPrimAPI_MakeBox_ctor_pnt_real3(const gp_Pnt& P, Standard_Real dx, Standard_Real dy, Standard_Real dz) {
-    return construct_unique<BRepPrimAPI_MakeBox>(P, dx, dy, dz);
+    return std::make_unique<BRepPrimAPI_MakeBox>(P, dx, dy, dz);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeBox> BRepPrimAPI_MakeBox_ctor_pnt2(const gp_Pnt& P1, const gp_Pnt& P2) {
-    return construct_unique<BRepPrimAPI_MakeBox>(P1, P2);
+    return std::make_unique<BRepPrimAPI_MakeBox>(P1, P2);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeBox> BRepPrimAPI_MakeBox_ctor_ax2_real3(const gp_Ax2& Axes, Standard_Real dx, Standard_Real dy, Standard_Real dz) {
-    return construct_unique<BRepPrimAPI_MakeBox>(Axes, dx, dy, dz);
+    return std::make_unique<BRepPrimAPI_MakeBox>(Axes, dx, dy, dz);
 }
 
+inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeBox_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeBox& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeBox_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeBox& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeBox_as_BRepBuilderAPI_Command(const BRepPrimAPI_MakeBox& self) { return self; }
+inline BRepBuilderAPI_Command& BRepPrimAPI_MakeBox_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeBox& self) { return self; }
 
 // ========================
 // BRepPrimAPI_MakeCone wrappers
 // ========================
 
 inline std::unique_ptr<BRepPrimAPI_MakeCone> BRepPrimAPI_MakeCone_ctor_real3(Standard_Real R1, Standard_Real R2, Standard_Real H) {
-    return construct_unique<BRepPrimAPI_MakeCone>(R1, R2, H);
+    return std::make_unique<BRepPrimAPI_MakeCone>(R1, R2, H);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeCone> BRepPrimAPI_MakeCone_ctor_real4(Standard_Real R1, Standard_Real R2, Standard_Real H, Standard_Real angle) {
-    return construct_unique<BRepPrimAPI_MakeCone>(R1, R2, H, angle);
+    return std::make_unique<BRepPrimAPI_MakeCone>(R1, R2, H, angle);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeCone> BRepPrimAPI_MakeCone_ctor_ax2_real3(const gp_Ax2& Axes, Standard_Real R1, Standard_Real R2, Standard_Real H) {
-    return construct_unique<BRepPrimAPI_MakeCone>(Axes, R1, R2, H);
+    return std::make_unique<BRepPrimAPI_MakeCone>(Axes, R1, R2, H);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeCone> BRepPrimAPI_MakeCone_ctor_ax2_real4(const gp_Ax2& Axes, Standard_Real R1, Standard_Real R2, Standard_Real H, Standard_Real angle) {
-    return construct_unique<BRepPrimAPI_MakeCone>(Axes, R1, R2, H, angle);
+    return std::make_unique<BRepPrimAPI_MakeCone>(Axes, R1, R2, H, angle);
 }
 
+inline const BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis(const BRepPrimAPI_MakeCone& self) { return self; }
+inline BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis_mut(BRepPrimAPI_MakeCone& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Command(const BRepPrimAPI_MakeCone& self) { return self; }
+inline BRepBuilderAPI_Command& BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeCone& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeCone_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeCone& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeCone_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeCone& self) { return self; }
 
 // ========================
 // BRepPrimAPI_MakeCylinder wrappers
 // ========================
 
 inline std::unique_ptr<BRepPrimAPI_MakeCylinder> BRepPrimAPI_MakeCylinder_ctor_real2(Standard_Real R, Standard_Real H) {
-    return construct_unique<BRepPrimAPI_MakeCylinder>(R, H);
+    return std::make_unique<BRepPrimAPI_MakeCylinder>(R, H);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeCylinder> BRepPrimAPI_MakeCylinder_ctor_real3(Standard_Real R, Standard_Real H, Standard_Real Angle) {
-    return construct_unique<BRepPrimAPI_MakeCylinder>(R, H, Angle);
+    return std::make_unique<BRepPrimAPI_MakeCylinder>(R, H, Angle);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeCylinder> BRepPrimAPI_MakeCylinder_ctor_ax2_real2(const gp_Ax2& Axes, Standard_Real R, Standard_Real H) {
-    return construct_unique<BRepPrimAPI_MakeCylinder>(Axes, R, H);
+    return std::make_unique<BRepPrimAPI_MakeCylinder>(Axes, R, H);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeCylinder> BRepPrimAPI_MakeCylinder_ctor_ax2_real3(const gp_Ax2& Axes, Standard_Real R, Standard_Real H, Standard_Real Angle) {
-    return construct_unique<BRepPrimAPI_MakeCylinder>(Axes, R, H, Angle);
+    return std::make_unique<BRepPrimAPI_MakeCylinder>(Axes, R, H, Angle);
 }
 
+inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeCylinder& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeCylinder& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_Command(const BRepPrimAPI_MakeCylinder& self) { return self; }
+inline BRepBuilderAPI_Command& BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeCylinder& self) { return self; }
+inline const BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis(const BRepPrimAPI_MakeCylinder& self) { return self; }
+inline BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis_mut(BRepPrimAPI_MakeCylinder& self) { return self; }
 
 // ========================
 // BRepPrimAPI_MakePrism wrappers
 // ========================
 
 inline std::unique_ptr<BRepPrimAPI_MakePrism> BRepPrimAPI_MakePrism_ctor_shape_vec_bool2(const TopoDS_Shape& S, const gp_Vec& V, Standard_Boolean Copy, Standard_Boolean Canonize) {
-    return construct_unique<BRepPrimAPI_MakePrism>(S, V, Copy, Canonize);
+    return std::make_unique<BRepPrimAPI_MakePrism>(S, V, Copy, Canonize);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakePrism> BRepPrimAPI_MakePrism_ctor_shape_dir_bool3(const TopoDS_Shape& S, const gp_Dir& D, Standard_Boolean Inf, Standard_Boolean Copy, Standard_Boolean Canonize) {
-    return construct_unique<BRepPrimAPI_MakePrism>(S, D, Inf, Copy, Canonize);
+    return std::make_unique<BRepPrimAPI_MakePrism>(S, D, Inf, Copy, Canonize);
 }
 
 inline std::unique_ptr<TopoDS_Shape> BRepPrimAPI_MakePrism_FirstShape(BRepPrimAPI_MakePrism& self) {
@@ -125,17 +143,23 @@ inline std::unique_ptr<TopoDS_Shape> BRepPrimAPI_MakePrism_LastShape(BRepPrimAPI
     return std::make_unique<TopoDS_Shape>(self.LastShape(theShape));
 }
 
+inline const BRepPrimAPI_MakeSweep& BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep(const BRepPrimAPI_MakePrism& self) { return self; }
+inline BRepPrimAPI_MakeSweep& BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep_mut(BRepPrimAPI_MakePrism& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepPrimAPI_MakePrism_as_BRepBuilderAPI_Command(const BRepPrimAPI_MakePrism& self) { return self; }
+inline BRepBuilderAPI_Command& BRepPrimAPI_MakePrism_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakePrism& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakePrism_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakePrism& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakePrism_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakePrism& self) { return self; }
 
 // ========================
 // BRepPrimAPI_MakeRevol wrappers
 // ========================
 
 inline std::unique_ptr<BRepPrimAPI_MakeRevol> BRepPrimAPI_MakeRevol_ctor_shape_ax1_real_bool(const TopoDS_Shape& S, const gp_Ax1& A, Standard_Real D, Standard_Boolean Copy) {
-    return construct_unique<BRepPrimAPI_MakeRevol>(S, A, D, Copy);
+    return std::make_unique<BRepPrimAPI_MakeRevol>(S, A, D, Copy);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeRevol> BRepPrimAPI_MakeRevol_ctor_shape_ax1_bool(const TopoDS_Shape& S, const gp_Ax1& A, Standard_Boolean Copy) {
-    return construct_unique<BRepPrimAPI_MakeRevol>(S, A, Copy);
+    return std::make_unique<BRepPrimAPI_MakeRevol>(S, A, Copy);
 }
 
 inline std::unique_ptr<TopoDS_Shape> BRepPrimAPI_MakeRevol_FirstShape(BRepPrimAPI_MakeRevol& self) {
@@ -154,94 +178,138 @@ inline std::unique_ptr<TopoDS_Shape> BRepPrimAPI_MakeRevol_LastShape(BRepPrimAPI
     return std::make_unique<TopoDS_Shape>(self.LastShape(theShape));
 }
 
+inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeRevol& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeRevol& self) { return self; }
+inline const BRepPrimAPI_MakeSweep& BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep(const BRepPrimAPI_MakeRevol& self) { return self; }
+inline BRepPrimAPI_MakeSweep& BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep_mut(BRepPrimAPI_MakeRevol& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_Command(const BRepPrimAPI_MakeRevol& self) { return self; }
+inline BRepBuilderAPI_Command& BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeRevol& self) { return self; }
 
 // ========================
 // BRepPrimAPI_MakeSphere wrappers
 // ========================
 
 inline std::unique_ptr<BRepPrimAPI_MakeSphere> BRepPrimAPI_MakeSphere_ctor_real(Standard_Real R) {
-    return construct_unique<BRepPrimAPI_MakeSphere>(R);
+    return std::make_unique<BRepPrimAPI_MakeSphere>(R);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeSphere> BRepPrimAPI_MakeSphere_ctor_real2(Standard_Real R, Standard_Real angle) {
-    return construct_unique<BRepPrimAPI_MakeSphere>(R, angle);
+    return std::make_unique<BRepPrimAPI_MakeSphere>(R, angle);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeSphere> BRepPrimAPI_MakeSphere_ctor_real3(Standard_Real R, Standard_Real angle1, Standard_Real angle2) {
-    return construct_unique<BRepPrimAPI_MakeSphere>(R, angle1, angle2);
+    return std::make_unique<BRepPrimAPI_MakeSphere>(R, angle1, angle2);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeSphere> BRepPrimAPI_MakeSphere_ctor_real4(Standard_Real R, Standard_Real angle1, Standard_Real angle2, Standard_Real angle3) {
-    return construct_unique<BRepPrimAPI_MakeSphere>(R, angle1, angle2, angle3);
+    return std::make_unique<BRepPrimAPI_MakeSphere>(R, angle1, angle2, angle3);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeSphere> BRepPrimAPI_MakeSphere_ctor_pnt_real(const gp_Pnt& Center, Standard_Real R) {
-    return construct_unique<BRepPrimAPI_MakeSphere>(Center, R);
+    return std::make_unique<BRepPrimAPI_MakeSphere>(Center, R);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeSphere> BRepPrimAPI_MakeSphere_ctor_pnt_real2(const gp_Pnt& Center, Standard_Real R, Standard_Real angle) {
-    return construct_unique<BRepPrimAPI_MakeSphere>(Center, R, angle);
+    return std::make_unique<BRepPrimAPI_MakeSphere>(Center, R, angle);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeSphere> BRepPrimAPI_MakeSphere_ctor_pnt_real3(const gp_Pnt& Center, Standard_Real R, Standard_Real angle1, Standard_Real angle2) {
-    return construct_unique<BRepPrimAPI_MakeSphere>(Center, R, angle1, angle2);
+    return std::make_unique<BRepPrimAPI_MakeSphere>(Center, R, angle1, angle2);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeSphere> BRepPrimAPI_MakeSphere_ctor_pnt_real4(const gp_Pnt& Center, Standard_Real R, Standard_Real angle1, Standard_Real angle2, Standard_Real angle3) {
-    return construct_unique<BRepPrimAPI_MakeSphere>(Center, R, angle1, angle2, angle3);
+    return std::make_unique<BRepPrimAPI_MakeSphere>(Center, R, angle1, angle2, angle3);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeSphere> BRepPrimAPI_MakeSphere_ctor_ax2_real(const gp_Ax2& Axis, Standard_Real R) {
-    return construct_unique<BRepPrimAPI_MakeSphere>(Axis, R);
+    return std::make_unique<BRepPrimAPI_MakeSphere>(Axis, R);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeSphere> BRepPrimAPI_MakeSphere_ctor_ax2_real2(const gp_Ax2& Axis, Standard_Real R, Standard_Real angle) {
-    return construct_unique<BRepPrimAPI_MakeSphere>(Axis, R, angle);
+    return std::make_unique<BRepPrimAPI_MakeSphere>(Axis, R, angle);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeSphere> BRepPrimAPI_MakeSphere_ctor_ax2_real3(const gp_Ax2& Axis, Standard_Real R, Standard_Real angle1, Standard_Real angle2) {
-    return construct_unique<BRepPrimAPI_MakeSphere>(Axis, R, angle1, angle2);
+    return std::make_unique<BRepPrimAPI_MakeSphere>(Axis, R, angle1, angle2);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeSphere> BRepPrimAPI_MakeSphere_ctor_ax2_real4(const gp_Ax2& Axis, Standard_Real R, Standard_Real angle1, Standard_Real angle2, Standard_Real angle3) {
-    return construct_unique<BRepPrimAPI_MakeSphere>(Axis, R, angle1, angle2, angle3);
+    return std::make_unique<BRepPrimAPI_MakeSphere>(Axis, R, angle1, angle2, angle3);
 }
 
+inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_Command(const BRepPrimAPI_MakeSphere& self) { return self; }
+inline BRepBuilderAPI_Command& BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeSphere& self) { return self; }
+inline const BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis(const BRepPrimAPI_MakeSphere& self) { return self; }
+inline BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis_mut(BRepPrimAPI_MakeSphere& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeSphere& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeSphere& self) { return self; }
 
 // ========================
 // BRepPrimAPI_MakeTorus wrappers
 // ========================
 
 inline std::unique_ptr<BRepPrimAPI_MakeTorus> BRepPrimAPI_MakeTorus_ctor_real2(Standard_Real R1, Standard_Real R2) {
-    return construct_unique<BRepPrimAPI_MakeTorus>(R1, R2);
+    return std::make_unique<BRepPrimAPI_MakeTorus>(R1, R2);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeTorus> BRepPrimAPI_MakeTorus_ctor_real3(Standard_Real R1, Standard_Real R2, Standard_Real angle) {
-    return construct_unique<BRepPrimAPI_MakeTorus>(R1, R2, angle);
+    return std::make_unique<BRepPrimAPI_MakeTorus>(R1, R2, angle);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeTorus> BRepPrimAPI_MakeTorus_ctor_real4(Standard_Real R1, Standard_Real R2, Standard_Real angle1, Standard_Real angle2) {
-    return construct_unique<BRepPrimAPI_MakeTorus>(R1, R2, angle1, angle2);
+    return std::make_unique<BRepPrimAPI_MakeTorus>(R1, R2, angle1, angle2);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeTorus> BRepPrimAPI_MakeTorus_ctor_real5(Standard_Real R1, Standard_Real R2, Standard_Real angle1, Standard_Real angle2, Standard_Real angle) {
-    return construct_unique<BRepPrimAPI_MakeTorus>(R1, R2, angle1, angle2, angle);
+    return std::make_unique<BRepPrimAPI_MakeTorus>(R1, R2, angle1, angle2, angle);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeTorus> BRepPrimAPI_MakeTorus_ctor_ax2_real2(const gp_Ax2& Axes, Standard_Real R1, Standard_Real R2) {
-    return construct_unique<BRepPrimAPI_MakeTorus>(Axes, R1, R2);
+    return std::make_unique<BRepPrimAPI_MakeTorus>(Axes, R1, R2);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeTorus> BRepPrimAPI_MakeTorus_ctor_ax2_real3(const gp_Ax2& Axes, Standard_Real R1, Standard_Real R2, Standard_Real angle) {
-    return construct_unique<BRepPrimAPI_MakeTorus>(Axes, R1, R2, angle);
+    return std::make_unique<BRepPrimAPI_MakeTorus>(Axes, R1, R2, angle);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeTorus> BRepPrimAPI_MakeTorus_ctor_ax2_real4(const gp_Ax2& Axes, Standard_Real R1, Standard_Real R2, Standard_Real angle1, Standard_Real angle2) {
-    return construct_unique<BRepPrimAPI_MakeTorus>(Axes, R1, R2, angle1, angle2);
+    return std::make_unique<BRepPrimAPI_MakeTorus>(Axes, R1, R2, angle1, angle2);
 }
 
 inline std::unique_ptr<BRepPrimAPI_MakeTorus> BRepPrimAPI_MakeTorus_ctor_ax2_real5(const gp_Ax2& Axes, Standard_Real R1, Standard_Real R2, Standard_Real angle1, Standard_Real angle2, Standard_Real angle) {
-    return construct_unique<BRepPrimAPI_MakeTorus>(Axes, R1, R2, angle1, angle2, angle);
+    return std::make_unique<BRepPrimAPI_MakeTorus>(Axes, R1, R2, angle1, angle2, angle);
 }
 
+inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_Command(const BRepPrimAPI_MakeTorus& self) { return self; }
+inline BRepBuilderAPI_Command& BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeTorus& self) { return self; }
+inline const BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis(const BRepPrimAPI_MakeTorus& self) { return self; }
+inline BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis_mut(BRepPrimAPI_MakeTorus& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeTorus& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeTorus& self) { return self; }
+
+// ========================
+// BRepPrimAPI_MakeSweep wrappers
+// ========================
+
+inline std::unique_ptr<TopoDS_Shape> BRepPrimAPI_MakeSweep_FirstShape(BRepPrimAPI_MakeSweep& self) {
+    return std::make_unique<TopoDS_Shape>(self.FirstShape());
+}
+
+inline std::unique_ptr<TopoDS_Shape> BRepPrimAPI_MakeSweep_LastShape(BRepPrimAPI_MakeSweep& self) {
+    return std::make_unique<TopoDS_Shape>(self.LastShape());
+}
+
+inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeSweep& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeSweep& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_Command(const BRepPrimAPI_MakeSweep& self) { return self; }
+inline BRepBuilderAPI_Command& BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeSweep& self) { return self; }
+
+// ========================
+// BRepPrimAPI_MakeOneAxis wrappers
+// ========================
+
+inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command(const BRepPrimAPI_MakeOneAxis& self) { return self; }
+inline BRepBuilderAPI_Command& BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeOneAxis& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeOneAxis& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeOneAxis& self) { return self; }
 

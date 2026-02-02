@@ -1,18 +1,26 @@
+// NOTE: This file is partially blocked because:
+// - Many helper functions (cast_*_to_shape, shape_list_to_vector, etc.) not generated
+// - TopAbs_ShapeEnum not generated (enums blocked)
+// - BRepFilletAPI needs TColgp_Array1OfPnt2d SetValue
+// - STEP/IGES readers need custom helper functions
+// - Mesher is blocked
+// See TRANSITION_PLAN.md for details.
+
 use crate::{
     mesh::{Mesh, Mesher},
     primitives::{
-        make_axis_1, make_axis_2, make_dir, make_point, make_point2d, make_vec, BooleanShape,
-        Compound, Edge, EdgeIterator, Face, FaceIterator, ShapeType, Shell, Solid, Vertex, Wire,
+        make_axis_1, make_axis_2, make_vec, BooleanShape, Compound, Edge, Face, Shell, Solid,
+        Vertex, Wire,
     },
     Error,
 };
 use cxx::UniquePtr;
-use glam::{dvec2, dvec3, DVec3};
-use opencascade_sys::ffi;
+use glam::{dvec3, DVec3};
+use opencascade_sys::{b_rep_prim_api, gp, topo_ds};
 use std::path::Path;
 
 pub struct Shape {
-    pub(crate) inner: UniquePtr<ffi::TopoDS_Shape>,
+    pub(crate) inner: UniquePtr<topo_ds::Shape>,
 }
 
 impl AsRef<Shape> for Shape {
@@ -23,113 +31,85 @@ impl AsRef<Shape> for Shape {
 
 impl From<Vertex> for Shape {
     fn from(vertex: Vertex) -> Self {
-        let shape = ffi::cast_vertex_to_shape(&vertex.inner);
-
-        Self::from_shape(shape)
+        Self::from_shape(vertex.inner.as_shape())
     }
 }
 
 impl From<&Vertex> for Shape {
     fn from(vertex: &Vertex) -> Self {
-        let shape = ffi::cast_vertex_to_shape(&vertex.inner);
-
-        Self::from_shape(shape)
+        Self::from_shape(vertex.inner.as_shape())
     }
 }
 
 impl From<Edge> for Shape {
     fn from(edge: Edge) -> Self {
-        let shape = ffi::cast_edge_to_shape(&edge.inner);
-
-        Self::from_shape(shape)
+        Self::from_shape(edge.inner.as_shape())
     }
 }
 
 impl From<&Edge> for Shape {
     fn from(edge: &Edge) -> Self {
-        let shape = ffi::cast_edge_to_shape(&edge.inner);
-
-        Self::from_shape(shape)
+        Self::from_shape(edge.inner.as_shape())
     }
 }
 
 impl From<Wire> for Shape {
     fn from(wire: Wire) -> Self {
-        let shape = ffi::cast_wire_to_shape(&wire.inner);
-
-        Self::from_shape(shape)
+        Self::from_shape(wire.inner.as_shape())
     }
 }
 
 impl From<&Wire> for Shape {
     fn from(wire: &Wire) -> Self {
-        let shape = ffi::cast_wire_to_shape(&wire.inner);
-
-        Self::from_shape(shape)
+        Self::from_shape(wire.inner.as_shape())
     }
 }
 
 impl From<Face> for Shape {
     fn from(face: Face) -> Self {
-        let shape = ffi::cast_face_to_shape(&face.inner);
-
-        Self::from_shape(shape)
+        Self::from_shape(face.inner.as_shape())
     }
 }
 
 impl From<&Face> for Shape {
     fn from(face: &Face) -> Self {
-        let shape = ffi::cast_face_to_shape(&face.inner);
-
-        Self::from_shape(shape)
+        Self::from_shape(face.inner.as_shape())
     }
 }
 
 impl From<Shell> for Shape {
     fn from(shell: Shell) -> Self {
-        let shape = ffi::cast_shell_to_shape(&shell.inner);
-
-        Self::from_shape(shape)
+        Self::from_shape(shell.inner.as_shape())
     }
 }
 
 impl From<&Shell> for Shape {
     fn from(shell: &Shell) -> Self {
-        let shape = ffi::cast_shell_to_shape(&shell.inner);
-
-        Self::from_shape(shape)
+        Self::from_shape(shell.inner.as_shape())
     }
 }
 
 impl From<Solid> for Shape {
     fn from(solid: Solid) -> Self {
-        let shape = ffi::cast_solid_to_shape(&solid.inner);
-
-        Self::from_shape(shape)
+        Self::from_shape(solid.inner.as_shape())
     }
 }
 
 impl From<&Solid> for Shape {
     fn from(solid: &Solid) -> Self {
-        let shape = ffi::cast_solid_to_shape(&solid.inner);
-
-        Self::from_shape(shape)
+        Self::from_shape(solid.inner.as_shape())
     }
 }
 
 impl From<Compound> for Shape {
     fn from(compound: Compound) -> Self {
-        let shape = ffi::cast_compound_to_shape(&compound.inner);
-
-        Self::from_shape(shape)
+        Self::from_shape(compound.inner.as_shape())
     }
 }
 
 impl From<&Compound> for Shape {
     fn from(compound: &Compound) -> Self {
-        let shape = ffi::cast_compound_to_shape(&compound.inner);
-
-        Self::from_shape(shape)
+        Self::from_shape(compound.inner.as_shape())
     }
 }
 
@@ -148,9 +128,10 @@ pub struct SphereBuilder {
 impl SphereBuilder {
     pub fn build(self) -> Shape {
         let axis = make_axis_2(self.center, DVec3::Z);
-        let mut make_shere = ffi::BRepPrimAPI_MakeSphere_ctor(&axis, self.radius, self.z_angle);
-
-        Shape::from_shape(make_shere.pin_mut().Shape())
+        let mut make_sphere =
+            b_rep_prim_api::MakeSphere::new_ax2_real2(&axis, self.radius, self.z_angle);
+        let make_shape = make_sphere.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        Shape::from_shape(make_shape.shape())
     }
 
     pub fn at(mut self, center: DVec3) -> Self {
@@ -175,15 +156,15 @@ pub struct ConeBuilder {
 impl ConeBuilder {
     pub fn build(self) -> Shape {
         let axis = make_axis_2(self.pos, DVec3::Z);
-        let mut make_cone = ffi::BRepPrimAPI_MakeCone_ctor(
+        let mut make_cone = b_rep_prim_api::MakeCone::new_ax2_real4(
             &axis,
             self.bottom_radius,
             self.top_radius,
             self.height,
             self.z_angle,
         );
-
-        Shape::from_shape(make_cone.pin_mut().Shape())
+        let make_shape = make_cone.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        Shape::from_shape(make_shape.shape())
     }
 
     pub fn at(mut self, pos: DVec3) -> Self {
@@ -225,7 +206,7 @@ pub struct TorusBuilder {
 impl TorusBuilder {
     pub fn build(self) -> Shape {
         let axis = make_axis_2(self.pos, self.z_axis);
-        let mut make_torus = ffi::BRepPrimAPI_MakeTorus_ctor(
+        let mut make_torus = b_rep_prim_api::MakeTorus::new_ax2_real5(
             &axis,
             self.radius_1,
             self.radius_2,
@@ -233,8 +214,8 @@ impl TorusBuilder {
             self.angle_2,
             self.z_angle,
         );
-
-        Shape::from_shape(make_torus.pin_mut().Shape())
+        let make_shape = make_torus.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        Shape::from_shape(make_shape.shape())
     }
 
     pub fn at(mut self, pos: DVec3) -> Self {
@@ -274,26 +255,17 @@ impl TorusBuilder {
 }
 
 impl Shape {
-    pub(crate) fn from_shape(shape: &ffi::TopoDS_Shape) -> Self {
-        let inner = ffi::TopoDS_Shape_to_owned(shape);
-
+    pub(crate) fn from_shape(shape: &topo_ds::Shape) -> Self {
+        let inner = shape.to_owned();
         Self { inner }
     }
 
-    /// Make a shape that models empty space.
+    // NOTE: empty() is blocked because BRep_Builder default constructor not generated
+    #[allow(unused)]
     pub fn empty() -> Self {
-        // NOTE: It may seem like using `TopoDS_Shape()` directly should work,
-        //       but shape operations such as union fail on actual "null shapes".
-
-        // Construct an empty compound
-        let mut compound = ffi::TopoDS_Compound_ctor();
-        let builder = ffi::BRep_Builder_ctor();
-        let topods_builder = ffi::BRep_Builder_upcast_to_topods_builder(&builder);
-        topods_builder.MakeCompound(compound.pin_mut());
-
-        let inner = ffi::TopoDS_Compound_as_shape(compound);
-
-        Self { inner }
+        unimplemented!(
+            "Shape::empty is blocked pending BRep_Builder default constructor support"
+        );
     }
 
     /// Make a box with one corner at corner_1, and the opposite corner
@@ -302,11 +274,12 @@ impl Shape {
         let min_corner = corner_1.min(corner_2);
         let max_corner = corner_1.max(corner_2);
 
-        let point = ffi::new_point(min_corner.x, min_corner.y, min_corner.z);
+        let point = gp::Pnt::new_real3(min_corner.x, min_corner.y, min_corner.z);
         let diff = max_corner - min_corner;
-        let mut my_box = ffi::BRepPrimAPI_MakeBox_ctor(&point, diff.x, diff.y, diff.z);
-
-        Self::from_shape(my_box.pin_mut().Shape())
+        let mut make_box =
+            b_rep_prim_api::MakeBox::new_pnt_real3(&point, diff.x, diff.y, diff.z);
+        let make_shape = make_box.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        Self::from_shape(make_shape.shape())
     }
 
     /// Make a box with `width` (x), `depth` (y), and `height` (z)
@@ -343,10 +316,10 @@ impl Shape {
     /// Make a cylinder with base at point `p`, radius `r`, and height `h`.
     /// Extends from `p` along axis `dir`.
     pub fn cylinder(p: DVec3, r: f64, dir: DVec3, h: f64) -> Self {
-        let cylinder_coord_system = make_axis_2(p, dir);
-        let mut cylinder = ffi::BRepPrimAPI_MakeCylinder_ctor(&cylinder_coord_system, r, h);
-
-        Self::from_shape(cylinder.pin_mut().Shape())
+        let axis = make_axis_2(p, dir);
+        let mut make_cylinder = b_rep_prim_api::MakeCylinder::new_ax2_real2(&axis, r, h);
+        let make_shape = make_cylinder.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        Self::from_shape(make_shape.shape())
     }
 
     /// Make a "default" cylinder with radius `r` and height `h`.
@@ -395,345 +368,258 @@ impl Shape {
         }
     }
 
-    pub fn shape_type(&self) -> ShapeType {
-        self.inner.ShapeType().into()
+    // NOTE: shape_type is blocked because TopAbs_ShapeEnum not generated
+    #[allow(unused)]
+    pub fn shape_type(&self) -> super::ShapeType {
+        unimplemented!(
+            "Shape::shape_type is blocked pending TopAbs_ShapeEnum support"
+        );
     }
 
+    // NOTE: fillet_edge is blocked because BRepFilletAPI_MakeFillet needs edge casting
+    #[allow(unused)]
     #[must_use]
-    pub fn fillet_edge(&self, radius: f64, edge: &Edge) -> Self {
-        self.fillet_edges(radius, [edge])
+    pub fn fillet_edge(&self, _radius: f64, _edge: &Edge) -> Self {
+        unimplemented!(
+            "Shape::fillet_edge is blocked pending BRepFilletAPI_MakeFillet support"
+        );
     }
 
+    #[allow(unused)]
     #[must_use]
     pub fn variable_fillet_edge(
         &self,
-        radius_values: impl IntoIterator<Item = (f64, f64)>,
-        edge: &Edge,
+        _radius_values: impl IntoIterator<Item = (f64, f64)>,
+        _edge: &Edge,
     ) -> Self {
-        self.variable_fillet_edges(radius_values, [edge])
+        unimplemented!(
+            "Shape::variable_fillet_edge is blocked pending BRepFilletAPI_MakeFillet support"
+        );
     }
 
+    #[allow(unused)]
     #[must_use]
-    pub fn chamfer_edge(&self, distance: f64, edge: &Edge) -> Self {
-        self.chamfer_edges(distance, [edge])
+    pub fn chamfer_edge(&self, _distance: f64, _edge: &Edge) -> Self {
+        unimplemented!(
+            "Shape::chamfer_edge is blocked pending BRepFilletAPI_MakeChamfer support"
+        );
     }
 
+    #[allow(unused)]
     #[must_use]
     pub fn fillet_edges<T: AsRef<Edge>>(
         &self,
-        radius: f64,
-        edges: impl IntoIterator<Item = T>,
+        _radius: f64,
+        _edges: impl IntoIterator<Item = T>,
     ) -> Self {
-        let mut make_fillet = ffi::BRepFilletAPI_MakeFillet_ctor(&self.inner);
-
-        for edge in edges.into_iter() {
-            make_fillet.pin_mut().add_edge(radius, &edge.as_ref().inner);
-        }
-
-        Self::from_shape(make_fillet.pin_mut().Shape())
+        unimplemented!(
+            "Shape::fillet_edges is blocked pending BRepFilletAPI_MakeFillet support"
+        );
     }
 
+    #[allow(unused)]
     #[must_use]
     pub fn variable_fillet_edges<T: AsRef<Edge>>(
         &self,
-        radius_values: impl IntoIterator<Item = (f64, f64)>,
-        edges: impl IntoIterator<Item = T>,
+        _radius_values: impl IntoIterator<Item = (f64, f64)>,
+        _edges: impl IntoIterator<Item = T>,
     ) -> Self {
-        let radius_values: Vec<_> = radius_values.into_iter().collect();
-        let mut array = ffi::TColgp_Array1OfPnt2d_ctor(1, radius_values.len() as i32);
-
-        for (index, (t, radius)) in radius_values.into_iter().enumerate() {
-            array.pin_mut().SetValue(index as i32 + 1, &make_point2d(dvec2(t, radius)));
-        }
-
-        let mut make_fillet = ffi::BRepFilletAPI_MakeFillet_ctor(&self.inner);
-
-        for edge in edges.into_iter() {
-            make_fillet.pin_mut().variable_add_edge(&array, &edge.as_ref().inner);
-        }
-
-        Self::from_shape(make_fillet.pin_mut().Shape())
+        unimplemented!(
+            "Shape::variable_fillet_edges is blocked pending BRepFilletAPI_MakeFillet support"
+        );
     }
 
+    #[allow(unused)]
     #[must_use]
     pub fn chamfer_edges<T: AsRef<Edge>>(
         &self,
-        distance: f64,
-        edges: impl IntoIterator<Item = T>,
+        _distance: f64,
+        _edges: impl IntoIterator<Item = T>,
     ) -> Self {
-        let mut make_chamfer = ffi::BRepFilletAPI_MakeChamfer_ctor(&self.inner);
-
-        for edge in edges.into_iter() {
-            make_chamfer.pin_mut().add_edge(distance, &edge.as_ref().inner);
-        }
-
-        Self::from_shape(make_chamfer.pin_mut().Shape())
+        unimplemented!(
+            "Shape::chamfer_edges is blocked pending BRepFilletAPI_MakeChamfer support"
+        );
     }
 
-    /// Performs fillet of `radius` on all edges of the shape
+    // NOTE: fillet (all edges) is blocked because edges() is blocked
+    #[allow(unused)]
     #[must_use]
-    pub fn fillet(&self, radius: f64) -> Self {
-        self.fillet_edges(radius, self.edges())
+    pub fn fillet(&self, _radius: f64) -> Self {
+        unimplemented!(
+            "Shape::fillet is blocked pending TopAbs_ShapeEnum enum support"
+        );
     }
 
-    /// Performs chamfer of `distance` on all edges of the shape
+    #[allow(unused)]
     #[must_use]
-    pub fn chamfer(&self, distance: f64) -> Self {
-        self.chamfer_edges(distance, self.edges())
+    pub fn chamfer(&self, _distance: f64) -> Self {
+        unimplemented!(
+            "Shape::chamfer is blocked pending TopAbs_ShapeEnum enum support"
+        );
     }
 
+    // NOTE: subtract is blocked because BRepAlgoAPI_Cut and shape_list_to_vector not available
+    #[allow(unused)]
     #[must_use]
-    pub fn subtract(&self, other: &Shape) -> BooleanShape {
-        let mut cut_operation = ffi::BRepAlgoAPI_Cut_ctor(&self.inner, &other.inner);
-
-        let edge_list = cut_operation.pin_mut().SectionEdges();
-        let vec = ffi::shape_list_to_vector(edge_list);
-
-        let mut new_edges = vec![];
-        for shape in vec.iter() {
-            let edge = ffi::TopoDS_cast_to_edge(shape);
-            new_edges.push(Edge::from_edge(edge));
-        }
-
-        let shape = Self::from_shape(cut_operation.pin_mut().Shape());
-
-        BooleanShape { shape, new_edges }
+    pub fn subtract(&self, _other: &Shape) -> BooleanShape {
+        unimplemented!(
+            "Shape::subtract is blocked pending BRepAlgoAPI_Cut and shape list support"
+        );
     }
 
-    pub fn read_step(path: impl AsRef<Path>) -> Result<Self, Error> {
-        let mut reader = ffi::STEPControl_Reader_ctor();
-
-        let status = ffi::read_step(reader.pin_mut(), path.as_ref().to_string_lossy().to_string());
-
-        if status != ffi::IFSelect_ReturnStatus::IFSelect_RetDone {
-            return Err(Error::StepReadFailed);
-        }
-
-        reader.pin_mut().TransferRoots(&ffi::Message_ProgressRange_ctor());
-
-        let inner = ffi::one_shape_step(&reader);
-
-        Ok(Self { inner })
+    // NOTE: read_step is blocked because STEPControl_Reader helpers not generated
+    #[allow(unused)]
+    pub fn read_step(_path: impl AsRef<Path>) -> Result<Self, Error> {
+        unimplemented!(
+            "Shape::read_step is blocked pending STEPControl_Reader helper functions"
+        );
     }
 
-    pub fn write_step(&self, path: impl AsRef<Path>) -> Result<(), Error> {
-        let mut writer = ffi::STEPControl_Writer_ctor();
-
-        let status = ffi::transfer_shape(writer.pin_mut(), &self.inner);
-
-        if status != ffi::IFSelect_ReturnStatus::IFSelect_RetDone {
-            return Err(Error::StepWriteFailed);
-        }
-
-        let status = ffi::write_step(writer.pin_mut(), path.as_ref().to_string_lossy().to_string());
-
-        if status != ffi::IFSelect_ReturnStatus::IFSelect_RetDone {
-            return Err(Error::StepWriteFailed);
-        }
-
-        Ok(())
+    // NOTE: write_step is blocked because STEPControl_Writer helpers not generated
+    #[allow(unused)]
+    pub fn write_step(&self, _path: impl AsRef<Path>) -> Result<(), Error> {
+        unimplemented!(
+            "Shape::write_step is blocked pending STEPControl_Writer helper functions"
+        );
     }
 
-    pub fn read_iges(path: impl AsRef<Path>) -> Result<Self, Error> {
-        let mut reader = ffi::IGESControl_Reader_ctor();
-
-        let status = ffi::read_iges(reader.pin_mut(), path.as_ref().to_string_lossy().to_string());
-
-        reader.pin_mut().TransferRoots(&ffi::Message_ProgressRange_ctor());
-
-        if status != ffi::IFSelect_ReturnStatus::IFSelect_RetDone {
-            return Err(Error::IgesReadFailed);
-        }
-
-        let inner = ffi::one_shape_iges(&reader);
-
-        Ok(Self { inner })
+    // NOTE: read_iges is blocked because IGESControl_Reader helpers not generated
+    #[allow(unused)]
+    pub fn read_iges(_path: impl AsRef<Path>) -> Result<Self, Error> {
+        unimplemented!(
+            "Shape::read_iges is blocked pending IGESControl_Reader helper functions"
+        );
     }
 
-    pub fn write_iges(&self, path: impl AsRef<Path>) -> Result<(), Error> {
-        let mut writer = ffi::IGESControl_Writer_ctor();
-
-        let success = ffi::add_shape(writer.pin_mut(), &self.inner);
-
-        if !success {
-            return Err(Error::IgesWriteFailed);
-        }
-
-        ffi::compute_model(writer.pin_mut());
-        let success =
-            ffi::write_iges(writer.pin_mut(), path.as_ref().to_string_lossy().to_string());
-
-        if success {
-            Ok(())
-        } else {
-            Err(Error::IgesWriteFailed)
-        }
+    // NOTE: write_iges is blocked because IGESControl_Writer helpers not generated
+    #[allow(unused)]
+    pub fn write_iges(&self, _path: impl AsRef<Path>) -> Result<(), Error> {
+        unimplemented!(
+            "Shape::write_iges is blocked pending IGESControl_Writer helper functions"
+        );
     }
 
+    // NOTE: union is blocked because BRepAlgoAPI_Fuse and shape_list_to_vector not available
+    #[allow(unused)]
     #[must_use]
-    pub fn union(&self, other: &Shape) -> BooleanShape {
-        let mut fuse_operation = ffi::BRepAlgoAPI_Fuse_ctor(&self.inner, &other.inner);
-        let edge_list = fuse_operation.pin_mut().SectionEdges();
-        let vec = ffi::shape_list_to_vector(edge_list);
-
-        let mut new_edges = vec![];
-        for shape in vec.iter() {
-            let edge = ffi::TopoDS_cast_to_edge(shape);
-            new_edges.push(Edge::from_edge(edge));
-        }
-
-        let shape = Self::from_shape(fuse_operation.pin_mut().Shape());
-
-        BooleanShape { shape, new_edges }
+    pub fn union(&self, _other: &Shape) -> BooleanShape {
+        unimplemented!(
+            "Shape::union is blocked pending BRepAlgoAPI_Fuse and shape list support"
+        );
     }
 
+    // NOTE: intersect is blocked because BRepAlgoAPI_Common and shape_list_to_vector not available
+    #[allow(unused)]
     #[must_use]
-    pub fn intersect(&self, other: &Shape) -> BooleanShape {
-        let mut fuse_operation = ffi::BRepAlgoAPI_Common_ctor(&self.inner, &other.inner);
-        let edge_list = fuse_operation.pin_mut().SectionEdges();
-        let vec = ffi::shape_list_to_vector(edge_list);
-
-        let mut new_edges = vec![];
-        for shape in vec.iter() {
-            let edge = ffi::TopoDS_cast_to_edge(shape);
-            new_edges.push(Edge::from_edge(edge));
-        }
-
-        let shape = Self::from_shape(fuse_operation.pin_mut().Shape());
-
-        BooleanShape { shape, new_edges }
+    pub fn intersect(&self, _other: &Shape) -> BooleanShape {
+        unimplemented!(
+            "Shape::intersect is blocked pending BRepAlgoAPI_Common and shape list support"
+        );
     }
 
-    pub fn write_stl<P: AsRef<Path>>(&self, path: P) -> Result<(), Error> {
-        self.write_stl_with_tolerance(path, 0.001)
+    // NOTE: write_stl is blocked because Mesher is blocked
+    #[allow(unused)]
+    pub fn write_stl<P: AsRef<Path>>(&self, _path: P) -> Result<(), Error> {
+        unimplemented!(
+            "Shape::write_stl is blocked pending Mesher support"
+        );
     }
 
+    #[allow(unused)]
     pub fn write_stl_with_tolerance<P: AsRef<Path>>(
         &self,
-        path: P,
-        triangulation_tolerance: f64,
+        _path: P,
+        _triangulation_tolerance: f64,
     ) -> Result<(), Error> {
-        let mut stl_writer = ffi::StlAPI_Writer_ctor();
-        let mesher = Mesher::try_new(self, triangulation_tolerance)?;
-        let success = ffi::write_stl(
-            stl_writer.pin_mut(),
-            mesher.inner.Shape(),
-            path.as_ref().to_string_lossy().to_string(),
+        unimplemented!(
+            "Shape::write_stl_with_tolerance is blocked pending Mesher support"
         );
-
-        if success {
-            Ok(())
-        } else {
-            Err(Error::StlWriteFailed)
-        }
     }
 
+    // NOTE: clean is blocked because ShapeUpgrade_UnifySameDomain not generated
+    #[allow(unused)]
     #[must_use]
     pub fn clean(&self) -> Self {
-        let mut upgrader = ffi::ShapeUpgrade_UnifySameDomain_ctor(&self.inner, true, true, true);
-        upgrader.pin_mut().AllowInternalEdges(false);
-        upgrader.pin_mut().Build();
-
-        Self::from_shape(upgrader.Shape())
-    }
-
-    pub fn set_global_translation(&mut self, translation: DVec3) {
-        let mut transform = ffi::new_transform();
-        let translation_vec = make_vec(translation);
-        transform.pin_mut().set_translation_vec(&translation_vec);
-
-        let location = ffi::TopLoc_Location_from_transform(&transform);
-
-        self.inner.pin_mut().set_global_translation(&location, false);
-    }
-
-    pub fn mesh(&self) -> Result<Mesh, Error> {
-        self.mesh_with_tolerance(0.01)
-    }
-
-    pub fn mesh_with_tolerance(&self, triangulation_tolerance: f64) -> Result<Mesh, Error> {
-        let mesher = Mesher::try_new(self, triangulation_tolerance)?;
-        mesher.mesh()
-    }
-
-    pub fn edges(&self) -> EdgeIterator {
-        let explorer = ffi::TopExp_Explorer_ctor(&self.inner, ffi::TopAbs_ShapeEnum::TopAbs_EDGE);
-        EdgeIterator { explorer }
-    }
-
-    pub fn faces(&self) -> FaceIterator {
-        let explorer = ffi::TopExp_Explorer_ctor(&self.inner, ffi::TopAbs_ShapeEnum::TopAbs_FACE);
-        FaceIterator { explorer }
-    }
-
-    // TODO(bschwind) - Convert the return type to an iterator.
-    pub fn faces_along_line(&self, line_origin: DVec3, line_dir: DVec3) -> Vec<LineFaceHitPoint> {
-        let mut intersector = ffi::BRepIntCurveSurface_Inter_ctor();
-        let tolerance = 0.0001;
-        intersector.pin_mut().Init(
-            &self.inner,
-            &ffi::gp_Lin_ctor(&make_point(line_origin), &make_dir(line_dir)),
-            tolerance,
+        unimplemented!(
+            "Shape::clean is blocked pending ShapeUpgrade_UnifySameDomain support"
         );
-
-        let mut results = vec![];
-
-        while intersector.More() {
-            let face = ffi::BRepIntCurveSurface_Inter_face(&intersector);
-            let face = Face::from_face(&face);
-            let point = ffi::BRepIntCurveSurface_Inter_point(&intersector);
-
-            results.push(LineFaceHitPoint {
-                face,
-                t: intersector.W(),
-                u: intersector.U(),
-                v: intersector.V(),
-                point: dvec3(point.X(), point.Y(), point.Z()),
-            });
-
-            intersector.pin_mut().Next();
-        }
-
-        results
     }
 
+    // NOTE: set_global_translation is blocked because TopLoc_Location helpers not generated
+    #[allow(unused)]
+    pub fn set_global_translation(&mut self, _translation: DVec3) {
+        unimplemented!(
+            "Shape::set_global_translation is blocked pending TopLoc_Location helpers"
+        );
+    }
+
+    // NOTE: mesh is blocked because Mesher is blocked
+    #[allow(unused)]
+    pub fn mesh(&self) -> Result<Mesh, Error> {
+        unimplemented!(
+            "Shape::mesh is blocked pending Mesher support"
+        );
+    }
+
+    #[allow(unused)]
+    pub fn mesh_with_tolerance(&self, _triangulation_tolerance: f64) -> Result<Mesh, Error> {
+        unimplemented!(
+            "Shape::mesh_with_tolerance is blocked pending Mesher support"
+        );
+    }
+
+    // NOTE: edges is blocked because TopExp_Explorer needs TopAbs_ShapeEnum
+    #[allow(unused)]
+    pub fn edges(&self) -> super::EdgeIterator {
+        unimplemented!(
+            "Shape::edges is blocked pending TopAbs_ShapeEnum enum support"
+        );
+    }
+
+    // NOTE: faces is blocked because TopExp_Explorer needs TopAbs_ShapeEnum
+    #[allow(unused)]
+    pub fn faces(&self) -> super::FaceIterator {
+        unimplemented!(
+            "Shape::faces is blocked pending TopAbs_ShapeEnum enum support"
+        );
+    }
+
+    // NOTE: faces_along_line is blocked because BRepIntCurveSurface_Inter not generated
+    #[allow(unused)]
+    pub fn faces_along_line(&self, _line_origin: DVec3, _line_dir: DVec3) -> Vec<LineFaceHitPoint> {
+        unimplemented!(
+            "Shape::faces_along_line is blocked pending BRepIntCurveSurface_Inter support"
+        );
+    }
+
+    // NOTE: hollow is blocked because BRepOffsetAPI_MakeThickSolid helpers not generated
+    #[allow(unused)]
     #[must_use]
     pub fn hollow<T: AsRef<Face>>(
         &self,
-        offset: f64,
-        faces_to_remove: impl IntoIterator<Item = T>,
+        _offset: f64,
+        _faces_to_remove: impl IntoIterator<Item = T>,
     ) -> Self {
-        let mut faces_list = ffi::new_list_of_shape();
-
-        for face in faces_to_remove.into_iter() {
-            ffi::shape_list_append_face(faces_list.pin_mut(), &face.as_ref().inner);
-        }
-
-        let mut solid_maker = ffi::BRepOffsetAPI_MakeThickSolid_ctor();
-        ffi::MakeThickSolidByJoin(solid_maker.pin_mut(), &self.inner, &faces_list, offset, 0.001);
-
-        Self::from_shape(solid_maker.pin_mut().Shape())
+        unimplemented!(
+            "Shape::hollow is blocked pending BRepOffsetAPI_MakeThickSolid support"
+        );
     }
 
+    #[allow(unused)]
     #[must_use]
-    pub fn offset_surface(&self, offset: f64) -> Self {
-        let faces_to_remove: [Face; 0] = [];
-        self.hollow(offset, faces_to_remove)
+    pub fn offset_surface(&self, _offset: f64) -> Self {
+        unimplemented!(
+            "Shape::offset_surface is blocked pending hollow support"
+        );
     }
 
-    /// Drill a cylindrical hole along the line defined by point `p`
-    /// and direction `dir`, with `radius`.
+    // NOTE: drill_hole is blocked because BRepFeat_MakeCylindricalHole not generated
+    #[allow(unused)]
     #[must_use]
-    pub fn drill_hole(&self, p: DVec3, dir: DVec3, radius: f64) -> Self {
-        let hole_axis = make_axis_1(p, dir);
-
-        let mut make_hole = ffi::BRepFeat_MakeCylindricalHole_ctor();
-        make_hole.pin_mut().Init(&self.inner, &hole_axis);
-
-        make_hole.pin_mut().Perform(radius);
-        make_hole.pin_mut().Build();
-
-        Self::from_shape(make_hole.pin_mut().Shape())
+    pub fn drill_hole(&self, _p: DVec3, _dir: DVec3, _radius: f64) -> Self {
+        unimplemented!(
+            "Shape::drill_hole is blocked pending BRepFeat_MakeCylindricalHole support"
+        );
     }
 }
 
@@ -751,22 +637,30 @@ pub struct LineFaceHitPoint {
     pub point: DVec3,
 }
 
+// NOTE: ChamferMaker is blocked because BRepFilletAPI_MakeChamfer is not fully accessible
 pub struct ChamferMaker {
-    inner: UniquePtr<ffi::BRepFilletAPI_MakeChamfer>,
+    _private: (),
 }
 
 impl ChamferMaker {
-    pub fn new(shape: &Shape) -> Self {
-        let make_chamfer = ffi::BRepFilletAPI_MakeChamfer_ctor(&shape.inner);
-
-        Self { inner: make_chamfer }
+    #[allow(unused)]
+    pub fn new(_shape: &Shape) -> Self {
+        unimplemented!(
+            "ChamferMaker::new is blocked pending BRepFilletAPI_MakeChamfer support"
+        );
     }
 
-    pub fn add_edge(&mut self, distance: f64, edge: &Edge) {
-        self.inner.pin_mut().add_edge(distance, &edge.inner);
+    #[allow(unused)]
+    pub fn add_edge(&mut self, _distance: f64, _edge: &Edge) {
+        unimplemented!(
+            "ChamferMaker::add_edge is blocked pending BRepFilletAPI_MakeChamfer support"
+        );
     }
 
-    pub fn build(mut self) -> Shape {
-        Shape::from_shape(self.inner.pin_mut().Shape())
+    #[allow(unused)]
+    pub fn build(self) -> Shape {
+        unimplemented!(
+            "ChamferMaker::build is blocked pending BRepFilletAPI_MakeChamfer support"
+        );
     }
 }

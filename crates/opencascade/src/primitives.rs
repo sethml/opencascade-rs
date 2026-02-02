@@ -1,6 +1,6 @@
 use cxx::UniquePtr;
 use glam::{DVec2, DVec3};
-use opencascade_sys::ffi;
+use opencascade_sys::{gp, top_exp, topo_ds};
 
 mod boolean_shape;
 mod compound;
@@ -60,22 +60,9 @@ pub enum ShapeType {
     Compound,
 }
 
-impl From<ffi::TopAbs_ShapeEnum> for ShapeType {
-    fn from(shape_enum: ffi::TopAbs_ShapeEnum) -> Self {
-        match shape_enum {
-            ffi::TopAbs_ShapeEnum::TopAbs_SHAPE => ShapeType::Shape,
-            ffi::TopAbs_ShapeEnum::TopAbs_VERTEX => ShapeType::Vertex,
-            ffi::TopAbs_ShapeEnum::TopAbs_EDGE => ShapeType::Edge,
-            ffi::TopAbs_ShapeEnum::TopAbs_WIRE => ShapeType::Wire,
-            ffi::TopAbs_ShapeEnum::TopAbs_FACE => ShapeType::Face,
-            ffi::TopAbs_ShapeEnum::TopAbs_SHELL => ShapeType::Shell,
-            ffi::TopAbs_ShapeEnum::TopAbs_SOLID => ShapeType::Solid,
-            ffi::TopAbs_ShapeEnum::TopAbs_COMPSOLID => ShapeType::CompoundSolid,
-            ffi::TopAbs_ShapeEnum::TopAbs_COMPOUND => ShapeType::Compound,
-            ffi::TopAbs_ShapeEnum { repr } => panic!("Unexpected shape type: {repr}"),
-        }
-    }
-}
+// NOTE: From<top_abs::ShapeEnum> implementation is blocked because CXX doesn't support
+// unscoped enums. See TRANSITION_PLAN.md "Generator Limitations" section.
+// The ShapeEnum enum values are not generated in new bindings.
 
 pub trait IntoShape {
     fn into_shape(self) -> Shape;
@@ -87,43 +74,44 @@ impl<T: Into<Shape>> IntoShape for T {
     }
 }
 
-pub fn make_point(p: DVec3) -> UniquePtr<ffi::gp_Pnt> {
-    ffi::new_point(p.x, p.y, p.z)
+pub fn make_point(p: DVec3) -> UniquePtr<gp::Pnt> {
+    gp::Pnt::new_real3(p.x, p.y, p.z)
 }
 
-pub fn make_point2d(p: DVec2) -> UniquePtr<ffi::gp_Pnt2d> {
-    ffi::new_point_2d(p.x, p.y)
+pub fn make_point2d(p: DVec2) -> UniquePtr<gp::Pnt2d> {
+    gp::Pnt2d::new_real2(p.x, p.y)
 }
 
-fn make_dir(p: DVec3) -> UniquePtr<ffi::gp_Dir> {
-    ffi::gp_Dir_ctor(p.x, p.y, p.z)
+fn make_dir(p: DVec3) -> UniquePtr<gp::Dir> {
+    gp::Dir::new_real3(p.x, p.y, p.z)
 }
 
-fn make_vec(vec: DVec3) -> UniquePtr<ffi::gp_Vec> {
-    ffi::new_vec(vec.x, vec.y, vec.z)
+fn make_vec(vec: DVec3) -> UniquePtr<gp::Vec> {
+    gp::Vec::new_real3(vec.x, vec.y, vec.z)
 }
 
-fn make_axis_1(origin: DVec3, dir: DVec3) -> UniquePtr<ffi::gp_Ax1> {
-    ffi::gp_Ax1_ctor(&make_point(origin), &make_dir(dir))
+fn make_axis_1(origin: DVec3, dir: DVec3) -> UniquePtr<gp::Ax1> {
+    gp::Ax1::new_pnt_dir(&make_point(origin), &make_dir(dir))
 }
 
-pub fn make_axis_2(origin: DVec3, dir: DVec3) -> UniquePtr<ffi::gp_Ax2> {
-    ffi::gp_Ax2_ctor(&make_point(origin), &make_dir(dir))
+pub fn make_axis_2(origin: DVec3, dir: DVec3) -> UniquePtr<gp::Ax2> {
+    gp::Ax2::new_pnt_dir(&make_point(origin), &make_dir(dir))
 }
 
 pub struct EdgeIterator {
-    explorer: UniquePtr<ffi::TopExp_Explorer>,
+    explorer: UniquePtr<top_exp::Explorer>,
 }
 
 impl Iterator for EdgeIterator {
     type Item = Edge;
 
     fn next(&mut self) -> Option<Self::Item> {
-        if self.explorer.More() {
-            let edge = ffi::TopoDS_cast_to_edge(self.explorer.Current());
+        if self.explorer.more() {
+            let shape = self.explorer.current();
+            let edge = topo_ds::edge(shape);
             let edge = Edge::from_edge(edge);
 
-            self.explorer.pin_mut().Next();
+            self.explorer.pin_mut().next();
 
             Some(edge)
         } else {
@@ -149,7 +137,7 @@ impl EdgeIterator {
 }
 
 pub struct FaceIterator {
-    explorer: UniquePtr<ffi::TopExp_Explorer>,
+    explorer: UniquePtr<top_exp::Explorer>,
 }
 
 #[derive(Debug, Copy, Clone)]
@@ -199,11 +187,12 @@ impl Iterator for FaceIterator {
     type Item = Face;
 
     fn next(&mut self) -> Option<Self::Item> {
-        if self.explorer.More() {
-            let face = ffi::TopoDS_cast_to_face(self.explorer.Current());
+        if self.explorer.more() {
+            let shape = self.explorer.current();
+            let face = topo_ds::face(shape);
             let face = Face::from_face(face);
 
-            self.explorer.pin_mut().Next();
+            self.explorer.pin_mut().next();
 
             Some(face)
         } else {
@@ -243,23 +232,6 @@ pub enum JoinType {
     Intersection,
 }
 
-impl From<ffi::GeomAbs_JoinType> for JoinType {
-    fn from(value: ffi::GeomAbs_JoinType) -> Self {
-        match value {
-            ffi::GeomAbs_JoinType::GeomAbs_Arc => Self::Arc,
-            //ffi::GeomAbs_JoinType::GeomAbs_Tangent => Self::Tangent,
-            ffi::GeomAbs_JoinType::GeomAbs_Intersection => Self::Intersection,
-            ffi::GeomAbs_JoinType { repr } => panic!("Unexpected join type: {repr}"),
-        }
-    }
-}
-
-impl From<JoinType> for ffi::GeomAbs_JoinType {
-    fn from(value: JoinType) -> Self {
-        match value {
-            JoinType::Arc => ffi::GeomAbs_JoinType::GeomAbs_Arc,
-            //JoinType::Tangent => ffi::GeomAbs_JoinType::GeomAbs_Tangent,
-            JoinType::Intersection => ffi::GeomAbs_JoinType::GeomAbs_Intersection,
-        }
-    }
-}
+// NOTE: From<geom_abs::JoinType> implementations are blocked because CXX doesn't support
+// unscoped enums. See TRANSITION_PLAN.md "Generator Limitations" section.
+// JoinType is kept as a Rust-only enum for now but cannot convert to/from OCCT types.

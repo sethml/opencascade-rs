@@ -6,7 +6,9 @@
 
 #include <Standard_Handle.hxx>
 #include <TopLoc_Datum3D.hxx>
+#include <TopLoc_ItemLocation.hxx>
 #include <TopLoc_Location.hxx>
+#include <TopLoc_SListOfItemLocation.hxx>
 #include <gp_Trsf.hxx>
 
 // Handle type aliases
@@ -17,15 +19,15 @@ typedef opencascade::handle<TopLoc_Datum3D> HandleTopLocDatum3D;
 // ========================
 
 inline std::unique_ptr<TopLoc_Location> TopLoc_Location_ctor() {
-    return construct_unique<TopLoc_Location>();
+    return std::make_unique<TopLoc_Location>();
 }
 
 inline std::unique_ptr<TopLoc_Location> TopLoc_Location_ctor_trsf(const gp_Trsf& T) {
-    return construct_unique<TopLoc_Location>(T);
+    return std::make_unique<TopLoc_Location>(T);
 }
 
 inline std::unique_ptr<TopLoc_Location> TopLoc_Location_ctor_handledatum3d(const opencascade::handle<TopLoc_Datum3D>& D) {
-    return construct_unique<TopLoc_Location>(D);
+    return std::make_unique<TopLoc_Location>(D);
 }
 
 inline std::unique_ptr<TopLoc_Location> TopLoc_Location_Inverted(const TopLoc_Location& self) {
@@ -50,6 +52,23 @@ inline std::unique_ptr<TopLoc_Location> TopLoc_Location_Powered(const TopLoc_Loc
 
 inline Standard_Real TopLoc_Location_ScalePrec() {
     return TopLoc_Location::ScalePrec();
+}
+
+
+// ========================
+// TopLoc_SListOfItemLocation wrappers
+// ========================
+
+inline std::unique_ptr<TopLoc_SListOfItemLocation> TopLoc_SListOfItemLocation_ctor() {
+    return std::make_unique<TopLoc_SListOfItemLocation>();
+}
+
+inline std::unique_ptr<TopLoc_SListOfItemLocation> TopLoc_SListOfItemLocation_ctor_itemlocation_slistofitemlocation(const TopLoc_ItemLocation& anItem, const TopLoc_SListOfItemLocation& aTail) {
+    return std::make_unique<TopLoc_SListOfItemLocation>(anItem, aTail);
+}
+
+inline std::unique_ptr<TopLoc_SListOfItemLocation> TopLoc_SListOfItemLocation_ctor_slistofitemlocation(const TopLoc_SListOfItemLocation& Other) {
+    return std::make_unique<TopLoc_SListOfItemLocation>(Other);
 }
 
 

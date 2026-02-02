@@ -1,9 +1,14 @@
+// NOTE: This module is blocked because:
+// - BRep_Builder constructor not generated (implicit default ctor)
+// - Need BRep_Builder::MakeCompound and TopoDS_Builder::Add
+// See TRANSITION_PLAN.md for details.
+
 use crate::primitives::Shape;
 use cxx::UniquePtr;
-use opencascade_sys::ffi;
+use opencascade_sys::topo_ds;
 
 pub struct Compound {
-    pub(crate) inner: UniquePtr<ffi::TopoDS_Compound>,
+    pub(crate) inner: UniquePtr<topo_ds::Compound>,
 }
 
 impl AsRef<Compound> for Compound {
@@ -13,31 +18,26 @@ impl AsRef<Compound> for Compound {
 }
 
 impl Compound {
-    pub(crate) fn from_compound(compound: &ffi::TopoDS_Compound) -> Self {
-        let inner = ffi::TopoDS_Compound_to_owned(compound);
+    pub(crate) fn from_compound(compound: &topo_ds::Compound) -> Self {
+        let inner = compound.to_owned();
 
         Self { inner }
     }
 
+    // Stub implementation - blocked due to missing BRep_Builder
+    #[allow(unused)]
     #[must_use]
     pub fn clean(&self) -> Shape {
-        let shape = ffi::cast_compound_to_shape(&self.inner);
-
-        Shape::from_shape(shape).clean()
+        unimplemented!(
+            "Compound::clean is blocked pending BRep_Builder constructor support"
+        );
     }
 
-    pub fn from_shapes<T: AsRef<Shape>>(shapes: impl IntoIterator<Item = T>) -> Self {
-        let mut compound = ffi::TopoDS_Compound_ctor();
-        let builder = ffi::BRep_Builder_ctor();
-        let builder = ffi::BRep_Builder_upcast_to_topods_builder(&builder);
-        builder.MakeCompound(compound.pin_mut());
-        let mut compound_shape = ffi::TopoDS_Compound_as_shape(compound);
-
-        for shape in shapes.into_iter() {
-            builder.Add(compound_shape.pin_mut(), &shape.as_ref().inner);
-        }
-
-        let compound = ffi::TopoDS_cast_to_compound(&compound_shape);
-        Self::from_compound(compound)
+    // Stub implementation - blocked due to missing BRep_Builder
+    #[allow(unused)]
+    pub fn from_shapes<T: AsRef<Shape>>(_shapes: impl IntoIterator<Item = T>) -> Self {
+        unimplemented!(
+            "Compound::from_shapes is blocked pending BRep_Builder constructor support"
+        );
     }
 }

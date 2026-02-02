@@ -40,11 +40,11 @@ typedef opencascade::handle<TColgp_HArray1OfPnt> HandleTColgpHArray1OfPnt;
 // ========================
 
 inline std::unique_ptr<GeomAPI_Interpolate> GeomAPI_Interpolate_ctor_handleharray1ofpnt_bool_real(const opencascade::handle<TColgp_HArray1OfPnt>& Points, Standard_Boolean PeriodicFlag, Standard_Real Tolerance) {
-    return construct_unique<GeomAPI_Interpolate>(Points, PeriodicFlag, Tolerance);
+    return std::make_unique<GeomAPI_Interpolate>(Points, PeriodicFlag, Tolerance);
 }
 
 inline std::unique_ptr<GeomAPI_Interpolate> GeomAPI_Interpolate_ctor_handleharray1ofpnt_handleharray1ofreal_bool_real(const opencascade::handle<TColgp_HArray1OfPnt>& Points, const opencascade::handle<TColStd_HArray1OfReal>& Parameters, Standard_Boolean PeriodicFlag, Standard_Real Tolerance) {
-    return construct_unique<GeomAPI_Interpolate>(Points, Parameters, PeriodicFlag, Tolerance);
+    return std::make_unique<GeomAPI_Interpolate>(Points, Parameters, PeriodicFlag, Tolerance);
 }
 
 
@@ -53,7 +53,7 @@ inline std::unique_ptr<GeomAPI_Interpolate> GeomAPI_Interpolate_ctor_handleharra
 // ========================
 
 inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor() {
-    return construct_unique<GeomAPI_PointsToBSpline>();
+    return std::make_unique<GeomAPI_PointsToBSpline>();
 }
 
 
@@ -62,15 +62,15 @@ inline std::unique_ptr<GeomAPI_PointsToBSpline> GeomAPI_PointsToBSpline_ctor() {
 // ========================
 
 inline std::unique_ptr<GeomAPI_ProjectPointOnCurve> GeomAPI_ProjectPointOnCurve_ctor() {
-    return construct_unique<GeomAPI_ProjectPointOnCurve>();
+    return std::make_unique<GeomAPI_ProjectPointOnCurve>();
 }
 
 inline std::unique_ptr<GeomAPI_ProjectPointOnCurve> GeomAPI_ProjectPointOnCurve_ctor_pnt_handlecurve(const gp_Pnt& P, const opencascade::handle<Geom_Curve>& Curve) {
-    return construct_unique<GeomAPI_ProjectPointOnCurve>(P, Curve);
+    return std::make_unique<GeomAPI_ProjectPointOnCurve>(P, Curve);
 }
 
 inline std::unique_ptr<GeomAPI_ProjectPointOnCurve> GeomAPI_ProjectPointOnCurve_ctor_pnt_handlecurve_real2(const gp_Pnt& P, const opencascade::handle<Geom_Curve>& Curve, Standard_Real Umin, Standard_Real Usup) {
-    return construct_unique<GeomAPI_ProjectPointOnCurve>(P, Curve, Umin, Usup);
+    return std::make_unique<GeomAPI_ProjectPointOnCurve>(P, Curve, Umin, Usup);
 }
 
 inline std::unique_ptr<gp_Pnt> GeomAPI_ProjectPointOnCurve_Point(const GeomAPI_ProjectPointOnCurve& self, Standard_Integer Index) {
@@ -87,7 +87,7 @@ inline std::unique_ptr<gp_Pnt> GeomAPI_ProjectPointOnCurve_NearestPoint(const Ge
 // ========================
 
 inline std::unique_ptr<GeomAPI_ProjectPointOnSurf> GeomAPI_ProjectPointOnSurf_ctor() {
-    return construct_unique<GeomAPI_ProjectPointOnSurf>();
+    return std::make_unique<GeomAPI_ProjectPointOnSurf>();
 }
 
 inline std::unique_ptr<gp_Pnt> GeomAPI_ProjectPointOnSurf_Point(const GeomAPI_ProjectPointOnSurf& self, Standard_Integer Index) {

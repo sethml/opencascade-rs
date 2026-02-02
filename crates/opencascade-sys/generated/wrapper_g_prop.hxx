@@ -15,11 +15,11 @@
 // ========================
 
 inline std::unique_ptr<GProp_GProps> GProp_GProps_ctor() {
-    return construct_unique<GProp_GProps>();
+    return std::make_unique<GProp_GProps>();
 }
 
 inline std::unique_ptr<GProp_GProps> GProp_GProps_ctor_pnt(const gp_Pnt& SystemLocation) {
-    return construct_unique<GProp_GProps>(SystemLocation);
+    return std::make_unique<GProp_GProps>(SystemLocation);
 }
 
 inline std::unique_ptr<gp_Pnt> GProp_GProps_CentreOfMass(const GProp_GProps& self) {

@@ -5,6 +5,8 @@
 #include "common.hxx"
 
 #include <GeomAbs_Shape.hxx>
+#include <Law_BSpFunc.hxx>
+#include <Law_BSpline.hxx>
 #include <Law_Function.hxx>
 #include <Law_Interpol.hxx>
 #include <Standard_Handle.hxx>
@@ -13,16 +15,15 @@
 #include <TColgp_Array1OfPnt2d.hxx>
 
 // Handle type aliases
+typedef opencascade::handle<Law_BSpFunc> HandleLawBSpFunc;
+typedef opencascade::handle<Law_BSpline> HandleLawBSpline;
 typedef opencascade::handle<Law_Function> HandleLawFunction;
+typedef opencascade::handle<Law_Interpol> HandleLawInterpol;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
 
 // ========================
 // Law_Function wrappers
 // ========================
-
-inline std::unique_ptr<GeomAbs_Shape> Law_Function_Continuity(const Law_Function& self) {
-    return std::make_unique<GeomAbs_Shape>(self.Continuity());
-}
 
 inline std::unique_ptr<opencascade::handle<Law_Function>> Law_Function_Trim(const Law_Function& self, Standard_Real PFirst, Standard_Real PLast, Standard_Real Tol) {
     return std::make_unique<opencascade::handle<Law_Function>>(self.Trim(PFirst, PLast, Tol));
@@ -34,15 +35,61 @@ inline rust::String Law_Function_get_type_name() {
 
 
 // ========================
+// Law_BSpFunc wrappers
+// ========================
+
+inline std::unique_ptr<Law_BSpFunc> Law_BSpFunc_ctor() {
+    return std::make_unique<Law_BSpFunc>();
+}
+
+inline std::unique_ptr<Law_BSpFunc> Law_BSpFunc_ctor_handlebspline_real2(const opencascade::handle<Law_BSpline>& C, Standard_Real First, Standard_Real Last) {
+    return std::make_unique<Law_BSpFunc>(C, First, Last);
+}
+
+inline std::unique_ptr<opencascade::handle<Law_Function>> Law_BSpFunc_Trim(const Law_BSpFunc& self, Standard_Real PFirst, Standard_Real PLast, Standard_Real Tol) {
+    return std::make_unique<opencascade::handle<Law_Function>>(self.Trim(PFirst, PLast, Tol));
+}
+
+inline std::unique_ptr<opencascade::handle<Law_BSpline>> Law_BSpFunc_Curve(const Law_BSpFunc& self) {
+    return std::make_unique<opencascade::handle<Law_BSpline>>(self.Curve());
+}
+
+inline rust::String Law_BSpFunc_get_type_name() {
+    return rust::String(Law_BSpFunc::get_type_name());
+}
+
+inline const Law_Function& Law_BSpFunc_as_Law_Function(const Law_BSpFunc& self) { return self; }
+inline Law_Function& Law_BSpFunc_as_Law_Function_mut(Law_BSpFunc& self) { return self; }
+inline std::unique_ptr<HandleLawBSpFunc> Law_BSpFunc_to_handle(std::unique_ptr<Law_BSpFunc> obj) {
+    return std::make_unique<HandleLawBSpFunc>(obj.release());
+}
+inline std::unique_ptr<HandleLawFunction> HandleLawBSpFunc_to_HandleLawFunction(const HandleLawBSpFunc& handle) {
+    return std::make_unique<HandleLawFunction>(handle);
+}
+
+// ========================
 // Law_Interpol wrappers
 // ========================
 
 inline std::unique_ptr<Law_Interpol> Law_Interpol_ctor() {
-    return construct_unique<Law_Interpol>();
+    return std::make_unique<Law_Interpol>();
 }
 
 inline rust::String Law_Interpol_get_type_name() {
     return rust::String(Law_Interpol::get_type_name());
 }
 
+inline const Law_Function& Law_Interpol_as_Law_Function(const Law_Interpol& self) { return self; }
+inline Law_Function& Law_Interpol_as_Law_Function_mut(Law_Interpol& self) { return self; }
+inline const Law_BSpFunc& Law_Interpol_as_Law_BSpFunc(const Law_Interpol& self) { return self; }
+inline Law_BSpFunc& Law_Interpol_as_Law_BSpFunc_mut(Law_Interpol& self) { return self; }
+inline std::unique_ptr<HandleLawInterpol> Law_Interpol_to_handle(std::unique_ptr<Law_Interpol> obj) {
+    return std::make_unique<HandleLawInterpol>(obj.release());
+}
+inline std::unique_ptr<HandleLawFunction> HandleLawInterpol_to_HandleLawFunction(const HandleLawInterpol& handle) {
+    return std::make_unique<HandleLawFunction>(handle);
+}
+inline std::unique_ptr<HandleLawBSpFunc> HandleLawInterpol_to_HandleLawBSpFunc(const HandleLawInterpol& handle) {
+    return std::make_unique<HandleLawBSpFunc>(handle);
+}
 

@@ -26,36 +26,30 @@ typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 // ========================
 
 inline std::unique_ptr<STEPControl_Reader> STEPControl_Reader_ctor() {
-    return construct_unique<STEPControl_Reader>();
+    return std::make_unique<STEPControl_Reader>();
 }
 
 inline std::unique_ptr<STEPControl_Reader> STEPControl_Reader_ctor_handleworksession_bool(const opencascade::handle<XSControl_WorkSession>& WS, Standard_Boolean scratch) {
-    return construct_unique<STEPControl_Reader>(WS, scratch);
+    return std::make_unique<STEPControl_Reader>(WS, scratch);
 }
 
 inline std::unique_ptr<opencascade::handle<StepData_StepModel>> STEPControl_Reader_StepModel(const STEPControl_Reader& self) {
     return std::make_unique<opencascade::handle<StepData_StepModel>>(self.StepModel());
 }
 
-inline IFSelect_ReturnStatus STEPControl_Reader_ReadFile(STEPControl_Reader& self, rust::Str filename) {
-    return self.ReadFile(std::string(filename).c_str());
-}
-
-inline IFSelect_ReturnStatus STEPControl_Reader_ReadFile(STEPControl_Reader& self, rust::Str filename, const DESTEP_Parameters& theParams) {
-    return self.ReadFile(std::string(filename).c_str(), theParams);
-}
-
+inline const XSControl_Reader& STEPControl_Reader_as_XSControl_Reader(const STEPControl_Reader& self) { return self; }
+inline XSControl_Reader& STEPControl_Reader_as_XSControl_Reader_mut(STEPControl_Reader& self) { return self; }
 
 // ========================
 // STEPControl_Writer wrappers
 // ========================
 
 inline std::unique_ptr<STEPControl_Writer> STEPControl_Writer_ctor() {
-    return construct_unique<STEPControl_Writer>();
+    return std::make_unique<STEPControl_Writer>();
 }
 
 inline std::unique_ptr<STEPControl_Writer> STEPControl_Writer_ctor_handleworksession_bool(const opencascade::handle<XSControl_WorkSession>& WS, Standard_Boolean scratch) {
-    return construct_unique<STEPControl_Writer>(WS, scratch);
+    return std::make_unique<STEPControl_Writer>(WS, scratch);
 }
 
 inline std::unique_ptr<opencascade::handle<XSControl_WorkSession>> STEPControl_Writer_WS(const STEPControl_Writer& self) {
@@ -64,10 +58,6 @@ inline std::unique_ptr<opencascade::handle<XSControl_WorkSession>> STEPControl_W
 
 inline std::unique_ptr<opencascade::handle<StepData_StepModel>> STEPControl_Writer_Model(STEPControl_Writer& self, Standard_Boolean newone) {
     return std::make_unique<opencascade::handle<StepData_StepModel>>(self.Model(newone));
-}
-
-inline IFSelect_ReturnStatus STEPControl_Writer_Write(STEPControl_Writer& self, rust::Str theFileName) {
-    return self.Write(std::string(theFileName).c_str());
 }
 
 

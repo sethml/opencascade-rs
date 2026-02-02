@@ -11,10 +11,12 @@
 #include <BRepFill_ThruSectionErrorStatus.hxx>
 #include <BRepFill_TypeOfContact.hxx>
 #include <BRepOffsetAPI_MakeOffset.hxx>
+#include <BRepOffsetAPI_MakeOffsetShape.hxx>
 #include <BRepOffsetAPI_MakePipe.hxx>
 #include <BRepOffsetAPI_MakePipeShell.hxx>
 #include <BRepOffsetAPI_MakeThickSolid.hxx>
 #include <BRepOffsetAPI_ThruSections.hxx>
+#include <BRepOffset_MakeOffset.hxx>
 #include <BRepOffset_Mode.hxx>
 #include <GeomAbs_JoinType.hxx>
 #include <GeomAbs_Shape.hxx>
@@ -38,20 +40,24 @@ typedef opencascade::handle<Law_Function> HandleLawFunction;
 // ========================
 
 inline std::unique_ptr<BRepOffsetAPI_MakeOffset> BRepOffsetAPI_MakeOffset_ctor() {
-    return construct_unique<BRepOffsetAPI_MakeOffset>();
+    return std::make_unique<BRepOffsetAPI_MakeOffset>();
 }
 
 inline std::unique_ptr<TopoDS_Face> BRepOffsetAPI_MakeOffset_ConvertFace(const TopoDS_Face& theFace, Standard_Real theAngleTolerance) {
     return std::make_unique<TopoDS_Face>(BRepOffsetAPI_MakeOffset::ConvertFace(theFace, theAngleTolerance));
 }
 
+inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape(const BRepOffsetAPI_MakeOffset& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape_mut(BRepOffsetAPI_MakeOffset& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command(const BRepOffsetAPI_MakeOffset& self) { return self; }
+inline BRepBuilderAPI_Command& BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_MakeOffset& self) { return self; }
 
 // ========================
 // BRepOffsetAPI_MakePipe wrappers
 // ========================
 
 inline std::unique_ptr<BRepOffsetAPI_MakePipe> BRepOffsetAPI_MakePipe_ctor_wire_shape(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile) {
-    return construct_unique<BRepOffsetAPI_MakePipe>(Spine, Profile);
+    return std::make_unique<BRepOffsetAPI_MakePipe>(Spine, Profile);
 }
 
 inline std::unique_ptr<TopoDS_Shape> BRepOffsetAPI_MakePipe_FirstShape(BRepOffsetAPI_MakePipe& self) {
@@ -66,17 +72,19 @@ inline std::unique_ptr<TopoDS_Shape> BRepOffsetAPI_MakePipe_Generated(BRepOffset
     return std::make_unique<TopoDS_Shape>(self.Generated(SSpine, SProfile));
 }
 
+inline const BRepPrimAPI_MakeSweep& BRepOffsetAPI_MakePipe_as_BRepPrimAPI_MakeSweep(const BRepOffsetAPI_MakePipe& self) { return self; }
+inline BRepPrimAPI_MakeSweep& BRepOffsetAPI_MakePipe_as_BRepPrimAPI_MakeSweep_mut(BRepOffsetAPI_MakePipe& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_MakeShape(const BRepOffsetAPI_MakePipe& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_MakeShape_mut(BRepOffsetAPI_MakePipe& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_Command(const BRepOffsetAPI_MakePipe& self) { return self; }
+inline BRepBuilderAPI_Command& BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_MakePipe& self) { return self; }
 
 // ========================
 // BRepOffsetAPI_MakePipeShell wrappers
 // ========================
 
 inline std::unique_ptr<BRepOffsetAPI_MakePipeShell> BRepOffsetAPI_MakePipeShell_ctor_wire(const TopoDS_Wire& Spine) {
-    return construct_unique<BRepOffsetAPI_MakePipeShell>(Spine);
-}
-
-inline std::unique_ptr<BRepBuilderAPI_PipeError> BRepOffsetAPI_MakePipeShell_GetStatus(const BRepOffsetAPI_MakePipeShell& self) {
-    return std::make_unique<BRepBuilderAPI_PipeError>(self.GetStatus());
+    return std::make_unique<BRepOffsetAPI_MakePipeShell>(Spine);
 }
 
 inline std::unique_ptr<TopoDS_Shape> BRepOffsetAPI_MakePipeShell_FirstShape(BRepOffsetAPI_MakePipeShell& self) {
@@ -87,38 +95,55 @@ inline std::unique_ptr<TopoDS_Shape> BRepOffsetAPI_MakePipeShell_LastShape(BRepO
     return std::make_unique<TopoDS_Shape>(self.LastShape());
 }
 
+inline const BRepPrimAPI_MakeSweep& BRepOffsetAPI_MakePipeShell_as_BRepPrimAPI_MakeSweep(const BRepOffsetAPI_MakePipeShell& self) { return self; }
+inline BRepPrimAPI_MakeSweep& BRepOffsetAPI_MakePipeShell_as_BRepPrimAPI_MakeSweep_mut(BRepOffsetAPI_MakePipeShell& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command(const BRepOffsetAPI_MakePipeShell& self) { return self; }
+inline BRepBuilderAPI_Command& BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_MakePipeShell& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape(const BRepOffsetAPI_MakePipeShell& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape_mut(BRepOffsetAPI_MakePipeShell& self) { return self; }
 
 // ========================
 // BRepOffsetAPI_MakeThickSolid wrappers
 // ========================
 
 inline std::unique_ptr<BRepOffsetAPI_MakeThickSolid> BRepOffsetAPI_MakeThickSolid_ctor() {
-    return construct_unique<BRepOffsetAPI_MakeThickSolid>();
+    return std::make_unique<BRepOffsetAPI_MakeThickSolid>();
 }
 
+inline const BRepBuilderAPI_Command& BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command(const BRepOffsetAPI_MakeThickSolid& self) { return self; }
+inline BRepBuilderAPI_Command& BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_MakeThickSolid& self) { return self; }
+inline const BRepOffsetAPI_MakeOffsetShape& BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape(const BRepOffsetAPI_MakeThickSolid& self) { return self; }
+inline BRepOffsetAPI_MakeOffsetShape& BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape_mut(BRepOffsetAPI_MakeThickSolid& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape(const BRepOffsetAPI_MakeThickSolid& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape_mut(BRepOffsetAPI_MakeThickSolid& self) { return self; }
 
 // ========================
 // BRepOffsetAPI_ThruSections wrappers
 // ========================
 
 inline std::unique_ptr<BRepOffsetAPI_ThruSections> BRepOffsetAPI_ThruSections_ctor_bool2_real(Standard_Boolean isSolid, Standard_Boolean ruled, Standard_Real pres3d) {
-    return construct_unique<BRepOffsetAPI_ThruSections>(isSolid, ruled, pres3d);
-}
-
-inline std::unique_ptr<Approx_ParametrizationType> BRepOffsetAPI_ThruSections_ParType(const BRepOffsetAPI_ThruSections& self) {
-    return std::make_unique<Approx_ParametrizationType>(self.ParType());
-}
-
-inline std::unique_ptr<GeomAbs_Shape> BRepOffsetAPI_ThruSections_Continuity(const BRepOffsetAPI_ThruSections& self) {
-    return std::make_unique<GeomAbs_Shape>(self.Continuity());
+    return std::make_unique<BRepOffsetAPI_ThruSections>(isSolid, ruled, pres3d);
 }
 
 inline std::unique_ptr<TopoDS_Shape> BRepOffsetAPI_ThruSections_GeneratedFace(const BRepOffsetAPI_ThruSections& self, const TopoDS_Shape& Edge) {
     return std::make_unique<TopoDS_Shape>(self.GeneratedFace(Edge));
 }
 
-inline std::unique_ptr<BRepFill_ThruSectionErrorStatus> BRepOffsetAPI_ThruSections_GetStatus(const BRepOffsetAPI_ThruSections& self) {
-    return std::make_unique<BRepFill_ThruSectionErrorStatus>(self.GetStatus());
+inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_MakeShape(const BRepOffsetAPI_ThruSections& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_MakeShape_mut(BRepOffsetAPI_ThruSections& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_Command(const BRepOffsetAPI_ThruSections& self) { return self; }
+inline BRepBuilderAPI_Command& BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_ThruSections& self) { return self; }
+
+// ========================
+// BRepOffsetAPI_MakeOffsetShape wrappers
+// ========================
+
+inline std::unique_ptr<BRepOffsetAPI_MakeOffsetShape> BRepOffsetAPI_MakeOffsetShape_ctor() {
+    return std::make_unique<BRepOffsetAPI_MakeOffsetShape>();
 }
 
+inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape(const BRepOffsetAPI_MakeOffsetShape& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape_mut(BRepOffsetAPI_MakeOffsetShape& self) { return self; }
+inline const BRepBuilderAPI_Command& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command(const BRepOffsetAPI_MakeOffsetShape& self) { return self; }
+inline BRepBuilderAPI_Command& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_MakeOffsetShape& self) { return self; }
 

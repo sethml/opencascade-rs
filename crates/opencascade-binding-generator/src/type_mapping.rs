@@ -106,6 +106,10 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
                 }
             }
         }
+        Type::RValueRef(_) => {
+            // RValueRef types should be filtered out before reaching here
+            panic!("RValueRef types should not be mapped to Rust types - they are unbindable")
+        }
         Type::ConstPtr(inner) => {
             // Special case: const char* -> &str for parameters (C string input)
             // Note: For return types, use map_c_string_return_type() instead, which returns String
@@ -236,6 +240,8 @@ pub struct TypeContext<'a> {
     pub module_classes: &'a std::collections::HashSet<String>,
     /// All enum names across all modules (full C++ names like "TopAbs_Orientation")
     pub all_enums: &'a std::collections::HashSet<String>,
+    /// All class names across all modules (full C++ names like "gp_Pnt")
+    pub all_classes: &'a std::collections::HashSet<String>,
 }
 
 /// Map a type to Rust, using short names for same-module types
@@ -244,11 +250,26 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
         Type::Class(class_name) => {
             // Check if this is actually an enum - enums don't need UniquePtr
             if ctx.all_enums.contains(class_name) {
+                let type_module = extract_module_from_class(class_name);
+                let short_name = extract_short_class_name(class_name);
+                
+                // Check if this is a same-module enum - use short name
+                if type_module.as_deref() == Some(ctx.current_module) {
+                    let safe_name = safe_short_name(&short_name);
+                    return RustTypeMapping {
+                        rust_type: safe_name,
+                        needs_unique_ptr: false, // Enums are Copy and don't need UniquePtr
+                        needs_pin: false,
+                        source_module: None, // Same module
+                    };
+                }
+                
+                // Cross-module enum - use full C++ name (will be aliased)
                 return RustTypeMapping {
                     rust_type: class_name.clone(),
                     needs_unique_ptr: false, // Enums are Copy and don't need UniquePtr
                     needs_pin: false,
-                    source_module: extract_module_from_class(class_name),
+                    source_module: type_module,
                 };
             }
             

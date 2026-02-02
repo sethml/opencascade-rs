@@ -5,6 +5,7 @@
 #include "common.hxx"
 
 #include <Standard_Handle.hxx>
+#include <Standard_Type.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopLoc_Location.hxx>
@@ -13,6 +14,7 @@
 #include <TopoDS_Compound.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
+#include <TopoDS_Iterator.hxx>
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Shell.hxx>
 #include <TopoDS_Solid.hxx>
@@ -21,6 +23,7 @@
 #include <TopoDS_Wire.hxx>
 
 // Handle type aliases
+typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<TopoDS_TShape> HandleTopoDSTShape;
 
 // ========================
@@ -28,15 +31,11 @@ typedef opencascade::handle<TopoDS_TShape> HandleTopoDSTShape;
 // ========================
 
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_ctor() {
-    return construct_unique<TopoDS_Shape>();
+    return std::make_unique<TopoDS_Shape>();
 }
 
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_Located(const TopoDS_Shape& self, const TopLoc_Location& theLoc, Standard_Boolean theRaiseExc) {
     return std::make_unique<TopoDS_Shape>(self.Located(theLoc, theRaiseExc));
-}
-
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_Oriented(const TopoDS_Shape& self, TopAbs_Orientation theOrient) {
-    return std::make_unique<TopoDS_Shape>(self.Oriented(theOrient));
 }
 
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_Moved(const TopoDS_Shape& self, const TopLoc_Location& thePosition, Standard_Boolean theRaiseExc) {
@@ -51,10 +50,6 @@ inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_Complemented(const TopoDS_Shap
     return std::make_unique<TopoDS_Shape>(self.Complemented());
 }
 
-inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_Composed(const TopoDS_Shape& self, TopAbs_Orientation theOrient) {
-    return std::make_unique<TopoDS_Shape>(self.Composed(theOrient));
-}
-
 inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_EmptyCopied(const TopoDS_Shape& self) {
     return std::make_unique<TopoDS_Shape>(self.EmptyCopied());
 }
@@ -65,75 +60,146 @@ inline std::unique_ptr<TopoDS_Shape> TopoDS_Shape_EmptyCopied(const TopoDS_Shape
 // ========================
 
 inline std::unique_ptr<TopoDS_Vertex> TopoDS_Vertex_ctor() {
-    return construct_unique<TopoDS_Vertex>();
+    return std::make_unique<TopoDS_Vertex>();
 }
 
+inline const TopoDS_Shape& TopoDS_Vertex_as_TopoDS_Shape(const TopoDS_Vertex& self) { return self; }
+inline TopoDS_Shape& TopoDS_Vertex_as_TopoDS_Shape_mut(TopoDS_Vertex& self) { return self; }
 
 // ========================
 // TopoDS_Edge wrappers
 // ========================
 
 inline std::unique_ptr<TopoDS_Edge> TopoDS_Edge_ctor() {
-    return construct_unique<TopoDS_Edge>();
+    return std::make_unique<TopoDS_Edge>();
 }
 
+inline const TopoDS_Shape& TopoDS_Edge_as_TopoDS_Shape(const TopoDS_Edge& self) { return self; }
+inline TopoDS_Shape& TopoDS_Edge_as_TopoDS_Shape_mut(TopoDS_Edge& self) { return self; }
 
 // ========================
 // TopoDS_Wire wrappers
 // ========================
 
 inline std::unique_ptr<TopoDS_Wire> TopoDS_Wire_ctor() {
-    return construct_unique<TopoDS_Wire>();
+    return std::make_unique<TopoDS_Wire>();
 }
 
+inline const TopoDS_Shape& TopoDS_Wire_as_TopoDS_Shape(const TopoDS_Wire& self) { return self; }
+inline TopoDS_Shape& TopoDS_Wire_as_TopoDS_Shape_mut(TopoDS_Wire& self) { return self; }
 
 // ========================
 // TopoDS_Face wrappers
 // ========================
 
 inline std::unique_ptr<TopoDS_Face> TopoDS_Face_ctor() {
-    return construct_unique<TopoDS_Face>();
+    return std::make_unique<TopoDS_Face>();
 }
 
+inline const TopoDS_Shape& TopoDS_Face_as_TopoDS_Shape(const TopoDS_Face& self) { return self; }
+inline TopoDS_Shape& TopoDS_Face_as_TopoDS_Shape_mut(TopoDS_Face& self) { return self; }
 
 // ========================
 // TopoDS_Shell wrappers
 // ========================
 
 inline std::unique_ptr<TopoDS_Shell> TopoDS_Shell_ctor() {
-    return construct_unique<TopoDS_Shell>();
+    return std::make_unique<TopoDS_Shell>();
 }
 
+inline const TopoDS_Shape& TopoDS_Shell_as_TopoDS_Shape(const TopoDS_Shell& self) { return self; }
+inline TopoDS_Shape& TopoDS_Shell_as_TopoDS_Shape_mut(TopoDS_Shell& self) { return self; }
 
 // ========================
 // TopoDS_Solid wrappers
 // ========================
 
 inline std::unique_ptr<TopoDS_Solid> TopoDS_Solid_ctor() {
-    return construct_unique<TopoDS_Solid>();
+    return std::make_unique<TopoDS_Solid>();
 }
 
+inline const TopoDS_Shape& TopoDS_Solid_as_TopoDS_Shape(const TopoDS_Solid& self) { return self; }
+inline TopoDS_Shape& TopoDS_Solid_as_TopoDS_Shape_mut(TopoDS_Solid& self) { return self; }
 
 // ========================
 // TopoDS_Compound wrappers
 // ========================
 
 inline std::unique_ptr<TopoDS_Compound> TopoDS_Compound_ctor() {
-    return construct_unique<TopoDS_Compound>();
+    return std::make_unique<TopoDS_Compound>();
 }
 
+inline const TopoDS_Shape& TopoDS_Compound_as_TopoDS_Shape(const TopoDS_Compound& self) { return self; }
+inline TopoDS_Shape& TopoDS_Compound_as_TopoDS_Shape_mut(TopoDS_Compound& self) { return self; }
 
 // ========================
 // TopoDS_CompSolid wrappers
 // ========================
 
 inline std::unique_ptr<TopoDS_CompSolid> TopoDS_CompSolid_ctor() {
-    return construct_unique<TopoDS_CompSolid>();
+    return std::make_unique<TopoDS_CompSolid>();
 }
 
+inline const TopoDS_Shape& TopoDS_CompSolid_as_TopoDS_Shape(const TopoDS_CompSolid& self) { return self; }
+inline TopoDS_Shape& TopoDS_CompSolid_as_TopoDS_Shape_mut(TopoDS_CompSolid& self) { return self; }
 
 // ========================
 // TopoDS_Builder wrappers
 // ========================
 
+
+// ========================
+// TopoDS_Iterator wrappers
+// ========================
+
+inline std::unique_ptr<TopoDS_Iterator> TopoDS_Iterator_ctor() {
+    return std::make_unique<TopoDS_Iterator>();
+}
+
+inline std::unique_ptr<TopoDS_Iterator> TopoDS_Iterator_ctor_shape_bool2(const TopoDS_Shape& S, Standard_Boolean cumOri, Standard_Boolean cumLoc) {
+    return std::make_unique<TopoDS_Iterator>(S, cumOri, cumLoc);
+}
+
+
+// ========================
+// TopoDS_TShape wrappers
+// ========================
+
+inline std::unique_ptr<opencascade::handle<TopoDS_TShape>> TopoDS_TShape_EmptyCopy(const TopoDS_TShape& self) {
+    return std::make_unique<opencascade::handle<TopoDS_TShape>>(self.EmptyCopy());
+}
+
+inline rust::String TopoDS_TShape_get_type_name() {
+    return rust::String(TopoDS_TShape::get_type_name());
+}
+
+
+#include <TopoDS_Wire.hxx>
+#include <TopoDS_Edge.hxx>
+#include <TopoDS_Vertex.hxx>
+#include <TopoDS_Shape.hxx>
+#include <TopoDS_Solid.hxx>
+#include <TopoDS_Compound.hxx>
+#include <TopoDS_CompSolid.hxx>
+#include <TopoDS_Face.hxx>
+#include <TopoDS_Shell.hxx>
+#include <TopoDS.hxx>
+
+// Namespace function wrappers for TopoDS
+inline const TopoDS_Vertex& TopoDS_fn_Vertex(const TopoDS_Shape& theShape) { return TopoDS::Vertex(theShape); }
+inline TopoDS_Vertex& TopoDS_fn_Vertex_mut(TopoDS_Shape& theShape) { return TopoDS::Vertex(theShape); }
+inline const TopoDS_Edge& TopoDS_fn_Edge(const TopoDS_Shape& theShape) { return TopoDS::Edge(theShape); }
+inline TopoDS_Edge& TopoDS_fn_Edge_mut(TopoDS_Shape& theShape) { return TopoDS::Edge(theShape); }
+inline const TopoDS_Wire& TopoDS_fn_Wire(const TopoDS_Shape& theShape) { return TopoDS::Wire(theShape); }
+inline TopoDS_Wire& TopoDS_fn_Wire_mut(TopoDS_Shape& theShape) { return TopoDS::Wire(theShape); }
+inline const TopoDS_Face& TopoDS_fn_Face(const TopoDS_Shape& theShape) { return TopoDS::Face(theShape); }
+inline TopoDS_Face& TopoDS_fn_Face_mut(TopoDS_Shape& theShape) { return TopoDS::Face(theShape); }
+inline const TopoDS_Shell& TopoDS_fn_Shell(const TopoDS_Shape& theShape) { return TopoDS::Shell(theShape); }
+inline TopoDS_Shell& TopoDS_fn_Shell_mut(TopoDS_Shape& theShape) { return TopoDS::Shell(theShape); }
+inline const TopoDS_Solid& TopoDS_fn_Solid(const TopoDS_Shape& theShape) { return TopoDS::Solid(theShape); }
+inline TopoDS_Solid& TopoDS_fn_Solid_mut(TopoDS_Shape& theShape) { return TopoDS::Solid(theShape); }
+inline const TopoDS_CompSolid& TopoDS_fn_CompSolid(const TopoDS_Shape& theShape) { return TopoDS::CompSolid(theShape); }
+inline TopoDS_CompSolid& TopoDS_fn_CompSolid_mut(TopoDS_Shape& theShape) { return TopoDS::CompSolid(theShape); }
+inline const TopoDS_Compound& TopoDS_fn_Compound(const TopoDS_Shape& theShape) { return TopoDS::Compound(theShape); }
+inline TopoDS_Compound& TopoDS_fn_Compound_mut(TopoDS_Shape& theShape) { return TopoDS::Compound(theShape); }
 

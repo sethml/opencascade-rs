@@ -29,6 +29,7 @@ TopAbs_ShapeEnum.hxx
 TopAbs_Orientation.hxx
 
 # TopoDS module - Shape types
+TopoDS.hxx
 TopoDS_Shape.hxx
 TopoDS_Vertex.hxx
 TopoDS_Edge.hxx
@@ -42,11 +43,16 @@ TopoDS_Builder.hxx
 
 # TopExp module - Topology exploration
 TopExp_Explorer.hxx
+TopExp.hxx
 
 # TopLoc module - Locations
 TopLoc_Location.hxx
 
 # BRepBuilderAPI module - Shape construction
+# Base classes (needed for inherited methods)
+BRepBuilderAPI_Command.hxx
+BRepBuilderAPI_MakeShape.hxx
+# Derived classes
 BRepBuilderAPI_MakeEdge.hxx
 BRepBuilderAPI_MakeFace.hxx
 BRepBuilderAPI_MakeSolid.hxx
@@ -63,14 +69,19 @@ BRepPrimAPI_MakePrism.hxx
 BRepPrimAPI_MakeRevol.hxx
 BRepPrimAPI_MakeSphere.hxx
 BRepPrimAPI_MakeTorus.hxx
+BRepPrimAPI_MakeSweep.hxx
 
 # BRepAlgoAPI module - Boolean operations
+BRepAlgoAPI_Algo.hxx
+BRepAlgoAPI_BuilderAlgo.hxx
+BRepAlgoAPI_BooleanOperation.hxx
 BRepAlgoAPI_Common.hxx
 BRepAlgoAPI_Cut.hxx
 BRepAlgoAPI_Fuse.hxx
 BRepAlgoAPI_Section.hxx
 
 # BRepFilletAPI module - Fillets and chamfers
+BRepFilletAPI_LocalOperation.hxx
 BRepFilletAPI_MakeChamfer.hxx
 BRepFilletAPI_MakeFillet.hxx
 BRepFilletAPI_MakeFillet2d.hxx
@@ -89,18 +100,35 @@ BRepFeat_MakeDPrism.hxx
 # BRepTools module - Shape I/O and utilities
 BRepTools.hxx
 TopTools_FormatVersion.hxx
+TopTools_HSequenceOfShape.hxx
+TopTools_ListOfShape.hxx
+TopTools_IndexedMapOfShape.hxx
+TopTools_IndexedDataMapOfShapeListOfShape.hxx
 
 # Geom module - 3D geometry
-Geom_BezierCurve.hxx
-Geom_BSplineCurve.hxx
+# Base classes (for inheritance hierarchy - needed for Handle upcasting)
+Geom_Geometry.hxx
 Geom_Curve.hxx
+Geom_Surface.hxx
+Geom_BoundedCurve.hxx
+Geom_BoundedSurface.hxx
+Geom_ElementarySurface.hxx
+# Derived classes
+Geom_BezierCurve.hxx
+Geom_BezierSurface.hxx
+Geom_BSplineCurve.hxx
+Geom_BSplineSurface.hxx
 Geom_CylindricalSurface.hxx
 Geom_Plane.hxx
-Geom_Surface.hxx
 Geom_TrimmedCurve.hxx
 
 # Geom2d module - 2D geometry
+# Base classes (for inheritance hierarchy - needed for Handle upcasting)
+Geom2d_Geometry.hxx
 Geom2d_Curve.hxx
+Geom2d_BoundedCurve.hxx
+Geom2d_Conic.hxx
+# Derived classes
 Geom2d_Ellipse.hxx
 Geom2d_TrimmedCurve.hxx
 
@@ -110,19 +138,39 @@ GeomAPI_PointsToBSpline.hxx
 GeomAPI_ProjectPointOnCurve.hxx
 GeomAPI_ProjectPointOnSurf.hxx
 
+# GeomAbs module - Geometry enums
+GeomAbs_CurveType.hxx
+GeomAbs_JoinType.hxx
+GeomAbs_Shape.hxx
+GeomAbs_SurfaceType.hxx
+
 # GC module - Geometry construction
 GC_MakeArcOfCircle.hxx
 GC_MakeSegment.hxx
+
+# GCPnts module - Geometry points
+GCPnts_TangentialDeflection.hxx
 
 # Bnd module - Bounding boxes
 Bnd_Box.hxx
 Bnd_OBB.hxx
 
 # BRep module - Boundary representation utilities
+BRep_Builder.hxx
 BRep_Tool.hxx
+
+# BRepBndLib module - Bounding box utilities
+BRepBndLib.hxx
+
+# BRepAdaptor module - Curve/surface adaptors
+BRepAdaptor_Curve.hxx
 
 # BRepGProp module - Global properties
 BRepGProp.hxx
+BRepGProp_Face.hxx
+
+# BRepIntCurveSurface module - Intersection
+BRepIntCurveSurface_Inter.hxx
 
 # BRepMesh module - Meshing
 BRepMesh_IncrementalMesh.hxx
@@ -132,6 +180,7 @@ GProp_GProps.hxx
 
 # Law module - Functions
 Law_Function.hxx
+Law_BSpFunc.hxx
 Law_Interpol.hxx
 
 # Poly module - Triangulation
@@ -139,6 +188,9 @@ Poly_Triangulation.hxx
 
 # ShapeUpgrade module - Shape healing
 ShapeUpgrade_UnifySameDomain.hxx
+
+# ShapeAnalysis module - Shape analysis tools
+ShapeAnalysis_FreeBounds.hxx
 
 # TColgp module - Collections of geometric primitives
 TColgp_Array1OfDir.hxx

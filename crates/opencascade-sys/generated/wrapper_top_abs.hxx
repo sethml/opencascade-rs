@@ -4,4 +4,13 @@
 #pragma once
 #include "common.hxx"
 
+#include <TopAbs.hxx>
+#include <TopAbs_Orientation.hxx>
+#include <TopAbs_ShapeEnum.hxx>
+#include <TopAbs_State.hxx>
+
+// ========================
+// TopAbs wrappers
+// ========================
+
 

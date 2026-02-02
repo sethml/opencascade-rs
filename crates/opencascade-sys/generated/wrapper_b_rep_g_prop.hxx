@@ -5,9 +5,23 @@
 #include "common.hxx"
 
 #include <BRepGProp.hxx>
+#include <BRepGProp_Face.hxx>
 #include <GProp_GProps.hxx>
+#include <GeomAbs_IsoType.hxx>
+#include <Standard_Handle.hxx>
+#include <TColStd_Array1OfReal.hxx>
+#include <TColStd_HArray1OfReal.hxx>
+#include <TopoDS_Edge.hxx>
+#include <TopoDS_Face.hxx>
 #include <TopoDS_Shape.hxx>
 #include <gp_Pln.hxx>
+#include <gp_Pnt.hxx>
+#include <gp_Pnt2d.hxx>
+#include <gp_Vec.hxx>
+#include <gp_Vec2d.hxx>
+
+// Handle type aliases
+typedef opencascade::handle<TColStd_HArray1OfReal> HandleTColStdHArray1OfReal;
 
 // ========================
 // BRepGProp wrappers
@@ -39,6 +53,23 @@ inline Standard_Real BRepGProp_VolumePropertiesGK_shape_gprops_real_bool5(const 
 
 inline Standard_Real BRepGProp_VolumePropertiesGK_shape_gprops_pln_real_bool5(const TopoDS_Shape& S, GProp_GProps& VProps, const gp_Pln& thePln, Standard_Real Eps, Standard_Boolean OnlyClosed, Standard_Boolean IsUseSpan, Standard_Boolean CGFlag, Standard_Boolean IFlag, Standard_Boolean SkipShared) {
     return BRepGProp::VolumePropertiesGK(S, VProps, thePln, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared);
+}
+
+
+// ========================
+// BRepGProp_Face wrappers
+// ========================
+
+inline std::unique_ptr<BRepGProp_Face> BRepGProp_Face_ctor_bool(Standard_Boolean IsUseSpan) {
+    return std::make_unique<BRepGProp_Face>(IsUseSpan);
+}
+
+inline std::unique_ptr<BRepGProp_Face> BRepGProp_Face_ctor_face_bool(const TopoDS_Face& F, Standard_Boolean IsUseSpan) {
+    return std::make_unique<BRepGProp_Face>(F, IsUseSpan);
+}
+
+inline std::unique_ptr<gp_Pnt2d> BRepGProp_Face_Value2d(const BRepGProp_Face& self, Standard_Real U) {
+    return std::make_unique<gp_Pnt2d>(self.Value2d(U));
 }
 
 

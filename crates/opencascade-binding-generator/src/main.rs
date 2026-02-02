@@ -3,10 +3,11 @@
 //! A tool using libclang to parse OCCT C++ headers and generate CXX bridge code,
 //! organized into per-module Rust files with type aliasing for cross-module references.
 
-use opencascade_binding_generator::{codegen, module_graph, parser};
+use opencascade_binding_generator::{codegen, header_deps, module_graph, parser};
 
 use anyhow::Result;
 use clap::Parser;
+use std::collections::HashSet;
 use std::path::PathBuf;
 use std::process::Command;
 
@@ -38,6 +39,10 @@ struct Args {
     /// Verbose output
     #[arg(short, long)]
     verbose: bool,
+
+    /// Automatically include header dependencies (recursively)
+    #[arg(long, default_value = "true")]
+    resolve_deps: bool,
 }
 
 fn main() -> Result<()> {
@@ -54,14 +59,41 @@ fn main() -> Result<()> {
         }
     }
 
+    // Resolve header dependencies if requested
+    let headers_to_process = if args.resolve_deps && !args.include_dirs.is_empty() {
+        // Use first include dir as OCCT include root
+        let occt_include_dir = &args.include_dirs[0];
+        
+        if args.verbose {
+            println!("\nResolving header dependencies...");
+            println!("  OCCT include dir: {:?}", occt_include_dir);
+        }
+        
+        let resolved = header_deps::resolve_header_dependencies(
+            &args.headers,
+            occt_include_dir,
+            args.verbose,
+        )?;
+        
+        if args.verbose {
+            println!("  Explicit headers: {}", args.headers.len());
+            println!("  Resolved headers: {}", resolved.len());
+            println!("  Added {} dependency headers", resolved.len() - args.headers.len());
+        }
+        
+        resolved
+    } else {
+        args.headers.clone()
+    };
+
     // TODO: Implement the pipeline:
     // 1. Parse headers with libclang (parser.rs)
     // 2. Build module dependency graph (module_graph.rs)
     // 3. Generate Rust CXX bridge code (codegen/rust.rs)
     // 4. Generate C++ wrapper code (codegen/cpp.rs)
 
-    println!("Parsing headers...");
-    let parsed = parser::parse_headers(&args.headers, &args.include_dirs, args.verbose)?;
+    println!("Parsing {} headers...", headers_to_process.len());
+    let parsed = parser::parse_headers(&headers_to_process, &args.include_dirs, args.verbose)?;
 
     if args.verbose {
         println!("\nParsing complete. Summary:");
@@ -128,11 +160,8 @@ fn main() -> Result<()> {
     // Create output directory if it doesn't exist
     std::fs::create_dir_all(&args.output)?;
 
-    // Generate common.hxx header with shared utilities
-    let common_hxx = codegen::cpp::generate_common_header();
-    let common_file = args.output.join("common.hxx");
-    std::fs::write(&common_file, &common_hxx)?;
-    println!("  Wrote: {}", common_file.display());
+    // Note: common.hxx is now hand-maintained in opencascade-sys/src/common.hxx
+    // The generated wrappers include it via the include path in build.rs
 
     // Generate code for each module
     println!("\nGenerating code...");
@@ -140,10 +169,45 @@ fn main() -> Result<()> {
     // Collect all classes and enums by module
     let all_classes: Vec<_> = parsed.iter().flat_map(|h| &h.classes).collect();
     let all_enums: Vec<_> = parsed.iter().flat_map(|h| &h.enums).collect();
+    let all_functions: Vec<_> = parsed.iter().flat_map(|h| &h.functions).collect();
     
     // Collect all enum names for cross-module enum type resolution
     let all_enum_names: std::collections::HashSet<String> = 
         all_enums.iter().map(|e| e.name.clone()).collect();
+    
+    // Collect all class names for upcast filtering (skip base classes not in our set)
+    let all_class_names: std::collections::HashSet<String> =
+        all_classes.iter().map(|c| c.name.clone()).collect();
+
+    // Build global inheritance map for transitive upcast generation
+    let global_inheritance_map = codegen::cpp::build_inheritance_map(&all_classes);
+    
+    // Collect set of known header filenames that actually exist
+    // This is used to filter out headers for types that don't have their own header files
+    let known_headers: std::collections::HashSet<String> = if !args.include_dirs.is_empty() {
+        let occt_include_dir = &args.include_dirs[0];
+        std::fs::read_dir(occt_include_dir)
+            .map(|entries| {
+                entries
+                    .filter_map(|e| e.ok())
+                    .filter_map(|e| {
+                        let path = e.path();
+                        if path.extension().and_then(|s| s.to_str()) == Some("hxx") {
+                            path.file_name().and_then(|s| s.to_str()).map(|s| s.to_string())
+                        } else {
+                            None
+                        }
+                    })
+                    .collect()
+            })
+            .unwrap_or_default()
+    } else {
+        std::collections::HashSet::new()
+    };
+    
+    if args.verbose {
+        println!("  Found {} known OCCT headers", known_headers.len());
+    }
 
     // Track generated Rust files for formatting
     let mut generated_rs_files: Vec<PathBuf> = Vec::new();
@@ -175,7 +239,14 @@ fn main() -> Result<()> {
             .copied()
             .collect();
 
-        if module_classes.is_empty() && module_enums.is_empty() {
+        // Get functions for this module
+        let module_functions: Vec<_> = all_functions
+            .iter()
+            .filter(|f| f.module == module.name)
+            .copied()
+            .collect();
+
+        if module_classes.is_empty() && module_enums.is_empty() && module_functions.is_empty() {
             continue;
         }
 
@@ -183,34 +254,67 @@ fn main() -> Result<()> {
         generated_modules.push(module);
 
         println!(
-            "  Generating module: {} ({} classes, {} enums)",
+            "  Generating module: {} ({} classes, {} enums, {} functions)",
             module.name,
             module_classes.len(),
-            module_enums.len()
+            module_enums.len(),
+            module_functions.len()
         );
 
         // Get cross-module types
         let cross_types = graph.get_cross_module_types(&module.name);
 
-        // Generate Rust code as TokenStream and convert to string
-        let rust_code =
-            codegen::rust::generate_module(module, &module_classes, &module_enums, &cross_types, &all_enum_names);
+        // Get collections for this module
+        let module_collections = codegen::collections::collections_for_module(&module.rust_name);
+
+        // Collect unique header names for this module from classes, enums, and functions
+        let mut module_headers: HashSet<String> = HashSet::new();
+        for class in &module_classes {
+            module_headers.insert(class.source_header.clone());
+        }
+        for enum_decl in &module_enums {
+            module_headers.insert(enum_decl.source_header.clone());
+        }
+        for func in &module_functions {
+            module_headers.insert(func.source_header.clone());
+        }
+        let mut headers_list: Vec<String> = module_headers.into_iter().collect();
+        headers_list.sort();
+
+        // Generate Rust code as String
+        let rust_code = codegen::rust::generate_module(
+            module,
+            &module_classes,
+            &module_enums,
+            &module_functions,
+            &cross_types,
+            &all_enum_names,
+            &all_class_names,
+            &all_classes,
+            &headers_list,
+            &module_collections,
+        );
 
         // Write to output directory
         let rust_file = args.output.join(format!("{}.rs", module.rust_name));
-        std::fs::write(&rust_file, rust_code.to_string())?;
+        std::fs::write(&rust_file, rust_code)?;
         generated_rs_files.push(rust_file.clone());
         println!("    Wrote: {}", rust_file.display());
 
         // Generate C++ header wrapper
-        let cpp_code = codegen::cpp::generate_module_header(module, &module_classes, &cross_types, &all_enum_names);
+        let cpp_code = codegen::cpp::generate_module_header(module, &module_classes, &module_functions, &cross_types, &all_enum_names, &all_class_names, &global_inheritance_map, &module_collections, &known_headers);
         // Use wrapper_ prefix to avoid collision with OCCT headers (e.g., gp.hxx)
         let cpp_file = args.output.join(format!("wrapper_{}.hxx", module.rust_name));
         std::fs::write(&cpp_file, &cpp_code)?;
         println!("    Wrote: {}", cpp_file.display());
+        
+        // Report collections for this module
+        if !module_collections.is_empty() {
+            println!("    Collections: {}", module_collections.iter().map(|c| c.short_name.as_str()).collect::<Vec<_>>().join(", "));
+        }
     }
 
-    // Generate lib.rs with module declarations
+    // Generate lib.rs with module declarations (no separate collections module)
     let lib_rs = generate_lib_rs(&generated_modules);
     let lib_rs_path = args.output.join("lib.rs");
     std::fs::write(&lib_rs_path, &lib_rs)?;

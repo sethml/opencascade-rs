@@ -46,6 +46,7 @@ const OCCT_LIBS: &[&str] = &[
 fn main() {
     let manifest_dir = PathBuf::from(std::env::var("CARGO_MANIFEST_DIR").expect("CARGO_MANIFEST_DIR not set"));
     let gen_dir = manifest_dir.join("generated");
+    let src_dir = manifest_dir.join("src");
 
     let target = std::env::var("TARGET").expect("No TARGET environment variable defined");
     let is_windows = target.to_lowercase().contains("windows");
@@ -96,6 +97,7 @@ fn main() {
         .define("_USE_MATH_DEFINES", "TRUE")
         .include(&occt_config.include_dir)
         .include(&gen_dir)
+        .include(&src_dir)
         .compile("opencascade_sys_wrapper");
 
     println!("cargo:rustc-link-lib=static=opencascade_sys_wrapper");
@@ -105,6 +107,8 @@ fn main() {
     for rs_file in &rust_files {
         println!("cargo:rerun-if-changed={}", rs_file.display());
     }
+    // Rerun if common.hxx changes
+    println!("cargo:rerun-if-changed={}", src_dir.join("common.hxx").display());
 }
 
 struct OcctConfig {

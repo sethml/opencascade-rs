@@ -7,9 +7,14 @@
 #include <GeomAbs_BSplKnotDistribution.hxx>
 #include <GeomAbs_Shape.hxx>
 #include <Geom_BSplineCurve.hxx>
+#include <Geom_BSplineSurface.hxx>
 #include <Geom_BezierCurve.hxx>
+#include <Geom_BezierSurface.hxx>
+#include <Geom_BoundedCurve.hxx>
+#include <Geom_BoundedSurface.hxx>
 #include <Geom_Curve.hxx>
 #include <Geom_CylindricalSurface.hxx>
+#include <Geom_ElementarySurface.hxx>
 #include <Geom_Geometry.hxx>
 #include <Geom_Plane.hxx>
 #include <Geom_Surface.hxx>
@@ -18,7 +23,11 @@
 #include <Standard_Type.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
+#include <TColStd_Array2OfReal.hxx>
 #include <TColgp_Array1OfPnt.hxx>
+#include <TColgp_Array2OfPnt.hxx>
+#include <gp_Ax1.hxx>
+#include <gp_Ax2.hxx>
 #include <gp_Ax3.hxx>
 #include <gp_Cylinder.hxx>
 #include <gp_Dir.hxx>
@@ -30,25 +39,211 @@
 
 // Handle type aliases
 typedef opencascade::handle<Geom_BSplineCurve> HandleGeomBSplineCurve;
+typedef opencascade::handle<Geom_BSplineSurface> HandleGeomBSplineSurface;
+typedef opencascade::handle<Geom_BezierCurve> HandleGeomBezierCurve;
+typedef opencascade::handle<Geom_BezierSurface> HandleGeomBezierSurface;
+typedef opencascade::handle<Geom_BoundedCurve> HandleGeomBoundedCurve;
+typedef opencascade::handle<Geom_BoundedSurface> HandleGeomBoundedSurface;
 typedef opencascade::handle<Geom_Curve> HandleGeomCurve;
+typedef opencascade::handle<Geom_CylindricalSurface> HandleGeomCylindricalSurface;
+typedef opencascade::handle<Geom_ElementarySurface> HandleGeomElementarySurface;
 typedef opencascade::handle<Geom_Geometry> HandleGeomGeometry;
+typedef opencascade::handle<Geom_Plane> HandleGeomPlane;
 typedef opencascade::handle<Geom_Surface> HandleGeomSurface;
+typedef opencascade::handle<Geom_TrimmedCurve> HandleGeomTrimmedCurve;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
+
+// ========================
+// Geom_Geometry wrappers
+// ========================
+
+inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Geometry_Mirrored(const Geom_Geometry& self, const gp_Pnt& P) {
+    return std::make_unique<opencascade::handle<Geom_Geometry>>(self.Mirrored(P));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Geometry_Mirrored(const Geom_Geometry& self, const gp_Ax1& A1) {
+    return std::make_unique<opencascade::handle<Geom_Geometry>>(self.Mirrored(A1));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Geometry_Mirrored(const Geom_Geometry& self, const gp_Ax2& A2) {
+    return std::make_unique<opencascade::handle<Geom_Geometry>>(self.Mirrored(A2));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Geometry_Rotated(const Geom_Geometry& self, const gp_Ax1& A1, Standard_Real Ang) {
+    return std::make_unique<opencascade::handle<Geom_Geometry>>(self.Rotated(A1, Ang));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Geometry_Scaled(const Geom_Geometry& self, const gp_Pnt& P, Standard_Real S) {
+    return std::make_unique<opencascade::handle<Geom_Geometry>>(self.Scaled(P, S));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Geometry_Transformed(const Geom_Geometry& self, const gp_Trsf& T) {
+    return std::make_unique<opencascade::handle<Geom_Geometry>>(self.Transformed(T));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Geometry_Translated(const Geom_Geometry& self, const gp_Vec& V) {
+    return std::make_unique<opencascade::handle<Geom_Geometry>>(self.Translated(V));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Geometry_Translated(const Geom_Geometry& self, const gp_Pnt& P1, const gp_Pnt& P2) {
+    return std::make_unique<opencascade::handle<Geom_Geometry>>(self.Translated(P1, P2));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Geometry_Copy(const Geom_Geometry& self) {
+    return std::make_unique<opencascade::handle<Geom_Geometry>>(self.Copy());
+}
+
+inline rust::String Geom_Geometry_get_type_name() {
+    return rust::String(Geom_Geometry::get_type_name());
+}
+
+
+// ========================
+// Geom_Curve wrappers
+// ========================
+
+inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_Curve_Reversed(const Geom_Curve& self) {
+    return std::make_unique<opencascade::handle<Geom_Curve>>(self.Reversed());
+}
+
+inline std::unique_ptr<gp_Vec> Geom_Curve_DN(const Geom_Curve& self, Standard_Real U, Standard_Integer N) {
+    return std::make_unique<gp_Vec>(self.DN(U, N));
+}
+
+inline std::unique_ptr<gp_Pnt> Geom_Curve_Value(const Geom_Curve& self, Standard_Real U) {
+    return std::make_unique<gp_Pnt>(self.Value(U));
+}
+
+inline rust::String Geom_Curve_get_type_name() {
+    return rust::String(Geom_Curve::get_type_name());
+}
+
+inline const Geom_Geometry& Geom_Curve_as_Geom_Geometry(const Geom_Curve& self) { return self; }
+inline Geom_Geometry& Geom_Curve_as_Geom_Geometry_mut(Geom_Curve& self) { return self; }
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomCurve_to_HandleGeomGeometry(const HandleGeomCurve& handle) {
+    return std::make_unique<HandleGeomGeometry>(handle);
+}
+
+// ========================
+// Geom_Surface wrappers
+// ========================
+
+inline std::unique_ptr<opencascade::handle<Geom_Surface>> Geom_Surface_UReversed(const Geom_Surface& self) {
+    return std::make_unique<opencascade::handle<Geom_Surface>>(self.UReversed());
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Surface>> Geom_Surface_VReversed(const Geom_Surface& self) {
+    return std::make_unique<opencascade::handle<Geom_Surface>>(self.VReversed());
+}
+
+inline std::unique_ptr<gp_GTrsf2d> Geom_Surface_ParametricTransformation(const Geom_Surface& self, const gp_Trsf& T) {
+    return std::make_unique<gp_GTrsf2d>(self.ParametricTransformation(T));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_Surface_UIso(const Geom_Surface& self, Standard_Real U) {
+    return std::make_unique<opencascade::handle<Geom_Curve>>(self.UIso(U));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_Surface_VIso(const Geom_Surface& self, Standard_Real V) {
+    return std::make_unique<opencascade::handle<Geom_Curve>>(self.VIso(V));
+}
+
+inline std::unique_ptr<gp_Vec> Geom_Surface_DN(const Geom_Surface& self, Standard_Real U, Standard_Real V, Standard_Integer Nu, Standard_Integer Nv) {
+    return std::make_unique<gp_Vec>(self.DN(U, V, Nu, Nv));
+}
+
+inline std::unique_ptr<gp_Pnt> Geom_Surface_Value(const Geom_Surface& self, Standard_Real U, Standard_Real V) {
+    return std::make_unique<gp_Pnt>(self.Value(U, V));
+}
+
+inline rust::String Geom_Surface_get_type_name() {
+    return rust::String(Geom_Surface::get_type_name());
+}
+
+inline const Geom_Geometry& Geom_Surface_as_Geom_Geometry(const Geom_Surface& self) { return self; }
+inline Geom_Geometry& Geom_Surface_as_Geom_Geometry_mut(Geom_Surface& self) { return self; }
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomSurface_to_HandleGeomGeometry(const HandleGeomSurface& handle) {
+    return std::make_unique<HandleGeomGeometry>(handle);
+}
+
+// ========================
+// Geom_BoundedCurve wrappers
+// ========================
+
+inline std::unique_ptr<gp_Pnt> Geom_BoundedCurve_EndPoint(const Geom_BoundedCurve& self) {
+    return std::make_unique<gp_Pnt>(self.EndPoint());
+}
+
+inline std::unique_ptr<gp_Pnt> Geom_BoundedCurve_StartPoint(const Geom_BoundedCurve& self) {
+    return std::make_unique<gp_Pnt>(self.StartPoint());
+}
+
+inline rust::String Geom_BoundedCurve_get_type_name() {
+    return rust::String(Geom_BoundedCurve::get_type_name());
+}
+
+inline const Geom_Curve& Geom_BoundedCurve_as_Geom_Curve(const Geom_BoundedCurve& self) { return self; }
+inline Geom_Curve& Geom_BoundedCurve_as_Geom_Curve_mut(Geom_BoundedCurve& self) { return self; }
+inline const Geom_Geometry& Geom_BoundedCurve_as_Geom_Geometry(const Geom_BoundedCurve& self) { return self; }
+inline Geom_Geometry& Geom_BoundedCurve_as_Geom_Geometry_mut(Geom_BoundedCurve& self) { return self; }
+inline std::unique_ptr<HandleGeomCurve> HandleGeomBoundedCurve_to_HandleGeomCurve(const HandleGeomBoundedCurve& handle) {
+    return std::make_unique<HandleGeomCurve>(handle);
+}
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomBoundedCurve_to_HandleGeomGeometry(const HandleGeomBoundedCurve& handle) {
+    return std::make_unique<HandleGeomGeometry>(handle);
+}
+
+// ========================
+// Geom_BoundedSurface wrappers
+// ========================
+
+inline rust::String Geom_BoundedSurface_get_type_name() {
+    return rust::String(Geom_BoundedSurface::get_type_name());
+}
+
+inline const Geom_Surface& Geom_BoundedSurface_as_Geom_Surface(const Geom_BoundedSurface& self) { return self; }
+inline Geom_Surface& Geom_BoundedSurface_as_Geom_Surface_mut(Geom_BoundedSurface& self) { return self; }
+inline const Geom_Geometry& Geom_BoundedSurface_as_Geom_Geometry(const Geom_BoundedSurface& self) { return self; }
+inline Geom_Geometry& Geom_BoundedSurface_as_Geom_Geometry_mut(Geom_BoundedSurface& self) { return self; }
+inline std::unique_ptr<HandleGeomBoundedSurface> Geom_BoundedSurface_to_handle(std::unique_ptr<Geom_BoundedSurface> obj) {
+    return std::make_unique<HandleGeomBoundedSurface>(obj.release());
+}
+inline std::unique_ptr<HandleGeomSurface> HandleGeomBoundedSurface_to_HandleGeomSurface(const HandleGeomBoundedSurface& handle) {
+    return std::make_unique<HandleGeomSurface>(handle);
+}
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomBoundedSurface_to_HandleGeomGeometry(const HandleGeomBoundedSurface& handle) {
+    return std::make_unique<HandleGeomGeometry>(handle);
+}
+
+// ========================
+// Geom_ElementarySurface wrappers
+// ========================
+
+inline rust::String Geom_ElementarySurface_get_type_name() {
+    return rust::String(Geom_ElementarySurface::get_type_name());
+}
+
+inline const Geom_Surface& Geom_ElementarySurface_as_Geom_Surface(const Geom_ElementarySurface& self) { return self; }
+inline Geom_Surface& Geom_ElementarySurface_as_Geom_Surface_mut(Geom_ElementarySurface& self) { return self; }
+inline const Geom_Geometry& Geom_ElementarySurface_as_Geom_Geometry(const Geom_ElementarySurface& self) { return self; }
+inline Geom_Geometry& Geom_ElementarySurface_as_Geom_Geometry_mut(Geom_ElementarySurface& self) { return self; }
+inline std::unique_ptr<HandleGeomSurface> HandleGeomElementarySurface_to_HandleGeomSurface(const HandleGeomElementarySurface& handle) {
+    return std::make_unique<HandleGeomSurface>(handle);
+}
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomElementarySurface_to_HandleGeomGeometry(const HandleGeomElementarySurface& handle) {
+    return std::make_unique<HandleGeomGeometry>(handle);
+}
 
 // ========================
 // Geom_BezierCurve wrappers
 // ========================
 
 inline std::unique_ptr<Geom_BezierCurve> Geom_BezierCurve_ctor_array1ofpnt(const TColgp_Array1OfPnt& CurvePoles) {
-    return construct_unique<Geom_BezierCurve>(CurvePoles);
+    return std::make_unique<Geom_BezierCurve>(CurvePoles);
 }
 
 inline std::unique_ptr<Geom_BezierCurve> Geom_BezierCurve_ctor_array1ofpnt_array1ofreal(const TColgp_Array1OfPnt& CurvePoles, const TColStd_Array1OfReal& PoleWeights) {
-    return construct_unique<Geom_BezierCurve>(CurvePoles, PoleWeights);
-}
-
-inline std::unique_ptr<GeomAbs_Shape> Geom_BezierCurve_Continuity(const Geom_BezierCurve& self) {
-    return std::make_unique<GeomAbs_Shape>(self.Continuity());
+    return std::make_unique<Geom_BezierCurve>(CurvePoles, PoleWeights);
 }
 
 inline std::unique_ptr<gp_Vec> Geom_BezierCurve_DN(const Geom_BezierCurve& self, Standard_Real U, Standard_Integer N) {
@@ -75,21 +270,90 @@ inline rust::String Geom_BezierCurve_get_type_name() {
     return rust::String(Geom_BezierCurve::get_type_name());
 }
 
+inline const Geom_BoundedCurve& Geom_BezierCurve_as_Geom_BoundedCurve(const Geom_BezierCurve& self) { return self; }
+inline Geom_BoundedCurve& Geom_BezierCurve_as_Geom_BoundedCurve_mut(Geom_BezierCurve& self) { return self; }
+inline const Geom_Geometry& Geom_BezierCurve_as_Geom_Geometry(const Geom_BezierCurve& self) { return self; }
+inline Geom_Geometry& Geom_BezierCurve_as_Geom_Geometry_mut(Geom_BezierCurve& self) { return self; }
+inline const Geom_Curve& Geom_BezierCurve_as_Geom_Curve(const Geom_BezierCurve& self) { return self; }
+inline Geom_Curve& Geom_BezierCurve_as_Geom_Curve_mut(Geom_BezierCurve& self) { return self; }
+inline std::unique_ptr<HandleGeomBezierCurve> Geom_BezierCurve_to_handle(std::unique_ptr<Geom_BezierCurve> obj) {
+    return std::make_unique<HandleGeomBezierCurve>(obj.release());
+}
+inline std::unique_ptr<HandleGeomBoundedCurve> HandleGeomBezierCurve_to_HandleGeomBoundedCurve(const HandleGeomBezierCurve& handle) {
+    return std::make_unique<HandleGeomBoundedCurve>(handle);
+}
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomBezierCurve_to_HandleGeomGeometry(const HandleGeomBezierCurve& handle) {
+    return std::make_unique<HandleGeomGeometry>(handle);
+}
+inline std::unique_ptr<HandleGeomCurve> HandleGeomBezierCurve_to_HandleGeomCurve(const HandleGeomBezierCurve& handle) {
+    return std::make_unique<HandleGeomCurve>(handle);
+}
+
+// ========================
+// Geom_BezierSurface wrappers
+// ========================
+
+inline std::unique_ptr<Geom_BezierSurface> Geom_BezierSurface_ctor_array2ofpnt(const TColgp_Array2OfPnt& SurfacePoles) {
+    return std::make_unique<Geom_BezierSurface>(SurfacePoles);
+}
+
+inline std::unique_ptr<Geom_BezierSurface> Geom_BezierSurface_ctor_array2ofpnt_array2ofreal(const TColgp_Array2OfPnt& SurfacePoles, const TColStd_Array2OfReal& PoleWeights) {
+    return std::make_unique<Geom_BezierSurface>(SurfacePoles, PoleWeights);
+}
+
+inline std::unique_ptr<gp_Vec> Geom_BezierSurface_DN(const Geom_BezierSurface& self, Standard_Real U, Standard_Real V, Standard_Integer Nu, Standard_Integer Nv) {
+    return std::make_unique<gp_Vec>(self.DN(U, V, Nu, Nv));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_BezierSurface_UIso(const Geom_BezierSurface& self, Standard_Real U) {
+    return std::make_unique<opencascade::handle<Geom_Curve>>(self.UIso(U));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_BezierSurface_VIso(const Geom_BezierSurface& self, Standard_Real V) {
+    return std::make_unique<opencascade::handle<Geom_Curve>>(self.VIso(V));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_BezierSurface_Copy(const Geom_BezierSurface& self) {
+    return std::make_unique<opencascade::handle<Geom_Geometry>>(self.Copy());
+}
+
+inline Standard_Integer Geom_BezierSurface_MaxDegree() {
+    return Geom_BezierSurface::MaxDegree();
+}
+
+inline rust::String Geom_BezierSurface_get_type_name() {
+    return rust::String(Geom_BezierSurface::get_type_name());
+}
+
+inline const Geom_BoundedSurface& Geom_BezierSurface_as_Geom_BoundedSurface(const Geom_BezierSurface& self) { return self; }
+inline Geom_BoundedSurface& Geom_BezierSurface_as_Geom_BoundedSurface_mut(Geom_BezierSurface& self) { return self; }
+inline const Geom_Surface& Geom_BezierSurface_as_Geom_Surface(const Geom_BezierSurface& self) { return self; }
+inline Geom_Surface& Geom_BezierSurface_as_Geom_Surface_mut(Geom_BezierSurface& self) { return self; }
+inline const Geom_Geometry& Geom_BezierSurface_as_Geom_Geometry(const Geom_BezierSurface& self) { return self; }
+inline Geom_Geometry& Geom_BezierSurface_as_Geom_Geometry_mut(Geom_BezierSurface& self) { return self; }
+inline std::unique_ptr<HandleGeomBezierSurface> Geom_BezierSurface_to_handle(std::unique_ptr<Geom_BezierSurface> obj) {
+    return std::make_unique<HandleGeomBezierSurface>(obj.release());
+}
+inline std::unique_ptr<HandleGeomBoundedSurface> HandleGeomBezierSurface_to_HandleGeomBoundedSurface(const HandleGeomBezierSurface& handle) {
+    return std::make_unique<HandleGeomBoundedSurface>(handle);
+}
+inline std::unique_ptr<HandleGeomSurface> HandleGeomBezierSurface_to_HandleGeomSurface(const HandleGeomBezierSurface& handle) {
+    return std::make_unique<HandleGeomSurface>(handle);
+}
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomBezierSurface_to_HandleGeomGeometry(const HandleGeomBezierSurface& handle) {
+    return std::make_unique<HandleGeomGeometry>(handle);
+}
 
 // ========================
 // Geom_BSplineCurve wrappers
 // ========================
 
 inline std::unique_ptr<Geom_BSplineCurve> Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal_array1ofinteger_int_bool(const TColgp_Array1OfPnt& Poles, const TColStd_Array1OfReal& Knots, const TColStd_Array1OfInteger& Multiplicities, Standard_Integer Degree, Standard_Boolean Periodic) {
-    return construct_unique<Geom_BSplineCurve>(Poles, Knots, Multiplicities, Degree, Periodic);
+    return std::make_unique<Geom_BSplineCurve>(Poles, Knots, Multiplicities, Degree, Periodic);
 }
 
 inline std::unique_ptr<Geom_BSplineCurve> Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal2_array1ofinteger_int_bool2(const TColgp_Array1OfPnt& Poles, const TColStd_Array1OfReal& Weights, const TColStd_Array1OfReal& Knots, const TColStd_Array1OfInteger& Multiplicities, Standard_Integer Degree, Standard_Boolean Periodic, Standard_Boolean CheckRational) {
-    return construct_unique<Geom_BSplineCurve>(Poles, Weights, Knots, Multiplicities, Degree, Periodic, CheckRational);
-}
-
-inline std::unique_ptr<GeomAbs_Shape> Geom_BSplineCurve_Continuity(const Geom_BSplineCurve& self) {
-    return std::make_unique<GeomAbs_Shape>(self.Continuity());
+    return std::make_unique<Geom_BSplineCurve>(Poles, Weights, Knots, Multiplicities, Degree, Periodic, CheckRational);
 }
 
 inline std::unique_ptr<gp_Vec> Geom_BSplineCurve_DN(const Geom_BSplineCurve& self, Standard_Real U, Standard_Integer N) {
@@ -108,10 +372,6 @@ inline std::unique_ptr<gp_Pnt> Geom_BSplineCurve_EndPoint(const Geom_BSplineCurv
     return std::make_unique<gp_Pnt>(self.EndPoint());
 }
 
-inline std::unique_ptr<GeomAbs_BSplKnotDistribution> Geom_BSplineCurve_KnotDistribution(const Geom_BSplineCurve& self) {
-    return std::make_unique<GeomAbs_BSplKnotDistribution>(self.KnotDistribution());
-}
-
 inline std::unique_ptr<gp_Pnt> Geom_BSplineCurve_StartPoint(const Geom_BSplineCurve& self) {
     return std::make_unique<gp_Pnt>(self.StartPoint());
 }
@@ -128,42 +388,106 @@ inline rust::String Geom_BSplineCurve_get_type_name() {
     return rust::String(Geom_BSplineCurve::get_type_name());
 }
 
+inline const Geom_Curve& Geom_BSplineCurve_as_Geom_Curve(const Geom_BSplineCurve& self) { return self; }
+inline Geom_Curve& Geom_BSplineCurve_as_Geom_Curve_mut(Geom_BSplineCurve& self) { return self; }
+inline const Geom_Geometry& Geom_BSplineCurve_as_Geom_Geometry(const Geom_BSplineCurve& self) { return self; }
+inline Geom_Geometry& Geom_BSplineCurve_as_Geom_Geometry_mut(Geom_BSplineCurve& self) { return self; }
+inline const Geom_BoundedCurve& Geom_BSplineCurve_as_Geom_BoundedCurve(const Geom_BSplineCurve& self) { return self; }
+inline Geom_BoundedCurve& Geom_BSplineCurve_as_Geom_BoundedCurve_mut(Geom_BSplineCurve& self) { return self; }
+inline std::unique_ptr<HandleGeomBSplineCurve> Geom_BSplineCurve_to_handle(std::unique_ptr<Geom_BSplineCurve> obj) {
+    return std::make_unique<HandleGeomBSplineCurve>(obj.release());
+}
+inline std::unique_ptr<HandleGeomCurve> HandleGeomBSplineCurve_to_HandleGeomCurve(const HandleGeomBSplineCurve& handle) {
+    return std::make_unique<HandleGeomCurve>(handle);
+}
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomBSplineCurve_to_HandleGeomGeometry(const HandleGeomBSplineCurve& handle) {
+    return std::make_unique<HandleGeomGeometry>(handle);
+}
+inline std::unique_ptr<HandleGeomBoundedCurve> HandleGeomBSplineCurve_to_HandleGeomBoundedCurve(const HandleGeomBSplineCurve& handle) {
+    return std::make_unique<HandleGeomBoundedCurve>(handle);
+}
 
 // ========================
-// Geom_Curve wrappers
+// Geom_BSplineSurface wrappers
 // ========================
 
-inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_Curve_Reversed(const Geom_Curve& self) {
-    return std::make_unique<opencascade::handle<Geom_Curve>>(self.Reversed());
+inline std::unique_ptr<Geom_BSplineSurface> Geom_BSplineSurface_ctor_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool2(const TColgp_Array2OfPnt& Poles, const TColStd_Array1OfReal& UKnots, const TColStd_Array1OfReal& VKnots, const TColStd_Array1OfInteger& UMults, const TColStd_Array1OfInteger& VMults, Standard_Integer UDegree, Standard_Integer VDegree, Standard_Boolean UPeriodic, Standard_Boolean VPeriodic) {
+    return std::make_unique<Geom_BSplineSurface>(Poles, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, VPeriodic);
 }
 
-inline std::unique_ptr<GeomAbs_Shape> Geom_Curve_Continuity(const Geom_Curve& self) {
-    return std::make_unique<GeomAbs_Shape>(self.Continuity());
+inline std::unique_ptr<Geom_BSplineSurface> Geom_BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(const TColgp_Array2OfPnt& Poles, const TColStd_Array2OfReal& Weights, const TColStd_Array1OfReal& UKnots, const TColStd_Array1OfReal& VKnots, const TColStd_Array1OfInteger& UMults, const TColStd_Array1OfInteger& VMults, Standard_Integer UDegree, Standard_Integer VDegree, Standard_Boolean UPeriodic, Standard_Boolean VPeriodic) {
+    return std::make_unique<Geom_BSplineSurface>(Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, VPeriodic);
 }
 
-inline std::unique_ptr<gp_Vec> Geom_Curve_DN(const Geom_Curve& self, Standard_Real U, Standard_Integer N) {
-    return std::make_unique<gp_Vec>(self.DN(U, N));
+inline std::unique_ptr<gp_Vec> Geom_BSplineSurface_DN(const Geom_BSplineSurface& self, Standard_Real U, Standard_Real V, Standard_Integer Nu, Standard_Integer Nv) {
+    return std::make_unique<gp_Vec>(self.DN(U, V, Nu, Nv));
 }
 
-inline std::unique_ptr<gp_Pnt> Geom_Curve_Value(const Geom_Curve& self, Standard_Real U) {
-    return std::make_unique<gp_Pnt>(self.Value(U));
+inline std::unique_ptr<gp_Vec> Geom_BSplineSurface_LocalDN(const Geom_BSplineSurface& self, Standard_Real U, Standard_Real V, Standard_Integer FromUK1, Standard_Integer ToUK2, Standard_Integer FromVK1, Standard_Integer ToVK2, Standard_Integer Nu, Standard_Integer Nv) {
+    return std::make_unique<gp_Vec>(self.LocalDN(U, V, FromUK1, ToUK2, FromVK1, ToVK2, Nu, Nv));
 }
 
-inline rust::String Geom_Curve_get_type_name() {
-    return rust::String(Geom_Curve::get_type_name());
+inline std::unique_ptr<gp_Pnt> Geom_BSplineSurface_LocalValue(const Geom_BSplineSurface& self, Standard_Real U, Standard_Real V, Standard_Integer FromUK1, Standard_Integer ToUK2, Standard_Integer FromVK1, Standard_Integer ToVK2) {
+    return std::make_unique<gp_Pnt>(self.LocalValue(U, V, FromUK1, ToUK2, FromVK1, ToVK2));
 }
 
+inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_BSplineSurface_UIso(const Geom_BSplineSurface& self, Standard_Real U) {
+    return std::make_unique<opencascade::handle<Geom_Curve>>(self.UIso(U));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_BSplineSurface_VIso(const Geom_BSplineSurface& self, Standard_Real V) {
+    return std::make_unique<opencascade::handle<Geom_Curve>>(self.VIso(V));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_BSplineSurface_UIso(const Geom_BSplineSurface& self, Standard_Real U, Standard_Boolean CheckRational) {
+    return std::make_unique<opencascade::handle<Geom_Curve>>(self.UIso(U, CheckRational));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_BSplineSurface_VIso(const Geom_BSplineSurface& self, Standard_Real V, Standard_Boolean CheckRational) {
+    return std::make_unique<opencascade::handle<Geom_Curve>>(self.VIso(V, CheckRational));
+}
+
+inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_BSplineSurface_Copy(const Geom_BSplineSurface& self) {
+    return std::make_unique<opencascade::handle<Geom_Geometry>>(self.Copy());
+}
+
+inline Standard_Integer Geom_BSplineSurface_MaxDegree() {
+    return Geom_BSplineSurface::MaxDegree();
+}
+
+inline rust::String Geom_BSplineSurface_get_type_name() {
+    return rust::String(Geom_BSplineSurface::get_type_name());
+}
+
+inline const Geom_BoundedSurface& Geom_BSplineSurface_as_Geom_BoundedSurface(const Geom_BSplineSurface& self) { return self; }
+inline Geom_BoundedSurface& Geom_BSplineSurface_as_Geom_BoundedSurface_mut(Geom_BSplineSurface& self) { return self; }
+inline const Geom_Geometry& Geom_BSplineSurface_as_Geom_Geometry(const Geom_BSplineSurface& self) { return self; }
+inline Geom_Geometry& Geom_BSplineSurface_as_Geom_Geometry_mut(Geom_BSplineSurface& self) { return self; }
+inline const Geom_Surface& Geom_BSplineSurface_as_Geom_Surface(const Geom_BSplineSurface& self) { return self; }
+inline Geom_Surface& Geom_BSplineSurface_as_Geom_Surface_mut(Geom_BSplineSurface& self) { return self; }
+inline std::unique_ptr<HandleGeomBSplineSurface> Geom_BSplineSurface_to_handle(std::unique_ptr<Geom_BSplineSurface> obj) {
+    return std::make_unique<HandleGeomBSplineSurface>(obj.release());
+}
+inline std::unique_ptr<HandleGeomBoundedSurface> HandleGeomBSplineSurface_to_HandleGeomBoundedSurface(const HandleGeomBSplineSurface& handle) {
+    return std::make_unique<HandleGeomBoundedSurface>(handle);
+}
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomBSplineSurface_to_HandleGeomGeometry(const HandleGeomBSplineSurface& handle) {
+    return std::make_unique<HandleGeomGeometry>(handle);
+}
+inline std::unique_ptr<HandleGeomSurface> HandleGeomBSplineSurface_to_HandleGeomSurface(const HandleGeomBSplineSurface& handle) {
+    return std::make_unique<HandleGeomSurface>(handle);
+}
 
 // ========================
 // Geom_CylindricalSurface wrappers
 // ========================
 
 inline std::unique_ptr<Geom_CylindricalSurface> Geom_CylindricalSurface_ctor_ax3_real(const gp_Ax3& A3, Standard_Real Radius) {
-    return construct_unique<Geom_CylindricalSurface>(A3, Radius);
+    return std::make_unique<Geom_CylindricalSurface>(A3, Radius);
 }
 
 inline std::unique_ptr<Geom_CylindricalSurface> Geom_CylindricalSurface_ctor_cylinder(const gp_Cylinder& C) {
-    return construct_unique<Geom_CylindricalSurface>(C);
+    return std::make_unique<Geom_CylindricalSurface>(C);
 }
 
 inline std::unique_ptr<gp_Cylinder> Geom_CylindricalSurface_Cylinder(const Geom_CylindricalSurface& self) {
@@ -194,25 +518,43 @@ inline rust::String Geom_CylindricalSurface_get_type_name() {
     return rust::String(Geom_CylindricalSurface::get_type_name());
 }
 
+inline const Geom_Surface& Geom_CylindricalSurface_as_Geom_Surface(const Geom_CylindricalSurface& self) { return self; }
+inline Geom_Surface& Geom_CylindricalSurface_as_Geom_Surface_mut(Geom_CylindricalSurface& self) { return self; }
+inline const Geom_ElementarySurface& Geom_CylindricalSurface_as_Geom_ElementarySurface(const Geom_CylindricalSurface& self) { return self; }
+inline Geom_ElementarySurface& Geom_CylindricalSurface_as_Geom_ElementarySurface_mut(Geom_CylindricalSurface& self) { return self; }
+inline const Geom_Geometry& Geom_CylindricalSurface_as_Geom_Geometry(const Geom_CylindricalSurface& self) { return self; }
+inline Geom_Geometry& Geom_CylindricalSurface_as_Geom_Geometry_mut(Geom_CylindricalSurface& self) { return self; }
+inline std::unique_ptr<HandleGeomCylindricalSurface> Geom_CylindricalSurface_to_handle(std::unique_ptr<Geom_CylindricalSurface> obj) {
+    return std::make_unique<HandleGeomCylindricalSurface>(obj.release());
+}
+inline std::unique_ptr<HandleGeomSurface> HandleGeomCylindricalSurface_to_HandleGeomSurface(const HandleGeomCylindricalSurface& handle) {
+    return std::make_unique<HandleGeomSurface>(handle);
+}
+inline std::unique_ptr<HandleGeomElementarySurface> HandleGeomCylindricalSurface_to_HandleGeomElementarySurface(const HandleGeomCylindricalSurface& handle) {
+    return std::make_unique<HandleGeomElementarySurface>(handle);
+}
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomCylindricalSurface_to_HandleGeomGeometry(const HandleGeomCylindricalSurface& handle) {
+    return std::make_unique<HandleGeomGeometry>(handle);
+}
 
 // ========================
 // Geom_Plane wrappers
 // ========================
 
 inline std::unique_ptr<Geom_Plane> Geom_Plane_ctor_ax3(const gp_Ax3& A3) {
-    return construct_unique<Geom_Plane>(A3);
+    return std::make_unique<Geom_Plane>(A3);
 }
 
 inline std::unique_ptr<Geom_Plane> Geom_Plane_ctor_pln(const gp_Pln& Pl) {
-    return construct_unique<Geom_Plane>(Pl);
+    return std::make_unique<Geom_Plane>(Pl);
 }
 
 inline std::unique_ptr<Geom_Plane> Geom_Plane_ctor_pnt_dir(const gp_Pnt& P, const gp_Dir& V) {
-    return construct_unique<Geom_Plane>(P, V);
+    return std::make_unique<Geom_Plane>(P, V);
 }
 
 inline std::unique_ptr<Geom_Plane> Geom_Plane_ctor_real4(Standard_Real A, Standard_Real B, Standard_Real C, Standard_Real D) {
-    return construct_unique<Geom_Plane>(A, B, C, D);
+    return std::make_unique<Geom_Plane>(A, B, C, D);
 }
 
 inline std::unique_ptr<gp_Pln> Geom_Plane_Pln(const Geom_Plane& self) {
@@ -243,62 +585,35 @@ inline rust::String Geom_Plane_get_type_name() {
     return rust::String(Geom_Plane::get_type_name());
 }
 
-
-// ========================
-// Geom_Surface wrappers
-// ========================
-
-inline std::unique_ptr<opencascade::handle<Geom_Surface>> Geom_Surface_UReversed(const Geom_Surface& self) {
-    return std::make_unique<opencascade::handle<Geom_Surface>>(self.UReversed());
+inline const Geom_ElementarySurface& Geom_Plane_as_Geom_ElementarySurface(const Geom_Plane& self) { return self; }
+inline Geom_ElementarySurface& Geom_Plane_as_Geom_ElementarySurface_mut(Geom_Plane& self) { return self; }
+inline const Geom_Surface& Geom_Plane_as_Geom_Surface(const Geom_Plane& self) { return self; }
+inline Geom_Surface& Geom_Plane_as_Geom_Surface_mut(Geom_Plane& self) { return self; }
+inline const Geom_Geometry& Geom_Plane_as_Geom_Geometry(const Geom_Plane& self) { return self; }
+inline Geom_Geometry& Geom_Plane_as_Geom_Geometry_mut(Geom_Plane& self) { return self; }
+inline std::unique_ptr<HandleGeomPlane> Geom_Plane_to_handle(std::unique_ptr<Geom_Plane> obj) {
+    return std::make_unique<HandleGeomPlane>(obj.release());
 }
-
-inline std::unique_ptr<opencascade::handle<Geom_Surface>> Geom_Surface_VReversed(const Geom_Surface& self) {
-    return std::make_unique<opencascade::handle<Geom_Surface>>(self.VReversed());
+inline std::unique_ptr<HandleGeomElementarySurface> HandleGeomPlane_to_HandleGeomElementarySurface(const HandleGeomPlane& handle) {
+    return std::make_unique<HandleGeomElementarySurface>(handle);
 }
-
-inline std::unique_ptr<gp_GTrsf2d> Geom_Surface_ParametricTransformation(const Geom_Surface& self, const gp_Trsf& T) {
-    return std::make_unique<gp_GTrsf2d>(self.ParametricTransformation(T));
+inline std::unique_ptr<HandleGeomSurface> HandleGeomPlane_to_HandleGeomSurface(const HandleGeomPlane& handle) {
+    return std::make_unique<HandleGeomSurface>(handle);
 }
-
-inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_Surface_UIso(const Geom_Surface& self, Standard_Real U) {
-    return std::make_unique<opencascade::handle<Geom_Curve>>(self.UIso(U));
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomPlane_to_HandleGeomGeometry(const HandleGeomPlane& handle) {
+    return std::make_unique<HandleGeomGeometry>(handle);
 }
-
-inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_Surface_VIso(const Geom_Surface& self, Standard_Real V) {
-    return std::make_unique<opencascade::handle<Geom_Curve>>(self.VIso(V));
-}
-
-inline std::unique_ptr<GeomAbs_Shape> Geom_Surface_Continuity(const Geom_Surface& self) {
-    return std::make_unique<GeomAbs_Shape>(self.Continuity());
-}
-
-inline std::unique_ptr<gp_Vec> Geom_Surface_DN(const Geom_Surface& self, Standard_Real U, Standard_Real V, Standard_Integer Nu, Standard_Integer Nv) {
-    return std::make_unique<gp_Vec>(self.DN(U, V, Nu, Nv));
-}
-
-inline std::unique_ptr<gp_Pnt> Geom_Surface_Value(const Geom_Surface& self, Standard_Real U, Standard_Real V) {
-    return std::make_unique<gp_Pnt>(self.Value(U, V));
-}
-
-inline rust::String Geom_Surface_get_type_name() {
-    return rust::String(Geom_Surface::get_type_name());
-}
-
 
 // ========================
 // Geom_TrimmedCurve wrappers
 // ========================
 
 inline std::unique_ptr<Geom_TrimmedCurve> Geom_TrimmedCurve_ctor_handlecurve_real2_bool2(const opencascade::handle<Geom_Curve>& C, Standard_Real U1, Standard_Real U2, Standard_Boolean Sense, Standard_Boolean theAdjustPeriodic) {
-    return construct_unique<Geom_TrimmedCurve>(C, U1, U2, Sense, theAdjustPeriodic);
+    return std::make_unique<Geom_TrimmedCurve>(C, U1, U2, Sense, theAdjustPeriodic);
 }
 
 inline std::unique_ptr<opencascade::handle<Geom_Curve>> Geom_TrimmedCurve_BasisCurve(const Geom_TrimmedCurve& self) {
     return std::make_unique<opencascade::handle<Geom_Curve>>(self.BasisCurve());
-}
-
-inline std::unique_ptr<GeomAbs_Shape> Geom_TrimmedCurve_Continuity(const Geom_TrimmedCurve& self) {
-    return std::make_unique<GeomAbs_Shape>(self.Continuity());
 }
 
 inline std::unique_ptr<gp_Pnt> Geom_TrimmedCurve_EndPoint(const Geom_TrimmedCurve& self) {
@@ -321,4 +636,22 @@ inline rust::String Geom_TrimmedCurve_get_type_name() {
     return rust::String(Geom_TrimmedCurve::get_type_name());
 }
 
+inline const Geom_Geometry& Geom_TrimmedCurve_as_Geom_Geometry(const Geom_TrimmedCurve& self) { return self; }
+inline Geom_Geometry& Geom_TrimmedCurve_as_Geom_Geometry_mut(Geom_TrimmedCurve& self) { return self; }
+inline const Geom_BoundedCurve& Geom_TrimmedCurve_as_Geom_BoundedCurve(const Geom_TrimmedCurve& self) { return self; }
+inline Geom_BoundedCurve& Geom_TrimmedCurve_as_Geom_BoundedCurve_mut(Geom_TrimmedCurve& self) { return self; }
+inline const Geom_Curve& Geom_TrimmedCurve_as_Geom_Curve(const Geom_TrimmedCurve& self) { return self; }
+inline Geom_Curve& Geom_TrimmedCurve_as_Geom_Curve_mut(Geom_TrimmedCurve& self) { return self; }
+inline std::unique_ptr<HandleGeomTrimmedCurve> Geom_TrimmedCurve_to_handle(std::unique_ptr<Geom_TrimmedCurve> obj) {
+    return std::make_unique<HandleGeomTrimmedCurve>(obj.release());
+}
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomTrimmedCurve_to_HandleGeomGeometry(const HandleGeomTrimmedCurve& handle) {
+    return std::make_unique<HandleGeomGeometry>(handle);
+}
+inline std::unique_ptr<HandleGeomBoundedCurve> HandleGeomTrimmedCurve_to_HandleGeomBoundedCurve(const HandleGeomTrimmedCurve& handle) {
+    return std::make_unique<HandleGeomBoundedCurve>(handle);
+}
+inline std::unique_ptr<HandleGeomCurve> HandleGeomTrimmedCurve_to_HandleGeomCurve(const HandleGeomTrimmedCurve& handle) {
+    return std::make_unique<HandleGeomCurve>(handle);
+}
 

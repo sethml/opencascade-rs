@@ -5,6 +5,10 @@
 #include "common.hxx"
 
 #include <BRepTools.hxx>
+#include <BRepTools_History.hxx>
+#include <BRepTools_Modification.hxx>
+#include <BRepTools_Modifier.hxx>
+#include <BRepTools_ReShape.hxx>
 #include <BRep_Builder.hxx>
 #include <Bnd_Box2d.hxx>
 #include <Geom2d_Curve.hxx>
@@ -13,7 +17,9 @@
 #include <Message_ProgressRange.hxx>
 #include <OSD_FileSystem.hxx>
 #include <Standard_Handle.hxx>
+#include <Standard_Type.hxx>
 #include <TopAbs_Orientation.hxx>
+#include <TopAbs_ShapeEnum.hxx>
 #include <TopTools_FormatVersion.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <TopTools_ListOfShape.hxx>
@@ -26,12 +32,17 @@
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
+#include <gp_Pnt.hxx>
 
 // Handle type aliases
+typedef opencascade::handle<BRepTools_History> HandleBRepToolsHistory;
+typedef opencascade::handle<BRepTools_Modification> HandleBRepToolsModification;
+typedef opencascade::handle<BRepTools_ReShape> HandleBRepToolsReShape;
 typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
 typedef opencascade::handle<Geom_Curve> HandleGeomCurve;
 typedef opencascade::handle<Geom_Surface> HandleGeomSurface;
 typedef opencascade::handle<OSD_FileSystem> HandleOSDFileSystem;
+typedef opencascade::handle<Standard_Type> HandleStandardType;
 
 // ========================
 // BRepTools wrappers
@@ -165,20 +176,12 @@ inline Standard_Boolean BRepTools_Write_shape_charptr_progressrange(const TopoDS
     return BRepTools::Write(theShape, std::string(theFile).c_str(), theProgress);
 }
 
-inline Standard_Boolean BRepTools_Write_shape_charptr_bool2_formatversion_progressrange(const TopoDS_Shape& theShape, rust::Str theFile, Standard_Boolean theWithTriangles, Standard_Boolean theWithNormals, TopTools_FormatVersion theVersion, const Message_ProgressRange& theProgress) {
-    return BRepTools::Write(theShape, std::string(theFile).c_str(), theWithTriangles, theWithNormals, theVersion, theProgress);
-}
-
 inline Standard_Boolean BRepTools_Read_shape_charptr_builder_progressrange(TopoDS_Shape& Sh, rust::Str File, const BRep_Builder& B, const Message_ProgressRange& theProgress) {
     return BRepTools::Read(Sh, std::string(File).c_str(), B, theProgress);
 }
 
 inline Standard_Real BRepTools_EvalAndUpdateTol(const TopoDS_Edge& theE, const opencascade::handle<Geom_Curve>& theC3d, const opencascade::handle<Geom2d_Curve>& theC2d, const opencascade::handle<Geom_Surface>& theS, Standard_Real theF, Standard_Real theL) {
     return BRepTools::EvalAndUpdateTol(theE, theC3d, theC2d, theS, theF, theL);
-}
-
-inline TopAbs_Orientation BRepTools_OriEdgeInFace(const TopoDS_Edge& theEdge, const TopoDS_Face& theFace) {
-    return BRepTools::OriEdgeInFace(theEdge, theFace);
 }
 
 inline void BRepTools_RemoveInternals(TopoDS_Shape& theS, Standard_Boolean theForce) {
@@ -189,4 +192,73 @@ inline void BRepTools_CheckLocations(const TopoDS_Shape& theS, TopTools_ListOfSh
     BRepTools::CheckLocations(theS, theProblemShapes);
 }
 
+
+// ========================
+// BRepTools_History wrappers
+// ========================
+
+inline std::unique_ptr<BRepTools_History> BRepTools_History_ctor() {
+    return std::make_unique<BRepTools_History>();
+}
+
+inline Standard_Boolean BRepTools_History_IsSupportedType(const TopoDS_Shape& theShape) {
+    return BRepTools_History::IsSupportedType(theShape);
+}
+
+inline rust::String BRepTools_History_get_type_name() {
+    return rust::String(BRepTools_History::get_type_name());
+}
+
+inline std::unique_ptr<HandleBRepToolsHistory> BRepTools_History_to_handle(std::unique_ptr<BRepTools_History> obj) {
+    return std::make_unique<HandleBRepToolsHistory>(obj.release());
+}
+
+// ========================
+// BRepTools_Modifier wrappers
+// ========================
+
+inline std::unique_ptr<BRepTools_Modifier> BRepTools_Modifier_ctor_bool(Standard_Boolean theMutableInput) {
+    return std::make_unique<BRepTools_Modifier>(theMutableInput);
+}
+
+inline std::unique_ptr<BRepTools_Modifier> BRepTools_Modifier_ctor_shape(const TopoDS_Shape& S) {
+    return std::make_unique<BRepTools_Modifier>(S);
+}
+
+inline std::unique_ptr<BRepTools_Modifier> BRepTools_Modifier_ctor_shape_handlemodification(const TopoDS_Shape& S, const opencascade::handle<BRepTools_Modification>& M) {
+    return std::make_unique<BRepTools_Modifier>(S, M);
+}
+
+
+// ========================
+// BRepTools_ReShape wrappers
+// ========================
+
+inline std::unique_ptr<BRepTools_ReShape> BRepTools_ReShape_ctor() {
+    return std::make_unique<BRepTools_ReShape>();
+}
+
+inline std::unique_ptr<TopoDS_Shape> BRepTools_ReShape_Value(const BRepTools_ReShape& self, const TopoDS_Shape& shape) {
+    return std::make_unique<TopoDS_Shape>(self.Value(shape));
+}
+
+inline std::unique_ptr<TopoDS_Vertex> BRepTools_ReShape_CopyVertex(BRepTools_ReShape& self, const TopoDS_Vertex& theV, Standard_Real theTol) {
+    return std::make_unique<TopoDS_Vertex>(self.CopyVertex(theV, theTol));
+}
+
+inline std::unique_ptr<TopoDS_Vertex> BRepTools_ReShape_CopyVertex(BRepTools_ReShape& self, const TopoDS_Vertex& theV, const gp_Pnt& theNewPos, Standard_Real aTol) {
+    return std::make_unique<TopoDS_Vertex>(self.CopyVertex(theV, theNewPos, aTol));
+}
+
+inline std::unique_ptr<opencascade::handle<BRepTools_History>> BRepTools_ReShape_History(const BRepTools_ReShape& self) {
+    return std::make_unique<opencascade::handle<BRepTools_History>>(self.History());
+}
+
+inline rust::String BRepTools_ReShape_get_type_name() {
+    return rust::String(BRepTools_ReShape::get_type_name());
+}
+
+inline std::unique_ptr<HandleBRepToolsReShape> BRepTools_ReShape_to_handle(std::unique_ptr<BRepTools_ReShape> obj) {
+    return std::make_unique<HandleBRepToolsReShape>(obj.release());
+}
 

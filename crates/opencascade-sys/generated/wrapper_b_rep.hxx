@@ -4,13 +4,13 @@
 #pragma once
 #include "common.hxx"
 
+#include <BRep_Builder.hxx>
 #include <BRep_Tool.hxx>
 #include <Geom2d_Curve.hxx>
 #include <GeomAbs_Shape.hxx>
 #include <Geom_Curve.hxx>
 #include <Geom_Surface.hxx>
 #include <Poly_ListOfTriangulation.hxx>
-#include <Poly_MeshPurpose.hxx>
 #include <Poly_Polygon2D.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
@@ -33,6 +33,13 @@ typedef opencascade::handle<Poly_Polygon2D> HandlePolyPolygon2D;
 typedef opencascade::handle<Poly_Polygon3D> HandlePolyPolygon3D;
 typedef opencascade::handle<Poly_PolygonOnTriangulation> HandlePolyPolygonOnTriangulation;
 typedef opencascade::handle<Poly_Triangulation> HandlePolyTriangulation;
+
+// ========================
+// BRep_Builder wrappers
+// ========================
+
+inline const TopoDS_Builder& BRep_Builder_as_TopoDS_Builder(const BRep_Builder& self) { return self; }
+inline TopoDS_Builder& BRep_Builder_as_TopoDS_Builder_mut(BRep_Builder& self) { return self; }
 
 // ========================
 // BRep_Tool wrappers
@@ -162,24 +169,12 @@ inline Standard_Boolean BRep_Tool_HasContinuity_edge_face2(const TopoDS_Edge& E,
     return BRep_Tool::HasContinuity(E, F1, F2);
 }
 
-inline std::unique_ptr<GeomAbs_Shape> BRep_Tool_Continuity_edge_face2(const TopoDS_Edge& E, const TopoDS_Face& F1, const TopoDS_Face& F2) {
-    return std::make_unique<GeomAbs_Shape>(BRep_Tool::Continuity(E, F1, F2));
-}
-
 inline Standard_Boolean BRep_Tool_HasContinuity_edge_handlesurface2_location2(const TopoDS_Edge& E, const opencascade::handle<Geom_Surface>& S1, const opencascade::handle<Geom_Surface>& S2, const TopLoc_Location& L1, const TopLoc_Location& L2) {
     return BRep_Tool::HasContinuity(E, S1, S2, L1, L2);
 }
 
-inline std::unique_ptr<GeomAbs_Shape> BRep_Tool_Continuity_edge_handlesurface2_location2(const TopoDS_Edge& E, const opencascade::handle<Geom_Surface>& S1, const opencascade::handle<Geom_Surface>& S2, const TopLoc_Location& L1, const TopLoc_Location& L2) {
-    return std::make_unique<GeomAbs_Shape>(BRep_Tool::Continuity(E, S1, S2, L1, L2));
-}
-
 inline Standard_Boolean BRep_Tool_HasContinuity_edge(const TopoDS_Edge& E) {
     return BRep_Tool::HasContinuity(E);
-}
-
-inline std::unique_ptr<GeomAbs_Shape> BRep_Tool_MaxContinuity(const TopoDS_Edge& theEdge) {
-    return std::make_unique<GeomAbs_Shape>(BRep_Tool::MaxContinuity(theEdge));
 }
 
 inline std::unique_ptr<gp_Pnt> BRep_Tool_Pnt(const TopoDS_Vertex& V) {
@@ -208,10 +203,6 @@ inline Standard_Real BRep_Tool_Parameter_vertex_edge_handlesurface_location(cons
 
 inline std::unique_ptr<gp_Pnt2d> BRep_Tool_Parameters(const TopoDS_Vertex& V, const TopoDS_Face& F) {
     return std::make_unique<gp_Pnt2d>(BRep_Tool::Parameters(V, F));
-}
-
-inline Standard_Real BRep_Tool_MaxTolerance(const TopoDS_Shape& theShape, TopAbs_ShapeEnum theSubShape) {
-    return BRep_Tool::MaxTolerance(theShape, theSubShape);
 }
 
 

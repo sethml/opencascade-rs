@@ -16,6 +16,44 @@ pub struct ParsedHeader {
     pub classes: Vec<ParsedClass>,
     /// Enums defined in this header
     pub enums: Vec<ParsedEnum>,
+    /// Free functions (namespace-level) defined in this header
+    pub functions: Vec<ParsedFunction>,
+}
+
+/// A parsed free function (namespace-level function like TopoDS::Edge)
+#[derive(Debug, Clone)]
+pub struct ParsedFunction {
+    /// Full function name (e.g., "TopoDS::Edge")
+    pub name: String,
+    /// Namespace name (e.g., "TopoDS")
+    pub namespace: String,
+    /// Simple function name without namespace (e.g., "Edge")
+    pub short_name: String,
+    /// Module name derived from namespace
+    pub module: String,
+    /// Documentation comment
+    pub comment: Option<String>,
+    /// Source header file name (e.g., "TopoDS.hxx")
+    pub source_header: String,
+    /// Parameters
+    pub params: Vec<Param>,
+    /// Return type (None for void)
+    pub return_type: Option<Type>,
+}
+
+impl ParsedFunction {
+    /// Check if this function has any unbindable types
+    pub fn has_unbindable_types(&self) -> bool {
+        if self.params.iter().any(|p| p.ty.is_unbindable()) {
+            return true;
+        }
+        if let Some(ref ret) = self.return_type {
+            if ret.is_unbindable() {
+                return true;
+            }
+        }
+        false
+    }
 }
 
 /// A parsed C++ enum
@@ -27,6 +65,8 @@ pub struct ParsedEnum {
     pub module: String,
     /// Documentation comment from the header
     pub comment: Option<String>,
+    /// Source header file name (e.g., "TopAbs_ShapeEnum.hxx")
+    pub source_header: String,
     /// Enum variants
     pub variants: Vec<EnumVariant>,
 }
@@ -51,14 +91,24 @@ pub struct ParsedClass {
     pub module: String,
     /// Documentation comment from the header
     pub comment: Option<String>,
+    /// Source header file name (e.g., "gp_Pnt.hxx")
+    pub source_header: String,
     /// Constructors
     pub constructors: Vec<Constructor>,
-    /// Instance methods
+    /// Instance methods (public only)
     pub methods: Vec<Method>,
-    /// Static methods
+    /// Static methods (public only)
     pub static_methods: Vec<StaticMethod>,
+    /// All method names in this class (including protected/private) - used for filtering inherited methods
+    pub all_method_names: std::collections::HashSet<String>,
     /// Whether this type has DEFINE_STANDARD_HANDLE (is a Handle type)
     pub is_handle_type: bool,
+    /// Direct base classes (for generating upcast helpers)
+    pub base_classes: Vec<String>,
+    /// Whether this class has a protected/private destructor (non-instantiable abstract base)
+    pub has_protected_destructor: bool,
+    /// Whether this class is abstract (has pure virtual methods)
+    pub is_abstract: bool,
 }
 
 impl ParsedClass {
@@ -167,6 +217,40 @@ impl Method {
         }
         false
     }
+
+    /// Generate a suffix for distinguishing overloaded methods
+    /// based on parameter types, with consecutive identical types compressed.
+    /// E.g., (Pnt) -> "_pnt", (Box, Trsf) -> "_box_trsf", (f64, f64, f64) -> "_real3"
+    pub fn overload_suffix(&self) -> String {
+        if self.params.is_empty() {
+            return String::new();
+        }
+
+        let type_names: Vec<String> = self
+            .params
+            .iter()
+            .map(|p| p.ty.short_name().to_lowercase())
+            .collect();
+
+        // Compress consecutive identical types: ["real", "real", "real"] -> ["real3"]
+        let mut parts: Vec<String> = Vec::new();
+        let mut i = 0;
+        while i < type_names.len() {
+            let current = &type_names[i];
+            let mut count = 1;
+            while i + count < type_names.len() && &type_names[i + count] == current {
+                count += 1;
+            }
+            if count > 1 {
+                parts.push(format!("{}{}", current, count));
+            } else {
+                parts.push(current.clone());
+            }
+            i += count;
+        }
+
+        format!("_{}", parts.join("_"))
+    }
 }
 
 /// A static method declaration
@@ -268,6 +352,8 @@ pub enum Type {
     ConstRef(Box<Type>),
     /// T& (mutable reference)
     MutRef(Box<Type>),
+    /// T&& (rvalue reference) - not bindable through CXX
+    RValueRef(Box<Type>),
     /// const T*
     ConstPtr(Box<Type>),
     /// T* (mutable pointer)
@@ -291,7 +377,7 @@ impl Type {
             Type::Usize => "size".to_string(),
             Type::F32 => "float".to_string(),
             Type::F64 => "real".to_string(),
-            Type::ConstRef(inner) | Type::MutRef(inner) => inner.short_name(),
+            Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => inner.short_name(),
             Type::ConstPtr(inner) | Type::MutPtr(inner) => format!("{}ptr", inner.short_name()),
             Type::Handle(name) => format!("handle{}", extract_short_name(name)),
             Type::Class(name) => extract_short_name(name),
@@ -347,7 +433,7 @@ impl Type {
                     || name.contains("ostream")
                     || name.contains("istream")
             }
-            Type::ConstRef(inner) | Type::MutRef(inner) => inner.is_stream(),
+            Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => inner.is_stream(),
             _ => false,
         }
     }
@@ -357,7 +443,7 @@ impl Type {
     pub fn is_void_ptr(&self) -> bool {
         match self {
             Type::Class(name) => name == "Standard_Address",
-            Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
+            Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
                 inner.is_void_ptr()
             }
             _ => false,
@@ -368,7 +454,7 @@ impl Type {
     pub fn is_array(&self) -> bool {
         match self {
             Type::Class(name) => name.contains('[') && name.contains(']'),
-            Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
+            Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
                 inner.is_array()
             }
             _ => false,
@@ -384,7 +470,7 @@ impl Type {
             Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => false,
             Type::ConstPtr(_) | Type::MutPtr(_) => true,
             // References to raw pointers also count as problematic
-            Type::ConstRef(inner) | Type::MutRef(inner) => inner.is_raw_ptr(),
+            Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => inner.is_raw_ptr(),
             _ => false,
         }
     }
@@ -393,12 +479,35 @@ impl Type {
     /// that couldn't be resolved to a simple type name.
     pub fn is_nested_type(&self) -> bool {
         match self {
-            Type::Class(name) => name.contains("::") || name.contains('<') || name.contains('>'),
-            Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
+            Type::Class(name) => {
+                // Explicit nested type indicators
+                if name.contains("::") || name.contains('<') || name.contains('>') {
+                    return true;
+                }
+                // OCCT classes follow Module_ClassName pattern (e.g., gp_Pnt, TopoDS_Shape)
+                // Types without underscore that aren't known primitive-like names are likely
+                // nested types whose qualified name was resolved by clang to a simple name
+                // (e.g., Message_Messenger::StreamBuffer -> StreamBuffer)
+                if !name.contains('_') {
+                    // Allow known types that don't have underscore
+                    if matches!(name.as_str(), "bool" | "char" | "int" | "unsigned" | "float" | "double" | "void" | "size_t") {
+                        return false;
+                    }
+                    return true;
+                }
+                false
+            }
+            Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
                 inner.is_nested_type()
             }
             _ => false,
         }
+    }
+
+    /// Check if this type is an rvalue reference (T&&)
+    /// Rvalue references are not bindable through CXX
+    pub fn is_rvalue_ref(&self) -> bool {
+        matches!(self, Type::RValueRef(_))
     }
 
     /// Check if this type is unbindable through CXX.
@@ -406,7 +515,7 @@ impl Type {
     /// Nested types are still included here as a fallback - if canonical type resolution
     /// in the parser couldn't resolve them, they remain unbindable.
     pub fn is_unbindable(&self) -> bool {
-        self.is_stream() || self.is_void_ptr() || self.is_array() || self.is_raw_ptr() || self.is_nested_type()
+        self.is_stream() || self.is_void_ptr() || self.is_array() || self.is_raw_ptr() || self.is_nested_type() || self.is_rvalue_ref()
     }
 
     /// Get the module this type belongs to (if it's an OCCT class)
@@ -419,7 +528,7 @@ impl Type {
                     None
                 }
             }
-            Type::ConstRef(inner) | Type::MutRef(inner) => inner.module(),
+            Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => inner.module(),
             _ => None,
         }
     }
@@ -443,6 +552,9 @@ impl Type {
             Type::MutRef(inner) => {
                 let inner_str = inner.to_rust_type_string();
                 format!("&mut {}", inner_str)
+            }
+            Type::RValueRef(_) => {
+                panic!("RValueRef types should not be converted to Rust type strings - they are unbindable")
             }
             Type::ConstPtr(inner) => {
                 let inner_str = inner.to_rust_type_string();
@@ -493,6 +605,9 @@ impl Type {
             Type::MutRef(inner) => {
                 let inner_str = inner.to_rust_ffi_type_string();
                 format!("&mut {}", inner_str)
+            }
+            Type::RValueRef(_) => {
+                panic!("RValueRef types should not be converted to Rust type strings - they are unbindable")
             }
             Type::ConstPtr(inner) => {
                 let inner_str = inner.to_rust_ffi_type_string();

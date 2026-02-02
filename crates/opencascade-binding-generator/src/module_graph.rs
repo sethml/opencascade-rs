@@ -73,6 +73,8 @@ impl ModuleGraph {
         let mut graph = ModuleGraph::default();
 
         // First pass: register all types in their modules
+        // Include all classes (even those with protected destructors) because they may be
+        // referenced by upcast methods or as cross-module type aliases
         for header in headers {
             for class in &header.classes {
                 let module = graph
@@ -83,6 +85,8 @@ impl ModuleGraph {
             }
 
             // Also register enums (use add_enum_type to track them separately)
+            // Note: enums are currently disabled in codegen, so don't add them to types
+            // This prevents cross-module type aliases for enums that won't exist
             for enum_decl in &header.enums {
                 let module = graph
                     .modules
@@ -200,6 +204,11 @@ pub struct CrossModuleType {
 fn collect_type_dependencies(class: &ParsedClass) -> HashSet<String> {
     let mut deps = HashSet::new();
 
+    // Collect from base classes (for upcasts and inherited methods)
+    for base_class in &class.base_classes {
+        deps.insert(base_class.clone());
+    }
+
     // Collect from constructors
     for ctor in &class.constructors {
         for param in &ctor.params {
@@ -234,7 +243,13 @@ fn collect_type_dependencies(class: &ParsedClass) -> HashSet<String> {
 fn collect_types_from_type(ty: &Type, deps: &mut HashSet<String>) {
     match ty {
         Type::Class(name) => {
-            deps.insert(name.clone());
+            // Skip types that don't have a module prefix (e.g., "ReadMode_ProductContext")
+            // These are likely nested types that aren't accessible at global scope
+            if name.contains('_') || name.starts_with("std::") || name.starts_with("opencascade::") {
+                // Has module prefix or is a known namespace type
+                deps.insert(name.clone());
+            }
+            // Otherwise skip - it's likely a nested type without proper scoping
         }
         Type::Handle(name) => {
             deps.insert(name.clone());
