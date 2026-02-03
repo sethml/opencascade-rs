@@ -18,7 +18,7 @@ impl Writer {
     }
 
     /// Converts a given shape to STL format and writes it to file with a given filename.
-    /// \\return the error state.
+    /// \return the error state.
     pub fn write(
         self: std::pin::Pin<&mut Self>,
         theShape: &ffi::TopoDS_Shape,
@@ -36,6 +36,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== StlAPI_Writer ========================
         /// /// **Source:** `StlAPI_Writer.hxx` - `StlAPI_Writer`
         ///
@@ -56,7 +57,7 @@ pub(crate) mod ffi {
         #[cxx_name = "ASCIIMode"]
         fn ascii_mode(self: Pin<&mut Writer>) -> &mut bool;
         /// Converts a given shape to STL format and writes it to file with a given filename.
-        /// \\return the error state.
+        /// \return the error state.
         #[cxx_name = "StlAPI_Writer_Write"]
         fn Writer_write(
             self_: Pin<&mut Writer>,
@@ -68,6 +69,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Message from message module
         type Message = crate::message::ffi::Message;
         /// Alert from message module

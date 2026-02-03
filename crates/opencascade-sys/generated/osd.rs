@@ -35,6 +35,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== OSD_MemInfo ========================
         /// /// **Source:** `OSD_MemInfo.hxx` - `OSD_MemInfo`
         ///
@@ -93,6 +94,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// AsciiString from t_collection module
         type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
         /// ExtendedString from t_collection module

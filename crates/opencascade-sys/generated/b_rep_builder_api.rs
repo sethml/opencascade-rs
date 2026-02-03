@@ -265,7 +265,70 @@ impl MakeEdge {
         ffi::MakeEdge_ctor_handlecurve_handlesurface_pnt2_real2(L, S, P1, P2, p1, p2)
     }
 
-    #[doc = "The general method to directly create an edge is to give\n-      a 3D curve C as the support (geometric domain) of the edge,\n-      two vertices V1 and V2 to limit the curve (definition of the restriction of\nthe edge), and\n-      two real values p1 and p2 which are the parameters for the vertices V1 and V2\non the curve.\nThe curve may be defined as a 2d curve in the parametric space of a surface: a\npcurve. The surface on which the edge is built is then kept at the level of the edge.\nThe default tolerance will be associated with this edge.\nRules applied to the arguments:\nFor the curve:\n-      The curve must not be a 'null handle'.\n-      If the curve is a trimmed curve the basis curve is used.\nFor the vertices:\n-      Vertices may be null shapes. When V1 or V2 is null the edge is open in the\ncorresponding direction and the parameter value p1 or p2 must be infinite\n(remember that Precision::Infinite() defines an infinite value).\n-      The two vertices must be identical if they have the same 3D location.\nIdentical vertices are used in particular when the curve is closed.\nFor the parameters:\n-      The parameters must be in the parametric range of the curve (or the basis\ncurve if the curve is trimmed). If this condition is not satisfied the edge is not\nbuilt, and the Error function will return BRepAPI_ParameterOutOfRange.\n-      Parameter values must not be equal. If this condition is not satisfied (i.e.\nif | p1 - p2 | ) the edge is not built, and the Error function will return\nBRepAPI_LineThroughIdenticPoints.\nParameter values are expected to be given in increasing order:\nC->FirstParameter()\n- If the parameter values are given in decreasing order the vertices are switched,\ni.e. the \"first vertex\" is on the point of parameter p2 and the \"second vertex\" is\non the point of parameter p1. In such a case, to keep the original intent of the\nconstruction, the edge will be oriented \"reversed\".\n- On a periodic curve the parameter values p1 and p2 are adjusted by adding or\nsubtracting the period to obtain p1 in the parametric range of the curve, and p2]\nsuch that [ p1 , where Period is the period of the curve.\n- A parameter value may be infinite. The edge is open in the corresponding\ndirection. However the corresponding vertex must be a null shape. If this condition\nis not satisfied the edge is not built, and the Error function will return\nBRepAPI_PointWithInfiniteParameter.\n- The distance between the vertex and the point evaluated on the curve with the\nparameter, must be lower than the precision of the vertex. If this condition is not\nsatisfied the edge is not built, and the Error function will return\nBRepAPI_DifferentsPointAndParameter.\nOther edge constructions\n- The parameter values can be omitted, they will be computed by projecting the\nvertices on the curve. Note that projection is the only way to evaluate the\nparameter values of the vertices on the curve: vertices must be given on the curve,\ni.e. the distance from a vertex to the curve must be less than or equal to the\nprecision of the vertex. If this condition is not satisfied the edge is not built,\nand the Error function will return BRepAPI_PointProjectionFailed.\n-      3D points can be given in place of vertices. Vertices will be created from the\npoints (with the default topological precision Precision::Confusion()).\nNote:\n-      Giving vertices is useful when creating a connected edge.\n-      If the parameter values correspond to the extremities of a closed curve,\npoints must be identical, or at least coincident. If this condition is not\nsatisfied the edge is not built, and the Error function will return\nBRepAPI_DifferentPointsOnClosedCurve.\n-      The vertices or points can be omitted if the parameter values are given. The\npoints will be computed from the parameters on the curve.\nThe vertices or points and the parameter values can be omitted. The first and last\nparameters of the curve will then be used.\n\nAuxiliary methods"]
+    /// The general method to directly create an edge is to give
+    /// -      a 3D curve C as the support (geometric domain) of the edge,
+    /// -      two vertices V1 and V2 to limit the curve (definition of the restriction of
+    /// the edge), and
+    /// -      two real values p1 and p2 which are the parameters for the vertices V1 and V2
+    /// on the curve.
+    /// The curve may be defined as a 2d curve in the parametric space of a surface: a
+    /// pcurve. The surface on which the edge is built is then kept at the level of the edge.
+    /// The default tolerance will be associated with this edge.
+    /// Rules applied to the arguments:
+    /// For the curve:
+    /// -      The curve must not be a 'null handle'.
+    /// -      If the curve is a trimmed curve the basis curve is used.
+    /// For the vertices:
+    /// -      Vertices may be null shapes. When V1 or V2 is null the edge is open in the
+    /// corresponding direction and the parameter value p1 or p2 must be infinite
+    /// (remember that Precision::Infinite() defines an infinite value).
+    /// -      The two vertices must be identical if they have the same 3D location.
+    /// Identical vertices are used in particular when the curve is closed.
+    /// For the parameters:
+    /// -      The parameters must be in the parametric range of the curve (or the basis
+    /// curve if the curve is trimmed). If this condition is not satisfied the edge is not
+    /// built, and the Error function will return BRepAPI_ParameterOutOfRange.
+    /// -      Parameter values must not be equal. If this condition is not satisfied (i.e.
+    /// if | p1 - p2 | ) the edge is not built, and the Error function will return
+    /// BRepAPI_LineThroughIdenticPoints.
+    /// Parameter values are expected to be given in increasing order:
+    /// C->FirstParameter()
+    /// - If the parameter values are given in decreasing order the vertices are switched,
+    /// i.e. the "first vertex" is on the point of parameter p2 and the "second vertex" is
+    /// on the point of parameter p1. In such a case, to keep the original intent of the
+    /// construction, the edge will be oriented "reversed".
+    /// - On a periodic curve the parameter values p1 and p2 are adjusted by adding or
+    /// subtracting the period to obtain p1 in the parametric range of the curve, and p2]
+    /// such that [ p1 , where Period is the period of the curve.
+    /// - A parameter value may be infinite. The edge is open in the corresponding
+    /// direction. However the corresponding vertex must be a null shape. If this condition
+    /// is not satisfied the edge is not built, and the Error function will return
+    /// BRepAPI_PointWithInfiniteParameter.
+    /// - The distance between the vertex and the point evaluated on the curve with the
+    /// parameter, must be lower than the precision of the vertex. If this condition is not
+    /// satisfied the edge is not built, and the Error function will return
+    /// BRepAPI_DifferentsPointAndParameter.
+    /// Other edge constructions
+    /// - The parameter values can be omitted, they will be computed by projecting the
+    /// vertices on the curve. Note that projection is the only way to evaluate the
+    /// parameter values of the vertices on the curve: vertices must be given on the curve,
+    /// i.e. the distance from a vertex to the curve must be less than or equal to the
+    /// precision of the vertex. If this condition is not satisfied the edge is not built,
+    /// and the Error function will return BRepAPI_PointProjectionFailed.
+    /// -      3D points can be given in place of vertices. Vertices will be created from the
+    /// points (with the default topological precision Precision::Confusion()).
+    /// Note:
+    /// -      Giving vertices is useful when creating a connected edge.
+    /// -      If the parameter values correspond to the extremities of a closed curve,
+    /// points must be identical, or at least coincident. If this condition is not
+    /// satisfied the edge is not built, and the Error function will return
+    /// BRepAPI_DifferentPointsOnClosedCurve.
+    /// -      The vertices or points can be omitted if the parameter values are given. The
+    /// points will be computed from the parameters on the curve.
+    /// The vertices or points and the parameter values can be omitted. The first and last
+    /// parameters of the curve will then be used.
+    ///
+    /// Auxiliary methods
     pub fn new_handlecurve_handlesurface_vertex2_real2(
         L: &ffi::HandleGeom2dCurve,
         S: &ffi::HandleGeomSurface,
@@ -903,6 +966,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepBuilderAPI_Command ========================
         /// /// **Source:** `BRepBuilderAPI_Command.hxx` - `BRepBuilderAPI_Command`
         ///
@@ -1166,7 +1230,70 @@ pub(crate) mod ffi {
         ) -> UniquePtr<MakeEdge>;
         /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         ///
-        #[doc = "The general method to directly create an edge is to give\n-      a 3D curve C as the support (geometric domain) of the edge,\n-      two vertices V1 and V2 to limit the curve (definition of the restriction of\nthe edge), and\n-      two real values p1 and p2 which are the parameters for the vertices V1 and V2\non the curve.\nThe curve may be defined as a 2d curve in the parametric space of a surface: a\npcurve. The surface on which the edge is built is then kept at the level of the edge.\nThe default tolerance will be associated with this edge.\nRules applied to the arguments:\nFor the curve:\n-      The curve must not be a 'null handle'.\n-      If the curve is a trimmed curve the basis curve is used.\nFor the vertices:\n-      Vertices may be null shapes. When V1 or V2 is null the edge is open in the\ncorresponding direction and the parameter value p1 or p2 must be infinite\n(remember that Precision::Infinite() defines an infinite value).\n-      The two vertices must be identical if they have the same 3D location.\nIdentical vertices are used in particular when the curve is closed.\nFor the parameters:\n-      The parameters must be in the parametric range of the curve (or the basis\ncurve if the curve is trimmed). If this condition is not satisfied the edge is not\nbuilt, and the Error function will return BRepAPI_ParameterOutOfRange.\n-      Parameter values must not be equal. If this condition is not satisfied (i.e.\nif | p1 - p2 | ) the edge is not built, and the Error function will return\nBRepAPI_LineThroughIdenticPoints.\nParameter values are expected to be given in increasing order:\nC->FirstParameter()\n- If the parameter values are given in decreasing order the vertices are switched,\ni.e. the \"first vertex\" is on the point of parameter p2 and the \"second vertex\" is\non the point of parameter p1. In such a case, to keep the original intent of the\nconstruction, the edge will be oriented \"reversed\".\n- On a periodic curve the parameter values p1 and p2 are adjusted by adding or\nsubtracting the period to obtain p1 in the parametric range of the curve, and p2]\nsuch that [ p1 , where Period is the period of the curve.\n- A parameter value may be infinite. The edge is open in the corresponding\ndirection. However the corresponding vertex must be a null shape. If this condition\nis not satisfied the edge is not built, and the Error function will return\nBRepAPI_PointWithInfiniteParameter.\n- The distance between the vertex and the point evaluated on the curve with the\nparameter, must be lower than the precision of the vertex. If this condition is not\nsatisfied the edge is not built, and the Error function will return\nBRepAPI_DifferentsPointAndParameter.\nOther edge constructions\n- The parameter values can be omitted, they will be computed by projecting the\nvertices on the curve. Note that projection is the only way to evaluate the\nparameter values of the vertices on the curve: vertices must be given on the curve,\ni.e. the distance from a vertex to the curve must be less than or equal to the\nprecision of the vertex. If this condition is not satisfied the edge is not built,\nand the Error function will return BRepAPI_PointProjectionFailed.\n-      3D points can be given in place of vertices. Vertices will be created from the\npoints (with the default topological precision Precision::Confusion()).\nNote:\n-      Giving vertices is useful when creating a connected edge.\n-      If the parameter values correspond to the extremities of a closed curve,\npoints must be identical, or at least coincident. If this condition is not\nsatisfied the edge is not built, and the Error function will return\nBRepAPI_DifferentPointsOnClosedCurve.\n-      The vertices or points can be omitted if the parameter values are given. The\npoints will be computed from the parameters on the curve.\nThe vertices or points and the parameter values can be omitted. The first and last\nparameters of the curve will then be used.\n\nAuxiliary methods"]
+        /// The general method to directly create an edge is to give
+        /// -      a 3D curve C as the support (geometric domain) of the edge,
+        /// -      two vertices V1 and V2 to limit the curve (definition of the restriction of
+        /// the edge), and
+        /// -      two real values p1 and p2 which are the parameters for the vertices V1 and V2
+        /// on the curve.
+        /// The curve may be defined as a 2d curve in the parametric space of a surface: a
+        /// pcurve. The surface on which the edge is built is then kept at the level of the edge.
+        /// The default tolerance will be associated with this edge.
+        /// Rules applied to the arguments:
+        /// For the curve:
+        /// -      The curve must not be a 'null handle'.
+        /// -      If the curve is a trimmed curve the basis curve is used.
+        /// For the vertices:
+        /// -      Vertices may be null shapes. When V1 or V2 is null the edge is open in the
+        /// corresponding direction and the parameter value p1 or p2 must be infinite
+        /// (remember that Precision::Infinite() defines an infinite value).
+        /// -      The two vertices must be identical if they have the same 3D location.
+        /// Identical vertices are used in particular when the curve is closed.
+        /// For the parameters:
+        /// -      The parameters must be in the parametric range of the curve (or the basis
+        /// curve if the curve is trimmed). If this condition is not satisfied the edge is not
+        /// built, and the Error function will return BRepAPI_ParameterOutOfRange.
+        /// -      Parameter values must not be equal. If this condition is not satisfied (i.e.
+        /// if | p1 - p2 | ) the edge is not built, and the Error function will return
+        /// BRepAPI_LineThroughIdenticPoints.
+        /// Parameter values are expected to be given in increasing order:
+        /// C->FirstParameter()
+        /// - If the parameter values are given in decreasing order the vertices are switched,
+        /// i.e. the "first vertex" is on the point of parameter p2 and the "second vertex" is
+        /// on the point of parameter p1. In such a case, to keep the original intent of the
+        /// construction, the edge will be oriented "reversed".
+        /// - On a periodic curve the parameter values p1 and p2 are adjusted by adding or
+        /// subtracting the period to obtain p1 in the parametric range of the curve, and p2]
+        /// such that [ p1 , where Period is the period of the curve.
+        /// - A parameter value may be infinite. The edge is open in the corresponding
+        /// direction. However the corresponding vertex must be a null shape. If this condition
+        /// is not satisfied the edge is not built, and the Error function will return
+        /// BRepAPI_PointWithInfiniteParameter.
+        /// - The distance between the vertex and the point evaluated on the curve with the
+        /// parameter, must be lower than the precision of the vertex. If this condition is not
+        /// satisfied the edge is not built, and the Error function will return
+        /// BRepAPI_DifferentsPointAndParameter.
+        /// Other edge constructions
+        /// - The parameter values can be omitted, they will be computed by projecting the
+        /// vertices on the curve. Note that projection is the only way to evaluate the
+        /// parameter values of the vertices on the curve: vertices must be given on the curve,
+        /// i.e. the distance from a vertex to the curve must be less than or equal to the
+        /// precision of the vertex. If this condition is not satisfied the edge is not built,
+        /// and the Error function will return BRepAPI_PointProjectionFailed.
+        /// -      3D points can be given in place of vertices. Vertices will be created from the
+        /// points (with the default topological precision Precision::Confusion()).
+        /// Note:
+        /// -      Giving vertices is useful when creating a connected edge.
+        /// -      If the parameter values correspond to the extremities of a closed curve,
+        /// points must be identical, or at least coincident. If this condition is not
+        /// satisfied the edge is not built, and the Error function will return
+        /// BRepAPI_DifferentPointsOnClosedCurve.
+        /// -      The vertices or points can be omitted if the parameter values are given. The
+        /// points will be computed from the parameters on the curve.
+        /// The vertices or points and the parameter values can be omitted. The first and last
+        /// parameters of the curve will then be used.
+        ///
+        /// Auxiliary methods
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_handlecurve_handlesurface_vertex2_real2"]
         fn MakeEdge_ctor_handlecurve_handlesurface_vertex2_real2(
             L: &HandleGeom2dCurve,
@@ -1910,7 +2037,13 @@ pub(crate) mod ffi {
         /// Add the edges of <W> to the current wire.
         #[cxx_name = "Add"]
         fn add_wire(self: Pin<&mut MakeWire>, W: &TopoDS_Wire);
-        #[doc = "Adds  the edges of <L>   to the current  wire.  The\nedges are not to be consecutive.   But they are to\nbe  all  connected geometrically or topologically.\nIf some of them are  not connected the Status give\nDisconnectedWire but the \"Maker\" is Done() and you\ncan get the  partial result. (ie connected to  the\nfirst edgeof the list <L>)"]
+        /// Adds  the edges of <L>   to the current  wire.  The
+        /// edges are not to be consecutive.   But they are to
+        /// be  all  connected geometrically or topologically.
+        /// If some of them are  not connected the Status give
+        /// DisconnectedWire but the "Maker" is Done() and you
+        /// can get the  partial result. (ie connected to  the
+        /// first edgeof the list <L>)
         #[cxx_name = "Add"]
         fn add_listofshape(self: Pin<&mut MakeWire>, L: &TopTools_ListOfShape);
         /// Returns true if this algorithm contains a valid wire.
@@ -2302,6 +2435,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// BRepTools from b_rep_tools module
         type BRepTools = crate::b_rep_tools::ffi::BRepTools;
         /// History from b_rep_tools module
@@ -2524,25 +2658,26 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBRepBuilderAPISewing"]
         type HandleBRepBuilderAPISewing;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBRepToolsReShape"]
         type HandleBRepToolsReShape;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dCurve"]
         type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomCurve"]
         type HandleGeomCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

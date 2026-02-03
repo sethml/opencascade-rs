@@ -236,10 +236,49 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== math_Matrix ========================
         /// /// **Source:** `math_Matrix.hxx` - `math_Matrix`
         ///
-        #[doc = "This class implements the real matrix abstract data type.\nMatrixes can have an arbitrary range which must be defined\nat the declaration and cannot be changed after this declaration\nmath_Matrix(-3,5,2,4); //a vector with range [-3..5, 2..4]\nMatrix values may be initialized and\nretrieved using indexes which must lie within the range\nof definition of the matrix.\nMatrix objects follow \"value semantics\", that is, they\ncannot be shared and are copied through assignment\nMatrices are copied through assignment:\n@code\nmath_Matrix M2(1, 9, 1, 3);\n...\nM2 = M1;\nM1(1) = 2.0;//the matrix M2 will not be modified.\n@endcode\nThe exception RangeError is raised when trying to access\noutside the range of a matrix :\n@code\nM1(11, 1)=0.0// --> will raise RangeError.\n@endcode\n\nThe exception DimensionError is raised when the dimensions of\ntwo matrices or vectors are not compatible.\n@code\nmath_Matrix M3(1, 2, 1, 2);\nM3 = M1;   // will raise DimensionError\nM1.Add(M3) // --> will raise DimensionError.\n@endcode\nA Matrix can be constructed with a pointer to \"c array\".\nIt allows to carry the bounds inside the matrix.\nExample :\n@code\nStandard_Real tab1[10][20];\nStandard_Real tab2[200];\n\nmath_Matrix A (tab1[0][0], 1, 10, 1, 20);\nmath_Matrix B (tab2[0],    1, 10, 1, 20);\n@endcode"]
+        /// This class implements the real matrix abstract data type.
+        /// Matrixes can have an arbitrary range which must be defined
+        /// at the declaration and cannot be changed after this declaration
+        /// math_Matrix(-3,5,2,4); //a vector with range [-3..5, 2..4]
+        /// Matrix values may be initialized and
+        /// retrieved using indexes which must lie within the range
+        /// of definition of the matrix.
+        /// Matrix objects follow "value semantics", that is, they
+        /// cannot be shared and are copied through assignment
+        /// Matrices are copied through assignment:
+        /// @code
+        /// math_Matrix M2(1, 9, 1, 3);
+        /// ...
+        /// M2 = M1;
+        /// M1(1) = 2.0;//the matrix M2 will not be modified.
+        /// @endcode
+        /// The exception RangeError is raised when trying to access
+        /// outside the range of a matrix :
+        /// @code
+        /// M1(11, 1)=0.0// --> will raise RangeError.
+        /// @endcode
+        ///
+        /// The exception DimensionError is raised when the dimensions of
+        /// two matrices or vectors are not compatible.
+        /// @code
+        /// math_Matrix M3(1, 2, 1, 2);
+        /// M3 = M1;   // will raise DimensionError
+        /// M1.Add(M3) // --> will raise DimensionError.
+        /// @endcode
+        /// A Matrix can be constructed with a pointer to "c array".
+        /// It allows to carry the bounds inside the matrix.
+        /// Example :
+        /// @code
+        /// Standard_Real tab1[10][20];
+        /// Standard_Real tab2[200];
+        ///
+        /// math_Matrix A (tab1[0][0], 1, 10, 1, 20);
+        /// math_Matrix B (tab2[0],    1, 10, 1, 20);
+        /// @endcode
         #[cxx_name = "math_Matrix"]
         type Matrix;
         /// /// **Source:** `math_Matrix.hxx` - `math_Matrix::math_Matrix()`
@@ -787,6 +826,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -853,10 +893,11 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "math_Vector"]
         type math_Vector;
     }

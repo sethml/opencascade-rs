@@ -89,6 +89,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== Adaptor2d_Curve2d ========================
         /// /// **Source:** `Adaptor2d_Curve2d.hxx` - `Adaptor2d_Curve2d`
         ///
@@ -212,6 +213,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// BoundedCurve from geom2d module
         type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
         /// Conic from geom2d module
@@ -366,25 +368,26 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "Geom2d_BSplineCurve"]
         type Geom2d_BSplineCurve;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Geom2d_BezierCurve"]
         type Geom2d_BezierCurve;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleAdaptor2dCurve2d"]
         type HandleAdaptor2dCurve2d;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dBSplineCurve"]
         type HandleGeom2dBSplineCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dBezierCurve"]
         type HandleGeom2dBezierCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

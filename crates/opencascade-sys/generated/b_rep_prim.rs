@@ -518,6 +518,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepPrim_Torus ========================
         /// /// **Source:** `BRepPrim_Torus.hxx` - `BRepPrim_Torus`
         ///
@@ -1375,6 +1376,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Builder from b_rep module
         type BRep_Builder = crate::b_rep::ffi::Builder;
         /// Tool from b_rep module
@@ -1521,10 +1523,11 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Handle to OCCT object"]
+
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dCurve"]
         type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomCurve"]
         type HandleGeomCurve;
     }

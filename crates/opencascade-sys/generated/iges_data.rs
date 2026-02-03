@@ -55,12 +55,12 @@ impl BasicEditor {
         ffi::BasicEditor_unit_flag_value(flag)
     }
 
-    #[doc = "From the flag of unit, determines its name, \"\" if incorrect"]
+    /// From the flag of unit, determines its name, "" if incorrect
     pub fn unit_flag_name(flag: i32) -> String {
         ffi::BasicEditor_unit_flag_name(flag)
     }
 
-    #[doc = "From the flag of IGES version, returns name, \"\" if incorrect"]
+    /// From the flag of IGES version, returns name, "" if incorrect
     pub fn iges_version_name(flag: i32) -> String {
         ffi::BasicEditor_iges_version_name(flag)
     }
@@ -70,7 +70,7 @@ impl BasicEditor {
         ffi::BasicEditor_iges_version_max()
     }
 
-    #[doc = "From the flag of drafting standard, returns name, \"\" if incorrect"]
+    /// From the flag of drafting standard, returns name, "" if incorrect
     pub fn drafting_name(flag: i32) -> String {
         ffi::BasicEditor_drafting_name(flag)
     }
@@ -119,6 +119,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== IGESData_BasicEditor ========================
         /// /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor`
         ///
@@ -187,7 +188,14 @@ pub(crate) mod ffi {
         /// (see definitions of Logical use, Physical use, etc...)
         #[cxx_name = "ComputeStatus"]
         fn compute_status(self: Pin<&mut BasicEditor>);
-        #[doc = "Performs auto-correction on an IGESEntity\nReturns True if something has changed, False if nothing done.\n\nWorks with the specific IGES Services : DirChecker which\nallows to correct data in \"Directory Part\" of Entities (such\nas required values for status, or references to be null), and\nthe specific IGES service OwnCorrect, which is specialised for\neach type of entity."]
+        /// Performs auto-correction on an IGESEntity
+        /// Returns True if something has changed, False if nothing done.
+        ///
+        /// Works with the specific IGES Services : DirChecker which
+        /// allows to correct data in "Directory Part" of Entities (such
+        /// as required values for status, or references to be null), and
+        /// the specific IGES service OwnCorrect, which is specialised for
+        /// each type of entity.
         #[cxx_name = "AutoCorrect"]
         fn auto_correct(self: Pin<&mut BasicEditor>, ent: &HandleIGESDataIGESEntity) -> bool;
         /// Performs auto-correction on the whole Model
@@ -210,16 +218,16 @@ pub(crate) mod ffi {
         /// From the flag of unit, determines value in MM, 0 if incorrect
         #[cxx_name = "IGESData_BasicEditor_UnitFlagValue"]
         fn BasicEditor_unit_flag_value(flag: i32) -> f64;
-        #[doc = "From the flag of unit, determines its name, \"\" if incorrect"]
+        /// From the flag of unit, determines its name, "" if incorrect
         #[cxx_name = "IGESData_BasicEditor_UnitFlagName"]
         fn BasicEditor_unit_flag_name(flag: i32) -> String;
-        #[doc = "From the flag of IGES version, returns name, \"\" if incorrect"]
+        /// From the flag of IGES version, returns name, "" if incorrect
         #[cxx_name = "IGESData_BasicEditor_IGESVersionName"]
         fn BasicEditor_iges_version_name(flag: i32) -> String;
         /// Returns the maximum allowed value for IGESVersion Flag
         #[cxx_name = "IGESData_BasicEditor_IGESVersionMax"]
         fn BasicEditor_iges_version_max() -> i32;
-        #[doc = "From the flag of drafting standard, returns name, \"\" if incorrect"]
+        /// From the flag of drafting standard, returns name, "" if incorrect
         #[cxx_name = "IGESData_BasicEditor_DraftingName"]
         fn BasicEditor_drafting_name(flag: i32) -> String;
         /// Returns the maximum allowed value for Drafting Flag
@@ -303,6 +311,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -349,31 +358,32 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "IGESData_IGESEntity"]
         type IGESData_IGESEntity;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "IGESData_IGESModel"]
         type IGESData_IGESModel;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "IGESData_Protocol"]
         type IGESData_Protocol;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "IGESData_SpecificModule"]
         type IGESData_SpecificModule;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleIGESDataIGESEntity"]
         type HandleIGESDataIGESEntity;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleIGESDataIGESModel"]
         type HandleIGESDataIGESModel;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleIGESDataProtocol"]
         type HandleIGESDataProtocol;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleIGESDataSpecificModule"]
         type HandleIGESDataSpecificModule;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardTransient"]
         type HandleStandardTransient;
     }

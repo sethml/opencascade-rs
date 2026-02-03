@@ -41,6 +41,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== MAT2d_Tool2d ========================
         /// /// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d`
         ///
@@ -173,6 +174,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Bisec from bisector module
         type Bisector_Bisec = crate::bisector::ffi::Bisec;
         /// BoundedCurve from geom2d module
@@ -269,19 +271,20 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "MAT2d_Circuit"]
         type MAT2d_Circuit;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "MAT_Bisector"]
         type MAT_Bisector;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dGeometry"]
         type HandleGeom2dGeometry;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMAT2dCircuit"]
         type HandleMAT2dCircuit;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMATBisector"]
         type HandleMATBisector;
     }

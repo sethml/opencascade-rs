@@ -520,6 +520,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepAlgoAPI_BuilderAlgo ========================
         /// /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx` - `BRepAlgoAPI_BuilderAlgo`
         ///
@@ -1244,6 +1245,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// BOP from bop_algo module
         type BOPAlgo_BOP = crate::bop_algo::ffi::BOP;
         /// Builder from bop_algo module
@@ -1446,22 +1448,23 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "BOPAlgo_PBuilder"]
         type BOPAlgo_PBuilder;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "BOPAlgo_PPaveFiller"]
         type BOPAlgo_PPaveFiller;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "BOPAlgo_PaveFiller"]
         type BOPAlgo_PaveFiller;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBRepToolsHistory"]
         type HandleBRepToolsHistory;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
     }

@@ -113,6 +113,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== Geom2dAdaptor_Curve ========================
         /// /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve`
         ///
@@ -264,6 +265,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Curve2d from adaptor2d module
         type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
         /// BoundedCurve from geom2d module
@@ -420,28 +422,29 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "Geom2d_BSplineCurve"]
         type Geom2d_BSplineCurve;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Geom2d_BezierCurve"]
         type Geom2d_BezierCurve;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleAdaptor2dCurve2d"]
         type HandleAdaptor2dCurve2d;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dBSplineCurve"]
         type HandleGeom2dBSplineCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dBezierCurve"]
         type HandleGeom2dBezierCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dCurve"]
         type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

@@ -44,6 +44,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== ShapeProcess ========================
         /// /// **Source:** `ShapeProcess.hxx` - `ShapeProcess`
         ///
@@ -75,6 +76,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Message from message module
         type Message = crate::message::ffi::Message;
         /// Alert from message module
@@ -105,16 +107,17 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "ShapeProcess_Context"]
         type ShapeProcess_Context;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "ShapeProcess_Operator"]
         type ShapeProcess_Operator;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleShapeProcessContext"]
         type HandleShapeProcessContext;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleShapeProcessOperator"]
         type HandleShapeProcessOperator;
     }

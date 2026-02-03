@@ -158,6 +158,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== GC_MakeArcOfCircle ========================
         /// /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle`
         ///
@@ -331,6 +332,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// BSplineCurve from geom module
         type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
         /// BSplineSurface from geom module
@@ -437,10 +439,11 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "gce_ErrorType"]
         type gce_ErrorType;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomTrimmedCurve"]
         type HandleGeomTrimmedCurve;
     }

@@ -44,7 +44,9 @@ impl ShapeProcessor {
         ffi::ShapeProcessor_check_p_curve(theEdge, theFace, thePrecision, theIsSeam)
     }
 
-    #[doc = "The function is designed to set the length unit for the application before performing a\ntransfer operation. It ensures that the length unit is correctly configured based on the\nvalue associated with the key \"xstep.cascade.unit\"."]
+    /// The function is designed to set the length unit for the application before performing a
+    /// transfer operation. It ensures that the length unit is correctly configured based on the
+    /// value associated with the key "xstep.cascade.unit".
     pub fn prepare_for_transfer() {
         ffi::ShapeProcessor_prepare_for_transfer()
     }
@@ -57,6 +59,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== XSAlgo_ShapeProcessor ========================
         /// /// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor`
         ///
@@ -108,13 +111,16 @@ pub(crate) mod ffi {
             thePrecision: f64,
             theIsSeam: bool,
         ) -> bool;
-        #[doc = "The function is designed to set the length unit for the application before performing a\ntransfer operation. It ensures that the length unit is correctly configured based on the\nvalue associated with the key \"xstep.cascade.unit\"."]
+        /// The function is designed to set the length unit for the application before performing a
+        /// transfer operation. It ensures that the length unit is correctly configured based on the
+        /// value associated with the key "xstep.cascade.unit".
         #[cxx_name = "XSAlgo_ShapeProcessor_PrepareForTransfer"]
         fn ShapeProcessor_prepare_for_transfer();
 
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Message from message module
         type Message = crate::message::ffi::Message;
         /// Alert from message module
@@ -183,34 +189,35 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "DE_ShapeFixParameters"]
         type DE_ShapeFixParameters;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "ShapeExtend_MsgRegistrator"]
         type ShapeExtend_MsgRegistrator;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "ShapeProcess_ShapeContext"]
         type ShapeProcess_ShapeContext;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_DataMapOfShapeShape"]
         type TopTools_DataMapOfShapeShape;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Transfer_FinderProcess"]
         type Transfer_FinderProcess;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Transfer_TransientProcess"]
         type Transfer_TransientProcess;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleShapeExtendMsgRegistrator"]
         type HandleShapeExtendMsgRegistrator;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleShapeProcessShapeContext"]
         type HandleShapeProcessShapeContext;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTransferFinderProcess"]
         type HandleTransferFinderProcess;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTransferTransientProcess"]
         type HandleTransferTransientProcess;
     }

@@ -384,6 +384,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== Poly_Triangulation ========================
         /// /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation`
         ///
@@ -1184,6 +1185,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// B2d from bnd module
         type Bnd_B2d = crate::bnd::ffi::B2d;
         /// Box from bnd module
@@ -1362,67 +1364,68 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "OSD_FileSystem"]
         type OSD_FileSystem;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Poly_Array1OfTriangle"]
         type Poly_Array1OfTriangle;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Poly_TriangulationParameters"]
         type Poly_TriangulationParameters;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfInteger"]
         type TColStd_Array1OfInteger;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColgp_Array1OfPnt"]
         type TColgp_Array1OfPnt;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColgp_Array1OfPnt2d"]
         type TColgp_Array1OfPnt2d;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "gp_Vec2f"]
         type gp_Vec2f;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "gp_Vec3f"]
         type gp_Vec3f;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleOSDFileSystem"]
         type HandleOSDFileSystem;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandlePolyHArray1OfTriangle"]
         type HandlePolyHArray1OfTriangle;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandlePolyPolygon2D"]
         type HandlePolyPolygon2D;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandlePolyPolygon3D"]
         type HandlePolyPolygon3D;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandlePolyPolygonOnTriangulation"]
         type HandlePolyPolygonOnTriangulation;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandlePolyTriangulation"]
         type HandlePolyTriangulation;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandlePolyTriangulationParameters"]
         type HandlePolyTriangulationParameters;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHArray1OfReal"]
         type HandleTColStdHArray1OfReal;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColgpHArray1OfPnt"]
         type HandleTColgpHArray1OfPnt;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColgpHArray1OfPnt2d"]
         type HandleTColgpHArray1OfPnt2d;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTShortHArray1OfShortReal"]
         type HandleTShortHArray1OfShortReal;
     }

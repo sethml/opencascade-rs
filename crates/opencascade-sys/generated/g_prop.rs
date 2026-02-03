@@ -100,10 +100,79 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== GProp_GProps ========================
         /// /// **Source:** `GProp_GProps.hxx` - `GProp_GProps`
         ///
-        #[doc = "Implements a general mechanism to compute the global properties of\na \"compound geometric system\" in 3d space    by composition of the\nglobal properties of \"elementary geometric entities\"       such as\n(curve, surface, solid, set of points).  It is possible to compose\nthe properties of several \"compound geometric systems\" too.\n\nTo computes the global properties of a compound geometric\nsystem you should :\n. declare the GProps using a constructor which initializes the\nGProps and defines the location point used to compute the inertia\n. compose the global properties of your geometric components with\nthe properties of your system using the method Add.\n\nTo compute the global properties of the geometric components of\nthe system you should  use the services of the following classes :\n- class PGProps for a set of points,\n- class CGProps for a curve,\n- class SGProps for a surface,\n- class VGProps for a \"solid\".\nThe classes CGProps, SGProps, VGProps are generic classes and\nmust be instantiated for your application.\n\nThe global properties computed are :\n- the dimension (length, area or volume)\n- the mass,\n- the centre of mass,\n- the moments of inertia (static moments and quadratic moments),\n- the moment about an axis,\n- the radius of gyration about an axis,\n- the principal properties of inertia  :\n(sea also class PrincipalProps)\n. the principal moments,\n. the principal axis of inertia,\n. the principal radius of gyration,\n\nExample of utilisation in a simplified C++ implementation :\n\n//declares the GProps, the point (0.0, 0.0, 0.0) of the\n//absolute cartesian coordinate system is used as\n//default reference point to compute the centre of mass\nGProp_GProps System ();\n\n//computes the inertia of a 3d curve\nYour_CGProps Component1 (curve, ....);\n\n//computes the inertia of surfaces\nYour_SGprops Component2 (surface1, ....);\nYour_SGprops Component3 (surface2,....);\n\n//composes the global properties of components 1, 2, 3\n//a density can be associated with the components, the\n//density can be defaulted to 1.\nReal Density1 = 2.0;\nReal Density2 = 3.0;\nSystem.Add (Component1, Density1);\nSystem.Add (Component2, Density2);\nSystem.Add (Component3);\n\n//returns the centre of mass of the system in the\n//absolute cartesian coordinate system\ngp_Pnt G = System.CentreOfMass ();\n\n//computes the principales inertia of the system\nGProp_PrincipalProps Pp  = System.PrincipalProperties();\n\n//returns the principal moments and radius of gyration\nReal Ixx, Iyy, Izz, Rxx, Ryy, Rzz;\nPp.Moments (Ixx, Iyy, Izz);\nPp.RadiusOfGyration (Ixx, Iyy, Izz);"]
+        /// Implements a general mechanism to compute the global properties of
+        /// a "compound geometric system" in 3d space    by composition of the
+        /// global properties of "elementary geometric entities"       such as
+        /// (curve, surface, solid, set of points).  It is possible to compose
+        /// the properties of several "compound geometric systems" too.
+        ///
+        /// To computes the global properties of a compound geometric
+        /// system you should :
+        /// . declare the GProps using a constructor which initializes the
+        /// GProps and defines the location point used to compute the inertia
+        /// . compose the global properties of your geometric components with
+        /// the properties of your system using the method Add.
+        ///
+        /// To compute the global properties of the geometric components of
+        /// the system you should  use the services of the following classes :
+        /// - class PGProps for a set of points,
+        /// - class CGProps for a curve,
+        /// - class SGProps for a surface,
+        /// - class VGProps for a "solid".
+        /// The classes CGProps, SGProps, VGProps are generic classes and
+        /// must be instantiated for your application.
+        ///
+        /// The global properties computed are :
+        /// - the dimension (length, area or volume)
+        /// - the mass,
+        /// - the centre of mass,
+        /// - the moments of inertia (static moments and quadratic moments),
+        /// - the moment about an axis,
+        /// - the radius of gyration about an axis,
+        /// - the principal properties of inertia  :
+        /// (sea also class PrincipalProps)
+        /// . the principal moments,
+        /// . the principal axis of inertia,
+        /// . the principal radius of gyration,
+        ///
+        /// Example of utilisation in a simplified C++ implementation :
+        ///
+        /// //declares the GProps, the point (0.0, 0.0, 0.0) of the
+        /// //absolute cartesian coordinate system is used as
+        /// //default reference point to compute the centre of mass
+        /// GProp_GProps System ();
+        ///
+        /// //computes the inertia of a 3d curve
+        /// Your_CGProps Component1 (curve, ....);
+        ///
+        /// //computes the inertia of surfaces
+        /// Your_SGprops Component2 (surface1, ....);
+        /// Your_SGprops Component3 (surface2,....);
+        ///
+        /// //composes the global properties of components 1, 2, 3
+        /// //a density can be associated with the components, the
+        /// //density can be defaulted to 1.
+        /// Real Density1 = 2.0;
+        /// Real Density2 = 3.0;
+        /// System.Add (Component1, Density1);
+        /// System.Add (Component2, Density2);
+        /// System.Add (Component3);
+        ///
+        /// //returns the centre of mass of the system in the
+        /// //absolute cartesian coordinate system
+        /// gp_Pnt G = System.CentreOfMass ();
+        ///
+        /// //computes the principales inertia of the system
+        /// GProp_PrincipalProps Pp  = System.PrincipalProperties();
+        ///
+        /// //returns the principal moments and radius of gyration
+        /// Real Ixx, Iyy, Izz, Rxx, Ryy, Rzz;
+        /// Pp.Moments (Ixx, Iyy, Izz);
+        /// Pp.RadiusOfGyration (Ixx, Iyy, Izz);
         #[cxx_name = "GProp_GProps"]
         type GProps;
         /// /// **Source:** `GProp_GProps.hxx` - `GProp_GProps::GProp_GProps()`
@@ -259,6 +328,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
         /// Ax2 from gp module
@@ -339,7 +409,8 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "GProp_PrincipalProps"]
         type GProp_PrincipalProps;
     }

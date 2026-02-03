@@ -63,22 +63,52 @@ impl AsciiString {
         ffi::AsciiString_ctor_asciistring2(astring, message)
     }
 
-    #[doc = "Appends <other>  to me. This is an unary operator.\nex: aString += \"Dummy\"\nTo catenate more than one CString, you must put a\nAsciiString before.\nExample: aString += \"Hello \" + \"Dolly\"  IS NOT VALID !\nBut astring += anotherString + \"Hello \" + \"Dolly\" is valid."]
+    /// Appends <other>  to me. This is an unary operator.
+    /// ex: aString += "Dummy"
+    /// To catenate more than one CString, you must put a
+    /// AsciiString before.
+    /// Example: aString += "Hello " + "Dolly"  IS NOT VALID !
+    /// But astring += anotherString + "Hello " + "Dolly" is valid.
     pub fn assign_cat_charptr(self: std::pin::Pin<&mut Self>, other: &str) -> () {
         ffi::AsciiString_assign_cat_charptr(self, other)
     }
 
-    #[doc = "Appends <other>  to me.\nSyntax:\naString = aString + 15;\nExample: aString contains \"I say \"\ngives \"I say 15\"\nTo catenate more than one CString, you must put a String before.\nSo the following example is WRONG !\naString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED\nThis rule is applicable to AssignCat (operator +=) too."]
+    /// Appends <other>  to me.
+    /// Syntax:
+    /// aString = aString + 15;
+    /// Example: aString contains "I say "
+    /// gives "I say 15"
+    /// To catenate more than one CString, you must put a String before.
+    /// So the following example is WRONG !
+    /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
+    /// This rule is applicable to AssignCat (operator +=) too.
     pub fn cat_int(&self, other: i32) -> cxx::UniquePtr<ffi::AsciiString> {
         ffi::AsciiString_cat_int(self, other)
     }
 
-    #[doc = "Appends <other>  to me.\nSyntax:\naString = aString + 15.15;\nExample: aString contains \"I say \"\ngives \"I say 15.15\"\nTo catenate more than one CString, you must put a String before.\nSo the following example is WRONG !\naString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED\nThis rule is applicable to AssignCat (operator +=) too."]
+    /// Appends <other>  to me.
+    /// Syntax:
+    /// aString = aString + 15.15;
+    /// Example: aString contains "I say "
+    /// gives "I say 15.15"
+    /// To catenate more than one CString, you must put a String before.
+    /// So the following example is WRONG !
+    /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
+    /// This rule is applicable to AssignCat (operator +=) too.
     pub fn cat_real(&self, other: f64) -> cxx::UniquePtr<ffi::AsciiString> {
         ffi::AsciiString_cat_real(self, other)
     }
 
-    #[doc = "Appends <other>  to me.\nSyntax:\naString = aString + \"Dummy\"\nExample: aString contains \"I say \"\naString = aString + \"Hello \" + \"Dolly\"\ngives \"I say Hello Dolly\"\nTo catenate more than one CString, you must put a String before.\nSo the following example is WRONG !\naString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED\nThis rule is applicable to AssignCat (operator +=) too."]
+    /// Appends <other>  to me.
+    /// Syntax:
+    /// aString = aString + "Dummy"
+    /// Example: aString contains "I say "
+    /// aString = aString + "Hello " + "Dolly"
+    /// gives "I say Hello Dolly"
+    /// To catenate more than one CString, you must put a String before.
+    /// So the following example is WRONG !
+    /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
+    /// This rule is applicable to AssignCat (operator +=) too.
     pub fn cat_charptr(&self, other: &str) -> cxx::UniquePtr<ffi::AsciiString> {
         ffi::AsciiString_cat_charptr(self, other)
     }
@@ -96,7 +126,10 @@ impl AsciiString {
         ffi::AsciiString_copy_charptr(self, fromwhere)
     }
 
-    #[doc = "Inserts a CString at position <where>.\nExample:\naString contains \"O more\"\naString.Insert(2,\"nce\");  gives \"Once more\""]
+    /// Inserts a CString at position <where>.
+    /// Example:
+    /// aString contains "O more"
+    /// aString.Insert(2,"nce");  gives "Once more"
     pub fn insert_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) -> () {
         ffi::AsciiString_insert_int_charptr(self, where_, what)
     }
@@ -125,42 +158,91 @@ impl AsciiString {
         ffi::AsciiString_is_greater_charptr(self, other)
     }
 
-    #[doc = "Searches a CString in <me> from the beginning\nand returns position of first item <what> matching.\nit returns -1 if not found.\nExample:\naString contains \"Sample single test\"\naString.Search(\"le\") returns 5"]
+    /// Searches a CString in <me> from the beginning
+    /// and returns position of first item <what> matching.
+    /// it returns -1 if not found.
+    /// Example:
+    /// aString contains "Sample single test"
+    /// aString.Search("le") returns 5
     pub fn search_charptr(&self, what: &str) -> i32 {
         ffi::AsciiString_search_charptr(self, what)
     }
 
-    #[doc = "Searches a CString in a AsciiString from the end\nand returns position of first item <what> matching.\nIt returns -1 if not found.\nExample:\naString contains \"Sample single test\"\naString.SearchFromEnd(\"le\") returns 12"]
+    /// Searches a CString in a AsciiString from the end
+    /// and returns position of first item <what> matching.
+    /// It returns -1 if not found.
+    /// Example:
+    /// aString contains "Sample single test"
+    /// aString.SearchFromEnd("le") returns 12
     pub fn search_from_end_charptr(&self, what: &str) -> i32 {
         ffi::AsciiString_search_from_end_charptr(self, what)
     }
 
-    #[doc = "Replaces a part of <me> by a CString.\nIf <where> is less than zero or greater than the length of <me>\nan exception is raised.\nExample:\naString contains \"abcde\"\naString.SetValue(4,\"1234567\") gives <me> = \"abc1234567\""]
+    /// Replaces a part of <me> by a CString.
+    /// If <where> is less than zero or greater than the length of <me>
+    /// an exception is raised.
+    /// Example:
+    /// aString contains "abcde"
+    /// aString.SetValue(4,"1234567") gives <me> = "abc1234567"
     pub fn set_value_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) -> () {
         ffi::AsciiString_set_value_int_charptr(self, where_, what)
     }
 
-    #[doc = "Splits a AsciiString into two sub-strings.\nExample:\naString contains \"abcdefg\"\naString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
+    /// Splits a AsciiString into two sub-strings.
+    /// Example:
+    /// aString contains "abcdefg"
+    /// aString.Split(3) gives <me> = "abc" and returns "defg"
     pub fn split(self: std::pin::Pin<&mut Self>, where_: i32) -> cxx::UniquePtr<ffi::AsciiString> {
         ffi::AsciiString_split(self, where_)
     }
 
-    #[doc = "Creation of a sub-string of the string <me>.\nThe sub-string starts to the index Fromindex and ends\nto the index ToIndex.\nRaises an exception if ToIndex or FromIndex is out of bounds\nExample:\nbefore\nme = \"abcdefg\", ToIndex=3, FromIndex=6\nafter\nme = \"abcdefg\"\nreturns\n\"cdef\""]
+    /// Creation of a sub-string of the string <me>.
+    /// The sub-string starts to the index Fromindex and ends
+    /// to the index ToIndex.
+    /// Raises an exception if ToIndex or FromIndex is out of bounds
+    /// Example:
+    /// before
+    /// me = "abcdefg", ToIndex=3, FromIndex=6
+    /// after
+    /// me = "abcdefg"
+    /// returns
+    /// "cdef"
     pub fn sub_string(&self, FromIndex: i32, ToIndex: i32) -> cxx::UniquePtr<ffi::AsciiString> {
         ffi::AsciiString_sub_string(self, FromIndex, ToIndex)
     }
 
-    #[doc = "Returns pointer to AsciiString (char *).\nThis is useful for some casual manipulations.\nWarning: Because this \"char *\" is 'const', you can't modify its contents."]
+    /// Returns pointer to AsciiString (char *).
+    /// This is useful for some casual manipulations.
+    /// Warning: Because this "char *" is 'const', you can't modify its contents.
     pub fn to_c_string(&self) -> String {
         ffi::AsciiString_to_c_string(self)
     }
 
-    #[doc = "Extracts <whichone> token from <me>.\nBy default, the <separators> is set to space and tabulation.\nBy default, the token extracted is the first one (whichone = 1).\n<separators> contains all separators you need.\nIf no token indexed by <whichone> is found, it returns empty AsciiString.\nExample:\naString contains \"This is a     message\"\naString.Token()  returns \"This\"\naString.Token(\" \",4) returns \"message\"\naString.Token(\" \",2) returns \"is\"\naString.Token(\" \",9) returns \"\"\nOther separators than space character and tabulation are allowed :\naString contains \"1234; test:message   , value\"\naString.Token(\"; :,\",4) returns \"value\"\naString.Token(\"; :,\",2) returns \"test\""]
+    /// Extracts <whichone> token from <me>.
+    /// By default, the <separators> is set to space and tabulation.
+    /// By default, the token extracted is the first one (whichone = 1).
+    /// <separators> contains all separators you need.
+    /// If no token indexed by <whichone> is found, it returns empty AsciiString.
+    /// Example:
+    /// aString contains "This is a     message"
+    /// aString.Token()  returns "This"
+    /// aString.Token(" ",4) returns "message"
+    /// aString.Token(" ",2) returns "is"
+    /// aString.Token(" ",9) returns ""
+    /// Other separators than space character and tabulation are allowed :
+    /// aString contains "1234; test:message   , value"
+    /// aString.Token("; :,",4) returns "value"
+    /// aString.Token("; :,",2) returns "test"
     pub fn token(&self, separators: &str, whichone: i32) -> cxx::UniquePtr<ffi::AsciiString> {
         ffi::AsciiString_token(self, separators, whichone)
     }
 
-    #[doc = "Returns character at position <where> in <me>.\nIf <where> is less than zero or greater than the length of <me>,\nan exception is raised.\nExample:\naString contains \"Hello\"\naString.Value(2) returns 'e'"]
+    /// Returns character at position <where> in <me>.
+    /// If <where> is less than zero or greater than the length of <me>,
+    /// an exception is raised.
+    /// Example:
+    /// aString contains "Hello"
+    /// aString.Value(2) returns 'e'
     pub fn value(&self, where_: i32) -> cxx::UniquePtr<ffi::Standard_Character> {
         ffi::AsciiString_value(self, where_)
     }
@@ -233,7 +315,16 @@ impl ExtendedString {
         ffi::ExtendedString_cat(self, other)
     }
 
-    #[doc = "Splits this extended string into two sub-strings at position where.\n-   The second sub-string (from position\nwhere + 1 of this string to the end) is\nreturned in a new extended string.\n-   this extended string is modified: its last\ncharacters are removed, it becomes equal to\nthe first sub-string (from the first character to position where).\nExample:\naString contains \"abcdefg\"\naString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
+    /// Splits this extended string into two sub-strings at position where.
+    /// -   The second sub-string (from position
+    /// where + 1 of this string to the end) is
+    /// returned in a new extended string.
+    /// -   this extended string is modified: its last
+    /// characters are removed, it becomes equal to
+    /// the first sub-string (from the first character to position where).
+    /// Example:
+    /// aString contains "abcdefg"
+    /// aString.Split(3) gives <me> = "abc" and returns "defg"
     pub fn split(
         self: std::pin::Pin<&mut Self>,
         where_: i32,
@@ -246,7 +337,15 @@ impl ExtendedString {
         ffi::ExtendedString_to_ext_string(self)
     }
 
-    #[doc = "Returns character at position <where> in <me>.\nIf <where> is less than zero or greater than the length of\n<me>, an exception is raised.\nExample:\naString contains \"Hello\"\naString.Value(2) returns 'e'\nExceptions\nStandard_OutOfRange if where lies outside\nthe bounds of this extended string."]
+    /// Returns character at position <where> in <me>.
+    /// If <where> is less than zero or greater than the length of
+    /// <me>, an exception is raised.
+    /// Example:
+    /// aString contains "Hello"
+    /// aString.Value(2) returns 'e'
+    /// Exceptions
+    /// Standard_OutOfRange if where lies outside
+    /// the bounds of this extended string.
     pub fn value(&self, where_: i32) -> cxx::UniquePtr<ffi::Standard_ExtCharacter> {
         ffi::ExtendedString_value(self, where_)
     }
@@ -307,7 +406,18 @@ impl HAsciiString {
         ffi::HAsciiString_assign_cat_charptr(self, other)
     }
 
-    #[doc = "Creates a new string by concatenation of this\nASCII string and the other ASCII string.\nExample:\naString = aString + anotherString\naString = aString + \"Dummy\"\naString contains \"I say \"\naString = aString + \"Hello \" + \"Dolly\"\ngives \"I say Hello Dolly\"\nWarning: To catenate more than one CString, you must put a String before.\nSo the following example is WRONG !\naString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED\nThis rule is applicable to AssignCat (operator +=) too."]
+    /// Creates a new string by concatenation of this
+    /// ASCII string and the other ASCII string.
+    /// Example:
+    /// aString = aString + anotherString
+    /// aString = aString + "Dummy"
+    /// aString contains "I say "
+    /// aString = aString + "Hello " + "Dolly"
+    /// gives "I say Hello Dolly"
+    /// Warning: To catenate more than one CString, you must put a String before.
+    /// So the following example is WRONG !
+    /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
+    /// This rule is applicable to AssignCat (operator +=) too.
     pub fn cat_charptr(&self, other: &str) -> cxx::UniquePtr<ffi::HandleTCollectionHAsciiString> {
         ffi::HAsciiString_cat_charptr(self, other)
     }
@@ -327,22 +437,40 @@ impl HAsciiString {
         ffi::HAsciiString_insert_int_charptr(self, where_, what)
     }
 
-    #[doc = "Searches a CString in <me> from the beginning\nand returns position of first item <what> matching.\nIt returns -1 if not found.\nExample:\naString contains \"Sample single test\"\naString.Search(\"le\") returns 5"]
+    /// Searches a CString in <me> from the beginning
+    /// and returns position of first item <what> matching.
+    /// It returns -1 if not found.
+    /// Example:
+    /// aString contains "Sample single test"
+    /// aString.Search("le") returns 5
     pub fn search_charptr(&self, what: &str) -> i32 {
         ffi::HAsciiString_search_charptr(self, what)
     }
 
-    #[doc = "Searches a CString in a String from the end\nand returns position of first item <what> matching.\nIt returns -1 if not found.\nExample:\naString contains \"Sample single test\"\naString.SearchFromEnd(\"le\") returns 12"]
+    /// Searches a CString in a String from the end
+    /// and returns position of first item <what> matching.
+    /// It returns -1 if not found.
+    /// Example:
+    /// aString contains "Sample single test"
+    /// aString.SearchFromEnd("le") returns 12
     pub fn search_from_end_charptr(&self, what: &str) -> i32 {
         ffi::HAsciiString_search_from_end_charptr(self, what)
     }
 
-    #[doc = "Replaces a part of <me> in the string at position <where>.\nIf <where> is less than zero or greater than the length of <me>\nan exception is raised.\nExample:\naString contains \"Garbake\"\nastring.Replace(6,'g')  gives <me> = \"Garbage\""]
+    /// Replaces a part of <me> in the string at position <where>.
+    /// If <where> is less than zero or greater than the length of <me>
+    /// an exception is raised.
+    /// Example:
+    /// aString contains "Garbake"
+    /// astring.Replace(6,'g')  gives <me> = "Garbage"
     pub fn set_value_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) -> () {
         ffi::HAsciiString_set_value_int_charptr(self, where_, what)
     }
 
-    #[doc = "Splits a HAsciiString into two sub-strings.\nExample:\naString contains \"abcdefg\"\naString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
+    /// Splits a HAsciiString into two sub-strings.
+    /// Example:
+    /// aString contains "abcdefg"
+    /// aString.Split(3) gives <me> = "abc" and returns "defg"
     pub fn split(
         self: std::pin::Pin<&mut Self>,
         where_: i32,
@@ -350,7 +478,18 @@ impl HAsciiString {
         ffi::HAsciiString_split(self, where_)
     }
 
-    #[doc = "Creation of a sub-string of the string <me>.\nThe sub-string starts to the index Fromindex and ends\nto the index ToIndex.\nRaises an exception if ToIndex or FromIndex is out of\nbounds\nExample:\nbefore\nme = \"abcdefg\", ToIndex=3, FromIndex=6\nafter\nme = \"abcdefg\"\nreturns\n\"cdef\""]
+    /// Creation of a sub-string of the string <me>.
+    /// The sub-string starts to the index Fromindex and ends
+    /// to the index ToIndex.
+    /// Raises an exception if ToIndex or FromIndex is out of
+    /// bounds
+    /// Example:
+    /// before
+    /// me = "abcdefg", ToIndex=3, FromIndex=6
+    /// after
+    /// me = "abcdefg"
+    /// returns
+    /// "cdef"
     pub fn sub_string(
         &self,
         FromIndex: i32,
@@ -359,12 +498,28 @@ impl HAsciiString {
         ffi::HAsciiString_sub_string(self, FromIndex, ToIndex)
     }
 
-    #[doc = "Returns pointer to string (char *)\nThis is useful for some casual manipulations\nBecause this \"char *\" is 'const', you can't modify its contents."]
+    /// Returns pointer to string (char *)
+    /// This is useful for some casual manipulations
+    /// Because this "char *" is 'const', you can't modify its contents.
     pub fn to_c_string(&self) -> String {
         ffi::HAsciiString_to_c_string(self)
     }
 
-    #[doc = "Extracts <whichone> token from <me>.\nBy default, the <separators> is set to space and tabulation.\nBy default, the token extracted is the first one (whichone = 1).\n<separators> contains all separators you need.\nIf no token indexed by <whichone> is found, it returns an empty String.\nExample:\naString contains \"This is a     message\"\naString.Token()  returns \"This\"\naString.Token(\" \",4) returns \"message\"\naString.Token(\" \",2) returns \"is\"\naString.Token(\" \",9) returns \"\"\nOther separators than space character and tabulation are allowed\naString contains \"1234; test:message   , value\"\naString.Token(\"; :,\",4) returns \"value\"\naString.Token(\"; :,\",2) returns \"test\""]
+    /// Extracts <whichone> token from <me>.
+    /// By default, the <separators> is set to space and tabulation.
+    /// By default, the token extracted is the first one (whichone = 1).
+    /// <separators> contains all separators you need.
+    /// If no token indexed by <whichone> is found, it returns an empty String.
+    /// Example:
+    /// aString contains "This is a     message"
+    /// aString.Token()  returns "This"
+    /// aString.Token(" ",4) returns "message"
+    /// aString.Token(" ",2) returns "is"
+    /// aString.Token(" ",9) returns ""
+    /// Other separators than space character and tabulation are allowed
+    /// aString contains "1234; test:message   , value"
+    /// aString.Token("; :,",4) returns "value"
+    /// aString.Token("; :,",2) returns "test"
     pub fn token(
         &self,
         separators: &str,
@@ -373,7 +528,12 @@ impl HAsciiString {
         ffi::HAsciiString_token(self, separators, whichone)
     }
 
-    #[doc = "Returns character at position <where> in <me>.\nIf <where> is less than zero or greater than the length of\n<me>, an exception is raised.\nExample:\naString contains \"Hello\"\naString.Value(2) returns 'e'"]
+    /// Returns character at position <where> in <me>.
+    /// If <where> is less than zero or greater than the length of
+    /// <me>, an exception is raised.
+    /// Example:
+    /// aString contains "Hello"
+    /// aString.Value(2) returns 'e'
     pub fn value(&self, where_: i32) -> cxx::UniquePtr<ffi::Standard_Character> {
         ffi::HAsciiString_value(self, where_)
     }
@@ -428,7 +588,10 @@ impl HExtendedString {
         ffi::HExtendedString_cat(self, other)
     }
 
-    #[doc = "Splits a ExtendedString into two sub-strings.\nExample:\naString contains \"abcdefg\"\naString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
+    /// Splits a ExtendedString into two sub-strings.
+    /// Example:
+    /// aString contains "abcdefg"
+    /// aString.Split(3) gives <me> = "abc" and returns "defg"
     pub fn split(
         self: std::pin::Pin<&mut Self>,
         where_: i32,
@@ -441,7 +604,12 @@ impl HExtendedString {
         ffi::HExtendedString_to_ext_string(self)
     }
 
-    #[doc = "Returns ExtCharacter at position <where> in <me>.\nIf <where> is less than zero or greater than the length of\n<me>, an exception is raised.\nExample:\naString contains \"Hello\"\naString.Value(2) returns 'e'"]
+    /// Returns ExtCharacter at position <where> in <me>.
+    /// If <where> is less than zero or greater than the length of
+    /// <me>, an exception is raised.
+    /// Example:
+    /// aString contains "Hello"
+    /// aString.Value(2) returns 'e'
     pub fn value(&self, where_: i32) -> cxx::UniquePtr<ffi::Standard_ExtCharacter> {
         ffi::HExtendedString_value(self, where_)
     }
@@ -458,6 +626,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== TCollection_AsciiString ========================
         /// /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString`
         ///
@@ -536,7 +705,12 @@ pub(crate) mod ffi {
         /// Example: aString += anotherString
         #[cxx_name = "AssignCat"]
         fn assign_cat_asciistring(self: Pin<&mut AsciiString>, other: &AsciiString);
-        #[doc = "Converts the first character into its corresponding\nupper-case character and the other characters into lowercase\nExample: before\nme = \"hellO \"\nafter\nme = \"Hello \""]
+        /// Converts the first character into its corresponding
+        /// upper-case character and the other characters into lowercase
+        /// Example: before
+        /// me = "hellO "
+        /// after
+        /// me = "Hello "
         #[cxx_name = "Capitalize"]
         fn capitalize(self: Pin<&mut AsciiString>);
         /// Removes all characters contained in <me>.
@@ -551,7 +725,18 @@ pub(crate) mod ffi {
         /// Exchange the data of two strings (without reallocating memory).
         #[cxx_name = "Swap"]
         fn swap(self: Pin<&mut AsciiString>, theOther: Pin<&mut AsciiString>);
-        #[doc = "Returns the index of the first character of <me> that is\npresent in <Set>.\nThe search begins to the index FromIndex and ends to the\nthe index ToIndex.\nReturns zero if failure.\nRaises an exception if FromIndex or ToIndex is out of range.\nExample: before\nme = \"aabAcAa\", S = \"Aa\", FromIndex = 1, Toindex = 7\nafter\nme = \"aabAcAa\"\nreturns\n1"]
+        /// Returns the index of the first character of <me> that is
+        /// present in <Set>.
+        /// The search begins to the index FromIndex and ends to the
+        /// the index ToIndex.
+        /// Returns zero if failure.
+        /// Raises an exception if FromIndex or ToIndex is out of range.
+        /// Example: before
+        /// me = "aabAcAa", S = "Aa", FromIndex = 1, Toindex = 7
+        /// after
+        /// me = "aabAcAa"
+        /// returns
+        /// 1
         #[cxx_name = "FirstLocationInSet"]
         fn first_location_in_set(
             self: &AsciiString,
@@ -559,7 +744,18 @@ pub(crate) mod ffi {
             FromIndex: i32,
             ToIndex: i32,
         ) -> i32;
-        #[doc = "Returns the index of the first character of <me>\nthat is not present in the set <Set>.\nThe search begins to the index FromIndex and ends to the\nthe index ToIndex in <me>.\nReturns zero if failure.\nRaises an exception if FromIndex or ToIndex is out of range.\nExample: before\nme = \"aabAcAa\", S = \"Aa\", FromIndex = 1, Toindex = 7\nafter\nme = \"aabAcAa\"\nreturns\n3"]
+        /// Returns the index of the first character of <me>
+        /// that is not present in the set <Set>.
+        /// The search begins to the index FromIndex and ends to the
+        /// the index ToIndex in <me>.
+        /// Returns zero if failure.
+        /// Raises an exception if FromIndex or ToIndex is out of range.
+        /// Example: before
+        /// me = "aabAcAa", S = "Aa", FromIndex = 1, Toindex = 7
+        /// after
+        /// me = "aabAcAa"
+        /// returns
+        /// 3
         #[cxx_name = "FirstLocationNotInSet"]
         fn first_location_not_in_set(
             self: &AsciiString,
@@ -570,10 +766,26 @@ pub(crate) mod ffi {
         /// Inserts a AsciiString at position <where>.
         #[cxx_name = "Insert"]
         fn insert_int_asciistring(self: Pin<&mut AsciiString>, where_: i32, what: &AsciiString);
-        #[doc = "Pushing a string after a specific index in the string <me>.\nRaises an exception if Index is out of bounds.\n-   less than 0 (InsertAfter), or less than 1 (InsertBefore), or\n-   greater than the number of characters in this ASCII string.\nExample:\nbefore\nme = \"cde\" , Index = 0 , other = \"ab\"\nafter\nme = \"abcde\" , other = \"ab\""]
+        /// Pushing a string after a specific index in the string <me>.
+        /// Raises an exception if Index is out of bounds.
+        /// -   less than 0 (InsertAfter), or less than 1 (InsertBefore), or
+        /// -   greater than the number of characters in this ASCII string.
+        /// Example:
+        /// before
+        /// me = "cde" , Index = 0 , other = "ab"
+        /// after
+        /// me = "abcde" , other = "ab"
         #[cxx_name = "InsertAfter"]
         fn insert_after(self: Pin<&mut AsciiString>, Index: i32, other: &AsciiString);
-        #[doc = "Pushing a string before a specific index in the string <me>.\nRaises an exception if Index is out of bounds.\n-   less than 0 (InsertAfter), or less than 1 (InsertBefore), or\n-   greater than the number of characters in this ASCII string.\nExample:\nbefore\nme = \"cde\" , Index = 1 , other = \"ab\"\nafter\nme = \"abcde\" , other = \"ab\""]
+        /// Pushing a string before a specific index in the string <me>.
+        /// Raises an exception if Index is out of bounds.
+        /// -   less than 0 (InsertAfter), or less than 1 (InsertBefore), or
+        /// -   greater than the number of characters in this ASCII string.
+        /// Example:
+        /// before
+        /// me = "cde" , Index = 1 , other = "ab"
+        /// after
+        /// me = "abcde" , other = "ab"
         #[cxx_name = "InsertBefore"]
         fn insert_before(self: Pin<&mut AsciiString>, Index: i32, other: &AsciiString);
         /// Returns True if the string <me> contains zero character.
@@ -601,7 +813,9 @@ pub(crate) mod ffi {
         /// Determines whether the end of this string instance matches the specified string.
         #[cxx_name = "EndsWith"]
         fn ends_with(self: &AsciiString, theEndString: &AsciiString) -> bool;
-        #[doc = "Converts a AsciiString containing a numeric expression to\nan Integer.\nExample: \"215\" returns 215."]
+        /// Converts a AsciiString containing a numeric expression to
+        /// an Integer.
+        /// Example: "215" returns 215.
         #[cxx_name = "IntegerValue"]
         fn integer_value(self: &AsciiString) -> i32;
         /// Returns True if the AsciiString contains an integer value.
@@ -623,10 +837,31 @@ pub(crate) mod ffi {
         /// Removes all space characters in the beginning of the string.
         #[cxx_name = "LeftAdjust"]
         fn left_adjust(self: Pin<&mut AsciiString>);
-        #[doc = "Returns number of characters in <me>.\nThis is the same functionality as 'strlen' in C.\nExample\nTCollection_AsciiString myAlphabet(\"abcdef\");\nassert ( myAlphabet.Length() == 6 );\n-   1 is the position of the first character in this string.\n-   The length of this string gives the position of its last character.\n-   Positions less than or equal to zero, or\ngreater than the length of this string are\ninvalid in functions which identify a character\nof this string by its position."]
+        /// Returns number of characters in <me>.
+        /// This is the same functionality as 'strlen' in C.
+        /// Example
+        /// TCollection_AsciiString myAlphabet("abcdef");
+        /// assert ( myAlphabet.Length() == 6 );
+        /// -   1 is the position of the first character in this string.
+        /// -   The length of this string gives the position of its last character.
+        /// -   Positions less than or equal to zero, or
+        /// greater than the length of this string are
+        /// invalid in functions which identify a character
+        /// of this string by its position.
         #[cxx_name = "Length"]
         fn length(self: &AsciiString) -> i32;
-        #[doc = "Returns an index in the string <me> of the first occurrence\nof the string S in the string <me> from the starting index\nFromIndex to the ending index ToIndex\nreturns zero if failure\nRaises an exception if FromIndex or ToIndex is out of range.\nExample:\nbefore\nme = \"aabAaAa\", S = \"Aa\", FromIndex = 1, ToIndex = 7\nafter\nme = \"aabAaAa\"\nreturns\n4"]
+        /// Returns an index in the string <me> of the first occurrence
+        /// of the string S in the string <me> from the starting index
+        /// FromIndex to the ending index ToIndex
+        /// returns zero if failure
+        /// Raises an exception if FromIndex or ToIndex is out of range.
+        /// Example:
+        /// before
+        /// me = "aabAaAa", S = "Aa", FromIndex = 1, ToIndex = 7
+        /// after
+        /// me = "aabAaAa"
+        /// returns
+        /// 4
         #[cxx_name = "Location"]
         fn location_asciistring_int2(
             self: &AsciiString,
@@ -634,16 +869,35 @@ pub(crate) mod ffi {
             FromIndex: i32,
             ToIndex: i32,
         ) -> i32;
-        #[doc = "Converts <me> to its lower-case equivalent.\nExample\nTCollection_AsciiString myString(\"Hello Dolly\");\nmyString.UpperCase();\nassert ( myString == \"HELLO DOLLY\" );\nmyString.LowerCase();\nassert ( myString == \"hello dolly\" );"]
+        /// Converts <me> to its lower-case equivalent.
+        /// Example
+        /// TCollection_AsciiString myString("Hello Dolly");
+        /// myString.UpperCase();
+        /// assert ( myString == "HELLO DOLLY" );
+        /// myString.LowerCase();
+        /// assert ( myString == "hello dolly" );
         #[cxx_name = "LowerCase"]
         fn lower_case(self: Pin<&mut AsciiString>);
-        #[doc = "Inserts the string other at the beginning of this ASCII string.\nExample\nTCollection_AsciiString myAlphabet(\"cde\");\nTCollection_AsciiString myBegin(\"ab\");\nmyAlphabet.Prepend(myBegin);\nassert ( myAlphabet == \"abcde\" );"]
+        /// Inserts the string other at the beginning of this ASCII string.
+        /// Example
+        /// TCollection_AsciiString myAlphabet("cde");
+        /// TCollection_AsciiString myBegin("ab");
+        /// myAlphabet.Prepend(myBegin);
+        /// assert ( myAlphabet == "abcde" );
         #[cxx_name = "Prepend"]
         fn prepend(self: Pin<&mut AsciiString>, other: &AsciiString);
-        #[doc = "Converts an AsciiString containing a numeric expression.\nto a Real.\nExample: ex: \"215\" returns 215.0.\nex: \"3.14159267\" returns 3.14159267."]
+        /// Converts an AsciiString containing a numeric expression.
+        /// to a Real.
+        /// Example: ex: "215" returns 215.0.
+        /// ex: "3.14159267" returns 3.14159267.
         #[cxx_name = "RealValue"]
         fn real_value(self: &AsciiString) -> f64;
-        #[doc = "Erases <ahowmany> characters from position <where>,\n<where> included.\nExample:\naString contains \"Hello\"\naString.Remove(2,2) erases 2 characters from position 2\nThis gives \"Hlo\"."]
+        /// Erases <ahowmany> characters from position <where>,
+        /// <where> included.
+        /// Example:
+        /// aString contains "Hello"
+        /// aString.Remove(2,2) erases 2 characters from position 2
+        /// This gives "Hlo".
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut AsciiString>, where_: i32, ahowmany: i32);
         /// Removes all space characters at the end of the string.
@@ -662,7 +916,8 @@ pub(crate) mod ffi {
         /// Replaces a part of <me> by another AsciiString.
         #[cxx_name = "SetValue"]
         fn set_value_int_asciistring(self: Pin<&mut AsciiString>, where_: i32, what: &AsciiString);
-        #[doc = "Truncates <me> to <ahowmany> characters.\nExample:  me = \"Hello Dolly\" -> Trunc(3) -> me = \"Hel\""]
+        /// Truncates <me> to <ahowmany> characters.
+        /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
         #[cxx_name = "Trunc"]
         fn trunc(self: Pin<&mut AsciiString>, ahowmany: i32);
         /// Converts <me> to its upper-case equivalent.
@@ -677,16 +932,46 @@ pub(crate) mod ffi {
         /// @return a computed hash code
         #[cxx_name = "HashCode"]
         fn hash_code(self: &AsciiString) -> usize;
-        #[doc = "Appends <other>  to me. This is an unary operator.\nex: aString += \"Dummy\"\nTo catenate more than one CString, you must put a\nAsciiString before.\nExample: aString += \"Hello \" + \"Dolly\"  IS NOT VALID !\nBut astring += anotherString + \"Hello \" + \"Dolly\" is valid."]
+        /// Appends <other>  to me. This is an unary operator.
+        /// ex: aString += "Dummy"
+        /// To catenate more than one CString, you must put a
+        /// AsciiString before.
+        /// Example: aString += "Hello " + "Dolly"  IS NOT VALID !
+        /// But astring += anotherString + "Hello " + "Dolly" is valid.
         #[cxx_name = "TCollection_AsciiString_AssignCat"]
         fn AsciiString_assign_cat_charptr(self_: Pin<&mut AsciiString>, other: &str);
-        #[doc = "Appends <other>  to me.\nSyntax:\naString = aString + 15;\nExample: aString contains \"I say \"\ngives \"I say 15\"\nTo catenate more than one CString, you must put a String before.\nSo the following example is WRONG !\naString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED\nThis rule is applicable to AssignCat (operator +=) too."]
+        /// Appends <other>  to me.
+        /// Syntax:
+        /// aString = aString + 15;
+        /// Example: aString contains "I say "
+        /// gives "I say 15"
+        /// To catenate more than one CString, you must put a String before.
+        /// So the following example is WRONG !
+        /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
+        /// This rule is applicable to AssignCat (operator +=) too.
         #[cxx_name = "TCollection_AsciiString_Cat"]
         fn AsciiString_cat_int(self_: &AsciiString, other: i32) -> UniquePtr<AsciiString>;
-        #[doc = "Appends <other>  to me.\nSyntax:\naString = aString + 15.15;\nExample: aString contains \"I say \"\ngives \"I say 15.15\"\nTo catenate more than one CString, you must put a String before.\nSo the following example is WRONG !\naString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED\nThis rule is applicable to AssignCat (operator +=) too."]
+        /// Appends <other>  to me.
+        /// Syntax:
+        /// aString = aString + 15.15;
+        /// Example: aString contains "I say "
+        /// gives "I say 15.15"
+        /// To catenate more than one CString, you must put a String before.
+        /// So the following example is WRONG !
+        /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
+        /// This rule is applicable to AssignCat (operator +=) too.
         #[cxx_name = "TCollection_AsciiString_Cat"]
         fn AsciiString_cat_real(self_: &AsciiString, other: f64) -> UniquePtr<AsciiString>;
-        #[doc = "Appends <other>  to me.\nSyntax:\naString = aString + \"Dummy\"\nExample: aString contains \"I say \"\naString = aString + \"Hello \" + \"Dolly\"\ngives \"I say Hello Dolly\"\nTo catenate more than one CString, you must put a String before.\nSo the following example is WRONG !\naString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED\nThis rule is applicable to AssignCat (operator +=) too."]
+        /// Appends <other>  to me.
+        /// Syntax:
+        /// aString = aString + "Dummy"
+        /// Example: aString contains "I say "
+        /// aString = aString + "Hello " + "Dolly"
+        /// gives "I say Hello Dolly"
+        /// To catenate more than one CString, you must put a String before.
+        /// So the following example is WRONG !
+        /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
+        /// This rule is applicable to AssignCat (operator +=) too.
         #[cxx_name = "TCollection_AsciiString_Cat"]
         fn AsciiString_cat_charptr(self_: &AsciiString, other: &str) -> UniquePtr<AsciiString>;
         /// Appends <other> to me.
@@ -701,7 +986,10 @@ pub(crate) mod ffi {
         /// Example: aString = anotherCString;
         #[cxx_name = "TCollection_AsciiString_Copy"]
         fn AsciiString_copy_charptr(self_: Pin<&mut AsciiString>, fromwhere: &str);
-        #[doc = "Inserts a CString at position <where>.\nExample:\naString contains \"O more\"\naString.Insert(2,\"nce\");  gives \"Once more\""]
+        /// Inserts a CString at position <where>.
+        /// Example:
+        /// aString contains "O more"
+        /// aString.Insert(2,"nce");  gives "Once more"
         #[cxx_name = "TCollection_AsciiString_Insert"]
         fn AsciiString_insert_int_charptr(self_: Pin<&mut AsciiString>, where_: i32, what: &str);
         /// Returns true if the characters in this ASCII string
@@ -720,36 +1008,85 @@ pub(crate) mod ffi {
         /// Returns TRUE if <me> is 'ASCII' greater than <other>.
         #[cxx_name = "TCollection_AsciiString_IsGreater"]
         fn AsciiString_is_greater_charptr(self_: &AsciiString, other: &str) -> bool;
-        #[doc = "Searches a CString in <me> from the beginning\nand returns position of first item <what> matching.\nit returns -1 if not found.\nExample:\naString contains \"Sample single test\"\naString.Search(\"le\") returns 5"]
+        /// Searches a CString in <me> from the beginning
+        /// and returns position of first item <what> matching.
+        /// it returns -1 if not found.
+        /// Example:
+        /// aString contains "Sample single test"
+        /// aString.Search("le") returns 5
         #[cxx_name = "TCollection_AsciiString_Search"]
         fn AsciiString_search_charptr(self_: &AsciiString, what: &str) -> i32;
-        #[doc = "Searches a CString in a AsciiString from the end\nand returns position of first item <what> matching.\nIt returns -1 if not found.\nExample:\naString contains \"Sample single test\"\naString.SearchFromEnd(\"le\") returns 12"]
+        /// Searches a CString in a AsciiString from the end
+        /// and returns position of first item <what> matching.
+        /// It returns -1 if not found.
+        /// Example:
+        /// aString contains "Sample single test"
+        /// aString.SearchFromEnd("le") returns 12
         #[cxx_name = "TCollection_AsciiString_SearchFromEnd"]
         fn AsciiString_search_from_end_charptr(self_: &AsciiString, what: &str) -> i32;
-        #[doc = "Replaces a part of <me> by a CString.\nIf <where> is less than zero or greater than the length of <me>\nan exception is raised.\nExample:\naString contains \"abcde\"\naString.SetValue(4,\"1234567\") gives <me> = \"abc1234567\""]
+        /// Replaces a part of <me> by a CString.
+        /// If <where> is less than zero or greater than the length of <me>
+        /// an exception is raised.
+        /// Example:
+        /// aString contains "abcde"
+        /// aString.SetValue(4,"1234567") gives <me> = "abc1234567"
         #[cxx_name = "TCollection_AsciiString_SetValue"]
         fn AsciiString_set_value_int_charptr(self_: Pin<&mut AsciiString>, where_: i32, what: &str);
-        #[doc = "Splits a AsciiString into two sub-strings.\nExample:\naString contains \"abcdefg\"\naString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
+        /// Splits a AsciiString into two sub-strings.
+        /// Example:
+        /// aString contains "abcdefg"
+        /// aString.Split(3) gives <me> = "abc" and returns "defg"
         #[cxx_name = "TCollection_AsciiString_Split"]
         fn AsciiString_split(self_: Pin<&mut AsciiString>, where_: i32) -> UniquePtr<AsciiString>;
-        #[doc = "Creation of a sub-string of the string <me>.\nThe sub-string starts to the index Fromindex and ends\nto the index ToIndex.\nRaises an exception if ToIndex or FromIndex is out of bounds\nExample:\nbefore\nme = \"abcdefg\", ToIndex=3, FromIndex=6\nafter\nme = \"abcdefg\"\nreturns\n\"cdef\""]
+        /// Creation of a sub-string of the string <me>.
+        /// The sub-string starts to the index Fromindex and ends
+        /// to the index ToIndex.
+        /// Raises an exception if ToIndex or FromIndex is out of bounds
+        /// Example:
+        /// before
+        /// me = "abcdefg", ToIndex=3, FromIndex=6
+        /// after
+        /// me = "abcdefg"
+        /// returns
+        /// "cdef"
         #[cxx_name = "TCollection_AsciiString_SubString"]
         fn AsciiString_sub_string(
             self_: &AsciiString,
             FromIndex: i32,
             ToIndex: i32,
         ) -> UniquePtr<AsciiString>;
-        #[doc = "Returns pointer to AsciiString (char *).\nThis is useful for some casual manipulations.\nWarning: Because this \"char *\" is 'const', you can't modify its contents."]
+        /// Returns pointer to AsciiString (char *).
+        /// This is useful for some casual manipulations.
+        /// Warning: Because this "char *" is 'const', you can't modify its contents.
         #[cxx_name = "TCollection_AsciiString_ToCString"]
         fn AsciiString_to_c_string(self_: &AsciiString) -> String;
-        #[doc = "Extracts <whichone> token from <me>.\nBy default, the <separators> is set to space and tabulation.\nBy default, the token extracted is the first one (whichone = 1).\n<separators> contains all separators you need.\nIf no token indexed by <whichone> is found, it returns empty AsciiString.\nExample:\naString contains \"This is a     message\"\naString.Token()  returns \"This\"\naString.Token(\" \",4) returns \"message\"\naString.Token(\" \",2) returns \"is\"\naString.Token(\" \",9) returns \"\"\nOther separators than space character and tabulation are allowed :\naString contains \"1234; test:message   , value\"\naString.Token(\"; :,\",4) returns \"value\"\naString.Token(\"; :,\",2) returns \"test\""]
+        /// Extracts <whichone> token from <me>.
+        /// By default, the <separators> is set to space and tabulation.
+        /// By default, the token extracted is the first one (whichone = 1).
+        /// <separators> contains all separators you need.
+        /// If no token indexed by <whichone> is found, it returns empty AsciiString.
+        /// Example:
+        /// aString contains "This is a     message"
+        /// aString.Token()  returns "This"
+        /// aString.Token(" ",4) returns "message"
+        /// aString.Token(" ",2) returns "is"
+        /// aString.Token(" ",9) returns ""
+        /// Other separators than space character and tabulation are allowed :
+        /// aString contains "1234; test:message   , value"
+        /// aString.Token("; :,",4) returns "value"
+        /// aString.Token("; :,",2) returns "test"
         #[cxx_name = "TCollection_AsciiString_Token"]
         fn AsciiString_token(
             self_: &AsciiString,
             separators: &str,
             whichone: i32,
         ) -> UniquePtr<AsciiString>;
-        #[doc = "Returns character at position <where> in <me>.\nIf <where> is less than zero or greater than the length of <me>,\nan exception is raised.\nExample:\naString contains \"Hello\"\naString.Value(2) returns 'e'"]
+        /// Returns character at position <where> in <me>.
+        /// If <where> is less than zero or greater than the length of <me>,
+        /// an exception is raised.
+        /// Example:
+        /// aString contains "Hello"
+        /// aString.Value(2) returns 'e'
         #[cxx_name = "TCollection_AsciiString_Value"]
         fn AsciiString_value(self_: &AsciiString, where_: i32) -> UniquePtr<Standard_Character>;
         /// Returns True  when the two  strings are the same.
@@ -770,7 +1107,21 @@ pub(crate) mod ffi {
         /// ======================== TCollection_ExtendedString ========================
         /// /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString`
         ///
-        #[doc = "A variable-length sequence of \"extended\" (UNICODE) characters (16-bit character type).\nIt provides editing operations with built-in memory management\nto make ExtendedString objects easier to use than ordinary extended character arrays.\nExtendedString objects follow \"value semantics\", that is, they are the actual strings,\nnot handles to strings, and are copied through assignment.\nYou may use HExtendedString objects to get handles to strings.\n\nBeware that class can transparently store UTF-16 string with surrogate pairs\n(Unicode symbol represented by two 16-bit code units).\nHowever, surrogate pairs are not considered by the following methods:\n- Method ::Length() return the number of 16-bit code units, not the number of Unicode symbols.\n- Methods taking/returning symbol index work with 16-bit code units, not true Unicode symbols,\nincluding ::Remove(), ::SetValue(), ::Value(), ::Search(), ::Trunc() and others.\nIf application needs to process surrogate pairs, NCollection_Utf16Iter class can be used\nfor iterating through Unicode string (UTF-32 code unit will be returned for each position)."]
+        /// A variable-length sequence of "extended" (UNICODE) characters (16-bit character type).
+        /// It provides editing operations with built-in memory management
+        /// to make ExtendedString objects easier to use than ordinary extended character arrays.
+        /// ExtendedString objects follow "value semantics", that is, they are the actual strings,
+        /// not handles to strings, and are copied through assignment.
+        /// You may use HExtendedString objects to get handles to strings.
+        ///
+        /// Beware that class can transparently store UTF-16 string with surrogate pairs
+        /// (Unicode symbol represented by two 16-bit code units).
+        /// However, surrogate pairs are not considered by the following methods:
+        /// - Method ::Length() return the number of 16-bit code units, not the number of Unicode symbols.
+        /// - Methods taking/returning symbol index work with 16-bit code units, not true Unicode symbols,
+        /// including ::Remove(), ::SetValue(), ::Value(), ::Search(), ::Trunc() and others.
+        /// If application needs to process surrogate pairs, NCollection_Utf16Iter class can be used
+        /// for iterating through Unicode string (UTF-32 code unit will be returned for each position).
         #[cxx_name = "TCollection_ExtendedString"]
         type ExtendedString;
         /// /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
@@ -866,7 +1217,8 @@ pub(crate) mod ffi {
         /// Determines whether the end of this string instance matches the specified string.
         #[cxx_name = "EndsWith"]
         fn ends_with(self: &ExtendedString, theEndString: &ExtendedString) -> bool;
-        #[doc = "Returns True if the ExtendedString contains only\n\"Ascii Range\" characters ."]
+        /// Returns True if the ExtendedString contains only
+        /// "Ascii Range" characters .
         #[cxx_name = "IsAscii"]
         fn is_ascii(self: &ExtendedString) -> bool;
         /// Returns the number of 16-bit code units
@@ -893,7 +1245,11 @@ pub(crate) mod ffi {
             where_: i32,
             what: &ExtendedString,
         );
-        #[doc = "Truncates <me> to <ahowmany> characters.\nExample:  me = \"Hello Dolly\" -> Trunc(3) -> me = \"Hel\"\nExceptions\nStandard_OutOfRange if ahowmany is greater\nthan the length of this string."]
+        /// Truncates <me> to <ahowmany> characters.
+        /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
+        /// Exceptions
+        /// Standard_OutOfRange if ahowmany is greater
+        /// than the length of this string.
         #[cxx_name = "Trunc"]
         fn trunc(self: Pin<&mut ExtendedString>, ahowmany: i32);
         /// Returns a hashed value for the extended string.
@@ -920,7 +1276,16 @@ pub(crate) mod ffi {
             self_: &ExtendedString,
             other: &ExtendedString,
         ) -> UniquePtr<ExtendedString>;
-        #[doc = "Splits this extended string into two sub-strings at position where.\n-   The second sub-string (from position\nwhere + 1 of this string to the end) is\nreturned in a new extended string.\n-   this extended string is modified: its last\ncharacters are removed, it becomes equal to\nthe first sub-string (from the first character to position where).\nExample:\naString contains \"abcdefg\"\naString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
+        /// Splits this extended string into two sub-strings at position where.
+        /// -   The second sub-string (from position
+        /// where + 1 of this string to the end) is
+        /// returned in a new extended string.
+        /// -   this extended string is modified: its last
+        /// characters are removed, it becomes equal to
+        /// the first sub-string (from the first character to position where).
+        /// Example:
+        /// aString contains "abcdefg"
+        /// aString.Split(3) gives <me> = "abc" and returns "defg"
         #[cxx_name = "TCollection_ExtendedString_Split"]
         fn ExtendedString_split(
             self_: Pin<&mut ExtendedString>,
@@ -929,7 +1294,15 @@ pub(crate) mod ffi {
         /// Returns pointer to ExtString
         #[cxx_name = "TCollection_ExtendedString_ToExtString"]
         fn ExtendedString_to_ext_string(self_: &ExtendedString) -> UniquePtr<Standard_ExtString>;
-        #[doc = "Returns character at position <where> in <me>.\nIf <where> is less than zero or greater than the length of\n<me>, an exception is raised.\nExample:\naString contains \"Hello\"\naString.Value(2) returns 'e'\nExceptions\nStandard_OutOfRange if where lies outside\nthe bounds of this extended string."]
+        /// Returns character at position <where> in <me>.
+        /// If <where> is less than zero or greater than the length of
+        /// <me>, an exception is raised.
+        /// Example:
+        /// aString contains "Hello"
+        /// aString.Value(2) returns 'e'
+        /// Exceptions
+        /// Standard_OutOfRange if where lies outside
+        /// the bounds of this extended string.
         #[cxx_name = "TCollection_ExtendedString_Value"]
         fn ExtendedString_value(
             self_: &ExtendedString,
@@ -995,14 +1368,32 @@ pub(crate) mod ffi {
             self: Pin<&mut HAsciiString>,
             other: &HandleTCollectionHAsciiString,
         );
-        #[doc = "Converts the first character into its corresponding\nupper-case character and the other characters into lowercase.\nExample:\nbefore\nme = \"hellO \"\nafter\nme = \"Hello \""]
+        /// Converts the first character into its corresponding
+        /// upper-case character and the other characters into lowercase.
+        /// Example:
+        /// before
+        /// me = "hellO "
+        /// after
+        /// me = "Hello "
         #[cxx_name = "Capitalize"]
         fn capitalize(self: Pin<&mut HAsciiString>);
         /// Removes all characters contained in <me>.
         /// This produces an empty HAsciiString.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut HAsciiString>);
-        #[doc = "Returns the index of the first character of <me> that is\npresent in <Set>.\nThe search begins to the index FromIndex and ends to the\nthe index ToIndex.\nReturns zero if failure.\nRaises an exception if FromIndex or ToIndex is out of range\nExample:\nbefore\nme = \"aabAcAa\", S = \"Aa\", FromIndex = 1, Toindex = 7\nafter\nme = \"aabAcAa\"\nreturns\n1"]
+        /// Returns the index of the first character of <me> that is
+        /// present in <Set>.
+        /// The search begins to the index FromIndex and ends to the
+        /// the index ToIndex.
+        /// Returns zero if failure.
+        /// Raises an exception if FromIndex or ToIndex is out of range
+        /// Example:
+        /// before
+        /// me = "aabAcAa", S = "Aa", FromIndex = 1, Toindex = 7
+        /// after
+        /// me = "aabAcAa"
+        /// returns
+        /// 1
         #[cxx_name = "FirstLocationInSet"]
         fn first_location_in_set(
             self: &HAsciiString,
@@ -1010,7 +1401,19 @@ pub(crate) mod ffi {
             FromIndex: i32,
             ToIndex: i32,
         ) -> i32;
-        #[doc = "Returns the index of the first character of <me>\nthat is not present in the set <Set>.\nThe search begins to the index FromIndex and ends to the\nthe index ToIndex in <me>.\nReturns zero if failure.\nRaises an exception if FromIndex or ToIndex is out of range.\nExample:\nbefore\nme = \"aabAcAa\", S = \"Aa\", FromIndex = 1, Toindex = 7\nafter\nme = \"aabAcAa\"\nreturns\n3"]
+        /// Returns the index of the first character of <me>
+        /// that is not present in the set <Set>.
+        /// The search begins to the index FromIndex and ends to the
+        /// the index ToIndex in <me>.
+        /// Returns zero if failure.
+        /// Raises an exception if FromIndex or ToIndex is out of range.
+        /// Example:
+        /// before
+        /// me = "aabAcAa", S = "Aa", FromIndex = 1, Toindex = 7
+        /// after
+        /// me = "aabAcAa"
+        /// returns
+        /// 3
         #[cxx_name = "FirstLocationNotInSet"]
         fn first_location_not_in_set(
             self: &HAsciiString,
@@ -1025,14 +1428,25 @@ pub(crate) mod ffi {
             where_: i32,
             what: &HandleTCollectionHAsciiString,
         );
-        #[doc = "Inserts the other ASCII string a after a specific index in the string <me>\nExample:\nbefore\nme = \"cde\" , Index = 0 , other = \"ab\"\nafter\nme = \"abcde\" , other = \"ab\""]
+        /// Inserts the other ASCII string a after a specific index in the string <me>
+        /// Example:
+        /// before
+        /// me = "cde" , Index = 0 , other = "ab"
+        /// after
+        /// me = "abcde" , other = "ab"
         #[cxx_name = "InsertAfter"]
         fn insert_after(
             self: Pin<&mut HAsciiString>,
             Index: i32,
             other: &HandleTCollectionHAsciiString,
         );
-        #[doc = "Inserts the other ASCII string a before a specific index in the string <me>\nRaises an exception if Index is out of bounds\nExample:\nbefore\nme = \"cde\" , Index = 1 , other = \"ab\"\nafter\nme = \"abcde\" , other = \"ab\""]
+        /// Inserts the other ASCII string a before a specific index in the string <me>
+        /// Raises an exception if Index is out of bounds
+        /// Example:
+        /// before
+        /// me = "cde" , Index = 1 , other = "ab"
+        /// after
+        /// me = "abcde" , other = "ab"
         #[cxx_name = "InsertBefore"]
         fn insert_before(
             self: Pin<&mut HAsciiString>,
@@ -1048,7 +1462,9 @@ pub(crate) mod ffi {
         /// Returns TRUE if <me> is 'ASCII' greater than <other>.
         #[cxx_name = "IsGreater"]
         fn is_greater(self: &HAsciiString, other: &HandleTCollectionHAsciiString) -> bool;
-        #[doc = "Converts a HAsciiString containing a numeric expression to\nan Integer.\nExample: \"215\" returns 215."]
+        /// Converts a HAsciiString containing a numeric expression to
+        /// an Integer.
+        /// Example: "215" returns 215.
         #[cxx_name = "IntegerValue"]
         fn integer_value(self: &HAsciiString) -> i32;
         /// Returns True if the string contains an integer value.
@@ -1088,7 +1504,18 @@ pub(crate) mod ffi {
         /// This is the same functionality as 'strlen' in C.
         #[cxx_name = "Length"]
         fn length(self: &HAsciiString) -> i32;
-        #[doc = "returns an index in the string <me> of the first occurrence\nof the string S in the string <me> from the starting index\nFromIndex to the ending index ToIndex\nreturns zero if failure\nRaises an exception if FromIndex or ToIndex is out of range.\nExample:\nbefore\nme = \"aabAaAa\", S = \"Aa\", FromIndex = 1, ToIndex = 7\nafter\nme = \"aabAaAa\"\nreturns\n4"]
+        /// returns an index in the string <me> of the first occurrence
+        /// of the string S in the string <me> from the starting index
+        /// FromIndex to the ending index ToIndex
+        /// returns zero if failure
+        /// Raises an exception if FromIndex or ToIndex is out of range.
+        /// Example:
+        /// before
+        /// me = "aabAaAa", S = "Aa", FromIndex = 1, ToIndex = 7
+        /// after
+        /// me = "aabAaAa"
+        /// returns
+        /// 4
         #[cxx_name = "Location"]
         fn location_handlehasciistring_int2(
             self: &HAsciiString,
@@ -1099,13 +1526,26 @@ pub(crate) mod ffi {
         /// Converts <me> to its lower-case equivalent.
         #[cxx_name = "LowerCase"]
         fn lower_case(self: Pin<&mut HAsciiString>);
-        #[doc = "Inserts the other string at the beginning of the string <me>\nExample:\nbefore\nme = \"cde\" , S = \"ab\"\nafter\nme = \"abcde\" , S = \"ab\""]
+        /// Inserts the other string at the beginning of the string <me>
+        /// Example:
+        /// before
+        /// me = "cde" , S = "ab"
+        /// after
+        /// me = "abcde" , S = "ab"
         #[cxx_name = "Prepend"]
         fn prepend(self: Pin<&mut HAsciiString>, other: &HandleTCollectionHAsciiString);
-        #[doc = "Converts a string containing a numeric expression to a Real.\nExample:\n\"215\" returns 215.0.\n\"3.14159267\" returns 3.14159267."]
+        /// Converts a string containing a numeric expression to a Real.
+        /// Example:
+        /// "215" returns 215.0.
+        /// "3.14159267" returns 3.14159267.
         #[cxx_name = "RealValue"]
         fn real_value(self: &HAsciiString) -> f64;
-        #[doc = "Erases <ahowmany> characters from position <where>,\n<where> included.\nExample:\naString contains \"Hello\"\naString.Erase(2,2) erases 2 characters from position 1\nThis gives \"Hlo\"."]
+        /// Erases <ahowmany> characters from position <where>,
+        /// <where> included.
+        /// Example:
+        /// aString contains "Hello"
+        /// aString.Erase(2,2) erases 2 characters from position 1
+        /// This gives "Hlo".
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut HAsciiString>, where_: i32, ahowmany: i32);
         /// Removes all space characters at the end of the string.
@@ -1134,7 +1574,8 @@ pub(crate) mod ffi {
             where_: i32,
             what: &HandleTCollectionHAsciiString,
         );
-        #[doc = "Truncates <me> to <ahowmany> characters.\nExample:  me = \"Hello Dolly\" -> Trunc(3) -> me = \"Hel\""]
+        /// Truncates <me> to <ahowmany> characters.
+        /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
         #[cxx_name = "Trunc"]
         fn trunc(self: Pin<&mut HAsciiString>, ahowmany: i32);
         /// Converts <me> to its upper-case equivalent.
@@ -1154,7 +1595,18 @@ pub(crate) mod ffi {
         /// Appends <other>  to me.
         #[cxx_name = "TCollection_HAsciiString_AssignCat"]
         fn HAsciiString_assign_cat_charptr(self_: Pin<&mut HAsciiString>, other: &str);
-        #[doc = "Creates a new string by concatenation of this\nASCII string and the other ASCII string.\nExample:\naString = aString + anotherString\naString = aString + \"Dummy\"\naString contains \"I say \"\naString = aString + \"Hello \" + \"Dolly\"\ngives \"I say Hello Dolly\"\nWarning: To catenate more than one CString, you must put a String before.\nSo the following example is WRONG !\naString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED\nThis rule is applicable to AssignCat (operator +=) too."]
+        /// Creates a new string by concatenation of this
+        /// ASCII string and the other ASCII string.
+        /// Example:
+        /// aString = aString + anotherString
+        /// aString = aString + "Dummy"
+        /// aString contains "I say "
+        /// aString = aString + "Hello " + "Dolly"
+        /// gives "I say Hello Dolly"
+        /// Warning: To catenate more than one CString, you must put a String before.
+        /// So the following example is WRONG !
+        /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
+        /// This rule is applicable to AssignCat (operator +=) too.
         #[cxx_name = "TCollection_HAsciiString_Cat"]
         fn HAsciiString_cat_charptr(
             self_: &HAsciiString,
@@ -1171,43 +1623,93 @@ pub(crate) mod ffi {
         /// Insert a HAsciiString at position <where>.
         #[cxx_name = "TCollection_HAsciiString_Insert"]
         fn HAsciiString_insert_int_charptr(self_: Pin<&mut HAsciiString>, where_: i32, what: &str);
-        #[doc = "Searches a CString in <me> from the beginning\nand returns position of first item <what> matching.\nIt returns -1 if not found.\nExample:\naString contains \"Sample single test\"\naString.Search(\"le\") returns 5"]
+        /// Searches a CString in <me> from the beginning
+        /// and returns position of first item <what> matching.
+        /// It returns -1 if not found.
+        /// Example:
+        /// aString contains "Sample single test"
+        /// aString.Search("le") returns 5
         #[cxx_name = "TCollection_HAsciiString_Search"]
         fn HAsciiString_search_charptr(self_: &HAsciiString, what: &str) -> i32;
-        #[doc = "Searches a CString in a String from the end\nand returns position of first item <what> matching.\nIt returns -1 if not found.\nExample:\naString contains \"Sample single test\"\naString.SearchFromEnd(\"le\") returns 12"]
+        /// Searches a CString in a String from the end
+        /// and returns position of first item <what> matching.
+        /// It returns -1 if not found.
+        /// Example:
+        /// aString contains "Sample single test"
+        /// aString.SearchFromEnd("le") returns 12
         #[cxx_name = "TCollection_HAsciiString_SearchFromEnd"]
         fn HAsciiString_search_from_end_charptr(self_: &HAsciiString, what: &str) -> i32;
-        #[doc = "Replaces a part of <me> in the string at position <where>.\nIf <where> is less than zero or greater than the length of <me>\nan exception is raised.\nExample:\naString contains \"Garbake\"\nastring.Replace(6,'g')  gives <me> = \"Garbage\""]
+        /// Replaces a part of <me> in the string at position <where>.
+        /// If <where> is less than zero or greater than the length of <me>
+        /// an exception is raised.
+        /// Example:
+        /// aString contains "Garbake"
+        /// astring.Replace(6,'g')  gives <me> = "Garbage"
         #[cxx_name = "TCollection_HAsciiString_SetValue"]
         fn HAsciiString_set_value_int_charptr(
             self_: Pin<&mut HAsciiString>,
             where_: i32,
             what: &str,
         );
-        #[doc = "Splits a HAsciiString into two sub-strings.\nExample:\naString contains \"abcdefg\"\naString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
+        /// Splits a HAsciiString into two sub-strings.
+        /// Example:
+        /// aString contains "abcdefg"
+        /// aString.Split(3) gives <me> = "abc" and returns "defg"
         #[cxx_name = "TCollection_HAsciiString_Split"]
         fn HAsciiString_split(
             self_: Pin<&mut HAsciiString>,
             where_: i32,
         ) -> UniquePtr<HandleTCollectionHAsciiString>;
-        #[doc = "Creation of a sub-string of the string <me>.\nThe sub-string starts to the index Fromindex and ends\nto the index ToIndex.\nRaises an exception if ToIndex or FromIndex is out of\nbounds\nExample:\nbefore\nme = \"abcdefg\", ToIndex=3, FromIndex=6\nafter\nme = \"abcdefg\"\nreturns\n\"cdef\""]
+        /// Creation of a sub-string of the string <me>.
+        /// The sub-string starts to the index Fromindex and ends
+        /// to the index ToIndex.
+        /// Raises an exception if ToIndex or FromIndex is out of
+        /// bounds
+        /// Example:
+        /// before
+        /// me = "abcdefg", ToIndex=3, FromIndex=6
+        /// after
+        /// me = "abcdefg"
+        /// returns
+        /// "cdef"
         #[cxx_name = "TCollection_HAsciiString_SubString"]
         fn HAsciiString_sub_string(
             self_: &HAsciiString,
             FromIndex: i32,
             ToIndex: i32,
         ) -> UniquePtr<HandleTCollectionHAsciiString>;
-        #[doc = "Returns pointer to string (char *)\nThis is useful for some casual manipulations\nBecause this \"char *\" is 'const', you can't modify its contents."]
+        /// Returns pointer to string (char *)
+        /// This is useful for some casual manipulations
+        /// Because this "char *" is 'const', you can't modify its contents.
         #[cxx_name = "TCollection_HAsciiString_ToCString"]
         fn HAsciiString_to_c_string(self_: &HAsciiString) -> String;
-        #[doc = "Extracts <whichone> token from <me>.\nBy default, the <separators> is set to space and tabulation.\nBy default, the token extracted is the first one (whichone = 1).\n<separators> contains all separators you need.\nIf no token indexed by <whichone> is found, it returns an empty String.\nExample:\naString contains \"This is a     message\"\naString.Token()  returns \"This\"\naString.Token(\" \",4) returns \"message\"\naString.Token(\" \",2) returns \"is\"\naString.Token(\" \",9) returns \"\"\nOther separators than space character and tabulation are allowed\naString contains \"1234; test:message   , value\"\naString.Token(\"; :,\",4) returns \"value\"\naString.Token(\"; :,\",2) returns \"test\""]
+        /// Extracts <whichone> token from <me>.
+        /// By default, the <separators> is set to space and tabulation.
+        /// By default, the token extracted is the first one (whichone = 1).
+        /// <separators> contains all separators you need.
+        /// If no token indexed by <whichone> is found, it returns an empty String.
+        /// Example:
+        /// aString contains "This is a     message"
+        /// aString.Token()  returns "This"
+        /// aString.Token(" ",4) returns "message"
+        /// aString.Token(" ",2) returns "is"
+        /// aString.Token(" ",9) returns ""
+        /// Other separators than space character and tabulation are allowed
+        /// aString contains "1234; test:message   , value"
+        /// aString.Token("; :,",4) returns "value"
+        /// aString.Token("; :,",2) returns "test"
         #[cxx_name = "TCollection_HAsciiString_Token"]
         fn HAsciiString_token(
             self_: &HAsciiString,
             separators: &str,
             whichone: i32,
         ) -> UniquePtr<HandleTCollectionHAsciiString>;
-        #[doc = "Returns character at position <where> in <me>.\nIf <where> is less than zero or greater than the length of\n<me>, an exception is raised.\nExample:\naString contains \"Hello\"\naString.Value(2) returns 'e'"]
+        /// Returns character at position <where> in <me>.
+        /// If <where> is less than zero or greater than the length of
+        /// <me>, an exception is raised.
+        /// Example:
+        /// aString contains "Hello"
+        /// aString.Value(2) returns 'e'
         #[cxx_name = "TCollection_HAsciiString_Value"]
         fn HAsciiString_value(self_: &HAsciiString, where_: i32) -> UniquePtr<Standard_Character>;
         #[cxx_name = "TCollection_HAsciiString_get_type_name"]
@@ -1220,7 +1722,17 @@ pub(crate) mod ffi {
         /// ======================== TCollection_HExtendedString ========================
         /// /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString`
         ///
-        #[doc = "A variable-length sequence of \"extended\"\n(UNICODE) characters (16-bit character\ntype). It provides editing operations with\nbuilt-in memory management to make\nExtendedString objects easier to use than\nordinary extended character arrays.\nHExtendedString objects are handles to strings.\n- HExtendedString strings may be shared by several objects.\n- You may use an ExtendedString object to get the actual string.\nNote: HExtendedString objects use an\nExtendedString string as a field."]
+        /// A variable-length sequence of "extended"
+        /// (UNICODE) characters (16-bit character
+        /// type). It provides editing operations with
+        /// built-in memory management to make
+        /// ExtendedString objects easier to use than
+        /// ordinary extended character arrays.
+        /// HExtendedString objects are handles to strings.
+        /// - HExtendedString strings may be shared by several objects.
+        /// - You may use an ExtendedString object to get the actual string.
+        /// Note: HExtendedString objects use an
+        /// ExtendedString string as a field.
         #[cxx_name = "TCollection_HExtendedString"]
         type HExtendedString;
         /// /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
@@ -1277,14 +1789,19 @@ pub(crate) mod ffi {
         /// Returns TRUE if <me> is greater than <other>.
         #[cxx_name = "IsGreater"]
         fn is_greater(self: &HExtendedString, other: &HandleTCollectionHExtendedString) -> bool;
-        #[doc = "Returns True if the string contains only \"Ascii Range\"  characters"]
+        /// Returns True if the string contains only "Ascii Range"  characters
         #[cxx_name = "IsAscii"]
         fn is_ascii(self: &HExtendedString) -> bool;
         /// Returns number of characters in <me>.
         /// This is the same functionality as 'strlen' in C.
         #[cxx_name = "Length"]
         fn length(self: &HExtendedString) -> i32;
-        #[doc = "Erases <ahowmany> characters from position <where>,\n<where> included.\nExample:\naString contains \"Hello\"\naString.Erase(2,2) erases 2 characters from position 1\nThis gives \"Hlo\"."]
+        /// Erases <ahowmany> characters from position <where>,
+        /// <where> included.
+        /// Example:
+        /// aString contains "Hello"
+        /// aString.Erase(2,2) erases 2 characters from position 1
+        /// This gives "Hlo".
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut HExtendedString>, where_: i32, ahowmany: i32);
         /// Replaces a part of <me> by another string.
@@ -1304,7 +1821,8 @@ pub(crate) mod ffi {
         /// It returns -1 if not found.
         #[cxx_name = "SearchFromEnd"]
         fn search_from_end(self: &HExtendedString, what: &HandleTCollectionHExtendedString) -> i32;
-        #[doc = "Truncates <me> to <ahowmany> characters.\nExample:  me = \"Hello Dolly\" -> Trunc(3) -> me = \"Hel\""]
+        /// Truncates <me> to <ahowmany> characters.
+        /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
         #[cxx_name = "Trunc"]
         fn trunc(self: Pin<&mut HExtendedString>, ahowmany: i32);
         /// Returns the field myString
@@ -1320,7 +1838,10 @@ pub(crate) mod ffi {
             self_: &HExtendedString,
             other: &HandleTCollectionHExtendedString,
         ) -> UniquePtr<HandleTCollectionHExtendedString>;
-        #[doc = "Splits a ExtendedString into two sub-strings.\nExample:\naString contains \"abcdefg\"\naString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
+        /// Splits a ExtendedString into two sub-strings.
+        /// Example:
+        /// aString contains "abcdefg"
+        /// aString.Split(3) gives <me> = "abc" and returns "defg"
         #[cxx_name = "TCollection_HExtendedString_Split"]
         fn HExtendedString_split(
             self_: Pin<&mut HExtendedString>,
@@ -1329,7 +1850,12 @@ pub(crate) mod ffi {
         /// Returns pointer to ExtString
         #[cxx_name = "TCollection_HExtendedString_ToExtString"]
         fn HExtendedString_to_ext_string(self_: &HExtendedString) -> UniquePtr<Standard_ExtString>;
-        #[doc = "Returns ExtCharacter at position <where> in <me>.\nIf <where> is less than zero or greater than the length of\n<me>, an exception is raised.\nExample:\naString contains \"Hello\"\naString.Value(2) returns 'e'"]
+        /// Returns ExtCharacter at position <where> in <me>.
+        /// If <where> is less than zero or greater than the length of
+        /// <me>, an exception is raised.
+        /// Example:
+        /// aString contains "Hello"
+        /// aString.Value(2) returns 'e'
         #[cxx_name = "TCollection_HExtendedString_Value"]
         fn HExtendedString_value(
             self_: &HExtendedString,
@@ -1346,6 +1872,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -1392,28 +1919,29 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "Standard_Character"]
         type Standard_Character;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Standard_ExtCharacter"]
         type Standard_ExtCharacter;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Standard_ExtString"]
         type Standard_ExtString;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Standard_PCharacter"]
         type Standard_PCharacter;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Standard_Utf16Char"]
         type Standard_Utf16Char;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTCollectionHAsciiString"]
         type HandleTCollectionHAsciiString;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTCollectionHExtendedString"]
         type HandleTCollectionHExtendedString;
     }

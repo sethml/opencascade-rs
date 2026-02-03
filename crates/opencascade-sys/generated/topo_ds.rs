@@ -308,6 +308,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== TopoDS_Shape ========================
         /// /// **Source:** `TopoDS_Shape.hxx` - `TopoDS_Shape`
         ///
@@ -916,6 +917,7 @@ pub(crate) mod ffi {
         // ========================
         // Free functions
         // ========================
+
         /// Casts shape theShape to the more specialized return type, Vertex.
         /// @param theShape the shape to be cast
         /// @return the casted shape as TopoDS_Vertex
@@ -1016,6 +1018,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -1068,10 +1071,11 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Handle to OCCT object"]
+
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTopoDSTShape"]
         type HandleTopoDSTShape;
     }

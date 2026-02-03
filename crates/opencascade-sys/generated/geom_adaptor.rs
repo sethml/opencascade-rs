@@ -274,6 +274,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== GeomAdaptor_Curve ========================
         /// /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve`
         ///
@@ -698,6 +699,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Curve from adaptor3d module
         type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
         /// CurveOnSurface from adaptor3d module
@@ -872,40 +874,41 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "Geom_OffsetCurve"]
         type Geom_OffsetCurve;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleAdaptor3dCurve"]
         type HandleAdaptor3dCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleAdaptor3dSurface"]
         type HandleAdaptor3dSurface;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomBSplineCurve"]
         type HandleGeomBSplineCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomBSplineSurface"]
         type HandleGeomBSplineSurface;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomBezierCurve"]
         type HandleGeomBezierCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomBezierSurface"]
         type HandleGeomBezierSurface;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomCurve"]
         type HandleGeomCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomOffsetCurve"]
         type HandleGeomOffsetCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

@@ -77,6 +77,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== TopTools_HSequenceOfShape ========================
         /// /// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape`
         #[cxx_name = "TopTools_HSequenceOfShape"]
@@ -152,6 +153,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -222,19 +224,20 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TopTools_Array2OfShape"]
         type TopTools_Array2OfShape;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_SequenceOfShape"]
         type TopTools_SequenceOfShape;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTopToolsHArray2OfShape"]
         type HandleTopToolsHArray2OfShape;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTopToolsHSequenceOfShape"]
         type HandleTopToolsHSequenceOfShape; // Collection element types from other modules
 

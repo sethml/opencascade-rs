@@ -440,6 +440,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== Extrema_ExtCC ========================
         /// /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC`
         ///
@@ -1391,6 +1392,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Curve from adaptor3d module
         type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
         /// CurveOnSurface from adaptor3d module
@@ -1493,7 +1495,8 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "math_Vector"]
         type math_Vector;
     }

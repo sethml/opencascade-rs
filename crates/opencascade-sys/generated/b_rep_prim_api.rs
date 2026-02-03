@@ -97,7 +97,37 @@ impl MakeCone {
         ffi::MakeCone_ctor_ax2_real3(Axes, R1, R2, H)
     }
 
-    #[doc = "Make a cone of height H radius R1 in the plane z =\n0, R2 in the plane Z = H. R1 and R2 may be null.\nTake a section of <angle>\nConstructs a cone, or a portion of a cone, of height H,\nand radius R1 in the plane z = 0 and R2 in the plane\nz = H. The result is a sharp cone if R1 or R2 is equal to 0.\nThe cone is constructed about the \"Z Axis\" of either:\n-   the global coordinate system, or\n-   the local coordinate system Axes.\nIt is limited in these coordinate systems as follows:\n-   in the v parametric direction (the Z coordinate), by\nthe two parameter values 0 and H,\n-   and in the u parametric direction (defined by the\nangle of rotation around the Z axis), in the case of a\nportion of a cone, by the two parameter values 0 and\nangle. Angle is given in radians.\nThe resulting shape is composed of:\n-   a lateral conical face\n-   two planar faces in the planes z = 0 and z = H,\nor only one planar face in one of these two planes if a\nradius value is null (in the case of a complete cone,\nthese faces are circles), and\n-   and in the case of a portion of a cone, two planar\nfaces to close the shape. (either two parallelograms or\ntwo triangles, in the planes u = 0 and u = angle).\nExceptions\nStandard_DomainError if:\n-   H is less than or equal to Precision::Confusion(), or\n-   the half-angle at the apex of the cone, defined by\nR1, R2 and H, is less than Precision::Confusion()/H, or greater than\n(Pi/2)-Precision::Confusion()/H.f"]
+    /// Make a cone of height H radius R1 in the plane z =
+    /// 0, R2 in the plane Z = H. R1 and R2 may be null.
+    /// Take a section of <angle>
+    /// Constructs a cone, or a portion of a cone, of height H,
+    /// and radius R1 in the plane z = 0 and R2 in the plane
+    /// z = H. The result is a sharp cone if R1 or R2 is equal to 0.
+    /// The cone is constructed about the "Z Axis" of either:
+    /// -   the global coordinate system, or
+    /// -   the local coordinate system Axes.
+    /// It is limited in these coordinate systems as follows:
+    /// -   in the v parametric direction (the Z coordinate), by
+    /// the two parameter values 0 and H,
+    /// -   and in the u parametric direction (defined by the
+    /// angle of rotation around the Z axis), in the case of a
+    /// portion of a cone, by the two parameter values 0 and
+    /// angle. Angle is given in radians.
+    /// The resulting shape is composed of:
+    /// -   a lateral conical face
+    /// -   two planar faces in the planes z = 0 and z = H,
+    /// or only one planar face in one of these two planes if a
+    /// radius value is null (in the case of a complete cone,
+    /// these faces are circles), and
+    /// -   and in the case of a portion of a cone, two planar
+    /// faces to close the shape. (either two parallelograms or
+    /// two triangles, in the planes u = 0 and u = angle).
+    /// Exceptions
+    /// Standard_DomainError if:
+    /// -   H is less than or equal to Precision::Confusion(), or
+    /// -   the half-angle at the apex of the cone, defined by
+    /// R1, R2 and H, is less than Precision::Confusion()/H, or greater than
+    /// (Pi/2)-Precision::Confusion()/H.f
     pub fn new_ax2_real4(
         Axes: &ffi::gp_Ax2,
         R1: f64,
@@ -167,7 +197,32 @@ impl MakeCylinder {
         ffi::MakeCylinder_ctor_ax2_real2(Axes, R, H)
     }
 
-    #[doc = "Make a cylinder   of  radius R  and  length H with\nangle  H.\nConstructs\n-   a cylinder of radius R and height H, or\n-   a portion of cylinder of radius R and height H, and of\nthe angle Angle defining the missing portion of the cylinder.\nThe cylinder is constructed about the \"Z Axis\" of either:\n-   the global coordinate system, or\n-   the local coordinate system Axes.\nIt is limited in this coordinate system as follows:\n-   in the v parametric direction (the Z axis), by the two\nparameter values 0 and H,\n-   and in the u parametric direction (the rotation angle\naround the Z Axis), in the case of a portion of a\ncylinder, by the two parameter values 0 and Angle.\nAngle is given in radians.\nThe resulting shape is composed of:\n-   a lateral cylindrical face,\n-   two planar faces in the planes z = 0 and z = H\n(in the case of a complete cylinder, these faces are circles), and\n-   in case of a portion of a cylinder, two additional\nplanar faces to close the shape.(two rectangles in the\nplanes u = 0 and u = Angle).\nExceptions Standard_DomainError if:\n-   R is less than or equal to Precision::Confusion(), or\n-   H is less than or equal to Precision::Confusion()."]
+    /// Make a cylinder   of  radius R  and  length H with
+    /// angle  H.
+    /// Constructs
+    /// -   a cylinder of radius R and height H, or
+    /// -   a portion of cylinder of radius R and height H, and of
+    /// the angle Angle defining the missing portion of the cylinder.
+    /// The cylinder is constructed about the "Z Axis" of either:
+    /// -   the global coordinate system, or
+    /// -   the local coordinate system Axes.
+    /// It is limited in this coordinate system as follows:
+    /// -   in the v parametric direction (the Z axis), by the two
+    /// parameter values 0 and H,
+    /// -   and in the u parametric direction (the rotation angle
+    /// around the Z Axis), in the case of a portion of a
+    /// cylinder, by the two parameter values 0 and Angle.
+    /// Angle is given in radians.
+    /// The resulting shape is composed of:
+    /// -   a lateral cylindrical face,
+    /// -   two planar faces in the planes z = 0 and z = H
+    /// (in the case of a complete cylinder, these faces are circles), and
+    /// -   in case of a portion of a cylinder, two additional
+    /// planar faces to close the shape.(two rectangles in the
+    /// planes u = 0 and u = Angle).
+    /// Exceptions Standard_DomainError if:
+    /// -   R is less than or equal to Precision::Confusion(), or
+    /// -   H is less than or equal to Precision::Confusion().
     pub fn new_ax2_real3(Axes: &ffi::gp_Ax2, R: f64, H: f64, Angle: f64) -> cxx::UniquePtr<Self> {
         ffi::MakeCylinder_ctor_ax2_real3(Axes, R, H, Angle)
     }
@@ -759,6 +814,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepPrimAPI_MakeBox ========================
         /// /// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox`
         ///
@@ -915,7 +971,37 @@ pub(crate) mod ffi {
         fn MakeCone_ctor_ax2_real3(Axes: &gp_Ax2, R1: f64, R2: f64, H: f64) -> UniquePtr<MakeCone>;
         /// /// **Source:** `BRepPrimAPI_MakeCone.hxx` - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
         ///
-        #[doc = "Make a cone of height H radius R1 in the plane z =\n0, R2 in the plane Z = H. R1 and R2 may be null.\nTake a section of <angle>\nConstructs a cone, or a portion of a cone, of height H,\nand radius R1 in the plane z = 0 and R2 in the plane\nz = H. The result is a sharp cone if R1 or R2 is equal to 0.\nThe cone is constructed about the \"Z Axis\" of either:\n-   the global coordinate system, or\n-   the local coordinate system Axes.\nIt is limited in these coordinate systems as follows:\n-   in the v parametric direction (the Z coordinate), by\nthe two parameter values 0 and H,\n-   and in the u parametric direction (defined by the\nangle of rotation around the Z axis), in the case of a\nportion of a cone, by the two parameter values 0 and\nangle. Angle is given in radians.\nThe resulting shape is composed of:\n-   a lateral conical face\n-   two planar faces in the planes z = 0 and z = H,\nor only one planar face in one of these two planes if a\nradius value is null (in the case of a complete cone,\nthese faces are circles), and\n-   and in the case of a portion of a cone, two planar\nfaces to close the shape. (either two parallelograms or\ntwo triangles, in the planes u = 0 and u = angle).\nExceptions\nStandard_DomainError if:\n-   H is less than or equal to Precision::Confusion(), or\n-   the half-angle at the apex of the cone, defined by\nR1, R2 and H, is less than Precision::Confusion()/H, or greater than\n(Pi/2)-Precision::Confusion()/H.f"]
+        /// Make a cone of height H radius R1 in the plane z =
+        /// 0, R2 in the plane Z = H. R1 and R2 may be null.
+        /// Take a section of <angle>
+        /// Constructs a cone, or a portion of a cone, of height H,
+        /// and radius R1 in the plane z = 0 and R2 in the plane
+        /// z = H. The result is a sharp cone if R1 or R2 is equal to 0.
+        /// The cone is constructed about the "Z Axis" of either:
+        /// -   the global coordinate system, or
+        /// -   the local coordinate system Axes.
+        /// It is limited in these coordinate systems as follows:
+        /// -   in the v parametric direction (the Z coordinate), by
+        /// the two parameter values 0 and H,
+        /// -   and in the u parametric direction (defined by the
+        /// angle of rotation around the Z axis), in the case of a
+        /// portion of a cone, by the two parameter values 0 and
+        /// angle. Angle is given in radians.
+        /// The resulting shape is composed of:
+        /// -   a lateral conical face
+        /// -   two planar faces in the planes z = 0 and z = H,
+        /// or only one planar face in one of these two planes if a
+        /// radius value is null (in the case of a complete cone,
+        /// these faces are circles), and
+        /// -   and in the case of a portion of a cone, two planar
+        /// faces to close the shape. (either two parallelograms or
+        /// two triangles, in the planes u = 0 and u = angle).
+        /// Exceptions
+        /// Standard_DomainError if:
+        /// -   H is less than or equal to Precision::Confusion(), or
+        /// -   the half-angle at the apex of the cone, defined by
+        /// R1, R2 and H, is less than Precision::Confusion()/H, or greater than
+        /// (Pi/2)-Precision::Confusion()/H.f
         #[cxx_name = "BRepPrimAPI_MakeCone_ctor_ax2_real4"]
         fn MakeCone_ctor_ax2_real4(
             Axes: &gp_Ax2,
@@ -985,7 +1071,32 @@ pub(crate) mod ffi {
         fn MakeCylinder_ctor_ax2_real2(Axes: &gp_Ax2, R: f64, H: f64) -> UniquePtr<MakeCylinder>;
         /// /// **Source:** `BRepPrimAPI_MakeCylinder.hxx` - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
         ///
-        #[doc = "Make a cylinder   of  radius R  and  length H with\nangle  H.\nConstructs\n-   a cylinder of radius R and height H, or\n-   a portion of cylinder of radius R and height H, and of\nthe angle Angle defining the missing portion of the cylinder.\nThe cylinder is constructed about the \"Z Axis\" of either:\n-   the global coordinate system, or\n-   the local coordinate system Axes.\nIt is limited in this coordinate system as follows:\n-   in the v parametric direction (the Z axis), by the two\nparameter values 0 and H,\n-   and in the u parametric direction (the rotation angle\naround the Z Axis), in the case of a portion of a\ncylinder, by the two parameter values 0 and Angle.\nAngle is given in radians.\nThe resulting shape is composed of:\n-   a lateral cylindrical face,\n-   two planar faces in the planes z = 0 and z = H\n(in the case of a complete cylinder, these faces are circles), and\n-   in case of a portion of a cylinder, two additional\nplanar faces to close the shape.(two rectangles in the\nplanes u = 0 and u = Angle).\nExceptions Standard_DomainError if:\n-   R is less than or equal to Precision::Confusion(), or\n-   H is less than or equal to Precision::Confusion()."]
+        /// Make a cylinder   of  radius R  and  length H with
+        /// angle  H.
+        /// Constructs
+        /// -   a cylinder of radius R and height H, or
+        /// -   a portion of cylinder of radius R and height H, and of
+        /// the angle Angle defining the missing portion of the cylinder.
+        /// The cylinder is constructed about the "Z Axis" of either:
+        /// -   the global coordinate system, or
+        /// -   the local coordinate system Axes.
+        /// It is limited in this coordinate system as follows:
+        /// -   in the v parametric direction (the Z axis), by the two
+        /// parameter values 0 and H,
+        /// -   and in the u parametric direction (the rotation angle
+        /// around the Z Axis), in the case of a portion of a
+        /// cylinder, by the two parameter values 0 and Angle.
+        /// Angle is given in radians.
+        /// The resulting shape is composed of:
+        /// -   a lateral cylindrical face,
+        /// -   two planar faces in the planes z = 0 and z = H
+        /// (in the case of a complete cylinder, these faces are circles), and
+        /// -   in case of a portion of a cylinder, two additional
+        /// planar faces to close the shape.(two rectangles in the
+        /// planes u = 0 and u = Angle).
+        /// Exceptions Standard_DomainError if:
+        /// -   R is less than or equal to Precision::Confusion(), or
+        /// -   H is less than or equal to Precision::Confusion().
         #[cxx_name = "BRepPrimAPI_MakeCylinder_ctor_ax2_real3"]
         fn MakeCylinder_ctor_ax2_real3(
             Axes: &gp_Ax2,
@@ -1658,6 +1769,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Command from b_rep_builder_api module
         type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
         /// MakeEdge from b_rep_builder_api module
@@ -1888,7 +2000,8 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;
     }

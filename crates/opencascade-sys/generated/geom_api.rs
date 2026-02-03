@@ -15,7 +15,42 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Interpolate;
 impl Interpolate {
-    #[doc = "Initializes an algorithm for constructing a\nconstrained BSpline curve passing through the points of the table   Points.\nTangential vectors can then be assigned, using the function Load.\nIf PeriodicFlag is true, the constrained BSpline\ncurve will be periodic and closed. In this case,\nthe junction point is the first point of the table Points.\nThe tolerance value Tolerance is used to check that:\n-   points are not too close to each other, or\n-   tangential vectors (defined using the\nfunction Load) are not too small.\nThe resulting BSpline curve will be \"C2\"\ncontinuous, except where a tangency\nconstraint is defined on a point through which\nthe curve passes (by using the Load function).\nIn this case, it will be only \"C1\" continuous.\nOnce all the constraints are defined, use the\nfunction Perform to compute the curve.\nWarning\n-   There must be at least 2 points in the table Points.\n-   If PeriodicFlag is false, there must be as\nmany parameters in the array Parameters as\nthere are points in the array Points.\n-   If PeriodicFlag is true, there must be one\nmore parameter in the table Parameters: this\nis used to give the parameter on the\nresulting BSpline curve of the junction point\nof the curve (which is also the first point of the table Points).\nExceptions\n-   Standard_ConstructionError if the\ndistance between two consecutive points in\nthe table Points is less than or equal to Tolerance.\n-   Standard_OutOfRange if:\n-   there are less than two points in the table Points, or\n-   conditions relating to the respective\nnumber of elements in the parallel tables\nPoints and Parameters are not respected."]
+    /// Initializes an algorithm for constructing a
+    /// constrained BSpline curve passing through the points of the table   Points.
+    /// Tangential vectors can then be assigned, using the function Load.
+    /// If PeriodicFlag is true, the constrained BSpline
+    /// curve will be periodic and closed. In this case,
+    /// the junction point is the first point of the table Points.
+    /// The tolerance value Tolerance is used to check that:
+    /// -   points are not too close to each other, or
+    /// -   tangential vectors (defined using the
+    /// function Load) are not too small.
+    /// The resulting BSpline curve will be "C2"
+    /// continuous, except where a tangency
+    /// constraint is defined on a point through which
+    /// the curve passes (by using the Load function).
+    /// In this case, it will be only "C1" continuous.
+    /// Once all the constraints are defined, use the
+    /// function Perform to compute the curve.
+    /// Warning
+    /// -   There must be at least 2 points in the table Points.
+    /// -   If PeriodicFlag is false, there must be as
+    /// many parameters in the array Parameters as
+    /// there are points in the array Points.
+    /// -   If PeriodicFlag is true, there must be one
+    /// more parameter in the table Parameters: this
+    /// is used to give the parameter on the
+    /// resulting BSpline curve of the junction point
+    /// of the curve (which is also the first point of the table Points).
+    /// Exceptions
+    /// -   Standard_ConstructionError if the
+    /// distance between two consecutive points in
+    /// the table Points is less than or equal to Tolerance.
+    /// -   Standard_OutOfRange if:
+    /// -   there are less than two points in the table Points, or
+    /// -   conditions relating to the respective
+    /// number of elements in the parallel tables
+    /// Points and Parameters are not respected.
     pub fn new_handleharray1ofpnt_bool_real(
         Points: &ffi::HandleTColgpHArray1OfPnt,
         PeriodicFlag: bool,
@@ -24,7 +59,44 @@ impl Interpolate {
         ffi::Interpolate_ctor_handleharray1ofpnt_bool_real(Points, PeriodicFlag, Tolerance)
     }
 
-    #[doc = "Initializes an algorithm for constructing a\nconstrained BSpline curve passing through the points of the table\nPoints, where the parameters of each of its\npoints are given by the parallel table Parameters.\nTangential vectors can then be assigned, using the function Load.\nIf PeriodicFlag is true, the constrained BSpline\ncurve will be periodic and closed. In this case,\nthe junction point is the first point of the table Points.\nThe tolerance value Tolerance is used to check that:\n-   points are not too close to each other, or\n-   tangential vectors (defined using the\nfunction Load) are not too small.\nThe resulting BSpline curve will be \"C2\"\ncontinuous, except where a tangency\nconstraint is defined on a point through which\nthe curve passes (by using the Load function).\nIn this case, it will be only \"C1\" continuous.\nOnce all the constraints are defined, use the\nfunction Perform to compute the curve.\nWarning\n-   There must be at least 2 points in the table Points.\n-   If PeriodicFlag is false, there must be as\nmany parameters in the array Parameters as\nthere are points in the array Points.\n-   If PeriodicFlag is true, there must be one\nmore parameter in the table Parameters: this\nis used to give the parameter on the\nresulting BSpline curve of the junction point\nof the curve (which is also the first point of the table Points).\nExceptions\n-   Standard_ConstructionError if the\ndistance between two consecutive points in\nthe table Points is less than or equal to Tolerance.\n-   Standard_OutOfRange if:\n-   there are less than two points in the table Points, or\n-   conditions relating to the respective\nnumber of elements in the parallel tables\nPoints and Parameters are not respected."]
+    /// Initializes an algorithm for constructing a
+    /// constrained BSpline curve passing through the points of the table
+    /// Points, where the parameters of each of its
+    /// points are given by the parallel table Parameters.
+    /// Tangential vectors can then be assigned, using the function Load.
+    /// If PeriodicFlag is true, the constrained BSpline
+    /// curve will be periodic and closed. In this case,
+    /// the junction point is the first point of the table Points.
+    /// The tolerance value Tolerance is used to check that:
+    /// -   points are not too close to each other, or
+    /// -   tangential vectors (defined using the
+    /// function Load) are not too small.
+    /// The resulting BSpline curve will be "C2"
+    /// continuous, except where a tangency
+    /// constraint is defined on a point through which
+    /// the curve passes (by using the Load function).
+    /// In this case, it will be only "C1" continuous.
+    /// Once all the constraints are defined, use the
+    /// function Perform to compute the curve.
+    /// Warning
+    /// -   There must be at least 2 points in the table Points.
+    /// -   If PeriodicFlag is false, there must be as
+    /// many parameters in the array Parameters as
+    /// there are points in the array Points.
+    /// -   If PeriodicFlag is true, there must be one
+    /// more parameter in the table Parameters: this
+    /// is used to give the parameter on the
+    /// resulting BSpline curve of the junction point
+    /// of the curve (which is also the first point of the table Points).
+    /// Exceptions
+    /// -   Standard_ConstructionError if the
+    /// distance between two consecutive points in
+    /// the table Points is less than or equal to Tolerance.
+    /// -   Standard_OutOfRange if:
+    /// -   there are less than two points in the table Points, or
+    /// -   conditions relating to the respective
+    /// number of elements in the parallel tables
+    /// Points and Parameters are not respected.
     pub fn new_handleharray1ofpnt_handleharray1ofreal_bool_real(
         Points: &ffi::HandleTColgpHArray1OfPnt,
         Parameters: &ffi::HandleTColStdHArray1OfReal,
@@ -124,6 +196,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== GeomAPI_Interpolate ========================
         /// /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate`
         ///
@@ -149,7 +222,42 @@ pub(crate) mod ffi {
         type Interpolate;
         /// /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate::GeomAPI_Interpolate()`
         ///
-        #[doc = "Initializes an algorithm for constructing a\nconstrained BSpline curve passing through the points of the table   Points.\nTangential vectors can then be assigned, using the function Load.\nIf PeriodicFlag is true, the constrained BSpline\ncurve will be periodic and closed. In this case,\nthe junction point is the first point of the table Points.\nThe tolerance value Tolerance is used to check that:\n-   points are not too close to each other, or\n-   tangential vectors (defined using the\nfunction Load) are not too small.\nThe resulting BSpline curve will be \"C2\"\ncontinuous, except where a tangency\nconstraint is defined on a point through which\nthe curve passes (by using the Load function).\nIn this case, it will be only \"C1\" continuous.\nOnce all the constraints are defined, use the\nfunction Perform to compute the curve.\nWarning\n-   There must be at least 2 points in the table Points.\n-   If PeriodicFlag is false, there must be as\nmany parameters in the array Parameters as\nthere are points in the array Points.\n-   If PeriodicFlag is true, there must be one\nmore parameter in the table Parameters: this\nis used to give the parameter on the\nresulting BSpline curve of the junction point\nof the curve (which is also the first point of the table Points).\nExceptions\n-   Standard_ConstructionError if the\ndistance between two consecutive points in\nthe table Points is less than or equal to Tolerance.\n-   Standard_OutOfRange if:\n-   there are less than two points in the table Points, or\n-   conditions relating to the respective\nnumber of elements in the parallel tables\nPoints and Parameters are not respected."]
+        /// Initializes an algorithm for constructing a
+        /// constrained BSpline curve passing through the points of the table   Points.
+        /// Tangential vectors can then be assigned, using the function Load.
+        /// If PeriodicFlag is true, the constrained BSpline
+        /// curve will be periodic and closed. In this case,
+        /// the junction point is the first point of the table Points.
+        /// The tolerance value Tolerance is used to check that:
+        /// -   points are not too close to each other, or
+        /// -   tangential vectors (defined using the
+        /// function Load) are not too small.
+        /// The resulting BSpline curve will be "C2"
+        /// continuous, except where a tangency
+        /// constraint is defined on a point through which
+        /// the curve passes (by using the Load function).
+        /// In this case, it will be only "C1" continuous.
+        /// Once all the constraints are defined, use the
+        /// function Perform to compute the curve.
+        /// Warning
+        /// -   There must be at least 2 points in the table Points.
+        /// -   If PeriodicFlag is false, there must be as
+        /// many parameters in the array Parameters as
+        /// there are points in the array Points.
+        /// -   If PeriodicFlag is true, there must be one
+        /// more parameter in the table Parameters: this
+        /// is used to give the parameter on the
+        /// resulting BSpline curve of the junction point
+        /// of the curve (which is also the first point of the table Points).
+        /// Exceptions
+        /// -   Standard_ConstructionError if the
+        /// distance between two consecutive points in
+        /// the table Points is less than or equal to Tolerance.
+        /// -   Standard_OutOfRange if:
+        /// -   there are less than two points in the table Points, or
+        /// -   conditions relating to the respective
+        /// number of elements in the parallel tables
+        /// Points and Parameters are not respected.
         #[cxx_name = "GeomAPI_Interpolate_ctor_handleharray1ofpnt_bool_real"]
         fn Interpolate_ctor_handleharray1ofpnt_bool_real(
             Points: &HandleTColgpHArray1OfPnt,
@@ -158,7 +266,44 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Interpolate>;
         /// /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate::GeomAPI_Interpolate()`
         ///
-        #[doc = "Initializes an algorithm for constructing a\nconstrained BSpline curve passing through the points of the table\nPoints, where the parameters of each of its\npoints are given by the parallel table Parameters.\nTangential vectors can then be assigned, using the function Load.\nIf PeriodicFlag is true, the constrained BSpline\ncurve will be periodic and closed. In this case,\nthe junction point is the first point of the table Points.\nThe tolerance value Tolerance is used to check that:\n-   points are not too close to each other, or\n-   tangential vectors (defined using the\nfunction Load) are not too small.\nThe resulting BSpline curve will be \"C2\"\ncontinuous, except where a tangency\nconstraint is defined on a point through which\nthe curve passes (by using the Load function).\nIn this case, it will be only \"C1\" continuous.\nOnce all the constraints are defined, use the\nfunction Perform to compute the curve.\nWarning\n-   There must be at least 2 points in the table Points.\n-   If PeriodicFlag is false, there must be as\nmany parameters in the array Parameters as\nthere are points in the array Points.\n-   If PeriodicFlag is true, there must be one\nmore parameter in the table Parameters: this\nis used to give the parameter on the\nresulting BSpline curve of the junction point\nof the curve (which is also the first point of the table Points).\nExceptions\n-   Standard_ConstructionError if the\ndistance between two consecutive points in\nthe table Points is less than or equal to Tolerance.\n-   Standard_OutOfRange if:\n-   there are less than two points in the table Points, or\n-   conditions relating to the respective\nnumber of elements in the parallel tables\nPoints and Parameters are not respected."]
+        /// Initializes an algorithm for constructing a
+        /// constrained BSpline curve passing through the points of the table
+        /// Points, where the parameters of each of its
+        /// points are given by the parallel table Parameters.
+        /// Tangential vectors can then be assigned, using the function Load.
+        /// If PeriodicFlag is true, the constrained BSpline
+        /// curve will be periodic and closed. In this case,
+        /// the junction point is the first point of the table Points.
+        /// The tolerance value Tolerance is used to check that:
+        /// -   points are not too close to each other, or
+        /// -   tangential vectors (defined using the
+        /// function Load) are not too small.
+        /// The resulting BSpline curve will be "C2"
+        /// continuous, except where a tangency
+        /// constraint is defined on a point through which
+        /// the curve passes (by using the Load function).
+        /// In this case, it will be only "C1" continuous.
+        /// Once all the constraints are defined, use the
+        /// function Perform to compute the curve.
+        /// Warning
+        /// -   There must be at least 2 points in the table Points.
+        /// -   If PeriodicFlag is false, there must be as
+        /// many parameters in the array Parameters as
+        /// there are points in the array Points.
+        /// -   If PeriodicFlag is true, there must be one
+        /// more parameter in the table Parameters: this
+        /// is used to give the parameter on the
+        /// resulting BSpline curve of the junction point
+        /// of the curve (which is also the first point of the table Points).
+        /// Exceptions
+        /// -   Standard_ConstructionError if the
+        /// distance between two consecutive points in
+        /// the table Points is less than or equal to Tolerance.
+        /// -   Standard_OutOfRange if:
+        /// -   there are less than two points in the table Points, or
+        /// -   conditions relating to the respective
+        /// number of elements in the parallel tables
+        /// Points and Parameters are not respected.
         #[cxx_name = "GeomAPI_Interpolate_ctor_handleharray1ofpnt_handleharray1ofreal_bool_real"]
         fn Interpolate_ctor_handleharray1ofpnt_handleharray1ofreal_bool_real(
             Points: &HandleTColgpHArray1OfPnt,
@@ -422,6 +567,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// ECC from extrema module
         type Extrema_ECC = crate::extrema::ffi::ECC;
         /// EPCOfExtPC from extrema module
@@ -582,31 +728,32 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColgp_Array1OfPnt"]
         type TColgp_Array1OfPnt;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColgp_Array1OfVec"]
         type TColgp_Array1OfVec;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomBSplineCurve"]
         type HandleGeomBSplineCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomCurve"]
         type HandleGeomCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHArray1OfBoolean"]
         type HandleTColStdHArray1OfBoolean;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHArray1OfReal"]
         type HandleTColStdHArray1OfReal;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColgpHArray1OfPnt"]
         type HandleTColgpHArray1OfPnt;
     }

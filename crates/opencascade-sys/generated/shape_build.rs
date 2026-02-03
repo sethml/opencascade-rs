@@ -41,10 +41,22 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== ShapeBuild_ReShape ========================
         /// /// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape`
         ///
-        #[doc = "Rebuilds a Shape by making pre-defined substitutions on some\nof its components\n\nIn a first phase, it records requests to replace or remove\nsome individual shapes\nFor each shape, the last given request is recorded\nRequests may be applied \"Oriented\" (i.e. only to an item with\nthe SAME orientation) or not (the orientation of replacing\nshape is respectful of that of the original one)\n\nThen, these requests may be applied to any shape which may\ncontain one or more of these individual shapes"]
+        /// Rebuilds a Shape by making pre-defined substitutions on some
+        /// of its components
+        ///
+        /// In a first phase, it records requests to replace or remove
+        /// some individual shapes
+        /// For each shape, the last given request is recorded
+        /// Requests may be applied "Oriented" (i.e. only to an item with
+        /// the SAME orientation) or not (the orientation of replacing
+        /// shape is respectful of that of the original one)
+        ///
+        /// Then, these requests may be applied to any shape which may
+        /// contain one or more of these individual shapes
         #[cxx_name = "ShapeBuild_ReShape"]
         type ReShape;
         /// /// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape::ShapeBuild_ReShape()`
@@ -82,6 +94,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// BRepTools from b_rep_tools module
         type BRepTools = crate::b_rep_tools::ffi::BRepTools;
         /// History from b_rep_tools module
@@ -162,7 +175,8 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Handle to OCCT object"]
+
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

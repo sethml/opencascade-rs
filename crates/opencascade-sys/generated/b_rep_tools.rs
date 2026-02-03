@@ -452,6 +452,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepTools ========================
         /// /// **Source:** `BRepTools.hxx` - `BRepTools`
         ///
@@ -948,7 +949,20 @@ pub(crate) mod ffi {
         /// ======================== BRepTools_ReShape ========================
         /// /// **Source:** `BRepTools_ReShape.hxx` - `BRepTools_ReShape`
         ///
-        #[doc = "Rebuilds a Shape by making pre-defined substitutions on some\nof its components\n\nIn a first phase, it records requests to replace or remove\nsome individual shapes\nFor each shape, the last given request is recorded\nRequests may be applied \"Oriented\" (i.e. only to an item with\nthe SAME orientation) or not (the orientation of replacing\nshape is respectful of that of the original one)\n\nThen, these requests may be applied to any shape which may\ncontain one or more of these individual shapes\n\nSupports the 'BRepTools_History' history by method 'History'."]
+        /// Rebuilds a Shape by making pre-defined substitutions on some
+        /// of its components
+        ///
+        /// In a first phase, it records requests to replace or remove
+        /// some individual shapes
+        /// For each shape, the last given request is recorded
+        /// Requests may be applied "Oriented" (i.e. only to an item with
+        /// the SAME orientation) or not (the orientation of replacing
+        /// shape is respectful of that of the original one)
+        ///
+        /// Then, these requests may be applied to any shape which may
+        /// contain one or more of these individual shapes
+        ///
+        /// Supports the 'BRepTools_History' history by method 'History'.
         #[cxx_name = "BRepTools_ReShape"]
         type ReShape;
         /// /// **Source:** `BRepTools_ReShape.hxx` - `BRepTools_ReShape::BRepTools_ReShape()`
@@ -1021,6 +1035,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Builder from b_rep module
         type BRep_Builder = crate::b_rep::ffi::Builder;
         /// Tool from b_rep module
@@ -1257,40 +1272,41 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "BRepTools_Modification"]
         type BRepTools_Modification;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "OSD_FileSystem"]
         type OSD_FileSystem;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_IndexedMapOfShape"]
         type TopTools_IndexedMapOfShape;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBRepToolsHistory"]
         type HandleBRepToolsHistory;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBRepToolsModification"]
         type HandleBRepToolsModification;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBRepToolsReShape"]
         type HandleBRepToolsReShape;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dCurve"]
         type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomCurve"]
         type HandleGeomCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleOSDFileSystem"]
         type HandleOSDFileSystem;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

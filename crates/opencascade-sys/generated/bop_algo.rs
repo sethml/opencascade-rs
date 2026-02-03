@@ -239,6 +239,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BOPAlgo_BOP ========================
         /// /// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP`
         ///
@@ -675,6 +676,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// BRepTools from b_rep_tools module
         type BRepTools = crate::b_rep_tools::ffi::BRepTools;
         /// History from b_rep_tools module
@@ -815,46 +817,47 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "BOPAlgo_PPaveFiller"]
         type BOPAlgo_PPaveFiller;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "BOPAlgo_PaveFiller"]
         type BOPAlgo_PaveFiller;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "BOPDS_PDS"]
         type BOPDS_PDS;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "IntTools_Context"]
         type IntTools_Context;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_DataMapOfShapeListOfShape"]
         type TopTools_DataMapOfShapeListOfShape;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_DataMapOfShapeShape"]
         type TopTools_DataMapOfShapeShape;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBRepToolsHistory"]
         type HandleBRepToolsHistory;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleIntToolsContext"]
         type HandleIntToolsContext;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMessageAlert"]
         type HandleMessageAlert;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMessageReport"]
         type HandleMessageReport;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleNCollectionBaseAllocator"]
         type HandleNCollectionBaseAllocator;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

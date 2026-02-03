@@ -86,10 +86,45 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== STEPControl_Reader ========================
         /// /// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader`
         ///
-        #[doc = "Reads STEP files, checks them and translates their contents\ninto Open CASCADE models. The STEP data can be that of\na whole model or that of a specific list of entities in the model.\nAs in XSControl_Reader, you specify the list using a selection.\nFor the translation of iges files it is possible to use next sequence:\nTo change translation parameters\nclass Interface_Static should be used before beginning of\ntranslation  (see STEP Parameters and General Parameters)\nCreation of reader - STEPControl_Reader reader;\nTo load s file in a model use method reader.ReadFile(\"filename.stp\")\nTo print load results reader.PrintCheckLoad(failsonly,mode)\nwhere mode is equal to the value of enumeration IFSelect_PrintCount\nFor definition number of candidates :\nStandard_Integer nbroots = reader. NbRootsForTransfer();\nTo transfer entities from a model the following methods can be used:\nfor the whole model - reader.TransferRoots();\nto transfer a list of entities: reader.TransferList(list);\nto transfer one entity Handle(Standard_Transient)\nent = reader.RootForTransfer(num);\nreader.TransferEntity(ent), or\nreader.TransferOneRoot(num), or\nreader.TransferOne(num), or\nreader.TransferRoot(num)\nTo obtain the result the following method can be used:\nreader.NbShapes() and reader.Shape(num); or reader.OneShape();\nTo print the results of transfer use method:\nreader.PrintCheckTransfer(failwarn,mode);\nwhere printfail is equal to the value of enumeration\nIFSelect_PrintFail, mode see above; or reader.PrintStatsTransfer();\nGets correspondence between a STEP entity and a result\nshape obtained from it.\nHandle(XSControl_WorkSession)\nWS = reader.WS();\nif ( WS->TransferReader()->HasResult(ent) )\nTopoDS_Shape shape = WS->TransferReader()->ShapeResult(ent);"]
+        /// Reads STEP files, checks them and translates their contents
+        /// into Open CASCADE models. The STEP data can be that of
+        /// a whole model or that of a specific list of entities in the model.
+        /// As in XSControl_Reader, you specify the list using a selection.
+        /// For the translation of iges files it is possible to use next sequence:
+        /// To change translation parameters
+        /// class Interface_Static should be used before beginning of
+        /// translation  (see STEP Parameters and General Parameters)
+        /// Creation of reader - STEPControl_Reader reader;
+        /// To load s file in a model use method reader.ReadFile("filename.stp")
+        /// To print load results reader.PrintCheckLoad(failsonly,mode)
+        /// where mode is equal to the value of enumeration IFSelect_PrintCount
+        /// For definition number of candidates :
+        /// Standard_Integer nbroots = reader. NbRootsForTransfer();
+        /// To transfer entities from a model the following methods can be used:
+        /// for the whole model - reader.TransferRoots();
+        /// to transfer a list of entities: reader.TransferList(list);
+        /// to transfer one entity Handle(Standard_Transient)
+        /// ent = reader.RootForTransfer(num);
+        /// reader.TransferEntity(ent), or
+        /// reader.TransferOneRoot(num), or
+        /// reader.TransferOne(num), or
+        /// reader.TransferRoot(num)
+        /// To obtain the result the following method can be used:
+        /// reader.NbShapes() and reader.Shape(num); or reader.OneShape();
+        /// To print the results of transfer use method:
+        /// reader.PrintCheckTransfer(failwarn,mode);
+        /// where printfail is equal to the value of enumeration
+        /// IFSelect_PrintFail, mode see above; or reader.PrintStatsTransfer();
+        /// Gets correspondence between a STEP entity and a result
+        /// shape obtained from it.
+        /// Handle(XSControl_WorkSession)
+        /// WS = reader.WS();
+        /// if ( WS->TransferReader()->HasResult(ent) )
+        /// TopoDS_Shape shape = WS->TransferReader()->ShapeResult(ent);
         #[cxx_name = "STEPControl_Reader"]
         type Reader;
         /// /// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader::STEPControl_Reader()`
@@ -220,6 +255,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Parameters from destep module
         type DESTEP_Parameters = crate::destep::ffi::Parameters;
         /// Message from message module
@@ -300,22 +336,23 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "DE_ShapeFixParameters"]
         type DE_ShapeFixParameters;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "StepData_StepModel"]
         type StepData_StepModel;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_SequenceOfAsciiString"]
         type TColStd_SequenceOfAsciiString;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "XSControl_WorkSession"]
         type XSControl_WorkSession;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStepDataStepModel"]
         type HandleStepDataStepModel;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleXSControlWorkSession"]
         type HandleXSControlWorkSession;
     }

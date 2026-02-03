@@ -298,6 +298,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepGProp ========================
         /// /// **Source:** `BRepGProp.hxx` - `BRepGProp`
         ///
@@ -652,6 +653,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// GProps from g_prop module
         type GProp_GProps = crate::g_prop::ffi::GProps;
         /// HArray1OfBoolean from t_col_std module
@@ -778,10 +780,11 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHArray1OfReal"]
         type HandleTColStdHArray1OfReal;
     }

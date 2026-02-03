@@ -117,6 +117,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== ChFi3d_FilBuilder ========================
         /// /// **Source:** `ChFi3d_FilBuilder.hxx` - `ChFi3d_FilBuilder`
         ///
@@ -491,6 +492,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Curve from adaptor3d module
         type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
         /// CurveOnSurface from adaptor3d module
@@ -683,55 +685,56 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "Adaptor3d_TopolTool"]
         type Adaptor3d_TopolTool;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "ChFiDS_SequenceOfSurfData"]
         type ChFiDS_SequenceOfSurfData;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "ChFiDS_Spine"]
         type ChFiDS_Spine;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopOpeBRepBuild_HBuilder"]
         type TopOpeBRepBuild_HBuilder;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "math_Vector"]
         type math_Vector;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleAdaptor3dSurface"]
         type HandleAdaptor3dSurface;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleAdaptor3dTopolTool"]
         type HandleAdaptor3dTopolTool;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBRepAdaptorCurve2d"]
         type HandleBRepAdaptorCurve2d;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBRepAdaptorSurface"]
         type HandleBRepAdaptorSurface;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleChFiDSElSpine"]
         type HandleChFiDSElSpine;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleChFiDSSecHArray1"]
         type HandleChFiDSSecHArray1;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleChFiDSSpine"]
         type HandleChFiDSSpine;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleChFiDSSurfData"]
         type HandleChFiDSSurfData;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleLawFunction"]
         type HandleLawFunction;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTopOpeBRepBuildHBuilder"]
         type HandleTopOpeBRepBuildHBuilder;
     }

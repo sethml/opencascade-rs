@@ -408,6 +408,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRep_Builder ========================
         /// /// **Source:** `BRep_Builder.hxx` - `BRep_Builder`
         ///
@@ -1145,6 +1146,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// BoundedCurve from geom2d module
         type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
         /// Conic from geom2d module
@@ -1309,28 +1311,29 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "Poly_ListOfTriangulation"]
         type Poly_ListOfTriangulation;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dCurve"]
         type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomCurve"]
         type HandleGeomCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandlePolyPolygon2D"]
         type HandlePolyPolygon2D;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandlePolyPolygon3D"]
         type HandlePolyPolygon3D;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandlePolyPolygonOnTriangulation"]
         type HandlePolyPolygonOnTriangulation;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandlePolyTriangulation"]
         type HandlePolyTriangulation;
     }

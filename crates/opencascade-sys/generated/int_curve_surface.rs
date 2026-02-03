@@ -49,6 +49,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== IntCurveSurface_HInter ========================
         /// /// **Source:** `IntCurveSurface_HInter.hxx` - `IntCurveSurface_HInter`
         #[cxx_name = "IntCurveSurface_HInter"]
@@ -187,6 +188,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Curve from adaptor3d module
         type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
         /// CurveOnSurface from adaptor3d module
@@ -287,19 +289,20 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "Bnd_BoundSortBox"]
         type Bnd_BoundSortBox;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "IntCurveSurface_ThePolygonOfHInter"]
         type IntCurveSurface_ThePolygonOfHInter;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "IntCurveSurface_ThePolyhedronOfHInter"]
         type IntCurveSurface_ThePolyhedronOfHInter;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleAdaptor3dCurve"]
         type HandleAdaptor3dCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleAdaptor3dSurface"]
         type HandleAdaptor3dSurface;
     }

@@ -33,6 +33,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== Geom2dEvaluator_Curve ========================
         /// /// **Source:** `Geom2dEvaluator_Curve.hxx` - `Geom2dEvaluator_Curve`
         ///
@@ -78,6 +79,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -200,10 +202,11 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Handle to OCCT object"]
+
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dEvaluatorCurve"]
         type HandleGeom2dEvaluatorCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

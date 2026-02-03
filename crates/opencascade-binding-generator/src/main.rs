@@ -367,7 +367,7 @@ fn main() -> Result<()> {
         println!("  Converting section markers to comments...");
         for rs_file in &generated_rs_files {
             if let Ok(content) = std::fs::read_to_string(rs_file) {
-                let processed = codegen::rust::convert_section_markers_to_comments(&content);
+                let processed = codegen::rust::postprocess_generated_code(&content);
                 if processed != content {
                     let _ = std::fs::write(rs_file, &processed);
                 }

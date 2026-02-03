@@ -60,7 +60,11 @@ impl Message {
         ffi::Message_send_trace_asciistring(theMessage)
     }
 
-    #[doc = "Returns the string filled with values of hours, minutes and seconds.\nExample:\n1. (5, 12, 26.3345) returns \"05h:12m:26.33s\",\n2. (0,  6, 34.496 ) returns \"06m:34.50s\",\n3. (0,  0,  4.5   ) returns \"4.50s\""]
+    /// Returns the string filled with values of hours, minutes and seconds.
+    /// Example:
+    /// 1. (5, 12, 26.3345) returns "05h:12m:26.33s",
+    /// 2. (0,  6, 34.496 ) returns "06m:34.50s",
+    /// 3. (0,  0,  4.5   ) returns "4.50s"
     pub fn fill_time(
         Hour: i32,
         Minute: i32,
@@ -338,6 +342,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== Message_ProgressRange ========================
         /// /// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange`
         ///
@@ -401,7 +406,11 @@ pub(crate) mod ffi {
         fn Message_send_info_asciistring(theMessage: &TCollection_AsciiString);
         #[cxx_name = "Message_SendTrace_asciistring"]
         fn Message_send_trace_asciistring(theMessage: &TCollection_AsciiString);
-        #[doc = "Returns the string filled with values of hours, minutes and seconds.\nExample:\n1. (5, 12, 26.3345) returns \"05h:12m:26.33s\",\n2. (0,  6, 34.496 ) returns \"06m:34.50s\",\n3. (0,  0,  4.5   ) returns \"4.50s\""]
+        /// Returns the string filled with values of hours, minutes and seconds.
+        /// Example:
+        /// 1. (5, 12, 26.3345) returns "05h:12m:26.33s",
+        /// 2. (0,  6, 34.496 ) returns "06m:34.50s",
+        /// 3. (0,  0,  4.5   ) returns "4.50s"
         #[cxx_name = "Message_FillTime"]
         fn Message_fill_time(
             Hour: i32,
@@ -411,7 +420,25 @@ pub(crate) mod ffi {
         /// ======================== Message_Messenger ========================
         /// /// **Source:** `Message_Messenger.hxx` - `Message_Messenger`
         ///
-        #[doc = "Messenger is API class providing general-purpose interface for\nlibraries that may issue text messages without knowledge\nof how these messages will be further processed.\n\nThe messenger contains a sequence of \"printers\" which can be\ncustomized by the application, and dispatches every received\nmessage to all the printers.\n\nFor convenience, a set of methods Send...() returning a string\nstream buffer is defined for use of stream-like syntax with operator <<\n\nExample:\n~~~~~\nMessenger->SendFail() << \" Unknown fail at line \" << aLineNo << \" in file \" << aFile;\n~~~~~\n\nThe message is sent to messenger on destruction of the stream buffer,\ncall to Flush(), or passing manipulator std::ends, std::endl, or std::flush.\nEmpty messages are not sent except if manipulator is used."]
+        /// Messenger is API class providing general-purpose interface for
+        /// libraries that may issue text messages without knowledge
+        /// of how these messages will be further processed.
+        ///
+        /// The messenger contains a sequence of "printers" which can be
+        /// customized by the application, and dispatches every received
+        /// message to all the printers.
+        ///
+        /// For convenience, a set of methods Send...() returning a string
+        /// stream buffer is defined for use of stream-like syntax with operator <<
+        ///
+        /// Example:
+        /// ~~~~~
+        /// Messenger->SendFail() << " Unknown fail at line " << aLineNo << " in file " << aFile;
+        /// ~~~~~
+        ///
+        /// The message is sent to messenger on destruction of the stream buffer,
+        /// call to Flush(), or passing manipulator std::ends, std::endl, or std::flush.
+        /// Empty messages are not sent except if manipulator is used.
         #[cxx_name = "Message_Messenger"]
         type Messenger;
         /// /// **Source:** `Message_Messenger.hxx` - `Message_Messenger::Message_Messenger()`
@@ -490,7 +517,169 @@ pub(crate) mod ffi {
         /// ======================== Message_ProgressScope ========================
         /// /// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope`
         ///
-        #[doc = "Message_ProgressScope class provides convenient way to advance progress\nindicator in context of complex program organized in hierarchical way,\nwhere usually it is difficult (or even not possible) to consider process\nas linear with fixed step.\n\nOn every level (sub-operation) in hierarchy of operations\nthe local instance of the Message_ProgressScope class is created.\nIt takes a part of the upper-level scope (via Message_ProgressRange) and provides\na way to consider this part as independent scale with locally defined range.\n\nThe position on the local scale may be advanced using the method Next(),\nwhich allows iteration-like advancement. This method can take argument to\nadvance by the specified value (with default step equal to 1).\nThis method returns Message_ProgressRange object that takes responsibility\nof making the specified step, either directly at its destruction or by\ndelegating this task to another sub-scope created from that range object.\n\nIt is important that sub-scope must have life time less than\nthe life time of its parent scope that provided the range.\nThe usage pattern is to create scope objects as local variables in the\nfunctions that do the job, and pass range objects returned by Next() to\nthe functions of the lower level, to allow them creating their own scopes.\n\nThe scope has a name that can be used in visualization of the progress.\nIt can be null. Note that when C string literal is used as a name, then its\nvalue is not copied, just pointer is stored. In other variants (char pointer\nor a string class) the string is copied, which is additional overhead.\n\nThe same instance of the progress scope! must not be used concurrently from different threads.\nFor the algorithm running its tasks in parallel threads, a common scope is\ncreated before the parallel execution, and the range objects produced by method\nNext() are used to initialise the data pertinent to each task.\nThen the progress is advanced within each task using its own range object.\nSee example below.\n\nNote that while a range of the scope is specified using Standard_Real\n(double) parameter, it is expected to be a positive integer value.\nIf the range is not an integer, method Next() shall be called with\nexplicit step argument, and the rounded value returned by method Value()\nmay be not coherent with the step and range.\n\nA scope can be created with option \"infinite\". This is useful when\nthe number of steps is not known by the time of the scope creation.\nIn this case the progress will be advanced logarithmically, approaching\nthe end of the scope at infinite number of steps. The parameter Max\nfor infinite scope indicates number of steps corresponding to mid-range.\n\nA progress scope created with empty constructor is not connected to any\nprogress indicator, and passing the range created on it to any algorithm\nallows it executing safely without actual progress indication.\n\nExample of preparation of progress indicator:\n\n@code{.cpp}\nHandle(Message_ProgressIndicator) aProgress = ...; // assume it can be null\nfunc (Message_ProgressIndicator::Start (aProgress));\n@endcode\n\nExample of usage in sequential process:\n\n@code{.cpp}\nMessage_ProgressScope aWholePS(aRange, \"Whole process\", 100);\n\n// do one step taking 20%\nfunc1 (aWholePS.Next (20)); // func1 will take 20% of the whole scope\nif (aWholePS.UserBreak()) // exit prematurely if the user requested break\nreturn;\n\n// ... do next step taking 50%\nfunc2 (aWholePS.Next (50));\nif (aWholePS.UserBreak())\nreturn;\n@endcode\n\nExample of usage in nested cycle:\n\n@code{.cpp}\n// Outer cycle\nMessage_ProgressScope anOuter (theProgress, \"Outer\", nbOuter);\nfor (Standard_Integer i = 0; i < nbOuter && anOuter.More(); i++)\n{\n// Inner cycle\nMessage_ProgressScope anInner (anOuter.Next(), \"Inner\", nbInner);\nfor (Standard_Integer j = 0; j < nbInner && anInner.More(); j++)\n{\n// Cycle body\nfunc (anInner.Next());\n}\n}\n@endcode\n\nExample of use in function:\n\n@code{.cpp}\n//! Implementation of iterative algorithm showing its progress\nfunc (const Message_ProgressRange& theProgress)\n{\n// Create local scope covering the given progress range.\n// Set this scope to count aNbSteps steps.\nMessage_ProgressScope aScope (theProgress, \"\", aNbSteps);\nfor (Standard_Integer i = 0; i < aNbSteps && aScope.More(); i++)\n{\n// Optional: pass range returned by method Next() to the nested algorithm\n// to allow it to show its progress too (by creating its own scope object).\n// In any case the progress will advance to the next step by the end of the func2 call.\nfunc2 (aScope.Next());\n}\n}\n@endcode\n\nExample of usage in parallel process:\n\n@code{.cpp}\nstruct Task\n{\nData& Data;\nMessage_ProgressRange Range;\n\nTask (const Data& theData, const Message_ProgressRange& theRange)\n: Data (theData), Range (theRange) {}\n};\nstruct Functor\n{\nvoid operator() (Task& theTask) const\n{\n// Note: it is essential that this method is executed only once for the same Task object\nMessage_ProgressScope aPS (theTask.Range, NULL, theTask.Data.NbItems);\nfor (Standard_Integer i = 0; i < theTask.Data.NbSteps && aPS.More(); i++)\n{\ndo_job (theTask.Data.Item[i], aPS.Next());\n}\n}\n};\n...\n{\nstd::vector<Data> aData = ...;\nstd::vector<Task> aTasks;\n\nMessage_ProgressScope aPS (aRootRange, \"Data processing\", aData.size());\nfor (Standard_Integer i = 0; i < aData.size(); ++i)\naTasks.push_back (Task (aData[i], aPS.Next()));\n\nOSD_Parallel::ForEach (aTasks.begin(), aTasks.end(), Functor());\n}\n@endcode\n\nFor lightweight algorithms that do not need advancing the progress\nwithin individual tasks the code can be simplified to avoid inner scopes:\n\n@code\nstruct Functor\n{\nvoid operator() (Task& theTask) const\n{\nif (theTask.Range.More())\n{\ndo_job (theTask.Data);\n// advance the progress\ntheTask.Range.Close();\n}\n}\n};\n@endcode"]
+        /// Message_ProgressScope class provides convenient way to advance progress
+        /// indicator in context of complex program organized in hierarchical way,
+        /// where usually it is difficult (or even not possible) to consider process
+        /// as linear with fixed step.
+        ///
+        /// On every level (sub-operation) in hierarchy of operations
+        /// the local instance of the Message_ProgressScope class is created.
+        /// It takes a part of the upper-level scope (via Message_ProgressRange) and provides
+        /// a way to consider this part as independent scale with locally defined range.
+        ///
+        /// The position on the local scale may be advanced using the method Next(),
+        /// which allows iteration-like advancement. This method can take argument to
+        /// advance by the specified value (with default step equal to 1).
+        /// This method returns Message_ProgressRange object that takes responsibility
+        /// of making the specified step, either directly at its destruction or by
+        /// delegating this task to another sub-scope created from that range object.
+        ///
+        /// It is important that sub-scope must have life time less than
+        /// the life time of its parent scope that provided the range.
+        /// The usage pattern is to create scope objects as local variables in the
+        /// functions that do the job, and pass range objects returned by Next() to
+        /// the functions of the lower level, to allow them creating their own scopes.
+        ///
+        /// The scope has a name that can be used in visualization of the progress.
+        /// It can be null. Note that when C string literal is used as a name, then its
+        /// value is not copied, just pointer is stored. In other variants (char pointer
+        /// or a string class) the string is copied, which is additional overhead.
+        ///
+        /// The same instance of the progress scope! must not be used concurrently from different threads.
+        /// For the algorithm running its tasks in parallel threads, a common scope is
+        /// created before the parallel execution, and the range objects produced by method
+        /// Next() are used to initialise the data pertinent to each task.
+        /// Then the progress is advanced within each task using its own range object.
+        /// See example below.
+        ///
+        /// Note that while a range of the scope is specified using Standard_Real
+        /// (double) parameter, it is expected to be a positive integer value.
+        /// If the range is not an integer, method Next() shall be called with
+        /// explicit step argument, and the rounded value returned by method Value()
+        /// may be not coherent with the step and range.
+        ///
+        /// A scope can be created with option "infinite". This is useful when
+        /// the number of steps is not known by the time of the scope creation.
+        /// In this case the progress will be advanced logarithmically, approaching
+        /// the end of the scope at infinite number of steps. The parameter Max
+        /// for infinite scope indicates number of steps corresponding to mid-range.
+        ///
+        /// A progress scope created with empty constructor is not connected to any
+        /// progress indicator, and passing the range created on it to any algorithm
+        /// allows it executing safely without actual progress indication.
+        ///
+        /// Example of preparation of progress indicator:
+        ///
+        /// @code{.cpp}
+        /// Handle(Message_ProgressIndicator) aProgress = ...; // assume it can be null
+        /// func (Message_ProgressIndicator::Start (aProgress));
+        /// @endcode
+        ///
+        /// Example of usage in sequential process:
+        ///
+        /// @code{.cpp}
+        /// Message_ProgressScope aWholePS(aRange, "Whole process", 100);
+        ///
+        /// // do one step taking 20%
+        /// func1 (aWholePS.Next (20)); // func1 will take 20% of the whole scope
+        /// if (aWholePS.UserBreak()) // exit prematurely if the user requested break
+        /// return;
+        ///
+        /// // ... do next step taking 50%
+        /// func2 (aWholePS.Next (50));
+        /// if (aWholePS.UserBreak())
+        /// return;
+        /// @endcode
+        ///
+        /// Example of usage in nested cycle:
+        ///
+        /// @code{.cpp}
+        /// // Outer cycle
+        /// Message_ProgressScope anOuter (theProgress, "Outer", nbOuter);
+        /// for (Standard_Integer i = 0; i < nbOuter && anOuter.More(); i++)
+        /// {
+        /// // Inner cycle
+        /// Message_ProgressScope anInner (anOuter.Next(), "Inner", nbInner);
+        /// for (Standard_Integer j = 0; j < nbInner && anInner.More(); j++)
+        /// {
+        /// // Cycle body
+        /// func (anInner.Next());
+        /// }
+        /// }
+        /// @endcode
+        ///
+        /// Example of use in function:
+        ///
+        /// @code{.cpp}
+        /// //! Implementation of iterative algorithm showing its progress
+        /// func (const Message_ProgressRange& theProgress)
+        /// {
+        /// // Create local scope covering the given progress range.
+        /// // Set this scope to count aNbSteps steps.
+        /// Message_ProgressScope aScope (theProgress, "", aNbSteps);
+        /// for (Standard_Integer i = 0; i < aNbSteps && aScope.More(); i++)
+        /// {
+        /// // Optional: pass range returned by method Next() to the nested algorithm
+        /// // to allow it to show its progress too (by creating its own scope object).
+        /// // In any case the progress will advance to the next step by the end of the func2 call.
+        /// func2 (aScope.Next());
+        /// }
+        /// }
+        /// @endcode
+        ///
+        /// Example of usage in parallel process:
+        ///
+        /// @code{.cpp}
+        /// struct Task
+        /// {
+        /// Data& Data;
+        /// Message_ProgressRange Range;
+        ///
+        /// Task (const Data& theData, const Message_ProgressRange& theRange)
+        /// : Data (theData), Range (theRange) {}
+        /// };
+        /// struct Functor
+        /// {
+        /// void operator() (Task& theTask) const
+        /// {
+        /// // Note: it is essential that this method is executed only once for the same Task object
+        /// Message_ProgressScope aPS (theTask.Range, NULL, theTask.Data.NbItems);
+        /// for (Standard_Integer i = 0; i < theTask.Data.NbSteps && aPS.More(); i++)
+        /// {
+        /// do_job (theTask.Data.Item[i], aPS.Next());
+        /// }
+        /// }
+        /// };
+        /// ...
+        /// {
+        /// std::vector<Data> aData = ...;
+        /// std::vector<Task> aTasks;
+        ///
+        /// Message_ProgressScope aPS (aRootRange, "Data processing", aData.size());
+        /// for (Standard_Integer i = 0; i < aData.size(); ++i)
+        /// aTasks.push_back (Task (aData[i], aPS.Next()));
+        ///
+        /// OSD_Parallel::ForEach (aTasks.begin(), aTasks.end(), Functor());
+        /// }
+        /// @endcode
+        ///
+        /// For lightweight algorithms that do not need advancing the progress
+        /// within individual tasks the code can be simplified to avoid inner scopes:
+        ///
+        /// @code
+        /// struct Functor
+        /// {
+        /// void operator() (Task& theTask) const
+        /// {
+        /// if (theTask.Range.More())
+        /// {
+        /// do_job (theTask.Data);
+        /// // advance the progress
+        /// theTask.Range.Close();
+        /// }
+        /// }
+        /// };
+        /// @endcode
         #[cxx_name = "Message_ProgressScope"]
         type ProgressScope;
         /// /// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope::Message_ProgressScope()`
@@ -636,7 +825,47 @@ pub(crate) mod ffi {
         /// ======================== Message_Algorithm ========================
         /// /// **Source:** `Message_Algorithm.hxx` - `Message_Algorithm`
         ///
-        #[doc = "Class Message_Algorithm is intended to be the base class for\nclasses implementing algorithms or any operations that need\nto provide extended information on its execution to the\ncaller / user.\n\nIt provides generic mechanism for management of the execution\nstatus, collection and output of messages.\n\nThe algorithm uses methods SetStatus() to set an execution status.\nIt is possible to associate a status with a number or a string\n(second argument of SetStatus() methods) to indicate precisely\nthe item (object, element etc.) in the input data which caused\nthe problem.\n\nEach execution status generated by the algorithm has associated\ntext message that should be defined in the resource file loaded\nwith call to Message_MsgFile::LoadFile().\n\nThe messages corresponding to the statuses generated during the\nalgorithm execution are output to Message_Messenger using\nmethods SendMessages(). If status have associated numbers\nor strings, they are included in the message body in place of\n\"%s\" placeholder which should be present in the message text.\n\nThe name of the message text in the resource file is constructed\nfrom name of the class and name of the status, separated by dot,\nfor instance:\n\n.TObj_CheckModel.Alarm2\nError: Some objects (%s) have references to dead object(s)\n\nIf message for the status is not found with prefix of\nthe current class type, the same message is searched for the base\nclass(es) recursively.\n\nMessage can be set explicitly for the status; in this case the\nabove procedure is not used and supplied message is used as is.\n\nThe messages are output to the messenger, stored in the field;\nthough messenger can be changed, it is guaranteed to be non-null.\nBy default, Message::DefaultMessenger() is used."]
+        /// Class Message_Algorithm is intended to be the base class for
+        /// classes implementing algorithms or any operations that need
+        /// to provide extended information on its execution to the
+        /// caller / user.
+        ///
+        /// It provides generic mechanism for management of the execution
+        /// status, collection and output of messages.
+        ///
+        /// The algorithm uses methods SetStatus() to set an execution status.
+        /// It is possible to associate a status with a number or a string
+        /// (second argument of SetStatus() methods) to indicate precisely
+        /// the item (object, element etc.) in the input data which caused
+        /// the problem.
+        ///
+        /// Each execution status generated by the algorithm has associated
+        /// text message that should be defined in the resource file loaded
+        /// with call to Message_MsgFile::LoadFile().
+        ///
+        /// The messages corresponding to the statuses generated during the
+        /// algorithm execution are output to Message_Messenger using
+        /// methods SendMessages(). If status have associated numbers
+        /// or strings, they are included in the message body in place of
+        /// "%s" placeholder which should be present in the message text.
+        ///
+        /// The name of the message text in the resource file is constructed
+        /// from name of the class and name of the status, separated by dot,
+        /// for instance:
+        ///
+        /// .TObj_CheckModel.Alarm2
+        /// Error: Some objects (%s) have references to dead object(s)
+        ///
+        /// If message for the status is not found with prefix of
+        /// the current class type, the same message is searched for the base
+        /// class(es) recursively.
+        ///
+        /// Message can be set explicitly for the status; in this case the
+        /// above procedure is not used and supplied message is used as is.
+        ///
+        /// The messages are output to the messenger, stored in the field;
+        /// though messenger can be changed, it is guaranteed to be non-null.
+        /// By default, Message::DefaultMessenger() is used.
         #[cxx_name = "Message_Algorithm"]
         type Algorithm;
         /// /// **Source:** `Message_Algorithm.hxx` - `Message_Algorithm::Message_Algorithm()`
@@ -1085,6 +1314,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// BaseAllocator from n_collection module
         type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
         /// BaseList from n_collection module
@@ -1171,70 +1401,71 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "Message_Attribute"]
         type Message_Attribute;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Message_CompositeAlerts"]
         type Message_CompositeAlerts;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Message_ListOfAlert"]
         type Message_ListOfAlert;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Message_SequenceOfPrinters"]
         type Message_SequenceOfPrinters;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Standard_SStream"]
         type Standard_SStream;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_HPackedMapOfInteger"]
         type TColStd_HPackedMapOfInteger;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_SequenceOfHExtendedString"]
         type TColStd_SequenceOfHExtendedString;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMessageAlert"]
         type HandleMessageAlert;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMessageAlertExtended"]
         type HandleMessageAlertExtended;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMessageAlgorithm"]
         type HandleMessageAlgorithm;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMessageAttribute"]
         type HandleMessageAttribute;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMessageCompositeAlerts"]
         type HandleMessageCompositeAlerts;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMessageMessenger"]
         type HandleMessageMessenger;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMessagePrinter"]
         type HandleMessagePrinter;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMessageProgressIndicator"]
         type HandleMessageProgressIndicator;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMessageReport"]
         type HandleMessageReport;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardTransient"]
         type HandleStandardTransient;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHPackedMapOfInteger"]
         type HandleTColStdHPackedMapOfInteger;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHSequenceOfHExtendedString"]
         type HandleTColStdHSequenceOfHExtendedString;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTCollectionHAsciiString"]
         type HandleTCollectionHAsciiString;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTCollectionHExtendedString"]
         type HandleTCollectionHExtendedString;
     }

@@ -32,7 +32,7 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Failure;
 impl Failure {
-    #[doc = "Creates a status object of type \"Failure\"."]
+    /// Creates a status object of type "Failure".
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Failure_ctor()
     }
@@ -42,12 +42,15 @@ impl Failure {
         ffi::Failure_ctor_failure(f)
     }
 
-    #[doc = "Creates a status object of type \"Failure\".\n@param[in] theDesc  exception description"]
+    /// Creates a status object of type "Failure".
+    /// @param[in] theDesc  exception description
     pub fn new_charptr(theDesc: &str) -> cxx::UniquePtr<Self> {
         ffi::Failure_ctor_charptr(theDesc)
     }
 
-    #[doc = "Creates a status object of type \"Failure\" with stack trace.\n@param[in] theDesc  exception description\n@param[in] theStackTrace  associated stack trace"]
+    /// Creates a status object of type "Failure" with stack trace.
+    /// @param[in] theDesc  exception description
+    /// @param[in] theStackTrace  associated stack trace
     pub fn new_charptr2(theDesc: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
         ffi::Failure_ctor_charptr2(theDesc, theStackTrace)
     }
@@ -81,12 +84,16 @@ impl Failure {
         ffi::Failure_reraise_charptr(self, aMessage)
     }
 
-    #[doc = "Raises an exception of type \"Failure\" and associates\nan error message to it. The message can be printed\nin an exception handler."]
+    /// Raises an exception of type "Failure" and associates
+    /// an error message to it. The message can be printed
+    /// in an exception handler.
     pub fn raise_charptr(aMessage: &str) {
         ffi::Failure_raise_charptr(aMessage)
     }
 
-    #[doc = "Raises an exception of type \"Failure\" and associates\nan error message to it. The message can be constructed\nat run-time."]
+    /// Raises an exception of type "Failure" and associates
+    /// an error message to it. The message can be constructed
+    /// at run-time.
     pub fn raise_sstream(aReason: &ffi::Standard_SStream) {
         ffi::Failure_raise_sstream(aReason)
     }
@@ -243,7 +250,9 @@ impl Dump {
         ffi::Dump_init_value(theStreamStr, theStreamPos, theValue)
     }
 
-    #[doc = "Convert field name into dump text value, removes \"&\" and \"my\" prefixes\nAn example, for field myValue, theName is Value, for &myCLass, the name is Class\n@param theField a source value"]
+    /// Convert field name into dump text value, removes "&" and "my" prefixes
+    /// An example, for field myValue, theName is Value, for &myCLass, the name is Class
+    /// @param theField a source value
     pub fn dump_field_to_name(
         theField: &ffi::TCollection_AsciiString,
     ) -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
@@ -709,7 +718,8 @@ impl NoSuchObject {
 }
 pub use ffi::ErrorHandler;
 impl ErrorHandler {
-    #[doc = "Create a ErrorHandler (to be used with try{}catch(){}).\nIt uses the \"setjmp\" and \"longjmp\" routines."]
+    /// Create a ErrorHandler (to be used with try{}catch(){}).
+    /// It uses the "setjmp" and "longjmp" routines.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ErrorHandler_ctor()
     }
@@ -852,6 +862,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== Standard_Failure ========================
         /// /// **Source:** `Standard_Failure.hxx` - `Standard_Failure`
         ///
@@ -860,7 +871,7 @@ pub(crate) mod ffi {
         type Failure;
         /// /// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`
         ///
-        #[doc = "Creates a status object of type \"Failure\"."]
+        /// Creates a status object of type "Failure".
         #[cxx_name = "Standard_Failure_ctor"]
         fn Failure_ctor() -> UniquePtr<Failure>;
         /// /// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`
@@ -870,12 +881,15 @@ pub(crate) mod ffi {
         fn Failure_ctor_failure(f: &Failure) -> UniquePtr<Failure>;
         /// /// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`
         ///
-        #[doc = "Creates a status object of type \"Failure\".\n@param[in] theDesc  exception description"]
+        /// Creates a status object of type "Failure".
+        /// @param[in] theDesc  exception description
         #[cxx_name = "Standard_Failure_ctor_charptr"]
         fn Failure_ctor_charptr(theDesc: &str) -> UniquePtr<Failure>;
         /// /// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`
         ///
-        #[doc = "Creates a status object of type \"Failure\" with stack trace.\n@param[in] theDesc  exception description\n@param[in] theStackTrace  associated stack trace"]
+        /// Creates a status object of type "Failure" with stack trace.
+        /// @param[in] theDesc  exception description
+        /// @param[in] theStackTrace  associated stack trace
         #[cxx_name = "Standard_Failure_ctor_charptr2"]
         fn Failure_ctor_charptr2(theDesc: &str, theStackTrace: &str) -> UniquePtr<Failure>;
         #[cxx_name = "Reraise"]
@@ -906,10 +920,14 @@ pub(crate) mod ffi {
         fn Failure_set_stack_string(self_: Pin<&mut Failure>, theStack: &str);
         #[cxx_name = "Standard_Failure_Reraise"]
         fn Failure_reraise_charptr(self_: Pin<&mut Failure>, aMessage: &str);
-        #[doc = "Raises an exception of type \"Failure\" and associates\nan error message to it. The message can be printed\nin an exception handler."]
+        /// Raises an exception of type "Failure" and associates
+        /// an error message to it. The message can be printed
+        /// in an exception handler.
         #[cxx_name = "Standard_Failure_Raise_charptr"]
         fn Failure_raise_charptr(aMessage: &str);
-        #[doc = "Raises an exception of type \"Failure\" and associates\nan error message to it. The message can be constructed\nat run-time."]
+        /// Raises an exception of type "Failure" and associates
+        /// an error message to it. The message can be constructed
+        /// at run-time.
         #[cxx_name = "Standard_Failure_Raise_sstream"]
         fn Failure_raise_sstream(aReason: &Standard_SStream);
         /// Used to construct an instance of the exception object as a handle.
@@ -1091,7 +1109,9 @@ pub(crate) mod ffi {
             theStreamPos: &mut i32,
             theValue: Pin<&mut TCollection_AsciiString>,
         ) -> bool;
-        #[doc = "Convert field name into dump text value, removes \"&\" and \"my\" prefixes\nAn example, for field myValue, theName is Value, for &myCLass, the name is Class\n@param theField a source value"]
+        /// Convert field name into dump text value, removes "&" and "my" prefixes
+        /// An example, for field myValue, theName is Value, for &myCLass, the name is Class
+        /// @param theField a source value
         #[cxx_name = "Standard_Dump_DumpFieldToName"]
         fn Dump_dump_field_to_name(
             theField: &TCollection_AsciiString,
@@ -1568,7 +1588,8 @@ pub(crate) mod ffi {
         type ErrorHandler;
         /// /// **Source:** `Standard_ErrorHandler.hxx` - `Standard_ErrorHandler::Standard_ErrorHandler()`
         ///
-        #[doc = "Create a ErrorHandler (to be used with try{}catch(){}).\nIt uses the \"setjmp\" and \"longjmp\" routines."]
+        /// Create a ErrorHandler (to be used with try{}catch(){}).
+        /// It uses the "setjmp" and "longjmp" routines.
         #[cxx_name = "Standard_ErrorHandler_ctor"]
         fn ErrorHandler_ctor() -> UniquePtr<ErrorHandler>;
         /// Unlinks and checks if there is a raised exception.
@@ -1577,7 +1598,8 @@ pub(crate) mod ffi {
         /// Removes handler from the handlers list
         #[cxx_name = "Unlink"]
         fn unlink(self: Pin<&mut ErrorHandler>);
-        #[doc = "Returns \"True\" if the caught exception has the same type\nor inherits from \"aType\""]
+        /// Returns "True" if the caught exception has the same type
+        /// or inherits from "aType"
         #[cxx_name = "Catches"]
         fn catches(self: Pin<&mut ErrorHandler>, aType: &HandleStandardType) -> bool;
         /// Returns label for jump
@@ -1692,6 +1714,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// BaseAllocator from n_collection module
         type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
         /// BaseList from n_collection module
@@ -1714,58 +1737,59 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "Standard_JmpBuf"]
         type Standard_JmpBuf;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Standard_SStream"]
         type Standard_SStream;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardConstructionError"]
         type HandleStandardConstructionError;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardDimensionError"]
         type HandleStandardDimensionError;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardDimensionMismatch"]
         type HandleStandardDimensionMismatch;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardDomainError"]
         type HandleStandardDomainError;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardFailure"]
         type HandleStandardFailure;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardNoSuchObject"]
         type HandleStandardNoSuchObject;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardNotImplemented"]
         type HandleStandardNotImplemented;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardNullObject"]
         type HandleStandardNullObject;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardNumericError"]
         type HandleStandardNumericError;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardOutOfMemory"]
         type HandleStandardOutOfMemory;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardOutOfRange"]
         type HandleStandardOutOfRange;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardProgramError"]
         type HandleStandardProgramError;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardRangeError"]
         type HandleStandardRangeError;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardTransient"]
         type HandleStandardTransient;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardTypeMismatch"]
         type HandleStandardTypeMismatch;
     }

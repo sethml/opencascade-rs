@@ -302,6 +302,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== TColStd_HArray1OfInteger ========================
         /// /// **Source:** `TColStd_HArray1OfInteger.hxx` - `TColStd_HArray1OfInteger`
         #[cxx_name = "TColStd_HArray1OfInteger"]
@@ -779,6 +780,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// BaseAllocator from n_collection module
         type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
         /// BaseList from n_collection module
@@ -835,61 +837,62 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfBoolean"]
         type TColStd_Array1OfBoolean;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfInteger"]
         type TColStd_Array1OfInteger;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfTransient"]
         type TColStd_Array1OfTransient;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array2OfReal"]
         type TColStd_Array2OfReal;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_SequenceOfHExtendedString"]
         type TColStd_SequenceOfHExtendedString;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_SequenceOfInteger"]
         type TColStd_SequenceOfInteger;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_SequenceOfReal"]
         type TColStd_SequenceOfReal;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_SequenceOfTransient"]
         type TColStd_SequenceOfTransient;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHArray1OfBoolean"]
         type HandleTColStdHArray1OfBoolean;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHArray1OfInteger"]
         type HandleTColStdHArray1OfInteger;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHArray1OfReal"]
         type HandleTColStdHArray1OfReal;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHArray1OfTransient"]
         type HandleTColStdHArray1OfTransient;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHArray2OfReal"]
         type HandleTColStdHArray2OfReal;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHSequenceOfHExtendedString"]
         type HandleTColStdHSequenceOfHExtendedString;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHSequenceOfInteger"]
         type HandleTColStdHSequenceOfInteger;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHSequenceOfReal"]
         type HandleTColStdHSequenceOfReal;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHSequenceOfTransient"]
         type HandleTColStdHSequenceOfTransient;
     }

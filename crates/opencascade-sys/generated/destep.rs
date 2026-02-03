@@ -29,6 +29,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== DESTEP_Parameters ========================
         /// /// **Source:** `DESTEP_Parameters.hxx` - `DESTEP_Parameters`
         #[cxx_name = "DESTEP_Parameters"]
@@ -49,6 +50,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// AsciiString from t_collection module
         type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
         /// ExtendedString from t_collection module
@@ -61,7 +63,8 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "DE_ShapeFixParameters"]
         type DE_ShapeFixParameters;
     }

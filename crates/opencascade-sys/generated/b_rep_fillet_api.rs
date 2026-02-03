@@ -461,6 +461,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepFilletAPI_LocalOperation ========================
         /// /// **Source:** `BRepFilletAPI_LocalOperation.hxx` - `BRepFilletAPI_LocalOperation`
         ///
@@ -1513,6 +1514,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Command from b_rep_builder_api module
         type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
         /// MakeEdge from b_rep_builder_api module
@@ -1661,28 +1663,29 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TColgp_Array1OfPnt2d"]
         type TColgp_Array1OfPnt2d;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopOpeBRepBuild_HBuilder"]
         type TopOpeBRepBuild_HBuilder;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_SequenceOfShape"]
         type TopTools_SequenceOfShape;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleChFiDSSecHArray1"]
         type HandleChFiDSSecHArray1;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleLawFunction"]
         type HandleLawFunction;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTopOpeBRepBuildHBuilder"]
         type HandleTopOpeBRepBuildHBuilder;
     }

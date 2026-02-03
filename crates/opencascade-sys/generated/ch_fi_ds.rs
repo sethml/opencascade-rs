@@ -240,6 +240,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== ChFiDS_SecHArray1 ========================
         /// /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1`
         #[cxx_name = "ChFiDS_SecHArray1"]
@@ -846,6 +847,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Curve from adaptor3d module
         type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
         /// CurveOnSurface from adaptor3d module
@@ -1072,58 +1074,59 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "ChFiDS_ListOfStripe"]
         type ChFiDS_ListOfStripe;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "ChFiDS_SecArray1"]
         type ChFiDS_SecArray1;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "ChFiDS_SequenceOfSurfData"]
         type ChFiDS_SequenceOfSurfData;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "ChFiDS_Spine"]
         type ChFiDS_Spine;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleAdaptor3dCurve"]
         type HandleAdaptor3dCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleChFiDSHData"]
         type HandleChFiDSHData;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleChFiDSSecHArray1"]
         type HandleChFiDSSecHArray1;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleChFiDSSpine"]
         type HandleChFiDSSpine;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleChFiDSStripe"]
         type HandleChFiDSStripe;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleChFiDSSurfData"]
         type HandleChFiDSSurfData;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dCurve"]
         type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomBSplineCurve"]
         type HandleGeomBSplineCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomBezierCurve"]
         type HandleGeomBezierCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeomCurve"]
         type HandleGeomCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardTransient"]
         type HandleStandardTransient;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

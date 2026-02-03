@@ -13,7 +13,8 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Location;
 impl Location {
-    #[doc = "Constructs an empty local coordinate system object.\nNote: A Location constructed from a default datum is said to be \"empty\"."]
+    /// Constructs an empty local coordinate system object.
+    /// Note: A Location constructed from a default datum is said to be "empty".
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Location_ctor()
     }
@@ -104,6 +105,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== TopLoc_Location ========================
         /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location`
         ///
@@ -115,7 +117,8 @@ pub(crate) mod ffi {
         type Location;
         /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`
         ///
-        #[doc = "Constructs an empty local coordinate system object.\nNote: A Location constructed from a default datum is said to be \"empty\"."]
+        /// Constructs an empty local coordinate system object.
+        /// Note: A Location constructed from a default datum is said to be "empty".
         #[cxx_name = "TopLoc_Location_ctor"]
         fn Location_ctor() -> UniquePtr<Location>;
         /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`
@@ -293,6 +296,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -415,13 +419,14 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TopLoc_Datum3D"]
         type TopLoc_Datum3D;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopLoc_ItemLocation"]
         type TopLoc_ItemLocation;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTopLocDatum3D"]
         type HandleTopLocDatum3D;
     }

@@ -103,6 +103,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepOffset_MakeOffset ========================
         /// /// **Source:** `BRepOffset_MakeOffset.hxx` - `BRepOffset_MakeOffset`
         #[cxx_name = "BRepOffset_MakeOffset"]
@@ -401,6 +402,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Image from b_rep_algo module
         type BRepAlgo_Image = crate::b_rep_algo::ffi::Image;
         /// CircSection from ch_fi_ds module
@@ -491,28 +493,29 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "BRepAlgo_AsDes"]
         type BRepAlgo_AsDes;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "BRepOffset_ListOfInterval"]
         type BRepOffset_ListOfInterval;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_DataMapOfShapeReal"]
         type TopTools_DataMapOfShapeReal;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_DataMapOfShapeShape"]
         type TopTools_DataMapOfShapeShape;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_IndexedMapOfShape"]
         type TopTools_IndexedMapOfShape;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TopTools_MapOfShape"]
         type TopTools_MapOfShape;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBRepAlgoAsDes"]
         type HandleBRepAlgoAsDes;
     }

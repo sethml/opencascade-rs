@@ -169,6 +169,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepMesh_IncrementalMesh ========================
         /// /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh`
         ///
@@ -415,7 +416,7 @@ pub(crate) mod ffi {
         fn Edge_ctor() -> UniquePtr<Edge>;
         /// Checks if the given edge and this one have the same orientation.
         /// @param theOther edge to be checked against this one.
-        /// \\return TRUE if edges have the same orientation, FALSE if not.
+        /// \return TRUE if edges have the same orientation, FALSE if not.
         #[cxx_name = "IsSameOrientation"]
         fn is_same_orientation(self: &Edge, theOther: &Edge) -> bool;
         /// Checks for equality with another edge.
@@ -460,6 +461,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Context from i_mesh_tools module
         type IMeshTools_Context = crate::i_mesh_tools::ffi::Context;
         /// ModelAlgo from i_mesh_tools module
@@ -640,13 +642,14 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Handle to OCCT object"]
+
+        /// Handle to OCCT object
         #[cxx_name = "HandleBRepMeshDiscretRoot"]
         type HandleBRepMeshDiscretRoot;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleIMeshToolsContext"]
         type HandleIMeshToolsContext;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

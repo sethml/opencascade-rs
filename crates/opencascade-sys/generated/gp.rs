@@ -136,12 +136,19 @@ impl Ax2 {
         ffi::Ax2_ctor()
     }
 
-    #[doc = "Creates an axis placement with an origin P such that:\n-   N is the Direction, and\n-   the \"X Direction\" is normal to N, in the plane\ndefined by the vectors (N, Vx): \"X\nDirection\" = (N ^ Vx) ^ N,\nException: raises ConstructionError if N and Vx are parallel (same or opposite orientation)."]
+    /// Creates an axis placement with an origin P such that:
+    /// -   N is the Direction, and
+    /// -   the "X Direction" is normal to N, in the plane
+    /// defined by the vectors (N, Vx): "X
+    /// Direction" = (N ^ Vx) ^ N,
+    /// Exception: raises ConstructionError if N and Vx are parallel (same or opposite orientation).
     pub fn new_pnt_dir2(P: &ffi::Pnt, N: &ffi::Dir, Vx: &ffi::Dir) -> cxx::UniquePtr<Self> {
         ffi::Ax2_ctor_pnt_dir2(P, N, Vx)
     }
 
-    #[doc = "Creates -   a coordinate system with an origin P, where V\ngives the \"main Direction\" (here, \"X Direction\" and \"Y\nDirection\" are defined automatically)."]
+    /// Creates -   a coordinate system with an origin P, where V
+    /// gives the "main Direction" (here, "X Direction" and "Y
+    /// Direction" are defined automatically).
     pub fn new_pnt_dir(P: &ffi::Pnt, V: &ffi::Dir) -> cxx::UniquePtr<Self> {
         ffi::Ax2_ctor_pnt_dir(P, V)
     }
@@ -151,17 +158,60 @@ impl Ax2 {
         ffi::Ax2_to_owned(self)
     }
 
-    #[doc = "Performs a symmetrical transformation of this coordinate\nsystem with respect to:\n-   the point P, and creates a new one.\nWarning\nThis transformation is always performed on the origin.\nIn case of a reflection with respect to a point:\n- the main direction of the coordinate system is not changed, and\n- the \"X Direction\" and the \"Y Direction\" are simply reversed\nIn case of a reflection with respect to an axis or a plane:\n-   the transformation is applied to the \"X Direction\"\nand the \"Y Direction\", then\n-   the \"main Direction\" is recomputed as the cross\nproduct \"X Direction\" ^ \"Y   Direction\".\nThis maintains the right-handed property of the\ncoordinate system."]
+    /// Performs a symmetrical transformation of this coordinate
+    /// system with respect to:
+    /// -   the point P, and creates a new one.
+    /// Warning
+    /// This transformation is always performed on the origin.
+    /// In case of a reflection with respect to a point:
+    /// - the main direction of the coordinate system is not changed, and
+    /// - the "X Direction" and the "Y Direction" are simply reversed
+    /// In case of a reflection with respect to an axis or a plane:
+    /// -   the transformation is applied to the "X Direction"
+    /// and the "Y Direction", then
+    /// -   the "main Direction" is recomputed as the cross
+    /// product "X Direction" ^ "Y   Direction".
+    /// This maintains the right-handed property of the
+    /// coordinate system.
     pub fn mirrored_pnt(&self, P: &ffi::Pnt) -> cxx::UniquePtr<ffi::Ax2> {
         ffi::Ax2_mirrored_pnt(self, P)
     }
 
-    #[doc = "Performs a symmetrical transformation of this coordinate\nsystem with respect to:\n-   the axis A1, and  creates a new one.\nWarning\nThis transformation is always performed on the origin.\nIn case of a reflection with respect to a point:\n- the main direction of the coordinate system is not changed, and\n- the \"X Direction\" and the \"Y Direction\" are simply reversed\nIn case of a reflection with respect to an axis or a plane:\n-   the transformation is applied to the \"X Direction\"\nand the \"Y Direction\", then\n-   the \"main Direction\" is recomputed as the cross\nproduct \"X Direction\" ^ \"Y   Direction\".\nThis maintains the right-handed property of the\ncoordinate system."]
+    /// Performs a symmetrical transformation of this coordinate
+    /// system with respect to:
+    /// -   the axis A1, and  creates a new one.
+    /// Warning
+    /// This transformation is always performed on the origin.
+    /// In case of a reflection with respect to a point:
+    /// - the main direction of the coordinate system is not changed, and
+    /// - the "X Direction" and the "Y Direction" are simply reversed
+    /// In case of a reflection with respect to an axis or a plane:
+    /// -   the transformation is applied to the "X Direction"
+    /// and the "Y Direction", then
+    /// -   the "main Direction" is recomputed as the cross
+    /// product "X Direction" ^ "Y   Direction".
+    /// This maintains the right-handed property of the
+    /// coordinate system.
     pub fn mirrored_ax1(&self, A1: &ffi::Ax1) -> cxx::UniquePtr<ffi::Ax2> {
         ffi::Ax2_mirrored_ax1(self, A1)
     }
 
-    #[doc = "Performs a symmetrical transformation of this coordinate\nsystem with respect to:\n-   the plane defined by the origin, \"X Direction\" and \"Y\nDirection\" of coordinate system A2 and creates a new one.\nWarning\nThis transformation is always performed on the origin.\nIn case of a reflection with respect to a point:\n- the main direction of the coordinate system is not changed, and\n- the \"X Direction\" and the \"Y Direction\" are simply reversed\nIn case of a reflection with respect to an axis or a plane:\n-   the transformation is applied to the \"X Direction\"\nand the \"Y Direction\", then\n-   the \"main Direction\" is recomputed as the cross\nproduct \"X Direction\" ^ \"Y   Direction\".\nThis maintains the right-handed property of the\ncoordinate system."]
+    /// Performs a symmetrical transformation of this coordinate
+    /// system with respect to:
+    /// -   the plane defined by the origin, "X Direction" and "Y
+    /// Direction" of coordinate system A2 and creates a new one.
+    /// Warning
+    /// This transformation is always performed on the origin.
+    /// In case of a reflection with respect to a point:
+    /// - the main direction of the coordinate system is not changed, and
+    /// - the "X Direction" and the "Y Direction" are simply reversed
+    /// In case of a reflection with respect to an axis or a plane:
+    /// -   the transformation is applied to the "X Direction"
+    /// and the "Y Direction", then
+    /// -   the "main Direction" is recomputed as the cross
+    /// product "X Direction" ^ "Y   Direction".
+    /// This maintains the right-handed property of the
+    /// coordinate system.
     pub fn mirrored_ax2(&self, A2: &ffi::Ax2) -> cxx::UniquePtr<ffi::Ax2> {
         ffi::Ax2_mirrored_ax2(self, A2)
     }
@@ -172,12 +222,21 @@ impl Ax2 {
         ffi::Ax2_rotated(self, theA1, theAng)
     }
 
-    #[doc = "Applies a scaling transformation on the axis placement.\nThe \"Location\" point of the axisplacement is modified.\nWarnings :\nIf the scale <S> is negative :\n. the main direction of the axis placement is not changed.\n. The \"XDirection\" and the \"YDirection\" are reversed.\nSo the axis placement stay right handed."]
+    /// Applies a scaling transformation on the axis placement.
+    /// The "Location" point of the axisplacement is modified.
+    /// Warnings :
+    /// If the scale <S> is negative :
+    /// . the main direction of the axis placement is not changed.
+    /// . The "XDirection" and the "YDirection" are reversed.
+    /// So the axis placement stay right handed.
     pub fn scaled(&self, theP: &ffi::Pnt, theS: f64) -> cxx::UniquePtr<ffi::Ax2> {
         ffi::Ax2_scaled(self, theP, theS)
     }
 
-    #[doc = "Transforms an axis placement with a Trsf.\nThe \"Location\" point, the \"XDirection\" and the \"YDirection\" are transformed with theT.\nThe resulting main \"Direction\" of <me> is the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation."]
+    /// Transforms an axis placement with a Trsf.
+    /// The "Location" point, the "XDirection" and the "YDirection" are transformed with theT.
+    /// The resulting main "Direction" of <me> is the cross product between
+    /// the "XDirection" and the "YDirection" after transformation.
     pub fn transformed(&self, theT: &ffi::Trsf) -> cxx::UniquePtr<ffi::Ax2> {
         ffi::Ax2_transformed(self, theT)
     }
@@ -201,7 +260,12 @@ impl Ax22d {
         ffi::Ax22d_ctor()
     }
 
-    #[doc = "Creates a coordinate system with origin theP and where:\n-   theVx is the \"X Direction\", and\n-   the \"Y Direction\" is orthogonal to theVx and\noriented so that the cross products theVx^\"Y\nDirection\" and theVx^theVy have the same sign.\nRaises ConstructionError if theVx and theVy are parallel (same or opposite orientation)."]
+    /// Creates a coordinate system with origin theP and where:
+    /// -   theVx is the "X Direction", and
+    /// -   the "Y Direction" is orthogonal to theVx and
+    /// oriented so that the cross products theVx^"Y
+    /// Direction" and theVx^theVy have the same sign.
+    /// Raises ConstructionError if theVx and theVy are parallel (same or opposite orientation).
     pub fn new_pnt2d_dir2d2(
         theP: &ffi::Pnt2d,
         theVx: &ffi::Dir2d,
@@ -210,7 +274,10 @@ impl Ax22d {
         ffi::Ax22d_ctor_pnt2d_dir2d2(theP, theVx, theVy)
     }
 
-    #[doc = "Creates -   a coordinate system with origin theP and \"X Direction\"\ntheV, which is:\n-   right-handed if theIsSense is true (default value), or\n-   left-handed if theIsSense is false"]
+    /// Creates -   a coordinate system with origin theP and "X Direction"
+    /// theV, which is:
+    /// -   right-handed if theIsSense is true (default value), or
+    /// -   left-handed if theIsSense is false
     pub fn new_pnt2d_dir2d_bool(
         theP: &ffi::Pnt2d,
         theV: &ffi::Dir2d,
@@ -219,7 +286,10 @@ impl Ax22d {
         ffi::Ax22d_ctor_pnt2d_dir2d_bool(theP, theV, theIsSense)
     }
 
-    #[doc = "Creates -   a coordinate system where its origin is the origin of\ntheA and its \"X Direction\" is the unit vector of theA, which   is:\n-   right-handed if theIsSense is true (default value), or\n-   left-handed if theIsSense is false."]
+    /// Creates -   a coordinate system where its origin is the origin of
+    /// theA and its "X Direction" is the unit vector of theA, which   is:
+    /// -   right-handed if theIsSense is true (default value), or
+    /// -   left-handed if theIsSense is false.
     pub fn new_ax2d_bool(theA: &ffi::Ax2d, theIsSense: bool) -> cxx::UniquePtr<Self> {
         ffi::Ax22d_ctor_ax2d_bool(theA, theIsSense)
     }
@@ -229,22 +299,40 @@ impl Ax22d {
         ffi::Ax22d_to_owned(self)
     }
 
-    #[doc = "Returns an axis, for which\n-   the origin is that of this coordinate system, and\n-   the unit vector is either the \"X Direction\"  of this coordinate system.\nNote: the result is the \"X Axis\" of this coordinate system."]
+    /// Returns an axis, for which
+    /// -   the origin is that of this coordinate system, and
+    /// -   the unit vector is either the "X Direction"  of this coordinate system.
+    /// Note: the result is the "X Axis" of this coordinate system.
     pub fn x_axis(&self) -> cxx::UniquePtr<ffi::Ax2d> {
         ffi::Ax22d_x_axis(self)
     }
 
-    #[doc = "Returns an axis, for which\n-   the origin is that of this coordinate system, and\n- the unit vector is either the  \"Y Direction\" of this coordinate system.\nNote: the result is the \"Y Axis\" of this coordinate system."]
+    /// Returns an axis, for which
+    /// -   the origin is that of this coordinate system, and
+    /// - the unit vector is either the  "Y Direction" of this coordinate system.
+    /// Note: the result is the "Y Axis" of this coordinate system.
     pub fn y_axis(&self) -> cxx::UniquePtr<ffi::Ax2d> {
         ffi::Ax22d_y_axis(self)
     }
 
-    #[doc = "Performs the symmetrical transformation of an axis\nplacement with respect to the point theP which is the\ncenter of the symmetry.\nWarnings :\nThe main direction of the axis placement is not changed.\nThe \"XDirection\" and the \"YDirection\" are reversed.\nSo the axis placement stay right handed."]
+    /// Performs the symmetrical transformation of an axis
+    /// placement with respect to the point theP which is the
+    /// center of the symmetry.
+    /// Warnings :
+    /// The main direction of the axis placement is not changed.
+    /// The "XDirection" and the "YDirection" are reversed.
+    /// So the axis placement stay right handed.
     pub fn mirrored_pnt2d(&self, theP: &ffi::Pnt2d) -> cxx::UniquePtr<ffi::Ax22d> {
         ffi::Ax22d_mirrored_pnt2d(self, theP)
     }
 
-    #[doc = "Performs the symmetrical transformation of an axis\nplacement with respect to an axis placement which\nis the axis of the symmetry.\nThe transformation is performed on the \"Location\"\npoint, on the \"XDirection\" and \"YDirection\".\nThe resulting main \"Direction\" is the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation."]
+    /// Performs the symmetrical transformation of an axis
+    /// placement with respect to an axis placement which
+    /// is the axis of the symmetry.
+    /// The transformation is performed on the "Location"
+    /// point, on the "XDirection" and "YDirection".
+    /// The resulting main "Direction" is the cross product between
+    /// the "XDirection" and the "YDirection" after transformation.
     pub fn mirrored_ax2d(&self, theA: &ffi::Ax2d) -> cxx::UniquePtr<ffi::Ax22d> {
         ffi::Ax22d_mirrored_ax2d(self, theA)
     }
@@ -256,12 +344,22 @@ impl Ax22d {
         ffi::Ax22d_rotated(self, theP, theAng)
     }
 
-    #[doc = "Applies a scaling transformation on the axis placement.\nThe \"Location\" point of the axisplacement is modified.\nWarnings :\nIf the scale <theS> is negative :\n. the main direction of the axis placement is not changed.\n. The \"XDirection\" and the \"YDirection\" are reversed.\nSo the axis placement stay right handed."]
+    /// Applies a scaling transformation on the axis placement.
+    /// The "Location" point of the axisplacement is modified.
+    /// Warnings :
+    /// If the scale <theS> is negative :
+    /// . the main direction of the axis placement is not changed.
+    /// . The "XDirection" and the "YDirection" are reversed.
+    /// So the axis placement stay right handed.
     pub fn scaled(&self, theP: &ffi::Pnt2d, theS: f64) -> cxx::UniquePtr<ffi::Ax22d> {
         ffi::Ax22d_scaled(self, theP, theS)
     }
 
-    #[doc = "Transforms an axis placement with a Trsf.\nThe \"Location\" point, the \"XDirection\" and the\n\"YDirection\" are transformed with theT.  The resulting\nmain \"Direction\" of <me> is the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation."]
+    /// Transforms an axis placement with a Trsf.
+    /// The "Location" point, the "XDirection" and the
+    /// "YDirection" are transformed with theT.  The resulting
+    /// main "Direction" of <me> is the cross product between
+    /// the "XDirection" and the "YDirection" after transformation.
     pub fn transformed(&self, theT: &ffi::Trsf2d) -> cxx::UniquePtr<ffi::Ax22d> {
         ffi::Ax22d_transformed(self, theT)
     }
@@ -289,7 +387,9 @@ impl Ax2d {
         ffi::Ax2d_ctor()
     }
 
-    #[doc = "Creates an Ax2d.\n<theP> is the \"Location\" point of the axis placement\nand theV is the \"Direction\" of the axis placement."]
+    /// Creates an Ax2d.
+    /// <theP> is the "Location" point of the axis placement
+    /// and theV is the "Direction" of the axis placement.
     pub fn new_pnt2d_dir2d(theP: &ffi::Pnt2d, theV: &ffi::Dir2d) -> cxx::UniquePtr<Self> {
         ffi::Ax2d_ctor_pnt2d_dir2d(theP, theV)
     }
@@ -324,7 +424,9 @@ impl Ax2d {
         ffi::Ax2d_rotated(self, theP, theAng)
     }
 
-    #[doc = "Applies a scaling transformation on the axis placement.\nThe \"Location\" point of the axisplacement is modified.\nThe \"Direction\" is reversed if the scale is negative."]
+    /// Applies a scaling transformation on the axis placement.
+    /// The "Location" point of the axisplacement is modified.
+    /// The "Direction" is reversed if the scale is negative.
     pub fn scaled(&self, theP: &ffi::Pnt2d, theS: f64) -> cxx::UniquePtr<ffi::Ax2d> {
         ffi::Ax2d_scaled(self, theP, theS)
     }
@@ -363,7 +465,10 @@ impl Ax3 {
         ffi::Ax3_ctor_ax2(theA)
     }
 
-    #[doc = "Creates a  right handed axis placement with the\n\"Location\" point theP and  two directions, theN gives the\n\"Direction\" and theVx gives the \"XDirection\".\nRaises ConstructionError if theN and theVx are parallel (same or opposite orientation)."]
+    /// Creates a  right handed axis placement with the
+    /// "Location" point theP and  two directions, theN gives the
+    /// "Direction" and theVx gives the "XDirection".
+    /// Raises ConstructionError if theN and theVx are parallel (same or opposite orientation).
     pub fn new_pnt_dir2(
         theP: &ffi::Pnt,
         theN: &ffi::Dir,
@@ -372,7 +477,8 @@ impl Ax3 {
         ffi::Ax3_ctor_pnt_dir2(theP, theN, theVx)
     }
 
-    #[doc = "Creates an axis placement with the \"Location\" point <theP>\nand the normal direction <theV>."]
+    /// Creates an axis placement with the "Location" point <theP>
+    /// and the normal direction <theV>.
     pub fn new_pnt_dir(theP: &ffi::Pnt, theV: &ffi::Dir) -> cxx::UniquePtr<Self> {
         ffi::Ax3_ctor_pnt_dir(theP, theV)
     }
@@ -382,22 +488,46 @@ impl Ax3 {
         ffi::Ax3_to_owned(self)
     }
 
-    #[doc = "Computes a right-handed coordinate system with the\nsame \"X Direction\" and \"Y Direction\" as those of this\ncoordinate system, then recomputes the \"main Direction\".\nIf this coordinate system is right-handed, the result\nreturned is the same coordinate system. If this\ncoordinate system is left-handed, the result is reversed."]
+    /// Computes a right-handed coordinate system with the
+    /// same "X Direction" and "Y Direction" as those of this
+    /// coordinate system, then recomputes the "main Direction".
+    /// If this coordinate system is right-handed, the result
+    /// returned is the same coordinate system. If this
+    /// coordinate system is left-handed, the result is reversed.
     pub fn ax2(&self) -> cxx::UniquePtr<ffi::Ax2> {
         ffi::Ax3_ax2(self)
     }
 
-    #[doc = "Performs the symmetrical transformation of an axis\nplacement with respect to the point theP which is the\ncenter of the symmetry.\nWarnings :\nThe main direction of the axis placement is not changed.\nThe \"XDirection\" and the \"YDirection\" are reversed.\nSo the axis placement stay right handed."]
+    /// Performs the symmetrical transformation of an axis
+    /// placement with respect to the point theP which is the
+    /// center of the symmetry.
+    /// Warnings :
+    /// The main direction of the axis placement is not changed.
+    /// The "XDirection" and the "YDirection" are reversed.
+    /// So the axis placement stay right handed.
     pub fn mirrored_pnt(&self, theP: &ffi::Pnt) -> cxx::UniquePtr<ffi::Ax3> {
         ffi::Ax3_mirrored_pnt(self, theP)
     }
 
-    #[doc = "Performs the symmetrical transformation of an axis\nplacement with respect to an axis placement which\nis the axis of the symmetry.\nThe transformation is performed on the \"Location\"\npoint, on the \"XDirection\" and \"YDirection\".\nThe resulting main \"Direction\" is the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation."]
+    /// Performs the symmetrical transformation of an axis
+    /// placement with respect to an axis placement which
+    /// is the axis of the symmetry.
+    /// The transformation is performed on the "Location"
+    /// point, on the "XDirection" and "YDirection".
+    /// The resulting main "Direction" is the cross product between
+    /// the "XDirection" and the "YDirection" after transformation.
     pub fn mirrored_ax1(&self, theA1: &ffi::Ax1) -> cxx::UniquePtr<ffi::Ax3> {
         ffi::Ax3_mirrored_ax1(self, theA1)
     }
 
-    #[doc = "Performs the symmetrical transformation of an axis\nplacement with respect to a plane.\nThe axis placement  <theA2> locates the plane of the symmetry :\n(Location, XDirection, YDirection).\nThe transformation is performed on the \"Location\"\npoint, on the \"XDirection\" and \"YDirection\".\nThe resulting main \"Direction\" is the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation."]
+    /// Performs the symmetrical transformation of an axis
+    /// placement with respect to a plane.
+    /// The axis placement  <theA2> locates the plane of the symmetry :
+    /// (Location, XDirection, YDirection).
+    /// The transformation is performed on the "Location"
+    /// point, on the "XDirection" and "YDirection".
+    /// The resulting main "Direction" is the cross product between
+    /// the "XDirection" and the "YDirection" after transformation.
     pub fn mirrored_ax2(&self, theA2: &ffi::Ax2) -> cxx::UniquePtr<ffi::Ax3> {
         ffi::Ax3_mirrored_ax2(self, theA2)
     }
@@ -409,12 +539,22 @@ impl Ax3 {
         ffi::Ax3_rotated(self, theA1, theAng)
     }
 
-    #[doc = "Applies a scaling transformation on the axis placement.\nThe \"Location\" point of the axisplacement is modified.\nWarnings :\nIf the scale <theS> is negative :\n. the main direction of the axis placement is not changed.\n. The \"XDirection\" and the \"YDirection\" are reversed.\nSo the axis placement stay right handed."]
+    /// Applies a scaling transformation on the axis placement.
+    /// The "Location" point of the axisplacement is modified.
+    /// Warnings :
+    /// If the scale <theS> is negative :
+    /// . the main direction of the axis placement is not changed.
+    /// . The "XDirection" and the "YDirection" are reversed.
+    /// So the axis placement stay right handed.
     pub fn scaled(&self, theP: &ffi::Pnt, theS: f64) -> cxx::UniquePtr<ffi::Ax3> {
         ffi::Ax3_scaled(self, theP, theS)
     }
 
-    #[doc = "Transforms an axis placement with a Trsf.\nThe \"Location\" point, the \"XDirection\" and the\n\"YDirection\" are transformed with theT.  The resulting\nmain \"Direction\" of <me> is the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation."]
+    /// Transforms an axis placement with a Trsf.
+    /// The "Location" point, the "XDirection" and the
+    /// "YDirection" are transformed with theT.  The resulting
+    /// main "Direction" of <me> is the cross product between
+    /// the "XDirection" and the "YDirection" after transformation.
     pub fn transformed(&self, theT: &ffi::Trsf) -> cxx::UniquePtr<ffi::Ax3> {
         ffi::Ax3_transformed(self, theT)
     }
@@ -451,12 +591,16 @@ impl Circ {
         ffi::Circ_to_owned(self)
     }
 
-    #[doc = "Returns the \"XAxis\" of the circle.\nThis axis is perpendicular to the axis of the conic.\nThis axis and the \"Yaxis\" define the plane of the conic."]
+    /// Returns the "XAxis" of the circle.
+    /// This axis is perpendicular to the axis of the conic.
+    /// This axis and the "Yaxis" define the plane of the conic.
     pub fn x_axis(&self) -> cxx::UniquePtr<ffi::Ax1> {
         ffi::Circ_x_axis(self)
     }
 
-    #[doc = "Returns the \"YAxis\" of the circle.\nThis axis and the \"Xaxis\" define the plane of the conic.\nThe \"YAxis\" is perpendicular to the \"Xaxis\"."]
+    /// Returns the "YAxis" of the circle.
+    /// This axis and the "Xaxis" define the plane of the conic.
+    /// The "YAxis" is perpendicular to the "Xaxis".
     pub fn y_axis(&self) -> cxx::UniquePtr<ffi::Ax1> {
         ffi::Circ_y_axis(self)
     }
@@ -488,7 +632,11 @@ impl Circ {
         ffi::Circ_rotated(self, theA1, theAng)
     }
 
-    #[doc = "Scales a circle. theS is the scaling value.\nWarnings :\nIf theS is negative the radius stay positive but\nthe \"XAxis\" and the \"YAxis\" are  reversed as for\nan ellipse."]
+    /// Scales a circle. theS is the scaling value.
+    /// Warnings :
+    /// If theS is negative the radius stay positive but
+    /// the "XAxis" and the "YAxis" are  reversed as for
+    /// an ellipse.
     pub fn scaled(&self, theP: &ffi::Pnt, theS: f64) -> cxx::UniquePtr<ffi::Circ> {
         ffi::Circ_scaled(self, theP, theS)
     }
@@ -554,7 +702,10 @@ impl Circ2d {
         ffi::Circ2d_y_axis(self)
     }
 
-    #[doc = "Reverses the orientation of the local coordinate system\nof this circle (the \"Y Direction\" is reversed) and therefore\nchanges the implicit orientation of this circle.\nReversed creates a new circle."]
+    /// Reverses the orientation of the local coordinate system
+    /// of this circle (the "Y Direction" is reversed) and therefore
+    /// changes the implicit orientation of this circle.
+    /// Reversed creates a new circle.
     pub fn reversed(&self) -> cxx::UniquePtr<ffi::Circ2d> {
         ffi::Circ2d_reversed(self)
     }
@@ -577,7 +728,11 @@ impl Circ2d {
         ffi::Circ2d_rotated(self, theP, theAng)
     }
 
-    #[doc = "Scales a circle. theS is the scaling value.\nWarnings :\nIf theS is negative the radius stay positive but\nthe \"XAxis\" and the \"YAxis\" are  reversed as for\nan ellipse."]
+    /// Scales a circle. theS is the scaling value.
+    /// Warnings :
+    /// If theS is negative the radius stay positive but
+    /// the "XAxis" and the "YAxis" are  reversed as for
+    /// an ellipse.
     pub fn scaled(&self, theP: &ffi::Pnt2d, theS: f64) -> cxx::UniquePtr<ffi::Circ2d> {
         ffi::Circ2d_scaled(self, theP, theS)
     }
@@ -699,7 +854,9 @@ impl Cylinder {
         ffi::Cylinder_ctor()
     }
 
-    #[doc = "Creates a cylinder of radius Radius, whose axis is the \"main\nAxis\" of theA3. theA3 is the local coordinate system of the cylinder.   Raises\nConstructionErrord if theRadius < 0.0"]
+    /// Creates a cylinder of radius Radius, whose axis is the "main
+    /// Axis" of theA3. theA3 is the local coordinate system of the cylinder.   Raises
+    /// ConstructionErrord if theRadius < 0.0
     pub fn new_ax3_real(theA3: &ffi::Ax3, theRadius: f64) -> cxx::UniquePtr<Self> {
         ffi::Cylinder_ctor_ax3_real(theA3, theRadius)
     }
@@ -863,7 +1020,10 @@ impl Dir {
         ffi::Dir_rotated(self, theA1, theAng)
     }
 
-    #[doc = "Transforms a direction with a \"Trsf\" from gp.\nWarnings :\nIf the scale factor of the \"Trsf\" theT is negative then the\ndirection <me> is reversed."]
+    /// Transforms a direction with a "Trsf" from gp.
+    /// Warnings :
+    /// If the scale factor of the "Trsf" theT is negative then the
+    /// direction <me> is reversed.
     pub fn transformed(&self, theT: &ffi::Trsf) -> cxx::UniquePtr<ffi::Dir> {
         ffi::Dir_transformed(self, theT)
     }
@@ -923,7 +1083,10 @@ impl Dir2d {
         ffi::Dir2d_rotated(self, theAng)
     }
 
-    #[doc = "Transforms a direction with the \"Trsf\" theT.\nWarnings :\nIf the scale factor of the \"Trsf\" theT is negative then the\ndirection <me> is reversed."]
+    /// Transforms a direction with the "Trsf" theT.
+    /// Warnings :
+    /// If the scale factor of the "Trsf" theT is negative then the
+    /// direction <me> is reversed.
     pub fn transformed(&self, theT: &ffi::Trsf2d) -> cxx::UniquePtr<ffi::Dir2d> {
         ffi::Dir2d_transformed(self, theT)
     }
@@ -935,7 +1098,14 @@ impl Elips {
         ffi::Elips_ctor()
     }
 
-    #[doc = "The major radius of the ellipse is on the \"XAxis\" and the\nminor radius is on the \"YAxis\" of the ellipse. The \"XAxis\"\nis defined with the \"XDirection\" of theA2 and the \"YAxis\" is\ndefined with the \"YDirection\" of theA2.\nWarnings :\nIt is not forbidden to create an ellipse with theMajorRadius =\ntheMinorRadius.\nRaises ConstructionError if theMajorRadius < theMinorRadius or theMinorRadius < 0."]
+    /// The major radius of the ellipse is on the "XAxis" and the
+    /// minor radius is on the "YAxis" of the ellipse. The "XAxis"
+    /// is defined with the "XDirection" of theA2 and the "YAxis" is
+    /// defined with the "YDirection" of theA2.
+    /// Warnings :
+    /// It is not forbidden to create an ellipse with theMajorRadius =
+    /// theMinorRadius.
+    /// Raises ConstructionError if theMajorRadius < theMinorRadius or theMinorRadius < 0.
     pub fn new_ax2_real2(
         theA2: &ffi::Ax2,
         theMajorRadius: f64,
@@ -949,32 +1119,55 @@ impl Elips {
         ffi::Elips_to_owned(self)
     }
 
-    #[doc = "Computes the first or second directrix of this ellipse.\nThese are the lines, in the plane of the ellipse, normal to\nthe major axis, at a distance equal to\nMajorRadius/e from the center of the ellipse, where\ne is the eccentricity of the ellipse.\nThe first directrix (Directrix1) is on the positive side of\nthe major axis. The second directrix (Directrix2) is on\nthe negative side.\nThe directrix is returned as an axis (gp_Ax1 object), the\norigin of which is situated on the \"X Axis\" of the local\ncoordinate system of this ellipse.\nExceptions\nStandard_ConstructionError if the eccentricity is null\n(the ellipse has degenerated into a circle)."]
+    /// Computes the first or second directrix of this ellipse.
+    /// These are the lines, in the plane of the ellipse, normal to
+    /// the major axis, at a distance equal to
+    /// MajorRadius/e from the center of the ellipse, where
+    /// e is the eccentricity of the ellipse.
+    /// The first directrix (Directrix1) is on the positive side of
+    /// the major axis. The second directrix (Directrix2) is on
+    /// the negative side.
+    /// The directrix is returned as an axis (gp_Ax1 object), the
+    /// origin of which is situated on the "X Axis" of the local
+    /// coordinate system of this ellipse.
+    /// Exceptions
+    /// Standard_ConstructionError if the eccentricity is null
+    /// (the ellipse has degenerated into a circle).
     pub fn directrix1(&self) -> cxx::UniquePtr<ffi::Ax1> {
         ffi::Elips_directrix1(self)
     }
 
-    #[doc = "This line is obtained by the symmetrical transformation\nof \"Directrix1\" with respect to the \"YAxis\" of the ellipse.\nExceptions\nStandard_ConstructionError if the eccentricity is null\n(the ellipse has degenerated into a circle)."]
+    /// This line is obtained by the symmetrical transformation
+    /// of "Directrix1" with respect to the "YAxis" of the ellipse.
+    /// Exceptions
+    /// Standard_ConstructionError if the eccentricity is null
+    /// (the ellipse has degenerated into a circle).
     pub fn directrix2(&self) -> cxx::UniquePtr<ffi::Ax1> {
         ffi::Elips_directrix2(self)
     }
 
-    #[doc = "Returns the first focus of the ellipse. This focus is on the\npositive side of the \"XAxis\" of the ellipse."]
+    /// Returns the first focus of the ellipse. This focus is on the
+    /// positive side of the "XAxis" of the ellipse.
     pub fn focus1(&self) -> cxx::UniquePtr<ffi::Pnt> {
         ffi::Elips_focus1(self)
     }
 
-    #[doc = "Returns the second focus of the ellipse. This focus is on the\nnegative side of the \"XAxis\" of the ellipse."]
+    /// Returns the second focus of the ellipse. This focus is on the
+    /// negative side of the "XAxis" of the ellipse.
     pub fn focus2(&self) -> cxx::UniquePtr<ffi::Pnt> {
         ffi::Elips_focus2(self)
     }
 
-    #[doc = "Returns the \"XAxis\" of the ellipse whose origin\nis the center of this ellipse. It is the major axis of the\nellipse."]
+    /// Returns the "XAxis" of the ellipse whose origin
+    /// is the center of this ellipse. It is the major axis of the
+    /// ellipse.
     pub fn x_axis(&self) -> cxx::UniquePtr<ffi::Ax1> {
         ffi::Elips_x_axis(self)
     }
 
-    #[doc = "Returns the \"YAxis\" of the ellipse whose unit vector is the \"X Direction\" or the \"Y Direction\"\nof the local coordinate system of this ellipse.\nThis is the minor axis of the ellipse."]
+    /// Returns the "YAxis" of the ellipse whose unit vector is the "X Direction" or the "Y Direction"
+    /// of the local coordinate system of this ellipse.
+    /// This is the minor axis of the ellipse.
     pub fn y_axis(&self) -> cxx::UniquePtr<ffi::Ax1> {
         ffi::Elips_y_axis(self)
     }
@@ -1053,7 +1246,21 @@ impl Elips2d {
         ffi::Elips2d_ctor_ax2d_real2_bool(theMajorAxis, theMajorRadius, theMinorRadius, theIsSense)
     }
 
-    #[doc = "Creates an ellipse with radii MajorRadius and\nMinorRadius, positioned in the plane by coordinate system theA where:\n-   the origin of theA is the center of the ellipse,\n-   the \"X Direction\" of theA defines the major axis of\nthe ellipse, that is, the major radius MajorRadius\nis measured along this axis, and\n-   the \"Y Direction\" of theA defines the minor axis of\nthe ellipse, that is, the minor radius theMinorRadius\nis measured along this axis, and\n-   the orientation (direct or indirect sense) of theA\ngives the orientation of the ellipse.\nWarnings :\nIt is possible to create an ellipse with\ntheMajorRadius = theMinorRadius.\nRaises ConstructionError if theMajorRadius < theMinorRadius or theMinorRadius < 0.0"]
+    /// Creates an ellipse with radii MajorRadius and
+    /// MinorRadius, positioned in the plane by coordinate system theA where:
+    /// -   the origin of theA is the center of the ellipse,
+    /// -   the "X Direction" of theA defines the major axis of
+    /// the ellipse, that is, the major radius MajorRadius
+    /// is measured along this axis, and
+    /// -   the "Y Direction" of theA defines the minor axis of
+    /// the ellipse, that is, the minor radius theMinorRadius
+    /// is measured along this axis, and
+    /// -   the orientation (direct or indirect sense) of theA
+    /// gives the orientation of the ellipse.
+    /// Warnings :
+    /// It is possible to create an ellipse with
+    /// theMajorRadius = theMinorRadius.
+    /// Raises ConstructionError if theMajorRadius < theMinorRadius or theMinorRadius < 0.0
     pub fn new_ax22d_real2(
         theA: &ffi::Ax22d,
         theMajorRadius: f64,
@@ -1067,12 +1274,25 @@ impl Elips2d {
         ffi::Elips2d_to_owned(self)
     }
 
-    #[doc = "This directrix is the line normal to the XAxis of the ellipse\nin the local plane (Z = 0) at a distance d = MajorRadius / e\nfrom the center of the ellipse, where e is the eccentricity of\nthe ellipse.\nThis line is parallel to the \"YAxis\". The intersection point\nbetween directrix1 and the \"XAxis\" is the location point of the\ndirectrix1. This point is on the positive side of the \"XAxis\".\n\nRaised if Eccentricity = 0.0. (The ellipse degenerates into a\ncircle)"]
+    /// This directrix is the line normal to the XAxis of the ellipse
+    /// in the local plane (Z = 0) at a distance d = MajorRadius / e
+    /// from the center of the ellipse, where e is the eccentricity of
+    /// the ellipse.
+    /// This line is parallel to the "YAxis". The intersection point
+    /// between directrix1 and the "XAxis" is the location point of the
+    /// directrix1. This point is on the positive side of the "XAxis".
+    ///
+    /// Raised if Eccentricity = 0.0. (The ellipse degenerates into a
+    /// circle)
     pub fn directrix1(&self) -> cxx::UniquePtr<ffi::Ax2d> {
         ffi::Elips2d_directrix1(self)
     }
 
-    #[doc = "This line is obtained by the symmetrical transformation\nof \"Directrix1\" with respect to the minor axis of the ellipse.\n\nRaised if Eccentricity = 0.0. (The ellipse degenerates into a\ncircle)."]
+    /// This line is obtained by the symmetrical transformation
+    /// of "Directrix1" with respect to the minor axis of the ellipse.
+    ///
+    /// Raised if Eccentricity = 0.0. (The ellipse degenerates into a
+    /// circle).
     pub fn directrix2(&self) -> cxx::UniquePtr<ffi::Ax2d> {
         ffi::Elips2d_directrix2(self)
     }
@@ -1299,7 +1519,24 @@ impl Hypr {
         ffi::Hypr_ctor()
     }
 
-    #[doc = "Creates a hyperbola with radius theMajorRadius and\ntheMinorRadius, positioned in the space by the\ncoordinate system theA2 such that:\n-   the origin of theA2 is the center of the hyperbola,\n-   the \"X Direction\" of theA2 defines the major axis of\nthe hyperbola, that is, the major radius\ntheMajorRadius is measured along this axis, and\n-   the \"Y Direction\" of theA2 defines the minor axis of\nthe hyperbola, that is, the minor radius\ntheMinorRadius is measured along this axis.\nNote: This class does not prevent the creation of a\nhyperbola where:\n-   theMajorAxis is equal to theMinorAxis, or\n-   theMajorAxis is less than theMinorAxis.\nExceptions\nStandard_ConstructionError if theMajorAxis or theMinorAxis is negative.\nRaises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0\nRaised if theMajorRadius < 0.0 or theMinorRadius < 0.0"]
+    /// Creates a hyperbola with radius theMajorRadius and
+    /// theMinorRadius, positioned in the space by the
+    /// coordinate system theA2 such that:
+    /// -   the origin of theA2 is the center of the hyperbola,
+    /// -   the "X Direction" of theA2 defines the major axis of
+    /// the hyperbola, that is, the major radius
+    /// theMajorRadius is measured along this axis, and
+    /// -   the "Y Direction" of theA2 defines the minor axis of
+    /// the hyperbola, that is, the minor radius
+    /// theMinorRadius is measured along this axis.
+    /// Note: This class does not prevent the creation of a
+    /// hyperbola where:
+    /// -   theMajorAxis is equal to theMinorAxis, or
+    /// -   theMajorAxis is less than theMinorAxis.
+    /// Exceptions
+    /// Standard_ConstructionError if theMajorAxis or theMinorAxis is negative.
+    /// Raises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0
+    /// Raised if theMajorRadius < 0.0 or theMinorRadius < 0.0
     pub fn new_ax2_real2(
         theA2: &ffi::Ax2,
         theMajorRadius: f64,
@@ -1331,47 +1568,70 @@ impl Hypr {
         ffi::Hypr_asymptote2(self)
     }
 
-    #[doc = "Computes the branch of hyperbola which is on the positive side of the\n\"YAxis\" of <me>."]
+    /// Computes the branch of hyperbola which is on the positive side of the
+    /// "YAxis" of <me>.
     pub fn conjugate_branch1(&self) -> cxx::UniquePtr<ffi::Hypr> {
         ffi::Hypr_conjugate_branch1(self)
     }
 
-    #[doc = "Computes the branch of hyperbola which is on the negative side of the\n\"YAxis\" of <me>."]
+    /// Computes the branch of hyperbola which is on the negative side of the
+    /// "YAxis" of <me>.
     pub fn conjugate_branch2(&self) -> cxx::UniquePtr<ffi::Hypr> {
         ffi::Hypr_conjugate_branch2(self)
     }
 
-    #[doc = "This directrix is the line normal to the XAxis of the hyperbola\nin the local plane (Z = 0) at a distance d = MajorRadius / e\nfrom the center of the hyperbola, where e is the eccentricity of\nthe hyperbola.\nThis line is parallel to the \"YAxis\". The intersection point\nbetween the directrix1 and the \"XAxis\" is the \"Location\" point\nof the directrix1. This point is on the positive side of the\n\"XAxis\"."]
+    /// This directrix is the line normal to the XAxis of the hyperbola
+    /// in the local plane (Z = 0) at a distance d = MajorRadius / e
+    /// from the center of the hyperbola, where e is the eccentricity of
+    /// the hyperbola.
+    /// This line is parallel to the "YAxis". The intersection point
+    /// between the directrix1 and the "XAxis" is the "Location" point
+    /// of the directrix1. This point is on the positive side of the
+    /// "XAxis".
     pub fn directrix1(&self) -> cxx::UniquePtr<ffi::Ax1> {
         ffi::Hypr_directrix1(self)
     }
 
-    #[doc = "This line is obtained by the symmetrical transformation\nof \"Directrix1\" with respect to the \"YAxis\" of the hyperbola."]
+    /// This line is obtained by the symmetrical transformation
+    /// of "Directrix1" with respect to the "YAxis" of the hyperbola.
     pub fn directrix2(&self) -> cxx::UniquePtr<ffi::Ax1> {
         ffi::Hypr_directrix2(self)
     }
 
-    #[doc = "Returns the first focus of the hyperbola. This focus is on the\npositive side of the \"XAxis\" of the hyperbola."]
+    /// Returns the first focus of the hyperbola. This focus is on the
+    /// positive side of the "XAxis" of the hyperbola.
     pub fn focus1(&self) -> cxx::UniquePtr<ffi::Pnt> {
         ffi::Hypr_focus1(self)
     }
 
-    #[doc = "Returns the second focus of the hyperbola. This focus is on the\nnegative side of the \"XAxis\" of the hyperbola."]
+    /// Returns the second focus of the hyperbola. This focus is on the
+    /// negative side of the "XAxis" of the hyperbola.
     pub fn focus2(&self) -> cxx::UniquePtr<ffi::Pnt> {
         ffi::Hypr_focus2(self)
     }
 
-    #[doc = "Returns the branch of hyperbola obtained by doing the\nsymmetrical transformation of <me> with respect to the\n\"YAxis\"  of <me>."]
+    /// Returns the branch of hyperbola obtained by doing the
+    /// symmetrical transformation of <me> with respect to the
+    /// "YAxis"  of <me>.
     pub fn other_branch(&self) -> cxx::UniquePtr<ffi::Hypr> {
         ffi::Hypr_other_branch(self)
     }
 
-    #[doc = "Computes an axis, whose\n-   the origin is the center of this hyperbola, and\n-   the unit vector is the \"X Direction\"\nof the local coordinate system of this hyperbola.\nThese axes are, the major axis (the \"X\nAxis\") and  of this hyperboReturns the \"XAxis\" of the hyperbola."]
+    /// Computes an axis, whose
+    /// -   the origin is the center of this hyperbola, and
+    /// -   the unit vector is the "X Direction"
+    /// of the local coordinate system of this hyperbola.
+    /// These axes are, the major axis (the "X
+    /// Axis") and  of this hyperboReturns the "XAxis" of the hyperbola.
     pub fn x_axis(&self) -> cxx::UniquePtr<ffi::Ax1> {
         ffi::Hypr_x_axis(self)
     }
 
-    #[doc = "Computes an axis, whose\n-   the origin is the center of this hyperbola, and\n-   the unit vector is the \"Y Direction\"\nof the local coordinate system of this hyperbola.\nThese axes are the minor axis (the \"Y Axis\") of this hyperbola"]
+    /// Computes an axis, whose
+    /// -   the origin is the center of this hyperbola, and
+    /// -   the unit vector is the "Y Direction"
+    /// of the local coordinate system of this hyperbola.
+    /// These axes are the minor axis (the "Y Axis") of this hyperbola
     pub fn y_axis(&self) -> cxx::UniquePtr<ffi::Ax1> {
         ffi::Hypr_y_axis(self)
     }
@@ -1430,7 +1690,16 @@ impl Hypr2d {
         ffi::Hypr2d_ctor()
     }
 
-    #[doc = "Creates a hyperbola with radii theMajorRadius and\ntheMinorRadius, centered on the origin of theMajorAxis\nand where the unit vector of theMajorAxis is the \"X\nDirection\" of the local coordinate system of the\nhyperbola. This coordinate system is direct if theIsSense\nis true (the default value), and indirect if theIsSense is false.\nWarnings :\nIt is yet  possible to create an Hyperbola with\ntheMajorRadius <= theMinorRadius.\nRaises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0"]
+    /// Creates a hyperbola with radii theMajorRadius and
+    /// theMinorRadius, centered on the origin of theMajorAxis
+    /// and where the unit vector of theMajorAxis is the "X
+    /// Direction" of the local coordinate system of the
+    /// hyperbola. This coordinate system is direct if theIsSense
+    /// is true (the default value), and indirect if theIsSense is false.
+    /// Warnings :
+    /// It is yet  possible to create an Hyperbola with
+    /// theMajorRadius <= theMinorRadius.
+    /// Raises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0
     pub fn new_ax2d_real2_bool(
         theMajorAxis: &ffi::Ax2d,
         theMajorRadius: f64,
@@ -1440,7 +1709,21 @@ impl Hypr2d {
         ffi::Hypr2d_ctor_ax2d_real2_bool(theMajorAxis, theMajorRadius, theMinorRadius, theIsSense)
     }
 
-    #[doc = "a hyperbola with radii theMajorRadius and\ntheMinorRadius, positioned in the plane by coordinate system theA where:\n-   the origin of theA is the center of the hyperbola,\n-   the \"X Direction\" of theA defines the major axis of\nthe hyperbola, that is, the major radius\ntheMajorRadius is measured along this axis, and\n-   the \"Y Direction\" of theA defines the minor axis of\nthe hyperbola, that is, the minor radius\ntheMinorRadius is measured along this axis, and\n-   the orientation (direct or indirect sense) of theA\ngives the implicit orientation of the hyperbola.\nWarnings :\nIt is yet  possible to create an Hyperbola with\ntheMajorRadius <= theMinorRadius.\nRaises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0"]
+    /// a hyperbola with radii theMajorRadius and
+    /// theMinorRadius, positioned in the plane by coordinate system theA where:
+    /// -   the origin of theA is the center of the hyperbola,
+    /// -   the "X Direction" of theA defines the major axis of
+    /// the hyperbola, that is, the major radius
+    /// theMajorRadius is measured along this axis, and
+    /// -   the "Y Direction" of theA defines the minor axis of
+    /// the hyperbola, that is, the minor radius
+    /// theMinorRadius is measured along this axis, and
+    /// -   the orientation (direct or indirect sense) of theA
+    /// gives the implicit orientation of the hyperbola.
+    /// Warnings :
+    /// It is yet  possible to create an Hyperbola with
+    /// theMajorRadius <= theMinorRadius.
+    /// Raises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0
     pub fn new_ax22d_real2(
         theA: &ffi::Ax22d,
         theMajorRadius: f64,
@@ -1474,52 +1757,79 @@ impl Hypr2d {
         ffi::Hypr2d_asymptote2(self)
     }
 
-    #[doc = "Computes the branch of hyperbola which is on the positive side of the\n\"YAxis\" of <me>."]
+    /// Computes the branch of hyperbola which is on the positive side of the
+    /// "YAxis" of <me>.
     pub fn conjugate_branch1(&self) -> cxx::UniquePtr<ffi::Hypr2d> {
         ffi::Hypr2d_conjugate_branch1(self)
     }
 
-    #[doc = "Computes the branch of hyperbola which is on the negative side of the\n\"YAxis\" of <me>."]
+    /// Computes the branch of hyperbola which is on the negative side of the
+    /// "YAxis" of <me>.
     pub fn conjugate_branch2(&self) -> cxx::UniquePtr<ffi::Hypr2d> {
         ffi::Hypr2d_conjugate_branch2(self)
     }
 
-    #[doc = "Computes the directrix which is the line normal to the XAxis of the hyperbola\nin the local plane (Z = 0) at a distance d = MajorRadius / e\nfrom the center of the hyperbola, where e is the eccentricity of\nthe hyperbola.\nThis line is parallel to the \"YAxis\". The intersection point\nbetween the \"Directrix1\" and the \"XAxis\" is the \"Location\" point\nof the \"Directrix1\".\nThis point is on the positive side of the \"XAxis\"."]
+    /// Computes the directrix which is the line normal to the XAxis of the hyperbola
+    /// in the local plane (Z = 0) at a distance d = MajorRadius / e
+    /// from the center of the hyperbola, where e is the eccentricity of
+    /// the hyperbola.
+    /// This line is parallel to the "YAxis". The intersection point
+    /// between the "Directrix1" and the "XAxis" is the "Location" point
+    /// of the "Directrix1".
+    /// This point is on the positive side of the "XAxis".
     pub fn directrix1(&self) -> cxx::UniquePtr<ffi::Ax2d> {
         ffi::Hypr2d_directrix1(self)
     }
 
-    #[doc = "This line is obtained by the symmetrical transformation\nof \"Directrix1\" with respect to the \"YAxis\" of the hyperbola."]
+    /// This line is obtained by the symmetrical transformation
+    /// of "Directrix1" with respect to the "YAxis" of the hyperbola.
     pub fn directrix2(&self) -> cxx::UniquePtr<ffi::Ax2d> {
         ffi::Hypr2d_directrix2(self)
     }
 
-    #[doc = "Returns the first focus of the hyperbola. This focus is on the\npositive side of the \"XAxis\" of the hyperbola."]
+    /// Returns the first focus of the hyperbola. This focus is on the
+    /// positive side of the "XAxis" of the hyperbola.
     pub fn focus1(&self) -> cxx::UniquePtr<ffi::Pnt2d> {
         ffi::Hypr2d_focus1(self)
     }
 
-    #[doc = "Returns the second focus of the hyperbola. This focus is on the\nnegative side of the \"XAxis\" of the hyperbola."]
+    /// Returns the second focus of the hyperbola. This focus is on the
+    /// negative side of the "XAxis" of the hyperbola.
     pub fn focus2(&self) -> cxx::UniquePtr<ffi::Pnt2d> {
         ffi::Hypr2d_focus2(self)
     }
 
-    #[doc = "Returns the branch of hyperbola obtained by doing the\nsymmetrical transformation of <me> with respect to the\n\"YAxis\" of <me>."]
+    /// Returns the branch of hyperbola obtained by doing the
+    /// symmetrical transformation of <me> with respect to the
+    /// "YAxis" of <me>.
     pub fn other_branch(&self) -> cxx::UniquePtr<ffi::Hypr2d> {
         ffi::Hypr2d_other_branch(self)
     }
 
-    #[doc = "Computes an axis whose\n-   the origin is the center of this hyperbola, and\n-   the unit vector is the \"X Direction\" or \"Y Direction\"\nrespectively of the local coordinate system of this hyperbola\nReturns the major axis of the hyperbola."]
+    /// Computes an axis whose
+    /// -   the origin is the center of this hyperbola, and
+    /// -   the unit vector is the "X Direction" or "Y Direction"
+    /// respectively of the local coordinate system of this hyperbola
+    /// Returns the major axis of the hyperbola.
     pub fn x_axis(&self) -> cxx::UniquePtr<ffi::Ax2d> {
         ffi::Hypr2d_x_axis(self)
     }
 
-    #[doc = "Computes an axis whose\n-   the origin is the center of this hyperbola, and\n-   the unit vector is the \"X Direction\" or \"Y Direction\"\nrespectively of the local coordinate system of this hyperbola\nReturns the minor axis of the hyperbola."]
+    /// Computes an axis whose
+    /// -   the origin is the center of this hyperbola, and
+    /// -   the unit vector is the "X Direction" or "Y Direction"
+    /// respectively of the local coordinate system of this hyperbola
+    /// Returns the minor axis of the hyperbola.
     pub fn y_axis(&self) -> cxx::UniquePtr<ffi::Ax2d> {
         ffi::Hypr2d_y_axis(self)
     }
 
-    #[doc = "Reverses the orientation of the local coordinate system\nof this hyperbola (the \"Y Axis\" is reversed). Therefore,\nthe implicit orientation of this hyperbola is reversed.\nNote:\n-   Reverse assigns the result to this hyperbola, while\n-   Reversed creates a new one."]
+    /// Reverses the orientation of the local coordinate system
+    /// of this hyperbola (the "Y Axis" is reversed). Therefore,
+    /// the implicit orientation of this hyperbola is reversed.
+    /// Note:
+    /// -   Reverse assigns the result to this hyperbola, while
+    /// -   Reversed creates a new one.
     pub fn reversed(&self) -> cxx::UniquePtr<ffi::Hypr2d> {
         ffi::Hypr2d_reversed(self)
     }
@@ -1542,7 +1852,10 @@ impl Hypr2d {
         ffi::Hypr2d_rotated(self, theP, theAng)
     }
 
-    #[doc = "Scales an hyperbola. <theS> is the scaling value.\nIf <theS> is positive only the location point is\nmodified. But if <theS> is negative the \"XAxis\" is\nreversed and the \"YAxis\" too."]
+    /// Scales an hyperbola. <theS> is the scaling value.
+    /// If <theS> is positive only the location point is
+    /// modified. But if <theS> is negative the "XAxis" is
+    /// reversed and the "YAxis" too.
     pub fn scaled(&self, theP: &ffi::Pnt2d, theS: f64) -> cxx::UniquePtr<ffi::Hypr2d> {
         ffi::Hypr2d_scaled(self, theP, theS)
     }
@@ -1638,7 +1951,9 @@ impl Lin {
         ffi::Lin_rotated(self, theA1, theAng)
     }
 
-    #[doc = "Scales a line. theS is the scaling value.\nThe \"Location\" point (origin) of the line is modified.\nThe \"Direction\" is reversed if the scale is negative."]
+    /// Scales a line. theS is the scaling value.
+    /// The "Location" point (origin) of the line is modified.
+    /// The "Direction" is reversed if the scale is negative.
     pub fn scaled(&self, theP: &ffi::Pnt, theS: f64) -> cxx::UniquePtr<ffi::Lin> {
         ffi::Lin_scaled(self, theP, theS)
     }
@@ -1952,7 +2267,14 @@ impl Parab {
         ffi::Parab_ctor()
     }
 
-    #[doc = "Creates a parabola with its local coordinate system \"theA2\"\nand it's focal length \"Focal\".\nThe XDirection of theA2 defines the axis of symmetry of the\nparabola. The YDirection of theA2 is parallel to the directrix\nof the parabola. The Location point of theA2 is the vertex of\nthe parabola\nRaises ConstructionError if theFocal < 0.0\nRaised if theFocal < 0.0"]
+    /// Creates a parabola with its local coordinate system "theA2"
+    /// and it's focal length "Focal".
+    /// The XDirection of theA2 defines the axis of symmetry of the
+    /// parabola. The YDirection of theA2 is parallel to the directrix
+    /// of the parabola. The Location point of theA2 is the vertex of
+    /// the parabola
+    /// Raises ConstructionError if theFocal < 0.0
+    /// Raised if theFocal < 0.0
     pub fn new_ax2_real(theA2: &ffi::Ax2, theFocal: f64) -> cxx::UniquePtr<Self> {
         ffi::Parab_ctor_ax2_real(theA2, theFocal)
     }
@@ -1974,7 +2296,15 @@ impl Parab {
         ffi::Parab_to_owned(self)
     }
 
-    #[doc = "Computes the directrix of this parabola.\nThe directrix is:\n-   a line parallel to the \"Y Direction\" of the local\ncoordinate system of this parabola, and\n-   located on the negative side of the axis of symmetry,\nat a distance from the apex which is equal to the focal\nlength of this parabola.\nThe directrix is returned as an axis (a gp_Ax1 object),\nthe origin of which is situated on the \"X Axis\" of this parabola."]
+    /// Computes the directrix of this parabola.
+    /// The directrix is:
+    /// -   a line parallel to the "Y Direction" of the local
+    /// coordinate system of this parabola, and
+    /// -   located on the negative side of the axis of symmetry,
+    /// at a distance from the apex which is equal to the focal
+    /// length of this parabola.
+    /// The directrix is returned as an axis (a gp_Ax1 object),
+    /// the origin of which is situated on the "X Axis" of this parabola.
     pub fn directrix(&self) -> cxx::UniquePtr<ffi::Ax1> {
         ffi::Parab_directrix(self)
     }
@@ -2057,7 +2387,14 @@ impl Parab2d {
         ffi::Parab2d_ctor()
     }
 
-    #[doc = "Creates a parabola with its vertex point, its axis of symmetry\n(\"XAxis\") and its focal length.\nThe sense of parametrization is given by theSense. If theSense == TRUE\n(by default) then right-handed coordinate system is used,\notherwise - left-handed.\nWarnings : It is possible to have FocalLength = 0. In this case,\nthe parabola looks like a line, which is parallel to the symmetry-axis.\nRaises ConstructionError if FocalLength < 0.0"]
+    /// Creates a parabola with its vertex point, its axis of symmetry
+    /// ("XAxis") and its focal length.
+    /// The sense of parametrization is given by theSense. If theSense == TRUE
+    /// (by default) then right-handed coordinate system is used,
+    /// otherwise - left-handed.
+    /// Warnings : It is possible to have FocalLength = 0. In this case,
+    /// the parabola looks like a line, which is parallel to the symmetry-axis.
+    /// Raises ConstructionError if FocalLength < 0.0
     pub fn new_ax2d_real_bool(
         theMirrorAxis: &ffi::Ax2d,
         theFocalLength: f64,
@@ -2066,7 +2403,11 @@ impl Parab2d {
         ffi::Parab2d_ctor_ax2d_real_bool(theMirrorAxis, theFocalLength, theSense)
     }
 
-    #[doc = "Creates a parabola with its vertex point, its axis of symmetry\n(\"XAxis\"), correspond Y-axis and its focal length.\nWarnings : It is possible to have FocalLength = 0. In this case,\nthe parabola looks like a line, which is parallel to the symmetry-axis.\nRaises ConstructionError if Focal < 0.0"]
+    /// Creates a parabola with its vertex point, its axis of symmetry
+    /// ("XAxis"), correspond Y-axis and its focal length.
+    /// Warnings : It is possible to have FocalLength = 0. In this case,
+    /// the parabola looks like a line, which is parallel to the symmetry-axis.
+    /// Raises ConstructionError if Focal < 0.0
     pub fn new_ax22d_real(theAxes: &ffi::Ax22d, theFocalLength: f64) -> cxx::UniquePtr<Self> {
         ffi::Parab2d_ctor_ax22d_real(theAxes, theFocalLength)
     }
@@ -2095,7 +2436,14 @@ impl Parab2d {
         ffi::Parab2d_to_owned(self)
     }
 
-    #[doc = "Computes the directrix of the parabola.\nThe directrix is:\n-   a line parallel to the \"Y Direction\" of the local\ncoordinate system of this parabola, and\n-   located on the negative side of the axis of symmetry,\nat a distance from the apex which is equal to the focal  length of this parabola.\nThe directrix is returned as an axis (a gp_Ax2d object),\nthe origin of which is situated on the \"X Axis\" of this parabola."]
+    /// Computes the directrix of the parabola.
+    /// The directrix is:
+    /// -   a line parallel to the "Y Direction" of the local
+    /// coordinate system of this parabola, and
+    /// -   located on the negative side of the axis of symmetry,
+    /// at a distance from the apex which is equal to the focal  length of this parabola.
+    /// The directrix is returned as an axis (a gp_Ax2d object),
+    /// the origin of which is situated on the "X Axis" of this parabola.
     pub fn directrix(&self) -> cxx::UniquePtr<ffi::Ax2d> {
         ffi::Parab2d_directrix(self)
     }
@@ -2110,17 +2458,24 @@ impl Parab2d {
         ffi::Parab2d_location(self)
     }
 
-    #[doc = "Returns the symmetry axis of the parabola.\nThe \"Location\" point of this axis is the vertex of the parabola."]
+    /// Returns the symmetry axis of the parabola.
+    /// The "Location" point of this axis is the vertex of the parabola.
     pub fn mirror_axis(&self) -> cxx::UniquePtr<ffi::Ax2d> {
         ffi::Parab2d_mirror_axis(self)
     }
 
-    #[doc = "Returns the local coordinate system of the parabola.\nThe \"Location\" point of this axis is the vertex of the parabola."]
+    /// Returns the local coordinate system of the parabola.
+    /// The "Location" point of this axis is the vertex of the parabola.
     pub fn axis(&self) -> cxx::UniquePtr<ffi::Ax22d> {
         ffi::Parab2d_axis(self)
     }
 
-    #[doc = "Reverses the orientation of the local coordinate system\nof this parabola (the \"Y Direction\" is reversed).\nTherefore, the implicit orientation of this parabola is reversed.\nNote:\n-   Reverse assigns the result to this parabola, while\n-   Reversed creates a new one."]
+    /// Reverses the orientation of the local coordinate system
+    /// of this parabola (the "Y Direction" is reversed).
+    /// Therefore, the implicit orientation of this parabola is reversed.
+    /// Note:
+    /// -   Reverse assigns the result to this parabola, while
+    /// -   Reversed creates a new one.
     pub fn reversed(&self) -> cxx::UniquePtr<ffi::Parab2d> {
         ffi::Parab2d_reversed(self)
     }
@@ -2143,7 +2498,9 @@ impl Parab2d {
         ffi::Parab2d_rotated(self, theP, theAng)
     }
 
-    #[doc = "Scales a parabola. theS is the scaling value.\nIf theS is negative the direction of the symmetry axis\n\"XAxis\" is reversed and the direction of the \"YAxis\" too."]
+    /// Scales a parabola. theS is the scaling value.
+    /// If theS is negative the direction of the symmetry axis
+    /// "XAxis" is reversed and the direction of the "YAxis" too.
     pub fn scaled(&self, theP: &ffi::Pnt2d, theS: f64) -> cxx::UniquePtr<ffi::Parab2d> {
         ffi::Parab2d_scaled(self, theP, theS)
     }
@@ -2176,12 +2533,18 @@ impl Pln {
         ffi::Pln_ctor()
     }
 
-    #[doc = "The coordinate system of the plane is defined with the axis\nplacement theA3.\nThe \"Direction\" of theA3 defines the normal to the plane.\nThe \"Location\" of theA3 defines the location (origin) of the plane.\nThe \"XDirection\" and \"YDirection\" of theA3 define the \"XAxis\" and\nthe \"YAxis\" of the plane used to parametrize the plane."]
+    /// The coordinate system of the plane is defined with the axis
+    /// placement theA3.
+    /// The "Direction" of theA3 defines the normal to the plane.
+    /// The "Location" of theA3 defines the location (origin) of the plane.
+    /// The "XDirection" and "YDirection" of theA3 define the "XAxis" and
+    /// the "YAxis" of the plane used to parametrize the plane.
     pub fn new_ax3(theA3: &ffi::Ax3) -> cxx::UniquePtr<Self> {
         ffi::Pln_ctor_ax3(theA3)
     }
 
-    #[doc = "Creates a plane with the  \"Location\" point <theP>\nand the normal direction <theV>."]
+    /// Creates a plane with the  "Location" point <theP>
+    /// and the normal direction <theV>.
     pub fn new_pnt_dir(theP: &ffi::Pnt, theV: &ffi::Dir) -> cxx::UniquePtr<Self> {
         ffi::Pln_ctor_pnt_dir(theP, theV)
     }
@@ -2210,17 +2573,35 @@ impl Pln {
         ffi::Pln_y_axis(self)
     }
 
-    #[doc = "Performs the symmetrical transformation of a plane with respect\nto the point <theP> which is the center of the symmetry\nWarnings :\nThe normal direction to the plane is not changed.\nThe \"XAxis\" and the \"YAxis\" are reversed."]
+    /// Performs the symmetrical transformation of a plane with respect
+    /// to the point <theP> which is the center of the symmetry
+    /// Warnings :
+    /// The normal direction to the plane is not changed.
+    /// The "XAxis" and the "YAxis" are reversed.
     pub fn mirrored_pnt(&self, theP: &ffi::Pnt) -> cxx::UniquePtr<ffi::Pln> {
         ffi::Pln_mirrored_pnt(self, theP)
     }
 
-    #[doc = "Performs   the symmetrical transformation  of a\nplane with respect to an axis placement  which is the axis\nof  the symmetry.  The  transformation is performed on the\n\"Location\" point, on  the \"XAxis\"  and the \"YAxis\".    The\nresulting normal  direction  is  the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation\nif  the  initial plane was right  handed,  else  it is the\nopposite."]
+    /// Performs   the symmetrical transformation  of a
+    /// plane with respect to an axis placement  which is the axis
+    /// of  the symmetry.  The  transformation is performed on the
+    /// "Location" point, on  the "XAxis"  and the "YAxis".    The
+    /// resulting normal  direction  is  the cross product between
+    /// the "XDirection" and the "YDirection" after transformation
+    /// if  the  initial plane was right  handed,  else  it is the
+    /// opposite.
     pub fn mirrored_ax1(&self, theA1: &ffi::Ax1) -> cxx::UniquePtr<ffi::Pln> {
         ffi::Pln_mirrored_ax1(self, theA1)
     }
 
-    #[doc = "Performs the  symmetrical transformation  of  a\nplane    with respect to    an axis  placement.   The axis\nplacement  <A2> locates the plane  of  the symmetry.   The\ntransformation is performed  on  the  \"Location\" point, on\nthe  \"XAxis\" and  the    \"YAxis\".  The resulting    normal\ndirection is the cross  product between   the \"XDirection\"\nand the \"YDirection\"  after  transformation if the initial\nplane was right handed, else it is the opposite."]
+    /// Performs the  symmetrical transformation  of  a
+    /// plane    with respect to    an axis  placement.   The axis
+    /// placement  <A2> locates the plane  of  the symmetry.   The
+    /// transformation is performed  on  the  "Location" point, on
+    /// the  "XAxis" and  the    "YAxis".  The resulting    normal
+    /// direction is the cross  product between   the "XDirection"
+    /// and the "YDirection"  after  transformation if the initial
+    /// plane was right handed, else it is the opposite.
     pub fn mirrored_ax2(&self, theA2: &ffi::Ax2) -> cxx::UniquePtr<ffi::Pln> {
         ffi::Pln_mirrored_ax2(self, theA2)
     }
@@ -2236,7 +2617,11 @@ impl Pln {
         ffi::Pln_scaled(self, theP, theS)
     }
 
-    #[doc = "Transforms a plane with the transformation theT from class Trsf.\nThe transformation is performed on the \"Location\"\npoint, on the \"XAxis\" and the \"YAxis\".\nThe resulting normal direction is the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation."]
+    /// Transforms a plane with the transformation theT from class Trsf.
+    /// The transformation is performed on the "Location"
+    /// point, on the "XAxis" and the "YAxis".
+    /// The resulting normal direction is the cross product between
+    /// the "XDirection" and the "YDirection" after transformation.
     pub fn transformed(&self, theT: &ffi::Trsf) -> cxx::UniquePtr<ffi::Pln> {
         ffi::Pln_transformed(self, theT)
     }
@@ -2450,12 +2835,12 @@ impl Quaternion {
         ffi::Quaternion_negated(self)
     }
 
-    #[doc = "Makes sum of quaternion components; result is \"rotations mix\""]
+    /// Makes sum of quaternion components; result is "rotations mix"
     pub fn added(&self, theOther: &ffi::Quaternion) -> cxx::UniquePtr<ffi::Quaternion> {
         ffi::Quaternion_added(self, theOther)
     }
 
-    #[doc = "Makes difference of quaternion components; result is \"rotations mix\""]
+    /// Makes difference of quaternion components; result is "rotations mix"
     pub fn subtracted(&self, theOther: &ffi::Quaternion) -> cxx::UniquePtr<ffi::Quaternion> {
         ffi::Quaternion_subtracted(self, theOther)
     }
@@ -2636,7 +3021,14 @@ impl Torus {
         ffi::Torus_ctor()
     }
 
-    #[doc = "a torus centered on the origin of coordinate system\ntheA3, with major radius theMajorRadius and minor radius\ntheMinorRadius, and with the reference plane defined\nby the origin, the \"X Direction\" and the \"Y Direction\" of theA3.\nWarnings :\nIt is not forbidden to create a torus with\ntheMajorRadius = theMinorRadius = 0.0\nRaises ConstructionError if theMinorRadius < 0.0 or if theMajorRadius < 0.0"]
+    /// a torus centered on the origin of coordinate system
+    /// theA3, with major radius theMajorRadius and minor radius
+    /// theMinorRadius, and with the reference plane defined
+    /// by the origin, the "X Direction" and the "Y Direction" of theA3.
+    /// Warnings :
+    /// It is not forbidden to create a torus with
+    /// theMajorRadius = theMinorRadius = 0.0
+    /// Raises ConstructionError if theMinorRadius < 0.0 or if theMajorRadius < 0.0
     pub fn new_ax3_real2(
         theA3: &ffi::Ax3,
         theMajorRadius: f64,
@@ -3282,10 +3674,22 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== gp_Ax1 ========================
         /// /// **Source:** `gp_Ax1.hxx` - `gp_Ax1`
         ///
-        #[doc = "Describes an axis in 3D space.\nAn axis is defined by:\n-   its origin (also referred to as its \"Location point\"), and\n-   its unit vector (referred to as its \"Direction\" or \"main   Direction\").\nAn axis is used:\n-   to describe 3D geometric entities (for example, the\naxis of a revolution entity). It serves the same purpose\nas the STEP function \"axis placement one axis\", or\n-   to define geometric transformations (axis of\nsymmetry, axis of rotation, and so on).\nFor example, this entity can be used to locate a geometric entity\nor to define a symmetry axis."]
+        /// Describes an axis in 3D space.
+        /// An axis is defined by:
+        /// -   its origin (also referred to as its "Location point"), and
+        /// -   its unit vector (referred to as its "Direction" or "main   Direction").
+        /// An axis is used:
+        /// -   to describe 3D geometric entities (for example, the
+        /// axis of a revolution entity). It serves the same purpose
+        /// as the STEP function "axis placement one axis", or
+        /// -   to define geometric transformations (axis of
+        /// symmetry, axis of rotation, and so on).
+        /// For example, this entity can be used to locate a geometric entity
+        /// or to define a symmetry axis.
         #[cxx_name = "gp_Ax1"]
         type Ax1;
         /// /// **Source:** `gp_Ax1.hxx` - `gp_Ax1::gp_Ax1()`
@@ -3299,7 +3703,7 @@ pub(crate) mod ffi {
         /// P is the location point and V is the direction of <me>.
         #[cxx_name = "gp_Ax1_ctor_pnt_dir"]
         fn Ax1_ctor_pnt_dir(theP: &Pnt, theV: &Dir) -> UniquePtr<Ax1>;
-        #[doc = "Assigns V as the \"Direction\"  of this axis."]
+        /// Assigns V as the "Direction"  of this axis.
         #[cxx_name = "SetDirection"]
         fn set_direction(self: Pin<&mut Ax1>, theV: &Dir);
         /// Assigns  P as the origin of this axis.
@@ -3428,7 +3832,34 @@ pub(crate) mod ffi {
         /// ======================== gp_Ax2 ========================
         /// /// **Source:** `gp_Ax2.hxx` - `gp_Ax2`
         ///
-        #[doc = "Describes a right-handed coordinate system in 3D space.\nA coordinate system is defined by:\n-   its origin (also referred to as its \"Location point\"), and\n-   three orthogonal unit vectors, termed respectively the\n\"X Direction\", the \"Y Direction\" and the \"Direction\" (also\nreferred to as the \"main Direction\").\nThe \"Direction\" of the coordinate system is called its\n\"main Direction\" because whenever this unit vector is\nmodified, the \"X Direction\" and the \"Y Direction\" are\nrecomputed. However, when we modify either the \"X\nDirection\" or the \"Y Direction\", \"Direction\" is not modified.\nThe \"main Direction\" is also the \"Z Direction\".\nSince an Ax2 coordinate system is right-handed, its\n\"main Direction\" is always equal to the cross product of\nits \"X Direction\" and \"Y Direction\". (To define a\nleft-handed coordinate system, use gp_Ax3.)\nA coordinate system is used:\n-   to describe geometric entities, in particular to position\nthem. The local coordinate system of a geometric\nentity serves the same purpose as the STEP function\n\"axis placement two axes\", or\n-   to define geometric transformations.\nNote: we refer to the \"X Axis\", \"Y Axis\" and \"Z Axis\",\nrespectively, as to axes having:\n- the origin of the coordinate system as their origin, and\n-   the unit vectors \"X Direction\", \"Y Direction\" and \"main\nDirection\", respectively, as their unit vectors.\nThe \"Z Axis\" is also the \"main Axis\"."]
+        /// Describes a right-handed coordinate system in 3D space.
+        /// A coordinate system is defined by:
+        /// -   its origin (also referred to as its "Location point"), and
+        /// -   three orthogonal unit vectors, termed respectively the
+        /// "X Direction", the "Y Direction" and the "Direction" (also
+        /// referred to as the "main Direction").
+        /// The "Direction" of the coordinate system is called its
+        /// "main Direction" because whenever this unit vector is
+        /// modified, the "X Direction" and the "Y Direction" are
+        /// recomputed. However, when we modify either the "X
+        /// Direction" or the "Y Direction", "Direction" is not modified.
+        /// The "main Direction" is also the "Z Direction".
+        /// Since an Ax2 coordinate system is right-handed, its
+        /// "main Direction" is always equal to the cross product of
+        /// its "X Direction" and "Y Direction". (To define a
+        /// left-handed coordinate system, use gp_Ax3.)
+        /// A coordinate system is used:
+        /// -   to describe geometric entities, in particular to position
+        /// them. The local coordinate system of a geometric
+        /// entity serves the same purpose as the STEP function
+        /// "axis placement two axes", or
+        /// -   to define geometric transformations.
+        /// Note: we refer to the "X Axis", "Y Axis" and "Z Axis",
+        /// respectively, as to axes having:
+        /// - the origin of the coordinate system as their origin, and
+        /// -   the unit vectors "X Direction", "Y Direction" and "main
+        /// Direction", respectively, as their unit vectors.
+        /// The "Z Axis" is also the "main Axis".
         #[cxx_name = "gp_Ax2"]
         type Ax2;
         /// /// **Source:** `gp_Ax2.hxx` - `gp_Ax2::gp_Ax2()`
@@ -3439,27 +3870,60 @@ pub(crate) mod ffi {
         fn Ax2_ctor() -> UniquePtr<Ax2>;
         /// /// **Source:** `gp_Ax2.hxx` - `gp_Ax2::gp_Ax2()`
         ///
-        #[doc = "Creates an axis placement with an origin P such that:\n-   N is the Direction, and\n-   the \"X Direction\" is normal to N, in the plane\ndefined by the vectors (N, Vx): \"X\nDirection\" = (N ^ Vx) ^ N,\nException: raises ConstructionError if N and Vx are parallel (same or opposite orientation)."]
+        /// Creates an axis placement with an origin P such that:
+        /// -   N is the Direction, and
+        /// -   the "X Direction" is normal to N, in the plane
+        /// defined by the vectors (N, Vx): "X
+        /// Direction" = (N ^ Vx) ^ N,
+        /// Exception: raises ConstructionError if N and Vx are parallel (same or opposite orientation).
         #[cxx_name = "gp_Ax2_ctor_pnt_dir2"]
         fn Ax2_ctor_pnt_dir2(P: &Pnt, N: &Dir, Vx: &Dir) -> UniquePtr<Ax2>;
         /// /// **Source:** `gp_Ax2.hxx` - `gp_Ax2::gp_Ax2()`
         ///
-        #[doc = "Creates -   a coordinate system with an origin P, where V\ngives the \"main Direction\" (here, \"X Direction\" and \"Y\nDirection\" are defined automatically)."]
+        /// Creates -   a coordinate system with an origin P, where V
+        /// gives the "main Direction" (here, "X Direction" and "Y
+        /// Direction" are defined automatically).
         #[cxx_name = "gp_Ax2_ctor_pnt_dir"]
         fn Ax2_ctor_pnt_dir(P: &Pnt, V: &Dir) -> UniquePtr<Ax2>;
-        #[doc = "Assigns the origin and \"main Direction\" of the axis A1 to\nthis coordinate system, then recomputes its \"X Direction\" and \"Y Direction\".\nNote: The new \"X Direction\" is computed as follows:\nnew \"X Direction\" = V1 ^(previous \"X Direction\" ^ V)\nwhere V is the \"Direction\" of A1.\nExceptions\nStandard_ConstructionError if A1 is parallel to the \"X\nDirection\" of this coordinate system."]
+        /// Assigns the origin and "main Direction" of the axis A1 to
+        /// this coordinate system, then recomputes its "X Direction" and "Y Direction".
+        /// Note: The new "X Direction" is computed as follows:
+        /// new "X Direction" = V1 ^(previous "X Direction" ^ V)
+        /// where V is the "Direction" of A1.
+        /// Exceptions
+        /// Standard_ConstructionError if A1 is parallel to the "X
+        /// Direction" of this coordinate system.
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Ax2>, A1: &Ax1);
-        #[doc = "Changes the \"main Direction\" of this coordinate system,\nthen recomputes its \"X Direction\" and \"Y Direction\".\nNote: the new \"X Direction\" is computed as follows:\nnew \"X Direction\" = V ^ (previous \"X Direction\" ^ V)\nExceptions\nStandard_ConstructionError if V is parallel to the \"X\nDirection\" of this coordinate system."]
+        /// Changes the "main Direction" of this coordinate system,
+        /// then recomputes its "X Direction" and "Y Direction".
+        /// Note: the new "X Direction" is computed as follows:
+        /// new "X Direction" = V ^ (previous "X Direction" ^ V)
+        /// Exceptions
+        /// Standard_ConstructionError if V is parallel to the "X
+        /// Direction" of this coordinate system.
         #[cxx_name = "SetDirection"]
         fn set_direction(self: Pin<&mut Ax2>, V: &Dir);
-        #[doc = "Changes the \"Location\" point (origin) of <me>."]
+        /// Changes the "Location" point (origin) of <me>.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut Ax2>, theP: &Pnt);
-        #[doc = "Changes the \"Xdirection\" of <me>. The main direction\n\"Direction\" is not modified, the \"Ydirection\" is modified.\nIf <Vx> is not normal to the main direction then <XDirection>\nis computed as follows XDirection = Direction ^ (Vx ^ Direction).\nExceptions\nStandard_ConstructionError if Vx or Vy is parallel to\nthe \"main Direction\" of this coordinate system."]
+        /// Changes the "Xdirection" of <me>. The main direction
+        /// "Direction" is not modified, the "Ydirection" is modified.
+        /// If <Vx> is not normal to the main direction then <XDirection>
+        /// is computed as follows XDirection = Direction ^ (Vx ^ Direction).
+        /// Exceptions
+        /// Standard_ConstructionError if Vx or Vy is parallel to
+        /// the "main Direction" of this coordinate system.
         #[cxx_name = "SetXDirection"]
         fn set_x_direction(self: Pin<&mut Ax2>, theVx: &Dir);
-        #[doc = "Changes the \"Ydirection\" of <me>. The main direction is not\nmodified but the \"Xdirection\" is changed.\nIf <Vy> is not normal to the main direction then \"YDirection\"\nis computed as  follows\nYDirection = Direction ^ (<Vy> ^ Direction).\nExceptions\nStandard_ConstructionError if Vx or Vy is parallel to\nthe \"main Direction\" of this coordinate system."]
+        /// Changes the "Ydirection" of <me>. The main direction is not
+        /// modified but the "Xdirection" is changed.
+        /// If <Vy> is not normal to the main direction then "YDirection"
+        /// is computed as  follows
+        /// YDirection = Direction ^ (<Vy> ^ Direction).
+        /// Exceptions
+        /// Standard_ConstructionError if Vx or Vy is parallel to
+        /// the "main Direction" of this coordinate system.
         #[cxx_name = "SetYDirection"]
         fn set_y_direction(self: Pin<&mut Ax2>, theVy: &Dir);
         /// Computes the angular value, in radians, between the main direction of
@@ -3467,19 +3931,20 @@ pub(crate) mod ffi {
         /// between 0 and PI in radians.
         #[cxx_name = "Angle"]
         fn angle(self: &Ax2, theOther: &Ax2) -> f64;
-        #[doc = "Returns the main axis of <me>. It is the \"Location\" point\nand the main \"Direction\"."]
+        /// Returns the main axis of <me>. It is the "Location" point
+        /// and the main "Direction".
         #[cxx_name = "Axis"]
         fn axis(self: &Ax2) -> &Ax1;
         /// Returns the main direction of <me>.
         #[cxx_name = "Direction"]
         fn direction(self: &Ax2) -> &Dir;
-        #[doc = "Returns the \"Location\" point (origin) of <me>."]
+        /// Returns the "Location" point (origin) of <me>.
         #[cxx_name = "Location"]
         fn location(self: &Ax2) -> &Pnt;
-        #[doc = "Returns the \"XDirection\" of <me>."]
+        /// Returns the "XDirection" of <me>.
         #[cxx_name = "XDirection"]
         fn x_direction(self: &Ax2) -> &Dir;
-        #[doc = "Returns the \"YDirection\" of <me>."]
+        /// Returns the "YDirection" of <me>.
         #[cxx_name = "YDirection"]
         fn y_direction(self: &Ax2) -> &Dir;
         #[cxx_name = "IsCoplanar"]
@@ -3489,7 +3954,11 @@ pub(crate) mod ffi {
             LinearTolerance: f64,
             AngularTolerance: f64,
         ) -> bool;
-        #[doc = "Returns True if\n. the distance between <me> and the \"Location\" point of A1\nis lower of equal to LinearTolerance and\n. the main direction of <me> and the direction of A1 are normal.\nNote: the tolerance criterion for angular equality is given by AngularTolerance."]
+        /// Returns True if
+        /// . the distance between <me> and the "Location" point of A1
+        /// is lower of equal to LinearTolerance and
+        /// . the main direction of <me> and the direction of A1 are normal.
+        /// Note: the tolerance criterion for angular equality is given by AngularTolerance.
         #[cxx_name = "IsCoplanar"]
         fn is_coplanar_ax1_real2(
             self: &Ax2,
@@ -3497,13 +3966,56 @@ pub(crate) mod ffi {
             LinearTolerance: f64,
             AngularTolerance: f64,
         ) -> bool;
-        #[doc = "Performs a symmetrical transformation of this coordinate\nsystem with respect to:\n-   the point P, and assigns the result to this coordinate system.\nWarning\nThis transformation is always performed on the origin.\nIn case of a reflection with respect to a point:\n- the main direction of the coordinate system is not changed, and\n- the \"X Direction\" and the \"Y Direction\" are simply reversed\nIn case of a reflection with respect to an axis or a plane:\n-   the transformation is applied to the \"X Direction\"\nand the \"Y Direction\", then\n-   the \"main Direction\" is recomputed as the cross\nproduct \"X Direction\" ^ \"Y   Direction\".\nThis maintains the right-handed property of the\ncoordinate system."]
+        /// Performs a symmetrical transformation of this coordinate
+        /// system with respect to:
+        /// -   the point P, and assigns the result to this coordinate system.
+        /// Warning
+        /// This transformation is always performed on the origin.
+        /// In case of a reflection with respect to a point:
+        /// - the main direction of the coordinate system is not changed, and
+        /// - the "X Direction" and the "Y Direction" are simply reversed
+        /// In case of a reflection with respect to an axis or a plane:
+        /// -   the transformation is applied to the "X Direction"
+        /// and the "Y Direction", then
+        /// -   the "main Direction" is recomputed as the cross
+        /// product "X Direction" ^ "Y   Direction".
+        /// This maintains the right-handed property of the
+        /// coordinate system.
         #[cxx_name = "Mirror"]
         fn mirror_pnt(self: Pin<&mut Ax2>, P: &Pnt);
-        #[doc = "Performs a symmetrical transformation of this coordinate\nsystem with respect to:\n-   the axis A1, and assigns the result to this coordinate systeme.\nWarning\nThis transformation is always performed on the origin.\nIn case of a reflection with respect to a point:\n- the main direction of the coordinate system is not changed, and\n- the \"X Direction\" and the \"Y Direction\" are simply reversed\nIn case of a reflection with respect to an axis or a plane:\n-   the transformation is applied to the \"X Direction\"\nand the \"Y Direction\", then\n-   the \"main Direction\" is recomputed as the cross\nproduct \"X Direction\" ^ \"Y   Direction\".\nThis maintains the right-handed property of the\ncoordinate system."]
+        /// Performs a symmetrical transformation of this coordinate
+        /// system with respect to:
+        /// -   the axis A1, and assigns the result to this coordinate systeme.
+        /// Warning
+        /// This transformation is always performed on the origin.
+        /// In case of a reflection with respect to a point:
+        /// - the main direction of the coordinate system is not changed, and
+        /// - the "X Direction" and the "Y Direction" are simply reversed
+        /// In case of a reflection with respect to an axis or a plane:
+        /// -   the transformation is applied to the "X Direction"
+        /// and the "Y Direction", then
+        /// -   the "main Direction" is recomputed as the cross
+        /// product "X Direction" ^ "Y   Direction".
+        /// This maintains the right-handed property of the
+        /// coordinate system.
         #[cxx_name = "Mirror"]
         fn mirror_ax1(self: Pin<&mut Ax2>, A1: &Ax1);
-        #[doc = "Performs a symmetrical transformation of this coordinate\nsystem with respect to:\n-   the plane defined by the origin, \"X Direction\" and \"Y\nDirection\" of coordinate system A2 and  assigns the result to this coordinate systeme.\nWarning\nThis transformation is always performed on the origin.\nIn case of a reflection with respect to a point:\n- the main direction of the coordinate system is not changed, and\n- the \"X Direction\" and the \"Y Direction\" are simply reversed\nIn case of a reflection with respect to an axis or a plane:\n-   the transformation is applied to the \"X Direction\"\nand the \"Y Direction\", then\n-   the \"main Direction\" is recomputed as the cross\nproduct \"X Direction\" ^ \"Y   Direction\".\nThis maintains the right-handed property of the\ncoordinate system."]
+        /// Performs a symmetrical transformation of this coordinate
+        /// system with respect to:
+        /// -   the plane defined by the origin, "X Direction" and "Y
+        /// Direction" of coordinate system A2 and  assigns the result to this coordinate systeme.
+        /// Warning
+        /// This transformation is always performed on the origin.
+        /// In case of a reflection with respect to a point:
+        /// - the main direction of the coordinate system is not changed, and
+        /// - the "X Direction" and the "Y Direction" are simply reversed
+        /// In case of a reflection with respect to an axis or a plane:
+        /// -   the transformation is applied to the "X Direction"
+        /// and the "Y Direction", then
+        /// -   the "main Direction" is recomputed as the cross
+        /// product "X Direction" ^ "Y   Direction".
+        /// This maintains the right-handed property of the
+        /// coordinate system.
         #[cxx_name = "Mirror"]
         fn mirror_ax2(self: Pin<&mut Ax2>, A2: &Ax2);
         #[cxx_name = "Rotate"]
@@ -3516,23 +4028,75 @@ pub(crate) mod ffi {
         fn translate_vec(self: Pin<&mut Ax2>, theV: &Vec_);
         #[cxx_name = "Translate"]
         fn translate_pnt2(self: Pin<&mut Ax2>, theP1: &Pnt, theP2: &Pnt);
-        #[doc = "Performs a symmetrical transformation of this coordinate\nsystem with respect to:\n-   the point P, and creates a new one.\nWarning\nThis transformation is always performed on the origin.\nIn case of a reflection with respect to a point:\n- the main direction of the coordinate system is not changed, and\n- the \"X Direction\" and the \"Y Direction\" are simply reversed\nIn case of a reflection with respect to an axis or a plane:\n-   the transformation is applied to the \"X Direction\"\nand the \"Y Direction\", then\n-   the \"main Direction\" is recomputed as the cross\nproduct \"X Direction\" ^ \"Y   Direction\".\nThis maintains the right-handed property of the\ncoordinate system."]
+        /// Performs a symmetrical transformation of this coordinate
+        /// system with respect to:
+        /// -   the point P, and creates a new one.
+        /// Warning
+        /// This transformation is always performed on the origin.
+        /// In case of a reflection with respect to a point:
+        /// - the main direction of the coordinate system is not changed, and
+        /// - the "X Direction" and the "Y Direction" are simply reversed
+        /// In case of a reflection with respect to an axis or a plane:
+        /// -   the transformation is applied to the "X Direction"
+        /// and the "Y Direction", then
+        /// -   the "main Direction" is recomputed as the cross
+        /// product "X Direction" ^ "Y   Direction".
+        /// This maintains the right-handed property of the
+        /// coordinate system.
         #[cxx_name = "gp_Ax2_Mirrored"]
         fn Ax2_mirrored_pnt(self_: &Ax2, P: &Pnt) -> UniquePtr<Ax2>;
-        #[doc = "Performs a symmetrical transformation of this coordinate\nsystem with respect to:\n-   the axis A1, and  creates a new one.\nWarning\nThis transformation is always performed on the origin.\nIn case of a reflection with respect to a point:\n- the main direction of the coordinate system is not changed, and\n- the \"X Direction\" and the \"Y Direction\" are simply reversed\nIn case of a reflection with respect to an axis or a plane:\n-   the transformation is applied to the \"X Direction\"\nand the \"Y Direction\", then\n-   the \"main Direction\" is recomputed as the cross\nproduct \"X Direction\" ^ \"Y   Direction\".\nThis maintains the right-handed property of the\ncoordinate system."]
+        /// Performs a symmetrical transformation of this coordinate
+        /// system with respect to:
+        /// -   the axis A1, and  creates a new one.
+        /// Warning
+        /// This transformation is always performed on the origin.
+        /// In case of a reflection with respect to a point:
+        /// - the main direction of the coordinate system is not changed, and
+        /// - the "X Direction" and the "Y Direction" are simply reversed
+        /// In case of a reflection with respect to an axis or a plane:
+        /// -   the transformation is applied to the "X Direction"
+        /// and the "Y Direction", then
+        /// -   the "main Direction" is recomputed as the cross
+        /// product "X Direction" ^ "Y   Direction".
+        /// This maintains the right-handed property of the
+        /// coordinate system.
         #[cxx_name = "gp_Ax2_Mirrored"]
         fn Ax2_mirrored_ax1(self_: &Ax2, A1: &Ax1) -> UniquePtr<Ax2>;
-        #[doc = "Performs a symmetrical transformation of this coordinate\nsystem with respect to:\n-   the plane defined by the origin, \"X Direction\" and \"Y\nDirection\" of coordinate system A2 and creates a new one.\nWarning\nThis transformation is always performed on the origin.\nIn case of a reflection with respect to a point:\n- the main direction of the coordinate system is not changed, and\n- the \"X Direction\" and the \"Y Direction\" are simply reversed\nIn case of a reflection with respect to an axis or a plane:\n-   the transformation is applied to the \"X Direction\"\nand the \"Y Direction\", then\n-   the \"main Direction\" is recomputed as the cross\nproduct \"X Direction\" ^ \"Y   Direction\".\nThis maintains the right-handed property of the\ncoordinate system."]
+        /// Performs a symmetrical transformation of this coordinate
+        /// system with respect to:
+        /// -   the plane defined by the origin, "X Direction" and "Y
+        /// Direction" of coordinate system A2 and creates a new one.
+        /// Warning
+        /// This transformation is always performed on the origin.
+        /// In case of a reflection with respect to a point:
+        /// - the main direction of the coordinate system is not changed, and
+        /// - the "X Direction" and the "Y Direction" are simply reversed
+        /// In case of a reflection with respect to an axis or a plane:
+        /// -   the transformation is applied to the "X Direction"
+        /// and the "Y Direction", then
+        /// -   the "main Direction" is recomputed as the cross
+        /// product "X Direction" ^ "Y   Direction".
+        /// This maintains the right-handed property of the
+        /// coordinate system.
         #[cxx_name = "gp_Ax2_Mirrored"]
         fn Ax2_mirrored_ax2(self_: &Ax2, A2: &Ax2) -> UniquePtr<Ax2>;
         /// Rotates an axis placement. <theA1> is the axis of the rotation.
         /// theAng is the angular value of the rotation in radians.
         #[cxx_name = "gp_Ax2_Rotated"]
         fn Ax2_rotated(self_: &Ax2, theA1: &Ax1, theAng: f64) -> UniquePtr<Ax2>;
-        #[doc = "Applies a scaling transformation on the axis placement.\nThe \"Location\" point of the axisplacement is modified.\nWarnings :\nIf the scale <S> is negative :\n. the main direction of the axis placement is not changed.\n. The \"XDirection\" and the \"YDirection\" are reversed.\nSo the axis placement stay right handed."]
+        /// Applies a scaling transformation on the axis placement.
+        /// The "Location" point of the axisplacement is modified.
+        /// Warnings :
+        /// If the scale <S> is negative :
+        /// . the main direction of the axis placement is not changed.
+        /// . The "XDirection" and the "YDirection" are reversed.
+        /// So the axis placement stay right handed.
         #[cxx_name = "gp_Ax2_Scaled"]
         fn Ax2_scaled(self_: &Ax2, theP: &Pnt, theS: f64) -> UniquePtr<Ax2>;
-        #[doc = "Transforms an axis placement with a Trsf.\nThe \"Location\" point, the \"XDirection\" and the \"YDirection\" are transformed with theT.\nThe resulting main \"Direction\" of <me> is the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation."]
+        /// Transforms an axis placement with a Trsf.
+        /// The "Location" point, the "XDirection" and the "YDirection" are transformed with theT.
+        /// The resulting main "Direction" of <me> is the cross product between
+        /// the "XDirection" and the "YDirection" after transformation.
         #[cxx_name = "gp_Ax2_Transformed"]
         fn Ax2_transformed(self_: &Ax2, theT: &Trsf) -> UniquePtr<Ax2>;
         /// Translates an axis plaxement in the direction of the vector <theV>.
@@ -3548,7 +4112,23 @@ pub(crate) mod ffi {
         /// ======================== gp_Ax22d ========================
         /// /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d`
         ///
-        #[doc = "Describes a coordinate system in a plane (2D space).\nA coordinate system is defined by:\n-   its origin (also referred to as its \"Location point\"), and\n-   two orthogonal unit vectors, respectively, called the \"X\nDirection\" and the \"Y Direction\".\nA gp_Ax22d may be right-handed (\"direct sense\") or\nleft-handed (\"inverse\" or \"indirect sense\").\nYou use a gp_Ax22d to:\n- describe 2D geometric entities, in particular to position\nthem. The local coordinate system of a geometric\nentity serves for the same purpose as the STEP\nfunction \"axis placement two axes\", or\n-   define geometric transformations.\nNote: we refer to the \"X Axis\" and \"Y Axis\" as the axes having:\n-   the origin of the coordinate system as their origin, and\n-   the unit vectors \"X Direction\" and \"Y Direction\",\nrespectively, as their unit vectors."]
+        /// Describes a coordinate system in a plane (2D space).
+        /// A coordinate system is defined by:
+        /// -   its origin (also referred to as its "Location point"), and
+        /// -   two orthogonal unit vectors, respectively, called the "X
+        /// Direction" and the "Y Direction".
+        /// A gp_Ax22d may be right-handed ("direct sense") or
+        /// left-handed ("inverse" or "indirect sense").
+        /// You use a gp_Ax22d to:
+        /// - describe 2D geometric entities, in particular to position
+        /// them. The local coordinate system of a geometric
+        /// entity serves for the same purpose as the STEP
+        /// function "axis placement two axes", or
+        /// -   define geometric transformations.
+        /// Note: we refer to the "X Axis" and "Y Axis" as the axes having:
+        /// -   the origin of the coordinate system as their origin, and
+        /// -   the unit vectors "X Direction" and "Y Direction",
+        /// respectively, as their unit vectors.
         #[cxx_name = "gp_Ax22d"]
         type Ax22d;
         /// /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d::gp_Ax22d()`
@@ -3559,12 +4139,20 @@ pub(crate) mod ffi {
         fn Ax22d_ctor() -> UniquePtr<Ax22d>;
         /// /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d::gp_Ax22d()`
         ///
-        #[doc = "Creates a coordinate system with origin theP and where:\n-   theVx is the \"X Direction\", and\n-   the \"Y Direction\" is orthogonal to theVx and\noriented so that the cross products theVx^\"Y\nDirection\" and theVx^theVy have the same sign.\nRaises ConstructionError if theVx and theVy are parallel (same or opposite orientation)."]
+        /// Creates a coordinate system with origin theP and where:
+        /// -   theVx is the "X Direction", and
+        /// -   the "Y Direction" is orthogonal to theVx and
+        /// oriented so that the cross products theVx^"Y
+        /// Direction" and theVx^theVy have the same sign.
+        /// Raises ConstructionError if theVx and theVy are parallel (same or opposite orientation).
         #[cxx_name = "gp_Ax22d_ctor_pnt2d_dir2d2"]
         fn Ax22d_ctor_pnt2d_dir2d2(theP: &Pnt2d, theVx: &Dir2d, theVy: &Dir2d) -> UniquePtr<Ax22d>;
         /// /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d::gp_Ax22d()`
         ///
-        #[doc = "Creates -   a coordinate system with origin theP and \"X Direction\"\ntheV, which is:\n-   right-handed if theIsSense is true (default value), or\n-   left-handed if theIsSense is false"]
+        /// Creates -   a coordinate system with origin theP and "X Direction"
+        /// theV, which is:
+        /// -   right-handed if theIsSense is true (default value), or
+        /// -   left-handed if theIsSense is false
         #[cxx_name = "gp_Ax22d_ctor_pnt2d_dir2d_bool"]
         fn Ax22d_ctor_pnt2d_dir2d_bool(
             theP: &Pnt2d,
@@ -3573,35 +4161,49 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Ax22d>;
         /// /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d::gp_Ax22d()`
         ///
-        #[doc = "Creates -   a coordinate system where its origin is the origin of\ntheA and its \"X Direction\" is the unit vector of theA, which   is:\n-   right-handed if theIsSense is true (default value), or\n-   left-handed if theIsSense is false."]
+        /// Creates -   a coordinate system where its origin is the origin of
+        /// theA and its "X Direction" is the unit vector of theA, which   is:
+        /// -   right-handed if theIsSense is true (default value), or
+        /// -   left-handed if theIsSense is false.
         #[cxx_name = "gp_Ax22d_ctor_ax2d_bool"]
         fn Ax22d_ctor_ax2d_bool(theA: &Ax2d, theIsSense: bool) -> UniquePtr<Ax22d>;
         /// Assigns the origin and the two unit vectors of the
         /// coordinate system theA1 to this coordinate system.
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Ax22d>, theA1: &Ax22d);
-        #[doc = "Changes the XAxis and YAxis (\"Location\" point and \"Direction\")\nof <me>.\nThe \"YDirection\" is recomputed in the same sense as before."]
+        /// Changes the XAxis and YAxis ("Location" point and "Direction")
+        /// of <me>.
+        /// The "YDirection" is recomputed in the same sense as before.
         #[cxx_name = "SetXAxis"]
         fn set_x_axis(self: Pin<&mut Ax22d>, theA1: &Ax2d);
-        #[doc = "Changes the XAxis and YAxis (\"Location\" point and \"Direction\") of <me>.\nThe \"XDirection\" is recomputed in the same sense as before."]
+        /// Changes the XAxis and YAxis ("Location" point and "Direction") of <me>.
+        /// The "XDirection" is recomputed in the same sense as before.
         #[cxx_name = "SetYAxis"]
         fn set_y_axis(self: Pin<&mut Ax22d>, theA1: &Ax2d);
-        #[doc = "Changes the \"Location\" point (origin) of <me>."]
+        /// Changes the "Location" point (origin) of <me>.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut Ax22d>, theP: &Pnt2d);
-        #[doc = "Assigns theVx to the \"X Direction\"  of\nthis coordinate system. The other unit vector of this\ncoordinate system is recomputed, normal to theVx ,\nwithout modifying the orientation (right-handed or\nleft-handed) of this coordinate system."]
+        /// Assigns theVx to the "X Direction"  of
+        /// this coordinate system. The other unit vector of this
+        /// coordinate system is recomputed, normal to theVx ,
+        /// without modifying the orientation (right-handed or
+        /// left-handed) of this coordinate system.
         #[cxx_name = "SetXDirection"]
         fn set_x_direction(self: Pin<&mut Ax22d>, theVx: &Dir2d);
-        #[doc = "Assignsr theVy to the  \"Y Direction\" of\nthis coordinate system. The other unit vector of this\ncoordinate system is recomputed, normal to theVy,\nwithout modifying the orientation (right-handed or\nleft-handed) of this coordinate system."]
+        /// Assignsr theVy to the  "Y Direction" of
+        /// this coordinate system. The other unit vector of this
+        /// coordinate system is recomputed, normal to theVy,
+        /// without modifying the orientation (right-handed or
+        /// left-handed) of this coordinate system.
         #[cxx_name = "SetYDirection"]
         fn set_y_direction(self: Pin<&mut Ax22d>, theVy: &Dir2d);
-        #[doc = "Returns the \"Location\" point (origin) of <me>."]
+        /// Returns the "Location" point (origin) of <me>.
         #[cxx_name = "Location"]
         fn location(self: &Ax22d) -> &Pnt2d;
-        #[doc = "Returns the \"XDirection\" of <me>."]
+        /// Returns the "XDirection" of <me>.
         #[cxx_name = "XDirection"]
         fn x_direction(self: &Ax22d) -> &Dir2d;
-        #[doc = "Returns the \"YDirection\" of <me>."]
+        /// Returns the "YDirection" of <me>.
         #[cxx_name = "YDirection"]
         fn y_direction(self: &Ax22d) -> &Dir2d;
         #[cxx_name = "Mirror"]
@@ -3618,16 +4220,34 @@ pub(crate) mod ffi {
         fn translate_vec2d(self: Pin<&mut Ax22d>, theV: &Vec2d);
         #[cxx_name = "Translate"]
         fn translate_pnt2d2(self: Pin<&mut Ax22d>, theP1: &Pnt2d, theP2: &Pnt2d);
-        #[doc = "Returns an axis, for which\n-   the origin is that of this coordinate system, and\n-   the unit vector is either the \"X Direction\"  of this coordinate system.\nNote: the result is the \"X Axis\" of this coordinate system."]
+        /// Returns an axis, for which
+        /// -   the origin is that of this coordinate system, and
+        /// -   the unit vector is either the "X Direction"  of this coordinate system.
+        /// Note: the result is the "X Axis" of this coordinate system.
         #[cxx_name = "gp_Ax22d_XAxis"]
         fn Ax22d_x_axis(self_: &Ax22d) -> UniquePtr<Ax2d>;
-        #[doc = "Returns an axis, for which\n-   the origin is that of this coordinate system, and\n- the unit vector is either the  \"Y Direction\" of this coordinate system.\nNote: the result is the \"Y Axis\" of this coordinate system."]
+        /// Returns an axis, for which
+        /// -   the origin is that of this coordinate system, and
+        /// - the unit vector is either the  "Y Direction" of this coordinate system.
+        /// Note: the result is the "Y Axis" of this coordinate system.
         #[cxx_name = "gp_Ax22d_YAxis"]
         fn Ax22d_y_axis(self_: &Ax22d) -> UniquePtr<Ax2d>;
-        #[doc = "Performs the symmetrical transformation of an axis\nplacement with respect to the point theP which is the\ncenter of the symmetry.\nWarnings :\nThe main direction of the axis placement is not changed.\nThe \"XDirection\" and the \"YDirection\" are reversed.\nSo the axis placement stay right handed."]
+        /// Performs the symmetrical transformation of an axis
+        /// placement with respect to the point theP which is the
+        /// center of the symmetry.
+        /// Warnings :
+        /// The main direction of the axis placement is not changed.
+        /// The "XDirection" and the "YDirection" are reversed.
+        /// So the axis placement stay right handed.
         #[cxx_name = "gp_Ax22d_Mirrored"]
         fn Ax22d_mirrored_pnt2d(self_: &Ax22d, theP: &Pnt2d) -> UniquePtr<Ax22d>;
-        #[doc = "Performs the symmetrical transformation of an axis\nplacement with respect to an axis placement which\nis the axis of the symmetry.\nThe transformation is performed on the \"Location\"\npoint, on the \"XDirection\" and \"YDirection\".\nThe resulting main \"Direction\" is the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation."]
+        /// Performs the symmetrical transformation of an axis
+        /// placement with respect to an axis placement which
+        /// is the axis of the symmetry.
+        /// The transformation is performed on the "Location"
+        /// point, on the "XDirection" and "YDirection".
+        /// The resulting main "Direction" is the cross product between
+        /// the "XDirection" and the "YDirection" after transformation.
         #[cxx_name = "gp_Ax22d_Mirrored"]
         fn Ax22d_mirrored_ax2d(self_: &Ax22d, theA: &Ax2d) -> UniquePtr<Ax22d>;
         /// Rotates an axis placement. <theA1> is the axis of the
@@ -3635,10 +4255,20 @@ pub(crate) mod ffi {
         /// in radians.
         #[cxx_name = "gp_Ax22d_Rotated"]
         fn Ax22d_rotated(self_: &Ax22d, theP: &Pnt2d, theAng: f64) -> UniquePtr<Ax22d>;
-        #[doc = "Applies a scaling transformation on the axis placement.\nThe \"Location\" point of the axisplacement is modified.\nWarnings :\nIf the scale <theS> is negative :\n. the main direction of the axis placement is not changed.\n. The \"XDirection\" and the \"YDirection\" are reversed.\nSo the axis placement stay right handed."]
+        /// Applies a scaling transformation on the axis placement.
+        /// The "Location" point of the axisplacement is modified.
+        /// Warnings :
+        /// If the scale <theS> is negative :
+        /// . the main direction of the axis placement is not changed.
+        /// . The "XDirection" and the "YDirection" are reversed.
+        /// So the axis placement stay right handed.
         #[cxx_name = "gp_Ax22d_Scaled"]
         fn Ax22d_scaled(self_: &Ax22d, theP: &Pnt2d, theS: f64) -> UniquePtr<Ax22d>;
-        #[doc = "Transforms an axis placement with a Trsf.\nThe \"Location\" point, the \"XDirection\" and the\n\"YDirection\" are transformed with theT.  The resulting\nmain \"Direction\" of <me> is the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation."]
+        /// Transforms an axis placement with a Trsf.
+        /// The "Location" point, the "XDirection" and the
+        /// "YDirection" are transformed with theT.  The resulting
+        /// main "Direction" of <me> is the cross product between
+        /// the "XDirection" and the "YDirection" after transformation.
         #[cxx_name = "gp_Ax22d_Transformed"]
         fn Ax22d_transformed(self_: &Ax22d, theT: &Trsf2d) -> UniquePtr<Ax22d>;
         /// Translates an axis plaxement in the direction of the vector
@@ -3656,7 +4286,24 @@ pub(crate) mod ffi {
         /// ======================== gp_Ax2d ========================
         /// /// **Source:** `gp_Ax2d.hxx` - `gp_Ax2d`
         ///
-        #[doc = "Describes an axis in the plane (2D space).\nAn axis is defined by:\n-   its origin (also referred to as its \"Location point\"),   and\n-   its unit vector (referred to as its \"Direction\").\nAn axis implicitly defines a direct, right-handed\ncoordinate system in 2D space by:\n-   its origin,\n- its \"Direction\" (giving the \"X Direction\" of the coordinate system), and\n-   the unit vector normal to \"Direction\" (positive angle\nmeasured in the trigonometric sense).\nAn axis is used:\n-   to describe 2D geometric entities (for example, the\naxis which defines angular coordinates on a circle).\nIt serves for the same purpose as the STEP function\n\"axis placement one axis\", or\n-   to define geometric transformations (axis of\nsymmetry, axis of rotation, and so on).\nNote: to define a left-handed 2D coordinate system, use gp_Ax22d."]
+        /// Describes an axis in the plane (2D space).
+        /// An axis is defined by:
+        /// -   its origin (also referred to as its "Location point"),   and
+        /// -   its unit vector (referred to as its "Direction").
+        /// An axis implicitly defines a direct, right-handed
+        /// coordinate system in 2D space by:
+        /// -   its origin,
+        /// - its "Direction" (giving the "X Direction" of the coordinate system), and
+        /// -   the unit vector normal to "Direction" (positive angle
+        /// measured in the trigonometric sense).
+        /// An axis is used:
+        /// -   to describe 2D geometric entities (for example, the
+        /// axis which defines angular coordinates on a circle).
+        /// It serves for the same purpose as the STEP function
+        /// "axis placement one axis", or
+        /// -   to define geometric transformations (axis of
+        /// symmetry, axis of rotation, and so on).
+        /// Note: to define a left-handed 2D coordinate system, use gp_Ax22d.
         #[cxx_name = "gp_Ax2d"]
         type Ax2d;
         /// /// **Source:** `gp_Ax2d.hxx` - `gp_Ax2d::gp_Ax2d()`
@@ -3666,10 +4313,12 @@ pub(crate) mod ffi {
         fn Ax2d_ctor() -> UniquePtr<Ax2d>;
         /// /// **Source:** `gp_Ax2d.hxx` - `gp_Ax2d::gp_Ax2d()`
         ///
-        #[doc = "Creates an Ax2d.\n<theP> is the \"Location\" point of the axis placement\nand theV is the \"Direction\" of the axis placement."]
+        /// Creates an Ax2d.
+        /// <theP> is the "Location" point of the axis placement
+        /// and theV is the "Direction" of the axis placement.
         #[cxx_name = "gp_Ax2d_ctor_pnt2d_dir2d"]
         fn Ax2d_ctor_pnt2d_dir2d(theP: &Pnt2d, theV: &Dir2d) -> UniquePtr<Ax2d>;
-        #[doc = "Changes the \"Location\" point (origin) of <me>."]
+        /// Changes the "Location" point (origin) of <me>.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut Ax2d>, theP: &Pnt2d);
         /// Changes the direction of <me>.
@@ -3749,7 +4398,9 @@ pub(crate) mod ffi {
         /// theAng is the angular value of the rotation in radians.
         #[cxx_name = "gp_Ax2d_Rotated"]
         fn Ax2d_rotated(self_: &Ax2d, theP: &Pnt2d, theAng: f64) -> UniquePtr<Ax2d>;
-        #[doc = "Applies a scaling transformation on the axis placement.\nThe \"Location\" point of the axisplacement is modified.\nThe \"Direction\" is reversed if the scale is negative."]
+        /// Applies a scaling transformation on the axis placement.
+        /// The "Location" point of the axisplacement is modified.
+        /// The "Direction" is reversed if the scale is negative.
         #[cxx_name = "gp_Ax2d_Scaled"]
         fn Ax2d_scaled(self_: &Ax2d, theP: &Pnt2d, theS: f64) -> UniquePtr<Ax2d>;
         /// Transforms an axis placement with a Trsf.
@@ -3768,7 +4419,40 @@ pub(crate) mod ffi {
         /// ======================== gp_Ax3 ========================
         /// /// **Source:** `gp_Ax3.hxx` - `gp_Ax3`
         ///
-        #[doc = "Describes a coordinate system in 3D space. Unlike a\ngp_Ax2 coordinate system, a gp_Ax3 can be\nright-handed (\"direct sense\") or left-handed (\"indirect sense\").\nA coordinate system is defined by:\n-   its origin (also referred to as its \"Location point\"), and\n-   three orthogonal unit vectors, termed the \"X\nDirection\", the \"Y Direction\" and the \"Direction\" (also\nreferred to as the \"main Direction\").\nThe \"Direction\" of the coordinate system is called its\n\"main Direction\" because whenever this unit vector is\nmodified, the \"X Direction\" and the \"Y Direction\" are\nrecomputed. However, when we modify either the \"X\nDirection\" or the \"Y Direction\", \"Direction\" is not modified.\n\"Direction\" is also the \"Z Direction\".\nThe \"main Direction\" is always parallel to the cross\nproduct of its \"X Direction\" and \"Y Direction\".\nIf the coordinate system is right-handed, it satisfies the equation:\n\"main Direction\" = \"X Direction\" ^ \"Y Direction\"\nand if it is left-handed, it satisfies the equation:\n\"main Direction\" = -\"X Direction\" ^ \"Y Direction\"\nA coordinate system is used:\n-   to describe geometric entities, in particular to position\nthem. The local coordinate system of a geometric\nentity serves the same purpose as the STEP function\n\"axis placement three axes\", or\n-   to define geometric transformations.\nNote:\n-   We refer to the \"X Axis\", \"Y Axis\" and \"Z Axis\",\nrespectively, as the axes having:\n-   the origin of the coordinate system as their origin, and\n-   the unit vectors \"X Direction\", \"Y Direction\" and\n\"main Direction\", respectively, as their unit vectors.\n-   The \"Z Axis\" is also the \"main Axis\".\n-   gp_Ax2 is used to define a coordinate system that must be always right-handed."]
+        /// Describes a coordinate system in 3D space. Unlike a
+        /// gp_Ax2 coordinate system, a gp_Ax3 can be
+        /// right-handed ("direct sense") or left-handed ("indirect sense").
+        /// A coordinate system is defined by:
+        /// -   its origin (also referred to as its "Location point"), and
+        /// -   three orthogonal unit vectors, termed the "X
+        /// Direction", the "Y Direction" and the "Direction" (also
+        /// referred to as the "main Direction").
+        /// The "Direction" of the coordinate system is called its
+        /// "main Direction" because whenever this unit vector is
+        /// modified, the "X Direction" and the "Y Direction" are
+        /// recomputed. However, when we modify either the "X
+        /// Direction" or the "Y Direction", "Direction" is not modified.
+        /// "Direction" is also the "Z Direction".
+        /// The "main Direction" is always parallel to the cross
+        /// product of its "X Direction" and "Y Direction".
+        /// If the coordinate system is right-handed, it satisfies the equation:
+        /// "main Direction" = "X Direction" ^ "Y Direction"
+        /// and if it is left-handed, it satisfies the equation:
+        /// "main Direction" = -"X Direction" ^ "Y Direction"
+        /// A coordinate system is used:
+        /// -   to describe geometric entities, in particular to position
+        /// them. The local coordinate system of a geometric
+        /// entity serves the same purpose as the STEP function
+        /// "axis placement three axes", or
+        /// -   to define geometric transformations.
+        /// Note:
+        /// -   We refer to the "X Axis", "Y Axis" and "Z Axis",
+        /// respectively, as the axes having:
+        /// -   the origin of the coordinate system as their origin, and
+        /// -   the unit vectors "X Direction", "Y Direction" and
+        /// "main Direction", respectively, as their unit vectors.
+        /// -   The "Z Axis" is also the "main Axis".
+        /// -   gp_Ax2 is used to define a coordinate system that must be always right-handed.
         #[cxx_name = "gp_Ax3"]
         type Ax3;
         /// /// **Source:** `gp_Ax3.hxx` - `gp_Ax3::gp_Ax3()`
@@ -3785,12 +4469,16 @@ pub(crate) mod ffi {
         fn Ax3_ctor_ax2(theA: &Ax2) -> UniquePtr<Ax3>;
         /// /// **Source:** `gp_Ax3.hxx` - `gp_Ax3::gp_Ax3()`
         ///
-        #[doc = "Creates a  right handed axis placement with the\n\"Location\" point theP and  two directions, theN gives the\n\"Direction\" and theVx gives the \"XDirection\".\nRaises ConstructionError if theN and theVx are parallel (same or opposite orientation)."]
+        /// Creates a  right handed axis placement with the
+        /// "Location" point theP and  two directions, theN gives the
+        /// "Direction" and theVx gives the "XDirection".
+        /// Raises ConstructionError if theN and theVx are parallel (same or opposite orientation).
         #[cxx_name = "gp_Ax3_ctor_pnt_dir2"]
         fn Ax3_ctor_pnt_dir2(theP: &Pnt, theN: &Dir, theVx: &Dir) -> UniquePtr<Ax3>;
         /// /// **Source:** `gp_Ax3.hxx` - `gp_Ax3::gp_Ax3()`
         ///
-        #[doc = "Creates an axis placement with the \"Location\" point <theP>\nand the normal direction <theV>."]
+        /// Creates an axis placement with the "Location" point <theP>
+        /// and the normal direction <theV>.
         #[cxx_name = "gp_Ax3_ctor_pnt_dir"]
         fn Ax3_ctor_pnt_dir(theP: &Pnt, theV: &Dir) -> UniquePtr<Ax3>;
         /// Reverses the X direction of <me>.
@@ -3802,19 +4490,48 @@ pub(crate) mod ffi {
         /// Reverses the Z direction of <me>.
         #[cxx_name = "ZReverse"]
         fn z_reverse(self: Pin<&mut Ax3>);
-        #[doc = "Assigns the origin and \"main Direction\" of the axis theA1 to\nthis coordinate system, then recomputes its \"X Direction\" and \"Y Direction\".\nNote:\n-   The new \"X Direction\" is computed as follows:\nnew \"X Direction\" = V1 ^(previous \"X Direction\" ^ V)\nwhere V is the \"Direction\" of theA1.\n-   The orientation of this coordinate system\n(right-handed or left-handed) is not modified.\nRaises ConstructionError  if the \"Direction\" of <theA1> and the \"XDirection\" of <me>\nare parallel (same or opposite orientation) because it is\nimpossible to calculate the new \"XDirection\" and the new\n\"YDirection\"."]
+        /// Assigns the origin and "main Direction" of the axis theA1 to
+        /// this coordinate system, then recomputes its "X Direction" and "Y Direction".
+        /// Note:
+        /// -   The new "X Direction" is computed as follows:
+        /// new "X Direction" = V1 ^(previous "X Direction" ^ V)
+        /// where V is the "Direction" of theA1.
+        /// -   The orientation of this coordinate system
+        /// (right-handed or left-handed) is not modified.
+        /// Raises ConstructionError  if the "Direction" of <theA1> and the "XDirection" of <me>
+        /// are parallel (same or opposite orientation) because it is
+        /// impossible to calculate the new "XDirection" and the new
+        /// "YDirection".
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Ax3>, theA1: &Ax1);
-        #[doc = "Changes the main direction of this coordinate system,\nthen recomputes its \"X Direction\" and \"Y Direction\".\nNote:\n-   The new \"X Direction\" is computed as follows:\nnew \"X Direction\" = theV ^ (previous \"X Direction\" ^ theV).\n-   The orientation of this coordinate system (left- or right-handed) is not modified.\nRaises ConstructionError if <theV> and the previous \"XDirection\" are parallel\nbecause it is impossible to calculate the new \"XDirection\"\nand the new \"YDirection\"."]
+        /// Changes the main direction of this coordinate system,
+        /// then recomputes its "X Direction" and "Y Direction".
+        /// Note:
+        /// -   The new "X Direction" is computed as follows:
+        /// new "X Direction" = theV ^ (previous "X Direction" ^ theV).
+        /// -   The orientation of this coordinate system (left- or right-handed) is not modified.
+        /// Raises ConstructionError if <theV> and the previous "XDirection" are parallel
+        /// because it is impossible to calculate the new "XDirection"
+        /// and the new "YDirection".
         #[cxx_name = "SetDirection"]
         fn set_direction(self: Pin<&mut Ax3>, theV: &Dir);
-        #[doc = "Changes the \"Location\" point (origin) of <me>."]
+        /// Changes the "Location" point (origin) of <me>.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut Ax3>, theP: &Pnt);
-        #[doc = "Changes the \"Xdirection\" of <me>. The main direction\n\"Direction\" is not modified, the \"Ydirection\" is modified.\nIf <theVx> is not normal to the main direction then <XDirection>\nis computed as follows XDirection = Direction ^ (theVx ^ Direction).\nRaises ConstructionError if <theVx> is parallel (same or opposite\norientation) to the main direction of <me>"]
+        /// Changes the "Xdirection" of <me>. The main direction
+        /// "Direction" is not modified, the "Ydirection" is modified.
+        /// If <theVx> is not normal to the main direction then <XDirection>
+        /// is computed as follows XDirection = Direction ^ (theVx ^ Direction).
+        /// Raises ConstructionError if <theVx> is parallel (same or opposite
+        /// orientation) to the main direction of <me>
         #[cxx_name = "SetXDirection"]
         fn set_x_direction(self: Pin<&mut Ax3>, theVx: &Dir);
-        #[doc = "Changes the \"Ydirection\" of <me>. The main direction is not\nmodified but the \"Xdirection\" is changed.\nIf <theVy> is not normal to the main direction then \"YDirection\"\nis computed as  follows\nYDirection = Direction ^ (<theVy> ^ Direction).\nRaises ConstructionError if <theVy> is parallel to the main direction of <me>"]
+        /// Changes the "Ydirection" of <me>. The main direction is not
+        /// modified but the "Xdirection" is changed.
+        /// If <theVy> is not normal to the main direction then "YDirection"
+        /// is computed as  follows
+        /// YDirection = Direction ^ (<theVy> ^ Direction).
+        /// Raises ConstructionError if <theVy> is parallel to the main direction of <me>
         #[cxx_name = "SetYDirection"]
         fn set_y_direction(self: Pin<&mut Ax3>, theVy: &Dir);
         /// Computes the angular value between the main direction of
@@ -3822,26 +4539,33 @@ pub(crate) mod ffi {
         /// between 0 and PI in radians.
         #[cxx_name = "Angle"]
         fn angle(self: &Ax3, theOther: &Ax3) -> f64;
-        #[doc = "Returns the main axis of <me>. It is the \"Location\" point\nand the main \"Direction\"."]
+        /// Returns the main axis of <me>. It is the "Location" point
+        /// and the main "Direction".
         #[cxx_name = "Axis"]
         fn axis(self: &Ax3) -> &Ax1;
         /// Returns the main direction of <me>.
         #[cxx_name = "Direction"]
         fn direction(self: &Ax3) -> &Dir;
-        #[doc = "Returns the \"Location\" point (origin) of <me>."]
+        /// Returns the "Location" point (origin) of <me>.
         #[cxx_name = "Location"]
         fn location(self: &Ax3) -> &Pnt;
-        #[doc = "Returns the \"XDirection\" of <me>."]
+        /// Returns the "XDirection" of <me>.
         #[cxx_name = "XDirection"]
         fn x_direction(self: &Ax3) -> &Dir;
-        #[doc = "Returns the \"YDirection\" of <me>."]
+        /// Returns the "YDirection" of <me>.
         #[cxx_name = "YDirection"]
         fn y_direction(self: &Ax3) -> &Dir;
         /// Returns  True if  the  coordinate  system is right-handed. i.e.
         /// XDirection().Crossed(YDirection()).Dot(Direction()) > 0
         #[cxx_name = "Direct"]
         fn direct(self: &Ax3) -> bool;
-        #[doc = "Returns True if\n. the distance between the \"Location\" point of <me> and\n<theOther> is lower or equal to theLinearTolerance and\n. the distance between the \"Location\" point of <theOther> and\n<me> is lower or equal to theLinearTolerance and\n. the main direction of <me> and the main direction of\n<theOther> are parallel (same or opposite orientation)."]
+        /// Returns True if
+        /// . the distance between the "Location" point of <me> and
+        /// <theOther> is lower or equal to theLinearTolerance and
+        /// . the distance between the "Location" point of <theOther> and
+        /// <me> is lower or equal to theLinearTolerance and
+        /// . the main direction of <me> and the main direction of
+        /// <theOther> are parallel (same or opposite orientation).
         #[cxx_name = "IsCoplanar"]
         fn is_coplanar_ax3_real2(
             self: &Ax3,
@@ -3849,7 +4573,12 @@ pub(crate) mod ffi {
             theLinearTolerance: f64,
             theAngularTolerance: f64,
         ) -> bool;
-        #[doc = "Returns True if\n. the distance between <me> and the \"Location\" point of theA1\nis lower of equal to theLinearTolerance and\n. the distance between theA1 and the \"Location\" point of <me>\nis lower or equal to theLinearTolerance and\n. the main direction of <me> and the direction of theA1 are normal."]
+        /// Returns True if
+        /// . the distance between <me> and the "Location" point of theA1
+        /// is lower of equal to theLinearTolerance and
+        /// . the distance between theA1 and the "Location" point of <me>
+        /// is lower or equal to theLinearTolerance and
+        /// . the main direction of <me> and the direction of theA1 are normal.
         #[cxx_name = "IsCoplanar"]
         fn is_coplanar_ax1_real2(
             self: &Ax3,
@@ -3873,16 +4602,40 @@ pub(crate) mod ffi {
         fn translate_vec(self: Pin<&mut Ax3>, theV: &Vec_);
         #[cxx_name = "Translate"]
         fn translate_pnt2(self: Pin<&mut Ax3>, theP1: &Pnt, theP2: &Pnt);
-        #[doc = "Computes a right-handed coordinate system with the\nsame \"X Direction\" and \"Y Direction\" as those of this\ncoordinate system, then recomputes the \"main Direction\".\nIf this coordinate system is right-handed, the result\nreturned is the same coordinate system. If this\ncoordinate system is left-handed, the result is reversed."]
+        /// Computes a right-handed coordinate system with the
+        /// same "X Direction" and "Y Direction" as those of this
+        /// coordinate system, then recomputes the "main Direction".
+        /// If this coordinate system is right-handed, the result
+        /// returned is the same coordinate system. If this
+        /// coordinate system is left-handed, the result is reversed.
         #[cxx_name = "gp_Ax3_Ax2"]
         fn Ax3_ax2(self_: &Ax3) -> UniquePtr<Ax2>;
-        #[doc = "Performs the symmetrical transformation of an axis\nplacement with respect to the point theP which is the\ncenter of the symmetry.\nWarnings :\nThe main direction of the axis placement is not changed.\nThe \"XDirection\" and the \"YDirection\" are reversed.\nSo the axis placement stay right handed."]
+        /// Performs the symmetrical transformation of an axis
+        /// placement with respect to the point theP which is the
+        /// center of the symmetry.
+        /// Warnings :
+        /// The main direction of the axis placement is not changed.
+        /// The "XDirection" and the "YDirection" are reversed.
+        /// So the axis placement stay right handed.
         #[cxx_name = "gp_Ax3_Mirrored"]
         fn Ax3_mirrored_pnt(self_: &Ax3, theP: &Pnt) -> UniquePtr<Ax3>;
-        #[doc = "Performs the symmetrical transformation of an axis\nplacement with respect to an axis placement which\nis the axis of the symmetry.\nThe transformation is performed on the \"Location\"\npoint, on the \"XDirection\" and \"YDirection\".\nThe resulting main \"Direction\" is the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation."]
+        /// Performs the symmetrical transformation of an axis
+        /// placement with respect to an axis placement which
+        /// is the axis of the symmetry.
+        /// The transformation is performed on the "Location"
+        /// point, on the "XDirection" and "YDirection".
+        /// The resulting main "Direction" is the cross product between
+        /// the "XDirection" and the "YDirection" after transformation.
         #[cxx_name = "gp_Ax3_Mirrored"]
         fn Ax3_mirrored_ax1(self_: &Ax3, theA1: &Ax1) -> UniquePtr<Ax3>;
-        #[doc = "Performs the symmetrical transformation of an axis\nplacement with respect to a plane.\nThe axis placement  <theA2> locates the plane of the symmetry :\n(Location, XDirection, YDirection).\nThe transformation is performed on the \"Location\"\npoint, on the \"XDirection\" and \"YDirection\".\nThe resulting main \"Direction\" is the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation."]
+        /// Performs the symmetrical transformation of an axis
+        /// placement with respect to a plane.
+        /// The axis placement  <theA2> locates the plane of the symmetry :
+        /// (Location, XDirection, YDirection).
+        /// The transformation is performed on the "Location"
+        /// point, on the "XDirection" and "YDirection".
+        /// The resulting main "Direction" is the cross product between
+        /// the "XDirection" and the "YDirection" after transformation.
         #[cxx_name = "gp_Ax3_Mirrored"]
         fn Ax3_mirrored_ax2(self_: &Ax3, theA2: &Ax2) -> UniquePtr<Ax3>;
         /// Rotates an axis placement. <theA1> is the axis of the
@@ -3890,10 +4643,20 @@ pub(crate) mod ffi {
         /// in radians.
         #[cxx_name = "gp_Ax3_Rotated"]
         fn Ax3_rotated(self_: &Ax3, theA1: &Ax1, theAng: f64) -> UniquePtr<Ax3>;
-        #[doc = "Applies a scaling transformation on the axis placement.\nThe \"Location\" point of the axisplacement is modified.\nWarnings :\nIf the scale <theS> is negative :\n. the main direction of the axis placement is not changed.\n. The \"XDirection\" and the \"YDirection\" are reversed.\nSo the axis placement stay right handed."]
+        /// Applies a scaling transformation on the axis placement.
+        /// The "Location" point of the axisplacement is modified.
+        /// Warnings :
+        /// If the scale <theS> is negative :
+        /// . the main direction of the axis placement is not changed.
+        /// . The "XDirection" and the "YDirection" are reversed.
+        /// So the axis placement stay right handed.
         #[cxx_name = "gp_Ax3_Scaled"]
         fn Ax3_scaled(self_: &Ax3, theP: &Pnt, theS: f64) -> UniquePtr<Ax3>;
-        #[doc = "Transforms an axis placement with a Trsf.\nThe \"Location\" point, the \"XDirection\" and the\n\"YDirection\" are transformed with theT.  The resulting\nmain \"Direction\" of <me> is the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation."]
+        /// Transforms an axis placement with a Trsf.
+        /// The "Location" point, the "XDirection" and the
+        /// "YDirection" are transformed with theT.  The resulting
+        /// main "Direction" of <me> is the cross product between
+        /// the "XDirection" and the "YDirection" after transformation.
         #[cxx_name = "gp_Ax3_Transformed"]
         fn Ax3_transformed(self_: &Ax3, theT: &Trsf) -> UniquePtr<Ax3>;
         /// Translates an axis plaxement in the direction of the vector
@@ -3910,7 +4673,32 @@ pub(crate) mod ffi {
         /// ======================== gp_Circ ========================
         /// /// **Source:** `gp_Circ.hxx` - `gp_Circ`
         ///
-        #[doc = "Describes a circle in 3D space.\nA circle is defined by its radius and positioned in space\nwith a coordinate system (a gp_Ax2 object) as follows:\n-   the origin of the coordinate system is the center of the circle, and\n-   the origin, \"X Direction\" and \"Y Direction\" of the\ncoordinate system define the plane of the circle.\nThis positioning coordinate system is the \"local\ncoordinate system\" of the circle. Its \"main Direction\"\ngives the normal vector to the plane of the circle. The\n\"main Axis\" of the coordinate system is referred to as\nthe \"Axis\" of the circle.\nNote: when a gp_Circ circle is converted into a\nGeom_Circle circle, some implicit properties of the\ncircle are used explicitly:\n-   the \"main Direction\" of the local coordinate system\ngives an implicit orientation to the circle (and defines\nits trigonometric sense),\n-   this orientation corresponds to the direction in\nwhich parameter values increase,\n-   the starting point for parameterization is that of the\n\"X Axis\" of the local coordinate system (i.e. the \"X Axis\" of the circle).\nSee Also\ngce_MakeCirc which provides functions for more complex circle constructions\nGeom_Circle which provides additional functions for\nconstructing circles and works, in particular, with the\nparametric equations of circles"]
+        /// Describes a circle in 3D space.
+        /// A circle is defined by its radius and positioned in space
+        /// with a coordinate system (a gp_Ax2 object) as follows:
+        /// -   the origin of the coordinate system is the center of the circle, and
+        /// -   the origin, "X Direction" and "Y Direction" of the
+        /// coordinate system define the plane of the circle.
+        /// This positioning coordinate system is the "local
+        /// coordinate system" of the circle. Its "main Direction"
+        /// gives the normal vector to the plane of the circle. The
+        /// "main Axis" of the coordinate system is referred to as
+        /// the "Axis" of the circle.
+        /// Note: when a gp_Circ circle is converted into a
+        /// Geom_Circle circle, some implicit properties of the
+        /// circle are used explicitly:
+        /// -   the "main Direction" of the local coordinate system
+        /// gives an implicit orientation to the circle (and defines
+        /// its trigonometric sense),
+        /// -   this orientation corresponds to the direction in
+        /// which parameter values increase,
+        /// -   the starting point for parameterization is that of the
+        /// "X Axis" of the local coordinate system (i.e. the "X Axis" of the circle).
+        /// See Also
+        /// gce_MakeCirc which provides functions for more complex circle constructions
+        /// Geom_Circle which provides additional functions for
+        /// constructing circles and works, in particular, with the
+        /// parametric equations of circles
         #[cxx_name = "gp_Circ"]
         type Circ;
         /// /// **Source:** `gp_Circ.hxx` - `gp_Circ::gp_Circ()`
@@ -3926,10 +4714,13 @@ pub(crate) mod ffi {
         /// theRadius < 0.0
         #[cxx_name = "gp_Circ_ctor_ax2_real"]
         fn Circ_ctor_ax2_real(theA2: &Ax2, theRadius: f64) -> UniquePtr<Circ>;
-        #[doc = "Changes the main axis of the circle. It is the axis\nperpendicular to the plane of the circle.\nRaises ConstructionError if the direction of theA1\nis parallel to the \"XAxis\" of the circle."]
+        /// Changes the main axis of the circle. It is the axis
+        /// perpendicular to the plane of the circle.
+        /// Raises ConstructionError if the direction of theA1
+        /// is parallel to the "XAxis" of the circle.
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Circ>, theA1: &Ax1);
-        #[doc = "Changes the \"Location\" point (center) of the circle."]
+        /// Changes the "Location" point (center) of the circle.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut Circ>, theP: &Pnt);
         /// Changes the position of the circle.
@@ -3944,13 +4735,17 @@ pub(crate) mod ffi {
         /// Computes the area of the circle.
         #[cxx_name = "Area"]
         fn area(self: &Circ) -> f64;
-        #[doc = "Returns the main axis of the circle.\nIt is the axis perpendicular to the plane of the circle,\npassing through the \"Location\" point (center) of the circle."]
+        /// Returns the main axis of the circle.
+        /// It is the axis perpendicular to the plane of the circle,
+        /// passing through the "Location" point (center) of the circle.
         #[cxx_name = "Axis"]
         fn axis(self: &Circ) -> &Ax1;
         /// Computes the circumference of the circle.
         #[cxx_name = "Length"]
         fn length(self: &Circ) -> f64;
-        #[doc = "Returns the center of the circle. It is the\n\"Location\" point of the local coordinate system\nof the circle"]
+        /// Returns the center of the circle. It is the
+        /// "Location" point of the local coordinate system
+        /// of the circle
         #[cxx_name = "Location"]
         fn location(self: &Circ) -> &Pnt;
         /// Returns the position of the circle.
@@ -3988,10 +4783,14 @@ pub(crate) mod ffi {
         fn translate_vec(self: Pin<&mut Circ>, theV: &Vec_);
         #[cxx_name = "Translate"]
         fn translate_pnt2(self: Pin<&mut Circ>, theP1: &Pnt, theP2: &Pnt);
-        #[doc = "Returns the \"XAxis\" of the circle.\nThis axis is perpendicular to the axis of the conic.\nThis axis and the \"Yaxis\" define the plane of the conic."]
+        /// Returns the "XAxis" of the circle.
+        /// This axis is perpendicular to the axis of the conic.
+        /// This axis and the "Yaxis" define the plane of the conic.
         #[cxx_name = "gp_Circ_XAxis"]
         fn Circ_x_axis(self_: &Circ) -> UniquePtr<Ax1>;
-        #[doc = "Returns the \"YAxis\" of the circle.\nThis axis and the \"Xaxis\" define the plane of the conic.\nThe \"YAxis\" is perpendicular to the \"Xaxis\"."]
+        /// Returns the "YAxis" of the circle.
+        /// This axis and the "Xaxis" define the plane of the conic.
+        /// The "YAxis" is perpendicular to the "Xaxis".
         #[cxx_name = "gp_Circ_YAxis"]
         fn Circ_y_axis(self_: &Circ) -> UniquePtr<Ax1>;
         /// Performs the symmetrical transformation of a circle
@@ -4013,7 +4812,11 @@ pub(crate) mod ffi {
         /// theAng is the angular value of the rotation in radians.
         #[cxx_name = "gp_Circ_Rotated"]
         fn Circ_rotated(self_: &Circ, theA1: &Ax1, theAng: f64) -> UniquePtr<Circ>;
-        #[doc = "Scales a circle. theS is the scaling value.\nWarnings :\nIf theS is negative the radius stay positive but\nthe \"XAxis\" and the \"YAxis\" are  reversed as for\nan ellipse."]
+        /// Scales a circle. theS is the scaling value.
+        /// Warnings :
+        /// If theS is negative the radius stay positive but
+        /// the "XAxis" and the "YAxis" are  reversed as for
+        /// an ellipse.
         #[cxx_name = "gp_Circ_Scaled"]
         fn Circ_scaled(self_: &Circ, theP: &Pnt, theS: f64) -> UniquePtr<Circ>;
         /// Transforms a circle with the transformation theT from class Trsf.
@@ -4032,7 +4835,30 @@ pub(crate) mod ffi {
         /// ======================== gp_Circ2d ========================
         /// /// **Source:** `gp_Circ2d.hxx` - `gp_Circ2d`
         ///
-        #[doc = "Describes a circle in the plane (2D space).\nA circle is defined by its radius and positioned in the\nplane with a coordinate system (a gp_Ax22d object) as follows:\n-   the origin of the coordinate system is the center of the circle, and\n-   the orientation (direct or indirect) of the coordinate\nsystem gives an implicit orientation to the circle (and\ndefines its trigonometric sense).\nThis positioning coordinate system is the \"local\ncoordinate system\" of the circle.\nNote: when a gp_Circ2d circle is converted into a\nGeom2d_Circle circle, some implicit properties of the\ncircle are used explicitly:\n-   the implicit orientation corresponds to the direction in\nwhich parameter values increase,\n-   the starting point for parameterization is that of the \"X\nAxis\" of the local coordinate system (i.e. the \"X Axis\" of the circle).\nSee Also\nGccAna and Geom2dGcc packages which provide\nfunctions for constructing circles defined by geometric constraints\ngce_MakeCirc2d which provides functions for more\ncomplex circle constructions\nGeom2d_Circle which provides additional functions for\nconstructing circles and works, with the parametric\nequations of circles in particular  gp_Ax22d"]
+        /// Describes a circle in the plane (2D space).
+        /// A circle is defined by its radius and positioned in the
+        /// plane with a coordinate system (a gp_Ax22d object) as follows:
+        /// -   the origin of the coordinate system is the center of the circle, and
+        /// -   the orientation (direct or indirect) of the coordinate
+        /// system gives an implicit orientation to the circle (and
+        /// defines its trigonometric sense).
+        /// This positioning coordinate system is the "local
+        /// coordinate system" of the circle.
+        /// Note: when a gp_Circ2d circle is converted into a
+        /// Geom2d_Circle circle, some implicit properties of the
+        /// circle are used explicitly:
+        /// -   the implicit orientation corresponds to the direction in
+        /// which parameter values increase,
+        /// -   the starting point for parameterization is that of the "X
+        /// Axis" of the local coordinate system (i.e. the "X Axis" of the circle).
+        /// See Also
+        /// GccAna and Geom2dGcc packages which provide
+        /// functions for constructing circles defined by geometric constraints
+        /// gce_MakeCirc2d which provides functions for more
+        /// complex circle constructions
+        /// Geom2d_Circle which provides additional functions for
+        /// constructing circles and works, with the parametric
+        /// equations of circles in particular  gp_Ax22d
         #[cxx_name = "gp_Circ2d"]
         type Circ2d;
         /// /// **Source:** `gp_Circ2d.hxx` - `gp_Circ2d::gp_Circ2d()`
@@ -4125,7 +4951,10 @@ pub(crate) mod ffi {
         /// returns the position of the circle. Idem Axis(me).
         #[cxx_name = "Position"]
         fn position(self: &Circ2d) -> &Ax22d;
-        #[doc = "Reverses the orientation of the local coordinate system\nof this circle (the \"Y Direction\" is reversed) and therefore\nchanges the implicit orientation of this circle.\nReverse assigns the result to this circle,"]
+        /// Reverses the orientation of the local coordinate system
+        /// of this circle (the "Y Direction" is reversed) and therefore
+        /// changes the implicit orientation of this circle.
+        /// Reverse assigns the result to this circle,
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut Circ2d>);
         /// Returns true if the local coordinate system is direct
@@ -4153,7 +4982,10 @@ pub(crate) mod ffi {
         /// Reverses the direction of the circle.
         #[cxx_name = "gp_Circ2d_YAxis"]
         fn Circ2d_y_axis(self_: &Circ2d) -> UniquePtr<Ax2d>;
-        #[doc = "Reverses the orientation of the local coordinate system\nof this circle (the \"Y Direction\" is reversed) and therefore\nchanges the implicit orientation of this circle.\nReversed creates a new circle."]
+        /// Reverses the orientation of the local coordinate system
+        /// of this circle (the "Y Direction" is reversed) and therefore
+        /// changes the implicit orientation of this circle.
+        /// Reversed creates a new circle.
         #[cxx_name = "gp_Circ2d_Reversed"]
         fn Circ2d_reversed(self_: &Circ2d) -> UniquePtr<Circ2d>;
         /// Performs the symmetrical transformation of a circle with respect
@@ -4168,7 +5000,11 @@ pub(crate) mod ffi {
         /// Ang is the angular value of the rotation in radians.
         #[cxx_name = "gp_Circ2d_Rotated"]
         fn Circ2d_rotated(self_: &Circ2d, theP: &Pnt2d, theAng: f64) -> UniquePtr<Circ2d>;
-        #[doc = "Scales a circle. theS is the scaling value.\nWarnings :\nIf theS is negative the radius stay positive but\nthe \"XAxis\" and the \"YAxis\" are  reversed as for\nan ellipse."]
+        /// Scales a circle. theS is the scaling value.
+        /// Warnings :
+        /// If theS is negative the radius stay positive but
+        /// the "XAxis" and the "YAxis" are  reversed as for
+        /// an ellipse.
         #[cxx_name = "gp_Circ2d_Scaled"]
         fn Circ2d_scaled(self_: &Circ2d, theP: &Pnt2d, theS: f64) -> UniquePtr<Circ2d>;
         /// Transforms a circle with the transformation theT from class Trsf2d.
@@ -4191,7 +5027,35 @@ pub(crate) mod ffi {
         /// ======================== gp_Cone ========================
         /// /// **Source:** `gp_Cone.hxx` - `gp_Cone`
         ///
-        #[doc = "Defines an infinite conical surface.\nA cone is defined by its half-angle (can be negative) at the apex and\npositioned in space with a coordinate system (a gp_Ax3\nobject) and a \"reference radius\" where:\n-   the \"main Axis\" of the coordinate system is the axis of   revolution of the cone,\n-   the plane defined by the origin, the \"X Direction\" and\nthe \"Y Direction\" of the coordinate system is the\nreference plane of the cone; the intersection of the\ncone with this reference plane is a circle of radius\nequal to the reference radius,\nif the half-angle is positive, the apex of the cone is on\nthe negative side of the \"main Axis\" of the coordinate\nsystem. If the half-angle is negative, the apex is on the   positive side.\nThis coordinate system is the \"local coordinate system\" of the cone.\nNote: when a gp_Cone cone is converted into a\nGeom_ConicalSurface cone, some implicit properties of\nits local coordinate system are used explicitly:\n-   its origin, \"X Direction\", \"Y Direction\" and \"main\nDirection\" are used directly to define the parametric\ndirections on the cone and the origin of the parameters,\n-   its implicit orientation (right-handed or left-handed)\ngives the orientation (direct or indirect) of the\nGeom_ConicalSurface cone.\nSee Also\ngce_MakeCone which provides functions for more\ncomplex cone constructions\nGeom_ConicalSurface which provides additional\nfunctions for constructing cones and works, in particular,\nwith the parametric equations of cones gp_Ax3"]
+        /// Defines an infinite conical surface.
+        /// A cone is defined by its half-angle (can be negative) at the apex and
+        /// positioned in space with a coordinate system (a gp_Ax3
+        /// object) and a "reference radius" where:
+        /// -   the "main Axis" of the coordinate system is the axis of   revolution of the cone,
+        /// -   the plane defined by the origin, the "X Direction" and
+        /// the "Y Direction" of the coordinate system is the
+        /// reference plane of the cone; the intersection of the
+        /// cone with this reference plane is a circle of radius
+        /// equal to the reference radius,
+        /// if the half-angle is positive, the apex of the cone is on
+        /// the negative side of the "main Axis" of the coordinate
+        /// system. If the half-angle is negative, the apex is on the   positive side.
+        /// This coordinate system is the "local coordinate system" of the cone.
+        /// Note: when a gp_Cone cone is converted into a
+        /// Geom_ConicalSurface cone, some implicit properties of
+        /// its local coordinate system are used explicitly:
+        /// -   its origin, "X Direction", "Y Direction" and "main
+        /// Direction" are used directly to define the parametric
+        /// directions on the cone and the origin of the parameters,
+        /// -   its implicit orientation (right-handed or left-handed)
+        /// gives the orientation (direct or indirect) of the
+        /// Geom_ConicalSurface cone.
+        /// See Also
+        /// gce_MakeCone which provides functions for more
+        /// complex cone constructions
+        /// Geom_ConicalSurface which provides additional
+        /// functions for constructing cones and works, in particular,
+        /// with the parametric equations of cones gp_Ax3
         #[cxx_name = "gp_Cone"]
         type Cone;
         /// /// **Source:** `gp_Cone.hxx` - `gp_Cone::gp_Cone()`
@@ -4212,7 +5076,9 @@ pub(crate) mod ffi {
         /// * Abs(theAng) < Resolution from gp  or Abs(theAng) >= (PI/2) - Resolution.
         #[cxx_name = "gp_Cone_ctor_ax3_real2"]
         fn Cone_ctor_ax3_real2(theA3: &Ax3, theAng: f64, theRadius: f64) -> UniquePtr<Cone>;
-        #[doc = "Changes the symmetry axis of the cone.  Raises ConstructionError\nthe direction of theA1 is parallel to the \"XDirection\"\nof the coordinate system of the cone."]
+        /// Changes the symmetry axis of the cone.  Raises ConstructionError
+        /// the direction of theA1 is parallel to the "XDirection"
+        /// of the coordinate system of the cone.
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Cone>, theA1: &Ax1);
         /// Changes the location of the cone.
@@ -4265,7 +5131,7 @@ pub(crate) mod ffi {
             theC3: &mut f64,
             theD: &mut f64,
         );
-        #[doc = "returns the \"Location\" point of the cone."]
+        /// returns the "Location" point of the cone.
         #[cxx_name = "Location"]
         fn location(self: &Cone) -> &Pnt;
         /// Returns the local coordinates system of the cone.
@@ -4343,7 +5209,26 @@ pub(crate) mod ffi {
         /// ======================== gp_Cylinder ========================
         /// /// **Source:** `gp_Cylinder.hxx` - `gp_Cylinder`
         ///
-        #[doc = "Describes an infinite cylindrical surface.\nA cylinder is defined by its radius and positioned in space\nwith a coordinate system (a gp_Ax3 object), the \"main\nAxis\" of which is the axis of the cylinder. This coordinate\nsystem is the \"local coordinate system\" of the cylinder.\nNote: when a gp_Cylinder cylinder is converted into a\nGeom_CylindricalSurface cylinder, some implicit\nproperties of its local coordinate system are used explicitly:\n-   its origin, \"X Direction\", \"Y Direction\" and \"main\nDirection\" are used directly to define the parametric\ndirections on the cylinder and the origin of the parameters,\n-   its implicit orientation (right-handed or left-handed)\ngives an orientation (direct or indirect) to the\nGeom_CylindricalSurface cylinder.\nSee Also\ngce_MakeCylinder which provides functions for more\ncomplex cylinder constructions\nGeom_CylindricalSurface which provides additional\nfunctions for constructing cylinders and works, in\nparticular, with the parametric equations of cylinders gp_Ax3"]
+        /// Describes an infinite cylindrical surface.
+        /// A cylinder is defined by its radius and positioned in space
+        /// with a coordinate system (a gp_Ax3 object), the "main
+        /// Axis" of which is the axis of the cylinder. This coordinate
+        /// system is the "local coordinate system" of the cylinder.
+        /// Note: when a gp_Cylinder cylinder is converted into a
+        /// Geom_CylindricalSurface cylinder, some implicit
+        /// properties of its local coordinate system are used explicitly:
+        /// -   its origin, "X Direction", "Y Direction" and "main
+        /// Direction" are used directly to define the parametric
+        /// directions on the cylinder and the origin of the parameters,
+        /// -   its implicit orientation (right-handed or left-handed)
+        /// gives an orientation (direct or indirect) to the
+        /// Geom_CylindricalSurface cylinder.
+        /// See Also
+        /// gce_MakeCylinder which provides functions for more
+        /// complex cylinder constructions
+        /// Geom_CylindricalSurface which provides additional
+        /// functions for constructing cylinders and works, in
+        /// particular, with the parametric equations of cylinders gp_Ax3
         #[cxx_name = "gp_Cylinder"]
         type Cylinder;
         /// /// **Source:** `gp_Cylinder.hxx` - `gp_Cylinder::gp_Cylinder()`
@@ -4353,10 +5238,13 @@ pub(crate) mod ffi {
         fn Cylinder_ctor() -> UniquePtr<Cylinder>;
         /// /// **Source:** `gp_Cylinder.hxx` - `gp_Cylinder::gp_Cylinder()`
         ///
-        #[doc = "Creates a cylinder of radius Radius, whose axis is the \"main\nAxis\" of theA3. theA3 is the local coordinate system of the cylinder.   Raises\nConstructionErrord if theRadius < 0.0"]
+        /// Creates a cylinder of radius Radius, whose axis is the "main
+        /// Axis" of theA3. theA3 is the local coordinate system of the cylinder.   Raises
+        /// ConstructionErrord if theRadius < 0.0
         #[cxx_name = "gp_Cylinder_ctor_ax3_real"]
         fn Cylinder_ctor_ax3_real(theA3: &Ax3, theRadius: f64) -> UniquePtr<Cylinder>;
-        #[doc = "Changes the symmetry axis of the cylinder. Raises ConstructionError if the direction of theA1\nis parallel to the \"XDirection\" of the coordinate system of the cylinder."]
+        /// Changes the symmetry axis of the cylinder. Raises ConstructionError if the direction of theA1
+        /// is parallel to the "XDirection" of the coordinate system of the cylinder.
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Cylinder>, theA1: &Ax1);
         /// Changes the location of the surface.
@@ -4402,7 +5290,7 @@ pub(crate) mod ffi {
             theC3: &mut f64,
             theD: &mut f64,
         );
-        #[doc = "Returns the \"Location\" point of the cylinder."]
+        /// Returns the "Location" point of the cylinder.
         #[cxx_name = "Location"]
         fn location(self: &Cylinder) -> &Pnt;
         /// Returns the local coordinate system of the cylinder.
@@ -4476,7 +5364,13 @@ pub(crate) mod ffi {
         /// ======================== gp_Dir ========================
         /// /// **Source:** `gp_Dir.hxx` - `gp_Dir`
         ///
-        #[doc = "Describes a unit vector in 3D space. This unit vector is also called \"Direction\".\nSee Also\ngce_MakeDir which provides functions for more complex\nunit vector constructions\nGeom_Direction which provides additional functions for\nconstructing unit vectors and works, in particular, with the\nparametric equations of unit vectors."]
+        /// Describes a unit vector in 3D space. This unit vector is also called "Direction".
+        /// See Also
+        /// gce_MakeDir which provides functions for more complex
+        /// unit vector constructions
+        /// Geom_Direction which provides additional functions for
+        /// constructing unit vectors and works, in particular, with the
+        /// parametric equations of unit vectors.
         #[cxx_name = "gp_Dir"]
         type Dir;
         /// /// **Source:** `gp_Dir.hxx` - `gp_Dir::gp_Dir()`
@@ -4669,7 +5563,10 @@ pub(crate) mod ffi {
         /// theAng is the angular value of the rotation in radians.
         #[cxx_name = "gp_Dir_Rotated"]
         fn Dir_rotated(self_: &Dir, theA1: &Ax1, theAng: f64) -> UniquePtr<Dir>;
-        #[doc = "Transforms a direction with a \"Trsf\" from gp.\nWarnings :\nIf the scale factor of the \"Trsf\" theT is negative then the\ndirection <me> is reversed."]
+        /// Transforms a direction with a "Trsf" from gp.
+        /// Warnings :
+        /// If the scale factor of the "Trsf" theT is negative then the
+        /// direction <me> is reversed.
         #[cxx_name = "gp_Dir_Transformed"]
         fn Dir_transformed(self_: &Dir, theT: &Trsf) -> UniquePtr<Dir>;
         /// Clone gp_Dir into a new UniquePtr via copy constructor
@@ -4678,7 +5575,14 @@ pub(crate) mod ffi {
         /// ======================== gp_Dir2d ========================
         /// /// **Source:** `gp_Dir2d.hxx` - `gp_Dir2d`
         ///
-        #[doc = "Describes a unit vector in the plane (2D space). This unit\nvector is also called \"Direction\".\nSee Also\ngce_MakeDir2d which provides functions for more\ncomplex unit vector constructions\nGeom2d_Direction which provides additional functions\nfor constructing unit vectors and works, in particular, with\nthe parametric equations of unit vectors"]
+        /// Describes a unit vector in the plane (2D space). This unit
+        /// vector is also called "Direction".
+        /// See Also
+        /// gce_MakeDir2d which provides functions for more
+        /// complex unit vector constructions
+        /// Geom2d_Direction which provides additional functions
+        /// for constructing unit vectors and works, in particular, with
+        /// the parametric equations of unit vectors
         #[cxx_name = "gp_Dir2d"]
         type Dir2d;
         /// /// **Source:** `gp_Dir2d.hxx` - `gp_Dir2d::gp_Dir2d()`
@@ -4860,7 +5764,10 @@ pub(crate) mod ffi {
         /// the rotation in radians.
         #[cxx_name = "gp_Dir2d_Rotated"]
         fn Dir2d_rotated(self_: &Dir2d, theAng: f64) -> UniquePtr<Dir2d>;
-        #[doc = "Transforms a direction with the \"Trsf\" theT.\nWarnings :\nIf the scale factor of the \"Trsf\" theT is negative then the\ndirection <me> is reversed."]
+        /// Transforms a direction with the "Trsf" theT.
+        /// Warnings :
+        /// If the scale factor of the "Trsf" theT is negative then the
+        /// direction <me> is reversed.
         #[cxx_name = "gp_Dir2d_Transformed"]
         fn Dir2d_transformed(self_: &Dir2d, theT: &Trsf2d) -> UniquePtr<Dir2d>;
         /// Clone gp_Dir2d into a new UniquePtr via copy constructor
@@ -4869,7 +5776,31 @@ pub(crate) mod ffi {
         /// ======================== gp_Elips ========================
         /// /// **Source:** `gp_Elips.hxx` - `gp_Elips`
         ///
-        #[doc = "Describes an ellipse in 3D space.\nAn ellipse is defined by its major and minor radii and\npositioned in space with a coordinate system (a gp_Ax2 object) as follows:\n-   the origin of the coordinate system is the center of the ellipse,\n-   its \"X Direction\" defines the major axis of the ellipse, and\n- its \"Y Direction\" defines the minor axis of the ellipse.\nTogether, the origin, \"X Direction\" and \"Y Direction\" of\nthis coordinate system define the plane of the ellipse.\nThis coordinate system is the \"local coordinate system\"\nof the ellipse. In this coordinate system, the equation of\nthe ellipse is:\n@code\nX*X / (MajorRadius**2) + Y*Y / (MinorRadius**2) = 1.0\n@endcode\nThe \"main Direction\" of the local coordinate system gives\nthe normal vector to the plane of the ellipse. This vector\ngives an implicit orientation to the ellipse (definition of the\ntrigonometric sense). We refer to the \"main Axis\" of the\nlocal coordinate system as the \"Axis\" of the ellipse.\nSee Also\ngce_MakeElips which provides functions for more\ncomplex ellipse constructions\nGeom_Ellipse which provides additional functions for\nconstructing ellipses and works, in particular, with the\nparametric equations of ellipses"]
+        /// Describes an ellipse in 3D space.
+        /// An ellipse is defined by its major and minor radii and
+        /// positioned in space with a coordinate system (a gp_Ax2 object) as follows:
+        /// -   the origin of the coordinate system is the center of the ellipse,
+        /// -   its "X Direction" defines the major axis of the ellipse, and
+        /// - its "Y Direction" defines the minor axis of the ellipse.
+        /// Together, the origin, "X Direction" and "Y Direction" of
+        /// this coordinate system define the plane of the ellipse.
+        /// This coordinate system is the "local coordinate system"
+        /// of the ellipse. In this coordinate system, the equation of
+        /// the ellipse is:
+        /// @code
+        /// X*X / (MajorRadius**2) + Y*Y / (MinorRadius**2) = 1.0
+        /// @endcode
+        /// The "main Direction" of the local coordinate system gives
+        /// the normal vector to the plane of the ellipse. This vector
+        /// gives an implicit orientation to the ellipse (definition of the
+        /// trigonometric sense). We refer to the "main Axis" of the
+        /// local coordinate system as the "Axis" of the ellipse.
+        /// See Also
+        /// gce_MakeElips which provides functions for more
+        /// complex ellipse constructions
+        /// Geom_Ellipse which provides additional functions for
+        /// constructing ellipses and works, in particular, with the
+        /// parametric equations of ellipses
         #[cxx_name = "gp_Elips"]
         type Elips;
         /// /// **Source:** `gp_Elips.hxx` - `gp_Elips::gp_Elips()`
@@ -4879,24 +5810,43 @@ pub(crate) mod ffi {
         fn Elips_ctor() -> UniquePtr<Elips>;
         /// /// **Source:** `gp_Elips.hxx` - `gp_Elips::gp_Elips()`
         ///
-        #[doc = "The major radius of the ellipse is on the \"XAxis\" and the\nminor radius is on the \"YAxis\" of the ellipse. The \"XAxis\"\nis defined with the \"XDirection\" of theA2 and the \"YAxis\" is\ndefined with the \"YDirection\" of theA2.\nWarnings :\nIt is not forbidden to create an ellipse with theMajorRadius =\ntheMinorRadius.\nRaises ConstructionError if theMajorRadius < theMinorRadius or theMinorRadius < 0."]
+        /// The major radius of the ellipse is on the "XAxis" and the
+        /// minor radius is on the "YAxis" of the ellipse. The "XAxis"
+        /// is defined with the "XDirection" of theA2 and the "YAxis" is
+        /// defined with the "YDirection" of theA2.
+        /// Warnings :
+        /// It is not forbidden to create an ellipse with theMajorRadius =
+        /// theMinorRadius.
+        /// Raises ConstructionError if theMajorRadius < theMinorRadius or theMinorRadius < 0.
         #[cxx_name = "gp_Elips_ctor_ax2_real2"]
         fn Elips_ctor_ax2_real2(
             theA2: &Ax2,
             theMajorRadius: f64,
             theMinorRadius: f64,
         ) -> UniquePtr<Elips>;
-        #[doc = "Changes the axis normal to the plane of the ellipse.\nIt modifies the definition of this plane.\nThe \"XAxis\" and the \"YAxis\" are recomputed.\nThe local coordinate system is redefined so that:\n-   its origin and \"main Direction\" become those of the\naxis theA1 (the \"X Direction\" and \"Y Direction\" are then\nrecomputed in the same way as for any gp_Ax2), or\nRaises ConstructionError if the direction of theA1\nis parallel to the direction of the \"XAxis\" of the ellipse."]
+        /// Changes the axis normal to the plane of the ellipse.
+        /// It modifies the definition of this plane.
+        /// The "XAxis" and the "YAxis" are recomputed.
+        /// The local coordinate system is redefined so that:
+        /// -   its origin and "main Direction" become those of the
+        /// axis theA1 (the "X Direction" and "Y Direction" are then
+        /// recomputed in the same way as for any gp_Ax2), or
+        /// Raises ConstructionError if the direction of theA1
+        /// is parallel to the direction of the "XAxis" of the ellipse.
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Elips>, theA1: &Ax1);
         /// Modifies this ellipse, by redefining its local coordinate
         /// so that its origin becomes theP.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut Elips>, theP: &Pnt);
-        #[doc = "The major radius of the ellipse is on the \"XAxis\" (major axis)\nof the ellipse.\nRaises ConstructionError if theMajorRadius < MinorRadius."]
+        /// The major radius of the ellipse is on the "XAxis" (major axis)
+        /// of the ellipse.
+        /// Raises ConstructionError if theMajorRadius < MinorRadius.
         #[cxx_name = "SetMajorRadius"]
         fn set_major_radius(self: Pin<&mut Elips>, theMajorRadius: f64);
-        #[doc = "The minor radius of the ellipse is on the \"YAxis\" (minor axis)\nof the ellipse.\nRaises ConstructionError if theMinorRadius > MajorRadius or MinorRadius < 0."]
+        /// The minor radius of the ellipse is on the "YAxis" (minor axis)
+        /// of the ellipse.
+        /// Raises ConstructionError if theMinorRadius > MajorRadius or MinorRadius < 0.
         #[cxx_name = "SetMinorRadius"]
         fn set_minor_radius(self: Pin<&mut Elips>, theMinorRadius: f64);
         /// Modifies this ellipse, by redefining its local coordinate
@@ -4919,7 +5869,8 @@ pub(crate) mod ffi {
         /// two focus focus1 and focus2 of the ellipse.
         #[cxx_name = "Focal"]
         fn focal(self: &Elips) -> f64;
-        #[doc = "Returns the center of the ellipse. It is the \"Location\"\npoint of the coordinate system of the ellipse."]
+        /// Returns the center of the ellipse. It is the "Location"
+        /// point of the coordinate system of the ellipse.
         #[cxx_name = "Location"]
         fn location(self: &Elips) -> &Pnt;
         /// Returns the major radius of the ellipse.
@@ -4952,22 +5903,45 @@ pub(crate) mod ffi {
         fn translate_vec(self: Pin<&mut Elips>, theV: &Vec_);
         #[cxx_name = "Translate"]
         fn translate_pnt2(self: Pin<&mut Elips>, theP1: &Pnt, theP2: &Pnt);
-        #[doc = "Computes the first or second directrix of this ellipse.\nThese are the lines, in the plane of the ellipse, normal to\nthe major axis, at a distance equal to\nMajorRadius/e from the center of the ellipse, where\ne is the eccentricity of the ellipse.\nThe first directrix (Directrix1) is on the positive side of\nthe major axis. The second directrix (Directrix2) is on\nthe negative side.\nThe directrix is returned as an axis (gp_Ax1 object), the\norigin of which is situated on the \"X Axis\" of the local\ncoordinate system of this ellipse.\nExceptions\nStandard_ConstructionError if the eccentricity is null\n(the ellipse has degenerated into a circle)."]
+        /// Computes the first or second directrix of this ellipse.
+        /// These are the lines, in the plane of the ellipse, normal to
+        /// the major axis, at a distance equal to
+        /// MajorRadius/e from the center of the ellipse, where
+        /// e is the eccentricity of the ellipse.
+        /// The first directrix (Directrix1) is on the positive side of
+        /// the major axis. The second directrix (Directrix2) is on
+        /// the negative side.
+        /// The directrix is returned as an axis (gp_Ax1 object), the
+        /// origin of which is situated on the "X Axis" of the local
+        /// coordinate system of this ellipse.
+        /// Exceptions
+        /// Standard_ConstructionError if the eccentricity is null
+        /// (the ellipse has degenerated into a circle).
         #[cxx_name = "gp_Elips_Directrix1"]
         fn Elips_directrix1(self_: &Elips) -> UniquePtr<Ax1>;
-        #[doc = "This line is obtained by the symmetrical transformation\nof \"Directrix1\" with respect to the \"YAxis\" of the ellipse.\nExceptions\nStandard_ConstructionError if the eccentricity is null\n(the ellipse has degenerated into a circle)."]
+        /// This line is obtained by the symmetrical transformation
+        /// of "Directrix1" with respect to the "YAxis" of the ellipse.
+        /// Exceptions
+        /// Standard_ConstructionError if the eccentricity is null
+        /// (the ellipse has degenerated into a circle).
         #[cxx_name = "gp_Elips_Directrix2"]
         fn Elips_directrix2(self_: &Elips) -> UniquePtr<Ax1>;
-        #[doc = "Returns the first focus of the ellipse. This focus is on the\npositive side of the \"XAxis\" of the ellipse."]
+        /// Returns the first focus of the ellipse. This focus is on the
+        /// positive side of the "XAxis" of the ellipse.
         #[cxx_name = "gp_Elips_Focus1"]
         fn Elips_focus1(self_: &Elips) -> UniquePtr<Pnt>;
-        #[doc = "Returns the second focus of the ellipse. This focus is on the\nnegative side of the \"XAxis\" of the ellipse."]
+        /// Returns the second focus of the ellipse. This focus is on the
+        /// negative side of the "XAxis" of the ellipse.
         #[cxx_name = "gp_Elips_Focus2"]
         fn Elips_focus2(self_: &Elips) -> UniquePtr<Pnt>;
-        #[doc = "Returns the \"XAxis\" of the ellipse whose origin\nis the center of this ellipse. It is the major axis of the\nellipse."]
+        /// Returns the "XAxis" of the ellipse whose origin
+        /// is the center of this ellipse. It is the major axis of the
+        /// ellipse.
         #[cxx_name = "gp_Elips_XAxis"]
         fn Elips_x_axis(self_: &Elips) -> UniquePtr<Ax1>;
-        #[doc = "Returns the \"YAxis\" of the ellipse whose unit vector is the \"X Direction\" or the \"Y Direction\"\nof the local coordinate system of this ellipse.\nThis is the minor axis of the ellipse."]
+        /// Returns the "YAxis" of the ellipse whose unit vector is the "X Direction" or the "Y Direction"
+        /// of the local coordinate system of this ellipse.
+        /// This is the minor axis of the ellipse.
         #[cxx_name = "gp_Elips_YAxis"]
         fn Elips_y_axis(self_: &Elips) -> UniquePtr<Ax1>;
         /// Performs the symmetrical transformation of an ellipse with
@@ -5006,7 +5980,26 @@ pub(crate) mod ffi {
         /// ======================== gp_Elips2d ========================
         /// /// **Source:** `gp_Elips2d.hxx` - `gp_Elips2d`
         ///
-        #[doc = "Describes an ellipse in the plane (2D space).\nAn ellipse is defined by its major and minor radii and\npositioned in the plane with a coordinate system (a\ngp_Ax22d object) as follows:\n-   the origin of the coordinate system is the center of the ellipse,\n-   its \"X Direction\" defines the major axis of the ellipse, and\n-   its \"Y Direction\" defines the minor axis of the ellipse.\nThis coordinate system is the \"local coordinate system\"\nof the ellipse. Its orientation (direct or indirect) gives an\nimplicit orientation to the ellipse. In this coordinate\nsystem, the equation of the ellipse is:\n@code\nX*X / (MajorRadius**2) + Y*Y / (MinorRadius**2) = 1.0\n@endcode\nSee Also\ngce_MakeElips2d which provides functions for more\ncomplex ellipse constructions\nGeom2d_Ellipse which provides additional functions for\nconstructing ellipses and works, in particular, with the\nparametric equations of ellipses"]
+        /// Describes an ellipse in the plane (2D space).
+        /// An ellipse is defined by its major and minor radii and
+        /// positioned in the plane with a coordinate system (a
+        /// gp_Ax22d object) as follows:
+        /// -   the origin of the coordinate system is the center of the ellipse,
+        /// -   its "X Direction" defines the major axis of the ellipse, and
+        /// -   its "Y Direction" defines the minor axis of the ellipse.
+        /// This coordinate system is the "local coordinate system"
+        /// of the ellipse. Its orientation (direct or indirect) gives an
+        /// implicit orientation to the ellipse. In this coordinate
+        /// system, the equation of the ellipse is:
+        /// @code
+        /// X*X / (MajorRadius**2) + Y*Y / (MinorRadius**2) = 1.0
+        /// @endcode
+        /// See Also
+        /// gce_MakeElips2d which provides functions for more
+        /// complex ellipse constructions
+        /// Geom2d_Ellipse which provides additional functions for
+        /// constructing ellipses and works, in particular, with the
+        /// parametric equations of ellipses
         #[cxx_name = "gp_Elips2d"]
         type Elips2d;
         /// /// **Source:** `gp_Elips2d.hxx` - `gp_Elips2d::gp_Elips2d()`
@@ -5033,7 +6026,21 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Elips2d>;
         /// /// **Source:** `gp_Elips2d.hxx` - `gp_Elips2d::gp_Elips2d()`
         ///
-        #[doc = "Creates an ellipse with radii MajorRadius and\nMinorRadius, positioned in the plane by coordinate system theA where:\n-   the origin of theA is the center of the ellipse,\n-   the \"X Direction\" of theA defines the major axis of\nthe ellipse, that is, the major radius MajorRadius\nis measured along this axis, and\n-   the \"Y Direction\" of theA defines the minor axis of\nthe ellipse, that is, the minor radius theMinorRadius\nis measured along this axis, and\n-   the orientation (direct or indirect sense) of theA\ngives the orientation of the ellipse.\nWarnings :\nIt is possible to create an ellipse with\ntheMajorRadius = theMinorRadius.\nRaises ConstructionError if theMajorRadius < theMinorRadius or theMinorRadius < 0.0"]
+        /// Creates an ellipse with radii MajorRadius and
+        /// MinorRadius, positioned in the plane by coordinate system theA where:
+        /// -   the origin of theA is the center of the ellipse,
+        /// -   the "X Direction" of theA defines the major axis of
+        /// the ellipse, that is, the major radius MajorRadius
+        /// is measured along this axis, and
+        /// -   the "Y Direction" of theA defines the minor axis of
+        /// the ellipse, that is, the minor radius theMinorRadius
+        /// is measured along this axis, and
+        /// -   the orientation (direct or indirect sense) of theA
+        /// gives the orientation of the ellipse.
+        /// Warnings :
+        /// It is possible to create an ellipse with
+        /// theMajorRadius = theMinorRadius.
+        /// Raises ConstructionError if theMajorRadius < theMinorRadius or theMinorRadius < 0.0
         #[cxx_name = "gp_Elips2d_ctor_ax22d_real2"]
         fn Elips2d_ctor_ax22d_real2(
             theA: &Ax22d,
@@ -5056,10 +6063,18 @@ pub(crate) mod ffi {
         /// it becomes theA.
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Elips2d>, theA: &Ax22d);
-        #[doc = "Modifies this ellipse, by redefining its local coordinate system so that\nits origin and its \"X Direction\"  become those\nof the axis theA. The \"Y  Direction\"  is then\nrecomputed. The orientation of the local coordinate\nsystem is not modified."]
+        /// Modifies this ellipse, by redefining its local coordinate system so that
+        /// its origin and its "X Direction"  become those
+        /// of the axis theA. The "Y  Direction"  is then
+        /// recomputed. The orientation of the local coordinate
+        /// system is not modified.
         #[cxx_name = "SetXAxis"]
         fn set_x_axis(self: Pin<&mut Elips2d>, theA: &Ax2d);
-        #[doc = "Modifies this ellipse, by redefining its local coordinate system so that\nits origin and its \"Y Direction\"  become those\nof the axis theA. The \"X  Direction\"  is then\nrecomputed. The orientation of the local coordinate\nsystem is not modified."]
+        /// Modifies this ellipse, by redefining its local coordinate system so that
+        /// its origin and its "Y Direction"  become those
+        /// of the axis theA. The "X  Direction"  is then
+        /// recomputed. The orientation of the local coordinate
+        /// system is not modified.
         #[cxx_name = "SetYAxis"]
         fn set_y_axis(self: Pin<&mut Elips2d>, theA: &Ax2d);
         /// Computes the area of the ellipse.
@@ -5124,10 +6139,23 @@ pub(crate) mod ffi {
         fn translate_vec2d(self: Pin<&mut Elips2d>, theV: &Vec2d);
         #[cxx_name = "Translate"]
         fn translate_pnt2d2(self: Pin<&mut Elips2d>, theP1: &Pnt2d, theP2: &Pnt2d);
-        #[doc = "This directrix is the line normal to the XAxis of the ellipse\nin the local plane (Z = 0) at a distance d = MajorRadius / e\nfrom the center of the ellipse, where e is the eccentricity of\nthe ellipse.\nThis line is parallel to the \"YAxis\". The intersection point\nbetween directrix1 and the \"XAxis\" is the location point of the\ndirectrix1. This point is on the positive side of the \"XAxis\".\n\nRaised if Eccentricity = 0.0. (The ellipse degenerates into a\ncircle)"]
+        /// This directrix is the line normal to the XAxis of the ellipse
+        /// in the local plane (Z = 0) at a distance d = MajorRadius / e
+        /// from the center of the ellipse, where e is the eccentricity of
+        /// the ellipse.
+        /// This line is parallel to the "YAxis". The intersection point
+        /// between directrix1 and the "XAxis" is the location point of the
+        /// directrix1. This point is on the positive side of the "XAxis".
+        ///
+        /// Raised if Eccentricity = 0.0. (The ellipse degenerates into a
+        /// circle)
         #[cxx_name = "gp_Elips2d_Directrix1"]
         fn Elips2d_directrix1(self_: &Elips2d) -> UniquePtr<Ax2d>;
-        #[doc = "This line is obtained by the symmetrical transformation\nof \"Directrix1\" with respect to the minor axis of the ellipse.\n\nRaised if Eccentricity = 0.0. (The ellipse degenerates into a\ncircle)."]
+        /// This line is obtained by the symmetrical transformation
+        /// of "Directrix1" with respect to the minor axis of the ellipse.
+        ///
+        /// Raised if Eccentricity = 0.0. (The ellipse degenerates into a
+        /// circle).
         #[cxx_name = "gp_Elips2d_Directrix2"]
         fn Elips2d_directrix2(self_: &Elips2d) -> UniquePtr<Ax2d>;
         /// Returns the first focus of the ellipse. This focus is on the
@@ -5235,7 +6263,14 @@ pub(crate) mod ffi {
         /// HP' = theRatio * HP.
         #[cxx_name = "SetAffinity"]
         fn set_affinity_ax1_real(self: Pin<&mut GTrsf>, theA1: &Ax1, theRatio: f64);
-        #[doc = "Changes this transformation into an affinity of ratio theRatio\nwith respect to  the plane defined by the origin, the \"X Direction\" and\nthe \"Y Direction\" of coordinate system theA2.\nNote: an affinity is a point-by-point transformation that\ntransforms any point P into a point P' such that if H is\nthe orthogonal projection of P on the axis A1 or the\nplane theA2, the vectors HP and HP' satisfy:\nHP' = theRatio * HP."]
+        /// Changes this transformation into an affinity of ratio theRatio
+        /// with respect to  the plane defined by the origin, the "X Direction" and
+        /// the "Y Direction" of coordinate system theA2.
+        /// Note: an affinity is a point-by-point transformation that
+        /// transforms any point P into a point P' such that if H is
+        /// the orthogonal projection of P on the axis A1 or the
+        /// plane theA2, the vectors HP and HP' satisfy:
+        /// HP' = theRatio * HP.
         #[cxx_name = "SetAffinity"]
         fn set_affinity_ax2_real(self: Pin<&mut GTrsf>, theA2: &Ax2, theRatio: f64);
         /// Replaces  the coefficient (theRow, theCol) of the matrix representing
@@ -5510,7 +6545,52 @@ pub(crate) mod ffi {
         /// ======================== gp_Hypr ========================
         /// /// **Source:** `gp_Hypr.hxx` - `gp_Hypr`
         ///
-        #[doc = "Describes a branch of a hyperbola in 3D space.\nA hyperbola is defined by its major and minor radii and\npositioned in space with a coordinate system (a gp_Ax2\nobject) of which:\n-   the origin is the center of the hyperbola,\n-   the \"X Direction\" defines the major axis of the\nhyperbola, and\n- the \"Y Direction\" defines the minor axis of the hyperbola.\nThe origin, \"X Direction\" and \"Y Direction\" of this\ncoordinate system together define the plane of the\nhyperbola. This coordinate system is the \"local\ncoordinate system\" of the hyperbola. In this coordinate\nsystem, the equation of the hyperbola is:\nX*X/(MajorRadius**2)-Y*Y/(MinorRadius**2) = 1.0\nThe branch of the hyperbola described is the one located\non the positive side of the major axis.\nThe \"main Direction\" of the local coordinate system is a\nnormal vector to the plane of the hyperbola. This vector\ngives an implicit orientation to the hyperbola. We refer to\nthe \"main Axis\" of the local coordinate system as the\n\"Axis\" of the hyperbola.\nThe following schema shows the plane of the hyperbola,\nand in it, the respective positions of the three branches of\nhyperbolas constructed with the functions OtherBranch,\nConjugateBranch1, and ConjugateBranch2:\n@code\n^YAxis\n|\nFirstConjugateBranch\n|\nOther            |                Main\n--------------------- C ------------------------------>XAxis\nBranch           |                Branch\n|\n|\nSecondConjugateBranch\n|                  ^YAxis\n@endcode\nWarning\nThe major radius can be less than the minor radius.\nSee Also\ngce_MakeHypr which provides functions for more\ncomplex hyperbola constructions\nGeom_Hyperbola which provides additional functions for\nconstructing hyperbolas and works, in particular, with the\nparametric equations of hyperbolas"]
+        /// Describes a branch of a hyperbola in 3D space.
+        /// A hyperbola is defined by its major and minor radii and
+        /// positioned in space with a coordinate system (a gp_Ax2
+        /// object) of which:
+        /// -   the origin is the center of the hyperbola,
+        /// -   the "X Direction" defines the major axis of the
+        /// hyperbola, and
+        /// - the "Y Direction" defines the minor axis of the hyperbola.
+        /// The origin, "X Direction" and "Y Direction" of this
+        /// coordinate system together define the plane of the
+        /// hyperbola. This coordinate system is the "local
+        /// coordinate system" of the hyperbola. In this coordinate
+        /// system, the equation of the hyperbola is:
+        /// X*X/(MajorRadius**2)-Y*Y/(MinorRadius**2) = 1.0
+        /// The branch of the hyperbola described is the one located
+        /// on the positive side of the major axis.
+        /// The "main Direction" of the local coordinate system is a
+        /// normal vector to the plane of the hyperbola. This vector
+        /// gives an implicit orientation to the hyperbola. We refer to
+        /// the "main Axis" of the local coordinate system as the
+        /// "Axis" of the hyperbola.
+        /// The following schema shows the plane of the hyperbola,
+        /// and in it, the respective positions of the three branches of
+        /// hyperbolas constructed with the functions OtherBranch,
+        /// ConjugateBranch1, and ConjugateBranch2:
+        /// @code
+        /// ^YAxis
+        /// |
+        /// FirstConjugateBranch
+        /// |
+        /// Other            |                Main
+        /// --------------------- C ------------------------------>XAxis
+        /// Branch           |                Branch
+        /// |
+        /// |
+        /// SecondConjugateBranch
+        /// |                  ^YAxis
+        /// @endcode
+        /// Warning
+        /// The major radius can be less than the minor radius.
+        /// See Also
+        /// gce_MakeHypr which provides functions for more
+        /// complex hyperbola constructions
+        /// Geom_Hyperbola which provides additional functions for
+        /// constructing hyperbolas and works, in particular, with the
+        /// parametric equations of hyperbolas
         #[cxx_name = "gp_Hypr"]
         type Hypr;
         /// /// **Source:** `gp_Hypr.hxx` - `gp_Hypr::gp_Hypr()`
@@ -5520,14 +6600,37 @@ pub(crate) mod ffi {
         fn Hypr_ctor() -> UniquePtr<Hypr>;
         /// /// **Source:** `gp_Hypr.hxx` - `gp_Hypr::gp_Hypr()`
         ///
-        #[doc = "Creates a hyperbola with radius theMajorRadius and\ntheMinorRadius, positioned in the space by the\ncoordinate system theA2 such that:\n-   the origin of theA2 is the center of the hyperbola,\n-   the \"X Direction\" of theA2 defines the major axis of\nthe hyperbola, that is, the major radius\ntheMajorRadius is measured along this axis, and\n-   the \"Y Direction\" of theA2 defines the minor axis of\nthe hyperbola, that is, the minor radius\ntheMinorRadius is measured along this axis.\nNote: This class does not prevent the creation of a\nhyperbola where:\n-   theMajorAxis is equal to theMinorAxis, or\n-   theMajorAxis is less than theMinorAxis.\nExceptions\nStandard_ConstructionError if theMajorAxis or theMinorAxis is negative.\nRaises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0\nRaised if theMajorRadius < 0.0 or theMinorRadius < 0.0"]
+        /// Creates a hyperbola with radius theMajorRadius and
+        /// theMinorRadius, positioned in the space by the
+        /// coordinate system theA2 such that:
+        /// -   the origin of theA2 is the center of the hyperbola,
+        /// -   the "X Direction" of theA2 defines the major axis of
+        /// the hyperbola, that is, the major radius
+        /// theMajorRadius is measured along this axis, and
+        /// -   the "Y Direction" of theA2 defines the minor axis of
+        /// the hyperbola, that is, the minor radius
+        /// theMinorRadius is measured along this axis.
+        /// Note: This class does not prevent the creation of a
+        /// hyperbola where:
+        /// -   theMajorAxis is equal to theMinorAxis, or
+        /// -   theMajorAxis is less than theMinorAxis.
+        /// Exceptions
+        /// Standard_ConstructionError if theMajorAxis or theMinorAxis is negative.
+        /// Raises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0
+        /// Raised if theMajorRadius < 0.0 or theMinorRadius < 0.0
         #[cxx_name = "gp_Hypr_ctor_ax2_real2"]
         fn Hypr_ctor_ax2_real2(
             theA2: &Ax2,
             theMajorRadius: f64,
             theMinorRadius: f64,
         ) -> UniquePtr<Hypr>;
-        #[doc = "Modifies this hyperbola, by redefining its local coordinate\nsystem so that:\n-   its origin and \"main Direction\" become those of the\naxis theA1 (the \"X Direction\" and \"Y Direction\" are then\nrecomputed in the same way as for any gp_Ax2).\nRaises ConstructionError if the direction of theA1 is parallel to the direction of\nthe \"XAxis\" of the hyperbola."]
+        /// Modifies this hyperbola, by redefining its local coordinate
+        /// system so that:
+        /// -   its origin and "main Direction" become those of the
+        /// axis theA1 (the "X Direction" and "Y Direction" are then
+        /// recomputed in the same way as for any gp_Ax2).
+        /// Raises ConstructionError if the direction of theA1 is parallel to the direction of
+        /// the "XAxis" of the hyperbola.
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Hypr>, theA1: &Ax1);
         /// Modifies this hyperbola, by redefining its local coordinate
@@ -5562,13 +6665,16 @@ pub(crate) mod ffi {
         /// the two focus of the hyperbola.
         #[cxx_name = "Focal"]
         fn focal(self: &Hypr) -> f64;
-        #[doc = "Returns  the location point of the hyperbola. It is the\nintersection point between the \"XAxis\" and the \"YAxis\"."]
+        /// Returns  the location point of the hyperbola. It is the
+        /// intersection point between the "XAxis" and the "YAxis".
         #[cxx_name = "Location"]
         fn location(self: &Hypr) -> &Pnt;
-        #[doc = "Returns the major radius of the hyperbola. It is the radius\non the \"XAxis\" of the hyperbola."]
+        /// Returns the major radius of the hyperbola. It is the radius
+        /// on the "XAxis" of the hyperbola.
         #[cxx_name = "MajorRadius"]
         fn major_radius(self: &Hypr) -> f64;
-        #[doc = "Returns the minor radius of the hyperbola. It is the radius\non the \"YAxis\" of the hyperbola."]
+        /// Returns the minor radius of the hyperbola. It is the radius
+        /// on the "YAxis" of the hyperbola.
         #[cxx_name = "MinorRadius"]
         fn minor_radius(self: &Hypr) -> f64;
         /// Returns p = (e * e - 1) * MajorRadius where e is the
@@ -5609,31 +6715,54 @@ pub(crate) mod ffi {
         /// = 0.0
         #[cxx_name = "gp_Hypr_Asymptote2"]
         fn Hypr_asymptote2(self_: &Hypr) -> UniquePtr<Ax1>;
-        #[doc = "Computes the branch of hyperbola which is on the positive side of the\n\"YAxis\" of <me>."]
+        /// Computes the branch of hyperbola which is on the positive side of the
+        /// "YAxis" of <me>.
         #[cxx_name = "gp_Hypr_ConjugateBranch1"]
         fn Hypr_conjugate_branch1(self_: &Hypr) -> UniquePtr<Hypr>;
-        #[doc = "Computes the branch of hyperbola which is on the negative side of the\n\"YAxis\" of <me>."]
+        /// Computes the branch of hyperbola which is on the negative side of the
+        /// "YAxis" of <me>.
         #[cxx_name = "gp_Hypr_ConjugateBranch2"]
         fn Hypr_conjugate_branch2(self_: &Hypr) -> UniquePtr<Hypr>;
-        #[doc = "This directrix is the line normal to the XAxis of the hyperbola\nin the local plane (Z = 0) at a distance d = MajorRadius / e\nfrom the center of the hyperbola, where e is the eccentricity of\nthe hyperbola.\nThis line is parallel to the \"YAxis\". The intersection point\nbetween the directrix1 and the \"XAxis\" is the \"Location\" point\nof the directrix1. This point is on the positive side of the\n\"XAxis\"."]
+        /// This directrix is the line normal to the XAxis of the hyperbola
+        /// in the local plane (Z = 0) at a distance d = MajorRadius / e
+        /// from the center of the hyperbola, where e is the eccentricity of
+        /// the hyperbola.
+        /// This line is parallel to the "YAxis". The intersection point
+        /// between the directrix1 and the "XAxis" is the "Location" point
+        /// of the directrix1. This point is on the positive side of the
+        /// "XAxis".
         #[cxx_name = "gp_Hypr_Directrix1"]
         fn Hypr_directrix1(self_: &Hypr) -> UniquePtr<Ax1>;
-        #[doc = "This line is obtained by the symmetrical transformation\nof \"Directrix1\" with respect to the \"YAxis\" of the hyperbola."]
+        /// This line is obtained by the symmetrical transformation
+        /// of "Directrix1" with respect to the "YAxis" of the hyperbola.
         #[cxx_name = "gp_Hypr_Directrix2"]
         fn Hypr_directrix2(self_: &Hypr) -> UniquePtr<Ax1>;
-        #[doc = "Returns the first focus of the hyperbola. This focus is on the\npositive side of the \"XAxis\" of the hyperbola."]
+        /// Returns the first focus of the hyperbola. This focus is on the
+        /// positive side of the "XAxis" of the hyperbola.
         #[cxx_name = "gp_Hypr_Focus1"]
         fn Hypr_focus1(self_: &Hypr) -> UniquePtr<Pnt>;
-        #[doc = "Returns the second focus of the hyperbola. This focus is on the\nnegative side of the \"XAxis\" of the hyperbola."]
+        /// Returns the second focus of the hyperbola. This focus is on the
+        /// negative side of the "XAxis" of the hyperbola.
         #[cxx_name = "gp_Hypr_Focus2"]
         fn Hypr_focus2(self_: &Hypr) -> UniquePtr<Pnt>;
-        #[doc = "Returns the branch of hyperbola obtained by doing the\nsymmetrical transformation of <me> with respect to the\n\"YAxis\"  of <me>."]
+        /// Returns the branch of hyperbola obtained by doing the
+        /// symmetrical transformation of <me> with respect to the
+        /// "YAxis"  of <me>.
         #[cxx_name = "gp_Hypr_OtherBranch"]
         fn Hypr_other_branch(self_: &Hypr) -> UniquePtr<Hypr>;
-        #[doc = "Computes an axis, whose\n-   the origin is the center of this hyperbola, and\n-   the unit vector is the \"X Direction\"\nof the local coordinate system of this hyperbola.\nThese axes are, the major axis (the \"X\nAxis\") and  of this hyperboReturns the \"XAxis\" of the hyperbola."]
+        /// Computes an axis, whose
+        /// -   the origin is the center of this hyperbola, and
+        /// -   the unit vector is the "X Direction"
+        /// of the local coordinate system of this hyperbola.
+        /// These axes are, the major axis (the "X
+        /// Axis") and  of this hyperboReturns the "XAxis" of the hyperbola.
         #[cxx_name = "gp_Hypr_XAxis"]
         fn Hypr_x_axis(self_: &Hypr) -> UniquePtr<Ax1>;
-        #[doc = "Computes an axis, whose\n-   the origin is the center of this hyperbola, and\n-   the unit vector is the \"Y Direction\"\nof the local coordinate system of this hyperbola.\nThese axes are the minor axis (the \"Y Axis\") of this hyperbola"]
+        /// Computes an axis, whose
+        /// -   the origin is the center of this hyperbola, and
+        /// -   the unit vector is the "Y Direction"
+        /// of the local coordinate system of this hyperbola.
+        /// These axes are the minor axis (the "Y Axis") of this hyperbola
         #[cxx_name = "gp_Hypr_YAxis"]
         fn Hypr_y_axis(self_: &Hypr) -> UniquePtr<Ax1>;
         /// Performs the symmetrical transformation of an hyperbola with
@@ -5673,7 +6802,46 @@ pub(crate) mod ffi {
         /// ======================== gp_Hypr2d ========================
         /// /// **Source:** `gp_Hypr2d.hxx` - `gp_Hypr2d`
         ///
-        #[doc = "Describes a branch of a hyperbola in the plane (2D space).\nA hyperbola is defined by its major and minor radii, and\npositioned in the plane with a coordinate system (a\ngp_Ax22d object) of which:\n-   the origin is the center of the hyperbola,\n-   the \"X Direction\" defines the major axis of the hyperbola, and\n-   the \"Y Direction\" defines the minor axis of the hyperbola.\nThis coordinate system is the \"local coordinate system\"\nof the hyperbola. The orientation of this coordinate\nsystem (direct or indirect) gives an implicit orientation to\nthe hyperbola. In this coordinate system, the equation of\nthe hyperbola is:\nX*X/(MajorRadius**2)-Y*Y/(MinorRadius**2) = 1.0\nThe branch of the hyperbola described is the one located\non the positive side of the major axis.\nThe following schema shows the plane of the hyperbola,\nand in it, the respective positions of the three branches of\nhyperbolas constructed with the functions OtherBranch,\nConjugateBranch1, and ConjugateBranch2:\n@code\n^YAxis\n|\nFirstConjugateBranch\n|\nOther            |                Main\n--------------------- C ------------------------------>XAxis\nBranch           |                Branch\n|\n|\nSecondConjugateBranch\n|\n@endcode\nWarning\nThe major radius can be less than the minor radius.\nSee Also\ngce_MakeHypr2d which provides functions for more\ncomplex hyperbola constructions\nGeom2d_Hyperbola which provides additional functions\nfor constructing hyperbolas and works, in particular, with\nthe parametric equations of hyperbolas"]
+        /// Describes a branch of a hyperbola in the plane (2D space).
+        /// A hyperbola is defined by its major and minor radii, and
+        /// positioned in the plane with a coordinate system (a
+        /// gp_Ax22d object) of which:
+        /// -   the origin is the center of the hyperbola,
+        /// -   the "X Direction" defines the major axis of the hyperbola, and
+        /// -   the "Y Direction" defines the minor axis of the hyperbola.
+        /// This coordinate system is the "local coordinate system"
+        /// of the hyperbola. The orientation of this coordinate
+        /// system (direct or indirect) gives an implicit orientation to
+        /// the hyperbola. In this coordinate system, the equation of
+        /// the hyperbola is:
+        /// X*X/(MajorRadius**2)-Y*Y/(MinorRadius**2) = 1.0
+        /// The branch of the hyperbola described is the one located
+        /// on the positive side of the major axis.
+        /// The following schema shows the plane of the hyperbola,
+        /// and in it, the respective positions of the three branches of
+        /// hyperbolas constructed with the functions OtherBranch,
+        /// ConjugateBranch1, and ConjugateBranch2:
+        /// @code
+        /// ^YAxis
+        /// |
+        /// FirstConjugateBranch
+        /// |
+        /// Other            |                Main
+        /// --------------------- C ------------------------------>XAxis
+        /// Branch           |                Branch
+        /// |
+        /// |
+        /// SecondConjugateBranch
+        /// |
+        /// @endcode
+        /// Warning
+        /// The major radius can be less than the minor radius.
+        /// See Also
+        /// gce_MakeHypr2d which provides functions for more
+        /// complex hyperbola constructions
+        /// Geom2d_Hyperbola which provides additional functions
+        /// for constructing hyperbolas and works, in particular, with
+        /// the parametric equations of hyperbolas
         #[cxx_name = "gp_Hypr2d"]
         type Hypr2d;
         /// /// **Source:** `gp_Hypr2d.hxx` - `gp_Hypr2d::gp_Hypr2d()`
@@ -5683,7 +6851,16 @@ pub(crate) mod ffi {
         fn Hypr2d_ctor() -> UniquePtr<Hypr2d>;
         /// /// **Source:** `gp_Hypr2d.hxx` - `gp_Hypr2d::gp_Hypr2d()`
         ///
-        #[doc = "Creates a hyperbola with radii theMajorRadius and\ntheMinorRadius, centered on the origin of theMajorAxis\nand where the unit vector of theMajorAxis is the \"X\nDirection\" of the local coordinate system of the\nhyperbola. This coordinate system is direct if theIsSense\nis true (the default value), and indirect if theIsSense is false.\nWarnings :\nIt is yet  possible to create an Hyperbola with\ntheMajorRadius <= theMinorRadius.\nRaises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0"]
+        /// Creates a hyperbola with radii theMajorRadius and
+        /// theMinorRadius, centered on the origin of theMajorAxis
+        /// and where the unit vector of theMajorAxis is the "X
+        /// Direction" of the local coordinate system of the
+        /// hyperbola. This coordinate system is direct if theIsSense
+        /// is true (the default value), and indirect if theIsSense is false.
+        /// Warnings :
+        /// It is yet  possible to create an Hyperbola with
+        /// theMajorRadius <= theMinorRadius.
+        /// Raises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0
         #[cxx_name = "gp_Hypr2d_ctor_ax2d_real2_bool"]
         fn Hypr2d_ctor_ax2d_real2_bool(
             theMajorAxis: &Ax2d,
@@ -5693,7 +6870,21 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Hypr2d>;
         /// /// **Source:** `gp_Hypr2d.hxx` - `gp_Hypr2d::gp_Hypr2d()`
         ///
-        #[doc = "a hyperbola with radii theMajorRadius and\ntheMinorRadius, positioned in the plane by coordinate system theA where:\n-   the origin of theA is the center of the hyperbola,\n-   the \"X Direction\" of theA defines the major axis of\nthe hyperbola, that is, the major radius\ntheMajorRadius is measured along this axis, and\n-   the \"Y Direction\" of theA defines the minor axis of\nthe hyperbola, that is, the minor radius\ntheMinorRadius is measured along this axis, and\n-   the orientation (direct or indirect sense) of theA\ngives the implicit orientation of the hyperbola.\nWarnings :\nIt is yet  possible to create an Hyperbola with\ntheMajorRadius <= theMinorRadius.\nRaises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0"]
+        /// a hyperbola with radii theMajorRadius and
+        /// theMinorRadius, positioned in the plane by coordinate system theA where:
+        /// -   the origin of theA is the center of the hyperbola,
+        /// -   the "X Direction" of theA defines the major axis of
+        /// the hyperbola, that is, the major radius
+        /// theMajorRadius is measured along this axis, and
+        /// -   the "Y Direction" of theA defines the minor axis of
+        /// the hyperbola, that is, the minor radius
+        /// theMinorRadius is measured along this axis, and
+        /// -   the orientation (direct or indirect sense) of theA
+        /// gives the implicit orientation of the hyperbola.
+        /// Warnings :
+        /// It is yet  possible to create an Hyperbola with
+        /// theMajorRadius <= theMinorRadius.
+        /// Raises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0
         #[cxx_name = "gp_Hypr2d_ctor_ax22d_real2"]
         fn Hypr2d_ctor_ax22d_real2(
             theA: &Ax22d,
@@ -5747,16 +6938,21 @@ pub(crate) mod ffi {
         /// 0.0.
         #[cxx_name = "Eccentricity"]
         fn eccentricity(self: &Hypr2d) -> f64;
-        #[doc = "Computes the focal distance. It is the distance between the\n\"Location\" of the hyperbola and \"Focus1\" or \"Focus2\"."]
+        /// Computes the focal distance. It is the distance between the
+        /// "Location" of the hyperbola and "Focus1" or "Focus2".
         #[cxx_name = "Focal"]
         fn focal(self: &Hypr2d) -> f64;
-        #[doc = "Returns  the location point of the hyperbola.\nIt is the intersection point between the \"XAxis\" and\nthe \"YAxis\"."]
+        /// Returns  the location point of the hyperbola.
+        /// It is the intersection point between the "XAxis" and
+        /// the "YAxis".
         #[cxx_name = "Location"]
         fn location(self: &Hypr2d) -> &Pnt2d;
-        #[doc = "Returns the major radius of the hyperbola (it is the radius\ncorresponding to the \"XAxis\" of the hyperbola)."]
+        /// Returns the major radius of the hyperbola (it is the radius
+        /// corresponding to the "XAxis" of the hyperbola).
         #[cxx_name = "MajorRadius"]
         fn major_radius(self: &Hypr2d) -> f64;
-        #[doc = "Returns the minor radius of the hyperbola (it is the radius\ncorresponding to the \"YAxis\" of the hyperbola)."]
+        /// Returns the minor radius of the hyperbola (it is the radius
+        /// corresponding to the "YAxis" of the hyperbola).
         #[cxx_name = "MinorRadius"]
         fn minor_radius(self: &Hypr2d) -> f64;
         /// Returns p = (e * e - 1) * MajorRadius where e is the
@@ -5803,34 +6999,61 @@ pub(crate) mod ffi {
         /// Raises ConstructionError if MajorRadius = 0.0
         #[cxx_name = "gp_Hypr2d_Asymptote2"]
         fn Hypr2d_asymptote2(self_: &Hypr2d) -> UniquePtr<Ax2d>;
-        #[doc = "Computes the branch of hyperbola which is on the positive side of the\n\"YAxis\" of <me>."]
+        /// Computes the branch of hyperbola which is on the positive side of the
+        /// "YAxis" of <me>.
         #[cxx_name = "gp_Hypr2d_ConjugateBranch1"]
         fn Hypr2d_conjugate_branch1(self_: &Hypr2d) -> UniquePtr<Hypr2d>;
-        #[doc = "Computes the branch of hyperbola which is on the negative side of the\n\"YAxis\" of <me>."]
+        /// Computes the branch of hyperbola which is on the negative side of the
+        /// "YAxis" of <me>.
         #[cxx_name = "gp_Hypr2d_ConjugateBranch2"]
         fn Hypr2d_conjugate_branch2(self_: &Hypr2d) -> UniquePtr<Hypr2d>;
-        #[doc = "Computes the directrix which is the line normal to the XAxis of the hyperbola\nin the local plane (Z = 0) at a distance d = MajorRadius / e\nfrom the center of the hyperbola, where e is the eccentricity of\nthe hyperbola.\nThis line is parallel to the \"YAxis\". The intersection point\nbetween the \"Directrix1\" and the \"XAxis\" is the \"Location\" point\nof the \"Directrix1\".\nThis point is on the positive side of the \"XAxis\"."]
+        /// Computes the directrix which is the line normal to the XAxis of the hyperbola
+        /// in the local plane (Z = 0) at a distance d = MajorRadius / e
+        /// from the center of the hyperbola, where e is the eccentricity of
+        /// the hyperbola.
+        /// This line is parallel to the "YAxis". The intersection point
+        /// between the "Directrix1" and the "XAxis" is the "Location" point
+        /// of the "Directrix1".
+        /// This point is on the positive side of the "XAxis".
         #[cxx_name = "gp_Hypr2d_Directrix1"]
         fn Hypr2d_directrix1(self_: &Hypr2d) -> UniquePtr<Ax2d>;
-        #[doc = "This line is obtained by the symmetrical transformation\nof \"Directrix1\" with respect to the \"YAxis\" of the hyperbola."]
+        /// This line is obtained by the symmetrical transformation
+        /// of "Directrix1" with respect to the "YAxis" of the hyperbola.
         #[cxx_name = "gp_Hypr2d_Directrix2"]
         fn Hypr2d_directrix2(self_: &Hypr2d) -> UniquePtr<Ax2d>;
-        #[doc = "Returns the first focus of the hyperbola. This focus is on the\npositive side of the \"XAxis\" of the hyperbola."]
+        /// Returns the first focus of the hyperbola. This focus is on the
+        /// positive side of the "XAxis" of the hyperbola.
         #[cxx_name = "gp_Hypr2d_Focus1"]
         fn Hypr2d_focus1(self_: &Hypr2d) -> UniquePtr<Pnt2d>;
-        #[doc = "Returns the second focus of the hyperbola. This focus is on the\nnegative side of the \"XAxis\" of the hyperbola."]
+        /// Returns the second focus of the hyperbola. This focus is on the
+        /// negative side of the "XAxis" of the hyperbola.
         #[cxx_name = "gp_Hypr2d_Focus2"]
         fn Hypr2d_focus2(self_: &Hypr2d) -> UniquePtr<Pnt2d>;
-        #[doc = "Returns the branch of hyperbola obtained by doing the\nsymmetrical transformation of <me> with respect to the\n\"YAxis\" of <me>."]
+        /// Returns the branch of hyperbola obtained by doing the
+        /// symmetrical transformation of <me> with respect to the
+        /// "YAxis" of <me>.
         #[cxx_name = "gp_Hypr2d_OtherBranch"]
         fn Hypr2d_other_branch(self_: &Hypr2d) -> UniquePtr<Hypr2d>;
-        #[doc = "Computes an axis whose\n-   the origin is the center of this hyperbola, and\n-   the unit vector is the \"X Direction\" or \"Y Direction\"\nrespectively of the local coordinate system of this hyperbola\nReturns the major axis of the hyperbola."]
+        /// Computes an axis whose
+        /// -   the origin is the center of this hyperbola, and
+        /// -   the unit vector is the "X Direction" or "Y Direction"
+        /// respectively of the local coordinate system of this hyperbola
+        /// Returns the major axis of the hyperbola.
         #[cxx_name = "gp_Hypr2d_XAxis"]
         fn Hypr2d_x_axis(self_: &Hypr2d) -> UniquePtr<Ax2d>;
-        #[doc = "Computes an axis whose\n-   the origin is the center of this hyperbola, and\n-   the unit vector is the \"X Direction\" or \"Y Direction\"\nrespectively of the local coordinate system of this hyperbola\nReturns the minor axis of the hyperbola."]
+        /// Computes an axis whose
+        /// -   the origin is the center of this hyperbola, and
+        /// -   the unit vector is the "X Direction" or "Y Direction"
+        /// respectively of the local coordinate system of this hyperbola
+        /// Returns the minor axis of the hyperbola.
         #[cxx_name = "gp_Hypr2d_YAxis"]
         fn Hypr2d_y_axis(self_: &Hypr2d) -> UniquePtr<Ax2d>;
-        #[doc = "Reverses the orientation of the local coordinate system\nof this hyperbola (the \"Y Axis\" is reversed). Therefore,\nthe implicit orientation of this hyperbola is reversed.\nNote:\n-   Reverse assigns the result to this hyperbola, while\n-   Reversed creates a new one."]
+        /// Reverses the orientation of the local coordinate system
+        /// of this hyperbola (the "Y Axis" is reversed). Therefore,
+        /// the implicit orientation of this hyperbola is reversed.
+        /// Note:
+        /// -   Reverse assigns the result to this hyperbola, while
+        /// -   Reversed creates a new one.
         #[cxx_name = "gp_Hypr2d_Reversed"]
         fn Hypr2d_reversed(self_: &Hypr2d) -> UniquePtr<Hypr2d>;
         /// Performs the symmetrical transformation of an hyperbola with
@@ -5845,7 +7068,10 @@ pub(crate) mod ffi {
         /// theAng is the angular value of the rotation in radians.
         #[cxx_name = "gp_Hypr2d_Rotated"]
         fn Hypr2d_rotated(self_: &Hypr2d, theP: &Pnt2d, theAng: f64) -> UniquePtr<Hypr2d>;
-        #[doc = "Scales an hyperbola. <theS> is the scaling value.\nIf <theS> is positive only the location point is\nmodified. But if <theS> is negative the \"XAxis\" is\nreversed and the \"YAxis\" too."]
+        /// Scales an hyperbola. <theS> is the scaling value.
+        /// If <theS> is positive only the location point is
+        /// modified. But if <theS> is negative the "XAxis" is
+        /// reversed and the "YAxis" too.
         #[cxx_name = "gp_Hypr2d_Scaled"]
         fn Hypr2d_scaled(self_: &Hypr2d, theP: &Pnt2d, theS: f64) -> UniquePtr<Hypr2d>;
         /// Transforms an hyperbola with the transformation theT from
@@ -5911,7 +7137,9 @@ pub(crate) mod ffi {
         /// Changes the location point (origin) of the line.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut Lin>, theP: &Pnt);
-        #[doc = "Complete redefinition of the line.\nThe \"Location\" point of <theA1> is the origin of the line.\nThe \"Direction\" of <theA1> is  the direction of the line."]
+        /// Complete redefinition of the line.
+        /// The "Location" point of <theA1> is the origin of the line.
+        /// The "Direction" of <theA1> is  the direction of the line.
         #[cxx_name = "SetPosition"]
         fn set_position(self: Pin<&mut Lin>, theA1: &Ax1);
         /// Returns the direction of the line.
@@ -5993,7 +7221,9 @@ pub(crate) mod ffi {
         /// Ang is the angular value of the rotation in radians.
         #[cxx_name = "gp_Lin_Rotated"]
         fn Lin_rotated(self_: &Lin, theA1: &Ax1, theAng: f64) -> UniquePtr<Lin>;
-        #[doc = "Scales a line. theS is the scaling value.\nThe \"Location\" point (origin) of the line is modified.\nThe \"Direction\" is reversed if the scale is negative."]
+        /// Scales a line. theS is the scaling value.
+        /// The "Location" point (origin) of the line is modified.
+        /// The "Direction" is reversed if the scale is negative.
         #[cxx_name = "gp_Lin_Scaled"]
         fn Lin_scaled(self_: &Lin, theP: &Pnt, theS: f64) -> UniquePtr<Lin>;
         /// Transforms a line with the transformation theT from class Trsf.
@@ -6064,7 +7294,9 @@ pub(crate) mod ffi {
         /// Changes the origin of the line.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut Lin2d>, theP: &Pnt2d);
-        #[doc = "Complete redefinition of the line.\nThe \"Location\" point of <theA> is the origin of the line.\nThe \"Direction\" of <theA> is  the direction of the line."]
+        /// Complete redefinition of the line.
+        /// The "Location" point of <theA> is the origin of the line.
+        /// The "Direction" of <theA> is  the direction of the line.
         #[cxx_name = "SetPosition"]
         fn set_position(self: Pin<&mut Lin2d>, theA: &Ax2d);
         /// Returns the normalized coefficients of the line :
@@ -6497,7 +7729,33 @@ pub(crate) mod ffi {
         /// ======================== gp_Parab ========================
         /// /// **Source:** `gp_Parab.hxx` - `gp_Parab`
         ///
-        #[doc = "Describes a parabola in 3D space.\nA parabola is defined by its focal length (that is, the\ndistance between its focus and apex) and positioned in\nspace with a coordinate system (a gp_Ax2 object)\nwhere:\n-   the origin of the coordinate system is on the apex of\nthe parabola,\n-   the \"X Axis\" of the coordinate system is the axis of\nsymmetry; the parabola is on the positive side of this axis, and\n-   the origin, \"X Direction\" and \"Y Direction\" of the\ncoordinate system define the plane of the parabola.\nThe equation of the parabola in this coordinate system,\nwhich is the \"local coordinate system\" of the parabola, is:\n@code\nY**2 = (2*P) * X.\n@endcode\nwhere P, referred to as the parameter of the parabola, is\nthe distance between the focus and the directrix (P is\ntwice the focal length).\nThe \"main Direction\" of the local coordinate system gives\nthe normal vector to the plane of the parabola.\nSee Also\ngce_MakeParab which provides functions for more\ncomplex parabola constructions\nGeom_Parabola which provides additional functions for\nconstructing parabolas and works, in particular, with the\nparametric equations of parabolas"]
+        /// Describes a parabola in 3D space.
+        /// A parabola is defined by its focal length (that is, the
+        /// distance between its focus and apex) and positioned in
+        /// space with a coordinate system (a gp_Ax2 object)
+        /// where:
+        /// -   the origin of the coordinate system is on the apex of
+        /// the parabola,
+        /// -   the "X Axis" of the coordinate system is the axis of
+        /// symmetry; the parabola is on the positive side of this axis, and
+        /// -   the origin, "X Direction" and "Y Direction" of the
+        /// coordinate system define the plane of the parabola.
+        /// The equation of the parabola in this coordinate system,
+        /// which is the "local coordinate system" of the parabola, is:
+        /// @code
+        /// Y**2 = (2*P) * X.
+        /// @endcode
+        /// where P, referred to as the parameter of the parabola, is
+        /// the distance between the focus and the directrix (P is
+        /// twice the focal length).
+        /// The "main Direction" of the local coordinate system gives
+        /// the normal vector to the plane of the parabola.
+        /// See Also
+        /// gce_MakeParab which provides functions for more
+        /// complex parabola constructions
+        /// Geom_Parabola which provides additional functions for
+        /// constructing parabolas and works, in particular, with the
+        /// parametric equations of parabolas
         #[cxx_name = "gp_Parab"]
         type Parab;
         /// /// **Source:** `gp_Parab.hxx` - `gp_Parab::gp_Parab()`
@@ -6507,7 +7765,14 @@ pub(crate) mod ffi {
         fn Parab_ctor() -> UniquePtr<Parab>;
         /// /// **Source:** `gp_Parab.hxx` - `gp_Parab::gp_Parab()`
         ///
-        #[doc = "Creates a parabola with its local coordinate system \"theA2\"\nand it's focal length \"Focal\".\nThe XDirection of theA2 defines the axis of symmetry of the\nparabola. The YDirection of theA2 is parallel to the directrix\nof the parabola. The Location point of theA2 is the vertex of\nthe parabola\nRaises ConstructionError if theFocal < 0.0\nRaised if theFocal < 0.0"]
+        /// Creates a parabola with its local coordinate system "theA2"
+        /// and it's focal length "Focal".
+        /// The XDirection of theA2 defines the axis of symmetry of the
+        /// parabola. The YDirection of theA2 is parallel to the directrix
+        /// of the parabola. The Location point of theA2 is the vertex of
+        /// the parabola
+        /// Raises ConstructionError if theFocal < 0.0
+        /// Raised if theFocal < 0.0
         #[cxx_name = "gp_Parab_ctor_ax2_real"]
         fn Parab_ctor_ax2_real(theA2: &Ax2, theFocal: f64) -> UniquePtr<Parab>;
         /// /// **Source:** `gp_Parab.hxx` - `gp_Parab::gp_Parab()`
@@ -6522,7 +7787,12 @@ pub(crate) mod ffi {
         /// YAxis.
         #[cxx_name = "gp_Parab_ctor_ax1_pnt"]
         fn Parab_ctor_ax1_pnt(theD: &Ax1, theF: &Pnt) -> UniquePtr<Parab>;
-        #[doc = "Modifies this parabola by redefining its local coordinate system so that\n-   its origin and \"main Direction\" become those of the\naxis theA1 (the \"X Direction\" and \"Y Direction\" are then\nrecomputed in the same way as for any gp_Ax2)\nRaises ConstructionError if the direction of theA1 is parallel to the previous\nXAxis of the parabola."]
+        /// Modifies this parabola by redefining its local coordinate system so that
+        /// -   its origin and "main Direction" become those of the
+        /// axis theA1 (the "X Direction" and "Y Direction" are then
+        /// recomputed in the same way as for any gp_Ax2)
+        /// Raises ConstructionError if the direction of theA1 is parallel to the previous
+        /// XAxis of the parabola.
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Parab>, theA1: &Ax1);
         /// Changes the focal distance of the parabola.
@@ -6545,7 +7815,8 @@ pub(crate) mod ffi {
         /// of the parabola.
         #[cxx_name = "Focal"]
         fn focal(self: &Parab) -> f64;
-        #[doc = "Returns the vertex of the parabola. It is the \"Location\"\npoint of the coordinate system of the parabola."]
+        /// Returns the vertex of the parabola. It is the "Location"
+        /// point of the coordinate system of the parabola.
         #[cxx_name = "Location"]
         fn location(self: &Parab) -> &Pnt;
         /// Computes the parameter of the parabola.
@@ -6572,7 +7843,15 @@ pub(crate) mod ffi {
         fn translate_vec(self: Pin<&mut Parab>, theV: &Vec_);
         #[cxx_name = "Translate"]
         fn translate_pnt2(self: Pin<&mut Parab>, theP1: &Pnt, theP2: &Pnt);
-        #[doc = "Computes the directrix of this parabola.\nThe directrix is:\n-   a line parallel to the \"Y Direction\" of the local\ncoordinate system of this parabola, and\n-   located on the negative side of the axis of symmetry,\nat a distance from the apex which is equal to the focal\nlength of this parabola.\nThe directrix is returned as an axis (a gp_Ax1 object),\nthe origin of which is situated on the \"X Axis\" of this parabola."]
+        /// Computes the directrix of this parabola.
+        /// The directrix is:
+        /// -   a line parallel to the "Y Direction" of the local
+        /// coordinate system of this parabola, and
+        /// -   located on the negative side of the axis of symmetry,
+        /// at a distance from the apex which is equal to the focal
+        /// length of this parabola.
+        /// The directrix is returned as an axis (a gp_Ax1 object),
+        /// the origin of which is situated on the "X Axis" of this parabola.
         #[cxx_name = "gp_Parab_Directrix"]
         fn Parab_directrix(self_: &Parab) -> UniquePtr<Ax1>;
         /// -   Computes the focus of the parabola.
@@ -6626,7 +7905,30 @@ pub(crate) mod ffi {
         /// ======================== gp_Parab2d ========================
         /// /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d`
         ///
-        #[doc = "Describes a parabola in the plane (2D space).\nA parabola is defined by its focal length (that is, the\ndistance between its focus and apex) and positioned in\nthe plane with a coordinate system (a gp_Ax22d object) where:\n-   the origin of the coordinate system is on the apex of\nthe parabola, and\n-   the \"X Axis\" of the coordinate system is the axis of\nsymmetry; the parabola is on the positive side of this axis.\nThis coordinate system is the \"local coordinate system\"\nof the parabola. Its orientation (direct or indirect sense)\ngives an implicit orientation to the parabola.\nIn this coordinate system, the equation for the parabola is:\n@code\nY**2 = (2*P) * X.\n@endcode\nwhere P, referred to as the parameter of the parabola, is\nthe distance between the focus and the directrix (P is\ntwice the focal length).\nSee Also\nGCE2d_MakeParab2d which provides functions for\nmore complex parabola constructions\nGeom2d_Parabola which provides additional functions\nfor constructing parabolas and works, in particular, with\nthe parametric equations of parabolas"]
+        /// Describes a parabola in the plane (2D space).
+        /// A parabola is defined by its focal length (that is, the
+        /// distance between its focus and apex) and positioned in
+        /// the plane with a coordinate system (a gp_Ax22d object) where:
+        /// -   the origin of the coordinate system is on the apex of
+        /// the parabola, and
+        /// -   the "X Axis" of the coordinate system is the axis of
+        /// symmetry; the parabola is on the positive side of this axis.
+        /// This coordinate system is the "local coordinate system"
+        /// of the parabola. Its orientation (direct or indirect sense)
+        /// gives an implicit orientation to the parabola.
+        /// In this coordinate system, the equation for the parabola is:
+        /// @code
+        /// Y**2 = (2*P) * X.
+        /// @endcode
+        /// where P, referred to as the parameter of the parabola, is
+        /// the distance between the focus and the directrix (P is
+        /// twice the focal length).
+        /// See Also
+        /// GCE2d_MakeParab2d which provides functions for
+        /// more complex parabola constructions
+        /// Geom2d_Parabola which provides additional functions
+        /// for constructing parabolas and works, in particular, with
+        /// the parametric equations of parabolas
         #[cxx_name = "gp_Parab2d"]
         type Parab2d;
         /// /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d::gp_Parab2d()`
@@ -6636,7 +7938,14 @@ pub(crate) mod ffi {
         fn Parab2d_ctor() -> UniquePtr<Parab2d>;
         /// /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d::gp_Parab2d()`
         ///
-        #[doc = "Creates a parabola with its vertex point, its axis of symmetry\n(\"XAxis\") and its focal length.\nThe sense of parametrization is given by theSense. If theSense == TRUE\n(by default) then right-handed coordinate system is used,\notherwise - left-handed.\nWarnings : It is possible to have FocalLength = 0. In this case,\nthe parabola looks like a line, which is parallel to the symmetry-axis.\nRaises ConstructionError if FocalLength < 0.0"]
+        /// Creates a parabola with its vertex point, its axis of symmetry
+        /// ("XAxis") and its focal length.
+        /// The sense of parametrization is given by theSense. If theSense == TRUE
+        /// (by default) then right-handed coordinate system is used,
+        /// otherwise - left-handed.
+        /// Warnings : It is possible to have FocalLength = 0. In this case,
+        /// the parabola looks like a line, which is parallel to the symmetry-axis.
+        /// Raises ConstructionError if FocalLength < 0.0
         #[cxx_name = "gp_Parab2d_ctor_ax2d_real_bool"]
         fn Parab2d_ctor_ax2d_real_bool(
             theMirrorAxis: &Ax2d,
@@ -6645,7 +7954,11 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Parab2d>;
         /// /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d::gp_Parab2d()`
         ///
-        #[doc = "Creates a parabola with its vertex point, its axis of symmetry\n(\"XAxis\"), correspond Y-axis and its focal length.\nWarnings : It is possible to have FocalLength = 0. In this case,\nthe parabola looks like a line, which is parallel to the symmetry-axis.\nRaises ConstructionError if Focal < 0.0"]
+        /// Creates a parabola with its vertex point, its axis of symmetry
+        /// ("XAxis"), correspond Y-axis and its focal length.
+        /// Warnings : It is possible to have FocalLength = 0. In this case,
+        /// the parabola looks like a line, which is parallel to the symmetry-axis.
+        /// Raises ConstructionError if Focal < 0.0
         #[cxx_name = "gp_Parab2d_ctor_ax22d_real"]
         fn Parab2d_ctor_ax22d_real(theAxes: &Ax22d, theFocalLength: f64) -> UniquePtr<Parab2d>;
         /// /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d::gp_Parab2d()`
@@ -6672,13 +7985,19 @@ pub(crate) mod ffi {
         /// Raises ConstructionError if theFocal < 0.0
         #[cxx_name = "SetFocal"]
         fn set_focal(self: Pin<&mut Parab2d>, theFocal: f64);
-        #[doc = "Changes the \"Location\" point of the parabola. It is the\nvertex of the parabola."]
+        /// Changes the "Location" point of the parabola. It is the
+        /// vertex of the parabola.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut Parab2d>, theP: &Pnt2d);
-        #[doc = "Modifies this parabola, by redefining its local coordinate system so that\nits origin and \"X Direction\" become those of the axis\nMA. The \"Y Direction\" of the local coordinate system is\nthen recomputed. The orientation of the local\ncoordinate system is not modified."]
+        /// Modifies this parabola, by redefining its local coordinate system so that
+        /// its origin and "X Direction" become those of the axis
+        /// MA. The "Y Direction" of the local coordinate system is
+        /// then recomputed. The orientation of the local
+        /// coordinate system is not modified.
         #[cxx_name = "SetMirrorAxis"]
         fn set_mirror_axis(self: Pin<&mut Parab2d>, theA: &Ax2d);
-        #[doc = "Changes the local coordinate system of the parabola.\nThe \"Location\" point of A becomes the vertex of the parabola."]
+        /// Changes the local coordinate system of the parabola.
+        /// The "Location" point of A becomes the vertex of the parabola.
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Parab2d>, theA: &Ax22d);
         /// Computes the coefficients of the implicit equation of the parabola
@@ -6724,7 +8043,14 @@ pub(crate) mod ffi {
         fn translate_vec2d(self: Pin<&mut Parab2d>, theV: &Vec2d);
         #[cxx_name = "Translate"]
         fn translate_pnt2d2(self: Pin<&mut Parab2d>, theP1: &Pnt2d, theP2: &Pnt2d);
-        #[doc = "Computes the directrix of the parabola.\nThe directrix is:\n-   a line parallel to the \"Y Direction\" of the local\ncoordinate system of this parabola, and\n-   located on the negative side of the axis of symmetry,\nat a distance from the apex which is equal to the focal  length of this parabola.\nThe directrix is returned as an axis (a gp_Ax2d object),\nthe origin of which is situated on the \"X Axis\" of this parabola."]
+        /// Computes the directrix of the parabola.
+        /// The directrix is:
+        /// -   a line parallel to the "Y Direction" of the local
+        /// coordinate system of this parabola, and
+        /// -   located on the negative side of the axis of symmetry,
+        /// at a distance from the apex which is equal to the focal  length of this parabola.
+        /// The directrix is returned as an axis (a gp_Ax2d object),
+        /// the origin of which is situated on the "X Axis" of this parabola.
         #[cxx_name = "gp_Parab2d_Directrix"]
         fn Parab2d_directrix(self_: &Parab2d) -> UniquePtr<Ax2d>;
         /// Returns the focus of the parabola.
@@ -6733,13 +8059,20 @@ pub(crate) mod ffi {
         /// Returns the vertex of the parabola.
         #[cxx_name = "gp_Parab2d_Location"]
         fn Parab2d_location(self_: &Parab2d) -> UniquePtr<Pnt2d>;
-        #[doc = "Returns the symmetry axis of the parabola.\nThe \"Location\" point of this axis is the vertex of the parabola."]
+        /// Returns the symmetry axis of the parabola.
+        /// The "Location" point of this axis is the vertex of the parabola.
         #[cxx_name = "gp_Parab2d_MirrorAxis"]
         fn Parab2d_mirror_axis(self_: &Parab2d) -> UniquePtr<Ax2d>;
-        #[doc = "Returns the local coordinate system of the parabola.\nThe \"Location\" point of this axis is the vertex of the parabola."]
+        /// Returns the local coordinate system of the parabola.
+        /// The "Location" point of this axis is the vertex of the parabola.
         #[cxx_name = "gp_Parab2d_Axis"]
         fn Parab2d_axis(self_: &Parab2d) -> UniquePtr<Ax22d>;
-        #[doc = "Reverses the orientation of the local coordinate system\nof this parabola (the \"Y Direction\" is reversed).\nTherefore, the implicit orientation of this parabola is reversed.\nNote:\n-   Reverse assigns the result to this parabola, while\n-   Reversed creates a new one."]
+        /// Reverses the orientation of the local coordinate system
+        /// of this parabola (the "Y Direction" is reversed).
+        /// Therefore, the implicit orientation of this parabola is reversed.
+        /// Note:
+        /// -   Reverse assigns the result to this parabola, while
+        /// -   Reversed creates a new one.
         #[cxx_name = "gp_Parab2d_Reversed"]
         fn Parab2d_reversed(self_: &Parab2d) -> UniquePtr<Parab2d>;
         /// Performs the symmetrical transformation of a parabola with respect
@@ -6754,7 +8087,9 @@ pub(crate) mod ffi {
         /// theAng is the angular value of the rotation in radians.
         #[cxx_name = "gp_Parab2d_Rotated"]
         fn Parab2d_rotated(self_: &Parab2d, theP: &Pnt2d, theAng: f64) -> UniquePtr<Parab2d>;
-        #[doc = "Scales a parabola. theS is the scaling value.\nIf theS is negative the direction of the symmetry axis\n\"XAxis\" is reversed and the direction of the \"YAxis\" too."]
+        /// Scales a parabola. theS is the scaling value.
+        /// If theS is negative the direction of the symmetry axis
+        /// "XAxis" is reversed and the direction of the "YAxis" too.
         #[cxx_name = "gp_Parab2d_Scaled"]
         fn Parab2d_scaled(self_: &Parab2d, theP: &Pnt2d, theS: f64) -> UniquePtr<Parab2d>;
         /// Transforms an parabola with the transformation theT from class Trsf2d.
@@ -6777,7 +8112,27 @@ pub(crate) mod ffi {
         /// ======================== gp_Pln ========================
         /// /// **Source:** `gp_Pln.hxx` - `gp_Pln`
         ///
-        #[doc = "Describes a plane.\nA plane is positioned in space with a coordinate system\n(a gp_Ax3 object), such that the plane is defined by the\norigin, \"X Direction\" and \"Y Direction\" of this coordinate\nsystem, which is the \"local coordinate system\" of the\nplane. The \"main Direction\" of the coordinate system is a\nvector normal to the plane. It gives the plane an implicit\norientation such that the plane is said to be \"direct\", if the\ncoordinate system is right-handed, or \"indirect\" in the other case.\nNote: when a gp_Pln plane is converted into a\nGeom_Plane plane, some implicit properties of its local\ncoordinate system are used explicitly:\n-   its origin defines the origin of the two parameters of\nthe planar surface,\n-   its implicit orientation is also that of the Geom_Plane.\nSee Also\ngce_MakePln which provides functions for more complex\nplane constructions\nGeom_Plane which provides additional functions for\nconstructing planes and works, in particular, with the\nparametric equations of planes"]
+        /// Describes a plane.
+        /// A plane is positioned in space with a coordinate system
+        /// (a gp_Ax3 object), such that the plane is defined by the
+        /// origin, "X Direction" and "Y Direction" of this coordinate
+        /// system, which is the "local coordinate system" of the
+        /// plane. The "main Direction" of the coordinate system is a
+        /// vector normal to the plane. It gives the plane an implicit
+        /// orientation such that the plane is said to be "direct", if the
+        /// coordinate system is right-handed, or "indirect" in the other case.
+        /// Note: when a gp_Pln plane is converted into a
+        /// Geom_Plane plane, some implicit properties of its local
+        /// coordinate system are used explicitly:
+        /// -   its origin defines the origin of the two parameters of
+        /// the planar surface,
+        /// -   its implicit orientation is also that of the Geom_Plane.
+        /// See Also
+        /// gce_MakePln which provides functions for more complex
+        /// plane constructions
+        /// Geom_Plane which provides additional functions for
+        /// constructing planes and works, in particular, with the
+        /// parametric equations of planes
         #[cxx_name = "gp_Pln"]
         type Pln;
         /// /// **Source:** `gp_Pln.hxx` - `gp_Pln::gp_Pln()`
@@ -6788,12 +8143,18 @@ pub(crate) mod ffi {
         fn Pln_ctor() -> UniquePtr<Pln>;
         /// /// **Source:** `gp_Pln.hxx` - `gp_Pln::gp_Pln()`
         ///
-        #[doc = "The coordinate system of the plane is defined with the axis\nplacement theA3.\nThe \"Direction\" of theA3 defines the normal to the plane.\nThe \"Location\" of theA3 defines the location (origin) of the plane.\nThe \"XDirection\" and \"YDirection\" of theA3 define the \"XAxis\" and\nthe \"YAxis\" of the plane used to parametrize the plane."]
+        /// The coordinate system of the plane is defined with the axis
+        /// placement theA3.
+        /// The "Direction" of theA3 defines the normal to the plane.
+        /// The "Location" of theA3 defines the location (origin) of the plane.
+        /// The "XDirection" and "YDirection" of theA3 define the "XAxis" and
+        /// the "YAxis" of the plane used to parametrize the plane.
         #[cxx_name = "gp_Pln_ctor_ax3"]
         fn Pln_ctor_ax3(theA3: &Ax3) -> UniquePtr<Pln>;
         /// /// **Source:** `gp_Pln.hxx` - `gp_Pln::gp_Pln()`
         ///
-        #[doc = "Creates a plane with the  \"Location\" point <theP>\nand the normal direction <theV>."]
+        /// Creates a plane with the  "Location" point <theP>
+        /// and the normal direction <theV>.
         #[cxx_name = "gp_Pln_ctor_pnt_dir"]
         fn Pln_ctor_pnt_dir(theP: &Pnt, theV: &Dir) -> UniquePtr<Pln>;
         /// /// **Source:** `gp_Pln.hxx` - `gp_Pln::gp_Pln()`
@@ -6811,7 +8172,10 @@ pub(crate) mod ffi {
         /// @endcode
         #[cxx_name = "Coefficients"]
         fn coefficients(self: &Pln, theA: &mut f64, theB: &mut f64, theC: &mut f64, theD: &mut f64);
-        #[doc = "Modifies this plane, by redefining its local coordinate system so that\n-   its origin and \"main Direction\" become those of the\naxis theA1 (the \"X Direction\" and \"Y Direction\" are then recomputed).\nRaises ConstructionError if the theA1 is parallel to the \"XAxis\" of the plane."]
+        /// Modifies this plane, by redefining its local coordinate system so that
+        /// -   its origin and "main Direction" become those of the
+        /// axis theA1 (the "X Direction" and "Y Direction" are then recomputed).
+        /// Raises ConstructionError if the theA1 is parallel to the "XAxis" of the plane.
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Pln>, theA1: &Ax1);
         /// Changes the origin of the plane.
@@ -6858,10 +8222,24 @@ pub(crate) mod ffi {
         /// Computes the square distance between two planes.
         #[cxx_name = "SquareDistance"]
         fn square_distance_pln(self: &Pln, theOther: &Pln) -> f64;
-        #[doc = "Returns true if this plane contains the point theP. This means that\n-   the distance between point theP and this plane is less\nthan or equal to theLinearTolerance, or\n-   line L is normal to the \"main Axis\" of the local\ncoordinate system of this plane, within the tolerance\nAngularTolerance, and the distance between the origin\nof line L and this plane is less than or equal to\ntheLinearTolerance."]
+        /// Returns true if this plane contains the point theP. This means that
+        /// -   the distance between point theP and this plane is less
+        /// than or equal to theLinearTolerance, or
+        /// -   line L is normal to the "main Axis" of the local
+        /// coordinate system of this plane, within the tolerance
+        /// AngularTolerance, and the distance between the origin
+        /// of line L and this plane is less than or equal to
+        /// theLinearTolerance.
         #[cxx_name = "Contains"]
         fn contains_pnt_real(self: &Pln, theP: &Pnt, theLinearTolerance: f64) -> bool;
-        #[doc = "Returns true if this plane contains the line theL. This means that\n-   the distance between point P and this plane is less\nthan or equal to LinearTolerance, or\n-   line theL is normal to the \"main Axis\" of the local\ncoordinate system of this plane, within the tolerance\ntheAngularTolerance, and the distance between the origin\nof line theL and this plane is less than or equal to\ntheLinearTolerance."]
+        /// Returns true if this plane contains the line theL. This means that
+        /// -   the distance between point P and this plane is less
+        /// than or equal to LinearTolerance, or
+        /// -   line theL is normal to the "main Axis" of the local
+        /// coordinate system of this plane, within the tolerance
+        /// theAngularTolerance, and the distance between the origin
+        /// of line theL and this plane is less than or equal to
+        /// theLinearTolerance.
         #[cxx_name = "Contains"]
         fn contains_lin_real2(
             self: &Pln,
@@ -6891,13 +8269,31 @@ pub(crate) mod ffi {
         /// Returns the Y axis  of the plane.
         #[cxx_name = "gp_Pln_YAxis"]
         fn Pln_y_axis(self_: &Pln) -> UniquePtr<Ax1>;
-        #[doc = "Performs the symmetrical transformation of a plane with respect\nto the point <theP> which is the center of the symmetry\nWarnings :\nThe normal direction to the plane is not changed.\nThe \"XAxis\" and the \"YAxis\" are reversed."]
+        /// Performs the symmetrical transformation of a plane with respect
+        /// to the point <theP> which is the center of the symmetry
+        /// Warnings :
+        /// The normal direction to the plane is not changed.
+        /// The "XAxis" and the "YAxis" are reversed.
         #[cxx_name = "gp_Pln_Mirrored"]
         fn Pln_mirrored_pnt(self_: &Pln, theP: &Pnt) -> UniquePtr<Pln>;
-        #[doc = "Performs   the symmetrical transformation  of a\nplane with respect to an axis placement  which is the axis\nof  the symmetry.  The  transformation is performed on the\n\"Location\" point, on  the \"XAxis\"  and the \"YAxis\".    The\nresulting normal  direction  is  the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation\nif  the  initial plane was right  handed,  else  it is the\nopposite."]
+        /// Performs   the symmetrical transformation  of a
+        /// plane with respect to an axis placement  which is the axis
+        /// of  the symmetry.  The  transformation is performed on the
+        /// "Location" point, on  the "XAxis"  and the "YAxis".    The
+        /// resulting normal  direction  is  the cross product between
+        /// the "XDirection" and the "YDirection" after transformation
+        /// if  the  initial plane was right  handed,  else  it is the
+        /// opposite.
         #[cxx_name = "gp_Pln_Mirrored"]
         fn Pln_mirrored_ax1(self_: &Pln, theA1: &Ax1) -> UniquePtr<Pln>;
-        #[doc = "Performs the  symmetrical transformation  of  a\nplane    with respect to    an axis  placement.   The axis\nplacement  <A2> locates the plane  of  the symmetry.   The\ntransformation is performed  on  the  \"Location\" point, on\nthe  \"XAxis\" and  the    \"YAxis\".  The resulting    normal\ndirection is the cross  product between   the \"XDirection\"\nand the \"YDirection\"  after  transformation if the initial\nplane was right handed, else it is the opposite."]
+        /// Performs the  symmetrical transformation  of  a
+        /// plane    with respect to    an axis  placement.   The axis
+        /// placement  <A2> locates the plane  of  the symmetry.   The
+        /// transformation is performed  on  the  "Location" point, on
+        /// the  "XAxis" and  the    "YAxis".  The resulting    normal
+        /// direction is the cross  product between   the "XDirection"
+        /// and the "YDirection"  after  transformation if the initial
+        /// plane was right handed, else it is the opposite.
         #[cxx_name = "gp_Pln_Mirrored"]
         fn Pln_mirrored_ax2(self_: &Pln, theA2: &Ax2) -> UniquePtr<Pln>;
         /// rotates a plane. theA1 is the axis of the rotation.
@@ -6907,7 +8303,11 @@ pub(crate) mod ffi {
         /// Scales a plane. theS is the scaling value.
         #[cxx_name = "gp_Pln_Scaled"]
         fn Pln_scaled(self_: &Pln, theP: &Pnt, theS: f64) -> UniquePtr<Pln>;
-        #[doc = "Transforms a plane with the transformation theT from class Trsf.\nThe transformation is performed on the \"Location\"\npoint, on the \"XAxis\" and the \"YAxis\".\nThe resulting normal direction is the cross product between\nthe \"XDirection\" and the \"YDirection\" after transformation."]
+        /// Transforms a plane with the transformation theT from class Trsf.
+        /// The transformation is performed on the "Location"
+        /// point, on the "XAxis" and the "YAxis".
+        /// The resulting normal direction is the cross product between
+        /// the "XDirection" and the "YDirection" after transformation.
         #[cxx_name = "gp_Pln_Transformed"]
         fn Pln_transformed(self_: &Pln, theT: &Trsf) -> UniquePtr<Pln>;
         /// Translates a plane in the direction of the vector theV.
@@ -7311,10 +8711,10 @@ pub(crate) mod ffi {
         /// so we can be sure that can divide by magnitude
         #[cxx_name = "Normalize"]
         fn normalize(self: Pin<&mut Quaternion>);
-        #[doc = "Adds components of other quaternion; result is \"rotations mix\""]
+        /// Adds components of other quaternion; result is "rotations mix"
         #[cxx_name = "Add"]
         fn add(self: Pin<&mut Quaternion>, theOther: &Quaternion);
-        #[doc = "Subtracts components of other quaternion; result is \"rotations mix\""]
+        /// Subtracts components of other quaternion; result is "rotations mix"
         #[cxx_name = "Subtract"]
         fn subtract(self: Pin<&mut Quaternion>, theOther: &Quaternion);
         /// Adds rotation by multiplication
@@ -7346,10 +8746,10 @@ pub(crate) mod ffi {
         /// rotation operator defined by quaternion nor its norm.
         #[cxx_name = "gp_Quaternion_Negated"]
         fn Quaternion_negated(self_: &Quaternion) -> UniquePtr<Quaternion>;
-        #[doc = "Makes sum of quaternion components; result is \"rotations mix\""]
+        /// Makes sum of quaternion components; result is "rotations mix"
         #[cxx_name = "gp_Quaternion_Added"]
         fn Quaternion_added(self_: &Quaternion, theOther: &Quaternion) -> UniquePtr<Quaternion>;
-        #[doc = "Makes difference of quaternion components; result is \"rotations mix\""]
+        /// Makes difference of quaternion components; result is "rotations mix"
         #[cxx_name = "gp_Quaternion_Subtracted"]
         fn Quaternion_subtracted(
             self_: &Quaternion,
@@ -7473,7 +8873,26 @@ pub(crate) mod ffi {
         /// ======================== gp_Sphere ========================
         /// /// **Source:** `gp_Sphere.hxx` - `gp_Sphere`
         ///
-        #[doc = "Describes a sphere.\nA sphere is defined by its radius and positioned in space\nwith a coordinate system (a gp_Ax3 object). The origin of\nthe coordinate system is the center of the sphere. This\ncoordinate system is the \"local coordinate system\" of the sphere.\nNote: when a gp_Sphere sphere is converted into a\nGeom_SphericalSurface sphere, some implicit\nproperties of its local coordinate system are used explicitly:\n-   its origin, \"X Direction\", \"Y Direction\" and \"main\nDirection\" are used directly to define the parametric\ndirections on the sphere and the origin of the parameters,\n-   its implicit orientation (right-handed or left-handed)\ngives the orientation (direct, indirect) to the\nGeom_SphericalSurface sphere.\nSee Also\ngce_MakeSphere which provides functions for more\ncomplex sphere constructions\nGeom_SphericalSurface which provides additional\nfunctions for constructing spheres and works, in\nparticular, with the parametric equations of spheres."]
+        /// Describes a sphere.
+        /// A sphere is defined by its radius and positioned in space
+        /// with a coordinate system (a gp_Ax3 object). The origin of
+        /// the coordinate system is the center of the sphere. This
+        /// coordinate system is the "local coordinate system" of the sphere.
+        /// Note: when a gp_Sphere sphere is converted into a
+        /// Geom_SphericalSurface sphere, some implicit
+        /// properties of its local coordinate system are used explicitly:
+        /// -   its origin, "X Direction", "Y Direction" and "main
+        /// Direction" are used directly to define the parametric
+        /// directions on the sphere and the origin of the parameters,
+        /// -   its implicit orientation (right-handed or left-handed)
+        /// gives the orientation (direct, indirect) to the
+        /// Geom_SphericalSurface sphere.
+        /// See Also
+        /// gce_MakeSphere which provides functions for more
+        /// complex sphere constructions
+        /// Geom_SphericalSurface which provides additional
+        /// functions for constructing spheres and works, in
+        /// particular, with the parametric equations of spheres.
         #[cxx_name = "gp_Sphere"]
         type Sphere;
         /// /// **Source:** `gp_Sphere.hxx` - `gp_Sphere::gp_Sphere()`
@@ -7611,7 +9030,38 @@ pub(crate) mod ffi {
         /// ======================== gp_Torus ========================
         /// /// **Source:** `gp_Torus.hxx` - `gp_Torus`
         ///
-        #[doc = "Describes a torus.\nA torus is defined by its major and minor radii and\npositioned in space with a coordinate system (a gp_Ax3\nobject) as follows:\n-   The origin of the coordinate system is the center of the torus;\n-   The surface is obtained by rotating a circle of radius\nequal to the minor radius of the torus about the \"main\nDirection\" of the coordinate system. This circle is\nlocated in the plane defined by the origin, the \"X\nDirection\" and the \"main Direction\" of the coordinate\nsystem. It is centered on the \"X Axis\" of this coordinate\nsystem, and located at a distance, from the origin of\nthis coordinate system, equal to the major radius of the   torus;\n-   The \"X Direction\" and \"Y Direction\" define the\nreference plane of the torus.\nThe coordinate system described above is the \"local\ncoordinate system\" of the torus.\nNote: when a gp_Torus torus is converted into a\nGeom_ToroidalSurface torus, some implicit properties\nof its local coordinate system are used explicitly:\n-   its origin, \"X Direction\", \"Y Direction\" and \"main\nDirection\" are used directly to define the parametric\ndirections on the torus and the origin of the parameters,\n-   its implicit orientation (right-handed or left-handed)\ngives the orientation (direct, indirect) to the\nGeom_ToroidalSurface torus.\nSee Also\ngce_MakeTorus which provides functions for more\ncomplex torus constructions\nGeom_ToroidalSurface which provides additional\nfunctions for constructing tori and works, in particular,\nwith the parametric equations of tori."]
+        /// Describes a torus.
+        /// A torus is defined by its major and minor radii and
+        /// positioned in space with a coordinate system (a gp_Ax3
+        /// object) as follows:
+        /// -   The origin of the coordinate system is the center of the torus;
+        /// -   The surface is obtained by rotating a circle of radius
+        /// equal to the minor radius of the torus about the "main
+        /// Direction" of the coordinate system. This circle is
+        /// located in the plane defined by the origin, the "X
+        /// Direction" and the "main Direction" of the coordinate
+        /// system. It is centered on the "X Axis" of this coordinate
+        /// system, and located at a distance, from the origin of
+        /// this coordinate system, equal to the major radius of the   torus;
+        /// -   The "X Direction" and "Y Direction" define the
+        /// reference plane of the torus.
+        /// The coordinate system described above is the "local
+        /// coordinate system" of the torus.
+        /// Note: when a gp_Torus torus is converted into a
+        /// Geom_ToroidalSurface torus, some implicit properties
+        /// of its local coordinate system are used explicitly:
+        /// -   its origin, "X Direction", "Y Direction" and "main
+        /// Direction" are used directly to define the parametric
+        /// directions on the torus and the origin of the parameters,
+        /// -   its implicit orientation (right-handed or left-handed)
+        /// gives the orientation (direct, indirect) to the
+        /// Geom_ToroidalSurface torus.
+        /// See Also
+        /// gce_MakeTorus which provides functions for more
+        /// complex torus constructions
+        /// Geom_ToroidalSurface which provides additional
+        /// functions for constructing tori and works, in particular,
+        /// with the parametric equations of tori.
         #[cxx_name = "gp_Torus"]
         type Torus;
         /// /// **Source:** `gp_Torus.hxx` - `gp_Torus::gp_Torus()`
@@ -7621,14 +9071,26 @@ pub(crate) mod ffi {
         fn Torus_ctor() -> UniquePtr<Torus>;
         /// /// **Source:** `gp_Torus.hxx` - `gp_Torus::gp_Torus()`
         ///
-        #[doc = "a torus centered on the origin of coordinate system\ntheA3, with major radius theMajorRadius and minor radius\ntheMinorRadius, and with the reference plane defined\nby the origin, the \"X Direction\" and the \"Y Direction\" of theA3.\nWarnings :\nIt is not forbidden to create a torus with\ntheMajorRadius = theMinorRadius = 0.0\nRaises ConstructionError if theMinorRadius < 0.0 or if theMajorRadius < 0.0"]
+        /// a torus centered on the origin of coordinate system
+        /// theA3, with major radius theMajorRadius and minor radius
+        /// theMinorRadius, and with the reference plane defined
+        /// by the origin, the "X Direction" and the "Y Direction" of theA3.
+        /// Warnings :
+        /// It is not forbidden to create a torus with
+        /// theMajorRadius = theMinorRadius = 0.0
+        /// Raises ConstructionError if theMinorRadius < 0.0 or if theMajorRadius < 0.0
         #[cxx_name = "gp_Torus_ctor_ax3_real2"]
         fn Torus_ctor_ax3_real2(
             theA3: &Ax3,
             theMajorRadius: f64,
             theMinorRadius: f64,
         ) -> UniquePtr<Torus>;
-        #[doc = "Modifies this torus, by redefining its local coordinate\nsystem so that:\n-   its origin and \"main Direction\" become those of the\naxis theA1 (the \"X Direction\" and \"Y Direction\" are then recomputed).\nRaises ConstructionError if the direction of theA1 is parallel to the \"XDirection\"\nof the coordinate system of the toroidal surface."]
+        /// Modifies this torus, by redefining its local coordinate
+        /// system so that:
+        /// -   its origin and "main Direction" become those of the
+        /// axis theA1 (the "X Direction" and "Y Direction" are then recomputed).
+        /// Raises ConstructionError if the direction of theA1 is parallel to the "XDirection"
+        /// of the coordinate system of the toroidal surface.
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Torus>, theA1: &Ax1);
         /// Changes the location of the torus.
@@ -7814,7 +9276,10 @@ pub(crate) mod ffi {
         /// theA1 is the center of the axial symmetry.
         #[cxx_name = "SetMirror"]
         fn set_mirror_ax1(self: Pin<&mut Trsf>, theA1: &Ax1);
-        #[doc = "Makes the transformation into a symmetrical transformation.\ntheA2 is the center of the planar symmetry\nand defines the plane of symmetry by its origin, \"X\nDirection\" and \"Y Direction\"."]
+        /// Makes the transformation into a symmetrical transformation.
+        /// theA2 is the center of the planar symmetry
+        /// and defines the plane of symmetry by its origin, "X
+        /// Direction" and "Y Direction".
         #[cxx_name = "SetMirror"]
         fn set_mirror_ax2(self: Pin<&mut Trsf>, theA2: &Ax2);
         /// Changes the transformation into a rotation.
@@ -7835,10 +9300,46 @@ pub(crate) mod ffi {
         /// Raises ConstructionError  If <theS> is null.
         #[cxx_name = "SetScale"]
         fn set_scale(self: Pin<&mut Trsf>, theP: &Pnt, theS: f64);
-        #[doc = "Modifies this transformation so that it transforms the\ncoordinate system defined by theFromSystem1 into the\none defined by theToSystem2. After this modification, this\ntransformation transforms:\n-   the origin of theFromSystem1 into the origin of theToSystem2,\n-   the \"X Direction\" of theFromSystem1 into the \"X\nDirection\" of theToSystem2,\n-   the \"Y Direction\" of theFromSystem1 into the \"Y\nDirection\" of theToSystem2, and\n-   the \"main Direction\" of theFromSystem1 into the \"main\nDirection\" of theToSystem2.\nWarning\nWhen you know the coordinates of a point in one\ncoordinate system and you want to express these\ncoordinates in another one, do not use the\ntransformation resulting from this function. Use the\ntransformation that results from SetTransformation instead.\nSetDisplacement and SetTransformation create\nrelated transformations: the vectorial part of one is the\ninverse of the vectorial part of the other."]
+        /// Modifies this transformation so that it transforms the
+        /// coordinate system defined by theFromSystem1 into the
+        /// one defined by theToSystem2. After this modification, this
+        /// transformation transforms:
+        /// -   the origin of theFromSystem1 into the origin of theToSystem2,
+        /// -   the "X Direction" of theFromSystem1 into the "X
+        /// Direction" of theToSystem2,
+        /// -   the "Y Direction" of theFromSystem1 into the "Y
+        /// Direction" of theToSystem2, and
+        /// -   the "main Direction" of theFromSystem1 into the "main
+        /// Direction" of theToSystem2.
+        /// Warning
+        /// When you know the coordinates of a point in one
+        /// coordinate system and you want to express these
+        /// coordinates in another one, do not use the
+        /// transformation resulting from this function. Use the
+        /// transformation that results from SetTransformation instead.
+        /// SetDisplacement and SetTransformation create
+        /// related transformations: the vectorial part of one is the
+        /// inverse of the vectorial part of the other.
         #[cxx_name = "SetDisplacement"]
         fn set_displacement(self: Pin<&mut Trsf>, theFromSystem1: &Ax3, theToSystem2: &Ax3);
-        #[doc = "Modifies this transformation so that it transforms the\ncoordinates of any point, (x, y, z), relative to a source\ncoordinate system into the coordinates (x', y', z') which\nare relative to a target coordinate system, but which\nrepresent the same point\nThe transformation is from the coordinate\nsystem \"theFromSystem1\" to the coordinate system \"theToSystem2\".\nExample :\n@code\ngp_Ax3 theFromSystem1, theToSystem2;\ndouble x1, y1, z1;  // are the coordinates of a point in the local system theFromSystem1\ndouble x2, y2, z2;  // are the coordinates of a point in the local system theToSystem2\ngp_Pnt P1 (x1, y1, z1)\ngp_Trsf T;\nT.SetTransformation (theFromSystem1, theToSystem2);\ngp_Pnt P2 = P1.Transformed (T);\nP2.Coord (x2, y2, z2);\n@endcode"]
+        /// Modifies this transformation so that it transforms the
+        /// coordinates of any point, (x, y, z), relative to a source
+        /// coordinate system into the coordinates (x', y', z') which
+        /// are relative to a target coordinate system, but which
+        /// represent the same point
+        /// The transformation is from the coordinate
+        /// system "theFromSystem1" to the coordinate system "theToSystem2".
+        /// Example :
+        /// @code
+        /// gp_Ax3 theFromSystem1, theToSystem2;
+        /// double x1, y1, z1;  // are the coordinates of a point in the local system theFromSystem1
+        /// double x2, y2, z2;  // are the coordinates of a point in the local system theToSystem2
+        /// gp_Pnt P1 (x1, y1, z1)
+        /// gp_Trsf T;
+        /// T.SetTransformation (theFromSystem1, theToSystem2);
+        /// gp_Pnt P2 = P1.Transformed (T);
+        /// P2.Coord (x2, y2, z2);
+        /// @endcode
         #[cxx_name = "SetTransformation"]
         fn set_transformation_ax32(self: Pin<&mut Trsf>, theFromSystem1: &Ax3, theToSystem2: &Ax3);
         /// Modifies this transformation so that it transforms the
@@ -7910,7 +9411,13 @@ pub(crate) mod ffi {
         /// Returns the translation part of the transformation's matrix
         #[cxx_name = "TranslationPart"]
         fn translation_part(self: &Trsf) -> &XYZ;
-        #[doc = "Returns the boolean True if there is non-zero rotation.\nIn the presence of rotation, the output parameters store the axis\nand the angle of rotation. The method always returns positive\nvalue \"theAngle\", i.e., 0. < theAngle <= PI.\nNote that this rotation is defined only by the vectorial part of\nthe transformation; generally you would need to check also the\ntranslational part to obtain the axis (gp_Ax1) of rotation."]
+        /// Returns the boolean True if there is non-zero rotation.
+        /// In the presence of rotation, the output parameters store the axis
+        /// and the angle of rotation. The method always returns positive
+        /// value "theAngle", i.e., 0. < theAngle <= PI.
+        /// Note that this rotation is defined only by the vectorial part of
+        /// the transformation; generally you would need to check also the
+        /// translational part to obtain the axis (gp_Ax1) of rotation.
         #[cxx_name = "GetRotation"]
         fn get_rotation_xyz_real(self: &Trsf, theAxis: Pin<&mut XYZ>, theAngle: &mut f64) -> bool;
         /// Computes the homogeneous vectorial part of the transformation.
@@ -8031,7 +9538,8 @@ pub(crate) mod ffi {
         /// theP is the center of the scale and theS is the scaling value.
         #[cxx_name = "SetScale"]
         fn set_scale(self: Pin<&mut Trsf2d>, theP: &Pnt2d, theS: f64);
-        #[doc = "Changes a transformation allowing passage from the coordinate\nsystem \"theFromSystem1\" to the coordinate system \"theToSystem2\"."]
+        /// Changes a transformation allowing passage from the coordinate
+        /// system "theFromSystem1" to the coordinate system "theToSystem2".
         #[cxx_name = "SetTransformation"]
         fn set_transformation_ax2d2(
             self: Pin<&mut Trsf2d>,
@@ -8934,7 +10442,12 @@ pub(crate) mod ffi {
         /// ======================== gp_XYZ ========================
         /// /// **Source:** `gp_XYZ.hxx` - `gp_XYZ`
         ///
-        #[doc = "This class describes a cartesian coordinate entity in\n3D space {X,Y,Z}. This entity is used for algebraic\ncalculation. This entity can be transformed\nwith a \"Trsf\" or a  \"GTrsf\" from package \"gp\".\nIt is used in vectorial computations or for holding this type\nof information in data structures."]
+        /// This class describes a cartesian coordinate entity in
+        /// 3D space {X,Y,Z}. This entity is used for algebraic
+        /// calculation. This entity can be transformed
+        /// with a "Trsf" or a  "GTrsf" from package "gp".
+        /// It is used in vectorial computations or for holding this type
+        /// of information in data structures.
         #[cxx_name = "gp_XYZ"]
         type XYZ;
         /// /// **Source:** `gp_XYZ.hxx` - `gp_XYZ::gp_XYZ()`
@@ -9209,6 +10722,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -9275,16 +10789,17 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "Standard_SStream"]
         type Standard_SStream;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandlegpVectorWithNullMagnitude"]
         type HandlegpVectorWithNullMagnitude;
     }

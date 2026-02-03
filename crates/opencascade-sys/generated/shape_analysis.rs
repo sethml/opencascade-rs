@@ -145,6 +145,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== ShapeAnalysis_FreeBounds ========================
         /// /// **Source:** `ShapeAnalysis_FreeBounds.hxx` - `ShapeAnalysis_FreeBounds`
         ///
@@ -303,6 +304,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// HArray2OfShape from top_tools module
         type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
         /// HSequenceOfShape from top_tools module
@@ -335,10 +337,11 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TopTools_DataMapOfShapeShape"]
         type TopTools_DataMapOfShapeShape;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTopToolsHSequenceOfShape"]
         type HandleTopToolsHSequenceOfShape;
     }

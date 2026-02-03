@@ -24,6 +24,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepAlgo_Image ========================
         /// /// **Source:** `BRepAlgo_Image.hxx` - `BRepAlgo_Image`
         ///
@@ -96,6 +97,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// TopAbs from top_abs module
         type TopAbs = crate::top_abs::ffi::TopAbs;
         /// HArray2OfShape from top_tools module
@@ -130,7 +132,8 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;
     }

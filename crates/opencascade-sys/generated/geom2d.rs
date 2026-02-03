@@ -86,12 +86,30 @@ impl Curve {
         ffi::Curve_reversed(self)
     }
 
-    #[doc = "For the point of parameter U of this curve, computes\nthe vector corresponding to the Nth derivative.\nExceptions\nStdFail_UndefinedDerivative if:\n- the continuity of the curve is not \"CN\", or\n- the derivative vector cannot be computed easily;\nthis is the case with specific types of curve (for\nexample, a rational BSpline curve where N is greater than 3).\nStandard_RangeError if N is less than 1."]
+    /// For the point of parameter U of this curve, computes
+    /// the vector corresponding to the Nth derivative.
+    /// Exceptions
+    /// StdFail_UndefinedDerivative if:
+    /// - the continuity of the curve is not "CN", or
+    /// - the derivative vector cannot be computed easily;
+    /// this is the case with specific types of curve (for
+    /// example, a rational BSpline curve where N is greater than 3).
+    /// Standard_RangeError if N is less than 1.
     pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec2d> {
         ffi::Curve_dn(self, U, N)
     }
 
-    #[doc = "Computes the point of parameter U on <me>.\nIf the curve is periodic  then the returned point is P(U) with\nU = Ustart + (U - Uend)  where Ustart and Uend are the\nparametric bounds of the curve.\n\nit is implemented with D0.\n\nRaised only for the \"OffsetCurve\" if it is not possible to\ncompute the current point. For example when the first\nderivative on the basis curve and the offset direction\nare parallel."]
+    /// Computes the point of parameter U on <me>.
+    /// If the curve is periodic  then the returned point is P(U) with
+    /// U = Ustart + (U - Uend)  where Ustart and Uend are the
+    /// parametric bounds of the curve.
+    ///
+    /// it is implemented with D0.
+    ///
+    /// Raised only for the "OffsetCurve" if it is not possible to
+    /// compute the current point. For example when the first
+    /// derivative on the basis curve and the offset direction
+    /// are parallel.
     pub fn value(&self, U: f64) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
         ffi::Curve_value(self, U)
     }
@@ -122,12 +140,16 @@ impl BoundedCurve {
         ffi::bounded_curve_as_geometry_mut(self)
     }
 
-    #[doc = "Returns the end point of the curve.\nThe end point is the value of the curve for the\n\"LastParameter\" of the curve."]
+    /// Returns the end point of the curve.
+    /// The end point is the value of the curve for the
+    /// "LastParameter" of the curve.
     pub fn end_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
         ffi::BoundedCurve_end_point(self)
     }
 
-    #[doc = "Returns the start point of the curve.\nThe start point is the value of the curve for the\n\"FirstParameter\" of the curve."]
+    /// Returns the start point of the curve.
+    /// The start point is the value of the curve for the
+    /// "FirstParameter" of the curve.
     pub fn start_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
         ffi::BoundedCurve_start_point(self)
     }
@@ -158,12 +180,17 @@ impl Conic {
         ffi::conic_as_geometry_mut(self)
     }
 
-    #[doc = "Returns the \"XAxis\" of the conic.\nThis axis defines the origin of parametrization of the conic.\nThis axis and the \"Yaxis\" define the local coordinate system\nof the conic.\n-C++: return const&"]
+    /// Returns the "XAxis" of the conic.
+    /// This axis defines the origin of parametrization of the conic.
+    /// This axis and the "Yaxis" define the local coordinate system
+    /// of the conic.
+    /// -C++: return const&
     pub fn x_axis(&self) -> cxx::UniquePtr<ffi::gp_Ax2d> {
         ffi::Conic_x_axis(self)
     }
 
-    #[doc = "Returns the \"YAxis\" of the conic.\nThe \"YAxis\" is perpendicular to the \"Xaxis\"."]
+    /// Returns the "YAxis" of the conic.
+    /// The "YAxis" is perpendicular to the "Xaxis".
     pub fn y_axis(&self) -> cxx::UniquePtr<ffi::gp_Ax2d> {
         ffi::Conic_y_axis(self)
     }
@@ -179,7 +206,21 @@ impl Ellipse {
         ffi::Ellipse_ctor_elips2d(E)
     }
 
-    #[doc = "Creates an ellipse defined by its major and minor radii,\nMajorRadius and MinorRadius, and positioned\nin the plane by its major axis MajorAxis; the\ncenter of the ellipse is the origin of MajorAxis\nand the unit vector of MajorAxis is the \"X\nDirection\" of the local coordinate system of the\nellipse; this coordinate system is direct if Sense\nis true (default value) or indirect if Sense is false.\nWarnings :\nIt is not forbidden to create an ellipse with MajorRadius =\nMinorRadius.\nExceptions\nStandard_ConstructionError if:\n- MajorRadius is less than MinorRadius, or\n- MinorRadius is less than 0."]
+    /// Creates an ellipse defined by its major and minor radii,
+    /// MajorRadius and MinorRadius, and positioned
+    /// in the plane by its major axis MajorAxis; the
+    /// center of the ellipse is the origin of MajorAxis
+    /// and the unit vector of MajorAxis is the "X
+    /// Direction" of the local coordinate system of the
+    /// ellipse; this coordinate system is direct if Sense
+    /// is true (default value) or indirect if Sense is false.
+    /// Warnings :
+    /// It is not forbidden to create an ellipse with MajorRadius =
+    /// MinorRadius.
+    /// Exceptions
+    /// Standard_ConstructionError if:
+    /// - MajorRadius is less than MinorRadius, or
+    /// - MinorRadius is less than 0.
     pub fn new_ax2d_real2_bool(
         MajorAxis: &ffi::gp_Ax2d,
         MajorRadius: f64,
@@ -189,7 +230,24 @@ impl Ellipse {
         ffi::Ellipse_ctor_ax2d_real2_bool(MajorAxis, MajorRadius, MinorRadius, Sense)
     }
 
-    #[doc = "Creates an ellipse defined by its major and minor radii,\nMajorRadius and MinorRadius, where the\ncoordinate system Axis locates the ellipse and\ndefines its orientation in the plane such that:\n- the center of the ellipse is the origin of Axis,\n- the \"X Direction\" of Axis defines the major\naxis of the ellipse,\n- the \"Y Direction\" of Axis defines the minor\naxis of the ellipse,\n- the orientation of Axis (direct or indirect)\ngives the orientation of the ellipse.\nWarnings :\nIt is not forbidden to create an ellipse with MajorRadius =\nMinorRadius.\nExceptions\nStandard_ConstructionError if:\n- MajorRadius is less than MinorRadius, or\n- MinorRadius is less than 0."]
+    /// Creates an ellipse defined by its major and minor radii,
+    /// MajorRadius and MinorRadius, where the
+    /// coordinate system Axis locates the ellipse and
+    /// defines its orientation in the plane such that:
+    /// - the center of the ellipse is the origin of Axis,
+    /// - the "X Direction" of Axis defines the major
+    /// axis of the ellipse,
+    /// - the "Y Direction" of Axis defines the minor
+    /// axis of the ellipse,
+    /// - the orientation of Axis (direct or indirect)
+    /// gives the orientation of the ellipse.
+    /// Warnings :
+    /// It is not forbidden to create an ellipse with MajorRadius =
+    /// MinorRadius.
+    /// Exceptions
+    /// Standard_ConstructionError if:
+    /// - MajorRadius is less than MinorRadius, or
+    /// - MinorRadius is less than 0.
     pub fn new_ax22d_real2(
         Axis: &ffi::gp_Ax22d,
         MajorRadius: f64,
@@ -238,22 +296,37 @@ impl Ellipse {
         ffi::Ellipse_elips2d(self)
     }
 
-    #[doc = "Computes the directrices of this ellipse.\nThis directrix is the line normal to the XAxis of the ellipse\nin the local plane (Z = 0) at a distance d = MajorRadius / e\nfrom the center of the ellipse, where e is the eccentricity of\nthe ellipse.\nThis line is parallel to the \"YAxis\". The intersection point\nbetween directrix1 and the \"XAxis\" is the \"Location\" point\nof the directrix1. This point is on the positive side of\nthe \"XAxis\".\nRaises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates\ninto a circle)"]
+    /// Computes the directrices of this ellipse.
+    /// This directrix is the line normal to the XAxis of the ellipse
+    /// in the local plane (Z = 0) at a distance d = MajorRadius / e
+    /// from the center of the ellipse, where e is the eccentricity of
+    /// the ellipse.
+    /// This line is parallel to the "YAxis". The intersection point
+    /// between directrix1 and the "XAxis" is the "Location" point
+    /// of the directrix1. This point is on the positive side of
+    /// the "XAxis".
+    /// Raises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates
+    /// into a circle)
     pub fn directrix1(&self) -> cxx::UniquePtr<ffi::gp_Ax2d> {
         ffi::Ellipse_directrix1(self)
     }
 
-    #[doc = "This line is obtained by the symmetrical transformation\nof \"Directrix1\" with respect to the \"YAxis\" of the ellipse.\nRaises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates into a\ncircle)."]
+    /// This line is obtained by the symmetrical transformation
+    /// of "Directrix1" with respect to the "YAxis" of the ellipse.
+    /// Raises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates into a
+    /// circle).
     pub fn directrix2(&self) -> cxx::UniquePtr<ffi::gp_Ax2d> {
         ffi::Ellipse_directrix2(self)
     }
 
-    #[doc = "Returns the first focus of the ellipse. This focus is on the\npositive side of the \"XAxis\" of the ellipse."]
+    /// Returns the first focus of the ellipse. This focus is on the
+    /// positive side of the "XAxis" of the ellipse.
     pub fn focus1(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
         ffi::Ellipse_focus1(self)
     }
 
-    #[doc = "Returns the second focus of the ellipse. This focus is on\nthe negative side of the \"XAxis\" of the ellipse."]
+    /// Returns the second focus of the ellipse. This focus is on
+    /// the negative side of the "XAxis" of the ellipse.
     pub fn focus2(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
         ffi::Ellipse_focus2(self)
     }
@@ -364,12 +437,19 @@ impl TrimmedCurve {
         ffi::TrimmedCurve_basis_curve(self)
     }
 
-    #[doc = "Returns the end point of <me>. This point is the\nevaluation of the curve for the \"LastParameter\"."]
+    /// Returns the end point of <me>. This point is the
+    /// evaluation of the curve for the "LastParameter".
     pub fn end_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
         ffi::TrimmedCurve_end_point(self)
     }
 
-    #[doc = "Returns the start point of <me>.\nThis point is the evaluation of the curve from the\n\"FirstParameter\".\nvalue and derivatives\nWarnings :\nThe returned derivatives have the same orientation as the\nderivatives of the basis curve."]
+    /// Returns the start point of <me>.
+    /// This point is the evaluation of the curve from the
+    /// "FirstParameter".
+    /// value and derivatives
+    /// Warnings :
+    /// The returned derivatives have the same orientation as the
+    /// derivatives of the basis curve.
     pub fn start_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
         ffi::TrimmedCurve_start_point(self)
     }
@@ -465,10 +545,33 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== Geom2d_Geometry ========================
         /// /// **Source:** `Geom2d_Geometry.hxx` - `Geom2d_Geometry`
         ///
-        #[doc = "The general abstract class Geometry in 2D space describes\nthe common behaviour of all the geometric entities.\n\nAll the objects derived from this class can be move with a\ngeometric transformation. Only the transformations which\ndoesn't modify the nature of the geometry are available in\nthis package.\nThe method Transform which defines a general transformation\nis deferred. The other specifics transformations used the\nmethod Transform.\nAll the following transformations modify the object itself.\nWarning\nOnly transformations which do not modify the nature\nof the geometry can be applied to Geom2d objects:\nthis is the case with translations, rotations,\nsymmetries and scales; this is also the case with\ngp_Trsf2d composite transformations which are\nused to define the geometric transformations applied\nusing the Transform or Transformed functions.\nNote: Geometry defines the \"prototype\" of the\nabstract method Transform which is defined for each\nconcrete type of derived object. All other\ntransformations are implemented using the Transform method."]
+        /// The general abstract class Geometry in 2D space describes
+        /// the common behaviour of all the geometric entities.
+        ///
+        /// All the objects derived from this class can be move with a
+        /// geometric transformation. Only the transformations which
+        /// doesn't modify the nature of the geometry are available in
+        /// this package.
+        /// The method Transform which defines a general transformation
+        /// is deferred. The other specifics transformations used the
+        /// method Transform.
+        /// All the following transformations modify the object itself.
+        /// Warning
+        /// Only transformations which do not modify the nature
+        /// of the geometry can be applied to Geom2d objects:
+        /// this is the case with translations, rotations,
+        /// symmetries and scales; this is also the case with
+        /// gp_Trsf2d composite transformations which are
+        /// used to define the geometric transformations applied
+        /// using the Transform or Transformed functions.
+        /// Note: Geometry defines the "prototype" of the
+        /// abstract method Transform which is defined for each
+        /// concrete type of derived object. All other
+        /// transformations are implemented using the Transform method.
         #[cxx_name = "Geom2d_Geometry"]
         type Geometry;
         /// Performs the symmetrical transformation of a Geometry
@@ -546,10 +649,40 @@ pub(crate) mod ffi {
         /// ======================== Geom2d_Curve ========================
         /// /// **Source:** `Geom2d_Curve.hxx` - `Geom2d_Curve`
         ///
-        #[doc = "The abstract class Curve describes the common\nbehavior of curves in 2D space. The Geom2d\npackage provides numerous concrete classes of\nderived curves, including lines, circles, conics, Bezier\nor BSpline curves, etc.\nThe main characteristic of these curves is that they\nare parameterized. The Geom2d_Curve class shows:\n- how to work with the parametric equation of a\ncurve in order to calculate the point of parameter\nu, together with the vector tangent and the\nderivative vectors of order 2, 3,..., N at this point;\n- how to obtain general information about the curve\n(for example, level of continuity, closed\ncharacteristics, periodicity, bounds of the parameter field);\n- how the parameter changes when a geometric\ntransformation is applied to the curve or when the\norientation of the curve is inverted.\nAll curves must have a geometric continuity: a curve is\nat least \"C0\". Generally, this property is checked at\nthe time of construction or when the curve is edited.\nWhere this is not the case, the documentation\nexplicitly states so.\nWarning\nThe Geom2d package does not prevent the\nconstruction of curves with null length or curves which\nself-intersect."]
+        /// The abstract class Curve describes the common
+        /// behavior of curves in 2D space. The Geom2d
+        /// package provides numerous concrete classes of
+        /// derived curves, including lines, circles, conics, Bezier
+        /// or BSpline curves, etc.
+        /// The main characteristic of these curves is that they
+        /// are parameterized. The Geom2d_Curve class shows:
+        /// - how to work with the parametric equation of a
+        /// curve in order to calculate the point of parameter
+        /// u, together with the vector tangent and the
+        /// derivative vectors of order 2, 3,..., N at this point;
+        /// - how to obtain general information about the curve
+        /// (for example, level of continuity, closed
+        /// characteristics, periodicity, bounds of the parameter field);
+        /// - how the parameter changes when a geometric
+        /// transformation is applied to the curve or when the
+        /// orientation of the curve is inverted.
+        /// All curves must have a geometric continuity: a curve is
+        /// at least "C0". Generally, this property is checked at
+        /// the time of construction or when the curve is edited.
+        /// Where this is not the case, the documentation
+        /// explicitly states so.
+        /// Warning
+        /// The Geom2d package does not prevent the
+        /// construction of curves with null length or curves which
+        /// self-intersect.
         #[cxx_name = "Geom2d_Curve"]
         type Curve;
-        #[doc = "Changes the direction of parametrization of <me>.\nThe \"FirstParameter\" and the \"LastParameter\" are not changed\nbut the orientation  of the curve is modified. If the curve\nis bounded the StartPoint of the initial curve becomes the\nEndPoint of the reversed curve  and the EndPoint of the initial\ncurve becomes the StartPoint of the reversed curve."]
+        /// Changes the direction of parametrization of <me>.
+        /// The "FirstParameter" and the "LastParameter" are not changed
+        /// but the orientation  of the curve is modified. If the curve
+        /// is bounded the StartPoint of the initial curve becomes the
+        /// EndPoint of the reversed curve  and the EndPoint of the initial
+        /// curve becomes the StartPoint of the reversed curve.
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut Curve>);
         /// Computes the parameter on the reversed curve for
@@ -623,7 +756,15 @@ pub(crate) mod ffi {
         /// Exceptions Standard_RangeError if N is less than 0.
         #[cxx_name = "IsCN"]
         fn is_cn(self: &Curve, N: i32) -> bool;
-        #[doc = "Returns in P the point of parameter U.\nIf the curve is periodic  then the returned point is P(U) with\nU = Ustart + (U - Uend)  where Ustart and Uend are the\nparametric bounds of the curve.\n\nRaised only for the \"OffsetCurve\" if it is not possible to\ncompute the current point. For example when the first\nderivative on the basis curve and the offset direction\nare parallel."]
+        /// Returns in P the point of parameter U.
+        /// If the curve is periodic  then the returned point is P(U) with
+        /// U = Ustart + (U - Uend)  where Ustart and Uend are the
+        /// parametric bounds of the curve.
+        ///
+        /// Raised only for the "OffsetCurve" if it is not possible to
+        /// compute the current point. For example when the first
+        /// derivative on the basis curve and the offset direction
+        /// are parallel.
         #[cxx_name = "D0"]
         fn d0(self: &Curve, U: f64, P: Pin<&mut gp_Pnt2d>);
         /// Returns the point P of parameter U and the first derivative V1.
@@ -666,10 +807,28 @@ pub(crate) mod ffi {
         /// - Reversed creates a new curve.
         #[cxx_name = "Geom2d_Curve_Reversed"]
         fn Curve_reversed(self_: &Curve) -> UniquePtr<HandleGeom2dCurve>;
-        #[doc = "For the point of parameter U of this curve, computes\nthe vector corresponding to the Nth derivative.\nExceptions\nStdFail_UndefinedDerivative if:\n- the continuity of the curve is not \"CN\", or\n- the derivative vector cannot be computed easily;\nthis is the case with specific types of curve (for\nexample, a rational BSpline curve where N is greater than 3).\nStandard_RangeError if N is less than 1."]
+        /// For the point of parameter U of this curve, computes
+        /// the vector corresponding to the Nth derivative.
+        /// Exceptions
+        /// StdFail_UndefinedDerivative if:
+        /// - the continuity of the curve is not "CN", or
+        /// - the derivative vector cannot be computed easily;
+        /// this is the case with specific types of curve (for
+        /// example, a rational BSpline curve where N is greater than 3).
+        /// Standard_RangeError if N is less than 1.
         #[cxx_name = "Geom2d_Curve_DN"]
         fn Curve_dn(self_: &Curve, U: f64, N: i32) -> UniquePtr<gp_Vec2d>;
-        #[doc = "Computes the point of parameter U on <me>.\nIf the curve is periodic  then the returned point is P(U) with\nU = Ustart + (U - Uend)  where Ustart and Uend are the\nparametric bounds of the curve.\n\nit is implemented with D0.\n\nRaised only for the \"OffsetCurve\" if it is not possible to\ncompute the current point. For example when the first\nderivative on the basis curve and the offset direction\nare parallel."]
+        /// Computes the point of parameter U on <me>.
+        /// If the curve is periodic  then the returned point is P(U) with
+        /// U = Ustart + (U - Uend)  where Ustart and Uend are the
+        /// parametric bounds of the curve.
+        ///
+        /// it is implemented with D0.
+        ///
+        /// Raised only for the "OffsetCurve" if it is not possible to
+        /// compute the current point. For example when the first
+        /// derivative on the basis curve and the offset direction
+        /// are parallel.
         #[cxx_name = "Geom2d_Curve_Value"]
         fn Curve_value(self_: &Curve, U: f64) -> UniquePtr<gp_Pnt2d>;
         #[cxx_name = "Geom2d_Curve_get_type_name"]
@@ -686,15 +845,34 @@ pub(crate) mod ffi {
         /// ======================== Geom2d_BoundedCurve ========================
         /// /// **Source:** `Geom2d_BoundedCurve.hxx` - `Geom2d_BoundedCurve`
         ///
-        #[doc = "The abstract class BoundedCurve describes the\ncommon behavior of bounded curves in 2D space. A\nbounded curve is limited by two finite values of the\nparameter, termed respectively \"first parameter\" and\n\"last parameter\". The \"first parameter\" gives the \"start\npoint\" of the bounded curve, and the \"last parameter\"\ngives the \"end point\" of the bounded curve.\nThe length of a bounded curve is finite.\nThe Geom2d package provides three concrete\nclasses of bounded curves:\n- two frequently used mathematical formulations of complex curves:\n- Geom2d_BezierCurve,\n- Geom2d_BSplineCurve, and\n- Geom2d_TrimmedCurve to trim a curve, i.e. to\nonly take part of the curve limited by two values of\nthe parameter of the basis curve."]
+        /// The abstract class BoundedCurve describes the
+        /// common behavior of bounded curves in 2D space. A
+        /// bounded curve is limited by two finite values of the
+        /// parameter, termed respectively "first parameter" and
+        /// "last parameter". The "first parameter" gives the "start
+        /// point" of the bounded curve, and the "last parameter"
+        /// gives the "end point" of the bounded curve.
+        /// The length of a bounded curve is finite.
+        /// The Geom2d package provides three concrete
+        /// classes of bounded curves:
+        /// - two frequently used mathematical formulations of complex curves:
+        /// - Geom2d_BezierCurve,
+        /// - Geom2d_BSplineCurve, and
+        /// - Geom2d_TrimmedCurve to trim a curve, i.e. to
+        /// only take part of the curve limited by two values of
+        /// the parameter of the basis curve.
         #[cxx_name = "Geom2d_BoundedCurve"]
         type BoundedCurve;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BoundedCurve) -> &HandleStandardType;
-        #[doc = "Returns the end point of the curve.\nThe end point is the value of the curve for the\n\"LastParameter\" of the curve."]
+        /// Returns the end point of the curve.
+        /// The end point is the value of the curve for the
+        /// "LastParameter" of the curve.
         #[cxx_name = "Geom2d_BoundedCurve_EndPoint"]
         fn BoundedCurve_end_point(self_: &BoundedCurve) -> UniquePtr<gp_Pnt2d>;
-        #[doc = "Returns the start point of the curve.\nThe start point is the value of the curve for the\n\"FirstParameter\" of the curve."]
+        /// Returns the start point of the curve.
+        /// The start point is the value of the curve for the
+        /// "FirstParameter" of the curve.
         #[cxx_name = "Geom2d_BoundedCurve_StartPoint"]
         fn BoundedCurve_start_point(self_: &BoundedCurve) -> UniquePtr<gp_Pnt2d>;
         #[cxx_name = "Geom2d_BoundedCurve_get_type_name"]
@@ -724,7 +902,21 @@ pub(crate) mod ffi {
         /// ======================== Geom2d_Conic ========================
         /// /// **Source:** `Geom2d_Conic.hxx` - `Geom2d_Conic`
         ///
-        #[doc = "The abstract class Conic describes the common\nbehavior of conic curves in 2D space and, in\nparticular, their general characteristics. The Geom2d\npackage provides four specific classes of conics:\nGeom2d_Circle, Geom2d_Ellipse,\nGeom2d_Hyperbola and Geom2d_Parabola.\nA conic is positioned in the plane with a coordinate\nsystem (gp_Ax22d object), where the origin is the\ncenter of the conic (or the apex in case of a parabola).\nThis coordinate system is the local coordinate\nsystem of the conic. It gives the conic an explicit\norientation, determining the direction in which the\nparameter increases along the conic. The \"X Axis\" of\nthe local coordinate system also defines the origin of\nthe parameter of the conic."]
+        /// The abstract class Conic describes the common
+        /// behavior of conic curves in 2D space and, in
+        /// particular, their general characteristics. The Geom2d
+        /// package provides four specific classes of conics:
+        /// Geom2d_Circle, Geom2d_Ellipse,
+        /// Geom2d_Hyperbola and Geom2d_Parabola.
+        /// A conic is positioned in the plane with a coordinate
+        /// system (gp_Ax22d object), where the origin is the
+        /// center of the conic (or the apex in case of a parabola).
+        /// This coordinate system is the local coordinate
+        /// system of the conic. It gives the conic an explicit
+        /// orientation, determining the direction in which the
+        /// parameter increases along the conic. The "X Axis" of
+        /// the local coordinate system also defines the origin of
+        /// the parameter of the conic.
         #[cxx_name = "Geom2d_Conic"]
         type Conic;
         /// Modifies this conic, redefining its local coordinate system
@@ -779,10 +971,15 @@ pub(crate) mod ffi {
         fn is_cn(self: &Conic, N: i32) -> bool;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Conic) -> &HandleStandardType;
-        #[doc = "Returns the \"XAxis\" of the conic.\nThis axis defines the origin of parametrization of the conic.\nThis axis and the \"Yaxis\" define the local coordinate system\nof the conic.\n-C++: return const&"]
+        /// Returns the "XAxis" of the conic.
+        /// This axis defines the origin of parametrization of the conic.
+        /// This axis and the "Yaxis" define the local coordinate system
+        /// of the conic.
+        /// -C++: return const&
         #[cxx_name = "Geom2d_Conic_XAxis"]
         fn Conic_x_axis(self_: &Conic) -> UniquePtr<gp_Ax2d>;
-        #[doc = "Returns the \"YAxis\" of the conic.\nThe \"YAxis\" is perpendicular to the \"Xaxis\"."]
+        /// Returns the "YAxis" of the conic.
+        /// The "YAxis" is perpendicular to the "Xaxis".
         #[cxx_name = "Geom2d_Conic_YAxis"]
         fn Conic_y_axis(self_: &Conic) -> UniquePtr<gp_Ax2d>;
         #[cxx_name = "Geom2d_Conic_get_type_name"]
@@ -808,7 +1005,35 @@ pub(crate) mod ffi {
         /// ======================== Geom2d_Ellipse ========================
         /// /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse`
         ///
-        #[doc = "Describes an ellipse in the plane (2D space).\nAn ellipse is defined by its major and minor radii and,\nas with any conic curve, is positioned in the plane\nwith a coordinate system (gp_Ax22d object) where:\n- the origin is the center of the ellipse,\n- the \"X Direction\" defines the major axis, and\n- the \"Y Direction\" defines the minor axis.\nThis coordinate system is the local coordinate system of the ellipse.\nThe orientation (direct or indirect) of the local\ncoordinate system gives an explicit orientation to the\nellipse, determining the direction in which the\nparameter increases along the ellipse.\nThe Geom2d_Ellipse ellipse is parameterized by an angle:\nP(U) = O + MajorRad*Cos(U)*XDir + MinorRad*Sin(U)*YDir\nwhere:\n- P is the point of parameter U,\n- O, XDir and YDir are respectively the origin, \"X\nDirection\" and \"Y Direction\" of its local coordinate system,\n- MajorRad and MinorRad are the major and\nminor radii of the ellipse.\nThe \"X Axis\" of the local coordinate system therefore\ndefines the origin of the parameter of the ellipse.\nAn ellipse is a closed and periodic curve. The period\nis 2.*Pi and the parameter range is [ 0,2.*Pi [.\nSee Also\nGCE2d_MakeEllipse which provides functions for\nmore complex ellipse constructions\ngp_Ax22d\ngp_Elips2d for an equivalent, non-parameterized data structure"]
+        /// Describes an ellipse in the plane (2D space).
+        /// An ellipse is defined by its major and minor radii and,
+        /// as with any conic curve, is positioned in the plane
+        /// with a coordinate system (gp_Ax22d object) where:
+        /// - the origin is the center of the ellipse,
+        /// - the "X Direction" defines the major axis, and
+        /// - the "Y Direction" defines the minor axis.
+        /// This coordinate system is the local coordinate system of the ellipse.
+        /// The orientation (direct or indirect) of the local
+        /// coordinate system gives an explicit orientation to the
+        /// ellipse, determining the direction in which the
+        /// parameter increases along the ellipse.
+        /// The Geom2d_Ellipse ellipse is parameterized by an angle:
+        /// P(U) = O + MajorRad*Cos(U)*XDir + MinorRad*Sin(U)*YDir
+        /// where:
+        /// - P is the point of parameter U,
+        /// - O, XDir and YDir are respectively the origin, "X
+        /// Direction" and "Y Direction" of its local coordinate system,
+        /// - MajorRad and MinorRad are the major and
+        /// minor radii of the ellipse.
+        /// The "X Axis" of the local coordinate system therefore
+        /// defines the origin of the parameter of the ellipse.
+        /// An ellipse is a closed and periodic curve. The period
+        /// is 2.*Pi and the parameter range is [ 0,2.*Pi [.
+        /// See Also
+        /// GCE2d_MakeEllipse which provides functions for
+        /// more complex ellipse constructions
+        /// gp_Ax22d
+        /// gp_Elips2d for an equivalent, non-parameterized data structure
         #[cxx_name = "Geom2d_Ellipse"]
         type Ellipse;
         /// /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
@@ -818,7 +1043,21 @@ pub(crate) mod ffi {
         fn Ellipse_ctor_elips2d(E: &gp_Elips2d) -> UniquePtr<Ellipse>;
         /// /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
         ///
-        #[doc = "Creates an ellipse defined by its major and minor radii,\nMajorRadius and MinorRadius, and positioned\nin the plane by its major axis MajorAxis; the\ncenter of the ellipse is the origin of MajorAxis\nand the unit vector of MajorAxis is the \"X\nDirection\" of the local coordinate system of the\nellipse; this coordinate system is direct if Sense\nis true (default value) or indirect if Sense is false.\nWarnings :\nIt is not forbidden to create an ellipse with MajorRadius =\nMinorRadius.\nExceptions\nStandard_ConstructionError if:\n- MajorRadius is less than MinorRadius, or\n- MinorRadius is less than 0."]
+        /// Creates an ellipse defined by its major and minor radii,
+        /// MajorRadius and MinorRadius, and positioned
+        /// in the plane by its major axis MajorAxis; the
+        /// center of the ellipse is the origin of MajorAxis
+        /// and the unit vector of MajorAxis is the "X
+        /// Direction" of the local coordinate system of the
+        /// ellipse; this coordinate system is direct if Sense
+        /// is true (default value) or indirect if Sense is false.
+        /// Warnings :
+        /// It is not forbidden to create an ellipse with MajorRadius =
+        /// MinorRadius.
+        /// Exceptions
+        /// Standard_ConstructionError if:
+        /// - MajorRadius is less than MinorRadius, or
+        /// - MinorRadius is less than 0.
         #[cxx_name = "Geom2d_Ellipse_ctor_ax2d_real2_bool"]
         fn Ellipse_ctor_ax2d_real2_bool(
             MajorAxis: &gp_Ax2d,
@@ -828,7 +1067,24 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Ellipse>;
         /// /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
         ///
-        #[doc = "Creates an ellipse defined by its major and minor radii,\nMajorRadius and MinorRadius, where the\ncoordinate system Axis locates the ellipse and\ndefines its orientation in the plane such that:\n- the center of the ellipse is the origin of Axis,\n- the \"X Direction\" of Axis defines the major\naxis of the ellipse,\n- the \"Y Direction\" of Axis defines the minor\naxis of the ellipse,\n- the orientation of Axis (direct or indirect)\ngives the orientation of the ellipse.\nWarnings :\nIt is not forbidden to create an ellipse with MajorRadius =\nMinorRadius.\nExceptions\nStandard_ConstructionError if:\n- MajorRadius is less than MinorRadius, or\n- MinorRadius is less than 0."]
+        /// Creates an ellipse defined by its major and minor radii,
+        /// MajorRadius and MinorRadius, where the
+        /// coordinate system Axis locates the ellipse and
+        /// defines its orientation in the plane such that:
+        /// - the center of the ellipse is the origin of Axis,
+        /// - the "X Direction" of Axis defines the major
+        /// axis of the ellipse,
+        /// - the "Y Direction" of Axis defines the minor
+        /// axis of the ellipse,
+        /// - the orientation of Axis (direct or indirect)
+        /// gives the orientation of the ellipse.
+        /// Warnings :
+        /// It is not forbidden to create an ellipse with MajorRadius =
+        /// MinorRadius.
+        /// Exceptions
+        /// Standard_ConstructionError if:
+        /// - MajorRadius is less than MinorRadius, or
+        /// - MinorRadius is less than 0.
         #[cxx_name = "Geom2d_Ellipse_ctor_ax22d_real2"]
         fn Ellipse_ctor_ax22d_real2(
             Axis: &gp_Ax22d,
@@ -897,7 +1153,10 @@ pub(crate) mod ffi {
         /// return True.
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &Ellipse) -> bool;
-        #[doc = "Returns in P the point of parameter U.\nP = C + MajorRadius * Cos (U) * XDir + MinorRadius * Sin (U) * YDir\nwhere C is the center of the ellipse , XDir the direction of\nthe \"XAxis\" and \"YDir\" the \"YAxis\" of the ellipse."]
+        /// Returns in P the point of parameter U.
+        /// P = C + MajorRadius * Cos (U) * XDir + MinorRadius * Sin (U) * YDir
+        /// where C is the center of the ellipse , XDir the direction of
+        /// the "XAxis" and "YDir" the "YAxis" of the ellipse.
         #[cxx_name = "D0"]
         fn d0(self: &Ellipse, U: f64, P: Pin<&mut gp_Pnt2d>);
         #[cxx_name = "D1"]
@@ -931,16 +1190,31 @@ pub(crate) mod ffi {
         /// Converts this ellipse into a gp_Elips2d ellipse.
         #[cxx_name = "Geom2d_Ellipse_Elips2d"]
         fn Ellipse_elips2d(self_: &Ellipse) -> UniquePtr<gp_Elips2d>;
-        #[doc = "Computes the directrices of this ellipse.\nThis directrix is the line normal to the XAxis of the ellipse\nin the local plane (Z = 0) at a distance d = MajorRadius / e\nfrom the center of the ellipse, where e is the eccentricity of\nthe ellipse.\nThis line is parallel to the \"YAxis\". The intersection point\nbetween directrix1 and the \"XAxis\" is the \"Location\" point\nof the directrix1. This point is on the positive side of\nthe \"XAxis\".\nRaises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates\ninto a circle)"]
+        /// Computes the directrices of this ellipse.
+        /// This directrix is the line normal to the XAxis of the ellipse
+        /// in the local plane (Z = 0) at a distance d = MajorRadius / e
+        /// from the center of the ellipse, where e is the eccentricity of
+        /// the ellipse.
+        /// This line is parallel to the "YAxis". The intersection point
+        /// between directrix1 and the "XAxis" is the "Location" point
+        /// of the directrix1. This point is on the positive side of
+        /// the "XAxis".
+        /// Raises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates
+        /// into a circle)
         #[cxx_name = "Geom2d_Ellipse_Directrix1"]
         fn Ellipse_directrix1(self_: &Ellipse) -> UniquePtr<gp_Ax2d>;
-        #[doc = "This line is obtained by the symmetrical transformation\nof \"Directrix1\" with respect to the \"YAxis\" of the ellipse.\nRaises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates into a\ncircle)."]
+        /// This line is obtained by the symmetrical transformation
+        /// of "Directrix1" with respect to the "YAxis" of the ellipse.
+        /// Raises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates into a
+        /// circle).
         #[cxx_name = "Geom2d_Ellipse_Directrix2"]
         fn Ellipse_directrix2(self_: &Ellipse) -> UniquePtr<gp_Ax2d>;
-        #[doc = "Returns the first focus of the ellipse. This focus is on the\npositive side of the \"XAxis\" of the ellipse."]
+        /// Returns the first focus of the ellipse. This focus is on the
+        /// positive side of the "XAxis" of the ellipse.
         #[cxx_name = "Geom2d_Ellipse_Focus1"]
         fn Ellipse_focus1(self_: &Ellipse) -> UniquePtr<gp_Pnt2d>;
-        #[doc = "Returns the second focus of the ellipse. This focus is on\nthe negative side of the \"XAxis\" of the ellipse."]
+        /// Returns the second focus of the ellipse. This focus is on
+        /// the negative side of the "XAxis" of the ellipse.
         #[cxx_name = "Geom2d_Ellipse_Focus2"]
         fn Ellipse_focus2(self_: &Ellipse) -> UniquePtr<gp_Pnt2d>;
         /// For the point of parameter U of this ellipse,
@@ -1039,7 +1313,18 @@ pub(crate) mod ffi {
             Sense: bool,
             theAdjustPeriodic: bool,
         ) -> UniquePtr<TrimmedCurve>;
-        #[doc = "Changes the direction of parametrization of <me>. The first and\nthe last parametric values are modified. The \"StartPoint\"\nof the initial curve becomes the \"EndPoint\" of the reversed\ncurve and the \"EndPoint\" of the initial curve becomes the\n\"StartPoint\" of the reversed curve.\nExample  -   If the trimmed curve is defined by:\n- a basis curve whose parameter range is [ 0.,1. ], and\n- the two trim values U1 (first parameter) and U2 (last parameter),\nthe reversed trimmed curve is defined by:\n- the reversed basis curve, whose parameter range is still [ 0.,1. ], and\n- the two trim values 1. - U2 (first parameter)\nand 1. - U1 (last parameter)."]
+        /// Changes the direction of parametrization of <me>. The first and
+        /// the last parametric values are modified. The "StartPoint"
+        /// of the initial curve becomes the "EndPoint" of the reversed
+        /// curve and the "EndPoint" of the initial curve becomes the
+        /// "StartPoint" of the reversed curve.
+        /// Example  -   If the trimmed curve is defined by:
+        /// - a basis curve whose parameter range is [ 0.,1. ], and
+        /// - the two trim values U1 (first parameter) and U2 (last parameter),
+        /// the reversed trimmed curve is defined by:
+        /// - the reversed basis curve, whose parameter range is still [ 0.,1. ], and
+        /// - the two trim values 1. - U2 (first parameter)
+        /// and 1. - U1 (last parameter).
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut TrimmedCurve>);
         /// Returns the  parameter on the  reversed  curve for
@@ -1073,10 +1358,19 @@ pub(crate) mod ffi {
             Sense: bool,
             theAdjustPeriodic: bool,
         );
-        #[doc = "--- Purpose\nReturns True if the order of continuity of the\ntrimmed curve is N. A trimmed curve is at least \"C0\" continuous.\nWarnings :\nThe continuity of the trimmed curve can be greater than\nthe continuity of the basis curve because you consider\nonly a part of the basis curve.\nRaised if N < 0."]
+        /// --- Purpose
+        /// Returns True if the order of continuity of the
+        /// trimmed curve is N. A trimmed curve is at least "C0" continuous.
+        /// Warnings :
+        /// The continuity of the trimmed curve can be greater than
+        /// the continuity of the basis curve because you consider
+        /// only a part of the basis curve.
+        /// Raised if N < 0.
         #[cxx_name = "IsCN"]
         fn is_cn(self: &TrimmedCurve, N: i32) -> bool;
-        #[doc = "Returns the value of the first parameter of <me>.\nThe first parameter is the parameter of the \"StartPoint\"\nof the trimmed curve."]
+        /// Returns the value of the first parameter of <me>.
+        /// The first parameter is the parameter of the "StartPoint"
+        /// of the trimmed curve.
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &TrimmedCurve) -> f64;
         /// Returns True if the distance between the StartPoint and
@@ -1092,7 +1386,9 @@ pub(crate) mod ffi {
         /// Standard_NoSuchObject if the basis curve is not periodic.
         #[cxx_name = "Period"]
         fn period(self: &TrimmedCurve) -> f64;
-        #[doc = "Returns the value of the last parameter of <me>.\nThe last parameter is the parameter of the \"EndPoint\" of the\ntrimmed curve."]
+        /// Returns the value of the last parameter of <me>.
+        /// The last parameter is the parameter of the "EndPoint" of the
+        /// trimmed curve.
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &TrimmedCurve) -> f64;
         /// If the basis curve is an OffsetCurve sometimes it is not
@@ -1160,10 +1456,17 @@ pub(crate) mod ffi {
         /// directly modifies the trimmed curve.
         #[cxx_name = "Geom2d_TrimmedCurve_BasisCurve"]
         fn TrimmedCurve_basis_curve(self_: &TrimmedCurve) -> UniquePtr<HandleGeom2dCurve>;
-        #[doc = "Returns the end point of <me>. This point is the\nevaluation of the curve for the \"LastParameter\"."]
+        /// Returns the end point of <me>. This point is the
+        /// evaluation of the curve for the "LastParameter".
         #[cxx_name = "Geom2d_TrimmedCurve_EndPoint"]
         fn TrimmedCurve_end_point(self_: &TrimmedCurve) -> UniquePtr<gp_Pnt2d>;
-        #[doc = "Returns the start point of <me>.\nThis point is the evaluation of the curve from the\n\"FirstParameter\".\nvalue and derivatives\nWarnings :\nThe returned derivatives have the same orientation as the\nderivatives of the basis curve."]
+        /// Returns the start point of <me>.
+        /// This point is the evaluation of the curve from the
+        /// "FirstParameter".
+        /// value and derivatives
+        /// Warnings :
+        /// The returned derivatives have the same orientation as the
+        /// derivatives of the basis curve.
         #[cxx_name = "Geom2d_TrimmedCurve_StartPoint"]
         fn TrimmedCurve_start_point(self_: &TrimmedCurve) -> UniquePtr<gp_Pnt2d>;
         /// For the point of parameter U of this trimmed curve,
@@ -1227,6 +1530,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -1349,25 +1653,26 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Handle to OCCT object"]
+
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dBoundedCurve"]
         type HandleGeom2dBoundedCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dConic"]
         type HandleGeom2dConic;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dCurve"]
         type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dEllipse"]
         type HandleGeom2dEllipse;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dGeometry"]
         type HandleGeom2dGeometry;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dTrimmedCurve"]
         type HandleGeom2dTrimmedCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

@@ -156,7 +156,11 @@ impl Rotation {
         ffi::Rotation_make_empty_generating_edge(self, aGenE, aDirV)
     }
 
-    #[doc = "Builds the face  addressed by [aGenS,aDirS],  with\nits geometric part, but without subcomponents. The\ncouple aGenS, aDirS can be  a \"generating face and\na  directing vertex\" or  \"a generating  edge and a\ndirecting edge\"."]
+    /// Builds the face  addressed by [aGenS,aDirS],  with
+    /// its geometric part, but without subcomponents. The
+    /// couple aGenS, aDirS can be  a "generating face and
+    /// a  directing vertex" or  "a generating  edge and a
+    /// directing edge".
     pub fn make_empty_face(
         self: std::pin::Pin<&mut Self>,
         aGenS: &ffi::TopoDS_Shape,
@@ -222,7 +226,11 @@ impl Trsf {
         ffi::Trsf_make_empty_generating_edge(self, aGenE, aDirV)
     }
 
-    #[doc = "Builds  the face addressed  by [aGenS,aDirS], with\nits geometric part, but without subcomponents. The\ncouple aGenS, aDirS can be  a \"generating face and\na  directing vertex\" or \"a   generating edge and a\ndirecting  edge\"."]
+    /// Builds  the face addressed  by [aGenS,aDirS], with
+    /// its geometric part, but without subcomponents. The
+    /// couple aGenS, aDirS can be  a "generating face and
+    /// a  directing vertex" or "a   generating edge and a
+    /// directing  edge".
     pub fn make_empty_face(
         self: std::pin::Pin<&mut Self>,
         aGenS: &ffi::TopoDS_Shape,
@@ -263,7 +271,11 @@ impl NumLinearRegularSweep {
         ffi::NumLinearRegularSweep_make_empty_generating_edge(self, aGenE, aDirV)
     }
 
-    #[doc = "Builds the face  addressed by  [aGenS,aDirS], with\nits geometric part, but without subcomponents. The\ncouple aGenS, aDirS  can be a \"generating face and\na directing vertex\"   or \"a generating  edge and a\ndirecting  edge\"."]
+    /// Builds the face  addressed by  [aGenS,aDirS], with
+    /// its geometric part, but without subcomponents. The
+    /// couple aGenS, aDirS  can be a "generating face and
+    /// a directing vertex"   or "a generating  edge and a
+    /// directing  edge".
     pub fn make_empty_face(
         self: std::pin::Pin<&mut Self>,
         aGenS: &ffi::TopoDS_Shape,
@@ -504,7 +516,11 @@ impl Translation {
         ffi::Translation_make_empty_generating_edge(self, aGenE, aDirV)
     }
 
-    #[doc = "Builds the  face addressed  by [aGenS,aDirS], with\nits geometric part, but without subcomponents. The\ncouple aGenS, aDirS can  be a \"generating face and\na  directing  vertex\" or  \"a generating edge and a\ndirecting  edge\"."]
+    /// Builds the  face addressed  by [aGenS,aDirS], with
+    /// its geometric part, but without subcomponents. The
+    /// couple aGenS, aDirS can  be a "generating face and
+    /// a  directing  vertex" or  "a generating edge and a
+    /// directing  edge".
     pub fn make_empty_face(
         self: std::pin::Pin<&mut Self>,
         aGenS: &ffi::TopoDS_Shape,
@@ -527,6 +543,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepSweep_Revol ========================
         /// /// **Source:** `BRepSweep_Revol.hxx` - `BRepSweep_Revol`
         ///
@@ -723,7 +740,11 @@ pub(crate) mod ffi {
             aGenE: &TopoDS_Shape,
             aDirV: &Sweep_NumShape,
         ) -> UniquePtr<TopoDS_Shape>;
-        #[doc = "Builds the face  addressed by [aGenS,aDirS],  with\nits geometric part, but without subcomponents. The\ncouple aGenS, aDirS can be  a \"generating face and\na  directing vertex\" or  \"a generating  edge and a\ndirecting edge\"."]
+        /// Builds the face  addressed by [aGenS,aDirS],  with
+        /// its geometric part, but without subcomponents. The
+        /// couple aGenS, aDirS can be  a "generating face and
+        /// a  directing vertex" or  "a generating  edge and a
+        /// directing edge".
         #[cxx_name = "BRepSweep_Rotation_MakeEmptyFace"]
         fn Rotation_make_empty_face(
             self_: Pin<&mut Rotation>,
@@ -895,7 +916,11 @@ pub(crate) mod ffi {
             aGenE: &TopoDS_Shape,
             aDirV: &Sweep_NumShape,
         ) -> UniquePtr<TopoDS_Shape>;
-        #[doc = "Builds  the face addressed  by [aGenS,aDirS], with\nits geometric part, but without subcomponents. The\ncouple aGenS, aDirS can be  a \"generating face and\na  directing vertex\" or \"a   generating edge and a\ndirecting  edge\"."]
+        /// Builds  the face addressed  by [aGenS,aDirS], with
+        /// its geometric part, but without subcomponents. The
+        /// couple aGenS, aDirS can be  a "generating face and
+        /// a  directing vertex" or "a   generating edge and a
+        /// directing  edge".
         #[cxx_name = "BRepSweep_Trsf_MakeEmptyFace"]
         fn Trsf_make_empty_face(
             self_: Pin<&mut Trsf>,
@@ -913,7 +938,43 @@ pub(crate) mod ffi {
         /// ======================== BRepSweep_NumLinearRegularSweep ========================
         /// /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx` - `BRepSweep_NumLinearRegularSweep`
         ///
-        #[doc = "This  a generic  class  is  used   to build Sweept\nprimitives   with    a  generating  \"shape\"  and a\ndirecting \"line\".\n\nThe indexation and type analysis services required\nfor the generatrix are given by <Tool from BRepSweep>.\n\nThe indexation and type analysis services required\nfor the directrix are given by <NumShapeTool from Sweep>.\n\nThe iteration services required for the generatrix\nare given by <Iterator from BRepSweep>.\n\nThe iteration services required  for the directrix\nare given by <NumShapeIterator from Sweep>.\n\nThe topology is like a grid of shapes.  Each shape\nof the grid  must be addressable without confusion\nby one  or  two objects   from  the generating  or\ndirecting   shapes.  Here are  examples of correct\nassociations to address:\n\n- a vertex : GenVertex - DirVertex\n- an edge  : GenVertex - DirEdge\n-          : GenEdge   - DirVertex\n- a face   : GenEdge   - DirEdge\nGenFace   - DirVertex\n...\n\n\"GenObject\" is used to identify an object from the\nGenerating Shape, and \"DirObject\" from the\nDirecting Shape. So may they be from different\ntypes.\n\nThe method Has... is given because in some special\ncases, a vertex, an  edge or a face may be\ngeometricaly nonexistent or not useful."]
+        /// This  a generic  class  is  used   to build Sweept
+        /// primitives   with    a  generating  "shape"  and a
+        /// directing "line".
+        ///
+        /// The indexation and type analysis services required
+        /// for the generatrix are given by <Tool from BRepSweep>.
+        ///
+        /// The indexation and type analysis services required
+        /// for the directrix are given by <NumShapeTool from Sweep>.
+        ///
+        /// The iteration services required for the generatrix
+        /// are given by <Iterator from BRepSweep>.
+        ///
+        /// The iteration services required  for the directrix
+        /// are given by <NumShapeIterator from Sweep>.
+        ///
+        /// The topology is like a grid of shapes.  Each shape
+        /// of the grid  must be addressable without confusion
+        /// by one  or  two objects   from  the generating  or
+        /// directing   shapes.  Here are  examples of correct
+        /// associations to address:
+        ///
+        /// - a vertex : GenVertex - DirVertex
+        /// - an edge  : GenVertex - DirEdge
+        /// -          : GenEdge   - DirVertex
+        /// - a face   : GenEdge   - DirEdge
+        /// GenFace   - DirVertex
+        /// ...
+        ///
+        /// "GenObject" is used to identify an object from the
+        /// Generating Shape, and "DirObject" from the
+        /// Directing Shape. So may they be from different
+        /// types.
+        ///
+        /// The method Has... is given because in some special
+        /// cases, a vertex, an  edge or a face may be
+        /// geometricaly nonexistent or not useful.
         #[cxx_name = "BRepSweep_NumLinearRegularSweep"]
         type NumLinearRegularSweep;
         /// Sets the  parameters of the new  vertex  on the new
@@ -1045,7 +1106,11 @@ pub(crate) mod ffi {
             aGenE: &TopoDS_Shape,
             aDirV: &Sweep_NumShape,
         ) -> UniquePtr<TopoDS_Shape>;
-        #[doc = "Builds the face  addressed by  [aGenS,aDirS], with\nits geometric part, but without subcomponents. The\ncouple aGenS, aDirS  can be a \"generating face and\na directing vertex\"   or \"a generating  edge and a\ndirecting  edge\"."]
+        /// Builds the face  addressed by  [aGenS,aDirS], with
+        /// its geometric part, but without subcomponents. The
+        /// couple aGenS, aDirS  can be a "generating face and
+        /// a directing vertex"   or "a generating  edge and a
+        /// directing  edge".
         #[cxx_name = "BRepSweep_NumLinearRegularSweep_MakeEmptyFace"]
         fn NumLinearRegularSweep_make_empty_face(
             self_: Pin<&mut NumLinearRegularSweep>,
@@ -1370,7 +1435,11 @@ pub(crate) mod ffi {
             aGenE: &TopoDS_Shape,
             aDirV: &Sweep_NumShape,
         ) -> UniquePtr<TopoDS_Shape>;
-        #[doc = "Builds the  face addressed  by [aGenS,aDirS], with\nits geometric part, but without subcomponents. The\ncouple aGenS, aDirS can  be a \"generating face and\na  directing  vertex\" or  \"a generating edge and a\ndirecting  edge\"."]
+        /// Builds the  face addressed  by [aGenS,aDirS], with
+        /// its geometric part, but without subcomponents. The
+        /// couple aGenS, aDirS can  be a "generating face and
+        /// a  directing  vertex" or  "a generating edge and a
+        /// directing  edge".
         #[cxx_name = "BRepSweep_Translation_MakeEmptyFace"]
         fn Translation_make_empty_face(
             self_: Pin<&mut Translation>,
@@ -1399,6 +1468,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Builder from b_rep module
         type BRep_Builder = crate::b_rep::ffi::Builder;
         /// Tool from b_rep module

@@ -175,6 +175,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== TColgp_HArray1OfPnt ========================
         /// /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt`
         #[cxx_name = "TColgp_HArray1OfPnt"]
@@ -341,6 +342,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -463,31 +465,32 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TColgp_Array1OfPnt"]
         type TColgp_Array1OfPnt;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColgp_Array1OfPnt2d"]
         type TColgp_Array1OfPnt2d;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColgp_Array1OfVec"]
         type TColgp_Array1OfVec;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColgp_Array2OfPnt"]
         type TColgp_Array2OfPnt;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColgpHArray1OfPnt"]
         type HandleTColgpHArray1OfPnt;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColgpHArray1OfPnt2d"]
         type HandleTColgpHArray1OfPnt2d;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColgpHArray1OfVec"]
         type HandleTColgpHArray1OfVec;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColgpHArray2OfPnt"]
         type HandleTColgpHArray2OfPnt;
     }

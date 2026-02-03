@@ -50,6 +50,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== Sweep_NumShapeTool ========================
         /// /// **Source:** `Sweep_NumShapeTool.hxx` - `Sweep_NumShapeTool`
         ///
@@ -110,6 +111,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// TopAbs from top_abs module
         type TopAbs = crate::top_abs::ffi::TopAbs;
     }

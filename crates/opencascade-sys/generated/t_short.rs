@@ -56,6 +56,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== TShort_HArray1OfShortReal ========================
         /// /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal`
         #[cxx_name = "TShort_HArray1OfShortReal"]
@@ -106,6 +107,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -152,13 +154,14 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TShort_Array1OfShortReal"]
         type TShort_Array1OfShortReal;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTShortHArray1OfShortReal"]
         type HandleTShortHArray1OfShortReal;
     }

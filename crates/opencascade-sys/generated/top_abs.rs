@@ -23,6 +23,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== TopAbs ========================
         /// /// **Source:** `TopAbs.hxx` - `TopAbs`
         ///
@@ -48,6 +49,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module

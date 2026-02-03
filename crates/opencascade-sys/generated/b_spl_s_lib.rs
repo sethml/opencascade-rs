@@ -357,32 +357,33 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BSplSLib_Cache ========================
         /// /// **Source:** `BSplSLib_Cache.hxx` - `BSplSLib_Cache`
         ///
-        /// \\brief A cache class for Bezier and B-spline surfaces.
+        /// \brief A cache class for Bezier and B-spline surfaces.
         ///
         /// Defines all data, that can be cached on a span of the surface.
         /// The data should be recalculated in going from span to span.
         #[cxx_name = "BSplSLib_Cache"]
         type Cache;
         /// Verifies validity of the cache using parameters of the point
-        /// \\param theParameterU  first parameter of the point placed in the span
-        /// \\param theParameterV  second parameter of the point placed in the span
+        /// \param theParameterU  first parameter of the point placed in the span
+        /// \param theParameterV  second parameter of the point placed in the span
         #[cxx_name = "IsCacheValid"]
         fn is_cache_valid(self: &Cache, theParameterU: f64, theParameterV: f64) -> bool;
         /// Calculates the point on the surface for specified parameters
-        /// \\param[in]  theU      first parameter for calculation of the value
-        /// \\param[in]  theV      second parameter for calculation of the value
-        /// \\param[out] thePoint  the result of calculation (the point on the surface)
+        /// \param[in]  theU      first parameter for calculation of the value
+        /// \param[in]  theV      second parameter for calculation of the value
+        /// \param[out] thePoint  the result of calculation (the point on the surface)
         #[cxx_name = "D0"]
         fn d0(self: &Cache, theU: &f64, theV: &f64, thePoint: Pin<&mut gp_Pnt>);
         /// Calculates the point on the surface and its first derivative
-        /// \\param[in]  theU         first parameter of calculation of the value
-        /// \\param[in]  theV         second parameter of calculation of the value
-        /// \\param[out] thePoint     the result of calculation (the point on the surface)
-        /// \\param[out] theTangentU  tangent vector along U axis in the calculated point
-        /// \\param[out] theTangentV  tangent vector along V axis in the calculated point
+        /// \param[in]  theU         first parameter of calculation of the value
+        /// \param[in]  theV         second parameter of calculation of the value
+        /// \param[out] thePoint     the result of calculation (the point on the surface)
+        /// \param[out] theTangentU  tangent vector along U axis in the calculated point
+        /// \param[out] theTangentV  tangent vector along V axis in the calculated point
         #[cxx_name = "D1"]
         fn d1(
             self: &Cache,
@@ -393,14 +394,14 @@ pub(crate) mod ffi {
             theTangentV: Pin<&mut gp_Vec>,
         );
         /// Calculates the point on the surface and derivatives till second order
-        /// \\param[in]  theU            first parameter of calculation of the value
-        /// \\param[in]  theV            second parameter of calculation of the value
-        /// \\param[out] thePoint        the result of calculation (the point on the surface)
-        /// \\param[out] theTangentU     tangent vector along U axis in the calculated point
-        /// \\param[out] theTangentV     tangent vector along V axis in the calculated point
-        /// \\param[out] theCurvatureU   curvature vector (2nd derivative on U) along U axis
-        /// \\param[out] theCurvatureV   curvature vector (2nd derivative on V) along V axis
-        /// \\param[out] theCurvatureUV  2nd mixed derivative on U anv V
+        /// \param[in]  theU            first parameter of calculation of the value
+        /// \param[in]  theV            second parameter of calculation of the value
+        /// \param[out] thePoint        the result of calculation (the point on the surface)
+        /// \param[out] theTangentU     tangent vector along U axis in the calculated point
+        /// \param[out] theTangentV     tangent vector along V axis in the calculated point
+        /// \param[out] theCurvatureU   curvature vector (2nd derivative on U) along U axis
+        /// \param[out] theCurvatureV   curvature vector (2nd derivative on V) along V axis
+        /// \param[out] theCurvatureUV  2nd mixed derivative on U anv V
         #[cxx_name = "D2"]
         fn d2(
             self: &Cache,
@@ -752,6 +753,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -902,25 +904,26 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfInteger"]
         type TColStd_Array1OfInteger;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array2OfReal"]
         type TColStd_Array2OfReal;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColgp_Array1OfPnt"]
         type TColgp_Array1OfPnt;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColgp_Array2OfPnt"]
         type TColgp_Array2OfPnt;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBSplSLibCache"]
         type HandleBSplSLibCache;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

@@ -24,6 +24,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== Bisector_Bisec ========================
         /// /// **Source:** `Bisector_Bisec.hxx` - `Bisector_Bisec`
         ///
@@ -106,6 +107,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// BoundedCurve from geom2d module
         type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
         /// Conic from geom2d module
@@ -198,16 +200,17 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "Geom2d_Point"]
         type Geom2d_Point;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dCurve"]
         type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dPoint"]
         type HandleGeom2dPoint;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dTrimmedCurve"]
         type HandleGeom2dTrimmedCurve;
     }

@@ -43,6 +43,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== Interface_GeneralLib ========================
         /// /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib`
         #[cxx_name = "Interface_GeneralLib"]
@@ -117,6 +118,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -163,19 +165,20 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "Interface_GeneralModule"]
         type Interface_GeneralModule;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Interface_Protocol"]
         type Interface_Protocol;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleInterfaceGeneralModule"]
         type HandleInterfaceGeneralModule;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleInterfaceProtocol"]
         type HandleInterfaceProtocol;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardTransient"]
         type HandleStandardTransient;
     }

@@ -29,9 +29,9 @@ impl Cache {
 pub use ffi::CacheParams;
 impl CacheParams {
     /// Constructor, prepares data structures for caching.
-    /// \\param theDegree     degree of the B-spline (or Bezier)
-    /// \\param thePeriodic   identify whether the B-spline is periodic
-    /// \\param theFlatKnots  knots of Bezier / B-spline parameterization
+    /// \param theDegree     degree of the B-spline (or Bezier)
+    /// \param thePeriodic   identify whether the B-spline is periodic
+    /// \param theFlatKnots  knots of Bezier / B-spline parameterization
     pub fn new_int_bool_array1ofreal(
         theDegree: i32,
         thePeriodic: bool,
@@ -77,7 +77,21 @@ impl BSplCLib {
         ffi::BSplCLib_flat_index(Degree, Index, Mults, Periodic)
     }
 
-    #[doc = "Locates  the parametric value    U  in the knots\nsequence  between  the  knot K1   and the knot  K2.\nThe value return in Index verifies.\n\nKnots(Index) <= U < Knots(Index + 1)\nif U <= Knots (K1) then Index = K1\nif U >= Knots (K2) then Index = K2 - 1\n\nIf Periodic is True U  may be  modified  to fit in\nthe range  Knots(K1), Knots(K2).  In any case  the\ncorrect value is returned in NewU.\n\nWarnings :Index is used  as input   data to initialize  the\nsearching  function.\nWarning: Knots have to be \"with repetitions\""]
+    /// Locates  the parametric value    U  in the knots
+    /// sequence  between  the  knot K1   and the knot  K2.
+    /// The value return in Index verifies.
+    ///
+    /// Knots(Index) <= U < Knots(Index + 1)
+    /// if U <= Knots (K1) then Index = K1
+    /// if U >= Knots (K2) then Index = K2 - 1
+    ///
+    /// If Periodic is True U  may be  modified  to fit in
+    /// the range  Knots(K1), Knots(K2).  In any case  the
+    /// correct value is returned in NewU.
+    ///
+    /// Warnings :Index is used  as input   data to initialize  the
+    /// searching  function.
+    /// Warning: Knots have to be "with repetitions"
     pub fn locate_parameter_int_array1ofreal_array1ofinteger_real_bool_int3_real(
         Degree: i32,
         Knots: &ffi::TColStd_Array1OfReal,
@@ -94,7 +108,21 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "Locates  the parametric value    U  in the knots\nsequence  between  the  knot K1   and the knot  K2.\nThe value return in Index verifies.\n\nKnots(Index) <= U < Knots(Index + 1)\nif U <= Knots (K1) then Index = K1\nif U >= Knots (K2) then Index = K2 - 1\n\nIf Periodic is True U  may be  modified  to fit in\nthe range  Knots(K1), Knots(K2).  In any case  the\ncorrect value is returned in NewU.\n\nWarnings :Index is used  as input   data to initialize  the\nsearching  function.\nWarning: Knots have to be \"flat\""]
+    /// Locates  the parametric value    U  in the knots
+    /// sequence  between  the  knot K1   and the knot  K2.
+    /// The value return in Index verifies.
+    ///
+    /// Knots(Index) <= U < Knots(Index + 1)
+    /// if U <= Knots (K1) then Index = K1
+    /// if U >= Knots (K2) then Index = K2 - 1
+    ///
+    /// If Periodic is True U  may be  modified  to fit in
+    /// the range  Knots(K1), Knots(K2).  In any case  the
+    /// correct value is returned in NewU.
+    ///
+    /// Warnings :Index is used  as input   data to initialize  the
+    /// searching  function.
+    /// Warning: Knots have to be "flat"
     pub fn locate_parameter_int_array1ofreal_real_bool_int3_real(
         Degree: i32,
         Knots: &ffi::TColStd_Array1OfReal,
@@ -556,7 +584,23 @@ impl BSplCLib {
         ffi::BSplCLib_dn_real_int_array1ofpnt_array1ofreal_pnt_vec(U, N, Poles, Weights, P, VN)
     }
 
-    #[doc = "The  above  functions  compute   values and\nderivatives in the following situations :\n\n* 3D, 2D and 1D\n\n* Rational or not Rational.\n\n* Knots  and multiplicities or \"flat knots\" without\nmultiplicities.\n\n* The  <Index>  is   the localization  of  the\nparameter in the knot sequence.  If <Index> is  out\nof range the correct value will be searched.\n\nVERY IMPORTANT!!!\nUSE  BSplCLib::NoWeights()  as Weights argument for non\nrational curves computations."]
+    /// The  above  functions  compute   values and
+    /// derivatives in the following situations :
+    ///
+    /// * 3D, 2D and 1D
+    ///
+    /// * Rational or not Rational.
+    ///
+    /// * Knots  and multiplicities or "flat knots" without
+    /// multiplicities.
+    ///
+    /// * The  <Index>  is   the localization  of  the
+    /// parameter in the knot sequence.  If <Index> is  out
+    /// of range the correct value will be searched.
+    ///
+    /// VERY IMPORTANT!!!
+    /// USE  BSplCLib::NoWeights()  as Weights argument for non
+    /// rational curves computations.
     pub fn dn_real_int_array1ofpnt2d_array1ofreal_pnt2d_vec2d(
         U: f64,
         N: i32,
@@ -1548,30 +1592,31 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BSplCLib_Cache ========================
         /// /// **Source:** `BSplCLib_Cache.hxx` - `BSplCLib_Cache`
         ///
-        /// \\brief A cache class for Bezier and B-spline curves.
+        /// \brief A cache class for Bezier and B-spline curves.
         ///
         /// Defines all data, that can be cached on a span of a curve.
         /// The data should be recalculated in going from span to span.
         #[cxx_name = "BSplCLib_Cache"]
         type Cache;
         /// Verifies validity of the cache using flat parameter of the point
-        /// \\param theParameter parameter of the point placed in the span
+        /// \param theParameter parameter of the point placed in the span
         #[cxx_name = "IsCacheValid"]
         fn is_cache_valid(self: &Cache, theParameter: f64) -> bool;
         /// Calculates the point on the curve in the specified parameter
-        /// \\param[in]  theParameter parameter of calculation of the value
-        /// \\param[out] thePoint     the result of calculation (the point on the curve)
+        /// \param[in]  theParameter parameter of calculation of the value
+        /// \param[out] thePoint     the result of calculation (the point on the curve)
         #[cxx_name = "D0"]
         fn d0_real_pnt2d(self: &Cache, theParameter: &f64, thePoint: Pin<&mut gp_Pnt2d>);
         #[cxx_name = "D0"]
         fn d0_real_pnt(self: &Cache, theParameter: &f64, thePoint: Pin<&mut gp_Pnt>);
         /// Calculates the point on the curve and its first derivative in the specified parameter
-        /// \\param[in]  theParameter parameter of calculation of the value
-        /// \\param[out] thePoint     the result of calculation (the point on the curve)
-        /// \\param[out] theTangent   tangent vector (first derivatives) for the curve in the calculated
+        /// \param[in]  theParameter parameter of calculation of the value
+        /// \param[out] thePoint     the result of calculation (the point on the curve)
+        /// \param[out] theTangent   tangent vector (first derivatives) for the curve in the calculated
         /// point
         #[cxx_name = "D1"]
         fn d1_real_pnt2d_vec2d(
@@ -1588,10 +1633,10 @@ pub(crate) mod ffi {
             theTangent: Pin<&mut gp_Vec>,
         );
         /// Calculates the point on the curve and two derivatives in the specified parameter
-        /// \\param[in]  theParameter parameter of calculation of the value
-        /// \\param[out] thePoint     the result of calculation (the point on the curve)
-        /// \\param[out] theTangent   tangent vector (1st derivatives) for the curve in the calculated
-        /// point \\param[out] theCurvature curvature vector (2nd derivatives) for the curve in the
+        /// \param[in]  theParameter parameter of calculation of the value
+        /// \param[out] thePoint     the result of calculation (the point on the curve)
+        /// \param[out] theTangent   tangent vector (1st derivatives) for the curve in the calculated
+        /// point \param[out] theCurvature curvature vector (2nd derivatives) for the curve in the
         /// calculated point
         #[cxx_name = "D2"]
         fn d2_real_pnt2d_vec2d2(
@@ -1610,11 +1655,11 @@ pub(crate) mod ffi {
             theCurvature: Pin<&mut gp_Vec>,
         );
         /// Calculates the point on the curve and three derivatives in the specified parameter
-        /// \\param[in]  theParameter parameter of calculation of the value
-        /// \\param[out] thePoint     the result of calculation (the point on the curve)
-        /// \\param[out] theTangent   tangent vector (1st derivatives) for the curve in the calculated
-        /// point \\param[out] theCurvature curvature vector (2nd derivatives) for the curve in the
-        /// calculated point \\param[out] theTorsion   second curvature vector (3rd derivatives) for the
+        /// \param[in]  theParameter parameter of calculation of the value
+        /// \param[out] thePoint     the result of calculation (the point on the curve)
+        /// \param[out] theTangent   tangent vector (1st derivatives) for the curve in the calculated
+        /// point \param[out] theCurvature curvature vector (2nd derivatives) for the curve in the
+        /// calculated point \param[out] theTorsion   second curvature vector (3rd derivatives) for the
         /// curve in the calculated point
         #[cxx_name = "D3"]
         fn d3_real_pnt2d_vec2d3(
@@ -1652,9 +1697,9 @@ pub(crate) mod ffi {
         /// /// **Source:** `BSplCLib_CacheParams.hxx` - `BSplCLib_CacheParams::BSplCLib_CacheParams()`
         ///
         /// Constructor, prepares data structures for caching.
-        /// \\param theDegree     degree of the B-spline (or Bezier)
-        /// \\param thePeriodic   identify whether the B-spline is periodic
-        /// \\param theFlatKnots  knots of Bezier / B-spline parameterization
+        /// \param theDegree     degree of the B-spline (or Bezier)
+        /// \param thePeriodic   identify whether the B-spline is periodic
+        /// \param theFlatKnots  knots of Bezier / B-spline parameterization
         #[cxx_name = "BSplCLib_CacheParams_ctor_int_bool_array1ofreal"]
         fn CacheParams_ctor_int_bool_array1ofreal(
             theDegree: i32,
@@ -1662,16 +1707,16 @@ pub(crate) mod ffi {
             theFlatKnots: &TColStd_Array1OfReal,
         ) -> UniquePtr<CacheParams>;
         /// Normalizes the parameter for periodic B-splines
-        /// \\param theParameter the value to be normalized into the knots array
+        /// \param theParameter the value to be normalized into the knots array
         #[cxx_name = "PeriodicNormalization"]
         fn periodic_normalization(self: &CacheParams, theParameter: f64) -> f64;
         /// Verifies validity of the cache using flat parameter of the point
-        /// \\param theParameter parameter of the point placed in the span
+        /// \param theParameter parameter of the point placed in the span
         #[cxx_name = "IsCacheValid"]
         fn is_cache_valid(self: &CacheParams, theParameter: f64) -> bool;
         /// Computes span for the specified parameter
-        /// \\param theParameter parameter of the point placed in the span
-        /// \\param theFlatKnots  knots of Bezier / B-spline parameterization
+        /// \param theParameter parameter of the point placed in the span
+        /// \param theFlatKnots  knots of Bezier / B-spline parameterization
         #[cxx_name = "LocateParameter"]
         fn locate_parameter(
             self: Pin<&mut CacheParams>,
@@ -1681,7 +1726,81 @@ pub(crate) mod ffi {
         /// ======================== BSplCLib ========================
         /// /// **Source:** `BSplCLib.hxx` - `BSplCLib`
         ///
-        #[doc = "BSplCLib   B-spline curve Library.\n\nThe BSplCLib package is  a basic library  for BSplines. It\nprovides three categories of functions.\n\n* Management methods to  process knots and multiplicities.\n\n* Multi-Dimensions  spline methods.  BSpline methods where\npoles have an arbitrary number of dimensions. They divides\nin two groups :\n\n- Global methods modifying the  whole set of  poles. The\npoles are    described   by an array   of   Reals and  a\nDimension. Example : Inserting knots.\n\n- Local methods  computing  points and derivatives.  The\npoles  are described by a pointer  on  a local array  of\nReals and a Dimension. The local array is modified.\n\n*  2D  and 3D spline   curves  methods.\n\nMethods  for 2d and 3d BSplines  curves  rational or not\nrational.\n\nThose methods have the following structure :\n\n- They extract the pole information in a working array.\n\n-  They      process the  working   array    with   the\nmulti-dimension  methods. (for example  a  3d  rational\ncurve is processed as a 4 dimension curve).\n\n- They get back the result in the original dimension.\n\nNote that the  bspline   surface methods found   in the\npackage BSplSLib  uses  the same  structure and rely on\nBSplCLib.\n\nIn the following list  of methods the  2d and 3d  curve\nmethods   will be  described   with  the  corresponding\nmulti-dimension method.\n\nThe 3d or 2d B-spline curve is defined with :\n\n. its control points : TColgp_Array1OfPnt(2d)        Poles\n. its weights        : TColStd_Array1OfReal          Weights\n. its knots          : TColStd_Array1OfReal          Knots\n. its multiplicities : TColStd_Array1OfInteger       Mults\n. its degree         : Standard_Integer              Degree\n. its periodicity    : Standard_Boolean              Periodic\n\nWarnings :\nThe bounds of Poles and Weights should be the same.\nThe bounds of Knots and Mults   should be the same.\n\nNote: weight and multiplicity arrays can be passed by pointer for\nsome functions so that NULL pointer is valid.\nThat means no weights/no multiplicities passed.\n\nNo weights (BSplCLib::NoWeights()) means the curve is non rational.\nNo mults (BSplCLib::NoMults()) means the knots are \"flat\" knots.\n\nKeyWords :\nB-spline curve, Functions, Library\n\nReferences :\n. A survey of curves and surfaces methods in CADG Wolfgang\nBOHM CAGD 1 (1984)\n. On de Boor-like algorithms and blossoming Wolfgang BOEHM\ncagd 5 (1988)\n. Blossoming and knot insertion algorithms for B-spline curves\nRonald N. GOLDMAN\n. Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA\n. Curves and Surfaces for Computer Aided Geometric Design,\na practical guide Gerald Farin"]
+        /// BSplCLib   B-spline curve Library.
+        ///
+        /// The BSplCLib package is  a basic library  for BSplines. It
+        /// provides three categories of functions.
+        ///
+        /// * Management methods to  process knots and multiplicities.
+        ///
+        /// * Multi-Dimensions  spline methods.  BSpline methods where
+        /// poles have an arbitrary number of dimensions. They divides
+        /// in two groups :
+        ///
+        /// - Global methods modifying the  whole set of  poles. The
+        /// poles are    described   by an array   of   Reals and  a
+        /// Dimension. Example : Inserting knots.
+        ///
+        /// - Local methods  computing  points and derivatives.  The
+        /// poles  are described by a pointer  on  a local array  of
+        /// Reals and a Dimension. The local array is modified.
+        ///
+        /// *  2D  and 3D spline   curves  methods.
+        ///
+        /// Methods  for 2d and 3d BSplines  curves  rational or not
+        /// rational.
+        ///
+        /// Those methods have the following structure :
+        ///
+        /// - They extract the pole information in a working array.
+        ///
+        /// -  They      process the  working   array    with   the
+        /// multi-dimension  methods. (for example  a  3d  rational
+        /// curve is processed as a 4 dimension curve).
+        ///
+        /// - They get back the result in the original dimension.
+        ///
+        /// Note that the  bspline   surface methods found   in the
+        /// package BSplSLib  uses  the same  structure and rely on
+        /// BSplCLib.
+        ///
+        /// In the following list  of methods the  2d and 3d  curve
+        /// methods   will be  described   with  the  corresponding
+        /// multi-dimension method.
+        ///
+        /// The 3d or 2d B-spline curve is defined with :
+        ///
+        /// . its control points : TColgp_Array1OfPnt(2d)        Poles
+        /// . its weights        : TColStd_Array1OfReal          Weights
+        /// . its knots          : TColStd_Array1OfReal          Knots
+        /// . its multiplicities : TColStd_Array1OfInteger       Mults
+        /// . its degree         : Standard_Integer              Degree
+        /// . its periodicity    : Standard_Boolean              Periodic
+        ///
+        /// Warnings :
+        /// The bounds of Poles and Weights should be the same.
+        /// The bounds of Knots and Mults   should be the same.
+        ///
+        /// Note: weight and multiplicity arrays can be passed by pointer for
+        /// some functions so that NULL pointer is valid.
+        /// That means no weights/no multiplicities passed.
+        ///
+        /// No weights (BSplCLib::NoWeights()) means the curve is non rational.
+        /// No mults (BSplCLib::NoMults()) means the knots are "flat" knots.
+        ///
+        /// KeyWords :
+        /// B-spline curve, Functions, Library
+        ///
+        /// References :
+        /// . A survey of curves and surfaces methods in CADG Wolfgang
+        /// BOHM CAGD 1 (1984)
+        /// . On de Boor-like algorithms and blossoming Wolfgang BOEHM
+        /// cagd 5 (1988)
+        /// . Blossoming and knot insertion algorithms for B-spline curves
+        /// Ronald N. GOLDMAN
+        /// . Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA
+        /// . Curves and Surfaces for Computer Aided Geometric Design,
+        /// a practical guide Gerald Farin
         #[cxx_name = "BSplCLib"]
         type BSplCLib;
         /// This routine searches the position of the real value theX
@@ -1711,7 +1830,21 @@ pub(crate) mod ffi {
             Mults: &TColStd_Array1OfInteger,
             Periodic: bool,
         ) -> i32;
-        #[doc = "Locates  the parametric value    U  in the knots\nsequence  between  the  knot K1   and the knot  K2.\nThe value return in Index verifies.\n\nKnots(Index) <= U < Knots(Index + 1)\nif U <= Knots (K1) then Index = K1\nif U >= Knots (K2) then Index = K2 - 1\n\nIf Periodic is True U  may be  modified  to fit in\nthe range  Knots(K1), Knots(K2).  In any case  the\ncorrect value is returned in NewU.\n\nWarnings :Index is used  as input   data to initialize  the\nsearching  function.\nWarning: Knots have to be \"with repetitions\""]
+        /// Locates  the parametric value    U  in the knots
+        /// sequence  between  the  knot K1   and the knot  K2.
+        /// The value return in Index verifies.
+        ///
+        /// Knots(Index) <= U < Knots(Index + 1)
+        /// if U <= Knots (K1) then Index = K1
+        /// if U >= Knots (K2) then Index = K2 - 1
+        ///
+        /// If Periodic is True U  may be  modified  to fit in
+        /// the range  Knots(K1), Knots(K2).  In any case  the
+        /// correct value is returned in NewU.
+        ///
+        /// Warnings :Index is used  as input   data to initialize  the
+        /// searching  function.
+        /// Warning: Knots have to be "with repetitions"
         #[cxx_name = "BSplCLib_LocateParameter_int_array1ofreal_array1ofinteger_real_bool_int3_real"]
         fn BSplCLib_locate_parameter_int_array1ofreal_array1ofinteger_real_bool_int3_real(
             Degree: i32,
@@ -1724,7 +1857,21 @@ pub(crate) mod ffi {
             KnotIndex: &mut i32,
             NewU: &mut f64,
         );
-        #[doc = "Locates  the parametric value    U  in the knots\nsequence  between  the  knot K1   and the knot  K2.\nThe value return in Index verifies.\n\nKnots(Index) <= U < Knots(Index + 1)\nif U <= Knots (K1) then Index = K1\nif U >= Knots (K2) then Index = K2 - 1\n\nIf Periodic is True U  may be  modified  to fit in\nthe range  Knots(K1), Knots(K2).  In any case  the\ncorrect value is returned in NewU.\n\nWarnings :Index is used  as input   data to initialize  the\nsearching  function.\nWarning: Knots have to be \"flat\""]
+        /// Locates  the parametric value    U  in the knots
+        /// sequence  between  the  knot K1   and the knot  K2.
+        /// The value return in Index verifies.
+        ///
+        /// Knots(Index) <= U < Knots(Index + 1)
+        /// if U <= Knots (K1) then Index = K1
+        /// if U >= Knots (K2) then Index = K2 - 1
+        ///
+        /// If Periodic is True U  may be  modified  to fit in
+        /// the range  Knots(K1), Knots(K2).  In any case  the
+        /// correct value is returned in NewU.
+        ///
+        /// Warnings :Index is used  as input   data to initialize  the
+        /// searching  function.
+        /// Warning: Knots have to be "flat"
         #[cxx_name = "BSplCLib_LocateParameter_int_array1ofreal_real_bool_int3_real"]
         fn BSplCLib_locate_parameter_int_array1ofreal_real_bool_int3_real(
             Degree: i32,
@@ -2111,7 +2258,23 @@ pub(crate) mod ffi {
             P: Pin<&mut gp_Pnt>,
             VN: Pin<&mut gp_Vec>,
         );
-        #[doc = "The  above  functions  compute   values and\nderivatives in the following situations :\n\n* 3D, 2D and 1D\n\n* Rational or not Rational.\n\n* Knots  and multiplicities or \"flat knots\" without\nmultiplicities.\n\n* The  <Index>  is   the localization  of  the\nparameter in the knot sequence.  If <Index> is  out\nof range the correct value will be searched.\n\nVERY IMPORTANT!!!\nUSE  BSplCLib::NoWeights()  as Weights argument for non\nrational curves computations."]
+        /// The  above  functions  compute   values and
+        /// derivatives in the following situations :
+        ///
+        /// * 3D, 2D and 1D
+        ///
+        /// * Rational or not Rational.
+        ///
+        /// * Knots  and multiplicities or "flat knots" without
+        /// multiplicities.
+        ///
+        /// * The  <Index>  is   the localization  of  the
+        /// parameter in the knot sequence.  If <Index> is  out
+        /// of range the correct value will be searched.
+        ///
+        /// VERY IMPORTANT!!!
+        /// USE  BSplCLib::NoWeights()  as Weights argument for non
+        /// rational curves computations.
         #[cxx_name = "BSplCLib_DN_real_int_array1ofpnt2d_array1ofreal_pnt2d_vec2d"]
         fn BSplCLib_dn_real_int_array1ofpnt2d_array1ofreal_pnt2d_vec2d(
             U: f64,
@@ -2857,6 +3020,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -3023,31 +3187,32 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfInteger"]
         type TColStd_Array1OfInteger;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColStd_Array2OfReal"]
         type TColStd_Array2OfReal;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColgp_Array1OfPnt"]
         type TColgp_Array1OfPnt;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColgp_Array1OfPnt2d"]
         type TColgp_Array1OfPnt2d;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBSplCLibCache"]
         type HandleBSplCLibCache;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHArray1OfInteger"]
         type HandleTColStdHArray1OfInteger;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHArray1OfReal"]
         type HandleTColStdHArray1OfReal;
     }

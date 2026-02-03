@@ -102,6 +102,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepBndLib ========================
         /// /// **Source:** `BRepBndLib.hxx` - `BRepBndLib`
         ///
@@ -182,6 +183,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// B2d from bnd module
         type Bnd_B2d = crate::bnd::ffi::B2d;
         /// Box from bnd module

@@ -92,6 +92,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== IMeshTools_Context ========================
         /// /// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context`
         ///
@@ -260,6 +261,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Model from i_mesh_data module
         type IMeshData_Model = crate::i_mesh_data::ffi::Model;
         /// Shape from i_mesh_data module
@@ -360,16 +362,17 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Handle to OCCT object"]
+
+        /// Handle to OCCT object
         #[cxx_name = "HandleIMeshDataModel"]
         type HandleIMeshDataModel;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleIMeshToolsModelAlgo"]
         type HandleIMeshToolsModelAlgo;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleIMeshToolsModelBuilder"]
         type HandleIMeshToolsModelBuilder;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

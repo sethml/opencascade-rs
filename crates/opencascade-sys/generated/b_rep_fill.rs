@@ -114,6 +114,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepFill_PipeShell ========================
         /// /// **Source:** `BRepFill_PipeShell.hxx` - `BRepFill_PipeShell`
         ///
@@ -410,6 +411,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// BisectingLocus from b_rep_mat2d module
         type BRepMAT2d_BisectingLocus = crate::b_rep_mat2d::ffi::BisectingLocus;
         /// LinkTopoBilo from b_rep_mat2d module
@@ -570,16 +572,17 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBRepFillPipeShell"]
         type HandleBRepFillPipeShell;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleLawFunction"]
         type HandleLawFunction;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

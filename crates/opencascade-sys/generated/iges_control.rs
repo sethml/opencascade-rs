@@ -94,10 +94,45 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== IGESControl_Reader ========================
         /// /// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader`
         ///
-        #[doc = "Reads IGES files, checks them and translates their contents into Open CASCADE models.\nThe IGES data can be that of a whole model or that of a specific list of entities in the model.\nAs in XSControl_Reader, you specify the list using a selection.\nFor translation of iges files it is possible to use the following sequence:\nTo change parameters of translation\nclass Interface_Static should be used before the beginning of translation\n(see IGES Parameters and General Parameters)\nCreation of reader\nIGESControl_Reader reader;\nTo load a file in a model use method:\nreader.ReadFile(\"filename.igs\")\nTo check a loading file use method Check:\nreader.Check(failsonly); where failsonly is equal to Standard_True or\nStandard_False;\nTo print the results of load:\nreader.PrintCheckLoad(failsonly,mode) where mode is equal to the value of\nenumeration IFSelect_PrintCount\nTo transfer entities from a model the following methods can be used:\nfor the whole model\nreader.TransferRoots(onlyvisible); where onlyvisible is equal to\nStandard_True or Standard_False;\nTo transfer a list of entities:\nreader.TransferList(list);\nTo transfer one entity\nreader.TransferEntity(ent) or reader.Transfer(num);\nTo obtain a result the following method can be used:\nreader.IsDone()\nreader.NbShapes() and reader.Shape(num); or reader.OneShape();\nTo print the results of transfer use method:\nreader.PrintTransferInfo(failwarn,mode); where printfail is equal to the\nvalue of enumeration IFSelect_PrintFail, mode see above.\nGets correspondence between an IGES entity and a result shape obtained therefrom.\nreader.TransientProcess();\nTopoDS_Shape shape =\nTransferBRep::ShapeResult(reader.TransientProcess(),ent);"]
+        /// Reads IGES files, checks them and translates their contents into Open CASCADE models.
+        /// The IGES data can be that of a whole model or that of a specific list of entities in the model.
+        /// As in XSControl_Reader, you specify the list using a selection.
+        /// For translation of iges files it is possible to use the following sequence:
+        /// To change parameters of translation
+        /// class Interface_Static should be used before the beginning of translation
+        /// (see IGES Parameters and General Parameters)
+        /// Creation of reader
+        /// IGESControl_Reader reader;
+        /// To load a file in a model use method:
+        /// reader.ReadFile("filename.igs")
+        /// To check a loading file use method Check:
+        /// reader.Check(failsonly); where failsonly is equal to Standard_True or
+        /// Standard_False;
+        /// To print the results of load:
+        /// reader.PrintCheckLoad(failsonly,mode) where mode is equal to the value of
+        /// enumeration IFSelect_PrintCount
+        /// To transfer entities from a model the following methods can be used:
+        /// for the whole model
+        /// reader.TransferRoots(onlyvisible); where onlyvisible is equal to
+        /// Standard_True or Standard_False;
+        /// To transfer a list of entities:
+        /// reader.TransferList(list);
+        /// To transfer one entity
+        /// reader.TransferEntity(ent) or reader.Transfer(num);
+        /// To obtain a result the following method can be used:
+        /// reader.IsDone()
+        /// reader.NbShapes() and reader.Shape(num); or reader.OneShape();
+        /// To print the results of transfer use method:
+        /// reader.PrintTransferInfo(failwarn,mode); where printfail is equal to the
+        /// value of enumeration IFSelect_PrintFail, mode see above.
+        /// Gets correspondence between an IGES entity and a result shape obtained therefrom.
+        /// reader.TransientProcess();
+        /// TopoDS_Shape shape =
+        /// TransferBRep::ShapeResult(reader.TransientProcess(),ent);
         #[cxx_name = "IGESControl_Reader"]
         type Reader;
         /// /// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader::IGESControl_Reader()`
@@ -222,6 +257,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// BasicEditor from iges_data module
         type IGESData_BasicEditor = crate::iges_data::ffi::BasicEditor;
         /// SpecificLib from iges_data module
@@ -326,34 +362,35 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "DE_ShapeFixParameters"]
         type DE_ShapeFixParameters;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "IGESData_IGESEntity"]
         type IGESData_IGESEntity;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "IGESData_IGESModel"]
         type IGESData_IGESModel;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Transfer_FinderProcess"]
         type Transfer_FinderProcess;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "XSControl_WorkSession"]
         type XSControl_WorkSession;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleIGESDataIGESEntity"]
         type HandleIGESDataIGESEntity;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleIGESDataIGESModel"]
         type HandleIGESDataIGESModel;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardTransient"]
         type HandleStandardTransient;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTransferFinderProcess"]
         type HandleTransferFinderProcess;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleXSControlWorkSession"]
         type HandleXSControlWorkSession;
     }

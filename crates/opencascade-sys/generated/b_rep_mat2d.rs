@@ -92,6 +92,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepMAT2d_BisectingLocus ========================
         /// /// **Source:** `BRepMAT2d_BisectingLocus.hxx` - `BRepMAT2d_BisectingLocus`
         ///
@@ -234,6 +235,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Bisec from bisector module
         type Bisector_Bisec = crate::bisector::ffi::Bisec;
         /// BoundedCurve from geom2d module
@@ -354,31 +356,32 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "BRepMAT2d_Explorer"]
         type BRepMAT2d_Explorer;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "MAT_Arc"]
         type MAT_Arc;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "MAT_Graph"]
         type MAT_Graph;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "MAT_Node"]
         type MAT_Node;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleGeom2dGeometry"]
         type HandleGeom2dGeometry;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMATArc"]
         type HandleMATArc;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMATBasicElt"]
         type HandleMATBasicElt;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMATGraph"]
         type HandleMATGraph;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleMATNode"]
         type HandleMATNode;
     }

@@ -50,7 +50,33 @@ impl Reader {
         ffi::Reader_model(self)
     }
 
-    #[doc = "Returns a list of entities from the IGES or STEP file\naccording to the following rules:\n- if first and second are empty strings, the whole file is selected.\n- if first is an entity number or label, the entity referred to is selected.\n- if first is a list of entity numbers/labels separated by commas, the entities referred to\nare selected,\n- if first is the name of a selection in the worksession and second is not defined,\nthe list contains the standard output for that selection.\n- if first is the name of a selection and second is defined, the criterion defined\nby second is applied to the result of the first selection.\nA selection is an operator which computes a list of entities from a list given in\ninput according to its type. If no list is specified, the selection computes its\nlist of entities from the whole model.\nA selection can be:\n- A predefined selection (xst-transferrable-mode)\n- A filter based on a signature\nA Signature is an operator which returns a string from an entity according to its type. For\nexample:\n- \"xst-type\" (CDL)\n- \"iges-level\"\n- \"step-type\".\nFor example, if you wanted to select only the advanced_faces in a STEP file you\nwould use the following code:\nExample\nReader.GiveList(\"xst-transferrable-roots\",\"step-type(ADVANCED_FACE)\");\nWarning\nIf the value given to second is incorrect, it will simply be ignored."]
+    /// Returns a list of entities from the IGES or STEP file
+    /// according to the following rules:
+    /// - if first and second are empty strings, the whole file is selected.
+    /// - if first is an entity number or label, the entity referred to is selected.
+    /// - if first is a list of entity numbers/labels separated by commas, the entities referred to
+    /// are selected,
+    /// - if first is the name of a selection in the worksession and second is not defined,
+    /// the list contains the standard output for that selection.
+    /// - if first is the name of a selection and second is defined, the criterion defined
+    /// by second is applied to the result of the first selection.
+    /// A selection is an operator which computes a list of entities from a list given in
+    /// input according to its type. If no list is specified, the selection computes its
+    /// list of entities from the whole model.
+    /// A selection can be:
+    /// - A predefined selection (xst-transferrable-mode)
+    /// - A filter based on a signature
+    /// A Signature is an operator which returns a string from an entity according to its type. For
+    /// example:
+    /// - "xst-type" (CDL)
+    /// - "iges-level"
+    /// - "step-type".
+    /// For example, if you wanted to select only the advanced_faces in a STEP file you
+    /// would use the following code:
+    /// Example
+    /// Reader.GiveList("xst-transferrable-roots","step-type(ADVANCED_FACE)");
+    /// Warning
+    /// If the value given to second is incorrect, it will simply be ignored.
     pub fn give_list_charptr2(
         self: std::pin::Pin<&mut Self>,
         first: &str,
@@ -107,10 +133,41 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== XSControl_Reader ========================
         /// /// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader`
         ///
-        #[doc = "A groundwork to convert a shape to data which complies\nwith a particular norm. This data can be that of a whole\nmodel or that of a specific list of entities in the model.\nYou specify the list using a single selection or a\ncombination of selections. A selection is an operator which\ncomputes a list of entities from a list given in input. To\nspecify the input, you can use:\n- A predefined selection such as \"xst-transferrable-roots\"\n- A filter based on a  signature.\nA signature is an operator which returns a string from an\nentity according to its type.\nFor example:\n- \"xst-type\" (CDL)\n- \"iges-level\"\n- \"step-type\".\nA filter can be based on a signature by giving a value to\nbe matched by the string returned. For example,\n\"xst-type(Curve)\".\nIf no list is specified, the selection computes its list of\nentities from the whole model. To use this class, you have to\ninitialize the transfer norm first, as shown in the example below.\nExample:\nControl_Reader reader;\nIFSelect_ReturnStatus status = reader.ReadFile (filename.);\nWhen using IGESControl_Reader or STEPControl_Reader - as the\nabove example shows - the reader initializes the norm directly.\nNote that loading the file only stores the data. It does\nnot translate this data. Shapes are accumulated by\nsuccessive transfers. The last shape is cleared by:\n- ClearShapes which allows you to handle a new batch\n- TransferRoots which restarts the list of shapes from scratch."]
+        /// A groundwork to convert a shape to data which complies
+        /// with a particular norm. This data can be that of a whole
+        /// model or that of a specific list of entities in the model.
+        /// You specify the list using a single selection or a
+        /// combination of selections. A selection is an operator which
+        /// computes a list of entities from a list given in input. To
+        /// specify the input, you can use:
+        /// - A predefined selection such as "xst-transferrable-roots"
+        /// - A filter based on a  signature.
+        /// A signature is an operator which returns a string from an
+        /// entity according to its type.
+        /// For example:
+        /// - "xst-type" (CDL)
+        /// - "iges-level"
+        /// - "step-type".
+        /// A filter can be based on a signature by giving a value to
+        /// be matched by the string returned. For example,
+        /// "xst-type(Curve)".
+        /// If no list is specified, the selection computes its list of
+        /// entities from the whole model. To use this class, you have to
+        /// initialize the transfer norm first, as shown in the example below.
+        /// Example:
+        /// Control_Reader reader;
+        /// IFSelect_ReturnStatus status = reader.ReadFile (filename.);
+        /// When using IGESControl_Reader or STEPControl_Reader - as the
+        /// above example shows - the reader initializes the norm directly.
+        /// Note that loading the file only stores the data. It does
+        /// not translate this data. Shapes are accumulated by
+        /// successive transfers. The last shape is cleared by:
+        /// - ClearShapes which allows you to handle a new batch
+        /// - TransferRoots which restarts the list of shapes from scratch.
         #[cxx_name = "XSControl_Reader"]
         type Reader;
         /// /// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader::XSControl_Reader()`
@@ -239,7 +296,33 @@ pub(crate) mod ffi {
         /// Returns the model. It can then be consulted (header, product)
         #[cxx_name = "XSControl_Reader_Model"]
         fn Reader_model(self_: &Reader) -> UniquePtr<HandleInterfaceInterfaceModel>;
-        #[doc = "Returns a list of entities from the IGES or STEP file\naccording to the following rules:\n- if first and second are empty strings, the whole file is selected.\n- if first is an entity number or label, the entity referred to is selected.\n- if first is a list of entity numbers/labels separated by commas, the entities referred to\nare selected,\n- if first is the name of a selection in the worksession and second is not defined,\nthe list contains the standard output for that selection.\n- if first is the name of a selection and second is defined, the criterion defined\nby second is applied to the result of the first selection.\nA selection is an operator which computes a list of entities from a list given in\ninput according to its type. If no list is specified, the selection computes its\nlist of entities from the whole model.\nA selection can be:\n- A predefined selection (xst-transferrable-mode)\n- A filter based on a signature\nA Signature is an operator which returns a string from an entity according to its type. For\nexample:\n- \"xst-type\" (CDL)\n- \"iges-level\"\n- \"step-type\".\nFor example, if you wanted to select only the advanced_faces in a STEP file you\nwould use the following code:\nExample\nReader.GiveList(\"xst-transferrable-roots\",\"step-type(ADVANCED_FACE)\");\nWarning\nIf the value given to second is incorrect, it will simply be ignored."]
+        /// Returns a list of entities from the IGES or STEP file
+        /// according to the following rules:
+        /// - if first and second are empty strings, the whole file is selected.
+        /// - if first is an entity number or label, the entity referred to is selected.
+        /// - if first is a list of entity numbers/labels separated by commas, the entities referred to
+        /// are selected,
+        /// - if first is the name of a selection in the worksession and second is not defined,
+        /// the list contains the standard output for that selection.
+        /// - if first is the name of a selection and second is defined, the criterion defined
+        /// by second is applied to the result of the first selection.
+        /// A selection is an operator which computes a list of entities from a list given in
+        /// input according to its type. If no list is specified, the selection computes its
+        /// list of entities from the whole model.
+        /// A selection can be:
+        /// - A predefined selection (xst-transferrable-mode)
+        /// - A filter based on a signature
+        /// A Signature is an operator which returns a string from an entity according to its type. For
+        /// example:
+        /// - "xst-type" (CDL)
+        /// - "iges-level"
+        /// - "step-type".
+        /// For example, if you wanted to select only the advanced_faces in a STEP file you
+        /// would use the following code:
+        /// Example
+        /// Reader.GiveList("xst-transferrable-roots","step-type(ADVANCED_FACE)");
+        /// Warning
+        /// If the value given to second is incorrect, it will simply be ignored.
         #[cxx_name = "XSControl_Reader_GiveList"]
         fn Reader_give_list_charptr2(
             self_: Pin<&mut Reader>,
@@ -282,6 +365,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// GeneralLib from interface module
         type Interface_GeneralLib = crate::interface::ffi::GeneralLib;
         /// Message from message module
@@ -402,25 +486,26 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "DE_ShapeFixParameters"]
         type DE_ShapeFixParameters;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Interface_InterfaceModel"]
         type Interface_InterfaceModel;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "XSControl_WorkSession"]
         type XSControl_WorkSession;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleInterfaceInterfaceModel"]
         type HandleInterfaceInterfaceModel;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardTransient"]
         type HandleStandardTransient;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleTColStdHSequenceOfTransient"]
         type HandleTColStdHSequenceOfTransient;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleXSControlWorkSession"]
         type HandleXSControlWorkSession;
     }

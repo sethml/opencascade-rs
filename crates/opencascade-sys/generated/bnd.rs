@@ -36,12 +36,20 @@ impl Box {
         ffi::Box__to_owned(self)
     }
 
-    #[doc = "Returns the lower corner of this bounding box. The gap is included.\nIf this bounding box is infinite (i.e. \"open\"), returned values\nmay be equal to +/- Precision::Infinite().\nStandard_ConstructionError exception will be thrown if the box is void.\nif IsVoid()"]
+    /// Returns the lower corner of this bounding box. The gap is included.
+    /// If this bounding box is infinite (i.e. "open"), returned values
+    /// may be equal to +/- Precision::Infinite().
+    /// Standard_ConstructionError exception will be thrown if the box is void.
+    /// if IsVoid()
     pub fn corner_min(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::Box__corner_min(self)
     }
 
-    #[doc = "Returns the upper corner of this bounding box. The gap is included.\nIf this bounding box is infinite (i.e. \"open\"), returned values\nmay be equal to +/- Precision::Infinite().\nStandard_ConstructionError exception will be thrown if the box is void.\nif IsVoid()"]
+    /// Returns the upper corner of this bounding box. The gap is included.
+    /// If this bounding box is infinite (i.e. "open"), returned values
+    /// may be equal to +/- Precision::Infinite().
+    /// Standard_ConstructionError exception will be thrown if the box is void.
+    /// if IsVoid()
     pub fn corner_max(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::Box__corner_max(self)
     }
@@ -293,10 +301,36 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== Bnd_Box ========================
         /// /// **Source:** `Bnd_Box.hxx` - `Bnd_Box`
         ///
-        #[doc = "Describes a bounding box in 3D space.\nA bounding box is parallel to the axes of the coordinates\nsystem. If it is finite, it is defined by the three intervals:\n-   [ Xmin,Xmax ],\n-   [ Ymin,Ymax ],\n-   [ Zmin,Zmax ].\nA bounding box may be infinite (i.e. open) in one or more\ndirections. It is said to be:\n-   OpenXmin if it is infinite on the negative side of the   \"X Direction\";\n-   OpenXmax if it is infinite on the positive side of the \"X Direction\";\n-   OpenYmin if it is infinite on the negative side of the   \"Y Direction\";\n-   OpenYmax if it is infinite on the positive side of the \"Y Direction\";\n-   OpenZmin if it is infinite on the negative side of the   \"Z Direction\";\n-   OpenZmax if it is infinite on the positive side of the \"Z Direction\";\n-   WholeSpace if it is infinite in all six directions. In this\ncase, any point of the space is inside the box;\n-   Void if it is empty. In this case, there is no point included in the box.\nA bounding box is defined by:\n-   six bounds (Xmin, Xmax, Ymin, Ymax, Zmin and\nZmax) which limit the bounding box if it is finite,\n-   eight flags (OpenXmin, OpenXmax, OpenYmin,\nOpenYmax, OpenZmin, OpenZmax,\nWholeSpace and Void) which describe the\nbounding box if it is infinite or empty, and\n-   a gap, which is included on both sides in any direction\nwhen consulting the finite bounds of the box."]
+        /// Describes a bounding box in 3D space.
+        /// A bounding box is parallel to the axes of the coordinates
+        /// system. If it is finite, it is defined by the three intervals:
+        /// -   [ Xmin,Xmax ],
+        /// -   [ Ymin,Ymax ],
+        /// -   [ Zmin,Zmax ].
+        /// A bounding box may be infinite (i.e. open) in one or more
+        /// directions. It is said to be:
+        /// -   OpenXmin if it is infinite on the negative side of the   "X Direction";
+        /// -   OpenXmax if it is infinite on the positive side of the "X Direction";
+        /// -   OpenYmin if it is infinite on the negative side of the   "Y Direction";
+        /// -   OpenYmax if it is infinite on the positive side of the "Y Direction";
+        /// -   OpenZmin if it is infinite on the negative side of the   "Z Direction";
+        /// -   OpenZmax if it is infinite on the positive side of the "Z Direction";
+        /// -   WholeSpace if it is infinite in all six directions. In this
+        /// case, any point of the space is inside the box;
+        /// -   Void if it is empty. In this case, there is no point included in the box.
+        /// A bounding box is defined by:
+        /// -   six bounds (Xmin, Xmax, Ymin, Ymax, Zmin and
+        /// Zmax) which limit the bounding box if it is finite,
+        /// -   eight flags (OpenXmin, OpenXmax, OpenYmin,
+        /// OpenYmax, OpenZmin, OpenZmax,
+        /// WholeSpace and Void) which describe the
+        /// bounding box if it is infinite or empty, and
+        /// -   a gap, which is included on both sides in any direction
+        /// when consulting the finite bounds of the box.
         #[cxx_name = "Bnd_Box"]
         type Box_;
         /// /// **Source:** `Bnd_Box.hxx` - `Bnd_Box::Bnd_Box()`
@@ -331,7 +365,11 @@ pub(crate) mod ffi {
         /// involves first setting this box to be void and then adding   the half-line.
         #[cxx_name = "Set"]
         fn set_pnt_dir(self: Pin<&mut Box_>, P: &gp_Pnt, D: &gp_Dir);
-        #[doc = "Enlarges this bounding box, if required, so that it\ncontains at least:\n-   interval [ aXmin,aXmax ] in the \"X Direction\",\n-   interval [ aYmin,aYmax ] in the \"Y Direction\",\n-   interval [ aZmin,aZmax ] in the \"Z Direction\";"]
+        /// Enlarges this bounding box, if required, so that it
+        /// contains at least:
+        /// -   interval [ aXmin,aXmax ] in the "X Direction",
+        /// -   interval [ aYmin,aYmax ] in the "Y Direction",
+        /// -   interval [ aZmin,aZmax ] in the "Z Direction";
         #[cxx_name = "Update"]
         fn update_real6(
             self: Pin<&mut Box_>,
@@ -359,7 +397,11 @@ pub(crate) mod ffi {
         /// increased by the same amount.
         #[cxx_name = "Enlarge"]
         fn enlarge(self: Pin<&mut Box_>, Tol: f64);
-        #[doc = "Returns the bounds of this bounding box. The gap is included.\nIf this bounding box is infinite (i.e. \"open\"), returned values\nmay be equal to +/- Precision::Infinite().\nStandard_ConstructionError exception will be thrown if the box is void.\nif IsVoid()"]
+        /// Returns the bounds of this bounding box. The gap is included.
+        /// If this bounding box is infinite (i.e. "open"), returned values
+        /// may be equal to +/- Precision::Infinite().
+        /// Standard_ConstructionError exception will be thrown if the box is void.
+        /// if IsVoid()
         #[cxx_name = "Get"]
         fn get(
             self: &Box_,
@@ -484,10 +526,18 @@ pub(crate) mod ffi {
         /// Returns TRUE if this box has finite part.
         #[cxx_name = "HasFinitePart"]
         fn has_finite_part(self: &Box_) -> bool;
-        #[doc = "Returns the lower corner of this bounding box. The gap is included.\nIf this bounding box is infinite (i.e. \"open\"), returned values\nmay be equal to +/- Precision::Infinite().\nStandard_ConstructionError exception will be thrown if the box is void.\nif IsVoid()"]
+        /// Returns the lower corner of this bounding box. The gap is included.
+        /// If this bounding box is infinite (i.e. "open"), returned values
+        /// may be equal to +/- Precision::Infinite().
+        /// Standard_ConstructionError exception will be thrown if the box is void.
+        /// if IsVoid()
         #[cxx_name = "Bnd_Box_CornerMin"]
         fn Box__corner_min(self_: &Box_) -> UniquePtr<gp_Pnt>;
-        #[doc = "Returns the upper corner of this bounding box. The gap is included.\nIf this bounding box is infinite (i.e. \"open\"), returned values\nmay be equal to +/- Precision::Infinite().\nStandard_ConstructionError exception will be thrown if the box is void.\nif IsVoid()"]
+        /// Returns the upper corner of this bounding box. The gap is included.
+        /// If this bounding box is infinite (i.e. "open"), returned values
+        /// may be equal to +/- Precision::Infinite().
+        /// Standard_ConstructionError exception will be thrown if the box is void.
+        /// if IsVoid()
         #[cxx_name = "Bnd_Box_CornerMax"]
         fn Box__corner_max(self_: &Box_) -> UniquePtr<gp_Pnt>;
         /// Returns a bounding box which is the result of applying the
@@ -746,7 +796,25 @@ pub(crate) mod ffi {
         /// ======================== Bnd_Box2d ========================
         /// /// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d`
         ///
-        #[doc = "Describes a bounding box in 2D space.\nA bounding box is parallel to the axes of the coordinates\nsystem. If it is finite, it is defined by the two intervals:\n-   [ Xmin,Xmax ], and\n-   [ Ymin,Ymax ].\nA bounding box may be infinite (i.e. open) in one or more\ndirections. It is said to be:\n-   OpenXmin if it is infinite on the negative side of the   \"X Direction\";\n-   OpenXmax if it is infinite on the positive side of the   \"X Direction\";\n-   OpenYmin if it is infinite on the negative side of the   \"Y Direction\";\n-   OpenYmax if it is infinite on the positive side of the   \"Y Direction\";\n-   WholeSpace if it is infinite in all four directions. In\nthis case, any point of the space is inside the box;\n-   Void if it is empty. In this case, there is no point included in the box.\nA bounding box is defined by four bounds (Xmin, Xmax, Ymin and Ymax) which\nlimit the bounding box if it is finite, six flags (OpenXmin, OpenXmax, OpenYmin,\nOpenYmax, WholeSpace and Void) which describe the bounding box if it is infinite or empty, and\n-   a gap, which is included on both sides in any direction when consulting the finite bounds of\nthe box."]
+        /// Describes a bounding box in 2D space.
+        /// A bounding box is parallel to the axes of the coordinates
+        /// system. If it is finite, it is defined by the two intervals:
+        /// -   [ Xmin,Xmax ], and
+        /// -   [ Ymin,Ymax ].
+        /// A bounding box may be infinite (i.e. open) in one or more
+        /// directions. It is said to be:
+        /// -   OpenXmin if it is infinite on the negative side of the   "X Direction";
+        /// -   OpenXmax if it is infinite on the positive side of the   "X Direction";
+        /// -   OpenYmin if it is infinite on the negative side of the   "Y Direction";
+        /// -   OpenYmax if it is infinite on the positive side of the   "Y Direction";
+        /// -   WholeSpace if it is infinite in all four directions. In
+        /// this case, any point of the space is inside the box;
+        /// -   Void if it is empty. In this case, there is no point included in the box.
+        /// A bounding box is defined by four bounds (Xmin, Xmax, Ymin and Ymax) which
+        /// limit the bounding box if it is finite, six flags (OpenXmin, OpenXmax, OpenYmin,
+        /// OpenYmax, WholeSpace and Void) which describe the bounding box if it is infinite or empty, and
+        /// -   a gap, which is included on both sides in any direction when consulting the finite bounds of
+        /// the box.
         #[cxx_name = "Bnd_Box2d"]
         type Box2d;
         /// /// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d::Bnd_Box2d()`
@@ -774,7 +842,10 @@ pub(crate) mod ffi {
         /// first setting this 2D box to be void and then adding the   half-line.
         #[cxx_name = "Set"]
         fn set_pnt2d_dir2d(self: Pin<&mut Box2d>, thePnt: &gp_Pnt2d, theDir: &gp_Dir2d);
-        #[doc = "Enlarges this 2D bounding box, if required, so that it\ncontains at least:\n-   interval [ aXmin,aXmax ] in the \"X Direction\",\n-   interval [ aYmin,aYmax ] in the \"Y Direction\""]
+        /// Enlarges this 2D bounding box, if required, so that it
+        /// contains at least:
+        /// -   interval [ aXmin,aXmax ] in the "X Direction",
+        /// -   interval [ aYmin,aYmax ] in the "Y Direction"
         #[cxx_name = "Update"]
         fn update_real4(self: Pin<&mut Box2d>, aXmin: f64, aYmin: f64, aXmax: f64, aYmax: f64);
         /// Adds a point of coordinates (X,Y) to this bounding box.
@@ -793,7 +864,10 @@ pub(crate) mod ffi {
         /// increased by the same amount.
         #[cxx_name = "Enlarge"]
         fn enlarge(self: Pin<&mut Box2d>, theTol: f64);
-        #[doc = "Returns the bounds of this 2D bounding box.\nThe gap is included. If this bounding box is infinite (i.e. \"open\"), returned values\nmay be equal to +/- Precision::Infinite().\nif IsVoid()"]
+        /// Returns the bounds of this 2D bounding box.
+        /// The gap is included. If this bounding box is infinite (i.e. "open"), returned values
+        /// may be equal to +/- Precision::Infinite().
+        /// if IsVoid()
         #[cxx_name = "Get"]
         fn get(self: &Box2d, aXmin: &mut f64, aYmin: &mut f64, aXmax: &mut f64, aYmax: &mut f64);
         /// The Box will be infinitely long in the Xmin direction.
@@ -1034,6 +1108,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
         /// ConstructionError from standard module
@@ -1184,22 +1259,23 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "Bnd_Array1OfBox"]
         type Bnd_Array1OfBox;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "Bnd_Array1OfSphere"]
         type Bnd_Array1OfSphere;
-        #[doc = r" Referenced type from C++"]
+        /// Referenced type from C++
         #[cxx_name = "TColgp_Array1OfPnt"]
         type TColgp_Array1OfPnt;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBndHArray1OfBox"]
         type HandleBndHArray1OfBox;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBndHArray1OfSphere"]
         type HandleBndHArray1OfSphere;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }

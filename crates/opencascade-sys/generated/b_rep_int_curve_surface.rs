@@ -30,6 +30,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== BRepIntCurveSurface_Inter ========================
         /// /// **Source:** `BRepIntCurveSurface_Inter.hxx` - `BRepIntCurveSurface_Inter`
         ///
@@ -116,6 +117,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Curve from geom_adaptor module
         type GeomAdaptor_Curve = crate::geom_adaptor::ffi::Curve;
         /// Surface from geom_adaptor module

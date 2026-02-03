@@ -157,6 +157,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== GCPnts_TangentialDeflection ========================
         /// /// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection`
         ///
@@ -386,6 +387,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// Curve2d from adaptor2d module
         type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
         /// Curve from adaptor3d module

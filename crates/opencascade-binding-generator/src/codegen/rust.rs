@@ -71,8 +71,8 @@ fn generate_doc_comments(source_header: &Option<String>, cpp_identifier: &str, c
     result
 }
 
-/// Convert TokenStream to formatted string
-fn convert_doc_attributes_to_comments(tokens: &TokenStream) -> String {
+/// Convert TokenStream to formatted string with basic newlines
+fn format_tokenstream(tokens: &TokenStream) -> String {
     let code = tokens.to_string();
     
     // Add basic formatting by inserting newlines in key places to make it more readable  
@@ -88,18 +88,19 @@ fn convert_doc_attributes_to_comments(tokens: &TokenStream) -> String {
     formatted
 }
 
-/// Convert doc attributes to /// comments and section markers to regular comments
-/// This is called after rustfmt formatting to:
+/// Post-process generated code after rustfmt formatting:
 /// 1. Convert #[doc = "..."] attributes to /// ... comments for better readability
 /// 2. Convert SECTION: markers to regular // comments
 /// 3. Convert BLANK_LINE markers to actual blank lines
-pub fn convert_section_markers_to_comments(code: &str) -> String {
+pub fn postprocess_generated_code(code: &str) -> String {
     use regex::Regex;
     
-    // First, convert all #[doc = "..."] to /// ... format
+    // First, convert all #[doc = "..."] and #[doc = r"..."] to /// ... format
     // This regex captures leading whitespace and the content
     // We use (?s) to make . match newlines
-    let doc_attr_re = Regex::new(r#"(?s)([ \t]*)#\[doc = "([^"]*)"\]"#).unwrap();
+    // The r? makes the raw string prefix optional
+    // The content pattern matches: non-quote chars OR escaped quotes (backslash followed by quote)
+    let doc_attr_re = Regex::new(r#"(?s)([ \t]*)#\[doc = r?"((?:[^"\\]|\\.)*)"\]"#).unwrap();
     let result = doc_attr_re.replace_all(code, |caps: &regex::Captures| {
         let indent = &caps[1];
         let content = &caps[2];
@@ -107,9 +108,14 @@ pub fn convert_section_markers_to_comments(code: &str) -> String {
         if content.is_empty() {
             format!("{}///", indent)
         } else {
-            // Handle escaped newlines from quote! macro - convert \n to actual newlines
-            // then split into lines, each getting its own /// with proper indentation
-            let unescaped = content.replace("\\n", "\n");
+            // Handle escape sequences from quote! macro:
+            // - \n becomes actual newline
+            // - \" becomes "
+            // - \\ becomes \
+            let unescaped = content
+                .replace("\\n", "\n")
+                .replace("\\\"", "\"")
+                .replace("\\\\", "\\");
             unescaped
                 .lines()
                 .map(|line| {
@@ -259,6 +265,7 @@ pub fn generate_module(
             #[doc = " SECTION: ========================"]
             #[doc = " SECTION: Shared enums"]
             #[doc = " SECTION: ========================"]
+            #[doc = " BLANK_LINE"]
             #(#enum_items)*
         }
     } else {
@@ -271,6 +278,7 @@ pub fn generate_module(
             #[doc = " SECTION: ========================"]
             #[doc = " SECTION: Module types and methods"]
             #[doc = " SECTION: ========================"]
+            #[doc = " BLANK_LINE"]
             #(#class_items)*
         }
     } else {
@@ -283,6 +291,7 @@ pub fn generate_module(
             #[doc = " SECTION: ========================"]
             #[doc = " SECTION: Free functions"]
             #[doc = " SECTION: ========================"]
+            #[doc = " BLANK_LINE"]
             #(#function_items)*
         }
     } else {
@@ -295,6 +304,7 @@ pub fn generate_module(
             #[doc = " SECTION: ========================"]
             #[doc = " SECTION: Cross-module type aliases"]
             #[doc = " SECTION: ========================"]
+            #[doc = " BLANK_LINE"]
             #(#type_aliases)*
         }
     } else {
@@ -307,6 +317,7 @@ pub fn generate_module(
             #[doc = " SECTION: ========================"]
             #[doc = " SECTION: Referenced types (opaque)"]
             #[doc = " SECTION: ========================"]
+            #[doc = " BLANK_LINE"]
             #(#opaque_type_decls)*
         }
     } else {
@@ -346,7 +357,7 @@ pub fn generate_module(
     };
 
     // Convert to string and apply doc comment conversion
-    let mut tokens_string = convert_doc_attributes_to_comments(&tokens);
+    let mut tokens_string = format_tokenstream(&tokens);
     
     // Insert collection FFI code if this module has collections
     if !collections.is_empty() {

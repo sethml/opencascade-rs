@@ -47,6 +47,7 @@ pub(crate) mod ffi {
         // ========================
         // Module types and methods
         // ========================
+
         /// ======================== ShapeUpgrade_UnifySameDomain ========================
         /// /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain`
         ///
@@ -165,6 +166,7 @@ pub(crate) mod ffi {
         // ========================
         // Cross-module type aliases
         // ========================
+
         /// BRepTools from b_rep_tools module
         type BRepTools = crate::b_rep_tools::ffi::BRepTools;
         /// History from b_rep_tools module
@@ -247,16 +249,17 @@ pub(crate) mod ffi {
         // ========================
         // Referenced types (opaque)
         // ========================
-        #[doc = r" Referenced type from C++"]
+
+        /// Referenced type from C++
         #[cxx_name = "TopTools_MapOfShape"]
         type TopTools_MapOfShape;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleBRepToolsHistory"]
         type HandleBRepToolsHistory;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleShapeUpgradeUnifySameDomain"]
         type HandleShapeUpgradeUnifySameDomain;
-        #[doc = r" Handle to OCCT object"]
+        /// Handle to OCCT object
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
     }
