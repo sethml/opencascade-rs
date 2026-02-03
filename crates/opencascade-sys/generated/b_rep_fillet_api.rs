@@ -19,140 +19,112 @@ pub(crate) mod ffi {
         include!("wrapper_b_rep_fillet_api.hxx");
         #[doc = "Command from b_rep_builder_api module"]
         type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
-        #[doc = "MakeShape from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
         #[doc = "MakeEdge from b_rep_builder_api module"]
         type BRepBuilderAPI_MakeEdge = crate::b_rep_builder_api::ffi::MakeEdge;
         #[doc = "MakeFace from b_rep_builder_api module"]
         type BRepBuilderAPI_MakeFace = crate::b_rep_builder_api::ffi::MakeFace;
+        #[doc = "MakeShape from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
         #[doc = "MakeSolid from b_rep_builder_api module"]
         type BRepBuilderAPI_MakeSolid = crate::b_rep_builder_api::ffi::MakeSolid;
         #[doc = "MakeVertex from b_rep_builder_api module"]
         type BRepBuilderAPI_MakeVertex = crate::b_rep_builder_api::ffi::MakeVertex;
         #[doc = "MakeWire from b_rep_builder_api module"]
         type BRepBuilderAPI_MakeWire = crate::b_rep_builder_api::ffi::MakeWire;
+        #[doc = "ModifyShape from b_rep_builder_api module"]
+        type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
         #[doc = "Sewing from b_rep_builder_api module"]
         type BRepBuilderAPI_Sewing = crate::b_rep_builder_api::ffi::Sewing;
         #[doc = "Transform from b_rep_builder_api module"]
         type BRepBuilderAPI_Transform = crate::b_rep_builder_api::ffi::Transform;
-        #[doc = "ModifyShape from b_rep_builder_api module"]
-        type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
-        #[doc = "SecHArray1 from ch_fi_ds module"]
-        type ChFiDS_SecHArray1 = crate::ch_fi_ds::ffi::SecHArray1;
-        #[doc = "CircSection from ch_fi_ds module"]
-        type ChFiDS_CircSection = crate::ch_fi_ds::ffi::CircSection;
-        #[doc = "ElSpine from ch_fi_ds module"]
-        type ChFiDS_ElSpine = crate::ch_fi_ds::ffi::ElSpine;
-        #[doc = "SurfData from ch_fi_ds module"]
-        type ChFiDS_SurfData = crate::ch_fi_ds::ffi::SurfData;
-        #[doc = "CommonPoint from ch_fi_ds module"]
-        type ChFiDS_CommonPoint = crate::ch_fi_ds::ffi::CommonPoint;
-        #[doc = "FaceInterference from ch_fi_ds module"]
-        type ChFiDS_FaceInterference = crate::ch_fi_ds::ffi::FaceInterference;
-        #[doc = "Stripe from ch_fi_ds module"]
-        type ChFiDS_Stripe = crate::ch_fi_ds::ffi::Stripe;
-        #[doc = "HData from ch_fi_ds module"]
-        type ChFiDS_HData = crate::ch_fi_ds::ffi::HData;
-        #[doc = "Map from ch_fi_ds module"]
-        type ChFiDS_Map = crate::ch_fi_ds::ffi::Map;
-        #[doc = "StripeMap from ch_fi_ds module"]
-        type ChFiDS_StripeMap = crate::ch_fi_ds::ffi::StripeMap;
-        #[doc = "Regul from ch_fi_ds module"]
-        type ChFiDS_Regul = crate::ch_fi_ds::ffi::Regul;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "Function from law module"]
-        type Law_Function = crate::law::ffi::Function;
-        #[doc = "BSpFunc from law module"]
-        type Law_BSpFunc = crate::law::ffi::BSpFunc;
-        #[doc = "Interpol from law module"]
-        type Law_Interpol = crate::law::ffi::Interpol;
         #[doc = "Builder from ch_fi2d module"]
         type ChFi2d_Builder = crate::ch_fi2d::ffi::Builder;
-        #[doc = "Geometry from geom module"]
-        type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Curve from geom module"]
-        type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "Surface from geom module"]
-        type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "BoundedCurve from geom module"]
-        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
-        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "ElementarySurface from geom module"]
-        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "BezierCurve from geom module"]
-        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
-        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BSplineCurve from geom module"]
-        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
-        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "CylindricalSurface from geom module"]
-        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "Plane from geom module"]
-        type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "TrimmedCurve from geom module"]
-        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "Message from message module"]
-        type Message = crate::message::ffi::Message;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
-        #[doc = "Alert from message module"]
-        type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
-        type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "FilBuilder from ch_fi3d module"]
-        type ChFi3d_FilBuilder = crate::ch_fi3d::ffi::FilBuilder;
         #[doc = "Builder from ch_fi3d module"]
         type ChFi3d_Builder = crate::ch_fi3d::ffi::Builder;
         #[doc = "ChBuilder from ch_fi3d module"]
         type ChFi3d_ChBuilder = crate::ch_fi3d::ffi::ChBuilder;
+        #[doc = "FilBuilder from ch_fi3d module"]
+        type ChFi3d_FilBuilder = crate::ch_fi3d::ffi::FilBuilder;
+        #[doc = "CircSection from ch_fi_ds module"]
+        type ChFiDS_CircSection = crate::ch_fi_ds::ffi::CircSection;
+        #[doc = "CommonPoint from ch_fi_ds module"]
+        type ChFiDS_CommonPoint = crate::ch_fi_ds::ffi::CommonPoint;
+        #[doc = "ElSpine from ch_fi_ds module"]
+        type ChFiDS_ElSpine = crate::ch_fi_ds::ffi::ElSpine;
+        #[doc = "FaceInterference from ch_fi_ds module"]
+        type ChFiDS_FaceInterference = crate::ch_fi_ds::ffi::FaceInterference;
+        #[doc = "HData from ch_fi_ds module"]
+        type ChFiDS_HData = crate::ch_fi_ds::ffi::HData;
+        #[doc = "Map from ch_fi_ds module"]
+        type ChFiDS_Map = crate::ch_fi_ds::ffi::Map;
+        #[doc = "Regul from ch_fi_ds module"]
+        type ChFiDS_Regul = crate::ch_fi_ds::ffi::Regul;
+        #[doc = "SecHArray1 from ch_fi_ds module"]
+        type ChFiDS_SecHArray1 = crate::ch_fi_ds::ffi::SecHArray1;
+        #[doc = "Stripe from ch_fi_ds module"]
+        type ChFiDS_Stripe = crate::ch_fi_ds::ffi::Stripe;
+        #[doc = "StripeMap from ch_fi_ds module"]
+        type ChFiDS_StripeMap = crate::ch_fi_ds::ffi::StripeMap;
+        #[doc = "SurfData from ch_fi_ds module"]
+        type ChFiDS_SurfData = crate::ch_fi_ds::ffi::SurfData;
+        #[doc = "BSplineCurve from geom module"]
+        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
+        #[doc = "BSplineSurface from geom module"]
+        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
+        #[doc = "BezierCurve from geom module"]
+        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
+        #[doc = "BezierSurface from geom module"]
+        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BoundedCurve from geom module"]
+        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
+        #[doc = "BoundedSurface from geom module"]
+        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
+        #[doc = "Curve from geom module"]
+        type Geom_Curve = crate::geom::ffi::Curve;
+        #[doc = "CylindricalSurface from geom module"]
+        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
+        #[doc = "ElementarySurface from geom module"]
+        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
+        #[doc = "Geometry from geom module"]
+        type Geom_Geometry = crate::geom::ffi::Geometry;
+        #[doc = "Plane from geom module"]
+        type Geom_Plane = crate::geom::ffi::Plane;
+        #[doc = "Surface from geom module"]
+        type Geom_Surface = crate::geom::ffi::Surface;
+        #[doc = "TrimmedCurve from geom module"]
+        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
+        #[doc = "BSpFunc from law module"]
+        type Law_BSpFunc = crate::law::ffi::BSpFunc;
+        #[doc = "Function from law module"]
+        type Law_Function = crate::law::ffi::Function;
+        #[doc = "Interpol from law module"]
+        type Law_Interpol = crate::law::ffi::Interpol;
+        #[doc = "Message from message module"]
+        type Message = crate::message::ffi::Message;
+        #[doc = "Alert from message module"]
+        type Message_Alert = crate::message::ffi::Alert;
+        #[doc = "AlertExtended from message module"]
+        type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
         #[doc = "HArray1OfPnt from t_colgp module"]
         type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
         #[doc = "HArray1OfPnt2d from t_colgp module"]
@@ -161,30 +133,58 @@ pub(crate) mod ffi {
         type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
         #[doc = "HArray2OfPnt from t_colgp module"]
         type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColgp_Array1OfPnt2d"]
+        type TColgp_Array1OfPnt2d;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopOpeBRepBuild_HBuilder"]
+        type TopOpeBRepBuild_HBuilder;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_SequenceOfShape"]
         type TopTools_SequenceOfShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopOpeBRepBuild_HBuilder"]
-        type TopOpeBRepBuild_HBuilder;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array1OfPnt2d"]
-        type TColgp_Array1OfPnt2d;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleLawFunction"]
-        type HandleLawFunction;
+        #[cxx_name = "HandleChFiDSSecHArray1"]
+        type HandleChFiDSSecHArray1;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
         #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleLawFunction"]
+        type HandleLawFunction;
+        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTopOpeBRepBuildHBuilder"]
         type HandleTopOpeBRepBuildHBuilder;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleChFiDSSecHArray1"]
-        type HandleChFiDSSecHArray1;
         #[doc = " ======================== BRepFilletAPI_LocalOperation ========================"]
         #[doc = "/// **Source:** `BRepFilletAPI_LocalOperation.hxx` - `BRepFilletAPI_LocalOperation`"]
         #[doc = ""]
@@ -410,14 +410,6 @@ pub(crate) mod ffi {
         fn make_chamfer_as_b_rep_builder_api_command_mut(
             self_: Pin<&mut MakeChamfer>,
         ) -> Pin<&mut BRepBuilderAPI_Command>;
-        #[doc = "Upcast BRepFilletAPI_MakeChamfer to BRepFilletAPI_LocalOperation"]
-        #[cxx_name = "BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation"]
-        fn make_chamfer_as_local_operation(self_: &MakeChamfer) -> &LocalOperation;
-        #[doc = "Upcast BRepFilletAPI_MakeChamfer to BRepFilletAPI_LocalOperation (mutable)"]
-        #[cxx_name = "BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut"]
-        fn make_chamfer_as_local_operation_mut(
-            self_: Pin<&mut MakeChamfer>,
-        ) -> Pin<&mut LocalOperation>;
         #[doc = "Upcast BRepFilletAPI_MakeChamfer to BRepBuilderAPI_MakeShape"]
         #[cxx_name = "BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape"]
         fn make_chamfer_as_b_rep_builder_api_make_shape(
@@ -428,6 +420,14 @@ pub(crate) mod ffi {
         fn make_chamfer_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut MakeChamfer>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        #[doc = "Upcast BRepFilletAPI_MakeChamfer to BRepFilletAPI_LocalOperation"]
+        #[cxx_name = "BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation"]
+        fn make_chamfer_as_local_operation(self_: &MakeChamfer) -> &LocalOperation;
+        #[doc = "Upcast BRepFilletAPI_MakeChamfer to BRepFilletAPI_LocalOperation (mutable)"]
+        #[cxx_name = "BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut"]
+        fn make_chamfer_as_local_operation_mut(
+            self_: Pin<&mut MakeChamfer>,
+        ) -> Pin<&mut LocalOperation>;
         #[doc = " ======================== BRepFilletAPI_MakeFillet ========================"]
         #[doc = "/// **Source:** `BRepFilletAPI_MakeFillet.hxx` - `BRepFilletAPI_MakeFillet`"]
         #[doc = ""]
@@ -632,6 +632,14 @@ pub(crate) mod ffi {
         #[doc = "if (HasResult()) returns the partial result"]
         #[cxx_name = "BRepFilletAPI_MakeFillet_BadShape"]
         fn MakeFillet_bad_shape(self_: &MakeFillet) -> UniquePtr<TopoDS_Shape>;
+        #[doc = "Upcast BRepFilletAPI_MakeFillet to BRepBuilderAPI_Command"]
+        #[cxx_name = "BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command"]
+        fn make_fillet_as_b_rep_builder_api_command(self_: &MakeFillet) -> &BRepBuilderAPI_Command;
+        #[doc = "Upcast BRepFilletAPI_MakeFillet to BRepBuilderAPI_Command (mutable)"]
+        #[cxx_name = "BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command_mut"]
+        fn make_fillet_as_b_rep_builder_api_command_mut(
+            self_: Pin<&mut MakeFillet>,
+        ) -> Pin<&mut BRepBuilderAPI_Command>;
         #[doc = "Upcast BRepFilletAPI_MakeFillet to BRepBuilderAPI_MakeShape"]
         #[cxx_name = "BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape"]
         fn make_fillet_as_b_rep_builder_api_make_shape(
@@ -650,14 +658,6 @@ pub(crate) mod ffi {
         fn make_fillet_as_local_operation_mut(
             self_: Pin<&mut MakeFillet>,
         ) -> Pin<&mut LocalOperation>;
-        #[doc = "Upcast BRepFilletAPI_MakeFillet to BRepBuilderAPI_Command"]
-        #[cxx_name = "BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command"]
-        fn make_fillet_as_b_rep_builder_api_command(self_: &MakeFillet) -> &BRepBuilderAPI_Command;
-        #[doc = "Upcast BRepFilletAPI_MakeFillet to BRepBuilderAPI_Command (mutable)"]
-        #[cxx_name = "BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command_mut"]
-        fn make_fillet_as_b_rep_builder_api_command_mut(
-            self_: Pin<&mut MakeFillet>,
-        ) -> Pin<&mut BRepBuilderAPI_Command>;
         #[doc = " ======================== BRepFilletAPI_MakeFillet2d ========================"]
         #[doc = "/// **Source:** `BRepFilletAPI_MakeFillet2d.hxx` - `BRepFilletAPI_MakeFillet2d`"]
         #[doc = ""]
@@ -806,18 +806,6 @@ pub(crate) mod ffi {
 }
 pub use ffi::LocalOperation;
 impl LocalOperation {
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::local_operation_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::local_operation_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
     #[doc = "Upcast to BRepBuilderAPI_Command"]
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         ffi::local_operation_as_b_rep_builder_api_command(self)
@@ -828,6 +816,18 @@ impl LocalOperation {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
         ffi::local_operation_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::local_operation_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::local_operation_as_b_rep_builder_api_make_shape_mut(self)
     }
 
     #[doc = "Returns the first Vertex of the contour of index IC."]
@@ -908,18 +908,6 @@ impl MakeChamfer {
 }
 pub use ffi::MakeFillet;
 impl MakeFillet {
-    #[doc = "Upcast to BRepFilletAPI_LocalOperation"]
-    pub fn as_local_operation(&self) -> &LocalOperation {
-        ffi::make_fillet_as_local_operation(self)
-    }
-
-    #[doc = "Upcast to BRepFilletAPI_LocalOperation (mutable)"]
-    pub fn as_local_operation_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut LocalOperation> {
-        ffi::make_fillet_as_local_operation_mut(self)
-    }
-
     #[doc = "Upcast to BRepBuilderAPI_Command"]
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         ffi::make_fillet_as_b_rep_builder_api_command(self)
@@ -942,6 +930,18 @@ impl MakeFillet {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         ffi::make_fillet_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BRepFilletAPI_LocalOperation"]
+    pub fn as_local_operation(&self) -> &LocalOperation {
+        ffi::make_fillet_as_local_operation(self)
+    }
+
+    #[doc = "Upcast to BRepFilletAPI_LocalOperation (mutable)"]
+    pub fn as_local_operation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut LocalOperation> {
+        ffi::make_fillet_as_local_operation_mut(self)
     }
 
     pub fn get_law(
@@ -998,18 +998,6 @@ impl MakeFillet2d {
         ffi::MakeFillet2d_ctor_face(F)
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::make_fillet2d_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::make_fillet2d_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
     #[doc = "Upcast to BRepBuilderAPI_Command"]
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         ffi::make_fillet2d_as_b_rep_builder_api_command(self)
@@ -1020,6 +1008,18 @@ impl MakeFillet2d {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
         ffi::make_fillet2d_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::make_fillet2d_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::make_fillet2d_as_b_rep_builder_api_make_shape_mut(self)
     }
 
     #[doc = "Adds a fillet of radius Radius between the two edges adjacent to the vertex V on the face modified by this algorithm. The two edges do not need to be rectilinear. This function returns the fillet and builds the resulting face. Warning The status of the construction, as given by the Status function, can be one of the following: - ChFi2d_IsDone if the fillet is built, - ChFi2d_ConnexionError if V does not belong to the initial face, -   ChFi2d_ComputationError if Radius is too large to build a fillet between the two adjacent edges, -   ChFi2d_NotAuthorized -   if one of the two edges connected to V is a fillet or chamfer, or -   if a curve other than a straight line or an arc of a circle is used as E, E1 or E2. Do not use the returned fillet if the status of the construction is not ChFi2d_IsDone. Exceptions Standard_NegativeValue if Radius is less than or equal to zero."]

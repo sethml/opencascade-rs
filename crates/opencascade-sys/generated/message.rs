@@ -30,141 +30,111 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_message.hxx");
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "AsciiString from t_collection module"]
-        type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
-        #[doc = "HAsciiString from t_collection module"]
-        type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
-        #[doc = "HExtendedString from t_collection module"]
-        type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
-        #[doc = "ExtendedString from t_collection module"]
-        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
-        #[doc = "MemInfo from osd module"]
-        type OSD_MemInfo = crate::osd::ffi::MemInfo;
         #[doc = "BaseAllocator from n_collection module"]
         type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
+        #[doc = "BaseList from n_collection module"]
+        type NCollection_BaseList = crate::n_collection::ffi::BaseList;
         #[doc = "BasePointerVector from n_collection module"]
         type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
         #[doc = "IncAllocator from n_collection module"]
         type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
-        #[doc = "BaseList from n_collection module"]
-        type NCollection_BaseList = crate::n_collection::ffi::BaseList;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "MemInfo from osd module"]
+        type OSD_MemInfo = crate::osd::ffi::MemInfo;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
         #[doc = "HArray1OfInteger from t_col_std module"]
         type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
         #[doc = "HArray1OfReal from t_col_std module"]
         type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
         #[doc = "HSequenceOfReal from t_col_std module"]
         type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "AsciiString from t_collection module"]
+        type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
+        #[doc = "ExtendedString from t_collection module"]
+        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
+        #[doc = "HAsciiString from t_collection module"]
+        type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
+        #[doc = "HExtendedString from t_collection module"]
+        type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Message_Attribute"]
+        type Message_Attribute;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Message_CompositeAlerts"]
         type Message_CompositeAlerts;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Standard_SStream"]
-        type Standard_SStream;
+        #[cxx_name = "Message_ListOfAlert"]
+        type Message_ListOfAlert;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Message_SequenceOfPrinters"]
         type Message_SequenceOfPrinters;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_SequenceOfHExtendedString"]
-        type TColStd_SequenceOfHExtendedString;
+        #[cxx_name = "Standard_SStream"]
+        type Standard_SStream;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_HPackedMapOfInteger"]
         type TColStd_HPackedMapOfInteger;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Message_ListOfAlert"]
-        type Message_ListOfAlert;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Message_Attribute"]
-        type Message_Attribute;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardTransient"]
-        type HandleStandardTransient;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTCollectionHAsciiString"]
-        type HandleTCollectionHAsciiString;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageAlertExtended"]
-        type HandleMessageAlertExtended;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHPackedMapOfInteger"]
-        type HandleTColStdHPackedMapOfInteger;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
+        #[cxx_name = "TColStd_SequenceOfHExtendedString"]
+        type TColStd_SequenceOfHExtendedString;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleMessageAlert"]
         type HandleMessageAlert;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessagePrinter"]
-        type HandleMessagePrinter;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageCompositeAlerts"]
-        type HandleMessageCompositeAlerts;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageMessenger"]
-        type HandleMessageMessenger;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTCollectionHExtendedString"]
-        type HandleTCollectionHExtendedString;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageReport"]
-        type HandleMessageReport;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHSequenceOfHExtendedString"]
-        type HandleTColStdHSequenceOfHExtendedString;
+        #[cxx_name = "HandleMessageAlertExtended"]
+        type HandleMessageAlertExtended;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleMessageAlgorithm"]
         type HandleMessageAlgorithm;
@@ -172,8 +142,38 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleMessageAttribute"]
         type HandleMessageAttribute;
         #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageCompositeAlerts"]
+        type HandleMessageCompositeAlerts;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageMessenger"]
+        type HandleMessageMessenger;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessagePrinter"]
+        type HandleMessagePrinter;
+        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleMessageProgressIndicator"]
         type HandleMessageProgressIndicator;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageReport"]
+        type HandleMessageReport;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardTransient"]
+        type HandleStandardTransient;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColStdHPackedMapOfInteger"]
+        type HandleTColStdHPackedMapOfInteger;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColStdHSequenceOfHExtendedString"]
+        type HandleTColStdHSequenceOfHExtendedString;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTCollectionHAsciiString"]
+        type HandleTCollectionHAsciiString;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTCollectionHExtendedString"]
+        type HandleTCollectionHExtendedString;
         #[doc = " ======================== Message_ProgressRange ========================"]
         #[doc = "/// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange`"]
         #[doc = ""]

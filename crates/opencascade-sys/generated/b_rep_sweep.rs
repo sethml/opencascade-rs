@@ -21,20 +21,44 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_sweep.hxx");
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = "Builder from b_rep module"]
+        type BRep_Builder = crate::b_rep::ffi::Builder;
+        #[doc = "Tool from b_rep module"]
+        type BRep_Tool = crate::b_rep::ffi::Tool;
+        #[doc = "NumShape from sweep module"]
+        type Sweep_NumShape = crate::sweep::ffi::NumShape;
+        #[doc = "NumShapeTool from sweep module"]
+        type Sweep_NumShapeTool = crate::sweep::ffi::NumShapeTool;
+        #[doc = "TopAbs from top_abs module"]
+        type TopAbs = crate::top_abs::ffi::TopAbs;
+        #[doc = "Location from top_loc module"]
+        type TopLoc_Location = crate::top_loc::ffi::Location;
+        #[doc = "SListOfItemLocation from top_loc module"]
+        type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
         #[doc = "Ax1 from gp module"]
         type gp_Ax1 = crate::gp::ffi::Ax1;
         #[doc = "Ax2 from gp module"]
@@ -43,58 +67,34 @@ pub(crate) mod ffi {
         type gp_Ax2d = crate::gp::ffi::Ax2d;
         #[doc = "Ax3 from gp module"]
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
         #[doc = "GTrsf from gp module"]
         type gp_GTrsf = crate::gp::ffi::GTrsf;
         #[doc = "GTrsf2d from gp module"]
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
         #[doc = "Lin from gp module"]
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "TopAbs from top_abs module"]
-        type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "Builder from b_rep module"]
-        type BRep_Builder = crate::b_rep::ffi::Builder;
-        #[doc = "Tool from b_rep module"]
-        type BRep_Tool = crate::b_rep::ffi::Tool;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Location from top_loc module"]
-        type TopLoc_Location = crate::top_loc::ffi::Location;
-        #[doc = "SListOfItemLocation from top_loc module"]
-        type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
-        #[doc = "NumShapeTool from sweep module"]
-        type Sweep_NumShapeTool = crate::sweep::ffi::NumShapeTool;
-        #[doc = "NumShape from sweep module"]
-        type Sweep_NumShape = crate::sweep::ffi::NumShape;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
         #[doc = " ======================== BRepSweep_Revol ========================"]
         #[doc = "/// **Source:** `BRepSweep_Revol.hxx` - `BRepSweep_Revol`"]
         #[doc = ""]
@@ -276,12 +276,6 @@ pub(crate) mod ffi {
         #[doc = "returns the axis"]
         #[cxx_name = "BRepSweep_Rotation_Axe"]
         fn Rotation_axe(self_: &Rotation) -> UniquePtr<gp_Ax1>;
-        #[doc = "Upcast BRepSweep_Rotation to BRepSweep_Trsf"]
-        #[cxx_name = "BRepSweep_Rotation_as_BRepSweep_Trsf"]
-        fn rotation_as_trsf(self_: &Rotation) -> &Trsf;
-        #[doc = "Upcast BRepSweep_Rotation to BRepSweep_Trsf (mutable)"]
-        #[cxx_name = "BRepSweep_Rotation_as_BRepSweep_Trsf_mut"]
-        fn rotation_as_trsf_mut(self_: Pin<&mut Rotation>) -> Pin<&mut Trsf>;
         #[doc = "Upcast BRepSweep_Rotation to BRepSweep_NumLinearRegularSweep"]
         #[cxx_name = "BRepSweep_Rotation_as_BRepSweep_NumLinearRegularSweep"]
         fn rotation_as_num_linear_regular_sweep(self_: &Rotation) -> &NumLinearRegularSweep;
@@ -290,6 +284,12 @@ pub(crate) mod ffi {
         fn rotation_as_num_linear_regular_sweep_mut(
             self_: Pin<&mut Rotation>,
         ) -> Pin<&mut NumLinearRegularSweep>;
+        #[doc = "Upcast BRepSweep_Rotation to BRepSweep_Trsf"]
+        #[cxx_name = "BRepSweep_Rotation_as_BRepSweep_Trsf"]
+        fn rotation_as_trsf(self_: &Rotation) -> &Trsf;
+        #[doc = "Upcast BRepSweep_Rotation to BRepSweep_Trsf (mutable)"]
+        #[cxx_name = "BRepSweep_Rotation_as_BRepSweep_Trsf_mut"]
+        fn rotation_as_trsf_mut(self_: Pin<&mut Rotation>) -> Pin<&mut Trsf>;
         #[doc = " ======================== BRepSweep_Trsf ========================"]
         #[doc = "/// **Source:** `BRepSweep_Trsf.hxx` - `BRepSweep_Trsf`"]
         #[doc = ""]
@@ -801,12 +801,6 @@ pub(crate) mod ffi {
         #[doc = "Returns the Vector of the Prism,  if it is an infinite prism the Vec is unitar."]
         #[cxx_name = "BRepSweep_Translation_Vec"]
         fn Translation_vec(self_: &Translation) -> UniquePtr<gp_Vec>;
-        #[doc = "Upcast BRepSweep_Translation to BRepSweep_Trsf"]
-        #[cxx_name = "BRepSweep_Translation_as_BRepSweep_Trsf"]
-        fn translation_as_trsf(self_: &Translation) -> &Trsf;
-        #[doc = "Upcast BRepSweep_Translation to BRepSweep_Trsf (mutable)"]
-        #[cxx_name = "BRepSweep_Translation_as_BRepSweep_Trsf_mut"]
-        fn translation_as_trsf_mut(self_: Pin<&mut Translation>) -> Pin<&mut Trsf>;
         #[doc = "Upcast BRepSweep_Translation to BRepSweep_NumLinearRegularSweep"]
         #[cxx_name = "BRepSweep_Translation_as_BRepSweep_NumLinearRegularSweep"]
         fn translation_as_num_linear_regular_sweep(self_: &Translation) -> &NumLinearRegularSweep;
@@ -815,6 +809,12 @@ pub(crate) mod ffi {
         fn translation_as_num_linear_regular_sweep_mut(
             self_: Pin<&mut Translation>,
         ) -> Pin<&mut NumLinearRegularSweep>;
+        #[doc = "Upcast BRepSweep_Translation to BRepSweep_Trsf"]
+        #[cxx_name = "BRepSweep_Translation_as_BRepSweep_Trsf"]
+        fn translation_as_trsf(self_: &Translation) -> &Trsf;
+        #[doc = "Upcast BRepSweep_Translation to BRepSweep_Trsf (mutable)"]
+        #[cxx_name = "BRepSweep_Translation_as_BRepSweep_Trsf_mut"]
+        fn translation_as_trsf_mut(self_: Pin<&mut Translation>) -> Pin<&mut Trsf>;
     }
     impl UniquePtr<Revol> {}
     impl UniquePtr<Rotation> {}
@@ -904,16 +904,6 @@ impl Rotation {
         ffi::Rotation_ctor_shape_numshape_location_ax1_real_bool(S, N, L, A, D, C)
     }
 
-    #[doc = "Upcast to BRepSweep_Trsf"]
-    pub fn as_trsf(&self) -> &Trsf {
-        ffi::rotation_as_trsf(self)
-    }
-
-    #[doc = "Upcast to BRepSweep_Trsf (mutable)"]
-    pub fn as_trsf_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Trsf> {
-        ffi::rotation_as_trsf_mut(self)
-    }
-
     #[doc = "Upcast to BRepSweep_NumLinearRegularSweep"]
     pub fn as_num_linear_regular_sweep(&self) -> &NumLinearRegularSweep {
         ffi::rotation_as_num_linear_regular_sweep(self)
@@ -924,6 +914,16 @@ impl Rotation {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut NumLinearRegularSweep> {
         ffi::rotation_as_num_linear_regular_sweep_mut(self)
+    }
+
+    #[doc = "Upcast to BRepSweep_Trsf"]
+    pub fn as_trsf(&self) -> &Trsf {
+        ffi::rotation_as_trsf(self)
+    }
+
+    #[doc = "Upcast to BRepSweep_Trsf (mutable)"]
+    pub fn as_trsf_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Trsf> {
+        ffi::rotation_as_trsf_mut(self)
     }
 
     #[doc = "Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but without subcomponents."]

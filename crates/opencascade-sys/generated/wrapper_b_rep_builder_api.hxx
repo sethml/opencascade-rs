@@ -210,10 +210,10 @@ inline std::unique_ptr<BRepBuilderAPI_MakeEdge> BRepBuilderAPI_MakeEdge_ctor_han
     return std::make_unique<BRepBuilderAPI_MakeEdge>(L, S, V1, V2, p1, p2);
 }
 
-inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_MakeEdge& self) { return self; }
-inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_MakeEdge& self) { return self; }
 inline const BRepBuilderAPI_Command& BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_Command(const BRepBuilderAPI_MakeEdge& self) { return self; }
 inline BRepBuilderAPI_Command& BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_MakeEdge& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_MakeEdge& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_MakeEdge& self) { return self; }
 
 // ========================
 // BRepBuilderAPI_MakeFace wrappers
@@ -307,10 +307,10 @@ inline std::unique_ptr<BRepBuilderAPI_MakeFace> BRepBuilderAPI_MakeFace_ctor_fac
     return std::make_unique<BRepBuilderAPI_MakeFace>(F, W);
 }
 
-inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_MakeFace& self) { return self; }
-inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_MakeFace& self) { return self; }
 inline const BRepBuilderAPI_Command& BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_Command(const BRepBuilderAPI_MakeFace& self) { return self; }
 inline BRepBuilderAPI_Command& BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_MakeFace& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_MakeFace& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_MakeFace& self) { return self; }
 
 // ========================
 // BRepBuilderAPI_MakeSolid wrappers
@@ -394,10 +394,10 @@ inline std::unique_ptr<BRepBuilderAPI_MakeWire> BRepBuilderAPI_MakeWire_ctor_wir
     return std::make_unique<BRepBuilderAPI_MakeWire>(W, E);
 }
 
-inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_MakeWire& self) { return self; }
-inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_MakeWire& self) { return self; }
 inline const BRepBuilderAPI_Command& BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_Command(const BRepBuilderAPI_MakeWire& self) { return self; }
 inline BRepBuilderAPI_Command& BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_MakeWire& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_MakeWire& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_MakeWire& self) { return self; }
 
 // ========================
 // BRepBuilderAPI_Sewing wrappers
@@ -439,12 +439,12 @@ inline std::unique_ptr<TopoDS_Shape> BRepBuilderAPI_Transform_ModifiedShape(cons
     return std::make_unique<TopoDS_Shape>(self.ModifiedShape(S));
 }
 
-inline const BRepBuilderAPI_ModifyShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape(const BRepBuilderAPI_Transform& self) { return self; }
-inline BRepBuilderAPI_ModifyShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape_mut(BRepBuilderAPI_Transform& self) { return self; }
-inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_Transform& self) { return self; }
-inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_Transform& self) { return self; }
 inline const BRepBuilderAPI_Command& BRepBuilderAPI_Transform_as_BRepBuilderAPI_Command(const BRepBuilderAPI_Transform& self) { return self; }
 inline BRepBuilderAPI_Command& BRepBuilderAPI_Transform_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_Transform& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_Transform& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_Transform& self) { return self; }
+inline const BRepBuilderAPI_ModifyShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape(const BRepBuilderAPI_Transform& self) { return self; }
+inline BRepBuilderAPI_ModifyShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape_mut(BRepBuilderAPI_Transform& self) { return self; }
 
 // ========================
 // BRepBuilderAPI_ModifyShape wrappers

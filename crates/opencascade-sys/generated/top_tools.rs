@@ -16,72 +16,72 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_top_tools.hxx");
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
         #[doc = "ConstructionError from standard module"]
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
         #[doc = "Edge from topo_ds module"]
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
         #[doc = "Face from topo_ds module"]
         type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
         #[doc = "Shell from topo_ds module"]
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
         #[doc = "Solid from topo_ds module"]
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
         #[doc = "TShape from topo_ds module"]
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_Array2OfShape"]
         type TopTools_Array2OfShape;
@@ -89,14 +89,14 @@ pub(crate) mod ffi {
         #[cxx_name = "TopTools_SequenceOfShape"]
         type TopTools_SequenceOfShape;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTopToolsHSequenceOfShape"]
-        type HandleTopToolsHSequenceOfShape;
-        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTopToolsHArray2OfShape"]
         type HandleTopToolsHArray2OfShape;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTopToolsHSequenceOfShape"]
+        type HandleTopToolsHSequenceOfShape;
         #[doc = " ======================== TopTools_HSequenceOfShape ========================"]
         #[doc = "/// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape`"]
         #[cxx_name = "TopTools_HSequenceOfShape"]
@@ -174,36 +174,6 @@ pub(crate) mod ffi {
         // ========================
 
         // ========================
-        // TopTools_IndexedMapOfShape - Set with integer index access (1-indexed)
-        // ========================
-
-        #[cxx_name = "TopTools_IndexedMapOfShape"]
-        type IndexedMapOfShape;
-
-        #[cxx_name = "TopTools_IndexedMapOfShape_new"]
-        fn IndexedMapOfShape_new() -> UniquePtr<IndexedMapOfShape>;
-
-        type IndexedMapOfShapeIterator;
-
-        #[cxx_name = "TopTools_IndexedMapOfShape_iter"]
-        fn IndexedMapOfShape_iterator(
-            coll: &IndexedMapOfShape,
-        ) -> UniquePtr<IndexedMapOfShapeIterator>;
-
-        #[cxx_name = "IndexedMapOfShapeIterator_next"]
-        fn IndexedMapOfShapeIterator_next(
-            iter: Pin<&mut IndexedMapOfShapeIterator>,
-        ) -> UniquePtr<TopoDS_Shape>;
-
-        /// Adds item to the map, returns its index (existing or new)
-        #[cxx_name = "TopTools_IndexedMapOfShape_add"]
-        fn IndexedMapOfShape_add(coll: Pin<&mut IndexedMapOfShape>, item: &TopoDS_Shape) -> i32;
-
-        /// Returns 0 if item is not in the map
-        #[cxx_name = "TopTools_IndexedMapOfShape_find_index"]
-        fn IndexedMapOfShape_find_index(coll: &IndexedMapOfShape, item: &TopoDS_Shape) -> i32;
-
-        // ========================
         // TopTools_DataMapOfShapeShape - Key-value map
         // ========================
 
@@ -245,6 +215,100 @@ pub(crate) mod ffi {
 
         #[cxx_name = "TopTools_DataMapOfShapeShape_size"]
         fn DataMapOfShapeShape_size(coll: &DataMapOfShapeShape) -> i32;
+
+        // ========================
+        // TopTools_IndexedDataMapOfShapeListOfShape - Key-value map with index access (1-indexed)
+        // ========================
+
+        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape"]
+        type IndexedDataMapOfShapeListOfShape;
+
+        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_new"]
+        fn IndexedDataMapOfShapeListOfShape_new() -> UniquePtr<IndexedDataMapOfShapeListOfShape>;
+
+        type IndexedDataMapOfShapeListOfShapeIterator;
+
+        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_iter"]
+        fn IndexedDataMapOfShapeListOfShape_iterator(
+            coll: &IndexedDataMapOfShapeListOfShape,
+        ) -> UniquePtr<IndexedDataMapOfShapeListOfShapeIterator>;
+
+        #[cxx_name = "IndexedDataMapOfShapeListOfShapeIterator_next_key"]
+        fn IndexedDataMapOfShapeListOfShapeIterator_next_key(
+            iter: Pin<&mut IndexedDataMapOfShapeListOfShapeIterator>,
+        ) -> UniquePtr<TopoDS_Shape>;
+
+        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_find_from_key"]
+        fn IndexedDataMapOfShapeListOfShape_find_from_key<'a>(
+            coll: &'a IndexedDataMapOfShapeListOfShape,
+            key: &TopoDS_Shape,
+        ) -> &'a ListOfShape;
+
+        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_find_from_index"]
+        fn IndexedDataMapOfShapeListOfShape_find_from_index<'a>(
+            coll: &'a IndexedDataMapOfShapeListOfShape,
+            index: i32,
+        ) -> &'a ListOfShape;
+
+        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_find_key"]
+        fn IndexedDataMapOfShapeListOfShape_find_key(
+            coll: &IndexedDataMapOfShapeListOfShape,
+            index: i32,
+        ) -> UniquePtr<TopoDS_Shape>;
+
+        /// Returns 0 if key is not found
+        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_find_index"]
+        fn IndexedDataMapOfShapeListOfShape_find_index(
+            coll: &IndexedDataMapOfShapeListOfShape,
+            key: &TopoDS_Shape,
+        ) -> i32;
+
+        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_contains"]
+        fn IndexedDataMapOfShapeListOfShape_contains(
+            coll: &IndexedDataMapOfShapeListOfShape,
+            key: &TopoDS_Shape,
+        ) -> bool;
+
+        /// Adds key-value pair, returns index
+        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_add"]
+        fn IndexedDataMapOfShapeListOfShape_add(
+            coll: Pin<&mut IndexedDataMapOfShapeListOfShape>,
+            key: &TopoDS_Shape,
+            value: &ListOfShape,
+        ) -> i32;
+
+        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_size"]
+        fn IndexedDataMapOfShapeListOfShape_size(coll: &IndexedDataMapOfShapeListOfShape) -> i32;
+
+        // ========================
+        // TopTools_IndexedMapOfShape - Set with integer index access (1-indexed)
+        // ========================
+
+        #[cxx_name = "TopTools_IndexedMapOfShape"]
+        type IndexedMapOfShape;
+
+        #[cxx_name = "TopTools_IndexedMapOfShape_new"]
+        fn IndexedMapOfShape_new() -> UniquePtr<IndexedMapOfShape>;
+
+        type IndexedMapOfShapeIterator;
+
+        #[cxx_name = "TopTools_IndexedMapOfShape_iter"]
+        fn IndexedMapOfShape_iterator(
+            coll: &IndexedMapOfShape,
+        ) -> UniquePtr<IndexedMapOfShapeIterator>;
+
+        #[cxx_name = "IndexedMapOfShapeIterator_next"]
+        fn IndexedMapOfShapeIterator_next(
+            iter: Pin<&mut IndexedMapOfShapeIterator>,
+        ) -> UniquePtr<TopoDS_Shape>;
+
+        /// Adds item to the map, returns its index (existing or new)
+        #[cxx_name = "TopTools_IndexedMapOfShape_add"]
+        fn IndexedMapOfShape_add(coll: Pin<&mut IndexedMapOfShape>, item: &TopoDS_Shape) -> i32;
+
+        /// Returns 0 if item is not in the map
+        #[cxx_name = "TopTools_IndexedMapOfShape_find_index"]
+        fn IndexedMapOfShape_find_index(coll: &IndexedMapOfShape, item: &TopoDS_Shape) -> i32;
 
         // ========================
         // TopTools_ListOfShape - Doubly-linked list
@@ -316,70 +380,6 @@ pub(crate) mod ffi {
         #[cxx_name = "TopTools_SequenceOfShape_append"]
         fn SequenceOfShape_append(coll: Pin<&mut SequenceOfShape>, item: &TopoDS_Shape);
 
-        // ========================
-        // TopTools_IndexedDataMapOfShapeListOfShape - Key-value map with index access (1-indexed)
-        // ========================
-
-        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape"]
-        type IndexedDataMapOfShapeListOfShape;
-
-        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_new"]
-        fn IndexedDataMapOfShapeListOfShape_new() -> UniquePtr<IndexedDataMapOfShapeListOfShape>;
-
-        type IndexedDataMapOfShapeListOfShapeIterator;
-
-        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_iter"]
-        fn IndexedDataMapOfShapeListOfShape_iterator(
-            coll: &IndexedDataMapOfShapeListOfShape,
-        ) -> UniquePtr<IndexedDataMapOfShapeListOfShapeIterator>;
-
-        #[cxx_name = "IndexedDataMapOfShapeListOfShapeIterator_next_key"]
-        fn IndexedDataMapOfShapeListOfShapeIterator_next_key(
-            iter: Pin<&mut IndexedDataMapOfShapeListOfShapeIterator>,
-        ) -> UniquePtr<TopoDS_Shape>;
-
-        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_find_from_key"]
-        fn IndexedDataMapOfShapeListOfShape_find_from_key<'a>(
-            coll: &'a IndexedDataMapOfShapeListOfShape,
-            key: &TopoDS_Shape,
-        ) -> &'a ListOfShape;
-
-        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_find_from_index"]
-        fn IndexedDataMapOfShapeListOfShape_find_from_index<'a>(
-            coll: &'a IndexedDataMapOfShapeListOfShape,
-            index: i32,
-        ) -> &'a ListOfShape;
-
-        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_find_key"]
-        fn IndexedDataMapOfShapeListOfShape_find_key(
-            coll: &IndexedDataMapOfShapeListOfShape,
-            index: i32,
-        ) -> UniquePtr<TopoDS_Shape>;
-
-        /// Returns 0 if key is not found
-        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_find_index"]
-        fn IndexedDataMapOfShapeListOfShape_find_index(
-            coll: &IndexedDataMapOfShapeListOfShape,
-            key: &TopoDS_Shape,
-        ) -> i32;
-
-        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_contains"]
-        fn IndexedDataMapOfShapeListOfShape_contains(
-            coll: &IndexedDataMapOfShapeListOfShape,
-            key: &TopoDS_Shape,
-        ) -> bool;
-
-        /// Adds key-value pair, returns index
-        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_add"]
-        fn IndexedDataMapOfShapeListOfShape_add(
-            coll: Pin<&mut IndexedDataMapOfShapeListOfShape>,
-            key: &TopoDS_Shape,
-            value: &ListOfShape,
-        ) -> i32;
-
-        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_size"]
-        fn IndexedDataMapOfShapeListOfShape_size(coll: &IndexedDataMapOfShapeListOfShape) -> i32;
-
     }
     impl UniquePtr<HSequenceOfShape> {}
     impl UniquePtr<HArray2OfShape> {}
@@ -450,51 +450,6 @@ pub use ffi::{
 use crate::topo_ds::Shape;
 
 // ========================
-// IndexedMapOfShape iterator
-// ========================
-
-pub struct IndexedMapOfShapeIter {
-    inner: cxx::UniquePtr<ffi::IndexedMapOfShapeIterator>,
-}
-
-impl Iterator for IndexedMapOfShapeIter {
-    type Item = cxx::UniquePtr<Shape>;
-
-    fn next(&mut self) -> Option<Self::Item> {
-        let item = ffi::IndexedMapOfShapeIterator_next(self.inner.pin_mut());
-        if item.is_null() {
-            None
-        } else {
-            Some(item)
-        }
-    }
-}
-
-impl IndexedMapOfShape {
-    pub fn iter(&self) -> IndexedMapOfShapeIter {
-        IndexedMapOfShapeIter { inner: ffi::IndexedMapOfShape_iterator(self) }
-    }
-
-    pub fn from_iter<'a>(items: impl IntoIterator<Item = &'a Shape>) -> cxx::UniquePtr<Self> {
-        let mut coll = ffi::IndexedMapOfShape_new();
-        for item in items {
-            ffi::IndexedMapOfShape_add(coll.pin_mut(), item);
-        }
-        coll
-    }
-
-    /// Returns Some(index) if found, None if not in map
-    pub fn find_index(&self, item: &Shape) -> Option<i32> {
-        let idx = ffi::IndexedMapOfShape_find_index(self, item);
-        if idx == 0 {
-            None
-        } else {
-            Some(idx)
-        }
-    }
-}
-
-// ========================
 // DataMapOfShapeShape key iterator
 // ========================
 
@@ -541,6 +496,118 @@ impl DataMapOfShapeShape {
 
     pub fn is_empty(&self) -> bool {
         self.len() == 0
+    }
+}
+
+// ========================
+// IndexedDataMapOfShapeListOfShape key iterator
+// ========================
+
+pub struct IndexedDataMapOfShapeListOfShapeKeyIter {
+    inner: cxx::UniquePtr<ffi::IndexedDataMapOfShapeListOfShapeIterator>,
+}
+
+impl Iterator for IndexedDataMapOfShapeListOfShapeKeyIter {
+    type Item = cxx::UniquePtr<Shape>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let item = ffi::IndexedDataMapOfShapeListOfShapeIterator_next_key(self.inner.pin_mut());
+        if item.is_null() {
+            None
+        } else {
+            Some(item)
+        }
+    }
+}
+
+impl IndexedDataMapOfShapeListOfShape {
+    /// Iterate over keys
+    pub fn keys(&self) -> IndexedDataMapOfShapeListOfShapeKeyIter {
+        IndexedDataMapOfShapeListOfShapeKeyIter {
+            inner: ffi::IndexedDataMapOfShapeListOfShape_iterator(self),
+        }
+    }
+
+    /// Find value by key (panics if key not found)
+    pub fn find_from_key(&self, key: &Shape) -> &ListOfShape {
+        ffi::IndexedDataMapOfShapeListOfShape_find_from_key(self, key)
+    }
+
+    /// Find value by index (1-indexed, panics if out of range)
+    pub fn find_from_index(&self, index: i32) -> &ListOfShape {
+        ffi::IndexedDataMapOfShapeListOfShape_find_from_index(self, index)
+    }
+
+    /// Get key by index (1-indexed)
+    pub fn find_key(&self, index: i32) -> cxx::UniquePtr<Shape> {
+        ffi::IndexedDataMapOfShapeListOfShape_find_key(self, index)
+    }
+
+    /// Get index for key, returns None if not found
+    pub fn find_index(&self, key: &Shape) -> Option<i32> {
+        let idx = ffi::IndexedDataMapOfShapeListOfShape_find_index(self, key);
+        if idx == 0 {
+            None
+        } else {
+            Some(idx)
+        }
+    }
+
+    pub fn contains(&self, key: &Shape) -> bool {
+        ffi::IndexedDataMapOfShapeListOfShape_contains(self, key)
+    }
+
+    pub fn len(&self) -> i32 {
+        ffi::IndexedDataMapOfShapeListOfShape_size(self)
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
+}
+
+// ========================
+// IndexedMapOfShape iterator
+// ========================
+
+pub struct IndexedMapOfShapeIter {
+    inner: cxx::UniquePtr<ffi::IndexedMapOfShapeIterator>,
+}
+
+impl Iterator for IndexedMapOfShapeIter {
+    type Item = cxx::UniquePtr<Shape>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let item = ffi::IndexedMapOfShapeIterator_next(self.inner.pin_mut());
+        if item.is_null() {
+            None
+        } else {
+            Some(item)
+        }
+    }
+}
+
+impl IndexedMapOfShape {
+    pub fn iter(&self) -> IndexedMapOfShapeIter {
+        IndexedMapOfShapeIter { inner: ffi::IndexedMapOfShape_iterator(self) }
+    }
+
+    pub fn from_iter<'a>(items: impl IntoIterator<Item = &'a Shape>) -> cxx::UniquePtr<Self> {
+        let mut coll = ffi::IndexedMapOfShape_new();
+        for item in items {
+            ffi::IndexedMapOfShape_add(coll.pin_mut(), item);
+        }
+        coll
+    }
+
+    /// Returns Some(index) if found, None if not in map
+    pub fn find_index(&self, item: &Shape) -> Option<i32> {
+        let idx = ffi::IndexedMapOfShape_find_index(self, item);
+        if idx == 0 {
+            None
+        } else {
+            Some(idx)
+        }
     }
 }
 
@@ -650,72 +717,5 @@ impl SequenceOfShape {
             ffi::SequenceOfShape_append(coll.pin_mut(), item);
         }
         coll
-    }
-}
-
-// ========================
-// IndexedDataMapOfShapeListOfShape key iterator
-// ========================
-
-pub struct IndexedDataMapOfShapeListOfShapeKeyIter {
-    inner: cxx::UniquePtr<ffi::IndexedDataMapOfShapeListOfShapeIterator>,
-}
-
-impl Iterator for IndexedDataMapOfShapeListOfShapeKeyIter {
-    type Item = cxx::UniquePtr<Shape>;
-
-    fn next(&mut self) -> Option<Self::Item> {
-        let item = ffi::IndexedDataMapOfShapeListOfShapeIterator_next_key(self.inner.pin_mut());
-        if item.is_null() {
-            None
-        } else {
-            Some(item)
-        }
-    }
-}
-
-impl IndexedDataMapOfShapeListOfShape {
-    /// Iterate over keys
-    pub fn keys(&self) -> IndexedDataMapOfShapeListOfShapeKeyIter {
-        IndexedDataMapOfShapeListOfShapeKeyIter {
-            inner: ffi::IndexedDataMapOfShapeListOfShape_iterator(self),
-        }
-    }
-
-    /// Find value by key (panics if key not found)
-    pub fn find_from_key(&self, key: &Shape) -> &ListOfShape {
-        ffi::IndexedDataMapOfShapeListOfShape_find_from_key(self, key)
-    }
-
-    /// Find value by index (1-indexed, panics if out of range)
-    pub fn find_from_index(&self, index: i32) -> &ListOfShape {
-        ffi::IndexedDataMapOfShapeListOfShape_find_from_index(self, index)
-    }
-
-    /// Get key by index (1-indexed)
-    pub fn find_key(&self, index: i32) -> cxx::UniquePtr<Shape> {
-        ffi::IndexedDataMapOfShapeListOfShape_find_key(self, index)
-    }
-
-    /// Get index for key, returns None if not found
-    pub fn find_index(&self, key: &Shape) -> Option<i32> {
-        let idx = ffi::IndexedDataMapOfShapeListOfShape_find_index(self, key);
-        if idx == 0 {
-            None
-        } else {
-            Some(idx)
-        }
-    }
-
-    pub fn contains(&self, key: &Shape) -> bool {
-        ffi::IndexedDataMapOfShapeListOfShape_contains(self, key)
-    }
-
-    pub fn len(&self) -> i32 {
-        ffi::IndexedDataMapOfShapeListOfShape_size(self)
-    }
-
-    pub fn is_empty(&self) -> bool {
-        self.len() == 0
     }
 }

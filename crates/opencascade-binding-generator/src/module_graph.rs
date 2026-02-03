@@ -5,13 +5,13 @@
 
 use crate::model::{ParsedClass, ParsedHeader, Type};
 use heck::ToSnakeCase;
-use std::collections::{HashMap, HashSet};
+use std::collections::{BTreeMap, BTreeSet, HashSet};
 
 /// A graph of module dependencies
 #[derive(Debug, Default)]
 pub struct ModuleGraph {
     /// All modules, keyed by module name
-    pub modules: HashMap<String, Module>,
+    pub modules: BTreeMap<String, Module>,
 }
 
 /// A single module containing types and their dependencies
@@ -24,9 +24,9 @@ pub struct Module {
     /// Types defined in this module
     pub types: Vec<String>,
     /// Enum types defined in this module (subset of types)
-    pub enum_types: HashSet<String>,
+    pub enum_types: BTreeSet<String>,
     /// Other modules this module depends on (references types from)
-    pub dependencies: HashSet<String>,
+    pub dependencies: BTreeSet<String>,
 }
 
 impl Module {
@@ -36,8 +36,8 @@ impl Module {
             name: name.to_string(),
             rust_name: module_to_rust_name(name),
             types: Vec::new(),
-            enum_types: HashSet::new(),
-            dependencies: HashSet::new(),
+            enum_types: BTreeSet::new(),
+            dependencies: BTreeSet::new(),
         }
     }
 
@@ -183,6 +183,8 @@ impl ModuleGraph {
             }
         }
 
+        // Sort for deterministic ordering
+        result.sort_by(|a, b| a.cpp_name.cmp(&b.cpp_name));
         result
     }
 }

@@ -16,12 +16,12 @@ pub(crate) mod ffi {
         include!("wrapper_osd.hxx");
         #[doc = "AsciiString from t_collection module"]
         type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
+        #[doc = "ExtendedString from t_collection module"]
+        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
         #[doc = "HAsciiString from t_collection module"]
         type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
         #[doc = "HExtendedString from t_collection module"]
         type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
-        #[doc = "ExtendedString from t_collection module"]
-        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
         #[doc = " ======================== OSD_MemInfo ========================"]
         #[doc = "/// **Source:** `OSD_MemInfo.hxx` - `OSD_MemInfo`"]
         #[doc = ""]

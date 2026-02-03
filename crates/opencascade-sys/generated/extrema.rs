@@ -29,24 +29,10 @@ pub(crate) mod ffi {
         include!("wrapper_extrema.hxx");
         #[doc = "Curve from adaptor3d module"]
         type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
-        #[doc = "Surface from adaptor3d module"]
-        type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
         #[doc = "CurveOnSurface from adaptor3d module"]
         type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = "Surface from adaptor3d module"]
+        type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
         #[doc = "Ax1 from gp module"]
         type gp_Ax1 = crate::gp::ffi::Ax1;
         #[doc = "Ax2 from gp module"]
@@ -55,35 +41,40 @@ pub(crate) mod ffi {
         type gp_Ax2d = crate::gp::ffi::Ax2d;
         #[doc = "Ax3 from gp module"]
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
         #[doc = "GTrsf from gp module"]
         type gp_GTrsf = crate::gp::ffi::GTrsf;
         #[doc = "GTrsf2d from gp module"]
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
         #[doc = "Lin from gp module"]
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "math_Matrix"]
-        type math_Matrix;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "math_Vector"]
-        type math_Vector;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Torus"]
-        type gp_Torus;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Cone"]
         type gp_Cone;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Sphere"]
-        type gp_Sphere;
+        #[cxx_name = "gp_Cylinder"]
+        type gp_Cylinder;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Elips"]
         type gp_Elips;
@@ -91,11 +82,20 @@ pub(crate) mod ffi {
         #[cxx_name = "gp_Hypr"]
         type gp_Hypr;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Cylinder"]
-        type gp_Cylinder;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Parab"]
         type gp_Parab;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Sphere"]
+        type gp_Sphere;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Torus"]
+        type gp_Torus;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "math_Matrix"]
+        type math_Matrix;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "math_Vector"]
+        type math_Vector;
         #[doc = " ======================== Extrema_ExtPS ========================"]
         #[doc = "/// **Source:** `Extrema_ExtPS.hxx` - `Extrema_ExtPS`"]
         #[doc = ""]

@@ -16,20 +16,130 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_adaptor.hxx");
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = "Curve2d from adaptor2d module"]
+        type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
+        #[doc = "Curve from adaptor3d module"]
+        type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
+        #[doc = "CurveOnSurface from adaptor3d module"]
+        type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
+        #[doc = "Surface from adaptor3d module"]
+        type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
+        #[doc = "Curve from geom2d_adaptor module"]
+        type Geom2dAdaptor_Curve = crate::geom2d_adaptor::ffi::Curve;
+        #[doc = "Curve from geom_adaptor module"]
+        type GeomAdaptor_Curve = crate::geom_adaptor::ffi::Curve;
+        #[doc = "Surface from geom_adaptor module"]
+        type GeomAdaptor_Surface = crate::geom_adaptor::ffi::Surface;
+        #[doc = "BSplineCurve from geom module"]
+        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
+        #[doc = "BSplineSurface from geom module"]
+        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
+        #[doc = "BezierCurve from geom module"]
+        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
+        #[doc = "BezierSurface from geom module"]
+        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BoundedCurve from geom module"]
+        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
+        #[doc = "BoundedSurface from geom module"]
+        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
+        #[doc = "Curve from geom module"]
+        type Geom_Curve = crate::geom::ffi::Curve;
+        #[doc = "CylindricalSurface from geom module"]
+        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
+        #[doc = "ElementarySurface from geom module"]
+        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
+        #[doc = "Geometry from geom module"]
+        type Geom_Geometry = crate::geom::ffi::Geometry;
+        #[doc = "Plane from geom module"]
+        type Geom_Plane = crate::geom::ffi::Plane;
+        #[doc = "Surface from geom module"]
+        type Geom_Surface = crate::geom::ffi::Surface;
+        #[doc = "TrimmedCurve from geom module"]
+        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
         #[doc = "Ax1 from gp module"]
         type gp_Ax1 = crate::gp::ffi::Ax1;
         #[doc = "Ax2 from gp module"]
@@ -38,183 +148,76 @@ pub(crate) mod ffi {
         type gp_Ax2d = crate::gp::ffi::Ax2d;
         #[doc = "Ax3 from gp module"]
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
         #[doc = "GTrsf from gp module"]
         type gp_GTrsf = crate::gp::ffi::GTrsf;
         #[doc = "GTrsf2d from gp module"]
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
         #[doc = "Lin from gp module"]
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Curve2d from adaptor2d module"]
-        type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
-        #[doc = "Geometry from geom module"]
-        type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Curve from geom module"]
-        type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "Surface from geom module"]
-        type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "BoundedCurve from geom module"]
-        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
-        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "ElementarySurface from geom module"]
-        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "BezierCurve from geom module"]
-        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
-        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BSplineCurve from geom module"]
-        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
-        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "CylindricalSurface from geom module"]
-        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "Plane from geom module"]
-        type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "TrimmedCurve from geom module"]
-        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "Curve from geom2d_adaptor module"]
-        type Geom2dAdaptor_Curve = crate::geom2d_adaptor::ffi::Curve;
-        #[doc = "Curve from adaptor3d module"]
-        type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
-        #[doc = "Surface from adaptor3d module"]
-        type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
-        #[doc = "CurveOnSurface from adaptor3d module"]
-        type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
-        #[doc = "Curve from geom_adaptor module"]
-        type GeomAdaptor_Curve = crate::geom_adaptor::ffi::Curve;
-        #[doc = "Surface from geom_adaptor module"]
-        type GeomAdaptor_Surface = crate::geom_adaptor::ffi::Surface;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Cone"]
-        type gp_Cone;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Sphere"]
-        type gp_Sphere;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Elips"]
-        type gp_Elips;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Geom_OffsetCurve"]
         type Geom_OffsetCurve;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Hypr"]
-        type gp_Hypr;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Cone"]
+        type gp_Cone;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Cylinder"]
         type gp_Cylinder;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Torus"]
-        type gp_Torus;
+        #[cxx_name = "gp_Elips"]
+        type gp_Elips;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Hypr"]
+        type gp_Hypr;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Parab"]
         type gp_Parab;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Sphere"]
+        type gp_Sphere;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Torus"]
+        type gp_Torus;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBSplineSurface"]
-        type HandleGeomBSplineSurface;
+        #[cxx_name = "HandleAdaptor2dCurve2d"]
+        type HandleAdaptor2dCurve2d;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomOffsetCurve"]
-        type HandleGeomOffsetCurve;
+        #[cxx_name = "HandleAdaptor3dCurve"]
+        type HandleAdaptor3dCurve;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleAdaptor3dSurface"]
         type HandleAdaptor3dSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBSplineCurve"]
+        type HandleGeomBSplineCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBSplineSurface"]
+        type HandleGeomBSplineSurface;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomBezierCurve"]
         type HandleGeomBezierCurve;
@@ -222,14 +225,11 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleGeomBezierSurface"]
         type HandleGeomBezierSurface;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBSplineCurve"]
-        type HandleGeomBSplineCurve;
+        #[cxx_name = "HandleGeomOffsetCurve"]
+        type HandleGeomOffsetCurve;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleAdaptor3dCurve"]
-        type HandleAdaptor3dCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleAdaptor2dCurve2d"]
-        type HandleAdaptor2dCurve2d;
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
         #[doc = " ======================== BRepAdaptor_Curve ========================"]
         #[doc = "/// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve`"]
         #[doc = ""]
@@ -586,14 +586,6 @@ pub(crate) mod ffi {
         fn Curve2d_shallow_copy(self_: &Curve2d) -> UniquePtr<HandleAdaptor2dCurve2d>;
         #[cxx_name = "BRepAdaptor_Curve2d_get_type_name"]
         fn Curve2d_get_type_name() -> String;
-        #[doc = "Upcast BRepAdaptor_Curve2d to Geom2dAdaptor_Curve"]
-        #[cxx_name = "BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve"]
-        fn curve2d_as_geom2d_adaptor_curve(self_: &Curve2d) -> &Geom2dAdaptor_Curve;
-        #[doc = "Upcast BRepAdaptor_Curve2d to Geom2dAdaptor_Curve (mutable)"]
-        #[cxx_name = "BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut"]
-        fn curve2d_as_geom2d_adaptor_curve_mut(
-            self_: Pin<&mut Curve2d>,
-        ) -> Pin<&mut Geom2dAdaptor_Curve>;
         #[doc = "Upcast BRepAdaptor_Curve2d to Adaptor2d_Curve2d"]
         #[cxx_name = "BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d"]
         fn curve2d_as_adaptor2d_curve2d(self_: &Curve2d) -> &Adaptor2d_Curve2d;
@@ -602,6 +594,14 @@ pub(crate) mod ffi {
         fn curve2d_as_adaptor2d_curve2d_mut(
             self_: Pin<&mut Curve2d>,
         ) -> Pin<&mut Adaptor2d_Curve2d>;
+        #[doc = "Upcast BRepAdaptor_Curve2d to Geom2dAdaptor_Curve"]
+        #[cxx_name = "BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve"]
+        fn curve2d_as_geom2d_adaptor_curve(self_: &Curve2d) -> &Geom2dAdaptor_Curve;
+        #[doc = "Upcast BRepAdaptor_Curve2d to Geom2dAdaptor_Curve (mutable)"]
+        #[cxx_name = "BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut"]
+        fn curve2d_as_geom2d_adaptor_curve_mut(
+            self_: Pin<&mut Curve2d>,
+        ) -> Pin<&mut Geom2dAdaptor_Curve>;
     }
     impl UniquePtr<Curve> {}
     impl UniquePtr<Surface> {}

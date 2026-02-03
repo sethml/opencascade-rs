@@ -16,6 +16,66 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_law.hxx");
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
         #[doc = "HArray1OfPnt from t_colgp module"]
         type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
         #[doc = "HArray1OfPnt2d from t_colgp module"]
@@ -24,81 +84,21 @@ pub(crate) mod ffi {
         type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
         #[doc = "HArray2OfPnt from t_colgp module"]
         type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array1OfPnt2d"]
-        type TColgp_Array1OfPnt2d;
+        #[cxx_name = "Law_BSpline"]
+        type Law_BSpline;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Law_BSpline"]
-        type Law_BSpline;
+        #[cxx_name = "TColgp_Array1OfPnt2d"]
+        type TColgp_Array1OfPnt2d;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleLawBSpFunc"]
         type HandleLawBSpFunc;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
+        #[cxx_name = "HandleLawBSpline"]
+        type HandleLawBSpline;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleLawFunction"]
         type HandleLawFunction;
@@ -106,8 +106,8 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleLawInterpol"]
         type HandleLawInterpol;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleLawBSpline"]
-        type HandleLawBSpline;
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
         #[doc = " ======================== Law_Function ========================"]
         #[doc = "/// **Source:** `Law_Function.hxx` - `Law_Function`"]
         #[doc = ""]
@@ -239,18 +239,18 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &Interpol) -> &HandleStandardType;
         #[cxx_name = "Law_Interpol_get_type_name"]
         fn Interpol_get_type_name() -> String;
-        #[doc = "Upcast Law_Interpol to Law_Function"]
-        #[cxx_name = "Law_Interpol_as_Law_Function"]
-        fn interpol_as_function(self_: &Interpol) -> &Function;
-        #[doc = "Upcast Law_Interpol to Law_Function (mutable)"]
-        #[cxx_name = "Law_Interpol_as_Law_Function_mut"]
-        fn interpol_as_function_mut(self_: Pin<&mut Interpol>) -> Pin<&mut Function>;
         #[doc = "Upcast Law_Interpol to Law_BSpFunc"]
         #[cxx_name = "Law_Interpol_as_Law_BSpFunc"]
         fn interpol_as_b_sp_func(self_: &Interpol) -> &BSpFunc;
         #[doc = "Upcast Law_Interpol to Law_BSpFunc (mutable)"]
         #[cxx_name = "Law_Interpol_as_Law_BSpFunc_mut"]
         fn interpol_as_b_sp_func_mut(self_: Pin<&mut Interpol>) -> Pin<&mut BSpFunc>;
+        #[doc = "Upcast Law_Interpol to Law_Function"]
+        #[cxx_name = "Law_Interpol_as_Law_Function"]
+        fn interpol_as_function(self_: &Interpol) -> &Function;
+        #[doc = "Upcast Law_Interpol to Law_Function (mutable)"]
+        #[cxx_name = "Law_Interpol_as_Law_Function_mut"]
+        fn interpol_as_function_mut(self_: Pin<&mut Interpol>) -> Pin<&mut Function>;
         #[doc = "Wrap Law_Interpol in a Handle (reference-counted smart pointer)"]
         #[cxx_name = "Law_Interpol_to_handle"]
         fn Interpol_to_handle(obj: UniquePtr<Interpol>) -> UniquePtr<HandleLawInterpol>;
@@ -335,16 +335,6 @@ impl Interpol {
         ffi::Interpol_ctor()
     }
 
-    #[doc = "Upcast to Law_Function"]
-    pub fn as_function(&self) -> &Function {
-        ffi::interpol_as_function(self)
-    }
-
-    #[doc = "Upcast to Law_Function (mutable)"]
-    pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
-        ffi::interpol_as_function_mut(self)
-    }
-
     #[doc = "Upcast to Law_BSpFunc"]
     pub fn as_b_sp_func(&self) -> &BSpFunc {
         ffi::interpol_as_b_sp_func(self)
@@ -353,6 +343,16 @@ impl Interpol {
     #[doc = "Upcast to Law_BSpFunc (mutable)"]
     pub fn as_b_sp_func_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BSpFunc> {
         ffi::interpol_as_b_sp_func_mut(self)
+    }
+
+    #[doc = "Upcast to Law_Function"]
+    pub fn as_function(&self) -> &Function {
+        ffi::interpol_as_function(self)
+    }
+
+    #[doc = "Upcast to Law_Function (mutable)"]
+    pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
+        ffi::interpol_as_function_mut(self)
     }
 
     #[doc = "Wrap Law_Interpol in a Handle (reference-counted smart pointer)"]

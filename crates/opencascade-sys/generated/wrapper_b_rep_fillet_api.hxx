@@ -49,10 +49,10 @@ inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> BRepFilletAPI_Loc
     return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self.Sect(IC, IS));
 }
 
-inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_LocalOperation& self) { return self; }
-inline BRepBuilderAPI_MakeShape& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_LocalOperation& self) { return self; }
 inline const BRepBuilderAPI_Command& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command(const BRepFilletAPI_LocalOperation& self) { return self; }
 inline BRepBuilderAPI_Command& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_LocalOperation& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_LocalOperation& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_LocalOperation& self) { return self; }
 
 // ========================
 // BRepFilletAPI_MakeChamfer wrappers
@@ -80,10 +80,10 @@ inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> BRepFilletAPI_Mak
 
 inline const BRepBuilderAPI_Command& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command(const BRepFilletAPI_MakeChamfer& self) { return self; }
 inline BRepBuilderAPI_Command& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_MakeChamfer& self) { return self; }
-inline const BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation(const BRepFilletAPI_MakeChamfer& self) { return self; }
-inline BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut(BRepFilletAPI_MakeChamfer& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_MakeChamfer& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_MakeChamfer& self) { return self; }
+inline const BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation(const BRepFilletAPI_MakeChamfer& self) { return self; }
+inline BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut(BRepFilletAPI_MakeChamfer& self) { return self; }
 
 // ========================
 // BRepFilletAPI_MakeFillet wrappers
@@ -121,12 +121,12 @@ inline std::unique_ptr<TopoDS_Shape> BRepFilletAPI_MakeFillet_BadShape(const BRe
     return std::make_unique<TopoDS_Shape>(self.BadShape());
 }
 
-inline const BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation(const BRepFilletAPI_MakeFillet& self) { return self; }
-inline BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation_mut(BRepFilletAPI_MakeFillet& self) { return self; }
-inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_MakeFillet& self) { return self; }
-inline BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_MakeFillet& self) { return self; }
 inline const BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command(const BRepFilletAPI_MakeFillet& self) { return self; }
 inline BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_MakeFillet& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_MakeFillet& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_MakeFillet& self) { return self; }
+inline const BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation(const BRepFilletAPI_MakeFillet& self) { return self; }
+inline BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation_mut(BRepFilletAPI_MakeFillet& self) { return self; }
 
 // ========================
 // BRepFilletAPI_MakeFillet2d wrappers

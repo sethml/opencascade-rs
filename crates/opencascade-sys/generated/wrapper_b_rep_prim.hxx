@@ -212,10 +212,10 @@ inline std::unique_ptr<TopoDS_Face> BRepPrim_Cone_MakeEmptyLateralFace(const BRe
     return std::make_unique<TopoDS_Face>(self.MakeEmptyLateralFace());
 }
 
-inline const BRepPrim_Revolution& BRepPrim_Cone_as_BRepPrim_Revolution(const BRepPrim_Cone& self) { return self; }
-inline BRepPrim_Revolution& BRepPrim_Cone_as_BRepPrim_Revolution_mut(BRepPrim_Cone& self) { return self; }
 inline const BRepPrim_OneAxis& BRepPrim_Cone_as_BRepPrim_OneAxis(const BRepPrim_Cone& self) { return self; }
 inline BRepPrim_OneAxis& BRepPrim_Cone_as_BRepPrim_OneAxis_mut(BRepPrim_Cone& self) { return self; }
+inline const BRepPrim_Revolution& BRepPrim_Cone_as_BRepPrim_Revolution(const BRepPrim_Cone& self) { return self; }
+inline BRepPrim_Revolution& BRepPrim_Cone_as_BRepPrim_Revolution_mut(BRepPrim_Cone& self) { return self; }
 
 // ========================
 // BRepPrim_Wedge wrappers

@@ -19,62 +19,48 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom2d.hxx");
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
         #[doc = "ConstructionError from standard module"]
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
         #[doc = "Ax1 from gp module"]
         type gp_Ax1 = crate::gp::ffi::Ax1;
         #[doc = "Ax2 from gp module"]
@@ -83,20 +69,34 @@ pub(crate) mod ffi {
         type gp_Ax2d = crate::gp::ffi::Ax2d;
         #[doc = "Ax3 from gp module"]
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
         #[doc = "GTrsf from gp module"]
         type gp_GTrsf = crate::gp::ffi::GTrsf;
         #[doc = "GTrsf2d from gp module"]
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
         #[doc = "Lin from gp module"]
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Ax22d"]
         type gp_Ax22d;
@@ -104,26 +104,26 @@ pub(crate) mod ffi {
         #[cxx_name = "gp_Elips2d"]
         type gp_Elips2d;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dCurve"]
-        type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dGeometry"]
-        type HandleGeom2dGeometry;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dEllipse"]
-        type HandleGeom2dEllipse;
+        #[cxx_name = "HandleGeom2dBoundedCurve"]
+        type HandleGeom2dBoundedCurve;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dConic"]
         type HandleGeom2dConic;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dBoundedCurve"]
-        type HandleGeom2dBoundedCurve;
+        #[cxx_name = "HandleGeom2dCurve"]
+        type HandleGeom2dCurve;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
+        #[cxx_name = "HandleGeom2dEllipse"]
+        type HandleGeom2dEllipse;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dGeometry"]
+        type HandleGeom2dGeometry;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dTrimmedCurve"]
         type HandleGeom2dTrimmedCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
         #[doc = " ======================== Geom2d_Geometry ========================"]
         #[doc = "/// **Source:** `Geom2d_Geometry.hxx` - `Geom2d_Geometry`"]
         #[doc = ""]
@@ -290,18 +290,18 @@ pub(crate) mod ffi {
         fn BoundedCurve_start_point(self_: &BoundedCurve) -> UniquePtr<gp_Pnt2d>;
         #[cxx_name = "Geom2d_BoundedCurve_get_type_name"]
         fn BoundedCurve_get_type_name() -> String;
-        #[doc = "Upcast Geom2d_BoundedCurve to Geom2d_Geometry"]
-        #[cxx_name = "Geom2d_BoundedCurve_as_Geom2d_Geometry"]
-        fn bounded_curve_as_geometry(self_: &BoundedCurve) -> &Geometry;
-        #[doc = "Upcast Geom2d_BoundedCurve to Geom2d_Geometry (mutable)"]
-        #[cxx_name = "Geom2d_BoundedCurve_as_Geom2d_Geometry_mut"]
-        fn bounded_curve_as_geometry_mut(self_: Pin<&mut BoundedCurve>) -> Pin<&mut Geometry>;
         #[doc = "Upcast Geom2d_BoundedCurve to Geom2d_Curve"]
         #[cxx_name = "Geom2d_BoundedCurve_as_Geom2d_Curve"]
         fn bounded_curve_as_curve(self_: &BoundedCurve) -> &Curve;
         #[doc = "Upcast Geom2d_BoundedCurve to Geom2d_Curve (mutable)"]
         #[cxx_name = "Geom2d_BoundedCurve_as_Geom2d_Curve_mut"]
         fn bounded_curve_as_curve_mut(self_: Pin<&mut BoundedCurve>) -> Pin<&mut Curve>;
+        #[doc = "Upcast Geom2d_BoundedCurve to Geom2d_Geometry"]
+        #[cxx_name = "Geom2d_BoundedCurve_as_Geom2d_Geometry"]
+        fn bounded_curve_as_geometry(self_: &BoundedCurve) -> &Geometry;
+        #[doc = "Upcast Geom2d_BoundedCurve to Geom2d_Geometry (mutable)"]
+        #[cxx_name = "Geom2d_BoundedCurve_as_Geom2d_Geometry_mut"]
+        fn bounded_curve_as_geometry_mut(self_: Pin<&mut BoundedCurve>) -> Pin<&mut Geometry>;
         #[doc = "Upcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_Curve>"]
         #[cxx_name = "HandleGeom2dBoundedCurve_to_HandleGeom2dCurve"]
         fn bounded_curve_to_handle_curve(
@@ -370,12 +370,12 @@ pub(crate) mod ffi {
         #[doc = "Upcast Geom2d_Conic to Geom2d_Geometry (mutable)"]
         #[cxx_name = "Geom2d_Conic_as_Geom2d_Geometry_mut"]
         fn conic_as_geometry_mut(self_: Pin<&mut Conic>) -> Pin<&mut Geometry>;
-        #[doc = "Upcast Handle<Geom2d_Conic> to Handle<Geom2d_Geometry>"]
-        #[cxx_name = "HandleGeom2dConic_to_HandleGeom2dGeometry"]
-        fn conic_to_handle_geometry(handle: &HandleGeom2dConic) -> UniquePtr<HandleGeom2dGeometry>;
         #[doc = "Upcast Handle<Geom2d_Conic> to Handle<Geom2d_Curve>"]
         #[cxx_name = "HandleGeom2dConic_to_HandleGeom2dCurve"]
         fn conic_to_handle_curve(handle: &HandleGeom2dConic) -> UniquePtr<HandleGeom2dCurve>;
+        #[doc = "Upcast Handle<Geom2d_Conic> to Handle<Geom2d_Geometry>"]
+        #[cxx_name = "HandleGeom2dConic_to_HandleGeom2dGeometry"]
+        fn conic_to_handle_geometry(handle: &HandleGeom2dConic) -> UniquePtr<HandleGeom2dGeometry>;
         #[doc = " ======================== Geom2d_Ellipse ========================"]
         #[doc = "/// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse`"]
         #[doc = ""]
@@ -518,6 +518,9 @@ pub(crate) mod ffi {
         #[doc = "Wrap Geom2d_Ellipse in a Handle (reference-counted smart pointer)"]
         #[cxx_name = "Geom2d_Ellipse_to_handle"]
         fn Ellipse_to_handle(obj: UniquePtr<Ellipse>) -> UniquePtr<HandleGeom2dEllipse>;
+        #[doc = "Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Conic>"]
+        #[cxx_name = "HandleGeom2dEllipse_to_HandleGeom2dConic"]
+        fn ellipse_to_handle_conic(handle: &HandleGeom2dEllipse) -> UniquePtr<HandleGeom2dConic>;
         #[doc = "Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Curve>"]
         #[cxx_name = "HandleGeom2dEllipse_to_HandleGeom2dCurve"]
         fn ellipse_to_handle_curve(handle: &HandleGeom2dEllipse) -> UniquePtr<HandleGeom2dCurve>;
@@ -526,9 +529,6 @@ pub(crate) mod ffi {
         fn ellipse_to_handle_geometry(
             handle: &HandleGeom2dEllipse,
         ) -> UniquePtr<HandleGeom2dGeometry>;
-        #[doc = "Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Conic>"]
-        #[cxx_name = "HandleGeom2dEllipse_to_HandleGeom2dConic"]
-        fn ellipse_to_handle_conic(handle: &HandleGeom2dEllipse) -> UniquePtr<HandleGeom2dConic>;
         #[doc = " ======================== Geom2d_TrimmedCurve ========================"]
         #[doc = "/// **Source:** `Geom2d_TrimmedCurve.hxx` - `Geom2d_TrimmedCurve`"]
         #[doc = ""]
@@ -657,6 +657,11 @@ pub(crate) mod ffi {
         fn TrimmedCurve_to_handle(
             obj: UniquePtr<TrimmedCurve>,
         ) -> UniquePtr<HandleGeom2dTrimmedCurve>;
+        #[doc = "Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_BoundedCurve>"]
+        #[cxx_name = "HandleGeom2dTrimmedCurve_to_HandleGeom2dBoundedCurve"]
+        fn trimmed_curve_to_handle_bounded_curve(
+            handle: &HandleGeom2dTrimmedCurve,
+        ) -> UniquePtr<HandleGeom2dBoundedCurve>;
         #[doc = "Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_Curve>"]
         #[cxx_name = "HandleGeom2dTrimmedCurve_to_HandleGeom2dCurve"]
         fn trimmed_curve_to_handle_curve(
@@ -667,11 +672,6 @@ pub(crate) mod ffi {
         fn trimmed_curve_to_handle_geometry(
             handle: &HandleGeom2dTrimmedCurve,
         ) -> UniquePtr<HandleGeom2dGeometry>;
-        #[doc = "Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_BoundedCurve>"]
-        #[cxx_name = "HandleGeom2dTrimmedCurve_to_HandleGeom2dBoundedCurve"]
-        fn trimmed_curve_to_handle_bounded_curve(
-            handle: &HandleGeom2dTrimmedCurve,
-        ) -> UniquePtr<HandleGeom2dBoundedCurve>;
     }
     impl UniquePtr<Geometry> {}
     impl UniquePtr<Curve> {}
@@ -855,16 +855,6 @@ impl Ellipse {
         ffi::Ellipse_ctor_ax22d_real2(Axis, MajorRadius, MinorRadius)
     }
 
-    #[doc = "Upcast to Geom2d_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::ellipse_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::ellipse_as_geometry_mut(self)
-    }
-
     #[doc = "Upcast to Geom2d_Conic"]
     pub fn as_conic(&self) -> &Conic {
         ffi::ellipse_as_conic(self)
@@ -883,6 +873,16 @@ impl Ellipse {
     #[doc = "Upcast to Geom2d_Curve (mutable)"]
     pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
         ffi::ellipse_as_curve_mut(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::ellipse_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::ellipse_as_geometry_mut(self)
     }
 
     #[doc = "Wrap Geom2d_Ellipse in a Handle (reference-counted smart pointer)"]
@@ -942,6 +942,18 @@ impl TrimmedCurve {
         ffi::TrimmedCurve_ctor_handlecurve_real2_bool2(C, U1, U2, Sense, theAdjustPeriodic)
     }
 
+    #[doc = "Upcast to Geom2d_BoundedCurve"]
+    pub fn as_bounded_curve(&self) -> &BoundedCurve {
+        ffi::trimmed_curve_as_bounded_curve(self)
+    }
+
+    #[doc = "Upcast to Geom2d_BoundedCurve (mutable)"]
+    pub fn as_bounded_curve_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BoundedCurve> {
+        ffi::trimmed_curve_as_bounded_curve_mut(self)
+    }
+
     #[doc = "Upcast to Geom2d_Curve"]
     pub fn as_curve(&self) -> &Curve {
         ffi::trimmed_curve_as_curve(self)
@@ -960,18 +972,6 @@ impl TrimmedCurve {
     #[doc = "Upcast to Geom2d_Geometry (mutable)"]
     pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
         ffi::trimmed_curve_as_geometry_mut(self)
-    }
-
-    #[doc = "Upcast to Geom2d_BoundedCurve"]
-    pub fn as_bounded_curve(&self) -> &BoundedCurve {
-        ffi::trimmed_curve_as_bounded_curve(self)
-    }
-
-    #[doc = "Upcast to Geom2d_BoundedCurve (mutable)"]
-    pub fn as_bounded_curve_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BoundedCurve> {
-        ffi::trimmed_curve_as_bounded_curve_mut(self)
     }
 
     #[doc = "Wrap Geom2d_TrimmedCurve in a Handle (reference-counted smart pointer)"]
@@ -1015,14 +1015,14 @@ impl ffi::HandleGeom2dCurve {
     }
 }
 impl ffi::HandleGeom2dBoundedCurve {
-    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::bounded_curve_to_handle_geometry(self)
-    }
-
     #[doc = "Upcast to Handle<Geom2d_Curve>"]
     pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
         ffi::bounded_curve_to_handle_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::bounded_curve_to_handle_geometry(self)
     }
 }
 impl ffi::HandleGeom2dConic {
@@ -1037,9 +1037,9 @@ impl ffi::HandleGeom2dConic {
     }
 }
 impl ffi::HandleGeom2dEllipse {
-    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::ellipse_to_handle_geometry(self)
+    #[doc = "Upcast to Handle<Geom2d_Conic>"]
+    pub fn to_handle_conic(&self) -> cxx::UniquePtr<ffi::HandleGeom2dConic> {
+        ffi::ellipse_to_handle_conic(self)
     }
 
     #[doc = "Upcast to Handle<Geom2d_Curve>"]
@@ -1047,20 +1047,20 @@ impl ffi::HandleGeom2dEllipse {
         ffi::ellipse_to_handle_curve(self)
     }
 
-    #[doc = "Upcast to Handle<Geom2d_Conic>"]
-    pub fn to_handle_conic(&self) -> cxx::UniquePtr<ffi::HandleGeom2dConic> {
-        ffi::ellipse_to_handle_conic(self)
+    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::ellipse_to_handle_geometry(self)
     }
 }
 impl ffi::HandleGeom2dTrimmedCurve {
-    #[doc = "Upcast to Handle<Geom2d_Curve>"]
-    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
-        ffi::trimmed_curve_to_handle_curve(self)
-    }
-
     #[doc = "Upcast to Handle<Geom2d_BoundedCurve>"]
     pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dBoundedCurve> {
         ffi::trimmed_curve_to_handle_bounded_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom2d_Curve>"]
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
+        ffi::trimmed_curve_to_handle_curve(self)
     }
 
     #[doc = "Upcast to Handle<Geom2d_Geometry>"]

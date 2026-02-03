@@ -14,32 +14,32 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_shape_process.hxx");
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
         #[doc = "Message from message module"]
         type Message = crate::message::ffi::Message;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
         #[doc = "Alert from message module"]
         type Message_Alert = crate::message::ffi::Alert;
         #[doc = "AlertExtended from message module"]
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "ShapeProcess_Context"]
         type ShapeProcess_Context;
@@ -47,11 +47,11 @@ pub(crate) mod ffi {
         #[cxx_name = "ShapeProcess_Operator"]
         type ShapeProcess_Operator;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleShapeProcessOperator"]
-        type HandleShapeProcessOperator;
-        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleShapeProcessContext"]
         type HandleShapeProcessContext;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleShapeProcessOperator"]
+        type HandleShapeProcessOperator;
         #[doc = " ======================== ShapeProcess ========================"]
         #[doc = "/// **Source:** `ShapeProcess.hxx` - `ShapeProcess`"]
         #[doc = ""]

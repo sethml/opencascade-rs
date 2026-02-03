@@ -10,7 +10,7 @@ use crate::type_mapping::{map_return_type_in_context, map_type_in_context, TypeC
 use heck::ToSnakeCase;
 use proc_macro2::TokenStream;
 use quote::{format_ident, quote};
-use std::collections::{HashMap, HashSet};
+use std::collections::{BTreeSet, HashMap, HashSet};
 
 /// Rust keywords that need special handling
 const RUST_KEYWORDS: &[&str] = &[
@@ -327,10 +327,10 @@ pub fn generate_module(
 
 /// Types collected from class interfaces
 struct CollectedTypes {
-    /// Class types (e.g., "gp_Pnt", "Geom_TrimmedCurve")
-    classes: HashSet<String>,
-    /// Handle types with their inner class (e.g., "Geom_TrimmedCurve" for Handle<Geom_TrimmedCurve>)
-    handles: HashSet<String>,
+    /// Class types (e.g., "gp_Pnt", "Geom_TrimmedCurve") - sorted for deterministic output
+    classes: BTreeSet<String>,
+    /// Handle types with their inner class (e.g., "Geom_TrimmedCurve" for Handle<Geom_TrimmedCurve>) - sorted for deterministic output
+    handles: BTreeSet<String>,
 }
 
 /// Collect all referenced OCCT types from class methods and constructors
@@ -339,8 +339,8 @@ fn collect_referenced_types(
     _all_classes: &HashMap<String, &ParsedClass>,
 ) -> CollectedTypes {
     let mut result = CollectedTypes {
-        classes: HashSet::new(),
-        handles: HashSet::new(),
+        classes: BTreeSet::new(),
+        handles: BTreeSet::new(),
     };
 
     for class in classes {
@@ -1373,7 +1373,10 @@ fn get_all_ancestors(
         }
     }
     
-    ancestors.into_iter().collect()
+    // Sort for deterministic output ordering
+    let mut result: Vec<_> = ancestors.into_iter().collect();
+    result.sort();
+    result
 }
 
 /// Generate upcast function declarations for inheritance (const and mutable)

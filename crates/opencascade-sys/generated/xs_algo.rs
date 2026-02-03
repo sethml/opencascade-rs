@@ -14,94 +14,94 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_xs_algo.hxx");
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
         #[doc = "Message from message module"]
         type Message = crate::message::ffi::Message;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
         #[doc = "Alert from message module"]
         type Message_Alert = crate::message::ffi::Alert;
         #[doc = "AlertExtended from message module"]
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
+        #[doc = "ShapeProcess from shape_process module"]
+        type ShapeProcess = crate::shape_process::ffi::ShapeProcess;
         #[doc = "AsciiString from t_collection module"]
         type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
+        #[doc = "ExtendedString from t_collection module"]
+        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
         #[doc = "HAsciiString from t_collection module"]
         type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
         #[doc = "HExtendedString from t_collection module"]
         type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
-        #[doc = "ExtendedString from t_collection module"]
-        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
-        #[doc = "ShapeProcess from shape_process module"]
-        type ShapeProcess = crate::shape_process::ffi::ShapeProcess;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Transfer_FinderProcess"]
-        type Transfer_FinderProcess;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_DataMapOfShapeShape"]
-        type TopTools_DataMapOfShapeShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Transfer_TransientProcess"]
-        type Transfer_TransientProcess;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "ShapeExtend_MsgRegistrator"]
-        type ShapeExtend_MsgRegistrator;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "DE_ShapeFixParameters"]
         type DE_ShapeFixParameters;
         #[doc = r" Referenced type from C++"]
+        #[cxx_name = "ShapeExtend_MsgRegistrator"]
+        type ShapeExtend_MsgRegistrator;
+        #[doc = r" Referenced type from C++"]
         #[cxx_name = "ShapeProcess_ShapeContext"]
         type ShapeProcess_ShapeContext;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleShapeProcessShapeContext"]
-        type HandleShapeProcessShapeContext;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_DataMapOfShapeShape"]
+        type TopTools_DataMapOfShapeShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Transfer_FinderProcess"]
+        type Transfer_FinderProcess;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Transfer_TransientProcess"]
+        type Transfer_TransientProcess;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleShapeExtendMsgRegistrator"]
         type HandleShapeExtendMsgRegistrator;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleShapeProcessShapeContext"]
+        type HandleShapeProcessShapeContext;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTransferFinderProcess"]
         type HandleTransferFinderProcess;

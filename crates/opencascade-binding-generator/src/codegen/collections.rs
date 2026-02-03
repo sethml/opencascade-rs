@@ -195,18 +195,24 @@ pub fn parse_collection_typedef(typedef_name: &str) -> Option<CollectionInfo> {
 
 /// Get all known collection types
 pub fn all_known_collections() -> Vec<CollectionInfo> {
-    known_collections()
+    let mut result: Vec<_> = known_collections()
         .keys()
         .filter_map(|name| parse_collection_typedef(name))
-        .collect()
+        .collect();
+    // Sort for deterministic ordering
+    result.sort_by(|a, b| a.typedef_name.cmp(&b.typedef_name));
+    result
 }
 
 /// Get collection types that belong to a specific module
 pub fn collections_for_module(module_name: &str) -> Vec<CollectionInfo> {
-    all_known_collections()
+    let mut result: Vec<_> = all_known_collections()
         .into_iter()
         .filter(|c| c.module == module_name)
-        .collect()
+        .collect();
+    // Sort for deterministic ordering
+    result.sort_by(|a, b| a.typedef_name.cmp(&b.typedef_name));
+    result
 }
 
 // =============================================================================

@@ -95,10 +95,10 @@ inline std::unique_ptr<gp_Ax1> BRepSweep_Rotation_Axe(const BRepSweep_Rotation& 
     return std::make_unique<gp_Ax1>(self.Axe());
 }
 
-inline const BRepSweep_Trsf& BRepSweep_Rotation_as_BRepSweep_Trsf(const BRepSweep_Rotation& self) { return self; }
-inline BRepSweep_Trsf& BRepSweep_Rotation_as_BRepSweep_Trsf_mut(BRepSweep_Rotation& self) { return self; }
 inline const BRepSweep_NumLinearRegularSweep& BRepSweep_Rotation_as_BRepSweep_NumLinearRegularSweep(const BRepSweep_Rotation& self) { return self; }
 inline BRepSweep_NumLinearRegularSweep& BRepSweep_Rotation_as_BRepSweep_NumLinearRegularSweep_mut(BRepSweep_Rotation& self) { return self; }
+inline const BRepSweep_Trsf& BRepSweep_Rotation_as_BRepSweep_Trsf(const BRepSweep_Rotation& self) { return self; }
+inline BRepSweep_Trsf& BRepSweep_Rotation_as_BRepSweep_Trsf_mut(BRepSweep_Rotation& self) { return self; }
 
 // ========================
 // BRepSweep_Trsf wrappers

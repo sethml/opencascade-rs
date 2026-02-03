@@ -21,60 +21,6 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_bop_algo.hxx");
-        #[doc = "BaseAllocator from n_collection module"]
-        type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
-        #[doc = "BasePointerVector from n_collection module"]
-        type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
-        #[doc = "IncAllocator from n_collection module"]
-        type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
-        #[doc = "BaseList from n_collection module"]
-        type NCollection_BaseList = crate::n_collection::ffi::BaseList;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
         #[doc = "BRepTools from b_rep_tools module"]
         type BRepTools = crate::b_rep_tools::ffi::BRepTools;
         #[doc = "History from b_rep_tools module"]
@@ -83,88 +29,130 @@ pub(crate) mod ffi {
         type BRepTools_Modifier = crate::b_rep_tools::ffi::Modifier;
         #[doc = "ReShape from b_rep_tools module"]
         type BRepTools_ReShape = crate::b_rep_tools::ffi::ReShape;
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
         #[doc = "Message from message module"]
         type Message = crate::message::ffi::Message;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
         #[doc = "Alert from message module"]
         type Message_Alert = crate::message::ffi::Alert;
         #[doc = "AlertExtended from message module"]
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
+        #[doc = "BaseAllocator from n_collection module"]
+        type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
+        #[doc = "BaseList from n_collection module"]
+        type NCollection_BaseList = crate::n_collection::ffi::BaseList;
+        #[doc = "BasePointerVector from n_collection module"]
+        type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
+        #[doc = "IncAllocator from n_collection module"]
+        type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
         #[doc = "ConstructionError from standard module"]
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
         #[doc = "TopAbs from top_abs module"]
         type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_DataMapOfShapeListOfShape"]
-        type TopTools_DataMapOfShapeListOfShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfReal"]
-        type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "BOPDS_PDS"]
-        type BOPDS_PDS;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "BOPAlgo_PPaveFiller"]
         type BOPAlgo_PPaveFiller;
@@ -172,29 +160,41 @@ pub(crate) mod ffi {
         #[cxx_name = "BOPAlgo_PaveFiller"]
         type BOPAlgo_PaveFiller;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_DataMapOfShapeShape"]
-        type TopTools_DataMapOfShapeShape;
+        #[cxx_name = "BOPDS_PDS"]
+        type BOPDS_PDS;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "IntTools_Context"]
         type IntTools_Context;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleNCollectionBaseAllocator"]
-        type HandleNCollectionBaseAllocator;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageAlert"]
-        type HandleMessageAlert;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfReal"]
+        type TColStd_Array1OfReal;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_DataMapOfShapeListOfShape"]
+        type TopTools_DataMapOfShapeListOfShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_DataMapOfShapeShape"]
+        type TopTools_DataMapOfShapeShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleBRepToolsHistory"]
         type HandleBRepToolsHistory;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
+        #[cxx_name = "HandleIntToolsContext"]
+        type HandleIntToolsContext;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageAlert"]
+        type HandleMessageAlert;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleMessageReport"]
         type HandleMessageReport;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIntToolsContext"]
-        type HandleIntToolsContext;
+        #[cxx_name = "HandleNCollectionBaseAllocator"]
+        type HandleNCollectionBaseAllocator;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
         #[doc = " ======================== BOPAlgo_BOP ========================"]
         #[doc = "/// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP`"]
         #[doc = ""]
@@ -216,24 +216,24 @@ pub(crate) mod ffi {
         fn clear(self: Pin<&mut BOP>);
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut BOP>, theRange: &Message_ProgressRange);
-        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_Options"]
-        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_Options"]
-        fn bop_as_options(self_: &BOP) -> &Options;
-        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_Options (mutable)"]
-        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_Options_mut"]
-        fn bop_as_options_mut(self_: Pin<&mut BOP>) -> Pin<&mut Options>;
-        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_BuilderShape"]
-        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_BuilderShape"]
-        fn bop_as_builder_shape(self_: &BOP) -> &BuilderShape;
-        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_BuilderShape (mutable)"]
-        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_BuilderShape_mut"]
-        fn bop_as_builder_shape_mut(self_: Pin<&mut BOP>) -> Pin<&mut BuilderShape>;
         #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_Builder"]
         #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_Builder"]
         fn bop_as_builder(self_: &BOP) -> &Builder;
         #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_Builder (mutable)"]
         #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_Builder_mut"]
         fn bop_as_builder_mut(self_: Pin<&mut BOP>) -> Pin<&mut Builder>;
+        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_BuilderShape"]
+        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_BuilderShape"]
+        fn bop_as_builder_shape(self_: &BOP) -> &BuilderShape;
+        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_BuilderShape (mutable)"]
+        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_BuilderShape_mut"]
+        fn bop_as_builder_shape_mut(self_: Pin<&mut BOP>) -> Pin<&mut BuilderShape>;
+        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_Options"]
+        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_Options"]
+        fn bop_as_options(self_: &BOP) -> &Options;
+        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_Options (mutable)"]
+        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_Options_mut"]
+        fn bop_as_options_mut(self_: Pin<&mut BOP>) -> Pin<&mut Options>;
         #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_ToolsProvider"]
         #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_ToolsProvider"]
         fn bop_as_tools_provider(self_: &BOP) -> &ToolsProvider;
@@ -546,26 +546,14 @@ impl BOP {
         ffi::BOP_ctor_handlebaseallocator(theAllocator)
     }
 
-    #[doc = "Upcast to BOPAlgo_ToolsProvider"]
-    pub fn as_tools_provider(&self) -> &ToolsProvider {
-        ffi::bop_as_tools_provider(self)
+    #[doc = "Upcast to BOPAlgo_Builder"]
+    pub fn as_builder(&self) -> &Builder {
+        ffi::bop_as_builder(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_ToolsProvider (mutable)"]
-    pub fn as_tools_provider_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut ToolsProvider> {
-        ffi::bop_as_tools_provider_mut(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_Options"]
-    pub fn as_options(&self) -> &Options {
-        ffi::bop_as_options(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_Options (mutable)"]
-    pub fn as_options_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Options> {
-        ffi::bop_as_options_mut(self)
+    #[doc = "Upcast to BOPAlgo_Builder (mutable)"]
+    pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
+        ffi::bop_as_builder_mut(self)
     }
 
     #[doc = "Upcast to BOPAlgo_BuilderShape"]
@@ -580,14 +568,26 @@ impl BOP {
         ffi::bop_as_builder_shape_mut(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_Builder"]
-    pub fn as_builder(&self) -> &Builder {
-        ffi::bop_as_builder(self)
+    #[doc = "Upcast to BOPAlgo_Options"]
+    pub fn as_options(&self) -> &Options {
+        ffi::bop_as_options(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_Builder (mutable)"]
-    pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
-        ffi::bop_as_builder_mut(self)
+    #[doc = "Upcast to BOPAlgo_Options (mutable)"]
+    pub fn as_options_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Options> {
+        ffi::bop_as_options_mut(self)
+    }
+
+    #[doc = "Upcast to BOPAlgo_ToolsProvider"]
+    pub fn as_tools_provider(&self) -> &ToolsProvider {
+        ffi::bop_as_tools_provider(self)
+    }
+
+    #[doc = "Upcast to BOPAlgo_ToolsProvider (mutable)"]
+    pub fn as_tools_provider_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut ToolsProvider> {
+        ffi::bop_as_tools_provider_mut(self)
     }
 }
 pub use ffi::ToolsProvider;
@@ -601,6 +601,16 @@ impl ToolsProvider {
         theAllocator: &ffi::HandleNCollectionBaseAllocator,
     ) -> cxx::UniquePtr<Self> {
         ffi::ToolsProvider_ctor_handlebaseallocator(theAllocator)
+    }
+
+    #[doc = "Upcast to BOPAlgo_Builder"]
+    pub fn as_builder(&self) -> &Builder {
+        ffi::tools_provider_as_builder(self)
+    }
+
+    #[doc = "Upcast to BOPAlgo_Builder (mutable)"]
+    pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
+        ffi::tools_provider_as_builder_mut(self)
     }
 
     #[doc = "Upcast to BOPAlgo_BuilderShape"]
@@ -623,16 +633,6 @@ impl ToolsProvider {
     #[doc = "Upcast to BOPAlgo_Options (mutable)"]
     pub fn as_options_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Options> {
         ffi::tools_provider_as_options_mut(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_Builder"]
-    pub fn as_builder(&self) -> &Builder {
-        ffi::tools_provider_as_builder(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_Builder (mutable)"]
-    pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
-        ffi::tools_provider_as_builder_mut(self)
     }
 }
 pub use ffi::Builder;

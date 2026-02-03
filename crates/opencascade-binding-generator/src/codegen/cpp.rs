@@ -842,7 +842,9 @@ pub fn build_inheritance_map(classes: &[&ParsedClass]) -> std::collections::Hash
     
     // First, collect direct inheritance relationships
     for class in classes {
-        inheritance_map.insert(class.name.clone(), class.base_classes.clone());
+        let mut bases = class.base_classes.clone();
+        bases.sort(); // Sort for deterministic ordering
+        inheritance_map.insert(class.name.clone(), bases);
     }
     
     // Build transitive closure using repeated expansion
@@ -867,7 +869,8 @@ pub fn build_inheritance_map(classes: &[&ParsedClass]) -> std::collections::Hash
                 }
             }
             
-            let new_vec: Vec<String> = new_ancestors.into_iter().collect();
+            let mut new_vec: Vec<String> = new_ancestors.into_iter().collect();
+            new_vec.sort(); // Sort for deterministic ordering
             if new_vec.len() != ancestors.len() {
                 *ancestors = new_vec;
                 changed = true;

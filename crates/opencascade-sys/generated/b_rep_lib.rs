@@ -24,74 +24,72 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_lib.hxx");
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "Geometry from geom module"]
-        type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Curve from geom module"]
-        type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "Surface from geom module"]
-        type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "BoundedCurve from geom module"]
-        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
-        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "ElementarySurface from geom module"]
-        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "BezierCurve from geom module"]
-        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
-        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BoundedCurve from geom2d module"]
+        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
+        #[doc = "Conic from geom2d module"]
+        type Geom2d_Conic = crate::geom2d::ffi::Conic;
+        #[doc = "Curve from geom2d module"]
+        type Geom2d_Curve = crate::geom2d::ffi::Curve;
+        #[doc = "Ellipse from geom2d module"]
+        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
+        #[doc = "Geometry from geom2d module"]
+        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
+        #[doc = "TrimmedCurve from geom2d module"]
+        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
         #[doc = "BSplineCurve from geom module"]
         type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
         #[doc = "BSplineSurface from geom module"]
         type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
+        #[doc = "BezierCurve from geom module"]
+        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
+        #[doc = "BezierSurface from geom module"]
+        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BoundedCurve from geom module"]
+        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
+        #[doc = "BoundedSurface from geom module"]
+        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
+        #[doc = "Curve from geom module"]
+        type Geom_Curve = crate::geom::ffi::Curve;
         #[doc = "CylindricalSurface from geom module"]
         type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
+        #[doc = "ElementarySurface from geom module"]
+        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
+        #[doc = "Geometry from geom module"]
+        type Geom_Geometry = crate::geom::ffi::Geometry;
         #[doc = "Plane from geom module"]
         type Geom_Plane = crate::geom::ffi::Plane;
+        #[doc = "Surface from geom module"]
+        type Geom_Surface = crate::geom::ffi::Surface;
         #[doc = "TrimmedCurve from geom module"]
         type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
         #[doc = "Ax1 from gp module"]
         type gp_Ax1 = crate::gp::ffi::Ax1;
         #[doc = "Ax2 from gp module"]
@@ -100,38 +98,37 @@ pub(crate) mod ffi {
         type gp_Ax2d = crate::gp::ffi::Ax2d;
         #[doc = "Ax3 from gp module"]
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
         #[doc = "GTrsf from gp module"]
         type gp_GTrsf = crate::gp::ffi::GTrsf;
         #[doc = "GTrsf2d from gp module"]
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
         #[doc = "Lin from gp module"]
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Geometry from geom2d module"]
-        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "Curve from geom2d module"]
-        type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "BoundedCurve from geom2d module"]
-        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
-        type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Ellipse from geom2d module"]
-        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "TrimmedCurve from geom2d module"]
-        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Hypr"]
-        type gp_Hypr;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Parab"]
-        type gp_Parab;
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Cone"]
         type gp_Cone;
@@ -139,26 +136,29 @@ pub(crate) mod ffi {
         #[cxx_name = "gp_Cylinder"]
         type gp_Cylinder;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Sphere"]
-        type gp_Sphere;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Elips"]
         type gp_Elips;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
+        #[cxx_name = "gp_Hypr"]
+        type gp_Hypr;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Parab"]
+        type gp_Parab;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Sphere"]
+        type gp_Sphere;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Torus"]
         type gp_Torus;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dCurve"]
+        type HandleGeom2dCurve;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomCurve"]
         type HandleGeomCurve;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dCurve"]
-        type HandleGeom2dCurve;
         #[doc = " ======================== BRepLib_MakeWire ========================"]
         #[doc = "/// **Source:** `BRepLib_MakeWire.hxx` - `BRepLib_MakeWire`"]
         #[doc = ""]
@@ -227,18 +227,18 @@ pub(crate) mod ffi {
         #[doc = "Returns the last connecting vertex."]
         #[cxx_name = "Vertex"]
         fn vertex(self: &MakeWire) -> &TopoDS_Vertex;
-        #[doc = "Upcast BRepLib_MakeWire to BRepLib_MakeShape"]
-        #[cxx_name = "BRepLib_MakeWire_as_BRepLib_MakeShape"]
-        fn make_wire_as_make_shape(self_: &MakeWire) -> &MakeShape;
-        #[doc = "Upcast BRepLib_MakeWire to BRepLib_MakeShape (mutable)"]
-        #[cxx_name = "BRepLib_MakeWire_as_BRepLib_MakeShape_mut"]
-        fn make_wire_as_make_shape_mut(self_: Pin<&mut MakeWire>) -> Pin<&mut MakeShape>;
         #[doc = "Upcast BRepLib_MakeWire to BRepLib_Command"]
         #[cxx_name = "BRepLib_MakeWire_as_BRepLib_Command"]
         fn make_wire_as_command(self_: &MakeWire) -> &Command;
         #[doc = "Upcast BRepLib_MakeWire to BRepLib_Command (mutable)"]
         #[cxx_name = "BRepLib_MakeWire_as_BRepLib_Command_mut"]
         fn make_wire_as_command_mut(self_: Pin<&mut MakeWire>) -> Pin<&mut Command>;
+        #[doc = "Upcast BRepLib_MakeWire to BRepLib_MakeShape"]
+        #[cxx_name = "BRepLib_MakeWire_as_BRepLib_MakeShape"]
+        fn make_wire_as_make_shape(self_: &MakeWire) -> &MakeShape;
+        #[doc = "Upcast BRepLib_MakeWire to BRepLib_MakeShape (mutable)"]
+        #[cxx_name = "BRepLib_MakeWire_as_BRepLib_MakeShape_mut"]
+        fn make_wire_as_make_shape_mut(self_: Pin<&mut MakeWire>) -> Pin<&mut MakeShape>;
         #[doc = " ======================== BRepLib_MakeShape ========================"]
         #[doc = "/// **Source:** `BRepLib_MakeShape.hxx` - `BRepLib_MakeShape`"]
         #[doc = ""]
@@ -293,18 +293,18 @@ pub(crate) mod ffi {
         fn MakeVertex_ctor_pnt(P: &gp_Pnt) -> UniquePtr<MakeVertex>;
         #[cxx_name = "Vertex"]
         fn vertex(self: Pin<&mut MakeVertex>) -> &TopoDS_Vertex;
-        #[doc = "Upcast BRepLib_MakeVertex to BRepLib_MakeShape"]
-        #[cxx_name = "BRepLib_MakeVertex_as_BRepLib_MakeShape"]
-        fn make_vertex_as_make_shape(self_: &MakeVertex) -> &MakeShape;
-        #[doc = "Upcast BRepLib_MakeVertex to BRepLib_MakeShape (mutable)"]
-        #[cxx_name = "BRepLib_MakeVertex_as_BRepLib_MakeShape_mut"]
-        fn make_vertex_as_make_shape_mut(self_: Pin<&mut MakeVertex>) -> Pin<&mut MakeShape>;
         #[doc = "Upcast BRepLib_MakeVertex to BRepLib_Command"]
         #[cxx_name = "BRepLib_MakeVertex_as_BRepLib_Command"]
         fn make_vertex_as_command(self_: &MakeVertex) -> &Command;
         #[doc = "Upcast BRepLib_MakeVertex to BRepLib_Command (mutable)"]
         #[cxx_name = "BRepLib_MakeVertex_as_BRepLib_Command_mut"]
         fn make_vertex_as_command_mut(self_: Pin<&mut MakeVertex>) -> Pin<&mut Command>;
+        #[doc = "Upcast BRepLib_MakeVertex to BRepLib_MakeShape"]
+        #[cxx_name = "BRepLib_MakeVertex_as_BRepLib_MakeShape"]
+        fn make_vertex_as_make_shape(self_: &MakeVertex) -> &MakeShape;
+        #[doc = "Upcast BRepLib_MakeVertex to BRepLib_MakeShape (mutable)"]
+        #[cxx_name = "BRepLib_MakeVertex_as_BRepLib_MakeShape_mut"]
+        fn make_vertex_as_make_shape_mut(self_: Pin<&mut MakeVertex>) -> Pin<&mut MakeShape>;
         #[doc = " ======================== BRepLib_MakeSolid ========================"]
         #[doc = "/// **Source:** `BRepLib_MakeSolid.hxx` - `BRepLib_MakeSolid`"]
         #[doc = ""]
@@ -583,18 +583,18 @@ pub(crate) mod ffi {
             theMaxTol: f64,
             theActTol: &mut f64,
         ) -> bool;
-        #[doc = "Upcast BRepLib_MakeFace to BRepLib_MakeShape"]
-        #[cxx_name = "BRepLib_MakeFace_as_BRepLib_MakeShape"]
-        fn make_face_as_make_shape(self_: &MakeFace) -> &MakeShape;
-        #[doc = "Upcast BRepLib_MakeFace to BRepLib_MakeShape (mutable)"]
-        #[cxx_name = "BRepLib_MakeFace_as_BRepLib_MakeShape_mut"]
-        fn make_face_as_make_shape_mut(self_: Pin<&mut MakeFace>) -> Pin<&mut MakeShape>;
         #[doc = "Upcast BRepLib_MakeFace to BRepLib_Command"]
         #[cxx_name = "BRepLib_MakeFace_as_BRepLib_Command"]
         fn make_face_as_command(self_: &MakeFace) -> &Command;
         #[doc = "Upcast BRepLib_MakeFace to BRepLib_Command (mutable)"]
         #[cxx_name = "BRepLib_MakeFace_as_BRepLib_Command_mut"]
         fn make_face_as_command_mut(self_: Pin<&mut MakeFace>) -> Pin<&mut Command>;
+        #[doc = "Upcast BRepLib_MakeFace to BRepLib_MakeShape"]
+        #[cxx_name = "BRepLib_MakeFace_as_BRepLib_MakeShape"]
+        fn make_face_as_make_shape(self_: &MakeFace) -> &MakeShape;
+        #[doc = "Upcast BRepLib_MakeFace to BRepLib_MakeShape (mutable)"]
+        #[cxx_name = "BRepLib_MakeFace_as_BRepLib_MakeShape_mut"]
+        fn make_face_as_make_shape_mut(self_: Pin<&mut MakeFace>) -> Pin<&mut MakeShape>;
         #[doc = " ======================== BRepLib_MakeEdge ========================"]
         #[doc = "/// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge`"]
         #[doc = ""]
@@ -943,16 +943,6 @@ impl MakeWire {
         ffi::MakeWire_ctor_wire_edge(W, E)
     }
 
-    #[doc = "Upcast to BRepLib_MakeShape"]
-    pub fn as_make_shape(&self) -> &MakeShape {
-        ffi::make_wire_as_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
-    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
-        ffi::make_wire_as_make_shape_mut(self)
-    }
-
     #[doc = "Upcast to BRepLib_Command"]
     pub fn as_command(&self) -> &Command {
         ffi::make_wire_as_command(self)
@@ -961,6 +951,16 @@ impl MakeWire {
     #[doc = "Upcast to BRepLib_Command (mutable)"]
     pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
         ffi::make_wire_as_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape"]
+    pub fn as_make_shape(&self) -> &MakeShape {
+        ffi::make_wire_as_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        ffi::make_wire_as_make_shape_mut(self)
     }
 }
 pub use ffi::MakeShape;
@@ -1240,16 +1240,6 @@ impl MakeFace {
         ffi::MakeFace_ctor_face_wire(F, W)
     }
 
-    #[doc = "Upcast to BRepLib_MakeShape"]
-    pub fn as_make_shape(&self) -> &MakeShape {
-        ffi::make_face_as_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
-    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
-        ffi::make_face_as_make_shape_mut(self)
-    }
-
     #[doc = "Upcast to BRepLib_Command"]
     pub fn as_command(&self) -> &Command {
         ffi::make_face_as_command(self)
@@ -1258,6 +1248,16 @@ impl MakeFace {
     #[doc = "Upcast to BRepLib_Command (mutable)"]
     pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
         ffi::make_face_as_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape"]
+    pub fn as_make_shape(&self) -> &MakeShape {
+        ffi::make_face_as_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        ffi::make_face_as_make_shape_mut(self)
     }
 
     #[doc = "Checks the specified curve is degenerated according to specified tolerance. Returns <theActTol> less than <theMaxTol>, which shows actual tolerance to decide the curve is degenerated. Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell."]

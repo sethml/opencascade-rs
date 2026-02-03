@@ -201,18 +201,18 @@ inline rust::String Geom_BoundedSurface_get_type_name() {
     return rust::String(Geom_BoundedSurface::get_type_name());
 }
 
-inline const Geom_Surface& Geom_BoundedSurface_as_Geom_Surface(const Geom_BoundedSurface& self) { return self; }
-inline Geom_Surface& Geom_BoundedSurface_as_Geom_Surface_mut(Geom_BoundedSurface& self) { return self; }
 inline const Geom_Geometry& Geom_BoundedSurface_as_Geom_Geometry(const Geom_BoundedSurface& self) { return self; }
 inline Geom_Geometry& Geom_BoundedSurface_as_Geom_Geometry_mut(Geom_BoundedSurface& self) { return self; }
+inline const Geom_Surface& Geom_BoundedSurface_as_Geom_Surface(const Geom_BoundedSurface& self) { return self; }
+inline Geom_Surface& Geom_BoundedSurface_as_Geom_Surface_mut(Geom_BoundedSurface& self) { return self; }
 inline std::unique_ptr<HandleGeomBoundedSurface> Geom_BoundedSurface_to_handle(std::unique_ptr<Geom_BoundedSurface> obj) {
     return std::make_unique<HandleGeomBoundedSurface>(obj.release());
 }
-inline std::unique_ptr<HandleGeomSurface> HandleGeomBoundedSurface_to_HandleGeomSurface(const HandleGeomBoundedSurface& handle) {
-    return std::make_unique<HandleGeomSurface>(handle);
-}
 inline std::unique_ptr<HandleGeomGeometry> HandleGeomBoundedSurface_to_HandleGeomGeometry(const HandleGeomBoundedSurface& handle) {
     return std::make_unique<HandleGeomGeometry>(handle);
+}
+inline std::unique_ptr<HandleGeomSurface> HandleGeomBoundedSurface_to_HandleGeomSurface(const HandleGeomBoundedSurface& handle) {
+    return std::make_unique<HandleGeomSurface>(handle);
 }
 
 // ========================
@@ -388,23 +388,23 @@ inline rust::String Geom_BSplineCurve_get_type_name() {
     return rust::String(Geom_BSplineCurve::get_type_name());
 }
 
-inline const Geom_Geometry& Geom_BSplineCurve_as_Geom_Geometry(const Geom_BSplineCurve& self) { return self; }
-inline Geom_Geometry& Geom_BSplineCurve_as_Geom_Geometry_mut(Geom_BSplineCurve& self) { return self; }
 inline const Geom_BoundedCurve& Geom_BSplineCurve_as_Geom_BoundedCurve(const Geom_BSplineCurve& self) { return self; }
 inline Geom_BoundedCurve& Geom_BSplineCurve_as_Geom_BoundedCurve_mut(Geom_BSplineCurve& self) { return self; }
 inline const Geom_Curve& Geom_BSplineCurve_as_Geom_Curve(const Geom_BSplineCurve& self) { return self; }
 inline Geom_Curve& Geom_BSplineCurve_as_Geom_Curve_mut(Geom_BSplineCurve& self) { return self; }
+inline const Geom_Geometry& Geom_BSplineCurve_as_Geom_Geometry(const Geom_BSplineCurve& self) { return self; }
+inline Geom_Geometry& Geom_BSplineCurve_as_Geom_Geometry_mut(Geom_BSplineCurve& self) { return self; }
 inline std::unique_ptr<HandleGeomBSplineCurve> Geom_BSplineCurve_to_handle(std::unique_ptr<Geom_BSplineCurve> obj) {
     return std::make_unique<HandleGeomBSplineCurve>(obj.release());
-}
-inline std::unique_ptr<HandleGeomGeometry> HandleGeomBSplineCurve_to_HandleGeomGeometry(const HandleGeomBSplineCurve& handle) {
-    return std::make_unique<HandleGeomGeometry>(handle);
 }
 inline std::unique_ptr<HandleGeomBoundedCurve> HandleGeomBSplineCurve_to_HandleGeomBoundedCurve(const HandleGeomBSplineCurve& handle) {
     return std::make_unique<HandleGeomBoundedCurve>(handle);
 }
 inline std::unique_ptr<HandleGeomCurve> HandleGeomBSplineCurve_to_HandleGeomCurve(const HandleGeomBSplineCurve& handle) {
     return std::make_unique<HandleGeomCurve>(handle);
+}
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomBSplineCurve_to_HandleGeomGeometry(const HandleGeomBSplineCurve& handle) {
+    return std::make_unique<HandleGeomGeometry>(handle);
 }
 
 // ========================
@@ -459,23 +459,23 @@ inline rust::String Geom_BSplineSurface_get_type_name() {
     return rust::String(Geom_BSplineSurface::get_type_name());
 }
 
-inline const Geom_Surface& Geom_BSplineSurface_as_Geom_Surface(const Geom_BSplineSurface& self) { return self; }
-inline Geom_Surface& Geom_BSplineSurface_as_Geom_Surface_mut(Geom_BSplineSurface& self) { return self; }
 inline const Geom_BoundedSurface& Geom_BSplineSurface_as_Geom_BoundedSurface(const Geom_BSplineSurface& self) { return self; }
 inline Geom_BoundedSurface& Geom_BSplineSurface_as_Geom_BoundedSurface_mut(Geom_BSplineSurface& self) { return self; }
 inline const Geom_Geometry& Geom_BSplineSurface_as_Geom_Geometry(const Geom_BSplineSurface& self) { return self; }
 inline Geom_Geometry& Geom_BSplineSurface_as_Geom_Geometry_mut(Geom_BSplineSurface& self) { return self; }
+inline const Geom_Surface& Geom_BSplineSurface_as_Geom_Surface(const Geom_BSplineSurface& self) { return self; }
+inline Geom_Surface& Geom_BSplineSurface_as_Geom_Surface_mut(Geom_BSplineSurface& self) { return self; }
 inline std::unique_ptr<HandleGeomBSplineSurface> Geom_BSplineSurface_to_handle(std::unique_ptr<Geom_BSplineSurface> obj) {
     return std::make_unique<HandleGeomBSplineSurface>(obj.release());
-}
-inline std::unique_ptr<HandleGeomSurface> HandleGeomBSplineSurface_to_HandleGeomSurface(const HandleGeomBSplineSurface& handle) {
-    return std::make_unique<HandleGeomSurface>(handle);
 }
 inline std::unique_ptr<HandleGeomBoundedSurface> HandleGeomBSplineSurface_to_HandleGeomBoundedSurface(const HandleGeomBSplineSurface& handle) {
     return std::make_unique<HandleGeomBoundedSurface>(handle);
 }
 inline std::unique_ptr<HandleGeomGeometry> HandleGeomBSplineSurface_to_HandleGeomGeometry(const HandleGeomBSplineSurface& handle) {
     return std::make_unique<HandleGeomGeometry>(handle);
+}
+inline std::unique_ptr<HandleGeomSurface> HandleGeomBSplineSurface_to_HandleGeomSurface(const HandleGeomBSplineSurface& handle) {
+    return std::make_unique<HandleGeomSurface>(handle);
 }
 
 // ========================
@@ -518,23 +518,23 @@ inline rust::String Geom_CylindricalSurface_get_type_name() {
     return rust::String(Geom_CylindricalSurface::get_type_name());
 }
 
+inline const Geom_ElementarySurface& Geom_CylindricalSurface_as_Geom_ElementarySurface(const Geom_CylindricalSurface& self) { return self; }
+inline Geom_ElementarySurface& Geom_CylindricalSurface_as_Geom_ElementarySurface_mut(Geom_CylindricalSurface& self) { return self; }
 inline const Geom_Geometry& Geom_CylindricalSurface_as_Geom_Geometry(const Geom_CylindricalSurface& self) { return self; }
 inline Geom_Geometry& Geom_CylindricalSurface_as_Geom_Geometry_mut(Geom_CylindricalSurface& self) { return self; }
 inline const Geom_Surface& Geom_CylindricalSurface_as_Geom_Surface(const Geom_CylindricalSurface& self) { return self; }
 inline Geom_Surface& Geom_CylindricalSurface_as_Geom_Surface_mut(Geom_CylindricalSurface& self) { return self; }
-inline const Geom_ElementarySurface& Geom_CylindricalSurface_as_Geom_ElementarySurface(const Geom_CylindricalSurface& self) { return self; }
-inline Geom_ElementarySurface& Geom_CylindricalSurface_as_Geom_ElementarySurface_mut(Geom_CylindricalSurface& self) { return self; }
 inline std::unique_ptr<HandleGeomCylindricalSurface> Geom_CylindricalSurface_to_handle(std::unique_ptr<Geom_CylindricalSurface> obj) {
     return std::make_unique<HandleGeomCylindricalSurface>(obj.release());
+}
+inline std::unique_ptr<HandleGeomElementarySurface> HandleGeomCylindricalSurface_to_HandleGeomElementarySurface(const HandleGeomCylindricalSurface& handle) {
+    return std::make_unique<HandleGeomElementarySurface>(handle);
 }
 inline std::unique_ptr<HandleGeomGeometry> HandleGeomCylindricalSurface_to_HandleGeomGeometry(const HandleGeomCylindricalSurface& handle) {
     return std::make_unique<HandleGeomGeometry>(handle);
 }
 inline std::unique_ptr<HandleGeomSurface> HandleGeomCylindricalSurface_to_HandleGeomSurface(const HandleGeomCylindricalSurface& handle) {
     return std::make_unique<HandleGeomSurface>(handle);
-}
-inline std::unique_ptr<HandleGeomElementarySurface> HandleGeomCylindricalSurface_to_HandleGeomElementarySurface(const HandleGeomCylindricalSurface& handle) {
-    return std::make_unique<HandleGeomElementarySurface>(handle);
 }
 
 // ========================
@@ -638,20 +638,20 @@ inline rust::String Geom_TrimmedCurve_get_type_name() {
 
 inline const Geom_BoundedCurve& Geom_TrimmedCurve_as_Geom_BoundedCurve(const Geom_TrimmedCurve& self) { return self; }
 inline Geom_BoundedCurve& Geom_TrimmedCurve_as_Geom_BoundedCurve_mut(Geom_TrimmedCurve& self) { return self; }
-inline const Geom_Geometry& Geom_TrimmedCurve_as_Geom_Geometry(const Geom_TrimmedCurve& self) { return self; }
-inline Geom_Geometry& Geom_TrimmedCurve_as_Geom_Geometry_mut(Geom_TrimmedCurve& self) { return self; }
 inline const Geom_Curve& Geom_TrimmedCurve_as_Geom_Curve(const Geom_TrimmedCurve& self) { return self; }
 inline Geom_Curve& Geom_TrimmedCurve_as_Geom_Curve_mut(Geom_TrimmedCurve& self) { return self; }
+inline const Geom_Geometry& Geom_TrimmedCurve_as_Geom_Geometry(const Geom_TrimmedCurve& self) { return self; }
+inline Geom_Geometry& Geom_TrimmedCurve_as_Geom_Geometry_mut(Geom_TrimmedCurve& self) { return self; }
 inline std::unique_ptr<HandleGeomTrimmedCurve> Geom_TrimmedCurve_to_handle(std::unique_ptr<Geom_TrimmedCurve> obj) {
     return std::make_unique<HandleGeomTrimmedCurve>(obj.release());
 }
 inline std::unique_ptr<HandleGeomBoundedCurve> HandleGeomTrimmedCurve_to_HandleGeomBoundedCurve(const HandleGeomTrimmedCurve& handle) {
     return std::make_unique<HandleGeomBoundedCurve>(handle);
 }
-inline std::unique_ptr<HandleGeomGeometry> HandleGeomTrimmedCurve_to_HandleGeomGeometry(const HandleGeomTrimmedCurve& handle) {
-    return std::make_unique<HandleGeomGeometry>(handle);
-}
 inline std::unique_ptr<HandleGeomCurve> HandleGeomTrimmedCurve_to_HandleGeomCurve(const HandleGeomTrimmedCurve& handle) {
     return std::make_unique<HandleGeomCurve>(handle);
+}
+inline std::unique_ptr<HandleGeomGeometry> HandleGeomTrimmedCurve_to_HandleGeomGeometry(const HandleGeomTrimmedCurve& handle) {
+    return std::make_unique<HandleGeomGeometry>(handle);
 }
 

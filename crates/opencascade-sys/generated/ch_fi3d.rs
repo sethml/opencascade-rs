@@ -17,78 +17,102 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_ch_fi3d.hxx");
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "Curve from adaptor3d module"]
+        type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
+        #[doc = "CurveOnSurface from adaptor3d module"]
+        type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
+        #[doc = "Surface from adaptor3d module"]
+        type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
         #[doc = "Curve from b_rep_adaptor module"]
         type BRepAdaptor_Curve = crate::b_rep_adaptor::ffi::Curve;
-        #[doc = "Surface from b_rep_adaptor module"]
-        type BRepAdaptor_Surface = crate::b_rep_adaptor::ffi::Surface;
         #[doc = "Curve2d from b_rep_adaptor module"]
         type BRepAdaptor_Curve2d = crate::b_rep_adaptor::ffi::Curve2d;
-        #[doc = "SecHArray1 from ch_fi_ds module"]
-        type ChFiDS_SecHArray1 = crate::ch_fi_ds::ffi::SecHArray1;
+        #[doc = "Surface from b_rep_adaptor module"]
+        type BRepAdaptor_Surface = crate::b_rep_adaptor::ffi::Surface;
         #[doc = "CircSection from ch_fi_ds module"]
         type ChFiDS_CircSection = crate::ch_fi_ds::ffi::CircSection;
-        #[doc = "ElSpine from ch_fi_ds module"]
-        type ChFiDS_ElSpine = crate::ch_fi_ds::ffi::ElSpine;
-        #[doc = "SurfData from ch_fi_ds module"]
-        type ChFiDS_SurfData = crate::ch_fi_ds::ffi::SurfData;
         #[doc = "CommonPoint from ch_fi_ds module"]
         type ChFiDS_CommonPoint = crate::ch_fi_ds::ffi::CommonPoint;
+        #[doc = "ElSpine from ch_fi_ds module"]
+        type ChFiDS_ElSpine = crate::ch_fi_ds::ffi::ElSpine;
         #[doc = "FaceInterference from ch_fi_ds module"]
         type ChFiDS_FaceInterference = crate::ch_fi_ds::ffi::FaceInterference;
-        #[doc = "Stripe from ch_fi_ds module"]
-        type ChFiDS_Stripe = crate::ch_fi_ds::ffi::Stripe;
         #[doc = "HData from ch_fi_ds module"]
         type ChFiDS_HData = crate::ch_fi_ds::ffi::HData;
         #[doc = "Map from ch_fi_ds module"]
         type ChFiDS_Map = crate::ch_fi_ds::ffi::Map;
-        #[doc = "StripeMap from ch_fi_ds module"]
-        type ChFiDS_StripeMap = crate::ch_fi_ds::ffi::StripeMap;
         #[doc = "Regul from ch_fi_ds module"]
         type ChFiDS_Regul = crate::ch_fi_ds::ffi::Regul;
-        #[doc = "Geometry from geom module"]
-        type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Curve from geom module"]
-        type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "Surface from geom module"]
-        type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "BoundedCurve from geom module"]
-        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
-        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "ElementarySurface from geom module"]
-        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "BezierCurve from geom module"]
-        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
-        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "SecHArray1 from ch_fi_ds module"]
+        type ChFiDS_SecHArray1 = crate::ch_fi_ds::ffi::SecHArray1;
+        #[doc = "Stripe from ch_fi_ds module"]
+        type ChFiDS_Stripe = crate::ch_fi_ds::ffi::Stripe;
+        #[doc = "StripeMap from ch_fi_ds module"]
+        type ChFiDS_StripeMap = crate::ch_fi_ds::ffi::StripeMap;
+        #[doc = "SurfData from ch_fi_ds module"]
+        type ChFiDS_SurfData = crate::ch_fi_ds::ffi::SurfData;
         #[doc = "BSplineCurve from geom module"]
         type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
         #[doc = "BSplineSurface from geom module"]
         type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
+        #[doc = "BezierCurve from geom module"]
+        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
+        #[doc = "BezierSurface from geom module"]
+        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BoundedCurve from geom module"]
+        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
+        #[doc = "BoundedSurface from geom module"]
+        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
+        #[doc = "Curve from geom module"]
+        type Geom_Curve = crate::geom::ffi::Curve;
         #[doc = "CylindricalSurface from geom module"]
         type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
+        #[doc = "ElementarySurface from geom module"]
+        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
+        #[doc = "Geometry from geom module"]
+        type Geom_Geometry = crate::geom::ffi::Geometry;
         #[doc = "Plane from geom module"]
         type Geom_Plane = crate::geom::ffi::Plane;
+        #[doc = "Surface from geom module"]
+        type Geom_Surface = crate::geom::ffi::Surface;
         #[doc = "TrimmedCurve from geom module"]
         type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = "BSpFunc from law module"]
+        type Law_BSpFunc = crate::law::ffi::BSpFunc;
+        #[doc = "Function from law module"]
+        type Law_Function = crate::law::ffi::Function;
+        #[doc = "Interpol from law module"]
+        type Law_Interpol = crate::law::ffi::Interpol;
+        #[doc = "TopAbs from top_abs module"]
+        type TopAbs = crate::top_abs::ffi::TopAbs;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
         #[doc = "Ax1 from gp module"]
         type gp_Ax1 = crate::gp::ffi::Ax1;
         #[doc = "Ax2 from gp module"]
@@ -97,58 +121,46 @@ pub(crate) mod ffi {
         type gp_Ax2d = crate::gp::ffi::Ax2d;
         #[doc = "Ax3 from gp module"]
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
         #[doc = "GTrsf from gp module"]
         type gp_GTrsf = crate::gp::ffi::GTrsf;
         #[doc = "GTrsf2d from gp module"]
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
         #[doc = "Lin from gp module"]
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Function from law module"]
-        type Law_Function = crate::law::ffi::Function;
-        #[doc = "BSpFunc from law module"]
-        type Law_BSpFunc = crate::law::ffi::BSpFunc;
-        #[doc = "Interpol from law module"]
-        type Law_Interpol = crate::law::ffi::Interpol;
-        #[doc = "TopAbs from top_abs module"]
-        type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Curve from adaptor3d module"]
-        type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
-        #[doc = "Surface from adaptor3d module"]
-        type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
-        #[doc = "CurveOnSurface from adaptor3d module"]
-        type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Adaptor3d_TopolTool"]
+        type Adaptor3d_TopolTool;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "ChFiDS_SequenceOfSurfData"]
+        type ChFiDS_SequenceOfSurfData;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "ChFiDS_Spine"]
+        type ChFiDS_Spine;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopOpeBRepBuild_HBuilder"]
+        type TopOpeBRepBuild_HBuilder;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;
@@ -158,48 +170,36 @@ pub(crate) mod ffi {
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "math_Vector"]
         type math_Vector;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Adaptor3d_TopolTool"]
-        type Adaptor3d_TopolTool;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopOpeBRepBuild_HBuilder"]
-        type TopOpeBRepBuild_HBuilder;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "ChFiDS_SequenceOfSurfData"]
-        type ChFiDS_SequenceOfSurfData;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "ChFiDS_Spine"]
-        type ChFiDS_Spine;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleAdaptor3dSurface"]
+        type HandleAdaptor3dSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleAdaptor3dTopolTool"]
+        type HandleAdaptor3dTopolTool;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBRepAdaptorCurve2d"]
+        type HandleBRepAdaptorCurve2d;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleBRepAdaptorSurface"]
         type HandleBRepAdaptorSurface;
         #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleChFiDSElSpine"]
+        type HandleChFiDSElSpine;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleChFiDSSecHArray1"]
+        type HandleChFiDSSecHArray1;
+        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleChFiDSSpine"]
         type HandleChFiDSSpine;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleAdaptor3dSurface"]
-        type HandleAdaptor3dSurface;
+        #[cxx_name = "HandleChFiDSSurfData"]
+        type HandleChFiDSSurfData;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleLawFunction"]
         type HandleLawFunction;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleChFiDSSecHArray1"]
-        type HandleChFiDSSecHArray1;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleChFiDSSurfData"]
-        type HandleChFiDSSurfData;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleAdaptor3dTopolTool"]
-        type HandleAdaptor3dTopolTool;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleChFiDSElSpine"]
-        type HandleChFiDSElSpine;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBRepAdaptorCurve2d"]
-        type HandleBRepAdaptorCurve2d;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTopOpeBRepBuildHBuilder"]
         type HandleTopOpeBRepBuildHBuilder;
