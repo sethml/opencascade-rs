@@ -1,15 +1,14 @@
 // NOTE: This file is partially blocked because:
-// - BRepFilletAPI_MakeFillet needs shape upcasts
-// - BRepAlgoAPI_Cut/Fuse/Common need shape upcasts and shape_list_to_vector
+// - BRepFilletAPI_MakeFillet needs ChFi3d_FilletShape enum (not generated)
 // See TRANSITION_PLAN.md for details.
 
 use crate::{
-    primitives::{BooleanShape, Compound, Edge, Face, Wire},
+    primitives::{BooleanShape, Compound, Edge, Face, Shape, Wire},
     Error,
 };
 use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
-use opencascade_sys::{b_rep_offset_api, topo_ds};
+use opencascade_sys::{b_rep_algo_api, b_rep_offset_api, message, topo_ds};
 
 pub struct Solid {
     pub(crate) inner: UniquePtr<topo_ds::Solid>,
@@ -56,31 +55,74 @@ impl Solid {
         Solid::from_solid(solid)
     }
 
-    // NOTE: subtract is blocked because BRepAlgoAPI_Cut needs shape upcasts
-    #[allow(unused)]
+    /// Boolean subtraction: returns a new shape with `other` removed from `self`.
     #[must_use]
-    pub fn subtract(&self, _other: &Solid) -> BooleanShape {
-        unimplemented!(
-            "Solid::subtract is blocked pending BRepAlgoAPI_Cut and shape list support"
+    pub fn subtract(&self, other: &Solid) -> BooleanShape {
+        let progress = message::ProgressRange::new();
+        let mut cut = b_rep_algo_api::Cut::new_shape2_progressrange(
+            self.inner.as_shape(),
+            other.inner.as_shape(),
+            &progress,
         );
+
+        // Get the resulting shape
+        let make_shape = cut.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let result_shape = make_shape.shape();
+        let shape = Shape::from_shape(result_shape);
+
+        // TODO: section_edges returns a TopTools_ListOfShape that is locally declared
+        // in b_rep_algo_api::ffi rather than imported from top_tools, so we can't
+        // iterate it. This needs a binding generator fix to properly import cross-module types.
+        let new_edges: Vec<Edge> = Vec::new();
+
+        BooleanShape { shape, new_edges }
     }
 
-    // NOTE: union is blocked because BRepAlgoAPI_Fuse needs shape upcasts
-    #[allow(unused)]
+    /// Boolean union: returns a new shape combining `self` and `other`.
     #[must_use]
-    pub fn union(&self, _other: &Solid) -> BooleanShape {
-        unimplemented!(
-            "Solid::union is blocked pending BRepAlgoAPI_Fuse and shape list support"
+    pub fn union(&self, other: &Solid) -> BooleanShape {
+        let progress = message::ProgressRange::new();
+        let mut fuse = b_rep_algo_api::Fuse::new_shape2_progressrange(
+            self.inner.as_shape(),
+            other.inner.as_shape(),
+            &progress,
         );
+
+        // Get the resulting shape
+        let make_shape = fuse.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let result_shape = make_shape.shape();
+        let shape = Shape::from_shape(result_shape);
+
+        // TODO: section_edges returns a TopTools_ListOfShape that is locally declared
+        // in b_rep_algo_api::ffi rather than imported from top_tools, so we can't
+        // iterate it. This needs a binding generator fix to properly import cross-module types.
+        let new_edges: Vec<Edge> = Vec::new();
+
+        BooleanShape { shape, new_edges }
     }
 
-    // NOTE: intersect is blocked because BRepAlgoAPI_Common needs shape upcasts
-    #[allow(unused)]
+    /// Boolean intersection: returns a new shape containing only the volume 
+    /// common to both `self` and `other`.
     #[must_use]
-    pub fn intersect(&self, _other: &Solid) -> BooleanShape {
-        unimplemented!(
-            "Solid::intersect is blocked pending BRepAlgoAPI_Common and shape list support"
+    pub fn intersect(&self, other: &Solid) -> BooleanShape {
+        let progress = message::ProgressRange::new();
+        let mut common = b_rep_algo_api::Common::new_shape2_progressrange(
+            self.inner.as_shape(),
+            other.inner.as_shape(),
+            &progress,
         );
+
+        // Get the resulting shape
+        let make_shape = common.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let result_shape = make_shape.shape();
+        let shape = Shape::from_shape(result_shape);
+
+        // TODO: section_edges returns a TopTools_ListOfShape that is locally declared
+        // in b_rep_algo_api::ffi rather than imported from top_tools, so we can't
+        // iterate it. This needs a binding generator fix to properly import cross-module types.
+        let new_edges: Vec<Edge> = Vec::new();
+
+        BooleanShape { shape, new_edges }
     }
 
     /// Purposefully underpowered for now, this simply takes a list of points,

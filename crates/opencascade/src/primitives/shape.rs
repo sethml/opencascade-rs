@@ -1,7 +1,6 @@
 // NOTE: This file is partially blocked because:
-// - Many helper functions (cast_*_to_shape, shape_list_to_vector, etc.) not generated
 // - TopAbs_ShapeEnum not generated (enums blocked)
-// - BRepFilletAPI needs TColgp_Array1OfPnt2d SetValue
+// - BRepFilletAPI needs ChFi3d_FilletShape enum (not generated)
 // - STEP/IGES readers need custom helper functions
 // - Mesher is blocked
 // See TRANSITION_PLAN.md for details.
@@ -16,7 +15,7 @@ use crate::{
 };
 use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
-use opencascade_sys::{b_rep_prim_api, gp, topo_ds};
+use opencascade_sys::{b_rep_algo_api, b_rep_mesh, b_rep_prim_api, gp, message, stl_api, topo_ds};
 use std::path::Path;
 
 pub struct Shape {
@@ -458,13 +457,27 @@ impl Shape {
         );
     }
 
-    // NOTE: subtract is blocked because BRepAlgoAPI_Cut and shape_list_to_vector not available
-    #[allow(unused)]
+    /// Boolean subtraction: returns a new shape with `other` removed from `self`.
     #[must_use]
-    pub fn subtract(&self, _other: &Shape) -> BooleanShape {
-        unimplemented!(
-            "Shape::subtract is blocked pending BRepAlgoAPI_Cut and shape list support"
+    pub fn subtract(&self, other: &Shape) -> BooleanShape {
+        let progress = message::ProgressRange::new();
+        let mut cut = b_rep_algo_api::Cut::new_shape2_progressrange(
+            &self.inner,
+            &other.inner,
+            &progress,
         );
+
+        // Get the resulting shape
+        let make_shape = cut.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let result_shape = make_shape.shape();
+        let shape = Shape::from_shape(result_shape);
+
+        // TODO: section_edges returns a TopTools_ListOfShape that is locally declared
+        // in b_rep_algo_api::ffi rather than imported from top_tools, so we can't
+        // iterate it. This needs a binding generator fix to properly import cross-module types.
+        let new_edges: Vec<Edge> = Vec::new();
+
+        BooleanShape { shape, new_edges }
     }
 
     // NOTE: read_step is blocked because STEPControl_Reader helpers not generated
@@ -499,41 +512,98 @@ impl Shape {
         );
     }
 
-    // NOTE: union is blocked because BRepAlgoAPI_Fuse and shape_list_to_vector not available
-    #[allow(unused)]
+    /// Boolean union: returns a new shape combining `self` and `other`.
     #[must_use]
-    pub fn union(&self, _other: &Shape) -> BooleanShape {
-        unimplemented!(
-            "Shape::union is blocked pending BRepAlgoAPI_Fuse and shape list support"
+    pub fn union(&self, other: &Shape) -> BooleanShape {
+        let progress = message::ProgressRange::new();
+        let mut fuse = b_rep_algo_api::Fuse::new_shape2_progressrange(
+            &self.inner,
+            &other.inner,
+            &progress,
         );
+
+        // Get the resulting shape
+        let make_shape = fuse.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let result_shape = make_shape.shape();
+        let shape = Shape::from_shape(result_shape);
+
+        // TODO: section_edges returns a TopTools_ListOfShape that is locally declared
+        // in b_rep_algo_api::ffi rather than imported from top_tools, so we can't
+        // iterate it. This needs a binding generator fix to properly import cross-module types.
+        let new_edges: Vec<Edge> = Vec::new();
+
+        BooleanShape { shape, new_edges }
     }
 
-    // NOTE: intersect is blocked because BRepAlgoAPI_Common and shape_list_to_vector not available
-    #[allow(unused)]
+    /// Boolean intersection: returns a new shape containing only the volume 
+    /// common to both `self` and `other`.
     #[must_use]
-    pub fn intersect(&self, _other: &Shape) -> BooleanShape {
-        unimplemented!(
-            "Shape::intersect is blocked pending BRepAlgoAPI_Common and shape list support"
+    pub fn intersect(&self, other: &Shape) -> BooleanShape {
+        let progress = message::ProgressRange::new();
+        let mut common = b_rep_algo_api::Common::new_shape2_progressrange(
+            &self.inner,
+            &other.inner,
+            &progress,
         );
+
+        // Get the resulting shape
+        let make_shape = common.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        let result_shape = make_shape.shape();
+        let shape = Shape::from_shape(result_shape);
+
+        // TODO: section_edges returns a TopTools_ListOfShape that is locally declared
+        // in b_rep_algo_api::ffi rather than imported from top_tools, so we can't
+        // iterate it. This needs a binding generator fix to properly import cross-module types.
+        let new_edges: Vec<Edge> = Vec::new();
+
+        BooleanShape { shape, new_edges }
     }
 
-    // NOTE: write_stl is blocked because Mesher is blocked
-    #[allow(unused)]
-    pub fn write_stl<P: AsRef<Path>>(&self, _path: P) -> Result<(), Error> {
-        unimplemented!(
-            "Shape::write_stl is blocked pending Mesher support"
-        );
+    /// Writes the shape to an STL file at the given path.
+    /// 
+    /// Note: This will automatically mesh the shape if it isn't already meshed.
+    /// Uses a default linear deflection tolerance of 0.1.
+    pub fn write_stl<P: AsRef<Path>>(&self, path: P) -> Result<(), Error> {
+        self.write_stl_with_tolerance(path, 0.1)
     }
 
-    #[allow(unused)]
+    /// Writes the shape to an STL file with custom meshing tolerance.
+    /// 
+    /// The `triangulation_tolerance` parameter controls the linear deflection 
+    /// (maximum deviation between the mesh and the original surface).
+    /// Smaller values create finer meshes but larger files.
     pub fn write_stl_with_tolerance<P: AsRef<Path>>(
         &self,
-        _path: P,
-        _triangulation_tolerance: f64,
+        path: P,
+        triangulation_tolerance: f64,
     ) -> Result<(), Error> {
-        unimplemented!(
-            "Shape::write_stl_with_tolerance is blocked pending Mesher support"
+        // Mesh the shape first
+        let progress = message::ProgressRange::new();
+        let is_relative = false;
+        let angle_deflection = 0.5; // radians, ~30 degrees
+        let in_parallel = true;
+        
+        let mut mesher = b_rep_mesh::IncrementalMesh::new_shape_real_bool_real_bool(
+            &self.inner,
+            triangulation_tolerance,
+            is_relative,
+            angle_deflection,
+            in_parallel,
         );
+        mesher.pin_mut().perform_progressrange(&progress);
+
+        // Write to STL
+        let mut writer = stl_api::Writer::new();
+        let path_str = path.as_ref().to_str()
+            .ok_or_else(|| Error::PathContainsNonUtf8Characters)?;
+        
+        let success = writer.pin_mut().write(&self.inner, path_str, &progress);
+        
+        if success {
+            Ok(())
+        } else {
+            Err(Error::StlWriteFailed)
+        }
     }
 
     // NOTE: clean is blocked because ShapeUpgrade_UnifySameDomain not generated

@@ -382,6 +382,59 @@ impl SymbolTable {
             .filter(|m| m.status.is_included())
             .collect()
     }
+    
+    /// Get class by C++ name
+    pub fn class_by_name(&self, cpp_name: &str) -> Option<&ResolvedClass> {
+        let id = SymbolId::new(format!("class::{}", cpp_name));
+        self.classes.get(&id)
+    }
+    
+    /// Get set of all C++ class names that have protected destructors
+    pub fn protected_destructor_class_names(&self) -> HashSet<String> {
+        self.classes
+            .values()
+            .filter(|c| c.has_protected_destructor)
+            .map(|c| c.cpp_name.clone())
+            .collect()
+    }
+    
+    /// Get base classes for a class (recursively collecting all ancestors)
+    pub fn get_all_ancestors(&self, class: &ResolvedClass) -> Vec<String> {
+        self.get_all_ancestors_by_name(&class.cpp_name)
+    }
+    
+    /// Get all ancestors by C++ class name (recursively collecting all base classes)
+    pub fn get_all_ancestors_by_name(&self, cpp_name: &str) -> Vec<String> {
+        let mut ancestors = Vec::new();
+        let mut visited: HashSet<String> = HashSet::new();
+        
+        // Start with the direct base classes of the given class
+        let mut to_process = if let Some(class) = self.class_by_name(cpp_name) {
+            class.base_classes.clone()
+        } else {
+            return ancestors;
+        };
+        
+        while let Some(base) = to_process.pop() {
+            if visited.contains(&base) {
+                continue;
+            }
+            visited.insert(base.clone());
+            ancestors.push(base.clone());
+            
+            if let Some(base_class) = self.class_by_name(&base) {
+                for parent in &base_class.base_classes {
+                    if !visited.contains(parent) {
+                        to_process.push(parent.clone());
+                    }
+                }
+            }
+        }
+        
+        // Sort for deterministic output
+        ancestors.sort();
+        ancestors
+    }
 }
 
 /// Rust keywords that need special handling
@@ -432,31 +485,36 @@ pub fn function_uses_enum(func: &ParsedFunction, all_enums: &HashSet<String>) ->
         || func.return_type.as_ref().map_or(false, |t| type_uses_enum(t, all_enums))
 }
 
-/// Check if a method needs explicit lifetimes (Pin<&mut Self> return with reference params)
+/// Check if a method needs explicit lifetimes (CXX limitation)
+/// Returns true if the method returns a mutable reference and has other reference parameters.
+/// Rust can't infer lifetimes when there are multiple potential sources.
 pub fn method_needs_explicit_lifetimes(method: &Method) -> bool {
-    // Check if method is non-const (returns Pin<&mut Self>)
-    if method.is_const {
+    // Check if return type is a mutable reference (Pin<&mut Self> or MutRef)
+    let returns_mut_ref = method.return_type.as_ref().map(|ty| {
+        matches!(ty, Type::MutRef(_))
+    }).unwrap_or(false);
+    
+    if !returns_mut_ref {
         return false;
     }
     
-    // Check if return type is a reference to Self or similar
-    if let Some(ref ret) = method.return_type {
-        match ret {
-            Type::MutRef(inner) | Type::ConstRef(inner) => {
-                // If return type references self and there are reference params,
-                // Rust would need explicit lifetime annotations
-                if method.params.iter().any(|p| p.ty.is_reference()) {
-                    // Check if inner type could be Self
-                    if let Type::Class(_) = inner.as_ref() {
-                        return true;
-                    }
-                }
-            }
-            _ => {}
-        }
+    // Check if any parameter is a reference (other than self which is handled separately)
+    // Also treat const char* as a reference parameter
+    method.params.iter().any(|p| {
+        matches!(&p.ty, Type::ConstRef(_) | Type::MutRef(_)) || p.ty.is_c_string()
+    })
+}
+
+/// Check if a const method returns a mutable reference (not allowed by CXX)
+/// CXX requires &mut self when returning &mut, but C++ allows const methods to return non-const refs
+pub fn has_const_mut_return_mismatch(method: &Method) -> bool {
+    if !method.is_const {
+        return false;
     }
-    
-    false
+    // Check if return type is a mutable reference
+    method.return_type.as_ref().map(|ty| {
+        matches!(ty, Type::MutRef(_))
+    }).unwrap_or(false)
 }
 
 /// Check if a method has unsupported by-value parameters

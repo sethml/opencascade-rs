@@ -6,6 +6,30 @@ This document outlines the plan to transition `opencascade-sys` from hand-writte
 
 Keep the old crate as `opencascade-sys-old` for reference, and build a new `opencascade-sys` using the code generator with pre-generated code.
 
+## Reference: Comparing Old vs New Code
+
+To see how the old code worked before the binding generator changes, use:
+
+```bash
+# Reference commit before binding generator work (last commit on origin/main)
+git show 14fca36:crates/opencascade/src/primitives/solid.rs
+
+# Diff a specific file
+git diff 14fca36 -- crates/opencascade/src/primitives/shape.rs
+
+# See all changes to the opencascade crate since then
+git diff 14fca36 -- crates/opencascade/
+
+# See the old opencascade-sys structure
+git show 14fca36:crates/opencascade-sys/src/lib.rs | head -200
+```
+
+**Key differences in old code:**
+- Uses `opencascade_sys::ffi::*` directly (monolithic ffi module)
+- Uses `ffi::TopoDS_Solid_to_owned(solid)` instead of `solid.to_owned()`
+- Uses `ffi::cast_solid_to_shape(&self.inner)` instead of `self.inner.as_shape()`
+- Uses `ffi::BRepFilletAPI_MakeFillet_ctor(shape)` instead of `b_rep_fillet_api::MakeFillet::new_shape(...)`
+
 ## Progress
 
 ### ✅ Step 1: Generator Enhancements (COMPLETE)
@@ -659,11 +683,11 @@ This would ensure both FFI and impl generation iterate over the exact same metho
 
 ---
 
-### 🔄 Step 4h: Two-Pass Architecture Refactor (IN PROGRESS)
+### ✅ Step 4h: Two-Pass Architecture Refactor (COMPLETE)
 
-**Status:** ✅ Phase 2 Complete - Filter functions consolidated
+**Status:** ✅ Complete - Both rust.rs and cpp.rs codegen now use SymbolTable
 
-**Current Progress:**
+**Summary:**
 
 1. ✅ Created `resolver.rs` (~1000 lines) with:
    - `SymbolTable` struct with lookup methods
@@ -681,17 +705,68 @@ This would ensure both FFI and impl generation iterate over the exact same metho
    - `regenerate-bindings.sh` succeeds
    - `opencascade-sys` compiles successfully
 
-4. ✅ Consolidated filter functions (Phase 2):
+4. ✅ Consolidated ALL filter functions (Phase 2):
    - Made filter functions public in resolver.rs: `type_uses_enum`, `params_use_enum`, `method_needs_explicit_lifetimes`, `method_has_unsupported_by_value_params`, `static_method_has_unsupported_by_value_params`
    - Added convenience wrappers: `method_uses_enum`, `constructor_uses_enum`, `static_method_uses_enum`, `function_uses_enum`
-   - Updated rust.rs and cpp.rs to delegate to resolver implementations
-   - Eliminated ~45 lines of duplicate filter logic
+   - Added `has_const_mut_return_mismatch` function to resolver.rs
+   - Updated rust.rs to delegate ALL filter functions to resolver:
+     - `method_uses_enum`, `constructor_uses_enum`, `static_method_uses_enum`, `function_uses_enum`
+     - `has_unsupported_by_value_params` → `resolver::method_has_unsupported_by_value_params().is_some()`
+     - `has_const_mut_return_mismatch` → `resolver::has_const_mut_return_mismatch()`
+     - `needs_explicit_lifetimes` → `resolver::method_needs_explicit_lifetimes()`
+   - Updated cpp.rs to delegate `method_uses_enum` to resolver (via `params_use_enum` + `type_uses_enum`)
+   - Eliminated ~60 lines of duplicate filter logic across both files
 
-**Remaining Work:**
+5. ✅ Started migrating `generate_module()` to use SymbolTable (Phase 3):
+   - ✅ Added `symbol_table: &SymbolTable` parameter to `generate_module()`
+   - ✅ Updated main.rs and lib.rs to pass symbol_table to generators
+   - ✅ Removed `all_enum_names` parameter - now using `symbol_table.all_enum_names`
+   - ✅ Removed `all_class_names` parameter - now using `symbol_table.all_class_names`
+   - ✅ Removed `cross_module_types` parameter - now using `symbol_table.cross_module_types_for_module()`
+   - ✅ Added `protected_destructor_class_names()` helper to SymbolTable
+   - ✅ Using `symbol_table.protected_destructor_class_names()` instead of computing from `all_parsed_classes`
+   - ✅ Added `get_all_ancestors_by_name()` helper to SymbolTable
+   - ✅ Updated `generate_re_exports()` to use `symbol_table.get_all_ancestors_by_name()`
+   - ✅ Updated `generate_upcast_methods()` to use `symbol_table.get_all_ancestors_by_name()`
+   - ✅ Updated `generate_handle_upcast_ffi()` to use `symbol_table.get_all_ancestors_by_name()`
+   - ✅ Updated `generate_handle_impls()` to use `symbol_table.get_all_ancestors_by_name()`
+   - ✅ Removed `all_classes_map` building and parameter from `generate_class()`
+   - ✅ Removed `all_parsed_classes` parameter from `generate_module()` entirely
+   - ✅ Removed unused local `get_all_ancestors()` function from rust.rs
 
-5. 🔲 Refactor `codegen/rust.rs` to consume SymbolTable instead of raw ParsedClass/Method data
-6. 🔲 Refactor `codegen/cpp.rs` similarly
+6. ✅ Refactored `codegen/cpp.rs` to use SymbolTable:
+   - ✅ Added `symbol_table: &SymbolTable` parameter to `generate_module_header()`
+   - ✅ Removed `all_enum_names`, `all_class_names`, `global_inheritance_map`, `cross_module_types` parameters
+   - ✅ Updated `generate_class_wrappers()` to use `symbol_table`
+   - ✅ Updated `generate_upcast_wrappers()` to use `symbol_table.get_all_ancestors_by_name()` and `symbol_table.all_class_names`
+   - ✅ Updated `generate_handle_upcast_wrappers()` to use `symbol_table.get_all_ancestors_by_name()` and `symbol_table.all_class_names`
+   - ✅ Updated `generate_function_wrappers()` to use `symbol_table.all_enum_names`
+   - ✅ Updated main.rs and lib.rs call sites
+   - ✅ Removed redundant `all_enum_names`, `all_class_names`, `global_inheritance_map` variable construction from main.rs and lib.rs
+
+**Remaining Work (Optional Future Enhancements):**
+
 7. 🔲 Full migration to resolved types (using `ResolvedClass`, `ResolvedMethod`, etc.)
+   - Currently, codegen receives `&[&ParsedClass]` and filters/processes at generation time
+   - Target: Codegen receives resolved types with pre-computed names, statuses, and filtered members
+   - Benefits:
+     - Single source of truth for filtering decisions (resolver.rs only)
+     - Pre-computed Rust/C++ names eliminate redundant computation
+     - Easier debugging via `--dump-symbols` flag
+   - Required changes:
+     - Handle duplicate constructor/method naming in resolver instead of codegen
+     - Update `generate_class()` to use `ResolvedClass` with `included_constructors()` etc.
+     - Eventually remove `ParsedClass`/`ParsedMethod` from codegen signatures
+
+**Current State:**
+The two-pass architecture infrastructure is complete:
+- ✅ SymbolTable with all resolved types (`ResolvedClass`, `ResolvedMethod`, etc.)
+- ✅ Helper methods for lookup and iteration (`included_classes_for_module()`, `included_methods()`, etc.)
+- ✅ All filter functions consolidated in resolver.rs
+- ✅ Both rust.rs and cpp.rs codegen use SymbolTable for cross-module lookups
+- ✅ main.rs/lib.rs no longer build redundant data structures
+
+The remaining step (7) is optional - the current architecture is clean and functional. It would be valuable if we need to add more complex binding rules or want better debuggability.
 
 **Original Motivation:**
 
@@ -995,9 +1070,9 @@ _Document patterns discovered during translation here. Refer back to this sectio
 - [x] `primitives/wire.rs` - ✅ Compiles (from_unordered_edges/offset/sweep_along/sweep_along_with_radius_values stubbed - various blockers documented)
 - [x] `primitives/face.rs` - 🟡 Partially updated (revolve restored, extrude_to_face/subtractive_extrude/fillet/chamfer/offset/sweep_along stubbed)
 - [x] `primitives/shell.rs` - ✅ Updated (loft restored)
-- [x] `primitives/solid.rs` - 🟡 Compiles (fillet_edge/loft/subtract/union/intersect stubbed)
+- [x] `primitives/solid.rs` - 🟡 Compiles (fillet_edge stubbed, subtract/union/intersect RESTORED but new_edges empty due to cross-module ListOfShape issue)
 - [x] `primitives/compound.rs` - 🔴 Fully stubbed (BRep_Builder blocked)
-- [x] `primitives/shape.rs` - 🟡 Partially updated (box/cylinder/sphere/cone/torus restored, subtract/union/intersect/fillet/chamfer/read_step/write_step/read_iges/write_iges/write_stl stubbed)
+- [x] `primitives/shape.rs` - 🟡 Partially updated (box/cylinder/sphere/cone/torus + subtract/union/intersect + write_stl RESTORED, fillet/chamfer/read_step/write_step/read_iges/write_iges stubbed)
 - [x] `primitives/surface.rs` - 🔴 Fully stubbed (array constructors blocked)
 - [x] `primitives/vertex.rs` - ✅ Translated
 - [x] `primitives/boolean_shape.rs` - ✅ Translated
@@ -1088,7 +1163,9 @@ The following are CXX or OCCT limitations that cause certain methods to be skipp
    - `BRep_Builder` has no explicit constructor in header (uses C++ implicit default)
    - Generator only emits constructors it finds in the AST
    - `compound.rs` blocked: needs `BRep_Builder::new()`
-   - **Fix needed:** Detect classes with no explicit ctor and generate default ctor wrapper
+   - **Attempted fix:** Tried generating synthetic default constructors for classes with no explicit constructors
+   - **Why it failed:** The parser's `is_abstract` flag only detects pure virtual methods in the class itself, not inherited ones. Classes like `BOPAlgo_BuilderShape` inherit pure virtual `Perform()` from `BOPAlgo_Algo` but don't override it, so they're abstract but not detected as such. Generating synthetic constructors for these classes caused C++ compilation errors ("allocating an object of abstract class type").
+   - **Fix needed:** Enhance abstract class detection to traverse the inheritance hierarchy and check for unimplemented pure virtual methods in base classes
 
 7. **Constructors with default enum parameters skipped** (e.g., `BRepFilletAPI_MakeFillet`)
    - `BRepFilletAPI_MakeFillet(const TopoDS_Shape&, ChFi3d_FilletShape FShape = ChFi3d_Rational)`
@@ -1123,9 +1200,30 @@ The following are CXX or OCCT limitations that cause certain methods to be skipp
 13. **STEP/IGES helper functions missing**
    - `Shape::read_step`, `Shape::write_step`, `Shape::read_iges`, `Shape::write_iges` are stubbed
    - Need small helper wrappers (open file, transfer roots, write file)
+   - ReadFile method returns `IFSelect_ReturnStatus` enum (not generated), blocking read operations
 
-14. **Boolean ops still stubbed (Cut/Fuse/Common)**
-   - `Shape::subtract/union/intersect` still blocked pending shape-list helpers and op wiring
+14. **~~Boolean ops still stubbed (Cut/Fuse/Common)~~** - PARTIALLY RESOLVED
+   - `Solid::subtract/union/intersect` and `Shape::subtract/union/intersect` now work!
+   - Uses `BRepAlgoAPI_Cut/Fuse/Common` constructors with `Message_ProgressRange`
+   - Constructors are: `Cut::new_shape2_progressrange(S1, S2, &progress)` etc.
+   - **Remaining issue:** `section_edges()` returns `&TopTools_ListOfShape` which is locally
+     declared in `b_rep_algo_api::ffi` rather than imported from `top_tools`, so we can't use
+     `top_tools::ListOfShape::iter()` on it. Currently returns empty `new_edges` vec.
+   - **Fix needed:** Generator should import `TopTools_ListOfShape = top_tools::ffi::ListOfShape`
+     instead of declaring it as a local opaque type when it's used across modules.
+
+16. **~~STL writing blocked~~** - RESOLVED
+   - `Shape::write_stl` and `Shape::write_stl_with_tolerance` now work!
+   - Uses `BRepMesh_IncrementalMesh` for meshing and `StlAPI_Writer::write()` for export
+
+15. **Cross-module type sharing issue (TopTools_ListOfShape)** - NEW BLOCKER
+   - When types like `TopTools_ListOfShape` are used in module A (e.g., `b_rep_algo_api`) 
+     but defined in module B (`top_tools`), they're declared as opaque local types instead
+     of imported from the source module.
+   - This means iterator/helper methods defined in module B don't work on references from module A.
+   - Affects: `section_edges()` results in boolean ops, any other cross-module collection usage
+   - **Fix needed:** Generator should detect when a type is defined in another module and use
+     a type alias pointing to that module's ffi type instead of a local opaque declaration.
 
 **Blocking Issues (Resolved):**
 

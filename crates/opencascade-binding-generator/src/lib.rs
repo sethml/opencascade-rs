@@ -53,17 +53,16 @@ pub fn generate_bindings(config: &GeneratorConfig) -> Result<Vec<GeneratedModule
     let all_classes: Vec<_> = parsed.iter().flat_map(|h| &h.classes).collect();
     let all_enums: Vec<_> = parsed.iter().flat_map(|h| &h.enums).collect();
     let all_functions: Vec<_> = parsed.iter().flat_map(|h| &h.functions).collect();
-    
-    // Collect all enum names for cross-module enum type resolution
-    let all_enum_names: std::collections::HashSet<String> = 
-        all_enums.iter().map(|e| e.name.clone()).collect();
-    
-    // Collect all class names for upcast filtering (skip base classes not in our set)
-    let all_class_names: std::collections::HashSet<String> =
-        all_classes.iter().map(|c| c.name.clone()).collect();
 
-    // Build global inheritance map for transitive upcast generation
-    let global_inheritance_map = codegen::cpp::build_inheritance_map(&all_classes);
+    // Build symbol table (Pass 1 of two-pass architecture)
+    let ordered_modules = graph.modules_in_order();
+    let symbol_table = resolver::build_symbol_table(
+        &ordered_modules,
+        &graph,
+        &all_classes,
+        &all_enums,
+        &all_functions,
+    );
 
     let mut modules = Vec::new();
 
@@ -95,9 +94,6 @@ pub fn generate_bindings(config: &GeneratorConfig) -> Result<Vec<GeneratedModule
             continue;
         }
 
-        // Get cross-module types
-        let cross_types = graph.get_cross_module_types(&module.name);
-
         // Get collections for this module
         let module_collections = codegen::collections::collections_for_module(&module.rust_name);
 
@@ -106,11 +102,11 @@ pub fn generate_bindings(config: &GeneratorConfig) -> Result<Vec<GeneratedModule
 
         // Generate Rust code
         let rust_code =
-            codegen::rust::generate_module(module, &module_classes, &module_enums, &module_functions, &cross_types, &all_enum_names, &all_class_names, &all_classes, &headers_list, &module_collections);
+            codegen::rust::generate_module(module, &module_classes, &module_enums, &module_functions, &headers_list, &module_collections, &symbol_table);
 
         // Generate C++ header (use empty known_headers for tests - headers won't be filtered)
         let known_headers: std::collections::HashSet<String> = std::collections::HashSet::new();
-        let cpp_code = codegen::cpp::generate_module_header(module, &module_classes, &module_functions, &cross_types, &all_enum_names, &all_class_names, &global_inheritance_map, &module_collections, &known_headers);
+        let cpp_code = codegen::cpp::generate_module_header(module, &module_classes, &module_functions, &module_collections, &known_headers, &symbol_table);
 
         modules.push(GeneratedModule {
             rust_name: module.rust_name.clone(),

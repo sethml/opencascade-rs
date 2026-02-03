@@ -215,17 +215,6 @@ fn main() -> Result<()> {
         dump_symbol_table(&symbol_table);
         return Ok(());
     }
-
-    // Collect all enum names for cross-module enum type resolution
-    let all_enum_names: std::collections::HashSet<String> = 
-        all_enums.iter().map(|e| e.name.clone()).collect();
-    
-    // Collect all class names for upcast filtering (skip base classes not in our set)
-    let all_class_names: std::collections::HashSet<String> =
-        all_classes.iter().map(|c| c.name.clone()).collect();
-
-    // Build global inheritance map for transitive upcast generation
-    let global_inheritance_map = codegen::cpp::build_inheritance_map(&all_classes);
     
     // Collect set of known header filenames that actually exist
     // This is used to filter out headers for types that don't have their own header files
@@ -306,9 +295,6 @@ fn main() -> Result<()> {
             module_functions.len()
         );
 
-        // Get cross-module types
-        let cross_types = graph.get_cross_module_types(&module.name);
-
         // Get collections for this module
         let module_collections = codegen::collections::collections_for_module(&module.rust_name);
 
@@ -332,12 +318,9 @@ fn main() -> Result<()> {
             &module_classes,
             &module_enums,
             &module_functions,
-            &cross_types,
-            &all_enum_names,
-            &all_class_names,
-            &all_classes,
             &headers_list,
             &module_collections,
+            &symbol_table,
         );
 
         // Write to output directory
@@ -347,7 +330,7 @@ fn main() -> Result<()> {
         println!("    Wrote: {}", rust_file.display());
 
         // Generate C++ header wrapper
-        let cpp_code = codegen::cpp::generate_module_header(module, &module_classes, &module_functions, &cross_types, &all_enum_names, &all_class_names, &global_inheritance_map, &module_collections, &known_headers);
+        let cpp_code = codegen::cpp::generate_module_header(module, &module_classes, &module_functions, &module_collections, &known_headers, &symbol_table);
         // Use wrapper_ prefix to avoid collision with OCCT headers (e.g., gp.hxx)
         let cpp_file = args.output.join(format!("wrapper_{}.hxx", module.rust_name));
         std::fs::write(&cpp_file, &cpp_code)?;

@@ -122,25 +122,21 @@ pub fn generate_module(
     classes: &[&ParsedClass],
     enums: &[&ParsedEnum],
     functions: &[&ParsedFunction],
-    cross_module_types: &[CrossModuleType],
-    all_enum_names: &HashSet<String>,
-    all_class_names: &HashSet<String>,
-    all_parsed_classes: &[&ParsedClass],
     headers: &[String],
     collections: &[super::collections::CollectionInfo],
+    symbol_table: &crate::resolver::SymbolTable,
 ) -> String {
     let _module_name = format_ident!("{}", module.rust_name);
     // Use wrapper_ prefix to avoid collision with OCCT headers (e.g., gp.hxx)
     let include_file = format!("wrapper_{}.hxx", module.rust_name);
 
+    // Use data from symbol table
+    let all_enum_names = &symbol_table.all_enum_names;
+    let all_class_names = &symbol_table.all_class_names;
+    let cross_module_types = symbol_table.cross_module_types_for_module(&module.rust_name);
+
     // Build the set of classes defined in this module
     let module_classes: HashSet<String> = classes.iter().map(|c| c.name.clone()).collect();
-
-    // Build a map of all classes for inheritance lookup
-    let all_classes_map: HashMap<String, &ParsedClass> = all_parsed_classes
-        .iter()
-        .map(|c| (c.name.clone(), *c))
-        .collect();
 
     // Create type context for this module
     let type_ctx = TypeContext {
@@ -150,12 +146,8 @@ pub fn generate_module(
         all_classes: all_class_names,
     };
 
-    // Build set of ALL classes with protected destructors (from all modules)
-    let protected_destructor_class_names: HashSet<String> = all_parsed_classes
-        .iter()
-        .filter(|c| c.has_protected_destructor)
-        .map(|c| c.name.clone())
-        .collect();
+    // Get ALL classes with protected destructors (from symbol table)
+    let protected_destructor_class_names = symbol_table.protected_destructor_class_names();
 
     // Generate cross-module type aliases
     // Skip enums (enum generation is disabled) and classes with protected destructors (not declared)
@@ -168,7 +160,7 @@ pub fn generate_module(
     let type_aliases = generate_type_aliases(&non_enum_cross_module_types);
 
     // Collect all referenced types that need opaque declarations
-    let collected_types = collect_referenced_types(classes, &all_classes_map);
+    let collected_types = collect_referenced_types(classes);
     
     let opaque_type_decls =
         generate_opaque_type_declarations(&collected_types, classes, cross_module_types, all_enum_names);
@@ -184,7 +176,7 @@ pub fn generate_module(
     let class_items = classes
         .iter()
         .filter(|class| !class.has_protected_destructor)
-        .map(|class| generate_class(class, &type_ctx, &all_classes_map))
+        .map(|class| generate_class(class, &type_ctx, symbol_table))
         .collect::<Vec<_>>();
 
     // Generate namespace-level free functions
@@ -202,10 +194,10 @@ pub fn generate_module(
 
     // Generate re-exports for classes, enums, and functions
     // Use all-modules protected destructor class names for filtering upcast targets
-    let re_exports = generate_re_exports(&module.name, &bindable_classes, enums, functions, all_class_names, &protected_destructor_class_names, all_enum_names, all_parsed_classes);
+    let re_exports = generate_re_exports(&module.name, &bindable_classes, enums, functions, all_class_names, &protected_destructor_class_names, all_enum_names, symbol_table);
 
     // Generate Handle impl blocks with upcast methods
-    let handle_impls = generate_handle_impls(&bindable_classes, all_class_names, &protected_destructor_class_names, &all_classes_map);
+    let handle_impls = generate_handle_impls(&bindable_classes, all_class_names, &protected_destructor_class_names, symbol_table);
 
     // Generate to_handle free function exports
     let to_handle_exports = generate_to_handle_exports(&bindable_classes);
@@ -336,7 +328,6 @@ struct CollectedTypes {
 /// Collect all referenced OCCT types from class methods and constructors
 fn collect_referenced_types(
     classes: &[&ParsedClass], 
-    _all_classes: &HashMap<String, &ParsedClass>,
 ) -> CollectedTypes {
     let mut result = CollectedTypes {
         classes: BTreeSet::new(),
@@ -695,7 +686,7 @@ fn screaming_snake_to_pascal_case(s: &str) -> String {
 fn generate_class(
     class: &ParsedClass,
     ctx: &TypeContext,
-    all_classes_map: &HashMap<String, &ParsedClass>,
+    symbol_table: &crate::resolver::SymbolTable,
 ) -> TokenStream {
     let cpp_name = &class.name;
     // Use safe short name (e.g., "Pnt" instead of "gp_Pnt", or "GpVec" for "Vec")
@@ -734,7 +725,7 @@ fn generate_class(
     let static_methods = generate_static_methods(class, ctx);
 
     // Upcast functions (for inheritance)
-    let upcast_methods = generate_upcast_methods(class, ctx, all_classes_map);
+    let upcast_methods = generate_upcast_methods(class, ctx, symbol_table);
 
     // Inherited methods from base classes
     // NOTE: Disabled due to CXX method pointer verification issue.
@@ -752,7 +743,7 @@ fn generate_class(
     let to_handle = generate_to_handle_ffi(class);
 
     // Handle upcast functions (for Handle types to upcast to base Handle types)
-    let handle_upcasts = generate_handle_upcast_ffi(class, ctx, all_classes_map);
+    let handle_upcasts = generate_handle_upcast_ffi(class, ctx, symbol_table);
 
     // Section header as doc comment (will render as /// in output)
     let section_line = format!(" ======================== {} ========================", cpp_name);
@@ -897,45 +888,24 @@ fn needs_wrapper_function(method: &Method, all_enums: &std::collections::HashSet
         .unwrap_or(false)
 }
 
+// Additional filter functions - delegate to centralized implementations in resolver module
+
 /// Check if a method has parameters that would be passed by value (not supported by CXX for opaque types)
 fn has_unsupported_by_value_params(method: &Method) -> bool {
-    method.params.iter().any(|p| {
-        // Class types passed directly (not by reference) are not supported
-        matches!(&p.ty, Type::Class(_) | Type::Handle(_))
-    })
+    resolver::method_has_unsupported_by_value_params(method).is_some()
 }
 
 /// Check if a const method returns a mutable reference (not allowed by CXX)
 /// CXX requires &mut self when returning &mut, but C++ allows const methods to return non-const refs
 fn has_const_mut_return_mismatch(method: &Method) -> bool {
-    if !method.is_const {
-        return false;
-    }
-    // Check if return type is a mutable reference
-    method.return_type.as_ref().map(|ty| {
-        matches!(ty, Type::MutRef(_))
-    }).unwrap_or(false)
+    resolver::has_const_mut_return_mismatch(method)
 }
 
 /// Check if a method needs explicit lifetimes (CXX limitation)
 /// Returns true if the method returns a mutable reference and has other reference parameters.
 /// Rust can't infer lifetimes when there are multiple potential sources.
 fn needs_explicit_lifetimes(method: &Method) -> bool {
-    // Check if return type is a mutable reference (Pin<&mut Self> or MutRef)
-    let returns_mut_ref = method.return_type.as_ref().map(|ty| {
-        matches!(ty, Type::MutRef(_))
-    }).unwrap_or(false);
-    
-    if !returns_mut_ref {
-        return false;
-    }
-    
-    // Check if any parameter is a reference (other than self which is handled separately)
-    let has_ref_params = method.params.iter().any(|p| {
-        matches!(&p.ty, Type::ConstRef(_) | Type::MutRef(_)) || p.ty.is_c_string()
-    });
-    
-    has_ref_params
+    resolver::method_needs_explicit_lifetimes(method)
 }
 
 /// Generate instance method declarations
@@ -1348,45 +1318,15 @@ fn generate_static_method(
     })
 }
 
-/// Get all ancestors (transitive) of a class
-fn get_all_ancestors(
-    class: &ParsedClass,
-    all_classes_map: &HashMap<String, &ParsedClass>,
-) -> Vec<String> {
-    use std::collections::HashSet;
-    
-    let mut ancestors = HashSet::new();
-    let mut to_process = vec![class];
-    let mut processed = HashSet::new();
-    
-    while let Some(current) = to_process.pop() {
-        if processed.contains(&current.name) {
-            continue;
-        }
-        processed.insert(current.name.clone());
-        
-        for base_class in &current.base_classes {
-            ancestors.insert(base_class.clone());
-            if let Some(base_parsed) = all_classes_map.get(base_class) {
-                to_process.push(base_parsed);
-            }
-        }
-    }
-    
-    // Sort for deterministic output ordering
-    let mut result: Vec<_> = ancestors.into_iter().collect();
-    result.sort();
-    result
-}
-
 /// Generate upcast function declarations for inheritance (const and mutable)
 /// For each ancestor class, generates functions that cast from derived to ancestor
 fn generate_upcast_methods(
     class: &ParsedClass,
     ctx: &TypeContext,
-    all_classes_map: &HashMap<String, &ParsedClass>,
+    symbol_table: &crate::resolver::SymbolTable,
 ) -> Vec<TokenStream> {
-    let ancestors = get_all_ancestors(class, all_classes_map);
+    let ancestors = symbol_table.get_all_ancestors_by_name(&class.name);
+    let protected_destructor_classes = symbol_table.protected_destructor_class_names();
     
     ancestors
         .iter()
@@ -1398,10 +1338,8 @@ fn generate_upcast_methods(
             }
             
             // Skip base classes with protected destructors (they're excluded from bindings)
-            if let Some(base_parsed) = all_classes_map.get(base_class) {
-                if base_parsed.has_protected_destructor {
-                    return vec![];
-                }
+            if protected_destructor_classes.contains(base_class) {
+                return vec![];
             }
             
             // Get the short names for both derived and base class
@@ -1581,7 +1519,7 @@ fn generate_to_handle_ffi(class: &ParsedClass) -> Option<TokenStream> {
 fn generate_handle_upcast_ffi(
     class: &ParsedClass,
     ctx: &TypeContext,
-    all_classes_map: &HashMap<String, &ParsedClass>,
+    symbol_table: &crate::resolver::SymbolTable,
 ) -> Vec<TokenStream> {
     // Only generate for transient classes
     if !class.is_handle_type {
@@ -1603,7 +1541,8 @@ fn generate_handle_upcast_ffi(
     let handle_type_name = format!("Handle{}", class.name.replace("_", ""));
     let handle_type_ident = format_ident!("{}", handle_type_name);
 
-    let ancestors = get_all_ancestors(class, all_classes_map);
+    let ancestors = symbol_table.get_all_ancestors_by_name(&class.name);
+    let protected_destructor_classes = symbol_table.protected_destructor_class_names();
     
     ancestors
         .iter()
@@ -1614,10 +1553,8 @@ fn generate_handle_upcast_ffi(
             }
 
             // Skip base classes with protected destructors
-            if let Some(base_parsed) = all_classes_map.get(base_class) {
-                if base_parsed.has_protected_destructor {
-                    return None;
-                }
+            if protected_destructor_classes.contains(base_class) {
+                return None;
             }
 
             // Base handle type name
@@ -1912,18 +1849,12 @@ fn generate_re_exports(
     all_classes: &HashSet<String>,
     protected_destructor_classes: &HashSet<String>,
     all_enums: &HashSet<String>,
-    all_parsed_classes: &[&ParsedClass],  // Added parameter
+    symbol_table: &crate::resolver::SymbolTable,
 ) -> Vec<TokenStream> {
     use crate::type_mapping::is_reserved_name;
     
     // Build set of class names owned by this module (use short names in ffi)
     let owned_classes: HashSet<String> = classes.iter().map(|c| c.name.clone()).collect();
-    
-    // Build a map of all classes for inheritance lookup (needed for get_all_ancestors)
-    let all_classes_map: HashMap<String, &ParsedClass> = all_parsed_classes
-        .iter()
-        .map(|c| (c.name.clone(), *c))
-        .collect();
     
     let mut exports = Vec::new();
 
@@ -1986,7 +1917,7 @@ fn generate_re_exports(
 
         // Generate impl block with constructor methods, upcast methods, and to_owned
         // Get all transitive base classes that are in our parsed set and don't have protected destructors
-        let all_ancestors = get_all_ancestors(class, &all_classes_map);
+        let all_ancestors = symbol_table.get_all_ancestors_by_name(&class.name);
         let valid_base_classes: Vec<_> = all_ancestors.iter()
             .filter(|bc| all_classes.contains(*bc) && !protected_destructor_classes.contains(*bc))
             .collect();
@@ -2621,7 +2552,7 @@ fn generate_handle_impls(
     classes: &[&ParsedClass],
     all_classes: &HashSet<String>,
     protected_destructor_classes: &HashSet<String>,
-    all_classes_map: &HashMap<String, &ParsedClass>,
+    symbol_table: &crate::resolver::SymbolTable,
 ) -> Vec<TokenStream> {
     let mut impls = Vec::new();
 
@@ -2644,7 +2575,7 @@ fn generate_handle_impls(
         let mut methods: Vec<TokenStream> = Vec::new();
 
         // Generate upcast methods for each ancestor class
-        let ancestors = get_all_ancestors(class, all_classes_map);
+        let ancestors = symbol_table.get_all_ancestors_by_name(&class.name);
         for base_class in &ancestors {
             // Skip base classes that aren't in our known set
             if !all_classes.contains(base_class) {
@@ -2654,13 +2585,6 @@ fn generate_handle_impls(
             // Skip base classes with protected destructors
             if protected_destructor_classes.contains(base_class) {
                 continue;
-            }
-
-            // Also check if base class exists in all_classes_map
-            if let Some(base_parsed) = all_classes_map.get(base_class) {
-                if base_parsed.has_protected_destructor {
-                    continue;
-                }
             }
 
             // Base handle type name
@@ -2705,9 +2629,7 @@ fn generate_handle_impls(
     }
 
     impls
-}
-
-/// Generate to_handle free function exports
+}/// Generate to_handle free function exports
 /// Generate to_handle free function exports
 /// DEPRECATED: to_handle is now generated as an associated function in the impl block
 /// This function is kept for reference but returns an empty vec
