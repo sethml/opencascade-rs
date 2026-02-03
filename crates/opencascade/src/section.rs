@@ -16,10 +16,12 @@ impl Section {
     }
 
     /// Get the edges of the resulting intersection.
-    pub fn section_edges(self) -> Vec<Shape> {
-        let mut builder_algo = self.inner.pin_mut().as_builder_algo_mut();
+    pub fn section_edges(mut self) -> Vec<Shape> {
+        let builder_algo = self.inner.pin_mut().as_builder_algo_mut();
         let edges = builder_algo.section_edges();
-        list_of_shape_to_vec(edges)
+        // Convert cross-module type reference to the actual list type
+        let list_of_shape: &top_tools::ListOfShape = unsafe { std::mem::transmute(edges) };
+        list_of_shape_to_vec(list_of_shape)
     }
 }
 

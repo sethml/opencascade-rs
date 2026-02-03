@@ -2,14 +2,13 @@ use std::iter::once;
 
 use crate::{
     angle::{Angle, ToAngle},
-    primitives::{make_dir, make_point, make_vec, Edge, Face, JoinType, Shape, Shell},
+    primitives::{make_dir, make_point, make_vec, Edge, Face, Shape},
     Error,
 };
 use cxx::UniquePtr;
 use glam::{dvec3, DVec3};
 use opencascade_sys::{
-    b_rep_builder_api, b_rep_offset_api, b_rep_tools, gp, message, shape_analysis, top_loc,
-    top_tools, topo_ds,
+    b_rep_builder_api, b_rep_tools, gp, top_loc, topo_ds,
 };
 
 pub struct Wire {
@@ -151,15 +150,39 @@ impl Wire {
         Self { inner }
     }
 
-    // NOTE: offset is blocked because MakeShape::shape() requires Pin<&mut MakeShape>
-    // but as_b_rep_builder_api_make_shape() returns &MakeShape (const reference).
-    // Mutable upcasts are not currently generated. See TRANSITION_PLAN.md.
+    // NOTE: offset is blocked because JoinType enum conversion is not supported.
+    // CXX requires enum class but OCCT uses unscoped enums. See TRANSITION_PLAN.md.
+    #[allow(unused)]
+    #[must_use]
+    pub fn offset(&self, _distance: f64, _join_type: crate::primitives::JoinType) -> Self {
+        unimplemented!(
+            "Wire::offset is blocked pending enum conversion support for GeomAbs_JoinType"
+        );
+    }
 
-    // NOTE: sweep_along is blocked for the same reason - needs mutable shape() access.
+    // NOTE: sweep_along is blocked because shape upcast needs upcast functions
+    // that convert Shape to Wire, and requires generated shape functions.
+    #[allow(unused)]
+    #[must_use]
+    pub fn sweep_along(&self, _path: &Wire) -> crate::primitives::Shell {
+        unimplemented!(
+            "Wire::sweep_along is blocked pending shape upcast and MakePipe support"
+        );
+    }
 
-    // NOTE: sweep_along_with_radius_values is blocked pending binding support for
-    // TColgp_Array1OfPnt2d::SetValue which is needed to populate the law function.
-    // See TRANSITION_PLAN.md for details.
+    // NOTE: sweep_along_with_radius_values is blocked by law_function dependency
+    // which requires TColgp array support and law function Handle types.
+    #[allow(unused)]
+    #[must_use]
+    pub fn sweep_along_with_radius_values(
+        &self,
+        _path: &Wire,
+        _radius_values: impl IntoIterator<Item = (f64, f64)>,
+    ) -> crate::primitives::Shell {
+        unimplemented!(
+            "Wire::sweep_along_with_radius_values is blocked pending law_function support"
+        );
+    }
 
     #[must_use]
     pub fn translate(&self, offset: DVec3) -> Self {

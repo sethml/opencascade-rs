@@ -7,9 +7,9 @@
 // See TRANSITION_PLAN.md for details.
 
 use crate::{
-    mesh::{Mesh, Mesher},
+    mesh::Mesh,
     primitives::{
-        make_axis_1, make_axis_2, make_vec, BooleanShape, Compound, Edge, Face, Shell, Solid,
+        make_axis_2, BooleanShape, Compound, Edge, Face, Shell, Solid,
         Vertex, Wire,
     },
     Error,

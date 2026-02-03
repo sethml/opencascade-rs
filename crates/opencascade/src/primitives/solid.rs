@@ -4,7 +4,7 @@
 // See TRANSITION_PLAN.md for details.
 
 use crate::{
-    primitives::{BooleanShape, Compound, Edge, Face, Shape, Wire},
+    primitives::{BooleanShape, Compound, Edge, Face, Wire},
     Error,
 };
 use cxx::UniquePtr;

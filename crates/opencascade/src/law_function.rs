@@ -6,7 +6,7 @@
 use cxx::UniquePtr;
 use opencascade_sys::law;
 
-use crate::primitives::make_point2d;
+// use crate::primitives::make_point2d; // Not used in stubbed implementation
 
 // Stub implementation - blocked due to missing TColgp_Array1OfPnt2d constructor
 #[allow(unused)]

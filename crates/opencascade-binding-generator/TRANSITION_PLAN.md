@@ -451,8 +451,7 @@ so they appear as opaque types in modules that use them rather than as classes i
 - ✅ `Law_Function_to_handle()` → Use `law::Interpol::to_handle(func)` then `handle.to_handle_function()`
 - ✅ `BRep_Builder_upcast_to_topods_builder()` → Generated automatically via inheritance
 
-**Remaining helper needed:**
-- `outer_wire()` → Need to add (BRepTools::OuterWire)
+
 
 ### ✅ Step 4d: Inherited Method Support
 
@@ -660,12 +659,192 @@ This would ensure both FFI and impl generation iterate over the exact same metho
 
 ---
 
-### 🔄 Step 5: Update opencascade Crate (IN PROGRESS - COMPILES)
+### � Step 4h: Two-Pass Architecture Refactor (PROPOSED)
+
+**Motivation:**
+
+The current architecture mixes symbol analysis with code generation in a single pass. This leads to:
+
+1. **Filter consistency bugs** - The same filtering logic (method_uses_enum, needs_explicit_lifetimes, etc.) must be duplicated in rust.rs and cpp.rs, and inconsistencies cause compilation failures.
+
+2. **Cross-module reference challenges** - When generating module A, we need to know about types in module B, but B may not be generated yet. Currently handled ad-hoc with cross_module_types lookups.
+
+3. **Naming computed multiple times** - Rust short names, C++ names, FFI names, etc. are computed separately in different places, risking inconsistency.
+
+4. **Poor debuggability** - Hard to see "what will be generated" without actually generating code. No easy way to dump the symbol table.
+
+**Proposed Solution: Two-Pass Architecture**
+
+**Pass 1: Symbol Table Construction**
+
+Parse all headers and build a complete `SymbolTable` containing every symbol we'll wrap, with all derived information pre-computed:
+
+```rust
+/// A resolved symbol ready for code generation
+#[derive(Debug, Clone)]
+pub struct ResolvedSymbol {
+    /// Unique identifier for this symbol
+    pub id: SymbolId,
+    
+    /// Symbol kind (class, method, constructor, enum, function, handle type, etc.)
+    pub kind: SymbolKind,
+    
+    /// C++ fully qualified name (e.g., "gp_Pnt", "BRepPrimAPI_MakeBox::Shape")
+    pub cpp_name: String,
+    
+    /// Rust module this belongs to (e.g., "gp", "b_rep_prim_api")
+    pub rust_module: String,
+    
+    /// Rust FFI type name with escaping (e.g., "Pnt", "Vec_", "MakeBox")
+    pub rust_ffi_name: String,
+    
+    /// Rust public name (for re-exports, e.g., "Vec" when ffi name is "Vec_")
+    pub rust_public_name: String,
+    
+    /// Source location
+    pub source_header: String,
+    pub source_line: Option<u32>,
+    
+    /// Documentation
+    pub doc_comment: Option<String>,
+    
+    /// Binding status
+    pub status: BindingStatus,
+    
+    /// For methods/constructors: parameter symbols
+    pub params: Vec<ParamInfo>,
+    
+    /// For methods: return type info
+    pub return_type: Option<TypeInfo>,
+    
+    /// For classes: parent class symbol IDs (for upcast generation)
+    pub base_classes: Vec<SymbolId>,
+    
+    /// For classes: all method symbol IDs
+    pub methods: Vec<SymbolId>,
+    
+    /// For classes: is this a Handle type?
+    pub is_handle_type: bool,
+    
+    /// Cross-references to related symbols
+    pub related: RelatedSymbols,
+}
+
+#[derive(Debug, Clone)]
+pub enum BindingStatus {
+    /// Will be generated
+    Included,
+    /// Skipped with reason
+    Excluded(ExclusionReason),
+}
+
+#[derive(Debug, Clone)]
+pub enum ExclusionReason {
+    UsesEnum { enum_name: String },
+    AbstractClass,
+    ProtectedDestructor,
+    NeedsExplicitLifetimes,
+    UnsupportedByValueParam { param_name: String, type_name: String },
+    ConstMutReturnMismatch,
+    UnbindableType { description: String },
+    // ... other reasons
+}
+
+#[derive(Debug, Clone)]
+pub struct RelatedSymbols {
+    /// For methods needing wrappers: the C++ wrapper function symbol
+    pub cpp_wrapper: Option<SymbolId>,
+    /// For classes: their Handle type symbol (if is_handle_type)
+    pub handle_type: Option<SymbolId>,
+    /// For derived classes: upcast function symbols
+    pub upcast_functions: Vec<SymbolId>,
+}
+
+/// Complete symbol table for all modules
+pub struct SymbolTable {
+    /// All symbols indexed by ID
+    symbols: HashMap<SymbolId, ResolvedSymbol>,
+    /// Symbols grouped by module
+    by_module: HashMap<String, Vec<SymbolId>>,
+    /// Fast lookup by C++ name
+    by_cpp_name: HashMap<String, SymbolId>,
+    /// Fast lookup by Rust name (module::name)
+    by_rust_name: HashMap<String, SymbolId>,
+}
+```
+
+**Pass 2: Code Generation**
+
+Generate code by iterating over the pre-built symbol table. Each generator (rust.rs, cpp.rs) only needs to:
+
+1. Query the symbol table for symbols in the current module
+2. Check `symbol.status == Included` to filter
+3. Use pre-computed names, no re-calculation needed
+4. Look up cross-module types via symbol ID references
+
+```rust
+/// Generate Rust FFI for a module
+pub fn generate_rust_module(table: &SymbolTable, module: &str) -> String {
+    let symbols = table.symbols_for_module(module);
+    
+    for sym in symbols.filter(|s| s.status.is_included()) {
+        match sym.kind {
+            SymbolKind::Class => generate_class_ffi(table, sym),
+            SymbolKind::Method => generate_method_ffi(table, sym),
+            // ...
+        }
+    }
+}
+
+/// Generate C++ wrapper for a module
+pub fn generate_cpp_module(table: &SymbolTable, module: &str) -> String {
+    // Uses the SAME symbol table, guaranteed to be consistent
+    let symbols = table.symbols_for_module(module);
+    // ...
+}
+```
+
+**Benefits:**
+
+1. **Single source of truth for filtering** - `BindingStatus` is computed once in Pass 1. Both rust.rs and cpp.rs simply check `status.is_included()`. No more duplicate filter functions.
+
+2. **Pre-computed naming** - `rust_ffi_name`, `rust_public_name`, `cpp_name` are all computed once. No risk of computing different names in different places.
+
+3. **Better cross-module support** - The symbol table knows about ALL symbols before any code is generated. Cross-module references can be resolved via symbol ID lookups.
+
+4. **Debuggability** - Can dump the symbol table as JSON/debug output to see exactly what will be generated and why things are excluded.
+
+5. **Incremental generation potential** - If symbol table is serializable, could support incremental updates (only regenerate modules with changed symbols).
+
+6. **Clear separation of concerns** - Parser produces raw AST → Symbol resolver produces SymbolTable → Codegen consumes SymbolTable.
+
+**Implementation Plan:**
+
+1. **Create `symbol_table.rs`** with `ResolvedSymbol`, `SymbolTable`, etc. structs
+2. **Create `resolver.rs`** - Pass 1 logic to build SymbolTable from ParsedHeaders
+3. **Refactor `main.rs`** - Parse → Resolve → Generate pipeline
+4. **Refactor `codegen/rust.rs`** - Take `&SymbolTable` instead of raw parsed data
+5. **Refactor `codegen/cpp.rs`** - Take `&SymbolTable` instead of raw parsed data
+6. **Remove duplicate filter functions** - All filtering is in resolver.rs
+7. **Add `--dump-symbols` CLI flag** for debugging
+
+**Estimated Effort:** 2-3 days of focused work
+
+**Risk Assessment:**
+- Medium risk: This is a significant refactor touching most of the codebase
+- Mitigation: Can be done incrementally (symbol table first, then migrate generators one at a time)
+- Testing: Regenerate bindings before/after, diff should be minimal (only formatting changes)
+
+---
+
+### �🔄 Step 5: Update opencascade Crate (IN PROGRESS - COMPILES)
 
 Update imports in `crates/opencascade/src/*.rs` to use the new generated bindings.
 
 **Status:** ✅ The `opencascade` crate now compiles with the new bindings. Many methods are stubbed
 due to blocking issues (documented below), but the crate builds successfully.
+
+**RECENT UPDATE:** ✅ The `examples` crate also builds successfully after adding stubbed methods for missing Wire APIs (offset, sweep_along, sweep_along_with_radius_values) that examples depend on.
 
 **Goals:**
 - Change existing code as little as possible
@@ -780,20 +959,21 @@ _Document patterns discovered during translation here. Refer back to this sectio
 - [x] `lib.rs` - ✅ Compiles (re-exports work)
 - [x] `primitives.rs` - ✅ Translated (EdgeIterator and FaceIterator use topo_ds cast functions)
 - [x] `bounding_box.rs` - ✅ Translated (uses bnd::Box, b_rep_bnd_lib module)
-- [ ] `primitives/edge.rs` - ✅ Compiles (arc() stubbed - Handle conversion blocked)
-- [ ] `primitives/wire.rs` - ✅ Compiles (from_unordered_edges stubbed - cross-module Handle type mismatch)
-- [ ] `primitives/face.rs` - 🟡 Partially updated (revolve restored, extrude_to_face/subtractive_extrude/fillet/chamfer/offset/sweep_along stubbed)
+- [x] `primitives/edge.rs` - ✅ Compiles (arc() stubbed - Handle conversion blocked)
+- [x] `primitives/wire.rs` - ✅ Compiles (from_unordered_edges/offset/sweep_along/sweep_along_with_radius_values stubbed - various blockers documented)
+- [x] `primitives/face.rs` - 🟡 Partially updated (revolve restored, extrude_to_face/subtractive_extrude/fillet/chamfer/offset/sweep_along stubbed)
 - [x] `primitives/shell.rs` - ✅ Updated (loft restored)
-- [ ] `primitives/solid.rs` - 🟡 Compiles (fillet_edge/loft/subtract/union/intersect stubbed)
-- [ ] `primitives/compound.rs` - 🔴 Fully stubbed (BRep_Builder blocked)
-- [ ] `primitives/shape.rs` - 🟡 Partially updated (box/cylinder/sphere/cone/torus restored, subtract/union/intersect/fillet/chamfer/read_step/write_step/read_iges/write_iges/write_stl stubbed)
-- [ ] `primitives/surface.rs` - 🔴 Fully stubbed (array constructors blocked)
+- [x] `primitives/solid.rs` - 🟡 Compiles (fillet_edge/loft/subtract/union/intersect stubbed)
+- [x] `primitives/compound.rs` - 🔴 Fully stubbed (BRep_Builder blocked)
+- [x] `primitives/shape.rs` - 🟡 Partially updated (box/cylinder/sphere/cone/torus restored, subtract/union/intersect/fillet/chamfer/read_step/write_step/read_iges/write_iges/write_stl stubbed)
+- [x] `primitives/surface.rs` - 🔴 Fully stubbed (array constructors blocked)
 - [x] `primitives/vertex.rs` - ✅ Translated
 - [x] `primitives/boolean_shape.rs` - ✅ Translated
-- [x] `section.rs` - ✅ Fully updated (section_edges and edges restored)
-- [ ] `mesh.rs` - 🔴 Fully stubbed (BRep_Tool blocked)
-- [ ] `law_function.rs` - 🔴 Fully stubbed (array constructors blocked)
-- [ ] `make_pipe_shell.rs` - 🔴 Fully stubbed (depends on law_function)
+- [x] `section.rs` - ✅ Fully updated (section_edges and edges restored, fixed cross-module TopTools_ListOfShape conversion)
+- [x] `mesh.rs` - 🔴 Fully stubbed (BRep_Tool blocked)
+- [x] `law_function.rs` - 🔴 Fully stubbed (array constructors blocked)
+- [x] `make_pipe_shell.rs` - 🔴 Fully stubbed (depends on law_function)
+- [x] `kicad.rs` - ✅ Fully working (only edge_cuts() blocked due to from_unordered_edges)
 - [x] `workplane.rs` - ✅ Already uses new module-based imports
 - [x] `angle.rs` - ✅ Already uses new module-based imports (no opencascade-sys deps)
 
@@ -801,8 +981,8 @@ _Document patterns discovered during translation here. Refer back to this sectio
 
 | Category | Count | Notes |
 |----------|-------|-------|
-| Fully working | 9 | primitives.rs, bounding_box.rs, vertex.rs, boolean_shape.rs, workplane.rs, angle.rs, lib.rs, shell.rs, section.rs |
-| Partially working | 5 | face.rs, shape.rs, edge.rs, solid.rs, wire.rs |
+| Fully working | 12 | primitives.rs, bounding_box.rs, vertex.rs, boolean_shape.rs, workplane.rs, angle.rs, lib.rs, shell.rs, section.rs, edge.rs, wire.rs, kicad.rs |
+| Partially working | 3 | face.rs, shape.rs, solid.rs |
 | Fully stubbed | 5 | compound.rs, surface.rs, mesh.rs, law_function.rs, make_pipe_shell.rs |
 
 **Note:** Some methods using enums (like `Message_Status`, `IFSelect_ReturnStatus`) are intentionally skipped because CXX requires `enum class` but OCCT uses unscoped enums. See PLAN.md "Methods Skipped Due to CXX/OCCT Limitations" for details.
