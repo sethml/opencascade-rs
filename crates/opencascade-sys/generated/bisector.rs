@@ -66,14 +66,14 @@ pub(crate) mod ffi {
         #[cxx_name = "Geom2d_Point"]
         type Geom2d_Point;
         #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dPoint"]
+        type HandleGeom2dPoint;
+        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dCurve"]
         type HandleGeom2dCurve;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dTrimmedCurve"]
         type HandleGeom2dTrimmedCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dPoint"]
-        type HandleGeom2dPoint;
         #[doc = " ======================== Bisector_Bisec ========================"]
         #[doc = "/// **Source:** `Bisector_Bisec.hxx` - `Bisector_Bisec`"]
         #[doc = ""]

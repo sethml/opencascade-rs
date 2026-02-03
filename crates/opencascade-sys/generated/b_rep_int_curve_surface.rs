@@ -14,6 +14,8 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_int_curve_surface.hxx");
+        #[doc = "TopAbs from top_abs module"]
+        type TopAbs = crate::top_abs::ffi::TopAbs;
         #[doc = "Shape from topo_ds module"]
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
         #[doc = "Vertex from topo_ds module"]
@@ -81,8 +83,6 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "TopAbs from top_abs module"]
-        type TopAbs = crate::top_abs::ffi::TopAbs;
         #[doc = "Curve from geom_adaptor module"]
         type GeomAdaptor_Curve = crate::geom_adaptor::ffi::Curve;
         #[doc = "Surface from geom_adaptor module"]

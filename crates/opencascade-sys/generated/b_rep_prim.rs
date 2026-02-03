@@ -47,18 +47,6 @@ pub(crate) mod ffi {
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
         #[doc = "TShape from topo_ds module"]
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Geometry from geom2d module"]
-        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "Curve from geom2d module"]
-        type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "BoundedCurve from geom2d module"]
-        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
-        type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Ellipse from geom2d module"]
-        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "TrimmedCurve from geom2d module"]
-        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
         #[doc = "Geometry from geom module"]
         type Geom_Geometry = crate::geom::ffi::Geometry;
         #[doc = "Curve from geom module"]
@@ -125,12 +113,24 @@ pub(crate) mod ffi {
         type BRep_Builder = crate::b_rep::ffi::Builder;
         #[doc = "Tool from b_rep module"]
         type BRep_Tool = crate::b_rep::ffi::Tool;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Circ2d"]
-        type gp_Circ2d;
+        #[doc = "Geometry from geom2d module"]
+        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
+        #[doc = "Curve from geom2d module"]
+        type Geom2d_Curve = crate::geom2d::ffi::Curve;
+        #[doc = "BoundedCurve from geom2d module"]
+        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
+        #[doc = "Conic from geom2d module"]
+        type Geom2d_Conic = crate::geom2d::ffi::Conic;
+        #[doc = "Ellipse from geom2d module"]
+        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
+        #[doc = "TrimmedCurve from geom2d module"]
+        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Lin2d"]
         type gp_Lin2d;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Circ2d"]
+        type gp_Circ2d;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomCurve"]
         type HandleGeomCurve;
@@ -161,18 +161,18 @@ pub(crate) mod ffi {
         #[doc = "The surface normal should be directed  towards the outside."]
         #[cxx_name = "BRepPrim_Torus_MakeEmptyLateralFace"]
         fn Torus_make_empty_lateral_face(self_: &Torus) -> UniquePtr<TopoDS_Face>;
-        #[doc = "Upcast BRepPrim_Torus to BRepPrim_OneAxis"]
-        #[cxx_name = "BRepPrim_Torus_as_BRepPrim_OneAxis"]
-        fn torus_as_one_axis(self_: &Torus) -> &OneAxis;
-        #[doc = "Upcast BRepPrim_Torus to BRepPrim_OneAxis (mutable)"]
-        #[cxx_name = "BRepPrim_Torus_as_BRepPrim_OneAxis_mut"]
-        fn torus_as_one_axis_mut(self_: Pin<&mut Torus>) -> Pin<&mut OneAxis>;
         #[doc = "Upcast BRepPrim_Torus to BRepPrim_Revolution"]
         #[cxx_name = "BRepPrim_Torus_as_BRepPrim_Revolution"]
         fn torus_as_revolution(self_: &Torus) -> &Revolution;
         #[doc = "Upcast BRepPrim_Torus to BRepPrim_Revolution (mutable)"]
         #[cxx_name = "BRepPrim_Torus_as_BRepPrim_Revolution_mut"]
         fn torus_as_revolution_mut(self_: Pin<&mut Torus>) -> Pin<&mut Revolution>;
+        #[doc = "Upcast BRepPrim_Torus to BRepPrim_OneAxis"]
+        #[cxx_name = "BRepPrim_Torus_as_BRepPrim_OneAxis"]
+        fn torus_as_one_axis(self_: &Torus) -> &OneAxis;
+        #[doc = "Upcast BRepPrim_Torus to BRepPrim_OneAxis (mutable)"]
+        #[cxx_name = "BRepPrim_Torus_as_BRepPrim_OneAxis_mut"]
+        fn torus_as_one_axis_mut(self_: Pin<&mut Torus>) -> Pin<&mut OneAxis>;
         #[doc = " ======================== BRepPrim_Revolution ========================"]
         #[doc = "/// **Source:** `BRepPrim_Revolution.hxx` - `BRepPrim_Revolution`"]
         #[doc = ""]
@@ -499,18 +499,18 @@ pub(crate) mod ffi {
         #[doc = "The surface normal should be directed  towards the outside."]
         #[cxx_name = "BRepPrim_Sphere_MakeEmptyLateralFace"]
         fn Sphere_make_empty_lateral_face(self_: &Sphere) -> UniquePtr<TopoDS_Face>;
-        #[doc = "Upcast BRepPrim_Sphere to BRepPrim_Revolution"]
-        #[cxx_name = "BRepPrim_Sphere_as_BRepPrim_Revolution"]
-        fn sphere_as_revolution(self_: &Sphere) -> &Revolution;
-        #[doc = "Upcast BRepPrim_Sphere to BRepPrim_Revolution (mutable)"]
-        #[cxx_name = "BRepPrim_Sphere_as_BRepPrim_Revolution_mut"]
-        fn sphere_as_revolution_mut(self_: Pin<&mut Sphere>) -> Pin<&mut Revolution>;
         #[doc = "Upcast BRepPrim_Sphere to BRepPrim_OneAxis"]
         #[cxx_name = "BRepPrim_Sphere_as_BRepPrim_OneAxis"]
         fn sphere_as_one_axis(self_: &Sphere) -> &OneAxis;
         #[doc = "Upcast BRepPrim_Sphere to BRepPrim_OneAxis (mutable)"]
         #[cxx_name = "BRepPrim_Sphere_as_BRepPrim_OneAxis_mut"]
         fn sphere_as_one_axis_mut(self_: Pin<&mut Sphere>) -> Pin<&mut OneAxis>;
+        #[doc = "Upcast BRepPrim_Sphere to BRepPrim_Revolution"]
+        #[cxx_name = "BRepPrim_Sphere_as_BRepPrim_Revolution"]
+        fn sphere_as_revolution(self_: &Sphere) -> &Revolution;
+        #[doc = "Upcast BRepPrim_Sphere to BRepPrim_Revolution (mutable)"]
+        #[cxx_name = "BRepPrim_Sphere_as_BRepPrim_Revolution_mut"]
+        fn sphere_as_revolution_mut(self_: Pin<&mut Sphere>) -> Pin<&mut Revolution>;
         #[doc = " ======================== BRepPrim_Cylinder ========================"]
         #[doc = "/// **Source:** `BRepPrim_Cylinder.hxx` - `BRepPrim_Cylinder`"]
         #[doc = ""]
@@ -905,16 +905,6 @@ impl Sphere {
         ffi::Sphere_ctor_ax2_real(Axes, Radius)
     }
 
-    #[doc = "Upcast to BRepPrim_Revolution"]
-    pub fn as_revolution(&self) -> &Revolution {
-        ffi::sphere_as_revolution(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_Revolution (mutable)"]
-    pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
-        ffi::sphere_as_revolution_mut(self)
-    }
-
     #[doc = "Upcast to BRepPrim_OneAxis"]
     pub fn as_one_axis(&self) -> &OneAxis {
         ffi::sphere_as_one_axis(self)
@@ -923,6 +913,16 @@ impl Sphere {
     #[doc = "Upcast to BRepPrim_OneAxis (mutable)"]
     pub fn as_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut OneAxis> {
         ffi::sphere_as_one_axis_mut(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_Revolution"]
+    pub fn as_revolution(&self) -> &Revolution {
+        ffi::sphere_as_revolution(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_Revolution (mutable)"]
+    pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
+        ffi::sphere_as_revolution_mut(self)
     }
 
     #[doc = "The surface normal should be directed  towards the outside."]
@@ -1029,16 +1029,6 @@ impl Cone {
         ffi::Cone_ctor_ax2_real3(Axes, R1, R2, H)
     }
 
-    #[doc = "Upcast to BRepPrim_OneAxis"]
-    pub fn as_one_axis(&self) -> &OneAxis {
-        ffi::cone_as_one_axis(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_OneAxis (mutable)"]
-    pub fn as_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut OneAxis> {
-        ffi::cone_as_one_axis_mut(self)
-    }
-
     #[doc = "Upcast to BRepPrim_Revolution"]
     pub fn as_revolution(&self) -> &Revolution {
         ffi::cone_as_revolution(self)
@@ -1047,6 +1037,16 @@ impl Cone {
     #[doc = "Upcast to BRepPrim_Revolution (mutable)"]
     pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
         ffi::cone_as_revolution_mut(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_OneAxis"]
+    pub fn as_one_axis(&self) -> &OneAxis {
+        ffi::cone_as_one_axis(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_OneAxis (mutable)"]
+    pub fn as_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut OneAxis> {
+        ffi::cone_as_one_axis_mut(self)
     }
 
     #[doc = "The surface normal should be directed  towards the outside."]

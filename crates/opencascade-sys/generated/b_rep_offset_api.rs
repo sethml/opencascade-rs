@@ -25,6 +25,88 @@ pub(crate) mod ffi {
         type Law_BSpFunc = crate::law::ffi::BSpFunc;
         #[doc = "Interpol from law module"]
         type Law_Interpol = crate::law::ffi::Interpol;
+        #[doc = "Command from b_rep_builder_api module"]
+        type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
+        #[doc = "MakeShape from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
+        #[doc = "MakeEdge from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeEdge = crate::b_rep_builder_api::ffi::MakeEdge;
+        #[doc = "MakeFace from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeFace = crate::b_rep_builder_api::ffi::MakeFace;
+        #[doc = "MakeSolid from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeSolid = crate::b_rep_builder_api::ffi::MakeSolid;
+        #[doc = "MakeVertex from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeVertex = crate::b_rep_builder_api::ffi::MakeVertex;
+        #[doc = "MakeWire from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeWire = crate::b_rep_builder_api::ffi::MakeWire;
+        #[doc = "Sewing from b_rep_builder_api module"]
+        type BRepBuilderAPI_Sewing = crate::b_rep_builder_api::ffi::Sewing;
+        #[doc = "Transform from b_rep_builder_api module"]
+        type BRepBuilderAPI_Transform = crate::b_rep_builder_api::ffi::Transform;
+        #[doc = "ModifyShape from b_rep_builder_api module"]
+        type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "PipeShell from b_rep_fill module"]
+        type BRepFill_PipeShell = crate::b_rep_fill::ffi::PipeShell;
+        #[doc = "Section from b_rep_fill module"]
+        type BRepFill_Section = crate::b_rep_fill::ffi::Section;
+        #[doc = "Pipe from b_rep_fill module"]
+        type BRepFill_Pipe = crate::b_rep_fill::ffi::Pipe;
+        #[doc = "OffsetWire from b_rep_fill module"]
+        type BRepFill_OffsetWire = crate::b_rep_fill::ffi::OffsetWire;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "Message from message module"]
+        type Message = crate::message::ffi::Message;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Alert from message module"]
+        type Message_Alert = crate::message::ffi::Alert;
+        #[doc = "AlertExtended from message module"]
+        type Message_AlertExtended = crate::message::ffi::AlertExtended;
         #[doc = "MakeOffset from b_rep_offset module"]
         type BRepOffset_MakeOffset = crate::b_rep_offset::ffi::MakeOffset;
         #[doc = "MakeSimpleOffset from b_rep_offset module"]
@@ -55,32 +137,6 @@ pub(crate) mod ffi {
         type BRepPrimAPI_MakeSweep = crate::b_rep_prim_api::ffi::MakeSweep;
         #[doc = "MakeOneAxis from b_rep_prim_api module"]
         type BRepPrimAPI_MakeOneAxis = crate::b_rep_prim_api::ffi::MakeOneAxis;
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "Message from message module"]
-        type Message = crate::message::ffi::Message;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
-        #[doc = "Alert from message module"]
-        type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
-        type Message_AlertExtended = crate::message::ffi::AlertExtended;
         #[doc = "Pnt from gp module"]
         type gp_Pnt = crate::gp::ffi::Pnt;
         #[doc = "Pnt2d from gp module"]
@@ -117,62 +173,6 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Command from b_rep_builder_api module"]
-        type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
-        #[doc = "MakeShape from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
-        #[doc = "MakeEdge from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeEdge = crate::b_rep_builder_api::ffi::MakeEdge;
-        #[doc = "MakeFace from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeFace = crate::b_rep_builder_api::ffi::MakeFace;
-        #[doc = "MakeSolid from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeSolid = crate::b_rep_builder_api::ffi::MakeSolid;
-        #[doc = "MakeVertex from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeVertex = crate::b_rep_builder_api::ffi::MakeVertex;
-        #[doc = "MakeWire from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeWire = crate::b_rep_builder_api::ffi::MakeWire;
-        #[doc = "Sewing from b_rep_builder_api module"]
-        type BRepBuilderAPI_Sewing = crate::b_rep_builder_api::ffi::Sewing;
-        #[doc = "Transform from b_rep_builder_api module"]
-        type BRepBuilderAPI_Transform = crate::b_rep_builder_api::ffi::Transform;
-        #[doc = "ModifyShape from b_rep_builder_api module"]
-        type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
-        #[doc = "PipeShell from b_rep_fill module"]
-        type BRepFill_PipeShell = crate::b_rep_fill::ffi::PipeShell;
-        #[doc = "Section from b_rep_fill module"]
-        type BRepFill_Section = crate::b_rep_fill::ffi::Section;
-        #[doc = "Pipe from b_rep_fill module"]
-        type BRepFill_Pipe = crate::b_rep_fill::ffi::Pipe;
-        #[doc = "OffsetWire from b_rep_fill module"]
-        type BRepFill_OffsetWire = crate::b_rep_fill::ffi::OffsetWire;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;
@@ -211,14 +211,6 @@ pub(crate) mod ffi {
             theFace: &TopoDS_Face,
             theAngleTolerance: f64,
         ) -> UniquePtr<TopoDS_Face>;
-        #[doc = "Upcast BRepOffsetAPI_MakeOffset to BRepBuilderAPI_Command"]
-        #[cxx_name = "BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command"]
-        fn make_offset_as_b_rep_builder_api_command(self_: &MakeOffset) -> &BRepBuilderAPI_Command;
-        #[doc = "Upcast BRepOffsetAPI_MakeOffset to BRepBuilderAPI_Command (mutable)"]
-        #[cxx_name = "BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command_mut"]
-        fn make_offset_as_b_rep_builder_api_command_mut(
-            self_: Pin<&mut MakeOffset>,
-        ) -> Pin<&mut BRepBuilderAPI_Command>;
         #[doc = "Upcast BRepOffsetAPI_MakeOffset to BRepBuilderAPI_MakeShape"]
         #[cxx_name = "BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape"]
         fn make_offset_as_b_rep_builder_api_make_shape(
@@ -229,6 +221,14 @@ pub(crate) mod ffi {
         fn make_offset_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut MakeOffset>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        #[doc = "Upcast BRepOffsetAPI_MakeOffset to BRepBuilderAPI_Command"]
+        #[cxx_name = "BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command"]
+        fn make_offset_as_b_rep_builder_api_command(self_: &MakeOffset) -> &BRepBuilderAPI_Command;
+        #[doc = "Upcast BRepOffsetAPI_MakeOffset to BRepBuilderAPI_Command (mutable)"]
+        #[cxx_name = "BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command_mut"]
+        fn make_offset_as_b_rep_builder_api_command_mut(
+            self_: Pin<&mut MakeOffset>,
+        ) -> Pin<&mut BRepBuilderAPI_Command>;
         #[doc = " ======================== BRepOffsetAPI_MakePipe ========================"]
         #[doc = "/// **Source:** `BRepOffsetAPI_MakePipe.hxx` - `BRepOffsetAPI_MakePipe`"]
         #[doc = ""]
@@ -399,26 +399,6 @@ pub(crate) mod ffi {
         #[doc = "Returns the TopoDS Shape of the top of the sweep."]
         #[cxx_name = "BRepOffsetAPI_MakePipeShell_LastShape"]
         fn MakePipeShell_last_shape(self_: Pin<&mut MakePipeShell>) -> UniquePtr<TopoDS_Shape>;
-        #[doc = "Upcast BRepOffsetAPI_MakePipeShell to BRepBuilderAPI_MakeShape"]
-        #[cxx_name = "BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape"]
-        fn make_pipe_shell_as_b_rep_builder_api_make_shape(
-            self_: &MakePipeShell,
-        ) -> &BRepBuilderAPI_MakeShape;
-        #[doc = "Upcast BRepOffsetAPI_MakePipeShell to BRepBuilderAPI_MakeShape (mutable)"]
-        #[cxx_name = "BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape_mut"]
-        fn make_pipe_shell_as_b_rep_builder_api_make_shape_mut(
-            self_: Pin<&mut MakePipeShell>,
-        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
-        #[doc = "Upcast BRepOffsetAPI_MakePipeShell to BRepBuilderAPI_Command"]
-        #[cxx_name = "BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command"]
-        fn make_pipe_shell_as_b_rep_builder_api_command(
-            self_: &MakePipeShell,
-        ) -> &BRepBuilderAPI_Command;
-        #[doc = "Upcast BRepOffsetAPI_MakePipeShell to BRepBuilderAPI_Command (mutable)"]
-        #[cxx_name = "BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command_mut"]
-        fn make_pipe_shell_as_b_rep_builder_api_command_mut(
-            self_: Pin<&mut MakePipeShell>,
-        ) -> Pin<&mut BRepBuilderAPI_Command>;
         #[doc = "Upcast BRepOffsetAPI_MakePipeShell to BRepPrimAPI_MakeSweep"]
         #[cxx_name = "BRepOffsetAPI_MakePipeShell_as_BRepPrimAPI_MakeSweep"]
         fn make_pipe_shell_as_b_rep_prim_api_make_sweep(
@@ -429,6 +409,26 @@ pub(crate) mod ffi {
         fn make_pipe_shell_as_b_rep_prim_api_make_sweep_mut(
             self_: Pin<&mut MakePipeShell>,
         ) -> Pin<&mut BRepPrimAPI_MakeSweep>;
+        #[doc = "Upcast BRepOffsetAPI_MakePipeShell to BRepBuilderAPI_Command"]
+        #[cxx_name = "BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command"]
+        fn make_pipe_shell_as_b_rep_builder_api_command(
+            self_: &MakePipeShell,
+        ) -> &BRepBuilderAPI_Command;
+        #[doc = "Upcast BRepOffsetAPI_MakePipeShell to BRepBuilderAPI_Command (mutable)"]
+        #[cxx_name = "BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command_mut"]
+        fn make_pipe_shell_as_b_rep_builder_api_command_mut(
+            self_: Pin<&mut MakePipeShell>,
+        ) -> Pin<&mut BRepBuilderAPI_Command>;
+        #[doc = "Upcast BRepOffsetAPI_MakePipeShell to BRepBuilderAPI_MakeShape"]
+        #[cxx_name = "BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape"]
+        fn make_pipe_shell_as_b_rep_builder_api_make_shape(
+            self_: &MakePipeShell,
+        ) -> &BRepBuilderAPI_MakeShape;
+        #[doc = "Upcast BRepOffsetAPI_MakePipeShell to BRepBuilderAPI_MakeShape (mutable)"]
+        #[cxx_name = "BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape_mut"]
+        fn make_pipe_shell_as_b_rep_builder_api_make_shape_mut(
+            self_: Pin<&mut MakePipeShell>,
+        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         #[doc = " ======================== BRepOffsetAPI_MakeThickSolid ========================"]
         #[doc = "/// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx` - `BRepOffsetAPI_MakeThickSolid`"]
         #[doc = ""]
@@ -452,24 +452,6 @@ pub(crate) mod ffi {
         #[doc = "Returns the list  of shapes modified from the shape <S>."]
         #[cxx_name = "Modified"]
         fn modified(self: Pin<&mut MakeThickSolid>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        #[doc = "Upcast BRepOffsetAPI_MakeThickSolid to BRepOffsetAPI_MakeOffsetShape"]
-        #[cxx_name = "BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape"]
-        fn make_thick_solid_as_make_offset_shape(self_: &MakeThickSolid) -> &MakeOffsetShape;
-        #[doc = "Upcast BRepOffsetAPI_MakeThickSolid to BRepOffsetAPI_MakeOffsetShape (mutable)"]
-        #[cxx_name = "BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape_mut"]
-        fn make_thick_solid_as_make_offset_shape_mut(
-            self_: Pin<&mut MakeThickSolid>,
-        ) -> Pin<&mut MakeOffsetShape>;
-        #[doc = "Upcast BRepOffsetAPI_MakeThickSolid to BRepBuilderAPI_MakeShape"]
-        #[cxx_name = "BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape"]
-        fn make_thick_solid_as_b_rep_builder_api_make_shape(
-            self_: &MakeThickSolid,
-        ) -> &BRepBuilderAPI_MakeShape;
-        #[doc = "Upcast BRepOffsetAPI_MakeThickSolid to BRepBuilderAPI_MakeShape (mutable)"]
-        #[cxx_name = "BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape_mut"]
-        fn make_thick_solid_as_b_rep_builder_api_make_shape_mut(
-            self_: Pin<&mut MakeThickSolid>,
-        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         #[doc = "Upcast BRepOffsetAPI_MakeThickSolid to BRepBuilderAPI_Command"]
         #[cxx_name = "BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command"]
         fn make_thick_solid_as_b_rep_builder_api_command(
@@ -480,6 +462,24 @@ pub(crate) mod ffi {
         fn make_thick_solid_as_b_rep_builder_api_command_mut(
             self_: Pin<&mut MakeThickSolid>,
         ) -> Pin<&mut BRepBuilderAPI_Command>;
+        #[doc = "Upcast BRepOffsetAPI_MakeThickSolid to BRepBuilderAPI_MakeShape"]
+        #[cxx_name = "BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape"]
+        fn make_thick_solid_as_b_rep_builder_api_make_shape(
+            self_: &MakeThickSolid,
+        ) -> &BRepBuilderAPI_MakeShape;
+        #[doc = "Upcast BRepOffsetAPI_MakeThickSolid to BRepBuilderAPI_MakeShape (mutable)"]
+        #[cxx_name = "BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape_mut"]
+        fn make_thick_solid_as_b_rep_builder_api_make_shape_mut(
+            self_: Pin<&mut MakeThickSolid>,
+        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        #[doc = "Upcast BRepOffsetAPI_MakeThickSolid to BRepOffsetAPI_MakeOffsetShape"]
+        #[cxx_name = "BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape"]
+        fn make_thick_solid_as_make_offset_shape(self_: &MakeThickSolid) -> &MakeOffsetShape;
+        #[doc = "Upcast BRepOffsetAPI_MakeThickSolid to BRepOffsetAPI_MakeOffsetShape (mutable)"]
+        #[cxx_name = "BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape_mut"]
+        fn make_thick_solid_as_make_offset_shape_mut(
+            self_: Pin<&mut MakeThickSolid>,
+        ) -> Pin<&mut MakeOffsetShape>;
         #[doc = " ======================== BRepOffsetAPI_ThruSections ========================"]
         #[doc = "/// **Source:** `BRepOffsetAPI_ThruSections.hxx` - `BRepOffsetAPI_ThruSections`"]
         #[doc = ""]
@@ -604,16 +604,6 @@ pub(crate) mod ffi {
         #[doc = "Returns true if the shape has been removed from the result."]
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut MakeOffsetShape>, S: &TopoDS_Shape) -> bool;
-        #[doc = "Upcast BRepOffsetAPI_MakeOffsetShape to BRepBuilderAPI_MakeShape"]
-        #[cxx_name = "BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape"]
-        fn make_offset_shape_as_b_rep_builder_api_make_shape(
-            self_: &MakeOffsetShape,
-        ) -> &BRepBuilderAPI_MakeShape;
-        #[doc = "Upcast BRepOffsetAPI_MakeOffsetShape to BRepBuilderAPI_MakeShape (mutable)"]
-        #[cxx_name = "BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape_mut"]
-        fn make_offset_shape_as_b_rep_builder_api_make_shape_mut(
-            self_: Pin<&mut MakeOffsetShape>,
-        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         #[doc = "Upcast BRepOffsetAPI_MakeOffsetShape to BRepBuilderAPI_Command"]
         #[cxx_name = "BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command"]
         fn make_offset_shape_as_b_rep_builder_api_command(
@@ -624,6 +614,16 @@ pub(crate) mod ffi {
         fn make_offset_shape_as_b_rep_builder_api_command_mut(
             self_: Pin<&mut MakeOffsetShape>,
         ) -> Pin<&mut BRepBuilderAPI_Command>;
+        #[doc = "Upcast BRepOffsetAPI_MakeOffsetShape to BRepBuilderAPI_MakeShape"]
+        #[cxx_name = "BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape"]
+        fn make_offset_shape_as_b_rep_builder_api_make_shape(
+            self_: &MakeOffsetShape,
+        ) -> &BRepBuilderAPI_MakeShape;
+        #[doc = "Upcast BRepOffsetAPI_MakeOffsetShape to BRepBuilderAPI_MakeShape (mutable)"]
+        #[cxx_name = "BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape_mut"]
+        fn make_offset_shape_as_b_rep_builder_api_make_shape_mut(
+            self_: Pin<&mut MakeOffsetShape>,
+        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
     }
     impl UniquePtr<MakeOffset> {}
     impl UniquePtr<MakePipe> {}
@@ -681,6 +681,18 @@ impl MakePipe {
         ffi::MakePipe_ctor_wire_shape(Spine, Profile)
     }
 
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_pipe_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_pipe_as_b_rep_builder_api_command_mut(self)
+    }
+
     #[doc = "Upcast to BRepPrimAPI_MakeSweep"]
     pub fn as_b_rep_prim_api_make_sweep(&self) -> &crate::b_rep_prim_api::MakeSweep {
         ffi::make_pipe_as_b_rep_prim_api_make_sweep(self)
@@ -703,18 +715,6 @@ impl MakePipe {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         ffi::make_pipe_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_pipe_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_pipe_as_b_rep_builder_api_command_mut(self)
     }
 
     #[doc = "Returns the  TopoDS  Shape of the bottom of the prism."]
@@ -754,18 +754,6 @@ impl MakePipeShell {
         ffi::make_pipe_shell_as_b_rep_prim_api_make_sweep_mut(self)
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_pipe_shell_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_pipe_shell_as_b_rep_builder_api_command_mut(self)
-    }
-
     #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         ffi::make_pipe_shell_as_b_rep_builder_api_make_shape(self)
@@ -776,6 +764,18 @@ impl MakePipeShell {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         ffi::make_pipe_shell_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_pipe_shell_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_pipe_shell_as_b_rep_builder_api_command_mut(self)
     }
 
     #[doc = "Returns the  TopoDS  Shape of the bottom of the sweep."]
@@ -838,18 +838,6 @@ impl ThruSections {
         ffi::ThruSections_ctor_bool2_real(isSolid, ruled, pres3d)
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::thru_sections_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::thru_sections_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
     #[doc = "Upcast to BRepBuilderAPI_Command"]
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         ffi::thru_sections_as_b_rep_builder_api_command(self)
@@ -860,6 +848,18 @@ impl ThruSections {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
         ffi::thru_sections_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::thru_sections_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::thru_sections_as_b_rep_builder_api_make_shape_mut(self)
     }
 
     #[doc = "if Ruled Returns the Face generated by each edge except the last wire if smoothed Returns the Face generated by each edge of the first wire"]
@@ -874,18 +874,6 @@ impl MakeOffsetShape {
         ffi::MakeOffsetShape_ctor()
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_offset_shape_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_offset_shape_as_b_rep_builder_api_command_mut(self)
-    }
-
     #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         ffi::make_offset_shape_as_b_rep_builder_api_make_shape(self)
@@ -896,5 +884,17 @@ impl MakeOffsetShape {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         ffi::make_offset_shape_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_offset_shape_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_offset_shape_as_b_rep_builder_api_command_mut(self)
     }
 }

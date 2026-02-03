@@ -11,6 +11,7 @@
 
 use crate::model::{Param, ParsedClass, ParsedFunction, Type};
 use crate::module_graph::{CrossModuleType, Module};
+use crate::resolver;
 use std::collections::HashSet;
 use std::fmt::Write;
 
@@ -233,30 +234,13 @@ fn collect_type_headers(ty: &Option<Type>, headers: &mut HashSet<String>, known_
     }
 }
 
-/// Check if a type references an enum
-fn type_uses_enum(ty: &Type, all_enums: &HashSet<String>) -> bool {
-    match ty {
-        Type::Class(name) => all_enums.contains(name),
-        Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) | Type::RValueRef(inner) => {
-            type_uses_enum(inner, all_enums)
-        }
-        _ => false,
-    }
-}
+// Filter functions - delegate to centralized implementations in resolver module
 
-/// Check if a method uses any enum types
+/// Check if params and return type use any enum types
+/// This is a convenience wrapper for the cpp codegen which passes params and return_type separately
 fn method_uses_enum(params: &[Param], return_type: &Option<Type>, all_enums: &HashSet<String>) -> bool {
-    for param in params {
-        if type_uses_enum(&param.ty, all_enums) {
-            return true;
-        }
-    }
-    if let Some(ref ret) = return_type {
-        if type_uses_enum(ret, all_enums) {
-            return true;
-        }
-    }
-    false
+    resolver::params_use_enum(params, all_enums)
+        || return_type.as_ref().map_or(false, |t| resolver::type_uses_enum(t, all_enums))
 }
 
 /// Generate C++ wrapper functions for a class

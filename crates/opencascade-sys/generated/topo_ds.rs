@@ -26,12 +26,12 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_topo_ds.hxx");
-        #[doc = "TopAbs from top_abs module"]
-        type TopAbs = crate::top_abs::ffi::TopAbs;
         #[doc = "Location from top_loc module"]
         type TopLoc_Location = crate::top_loc::ffi::Location;
         #[doc = "SListOfItemLocation from top_loc module"]
         type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
+        #[doc = "TopAbs from top_abs module"]
+        type TopAbs = crate::top_abs::ffi::TopAbs;
         #[doc = "Mutex from standard module"]
         type Standard_Mutex = crate::standard::ffi::Mutex;
         #[doc = "Transient from standard module"]
@@ -75,11 +75,11 @@ pub(crate) mod ffi {
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTopoDSTShape"]
         type HandleTopoDSTShape;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
         #[doc = " ======================== TopoDS_Shape ========================"]
         #[doc = "/// **Source:** `TopoDS_Shape.hxx` - `TopoDS_Shape`"]
         #[doc = ""]

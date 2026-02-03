@@ -31,10 +31,6 @@ pub(crate) mod ffi {
         type Poly_Polygon2D = crate::poly::ffi::Polygon2D;
         #[doc = "PolygonOnTriangulation from poly module"]
         type Poly_PolygonOnTriangulation = crate::poly::ffi::PolygonOnTriangulation;
-        #[doc = "Location from top_loc module"]
-        type TopLoc_Location = crate::top_loc::ffi::Location;
-        #[doc = "SListOfItemLocation from top_loc module"]
-        type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
         #[doc = "Shape from topo_ds module"]
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
         #[doc = "Vertex from topo_ds module"]
@@ -59,18 +55,6 @@ pub(crate) mod ffi {
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
         #[doc = "TShape from topo_ds module"]
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Geometry from geom2d module"]
-        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "Curve from geom2d module"]
-        type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "BoundedCurve from geom2d module"]
-        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
-        type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Ellipse from geom2d module"]
-        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "TrimmedCurve from geom2d module"]
-        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
         #[doc = "Pnt from gp module"]
         type gp_Pnt = crate::gp::ffi::Pnt;
         #[doc = "Pnt2d from gp module"]
@@ -107,6 +91,18 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Geometry from geom2d module"]
+        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
+        #[doc = "Curve from geom2d module"]
+        type Geom2d_Curve = crate::geom2d::ffi::Curve;
+        #[doc = "BoundedCurve from geom2d module"]
+        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
+        #[doc = "Conic from geom2d module"]
+        type Geom2d_Conic = crate::geom2d::ffi::Conic;
+        #[doc = "Ellipse from geom2d module"]
+        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
+        #[doc = "TrimmedCurve from geom2d module"]
+        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
         #[doc = "TopAbs from top_abs module"]
         type TopAbs = crate::top_abs::ffi::TopAbs;
         #[doc = "Geometry from geom module"]
@@ -135,18 +131,22 @@ pub(crate) mod ffi {
         type Geom_Plane = crate::geom::ffi::Plane;
         #[doc = "TrimmedCurve from geom module"]
         type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
+        #[doc = "Location from top_loc module"]
+        type TopLoc_Location = crate::top_loc::ffi::Location;
+        #[doc = "SListOfItemLocation from top_loc module"]
+        type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Poly_ListOfTriangulation"]
         type Poly_ListOfTriangulation;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandlePolyPolygon2D"]
-        type HandlePolyPolygon2D;
+        #[cxx_name = "HandlePolyTriangulation"]
+        type HandlePolyTriangulation;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandlePolyPolygon3D"]
+        type HandlePolyPolygon3D;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandlePolyPolygonOnTriangulation"]
         type HandlePolyPolygonOnTriangulation;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomSurface"]
-        type HandleGeomSurface;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dCurve"]
         type HandleGeom2dCurve;
@@ -154,11 +154,11 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleGeomCurve"]
         type HandleGeomCurve;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandlePolyPolygon3D"]
-        type HandlePolyPolygon3D;
+        #[cxx_name = "HandlePolyPolygon2D"]
+        type HandlePolyPolygon2D;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandlePolyTriangulation"]
-        type HandlePolyTriangulation;
+        #[cxx_name = "HandleGeomSurface"]
+        type HandleGeomSurface;
         #[doc = " ======================== BRep_Builder ========================"]
         #[doc = "/// **Source:** `BRep_Builder.hxx` - `BRep_Builder`"]
         #[doc = ""]

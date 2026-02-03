@@ -32,42 +32,6 @@ pub(crate) mod ffi {
         type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
         #[doc = "HArray1OfBoolean from t_col_std module"]
         type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
         #[doc = "Mutex from standard module"]
         type Standard_Mutex = crate::standard::ffi::Mutex;
         #[doc = "Transient from standard module"]
@@ -122,42 +86,78 @@ pub(crate) mod ffi {
         type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
         #[doc = "TrimmedCurve from geom2d module"]
         type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Hypr2d"]
-        type gp_Hypr2d;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Geom2d_BSplineCurve"]
-        type Geom2d_BSplineCurve;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Parab2d"]
-        type gp_Parab2d;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Circ2d"]
-        type gp_Circ2d;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Elips2d"]
         type gp_Elips2d;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Lin2d"]
-        type gp_Lin2d;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "Geom2d_BezierCurve"]
         type Geom2d_BezierCurve;
         #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Parab2d"]
+        type gp_Parab2d;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Lin2d"]
+        type gp_Lin2d;
+        #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dBezierCurve"]
-        type HandleGeom2dBezierCurve;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Circ2d"]
+        type gp_Circ2d;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Geom2d_BSplineCurve"]
+        type Geom2d_BSplineCurve;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Hypr2d"]
+        type gp_Hypr2d;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dBSplineCurve"]
         type HandleGeom2dBSplineCurve;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleAdaptor2dCurve2d"]
         type HandleAdaptor2dCurve2d;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dBezierCurve"]
+        type HandleGeom2dBezierCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
         #[doc = " ======================== Adaptor2d_Curve2d ========================"]
         #[doc = "/// **Source:** `Adaptor2d_Curve2d.hxx` - `Adaptor2d_Curve2d`"]
         #[doc = ""]

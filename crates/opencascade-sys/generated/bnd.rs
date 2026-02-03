@@ -62,6 +62,14 @@ pub(crate) mod ffi {
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "HArray1OfPnt from t_colgp module"]
+        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
+        #[doc = "HArray1OfPnt2d from t_colgp module"]
+        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
+        #[doc = "HArray1OfVec from t_colgp module"]
+        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
+        #[doc = "HArray2OfPnt from t_colgp module"]
+        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
         #[doc = "HSequenceOfTransient from t_col_std module"]
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
         #[doc = "PackedMapOfInteger from t_col_std module"]
@@ -80,14 +88,6 @@ pub(crate) mod ffi {
         type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
         #[doc = "HArray1OfBoolean from t_col_std module"]
         type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfPnt from t_colgp module"]
-        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
-        #[doc = "HArray1OfPnt2d from t_colgp module"]
-        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
-        #[doc = "HArray1OfVec from t_colgp module"]
-        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
-        #[doc = "HArray2OfPnt from t_colgp module"]
-        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
         #[doc = "Pnt from gp module"]
         type gp_Pnt = crate::gp::ffi::Pnt;
         #[doc = "Pnt2d from gp module"]
@@ -128,26 +128,26 @@ pub(crate) mod ffi {
         #[cxx_name = "gp_Lin2d"]
         type gp_Lin2d;
         #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Bnd_Array1OfBox"]
+        type Bnd_Array1OfBox;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColgp_Array1OfPnt"]
+        type TColgp_Array1OfPnt;
+        #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_XY"]
         type gp_XY;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Bnd_Array1OfSphere"]
         type Bnd_Array1OfSphere;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array1OfPnt"]
-        type TColgp_Array1OfPnt;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Bnd_Array1OfBox"]
-        type Bnd_Array1OfBox;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBndHArray1OfSphere"]
+        type HandleBndHArray1OfSphere;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleBndHArray1OfBox"]
         type HandleBndHArray1OfBox;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBndHArray1OfSphere"]
-        type HandleBndHArray1OfSphere;
         #[doc = " ======================== Bnd_Box ========================"]
         #[doc = "/// **Source:** `Bnd_Box.hxx` - `Bnd_Box`"]
         #[doc = ""]

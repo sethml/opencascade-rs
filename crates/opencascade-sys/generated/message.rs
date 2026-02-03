@@ -30,24 +30,6 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_message.hxx");
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
         #[doc = "Mutex from standard module"]
         type Standard_Mutex = crate::standard::ffi::Mutex;
         #[doc = "Transient from standard module"]
@@ -90,14 +72,6 @@ pub(crate) mod ffi {
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "BaseAllocator from n_collection module"]
-        type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
-        #[doc = "BasePointerVector from n_collection module"]
-        type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
-        #[doc = "IncAllocator from n_collection module"]
-        type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
-        #[doc = "BaseList from n_collection module"]
-        type NCollection_BaseList = crate::n_collection::ffi::BaseList;
         #[doc = "AsciiString from t_collection module"]
         type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
         #[doc = "HAsciiString from t_collection module"]
@@ -108,12 +82,32 @@ pub(crate) mod ffi {
         type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
         #[doc = "MemInfo from osd module"]
         type OSD_MemInfo = crate::osd::ffi::MemInfo;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_SequenceOfHExtendedString"]
-        type TColStd_SequenceOfHExtendedString;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Message_Attribute"]
-        type Message_Attribute;
+        #[doc = "BaseAllocator from n_collection module"]
+        type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
+        #[doc = "BasePointerVector from n_collection module"]
+        type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
+        #[doc = "IncAllocator from n_collection module"]
+        type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
+        #[doc = "BaseList from n_collection module"]
+        type NCollection_BaseList = crate::n_collection::ffi::BaseList;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Message_CompositeAlerts"]
         type Message_CompositeAlerts;
@@ -121,17 +115,41 @@ pub(crate) mod ffi {
         #[cxx_name = "Standard_SStream"]
         type Standard_SStream;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Message_ListOfAlert"]
-        type Message_ListOfAlert;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "Message_SequenceOfPrinters"]
         type Message_SequenceOfPrinters;
         #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_SequenceOfHExtendedString"]
+        type TColStd_SequenceOfHExtendedString;
+        #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_HPackedMapOfInteger"]
         type TColStd_HPackedMapOfInteger;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Message_ListOfAlert"]
+        type Message_ListOfAlert;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Message_Attribute"]
+        type Message_Attribute;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageProgressIndicator"]
-        type HandleMessageProgressIndicator;
+        #[cxx_name = "HandleStandardTransient"]
+        type HandleStandardTransient;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTCollectionHAsciiString"]
+        type HandleTCollectionHAsciiString;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageAlertExtended"]
+        type HandleMessageAlertExtended;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColStdHPackedMapOfInteger"]
+        type HandleTColStdHPackedMapOfInteger;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageAlert"]
+        type HandleMessageAlert;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessagePrinter"]
+        type HandleMessagePrinter;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleMessageCompositeAlerts"]
         type HandleMessageCompositeAlerts;
@@ -139,41 +157,23 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleMessageMessenger"]
         type HandleMessageMessenger;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTCollectionHAsciiString"]
-        type HandleTCollectionHAsciiString;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageAlgorithm"]
-        type HandleMessageAlgorithm;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardTransient"]
-        type HandleStandardTransient;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageAttribute"]
-        type HandleMessageAttribute;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessagePrinter"]
-        type HandleMessagePrinter;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHSequenceOfHExtendedString"]
-        type HandleTColStdHSequenceOfHExtendedString;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageAlert"]
-        type HandleMessageAlert;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHPackedMapOfInteger"]
-        type HandleTColStdHPackedMapOfInteger;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageAlertExtended"]
-        type HandleMessageAlertExtended;
+        #[cxx_name = "HandleTCollectionHExtendedString"]
+        type HandleTCollectionHExtendedString;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleMessageReport"]
         type HandleMessageReport;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTCollectionHExtendedString"]
-        type HandleTCollectionHExtendedString;
+        #[cxx_name = "HandleTColStdHSequenceOfHExtendedString"]
+        type HandleTColStdHSequenceOfHExtendedString;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageAlgorithm"]
+        type HandleMessageAlgorithm;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageAttribute"]
+        type HandleMessageAttribute;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageProgressIndicator"]
+        type HandleMessageProgressIndicator;
         #[doc = " ======================== Message_ProgressRange ========================"]
         #[doc = "/// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange`"]
         #[doc = ""]

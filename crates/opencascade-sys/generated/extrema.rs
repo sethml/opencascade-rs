@@ -70,20 +70,23 @@ pub(crate) mod ffi {
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "math_Vector"]
-        type math_Vector;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Elips"]
-        type gp_Elips;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "math_Matrix"]
         type math_Matrix;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Parab"]
-        type gp_Parab;
+        #[cxx_name = "math_Vector"]
+        type math_Vector;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Torus"]
+        type gp_Torus;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Cone"]
         type gp_Cone;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Sphere"]
+        type gp_Sphere;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Elips"]
+        type gp_Elips;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Hypr"]
         type gp_Hypr;
@@ -91,11 +94,8 @@ pub(crate) mod ffi {
         #[cxx_name = "gp_Cylinder"]
         type gp_Cylinder;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Torus"]
-        type gp_Torus;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Sphere"]
-        type gp_Sphere;
+        #[cxx_name = "gp_Parab"]
+        type gp_Parab;
         #[doc = " ======================== Extrema_ExtPS ========================"]
         #[doc = "/// **Source:** `Extrema_ExtPS.hxx` - `Extrema_ExtPS`"]
         #[doc = ""]

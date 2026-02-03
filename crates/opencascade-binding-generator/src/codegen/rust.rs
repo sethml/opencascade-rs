@@ -5,6 +5,7 @@
 
 use crate::model::{Constructor, Method, ParsedClass, ParsedEnum, ParsedFunction, StaticMethod, Type};
 use crate::module_graph::{CrossModuleType, Module};
+use crate::resolver;
 use crate::type_mapping::{map_return_type_in_context, map_type_in_context, TypeContext};
 use heck::ToSnakeCase;
 use proc_macro2::TokenStream;
@@ -564,76 +565,23 @@ fn is_primitive_type(name: &str) -> bool {
     )
 }
 
-/// Check if a type references an enum
-fn type_uses_enum(ty: &Type, all_enums: &HashSet<String>) -> bool {
-    match ty {
-        Type::Class(name) => all_enums.contains(name),
-        Type::ConstRef(inner) | Type::MutRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) | Type::RValueRef(inner) => {
-            type_uses_enum(inner, all_enums)
-        }
-        _ => false,
-    }
-}
+// Filter functions - delegate to centralized implementations in resolver module
+// Note: We keep these wrappers for API compatibility within this module
 
-/// Check if a method uses any enum types (for filtering - enums are not supported)
 fn method_uses_enum(method: &Method, all_enums: &HashSet<String>) -> bool {
-    // Check params
-    for param in &method.params {
-        if type_uses_enum(&param.ty, all_enums) {
-            return true;
-        }
-    }
-    // Check return type
-    if let Some(ref ret) = method.return_type {
-        if type_uses_enum(ret, all_enums) {
-            return true;
-        }
-    }
-    false
+    resolver::method_uses_enum(method, all_enums)
 }
 
-/// Check if a constructor uses any enum types (for filtering - enums are not supported)
 fn constructor_uses_enum(ctor: &Constructor, all_enums: &HashSet<String>) -> bool {
-    for param in &ctor.params {
-        if type_uses_enum(&param.ty, all_enums) {
-            return true;
-        }
-    }
-    false
+    resolver::constructor_uses_enum(ctor, all_enums)
 }
 
-/// Check if a static method uses any enum types (for filtering - enums are not supported)
 fn static_method_uses_enum(method: &StaticMethod, all_enums: &HashSet<String>) -> bool {
-    // Check params
-    for param in &method.params {
-        if type_uses_enum(&param.ty, all_enums) {
-            return true;
-        }
-    }
-    // Check return type
-    if let Some(ref ret) = method.return_type {
-        if type_uses_enum(ret, all_enums) {
-            return true;
-        }
-    }
-    false
+    resolver::static_method_uses_enum(method, all_enums)
 }
 
-/// Check if a free function uses any enum types (for filtering - enums are not supported)
 fn function_uses_enum(func: &ParsedFunction, all_enums: &HashSet<String>) -> bool {
-    // Check params
-    for param in &func.params {
-        if type_uses_enum(&param.ty, all_enums) {
-            return true;
-        }
-    }
-    // Check return type
-    if let Some(ref ret) = func.return_type {
-        if type_uses_enum(ret, all_enums) {
-            return true;
-        }
-    }
-    false
+    resolver::function_uses_enum(func, all_enums)
 }
 
 /// Generate type alias declarations for cross-module types

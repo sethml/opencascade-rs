@@ -26,24 +26,6 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom.hxx");
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
         #[doc = "Pnt from gp module"]
         type gp_Pnt = crate::gp::ffi::Pnt;
         #[doc = "Pnt2d from gp module"]
@@ -80,6 +62,24 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
         #[doc = "Mutex from standard module"]
         type Standard_Mutex = crate::standard::ffi::Mutex;
         #[doc = "Transient from standard module"]
@@ -131,44 +131,44 @@ pub(crate) mod ffi {
         #[doc = "HArray2OfPnt from t_colgp module"]
         type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfReal"]
-        type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array2OfPnt"]
-        type TColgp_Array2OfPnt;
+        #[cxx_name = "TColStd_Array1OfInteger"]
+        type TColStd_Array1OfInteger;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_Array2OfReal"]
         type TColStd_Array2OfReal;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfInteger"]
-        type TColStd_Array1OfInteger;
+        #[cxx_name = "gp_Cylinder"]
+        type gp_Cylinder;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfReal"]
+        type TColStd_Array1OfReal;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColgp_Array1OfPnt"]
         type TColgp_Array1OfPnt;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Cylinder"]
-        type gp_Cylinder;
+        #[cxx_name = "TColgp_Array2OfPnt"]
+        type TColgp_Array2OfPnt;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomElementarySurface"]
-        type HandleGeomElementarySurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBSplineCurve"]
-        type HandleGeomBSplineCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomCurve"]
-        type HandleGeomCurve;
+        #[cxx_name = "HandleGeomCylindricalSurface"]
+        type HandleGeomCylindricalSurface;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomGeometry"]
         type HandleGeomGeometry;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomPlane"]
-        type HandleGeomPlane;
+        #[cxx_name = "HandleGeomBoundedSurface"]
+        type HandleGeomBoundedSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomCurve"]
+        type HandleGeomCurve;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomBoundedCurve"]
         type HandleGeomBoundedCurve;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomCylindricalSurface"]
-        type HandleGeomCylindricalSurface;
+        #[cxx_name = "HandleGeomElementarySurface"]
+        type HandleGeomElementarySurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomBezierCurve"]
         type HandleGeomBezierCurve;
@@ -176,20 +176,20 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
         #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBSplineSurface"]
+        type HandleGeomBSplineSurface;
+        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomBezierSurface"]
         type HandleGeomBezierSurface;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
+        #[cxx_name = "HandleGeomBSplineCurve"]
+        type HandleGeomBSplineCurve;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBoundedSurface"]
-        type HandleGeomBoundedSurface;
+        #[cxx_name = "HandleGeomPlane"]
+        type HandleGeomPlane;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomTrimmedCurve"]
         type HandleGeomTrimmedCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBSplineSurface"]
-        type HandleGeomBSplineSurface;
         #[doc = " ======================== Geom_Geometry ========================"]
         #[doc = "/// **Source:** `Geom_Geometry.hxx` - `Geom_Geometry`"]
         #[doc = ""]
@@ -488,16 +488,16 @@ pub(crate) mod ffi {
         #[doc = "Upcast Geom_BoundedCurve to Geom_Curve (mutable)"]
         #[cxx_name = "Geom_BoundedCurve_as_Geom_Curve_mut"]
         fn bounded_curve_as_curve_mut(self_: Pin<&mut BoundedCurve>) -> Pin<&mut Curve>;
-        #[doc = "Upcast Handle<Geom_BoundedCurve> to Handle<Geom_Curve>"]
-        #[cxx_name = "HandleGeomBoundedCurve_to_HandleGeomCurve"]
-        fn bounded_curve_to_handle_curve(
-            handle: &HandleGeomBoundedCurve,
-        ) -> UniquePtr<HandleGeomCurve>;
         #[doc = "Upcast Handle<Geom_BoundedCurve> to Handle<Geom_Geometry>"]
         #[cxx_name = "HandleGeomBoundedCurve_to_HandleGeomGeometry"]
         fn bounded_curve_to_handle_geometry(
             handle: &HandleGeomBoundedCurve,
         ) -> UniquePtr<HandleGeomGeometry>;
+        #[doc = "Upcast Handle<Geom_BoundedCurve> to Handle<Geom_Curve>"]
+        #[cxx_name = "HandleGeomBoundedCurve_to_HandleGeomCurve"]
+        fn bounded_curve_to_handle_curve(
+            handle: &HandleGeomBoundedCurve,
+        ) -> UniquePtr<HandleGeomCurve>;
         #[doc = " ======================== Geom_BoundedSurface ========================"]
         #[doc = "/// **Source:** `Geom_BoundedSurface.hxx` - `Geom_BoundedSurface`"]
         #[doc = ""]
@@ -525,16 +525,16 @@ pub(crate) mod ffi {
         fn BoundedSurface_to_handle(
             obj: UniquePtr<BoundedSurface>,
         ) -> UniquePtr<HandleGeomBoundedSurface>;
-        #[doc = "Upcast Handle<Geom_BoundedSurface> to Handle<Geom_Surface>"]
-        #[cxx_name = "HandleGeomBoundedSurface_to_HandleGeomSurface"]
-        fn bounded_surface_to_handle_surface(
-            handle: &HandleGeomBoundedSurface,
-        ) -> UniquePtr<HandleGeomSurface>;
         #[doc = "Upcast Handle<Geom_BoundedSurface> to Handle<Geom_Geometry>"]
         #[cxx_name = "HandleGeomBoundedSurface_to_HandleGeomGeometry"]
         fn bounded_surface_to_handle_geometry(
             handle: &HandleGeomBoundedSurface,
         ) -> UniquePtr<HandleGeomGeometry>;
+        #[doc = "Upcast Handle<Geom_BoundedSurface> to Handle<Geom_Surface>"]
+        #[cxx_name = "HandleGeomBoundedSurface_to_HandleGeomSurface"]
+        fn bounded_surface_to_handle_surface(
+            handle: &HandleGeomBoundedSurface,
+        ) -> UniquePtr<HandleGeomSurface>;
         #[doc = " ======================== Geom_ElementarySurface ========================"]
         #[doc = "/// **Source:** `Geom_ElementarySurface.hxx` - `Geom_ElementarySurface`"]
         #[doc = ""]
@@ -581,14 +581,6 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &ElementarySurface) -> &HandleStandardType;
         #[cxx_name = "Geom_ElementarySurface_get_type_name"]
         fn ElementarySurface_get_type_name() -> String;
-        #[doc = "Upcast Geom_ElementarySurface to Geom_Geometry"]
-        #[cxx_name = "Geom_ElementarySurface_as_Geom_Geometry"]
-        fn elementary_surface_as_geometry(self_: &ElementarySurface) -> &Geometry;
-        #[doc = "Upcast Geom_ElementarySurface to Geom_Geometry (mutable)"]
-        #[cxx_name = "Geom_ElementarySurface_as_Geom_Geometry_mut"]
-        fn elementary_surface_as_geometry_mut(
-            self_: Pin<&mut ElementarySurface>,
-        ) -> Pin<&mut Geometry>;
         #[doc = "Upcast Geom_ElementarySurface to Geom_Surface"]
         #[cxx_name = "Geom_ElementarySurface_as_Geom_Surface"]
         fn elementary_surface_as_surface(self_: &ElementarySurface) -> &Surface;
@@ -597,6 +589,14 @@ pub(crate) mod ffi {
         fn elementary_surface_as_surface_mut(
             self_: Pin<&mut ElementarySurface>,
         ) -> Pin<&mut Surface>;
+        #[doc = "Upcast Geom_ElementarySurface to Geom_Geometry"]
+        #[cxx_name = "Geom_ElementarySurface_as_Geom_Geometry"]
+        fn elementary_surface_as_geometry(self_: &ElementarySurface) -> &Geometry;
+        #[doc = "Upcast Geom_ElementarySurface to Geom_Geometry (mutable)"]
+        #[cxx_name = "Geom_ElementarySurface_as_Geom_Geometry_mut"]
+        fn elementary_surface_as_geometry_mut(
+            self_: Pin<&mut ElementarySurface>,
+        ) -> Pin<&mut Geometry>;
         #[doc = "Upcast Handle<Geom_ElementarySurface> to Handle<Geom_Geometry>"]
         #[cxx_name = "HandleGeomElementarySurface_to_HandleGeomGeometry"]
         fn elementary_surface_to_handle_geometry(
@@ -764,12 +764,6 @@ pub(crate) mod ffi {
         #[doc = "Upcast Geom_BezierCurve to Geom_Curve (mutable)"]
         #[cxx_name = "Geom_BezierCurve_as_Geom_Curve_mut"]
         fn bezier_curve_as_curve_mut(self_: Pin<&mut BezierCurve>) -> Pin<&mut Curve>;
-        #[doc = "Upcast Geom_BezierCurve to Geom_Geometry"]
-        #[cxx_name = "Geom_BezierCurve_as_Geom_Geometry"]
-        fn bezier_curve_as_geometry(self_: &BezierCurve) -> &Geometry;
-        #[doc = "Upcast Geom_BezierCurve to Geom_Geometry (mutable)"]
-        #[cxx_name = "Geom_BezierCurve_as_Geom_Geometry_mut"]
-        fn bezier_curve_as_geometry_mut(self_: Pin<&mut BezierCurve>) -> Pin<&mut Geometry>;
         #[doc = "Upcast Geom_BezierCurve to Geom_BoundedCurve"]
         #[cxx_name = "Geom_BezierCurve_as_Geom_BoundedCurve"]
         fn bezier_curve_as_bounded_curve(self_: &BezierCurve) -> &BoundedCurve;
@@ -778,6 +772,12 @@ pub(crate) mod ffi {
         fn bezier_curve_as_bounded_curve_mut(
             self_: Pin<&mut BezierCurve>,
         ) -> Pin<&mut BoundedCurve>;
+        #[doc = "Upcast Geom_BezierCurve to Geom_Geometry"]
+        #[cxx_name = "Geom_BezierCurve_as_Geom_Geometry"]
+        fn bezier_curve_as_geometry(self_: &BezierCurve) -> &Geometry;
+        #[doc = "Upcast Geom_BezierCurve to Geom_Geometry (mutable)"]
+        #[cxx_name = "Geom_BezierCurve_as_Geom_Geometry_mut"]
+        fn bezier_curve_as_geometry_mut(self_: Pin<&mut BezierCurve>) -> Pin<&mut Geometry>;
         #[doc = "Wrap Geom_BezierCurve in a Handle (reference-counted smart pointer)"]
         #[cxx_name = "Geom_BezierCurve_to_handle"]
         fn BezierCurve_to_handle(obj: UniquePtr<BezierCurve>) -> UniquePtr<HandleGeomBezierCurve>;
@@ -786,16 +786,16 @@ pub(crate) mod ffi {
         fn bezier_curve_to_handle_curve(
             handle: &HandleGeomBezierCurve,
         ) -> UniquePtr<HandleGeomCurve>;
-        #[doc = "Upcast Handle<Geom_BezierCurve> to Handle<Geom_Geometry>"]
-        #[cxx_name = "HandleGeomBezierCurve_to_HandleGeomGeometry"]
-        fn bezier_curve_to_handle_geometry(
-            handle: &HandleGeomBezierCurve,
-        ) -> UniquePtr<HandleGeomGeometry>;
         #[doc = "Upcast Handle<Geom_BezierCurve> to Handle<Geom_BoundedCurve>"]
         #[cxx_name = "HandleGeomBezierCurve_to_HandleGeomBoundedCurve"]
         fn bezier_curve_to_handle_bounded_curve(
             handle: &HandleGeomBezierCurve,
         ) -> UniquePtr<HandleGeomBoundedCurve>;
+        #[doc = "Upcast Handle<Geom_BezierCurve> to Handle<Geom_Geometry>"]
+        #[cxx_name = "HandleGeomBezierCurve_to_HandleGeomGeometry"]
+        fn bezier_curve_to_handle_geometry(
+            handle: &HandleGeomBezierCurve,
+        ) -> UniquePtr<HandleGeomGeometry>;
         #[doc = " ======================== Geom_BezierSurface ========================"]
         #[doc = "/// **Source:** `Geom_BezierSurface.hxx` - `Geom_BezierSurface`"]
         #[doc = ""]
@@ -1093,14 +1093,6 @@ pub(crate) mod ffi {
         fn BezierSurface_max_degree() -> i32;
         #[cxx_name = "Geom_BezierSurface_get_type_name"]
         fn BezierSurface_get_type_name() -> String;
-        #[doc = "Upcast Geom_BezierSurface to Geom_BoundedSurface"]
-        #[cxx_name = "Geom_BezierSurface_as_Geom_BoundedSurface"]
-        fn bezier_surface_as_bounded_surface(self_: &BezierSurface) -> &BoundedSurface;
-        #[doc = "Upcast Geom_BezierSurface to Geom_BoundedSurface (mutable)"]
-        #[cxx_name = "Geom_BezierSurface_as_Geom_BoundedSurface_mut"]
-        fn bezier_surface_as_bounded_surface_mut(
-            self_: Pin<&mut BezierSurface>,
-        ) -> Pin<&mut BoundedSurface>;
         #[doc = "Upcast Geom_BezierSurface to Geom_Surface"]
         #[cxx_name = "Geom_BezierSurface_as_Geom_Surface"]
         fn bezier_surface_as_surface(self_: &BezierSurface) -> &Surface;
@@ -1113,26 +1105,34 @@ pub(crate) mod ffi {
         #[doc = "Upcast Geom_BezierSurface to Geom_Geometry (mutable)"]
         #[cxx_name = "Geom_BezierSurface_as_Geom_Geometry_mut"]
         fn bezier_surface_as_geometry_mut(self_: Pin<&mut BezierSurface>) -> Pin<&mut Geometry>;
+        #[doc = "Upcast Geom_BezierSurface to Geom_BoundedSurface"]
+        #[cxx_name = "Geom_BezierSurface_as_Geom_BoundedSurface"]
+        fn bezier_surface_as_bounded_surface(self_: &BezierSurface) -> &BoundedSurface;
+        #[doc = "Upcast Geom_BezierSurface to Geom_BoundedSurface (mutable)"]
+        #[cxx_name = "Geom_BezierSurface_as_Geom_BoundedSurface_mut"]
+        fn bezier_surface_as_bounded_surface_mut(
+            self_: Pin<&mut BezierSurface>,
+        ) -> Pin<&mut BoundedSurface>;
         #[doc = "Wrap Geom_BezierSurface in a Handle (reference-counted smart pointer)"]
         #[cxx_name = "Geom_BezierSurface_to_handle"]
         fn BezierSurface_to_handle(
             obj: UniquePtr<BezierSurface>,
         ) -> UniquePtr<HandleGeomBezierSurface>;
-        #[doc = "Upcast Handle<Geom_BezierSurface> to Handle<Geom_Surface>"]
-        #[cxx_name = "HandleGeomBezierSurface_to_HandleGeomSurface"]
-        fn bezier_surface_to_handle_surface(
-            handle: &HandleGeomBezierSurface,
-        ) -> UniquePtr<HandleGeomSurface>;
-        #[doc = "Upcast Handle<Geom_BezierSurface> to Handle<Geom_BoundedSurface>"]
-        #[cxx_name = "HandleGeomBezierSurface_to_HandleGeomBoundedSurface"]
-        fn bezier_surface_to_handle_bounded_surface(
-            handle: &HandleGeomBezierSurface,
-        ) -> UniquePtr<HandleGeomBoundedSurface>;
         #[doc = "Upcast Handle<Geom_BezierSurface> to Handle<Geom_Geometry>"]
         #[cxx_name = "HandleGeomBezierSurface_to_HandleGeomGeometry"]
         fn bezier_surface_to_handle_geometry(
             handle: &HandleGeomBezierSurface,
         ) -> UniquePtr<HandleGeomGeometry>;
+        #[doc = "Upcast Handle<Geom_BezierSurface> to Handle<Geom_BoundedSurface>"]
+        #[cxx_name = "HandleGeomBezierSurface_to_HandleGeomBoundedSurface"]
+        fn bezier_surface_to_handle_bounded_surface(
+            handle: &HandleGeomBezierSurface,
+        ) -> UniquePtr<HandleGeomBoundedSurface>;
+        #[doc = "Upcast Handle<Geom_BezierSurface> to Handle<Geom_Surface>"]
+        #[cxx_name = "HandleGeomBezierSurface_to_HandleGeomSurface"]
+        fn bezier_surface_to_handle_surface(
+            handle: &HandleGeomBezierSurface,
+        ) -> UniquePtr<HandleGeomSurface>;
         #[doc = " ======================== Geom_BSplineCurve ========================"]
         #[doc = "/// **Source:** `Geom_BSplineCurve.hxx` - `Geom_BSplineCurve`"]
         #[doc = ""]
@@ -1455,18 +1455,18 @@ pub(crate) mod ffi {
         fn BSplineCurve_max_degree() -> i32;
         #[cxx_name = "Geom_BSplineCurve_get_type_name"]
         fn BSplineCurve_get_type_name() -> String;
-        #[doc = "Upcast Geom_BSplineCurve to Geom_Geometry"]
-        #[cxx_name = "Geom_BSplineCurve_as_Geom_Geometry"]
-        fn b_spline_curve_as_geometry(self_: &BSplineCurve) -> &Geometry;
-        #[doc = "Upcast Geom_BSplineCurve to Geom_Geometry (mutable)"]
-        #[cxx_name = "Geom_BSplineCurve_as_Geom_Geometry_mut"]
-        fn b_spline_curve_as_geometry_mut(self_: Pin<&mut BSplineCurve>) -> Pin<&mut Geometry>;
         #[doc = "Upcast Geom_BSplineCurve to Geom_Curve"]
         #[cxx_name = "Geom_BSplineCurve_as_Geom_Curve"]
         fn b_spline_curve_as_curve(self_: &BSplineCurve) -> &Curve;
         #[doc = "Upcast Geom_BSplineCurve to Geom_Curve (mutable)"]
         #[cxx_name = "Geom_BSplineCurve_as_Geom_Curve_mut"]
         fn b_spline_curve_as_curve_mut(self_: Pin<&mut BSplineCurve>) -> Pin<&mut Curve>;
+        #[doc = "Upcast Geom_BSplineCurve to Geom_Geometry"]
+        #[cxx_name = "Geom_BSplineCurve_as_Geom_Geometry"]
+        fn b_spline_curve_as_geometry(self_: &BSplineCurve) -> &Geometry;
+        #[doc = "Upcast Geom_BSplineCurve to Geom_Geometry (mutable)"]
+        #[cxx_name = "Geom_BSplineCurve_as_Geom_Geometry_mut"]
+        fn b_spline_curve_as_geometry_mut(self_: Pin<&mut BSplineCurve>) -> Pin<&mut Geometry>;
         #[doc = "Upcast Geom_BSplineCurve to Geom_BoundedCurve"]
         #[cxx_name = "Geom_BSplineCurve_as_Geom_BoundedCurve"]
         fn b_spline_curve_as_bounded_curve(self_: &BSplineCurve) -> &BoundedCurve;
@@ -1480,21 +1480,21 @@ pub(crate) mod ffi {
         fn BSplineCurve_to_handle(
             obj: UniquePtr<BSplineCurve>,
         ) -> UniquePtr<HandleGeomBSplineCurve>;
-        #[doc = "Upcast Handle<Geom_BSplineCurve> to Handle<Geom_Geometry>"]
-        #[cxx_name = "HandleGeomBSplineCurve_to_HandleGeomGeometry"]
-        fn b_spline_curve_to_handle_geometry(
-            handle: &HandleGeomBSplineCurve,
-        ) -> UniquePtr<HandleGeomGeometry>;
-        #[doc = "Upcast Handle<Geom_BSplineCurve> to Handle<Geom_Curve>"]
-        #[cxx_name = "HandleGeomBSplineCurve_to_HandleGeomCurve"]
-        fn b_spline_curve_to_handle_curve(
-            handle: &HandleGeomBSplineCurve,
-        ) -> UniquePtr<HandleGeomCurve>;
         #[doc = "Upcast Handle<Geom_BSplineCurve> to Handle<Geom_BoundedCurve>"]
         #[cxx_name = "HandleGeomBSplineCurve_to_HandleGeomBoundedCurve"]
         fn b_spline_curve_to_handle_bounded_curve(
             handle: &HandleGeomBSplineCurve,
         ) -> UniquePtr<HandleGeomBoundedCurve>;
+        #[doc = "Upcast Handle<Geom_BSplineCurve> to Handle<Geom_Curve>"]
+        #[cxx_name = "HandleGeomBSplineCurve_to_HandleGeomCurve"]
+        fn b_spline_curve_to_handle_curve(
+            handle: &HandleGeomBSplineCurve,
+        ) -> UniquePtr<HandleGeomCurve>;
+        #[doc = "Upcast Handle<Geom_BSplineCurve> to Handle<Geom_Geometry>"]
+        #[cxx_name = "HandleGeomBSplineCurve_to_HandleGeomGeometry"]
+        fn b_spline_curve_to_handle_geometry(
+            handle: &HandleGeomBSplineCurve,
+        ) -> UniquePtr<HandleGeomGeometry>;
         #[doc = " ======================== Geom_BSplineSurface ========================"]
         #[doc = "/// **Source:** `Geom_BSplineSurface.hxx` - `Geom_BSplineSurface`"]
         #[doc = ""]
@@ -2102,12 +2102,6 @@ pub(crate) mod ffi {
         fn BSplineSurface_max_degree() -> i32;
         #[cxx_name = "Geom_BSplineSurface_get_type_name"]
         fn BSplineSurface_get_type_name() -> String;
-        #[doc = "Upcast Geom_BSplineSurface to Geom_Geometry"]
-        #[cxx_name = "Geom_BSplineSurface_as_Geom_Geometry"]
-        fn b_spline_surface_as_geometry(self_: &BSplineSurface) -> &Geometry;
-        #[doc = "Upcast Geom_BSplineSurface to Geom_Geometry (mutable)"]
-        #[cxx_name = "Geom_BSplineSurface_as_Geom_Geometry_mut"]
-        fn b_spline_surface_as_geometry_mut(self_: Pin<&mut BSplineSurface>) -> Pin<&mut Geometry>;
         #[doc = "Upcast Geom_BSplineSurface to Geom_BoundedSurface"]
         #[cxx_name = "Geom_BSplineSurface_as_Geom_BoundedSurface"]
         fn b_spline_surface_as_bounded_surface(self_: &BSplineSurface) -> &BoundedSurface;
@@ -2116,6 +2110,12 @@ pub(crate) mod ffi {
         fn b_spline_surface_as_bounded_surface_mut(
             self_: Pin<&mut BSplineSurface>,
         ) -> Pin<&mut BoundedSurface>;
+        #[doc = "Upcast Geom_BSplineSurface to Geom_Geometry"]
+        #[cxx_name = "Geom_BSplineSurface_as_Geom_Geometry"]
+        fn b_spline_surface_as_geometry(self_: &BSplineSurface) -> &Geometry;
+        #[doc = "Upcast Geom_BSplineSurface to Geom_Geometry (mutable)"]
+        #[cxx_name = "Geom_BSplineSurface_as_Geom_Geometry_mut"]
+        fn b_spline_surface_as_geometry_mut(self_: Pin<&mut BSplineSurface>) -> Pin<&mut Geometry>;
         #[doc = "Upcast Geom_BSplineSurface to Geom_Surface"]
         #[cxx_name = "Geom_BSplineSurface_as_Geom_Surface"]
         fn b_spline_surface_as_surface(self_: &BSplineSurface) -> &Surface;
@@ -2298,6 +2298,14 @@ pub(crate) mod ffi {
         fn CylindricalSurface_copy(self_: &CylindricalSurface) -> UniquePtr<HandleGeomGeometry>;
         #[cxx_name = "Geom_CylindricalSurface_get_type_name"]
         fn CylindricalSurface_get_type_name() -> String;
+        #[doc = "Upcast Geom_CylindricalSurface to Geom_Geometry"]
+        #[cxx_name = "Geom_CylindricalSurface_as_Geom_Geometry"]
+        fn cylindrical_surface_as_geometry(self_: &CylindricalSurface) -> &Geometry;
+        #[doc = "Upcast Geom_CylindricalSurface to Geom_Geometry (mutable)"]
+        #[cxx_name = "Geom_CylindricalSurface_as_Geom_Geometry_mut"]
+        fn cylindrical_surface_as_geometry_mut(
+            self_: Pin<&mut CylindricalSurface>,
+        ) -> Pin<&mut Geometry>;
         #[doc = "Upcast Geom_CylindricalSurface to Geom_ElementarySurface"]
         #[cxx_name = "Geom_CylindricalSurface_as_Geom_ElementarySurface"]
         fn cylindrical_surface_as_elementary_surface(
@@ -2308,14 +2316,6 @@ pub(crate) mod ffi {
         fn cylindrical_surface_as_elementary_surface_mut(
             self_: Pin<&mut CylindricalSurface>,
         ) -> Pin<&mut ElementarySurface>;
-        #[doc = "Upcast Geom_CylindricalSurface to Geom_Geometry"]
-        #[cxx_name = "Geom_CylindricalSurface_as_Geom_Geometry"]
-        fn cylindrical_surface_as_geometry(self_: &CylindricalSurface) -> &Geometry;
-        #[doc = "Upcast Geom_CylindricalSurface to Geom_Geometry (mutable)"]
-        #[cxx_name = "Geom_CylindricalSurface_as_Geom_Geometry_mut"]
-        fn cylindrical_surface_as_geometry_mut(
-            self_: Pin<&mut CylindricalSurface>,
-        ) -> Pin<&mut Geometry>;
         #[doc = "Upcast Geom_CylindricalSurface to Geom_Surface"]
         #[cxx_name = "Geom_CylindricalSurface_as_Geom_Surface"]
         fn cylindrical_surface_as_surface(self_: &CylindricalSurface) -> &Surface;
@@ -2474,18 +2474,18 @@ pub(crate) mod ffi {
         fn Plane_copy(self_: &Plane) -> UniquePtr<HandleGeomGeometry>;
         #[cxx_name = "Geom_Plane_get_type_name"]
         fn Plane_get_type_name() -> String;
-        #[doc = "Upcast Geom_Plane to Geom_Surface"]
-        #[cxx_name = "Geom_Plane_as_Geom_Surface"]
-        fn plane_as_surface(self_: &Plane) -> &Surface;
-        #[doc = "Upcast Geom_Plane to Geom_Surface (mutable)"]
-        #[cxx_name = "Geom_Plane_as_Geom_Surface_mut"]
-        fn plane_as_surface_mut(self_: Pin<&mut Plane>) -> Pin<&mut Surface>;
         #[doc = "Upcast Geom_Plane to Geom_ElementarySurface"]
         #[cxx_name = "Geom_Plane_as_Geom_ElementarySurface"]
         fn plane_as_elementary_surface(self_: &Plane) -> &ElementarySurface;
         #[doc = "Upcast Geom_Plane to Geom_ElementarySurface (mutable)"]
         #[cxx_name = "Geom_Plane_as_Geom_ElementarySurface_mut"]
         fn plane_as_elementary_surface_mut(self_: Pin<&mut Plane>) -> Pin<&mut ElementarySurface>;
+        #[doc = "Upcast Geom_Plane to Geom_Surface"]
+        #[cxx_name = "Geom_Plane_as_Geom_Surface"]
+        fn plane_as_surface(self_: &Plane) -> &Surface;
+        #[doc = "Upcast Geom_Plane to Geom_Surface (mutable)"]
+        #[cxx_name = "Geom_Plane_as_Geom_Surface_mut"]
+        fn plane_as_surface_mut(self_: Pin<&mut Plane>) -> Pin<&mut Surface>;
         #[doc = "Upcast Geom_Plane to Geom_Geometry"]
         #[cxx_name = "Geom_Plane_as_Geom_Geometry"]
         fn plane_as_geometry(self_: &Plane) -> &Geometry;
@@ -2495,17 +2495,17 @@ pub(crate) mod ffi {
         #[doc = "Wrap Geom_Plane in a Handle (reference-counted smart pointer)"]
         #[cxx_name = "Geom_Plane_to_handle"]
         fn Plane_to_handle(obj: UniquePtr<Plane>) -> UniquePtr<HandleGeomPlane>;
-        #[doc = "Upcast Handle<Geom_Plane> to Handle<Geom_ElementarySurface>"]
-        #[cxx_name = "HandleGeomPlane_to_HandleGeomElementarySurface"]
-        fn plane_to_handle_elementary_surface(
-            handle: &HandleGeomPlane,
-        ) -> UniquePtr<HandleGeomElementarySurface>;
         #[doc = "Upcast Handle<Geom_Plane> to Handle<Geom_Surface>"]
         #[cxx_name = "HandleGeomPlane_to_HandleGeomSurface"]
         fn plane_to_handle_surface(handle: &HandleGeomPlane) -> UniquePtr<HandleGeomSurface>;
         #[doc = "Upcast Handle<Geom_Plane> to Handle<Geom_Geometry>"]
         #[cxx_name = "HandleGeomPlane_to_HandleGeomGeometry"]
         fn plane_to_handle_geometry(handle: &HandleGeomPlane) -> UniquePtr<HandleGeomGeometry>;
+        #[doc = "Upcast Handle<Geom_Plane> to Handle<Geom_ElementarySurface>"]
+        #[cxx_name = "HandleGeomPlane_to_HandleGeomElementarySurface"]
+        fn plane_to_handle_elementary_surface(
+            handle: &HandleGeomPlane,
+        ) -> UniquePtr<HandleGeomElementarySurface>;
         #[doc = " ======================== Geom_TrimmedCurve ========================"]
         #[doc = "/// **Source:** `Geom_TrimmedCurve.hxx` - `Geom_TrimmedCurve`"]
         #[doc = ""]
@@ -2639,16 +2639,16 @@ pub(crate) mod ffi {
         fn trimmed_curve_to_handle_bounded_curve(
             handle: &HandleGeomTrimmedCurve,
         ) -> UniquePtr<HandleGeomBoundedCurve>;
-        #[doc = "Upcast Handle<Geom_TrimmedCurve> to Handle<Geom_Geometry>"]
-        #[cxx_name = "HandleGeomTrimmedCurve_to_HandleGeomGeometry"]
-        fn trimmed_curve_to_handle_geometry(
-            handle: &HandleGeomTrimmedCurve,
-        ) -> UniquePtr<HandleGeomGeometry>;
         #[doc = "Upcast Handle<Geom_TrimmedCurve> to Handle<Geom_Curve>"]
         #[cxx_name = "HandleGeomTrimmedCurve_to_HandleGeomCurve"]
         fn trimmed_curve_to_handle_curve(
             handle: &HandleGeomTrimmedCurve,
         ) -> UniquePtr<HandleGeomCurve>;
+        #[doc = "Upcast Handle<Geom_TrimmedCurve> to Handle<Geom_Geometry>"]
+        #[cxx_name = "HandleGeomTrimmedCurve_to_HandleGeomGeometry"]
+        fn trimmed_curve_to_handle_geometry(
+            handle: &HandleGeomTrimmedCurve,
+        ) -> UniquePtr<HandleGeomGeometry>;
     }
     impl UniquePtr<Geometry> {}
     impl UniquePtr<Curve> {}
@@ -2795,16 +2795,6 @@ impl Surface {
 }
 pub use ffi::BoundedCurve;
 impl BoundedCurve {
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::bounded_curve_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::bounded_curve_as_geometry_mut(self)
-    }
-
     #[doc = "Upcast to Geom_Curve"]
     pub fn as_curve(&self) -> &Curve {
         ffi::bounded_curve_as_curve(self)
@@ -2813,6 +2803,16 @@ impl BoundedCurve {
     #[doc = "Upcast to Geom_Curve (mutable)"]
     pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
         ffi::bounded_curve_as_curve_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::bounded_curve_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::bounded_curve_as_geometry_mut(self)
     }
 
     #[doc = "Returns the end point of the curve."]
@@ -2901,6 +2901,16 @@ impl BezierCurve {
         ffi::BezierCurve_ctor_array1ofpnt_array1ofreal(CurvePoles, PoleWeights)
     }
 
+    #[doc = "Upcast to Geom_Curve"]
+    pub fn as_curve(&self) -> &Curve {
+        ffi::bezier_curve_as_curve(self)
+    }
+
+    #[doc = "Upcast to Geom_Curve (mutable)"]
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        ffi::bezier_curve_as_curve_mut(self)
+    }
+
     #[doc = "Upcast to Geom_BoundedCurve"]
     pub fn as_bounded_curve(&self) -> &BoundedCurve {
         ffi::bezier_curve_as_bounded_curve(self)
@@ -2921,16 +2931,6 @@ impl BezierCurve {
     #[doc = "Upcast to Geom_Geometry (mutable)"]
     pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
         ffi::bezier_curve_as_geometry_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Curve"]
-    pub fn as_curve(&self) -> &Curve {
-        ffi::bezier_curve_as_curve(self)
-    }
-
-    #[doc = "Upcast to Geom_Curve (mutable)"]
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        ffi::bezier_curve_as_curve_mut(self)
     }
 
     #[doc = "Wrap Geom_BezierCurve in a Handle (reference-counted smart pointer)"]
@@ -2982,16 +2982,6 @@ impl BezierSurface {
         ffi::BezierSurface_ctor_array2ofpnt_array2ofreal(SurfacePoles, PoleWeights)
     }
 
-    #[doc = "Upcast to Geom_Surface"]
-    pub fn as_surface(&self) -> &Surface {
-        ffi::bezier_surface_as_surface(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface (mutable)"]
-    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
-        ffi::bezier_surface_as_surface_mut(self)
-    }
-
     #[doc = "Upcast to Geom_Geometry"]
     pub fn as_geometry(&self) -> &Geometry {
         ffi::bezier_surface_as_geometry(self)
@@ -3012,6 +3002,16 @@ impl BezierSurface {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut BoundedSurface> {
         ffi::bezier_surface_as_bounded_surface_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface"]
+    pub fn as_surface(&self) -> &Surface {
+        ffi::bezier_surface_as_surface(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface (mutable)"]
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        ffi::bezier_surface_as_surface_mut(self)
     }
 
     #[doc = "Wrap Geom_BezierSurface in a Handle (reference-counted smart pointer)"]
@@ -3088,16 +3088,6 @@ impl BSplineCurve {
         )
     }
 
-    #[doc = "Upcast to Geom_Curve"]
-    pub fn as_curve(&self) -> &Curve {
-        ffi::b_spline_curve_as_curve(self)
-    }
-
-    #[doc = "Upcast to Geom_Curve (mutable)"]
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        ffi::b_spline_curve_as_curve_mut(self)
-    }
-
     #[doc = "Upcast to Geom_Geometry"]
     pub fn as_geometry(&self) -> &Geometry {
         ffi::b_spline_curve_as_geometry(self)
@@ -3106,6 +3096,16 @@ impl BSplineCurve {
     #[doc = "Upcast to Geom_Geometry (mutable)"]
     pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
         ffi::b_spline_curve_as_geometry_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Curve"]
+    pub fn as_curve(&self) -> &Curve {
+        ffi::b_spline_curve_as_curve(self)
+    }
+
+    #[doc = "Upcast to Geom_Curve (mutable)"]
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        ffi::b_spline_curve_as_curve_mut(self)
     }
 
     #[doc = "Upcast to Geom_BoundedCurve"]
@@ -3201,6 +3201,16 @@ impl BSplineSurface {
         )
     }
 
+    #[doc = "Upcast to Geom_Surface"]
+    pub fn as_surface(&self) -> &Surface {
+        ffi::b_spline_surface_as_surface(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface (mutable)"]
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        ffi::b_spline_surface_as_surface_mut(self)
+    }
+
     #[doc = "Upcast to Geom_Geometry"]
     pub fn as_geometry(&self) -> &Geometry {
         ffi::b_spline_surface_as_geometry(self)
@@ -3221,16 +3231,6 @@ impl BSplineSurface {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut BoundedSurface> {
         ffi::b_spline_surface_as_bounded_surface_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface"]
-    pub fn as_surface(&self) -> &Surface {
-        ffi::b_spline_surface_as_surface(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface (mutable)"]
-    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
-        ffi::b_spline_surface_as_surface_mut(self)
     }
 
     #[doc = "Wrap Geom_BSplineSurface in a Handle (reference-counted smart pointer)"]
@@ -3325,6 +3325,16 @@ impl CylindricalSurface {
         ffi::CylindricalSurface_ctor_cylinder(C)
     }
 
+    #[doc = "Upcast to Geom_Surface"]
+    pub fn as_surface(&self) -> &Surface {
+        ffi::cylindrical_surface_as_surface(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface (mutable)"]
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        ffi::cylindrical_surface_as_surface_mut(self)
+    }
+
     #[doc = "Upcast to Geom_ElementarySurface"]
     pub fn as_elementary_surface(&self) -> &ElementarySurface {
         ffi::cylindrical_surface_as_elementary_surface(self)
@@ -3335,16 +3345,6 @@ impl CylindricalSurface {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut ElementarySurface> {
         ffi::cylindrical_surface_as_elementary_surface_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface"]
-    pub fn as_surface(&self) -> &Surface {
-        ffi::cylindrical_surface_as_surface(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface (mutable)"]
-    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
-        ffi::cylindrical_surface_as_surface_mut(self)
     }
 
     #[doc = "Upcast to Geom_Geometry"]
@@ -3432,16 +3432,6 @@ impl Plane {
         ffi::plane_as_elementary_surface_mut(self)
     }
 
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::plane_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::plane_as_geometry_mut(self)
-    }
-
     #[doc = "Upcast to Geom_Surface"]
     pub fn as_surface(&self) -> &Surface {
         ffi::plane_as_surface(self)
@@ -3450,6 +3440,16 @@ impl Plane {
     #[doc = "Upcast to Geom_Surface (mutable)"]
     pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
         ffi::plane_as_surface_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::plane_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::plane_as_geometry_mut(self)
     }
 
     #[doc = "Wrap Geom_Plane in a Handle (reference-counted smart pointer)"]
@@ -3504,14 +3504,14 @@ impl TrimmedCurve {
         ffi::TrimmedCurve_ctor_handlecurve_real2_bool2(C, U1, U2, Sense, theAdjustPeriodic)
     }
 
-    #[doc = "Upcast to Geom_Curve"]
-    pub fn as_curve(&self) -> &Curve {
-        ffi::trimmed_curve_as_curve(self)
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::trimmed_curve_as_geometry(self)
     }
 
-    #[doc = "Upcast to Geom_Curve (mutable)"]
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        ffi::trimmed_curve_as_curve_mut(self)
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::trimmed_curve_as_geometry_mut(self)
     }
 
     #[doc = "Upcast to Geom_BoundedCurve"]
@@ -3526,14 +3526,14 @@ impl TrimmedCurve {
         ffi::trimmed_curve_as_bounded_curve_mut(self)
     }
 
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::trimmed_curve_as_geometry(self)
+    #[doc = "Upcast to Geom_Curve"]
+    pub fn as_curve(&self) -> &Curve {
+        ffi::trimmed_curve_as_curve(self)
     }
 
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::trimmed_curve_as_geometry_mut(self)
+    #[doc = "Upcast to Geom_Curve (mutable)"]
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        ffi::trimmed_curve_as_curve_mut(self)
     }
 
     #[doc = "Wrap Geom_TrimmedCurve in a Handle (reference-counted smart pointer)"]
@@ -3583,44 +3583,39 @@ impl ffi::HandleGeomSurface {
     }
 }
 impl ffi::HandleGeomBoundedCurve {
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::bounded_curve_to_handle_geometry(self)
-    }
-
     #[doc = "Upcast to Handle<Geom_Curve>"]
     pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
         ffi::bounded_curve_to_handle_curve(self)
     }
-}
-impl ffi::HandleGeomBoundedSurface {
+
     #[doc = "Upcast to Handle<Geom_Geometry>"]
     pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::bounded_surface_to_handle_geometry(self)
+        ffi::bounded_curve_to_handle_geometry(self)
     }
-
+}
+impl ffi::HandleGeomBoundedSurface {
     #[doc = "Upcast to Handle<Geom_Surface>"]
     pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
         ffi::bounded_surface_to_handle_surface(self)
     }
+
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::bounded_surface_to_handle_geometry(self)
+    }
 }
 impl ffi::HandleGeomElementarySurface {
-    #[doc = "Upcast to Handle<Geom_Surface>"]
-    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
-        ffi::elementary_surface_to_handle_surface(self)
-    }
-
     #[doc = "Upcast to Handle<Geom_Geometry>"]
     pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
         ffi::elementary_surface_to_handle_geometry(self)
     }
+
+    #[doc = "Upcast to Handle<Geom_Surface>"]
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
+        ffi::elementary_surface_to_handle_surface(self)
+    }
 }
 impl ffi::HandleGeomBezierCurve {
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::bezier_curve_to_handle_geometry(self)
-    }
-
     #[doc = "Upcast to Handle<Geom_BoundedCurve>"]
     pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedCurve> {
         ffi::bezier_curve_to_handle_bounded_curve(self)
@@ -3630,6 +3625,11 @@ impl ffi::HandleGeomBezierCurve {
     pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
         ffi::bezier_curve_to_handle_curve(self)
     }
+
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::bezier_curve_to_handle_geometry(self)
+    }
 }
 impl ffi::HandleGeomBezierSurface {
     #[doc = "Upcast to Handle<Geom_Geometry>"]
@@ -3637,17 +3637,22 @@ impl ffi::HandleGeomBezierSurface {
         ffi::bezier_surface_to_handle_geometry(self)
     }
 
-    #[doc = "Upcast to Handle<Geom_BoundedSurface>"]
-    pub fn to_handle_bounded_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedSurface> {
-        ffi::bezier_surface_to_handle_bounded_surface(self)
-    }
-
     #[doc = "Upcast to Handle<Geom_Surface>"]
     pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
         ffi::bezier_surface_to_handle_surface(self)
     }
+
+    #[doc = "Upcast to Handle<Geom_BoundedSurface>"]
+    pub fn to_handle_bounded_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedSurface> {
+        ffi::bezier_surface_to_handle_bounded_surface(self)
+    }
 }
 impl ffi::HandleGeomBSplineCurve {
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::b_spline_curve_to_handle_geometry(self)
+    }
+
     #[doc = "Upcast to Handle<Geom_BoundedCurve>"]
     pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedCurve> {
         ffi::b_spline_curve_to_handle_bounded_curve(self)
@@ -3657,18 +3662,8 @@ impl ffi::HandleGeomBSplineCurve {
     pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
         ffi::b_spline_curve_to_handle_curve(self)
     }
-
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::b_spline_curve_to_handle_geometry(self)
-    }
 }
 impl ffi::HandleGeomBSplineSurface {
-    #[doc = "Upcast to Handle<Geom_BoundedSurface>"]
-    pub fn to_handle_bounded_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedSurface> {
-        ffi::b_spline_surface_to_handle_bounded_surface(self)
-    }
-
     #[doc = "Upcast to Handle<Geom_Surface>"]
     pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
         ffi::b_spline_surface_to_handle_surface(self)
@@ -3678,8 +3673,18 @@ impl ffi::HandleGeomBSplineSurface {
     pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
         ffi::b_spline_surface_to_handle_geometry(self)
     }
+
+    #[doc = "Upcast to Handle<Geom_BoundedSurface>"]
+    pub fn to_handle_bounded_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedSurface> {
+        ffi::b_spline_surface_to_handle_bounded_surface(self)
+    }
 }
 impl ffi::HandleGeomCylindricalSurface {
+    #[doc = "Upcast to Handle<Geom_Surface>"]
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
+        ffi::cylindrical_surface_to_handle_surface(self)
+    }
+
     #[doc = "Upcast to Handle<Geom_Geometry>"]
     pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
         ffi::cylindrical_surface_to_handle_geometry(self)
@@ -3689,16 +3694,11 @@ impl ffi::HandleGeomCylindricalSurface {
     pub fn to_handle_elementary_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomElementarySurface> {
         ffi::cylindrical_surface_to_handle_elementary_surface(self)
     }
-
-    #[doc = "Upcast to Handle<Geom_Surface>"]
-    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
-        ffi::cylindrical_surface_to_handle_surface(self)
-    }
 }
 impl ffi::HandleGeomPlane {
-    #[doc = "Upcast to Handle<Geom_ElementarySurface>"]
-    pub fn to_handle_elementary_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomElementarySurface> {
-        ffi::plane_to_handle_elementary_surface(self)
+    #[doc = "Upcast to Handle<Geom_Surface>"]
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
+        ffi::plane_to_handle_surface(self)
     }
 
     #[doc = "Upcast to Handle<Geom_Geometry>"]
@@ -3706,9 +3706,9 @@ impl ffi::HandleGeomPlane {
         ffi::plane_to_handle_geometry(self)
     }
 
-    #[doc = "Upcast to Handle<Geom_Surface>"]
-    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
-        ffi::plane_to_handle_surface(self)
+    #[doc = "Upcast to Handle<Geom_ElementarySurface>"]
+    pub fn to_handle_elementary_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomElementarySurface> {
+        ffi::plane_to_handle_elementary_surface(self)
     }
 }
 impl ffi::HandleGeomTrimmedCurve {
@@ -3717,13 +3717,13 @@ impl ffi::HandleGeomTrimmedCurve {
         ffi::trimmed_curve_to_handle_curve(self)
     }
 
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::trimmed_curve_to_handle_geometry(self)
-    }
-
     #[doc = "Upcast to Handle<Geom_BoundedCurve>"]
     pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedCurve> {
         ffi::trimmed_curve_to_handle_bounded_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::trimmed_curve_to_handle_geometry(self)
     }
 }

@@ -394,7 +394,7 @@ const RUST_KEYWORDS: &[&str] = &[
 ];
 
 /// Check if a type uses an enum
-fn type_uses_enum(ty: &Type, all_enums: &HashSet<String>) -> bool {
+pub fn type_uses_enum(ty: &Type, all_enums: &HashSet<String>) -> bool {
     match ty {
         Type::Class(name) => all_enums.contains(name),
         Type::Handle(name) => all_enums.contains(name),
@@ -405,12 +405,35 @@ fn type_uses_enum(ty: &Type, all_enums: &HashSet<String>) -> bool {
 }
 
 /// Check if parameters use any enum types
-fn params_use_enum(params: &[Param], all_enums: &HashSet<String>) -> bool {
+pub fn params_use_enum(params: &[Param], all_enums: &HashSet<String>) -> bool {
     params.iter().any(|p| type_uses_enum(&p.ty, all_enums))
 }
 
+/// Check if a method uses any enum types (params or return type)
+pub fn method_uses_enum(method: &Method, all_enums: &HashSet<String>) -> bool {
+    params_use_enum(&method.params, all_enums) 
+        || method.return_type.as_ref().map_or(false, |t| type_uses_enum(t, all_enums))
+}
+
+/// Check if a constructor uses any enum types
+pub fn constructor_uses_enum(ctor: &Constructor, all_enums: &HashSet<String>) -> bool {
+    params_use_enum(&ctor.params, all_enums)
+}
+
+/// Check if a static method uses any enum types
+pub fn static_method_uses_enum(method: &StaticMethod, all_enums: &HashSet<String>) -> bool {
+    params_use_enum(&method.params, all_enums)
+        || method.return_type.as_ref().map_or(false, |t| type_uses_enum(t, all_enums))
+}
+
+/// Check if a free function uses any enum types
+pub fn function_uses_enum(func: &ParsedFunction, all_enums: &HashSet<String>) -> bool {
+    params_use_enum(&func.params, all_enums)
+        || func.return_type.as_ref().map_or(false, |t| type_uses_enum(t, all_enums))
+}
+
 /// Check if a method needs explicit lifetimes (Pin<&mut Self> return with reference params)
-fn method_needs_explicit_lifetimes(method: &Method) -> bool {
+pub fn method_needs_explicit_lifetimes(method: &Method) -> bool {
     // Check if method is non-const (returns Pin<&mut Self>)
     if method.is_const {
         return false;
@@ -437,7 +460,7 @@ fn method_needs_explicit_lifetimes(method: &Method) -> bool {
 }
 
 /// Check if a method has unsupported by-value parameters
-fn method_has_unsupported_by_value_params(method: &Method) -> Option<(String, String)> {
+pub fn method_has_unsupported_by_value_params(method: &Method) -> Option<(String, String)> {
     for param in &method.params {
         match &param.ty {
             Type::Class(name) => {
@@ -453,7 +476,7 @@ fn method_has_unsupported_by_value_params(method: &Method) -> Option<(String, St
 }
 
 /// Check if a static method has unsupported by-value parameters
-fn static_method_has_unsupported_by_value_params(method: &StaticMethod) -> Option<(String, String)> {
+pub fn static_method_has_unsupported_by_value_params(method: &StaticMethod) -> Option<(String, String)> {
     for param in &method.params {
         match &param.ty {
             Type::Class(name) => {

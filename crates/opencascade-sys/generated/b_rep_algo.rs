@@ -14,6 +14,8 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_algo.hxx");
+        #[doc = "TopAbs from top_abs module"]
+        type TopAbs = crate::top_abs::ffi::TopAbs;
         #[doc = "HSequenceOfShape from top_tools module"]
         type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
         #[doc = "HArray2OfShape from top_tools module"]
@@ -42,8 +44,6 @@ pub(crate) mod ffi {
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
         #[doc = "TShape from topo_ds module"]
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "TopAbs from top_abs module"]
-        type TopAbs = crate::top_abs::ffi::TopAbs;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;

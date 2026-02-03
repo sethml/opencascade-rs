@@ -58,32 +58,32 @@ pub(crate) mod ffi {
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "IGESData_IGESModel"]
-        type IGESData_IGESModel;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "IGESData_Protocol"]
-        type IGESData_Protocol;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "IGESData_IGESEntity"]
         type IGESData_IGESEntity;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "IGESData_SpecificModule"]
         type IGESData_SpecificModule;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "IGESData_Protocol"]
+        type IGESData_Protocol;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "IGESData_IGESModel"]
+        type IGESData_IGESModel;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIGESDataProtocol"]
-        type HandleIGESDataProtocol;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIGESDataIGESModel"]
-        type HandleIGESDataIGESModel;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardTransient"]
-        type HandleStandardTransient;
+        #[cxx_name = "HandleIGESDataSpecificModule"]
+        type HandleIGESDataSpecificModule;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleIGESDataIGESEntity"]
         type HandleIGESDataIGESEntity;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIGESDataSpecificModule"]
-        type HandleIGESDataSpecificModule;
+        #[cxx_name = "HandleIGESDataIGESModel"]
+        type HandleIGESDataIGESModel;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleIGESDataProtocol"]
+        type HandleIGESDataProtocol;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardTransient"]
+        type HandleStandardTransient;
         #[doc = " ======================== IGESData_BasicEditor ========================"]
         #[doc = "/// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor`"]
         #[doc = ""]

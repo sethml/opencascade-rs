@@ -111,6 +111,53 @@ inline int TopTools_IndexedMapOfShape_find_index(const TopTools_IndexedMapOfShap
 }
 
 // ========================
+// TopTools_DataMapOfShapeShape - Key-value map
+// ========================
+
+inline std::unique_ptr<TopTools_DataMapOfShapeShape> TopTools_DataMapOfShapeShape_new() {
+    return std::make_unique<TopTools_DataMapOfShapeShape>();
+}
+
+struct DataMapOfShapeShapeIterator {
+    TopTools_DataMapOfShapeShape::Iterator inner;
+};
+
+inline std::unique_ptr<DataMapOfShapeShapeIterator> TopTools_DataMapOfShapeShape_iter(const TopTools_DataMapOfShapeShape& coll) {
+    auto iter = std::make_unique<DataMapOfShapeShapeIterator>();
+    iter->inner.Initialize(coll);
+    return iter;
+}
+
+inline std::unique_ptr<TopoDS_Shape> DataMapOfShapeShapeIterator_next_key(DataMapOfShapeShapeIterator& iter) {
+    if (!iter.inner.More()) {
+        return nullptr;
+    }
+    auto result = std::make_unique<TopoDS_Shape>(iter.inner.Key());
+    iter.inner.Next();
+    return result;
+}
+
+inline std::unique_ptr<TopoDS_Shape> TopTools_DataMapOfShapeShape_find(const TopTools_DataMapOfShapeShape& coll, const TopoDS_Shape& key) {
+    const auto* found = coll.Seek(key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return std::make_unique<TopoDS_Shape>(*found);
+}
+
+inline bool TopTools_DataMapOfShapeShape_contains(const TopTools_DataMapOfShapeShape& coll, const TopoDS_Shape& key) {
+    return coll.IsBound(key);
+}
+
+inline bool TopTools_DataMapOfShapeShape_bind(TopTools_DataMapOfShapeShape& coll, const TopoDS_Shape& key, const TopoDS_Shape& value) {
+    return coll.Bind(key, value);
+}
+
+inline int TopTools_DataMapOfShapeShape_size(const TopTools_DataMapOfShapeShape& coll) {
+    return coll.Extent();
+}
+
+// ========================
 // TopTools_ListOfShape - Doubly-linked list
 // ========================
 
@@ -178,53 +225,6 @@ inline bool TopTools_MapOfShape_add(TopTools_MapOfShape& coll, const TopoDS_Shap
 
 inline bool TopTools_MapOfShape_contains(const TopTools_MapOfShape& coll, const TopoDS_Shape& item) {
     return coll.Contains(item);
-}
-
-// ========================
-// TopTools_DataMapOfShapeShape - Key-value map
-// ========================
-
-inline std::unique_ptr<TopTools_DataMapOfShapeShape> TopTools_DataMapOfShapeShape_new() {
-    return std::make_unique<TopTools_DataMapOfShapeShape>();
-}
-
-struct DataMapOfShapeShapeIterator {
-    TopTools_DataMapOfShapeShape::Iterator inner;
-};
-
-inline std::unique_ptr<DataMapOfShapeShapeIterator> TopTools_DataMapOfShapeShape_iter(const TopTools_DataMapOfShapeShape& coll) {
-    auto iter = std::make_unique<DataMapOfShapeShapeIterator>();
-    iter->inner.Initialize(coll);
-    return iter;
-}
-
-inline std::unique_ptr<TopoDS_Shape> DataMapOfShapeShapeIterator_next_key(DataMapOfShapeShapeIterator& iter) {
-    if (!iter.inner.More()) {
-        return nullptr;
-    }
-    auto result = std::make_unique<TopoDS_Shape>(iter.inner.Key());
-    iter.inner.Next();
-    return result;
-}
-
-inline std::unique_ptr<TopoDS_Shape> TopTools_DataMapOfShapeShape_find(const TopTools_DataMapOfShapeShape& coll, const TopoDS_Shape& key) {
-    const auto* found = coll.Seek(key);
-    if (found == nullptr) {
-        return nullptr;
-    }
-    return std::make_unique<TopoDS_Shape>(*found);
-}
-
-inline bool TopTools_DataMapOfShapeShape_contains(const TopTools_DataMapOfShapeShape& coll, const TopoDS_Shape& key) {
-    return coll.IsBound(key);
-}
-
-inline bool TopTools_DataMapOfShapeShape_bind(TopTools_DataMapOfShapeShape& coll, const TopoDS_Shape& key, const TopoDS_Shape& value) {
-    return coll.Bind(key, value);
-}
-
-inline int TopTools_DataMapOfShapeShape_size(const TopTools_DataMapOfShapeShape& coll) {
-    return coll.Extent();
 }
 
 // ========================

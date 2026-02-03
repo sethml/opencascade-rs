@@ -61,14 +61,14 @@ pub(crate) mod ffi {
         #[cxx_name = "MAT_Arc"]
         type MAT_Arc;
         #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
+        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleMATBasicElt"]
         type HandleMATBasicElt;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleMATArc"]
         type HandleMATArc;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
         #[doc = " ======================== MAT_BasicElt ========================"]
         #[doc = "/// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt`"]
         #[doc = ""]

@@ -16,30 +16,8 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_step_control.hxx");
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Reader from xs_control module"]
+        type XSControl_Reader = crate::xs_control::ffi::Reader;
         #[doc = "Parameters from destep module"]
         type DESTEP_Parameters = crate::destep::ffi::Parameters;
         #[doc = "ProgressRange from message module"]
@@ -70,8 +48,30 @@ pub(crate) mod ffi {
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
         #[doc = "ShapeProcessor from xs_algo module"]
         type XSAlgo_ShapeProcessor = crate::xs_algo::ffi::ShapeProcessor;
-        #[doc = "Reader from xs_control module"]
-        type XSControl_Reader = crate::xs_control::ffi::Reader;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
         #[doc = "HSequenceOfTransient from t_col_std module"]
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
         #[doc = "PackedMapOfInteger from t_col_std module"]
@@ -91,23 +91,23 @@ pub(crate) mod ffi {
         #[doc = "HArray1OfBoolean from t_col_std module"]
         type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "StepData_StepModel"]
-        type StepData_StepModel;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "DE_ShapeFixParameters"]
         type DE_ShapeFixParameters;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "XSControl_WorkSession"]
-        type XSControl_WorkSession;
+        #[cxx_name = "StepData_StepModel"]
+        type StepData_StepModel;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_SequenceOfAsciiString"]
         type TColStd_SequenceOfAsciiString;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleXSControlWorkSession"]
-        type HandleXSControlWorkSession;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "XSControl_WorkSession"]
+        type XSControl_WorkSession;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStepDataStepModel"]
         type HandleStepDataStepModel;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleXSControlWorkSession"]
+        type HandleXSControlWorkSession;
         #[doc = " ======================== STEPControl_Reader ========================"]
         #[doc = "/// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader`"]
         #[doc = ""]

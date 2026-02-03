@@ -863,7 +863,7 @@ pub fn generate_cpp_module(table: &SymbolTable, module: &str) -> String {
 
 ---
 
-### �🔄 Step 5: Update opencascade Crate (IN PROGRESS - COMPILES)
+### 🔄 Step 5: Update opencascade Crate (IN PROGRESS - COMPILES)
 
 Update imports in `crates/opencascade/src/*.rs` to use the new generated bindings.
 

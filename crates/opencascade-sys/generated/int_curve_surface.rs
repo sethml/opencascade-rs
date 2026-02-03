@@ -75,20 +75,20 @@ pub(crate) mod ffi {
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "IntCurveSurface_ThePolyhedronOfHInter"]
-        type IntCurveSurface_ThePolyhedronOfHInter;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "IntCurveSurface_ThePolygonOfHInter"]
         type IntCurveSurface_ThePolygonOfHInter;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "IntCurveSurface_ThePolyhedronOfHInter"]
+        type IntCurveSurface_ThePolyhedronOfHInter;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Bnd_BoundSortBox"]
         type Bnd_BoundSortBox;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleAdaptor3dSurface"]
-        type HandleAdaptor3dSurface;
-        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleAdaptor3dCurve"]
         type HandleAdaptor3dCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleAdaptor3dSurface"]
+        type HandleAdaptor3dSurface;
         #[doc = " ======================== IntCurveSurface_HInter ========================"]
         #[doc = "/// **Source:** `IntCurveSurface_HInter.hxx` - `IntCurveSurface_HInter`"]
         #[cxx_name = "IntCurveSurface_HInter"]

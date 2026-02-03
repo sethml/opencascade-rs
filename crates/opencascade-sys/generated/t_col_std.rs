@@ -73,8 +73,17 @@ pub(crate) mod ffi {
         #[doc = "BaseList from n_collection module"]
         type NCollection_BaseList = crate::n_collection::ffi::BaseList;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array2OfReal"]
-        type TColStd_Array2OfReal;
+        #[cxx_name = "TColStd_Array1OfInteger"]
+        type TColStd_Array1OfInteger;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_SequenceOfHExtendedString"]
+        type TColStd_SequenceOfHExtendedString;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_SequenceOfTransient"]
+        type TColStd_SequenceOfTransient;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfBoolean"]
+        type TColStd_Array1OfBoolean;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_SequenceOfReal"]
         type TColStd_SequenceOfReal;
@@ -82,47 +91,38 @@ pub(crate) mod ffi {
         #[cxx_name = "TColStd_Array1OfTransient"]
         type TColStd_Array1OfTransient;
         #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array2OfReal"]
+        type TColStd_Array2OfReal;
+        #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfInteger"]
-        type TColStd_Array1OfInteger;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfBoolean"]
-        type TColStd_Array1OfBoolean;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_SequenceOfTransient"]
-        type TColStd_SequenceOfTransient;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_SequenceOfHExtendedString"]
-        type TColStd_SequenceOfHExtendedString;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHSequenceOfReal"]
-        type HandleTColStdHSequenceOfReal;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTColStdHSequenceOfTransient"]
         type HandleTColStdHSequenceOfTransient;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHArray2OfReal"]
-        type HandleTColStdHArray2OfReal;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHArray1OfInteger"]
-        type HandleTColStdHArray1OfInteger;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHArray1OfReal"]
-        type HandleTColStdHArray1OfReal;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHArray1OfBoolean"]
-        type HandleTColStdHArray1OfBoolean;
+        #[cxx_name = "HandleTColStdHSequenceOfReal"]
+        type HandleTColStdHSequenceOfReal;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTColStdHArray1OfTransient"]
         type HandleTColStdHArray1OfTransient;
         #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColStdHArray1OfInteger"]
+        type HandleTColStdHArray1OfInteger;
+        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTColStdHSequenceOfHExtendedString"]
         type HandleTColStdHSequenceOfHExtendedString;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColStdHArray1OfBoolean"]
+        type HandleTColStdHArray1OfBoolean;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColStdHArray1OfReal"]
+        type HandleTColStdHArray1OfReal;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColStdHArray2OfReal"]
+        type HandleTColStdHArray2OfReal;
         #[doc = " ======================== TColStd_HSequenceOfTransient ========================"]
         #[doc = "/// **Source:** `TColStd_HSequenceOfTransient.hxx` - `TColStd_HSequenceOfTransient`"]
         #[cxx_name = "TColStd_HSequenceOfTransient"]

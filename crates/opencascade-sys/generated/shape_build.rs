@@ -14,16 +14,6 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_shape_build.hxx");
-        #[doc = "TopAbs from top_abs module"]
-        type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "BRepTools from b_rep_tools module"]
-        type BRepTools = crate::b_rep_tools::ffi::BRepTools;
-        #[doc = "History from b_rep_tools module"]
-        type BRepTools_History = crate::b_rep_tools::ffi::History;
-        #[doc = "Modifier from b_rep_tools module"]
-        type BRepTools_Modifier = crate::b_rep_tools::ffi::Modifier;
-        #[doc = "ReShape from b_rep_tools module"]
-        type BRepTools_ReShape = crate::b_rep_tools::ffi::ReShape;
         #[doc = "Shape from topo_ds module"]
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
         #[doc = "Vertex from topo_ds module"]
@@ -48,6 +38,16 @@ pub(crate) mod ffi {
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
         #[doc = "TShape from topo_ds module"]
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "BRepTools from b_rep_tools module"]
+        type BRepTools = crate::b_rep_tools::ffi::BRepTools;
+        #[doc = "History from b_rep_tools module"]
+        type BRepTools_History = crate::b_rep_tools::ffi::History;
+        #[doc = "Modifier from b_rep_tools module"]
+        type BRepTools_Modifier = crate::b_rep_tools::ffi::Modifier;
+        #[doc = "ReShape from b_rep_tools module"]
+        type BRepTools_ReShape = crate::b_rep_tools::ffi::ReShape;
+        #[doc = "TopAbs from top_abs module"]
+        type TopAbs = crate::top_abs::ffi::TopAbs;
         #[doc = "Mutex from standard module"]
         type Standard_Mutex = crate::standard::ffi::Mutex;
         #[doc = "Transient from standard module"]

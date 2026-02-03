@@ -22,54 +22,14 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_offset.hxx");
-        #[doc = "Image from b_rep_algo module"]
-        type BRepAlgo_Image = crate::b_rep_algo::ffi::Image;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "SecHArray1 from ch_fi_ds module"]
-        type ChFiDS_SecHArray1 = crate::ch_fi_ds::ffi::SecHArray1;
-        #[doc = "CircSection from ch_fi_ds module"]
-        type ChFiDS_CircSection = crate::ch_fi_ds::ffi::CircSection;
-        #[doc = "ElSpine from ch_fi_ds module"]
-        type ChFiDS_ElSpine = crate::ch_fi_ds::ffi::ElSpine;
-        #[doc = "SurfData from ch_fi_ds module"]
-        type ChFiDS_SurfData = crate::ch_fi_ds::ffi::SurfData;
-        #[doc = "CommonPoint from ch_fi_ds module"]
-        type ChFiDS_CommonPoint = crate::ch_fi_ds::ffi::CommonPoint;
-        #[doc = "FaceInterference from ch_fi_ds module"]
-        type ChFiDS_FaceInterference = crate::ch_fi_ds::ffi::FaceInterference;
-        #[doc = "Stripe from ch_fi_ds module"]
-        type ChFiDS_Stripe = crate::ch_fi_ds::ffi::Stripe;
-        #[doc = "HData from ch_fi_ds module"]
-        type ChFiDS_HData = crate::ch_fi_ds::ffi::HData;
-        #[doc = "Map from ch_fi_ds module"]
-        type ChFiDS_Map = crate::ch_fi_ds::ffi::Map;
-        #[doc = "StripeMap from ch_fi_ds module"]
-        type ChFiDS_StripeMap = crate::ch_fi_ds::ffi::StripeMap;
-        #[doc = "Regul from ch_fi_ds module"]
-        type ChFiDS_Regul = crate::ch_fi_ds::ffi::Regul;
+        #[doc = "AsciiString from t_collection module"]
+        type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
+        #[doc = "HAsciiString from t_collection module"]
+        type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
+        #[doc = "HExtendedString from t_collection module"]
+        type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
+        #[doc = "ExtendedString from t_collection module"]
+        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
         #[doc = "ProgressRange from message module"]
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
         #[doc = "ProgressScope from message module"]
@@ -96,27 +56,58 @@ pub(crate) mod ffi {
         type Message_Alert = crate::message::ffi::Alert;
         #[doc = "AlertExtended from message module"]
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "AsciiString from t_collection module"]
-        type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
-        #[doc = "HAsciiString from t_collection module"]
-        type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
-        #[doc = "HExtendedString from t_collection module"]
-        type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
-        #[doc = "ExtendedString from t_collection module"]
-        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
         #[doc = "HSequenceOfShape from top_tools module"]
         type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
         #[doc = "HArray2OfShape from top_tools module"]
         type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "BRepAlgo_AsDes"]
-        type BRepAlgo_AsDes;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_DataMapOfShapeReal"]
-        type TopTools_DataMapOfShapeReal;
+        #[doc = "Image from b_rep_algo module"]
+        type BRepAlgo_Image = crate::b_rep_algo::ffi::Image;
+        #[doc = "SecHArray1 from ch_fi_ds module"]
+        type ChFiDS_SecHArray1 = crate::ch_fi_ds::ffi::SecHArray1;
+        #[doc = "CircSection from ch_fi_ds module"]
+        type ChFiDS_CircSection = crate::ch_fi_ds::ffi::CircSection;
+        #[doc = "ElSpine from ch_fi_ds module"]
+        type ChFiDS_ElSpine = crate::ch_fi_ds::ffi::ElSpine;
+        #[doc = "SurfData from ch_fi_ds module"]
+        type ChFiDS_SurfData = crate::ch_fi_ds::ffi::SurfData;
+        #[doc = "CommonPoint from ch_fi_ds module"]
+        type ChFiDS_CommonPoint = crate::ch_fi_ds::ffi::CommonPoint;
+        #[doc = "FaceInterference from ch_fi_ds module"]
+        type ChFiDS_FaceInterference = crate::ch_fi_ds::ffi::FaceInterference;
+        #[doc = "Stripe from ch_fi_ds module"]
+        type ChFiDS_Stripe = crate::ch_fi_ds::ffi::Stripe;
+        #[doc = "HData from ch_fi_ds module"]
+        type ChFiDS_HData = crate::ch_fi_ds::ffi::HData;
+        #[doc = "Map from ch_fi_ds module"]
+        type ChFiDS_Map = crate::ch_fi_ds::ffi::Map;
+        #[doc = "StripeMap from ch_fi_ds module"]
+        type ChFiDS_StripeMap = crate::ch_fi_ds::ffi::StripeMap;
+        #[doc = "Regul from ch_fi_ds module"]
+        type ChFiDS_Regul = crate::ch_fi_ds::ffi::Regul;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_IndexedMapOfShape"]
         type TopTools_IndexedMapOfShape;
@@ -124,11 +115,20 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepOffset_ListOfInterval"]
         type BRepOffset_ListOfInterval;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_MapOfShape"]
-        type TopTools_MapOfShape;
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_DataMapOfShapeShape"]
         type TopTools_DataMapOfShapeShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "BRepAlgo_AsDes"]
+        type BRepAlgo_AsDes;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_MapOfShape"]
+        type TopTools_MapOfShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_DataMapOfShapeReal"]
+        type TopTools_DataMapOfShapeReal;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleBRepAlgoAsDes"]
         type HandleBRepAlgoAsDes;

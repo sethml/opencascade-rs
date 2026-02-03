@@ -77,10 +77,10 @@ inline std::unique_ptr<BRepLib_MakeWire> BRepLib_MakeWire_ctor_wire_edge(const T
     return std::make_unique<BRepLib_MakeWire>(W, E);
 }
 
-inline const BRepLib_MakeShape& BRepLib_MakeWire_as_BRepLib_MakeShape(const BRepLib_MakeWire& self) { return self; }
-inline BRepLib_MakeShape& BRepLib_MakeWire_as_BRepLib_MakeShape_mut(BRepLib_MakeWire& self) { return self; }
 inline const BRepLib_Command& BRepLib_MakeWire_as_BRepLib_Command(const BRepLib_MakeWire& self) { return self; }
 inline BRepLib_Command& BRepLib_MakeWire_as_BRepLib_Command_mut(BRepLib_MakeWire& self) { return self; }
+inline const BRepLib_MakeShape& BRepLib_MakeWire_as_BRepLib_MakeShape(const BRepLib_MakeWire& self) { return self; }
+inline BRepLib_MakeShape& BRepLib_MakeWire_as_BRepLib_MakeShape_mut(BRepLib_MakeWire& self) { return self; }
 
 // ========================
 // BRepLib_MakeShape wrappers
@@ -102,10 +102,10 @@ inline std::unique_ptr<BRepLib_MakeVertex> BRepLib_MakeVertex_ctor_pnt(const gp_
     return std::make_unique<BRepLib_MakeVertex>(P);
 }
 
-inline const BRepLib_MakeShape& BRepLib_MakeVertex_as_BRepLib_MakeShape(const BRepLib_MakeVertex& self) { return self; }
-inline BRepLib_MakeShape& BRepLib_MakeVertex_as_BRepLib_MakeShape_mut(BRepLib_MakeVertex& self) { return self; }
 inline const BRepLib_Command& BRepLib_MakeVertex_as_BRepLib_Command(const BRepLib_MakeVertex& self) { return self; }
 inline BRepLib_Command& BRepLib_MakeVertex_as_BRepLib_Command_mut(BRepLib_MakeVertex& self) { return self; }
+inline const BRepLib_MakeShape& BRepLib_MakeVertex_as_BRepLib_MakeShape(const BRepLib_MakeVertex& self) { return self; }
+inline BRepLib_MakeShape& BRepLib_MakeVertex_as_BRepLib_MakeShape_mut(BRepLib_MakeVertex& self) { return self; }
 
 // ========================
 // BRepLib_MakeSolid wrappers
@@ -139,10 +139,10 @@ inline std::unique_ptr<BRepLib_MakeSolid> BRepLib_MakeSolid_ctor_solid_shell(con
     return std::make_unique<BRepLib_MakeSolid>(So, S);
 }
 
-inline const BRepLib_Command& BRepLib_MakeSolid_as_BRepLib_Command(const BRepLib_MakeSolid& self) { return self; }
-inline BRepLib_Command& BRepLib_MakeSolid_as_BRepLib_Command_mut(BRepLib_MakeSolid& self) { return self; }
 inline const BRepLib_MakeShape& BRepLib_MakeSolid_as_BRepLib_MakeShape(const BRepLib_MakeSolid& self) { return self; }
 inline BRepLib_MakeShape& BRepLib_MakeSolid_as_BRepLib_MakeShape_mut(BRepLib_MakeSolid& self) { return self; }
+inline const BRepLib_Command& BRepLib_MakeSolid_as_BRepLib_Command(const BRepLib_MakeSolid& self) { return self; }
+inline BRepLib_Command& BRepLib_MakeSolid_as_BRepLib_Command_mut(BRepLib_MakeSolid& self) { return self; }
 
 // ========================
 // BRepLib_MakeFace wrappers
@@ -240,10 +240,10 @@ inline Standard_Boolean BRepLib_MakeFace_IsDegenerated(const opencascade::handle
     return BRepLib_MakeFace::IsDegenerated(theCurve, theMaxTol, theActTol);
 }
 
-inline const BRepLib_MakeShape& BRepLib_MakeFace_as_BRepLib_MakeShape(const BRepLib_MakeFace& self) { return self; }
-inline BRepLib_MakeShape& BRepLib_MakeFace_as_BRepLib_MakeShape_mut(BRepLib_MakeFace& self) { return self; }
 inline const BRepLib_Command& BRepLib_MakeFace_as_BRepLib_Command(const BRepLib_MakeFace& self) { return self; }
 inline BRepLib_Command& BRepLib_MakeFace_as_BRepLib_Command_mut(BRepLib_MakeFace& self) { return self; }
+inline const BRepLib_MakeShape& BRepLib_MakeFace_as_BRepLib_MakeShape(const BRepLib_MakeFace& self) { return self; }
+inline BRepLib_MakeShape& BRepLib_MakeFace_as_BRepLib_MakeShape_mut(BRepLib_MakeFace& self) { return self; }
 
 // ========================
 // BRepLib_MakeEdge wrappers

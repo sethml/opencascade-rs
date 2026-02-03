@@ -112,15 +112,15 @@ inline rust::String Geom2d_BoundedCurve_get_type_name() {
     return rust::String(Geom2d_BoundedCurve::get_type_name());
 }
 
-inline const Geom2d_Geometry& Geom2d_BoundedCurve_as_Geom2d_Geometry(const Geom2d_BoundedCurve& self) { return self; }
-inline Geom2d_Geometry& Geom2d_BoundedCurve_as_Geom2d_Geometry_mut(Geom2d_BoundedCurve& self) { return self; }
 inline const Geom2d_Curve& Geom2d_BoundedCurve_as_Geom2d_Curve(const Geom2d_BoundedCurve& self) { return self; }
 inline Geom2d_Curve& Geom2d_BoundedCurve_as_Geom2d_Curve_mut(Geom2d_BoundedCurve& self) { return self; }
-inline std::unique_ptr<HandleGeom2dGeometry> HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(const HandleGeom2dBoundedCurve& handle) {
-    return std::make_unique<HandleGeom2dGeometry>(handle);
-}
+inline const Geom2d_Geometry& Geom2d_BoundedCurve_as_Geom2d_Geometry(const Geom2d_BoundedCurve& self) { return self; }
+inline Geom2d_Geometry& Geom2d_BoundedCurve_as_Geom2d_Geometry_mut(Geom2d_BoundedCurve& self) { return self; }
 inline std::unique_ptr<HandleGeom2dCurve> HandleGeom2dBoundedCurve_to_HandleGeom2dCurve(const HandleGeom2dBoundedCurve& handle) {
     return std::make_unique<HandleGeom2dCurve>(handle);
+}
+inline std::unique_ptr<HandleGeom2dGeometry> HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(const HandleGeom2dBoundedCurve& handle) {
+    return std::make_unique<HandleGeom2dGeometry>(handle);
 }
 
 // ========================
@@ -249,22 +249,22 @@ inline rust::String Geom2d_TrimmedCurve_get_type_name() {
     return rust::String(Geom2d_TrimmedCurve::get_type_name());
 }
 
-inline const Geom2d_Curve& Geom2d_TrimmedCurve_as_Geom2d_Curve(const Geom2d_TrimmedCurve& self) { return self; }
-inline Geom2d_Curve& Geom2d_TrimmedCurve_as_Geom2d_Curve_mut(Geom2d_TrimmedCurve& self) { return self; }
 inline const Geom2d_BoundedCurve& Geom2d_TrimmedCurve_as_Geom2d_BoundedCurve(const Geom2d_TrimmedCurve& self) { return self; }
 inline Geom2d_BoundedCurve& Geom2d_TrimmedCurve_as_Geom2d_BoundedCurve_mut(Geom2d_TrimmedCurve& self) { return self; }
 inline const Geom2d_Geometry& Geom2d_TrimmedCurve_as_Geom2d_Geometry(const Geom2d_TrimmedCurve& self) { return self; }
 inline Geom2d_Geometry& Geom2d_TrimmedCurve_as_Geom2d_Geometry_mut(Geom2d_TrimmedCurve& self) { return self; }
+inline const Geom2d_Curve& Geom2d_TrimmedCurve_as_Geom2d_Curve(const Geom2d_TrimmedCurve& self) { return self; }
+inline Geom2d_Curve& Geom2d_TrimmedCurve_as_Geom2d_Curve_mut(Geom2d_TrimmedCurve& self) { return self; }
 inline std::unique_ptr<HandleGeom2dTrimmedCurve> Geom2d_TrimmedCurve_to_handle(std::unique_ptr<Geom2d_TrimmedCurve> obj) {
     return std::make_unique<HandleGeom2dTrimmedCurve>(obj.release());
-}
-inline std::unique_ptr<HandleGeom2dCurve> HandleGeom2dTrimmedCurve_to_HandleGeom2dCurve(const HandleGeom2dTrimmedCurve& handle) {
-    return std::make_unique<HandleGeom2dCurve>(handle);
 }
 inline std::unique_ptr<HandleGeom2dBoundedCurve> HandleGeom2dTrimmedCurve_to_HandleGeom2dBoundedCurve(const HandleGeom2dTrimmedCurve& handle) {
     return std::make_unique<HandleGeom2dBoundedCurve>(handle);
 }
 inline std::unique_ptr<HandleGeom2dGeometry> HandleGeom2dTrimmedCurve_to_HandleGeom2dGeometry(const HandleGeom2dTrimmedCurve& handle) {
     return std::make_unique<HandleGeom2dGeometry>(handle);
+}
+inline std::unique_ptr<HandleGeom2dCurve> HandleGeom2dTrimmedCurve_to_HandleGeom2dCurve(const HandleGeom2dTrimmedCurve& handle) {
+    return std::make_unique<HandleGeom2dCurve>(handle);
 }
 

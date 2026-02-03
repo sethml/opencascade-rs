@@ -15,6 +15,10 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_iges_control.hxx");
+        #[doc = "BasicEditor from iges_data module"]
+        type IGESData_BasicEditor = crate::iges_data::ffi::BasicEditor;
+        #[doc = "SpecificLib from iges_data module"]
+        type IGESData_SpecificLib = crate::iges_data::ffi::SpecificLib;
         #[doc = "ProgressRange from message module"]
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
         #[doc = "ProgressScope from message module"]
@@ -65,12 +69,6 @@ pub(crate) mod ffi {
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
         #[doc = "TShape from topo_ds module"]
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "BasicEditor from iges_data module"]
-        type IGESData_BasicEditor = crate::iges_data::ffi::BasicEditor;
-        #[doc = "SpecificLib from iges_data module"]
-        type IGESData_SpecificLib = crate::iges_data::ffi::SpecificLib;
-        #[doc = "ShapeProcessor from xs_algo module"]
-        type XSAlgo_ShapeProcessor = crate::xs_algo::ffi::ShapeProcessor;
         #[doc = "Mutex from standard module"]
         type Standard_Mutex = crate::standard::ffi::Mutex;
         #[doc = "Transient from standard module"]
@@ -115,9 +113,8 @@ pub(crate) mod ffi {
         type Standard_Dump = crate::standard::ffi::Dump;
         #[doc = "Reader from xs_control module"]
         type XSControl_Reader = crate::xs_control::ffi::Reader;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Transfer_FinderProcess"]
-        type Transfer_FinderProcess;
+        #[doc = "ShapeProcessor from xs_algo module"]
+        type XSAlgo_ShapeProcessor = crate::xs_algo::ffi::ShapeProcessor;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "IGESData_IGESModel"]
         type IGESData_IGESModel;
@@ -125,17 +122,14 @@ pub(crate) mod ffi {
         #[cxx_name = "XSControl_WorkSession"]
         type XSControl_WorkSession;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "IGESData_IGESEntity"]
-        type IGESData_IGESEntity;
+        #[cxx_name = "Transfer_FinderProcess"]
+        type Transfer_FinderProcess;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "DE_ShapeFixParameters"]
         type DE_ShapeFixParameters;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardTransient"]
-        type HandleStandardTransient;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIGESDataIGESModel"]
-        type HandleIGESDataIGESModel;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "IGESData_IGESEntity"]
+        type IGESData_IGESEntity;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleXSControlWorkSession"]
         type HandleXSControlWorkSession;
@@ -143,8 +137,14 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleTransferFinderProcess"]
         type HandleTransferFinderProcess;
         #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardTransient"]
+        type HandleStandardTransient;
+        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleIGESDataIGESEntity"]
         type HandleIGESDataIGESEntity;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleIGESDataIGESModel"]
+        type HandleIGESDataIGESModel;
         #[doc = " ======================== IGESControl_Reader ========================"]
         #[doc = "/// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader`"]
         #[doc = ""]

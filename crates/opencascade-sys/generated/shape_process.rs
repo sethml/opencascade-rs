@@ -47,11 +47,11 @@ pub(crate) mod ffi {
         #[cxx_name = "ShapeProcess_Operator"]
         type ShapeProcess_Operator;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleShapeProcessContext"]
-        type HandleShapeProcessContext;
-        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleShapeProcessOperator"]
         type HandleShapeProcessOperator;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleShapeProcessContext"]
+        type HandleShapeProcessContext;
         #[doc = " ======================== ShapeProcess ========================"]
         #[doc = "/// **Source:** `ShapeProcess.hxx` - `ShapeProcess`"]
         #[doc = ""]

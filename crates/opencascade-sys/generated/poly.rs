@@ -21,6 +21,76 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_poly.hxx");
+        #[doc = "Box from bnd module"]
+        type Bnd_Box = crate::bnd::ffi::Box_;
+        #[doc = "OBB from bnd module"]
+        type Bnd_OBB = crate::bnd::ffi::OBB;
+        #[doc = "Box2d from bnd module"]
+        type Bnd_Box2d = crate::bnd::ffi::Box2d;
+        #[doc = "B2d from bnd module"]
+        type Bnd_B2d = crate::bnd::ffi::B2d;
+        #[doc = "HArray1OfBox from bnd module"]
+        type Bnd_HArray1OfBox = crate::bnd::ffi::HArray1OfBox;
+        #[doc = "HArray1OfSphere from bnd module"]
+        type Bnd_HArray1OfSphere = crate::bnd::ffi::HArray1OfSphere;
+        #[doc = "Sphere from bnd module"]
+        type Bnd_Sphere = crate::bnd::ffi::Sphere;
+        #[doc = "BaseAllocator from n_collection module"]
+        type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
+        #[doc = "BasePointerVector from n_collection module"]
+        type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
+        #[doc = "IncAllocator from n_collection module"]
+        type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
+        #[doc = "BaseList from n_collection module"]
+        type NCollection_BaseList = crate::n_collection::ffi::BaseList;
+        #[doc = "HArray1OfShortReal from t_short module"]
+        type TShort_HArray1OfShortReal = crate::t_short::ffi::HArray1OfShortReal;
+        #[doc = "HArray1OfPnt from t_colgp module"]
+        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
+        #[doc = "HArray1OfPnt2d from t_colgp module"]
+        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
+        #[doc = "HArray1OfVec from t_colgp module"]
+        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
+        #[doc = "HArray2OfPnt from t_colgp module"]
+        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "MemInfo from osd module"]
+        type OSD_MemInfo = crate::osd::ffi::MemInfo;
         #[doc = "Mutex from standard module"]
         type Standard_Mutex = crate::standard::ffi::Mutex;
         #[doc = "Transient from standard module"]
@@ -63,44 +133,6 @@ pub(crate) mod ffi {
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "HArray1OfShortReal from t_short module"]
-        type TShort_HArray1OfShortReal = crate::t_short::ffi::HArray1OfShortReal;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
         #[doc = "HSequenceOfTransient from t_col_std module"]
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
         #[doc = "PackedMapOfInteger from t_col_std module"]
@@ -119,74 +151,39 @@ pub(crate) mod ffi {
         type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
         #[doc = "HArray1OfBoolean from t_col_std module"]
         type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "MemInfo from osd module"]
-        type OSD_MemInfo = crate::osd::ffi::MemInfo;
-        #[doc = "HArray1OfPnt from t_colgp module"]
-        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
-        #[doc = "HArray1OfPnt2d from t_colgp module"]
-        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
-        #[doc = "HArray1OfVec from t_colgp module"]
-        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
-        #[doc = "HArray2OfPnt from t_colgp module"]
-        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
-        #[doc = "Box from bnd module"]
-        type Bnd_Box = crate::bnd::ffi::Box_;
-        #[doc = "OBB from bnd module"]
-        type Bnd_OBB = crate::bnd::ffi::OBB;
-        #[doc = "Box2d from bnd module"]
-        type Bnd_Box2d = crate::bnd::ffi::Box2d;
-        #[doc = "B2d from bnd module"]
-        type Bnd_B2d = crate::bnd::ffi::B2d;
-        #[doc = "HArray1OfBox from bnd module"]
-        type Bnd_HArray1OfBox = crate::bnd::ffi::HArray1OfBox;
-        #[doc = "HArray1OfSphere from bnd module"]
-        type Bnd_HArray1OfSphere = crate::bnd::ffi::HArray1OfSphere;
-        #[doc = "Sphere from bnd module"]
-        type Bnd_Sphere = crate::bnd::ffi::Sphere;
-        #[doc = "BaseAllocator from n_collection module"]
-        type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
-        #[doc = "BasePointerVector from n_collection module"]
-        type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
-        #[doc = "IncAllocator from n_collection module"]
-        type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
-        #[doc = "BaseList from n_collection module"]
-        type NCollection_BaseList = crate::n_collection::ffi::BaseList;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColgp_Array1OfPnt"]
         type TColgp_Array1OfPnt;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Vec3f"]
+        type gp_Vec3f;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Vec2f"]
+        type gp_Vec2f;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Poly_Array1OfTriangle"]
+        type Poly_Array1OfTriangle;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfInteger"]
+        type TColStd_Array1OfInteger;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColgp_Array1OfPnt2d"]
+        type TColgp_Array1OfPnt2d;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "OSD_FileSystem"]
+        type OSD_FileSystem;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Poly_TriangulationParameters"]
         type Poly_TriangulationParameters;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Vec3f"]
-        type gp_Vec3f;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array1OfPnt2d"]
-        type TColgp_Array1OfPnt2d;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Vec2f"]
-        type gp_Vec2f;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfInteger"]
-        type TColStd_Array1OfInteger;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "OSD_FileSystem"]
-        type OSD_FileSystem;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Poly_Array1OfTriangle"]
-        type Poly_Array1OfTriangle;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandlePolyHArray1OfTriangle"]
-        type HandlePolyHArray1OfTriangle;
+        #[cxx_name = "HandleOSDFileSystem"]
+        type HandleOSDFileSystem;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandlePolyPolygon3D"]
-        type HandlePolyPolygon3D;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandlePolyPolygon2D"]
-        type HandlePolyPolygon2D;
+        #[cxx_name = "HandleTColgpHArray1OfPnt2d"]
+        type HandleTColgpHArray1OfPnt2d;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandlePolyPolygonOnTriangulation"]
         type HandlePolyPolygonOnTriangulation;
@@ -194,26 +191,29 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColgpHArray1OfPnt2d"]
-        type HandleTColgpHArray1OfPnt2d;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHArray1OfReal"]
-        type HandleTColStdHArray1OfReal;
-        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandlePolyTriangulationParameters"]
         type HandlePolyTriangulationParameters;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTShortHArray1OfShortReal"]
-        type HandleTShortHArray1OfShortReal;
+        #[cxx_name = "HandlePolyPolygon3D"]
+        type HandlePolyPolygon3D;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTColgpHArray1OfPnt"]
         type HandleTColgpHArray1OfPnt;
         #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandlePolyHArray1OfTriangle"]
+        type HandlePolyHArray1OfTriangle;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandlePolyPolygon2D"]
+        type HandlePolyPolygon2D;
+        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandlePolyTriangulation"]
         type HandlePolyTriangulation;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleOSDFileSystem"]
-        type HandleOSDFileSystem;
+        #[cxx_name = "HandleTColStdHArray1OfReal"]
+        type HandleTColStdHArray1OfReal;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTShortHArray1OfShortReal"]
+        type HandleTShortHArray1OfShortReal;
         #[doc = " ======================== Poly_Triangulation ========================"]
         #[doc = "/// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation`"]
         #[doc = ""]

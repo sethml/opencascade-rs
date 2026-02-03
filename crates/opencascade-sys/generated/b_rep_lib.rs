@@ -48,18 +48,10 @@ pub(crate) mod ffi {
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
         #[doc = "TShape from topo_ds module"]
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Geometry from geom2d module"]
-        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "Curve from geom2d module"]
-        type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "BoundedCurve from geom2d module"]
-        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
-        type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Ellipse from geom2d module"]
-        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "TrimmedCurve from geom2d module"]
-        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
         #[doc = "Geometry from geom module"]
         type Geom_Geometry = crate::geom::ffi::Geometry;
         #[doc = "Curve from geom module"]
@@ -122,19 +114,18 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Torus"]
-        type gp_Torus;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Cone"]
-        type gp_Cone;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Elips"]
-        type gp_Elips;
+        #[doc = "Geometry from geom2d module"]
+        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
+        #[doc = "Curve from geom2d module"]
+        type Geom2d_Curve = crate::geom2d::ffi::Curve;
+        #[doc = "BoundedCurve from geom2d module"]
+        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
+        #[doc = "Conic from geom2d module"]
+        type Geom2d_Conic = crate::geom2d::ffi::Conic;
+        #[doc = "Ellipse from geom2d module"]
+        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
+        #[doc = "TrimmedCurve from geom2d module"]
+        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Hypr"]
         type gp_Hypr;
@@ -142,23 +133,32 @@ pub(crate) mod ffi {
         #[cxx_name = "gp_Parab"]
         type gp_Parab;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
+        #[cxx_name = "gp_Cone"]
+        type gp_Cone;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Cylinder"]
+        type gp_Cylinder;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Sphere"]
         type gp_Sphere;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Cylinder"]
-        type gp_Cylinder;
+        #[cxx_name = "gp_Elips"]
+        type gp_Elips;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Torus"]
+        type gp_Torus;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomCurve"]
+        type HandleGeomCurve;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dCurve"]
         type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomCurve"]
-        type HandleGeomCurve;
         #[doc = " ======================== BRepLib_MakeWire ========================"]
         #[doc = "/// **Source:** `BRepLib_MakeWire.hxx` - `BRepLib_MakeWire`"]
         #[doc = ""]
@@ -227,18 +227,18 @@ pub(crate) mod ffi {
         #[doc = "Returns the last connecting vertex."]
         #[cxx_name = "Vertex"]
         fn vertex(self: &MakeWire) -> &TopoDS_Vertex;
-        #[doc = "Upcast BRepLib_MakeWire to BRepLib_Command"]
-        #[cxx_name = "BRepLib_MakeWire_as_BRepLib_Command"]
-        fn make_wire_as_command(self_: &MakeWire) -> &Command;
-        #[doc = "Upcast BRepLib_MakeWire to BRepLib_Command (mutable)"]
-        #[cxx_name = "BRepLib_MakeWire_as_BRepLib_Command_mut"]
-        fn make_wire_as_command_mut(self_: Pin<&mut MakeWire>) -> Pin<&mut Command>;
         #[doc = "Upcast BRepLib_MakeWire to BRepLib_MakeShape"]
         #[cxx_name = "BRepLib_MakeWire_as_BRepLib_MakeShape"]
         fn make_wire_as_make_shape(self_: &MakeWire) -> &MakeShape;
         #[doc = "Upcast BRepLib_MakeWire to BRepLib_MakeShape (mutable)"]
         #[cxx_name = "BRepLib_MakeWire_as_BRepLib_MakeShape_mut"]
         fn make_wire_as_make_shape_mut(self_: Pin<&mut MakeWire>) -> Pin<&mut MakeShape>;
+        #[doc = "Upcast BRepLib_MakeWire to BRepLib_Command"]
+        #[cxx_name = "BRepLib_MakeWire_as_BRepLib_Command"]
+        fn make_wire_as_command(self_: &MakeWire) -> &Command;
+        #[doc = "Upcast BRepLib_MakeWire to BRepLib_Command (mutable)"]
+        #[cxx_name = "BRepLib_MakeWire_as_BRepLib_Command_mut"]
+        fn make_wire_as_command_mut(self_: Pin<&mut MakeWire>) -> Pin<&mut Command>;
         #[doc = " ======================== BRepLib_MakeShape ========================"]
         #[doc = "/// **Source:** `BRepLib_MakeShape.hxx` - `BRepLib_MakeShape`"]
         #[doc = ""]
@@ -876,18 +876,18 @@ pub(crate) mod ffi {
         #[doc = "Returns the second vertex of the edge. May be Null."]
         #[cxx_name = "Vertex2"]
         fn vertex2(self: &MakeEdge) -> &TopoDS_Vertex;
-        #[doc = "Upcast BRepLib_MakeEdge to BRepLib_MakeShape"]
-        #[cxx_name = "BRepLib_MakeEdge_as_BRepLib_MakeShape"]
-        fn make_edge_as_make_shape(self_: &MakeEdge) -> &MakeShape;
-        #[doc = "Upcast BRepLib_MakeEdge to BRepLib_MakeShape (mutable)"]
-        #[cxx_name = "BRepLib_MakeEdge_as_BRepLib_MakeShape_mut"]
-        fn make_edge_as_make_shape_mut(self_: Pin<&mut MakeEdge>) -> Pin<&mut MakeShape>;
         #[doc = "Upcast BRepLib_MakeEdge to BRepLib_Command"]
         #[cxx_name = "BRepLib_MakeEdge_as_BRepLib_Command"]
         fn make_edge_as_command(self_: &MakeEdge) -> &Command;
         #[doc = "Upcast BRepLib_MakeEdge to BRepLib_Command (mutable)"]
         #[cxx_name = "BRepLib_MakeEdge_as_BRepLib_Command_mut"]
         fn make_edge_as_command_mut(self_: Pin<&mut MakeEdge>) -> Pin<&mut Command>;
+        #[doc = "Upcast BRepLib_MakeEdge to BRepLib_MakeShape"]
+        #[cxx_name = "BRepLib_MakeEdge_as_BRepLib_MakeShape"]
+        fn make_edge_as_make_shape(self_: &MakeEdge) -> &MakeShape;
+        #[doc = "Upcast BRepLib_MakeEdge to BRepLib_MakeShape (mutable)"]
+        #[cxx_name = "BRepLib_MakeEdge_as_BRepLib_MakeShape_mut"]
+        fn make_edge_as_make_shape_mut(self_: Pin<&mut MakeEdge>) -> Pin<&mut MakeShape>;
     }
     impl UniquePtr<MakeWire> {}
     impl UniquePtr<MakeShape> {}
@@ -943,16 +943,6 @@ impl MakeWire {
         ffi::MakeWire_ctor_wire_edge(W, E)
     }
 
-    #[doc = "Upcast to BRepLib_Command"]
-    pub fn as_command(&self) -> &Command {
-        ffi::make_wire_as_command(self)
-    }
-
-    #[doc = "Upcast to BRepLib_Command (mutable)"]
-    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
-        ffi::make_wire_as_command_mut(self)
-    }
-
     #[doc = "Upcast to BRepLib_MakeShape"]
     pub fn as_make_shape(&self) -> &MakeShape {
         ffi::make_wire_as_make_shape(self)
@@ -961,6 +951,16 @@ impl MakeWire {
     #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
     pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
         ffi::make_wire_as_make_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BRepLib_Command"]
+    pub fn as_command(&self) -> &Command {
+        ffi::make_wire_as_command(self)
+    }
+
+    #[doc = "Upcast to BRepLib_Command (mutable)"]
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        ffi::make_wire_as_command_mut(self)
     }
 }
 pub use ffi::MakeShape;
@@ -1044,16 +1044,6 @@ impl MakeSolid {
         ffi::MakeSolid_ctor_solid_shell(So, S)
     }
 
-    #[doc = "Upcast to BRepLib_MakeShape"]
-    pub fn as_make_shape(&self) -> &MakeShape {
-        ffi::make_solid_as_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
-    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
-        ffi::make_solid_as_make_shape_mut(self)
-    }
-
     #[doc = "Upcast to BRepLib_Command"]
     pub fn as_command(&self) -> &Command {
         ffi::make_solid_as_command(self)
@@ -1062,6 +1052,16 @@ impl MakeSolid {
     #[doc = "Upcast to BRepLib_Command (mutable)"]
     pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
         ffi::make_solid_as_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape"]
+    pub fn as_make_shape(&self) -> &MakeShape {
+        ffi::make_solid_as_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        ffi::make_solid_as_make_shape_mut(self)
     }
 }
 pub use ffi::MakeFace;
@@ -1240,16 +1240,6 @@ impl MakeFace {
         ffi::MakeFace_ctor_face_wire(F, W)
     }
 
-    #[doc = "Upcast to BRepLib_Command"]
-    pub fn as_command(&self) -> &Command {
-        ffi::make_face_as_command(self)
-    }
-
-    #[doc = "Upcast to BRepLib_Command (mutable)"]
-    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
-        ffi::make_face_as_command_mut(self)
-    }
-
     #[doc = "Upcast to BRepLib_MakeShape"]
     pub fn as_make_shape(&self) -> &MakeShape {
         ffi::make_face_as_make_shape(self)
@@ -1258,6 +1248,16 @@ impl MakeFace {
     #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
     pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
         ffi::make_face_as_make_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BRepLib_Command"]
+    pub fn as_command(&self) -> &Command {
+        ffi::make_face_as_command(self)
+    }
+
+    #[doc = "Upcast to BRepLib_Command (mutable)"]
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        ffi::make_face_as_command_mut(self)
     }
 
     #[doc = "Checks the specified curve is degenerated according to specified tolerance. Returns <theActTol> less than <theMaxTol>, which shows actual tolerance to decide the curve is degenerated. Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell."]
@@ -1507,16 +1507,6 @@ impl MakeEdge {
         ffi::MakeEdge_ctor_handlecurve_handlesurface_vertex2_real2(L, S, V1, V2, p1, p2)
     }
 
-    #[doc = "Upcast to BRepLib_MakeShape"]
-    pub fn as_make_shape(&self) -> &MakeShape {
-        ffi::make_edge_as_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
-    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
-        ffi::make_edge_as_make_shape_mut(self)
-    }
-
     #[doc = "Upcast to BRepLib_Command"]
     pub fn as_command(&self) -> &Command {
         ffi::make_edge_as_command(self)
@@ -1525,5 +1515,15 @@ impl MakeEdge {
     #[doc = "Upcast to BRepLib_Command (mutable)"]
     pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
         ffi::make_edge_as_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape"]
+    pub fn as_make_shape(&self) -> &MakeShape {
+        ffi::make_edge_as_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        ffi::make_edge_as_make_shape_mut(self)
     }
 }

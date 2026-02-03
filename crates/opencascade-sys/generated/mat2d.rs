@@ -51,8 +51,6 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "BasicElt from mat module"]
-        type MAT_BasicElt = crate::mat::ffi::BasicElt;
         #[doc = "Bisec from bisector module"]
         type Bisector_Bisec = crate::bisector::ffi::Bisec;
         #[doc = "Geometry from geom2d module"]
@@ -67,21 +65,23 @@ pub(crate) mod ffi {
         type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
         #[doc = "TrimmedCurve from geom2d module"]
         type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "MAT2d_Circuit"]
-        type MAT2d_Circuit;
+        #[doc = "BasicElt from mat module"]
+        type MAT_BasicElt = crate::mat::ffi::BasicElt;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "MAT_Bisector"]
         type MAT_Bisector;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "MAT2d_Circuit"]
+        type MAT2d_Circuit;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleMAT2dCircuit"]
         type HandleMAT2dCircuit;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMATBisector"]
-        type HandleMATBisector;
-        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dGeometry"]
         type HandleGeom2dGeometry;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMATBisector"]
+        type HandleMATBisector;
         #[doc = " ======================== MAT2d_Tool2d ========================"]
         #[doc = "/// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d`"]
         #[doc = ""]

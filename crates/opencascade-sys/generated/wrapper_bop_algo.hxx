@@ -50,16 +50,16 @@ inline std::unique_ptr<BOPAlgo_BOP> BOPAlgo_BOP_ctor_handlebaseallocator(const o
     return std::make_unique<BOPAlgo_BOP>(theAllocator);
 }
 
+inline const BOPAlgo_BuilderShape& BOPAlgo_BOP_as_BOPAlgo_BuilderShape(const BOPAlgo_BOP& self) { return self; }
+inline BOPAlgo_BuilderShape& BOPAlgo_BOP_as_BOPAlgo_BuilderShape_mut(BOPAlgo_BOP& self) { return self; }
+inline const BOPAlgo_Options& BOPAlgo_BOP_as_BOPAlgo_Options(const BOPAlgo_BOP& self) { return self; }
+inline BOPAlgo_Options& BOPAlgo_BOP_as_BOPAlgo_Options_mut(BOPAlgo_BOP& self) { return self; }
+inline const BOPAlgo_Algo& BOPAlgo_BOP_as_BOPAlgo_Algo(const BOPAlgo_BOP& self) { return self; }
+inline BOPAlgo_Algo& BOPAlgo_BOP_as_BOPAlgo_Algo_mut(BOPAlgo_BOP& self) { return self; }
 inline const BOPAlgo_ToolsProvider& BOPAlgo_BOP_as_BOPAlgo_ToolsProvider(const BOPAlgo_BOP& self) { return self; }
 inline BOPAlgo_ToolsProvider& BOPAlgo_BOP_as_BOPAlgo_ToolsProvider_mut(BOPAlgo_BOP& self) { return self; }
 inline const BOPAlgo_Builder& BOPAlgo_BOP_as_BOPAlgo_Builder(const BOPAlgo_BOP& self) { return self; }
 inline BOPAlgo_Builder& BOPAlgo_BOP_as_BOPAlgo_Builder_mut(BOPAlgo_BOP& self) { return self; }
-inline const BOPAlgo_Algo& BOPAlgo_BOP_as_BOPAlgo_Algo(const BOPAlgo_BOP& self) { return self; }
-inline BOPAlgo_Algo& BOPAlgo_BOP_as_BOPAlgo_Algo_mut(BOPAlgo_BOP& self) { return self; }
-inline const BOPAlgo_Options& BOPAlgo_BOP_as_BOPAlgo_Options(const BOPAlgo_BOP& self) { return self; }
-inline BOPAlgo_Options& BOPAlgo_BOP_as_BOPAlgo_Options_mut(BOPAlgo_BOP& self) { return self; }
-inline const BOPAlgo_BuilderShape& BOPAlgo_BOP_as_BOPAlgo_BuilderShape(const BOPAlgo_BOP& self) { return self; }
-inline BOPAlgo_BuilderShape& BOPAlgo_BOP_as_BOPAlgo_BuilderShape_mut(BOPAlgo_BOP& self) { return self; }
 
 // ========================
 // BOPAlgo_ToolsProvider wrappers
@@ -75,10 +75,10 @@ inline std::unique_ptr<BOPAlgo_ToolsProvider> BOPAlgo_ToolsProvider_ctor_handleb
 
 inline const BOPAlgo_Builder& BOPAlgo_ToolsProvider_as_BOPAlgo_Builder(const BOPAlgo_ToolsProvider& self) { return self; }
 inline BOPAlgo_Builder& BOPAlgo_ToolsProvider_as_BOPAlgo_Builder_mut(BOPAlgo_ToolsProvider& self) { return self; }
-inline const BOPAlgo_BuilderShape& BOPAlgo_ToolsProvider_as_BOPAlgo_BuilderShape(const BOPAlgo_ToolsProvider& self) { return self; }
-inline BOPAlgo_BuilderShape& BOPAlgo_ToolsProvider_as_BOPAlgo_BuilderShape_mut(BOPAlgo_ToolsProvider& self) { return self; }
 inline const BOPAlgo_Options& BOPAlgo_ToolsProvider_as_BOPAlgo_Options(const BOPAlgo_ToolsProvider& self) { return self; }
 inline BOPAlgo_Options& BOPAlgo_ToolsProvider_as_BOPAlgo_Options_mut(BOPAlgo_ToolsProvider& self) { return self; }
+inline const BOPAlgo_BuilderShape& BOPAlgo_ToolsProvider_as_BOPAlgo_BuilderShape(const BOPAlgo_ToolsProvider& self) { return self; }
+inline BOPAlgo_BuilderShape& BOPAlgo_ToolsProvider_as_BOPAlgo_BuilderShape_mut(BOPAlgo_ToolsProvider& self) { return self; }
 inline const BOPAlgo_Algo& BOPAlgo_ToolsProvider_as_BOPAlgo_Algo(const BOPAlgo_ToolsProvider& self) { return self; }
 inline BOPAlgo_Algo& BOPAlgo_ToolsProvider_as_BOPAlgo_Algo_mut(BOPAlgo_ToolsProvider& self) { return self; }
 
@@ -108,10 +108,10 @@ inline std::unique_ptr<opencascade::handle<IntTools_Context>> BOPAlgo_Builder_Co
 
 inline const BOPAlgo_BuilderShape& BOPAlgo_Builder_as_BOPAlgo_BuilderShape(const BOPAlgo_Builder& self) { return self; }
 inline BOPAlgo_BuilderShape& BOPAlgo_Builder_as_BOPAlgo_BuilderShape_mut(BOPAlgo_Builder& self) { return self; }
-inline const BOPAlgo_Options& BOPAlgo_Builder_as_BOPAlgo_Options(const BOPAlgo_Builder& self) { return self; }
-inline BOPAlgo_Options& BOPAlgo_Builder_as_BOPAlgo_Options_mut(BOPAlgo_Builder& self) { return self; }
 inline const BOPAlgo_Algo& BOPAlgo_Builder_as_BOPAlgo_Algo(const BOPAlgo_Builder& self) { return self; }
 inline BOPAlgo_Algo& BOPAlgo_Builder_as_BOPAlgo_Algo_mut(BOPAlgo_Builder& self) { return self; }
+inline const BOPAlgo_Options& BOPAlgo_Builder_as_BOPAlgo_Options(const BOPAlgo_Builder& self) { return self; }
+inline BOPAlgo_Options& BOPAlgo_Builder_as_BOPAlgo_Options_mut(BOPAlgo_Builder& self) { return self; }
 
 // ========================
 // BOPAlgo_BuilderShape wrappers

@@ -60,11 +60,11 @@ pub(crate) mod ffi {
         #[cxx_name = "TShort_Array1OfShortReal"]
         type TShort_Array1OfShortReal;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTShortHArray1OfShortReal"]
-        type HandleTShortHArray1OfShortReal;
-        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTShortHArray1OfShortReal"]
+        type HandleTShortHArray1OfShortReal;
         #[doc = " ======================== TShort_HArray1OfShortReal ========================"]
         #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal`"]
         #[cxx_name = "TShort_HArray1OfShortReal"]

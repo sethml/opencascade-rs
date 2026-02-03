@@ -56,10 +56,10 @@ inline std::unique_ptr<TopoDS_Face> BRepPrim_Torus_MakeEmptyLateralFace(const BR
     return std::make_unique<TopoDS_Face>(self.MakeEmptyLateralFace());
 }
 
-inline const BRepPrim_Revolution& BRepPrim_Torus_as_BRepPrim_Revolution(const BRepPrim_Torus& self) { return self; }
-inline BRepPrim_Revolution& BRepPrim_Torus_as_BRepPrim_Revolution_mut(BRepPrim_Torus& self) { return self; }
 inline const BRepPrim_OneAxis& BRepPrim_Torus_as_BRepPrim_OneAxis(const BRepPrim_Torus& self) { return self; }
 inline BRepPrim_OneAxis& BRepPrim_Torus_as_BRepPrim_OneAxis_mut(BRepPrim_Torus& self) { return self; }
+inline const BRepPrim_Revolution& BRepPrim_Torus_as_BRepPrim_Revolution(const BRepPrim_Torus& self) { return self; }
+inline BRepPrim_Revolution& BRepPrim_Torus_as_BRepPrim_Revolution_mut(BRepPrim_Torus& self) { return self; }
 
 // ========================
 // BRepPrim_Revolution wrappers
@@ -134,10 +134,10 @@ inline std::unique_ptr<TopoDS_Face> BRepPrim_Sphere_MakeEmptyLateralFace(const B
     return std::make_unique<TopoDS_Face>(self.MakeEmptyLateralFace());
 }
 
-inline const BRepPrim_Revolution& BRepPrim_Sphere_as_BRepPrim_Revolution(const BRepPrim_Sphere& self) { return self; }
-inline BRepPrim_Revolution& BRepPrim_Sphere_as_BRepPrim_Revolution_mut(BRepPrim_Sphere& self) { return self; }
 inline const BRepPrim_OneAxis& BRepPrim_Sphere_as_BRepPrim_OneAxis(const BRepPrim_Sphere& self) { return self; }
 inline BRepPrim_OneAxis& BRepPrim_Sphere_as_BRepPrim_OneAxis_mut(BRepPrim_Sphere& self) { return self; }
+inline const BRepPrim_Revolution& BRepPrim_Sphere_as_BRepPrim_Revolution(const BRepPrim_Sphere& self) { return self; }
+inline BRepPrim_Revolution& BRepPrim_Sphere_as_BRepPrim_Revolution_mut(BRepPrim_Sphere& self) { return self; }
 
 // ========================
 // BRepPrim_Cylinder wrappers
@@ -171,10 +171,10 @@ inline std::unique_ptr<TopoDS_Face> BRepPrim_Cylinder_MakeEmptyLateralFace(const
     return std::make_unique<TopoDS_Face>(self.MakeEmptyLateralFace());
 }
 
-inline const BRepPrim_Revolution& BRepPrim_Cylinder_as_BRepPrim_Revolution(const BRepPrim_Cylinder& self) { return self; }
-inline BRepPrim_Revolution& BRepPrim_Cylinder_as_BRepPrim_Revolution_mut(BRepPrim_Cylinder& self) { return self; }
 inline const BRepPrim_OneAxis& BRepPrim_Cylinder_as_BRepPrim_OneAxis(const BRepPrim_Cylinder& self) { return self; }
 inline BRepPrim_OneAxis& BRepPrim_Cylinder_as_BRepPrim_OneAxis_mut(BRepPrim_Cylinder& self) { return self; }
+inline const BRepPrim_Revolution& BRepPrim_Cylinder_as_BRepPrim_Revolution(const BRepPrim_Cylinder& self) { return self; }
+inline BRepPrim_Revolution& BRepPrim_Cylinder_as_BRepPrim_Revolution_mut(BRepPrim_Cylinder& self) { return self; }
 
 // ========================
 // BRepPrim_Cone wrappers

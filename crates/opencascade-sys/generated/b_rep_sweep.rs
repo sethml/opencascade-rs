@@ -21,34 +21,6 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_sweep.hxx");
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Location from top_loc module"]
-        type TopLoc_Location = crate::top_loc::ffi::Location;
-        #[doc = "SListOfItemLocation from top_loc module"]
-        type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
         #[doc = "Pnt from gp module"]
         type gp_Pnt = crate::gp::ffi::Pnt;
         #[doc = "Pnt2d from gp module"]
@@ -85,16 +57,44 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "NumShapeTool from sweep module"]
-        type Sweep_NumShapeTool = crate::sweep::ffi::NumShapeTool;
-        #[doc = "NumShape from sweep module"]
-        type Sweep_NumShape = crate::sweep::ffi::NumShape;
+        #[doc = "TopAbs from top_abs module"]
+        type TopAbs = crate::top_abs::ffi::TopAbs;
         #[doc = "Builder from b_rep module"]
         type BRep_Builder = crate::b_rep::ffi::Builder;
         #[doc = "Tool from b_rep module"]
         type BRep_Tool = crate::b_rep::ffi::Tool;
-        #[doc = "TopAbs from top_abs module"]
-        type TopAbs = crate::top_abs::ffi::TopAbs;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Location from top_loc module"]
+        type TopLoc_Location = crate::top_loc::ffi::Location;
+        #[doc = "SListOfItemLocation from top_loc module"]
+        type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
+        #[doc = "NumShapeTool from sweep module"]
+        type Sweep_NumShapeTool = crate::sweep::ffi::NumShapeTool;
+        #[doc = "NumShape from sweep module"]
+        type Sweep_NumShape = crate::sweep::ffi::NumShape;
         #[doc = " ======================== BRepSweep_Revol ========================"]
         #[doc = "/// **Source:** `BRepSweep_Revol.hxx` - `BRepSweep_Revol`"]
         #[doc = ""]
@@ -1213,16 +1213,6 @@ impl Translation {
         ffi::Translation_ctor_shape_numshape_location_vec_bool2(S, N, L, V, C, Canonize)
     }
 
-    #[doc = "Upcast to BRepSweep_Trsf"]
-    pub fn as_trsf(&self) -> &Trsf {
-        ffi::translation_as_trsf(self)
-    }
-
-    #[doc = "Upcast to BRepSweep_Trsf (mutable)"]
-    pub fn as_trsf_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Trsf> {
-        ffi::translation_as_trsf_mut(self)
-    }
-
     #[doc = "Upcast to BRepSweep_NumLinearRegularSweep"]
     pub fn as_num_linear_regular_sweep(&self) -> &NumLinearRegularSweep {
         ffi::translation_as_num_linear_regular_sweep(self)
@@ -1233,6 +1223,16 @@ impl Translation {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut NumLinearRegularSweep> {
         ffi::translation_as_num_linear_regular_sweep_mut(self)
+    }
+
+    #[doc = "Upcast to BRepSweep_Trsf"]
+    pub fn as_trsf(&self) -> &Trsf {
+        ffi::translation_as_trsf(self)
+    }
+
+    #[doc = "Upcast to BRepSweep_Trsf (mutable)"]
+    pub fn as_trsf_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Trsf> {
+        ffi::translation_as_trsf_mut(self)
     }
 
     #[doc = "Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but without subcomponents."]

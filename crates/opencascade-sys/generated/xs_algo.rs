@@ -14,16 +14,6 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_xs_algo.hxx");
-        #[doc = "AsciiString from t_collection module"]
-        type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
-        #[doc = "HAsciiString from t_collection module"]
-        type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
-        #[doc = "HExtendedString from t_collection module"]
-        type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
-        #[doc = "ExtendedString from t_collection module"]
-        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
-        #[doc = "ShapeProcess from shape_process module"]
-        type ShapeProcess = crate::shape_process::ffi::ShapeProcess;
         #[doc = "ProgressRange from message module"]
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
         #[doc = "ProgressScope from message module"]
@@ -50,6 +40,10 @@ pub(crate) mod ffi {
         type Message_Alert = crate::message::ffi::Alert;
         #[doc = "AlertExtended from message module"]
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
         #[doc = "Shape from topo_ds module"]
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
         #[doc = "Vertex from topo_ds module"]
@@ -74,40 +68,46 @@ pub(crate) mod ffi {
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
         #[doc = "TShape from topo_ds module"]
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "AsciiString from t_collection module"]
+        type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
+        #[doc = "HAsciiString from t_collection module"]
+        type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
+        #[doc = "HExtendedString from t_collection module"]
+        type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
+        #[doc = "ExtendedString from t_collection module"]
+        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
+        #[doc = "ShapeProcess from shape_process module"]
+        type ShapeProcess = crate::shape_process::ffi::ShapeProcess;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Transfer_FinderProcess"]
+        type Transfer_FinderProcess;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_DataMapOfShapeShape"]
+        type TopTools_DataMapOfShapeShape;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Transfer_TransientProcess"]
         type Transfer_TransientProcess;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "ShapeExtend_MsgRegistrator"]
+        type ShapeExtend_MsgRegistrator;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "DE_ShapeFixParameters"]
         type DE_ShapeFixParameters;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "ShapeProcess_ShapeContext"]
         type ShapeProcess_ShapeContext;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Transfer_FinderProcess"]
-        type Transfer_FinderProcess;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "ShapeExtend_MsgRegistrator"]
-        type ShapeExtend_MsgRegistrator;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_DataMapOfShapeShape"]
-        type TopTools_DataMapOfShapeShape;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleShapeProcessShapeContext"]
         type HandleShapeProcessShapeContext;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTransferTransientProcess"]
-        type HandleTransferTransientProcess;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleShapeExtendMsgRegistrator"]
         type HandleShapeExtendMsgRegistrator;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTransferFinderProcess"]
         type HandleTransferFinderProcess;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTransferTransientProcess"]
+        type HandleTransferTransientProcess;
         #[doc = " ======================== XSAlgo_ShapeProcessor ========================"]
         #[doc = "/// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor`"]
         #[doc = ""]

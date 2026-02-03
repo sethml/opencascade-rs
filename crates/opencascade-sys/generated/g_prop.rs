@@ -51,11 +51,11 @@ pub(crate) mod ffi {
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Mat"]
-        type gp_Mat;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "GProp_PrincipalProps"]
         type GProp_PrincipalProps;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Mat"]
+        type gp_Mat;
         #[doc = " ======================== GProp_GProps ========================"]
         #[doc = "/// **Source:** `GProp_GProps.hxx` - `GProp_GProps`"]
         #[doc = ""]
