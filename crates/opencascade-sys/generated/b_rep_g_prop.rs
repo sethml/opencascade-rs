@@ -314,7 +314,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepGProp ========================
-        /// **Source:** `BRepGProp.hxx` - `BRepGProp`
+        /// **Source:** `BRepGProp.hxx`:43 - `BRepGProp`
         ///
         /// Provides global functions to compute a shape's global
         /// properties for lines, surfaces or volumes, and bring
@@ -330,6 +330,8 @@ pub(crate) mod ffi {
         /// principal axis, principal moments, principal radius of gyration.
         #[cxx_name = "BRepGProp"]
         type BRepGProp;
+        /// **Source:** `BRepGProp.hxx`:87 - `BRepGProp::LinearProperties()`
+        ///
         /// Computes the linear global properties of the shape S,
         /// i.e. the global properties induced by each edge of the
         /// shape S, and brings them together with the global
@@ -376,6 +378,8 @@ pub(crate) mod ffi {
             SkipShared: bool,
             UseTriangulation: bool,
         );
+        /// **Source:** `BRepGProp.hxx`:133 - `BRepGProp::SurfaceProperties()`
+        ///
         /// Computes the surface global properties of the
         /// shape S, i.e. the global properties induced by each
         /// face of the shape S, and brings them together with
@@ -423,6 +427,8 @@ pub(crate) mod ffi {
             SkipShared: bool,
             UseTriangulation: bool,
         );
+        /// **Source:** `BRepGProp.hxx`:151 - `BRepGProp::SurfaceProperties()`
+        ///
         /// Updates <SProps> with the shape <S>, that contains its principal properties.
         /// The surface properties of all the faces in <S> are computed.
         /// Adaptive 2D Gauss integration is used.
@@ -442,6 +448,8 @@ pub(crate) mod ffi {
             Eps: f64,
             SkipShared: bool,
         ) -> f64;
+        /// **Source:** `BRepGProp.hxx`:198 - `BRepGProp::VolumeProperties()`
+        ///
         ///
         /// Computes the global volume properties of the solid
         /// S, and brings them together with the global
@@ -492,6 +500,8 @@ pub(crate) mod ffi {
             SkipShared: bool,
             UseTriangulation: bool,
         );
+        /// **Source:** `BRepGProp.hxx`:219 - `BRepGProp::VolumeProperties()`
+        ///
         /// Updates <VProps> with the shape <S>, that contains its principal properties.
         /// The volume properties of all the FORWARD and REVERSED faces in <S> are computed.
         /// If OnlyClosed is True then computed faces must belong to closed Shells.
@@ -514,6 +524,8 @@ pub(crate) mod ffi {
             OnlyClosed: bool,
             SkipShared: bool,
         ) -> f64;
+        /// **Source:** `BRepGProp.hxx`:241 - `BRepGProp::VolumePropertiesGK()`
+        ///
         /// Updates <VProps> with the shape <S>, that contains its principal properties.
         /// The volume properties of all the FORWARD and REVERSED faces in <S> are computed.
         /// If OnlyClosed is True then computed faces must belong to closed Shells.
@@ -540,6 +552,7 @@ pub(crate) mod ffi {
             IFlag: bool,
             SkipShared: bool,
         ) -> f64;
+        /// **Source:** `BRepGProp.hxx`:251 - `BRepGProp::VolumePropertiesGK()`
         #[cxx_name = "BRepGProp_VolumePropertiesGK_shape_gprops_pln_real_bool5"]
         fn BRepGProp_volume_properties_gk_shape_gprops_pln_real_bool5(
             S: &TopoDS_Shape,
@@ -553,10 +566,10 @@ pub(crate) mod ffi {
             SkipShared: bool,
         ) -> f64;
         /// ======================== BRepGProp_Face ========================
-        /// **Source:** `BRepGProp_Face.hxx` - `BRepGProp_Face`
+        /// **Source:** `BRepGProp_Face.hxx`:38 - `BRepGProp_Face`
         #[cxx_name = "BRepGProp_Face"]
         type Face;
-        /// **Source:** `BRepGProp_Face.hxx` - `BRepGProp_Face::BRepGProp_Face()`
+        /// **Source:** `BRepGProp_Face.hxx`:47 - `BRepGProp_Face::BRepGProp_Face()`
         ///
         /// Constructor. Initializes the object with a flag IsUseSpan
         /// that says if it is necessary to define spans on a face.
@@ -564,7 +577,7 @@ pub(crate) mod ffi {
         /// are returned by the methods GetUKnots and GetTKnots.
         #[cxx_name = "BRepGProp_Face_ctor_bool"]
         fn Face_ctor_bool(IsUseSpan: bool) -> UniquePtr<Face>;
-        /// **Source:** `BRepGProp_Face.hxx` - `BRepGProp_Face::BRepGProp_Face()`
+        /// **Source:** `BRepGProp_Face.hxx`:54 - `BRepGProp_Face::BRepGProp_Face()`
         ///
         /// Constructor. Initializes the object with the face and the
         /// flag IsUseSpan that says if it is necessary to define
@@ -573,64 +586,96 @@ pub(crate) mod ffi {
         /// and GetTKnots.
         #[cxx_name = "BRepGProp_Face_ctor_face_bool"]
         fn Face_ctor_face_bool(F: &TopoDS_Face, IsUseSpan: bool) -> UniquePtr<Face>;
+        /// **Source:** `BRepGProp_Face.hxx`:56 - `BRepGProp_Face::Load()`
         #[cxx_name = "Load"]
         fn load_face(self: Pin<&mut Face>, F: &TopoDS_Face);
+        /// **Source:** `BRepGProp_Face.hxx`:58 - `BRepGProp_Face::VIntegrationOrder()`
         #[cxx_name = "VIntegrationOrder"]
         fn v_integration_order(self: &Face) -> i32;
+        /// **Source:** `BRepGProp_Face.hxx`:61 - `BRepGProp_Face::NaturalRestriction()`
+        ///
         /// Returns Standard_True if the face is not trimmed.
         #[cxx_name = "NaturalRestriction"]
         fn natural_restriction(self: &Face) -> bool;
+        /// **Source:** `BRepGProp_Face.hxx`:64 - `BRepGProp_Face::GetFace()`
+        ///
         /// Returns the TopoDS face.
         #[cxx_name = "GetFace"]
         fn get_face(self: &Face) -> &TopoDS_Face;
+        /// **Source:** `BRepGProp_Face.hxx`:69 - `BRepGProp_Face::SIntOrder()`
         #[cxx_name = "SIntOrder"]
         fn s_int_order(self: &Face, Eps: f64) -> i32;
+        /// **Source:** `BRepGProp_Face.hxx`:71 - `BRepGProp_Face::SVIntSubs()`
         #[cxx_name = "SVIntSubs"]
         fn sv_int_subs(self: &Face) -> i32;
+        /// **Source:** `BRepGProp_Face.hxx`:73 - `BRepGProp_Face::SUIntSubs()`
         #[cxx_name = "SUIntSubs"]
         fn su_int_subs(self: &Face) -> i32;
+        /// **Source:** `BRepGProp_Face.hxx`:75 - `BRepGProp_Face::UKnots()`
         #[cxx_name = "UKnots"]
         fn u_knots(self: &Face, Knots: Pin<&mut TColStd_Array1OfReal>);
+        /// **Source:** `BRepGProp_Face.hxx`:77 - `BRepGProp_Face::VKnots()`
         #[cxx_name = "VKnots"]
         fn v_knots(self: &Face, Knots: Pin<&mut TColStd_Array1OfReal>);
+        /// **Source:** `BRepGProp_Face.hxx`:79 - `BRepGProp_Face::LIntOrder()`
         #[cxx_name = "LIntOrder"]
         fn l_int_order(self: &Face, Eps: f64) -> i32;
+        /// **Source:** `BRepGProp_Face.hxx`:81 - `BRepGProp_Face::LIntSubs()`
         #[cxx_name = "LIntSubs"]
         fn l_int_subs(self: &Face) -> i32;
+        /// **Source:** `BRepGProp_Face.hxx`:83 - `BRepGProp_Face::LKnots()`
         #[cxx_name = "LKnots"]
         fn l_knots(self: &Face, Knots: Pin<&mut TColStd_Array1OfReal>);
+        /// **Source:** `BRepGProp_Face.hxx`:88 - `BRepGProp_Face::UIntegrationOrder()`
+        ///
         /// Returns the number of points required to do the
         /// integration in the U parametric direction with
         /// a good accuracy.
         #[cxx_name = "UIntegrationOrder"]
         fn u_integration_order(self: &Face) -> i32;
+        /// **Source:** `BRepGProp_Face.hxx`:91 - `BRepGProp_Face::Bounds()`
+        ///
         /// Returns the parametric bounds of the Face.
         #[cxx_name = "Bounds"]
         fn bounds(self: &Face, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64);
+        /// **Source:** `BRepGProp_Face.hxx`:98 - `BRepGProp_Face::Normal()`
+        ///
         /// Computes the point of parameter U, V on the Face <S> and
         /// the normal to the face at this point.
         #[cxx_name = "Normal"]
         fn normal(self: &Face, U: f64, V: f64, P: Pin<&mut gp_Pnt>, VNor: Pin<&mut gp_Vec>);
+        /// **Source:** `BRepGProp_Face.hxx`:105 - `BRepGProp_Face::Load()`
+        ///
         /// Loading the boundary arc.
         /// Returns FALSE if edge has no P-Curve.
         #[cxx_name = "Load"]
         fn load_edge(self: Pin<&mut Face>, E: &TopoDS_Edge) -> bool;
+        /// **Source:** `BRepGProp_Face.hxx`:109 - `BRepGProp_Face::FirstParameter()`
+        ///
         /// Returns the parametric value of the start point of
         /// the current arc of curve.
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &Face) -> f64;
+        /// **Source:** `BRepGProp_Face.hxx`:113 - `BRepGProp_Face::LastParameter()`
+        ///
         /// Returns the parametric value of the end point of
         /// the current arc of curve.
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &Face) -> f64;
+        /// **Source:** `BRepGProp_Face.hxx`:117 - `BRepGProp_Face::IntegrationOrder()`
+        ///
         /// Returns the number of points required to do the
         /// integration along the parameter of curve.
         #[cxx_name = "IntegrationOrder"]
         fn integration_order(self: &Face) -> i32;
+        /// **Source:** `BRepGProp_Face.hxx`:121 - `BRepGProp_Face::D12d()`
+        ///
         /// Returns the point of parameter U and the first derivative
         /// at this point of a boundary curve.
         #[cxx_name = "D12d"]
         fn d12d(self: &Face, U: f64, P: Pin<&mut gp_Pnt2d>, V1: Pin<&mut gp_Vec2d>);
+        /// **Source:** `BRepGProp_Face.hxx`:140 - `BRepGProp_Face::GetUKnots()`
+        ///
         /// Returns an array of U knots of the face. The first and last
         /// elements of the array will be theUMin and theUMax. The
         /// middle elements will be the U Knots of the face greater
@@ -644,6 +689,8 @@ pub(crate) mod ffi {
             theUMax: f64,
             theUKnots: Pin<&mut HandleTColStdHArray1OfReal>,
         );
+        /// **Source:** `BRepGProp_Face.hxx`:153 - `BRepGProp_Face::GetTKnots()`
+        ///
         /// Returns an array of combination of T knots of the arc and
         /// V knots of the face. The first and last elements of the
         /// array will be theTMin and theTMax. The middle elements will

@@ -132,7 +132,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepMAT2d_BisectingLocus ========================
-        /// **Source:** `BRepMAT2d_BisectingLocus.hxx` - `BRepMAT2d_BisectingLocus`
+        /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:73 - `BRepMAT2d_BisectingLocus`
         ///
         /// BisectingLocus generates and contains the Bisecting_Locus
         /// of a set of lines from Geom2d, defined by <ExploSet>.
@@ -170,19 +170,27 @@ pub(crate) mod ffi {
         /// - The Nodes are the extremities of the arcs.
         #[cxx_name = "BRepMAT2d_BisectingLocus"]
         type BisectingLocus;
-        /// **Source:** `BRepMAT2d_BisectingLocus.hxx` - `BRepMAT2d_BisectingLocus::BRepMAT2d_BisectingLocus()`
+        /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:78 - `BRepMAT2d_BisectingLocus::BRepMAT2d_BisectingLocus()`
         #[cxx_name = "BRepMAT2d_BisectingLocus_ctor"]
         fn BisectingLocus_ctor() -> UniquePtr<BisectingLocus>;
+        /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:91 - `BRepMAT2d_BisectingLocus::IsDone()`
+        ///
         /// Returns True if Compute has succeeded.
         #[cxx_name = "IsDone"]
         fn is_done(self: &BisectingLocus) -> bool;
+        /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:97 - `BRepMAT2d_BisectingLocus::NumberOfContours()`
+        ///
         /// Returns the number of contours.
         #[cxx_name = "NumberOfContours"]
         fn number_of_contours(self: &BisectingLocus) -> i32;
+        /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:101 - `BRepMAT2d_BisectingLocus::NumberOfElts()`
+        ///
         /// Returns the number of BasicElts on the line
         /// <IndLine>.
         #[cxx_name = "NumberOfElts"]
         fn number_of_elts(self: &BisectingLocus, IndLine: i32) -> i32;
+        /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:106 - `BRepMAT2d_BisectingLocus::NumberOfSections()`
+        ///
         /// Returns the number of sections of a curve.
         /// this curve is the Indexth curve in the IndLineth contour
         /// given by anExplo.
@@ -224,16 +232,16 @@ pub(crate) mod ffi {
             Reverse: &mut bool,
         ) -> UniquePtr<Bisector_Bisec>;
         /// ======================== BRepMAT2d_LinkTopoBilo ========================
-        /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx` - `BRepMAT2d_LinkTopoBilo`
+        /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:35 - `BRepMAT2d_LinkTopoBilo`
         ///
         /// Constructs links between the Wire or the Face of the explorer and
         /// the BasicElts contained in the bisecting locus.
         #[cxx_name = "BRepMAT2d_LinkTopoBilo"]
         type LinkTopoBilo;
-        /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx` - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
+        /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:40 - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
         #[cxx_name = "BRepMAT2d_LinkTopoBilo_ctor"]
         fn LinkTopoBilo_ctor() -> UniquePtr<LinkTopoBilo>;
-        /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx` - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
+        /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:45 - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
         ///
         /// Constructs the links Between S and BiLo.
         ///
@@ -243,20 +251,28 @@ pub(crate) mod ffi {
             Explo: &BRepMAT2d_Explorer,
             BiLo: &BisectingLocus,
         ) -> UniquePtr<LinkTopoBilo>;
+        /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:51 - `BRepMAT2d_LinkTopoBilo::Perform()`
+        ///
         /// Constructs the links Between S and BiLo.
         ///
         /// raises if <S> is not a face or a wire.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut LinkTopoBilo>, Explo: &BRepMAT2d_Explorer, BiLo: &BisectingLocus);
+        /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:58 - `BRepMAT2d_LinkTopoBilo::Init()`
+        ///
         /// Initialise the Iterator on <S>
         /// <S> is an edge or a vertex of the initial
         /// wire or face.
         /// raises if <S> is not an edge or a vertex.
         #[cxx_name = "Init"]
         fn init(self: Pin<&mut LinkTopoBilo>, S: &TopoDS_Shape);
+        /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:61 - `BRepMAT2d_LinkTopoBilo::More()`
+        ///
         /// Returns True if there  is a current  BasicElt.
         #[cxx_name = "More"]
         fn more(self: Pin<&mut LinkTopoBilo>) -> bool;
+        /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:64 - `BRepMAT2d_LinkTopoBilo::Next()`
+        ///
         /// Proceed to the next BasicElt.
         #[cxx_name = "Next"]
         fn next(self: Pin<&mut LinkTopoBilo>);

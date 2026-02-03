@@ -93,6 +93,8 @@ pub struct ParsedClass {
     pub comment: Option<String>,
     /// Source header file name (e.g., "gp_Pnt.hxx")
     pub source_header: String,
+    /// Source line number in the header file
+    pub source_line: Option<u32>,
     /// Constructors
     pub constructors: Vec<Constructor>,
     /// Instance methods (public only)
@@ -134,6 +136,8 @@ pub struct Constructor {
     pub comment: Option<String>,
     /// Parameters
     pub params: Vec<Param>,
+    /// Source line number in the header file
+    pub source_line: Option<u32>,
 }
 
 impl Constructor {
@@ -190,6 +194,8 @@ pub struct Method {
     pub params: Vec<Param>,
     /// Return type (None for void)
     pub return_type: Option<Type>,
+    /// Source line number in the header file
+    pub source_line: Option<u32>,
 }
 
 impl Method {
@@ -264,6 +270,8 @@ pub struct StaticMethod {
     pub params: Vec<Param>,
     /// Return type (None for void)
     pub return_type: Option<Type>,
+    /// Source line number in the header file
+    pub source_line: Option<u32>,
 }
 
 impl StaticMethod {

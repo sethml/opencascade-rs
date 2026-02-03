@@ -367,7 +367,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Precision ========================
-        /// **Source:** `Precision.hxx` - `Precision`
+        /// **Source:** `Precision.hxx`:99 - `Precision`
         ///
         /// The Precision package offers a set of functions defining precision criteria
         /// for use in conventional situations when comparing two numbers.
@@ -446,6 +446,8 @@ pub(crate) mod ffi {
         /// may take a great deal of time.
         #[cxx_name = "Precision"]
         type Precision;
+        /// **Source:** `Precision.hxx`:123 - `Precision::Angular()`
+        ///
         /// Returns the recommended precision value
         /// when checking the equality of two angles (given in radians).
         /// Standard_Real Angle1 = ... , Angle2 = ... ;
@@ -467,6 +469,8 @@ pub(crate) mod ffi {
         /// (although the function IsNormal does exist).
         #[cxx_name = "Precision_Angular"]
         fn Precision_angular() -> f64;
+        /// **Source:** `Precision.hxx`:165 - `Precision::Confusion()`
+        ///
         /// Returns the recommended precision value when
         /// checking coincidence of two points in real space.
         /// The tolerance of confusion is used for testing a 3D
@@ -509,10 +513,14 @@ pub(crate) mod ffi {
         /// space which contains some small objects of the complete scene.
         #[cxx_name = "Precision_Confusion"]
         fn Precision_confusion() -> f64;
+        /// **Source:** `Precision.hxx`:169 - `Precision::SquareConfusion()`
+        ///
         /// Returns square of Confusion.
         /// Created for speed and convenience.
         #[cxx_name = "Precision_SquareConfusion"]
         fn Precision_square_confusion() -> f64;
+        /// **Source:** `Precision.hxx`:193 - `Precision::Intersection()`
+        ///
         /// Returns the precision value in real space, frequently
         /// used by intersection algorithms to decide that a solution is reached.
         /// This function provides an acceptable level of precision
@@ -537,6 +545,8 @@ pub(crate) mod ffi {
         /// (that is, 1.e-9).
         #[cxx_name = "Precision_Intersection"]
         fn Precision_intersection() -> f64;
+        /// **Source:** `Precision.hxx`:208 - `Precision::Approximation()`
+        ///
         /// Returns the precision value in real space, frequently used
         /// by approximation algorithms.
         /// This function provides an acceptable level of precision for
@@ -552,6 +562,8 @@ pub(crate) mod ffi {
         /// algorithm, but this option might be costly.
         #[cxx_name = "Precision_Approximation"]
         fn Precision_approximation() -> f64;
+        /// **Source:** `Precision.hxx`:215 - `Precision::Parametric()`
+        ///
         /// Convert a real  space precision  to  a  parametric
         /// space precision.   <T>  is the mean  value  of the
         /// length of the tangent of the curve or the surface.
@@ -559,6 +571,8 @@ pub(crate) mod ffi {
         /// Value is P / T
         #[cxx_name = "Precision_Parametric_real2"]
         fn Precision_parametric_real2(P: f64, T: f64) -> f64;
+        /// **Source:** `Precision.hxx`:264 - `Precision::PConfusion()`
+        ///
         /// Returns a precision value in parametric space, which may be used :
         /// -   to test the coincidence of two points in the real space,
         /// by using parameter values, or
@@ -605,10 +619,14 @@ pub(crate) mod ffi {
         /// tolerance to your own algorithm.
         #[cxx_name = "Precision_PConfusion_real"]
         fn Precision_p_confusion_real(T: f64) -> f64;
+        /// **Source:** `Precision.hxx`:271 - `Precision::SquarePConfusion()`
+        ///
         /// Returns square of PConfusion.
         /// Created for speed and convenience.
         #[cxx_name = "Precision_SquarePConfusion"]
         fn Precision_square_p_confusion() -> f64;
+        /// **Source:** `Precision.hxx`:286 - `Precision::PIntersection()`
+        ///
         /// Returns a precision value in parametric space, which
         /// may be used by intersection algorithms, to decide that
         /// a solution is reached. The purpose of this function is to
@@ -624,6 +642,8 @@ pub(crate) mod ffi {
         /// -   Precision::Intersection() / 100., or Precision::Intersection() / T.
         #[cxx_name = "Precision_PIntersection_real"]
         fn Precision_p_intersection_real(T: f64) -> f64;
+        /// **Source:** `Precision.hxx`:304 - `Precision::PApproximation()`
+        ///
         /// Returns a precision value in parametric space, which may
         /// be used by approximation algorithms. The purpose of this
         /// function is to provide an acceptable level of precision in
@@ -639,42 +659,58 @@ pub(crate) mod ffi {
         /// -   Precision::Approximation() / 100., or Precision::Approximation() / T.
         #[cxx_name = "Precision_PApproximation_real"]
         fn Precision_p_approximation_real(T: f64) -> f64;
+        /// **Source:** `Precision.hxx`:313 - `Precision::Parametric()`
+        ///
         /// Convert a real  space precision  to  a  parametric
         /// space precision on a default curve.
         ///
         /// Value is Parametric(P,1.e+2)
         #[cxx_name = "Precision_Parametric_real"]
         fn Precision_parametric_real(P: f64) -> f64;
+        /// **Source:** `Precision.hxx`:319 - `Precision::PConfusion()`
+        ///
         /// Used  to test distances  in parametric  space on a
         /// default curve.
         ///
         /// This is Precision::Parametric(Precision::Confusion())
         #[cxx_name = "Precision_PConfusion"]
         fn Precision_p_confusion() -> f64;
+        /// **Source:** `Precision.hxx`:325 - `Precision::PIntersection()`
+        ///
         /// Used for Intersections  in parametric  space  on a
         /// default curve.
         ///
         /// This is Precision::Parametric(Precision::Intersection())
         #[cxx_name = "Precision_PIntersection"]
         fn Precision_p_intersection() -> f64;
+        /// **Source:** `Precision.hxx`:331 - `Precision::PApproximation()`
+        ///
         /// Used for  Approximations  in parametric space on a
         /// default curve.
         ///
         /// This is Precision::Parametric(Precision::Approximation())
         #[cxx_name = "Precision_PApproximation"]
         fn Precision_p_approximation() -> f64;
+        /// **Source:** `Precision.hxx`:335 - `Precision::IsInfinite()`
+        ///
         /// Returns True if R may be considered as an infinite
         /// number. Currently Abs(R) > 1e100
         #[cxx_name = "Precision_IsInfinite"]
         fn Precision_is_infinite(R: f64) -> bool;
+        /// **Source:** `Precision.hxx`:342 - `Precision::IsPositiveInfinite()`
+        ///
         /// Returns True if R may be considered as  a positive
         /// infinite number. Currently R > 1e100
         #[cxx_name = "Precision_IsPositiveInfinite"]
         fn Precision_is_positive_infinite(R: f64) -> bool;
+        /// **Source:** `Precision.hxx`:349 - `Precision::IsNegativeInfinite()`
+        ///
         /// Returns True if R may  be considered as a negative
         /// infinite number. Currently R < -1e100
         #[cxx_name = "Precision_IsNegativeInfinite"]
         fn Precision_is_negative_infinite(R: f64) -> bool;
+        /// **Source:** `Precision.hxx`:356 - `Precision::Infinite()`
+        ///
         /// Returns a  big number that  can  be  considered as
         /// infinite. Use -Infinite() for a negative big number.
         #[cxx_name = "Precision_Infinite"]

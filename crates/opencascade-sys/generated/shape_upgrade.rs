@@ -78,7 +78,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== ShapeUpgrade_UnifySameDomain ========================
-        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain`
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:66 - `ShapeUpgrade_UnifySameDomain`
         ///
         /// This tool tries to unify faces and edges of the shape which lie on the same geometry.
         /// Faces/edges are considering as 'same-domain' if a group of neighbouring faces/edges
@@ -110,12 +110,12 @@ pub(crate) mod ffi {
         /// To avoid collecting of the history the place holder should be set to null handle.
         #[cxx_name = "ShapeUpgrade_UnifySameDomain"]
         type UnifySameDomain;
-        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:76 - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
         ///
         /// Empty constructor
         #[cxx_name = "ShapeUpgrade_UnifySameDomain_ctor"]
         fn UnifySameDomain_ctor() -> UniquePtr<UnifySameDomain>;
-        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:80 - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
         ///
         /// Constructor defining input shape and necessary flags.
         /// It does not perform unification.
@@ -126,6 +126,8 @@ pub(crate) mod ffi {
             UnifyFaces: bool,
             ConcatBSplines: bool,
         ) -> UniquePtr<UnifySameDomain>;
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:90 - `ShapeUpgrade_UnifySameDomain::Initialize()`
+        ///
         /// Initializes with a shape and necessary flags.
         /// It does not perform unification.
         /// If you intend to nullify the History place holder do it after
@@ -138,12 +140,16 @@ pub(crate) mod ffi {
             UnifyFaces: bool,
             ConcatBSplines: bool,
         );
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:99 - `ShapeUpgrade_UnifySameDomain::AllowInternalEdges()`
+        ///
         /// Sets the flag defining whether it is allowed to create
         /// internal edges inside merged faces in the case of non-manifold
         /// topology. Without this flag merging through multi connected edge
         /// is forbidden. Default value is false.
         #[cxx_name = "AllowInternalEdges"]
         fn allow_internal_edges(self: Pin<&mut UnifySameDomain>, theValue: bool);
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:106 - `ShapeUpgrade_UnifySameDomain::KeepShape()`
+        ///
         /// Sets the shape for avoid merging of the faces/edges.
         /// This shape can be vertex or edge.
         /// If the shape is a vertex it forbids merging of connected edges.
@@ -151,39 +157,57 @@ pub(crate) mod ffi {
         /// This method can be called several times to keep several shapes.
         #[cxx_name = "KeepShape"]
         fn keep_shape(self: Pin<&mut UnifySameDomain>, theShape: &TopoDS_Shape);
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:111 - `ShapeUpgrade_UnifySameDomain::KeepShapes()`
+        ///
         /// Sets the map of shapes for avoid merging of the faces/edges.
         /// It allows passing a ready to use map instead of calling many times
         /// the method KeepShape.
         #[cxx_name = "KeepShapes"]
         fn keep_shapes(self: Pin<&mut UnifySameDomain>, theShapes: &TopTools_MapOfShape);
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:117 - `ShapeUpgrade_UnifySameDomain::SetSafeInputMode()`
+        ///
         /// Sets the flag defining the behavior of the algorithm regarding
         /// modification of input shape.
         /// If this flag is equal to True then the input (original) shape can't be
         /// modified during modification process. Default value is true.
         #[cxx_name = "SetSafeInputMode"]
         fn set_safe_input_mode(self: Pin<&mut UnifySameDomain>, theValue: bool);
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:121 - `ShapeUpgrade_UnifySameDomain::SetLinearTolerance()`
+        ///
         /// Sets the linear tolerance. It plays the role of chord error when
         /// taking decision about merging of shapes. Default value is Precision::Confusion().
         #[cxx_name = "SetLinearTolerance"]
         fn set_linear_tolerance(self: Pin<&mut UnifySameDomain>, theValue: f64);
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:125 - `ShapeUpgrade_UnifySameDomain::SetAngularTolerance()`
+        ///
         /// Sets the angular tolerance. If two shapes form a connection angle greater than
         /// this value they will not be merged. Default value is Precision::Angular().
         #[cxx_name = "SetAngularTolerance"]
         fn set_angular_tolerance(self: Pin<&mut UnifySameDomain>, theValue: f64);
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:131 - `ShapeUpgrade_UnifySameDomain::Build()`
+        ///
         /// Performs unification and builds the resulting shape.
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut UnifySameDomain>);
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:134 - `ShapeUpgrade_UnifySameDomain::Shape()`
+        ///
         /// Gives the resulting shape
         #[cxx_name = "Shape"]
         fn shape(self: &UnifySameDomain) -> &TopoDS_Shape;
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:137 - `ShapeUpgrade_UnifySameDomain::History()`
+        ///
         /// Returns the history of the processed shapes.
         #[cxx_name = "History"]
         fn history(self: &UnifySameDomain) -> &HandleBRepToolsHistory;
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:140 - `ShapeUpgrade_UnifySameDomain::History()`
+        ///
         /// Returns the history of the processed shapes.
         #[cxx_name = "History"]
         fn history_mut(self: Pin<&mut UnifySameDomain>) -> Pin<&mut HandleBRepToolsHistory>;
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:142 - `ShapeUpgrade_UnifySameDomain::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &UnifySameDomain) -> &HandleStandardType;
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:142 - `ShapeUpgrade_UnifySameDomain::get_type_name()`
         #[cxx_name = "ShapeUpgrade_UnifySameDomain_get_type_name"]
         fn UnifySameDomain_get_type_name() -> String;
         /// Wrap ShapeUpgrade_UnifySameDomain in a Handle (reference-counted smart pointer)

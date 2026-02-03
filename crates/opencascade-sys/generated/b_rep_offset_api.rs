@@ -385,7 +385,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepOffsetAPI_MakeOffset ========================
-        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx` - `BRepOffsetAPI_MakeOffset`
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:36 - `BRepOffsetAPI_MakeOffset`
         ///
         /// Describes algorithms for offsetting wires from a set of
         /// wires contained in a planar face.
@@ -395,32 +395,44 @@ pub(crate) mod ffi {
         /// - consulting the result.
         #[cxx_name = "BRepOffsetAPI_MakeOffset"]
         type MakeOffset;
-        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx` - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:42 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
         ///
         /// Constructs an algorithm for creating an empty offset
         #[cxx_name = "BRepOffsetAPI_MakeOffset_ctor"]
         fn MakeOffset_ctor() -> UniquePtr<MakeOffset>;
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:73 - `BRepOffsetAPI_MakeOffset::SetApprox()`
+        ///
         /// Set approximation flag
         /// for conversion input contours into ones consisting of
         /// 2D circular arcs and 2D linear segments only.
         #[cxx_name = "SetApprox"]
         fn set_approx(self: Pin<&mut MakeOffset>, ToApprox: bool);
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:76 - `BRepOffsetAPI_MakeOffset::AddWire()`
+        ///
         /// Initializes the algorithm to construct parallels to the wire Spine.
         #[cxx_name = "AddWire"]
         fn add_wire(self: Pin<&mut MakeOffset>, Spine: &TopoDS_Wire);
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:82 - `BRepOffsetAPI_MakeOffset::Perform()`
+        ///
         /// Computes a parallel to the spine at distance Offset and
         /// at an altitude Alt from the plane of the spine in relation
         /// to the normal to the spine.
         /// Exceptions: StdFail_NotDone if the offset is not built.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut MakeOffset>, Offset: f64, Alt: f64);
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:85 - `BRepOffsetAPI_MakeOffset::Build()`
+        ///
         /// Builds the resulting shape (redefined from MakeShape).
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut MakeOffset>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:90 - `BRepOffsetAPI_MakeOffset::Generated()`
+        ///
         /// returns a list of the created shapes
         /// from the shape <S>.
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut MakeOffset>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:95 - `BRepOffsetAPI_MakeOffset::ConvertFace()`
+        ///
         /// Converts each wire of the face into contour consisting only of
         /// arcs and segments. New 3D curves are built too.
         #[cxx_name = "BRepOffsetAPI_MakeOffset_ConvertFace"]
@@ -447,7 +459,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakeOffset>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         /// ======================== BRepOffsetAPI_MakePipe ========================
-        /// **Source:** `BRepOffsetAPI_MakePipe.hxx` - `BRepOffsetAPI_MakePipe`
+        /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:41 - `BRepOffsetAPI_MakePipe`
         ///
         /// Describes functions to build pipes.
         /// A pipe is built a basis shape (called the profile) along
@@ -462,7 +474,7 @@ pub(crate) mod ffi {
         /// with G1 continuous spines only.
         #[cxx_name = "BRepOffsetAPI_MakePipe"]
         type MakePipe;
-        /// **Source:** `BRepOffsetAPI_MakePipe.hxx` - `BRepOffsetAPI_MakePipe::BRepOffsetAPI_MakePipe()`
+        /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:57 - `BRepOffsetAPI_MakePipe::BRepOffsetAPI_MakePipe()`
         ///
         /// Constructs a pipe by sweeping the shape Profile along
         /// the wire Spine.The angle made by the spine with the profile is
@@ -480,13 +492,18 @@ pub(crate) mod ffi {
             Spine: &TopoDS_Wire,
             Profile: &TopoDS_Shape,
         ) -> UniquePtr<MakePipe>;
+        /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:68 - `BRepOffsetAPI_MakePipe::Pipe()`
         #[cxx_name = "Pipe"]
         fn pipe(self: &MakePipe) -> &BRepFill_Pipe;
+        /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:71 - `BRepOffsetAPI_MakePipe::Build()`
+        ///
         /// Builds the resulting shape (redefined from MakeShape).
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut MakePipe>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:80 - `BRepOffsetAPI_MakePipe::Generated()`
         #[cxx_name = "Generated"]
         fn generated_shape(self: Pin<&mut MakePipe>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:85 - `BRepOffsetAPI_MakePipe::ErrorOnSurface()`
         #[cxx_name = "ErrorOnSurface"]
         fn error_on_surface(self: &MakePipe) -> f64;
         /// Returns the  TopoDS  Shape of the bottom of the prism.
@@ -527,7 +544,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakePipe>,
         ) -> Pin<&mut BRepPrimAPI_MakeSweep>;
         /// ======================== BRepOffsetAPI_MakePipeShell ========================
-        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx` - `BRepOffsetAPI_MakePipeShell`
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:56 - `BRepOffsetAPI_MakePipeShell`
         ///
         /// This class provides for a framework to construct a shell
         /// or a solid along a spine consisting in a wire.
@@ -549,37 +566,49 @@ pub(crate) mod ffi {
         /// -- Mode with auxiliary spine and keep contact produce only CO surface.
         #[cxx_name = "BRepOffsetAPI_MakePipeShell"]
         type MakePipeShell;
-        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx` - `BRepOffsetAPI_MakePipeShell::BRepOffsetAPI_MakePipeShell()`
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:64 - `BRepOffsetAPI_MakePipeShell::BRepOffsetAPI_MakePipeShell()`
         ///
         /// Constructs the shell-generating framework defined by the wire Spine.
         /// Sets an sweep's mode
         /// If no mode are set, the mode use in MakePipe is used
         #[cxx_name = "BRepOffsetAPI_MakePipeShell_ctor_wire"]
         fn MakePipeShell_ctor_wire(Spine: &TopoDS_Wire) -> UniquePtr<MakePipeShell>;
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:69 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+        ///
         /// Sets a Frenet or a CorrectedFrenet trihedron
         /// to  perform  the  sweeping
         /// If IsFrenet is false, a corrected Frenet trihedron is used.
         #[cxx_name = "SetMode"]
         fn set_mode_bool(self: Pin<&mut MakePipeShell>, IsFrenet: bool);
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:73 - `BRepOffsetAPI_MakePipeShell::SetDiscreteMode()`
+        ///
         /// Sets a Discrete trihedron
         /// to  perform  the  sweeping
         #[cxx_name = "SetDiscreteMode"]
         fn set_discrete_mode(self: Pin<&mut MakePipeShell>);
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:77 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+        ///
         /// Sets  a  fixed  trihedron  to  perform  the  sweeping
         /// all sections will be parallel.
         #[cxx_name = "SetMode"]
         fn set_mode_ax2(self: Pin<&mut MakePipeShell>, Axe: &gp_Ax2);
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:82 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+        ///
         /// Sets a fixed BiNormal  direction to perform the --
         /// sweeping.   Angular   relations   between  the
         /// section(s) and <BiNormal> will be constant
         #[cxx_name = "SetMode"]
         fn set_mode_dir(self: Pin<&mut MakePipeShell>, BiNormal: &gp_Dir);
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:88 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+        ///
         /// Sets support to the spine to define the BiNormal of
         /// the trihedron, like the normal  to the surfaces.
         /// Warning:  To be effective, Each  edge of the <spine> must
         /// have a representation on one face of<SpineSupport>
         #[cxx_name = "SetMode"]
         fn set_mode_shape(self: Pin<&mut MakePipeShell>, SpineSupport: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:132 - `BRepOffsetAPI_MakePipeShell::Add()`
+        ///
         /// Adds the section Profile to this framework. First and last
         /// sections may be punctual, so the shape Profile may be
         /// both wire and vertex. Correspondent point on spine is
@@ -597,6 +626,8 @@ pub(crate) mod ffi {
             WithContact: bool,
             WithCorrection: bool,
         );
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:140 - `BRepOffsetAPI_MakePipeShell::Add()`
+        ///
         /// Adds the section Profile to this framework.
         /// Correspondent point on the spine is given by Location.
         /// Warning:
@@ -609,6 +640,8 @@ pub(crate) mod ffi {
             WithContact: bool,
             WithCorrection: bool,
         );
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:151 - `BRepOffsetAPI_MakePipeShell::SetLaw()`
+        ///
         /// Sets the evolution law defined by the wire Profile with
         /// its position (Location, WithContact, WithCorrection
         /// are the same options as in methods Add) and a
@@ -623,6 +656,8 @@ pub(crate) mod ffi {
             WithContact: bool,
             WithCorrection: bool,
         );
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:162 - `BRepOffsetAPI_MakePipeShell::SetLaw()`
+        ///
         /// Sets the evolution law defined by the wire Profile with
         /// its position (Location, WithContact, WithCorrection
         /// are the same options as in methods Add) and a
@@ -638,31 +673,45 @@ pub(crate) mod ffi {
             WithContact: bool,
             WithCorrection: bool,
         );
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:169 - `BRepOffsetAPI_MakePipeShell::Delete()`
+        ///
         /// Removes the section Profile from this framework.
         #[cxx_name = "Delete"]
         fn delete(self: Pin<&mut MakePipeShell>, Profile: &TopoDS_Shape);
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:173 - `BRepOffsetAPI_MakePipeShell::IsReady()`
+        ///
         /// Returns true if this tool object is ready to build the
         /// shape, i.e. has a definition for the wire section Profile.
         #[cxx_name = "IsReady"]
         fn is_ready(self: &MakePipeShell) -> bool;
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:186 - `BRepOffsetAPI_MakePipeShell::SetTolerance()`
+        ///
         /// Sets the following tolerance values
         /// - 3D tolerance Tol3d
         /// - boundary tolerance BoundTol
         /// - angular tolerance TolAngular.
         #[cxx_name = "SetTolerance"]
         fn set_tolerance(self: Pin<&mut MakePipeShell>, Tol3d: f64, BoundTol: f64, TolAngular: f64);
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:191 - `BRepOffsetAPI_MakePipeShell::SetMaxDegree()`
+        ///
         /// Define the maximum V degree of resulting surface
         #[cxx_name = "SetMaxDegree"]
         fn set_max_degree(self: Pin<&mut MakePipeShell>, NewMaxDegree: i32);
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:195 - `BRepOffsetAPI_MakePipeShell::SetMaxSegments()`
+        ///
         /// Define the maximum number of spans in V-direction
         /// on resulting surface
         #[cxx_name = "SetMaxSegments"]
         fn set_max_segments(self: Pin<&mut MakePipeShell>, NewMaxSegments: i32);
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:200 - `BRepOffsetAPI_MakePipeShell::SetForceApproxC1()`
+        ///
         /// Set the flag that indicates attempt to approximate
         /// a C1-continuous surface if a swept surface proved
         /// to be C0.
         #[cxx_name = "SetForceApproxC1"]
         fn set_force_approx_c1(self: Pin<&mut MakePipeShell>, ForceApproxC1: bool);
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:251 - `BRepOffsetAPI_MakePipeShell::Simulate()`
+        ///
         /// Simulates the resulting shape by calculating its
         /// cross-sections. The spine is divided by this
         /// cross-sections into (NumberOfSection - 1) equal
@@ -678,24 +727,35 @@ pub(crate) mod ffi {
             NumberOfSection: i32,
             Result: Pin<&mut TopTools_ListOfShape>,
         );
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:255 - `BRepOffsetAPI_MakePipeShell::Build()`
+        ///
         /// Builds the resulting shape (redefined from MakeShape).
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut MakePipeShell>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:260 - `BRepOffsetAPI_MakePipeShell::MakeSolid()`
+        ///
         /// Transforms the sweeping Shell in Solid.
         /// If a propfile is not closed returns False
         #[cxx_name = "MakeSolid"]
         fn make_solid(self: Pin<&mut MakePipeShell>) -> bool;
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:272 - `BRepOffsetAPI_MakePipeShell::Generated()`
+        ///
         /// Returns a list of new shapes generated from the shape
         /// S by the shell-generating algorithm.
         /// This function is redefined from BRepOffsetAPI_MakeShape::Generated.
         /// S can be an edge or a vertex of a given Profile (see methods Add).
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut MakePipeShell>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:275 - `BRepOffsetAPI_MakePipeShell::ErrorOnSurface()`
         #[cxx_name = "ErrorOnSurface"]
         fn error_on_surface(self: &MakePipeShell) -> f64;
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:278 - `BRepOffsetAPI_MakePipeShell::Profiles()`
+        ///
         /// Returns the list of original profiles
         #[cxx_name = "Profiles"]
         fn profiles(self: Pin<&mut MakePipeShell>, theProfiles: Pin<&mut TopTools_ListOfShape>);
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:281 - `BRepOffsetAPI_MakePipeShell::Spine()`
+        ///
         /// Returns the spine
         #[cxx_name = "Spine"]
         fn spine(self: Pin<&mut MakePipeShell>) -> &TopoDS_Wire;
@@ -736,7 +796,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakePipeShell>,
         ) -> Pin<&mut BRepPrimAPI_MakeSweep>;
         /// ======================== BRepOffsetAPI_MakeThickSolid ========================
-        /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx` - `BRepOffsetAPI_MakeThickSolid`
+        /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:46 - `BRepOffsetAPI_MakeThickSolid`
         ///
         /// Describes functions to build hollowed solids.
         /// A hollowed solid is built from an initial solid and a set of
@@ -755,11 +815,13 @@ pub(crate) mod ffi {
         /// - consulting the result.
         #[cxx_name = "BRepOffsetAPI_MakeThickSolid"]
         type MakeThickSolid;
-        /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx` - `BRepOffsetAPI_MakeThickSolid::BRepOffsetAPI_MakeThickSolid()`
+        /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:52 - `BRepOffsetAPI_MakeThickSolid::BRepOffsetAPI_MakeThickSolid()`
         ///
         /// Constructor does nothing.
         #[cxx_name = "BRepOffsetAPI_MakeThickSolid_ctor"]
         fn MakeThickSolid_ctor() -> UniquePtr<MakeThickSolid>;
+        /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:59 - `BRepOffsetAPI_MakeThickSolid::MakeThickSolidBySimple()`
+        ///
         /// Constructs solid using simple algorithm.
         /// According to its nature it is not possible to set list of the closing faces.
         /// This algorithm does not support faces removing. It is caused by fact that
@@ -771,8 +833,11 @@ pub(crate) mod ffi {
             theS: &TopoDS_Shape,
             theOffsetValue: f64,
         );
+        /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:115 - `BRepOffsetAPI_MakeThickSolid::Build()`
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut MakeThickSolid>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:120 - `BRepOffsetAPI_MakeThickSolid::Modified()`
+        ///
         /// Returns the list  of shapes modified from the shape
         /// <S>.
         #[cxx_name = "Modified"]
@@ -806,7 +871,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakeThickSolid>,
         ) -> Pin<&mut MakeOffsetShape>;
         /// ======================== BRepOffsetAPI_ThruSections ========================
-        /// **Source:** `BRepOffsetAPI_ThruSections.hxx` - `BRepOffsetAPI_ThruSections`
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:47 - `BRepOffsetAPI_ThruSections`
         ///
         /// Describes functions to build a loft. This is a shell or a
         /// solid passing through a set of sections in a given
@@ -814,7 +879,7 @@ pub(crate) mod ffi {
         /// the last sections may be vertices (punctual sections).
         #[cxx_name = "BRepOffsetAPI_ThruSections"]
         type ThruSections;
-        /// **Source:** `BRepOffsetAPI_ThruSections.hxx` - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:64 - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
         ///
         /// Initializes an algorithm for building a shell or a solid
         /// passing through a set of sections, where:
@@ -834,6 +899,8 @@ pub(crate) mod ffi {
             ruled: bool,
             pres3d: f64,
         ) -> UniquePtr<ThruSections>;
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:80 - `BRepOffsetAPI_ThruSections::Init()`
+        ///
         /// Initializes this algorithm for building a shell or a solid
         /// passing through a set of sections, where:
         /// - isSolid is set to true if this construction algorithm is
@@ -848,11 +915,15 @@ pub(crate) mod ffi {
         /// sections of the shell or solid to be built.
         #[cxx_name = "Init"]
         fn init(self: Pin<&mut ThruSections>, isSolid: bool, ruled: bool, pres3d: f64);
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:87 - `BRepOffsetAPI_ThruSections::AddWire()`
+        ///
         /// Adds the wire wire to the set of
         /// sections through which the shell or solid is built.
         /// Use the Build function to construct the shape.
         #[cxx_name = "AddWire"]
         fn add_wire(self: Pin<&mut ThruSections>, wire: &TopoDS_Wire);
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:94 - `BRepOffsetAPI_ThruSections::AddVertex()`
+        ///
         /// Adds the vertex Vertex (punctual section) to the set of sections
         /// through which the shell or solid is built. A vertex may be added to the
         /// set of sections only as first or last section. At least one wire
@@ -860,55 +931,82 @@ pub(crate) mod ffi {
         /// Use the Build function to construct the shape.
         #[cxx_name = "AddVertex"]
         fn add_vertex(self: Pin<&mut ThruSections>, aVertex: &TopoDS_Vertex);
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:99 - `BRepOffsetAPI_ThruSections::CheckCompatibility()`
+        ///
         /// Sets/unsets the option to
         /// compute origin and orientation on wires to avoid twisted results
         /// and update wires to have same number of edges.
         #[cxx_name = "CheckCompatibility"]
         fn check_compatibility(self: Pin<&mut ThruSections>, check: bool);
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:102 - `BRepOffsetAPI_ThruSections::SetSmoothing()`
+        ///
         /// Define the approximation algorithm
         #[cxx_name = "SetSmoothing"]
         fn set_smoothing(self: Pin<&mut ThruSections>, UseSmoothing: bool);
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:114 - `BRepOffsetAPI_ThruSections::SetCriteriumWeight()`
+        ///
         /// define the Weights  associed to the criterium used in
         /// the  optimization.
         ///
         /// if Wi <= 0
         #[cxx_name = "SetCriteriumWeight"]
         fn set_criterium_weight(self: Pin<&mut ThruSections>, W1: f64, W2: f64, W3: f64);
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:119 - `BRepOffsetAPI_ThruSections::SetMaxDegree()`
+        ///
         /// Define the maximal U degree of result surface
         #[cxx_name = "SetMaxDegree"]
         fn set_max_degree(self: Pin<&mut ThruSections>, MaxDeg: i32);
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:128 - `BRepOffsetAPI_ThruSections::MaxDegree()`
+        ///
         /// returns the maximal U degree of result surface
         #[cxx_name = "MaxDegree"]
         fn max_degree(self: &ThruSections) -> i32;
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:131 - `BRepOffsetAPI_ThruSections::UseSmoothing()`
+        ///
         /// Define the approximation algorithm
         #[cxx_name = "UseSmoothing"]
         fn use_smoothing(self: &ThruSections) -> bool;
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:135 - `BRepOffsetAPI_ThruSections::CriteriumWeight()`
+        ///
         /// returns the Weights associed  to the criterium used in
         /// the  optimization.
         #[cxx_name = "CriteriumWeight"]
         fn criterium_weight(self: &ThruSections, W1: &mut f64, W2: &mut f64, W3: &mut f64);
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:139 - `BRepOffsetAPI_ThruSections::Build()`
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut ThruSections>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:143 - `BRepOffsetAPI_ThruSections::FirstShape()`
+        ///
         /// Returns the TopoDS Shape of the bottom of the loft if solid
         #[cxx_name = "FirstShape"]
         fn first_shape(self: &ThruSections) -> &TopoDS_Shape;
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:146 - `BRepOffsetAPI_ThruSections::LastShape()`
+        ///
         /// Returns the TopoDS Shape of the top of the loft if solid
         #[cxx_name = "LastShape"]
         fn last_shape(self: &ThruSections) -> &TopoDS_Shape;
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:158 - `BRepOffsetAPI_ThruSections::SetMutableInput()`
+        ///
         /// Sets the mutable input state.
         /// If true then the input profile can be modified inside
         /// the thrusection operation. Default value is true.
         #[cxx_name = "SetMutableInput"]
         fn set_mutable_input(self: Pin<&mut ThruSections>, theIsMutableInput: bool);
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:164 - `BRepOffsetAPI_ThruSections::Generated()`
+        ///
         /// Returns a list of new shapes generated from the shape
         /// S by the shell-generating algorithm.
         /// This function is redefined from BRepBuilderAPI_MakeShape::Generated.
         /// S can be an edge or a vertex of a given Profile (see methods AddWire and AddVertex).
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut ThruSections>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:168 - `BRepOffsetAPI_ThruSections::Wires()`
+        ///
         /// Returns the list of original wires
         #[cxx_name = "Wires"]
         fn wires(self: &ThruSections) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:171 - `BRepOffsetAPI_ThruSections::IsMutableInput()`
+        ///
         /// Returns the current mutable input state
         #[cxx_name = "IsMutableInput"]
         fn is_mutable_input(self: &ThruSections) -> bool;
@@ -943,7 +1041,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut ThruSections>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         /// ======================== BRepOffsetAPI_MakeOffsetShape ========================
-        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx` - `BRepOffsetAPI_MakeOffsetShape`
+        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:38 - `BRepOffsetAPI_MakeOffsetShape`
         ///
         /// Describes functions to build a shell out of a shape. The
         /// result is an unlooped shape parallel to the source shape.
@@ -953,11 +1051,13 @@ pub(crate) mod ffi {
         /// - consulting the result.
         #[cxx_name = "BRepOffsetAPI_MakeOffsetShape"]
         type MakeOffsetShape;
-        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx` - `BRepOffsetAPI_MakeOffsetShape::BRepOffsetAPI_MakeOffsetShape()`
+        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:44 - `BRepOffsetAPI_MakeOffsetShape::BRepOffsetAPI_MakeOffsetShape()`
         ///
         /// Constructor does nothing.
         #[cxx_name = "BRepOffsetAPI_MakeOffsetShape_ctor"]
         fn MakeOffsetShape_ctor() -> UniquePtr<MakeOffsetShape>;
+        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:48 - `BRepOffsetAPI_MakeOffsetShape::PerformBySimple()`
+        ///
         /// Constructs offset shape for the given one using simple algorithm without intersections
         /// computation.
         #[cxx_name = "PerformBySimple"]
@@ -966,18 +1066,28 @@ pub(crate) mod ffi {
             theS: &TopoDS_Shape,
             theOffsetValue: f64,
         );
+        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:118 - `BRepOffsetAPI_MakeOffsetShape::MakeOffset()`
+        ///
         /// Returns instance of the underlying intersection / arc algorithm.
         #[cxx_name = "MakeOffset"]
         fn make_offset(self: &MakeOffsetShape) -> &BRepOffset_MakeOffset;
+        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:121 - `BRepOffsetAPI_MakeOffsetShape::Build()`
+        ///
         /// Does nothing.
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut MakeOffsetShape>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:125 - `BRepOffsetAPI_MakeOffsetShape::Generated()`
+        ///
         /// Returns the list of shapes generated from the shape <S>.
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut MakeOffsetShape>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:129 - `BRepOffsetAPI_MakeOffsetShape::Modified()`
+        ///
         /// Returns the list of shapes Modified from the shape <S>.
         #[cxx_name = "Modified"]
         fn modified(self: Pin<&mut MakeOffsetShape>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:133 - `BRepOffsetAPI_MakeOffsetShape::IsDeleted()`
+        ///
         /// Returns true if the shape has been removed from the result.
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut MakeOffsetShape>, S: &TopoDS_Shape) -> bool;

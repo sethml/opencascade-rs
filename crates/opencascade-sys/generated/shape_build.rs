@@ -56,7 +56,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== ShapeBuild_ReShape ========================
-        /// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape`
+        /// **Source:** `ShapeBuild_ReShape.hxx`:49 - `ShapeBuild_ReShape`
         ///
         /// Rebuilds a Shape by making pre-defined substitutions on some
         /// of its components
@@ -72,11 +72,13 @@ pub(crate) mod ffi {
         /// contain one or more of these individual shapes
         #[cxx_name = "ShapeBuild_ReShape"]
         type ReShape;
-        /// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape::ShapeBuild_ReShape()`
+        /// **Source:** `ShapeBuild_ReShape.hxx`:54 - `ShapeBuild_ReShape::ShapeBuild_ReShape()`
         ///
         /// Returns an empty Reshape
         #[cxx_name = "ShapeBuild_ReShape_ctor"]
         fn ReShape_ctor() -> UniquePtr<ReShape>;
+        /// **Source:** `ShapeBuild_ReShape.hxx`:97 - `ShapeBuild_ReShape::Status()`
+        ///
         /// Returns a complete substitution status for a shape
         /// 0  : not recorded,   <newsh> = original <shape>
         /// < 0: to be removed,  <newsh> is NULL
@@ -91,8 +93,10 @@ pub(crate) mod ffi {
             newsh: Pin<&mut TopoDS_Shape>,
             last: bool,
         ) -> i32;
+        /// **Source:** `ShapeBuild_ReShape.hxx`:111 - `ShapeBuild_ReShape::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ReShape) -> &HandleStandardType;
+        /// **Source:** `ShapeBuild_ReShape.hxx`:111 - `ShapeBuild_ReShape::get_type_name()`
         #[cxx_name = "ShapeBuild_ReShape_get_type_name"]
         fn ReShape_get_type_name() -> String;
         /// Upcast ShapeBuild_ReShape to BRepTools_ReShape

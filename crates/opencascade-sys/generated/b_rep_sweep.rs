@@ -614,13 +614,13 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepSweep_Revol ========================
-        /// **Source:** `BRepSweep_Revol.hxx` - `BRepSweep_Revol`
+        /// **Source:** `BRepSweep_Revol.hxx`:33 - `BRepSweep_Revol`
         ///
         /// Provides natural constructors to build BRepSweep
         /// rotated swept Primitives.
         #[cxx_name = "BRepSweep_Revol"]
         type Revol;
-        /// **Source:** `BRepSweep_Revol.hxx` - `BRepSweep_Revol::BRepSweep_Revol()`
+        /// **Source:** `BRepSweep_Revol.hxx`:40 - `BRepSweep_Revol::BRepSweep_Revol()`
         ///
         /// Builds the Revol of meridian S axis A  and angle D. If
         /// C is true S is copied.
@@ -631,15 +631,19 @@ pub(crate) mod ffi {
             D: f64,
             C: bool,
         ) -> UniquePtr<Revol>;
-        /// **Source:** `BRepSweep_Revol.hxx` - `BRepSweep_Revol::BRepSweep_Revol()`
+        /// **Source:** `BRepSweep_Revol.hxx`:47 - `BRepSweep_Revol::BRepSweep_Revol()`
         ///
         /// Builds the Revol of meridian S  axis A and angle 2*Pi.
         /// If C is true S is copied.
         #[cxx_name = "BRepSweep_Revol_ctor_shape_ax1_bool"]
         fn Revol_ctor_shape_ax1_bool(S: &TopoDS_Shape, A: &gp_Ax1, C: bool) -> UniquePtr<Revol>;
+        /// **Source:** `BRepSweep_Revol.hxx`:78 - `BRepSweep_Revol::Angle()`
+        ///
         /// returns the angle.
         #[cxx_name = "Angle"]
         fn angle(self: &Revol) -> f64;
+        /// **Source:** `BRepSweep_Revol.hxx`:81 - `BRepSweep_Revol::IsUsed()`
+        ///
         /// Returns true if the aGenS is used in resulting Shape
         #[cxx_name = "IsUsed"]
         fn is_used(self: &Revol, aGenS: &TopoDS_Shape) -> bool;
@@ -679,13 +683,13 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepSweep_Revol_Axe"]
         fn Revol_axe(self_: &Revol) -> UniquePtr<gp_Ax1>;
         /// ======================== BRepSweep_Rotation ========================
-        /// **Source:** `BRepSweep_Rotation.hxx` - `BRepSweep_Rotation`
+        /// **Source:** `BRepSweep_Rotation.hxx`:34 - `BRepSweep_Rotation`
         ///
         /// Provides   an  algorithm   to   build  object   by
         /// Rotation sweep.
         #[cxx_name = "BRepSweep_Rotation"]
         type Rotation;
-        /// **Source:** `BRepSweep_Rotation.hxx` - `BRepSweep_Rotation::BRepSweep_Rotation()`
+        /// **Source:** `BRepSweep_Rotation.hxx`:41 - `BRepSweep_Rotation::BRepSweep_Rotation()`
         ///
         /// Creates a topology  by rotating <S>  around A with the
         /// angle D.
@@ -698,6 +702,8 @@ pub(crate) mod ffi {
             D: f64,
             C: bool,
         ) -> UniquePtr<Rotation>;
+        /// **Source:** `BRepSweep_Rotation.hxx`:68 - `BRepSweep_Rotation::SetParameters()`
+        ///
         /// Sets the  parameters of the new  vertex  on the new
         /// face. The new face and  new vertex where generated
         /// from aGenF, aGenV and aDirV .
@@ -710,6 +716,8 @@ pub(crate) mod ffi {
             aGenV: &TopoDS_Shape,
             aDirV: &Sweep_NumShape,
         );
+        /// **Source:** `BRepSweep_Rotation.hxx`:77 - `BRepSweep_Rotation::SetDirectingParameter()`
+        ///
         /// Sets the  parameter of the new  vertex  on the new
         /// edge. The new edge and  new vertex where generated
         /// from aGenV aDirE, and aDirV.
@@ -722,6 +730,8 @@ pub(crate) mod ffi {
             aDirE: &Sweep_NumShape,
             aDirV: &Sweep_NumShape,
         );
+        /// **Source:** `BRepSweep_Rotation.hxx`:86 - `BRepSweep_Rotation::SetGeneratingParameter()`
+        ///
         /// Sets the  parameter of the new  vertex  on the new
         /// edge. The new edge and  new vertex where generated
         /// from aGenE, aGenV and aDirV .
@@ -734,6 +744,8 @@ pub(crate) mod ffi {
             aGenV: &TopoDS_Shape,
             aDirV: &Sweep_NumShape,
         );
+        /// **Source:** `BRepSweep_Rotation.hxx`:141 - `BRepSweep_Rotation::GGDShapeIsToAdd()`
+        ///
         /// Returns   true   if  aNewSubShape    (addressed by
         /// aSubGenS  and aDirS)  must  be added  in aNewShape
         /// (addressed by aGenS and aDirS).
@@ -746,6 +758,8 @@ pub(crate) mod ffi {
             aSubGenS: &TopoDS_Shape,
             aDirS: &Sweep_NumShape,
         ) -> bool;
+        /// **Source:** `BRepSweep_Rotation.hxx`:151 - `BRepSweep_Rotation::GDDShapeIsToAdd()`
+        ///
         /// Returns   true   if  aNewSubShape    (addressed by
         /// aGenS  and aSubDirS)  must  be added  in aNewShape
         /// (addressed by aGenS and aDirS).
@@ -758,6 +772,8 @@ pub(crate) mod ffi {
             aDirS: &Sweep_NumShape,
             aSubDirS: &Sweep_NumShape,
         ) -> bool;
+        /// **Source:** `BRepSweep_Rotation.hxx`:163 - `BRepSweep_Rotation::SeparatedWires()`
+        ///
         /// In   some  particular  cases  the  topology  of  a
         /// generated  face  must  be  composed of independent
         /// closed wires, in  this  case this function returns
@@ -772,16 +788,22 @@ pub(crate) mod ffi {
             aSubGenS: &TopoDS_Shape,
             aDirS: &Sweep_NumShape,
         ) -> bool;
+        /// **Source:** `BRepSweep_Rotation.hxx`:180 - `BRepSweep_Rotation::HasShape()`
+        ///
         /// Returns true   if aDirS   and aGenS  addresses   a
         /// resulting Shape. In some  specific cases the shape
         /// can  be    geometrically   inexsistant,  then this
         /// function returns false.
         #[cxx_name = "HasShape"]
         fn has_shape(self: &Rotation, aGenS: &TopoDS_Shape, aDirS: &Sweep_NumShape) -> bool;
+        /// **Source:** `BRepSweep_Rotation.hxx`:185 - `BRepSweep_Rotation::IsInvariant()`
+        ///
         /// Returns true when   the geometry of  aGenS  is not
         /// modified  by the rotation.
         #[cxx_name = "IsInvariant"]
         fn is_invariant(self: &Rotation, aGenS: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepSweep_Rotation.hxx`:191 - `BRepSweep_Rotation::Angle()`
+        ///
         /// returns the angle.
         #[cxx_name = "Angle"]
         fn angle(self: &Rotation) -> f64;
@@ -847,7 +869,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepSweep_Rotation_as_BRepSweep_Trsf_mut"]
         fn rotation_as_trsf_mut(self_: Pin<&mut Rotation>) -> Pin<&mut Trsf>;
         /// ======================== BRepSweep_Trsf ========================
-        /// **Source:** `BRepSweep_Trsf.hxx` - `BRepSweep_Trsf`
+        /// **Source:** `BRepSweep_Trsf.hxx`:43 - `BRepSweep_Trsf`
         ///
         /// This class is inherited from NumLinearRegularSweep
         /// to  implement the  simple   swept primitives built
@@ -864,15 +886,21 @@ pub(crate) mod ffi {
         /// - copying everything.
         #[cxx_name = "BRepSweep_Trsf"]
         type Trsf;
+        /// **Source:** `BRepSweep_Trsf.hxx`:51 - `BRepSweep_Trsf::Init()`
+        ///
         /// ends  the  construction  of the   swept  primitive
         /// calling the virtual geometric functions that can't
         /// be called in the initialize.
         #[cxx_name = "Init"]
         fn init(self: Pin<&mut Trsf>);
+        /// **Source:** `BRepSweep_Trsf.hxx`:55 - `BRepSweep_Trsf::Process()`
+        ///
         /// function called to analyze the way of construction
         /// of the shapes generated by aGenS and aDirV.
         #[cxx_name = "Process"]
         fn process(self: Pin<&mut Trsf>, aGenS: &TopoDS_Shape, aDirV: &Sweep_NumShape) -> bool;
+        /// **Source:** `BRepSweep_Trsf.hxx`:75 - `BRepSweep_Trsf::SetParameters()`
+        ///
         /// Sets the  parameters of the new  vertex  on the new
         /// face. The new face and  new vertex where generated
         /// from aGenF, aGenV and aDirV .
@@ -885,6 +913,8 @@ pub(crate) mod ffi {
             aGenV: &TopoDS_Shape,
             aDirV: &Sweep_NumShape,
         );
+        /// **Source:** `BRepSweep_Trsf.hxx`:84 - `BRepSweep_Trsf::SetDirectingParameter()`
+        ///
         /// Sets the  parameter of the new  vertex  on the new
         /// edge. The new edge and  new vertex where generated
         /// from aGenV aDirE, and aDirV.
@@ -897,6 +927,8 @@ pub(crate) mod ffi {
             aDirE: &Sweep_NumShape,
             aDirV: &Sweep_NumShape,
         );
+        /// **Source:** `BRepSweep_Trsf.hxx`:93 - `BRepSweep_Trsf::SetGeneratingParameter()`
+        ///
         /// Sets the  parameter of the new  vertex  on the new
         /// edge. The new edge and  new vertex where generated
         /// from aGenE, aGenV and aDirV .
@@ -909,6 +941,8 @@ pub(crate) mod ffi {
             aGenV: &TopoDS_Shape,
             aDirV: &Sweep_NumShape,
         );
+        /// **Source:** `BRepSweep_Trsf.hxx`:140 - `BRepSweep_Trsf::GGDShapeIsToAdd()`
+        ///
         /// Returns   true   if  aNewSubShape    (addressed by
         /// aSubGenS  and aDirS)  must  be added  in aNewShape
         /// (addressed by aGenS and aDirS).
@@ -921,6 +955,8 @@ pub(crate) mod ffi {
             aSubGenS: &TopoDS_Shape,
             aDirS: &Sweep_NumShape,
         ) -> bool;
+        /// **Source:** `BRepSweep_Trsf.hxx`:149 - `BRepSweep_Trsf::GDDShapeIsToAdd()`
+        ///
         /// Returns   true   if  aNewSubShape    (addressed by
         /// aGenS  and aSubDirS)  must  be added  in aNewShape
         /// (addressed by aGenS and aDirS).
@@ -933,6 +969,8 @@ pub(crate) mod ffi {
             aDirS: &Sweep_NumShape,
             aSubDirS: &Sweep_NumShape,
         ) -> bool;
+        /// **Source:** `BRepSweep_Trsf.hxx`:160 - `BRepSweep_Trsf::SeparatedWires()`
+        ///
         /// In  some  particular  cases  the   topology  of  a
         /// generated  face must be  composed  of  independent
         /// closed wires,  in this case  this function returns
@@ -946,16 +984,22 @@ pub(crate) mod ffi {
             aSubGenS: &TopoDS_Shape,
             aDirS: &Sweep_NumShape,
         ) -> bool;
+        /// **Source:** `BRepSweep_Trsf.hxx`:170 - `BRepSweep_Trsf::HasShape()`
+        ///
         /// Returns true   if aDirS   and aGenS  addresses   a
         /// resulting Shape. In some  specific cases the shape
         /// can  be    geometrically   inexsistant,  then this
         /// function returns false.
         #[cxx_name = "HasShape"]
         fn has_shape(self: &Trsf, aGenS: &TopoDS_Shape, aDirS: &Sweep_NumShape) -> bool;
+        /// **Source:** `BRepSweep_Trsf.hxx`:175 - `BRepSweep_Trsf::IsInvariant()`
+        ///
         /// Returns  true if  the geometry   of  aGenS is  not
         /// modified by the trsf of the BRepSweep Trsf.
         #[cxx_name = "IsInvariant"]
         fn is_invariant(self: &Trsf, aGenS: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepSweep_Trsf.hxx`:180 - `BRepSweep_Trsf::SetContinuity()`
+        ///
         /// Called to propagate the continuity of  every vertex
         /// between two edges of the  generating wire  aGenS on
         /// the generated edge and faces.
@@ -1005,7 +1049,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut Trsf>,
         ) -> Pin<&mut NumLinearRegularSweep>;
         /// ======================== BRepSweep_NumLinearRegularSweep ========================
-        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx` - `BRepSweep_NumLinearRegularSweep`
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:68 - `BRepSweep_NumLinearRegularSweep`
         ///
         /// This  a generic  class  is  used   to build Sweept
         /// primitives   with    a  generating  "shape"  and a
@@ -1046,6 +1090,8 @@ pub(crate) mod ffi {
         /// geometricaly nonexistent or not useful.
         #[cxx_name = "BRepSweep_NumLinearRegularSweep"]
         type NumLinearRegularSweep;
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:92 - `BRepSweep_NumLinearRegularSweep::SetParameters()`
+        ///
         /// Sets the  parameters of the new  vertex  on the new
         /// face. The new face and  new vertex where generated
         /// from aGenF, aGenV and aDirV .
@@ -1058,6 +1104,8 @@ pub(crate) mod ffi {
             aGenV: &TopoDS_Shape,
             aDirV: &Sweep_NumShape,
         );
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:101 - `BRepSweep_NumLinearRegularSweep::SetDirectingParameter()`
+        ///
         /// Sets the  parameter of the new  vertex  on the new
         /// edge. The new edge and  new vertex where generated
         /// from aGenV aDirE, and aDirV.
@@ -1070,6 +1118,8 @@ pub(crate) mod ffi {
             aDirE: &Sweep_NumShape,
             aDirV: &Sweep_NumShape,
         );
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:110 - `BRepSweep_NumLinearRegularSweep::SetGeneratingParameter()`
+        ///
         /// Sets the  parameter of the new  vertex  on the new
         /// edge. The new edge and  new vertex where generated
         /// from aGenE, aGenV and aDirV .
@@ -1082,6 +1132,8 @@ pub(crate) mod ffi {
             aGenV: &TopoDS_Shape,
             aDirV: &Sweep_NumShape,
         );
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:164 - `BRepSweep_NumLinearRegularSweep::GGDShapeIsToAdd()`
+        ///
         /// Returns   true   if  aNewSubShape    (addressed by
         /// aSubGenS  and aDirS)  must  be added  in aNewShape
         /// (addressed by aGenS and aDirS).
@@ -1094,6 +1146,8 @@ pub(crate) mod ffi {
             aSubGenS: &TopoDS_Shape,
             aDirS: &Sweep_NumShape,
         ) -> bool;
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:173 - `BRepSweep_NumLinearRegularSweep::GDDShapeIsToAdd()`
+        ///
         /// Returns   true   if  aNewSubShape    (addressed by
         /// aGenS  and aSubDirS)  must  be added  in aNewShape
         /// (addressed by aGenS and aDirS).
@@ -1106,6 +1160,8 @@ pub(crate) mod ffi {
             aDirS: &Sweep_NumShape,
             aSubDirS: &Sweep_NumShape,
         ) -> bool;
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:184 - `BRepSweep_NumLinearRegularSweep::SeparatedWires()`
+        ///
         /// In  some  particular  cases  the   topology  of  a
         /// generated  face must be  composed  of  independent
         /// closed wires,  in this case  this function returns
@@ -1119,6 +1175,8 @@ pub(crate) mod ffi {
             aSubGenS: &TopoDS_Shape,
             aDirS: &Sweep_NumShape,
         ) -> bool;
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:199 - `BRepSweep_NumLinearRegularSweep::SetContinuity()`
+        ///
         /// Called to propagate the continuity of  every vertex
         /// between two edges of the  generating wire  aGenS on
         /// the generated edge and faces.
@@ -1128,6 +1186,8 @@ pub(crate) mod ffi {
             aGenS: &TopoDS_Shape,
             aDirS: &Sweep_NumShape,
         );
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:206 - `BRepSweep_NumLinearRegularSweep::HasShape()`
+        ///
         /// Returns true   if aDirS   and aGenS  addresses   a
         /// resulting Shape. In some  specific cases the shape
         /// can  be    geometrically   inexsistant,  then this
@@ -1138,17 +1198,24 @@ pub(crate) mod ffi {
             aGenS: &TopoDS_Shape,
             aDirS: &Sweep_NumShape,
         ) -> bool;
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:210 - `BRepSweep_NumLinearRegularSweep::IsInvariant()`
+        ///
         /// Returns true if aGenS cannot be transformed.
         #[cxx_name = "IsInvariant"]
         fn is_invariant(self: &NumLinearRegularSweep, aGenS: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
+        ///
         /// Returns true if the initial shape aGenS
         /// is used in result shape
         #[cxx_name = "IsUsed"]
         fn is_used(self: &NumLinearRegularSweep, aGenS: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
+        ///
         /// Returns true if the shape, generated from theS
         /// is used in result shape
         #[cxx_name = "GenIsUsed"]
         fn gen_is_used(self: &NumLinearRegularSweep, theS: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
         #[cxx_name = "Closed"]
         fn closed(self: &NumLinearRegularSweep) -> bool;
         /// Builds the vertex addressed by [aGenV,aDirV], with its
@@ -1243,53 +1310,70 @@ pub(crate) mod ffi {
             aGenS: &TopoDS_Shape,
         ) -> UniquePtr<TopoDS_Shape>;
         /// ======================== BRepSweep_Builder ========================
-        /// **Source:** `BRepSweep_Builder.hxx` - `BRepSweep_Builder`
+        /// **Source:** `BRepSweep_Builder.hxx`:29 - `BRepSweep_Builder`
         ///
         /// implements the abstract Builder with the BRep Builder
         #[cxx_name = "BRepSweep_Builder"]
         type Builder;
-        /// **Source:** `BRepSweep_Builder.hxx` - `BRepSweep_Builder::BRepSweep_Builder()`
+        /// **Source:** `BRepSweep_Builder.hxx`:35 - `BRepSweep_Builder::BRepSweep_Builder()`
         ///
         /// Creates a Builder.
         #[cxx_name = "BRepSweep_Builder_ctor_builder"]
         fn Builder_ctor_builder(aBuilder: &BRep_Builder) -> UniquePtr<Builder>;
+        /// **Source:** `BRepSweep_Builder.hxx`:37 - `BRepSweep_Builder::Builder()`
         #[cxx_name = "Builder"]
         fn builder(self: &Builder) -> &BRep_Builder;
+        /// **Source:** `BRepSweep_Builder.hxx`:40 - `BRepSweep_Builder::MakeCompound()`
+        ///
         /// Returns an empty Compound.
         #[cxx_name = "MakeCompound"]
         fn make_compound(self: &Builder, aCompound: Pin<&mut TopoDS_Shape>);
+        /// **Source:** `BRepSweep_Builder.hxx`:43 - `BRepSweep_Builder::MakeCompSolid()`
+        ///
         /// Returns an empty CompSolid.
         #[cxx_name = "MakeCompSolid"]
         fn make_comp_solid(self: &Builder, aCompSolid: Pin<&mut TopoDS_Shape>);
+        /// **Source:** `BRepSweep_Builder.hxx`:46 - `BRepSweep_Builder::MakeSolid()`
+        ///
         /// Returns an empty Solid.
         #[cxx_name = "MakeSolid"]
         fn make_solid(self: &Builder, aSolid: Pin<&mut TopoDS_Shape>);
+        /// **Source:** `BRepSweep_Builder.hxx`:49 - `BRepSweep_Builder::MakeShell()`
+        ///
         /// Returns an empty Shell.
         #[cxx_name = "MakeShell"]
         fn make_shell(self: &Builder, aShell: Pin<&mut TopoDS_Shape>);
+        /// **Source:** `BRepSweep_Builder.hxx`:52 - `BRepSweep_Builder::MakeWire()`
+        ///
         /// Returns an empty Wire.
         #[cxx_name = "MakeWire"]
         fn make_wire(self: &Builder, aWire: Pin<&mut TopoDS_Shape>);
+        /// **Source:** `BRepSweep_Builder.hxx`:61 - `BRepSweep_Builder::Add()`
+        ///
         /// Adds the Shape 1 in the Shape 2.
         #[cxx_name = "Add"]
         fn add_shape2(self: &Builder, aShape1: Pin<&mut TopoDS_Shape>, aShape2: &TopoDS_Shape);
         /// ======================== BRepSweep_Tool ========================
-        /// **Source:** `BRepSweep_Tool.hxx` - `BRepSweep_Tool`
+        /// **Source:** `BRepSweep_Tool.hxx`:31 - `BRepSweep_Tool`
         ///
         /// Provides  the  indexation and type  analysis  services
         /// required by the TopoDS generating Shape of BRepSweep.
         #[cxx_name = "BRepSweep_Tool"]
         type Tool;
-        /// **Source:** `BRepSweep_Tool.hxx` - `BRepSweep_Tool::BRepSweep_Tool()`
+        /// **Source:** `BRepSweep_Tool.hxx`:39 - `BRepSweep_Tool::BRepSweep_Tool()`
         ///
         /// Initialize the tool  with <aShape>.  The IndexTool
         /// must prepare an indexation for  all  the subshapes
         /// of this shape.
         #[cxx_name = "BRepSweep_Tool_ctor_shape"]
         fn Tool_ctor_shape(aShape: &TopoDS_Shape) -> UniquePtr<Tool>;
+        /// **Source:** `BRepSweep_Tool.hxx`:42 - `BRepSweep_Tool::NbShapes()`
+        ///
         /// Returns the number of subshapes in the shape.
         #[cxx_name = "NbShapes"]
         fn nb_shapes(self: &Tool) -> i32;
+        /// **Source:** `BRepSweep_Tool.hxx`:45 - `BRepSweep_Tool::Index()`
+        ///
         /// Returns the index of <aShape>.
         #[cxx_name = "Index"]
         fn index(self: &Tool, aShape: &TopoDS_Shape) -> i32;
@@ -1297,13 +1381,13 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepSweep_Tool_Shape"]
         fn Tool_shape(self_: &Tool, anIndex: i32) -> UniquePtr<TopoDS_Shape>;
         /// ======================== BRepSweep_Prism ========================
-        /// **Source:** `BRepSweep_Prism.hxx` - `BRepSweep_Prism`
+        /// **Source:** `BRepSweep_Prism.hxx`:34 - `BRepSweep_Prism`
         ///
         /// Provides natural constructors to build BRepSweep
         /// translated swept Primitives.
         #[cxx_name = "BRepSweep_Prism"]
         type Prism;
-        /// **Source:** `BRepSweep_Prism.hxx` - `BRepSweep_Prism::BRepSweep_Prism()`
+        /// **Source:** `BRepSweep_Prism.hxx`:42 - `BRepSweep_Prism::BRepSweep_Prism()`
         ///
         /// Builds the prism of base S and vector V. If C is true,
         /// S is copied. If Canonize is true then generated surfaces
@@ -1315,7 +1399,7 @@ pub(crate) mod ffi {
             Copy: bool,
             Canonize: bool,
         ) -> UniquePtr<Prism>;
-        /// **Source:** `BRepSweep_Prism.hxx` - `BRepSweep_Prism::BRepSweep_Prism()`
+        /// **Source:** `BRepSweep_Prism.hxx`:52 - `BRepSweep_Prism::BRepSweep_Prism()`
         ///
         /// Builds a semi-infinite or an infinite prism of base S.
         /// If Copy is true S is copied.  If Inf is true the prism
@@ -1330,10 +1414,14 @@ pub(crate) mod ffi {
             Copy: bool,
             Canonize: bool,
         ) -> UniquePtr<Prism>;
+        /// **Source:** `BRepSweep_Prism.hxx`:87 - `BRepSweep_Prism::IsUsed()`
+        ///
         /// Returns true if the
         /// aGenS is used in resulting shape
         #[cxx_name = "IsUsed"]
         fn is_used(self: &Prism, aGenS: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepSweep_Prism.hxx`:91 - `BRepSweep_Prism::GenIsUsed()`
+        ///
         /// Returns true if the shape, generated from theS
         /// is used in result shape
         #[cxx_name = "GenIsUsed"]
@@ -1375,13 +1463,13 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepSweep_Prism_Vec"]
         fn Prism_vec(self_: &Prism) -> UniquePtr<gp_Vec>;
         /// ======================== BRepSweep_Translation ========================
-        /// **Source:** `BRepSweep_Translation.hxx` - `BRepSweep_Translation`
+        /// **Source:** `BRepSweep_Translation.hxx`:34 - `BRepSweep_Translation`
         ///
         /// Provides   an  algorithm   to   build  object   by
         /// translation sweep.
         #[cxx_name = "BRepSweep_Translation"]
         type Translation;
-        /// **Source:** `BRepSweep_Translation.hxx` - `BRepSweep_Translation::BRepSweep_Translation()`
+        /// **Source:** `BRepSweep_Translation.hxx`:43 - `BRepSweep_Translation::BRepSweep_Translation()`
         ///
         /// Creates  a  topology by  translating <S>  with the
         /// vector  <V>. If  C  is   true S Sucomponents   are
@@ -1396,6 +1484,8 @@ pub(crate) mod ffi {
             C: bool,
             Canonize: bool,
         ) -> UniquePtr<Translation>;
+        /// **Source:** `BRepSweep_Translation.hxx`:68 - `BRepSweep_Translation::SetParameters()`
+        ///
         /// Sets the  parameters of the new  vertex  on the new
         /// face. The new face and  new vertex where generated
         /// from aGenF, aGenV and aDirV .
@@ -1408,6 +1498,8 @@ pub(crate) mod ffi {
             aGenV: &TopoDS_Shape,
             aDirV: &Sweep_NumShape,
         );
+        /// **Source:** `BRepSweep_Translation.hxx`:77 - `BRepSweep_Translation::SetDirectingParameter()`
+        ///
         /// Sets the  parameter of the new  vertex  on the new
         /// edge. The new edge and  new vertex where generated
         /// from aGenV aDirE, and aDirV.
@@ -1420,6 +1512,8 @@ pub(crate) mod ffi {
             aDirE: &Sweep_NumShape,
             aDirV: &Sweep_NumShape,
         );
+        /// **Source:** `BRepSweep_Translation.hxx`:86 - `BRepSweep_Translation::SetGeneratingParameter()`
+        ///
         /// Sets the  parameter of the new  vertex  on the new
         /// edge. The new edge and  new vertex where generated
         /// from aGenE, aGenV and aDirV .
@@ -1432,6 +1526,8 @@ pub(crate) mod ffi {
             aGenV: &TopoDS_Shape,
             aDirV: &Sweep_NumShape,
         );
+        /// **Source:** `BRepSweep_Translation.hxx`:140 - `BRepSweep_Translation::GGDShapeIsToAdd()`
+        ///
         /// Returns   true   if  aNewSubShape    (addressed by
         /// aSubGenS  and aDirS)  must  be added  in aNewShape
         /// (addressed by aGenS and aDirS).
@@ -1444,6 +1540,8 @@ pub(crate) mod ffi {
             aSubGenS: &TopoDS_Shape,
             aDirS: &Sweep_NumShape,
         ) -> bool;
+        /// **Source:** `BRepSweep_Translation.hxx`:149 - `BRepSweep_Translation::GDDShapeIsToAdd()`
+        ///
         /// Returns   true   if  aNewSubShape    (addressed by
         /// aGenS  and aSubDirS)  must  be added  in aNewShape
         /// (addressed by aGenS and aDirS).
@@ -1456,6 +1554,8 @@ pub(crate) mod ffi {
             aDirS: &Sweep_NumShape,
             aSubDirS: &Sweep_NumShape,
         ) -> bool;
+        /// **Source:** `BRepSweep_Translation.hxx`:160 - `BRepSweep_Translation::SeparatedWires()`
+        ///
         /// In  some  particular  cases  the   topology  of  a
         /// generated  face must be  composed  of  independent
         /// closed wires,  in this case  this function returns
@@ -1470,12 +1570,16 @@ pub(crate) mod ffi {
             aSubGenS: &TopoDS_Shape,
             aDirS: &Sweep_NumShape,
         ) -> bool;
+        /// **Source:** `BRepSweep_Translation.hxx`:170 - `BRepSweep_Translation::HasShape()`
+        ///
         /// Returns true   if aDirS   and aGenS  addresses   a
         /// resulting Shape. In some  specific cases the shape
         /// can  be    geometrically   inexsistant,  then this
         /// function returns false.
         #[cxx_name = "HasShape"]
         fn has_shape(self: &Translation, aGenS: &TopoDS_Shape, aDirS: &Sweep_NumShape) -> bool;
+        /// **Source:** `BRepSweep_Translation.hxx`:175 - `BRepSweep_Translation::IsInvariant()`
+        ///
         /// Returns  always     false   because    here    the
         /// transformation is a translation.
         #[cxx_name = "IsInvariant"]

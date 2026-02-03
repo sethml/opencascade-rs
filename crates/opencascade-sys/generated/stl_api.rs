@@ -42,18 +42,20 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== StlAPI_Writer ========================
-        /// **Source:** `StlAPI_Writer.hxx` - `StlAPI_Writer`
+        /// **Source:** `StlAPI_Writer.hxx`:27 - `StlAPI_Writer`
         ///
         /// This class creates and writes
         /// STL files from Open CASCADE shapes. An STL file can be written to an existing STL file or to a
         /// new one.
         #[cxx_name = "StlAPI_Writer"]
         type Writer;
-        /// **Source:** `StlAPI_Writer.hxx` - `StlAPI_Writer::StlAPI_Writer()`
+        /// **Source:** `StlAPI_Writer.hxx`:33 - `StlAPI_Writer::StlAPI_Writer()`
         ///
         /// Creates a writer object with default parameters: ASCIIMode.
         #[cxx_name = "StlAPI_Writer_ctor"]
         fn Writer_ctor() -> UniquePtr<Writer>;
+        /// **Source:** `StlAPI_Writer.hxx`:39 - `StlAPI_Writer::ASCIIMode()`
+        ///
         /// Returns the address to the flag defining the mode for writing the file.
         /// This address may be used to either read or change the flag.
         /// If the mode returns True (default value) the generated file is an ASCII file.

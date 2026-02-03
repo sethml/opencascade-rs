@@ -47,7 +47,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Bisector_Bisec ========================
-        /// **Source:** `Bisector_Bisec.hxx` - `Bisector_Bisec`
+        /// **Source:** `Bisector_Bisec.hxx`:51 - `Bisector_Bisec`
         ///
         /// Bisec provides the bisecting line between two elements
         /// This line is trimmed by a point <P> and it's contained in the domain
@@ -71,9 +71,11 @@ pub(crate) mod ffi {
         /// to the great axe of the ellipse.
         #[cxx_name = "Bisector_Bisec"]
         type Bisec;
-        /// **Source:** `Bisector_Bisec.hxx` - `Bisector_Bisec::Bisector_Bisec()`
+        /// **Source:** `Bisector_Bisec.hxx`:56 - `Bisector_Bisec::Bisector_Bisec()`
         #[cxx_name = "Bisector_Bisec_ctor"]
         fn Bisec_ctor() -> UniquePtr<Bisec>;
+        /// **Source:** `Bisector_Bisec.hxx`:75 - `Bisector_Bisec::Perform()`
+        ///
         /// Performs  the bisecting line  between the  curve
         /// <Cu1> and the point <Pnt>.
         /// <oncurve> is True if the point <P> is the point <Pnt>.
@@ -89,6 +91,8 @@ pub(crate) mod ffi {
             Tolerance: f64,
             oncurve: bool,
         );
+        /// **Source:** `Bisector_Bisec.hxx`:87 - `Bisector_Bisec::Perform()`
+        ///
         /// Performs  the bisecting line  between the  curve
         /// <Cu> and the point <Pnt>.
         /// <oncurve> is True if the point <P> is the point <Pnt>.
@@ -104,6 +108,8 @@ pub(crate) mod ffi {
             Tolerance: f64,
             oncurve: bool,
         );
+        /// **Source:** `Bisector_Bisec.hxx`:98 - `Bisector_Bisec::Perform()`
+        ///
         /// Performs  the bisecting line  between the two points
         /// <Pnt1>  and <Pnt2>.
         #[cxx_name = "Perform"]
@@ -118,9 +124,13 @@ pub(crate) mod ffi {
             Tolerance: f64,
             oncurve: bool,
         );
+        /// **Source:** `Bisector_Bisec.hxx`:108 - `Bisector_Bisec::Value()`
+        ///
         /// Returns the Curve of <me>.
         #[cxx_name = "Value"]
         fn value(self: &Bisec) -> &HandleGeom2dTrimmedCurve;
+        /// **Source:** `Bisector_Bisec.hxx`:111 - `Bisector_Bisec::ChangeValue()`
+        ///
         /// Returns the Curve of <me>.
         #[cxx_name = "ChangeValue"]
         fn change_value(self: Pin<&mut Bisec>) -> &HandleGeom2dTrimmedCurve;

@@ -195,19 +195,19 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepMesh_IncrementalMesh ========================
-        /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh`
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:23 - `BRepMesh_IncrementalMesh`
         ///
         /// Builds the mesh of a shape with respect of their
         /// correctly triangulated parts
         #[cxx_name = "BRepMesh_IncrementalMesh"]
         type IncrementalMesh;
-        /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:27 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
         ///
         /// @name mesher API
         /// Default constructor
         #[cxx_name = "BRepMesh_IncrementalMesh_ctor"]
         fn IncrementalMesh_ctor() -> UniquePtr<IncrementalMesh>;
-        /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:41 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
         ///
         /// Constructor.
         /// Automatically calls method Perform.
@@ -226,7 +226,7 @@ pub(crate) mod ffi {
             theAngDeflection: f64,
             isInParallel: bool,
         ) -> UniquePtr<IncrementalMesh>;
-        /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:51 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
         ///
         /// Constructor.
         /// Automatically calls method Perform.
@@ -238,9 +238,13 @@ pub(crate) mod ffi {
             theParameters: &IMeshTools_Parameters,
             theRange: &Message_ProgressRange,
         ) -> UniquePtr<IncrementalMesh>;
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:57 - `BRepMesh_IncrementalMesh::Perform()`
+        ///
         /// Performs meshing of the shape.
         #[cxx_name = "Perform"]
         fn perform_progressrange(self: Pin<&mut IncrementalMesh>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:61 - `BRepMesh_IncrementalMesh::Perform()`
+        ///
         /// Performs meshing using custom context;
         #[cxx_name = "Perform"]
         fn perform_handlecontext_progressrange(
@@ -248,29 +252,43 @@ pub(crate) mod ffi {
             theContext: &HandleIMeshToolsContext,
             theRange: &Message_ProgressRange,
         );
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:66 - `BRepMesh_IncrementalMesh::Parameters()`
+        ///
         /// @name accessing to parameters.
         /// Returns meshing parameters
         #[cxx_name = "Parameters"]
         fn parameters(self: &IncrementalMesh) -> &IMeshTools_Parameters;
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:69 - `BRepMesh_IncrementalMesh::ChangeParameters()`
+        ///
         /// Returns modifiable meshing parameters
         #[cxx_name = "ChangeParameters"]
         fn change_parameters(self: Pin<&mut IncrementalMesh>) -> Pin<&mut IMeshTools_Parameters>;
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:72 - `BRepMesh_IncrementalMesh::IsModified()`
+        ///
         /// Returns modified flag.
         #[cxx_name = "IsModified"]
         fn is_modified(self: &IncrementalMesh) -> bool;
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:75 - `BRepMesh_IncrementalMesh::GetStatusFlags()`
+        ///
         /// Returns accumulated status flags faced during meshing.
         #[cxx_name = "GetStatusFlags"]
         fn get_status_flags(self: &IncrementalMesh) -> i32;
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:129 - `BRepMesh_IncrementalMesh::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &IncrementalMesh) -> &HandleStandardType;
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:123 - `BRepMesh_IncrementalMesh::IsParallelDefault()`
+        ///
         /// Returns multi-threading usage flag set by default in
         /// Discret() static method (thus applied only to Mesh Factories).
         #[cxx_name = "BRepMesh_IncrementalMesh_IsParallelDefault"]
         fn IncrementalMesh_is_parallel_default() -> bool;
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:127 - `BRepMesh_IncrementalMesh::SetParallelDefault()`
+        ///
         /// Setup multi-threading usage flag set by default in
         /// Discret() static method (thus applied only to Mesh Factories).
         #[cxx_name = "BRepMesh_IncrementalMesh_SetParallelDefault"]
         fn IncrementalMesh_set_parallel_default(isInParallel: bool);
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx`:129 - `BRepMesh_IncrementalMesh::get_type_name()`
         #[cxx_name = "BRepMesh_IncrementalMesh_get_type_name"]
         fn IncrementalMesh_get_type_name() -> String;
         /// Upcast BRepMesh_IncrementalMesh to BRepMesh_DiscretRoot
@@ -282,167 +300,218 @@ pub(crate) mod ffi {
             self_: Pin<&mut IncrementalMesh>,
         ) -> Pin<&mut DiscretRoot>;
         /// ======================== BRepMesh_DiscretRoot ========================
-        /// **Source:** `BRepMesh_DiscretRoot.hxx` - `BRepMesh_DiscretRoot`
+        /// **Source:** `BRepMesh_DiscretRoot.hxx`:24 - `BRepMesh_DiscretRoot`
         ///
         /// This is a common interface for meshing algorithms
         /// instantiated by Mesh Factory and implemented by plugins.
         #[cxx_name = "BRepMesh_DiscretRoot"]
         type DiscretRoot;
+        /// **Source:** `BRepMesh_DiscretRoot.hxx`:31 - `BRepMesh_DiscretRoot::SetShape()`
+        ///
         /// Set the shape to triangulate.
         #[cxx_name = "SetShape"]
         fn set_shape(self: Pin<&mut DiscretRoot>, theShape: &TopoDS_Shape);
+        /// **Source:** `BRepMesh_DiscretRoot.hxx`:33 - `BRepMesh_DiscretRoot::Shape()`
         #[cxx_name = "Shape"]
         fn shape(self: &DiscretRoot) -> &TopoDS_Shape;
+        /// **Source:** `BRepMesh_DiscretRoot.hxx`:36 - `BRepMesh_DiscretRoot::IsDone()`
+        ///
         /// Returns true if triangualtion was performed and has success.
         #[cxx_name = "IsDone"]
         fn is_done(self: &DiscretRoot) -> bool;
+        /// **Source:** `BRepMesh_DiscretRoot.hxx`:39 - `BRepMesh_DiscretRoot::Perform()`
+        ///
         /// Compute triangulation for set shape.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut DiscretRoot>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepMesh_DiscretRoot.hxx`:41 - `BRepMesh_DiscretRoot::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &DiscretRoot) -> &HandleStandardType;
+        /// **Source:** `BRepMesh_DiscretRoot.hxx`:41 - `BRepMesh_DiscretRoot::get_type_name()`
         #[cxx_name = "BRepMesh_DiscretRoot_get_type_name"]
         fn DiscretRoot_get_type_name() -> String;
         /// ======================== BRepMesh_Vertex ========================
-        /// **Source:** `BRepMesh_Vertex.hxx` - `BRepMesh_Vertex`
+        /// **Source:** `BRepMesh_Vertex.hxx`:26 - `BRepMesh_Vertex`
         ///
         /// Light weighted structure representing vertex
         /// of the mesh in parametric space. Vertex could be
         /// associated with 3d point stored in external map.
         #[cxx_name = "BRepMesh_Vertex"]
         type Vertex;
-        /// **Source:** `BRepMesh_Vertex.hxx` - `BRepMesh_Vertex::BRepMesh_Vertex()`
+        /// **Source:** `BRepMesh_Vertex.hxx`:32 - `BRepMesh_Vertex::BRepMesh_Vertex()`
         ///
         /// Default constructor
         #[cxx_name = "BRepMesh_Vertex_ctor"]
         fn Vertex_ctor() -> UniquePtr<Vertex>;
+        /// **Source:** `BRepMesh_Vertex.hxx`:76 - `BRepMesh_Vertex::Coord()`
+        ///
         /// Returns position of the vertex in parametric space.
         #[cxx_name = "Coord"]
         fn coord(self: &Vertex) -> &gp_XY;
+        /// **Source:** `BRepMesh_Vertex.hxx`:79 - `BRepMesh_Vertex::ChangeCoord()`
+        ///
         /// Returns position of the vertex in parametric space for modification.
         #[cxx_name = "ChangeCoord"]
         fn change_coord(self: Pin<&mut Vertex>) -> Pin<&mut gp_XY>;
+        /// **Source:** `BRepMesh_Vertex.hxx`:82 - `BRepMesh_Vertex::Location3d()`
+        ///
         /// Returns index of 3d point associated with the vertex.
         #[cxx_name = "Location3d"]
         fn location3d(self: &Vertex) -> i32;
+        /// **Source:** `BRepMesh_Vertex.hxx`:93 - `BRepMesh_Vertex::IsEqual()`
+        ///
         /// Checks for equality with another vertex.
         /// @param theOther vertex to be checked against this one.
         /// @return TRUE if equal, FALSE if not.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &Vertex, theOther: &Vertex) -> bool;
         /// ======================== BRepMesh_Circle ========================
-        /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle`
+        /// **Source:** `BRepMesh_Circle.hxx`:23 - `BRepMesh_Circle`
         ///
         /// Describes a 2d circle with a size of only 3 Standard_Real
         /// numbers instead of gp who needs 7 Standard_Real numbers.
         #[cxx_name = "BRepMesh_Circle"]
         type Circle;
-        /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle::BRepMesh_Circle()`
+        /// **Source:** `BRepMesh_Circle.hxx`:29 - `BRepMesh_Circle::BRepMesh_Circle()`
         ///
         /// Default constructor.
         #[cxx_name = "BRepMesh_Circle_ctor"]
         fn Circle_ctor() -> UniquePtr<Circle>;
-        /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle::BRepMesh_Circle()`
+        /// **Source:** `BRepMesh_Circle.hxx`:37 - `BRepMesh_Circle::BRepMesh_Circle()`
         ///
         /// Constructor.
         /// @param theLocation location of a circle.
         /// @param theRadius radius of a circle.
         #[cxx_name = "BRepMesh_Circle_ctor_xy_real"]
         fn Circle_ctor_xy_real(theLocation: &gp_XY, theRadius: f64) -> UniquePtr<Circle>;
+        /// **Source:** `BRepMesh_Circle.hxx`:45 - `BRepMesh_Circle::SetLocation()`
+        ///
         /// Sets location of a circle.
         /// @param theLocation location of a circle.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut Circle>, theLocation: &gp_XY);
+        /// **Source:** `BRepMesh_Circle.hxx`:49 - `BRepMesh_Circle::SetRadius()`
+        ///
         /// Sets radius of a circle.
         /// @param theRadius radius of a circle.
         #[cxx_name = "SetRadius"]
         fn set_radius(self: Pin<&mut Circle>, theRadius: f64);
+        /// **Source:** `BRepMesh_Circle.hxx`:52 - `BRepMesh_Circle::Location()`
+        ///
         /// Returns location of a circle.
         #[cxx_name = "Location"]
         fn location(self: &Circle) -> &gp_XY;
+        /// **Source:** `BRepMesh_Circle.hxx`:55 - `BRepMesh_Circle::Radius()`
+        ///
         /// Returns radius of a circle.
         #[cxx_name = "Radius"]
         fn radius(self: &Circle) -> &f64;
         /// ======================== BRepMesh_Triangle ========================
-        /// **Source:** `BRepMesh_Triangle.hxx` - `BRepMesh_Triangle`
+        /// **Source:** `BRepMesh_Triangle.hxx`:28 - `BRepMesh_Triangle`
         ///
         /// Light weighted structure representing triangle
         /// of mesh consisting of oriented links.
         #[cxx_name = "BRepMesh_Triangle"]
         type Triangle;
-        /// **Source:** `BRepMesh_Triangle.hxx` - `BRepMesh_Triangle::BRepMesh_Triangle()`
+        /// **Source:** `BRepMesh_Triangle.hxx`:34 - `BRepMesh_Triangle::BRepMesh_Triangle()`
         ///
         /// Default constructor.
         #[cxx_name = "BRepMesh_Triangle_ctor"]
         fn Triangle_ctor() -> UniquePtr<Triangle>;
+        /// **Source:** `BRepMesh_Triangle.hxx`:87 - `BRepMesh_Triangle::IsEqual()`
+        ///
         /// Checks for equality with another triangle.
         /// @param theOther triangle to be checked against this one.
         /// @return TRUE if equal, FALSE if not.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &Triangle, theOther: &Triangle) -> bool;
         /// ======================== BRepMesh_PairOfIndex ========================
-        /// **Source:** `BRepMesh_PairOfIndex.hxx` - `BRepMesh_PairOfIndex`
+        /// **Source:** `BRepMesh_PairOfIndex.hxx`:24 - `BRepMesh_PairOfIndex`
         ///
         /// This class represents a pair of integer indices to store
         /// element indices connected to link. It is restricted to
         /// store more than two indices in it.
         #[cxx_name = "BRepMesh_PairOfIndex"]
         type PairOfIndex;
-        /// **Source:** `BRepMesh_PairOfIndex.hxx` - `BRepMesh_PairOfIndex::BRepMesh_PairOfIndex()`
+        /// **Source:** `BRepMesh_PairOfIndex.hxx`:28 - `BRepMesh_PairOfIndex::BRepMesh_PairOfIndex()`
         ///
         /// Default constructor
         #[cxx_name = "BRepMesh_PairOfIndex_ctor"]
         fn PairOfIndex_ctor() -> UniquePtr<PairOfIndex>;
+        /// **Source:** `BRepMesh_PairOfIndex.hxx`:31 - `BRepMesh_PairOfIndex::Clear()`
+        ///
         /// Clears indices.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut PairOfIndex>);
+        /// **Source:** `BRepMesh_PairOfIndex.hxx`:34 - `BRepMesh_PairOfIndex::Append()`
+        ///
         /// Appends index to the pair.
         #[cxx_name = "Append"]
         fn append(self: Pin<&mut PairOfIndex>, theIndex: i32);
+        /// **Source:** `BRepMesh_PairOfIndex.hxx`:48 - `BRepMesh_PairOfIndex::Prepend()`
+        ///
         /// Prepends index to the pair.
         #[cxx_name = "Prepend"]
         fn prepend(self: Pin<&mut PairOfIndex>, theIndex: i32);
+        /// **Source:** `BRepMesh_PairOfIndex.hxx`:58 - `BRepMesh_PairOfIndex::IsEmpty()`
+        ///
         /// Returns is pair is empty.
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &PairOfIndex) -> bool;
+        /// **Source:** `BRepMesh_PairOfIndex.hxx`:66 - `BRepMesh_PairOfIndex::Extent()`
+        ///
         /// Returns number of initialized indices.
         #[cxx_name = "Extent"]
         fn extent(self: &PairOfIndex) -> i32;
+        /// **Source:** `BRepMesh_PairOfIndex.hxx`:69 - `BRepMesh_PairOfIndex::FirstIndex()`
+        ///
         /// Returns first index of pair.
         #[cxx_name = "FirstIndex"]
         fn first_index(self: &PairOfIndex) -> i32;
+        /// **Source:** `BRepMesh_PairOfIndex.hxx`:72 - `BRepMesh_PairOfIndex::LastIndex()`
+        ///
         /// Returns last index of pair
         #[cxx_name = "LastIndex"]
         fn last_index(self: &PairOfIndex) -> i32;
+        /// **Source:** `BRepMesh_PairOfIndex.hxx`:76 - `BRepMesh_PairOfIndex::Index()`
+        ///
         /// Returns index corresponding to the given position in the pair.
         /// @param thePairPos position of index in the pair (1 or 2).
         #[cxx_name = "Index"]
         fn index(self: &PairOfIndex, thePairPos: i32) -> i32;
+        /// **Source:** `BRepMesh_PairOfIndex.hxx`:87 - `BRepMesh_PairOfIndex::SetIndex()`
+        ///
         /// Sets index corresponding to the given position in the pair.
         /// @param thePairPos position of index in the pair (1 or 2).
         /// @param theIndex index to be stored.
         #[cxx_name = "SetIndex"]
         fn set_index(self: Pin<&mut PairOfIndex>, thePairPos: i32, theIndex: i32);
+        /// **Source:** `BRepMesh_PairOfIndex.hxx`:97 - `BRepMesh_PairOfIndex::RemoveIndex()`
+        ///
         /// Remove index from the given position.
         /// @param thePairPos position of index in the pair (1 or 2).
         #[cxx_name = "RemoveIndex"]
         fn remove_index(self: Pin<&mut PairOfIndex>, thePairPos: i32);
         /// ======================== BRepMesh_Edge ========================
-        /// **Source:** `BRepMesh_Edge.hxx` - `BRepMesh_Edge`
+        /// **Source:** `BRepMesh_Edge.hxx`:23 - `BRepMesh_Edge`
         ///
         /// Light weighted structure representing link of the mesh.
         #[cxx_name = "BRepMesh_Edge"]
         type Edge;
-        /// **Source:** `BRepMesh_Edge.hxx` - `BRepMesh_Edge::BRepMesh_Edge()`
+        /// **Source:** `BRepMesh_Edge.hxx`:27 - `BRepMesh_Edge::BRepMesh_Edge()`
         ///
         /// Default constructor.
         #[cxx_name = "BRepMesh_Edge_ctor"]
         fn Edge_ctor() -> UniquePtr<Edge>;
+        /// **Source:** `BRepMesh_Edge.hxx`:52 - `BRepMesh_Edge::IsSameOrientation()`
+        ///
         /// Checks if the given edge and this one have the same orientation.
         /// @param theOther edge to be checked against this one.
         /// \return TRUE if edges have the same orientation, FALSE if not.
         #[cxx_name = "IsSameOrientation"]
         fn is_same_orientation(self: &Edge, theOther: &Edge) -> bool;
+        /// **Source:** `BRepMesh_Edge.hxx`:60 - `BRepMesh_Edge::IsEqual()`
+        ///
         /// Checks for equality with another edge.
         /// @param theOther edge to be checked against this one.
         /// @return TRUE if equal, FALSE if not.
@@ -455,27 +524,33 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut"]
         fn edge_as_oriented_edge_mut(self_: Pin<&mut Edge>) -> Pin<&mut OrientedEdge>;
         /// ======================== BRepMesh_OrientedEdge ========================
-        /// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge`
+        /// **Source:** `BRepMesh_OrientedEdge.hxx`:22 - `BRepMesh_OrientedEdge`
         ///
         /// Light weighted structure representing simple link.
         #[cxx_name = "BRepMesh_OrientedEdge"]
         type OrientedEdge;
-        /// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
+        /// **Source:** `BRepMesh_OrientedEdge.hxx`:28 - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
         ///
         /// Default constructor.
         #[cxx_name = "BRepMesh_OrientedEdge_ctor"]
         fn OrientedEdge_ctor() -> UniquePtr<OrientedEdge>;
-        /// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
+        /// **Source:** `BRepMesh_OrientedEdge.hxx`:35 - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
         ///
         /// Constructs a link between two vertices.
         #[cxx_name = "BRepMesh_OrientedEdge_ctor_int2"]
         fn OrientedEdge_ctor_int2(theFirstNode: i32, theLastNode: i32) -> UniquePtr<OrientedEdge>;
+        /// **Source:** `BRepMesh_OrientedEdge.hxx`:42 - `BRepMesh_OrientedEdge::FirstNode()`
+        ///
         /// Returns index of first node of the Link.
         #[cxx_name = "FirstNode"]
         fn first_node(self: &OrientedEdge) -> i32;
+        /// **Source:** `BRepMesh_OrientedEdge.hxx`:45 - `BRepMesh_OrientedEdge::LastNode()`
+        ///
         /// Returns index of last node of the Link.
         #[cxx_name = "LastNode"]
         fn last_node(self: &OrientedEdge) -> i32;
+        /// **Source:** `BRepMesh_OrientedEdge.hxx`:50 - `BRepMesh_OrientedEdge::IsEqual()`
+        ///
         /// Checks this and other edge for equality.
         /// @param theOther edge to be checked against this one.
         /// @return TRUE if edges have the same orientation, FALSE if not.

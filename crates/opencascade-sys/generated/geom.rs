@@ -1964,7 +1964,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Geom_Geometry ========================
-        /// **Source:** `Geom_Geometry.hxx` - `Geom_Geometry`
+        /// **Source:** `Geom_Geometry.hxx`:51 - `Geom_Geometry`
         ///
         /// The abstract class Geometry for 3D space is the root
         /// class of all geometric objects from the Geom
@@ -1985,34 +1985,50 @@ pub(crate) mod ffi {
         /// transformations are implemented using the Transform method.
         #[cxx_name = "Geom_Geometry"]
         type Geometry;
+        /// **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
+        ///
         /// Performs the symmetrical transformation of a Geometry
         /// with respect to the point P which is the center of the
         /// symmetry.
         #[cxx_name = "Mirror"]
         fn mirror_pnt(self: Pin<&mut Geometry>, P: &gp_Pnt);
+        /// **Source:** `Geom_Geometry.hxx`:63 - `Geom_Geometry::Mirror()`
+        ///
         /// Performs the symmetrical transformation of a Geometry
         /// with respect to an axis placement which is the axis of the
         /// symmetry.
         #[cxx_name = "Mirror"]
         fn mirror_ax1(self: Pin<&mut Geometry>, A1: &gp_Ax1);
+        /// **Source:** `Geom_Geometry.hxx`:68 - `Geom_Geometry::Mirror()`
+        ///
         /// Performs the symmetrical transformation of a Geometry
         /// with respect to a plane. The axis placement A2 locates
         /// the plane of the symmetry : (Location, XDirection, YDirection).
         #[cxx_name = "Mirror"]
         fn mirror_ax2(self: Pin<&mut Geometry>, A2: &gp_Ax2);
+        /// **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
+        ///
         /// Rotates a Geometry. A1 is the axis of the rotation.
         /// Ang is the angular value of the rotation in radians.
         #[cxx_name = "Rotate"]
         fn rotate(self: Pin<&mut Geometry>, A1: &gp_Ax1, Ang: f64);
+        /// **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
+        ///
         /// Scales a Geometry. S is the scaling value.
         #[cxx_name = "Scale"]
         fn scale(self: Pin<&mut Geometry>, P: &gp_Pnt, S: f64);
+        /// **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
+        ///
         /// Translates a Geometry.  V is the vector of the translation.
         #[cxx_name = "Translate"]
         fn translate_vec(self: Pin<&mut Geometry>, V: &gp_Vec);
+        /// **Source:** `Geom_Geometry.hxx`:81 - `Geom_Geometry::Translate()`
+        ///
         /// Translates a Geometry from the point P1 to the point P2.
         #[cxx_name = "Translate"]
         fn translate_pnt2(self: Pin<&mut Geometry>, P1: &gp_Pnt, P2: &gp_Pnt);
+        /// **Source:** `Geom_Geometry.hxx`:88 - `Geom_Geometry::Transform()`
+        ///
         /// Transformation of a geometric object. This transformation
         /// can be a translation, a rotation, a symmetry, a scaling
         /// or a complex transformation obtained by combination of
@@ -2020,6 +2036,7 @@ pub(crate) mod ffi {
         /// (see class Transformation of the package Geom).
         #[cxx_name = "Transform"]
         fn transform(self: Pin<&mut Geometry>, T: &gp_Trsf);
+        /// **Source:** `Geom_Geometry.hxx`:116 - `Geom_Geometry::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Geometry) -> &HandleStandardType;
         #[cxx_name = "Geom_Geometry_Mirrored"]
@@ -2049,10 +2066,11 @@ pub(crate) mod ffi {
         /// Creates a new object which is a copy of this geometric object.
         #[cxx_name = "Geom_Geometry_Copy"]
         fn Geometry_copy(self_: &Geometry) -> UniquePtr<HandleGeomGeometry>;
+        /// **Source:** `Geom_Geometry.hxx`:116 - `Geom_Geometry::get_type_name()`
         #[cxx_name = "Geom_Geometry_get_type_name"]
         fn Geometry_get_type_name() -> String;
         /// ======================== Geom_Curve ========================
-        /// **Source:** `Geom_Curve.hxx` - `Geom_Curve`
+        /// **Source:** `Geom_Curve.hxx`:59 - `Geom_Curve`
         ///
         /// The abstract class Curve describes the common
         /// behavior of curves in 3D space. The Geom package
@@ -2081,6 +2099,8 @@ pub(crate) mod ffi {
         /// self-intersect.
         #[cxx_name = "Geom_Curve"]
         type Curve;
+        /// **Source:** `Geom_Curve.hxx`:69 - `Geom_Curve::Reverse()`
+        ///
         /// Changes the direction of parametrization of <me>.
         /// The "FirstParameter" and the "LastParameter" are not changed
         /// but the orientation  of the curve is modified. If the curve
@@ -2089,6 +2109,8 @@ pub(crate) mod ffi {
         /// curve becomes the StartPoint of the reversed curve.
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut Curve>);
+        /// **Source:** `Geom_Curve.hxx`:79 - `Geom_Curve::ReversedParameter()`
+        ///
         /// Returns the  parameter on the  reversed  curve for
         /// the point of parameter U on <me>.
         ///
@@ -2099,6 +2121,8 @@ pub(crate) mod ffi {
         /// me->Value(U)
         #[cxx_name = "ReversedParameter"]
         fn reversed_parameter(self: &Curve, U: f64) -> f64;
+        /// **Source:** `Geom_Curve.hxx`:93 - `Geom_Curve::TransformedParameter()`
+        ///
         /// Returns the  parameter on the  transformed  curve for
         /// the transform of the point of parameter U on <me>.
         ///
@@ -2113,6 +2137,8 @@ pub(crate) mod ffi {
         /// It can be redefined. For example on the Line.
         #[cxx_name = "TransformedParameter"]
         fn transformed_parameter(self: &Curve, U: f64, T: &gp_Trsf) -> f64;
+        /// **Source:** `Geom_Curve.hxx`:109 - `Geom_Curve::ParametricTransformation()`
+        ///
         /// Returns a  coefficient to compute the parameter on
         /// the transformed  curve  for  the transform  of the
         /// point on <me>.
@@ -2128,18 +2154,24 @@ pub(crate) mod ffi {
         /// It can be redefined. For example on the Line.
         #[cxx_name = "ParametricTransformation"]
         fn parametric_transformation(self: &Curve, T: &gp_Trsf) -> f64;
+        /// **Source:** `Geom_Curve.hxx`:118 - `Geom_Curve::FirstParameter()`
+        ///
         /// Returns the value of the first parameter.
         /// Warnings :
         /// It can be RealFirst from package Standard
         /// if the curve is infinite
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &Curve) -> f64;
+        /// **Source:** `Geom_Curve.hxx`:124 - `Geom_Curve::LastParameter()`
+        ///
         /// Returns the value of the last parameter.
         /// Warnings :
         /// It can be RealLast from package Standard
         /// if the curve is infinite
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &Curve) -> f64;
+        /// **Source:** `Geom_Curve.hxx`:134 - `Geom_Curve::IsClosed()`
+        ///
         /// Returns true if the curve is closed.
         /// Some curves such as circle are always closed, others such as line
         /// are never closed (by definition).
@@ -2150,6 +2182,8 @@ pub(crate) mod ffi {
         /// application.
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &Curve) -> bool;
+        /// **Source:** `Geom_Curve.hxx`:151 - `Geom_Curve::IsPeriodic()`
+        ///
         /// Is the parametrization of the curve periodic ?
         /// It is possible only if the curve is closed and if the
         /// following relation is satisfied :
@@ -2167,14 +2201,20 @@ pub(crate) mod ffi {
         /// curve  if you want the curve to be periodic.
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &Curve) -> bool;
+        /// **Source:** `Geom_Curve.hxx`:155 - `Geom_Curve::Period()`
+        ///
         /// Returns the period of this curve.
         /// Exceptions Standard_NoSuchObject if this curve is not periodic.
         #[cxx_name = "Period"]
         fn period(self: &Curve) -> f64;
+        /// **Source:** `Geom_Curve.hxx`:169 - `Geom_Curve::IsCN()`
+        ///
         /// Returns true if the degree of continuity of this curve is at least N.
         /// Exceptions -  Standard_RangeError if N is less than 0.
         #[cxx_name = "IsCN"]
         fn is_cn(self: &Curve, N: i32) -> bool;
+        /// **Source:** `Geom_Curve.hxx`:180 - `Geom_Curve::D0()`
+        ///
         /// Returns in P the point of parameter U.
         /// If the curve is periodic  then the returned point is P(U) with
         /// U = Ustart + (U - Uend)  where Ustart and Uend are the
@@ -2186,10 +2226,14 @@ pub(crate) mod ffi {
         /// are parallel.
         #[cxx_name = "D0"]
         fn d0(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `Geom_Curve.hxx`:184 - `Geom_Curve::D1()`
+        ///
         /// Returns the point P of parameter U and the first derivative V1.
         /// Raised if the continuity of the curve is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>, V1: Pin<&mut gp_Vec>);
+        /// **Source:** `Geom_Curve.hxx`:189 - `Geom_Curve::D2()`
+        ///
         /// Returns the point P of parameter U, the first and second
         /// derivatives V1 and V2.
         /// Raised if the continuity of the curve is not C2.
@@ -2201,6 +2245,8 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_Curve.hxx`:197 - `Geom_Curve::D3()`
+        ///
         /// Returns the point P of parameter U, the first, the second
         /// and the third derivative.
         /// Raised if the continuity of the curve is not C3.
@@ -2213,6 +2259,7 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec>,
             V3: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_Curve.hxx`:227 - `Geom_Curve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Curve) -> &HandleStandardType;
         /// Returns a copy of <me> reversed.
@@ -2238,6 +2285,7 @@ pub(crate) mod ffi {
         /// derivative on the basis curve and the offset direction are parallel.
         #[cxx_name = "Geom_Curve_Value"]
         fn Curve_value(self_: &Curve, U: f64) -> UniquePtr<gp_Pnt>;
+        /// **Source:** `Geom_Curve.hxx`:227 - `Geom_Curve::get_type_name()`
         #[cxx_name = "Geom_Curve_get_type_name"]
         fn Curve_get_type_name() -> String;
         /// Upcast Geom_Curve to Geom_Geometry
@@ -2250,7 +2298,7 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleGeomCurve_to_HandleGeomGeometry"]
         fn curve_to_handle_geometry(handle: &HandleGeomCurve) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_Surface ========================
-        /// **Source:** `Geom_Surface.hxx` - `Geom_Surface`
+        /// **Source:** `Geom_Surface.hxx`:52 - `Geom_Surface`
         ///
         /// Describes the common behavior of surfaces in 3D space.
         /// The Geom package provides many implementations of concrete derived surfaces,
@@ -2276,10 +2324,14 @@ pub(crate) mod ffi {
         /// surfaces with null areas, or surfaces which self-intersect.
         #[cxx_name = "Geom_Surface"]
         type Surface;
+        /// **Source:** `Geom_Surface.hxx`:58 - `Geom_Surface::UReverse()`
+        ///
         /// Reverses the U direction of parametrization of <me>.
         /// The bounds of the surface are not modified.
         #[cxx_name = "UReverse"]
         fn u_reverse(self: Pin<&mut Surface>);
+        /// **Source:** `Geom_Surface.hxx`:74 - `Geom_Surface::UReversedParameter()`
+        ///
         /// Returns the  parameter on the  Ureversed surface for
         /// the point of parameter U on <me>.
         /// @code
@@ -2291,10 +2343,14 @@ pub(crate) mod ffi {
         /// @endcode
         #[cxx_name = "UReversedParameter"]
         fn u_reversed_parameter(self: &Surface, U: f64) -> f64;
+        /// **Source:** `Geom_Surface.hxx`:78 - `Geom_Surface::VReverse()`
+        ///
         /// Reverses the V direction of parametrization of <me>.
         /// The bounds of the surface are not modified.
         #[cxx_name = "VReverse"]
         fn v_reverse(self: Pin<&mut Surface>);
+        /// **Source:** `Geom_Surface.hxx`:94 - `Geom_Surface::VReversedParameter()`
+        ///
         /// Returns the  parameter on the  Vreversed surface for
         /// the point of parameter V on <me>.
         /// @code
@@ -2306,6 +2362,8 @@ pub(crate) mod ffi {
         /// @endcode
         #[cxx_name = "VReversedParameter"]
         fn v_reversed_parameter(self: &Surface, V: f64) -> f64;
+        /// **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
+        ///
         /// Computes the  parameters on the  transformed  surface for
         /// the transform of the point of parameters U,V on <me>.
         /// @code
@@ -2325,11 +2383,15 @@ pub(crate) mod ffi {
         /// Cylinder, Cone, Revolved and Extruded surfaces.
         #[cxx_name = "TransformParameters"]
         fn transform_parameters(self: &Surface, U: &mut f64, V: &mut f64, T: &gp_Trsf);
+        /// **Source:** `Geom_Surface.hxx`:140 - `Geom_Surface::Bounds()`
+        ///
         /// Returns the parametric bounds U1, U2, V1 and V2 of this surface.
         /// If the surface is infinite, this function can return a value
         /// equal to Precision::Infinite: instead of Standard_Real::LastReal.
         #[cxx_name = "Bounds"]
         fn bounds(self: &Surface, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64);
+        /// **Source:** `Geom_Surface.hxx`:151 - `Geom_Surface::IsUClosed()`
+        ///
         /// Checks whether this surface is closed in the u parametric direction.
         /// Returns true if, in the u parametric direction:
         /// taking uFirst and uLast as the parametric bounds in
@@ -2338,6 +2400,8 @@ pub(crate) mod ffi {
         /// P(uLast, v) is less than or equal to gp::Resolution().
         #[cxx_name = "IsUClosed"]
         fn is_u_closed(self: &Surface) -> bool;
+        /// **Source:** `Geom_Surface.hxx`:158 - `Geom_Surface::IsVClosed()`
+        ///
         /// Checks whether this surface is closed in the u parametric direction.
         /// Returns true if, in the v parametric direction:
         /// taking vFirst and vLast as the parametric bounds in the v parametric direction,
@@ -2345,6 +2409,8 @@ pub(crate) mod ffi {
         /// P(u, vFirst) and P(u, vLast) is less than or equal to gp::Resolution().
         #[cxx_name = "IsVClosed"]
         fn is_v_closed(self: &Surface) -> bool;
+        /// **Source:** `Geom_Surface.hxx`:168 - `Geom_Surface::IsUPeriodic()`
+        ///
         /// Checks if this surface is periodic in the u parametric direction.
         /// Returns true if:
         /// - this surface is closed in the u parametric direction, and
@@ -2355,10 +2421,14 @@ pub(crate) mod ffi {
         /// Note: T is the parametric period in the u parametric direction.
         #[cxx_name = "IsUPeriodic"]
         fn is_u_periodic(self: &Surface) -> bool;
+        /// **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
+        ///
         /// Returns the period of this surface in the u parametric direction.
         /// Raises if the surface is not uperiodic.
         #[cxx_name = "UPeriod"]
         fn u_period(self: &Surface) -> f64;
+        /// **Source:** `Geom_Surface.hxx`:182 - `Geom_Surface::IsVPeriodic()`
+        ///
         /// Checks if this surface is periodic in the v parametric direction.
         /// Returns true if:
         /// - this surface is closed in the v parametric direction, and
@@ -2369,24 +2439,34 @@ pub(crate) mod ffi {
         /// Note: T is the parametric period in the v parametric direction.
         #[cxx_name = "IsVPeriodic"]
         fn is_v_periodic(self: &Surface) -> bool;
+        /// **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
+        ///
         /// Returns the period of this surface in the v parametric direction.
         /// raises if the surface is not vperiodic.
         #[cxx_name = "VPeriod"]
         fn v_period(self: &Surface) -> f64;
+        /// **Source:** `Geom_Surface.hxx`:210 - `Geom_Surface::IsCNu()`
+        ///
         /// Returns the order of continuity of the surface in the U parametric direction.
         /// Raised if N < 0.
         #[cxx_name = "IsCNu"]
         fn is_c_nu(self: &Surface, N: i32) -> bool;
+        /// **Source:** `Geom_Surface.hxx`:214 - `Geom_Surface::IsCNv()`
+        ///
         /// Returns the order of continuity of the surface in the V parametric direction.
         /// Raised if N < 0.
         #[cxx_name = "IsCNv"]
         fn is_c_nv(self: &Surface, N: i32) -> bool;
+        /// **Source:** `Geom_Surface.hxx`:220 - `Geom_Surface::D0()`
+        ///
         /// Computes the point of parameter U,V on the surface.
         ///
         /// Raised only for an "OffsetSurface" if it is not possible to
         /// compute the current point.
         #[cxx_name = "D0"]
         fn d0(self: &Surface, U: f64, V: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `Geom_Surface.hxx`:228 - `Geom_Surface::D1()`
+        ///
         /// Computes the point P and the first derivatives in the directions U and V at this point.
         /// Raised if the continuity of the surface is not C1.
         ///
@@ -2400,6 +2480,8 @@ pub(crate) mod ffi {
             D1U: Pin<&mut gp_Vec>,
             D1V: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_Surface.hxx`:237 - `Geom_Surface::D2()`
+        ///
         /// Computes the point P, the first and the second derivatives in
         /// the directions U and V at this point.
         /// Raised if the continuity of the surface is not C2.
@@ -2415,6 +2497,8 @@ pub(crate) mod ffi {
             D2V: Pin<&mut gp_Vec>,
             D2UV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_Surface.hxx`:249 - `Geom_Surface::D3()`
+        ///
         /// Computes the point P, the first,the second and the third
         /// derivatives in the directions U and V at this point.
         /// Raised if the continuity of the surface is not C2.
@@ -2434,6 +2518,7 @@ pub(crate) mod ffi {
             D3UUV: Pin<&mut gp_Vec>,
             D3UVV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_Surface.hxx`:284 - `Geom_Surface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Surface) -> &HandleStandardType;
         /// Reverses the U direction of parametrization of <me>.
@@ -2488,6 +2573,7 @@ pub(crate) mod ffi {
         /// Raised only for an "OffsetSurface" if it is not possible to compute the current point.
         #[cxx_name = "Geom_Surface_Value"]
         fn Surface_value(self_: &Surface, U: f64, V: f64) -> UniquePtr<gp_Pnt>;
+        /// **Source:** `Geom_Surface.hxx`:284 - `Geom_Surface::get_type_name()`
         #[cxx_name = "Geom_Surface_get_type_name"]
         fn Surface_get_type_name() -> String;
         /// Upcast Geom_Surface to Geom_Geometry
@@ -2500,7 +2586,7 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleGeomSurface_to_HandleGeomGeometry"]
         fn surface_to_handle_geometry(handle: &HandleGeomSurface) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_BoundedCurve ========================
-        /// **Source:** `Geom_BoundedCurve.hxx` - `Geom_BoundedCurve`
+        /// **Source:** `Geom_BoundedCurve.hxx`:44 - `Geom_BoundedCurve`
         ///
         /// The abstract class BoundedCurve describes the
         /// common behavior of bounded curves in 3D space. A
@@ -2519,6 +2605,7 @@ pub(crate) mod ffi {
         /// parameter of the basis curve.
         #[cxx_name = "Geom_BoundedCurve"]
         type BoundedCurve;
+        /// **Source:** `Geom_BoundedCurve.hxx`:58 - `Geom_BoundedCurve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BoundedCurve) -> &HandleStandardType;
         /// Returns the end point of the curve.
@@ -2527,6 +2614,7 @@ pub(crate) mod ffi {
         /// Returns the start point of the curve.
         #[cxx_name = "Geom_BoundedCurve_StartPoint"]
         fn BoundedCurve_start_point(self_: &BoundedCurve) -> UniquePtr<gp_Pnt>;
+        /// **Source:** `Geom_BoundedCurve.hxx`:58 - `Geom_BoundedCurve::get_type_name()`
         #[cxx_name = "Geom_BoundedCurve_get_type_name"]
         fn BoundedCurve_get_type_name() -> String;
         /// Upcast Geom_BoundedCurve to Geom_Curve
@@ -2552,7 +2640,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomBoundedCurve,
         ) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_BoundedSurface ========================
-        /// **Source:** `Geom_BoundedSurface.hxx` - `Geom_BoundedSurface`
+        /// **Source:** `Geom_BoundedSurface.hxx`:53 - `Geom_BoundedSurface`
         ///
         /// The root class for bounded surfaces in 3D space. A
         /// bounded surface is defined by a rectangle in its 2D parametric space, i.e.
@@ -2581,8 +2669,10 @@ pub(crate) mod ffi {
         /// 2D parametric space.
         #[cxx_name = "Geom_BoundedSurface"]
         type BoundedSurface;
+        /// **Source:** `Geom_BoundedSurface.hxx`:57 - `Geom_BoundedSurface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BoundedSurface) -> &HandleStandardType;
+        /// **Source:** `Geom_BoundedSurface.hxx`:57 - `Geom_BoundedSurface::get_type_name()`
         #[cxx_name = "Geom_BoundedSurface_get_type_name"]
         fn BoundedSurface_get_type_name() -> String;
         /// Upcast Geom_BoundedSurface to Geom_Geometry
@@ -2613,7 +2703,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomBoundedSurface,
         ) -> UniquePtr<HandleGeomSurface>;
         /// ======================== Geom_ElementarySurface ========================
-        /// **Source:** `Geom_ElementarySurface.hxx` - `Geom_ElementarySurface`
+        /// **Source:** `Geom_ElementarySurface.hxx`:63 - `Geom_ElementarySurface`
         ///
         /// Describes the common behavior of surfaces which
         /// have a simple parametric equation in a local
@@ -2654,32 +2744,48 @@ pub(crate) mod ffi {
         /// "main Direction" = - "X Direction" ^ "Y Direction"
         #[cxx_name = "Geom_ElementarySurface"]
         type ElementarySurface;
+        /// **Source:** `Geom_ElementarySurface.hxx`:70 - `Geom_ElementarySurface::SetAxis()`
+        ///
         /// Changes the main axis (ZAxis) of the elementary surface.
         ///
         /// Raised if the direction of A1 is parallel to the XAxis of the
         /// coordinate system of the surface.
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut ElementarySurface>, theA1: &gp_Ax1);
+        /// **Source:** `Geom_ElementarySurface.hxx`:74 - `Geom_ElementarySurface::SetLocation()`
+        ///
         /// Changes the location of the local coordinates system of the
         /// surface.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut ElementarySurface>, theLoc: &gp_Pnt);
+        /// **Source:** `Geom_ElementarySurface.hxx`:77 - `Geom_ElementarySurface::SetPosition()`
+        ///
         /// Changes the local coordinates system of the surface.
         #[cxx_name = "SetPosition"]
         fn set_position(self: Pin<&mut ElementarySurface>, theAx3: &gp_Ax3);
+        /// **Source:** `Geom_ElementarySurface.hxx`:80 - `Geom_ElementarySurface::Axis()`
+        ///
         /// Returns the main axis of the surface (ZAxis).
         #[cxx_name = "Axis"]
         fn axis(self: &ElementarySurface) -> &gp_Ax1;
+        /// **Source:** `Geom_ElementarySurface.hxx`:84 - `Geom_ElementarySurface::Location()`
+        ///
         /// Returns the location point of the local coordinate system of the
         /// surface.
         #[cxx_name = "Location"]
         fn location(self: &ElementarySurface) -> &gp_Pnt;
+        /// **Source:** `Geom_ElementarySurface.hxx`:87 - `Geom_ElementarySurface::Position()`
+        ///
         /// Returns the local coordinates system of the surface.
         #[cxx_name = "Position"]
         fn position(self: &ElementarySurface) -> &gp_Ax3;
+        /// **Source:** `Geom_ElementarySurface.hxx`:90 - `Geom_ElementarySurface::UReverse()`
+        ///
         /// Reverses the U parametric direction of the surface.
         #[cxx_name = "UReverse"]
         fn u_reverse(self: Pin<&mut ElementarySurface>);
+        /// **Source:** `Geom_ElementarySurface.hxx`:98 - `Geom_ElementarySurface::UReversedParameter()`
+        ///
         /// Return the  parameter on the  Ureversed surface for
         /// the point of parameter U on <me>.
         ///
@@ -2688,9 +2794,13 @@ pub(crate) mod ffi {
         /// me->Value(U,V)
         #[cxx_name = "UReversedParameter"]
         fn u_reversed_parameter(self: &ElementarySurface, U: f64) -> f64;
+        /// **Source:** `Geom_ElementarySurface.hxx`:102 - `Geom_ElementarySurface::VReverse()`
+        ///
         /// Reverses the V parametric direction of the surface.
         #[cxx_name = "VReverse"]
         fn v_reverse(self: Pin<&mut ElementarySurface>);
+        /// **Source:** `Geom_ElementarySurface.hxx`:110 - `Geom_ElementarySurface::VReversedParameter()`
+        ///
         /// Return the  parameter on the  Vreversed surface for
         /// the point of parameter V on <me>.
         ///
@@ -2699,14 +2809,20 @@ pub(crate) mod ffi {
         /// me->Value(U,V)
         #[cxx_name = "VReversedParameter"]
         fn v_reversed_parameter(self: &ElementarySurface, V: f64) -> f64;
+        /// **Source:** `Geom_ElementarySurface.hxx`:117 - `Geom_ElementarySurface::IsCNu()`
+        ///
         /// Returns True.
         #[cxx_name = "IsCNu"]
         fn is_c_nu(self: &ElementarySurface, N: i32) -> bool;
+        /// **Source:** `Geom_ElementarySurface.hxx`:120 - `Geom_ElementarySurface::IsCNv()`
+        ///
         /// Returns True.
         #[cxx_name = "IsCNv"]
         fn is_c_nv(self: &ElementarySurface, N: i32) -> bool;
+        /// **Source:** `Geom_ElementarySurface.hxx`:126 - `Geom_ElementarySurface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ElementarySurface) -> &HandleStandardType;
+        /// **Source:** `Geom_ElementarySurface.hxx`:126 - `Geom_ElementarySurface::get_type_name()`
         #[cxx_name = "Geom_ElementarySurface_get_type_name"]
         fn ElementarySurface_get_type_name() -> String;
         /// Upcast Geom_ElementarySurface to Geom_Geometry
@@ -2736,7 +2852,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomElementarySurface,
         ) -> UniquePtr<HandleGeomSurface>;
         /// ======================== Geom_BezierCurve ========================
-        /// **Source:** `Geom_BezierCurve.hxx` - `Geom_BezierCurve`
+        /// **Source:** `Geom_BezierCurve.hxx`:87 - `Geom_BezierCurve`
         ///
         /// Describes a rational or non-rational Bezier curve
         /// - a non-rational Bezier curve is defined by a table of
@@ -2789,7 +2905,7 @@ pub(crate) mod ffi {
         /// - The length of a Bezier curve can be null.
         #[cxx_name = "Geom_BezierCurve"]
         type BezierCurve;
-        /// **Source:** `Geom_BezierCurve.hxx` - `Geom_BezierCurve::Geom_BezierCurve()`
+        /// **Source:** `Geom_BezierCurve.hxx`:95 - `Geom_BezierCurve::Geom_BezierCurve()`
         ///
         /// Creates a non rational Bezier curve with a set of poles
         /// CurvePoles.  The weights are defaulted to all being 1.
@@ -2797,7 +2913,7 @@ pub(crate) mod ffi {
         /// or lower than 2.
         #[cxx_name = "Geom_BezierCurve_ctor_array1ofpnt"]
         fn BezierCurve_ctor_array1ofpnt(CurvePoles: &TColgp_Array1OfPnt) -> UniquePtr<BezierCurve>;
-        /// **Source:** `Geom_BezierCurve.hxx` - `Geom_BezierCurve::Geom_BezierCurve()`
+        /// **Source:** `Geom_BezierCurve.hxx`:104 - `Geom_BezierCurve::Geom_BezierCurve()`
         ///
         /// Creates a rational Bezier curve with the set of poles
         /// CurvePoles and the set of weights  PoleWeights .
@@ -2811,12 +2927,16 @@ pub(crate) mod ffi {
             CurvePoles: &TColgp_Array1OfPnt,
             PoleWeights: &TColStd_Array1OfReal,
         ) -> UniquePtr<BezierCurve>;
+        /// **Source:** `Geom_BezierCurve.hxx`:111 - `Geom_BezierCurve::Increase()`
+        ///
         /// Increases the degree of a bezier curve. Degree is the new
         /// degree of <me>. Raises ConstructionError
         /// if Degree is greater than MaxDegree or lower than 2
         /// or lower than the initial degree of <me>.
         #[cxx_name = "Increase"]
         fn increase(self: Pin<&mut BezierCurve>, Degree: i32);
+        /// **Source:** `Geom_BezierCurve.hxx`:120 - `Geom_BezierCurve::InsertPoleAfter()`
+        ///
         /// Inserts a pole P after the pole of range Index.
         /// If the curve <me> is rational the weight value for the new
         /// pole of range Index is 1.0.
@@ -2826,6 +2946,8 @@ pub(crate) mod ffi {
         /// MaxDegree + 1.
         #[cxx_name = "InsertPoleAfter"]
         fn insert_pole_after_int_pnt(self: Pin<&mut BezierCurve>, Index: i32, P: &gp_Pnt);
+        /// **Source:** `Geom_BezierCurve.hxx`:130 - `Geom_BezierCurve::InsertPoleAfter()`
+        ///
         /// Inserts a pole with its weight in the set of poles after the
         /// pole of range Index. If the curve was non rational it can
         /// become rational if all the weights are not identical.
@@ -2841,6 +2963,8 @@ pub(crate) mod ffi {
             P: &gp_Pnt,
             Weight: f64,
         );
+        /// **Source:** `Geom_BezierCurve.hxx`:141 - `Geom_BezierCurve::InsertPoleBefore()`
+        ///
         /// Inserts a pole P before the pole of range Index.
         /// If the curve <me> is rational the weight value for the new
         /// pole of range Index is 1.0.
@@ -2850,6 +2974,8 @@ pub(crate) mod ffi {
         /// MaxDegree + 1.
         #[cxx_name = "InsertPoleBefore"]
         fn insert_pole_before_int_pnt(self: Pin<&mut BezierCurve>, Index: i32, P: &gp_Pnt);
+        /// **Source:** `Geom_BezierCurve.hxx`:152 - `Geom_BezierCurve::InsertPoleBefore()`
+        ///
         /// Inserts a pole with its weight in the set of poles after
         /// the pole of range Index. If the curve was non rational it
         /// can become rational if all the weights are not identical.
@@ -2866,22 +2992,30 @@ pub(crate) mod ffi {
             P: &gp_Pnt,
             Weight: f64,
         );
+        /// **Source:** `Geom_BezierCurve.hxx`:160 - `Geom_BezierCurve::RemovePole()`
+        ///
         /// Removes the pole of range Index.
         /// If the curve was rational it can become non rational.
         /// Raised if Index is not in the range [1, NbPoles]
         /// Raised if Degree is lower than 2.
         #[cxx_name = "RemovePole"]
         fn remove_pole(self: Pin<&mut BezierCurve>, Index: i32);
+        /// **Source:** `Geom_BezierCurve.hxx`:164 - `Geom_BezierCurve::Reverse()`
+        ///
         /// Reverses the direction of parametrization of <me>
         /// Value (NewU) =  Value (1 - OldU)
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut BezierCurve>);
+        /// **Source:** `Geom_BezierCurve.hxx`:170 - `Geom_BezierCurve::ReversedParameter()`
+        ///
         /// Returns the  parameter on the  reversed  curve for
         /// the point of parameter U on <me>.
         ///
         /// returns 1-U
         #[cxx_name = "ReversedParameter"]
         fn reversed_parameter(self: &BezierCurve, U: f64) -> f64;
+        /// **Source:** `Geom_BezierCurve.hxx`:183 - `Geom_BezierCurve::Segment()`
+        ///
         /// Segments the curve between U1 and U2 which can be out
         /// of the bounds of the curve. The curve is oriented from U1
         /// to U2.
@@ -2895,12 +3029,16 @@ pub(crate) mod ffi {
         /// After the segmentation the length of a curve can be null.
         #[cxx_name = "Segment"]
         fn segment(self: Pin<&mut BezierCurve>, U1: f64, U2: f64);
+        /// **Source:** `Geom_BezierCurve.hxx`:189 - `Geom_BezierCurve::SetPole()`
+        ///
         /// Substitutes the pole of range index with P.
         /// If the curve <me> is rational the weight of range Index
         /// is not modified.
         /// raiseD if Index is not in the range [1, NbPoles]
         #[cxx_name = "SetPole"]
         fn set_pole_int_pnt(self: Pin<&mut BezierCurve>, Index: i32, P: &gp_Pnt);
+        /// **Source:** `Geom_BezierCurve.hxx`:198 - `Geom_BezierCurve::SetPole()`
+        ///
         /// Substitutes the pole and the weights of range Index.
         /// If the curve <me> is not rational it can become rational
         /// if all the weights are not identical.
@@ -2910,6 +3048,8 @@ pub(crate) mod ffi {
         /// Raised if Weight <= Resolution from package gp
         #[cxx_name = "SetPole"]
         fn set_pole_int_pnt_real(self: Pin<&mut BezierCurve>, Index: i32, P: &gp_Pnt, Weight: f64);
+        /// **Source:** `Geom_BezierCurve.hxx`:209 - `Geom_BezierCurve::SetWeight()`
+        ///
         /// Changes the weight of the pole of range Index.
         /// If the curve <me> is not rational it can become rational
         /// if all the weights are not identical.
@@ -2919,22 +3059,32 @@ pub(crate) mod ffi {
         /// Raised if Weight <= Resolution from package gp
         #[cxx_name = "SetWeight"]
         fn set_weight(self: Pin<&mut BezierCurve>, Index: i32, Weight: f64);
+        /// **Source:** `Geom_BezierCurve.hxx`:214 - `Geom_BezierCurve::IsClosed()`
+        ///
         /// Returns True if the distance between the first point
         /// and the last point of the curve is lower or equal to
         /// the Resolution from package gp.
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &BezierCurve) -> bool;
+        /// **Source:** `Geom_BezierCurve.hxx`:217 - `Geom_BezierCurve::IsCN()`
+        ///
         /// Continuity of the curve, returns True.
         #[cxx_name = "IsCN"]
         fn is_cn(self: &BezierCurve, N: i32) -> bool;
+        /// **Source:** `Geom_BezierCurve.hxx`:221 - `Geom_BezierCurve::IsPeriodic()`
+        ///
         /// Returns True if the parametrization of a curve is periodic.
         /// (P(u) = P(u + T) T = constante)
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &BezierCurve) -> bool;
+        /// **Source:** `Geom_BezierCurve.hxx`:225 - `Geom_BezierCurve::IsRational()`
+        ///
         /// Returns false if all the weights are identical. The tolerance
         /// criterion is Resolution from package gp.
         #[cxx_name = "IsRational"]
         fn is_rational(self: &BezierCurve) -> bool;
+        /// **Source:** `Geom_BezierCurve.hxx`:235 - `Geom_BezierCurve::Degree()`
+        ///
         /// Returns the polynomial degree of the curve.
         /// it is the number of poles - 1
         /// point P and derivatives (V1, V2, V3) computation
@@ -2942,10 +3092,13 @@ pub(crate) mod ffi {
         /// parameter U can be out of the bounds of the curve.
         #[cxx_name = "Degree"]
         fn degree(self: &BezierCurve) -> i32;
+        /// **Source:** `Geom_BezierCurve.hxx`:237 - `Geom_BezierCurve::D0()`
         #[cxx_name = "D0"]
         fn d0(self: &BezierCurve, U: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `Geom_BezierCurve.hxx`:239 - `Geom_BezierCurve::D1()`
         #[cxx_name = "D1"]
         fn d1(self: &BezierCurve, U: f64, P: Pin<&mut gp_Pnt>, V1: Pin<&mut gp_Vec>);
+        /// **Source:** `Geom_BezierCurve.hxx`:241 - `Geom_BezierCurve::D2()`
         #[cxx_name = "D2"]
         fn d2(
             self: &BezierCurve,
@@ -2954,6 +3107,8 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BezierCurve.hxx`:253 - `Geom_BezierCurve::D3()`
+        ///
         /// For this Bezier curve, computes
         /// - the point P of parameter U, or
         /// - the point P and one or more of the following values:
@@ -2970,41 +3125,61 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec>,
             V3: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BezierCurve.hxx`:274 - `Geom_BezierCurve::FirstParameter()`
+        ///
         /// Returns the value of the first  parameter of this
         /// Bezier curve. This is 0.0, which gives the start point of this Bezier curve
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &BezierCurve) -> f64;
+        /// **Source:** `Geom_BezierCurve.hxx`:278 - `Geom_BezierCurve::LastParameter()`
+        ///
         /// Returns the value of the last parameter of this
         /// Bezier curve. This is  1.0, which gives the end point of this Bezier curve.
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &BezierCurve) -> f64;
+        /// **Source:** `Geom_BezierCurve.hxx`:281 - `Geom_BezierCurve::NbPoles()`
+        ///
         /// Returns the number of poles of this Bezier curve.
         #[cxx_name = "NbPoles"]
         fn nb_poles(self: &BezierCurve) -> i32;
+        /// **Source:** `Geom_BezierCurve.hxx`:285 - `Geom_BezierCurve::Pole()`
+        ///
         /// Returns the pole of range Index.
         /// Raised if Index is not in the range [1, NbPoles]
         #[cxx_name = "Pole"]
         fn pole(self: &BezierCurve, Index: i32) -> &gp_Pnt;
+        /// **Source:** `Geom_BezierCurve.hxx`:290 - `Geom_BezierCurve::Poles()`
+        ///
         /// Returns all the poles of the curve.
         ///
         /// Raised if the length of P is not equal to the number of poles.
         #[cxx_name = "Poles"]
         fn poles_array1ofpnt(self: &BezierCurve, P: Pin<&mut TColgp_Array1OfPnt>);
+        /// **Source:** `Geom_BezierCurve.hxx`:293 - `Geom_BezierCurve::Poles()`
+        ///
         /// Returns all the poles of the curve.
         #[cxx_name = "Poles"]
         fn poles(self: &BezierCurve) -> &TColgp_Array1OfPnt;
+        /// **Source:** `Geom_BezierCurve.hxx`:297 - `Geom_BezierCurve::Weight()`
+        ///
         /// Returns the weight of range Index.
         /// Raised if Index is not in the range [1, NbPoles]
         #[cxx_name = "Weight"]
         fn weight(self: &BezierCurve, Index: i32) -> f64;
+        /// **Source:** `Geom_BezierCurve.hxx`:302 - `Geom_BezierCurve::Weights()`
+        ///
         /// Returns all the weights of the curve.
         ///
         /// Raised if the length of W is not equal to the number of poles.
         #[cxx_name = "Weights"]
         fn weights_array1ofreal(self: &BezierCurve, W: Pin<&mut TColStd_Array1OfReal>);
+        /// **Source:** `Geom_BezierCurve.hxx`:313 - `Geom_BezierCurve::Transform()`
+        ///
         /// Applies the transformation T to this Bezier curve.
         #[cxx_name = "Transform"]
         fn transform(self: Pin<&mut BezierCurve>, T: &gp_Trsf);
+        /// **Source:** `Geom_BezierCurve.hxx`:324 - `Geom_BezierCurve::Resolution()`
+        ///
         /// Computes for this Bezier curve the parametric
         /// tolerance UTolerance for a given 3D tolerance Tolerance3D.
         /// If f(t) is the equation of this Bezier curve,
@@ -3012,6 +3187,7 @@ pub(crate) mod ffi {
         /// |t1-t0| < UTolerance ===> |f(t1)-f(t0)| < Tolerance3D
         #[cxx_name = "Resolution"]
         fn resolution(self: Pin<&mut BezierCurve>, Tolerance3D: f64, UTolerance: &mut f64);
+        /// **Source:** `Geom_BezierCurve.hxx`:333 - `Geom_BezierCurve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BezierCurve) -> &HandleStandardType;
         /// For the point of parameter U of this Bezier curve,
@@ -3029,10 +3205,13 @@ pub(crate) mod ffi {
         /// Creates a new object which is a copy of this Bezier curve.
         #[cxx_name = "Geom_BezierCurve_Copy"]
         fn BezierCurve_copy(self_: &BezierCurve) -> UniquePtr<HandleGeomGeometry>;
+        /// **Source:** `Geom_BezierCurve.hxx`:317 - `Geom_BezierCurve::MaxDegree()`
+        ///
         /// Returns the value of the maximum polynomial degree
         /// of any Geom_BezierCurve curve. This value is 25.
         #[cxx_name = "Geom_BezierCurve_MaxDegree"]
         fn BezierCurve_max_degree() -> i32;
+        /// **Source:** `Geom_BezierCurve.hxx`:333 - `Geom_BezierCurve::get_type_name()`
         #[cxx_name = "Geom_BezierCurve_get_type_name"]
         fn BezierCurve_get_type_name() -> String;
         /// Upcast Geom_BezierCurve to Geom_BoundedCurve
@@ -3074,7 +3253,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomBezierCurve,
         ) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_BezierSurface ========================
-        /// **Source:** `Geom_BezierSurface.hxx` - `Geom_BezierSurface`
+        /// **Source:** `Geom_BezierSurface.hxx`:110 - `Geom_BezierSurface`
         ///
         /// Describes a rational or non-rational Bezier surface.
         /// - A non-rational Bezier surface is defined by a table
@@ -3145,7 +3324,7 @@ pub(crate) mod ffi {
         /// considered equal if: |W2-W1| <= gp::Resolution()
         #[cxx_name = "Geom_BezierSurface"]
         type BezierSurface;
-        /// **Source:** `Geom_BezierSurface.hxx` - `Geom_BezierSurface::Geom_BezierSurface()`
+        /// **Source:** `Geom_BezierSurface.hxx`:128 - `Geom_BezierSurface::Geom_BezierSurface()`
         ///
         /// Creates a non-rational Bezier surface with a set of poles.
         /// Control points representation :
@@ -3165,7 +3344,7 @@ pub(crate) mod ffi {
         fn BezierSurface_ctor_array2ofpnt(
             SurfacePoles: &TColgp_Array2OfPnt,
         ) -> UniquePtr<BezierSurface>;
-        /// **Source:** `Geom_BezierSurface.hxx` - `Geom_BezierSurface::Geom_BezierSurface()`
+        /// **Source:** `Geom_BezierSurface.hxx`:145 - `Geom_BezierSurface::Geom_BezierSurface()`
         ///
         /// ---Purpose
         /// Creates a rational Bezier surface with a set of poles and a
@@ -3187,6 +3366,8 @@ pub(crate) mod ffi {
             SurfacePoles: &TColgp_Array2OfPnt,
             PoleWeights: &TColStd_Array2OfReal,
         ) -> UniquePtr<BezierSurface>;
+        /// **Source:** `Geom_BezierSurface.hxx`:154 - `Geom_BezierSurface::ExchangeUV()`
+        ///
         /// Exchanges the direction U and V on a Bezier surface
         /// As a consequence:
         /// - the poles and weights tables are transposed,
@@ -3195,6 +3376,8 @@ pub(crate) mod ffi {
         /// - the orientation of the surface is reversed.
         #[cxx_name = "ExchangeUV"]
         fn exchange_uv(self: Pin<&mut BezierSurface>);
+        /// **Source:** `Geom_BezierSurface.hxx`:161 - `Geom_BezierSurface::Increase()`
+        ///
         /// Increases the degree of this Bezier surface in the two parametric directions.
         ///
         /// Raised if UDegree < UDegree <me>  or VDegree < VDegree <me>
@@ -3202,6 +3385,8 @@ pub(crate) mod ffi {
         /// in one of the two directions U or V.
         #[cxx_name = "Increase"]
         fn increase(self: Pin<&mut BezierSurface>, UDeg: i32, VDeg: i32);
+        /// **Source:** `Geom_BezierSurface.hxx`:170 - `Geom_BezierSurface::InsertPoleColAfter()`
+        ///
         /// Inserts a column of poles. If the surface is rational the weights
         /// values associated with CPoles are equal defaulted to 1.
         ///
@@ -3215,6 +3400,8 @@ pub(crate) mod ffi {
             VIndex: i32,
             CPoles: &TColgp_Array1OfPnt,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:182 - `Geom_BezierSurface::InsertPoleColAfter()`
+        ///
         /// Inserts a column of poles and weights.
         /// If the surface was non-rational it can become rational.
         ///
@@ -3231,6 +3418,8 @@ pub(crate) mod ffi {
             CPoles: &TColgp_Array1OfPnt,
             CPoleWeights: &TColStd_Array1OfReal,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:193 - `Geom_BezierSurface::InsertPoleColBefore()`
+        ///
         /// Inserts a column of poles. If the surface is rational the weights
         /// values associated with CPoles are equal defaulted to 1.
         ///
@@ -3244,6 +3433,8 @@ pub(crate) mod ffi {
             VIndex: i32,
             CPoles: &TColgp_Array1OfPnt,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:205 - `Geom_BezierSurface::InsertPoleColBefore()`
+        ///
         /// Inserts a column of poles and weights.
         /// If the surface was non-rational it can become rational.
         ///
@@ -3260,6 +3451,8 @@ pub(crate) mod ffi {
             CPoles: &TColgp_Array1OfPnt,
             CPoleWeights: &TColStd_Array1OfReal,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:216 - `Geom_BezierSurface::InsertPoleRowAfter()`
+        ///
         /// Inserts a row of poles. If the surface is rational the weights
         /// values associated with CPoles are equal defaulted to 1.
         ///
@@ -3273,6 +3466,8 @@ pub(crate) mod ffi {
             UIndex: i32,
             CPoles: &TColgp_Array1OfPnt,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:228 - `Geom_BezierSurface::InsertPoleRowAfter()`
+        ///
         /// Inserts a row of poles and weights.
         /// If the surface was non-rational it can become rational.
         ///
@@ -3289,6 +3484,8 @@ pub(crate) mod ffi {
             CPoles: &TColgp_Array1OfPnt,
             CPoleWeights: &TColStd_Array1OfReal,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:239 - `Geom_BezierSurface::InsertPoleRowBefore()`
+        ///
         /// Inserts a row of poles. If the surface is rational the weights
         /// values associated with CPoles are equal defaulted to 1.
         ///
@@ -3302,6 +3499,8 @@ pub(crate) mod ffi {
             UIndex: i32,
             CPoles: &TColgp_Array1OfPnt,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:251 - `Geom_BezierSurface::InsertPoleRowBefore()`
+        ///
         /// Inserts a row of poles and weights.
         /// If the surface was non-rational it can become rational.
         ///
@@ -3318,6 +3517,8 @@ pub(crate) mod ffi {
             CPoles: &TColgp_Array1OfPnt,
             CPoleWeights: &TColStd_Array1OfReal,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:261 - `Geom_BezierSurface::RemovePoleCol()`
+        ///
         /// Removes a column of poles.
         /// If the surface was rational it can become non-rational.
         ///
@@ -3326,6 +3527,8 @@ pub(crate) mod ffi {
         /// Raised if Vindex < 1 or VIndex > NbVPoles
         #[cxx_name = "RemovePoleCol"]
         fn remove_pole_col(self: Pin<&mut BezierSurface>, VIndex: i32);
+        /// **Source:** `Geom_BezierSurface.hxx`:269 - `Geom_BezierSurface::RemovePoleRow()`
+        ///
         /// Removes a row of poles.
         /// If the surface was rational it can become non-rational.
         ///
@@ -3334,6 +3537,8 @@ pub(crate) mod ffi {
         /// Raised if Uindex < 1 or UIndex > NbUPoles
         #[cxx_name = "RemovePoleRow"]
         fn remove_pole_row(self: Pin<&mut BezierSurface>, UIndex: i32);
+        /// **Source:** `Geom_BezierSurface.hxx`:292 - `Geom_BezierSurface::Segment()`
+        ///
         /// Modifies this Bezier surface by segmenting it
         /// between U1 and U2 in the u parametric direction,
         /// and between V1 and V2 in the v parametric
@@ -3357,6 +3562,8 @@ pub(crate) mod ffi {
         /// parametric direction is inverted.
         #[cxx_name = "Segment"]
         fn segment(self: Pin<&mut BezierSurface>, U1: f64, U2: f64, V1: f64, V2: f64);
+        /// **Source:** `Geom_BezierSurface.hxx`:303 - `Geom_BezierSurface::SetPole()`
+        ///
         /// Modifies a pole value.
         /// If the surface is rational the weight of range (UIndex, VIndex)
         /// is not modified.
@@ -3365,6 +3572,8 @@ pub(crate) mod ffi {
         /// or VIndex > NbVPoles.
         #[cxx_name = "SetPole"]
         fn set_pole_int2_pnt(self: Pin<&mut BezierSurface>, UIndex: i32, VIndex: i32, P: &gp_Pnt);
+        /// **Source:** `Geom_BezierSurface.hxx`:314 - `Geom_BezierSurface::SetPole()`
+        ///
         /// Substitutes the pole and the weight of range UIndex, VIndex.
         /// If the surface <me> is not rational it can become rational.
         /// if the surface was rational it can become non-rational.
@@ -3380,6 +3589,8 @@ pub(crate) mod ffi {
             P: &gp_Pnt,
             Weight: f64,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:325 - `Geom_BezierSurface::SetPoleCol()`
+        ///
         /// Modifies a column of poles.
         /// The length of CPoles can be lower but not greater than NbUPoles
         /// so you can modify just a part of the column.
@@ -3392,6 +3603,8 @@ pub(crate) mod ffi {
             VIndex: i32,
             CPoles: &TColgp_Array1OfPnt,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:338 - `Geom_BezierSurface::SetPoleCol()`
+        ///
         /// Modifies a column of poles.
         /// If the surface was rational it can become non-rational
         /// If the surface was non-rational it can become rational.
@@ -3410,6 +3623,8 @@ pub(crate) mod ffi {
             CPoles: &TColgp_Array1OfPnt,
             CPoleWeights: &TColStd_Array1OfReal,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:348 - `Geom_BezierSurface::SetPoleRow()`
+        ///
         /// Modifies a row of poles.
         /// The length of CPoles can be lower but not greater than NbVPoles
         /// so you can modify just a part of the row.
@@ -3422,6 +3637,8 @@ pub(crate) mod ffi {
             UIndex: i32,
             CPoles: &TColgp_Array1OfPnt,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:361 - `Geom_BezierSurface::SetPoleRow()`
+        ///
         /// Modifies a row of poles and weights.
         /// If the surface was rational it can become non-rational.
         /// If the surface was non-rational it can become rational.
@@ -3440,6 +3657,8 @@ pub(crate) mod ffi {
             CPoles: &TColgp_Array1OfPnt,
             CPoleWeights: &TColStd_Array1OfReal,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:372 - `Geom_BezierSurface::SetWeight()`
+        ///
         /// Modifies the weight of the pole of range UIndex, VIndex.
         /// If the surface was non-rational it can become rational.
         /// If the surface was rational it can become non-rational.
@@ -3449,6 +3668,8 @@ pub(crate) mod ffi {
         /// Raised if Weight <= Resolution from package gp.
         #[cxx_name = "SetWeight"]
         fn set_weight(self: Pin<&mut BezierSurface>, UIndex: i32, VIndex: i32, Weight: f64);
+        /// **Source:** `Geom_BezierSurface.hxx`:387 - `Geom_BezierSurface::SetWeightCol()`
+        ///
         /// Modifies a column of weights.
         /// If the surface was rational it can become non-rational.
         /// If the surface was non-rational it can become rational.
@@ -3466,6 +3687,8 @@ pub(crate) mod ffi {
             VIndex: i32,
             CPoleWeights: &TColStd_Array1OfReal,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:401 - `Geom_BezierSurface::SetWeightRow()`
+        ///
         /// Modifies a row of weights.
         /// If the surface was rational it can become non-rational.
         /// If the surface was non-rational it can become rational.
@@ -3483,12 +3706,16 @@ pub(crate) mod ffi {
             UIndex: i32,
             CPoleWeights: &TColStd_Array1OfReal,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:408 - `Geom_BezierSurface::UReverse()`
+        ///
         /// Changes the orientation of this Bezier surface in the
         /// u  parametric direction. The bounds of the
         /// surface are not changed, but the given parametric
         /// direction is reversed. Hence, the orientation of the surface is reversed.
         #[cxx_name = "UReverse"]
         fn u_reverse(self: Pin<&mut BezierSurface>);
+        /// **Source:** `Geom_BezierSurface.hxx`:416 - `Geom_BezierSurface::UReversedParameter()`
+        ///
         /// Computes the u (or v) parameter on the modified
         /// surface, produced by reversing its u (or v) parametric
         /// direction, for any point of u parameter U (or of v
@@ -3497,6 +3724,8 @@ pub(crate) mod ffi {
         /// - 1.-U, or 1.-V.
         #[cxx_name = "UReversedParameter"]
         fn u_reversed_parameter(self: &BezierSurface, U: f64) -> f64;
+        /// **Source:** `Geom_BezierSurface.hxx`:423 - `Geom_BezierSurface::VReverse()`
+        ///
         /// Changes the orientation of this Bezier surface in the
         /// v parametric direction. The bounds of the
         /// surface are not changed, but the given parametric
@@ -3504,6 +3733,8 @@ pub(crate) mod ffi {
         /// surface is reversed.
         #[cxx_name = "VReverse"]
         fn v_reverse(self: Pin<&mut BezierSurface>);
+        /// **Source:** `Geom_BezierSurface.hxx`:431 - `Geom_BezierSurface::VReversedParameter()`
+        ///
         /// Computes the u (or v) parameter on the modified
         /// surface, produced by reversing its u (or v) parametric
         /// direction, for any point of u parameter U (or of v
@@ -3512,14 +3743,18 @@ pub(crate) mod ffi {
         /// - 1.-U, or 1.-V.
         #[cxx_name = "VReversedParameter"]
         fn v_reversed_parameter(self: &BezierSurface, V: f64) -> f64;
+        /// **Source:** `Geom_BezierSurface.hxx`:437 - `Geom_BezierSurface::Bounds()`
+        ///
         /// Returns the parametric bounds U1, U2, V1 and V2 of
         /// this Bezier surface.
         /// In the case of a Bezier surface, this function returns
         /// U1 = 0, V1 = 0, U2 = 1, V2 = 1.
         #[cxx_name = "Bounds"]
         fn bounds(self: &BezierSurface, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64);
+        /// **Source:** `Geom_BezierSurface.hxx`:446 - `Geom_BezierSurface::D0()`
         #[cxx_name = "D0"]
         fn d0(self: &BezierSurface, U: f64, V: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `Geom_BezierSurface.hxx`:450 - `Geom_BezierSurface::D1()`
         #[cxx_name = "D1"]
         fn d1(
             self: &BezierSurface,
@@ -3529,6 +3764,7 @@ pub(crate) mod ffi {
             D1U: Pin<&mut gp_Vec>,
             D1V: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:456 - `Geom_BezierSurface::D2()`
         #[cxx_name = "D2"]
         fn d2(
             self: &BezierSurface,
@@ -3541,6 +3777,8 @@ pub(crate) mod ffi {
             D2V: Pin<&mut gp_Vec>,
             D2UV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:473 - `Geom_BezierSurface::D3()`
+        ///
         /// Computes P, the point of parameters (U, V) of this Bezier surface, and
         /// - one or more of the following sets of vectors:
         /// - D1U and D1V, the first derivative vectors at this point,
@@ -3565,68 +3803,100 @@ pub(crate) mod ffi {
             D3UUV: Pin<&mut gp_Vec>,
             D3UVV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:499 - `Geom_BezierSurface::NbUPoles()`
+        ///
         /// Returns the number of poles in the U direction.
         #[cxx_name = "NbUPoles"]
         fn nb_u_poles(self: &BezierSurface) -> i32;
+        /// **Source:** `Geom_BezierSurface.hxx`:502 - `Geom_BezierSurface::NbVPoles()`
+        ///
         /// Returns the number of poles in the V direction.
         #[cxx_name = "NbVPoles"]
         fn nb_v_poles(self: &BezierSurface) -> i32;
+        /// **Source:** `Geom_BezierSurface.hxx`:507 - `Geom_BezierSurface::Pole()`
+        ///
         /// Returns the pole of range UIndex, VIndex
         /// Raised if UIndex < 1 or UIndex > NbUPoles, or
         /// VIndex < 1 or VIndex > NbVPoles.
         #[cxx_name = "Pole"]
         fn pole(self: &BezierSurface, UIndex: i32, VIndex: i32) -> &gp_Pnt;
+        /// **Source:** `Geom_BezierSurface.hxx`:514 - `Geom_BezierSurface::Poles()`
+        ///
         /// Returns the poles of the Bezier surface.
         ///
         /// Raised if the length of P in the U an V direction is not equal to
         /// NbUPoles and NbVPoles.
         #[cxx_name = "Poles"]
         fn poles_array2ofpnt(self: &BezierSurface, P: Pin<&mut TColgp_Array2OfPnt>);
+        /// **Source:** `Geom_BezierSurface.hxx`:517 - `Geom_BezierSurface::Poles()`
+        ///
         /// Returns the poles of the Bezier surface.
         #[cxx_name = "Poles"]
         fn poles(self: &BezierSurface) -> &TColgp_Array2OfPnt;
+        /// **Source:** `Geom_BezierSurface.hxx`:521 - `Geom_BezierSurface::UDegree()`
+        ///
         /// Returns the degree of the surface in the U direction it is
         /// NbUPoles - 1
         #[cxx_name = "UDegree"]
         fn u_degree(self: &BezierSurface) -> i32;
+        /// **Source:** `Geom_BezierSurface.hxx`:529 - `Geom_BezierSurface::VDegree()`
+        ///
         /// Returns the degree of the surface in the V direction it is
         /// NbVPoles - 1
         #[cxx_name = "VDegree"]
         fn v_degree(self: &BezierSurface) -> i32;
+        /// **Source:** `Geom_BezierSurface.hxx`:539 - `Geom_BezierSurface::Weight()`
+        ///
         /// Returns the weight of range UIndex, VIndex
         ///
         /// Raised if UIndex < 1 or UIndex > NbUPoles, or
         /// VIndex < 1 or VIndex > NbVPoles.
         #[cxx_name = "Weight"]
         fn weight(self: &BezierSurface, UIndex: i32, VIndex: i32) -> f64;
+        /// **Source:** `Geom_BezierSurface.hxx`:546 - `Geom_BezierSurface::Weights()`
+        ///
         /// Returns the weights of the Bezier surface.
         ///
         /// Raised if the length of W in the U an V direction is not
         /// equal to NbUPoles and NbVPoles.
         #[cxx_name = "Weights"]
         fn weights_array2ofreal(self: &BezierSurface, W: Pin<&mut TColStd_Array2OfReal>);
+        /// **Source:** `Geom_BezierSurface.hxx`:559 - `Geom_BezierSurface::IsUClosed()`
+        ///
         /// Returns True if the first control points row and the
         /// last control points row are identical. The tolerance
         /// criterion is Resolution from package gp.
         #[cxx_name = "IsUClosed"]
         fn is_u_closed(self: &BezierSurface) -> bool;
+        /// **Source:** `Geom_BezierSurface.hxx`:564 - `Geom_BezierSurface::IsVClosed()`
+        ///
         /// Returns True if the first control points column
         /// and the last control points column are identical.
         /// The tolerance criterion is Resolution from package gp.
         #[cxx_name = "IsVClosed"]
         fn is_v_closed(self: &BezierSurface) -> bool;
+        /// **Source:** `Geom_BezierSurface.hxx`:567 - `Geom_BezierSurface::IsCNu()`
+        ///
         /// Returns True, a Bezier surface is always  CN
         #[cxx_name = "IsCNu"]
         fn is_c_nu(self: &BezierSurface, N: i32) -> bool;
+        /// **Source:** `Geom_BezierSurface.hxx`:570 - `Geom_BezierSurface::IsCNv()`
+        ///
         /// Returns True, a BezierSurface is always  CN
         #[cxx_name = "IsCNv"]
         fn is_c_nv(self: &BezierSurface, N: i32) -> bool;
+        /// **Source:** `Geom_BezierSurface.hxx`:573 - `Geom_BezierSurface::IsUPeriodic()`
+        ///
         /// Returns False.
         #[cxx_name = "IsUPeriodic"]
         fn is_u_periodic(self: &BezierSurface) -> bool;
+        /// **Source:** `Geom_BezierSurface.hxx`:576 - `Geom_BezierSurface::IsVPeriodic()`
+        ///
         /// Returns False.
         #[cxx_name = "IsVPeriodic"]
         fn is_v_periodic(self: &BezierSurface) -> bool;
+        /// **Source:** `Geom_BezierSurface.hxx`:584 - `Geom_BezierSurface::IsURational()`
+        ///
         /// Returns False if the weights are identical in the U direction,
         /// The tolerance criterion is Resolution from package gp.
         /// Example :
@@ -3635,6 +3905,8 @@ pub(crate) mod ffi {
         /// |2.0, 2.0, 2.0|
         #[cxx_name = "IsURational"]
         fn is_u_rational(self: &BezierSurface) -> bool;
+        /// **Source:** `Geom_BezierSurface.hxx`:592 - `Geom_BezierSurface::IsVRational()`
+        ///
         /// Returns False if the weights are identical in the V direction,
         /// The tolerance criterion is Resolution from package gp.
         /// Example :
@@ -3643,9 +3915,13 @@ pub(crate) mod ffi {
         /// |1.0, 2.0, 0.5|
         #[cxx_name = "IsVRational"]
         fn is_v_rational(self: &BezierSurface) -> bool;
+        /// **Source:** `Geom_BezierSurface.hxx`:595 - `Geom_BezierSurface::Transform()`
+        ///
         /// Applies the transformation T to this Bezier surface.
         #[cxx_name = "Transform"]
         fn transform(self: Pin<&mut BezierSurface>, T: &gp_Trsf);
+        /// **Source:** `Geom_BezierSurface.hxx`:611 - `Geom_BezierSurface::Resolution()`
+        ///
         /// Computes two tolerance values for this Bezier
         /// surface, based on the given tolerance in 3D space
         /// Tolerance3D. The tolerances computed are:
@@ -3663,6 +3939,7 @@ pub(crate) mod ffi {
             UTolerance: &mut f64,
             VTolerance: &mut f64,
         );
+        /// **Source:** `Geom_BezierSurface.hxx`:622 - `Geom_BezierSurface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BezierSurface) -> &HandleStandardType;
         /// Computes the derivative of order Nu in the u
@@ -3691,10 +3968,13 @@ pub(crate) mod ffi {
         /// Creates a new object which is a copy of this Bezier surface.
         #[cxx_name = "Geom_BezierSurface_Copy"]
         fn BezierSurface_copy(self_: &BezierSurface) -> UniquePtr<HandleGeomGeometry>;
+        /// **Source:** `Geom_BezierSurface.hxx`:599 - `Geom_BezierSurface::MaxDegree()`
+        ///
         /// Returns the value of the maximum polynomial degree of a
         /// Bezier surface. This value is 25.
         #[cxx_name = "Geom_BezierSurface_MaxDegree"]
         fn BezierSurface_max_degree() -> i32;
+        /// **Source:** `Geom_BezierSurface.hxx`:622 - `Geom_BezierSurface::get_type_name()`
         #[cxx_name = "Geom_BezierSurface_get_type_name"]
         fn BezierSurface_get_type_name() -> String;
         /// Upcast Geom_BezierSurface to Geom_BoundedSurface
@@ -3738,7 +4018,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomBezierSurface,
         ) -> UniquePtr<HandleGeomSurface>;
         /// ======================== Geom_BSplineCurve ========================
-        /// **Source:** `Geom_BSplineCurve.hxx` - `Geom_BSplineCurve`
+        /// **Source:** `Geom_BSplineCurve.hxx`:128 - `Geom_BSplineCurve`
         ///
         /// Definition of the B_spline curve.
         /// A B-spline curve can be
@@ -3828,7 +4108,7 @@ pub(crate) mod ffi {
         /// a practical guide Gerald Farin
         #[cxx_name = "Geom_BSplineCurve"]
         type BSplineCurve;
-        /// **Source:** `Geom_BSplineCurve.hxx` - `Geom_BSplineCurve::Geom_BSplineCurve()`
+        /// **Source:** `Geom_BSplineCurve.hxx`:134 - `Geom_BSplineCurve::Geom_BSplineCurve()`
         ///
         /// Creates a  non-rational B_spline curve   on  the
         /// basis <Knots, Multiplicities> of degree <Degree>.
@@ -3840,7 +4120,7 @@ pub(crate) mod ffi {
             Degree: i32,
             Periodic: bool,
         ) -> UniquePtr<BSplineCurve>;
-        /// **Source:** `Geom_BSplineCurve.hxx` - `Geom_BSplineCurve::Geom_BSplineCurve()`
+        /// **Source:** `Geom_BSplineCurve.hxx`:167 - `Geom_BSplineCurve::Geom_BSplineCurve()`
         ///
         /// Creates  a rational B_spline  curve  on the basis
         /// <Knots, Multiplicities> of degree <Degree>.
@@ -3879,6 +4159,8 @@ pub(crate) mod ffi {
             Periodic: bool,
             CheckRational: bool,
         ) -> UniquePtr<BSplineCurve>;
+        /// **Source:** `Geom_BSplineCurve.hxx`:183 - `Geom_BSplineCurve::IncreaseDegree()`
+        ///
         /// Increases the degree of this BSpline curve to
         /// Degree. As a result, the poles, weights and
         /// multiplicities tables are modified; the knots table is
@@ -3889,6 +4171,8 @@ pub(crate) mod ffi {
         /// Geom_BSplineCurve::MaxDegree().
         #[cxx_name = "IncreaseDegree"]
         fn increase_degree(self: Pin<&mut BSplineCurve>, Degree: i32);
+        /// **Source:** `Geom_BSplineCurve.hxx`:192 - `Geom_BSplineCurve::IncreaseMultiplicity()`
+        ///
         /// Increases the multiplicity  of the knot <Index> to
         /// <M>.
         ///
@@ -3898,6 +4182,8 @@ pub(crate) mod ffi {
         /// If <Index> is not in [FirstUKnotIndex, LastUKnotIndex]
         #[cxx_name = "IncreaseMultiplicity"]
         fn increase_multiplicity_int2(self: Pin<&mut BSplineCurve>, Index: i32, M: i32);
+        /// **Source:** `Geom_BSplineCurve.hxx`:201 - `Geom_BSplineCurve::IncreaseMultiplicity()`
+        ///
         /// Increases  the  multiplicities   of  the knots  in
         /// [I1,I2] to <M>.
         ///
@@ -3907,6 +4193,8 @@ pub(crate) mod ffi {
         /// If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex]
         #[cxx_name = "IncreaseMultiplicity"]
         fn increase_multiplicity_int3(self: Pin<&mut BSplineCurve>, I1: i32, I2: i32, M: i32);
+        /// **Source:** `Geom_BSplineCurve.hxx`:213 - `Geom_BSplineCurve::IncrementMultiplicity()`
+        ///
         /// Increment  the  multiplicities   of  the knots  in
         /// [I1,I2] by <M>.
         ///
@@ -3917,6 +4205,8 @@ pub(crate) mod ffi {
         /// If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex]
         #[cxx_name = "IncrementMultiplicity"]
         fn increment_multiplicity(self: Pin<&mut BSplineCurve>, I1: i32, I2: i32, M: i32);
+        /// **Source:** `Geom_BSplineCurve.hxx`:230 - `Geom_BSplineCurve::InsertKnot()`
+        ///
         /// Inserts a knot value in the sequence of knots.  If
         /// <U>  is an  existing knot     the multiplicity  is
         /// increased by <M>.
@@ -3938,6 +4228,8 @@ pub(crate) mod ffi {
             ParametricTolerance: f64,
             Add: bool,
         );
+        /// **Source:** `Geom_BSplineCurve.hxx`:253 - `Geom_BSplineCurve::InsertKnots()`
+        ///
         /// Inserts a set of knots  values in  the sequence of
         /// knots.
         ///
@@ -3964,6 +4256,8 @@ pub(crate) mod ffi {
             ParametricTolerance: f64,
             Add: bool,
         );
+        /// **Source:** `Geom_BSplineCurve.hxx`:279 - `Geom_BSplineCurve::RemoveKnot()`
+        ///
         /// Reduces the multiplicity of the knot of index Index
         /// to M. If M is equal to 0, the knot is removed.
         /// With a modification of this type, the array of poles is also modified.
@@ -3987,6 +4281,8 @@ pub(crate) mod ffi {
         /// is raised.
         #[cxx_name = "RemoveKnot"]
         fn remove_knot(self: Pin<&mut BSplineCurve>, Index: i32, M: i32, Tolerance: f64) -> bool;
+        /// **Source:** `Geom_BSplineCurve.hxx`:289 - `Geom_BSplineCurve::Reverse()`
+        ///
         /// Changes the direction of parametrization of <me>. The Knot
         /// sequence is modified, the FirstParameter and the
         /// LastParameter are not modified. The StartPoint of the
@@ -3995,12 +4291,16 @@ pub(crate) mod ffi {
         /// of the reversed curve.
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut BSplineCurve>);
+        /// **Source:** `Geom_BSplineCurve.hxx`:295 - `Geom_BSplineCurve::ReversedParameter()`
+        ///
         /// Returns the  parameter on the  reversed  curve for
         /// the point of parameter U on <me>.
         ///
         /// returns UFirst + ULast - U
         #[cxx_name = "ReversedParameter"]
         fn reversed_parameter(self: &BSplineCurve, U: f64) -> f64;
+        /// **Source:** `Geom_BSplineCurve.hxx`:315 - `Geom_BSplineCurve::Segment()`
+        ///
         /// Modifies this BSpline curve by segmenting it between
         /// U1 and U2. Either of these values can be outside the
         /// bounds of the curve, but U2 must be greater than U1.
@@ -4021,6 +4321,8 @@ pub(crate) mod ffi {
         /// i.e. ((U2 - U1) - Period) > Precision::PConfusion().
         #[cxx_name = "Segment"]
         fn segment(self: Pin<&mut BSplineCurve>, U1: f64, U2: f64, theTolerance: f64);
+        /// **Source:** `Geom_BSplineCurve.hxx`:333 - `Geom_BSplineCurve::SetKnot()`
+        ///
         /// Modifies this BSpline curve by assigning the value K
         /// to the knot of index Index in the knots table. This is a
         /// relatively local modification because K must be such that:
@@ -4037,6 +4339,8 @@ pub(crate) mod ffi {
         /// Standard_OutOfRange if Index is outside the bounds of the knots table.
         #[cxx_name = "SetKnot"]
         fn set_knot_int_real(self: Pin<&mut BSplineCurve>, Index: i32, K: f64);
+        /// **Source:** `Geom_BSplineCurve.hxx`:342 - `Geom_BSplineCurve::SetKnots()`
+        ///
         /// Modifies this BSpline curve by assigning the array
         /// K to its knots table. The multiplicity of the knots is not modified.
         /// Exceptions
@@ -4046,6 +4350,8 @@ pub(crate) mod ffi {
         /// K are not respectively 1 and the number of knots of this BSpline curve.
         #[cxx_name = "SetKnots"]
         fn set_knots(self: Pin<&mut BSplineCurve>, K: &TColStd_Array1OfReal);
+        /// **Source:** `Geom_BSplineCurve.hxx`:352 - `Geom_BSplineCurve::SetKnot()`
+        ///
         /// Changes the knot of range Index with its multiplicity.
         /// You can increase the multiplicity of a knot but it is
         /// not allowed to decrease the multiplicity of an existing knot.
@@ -4056,11 +4362,15 @@ pub(crate) mod ffi {
         /// Raised if Index < 1 || Index > NbKnots
         #[cxx_name = "SetKnot"]
         fn set_knot_int_real_int(self: Pin<&mut BSplineCurve>, Index: i32, K: f64, M: i32);
+        /// **Source:** `Geom_BSplineCurve.hxx`:359 - `Geom_BSplineCurve::PeriodicNormalization()`
+        ///
         /// returns the parameter normalized within
         /// the period if the curve is periodic : otherwise
         /// does not do anything
         #[cxx_name = "PeriodicNormalization"]
         fn periodic_normalization(self: &BSplineCurve, U: &mut f64);
+        /// **Source:** `Geom_BSplineCurve.hxx`:372 - `Geom_BSplineCurve::SetPeriodic()`
+        ///
         /// Changes this BSpline curve into a periodic curve.
         /// To become periodic, the curve must first be closed.
         /// Next, the knot sequence must be periodic. For this,
@@ -4074,6 +4384,8 @@ pub(crate) mod ffi {
         /// Standard_ConstructionError if this BSpline curve is not closed.
         #[cxx_name = "SetPeriodic"]
         fn set_periodic(self: Pin<&mut BSplineCurve>);
+        /// **Source:** `Geom_BSplineCurve.hxx`:380 - `Geom_BSplineCurve::SetOrigin()`
+        ///
         /// Assigns the knot of index Index in the knots table as
         /// the origin of this periodic BSpline curve. As a
         /// consequence, the knots and poles tables are modified.
@@ -4082,12 +4394,16 @@ pub(crate) mod ffi {
         /// Standard_DomainError if Index is outside the bounds of the knots table.
         #[cxx_name = "SetOrigin"]
         fn set_origin_int(self: Pin<&mut BSplineCurve>, Index: i32);
+        /// **Source:** `Geom_BSplineCurve.hxx`:386 - `Geom_BSplineCurve::SetOrigin()`
+        ///
         /// Set the origin of a periodic curve at Knot U. If U
         /// is  not a  knot  of  the  BSpline  a  new knot  is
         /// inserted. KnotVector and poles are modified.
         /// Raised if the curve is not periodic
         #[cxx_name = "SetOrigin"]
         fn set_origin_real2(self: Pin<&mut BSplineCurve>, U: f64, Tol: f64);
+        /// **Source:** `Geom_BSplineCurve.hxx`:397 - `Geom_BSplineCurve::SetNotPeriodic()`
+        ///
         /// Changes this BSpline curve into a non-periodic
         /// curve. If this curve is already non-periodic, it is not modified.
         /// Note: the poles and knots tables are modified.
@@ -4099,6 +4415,8 @@ pub(crate) mod ffi {
         /// curve are not its first and last poles.
         #[cxx_name = "SetNotPeriodic"]
         fn set_not_periodic(self: Pin<&mut BSplineCurve>);
+        /// **Source:** `Geom_BSplineCurve.hxx`:405 - `Geom_BSplineCurve::SetPole()`
+        ///
         /// Modifies this BSpline curve by assigning P to the pole
         /// of index Index in the poles table.
         /// Exceptions
@@ -4107,6 +4425,8 @@ pub(crate) mod ffi {
         /// Standard_ConstructionError if Weight is negative or null.
         #[cxx_name = "SetPole"]
         fn set_pole_int_pnt(self: Pin<&mut BSplineCurve>, Index: i32, P: &gp_Pnt);
+        /// **Source:** `Geom_BSplineCurve.hxx`:417 - `Geom_BSplineCurve::SetPole()`
+        ///
         /// Modifies this BSpline curve by assigning P to the pole
         /// of index Index in the poles table.
         /// This syntax also allows you to modify the
@@ -4119,6 +4439,8 @@ pub(crate) mod ffi {
         /// Standard_ConstructionError if Weight is negative or null.
         #[cxx_name = "SetPole"]
         fn set_pole_int_pnt_real(self: Pin<&mut BSplineCurve>, Index: i32, P: &gp_Pnt, Weight: f64);
+        /// **Source:** `Geom_BSplineCurve.hxx`:427 - `Geom_BSplineCurve::SetWeight()`
+        ///
         /// Changes the weight for the pole of range Index.
         /// If the curve was non rational it can become rational.
         /// If the curve was rational it can become non rational.
@@ -4127,6 +4449,8 @@ pub(crate) mod ffi {
         /// Raised if Weight <= 0.0
         #[cxx_name = "SetWeight"]
         fn set_weight(self: Pin<&mut BSplineCurve>, Index: i32, Weight: f64);
+        /// **Source:** `Geom_BSplineCurve.hxx`:443 - `Geom_BSplineCurve::MovePoint()`
+        ///
         /// Moves the point of parameter U of this BSpline curve
         /// to P. Index1 and Index2 are the indexes in the table
         /// of poles of this BSpline curve of the first and last
@@ -4151,6 +4475,8 @@ pub(crate) mod ffi {
             FirstModifiedPole: &mut i32,
             LastModifiedPole: &mut i32,
         );
+        /// **Source:** `Geom_BSplineCurve.hxx`:461 - `Geom_BSplineCurve::MovePointAndTangent()`
+        ///
         /// Move a point with parameter U to P.
         /// and makes it tangent at U be Tangent.
         /// StartingCondition = -1 means first can move
@@ -4173,10 +4499,14 @@ pub(crate) mod ffi {
             EndingCondition: i32,
             ErrorStatus: &mut i32,
         );
+        /// **Source:** `Geom_BSplineCurve.hxx`:471 - `Geom_BSplineCurve::IsCN()`
+        ///
         /// Returns the continuity of the curve, the curve is at least C0.
         /// Raised if N < 0.
         #[cxx_name = "IsCN"]
         fn is_cn(self: &BSplineCurve, N: i32) -> bool;
+        /// **Source:** `Geom_BSplineCurve.hxx`:479 - `Geom_BSplineCurve::IsG1()`
+        ///
         /// Check if curve has at least G1 continuity in interval [theTf, theTl]
         /// Returns true if IsCN(1)
         /// or
@@ -4185,6 +4515,8 @@ pub(crate) mod ffi {
         /// only knots in interval [theTf, theTl] is checked
         #[cxx_name = "IsG1"]
         fn is_g1(self: &BSplineCurve, theTf: f64, theTl: f64, theAngTol: f64) -> bool;
+        /// **Source:** `Geom_BSplineCurve.hxx`:489 - `Geom_BSplineCurve::IsClosed()`
+        ///
         /// Returns true if the distance between the first point and the
         /// last point of the curve is lower or equal to Resolution
         /// from package gp.
@@ -4193,25 +4525,37 @@ pub(crate) mod ffi {
         /// pole and the last pole of the curve.
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &BSplineCurve) -> bool;
+        /// **Source:** `Geom_BSplineCurve.hxx`:492 - `Geom_BSplineCurve::IsPeriodic()`
+        ///
         /// Returns True if the curve is periodic.
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &BSplineCurve) -> bool;
+        /// **Source:** `Geom_BSplineCurve.hxx`:496 - `Geom_BSplineCurve::IsRational()`
+        ///
         /// Returns True if the weights are not identical.
         /// The tolerance criterion is Epsilon of the class Real.
         #[cxx_name = "IsRational"]
         fn is_rational(self: &BSplineCurve) -> bool;
+        /// **Source:** `Geom_BSplineCurve.hxx`:516 - `Geom_BSplineCurve::Degree()`
+        ///
         /// Returns the degree of this BSpline curve.
         /// The degree of a Geom_BSplineCurve curve cannot
         /// be greater than Geom_BSplineCurve::MaxDegree().
         /// Computation of value and derivatives
         #[cxx_name = "Degree"]
         fn degree(self: &BSplineCurve) -> i32;
+        /// **Source:** `Geom_BSplineCurve.hxx`:519 - `Geom_BSplineCurve::D0()`
+        ///
         /// Returns in P the point of parameter U.
         #[cxx_name = "D0"]
         fn d0(self: &BSplineCurve, U: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `Geom_BSplineCurve.hxx`:522 - `Geom_BSplineCurve::D1()`
+        ///
         /// Raised if the continuity of the curve is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &BSplineCurve, U: f64, P: Pin<&mut gp_Pnt>, V1: Pin<&mut gp_Vec>);
+        /// **Source:** `Geom_BSplineCurve.hxx`:525 - `Geom_BSplineCurve::D2()`
+        ///
         /// Raised if the continuity of the curve is not C2.
         #[cxx_name = "D2"]
         fn d2(
@@ -4221,6 +4565,8 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BSplineCurve.hxx`:531 - `Geom_BSplineCurve::D3()`
+        ///
         /// Raised if the continuity of the curve is not C3.
         #[cxx_name = "D3"]
         fn d3(
@@ -4231,9 +4577,13 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec>,
             V3: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BSplineCurve.hxx`:568 - `Geom_BSplineCurve::LocalD0()`
+        ///
         /// Raised if FromK1 = ToK2.
         #[cxx_name = "LocalD0"]
         fn local_d0(self: &BSplineCurve, U: f64, FromK1: i32, ToK2: i32, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `Geom_BSplineCurve.hxx`:576 - `Geom_BSplineCurve::LocalD1()`
+        ///
         /// Raised if the local continuity of the curve is not C1
         /// between the knot K1 and the knot K2.
         /// Raised if FromK1 = ToK2.
@@ -4246,6 +4596,8 @@ pub(crate) mod ffi {
             P: Pin<&mut gp_Pnt>,
             V1: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BSplineCurve.hxx`:585 - `Geom_BSplineCurve::LocalD2()`
+        ///
         /// Raised if the local continuity of the curve is not C2
         /// between the knot K1 and the knot K2.
         /// Raised if FromK1 = ToK2.
@@ -4259,6 +4611,8 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BSplineCurve.hxx`:595 - `Geom_BSplineCurve::LocalD3()`
+        ///
         /// Raised if the local continuity of the curve is not C3
         /// between the knot K1 and the knot K2.
         /// Raised if FromK1 = ToK2.
@@ -4273,6 +4627,8 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec>,
             V3: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BSplineCurve.hxx`:627 - `Geom_BSplineCurve::FirstUKnotIndex()`
+        ///
         /// Returns the index in the knot array of the knot
         /// corresponding to the first or last parameter of this BSpline curve.
         /// For a BSpline curve, the first (or last) parameter
@@ -4283,11 +4639,15 @@ pub(crate) mod ffi {
         /// (or last) knot of the curve.
         #[cxx_name = "FirstUKnotIndex"]
         fn first_u_knot_index(self: &BSplineCurve) -> i32;
+        /// **Source:** `Geom_BSplineCurve.hxx`:632 - `Geom_BSplineCurve::FirstParameter()`
+        ///
         /// Returns the value of the first parameter of this
         /// BSpline curve. This is a knot value.
         /// The first parameter is the one of the start point of the BSpline curve.
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &BSplineCurve) -> f64;
+        /// **Source:** `Geom_BSplineCurve.hxx`:639 - `Geom_BSplineCurve::Knot()`
+        ///
         /// Returns the knot of range Index. When there is a knot
         /// with a multiplicity greater than 1 the knot is not repeated.
         /// The method Multiplicity can be used to get the multiplicity
@@ -4295,6 +4655,8 @@ pub(crate) mod ffi {
         /// Raised if Index < 1 or Index > NbKnots
         #[cxx_name = "Knot"]
         fn knot(self: &BSplineCurve, Index: i32) -> f64;
+        /// **Source:** `Geom_BSplineCurve.hxx`:649 - `Geom_BSplineCurve::Knots()`
+        ///
         /// returns the knot values of the B-spline curve;
         /// Warning
         /// A knot with a multiplicity greater than 1 is not
@@ -4305,6 +4667,8 @@ pub(crate) mod ffi {
         /// K.Upper() is more than number of last knot.
         #[cxx_name = "Knots"]
         fn knots_array1ofreal(self: &BSplineCurve, K: Pin<&mut TColStd_Array1OfReal>);
+        /// **Source:** `Geom_BSplineCurve.hxx`:656 - `Geom_BSplineCurve::Knots()`
+        ///
         /// returns the knot values of the B-spline curve;
         /// Warning
         /// A knot with a multiplicity greater than 1 is not
@@ -4312,6 +4676,8 @@ pub(crate) mod ffi {
         /// can be used to obtain the multiplicity of each knot.
         #[cxx_name = "Knots"]
         fn knots(self: &BSplineCurve) -> &TColStd_Array1OfReal;
+        /// **Source:** `Geom_BSplineCurve.hxx`:711 - `Geom_BSplineCurve::KnotSequence()`
+        ///
         /// Returns K, the knots sequence of this BSpline curve.
         /// In this sequence, knots with a multiplicity greater than 1 are repeated.
         /// In the case of a non-periodic curve the length of the
@@ -4367,10 +4733,14 @@ pub(crate) mod ffi {
         /// than number of last knot in knot sequence with repetitions.
         #[cxx_name = "KnotSequence"]
         fn knot_sequence_array1ofreal(self: &BSplineCurve, K: Pin<&mut TColStd_Array1OfReal>);
+        /// **Source:** `Geom_BSplineCurve.hxx`:715 - `Geom_BSplineCurve::KnotSequence()`
+        ///
         /// returns the knots of the B-spline curve.
         /// Knots with multiplicit greater than 1 are repeated
         #[cxx_name = "KnotSequence"]
         fn knot_sequence(self: &BSplineCurve) -> &TColStd_Array1OfReal;
+        /// **Source:** `Geom_BSplineCurve.hxx`:736 - `Geom_BSplineCurve::LastUKnotIndex()`
+        ///
         /// For a BSpline curve the last parameter (which gives the
         /// end point of the curve) is a knot value but if the
         /// multiplicity of the last knot index is lower than
@@ -4379,10 +4749,14 @@ pub(crate) mod ffi {
         /// the last parameter.
         #[cxx_name = "LastUKnotIndex"]
         fn last_u_knot_index(self: &BSplineCurve) -> i32;
+        /// **Source:** `Geom_BSplineCurve.hxx`:740 - `Geom_BSplineCurve::LastParameter()`
+        ///
         /// Computes the parametric value of the end point of the curve.
         /// It is a knot value.
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &BSplineCurve) -> f64;
+        /// **Source:** `Geom_BSplineCurve.hxx`:752 - `Geom_BSplineCurve::LocateU()`
+        ///
         /// Locates the parametric value U in the sequence of knots.
         /// If "WithKnotRepetition" is True we consider the knot's
         /// representation with repetition of multiple knot value,
@@ -4402,10 +4776,14 @@ pub(crate) mod ffi {
             I2: &mut i32,
             WithKnotRepetition: bool,
         );
+        /// **Source:** `Geom_BSplineCurve.hxx`:760 - `Geom_BSplineCurve::Multiplicity()`
+        ///
         /// Returns the multiplicity of the knots of range Index.
         /// Raised if Index < 1 or Index > NbKnots
         #[cxx_name = "Multiplicity"]
         fn multiplicity(self: &BSplineCurve, Index: i32) -> i32;
+        /// **Source:** `Geom_BSplineCurve.hxx`:765 - `Geom_BSplineCurve::Multiplicities()`
+        ///
         /// Returns the multiplicity of the knots of the curve.
         ///
         /// Raised if the length of M is not equal to NbKnots.
@@ -4414,40 +4792,60 @@ pub(crate) mod ffi {
             self: &BSplineCurve,
             M: Pin<&mut TColStd_Array1OfInteger>,
         );
+        /// **Source:** `Geom_BSplineCurve.hxx`:768 - `Geom_BSplineCurve::Multiplicities()`
+        ///
         /// returns the multiplicity of the knots of the curve.
         #[cxx_name = "Multiplicities"]
         fn multiplicities(self: &BSplineCurve) -> &TColStd_Array1OfInteger;
+        /// **Source:** `Geom_BSplineCurve.hxx`:772 - `Geom_BSplineCurve::NbKnots()`
+        ///
         /// Returns the number of knots. This method returns the number of
         /// knot without repetition of multiple knots.
         #[cxx_name = "NbKnots"]
         fn nb_knots(self: &BSplineCurve) -> i32;
+        /// **Source:** `Geom_BSplineCurve.hxx`:775 - `Geom_BSplineCurve::NbPoles()`
+        ///
         /// Returns the number of poles
         #[cxx_name = "NbPoles"]
         fn nb_poles(self: &BSplineCurve) -> i32;
+        /// **Source:** `Geom_BSplineCurve.hxx`:779 - `Geom_BSplineCurve::Pole()`
+        ///
         /// Returns the pole of range Index.
         /// Raised if Index < 1 or Index > NbPoles.
         #[cxx_name = "Pole"]
         fn pole(self: &BSplineCurve, Index: i32) -> &gp_Pnt;
+        /// **Source:** `Geom_BSplineCurve.hxx`:784 - `Geom_BSplineCurve::Poles()`
+        ///
         /// Returns the poles of the B-spline curve;
         ///
         /// Raised if the length of P is not equal to the number of poles.
         #[cxx_name = "Poles"]
         fn poles_array1ofpnt(self: &BSplineCurve, P: Pin<&mut TColgp_Array1OfPnt>);
+        /// **Source:** `Geom_BSplineCurve.hxx`:787 - `Geom_BSplineCurve::Poles()`
+        ///
         /// Returns the poles of the B-spline curve;
         #[cxx_name = "Poles"]
         fn poles(self: &BSplineCurve) -> &TColgp_Array1OfPnt;
+        /// **Source:** `Geom_BSplineCurve.hxx`:797 - `Geom_BSplineCurve::Weight()`
+        ///
         /// Returns the weight of the pole of range Index .
         /// Raised if Index < 1 or Index > NbPoles.
         #[cxx_name = "Weight"]
         fn weight(self: &BSplineCurve, Index: i32) -> f64;
+        /// **Source:** `Geom_BSplineCurve.hxx`:802 - `Geom_BSplineCurve::Weights()`
+        ///
         /// Returns the weights of the B-spline curve;
         ///
         /// Raised if the length of W is not equal to NbPoles.
         #[cxx_name = "Weights"]
         fn weights_array1ofreal(self: &BSplineCurve, W: Pin<&mut TColStd_Array1OfReal>);
+        /// **Source:** `Geom_BSplineCurve.hxx`:808 - `Geom_BSplineCurve::Transform()`
+        ///
         /// Applies the transformation T to this BSpline curve.
         #[cxx_name = "Transform"]
         fn transform(self: Pin<&mut BSplineCurve>, T: &gp_Trsf);
+        /// **Source:** `Geom_BSplineCurve.hxx`:820 - `Geom_BSplineCurve::Resolution()`
+        ///
         /// Computes for this BSpline curve the parametric
         /// tolerance UTolerance for a given 3D tolerance Tolerance3D.
         /// If f(t) is the equation of this BSpline curve,
@@ -4456,9 +4854,12 @@ pub(crate) mod ffi {
         /// |f(t1) - f(t0)| < Tolerance3D
         #[cxx_name = "Resolution"]
         fn resolution(self: Pin<&mut BSplineCurve>, Tolerance3D: f64, UTolerance: &mut f64);
+        /// **Source:** `Geom_BSplineCurve.hxx`:826 - `Geom_BSplineCurve::IsEqual()`
+        ///
         /// Compare two Bspline curve on identity;
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &BSplineCurve, theOther: &HandleGeomBSplineCurve, thePreci: f64) -> bool;
+        /// **Source:** `Geom_BSplineCurve.hxx`:833 - `Geom_BSplineCurve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BSplineCurve) -> &HandleStandardType;
         /// For the point of parameter U of this BSpline curve,
@@ -4521,10 +4922,13 @@ pub(crate) mod ffi {
         /// Creates a new object which is a copy of this BSpline curve.
         #[cxx_name = "Geom_BSplineCurve_Copy"]
         fn BSplineCurve_copy(self_: &BSplineCurve) -> UniquePtr<HandleGeomGeometry>;
+        /// **Source:** `Geom_BSplineCurve.hxx`:812 - `Geom_BSplineCurve::MaxDegree()`
+        ///
         /// Returns the value of the maximum degree of the normalized
         /// B-spline basis functions in this package.
         #[cxx_name = "Geom_BSplineCurve_MaxDegree"]
         fn BSplineCurve_max_degree() -> i32;
+        /// **Source:** `Geom_BSplineCurve.hxx`:833 - `Geom_BSplineCurve::get_type_name()`
         #[cxx_name = "Geom_BSplineCurve_get_type_name"]
         fn BSplineCurve_get_type_name() -> String;
         /// Upcast Geom_BSplineCurve to Geom_BoundedCurve
@@ -4568,7 +4972,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomBSplineCurve,
         ) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_BSplineSurface ========================
-        /// **Source:** `Geom_BSplineSurface.hxx` - `Geom_BSplineSurface`
+        /// **Source:** `Geom_BSplineSurface.hxx`:157 - `Geom_BSplineSurface`
         ///
         /// Describes a BSpline surface.
         /// In each parametric direction, a BSpline surface can be:
@@ -4683,7 +5087,7 @@ pub(crate) mod ffi {
         /// a practical guide Gerald Farin
         #[cxx_name = "Geom_BSplineSurface"]
         type BSplineSurface;
-        /// **Source:** `Geom_BSplineSurface.hxx` - `Geom_BSplineSurface::Geom_BSplineSurface()`
+        /// **Source:** `Geom_BSplineSurface.hxx`:180 - `Geom_BSplineSurface::Geom_BSplineSurface()`
         ///
         /// Creates  a non-rational b-spline surface (weights
         /// default value is 1.).
@@ -4716,7 +5120,7 @@ pub(crate) mod ffi {
             UPeriodic: bool,
             VPeriodic: bool,
         ) -> UniquePtr<BSplineSurface>;
-        /// **Source:** `Geom_BSplineSurface.hxx` - `Geom_BSplineSurface::Geom_BSplineSurface()`
+        /// **Source:** `Geom_BSplineSurface.hxx`:220 - `Geom_BSplineSurface::Geom_BSplineSurface()`
         ///
         /// Creates  a non-rational b-spline surface (weights
         /// default value is 1.).
@@ -4761,6 +5165,8 @@ pub(crate) mod ffi {
             UPeriodic: bool,
             VPeriodic: bool,
         ) -> UniquePtr<BSplineSurface>;
+        /// **Source:** `Geom_BSplineSurface.hxx`:239 - `Geom_BSplineSurface::ExchangeUV()`
+        ///
         /// Exchanges the u and v parametric directions on
         /// this BSpline surface.
         /// As a consequence:
@@ -4771,6 +5177,8 @@ pub(crate) mod ffi {
         /// - the orientation of the surface is inverted.
         #[cxx_name = "ExchangeUV"]
         fn exchange_uv(self: Pin<&mut BSplineSurface>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:259 - `Geom_BSplineSurface::SetUPeriodic()`
+        ///
         /// Sets the surface U periodic.
         /// Modifies this surface to be periodic in the U
         /// parametric direction.
@@ -4791,6 +5199,8 @@ pub(crate) mod ffi {
         /// closed in the given parametric direction.
         #[cxx_name = "SetUPeriodic"]
         fn set_u_periodic(self: Pin<&mut BSplineSurface>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:279 - `Geom_BSplineSurface::SetVPeriodic()`
+        ///
         /// Sets the surface V periodic.
         /// Modifies this surface to be periodic in the V
         /// parametric direction.
@@ -4811,11 +5221,15 @@ pub(crate) mod ffi {
         /// closed in the given parametric direction.
         #[cxx_name = "SetVPeriodic"]
         fn set_v_periodic(self: Pin<&mut BSplineSurface>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:284 - `Geom_BSplineSurface::PeriodicNormalization()`
+        ///
         /// returns the parameter normalized within
         /// the period if the surface is periodic : otherwise
         /// does not do anything
         #[cxx_name = "PeriodicNormalization"]
         fn periodic_normalization(self: &BSplineSurface, U: &mut f64, V: &mut f64);
+        /// **Source:** `Geom_BSplineSurface.hxx`:295 - `Geom_BSplineSurface::SetUOrigin()`
+        ///
         /// Assigns the knot of index Index in the knots table in
         /// the corresponding parametric direction to be the
         /// origin of this periodic BSpline surface. As a
@@ -4827,6 +5241,8 @@ pub(crate) mod ffi {
         /// bounds of the knots table in the given parametric direction.
         #[cxx_name = "SetUOrigin"]
         fn set_u_origin(self: Pin<&mut BSplineSurface>, Index: i32);
+        /// **Source:** `Geom_BSplineSurface.hxx`:306 - `Geom_BSplineSurface::SetVOrigin()`
+        ///
         /// Assigns the knot of index Index in the knots table in
         /// the corresponding parametric direction to be the
         /// origin of this periodic BSpline surface. As a
@@ -4838,6 +5254,8 @@ pub(crate) mod ffi {
         /// bounds of the knots table in the given parametric direction.
         #[cxx_name = "SetVOrigin"]
         fn set_v_origin(self: Pin<&mut BSplineSurface>, Index: i32);
+        /// **Source:** `Geom_BSplineSurface.hxx`:313 - `Geom_BSplineSurface::SetUNotPeriodic()`
+        ///
         /// Sets the surface U not periodic.
         /// Changes this BSpline surface into a non-periodic
         /// surface along U direction.
@@ -4845,6 +5263,8 @@ pub(crate) mod ffi {
         /// Note: the poles and knots tables are modified.
         #[cxx_name = "SetUNotPeriodic"]
         fn set_u_not_periodic(self: Pin<&mut BSplineSurface>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:320 - `Geom_BSplineSurface::SetVNotPeriodic()`
+        ///
         /// Sets the surface V not periodic.
         /// Changes this BSpline surface into a non-periodic
         /// surface along V direction.
@@ -4852,6 +5272,8 @@ pub(crate) mod ffi {
         /// Note: the poles and knots tables are modified.
         #[cxx_name = "SetVNotPeriodic"]
         fn set_v_not_periodic(self: Pin<&mut BSplineSurface>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:328 - `Geom_BSplineSurface::UReverse()`
+        ///
         /// Changes the orientation of this BSpline surface in the
         /// U parametric direction. The bounds of the
         /// surface are not changed but the given parametric
@@ -4860,6 +5282,8 @@ pub(crate) mod ffi {
         /// The knots and poles tables are modified.
         #[cxx_name = "UReverse"]
         fn u_reverse(self: Pin<&mut BSplineSurface>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:336 - `Geom_BSplineSurface::VReverse()`
+        ///
         /// Changes the orientation of this BSpline surface in the
         /// V parametric direction. The bounds of the
         /// surface are not changed but the given parametric
@@ -4868,6 +5292,8 @@ pub(crate) mod ffi {
         /// The knots and poles tables are modified.
         #[cxx_name = "VReverse"]
         fn v_reverse(self: Pin<&mut BSplineSurface>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:346 - `Geom_BSplineSurface::UReversedParameter()`
+        ///
         /// Computes the u parameter on the modified
         /// surface, produced by reversing its U parametric
         /// direction, for the point of u parameter U,  on this BSpline surface.
@@ -4878,6 +5304,8 @@ pub(crate) mod ffi {
         /// BSpline surface, in the u parametric directions.
         #[cxx_name = "UReversedParameter"]
         fn u_reversed_parameter(self: &BSplineSurface, U: f64) -> f64;
+        /// **Source:** `Geom_BSplineSurface.hxx`:356 - `Geom_BSplineSurface::VReversedParameter()`
+        ///
         /// Computes the v parameter on the modified
         /// surface, produced by reversing its V parametric
         /// direction, for the point of v parameter V on this BSpline surface.
@@ -4888,6 +5316,8 @@ pub(crate) mod ffi {
         /// BSpline surface, in the v pametric directions.
         #[cxx_name = "VReversedParameter"]
         fn v_reversed_parameter(self: &BSplineSurface, V: f64) -> f64;
+        /// **Source:** `Geom_BSplineSurface.hxx`:370 - `Geom_BSplineSurface::IncreaseDegree()`
+        ///
         /// Increases the degrees of this BSpline surface to
         /// UDegree and VDegree in the u and v parametric
         /// directions respectively. As a result, the tables of poles,
@@ -4902,6 +5332,8 @@ pub(crate) mod ffi {
         /// Geom_BSplineSurface::MaxDegree().
         #[cxx_name = "IncreaseDegree"]
         fn increase_degree(self: Pin<&mut BSplineSurface>, UDegree: i32, VDegree: i32);
+        /// **Source:** `Geom_BSplineSurface.hxx`:392 - `Geom_BSplineSurface::InsertUKnots()`
+        ///
         /// Inserts into the knots table for the U
         /// parametric direction of this BSpline surface:
         /// - the values of the array Knots, with their respective
@@ -4929,6 +5361,8 @@ pub(crate) mod ffi {
             ParametricTolerance: f64,
             Add: bool,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:416 - `Geom_BSplineSurface::InsertVKnots()`
+        ///
         /// Inserts into the knots table for the V
         /// parametric direction of this BSpline surface:
         /// - the values of the array Knots, with their respective
@@ -4956,6 +5390,8 @@ pub(crate) mod ffi {
             ParametricTolerance: f64,
             Add: bool,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:438 - `Geom_BSplineSurface::RemoveUKnot()`
+        ///
         /// Reduces to M the multiplicity of the knot of index
         /// Index in the U parametric direction. If M is 0, the knot is removed.
         /// With a modification of this type, the table of poles is also modified.
@@ -4980,6 +5416,8 @@ pub(crate) mod ffi {
             M: i32,
             Tolerance: f64,
         ) -> bool;
+        /// **Source:** `Geom_BSplineSurface.hxx`:459 - `Geom_BSplineSurface::RemoveVKnot()`
+        ///
         /// Reduces to M the multiplicity of the knot of index
         /// Index in the V parametric direction. If M is 0, the knot is removed.
         /// With a modification of this type, the table of poles is also modified.
@@ -5004,6 +5442,8 @@ pub(crate) mod ffi {
             M: i32,
             Tolerance: f64,
         ) -> bool;
+        /// **Source:** `Geom_BSplineSurface.hxx`:472 - `Geom_BSplineSurface::IncreaseUMultiplicity()`
+        ///
         /// Increases the multiplicity of the knot of range UIndex
         /// in the UKnots sequence.
         /// M is the new multiplicity. M must be greater than the
@@ -5015,6 +5455,8 @@ pub(crate) mod ffi {
         /// LastUKnotIndex] given by the methods with the same name.
         #[cxx_name = "IncreaseUMultiplicity"]
         fn increase_u_multiplicity_int2(self: Pin<&mut BSplineSurface>, UIndex: i32, M: i32);
+        /// **Source:** `Geom_BSplineSurface.hxx`:487 - `Geom_BSplineSurface::IncreaseUMultiplicity()`
+        ///
         /// Increases until order M the multiplicity of the set of knots
         /// FromI1,...., ToI2 in the U direction. This method can be used
         /// to make a B_spline surface into a PiecewiseBezier B_spline
@@ -5034,6 +5476,8 @@ pub(crate) mod ffi {
             ToI2: i32,
             M: i32,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:499 - `Geom_BSplineSurface::IncrementUMultiplicity()`
+        ///
         /// Increments the multiplicity of the consecutives uknots FromI1..ToI2
         /// by step.   The multiplicity of each knot FromI1,.....,ToI2 must be
         /// lower or equal to the UDegree of the B_spline.
@@ -5049,6 +5493,8 @@ pub(crate) mod ffi {
             ToI2: i32,
             Step: i32,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:511 - `Geom_BSplineSurface::IncreaseVMultiplicity()`
+        ///
         /// Increases the multiplicity of a knot in the V direction.
         /// M is the new multiplicity.
         ///
@@ -5059,6 +5505,8 @@ pub(crate) mod ffi {
         /// LastVKnotIndex] given by the methods with the same name.
         #[cxx_name = "IncreaseVMultiplicity"]
         fn increase_v_multiplicity_int2(self: Pin<&mut BSplineSurface>, VIndex: i32, M: i32);
+        /// **Source:** `Geom_BSplineSurface.hxx`:525 - `Geom_BSplineSurface::IncreaseVMultiplicity()`
+        ///
         /// Increases until order M the multiplicity of the set of knots
         /// FromI1,...., ToI2 in the V direction. This method can be used to
         /// make a BSplineSurface into a PiecewiseBezier B_spline
@@ -5077,6 +5525,8 @@ pub(crate) mod ffi {
             ToI2: i32,
             M: i32,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:537 - `Geom_BSplineSurface::IncrementVMultiplicity()`
+        ///
         /// Increments the multiplicity of the consecutives vknots FromI1..ToI2
         /// by step.  The multiplicity of each knot FromI1,.....,ToI2 must be
         /// lower or equal to the VDegree of the B_spline.
@@ -5092,6 +5542,8 @@ pub(crate) mod ffi {
             ToI2: i32,
             Step: i32,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:550 - `Geom_BSplineSurface::InsertUKnot()`
+        ///
         /// Inserts a knot value in the sequence of UKnots. If U is a knot
         /// value this method increases the multiplicity of the knot if the
         /// previous multiplicity was lower than M else it does nothing. The
@@ -5109,6 +5561,8 @@ pub(crate) mod ffi {
             ParametricTolerance: f64,
             Add: bool,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:565 - `Geom_BSplineSurface::InsertVKnot()`
+        ///
         /// Inserts a knot value in the sequence of VKnots. If V is a knot
         /// value this method increases the multiplicity of the knot if the
         /// previous multiplicity was lower than M otherwise it does nothing.
@@ -5127,6 +5581,8 @@ pub(crate) mod ffi {
             ParametricTolerance: f64,
             Add: bool,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:587 - `Geom_BSplineSurface::Segment()`
+        ///
         /// Segments the surface between U1 and U2 in the U-Direction.
         /// between V1 and V2 in the V-Direction.
         /// The control points are modified, the first and the last point
@@ -5154,6 +5610,8 @@ pub(crate) mod ffi {
             theUTolerance: f64,
             theVTolerance: f64,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:614 - `Geom_BSplineSurface::CheckAndSegment()`
+        ///
         /// Segments the surface between U1 and U2 in the U-Direction.
         /// between V1 and V2 in the V-Direction.
         ///
@@ -5184,6 +5642,8 @@ pub(crate) mod ffi {
             theUTolerance: f64,
             theVTolerance: f64,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:626 - `Geom_BSplineSurface::SetUKnot()`
+        ///
         /// Substitutes the UKnots of range UIndex with K.
         ///
         /// Raised if UIndex < 1 or UIndex > NbUKnots
@@ -5191,6 +5651,8 @@ pub(crate) mod ffi {
         /// Raised if K >= UKnots(UIndex+1) or K <= UKnots(UIndex-1)
         #[cxx_name = "SetUKnot"]
         fn set_u_knot_int_real(self: Pin<&mut BSplineSurface>, UIndex: i32, K: f64);
+        /// **Source:** `Geom_BSplineSurface.hxx`:634 - `Geom_BSplineSurface::SetUKnots()`
+        ///
         /// Changes all the U-knots of the surface.
         /// The multiplicity of the knots are not modified.
         ///
@@ -5199,6 +5661,8 @@ pub(crate) mod ffi {
         /// Raised if  UK.Lower() < 1 or UK.Upper() > NbUKnots
         #[cxx_name = "SetUKnots"]
         fn set_u_knots(self: Pin<&mut BSplineSurface>, UK: &TColStd_Array1OfReal);
+        /// **Source:** `Geom_BSplineSurface.hxx`:645 - `Geom_BSplineSurface::SetUKnot()`
+        ///
         /// Changes the value of the UKnots of range UIndex and
         /// increases its multiplicity.
         ///
@@ -5210,6 +5674,8 @@ pub(crate) mod ffi {
         /// multiplicity of the knot of range UIndex.
         #[cxx_name = "SetUKnot"]
         fn set_u_knot_int_real_int(self: Pin<&mut BSplineSurface>, UIndex: i32, K: f64, M: i32);
+        /// **Source:** `Geom_BSplineSurface.hxx`:654 - `Geom_BSplineSurface::SetVKnot()`
+        ///
         /// Substitutes the VKnots of range VIndex with K.
         ///
         /// Raised if VIndex < 1 or VIndex > NbVKnots
@@ -5217,6 +5683,8 @@ pub(crate) mod ffi {
         /// Raised if K >= VKnots(VIndex+1) or K <= VKnots(VIndex-1)
         #[cxx_name = "SetVKnot"]
         fn set_v_knot_int_real(self: Pin<&mut BSplineSurface>, VIndex: i32, K: f64);
+        /// **Source:** `Geom_BSplineSurface.hxx`:662 - `Geom_BSplineSurface::SetVKnots()`
+        ///
         /// Changes all the V-knots of the surface.
         /// The multiplicity of the knots are not modified.
         ///
@@ -5225,6 +5693,8 @@ pub(crate) mod ffi {
         /// Raised if  VK.Lower() < 1 or VK.Upper() > NbVKnots
         #[cxx_name = "SetVKnots"]
         fn set_v_knots(self: Pin<&mut BSplineSurface>, VK: &TColStd_Array1OfReal);
+        /// **Source:** `Geom_BSplineSurface.hxx`:673 - `Geom_BSplineSurface::SetVKnot()`
+        ///
         /// Changes the value of the VKnots of range VIndex and increases
         /// its multiplicity.
         ///
@@ -5236,6 +5706,8 @@ pub(crate) mod ffi {
         /// multiplicity of the knot of range VIndex.
         #[cxx_name = "SetVKnot"]
         fn set_v_knot_int_real_int(self: Pin<&mut BSplineSurface>, VIndex: i32, K: f64, M: i32);
+        /// **Source:** `Geom_BSplineSurface.hxx`:687 - `Geom_BSplineSurface::LocateU()`
+        ///
         /// Locates the parametric value U in the sequence of UKnots.
         /// If "WithKnotRepetition" is True we consider the knot's
         /// representation with repetition of multiple knot value,
@@ -5255,6 +5727,8 @@ pub(crate) mod ffi {
             I2: &mut i32,
             WithKnotRepetition: bool,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:707 - `Geom_BSplineSurface::LocateV()`
+        ///
         /// Locates the parametric value V in the sequence of knots.
         /// If "WithKnotRepetition" is True we consider the knot's
         /// representation with repetition of multiple knot value,
@@ -5278,6 +5752,8 @@ pub(crate) mod ffi {
             I2: &mut i32,
             WithKnotRepetition: bool,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:719 - `Geom_BSplineSurface::SetPole()`
+        ///
         /// Substitutes the pole of range (UIndex, VIndex) with P.
         /// If the surface is rational the weight of range (UIndex, VIndex)
         /// is not modified.
@@ -5286,6 +5762,8 @@ pub(crate) mod ffi {
         /// VIndex > NbVPoles.
         #[cxx_name = "SetPole"]
         fn set_pole_int2_pnt(self: Pin<&mut BSplineSurface>, UIndex: i32, VIndex: i32, P: &gp_Pnt);
+        /// **Source:** `Geom_BSplineSurface.hxx`:729 - `Geom_BSplineSurface::SetPole()`
+        ///
         /// Substitutes the pole and the weight of range (UIndex, VIndex)
         /// with P and W.
         ///
@@ -5300,6 +5778,8 @@ pub(crate) mod ffi {
             P: &gp_Pnt,
             Weight: f64,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:738 - `Geom_BSplineSurface::SetPoleCol()`
+        ///
         /// Changes a column of poles or a part of this column.
         /// Raised if Vindex < 1 or VIndex > NbVPoles.
         ///
@@ -5310,6 +5790,8 @@ pub(crate) mod ffi {
             VIndex: i32,
             CPoles: &TColgp_Array1OfPnt,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:751 - `Geom_BSplineSurface::SetPoleCol()`
+        ///
         /// Changes a column of poles or a part of this column with the
         /// corresponding weights. If the surface was rational it can
         /// become non rational. If the surface was non rational it can
@@ -5328,6 +5810,8 @@ pub(crate) mod ffi {
             CPoles: &TColgp_Array1OfPnt,
             CPoleWeights: &TColStd_Array1OfReal,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:766 - `Geom_BSplineSurface::SetPoleRow()`
+        ///
         /// Changes a row of poles or a part of this row with the
         /// corresponding weights. If the surface was rational it can
         /// become non rational. If the surface was non rational it can
@@ -5346,6 +5830,8 @@ pub(crate) mod ffi {
             CPoles: &TColgp_Array1OfPnt,
             CPoleWeights: &TColStd_Array1OfReal,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:774 - `Geom_BSplineSurface::SetPoleRow()`
+        ///
         /// Changes a row of poles or a part of this row.
         /// Raised if Uindex < 1 or UIndex > NbUPoles.
         ///
@@ -5356,6 +5842,8 @@ pub(crate) mod ffi {
             UIndex: i32,
             CPoles: &TColgp_Array1OfPnt,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:785 - `Geom_BSplineSurface::SetWeight()`
+        ///
         /// Changes the weight of the pole of range UIndex, VIndex.
         /// If the surface was non rational it can become rational.
         /// If the surface was rational it can become non rational.
@@ -5367,6 +5855,8 @@ pub(crate) mod ffi {
         /// package gp
         #[cxx_name = "SetWeight"]
         fn set_weight(self: Pin<&mut BSplineSurface>, UIndex: i32, VIndex: i32, Weight: f64);
+        /// **Source:** `Geom_BSplineSurface.hxx`:797 - `Geom_BSplineSurface::SetWeightCol()`
+        ///
         /// Changes a column of weights of a part of this column.
         ///
         /// Raised if VIndex < 1 or VIndex > NbVPoles
@@ -5381,6 +5871,8 @@ pub(crate) mod ffi {
             VIndex: i32,
             CPoleWeights: &TColStd_Array1OfReal,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:808 - `Geom_BSplineSurface::SetWeightRow()`
+        ///
         /// Changes a row of weights or a part of this row.
         ///
         /// Raised if UIndex < 1 or UIndex > NbUPoles
@@ -5395,6 +5887,8 @@ pub(crate) mod ffi {
             UIndex: i32,
             CPoleWeights: &TColStd_Array1OfReal,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:826 - `Geom_BSplineSurface::MovePoint()`
+        ///
         /// Move a point with parameter U and V to P.
         /// given u,v  as parameters)  to  reach a  new position
         /// UIndex1, UIndex2, VIndex1, VIndex2:
@@ -5425,31 +5919,43 @@ pub(crate) mod ffi {
             VFirstIndex: &mut i32,
             VLastIndex: &mut i32,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:841 - `Geom_BSplineSurface::IsUClosed()`
+        ///
         /// Returns true if the first control points row and the last
         /// control points row are identical. The tolerance criterion
         /// is Resolution from package gp.
         #[cxx_name = "IsUClosed"]
         fn is_u_closed(self: &BSplineSurface) -> bool;
+        /// **Source:** `Geom_BSplineSurface.hxx`:846 - `Geom_BSplineSurface::IsVClosed()`
+        ///
         /// Returns true if the first control points column and the
         /// last last control points column are identical.
         /// The tolerance criterion is Resolution from package gp.
         #[cxx_name = "IsVClosed"]
         fn is_v_closed(self: &BSplineSurface) -> bool;
+        /// **Source:** `Geom_BSplineSurface.hxx`:851 - `Geom_BSplineSurface::IsCNu()`
+        ///
         /// Returns True if the order of continuity of the surface in the
         /// U direction  is N.
         /// Raised if N < 0.
         #[cxx_name = "IsCNu"]
         fn is_c_nu(self: &BSplineSurface, N: i32) -> bool;
+        /// **Source:** `Geom_BSplineSurface.hxx`:856 - `Geom_BSplineSurface::IsCNv()`
+        ///
         /// Returns True if the order of continuity of the surface
         /// in the V direction  is N.
         /// Raised if N < 0.
         #[cxx_name = "IsCNv"]
         fn is_c_nv(self: &BSplineSurface, N: i32) -> bool;
+        /// **Source:** `Geom_BSplineSurface.hxx`:861 - `Geom_BSplineSurface::IsUPeriodic()`
+        ///
         /// Returns True if the surface is closed in the U direction
         /// and if the B-spline has been turned into a periodic surface
         /// using the function SetUPeriodic.
         #[cxx_name = "IsUPeriodic"]
         fn is_u_periodic(self: &BSplineSurface) -> bool;
+        /// **Source:** `Geom_BSplineSurface.hxx`:870 - `Geom_BSplineSurface::IsURational()`
+        ///
         /// Returns False if for each row of weights all the weights
         /// are identical.
         /// The tolerance criterion is resolution from package gp.
@@ -5459,11 +5965,15 @@ pub(crate) mod ffi {
         /// |2.0, 2.0, 2.0|
         #[cxx_name = "IsURational"]
         fn is_u_rational(self: &BSplineSurface) -> bool;
+        /// **Source:** `Geom_BSplineSurface.hxx`:875 - `Geom_BSplineSurface::IsVPeriodic()`
+        ///
         /// Returns True if the surface is closed in the V direction
         /// and if the B-spline has been turned into a periodic
         /// surface using the function SetVPeriodic.
         #[cxx_name = "IsVPeriodic"]
         fn is_v_periodic(self: &BSplineSurface) -> bool;
+        /// **Source:** `Geom_BSplineSurface.hxx`:884 - `Geom_BSplineSurface::IsVRational()`
+        ///
         /// Returns False if for each column of weights all the weights
         /// are identical.
         /// The tolerance criterion is resolution from package gp.
@@ -5473,6 +5983,8 @@ pub(crate) mod ffi {
         /// |1.0, 2.0, 0.5|
         #[cxx_name = "IsVRational"]
         fn is_v_rational(self: &BSplineSurface) -> bool;
+        /// **Source:** `Geom_BSplineSurface.hxx`:892 - `Geom_BSplineSurface::Bounds()`
+        ///
         /// Returns the parametric bounds of the surface.
         /// Warnings :
         /// These parametric values are the bounds of the array of
@@ -5481,74 +5993,106 @@ pub(crate) mod ffi {
         /// VDegree + 1
         #[cxx_name = "Bounds"]
         fn bounds(self: &BSplineSurface, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64);
+        /// **Source:** `Geom_BSplineSurface.hxx`:916 - `Geom_BSplineSurface::FirstUKnotIndex()`
+        ///
         /// Computes the Index of the UKnots which gives the first
         /// parametric value of the surface in the U direction.
         /// The UIso curve corresponding to this value is a
         /// boundary curve of the surface.
         #[cxx_name = "FirstUKnotIndex"]
         fn first_u_knot_index(self: &BSplineSurface) -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:922 - `Geom_BSplineSurface::FirstVKnotIndex()`
+        ///
         /// Computes the Index of the VKnots which gives the
         /// first parametric value of the surface in the V direction.
         /// The VIso curve corresponding to this knot is a boundary
         /// curve of the surface.
         #[cxx_name = "FirstVKnotIndex"]
         fn first_v_knot_index(self: &BSplineSurface) -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:928 - `Geom_BSplineSurface::LastUKnotIndex()`
+        ///
         /// Computes the Index of the UKnots which gives the
         /// last parametric value of the surface in the U direction.
         /// The UIso curve corresponding to this knot is a boundary
         /// curve of the surface.
         #[cxx_name = "LastUKnotIndex"]
         fn last_u_knot_index(self: &BSplineSurface) -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:934 - `Geom_BSplineSurface::LastVKnotIndex()`
+        ///
         /// Computes the Index of the VKnots which gives the
         /// last parametric value of the surface in the V direction.
         /// The VIso curve corresponding to this knot is a
         /// boundary curve of the surface.
         #[cxx_name = "LastVKnotIndex"]
         fn last_v_knot_index(self: &BSplineSurface) -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:937 - `Geom_BSplineSurface::NbUKnots()`
+        ///
         /// Returns the number of knots in the U direction.
         #[cxx_name = "NbUKnots"]
         fn nb_u_knots(self: &BSplineSurface) -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:940 - `Geom_BSplineSurface::NbUPoles()`
+        ///
         /// Returns number of poles in the U direction.
         #[cxx_name = "NbUPoles"]
         fn nb_u_poles(self: &BSplineSurface) -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:943 - `Geom_BSplineSurface::NbVKnots()`
+        ///
         /// Returns the number of knots in the V direction.
         #[cxx_name = "NbVKnots"]
         fn nb_v_knots(self: &BSplineSurface) -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:946 - `Geom_BSplineSurface::NbVPoles()`
+        ///
         /// Returns the number of poles in the V direction.
         #[cxx_name = "NbVPoles"]
         fn nb_v_poles(self: &BSplineSurface) -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:952 - `Geom_BSplineSurface::Pole()`
+        ///
         /// Returns the pole of range (UIndex, VIndex).
         ///
         /// Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or
         /// VIndex > NbVPoles.
         #[cxx_name = "Pole"]
         fn pole(self: &BSplineSurface, UIndex: i32, VIndex: i32) -> &gp_Pnt;
+        /// **Source:** `Geom_BSplineSurface.hxx`:959 - `Geom_BSplineSurface::Poles()`
+        ///
         /// Returns the poles of the B-spline surface.
         ///
         /// Raised if the length of P in the U and V direction
         /// is not equal to NbUpoles and NbVPoles.
         #[cxx_name = "Poles"]
         fn poles_array2ofpnt(self: &BSplineSurface, P: Pin<&mut TColgp_Array2OfPnt>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:962 - `Geom_BSplineSurface::Poles()`
+        ///
         /// Returns the poles of the B-spline surface.
         #[cxx_name = "Poles"]
         fn poles(self: &BSplineSurface) -> &TColgp_Array2OfPnt;
+        /// **Source:** `Geom_BSplineSurface.hxx`:966 - `Geom_BSplineSurface::UDegree()`
+        ///
         /// Returns the degree of the normalized B-splines Ni,n in the U
         /// direction.
         #[cxx_name = "UDegree"]
         fn u_degree(self: &BSplineSurface) -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:970 - `Geom_BSplineSurface::UKnot()`
+        ///
         /// Returns the Knot value of range UIndex.
         /// Raised if UIndex < 1 or UIndex > NbUKnots
         #[cxx_name = "UKnot"]
         fn u_knot(self: &BSplineSurface, UIndex: i32) -> f64;
+        /// **Source:** `Geom_BSplineSurface.hxx`:991 - `Geom_BSplineSurface::UKnots()`
+        ///
         /// Returns the knots in the U direction.
         ///
         /// Raised if the length of Ku is not equal to the number of knots
         /// in the U direction.
         #[cxx_name = "UKnots"]
         fn u_knots_array1ofreal(self: &BSplineSurface, Ku: Pin<&mut TColStd_Array1OfReal>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:994 - `Geom_BSplineSurface::UKnots()`
+        ///
         /// Returns the knots in the U direction.
         #[cxx_name = "UKnots"]
         fn u_knots(self: &BSplineSurface) -> &TColStd_Array1OfReal;
+        /// **Source:** `Geom_BSplineSurface.hxx`:1003 - `Geom_BSplineSurface::UKnotSequence()`
+        ///
         /// Returns the uknots sequence.
         /// In this sequence the knots with a multiplicity greater than 1
         /// are repeated.
@@ -5558,6 +6102,8 @@ pub(crate) mod ffi {
         /// Raised if the length of Ku is not equal to NbUPoles + UDegree + 1
         #[cxx_name = "UKnotSequence"]
         fn u_knot_sequence_array1ofreal(self: &BSplineSurface, Ku: Pin<&mut TColStd_Array1OfReal>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:1010 - `Geom_BSplineSurface::UKnotSequence()`
+        ///
         /// Returns the uknots sequence.
         /// In this sequence the knots with a multiplicity greater than 1
         /// are repeated.
@@ -5565,11 +6111,15 @@ pub(crate) mod ffi {
         /// Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
         #[cxx_name = "UKnotSequence"]
         fn u_knot_sequence(self: &BSplineSurface) -> &TColStd_Array1OfReal;
+        /// **Source:** `Geom_BSplineSurface.hxx`:1015 - `Geom_BSplineSurface::UMultiplicity()`
+        ///
         /// Returns the multiplicity value of knot of range UIndex in
         /// the u direction.
         /// Raised if UIndex < 1 or UIndex > NbUKnots.
         #[cxx_name = "UMultiplicity"]
         fn u_multiplicity(self: &BSplineSurface, UIndex: i32) -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:1021 - `Geom_BSplineSurface::UMultiplicities()`
+        ///
         /// Returns the multiplicities of the knots in the U direction.
         ///
         /// Raised if the length of Mu is not equal to the number of
@@ -5579,26 +6129,38 @@ pub(crate) mod ffi {
             self: &BSplineSurface,
             Mu: Pin<&mut TColStd_Array1OfInteger>,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:1024 - `Geom_BSplineSurface::UMultiplicities()`
+        ///
         /// Returns the multiplicities of the knots in the U direction.
         #[cxx_name = "UMultiplicities"]
         fn u_multiplicities(self: &BSplineSurface) -> &TColStd_Array1OfInteger;
+        /// **Source:** `Geom_BSplineSurface.hxx`:1028 - `Geom_BSplineSurface::VDegree()`
+        ///
         /// Returns the degree of the normalized B-splines Ni,d in the
         /// V direction.
         #[cxx_name = "VDegree"]
         fn v_degree(self: &BSplineSurface) -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:1032 - `Geom_BSplineSurface::VKnot()`
+        ///
         /// Returns the Knot value of range VIndex.
         /// Raised if VIndex < 1 or VIndex > NbVKnots
         #[cxx_name = "VKnot"]
         fn v_knot(self: &BSplineSurface, VIndex: i32) -> f64;
+        /// **Source:** `Geom_BSplineSurface.hxx`:1053 - `Geom_BSplineSurface::VKnots()`
+        ///
         /// Returns the knots in the V direction.
         ///
         /// Raised if the length of Kv is not equal to the number of
         /// knots in the V direction.
         #[cxx_name = "VKnots"]
         fn v_knots_array1ofreal(self: &BSplineSurface, Kv: Pin<&mut TColStd_Array1OfReal>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:1056 - `Geom_BSplineSurface::VKnots()`
+        ///
         /// Returns the knots in the V direction.
         #[cxx_name = "VKnots"]
         fn v_knots(self: &BSplineSurface) -> &TColStd_Array1OfReal;
+        /// **Source:** `Geom_BSplineSurface.hxx`:1065 - `Geom_BSplineSurface::VKnotSequence()`
+        ///
         /// Returns the vknots sequence.
         /// In this sequence the knots with a multiplicity greater than 1
         /// are repeated.
@@ -5608,6 +6170,8 @@ pub(crate) mod ffi {
         /// Raised if the length of Kv is not equal to NbVPoles + VDegree + 1
         #[cxx_name = "VKnotSequence"]
         fn v_knot_sequence_array1ofreal(self: &BSplineSurface, Kv: Pin<&mut TColStd_Array1OfReal>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:1072 - `Geom_BSplineSurface::VKnotSequence()`
+        ///
         /// Returns the vknots sequence.
         /// In this sequence the knots with a multiplicity greater than 1
         /// are repeated.
@@ -5615,11 +6179,15 @@ pub(crate) mod ffi {
         /// Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
         #[cxx_name = "VKnotSequence"]
         fn v_knot_sequence(self: &BSplineSurface) -> &TColStd_Array1OfReal;
+        /// **Source:** `Geom_BSplineSurface.hxx`:1077 - `Geom_BSplineSurface::VMultiplicity()`
+        ///
         /// Returns the multiplicity value of knot of range VIndex in
         /// the v direction.
         /// Raised if VIndex < 1 or VIndex > NbVKnots
         #[cxx_name = "VMultiplicity"]
         fn v_multiplicity(self: &BSplineSurface, VIndex: i32) -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:1083 - `Geom_BSplineSurface::VMultiplicities()`
+        ///
         /// Returns the multiplicities of the knots in the V direction.
         ///
         /// Raised if the length of Mv is not equal to the number of
@@ -5629,23 +6197,32 @@ pub(crate) mod ffi {
             self: &BSplineSurface,
             Mv: Pin<&mut TColStd_Array1OfInteger>,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:1086 - `Geom_BSplineSurface::VMultiplicities()`
+        ///
         /// Returns the multiplicities of the knots in the V direction.
         #[cxx_name = "VMultiplicities"]
         fn v_multiplicities(self: &BSplineSurface) -> &TColStd_Array1OfInteger;
+        /// **Source:** `Geom_BSplineSurface.hxx`:1092 - `Geom_BSplineSurface::Weight()`
+        ///
         /// Returns the weight value of range UIndex, VIndex.
         ///
         /// Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1
         /// or VIndex > NbVPoles.
         #[cxx_name = "Weight"]
         fn weight(self: &BSplineSurface, UIndex: i32, VIndex: i32) -> f64;
+        /// **Source:** `Geom_BSplineSurface.hxx`:1099 - `Geom_BSplineSurface::Weights()`
+        ///
         /// Returns the weights of the B-spline surface.
         ///
         /// Raised if the length of W in the U and V direction is
         /// not equal to NbUPoles and NbVPoles.
         #[cxx_name = "Weights"]
         fn weights_array2ofreal(self: &BSplineSurface, W: Pin<&mut TColStd_Array2OfReal>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:1105 - `Geom_BSplineSurface::D0()`
         #[cxx_name = "D0"]
         fn d0(self: &BSplineSurface, U: f64, V: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `Geom_BSplineSurface.hxx`:1110 - `Geom_BSplineSurface::D1()`
+        ///
         /// Raised if the continuity of the surface is not C1.
         #[cxx_name = "D1"]
         fn d1(
@@ -5656,6 +6233,8 @@ pub(crate) mod ffi {
             D1U: Pin<&mut gp_Vec>,
             D1V: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:1117 - `Geom_BSplineSurface::D2()`
+        ///
         /// Raised if the continuity of the surface is not C2.
         #[cxx_name = "D2"]
         fn d2(
@@ -5669,6 +6248,8 @@ pub(crate) mod ffi {
             D2V: Pin<&mut gp_Vec>,
             D2UV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:1127 - `Geom_BSplineSurface::D3()`
+        ///
         /// Raised if the continuity of the surface is not C3.
         #[cxx_name = "D3"]
         fn d3(
@@ -5686,6 +6267,8 @@ pub(crate) mod ffi {
             D3UUV: Pin<&mut gp_Vec>,
             D3UVV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:1167 - `Geom_BSplineSurface::LocalD0()`
+        ///
         /// Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
         #[cxx_name = "LocalD0"]
         fn local_d0(
@@ -5698,6 +6281,8 @@ pub(crate) mod ffi {
             ToVK2: i32,
             P: Pin<&mut gp_Pnt>,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:1178 - `Geom_BSplineSurface::LocalD1()`
+        ///
         /// Raised if the local continuity of the surface is not C1
         /// between the knots FromUK1, ToUK2 and FromVK1, ToVK2.
         /// Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
@@ -5714,6 +6299,8 @@ pub(crate) mod ffi {
             D1U: Pin<&mut gp_Vec>,
             D1V: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:1191 - `Geom_BSplineSurface::LocalD2()`
+        ///
         /// Raised if the local continuity of the surface is not C2
         /// between the knots FromUK1, ToUK2 and FromVK1, ToVK2.
         /// Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
@@ -5733,6 +6320,8 @@ pub(crate) mod ffi {
             D2V: Pin<&mut gp_Vec>,
             D2UV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:1207 - `Geom_BSplineSurface::LocalD3()`
+        ///
         /// Raised if the local continuity of the surface is not C3
         /// between the knots FromUK1, ToUK2 and FromVK1, ToVK2.
         /// Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
@@ -5756,9 +6345,13 @@ pub(crate) mod ffi {
             D3UUV: Pin<&mut gp_Vec>,
             D3UVV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:1272 - `Geom_BSplineSurface::Transform()`
+        ///
         /// Applies the transformation T to this BSpline surface.
         #[cxx_name = "Transform"]
         fn transform(self: Pin<&mut BSplineSurface>, T: &gp_Trsf);
+        /// **Source:** `Geom_BSplineSurface.hxx`:1288 - `Geom_BSplineSurface::Resolution()`
+        ///
         /// Computes two tolerance values for this BSpline
         /// surface, based on the given tolerance in 3D space
         /// Tolerance3D. The tolerances computed are:
@@ -5776,6 +6369,7 @@ pub(crate) mod ffi {
             UTolerance: &mut f64,
             VTolerance: &mut f64,
         );
+        /// **Source:** `Geom_BSplineSurface.hxx`:1299 - `Geom_BSplineSurface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BSplineSurface) -> &HandleStandardType;
         /// Nu is the order of derivation in the U parametric direction and
@@ -5869,10 +6463,13 @@ pub(crate) mod ffi {
         /// Creates a new object which is a copy of this BSpline surface.
         #[cxx_name = "Geom_BSplineSurface_Copy"]
         fn BSplineSurface_copy(self_: &BSplineSurface) -> UniquePtr<HandleGeomGeometry>;
+        /// **Source:** `Geom_BSplineSurface.hxx`:1276 - `Geom_BSplineSurface::MaxDegree()`
+        ///
         /// Returns the value of the maximum degree of the normalized
         /// B-spline basis functions in the u and v directions.
         #[cxx_name = "Geom_BSplineSurface_MaxDegree"]
         fn BSplineSurface_max_degree() -> i32;
+        /// **Source:** `Geom_BSplineSurface.hxx`:1299 - `Geom_BSplineSurface::get_type_name()`
         #[cxx_name = "Geom_BSplineSurface_get_type_name"]
         fn BSplineSurface_get_type_name() -> String;
         /// Upcast Geom_BSplineSurface to Geom_BoundedSurface
@@ -5916,7 +6513,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomBSplineSurface,
         ) -> UniquePtr<HandleGeomSurface>;
         /// ======================== Geom_CylindricalSurface ========================
-        /// **Source:** `Geom_CylindricalSurface.hxx` - `Geom_CylindricalSurface`
+        /// **Source:** `Geom_CylindricalSurface.hxx`:68 - `Geom_CylindricalSurface`
         ///
         /// This class defines the infinite cylindrical surface.
         ///
@@ -5951,7 +6548,7 @@ pub(crate) mod ffi {
         /// surface.
         #[cxx_name = "Geom_CylindricalSurface"]
         type CylindricalSurface;
-        /// **Source:** `Geom_CylindricalSurface.hxx` - `Geom_CylindricalSurface::Geom_CylindricalSurface()`
+        /// **Source:** `Geom_CylindricalSurface.hxx`:81 - `Geom_CylindricalSurface::Geom_CylindricalSurface()`
         ///
         /// A3 defines the local coordinate system of the cylindrical surface.
         /// The "ZDirection" of A3 defines the direction of the surface's axis of symmetry.
@@ -5967,28 +6564,38 @@ pub(crate) mod ffi {
             A3: &gp_Ax3,
             Radius: f64,
         ) -> UniquePtr<CylindricalSurface>;
-        /// **Source:** `Geom_CylindricalSurface.hxx` - `Geom_CylindricalSurface::Geom_CylindricalSurface()`
+        /// **Source:** `Geom_CylindricalSurface.hxx`:84 - `Geom_CylindricalSurface::Geom_CylindricalSurface()`
         ///
         /// Creates a CylindricalSurface from a non transient gp_Cylinder.
         #[cxx_name = "Geom_CylindricalSurface_ctor_cylinder"]
         fn CylindricalSurface_ctor_cylinder(C: &gp_Cylinder) -> UniquePtr<CylindricalSurface>;
+        /// **Source:** `Geom_CylindricalSurface.hxx`:87 - `Geom_CylindricalSurface::SetCylinder()`
+        ///
         /// Set <me> so that <me> has the same geometric properties as C.
         #[cxx_name = "SetCylinder"]
         fn set_cylinder(self: Pin<&mut CylindricalSurface>, C: &gp_Cylinder);
+        /// **Source:** `Geom_CylindricalSurface.hxx`:91 - `Geom_CylindricalSurface::SetRadius()`
+        ///
         /// Changes the radius of the cylinder.
         /// Raised if R < 0.0
         #[cxx_name = "SetRadius"]
         fn set_radius(self: Pin<&mut CylindricalSurface>, R: f64);
+        /// **Source:** `Geom_CylindricalSurface.hxx`:99 - `Geom_CylindricalSurface::UReversedParameter()`
+        ///
         /// Return the  parameter on the  Ureversed surface for
         /// the point of parameter U on <me>.
         /// Return 2.PI - U.
         #[cxx_name = "UReversedParameter"]
         fn u_reversed_parameter(self: &CylindricalSurface, U: f64) -> f64;
+        /// **Source:** `Geom_CylindricalSurface.hxx`:104 - `Geom_CylindricalSurface::VReversedParameter()`
+        ///
         /// Return the  parameter on the  Vreversed surface for
         /// the point of parameter V on <me>.
         /// Return -V
         #[cxx_name = "VReversedParameter"]
         fn v_reversed_parameter(self: &CylindricalSurface, V: f64) -> f64;
+        /// **Source:** `Geom_CylindricalSurface.hxx`:120 - `Geom_CylindricalSurface::TransformParameters()`
+        ///
         /// Computes the  parameters on the  transformed  surface for
         /// the transform of the point of parameters U,V on <me>.
         /// @code
@@ -6005,6 +6612,8 @@ pub(crate) mod ffi {
         /// This method multiplies V by T.ScaleFactor()
         #[cxx_name = "TransformParameters"]
         fn transform_parameters(self: &CylindricalSurface, U: &mut f64, V: &mut f64, T: &gp_Trsf);
+        /// **Source:** `Geom_CylindricalSurface.hxx`:144 - `Geom_CylindricalSurface::Bounds()`
+        ///
         /// The CylindricalSurface is infinite in the V direction so
         /// V1 = Realfirst, V2 = RealLast from package Standard.
         /// U1 = 0 and U2 = 2*PI.
@@ -6016,6 +6625,8 @@ pub(crate) mod ffi {
             V1: &mut f64,
             V2: &mut f64,
         );
+        /// **Source:** `Geom_CylindricalSurface.hxx`:155 - `Geom_CylindricalSurface::Coefficients()`
+        ///
         /// Returns the coefficients of the implicit equation of the quadric
         /// in the absolute cartesian coordinate system :
         /// These coefficients are normalized.
@@ -6036,21 +6647,33 @@ pub(crate) mod ffi {
             C3: &mut f64,
             D: &mut f64,
         );
+        /// **Source:** `Geom_CylindricalSurface.hxx`:167 - `Geom_CylindricalSurface::Radius()`
+        ///
         /// Returns the radius of this cylinder.
         #[cxx_name = "Radius"]
         fn radius(self: &CylindricalSurface) -> f64;
+        /// **Source:** `Geom_CylindricalSurface.hxx`:170 - `Geom_CylindricalSurface::IsUClosed()`
+        ///
         /// Returns True.
         #[cxx_name = "IsUClosed"]
         fn is_u_closed(self: &CylindricalSurface) -> bool;
+        /// **Source:** `Geom_CylindricalSurface.hxx`:173 - `Geom_CylindricalSurface::IsVClosed()`
+        ///
         /// Returns False.
         #[cxx_name = "IsVClosed"]
         fn is_v_closed(self: &CylindricalSurface) -> bool;
+        /// **Source:** `Geom_CylindricalSurface.hxx`:176 - `Geom_CylindricalSurface::IsUPeriodic()`
+        ///
         /// Returns True.
         #[cxx_name = "IsUPeriodic"]
         fn is_u_periodic(self: &CylindricalSurface) -> bool;
+        /// **Source:** `Geom_CylindricalSurface.hxx`:179 - `Geom_CylindricalSurface::IsVPeriodic()`
+        ///
         /// Returns False.
         #[cxx_name = "IsVPeriodic"]
         fn is_v_periodic(self: &CylindricalSurface) -> bool;
+        /// **Source:** `Geom_CylindricalSurface.hxx`:197 - `Geom_CylindricalSurface::D0()`
+        ///
         /// Computes the  point P (U, V) on the surface.
         /// P (U, V) = Loc + Radius * (cos (U) * XDir + sin (U) * YDir) +
         /// V * ZDir
@@ -6059,6 +6682,8 @@ pub(crate) mod ffi {
         /// the YAxis.
         #[cxx_name = "D0"]
         fn d0(self: &CylindricalSurface, U: f64, V: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `Geom_CylindricalSurface.hxx`:203 - `Geom_CylindricalSurface::D1()`
+        ///
         /// Computes the current point and the first derivatives in the
         /// directions U and V.
         #[cxx_name = "D1"]
@@ -6070,6 +6695,8 @@ pub(crate) mod ffi {
             D1U: Pin<&mut gp_Vec>,
             D1V: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_CylindricalSurface.hxx`:211 - `Geom_CylindricalSurface::D2()`
+        ///
         /// Computes the current point, the first and the second derivatives
         /// in the directions U and V.
         #[cxx_name = "D2"]
@@ -6084,6 +6711,8 @@ pub(crate) mod ffi {
             D2V: Pin<&mut gp_Vec>,
             D2UV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_CylindricalSurface.hxx`:222 - `Geom_CylindricalSurface::D3()`
+        ///
         /// Computes the current point, the first, the second and the
         /// third   derivatives in the directions U and V.
         #[cxx_name = "D3"]
@@ -6102,9 +6731,12 @@ pub(crate) mod ffi {
             D3UUV: Pin<&mut gp_Vec>,
             D3UVV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_CylindricalSurface.hxx`:244 - `Geom_CylindricalSurface::Transform()`
+        ///
         /// Applies the transformation T to this cylinder.
         #[cxx_name = "Transform"]
         fn transform(self: Pin<&mut CylindricalSurface>, T: &gp_Trsf);
+        /// **Source:** `Geom_CylindricalSurface.hxx`:253 - `Geom_CylindricalSurface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &CylindricalSurface) -> &HandleStandardType;
         /// returns a non transient cylinder with the same geometric properties as <me>.
@@ -6159,6 +6791,7 @@ pub(crate) mod ffi {
         /// Creates a new object which is a copy of this cylinder.
         #[cxx_name = "Geom_CylindricalSurface_Copy"]
         fn CylindricalSurface_copy(self_: &CylindricalSurface) -> UniquePtr<HandleGeomGeometry>;
+        /// **Source:** `Geom_CylindricalSurface.hxx`:253 - `Geom_CylindricalSurface::get_type_name()`
         #[cxx_name = "Geom_CylindricalSurface_get_type_name"]
         fn CylindricalSurface_get_type_name() -> String;
         /// Upcast Geom_CylindricalSurface to Geom_ElementarySurface
@@ -6208,7 +6841,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomCylindricalSurface,
         ) -> UniquePtr<HandleGeomSurface>;
         /// ======================== Geom_Plane ========================
-        /// **Source:** `Geom_Plane.hxx` - `Geom_Plane`
+        /// **Source:** `Geom_Plane.hxx`:64 - `Geom_Plane`
         ///
         /// Describes a plane in 3D space.
         /// A plane is positioned in space by a coordinate system
@@ -6238,7 +6871,7 @@ pub(crate) mod ffi {
         /// is ] -infinity, +infinity [.
         #[cxx_name = "Geom_Plane"]
         type Plane;
-        /// **Source:** `Geom_Plane.hxx` - `Geom_Plane::Geom_Plane()`
+        /// **Source:** `Geom_Plane.hxx`:73 - `Geom_Plane::Geom_Plane()`
         ///
         /// Creates a plane located in 3D space with an axis placement three axis.
         /// The "ZDirection" of "A3" is the direction normal
@@ -6247,18 +6880,18 @@ pub(crate) mod ffi {
         /// the directions of the U isoparametric and V isoparametric curves.
         #[cxx_name = "Geom_Plane_ctor_ax3"]
         fn Plane_ctor_ax3(A3: &gp_Ax3) -> UniquePtr<Plane>;
-        /// **Source:** `Geom_Plane.hxx` - `Geom_Plane::Geom_Plane()`
+        /// **Source:** `Geom_Plane.hxx`:76 - `Geom_Plane::Geom_Plane()`
         ///
         /// Creates a plane from a non transient plane from package gp.
         #[cxx_name = "Geom_Plane_ctor_pln"]
         fn Plane_ctor_pln(Pl: &gp_Pln) -> UniquePtr<Plane>;
-        /// **Source:** `Geom_Plane.hxx` - `Geom_Plane::Geom_Plane()`
+        /// **Source:** `Geom_Plane.hxx`:80 - `Geom_Plane::Geom_Plane()`
         ///
         /// P is the "Location" point or origin of the plane.
         /// V is the direction normal to the plane.
         #[cxx_name = "Geom_Plane_ctor_pnt_dir"]
         fn Plane_ctor_pnt_dir(P: &gp_Pnt, V: &gp_Dir) -> UniquePtr<Plane>;
-        /// **Source:** `Geom_Plane.hxx` - `Geom_Plane::Geom_Plane()`
+        /// **Source:** `Geom_Plane.hxx`:87 - `Geom_Plane::Geom_Plane()`
         ///
         /// Creates a plane from its cartesian equation:
         /// @code
@@ -6267,31 +6900,43 @@ pub(crate) mod ffi {
         /// Raised if Sqrt (A*A + B*B + C*C) <= Resolution from gp
         #[cxx_name = "Geom_Plane_ctor_real4"]
         fn Plane_ctor_real4(A: f64, B: f64, C: f64, D: f64) -> UniquePtr<Plane>;
+        /// **Source:** `Geom_Plane.hxx`:93 - `Geom_Plane::SetPln()`
+        ///
         /// Set <me> so that <me> has the same geometric properties as Pl.
         #[cxx_name = "SetPln"]
         fn set_pln(self: Pin<&mut Plane>, Pl: &gp_Pln);
+        /// **Source:** `Geom_Plane.hxx`:101 - `Geom_Plane::UReverse()`
+        ///
         /// Changes the orientation of this plane in the u (or v) parametric direction.
         /// The bounds of the plane are not changed but the given parametric direction is reversed.
         /// Hence the orientation of the surface is reversed.
         #[cxx_name = "UReverse"]
         fn u_reverse(self: Pin<&mut Plane>);
+        /// **Source:** `Geom_Plane.hxx`:107 - `Geom_Plane::UReversedParameter()`
+        ///
         /// Computes the u  parameter on the modified plane,
         /// produced when reversing the u parametric of this plane,
         /// for any point of u parameter U on this plane.
         /// In the case of a plane, these methods return - -U.
         #[cxx_name = "UReversedParameter"]
         fn u_reversed_parameter(self: &Plane, U: f64) -> f64;
+        /// **Source:** `Geom_Plane.hxx`:112 - `Geom_Plane::VReverse()`
+        ///
         /// Changes the orientation of this plane in the u (or v) parametric direction.
         /// The bounds of the plane are not changed but the given parametric direction is reversed.
         /// Hence the orientation of the surface is reversed.
         #[cxx_name = "VReverse"]
         fn v_reverse(self: Pin<&mut Plane>);
+        /// **Source:** `Geom_Plane.hxx`:118 - `Geom_Plane::VReversedParameter()`
+        ///
         /// Computes the v parameter on the modified plane,
         /// produced when reversing the v parametric of this plane,
         /// for any point of v parameter V on this plane.
         /// In the case of a plane, these methods return -V.
         #[cxx_name = "VReversedParameter"]
         fn v_reversed_parameter(self: &Plane, V: f64) -> f64;
+        /// **Source:** `Geom_Plane.hxx`:134 - `Geom_Plane::TransformParameters()`
+        ///
         /// Computes the parameters on the transformed surface for
         /// the transform of the point of parameters U,V on <me>.
         /// @code
@@ -6308,30 +6953,44 @@ pub(crate) mod ffi {
         /// This method multiplies U and V by T.ScaleFactor()
         #[cxx_name = "TransformParameters"]
         fn transform_parameters(self: &Plane, U: &mut f64, V: &mut f64, T: &gp_Trsf);
+        /// **Source:** `Geom_Plane.hxx`:159 - `Geom_Plane::Bounds()`
+        ///
         /// Returns the parametric bounds U1, U2, V1 and V2 of this plane.
         /// Because a plane is an infinite surface, the following is always true:
         /// - U1 = V1 =   Standard_Real::RealFirst()
         /// - U2 = V2 =   Standard_Real::RealLast().
         #[cxx_name = "Bounds"]
         fn bounds(self: &Plane, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64);
+        /// **Source:** `Geom_Plane.hxx`:168 - `Geom_Plane::Coefficients()`
+        ///
         /// Computes the normalized coefficients of the plane's cartesian equation:
         /// @code
         /// Ax + By + Cz + D = 0.0
         /// @endcode
         #[cxx_name = "Coefficients"]
         fn coefficients(self: &Plane, A: &mut f64, B: &mut f64, C: &mut f64, D: &mut f64);
+        /// **Source:** `Geom_Plane.hxx`:174 - `Geom_Plane::IsUClosed()`
+        ///
         /// return False
         #[cxx_name = "IsUClosed"]
         fn is_u_closed(self: &Plane) -> bool;
+        /// **Source:** `Geom_Plane.hxx`:177 - `Geom_Plane::IsVClosed()`
+        ///
         /// return False
         #[cxx_name = "IsVClosed"]
         fn is_v_closed(self: &Plane) -> bool;
+        /// **Source:** `Geom_Plane.hxx`:180 - `Geom_Plane::IsUPeriodic()`
+        ///
         /// return False.
         #[cxx_name = "IsUPeriodic"]
         fn is_u_periodic(self: &Plane) -> bool;
+        /// **Source:** `Geom_Plane.hxx`:183 - `Geom_Plane::IsVPeriodic()`
+        ///
         /// return False.
         #[cxx_name = "IsVPeriodic"]
         fn is_v_periodic(self: &Plane) -> bool;
+        /// **Source:** `Geom_Plane.hxx`:199 - `Geom_Plane::D0()`
+        ///
         /// Computes the point P (U, V) on <me>.
         /// @code
         /// P = O + U * XDir + V * YDir.
@@ -6340,6 +6999,8 @@ pub(crate) mod ffi {
         /// "XDirection" and YDir the "YDirection" of the plane's local coordinate system.
         #[cxx_name = "D0"]
         fn d0(self: &Plane, U: f64, V: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `Geom_Plane.hxx`:204 - `Geom_Plane::D1()`
+        ///
         /// Computes the current point and the first derivatives in the directions U and V.
         #[cxx_name = "D1"]
         fn d1(
@@ -6350,6 +7011,8 @@ pub(crate) mod ffi {
             D1U: Pin<&mut gp_Vec>,
             D1V: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_Plane.hxx`:212 - `Geom_Plane::D2()`
+        ///
         /// Computes the current point, the first and the second
         /// derivatives in the directions U and V.
         #[cxx_name = "D2"]
@@ -6364,6 +7027,8 @@ pub(crate) mod ffi {
             D2V: Pin<&mut gp_Vec>,
             D2UV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_Plane.hxx`:223 - `Geom_Plane::D3()`
+        ///
         /// Computes the current point, the first,the second and the
         /// third derivatives in the directions U and V.
         #[cxx_name = "D3"]
@@ -6382,9 +7047,12 @@ pub(crate) mod ffi {
             D3UUV: Pin<&mut gp_Vec>,
             D3UVV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_Plane.hxx`:245 - `Geom_Plane::Transform()`
+        ///
         /// Applies the transformation T to this plane.
         #[cxx_name = "Transform"]
         fn transform(self: Pin<&mut Plane>, T: &gp_Trsf);
+        /// **Source:** `Geom_Plane.hxx`:254 - `Geom_Plane::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Plane) -> &HandleStandardType;
         /// Converts this plane into a gp_Pln plane.
@@ -6422,6 +7090,7 @@ pub(crate) mod ffi {
         /// Creates a new object which is a copy of this plane.
         #[cxx_name = "Geom_Plane_Copy"]
         fn Plane_copy(self_: &Plane) -> UniquePtr<HandleGeomGeometry>;
+        /// **Source:** `Geom_Plane.hxx`:254 - `Geom_Plane::get_type_name()`
         #[cxx_name = "Geom_Plane_get_type_name"]
         fn Plane_get_type_name() -> String;
         /// Upcast Geom_Plane to Geom_ElementarySurface
@@ -6457,7 +7126,7 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleGeomPlane_to_HandleGeomSurface"]
         fn plane_to_handle_surface(handle: &HandleGeomPlane) -> UniquePtr<HandleGeomSurface>;
         /// ======================== Geom_TrimmedCurve ========================
-        /// **Source:** `Geom_TrimmedCurve.hxx` - `Geom_TrimmedCurve`
+        /// **Source:** `Geom_TrimmedCurve.hxx`:43 - `Geom_TrimmedCurve`
         ///
         /// Describes a portion of a curve (termed the "basis
         /// curve") limited by two parameter values inside the
@@ -6469,7 +7138,7 @@ pub(crate) mod ffi {
         /// orientation as the basis curve or the opposite orientation.
         #[cxx_name = "Geom_TrimmedCurve"]
         type TrimmedCurve;
-        /// **Source:** `Geom_TrimmedCurve.hxx` - `Geom_TrimmedCurve::Geom_TrimmedCurve()`
+        /// **Source:** `Geom_TrimmedCurve.hxx`:82 - `Geom_TrimmedCurve::Geom_TrimmedCurve()`
         ///
         /// Constructs a trimmed curve from the basis curve C
         /// which is limited between parameter values U1 and U2.
@@ -6514,6 +7183,8 @@ pub(crate) mod ffi {
             Sense: bool,
             theAdjustPeriodic: bool,
         ) -> UniquePtr<TrimmedCurve>;
+        /// **Source:** `Geom_TrimmedCurve.hxx`:102 - `Geom_TrimmedCurve::Reverse()`
+        ///
         /// Changes the orientation of this trimmed curve.
         /// As a result:
         /// - the basis curve is reversed,
@@ -6530,10 +7201,14 @@ pub(crate) mod ffi {
         /// - the two trim values 1. - U2 (first parameter) and 1. - U1 (last parameter).
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut TrimmedCurve>);
+        /// **Source:** `Geom_TrimmedCurve.hxx`:106 - `Geom_TrimmedCurve::ReversedParameter()`
+        ///
         /// Computes the parameter on the reversed curve for
         /// the point of parameter U on this trimmed curve.
         #[cxx_name = "ReversedParameter"]
         fn reversed_parameter(self: &TrimmedCurve, U: f64) -> f64;
+        /// **Source:** `Geom_TrimmedCurve.hxx`:126 - `Geom_TrimmedCurve::SetTrim()`
+        ///
         /// Changes this trimmed curve, by redefining the
         /// parameter values U1 and U2 which limit its basis curve.
         /// Note: If the basis curve is periodic, the trimmed curve
@@ -6560,6 +7235,8 @@ pub(crate) mod ffi {
             Sense: bool,
             theAdjustPeriodic: bool,
         );
+        /// **Source:** `Geom_TrimmedCurve.hxx`:154 - `Geom_TrimmedCurve::IsCN()`
+        ///
         /// Returns true if the degree of continuity of the basis
         /// curve of this trimmed curve is at least N. A trimmed
         /// curve is at least "C0" continuous.
@@ -6570,28 +7247,40 @@ pub(crate) mod ffi {
         /// Raised if N < 0.
         #[cxx_name = "IsCN"]
         fn is_cn(self: &TrimmedCurve, N: i32) -> bool;
+        /// **Source:** `Geom_TrimmedCurve.hxx`:163 - `Geom_TrimmedCurve::FirstParameter()`
+        ///
         /// Returns the value of the first parameter of <me>.
         /// The first parameter is the parameter of the "StartPoint"
         /// of the trimmed curve.
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &TrimmedCurve) -> f64;
+        /// **Source:** `Geom_TrimmedCurve.hxx`:167 - `Geom_TrimmedCurve::IsClosed()`
+        ///
         /// Returns True if the distance between the StartPoint and
         /// the EndPoint is lower or equal to Resolution from package gp.
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &TrimmedCurve) -> bool;
+        /// **Source:** `Geom_TrimmedCurve.hxx`:170 - `Geom_TrimmedCurve::IsPeriodic()`
+        ///
         /// Always returns FALSE (independently of the type of basis curve).
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &TrimmedCurve) -> bool;
+        /// **Source:** `Geom_TrimmedCurve.hxx`:175 - `Geom_TrimmedCurve::Period()`
+        ///
         /// Returns the period of the basis curve of this trimmed curve.
         /// Exceptions
         /// Standard_NoSuchObject if the basis curve is not periodic.
         #[cxx_name = "Period"]
         fn period(self: &TrimmedCurve) -> f64;
+        /// **Source:** `Geom_TrimmedCurve.hxx`:180 - `Geom_TrimmedCurve::LastParameter()`
+        ///
         /// Returns the value of the last parameter of <me>.
         /// The last parameter is the parameter of the "EndPoint" of the
         /// trimmed curve.
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &TrimmedCurve) -> f64;
+        /// **Source:** `Geom_TrimmedCurve.hxx`:197 - `Geom_TrimmedCurve::D0()`
+        ///
         /// Returns in P the point of parameter U.
         ///
         /// If the basis curve is an OffsetCurve sometimes it is not
@@ -6599,9 +7288,13 @@ pub(crate) mod ffi {
         /// U (see class OffsetCurve).
         #[cxx_name = "D0"]
         fn d0(self: &TrimmedCurve, U: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `Geom_TrimmedCurve.hxx`:200 - `Geom_TrimmedCurve::D1()`
+        ///
         /// Raised if the continuity of the curve is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &TrimmedCurve, U: f64, P: Pin<&mut gp_Pnt>, V1: Pin<&mut gp_Vec>);
+        /// **Source:** `Geom_TrimmedCurve.hxx`:203 - `Geom_TrimmedCurve::D2()`
+        ///
         /// Raised if the continuity of the curve is not C2.
         #[cxx_name = "D2"]
         fn d2(
@@ -6611,6 +7304,8 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_TrimmedCurve.hxx`:209 - `Geom_TrimmedCurve::D3()`
+        ///
         /// Raised if the continuity of the curve is not C3.
         #[cxx_name = "D3"]
         fn d3(
@@ -6621,10 +7316,14 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec>,
             V3: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Geom_TrimmedCurve.hxx`:224 - `Geom_TrimmedCurve::Transform()`
+        ///
         /// Applies the transformation T to this trimmed curve.
         /// Warning The basis curve is also modified.
         #[cxx_name = "Transform"]
         fn transform(self: Pin<&mut TrimmedCurve>, T: &gp_Trsf);
+        /// **Source:** `Geom_TrimmedCurve.hxx`:236 - `Geom_TrimmedCurve::TransformedParameter()`
+        ///
         /// Returns the  parameter on the  transformed  curve for
         /// the transform of the point of parameter U on <me>.
         ///
@@ -6637,6 +7336,8 @@ pub(crate) mod ffi {
         /// This methods calls the basis curve method.
         #[cxx_name = "TransformedParameter"]
         fn transformed_parameter(self: &TrimmedCurve, U: f64, T: &gp_Trsf) -> f64;
+        /// **Source:** `Geom_TrimmedCurve.hxx`:251 - `Geom_TrimmedCurve::ParametricTransformation()`
+        ///
         /// Returns a  coefficient to compute the parameter on
         /// the transformed  curve  for  the transform  of the
         /// point on <me>.
@@ -6650,6 +7351,7 @@ pub(crate) mod ffi {
         /// This methods calls the basis curve method.
         #[cxx_name = "ParametricTransformation"]
         fn parametric_transformation(self: &TrimmedCurve, T: &gp_Trsf) -> f64;
+        /// **Source:** `Geom_TrimmedCurve.hxx`:261 - `Geom_TrimmedCurve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TrimmedCurve) -> &HandleStandardType;
         /// Returns the basis curve.
@@ -6682,6 +7384,7 @@ pub(crate) mod ffi {
         /// Creates a new object which is a copy of this trimmed curve.
         #[cxx_name = "Geom_TrimmedCurve_Copy"]
         fn TrimmedCurve_copy(self_: &TrimmedCurve) -> UniquePtr<HandleGeomGeometry>;
+        /// **Source:** `Geom_TrimmedCurve.hxx`:261 - `Geom_TrimmedCurve::get_type_name()`
         #[cxx_name = "Geom_TrimmedCurve_get_type_name"]
         fn TrimmedCurve_get_type_name() -> String;
         /// Upcast Geom_TrimmedCurve to Geom_BoundedCurve

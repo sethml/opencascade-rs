@@ -143,7 +143,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== IGESControl_Reader ========================
-        /// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader`
+        /// **Source:** `IGESControl_Reader.hxx`:65 - `IGESControl_Reader`
         ///
         /// Reads IGES files, checks them and translates their contents into Open CASCADE models.
         /// The IGES data can be that of a whole model or that of a specific list of entities in the model.
@@ -182,12 +182,12 @@ pub(crate) mod ffi {
         /// TransferBRep::ShapeResult(reader.TransientProcess(),ent);
         #[cxx_name = "IGESControl_Reader"]
         type Reader;
-        /// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader::IGESControl_Reader()`
+        /// **Source:** `IGESControl_Reader.hxx`:71 - `IGESControl_Reader::IGESControl_Reader()`
         ///
         /// Creates a Reader from scratch
         #[cxx_name = "IGESControl_Reader_ctor"]
         fn Reader_ctor() -> UniquePtr<Reader>;
-        /// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader::IGESControl_Reader()`
+        /// **Source:** `IGESControl_Reader.hxx`:74 - `IGESControl_Reader::IGESControl_Reader()`
         ///
         /// Creates a Reader from an already existing Session
         #[cxx_name = "IGESControl_Reader_ctor_handleworksession_bool"]
@@ -195,12 +195,17 @@ pub(crate) mod ffi {
             WS: &HandleXSControlWorkSession,
             scratch: bool,
         ) -> UniquePtr<Reader>;
+        /// **Source:** `IGESControl_Reader.hxx`:79 - `IGESControl_Reader::SetReadVisible()`
+        ///
         /// Set the transion of ALL Roots (if theReadOnlyVisible is False)
         /// or of Visible Roots (if theReadOnlyVisible is True)
         #[cxx_name = "SetReadVisible"]
         fn set_read_visible(self: Pin<&mut Reader>, ReadRoot: bool);
+        /// **Source:** `IGESControl_Reader.hxx`:81 - `IGESControl_Reader::GetReadVisible()`
         #[cxx_name = "GetReadVisible"]
         fn get_read_visible(self: &Reader) -> bool;
+        /// **Source:** `IGESControl_Reader.hxx`:90 - `IGESControl_Reader::NbRootsForTransfer()`
+        ///
         /// Determines the list of root entities from Model which are candidate for
         /// a transfer to a Shape (type of entities is PRODUCT)
         /// <theReadOnlyVisible> is taken into account to define roots
@@ -217,7 +222,7 @@ pub(crate) mod ffi {
         #[cxx_name = "IGESControl_Reader_as_XSControl_Reader_mut"]
         fn reader_as_xs_control_reader_mut(self_: Pin<&mut Reader>) -> Pin<&mut XSControl_Reader>;
         /// ======================== IGESControl_Writer ========================
-        /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer`
+        /// **Source:** `IGESControl_Writer.hxx`:48 - `IGESControl_Writer`
         ///
         /// This class creates and writes
         /// IGES files from CAS.CADE models. An IGES file can be written to
@@ -231,7 +236,7 @@ pub(crate) mod ffi {
         /// IGESParameters and GeneralParameters).
         #[cxx_name = "IGESControl_Writer"]
         type Writer;
-        /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`
+        /// **Source:** `IGESControl_Writer.hxx`:58 - `IGESControl_Writer::IGESControl_Writer()`
         ///
         /// Creates a writer object with the
         /// default unit (millimeters) and write mode (Face).
@@ -239,7 +244,7 @@ pub(crate) mod ffi {
         /// const Standard_Integer modecr = 0);
         #[cxx_name = "IGESControl_Writer_ctor"]
         fn Writer_ctor() -> UniquePtr<Writer>;
-        /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`
+        /// **Source:** `IGESControl_Writer.hxx`:67 - `IGESControl_Writer::IGESControl_Writer()`
         ///
         /// Creates a writer with given
         /// values for units and for write mode.
@@ -250,7 +255,7 @@ pub(crate) mod ffi {
         /// - 1: BRep.
         #[cxx_name = "IGESControl_Writer_ctor_charptr_int"]
         fn Writer_ctor_charptr_int(theUnit: &str, theModecr: i32) -> UniquePtr<Writer>;
-        /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`
+        /// **Source:** `IGESControl_Writer.hxx`:75 - `IGESControl_Writer::IGESControl_Writer()`
         ///
         /// Creates a writer object with the
         /// prepared IGES model theModel in write mode.
@@ -262,15 +267,22 @@ pub(crate) mod ffi {
             theModel: &HandleIGESDataIGESModel,
             theModecr: i32,
         ) -> UniquePtr<Writer>;
+        /// **Source:** `IGESControl_Writer.hxx`:79 - `IGESControl_Writer::Model()`
+        ///
         /// Returns the IGES model to be written in output.
         #[cxx_name = "Model"]
         fn model(self: &Writer) -> &HandleIGESDataIGESModel;
+        /// **Source:** `IGESControl_Writer.hxx`:81 - `IGESControl_Writer::TransferProcess()`
         #[cxx_name = "TransferProcess"]
         fn transfer_process(self: &Writer) -> &HandleTransferFinderProcess;
+        /// **Source:** `IGESControl_Writer.hxx`:85 - `IGESControl_Writer::SetTransferProcess()`
+        ///
         /// Returns/Sets the TransferProcess : it contains final results
         /// and if some, check messages
         #[cxx_name = "SetTransferProcess"]
         fn set_transfer_process(self: Pin<&mut Writer>, TP: &HandleTransferFinderProcess);
+        /// **Source:** `IGESControl_Writer.hxx`:90 - `IGESControl_Writer::AddShape()`
+        ///
         /// Translates a Shape to IGES Entities and adds them to the model
         /// Returns True if done, False if Shape not suitable for IGES or null
         #[cxx_name = "AddShape"]
@@ -279,15 +291,21 @@ pub(crate) mod ffi {
             sh: &TopoDS_Shape,
             theProgress: &Message_ProgressRange,
         ) -> bool;
+        /// **Source:** `IGESControl_Writer.hxx`:97 - `IGESControl_Writer::AddGeom()`
+        ///
         /// Translates a Geometry (Surface or Curve) to IGES Entities and
         /// adds them to the model
         /// Returns True if done, False if geom is neither a Surface or
         /// a Curve suitable for IGES or is null
         #[cxx_name = "AddGeom"]
         fn add_geom(self: Pin<&mut Writer>, geom: &HandleStandardTransient) -> bool;
+        /// **Source:** `IGESControl_Writer.hxx`:100 - `IGESControl_Writer::AddEntity()`
+        ///
         /// Adds an IGES entity (and the ones it references) to the model
         #[cxx_name = "AddEntity"]
         fn add_entity(self: Pin<&mut Writer>, ent: &HandleIGESDataIGESEntity) -> bool;
+        /// **Source:** `IGESControl_Writer.hxx`:105 - `IGESControl_Writer::ComputeModel()`
+        ///
         /// Computes the entities found in
         /// the model, which is ready to be written.
         /// This contrasts with the default computation of headers only.

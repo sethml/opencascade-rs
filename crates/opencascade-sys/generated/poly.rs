@@ -447,7 +447,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Poly_Triangulation ========================
-        /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation`
+        /// **Source:** `Poly_Triangulation.hxx`:59 - `Poly_Triangulation`
         ///
         /// Provides a triangulation for a surface, a set of surfaces, or more generally a shape.
         ///
@@ -475,12 +475,12 @@ pub(crate) mod ffi {
         /// the results are as good.
         #[cxx_name = "Poly_Triangulation"]
         type Triangulation;
-        /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        /// **Source:** `Poly_Triangulation.hxx`:64 - `Poly_Triangulation::Poly_Triangulation()`
         ///
         /// Constructs an empty triangulation.
         #[cxx_name = "Poly_Triangulation_ctor"]
         fn Triangulation_ctor() -> UniquePtr<Triangulation>;
-        /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        /// **Source:** `Poly_Triangulation.hxx`:74 - `Poly_Triangulation::Poly_Triangulation()`
         ///
         /// Constructs a triangulation from a set of triangles.
         /// The triangulation is initialized without a triangle or a node,
@@ -497,7 +497,7 @@ pub(crate) mod ffi {
             theHasUVNodes: bool,
             theHasNormals: bool,
         ) -> UniquePtr<Triangulation>;
-        /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        /// **Source:** `Poly_Triangulation.hxx`:82 - `Poly_Triangulation::Poly_Triangulation()`
         ///
         /// Constructs a triangulation from a set of triangles. The
         /// triangulation is initialized with 3D points from Nodes and triangles
@@ -507,7 +507,7 @@ pub(crate) mod ffi {
             Nodes: &TColgp_Array1OfPnt,
             Triangles: &Poly_Array1OfTriangle,
         ) -> UniquePtr<Triangulation>;
-        /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        /// **Source:** `Poly_Triangulation.hxx`:92 - `Poly_Triangulation::Poly_Triangulation()`
         ///
         /// Constructs a triangulation from a set of triangles. The
         /// triangulation is initialized with 3D points from Nodes, 2D points from
@@ -522,107 +522,156 @@ pub(crate) mod ffi {
             UVNodes: &TColgp_Array1OfPnt2d,
             Triangles: &Poly_Array1OfTriangle,
         ) -> UniquePtr<Triangulation>;
-        /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        /// **Source:** `Poly_Triangulation.hxx`:103 - `Poly_Triangulation::Poly_Triangulation()`
         ///
         /// Copy constructor for triangulation.
         #[cxx_name = "Poly_Triangulation_ctor_handletriangulation"]
         fn Triangulation_ctor_handletriangulation(
             theTriangulation: &HandlePolyTriangulation,
         ) -> UniquePtr<Triangulation>;
+        /// **Source:** `Poly_Triangulation.hxx`:61 - `Poly_Triangulation::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Triangulation) -> &HandleStandardType;
+        /// **Source:** `Poly_Triangulation.hxx`:106 - `Poly_Triangulation::Deflection()`
+        ///
         /// Returns the deflection of this triangulation.
         #[cxx_name = "Deflection"]
         fn deflection(self: &Triangulation) -> f64;
+        /// **Source:** `Poly_Triangulation.hxx`:110 - `Poly_Triangulation::Deflection()`
+        ///
         /// Sets the deflection of this triangulation to theDeflection.
         /// See more on deflection in Polygon2D
         #[cxx_name = "Deflection"]
         fn deflection_real(self: Pin<&mut Triangulation>, theDeflection: f64);
+        /// **Source:** `Poly_Triangulation.hxx`:113 - `Poly_Triangulation::Parameters()`
+        ///
         /// Returns initial set of parameters used to generate this triangulation.
         #[cxx_name = "Parameters"]
         fn parameters(self: &Triangulation) -> &HandlePolyTriangulationParameters;
+        /// **Source:** `Poly_Triangulation.hxx`:116 - `Poly_Triangulation::Parameters()`
+        ///
         /// Updates initial set of parameters used to generate this triangulation.
         #[cxx_name = "Parameters"]
         fn parameters_handletriangulationparameters(
             self: Pin<&mut Triangulation>,
             theParams: &HandlePolyTriangulationParameters,
         );
+        /// **Source:** `Poly_Triangulation.hxx`:119 - `Poly_Triangulation::Clear()`
+        ///
         /// Clears internal arrays of nodes and all attributes.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Triangulation>);
+        /// **Source:** `Poly_Triangulation.hxx`:122 - `Poly_Triangulation::HasGeometry()`
+        ///
         /// Returns TRUE if triangulation has some geometry.
         #[cxx_name = "HasGeometry"]
         fn has_geometry(self: &Triangulation) -> bool;
+        /// **Source:** `Poly_Triangulation.hxx`:128 - `Poly_Triangulation::NbNodes()`
+        ///
         /// Returns the number of nodes for this triangulation.
         #[cxx_name = "NbNodes"]
         fn nb_nodes(self: &Triangulation) -> i32;
+        /// **Source:** `Poly_Triangulation.hxx`:131 - `Poly_Triangulation::NbTriangles()`
+        ///
         /// Returns the number of triangles for this triangulation.
         #[cxx_name = "NbTriangles"]
         fn nb_triangles(self: &Triangulation) -> i32;
+        /// **Source:** `Poly_Triangulation.hxx`:134 - `Poly_Triangulation::HasUVNodes()`
+        ///
         /// Returns Standard_True if 2D nodes are associated with 3D nodes for this triangulation.
         #[cxx_name = "HasUVNodes"]
         fn has_uv_nodes(self: &Triangulation) -> bool;
+        /// **Source:** `Poly_Triangulation.hxx`:137 - `Poly_Triangulation::HasNormals()`
+        ///
         /// Returns Standard_True if nodal normals are defined.
         #[cxx_name = "HasNormals"]
         fn has_normals(self: &Triangulation) -> bool;
+        /// **Source:** `Poly_Triangulation.hxx`:147 - `Poly_Triangulation::SetNode()`
+        ///
         /// Sets a node coordinates.
         /// @param[in] theIndex node index within [1, NbNodes()] range
         /// @param[in] thePnt   3D point coordinates
         #[cxx_name = "SetNode"]
         fn set_node(self: Pin<&mut Triangulation>, theIndex: i32, thePnt: &gp_Pnt);
+        /// **Source:** `Poly_Triangulation.hxx`:160 - `Poly_Triangulation::SetUVNode()`
+        ///
         /// Sets an UV-node coordinates.
         /// @param[in] theIndex node index within [1, NbNodes()] range
         /// @param[in] thePnt   UV coordinates
         #[cxx_name = "SetUVNode"]
         fn set_uv_node(self: Pin<&mut Triangulation>, theIndex: i32, thePnt: &gp_Pnt2d);
+        /// **Source:** `Poly_Triangulation.hxx`:168 - `Poly_Triangulation::Triangle()`
+        ///
         /// Returns triangle at the given index.
         /// @param[in] theIndex triangle index within [1, NbTriangles()] range
         /// @return triangle node indices, with each node defined within [1, NbNodes()] range
         #[cxx_name = "Triangle"]
         fn triangle(self: &Triangulation, theIndex: i32) -> &Triangle;
+        /// **Source:** `Poly_Triangulation.hxx`:177 - `Poly_Triangulation::SetTriangle()`
+        ///
         /// Sets a triangle.
         /// @param[in] theIndex triangle index within [1, NbTriangles()] range
         /// @param[in] theTriangle triangle node indices, with each node defined within [1, NbNodes()]
         /// range
         #[cxx_name = "SetTriangle"]
         fn set_triangle(self: Pin<&mut Triangulation>, theIndex: i32, theTriangle: &Triangle);
+        /// **Source:** `Poly_Triangulation.hxx`:194 - `Poly_Triangulation::Normal()`
+        ///
         /// Returns normal at the given index.
         /// @param[in]  theIndex node index within [1, NbNodes()] range
         /// @param[out] theVec3  3D vector defining a surface normal
         #[cxx_name = "Normal"]
         fn normal_int_vec3f(self: &Triangulation, theIndex: i32, theVec3: Pin<&mut gp_Vec3f>);
+        /// **Source:** `Poly_Triangulation.hxx`:202 - `Poly_Triangulation::SetNormal()`
+        ///
         /// Changes normal at the given index.
         /// @param[in] theIndex node index within [1, NbNodes()] range
         /// @param[in] theVec3  normalized 3D vector defining a surface normal
         #[cxx_name = "SetNormal"]
         fn set_normal_int_vec3f(self: Pin<&mut Triangulation>, theIndex: i32, theNormal: &gp_Vec3f);
+        /// **Source:** `Poly_Triangulation.hxx`:210 - `Poly_Triangulation::SetNormal()`
+        ///
         /// Changes normal at the given index.
         /// @param[in] theIndex  node index within [1, NbNodes()] range
         /// @param[in] theNormal normalized 3D vector defining a surface normal
         #[cxx_name = "SetNormal"]
         fn set_normal_int_dir(self: Pin<&mut Triangulation>, theIndex: i32, theNormal: &gp_Dir);
+        /// **Source:** `Poly_Triangulation.hxx`:216 - `Poly_Triangulation::MeshPurpose()`
+        ///
         /// Returns mesh purpose bits.
         #[cxx_name = "MeshPurpose"]
         fn mesh_purpose(self: &Triangulation) -> u32;
+        /// **Source:** `Poly_Triangulation.hxx`:219 - `Poly_Triangulation::SetMeshPurpose()`
+        ///
         /// Sets mesh purpose bits.
         #[cxx_name = "SetMeshPurpose"]
         fn set_mesh_purpose(self: Pin<&mut Triangulation>, thePurpose: u32);
+        /// **Source:** `Poly_Triangulation.hxx`:223 - `Poly_Triangulation::CachedMinMax()`
+        ///
         /// Returns cached min - max range of triangulation data,
         /// which is VOID by default (e.g, no cached information).
         #[cxx_name = "CachedMinMax"]
         fn cached_min_max(self: &Triangulation) -> &Bnd_Box;
+        /// **Source:** `Poly_Triangulation.hxx`:229 - `Poly_Triangulation::SetCachedMinMax()`
+        ///
         /// Sets a cached min - max range of this triangulation.
         /// The bounding box should exactly match actual range of triangulation data
         /// without a gap or transformation, or otherwise undefined behavior will be observed.
         /// Passing a VOID range invalidates the cache.
         #[cxx_name = "SetCachedMinMax"]
         fn set_cached_min_max(self: Pin<&mut Triangulation>, theBox: &Bnd_Box);
+        /// **Source:** `Poly_Triangulation.hxx`:232 - `Poly_Triangulation::HasCachedMinMax()`
+        ///
         /// Returns TRUE if there is some cached min - max range of this triangulation.
         #[cxx_name = "HasCachedMinMax"]
         fn has_cached_min_max(self: &Triangulation) -> bool;
+        /// **Source:** `Poly_Triangulation.hxx`:235 - `Poly_Triangulation::UpdateCachedMinMax()`
+        ///
         /// Updates cached min - max range of this triangulation with bounding box of nodal data.
         #[cxx_name = "UpdateCachedMinMax"]
         fn update_cached_min_max(self: Pin<&mut Triangulation>);
+        /// **Source:** `Poly_Triangulation.hxx`:254 - `Poly_Triangulation::MinMax()`
+        ///
         /// Extends the passed box with bounding box of this triangulation.
         /// Uses cached min - max range when available and:
         /// - input transformation theTrsf has no rotation part;
@@ -642,72 +691,108 @@ pub(crate) mod ffi {
             theTrsf: &gp_Trsf,
             theIsAccurate: bool,
         ) -> bool;
+        /// **Source:** `Poly_Triangulation.hxx`:264 - `Poly_Triangulation::IsDoublePrecision()`
+        ///
         /// Returns TRUE if node positions are defined with double precision; TRUE by default.
         #[cxx_name = "IsDoublePrecision"]
         fn is_double_precision(self: &Triangulation) -> bool;
+        /// **Source:** `Poly_Triangulation.hxx`:268 - `Poly_Triangulation::SetDoublePrecision()`
+        ///
         /// Set if node positions should be defined with double or single precision for 3D and UV nodes.
         /// Raises exception if data was already allocated.
         #[cxx_name = "SetDoublePrecision"]
         fn set_double_precision(self: Pin<&mut Triangulation>, theIsDouble: bool);
+        /// **Source:** `Poly_Triangulation.hxx`:273 - `Poly_Triangulation::ResizeNodes()`
+        ///
         /// Method resizing internal arrays of nodes (synchronously for all attributes).
         /// @param[in] theNbNodes    new number of nodes
         /// @param[in] theToCopyOld  copy old nodes into the new array
         #[cxx_name = "ResizeNodes"]
         fn resize_nodes(self: Pin<&mut Triangulation>, theNbNodes: i32, theToCopyOld: bool);
+        /// **Source:** `Poly_Triangulation.hxx`:278 - `Poly_Triangulation::ResizeTriangles()`
+        ///
         /// Method resizing an internal array of triangles.
         /// @param[in] theNbTriangles  new number of triangles
         /// @param[in] theToCopyOld    copy old triangles into the new array
         #[cxx_name = "ResizeTriangles"]
         fn resize_triangles(self: Pin<&mut Triangulation>, theNbTriangles: i32, theToCopyOld: bool);
+        /// **Source:** `Poly_Triangulation.hxx`:282 - `Poly_Triangulation::AddUVNodes()`
+        ///
         /// If an array for UV coordinates is not allocated yet, do it now.
         #[cxx_name = "AddUVNodes"]
         fn add_uv_nodes(self: Pin<&mut Triangulation>);
+        /// **Source:** `Poly_Triangulation.hxx`:285 - `Poly_Triangulation::RemoveUVNodes()`
+        ///
         /// Deallocates the UV nodes array.
         #[cxx_name = "RemoveUVNodes"]
         fn remove_uv_nodes(self: Pin<&mut Triangulation>);
+        /// **Source:** `Poly_Triangulation.hxx`:288 - `Poly_Triangulation::AddNormals()`
+        ///
         /// If an array for normals is not allocated yet, do it now.
         #[cxx_name = "AddNormals"]
         fn add_normals(self: Pin<&mut Triangulation>);
+        /// **Source:** `Poly_Triangulation.hxx`:291 - `Poly_Triangulation::RemoveNormals()`
+        ///
         /// Deallocates the normals array.
         #[cxx_name = "RemoveNormals"]
         fn remove_normals(self: Pin<&mut Triangulation>);
+        /// **Source:** `Poly_Triangulation.hxx`:294 - `Poly_Triangulation::ComputeNormals()`
+        ///
         /// Compute smooth normals by averaging triangle normals.
         #[cxx_name = "ComputeNormals"]
         fn compute_normals(self: Pin<&mut Triangulation>);
+        /// **Source:** `Poly_Triangulation.hxx`:320 - `Poly_Triangulation::InternalTriangles()`
+        ///
         /// Returns an internal array of triangles.
         /// Triangle()/SetTriangle() should be used instead in portable code.
         #[cxx_name = "InternalTriangles"]
         fn internal_triangles(self: Pin<&mut Triangulation>) -> Pin<&mut Poly_Array1OfTriangle>;
+        /// **Source:** `Poly_Triangulation.hxx`:324 - `Poly_Triangulation::InternalNodes()`
+        ///
         /// Returns an internal array of nodes.
         /// Node()/SetNode() should be used instead in portable code.
         #[cxx_name = "InternalNodes"]
         fn internal_nodes(self: Pin<&mut Triangulation>) -> Pin<&mut ArrayOfNodes>;
+        /// **Source:** `Poly_Triangulation.hxx`:328 - `Poly_Triangulation::InternalUVNodes()`
+        ///
         /// Returns an internal array of UV nodes.
         /// UBNode()/SetUVNode() should be used instead in portable code.
         #[cxx_name = "InternalUVNodes"]
         fn internal_uv_nodes(self: Pin<&mut Triangulation>) -> Pin<&mut ArrayOfUVNodes>;
+        /// **Source:** `Poly_Triangulation.hxx`:335 - `Poly_Triangulation::SetNormals()`
         #[cxx_name = "SetNormals"]
         fn set_normals(self: Pin<&mut Triangulation>, theNormals: &HandleTShortHArray1OfShortReal);
+        /// **Source:** `Poly_Triangulation.hxx`:339 - `Poly_Triangulation::Triangles()`
         #[cxx_name = "Triangles"]
         fn triangles(self: &Triangulation) -> &Poly_Array1OfTriangle;
+        /// **Source:** `Poly_Triangulation.hxx`:343 - `Poly_Triangulation::ChangeTriangles()`
         #[cxx_name = "ChangeTriangles"]
         fn change_triangles(self: Pin<&mut Triangulation>) -> Pin<&mut Poly_Array1OfTriangle>;
+        /// **Source:** `Poly_Triangulation.hxx`:347 - `Poly_Triangulation::ChangeTriangle()`
         #[cxx_name = "ChangeTriangle"]
         fn change_triangle(self: Pin<&mut Triangulation>, theIndex: i32) -> Pin<&mut Triangle>;
+        /// **Source:** `Poly_Triangulation.hxx`:356 - `Poly_Triangulation::NbDeferredNodes()`
+        ///
         /// @name late-load deferred data interface
         /// Returns number of deferred nodes that can be loaded using LoadDeferredData().
         /// Note: this is estimated values, which might be different from actually loaded values.
         /// Always check triangulation size of actually loaded data in code to avoid out-of-range issues.
         #[cxx_name = "NbDeferredNodes"]
         fn nb_deferred_nodes(self: &Triangulation) -> i32;
+        /// **Source:** `Poly_Triangulation.hxx`:361 - `Poly_Triangulation::NbDeferredTriangles()`
+        ///
         /// Returns number of deferred triangles that can be loaded using LoadDeferredData().
         /// Note: this is estimated values, which might be different from actually loaded values
         /// Always check triangulation size of actually loaded data in code to avoid out-of-range issues.
         #[cxx_name = "NbDeferredTriangles"]
         fn nb_deferred_triangles(self: &Triangulation) -> i32;
+        /// **Source:** `Poly_Triangulation.hxx`:364 - `Poly_Triangulation::HasDeferredData()`
+        ///
         /// Returns TRUE if there is some triangulation data that can be loaded using LoadDeferredData().
         #[cxx_name = "HasDeferredData"]
         fn has_deferred_data(self: &Triangulation) -> bool;
+        /// **Source:** `Poly_Triangulation.hxx`:368 - `Poly_Triangulation::LoadDeferredData()`
+        ///
         /// Loads triangulation data into itself
         /// from some deferred storage using specified shared input file system.
         #[cxx_name = "LoadDeferredData"]
@@ -715,6 +800,8 @@ pub(crate) mod ffi {
             self: Pin<&mut Triangulation>,
             theFileSystem: &HandleOSDFileSystem,
         ) -> bool;
+        /// **Source:** `Poly_Triangulation.hxx`:377 - `Poly_Triangulation::UnloadDeferredData()`
+        ///
         /// Releases triangulation data if it has connected deferred storage.
         #[cxx_name = "UnloadDeferredData"]
         fn unload_deferred_data(self: Pin<&mut Triangulation>) -> bool;
@@ -771,6 +858,7 @@ pub(crate) mod ffi {
             self_: &Triangulation,
             theFileSystem: &HandleOSDFileSystem,
         ) -> UniquePtr<HandlePolyTriangulation>;
+        /// **Source:** `Poly_Triangulation.hxx`:61 - `Poly_Triangulation::get_type_name()`
         #[cxx_name = "Poly_Triangulation_get_type_name"]
         fn Triangulation_get_type_name() -> String;
         /// Wrap Poly_Triangulation in a Handle (reference-counted smart pointer)
@@ -779,26 +867,26 @@ pub(crate) mod ffi {
             obj: UniquePtr<Triangulation>,
         ) -> UniquePtr<HandlePolyTriangulation>;
         /// ======================== Poly_HArray1OfTriangle ========================
-        /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle`
+        /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle`
         #[cxx_name = "Poly_HArray1OfTriangle"]
         type HArray1OfTriangle;
-        /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+        /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor"]
         fn HArray1OfTriangle_ctor() -> UniquePtr<HArray1OfTriangle>;
-        /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+        /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor_int2"]
         fn HArray1OfTriangle_ctor_int2(
             theLower: i32,
             theUpper: i32,
         ) -> UniquePtr<HArray1OfTriangle>;
-        /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+        /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor_int2_triangle"]
         fn HArray1OfTriangle_ctor_int2_triangle(
             theLower: i32,
             theUpper: i32,
             theValue: &Triangle,
         ) -> UniquePtr<HArray1OfTriangle>;
-        /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+        /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor_triangle_int2_bool"]
         fn HArray1OfTriangle_ctor_triangle_int2_bool(
             theBegin: &Triangle,
@@ -806,17 +894,21 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfTriangle>;
-        /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+        /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor_array1oftriangle"]
         fn HArray1OfTriangle_ctor_array1oftriangle(
             theOther: &Poly_Array1OfTriangle,
         ) -> UniquePtr<HArray1OfTriangle>;
+        /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Array1()`
         #[cxx_name = "Array1"]
         fn array1(self: &HArray1OfTriangle) -> &Poly_Array1OfTriangle;
+        /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::ChangeArray1()`
         #[cxx_name = "ChangeArray1"]
         fn change_array1(self: Pin<&mut HArray1OfTriangle>) -> Pin<&mut Poly_Array1OfTriangle>;
+        /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &HArray1OfTriangle) -> &HandleStandardType;
+        /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::get_type_name()`
         #[cxx_name = "Poly_HArray1OfTriangle_get_type_name"]
         fn HArray1OfTriangle_get_type_name() -> String;
         /// Wrap Poly_HArray1OfTriangle in a Handle (reference-counted smart pointer)
@@ -825,32 +917,32 @@ pub(crate) mod ffi {
             obj: UniquePtr<HArray1OfTriangle>,
         ) -> UniquePtr<HandlePolyHArray1OfTriangle>;
         /// ======================== Poly_ArrayOfNodes ========================
-        /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes`
+        /// **Source:** `Poly_ArrayOfNodes.hxx`:23 - `Poly_ArrayOfNodes`
         ///
         /// Defines an array of 3D nodes of single/double precision configurable at construction time.
         #[cxx_name = "Poly_ArrayOfNodes"]
         type ArrayOfNodes;
-        /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        /// **Source:** `Poly_ArrayOfNodes.hxx`:27 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
         ///
         /// Empty constructor of double-precision array.
         #[cxx_name = "Poly_ArrayOfNodes_ctor"]
         fn ArrayOfNodes_ctor() -> UniquePtr<ArrayOfNodes>;
-        /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        /// **Source:** `Poly_ArrayOfNodes.hxx`:34 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
         ///
         /// Constructor of double-precision array.
         #[cxx_name = "Poly_ArrayOfNodes_ctor_int"]
         fn ArrayOfNodes_ctor_int(theLength: i32) -> UniquePtr<ArrayOfNodes>;
-        /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        /// **Source:** `Poly_ArrayOfNodes.hxx`:41 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
         ///
         /// Copy constructor
         #[cxx_name = "Poly_ArrayOfNodes_ctor_arrayofnodes"]
         fn ArrayOfNodes_ctor_arrayofnodes(theOther: &ArrayOfNodes) -> UniquePtr<ArrayOfNodes>;
-        /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        /// **Source:** `Poly_ArrayOfNodes.hxx`:44 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
         ///
         /// Constructor wrapping pre-allocated C-array of values without copying them.
         #[cxx_name = "Poly_ArrayOfNodes_ctor_pnt_int"]
         fn ArrayOfNodes_ctor_pnt_int(theBegin: &gp_Pnt, theLength: i32) -> UniquePtr<ArrayOfNodes>;
-        /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        /// **Source:** `Poly_ArrayOfNodes.hxx`:51 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
         ///
         /// Constructor wrapping pre-allocated C-array of values without copying them.
         #[cxx_name = "Poly_ArrayOfNodes_ctor_vec3f_int"]
@@ -858,25 +950,35 @@ pub(crate) mod ffi {
             theBegin: &gp_Vec3f,
             theLength: i32,
         ) -> UniquePtr<ArrayOfNodes>;
+        /// **Source:** `Poly_ArrayOfNodes.hxx`:61 - `Poly_ArrayOfNodes::IsDoublePrecision()`
+        ///
         /// Returns TRUE if array defines nodes with double precision.
         #[cxx_name = "IsDoublePrecision"]
         fn is_double_precision(self: &ArrayOfNodes) -> bool;
+        /// **Source:** `Poly_ArrayOfNodes.hxx`:65 - `Poly_ArrayOfNodes::SetDoublePrecision()`
+        ///
         /// Sets if array should define nodes with double or single precision.
         /// Raises exception if array was already allocated.
         #[cxx_name = "SetDoublePrecision"]
         fn set_double_precision(self: Pin<&mut ArrayOfNodes>, theIsDouble: bool);
+        /// **Source:** `Poly_ArrayOfNodes.hxx`:79 - `Poly_ArrayOfNodes::Assign()`
+        ///
         /// Copies data of theOther array to this.
         /// The arrays should have the same length,
         /// but may have different precision / number of components (data conversion will be applied in
         /// the latter case).
         #[cxx_name = "Assign"]
         fn assign(self: Pin<&mut ArrayOfNodes>, theOther: &ArrayOfNodes) -> Pin<&mut ArrayOfNodes>;
+        /// **Source:** `Poly_ArrayOfNodes.hxx`:82 - `Poly_ArrayOfNodes::Move()`
+        ///
         /// Move assignment.
         #[cxx_name = "Move"]
         fn move_(
             self: Pin<&mut ArrayOfNodes>,
             theOther: Pin<&mut ArrayOfNodes>,
         ) -> Pin<&mut ArrayOfNodes>;
+        /// **Source:** `Poly_ArrayOfNodes.hxx`:109 - `Poly_ArrayOfNodes::SetValue()`
+        ///
         /// A generalized setter for point.
         #[cxx_name = "SetValue"]
         fn set_value(self: Pin<&mut ArrayOfNodes>, theIndex: i32, theValue: &gp_Pnt);
@@ -884,29 +986,29 @@ pub(crate) mod ffi {
         #[cxx_name = "Poly_ArrayOfNodes_Value"]
         fn ArrayOfNodes_value(self_: &ArrayOfNodes, theIndex: i32) -> UniquePtr<gp_Pnt>;
         /// ======================== Poly_ArrayOfUVNodes ========================
-        /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes`
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx`:23 - `Poly_ArrayOfUVNodes`
         ///
         /// Defines an array of 2D nodes of single/double precision configurable at construction time.
         #[cxx_name = "Poly_ArrayOfUVNodes"]
         type ArrayOfUVNodes;
-        /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx`:27 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
         ///
         /// Empty constructor of double-precision array.
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor"]
         fn ArrayOfUVNodes_ctor() -> UniquePtr<ArrayOfUVNodes>;
-        /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx`:34 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
         ///
         /// Constructor of double-precision array.
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor_int"]
         fn ArrayOfUVNodes_ctor_int(theLength: i32) -> UniquePtr<ArrayOfUVNodes>;
-        /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx`:41 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
         ///
         /// Copy constructor
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor_arrayofuvnodes"]
         fn ArrayOfUVNodes_ctor_arrayofuvnodes(
             theOther: &ArrayOfUVNodes,
         ) -> UniquePtr<ArrayOfUVNodes>;
-        /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx`:44 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
         ///
         /// Constructor wrapping pre-allocated C-array of values without copying them.
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor_pnt2d_int"]
@@ -914,7 +1016,7 @@ pub(crate) mod ffi {
             theBegin: &gp_Pnt2d,
             theLength: i32,
         ) -> UniquePtr<ArrayOfUVNodes>;
-        /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx`:51 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
         ///
         /// Constructor wrapping pre-allocated C-array of values without copying them.
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor_vec2f_int"]
@@ -922,13 +1024,19 @@ pub(crate) mod ffi {
             theBegin: &gp_Vec2f,
             theLength: i32,
         ) -> UniquePtr<ArrayOfUVNodes>;
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx`:61 - `Poly_ArrayOfUVNodes::IsDoublePrecision()`
+        ///
         /// Returns TRUE if array defines nodes with double precision.
         #[cxx_name = "IsDoublePrecision"]
         fn is_double_precision(self: &ArrayOfUVNodes) -> bool;
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx`:65 - `Poly_ArrayOfUVNodes::SetDoublePrecision()`
+        ///
         /// Sets if array should define nodes with double or single precision.
         /// Raises exception if array was already allocated.
         #[cxx_name = "SetDoublePrecision"]
         fn set_double_precision(self: Pin<&mut ArrayOfUVNodes>, theIsDouble: bool);
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx`:79 - `Poly_ArrayOfUVNodes::Assign()`
+        ///
         /// Copies data of theOther array to this.
         /// The arrays should have the same length,
         /// but may have different precision / number of components (data conversion will be applied in
@@ -938,12 +1046,16 @@ pub(crate) mod ffi {
             self: Pin<&mut ArrayOfUVNodes>,
             theOther: &ArrayOfUVNodes,
         ) -> Pin<&mut ArrayOfUVNodes>;
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx`:82 - `Poly_ArrayOfUVNodes::Move()`
+        ///
         /// Move assignment.
         #[cxx_name = "Move"]
         fn move_(
             self: Pin<&mut ArrayOfUVNodes>,
             theOther: Pin<&mut ArrayOfUVNodes>,
         ) -> Pin<&mut ArrayOfUVNodes>;
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx`:109 - `Poly_ArrayOfUVNodes::SetValue()`
+        ///
         /// A generalized setter for point.
         #[cxx_name = "SetValue"]
         fn set_value(self: Pin<&mut ArrayOfUVNodes>, theIndex: i32, theValue: &gp_Pnt2d);
@@ -951,7 +1063,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Poly_ArrayOfUVNodes_Value"]
         fn ArrayOfUVNodes_value(self_: &ArrayOfUVNodes, theIndex: i32) -> UniquePtr<gp_Pnt2d>;
         /// ======================== Poly_Triangle ========================
-        /// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle`
+        /// **Source:** `Poly_Triangle.hxx`:30 - `Poly_Triangle`
         ///
         /// Describes a component triangle of a triangulation (Poly_Triangulation object).
         /// A Triangle is defined by a triplet of nodes within [1, Poly_Triangulation::NbNodes()] range.
@@ -959,38 +1071,48 @@ pub(crate) mod ffi {
         /// triangulation of a shape, and represents a point on the surface.
         #[cxx_name = "Poly_Triangle"]
         type Triangle;
-        /// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle::Poly_Triangle()`
+        /// **Source:** `Poly_Triangle.hxx`:36 - `Poly_Triangle::Poly_Triangle()`
         ///
         /// Constructs a triangle and sets all indices to zero.
         #[cxx_name = "Poly_Triangle_ctor"]
         fn Triangle_ctor() -> UniquePtr<Triangle>;
-        /// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle::Poly_Triangle()`
+        /// **Source:** `Poly_Triangle.hxx`:41 - `Poly_Triangle::Poly_Triangle()`
         ///
         /// Constructs a triangle and sets its three indices,
         /// where these node values are indices in the table of nodes specific to an existing
         /// triangulation of a shape.
         #[cxx_name = "Poly_Triangle_ctor_int3"]
         fn Triangle_ctor_int3(theN1: i32, theN2: i32, theN3: i32) -> UniquePtr<Triangle>;
+        /// **Source:** `Poly_Triangle.hxx`:51 - `Poly_Triangle::Set()`
+        ///
         /// Sets the value of the three nodes of this triangle.
         #[cxx_name = "Set"]
         fn set_int3(self: Pin<&mut Triangle>, theN1: i32, theN2: i32, theN3: i32);
+        /// **Source:** `Poly_Triangle.hxx`:60 - `Poly_Triangle::Set()`
+        ///
         /// Sets the value of node with specified index of this triangle.
         /// Raises Standard_OutOfRange if index is not in 1,2,3
         #[cxx_name = "Set"]
         fn set_int2(self: Pin<&mut Triangle>, theIndex: i32, theNode: i32);
+        /// **Source:** `Poly_Triangle.hxx`:68 - `Poly_Triangle::Get()`
+        ///
         /// Returns the node indices of this triangle.
         #[cxx_name = "Get"]
         fn get(self: &Triangle, theN1: &mut i32, theN2: &mut i32, theN3: &mut i32);
+        /// **Source:** `Poly_Triangle.hxx`:77 - `Poly_Triangle::Value()`
+        ///
         /// Get the node of given Index.
         /// Raises OutOfRange from Standard if Index is not in 1,2,3
         #[cxx_name = "Value"]
         fn value(self: &Triangle, theIndex: i32) -> i32;
+        /// **Source:** `Poly_Triangle.hxx`:88 - `Poly_Triangle::ChangeValue()`
+        ///
         /// Get the node of given Index.
         /// Raises OutOfRange if Index is not in 1,2,3
         #[cxx_name = "ChangeValue"]
         fn change_value(self: Pin<&mut Triangle>, theIndex: i32) -> &mut i32;
         /// ======================== Poly_Polygon3D ========================
-        /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D`
+        /// **Source:** `Poly_Polygon3D.hxx`:31 - `Poly_Polygon3D`
         ///
         /// This class Provides a polygon in 3D space. It is generally an approximate representation of a
         /// curve. A Polygon3D is defined by a table of nodes. Each node is a 3D point. If the polygon is
@@ -999,17 +1121,17 @@ pub(crate) mod ffi {
         /// parameter of the corresponding point on the curve.
         #[cxx_name = "Poly_Polygon3D"]
         type Polygon3D;
-        /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`
+        /// **Source:** `Poly_Polygon3D.hxx`:35 - `Poly_Polygon3D::Poly_Polygon3D()`
         ///
         /// Constructs a 3D polygon with specific number of nodes.
         #[cxx_name = "Poly_Polygon3D_ctor_int_bool"]
         fn Polygon3D_ctor_int_bool(theNbNodes: i32, theHasParams: bool) -> UniquePtr<Polygon3D>;
-        /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`
+        /// **Source:** `Poly_Polygon3D.hxx`:39 - `Poly_Polygon3D::Poly_Polygon3D()`
         ///
         /// Constructs a 3D polygon defined by the table of points, Nodes.
         #[cxx_name = "Poly_Polygon3D_ctor_array1ofpnt"]
         fn Polygon3D_ctor_array1ofpnt(Nodes: &TColgp_Array1OfPnt) -> UniquePtr<Polygon3D>;
-        /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`
+        /// **Source:** `Poly_Polygon3D.hxx`:49 - `Poly_Polygon3D::Poly_Polygon3D()`
         ///
         /// Constructs a 3D polygon defined by
         /// the table of points, Nodes, and the parallel table of
@@ -1024,44 +1146,60 @@ pub(crate) mod ffi {
             Nodes: &TColgp_Array1OfPnt,
             Parameters: &TColStd_Array1OfReal,
         ) -> UniquePtr<Polygon3D>;
+        /// **Source:** `Poly_Polygon3D.hxx`:56 - `Poly_Polygon3D::Deflection()`
+        ///
         /// Returns the deflection of this polygon
         #[cxx_name = "Deflection"]
         fn deflection(self: &Polygon3D) -> f64;
+        /// **Source:** `Poly_Polygon3D.hxx`:59 - `Poly_Polygon3D::Deflection()`
+        ///
         /// Sets the deflection of this polygon. See more on deflection in Poly_Polygon2D
         #[cxx_name = "Deflection"]
         fn deflection_real(self: Pin<&mut Polygon3D>, theDefl: f64);
+        /// **Source:** `Poly_Polygon3D.hxx`:65 - `Poly_Polygon3D::NbNodes()`
+        ///
         /// Returns the number of nodes in this polygon.
         /// Note: If the polygon is closed, the point of closure is
         /// repeated at the end of its table of nodes. Thus, on a closed
         /// triangle the function NbNodes returns 4.
         #[cxx_name = "NbNodes"]
         fn nb_nodes(self: &Polygon3D) -> i32;
+        /// **Source:** `Poly_Polygon3D.hxx`:68 - `Poly_Polygon3D::Nodes()`
+        ///
         /// Returns the table of nodes for this polygon.
         #[cxx_name = "Nodes"]
         fn nodes(self: &Polygon3D) -> &TColgp_Array1OfPnt;
+        /// **Source:** `Poly_Polygon3D.hxx`:71 - `Poly_Polygon3D::ChangeNodes()`
+        ///
         /// Returns the table of nodes for this polygon.
         #[cxx_name = "ChangeNodes"]
         fn change_nodes(self: Pin<&mut Polygon3D>) -> Pin<&mut TColgp_Array1OfPnt>;
+        /// **Source:** `Poly_Polygon3D.hxx`:75 - `Poly_Polygon3D::HasParameters()`
+        ///
         /// Returns the table of the parameters associated with each node in this polygon.
         /// HasParameters function checks if   parameters are associated with the nodes of this polygon.
         #[cxx_name = "HasParameters"]
         fn has_parameters(self: &Polygon3D) -> bool;
+        /// **Source:** `Poly_Polygon3D.hxx`:79 - `Poly_Polygon3D::Parameters()`
+        ///
         /// Returns true if parameters are associated with the nodes
         /// in this polygon.
         #[cxx_name = "Parameters"]
         fn parameters(self: &Polygon3D) -> &TColStd_Array1OfReal;
+        /// **Source:** `Poly_Polygon3D.hxx`:91 - `Poly_Polygon3D::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Polygon3D) -> &HandleStandardType;
         /// Creates a copy of current polygon
         #[cxx_name = "Poly_Polygon3D_Copy"]
         fn Polygon3D_copy(self_: &Polygon3D) -> UniquePtr<HandlePolyPolygon3D>;
+        /// **Source:** `Poly_Polygon3D.hxx`:91 - `Poly_Polygon3D::get_type_name()`
         #[cxx_name = "Poly_Polygon3D_get_type_name"]
         fn Polygon3D_get_type_name() -> String;
         /// Wrap Poly_Polygon3D in a Handle (reference-counted smart pointer)
         #[cxx_name = "Poly_Polygon3D_to_handle"]
         fn Polygon3D_to_handle(obj: UniquePtr<Polygon3D>) -> UniquePtr<HandlePolyPolygon3D>;
         /// ======================== Poly_Polygon2D ========================
-        /// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D`
+        /// **Source:** `Poly_Polygon2D.hxx`:31 - `Poly_Polygon2D`
         ///
         /// Provides a polygon in 2D space (for example, in the
         /// parametric space of a surface). It is generally an
@@ -1071,16 +1209,18 @@ pub(crate) mod ffi {
         /// repeated at the end of the table of nodes.
         #[cxx_name = "Poly_Polygon2D"]
         type Polygon2D;
-        /// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D::Poly_Polygon2D()`
+        /// **Source:** `Poly_Polygon2D.hxx`:35 - `Poly_Polygon2D::Poly_Polygon2D()`
         ///
         /// Constructs a 2D polygon with specified number of nodes.
         #[cxx_name = "Poly_Polygon2D_ctor_int"]
         fn Polygon2D_ctor_int(theNbNodes: i32) -> UniquePtr<Polygon2D>;
-        /// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D::Poly_Polygon2D()`
+        /// **Source:** `Poly_Polygon2D.hxx`:38 - `Poly_Polygon2D::Poly_Polygon2D()`
         ///
         /// Constructs a 2D polygon defined by the table of points, <Nodes>.
         #[cxx_name = "Poly_Polygon2D_ctor_array1ofpnt2d"]
         fn Polygon2D_ctor_array1ofpnt2d(Nodes: &TColgp_Array1OfPnt2d) -> UniquePtr<Polygon2D>;
+        /// **Source:** `Poly_Polygon2D.hxx`:59 - `Poly_Polygon2D::Deflection()`
+        ///
         /// Returns the deflection of this polygon.
         /// Deflection is used in cases where the polygon is an
         /// approximate representation of a curve. Deflection
@@ -1102,30 +1242,40 @@ pub(crate) mod ffi {
         /// later to fetch the value.
         #[cxx_name = "Deflection"]
         fn deflection(self: &Polygon2D) -> f64;
+        /// **Source:** `Poly_Polygon2D.hxx`:62 - `Poly_Polygon2D::Deflection()`
+        ///
         /// Sets the deflection of this polygon.
         #[cxx_name = "Deflection"]
         fn deflection_real(self: Pin<&mut Polygon2D>, theDefl: f64);
+        /// **Source:** `Poly_Polygon2D.hxx`:68 - `Poly_Polygon2D::NbNodes()`
+        ///
         /// Returns the number of nodes in this polygon.
         /// Note: If the polygon is closed, the point of closure is
         /// repeated at the end of its table of nodes. Thus, on a closed
         /// triangle, the function NbNodes returns 4.
         #[cxx_name = "NbNodes"]
         fn nb_nodes(self: &Polygon2D) -> i32;
+        /// **Source:** `Poly_Polygon2D.hxx`:71 - `Poly_Polygon2D::Nodes()`
+        ///
         /// Returns the table of nodes for this polygon.
         #[cxx_name = "Nodes"]
         fn nodes(self: &Polygon2D) -> &TColgp_Array1OfPnt2d;
+        /// **Source:** `Poly_Polygon2D.hxx`:74 - `Poly_Polygon2D::ChangeNodes()`
+        ///
         /// Returns the table of nodes for this polygon.
         #[cxx_name = "ChangeNodes"]
         fn change_nodes(self: Pin<&mut Polygon2D>) -> Pin<&mut TColgp_Array1OfPnt2d>;
+        /// **Source:** `Poly_Polygon2D.hxx`:80 - `Poly_Polygon2D::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Polygon2D) -> &HandleStandardType;
+        /// **Source:** `Poly_Polygon2D.hxx`:80 - `Poly_Polygon2D::get_type_name()`
         #[cxx_name = "Poly_Polygon2D_get_type_name"]
         fn Polygon2D_get_type_name() -> String;
         /// Wrap Poly_Polygon2D in a Handle (reference-counted smart pointer)
         #[cxx_name = "Poly_Polygon2D_to_handle"]
         fn Polygon2D_to_handle(obj: UniquePtr<Polygon2D>) -> UniquePtr<HandlePolyPolygon2D>;
         /// ======================== Poly_PolygonOnTriangulation ========================
-        /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation`
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:40 - `Poly_PolygonOnTriangulation`
         ///
         /// This class provides a polygon in 3D space, based on the triangulation
         /// of a surface. It may be the approximate representation of a
@@ -1141,7 +1291,7 @@ pub(crate) mod ffi {
         /// curve.represents a 3d Polygon
         #[cxx_name = "Poly_PolygonOnTriangulation"]
         type PolygonOnTriangulation;
-        /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:45 - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
         ///
         /// Constructs a 3D polygon on the triangulation of a shape with specified size of nodes.
         #[cxx_name = "Poly_PolygonOnTriangulation_ctor_int_bool"]
@@ -1149,7 +1299,7 @@ pub(crate) mod ffi {
             theNbNodes: i32,
             theHasParams: bool,
         ) -> UniquePtr<PolygonOnTriangulation>;
-        /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:50 - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
         ///
         /// Constructs a 3D polygon on the triangulation of a shape,
         /// defined by the table of nodes, <Nodes>.
@@ -1157,7 +1307,7 @@ pub(crate) mod ffi {
         fn PolygonOnTriangulation_ctor_array1ofinteger(
             Nodes: &TColStd_Array1OfInteger,
         ) -> UniquePtr<PolygonOnTriangulation>;
-        /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:63 - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
         ///
         /// Constructs a 3D polygon on the triangulation of a shape, defined by:
         /// -   the table of nodes, Nodes, and the table of parameters, <Parameters>.
@@ -1175,36 +1325,55 @@ pub(crate) mod ffi {
             Nodes: &TColStd_Array1OfInteger,
             Parameters: &TColStd_Array1OfReal,
         ) -> UniquePtr<PolygonOnTriangulation>;
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:42 - `Poly_PolygonOnTriangulation::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &PolygonOnTriangulation) -> &HandleStandardType;
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:70 - `Poly_PolygonOnTriangulation::Deflection()`
+        ///
         /// Returns the deflection of this polygon
         #[cxx_name = "Deflection"]
         fn deflection(self: &PolygonOnTriangulation) -> f64;
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:74 - `Poly_PolygonOnTriangulation::Deflection()`
+        ///
         /// Sets the deflection of this polygon.
         /// See more on deflection in Poly_Polygones2D.
         #[cxx_name = "Deflection"]
         fn deflection_real(self: Pin<&mut PolygonOnTriangulation>, theDefl: f64);
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:80 - `Poly_PolygonOnTriangulation::NbNodes()`
+        ///
         /// Returns the number of nodes for this polygon.
         /// Note: If the polygon is closed, the point of closure is
         /// repeated at the end of its table of nodes. Thus, on a closed
         /// triangle, the function NbNodes returns 4.
         #[cxx_name = "NbNodes"]
         fn nb_nodes(self: &PolygonOnTriangulation) -> i32;
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:83 - `Poly_PolygonOnTriangulation::Node()`
+        ///
         /// Returns node at the given index.
         #[cxx_name = "Node"]
         fn node(self: &PolygonOnTriangulation, theIndex: i32) -> i32;
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:86 - `Poly_PolygonOnTriangulation::SetNode()`
+        ///
         /// Sets node at the given index.
         #[cxx_name = "SetNode"]
         fn set_node(self: Pin<&mut PolygonOnTriangulation>, theIndex: i32, theNode: i32);
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:92 - `Poly_PolygonOnTriangulation::HasParameters()`
+        ///
         /// Returns true if parameters are associated with the nodes in this polygon.
         #[cxx_name = "HasParameters"]
         fn has_parameters(self: &PolygonOnTriangulation) -> bool;
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:95 - `Poly_PolygonOnTriangulation::Parameter()`
+        ///
         /// Returns parameter at the given index.
         #[cxx_name = "Parameter"]
         fn parameter(self: &PolygonOnTriangulation, theIndex: i32) -> f64;
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:103 - `Poly_PolygonOnTriangulation::SetParameter()`
+        ///
         /// Sets parameter at the given index.
         #[cxx_name = "SetParameter"]
         fn set_parameter(self: Pin<&mut PolygonOnTriangulation>, theIndex: i32, theValue: f64);
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:112 - `Poly_PolygonOnTriangulation::SetParameters()`
+        ///
         /// Sets the table of the parameters associated with each node in this polygon.
         /// Raises exception if array size doesn't much number of polygon nodes.
         #[cxx_name = "SetParameters"]
@@ -1212,20 +1381,26 @@ pub(crate) mod ffi {
             self: Pin<&mut PolygonOnTriangulation>,
             theParameters: &HandleTColStdHArray1OfReal,
         );
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:122 - `Poly_PolygonOnTriangulation::Nodes()`
+        ///
         /// Returns the table of nodes for this polygon.
         /// A node value is an index in the table of nodes specific to an existing triangulation of a
         /// shape.
         #[cxx_name = "Nodes"]
         fn nodes(self: &PolygonOnTriangulation) -> &TColStd_Array1OfInteger;
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:127 - `Poly_PolygonOnTriangulation::Parameters()`
+        ///
         /// Returns the table of the parameters associated with each node in this polygon.
         /// Warning! Use the function HasParameters to check if parameters are associated with the nodes
         /// in this polygon.
         #[cxx_name = "Parameters"]
         fn parameters(self: &PolygonOnTriangulation) -> &HandleTColStdHArray1OfReal;
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:131 - `Poly_PolygonOnTriangulation::ChangeNodes()`
         #[cxx_name = "ChangeNodes"]
         fn change_nodes(
             self: Pin<&mut PolygonOnTriangulation>,
         ) -> Pin<&mut TColStd_Array1OfInteger>;
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:135 - `Poly_PolygonOnTriangulation::ChangeParameters()`
         #[cxx_name = "ChangeParameters"]
         fn change_parameters(
             self: Pin<&mut PolygonOnTriangulation>,
@@ -1235,6 +1410,7 @@ pub(crate) mod ffi {
         fn PolygonOnTriangulation_copy(
             self_: &PolygonOnTriangulation,
         ) -> UniquePtr<HandlePolyPolygonOnTriangulation>;
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx`:42 - `Poly_PolygonOnTriangulation::get_type_name()`
         #[cxx_name = "Poly_PolygonOnTriangulation_get_type_name"]
         fn PolygonOnTriangulation_get_type_name() -> String;
         /// Wrap Poly_PolygonOnTriangulation in a Handle (reference-counted smart pointer)

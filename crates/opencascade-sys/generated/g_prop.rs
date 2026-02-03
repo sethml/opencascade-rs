@@ -172,7 +172,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== GProp_GProps ========================
-        /// **Source:** `GProp_GProps.hxx` - `GProp_GProps`
+        /// **Source:** `GProp_GProps.hxx`:97 - `GProp_GProps`
         ///
         /// Implements a general mechanism to compute the global properties of
         /// a "compound geometric system" in 3d space    by composition of the
@@ -245,13 +245,13 @@ pub(crate) mod ffi {
         /// Pp.RadiusOfGyration (Ixx, Iyy, Izz);
         #[cxx_name = "GProp_GProps"]
         type GProps;
-        /// **Source:** `GProp_GProps.hxx` - `GProp_GProps::GProp_GProps()`
+        /// **Source:** `GProp_GProps.hxx`:104 - `GProp_GProps::GProp_GProps()`
         ///
         /// The origin (0, 0, 0) of the absolute cartesian coordinate system
         /// is used to compute the global properties.
         #[cxx_name = "GProp_GProps_ctor"]
         fn GProps_ctor() -> UniquePtr<GProps>;
-        /// **Source:** `GProp_GProps.hxx` - `GProp_GProps::GProp_GProps()`
+        /// **Source:** `GProp_GProps.hxx`:125 - `GProp_GProps::GProp_GProps()`
         ///
         /// The point SystemLocation is used to compute the global properties
         /// of the system. For more accuracy it is better to define this
@@ -274,6 +274,8 @@ pub(crate) mod ffi {
         /// access the computed values.
         #[cxx_name = "GProp_GProps_ctor_pnt"]
         fn GProps_ctor_pnt(SystemLocation: &gp_Pnt) -> UniquePtr<GProps>;
+        /// **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
+        ///
         /// Either
         /// - initializes the global properties retained by this
         /// framework from those retained by the framework Item, or
@@ -313,6 +315,8 @@ pub(crate) mod ffi {
         /// equal to gp::Resolution().
         #[cxx_name = "Add"]
         fn add(self: Pin<&mut GProps>, Item: &GProps, Density: f64);
+        /// **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
+        ///
         /// Returns the mass of the current system.
         /// If no density is attached to the components of the
         /// current system the returned value corresponds to :
@@ -339,15 +343,21 @@ pub(crate) mod ffi {
         /// consistent with respect to the units used.
         #[cxx_name = "Mass"]
         fn mass(self: &GProps) -> f64;
+        /// **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
+        ///
         /// Returns Ix, Iy, Iz, the static moments of inertia of the
         /// current system; i.e. the moments of inertia about the
         /// three axes of the Cartesian coordinate system.
         #[cxx_name = "StaticMoments"]
         fn static_moments(self: &GProps, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64);
+        /// **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
+        ///
         /// computes the moment of inertia of the material system about the
         /// axis A.
         #[cxx_name = "MomentOfInertia"]
         fn moment_of_inertia(self: &GProps, A: &gp_Ax1) -> f64;
+        /// **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
+        ///
         /// Returns the radius of gyration of the current system about the axis A.
         #[cxx_name = "RadiusOfGyration"]
         fn radius_of_gyration(self: &GProps, A: &gp_Ax1) -> f64;

@@ -66,7 +66,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== OSD_MemInfo ========================
-        /// **Source:** `OSD_MemInfo.hxx` - `OSD_MemInfo`
+        /// **Source:** `OSD_MemInfo.hxx`:49 - `OSD_MemInfo`
         ///
         /// This class provide information about memory utilized by current process.
         /// This information includes:
@@ -98,24 +98,32 @@ pub(crate) mod ffi {
         /// memory management by application itself.
         #[cxx_name = "OSD_MemInfo"]
         type MemInfo;
-        /// **Source:** `OSD_MemInfo.hxx` - `OSD_MemInfo::OSD_MemInfo()`
+        /// **Source:** `OSD_MemInfo.hxx`:67 - `OSD_MemInfo::OSD_MemInfo()`
         ///
         /// Create and initialize. By default all countes are active
         #[cxx_name = "OSD_MemInfo_ctor_bool"]
         fn MemInfo_ctor_bool(theImmediateUpdate: bool) -> UniquePtr<MemInfo>;
+        /// **Source:** `OSD_MemInfo.hxx`:77 - `OSD_MemInfo::SetActive()`
+        ///
         /// Set all counters active. The information is collected for active counters.
         /// @param theActive state for counters
         #[cxx_name = "SetActive"]
         fn set_active_bool(self: Pin<&mut MemInfo>, theActive: bool);
+        /// **Source:** `OSD_MemInfo.hxx`:88 - `OSD_MemInfo::Clear()`
+        ///
         /// Clear counters
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut MemInfo>);
+        /// **Source:** `OSD_MemInfo.hxx`:91 - `OSD_MemInfo::Update()`
+        ///
         /// Update counters
         #[cxx_name = "Update"]
         fn update(self: Pin<&mut MemInfo>);
         /// Return the string representation for all available counter.
         #[cxx_name = "OSD_MemInfo_ToString"]
         fn MemInfo_to_string(self_: &MemInfo) -> UniquePtr<TCollection_AsciiString>;
+        /// **Source:** `OSD_MemInfo.hxx`:113 - `OSD_MemInfo::PrintInfo()`
+        ///
         /// Return the string representation for all available counter.
         #[cxx_name = "OSD_MemInfo_PrintInfo"]
         fn MemInfo_print_info() -> UniquePtr<TCollection_AsciiString>;

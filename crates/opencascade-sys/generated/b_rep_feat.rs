@@ -326,29 +326,37 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepFeat_MakeCylindricalHole ========================
-        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx` - `BRepFeat_MakeCylindricalHole`
+        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:34 - `BRepFeat_MakeCylindricalHole`
         ///
         /// Provides a tool to make cylindrical holes on a shape.
         #[cxx_name = "BRepFeat_MakeCylindricalHole"]
         type MakeCylindricalHole;
-        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx` - `BRepFeat_MakeCylindricalHole::BRepFeat_MakeCylindricalHole()`
+        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:40 - `BRepFeat_MakeCylindricalHole::BRepFeat_MakeCylindricalHole()`
         ///
         /// Empty constructor.
         #[cxx_name = "BRepFeat_MakeCylindricalHole_ctor"]
         fn MakeCylindricalHole_ctor() -> UniquePtr<MakeCylindricalHole>;
+        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:43 - `BRepFeat_MakeCylindricalHole::Init()`
+        ///
         /// Sets the axis of the hole(s).
         #[cxx_name = "Init"]
         fn init_ax1(self: Pin<&mut MakeCylindricalHole>, Axis: &gp_Ax1);
+        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:47 - `BRepFeat_MakeCylindricalHole::Init()`
+        ///
         /// Sets the shape and  axis on which hole(s)  will be
         /// performed.
         #[cxx_name = "Init"]
         fn init_shape_ax1(self: Pin<&mut MakeCylindricalHole>, S: &TopoDS_Shape, Axis: &gp_Ax1);
+        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:53 - `BRepFeat_MakeCylindricalHole::Perform()`
+        ///
         /// Performs every  hole of    radius  <Radius>.  This
         /// command  has the  same effect as   a cut operation
         /// with an  infinite cylinder   defined by the  given
         /// axis and <Radius>.
         #[cxx_name = "Perform"]
         fn perform_real(self: Pin<&mut MakeCylindricalHole>, Radius: f64);
+        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:60 - `BRepFeat_MakeCylindricalHole::Perform()`
+        ///
         /// Performs every  hole  of  radius  <Radius> located
         /// between PFrom  and  PTo  on the  given  axis.   If
         /// <WithControl> is set  to Standard_False no control
@@ -362,6 +370,8 @@ pub(crate) mod ffi {
             PTo: f64,
             WithControl: bool,
         );
+        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:71 - `BRepFeat_MakeCylindricalHole::PerformThruNext()`
+        ///
         /// Performs the first hole of radius <Radius>, in the
         /// direction of  the defined axis. First hole signify
         /// first encountered after the origin of the axis. If
@@ -370,6 +380,8 @@ pub(crate) mod ffi {
         /// operation is performed.
         #[cxx_name = "PerformThruNext"]
         fn perform_thru_next(self: Pin<&mut MakeCylindricalHole>, Radius: f64, WithControl: bool);
+        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:79 - `BRepFeat_MakeCylindricalHole::PerformUntilEnd()`
+        ///
         /// Performs every  hole of   radius  <Radius> located
         /// after  the   origin  of   the given    axis.    If
         /// <WithControl> is  set to Standard_False no control
@@ -377,6 +389,8 @@ pub(crate) mod ffi {
         /// operation is performed.
         #[cxx_name = "PerformUntilEnd"]
         fn perform_until_end(self: Pin<&mut MakeCylindricalHole>, Radius: f64, WithControl: bool);
+        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:87 - `BRepFeat_MakeCylindricalHole::PerformBlind()`
+        ///
         /// Performs a  blind   hole of radius    <Radius> and
         /// length <Length>.  The length is  measured from the
         /// origin of the given  axis. If <WithControl> is set
@@ -389,6 +403,8 @@ pub(crate) mod ffi {
             Length: f64,
             WithControl: bool,
         );
+        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:98 - `BRepFeat_MakeCylindricalHole::Build()`
+        ///
         /// Builds the    resulting shape  (redefined     from
         /// MakeShape). Invalidates the  given parts  of tools
         /// if  any,   and performs the  result   of the local
@@ -452,7 +468,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakeCylindricalHole>,
         ) -> Pin<&mut Builder>;
         /// ======================== BRepFeat_MakeDPrism ========================
-        /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism`
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:50 - `BRepFeat_MakeDPrism`
         ///
         /// Describes functions to build draft
         /// prism topologies from basis shape surfaces. These can be depressions or protrusions.
@@ -472,7 +488,7 @@ pub(crate) mod ffi {
         /// limiting face of a protrusion or depression.
         #[cxx_name = "BRepFeat_MakeDPrism"]
         type MakeDPrism;
-        /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:64 - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
         ///
         /// A face Pbase is selected in the shape
         /// Sbase to serve as the basis for the draft prism. The
@@ -492,9 +508,11 @@ pub(crate) mod ffi {
             Fuse: i32,
             Modify: bool,
         ) -> UniquePtr<MakeDPrism>;
-        /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:74 - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
         #[cxx_name = "BRepFeat_MakeDPrism_ctor"]
         fn MakeDPrism_ctor() -> UniquePtr<MakeDPrism>;
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:89 - `BRepFeat_MakeDPrism::Init()`
+        ///
         /// Initializes this algorithm for building draft prisms along surfaces.
         /// A face Pbase is selected in the basis shape Sbase to
         /// serve as the basis from the draft prism. The draft will be
@@ -514,16 +532,22 @@ pub(crate) mod ffi {
             Fuse: i32,
             Modify: bool,
         );
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:100 - `BRepFeat_MakeDPrism::Add()`
+        ///
         /// Indicates that the edge <E> will slide on the face
         /// <OnFace>.
         /// Raises ConstructionError if the  face does not belong to the
         /// basis shape, or the edge to the prismed shape.
         #[cxx_name = "Add"]
         fn add(self: Pin<&mut MakeDPrism>, E: &TopoDS_Edge, OnFace: &TopoDS_Face);
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:102 - `BRepFeat_MakeDPrism::Perform()`
         #[cxx_name = "Perform"]
         fn perform_real(self: Pin<&mut MakeDPrism>, Height: f64);
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:104 - `BRepFeat_MakeDPrism::Perform()`
         #[cxx_name = "Perform"]
         fn perform_shape(self: Pin<&mut MakeDPrism>, Until: &TopoDS_Shape);
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:111 - `BRepFeat_MakeDPrism::Perform()`
+        ///
         /// Assigns one of the following semantics
         /// -   to a height Height
         /// -   to a face Until
@@ -531,30 +555,45 @@ pub(crate) mod ffi {
         /// Reconstructs the feature topologically according to the semantic option chosen.
         #[cxx_name = "Perform"]
         fn perform_shape2(self: Pin<&mut MakeDPrism>, From: &TopoDS_Shape, Until: &TopoDS_Shape);
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:114 - `BRepFeat_MakeDPrism::PerformUntilEnd()`
+        ///
         /// Realizes a semi-infinite prism, limited by the position of the prism base.
         #[cxx_name = "PerformUntilEnd"]
         fn perform_until_end(self: Pin<&mut MakeDPrism>);
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:117 - `BRepFeat_MakeDPrism::PerformFromEnd()`
+        ///
         /// Realizes a semi-infinite prism, limited by the face Funtil.
         #[cxx_name = "PerformFromEnd"]
         fn perform_from_end(self: Pin<&mut MakeDPrism>, FUntil: &TopoDS_Shape);
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:120 - `BRepFeat_MakeDPrism::PerformThruAll()`
+        ///
         /// Builds an infinite prism. The infinite descendants will not be kept in the result.
         #[cxx_name = "PerformThruAll"]
         fn perform_thru_all(self: Pin<&mut MakeDPrism>);
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:125 - `BRepFeat_MakeDPrism::PerformUntilHeight()`
+        ///
         /// Assigns both a limiting shape, Until from
         /// TopoDS_Shape, and a height, Height at which to stop
         /// generation of the prism feature.
         #[cxx_name = "PerformUntilHeight"]
         fn perform_until_height(self: Pin<&mut MakeDPrism>, Until: &TopoDS_Shape, Height: f64);
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:127 - `BRepFeat_MakeDPrism::Curves()`
         #[cxx_name = "Curves"]
         fn curves(self: Pin<&mut MakeDPrism>, S: Pin<&mut TColGeom_SequenceOfCurve>);
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:134 - `BRepFeat_MakeDPrism::BossEdges()`
+        ///
         /// Determination of TopEdges and LatEdges.
         /// sig = 1 -> TopEdges = FirstShape of the DPrism
         /// sig = 2 -> TOpEdges = LastShape of the DPrism
         #[cxx_name = "BossEdges"]
         fn boss_edges(self: Pin<&mut MakeDPrism>, sig: i32);
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:137 - `BRepFeat_MakeDPrism::TopEdges()`
+        ///
         /// Returns the list of TopoDS Edges of the top of the boss.
         #[cxx_name = "TopEdges"]
         fn top_edges(self: Pin<&mut MakeDPrism>) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFeat_MakeDPrism.hxx`:140 - `BRepFeat_MakeDPrism::LatEdges()`
+        ///
         /// Returns the list of TopoDS Edges of the bottom of the boss.
         #[cxx_name = "LatEdges"]
         fn lat_edges(self: Pin<&mut MakeDPrism>) -> &TopTools_ListOfShape;
@@ -586,7 +625,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepFeat_MakeDPrism_as_BRepFeat_Form_mut"]
         fn make_d_prism_as_form_mut(self_: Pin<&mut MakeDPrism>) -> Pin<&mut Form>;
         /// ======================== BRepFeat_Form ========================
-        /// **Source:** `BRepFeat_Form.hxx` - `BRepFeat_Form`
+        /// **Source:** `BRepFeat_Form.hxx`:65 - `BRepFeat_Form`
         ///
         /// Provides general functions to build form features.
         /// Form features can be depressions or protrusions and include the following types:
@@ -617,23 +656,34 @@ pub(crate) mod ffi {
         /// would entail a second phase of removing unwanted matter to get the same result.
         #[cxx_name = "BRepFeat_Form"]
         type Form;
+        /// **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
+        ///
         /// returns the list of generated Faces.
         #[cxx_name = "Modified"]
         fn modified(self: Pin<&mut Form>, F: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
+        ///
         /// returns a list of the created faces
         /// from the shape <S>.
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut Form>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut Form>, S: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepFeat_Form.hxx`:83 - `BRepFeat_Form::FirstShape()`
+        ///
         /// Returns the list  of shapes created  at the bottom  of
         /// the created form.  It may be an empty list.
         #[cxx_name = "FirstShape"]
         fn first_shape(self: &Form) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFeat_Form.hxx`:87 - `BRepFeat_Form::LastShape()`
+        ///
         /// Returns  the list of shapes  created at the top of the
         /// created form.  It may be an empty list.
         #[cxx_name = "LastShape"]
         fn last_shape(self: &Form) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFeat_Form.hxx`:94 - `BRepFeat_Form::NewEdges()`
+        ///
         /// Returns a list of the limiting and glueing edges
         /// generated by the feature. These edges did not originally
         /// exist in the basis shape.
@@ -641,6 +691,8 @@ pub(crate) mod ffi {
         /// subsequent addition of fillets. It may be an empty list.
         #[cxx_name = "NewEdges"]
         fn new_edges(self: &Form) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFeat_Form.hxx`:104 - `BRepFeat_Form::TgtEdges()`
+        ///
         /// Returns a list of the tangent edges among the limiting
         /// and glueing edges generated by the feature. These
         /// edges did not originally exist in the basis shape and are
@@ -651,31 +703,46 @@ pub(crate) mod ffi {
         /// must subsequently be removed if you want to add a fillet.
         #[cxx_name = "TgtEdges"]
         fn tgt_edges(self: &Form) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepFeat_Form.hxx`:107 - `BRepFeat_Form::BasisShapeValid()`
+        ///
         /// Initializes the topological construction if the basis shape is present.
         #[cxx_name = "BasisShapeValid"]
         fn basis_shape_valid(self: Pin<&mut Form>);
+        /// **Source:** `BRepFeat_Form.hxx`:110 - `BRepFeat_Form::GeneratedShapeValid()`
+        ///
         /// Initializes the topological construction if the generated shape S is present.
         #[cxx_name = "GeneratedShapeValid"]
         fn generated_shape_valid(self: Pin<&mut Form>);
+        /// **Source:** `BRepFeat_Form.hxx`:114 - `BRepFeat_Form::ShapeFromValid()`
+        ///
         /// Initializes the topological construction if the shape is
         /// present from the specified integer on.
         #[cxx_name = "ShapeFromValid"]
         fn shape_from_valid(self: Pin<&mut Form>);
+        /// **Source:** `BRepFeat_Form.hxx`:118 - `BRepFeat_Form::ShapeUntilValid()`
+        ///
         /// Initializes the topological construction if the shape is
         /// present until the specified integer.
         #[cxx_name = "ShapeUntilValid"]
         fn shape_until_valid(self: Pin<&mut Form>);
+        /// **Source:** `BRepFeat_Form.hxx`:121 - `BRepFeat_Form::GluedFacesValid()`
+        ///
         /// Initializes the topological construction if the glued face is present.
         #[cxx_name = "GluedFacesValid"]
         fn glued_faces_valid(self: Pin<&mut Form>);
+        /// **Source:** `BRepFeat_Form.hxx`:126 - `BRepFeat_Form::SketchFaceValid()`
+        ///
         /// Initializes the topological construction if the sketch face
         /// is present. If the sketch face is inside the basis shape,
         /// local operations such as glueing can be performed.
         #[cxx_name = "SketchFaceValid"]
         fn sketch_face_valid(self: Pin<&mut Form>);
+        /// **Source:** `BRepFeat_Form.hxx`:129 - `BRepFeat_Form::PerfSelectionValid()`
+        ///
         /// Initializes the topological construction if the selected face is present.
         #[cxx_name = "PerfSelectionValid"]
         fn perf_selection_valid(self: Pin<&mut Form>);
+        /// **Source:** `BRepFeat_Form.hxx`:131 - `BRepFeat_Form::Curves()`
         #[cxx_name = "Curves"]
         fn curves(self: Pin<&mut Form>, S: Pin<&mut TColGeom_SequenceOfCurve>);
         #[cxx_name = "BRepFeat_Form_BarycCurve"]
@@ -697,7 +764,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut Form>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         /// ======================== BRepFeat_Builder ========================
-        /// **Source:** `BRepFeat_Builder.hxx` - `BRepFeat_Builder`
+        /// **Source:** `BRepFeat_Builder.hxx`:45 - `BRepFeat_Builder`
         ///
         /// Provides a basic tool to implement features topological
         /// operations. The main goal of the algorithm is to perform
@@ -716,22 +783,32 @@ pub(crate) mod ffi {
         /// Result: Result shape of the operation required.
         #[cxx_name = "BRepFeat_Builder"]
         type Builder;
-        /// **Source:** `BRepFeat_Builder.hxx` - `BRepFeat_Builder::BRepFeat_Builder()`
+        /// **Source:** `BRepFeat_Builder.hxx`:50 - `BRepFeat_Builder::BRepFeat_Builder()`
         #[cxx_name = "BRepFeat_Builder_ctor"]
         fn Builder_ctor() -> UniquePtr<Builder>;
+        /// **Source:** `BRepFeat_Builder.hxx`:54 - `BRepFeat_Builder::Clear()`
+        ///
         /// Clears internal fields and arguments.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Builder>);
+        /// **Source:** `BRepFeat_Builder.hxx`:57 - `BRepFeat_Builder::Init()`
+        ///
         /// Initializes the object of local boolean operation.
         #[cxx_name = "Init"]
         fn init_shape(self: Pin<&mut Builder>, theShape: &TopoDS_Shape);
+        /// **Source:** `BRepFeat_Builder.hxx`:60 - `BRepFeat_Builder::Init()`
+        ///
         /// Initializes the arguments of local boolean operation.
         #[cxx_name = "Init"]
         fn init_shape2(self: Pin<&mut Builder>, theShape: &TopoDS_Shape, theTool: &TopoDS_Shape);
+        /// **Source:** `BRepFeat_Builder.hxx`:64 - `BRepFeat_Builder::SetOperation()`
+        ///
         /// Sets the operation of local boolean operation.
         /// If theFuse = 0 than the operation is CUT, otherwise FUSE.
         #[cxx_name = "SetOperation"]
         fn set_operation_int(self: Pin<&mut Builder>, theFuse: i32);
+        /// **Source:** `BRepFeat_Builder.hxx`:71 - `BRepFeat_Builder::SetOperation()`
+        ///
         /// Sets the operation of local boolean operation.
         /// If theFlag = TRUE it means that no selection of parts
         /// of the tool is needed, t.e. no second part. In that case
@@ -739,23 +816,35 @@ pub(crate) mod ffi {
         /// If theFlag = FALSE SetOperation(theFuse) function  is called.
         #[cxx_name = "SetOperation"]
         fn set_operation_int_bool(self: Pin<&mut Builder>, theFuse: i32, theFlag: bool);
+        /// **Source:** `BRepFeat_Builder.hxx`:74 - `BRepFeat_Builder::PartsOfTool()`
+        ///
         /// Collects parts of the tool.
         #[cxx_name = "PartsOfTool"]
         fn parts_of_tool(self: Pin<&mut Builder>, theLT: Pin<&mut TopTools_ListOfShape>);
+        /// **Source:** `BRepFeat_Builder.hxx`:78 - `BRepFeat_Builder::KeepParts()`
+        ///
         /// Initializes parts of the tool for second step of algorithm.
         /// Collects shapes and all sub-shapes into myShapes map.
         #[cxx_name = "KeepParts"]
         fn keep_parts(self: Pin<&mut Builder>, theIm: &TopTools_ListOfShape);
+        /// **Source:** `BRepFeat_Builder.hxx`:81 - `BRepFeat_Builder::KeepPart()`
+        ///
         /// Adds shape theS and all its sub-shapes into myShapes map.
         #[cxx_name = "KeepPart"]
         fn keep_part(self: Pin<&mut Builder>, theS: &TopoDS_Shape);
+        /// **Source:** `BRepFeat_Builder.hxx`:85 - `BRepFeat_Builder::PerformResult()`
+        ///
         /// Main function to build the result of the
         /// local operation required.
         #[cxx_name = "PerformResult"]
         fn perform_result(self: Pin<&mut Builder>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepFeat_Builder.hxx`:89 - `BRepFeat_Builder::RebuildFaces()`
+        ///
         /// Rebuilds faces in accordance with the kept parts of the tool.
         #[cxx_name = "RebuildFaces"]
         fn rebuild_faces(self: Pin<&mut Builder>);
+        /// **Source:** `BRepFeat_Builder.hxx`:92 - `BRepFeat_Builder::RebuildEdge()`
+        ///
         /// Rebuilds edges in accordance with the kept parts of the tool.
         #[cxx_name = "RebuildEdge"]
         fn rebuild_edge(
@@ -765,13 +854,19 @@ pub(crate) mod ffi {
             theME: &TopTools_MapOfShape,
             aLEIm: Pin<&mut TopTools_ListOfShape>,
         );
+        /// **Source:** `BRepFeat_Builder.hxx`:99 - `BRepFeat_Builder::CheckSolidImages()`
+        ///
         /// Collects the images of the object, that contains in
         /// the images of the tool.
         #[cxx_name = "CheckSolidImages"]
         fn check_solid_images(self: Pin<&mut Builder>);
+        /// **Source:** `BRepFeat_Builder.hxx`:102 - `BRepFeat_Builder::FillRemoved()`
+        ///
         /// Collects the removed parts of the tool into myRemoved map.
         #[cxx_name = "FillRemoved"]
         fn fill_removed(self: Pin<&mut Builder>);
+        /// **Source:** `BRepFeat_Builder.hxx`:105 - `BRepFeat_Builder::FillRemoved()`
+        ///
         /// Adds the shape S and its sub-shapes into myRemoved map.
         #[cxx_name = "FillRemoved"]
         fn fill_removed_shape_mapofshape(

@@ -144,43 +144,57 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== ChFi2d_Builder ========================
-        /// **Source:** `ChFi2d_Builder.hxx` - `ChFi2d_Builder`
+        /// **Source:** `ChFi2d_Builder.hxx`:39 - `ChFi2d_Builder`
         ///
         /// This  class contains  the algorithm  used to build
         /// fillet on planar wire.
         #[cxx_name = "ChFi2d_Builder"]
         type Builder;
-        /// **Source:** `ChFi2d_Builder.hxx` - `ChFi2d_Builder::ChFi2d_Builder()`
+        /// **Source:** `ChFi2d_Builder.hxx`:44 - `ChFi2d_Builder::ChFi2d_Builder()`
         #[cxx_name = "ChFi2d_Builder_ctor"]
         fn Builder_ctor() -> UniquePtr<Builder>;
-        /// **Source:** `ChFi2d_Builder.hxx` - `ChFi2d_Builder::ChFi2d_Builder()`
+        /// **Source:** `ChFi2d_Builder.hxx`:48 - `ChFi2d_Builder::ChFi2d_Builder()`
         ///
         /// The face  <F> can be build  on a closed or an open
         /// wire.
         #[cxx_name = "ChFi2d_Builder_ctor_face"]
         fn Builder_ctor_face(F: &TopoDS_Face) -> UniquePtr<Builder>;
+        /// **Source:** `ChFi2d_Builder.hxx`:50 - `ChFi2d_Builder::Init()`
         #[cxx_name = "Init"]
         fn init_face(self: Pin<&mut Builder>, F: &TopoDS_Face);
+        /// **Source:** `ChFi2d_Builder.hxx`:52 - `ChFi2d_Builder::Init()`
         #[cxx_name = "Init"]
         fn init_face2(self: Pin<&mut Builder>, RefFace: &TopoDS_Face, ModFace: &TopoDS_Face);
+        /// **Source:** `ChFi2d_Builder.hxx`:118 - `ChFi2d_Builder::IsModified()`
         #[cxx_name = "IsModified"]
         fn is_modified(self: &Builder, E: &TopoDS_Edge) -> bool;
+        /// **Source:** `ChFi2d_Builder.hxx`:121 - `ChFi2d_Builder::FilletEdges()`
+        ///
         /// returns the list of new edges
         #[cxx_name = "FilletEdges"]
         fn fillet_edges(self: &Builder) -> &TopTools_SequenceOfShape;
+        /// **Source:** `ChFi2d_Builder.hxx`:123 - `ChFi2d_Builder::NbFillet()`
         #[cxx_name = "NbFillet"]
         fn nb_fillet(self: &Builder) -> i32;
+        /// **Source:** `ChFi2d_Builder.hxx`:126 - `ChFi2d_Builder::ChamferEdges()`
+        ///
         /// returns the list of new edges
         #[cxx_name = "ChamferEdges"]
         fn chamfer_edges(self: &Builder) -> &TopTools_SequenceOfShape;
+        /// **Source:** `ChFi2d_Builder.hxx`:128 - `ChFi2d_Builder::NbChamfer()`
         #[cxx_name = "NbChamfer"]
         fn nb_chamfer(self: &Builder) -> i32;
+        /// **Source:** `ChFi2d_Builder.hxx`:130 - `ChFi2d_Builder::HasDescendant()`
         #[cxx_name = "HasDescendant"]
         fn has_descendant(self: &Builder, E: &TopoDS_Edge) -> bool;
+        /// **Source:** `ChFi2d_Builder.hxx`:134 - `ChFi2d_Builder::DescendantEdge()`
+        ///
         /// returns the modified edge if <E> has descendant or
         /// <E> in the other case.
         #[cxx_name = "DescendantEdge"]
         fn descendant_edge(self: &Builder, E: &TopoDS_Edge) -> &TopoDS_Edge;
+        /// **Source:** `ChFi2d_Builder.hxx`:139 - `ChFi2d_Builder::BasisEdge()`
+        ///
         /// Returns the parent edge of  <E>
         /// Warning: If <E>is a basis edge,  the returned edge would be
         /// equal to <E>

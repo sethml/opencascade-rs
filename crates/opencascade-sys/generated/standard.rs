@@ -965,39 +965,44 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Standard_Failure ========================
-        /// **Source:** `Standard_Failure.hxx` - `Standard_Failure`
+        /// **Source:** `Standard_Failure.hxx`:30 - `Standard_Failure`
         ///
         /// Forms the root of the entire exception hierarchy.
         #[cxx_name = "Standard_Failure"]
         type Failure;
-        /// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`
+        /// **Source:** `Standard_Failure.hxx`:34 - `Standard_Failure::Standard_Failure()`
         ///
         /// Creates a status object of type "Failure".
         #[cxx_name = "Standard_Failure_ctor"]
         fn Failure_ctor() -> UniquePtr<Failure>;
-        /// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`
+        /// **Source:** `Standard_Failure.hxx`:37 - `Standard_Failure::Standard_Failure()`
         ///
         /// Copy constructor
         #[cxx_name = "Standard_Failure_ctor_failure"]
         fn Failure_ctor_failure(f: &Failure) -> UniquePtr<Failure>;
-        /// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`
+        /// **Source:** `Standard_Failure.hxx`:41 - `Standard_Failure::Standard_Failure()`
         ///
         /// Creates a status object of type "Failure".
         /// @param[in] theDesc  exception description
         #[cxx_name = "Standard_Failure_ctor_charptr"]
         fn Failure_ctor_charptr(theDesc: &str) -> UniquePtr<Failure>;
-        /// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`
+        /// **Source:** `Standard_Failure.hxx`:46 - `Standard_Failure::Standard_Failure()`
         ///
         /// Creates a status object of type "Failure" with stack trace.
         /// @param[in] theDesc  exception description
         /// @param[in] theStackTrace  associated stack trace
         #[cxx_name = "Standard_Failure_ctor_charptr2"]
         fn Failure_ctor_charptr2(theDesc: &str, theStackTrace: &str) -> UniquePtr<Failure>;
+        /// **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
         #[cxx_name = "Reraise"]
         fn reraise(self: Pin<&mut Failure>);
+        /// **Source:** `Standard_Failure.hxx`:77 - `Standard_Failure::Reraise()`
+        ///
         /// Reraises a caught exception and changes its error message.
         #[cxx_name = "Reraise"]
         fn reraise_sstream(self: Pin<&mut Failure>, aReason: &Standard_SStream);
+        /// **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
+        ///
         /// Used to throw CASCADE exception from C signal handler.
         /// On platforms that do not allow throwing C++ exceptions
         /// from this handler (e.g. Linux), uses longjump to get to
@@ -1005,6 +1010,7 @@ pub(crate) mod ffi {
         /// converted to C++ exception.
         #[cxx_name = "Jump"]
         fn jump(self: Pin<&mut Failure>);
+        /// **Source:** `Standard_Failure.hxx`:114 - `Standard_Failure::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Failure) -> &HandleStandardType;
         /// Returns error message
@@ -1021,41 +1027,54 @@ pub(crate) mod ffi {
         fn Failure_set_stack_string(self_: Pin<&mut Failure>, theStack: &str);
         #[cxx_name = "Standard_Failure_Reraise"]
         fn Failure_reraise_charptr(self_: Pin<&mut Failure>, aMessage: &str);
+        /// **Source:** `Standard_Failure.hxx`:83 - `Standard_Failure::Raise()`
+        ///
         /// Raises an exception of type "Failure" and associates
         /// an error message to it. The message can be printed
         /// in an exception handler.
         #[cxx_name = "Standard_Failure_Raise_charptr"]
         fn Failure_raise_charptr(aMessage: &str);
+        /// **Source:** `Standard_Failure.hxx`:88 - `Standard_Failure::Raise()`
+        ///
         /// Raises an exception of type "Failure" and associates
         /// an error message to it. The message can be constructed
         /// at run-time.
         #[cxx_name = "Standard_Failure_Raise_sstream"]
         fn Failure_raise_sstream(aReason: &Standard_SStream);
+        /// **Source:** `Standard_Failure.hxx`:93 - `Standard_Failure::NewInstance()`
+        ///
         /// Used to construct an instance of the exception object as a handle.
         /// Shall be used to protect against possible construction of exception object in C stack,
         /// which is dangerous since some of methods require that object was allocated dynamically.
         #[cxx_name = "Standard_Failure_NewInstance_charptr"]
         fn Failure_new_instance_charptr(theMessage: &str) -> UniquePtr<HandleStandardFailure>;
+        /// **Source:** `Standard_Failure.hxx`:96 - `Standard_Failure::NewInstance()`
+        ///
         /// Used to construct an instance of the exception object as a handle.
         #[cxx_name = "Standard_Failure_NewInstance_charptr2"]
         fn Failure_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardFailure>;
+        /// **Source:** `Standard_Failure.hxx`:101 - `Standard_Failure::DefaultStackTraceLength()`
+        ///
         /// Returns the default length of stack trace to be captured by Standard_Failure constructor;
         /// 0 by default meaning no stack trace.
         #[cxx_name = "Standard_Failure_DefaultStackTraceLength"]
         fn Failure_default_stack_trace_length() -> i32;
+        /// **Source:** `Standard_Failure.hxx`:104 - `Standard_Failure::SetDefaultStackTraceLength()`
+        ///
         /// Sets default length of stack trace to be captured by Standard_Failure constructor.
         #[cxx_name = "Standard_Failure_SetDefaultStackTraceLength"]
         fn Failure_set_default_stack_trace_length(theNbStackTraces: i32);
+        /// **Source:** `Standard_Failure.hxx`:114 - `Standard_Failure::get_type_name()`
         #[cxx_name = "Standard_Failure_get_type_name"]
         fn Failure_get_type_name() -> String;
         /// Wrap Standard_Failure in a Handle (reference-counted smart pointer)
         #[cxx_name = "Standard_Failure_to_handle"]
         fn Failure_to_handle(obj: UniquePtr<Failure>) -> UniquePtr<HandleStandardFailure>;
         /// ======================== Standard_Mutex ========================
-        /// **Source:** `Standard_Mutex.hxx` - `Standard_Mutex`
+        /// **Source:** `Standard_Mutex.hxx`:65 - `Standard_Mutex`
         ///
         ///
         /// @brief Mutex: a class to synchronize access to shared data.
@@ -1090,51 +1109,61 @@ pub(crate) mod ffi {
         /// TryLock(), and UnregisterCallback() before Unlock() (or use Sentry classes).
         #[cxx_name = "Standard_Mutex"]
         type Mutex;
-        /// **Source:** `Standard_Mutex.hxx` - `Standard_Mutex::Standard_Mutex()`
+        /// **Source:** `Standard_Mutex.hxx`:136 - `Standard_Mutex::Standard_Mutex()`
         ///
         /// Constructor: creates a mutex object and initializes it.
         /// It is strongly recommended that mutexes were created as
         /// static objects whenever possible.
         #[cxx_name = "Standard_Mutex_ctor"]
         fn Mutex_ctor() -> UniquePtr<Mutex>;
+        /// **Source:** `Standard_Mutex.hxx`:143 - `Standard_Mutex::Lock()`
+        ///
         /// Method to lock the mutex; waits until the mutex is released
         /// by other threads, locks it and then returns
         #[cxx_name = "Lock"]
         fn lock(self: Pin<&mut Mutex>);
+        /// **Source:** `Standard_Mutex.hxx`:148 - `Standard_Mutex::TryLock()`
+        ///
         /// Method to test the mutex; if the mutex is not hold by other thread,
         /// locks it and returns True; otherwise returns False without waiting
         /// mutex to be released.
         #[cxx_name = "TryLock"]
         fn try_lock(self: Pin<&mut Mutex>) -> bool;
+        /// **Source:** `Standard_Mutex.hxx`:151 - `Standard_Mutex::Unlock()`
+        ///
         /// Method to unlock the mutex; releases it to other users
         #[cxx_name = "Unlock"]
         fn unlock(self: Pin<&mut Mutex>);
         /// ======================== Standard_DumpValue ========================
-        /// **Source:** `Standard_Dump.hxx` - `Standard_DumpValue`
+        /// **Source:** `Standard_Dump.hxx`:309 - `Standard_DumpValue`
         ///
         /// Type for storing a dump value with the stream position
         #[cxx_name = "Standard_DumpValue"]
         type DumpValue;
-        /// **Source:** `Standard_Dump.hxx` - `Standard_DumpValue::Standard_DumpValue()`
+        /// **Source:** `Standard_Dump.hxx`:311 - `Standard_DumpValue::Standard_DumpValue()`
         #[cxx_name = "Standard_DumpValue_ctor"]
         fn DumpValue_ctor() -> UniquePtr<DumpValue>;
-        /// **Source:** `Standard_Dump.hxx` - `Standard_DumpValue::Standard_DumpValue()`
+        /// **Source:** `Standard_Dump.hxx`:316 - `Standard_DumpValue::Standard_DumpValue()`
         #[cxx_name = "Standard_DumpValue_ctor_asciistring_int"]
         fn DumpValue_ctor_asciistring_int(
             theValue: &TCollection_AsciiString,
             theStartPos: i32,
         ) -> UniquePtr<DumpValue>;
         /// ======================== Standard_Dump ========================
-        /// **Source:** `Standard_Dump.hxx` - `Standard_Dump`
+        /// **Source:** `Standard_Dump.hxx`:327 - `Standard_Dump`
         ///
         /// This interface has some tool methods for stream (in JSON format) processing.
         #[cxx_name = "Standard_Dump"]
         type Dump;
+        /// **Source:** `Standard_Dump.hxx`:333 - `Standard_Dump::Text()`
+        ///
         /// Converts stream value to string value. The result is original stream value.
         /// @param theStream source value
         /// @return text presentation
         #[cxx_name = "Standard_Dump_Text"]
         fn Dump_text(theStream: &Standard_SStream) -> UniquePtr<TCollection_AsciiString>;
+        /// **Source:** `Standard_Dump.hxx`:345 - `Standard_Dump::FormatJson()`
+        ///
         /// Converts stream value to string value. Improves the text presentation with the following
         /// cases:
         /// - for '{' append after '\
@@ -1153,13 +1182,19 @@ pub(crate) mod ffi {
             theStream: &Standard_SStream,
             theIndent: i32,
         ) -> UniquePtr<TCollection_AsciiString>;
+        /// **Source:** `Standard_Dump.hxx`:370 - `Standard_Dump::HasChildKey()`
+        ///
         /// Returns true if the value has bracket key
         #[cxx_name = "Standard_Dump_HasChildKey"]
         fn Dump_has_child_key(theSourceValue: &TCollection_AsciiString) -> bool;
+        /// **Source:** `Standard_Dump.hxx`:384 - `Standard_Dump::GetPointerPrefix()`
+        ///
         /// Returns default prefix added for each pointer info string if short presentation of pointer
         /// used
         #[cxx_name = "Standard_Dump_GetPointerPrefix"]
         fn Dump_get_pointer_prefix() -> UniquePtr<TCollection_AsciiString>;
+        /// **Source:** `Standard_Dump.hxx`:391 - `Standard_Dump::GetPointerInfo()`
+        ///
         /// Convert handle pointer to address of the pointer. If the handle is NULL, the result is an
         /// empty string.
         /// @param thePointer a pointer
@@ -1170,6 +1205,8 @@ pub(crate) mod ffi {
             thePointer: &HandleStandardTransient,
             isShortInfo: bool,
         ) -> UniquePtr<TCollection_AsciiString>;
+        /// **Source:** `Standard_Dump.hxx`:425 - `Standard_Dump::ProcessStreamName()`
+        ///
         /// Check whether the parameter name is equal to the name in the stream at position
         /// @param[in]  theStreamStr stream with values
         /// @param[in]  theName      stream key value
@@ -1180,6 +1217,8 @@ pub(crate) mod ffi {
             theName: &TCollection_AsciiString,
             theStreamPos: &mut i32,
         ) -> bool;
+        /// **Source:** `Standard_Dump.hxx`:434 - `Standard_Dump::ProcessFieldName()`
+        ///
         /// Check whether the field name is equal to the name in the stream at position
         /// @param[in]  theStreamStr stream with values
         /// @param[in]  theName      stream key field value
@@ -1190,6 +1229,8 @@ pub(crate) mod ffi {
             theName: &TCollection_AsciiString,
             theStreamPos: &mut i32,
         ) -> bool;
+        /// **Source:** `Standard_Dump.hxx`:443 - `Standard_Dump::InitRealValues()`
+        ///
         /// Unite values in one value using template: value_1, value_2, ..., value_n
         /// @param[in]  theStreamStr stream with values
         /// @param[out] theStreamPos current position in the stream
@@ -1200,6 +1241,8 @@ pub(crate) mod ffi {
             theStreamPos: &mut i32,
             theCount: i32,
         ) -> bool;
+        /// **Source:** `Standard_Dump.hxx`:453 - `Standard_Dump::InitValue()`
+        ///
         /// Returns real value
         /// @param[in]  theStreamStr stream with values
         /// @param[out] theStreamPos current position in the stream
@@ -1210,6 +1253,8 @@ pub(crate) mod ffi {
             theStreamPos: &mut i32,
             theValue: Pin<&mut TCollection_AsciiString>,
         ) -> bool;
+        /// **Source:** `Standard_Dump.hxx`:460 - `Standard_Dump::DumpFieldToName()`
+        ///
         /// Convert field name into dump text value, removes "&" and "my" prefixes
         /// An example, for field myValue, theName is Value, for &myCLass, the name is Class
         /// @param theField a source value
@@ -1218,43 +1263,57 @@ pub(crate) mod ffi {
             theField: &TCollection_AsciiString,
         ) -> UniquePtr<TCollection_AsciiString>;
         /// ======================== Standard_Transient ========================
-        /// **Source:** `Standard_Transient.hxx` - `Standard_Transient`
+        /// **Source:** `Standard_Transient.hxx`:35 - `Standard_Transient`
         ///
         /// Abstract class which forms the root of the entire
         /// Transient class hierarchy.
         #[cxx_name = "Standard_Transient"]
         type Transient;
-        /// **Source:** `Standard_Transient.hxx` - `Standard_Transient::Standard_Transient()`
+        /// **Source:** `Standard_Transient.hxx`:43 - `Standard_Transient::Standard_Transient()`
         ///
         /// Empty constructor
         #[cxx_name = "Standard_Transient_ctor"]
         fn Transient_ctor() -> UniquePtr<Transient>;
-        /// **Source:** `Standard_Transient.hxx` - `Standard_Transient::Standard_Transient()`
+        /// **Source:** `Standard_Transient.hxx`:49 - `Standard_Transient::Standard_Transient()`
         ///
         /// Copy constructor -- does nothing
         #[cxx_name = "Standard_Transient_ctor_transient"]
         fn Transient_ctor_transient(arg0: &Transient) -> UniquePtr<Transient>;
+        /// **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
+        ///
         /// Returns a type descriptor about this object.
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Transient) -> &HandleStandardType;
+        /// **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+        ///
         /// Returns a true value if this is an instance of Type.
         #[cxx_name = "IsInstance"]
         fn is_instance_handletype(self: &Transient, theType: &HandleStandardType) -> bool;
+        /// **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+        ///
         /// Returns true if this is an instance of Type or an
         /// instance of any class that inherits from Type.
         /// Note that multiple inheritance is not supported by OCCT RTTI mechanism.
         #[cxx_name = "IsKind"]
         fn is_kind_handletype(self: &Transient, theType: &HandleStandardType) -> bool;
+        /// **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+        ///
         /// Get the reference counter of this object
         #[cxx_name = "GetRefCount"]
         fn get_ref_count(self: &Transient) -> i32;
+        /// **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+        ///
         /// Increments the reference counter of this object
         #[cxx_name = "IncrementRefCounter"]
         fn increment_ref_counter(self: Pin<&mut Transient>);
+        /// **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+        ///
         /// Decrements the reference counter of this object;
         /// returns the decremented value
         #[cxx_name = "DecrementRefCounter"]
         fn decrement_ref_counter(self: Pin<&mut Transient>) -> i32;
+        /// **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+        ///
         /// Memory deallocator for transient classes
         #[cxx_name = "Delete"]
         fn delete(self: &Transient);
@@ -1266,55 +1325,64 @@ pub(crate) mod ffi {
         /// Note that multiple inheritance is not supported by OCCT RTTI mechanism.
         #[cxx_name = "Standard_Transient_IsKind"]
         fn Transient_is_kind_charptr(self_: &Transient, theTypeName: &str) -> bool;
+        /// **Source:** `Standard_Transient.hxx`:65 - `Standard_Transient::get_type_name()`
         #[cxx_name = "Standard_Transient_get_type_name"]
         fn Transient_get_type_name() -> String;
         /// ======================== Standard ========================
-        /// **Source:** `Standard.hxx` - `Standard`
+        /// **Source:** `Standard.hxx`:26 - `Standard`
         ///
         /// The package Standard provides global memory allocator and other basic
         /// services used by other OCCT components.
         #[cxx_name = "Standard"]
         type Standard;
+        /// **Source:** `Standard.hxx`:94 - `Standard::Purge()`
+        ///
         /// Deallocates the storage retained on the free list
         /// and clears the list.
         /// Returns non-zero if some memory has been actually freed.
         #[cxx_name = "Standard_Purge"]
         fn Standard_purge() -> i32;
         /// ======================== Standard_DimensionMismatch ========================
-        /// **Source:** `Standard_DimensionMismatch.hxx` - `Standard_DimensionMismatch`
+        /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch`
         #[cxx_name = "Standard_DimensionMismatch"]
         type DimensionMismatch;
-        /// **Source:** `Standard_DimensionMismatch.hxx` - `Standard_DimensionMismatch::Standard_DimensionMismatch()`
+        /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Standard_DimensionMismatch()`
         #[cxx_name = "Standard_DimensionMismatch_ctor"]
         fn DimensionMismatch_ctor() -> UniquePtr<DimensionMismatch>;
-        /// **Source:** `Standard_DimensionMismatch.hxx` - `Standard_DimensionMismatch::Standard_DimensionMismatch()`
+        /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Standard_DimensionMismatch()`
         #[cxx_name = "Standard_DimensionMismatch_ctor_charptr"]
         fn DimensionMismatch_ctor_charptr(theMessage: &str) -> UniquePtr<DimensionMismatch>;
-        /// **Source:** `Standard_DimensionMismatch.hxx` - `Standard_DimensionMismatch::Standard_DimensionMismatch()`
+        /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Standard_DimensionMismatch()`
         #[cxx_name = "Standard_DimensionMismatch_ctor_charptr2"]
         fn DimensionMismatch_ctor_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<DimensionMismatch>;
+        /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &DimensionMismatch) -> &HandleStandardType;
+        /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Raise()`
         #[cxx_name = "Standard_DimensionMismatch_Raise_charptr"]
         fn DimensionMismatch_raise_charptr(theMessage: &str);
+        /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Raise()`
         #[cxx_name = "Standard_DimensionMismatch_Raise_sstream"]
         fn DimensionMismatch_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::NewInstance()`
         #[cxx_name = "Standard_DimensionMismatch_NewInstance_charptr"]
         fn DimensionMismatch_new_instance_charptr(
             theMessage: &str,
         ) -> UniquePtr<HandleStandardDimensionMismatch>;
+        /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::NewInstance()`
         #[cxx_name = "Standard_DimensionMismatch_NewInstance_charptr2"]
         fn DimensionMismatch_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardDimensionMismatch>;
+        /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::get_type_name()`
         #[cxx_name = "Standard_DimensionMismatch_get_type_name"]
         fn DimensionMismatch_get_type_name() -> String;
         /// ======================== Standard_OutOfMemory ========================
-        /// **Source:** `Standard_OutOfMemory.hxx` - `Standard_OutOfMemory`
+        /// **Source:** `Standard_OutOfMemory.hxx`:48 - `Standard_OutOfMemory`
         ///
         /// Standard_OutOfMemory exception is defined explicitly and not by
         /// macro DEFINE_STANDARD_EXCEPTION, to avoid necessity of dynamic
@@ -1331,11 +1399,12 @@ pub(crate) mod ffi {
         /// is dangerous (can cause recursion until stack overflow, see #24836).
         #[cxx_name = "Standard_OutOfMemory"]
         type OutOfMemory;
-        /// **Source:** `Standard_OutOfMemory.hxx` - `Standard_OutOfMemory::Standard_OutOfMemory()`
+        /// **Source:** `Standard_OutOfMemory.hxx`:54 - `Standard_OutOfMemory::Standard_OutOfMemory()`
         ///
         /// Constructor is kept public for backward compatibility
         #[cxx_name = "Standard_OutOfMemory_ctor_charptr"]
         fn OutOfMemory_ctor_charptr(theMessage: &str) -> UniquePtr<OutOfMemory>;
+        /// **Source:** `Standard_OutOfMemory.hxx`:75 - `Standard_OutOfMemory::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &OutOfMemory) -> &HandleStandardType;
         /// Returns error message
@@ -1344,123 +1413,150 @@ pub(crate) mod ffi {
         /// Sets error message
         #[cxx_name = "Standard_OutOfMemory_SetMessageString"]
         fn OutOfMemory_set_message_string(self_: Pin<&mut OutOfMemory>, aMessage: &str);
+        /// **Source:** `Standard_OutOfMemory.hxx`:63 - `Standard_OutOfMemory::Raise()`
+        ///
         /// Raises exception with specified message string
         #[cxx_name = "Standard_OutOfMemory_Raise_charptr"]
         fn OutOfMemory_raise_charptr(theMessage: &str);
+        /// **Source:** `Standard_OutOfMemory.hxx`:66 - `Standard_OutOfMemory::Raise()`
+        ///
         /// Raises exception with specified message string
         #[cxx_name = "Standard_OutOfMemory_Raise_sstream"]
         fn OutOfMemory_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        /// **Source:** `Standard_OutOfMemory.hxx`:69 - `Standard_OutOfMemory::NewInstance()`
+        ///
         /// Returns global instance of exception
         #[cxx_name = "Standard_OutOfMemory_NewInstance_charptr"]
         fn OutOfMemory_new_instance_charptr(
             theMessage: &str,
         ) -> UniquePtr<HandleStandardOutOfMemory>;
+        /// **Source:** `Standard_OutOfMemory.hxx`:72 - `Standard_OutOfMemory::NewInstance()`
+        ///
         /// Returns global instance of exception
         #[cxx_name = "Standard_OutOfMemory_NewInstance_charptr2"]
         fn OutOfMemory_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardOutOfMemory>;
+        /// **Source:** `Standard_OutOfMemory.hxx`:75 - `Standard_OutOfMemory::get_type_name()`
         #[cxx_name = "Standard_OutOfMemory_get_type_name"]
         fn OutOfMemory_get_type_name() -> String;
         /// ======================== Standard_NotImplemented ========================
-        /// **Source:** `Standard_NotImplemented.hxx` - `Standard_NotImplemented`
+        /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented`
         #[cxx_name = "Standard_NotImplemented"]
         type NotImplemented;
-        /// **Source:** `Standard_NotImplemented.hxx` - `Standard_NotImplemented::Standard_NotImplemented()`
+        /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Standard_NotImplemented()`
         #[cxx_name = "Standard_NotImplemented_ctor"]
         fn NotImplemented_ctor() -> UniquePtr<NotImplemented>;
-        /// **Source:** `Standard_NotImplemented.hxx` - `Standard_NotImplemented::Standard_NotImplemented()`
+        /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Standard_NotImplemented()`
         #[cxx_name = "Standard_NotImplemented_ctor_charptr"]
         fn NotImplemented_ctor_charptr(theMessage: &str) -> UniquePtr<NotImplemented>;
-        /// **Source:** `Standard_NotImplemented.hxx` - `Standard_NotImplemented::Standard_NotImplemented()`
+        /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Standard_NotImplemented()`
         #[cxx_name = "Standard_NotImplemented_ctor_charptr2"]
         fn NotImplemented_ctor_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<NotImplemented>;
+        /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &NotImplemented) -> &HandleStandardType;
+        /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Raise()`
         #[cxx_name = "Standard_NotImplemented_Raise_charptr"]
         fn NotImplemented_raise_charptr(theMessage: &str);
+        /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Raise()`
         #[cxx_name = "Standard_NotImplemented_Raise_sstream"]
         fn NotImplemented_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::NewInstance()`
         #[cxx_name = "Standard_NotImplemented_NewInstance_charptr"]
         fn NotImplemented_new_instance_charptr(
             theMessage: &str,
         ) -> UniquePtr<HandleStandardNotImplemented>;
+        /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::NewInstance()`
         #[cxx_name = "Standard_NotImplemented_NewInstance_charptr2"]
         fn NotImplemented_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardNotImplemented>;
+        /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::get_type_name()`
         #[cxx_name = "Standard_NotImplemented_get_type_name"]
         fn NotImplemented_get_type_name() -> String;
         /// ======================== Standard_OutOfRange ========================
-        /// **Source:** `Standard_OutOfRange.hxx` - `Standard_OutOfRange`
+        /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange`
         #[cxx_name = "Standard_OutOfRange"]
         type OutOfRange;
-        /// **Source:** `Standard_OutOfRange.hxx` - `Standard_OutOfRange::Standard_OutOfRange()`
+        /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Standard_OutOfRange()`
         #[cxx_name = "Standard_OutOfRange_ctor"]
         fn OutOfRange_ctor() -> UniquePtr<OutOfRange>;
-        /// **Source:** `Standard_OutOfRange.hxx` - `Standard_OutOfRange::Standard_OutOfRange()`
+        /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Standard_OutOfRange()`
         #[cxx_name = "Standard_OutOfRange_ctor_charptr"]
         fn OutOfRange_ctor_charptr(theMessage: &str) -> UniquePtr<OutOfRange>;
-        /// **Source:** `Standard_OutOfRange.hxx` - `Standard_OutOfRange::Standard_OutOfRange()`
+        /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Standard_OutOfRange()`
         #[cxx_name = "Standard_OutOfRange_ctor_charptr2"]
         fn OutOfRange_ctor_charptr2(theMessage: &str, theStackTrace: &str)
             -> UniquePtr<OutOfRange>;
+        /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &OutOfRange) -> &HandleStandardType;
+        /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Raise()`
         #[cxx_name = "Standard_OutOfRange_Raise_charptr"]
         fn OutOfRange_raise_charptr(theMessage: &str);
+        /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Raise()`
         #[cxx_name = "Standard_OutOfRange_Raise_sstream"]
         fn OutOfRange_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::NewInstance()`
         #[cxx_name = "Standard_OutOfRange_NewInstance_charptr"]
         fn OutOfRange_new_instance_charptr(theMessage: &str)
             -> UniquePtr<HandleStandardOutOfRange>;
+        /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::NewInstance()`
         #[cxx_name = "Standard_OutOfRange_NewInstance_charptr2"]
         fn OutOfRange_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardOutOfRange>;
+        /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::get_type_name()`
         #[cxx_name = "Standard_OutOfRange_get_type_name"]
         fn OutOfRange_get_type_name() -> String;
         /// ======================== Standard_ProgramError ========================
-        /// **Source:** `Standard_ProgramError.hxx` - `Standard_ProgramError`
+        /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError`
         #[cxx_name = "Standard_ProgramError"]
         type ProgramError;
-        /// **Source:** `Standard_ProgramError.hxx` - `Standard_ProgramError::Standard_ProgramError()`
+        /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Standard_ProgramError()`
         #[cxx_name = "Standard_ProgramError_ctor"]
         fn ProgramError_ctor() -> UniquePtr<ProgramError>;
-        /// **Source:** `Standard_ProgramError.hxx` - `Standard_ProgramError::Standard_ProgramError()`
+        /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Standard_ProgramError()`
         #[cxx_name = "Standard_ProgramError_ctor_charptr"]
         fn ProgramError_ctor_charptr(theMessage: &str) -> UniquePtr<ProgramError>;
-        /// **Source:** `Standard_ProgramError.hxx` - `Standard_ProgramError::Standard_ProgramError()`
+        /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Standard_ProgramError()`
         #[cxx_name = "Standard_ProgramError_ctor_charptr2"]
         fn ProgramError_ctor_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<ProgramError>;
+        /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ProgramError) -> &HandleStandardType;
+        /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Raise()`
         #[cxx_name = "Standard_ProgramError_Raise_charptr"]
         fn ProgramError_raise_charptr(theMessage: &str);
+        /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Raise()`
         #[cxx_name = "Standard_ProgramError_Raise_sstream"]
         fn ProgramError_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::NewInstance()`
         #[cxx_name = "Standard_ProgramError_NewInstance_charptr"]
         fn ProgramError_new_instance_charptr(
             theMessage: &str,
         ) -> UniquePtr<HandleStandardProgramError>;
+        /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::NewInstance()`
         #[cxx_name = "Standard_ProgramError_NewInstance_charptr2"]
         fn ProgramError_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardProgramError>;
+        /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::get_type_name()`
         #[cxx_name = "Standard_ProgramError_get_type_name"]
         fn ProgramError_get_type_name() -> String;
         /// ======================== Standard_Type ========================
-        /// **Source:** `Standard_Type.hxx` - `Standard_Type`
+        /// **Source:** `Standard_Type.hxx`:120 - `Standard_Type`
         ///
         /// This class provides legacy interface (type descriptor) to run-time type
         /// information (RTTI) for OCCT classes inheriting from Standard_Transient.
@@ -1486,16 +1582,23 @@ pub(crate) mod ffi {
         /// Only single chain of inheritance is supported, with a root base class Standard_Transient.
         #[cxx_name = "Standard_Type"]
         type Type;
+        /// **Source:** `Standard_Type.hxx`:130 - `Standard_Type::Size()`
+        ///
         /// Returns the size of the class instance in bytes
         #[cxx_name = "Size"]
         fn size(self: &Type) -> usize;
+        /// **Source:** `Standard_Type.hxx`:133 - `Standard_Type::Parent()`
+        ///
         /// Returns descriptor of the base class in the hierarchy
         #[cxx_name = "Parent"]
         fn parent(self: &Type) -> &HandleStandardType;
+        /// **Source:** `Standard_Type.hxx`:137 - `Standard_Type::SubType()`
+        ///
         /// Returns True if this type is the same as theOther, or inherits from theOther.
         /// Note that multiple inheritance is not supported.
         #[cxx_name = "SubType"]
         fn sub_type_handletype(self: &Type, theOther: &HandleStandardType) -> bool;
+        /// **Source:** `Standard_Type.hxx`:174 - `Standard_Type::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Type) -> &HandleStandardType;
         /// Returns the system type name of the class (typeinfo.name)
@@ -1508,175 +1611,206 @@ pub(crate) mod ffi {
         /// Note that multiple inheritance is not supported.
         #[cxx_name = "Standard_Type_SubType"]
         fn Type_sub_type_charptr(self_: &Type, theOther: &str) -> bool;
+        /// **Source:** `Standard_Type.hxx`:174 - `Standard_Type::get_type_name()`
         #[cxx_name = "Standard_Type_get_type_name"]
         fn Type_get_type_name() -> String;
         /// Wrap Standard_Type in a Handle (reference-counted smart pointer)
         #[cxx_name = "Standard_Type_to_handle"]
         fn Type_to_handle(obj: UniquePtr<Type>) -> UniquePtr<HandleStandardType>;
         /// ======================== Standard_RangeError ========================
-        /// **Source:** `Standard_RangeError.hxx` - `Standard_RangeError`
+        /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError`
         #[cxx_name = "Standard_RangeError"]
         type RangeError;
-        /// **Source:** `Standard_RangeError.hxx` - `Standard_RangeError::Standard_RangeError()`
+        /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Standard_RangeError()`
         #[cxx_name = "Standard_RangeError_ctor"]
         fn RangeError_ctor() -> UniquePtr<RangeError>;
-        /// **Source:** `Standard_RangeError.hxx` - `Standard_RangeError::Standard_RangeError()`
+        /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Standard_RangeError()`
         #[cxx_name = "Standard_RangeError_ctor_charptr"]
         fn RangeError_ctor_charptr(theMessage: &str) -> UniquePtr<RangeError>;
-        /// **Source:** `Standard_RangeError.hxx` - `Standard_RangeError::Standard_RangeError()`
+        /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Standard_RangeError()`
         #[cxx_name = "Standard_RangeError_ctor_charptr2"]
         fn RangeError_ctor_charptr2(theMessage: &str, theStackTrace: &str)
             -> UniquePtr<RangeError>;
+        /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &RangeError) -> &HandleStandardType;
+        /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Raise()`
         #[cxx_name = "Standard_RangeError_Raise_charptr"]
         fn RangeError_raise_charptr(theMessage: &str);
+        /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Raise()`
         #[cxx_name = "Standard_RangeError_Raise_sstream"]
         fn RangeError_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::NewInstance()`
         #[cxx_name = "Standard_RangeError_NewInstance_charptr"]
         fn RangeError_new_instance_charptr(theMessage: &str)
             -> UniquePtr<HandleStandardRangeError>;
+        /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::NewInstance()`
         #[cxx_name = "Standard_RangeError_NewInstance_charptr2"]
         fn RangeError_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardRangeError>;
+        /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::get_type_name()`
         #[cxx_name = "Standard_RangeError_get_type_name"]
         fn RangeError_get_type_name() -> String;
         /// ======================== Standard_DomainError ========================
-        /// **Source:** `Standard_DomainError.hxx` - `Standard_DomainError`
+        /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError`
         #[cxx_name = "Standard_DomainError"]
         type DomainError;
-        /// **Source:** `Standard_DomainError.hxx` - `Standard_DomainError::Standard_DomainError()`
+        /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Standard_DomainError()`
         #[cxx_name = "Standard_DomainError_ctor"]
         fn DomainError_ctor() -> UniquePtr<DomainError>;
-        /// **Source:** `Standard_DomainError.hxx` - `Standard_DomainError::Standard_DomainError()`
+        /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Standard_DomainError()`
         #[cxx_name = "Standard_DomainError_ctor_charptr"]
         fn DomainError_ctor_charptr(theMessage: &str) -> UniquePtr<DomainError>;
-        /// **Source:** `Standard_DomainError.hxx` - `Standard_DomainError::Standard_DomainError()`
+        /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Standard_DomainError()`
         #[cxx_name = "Standard_DomainError_ctor_charptr2"]
         fn DomainError_ctor_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<DomainError>;
+        /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &DomainError) -> &HandleStandardType;
+        /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Raise()`
         #[cxx_name = "Standard_DomainError_Raise_charptr"]
         fn DomainError_raise_charptr(theMessage: &str);
+        /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Raise()`
         #[cxx_name = "Standard_DomainError_Raise_sstream"]
         fn DomainError_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::NewInstance()`
         #[cxx_name = "Standard_DomainError_NewInstance_charptr"]
         fn DomainError_new_instance_charptr(
             theMessage: &str,
         ) -> UniquePtr<HandleStandardDomainError>;
+        /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::NewInstance()`
         #[cxx_name = "Standard_DomainError_NewInstance_charptr2"]
         fn DomainError_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardDomainError>;
+        /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::get_type_name()`
         #[cxx_name = "Standard_DomainError_get_type_name"]
         fn DomainError_get_type_name() -> String;
         /// ======================== Standard_DimensionError ========================
-        /// **Source:** `Standard_DimensionError.hxx` - `Standard_DimensionError`
+        /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError`
         #[cxx_name = "Standard_DimensionError"]
         type DimensionError;
-        /// **Source:** `Standard_DimensionError.hxx` - `Standard_DimensionError::Standard_DimensionError()`
+        /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Standard_DimensionError()`
         #[cxx_name = "Standard_DimensionError_ctor"]
         fn DimensionError_ctor() -> UniquePtr<DimensionError>;
-        /// **Source:** `Standard_DimensionError.hxx` - `Standard_DimensionError::Standard_DimensionError()`
+        /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Standard_DimensionError()`
         #[cxx_name = "Standard_DimensionError_ctor_charptr"]
         fn DimensionError_ctor_charptr(theMessage: &str) -> UniquePtr<DimensionError>;
-        /// **Source:** `Standard_DimensionError.hxx` - `Standard_DimensionError::Standard_DimensionError()`
+        /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Standard_DimensionError()`
         #[cxx_name = "Standard_DimensionError_ctor_charptr2"]
         fn DimensionError_ctor_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<DimensionError>;
+        /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &DimensionError) -> &HandleStandardType;
+        /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Raise()`
         #[cxx_name = "Standard_DimensionError_Raise_charptr"]
         fn DimensionError_raise_charptr(theMessage: &str);
+        /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Raise()`
         #[cxx_name = "Standard_DimensionError_Raise_sstream"]
         fn DimensionError_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::NewInstance()`
         #[cxx_name = "Standard_DimensionError_NewInstance_charptr"]
         fn DimensionError_new_instance_charptr(
             theMessage: &str,
         ) -> UniquePtr<HandleStandardDimensionError>;
+        /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::NewInstance()`
         #[cxx_name = "Standard_DimensionError_NewInstance_charptr2"]
         fn DimensionError_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardDimensionError>;
+        /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::get_type_name()`
         #[cxx_name = "Standard_DimensionError_get_type_name"]
         fn DimensionError_get_type_name() -> String;
         /// ======================== Standard_TypeMismatch ========================
-        /// **Source:** `Standard_TypeMismatch.hxx` - `Standard_TypeMismatch`
+        /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch`
         #[cxx_name = "Standard_TypeMismatch"]
         type TypeMismatch;
-        /// **Source:** `Standard_TypeMismatch.hxx` - `Standard_TypeMismatch::Standard_TypeMismatch()`
+        /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Standard_TypeMismatch()`
         #[cxx_name = "Standard_TypeMismatch_ctor"]
         fn TypeMismatch_ctor() -> UniquePtr<TypeMismatch>;
-        /// **Source:** `Standard_TypeMismatch.hxx` - `Standard_TypeMismatch::Standard_TypeMismatch()`
+        /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Standard_TypeMismatch()`
         #[cxx_name = "Standard_TypeMismatch_ctor_charptr"]
         fn TypeMismatch_ctor_charptr(theMessage: &str) -> UniquePtr<TypeMismatch>;
-        /// **Source:** `Standard_TypeMismatch.hxx` - `Standard_TypeMismatch::Standard_TypeMismatch()`
+        /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Standard_TypeMismatch()`
         #[cxx_name = "Standard_TypeMismatch_ctor_charptr2"]
         fn TypeMismatch_ctor_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<TypeMismatch>;
+        /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TypeMismatch) -> &HandleStandardType;
+        /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Raise()`
         #[cxx_name = "Standard_TypeMismatch_Raise_charptr"]
         fn TypeMismatch_raise_charptr(theMessage: &str);
+        /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Raise()`
         #[cxx_name = "Standard_TypeMismatch_Raise_sstream"]
         fn TypeMismatch_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::NewInstance()`
         #[cxx_name = "Standard_TypeMismatch_NewInstance_charptr"]
         fn TypeMismatch_new_instance_charptr(
             theMessage: &str,
         ) -> UniquePtr<HandleStandardTypeMismatch>;
+        /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::NewInstance()`
         #[cxx_name = "Standard_TypeMismatch_NewInstance_charptr2"]
         fn TypeMismatch_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardTypeMismatch>;
+        /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::get_type_name()`
         #[cxx_name = "Standard_TypeMismatch_get_type_name"]
         fn TypeMismatch_get_type_name() -> String;
         /// ======================== Standard_NoSuchObject ========================
-        /// **Source:** `Standard_NoSuchObject.hxx` - `Standard_NoSuchObject`
+        /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject`
         #[cxx_name = "Standard_NoSuchObject"]
         type NoSuchObject;
-        /// **Source:** `Standard_NoSuchObject.hxx` - `Standard_NoSuchObject::Standard_NoSuchObject()`
+        /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Standard_NoSuchObject()`
         #[cxx_name = "Standard_NoSuchObject_ctor"]
         fn NoSuchObject_ctor() -> UniquePtr<NoSuchObject>;
-        /// **Source:** `Standard_NoSuchObject.hxx` - `Standard_NoSuchObject::Standard_NoSuchObject()`
+        /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Standard_NoSuchObject()`
         #[cxx_name = "Standard_NoSuchObject_ctor_charptr"]
         fn NoSuchObject_ctor_charptr(theMessage: &str) -> UniquePtr<NoSuchObject>;
-        /// **Source:** `Standard_NoSuchObject.hxx` - `Standard_NoSuchObject::Standard_NoSuchObject()`
+        /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Standard_NoSuchObject()`
         #[cxx_name = "Standard_NoSuchObject_ctor_charptr2"]
         fn NoSuchObject_ctor_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<NoSuchObject>;
+        /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &NoSuchObject) -> &HandleStandardType;
+        /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Raise()`
         #[cxx_name = "Standard_NoSuchObject_Raise_charptr"]
         fn NoSuchObject_raise_charptr(theMessage: &str);
+        /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Raise()`
         #[cxx_name = "Standard_NoSuchObject_Raise_sstream"]
         fn NoSuchObject_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::NewInstance()`
         #[cxx_name = "Standard_NoSuchObject_NewInstance_charptr"]
         fn NoSuchObject_new_instance_charptr(
             theMessage: &str,
         ) -> UniquePtr<HandleStandardNoSuchObject>;
+        /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::NewInstance()`
         #[cxx_name = "Standard_NoSuchObject_NewInstance_charptr2"]
         fn NoSuchObject_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardNoSuchObject>;
+        /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::get_type_name()`
         #[cxx_name = "Standard_NoSuchObject_get_type_name"]
         fn NoSuchObject_get_type_name() -> String;
         /// ======================== Standard_ErrorHandler ========================
-        /// **Source:** `Standard_ErrorHandler.hxx` - `Standard_ErrorHandler`
+        /// **Source:** `Standard_ErrorHandler.hxx`:82 - `Standard_ErrorHandler`
         ///
         /// Class implementing mechanics of conversion of signals to exceptions.
         ///
@@ -1687,128 +1821,158 @@ pub(crate) mod ffi {
         /// to find appropriate handler when signal is raised.
         #[cxx_name = "Standard_ErrorHandler"]
         type ErrorHandler;
-        /// **Source:** `Standard_ErrorHandler.hxx` - `Standard_ErrorHandler::Standard_ErrorHandler()`
+        /// **Source:** `Standard_ErrorHandler.hxx`:89 - `Standard_ErrorHandler::Standard_ErrorHandler()`
         ///
         /// Create a ErrorHandler (to be used with try{}catch(){}).
         /// It uses the "setjmp" and "longjmp" routines.
         #[cxx_name = "Standard_ErrorHandler_ctor"]
         fn ErrorHandler_ctor() -> UniquePtr<ErrorHandler>;
+        /// **Source:** `Standard_ErrorHandler.hxx`:92 - `Standard_ErrorHandler::Destroy()`
+        ///
         /// Unlinks and checks if there is a raised exception.
         #[cxx_name = "Destroy"]
         fn destroy(self: Pin<&mut ErrorHandler>);
+        /// **Source:** `Standard_ErrorHandler.hxx`:98 - `Standard_ErrorHandler::Unlink()`
+        ///
         /// Removes handler from the handlers list
         #[cxx_name = "Unlink"]
         fn unlink(self: Pin<&mut ErrorHandler>);
+        /// **Source:** `Standard_ErrorHandler.hxx`:102 - `Standard_ErrorHandler::Catches()`
+        ///
         /// Returns "True" if the caught exception has the same type
         /// or inherits from "aType"
         #[cxx_name = "Catches"]
         fn catches(self: Pin<&mut ErrorHandler>, aType: &HandleStandardType) -> bool;
+        /// **Source:** `Standard_ErrorHandler.hxx`:105 - `Standard_ErrorHandler::Label()`
+        ///
         /// Returns label for jump
         #[cxx_name = "Label"]
         fn label(self: Pin<&mut ErrorHandler>) -> Pin<&mut Standard_JmpBuf>;
         /// Returns the current Error.
         #[cxx_name = "Standard_ErrorHandler_Error"]
         fn ErrorHandler_error(self_: &ErrorHandler) -> UniquePtr<HandleStandardFailure>;
+        /// **Source:** `Standard_ErrorHandler.hxx`:111 - `Standard_ErrorHandler::LastCaughtError()`
+        ///
         /// Returns the caught exception.
         #[cxx_name = "Standard_ErrorHandler_LastCaughtError"]
         fn ErrorHandler_last_caught_error() -> UniquePtr<HandleStandardFailure>;
+        /// **Source:** `Standard_ErrorHandler.hxx`:114 - `Standard_ErrorHandler::IsInTryBlock()`
+        ///
         /// Test if the code is currently running in a try block
         #[cxx_name = "Standard_ErrorHandler_IsInTryBlock"]
         fn ErrorHandler_is_in_try_block() -> bool;
         /// ======================== Standard_NumericError ========================
-        /// **Source:** `Standard_NumericError.hxx` - `Standard_NumericError`
+        /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError`
         #[cxx_name = "Standard_NumericError"]
         type NumericError;
-        /// **Source:** `Standard_NumericError.hxx` - `Standard_NumericError::Standard_NumericError()`
+        /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Standard_NumericError()`
         #[cxx_name = "Standard_NumericError_ctor"]
         fn NumericError_ctor() -> UniquePtr<NumericError>;
-        /// **Source:** `Standard_NumericError.hxx` - `Standard_NumericError::Standard_NumericError()`
+        /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Standard_NumericError()`
         #[cxx_name = "Standard_NumericError_ctor_charptr"]
         fn NumericError_ctor_charptr(theMessage: &str) -> UniquePtr<NumericError>;
-        /// **Source:** `Standard_NumericError.hxx` - `Standard_NumericError::Standard_NumericError()`
+        /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Standard_NumericError()`
         #[cxx_name = "Standard_NumericError_ctor_charptr2"]
         fn NumericError_ctor_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<NumericError>;
+        /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &NumericError) -> &HandleStandardType;
+        /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Raise()`
         #[cxx_name = "Standard_NumericError_Raise_charptr"]
         fn NumericError_raise_charptr(theMessage: &str);
+        /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Raise()`
         #[cxx_name = "Standard_NumericError_Raise_sstream"]
         fn NumericError_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::NewInstance()`
         #[cxx_name = "Standard_NumericError_NewInstance_charptr"]
         fn NumericError_new_instance_charptr(
             theMessage: &str,
         ) -> UniquePtr<HandleStandardNumericError>;
+        /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::NewInstance()`
         #[cxx_name = "Standard_NumericError_NewInstance_charptr2"]
         fn NumericError_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardNumericError>;
+        /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::get_type_name()`
         #[cxx_name = "Standard_NumericError_get_type_name"]
         fn NumericError_get_type_name() -> String;
         /// ======================== Standard_NullObject ========================
-        /// **Source:** `Standard_NullObject.hxx` - `Standard_NullObject`
+        /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject`
         #[cxx_name = "Standard_NullObject"]
         type NullObject;
-        /// **Source:** `Standard_NullObject.hxx` - `Standard_NullObject::Standard_NullObject()`
+        /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Standard_NullObject()`
         #[cxx_name = "Standard_NullObject_ctor"]
         fn NullObject_ctor() -> UniquePtr<NullObject>;
-        /// **Source:** `Standard_NullObject.hxx` - `Standard_NullObject::Standard_NullObject()`
+        /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Standard_NullObject()`
         #[cxx_name = "Standard_NullObject_ctor_charptr"]
         fn NullObject_ctor_charptr(theMessage: &str) -> UniquePtr<NullObject>;
-        /// **Source:** `Standard_NullObject.hxx` - `Standard_NullObject::Standard_NullObject()`
+        /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Standard_NullObject()`
         #[cxx_name = "Standard_NullObject_ctor_charptr2"]
         fn NullObject_ctor_charptr2(theMessage: &str, theStackTrace: &str)
             -> UniquePtr<NullObject>;
+        /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &NullObject) -> &HandleStandardType;
+        /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Raise()`
         #[cxx_name = "Standard_NullObject_Raise_charptr"]
         fn NullObject_raise_charptr(theMessage: &str);
+        /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Raise()`
         #[cxx_name = "Standard_NullObject_Raise_sstream"]
         fn NullObject_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::NewInstance()`
         #[cxx_name = "Standard_NullObject_NewInstance_charptr"]
         fn NullObject_new_instance_charptr(theMessage: &str)
             -> UniquePtr<HandleStandardNullObject>;
+        /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::NewInstance()`
         #[cxx_name = "Standard_NullObject_NewInstance_charptr2"]
         fn NullObject_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardNullObject>;
+        /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::get_type_name()`
         #[cxx_name = "Standard_NullObject_get_type_name"]
         fn NullObject_get_type_name() -> String;
         /// ======================== Standard_ConstructionError ========================
-        /// **Source:** `Standard_ConstructionError.hxx` - `Standard_ConstructionError`
+        /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError`
         #[cxx_name = "Standard_ConstructionError"]
         type ConstructionError;
-        /// **Source:** `Standard_ConstructionError.hxx` - `Standard_ConstructionError::Standard_ConstructionError()`
+        /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Standard_ConstructionError()`
         #[cxx_name = "Standard_ConstructionError_ctor"]
         fn ConstructionError_ctor() -> UniquePtr<ConstructionError>;
-        /// **Source:** `Standard_ConstructionError.hxx` - `Standard_ConstructionError::Standard_ConstructionError()`
+        /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Standard_ConstructionError()`
         #[cxx_name = "Standard_ConstructionError_ctor_charptr"]
         fn ConstructionError_ctor_charptr(theMessage: &str) -> UniquePtr<ConstructionError>;
-        /// **Source:** `Standard_ConstructionError.hxx` - `Standard_ConstructionError::Standard_ConstructionError()`
+        /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Standard_ConstructionError()`
         #[cxx_name = "Standard_ConstructionError_ctor_charptr2"]
         fn ConstructionError_ctor_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<ConstructionError>;
+        /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ConstructionError) -> &HandleStandardType;
+        /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Raise()`
         #[cxx_name = "Standard_ConstructionError_Raise_charptr"]
         fn ConstructionError_raise_charptr(theMessage: &str);
+        /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Raise()`
         #[cxx_name = "Standard_ConstructionError_Raise_sstream"]
         fn ConstructionError_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::NewInstance()`
         #[cxx_name = "Standard_ConstructionError_NewInstance_charptr"]
         fn ConstructionError_new_instance_charptr(
             theMessage: &str,
         ) -> UniquePtr<HandleStandardConstructionError>;
+        /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::NewInstance()`
         #[cxx_name = "Standard_ConstructionError_NewInstance_charptr2"]
         fn ConstructionError_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardConstructionError>;
+        /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::get_type_name()`
         #[cxx_name = "Standard_ConstructionError_get_type_name"]
         fn ConstructionError_get_type_name() -> String;
 

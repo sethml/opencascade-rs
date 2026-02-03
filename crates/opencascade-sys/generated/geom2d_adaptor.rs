@@ -123,7 +123,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Geom2dAdaptor_Curve ========================
-        /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve`
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:47 - `Geom2dAdaptor_Curve`
         ///
         /// An interface between the services provided by any
         /// curve from the package Geom2d and those required
@@ -134,13 +134,13 @@ pub(crate) mod ffi {
         /// thread-safe and parallel evaluations need to be prevented.
         #[cxx_name = "Geom2dAdaptor_Curve"]
         type Curve;
-        /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:51 - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
         #[cxx_name = "Geom2dAdaptor_Curve_ctor"]
         fn Curve_ctor() -> UniquePtr<Curve>;
-        /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:53 - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
         #[cxx_name = "Geom2dAdaptor_Curve_ctor_handlecurve"]
         fn Curve_ctor_handlecurve(C: &HandleGeom2dCurve) -> UniquePtr<Curve>;
-        /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:56 - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
         ///
         /// Standard_ConstructionError is raised if Ufirst>Ulast
         #[cxx_name = "Geom2dAdaptor_Curve_ctor_handlecurve_real2"]
@@ -149,13 +149,19 @@ pub(crate) mod ffi {
             UFirst: f64,
             ULast: f64,
         ) -> UniquePtr<Curve>;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:49 - `Geom2dAdaptor_Curve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Curve) -> &HandleStandardType;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:64 - `Geom2dAdaptor_Curve::Reset()`
+        ///
         /// Reset currently loaded curve (undone Load()).
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut Curve>);
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:66 - `Geom2dAdaptor_Curve::Load()`
         #[cxx_name = "Load"]
         fn load_handlecurve(self: Pin<&mut Curve>, theCurve: &HandleGeom2dCurve);
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:76 - `Geom2dAdaptor_Curve::Load()`
+        ///
         /// Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion()
         #[cxx_name = "Load"]
         fn load_handlecurve_real2(
@@ -164,27 +170,39 @@ pub(crate) mod ffi {
             theUFirst: f64,
             theULast: f64,
         );
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:91 - `Geom2dAdaptor_Curve::Curve()`
         #[cxx_name = "Curve"]
         fn curve(self: &Curve) -> &HandleGeom2dCurve;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:93 - `Geom2dAdaptor_Curve::FirstParameter()`
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &Curve) -> f64;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:95 - `Geom2dAdaptor_Curve::LastParameter()`
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &Curve) -> f64;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:120 - `Geom2dAdaptor_Curve::IsClosed()`
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &Curve) -> bool;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:122 - `Geom2dAdaptor_Curve::IsPeriodic()`
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &Curve) -> bool;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:124 - `Geom2dAdaptor_Curve::Period()`
         #[cxx_name = "Period"]
         fn period(self: &Curve) -> f64;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:130 - `Geom2dAdaptor_Curve::D0()`
+        ///
         /// Computes the point of parameter U.
         #[cxx_name = "D0"]
         fn d0(self: &Curve, U: f64, P: Pin<&mut gp_Pnt2d>);
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:136 - `Geom2dAdaptor_Curve::D1()`
+        ///
         /// Computes the point of parameter U on the curve with its
         /// first derivative.
         /// Raised if the continuity of the current interval
         /// is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &Curve, U: f64, P: Pin<&mut gp_Pnt2d>, V: Pin<&mut gp_Vec2d>);
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:142 - `Geom2dAdaptor_Curve::D2()`
+        ///
         /// Returns the point P of parameter U, the first and second
         /// derivatives V1 and V2.
         /// Raised if the continuity of the current interval
@@ -197,6 +215,8 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec2d>,
             V2: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:151 - `Geom2dAdaptor_Curve::D3()`
+        ///
         /// Returns the point P of parameter U, the first, the second
         /// and the third derivative.
         /// Raised if the continuity of the current interval
@@ -210,17 +230,24 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec2d>,
             V3: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:166 - `Geom2dAdaptor_Curve::Resolution()`
+        ///
         /// returns the parametric resolution
         #[cxx_name = "Resolution"]
         fn resolution(self: &Curve, Ruv: f64) -> f64;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:180 - `Geom2dAdaptor_Curve::Degree()`
         #[cxx_name = "Degree"]
         fn degree(self: &Curve) -> i32;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:182 - `Geom2dAdaptor_Curve::IsRational()`
         #[cxx_name = "IsRational"]
         fn is_rational(self: &Curve) -> bool;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:184 - `Geom2dAdaptor_Curve::NbPoles()`
         #[cxx_name = "NbPoles"]
         fn nb_poles(self: &Curve) -> i32;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:186 - `Geom2dAdaptor_Curve::NbKnots()`
         #[cxx_name = "NbKnots"]
         fn nb_knots(self: &Curve) -> i32;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:188 - `Geom2dAdaptor_Curve::NbSamples()`
         #[cxx_name = "NbSamples"]
         fn nb_samples(self: &Curve) -> i32;
         /// Shallow copy of adaptor
@@ -261,6 +288,7 @@ pub(crate) mod ffi {
         fn Curve_bezier(self_: &Curve) -> UniquePtr<HandleGeom2dBezierCurve>;
         #[cxx_name = "Geom2dAdaptor_Curve_BSpline"]
         fn Curve_b_spline(self_: &Curve) -> UniquePtr<HandleGeom2dBSplineCurve>;
+        /// **Source:** `Geom2dAdaptor_Curve.hxx`:49 - `Geom2dAdaptor_Curve::get_type_name()`
         #[cxx_name = "Geom2dAdaptor_Curve_get_type_name"]
         fn Curve_get_type_name() -> String;
         /// Upcast Geom2dAdaptor_Curve to Adaptor2d_Curve2d

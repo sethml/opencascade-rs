@@ -58,31 +58,37 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== StdFail_NotDone ========================
-        /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone`
+        /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone`
         #[cxx_name = "StdFail_NotDone"]
         type NotDone;
-        /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`
+        /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::StdFail_NotDone()`
         #[cxx_name = "StdFail_NotDone_ctor"]
         fn NotDone_ctor() -> UniquePtr<NotDone>;
-        /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`
+        /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::StdFail_NotDone()`
         #[cxx_name = "StdFail_NotDone_ctor_charptr"]
         fn NotDone_ctor_charptr(theMessage: &str) -> UniquePtr<NotDone>;
-        /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`
+        /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::StdFail_NotDone()`
         #[cxx_name = "StdFail_NotDone_ctor_charptr2"]
         fn NotDone_ctor_charptr2(theMessage: &str, theStackTrace: &str) -> UniquePtr<NotDone>;
+        /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &NotDone) -> &HandleStandardType;
+        /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::Raise()`
         #[cxx_name = "StdFail_NotDone_Raise_charptr"]
         fn NotDone_raise_charptr(theMessage: &str);
+        /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::Raise()`
         #[cxx_name = "StdFail_NotDone_Raise_sstream"]
         fn NotDone_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::NewInstance()`
         #[cxx_name = "StdFail_NotDone_NewInstance_charptr"]
         fn NotDone_new_instance_charptr(theMessage: &str) -> UniquePtr<HandleStdFailNotDone>;
+        /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::NewInstance()`
         #[cxx_name = "StdFail_NotDone_NewInstance_charptr2"]
         fn NotDone_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStdFailNotDone>;
+        /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::get_type_name()`
         #[cxx_name = "StdFail_NotDone_get_type_name"]
         fn NotDone_get_type_name() -> String;
 

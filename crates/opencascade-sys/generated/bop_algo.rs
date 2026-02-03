@@ -335,7 +335,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BOPAlgo_BOP ========================
-        /// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP`
+        /// **Source:** `BOPAlgo_BOP.hxx`:63 - `BOPAlgo_BOP`
         ///
         ///
         /// The class represents the Building part of the Boolean Operations
@@ -372,19 +372,22 @@ pub(crate) mod ffi {
         /// produce the Fused solid.
         #[cxx_name = "BOPAlgo_BOP"]
         type BOP;
-        /// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP::BOPAlgo_BOP()`
+        /// **Source:** `BOPAlgo_BOP.hxx`:69 - `BOPAlgo_BOP::BOPAlgo_BOP()`
         ///
         /// Empty constructor
         #[cxx_name = "BOPAlgo_BOP_ctor"]
         fn BOP_ctor() -> UniquePtr<BOP>;
-        /// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP::BOPAlgo_BOP()`
+        /// **Source:** `BOPAlgo_BOP.hxx`:72 - `BOPAlgo_BOP::BOPAlgo_BOP()`
         #[cxx_name = "BOPAlgo_BOP_ctor_handlebaseallocator"]
         fn BOP_ctor_handlebaseallocator(
             theAllocator: &HandleNCollectionBaseAllocator,
         ) -> UniquePtr<BOP>;
+        /// **Source:** `BOPAlgo_BOP.hxx`:75 - `BOPAlgo_BOP::Clear()`
+        ///
         /// Clears internal fields and arguments
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut BOP>);
+        /// **Source:** `BOPAlgo_BOP.hxx`:81 - `BOPAlgo_BOP::Perform()`
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut BOP>, theRange: &Message_ProgressRange);
         /// Upcast BOPAlgo_BOP to BOPAlgo_Builder
@@ -412,30 +415,38 @@ pub(crate) mod ffi {
         #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_ToolsProvider_mut"]
         fn bop_as_tools_provider_mut(self_: Pin<&mut BOP>) -> Pin<&mut ToolsProvider>;
         /// ======================== BOPAlgo_ToolsProvider ========================
-        /// **Source:** `BOPAlgo_ToolsProvider.hxx` - `BOPAlgo_ToolsProvider`
+        /// **Source:** `BOPAlgo_ToolsProvider.hxx`:25 - `BOPAlgo_ToolsProvider`
         ///
         /// Auxiliary class providing API to operate tool arguments.
         #[cxx_name = "BOPAlgo_ToolsProvider"]
         type ToolsProvider;
-        /// **Source:** `BOPAlgo_ToolsProvider.hxx` - `BOPAlgo_ToolsProvider::BOPAlgo_ToolsProvider()`
+        /// **Source:** `BOPAlgo_ToolsProvider.hxx`:31 - `BOPAlgo_ToolsProvider::BOPAlgo_ToolsProvider()`
         ///
         /// Empty constructor
         #[cxx_name = "BOPAlgo_ToolsProvider_ctor"]
         fn ToolsProvider_ctor() -> UniquePtr<ToolsProvider>;
-        /// **Source:** `BOPAlgo_ToolsProvider.hxx` - `BOPAlgo_ToolsProvider::BOPAlgo_ToolsProvider()`
+        /// **Source:** `BOPAlgo_ToolsProvider.hxx`:33 - `BOPAlgo_ToolsProvider::BOPAlgo_ToolsProvider()`
         #[cxx_name = "BOPAlgo_ToolsProvider_ctor_handlebaseallocator"]
         fn ToolsProvider_ctor_handlebaseallocator(
             theAllocator: &HandleNCollectionBaseAllocator,
         ) -> UniquePtr<ToolsProvider>;
+        /// **Source:** `BOPAlgo_ToolsProvider.hxx`:36 - `BOPAlgo_ToolsProvider::Clear()`
+        ///
         /// Clears internal fields and arguments
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut ToolsProvider>);
+        /// **Source:** `BOPAlgo_ToolsProvider.hxx`:39 - `BOPAlgo_ToolsProvider::AddTool()`
+        ///
         /// Adds Tool argument of the operation
         #[cxx_name = "AddTool"]
         fn add_tool(self: Pin<&mut ToolsProvider>, theShape: &TopoDS_Shape);
+        /// **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
+        ///
         /// Adds the Tool arguments of the operation
         #[cxx_name = "SetTools"]
         fn set_tools(self: Pin<&mut ToolsProvider>, theShapes: &TopTools_ListOfShape);
+        /// **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
+        ///
         /// Returns the Tool arguments of the operation
         #[cxx_name = "Tools"]
         fn tools(self: &ToolsProvider) -> &TopTools_ListOfShape;
@@ -460,7 +471,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BOPAlgo_ToolsProvider_as_BOPAlgo_Options_mut"]
         fn tools_provider_as_options_mut(self_: Pin<&mut ToolsProvider>) -> Pin<&mut Options>;
         /// ======================== BOPAlgo_Builder ========================
-        /// **Source:** `BOPAlgo_Builder.hxx` - `BOPAlgo_Builder`
+        /// **Source:** `BOPAlgo_Builder.hxx`:74 - `BOPAlgo_Builder`
         ///
         ///
         /// The class is a General Fuse algorithm - base algorithm for the
@@ -496,29 +507,39 @@ pub(crate) mod ffi {
         /// unexpected error.
         #[cxx_name = "BOPAlgo_Builder"]
         type Builder;
-        /// **Source:** `BOPAlgo_Builder.hxx` - `BOPAlgo_Builder::BOPAlgo_Builder()`
+        /// **Source:** `BOPAlgo_Builder.hxx`:80 - `BOPAlgo_Builder::BOPAlgo_Builder()`
         ///
         /// Empty constructor.
         #[cxx_name = "BOPAlgo_Builder_ctor"]
         fn Builder_ctor() -> UniquePtr<Builder>;
-        /// **Source:** `BOPAlgo_Builder.hxx` - `BOPAlgo_Builder::BOPAlgo_Builder()`
+        /// **Source:** `BOPAlgo_Builder.hxx`:83 - `BOPAlgo_Builder::BOPAlgo_Builder()`
         #[cxx_name = "BOPAlgo_Builder_ctor_handlebaseallocator"]
         fn Builder_ctor_handlebaseallocator(
             theAllocator: &HandleNCollectionBaseAllocator,
         ) -> UniquePtr<Builder>;
+        /// **Source:** `BOPAlgo_Builder.hxx`:86 - `BOPAlgo_Builder::Clear()`
+        ///
         /// Clears the content of the algorithm.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Builder>);
+        /// **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+        ///
         /// @name Arguments
         /// Adds the argument to the operation.
         #[cxx_name = "AddArgument"]
         fn add_argument(self: Pin<&mut Builder>, theShape: &TopoDS_Shape);
+        /// **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
+        ///
         /// Sets the list of arguments for the operation.
         #[cxx_name = "SetArguments"]
         fn set_arguments(self: Pin<&mut Builder>, theLS: &TopTools_ListOfShape);
+        /// **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
+        ///
         /// Returns the list of arguments.
         #[cxx_name = "Arguments"]
         fn arguments(self: &Builder) -> &TopTools_ListOfShape;
+        /// **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+        ///
         /// @name Options
         /// Sets the flag that defines the mode of treatment.
         /// In non-destructive mode the argument shapes are not modified. Instead
@@ -528,23 +549,33 @@ pub(crate) mod ffi {
         /// is in force.
         #[cxx_name = "SetNonDestructive"]
         fn set_non_destructive(self: Pin<&mut Builder>, theFlag: bool);
+        /// **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+        ///
         /// Returns the flag that defines the mode of treatment.
         /// In non-destructive mode the argument shapes are not modified. Instead
         /// a copy of a sub-shape is created in the result if it is needed to be updated.
         #[cxx_name = "NonDestructive"]
         fn non_destructive(self: &Builder) -> bool;
+        /// **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+        ///
         /// Enables/Disables the check of the input solids for inverted status
         #[cxx_name = "SetCheckInverted"]
         fn set_check_inverted(self: Pin<&mut Builder>, theCheck: bool);
+        /// **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+        ///
         /// Returns the flag defining whether the check for input solids on inverted status
         /// should be performed or not.
         #[cxx_name = "CheckInverted"]
         fn check_inverted(self: &Builder) -> bool;
+        /// **Source:** `BOPAlgo_Builder.hxx`:137 - `BOPAlgo_Builder::Perform()`
+        ///
         /// @name Performing the operation
         /// Performs the operation.
         /// The intersection will be performed also.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut Builder>, theRange: &Message_ProgressRange);
+        /// **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+        ///
         /// Performs the operation with the prepared filler.
         /// The intersection will not be performed in this case.
         #[cxx_name = "PerformWithFiller"]
@@ -553,13 +584,19 @@ pub(crate) mod ffi {
             theFiller: &BOPAlgo_PaveFiller,
             theRange: &Message_ProgressRange,
         );
+        /// **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
+        ///
         /// @name Images/Origins
         /// Returns the map of images.
         #[cxx_name = "Images"]
         fn images(self: &Builder) -> &TopTools_DataMapOfShapeListOfShape;
+        /// **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
+        ///
         /// Returns the map of origins.
         #[cxx_name = "Origins"]
         fn origins(self: &Builder) -> &TopTools_DataMapOfShapeListOfShape;
+        /// **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
+        ///
         /// Returns the map of Same Domain (SD) shapes - coinciding shapes
         /// from different arguments.
         #[cxx_name = "ShapesSD"]
@@ -586,7 +623,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BOPAlgo_Builder_as_BOPAlgo_Options_mut"]
         fn builder_as_options_mut(self_: Pin<&mut Builder>) -> Pin<&mut Options>;
         /// ======================== BOPAlgo_BuilderShape ========================
-        /// **Source:** `BOPAlgo_BuilderShape.hxx` - `BOPAlgo_BuilderShape`
+        /// **Source:** `BOPAlgo_BuilderShape.hxx`:40 - `BOPAlgo_BuilderShape`
         ///
         /// Root class for algorithms that has shape as result.
         ///
@@ -596,35 +633,53 @@ pub(crate) mod ffi {
         /// as a storer for history objects.
         #[cxx_name = "BOPAlgo_BuilderShape"]
         type BuilderShape;
+        /// **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+        ///
         /// @name Getting the result
         /// Returns the result of algorithm
         #[cxx_name = "Shape"]
         fn shape(self: &BuilderShape) -> &TopoDS_Shape;
+        /// **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
+        ///
         /// @name History methods
         /// Returns the list of shapes Modified from the shape theS.
         #[cxx_name = "Modified"]
         fn modified(self: Pin<&mut BuilderShape>, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
+        ///
         /// Returns the list of shapes Generated from the shape theS.
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut BuilderShape>, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+        ///
         /// Returns true if the shape theS has been deleted.
         /// In this case the shape will have no Modified elements,
         /// but can have Generated elements.
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut BuilderShape>, theS: &TopoDS_Shape) -> bool;
+        /// **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+        ///
         /// Returns true if any of the input shapes has been modified during operation.
         #[cxx_name = "HasModified"]
         fn has_modified(self: &BuilderShape) -> bool;
+        /// **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+        ///
         /// Returns true if any of the input shapes has generated shapes during operation.
         #[cxx_name = "HasGenerated"]
         fn has_generated(self: &BuilderShape) -> bool;
+        /// **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+        ///
         /// Returns true if any of the input shapes has been deleted during operation.
         #[cxx_name = "HasDeleted"]
         fn has_deleted(self: &BuilderShape) -> bool;
+        /// **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+        ///
         /// @name Enabling/Disabling the history collection.
         /// Allows disabling the history collection
         #[cxx_name = "SetToFillHistory"]
         fn set_to_fill_history(self: Pin<&mut BuilderShape>, theHistFlag: bool);
+        /// **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+        ///
         /// Returns flag of history availability
         #[cxx_name = "HasHistory"]
         fn has_history(self: &BuilderShape) -> bool;
@@ -639,16 +694,20 @@ pub(crate) mod ffi {
         #[cxx_name = "BOPAlgo_BuilderShape_as_BOPAlgo_Options_mut"]
         fn builder_shape_as_options_mut(self_: Pin<&mut BuilderShape>) -> Pin<&mut Options>;
         /// ======================== BOPAlgo_ParallelAlgo ========================
-        /// **Source:** `BOPAlgo_Algo.hxx` - `BOPAlgo_ParallelAlgo`
+        /// **Source:** `BOPAlgo_Algo.hxx`:88 - `BOPAlgo_ParallelAlgo`
         ///
         /// Additional root class to provide interface to be launched from parallel vector.
         /// It already has the range as a field, and has to be used with caution to create
         /// scope from the range only once.
         #[cxx_name = "BOPAlgo_ParallelAlgo"]
         type ParallelAlgo;
+        /// **Source:** `BOPAlgo_Algo.hxx`:94 - `BOPAlgo_ParallelAlgo::Perform()`
+        ///
         /// The main method to implement the operation
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut ParallelAlgo>);
+        /// **Source:** `BOPAlgo_Algo.hxx`:98 - `BOPAlgo_ParallelAlgo::SetProgressRange()`
+        ///
         /// Sets the range for a single run
         #[cxx_name = "SetProgressRange"]
         fn set_progress_range(self: Pin<&mut ParallelAlgo>, theRange: &Message_ProgressRange);
@@ -659,31 +718,39 @@ pub(crate) mod ffi {
         #[cxx_name = "BOPAlgo_ParallelAlgo_as_BOPAlgo_Options_mut"]
         fn parallel_algo_as_options_mut(self_: Pin<&mut ParallelAlgo>) -> Pin<&mut Options>;
         /// ======================== BOPAlgo_PISteps ========================
-        /// **Source:** `BOPAlgo_Algo.hxx` - `BOPAlgo_PISteps`
+        /// **Source:** `BOPAlgo_Algo.hxx`:110 - `BOPAlgo_PISteps`
         ///
         /// Class for representing the relative contribution of each step of
         /// the operation to the whole progress
         #[cxx_name = "BOPAlgo_PISteps"]
         type PISteps;
-        /// **Source:** `BOPAlgo_Algo.hxx` - `BOPAlgo_PISteps::BOPAlgo_PISteps()`
+        /// **Source:** `BOPAlgo_Algo.hxx`:114 - `BOPAlgo_PISteps::BOPAlgo_PISteps()`
         ///
         /// Constructor
         #[cxx_name = "BOPAlgo_PISteps_ctor_int"]
         fn PISteps_ctor_int(theNbOp: i32) -> UniquePtr<PISteps>;
+        /// **Source:** `BOPAlgo_Algo.hxx`:121 - `BOPAlgo_PISteps::Steps()`
+        ///
         /// Returns the steps
         #[cxx_name = "Steps"]
         fn steps(self: &PISteps) -> &TColStd_Array1OfReal;
+        /// **Source:** `BOPAlgo_Algo.hxx`:124 - `BOPAlgo_PISteps::ChangeSteps()`
+        ///
         /// Returns modifiable steps
         #[cxx_name = "ChangeSteps"]
         fn change_steps(self: Pin<&mut PISteps>) -> Pin<&mut TColStd_Array1OfReal>;
+        /// **Source:** `BOPAlgo_Algo.hxx`:127 - `BOPAlgo_PISteps::SetStep()`
+        ///
         /// Assign the value theStep to theOperation
         #[cxx_name = "SetStep"]
         fn set_step(self: Pin<&mut PISteps>, theOperation: i32, theStep: f64);
+        /// **Source:** `BOPAlgo_Algo.hxx`:136 - `BOPAlgo_PISteps::GetStep()`
+        ///
         /// Returns the step assigned to the operation
         #[cxx_name = "GetStep"]
         fn get_step(self: Pin<&mut PISteps>, theOperation: i32) -> f64;
         /// ======================== BOPAlgo_Options ========================
-        /// **Source:** `BOPAlgo_Options.hxx` - `BOPAlgo_Options`
+        /// **Source:** `BOPAlgo_Options.hxx`:36 - `BOPAlgo_Options`
         ///
         /// The class provides the following options for the algorithms in Boolean Component:
         /// - *Memory allocation tool* - tool for memory allocations;
@@ -697,72 +764,108 @@ pub(crate) mod ffi {
         /// for filtering the intersections.
         #[cxx_name = "BOPAlgo_Options"]
         type Options;
-        /// **Source:** `BOPAlgo_Options.hxx` - `BOPAlgo_Options::BOPAlgo_Options()`
+        /// **Source:** `BOPAlgo_Options.hxx`:42 - `BOPAlgo_Options::BOPAlgo_Options()`
         ///
         /// Empty constructor
         #[cxx_name = "BOPAlgo_Options_ctor"]
         fn Options_ctor() -> UniquePtr<Options>;
-        /// **Source:** `BOPAlgo_Options.hxx` - `BOPAlgo_Options::BOPAlgo_Options()`
+        /// **Source:** `BOPAlgo_Options.hxx`:45 - `BOPAlgo_Options::BOPAlgo_Options()`
         ///
         /// Constructor with allocator
         #[cxx_name = "BOPAlgo_Options_ctor_handlebaseallocator"]
         fn Options_ctor_handlebaseallocator(
             theAllocator: &HandleNCollectionBaseAllocator,
         ) -> UniquePtr<Options>;
+        /// **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
+        ///
         /// Returns allocator
         #[cxx_name = "Allocator"]
         fn allocator(self: &Options) -> &HandleNCollectionBaseAllocator;
+        /// **Source:** `BOPAlgo_Options.hxx`:55 - `BOPAlgo_Options::Clear()`
+        ///
         /// Clears all warnings and errors, and any data cached by the algorithm.
         /// User defined options are not cleared.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Options>);
+        /// **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
+        ///
         /// Adds the alert as error (fail)
         #[cxx_name = "AddError"]
         fn add_error(self: Pin<&mut Options>, theAlert: &HandleMessageAlert);
+        /// **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
+        ///
         /// Adds the alert as warning
         #[cxx_name = "AddWarning"]
         fn add_warning(self: Pin<&mut Options>, theAlert: &HandleMessageAlert);
+        /// **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
+        ///
         /// Returns true if algorithm has failed
         #[cxx_name = "HasErrors"]
         fn has_errors(self: &Options) -> bool;
+        /// **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
+        ///
         /// Returns true if algorithm has generated error of specified type
         #[cxx_name = "HasError"]
         fn has_error(self: &Options, theType: &HandleStandardType) -> bool;
+        /// **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
+        ///
         /// Returns true if algorithm has generated some warning alerts
         #[cxx_name = "HasWarnings"]
         fn has_warnings(self: &Options) -> bool;
+        /// **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
+        ///
         /// Returns true if algorithm has generated warning of specified type
         #[cxx_name = "HasWarning"]
         fn has_warning(self: &Options, theType: &HandleStandardType) -> bool;
+        /// **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+        ///
         /// Returns report collecting all errors and warnings
         #[cxx_name = "GetReport"]
         fn get_report(self: &Options) -> &HandleMessageReport;
+        /// **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
+        ///
         /// Clears the warnings of the algorithm
         #[cxx_name = "ClearWarnings"]
         fn clear_warnings(self: Pin<&mut Options>);
+        /// **Source:** `BOPAlgo_Options.hxx`:114 - `BOPAlgo_Options::SetRunParallel()`
+        ///
         /// Set the flag of parallel processing
         /// if <theFlag> is true  the parallel processing is switched on
         /// if <theFlag> is false the parallel processing is switched off
         #[cxx_name = "SetRunParallel"]
         fn set_run_parallel(self: Pin<&mut Options>, theFlag: bool);
+        /// **Source:** `BOPAlgo_Options.hxx`:117 - `BOPAlgo_Options::RunParallel()`
+        ///
         /// Returns the flag of parallel processing
         #[cxx_name = "RunParallel"]
         fn run_parallel(self: &Options) -> bool;
+        /// **Source:** `BOPAlgo_Options.hxx`:123 - `BOPAlgo_Options::SetFuzzyValue()`
+        ///
         /// Sets the additional tolerance
         #[cxx_name = "SetFuzzyValue"]
         fn set_fuzzy_value(self: Pin<&mut Options>, theFuzz: f64);
+        /// **Source:** `BOPAlgo_Options.hxx`:126 - `BOPAlgo_Options::FuzzyValue()`
+        ///
         /// Returns the additional tolerance
         #[cxx_name = "FuzzyValue"]
         fn fuzzy_value(self: &Options) -> f64;
+        /// **Source:** `BOPAlgo_Options.hxx`:132 - `BOPAlgo_Options::SetUseOBB()`
+        ///
         /// Enables/Disables the usage of OBB
         #[cxx_name = "SetUseOBB"]
         fn set_use_obb(self: Pin<&mut Options>, theUseOBB: bool);
+        /// **Source:** `BOPAlgo_Options.hxx`:135 - `BOPAlgo_Options::UseOBB()`
+        ///
         /// Returns the flag defining usage of OBB
         #[cxx_name = "UseOBB"]
         fn use_obb(self: &Options) -> bool;
+        /// **Source:** `BOPAlgo_Options.hxx`:106 - `BOPAlgo_Options::GetParallelMode()`
+        ///
         /// Gets the global parallel mode
         #[cxx_name = "BOPAlgo_Options_GetParallelMode"]
         fn Options_get_parallel_mode() -> bool;
+        /// **Source:** `BOPAlgo_Options.hxx`:109 - `BOPAlgo_Options::SetParallelMode()`
+        ///
         /// Sets the global parallel mode
         #[cxx_name = "BOPAlgo_Options_SetParallelMode"]
         fn Options_set_parallel_mode(theNewMode: bool);

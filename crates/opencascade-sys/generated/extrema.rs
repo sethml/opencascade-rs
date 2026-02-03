@@ -493,16 +493,16 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Extrema_ExtCC ========================
-        /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC`
+        /// **Source:** `Extrema_ExtCC.hxx`:34 - `Extrema_ExtCC`
         ///
         /// It calculates all the distance between two curves.
         /// These distances can be maximum or minimum.
         #[cxx_name = "Extrema_ExtCC"]
         type ExtCC;
-        /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC::Extrema_ExtCC()`
+        /// **Source:** `Extrema_ExtCC.hxx`:39 - `Extrema_ExtCC::Extrema_ExtCC()`
         #[cxx_name = "Extrema_ExtCC_ctor_real2"]
         fn ExtCC_ctor_real2(TolC1: f64, TolC2: f64) -> UniquePtr<ExtCC>;
-        /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC::Extrema_ExtCC()`
+        /// **Source:** `Extrema_ExtCC.hxx`:43 - `Extrema_ExtCC::Extrema_ExtCC()`
         ///
         /// It calculates all the distances.
         #[cxx_name = "Extrema_ExtCC_ctor_curve2_real2"]
@@ -512,7 +512,7 @@ pub(crate) mod ffi {
             TolC1: f64,
             TolC2: f64,
         ) -> UniquePtr<ExtCC>;
-        /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC::Extrema_ExtCC()`
+        /// **Source:** `Extrema_ExtCC.hxx`:49 - `Extrema_ExtCC::Extrema_ExtCC()`
         ///
         /// It calculates all the distances.
         #[cxx_name = "Extrema_ExtCC_ctor_curve2_real6"]
@@ -526,6 +526,8 @@ pub(crate) mod ffi {
             TolC1: f64,
             TolC2: f64,
         ) -> UniquePtr<ExtCC>;
+        /// **Source:** `Extrema_ExtCC.hxx`:59 - `Extrema_ExtCC::Initialize()`
+        ///
         /// Initializes but does not perform algorithm.
         #[cxx_name = "Initialize"]
         fn initialize_curve2_real2(
@@ -535,6 +537,8 @@ pub(crate) mod ffi {
             TolC1: f64,
             TolC2: f64,
         );
+        /// **Source:** `Extrema_ExtCC.hxx`:65 - `Extrema_ExtCC::Initialize()`
+        ///
         /// Initializes but does not perform algorithm.
         #[cxx_name = "Initialize"]
         fn initialize_curve2_real6(
@@ -548,8 +552,10 @@ pub(crate) mod ffi {
             TolC1: f64,
             TolC2: f64,
         );
+        /// **Source:** `Extrema_ExtCC.hxx`:74 - `Extrema_ExtCC::SetCurve()`
         #[cxx_name = "SetCurve"]
         fn set_curve_int_curve(self: Pin<&mut ExtCC>, theRank: i32, C: &Adaptor3d_Curve);
+        /// **Source:** `Extrema_ExtCC.hxx`:76 - `Extrema_ExtCC::SetCurve()`
         #[cxx_name = "SetCurve"]
         fn set_curve_int_curve_real2(
             self: Pin<&mut ExtCC>,
@@ -558,28 +564,43 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         );
+        /// **Source:** `Extrema_ExtCC.hxx`:81 - `Extrema_ExtCC::SetRange()`
         #[cxx_name = "SetRange"]
         fn set_range(self: Pin<&mut ExtCC>, theRank: i32, Uinf: f64, Usup: f64);
+        /// **Source:** `Extrema_ExtCC.hxx`:85 - `Extrema_ExtCC::SetTolerance()`
         #[cxx_name = "SetTolerance"]
         fn set_tolerance(self: Pin<&mut ExtCC>, theRank: i32, Tol: f64);
+        /// **Source:** `Extrema_ExtCC.hxx`:87 - `Extrema_ExtCC::Perform()`
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut ExtCC>);
+        /// **Source:** `Extrema_ExtCC.hxx`:90 - `Extrema_ExtCC::IsDone()`
+        ///
         /// Returns True if the distances are found.
         #[cxx_name = "IsDone"]
         fn is_done(self: &ExtCC) -> bool;
+        /// **Source:** `Extrema_ExtCC.hxx`:93 - `Extrema_ExtCC::NbExt()`
+        ///
         /// Returns the number of extremum distances.
         #[cxx_name = "NbExt"]
         fn nb_ext(self: &ExtCC) -> i32;
+        /// **Source:** `Extrema_ExtCC.hxx`:96 - `Extrema_ExtCC::IsParallel()`
+        ///
         /// Returns True if the two curves are parallel.
         #[cxx_name = "IsParallel"]
         fn is_parallel(self: &ExtCC) -> bool;
+        /// **Source:** `Extrema_ExtCC.hxx`:99 - `Extrema_ExtCC::SquareDistance()`
+        ///
         /// Returns the value of the Nth extremum square distance.
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &ExtCC, N: i32) -> f64;
+        /// **Source:** `Extrema_ExtCC.hxx`:103 - `Extrema_ExtCC::Points()`
+        ///
         /// Returns the points of the Nth extremum distance.
         /// P1 is on the first curve, P2 on the second one.
         #[cxx_name = "Points"]
         fn points(self: &ExtCC, N: i32, P1: Pin<&mut POnCurv>, P2: Pin<&mut POnCurv>);
+        /// **Source:** `Extrema_ExtCC.hxx`:111 - `Extrema_ExtCC::TrimmedSquareDistances()`
+        ///
         /// if the curve is a trimmed curve,
         /// dist11 is a square distance between the point on C1
         /// of parameter FirstParameter and the point of
@@ -596,20 +617,24 @@ pub(crate) mod ffi {
             P21: Pin<&mut gp_Pnt>,
             P22: Pin<&mut gp_Pnt>,
         );
+        /// **Source:** `Extrema_ExtCC.hxx`:121 - `Extrema_ExtCC::SetSingleSolutionFlag()`
+        ///
         /// Set flag for single extrema computation. Works on parametric solver only.
         #[cxx_name = "SetSingleSolutionFlag"]
         fn set_single_solution_flag(self: Pin<&mut ExtCC>, theSingleSolutionFlag: bool);
+        /// **Source:** `Extrema_ExtCC.hxx`:124 - `Extrema_ExtCC::GetSingleSolutionFlag()`
+        ///
         /// Get flag for single extrema computation. Works on parametric solver only.
         #[cxx_name = "GetSingleSolutionFlag"]
         fn get_single_solution_flag(self: &ExtCC) -> bool;
         /// ======================== Extrema_ExtPC ========================
-        /// **Source:** `Extrema_ExtPC.hxx` - `Extrema_ExtPC`
+        /// **Source:** `Extrema_ExtPC.hxx`:42 - `Extrema_ExtPC`
         #[cxx_name = "Extrema_ExtPC"]
         type ExtPC;
-        /// **Source:** `Extrema_ExtPC.hxx` - `Extrema_ExtPC::Extrema_ExtPC()`
+        /// **Source:** `Extrema_ExtPC.hxx`:47 - `Extrema_ExtPC::Extrema_ExtPC()`
         #[cxx_name = "Extrema_ExtPC_ctor"]
         fn ExtPC_ctor() -> UniquePtr<ExtPC>;
-        /// **Source:** `Extrema_ExtPC.hxx` - `Extrema_ExtPC::Extrema_ExtPC()`
+        /// **Source:** `Extrema_ExtPC.hxx`:58 - `Extrema_ExtPC::Extrema_ExtPC()`
         ///
         /// It calculates all the distances.
         /// The function F(u)=distance(P,C(u)) has an extremum
@@ -628,7 +653,7 @@ pub(crate) mod ffi {
             Usup: f64,
             TolF: f64,
         ) -> UniquePtr<ExtPC>;
-        /// **Source:** `Extrema_ExtPC.hxx` - `Extrema_ExtPC::Extrema_ExtPC()`
+        /// **Source:** `Extrema_ExtPC.hxx`:72 - `Extrema_ExtPC::Extrema_ExtPC()`
         ///
         /// It calculates all the distances.
         /// The function F(u)=distance(P,C(u)) has an extremum
@@ -644,29 +669,45 @@ pub(crate) mod ffi {
             C: &Adaptor3d_Curve,
             TolF: f64,
         ) -> UniquePtr<ExtPC>;
+        /// **Source:** `Extrema_ExtPC.hxx`:77 - `Extrema_ExtPC::Initialize()`
+        ///
         /// initializes the fields of the algorithm.
         #[cxx_name = "Initialize"]
         fn initialize(self: Pin<&mut ExtPC>, C: &Adaptor3d_Curve, Uinf: f64, Usup: f64, TolF: f64);
+        /// **Source:** `Extrema_ExtPC.hxx`:84 - `Extrema_ExtPC::Perform()`
+        ///
         /// An exception is raised if the fields have not been
         /// initialized.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut ExtPC>, P: &gp_Pnt);
+        /// **Source:** `Extrema_ExtPC.hxx`:87 - `Extrema_ExtPC::IsDone()`
+        ///
         /// True if the distances are found.
         #[cxx_name = "IsDone"]
         fn is_done(self: &ExtPC) -> bool;
+        /// **Source:** `Extrema_ExtPC.hxx`:90 - `Extrema_ExtPC::SquareDistance()`
+        ///
         /// Returns the value of the <N>th extremum square distance.
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &ExtPC, N: i32) -> f64;
+        /// **Source:** `Extrema_ExtPC.hxx`:93 - `Extrema_ExtPC::NbExt()`
+        ///
         /// Returns the number of extremum distances.
         #[cxx_name = "NbExt"]
         fn nb_ext(self: &ExtPC) -> i32;
+        /// **Source:** `Extrema_ExtPC.hxx`:97 - `Extrema_ExtPC::IsMin()`
+        ///
         /// Returns True if the <N>th extremum distance is a
         /// minimum.
         #[cxx_name = "IsMin"]
         fn is_min(self: &ExtPC, N: i32) -> bool;
+        /// **Source:** `Extrema_ExtPC.hxx`:100 - `Extrema_ExtPC::Point()`
+        ///
         /// Returns the point of the <N>th extremum distance.
         #[cxx_name = "Point"]
         fn point(self: &ExtPC, N: i32) -> &POnCurv;
+        /// **Source:** `Extrema_ExtPC.hxx`:107 - `Extrema_ExtPC::TrimmedSquareDistances()`
+        ///
         /// if the curve is a trimmed curve,
         /// dist1 is a square distance between <P> and the point
         /// of parameter FirstParameter <P1> and
@@ -681,16 +722,18 @@ pub(crate) mod ffi {
             P2: Pin<&mut gp_Pnt>,
         );
         /// ======================== Extrema_ExtPS ========================
-        /// **Source:** `Extrema_ExtPS.hxx` - `Extrema_ExtPS`
+        /// **Source:** `Extrema_ExtPS.hxx`:41 - `Extrema_ExtPS`
         ///
         /// It calculates all the extremum distances
         /// between a point and a surface.
         /// These distances can be minimum or maximum.
         #[cxx_name = "Extrema_ExtPS"]
         type ExtPS;
-        /// **Source:** `Extrema_ExtPS.hxx` - `Extrema_ExtPS::Extrema_ExtPS()`
+        /// **Source:** `Extrema_ExtPS.hxx`:46 - `Extrema_ExtPS::Extrema_ExtPS()`
         #[cxx_name = "Extrema_ExtPS_ctor"]
         fn ExtPS_ctor() -> UniquePtr<ExtPS>;
+        /// **Source:** `Extrema_ExtPS.hxx`:83 - `Extrema_ExtPS::Initialize()`
+        ///
         /// Initializes the fields of the algorithm.
         #[cxx_name = "Initialize"]
         fn initialize(
@@ -703,23 +746,35 @@ pub(crate) mod ffi {
             TolU: f64,
             TolV: f64,
         );
+        /// **Source:** `Extrema_ExtPS.hxx`:94 - `Extrema_ExtPS::Perform()`
+        ///
         /// Computes the distances.
         /// An exception is raised if the fields have not been
         /// initialized.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut ExtPS>, P: &gp_Pnt);
+        /// **Source:** `Extrema_ExtPS.hxx`:97 - `Extrema_ExtPS::IsDone()`
+        ///
         /// Returns True if the distances are found.
         #[cxx_name = "IsDone"]
         fn is_done(self: &ExtPS) -> bool;
+        /// **Source:** `Extrema_ExtPS.hxx`:100 - `Extrema_ExtPS::NbExt()`
+        ///
         /// Returns the number of extremum distances.
         #[cxx_name = "NbExt"]
         fn nb_ext(self: &ExtPS) -> i32;
+        /// **Source:** `Extrema_ExtPS.hxx`:103 - `Extrema_ExtPS::SquareDistance()`
+        ///
         /// Returns the value of the Nth resulting square distance.
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &ExtPS, N: i32) -> f64;
+        /// **Source:** `Extrema_ExtPS.hxx`:106 - `Extrema_ExtPS::Point()`
+        ///
         /// Returns the point of the Nth resulting distance.
         #[cxx_name = "Point"]
         fn point(self: &ExtPS, N: i32) -> &POnSurf;
+        /// **Source:** `Extrema_ExtPS.hxx`:117 - `Extrema_ExtPS::TrimmedSquareDistances()`
+        ///
         /// if the surface is a trimmed surface,
         /// dUfVf is a square distance between <P> and the point
         /// of parameter FirstUParameter and FirstVParameter <PUfVf>.
@@ -742,18 +797,19 @@ pub(crate) mod ffi {
             PUlVl: Pin<&mut gp_Pnt>,
         );
         /// ======================== Extrema_GenExtPS ========================
-        /// **Source:** `Extrema_GenExtPS.hxx` - `Extrema_GenExtPS`
+        /// **Source:** `Extrema_GenExtPS.hxx`:34 - `Extrema_GenExtPS`
         ///
         /// It calculates all the extremum distances
         /// between a point and a surface.
         /// These distances can be minimum or maximum.
         #[cxx_name = "Extrema_GenExtPS"]
         type GenExtPS;
-        /// **Source:** `Extrema_GenExtPS.hxx` - `Extrema_GenExtPS::Extrema_GenExtPS()`
+        /// **Source:** `Extrema_GenExtPS.hxx`:40 - `Extrema_GenExtPS::Extrema_GenExtPS()`
         ///
         /// Empty constructor.
         #[cxx_name = "Extrema_GenExtPS_ctor"]
         fn GenExtPS_ctor() -> UniquePtr<GenExtPS>;
+        /// **Source:** `Extrema_GenExtPS.hxx`:91 - `Extrema_GenExtPS::Initialize()`
         #[cxx_name = "Initialize"]
         fn initialize_surface_int2_real2(
             self: Pin<&mut GenExtPS>,
@@ -763,6 +819,7 @@ pub(crate) mod ffi {
             TolU: f64,
             TolV: f64,
         );
+        /// **Source:** `Extrema_GenExtPS.hxx`:97 - `Extrema_GenExtPS::Initialize()`
         #[cxx_name = "Initialize"]
         fn initialize_surface_int2_real6(
             self: Pin<&mut GenExtPS>,
@@ -776,37 +833,47 @@ pub(crate) mod ffi {
             TolU: f64,
             TolV: f64,
         );
+        /// **Source:** `Extrema_GenExtPS.hxx`:110 - `Extrema_GenExtPS::Perform()`
+        ///
         /// the algorithm is done with the point P.
         /// An exception is raised if the fields have not
         /// been initialized.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut GenExtPS>, P: &gp_Pnt);
+        /// **Source:** `Extrema_GenExtPS.hxx`:117 - `Extrema_GenExtPS::IsDone()`
+        ///
         /// Returns True if the distances are found.
         #[cxx_name = "IsDone"]
         fn is_done(self: &GenExtPS) -> bool;
+        /// **Source:** `Extrema_GenExtPS.hxx`:120 - `Extrema_GenExtPS::NbExt()`
+        ///
         /// Returns the number of extremum distances.
         #[cxx_name = "NbExt"]
         fn nb_ext(self: &GenExtPS) -> i32;
+        /// **Source:** `Extrema_GenExtPS.hxx`:123 - `Extrema_GenExtPS::SquareDistance()`
+        ///
         /// Returns the value of the Nth resulting square distance.
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &GenExtPS, N: i32) -> f64;
+        /// **Source:** `Extrema_GenExtPS.hxx`:126 - `Extrema_GenExtPS::Point()`
+        ///
         /// Returns the point of the Nth resulting distance.
         #[cxx_name = "Point"]
         fn point(self: &GenExtPS, N: i32) -> &POnSurf;
         /// ======================== Extrema_POnSurfParams ========================
-        /// **Source:** `Extrema_POnSurfParams.hxx` - `Extrema_POnSurfParams`
+        /// **Source:** `Extrema_POnSurfParams.hxx`:30 - `Extrema_POnSurfParams`
         ///
         /// Data container for point on surface parameters. These parameters
         /// are required to compute an initial approximation for extrema
         /// computation.
         #[cxx_name = "Extrema_POnSurfParams"]
         type POnSurfParams;
-        /// **Source:** `Extrema_POnSurfParams.hxx` - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
+        /// **Source:** `Extrema_POnSurfParams.hxx`:36 - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
         ///
         /// empty constructor
         #[cxx_name = "Extrema_POnSurfParams_ctor"]
         fn POnSurfParams_ctor() -> UniquePtr<POnSurfParams>;
-        /// **Source:** `Extrema_POnSurfParams.hxx` - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
+        /// **Source:** `Extrema_POnSurfParams.hxx`:40 - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
         ///
         /// Creation of a point on surface with parameter
         /// values on the surface and a Pnt from gp.
@@ -816,17 +883,25 @@ pub(crate) mod ffi {
             theV: f64,
             thePnt: &gp_Pnt,
         ) -> UniquePtr<POnSurfParams>;
+        /// **Source:** `Extrema_POnSurfParams.hxx`:44 - `Extrema_POnSurfParams::SetSqrDistance()`
+        ///
         /// Sets the square distance from this point to another one
         /// (e.g. to the point to be projected).
         #[cxx_name = "SetSqrDistance"]
         fn set_sqr_distance(self: Pin<&mut POnSurfParams>, theSqrDistance: f64);
+        /// **Source:** `Extrema_POnSurfParams.hxx`:47 - `Extrema_POnSurfParams::GetSqrDistance()`
+        ///
         /// Query the square distance from this point to another one.
         #[cxx_name = "GetSqrDistance"]
         fn get_sqr_distance(self: &POnSurfParams) -> f64;
+        /// **Source:** `Extrema_POnSurfParams.hxx`:57 - `Extrema_POnSurfParams::SetIndices()`
+        ///
         /// Sets the U and V indices of an element that contains
         /// this point.
         #[cxx_name = "SetIndices"]
         fn set_indices(self: Pin<&mut POnSurfParams>, theIndexU: i32, theIndexV: i32);
+        /// **Source:** `Extrema_POnSurfParams.hxx`:61 - `Extrema_POnSurfParams::GetIndices()`
+        ///
         /// Query the U and V indices of an element that contains
         /// this point.
         #[cxx_name = "GetIndices"]
@@ -838,7 +913,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Extrema_POnSurfParams_as_Extrema_POnSurf_mut"]
         fn p_on_surf_params_as_p_on_surf_mut(self_: Pin<&mut POnSurfParams>) -> Pin<&mut POnSurf>;
         /// ======================== Extrema_FuncPSNorm ========================
-        /// **Source:** `Extrema_FuncPSNorm.hxx` - `Extrema_FuncPSNorm`
+        /// **Source:** `Extrema_FuncPSNorm.hxx`:54 - `Extrema_FuncPSNorm`
         ///
         /// Functional for search of extremum of the distance between point P and
         /// surface S, starting from approximate solution (u0, v0).
@@ -862,25 +937,35 @@ pub(crate) mod ffi {
         /// Here * denotes scalar product, and ^2 is square power.
         #[cxx_name = "Extrema_FuncPSNorm"]
         type FuncPSNorm;
-        /// **Source:** `Extrema_FuncPSNorm.hxx` - `Extrema_FuncPSNorm::Extrema_FuncPSNorm()`
+        /// **Source:** `Extrema_FuncPSNorm.hxx`:59 - `Extrema_FuncPSNorm::Extrema_FuncPSNorm()`
         #[cxx_name = "Extrema_FuncPSNorm_ctor"]
         fn FuncPSNorm_ctor() -> UniquePtr<FuncPSNorm>;
-        /// **Source:** `Extrema_FuncPSNorm.hxx` - `Extrema_FuncPSNorm::Extrema_FuncPSNorm()`
+        /// **Source:** `Extrema_FuncPSNorm.hxx`:61 - `Extrema_FuncPSNorm::Extrema_FuncPSNorm()`
         #[cxx_name = "Extrema_FuncPSNorm_ctor_pnt_surface"]
         fn FuncPSNorm_ctor_pnt_surface(P: &gp_Pnt, S: &Adaptor3d_Surface) -> UniquePtr<FuncPSNorm>;
+        /// **Source:** `Extrema_FuncPSNorm.hxx`:64 - `Extrema_FuncPSNorm::Initialize()`
+        ///
         /// sets the field mysurf of the function.
         #[cxx_name = "Initialize"]
         fn initialize(self: Pin<&mut FuncPSNorm>, S: &Adaptor3d_Surface);
+        /// **Source:** `Extrema_FuncPSNorm.hxx`:67 - `Extrema_FuncPSNorm::SetPoint()`
+        ///
         /// sets the field mysurf of the function.
         #[cxx_name = "SetPoint"]
         fn set_point(self: Pin<&mut FuncPSNorm>, P: &gp_Pnt);
+        /// **Source:** `Extrema_FuncPSNorm.hxx`:69 - `Extrema_FuncPSNorm::NbVariables()`
         #[cxx_name = "NbVariables"]
         fn nb_variables(self: &FuncPSNorm) -> i32;
+        /// **Source:** `Extrema_FuncPSNorm.hxx`:71 - `Extrema_FuncPSNorm::NbEquations()`
         #[cxx_name = "NbEquations"]
         fn nb_equations(self: &FuncPSNorm) -> i32;
+        /// **Source:** `Extrema_FuncPSNorm.hxx`:74 - `Extrema_FuncPSNorm::Value()`
+        ///
         /// Calculate Fi(U,V).
         #[cxx_name = "Value"]
         fn value(self: Pin<&mut FuncPSNorm>, UV: &math_Vector, F: Pin<&mut math_Vector>) -> bool;
+        /// **Source:** `Extrema_FuncPSNorm.hxx`:77 - `Extrema_FuncPSNorm::Derivatives()`
+        ///
         /// Calculate Fi'(U,V).
         #[cxx_name = "Derivatives"]
         fn derivatives(
@@ -888,6 +973,8 @@ pub(crate) mod ffi {
             UV: &math_Vector,
             DF: Pin<&mut math_Matrix>,
         ) -> bool;
+        /// **Source:** `Extrema_FuncPSNorm.hxx`:81 - `Extrema_FuncPSNorm::Values()`
+        ///
         /// Calculate Fi(U,V) and Fi'(U,V).
         #[cxx_name = "Values"]
         fn values(
@@ -896,57 +983,71 @@ pub(crate) mod ffi {
             F: Pin<&mut math_Vector>,
             DF: Pin<&mut math_Matrix>,
         ) -> bool;
+        /// **Source:** `Extrema_FuncPSNorm.hxx`:86 - `Extrema_FuncPSNorm::GetStateNumber()`
+        ///
         /// Save the found extremum.
         #[cxx_name = "GetStateNumber"]
         fn get_state_number(self: Pin<&mut FuncPSNorm>) -> i32;
+        /// **Source:** `Extrema_FuncPSNorm.hxx`:89 - `Extrema_FuncPSNorm::NbExt()`
+        ///
         /// Return the number of found extrema.
         #[cxx_name = "NbExt"]
         fn nb_ext(self: &FuncPSNorm) -> i32;
+        /// **Source:** `Extrema_FuncPSNorm.hxx`:92 - `Extrema_FuncPSNorm::SquareDistance()`
+        ///
         /// Return the value of the Nth distance.
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &FuncPSNorm, N: i32) -> f64;
+        /// **Source:** `Extrema_FuncPSNorm.hxx`:95 - `Extrema_FuncPSNorm::Point()`
+        ///
         /// Returns the Nth extremum.
         #[cxx_name = "Point"]
         fn point(self: &FuncPSNorm, N: i32) -> &POnSurf;
         /// ======================== Extrema_POnSurf ========================
-        /// **Source:** `Extrema_POnSurf.hxx` - `Extrema_POnSurf`
+        /// **Source:** `Extrema_POnSurf.hxx`:27 - `Extrema_POnSurf`
         ///
         /// Definition of a point on surface.
         #[cxx_name = "Extrema_POnSurf"]
         type POnSurf;
-        /// **Source:** `Extrema_POnSurf.hxx` - `Extrema_POnSurf::Extrema_POnSurf()`
+        /// **Source:** `Extrema_POnSurf.hxx`:33 - `Extrema_POnSurf::Extrema_POnSurf()`
         ///
         /// Creation of an indefinite point on surface.
         #[cxx_name = "Extrema_POnSurf_ctor"]
         fn POnSurf_ctor() -> UniquePtr<POnSurf>;
-        /// **Source:** `Extrema_POnSurf.hxx` - `Extrema_POnSurf::Extrema_POnSurf()`
+        /// **Source:** `Extrema_POnSurf.hxx`:37 - `Extrema_POnSurf::Extrema_POnSurf()`
         ///
         /// Creation of a point on surface with parameter
         /// values on the surface and a Pnt from gp.
         #[cxx_name = "Extrema_POnSurf_ctor_real2_pnt"]
         fn POnSurf_ctor_real2_pnt(U: f64, V: f64, P: &gp_Pnt) -> UniquePtr<POnSurf>;
+        /// **Source:** `Extrema_POnSurf.hxx`:40 - `Extrema_POnSurf::Value()`
+        ///
         /// Returns the 3d point.
         #[cxx_name = "Value"]
         fn value(self: &POnSurf) -> &gp_Pnt;
+        /// **Source:** `Extrema_POnSurf.hxx`:44 - `Extrema_POnSurf::SetParameters()`
+        ///
         /// Sets the params of current POnSurf instance.
         /// (e.g. to the point to be projected).
         #[cxx_name = "SetParameters"]
         fn set_parameters(self: Pin<&mut POnSurf>, theU: f64, theV: f64, thePnt: &gp_Pnt);
+        /// **Source:** `Extrema_POnSurf.hxx`:47 - `Extrema_POnSurf::Parameter()`
+        ///
         /// Returns the parameter values on the surface.
         #[cxx_name = "Parameter"]
         fn parameter(self: &POnSurf, U: &mut f64, V: &mut f64);
         /// ======================== Extrema_ExtPElS ========================
-        /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS`
+        /// **Source:** `Extrema_ExtPElS.hxx`:35 - `Extrema_ExtPElS`
         ///
         /// It calculates all the extremum distances
         /// between a point and a surface.
         /// These distances can be minimum or maximum.
         #[cxx_name = "Extrema_ExtPElS"]
         type ExtPElS;
-        /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
+        /// **Source:** `Extrema_ExtPElS.hxx`:40 - `Extrema_ExtPElS::Extrema_ExtPElS()`
         #[cxx_name = "Extrema_ExtPElS_ctor"]
         fn ExtPElS_ctor() -> UniquePtr<ExtPElS>;
-        /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
+        /// **Source:** `Extrema_ExtPElS.hxx`:45 - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
         /// It calculates all the distances between a point
         /// and a cylinder from gp.
@@ -957,14 +1058,14 @@ pub(crate) mod ffi {
             S: &gp_Cylinder,
             Tol: f64,
         ) -> UniquePtr<ExtPElS>;
-        /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
+        /// **Source:** `Extrema_ExtPElS.hxx`:52 - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
         /// It calculates all the distances between a point
         /// and a plane from gp.
         /// Tol is used to test if the point is on the plane.
         #[cxx_name = "Extrema_ExtPElS_ctor_pnt_pln_real"]
         fn ExtPElS_ctor_pnt_pln_real(P: &gp_Pnt, S: &gp_Pln, Tol: f64) -> UniquePtr<ExtPElS>;
-        /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
+        /// **Source:** `Extrema_ExtPElS.hxx`:60 - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
         /// It calculates all the distances between a point
         /// and a cone from gp.
@@ -972,20 +1073,21 @@ pub(crate) mod ffi {
         /// on the axis.
         #[cxx_name = "Extrema_ExtPElS_ctor_pnt_cone_real"]
         fn ExtPElS_ctor_pnt_cone_real(P: &gp_Pnt, S: &gp_Cone, Tol: f64) -> UniquePtr<ExtPElS>;
-        /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
+        /// **Source:** `Extrema_ExtPElS.hxx`:67 - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
         /// It calculates all the distances between a point
         /// and a torus from gp.
         /// Tol is used to test if the point is on the axis.
         #[cxx_name = "Extrema_ExtPElS_ctor_pnt_torus_real"]
         fn ExtPElS_ctor_pnt_torus_real(P: &gp_Pnt, S: &gp_Torus, Tol: f64) -> UniquePtr<ExtPElS>;
-        /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
+        /// **Source:** `Extrema_ExtPElS.hxx`:74 - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
         /// It calculates all the distances between a point
         /// and a sphere from gp.
         /// Tol is used to test if the point is at the center.
         #[cxx_name = "Extrema_ExtPElS_ctor_pnt_sphere_real"]
         fn ExtPElS_ctor_pnt_sphere_real(P: &gp_Pnt, S: &gp_Sphere, Tol: f64) -> UniquePtr<ExtPElS>;
+        /// **Source:** `Extrema_ExtPElS.hxx`:47 - `Extrema_ExtPElS::Perform()`
         #[cxx_name = "Perform"]
         fn perform_pnt_cylinder_real(
             self: Pin<&mut ExtPElS>,
@@ -993,38 +1095,50 @@ pub(crate) mod ffi {
             S: &gp_Cylinder,
             Tol: f64,
         );
+        /// **Source:** `Extrema_ExtPElS.hxx`:54 - `Extrema_ExtPElS::Perform()`
         #[cxx_name = "Perform"]
         fn perform_pnt_pln_real(self: Pin<&mut ExtPElS>, P: &gp_Pnt, S: &gp_Pln, Tol: f64);
+        /// **Source:** `Extrema_ExtPElS.hxx`:62 - `Extrema_ExtPElS::Perform()`
         #[cxx_name = "Perform"]
         fn perform_pnt_cone_real(self: Pin<&mut ExtPElS>, P: &gp_Pnt, S: &gp_Cone, Tol: f64);
+        /// **Source:** `Extrema_ExtPElS.hxx`:69 - `Extrema_ExtPElS::Perform()`
         #[cxx_name = "Perform"]
         fn perform_pnt_torus_real(self: Pin<&mut ExtPElS>, P: &gp_Pnt, S: &gp_Torus, Tol: f64);
+        /// **Source:** `Extrema_ExtPElS.hxx`:76 - `Extrema_ExtPElS::Perform()`
         #[cxx_name = "Perform"]
         fn perform_pnt_sphere_real(self: Pin<&mut ExtPElS>, P: &gp_Pnt, S: &gp_Sphere, Tol: f64);
+        /// **Source:** `Extrema_ExtPElS.hxx`:79 - `Extrema_ExtPElS::IsDone()`
+        ///
         /// Returns True if the distances are found.
         #[cxx_name = "IsDone"]
         fn is_done(self: &ExtPElS) -> bool;
+        /// **Source:** `Extrema_ExtPElS.hxx`:82 - `Extrema_ExtPElS::NbExt()`
+        ///
         /// Returns the number of extremum distances.
         #[cxx_name = "NbExt"]
         fn nb_ext(self: &ExtPElS) -> i32;
+        /// **Source:** `Extrema_ExtPElS.hxx`:85 - `Extrema_ExtPElS::SquareDistance()`
+        ///
         /// Returns the value of the Nth resulting square distance.
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &ExtPElS, N: i32) -> f64;
+        /// **Source:** `Extrema_ExtPElS.hxx`:88 - `Extrema_ExtPElS::Point()`
+        ///
         /// Returns the point of the Nth resulting distance.
         #[cxx_name = "Point"]
         fn point(self: &ExtPElS, N: i32) -> &POnSurf;
         /// ======================== Extrema_ExtPElC ========================
-        /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC`
+        /// **Source:** `Extrema_ExtPElC.hxx`:35 - `Extrema_ExtPElC`
         ///
         /// It calculates all the distances between a point
         /// and an elementary curve.
         /// These distances can be minimum or maximum.
         #[cxx_name = "Extrema_ExtPElC"]
         type ExtPElC;
-        /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
+        /// **Source:** `Extrema_ExtPElC.hxx`:40 - `Extrema_ExtPElC::Extrema_ExtPElC()`
         #[cxx_name = "Extrema_ExtPElC_ctor"]
         fn ExtPElC_ctor() -> UniquePtr<ExtPElC>;
-        /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
+        /// **Source:** `Extrema_ExtPElC.hxx`:44 - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
         /// Calculates the extremum distance between the
         /// point P and the segment [Uinf,Usup] of the line C.
@@ -1036,7 +1150,7 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         ) -> UniquePtr<ExtPElC>;
-        /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
+        /// **Source:** `Extrema_ExtPElC.hxx`:67 - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
         /// Calculates the 2 extremum distances between the
         /// point P and the segment [Uinf,Usup] of the circle C.
@@ -1057,7 +1171,7 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         ) -> UniquePtr<ExtPElC>;
-        /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
+        /// **Source:** `Extrema_ExtPElC.hxx`:91 - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
         /// Calculates the 4 extremum distances between the
         /// point P and the segment [Uinf,Usup] of the ellipse C.
@@ -1079,7 +1193,7 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         ) -> UniquePtr<ExtPElC>;
-        /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
+        /// **Source:** `Extrema_ExtPElC.hxx`:109 - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
         /// Calculates the extremum distances between the
         /// point P and the segment [Uinf,Usup] of the hyperbola
@@ -1095,7 +1209,7 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         ) -> UniquePtr<ExtPElC>;
-        /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
+        /// **Source:** `Extrema_ExtPElC.hxx`:127 - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
         /// Calculates the 4 extremum distances between the
         /// point P and the segment [Uinf,Usup] of the parabola
@@ -1111,6 +1225,7 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         ) -> UniquePtr<ExtPElC>;
+        /// **Source:** `Extrema_ExtPElC.hxx`:50 - `Extrema_ExtPElC::Perform()`
         #[cxx_name = "Perform"]
         fn perform_pnt_lin_real3(
             self: Pin<&mut ExtPElC>,
@@ -1120,6 +1235,7 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         );
+        /// **Source:** `Extrema_ExtPElC.hxx`:73 - `Extrema_ExtPElC::Perform()`
         #[cxx_name = "Perform"]
         fn perform_pnt_circ_real3(
             self: Pin<&mut ExtPElC>,
@@ -1129,6 +1245,7 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         );
+        /// **Source:** `Extrema_ExtPElC.hxx`:97 - `Extrema_ExtPElC::Perform()`
         #[cxx_name = "Perform"]
         fn perform_pnt_elips_real3(
             self: Pin<&mut ExtPElC>,
@@ -1138,6 +1255,7 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         );
+        /// **Source:** `Extrema_ExtPElC.hxx`:115 - `Extrema_ExtPElC::Perform()`
         #[cxx_name = "Perform"]
         fn perform_pnt_hypr_real3(
             self: Pin<&mut ExtPElC>,
@@ -1147,6 +1265,7 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         );
+        /// **Source:** `Extrema_ExtPElC.hxx`:133 - `Extrema_ExtPElC::Perform()`
         #[cxx_name = "Perform"]
         fn perform_pnt_parab_real3(
             self: Pin<&mut ExtPElC>,
@@ -1156,30 +1275,40 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         );
+        /// **Source:** `Extrema_ExtPElC.hxx`:140 - `Extrema_ExtPElC::IsDone()`
+        ///
         /// True if the distances are found.
         #[cxx_name = "IsDone"]
         fn is_done(self: &ExtPElC) -> bool;
+        /// **Source:** `Extrema_ExtPElC.hxx`:143 - `Extrema_ExtPElC::NbExt()`
+        ///
         /// Returns the number of extremum distances.
         #[cxx_name = "NbExt"]
         fn nb_ext(self: &ExtPElC) -> i32;
+        /// **Source:** `Extrema_ExtPElC.hxx`:146 - `Extrema_ExtPElC::SquareDistance()`
+        ///
         /// Returns the value of the Nth extremum square distance.
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &ExtPElC, N: i32) -> f64;
+        /// **Source:** `Extrema_ExtPElC.hxx`:150 - `Extrema_ExtPElC::IsMin()`
+        ///
         /// Returns True if the Nth extremum distance is a
         /// minimum.
         #[cxx_name = "IsMin"]
         fn is_min(self: &ExtPElC, N: i32) -> bool;
+        /// **Source:** `Extrema_ExtPElC.hxx`:153 - `Extrema_ExtPElC::Point()`
+        ///
         /// Returns the point of the Nth extremum distance.
         #[cxx_name = "Point"]
         fn point(self: &ExtPElC, N: i32) -> &POnCurv;
         /// ======================== Extrema_EPCOfExtPC ========================
-        /// **Source:** `Extrema_EPCOfExtPC.hxx` - `Extrema_EPCOfExtPC`
+        /// **Source:** `Extrema_EPCOfExtPC.hxx`:35 - `Extrema_EPCOfExtPC`
         #[cxx_name = "Extrema_EPCOfExtPC"]
         type EPCOfExtPC;
-        /// **Source:** `Extrema_EPCOfExtPC.hxx` - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
+        /// **Source:** `Extrema_EPCOfExtPC.hxx`:40 - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
         #[cxx_name = "Extrema_EPCOfExtPC_ctor"]
         fn EPCOfExtPC_ctor() -> UniquePtr<EPCOfExtPC>;
-        /// **Source:** `Extrema_EPCOfExtPC.hxx` - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
+        /// **Source:** `Extrema_EPCOfExtPC.hxx`:52 - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
         ///
         /// It calculates all the distances.
         /// The function F(u)=distance(P,C(u)) has an extremum
@@ -1199,7 +1328,7 @@ pub(crate) mod ffi {
             TolU: f64,
             TolF: f64,
         ) -> UniquePtr<EPCOfExtPC>;
-        /// **Source:** `Extrema_EPCOfExtPC.hxx` - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
+        /// **Source:** `Extrema_EPCOfExtPC.hxx`:69 - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
         ///
         /// It calculates all the distances.
         /// The function F(u)=distance(P,C(u)) has an extremum
@@ -1222,6 +1351,8 @@ pub(crate) mod ffi {
             TolU: f64,
             TolF: f64,
         ) -> UniquePtr<EPCOfExtPC>;
+        /// **Source:** `Extrema_EPCOfExtPC.hxx`:78 - `Extrema_EPCOfExtPC::Initialize()`
+        ///
         /// sets the fields of the algorithm.
         #[cxx_name = "Initialize"]
         fn initialize_curve_int_real2(
@@ -1231,6 +1362,8 @@ pub(crate) mod ffi {
             TolU: f64,
             TolF: f64,
         );
+        /// **Source:** `Extrema_EPCOfExtPC.hxx`:84 - `Extrema_EPCOfExtPC::Initialize()`
+        ///
         /// sets the fields of the algorithm.
         #[cxx_name = "Initialize"]
         fn initialize_curve_int_real4(
@@ -1242,9 +1375,13 @@ pub(crate) mod ffi {
             TolU: f64,
             TolF: f64,
         );
+        /// **Source:** `Extrema_EPCOfExtPC.hxx`:92 - `Extrema_EPCOfExtPC::Initialize()`
+        ///
         /// sets the fields of the algorithm.
         #[cxx_name = "Initialize"]
         fn initialize_curve(self: Pin<&mut EPCOfExtPC>, C: &Adaptor3d_Curve);
+        /// **Source:** `Extrema_EPCOfExtPC.hxx`:95 - `Extrema_EPCOfExtPC::Initialize()`
+        ///
         /// sets the fields of the algorithm.
         #[cxx_name = "Initialize"]
         fn initialize_int_real4(
@@ -1255,73 +1392,109 @@ pub(crate) mod ffi {
             TolU: f64,
             TolF: f64,
         );
+        /// **Source:** `Extrema_EPCOfExtPC.hxx`:104 - `Extrema_EPCOfExtPC::Perform()`
+        ///
         /// the algorithm is done with the point P.
         /// An exception is raised if the fields have not
         /// been initialized.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut EPCOfExtPC>, P: &gp_Pnt);
+        /// **Source:** `Extrema_EPCOfExtPC.hxx`:107 - `Extrema_EPCOfExtPC::IsDone()`
+        ///
         /// True if the distances are found.
         #[cxx_name = "IsDone"]
         fn is_done(self: &EPCOfExtPC) -> bool;
+        /// **Source:** `Extrema_EPCOfExtPC.hxx`:110 - `Extrema_EPCOfExtPC::NbExt()`
+        ///
         /// Returns the number of extremum distances.
         #[cxx_name = "NbExt"]
         fn nb_ext(self: &EPCOfExtPC) -> i32;
+        /// **Source:** `Extrema_EPCOfExtPC.hxx`:113 - `Extrema_EPCOfExtPC::SquareDistance()`
+        ///
         /// Returns the value of the Nth extremum square distance.
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &EPCOfExtPC, N: i32) -> f64;
+        /// **Source:** `Extrema_EPCOfExtPC.hxx`:117 - `Extrema_EPCOfExtPC::IsMin()`
+        ///
         /// Returns True if the Nth extremum distance is a
         /// minimum.
         #[cxx_name = "IsMin"]
         fn is_min(self: &EPCOfExtPC, N: i32) -> bool;
+        /// **Source:** `Extrema_EPCOfExtPC.hxx`:120 - `Extrema_EPCOfExtPC::Point()`
+        ///
         /// Returns the point of the Nth extremum distance.
         #[cxx_name = "Point"]
         fn point(self: &EPCOfExtPC, N: i32) -> &POnCurv;
         /// ======================== Extrema_PCFOfEPCOfExtPC ========================
-        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx` - `Extrema_PCFOfEPCOfExtPC`
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:37 - `Extrema_PCFOfEPCOfExtPC`
         #[cxx_name = "Extrema_PCFOfEPCOfExtPC"]
         type PCFOfEPCOfExtPC;
-        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx` - `Extrema_PCFOfEPCOfExtPC::Extrema_PCFOfEPCOfExtPC()`
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:42 - `Extrema_PCFOfEPCOfExtPC::Extrema_PCFOfEPCOfExtPC()`
         #[cxx_name = "Extrema_PCFOfEPCOfExtPC_ctor"]
         fn PCFOfEPCOfExtPC_ctor() -> UniquePtr<PCFOfEPCOfExtPC>;
-        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx` - `Extrema_PCFOfEPCOfExtPC::Extrema_PCFOfEPCOfExtPC()`
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:44 - `Extrema_PCFOfEPCOfExtPC::Extrema_PCFOfEPCOfExtPC()`
         #[cxx_name = "Extrema_PCFOfEPCOfExtPC_ctor_pnt_curve"]
         fn PCFOfEPCOfExtPC_ctor_pnt_curve(
             P: &gp_Pnt,
             C: &Adaptor3d_Curve,
         ) -> UniquePtr<PCFOfEPCOfExtPC>;
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:47 - `Extrema_PCFOfEPCOfExtPC::Initialize()`
+        ///
         /// sets the field mycurve of the function.
         #[cxx_name = "Initialize"]
         fn initialize(self: Pin<&mut PCFOfEPCOfExtPC>, C: &Adaptor3d_Curve);
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:50 - `Extrema_PCFOfEPCOfExtPC::SetPoint()`
+        ///
         /// sets the field P of the function.
         #[cxx_name = "SetPoint"]
         fn set_point(self: Pin<&mut PCFOfEPCOfExtPC>, P: &gp_Pnt);
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:53 - `Extrema_PCFOfEPCOfExtPC::Value()`
+        ///
         /// Calculation of F(U).
         #[cxx_name = "Value"]
         fn value(self: Pin<&mut PCFOfEPCOfExtPC>, U: f64, F: &mut f64) -> bool;
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:56 - `Extrema_PCFOfEPCOfExtPC::Derivative()`
+        ///
         /// Calculation of F'(U).
         #[cxx_name = "Derivative"]
         fn derivative(self: Pin<&mut PCFOfEPCOfExtPC>, U: f64, DF: &mut f64) -> bool;
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:60 - `Extrema_PCFOfEPCOfExtPC::Values()`
+        ///
         /// Calculation of F(U) and F'(U).
         #[cxx_name = "Values"]
         fn values(self: Pin<&mut PCFOfEPCOfExtPC>, U: f64, F: &mut f64, DF: &mut f64) -> bool;
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:65 - `Extrema_PCFOfEPCOfExtPC::GetStateNumber()`
+        ///
         /// Save the found extremum.
         #[cxx_name = "GetStateNumber"]
         fn get_state_number(self: Pin<&mut PCFOfEPCOfExtPC>) -> i32;
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:68 - `Extrema_PCFOfEPCOfExtPC::NbExt()`
+        ///
         /// Return the number of found extrema.
         #[cxx_name = "NbExt"]
         fn nb_ext(self: &PCFOfEPCOfExtPC) -> i32;
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:71 - `Extrema_PCFOfEPCOfExtPC::SquareDistance()`
+        ///
         /// Returns the Nth distance.
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &PCFOfEPCOfExtPC, N: i32) -> f64;
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:74 - `Extrema_PCFOfEPCOfExtPC::IsMin()`
+        ///
         /// Shows if the Nth distance is a minimum.
         #[cxx_name = "IsMin"]
         fn is_min(self: &PCFOfEPCOfExtPC, N: i32) -> bool;
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:77 - `Extrema_PCFOfEPCOfExtPC::Point()`
+        ///
         /// Returns the Nth extremum.
         #[cxx_name = "Point"]
         fn point(self: &PCFOfEPCOfExtPC, N: i32) -> &POnCurv;
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:80 - `Extrema_PCFOfEPCOfExtPC::SubIntervalInitialize()`
+        ///
         /// Determines boundaries of subinterval for find of root.
         #[cxx_name = "SubIntervalInitialize"]
         fn sub_interval_initialize(self: Pin<&mut PCFOfEPCOfExtPC>, theUfirst: f64, theUlast: f64);
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx`:85 - `Extrema_PCFOfEPCOfExtPC::SearchOfTolerance()`
+        ///
         /// Computes a Tol value. If 1st derivative of curve
         /// |D1|<Tol, it is considered D1=0.
         #[cxx_name = "SearchOfTolerance"]
@@ -1345,41 +1518,47 @@ pub(crate) mod ffi {
             self_: Pin<&mut PCFOfEPCOfExtPC>,
         ) -> Pin<&mut math_FunctionWithDerivative>;
         /// ======================== Extrema_POnCurv ========================
-        /// **Source:** `Extrema_POnCurv.hxx` - `Extrema_POnCurv`
+        /// **Source:** `Extrema_POnCurv.hxx`:27 - `Extrema_POnCurv`
         #[cxx_name = "Extrema_POnCurv"]
         type POnCurv;
-        /// **Source:** `Extrema_POnCurv.hxx` - `Extrema_POnCurv::Extrema_POnCurv()`
+        /// **Source:** `Extrema_POnCurv.hxx`:33 - `Extrema_POnCurv::Extrema_POnCurv()`
         ///
         /// Creation of an indefinite point on curve.
         #[cxx_name = "Extrema_POnCurv_ctor"]
         fn POnCurv_ctor() -> UniquePtr<POnCurv>;
-        /// **Source:** `Extrema_POnCurv.hxx` - `Extrema_POnCurv::Extrema_POnCurv()`
+        /// **Source:** `Extrema_POnCurv.hxx`:37 - `Extrema_POnCurv::Extrema_POnCurv()`
         ///
         /// Creation of a point on curve with a parameter
         /// value on the curve and a Pnt from gp.
         #[cxx_name = "Extrema_POnCurv_ctor_real_pnt"]
         fn POnCurv_ctor_real_pnt(U: f64, P: &gp_Pnt) -> UniquePtr<POnCurv>;
+        /// **Source:** `Extrema_POnCurv.hxx`:40 - `Extrema_POnCurv::SetValues()`
+        ///
         /// sets the point and parameter values.
         #[cxx_name = "SetValues"]
         fn set_values(self: Pin<&mut POnCurv>, U: f64, P: &gp_Pnt);
+        /// **Source:** `Extrema_POnCurv.hxx`:43 - `Extrema_POnCurv::Value()`
+        ///
         /// Returns the point.
         #[cxx_name = "Value"]
         fn value(self: &POnCurv) -> &gp_Pnt;
+        /// **Source:** `Extrema_POnCurv.hxx`:46 - `Extrema_POnCurv::Parameter()`
+        ///
         /// Returns the parameter on the curve.
         #[cxx_name = "Parameter"]
         fn parameter(self: &POnCurv) -> f64;
         /// ======================== Extrema_ECC ========================
-        /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC`
+        /// **Source:** `Extrema_ECC.hxx`:34 - `Extrema_ECC`
         #[cxx_name = "Extrema_ECC"]
         type ECC;
-        /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC::Extrema_ECC()`
+        /// **Source:** `Extrema_ECC.hxx`:42 - `Extrema_ECC::Extrema_ECC()`
         ///
         /// Calculates all the distances as above
         /// between Uinf and Usup for C1 and  between Vinf and Vsup
         /// for C2.
         #[cxx_name = "Extrema_ECC_ctor"]
         fn ECC_ctor() -> UniquePtr<ECC>;
-        /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC::Extrema_ECC()`
+        /// **Source:** `Extrema_ECC.hxx`:48 - `Extrema_ECC::Extrema_ECC()`
         ///
         /// It calculates all the distances.
         /// The function F(u,v)=distance(C1(u),C2(v)) has an
@@ -1387,7 +1566,7 @@ pub(crate) mod ffi {
         /// Evtushenko's global optimization solver.
         #[cxx_name = "Extrema_ECC_ctor_curve2"]
         fn ECC_ctor_curve2(C1: &Adaptor3d_Curve, C2: &Adaptor3d_Curve) -> UniquePtr<ECC>;
-        /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC::Extrema_ECC()`
+        /// **Source:** `Extrema_ECC.hxx`:53 - `Extrema_ECC::Extrema_ECC()`
         ///
         /// Calculates all the distances as above
         /// between Uinf and Usup for C1 and  between Vinf and Vsup
@@ -1401,6 +1580,8 @@ pub(crate) mod ffi {
             Vinf: f64,
             Vsup: f64,
         ) -> UniquePtr<ECC>;
+        /// **Source:** `Extrema_ECC.hxx`:61 - `Extrema_ECC::SetParams()`
+        ///
         /// Set params in case of empty constructor is usage.
         #[cxx_name = "SetParams"]
         fn set_params(
@@ -1412,29 +1593,46 @@ pub(crate) mod ffi {
             Vinf: f64,
             Vsup: f64,
         );
+        /// **Source:** `Extrema_ECC.hxx`:68 - `Extrema_ECC::SetTolerance()`
         #[cxx_name = "SetTolerance"]
         fn set_tolerance(self: Pin<&mut ECC>, Tol: f64);
+        /// **Source:** `Extrema_ECC.hxx`:71 - `Extrema_ECC::SetSingleSolutionFlag()`
+        ///
         /// Set flag for single extrema computation. Works on parametric solver only.
         #[cxx_name = "SetSingleSolutionFlag"]
         fn set_single_solution_flag(self: Pin<&mut ECC>, theSingleSolutionFlag: bool);
+        /// **Source:** `Extrema_ECC.hxx`:74 - `Extrema_ECC::GetSingleSolutionFlag()`
+        ///
         /// Get flag for single extrema computation. Works on parametric solver only.
         #[cxx_name = "GetSingleSolutionFlag"]
         fn get_single_solution_flag(self: &ECC) -> bool;
+        /// **Source:** `Extrema_ECC.hxx`:77 - `Extrema_ECC::Perform()`
+        ///
         /// Performs calculations.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut ECC>);
+        /// **Source:** `Extrema_ECC.hxx`:80 - `Extrema_ECC::IsDone()`
+        ///
         /// Returns True if the distances are found.
         #[cxx_name = "IsDone"]
         fn is_done(self: &ECC) -> bool;
+        /// **Source:** `Extrema_ECC.hxx`:83 - `Extrema_ECC::IsParallel()`
+        ///
         /// Returns state of myParallel flag.
         #[cxx_name = "IsParallel"]
         fn is_parallel(self: &ECC) -> bool;
+        /// **Source:** `Extrema_ECC.hxx`:86 - `Extrema_ECC::NbExt()`
+        ///
         /// Returns the number of extremum distances.
         #[cxx_name = "NbExt"]
         fn nb_ext(self: &ECC) -> i32;
+        /// **Source:** `Extrema_ECC.hxx`:89 - `Extrema_ECC::SquareDistance()`
+        ///
         /// Returns the value of the Nth square extremum distance.
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &ECC, N: i32) -> f64;
+        /// **Source:** `Extrema_ECC.hxx`:93 - `Extrema_ECC::Points()`
+        ///
         /// Returns the points of the Nth extremum distance.
         /// P1 is on the first curve, P2 on the second one.
         #[cxx_name = "Points"]

@@ -364,7 +364,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Bnd_Box ========================
-        /// **Source:** `Bnd_Box.hxx` - `Bnd_Box`
+        /// **Source:** `Bnd_Box.hxx`:59 - `Bnd_Box`
         ///
         /// Describes a bounding box in 3D space.
         /// A bounding box is parallel to the axes of the coordinates
@@ -394,31 +394,39 @@ pub(crate) mod ffi {
         /// when consulting the finite bounds of the box.
         #[cxx_name = "Bnd_Box"]
         type Box_;
-        /// **Source:** `Bnd_Box.hxx` - `Bnd_Box::Bnd_Box()`
+        /// **Source:** `Bnd_Box.hxx`:66 - `Bnd_Box::Bnd_Box()`
         ///
         /// Creates an empty Box.
         /// The constructed box is qualified Void. Its gap is null.
         #[cxx_name = "Bnd_Box_ctor"]
         fn Box__ctor() -> UniquePtr<Box_>;
-        /// **Source:** `Bnd_Box.hxx` - `Bnd_Box::Bnd_Box()`
+        /// **Source:** `Bnd_Box.hxx`:71 - `Bnd_Box::Bnd_Box()`
         ///
         /// Creates a bounding box, it contains:
         /// -   minimum/maximum point of bounding box,
         /// The constructed box is qualified Void. Its gap is null.
         #[cxx_name = "Bnd_Box_ctor_pnt2"]
         fn Box__ctor_pnt2(theMin: &gp_Pnt, theMax: &gp_Pnt) -> UniquePtr<Box_>;
+        /// **Source:** `Bnd_Box.hxx`:75 - `Bnd_Box::SetWhole()`
+        ///
         /// Sets this bounding box so that it covers the whole of 3D space.
         /// It is infinitely long in all directions.
         #[cxx_name = "SetWhole"]
         fn set_whole(self: Pin<&mut Box_>);
+        /// **Source:** `Bnd_Box.hxx`:78 - `Bnd_Box::SetVoid()`
+        ///
         /// Sets this bounding box so that it is empty. All points are outside a void box.
         #[cxx_name = "SetVoid"]
         fn set_void(self: Pin<&mut Box_>);
+        /// **Source:** `Bnd_Box.hxx`:93 - `Bnd_Box::Set()`
+        ///
         /// Sets this bounding box so that it bounds
         /// -   the point P. This involves first setting this bounding box
         /// to be void and then adding the point P.
         #[cxx_name = "Set"]
         fn set_pnt(self: Pin<&mut Box_>, P: &gp_Pnt);
+        /// **Source:** `Bnd_Box.hxx`:100 - `Bnd_Box::Set()`
+        ///
         /// Sets this bounding box so that it bounds
         /// the half-line defined by point P and direction D, i.e. all
         /// points M defined by M=P+u*D, where u is greater than
@@ -426,6 +434,8 @@ pub(crate) mod ffi {
         /// involves first setting this box to be void and then adding   the half-line.
         #[cxx_name = "Set"]
         fn set_pnt_dir(self: Pin<&mut Box_>, P: &gp_Pnt, D: &gp_Dir);
+        /// **Source:** `Bnd_Box.hxx`:107 - `Bnd_Box::Update()`
+        ///
         /// Enlarges this bounding box, if required, so that it
         /// contains at least:
         /// -   interval [ aXmin,aXmax ] in the "X Direction",
@@ -441,15 +451,23 @@ pub(crate) mod ffi {
             aYmax: f64,
             aZmax: f64,
         );
+        /// **Source:** `Bnd_Box.hxx`:115 - `Bnd_Box::Update()`
+        ///
         /// Adds a point of coordinates (X,Y,Z) to this bounding box.
         #[cxx_name = "Update"]
         fn update_real3(self: Pin<&mut Box_>, X: f64, Y: f64, Z: f64);
+        /// **Source:** `Bnd_Box.hxx`:118 - `Bnd_Box::GetGap()`
+        ///
         /// Returns the gap of this bounding box.
         #[cxx_name = "GetGap"]
         fn get_gap(self: &Box_) -> f64;
+        /// **Source:** `Bnd_Box.hxx`:121 - `Bnd_Box::SetGap()`
+        ///
         /// Set the gap of this bounding box to abs(Tol).
         #[cxx_name = "SetGap"]
         fn set_gap(self: Pin<&mut Box_>, Tol: f64);
+        /// **Source:** `Bnd_Box.hxx`:129 - `Bnd_Box::Enlarge()`
+        ///
         /// Enlarges the      box    with    a   tolerance   value.
         /// (minvalues-Abs(<tol>) and maxvalues+Abs(<tol>))
         /// This means that the minimum values of its X, Y and Z
@@ -458,6 +476,8 @@ pub(crate) mod ffi {
         /// increased by the same amount.
         #[cxx_name = "Enlarge"]
         fn enlarge(self: Pin<&mut Box_>, Tol: f64);
+        /// **Source:** `Bnd_Box.hxx`:136 - `Bnd_Box::Get()`
+        ///
         /// Returns the bounds of this bounding box. The gap is included.
         /// If this bounding box is infinite (i.e. "open"), returned values
         /// may be equal to +/- Precision::Infinite().
@@ -473,117 +493,184 @@ pub(crate) mod ffi {
             theYmax: &mut f64,
             theZmax: &mut f64,
         );
+        /// **Source:** `Bnd_Box.hxx`:159 - `Bnd_Box::OpenXmin()`
+        ///
         /// The   Box will be   infinitely   long  in the Xmin
         /// direction.
         #[cxx_name = "OpenXmin"]
         fn open_xmin(self: Pin<&mut Box_>);
+        /// **Source:** `Bnd_Box.hxx`:163 - `Bnd_Box::OpenXmax()`
+        ///
         /// The   Box will be   infinitely   long  in the Xmax
         /// direction.
         #[cxx_name = "OpenXmax"]
         fn open_xmax(self: Pin<&mut Box_>);
+        /// **Source:** `Bnd_Box.hxx`:167 - `Bnd_Box::OpenYmin()`
+        ///
         /// The   Box will be   infinitely   long  in the Ymin
         /// direction.
         #[cxx_name = "OpenYmin"]
         fn open_ymin(self: Pin<&mut Box_>);
+        /// **Source:** `Bnd_Box.hxx`:171 - `Bnd_Box::OpenYmax()`
+        ///
         /// The   Box will be   infinitely   long  in the Ymax
         /// direction.
         #[cxx_name = "OpenYmax"]
         fn open_ymax(self: Pin<&mut Box_>);
+        /// **Source:** `Bnd_Box.hxx`:175 - `Bnd_Box::OpenZmin()`
+        ///
         /// The   Box will be   infinitely   long  in the Zmin
         /// direction.
         #[cxx_name = "OpenZmin"]
         fn open_zmin(self: Pin<&mut Box_>);
+        /// **Source:** `Bnd_Box.hxx`:179 - `Bnd_Box::OpenZmax()`
+        ///
         /// The   Box will be   infinitely   long  in the Zmax
         /// direction.
         #[cxx_name = "OpenZmax"]
         fn open_zmax(self: Pin<&mut Box_>);
+        /// **Source:** `Bnd_Box.hxx`:182 - `Bnd_Box::IsOpen()`
+        ///
         /// Returns true if this bounding box has at least one open direction.
         #[cxx_name = "IsOpen"]
         fn is_open(self: &Box_) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:185 - `Bnd_Box::IsOpenXmin()`
+        ///
         /// Returns true if this bounding box is open in the  Xmin direction.
         #[cxx_name = "IsOpenXmin"]
         fn is_open_xmin(self: &Box_) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:188 - `Bnd_Box::IsOpenXmax()`
+        ///
         /// Returns true if this bounding box is open in the  Xmax direction.
         #[cxx_name = "IsOpenXmax"]
         fn is_open_xmax(self: &Box_) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:191 - `Bnd_Box::IsOpenYmin()`
+        ///
         /// Returns true if this bounding box is open in the  Ymix direction.
         #[cxx_name = "IsOpenYmin"]
         fn is_open_ymin(self: &Box_) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:194 - `Bnd_Box::IsOpenYmax()`
+        ///
         /// Returns true if this bounding box is open in the  Ymax direction.
         #[cxx_name = "IsOpenYmax"]
         fn is_open_ymax(self: &Box_) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:197 - `Bnd_Box::IsOpenZmin()`
+        ///
         /// Returns true if this bounding box is open in the  Zmin direction.
         #[cxx_name = "IsOpenZmin"]
         fn is_open_zmin(self: &Box_) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:200 - `Bnd_Box::IsOpenZmax()`
+        ///
         /// Returns true if this bounding box is open in the  Zmax  direction.
         #[cxx_name = "IsOpenZmax"]
         fn is_open_zmax(self: &Box_) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:203 - `Bnd_Box::IsWhole()`
+        ///
         /// Returns true if this bounding box is infinite in all 6 directions (WholeSpace flag).
         #[cxx_name = "IsWhole"]
         fn is_whole(self: &Box_) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:206 - `Bnd_Box::IsVoid()`
+        ///
         /// Returns true if this bounding box is empty (Void flag).
         #[cxx_name = "IsVoid"]
         fn is_void(self: &Box_) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:209 - `Bnd_Box::IsXThin()`
+        ///
         /// true if xmax-xmin < tol.
         #[cxx_name = "IsXThin"]
         fn is_x_thin(self: &Box_, tol: f64) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:212 - `Bnd_Box::IsYThin()`
+        ///
         /// true if ymax-ymin < tol.
         #[cxx_name = "IsYThin"]
         fn is_y_thin(self: &Box_, tol: f64) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:215 - `Bnd_Box::IsZThin()`
+        ///
         /// true if zmax-zmin < tol.
         #[cxx_name = "IsZThin"]
         fn is_z_thin(self: &Box_, tol: f64) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:219 - `Bnd_Box::IsThin()`
+        ///
         /// Returns true if IsXThin, IsYThin and IsZThin are all true,
         /// i.e. if the box is thin in all three dimensions.
         #[cxx_name = "IsThin"]
         fn is_thin(self: &Box_, tol: f64) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:230 - `Bnd_Box::Add()`
+        ///
         /// Adds the box <Other> to <me>.
         #[cxx_name = "Add"]
         fn add_box(self: Pin<&mut Box_>, Other: &Box_);
+        /// **Source:** `Bnd_Box.hxx`:233 - `Bnd_Box::Add()`
+        ///
         /// Adds a Pnt to the box.
         #[cxx_name = "Add"]
         fn add_pnt(self: Pin<&mut Box_>, P: &gp_Pnt);
+        /// **Source:** `Bnd_Box.hxx`:236 - `Bnd_Box::Add()`
+        ///
         /// Extends  <me> from the Pnt <P> in the direction <D>.
         #[cxx_name = "Add"]
         fn add_pnt_dir(self: Pin<&mut Box_>, P: &gp_Pnt, D: &gp_Dir);
+        /// **Source:** `Bnd_Box.hxx`:241 - `Bnd_Box::Add()`
+        ///
         /// Extends the Box  in the given Direction, i.e. adds
         /// an  half-line. The   box  may become   infinite in
         /// 1,2 or 3 directions.
         #[cxx_name = "Add"]
         fn add_dir(self: Pin<&mut Box_>, D: &gp_Dir);
+        /// **Source:** `Bnd_Box.hxx`:244 - `Bnd_Box::IsOut()`
+        ///
         /// Returns True if the Pnt is out the box.
         #[cxx_name = "IsOut"]
         fn is_out_pnt(self: &Box_, P: &gp_Pnt) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:247 - `Bnd_Box::IsOut()`
+        ///
         /// Returns False if the line intersects the box.
         #[cxx_name = "IsOut"]
         fn is_out_lin(self: &Box_, L: &gp_Lin) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:250 - `Bnd_Box::IsOut()`
+        ///
         /// Returns False if the plane intersects the box.
         #[cxx_name = "IsOut"]
         fn is_out_pln(self: &Box_, P: &gp_Pln) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:253 - `Bnd_Box::IsOut()`
+        ///
         /// Returns False if the <Box> intersects or is inside <me>.
         #[cxx_name = "IsOut"]
         fn is_out_box(self: &Box_, Other: &Box_) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:257 - `Bnd_Box::IsOut()`
+        ///
         /// Returns False if  the transformed <Box> intersects
         /// or  is inside <me>.
         #[cxx_name = "IsOut"]
         fn is_out_box_trsf(self: &Box_, Other: &Box_, T: &gp_Trsf) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:261 - `Bnd_Box::IsOut()`
+        ///
         /// Returns False  if the transformed <Box> intersects
         /// or  is inside the transformed box <me>.
         #[cxx_name = "IsOut"]
         fn is_out_trsf_box_trsf(self: &Box_, T1: &gp_Trsf, Other: &Box_, T2: &gp_Trsf) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:268 - `Bnd_Box::IsOut()`
+        ///
         /// Returns False  if the flat band lying between two parallel
         /// lines represented by their reference points <P1>, <P2> and
         /// direction <D> intersects the box.
         #[cxx_name = "IsOut"]
         fn is_out_pnt2_dir(self: &Box_, P1: &gp_Pnt, P2: &gp_Pnt, D: &gp_Dir) -> bool;
+        /// **Source:** `Bnd_Box.hxx`:271 - `Bnd_Box::Distance()`
+        ///
         /// Computes the minimum distance between two boxes.
         #[cxx_name = "Distance"]
         fn distance(self: &Box_, Other: &Box_) -> f64;
+        /// **Source:** `Bnd_Box.hxx`:273 - `Bnd_Box::Dump()`
         #[cxx_name = "Dump"]
         fn dump(self: &Box_);
+        /// **Source:** `Bnd_Box.hxx`:276 - `Bnd_Box::SquareExtent()`
+        ///
         /// Computes the squared diagonal of me.
         #[cxx_name = "SquareExtent"]
         fn square_extent(self: &Box_) -> f64;
+        /// **Source:** `Bnd_Box.hxx`:307 - `Bnd_Box::HasFinitePart()`
+        ///
         /// Returns TRUE if this box has finite part.
         #[cxx_name = "HasFinitePart"]
         fn has_finite_part(self: &Box_) -> bool;
@@ -619,7 +706,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Box__to_owned(self_: &Box_) -> UniquePtr<Box_>;
         /// ======================== Bnd_OBB ========================
-        /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB`
+        /// **Source:** `Bnd_OBB.hxx`:38 - `Bnd_OBB`
         ///
         /// The class describes the Oriented Bounding Box (OBB),
         /// much tighter enclosing volume for the shape than the
@@ -630,12 +717,12 @@ pub(crate) mod ffi {
         /// for non-interfering objects.
         #[cxx_name = "Bnd_OBB"]
         type OBB;
-        /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`
+        /// **Source:** `Bnd_OBB.hxx`:44 - `Bnd_OBB::Bnd_OBB()`
         ///
         /// Empty constructor
         #[cxx_name = "Bnd_OBB_ctor"]
         fn OBB_ctor() -> UniquePtr<OBB>;
-        /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`
+        /// **Source:** `Bnd_OBB.hxx`:51 - `Bnd_OBB::Bnd_OBB()`
         ///
         /// Constructor taking all defining parameters
         #[cxx_name = "Bnd_OBB_ctor_pnt_dir3_real3"]
@@ -648,75 +735,119 @@ pub(crate) mod ffi {
             theHYSize: f64,
             theHZSize: f64,
         ) -> UniquePtr<OBB>;
-        /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`
+        /// **Source:** `Bnd_OBB.hxx`:75 - `Bnd_OBB::Bnd_OBB()`
         ///
         /// Constructor to create OBB from AABB.
         #[cxx_name = "Bnd_OBB_ctor_box"]
         fn OBB_ctor_box(theBox: &Box_) -> UniquePtr<OBB>;
+        /// **Source:** `Bnd_OBB.hxx`:112 - `Bnd_OBB::SetCenter()`
+        ///
         /// Sets the center of OBB
         #[cxx_name = "SetCenter"]
         fn set_center(self: Pin<&mut OBB>, theCenter: &gp_Pnt);
+        /// **Source:** `Bnd_OBB.hxx`:115 - `Bnd_OBB::SetXComponent()`
+        ///
         /// Sets the X component of OBB - direction and size
         #[cxx_name = "SetXComponent"]
         fn set_x_component(self: Pin<&mut OBB>, theXDirection: &gp_Dir, theHXSize: f64);
+        /// **Source:** `Bnd_OBB.hxx`:124 - `Bnd_OBB::SetYComponent()`
+        ///
         /// Sets the Y component of OBB - direction and size
         #[cxx_name = "SetYComponent"]
         fn set_y_component(self: Pin<&mut OBB>, theYDirection: &gp_Dir, theHYSize: f64);
+        /// **Source:** `Bnd_OBB.hxx`:133 - `Bnd_OBB::SetZComponent()`
+        ///
         /// Sets the Z component of OBB - direction and size
         #[cxx_name = "SetZComponent"]
         fn set_z_component(self: Pin<&mut OBB>, theZDirection: &gp_Dir, theHZSize: f64);
+        /// **Source:** `Bnd_OBB.hxx`:151 - `Bnd_OBB::Center()`
+        ///
         /// Returns the center of OBB
         #[cxx_name = "Center"]
         fn center(self: &OBB) -> &gp_XYZ;
+        /// **Source:** `Bnd_OBB.hxx`:154 - `Bnd_OBB::XDirection()`
+        ///
         /// Returns the X Direction of OBB
         #[cxx_name = "XDirection"]
         fn x_direction(self: &OBB) -> &gp_XYZ;
+        /// **Source:** `Bnd_OBB.hxx`:157 - `Bnd_OBB::YDirection()`
+        ///
         /// Returns the Y Direction of OBB
         #[cxx_name = "YDirection"]
         fn y_direction(self: &OBB) -> &gp_XYZ;
+        /// **Source:** `Bnd_OBB.hxx`:160 - `Bnd_OBB::ZDirection()`
+        ///
         /// Returns the Z Direction of OBB
         #[cxx_name = "ZDirection"]
         fn z_direction(self: &OBB) -> &gp_XYZ;
+        /// **Source:** `Bnd_OBB.hxx`:163 - `Bnd_OBB::XHSize()`
+        ///
         /// Returns the X Dimension of OBB
         #[cxx_name = "XHSize"]
         fn xh_size(self: &OBB) -> f64;
+        /// **Source:** `Bnd_OBB.hxx`:166 - `Bnd_OBB::YHSize()`
+        ///
         /// Returns the Y Dimension of OBB
         #[cxx_name = "YHSize"]
         fn yh_size(self: &OBB) -> f64;
+        /// **Source:** `Bnd_OBB.hxx`:169 - `Bnd_OBB::ZHSize()`
+        ///
         /// Returns the Z Dimension of OBB
         #[cxx_name = "ZHSize"]
         fn zh_size(self: &OBB) -> f64;
+        /// **Source:** `Bnd_OBB.hxx`:172 - `Bnd_OBB::IsVoid()`
+        ///
         /// Checks if the box is empty.
         #[cxx_name = "IsVoid"]
         fn is_void(self: &OBB) -> bool;
+        /// **Source:** `Bnd_OBB.hxx`:178 - `Bnd_OBB::SetVoid()`
+        ///
         /// Clears this box
         #[cxx_name = "SetVoid"]
         fn set_void(self: Pin<&mut OBB>);
+        /// **Source:** `Bnd_OBB.hxx`:186 - `Bnd_OBB::SetAABox()`
+        ///
         /// Sets the flag for axes aligned box
         #[cxx_name = "SetAABox"]
         fn set_aa_box(self: Pin<&mut OBB>, theFlag: &bool);
+        /// **Source:** `Bnd_OBB.hxx`:189 - `Bnd_OBB::IsAABox()`
+        ///
         /// Returns TRUE if the box is axes aligned
         #[cxx_name = "IsAABox"]
         fn is_aa_box(self: &OBB) -> bool;
+        /// **Source:** `Bnd_OBB.hxx`:192 - `Bnd_OBB::Enlarge()`
+        ///
         /// Enlarges the box with the given value
         #[cxx_name = "Enlarge"]
         fn enlarge(self: Pin<&mut OBB>, theGapAdd: f64);
+        /// **Source:** `Bnd_OBB.hxx`:237 - `Bnd_OBB::SquareExtent()`
+        ///
         /// Returns square diagonal of this box
         #[cxx_name = "SquareExtent"]
         fn square_extent(self: &OBB) -> f64;
+        /// **Source:** `Bnd_OBB.hxx`:243 - `Bnd_OBB::IsOut()`
+        ///
         /// Check if the box do not interfere the other box.
         #[cxx_name = "IsOut"]
         fn is_out_obb(self: &OBB, theOther: &OBB) -> bool;
+        /// **Source:** `Bnd_OBB.hxx`:246 - `Bnd_OBB::IsOut()`
+        ///
         /// Check if the point is inside of <this>.
         #[cxx_name = "IsOut"]
         fn is_out_pnt(self: &OBB, theP: &gp_Pnt) -> bool;
+        /// **Source:** `Bnd_OBB.hxx`:249 - `Bnd_OBB::IsCompletelyInside()`
+        ///
         /// Check if the theOther is completely inside *this.
         #[cxx_name = "IsCompletelyInside"]
         fn is_completely_inside(self: &OBB, theOther: &OBB) -> bool;
+        /// **Source:** `Bnd_OBB.hxx`:253 - `Bnd_OBB::Add()`
+        ///
         /// Rebuilds this in order to include all previous objects
         /// (which it was created from) and theOther.
         #[cxx_name = "Add"]
         fn add_obb(self: Pin<&mut OBB>, theOther: &OBB);
+        /// **Source:** `Bnd_OBB.hxx`:257 - `Bnd_OBB::Add()`
+        ///
         /// Rebuilds this in order to include all previous objects
         /// (which it was created from) and theP.
         #[cxx_name = "Add"]
@@ -734,23 +865,23 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn OBB_to_owned(self_: &OBB) -> UniquePtr<OBB>;
         /// ======================== Bnd_HArray1OfSphere ========================
-        /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere`
+        /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere`
         #[cxx_name = "Bnd_HArray1OfSphere"]
         type HArray1OfSphere;
-        /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
+        /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor"]
         fn HArray1OfSphere_ctor() -> UniquePtr<HArray1OfSphere>;
-        /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
+        /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor_int2"]
         fn HArray1OfSphere_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfSphere>;
-        /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
+        /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor_int2_sphere"]
         fn HArray1OfSphere_ctor_int2_sphere(
             theLower: i32,
             theUpper: i32,
             theValue: &Sphere,
         ) -> UniquePtr<HArray1OfSphere>;
-        /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
+        /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor_sphere_int2_bool"]
         fn HArray1OfSphere_ctor_sphere_int2_bool(
             theBegin: &Sphere,
@@ -758,17 +889,21 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfSphere>;
-        /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
+        /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor_array1ofsphere"]
         fn HArray1OfSphere_ctor_array1ofsphere(
             theOther: &Bnd_Array1OfSphere,
         ) -> UniquePtr<HArray1OfSphere>;
+        /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::Array1()`
         #[cxx_name = "Array1"]
         fn array1(self: &HArray1OfSphere) -> &Bnd_Array1OfSphere;
+        /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::ChangeArray1()`
         #[cxx_name = "ChangeArray1"]
         fn change_array1(self: Pin<&mut HArray1OfSphere>) -> Pin<&mut Bnd_Array1OfSphere>;
+        /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &HArray1OfSphere) -> &HandleStandardType;
+        /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::get_type_name()`
         #[cxx_name = "Bnd_HArray1OfSphere_get_type_name"]
         fn HArray1OfSphere_get_type_name() -> String;
         /// Clone Bnd_HArray1OfSphere into a new UniquePtr via copy constructor
@@ -780,18 +915,18 @@ pub(crate) mod ffi {
             obj: UniquePtr<HArray1OfSphere>,
         ) -> UniquePtr<HandleBndHArray1OfSphere>;
         /// ======================== Bnd_Sphere ========================
-        /// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere`
+        /// **Source:** `Bnd_Sphere.hxx`:29 - `Bnd_Sphere`
         ///
         /// This class represents a bounding sphere of a geometric entity
         /// (triangle, segment of line or whatever else).
         #[cxx_name = "Bnd_Sphere"]
         type Sphere;
-        /// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`
+        /// **Source:** `Bnd_Sphere.hxx`:35 - `Bnd_Sphere::Bnd_Sphere()`
         ///
         /// Empty constructor
         #[cxx_name = "Bnd_Sphere_ctor"]
         fn Sphere_ctor() -> UniquePtr<Sphere>;
-        /// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`
+        /// **Source:** `Bnd_Sphere.hxx`:38 - `Bnd_Sphere::Bnd_Sphere()`
         ///
         /// Constructor of a definite sphere
         #[cxx_name = "Bnd_Sphere_ctor_xyz_real_int2"]
@@ -801,34 +936,51 @@ pub(crate) mod ffi {
             theU: i32,
             theV: i32,
         ) -> UniquePtr<Sphere>;
+        /// **Source:** `Bnd_Sphere.hxx`:44 - `Bnd_Sphere::U()`
+        ///
         /// Returns the U parameter on shape
         #[cxx_name = "U"]
         fn u(self: &Sphere) -> i32;
+        /// **Source:** `Bnd_Sphere.hxx`:47 - `Bnd_Sphere::V()`
+        ///
         /// Returns the V parameter on shape
         #[cxx_name = "V"]
         fn v(self: &Sphere) -> i32;
+        /// **Source:** `Bnd_Sphere.hxx`:51 - `Bnd_Sphere::IsValid()`
+        ///
         /// Returns validity status, indicating that this
         /// sphere corresponds to a real entity
         #[cxx_name = "IsValid"]
         fn is_valid(self: &Sphere) -> bool;
+        /// **Source:** `Bnd_Sphere.hxx`:53 - `Bnd_Sphere::SetValid()`
         #[cxx_name = "SetValid"]
         fn set_valid(self: Pin<&mut Sphere>, isValid: bool);
+        /// **Source:** `Bnd_Sphere.hxx`:56 - `Bnd_Sphere::Center()`
+        ///
         /// Returns center of sphere object
         #[cxx_name = "Center"]
         fn center(self: &Sphere) -> &gp_XYZ;
+        /// **Source:** `Bnd_Sphere.hxx`:59 - `Bnd_Sphere::Radius()`
+        ///
         /// Returns the radius value
         #[cxx_name = "Radius"]
         fn radius(self: &Sphere) -> f64;
+        /// **Source:** `Bnd_Sphere.hxx`:64 - `Bnd_Sphere::Distances()`
+        ///
         /// Calculate and return minimal and maximal distance to sphere.
         /// NOTE: This function is tightly optimized; any modifications
         /// may affect performance!
         #[cxx_name = "Distances"]
         fn distances(self: &Sphere, theXYZ: &gp_XYZ, theMin: &mut f64, theMax: &mut f64);
+        /// **Source:** `Bnd_Sphere.hxx`:71 - `Bnd_Sphere::SquareDistances()`
+        ///
         /// Calculate and return minimal and maximal distance to sphere.
         /// NOTE: This function is tightly optimized; any modifications
         /// may affect performance!
         #[cxx_name = "SquareDistances"]
         fn square_distances(self: &Sphere, theXYZ: &gp_XYZ, theMin: &mut f64, theMax: &mut f64);
+        /// **Source:** `Bnd_Sphere.hxx`:77 - `Bnd_Sphere::Project()`
+        ///
         /// Projects a point on entity.
         /// Returns true if success
         #[cxx_name = "Project"]
@@ -839,23 +991,29 @@ pub(crate) mod ffi {
             theDist: &mut f64,
             theInside: &mut bool,
         ) -> bool;
+        /// **Source:** `Bnd_Sphere.hxx`:82 - `Bnd_Sphere::Distance()`
         #[cxx_name = "Distance"]
         fn distance(self: &Sphere, theNode: &gp_XYZ) -> f64;
+        /// **Source:** `Bnd_Sphere.hxx`:84 - `Bnd_Sphere::SquareDistance()`
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &Sphere, theNode: &gp_XYZ) -> f64;
+        /// **Source:** `Bnd_Sphere.hxx`:86 - `Bnd_Sphere::Add()`
         #[cxx_name = "Add"]
         fn add(self: Pin<&mut Sphere>, theOther: &Sphere);
+        /// **Source:** `Bnd_Sphere.hxx`:88 - `Bnd_Sphere::IsOut()`
         #[cxx_name = "IsOut"]
         fn is_out_sphere(self: &Sphere, theOther: &Sphere) -> bool;
+        /// **Source:** `Bnd_Sphere.hxx`:90 - `Bnd_Sphere::IsOut()`
         #[cxx_name = "IsOut"]
         fn is_out_xyz_real(self: &Sphere, thePnt: &gp_XYZ, theMaxDist: &mut f64) -> bool;
+        /// **Source:** `Bnd_Sphere.hxx`:92 - `Bnd_Sphere::SquareExtent()`
         #[cxx_name = "SquareExtent"]
         fn square_extent(self: &Sphere) -> f64;
         /// Clone Bnd_Sphere into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Sphere_to_owned(self_: &Sphere) -> UniquePtr<Sphere>;
         /// ======================== Bnd_Box2d ========================
-        /// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d`
+        /// **Source:** `Bnd_Box2d.hxx`:51 - `Bnd_Box2d`
         ///
         /// Describes a bounding box in 2D space.
         /// A bounding box is parallel to the axes of the coordinates
@@ -878,24 +1036,32 @@ pub(crate) mod ffi {
         /// the box.
         #[cxx_name = "Bnd_Box2d"]
         type Box2d;
-        /// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d::Bnd_Box2d()`
+        /// **Source:** `Bnd_Box2d.hxx`:58 - `Bnd_Box2d::Bnd_Box2d()`
         ///
         /// Creates an empty 2D bounding box.
         /// The constructed box is qualified Void. Its gap is null.
         #[cxx_name = "Bnd_Box2d_ctor"]
         fn Box2d_ctor() -> UniquePtr<Box2d>;
+        /// **Source:** `Bnd_Box2d.hxx`:70 - `Bnd_Box2d::SetWhole()`
+        ///
         /// Sets this bounding box so that it covers the whole 2D
         /// space, i.e. it is infinite in all directions.
         #[cxx_name = "SetWhole"]
         fn set_whole(self: Pin<&mut Box2d>);
+        /// **Source:** `Bnd_Box2d.hxx`:73 - `Bnd_Box2d::SetVoid()`
+        ///
         /// Sets this 2D bounding box so that it is empty. All points are outside a void box.
         #[cxx_name = "SetVoid"]
         fn set_void(self: Pin<&mut Box2d>);
+        /// **Source:** `Bnd_Box2d.hxx`:82 - `Bnd_Box2d::Set()`
+        ///
         /// Sets this 2D bounding box so that it bounds
         /// the point P. This involves first setting this bounding box
         /// to be void and then adding the point PThe rectangle bounds   the  point <P>.
         #[cxx_name = "Set"]
         fn set_pnt2d(self: Pin<&mut Box2d>, thePnt: &gp_Pnt2d);
+        /// **Source:** `Bnd_Box2d.hxx`:94 - `Bnd_Box2d::Set()`
+        ///
         /// Sets this 2D bounding box so that it bounds
         /// the half-line defined by point P and direction D, i.e. all
         /// points M defined by M=P+u*D, where u is greater than
@@ -903,21 +1069,31 @@ pub(crate) mod ffi {
         /// first setting this 2D box to be void and then adding the   half-line.
         #[cxx_name = "Set"]
         fn set_pnt2d_dir2d(self: Pin<&mut Box2d>, thePnt: &gp_Pnt2d, theDir: &gp_Dir2d);
+        /// **Source:** `Bnd_Box2d.hxx`:105 - `Bnd_Box2d::Update()`
+        ///
         /// Enlarges this 2D bounding box, if required, so that it
         /// contains at least:
         /// -   interval [ aXmin,aXmax ] in the "X Direction",
         /// -   interval [ aYmin,aYmax ] in the "Y Direction"
         #[cxx_name = "Update"]
         fn update_real4(self: Pin<&mut Box2d>, aXmin: f64, aYmin: f64, aXmax: f64, aYmax: f64);
+        /// **Source:** `Bnd_Box2d.hxx`:111 - `Bnd_Box2d::Update()`
+        ///
         /// Adds a point of coordinates (X,Y) to this bounding box.
         #[cxx_name = "Update"]
         fn update_real2(self: Pin<&mut Box2d>, X: f64, Y: f64);
+        /// **Source:** `Bnd_Box2d.hxx`:114 - `Bnd_Box2d::GetGap()`
+        ///
         /// Returns the gap of this 2D bounding box.
         #[cxx_name = "GetGap"]
         fn get_gap(self: &Box2d) -> f64;
+        /// **Source:** `Bnd_Box2d.hxx`:117 - `Bnd_Box2d::SetGap()`
+        ///
         /// Set the gap of this 2D bounding box to abs(Tol).
         #[cxx_name = "SetGap"]
         fn set_gap(self: Pin<&mut Box2d>, Tol: f64);
+        /// **Source:** `Bnd_Box2d.hxx`:124 - `Bnd_Box2d::Enlarge()`
+        ///
         /// Enlarges     the  box  with    a  tolerance  value.
         /// This means that the minimum values of its X and Y
         /// intervals of definition, when they are finite, are reduced by
@@ -925,72 +1101,114 @@ pub(crate) mod ffi {
         /// increased by the same amount.
         #[cxx_name = "Enlarge"]
         fn enlarge(self: Pin<&mut Box2d>, theTol: f64);
+        /// **Source:** `Bnd_Box2d.hxx`:135 - `Bnd_Box2d::Get()`
+        ///
         /// Returns the bounds of this 2D bounding box.
         /// The gap is included. If this bounding box is infinite (i.e. "open"), returned values
         /// may be equal to +/- Precision::Infinite().
         /// if IsVoid()
         #[cxx_name = "Get"]
         fn get(self: &Box2d, aXmin: &mut f64, aYmin: &mut f64, aXmax: &mut f64, aYmax: &mut f64);
+        /// **Source:** `Bnd_Box2d.hxx`:141 - `Bnd_Box2d::OpenXmin()`
+        ///
         /// The Box will be infinitely long in the Xmin direction.
         #[cxx_name = "OpenXmin"]
         fn open_xmin(self: Pin<&mut Box2d>);
+        /// **Source:** `Bnd_Box2d.hxx`:144 - `Bnd_Box2d::OpenXmax()`
+        ///
         /// The Box will be infinitely long in the Xmax direction.
         #[cxx_name = "OpenXmax"]
         fn open_xmax(self: Pin<&mut Box2d>);
+        /// **Source:** `Bnd_Box2d.hxx`:147 - `Bnd_Box2d::OpenYmin()`
+        ///
         /// The Box will be infinitely long in the Ymin direction.
         #[cxx_name = "OpenYmin"]
         fn open_ymin(self: Pin<&mut Box2d>);
+        /// **Source:** `Bnd_Box2d.hxx`:150 - `Bnd_Box2d::OpenYmax()`
+        ///
         /// The Box will be infinitely long in the Ymax direction.
         #[cxx_name = "OpenYmax"]
         fn open_ymax(self: Pin<&mut Box2d>);
+        /// **Source:** `Bnd_Box2d.hxx`:153 - `Bnd_Box2d::IsOpenXmin()`
+        ///
         /// Returns true if this bounding box is open in the Xmin direction.
         #[cxx_name = "IsOpenXmin"]
         fn is_open_xmin(self: &Box2d) -> bool;
+        /// **Source:** `Bnd_Box2d.hxx`:156 - `Bnd_Box2d::IsOpenXmax()`
+        ///
         /// Returns true if this bounding box is open in the Xmax direction.
         #[cxx_name = "IsOpenXmax"]
         fn is_open_xmax(self: &Box2d) -> bool;
+        /// **Source:** `Bnd_Box2d.hxx`:159 - `Bnd_Box2d::IsOpenYmin()`
+        ///
         /// Returns true if this bounding box is open in the Ymin direction.
         #[cxx_name = "IsOpenYmin"]
         fn is_open_ymin(self: &Box2d) -> bool;
+        /// **Source:** `Bnd_Box2d.hxx`:162 - `Bnd_Box2d::IsOpenYmax()`
+        ///
         /// Returns true if this bounding box is open in the Ymax direction.
         #[cxx_name = "IsOpenYmax"]
         fn is_open_ymax(self: &Box2d) -> bool;
+        /// **Source:** `Bnd_Box2d.hxx`:166 - `Bnd_Box2d::IsWhole()`
+        ///
         /// Returns true if this bounding box is infinite in all 4
         /// directions (Whole Space flag).
         #[cxx_name = "IsWhole"]
         fn is_whole(self: &Box2d) -> bool;
+        /// **Source:** `Bnd_Box2d.hxx`:169 - `Bnd_Box2d::IsVoid()`
+        ///
         /// Returns true if this 2D bounding box is empty (Void flag).
         #[cxx_name = "IsVoid"]
         fn is_void(self: &Box2d) -> bool;
+        /// **Source:** `Bnd_Box2d.hxx`:180 - `Bnd_Box2d::Add()`
+        ///
         /// Adds the 2d box <Other> to <me>.
         #[cxx_name = "Add"]
         fn add_box2d(self: Pin<&mut Box2d>, Other: &Box2d);
+        /// **Source:** `Bnd_Box2d.hxx`:183 - `Bnd_Box2d::Add()`
+        ///
         /// Adds the 2d point.
         #[cxx_name = "Add"]
         fn add_pnt2d(self: Pin<&mut Box2d>, thePnt: &gp_Pnt2d);
+        /// **Source:** `Bnd_Box2d.hxx`:186 - `Bnd_Box2d::Add()`
+        ///
         /// Extends bounding box from thePnt in the direction theDir.
         #[cxx_name = "Add"]
         fn add_pnt2d_dir2d(self: Pin<&mut Box2d>, thePnt: &gp_Pnt2d, theDir: &gp_Dir2d);
+        /// **Source:** `Bnd_Box2d.hxx`:195 - `Bnd_Box2d::Add()`
+        ///
         /// Extends the Box  in the given Direction, i.e. adds
         /// a half-line. The box may become infinite in 1 or 2
         /// directions.
         #[cxx_name = "Add"]
         fn add_dir2d(self: Pin<&mut Box2d>, D: &gp_Dir2d);
+        /// **Source:** `Bnd_Box2d.hxx`:198 - `Bnd_Box2d::IsOut()`
+        ///
         /// Returns True if the 2d pnt <P> is out <me>.
         #[cxx_name = "IsOut"]
         fn is_out_pnt2d(self: &Box2d, P: &gp_Pnt2d) -> bool;
+        /// **Source:** `Bnd_Box2d.hxx`:201 - `Bnd_Box2d::IsOut()`
+        ///
         /// Returns True if the line doesn't intersect the box.
         #[cxx_name = "IsOut"]
         fn is_out_lin2d(self: &Box2d, theL: &gp_Lin2d) -> bool;
+        /// **Source:** `Bnd_Box2d.hxx`:204 - `Bnd_Box2d::IsOut()`
+        ///
         /// Returns True if the segment doesn't intersect the box.
         #[cxx_name = "IsOut"]
         fn is_out_pnt2d2(self: &Box2d, theP0: &gp_Pnt2d, theP1: &gp_Pnt2d) -> bool;
+        /// **Source:** `Bnd_Box2d.hxx`:207 - `Bnd_Box2d::IsOut()`
+        ///
         /// Returns True if <Box2d> is out <me>.
         #[cxx_name = "IsOut"]
         fn is_out_box2d(self: &Box2d, Other: &Box2d) -> bool;
+        /// **Source:** `Bnd_Box2d.hxx`:210 - `Bnd_Box2d::IsOut()`
+        ///
         /// Returns True if transformed <Box2d> is out <me>.
         #[cxx_name = "IsOut"]
         fn is_out_box2d_trsf2d(self: &Box2d, theOther: &Box2d, theTrsf: &gp_Trsf2d) -> bool;
+        /// **Source:** `Bnd_Box2d.hxx`:218 - `Bnd_Box2d::IsOut()`
+        ///
         /// Compares  a transformed  bounding with  a    transformed
         /// bounding. The default implementation is  to make a copy
         /// of <me> and <Other>, to transform them and to test.
@@ -1001,8 +1219,11 @@ pub(crate) mod ffi {
             Other: &Box2d,
             T2: &gp_Trsf2d,
         ) -> bool;
+        /// **Source:** `Bnd_Box2d.hxx`:223 - `Bnd_Box2d::Dump()`
         #[cxx_name = "Dump"]
         fn dump(self: &Box2d);
+        /// **Source:** `Bnd_Box2d.hxx`:226 - `Bnd_Box2d::SquareExtent()`
+        ///
         /// Computes the squared diagonal of me.
         #[cxx_name = "SquareExtent"]
         fn square_extent(self: &Box2d) -> f64;
@@ -1018,50 +1239,70 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Box2d_to_owned(self_: &Box2d) -> UniquePtr<Box2d>;
         /// ======================== Bnd_B2d ========================
-        /// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d`
+        /// **Source:** `Bnd_B2d.hxx`:32 - `Bnd_B2d`
         #[cxx_name = "Bnd_B2d"]
         type B2d;
-        /// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d::Bnd_B2d()`
+        /// **Source:** `Bnd_B2d.hxx`:38 - `Bnd_B2d::Bnd_B2d()`
         ///
         /// Empty constructor.
         #[cxx_name = "Bnd_B2d_ctor"]
         fn B2d_ctor() -> UniquePtr<B2d>;
-        /// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d::Bnd_B2d()`
+        /// **Source:** `Bnd_B2d.hxx`:41 - `Bnd_B2d::Bnd_B2d()`
         ///
         /// Constructor.
         #[cxx_name = "Bnd_B2d_ctor_xy2"]
         fn B2d_ctor_xy2(theCenter: &gp_XY, theHSize: &gp_XY) -> UniquePtr<B2d>;
+        /// **Source:** `Bnd_B2d.hxx`:44 - `Bnd_B2d::IsVoid()`
+        ///
         /// Returns True if the box is void (non-initialized).
         #[cxx_name = "IsVoid"]
         fn is_void(self: &B2d) -> bool;
+        /// **Source:** `Bnd_B2d.hxx`:47 - `Bnd_B2d::Clear()`
+        ///
         /// Reset the box data.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut B2d>);
+        /// **Source:** `Bnd_B2d.hxx`:50 - `Bnd_B2d::Add()`
+        ///
         /// Update the box by a point.
         #[cxx_name = "Add"]
         fn add_xy(self: Pin<&mut B2d>, thePnt: &gp_XY);
+        /// **Source:** `Bnd_B2d.hxx`:53 - `Bnd_B2d::Add()`
+        ///
         /// Update the box by a point.
         #[cxx_name = "Add"]
         fn add_pnt2d(self: Pin<&mut B2d>, thePnt: &gp_Pnt2d);
+        /// **Source:** `Bnd_B2d.hxx`:56 - `Bnd_B2d::Add()`
+        ///
         /// Update the box by another box.
         #[cxx_name = "Add"]
         fn add_b2d(self: Pin<&mut B2d>, theBox: &B2d);
+        /// **Source:** `Bnd_B2d.hxx`:70 - `Bnd_B2d::SquareExtent()`
+        ///
         /// Query the square diagonal. If the box is VOID (see method IsVoid())
         /// then a very big real value is returned.
         #[cxx_name = "SquareExtent"]
         fn square_extent(self: &B2d) -> f64;
+        /// **Source:** `Bnd_B2d.hxx`:73 - `Bnd_B2d::Enlarge()`
+        ///
         /// Extend the Box by the absolute value of theDiff.
         #[cxx_name = "Enlarge"]
         fn enlarge(self: Pin<&mut B2d>, theDiff: f64);
+        /// **Source:** `Bnd_B2d.hxx`:78 - `Bnd_B2d::Limit()`
+        ///
         /// Limit the Box by the internals of theOtherBox.
         /// Returns True if the limitation takes place, otherwise False
         /// indicating that the boxes do not intersect.
         #[cxx_name = "Limit"]
         fn limit(self: Pin<&mut B2d>, theOtherBox: &B2d) -> bool;
+        /// **Source:** `Bnd_B2d.hxx`:86 - `Bnd_B2d::IsOut()`
+        ///
         /// Check the given point for the inclusion in the Box.
         /// Returns True if the point is outside.
         #[cxx_name = "IsOut"]
         fn is_out_xy(self: &B2d, thePnt: &gp_XY) -> bool;
+        /// **Source:** `Bnd_B2d.hxx`:91 - `Bnd_B2d::IsOut()`
+        ///
         /// Check a circle for the intersection with the current box.
         /// Returns True if there is no intersection between boxes.
         #[cxx_name = "IsOut"]
@@ -1071,36 +1312,52 @@ pub(crate) mod ffi {
             theRadius: f64,
             isCircleHollow: bool,
         ) -> bool;
+        /// **Source:** `Bnd_B2d.hxx`:97 - `Bnd_B2d::IsOut()`
+        ///
         /// Check the given box for the intersection with the current box.
         /// Returns True if there is no intersection between boxes.
         #[cxx_name = "IsOut"]
         fn is_out_b2d(self: &B2d, theOtherBox: &B2d) -> bool;
+        /// **Source:** `Bnd_B2d.hxx`:102 - `Bnd_B2d::IsOut()`
+        ///
         /// Check the given box oriented by the given transformation
         /// for the intersection with the current box.
         /// Returns True if there is no intersection between boxes.
         #[cxx_name = "IsOut"]
         fn is_out_b2d_trsf2d(self: &B2d, theOtherBox: &B2d, theTrsf: &gp_Trsf2d) -> bool;
+        /// **Source:** `Bnd_B2d.hxx`:107 - `Bnd_B2d::IsOut()`
+        ///
         /// Check the given Line for the intersection with the current box.
         /// Returns True if there is no intersection.
         #[cxx_name = "IsOut"]
         fn is_out_ax2d(self: &B2d, theLine: &gp_Ax2d) -> bool;
+        /// **Source:** `Bnd_B2d.hxx`:112 - `Bnd_B2d::IsOut()`
+        ///
         /// Check the Segment defined by the couple of input points
         /// for the intersection with the current box.
         /// Returns True if there is no intersection.
         #[cxx_name = "IsOut"]
         fn is_out_xy2(self: &B2d, theP0: &gp_XY, theP1: &gp_XY) -> bool;
+        /// **Source:** `Bnd_B2d.hxx`:116 - `Bnd_B2d::IsIn()`
+        ///
         /// Check that the box 'this' is inside the given box 'theBox'. Returns
         /// True if 'this' box is fully inside 'theBox'.
         #[cxx_name = "IsIn"]
         fn is_in_b2d(self: &B2d, theBox: &B2d) -> bool;
+        /// **Source:** `Bnd_B2d.hxx`:121 - `Bnd_B2d::IsIn()`
+        ///
         /// Check that the box 'this' is inside the given box 'theBox'
         /// transformed by 'theTrsf'. Returns True if 'this' box is fully
         /// inside the transformed 'theBox'.
         #[cxx_name = "IsIn"]
         fn is_in_b2d_trsf2d(self: &B2d, theBox: &B2d, theTrsf: &gp_Trsf2d) -> bool;
+        /// **Source:** `Bnd_B2d.hxx`:124 - `Bnd_B2d::SetCenter()`
+        ///
         /// Set the Center coordinates
         #[cxx_name = "SetCenter"]
         fn set_center(self: Pin<&mut B2d>, theCenter: &gp_XY);
+        /// **Source:** `Bnd_B2d.hxx`:128 - `Bnd_B2d::SetHSize()`
+        ///
         /// Set the HSize (half-diagonal) coordinates.
         /// All components of theHSize must be non-negative.
         #[cxx_name = "SetHSize"]
@@ -1123,23 +1380,23 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn B2d_to_owned(self_: &B2d) -> UniquePtr<B2d>;
         /// ======================== Bnd_HArray1OfBox ========================
-        /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox`
+        /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox`
         #[cxx_name = "Bnd_HArray1OfBox"]
         type HArray1OfBox;
-        /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
+        /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor"]
         fn HArray1OfBox_ctor() -> UniquePtr<HArray1OfBox>;
-        /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
+        /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor_int2"]
         fn HArray1OfBox_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfBox>;
-        /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
+        /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor_int2_box"]
         fn HArray1OfBox_ctor_int2_box(
             theLower: i32,
             theUpper: i32,
             theValue: &Box_,
         ) -> UniquePtr<HArray1OfBox>;
-        /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
+        /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor_box_int2_bool"]
         fn HArray1OfBox_ctor_box_int2_bool(
             theBegin: &Box_,
@@ -1147,15 +1404,19 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfBox>;
-        /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
+        /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor_array1ofbox"]
         fn HArray1OfBox_ctor_array1ofbox(theOther: &Bnd_Array1OfBox) -> UniquePtr<HArray1OfBox>;
+        /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Array1()`
         #[cxx_name = "Array1"]
         fn array1(self: &HArray1OfBox) -> &Bnd_Array1OfBox;
+        /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::ChangeArray1()`
         #[cxx_name = "ChangeArray1"]
         fn change_array1(self: Pin<&mut HArray1OfBox>) -> Pin<&mut Bnd_Array1OfBox>;
+        /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &HArray1OfBox) -> &HandleStandardType;
+        /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::get_type_name()`
         #[cxx_name = "Bnd_HArray1OfBox_get_type_name"]
         fn HArray1OfBox_get_type_name() -> String;
         /// Clone Bnd_HArray1OfBox into a new UniquePtr via copy constructor

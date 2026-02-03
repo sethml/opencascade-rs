@@ -54,24 +54,32 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== IMeshData_Model ========================
-        /// **Source:** `IMeshData_Model.hxx` - `IMeshData_Model`
+        /// **Source:** `IMeshData_Model.hxx`:28 - `IMeshData_Model`
         ///
         /// Interface class representing discrete model of a shape.
         #[cxx_name = "IMeshData_Model"]
         type Model;
+        /// **Source:** `IMeshData_Model.hxx`:35 - `IMeshData_Model::GetMaxSize()`
+        ///
         /// Returns maximum size of shape model.
         #[cxx_name = "GetMaxSize"]
         fn get_max_size(self: &Model) -> f64;
+        /// **Source:** `IMeshData_Model.hxx`:37 - `IMeshData_Model::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Model) -> &HandleStandardType;
+        /// **Source:** `IMeshData_Model.hxx`:41 - `IMeshData_Model::FacesNb()`
+        ///
         /// @name discrete faces
         /// Returns number of faces in discrete model.
         #[cxx_name = "FacesNb"]
         fn faces_nb(self: &Model) -> i32;
+        /// **Source:** `IMeshData_Model.hxx`:52 - `IMeshData_Model::EdgesNb()`
+        ///
         /// @name discrete edges
         /// Returns number of edges in discrete model.
         #[cxx_name = "EdgesNb"]
         fn edges_nb(self: &Model) -> i32;
+        /// **Source:** `IMeshData_Model.hxx`:37 - `IMeshData_Model::get_type_name()`
         #[cxx_name = "IMeshData_Model_get_type_name"]
         fn Model_get_type_name() -> String;
         /// Upcast IMeshData_Model to IMeshData_Shape
@@ -81,21 +89,27 @@ pub(crate) mod ffi {
         #[cxx_name = "IMeshData_Model_as_IMeshData_Shape_mut"]
         fn model_as_shape_mut(self_: Pin<&mut Model>) -> Pin<&mut Shape>;
         /// ======================== IMeshData_Shape ========================
-        /// **Source:** `IMeshData_Shape.hxx` - `IMeshData_Shape`
+        /// **Source:** `IMeshData_Shape.hxx`:24 - `IMeshData_Shape`
         ///
         /// Interface class representing model with associated TopoDS_Shape.
         /// Intended for inheritance by structures and algorithms keeping
         /// reference TopoDS_Shape.
         #[cxx_name = "IMeshData_Shape"]
         type Shape;
+        /// **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
+        ///
         /// Assigns shape to discrete shape.
         #[cxx_name = "SetShape"]
         fn set_shape(self: Pin<&mut Shape>, theShape: &TopoDS_Shape);
+        /// **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
+        ///
         /// Returns shape assigned to discrete shape.
         #[cxx_name = "GetShape"]
         fn get_shape(self: &Shape) -> &TopoDS_Shape;
+        /// **Source:** `IMeshData_Shape.hxx`:36 - `IMeshData_Shape::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Shape) -> &HandleStandardType;
+        /// **Source:** `IMeshData_Shape.hxx`:36 - `IMeshData_Shape::get_type_name()`
         #[cxx_name = "IMeshData_Shape_get_type_name"]
         fn Shape_get_type_name() -> String;
         /// Wrap IMeshData_Shape in a Handle (reference-counted smart pointer)

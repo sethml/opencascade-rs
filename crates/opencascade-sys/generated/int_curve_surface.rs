@@ -59,14 +59,16 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== IntCurveSurface_HInter ========================
-        /// **Source:** `IntCurveSurface_HInter.hxx` - `IntCurveSurface_HInter`
+        /// **Source:** `IntCurveSurface_HInter.hxx`:46 - `IntCurveSurface_HInter`
         #[cxx_name = "IntCurveSurface_HInter"]
         type HInter;
-        /// **Source:** `IntCurveSurface_HInter.hxx` - `IntCurveSurface_HInter::IntCurveSurface_HInter()`
+        /// **Source:** `IntCurveSurface_HInter.hxx`:52 - `IntCurveSurface_HInter::IntCurveSurface_HInter()`
         ///
         /// Empty Constructor
         #[cxx_name = "IntCurveSurface_HInter_ctor"]
         fn HInter_ctor() -> UniquePtr<HInter>;
+        /// **Source:** `IntCurveSurface_HInter.hxx`:56 - `IntCurveSurface_HInter::Perform()`
+        ///
         /// Compute the Intersection between the curve and the
         /// surface
         #[cxx_name = "Perform"]
@@ -75,6 +77,8 @@ pub(crate) mod ffi {
             Curve: &HandleAdaptor3dCurve,
             Surface: &HandleAdaptor3dSurface,
         );
+        /// **Source:** `IntCurveSurface_HInter.hxx`:62 - `IntCurveSurface_HInter::Perform()`
+        ///
         /// Compute the Intersection  between the curve  and
         /// the surface. The   Curve is already  sampled and
         /// its polygon : <Polygon> is given.
@@ -85,6 +89,8 @@ pub(crate) mod ffi {
             Polygon: &IntCurveSurface_ThePolygonOfHInter,
             Surface: &HandleAdaptor3dSurface,
         );
+        /// **Source:** `IntCurveSurface_HInter.hxx`:70 - `IntCurveSurface_HInter::Perform()`
+        ///
         /// Compute the Intersection  between the curve  and
         /// the surface. The   Curve is already  sampled and
         /// its polygon : <Polygon> is given. The Surface is
@@ -97,6 +103,8 @@ pub(crate) mod ffi {
             Surface: &HandleAdaptor3dSurface,
             Polyhedron: &IntCurveSurface_ThePolyhedronOfHInter,
         );
+        /// **Source:** `IntCurveSurface_HInter.hxx`:79 - `IntCurveSurface_HInter::Perform()`
+        ///
         /// Compute the Intersection  between the curve  and
         /// the surface. The   Curve is already  sampled and
         /// its polygon : <Polygon> is given. The Surface is
@@ -110,6 +118,8 @@ pub(crate) mod ffi {
             Polyhedron: &IntCurveSurface_ThePolyhedronOfHInter,
             BndBSB: Pin<&mut Bnd_BoundSortBox>,
         );
+        /// **Source:** `IntCurveSurface_HInter.hxx`:88 - `IntCurveSurface_HInter::Perform()`
+        ///
         /// Compute the Intersection  between the curve  and
         /// the surface. The Surface is already  sampled and
         /// its polyhedron : <Polyhedron> is given.
@@ -121,74 +131,91 @@ pub(crate) mod ffi {
             Polyhedron: &IntCurveSurface_ThePolyhedronOfHInter,
         );
         /// ======================== IntCurveSurface_IntersectionSegment ========================
-        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx` - `IntCurveSurface_IntersectionSegment`
+        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:29 - `IntCurveSurface_IntersectionSegment`
         ///
         /// A IntersectionSegment describes a segment of curve
         /// (w1,w2) where distance(C(w),Surface) is less than a
         /// given tolerances.
         #[cxx_name = "IntCurveSurface_IntersectionSegment"]
         type IntersectionSegment;
-        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx` - `IntCurveSurface_IntersectionSegment::IntCurveSurface_IntersectionSegment()`
+        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:34 - `IntCurveSurface_IntersectionSegment::IntCurveSurface_IntersectionSegment()`
         #[cxx_name = "IntCurveSurface_IntersectionSegment_ctor"]
         fn IntersectionSegment_ctor() -> UniquePtr<IntersectionSegment>;
-        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx` - `IntCurveSurface_IntersectionSegment::IntCurveSurface_IntersectionSegment()`
+        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:36 - `IntCurveSurface_IntersectionSegment::IntCurveSurface_IntersectionSegment()`
         #[cxx_name = "IntCurveSurface_IntersectionSegment_ctor_intersectionpoint2"]
         fn IntersectionSegment_ctor_intersectionpoint2(
             P1: &IntersectionPoint,
             P2: &IntersectionPoint,
         ) -> UniquePtr<IntersectionSegment>;
+        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:39 - `IntCurveSurface_IntersectionSegment::SetValues()`
         #[cxx_name = "SetValues"]
         fn set_values(
             self: Pin<&mut IntersectionSegment>,
             P1: &IntersectionPoint,
             P2: &IntersectionPoint,
         );
+        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:42 - `IntCurveSurface_IntersectionSegment::Values()`
         #[cxx_name = "Values"]
         fn values(
             self: &IntersectionSegment,
             P1: Pin<&mut IntersectionPoint>,
             P2: Pin<&mut IntersectionPoint>,
         );
+        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:45 - `IntCurveSurface_IntersectionSegment::FirstPoint()`
         #[cxx_name = "FirstPoint"]
         fn first_point_intersectionpoint(
             self: &IntersectionSegment,
             P1: Pin<&mut IntersectionPoint>,
         );
+        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:47 - `IntCurveSurface_IntersectionSegment::SecondPoint()`
         #[cxx_name = "SecondPoint"]
         fn second_point_intersectionpoint(
             self: &IntersectionSegment,
             P2: Pin<&mut IntersectionPoint>,
         );
+        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:49 - `IntCurveSurface_IntersectionSegment::FirstPoint()`
         #[cxx_name = "FirstPoint"]
         fn first_point(self: &IntersectionSegment) -> &IntersectionPoint;
+        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:51 - `IntCurveSurface_IntersectionSegment::SecondPoint()`
         #[cxx_name = "SecondPoint"]
         fn second_point(self: &IntersectionSegment) -> &IntersectionPoint;
+        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:53 - `IntCurveSurface_IntersectionSegment::Dump()`
         #[cxx_name = "Dump"]
         fn dump(self: &IntersectionSegment);
         /// ======================== IntCurveSurface_IntersectionPoint ========================
-        /// **Source:** `IntCurveSurface_IntersectionPoint.hxx` - `IntCurveSurface_IntersectionPoint`
+        /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:29 - `IntCurveSurface_IntersectionPoint`
         ///
         /// Definition of an interserction point between a
         /// curve and a surface.
         #[cxx_name = "IntCurveSurface_IntersectionPoint"]
         type IntersectionPoint;
-        /// **Source:** `IntCurveSurface_IntersectionPoint.hxx` - `IntCurveSurface_IntersectionPoint::IntCurveSurface_IntersectionPoint()`
+        /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:35 - `IntCurveSurface_IntersectionPoint::IntCurveSurface_IntersectionPoint()`
         ///
         /// Empty Constructor.
         #[cxx_name = "IntCurveSurface_IntersectionPoint_ctor"]
         fn IntersectionPoint_ctor() -> UniquePtr<IntersectionPoint>;
+        /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:59 - `IntCurveSurface_IntersectionPoint::Pnt()`
+        ///
         /// returns the geometric point.
         #[cxx_name = "Pnt"]
         fn pnt(self: &IntersectionPoint) -> &gp_Pnt;
+        /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:62 - `IntCurveSurface_IntersectionPoint::U()`
+        ///
         /// returns the U parameter on the surface.
         #[cxx_name = "U"]
         fn u(self: &IntersectionPoint) -> f64;
+        /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:65 - `IntCurveSurface_IntersectionPoint::V()`
+        ///
         /// returns the V parameter on the surface.
         #[cxx_name = "V"]
         fn v(self: &IntersectionPoint) -> f64;
+        /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:68 - `IntCurveSurface_IntersectionPoint::W()`
+        ///
         /// returns the parameter on the curve.
         #[cxx_name = "W"]
         fn w(self: &IntersectionPoint) -> f64;
+        /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:74 - `IntCurveSurface_IntersectionPoint::Dump()`
+        ///
         /// Dump all the fields.
         #[cxx_name = "Dump"]
         fn dump(self: &IntersectionPoint);

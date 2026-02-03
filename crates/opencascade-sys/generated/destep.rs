@@ -32,18 +32,24 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== DESTEP_Parameters ========================
-        /// **Source:** `DESTEP_Parameters.hxx` - `DESTEP_Parameters`
+        /// **Source:** `DESTEP_Parameters.hxx`:23 - `DESTEP_Parameters`
         #[cxx_name = "DESTEP_Parameters"]
         type Parameters;
-        /// **Source:** `DESTEP_Parameters.hxx` - `DESTEP_Parameters::DESTEP_Parameters()`
+        /// **Source:** `DESTEP_Parameters.hxx`:125 - `DESTEP_Parameters::DESTEP_Parameters()`
         #[cxx_name = "DESTEP_Parameters_ctor"]
         fn Parameters_ctor() -> UniquePtr<Parameters>;
+        /// **Source:** `DESTEP_Parameters.hxx`:128 - `DESTEP_Parameters::InitFromStatic()`
+        ///
         /// Initialize parameters
         #[cxx_name = "InitFromStatic"]
         fn init_from_static(self: Pin<&mut Parameters>);
+        /// **Source:** `DESTEP_Parameters.hxx`:131 - `DESTEP_Parameters::Reset()`
+        ///
         /// Reset used parameters
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut Parameters>);
+        /// **Source:** `DESTEP_Parameters.hxx`:149 - `DESTEP_Parameters::GetDefaultShapeFixParameters()`
+        ///
         /// Returns default shape fix parameters for transferring STEP files.
         #[cxx_name = "DESTEP_Parameters_GetDefaultShapeFixParameters"]
         fn Parameters_get_default_shape_fix_parameters() -> UniquePtr<DE_ShapeFixParameters>;

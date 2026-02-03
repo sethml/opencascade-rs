@@ -108,13 +108,15 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepBndLib ========================
-        /// **Source:** `BRepBndLib.hxx` - `BRepBndLib`
+        /// **Source:** `BRepBndLib.hxx`:30 - `BRepBndLib`
         ///
         /// This package provides the bounding boxes for curves
         /// and surfaces from BRepAdaptor.
         /// Functions to add a topological shape to a bounding box
         #[cxx_name = "BRepBndLib"]
         type BRepBndLib;
+        /// **Source:** `BRepBndLib.hxx`:52 - `BRepBndLib::Add()`
+        ///
         /// Adds the shape S to the bounding box B.
         /// More precisely are successively added to B:
         /// -   each face of S; the triangulation of the face is used if it exists,
@@ -134,6 +136,8 @@ pub(crate) mod ffi {
         /// -   The resulting bounding box may be somewhat larger than the object.
         #[cxx_name = "BRepBndLib_Add"]
         fn BRepBndLib_add(S: &TopoDS_Shape, B: Pin<&mut Bnd_Box>, useTriangulation: bool);
+        /// **Source:** `BRepBndLib.hxx`:67 - `BRepBndLib::AddClose()`
+        ///
         /// Adds the shape S to the bounding box B.
         /// This is a quick algorithm but only works if the shape S is
         /// composed of polygonal planar faces, as is the case if S is
@@ -147,6 +151,8 @@ pub(crate) mod ffi {
         /// box is closer to the shape S.
         #[cxx_name = "BRepBndLib_AddClose"]
         fn BRepBndLib_add_close(S: &TopoDS_Shape, B: Pin<&mut Bnd_Box>);
+        /// **Source:** `BRepBndLib.hxx`:78 - `BRepBndLib::AddOptimal()`
+        ///
         /// Adds the shape S to the bounding box B.
         /// This algorithm builds precise bounding box,
         /// which differs from exact geometry boundaries of shape only on shape entities tolerances
@@ -163,6 +169,8 @@ pub(crate) mod ffi {
             useTriangulation: bool,
             useShapeTolerance: bool,
         );
+        /// **Source:** `BRepBndLib.hxx`:95 - `BRepBndLib::AddOBB()`
+        ///
         /// Computes the Oriented Bounding box for the shape <theS>.
         /// Two independent methods of computation are implemented:
         /// first method based on set of points (so, it demands the

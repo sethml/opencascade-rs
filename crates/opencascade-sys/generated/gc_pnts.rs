@@ -194,7 +194,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== GCPnts_TangentialDeflection ========================
-        /// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection`
+        /// **Source:** `GCPnts_TangentialDeflection.hxx`:62 - `GCPnts_TangentialDeflection`
         ///
         /// Computes a set of  points on a curve from package
         /// Adaptor3d  such  as between  two successive   points
@@ -232,13 +232,13 @@ pub(crate) mod ffi {
         /// @endcode
         #[cxx_name = "GCPnts_TangentialDeflection"]
         type TangentialDeflection;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
+        /// **Source:** `GCPnts_TangentialDeflection.hxx`:69 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
         ///
         /// Empty constructor.
         /// @sa Initialize()
         #[cxx_name = "GCPnts_TangentialDeflection_ctor"]
         fn TangentialDeflection_ctor() -> UniquePtr<TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
+        /// **Source:** `GCPnts_TangentialDeflection.hxx`:78 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
         ///
         /// Constructor for 3D curve.
         /// @param[in] theC  3d curve
@@ -256,7 +256,7 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         ) -> UniquePtr<TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
+        /// **Source:** `GCPnts_TangentialDeflection.hxx`:94 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
         ///
         /// Constructor for 3D curve with restricted range.
         /// @param[in] theC  3d curve
@@ -278,7 +278,7 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         ) -> UniquePtr<TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
+        /// **Source:** `GCPnts_TangentialDeflection.hxx`:110 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
         ///
         /// Constructor for 2D curve.
         /// @param[in] theC  2d curve
@@ -296,7 +296,7 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         ) -> UniquePtr<TangentialDeflection>;
-        /// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
+        /// **Source:** `GCPnts_TangentialDeflection.hxx`:126 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
         ///
         /// Constructor for 2D curve with restricted range.
         /// @param[in] theC  2d curve
@@ -318,6 +318,8 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         ) -> UniquePtr<TangentialDeflection>;
+        /// **Source:** `GCPnts_TangentialDeflection.hxx`:142 - `GCPnts_TangentialDeflection::Initialize()`
+        ///
         /// Initialize algorithm for 3D curve.
         /// @param[in] theC  3d curve
         /// @param[in] theAngularDeflection    angular deflection in radians
@@ -335,6 +337,8 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         );
+        /// **Source:** `GCPnts_TangentialDeflection.hxx`:158 - `GCPnts_TangentialDeflection::Initialize()`
+        ///
         /// Initialize algorithm for 3D curve with restricted range.
         /// @param[in] theC  3d curve
         /// @param[in] theFirstParameter  first parameter on curve
@@ -356,6 +360,8 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         );
+        /// **Source:** `GCPnts_TangentialDeflection.hxx`:174 - `GCPnts_TangentialDeflection::Initialize()`
+        ///
         /// Initialize algorithm for 2D curve.
         /// @param[in] theC  2d curve
         /// @param[in] theAngularDeflection    angular deflection in radians
@@ -373,6 +379,8 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         );
+        /// **Source:** `GCPnts_TangentialDeflection.hxx`:190 - `GCPnts_TangentialDeflection::Initialize()`
+        ///
         /// Initialize algorithm for 2D curve with restricted range.
         /// @param[in] theC  2d curve
         /// @param[in] theFirstParameter  first parameter on curve
@@ -394,6 +402,8 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         );
+        /// **Source:** `GCPnts_TangentialDeflection.hxx`:202 - `GCPnts_TangentialDeflection::AddPoint()`
+        ///
         /// Add point to already calculated points (or replace existing)
         /// Returns index of new added point
         /// or founded with parametric tolerance (replaced if theIsReplace is true)
@@ -404,12 +414,16 @@ pub(crate) mod ffi {
             theParam: f64,
             theIsReplace: bool,
         ) -> i32;
+        /// **Source:** `GCPnts_TangentialDeflection.hxx`:206 - `GCPnts_TangentialDeflection::NbPoints()`
         #[cxx_name = "NbPoints"]
         fn nb_points(self: &TangentialDeflection) -> i32;
+        /// **Source:** `GCPnts_TangentialDeflection.hxx`:208 - `GCPnts_TangentialDeflection::Parameter()`
         #[cxx_name = "Parameter"]
         fn parameter(self: &TangentialDeflection, I: i32) -> f64;
         #[cxx_name = "GCPnts_TangentialDeflection_Value"]
         fn TangentialDeflection_value(self_: &TangentialDeflection, I: i32) -> UniquePtr<gp_Pnt>;
+        /// **Source:** `GCPnts_TangentialDeflection.hxx`:213 - `GCPnts_TangentialDeflection::ArcAngularStep()`
+        ///
         /// Computes angular step for the arc using the given parameters.
         #[cxx_name = "GCPnts_TangentialDeflection_ArcAngularStep"]
         fn TangentialDeflection_arc_angular_step(

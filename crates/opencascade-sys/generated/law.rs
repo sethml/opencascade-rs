@@ -159,25 +159,34 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Law_Function ========================
-        /// **Source:** `Law_Function.hxx` - `Law_Function`
+        /// **Source:** `Law_Function.hxx`:33 - `Law_Function`
         ///
         /// Root class for evolution laws.
         #[cxx_name = "Law_Function"]
         type Function;
+        /// **Source:** `Law_Function.hxx`:49 - `Law_Function::Value()`
+        ///
         /// Returns the value of the function at the point of parameter X.
         #[cxx_name = "Value"]
         fn value(self: Pin<&mut Function>, X: f64) -> f64;
+        /// **Source:** `Law_Function.hxx`:53 - `Law_Function::D1()`
+        ///
         /// Returns the value F and the first derivative D of the
         /// function at the point of parameter X.
         #[cxx_name = "D1"]
         fn d1(self: Pin<&mut Function>, X: f64, F: &mut f64, D: &mut f64);
+        /// **Source:** `Law_Function.hxx`:57 - `Law_Function::D2()`
+        ///
         /// Returns the value, first and seconde derivatives
         /// at parameter X.
         #[cxx_name = "D2"]
         fn d2(self: Pin<&mut Function>, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64);
+        /// **Source:** `Law_Function.hxx`:73 - `Law_Function::Bounds()`
+        ///
         /// Returns the parametric bounds of the function.
         #[cxx_name = "Bounds"]
         fn bounds(self: Pin<&mut Function>, PFirst: &mut f64, PLast: &mut f64);
+        /// **Source:** `Law_Function.hxx`:75 - `Law_Function::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Function) -> &HandleStandardType;
         /// Returns a  law equivalent of  <me>  between
@@ -193,10 +202,11 @@ pub(crate) mod ffi {
             PLast: f64,
             Tol: f64,
         ) -> UniquePtr<HandleLawFunction>;
+        /// **Source:** `Law_Function.hxx`:75 - `Law_Function::get_type_name()`
         #[cxx_name = "Law_Function_get_type_name"]
         fn Function_get_type_name() -> String;
         /// ======================== Law_BSpFunc ========================
-        /// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc`
+        /// **Source:** `Law_BSpFunc.hxx`:36 - `Law_BSpFunc`
         ///
         /// Law Function based on a BSpline curve 1d.  Package
         /// methods and classes are implemented in package Law
@@ -204,26 +214,32 @@ pub(crate) mod ffi {
         /// constraints.
         #[cxx_name = "Law_BSpFunc"]
         type BSpFunc;
-        /// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc::Law_BSpFunc()`
+        /// **Source:** `Law_BSpFunc.hxx`:40 - `Law_BSpFunc::Law_BSpFunc()`
         #[cxx_name = "Law_BSpFunc_ctor"]
         fn BSpFunc_ctor() -> UniquePtr<BSpFunc>;
-        /// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc::Law_BSpFunc()`
+        /// **Source:** `Law_BSpFunc.hxx`:42 - `Law_BSpFunc::Law_BSpFunc()`
         #[cxx_name = "Law_BSpFunc_ctor_handlebspline_real2"]
         fn BSpFunc_ctor_handlebspline_real2(
             C: &HandleLawBSpline,
             First: f64,
             Last: f64,
         ) -> UniquePtr<BSpFunc>;
+        /// **Source:** `Law_BSpFunc.hxx`:58 - `Law_BSpFunc::Value()`
         #[cxx_name = "Value"]
         fn value(self: Pin<&mut BSpFunc>, X: f64) -> f64;
+        /// **Source:** `Law_BSpFunc.hxx`:60 - `Law_BSpFunc::D1()`
         #[cxx_name = "D1"]
         fn d1(self: Pin<&mut BSpFunc>, X: f64, F: &mut f64, D: &mut f64);
+        /// **Source:** `Law_BSpFunc.hxx`:64 - `Law_BSpFunc::D2()`
         #[cxx_name = "D2"]
         fn d2(self: Pin<&mut BSpFunc>, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64);
+        /// **Source:** `Law_BSpFunc.hxx`:79 - `Law_BSpFunc::Bounds()`
         #[cxx_name = "Bounds"]
         fn bounds(self: Pin<&mut BSpFunc>, PFirst: &mut f64, PLast: &mut f64);
+        /// **Source:** `Law_BSpFunc.hxx`:83 - `Law_BSpFunc::SetCurve()`
         #[cxx_name = "SetCurve"]
         fn set_curve(self: Pin<&mut BSpFunc>, C: &HandleLawBSpline);
+        /// **Source:** `Law_BSpFunc.hxx`:85 - `Law_BSpFunc::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BSpFunc) -> &HandleStandardType;
         /// Returns a  law equivalent of  <me>  between
@@ -241,6 +257,7 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleLawFunction>;
         #[cxx_name = "Law_BSpFunc_Curve"]
         fn BSpFunc_curve(self_: &BSpFunc) -> UniquePtr<HandleLawBSpline>;
+        /// **Source:** `Law_BSpFunc.hxx`:85 - `Law_BSpFunc::get_type_name()`
         #[cxx_name = "Law_BSpFunc_get_type_name"]
         fn BSpFunc_get_type_name() -> String;
         /// Upcast Law_BSpFunc to Law_Function
@@ -256,18 +273,20 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleLawBSpFunc_to_HandleLawFunction"]
         fn b_sp_func_to_handle_function(handle: &HandleLawBSpFunc) -> UniquePtr<HandleLawFunction>;
         /// ======================== Law_Interpol ========================
-        /// **Source:** `Law_Interpol.hxx` - `Law_Interpol`
+        /// **Source:** `Law_Interpol.hxx`:31 - `Law_Interpol`
         ///
         /// Provides an evolution law that interpolates a set
         /// of parameter and value pairs (wi, radi)
         #[cxx_name = "Law_Interpol"]
         type Interpol;
-        /// **Source:** `Law_Interpol.hxx` - `Law_Interpol::Law_Interpol()`
+        /// **Source:** `Law_Interpol.hxx`:37 - `Law_Interpol::Law_Interpol()`
         ///
         /// Constructs an empty interpolative evolution law.
         /// The function Set is used to define the law.
         #[cxx_name = "Law_Interpol_ctor"]
         fn Interpol_ctor() -> UniquePtr<Interpol>;
+        /// **Source:** `Law_Interpol.hxx`:52 - `Law_Interpol::Set()`
+        ///
         /// Defines this evolution law by interpolating the set of 2D
         /// points ParAndRad. The Y coordinate of a point of
         /// ParAndRad is the value of the function at the parameter
@@ -287,6 +306,7 @@ pub(crate) mod ffi {
             ParAndRad: &TColgp_Array1OfPnt2d,
             Periodic: bool,
         );
+        /// **Source:** `Law_Interpol.hxx`:55 - `Law_Interpol::SetInRelative()`
         #[cxx_name = "SetInRelative"]
         fn set_in_relative_array1ofpnt2d_real2_bool(
             self: Pin<&mut Interpol>,
@@ -295,6 +315,8 @@ pub(crate) mod ffi {
             Uf: f64,
             Periodic: bool,
         );
+        /// **Source:** `Law_Interpol.hxx`:75 - `Law_Interpol::Set()`
+        ///
         /// Defines this evolution law by interpolating the set of 2D
         /// points ParAndRad. The Y coordinate of a point of
         /// ParAndRad is the value of the function at the parameter
@@ -318,6 +340,7 @@ pub(crate) mod ffi {
             Df: f64,
             Periodic: bool,
         );
+        /// **Source:** `Law_Interpol.hxx`:80 - `Law_Interpol::SetInRelative()`
         #[cxx_name = "SetInRelative"]
         fn set_in_relative_array1ofpnt2d_real4_bool(
             self: Pin<&mut Interpol>,
@@ -328,8 +351,10 @@ pub(crate) mod ffi {
             Df: f64,
             Periodic: bool,
         );
+        /// **Source:** `Law_Interpol.hxx`:87 - `Law_Interpol::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Interpol) -> &HandleStandardType;
+        /// **Source:** `Law_Interpol.hxx`:87 - `Law_Interpol::get_type_name()`
         #[cxx_name = "Law_Interpol_get_type_name"]
         fn Interpol_get_type_name() -> String;
         /// Upcast Law_Interpol to Law_BSpFunc

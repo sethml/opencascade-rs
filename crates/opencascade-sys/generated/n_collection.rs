@@ -131,39 +131,53 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== NCollection_Buffer ========================
-        /// **Source:** `NCollection_Buffer.hxx` - `NCollection_Buffer`
+        /// **Source:** `NCollection_Buffer.hxx`:23 - `NCollection_Buffer`
         ///
         /// Low-level buffer object.
         #[cxx_name = "NCollection_Buffer"]
         type Buffer;
+        /// **Source:** `NCollection_Buffer.hxx`:60 - `NCollection_Buffer::IsEmpty()`
+        ///
         /// @return true if buffer is not allocated
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &Buffer) -> bool;
+        /// **Source:** `NCollection_Buffer.hxx`:63 - `NCollection_Buffer::Size()`
+        ///
         /// Return buffer length in bytes.
         #[cxx_name = "Size"]
         fn size(self: &Buffer) -> usize;
+        /// **Source:** `NCollection_Buffer.hxx`:66 - `NCollection_Buffer::Allocator()`
+        ///
         /// @return buffer allocator
         #[cxx_name = "Allocator"]
         fn allocator(self: &Buffer) -> &HandleNCollectionBaseAllocator;
+        /// **Source:** `NCollection_Buffer.hxx`:69 - `NCollection_Buffer::SetAllocator()`
+        ///
         /// Assign new buffer allocator with de-allocation of buffer.
         #[cxx_name = "SetAllocator"]
         fn set_allocator(self: Pin<&mut Buffer>, theAlloc: &HandleNCollectionBaseAllocator);
+        /// **Source:** `NCollection_Buffer.hxx`:77 - `NCollection_Buffer::Allocate()`
+        ///
         /// Allocate the buffer.
         /// @param theSize buffer length in bytes
         #[cxx_name = "Allocate"]
         fn allocate(self: Pin<&mut Buffer>, theSize: usize) -> bool;
+        /// **Source:** `NCollection_Buffer.hxx`:95 - `NCollection_Buffer::Free()`
+        ///
         /// De-allocate buffer.
         #[cxx_name = "Free"]
         fn free(self: Pin<&mut Buffer>);
+        /// **Source:** `NCollection_Buffer.hxx`:120 - `NCollection_Buffer::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Buffer) -> &HandleStandardType;
+        /// **Source:** `NCollection_Buffer.hxx`:120 - `NCollection_Buffer::get_type_name()`
         #[cxx_name = "NCollection_Buffer_get_type_name"]
         fn Buffer_get_type_name() -> String;
         /// Wrap NCollection_Buffer in a Handle (reference-counted smart pointer)
         #[cxx_name = "NCollection_Buffer_to_handle"]
         fn Buffer_to_handle(obj: UniquePtr<Buffer>) -> UniquePtr<HandleNCollectionBuffer>;
         /// ======================== NCollection_BasePointerVector ========================
-        /// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector`
+        /// **Source:** `NCollection_BasePointerVector.hxx`:29 - `NCollection_BasePointerVector`
         ///
         /// Simplified class for vector of pointers of void.
         /// Offers basic functionality to scalable inserts,
@@ -174,35 +188,45 @@ pub(crate) mod ffi {
         /// Especially, copy operation should post-process elements of pointers to make deep copy.
         #[cxx_name = "NCollection_BasePointerVector"]
         type BasePointerVector;
-        /// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
+        /// **Source:** `NCollection_BasePointerVector.hxx`:38 - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
         ///
         /// Default constructor
         #[cxx_name = "NCollection_BasePointerVector_ctor"]
         fn BasePointerVector_ctor() -> UniquePtr<BasePointerVector>;
-        /// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
+        /// **Source:** `NCollection_BasePointerVector.hxx`:41 - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
         ///
         /// Copy data from another vector
         #[cxx_name = "NCollection_BasePointerVector_ctor_basepointervector"]
         fn BasePointerVector_ctor_basepointervector(
             theOther: &BasePointerVector,
         ) -> UniquePtr<BasePointerVector>;
+        /// **Source:** `NCollection_BasePointerVector.hxx`:50 - `NCollection_BasePointerVector::IsEmpty()`
+        ///
         /// Checks for an empty status
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &BasePointerVector) -> bool;
+        /// **Source:** `NCollection_BasePointerVector.hxx`:53 - `NCollection_BasePointerVector::Size()`
+        ///
         /// Gets used size
         #[cxx_name = "Size"]
         fn size(self: &BasePointerVector) -> usize;
+        /// **Source:** `NCollection_BasePointerVector.hxx`:56 - `NCollection_BasePointerVector::Capacity()`
+        ///
         /// Gets available capacity
         #[cxx_name = "Capacity"]
         fn capacity(self: &BasePointerVector) -> usize;
+        /// **Source:** `NCollection_BasePointerVector.hxx`:59 - `NCollection_BasePointerVector::RemoveLast()`
+        ///
         /// Erases last element, decrements size.
         #[cxx_name = "RemoveLast"]
         fn remove_last(self: Pin<&mut BasePointerVector>);
+        /// **Source:** `NCollection_BasePointerVector.hxx`:62 - `NCollection_BasePointerVector::Clear()`
+        ///
         /// Resets the size
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut BasePointerVector>, theReleaseMemory: bool);
         /// ======================== NCollection_BaseAllocator ========================
-        /// **Source:** `NCollection_BaseAllocator.hxx` - `NCollection_BaseAllocator`
+        /// **Source:** `NCollection_BaseAllocator.hxx`:45 - `NCollection_BaseAllocator`
         ///
         ///
         /// Purpose:     Basic class for memory allocation wizards.
@@ -217,8 +241,10 @@ pub(crate) mod ffi {
         /// Note that this object is managed by Handle.
         #[cxx_name = "NCollection_BaseAllocator"]
         type BaseAllocator;
+        /// **Source:** `NCollection_BaseAllocator.hxx`:69 - `NCollection_BaseAllocator::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BaseAllocator) -> &HandleStandardType;
+        /// **Source:** `NCollection_BaseAllocator.hxx`:69 - `NCollection_BaseAllocator::get_type_name()`
         #[cxx_name = "NCollection_BaseAllocator_get_type_name"]
         fn BaseAllocator_get_type_name() -> String;
         /// Wrap NCollection_BaseAllocator in a Handle (reference-counted smart pointer)
@@ -227,18 +253,22 @@ pub(crate) mod ffi {
             obj: UniquePtr<BaseAllocator>,
         ) -> UniquePtr<HandleNCollectionBaseAllocator>;
         /// ======================== NCollection_BaseList ========================
-        /// **Source:** `NCollection_BaseList.hxx` - `NCollection_BaseList`
+        /// **Source:** `NCollection_BaseList.hxx`:36 - `NCollection_BaseList`
         #[cxx_name = "NCollection_BaseList"]
         type BaseList;
+        /// **Source:** `NCollection_BaseList.hxx`:100 - `NCollection_BaseList::Extent()`
         #[cxx_name = "Extent"]
         fn extent(self: &BaseList) -> i32;
+        /// **Source:** `NCollection_BaseList.hxx`:104 - `NCollection_BaseList::IsEmpty()`
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &BaseList) -> bool;
+        /// **Source:** `NCollection_BaseList.hxx`:108 - `NCollection_BaseList::Allocator()`
+        ///
         /// Returns attached allocator
         #[cxx_name = "Allocator"]
         fn allocator(self: &BaseList) -> &HandleNCollectionBaseAllocator;
         /// ======================== NCollection_IncAllocator ========================
-        /// **Source:** `NCollection_IncAllocator.hxx` - `NCollection_IncAllocator`
+        /// **Source:** `NCollection_IncAllocator.hxx`:49 - `NCollection_IncAllocator`
         ///
         ///
         /// Class NCollection_IncAllocator - incremental memory  allocator. This class
@@ -265,7 +295,7 @@ pub(crate) mod ffi {
         /// and thread-safety of allocations is DISABLED by default (see SetThreadSafe()).
         #[cxx_name = "NCollection_IncAllocator"]
         type IncAllocator;
-        /// **Source:** `NCollection_IncAllocator.hxx` - `NCollection_IncAllocator::NCollection_IncAllocator()`
+        /// **Source:** `NCollection_IncAllocator.hxx`:61 - `NCollection_IncAllocator::NCollection_IncAllocator()`
         ///
         /// Constructor.
         /// Note that this constructor does NOT setup mutex for using allocator concurrently from
@@ -278,9 +308,13 @@ pub(crate) mod ffi {
         /// leading to memory fragmentation and eventual performance slow down.
         #[cxx_name = "NCollection_IncAllocator_ctor_ulong"]
         fn IncAllocator_ctor_ulong(theBlockSize: u64) -> UniquePtr<IncAllocator>;
+        /// **Source:** `NCollection_IncAllocator.hxx`:64 - `NCollection_IncAllocator::SetThreadSafe()`
+        ///
         /// Setup mutex for thread-safe allocations.
         #[cxx_name = "SetThreadSafe"]
         fn set_thread_safe(self: Pin<&mut IncAllocator>, theIsThreadSafe: bool);
+        /// **Source:** `NCollection_IncAllocator.hxx`:88 - `NCollection_IncAllocator::Reset()`
+        ///
         /// Re-initialize the allocator so that the next Allocate call should
         /// start allocating in the very beginning as though the allocator is just
         /// constructed. Warning: make sure that all previously allocated data are
@@ -290,8 +324,10 @@ pub(crate) mod ffi {
         /// for future allocations.
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut IncAllocator>, theReleaseMemory: bool);
+        /// **Source:** `NCollection_IncAllocator.hxx`:144 - `NCollection_IncAllocator::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &IncAllocator) -> &HandleStandardType;
+        /// **Source:** `NCollection_IncAllocator.hxx`:144 - `NCollection_IncAllocator::get_type_name()`
         #[cxx_name = "NCollection_IncAllocator_get_type_name"]
         fn IncAllocator_get_type_name() -> String;
 

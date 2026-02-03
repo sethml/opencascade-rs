@@ -59,29 +59,37 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Sweep_NumShapeTool ========================
-        /// **Source:** `Sweep_NumShapeTool.hxx` - `Sweep_NumShapeTool`
+        /// **Source:** `Sweep_NumShapeTool.hxx`:31 - `Sweep_NumShapeTool`
         ///
         /// This class provides  the indexation and  type analysis
         /// services required by  the NumShape Directing Shapes of
         /// Swept Primitives.
         #[cxx_name = "Sweep_NumShapeTool"]
         type NumShapeTool;
-        /// **Source:** `Sweep_NumShapeTool.hxx` - `Sweep_NumShapeTool::Sweep_NumShapeTool()`
+        /// **Source:** `Sweep_NumShapeTool.hxx`:39 - `Sweep_NumShapeTool::Sweep_NumShapeTool()`
         ///
         /// Create a new NumShapeTool with <aShape>.  The Tool
         /// must prepare an indexation  for  all the subshapes
         /// of this shape.
         #[cxx_name = "Sweep_NumShapeTool_ctor_numshape"]
         fn NumShapeTool_ctor_numshape(aShape: &NumShape) -> UniquePtr<NumShapeTool>;
+        /// **Source:** `Sweep_NumShapeTool.hxx`:42 - `Sweep_NumShapeTool::NbShapes()`
+        ///
         /// Returns the number of subshapes in the shape.
         #[cxx_name = "NbShapes"]
         fn nb_shapes(self: &NumShapeTool) -> i32;
+        /// **Source:** `Sweep_NumShapeTool.hxx`:45 - `Sweep_NumShapeTool::Index()`
+        ///
         /// Returns the index of <aShape>.
         #[cxx_name = "Index"]
         fn index(self: &NumShapeTool, aShape: &NumShape) -> i32;
+        /// **Source:** `Sweep_NumShapeTool.hxx`:57 - `Sweep_NumShapeTool::HasFirstVertex()`
+        ///
         /// Returns true if there is a First Vertex in the Shape.
         #[cxx_name = "HasFirstVertex"]
         fn has_first_vertex(self: &NumShapeTool) -> bool;
+        /// **Source:** `Sweep_NumShapeTool.hxx`:60 - `Sweep_NumShapeTool::HasLastVertex()`
+        ///
         /// Returns true if there is a Last Vertex in the Shape.
         #[cxx_name = "HasLastVertex"]
         fn has_last_vertex(self: &NumShapeTool) -> bool;
@@ -95,23 +103,27 @@ pub(crate) mod ffi {
         #[cxx_name = "Sweep_NumShapeTool_LastVertex"]
         fn NumShapeTool_last_vertex(self_: &NumShapeTool) -> UniquePtr<NumShape>;
         /// ======================== Sweep_NumShape ========================
-        /// **Source:** `Sweep_NumShape.hxx` - `Sweep_NumShape`
+        /// **Source:** `Sweep_NumShape.hxx`:30 - `Sweep_NumShape`
         ///
         /// Gives    a  simple  indexed   representation  of a
         /// Directing Edge topology.
         #[cxx_name = "Sweep_NumShape"]
         type NumShape;
-        /// **Source:** `Sweep_NumShape.hxx` - `Sweep_NumShape::Sweep_NumShape()`
+        /// **Source:** `Sweep_NumShape.hxx`:36 - `Sweep_NumShape::Sweep_NumShape()`
         ///
         /// Creates a dummy indexed edge.
         #[cxx_name = "Sweep_NumShape_ctor"]
         fn NumShape_ctor() -> UniquePtr<NumShape>;
+        /// **Source:** `Sweep_NumShape.hxx`:73 - `Sweep_NumShape::Index()`
         #[cxx_name = "Index"]
         fn index(self: &NumShape) -> i32;
+        /// **Source:** `Sweep_NumShape.hxx`:77 - `Sweep_NumShape::Closed()`
         #[cxx_name = "Closed"]
         fn closed(self: &NumShape) -> bool;
+        /// **Source:** `Sweep_NumShape.hxx`:79 - `Sweep_NumShape::BegInfinite()`
         #[cxx_name = "BegInfinite"]
         fn beg_infinite(self: &NumShape) -> bool;
+        /// **Source:** `Sweep_NumShape.hxx`:81 - `Sweep_NumShape::EndInfinite()`
         #[cxx_name = "EndInfinite"]
         fn end_infinite(self: &NumShape) -> bool;
 

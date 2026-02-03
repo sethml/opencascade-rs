@@ -109,97 +109,143 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== IMeshTools_Context ========================
-        /// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context`
+        /// **Source:** `IMeshTools_Context.hxx`:29 - `IMeshTools_Context`
         ///
         /// Interface class representing context of BRepMesh algorithm.
         /// Intended to cache discrete model and instances of tools for
         /// its processing.
         #[cxx_name = "IMeshTools_Context"]
         type Context;
-        /// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context::IMeshTools_Context()`
+        /// **Source:** `IMeshTools_Context.hxx`:33 - `IMeshTools_Context::IMeshTools_Context()`
         ///
         /// Constructor.
         #[cxx_name = "IMeshTools_Context_ctor"]
         fn Context_ctor() -> UniquePtr<Context>;
+        /// **Source:** `IMeshTools_Context.hxx`:40 - `IMeshTools_Context::BuildModel()`
+        ///
         /// Builds model using assigned model builder.
         /// @return True on success, False elsewhere.
         #[cxx_name = "BuildModel"]
         fn build_model(self: Pin<&mut Context>) -> bool;
+        /// **Source:** `IMeshTools_Context.hxx`:54 - `IMeshTools_Context::DiscretizeEdges()`
+        ///
         /// Performs discretization of model edges using assigned edge discret algorithm.
         /// @return True on success, False elsewhere.
         #[cxx_name = "DiscretizeEdges"]
         fn discretize_edges(self: Pin<&mut Context>) -> bool;
+        /// **Source:** `IMeshTools_Context.hxx`:68 - `IMeshTools_Context::HealModel()`
+        ///
         /// Performs healing of discrete model built by DiscretizeEdges() method
         /// using assigned healing algorithm.
         /// @return True on success, False elsewhere.
         #[cxx_name = "HealModel"]
         fn heal_model(self: Pin<&mut Context>) -> bool;
+        /// **Source:** `IMeshTools_Context.hxx`:83 - `IMeshTools_Context::PreProcessModel()`
+        ///
         /// Performs pre-processing of discrete model using assigned algorithm.
         /// Performs auxiliary actions such as cleaning shape from old triangulation.
         /// @return True on success, False elsewhere.
         #[cxx_name = "PreProcessModel"]
         fn pre_process_model(self: Pin<&mut Context>) -> bool;
+        /// **Source:** `IMeshTools_Context.hxx`:97 - `IMeshTools_Context::DiscretizeFaces()`
+        ///
         /// Performs meshing of faces of discrete model using assigned meshing algorithm.
         /// @return True on success, False elsewhere.
         #[cxx_name = "DiscretizeFaces"]
         fn discretize_faces(self: Pin<&mut Context>, theRange: &Message_ProgressRange) -> bool;
+        /// **Source:** `IMeshTools_Context.hxx`:110 - `IMeshTools_Context::PostProcessModel()`
+        ///
         /// Performs post-processing of discrete model using assigned algorithm.
         /// @return True on success, False elsewhere.
         #[cxx_name = "PostProcessModel"]
         fn post_process_model(self: Pin<&mut Context>) -> bool;
+        /// **Source:** `IMeshTools_Context.hxx`:123 - `IMeshTools_Context::Clean()`
+        ///
         /// Cleans temporary context data.
         #[cxx_name = "Clean"]
         fn clean(self: Pin<&mut Context>);
+        /// **Source:** `IMeshTools_Context.hxx`:132 - `IMeshTools_Context::GetModelBuilder()`
+        ///
         /// Gets instance of a tool to be used to build discrete model.
         #[cxx_name = "GetModelBuilder"]
         fn get_model_builder(self: &Context) -> &HandleIMeshToolsModelBuilder;
+        /// **Source:** `IMeshTools_Context.hxx`:135 - `IMeshTools_Context::SetModelBuilder()`
+        ///
         /// Sets instance of a tool to be used to build discrete model.
         #[cxx_name = "SetModelBuilder"]
         fn set_model_builder(self: Pin<&mut Context>, theBuilder: &HandleIMeshToolsModelBuilder);
+        /// **Source:** `IMeshTools_Context.hxx`:141 - `IMeshTools_Context::GetEdgeDiscret()`
+        ///
         /// Gets instance of a tool to be used to discretize edges of a model.
         #[cxx_name = "GetEdgeDiscret"]
         fn get_edge_discret(self: &Context) -> &HandleIMeshToolsModelAlgo;
+        /// **Source:** `IMeshTools_Context.hxx`:144 - `IMeshTools_Context::SetEdgeDiscret()`
+        ///
         /// Sets instance of a tool to be used to discretize edges of a model.
         #[cxx_name = "SetEdgeDiscret"]
         fn set_edge_discret(self: Pin<&mut Context>, theEdgeDiscret: &HandleIMeshToolsModelAlgo);
+        /// **Source:** `IMeshTools_Context.hxx`:150 - `IMeshTools_Context::GetModelHealer()`
+        ///
         /// Gets instance of a tool to be used to heal discrete model.
         #[cxx_name = "GetModelHealer"]
         fn get_model_healer(self: &Context) -> &HandleIMeshToolsModelAlgo;
+        /// **Source:** `IMeshTools_Context.hxx`:153 - `IMeshTools_Context::SetModelHealer()`
+        ///
         /// Sets instance of a tool to be used to heal discrete model.
         #[cxx_name = "SetModelHealer"]
         fn set_model_healer(self: Pin<&mut Context>, theModelHealer: &HandleIMeshToolsModelAlgo);
+        /// **Source:** `IMeshTools_Context.hxx`:159 - `IMeshTools_Context::GetPreProcessor()`
+        ///
         /// Gets instance of pre-processing algorithm.
         #[cxx_name = "GetPreProcessor"]
         fn get_pre_processor(self: &Context) -> &HandleIMeshToolsModelAlgo;
+        /// **Source:** `IMeshTools_Context.hxx`:162 - `IMeshTools_Context::SetPreProcessor()`
+        ///
         /// Sets instance of pre-processing algorithm.
         #[cxx_name = "SetPreProcessor"]
         fn set_pre_processor(self: Pin<&mut Context>, thePreProcessor: &HandleIMeshToolsModelAlgo);
+        /// **Source:** `IMeshTools_Context.hxx`:168 - `IMeshTools_Context::GetFaceDiscret()`
+        ///
         /// Gets instance of meshing algorithm.
         #[cxx_name = "GetFaceDiscret"]
         fn get_face_discret(self: &Context) -> &HandleIMeshToolsModelAlgo;
+        /// **Source:** `IMeshTools_Context.hxx`:171 - `IMeshTools_Context::SetFaceDiscret()`
+        ///
         /// Sets instance of meshing algorithm.
         #[cxx_name = "SetFaceDiscret"]
         fn set_face_discret(self: Pin<&mut Context>, theFaceDiscret: &HandleIMeshToolsModelAlgo);
+        /// **Source:** `IMeshTools_Context.hxx`:177 - `IMeshTools_Context::GetPostProcessor()`
+        ///
         /// Gets instance of post-processing algorithm.
         #[cxx_name = "GetPostProcessor"]
         fn get_post_processor(self: &Context) -> &HandleIMeshToolsModelAlgo;
+        /// **Source:** `IMeshTools_Context.hxx`:180 - `IMeshTools_Context::SetPostProcessor()`
+        ///
         /// Sets instance of post-processing algorithm.
         #[cxx_name = "SetPostProcessor"]
         fn set_post_processor(
             self: Pin<&mut Context>,
             thePostProcessor: &HandleIMeshToolsModelAlgo,
         );
+        /// **Source:** `IMeshTools_Context.hxx`:186 - `IMeshTools_Context::GetParameters()`
+        ///
         /// Gets parameters to be used for meshing.
         #[cxx_name = "GetParameters"]
         fn get_parameters(self: &Context) -> &Parameters;
+        /// **Source:** `IMeshTools_Context.hxx`:189 - `IMeshTools_Context::ChangeParameters()`
+        ///
         /// Gets reference to parameters to be used for meshing.
         #[cxx_name = "ChangeParameters"]
         fn change_parameters(self: Pin<&mut Context>) -> Pin<&mut Parameters>;
+        /// **Source:** `IMeshTools_Context.hxx`:192 - `IMeshTools_Context::GetModel()`
+        ///
         /// Returns discrete model of a shape.
         #[cxx_name = "GetModel"]
         fn get_model(self: &Context) -> &HandleIMeshDataModel;
+        /// **Source:** `IMeshTools_Context.hxx`:194 - `IMeshTools_Context::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Context) -> &HandleStandardType;
+        /// **Source:** `IMeshTools_Context.hxx`:194 - `IMeshTools_Context::get_type_name()`
         #[cxx_name = "IMeshTools_Context_get_type_name"]
         fn Context_get_type_name() -> String;
         /// Upcast IMeshTools_Context to IMeshData_Shape
@@ -209,7 +255,7 @@ pub(crate) mod ffi {
         #[cxx_name = "IMeshTools_Context_as_IMeshData_Shape_mut"]
         fn context_as_i_mesh_data_shape_mut(self_: Pin<&mut Context>) -> Pin<&mut IMeshData_Shape>;
         /// ======================== IMeshTools_ModelBuilder ========================
-        /// **Source:** `IMeshTools_ModelBuilder.hxx` - `IMeshTools_ModelBuilder`
+        /// **Source:** `IMeshTools_ModelBuilder.hxx`:33 - `IMeshTools_ModelBuilder`
         ///
         /// Interface class represents API for tool building discrete model.
         ///
@@ -219,6 +265,7 @@ pub(crate) mod ffi {
         /// Message_Fail2 - model has not been build due to unexpected reason.
         #[cxx_name = "IMeshTools_ModelBuilder"]
         type ModelBuilder;
+        /// **Source:** `IMeshTools_ModelBuilder.hxx`:59 - `IMeshTools_ModelBuilder::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ModelBuilder) -> &HandleStandardType;
         /// Exceptions protected method to create discrete model for the given shape.
@@ -229,6 +276,7 @@ pub(crate) mod ffi {
             theShape: &TopoDS_Shape,
             theParameters: &Parameters,
         ) -> UniquePtr<HandleIMeshDataModel>;
+        /// **Source:** `IMeshTools_ModelBuilder.hxx`:59 - `IMeshTools_ModelBuilder::get_type_name()`
         #[cxx_name = "IMeshTools_ModelBuilder_get_type_name"]
         fn ModelBuilder_get_type_name() -> String;
         /// Upcast IMeshTools_ModelBuilder to Message_Algorithm
@@ -240,26 +288,30 @@ pub(crate) mod ffi {
             self_: Pin<&mut ModelBuilder>,
         ) -> Pin<&mut Message_Algorithm>;
         /// ======================== IMeshTools_Parameters ========================
-        /// **Source:** `IMeshTools_Parameters.hxx` - `IMeshTools_Parameters`
+        /// **Source:** `IMeshTools_Parameters.hxx`:23 - `IMeshTools_Parameters`
         ///
         /// Structure storing meshing parameters
         #[cxx_name = "IMeshTools_Parameters"]
         type Parameters;
-        /// **Source:** `IMeshTools_Parameters.hxx` - `IMeshTools_Parameters::IMeshTools_Parameters()`
+        /// **Source:** `IMeshTools_Parameters.hxx`:27 - `IMeshTools_Parameters::IMeshTools_Parameters()`
         ///
         /// Default constructor
         #[cxx_name = "IMeshTools_Parameters_ctor"]
         fn Parameters_ctor() -> UniquePtr<Parameters>;
+        /// **Source:** `IMeshTools_Parameters.hxx`:48 - `IMeshTools_Parameters::RelMinSize()`
+        ///
         /// Returns factor used to compute default value of MinSize
         /// (minimum mesh edge length) from deflection
         #[cxx_name = "IMeshTools_Parameters_RelMinSize"]
         fn Parameters_rel_min_size() -> f64;
         /// ======================== IMeshTools_ModelAlgo ========================
-        /// **Source:** `IMeshTools_ModelAlgo.hxx` - `IMeshTools_ModelAlgo`
+        /// **Source:** `IMeshTools_ModelAlgo.hxx`:26 - `IMeshTools_ModelAlgo`
         ///
         /// Interface class providing API for algorithms intended to update or modify discrete model.
         #[cxx_name = "IMeshTools_ModelAlgo"]
         type ModelAlgo;
+        /// **Source:** `IMeshTools_ModelAlgo.hxx`:33 - `IMeshTools_ModelAlgo::Perform()`
+        ///
         /// Exceptions protected processing of the given model.
         #[cxx_name = "Perform"]
         fn perform(
@@ -268,8 +320,10 @@ pub(crate) mod ffi {
             theParameters: &Parameters,
             theRange: &Message_ProgressRange,
         ) -> bool;
+        /// **Source:** `IMeshTools_ModelAlgo.hxx`:49 - `IMeshTools_ModelAlgo::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ModelAlgo) -> &HandleStandardType;
+        /// **Source:** `IMeshTools_ModelAlgo.hxx`:49 - `IMeshTools_ModelAlgo::get_type_name()`
         #[cxx_name = "IMeshTools_ModelAlgo_get_type_name"]
         fn ModelAlgo_get_type_name() -> String;
 

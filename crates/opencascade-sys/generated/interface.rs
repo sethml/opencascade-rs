@@ -46,10 +46,10 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Interface_GeneralLib ========================
-        /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib`
+        /// **Source:** `Interface_GeneralLib.hxx`:32 - `Interface_GeneralLib`
         #[cxx_name = "Interface_GeneralLib"]
         type GeneralLib;
-        /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib::Interface_GeneralLib()`
+        /// **Source:** `Interface_GeneralLib.hxx`:46 - `Interface_GeneralLib::Interface_GeneralLib()`
         ///
         /// Creates a Library which complies with a Protocol, that is :
         /// Same class (criterium IsInstance)
@@ -59,26 +59,34 @@ pub(crate) mod ffi {
         fn GeneralLib_ctor_handleprotocol(
             aprotocol: &HandleInterfaceProtocol,
         ) -> UniquePtr<GeneralLib>;
-        /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib::Interface_GeneralLib()`
+        /// **Source:** `Interface_GeneralLib.hxx`:50 - `Interface_GeneralLib::Interface_GeneralLib()`
         ///
         /// Creates an empty Library : it will later by filled by method
         /// AddProtocol
         #[cxx_name = "Interface_GeneralLib_ctor"]
         fn GeneralLib_ctor() -> UniquePtr<GeneralLib>;
+        /// **Source:** `Interface_GeneralLib.hxx`:55 - `Interface_GeneralLib::AddProtocol()`
+        ///
         /// Adds a couple (Module-Protocol) to the Library, given the
         /// class of a Protocol. Takes Resources into account.
         /// (if <aprotocol> is not of type TheProtocol, it is not added)
         #[cxx_name = "AddProtocol"]
         fn add_protocol(self: Pin<&mut GeneralLib>, aprotocol: &HandleStandardTransient);
+        /// **Source:** `Interface_GeneralLib.hxx`:60 - `Interface_GeneralLib::Clear()`
+        ///
         /// Clears the list of Modules of a library (can be used to
         /// redefine the order of Modules before action : Clear then
         /// refill the Library by calls to AddProtocol)
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut GeneralLib>);
+        /// **Source:** `Interface_GeneralLib.hxx`:64 - `Interface_GeneralLib::SetComplete()`
+        ///
         /// Sets a library to be defined with the complete Global list
         /// (all the couples Protocol/Modules recorded in it)
         #[cxx_name = "SetComplete"]
         fn set_complete(self: Pin<&mut GeneralLib>);
+        /// **Source:** `Interface_GeneralLib.hxx`:72 - `Interface_GeneralLib::Select()`
+        ///
         /// Selects a Module from the Library, given an Object.
         /// Returns True if Select has succeeded, False else.
         /// Also Returns (as arguments) the selected Module and the Case
@@ -92,22 +100,34 @@ pub(crate) mod ffi {
             module: Pin<&mut HandleInterfaceGeneralModule>,
             CN: &mut i32,
         ) -> bool;
+        /// **Source:** `Interface_GeneralLib.hxx`:77 - `Interface_GeneralLib::Start()`
+        ///
         /// Starts Iteration on the Modules (sets it on the first one)
         #[cxx_name = "Start"]
         fn start(self: Pin<&mut GeneralLib>);
+        /// **Source:** `Interface_GeneralLib.hxx`:80 - `Interface_GeneralLib::More()`
+        ///
         /// Returns True if there are more Modules to iterate on
         #[cxx_name = "More"]
         fn more(self: &GeneralLib) -> bool;
+        /// **Source:** `Interface_GeneralLib.hxx`:84 - `Interface_GeneralLib::Next()`
+        ///
         /// Iterates by getting the next Module in the list
         /// If there is none, the exception will be raised by Value
         #[cxx_name = "Next"]
         fn next(self: Pin<&mut GeneralLib>);
+        /// **Source:** `Interface_GeneralLib.hxx`:87 - `Interface_GeneralLib::Module()`
+        ///
         /// Returns the current Module in the Iteration
         #[cxx_name = "Module"]
         fn module(self: &GeneralLib) -> &HandleInterfaceGeneralModule;
+        /// **Source:** `Interface_GeneralLib.hxx`:90 - `Interface_GeneralLib::Protocol()`
+        ///
         /// Returns the current Protocol in the Iteration
         #[cxx_name = "Protocol"]
         fn protocol(self: &GeneralLib) -> &HandleInterfaceProtocol;
+        /// **Source:** `Interface_GeneralLib.hxx`:39 - `Interface_GeneralLib::SetGlobal()`
+        ///
         /// Adds a couple (Module-Protocol) into the global definition set
         /// for this class of Library.
         #[cxx_name = "Interface_GeneralLib_SetGlobal"]

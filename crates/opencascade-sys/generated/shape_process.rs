@@ -53,7 +53,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== ShapeProcess ========================
-        /// **Source:** `ShapeProcess.hxx` - `ShapeProcess`
+        /// **Source:** `ShapeProcess.hxx`:36 - `ShapeProcess`
         ///
         /// Shape Processing module
         /// allows to define and apply general Shape Processing as a
@@ -63,13 +63,19 @@ pub(crate) mod ffi {
         /// and their parameters.
         #[cxx_name = "ShapeProcess"]
         type ShapeProcess;
+        /// **Source:** `ShapeProcess.hxx`:77 - `ShapeProcess::RegisterOperator()`
+        ///
         /// Registers operator to make it visible for Performer
         #[cxx_name = "ShapeProcess_RegisterOperator"]
         fn ShapeProcess_register_operator(name: &str, op: &HandleShapeProcessOperator) -> bool;
+        /// **Source:** `ShapeProcess.hxx`:81 - `ShapeProcess::FindOperator()`
+        ///
         /// Finds operator by its name
         #[cxx_name = "ShapeProcess_FindOperator"]
         fn ShapeProcess_find_operator(name: &str, op: Pin<&mut HandleShapeProcessOperator>)
             -> bool;
+        /// **Source:** `ShapeProcess.hxx`:87 - `ShapeProcess::Perform()`
+        ///
         /// Performs a specified sequence of operators on Context
         /// Resource file and other data should be already loaded
         /// to Context (including description of sequence seq)

@@ -306,7 +306,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== math_Matrix ========================
-        /// **Source:** `math_Matrix.hxx` - `math_Matrix`
+        /// **Source:** `math_Matrix.hxx`:74 - `math_Matrix`
         ///
         /// This class implements the real matrix abstract data type.
         /// Matrixes can have an arbitrary range which must be defined
@@ -349,7 +349,7 @@ pub(crate) mod ffi {
         /// @endcode
         #[cxx_name = "math_Matrix"]
         type Matrix;
-        /// **Source:** `math_Matrix.hxx` - `math_Matrix::math_Matrix()`
+        /// **Source:** `math_Matrix.hxx`:88 - `math_Matrix::math_Matrix()`
         ///
         /// Constructs a non-initialized  matrix of range [LowerRow..UpperRow,
         /// LowerCol..UpperCol]
@@ -365,7 +365,7 @@ pub(crate) mod ffi {
             LowerCol: i32,
             UpperCol: i32,
         ) -> UniquePtr<Matrix>;
-        /// **Source:** `math_Matrix.hxx` - `math_Matrix::math_Matrix()`
+        /// **Source:** `math_Matrix.hxx`:96 - `math_Matrix::math_Matrix()`
         ///
         /// constructs a non-initialized matrix of range [LowerRow..UpperRow,
         /// LowerCol..UpperCol]
@@ -378,15 +378,19 @@ pub(crate) mod ffi {
             UpperCol: i32,
             InitialValue: f64,
         ) -> UniquePtr<Matrix>;
-        /// **Source:** `math_Matrix.hxx` - `math_Matrix::math_Matrix()`
+        /// **Source:** `math_Matrix.hxx`:113 - `math_Matrix::math_Matrix()`
         ///
         /// constructs a matrix for copy in initialization.
         /// An exception is raised if the matrixes have not the same dimensions.
         #[cxx_name = "math_Matrix_ctor_matrix"]
         fn Matrix_ctor_matrix(Other: &Matrix) -> UniquePtr<Matrix>;
+        /// **Source:** `math_Matrix.hxx`:116 - `math_Matrix::Init()`
+        ///
         /// Initialize all the elements of a matrix to InitialValue.
         #[cxx_name = "Init"]
         fn init(self: Pin<&mut Matrix>, InitialValue: f64);
+        /// **Source:** `math_Matrix.hxx`:125 - `math_Matrix::RowNumber()`
+        ///
         /// Returns the number of rows  of this matrix.
         /// Note that for a matrix A you always have the following relations:
         /// - A.RowNumber() = A.UpperRow() -   A.LowerRow() + 1
@@ -396,6 +400,8 @@ pub(crate) mod ffi {
         /// rows of A.returns the row range of a matrix.
         #[cxx_name = "RowNumber"]
         fn row_number(self: &Matrix) -> i32;
+        /// **Source:** `math_Matrix.hxx`:134 - `math_Matrix::ColNumber()`
+        ///
         /// Returns the number of rows  of this matrix.
         /// Note that for a matrix A you always have the following relations:
         /// - A.RowNumber() = A.UpperRow() -   A.LowerRow() + 1
@@ -405,35 +411,51 @@ pub(crate) mod ffi {
         /// rows of A.returns the row range of a matrix.
         #[cxx_name = "ColNumber"]
         fn col_number(self: &Matrix) -> i32;
+        /// **Source:** `math_Matrix.hxx`:138 - `math_Matrix::LowerRow()`
+        ///
         /// Returns the value of the Lower index of the row
         /// range of a matrix.
         #[cxx_name = "LowerRow"]
         fn lower_row(self: &Matrix) -> i32;
+        /// **Source:** `math_Matrix.hxx`:142 - `math_Matrix::UpperRow()`
+        ///
         /// Returns the Upper index of the row range
         /// of a matrix.
         #[cxx_name = "UpperRow"]
         fn upper_row(self: &Matrix) -> i32;
+        /// **Source:** `math_Matrix.hxx`:146 - `math_Matrix::LowerCol()`
+        ///
         /// Returns the value of the Lower index of the
         /// column range of a matrix.
         #[cxx_name = "LowerCol"]
         fn lower_col(self: &Matrix) -> i32;
+        /// **Source:** `math_Matrix.hxx`:150 - `math_Matrix::UpperCol()`
+        ///
         /// Returns the value of the upper index of the
         /// column range of a matrix.
         #[cxx_name = "UpperCol"]
         fn upper_col(self: &Matrix) -> i32;
+        /// **Source:** `math_Matrix.hxx`:154 - `math_Matrix::Determinant()`
+        ///
         /// Computes the determinant of a matrix.
         /// An exception is raised if the matrix is not a square matrix.
         #[cxx_name = "Determinant"]
         fn determinant(self: &Matrix) -> f64;
+        /// **Source:** `math_Matrix.hxx`:158 - `math_Matrix::Transpose()`
+        ///
         /// Transposes a given matrix.
         /// An exception is raised if the matrix is not a square matrix.
         #[cxx_name = "Transpose"]
         fn transpose(self: Pin<&mut Matrix>);
+        /// **Source:** `math_Matrix.hxx`:163 - `math_Matrix::Invert()`
+        ///
         /// Inverts a matrix using Gauss algorithm.
         /// Exception NotSquare is raised if the matrix is not square.
         /// Exception SingularMatrix is raised if the matrix is singular.
         #[cxx_name = "Invert"]
         fn invert(self: Pin<&mut Matrix>);
+        /// **Source:** `math_Matrix.hxx`:182 - `math_Matrix::Multiply()`
+        ///
         /// Sets this matrix to the product of the matrix Left, and the matrix Right.
         /// Example
         /// math_Matrix A (1, 3, 1, 3);
@@ -453,10 +475,14 @@ pub(crate) mod ffi {
         /// the number of columns of this matrix.
         #[cxx_name = "Multiply"]
         fn multiply_real(self: Pin<&mut Matrix>, Right: f64);
+        /// **Source:** `math_Matrix.hxx`:218 - `math_Matrix::Divide()`
+        ///
         /// divides all the elements of a matrix by the value <Right>.
         /// An exception is raised if <Right> = 0.
         #[cxx_name = "Divide"]
         fn divide(self: Pin<&mut Matrix>, Right: f64);
+        /// **Source:** `math_Matrix.hxx`:237 - `math_Matrix::Add()`
+        ///
         /// adds the matrix <Right> to a matrix.
         /// An exception is raised if the dimensions are different.
         /// Warning
@@ -465,10 +491,14 @@ pub(crate) mod ffi {
         /// whenever possible.
         #[cxx_name = "Add"]
         fn add_matrix(self: Pin<&mut Matrix>, Right: &Matrix);
+        /// **Source:** `math_Matrix.hxx`:249 - `math_Matrix::Add()`
+        ///
         /// sets a  matrix to the addition of <Left> and <Right>.
         /// An exception is raised if the dimensions are different.
         #[cxx_name = "Add"]
         fn add_matrix2(self: Pin<&mut Matrix>, Left: &Matrix, Right: &Matrix);
+        /// **Source:** `math_Matrix.hxx`:257 - `math_Matrix::Subtract()`
+        ///
         /// Subtracts the matrix <Right> from <me>.
         /// An exception is raised if the dimensions are different.
         /// Warning
@@ -477,6 +507,8 @@ pub(crate) mod ffi {
         /// Subtract whenever possible.
         #[cxx_name = "Subtract"]
         fn subtract_matrix(self: Pin<&mut Matrix>, Right: &Matrix);
+        /// **Source:** `math_Matrix.hxx`:282 - `math_Matrix::Set()`
+        ///
         /// Sets the values of this matrix,
         /// -   from index I1 to index I2 on the row dimension, and
         /// -   from index J1 to index J2 on the column dimension,
@@ -491,36 +523,52 @@ pub(crate) mod ffi {
         /// -   J2 - J1 + 1 is not equal to the number of columns of matrix M.
         #[cxx_name = "Set"]
         fn set(self: Pin<&mut Matrix>, I1: i32, I2: i32, J1: i32, J2: i32, M: &Matrix);
+        /// **Source:** `math_Matrix.hxx`:303 - `math_Matrix::SetDiag()`
+        ///
         /// Sets the diagonal of a matrix to the value <Value>.
         /// An exception is raised if the matrix is not square.
         #[cxx_name = "SetDiag"]
         fn set_diag(self: Pin<&mut Matrix>, Value: f64);
+        /// **Source:** `math_Matrix.hxx`:313 - `math_Matrix::SwapRow()`
+        ///
         /// Swaps the rows of index Row1 and Row2.
         /// An exception is raised if <Row1> or <Row2> is out of range.
         #[cxx_name = "SwapRow"]
         fn swap_row(self: Pin<&mut Matrix>, Row1: i32, Row2: i32);
+        /// **Source:** `math_Matrix.hxx`:317 - `math_Matrix::SwapCol()`
+        ///
         /// Swaps the columns of index <Col1> and <Col2>.
         /// An exception is raised if <Col1> or <Col2> is out of range.
         #[cxx_name = "SwapCol"]
         fn swap_col(self: Pin<&mut Matrix>, Col1: i32, Col2: i32);
+        /// **Source:** `math_Matrix.hxx`:340 - `math_Matrix::Multiply()`
+        ///
         /// Computes a matrix as the product of 2 matrixes.
         /// An exception is raised if the dimensions are different.
         #[cxx_name = "Multiply"]
         fn multiply_matrix2(self: Pin<&mut Matrix>, Left: &Matrix, Right: &Matrix);
+        /// **Source:** `math_Matrix.hxx`:345 - `math_Matrix::TMultiply()`
+        ///
         /// Computes a matrix to the product of the transpose of
         /// the matrix <TLeft> with the matrix <Right>.
         /// An exception is raised if the dimensions are different.
         #[cxx_name = "TMultiply"]
         fn t_multiply_matrix2(self: Pin<&mut Matrix>, TLeft: &Matrix, Right: &Matrix);
+        /// **Source:** `math_Matrix.hxx`:350 - `math_Matrix::Subtract()`
+        ///
         /// Sets a matrix to the Subtraction of the matrix <Right>
         /// from the matrix <Left>.
         /// An exception is raised if the dimensions are different.
         #[cxx_name = "Subtract"]
         fn subtract_matrix2(self: Pin<&mut Matrix>, Left: &Matrix, Right: &Matrix);
+        /// **Source:** `math_Matrix.hxx`:365 - `math_Matrix::Initialized()`
+        ///
         /// Matrixes are copied through assignment.
         /// An exception is raised if the dimensions are different.
         #[cxx_name = "Initialized"]
         fn initialized(self: Pin<&mut Matrix>, Other: &Matrix) -> Pin<&mut Matrix>;
+        /// **Source:** `math_Matrix.hxx`:371 - `math_Matrix::Multiply()`
+        ///
         /// Returns the product of 2 matrices.
         /// An exception is raised if the dimensions are different.
         #[cxx_name = "Multiply"]
@@ -584,18 +632,22 @@ pub(crate) mod ffi {
         #[cxx_name = "math_Matrix_Opposite"]
         fn Matrix_opposite(self_: Pin<&mut Matrix>) -> UniquePtr<Matrix>;
         /// ======================== math_Function ========================
-        /// **Source:** `math_Function.hxx` - `math_Function`
+        /// **Source:** `math_Function.hxx`:29 - `math_Function`
         ///
         /// This abstract class describes the virtual functions
         /// associated with a Function of a single variable.
         #[cxx_name = "math_Function"]
         type Function;
+        /// **Source:** `math_Function.hxx`:41 - `math_Function::Value()`
+        ///
         /// Computes the value of the function <F> for a given value of
         /// variable <X>.
         /// returns True if the computation was done successfully,
         /// False otherwise.
         #[cxx_name = "Value"]
         fn value(self: Pin<&mut Function>, X: f64, F: &mut f64) -> bool;
+        /// **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
+        ///
         /// returns the state of the function corresponding to the
         /// latest call of any methods associated with the function.
         /// This function is called by each of the algorithms
@@ -613,24 +665,30 @@ pub(crate) mod ffi {
         #[cxx_name = "GetStateNumber"]
         fn get_state_number(self: Pin<&mut Function>) -> i32;
         /// ======================== math_FunctionWithDerivative ========================
-        /// **Source:** `math_FunctionWithDerivative.hxx` - `math_FunctionWithDerivative`
+        /// **Source:** `math_FunctionWithDerivative.hxx`:31 - `math_FunctionWithDerivative`
         ///
         /// This abstract class describes the virtual functions associated with
         /// a function of a single variable for which the first derivative is
         /// available.
         #[cxx_name = "math_FunctionWithDerivative"]
         type FunctionWithDerivative;
+        /// **Source:** `math_FunctionWithDerivative.hxx`:39 - `math_FunctionWithDerivative::Value()`
+        ///
         /// Computes the value <F>of the function for the variable <X>.
         /// Returns True if the calculation were successfully done,
         /// False otherwise.
         #[cxx_name = "Value"]
         fn value(self: Pin<&mut FunctionWithDerivative>, X: f64, F: &mut f64) -> bool;
+        /// **Source:** `math_FunctionWithDerivative.hxx`:45 - `math_FunctionWithDerivative::Derivative()`
+        ///
         /// Computes the derivative <D> of the function
         /// for the variable <X>.
         /// Returns True if the calculation were successfully done,
         /// False otherwise.
         #[cxx_name = "Derivative"]
         fn derivative(self: Pin<&mut FunctionWithDerivative>, X: f64, D: &mut f64) -> bool;
+        /// **Source:** `math_FunctionWithDerivative.hxx`:51 - `math_FunctionWithDerivative::Values()`
+        ///
         /// Computes the value <F> and the derivative <D> of the
         /// function for the variable <X>.
         /// Returns True if the calculation were successfully done,
@@ -647,14 +705,14 @@ pub(crate) mod ffi {
             self_: Pin<&mut FunctionWithDerivative>,
         ) -> Pin<&mut Function>;
         /// ======================== math_DirectPolynomialRoots ========================
-        /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots`
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:30 - `math_DirectPolynomialRoots`
         ///
         /// This class implements the calculation of all the real roots of a real
         /// polynomial of degree <= 4 using a direct method. Once found,
         /// the roots are polished using the Newton method.
         #[cxx_name = "math_DirectPolynomialRoots"]
         type DirectPolynomialRoots;
-        /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:37 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
         ///
         /// computes all the real roots of the polynomial
         /// Ax4 + Bx3 + Cx2 + Dx + E using a direct method.
@@ -666,7 +724,7 @@ pub(crate) mod ffi {
             D: f64,
             E: f64,
         ) -> UniquePtr<DirectPolynomialRoots>;
-        /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:45 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
         ///
         /// computes all the real roots of the polynomial
         /// Ax3 + Bx2 + Cx + D using a direct method.
@@ -677,7 +735,7 @@ pub(crate) mod ffi {
             C: f64,
             D: f64,
         ) -> UniquePtr<DirectPolynomialRoots>;
-        /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:52 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
         ///
         /// computes all the real roots of the polynomial
         /// Ax2 + Bx + C using a direct method.
@@ -687,21 +745,29 @@ pub(crate) mod ffi {
             B: f64,
             C: f64,
         ) -> UniquePtr<DirectPolynomialRoots>;
-        /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:57 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
         ///
         /// computes the real root of the polynomial Ax + B.
         #[cxx_name = "math_DirectPolynomialRoots_ctor_real2"]
         fn DirectPolynomialRoots_ctor_real2(A: f64, B: f64) -> UniquePtr<DirectPolynomialRoots>;
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:60 - `math_DirectPolynomialRoots::IsDone()`
+        ///
         /// Returns true if the computations are successful, otherwise returns false.
         #[cxx_name = "IsDone"]
         fn is_done(self: &DirectPolynomialRoots) -> bool;
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:63 - `math_DirectPolynomialRoots::InfiniteRoots()`
+        ///
         /// Returns true if there is an infinity of roots, otherwise returns false.
         #[cxx_name = "InfiniteRoots"]
         fn infinite_roots(self: &DirectPolynomialRoots) -> bool;
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:67 - `math_DirectPolynomialRoots::NbSolutions()`
+        ///
         /// returns the number of solutions.
         /// An exception is raised if there are an infinity of roots.
         #[cxx_name = "NbSolutions"]
         fn nb_solutions(self: &DirectPolynomialRoots) -> i32;
+        /// **Source:** `math_DirectPolynomialRoots.hxx`:73 - `math_DirectPolynomialRoots::Value()`
+        ///
         /// returns the value of the Nieme root.
         /// An exception is raised if there are an infinity of roots.
         /// Exception RangeError is raised if Nieme is < 1
@@ -709,19 +775,21 @@ pub(crate) mod ffi {
         #[cxx_name = "Value"]
         fn value(self: &DirectPolynomialRoots, Nieme: i32) -> f64;
         /// ======================== math_BissecNewton ========================
-        /// **Source:** `math_BissecNewton.hxx` - `math_BissecNewton`
+        /// **Source:** `math_BissecNewton.hxx`:32 - `math_BissecNewton`
         ///
         /// This class implements a combination of Newton-Raphson and bissection
         /// methods to find the root of the function between two bounds.
         /// Knowledge of the derivative is required.
         #[cxx_name = "math_BissecNewton"]
         type BissecNewton;
-        /// **Source:** `math_BissecNewton.hxx` - `math_BissecNewton::math_BissecNewton()`
+        /// **Source:** `math_BissecNewton.hxx`:39 - `math_BissecNewton::math_BissecNewton()`
         ///
         /// Constructor.
         /// @param theXTolerance - algorithm tolerance.
         #[cxx_name = "math_BissecNewton_ctor_real"]
         fn BissecNewton_ctor_real(theXTolerance: f64) -> UniquePtr<BissecNewton>;
+        /// **Source:** `math_BissecNewton.hxx`:48 - `math_BissecNewton::Perform()`
+        ///
         /// A combination of Newton-Raphson and bissection methods is done to find
         /// the root of the function F between the bounds Bound1 and Bound2
         /// on the function F.
@@ -737,6 +805,8 @@ pub(crate) mod ffi {
             Bound2: f64,
             NbIterations: i32,
         );
+        /// **Source:** `math_BissecNewton.hxx`:57 - `math_BissecNewton::IsSolutionReached()`
+        ///
         /// This method is called at the end of each iteration to check if the
         /// solution has been found.
         /// It can be redefined in a sub-class to implement a specific test to
@@ -746,30 +816,38 @@ pub(crate) mod ffi {
             self: Pin<&mut BissecNewton>,
             theFunction: Pin<&mut FunctionWithDerivative>,
         ) -> bool;
+        /// **Source:** `math_BissecNewton.hxx`:60 - `math_BissecNewton::IsDone()`
+        ///
         /// Tests is the root has been successfully found.
         #[cxx_name = "IsDone"]
         fn is_done(self: &BissecNewton) -> bool;
+        /// **Source:** `math_BissecNewton.hxx`:64 - `math_BissecNewton::Root()`
+        ///
         /// returns the value of the root.
         /// Exception NotDone is raised if the minimum was not found.
         #[cxx_name = "Root"]
         fn root(self: &BissecNewton) -> f64;
+        /// **Source:** `math_BissecNewton.hxx`:68 - `math_BissecNewton::Derivative()`
+        ///
         /// returns the value of the derivative at the root.
         /// Exception NotDone is raised if the minimum was not found.
         #[cxx_name = "Derivative"]
         fn derivative(self: &BissecNewton) -> f64;
+        /// **Source:** `math_BissecNewton.hxx`:72 - `math_BissecNewton::Value()`
+        ///
         /// returns the value of the function at the root.
         /// Exception NotDone is raised if the minimum was not found.
         #[cxx_name = "Value"]
         fn value(self: &BissecNewton) -> f64;
         /// ======================== math_BrentMinimum ========================
-        /// **Source:** `math_BrentMinimum.hxx` - `math_BrentMinimum`
+        /// **Source:** `math_BrentMinimum.hxx`:31 - `math_BrentMinimum`
         ///
         /// This class implements the Brent's method to find the minimum of
         /// a function of a single variable.
         /// No knowledge of the derivative is required.
         #[cxx_name = "math_BrentMinimum"]
         type BrentMinimum;
-        /// **Source:** `math_BrentMinimum.hxx` - `math_BrentMinimum::math_BrentMinimum()`
+        /// **Source:** `math_BrentMinimum.hxx`:38 - `math_BrentMinimum::math_BrentMinimum()`
         ///
         /// This constructor should be used in a sub-class to initialize
         /// correctly all the fields of this class.
@@ -779,7 +857,7 @@ pub(crate) mod ffi {
             NbIterations: i32,
             ZEPS: f64,
         ) -> UniquePtr<BrentMinimum>;
-        /// **Source:** `math_BrentMinimum.hxx` - `math_BrentMinimum::math_BrentMinimum()`
+        /// **Source:** `math_BrentMinimum.hxx`:45 - `math_BrentMinimum::math_BrentMinimum()`
         ///
         /// This constructor should be used in a sub-class to initialize
         /// correctly all the fields of this class.
@@ -791,12 +869,16 @@ pub(crate) mod ffi {
             NbIterations: i32,
             ZEPS: f64,
         ) -> UniquePtr<BrentMinimum>;
+        /// **Source:** `math_BrentMinimum.hxx`:57 - `math_BrentMinimum::Perform()`
+        ///
         /// Brent minimization is performed on function F from a given
         /// bracketing triplet of abscissas Ax, Bx, Cx (such that Bx is
         /// between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx))
         /// The solution is found when: abs(Xi - Xi-1) <= TolX * abs(Xi) + ZEPS;
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut BrentMinimum>, F: Pin<&mut Function>, Ax: f64, Bx: f64, Cx: f64);
+        /// **Source:** `math_BrentMinimum.hxx`:66 - `math_BrentMinimum::IsSolutionReached()`
+        ///
         /// This method is called at the end of each iteration to check if the
         /// solution is found.
         /// It can be redefined in a sub-class to implement a specific test to
@@ -806,42 +888,56 @@ pub(crate) mod ffi {
             self: Pin<&mut BrentMinimum>,
             theFunction: Pin<&mut Function>,
         ) -> bool;
+        /// **Source:** `math_BrentMinimum.hxx`:69 - `math_BrentMinimum::IsDone()`
+        ///
         /// Returns true if the computations are successful, otherwise returns false.
         #[cxx_name = "IsDone"]
         fn is_done(self: &BrentMinimum) -> bool;
+        /// **Source:** `math_BrentMinimum.hxx`:73 - `math_BrentMinimum::Location()`
+        ///
         /// returns the location value of the minimum.
         /// Exception NotDone is raised if the minimum was not found.
         #[cxx_name = "Location"]
         fn location(self: &BrentMinimum) -> f64;
+        /// **Source:** `math_BrentMinimum.hxx`:77 - `math_BrentMinimum::Minimum()`
+        ///
         /// returns the value of the minimum.
         /// Exception NotDone is raised if the minimum was not found.
         #[cxx_name = "Minimum"]
         fn minimum(self: &BrentMinimum) -> f64;
+        /// **Source:** `math_BrentMinimum.hxx`:82 - `math_BrentMinimum::NbIterations()`
+        ///
         /// returns the number of iterations really done during the
         /// computation of the minimum.
         /// Exception NotDone is raised if the minimum was not found.
         #[cxx_name = "NbIterations"]
         fn nb_iterations(self: &BrentMinimum) -> i32;
         /// ======================== math_EigenValuesSearcher ========================
-        /// **Source:** `math_EigenValuesSearcher.hxx` - `math_EigenValuesSearcher`
+        /// **Source:** `math_EigenValuesSearcher.hxx`:32 - `math_EigenValuesSearcher`
         ///
         /// This class finds eigen values and vectors of
         /// real symmetric tridiagonal matrix
         #[cxx_name = "math_EigenValuesSearcher"]
         type EigenValuesSearcher;
-        /// **Source:** `math_EigenValuesSearcher.hxx` - `math_EigenValuesSearcher::math_EigenValuesSearcher()`
+        /// **Source:** `math_EigenValuesSearcher.hxx`:37 - `math_EigenValuesSearcher::math_EigenValuesSearcher()`
         #[cxx_name = "math_EigenValuesSearcher_ctor_array1ofreal2"]
         fn EigenValuesSearcher_ctor_array1ofreal2(
             Diagonal: &TColStd_Array1OfReal,
             Subdiagonal: &TColStd_Array1OfReal,
         ) -> UniquePtr<EigenValuesSearcher>;
+        /// **Source:** `math_EigenValuesSearcher.hxx`:42 - `math_EigenValuesSearcher::IsDone()`
+        ///
         /// Returns Standard_True if computation is performed
         /// successfully.
         #[cxx_name = "IsDone"]
         fn is_done(self: &EigenValuesSearcher) -> bool;
+        /// **Source:** `math_EigenValuesSearcher.hxx`:45 - `math_EigenValuesSearcher::Dimension()`
+        ///
         /// Returns the dimension of matrix
         #[cxx_name = "Dimension"]
         fn dimension(self: &EigenValuesSearcher) -> i32;
+        /// **Source:** `math_EigenValuesSearcher.hxx`:49 - `math_EigenValuesSearcher::EigenValue()`
+        ///
         /// Returns the Index_th eigen value of matrix
         /// Index must be in [1, Dimension()]
         #[cxx_name = "EigenValue"]
@@ -854,7 +950,7 @@ pub(crate) mod ffi {
             Index: i32,
         ) -> UniquePtr<math_Vector>;
         /// ======================== math_GaussLeastSquare ========================
-        /// **Source:** `math_GaussLeastSquare.hxx` - `math_GaussLeastSquare`
+        /// **Source:** `math_GaussLeastSquare.hxx`:34 - `math_GaussLeastSquare`
         ///
         /// This class implements the least square solution of a set of
         /// n linear equations of m unknowns (n >= m) using the gauss LU
@@ -863,7 +959,7 @@ pub(crate) mod ffi {
         /// than math_SVD.
         #[cxx_name = "math_GaussLeastSquare"]
         type GaussLeastSquare;
-        /// **Source:** `math_GaussLeastSquare.hxx` - `math_GaussLeastSquare::math_GaussLeastSquare()`
+        /// **Source:** `math_GaussLeastSquare.hxx`:46 - `math_GaussLeastSquare::math_GaussLeastSquare()`
         ///
         /// Given an input n X m matrix A with n >= m this constructor
         /// performs the LU decomposition with partial pivoting
@@ -877,9 +973,13 @@ pub(crate) mod ffi {
             A: &Matrix,
             MinPivot: f64,
         ) -> UniquePtr<GaussLeastSquare>;
+        /// **Source:** `math_GaussLeastSquare.hxx`:50 - `math_GaussLeastSquare::IsDone()`
+        ///
         /// Returns true if the computations are successful, otherwise returns false.e
         #[cxx_name = "IsDone"]
         fn is_done(self: &GaussLeastSquare) -> bool;
+        /// **Source:** `math_GaussLeastSquare.hxx`:60 - `math_GaussLeastSquare::Solve()`
+        ///
         /// Given the input Vector <B> this routine solves the set
         /// of linear equations A . X = B.
         /// Exception NotDone is raised if the decomposition of A was

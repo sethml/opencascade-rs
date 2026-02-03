@@ -565,7 +565,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepTools ========================
-        /// **Source:** `BRepTools.hxx` - `BRepTools`
+        /// **Source:** `BRepTools.hxx`:78 - `BRepTools`
         ///
         /// The BRepTools package provides  utilities for BRep
         /// data structures.
@@ -599,6 +599,8 @@ pub(crate) mod ffi {
         /// * Dump : A method to dump a BRep object.
         #[cxx_name = "BRepTools"]
         type BRepTools;
+        /// **Source:** `BRepTools.hxx`:85 - `BRepTools::UVBounds()`
+        ///
         /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
         /// values in the parametric space of F.
         #[cxx_name = "BRepTools_UVBounds_face_real4"]
@@ -609,6 +611,8 @@ pub(crate) mod ffi {
             VMin: &mut f64,
             VMax: &mut f64,
         );
+        /// **Source:** `BRepTools.hxx`:93 - `BRepTools::UVBounds()`
+        ///
         /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
         /// values of the wire in the parametric space of F.
         #[cxx_name = "BRepTools_UVBounds_face_wire_real4"]
@@ -620,6 +624,8 @@ pub(crate) mod ffi {
             VMin: &mut f64,
             VMax: &mut f64,
         );
+        /// **Source:** `BRepTools.hxx`:102 - `BRepTools::UVBounds()`
+        ///
         /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
         /// values of the edge in the parametric space of F.
         #[cxx_name = "BRepTools_UVBounds_face_edge_real4"]
@@ -631,10 +637,14 @@ pub(crate) mod ffi {
             VMin: &mut f64,
             VMax: &mut f64,
         );
+        /// **Source:** `BRepTools.hxx`:111 - `BRepTools::AddUVBounds()`
+        ///
         /// Adds  to  the box <B>  the bounding values in  the
         /// parametric space of F.
         #[cxx_name = "BRepTools_AddUVBounds_face_box2d"]
         fn BRepTools_add_uv_bounds_face_box2d(F: &TopoDS_Face, B: Pin<&mut Bnd_Box2d>);
+        /// **Source:** `BRepTools.hxx`:115 - `BRepTools::AddUVBounds()`
+        ///
         /// Adds  to the box  <B>  the bounding  values of the
         /// wire in the parametric space of F.
         #[cxx_name = "BRepTools_AddUVBounds_face_wire_box2d"]
@@ -643,6 +653,8 @@ pub(crate) mod ffi {
             W: &TopoDS_Wire,
             B: Pin<&mut Bnd_Box2d>,
         );
+        /// **Source:** `BRepTools.hxx`:119 - `BRepTools::AddUVBounds()`
+        ///
         /// Adds to  the box <B>  the  bounding values  of the
         /// edge in the parametric space of F.
         #[cxx_name = "BRepTools_AddUVBounds_face_edge_box2d"]
@@ -651,38 +663,60 @@ pub(crate) mod ffi {
             E: &TopoDS_Edge,
             B: Pin<&mut Bnd_Box2d>,
         );
+        /// **Source:** `BRepTools.hxx`:122 - `BRepTools::Update()`
+        ///
         /// Update a vertex (nothing is done)
         #[cxx_name = "BRepTools_Update_vertex"]
         fn BRepTools_update_vertex(V: &TopoDS_Vertex);
+        /// **Source:** `BRepTools.hxx`:125 - `BRepTools::Update()`
+        ///
         /// Update an edge, compute 2d bounding boxes.
         #[cxx_name = "BRepTools_Update_edge"]
         fn BRepTools_update_edge(E: &TopoDS_Edge);
+        /// **Source:** `BRepTools.hxx`:128 - `BRepTools::Update()`
+        ///
         /// Update a wire (nothing is done)
         #[cxx_name = "BRepTools_Update_wire"]
         fn BRepTools_update_wire(W: &TopoDS_Wire);
+        /// **Source:** `BRepTools.hxx`:131 - `BRepTools::Update()`
+        ///
         /// Update a Face, update UV points.
         #[cxx_name = "BRepTools_Update_face"]
         fn BRepTools_update_face(F: &TopoDS_Face);
+        /// **Source:** `BRepTools.hxx`:134 - `BRepTools::Update()`
+        ///
         /// Update a shell (nothing is done)
         #[cxx_name = "BRepTools_Update_shell"]
         fn BRepTools_update_shell(S: &TopoDS_Shell);
+        /// **Source:** `BRepTools.hxx`:137 - `BRepTools::Update()`
+        ///
         /// Update a solid (nothing is done)
         #[cxx_name = "BRepTools_Update_solid"]
         fn BRepTools_update_solid(S: &TopoDS_Solid);
+        /// **Source:** `BRepTools.hxx`:140 - `BRepTools::Update()`
+        ///
         /// Update a composite solid (nothing is done)
         #[cxx_name = "BRepTools_Update_compsolid"]
         fn BRepTools_update_compsolid(C: &TopoDS_CompSolid);
+        /// **Source:** `BRepTools.hxx`:143 - `BRepTools::Update()`
+        ///
         /// Update a compound (nothing is done)
         #[cxx_name = "BRepTools_Update_compound"]
         fn BRepTools_update_compound(C: &TopoDS_Compound);
+        /// **Source:** `BRepTools.hxx`:146 - `BRepTools::Update()`
+        ///
         /// Update a shape, call the correct update.
         #[cxx_name = "BRepTools_Update_shape"]
         fn BRepTools_update_shape(S: &TopoDS_Shape);
+        /// **Source:** `BRepTools.hxx`:151 - `BRepTools::UpdateFaceUVPoints()`
+        ///
         /// For each edge of the face <F> reset the UV points
         /// to the bounding points of the parametric curve of the
         /// edge on the face.
         #[cxx_name = "BRepTools_UpdateFaceUVPoints"]
         fn BRepTools_update_face_uv_points(theF: &TopoDS_Face);
+        /// **Source:** `BRepTools.hxx`:162 - `BRepTools::Clean()`
+        ///
         /// Removes all cached polygonal representation of the shape,
         /// i.e. the triangulations of the faces of <S> and polygons on
         /// triangulations and polygons 3d of the edges.
@@ -694,13 +728,19 @@ pub(crate) mod ffi {
         /// given shape.
         #[cxx_name = "BRepTools_Clean"]
         fn BRepTools_clean(theShape: &TopoDS_Shape, theForce: bool);
+        /// **Source:** `BRepTools.hxx`:166 - `BRepTools::CleanGeometry()`
+        ///
         /// Removes geometry (curves and surfaces) from all edges and faces of the shape
         #[cxx_name = "BRepTools_CleanGeometry"]
         fn BRepTools_clean_geometry(theShape: &TopoDS_Shape);
+        /// **Source:** `BRepTools.hxx`:170 - `BRepTools::RemoveUnusedPCurves()`
+        ///
         /// Removes all the pcurves of the edges of <S> that
         /// refer to surfaces not belonging to any face of <S>
         #[cxx_name = "BRepTools_RemoveUnusedPCurves"]
         fn BRepTools_remove_unused_p_curves(S: &TopoDS_Shape);
+        /// **Source:** `BRepTools.hxx`:182 - `BRepTools::Triangulation()`
+        ///
         /// Verifies that each Face from the shape has got a triangulation with a deflection smaller or
         /// equal to specified one and the Edges a discretization on this triangulation.
         /// @param[in] theShape    shape to verify
@@ -716,6 +756,8 @@ pub(crate) mod ffi {
             theLinDefl: f64,
             theToCheckFreeEdges: bool,
         ) -> bool;
+        /// **Source:** `BRepTools.hxx`:198 - `BRepTools::LoadTriangulation()`
+        ///
         /// Loads triangulation data for each face of the shape
         /// from some deferred storage using specified shared input file system
         /// @param[in] theShape             shape to load triangulations
@@ -734,6 +776,8 @@ pub(crate) mod ffi {
             theToSetAsActive: bool,
             theFileSystem: &HandleOSDFileSystem,
         ) -> bool;
+        /// **Source:** `BRepTools.hxx`:213 - `BRepTools::UnloadTriangulation()`
+        ///
         /// Releases triangulation data for each face of the shape if there is deferred storage to load it
         /// later
         /// @param[in] theShape             shape to unload triangulations
@@ -748,6 +792,8 @@ pub(crate) mod ffi {
             theShape: &TopoDS_Shape,
             theTriangulationIdx: i32,
         ) -> bool;
+        /// **Source:** `BRepTools.hxx`:229 - `BRepTools::ActivateTriangulation()`
+        ///
         /// Activates triangulation data for each face of the shape
         /// from some deferred storage using specified shared input file system
         /// @param[in] theShape               shape to activate triangulations
@@ -766,6 +812,8 @@ pub(crate) mod ffi {
             theTriangulationIdx: i32,
             theToActivateStrictly: bool,
         ) -> bool;
+        /// **Source:** `BRepTools.hxx`:239 - `BRepTools::LoadAllTriangulations()`
+        ///
         /// Loads all available triangulations for each face of the shape
         /// from some deferred storage using specified shared input file system
         /// @param[in] theShape       shape to load triangulations
@@ -776,32 +824,46 @@ pub(crate) mod ffi {
             theShape: &TopoDS_Shape,
             theFileSystem: &HandleOSDFileSystem,
         ) -> bool;
+        /// **Source:** `BRepTools.hxx`:247 - `BRepTools::UnloadAllTriangulations()`
+        ///
         /// Releases all available triangulations for each face of the shape if there is deferred storage
         /// to load them later
         /// @param[in] theShape       shape to unload triangulations
         /// @return TRUE if at least one triangulation is unloaded.
         #[cxx_name = "BRepTools_UnloadAllTriangulations"]
         fn BRepTools_unload_all_triangulations(theShape: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepTools.hxx`:252 - `BRepTools::Compare()`
+        ///
         /// Returns  True if  the    distance between the  two
         /// vertices is lower than their tolerance.
         #[cxx_name = "BRepTools_Compare_vertex2"]
         fn BRepTools_compare_vertex2(V1: &TopoDS_Vertex, V2: &TopoDS_Vertex) -> bool;
+        /// **Source:** `BRepTools.hxx`:256 - `BRepTools::Compare()`
+        ///
         /// Returns  True if  the    distance between the  two
         /// edges is lower than their tolerance.
         #[cxx_name = "BRepTools_Compare_edge2"]
         fn BRepTools_compare_edge2(E1: &TopoDS_Edge, E2: &TopoDS_Edge) -> bool;
+        /// **Source:** `BRepTools.hxx`:260 - `BRepTools::OuterWire()`
+        ///
         /// Returns the outer most wire of <F>. Returns a Null
         /// wire if <F> has no wires.
         #[cxx_name = "BRepTools_OuterWire"]
         fn BRepTools_outer_wire(F: &TopoDS_Face) -> UniquePtr<TopoDS_Wire>;
+        /// **Source:** `BRepTools.hxx`:264 - `BRepTools::Map3DEdges()`
+        ///
         /// Stores in the map  <M> all the 3D topology edges
         /// of <S>.
         #[cxx_name = "BRepTools_Map3DEdges"]
         fn BRepTools_map3_d_edges(S: &TopoDS_Shape, M: Pin<&mut TopTools_IndexedMapOfShape>);
+        /// **Source:** `BRepTools.hxx`:268 - `BRepTools::IsReallyClosed()`
+        ///
         /// Verifies that the edge  <E> is found two  times on
         /// the face <F> before calling BRep_Tool::IsClosed.
         #[cxx_name = "BRepTools_IsReallyClosed"]
         fn BRepTools_is_really_closed(E: &TopoDS_Edge, F: &TopoDS_Face) -> bool;
+        /// **Source:** `BRepTools.hxx`:272 - `BRepTools::DetectClosedness()`
+        ///
         /// Detect closedness of face in U and V directions
         #[cxx_name = "BRepTools_DetectClosedness"]
         fn BRepTools_detect_closedness(
@@ -809,6 +871,8 @@ pub(crate) mod ffi {
             theUclosed: &mut bool,
             theVclosed: &mut bool,
         );
+        /// **Source:** `BRepTools.hxx`:329 - `BRepTools::Write()`
+        ///
         /// Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1.
         /// This alias writes shape with triangulation data.
         /// @param[in] theShape  the shape to write
@@ -820,6 +884,8 @@ pub(crate) mod ffi {
             theFile: &str,
             theProgress: &Message_ProgressRange,
         ) -> bool;
+        /// **Source:** `BRepTools.hxx`:362 - `BRepTools::Read()`
+        ///
         /// Reads a Shape  from <File>,  returns it in  <Sh>.
         /// <B> is used to build the shape.
         #[cxx_name = "BRepTools_Read_shape_charptr_builder_progressrange"]
@@ -829,6 +895,8 @@ pub(crate) mod ffi {
             B: &BRep_Builder,
             theProgress: &Message_ProgressRange,
         ) -> bool;
+        /// **Source:** `BRepTools.hxx`:374 - `BRepTools::EvalAndUpdateTol()`
+        ///
         /// Evals real tolerance of edge  <theE>.
         /// <theC3d>, <theC2d>, <theS>, <theF>, <theL> are
         /// correspondently 3d curve of edge, 2d curve on surface <theS> and
@@ -844,6 +912,8 @@ pub(crate) mod ffi {
             theF: f64,
             theL: f64,
         ) -> f64;
+        /// **Source:** `BRepTools.hxx`:393 - `BRepTools::RemoveInternals()`
+        ///
         /// Removes internal sub-shapes from the shape.
         /// The check on internal status is based on orientation of sub-shapes,
         /// classification is not performed.
@@ -853,6 +923,8 @@ pub(crate) mod ffi {
         /// the given shape from all sub-shapes with internal orientation.
         #[cxx_name = "BRepTools_RemoveInternals"]
         fn BRepTools_remove_internals(theS: Pin<&mut TopoDS_Shape>, theForce: bool);
+        /// **Source:** `BRepTools.hxx`:399 - `BRepTools::CheckLocations()`
+        ///
         /// Check all locations of shape according criterium:
         /// aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec())
         /// All sub-shapes having such locations are put in list theProblemShapes
@@ -862,7 +934,7 @@ pub(crate) mod ffi {
             theProblemShapes: Pin<&mut TopTools_ListOfShape>,
         );
         /// ======================== BRepTools_History ========================
-        /// **Source:** `BRepTools_History.hxx` - `BRepTools_History`
+        /// **Source:** `BRepTools_History.hxx`:89 - `BRepTools_History`
         ///
         /// The history keeps the following relations between the input shapes
         /// (S1, ..., Sm) and output shapes (T1, ..., Tn):
@@ -928,12 +1000,14 @@ pub(crate) mod ffi {
         /// Tj <= M12(Si), Qk <= M23(Tj) ==> Qk <= M13(Si);
         #[cxx_name = "BRepTools_History"]
         type History;
-        /// **Source:** `BRepTools_History.hxx` - `BRepTools_History::BRepTools_History()`
+        /// **Source:** `BRepTools_History.hxx`:93 - `BRepTools_History::BRepTools_History()`
         ///
         /// @name Constructors for History creation
         /// Empty constructor
         #[cxx_name = "BRepTools_History_ctor"]
         fn History_ctor() -> UniquePtr<History>;
+        /// **Source:** `BRepTools_History.hxx`:154 - `BRepTools_History::AddGenerated()`
+        ///
         /// Methods to set the history.
         /// Set the second shape as generated one from the first shape.
         #[cxx_name = "AddGenerated"]
@@ -942,6 +1016,8 @@ pub(crate) mod ffi {
             theInitial: &TopoDS_Shape,
             theGenerated: &TopoDS_Shape,
         );
+        /// **Source:** `BRepTools_History.hxx`:158 - `BRepTools_History::AddModified()`
+        ///
         /// Set the second shape as modified one from the first shape.
         #[cxx_name = "AddModified"]
         fn add_modified(
@@ -949,9 +1025,13 @@ pub(crate) mod ffi {
             theInitial: &TopoDS_Shape,
             theModified: &TopoDS_Shape,
         );
+        /// **Source:** `BRepTools_History.hxx`:161 - `BRepTools_History::Remove()`
+        ///
         /// Set the shape as removed one.
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut History>, theRemoved: &TopoDS_Shape);
+        /// **Source:** `BRepTools_History.hxx`:164 - `BRepTools_History::ReplaceGenerated()`
+        ///
         /// Set the second shape as the only generated one from the first one.
         #[cxx_name = "ReplaceGenerated"]
         fn replace_generated(
@@ -959,6 +1039,8 @@ pub(crate) mod ffi {
             theInitial: &TopoDS_Shape,
             theGenerated: &TopoDS_Shape,
         );
+        /// **Source:** `BRepTools_History.hxx`:168 - `BRepTools_History::ReplaceModified()`
+        ///
         /// Set the second shape as the only modified one from the first one.
         #[cxx_name = "ReplaceModified"]
         fn replace_modified(
@@ -966,41 +1048,65 @@ pub(crate) mod ffi {
             theInitial: &TopoDS_Shape,
             theModified: &TopoDS_Shape,
         );
+        /// **Source:** `BRepTools_History.hxx`:172 - `BRepTools_History::Clear()`
+        ///
         /// Clears the history.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut History>);
+        /// **Source:** `BRepTools_History.hxx`:181 - `BRepTools_History::Generated()`
+        ///
         /// Methods to read the history.
         /// Returns all shapes generated from the shape.
         #[cxx_name = "Generated"]
         fn generated(self: &History, theInitial: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepTools_History.hxx`:184 - `BRepTools_History::Modified()`
+        ///
         /// Returns all shapes modified from the shape.
         #[cxx_name = "Modified"]
         fn modified(self: &History, theInitial: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepTools_History.hxx`:187 - `BRepTools_History::IsRemoved()`
+        ///
         /// Returns 'true' if the shape is removed.
         #[cxx_name = "IsRemoved"]
         fn is_removed(self: &History, theInitial: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepTools_History.hxx`:190 - `BRepTools_History::HasGenerated()`
+        ///
         /// Returns 'true' if there any shapes with Generated elements present
         #[cxx_name = "HasGenerated"]
         fn has_generated(self: &History) -> bool;
+        /// **Source:** `BRepTools_History.hxx`:193 - `BRepTools_History::HasModified()`
+        ///
         /// Returns 'true' if there any Modified shapes present
         #[cxx_name = "HasModified"]
         fn has_modified(self: &History) -> bool;
+        /// **Source:** `BRepTools_History.hxx`:196 - `BRepTools_History::HasRemoved()`
+        ///
         /// Returns 'true' if there any removed shapes present
         #[cxx_name = "HasRemoved"]
         fn has_removed(self: &History) -> bool;
+        /// **Source:** `BRepTools_History.hxx`:200 - `BRepTools_History::Merge()`
+        ///
         /// A method to merge a next history to this history.
         /// Merges the next history to this history.
         #[cxx_name = "Merge"]
         fn merge_handlehistory(self: Pin<&mut History>, theHistory23: &HandleBRepToolsHistory);
+        /// **Source:** `BRepTools_History.hxx`:203 - `BRepTools_History::Merge()`
+        ///
         /// Merges the next history to this history.
         #[cxx_name = "Merge"]
         fn merge_history(self: Pin<&mut History>, theHistory23: &History);
+        /// **Source:** `BRepTools_History.hxx`:229 - `BRepTools_History::DynamicType()`
+        ///
         /// Define the OCCT RTTI for the type.
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &History) -> &HandleStandardType;
+        /// **Source:** `BRepTools_History.hxx`:145 - `BRepTools_History::IsSupportedType()`
+        ///
         /// Returns 'true' if the type of the shape is supported by the history.
         #[cxx_name = "BRepTools_History_IsSupportedType"]
         fn History_is_supported_type(theShape: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepTools_History.hxx`:229 - `BRepTools_History::get_type_name()`
+        ///
         /// Define the OCCT RTTI for the type.
         #[cxx_name = "BRepTools_History_get_type_name"]
         fn History_get_type_name() -> String;
@@ -1008,22 +1114,22 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepTools_History_to_handle"]
         fn History_to_handle(obj: UniquePtr<History>) -> UniquePtr<HandleBRepToolsHistory>;
         /// ======================== BRepTools_Modifier ========================
-        /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier`
+        /// **Source:** `BRepTools_Modifier.hxx`:41 - `BRepTools_Modifier`
         ///
         /// Performs geometric modifications on a shape.
         #[cxx_name = "BRepTools_Modifier"]
         type Modifier;
-        /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`
+        /// **Source:** `BRepTools_Modifier.hxx`:47 - `BRepTools_Modifier::BRepTools_Modifier()`
         ///
         /// Creates an empty Modifier.
         #[cxx_name = "BRepTools_Modifier_ctor_bool"]
         fn Modifier_ctor_bool(theMutableInput: bool) -> UniquePtr<Modifier>;
-        /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`
+        /// **Source:** `BRepTools_Modifier.hxx`:50 - `BRepTools_Modifier::BRepTools_Modifier()`
         ///
         /// Creates a modifier on the shape <S>.
         #[cxx_name = "BRepTools_Modifier_ctor_shape"]
         fn Modifier_ctor_shape(S: &TopoDS_Shape) -> UniquePtr<Modifier>;
-        /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`
+        /// **Source:** `BRepTools_Modifier.hxx`:54 - `BRepTools_Modifier::BRepTools_Modifier()`
         ///
         /// Creates a modifier on  the shape <S>, and performs
         /// the modifications described by <M>.
@@ -1032,9 +1138,13 @@ pub(crate) mod ffi {
             S: &TopoDS_Shape,
             M: &HandleBRepToolsModification,
         ) -> UniquePtr<Modifier>;
+        /// **Source:** `BRepTools_Modifier.hxx`:58 - `BRepTools_Modifier::Init()`
+        ///
         /// Initializes the modifier with the shape <S>.
         #[cxx_name = "Init"]
         fn init(self: Pin<&mut Modifier>, S: &TopoDS_Shape);
+        /// **Source:** `BRepTools_Modifier.hxx`:61 - `BRepTools_Modifier::Perform()`
+        ///
         /// Performs the modifications described by <M>.
         #[cxx_name = "Perform"]
         fn perform(
@@ -1042,23 +1152,31 @@ pub(crate) mod ffi {
             M: &HandleBRepToolsModification,
             theProgress: &Message_ProgressRange,
         );
+        /// **Source:** `BRepTools_Modifier.hxx`:66 - `BRepTools_Modifier::IsDone()`
+        ///
         /// Returns Standard_True if the modification has
         /// been computed successfully.
         #[cxx_name = "IsDone"]
         fn is_done(self: &Modifier) -> bool;
+        /// **Source:** `BRepTools_Modifier.hxx`:69 - `BRepTools_Modifier::IsMutableInput()`
+        ///
         /// Returns the current mutable input state
         #[cxx_name = "IsMutableInput"]
         fn is_mutable_input(self: &Modifier) -> bool;
+        /// **Source:** `BRepTools_Modifier.hxx`:74 - `BRepTools_Modifier::SetMutableInput()`
+        ///
         /// Sets the mutable input state
         /// If true then the input (original) shape can be modified
         /// during modification process
         #[cxx_name = "SetMutableInput"]
         fn set_mutable_input(self: Pin<&mut Modifier>, theMutableInput: bool);
+        /// **Source:** `BRepTools_Modifier.hxx`:77 - `BRepTools_Modifier::ModifiedShape()`
+        ///
         /// Returns the modified shape corresponding to <S>.
         #[cxx_name = "ModifiedShape"]
         fn modified_shape(self: &Modifier, S: &TopoDS_Shape) -> &TopoDS_Shape;
         /// ======================== BRepTools_ReShape ========================
-        /// **Source:** `BRepTools_ReShape.hxx` - `BRepTools_ReShape`
+        /// **Source:** `BRepTools_ReShape.hxx`:52 - `BRepTools_ReShape`
         ///
         /// Rebuilds a Shape by making pre-defined substitutions on some
         /// of its components
@@ -1076,23 +1194,33 @@ pub(crate) mod ffi {
         /// Supports the 'BRepTools_History' history by method 'History'.
         #[cxx_name = "BRepTools_ReShape"]
         type ReShape;
-        /// **Source:** `BRepTools_ReShape.hxx` - `BRepTools_ReShape::BRepTools_ReShape()`
+        /// **Source:** `BRepTools_ReShape.hxx`:56 - `BRepTools_ReShape::BRepTools_ReShape()`
         ///
         /// Returns an empty Reshape
         #[cxx_name = "BRepTools_ReShape_ctor"]
         fn ReShape_ctor() -> UniquePtr<ReShape>;
+        /// **Source:** `BRepTools_ReShape.hxx`:59 - `BRepTools_ReShape::Clear()`
+        ///
         /// Clears all substitutions requests
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut ReShape>);
+        /// **Source:** `BRepTools_ReShape.hxx`:62 - `BRepTools_ReShape::Remove()`
+        ///
         /// Sets a request to Remove a Shape whatever the orientation
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut ReShape>, shape: &TopoDS_Shape);
+        /// **Source:** `BRepTools_ReShape.hxx`:65 - `BRepTools_ReShape::Replace()`
+        ///
         /// Sets a request to Replace a Shape by a new one.
         #[cxx_name = "Replace"]
         fn replace(self: Pin<&mut ReShape>, shape: &TopoDS_Shape, newshape: &TopoDS_Shape);
+        /// **Source:** `BRepTools_ReShape.hxx`:94 - `BRepTools_ReShape::IsRecorded()`
+        ///
         /// Tells if a shape is recorded for Replace/Remove
         #[cxx_name = "IsRecorded"]
         fn is_recorded(self: &ReShape, shape: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepTools_ReShape.hxx`:109 - `BRepTools_ReShape::Status()`
+        ///
         /// Returns a complete substitution status for a shape
         /// 0  : not recorded,   <newsh> = original <shape>
         /// < 0: to be removed,  <newsh> is NULL
@@ -1107,12 +1235,16 @@ pub(crate) mod ffi {
             newsh: Pin<&mut TopoDS_Shape>,
             last: bool,
         ) -> i32;
+        /// **Source:** `BRepTools_ReShape.hxx`:128 - `BRepTools_ReShape::ModeConsiderLocation()`
+        ///
         /// Returns (modifiable) the flag which defines whether Location of shape take into account
         /// during replacing shapes.
         #[cxx_name = "ModeConsiderLocation"]
         fn mode_consider_location(self: Pin<&mut ReShape>) -> &mut bool;
+        /// **Source:** `BRepTools_ReShape.hxx`:148 - `BRepTools_ReShape::IsNewShape()`
         #[cxx_name = "IsNewShape"]
         fn is_new_shape(self: &ReShape, theShape: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepTools_ReShape.hxx`:153 - `BRepTools_ReShape::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ReShape) -> &HandleStandardType;
         /// Returns the new value for an individual shape
@@ -1137,6 +1269,7 @@ pub(crate) mod ffi {
         /// Returns the history of the substituted shapes.
         #[cxx_name = "BRepTools_ReShape_History"]
         fn ReShape_history(self_: &ReShape) -> UniquePtr<HandleBRepToolsHistory>;
+        /// **Source:** `BRepTools_ReShape.hxx`:153 - `BRepTools_ReShape::get_type_name()`
         #[cxx_name = "BRepTools_ReShape_get_type_name"]
         fn ReShape_get_type_name() -> String;
         /// Wrap BRepTools_ReShape in a Handle (reference-counted smart pointer)

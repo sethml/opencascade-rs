@@ -103,7 +103,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Adaptor2d_Curve2d ========================
-        /// **Source:** `Adaptor2d_Curve2d.hxx` - `Adaptor2d_Curve2d`
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:50 - `Adaptor2d_Curve2d`
         ///
         /// Root class for 2D curves on which geometric
         /// algorithms work.
@@ -118,27 +118,39 @@ pub(crate) mod ffi {
         /// thread-safe and parallel evaluations need to be prevented.
         #[cxx_name = "Adaptor2d_Curve2d"]
         type Curve2d;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:52 - `Adaptor2d_Curve2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Curve2d) -> &HandleStandardType;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:57 - `Adaptor2d_Curve2d::FirstParameter()`
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &Curve2d) -> f64;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:59 - `Adaptor2d_Curve2d::LastParameter()`
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &Curve2d) -> f64;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:83 - `Adaptor2d_Curve2d::IsClosed()`
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &Curve2d) -> bool;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:85 - `Adaptor2d_Curve2d::IsPeriodic()`
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &Curve2d) -> bool;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:87 - `Adaptor2d_Curve2d::Period()`
         #[cxx_name = "Period"]
         fn period(self: &Curve2d) -> f64;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:93 - `Adaptor2d_Curve2d::D0()`
+        ///
         /// Computes the point of parameter U on the curve.
         #[cxx_name = "D0"]
         fn d0(self: &Curve2d, U: f64, P: Pin<&mut gp_Pnt2d>);
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:99 - `Adaptor2d_Curve2d::D1()`
+        ///
         /// Computes the point of parameter U on the curve with its
         /// first derivative.
         /// Raised if the continuity of the current interval
         /// is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &Curve2d, U: f64, P: Pin<&mut gp_Pnt2d>, V: Pin<&mut gp_Vec2d>);
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:105 - `Adaptor2d_Curve2d::D2()`
+        ///
         /// Returns the point P of parameter U, the first and second
         /// derivatives V1 and V2.
         /// Raised if the continuity of the current interval
@@ -151,6 +163,8 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec2d>,
             V2: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:114 - `Adaptor2d_Curve2d::D3()`
+        ///
         /// Returns the point P of parameter U, the first, the second
         /// and the third derivative.
         /// Raised if the continuity of the current interval
@@ -164,18 +178,25 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec2d>,
             V3: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:129 - `Adaptor2d_Curve2d::Resolution()`
+        ///
         /// Returns the parametric  resolution corresponding
         /// to the real space resolution <R3d>.
         #[cxx_name = "Resolution"]
         fn resolution(self: &Curve2d, R3d: f64) -> f64;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:146 - `Adaptor2d_Curve2d::Degree()`
         #[cxx_name = "Degree"]
         fn degree(self: &Curve2d) -> i32;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:148 - `Adaptor2d_Curve2d::IsRational()`
         #[cxx_name = "IsRational"]
         fn is_rational(self: &Curve2d) -> bool;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:150 - `Adaptor2d_Curve2d::NbPoles()`
         #[cxx_name = "NbPoles"]
         fn nb_poles(self: &Curve2d) -> i32;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:152 - `Adaptor2d_Curve2d::NbKnots()`
         #[cxx_name = "NbKnots"]
         fn nb_knots(self: &Curve2d) -> i32;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:154 - `Adaptor2d_Curve2d::NbSamples()`
         #[cxx_name = "NbSamples"]
         fn nb_samples(self: &Curve2d) -> i32;
         /// Shallow copy of adaptor
@@ -216,6 +237,7 @@ pub(crate) mod ffi {
         fn Curve2d_bezier(self_: &Curve2d) -> UniquePtr<HandleGeom2dBezierCurve>;
         #[cxx_name = "Adaptor2d_Curve2d_BSpline"]
         fn Curve2d_b_spline(self_: &Curve2d) -> UniquePtr<HandleGeom2dBSplineCurve>;
+        /// **Source:** `Adaptor2d_Curve2d.hxx`:52 - `Adaptor2d_Curve2d::get_type_name()`
         #[cxx_name = "Adaptor2d_Curve2d_get_type_name"]
         fn Curve2d_get_type_name() -> String;
         /// Wrap Adaptor2d_Curve2d in a Handle (reference-counted smart pointer)

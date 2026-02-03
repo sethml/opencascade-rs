@@ -167,7 +167,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== XSControl_Reader ========================
-        /// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader`
+        /// **Source:** `XSControl_Reader.hxx`:72 - `XSControl_Reader`
         ///
         /// A groundwork to convert a shape to data which complies
         /// with a particular norm. This data can be that of a whole
@@ -202,19 +202,19 @@ pub(crate) mod ffi {
         /// - TransferRoots which restarts the list of shapes from scratch.
         #[cxx_name = "XSControl_Reader"]
         type Reader;
-        /// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader::XSControl_Reader()`
+        /// **Source:** `XSControl_Reader.hxx`:79 - `XSControl_Reader::XSControl_Reader()`
         ///
         /// Creates a Reader from scratch (creates an empty WorkSession)
         /// A WorkSession or a Controller must be provided before running
         #[cxx_name = "XSControl_Reader_ctor"]
         fn Reader_ctor() -> UniquePtr<Reader>;
-        /// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader::XSControl_Reader()`
+        /// **Source:** `XSControl_Reader.hxx`:83 - `XSControl_Reader::XSControl_Reader()`
         ///
         /// Creates a Reader from scratch, with a norm name which
         /// identifies a Controller
         #[cxx_name = "XSControl_Reader_ctor_charptr"]
         fn Reader_ctor_charptr(norm: &str) -> UniquePtr<Reader>;
-        /// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader::XSControl_Reader()`
+        /// **Source:** `XSControl_Reader.hxx`:88 - `XSControl_Reader::XSControl_Reader()`
         ///
         /// Creates a Reader from an already existing Session, with a
         /// Controller already set
@@ -224,14 +224,20 @@ pub(crate) mod ffi {
             WS: &HandleXSControlWorkSession,
             scratch: bool,
         ) -> UniquePtr<Reader>;
+        /// **Source:** `XSControl_Reader.hxx`:99 - `XSControl_Reader::SetWS()`
+        ///
         /// Sets a specific session to <me>
         #[cxx_name = "SetWS"]
         fn set_ws(self: Pin<&mut Reader>, WS: &HandleXSControlWorkSession, scratch: bool);
+        /// **Source:** `XSControl_Reader.hxx`:158 - `XSControl_Reader::NbRootsForTransfer()`
+        ///
         /// Determines the list of root entities which are candidate for
         /// a transfer to a Shape, and returns the number
         /// of entities in the list
         #[cxx_name = "NbRootsForTransfer"]
         fn nb_roots_for_transfer(self: Pin<&mut Reader>) -> i32;
+        /// **Source:** `XSControl_Reader.hxx`:168 - `XSControl_Reader::TransferOneRoot()`
+        ///
         /// Translates a root identified by the rank num in the model.
         /// false is returned if no shape is produced.
         #[cxx_name = "TransferOneRoot"]
@@ -240,6 +246,8 @@ pub(crate) mod ffi {
             num: i32,
             theProgress: &Message_ProgressRange,
         ) -> bool;
+        /// **Source:** `XSControl_Reader.hxx`:175 - `XSControl_Reader::TransferOne()`
+        ///
         /// Translates an IGES or STEP
         /// entity identified by the rank num in the model.
         /// false is returned if no shape is produced.
@@ -249,6 +257,8 @@ pub(crate) mod ffi {
             num: i32,
             theProgress: &Message_ProgressRange,
         ) -> bool;
+        /// **Source:** `XSControl_Reader.hxx`:182 - `XSControl_Reader::TransferEntity()`
+        ///
         /// Translates an IGES or STEP
         /// entity in the model. true is returned if a shape is
         /// produced; otherwise, false is returned.
@@ -258,6 +268,8 @@ pub(crate) mod ffi {
             start: &HandleStandardTransient,
             theProgress: &Message_ProgressRange,
         ) -> bool;
+        /// **Source:** `XSControl_Reader.hxx`:190 - `XSControl_Reader::TransferList()`
+        ///
         /// Translates a list of entities.
         /// Returns the number of IGES or STEP entities that were
         /// successfully translated. The list can be produced with GiveList.
@@ -268,18 +280,26 @@ pub(crate) mod ffi {
             list: &HandleTColStdHSequenceOfTransient,
             theProgress: &Message_ProgressRange,
         ) -> i32;
+        /// **Source:** `XSControl_Reader.hxx`:197 - `XSControl_Reader::TransferRoots()`
+        ///
         /// Translates all translatable
         /// roots and returns the number of successful translations.
         /// Warning - This function clears existing output shapes first.
         #[cxx_name = "TransferRoots"]
         fn transfer_roots(self: Pin<&mut Reader>, theProgress: &Message_ProgressRange) -> i32;
+        /// **Source:** `XSControl_Reader.hxx`:201 - `XSControl_Reader::ClearShapes()`
+        ///
         /// Clears the list of shapes that
         /// may have accumulated in calls to TransferOne or TransferRoot.C
         #[cxx_name = "ClearShapes"]
         fn clear_shapes(self: Pin<&mut Reader>);
+        /// **Source:** `XSControl_Reader.hxx`:204 - `XSControl_Reader::NbShapes()`
+        ///
         /// Returns the number of shapes produced by translation.
         #[cxx_name = "NbShapes"]
         fn nb_shapes(self: &Reader) -> i32;
+        /// **Source:** `XSControl_Reader.hxx`:275 - `XSControl_Reader::PrintStatsTransfer()`
+        ///
         /// Displays the statistics for
         /// the last translation. what defines the kind of
         /// statistics that are displayed as follows:
@@ -309,6 +329,8 @@ pub(crate) mod ffi {
         /// If mode is not set, only the list of all entities per warning is given.
         #[cxx_name = "PrintStatsTransfer"]
         fn print_stats_transfer_int2(self: &Reader, what: i32, mode: i32);
+        /// **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer()`
+        ///
         /// Gives statistics about Transfer
         #[cxx_name = "GetStatsTransfer"]
         fn get_stats_transfer(

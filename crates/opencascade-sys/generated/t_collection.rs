@@ -681,7 +681,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== TCollection_AsciiString ========================
-        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString`
+        /// **Source:** `TCollection_AsciiString.hxx`:47 - `TCollection_AsciiString`
         ///
         /// Class defines a variable-length sequence of 8-bit characters.
         /// Despite class name (kept for historical reasons), it is intended to store UTF-8 string, not just
@@ -700,37 +700,37 @@ pub(crate) mod ffi {
         /// assignment. You may use HAsciiString objects to get handles to strings.
         #[cxx_name = "TCollection_AsciiString"]
         type AsciiString;
-        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx`:53 - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes a AsciiString to an empty AsciiString.
         #[cxx_name = "TCollection_AsciiString_ctor"]
         fn AsciiString_ctor() -> UniquePtr<AsciiString>;
-        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx`:56 - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes a AsciiString with a CString.
         #[cxx_name = "TCollection_AsciiString_ctor_charptr"]
         fn AsciiString_ctor_charptr(message: &str) -> UniquePtr<AsciiString>;
-        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx`:59 - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes a AsciiString with a CString.
         #[cxx_name = "TCollection_AsciiString_ctor_charptr_int"]
         fn AsciiString_ctor_charptr_int(message: &str, aLen: i32) -> UniquePtr<AsciiString>;
-        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx`:71 - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes an AsciiString with an integer value
         #[cxx_name = "TCollection_AsciiString_ctor_int"]
         fn AsciiString_ctor_int(value: i32) -> UniquePtr<AsciiString>;
-        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx`:74 - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes an AsciiString with a real value
         #[cxx_name = "TCollection_AsciiString_ctor_real"]
         fn AsciiString_ctor_real(value: f64) -> UniquePtr<AsciiString>;
-        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx`:77 - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes a AsciiString with another AsciiString.
         #[cxx_name = "TCollection_AsciiString_ctor_asciistring"]
         fn AsciiString_ctor_asciistring(astring: &AsciiString) -> UniquePtr<AsciiString>;
-        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx`:89 - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes a AsciiString with copy of another AsciiString
         /// concatenated with the message string.
@@ -739,7 +739,7 @@ pub(crate) mod ffi {
             astring: &AsciiString,
             message: &str,
         ) -> UniquePtr<AsciiString>;
-        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx`:94 - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes a AsciiString with copy of another AsciiString
         /// concatenated with the message string.
@@ -748,16 +748,24 @@ pub(crate) mod ffi {
             astring: &AsciiString,
             message: &AsciiString,
         ) -> UniquePtr<AsciiString>;
+        /// **Source:** `TCollection_AsciiString.hxx`:119 - `TCollection_AsciiString::AssignCat()`
+        ///
         /// Appends <other>  to me. This is an unary operator.
         #[cxx_name = "AssignCat"]
         fn assign_cat_int(self: Pin<&mut AsciiString>, other: i32);
+        /// **Source:** `TCollection_AsciiString.hxx`:124 - `TCollection_AsciiString::AssignCat()`
+        ///
         /// Appends <other>  to me. This is an unary operator.
         #[cxx_name = "AssignCat"]
         fn assign_cat_real(self: Pin<&mut AsciiString>, other: f64);
+        /// **Source:** `TCollection_AsciiString.hxx`:140 - `TCollection_AsciiString::AssignCat()`
+        ///
         /// Appends <other> to me. This is an unary operator.
         /// Example: aString += anotherString
         #[cxx_name = "AssignCat"]
         fn assign_cat_asciistring(self: Pin<&mut AsciiString>, other: &AsciiString);
+        /// **Source:** `TCollection_AsciiString.hxx`:150 - `TCollection_AsciiString::Capitalize()`
+        ///
         /// Converts the first character into its corresponding
         /// upper-case character and the other characters into lowercase
         /// Example: before
@@ -766,18 +774,26 @@ pub(crate) mod ffi {
         /// me = "Hello "
         #[cxx_name = "Capitalize"]
         fn capitalize(self: Pin<&mut AsciiString>);
+        /// **Source:** `TCollection_AsciiString.hxx`:241 - `TCollection_AsciiString::Clear()`
+        ///
         /// Removes all characters contained in <me>.
         /// This produces an empty AsciiString.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut AsciiString>);
+        /// **Source:** `TCollection_AsciiString.hxx`:253 - `TCollection_AsciiString::Copy()`
+        ///
         /// Copy <fromwhere> to <me>.
         /// Used as operator =
         /// Example: aString = anotherString;
         #[cxx_name = "Copy"]
         fn copy_asciistring(self: Pin<&mut AsciiString>, fromwhere: &AsciiString);
+        /// **Source:** `TCollection_AsciiString.hxx`:273 - `TCollection_AsciiString::Swap()`
+        ///
         /// Exchange the data of two strings (without reallocating memory).
         #[cxx_name = "Swap"]
         fn swap(self: Pin<&mut AsciiString>, theOther: Pin<&mut AsciiString>);
+        /// **Source:** `TCollection_AsciiString.hxx`:290 - `TCollection_AsciiString::FirstLocationInSet()`
+        ///
         /// Returns the index of the first character of <me> that is
         /// present in <Set>.
         /// The search begins to the index FromIndex and ends to the
@@ -797,6 +813,8 @@ pub(crate) mod ffi {
             FromIndex: i32,
             ToIndex: i32,
         ) -> i32;
+        /// **Source:** `TCollection_AsciiString.hxx`:306 - `TCollection_AsciiString::FirstLocationNotInSet()`
+        ///
         /// Returns the index of the first character of <me>
         /// that is not present in the set <Set>.
         /// The search begins to the index FromIndex and ends to the
@@ -816,9 +834,13 @@ pub(crate) mod ffi {
             FromIndex: i32,
             ToIndex: i32,
         ) -> i32;
+        /// **Source:** `TCollection_AsciiString.hxx`:327 - `TCollection_AsciiString::Insert()`
+        ///
         /// Inserts a AsciiString at position <where>.
         #[cxx_name = "Insert"]
         fn insert_int_asciistring(self: Pin<&mut AsciiString>, where_: i32, what: &AsciiString);
+        /// **Source:** `TCollection_AsciiString.hxx`:338 - `TCollection_AsciiString::InsertAfter()`
+        ///
         /// Pushing a string after a specific index in the string <me>.
         /// Raises an exception if Index is out of bounds.
         /// -   less than 0 (InsertAfter), or less than 1 (InsertBefore), or
@@ -830,6 +852,8 @@ pub(crate) mod ffi {
         /// me = "abcde" , other = "ab"
         #[cxx_name = "InsertAfter"]
         fn insert_after(self: Pin<&mut AsciiString>, Index: i32, other: &AsciiString);
+        /// **Source:** `TCollection_AsciiString.hxx`:350 - `TCollection_AsciiString::InsertBefore()`
+        ///
         /// Pushing a string before a specific index in the string <me>.
         /// Raises an exception if Index is out of bounds.
         /// -   less than 0 (InsertAfter), or less than 1 (InsertBefore), or
@@ -841,40 +865,60 @@ pub(crate) mod ffi {
         /// me = "abcde" , other = "ab"
         #[cxx_name = "InsertBefore"]
         fn insert_before(self: Pin<&mut AsciiString>, Index: i32, other: &AsciiString);
+        /// **Source:** `TCollection_AsciiString.hxx`:354 - `TCollection_AsciiString::IsEmpty()`
+        ///
         /// Returns True if the string <me> contains zero character.
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &AsciiString) -> bool;
+        /// **Source:** `TCollection_AsciiString.hxx`:366 - `TCollection_AsciiString::IsEqual()`
+        ///
         /// Returns true if the characters in this ASCII string
         /// are identical to the characters in ASCII string other.
         /// Note that this method is an alias of operator ==.
         #[cxx_name = "IsEqual"]
         fn is_equal_asciistring(self: &AsciiString, other: &AsciiString) -> bool;
+        /// **Source:** `TCollection_AsciiString.hxx`:380 - `TCollection_AsciiString::IsDifferent()`
+        ///
         /// Returns true if there are differences between the
         /// characters in this ASCII string and ASCII string other.
         /// Note that this method is an alias of operator !=
         #[cxx_name = "IsDifferent"]
         fn is_different_asciistring(self: &AsciiString, other: &AsciiString) -> bool;
+        /// **Source:** `TCollection_AsciiString.hxx`:393 - `TCollection_AsciiString::IsLess()`
+        ///
         /// Returns TRUE if <me> is 'ASCII' less than <other>.
         #[cxx_name = "IsLess"]
         fn is_less_asciistring(self: &AsciiString, other: &AsciiString) -> bool;
+        /// **Source:** `TCollection_AsciiString.hxx`:403 - `TCollection_AsciiString::IsGreater()`
+        ///
         /// Returns TRUE if <me> is 'ASCII' greater than <other>.
         #[cxx_name = "IsGreater"]
         fn is_greater_asciistring(self: &AsciiString, other: &AsciiString) -> bool;
+        /// **Source:** `TCollection_AsciiString.hxx`:411 - `TCollection_AsciiString::StartsWith()`
+        ///
         /// Determines whether the beginning of this string instance matches the specified string.
         #[cxx_name = "StartsWith"]
         fn starts_with(self: &AsciiString, theStartString: &AsciiString) -> bool;
+        /// **Source:** `TCollection_AsciiString.hxx`:414 - `TCollection_AsciiString::EndsWith()`
+        ///
         /// Determines whether the end of this string instance matches the specified string.
         #[cxx_name = "EndsWith"]
         fn ends_with(self: &AsciiString, theEndString: &AsciiString) -> bool;
+        /// **Source:** `TCollection_AsciiString.hxx`:419 - `TCollection_AsciiString::IntegerValue()`
+        ///
         /// Converts a AsciiString containing a numeric expression to
         /// an Integer.
         /// Example: "215" returns 215.
         #[cxx_name = "IntegerValue"]
         fn integer_value(self: &AsciiString) -> i32;
+        /// **Source:** `TCollection_AsciiString.hxx`:423 - `TCollection_AsciiString::IsIntegerValue()`
+        ///
         /// Returns True if the AsciiString contains an integer value.
         /// Note: an integer value is considered to be a real value as well.
         #[cxx_name = "IsIntegerValue"]
         fn is_integer_value(self: &AsciiString) -> bool;
+        /// **Source:** `TCollection_AsciiString.hxx`:431 - `TCollection_AsciiString::IsRealValue()`
+        ///
         /// Returns True if the AsciiString starts with some characters that can be interpreted as integer
         /// or real value.
         /// @param[in] theToCheckFull  when TRUE, checks if entire string defines a real value;
@@ -882,14 +926,20 @@ pub(crate) mod ffi {
         /// Note: an integer value is considered to be a real value as well.
         #[cxx_name = "IsRealValue"]
         fn is_real_value(self: &AsciiString, theToCheckFull: bool) -> bool;
+        /// **Source:** `TCollection_AsciiString.hxx`:436 - `TCollection_AsciiString::IsAscii()`
+        ///
         /// Returns True if the AsciiString contains only ASCII characters
         /// between ' ' and '~'.
         /// This means no control character and no extended ASCII code.
         #[cxx_name = "IsAscii"]
         fn is_ascii(self: &AsciiString) -> bool;
+        /// **Source:** `TCollection_AsciiString.hxx`:439 - `TCollection_AsciiString::LeftAdjust()`
+        ///
         /// Removes all space characters in the beginning of the string.
         #[cxx_name = "LeftAdjust"]
         fn left_adjust(self: Pin<&mut AsciiString>);
+        /// **Source:** `TCollection_AsciiString.hxx`:464 - `TCollection_AsciiString::Length()`
+        ///
         /// Returns number of characters in <me>.
         /// This is the same functionality as 'strlen' in C.
         /// Example
@@ -903,6 +953,8 @@ pub(crate) mod ffi {
         /// of this string by its position.
         #[cxx_name = "Length"]
         fn length(self: &AsciiString) -> i32;
+        /// **Source:** `TCollection_AsciiString.hxx`:478 - `TCollection_AsciiString::Location()`
+        ///
         /// Returns an index in the string <me> of the first occurrence
         /// of the string S in the string <me> from the starting index
         /// FromIndex to the ending index ToIndex
@@ -922,6 +974,8 @@ pub(crate) mod ffi {
             FromIndex: i32,
             ToIndex: i32,
         ) -> i32;
+        /// **Source:** `TCollection_AsciiString.hxx`:506 - `TCollection_AsciiString::LowerCase()`
+        ///
         /// Converts <me> to its lower-case equivalent.
         /// Example
         /// TCollection_AsciiString myString("Hello Dolly");
@@ -931,6 +985,8 @@ pub(crate) mod ffi {
         /// assert ( myString == "hello dolly" );
         #[cxx_name = "LowerCase"]
         fn lower_case(self: Pin<&mut AsciiString>);
+        /// **Source:** `TCollection_AsciiString.hxx`:514 - `TCollection_AsciiString::Prepend()`
+        ///
         /// Inserts the string other at the beginning of this ASCII string.
         /// Example
         /// TCollection_AsciiString myAlphabet("cde");
@@ -939,12 +995,16 @@ pub(crate) mod ffi {
         /// assert ( myAlphabet == "abcde" );
         #[cxx_name = "Prepend"]
         fn prepend(self: Pin<&mut AsciiString>, other: &AsciiString);
+        /// **Source:** `TCollection_AsciiString.hxx`:530 - `TCollection_AsciiString::RealValue()`
+        ///
         /// Converts an AsciiString containing a numeric expression.
         /// to a Real.
         /// Example: ex: "215" returns 215.0.
         /// ex: "3.14159267" returns 3.14159267.
         #[cxx_name = "RealValue"]
         fn real_value(self: &AsciiString) -> f64;
+        /// **Source:** `TCollection_AsciiString.hxx`:549 - `TCollection_AsciiString::Remove()`
+        ///
         /// Erases <ahowmany> characters from position <where>,
         /// <where> included.
         /// Example:
@@ -953,33 +1013,49 @@ pub(crate) mod ffi {
         /// This gives "Hlo".
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut AsciiString>, where_: i32, ahowmany: i32);
+        /// **Source:** `TCollection_AsciiString.hxx`:552 - `TCollection_AsciiString::RightAdjust()`
+        ///
         /// Removes all space characters at the end of the string.
         #[cxx_name = "RightAdjust"]
         fn right_adjust(self: Pin<&mut AsciiString>);
+        /// **Source:** `TCollection_AsciiString.hxx`:577 - `TCollection_AsciiString::Search()`
+        ///
         /// Searches an AsciiString in <me> from the beginning
         /// and returns position of first item <what> matching.
         /// It returns -1 if not found.
         #[cxx_name = "Search"]
         fn search_asciistring(self: &AsciiString, what: &AsciiString) -> i32;
+        /// **Source:** `TCollection_AsciiString.hxx`:590 - `TCollection_AsciiString::SearchFromEnd()`
+        ///
         /// Searches a AsciiString in another AsciiString from the end
         /// and returns position of first item <what> matching.
         /// It returns -1 if not found.
         #[cxx_name = "SearchFromEnd"]
         fn search_from_end_asciistring(self: &AsciiString, what: &AsciiString) -> i32;
+        /// **Source:** `TCollection_AsciiString.hxx`:609 - `TCollection_AsciiString::SetValue()`
+        ///
         /// Replaces a part of <me> by another AsciiString.
         #[cxx_name = "SetValue"]
         fn set_value_int_asciistring(self: Pin<&mut AsciiString>, where_: i32, what: &AsciiString);
+        /// **Source:** `TCollection_AsciiString.hxx`:656 - `TCollection_AsciiString::Trunc()`
+        ///
         /// Truncates <me> to <ahowmany> characters.
         /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
         #[cxx_name = "Trunc"]
         fn trunc(self: Pin<&mut AsciiString>, ahowmany: i32);
+        /// **Source:** `TCollection_AsciiString.hxx`:659 - `TCollection_AsciiString::UpperCase()`
+        ///
         /// Converts <me> to its upper-case equivalent.
         #[cxx_name = "UpperCase"]
         fn upper_case(self: Pin<&mut AsciiString>);
+        /// **Source:** `TCollection_AsciiString.hxx`:663 - `TCollection_AsciiString::UsefullLength()`
+        ///
         /// Length of the string ignoring all spaces (' ') and the
         /// control character at the end.
         #[cxx_name = "UsefullLength"]
         fn usefull_length(self: &AsciiString) -> i32;
+        /// **Source:** `TCollection_AsciiString.hxx`:676 - `TCollection_AsciiString::HashCode()`
+        ///
         /// Computes a hash code for the given ASCII string
         /// Returns the same integer value as the hash function for TCollection_ExtendedString
         /// @return a computed hash code
@@ -1142,14 +1218,20 @@ pub(crate) mod ffi {
         /// aString.Value(2) returns 'e'
         #[cxx_name = "TCollection_AsciiString_Value"]
         fn AsciiString_value(self_: &AsciiString, where_: i32) -> UniquePtr<Standard_Character>;
+        /// **Source:** `TCollection_AsciiString.hxx`:680 - `TCollection_AsciiString::IsEqual()`
+        ///
         /// Returns True  when the two  strings are the same.
         /// (Just for HashCode for AsciiString)
         #[cxx_name = "TCollection_AsciiString_IsEqual_asciistring2"]
         fn AsciiString_is_equal_asciistring2(string1: &AsciiString, string2: &AsciiString) -> bool;
+        /// **Source:** `TCollection_AsciiString.hxx`:685 - `TCollection_AsciiString::IsEqual()`
+        ///
         /// Returns True  when the two  strings are the same.
         /// (Just for HashCode for AsciiString)
         #[cxx_name = "TCollection_AsciiString_IsEqual_asciistring_charptr"]
         fn AsciiString_is_equal_asciistring_charptr(string1: &AsciiString, string2: &str) -> bool;
+        /// **Source:** `TCollection_AsciiString.hxx`:689 - `TCollection_AsciiString::IsSameString()`
+        ///
         /// Returns True if the strings contain same characters.
         #[cxx_name = "TCollection_AsciiString_IsSameString"]
         fn AsciiString_is_same_string(
@@ -1158,7 +1240,7 @@ pub(crate) mod ffi {
             theIsCaseSensitive: bool,
         ) -> bool;
         /// ======================== TCollection_ExtendedString ========================
-        /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString`
+        /// **Source:** `TCollection_ExtendedString.hxx`:51 - `TCollection_ExtendedString`
         ///
         /// A variable-length sequence of "extended" (UNICODE) characters (16-bit character type).
         /// It provides editing operations with built-in memory management
@@ -1177,12 +1259,12 @@ pub(crate) mod ffi {
         /// for iterating through Unicode string (UTF-32 code unit will be returned for each position).
         #[cxx_name = "TCollection_ExtendedString"]
         type ExtendedString;
-        /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
+        /// **Source:** `TCollection_ExtendedString.hxx`:57 - `TCollection_ExtendedString::TCollection_ExtendedString()`
         ///
         /// Initializes a ExtendedString to an empty ExtendedString.
         #[cxx_name = "TCollection_ExtendedString_ctor"]
         fn ExtendedString_ctor() -> UniquePtr<ExtendedString>;
-        /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
+        /// **Source:** `TCollection_ExtendedString.hxx`:64 - `TCollection_ExtendedString::TCollection_ExtendedString()`
         ///
         /// Creation by converting a CString to an extended
         /// string.  If <isMultiByte> is true then the string is
@@ -1194,24 +1276,24 @@ pub(crate) mod ffi {
             astring: &str,
             isMultiByte: bool,
         ) -> UniquePtr<ExtendedString>;
-        /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
+        /// **Source:** `TCollection_ExtendedString.hxx`:91 - `TCollection_ExtendedString::TCollection_ExtendedString()`
         ///
         /// Initializes an ExtendedString with an integer value
         #[cxx_name = "TCollection_ExtendedString_ctor_int"]
         fn ExtendedString_ctor_int(value: i32) -> UniquePtr<ExtendedString>;
-        /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
+        /// **Source:** `TCollection_ExtendedString.hxx`:94 - `TCollection_ExtendedString::TCollection_ExtendedString()`
         ///
         /// Initializes an ExtendedString with a real value
         #[cxx_name = "TCollection_ExtendedString_ctor_real"]
         fn ExtendedString_ctor_real(value: f64) -> UniquePtr<ExtendedString>;
-        /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
+        /// **Source:** `TCollection_ExtendedString.hxx`:97 - `TCollection_ExtendedString::TCollection_ExtendedString()`
         ///
         /// Initializes a ExtendedString with another ExtendedString.
         #[cxx_name = "TCollection_ExtendedString_ctor_extendedstring"]
         fn ExtendedString_ctor_extendedstring(
             astring: &ExtendedString,
         ) -> UniquePtr<ExtendedString>;
-        /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
+        /// **Source:** `TCollection_ExtendedString.hxx`:107 - `TCollection_ExtendedString::TCollection_ExtendedString()`
         ///
         /// Creation by converting an Ascii string to an extended
         /// string. The string is treated as having UTF-8 coding.
@@ -1222,22 +1304,32 @@ pub(crate) mod ffi {
             astring: &AsciiString,
             isMultiByte: bool,
         ) -> UniquePtr<ExtendedString>;
+        /// **Source:** `TCollection_ExtendedString.hxx`:113 - `TCollection_ExtendedString::AssignCat()`
+        ///
         /// Appends the other extended string to this extended string.
         /// Note that this method is an alias of operator +=.
         /// Example: aString += anotherString
         #[cxx_name = "AssignCat"]
         fn assign_cat_extendedstring(self: Pin<&mut ExtendedString>, other: &ExtendedString);
+        /// **Source:** `TCollection_ExtendedString.hxx`:137 - `TCollection_ExtendedString::Clear()`
+        ///
         /// Removes all characters contained in <me>.
         /// This produces an empty ExtendedString.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut ExtendedString>);
+        /// **Source:** `TCollection_ExtendedString.hxx`:141 - `TCollection_ExtendedString::Copy()`
+        ///
         /// Copy <fromwhere> to <me>.
         /// Used as operator =
         #[cxx_name = "Copy"]
         fn copy(self: Pin<&mut ExtendedString>, fromwhere: &ExtendedString);
+        /// **Source:** `TCollection_ExtendedString.hxx`:161 - `TCollection_ExtendedString::Swap()`
+        ///
         /// Exchange the data of two strings (without reallocating memory).
         #[cxx_name = "Swap"]
         fn swap(self: Pin<&mut ExtendedString>, theOther: Pin<&mut ExtendedString>);
+        /// **Source:** `TCollection_ExtendedString.hxx`:170 - `TCollection_ExtendedString::Insert()`
+        ///
         /// Insert a ExtendedString at position <where>.
         #[cxx_name = "Insert"]
         fn insert_int_extendedstring(
@@ -1245,52 +1337,78 @@ pub(crate) mod ffi {
             where_: i32,
             what: &ExtendedString,
         );
+        /// **Source:** `TCollection_ExtendedString.hxx`:173 - `TCollection_ExtendedString::IsEmpty()`
+        ///
         /// Returns True if this string contains no characters.
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &ExtendedString) -> bool;
+        /// **Source:** `TCollection_ExtendedString.hxx`:185 - `TCollection_ExtendedString::IsEqual()`
+        ///
         /// Returns true if the characters in this extended
         /// string are identical to the characters in the other extended string.
         /// Note that this method is an alias of operator ==
         #[cxx_name = "IsEqual"]
         fn is_equal_extendedstring(self: &ExtendedString, other: &ExtendedString) -> bool;
+        /// **Source:** `TCollection_ExtendedString.hxx`:202 - `TCollection_ExtendedString::IsDifferent()`
+        ///
         /// Returns true if there are differences between the
         /// characters in this extended string and the other extended string.
         /// Note that this method is an alias of operator !=.
         #[cxx_name = "IsDifferent"]
         fn is_different_extendedstring(self: &ExtendedString, other: &ExtendedString) -> bool;
+        /// **Source:** `TCollection_ExtendedString.hxx`:215 - `TCollection_ExtendedString::IsLess()`
+        ///
         /// Returns TRUE if <me> is less than <other>.
         #[cxx_name = "IsLess"]
         fn is_less_extendedstring(self: &ExtendedString, other: &ExtendedString) -> bool;
+        /// **Source:** `TCollection_ExtendedString.hxx`:228 - `TCollection_ExtendedString::IsGreater()`
+        ///
         /// Returns TRUE if <me> is greater than <other>.
         #[cxx_name = "IsGreater"]
         fn is_greater_extendedstring(self: &ExtendedString, other: &ExtendedString) -> bool;
+        /// **Source:** `TCollection_ExtendedString.hxx`:237 - `TCollection_ExtendedString::StartsWith()`
+        ///
         /// Determines whether the beginning of this string instance matches the specified string.
         #[cxx_name = "StartsWith"]
         fn starts_with(self: &ExtendedString, theStartString: &ExtendedString) -> bool;
+        /// **Source:** `TCollection_ExtendedString.hxx`:240 - `TCollection_ExtendedString::EndsWith()`
+        ///
         /// Determines whether the end of this string instance matches the specified string.
         #[cxx_name = "EndsWith"]
         fn ends_with(self: &ExtendedString, theEndString: &ExtendedString) -> bool;
+        /// **Source:** `TCollection_ExtendedString.hxx`:244 - `TCollection_ExtendedString::IsAscii()`
+        ///
         /// Returns True if the ExtendedString contains only
         /// "Ascii Range" characters .
         #[cxx_name = "IsAscii"]
         fn is_ascii(self: &ExtendedString) -> bool;
+        /// **Source:** `TCollection_ExtendedString.hxx`:248 - `TCollection_ExtendedString::Length()`
+        ///
         /// Returns the number of 16-bit code units
         /// (might be greater than number of Unicode symbols if string contains surrogate pairs).
         #[cxx_name = "Length"]
         fn length(self: &ExtendedString) -> i32;
+        /// **Source:** `TCollection_ExtendedString.hxx`:259 - `TCollection_ExtendedString::Remove()`
+        ///
         /// Erases <ahowmany> characters from position <where>,<where> included.
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut ExtendedString>, where_: i32, ahowmany: i32);
+        /// **Source:** `TCollection_ExtendedString.hxx`:264 - `TCollection_ExtendedString::Search()`
+        ///
         /// Searches a ExtendedString in <me> from the beginning
         /// and returns position of first item <what> matching.
         /// it returns -1 if not found.
         #[cxx_name = "Search"]
         fn search(self: &ExtendedString, what: &ExtendedString) -> i32;
+        /// **Source:** `TCollection_ExtendedString.hxx`:269 - `TCollection_ExtendedString::SearchFromEnd()`
+        ///
         /// Searches a ExtendedString in another ExtendedString from the
         /// end and returns position of first item <what> matching.
         /// it returns -1 if not found.
         #[cxx_name = "SearchFromEnd"]
         fn search_from_end(self: &ExtendedString, what: &ExtendedString) -> i32;
+        /// **Source:** `TCollection_ExtendedString.hxx`:277 - `TCollection_ExtendedString::SetValue()`
+        ///
         /// Replaces a part of <me> by another ExtendedString see above.
         #[cxx_name = "SetValue"]
         fn set_value_int_extendedstring(
@@ -1298,6 +1416,8 @@ pub(crate) mod ffi {
             where_: i32,
             what: &ExtendedString,
         );
+        /// **Source:** `TCollection_ExtendedString.hxx`:325 - `TCollection_ExtendedString::Trunc()`
+        ///
         /// Truncates <me> to <ahowmany> characters.
         /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
         /// Exceptions
@@ -1305,6 +1425,8 @@ pub(crate) mod ffi {
         /// than the length of this string.
         #[cxx_name = "Trunc"]
         fn trunc(self: Pin<&mut ExtendedString>, ahowmany: i32);
+        /// **Source:** `TCollection_ExtendedString.hxx`:343 - `TCollection_ExtendedString::HashCode()`
+        ///
         /// Returns a hashed value for the extended string.
         /// Note: if string is ASCII, the computed value is the same as the value computed with the
         /// HashCode function on a TCollection_AsciiString string composed with equivalent ASCII
@@ -1312,12 +1434,16 @@ pub(crate) mod ffi {
         /// @return a computed hash code
         #[cxx_name = "HashCode"]
         fn hash_code(self: &ExtendedString) -> usize;
+        /// **Source:** `TCollection_ExtendedString.hxx`:365 - `TCollection_ExtendedString::ToUTF8CString()`
+        ///
         /// Converts the internal <mystring> to UTF8 coding and
         /// returns length of the out CString. A memory for the
         /// <theCString> should be allocated before call!
         #[cxx_name = "ToUTF8CString"]
         fn to_utf8c_string(self: &ExtendedString, theCString: Pin<&mut Standard_PCharacter>)
             -> i32;
+        /// **Source:** `TCollection_ExtendedString.hxx`:370 - `TCollection_ExtendedString::LengthOfCString()`
+        ///
         /// Returns expected CString length in UTF8 coding.
         /// It can be used for  memory  calculation  before converting
         /// to CString containing symbols in UTF8 coding.
@@ -1361,6 +1487,8 @@ pub(crate) mod ffi {
             self_: &ExtendedString,
             where_: i32,
         ) -> UniquePtr<Standard_ExtCharacter>;
+        /// **Source:** `TCollection_ExtendedString.hxx`:356 - `TCollection_ExtendedString::IsEqual()`
+        ///
         /// Returns true if the characters in this extended
         /// string are identical to the characters in the other extended string.
         /// Note that this method is an alias of operator ==.
@@ -1370,7 +1498,7 @@ pub(crate) mod ffi {
             theString2: &ExtendedString,
         ) -> bool;
         /// ======================== TCollection_HAsciiString ========================
-        /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString`
+        /// **Source:** `TCollection_HAsciiString.hxx`:41 - `TCollection_HAsciiString`
         ///
         /// A variable-length sequence of ASCII characters
         /// (normal 8-bit character type). It provides editing
@@ -1382,38 +1510,40 @@ pub(crate) mod ffi {
         /// Note: HAsciiString objects use an AsciiString string as a field.
         #[cxx_name = "TCollection_HAsciiString"]
         type HAsciiString;
-        /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
+        /// **Source:** `TCollection_HAsciiString.hxx`:46 - `TCollection_HAsciiString::TCollection_HAsciiString()`
         ///
         /// Initializes a HAsciiString to an empty AsciiString.
         #[cxx_name = "TCollection_HAsciiString_ctor"]
         fn HAsciiString_ctor() -> UniquePtr<HAsciiString>;
-        /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
+        /// **Source:** `TCollection_HAsciiString.hxx`:49 - `TCollection_HAsciiString::TCollection_HAsciiString()`
         ///
         /// Initializes a HAsciiString with a CString.
         #[cxx_name = "TCollection_HAsciiString_ctor_charptr"]
         fn HAsciiString_ctor_charptr(message: &str) -> UniquePtr<HAsciiString>;
-        /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
+        /// **Source:** `TCollection_HAsciiString.hxx`:60 - `TCollection_HAsciiString::TCollection_HAsciiString()`
         ///
         /// Initializes a HAsciiString with an integer value
         #[cxx_name = "TCollection_HAsciiString_ctor_int"]
         fn HAsciiString_ctor_int(value: i32) -> UniquePtr<HAsciiString>;
-        /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
+        /// **Source:** `TCollection_HAsciiString.hxx`:63 - `TCollection_HAsciiString::TCollection_HAsciiString()`
         ///
         /// Initializes a HAsciiString with a real value
         #[cxx_name = "TCollection_HAsciiString_ctor_real"]
         fn HAsciiString_ctor_real(value: f64) -> UniquePtr<HAsciiString>;
-        /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
+        /// **Source:** `TCollection_HAsciiString.hxx`:66 - `TCollection_HAsciiString::TCollection_HAsciiString()`
         ///
         /// Initializes a HAsciiString with a AsciiString.
         #[cxx_name = "TCollection_HAsciiString_ctor_asciistring"]
         fn HAsciiString_ctor_asciistring(aString: &AsciiString) -> UniquePtr<HAsciiString>;
-        /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
+        /// **Source:** `TCollection_HAsciiString.hxx`:75 - `TCollection_HAsciiString::TCollection_HAsciiString()`
         ///
         /// Initializes a HAsciiString with a HAsciiString.
         #[cxx_name = "TCollection_HAsciiString_ctor_handlehasciistring"]
         fn HAsciiString_ctor_handlehasciistring(
             aString: &HandleTCollectionHAsciiString,
         ) -> UniquePtr<HAsciiString>;
+        /// **Source:** `TCollection_HAsciiString.hxx`:89 - `TCollection_HAsciiString::AssignCat()`
+        ///
         /// Appends <other>  to me.
         /// Example:  aString = aString + anotherString
         #[cxx_name = "AssignCat"]
@@ -1421,6 +1551,8 @@ pub(crate) mod ffi {
             self: Pin<&mut HAsciiString>,
             other: &HandleTCollectionHAsciiString,
         );
+        /// **Source:** `TCollection_HAsciiString.hxx`:98 - `TCollection_HAsciiString::Capitalize()`
+        ///
         /// Converts the first character into its corresponding
         /// upper-case character and the other characters into lowercase.
         /// Example:
@@ -1430,10 +1562,14 @@ pub(crate) mod ffi {
         /// me = "Hello "
         #[cxx_name = "Capitalize"]
         fn capitalize(self: Pin<&mut HAsciiString>);
+        /// **Source:** `TCollection_HAsciiString.hxx`:157 - `TCollection_HAsciiString::Clear()`
+        ///
         /// Removes all characters contained in <me>.
         /// This produces an empty HAsciiString.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut HAsciiString>);
+        /// **Source:** `TCollection_HAsciiString.hxx`:172 - `TCollection_HAsciiString::FirstLocationInSet()`
+        ///
         /// Returns the index of the first character of <me> that is
         /// present in <Set>.
         /// The search begins to the index FromIndex and ends to the
@@ -1454,6 +1590,8 @@ pub(crate) mod ffi {
             FromIndex: i32,
             ToIndex: i32,
         ) -> i32;
+        /// **Source:** `TCollection_HAsciiString.hxx`:190 - `TCollection_HAsciiString::FirstLocationNotInSet()`
+        ///
         /// Returns the index of the first character of <me>
         /// that is not present in the set <Set>.
         /// The search begins to the index FromIndex and ends to the
@@ -1474,6 +1612,8 @@ pub(crate) mod ffi {
             FromIndex: i32,
             ToIndex: i32,
         ) -> i32;
+        /// **Source:** `TCollection_HAsciiString.hxx`:208 - `TCollection_HAsciiString::Insert()`
+        ///
         /// Insert a HAsciiString at position <where>.
         #[cxx_name = "Insert"]
         fn insert_int_handlehasciistring(
@@ -1481,6 +1621,8 @@ pub(crate) mod ffi {
             where_: i32,
             what: &HandleTCollectionHAsciiString,
         );
+        /// **Source:** `TCollection_HAsciiString.hxx`:217 - `TCollection_HAsciiString::InsertAfter()`
+        ///
         /// Inserts the other ASCII string a after a specific index in the string <me>
         /// Example:
         /// before
@@ -1493,6 +1635,8 @@ pub(crate) mod ffi {
             Index: i32,
             other: &HandleTCollectionHAsciiString,
         );
+        /// **Source:** `TCollection_HAsciiString.hxx`:227 - `TCollection_HAsciiString::InsertBefore()`
+        ///
         /// Inserts the other ASCII string a before a specific index in the string <me>
         /// Raises an exception if Index is out of bounds
         /// Example:
@@ -1506,35 +1650,53 @@ pub(crate) mod ffi {
             Index: i32,
             other: &HandleTCollectionHAsciiString,
         );
+        /// **Source:** `TCollection_HAsciiString.hxx`:231 - `TCollection_HAsciiString::IsEmpty()`
+        ///
         /// Returns True if the string <me> contains zero character
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &HAsciiString) -> bool;
+        /// **Source:** `TCollection_HAsciiString.hxx`:234 - `TCollection_HAsciiString::IsLess()`
+        ///
         /// Returns TRUE if <me> is 'ASCII' less than <other>.
         #[cxx_name = "IsLess"]
         fn is_less(self: &HAsciiString, other: &HandleTCollectionHAsciiString) -> bool;
+        /// **Source:** `TCollection_HAsciiString.hxx`:237 - `TCollection_HAsciiString::IsGreater()`
+        ///
         /// Returns TRUE if <me> is 'ASCII' greater than <other>.
         #[cxx_name = "IsGreater"]
         fn is_greater(self: &HAsciiString, other: &HandleTCollectionHAsciiString) -> bool;
+        /// **Source:** `TCollection_HAsciiString.hxx`:242 - `TCollection_HAsciiString::IntegerValue()`
+        ///
         /// Converts a HAsciiString containing a numeric expression to
         /// an Integer.
         /// Example: "215" returns 215.
         #[cxx_name = "IntegerValue"]
         fn integer_value(self: &HAsciiString) -> i32;
+        /// **Source:** `TCollection_HAsciiString.hxx`:245 - `TCollection_HAsciiString::IsIntegerValue()`
+        ///
         /// Returns True if the string contains an integer value.
         #[cxx_name = "IsIntegerValue"]
         fn is_integer_value(self: &HAsciiString) -> bool;
+        /// **Source:** `TCollection_HAsciiString.hxx`:248 - `TCollection_HAsciiString::IsRealValue()`
+        ///
         /// Returns True if the string contains a real value.
         #[cxx_name = "IsRealValue"]
         fn is_real_value(self: &HAsciiString) -> bool;
+        /// **Source:** `TCollection_HAsciiString.hxx`:253 - `TCollection_HAsciiString::IsAscii()`
+        ///
         /// Returns True if the string contains only ASCII characters
         /// between ' ' and '~'.
         /// This means no control character and no extended ASCII code.
         #[cxx_name = "IsAscii"]
         fn is_ascii(self: &HAsciiString) -> bool;
+        /// **Source:** `TCollection_HAsciiString.hxx`:257 - `TCollection_HAsciiString::IsDifferent()`
+        ///
         /// Returns True if the string S not contains same characters than
         /// the string <me>.
         #[cxx_name = "IsDifferent"]
         fn is_different(self: &HAsciiString, S: &HandleTCollectionHAsciiString) -> bool;
+        /// **Source:** `TCollection_HAsciiString.hxx`:261 - `TCollection_HAsciiString::IsSameString()`
+        ///
         /// Returns True if the string S contains same characters than the
         /// string <me>.
         #[cxx_name = "IsSameString"]
@@ -1542,6 +1704,8 @@ pub(crate) mod ffi {
             self: &HAsciiString,
             S: &HandleTCollectionHAsciiString,
         ) -> bool;
+        /// **Source:** `TCollection_HAsciiString.hxx`:265 - `TCollection_HAsciiString::IsSameString()`
+        ///
         /// Returns True if the string S contains same characters than the
         /// string <me>.
         #[cxx_name = "IsSameString"]
@@ -1550,13 +1714,19 @@ pub(crate) mod ffi {
             S: &HandleTCollectionHAsciiString,
             CaseSensitive: bool,
         ) -> bool;
+        /// **Source:** `TCollection_HAsciiString.hxx`:269 - `TCollection_HAsciiString::LeftAdjust()`
+        ///
         /// Removes all space characters in the beginning of the string
         #[cxx_name = "LeftAdjust"]
         fn left_adjust(self: Pin<&mut HAsciiString>);
+        /// **Source:** `TCollection_HAsciiString.hxx`:285 - `TCollection_HAsciiString::Length()`
+        ///
         /// Returns number of characters in <me>.
         /// This is the same functionality as 'strlen' in C.
         #[cxx_name = "Length"]
         fn length(self: &HAsciiString) -> i32;
+        /// **Source:** `TCollection_HAsciiString.hxx`:299 - `TCollection_HAsciiString::Location()`
+        ///
         /// returns an index in the string <me> of the first occurrence
         /// of the string S in the string <me> from the starting index
         /// FromIndex to the ending index ToIndex
@@ -1576,9 +1746,13 @@ pub(crate) mod ffi {
             FromIndex: i32,
             ToIndex: i32,
         ) -> i32;
+        /// **Source:** `TCollection_HAsciiString.hxx`:320 - `TCollection_HAsciiString::LowerCase()`
+        ///
         /// Converts <me> to its lower-case equivalent.
         #[cxx_name = "LowerCase"]
         fn lower_case(self: Pin<&mut HAsciiString>);
+        /// **Source:** `TCollection_HAsciiString.hxx`:328 - `TCollection_HAsciiString::Prepend()`
+        ///
         /// Inserts the other string at the beginning of the string <me>
         /// Example:
         /// before
@@ -1587,12 +1761,16 @@ pub(crate) mod ffi {
         /// me = "abcde" , S = "ab"
         #[cxx_name = "Prepend"]
         fn prepend(self: Pin<&mut HAsciiString>, other: &HandleTCollectionHAsciiString);
+        /// **Source:** `TCollection_HAsciiString.hxx`:337 - `TCollection_HAsciiString::RealValue()`
+        ///
         /// Converts a string containing a numeric expression to a Real.
         /// Example:
         /// "215" returns 215.0.
         /// "3.14159267" returns 3.14159267.
         #[cxx_name = "RealValue"]
         fn real_value(self: &HAsciiString) -> f64;
+        /// **Source:** `TCollection_HAsciiString.hxx`:356 - `TCollection_HAsciiString::Remove()`
+        ///
         /// Erases <ahowmany> characters from position <where>,
         /// <where> included.
         /// Example:
@@ -1601,9 +1779,13 @@ pub(crate) mod ffi {
         /// This gives "Hlo".
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut HAsciiString>, where_: i32, ahowmany: i32);
+        /// **Source:** `TCollection_HAsciiString.hxx`:359 - `TCollection_HAsciiString::RightAdjust()`
+        ///
         /// Removes all space characters at the end of the string.
         #[cxx_name = "RightAdjust"]
         fn right_adjust(self: Pin<&mut HAsciiString>);
+        /// **Source:** `TCollection_HAsciiString.hxx`:384 - `TCollection_HAsciiString::Search()`
+        ///
         /// Searches a String in <me> from the beginning
         /// and returns position of first item <what> matching.
         /// it returns -1 if not found.
@@ -1612,6 +1794,8 @@ pub(crate) mod ffi {
             self: &HAsciiString,
             what: &HandleTCollectionHAsciiString,
         ) -> i32;
+        /// **Source:** `TCollection_HAsciiString.hxx`:398 - `TCollection_HAsciiString::SearchFromEnd()`
+        ///
         /// Searches a HAsciiString in another HAsciiString from the end
         /// and returns position of first item <what> matching.
         /// It returns -1 if not found.
@@ -1620,6 +1804,8 @@ pub(crate) mod ffi {
             self: &HAsciiString,
             what: &HandleTCollectionHAsciiString,
         ) -> i32;
+        /// **Source:** `TCollection_HAsciiString.hxx`:417 - `TCollection_HAsciiString::SetValue()`
+        ///
         /// Replaces a part of <me> by another string.
         #[cxx_name = "SetValue"]
         fn set_value_int_handlehasciistring(
@@ -1627,22 +1813,32 @@ pub(crate) mod ffi {
             where_: i32,
             what: &HandleTCollectionHAsciiString,
         );
+        /// **Source:** `TCollection_HAsciiString.hxx`:466 - `TCollection_HAsciiString::Trunc()`
+        ///
         /// Truncates <me> to <ahowmany> characters.
         /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
         #[cxx_name = "Trunc"]
         fn trunc(self: Pin<&mut HAsciiString>, ahowmany: i32);
+        /// **Source:** `TCollection_HAsciiString.hxx`:469 - `TCollection_HAsciiString::UpperCase()`
+        ///
         /// Converts <me> to its upper-case equivalent.
         #[cxx_name = "UpperCase"]
         fn upper_case(self: Pin<&mut HAsciiString>);
+        /// **Source:** `TCollection_HAsciiString.hxx`:473 - `TCollection_HAsciiString::UsefullLength()`
+        ///
         /// Length of the string ignoring all spaces (' ') and the
         /// control character at the end.
         #[cxx_name = "UsefullLength"]
         fn usefull_length(self: &HAsciiString) -> i32;
+        /// **Source:** `TCollection_HAsciiString.hxx`:484 - `TCollection_HAsciiString::String()`
+        ///
         /// Returns the field myString.
         #[cxx_name = "String"]
         fn string(self: &HAsciiString) -> &AsciiString;
+        /// **Source:** `TCollection_HAsciiString.hxx`:486 - `TCollection_HAsciiString::IsSameState()`
         #[cxx_name = "IsSameState"]
         fn is_same_state(self: &HAsciiString, other: &HandleTCollectionHAsciiString) -> bool;
+        /// **Source:** `TCollection_HAsciiString.hxx`:488 - `TCollection_HAsciiString::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &HAsciiString) -> &HandleStandardType;
         /// Appends <other>  to me.
@@ -1765,6 +1961,7 @@ pub(crate) mod ffi {
         /// aString.Value(2) returns 'e'
         #[cxx_name = "TCollection_HAsciiString_Value"]
         fn HAsciiString_value(self_: &HAsciiString, where_: i32) -> UniquePtr<Standard_Character>;
+        /// **Source:** `TCollection_HAsciiString.hxx`:488 - `TCollection_HAsciiString::get_type_name()`
         #[cxx_name = "TCollection_HAsciiString_get_type_name"]
         fn HAsciiString_get_type_name() -> String;
         /// Wrap TCollection_HAsciiString in a Handle (reference-counted smart pointer)
@@ -1773,7 +1970,7 @@ pub(crate) mod ffi {
             obj: UniquePtr<HAsciiString>,
         ) -> UniquePtr<HandleTCollectionHAsciiString>;
         /// ======================== TCollection_HExtendedString ========================
-        /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString`
+        /// **Source:** `TCollection_HExtendedString.hxx`:44 - `TCollection_HExtendedString`
         ///
         /// A variable-length sequence of "extended"
         /// (UNICODE) characters (16-bit character
@@ -1788,47 +1985,55 @@ pub(crate) mod ffi {
         /// ExtendedString string as a field.
         #[cxx_name = "TCollection_HExtendedString"]
         type HExtendedString;
-        /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
+        /// **Source:** `TCollection_HExtendedString.hxx`:49 - `TCollection_HExtendedString::TCollection_HExtendedString()`
         ///
         /// Initializes a HExtendedString to an empty ExtendedString.
         #[cxx_name = "TCollection_HExtendedString_ctor"]
         fn HExtendedString_ctor() -> UniquePtr<HExtendedString>;
-        /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
+        /// **Source:** `TCollection_HExtendedString.hxx`:52 - `TCollection_HExtendedString::TCollection_HExtendedString()`
         ///
         /// Initializes a HExtendedString with a CString.
         #[cxx_name = "TCollection_HExtendedString_ctor_charptr"]
         fn HExtendedString_ctor_charptr(message: &str) -> UniquePtr<HExtendedString>;
-        /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
+        /// **Source:** `TCollection_HExtendedString.hxx`:66 - `TCollection_HExtendedString::TCollection_HExtendedString()`
         ///
         /// Initializes a HExtendedString with a ExtendedString.
         #[cxx_name = "TCollection_HExtendedString_ctor_extendedstring"]
         fn HExtendedString_ctor_extendedstring(
             aString: &ExtendedString,
         ) -> UniquePtr<HExtendedString>;
-        /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
+        /// **Source:** `TCollection_HExtendedString.hxx`:75 - `TCollection_HExtendedString::TCollection_HExtendedString()`
         ///
         /// Initializes a HExtendedString with an HAsciiString.
         #[cxx_name = "TCollection_HExtendedString_ctor_handlehasciistring"]
         fn HExtendedString_ctor_handlehasciistring(
             aString: &HandleTCollectionHAsciiString,
         ) -> UniquePtr<HExtendedString>;
-        /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
+        /// **Source:** `TCollection_HExtendedString.hxx`:78 - `TCollection_HExtendedString::TCollection_HExtendedString()`
         ///
         /// Initializes a HExtendedString with a HExtendedString.
         #[cxx_name = "TCollection_HExtendedString_ctor_handlehextendedstring"]
         fn HExtendedString_ctor_handlehextendedstring(
             aString: &HandleTCollectionHExtendedString,
         ) -> UniquePtr<HExtendedString>;
+        /// **Source:** `TCollection_HExtendedString.hxx`:81 - `TCollection_HExtendedString::AssignCat()`
+        ///
         /// Appends <other>  to me.
         #[cxx_name = "AssignCat"]
         fn assign_cat(self: Pin<&mut HExtendedString>, other: &HandleTCollectionHExtendedString);
+        /// **Source:** `TCollection_HExtendedString.hxx`:94 - `TCollection_HExtendedString::Clear()`
+        ///
         /// Removes all characters contained in <me>.
         /// This produces an empty ExtendedString.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut HExtendedString>);
+        /// **Source:** `TCollection_HExtendedString.hxx`:97 - `TCollection_HExtendedString::IsEmpty()`
+        ///
         /// Returns True if the string <me> contains zero character
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &HExtendedString) -> bool;
+        /// **Source:** `TCollection_HExtendedString.hxx`:110 - `TCollection_HExtendedString::Insert()`
+        ///
         /// Insert a HExtendedString at position <where>.
         #[cxx_name = "Insert"]
         fn insert_int_handlehextendedstring(
@@ -1836,19 +2041,29 @@ pub(crate) mod ffi {
             where_: i32,
             what: &HandleTCollectionHExtendedString,
         );
+        /// **Source:** `TCollection_HExtendedString.hxx`:114 - `TCollection_HExtendedString::IsLess()`
+        ///
         /// Returns TRUE if <me> is less than <other>.
         #[cxx_name = "IsLess"]
         fn is_less(self: &HExtendedString, other: &HandleTCollectionHExtendedString) -> bool;
+        /// **Source:** `TCollection_HExtendedString.hxx`:118 - `TCollection_HExtendedString::IsGreater()`
+        ///
         /// Returns TRUE if <me> is greater than <other>.
         #[cxx_name = "IsGreater"]
         fn is_greater(self: &HExtendedString, other: &HandleTCollectionHExtendedString) -> bool;
+        /// **Source:** `TCollection_HExtendedString.hxx`:121 - `TCollection_HExtendedString::IsAscii()`
+        ///
         /// Returns True if the string contains only "Ascii Range"  characters
         #[cxx_name = "IsAscii"]
         fn is_ascii(self: &HExtendedString) -> bool;
+        /// **Source:** `TCollection_HExtendedString.hxx`:125 - `TCollection_HExtendedString::Length()`
+        ///
         /// Returns number of characters in <me>.
         /// This is the same functionality as 'strlen' in C.
         #[cxx_name = "Length"]
         fn length(self: &HExtendedString) -> i32;
+        /// **Source:** `TCollection_HExtendedString.hxx`:133 - `TCollection_HExtendedString::Remove()`
+        ///
         /// Erases <ahowmany> characters from position <where>,
         /// <where> included.
         /// Example:
@@ -1857,6 +2072,8 @@ pub(crate) mod ffi {
         /// This gives "Hlo".
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut HExtendedString>, where_: i32, ahowmany: i32);
+        /// **Source:** `TCollection_HExtendedString.hxx`:147 - `TCollection_HExtendedString::SetValue()`
+        ///
         /// Replaces a part of <me> by another string.
         #[cxx_name = "SetValue"]
         fn set_value_int_handlehextendedstring(
@@ -1864,25 +2081,35 @@ pub(crate) mod ffi {
             where_: i32,
             what: &HandleTCollectionHExtendedString,
         );
+        /// **Source:** `TCollection_HExtendedString.hxx`:159 - `TCollection_HExtendedString::Search()`
+        ///
         /// Searches a String in <me> from the beginning
         /// and returns position of first item <what> matching.
         /// It returns -1 if not found.
         #[cxx_name = "Search"]
         fn search(self: &HExtendedString, what: &HandleTCollectionHExtendedString) -> i32;
+        /// **Source:** `TCollection_HExtendedString.hxx`:165 - `TCollection_HExtendedString::SearchFromEnd()`
+        ///
         /// Searches a ExtendedString in another ExtendedString from the end
         /// and returns position of first item <what> matching.
         /// It returns -1 if not found.
         #[cxx_name = "SearchFromEnd"]
         fn search_from_end(self: &HExtendedString, what: &HandleTCollectionHExtendedString) -> i32;
+        /// **Source:** `TCollection_HExtendedString.hxx`:191 - `TCollection_HExtendedString::Trunc()`
+        ///
         /// Truncates <me> to <ahowmany> characters.
         /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
         #[cxx_name = "Trunc"]
         fn trunc(self: Pin<&mut HExtendedString>, ahowmany: i32);
+        /// **Source:** `TCollection_HExtendedString.hxx`:202 - `TCollection_HExtendedString::String()`
+        ///
         /// Returns the field myString
         #[cxx_name = "String"]
         fn string(self: &HExtendedString) -> &ExtendedString;
+        /// **Source:** `TCollection_HExtendedString.hxx`:208 - `TCollection_HExtendedString::IsSameState()`
         #[cxx_name = "IsSameState"]
         fn is_same_state(self: &HExtendedString, other: &HandleTCollectionHExtendedString) -> bool;
+        /// **Source:** `TCollection_HExtendedString.hxx`:210 - `TCollection_HExtendedString::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &HExtendedString) -> &HandleStandardType;
         /// Returns a string appending <other>  to me.
@@ -1914,6 +2141,7 @@ pub(crate) mod ffi {
             self_: &HExtendedString,
             where_: i32,
         ) -> UniquePtr<Standard_ExtCharacter>;
+        /// **Source:** `TCollection_HExtendedString.hxx`:210 - `TCollection_HExtendedString::get_type_name()`
         #[cxx_name = "TCollection_HExtendedString_get_type_name"]
         fn HExtendedString_get_type_name() -> String;
         /// Wrap TCollection_HExtendedString in a Handle (reference-counted smart pointer)

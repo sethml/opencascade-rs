@@ -181,7 +181,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== TopExp_Explorer ========================
-        /// **Source:** `TopExp_Explorer.hxx` - `TopExp_Explorer`
+        /// **Source:** `TopExp_Explorer.hxx`:81 - `TopExp_Explorer`
         ///
         /// An Explorer is a Tool to visit  a Topological Data
         /// Structure form the TopoDS package.
@@ -242,45 +242,61 @@ pub(crate) mod ffi {
         /// not make a difference.
         #[cxx_name = "TopExp_Explorer"]
         type Explorer;
-        /// **Source:** `TopExp_Explorer.hxx` - `TopExp_Explorer::TopExp_Explorer()`
+        /// **Source:** `TopExp_Explorer.hxx`:87 - `TopExp_Explorer::TopExp_Explorer()`
         ///
         /// Creates an empty explorer, becomes useful after Init.
         #[cxx_name = "TopExp_Explorer_ctor"]
         fn Explorer_ctor() -> UniquePtr<Explorer>;
+        /// **Source:** `TopExp_Explorer.hxx`:113 - `TopExp_Explorer::More()`
+        ///
         /// Returns True if there are more shapes in the exploration.
         #[cxx_name = "More"]
         fn more(self: &Explorer) -> bool;
+        /// **Source:** `TopExp_Explorer.hxx`:118 - `TopExp_Explorer::Next()`
+        ///
         /// Moves to the next Shape in the exploration.
         /// Exceptions
         /// Standard_NoMoreObject if there are no more shapes to explore.
         #[cxx_name = "Next"]
         fn next(self: Pin<&mut Explorer>);
+        /// **Source:** `TopExp_Explorer.hxx`:123 - `TopExp_Explorer::Value()`
+        ///
         /// Returns the current shape in the exploration.
         /// Exceptions
         /// Standard_NoSuchObject if this explorer has no more shapes to explore.
         #[cxx_name = "Value"]
         fn value(self: &Explorer) -> &TopoDS_Shape;
+        /// **Source:** `TopExp_Explorer.hxx`:128 - `TopExp_Explorer::Current()`
+        ///
         /// Returns the current shape in the exploration.
         /// Exceptions
         /// Standard_NoSuchObject if this explorer has no more shapes to explore.
         #[cxx_name = "Current"]
         fn current(self: &Explorer) -> &TopoDS_Shape;
+        /// **Source:** `TopExp_Explorer.hxx`:131 - `TopExp_Explorer::ReInit()`
+        ///
         /// Reinitialize the exploration with the original arguments.
         #[cxx_name = "ReInit"]
         fn re_init(self: Pin<&mut Explorer>);
+        /// **Source:** `TopExp_Explorer.hxx`:134 - `TopExp_Explorer::ExploredShape()`
+        ///
         /// Return explored shape.
         #[cxx_name = "ExploredShape"]
         fn explored_shape(self: &Explorer) -> &TopoDS_Shape;
+        /// **Source:** `TopExp_Explorer.hxx`:138 - `TopExp_Explorer::Depth()`
+        ///
         /// Returns the current depth of the exploration. 0 is
         /// the shape to explore itself.
         #[cxx_name = "Depth"]
         fn depth(self: &Explorer) -> i32;
+        /// **Source:** `TopExp_Explorer.hxx`:142 - `TopExp_Explorer::Clear()`
+        ///
         /// Clears the content of the explorer. It will return
         /// False on More().
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Explorer>);
         /// ======================== TopExp ========================
-        /// **Source:** `TopExp.hxx` - `TopExp`
+        /// **Source:** `TopExp.hxx`:44 - `TopExp`
         ///
         /// This package   provides  basic tools  to   explore the
         /// topological data structures.
@@ -294,6 +310,8 @@ pub(crate) mod ffi {
         /// All methods of all  classes will be public.
         #[cxx_name = "TopExp"]
         type TopExp;
+        /// **Source:** `TopExp.hxx`:64 - `TopExp::MapShapes()`
+        ///
         /// Stores in the map <M> all  the sub-shapes of <S>.
         /// - If cumOri is true, the function composes all
         /// sub-shapes with the orientation of S.
@@ -307,6 +325,8 @@ pub(crate) mod ffi {
             cumOri: bool,
             cumLoc: bool,
         );
+        /// **Source:** `TopExp.hxx`:75 - `TopExp::MapShapes()`
+        ///
         /// Stores in the map <M> all  the sub-shapes of <S>.
         /// - If cumOri is true, the function composes all
         /// sub-shapes with the orientation of S.
@@ -320,16 +340,22 @@ pub(crate) mod ffi {
             cumOri: bool,
             cumLoc: bool,
         );
+        /// **Source:** `TopExp.hxx`:106 - `TopExp::FirstVertex()`
+        ///
         /// Returns the Vertex of orientation FORWARD in E. If
         /// there is none returns a Null Shape.
         /// CumOri = True : taking account the edge orientation
         #[cxx_name = "TopExp_FirstVertex"]
         fn TopExp_first_vertex(E: &TopoDS_Edge, CumOri: bool) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `TopExp.hxx`:112 - `TopExp::LastVertex()`
+        ///
         /// Returns the Vertex of orientation REVERSED in E. If
         /// there is none returns a Null Shape.
         /// CumOri = True : taking account the edge orientation
         #[cxx_name = "TopExp_LastVertex"]
         fn TopExp_last_vertex(E: &TopoDS_Edge, CumOri: bool) -> UniquePtr<TopoDS_Vertex>;
+        /// **Source:** `TopExp.hxx`:118 - `TopExp::Vertices()`
+        ///
         /// Returns in Vfirst, Vlast the  FORWARD and REVERSED
         /// vertices of the edge <E>. May be null shapes.
         /// CumOri = True : taking account the edge orientation
@@ -340,6 +366,8 @@ pub(crate) mod ffi {
             Vlast: Pin<&mut TopoDS_Vertex>,
             CumOri: bool,
         );
+        /// **Source:** `TopExp.hxx`:129 - `TopExp::Vertices()`
+        ///
         /// Returns  in  Vfirst,  Vlast   the first   and last
         /// vertices of the open wire <W>. May be null shapes.
         /// if   <W>  is closed Vfirst and Vlast  are a same
@@ -352,6 +380,8 @@ pub(crate) mod ffi {
             Vfirst: Pin<&mut TopoDS_Vertex>,
             Vlast: Pin<&mut TopoDS_Vertex>,
         );
+        /// **Source:** `TopExp.hxx`:137 - `TopExp::CommonVertex()`
+        ///
         /// Finds   the  vertex <V> common   to  the two edges
         /// <E1,E2>, returns True if this vertex exists.
         ///

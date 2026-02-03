@@ -65,18 +65,24 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== GeomEvaluator_Curve ========================
-        /// **Source:** `GeomEvaluator_Curve.hxx` - `GeomEvaluator_Curve`
+        /// **Source:** `GeomEvaluator_Curve.hxx`:26 - `GeomEvaluator_Curve`
         ///
         /// Interface for calculation of values and derivatives for different kinds of curves in 3D.
         /// Works both with adaptors and curves.
         #[cxx_name = "GeomEvaluator_Curve"]
         type Curve;
+        /// **Source:** `GeomEvaluator_Curve.hxx`:32 - `GeomEvaluator_Curve::D0()`
+        ///
         /// Value of 3D curve
         #[cxx_name = "D0"]
         fn d0(self: &Curve, theU: f64, theValue: Pin<&mut gp_Pnt>);
+        /// **Source:** `GeomEvaluator_Curve.hxx`:34 - `GeomEvaluator_Curve::D1()`
+        ///
         /// Value and first derivatives of curve
         #[cxx_name = "D1"]
         fn d1(self: &Curve, theU: f64, theValue: Pin<&mut gp_Pnt>, theD1: Pin<&mut gp_Vec>);
+        /// **Source:** `GeomEvaluator_Curve.hxx`:36 - `GeomEvaluator_Curve::D2()`
+        ///
         /// Value, first and second derivatives of curve
         #[cxx_name = "D2"]
         fn d2(
@@ -86,6 +92,8 @@ pub(crate) mod ffi {
             theD1: Pin<&mut gp_Vec>,
             theD2: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `GeomEvaluator_Curve.hxx`:41 - `GeomEvaluator_Curve::D3()`
+        ///
         /// Value, first, second and third derivatives of curve
         #[cxx_name = "D3"]
         fn d3(
@@ -96,6 +104,7 @@ pub(crate) mod ffi {
             theD2: Pin<&mut gp_Vec>,
             theD3: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `GeomEvaluator_Curve.hxx`:51 - `GeomEvaluator_Curve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Curve) -> &HandleStandardType;
         /// Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1
@@ -103,18 +112,23 @@ pub(crate) mod ffi {
         fn Curve_dn(self_: &Curve, theU: f64, theDerU: i32) -> UniquePtr<gp_Vec>;
         #[cxx_name = "GeomEvaluator_Curve_ShallowCopy"]
         fn Curve_shallow_copy(self_: &Curve) -> UniquePtr<HandleGeomEvaluatorCurve>;
+        /// **Source:** `GeomEvaluator_Curve.hxx`:51 - `GeomEvaluator_Curve::get_type_name()`
         #[cxx_name = "GeomEvaluator_Curve_get_type_name"]
         fn Curve_get_type_name() -> String;
         /// ======================== GeomEvaluator_Surface ========================
-        /// **Source:** `GeomEvaluator_Surface.hxx` - `GeomEvaluator_Surface`
+        /// **Source:** `GeomEvaluator_Surface.hxx`:26 - `GeomEvaluator_Surface`
         ///
         /// Interface for calculation of values and derivatives for different kinds of surfaces.
         /// Works both with adaptors and surfaces.
         #[cxx_name = "GeomEvaluator_Surface"]
         type Surface;
+        /// **Source:** `GeomEvaluator_Surface.hxx`:32 - `GeomEvaluator_Surface::D0()`
+        ///
         /// Value of surface
         #[cxx_name = "D0"]
         fn d0(self: &Surface, theU: f64, theV: f64, theValue: Pin<&mut gp_Pnt>);
+        /// **Source:** `GeomEvaluator_Surface.hxx`:34 - `GeomEvaluator_Surface::D1()`
+        ///
         /// Value and first derivatives of surface
         #[cxx_name = "D1"]
         fn d1(
@@ -125,6 +139,8 @@ pub(crate) mod ffi {
             theD1U: Pin<&mut gp_Vec>,
             theD1V: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `GeomEvaluator_Surface.hxx`:40 - `GeomEvaluator_Surface::D2()`
+        ///
         /// Value, first and second derivatives of surface
         #[cxx_name = "D2"]
         fn d2(
@@ -138,6 +154,8 @@ pub(crate) mod ffi {
             theD2V: Pin<&mut gp_Vec>,
             theD2UV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `GeomEvaluator_Surface.hxx`:49 - `GeomEvaluator_Surface::D3()`
+        ///
         /// Value, first, second and third derivatives of surface
         #[cxx_name = "D3"]
         fn d3(
@@ -155,6 +173,7 @@ pub(crate) mod ffi {
             theD3UUV: Pin<&mut gp_Vec>,
             theD3UVV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `GeomEvaluator_Surface.hxx`:71 - `GeomEvaluator_Surface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Surface) -> &HandleStandardType;
         /// Calculates N-th derivatives of surface, where N = theDerU + theDerV.
@@ -170,6 +189,7 @@ pub(crate) mod ffi {
         ) -> UniquePtr<gp_Vec>;
         #[cxx_name = "GeomEvaluator_Surface_ShallowCopy"]
         fn Surface_shallow_copy(self_: &Surface) -> UniquePtr<HandleGeomEvaluatorSurface>;
+        /// **Source:** `GeomEvaluator_Surface.hxx`:71 - `GeomEvaluator_Surface::get_type_name()`
         #[cxx_name = "GeomEvaluator_Surface_get_type_name"]
         fn Surface_get_type_name() -> String;
 

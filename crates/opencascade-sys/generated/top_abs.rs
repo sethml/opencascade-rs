@@ -42,7 +42,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== TopAbs ========================
-        /// **Source:** `TopAbs.hxx` - `TopAbs`
+        /// **Source:** `TopAbs.hxx`:46 - `TopAbs`
         ///
         /// This package gives resources for Topology oriented
         /// applications such as : Topological Data Structure,

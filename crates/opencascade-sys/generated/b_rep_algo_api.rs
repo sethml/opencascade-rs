@@ -591,7 +591,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepAlgoAPI_BuilderAlgo ========================
-        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx` - `BRepAlgoAPI_BuilderAlgo`
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:60 - `BRepAlgoAPI_BuilderAlgo`
         ///
         /// The class contains API level of the General Fuse algorithm.<br>
         ///
@@ -623,46 +623,62 @@ pub(crate) mod ffi {
         /// See description of this method for more details.
         #[cxx_name = "BRepAlgoAPI_BuilderAlgo"]
         type BuilderAlgo;
-        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx` - `BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo()`
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:67 - `BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo()`
         ///
         /// @name Constructors
         /// Empty constructor
         #[cxx_name = "BRepAlgoAPI_BuilderAlgo_ctor"]
         fn BuilderAlgo_ctor() -> UniquePtr<BuilderAlgo>;
-        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx` - `BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo()`
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:71 - `BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo()`
         ///
         /// Constructor with prepared Filler object
         #[cxx_name = "BRepAlgoAPI_BuilderAlgo_ctor_pavefiller"]
         fn BuilderAlgo_ctor_pavefiller(thePF: &BOPAlgo_PaveFiller) -> UniquePtr<BuilderAlgo>;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
+        ///
         /// @name Setting/Getting data for the algorithm
         /// Sets the arguments
         #[cxx_name = "SetArguments"]
         fn set_arguments(self: Pin<&mut BuilderAlgo>, theLS: &TopTools_ListOfShape);
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
+        ///
         /// Gets the arguments
         #[cxx_name = "Arguments"]
         fn arguments(self: &BuilderAlgo) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
+        ///
         /// @name Setting options
         /// Sets the flag that defines the mode of treatment.
         /// In non-destructive mode the argument shapes are not modified. Instead
         /// a copy of a sub-shape is created in the result if it is needed to be updated.
         #[cxx_name = "SetNonDestructive"]
         fn set_non_destructive(self: Pin<&mut BuilderAlgo>, theFlag: bool);
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
+        ///
         /// Returns the flag that defines the mode of treatment.
         /// In non-destructive mode the argument shapes are not modified. Instead
         /// a copy of a sub-shape is created in the result if it is needed to be updated.
         #[cxx_name = "NonDestructive"]
         fn non_destructive(self: &BuilderAlgo) -> bool;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
+        ///
         /// Enables/Disables the check of the input solids for inverted status
         #[cxx_name = "SetCheckInverted"]
         fn set_check_inverted(self: Pin<&mut BuilderAlgo>, theCheck: bool);
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
+        ///
         /// Returns the flag defining whether the check for input solids on inverted status
         /// should be performed or not.
         #[cxx_name = "CheckInverted"]
         fn check_inverted(self: &BuilderAlgo) -> bool;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:108 - `BRepAlgoAPI_BuilderAlgo::Build()`
+        ///
         /// @name Performing the operation
         /// Performs the algorithm
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut BuilderAlgo>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
+        ///
         /// @name Result simplification
         /// Simplification of the result shape is performed by the means of
         /// *ShapeUpgrade_UnifySameDomain* algorithm. The result of the operation will
@@ -694,12 +710,16 @@ pub(crate) mod ffi {
             theUnifyFaces: bool,
             theAngularTol: f64,
         );
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
+        ///
         /// @name History support
         /// Returns the shapes modified from the shape <theS>.
         /// If any, the list will contain only those splits of the
         /// given shape, contained in the result.
         #[cxx_name = "Modified"]
         fn modified(self: Pin<&mut BuilderAlgo>, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
+        ///
         /// Returns the list  of shapes generated from the shape <theS>.
         /// In frames of Boolean Operations algorithms only Edges and Faces
         /// could have Generated elements, as only they produce new elements
@@ -708,38 +728,56 @@ pub(crate) mod ffi {
         /// - Faces can generate new edges and vertices.
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut BuilderAlgo>, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
+        ///
         /// Checks if the shape <theS> has been completely removed from the result,
         /// i.e. the result does not contain the shape itself and any of its splits.
         /// Returns TRUE if the shape has been deleted.
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut BuilderAlgo>, aS: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
+        ///
         /// Returns true if any of the input shapes has been modified during operation.
         #[cxx_name = "HasModified"]
         fn has_modified(self: &BuilderAlgo) -> bool;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
+        ///
         /// Returns true if any of the input shapes has generated shapes during operation.
         #[cxx_name = "HasGenerated"]
         fn has_generated(self: &BuilderAlgo) -> bool;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
+        ///
         /// Returns true if any of the input shapes has been deleted during operation.
         /// Normally, General Fuse operation should not have Deleted elements,
         /// but all derived operation can have.
         #[cxx_name = "HasDeleted"]
         fn has_deleted(self: &BuilderAlgo) -> bool;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
+        ///
         /// @name Enabling/Disabling the history collection.
         /// Allows disabling the history collection
         #[cxx_name = "SetToFillHistory"]
         fn set_to_fill_history(self: Pin<&mut BuilderAlgo>, theHistFlag: bool);
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
+        ///
         /// Returns flag of history availability
         #[cxx_name = "HasHistory"]
         fn has_history(self: &BuilderAlgo) -> bool;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
+        ///
         /// @name Getting the section edges
         /// Returns a list of section edges.
         /// The edges represent the result of intersection between arguments of operation.
         #[cxx_name = "SectionEdges"]
         fn section_edges(self: Pin<&mut BuilderAlgo>) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:185 - `BRepAlgoAPI_BuilderAlgo::DSFiller()`
+        ///
         /// @name Getting tools performing the job
         /// Returns the Intersection tool
         #[cxx_name = "DSFiller"]
         fn ds_filler(self: &BuilderAlgo) -> &BOPAlgo_PPaveFiller;
+        /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:188 - `BRepAlgoAPI_BuilderAlgo::Builder()`
+        ///
         /// Returns the Building tool
         #[cxx_name = "Builder"]
         fn builder(self: &BuilderAlgo) -> &BOPAlgo_PBuilder;
@@ -767,7 +805,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut BuilderAlgo>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         /// ======================== BRepAlgoAPI_BooleanOperation ========================
-        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx` - `BRepAlgoAPI_BooleanOperation`
+        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:51 - `BRepAlgoAPI_BooleanOperation`
         ///
         /// The root API class for performing Boolean Operations on arbitrary shapes.
         ///
@@ -793,34 +831,44 @@ pub(crate) mod ffi {
         /// - *BOPAlgo_AlertBOPNotSet* - in case the type of Boolean Operation is not set.<br>
         #[cxx_name = "BRepAlgoAPI_BooleanOperation"]
         type BooleanOperation;
-        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx` - `BRepAlgoAPI_BooleanOperation::BRepAlgoAPI_BooleanOperation()`
+        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:58 - `BRepAlgoAPI_BooleanOperation::BRepAlgoAPI_BooleanOperation()`
         ///
         /// @name Constructors
         /// Empty constructor
         #[cxx_name = "BRepAlgoAPI_BooleanOperation_ctor"]
         fn BooleanOperation_ctor() -> UniquePtr<BooleanOperation>;
-        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx` - `BRepAlgoAPI_BooleanOperation::BRepAlgoAPI_BooleanOperation()`
+        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:61 - `BRepAlgoAPI_BooleanOperation::BRepAlgoAPI_BooleanOperation()`
         ///
         /// Constructor with precomputed intersections of arguments.
         #[cxx_name = "BRepAlgoAPI_BooleanOperation_ctor_pavefiller"]
         fn BooleanOperation_ctor_pavefiller(
             thePF: &BOPAlgo_PaveFiller,
         ) -> UniquePtr<BooleanOperation>;
+        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:66 - `BRepAlgoAPI_BooleanOperation::Shape1()`
+        ///
         /// @name Setting/getting arguments
         /// Returns the first argument involved in this Boolean operation.
         /// Obsolete
         #[cxx_name = "Shape1"]
         fn shape1(self: &BooleanOperation) -> &TopoDS_Shape;
+        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:70 - `BRepAlgoAPI_BooleanOperation::Shape2()`
+        ///
         /// Returns the second argument involved in this Boolean operation.
         /// Obsolete
         #[cxx_name = "Shape2"]
         fn shape2(self: &BooleanOperation) -> &TopoDS_Shape;
+        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
+        ///
         /// Sets the Tool arguments
         #[cxx_name = "SetTools"]
         fn set_tools(self: Pin<&mut BooleanOperation>, theLS: &TopTools_ListOfShape);
+        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:76 - `BRepAlgoAPI_BooleanOperation::Tools()`
+        ///
         /// Returns the Tools arguments
         #[cxx_name = "Tools"]
         fn tools(self: &BooleanOperation) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:87 - `BRepAlgoAPI_BooleanOperation::Build()`
+        ///
         /// @name Performing the operation
         /// Performs the Boolean operation.
         #[cxx_name = "Build"]
@@ -854,24 +902,24 @@ pub(crate) mod ffi {
             self_: Pin<&mut BooleanOperation>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         /// ======================== BRepAlgoAPI_Common ========================
-        /// **Source:** `BRepAlgoAPI_Common.hxx` - `BRepAlgoAPI_Common`
+        /// **Source:** `BRepAlgoAPI_Common.hxx`:29 - `BRepAlgoAPI_Common`
         ///
         /// The class provides Boolean common operation
         /// between arguments and tools (Boolean Intersection).
         #[cxx_name = "BRepAlgoAPI_Common"]
         type Common;
-        /// **Source:** `BRepAlgoAPI_Common.hxx` - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
+        /// **Source:** `BRepAlgoAPI_Common.hxx`:35 - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
         ///
         /// Empty constructor
         #[cxx_name = "BRepAlgoAPI_Common_ctor"]
         fn Common_ctor() -> UniquePtr<Common>;
-        /// **Source:** `BRepAlgoAPI_Common.hxx` - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
+        /// **Source:** `BRepAlgoAPI_Common.hxx`:40 - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
         ///
         /// Empty constructor
         /// <PF> - PaveFiller object that is carried out
         #[cxx_name = "BRepAlgoAPI_Common_ctor_pavefiller"]
         fn Common_ctor_pavefiller(PF: &BOPAlgo_PaveFiller) -> UniquePtr<Common>;
-        /// **Source:** `BRepAlgoAPI_Common.hxx` - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
+        /// **Source:** `BRepAlgoAPI_Common.hxx`:47 - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
         ///
         /// Constructor with two shapes
         /// <S1>  -argument
@@ -884,7 +932,7 @@ pub(crate) mod ffi {
             S2: &TopoDS_Shape,
             theRange: &Message_ProgressRange,
         ) -> UniquePtr<Common>;
-        /// **Source:** `BRepAlgoAPI_Common.hxx` - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
+        /// **Source:** `BRepAlgoAPI_Common.hxx`:58 - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
         ///
         /// Constructor with two shapes
         /// <S1>  -argument
@@ -928,24 +976,24 @@ pub(crate) mod ffi {
             self_: Pin<&mut Common>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         /// ======================== BRepAlgoAPI_Cut ========================
-        /// **Source:** `BRepAlgoAPI_Cut.hxx` - `BRepAlgoAPI_Cut`
+        /// **Source:** `BRepAlgoAPI_Cut.hxx`:29 - `BRepAlgoAPI_Cut`
         ///
         /// The class Cut provides Boolean cut operation
         /// between arguments and tools (Boolean Subtraction).
         #[cxx_name = "BRepAlgoAPI_Cut"]
         type Cut;
-        /// **Source:** `BRepAlgoAPI_Cut.hxx` - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
+        /// **Source:** `BRepAlgoAPI_Cut.hxx`:35 - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
         ///
         /// Empty constructor
         #[cxx_name = "BRepAlgoAPI_Cut_ctor"]
         fn Cut_ctor() -> UniquePtr<Cut>;
-        /// **Source:** `BRepAlgoAPI_Cut.hxx` - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
+        /// **Source:** `BRepAlgoAPI_Cut.hxx`:40 - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
         ///
         /// Empty constructor
         /// <PF> - PaveFiller object that is carried out
         #[cxx_name = "BRepAlgoAPI_Cut_ctor_pavefiller"]
         fn Cut_ctor_pavefiller(PF: &BOPAlgo_PaveFiller) -> UniquePtr<Cut>;
-        /// **Source:** `BRepAlgoAPI_Cut.hxx` - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
+        /// **Source:** `BRepAlgoAPI_Cut.hxx`:47 - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
         ///
         /// Constructor with two shapes
         /// <S1>  -argument
@@ -958,7 +1006,7 @@ pub(crate) mod ffi {
             S2: &TopoDS_Shape,
             theRange: &Message_ProgressRange,
         ) -> UniquePtr<Cut>;
-        /// **Source:** `BRepAlgoAPI_Cut.hxx` - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
+        /// **Source:** `BRepAlgoAPI_Cut.hxx`:57 - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
         ///
         /// Constructor with two shapes
         /// <S1>  -argument
@@ -1003,24 +1051,24 @@ pub(crate) mod ffi {
             self_: Pin<&mut Cut>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         /// ======================== BRepAlgoAPI_Fuse ========================
-        /// **Source:** `BRepAlgoAPI_Fuse.hxx` - `BRepAlgoAPI_Fuse`
+        /// **Source:** `BRepAlgoAPI_Fuse.hxx`:29 - `BRepAlgoAPI_Fuse`
         ///
         /// The class provides Boolean fusion operation
         /// between arguments and tools  (Boolean Union).
         #[cxx_name = "BRepAlgoAPI_Fuse"]
         type Fuse;
-        /// **Source:** `BRepAlgoAPI_Fuse.hxx` - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
+        /// **Source:** `BRepAlgoAPI_Fuse.hxx`:35 - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
         ///
         /// Empty constructor
         #[cxx_name = "BRepAlgoAPI_Fuse_ctor"]
         fn Fuse_ctor() -> UniquePtr<Fuse>;
-        /// **Source:** `BRepAlgoAPI_Fuse.hxx` - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
+        /// **Source:** `BRepAlgoAPI_Fuse.hxx`:40 - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
         ///
         /// Empty constructor
         /// <PF> - PaveFiller object that is carried out
         #[cxx_name = "BRepAlgoAPI_Fuse_ctor_pavefiller"]
         fn Fuse_ctor_pavefiller(PF: &BOPAlgo_PaveFiller) -> UniquePtr<Fuse>;
-        /// **Source:** `BRepAlgoAPI_Fuse.hxx` - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
+        /// **Source:** `BRepAlgoAPI_Fuse.hxx`:47 - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
         ///
         /// Constructor with two shapes
         /// <S1>  -argument
@@ -1033,7 +1081,7 @@ pub(crate) mod ffi {
             S2: &TopoDS_Shape,
             theRange: &Message_ProgressRange,
         ) -> UniquePtr<Fuse>;
-        /// **Source:** `BRepAlgoAPI_Fuse.hxx` - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
+        /// **Source:** `BRepAlgoAPI_Fuse.hxx`:57 - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
         ///
         /// Constructor with two shapes
         /// <S1>  -argument
@@ -1077,7 +1125,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut Fuse>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         /// ======================== BRepAlgoAPI_Section ========================
-        /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section`
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:38 - `BRepAlgoAPI_Section`
         ///
         /// The algorithm is to build a Section operation between arguments and tools.
         /// The result of Section operation consists of vertices and edges.
@@ -1088,18 +1136,18 @@ pub(crate) mod ffi {
         /// 4. edges that are Common Blocks
         #[cxx_name = "BRepAlgoAPI_Section"]
         type Section;
-        /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:44 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
         /// Empty constructor
         #[cxx_name = "BRepAlgoAPI_Section_ctor"]
         fn Section_ctor() -> UniquePtr<Section>;
-        /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:49 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
         /// Empty constructor
         /// <PF> - PaveFiller object that is carried out
         #[cxx_name = "BRepAlgoAPI_Section_ctor_pavefiller"]
         fn Section_ctor_pavefiller(PF: &BOPAlgo_PaveFiller) -> UniquePtr<Section>;
-        /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:57 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
         /// Constructor with two shapes
         /// <S1>  -argument
@@ -1113,7 +1161,7 @@ pub(crate) mod ffi {
             S2: &TopoDS_Shape,
             PerformNow: bool,
         ) -> UniquePtr<Section>;
-        /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:68 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
         /// Constructor with two shapes
         /// <S1>  -argument
@@ -1129,7 +1177,7 @@ pub(crate) mod ffi {
             aDSF: &BOPAlgo_PaveFiller,
             PerformNow: bool,
         ) -> UniquePtr<Section>;
-        /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:79 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
         /// Constructor with two shapes
         /// <S1>  - argument
@@ -1143,7 +1191,7 @@ pub(crate) mod ffi {
             Pl: &gp_Pln,
             PerformNow: bool,
         ) -> UniquePtr<Section>;
-        /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:89 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
         /// Constructor with two shapes
         /// <S1>  - argument
@@ -1157,7 +1205,7 @@ pub(crate) mod ffi {
             Sf: &HandleGeomSurface,
             PerformNow: bool,
         ) -> UniquePtr<Section>;
-        /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:99 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
         /// Constructor with two shapes
         /// <Sf>  - argument
@@ -1171,7 +1219,7 @@ pub(crate) mod ffi {
             S2: &TopoDS_Shape,
             PerformNow: bool,
         ) -> UniquePtr<Section>;
-        /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:109 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
         /// Constructor with two shapes
         /// <Sf1>  - argument
@@ -1185,38 +1233,53 @@ pub(crate) mod ffi {
             Sf2: &HandleGeomSurface,
             PerformNow: bool,
         ) -> UniquePtr<Section>;
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:116 - `BRepAlgoAPI_Section::Init1()`
+        ///
         /// initialize the argument
         /// <S1>  - argument
         /// Obsolete
         #[cxx_name = "Init1"]
         fn init1_shape(self: Pin<&mut Section>, S1: &TopoDS_Shape);
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:121 - `BRepAlgoAPI_Section::Init1()`
+        ///
         /// initialize the argument
         /// <Pl>  - argument
         /// Obsolete
         #[cxx_name = "Init1"]
         fn init1_pln(self: Pin<&mut Section>, Pl: &gp_Pln);
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:126 - `BRepAlgoAPI_Section::Init1()`
+        ///
         /// initialize the argument
         /// <Sf>  - argument
         /// Obsolete
         #[cxx_name = "Init1"]
         fn init1_handlesurface(self: Pin<&mut Section>, Sf: &HandleGeomSurface);
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:131 - `BRepAlgoAPI_Section::Init2()`
+        ///
         /// initialize the tool
         /// <S2>  - tool
         /// Obsolete
         #[cxx_name = "Init2"]
         fn init2_shape(self: Pin<&mut Section>, S2: &TopoDS_Shape);
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:136 - `BRepAlgoAPI_Section::Init2()`
+        ///
         /// initialize the tool
         /// <Pl>  - tool
         /// Obsolete
         #[cxx_name = "Init2"]
         fn init2_pln(self: Pin<&mut Section>, Pl: &gp_Pln);
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:141 - `BRepAlgoAPI_Section::Init2()`
+        ///
         /// initialize the tool
         /// <Sf>  - tool
         /// Obsolete
         #[cxx_name = "Init2"]
         fn init2_handlesurface(self: Pin<&mut Section>, Sf: &HandleGeomSurface);
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:143 - `BRepAlgoAPI_Section::Approximation()`
         #[cxx_name = "Approximation"]
         fn approximation(self: Pin<&mut Section>, B: bool);
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:153 - `BRepAlgoAPI_Section::ComputePCurveOn1()`
+        ///
         /// Indicates whether the P-Curve should be (or not)
         /// performed on the argument.
         /// By default, no parametric 2D curve (pcurve) is defined for the
@@ -1227,6 +1290,8 @@ pub(crate) mod ffi {
         /// Obsolete
         #[cxx_name = "ComputePCurveOn1"]
         fn compute_p_curve_on1(self: Pin<&mut Section>, B: bool);
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:163 - `BRepAlgoAPI_Section::ComputePCurveOn2()`
+        ///
         /// Indicates whether the P-Curve should be (or not)
         /// performed on the tool.
         /// By default, no parametric 2D curve (pcurve) is defined for the
@@ -1237,11 +1302,15 @@ pub(crate) mod ffi {
         /// Obsolete
         #[cxx_name = "ComputePCurveOn2"]
         fn compute_p_curve_on2(self: Pin<&mut Section>, B: bool);
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:168 - `BRepAlgoAPI_Section::Build()`
+        ///
         /// Performs the algorithm
         /// Filling interference Data Structure (if it is necessary)
         /// Building the result of the operation.
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut Section>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:179 - `BRepAlgoAPI_Section::HasAncestorFaceOn1()`
+        ///
         /// get the face of the first part giving section edge <E>.
         /// Returns True on the 3 following conditions :
         /// 1/ <E> is an edge returned by the Shape() metwod.
@@ -1256,6 +1325,8 @@ pub(crate) mod ffi {
             E: &TopoDS_Shape,
             F: Pin<&mut TopoDS_Shape>,
         ) -> bool;
+        /// **Source:** `BRepAlgoAPI_Section.hxx`:200 - `BRepAlgoAPI_Section::HasAncestorFaceOn2()`
+        ///
         /// Identifies the ancestor faces of
         /// the intersection edge E resulting from the last
         /// computation performed in this framework, that is, the faces of

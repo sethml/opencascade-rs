@@ -420,7 +420,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BSplSLib_Cache ========================
-        /// **Source:** `BSplSLib_Cache.hxx` - `BSplSLib_Cache`
+        /// **Source:** `BSplSLib_Cache.hxx`:26 - `BSplSLib_Cache`
         ///
         /// \brief A cache class for Bezier and B-spline surfaces.
         ///
@@ -428,17 +428,23 @@ pub(crate) mod ffi {
         /// The data should be recalculated in going from span to span.
         #[cxx_name = "BSplSLib_Cache"]
         type Cache;
+        /// **Source:** `BSplSLib_Cache.hxx`:48 - `BSplSLib_Cache::IsCacheValid()`
+        ///
         /// Verifies validity of the cache using parameters of the point
         /// \param theParameterU  first parameter of the point placed in the span
         /// \param theParameterV  second parameter of the point placed in the span
         #[cxx_name = "IsCacheValid"]
         fn is_cache_valid(self: &Cache, theParameterU: f64, theParameterV: f64) -> bool;
+        /// **Source:** `BSplSLib_Cache.hxx`:73 - `BSplSLib_Cache::D0()`
+        ///
         /// Calculates the point on the surface for specified parameters
         /// \param[in]  theU      first parameter for calculation of the value
         /// \param[in]  theV      second parameter for calculation of the value
         /// \param[out] thePoint  the result of calculation (the point on the surface)
         #[cxx_name = "D0"]
         fn d0(self: &Cache, theU: &f64, theV: &f64, thePoint: Pin<&mut gp_Pnt>);
+        /// **Source:** `BSplSLib_Cache.hxx`:83 - `BSplSLib_Cache::D1()`
+        ///
         /// Calculates the point on the surface and its first derivative
         /// \param[in]  theU         first parameter of calculation of the value
         /// \param[in]  theV         second parameter of calculation of the value
@@ -454,6 +460,8 @@ pub(crate) mod ffi {
             theTangentU: Pin<&mut gp_Vec>,
             theTangentV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `BSplSLib_Cache.hxx`:98 - `BSplSLib_Cache::D2()`
+        ///
         /// Calculates the point on the surface and derivatives till second order
         /// \param[in]  theU            first parameter of calculation of the value
         /// \param[in]  theV            second parameter of calculation of the value
@@ -475,15 +483,17 @@ pub(crate) mod ffi {
             theCurvatureV: Pin<&mut gp_Vec>,
             theCurvatureUV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `BSplSLib_Cache.hxx`:107 - `BSplSLib_Cache::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Cache) -> &HandleStandardType;
+        /// **Source:** `BSplSLib_Cache.hxx`:107 - `BSplSLib_Cache::get_type_name()`
         #[cxx_name = "BSplSLib_Cache_get_type_name"]
         fn Cache_get_type_name() -> String;
         /// Wrap BSplSLib_Cache in a Handle (reference-counted smart pointer)
         #[cxx_name = "BSplSLib_Cache_to_handle"]
         fn Cache_to_handle(obj: UniquePtr<Cache>) -> UniquePtr<HandleBSplSLibCache>;
         /// ======================== BSplSLib ========================
-        /// **Source:** `BSplSLib.hxx` - `BSplSLib`
+        /// **Source:** `BSplSLib.hxx`:86 - `BSplSLib`
         ///
         /// BSplSLib   B-spline surface Library
         /// This  package provides   an  implementation  of  geometric
@@ -541,6 +551,8 @@ pub(crate) mod ffi {
         /// a practical guide Gerald Farin
         #[cxx_name = "BSplSLib"]
         type BSplSLib;
+        /// **Source:** `BSplSLib.hxx`:174 - `BSplSLib::RationalDerivative()`
+        ///
         /// this is a one dimensional function
         /// typedef  void (*EvaluatorFunction)  (
         /// Standard_Integer     // Derivative Request
@@ -634,6 +646,8 @@ pub(crate) mod ffi {
             RDers: &mut f64,
             All: bool,
         );
+        /// **Source:** `BSplSLib.hxx`:313 - `BSplSLib::Reverse()`
+        ///
         /// Reverses the array of poles. Last is the Index of
         /// the new first Row( Col) of Poles.
         /// On  a  non periodic surface Last is
@@ -649,6 +663,8 @@ pub(crate) mod ffi {
             Last: i32,
             UDirection: bool,
         );
+        /// **Source:** `BSplSLib.hxx`:368 - `BSplSLib::Reverse()`
+        ///
         /// Reverses the array of weights.
         #[cxx_name = "BSplSLib_Reverse_array2ofreal_int_bool"]
         fn BSplSLib_reverse_array2ofreal_int_bool(
@@ -656,6 +672,8 @@ pub(crate) mod ffi {
             Last: i32,
             UDirection: bool,
         );
+        /// **Source:** `BSplSLib.hxx`:376 - `BSplSLib::IsRational()`
+        ///
         /// Returns False if all the weights  of the  array <Weights>
         /// in the area [I1,I2] * [J1,J2] are  identic.
         /// Epsilon  is used for comparing  weights.
@@ -669,6 +687,8 @@ pub(crate) mod ffi {
             J2: i32,
             Epsilon: f64,
         ) -> bool;
+        /// **Source:** `BSplSLib.hxx`:384 - `BSplSLib::SetPoles()`
+        ///
         /// Copy in FP the coordinates of the poles.
         #[cxx_name = "BSplSLib_SetPoles_array2ofpnt_array1ofreal_bool"]
         fn BSplSLib_set_poles_array2ofpnt_array1ofreal_bool(
@@ -676,6 +696,8 @@ pub(crate) mod ffi {
             FP: Pin<&mut TColStd_Array1OfReal>,
             UDirection: bool,
         );
+        /// **Source:** `BSplSLib.hxx`:389 - `BSplSLib::SetPoles()`
+        ///
         /// Copy in FP the coordinates of the poles.
         #[cxx_name = "BSplSLib_SetPoles_array2ofpnt_array2ofreal_array1ofreal_bool"]
         fn BSplSLib_set_poles_array2ofpnt_array2ofreal_array1ofreal_bool(
@@ -684,6 +706,8 @@ pub(crate) mod ffi {
             FP: Pin<&mut TColStd_Array1OfReal>,
             UDirection: bool,
         );
+        /// **Source:** `BSplSLib.hxx`:395 - `BSplSLib::GetPoles()`
+        ///
         /// Get from FP the coordinates of the poles.
         #[cxx_name = "BSplSLib_GetPoles_array1ofreal_array2ofpnt_bool"]
         fn BSplSLib_get_poles_array1ofreal_array2ofpnt_bool(
@@ -691,6 +715,8 @@ pub(crate) mod ffi {
             Poles: Pin<&mut TColgp_Array2OfPnt>,
             UDirection: bool,
         );
+        /// **Source:** `BSplSLib.hxx`:400 - `BSplSLib::GetPoles()`
+        ///
         /// Get from FP the coordinates of the poles.
         #[cxx_name = "BSplSLib_GetPoles_array1ofreal_array2ofpnt_array2ofreal_bool"]
         fn BSplSLib_get_poles_array1ofreal_array2ofpnt_array2ofreal_bool(
@@ -699,6 +725,8 @@ pub(crate) mod ffi {
             Weights: Pin<&mut TColStd_Array2OfReal>,
             UDirection: bool,
         );
+        /// **Source:** `BSplSLib.hxx`:418 - `BSplSLib::MovePoint()`
+        ///
         /// Find the new poles which allows an old point (with a
         /// given u,v  as parameters)  to  reach a  new position
         /// UIndex1,UIndex2 indicate the  range of poles we can
@@ -734,12 +762,16 @@ pub(crate) mod ffi {
             VLastIndex: &mut i32,
             NewPoles: Pin<&mut TColgp_Array2OfPnt>,
         );
+        /// **Source:** `BSplSLib.hxx`:647 - `BSplSLib::PolesCoefficients()`
+        ///
         /// Warning! To be used for BezierSurfaces ONLY!!!
         #[cxx_name = "BSplSLib_PolesCoefficients_array2ofpnt2"]
         fn BSplSLib_poles_coefficients_array2ofpnt2(
             Poles: &TColgp_Array2OfPnt,
             CachePoles: Pin<&mut TColgp_Array2OfPnt>,
         );
+        /// **Source:** `BSplSLib.hxx`:698 - `BSplSLib::Interpolate()`
+        ///
         /// Performs the interpolation of the data points given in
         /// the   Poles       array      in   the      form
         /// [1,...,RL][1,...,RC][1...PolesDimension]    .    The
@@ -769,6 +801,8 @@ pub(crate) mod ffi {
             Weights: Pin<&mut TColStd_Array2OfReal>,
             InversionProblem: &mut i32,
         );
+        /// **Source:** `BSplSLib.hxx`:724 - `BSplSLib::Interpolate()`
+        ///
         /// Performs the interpolation of the data points given in
         /// the  Poles array.
         /// The  ColLength CL and the Length of UParameters must be
@@ -797,9 +831,11 @@ pub(crate) mod ffi {
             InversionProblem: &mut i32,
         );
         /// ======================== BSplSLib_EvaluatorFunction ========================
-        /// **Source:** `BSplSLib_EvaluatorFunction.hxx` - `BSplSLib_EvaluatorFunction`
+        /// **Source:** `BSplSLib_EvaluatorFunction.hxx`:31 - `BSplSLib_EvaluatorFunction`
         #[cxx_name = "BSplSLib_EvaluatorFunction"]
         type EvaluatorFunction;
+        /// **Source:** `BSplSLib_EvaluatorFunction.hxx`:41 - `BSplSLib_EvaluatorFunction::Evaluate()`
+        ///
         /// Function evaluation method to be defined by descendant
         #[cxx_name = "Evaluate"]
         fn evaluate(

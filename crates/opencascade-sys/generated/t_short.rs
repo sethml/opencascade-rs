@@ -59,26 +59,26 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== TShort_HArray1OfShortReal ========================
-        /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal`
+        /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal`
         #[cxx_name = "TShort_HArray1OfShortReal"]
         type HArray1OfShortReal;
-        /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
+        /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor"]
         fn HArray1OfShortReal_ctor() -> UniquePtr<HArray1OfShortReal>;
-        /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
+        /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor_int2"]
         fn HArray1OfShortReal_ctor_int2(
             theLower: i32,
             theUpper: i32,
         ) -> UniquePtr<HArray1OfShortReal>;
-        /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
+        /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor_int2_float"]
         fn HArray1OfShortReal_ctor_int2_float(
             theLower: i32,
             theUpper: i32,
             theValue: &f32,
         ) -> UniquePtr<HArray1OfShortReal>;
-        /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
+        /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor_float_int2_bool"]
         fn HArray1OfShortReal_ctor_float_int2_bool(
             theBegin: &f32,
@@ -86,17 +86,21 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfShortReal>;
-        /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
+        /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor_array1ofshortreal"]
         fn HArray1OfShortReal_ctor_array1ofshortreal(
             theOther: &TShort_Array1OfShortReal,
         ) -> UniquePtr<HArray1OfShortReal>;
+        /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::Array1()`
         #[cxx_name = "Array1"]
         fn array1(self: &HArray1OfShortReal) -> &TShort_Array1OfShortReal;
+        /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::ChangeArray1()`
         #[cxx_name = "ChangeArray1"]
         fn change_array1(self: Pin<&mut HArray1OfShortReal>) -> Pin<&mut TShort_Array1OfShortReal>;
+        /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &HArray1OfShortReal) -> &HandleStandardType;
+        /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::get_type_name()`
         #[cxx_name = "TShort_HArray1OfShortReal_get_type_name"]
         fn HArray1OfShortReal_get_type_name() -> String;
         /// Wrap TShort_HArray1OfShortReal in a Handle (reference-counted smart pointer)

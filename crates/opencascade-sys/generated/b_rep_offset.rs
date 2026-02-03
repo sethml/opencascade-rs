@@ -128,47 +128,68 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepOffset_MakeOffset ========================
-        /// **Source:** `BRepOffset_MakeOffset.hxx` - `BRepOffset_MakeOffset`
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:43 - `BRepOffset_MakeOffset`
         #[cxx_name = "BRepOffset_MakeOffset"]
         type MakeOffset;
-        /// **Source:** `BRepOffset_MakeOffset.hxx` - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:48 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
         #[cxx_name = "BRepOffset_MakeOffset_ctor"]
         fn MakeOffset_ctor() -> UniquePtr<MakeOffset>;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:72 - `BRepOffset_MakeOffset::Clear()`
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut MakeOffset>);
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:75 - `BRepOffset_MakeOffset::AllowLinearization()`
+        ///
         /// Changes the flag allowing the linearization
         #[cxx_name = "AllowLinearization"]
         fn allow_linearization(self: Pin<&mut MakeOffset>, theIsAllowed: bool);
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:79 - `BRepOffset_MakeOffset::AddFace()`
+        ///
         /// Add Closing Faces,  <F>  has to be  in  the initial
         /// shape S.
         #[cxx_name = "AddFace"]
         fn add_face(self: Pin<&mut MakeOffset>, F: &TopoDS_Face);
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:82 - `BRepOffset_MakeOffset::SetOffsetOnFace()`
+        ///
         /// set the offset <Off> on the Face <F>
         #[cxx_name = "SetOffsetOnFace"]
         fn set_offset_on_face(self: Pin<&mut MakeOffset>, F: &TopoDS_Face, Off: f64);
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:84 - `BRepOffset_MakeOffset::MakeOffsetShape()`
         #[cxx_name = "MakeOffsetShape"]
         fn make_offset_shape(self: Pin<&mut MakeOffset>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:87 - `BRepOffset_MakeOffset::MakeThickSolid()`
         #[cxx_name = "MakeThickSolid"]
         fn make_thick_solid(self: Pin<&mut MakeOffset>, theRange: &Message_ProgressRange);
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:90 - `BRepOffset_MakeOffset::GetAnalyse()`
         #[cxx_name = "GetAnalyse"]
         fn get_analyse(self: &MakeOffset) -> &Analyse;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:92 - `BRepOffset_MakeOffset::IsDone()`
         #[cxx_name = "IsDone"]
         fn is_done(self: &MakeOffset) -> bool;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:94 - `BRepOffset_MakeOffset::Shape()`
         #[cxx_name = "Shape"]
         fn shape(self: &MakeOffset) -> &TopoDS_Shape;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:96 - `BRepOffset_MakeOffset::InitShape()`
         #[cxx_name = "InitShape"]
         fn init_shape(self: &MakeOffset) -> &TopoDS_Shape;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:103 - `BRepOffset_MakeOffset::OffsetFacesFromShapes()`
+        ///
         /// Returns <Image> containing links between initials
         /// shapes and offset faces.
         #[cxx_name = "OffsetFacesFromShapes"]
         fn offset_faces_from_shapes(self: &MakeOffset) -> &BRepAlgo_Image;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:110 - `BRepOffset_MakeOffset::OffsetEdgesFromShapes()`
+        ///
         /// Returns <Image> containing links between initials
         /// shapes and offset edges.
         #[cxx_name = "OffsetEdgesFromShapes"]
         fn offset_edges_from_shapes(self: &MakeOffset) -> &BRepAlgo_Image;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:113 - `BRepOffset_MakeOffset::ClosingFaces()`
+        ///
         /// Returns the list of closing faces stores by AddFace
         #[cxx_name = "ClosingFaces"]
         fn closing_faces(self: &MakeOffset) -> &TopTools_IndexedMapOfShape;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:122 - `BRepOffset_MakeOffset::CheckInputData()`
+        ///
         /// Makes pre analysis of possibility offset perform. Use method Error() to get more information.
         /// Finds first error. List of checks:
         /// 1) Check for existence object with non-null offset.
@@ -178,21 +199,29 @@ pub(crate) mod ffi {
         /// @return True if possible make computations and false otherwise.
         #[cxx_name = "CheckInputData"]
         fn check_input_data(self: Pin<&mut MakeOffset>, theRange: &Message_ProgressRange) -> bool;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:125 - `BRepOffset_MakeOffset::GetBadShape()`
+        ///
         /// Return bad shape, which obtained in CheckInputData.
         #[cxx_name = "GetBadShape"]
         fn get_bad_shape(self: &MakeOffset) -> &TopoDS_Shape;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:129 - `BRepOffset_MakeOffset::Generated()`
+        ///
         /// @name History methods
         /// Returns the  list of shapes generated from the shape <S>.
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut MakeOffset>, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:132 - `BRepOffset_MakeOffset::Modified()`
+        ///
         /// Returns the list of shapes modified from the shape <S>.
         #[cxx_name = "Modified"]
         fn modified(self: Pin<&mut MakeOffset>, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffset_MakeOffset.hxx`:135 - `BRepOffset_MakeOffset::IsDeleted()`
+        ///
         /// Returns true if the shape S has been deleted.
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut MakeOffset>, S: &TopoDS_Shape) -> bool;
         /// ======================== BRepOffset_MakeSimpleOffset ========================
-        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset`
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:61 - `BRepOffset_MakeSimpleOffset`
         ///
         ///
         /// Limitations:
@@ -206,12 +235,12 @@ pub(crate) mod ffi {
         /// connections between adjacent faces) will lead to good result.
         #[cxx_name = "BRepOffset_MakeSimpleOffset"]
         type MakeSimpleOffset;
-        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset::BRepOffset_MakeSimpleOffset()`
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:65 - `BRepOffset_MakeSimpleOffset::BRepOffset_MakeSimpleOffset()`
         ///
         /// Constructor. Does nothing.
         #[cxx_name = "BRepOffset_MakeSimpleOffset_ctor"]
         fn MakeSimpleOffset_ctor() -> UniquePtr<MakeSimpleOffset>;
-        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset::BRepOffset_MakeSimpleOffset()`
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:68 - `BRepOffset_MakeSimpleOffset::BRepOffset_MakeSimpleOffset()`
         ///
         /// Constructor.
         #[cxx_name = "BRepOffset_MakeSimpleOffset_ctor_shape_real"]
@@ -219,6 +248,8 @@ pub(crate) mod ffi {
             theInputShape: &TopoDS_Shape,
             theOffsetValue: f64,
         ) -> UniquePtr<MakeSimpleOffset>;
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:72 - `BRepOffset_MakeSimpleOffset::Initialize()`
+        ///
         /// Initialise shape for modifications.
         #[cxx_name = "Initialize"]
         fn initialize(
@@ -226,33 +257,53 @@ pub(crate) mod ffi {
             theInputShape: &TopoDS_Shape,
             theOffsetValue: f64,
         );
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:76 - `BRepOffset_MakeSimpleOffset::Perform()`
+        ///
         /// Computes offset shape.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut MakeSimpleOffset>);
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:86 - `BRepOffset_MakeSimpleOffset::GetBuildSolidFlag()`
+        ///
         /// Gets solid building flag.
         #[cxx_name = "GetBuildSolidFlag"]
         fn get_build_solid_flag(self: &MakeSimpleOffset) -> bool;
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:89 - `BRepOffset_MakeSimpleOffset::SetBuildSolidFlag()`
+        ///
         /// Sets solid building flag.
         #[cxx_name = "SetBuildSolidFlag"]
         fn set_build_solid_flag(self: Pin<&mut MakeSimpleOffset>, theBuildFlag: bool);
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:92 - `BRepOffset_MakeSimpleOffset::GetOffsetValue()`
+        ///
         /// Gets offset value.
         #[cxx_name = "GetOffsetValue"]
         fn get_offset_value(self: &MakeSimpleOffset) -> f64;
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:95 - `BRepOffset_MakeSimpleOffset::SetOffsetValue()`
+        ///
         /// Sets offset value.
         #[cxx_name = "SetOffsetValue"]
         fn set_offset_value(self: Pin<&mut MakeSimpleOffset>, theOffsetValue: f64);
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:98 - `BRepOffset_MakeSimpleOffset::GetTolerance()`
+        ///
         /// Gets tolerance (used for handling singularities).
         #[cxx_name = "GetTolerance"]
         fn get_tolerance(self: &MakeSimpleOffset) -> f64;
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:101 - `BRepOffset_MakeSimpleOffset::SetTolerance()`
+        ///
         /// Sets tolerance (used for handling singularities).
         #[cxx_name = "SetTolerance"]
         fn set_tolerance(self: Pin<&mut MakeSimpleOffset>, theValue: f64);
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:104 - `BRepOffset_MakeSimpleOffset::IsDone()`
+        ///
         /// Gets done state.
         #[cxx_name = "IsDone"]
         fn is_done(self: &MakeSimpleOffset) -> bool;
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:107 - `BRepOffset_MakeSimpleOffset::GetResultShape()`
+        ///
         /// Returns result shape.
         #[cxx_name = "GetResultShape"]
         fn get_result_shape(self: &MakeSimpleOffset) -> &TopoDS_Shape;
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:110 - `BRepOffset_MakeSimpleOffset::GetSafeOffset()`
+        ///
         /// Computes max safe offset value for the given tolerance.
         #[cxx_name = "GetSafeOffset"]
         fn get_safe_offset(self: Pin<&mut MakeSimpleOffset>, theExpectedToler: f64) -> f64;
@@ -274,23 +325,25 @@ pub(crate) mod ffi {
             theShape: &TopoDS_Shape,
         ) -> UniquePtr<TopoDS_Shape>;
         /// ======================== BRepOffset_Analyse ========================
-        /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse`
+        /// **Source:** `BRepOffset_Analyse.hxx`:43 - `BRepOffset_Analyse`
         ///
         /// Analyses the shape to find the parts of edges
         /// connecting the convex, concave or tangent faces.
         #[cxx_name = "BRepOffset_Analyse"]
         type Analyse;
-        /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse::BRepOffset_Analyse()`
+        /// **Source:** `BRepOffset_Analyse.hxx`:50 - `BRepOffset_Analyse::BRepOffset_Analyse()`
         ///
         /// @name Constructors
         /// Empty c-tor
         #[cxx_name = "BRepOffset_Analyse_ctor"]
         fn Analyse_ctor() -> UniquePtr<Analyse>;
-        /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse::BRepOffset_Analyse()`
+        /// **Source:** `BRepOffset_Analyse.hxx`:53 - `BRepOffset_Analyse::BRepOffset_Analyse()`
         ///
         /// C-tor performing the job inside
         #[cxx_name = "BRepOffset_Analyse_ctor_shape_real"]
         fn Analyse_ctor_shape_real(theS: &TopoDS_Shape, theAngle: f64) -> UniquePtr<Analyse>;
+        /// **Source:** `BRepOffset_Analyse.hxx`:57 - `BRepOffset_Analyse::Perform()`
+        ///
         /// @name Performing analysis
         /// Performs the analysis
         #[cxx_name = "Perform"]
@@ -300,13 +353,19 @@ pub(crate) mod ffi {
             theAngle: f64,
             theRange: &Message_ProgressRange,
         );
+        /// **Source:** `BRepOffset_Analyse.hxx`:63 - `BRepOffset_Analyse::IsDone()`
+        ///
         /// @name Results
         /// Returns status of the algorithm
         #[cxx_name = "IsDone"]
         fn is_done(self: &Analyse) -> bool;
+        /// **Source:** `BRepOffset_Analyse.hxx`:66 - `BRepOffset_Analyse::Type()`
+        ///
         /// Returns the connectivity type of the edge
         #[cxx_name = "Type"]
         fn type_(self: &Analyse, theE: &TopoDS_Edge) -> &BRepOffset_ListOfInterval;
+        /// **Source:** `BRepOffset_Analyse.hxx`:82 - `BRepOffset_Analyse::TangentEdges()`
+        ///
         /// set in <Edges> all  the Edges of <Shape> which are
         /// tangent to <Edge> at the vertex <Vertex>.
         #[cxx_name = "TangentEdges"]
@@ -316,24 +375,37 @@ pub(crate) mod ffi {
             theVertex: &TopoDS_Vertex,
             theEdges: Pin<&mut TopTools_ListOfShape>,
         );
+        /// **Source:** `BRepOffset_Analyse.hxx`:87 - `BRepOffset_Analyse::HasAncestor()`
+        ///
         /// Checks if the given shape has ancestors
         #[cxx_name = "HasAncestor"]
         fn has_ancestor(self: &Analyse, theS: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepOffset_Analyse.hxx`:93 - `BRepOffset_Analyse::Ancestors()`
+        ///
         /// Returns ancestors for the shape
         #[cxx_name = "Ancestors"]
         fn ancestors(self: &Analyse, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffset_Analyse.hxx`:124 - `BRepOffset_Analyse::SetOffsetValue()`
         #[cxx_name = "SetOffsetValue"]
         fn set_offset_value(self: Pin<&mut Analyse>, theOffset: f64);
+        /// **Source:** `BRepOffset_Analyse.hxx`:127 - `BRepOffset_Analyse::SetFaceOffsetMap()`
+        ///
         /// Sets the face-offset data map to analyze tangential cases
         #[cxx_name = "SetFaceOffsetMap"]
         fn set_face_offset_map(self: Pin<&mut Analyse>, theMap: &TopTools_DataMapOfShapeReal);
+        /// **Source:** `BRepOffset_Analyse.hxx`:131 - `BRepOffset_Analyse::NewFaces()`
+        ///
         /// Returns the new faces constructed between tangent faces
         /// having different offset values on the shape
         #[cxx_name = "NewFaces"]
         fn new_faces(self: &Analyse) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepOffset_Analyse.hxx`:138 - `BRepOffset_Analyse::HasGenerated()`
+        ///
         /// Checks if the edge has generated a new face.
         #[cxx_name = "HasGenerated"]
         fn has_generated(self: &Analyse, theS: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepOffset_Analyse.hxx`:145 - `BRepOffset_Analyse::EdgeReplacement()`
+        ///
         /// Returns the replacement of the edge in the face.
         /// If no replacement exists, returns the edge
         #[cxx_name = "EdgeReplacement"]
@@ -342,6 +414,8 @@ pub(crate) mod ffi {
             theFace: &TopoDS_Face,
             theEdge: &TopoDS_Edge,
         ) -> &TopoDS_Edge;
+        /// **Source:** `BRepOffset_Analyse.hxx`:155 - `BRepOffset_Analyse::Clear()`
+        ///
         /// @name Clearing the content
         /// Clears the content of the algorithm
         #[cxx_name = "Clear"]
@@ -351,12 +425,13 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepOffset_Analyse_Generated"]
         fn Analyse_generated(self_: &Analyse, theS: &TopoDS_Shape) -> UniquePtr<TopoDS_Shape>;
         /// ======================== BRepOffset_MakeLoops ========================
-        /// **Source:** `BRepOffset_MakeLoops.hxx` - `BRepOffset_MakeLoops`
+        /// **Source:** `BRepOffset_MakeLoops.hxx`:32 - `BRepOffset_MakeLoops`
         #[cxx_name = "BRepOffset_MakeLoops"]
         type MakeLoops;
-        /// **Source:** `BRepOffset_MakeLoops.hxx` - `BRepOffset_MakeLoops::BRepOffset_MakeLoops()`
+        /// **Source:** `BRepOffset_MakeLoops.hxx`:37 - `BRepOffset_MakeLoops::BRepOffset_MakeLoops()`
         #[cxx_name = "BRepOffset_MakeLoops_ctor"]
         fn MakeLoops_ctor() -> UniquePtr<MakeLoops>;
+        /// **Source:** `BRepOffset_MakeLoops.hxx`:39 - `BRepOffset_MakeLoops::Build()`
         #[cxx_name = "Build"]
         fn build(
             self: Pin<&mut MakeLoops>,
@@ -366,6 +441,7 @@ pub(crate) mod ffi {
             theImageVV: Pin<&mut BRepAlgo_Image>,
             theRange: &Message_ProgressRange,
         );
+        /// **Source:** `BRepOffset_MakeLoops.hxx`:45 - `BRepOffset_MakeLoops::BuildOnContext()`
         #[cxx_name = "BuildOnContext"]
         fn build_on_context(
             self: Pin<&mut MakeLoops>,
@@ -376,6 +452,7 @@ pub(crate) mod ffi {
             InSide: bool,
             theRange: &Message_ProgressRange,
         );
+        /// **Source:** `BRepOffset_MakeLoops.hxx`:52 - `BRepOffset_MakeLoops::BuildFaces()`
         #[cxx_name = "BuildFaces"]
         fn build_faces(
             self: Pin<&mut MakeLoops>,
@@ -385,7 +462,7 @@ pub(crate) mod ffi {
             theRange: &Message_ProgressRange,
         );
         /// ======================== BRepOffset_Offset ========================
-        /// **Source:** `BRepOffset_Offset.hxx` - `BRepOffset_Offset`
+        /// **Source:** `BRepOffset_Offset.hxx`:43 - `BRepOffset_Offset`
         ///
         /// This class compute elemenary offset surface.
         /// Evaluate the offset generated :
@@ -394,31 +471,39 @@ pub(crate) mod ffi {
         /// 3 - from a vertex.
         #[cxx_name = "BRepOffset_Offset"]
         type Offset;
-        /// **Source:** `BRepOffset_Offset.hxx` - `BRepOffset_Offset::BRepOffset_Offset()`
+        /// **Source:** `BRepOffset_Offset.hxx`:48 - `BRepOffset_Offset::BRepOffset_Offset()`
         #[cxx_name = "BRepOffset_Offset_ctor"]
         fn Offset_ctor() -> UniquePtr<Offset>;
+        /// **Source:** `BRepOffset_Offset.hxx`:139 - `BRepOffset_Offset::Init()`
+        ///
         /// Only used in Rolling Ball. Pipe on Free Boundary
         #[cxx_name = "Init"]
         fn init_edge_real(self: Pin<&mut Offset>, Edge: &TopoDS_Edge, Offset: f64);
+        /// **Source:** `BRepOffset_Offset.hxx`:141 - `BRepOffset_Offset::InitialShape()`
         #[cxx_name = "InitialShape"]
         fn initial_shape(self: &Offset) -> &TopoDS_Shape;
+        /// **Source:** `BRepOffset_Offset.hxx`:143 - `BRepOffset_Offset::Face()`
         #[cxx_name = "Face"]
         fn face(self: &Offset) -> &TopoDS_Face;
         #[cxx_name = "BRepOffset_Offset_Generated"]
         fn Offset_generated(self_: &Offset, Shape: &TopoDS_Shape) -> UniquePtr<TopoDS_Shape>;
         /// ======================== BRepOffset_Interval ========================
-        /// **Source:** `BRepOffset_Interval.hxx` - `BRepOffset_Interval`
+        /// **Source:** `BRepOffset_Interval.hxx`:27 - `BRepOffset_Interval`
         #[cxx_name = "BRepOffset_Interval"]
         type Interval;
-        /// **Source:** `BRepOffset_Interval.hxx` - `BRepOffset_Interval::BRepOffset_Interval()`
+        /// **Source:** `BRepOffset_Interval.hxx`:32 - `BRepOffset_Interval::BRepOffset_Interval()`
         #[cxx_name = "BRepOffset_Interval_ctor"]
         fn Interval_ctor() -> UniquePtr<Interval>;
+        /// **Source:** `BRepOffset_Interval.hxx`:38 - `BRepOffset_Interval::First()`
         #[cxx_name = "First"]
         fn first_real(self: Pin<&mut Interval>, U: f64);
+        /// **Source:** `BRepOffset_Interval.hxx`:40 - `BRepOffset_Interval::Last()`
         #[cxx_name = "Last"]
         fn last_real(self: Pin<&mut Interval>, U: f64);
+        /// **Source:** `BRepOffset_Interval.hxx`:44 - `BRepOffset_Interval::First()`
         #[cxx_name = "First"]
         fn first(self: &Interval) -> f64;
+        /// **Source:** `BRepOffset_Interval.hxx`:46 - `BRepOffset_Interval::Last()`
         #[cxx_name = "Last"]
         fn last(self: &Interval) -> f64;
 

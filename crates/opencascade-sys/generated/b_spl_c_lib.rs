@@ -1680,7 +1680,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BSplCLib_Cache ========================
-        /// **Source:** `BSplCLib_Cache.hxx` - `BSplCLib_Cache`
+        /// **Source:** `BSplCLib_Cache.hxx`:24 - `BSplCLib_Cache`
         ///
         /// \brief A cache class for Bezier and B-spline curves.
         ///
@@ -1688,17 +1688,24 @@ pub(crate) mod ffi {
         /// The data should be recalculated in going from span to span.
         #[cxx_name = "BSplCLib_Cache"]
         type Cache;
+        /// **Source:** `BSplCLib_Cache.hxx`:53 - `BSplCLib_Cache::IsCacheValid()`
+        ///
         /// Verifies validity of the cache using flat parameter of the point
         /// \param theParameter parameter of the point placed in the span
         #[cxx_name = "IsCacheValid"]
         fn is_cache_valid(self: &Cache, theParameter: f64) -> bool;
+        /// **Source:** `BSplCLib_Cache.hxx`:78 - `BSplCLib_Cache::D0()`
+        ///
         /// Calculates the point on the curve in the specified parameter
         /// \param[in]  theParameter parameter of calculation of the value
         /// \param[out] thePoint     the result of calculation (the point on the curve)
         #[cxx_name = "D0"]
         fn d0_real_pnt2d(self: &Cache, theParameter: &f64, thePoint: Pin<&mut gp_Pnt2d>);
+        /// **Source:** `BSplCLib_Cache.hxx`:79 - `BSplCLib_Cache::D0()`
         #[cxx_name = "D0"]
         fn d0_real_pnt(self: &Cache, theParameter: &f64, thePoint: Pin<&mut gp_Pnt>);
+        /// **Source:** `BSplCLib_Cache.hxx`:86 - `BSplCLib_Cache::D1()`
+        ///
         /// Calculates the point on the curve and its first derivative in the specified parameter
         /// \param[in]  theParameter parameter of calculation of the value
         /// \param[out] thePoint     the result of calculation (the point on the curve)
@@ -1711,6 +1718,7 @@ pub(crate) mod ffi {
             thePoint: Pin<&mut gp_Pnt2d>,
             theTangent: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `BSplCLib_Cache.hxx`:89 - `BSplCLib_Cache::D1()`
         #[cxx_name = "D1"]
         fn d1_real_pnt_vec(
             self: &Cache,
@@ -1718,6 +1726,8 @@ pub(crate) mod ffi {
             thePoint: Pin<&mut gp_Pnt>,
             theTangent: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `BSplCLib_Cache.hxx`:99 - `BSplCLib_Cache::D2()`
+        ///
         /// Calculates the point on the curve and two derivatives in the specified parameter
         /// \param[in]  theParameter parameter of calculation of the value
         /// \param[out] thePoint     the result of calculation (the point on the curve)
@@ -1732,6 +1742,7 @@ pub(crate) mod ffi {
             theTangent: Pin<&mut gp_Vec2d>,
             theCurvature: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `BSplCLib_Cache.hxx`:103 - `BSplCLib_Cache::D2()`
         #[cxx_name = "D2"]
         fn d2_real_pnt_vec2(
             self: &Cache,
@@ -1740,6 +1751,8 @@ pub(crate) mod ffi {
             theTangent: Pin<&mut gp_Vec>,
             theCurvature: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `BSplCLib_Cache.hxx`:115 - `BSplCLib_Cache::D3()`
+        ///
         /// Calculates the point on the curve and three derivatives in the specified parameter
         /// \param[in]  theParameter parameter of calculation of the value
         /// \param[out] thePoint     the result of calculation (the point on the curve)
@@ -1756,6 +1769,7 @@ pub(crate) mod ffi {
             theCurvature: Pin<&mut gp_Vec2d>,
             theTorsion: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `BSplCLib_Cache.hxx`:120 - `BSplCLib_Cache::D3()`
         #[cxx_name = "D3"]
         fn d3_real_pnt_vec3(
             self: &Cache,
@@ -1765,22 +1779,24 @@ pub(crate) mod ffi {
             theCurvature: Pin<&mut gp_Vec>,
             theTorsion: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `BSplCLib_Cache.hxx`:126 - `BSplCLib_Cache::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Cache) -> &HandleStandardType;
+        /// **Source:** `BSplCLib_Cache.hxx`:126 - `BSplCLib_Cache::get_type_name()`
         #[cxx_name = "BSplCLib_Cache_get_type_name"]
         fn Cache_get_type_name() -> String;
         /// Wrap BSplCLib_Cache in a Handle (reference-counted smart pointer)
         #[cxx_name = "BSplCLib_Cache_to_handle"]
         fn Cache_to_handle(obj: UniquePtr<Cache>) -> UniquePtr<HandleBSplCLibCache>;
         /// ======================== BSplCLib_CacheParams ========================
-        /// **Source:** `BSplCLib_CacheParams.hxx` - `BSplCLib_CacheParams`
+        /// **Source:** `BSplCLib_CacheParams.hxx`:22 - `BSplCLib_CacheParams`
         ///
         /// Simple structure containing parameters describing parameterization
         /// of a B-spline curve or a surface in one direction (U or V),
         /// and data of the current span for its caching
         #[cxx_name = "BSplCLib_CacheParams"]
         type CacheParams;
-        /// **Source:** `BSplCLib_CacheParams.hxx` - `BSplCLib_CacheParams::BSplCLib_CacheParams()`
+        /// **Source:** `BSplCLib_CacheParams.hxx`:40 - `BSplCLib_CacheParams::BSplCLib_CacheParams()`
         ///
         /// Constructor, prepares data structures for caching.
         /// \param theDegree     degree of the B-spline (or Bezier)
@@ -1792,14 +1808,20 @@ pub(crate) mod ffi {
             thePeriodic: bool,
             theFlatKnots: &TColStd_Array1OfReal,
         ) -> UniquePtr<CacheParams>;
+        /// **Source:** `BSplCLib_CacheParams.hxx`:57 - `BSplCLib_CacheParams::PeriodicNormalization()`
+        ///
         /// Normalizes the parameter for periodic B-splines
         /// \param theParameter the value to be normalized into the knots array
         #[cxx_name = "PeriodicNormalization"]
         fn periodic_normalization(self: &CacheParams, theParameter: f64) -> f64;
+        /// **Source:** `BSplCLib_CacheParams.hxx`:79 - `BSplCLib_CacheParams::IsCacheValid()`
+        ///
         /// Verifies validity of the cache using flat parameter of the point
         /// \param theParameter parameter of the point placed in the span
         #[cxx_name = "IsCacheValid"]
         fn is_cache_valid(self: &CacheParams, theParameter: f64) -> bool;
+        /// **Source:** `BSplCLib_CacheParams.hxx`:90 - `BSplCLib_CacheParams::LocateParameter()`
+        ///
         /// Computes span for the specified parameter
         /// \param theParameter parameter of the point placed in the span
         /// \param theFlatKnots  knots of Bezier / B-spline parameterization
@@ -1810,7 +1832,7 @@ pub(crate) mod ffi {
             theFlatKnots: &TColStd_Array1OfReal,
         );
         /// ======================== BSplCLib ========================
-        /// **Source:** `BSplCLib.hxx` - `BSplCLib`
+        /// **Source:** `BSplCLib.hxx`:117 - `BSplCLib`
         ///
         /// BSplCLib   B-spline curve Library.
         ///
@@ -1889,6 +1911,8 @@ pub(crate) mod ffi {
         /// a practical guide Gerald Farin
         #[cxx_name = "BSplCLib"]
         type BSplCLib;
+        /// **Source:** `BSplCLib.hxx`:129 - `BSplCLib::Hunt()`
+        ///
         /// This routine searches the position of the real value theX
         /// in the monotonically increasing set of real values theArray using bisection algorithm.
         ///
@@ -1898,14 +1922,20 @@ pub(crate) mod ffi {
         /// This routine is used to locate a knot value in a set of knots.
         #[cxx_name = "BSplCLib_Hunt"]
         fn BSplCLib_hunt(theArray: &TColStd_Array1OfReal, theX: f64, theXPos: &mut i32);
+        /// **Source:** `BSplCLib.hxx`:135 - `BSplCLib::FirstUKnotIndex()`
+        ///
         /// Computes the index of the knots value which gives
         /// the start point of the curve.
         #[cxx_name = "BSplCLib_FirstUKnotIndex"]
         fn BSplCLib_first_u_knot_index(Degree: i32, Mults: &TColStd_Array1OfInteger) -> i32;
+        /// **Source:** `BSplCLib.hxx`:140 - `BSplCLib::LastUKnotIndex()`
+        ///
         /// Computes the index of the knots value which gives
         /// the end point of the curve.
         #[cxx_name = "BSplCLib_LastUKnotIndex"]
         fn BSplCLib_last_u_knot_index(Degree: i32, Mults: &TColStd_Array1OfInteger) -> i32;
+        /// **Source:** `BSplCLib.hxx`:146 - `BSplCLib::FlatIndex()`
+        ///
         /// Computes the index  of  the  flats knots  sequence
         /// corresponding  to  <Index> in  the  knots sequence
         /// which multiplicities are <Mults>.
@@ -1916,6 +1946,8 @@ pub(crate) mod ffi {
             Mults: &TColStd_Array1OfInteger,
             Periodic: bool,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:166 - `BSplCLib::LocateParameter()`
+        ///
         /// Locates  the parametric value    U  in the knots
         /// sequence  between  the  knot K1   and the knot  K2.
         /// The value return in Index verifies.
@@ -1943,6 +1975,8 @@ pub(crate) mod ffi {
             KnotIndex: &mut i32,
             NewU: &mut f64,
         );
+        /// **Source:** `BSplCLib.hxx`:191 - `BSplCLib::LocateParameter()`
+        ///
         /// Locates  the parametric value    U  in the knots
         /// sequence  between  the  knot K1   and the knot  K2.
         /// The value return in Index verifies.
@@ -1969,16 +2003,22 @@ pub(crate) mod ffi {
             KnotIndex: &mut i32,
             NewU: &mut f64,
         );
+        /// **Source:** `BSplCLib.hxx`:211 - `BSplCLib::MaxKnotMult()`
+        ///
         /// Finds the greatest multiplicity in a set of knots
         /// between  K1  and K2.   Mults  is  the  multiplicity
         /// associated with each knot value.
         #[cxx_name = "BSplCLib_MaxKnotMult"]
         fn BSplCLib_max_knot_mult(Mults: &TColStd_Array1OfInteger, K1: i32, K2: i32) -> i32;
+        /// **Source:** `BSplCLib.hxx`:218 - `BSplCLib::MinKnotMult()`
+        ///
         /// Finds the lowest multiplicity in  a  set of knots
         /// between   K1  and K2.   Mults is  the  multiplicity
         /// associated with each knot value.
         #[cxx_name = "BSplCLib_MinKnotMult"]
         fn BSplCLib_min_knot_mult(Mults: &TColStd_Array1OfInteger, K1: i32, K2: i32) -> i32;
+        /// **Source:** `BSplCLib.hxx`:232 - `BSplCLib::NbPoles()`
+        ///
         /// Returns the number of poles of the curve. Returns 0 if
         /// one of the multiplicities is incorrect.
         ///
@@ -1991,6 +2031,8 @@ pub(crate) mod ffi {
         /// equal to the first.
         #[cxx_name = "BSplCLib_NbPoles"]
         fn BSplCLib_nb_poles(Degree: i32, Periodic: bool, Mults: &TColStd_Array1OfInteger) -> i32;
+        /// **Source:** `BSplCLib.hxx`:247 - `BSplCLib::KnotSequenceLength()`
+        ///
         /// Returns the length  of the sequence  of knots with
         /// repetition.
         ///
@@ -2008,6 +2050,7 @@ pub(crate) mod ffi {
             Degree: i32,
             Periodic: bool,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:251 - `BSplCLib::KnotSequence()`
         #[cxx_name = "BSplCLib_KnotSequence_array1ofreal_array1ofinteger_array1ofreal_bool"]
         fn BSplCLib_knot_sequence_array1ofreal_array1ofinteger_array1ofreal_bool(
             Knots: &TColStd_Array1OfReal,
@@ -2015,6 +2058,8 @@ pub(crate) mod ffi {
             KnotSeq: Pin<&mut TColStd_Array1OfReal>,
             Periodic: bool,
         );
+        /// **Source:** `BSplCLib.hxx`:261 - `BSplCLib::KnotSequence()`
+        ///
         /// Computes  the  sequence   of knots KnotSeq  with
         /// repetition  of the  knots  of multiplicity  greater
         /// than 1.
@@ -2028,10 +2073,14 @@ pub(crate) mod ffi {
             Periodic: bool,
             KnotSeq: Pin<&mut TColStd_Array1OfReal>,
         );
+        /// **Source:** `BSplCLib.hxx`:269 - `BSplCLib::KnotsLength()`
+        ///
         /// Returns the  length  of the   sequence of  knots  (and
         /// Mults)  without repetition.
         #[cxx_name = "BSplCLib_KnotsLength"]
         fn BSplCLib_knots_length(KnotSeq: &TColStd_Array1OfReal, Periodic: bool) -> i32;
+        /// **Source:** `BSplCLib.hxx`:279 - `BSplCLib::Knots()`
+        ///
         /// Computes  the  sequence   of knots Knots  without
         /// repetition  of the  knots  of multiplicity  greater
         /// than 1.
@@ -2045,6 +2094,8 @@ pub(crate) mod ffi {
             Mults: Pin<&mut TColStd_Array1OfInteger>,
             Periodic: bool,
         );
+        /// **Source:** `BSplCLib.hxx`:313 - `BSplCLib::Reparametrize()`
+        ///
         /// Reparametrizes a B-spline curve to [U1, U2].
         /// The knot values are recomputed such that Knots (Lower) = U1
         /// and Knots (Upper) = U2   but the knot form is not modified.
@@ -2053,13 +2104,19 @@ pub(crate) mod ffi {
         /// U1 must not be equal to U2 to avoid division by zero.
         #[cxx_name = "BSplCLib_Reparametrize"]
         fn BSplCLib_reparametrize(U1: f64, U2: f64, Knots: Pin<&mut TColStd_Array1OfReal>);
+        /// **Source:** `BSplCLib.hxx`:319 - `BSplCLib::Reverse()`
+        ///
         /// Reverses  the  array   knots  to  become  the knots
         /// sequence of the reversed curve.
         #[cxx_name = "BSplCLib_Reverse_array1ofreal"]
         fn BSplCLib_reverse_array1ofreal(Knots: Pin<&mut TColStd_Array1OfReal>);
+        /// **Source:** `BSplCLib.hxx`:322 - `BSplCLib::Reverse()`
+        ///
         /// Reverses  the  array of multiplicities.
         #[cxx_name = "BSplCLib_Reverse_array1ofinteger"]
         fn BSplCLib_reverse_array1ofinteger(Mults: Pin<&mut TColStd_Array1OfInteger>);
+        /// **Source:** `BSplCLib.hxx`:334 - `BSplCLib::Reverse()`
+        ///
         /// Reverses the array of poles. Last is the  index of
         /// the new first pole. On  a  non periodic curve last
         /// is Poles.Upper(). On a periodic curve last is
@@ -2072,12 +2129,18 @@ pub(crate) mod ffi {
         /// - 1)
         #[cxx_name = "BSplCLib_Reverse_array1ofpnt_int"]
         fn BSplCLib_reverse_array1ofpnt_int(Poles: Pin<&mut TColgp_Array1OfPnt>, Last: i32);
+        /// **Source:** `BSplCLib.hxx`:337 - `BSplCLib::Reverse()`
+        ///
         /// Reverses the array of poles.
         #[cxx_name = "BSplCLib_Reverse_array1ofpnt2d_int"]
         fn BSplCLib_reverse_array1ofpnt2d_int(Poles: Pin<&mut TColgp_Array1OfPnt2d>, Last: i32);
+        /// **Source:** `BSplCLib.hxx`:340 - `BSplCLib::Reverse()`
+        ///
         /// Reverses the array of poles.
         #[cxx_name = "BSplCLib_Reverse_array1ofreal_int"]
         fn BSplCLib_reverse_array1ofreal_int(Weights: Pin<&mut TColStd_Array1OfReal>, Last: i32);
+        /// **Source:** `BSplCLib.hxx`:346 - `BSplCLib::IsRational()`
+        ///
         /// Returns False if all the weights  of the  array <Weights>
         /// between   I1 an I2   are  identic.   Epsilon  is used for
         /// comparing  weights. If Epsilon  is 0. the  Epsilon of the
@@ -2089,9 +2152,13 @@ pub(crate) mod ffi {
             I2: i32,
             Epsilon: f64,
         ) -> bool;
+        /// **Source:** `BSplCLib.hxx`:352 - `BSplCLib::MaxDegree()`
+        ///
         /// returns the degree maxima for a BSplineCurve.
         #[cxx_name = "BSplCLib_MaxDegree"]
         fn BSplCLib_max_degree() -> i32;
+        /// **Source:** `BSplCLib.hxx`:363 - `BSplCLib::Eval()`
+        ///
         /// Perform the Boor  algorithm  to  evaluate a point at
         /// parameter <U>, with <Degree> and <Dimension>.
         ///
@@ -2109,6 +2176,8 @@ pub(crate) mod ffi {
             Dimension: i32,
             Poles: &mut f64,
         );
+        /// **Source:** `BSplCLib.hxx`:398 - `BSplCLib::BoorScheme()`
+        ///
         /// Performs the  Boor Algorithm  at  parameter <U> with
         /// the given <Degree> and the  array of <Knots> on  the
         /// poles <Poles> of dimension  <Dimension>.  The schema
@@ -2148,6 +2217,8 @@ pub(crate) mod ffi {
             Depth: i32,
             Length: i32,
         );
+        /// **Source:** `BSplCLib.hxx`:417 - `BSplCLib::AntiBoorScheme()`
+        ///
         /// Compute  the content of  Pole before the BoorScheme.
         /// This method is used to remove poles.
         ///
@@ -2170,6 +2241,8 @@ pub(crate) mod ffi {
             Length: i32,
             Tolerance: f64,
         ) -> bool;
+        /// **Source:** `BSplCLib.hxx`:436 - `BSplCLib::Derivative()`
+        ///
         /// Computes   the   poles of  the    BSpline  giving the
         /// derivatives of order <Order>.
         ///
@@ -2189,6 +2262,8 @@ pub(crate) mod ffi {
             Order: i32,
             Poles: &mut f64,
         );
+        /// **Source:** `BSplCLib.hxx`:452 - `BSplCLib::Bohm()`
+        ///
         /// Performs the Bohm  Algorithm at  parameter <U>. This
         /// algorithm computes the value and all the derivatives
         /// up to order N (N <= Degree).
@@ -2207,6 +2282,8 @@ pub(crate) mod ffi {
             Dimension: i32,
             Poles: &mut f64,
         );
+        /// **Source:** `BSplCLib.hxx`:477 - `BSplCLib::PoleIndex()`
+        ///
         /// Return the index of the  first Pole to  use on the
         /// span  Mults(Index)  - Mults(Index+1).  This  index
         /// must be added to Poles.Lower().
@@ -2217,6 +2294,8 @@ pub(crate) mod ffi {
             Periodic: bool,
             Mults: &TColStd_Array1OfInteger,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:505 - `BSplCLib::BuildBoor()`
+        ///
         /// Copy in <LP>  poles for <Dimension>  Boor  scheme.
         /// Starting  from    <Index>     *  <Dimension>, copy
         /// <Length+1> poles.
@@ -2228,11 +2307,15 @@ pub(crate) mod ffi {
             Poles: &TColStd_Array1OfReal,
             LP: &mut f64,
         );
+        /// **Source:** `BSplCLib.hxx`:514 - `BSplCLib::BoorIndex()`
+        ///
         /// Returns the index in  the Boor result array of the
         /// poles <Index>. If  the Boor  algorithm was perform
         /// with <Length> and <Depth>.
         #[cxx_name = "BSplCLib_BoorIndex"]
         fn BSplCLib_boor_index(Index: i32, Length: i32, Depth: i32) -> i32;
+        /// **Source:** `BSplCLib.hxx`:521 - `BSplCLib::GetPole()`
+        ///
         /// Copy  the  pole at  position  <Index>  in  the Boor
         /// scheme of   dimension <Dimension> to  <Position> in
         /// the array <Pole>. <Position> is updated.
@@ -2246,6 +2329,7 @@ pub(crate) mod ffi {
             Position: &mut i32,
             Pole: Pin<&mut TColStd_Array1OfReal>,
         );
+        /// **Source:** `BSplCLib.hxx`:685 - `BSplCLib::RemoveKnot()`
         #[cxx_name = "BSplCLib_RemoveKnot_int3_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger_real"]
         fn BSplCLib_remove_knot_int3_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger_real(
             Index: i32,
@@ -2261,6 +2345,8 @@ pub(crate) mod ffi {
             NewMults: Pin<&mut TColStd_Array1OfInteger>,
             Tolerance: f64,
         ) -> bool;
+        /// **Source:** `BSplCLib.hxx`:748 - `BSplCLib::IncreaseDegreeCountKnots()`
+        ///
         /// Returns the   number   of  knots   of  a  curve   with
         /// multiplicities <Mults> after elevating the degree from
         /// <Degree> to <NewDegree>. See the IncreaseDegree method
@@ -2272,6 +2358,7 @@ pub(crate) mod ffi {
             Periodic: bool,
             Mults: &TColStd_Array1OfInteger,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:754 - `BSplCLib::IncreaseDegree()`
         #[cxx_name = "BSplCLib_IncreaseDegree_int2_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger"]
         fn BSplCLib_increase_degree_int2_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger(
             Degree: i32,
@@ -2285,6 +2372,8 @@ pub(crate) mod ffi {
             NewKnots: Pin<&mut TColStd_Array1OfReal>,
             NewMults: Pin<&mut TColStd_Array1OfInteger>,
         );
+        /// **Source:** `BSplCLib.hxx`:861 - `BSplCLib::PrepareUnperiodize()`
+        ///
         /// Set in <NbKnots> and <NbPolesToAdd> the number of Knots and
         /// Poles   of  the NotPeriodic  Curve   identical  at the
         /// periodic     curve with    a  degree    <Degree>  ,  a
@@ -2296,6 +2385,7 @@ pub(crate) mod ffi {
             NbKnots: &mut i32,
             NbPoles: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:866 - `BSplCLib::Unperiodize()`
         #[cxx_name = "BSplCLib_Unperiodize_int2_array1ofinteger_array1ofreal2_array1ofinteger_array1ofreal2"]
         fn BSplCLib_unperiodize_int2_array1ofinteger_array1ofreal2_array1ofinteger_array1ofreal2(
             Degree: i32,
@@ -2307,6 +2397,8 @@ pub(crate) mod ffi {
             NewKnots: Pin<&mut TColStd_Array1OfReal>,
             NewPoles: Pin<&mut TColStd_Array1OfReal>,
         );
+        /// **Source:** `BSplCLib.hxx`:898 - `BSplCLib::PrepareTrimming()`
+        ///
         /// Set in <NbKnots> and <NbPoles> the number of Knots and
         /// Poles of the curve resulting from  the trimming of the
         /// BSplinecurve defined with <degree>, <knots>, <mults>
@@ -2321,6 +2413,7 @@ pub(crate) mod ffi {
             NbKnots: &mut i32,
             NbPoles: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:907 - `BSplCLib::Trimming()`
         #[cxx_name = "BSplCLib_Trimming_int_bool_int_array1ofreal_array1ofinteger_array1ofreal_real2_array1ofreal_array1ofinteger_array1ofreal"]
         fn BSplCLib_trimming_int_bool_int_array1ofreal_array1ofinteger_array1ofreal_real2_array1ofreal_array1ofinteger_array1ofreal(
             Degree: i32,
@@ -2335,6 +2428,7 @@ pub(crate) mod ffi {
             NewMults: Pin<&mut TColStd_Array1OfInteger>,
             NewPoles: Pin<&mut TColStd_Array1OfReal>,
         );
+        /// **Source:** `BSplCLib.hxx`:1168 - `BSplCLib::DN()`
         #[cxx_name = "BSplCLib_DN_real_int_array1ofpnt_array1ofreal_pnt_vec"]
         fn BSplCLib_dn_real_int_array1ofpnt_array1ofreal_pnt_vec(
             U: f64,
@@ -2344,6 +2438,8 @@ pub(crate) mod ffi {
             P: Pin<&mut gp_Pnt>,
             VN: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `BSplCLib.hxx`:1192 - `BSplCLib::DN()`
+        ///
         /// The  above  functions  compute   values and
         /// derivatives in the following situations :
         ///
@@ -2370,6 +2466,8 @@ pub(crate) mod ffi {
             P: Pin<&mut gp_Pnt2d>,
             VN: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `BSplCLib.hxx`:1222 - `BSplCLib::EvalBsplineBasis()`
+        ///
         /// This  evaluates  the Bspline  Basis  at  a
         /// given  parameter  Parameter   up   to  the
         /// requested   DerivativeOrder  and store the
@@ -2403,6 +2501,8 @@ pub(crate) mod ffi {
             BsplineBasis: Pin<&mut math_Matrix>,
             isPeriodic: bool,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:1239 - `BSplCLib::BuildBSpMatrix()`
+        ///
         /// This Builds   a fully  blown   Matrix of
         /// (ni)
         /// Bi    (tj)
@@ -2421,6 +2521,8 @@ pub(crate) mod ffi {
             UpperBandWidth: &mut i32,
             LowerBandWidth: &mut i32,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:1254 - `BSplCLib::FactorBandedMatrix()`
+        ///
         /// this  factors  the Banded Matrix in
         /// the LU form with a Banded storage of
         /// components of the L matrix
@@ -2435,6 +2537,8 @@ pub(crate) mod ffi {
             LowerBandWidth: i32,
             PivotIndexProblem: &mut i32,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:1268 - `BSplCLib::SolveBandedSystem()`
+        ///
         /// This solves  the system Matrix.X =  B
         /// with when Matrix is factored in LU form
         /// The  Array   is    an   seen   as    an
@@ -2452,6 +2556,8 @@ pub(crate) mod ffi {
             ArrayDimension: i32,
             Array: &mut f64,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:1282 - `BSplCLib::SolveBandedSystem()`
+        ///
         /// This solves  the system Matrix.X =  B
         /// with when Matrix is factored in LU form
         /// The  Array   has the length of
@@ -2467,6 +2573,8 @@ pub(crate) mod ffi {
             LowerBandWidth: i32,
             Array: Pin<&mut TColgp_Array1OfPnt2d>,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:1295 - `BSplCLib::SolveBandedSystem()`
+        ///
         /// This solves  the system Matrix.X =  B
         /// with when Matrix is factored in LU form
         /// The  Array   has the length of
@@ -2482,6 +2590,7 @@ pub(crate) mod ffi {
             LowerBandWidth: i32,
             Array: Pin<&mut TColgp_Array1OfPnt>,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:1300 - `BSplCLib::SolveBandedSystem()`
         #[cxx_name = "BSplCLib_SolveBandedSystem_matrix_int2_bool_int_real2"]
         fn BSplCLib_solve_banded_system_matrix_int2_bool_int_real2(
             Matrix: &math_Matrix,
@@ -2492,6 +2601,8 @@ pub(crate) mod ffi {
             Array: &mut f64,
             Weights: &mut f64,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:1328 - `BSplCLib::SolveBandedSystem()`
+        ///
         /// This solves the  system Matrix.X =  B
         /// with when Matrix is factored in LU form
         /// The    Array   is    an   seen  as   an
@@ -2521,6 +2632,8 @@ pub(crate) mod ffi {
             Array: Pin<&mut TColgp_Array1OfPnt2d>,
             Weights: Pin<&mut TColStd_Array1OfReal>,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:1355 - `BSplCLib::SolveBandedSystem()`
+        ///
         /// This solves  the system Matrix.X =  B
         /// with when Matrix is factored in LU form
         /// The  Array   is    an   seen   as    an
@@ -2550,6 +2663,8 @@ pub(crate) mod ffi {
             Array: Pin<&mut TColgp_Array1OfPnt>,
             Weights: Pin<&mut TColStd_Array1OfReal>,
         ) -> i32;
+        /// **Source:** `BSplCLib.hxx`:1364 - `BSplCLib::MergeBSplineKnots()`
+        ///
         /// Merges  two knot vector by   setting the starting and
         /// ending values to StartValue and EndValue
         #[cxx_name = "BSplCLib_MergeBSplineKnots"]
@@ -2567,6 +2682,8 @@ pub(crate) mod ffi {
             NewKnots: Pin<&mut HandleTColStdHArray1OfReal>,
             NewMults: Pin<&mut HandleTColStdHArray1OfInteger>,
         );
+        /// **Source:** `BSplCLib.hxx`:1402 - `BSplCLib::FunctionReparameterise()`
+        ///
         /// This function will compose  a given Vectorial BSpline F(t)
         /// defined  by its  BSplineDegree and BSplineFlatKnotsl,
         /// its Poles  array which are coded as  an array of Real
@@ -2604,6 +2721,8 @@ pub(crate) mod ffi {
             NewPoles: &mut f64,
             theStatus: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:1437 - `BSplCLib::FunctionReparameterise()`
+        ///
         /// This function will compose  a given Vectorial BSpline F(t)
         /// defined  by its  BSplineDegree and BSplineFlatKnotsl,
         /// its Poles  array which are coded as  an array of Real
@@ -2640,6 +2759,8 @@ pub(crate) mod ffi {
             NewPoles: Pin<&mut TColStd_Array1OfReal>,
             theStatus: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:1466 - `BSplCLib::FunctionReparameterise()`
+        ///
         /// this will compose  a given Vectorial BSpline F(t)
         /// defined  by its  BSplineDegree and BSplineFlatKnotsl,
         /// its Poles  array which are coded as  an array of Real
@@ -2671,6 +2792,8 @@ pub(crate) mod ffi {
             NewPoles: Pin<&mut TColgp_Array1OfPnt>,
             theStatus: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:1495 - `BSplCLib::FunctionReparameterise()`
+        ///
         /// this will compose  a given Vectorial BSpline F(t)
         /// defined  by its  BSplineDegree and BSplineFlatKnotsl,
         /// its Poles  array which are coded as  an array of Real
@@ -2702,6 +2825,8 @@ pub(crate) mod ffi {
             NewPoles: Pin<&mut TColgp_Array1OfPnt2d>,
             theStatus: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:1521 - `BSplCLib::FunctionMultiply()`
+        ///
         /// this will  multiply a given Vectorial BSpline F(t)
         /// defined  by its  BSplineDegree and BSplineFlatKnotsl,
         /// its Poles  array which are coded as  an array of Real
@@ -2731,6 +2856,8 @@ pub(crate) mod ffi {
             NewPoles: &mut f64,
             theStatus: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:1548 - `BSplCLib::FunctionMultiply()`
+        ///
         /// this will  multiply a given Vectorial BSpline F(t)
         /// defined  by its  BSplineDegree and BSplineFlatKnotsl,
         /// its Poles  array which are coded as  an array of Real
@@ -2759,6 +2886,8 @@ pub(crate) mod ffi {
             NewPoles: Pin<&mut TColStd_Array1OfReal>,
             theStatus: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:1574 - `BSplCLib::FunctionMultiply()`
+        ///
         /// this will  multiply a given Vectorial BSpline F(t)
         /// defined  by its  BSplineDegree and BSplineFlatKnotsl,
         /// its Poles  array which are coded as  an array of Real
@@ -2787,6 +2916,8 @@ pub(crate) mod ffi {
             NewPoles: Pin<&mut TColgp_Array1OfPnt2d>,
             theStatus: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:1600 - `BSplCLib::FunctionMultiply()`
+        ///
         /// this will  multiply a given Vectorial BSpline F(t)
         /// defined  by its  BSplineDegree and BSplineFlatKnotsl,
         /// its Poles  array which are coded as  an array of Real
@@ -2815,6 +2946,8 @@ pub(crate) mod ffi {
             NewPoles: Pin<&mut TColgp_Array1OfPnt>,
             theStatus: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:1623 - `BSplCLib::Eval()`
+        ///
         /// Perform the De Boor   algorithm  to  evaluate a point at
         /// parameter <U>, with <Degree> and <Dimension>.
         ///
@@ -2841,6 +2974,8 @@ pub(crate) mod ffi {
             Poles: &mut f64,
             Result: &mut f64,
         );
+        /// **Source:** `BSplCLib.hxx`:1644 - `BSplCLib::Eval()`
+        ///
         /// Perform the  De Boor algorithm  to evaluate a point at
         /// parameter   <U>,  with   <Degree>    and  <Dimension>.
         /// Evaluates by multiplying the  Poles by the Weights and
@@ -2866,6 +3001,8 @@ pub(crate) mod ffi {
             PolesResult: &mut f64,
             WeightsResult: &mut f64,
         );
+        /// **Source:** `BSplCLib.hxx`:1659 - `BSplCLib::Eval()`
+        ///
         /// Perform the evaluation of the Bspline Basis
         /// and then multiplies by the weights
         /// this just evaluates the current point
@@ -2882,6 +3019,8 @@ pub(crate) mod ffi {
             Point: Pin<&mut gp_Pnt>,
             Weight: &mut f64,
         );
+        /// **Source:** `BSplCLib.hxx`:1673 - `BSplCLib::Eval()`
+        ///
         /// Perform the evaluation of the Bspline Basis
         /// and then multiplies by the weights
         /// this just evaluates the current point
@@ -2898,6 +3037,8 @@ pub(crate) mod ffi {
             Point: Pin<&mut gp_Pnt2d>,
             Weight: &mut f64,
         );
+        /// **Source:** `BSplCLib.hxx`:1691 - `BSplCLib::TangExtendToConstraint()`
+        ///
         /// Extend a BSpline nD using the tangency map
         /// <C1Coefficient> is the coefficient of reparametrisation
         /// <Continuity> must be equal to 1, 2 or 3.
@@ -2921,16 +3062,20 @@ pub(crate) mod ffi {
             KnotsResult: &mut f64,
             PolesResult: &mut f64,
         );
+        /// **Source:** `BSplCLib.hxx`:2003 - `BSplCLib::PolesCoefficients()`
         #[cxx_name = "BSplCLib_PolesCoefficients_array1ofpnt2d2"]
         fn BSplCLib_poles_coefficients_array1ofpnt2d2(
             Poles: &TColgp_Array1OfPnt2d,
             CachePoles: Pin<&mut TColgp_Array1OfPnt2d>,
         );
+        /// **Source:** `BSplCLib.hxx`:2011 - `BSplCLib::PolesCoefficients()`
         #[cxx_name = "BSplCLib_PolesCoefficients_array1ofpnt2"]
         fn BSplCLib_poles_coefficients_array1ofpnt2(
             Poles: &TColgp_Array1OfPnt,
             CachePoles: Pin<&mut TColgp_Array1OfPnt>,
         );
+        /// **Source:** `BSplCLib.hxx`:2030 - `BSplCLib::BuildSchoenbergPoints()`
+        ///
         /// builds the Schoenberg points from the flat knot
         /// used to interpolate a BSpline since the
         /// BSpline matrix is invertible.
@@ -2940,6 +3085,8 @@ pub(crate) mod ffi {
             FlatKnots: &TColStd_Array1OfReal,
             Parameters: Pin<&mut TColStd_Array1OfReal>,
         );
+        /// **Source:** `BSplCLib.hxx`:2053 - `BSplCLib::Interpolate()`
+        ///
         /// Performs the interpolation of  the data given in
         /// the Poles  array  according  to the  requests in
         /// ContactOrderArray    that is      :           if
@@ -2968,6 +3115,8 @@ pub(crate) mod ffi {
             Poles: Pin<&mut TColgp_Array1OfPnt>,
             InversionProblem: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:2080 - `BSplCLib::Interpolate()`
+        ///
         /// Performs the interpolation of  the data given in
         /// the Poles  array  according  to the  requests in
         /// ContactOrderArray    that is      :           if
@@ -2997,6 +3146,8 @@ pub(crate) mod ffi {
             Poles: Pin<&mut TColgp_Array1OfPnt2d>,
             InversionProblem: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:2106 - `BSplCLib::Interpolate()`
+        ///
         /// Performs the interpolation of  the data given in
         /// the Poles  array  according  to the  requests in
         /// ContactOrderArray    that is      :           if
@@ -3026,6 +3177,8 @@ pub(crate) mod ffi {
             Weights: Pin<&mut TColStd_Array1OfReal>,
             InversionProblem: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:2133 - `BSplCLib::Interpolate()`
+        ///
         /// Performs the interpolation of  the data given in
         /// the Poles  array  according  to the  requests in
         /// ContactOrderArray    that is      :           if
@@ -3055,6 +3208,8 @@ pub(crate) mod ffi {
             Weights: Pin<&mut TColStd_Array1OfReal>,
             InversionProblem: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:2163 - `BSplCLib::Interpolate()`
+        ///
         /// Performs the interpolation of  the data given in
         /// the Poles  array  according  to the  requests in
         /// ContactOrderArray    that is      :           if
@@ -3087,6 +3242,7 @@ pub(crate) mod ffi {
             Poles: &mut f64,
             InversionProblem: &mut i32,
         );
+        /// **Source:** `BSplCLib.hxx`:2171 - `BSplCLib::Interpolate()`
         #[cxx_name = "BSplCLib_Interpolate_int_array1ofreal2_array1ofinteger_int_real2_int"]
         fn BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_int_real2_int(
             Degree: i32,
@@ -3099,7 +3255,7 @@ pub(crate) mod ffi {
             InversionProblem: &mut i32,
         );
         /// ======================== BSplCLib_EvaluatorFunction ========================
-        /// **Source:** `BSplCLib_EvaluatorFunction.hxx` - `BSplCLib_EvaluatorFunction`
+        /// **Source:** `BSplCLib_EvaluatorFunction.hxx`:28 - `BSplCLib_EvaluatorFunction`
         #[cxx_name = "BSplCLib_EvaluatorFunction"]
         type EvaluatorFunction;
 

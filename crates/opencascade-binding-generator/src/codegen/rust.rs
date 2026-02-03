@@ -44,9 +44,12 @@ fn generate_file_header(module_name: &str, headers: &[String]) -> String {
     )
 }
 
-/// Generate source attribution for a declaration (header and C++ identifier)
-fn format_source_attribution(header: &str, cpp_name: &str) -> String {
-    format!("**Source:** `{}` - `{}`", header, cpp_name)
+/// Generate source attribution for a declaration (header, line number, and C++ identifier)
+fn format_source_attribution(header: &str, line: Option<u32>, cpp_name: &str) -> String {
+    match line {
+        Some(l) => format!("**Source:** `{}`:{} - `{}`", header, l, cpp_name),
+        None => format!("**Source:** `{}` - `{}`", header, cpp_name),
+    }
 }
 
 /// Generate doc comments in /// format (raw string approach for better control)
@@ -795,7 +798,7 @@ fn generate_class(
     let rust_name = format_ident!("{}", short_name);
 
     // Doc comment with source attribution
-    let source_attr = format_source_attribution(&class.source_header, &class.name);
+    let source_attr = format_source_attribution(&class.source_header, class.source_line, &class.name);
     let doc = if let Some(ref comment) = class.comment {
         quote! { 
             #[doc = #source_attr]
@@ -942,7 +945,7 @@ fn generate_constructor(class: &ParsedClass, ctor: &Constructor, suffix: &str, c
     });
 
     // Doc comment with source attribution
-    let source_attr = format_source_attribution(&class.source_header, &format!("{}::{}()", &class.name, &class.name));
+    let source_attr = format_source_attribution(&class.source_header, ctor.source_line, &format!("{}::{}()", &class.name, &class.name));
     let doc = if let Some(ref comment) = ctor.comment {
         quote! { 
             #[doc = #source_attr]
@@ -1287,12 +1290,21 @@ fn generate_method_with_suffix(
         }
     });
 
-    // Doc comment
-    let doc = method
-        .comment
-        .as_ref()
-        .map(|c| quote! { #[doc = #c] })
-        .unwrap_or_default();
+    // Doc comment with source attribution
+    let source_attr = format_source_attribution(
+        &class.source_header,
+        method.source_line,
+        &format!("{}::{}()", &class.name, cpp_name),
+    );
+    let doc = if let Some(ref c) = method.comment {
+        quote! {
+            #[doc = #source_attr]
+            #[doc = ""]
+            #[doc = #c]
+        }
+    } else {
+        quote! { #[doc = #source_attr] }
+    };
 
     Some(quote! {
         #doc
@@ -1405,12 +1417,21 @@ fn generate_static_method(
         quote! { -> #ty_tokens }
     });
 
-    // Doc comment
-    let doc = method
-        .comment
-        .as_ref()
-        .map(|c| quote! { #[doc = #c] })
-        .unwrap_or_default();
+    // Doc comment with source attribution
+    let source_attr = format_source_attribution(
+        &class.source_header,
+        method.source_line,
+        &format!("{}::{}()", &class.name, &method.name),
+    );
+    let doc = if let Some(ref c) = method.comment {
+        quote! {
+            #[doc = #source_attr]
+            #[doc = ""]
+            #[doc = #c]
+        }
+    } else {
+        quote! { #[doc = #source_attr] }
+    };
 
     Some(quote! {
         #doc

@@ -132,7 +132,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== IGESData_BasicEditor ========================
-        /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor`
+        /// **Source:** `IGESData_BasicEditor.hxx`:42 - `IGESData_BasicEditor`
         ///
         /// This class provides various functions of basic edition,
         /// such as :
@@ -145,19 +145,19 @@ pub(crate) mod ffi {
         /// editions)
         #[cxx_name = "IGESData_BasicEditor"]
         type BasicEditor;
-        /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor::IGESData_BasicEditor()`
+        /// **Source:** `IGESData_BasicEditor.hxx`:48 - `IGESData_BasicEditor::IGESData_BasicEditor()`
         ///
         /// Creates an empty Basic Editor which should be initialized via Init() method.
         #[cxx_name = "IGESData_BasicEditor_ctor"]
         fn BasicEditor_ctor() -> UniquePtr<BasicEditor>;
-        /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor::IGESData_BasicEditor()`
+        /// **Source:** `IGESData_BasicEditor.hxx`:51 - `IGESData_BasicEditor::IGESData_BasicEditor()`
         ///
         /// Creates a Basic Editor, with a new IGESModel, ready to run
         #[cxx_name = "IGESData_BasicEditor_ctor_handleprotocol"]
         fn BasicEditor_ctor_handleprotocol(
             protocol: &HandleIGESDataProtocol,
         ) -> UniquePtr<BasicEditor>;
-        /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor::IGESData_BasicEditor()`
+        /// **Source:** `IGESData_BasicEditor.hxx`:54 - `IGESData_BasicEditor::IGESData_BasicEditor()`
         ///
         /// Creates a Basic Editor for IGES Data, ready to run
         #[cxx_name = "IGESData_BasicEditor_ctor_handleigesmodel_handleprotocol"]
@@ -165,9 +165,13 @@ pub(crate) mod ffi {
             model: &HandleIGESDataIGESModel,
             protocol: &HandleIGESDataProtocol,
         ) -> UniquePtr<BasicEditor>;
+        /// **Source:** `IGESData_BasicEditor.hxx`:58 - `IGESData_BasicEditor::Init()`
+        ///
         /// Initialize a Basic Editor, with a new IGESModel, ready to run
         #[cxx_name = "Init"]
         fn init_handleprotocol(self: Pin<&mut BasicEditor>, protocol: &HandleIGESDataProtocol);
+        /// **Source:** `IGESData_BasicEditor.hxx`:61 - `IGESData_BasicEditor::Init()`
+        ///
         /// Initialize a Basic Editor for IGES Data, ready to run
         #[cxx_name = "Init"]
         fn init_handleigesmodel_handleprotocol(
@@ -175,16 +179,22 @@ pub(crate) mod ffi {
             model: &HandleIGESDataIGESModel,
             protocol: &HandleIGESDataProtocol,
         );
+        /// **Source:** `IGESData_BasicEditor.hxx`:69 - `IGESData_BasicEditor::SetUnitFlag()`
+        ///
         /// Sets a new unit from its flag (param 14 of Global Section)
         /// Returns True if done, False if <flag> is incorrect
         #[cxx_name = "SetUnitFlag"]
         fn set_unit_flag(self: Pin<&mut BasicEditor>, flag: i32) -> bool;
+        /// **Source:** `IGESData_BasicEditor.hxx`:75 - `IGESData_BasicEditor::SetUnitValue()`
+        ///
         /// Sets a new unit from its value in meters (rounded to the
         /// closest one, max gap 1%)
         /// Returns True if done, False if <val> is too far from a
         /// suitable value
         #[cxx_name = "SetUnitValue"]
         fn set_unit_value(self: Pin<&mut BasicEditor>, val: f64) -> bool;
+        /// **Source:** `IGESData_BasicEditor.hxx`:89 - `IGESData_BasicEditor::ApplyUnit()`
+        ///
         /// Applies unit value to convert header data : Resolution,
         /// MaxCoord, MaxLineWeight
         /// Applies unit only once after SetUnit... has been called,
@@ -193,12 +203,16 @@ pub(crate) mod ffi {
         /// i.e. when definitive values are finally known
         #[cxx_name = "ApplyUnit"]
         fn apply_unit(self: Pin<&mut BasicEditor>, enforce: bool);
+        /// **Source:** `IGESData_BasicEditor.hxx`:95 - `IGESData_BasicEditor::ComputeStatus()`
+        ///
         /// Performs the re-computation of status on the whole model
         /// (Subordinate Status and Use Flag of each IGES Entity), which
         /// can have required values according the way they are referenced
         /// (see definitions of Logical use, Physical use, etc...)
         #[cxx_name = "ComputeStatus"]
         fn compute_status(self: Pin<&mut BasicEditor>);
+        /// **Source:** `IGESData_BasicEditor.hxx`:105 - `IGESData_BasicEditor::AutoCorrect()`
+        ///
         /// Performs auto-correction on an IGESEntity
         /// Returns True if something has changed, False if nothing done.
         ///
@@ -209,6 +223,8 @@ pub(crate) mod ffi {
         /// each type of entity.
         #[cxx_name = "AutoCorrect"]
         fn auto_correct(self: Pin<&mut BasicEditor>, ent: &HandleIGESDataIGESEntity) -> bool;
+        /// **Source:** `IGESData_BasicEditor.hxx`:109 - `IGESData_BasicEditor::AutoCorrectModel()`
+        ///
         /// Performs auto-correction on the whole Model
         /// Returns the count of modified entities
         #[cxx_name = "AutoCorrectModel"]
@@ -222,37 +238,53 @@ pub(crate) mod ffi {
         /// is then free
         #[cxx_name = "IGESData_BasicEditor_SetUnitName"]
         fn BasicEditor_set_unit_name(self_: Pin<&mut BasicEditor>, name: &str) -> bool;
+        /// **Source:** `IGESData_BasicEditor.hxx`:113 - `IGESData_BasicEditor::UnitNameFlag()`
+        ///
         /// From the name of unit, computes flag number, 0 if incorrect
         /// (in this case, user defined entity remains possible)
         #[cxx_name = "IGESData_BasicEditor_UnitNameFlag"]
         fn BasicEditor_unit_name_flag(name: &str) -> i32;
+        /// **Source:** `IGESData_BasicEditor.hxx`:116 - `IGESData_BasicEditor::UnitFlagValue()`
+        ///
         /// From the flag of unit, determines value in MM, 0 if incorrect
         #[cxx_name = "IGESData_BasicEditor_UnitFlagValue"]
         fn BasicEditor_unit_flag_value(flag: i32) -> f64;
+        /// **Source:** `IGESData_BasicEditor.hxx`:119 - `IGESData_BasicEditor::UnitFlagName()`
+        ///
         /// From the flag of unit, determines its name, "" if incorrect
         #[cxx_name = "IGESData_BasicEditor_UnitFlagName"]
         fn BasicEditor_unit_flag_name(flag: i32) -> String;
+        /// **Source:** `IGESData_BasicEditor.hxx`:122 - `IGESData_BasicEditor::IGESVersionName()`
+        ///
         /// From the flag of IGES version, returns name, "" if incorrect
         #[cxx_name = "IGESData_BasicEditor_IGESVersionName"]
         fn BasicEditor_iges_version_name(flag: i32) -> String;
+        /// **Source:** `IGESData_BasicEditor.hxx`:125 - `IGESData_BasicEditor::IGESVersionMax()`
+        ///
         /// Returns the maximum allowed value for IGESVersion Flag
         #[cxx_name = "IGESData_BasicEditor_IGESVersionMax"]
         fn BasicEditor_iges_version_max() -> i32;
+        /// **Source:** `IGESData_BasicEditor.hxx`:128 - `IGESData_BasicEditor::DraftingName()`
+        ///
         /// From the flag of drafting standard, returns name, "" if incorrect
         #[cxx_name = "IGESData_BasicEditor_DraftingName"]
         fn BasicEditor_drafting_name(flag: i32) -> String;
+        /// **Source:** `IGESData_BasicEditor.hxx`:131 - `IGESData_BasicEditor::DraftingMax()`
+        ///
         /// Returns the maximum allowed value for Drafting Flag
         #[cxx_name = "IGESData_BasicEditor_DraftingMax"]
         fn BasicEditor_drafting_max() -> i32;
+        /// **Source:** `IGESData_BasicEditor.hxx`:135 - `IGESData_BasicEditor::GetFlagByValue()`
+        ///
         /// Returns Flag corresponding to the scaling theValue.
         /// Returns 0 if there's no such flag.
         #[cxx_name = "IGESData_BasicEditor_GetFlagByValue"]
         fn BasicEditor_get_flag_by_value(theValue: f64) -> i32;
         /// ======================== IGESData_SpecificLib ========================
-        /// **Source:** `IGESData_SpecificLib.hxx` - `IGESData_SpecificLib`
+        /// **Source:** `IGESData_SpecificLib.hxx`:33 - `IGESData_SpecificLib`
         #[cxx_name = "IGESData_SpecificLib"]
         type SpecificLib;
-        /// **Source:** `IGESData_SpecificLib.hxx` - `IGESData_SpecificLib::IGESData_SpecificLib()`
+        /// **Source:** `IGESData_SpecificLib.hxx`:47 - `IGESData_SpecificLib::IGESData_SpecificLib()`
         ///
         /// Creates a Library which complies with a Protocol, that is :
         /// Same class (criterium IsInstance)
@@ -262,26 +294,34 @@ pub(crate) mod ffi {
         fn SpecificLib_ctor_handleprotocol(
             aprotocol: &HandleIGESDataProtocol,
         ) -> UniquePtr<SpecificLib>;
-        /// **Source:** `IGESData_SpecificLib.hxx` - `IGESData_SpecificLib::IGESData_SpecificLib()`
+        /// **Source:** `IGESData_SpecificLib.hxx`:51 - `IGESData_SpecificLib::IGESData_SpecificLib()`
         ///
         /// Creates an empty Library : it will later by filled by method
         /// AddProtocol
         #[cxx_name = "IGESData_SpecificLib_ctor"]
         fn SpecificLib_ctor() -> UniquePtr<SpecificLib>;
+        /// **Source:** `IGESData_SpecificLib.hxx`:56 - `IGESData_SpecificLib::AddProtocol()`
+        ///
         /// Adds a couple (Module-Protocol) to the Library, given the
         /// class of a Protocol. Takes Resources into account.
         /// (if <aprotocol> is not of type TheProtocol, it is not added)
         #[cxx_name = "AddProtocol"]
         fn add_protocol(self: Pin<&mut SpecificLib>, aprotocol: &HandleStandardTransient);
+        /// **Source:** `IGESData_SpecificLib.hxx`:61 - `IGESData_SpecificLib::Clear()`
+        ///
         /// Clears the list of Modules of a library (can be used to
         /// redefine the order of Modules before action : Clear then
         /// refill the Library by calls to AddProtocol)
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut SpecificLib>);
+        /// **Source:** `IGESData_SpecificLib.hxx`:65 - `IGESData_SpecificLib::SetComplete()`
+        ///
         /// Sets a library to be defined with the complete Global list
         /// (all the couples Protocol/Modules recorded in it)
         #[cxx_name = "SetComplete"]
         fn set_complete(self: Pin<&mut SpecificLib>);
+        /// **Source:** `IGESData_SpecificLib.hxx`:73 - `IGESData_SpecificLib::Select()`
+        ///
         /// Selects a Module from the Library, given an Object.
         /// Returns True if Select has succeeded, False else.
         /// Also Returns (as arguments) the selected Module and the Case
@@ -295,22 +335,34 @@ pub(crate) mod ffi {
             module: Pin<&mut HandleIGESDataSpecificModule>,
             CN: &mut i32,
         ) -> bool;
+        /// **Source:** `IGESData_SpecificLib.hxx`:78 - `IGESData_SpecificLib::Start()`
+        ///
         /// Starts Iteration on the Modules (sets it on the first one)
         #[cxx_name = "Start"]
         fn start(self: Pin<&mut SpecificLib>);
+        /// **Source:** `IGESData_SpecificLib.hxx`:81 - `IGESData_SpecificLib::More()`
+        ///
         /// Returns True if there are more Modules to iterate on
         #[cxx_name = "More"]
         fn more(self: &SpecificLib) -> bool;
+        /// **Source:** `IGESData_SpecificLib.hxx`:85 - `IGESData_SpecificLib::Next()`
+        ///
         /// Iterates by getting the next Module in the list
         /// If there is none, the exception will be raised by Value
         #[cxx_name = "Next"]
         fn next(self: Pin<&mut SpecificLib>);
+        /// **Source:** `IGESData_SpecificLib.hxx`:88 - `IGESData_SpecificLib::Module()`
+        ///
         /// Returns the current Module in the Iteration
         #[cxx_name = "Module"]
         fn module(self: &SpecificLib) -> &HandleIGESDataSpecificModule;
+        /// **Source:** `IGESData_SpecificLib.hxx`:91 - `IGESData_SpecificLib::Protocol()`
+        ///
         /// Returns the current Protocol in the Iteration
         #[cxx_name = "Protocol"]
         fn protocol(self: &SpecificLib) -> &HandleIGESDataProtocol;
+        /// **Source:** `IGESData_SpecificLib.hxx`:40 - `IGESData_SpecificLib::SetGlobal()`
+        ///
         /// Adds a couple (Module-Protocol) into the global definition set
         /// for this class of Library.
         #[cxx_name = "IGESData_SpecificLib_SetGlobal"]

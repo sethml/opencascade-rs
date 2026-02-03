@@ -130,7 +130,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== STEPControl_Reader ========================
-        /// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader`
+        /// **Source:** `STEPControl_Reader.hxx`:69 - `STEPControl_Reader`
         ///
         /// Reads STEP files, checks them and translates their contents
         /// into Open CASCADE models. The STEP data can be that of
@@ -169,12 +169,12 @@ pub(crate) mod ffi {
         /// TopoDS_Shape shape = WS->TransferReader()->ShapeResult(ent);
         #[cxx_name = "STEPControl_Reader"]
         type Reader;
-        /// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader::STEPControl_Reader()`
+        /// **Source:** `STEPControl_Reader.hxx`:75 - `STEPControl_Reader::STEPControl_Reader()`
         ///
         /// Creates a reader object with an empty STEP model.
         #[cxx_name = "STEPControl_Reader_ctor"]
         fn Reader_ctor() -> UniquePtr<Reader>;
-        /// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader::STEPControl_Reader()`
+        /// **Source:** `STEPControl_Reader.hxx`:79 - `STEPControl_Reader::STEPControl_Reader()`
         ///
         /// Creates a Reader for STEP from an already existing Session
         /// Clears the session if it was not yet set for STEP
@@ -183,6 +183,8 @@ pub(crate) mod ffi {
             WS: &HandleXSControlWorkSession,
             scratch: bool,
         ) -> UniquePtr<Reader>;
+        /// **Source:** `STEPControl_Reader.hxx`:111 - `STEPControl_Reader::TransferRoot()`
+        ///
         /// Transfers a root given its rank in the list of candidate roots
         /// Default is the first one
         /// Returns True if a shape has resulted, false else
@@ -193,10 +195,14 @@ pub(crate) mod ffi {
             num: i32,
             theProgress: &Message_ProgressRange,
         ) -> bool;
+        /// **Source:** `STEPControl_Reader.hxx`:116 - `STEPControl_Reader::NbRootsForTransfer()`
+        ///
         /// Determines the list of root entities from Model which are candidate for
         /// a transfer to a Shape (type of entities is PRODUCT)
         #[cxx_name = "NbRootsForTransfer"]
         fn nb_roots_for_transfer(self: Pin<&mut Reader>) -> i32;
+        /// **Source:** `STEPControl_Reader.hxx`:120 - `STEPControl_Reader::FileUnits()`
+        ///
         /// Returns sequence of all unit names for shape representations
         /// found in file
         #[cxx_name = "FileUnits"]
@@ -206,10 +212,14 @@ pub(crate) mod ffi {
             theUnitAngleNames: Pin<&mut TColStd_SequenceOfAsciiString>,
             theUnitSolidAngleNames: Pin<&mut TColStd_SequenceOfAsciiString>,
         );
+        /// **Source:** `STEPControl_Reader.hxx`:126 - `STEPControl_Reader::SetSystemLengthUnit()`
+        ///
         /// Sets system length unit used by transfer process.
         /// Performs only if a model is not NULL
         #[cxx_name = "SetSystemLengthUnit"]
         fn set_system_length_unit(self: Pin<&mut Reader>, theLengthUnit: f64);
+        /// **Source:** `STEPControl_Reader.hxx`:130 - `STEPControl_Reader::SystemLengthUnit()`
+        ///
         /// Returns system length unit used by transfer process.
         /// Performs only if a model is not NULL
         #[cxx_name = "SystemLengthUnit"]
@@ -225,7 +235,7 @@ pub(crate) mod ffi {
         #[cxx_name = "STEPControl_Reader_as_XSControl_Reader_mut"]
         fn reader_as_xs_control_reader_mut(self_: Pin<&mut Reader>) -> Pin<&mut XSControl_Reader>;
         /// ======================== STEPControl_Writer ========================
-        /// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer`
+        /// **Source:** `STEPControl_Writer.hxx`:45 - `STEPControl_Writer`
         ///
         /// This class creates and writes
         /// STEP files from Open CASCADE models. A STEP file can be
@@ -234,12 +244,12 @@ pub(crate) mod ffi {
         /// translation operation outputs a distinct root entity in the STEP file.
         #[cxx_name = "STEPControl_Writer"]
         type Writer;
-        /// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer::STEPControl_Writer()`
+        /// **Source:** `STEPControl_Writer.hxx`:51 - `STEPControl_Writer::STEPControl_Writer()`
         ///
         /// Creates a Writer from scratch
         #[cxx_name = "STEPControl_Writer_ctor"]
         fn Writer_ctor() -> UniquePtr<Writer>;
-        /// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer::STEPControl_Writer()`
+        /// **Source:** `STEPControl_Writer.hxx`:55 - `STEPControl_Writer::STEPControl_Writer()`
         ///
         /// Creates a Writer from an already existing Session
         /// If <scratch> is True (D), clears already recorded data
@@ -248,17 +258,25 @@ pub(crate) mod ffi {
             WS: &HandleXSControlWorkSession,
             scratch: bool,
         ) -> UniquePtr<Writer>;
+        /// **Source:** `STEPControl_Writer.hxx`:61 - `STEPControl_Writer::SetTolerance()`
+        ///
         /// Sets a length-measure value that
         /// will be written to uncertainty-measure-with-unit
         /// when the next shape is translated.
         #[cxx_name = "SetTolerance"]
         fn set_tolerance(self: Pin<&mut Writer>, Tol: f64);
+        /// **Source:** `STEPControl_Writer.hxx`:64 - `STEPControl_Writer::UnsetTolerance()`
+        ///
         /// Unsets the tolerance formerly forced by SetTolerance
         #[cxx_name = "UnsetTolerance"]
         fn unset_tolerance(self: Pin<&mut Writer>);
+        /// **Source:** `STEPControl_Writer.hxx`:67 - `STEPControl_Writer::SetWS()`
+        ///
         /// Sets a specific session to <me>
         #[cxx_name = "SetWS"]
         fn set_ws(self: Pin<&mut Writer>, WS: &HandleXSControlWorkSession, scratch: bool);
+        /// **Source:** `STEPControl_Writer.hxx`:131 - `STEPControl_Writer::PrintStatsTransfer()`
+        ///
         /// Displays the statistics for the
         /// last translation. what defines the kind of statistics that are displayed:
         /// - 0 gives general statistics   (number of translated roots,

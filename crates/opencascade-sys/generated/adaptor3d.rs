@@ -332,7 +332,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Adaptor3d_Curve ========================
-        /// **Source:** `Adaptor3d_Curve.hxx` - `Adaptor3d_Curve`
+        /// **Source:** `Adaptor3d_Curve.hxx`:52 - `Adaptor3d_Curve`
         ///
         /// Root class for 3D curves on which geometric
         /// algorithms work.
@@ -349,27 +349,39 @@ pub(crate) mod ffi {
         /// thread-safe and parallel evaluations need to be prevented.
         #[cxx_name = "Adaptor3d_Curve"]
         type Curve;
+        /// **Source:** `Adaptor3d_Curve.hxx`:54 - `Adaptor3d_Curve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Curve) -> &HandleStandardType;
+        /// **Source:** `Adaptor3d_Curve.hxx`:59 - `Adaptor3d_Curve::FirstParameter()`
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &Curve) -> f64;
+        /// **Source:** `Adaptor3d_Curve.hxx`:61 - `Adaptor3d_Curve::LastParameter()`
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &Curve) -> f64;
+        /// **Source:** `Adaptor3d_Curve.hxx`:84 - `Adaptor3d_Curve::IsClosed()`
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &Curve) -> bool;
+        /// **Source:** `Adaptor3d_Curve.hxx`:86 - `Adaptor3d_Curve::IsPeriodic()`
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &Curve) -> bool;
+        /// **Source:** `Adaptor3d_Curve.hxx`:88 - `Adaptor3d_Curve::Period()`
         #[cxx_name = "Period"]
         fn period(self: &Curve) -> f64;
+        /// **Source:** `Adaptor3d_Curve.hxx`:94 - `Adaptor3d_Curve::D0()`
+        ///
         /// Computes the point of parameter U on the curve.
         #[cxx_name = "D0"]
         fn d0(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `Adaptor3d_Curve.hxx`:100 - `Adaptor3d_Curve::D1()`
+        ///
         /// Computes the point of parameter U on the curve with its
         /// first derivative.
         /// Raised if the continuity of the current interval
         /// is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>, V: Pin<&mut gp_Vec>);
+        /// **Source:** `Adaptor3d_Curve.hxx`:106 - `Adaptor3d_Curve::D2()`
+        ///
         /// Returns the point P of parameter U, the first and second
         /// derivatives V1 and V2.
         /// Raised if the continuity of the current interval
@@ -382,6 +394,8 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Adaptor3d_Curve.hxx`:112 - `Adaptor3d_Curve::D3()`
+        ///
         /// Returns the point P of parameter U, the first, the second
         /// and the third derivative.
         /// Raised if the continuity of the current interval
@@ -395,16 +409,22 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec>,
             V3: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Adaptor3d_Curve.hxx`:127 - `Adaptor3d_Curve::Resolution()`
+        ///
         /// Returns the parametric  resolution corresponding
         /// to the real space resolution <R3d>.
         #[cxx_name = "Resolution"]
         fn resolution(self: &Curve, R3d: f64) -> f64;
+        /// **Source:** `Adaptor3d_Curve.hxx`:144 - `Adaptor3d_Curve::Degree()`
         #[cxx_name = "Degree"]
         fn degree(self: &Curve) -> i32;
+        /// **Source:** `Adaptor3d_Curve.hxx`:146 - `Adaptor3d_Curve::IsRational()`
         #[cxx_name = "IsRational"]
         fn is_rational(self: &Curve) -> bool;
+        /// **Source:** `Adaptor3d_Curve.hxx`:148 - `Adaptor3d_Curve::NbPoles()`
         #[cxx_name = "NbPoles"]
         fn nb_poles(self: &Curve) -> i32;
+        /// **Source:** `Adaptor3d_Curve.hxx`:150 - `Adaptor3d_Curve::NbKnots()`
         #[cxx_name = "NbKnots"]
         fn nb_knots(self: &Curve) -> i32;
         /// Shallow copy of adaptor
@@ -447,13 +467,14 @@ pub(crate) mod ffi {
         fn Curve_b_spline(self_: &Curve) -> UniquePtr<HandleGeomBSplineCurve>;
         #[cxx_name = "Adaptor3d_Curve_OffsetCurve"]
         fn Curve_offset_curve(self_: &Curve) -> UniquePtr<HandleGeomOffsetCurve>;
+        /// **Source:** `Adaptor3d_Curve.hxx`:54 - `Adaptor3d_Curve::get_type_name()`
         #[cxx_name = "Adaptor3d_Curve_get_type_name"]
         fn Curve_get_type_name() -> String;
         /// Wrap Adaptor3d_Curve in a Handle (reference-counted smart pointer)
         #[cxx_name = "Adaptor3d_Curve_to_handle"]
         fn Curve_to_handle(obj: UniquePtr<Curve>) -> UniquePtr<HandleAdaptor3dCurve>;
         /// ======================== Adaptor3d_Surface ========================
-        /// **Source:** `Adaptor3d_Surface.hxx` - `Adaptor3d_Surface`
+        /// **Source:** `Adaptor3d_Surface.hxx`:58 - `Adaptor3d_Surface`
         ///
         /// Root class for surfaces on which geometric algorithms work.
         /// An adapted surface is an interface between the
@@ -476,31 +497,46 @@ pub(crate) mod ffi {
         /// prevented.
         #[cxx_name = "Adaptor3d_Surface"]
         type Surface;
+        /// **Source:** `Adaptor3d_Surface.hxx`:60 - `Adaptor3d_Surface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Surface) -> &HandleStandardType;
+        /// **Source:** `Adaptor3d_Surface.hxx`:65 - `Adaptor3d_Surface::FirstUParameter()`
         #[cxx_name = "FirstUParameter"]
         fn first_u_parameter(self: &Surface) -> f64;
+        /// **Source:** `Adaptor3d_Surface.hxx`:67 - `Adaptor3d_Surface::LastUParameter()`
         #[cxx_name = "LastUParameter"]
         fn last_u_parameter(self: &Surface) -> f64;
+        /// **Source:** `Adaptor3d_Surface.hxx`:69 - `Adaptor3d_Surface::FirstVParameter()`
         #[cxx_name = "FirstVParameter"]
         fn first_v_parameter(self: &Surface) -> f64;
+        /// **Source:** `Adaptor3d_Surface.hxx`:71 - `Adaptor3d_Surface::LastVParameter()`
         #[cxx_name = "LastVParameter"]
         fn last_v_parameter(self: &Surface) -> f64;
+        /// **Source:** `Adaptor3d_Surface.hxx`:110 - `Adaptor3d_Surface::IsUClosed()`
         #[cxx_name = "IsUClosed"]
         fn is_u_closed(self: &Surface) -> bool;
+        /// **Source:** `Adaptor3d_Surface.hxx`:112 - `Adaptor3d_Surface::IsVClosed()`
         #[cxx_name = "IsVClosed"]
         fn is_v_closed(self: &Surface) -> bool;
+        /// **Source:** `Adaptor3d_Surface.hxx`:114 - `Adaptor3d_Surface::IsUPeriodic()`
         #[cxx_name = "IsUPeriodic"]
         fn is_u_periodic(self: &Surface) -> bool;
+        /// **Source:** `Adaptor3d_Surface.hxx`:116 - `Adaptor3d_Surface::UPeriod()`
         #[cxx_name = "UPeriod"]
         fn u_period(self: &Surface) -> f64;
+        /// **Source:** `Adaptor3d_Surface.hxx`:118 - `Adaptor3d_Surface::IsVPeriodic()`
         #[cxx_name = "IsVPeriodic"]
         fn is_v_periodic(self: &Surface) -> bool;
+        /// **Source:** `Adaptor3d_Surface.hxx`:120 - `Adaptor3d_Surface::VPeriod()`
         #[cxx_name = "VPeriod"]
         fn v_period(self: &Surface) -> f64;
+        /// **Source:** `Adaptor3d_Surface.hxx`:127 - `Adaptor3d_Surface::D0()`
+        ///
         /// Computes the point of parameters U,V on the surface.
         #[cxx_name = "D0"]
         fn d0(self: &Surface, U: f64, V: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `Adaptor3d_Surface.hxx`:133 - `Adaptor3d_Surface::D1()`
+        ///
         /// Computes the point  and the first derivatives on the surface.
         /// Raised if the continuity of the current intervals is not C1.
         ///
@@ -514,6 +550,8 @@ pub(crate) mod ffi {
             D1U: Pin<&mut gp_Vec>,
             D1V: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Adaptor3d_Surface.hxx`:143 - `Adaptor3d_Surface::D2()`
+        ///
         /// Computes   the point,  the  first  and  second
         /// derivatives on the surface.
         /// Raised  if   the   continuity   of the current
@@ -530,6 +568,8 @@ pub(crate) mod ffi {
             D2V: Pin<&mut gp_Vec>,
             D2UV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Adaptor3d_Surface.hxx`:156 - `Adaptor3d_Surface::D3()`
+        ///
         /// Computes the point,  the first, second and third
         /// derivatives on the surface.
         /// Raised  if   the   continuity   of the current
@@ -550,30 +590,43 @@ pub(crate) mod ffi {
             D3UUV: Pin<&mut gp_Vec>,
             D3UVV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Adaptor3d_Surface.hxx`:181 - `Adaptor3d_Surface::UResolution()`
+        ///
         /// Returns the parametric U  resolution corresponding
         /// to the real space resolution <R3d>.
         #[cxx_name = "UResolution"]
         fn u_resolution(self: &Surface, R3d: f64) -> f64;
+        /// **Source:** `Adaptor3d_Surface.hxx`:185 - `Adaptor3d_Surface::VResolution()`
+        ///
         /// Returns the parametric V  resolution corresponding
         /// to the real space resolution <R3d>.
         #[cxx_name = "VResolution"]
         fn v_resolution(self: &Surface, R3d: f64) -> f64;
+        /// **Source:** `Adaptor3d_Surface.hxx`:203 - `Adaptor3d_Surface::UDegree()`
         #[cxx_name = "UDegree"]
         fn u_degree(self: &Surface) -> i32;
+        /// **Source:** `Adaptor3d_Surface.hxx`:205 - `Adaptor3d_Surface::NbUPoles()`
         #[cxx_name = "NbUPoles"]
         fn nb_u_poles(self: &Surface) -> i32;
+        /// **Source:** `Adaptor3d_Surface.hxx`:207 - `Adaptor3d_Surface::VDegree()`
         #[cxx_name = "VDegree"]
         fn v_degree(self: &Surface) -> i32;
+        /// **Source:** `Adaptor3d_Surface.hxx`:209 - `Adaptor3d_Surface::NbVPoles()`
         #[cxx_name = "NbVPoles"]
         fn nb_v_poles(self: &Surface) -> i32;
+        /// **Source:** `Adaptor3d_Surface.hxx`:211 - `Adaptor3d_Surface::NbUKnots()`
         #[cxx_name = "NbUKnots"]
         fn nb_u_knots(self: &Surface) -> i32;
+        /// **Source:** `Adaptor3d_Surface.hxx`:213 - `Adaptor3d_Surface::NbVKnots()`
         #[cxx_name = "NbVKnots"]
         fn nb_v_knots(self: &Surface) -> i32;
+        /// **Source:** `Adaptor3d_Surface.hxx`:215 - `Adaptor3d_Surface::IsURational()`
         #[cxx_name = "IsURational"]
         fn is_u_rational(self: &Surface) -> bool;
+        /// **Source:** `Adaptor3d_Surface.hxx`:217 - `Adaptor3d_Surface::IsVRational()`
         #[cxx_name = "IsVRational"]
         fn is_v_rational(self: &Surface) -> bool;
+        /// **Source:** `Adaptor3d_Surface.hxx`:231 - `Adaptor3d_Surface::OffsetValue()`
         #[cxx_name = "OffsetValue"]
         fn offset_value(self: &Surface) -> f64;
         /// Shallow copy of adaptor
@@ -635,13 +688,14 @@ pub(crate) mod ffi {
         fn Surface_basis_curve(self_: &Surface) -> UniquePtr<HandleAdaptor3dCurve>;
         #[cxx_name = "Adaptor3d_Surface_BasisSurface"]
         fn Surface_basis_surface(self_: &Surface) -> UniquePtr<HandleAdaptor3dSurface>;
+        /// **Source:** `Adaptor3d_Surface.hxx`:60 - `Adaptor3d_Surface::get_type_name()`
         #[cxx_name = "Adaptor3d_Surface_get_type_name"]
         fn Surface_get_type_name() -> String;
         /// Wrap Adaptor3d_Surface in a Handle (reference-counted smart pointer)
         #[cxx_name = "Adaptor3d_Surface_to_handle"]
         fn Surface_to_handle(obj: UniquePtr<Surface>) -> UniquePtr<HandleAdaptor3dSurface>;
         /// ======================== Adaptor3d_CurveOnSurface ========================
-        /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface`
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:34 - `Adaptor3d_CurveOnSurface`
         ///
         /// An interface between the services provided by a curve
         /// lying on a surface from the package Geom and those
@@ -650,15 +704,15 @@ pub(crate) mod ffi {
         /// package, in the parametric space of the surface.
         #[cxx_name = "Adaptor3d_CurveOnSurface"]
         type CurveOnSurface;
-        /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:38 - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
         #[cxx_name = "Adaptor3d_CurveOnSurface_ctor"]
         fn CurveOnSurface_ctor() -> UniquePtr<CurveOnSurface>;
-        /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:40 - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
         #[cxx_name = "Adaptor3d_CurveOnSurface_ctor_handlesurface"]
         fn CurveOnSurface_ctor_handlesurface(
             S: &HandleAdaptor3dSurface,
         ) -> UniquePtr<CurveOnSurface>;
-        /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:44 - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
         ///
         /// Creates a CurveOnSurface from the 2d curve <C> and
         /// the surface <S>.
@@ -667,14 +721,21 @@ pub(crate) mod ffi {
             C: &HandleAdaptor2dCurve2d,
             S: &HandleAdaptor3dSurface,
         ) -> UniquePtr<CurveOnSurface>;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:36 - `Adaptor3d_CurveOnSurface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &CurveOnSurface) -> &HandleStandardType;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:51 - `Adaptor3d_CurveOnSurface::Load()`
+        ///
         /// Changes the surface.
         #[cxx_name = "Load"]
         fn load_handlesurface(self: Pin<&mut CurveOnSurface>, S: &HandleAdaptor3dSurface);
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:54 - `Adaptor3d_CurveOnSurface::Load()`
+        ///
         /// Changes the 2d curve.
         #[cxx_name = "Load"]
         fn load_handlecurve2d(self: Pin<&mut CurveOnSurface>, C: &HandleAdaptor2dCurve2d);
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:57 - `Adaptor3d_CurveOnSurface::Load()`
+        ///
         /// Load both curve and surface.
         #[cxx_name = "Load"]
         fn load_handlecurve2d_handlesurface(
@@ -682,33 +743,48 @@ pub(crate) mod ffi {
             C: &HandleAdaptor2dCurve2d,
             S: &HandleAdaptor3dSurface,
         );
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:59 - `Adaptor3d_CurveOnSurface::GetCurve()`
         #[cxx_name = "GetCurve"]
         fn get_curve(self: &CurveOnSurface) -> &HandleAdaptor2dCurve2d;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:61 - `Adaptor3d_CurveOnSurface::GetSurface()`
         #[cxx_name = "GetSurface"]
         fn get_surface(self: &CurveOnSurface) -> &HandleAdaptor3dSurface;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:63 - `Adaptor3d_CurveOnSurface::ChangeCurve()`
         #[cxx_name = "ChangeCurve"]
         fn change_curve(self: Pin<&mut CurveOnSurface>) -> Pin<&mut HandleAdaptor2dCurve2d>;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:65 - `Adaptor3d_CurveOnSurface::ChangeSurface()`
         #[cxx_name = "ChangeSurface"]
         fn change_surface(self: Pin<&mut CurveOnSurface>) -> Pin<&mut HandleAdaptor3dSurface>;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:67 - `Adaptor3d_CurveOnSurface::FirstParameter()`
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &CurveOnSurface) -> f64;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:69 - `Adaptor3d_CurveOnSurface::LastParameter()`
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &CurveOnSurface) -> f64;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:93 - `Adaptor3d_CurveOnSurface::IsClosed()`
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &CurveOnSurface) -> bool;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:95 - `Adaptor3d_CurveOnSurface::IsPeriodic()`
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &CurveOnSurface) -> bool;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:97 - `Adaptor3d_CurveOnSurface::Period()`
         #[cxx_name = "Period"]
         fn period(self: &CurveOnSurface) -> f64;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:103 - `Adaptor3d_CurveOnSurface::D0()`
+        ///
         /// Computes the point of parameter U on the curve.
         #[cxx_name = "D0"]
         fn d0(self: &CurveOnSurface, U: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:109 - `Adaptor3d_CurveOnSurface::D1()`
+        ///
         /// Computes the point of parameter U on the curve with its
         /// first derivative.
         /// Raised if the continuity of the current interval
         /// is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &CurveOnSurface, U: f64, P: Pin<&mut gp_Pnt>, V: Pin<&mut gp_Vec>);
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:115 - `Adaptor3d_CurveOnSurface::D2()`
+        ///
         /// Returns the point P of parameter U, the first and second
         /// derivatives V1 and V2.
         /// Raised if the continuity of the current interval
@@ -721,6 +797,8 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:124 - `Adaptor3d_CurveOnSurface::D3()`
+        ///
         /// Returns the point P of parameter U, the first, the second
         /// and the third derivative.
         /// Raised if the continuity of the current interval
@@ -734,16 +812,22 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec>,
             V3: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:140 - `Adaptor3d_CurveOnSurface::Resolution()`
+        ///
         /// Returns the parametric  resolution corresponding
         /// to the real space resolution <R3d>.
         #[cxx_name = "Resolution"]
         fn resolution(self: &CurveOnSurface, R3d: f64) -> f64;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:157 - `Adaptor3d_CurveOnSurface::Degree()`
         #[cxx_name = "Degree"]
         fn degree(self: &CurveOnSurface) -> i32;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:159 - `Adaptor3d_CurveOnSurface::IsRational()`
         #[cxx_name = "IsRational"]
         fn is_rational(self: &CurveOnSurface) -> bool;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:161 - `Adaptor3d_CurveOnSurface::NbPoles()`
         #[cxx_name = "NbPoles"]
         fn nb_poles(self: &CurveOnSurface) -> i32;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:163 - `Adaptor3d_CurveOnSurface::NbKnots()`
         #[cxx_name = "NbKnots"]
         fn nb_knots(self: &CurveOnSurface) -> i32;
         /// Shallow copy of adaptor
@@ -784,6 +868,7 @@ pub(crate) mod ffi {
         fn CurveOnSurface_bezier(self_: &CurveOnSurface) -> UniquePtr<HandleGeomBezierCurve>;
         #[cxx_name = "Adaptor3d_CurveOnSurface_BSpline"]
         fn CurveOnSurface_b_spline(self_: &CurveOnSurface) -> UniquePtr<HandleGeomBSplineCurve>;
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:36 - `Adaptor3d_CurveOnSurface::get_type_name()`
         #[cxx_name = "Adaptor3d_CurveOnSurface_get_type_name"]
         fn CurveOnSurface_get_type_name() -> String;
         /// Upcast Adaptor3d_CurveOnSurface to Adaptor3d_Curve

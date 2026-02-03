@@ -48,52 +48,70 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== MAT2d_Tool2d ========================
-        /// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d`
+        /// **Source:** `MAT2d_Tool2d.hxx`:40 - `MAT2d_Tool2d`
         ///
         /// Set of the methods useful for the MAT's computation.
         /// Tool2d contains the geometry of the bisecting locus.
         #[cxx_name = "MAT2d_Tool2d"]
         type Tool2d;
-        /// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d::MAT2d_Tool2d()`
+        /// **Source:** `MAT2d_Tool2d.hxx`:46 - `MAT2d_Tool2d::MAT2d_Tool2d()`
         ///
         /// Empty Constructor.
         #[cxx_name = "MAT2d_Tool2d_ctor"]
         fn Tool2d_ctor() -> UniquePtr<Tool2d>;
+        /// **Source:** `MAT2d_Tool2d.hxx`:56 - `MAT2d_Tool2d::InitItems()`
+        ///
         /// InitItems cuts the line in Items.
         /// this Items are the geometrics representations of
         /// the BasicElts from MAT.
         #[cxx_name = "InitItems"]
         fn init_items(self: Pin<&mut Tool2d>, aCircuit: &HandleMAT2dCircuit);
+        /// **Source:** `MAT2d_Tool2d.hxx`:59 - `MAT2d_Tool2d::NumberOfItems()`
+        ///
         /// Returns the Number of Items .
         #[cxx_name = "NumberOfItems"]
         fn number_of_items(self: &Tool2d) -> i32;
+        /// **Source:** `MAT2d_Tool2d.hxx`:62 - `MAT2d_Tool2d::ToleranceOfConfusion()`
+        ///
         /// Returns tolerance to test the confusion of two points.
         #[cxx_name = "ToleranceOfConfusion"]
         fn tolerance_of_confusion(self: &Tool2d) -> f64;
+        /// **Source:** `MAT2d_Tool2d.hxx`:68 - `MAT2d_Tool2d::FirstPoint()`
+        ///
         /// Creates the point at the origin of the bisector between
         /// anitem and the previous  item.
         /// dist is the distance from the FirstPoint to <anitem>.
         /// Returns the index of this point in <theGeomPnts>.
         #[cxx_name = "FirstPoint"]
         fn first_point(self: Pin<&mut Tool2d>, anitem: i32, dist: &mut f64) -> i32;
+        /// **Source:** `MAT2d_Tool2d.hxx`:73 - `MAT2d_Tool2d::TangentBefore()`
+        ///
         /// Creates the Tangent at the end of the Item defined
         /// by <anitem>. Returns the index of this vector in
         /// <theGeomVecs>
         #[cxx_name = "TangentBefore"]
         fn tangent_before(self: Pin<&mut Tool2d>, anitem: i32, IsOpenResult: bool) -> i32;
+        /// **Source:** `MAT2d_Tool2d.hxx`:79 - `MAT2d_Tool2d::TangentAfter()`
+        ///
         /// Creates the Reversed Tangent at the origin of the Item
         /// defined by <anitem>. Returns the index of this vector in
         /// <theGeomVecs>
         #[cxx_name = "TangentAfter"]
         fn tangent_after(self: Pin<&mut Tool2d>, anitem: i32, IsOpenResult: bool) -> i32;
+        /// **Source:** `MAT2d_Tool2d.hxx`:85 - `MAT2d_Tool2d::Tangent()`
+        ///
         /// Creates the Tangent at the end of the bisector defined
         /// by <bisector>. Returns the index of this vector in
         /// <theGeomVecs>
         #[cxx_name = "Tangent"]
         fn tangent(self: Pin<&mut Tool2d>, bisector: i32) -> i32;
+        /// **Source:** `MAT2d_Tool2d.hxx`:88 - `MAT2d_Tool2d::CreateBisector()`
+        ///
         /// Creates the geometric bisector defined by <abisector>.
         #[cxx_name = "CreateBisector"]
         fn create_bisector(self: Pin<&mut Tool2d>, abisector: &HandleMATBisector);
+        /// **Source:** `MAT2d_Tool2d.hxx`:94 - `MAT2d_Tool2d::TrimBisector()`
+        ///
         /// Trims the geometric bisector by the <firstparameter>
         /// of <abisector>.
         /// If the parameter is out of the bisector, Return FALSE.
@@ -103,6 +121,8 @@ pub(crate) mod ffi {
             self: Pin<&mut Tool2d>,
             abisector: &HandleMATBisector,
         ) -> bool;
+        /// **Source:** `MAT2d_Tool2d.hxx`:100 - `MAT2d_Tool2d::TrimBisector()`
+        ///
         /// Trims the geometric bisector by the point of index
         /// <apoint> in <theGeomPnts>.
         /// If the point is out of the bisector, Return FALSE.
@@ -113,6 +133,8 @@ pub(crate) mod ffi {
             abisector: &HandleMATBisector,
             apoint: i32,
         ) -> bool;
+        /// **Source:** `MAT2d_Tool2d.hxx`:109 - `MAT2d_Tool2d::IntersectBisector()`
+        ///
         /// Computes  the point  of  intersection between  the
         /// bisectors defined  by  <bisectorone>  and
         /// <bisectortwo> .
@@ -126,27 +148,40 @@ pub(crate) mod ffi {
             bisectortwo: &HandleMATBisector,
             intpnt: &mut i32,
         ) -> f64;
+        /// **Source:** `MAT2d_Tool2d.hxx`:115 - `MAT2d_Tool2d::Distance()`
+        ///
         /// Returns the distance between the two points designed
         /// by their parameters on <abisector>.
         #[cxx_name = "Distance"]
         fn distance(self: &Tool2d, abisector: &HandleMATBisector, param1: f64, param2: f64) -> f64;
+        /// **Source:** `MAT2d_Tool2d.hxx`:121 - `MAT2d_Tool2d::Dump()`
+        ///
         /// displays information about the bisector defined by
         /// <bisector>.
         #[cxx_name = "Dump"]
         fn dump(self: &Tool2d, bisector: i32, erease: i32);
+        /// **Source:** `MAT2d_Tool2d.hxx`:125 - `MAT2d_Tool2d::GeomBis()`
+        ///
         /// Returns the <Bisec> of index <Index> in
         /// <theGeomBisectors>.
         #[cxx_name = "GeomBis"]
         fn geom_bis(self: &Tool2d, Index: i32) -> &Bisector_Bisec;
+        /// **Source:** `MAT2d_Tool2d.hxx`:131 - `MAT2d_Tool2d::GeomPnt()`
+        ///
         /// Returns the point of index <Index> in the <theGeomPnts>.
         #[cxx_name = "GeomPnt"]
         fn geom_pnt(self: &Tool2d, Index: i32) -> &gp_Pnt2d;
+        /// **Source:** `MAT2d_Tool2d.hxx`:135 - `MAT2d_Tool2d::GeomVec()`
+        ///
         /// Returns the  vector  of index <Index> in the
         /// <theGeomVecs>.
         #[cxx_name = "GeomVec"]
         fn geom_vec(self: &Tool2d, Index: i32) -> &gp_Vec2d;
+        /// **Source:** `MAT2d_Tool2d.hxx`:139 - `MAT2d_Tool2d::BisecFusion()`
         #[cxx_name = "BisecFusion"]
         fn bisec_fusion(self: Pin<&mut Tool2d>, Index1: i32, Index2: i32);
+        /// **Source:** `MAT2d_Tool2d.hxx`:143 - `MAT2d_Tool2d::ChangeGeomBis()`
+        ///
         /// Returns the <Bisec> of index <Index> in
         /// <theGeomBisectors>.
         #[cxx_name = "ChangeGeomBis"]
@@ -157,22 +192,27 @@ pub(crate) mod ffi {
         #[cxx_name = "MAT2d_Tool2d_Circuit"]
         fn Tool2d_circuit(self_: &Tool2d) -> UniquePtr<HandleMAT2dCircuit>;
         /// ======================== MAT2d_BiInt ========================
-        /// **Source:** `MAT2d_BiInt.hxx` - `MAT2d_BiInt`
+        /// **Source:** `MAT2d_BiInt.hxx`:28 - `MAT2d_BiInt`
         ///
         /// BiInt is a set of two integers.
         #[cxx_name = "MAT2d_BiInt"]
         type BiInt;
-        /// **Source:** `MAT2d_BiInt.hxx` - `MAT2d_BiInt::MAT2d_BiInt()`
+        /// **Source:** `MAT2d_BiInt.hxx`:33 - `MAT2d_BiInt::MAT2d_BiInt()`
         #[cxx_name = "MAT2d_BiInt_ctor_int2"]
         fn BiInt_ctor_int2(I1: i32, I2: i32) -> UniquePtr<BiInt>;
+        /// **Source:** `MAT2d_BiInt.hxx`:35 - `MAT2d_BiInt::FirstIndex()`
         #[cxx_name = "FirstIndex"]
         fn first_index(self: &BiInt) -> i32;
+        /// **Source:** `MAT2d_BiInt.hxx`:37 - `MAT2d_BiInt::SecondIndex()`
         #[cxx_name = "SecondIndex"]
         fn second_index(self: &BiInt) -> i32;
+        /// **Source:** `MAT2d_BiInt.hxx`:39 - `MAT2d_BiInt::FirstIndex()`
         #[cxx_name = "FirstIndex"]
         fn first_index_int(self: Pin<&mut BiInt>, I1: i32);
+        /// **Source:** `MAT2d_BiInt.hxx`:41 - `MAT2d_BiInt::SecondIndex()`
         #[cxx_name = "SecondIndex"]
         fn second_index_int(self: Pin<&mut BiInt>, I2: i32);
+        /// **Source:** `MAT2d_BiInt.hxx`:43 - `MAT2d_BiInt::IsEqual()`
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &BiInt, B: &BiInt) -> bool;
 

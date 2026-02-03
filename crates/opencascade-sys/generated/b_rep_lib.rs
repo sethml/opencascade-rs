@@ -791,7 +791,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepLib_MakeWire ========================
-        /// **Source:** `BRepLib_MakeWire.hxx` - `BRepLib_MakeWire`
+        /// **Source:** `BRepLib_MakeWire.hxx`:78 - `BRepLib_MakeWire`
         ///
         /// Provides methods to build wires.
         ///
@@ -837,22 +837,22 @@ pub(crate) mod ffi {
         /// TopoDS_Wire W = MW;
         #[cxx_name = "BRepLib_MakeWire"]
         type MakeWire;
-        /// **Source:** `BRepLib_MakeWire.hxx` - `BRepLib_MakeWire::BRepLib_MakeWire()`
+        /// **Source:** `BRepLib_MakeWire.hxx`:84 - `BRepLib_MakeWire::BRepLib_MakeWire()`
         ///
         /// NotDone MakeWire.
         #[cxx_name = "BRepLib_MakeWire_ctor"]
         fn MakeWire_ctor() -> UniquePtr<MakeWire>;
-        /// **Source:** `BRepLib_MakeWire.hxx` - `BRepLib_MakeWire::BRepLib_MakeWire()`
+        /// **Source:** `BRepLib_MakeWire.hxx`:87 - `BRepLib_MakeWire::BRepLib_MakeWire()`
         ///
         /// Make a Wire from an edge.
         #[cxx_name = "BRepLib_MakeWire_ctor_edge"]
         fn MakeWire_ctor_edge(E: &TopoDS_Edge) -> UniquePtr<MakeWire>;
-        /// **Source:** `BRepLib_MakeWire.hxx` - `BRepLib_MakeWire::BRepLib_MakeWire()`
+        /// **Source:** `BRepLib_MakeWire.hxx`:90 - `BRepLib_MakeWire::BRepLib_MakeWire()`
         ///
         /// Make a Wire from two edges.
         #[cxx_name = "BRepLib_MakeWire_ctor_edge2"]
         fn MakeWire_ctor_edge2(E1: &TopoDS_Edge, E2: &TopoDS_Edge) -> UniquePtr<MakeWire>;
-        /// **Source:** `BRepLib_MakeWire.hxx` - `BRepLib_MakeWire::BRepLib_MakeWire()`
+        /// **Source:** `BRepLib_MakeWire.hxx`:93 - `BRepLib_MakeWire::BRepLib_MakeWire()`
         ///
         /// Make a Wire from three edges.
         #[cxx_name = "BRepLib_MakeWire_ctor_edge3"]
@@ -861,7 +861,7 @@ pub(crate) mod ffi {
             E2: &TopoDS_Edge,
             E3: &TopoDS_Edge,
         ) -> UniquePtr<MakeWire>;
-        /// **Source:** `BRepLib_MakeWire.hxx` - `BRepLib_MakeWire::BRepLib_MakeWire()`
+        /// **Source:** `BRepLib_MakeWire.hxx`:98 - `BRepLib_MakeWire::BRepLib_MakeWire()`
         ///
         /// Make a Wire from four edges.
         #[cxx_name = "BRepLib_MakeWire_ctor_edge4"]
@@ -871,33 +871,45 @@ pub(crate) mod ffi {
             E3: &TopoDS_Edge,
             E4: &TopoDS_Edge,
         ) -> UniquePtr<MakeWire>;
-        /// **Source:** `BRepLib_MakeWire.hxx` - `BRepLib_MakeWire::BRepLib_MakeWire()`
+        /// **Source:** `BRepLib_MakeWire.hxx`:104 - `BRepLib_MakeWire::BRepLib_MakeWire()`
         ///
         /// Make a Wire from a Wire. Useful for adding later.
         #[cxx_name = "BRepLib_MakeWire_ctor_wire"]
         fn MakeWire_ctor_wire(W: &TopoDS_Wire) -> UniquePtr<MakeWire>;
-        /// **Source:** `BRepLib_MakeWire.hxx` - `BRepLib_MakeWire::BRepLib_MakeWire()`
+        /// **Source:** `BRepLib_MakeWire.hxx`:107 - `BRepLib_MakeWire::BRepLib_MakeWire()`
         ///
         /// Add an edge to a wire.
         #[cxx_name = "BRepLib_MakeWire_ctor_wire_edge"]
         fn MakeWire_ctor_wire_edge(W: &TopoDS_Wire, E: &TopoDS_Edge) -> UniquePtr<MakeWire>;
+        /// **Source:** `BRepLib_MakeWire.hxx`:110 - `BRepLib_MakeWire::Add()`
+        ///
         /// Add the edge <E> to the current wire.
         #[cxx_name = "Add"]
         fn add_edge(self: Pin<&mut MakeWire>, E: &TopoDS_Edge);
+        /// **Source:** `BRepLib_MakeWire.hxx`:113 - `BRepLib_MakeWire::Add()`
+        ///
         /// Add the edges of <W> to the current wire.
         #[cxx_name = "Add"]
         fn add_wire(self: Pin<&mut MakeWire>, W: &TopoDS_Wire);
+        /// **Source:** `BRepLib_MakeWire.hxx`:118 - `BRepLib_MakeWire::Add()`
+        ///
         /// Add the edges of <L> to the current wire.
         /// The edges are not to be consecutive.  But they are
         /// to be all connected geometrically or topologically.
         #[cxx_name = "Add"]
         fn add_listofshape(self: Pin<&mut MakeWire>, L: &TopTools_ListOfShape);
+        /// **Source:** `BRepLib_MakeWire.hxx`:123 - `BRepLib_MakeWire::Wire()`
+        ///
         /// Returns the new wire.
         #[cxx_name = "Wire"]
         fn wire(self: Pin<&mut MakeWire>) -> &TopoDS_Wire;
+        /// **Source:** `BRepLib_MakeWire.hxx`:127 - `BRepLib_MakeWire::Edge()`
+        ///
         /// Returns the last edge added to the wire.
         #[cxx_name = "Edge"]
         fn edge(self: &MakeWire) -> &TopoDS_Edge;
+        /// **Source:** `BRepLib_MakeWire.hxx`:130 - `BRepLib_MakeWire::Vertex()`
+        ///
         /// Returns the last connecting vertex.
         #[cxx_name = "Vertex"]
         fn vertex(self: &MakeWire) -> &TopoDS_Vertex;
@@ -914,7 +926,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepLib_MakeWire_as_BRepLib_MakeShape_mut"]
         fn make_wire_as_make_shape_mut(self_: Pin<&mut MakeWire>) -> Pin<&mut MakeShape>;
         /// ======================== BRepLib_MakeShape ========================
-        /// **Source:** `BRepLib_MakeShape.hxx` - `BRepLib_MakeShape`
+        /// **Source:** `BRepLib_MakeShape.hxx`:36 - `BRepLib_MakeShape`
         ///
         /// This    is  the  root     class for     all  shape
         /// constructions.  It stores the result.
@@ -923,25 +935,38 @@ pub(crate) mod ffi {
         /// of sub-shapes.
         #[cxx_name = "BRepLib_MakeShape"]
         type MakeShape;
+        /// **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
+        ///
         /// This is  called by  Shape().  It does  nothing but
         /// may be redefined.
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut MakeShape>);
+        /// **Source:** `BRepLib_MakeShape.hxx`:45 - `BRepLib_MakeShape::Shape()`
         #[cxx_name = "Shape"]
         fn shape(self: Pin<&mut MakeShape>) -> &TopoDS_Shape;
+        /// **Source:** `BRepLib_MakeShape.hxx`:53 - `BRepLib_MakeShape::HasDescendants()`
+        ///
         /// Returns True if the Face generates new topology.
         #[cxx_name = "HasDescendants"]
         fn has_descendants(self: &MakeShape, F: &TopoDS_Face) -> bool;
+        /// **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
+        ///
         /// returns the list of generated Faces.
         #[cxx_name = "DescendantFaces"]
         fn descendant_faces(self: Pin<&mut MakeShape>, F: &TopoDS_Face) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
+        ///
         /// returns the number of surfaces
         /// after the shape creation.
         #[cxx_name = "NbSurfaces"]
         fn nb_surfaces(self: &MakeShape) -> i32;
+        /// **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
+        ///
         /// Return the faces created for surface I.
         #[cxx_name = "NewFaces"]
         fn new_faces(self: Pin<&mut MakeShape>, I: i32) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
+        ///
         /// returns a list of the created faces
         /// from the edge <E>.
         #[cxx_name = "FacesFromEdges"]
@@ -953,7 +978,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepLib_MakeShape_as_BRepLib_Command_mut"]
         fn make_shape_as_command_mut(self_: Pin<&mut MakeShape>) -> Pin<&mut Command>;
         /// ======================== BRepLib_Command ========================
-        /// **Source:** `BRepLib_Command.hxx` - `BRepLib_Command`
+        /// **Source:** `BRepLib_Command.hxx`:35 - `BRepLib_Command`
         ///
         /// Root class for all commands in BRepLib.
         ///
@@ -966,20 +991,24 @@ pub(crate) mod ffi {
         /// * Logging (not implemented).
         #[cxx_name = "BRepLib_Command"]
         type Command;
+        /// **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
         #[cxx_name = "IsDone"]
         fn is_done(self: &Command) -> bool;
+        /// **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
+        ///
         /// Raises NotDone if done is false.
         #[cxx_name = "Check"]
         fn check(self: &Command);
         /// ======================== BRepLib_MakeVertex ========================
-        /// **Source:** `BRepLib_MakeVertex.hxx` - `BRepLib_MakeVertex`
+        /// **Source:** `BRepLib_MakeVertex.hxx`:28 - `BRepLib_MakeVertex`
         ///
         /// Provides methods to build vertices.
         #[cxx_name = "BRepLib_MakeVertex"]
         type MakeVertex;
-        /// **Source:** `BRepLib_MakeVertex.hxx` - `BRepLib_MakeVertex::BRepLib_MakeVertex()`
+        /// **Source:** `BRepLib_MakeVertex.hxx`:33 - `BRepLib_MakeVertex::BRepLib_MakeVertex()`
         #[cxx_name = "BRepLib_MakeVertex_ctor_pnt"]
         fn MakeVertex_ctor_pnt(P: &gp_Pnt) -> UniquePtr<MakeVertex>;
+        /// **Source:** `BRepLib_MakeVertex.hxx`:35 - `BRepLib_MakeVertex::Vertex()`
         #[cxx_name = "Vertex"]
         fn vertex(self: Pin<&mut MakeVertex>) -> &TopoDS_Vertex;
         /// Upcast BRepLib_MakeVertex to BRepLib_Command
@@ -995,32 +1024,32 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepLib_MakeVertex_as_BRepLib_MakeShape_mut"]
         fn make_vertex_as_make_shape_mut(self_: Pin<&mut MakeVertex>) -> Pin<&mut MakeShape>;
         /// ======================== BRepLib_MakeSolid ========================
-        /// **Source:** `BRepLib_MakeSolid.hxx` - `BRepLib_MakeSolid`
+        /// **Source:** `BRepLib_MakeSolid.hxx`:31 - `BRepLib_MakeSolid`
         ///
         /// Makes a solid from compsolid  or  shells.
         #[cxx_name = "BRepLib_MakeSolid"]
         type MakeSolid;
-        /// **Source:** `BRepLib_MakeSolid.hxx` - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
+        /// **Source:** `BRepLib_MakeSolid.hxx`:37 - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
         ///
         /// Solid covers whole space.
         #[cxx_name = "BRepLib_MakeSolid_ctor"]
         fn MakeSolid_ctor() -> UniquePtr<MakeSolid>;
-        /// **Source:** `BRepLib_MakeSolid.hxx` - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
+        /// **Source:** `BRepLib_MakeSolid.hxx`:40 - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
         ///
         /// Make a solid from a CompSolid.
         #[cxx_name = "BRepLib_MakeSolid_ctor_compsolid"]
         fn MakeSolid_ctor_compsolid(S: &TopoDS_CompSolid) -> UniquePtr<MakeSolid>;
-        /// **Source:** `BRepLib_MakeSolid.hxx` - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
+        /// **Source:** `BRepLib_MakeSolid.hxx`:43 - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
         ///
         /// Make a solid from a shell.
         #[cxx_name = "BRepLib_MakeSolid_ctor_shell"]
         fn MakeSolid_ctor_shell(S: &TopoDS_Shell) -> UniquePtr<MakeSolid>;
-        /// **Source:** `BRepLib_MakeSolid.hxx` - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
+        /// **Source:** `BRepLib_MakeSolid.hxx`:46 - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
         ///
         /// Make a solid from two shells.
         #[cxx_name = "BRepLib_MakeSolid_ctor_shell2"]
         fn MakeSolid_ctor_shell2(S1: &TopoDS_Shell, S2: &TopoDS_Shell) -> UniquePtr<MakeSolid>;
-        /// **Source:** `BRepLib_MakeSolid.hxx` - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
+        /// **Source:** `BRepLib_MakeSolid.hxx`:49 - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
         ///
         /// Make a solid from three shells.
         #[cxx_name = "BRepLib_MakeSolid_ctor_shell3"]
@@ -1029,19 +1058,23 @@ pub(crate) mod ffi {
             S2: &TopoDS_Shell,
             S3: &TopoDS_Shell,
         ) -> UniquePtr<MakeSolid>;
-        /// **Source:** `BRepLib_MakeSolid.hxx` - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
+        /// **Source:** `BRepLib_MakeSolid.hxx`:54 - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
         ///
         /// Make a solid from a solid. Useful for adding later.
         #[cxx_name = "BRepLib_MakeSolid_ctor_solid"]
         fn MakeSolid_ctor_solid(So: &TopoDS_Solid) -> UniquePtr<MakeSolid>;
-        /// **Source:** `BRepLib_MakeSolid.hxx` - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
+        /// **Source:** `BRepLib_MakeSolid.hxx`:57 - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
         ///
         /// Add a shell to a solid.
         #[cxx_name = "BRepLib_MakeSolid_ctor_solid_shell"]
         fn MakeSolid_ctor_solid_shell(So: &TopoDS_Solid, S: &TopoDS_Shell) -> UniquePtr<MakeSolid>;
+        /// **Source:** `BRepLib_MakeSolid.hxx`:60 - `BRepLib_MakeSolid::Add()`
+        ///
         /// Add the shell to the current solid.
         #[cxx_name = "Add"]
         fn add(self: Pin<&mut MakeSolid>, S: &TopoDS_Shell);
+        /// **Source:** `BRepLib_MakeSolid.hxx`:63 - `BRepLib_MakeSolid::Solid()`
+        ///
         /// Returns the new Solid.
         #[cxx_name = "Solid"]
         fn solid(self: Pin<&mut MakeSolid>) -> &TopoDS_Solid;
@@ -1058,7 +1091,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepLib_MakeSolid_as_BRepLib_MakeShape_mut"]
         fn make_solid_as_make_shape_mut(self_: Pin<&mut MakeSolid>) -> Pin<&mut MakeShape>;
         /// ======================== BRepLib_MakeFace ========================
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace`
+        /// **Source:** `BRepLib_MakeFace.hxx`:61 - `BRepLib_MakeFace`
         ///
         /// Provides methods to build faces.
         ///
@@ -1087,42 +1120,42 @@ pub(crate) mod ffi {
         /// - The new wire is a perforation.
         #[cxx_name = "BRepLib_MakeFace"]
         type MakeFace;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:67 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Not done.
         #[cxx_name = "BRepLib_MakeFace_ctor"]
         fn MakeFace_ctor() -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:70 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Load a face. Useful to add wires.
         #[cxx_name = "BRepLib_MakeFace_ctor_face"]
         fn MakeFace_ctor_face(F: &TopoDS_Face) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:73 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a plane.
         #[cxx_name = "BRepLib_MakeFace_ctor_pln"]
         fn MakeFace_ctor_pln(P: &gp_Pln) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:76 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a cylinder.
         #[cxx_name = "BRepLib_MakeFace_ctor_cylinder"]
         fn MakeFace_ctor_cylinder(C: &gp_Cylinder) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:79 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a cone.
         #[cxx_name = "BRepLib_MakeFace_ctor_cone"]
         fn MakeFace_ctor_cone(C: &gp_Cone) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:82 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a sphere.
         #[cxx_name = "BRepLib_MakeFace_ctor_sphere"]
         fn MakeFace_ctor_sphere(S: &gp_Sphere) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:85 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a torus.
         #[cxx_name = "BRepLib_MakeFace_ctor_torus"]
         fn MakeFace_ctor_torus(C: &gp_Torus) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:89 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a Surface. Accepts tolerance value (TolDegen)
         /// for resolution of degenerated edges.
@@ -1131,7 +1164,7 @@ pub(crate) mod ffi {
             S: &HandleGeomSurface,
             TolDegen: f64,
         ) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:92 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a plane.
         #[cxx_name = "BRepLib_MakeFace_ctor_pln_real4"]
@@ -1142,7 +1175,7 @@ pub(crate) mod ffi {
             VMin: f64,
             VMax: f64,
         ) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:99 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a cylinder.
         #[cxx_name = "BRepLib_MakeFace_ctor_cylinder_real4"]
@@ -1153,7 +1186,7 @@ pub(crate) mod ffi {
             VMin: f64,
             VMax: f64,
         ) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:106 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a cone.
         #[cxx_name = "BRepLib_MakeFace_ctor_cone_real4"]
@@ -1164,7 +1197,7 @@ pub(crate) mod ffi {
             VMin: f64,
             VMax: f64,
         ) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:113 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a sphere.
         #[cxx_name = "BRepLib_MakeFace_ctor_sphere_real4"]
@@ -1175,7 +1208,7 @@ pub(crate) mod ffi {
             VMin: f64,
             VMax: f64,
         ) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:120 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a torus.
         #[cxx_name = "BRepLib_MakeFace_ctor_torus_real4"]
@@ -1186,7 +1219,7 @@ pub(crate) mod ffi {
             VMin: f64,
             VMax: f64,
         ) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:129 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a Surface. Accepts min & max parameters
         /// to construct the face's bounds. Also accepts tolerance value (TolDegen)
@@ -1200,7 +1233,7 @@ pub(crate) mod ffi {
             VMax: f64,
             TolDegen: f64,
         ) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:140 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Find a surface from the wire and make a face.
         /// if <OnlyPlane> is true, the computed surface will be
@@ -1208,7 +1241,7 @@ pub(crate) mod ffi {
         /// flag NotDone will be set.
         #[cxx_name = "BRepLib_MakeFace_ctor_wire_bool"]
         fn MakeFace_ctor_wire_bool(W: &TopoDS_Wire, OnlyPlane: bool) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:144 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a plane and a wire.
         #[cxx_name = "BRepLib_MakeFace_ctor_pln_wire_bool"]
@@ -1217,7 +1250,7 @@ pub(crate) mod ffi {
             W: &TopoDS_Wire,
             Inside: bool,
         ) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:149 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a cylinder and a wire.
         #[cxx_name = "BRepLib_MakeFace_ctor_cylinder_wire_bool"]
@@ -1226,7 +1259,7 @@ pub(crate) mod ffi {
             W: &TopoDS_Wire,
             Inside: bool,
         ) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:154 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a cone and a wire.
         #[cxx_name = "BRepLib_MakeFace_ctor_cone_wire_bool"]
@@ -1235,7 +1268,7 @@ pub(crate) mod ffi {
             W: &TopoDS_Wire,
             Inside: bool,
         ) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:159 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a sphere and a wire.
         #[cxx_name = "BRepLib_MakeFace_ctor_sphere_wire_bool"]
@@ -1244,7 +1277,7 @@ pub(crate) mod ffi {
             W: &TopoDS_Wire,
             Inside: bool,
         ) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:164 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a torus and a wire.
         #[cxx_name = "BRepLib_MakeFace_ctor_torus_wire_bool"]
@@ -1253,7 +1286,7 @@ pub(crate) mod ffi {
             W: &TopoDS_Wire,
             Inside: bool,
         ) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:169 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Make a face from a Surface and a wire.
         #[cxx_name = "BRepLib_MakeFace_ctor_handlesurface_wire_bool"]
@@ -1262,14 +1295,18 @@ pub(crate) mod ffi {
             W: &TopoDS_Wire,
             Inside: bool,
         ) -> UniquePtr<MakeFace>;
-        /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
+        /// **Source:** `BRepLib_MakeFace.hxx`:174 - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
         /// Adds the wire <W> in the face <F>
         #[cxx_name = "BRepLib_MakeFace_ctor_face_wire"]
         fn MakeFace_ctor_face_wire(F: &TopoDS_Face, W: &TopoDS_Wire) -> UniquePtr<MakeFace>;
+        /// **Source:** `BRepLib_MakeFace.hxx`:177 - `BRepLib_MakeFace::Init()`
+        ///
         /// Load the face.
         #[cxx_name = "Init"]
         fn init_face(self: Pin<&mut MakeFace>, F: &TopoDS_Face);
+        /// **Source:** `BRepLib_MakeFace.hxx`:183 - `BRepLib_MakeFace::Init()`
+        ///
         /// Creates the face  from the  surface. If Bound is
         /// True a wire is made from the natural bounds.
         /// Accepts tolerance value (TolDegen) for resolution
@@ -1281,6 +1318,8 @@ pub(crate) mod ffi {
             Bound: bool,
             TolDegen: f64,
         );
+        /// **Source:** `BRepLib_MakeFace.hxx`:190 - `BRepLib_MakeFace::Init()`
+        ///
         /// Creates the face from the surface and the min-max
         /// values. Accepts tolerance value (TolDegen) for resolution
         /// of degenerated edges.
@@ -1294,12 +1333,18 @@ pub(crate) mod ffi {
             VMax: f64,
             TolDegen: f64,
         );
+        /// **Source:** `BRepLib_MakeFace.hxx`:198 - `BRepLib_MakeFace::Add()`
+        ///
         /// Adds the wire <W> in the current face.
         #[cxx_name = "Add"]
         fn add(self: Pin<&mut MakeFace>, W: &TopoDS_Wire);
+        /// **Source:** `BRepLib_MakeFace.hxx`:203 - `BRepLib_MakeFace::Face()`
+        ///
         /// Returns the new face.
         #[cxx_name = "Face"]
         fn face(self: &MakeFace) -> &TopoDS_Face;
+        /// **Source:** `BRepLib_MakeFace.hxx`:211 - `BRepLib_MakeFace::IsDegenerated()`
+        ///
         /// Checks the specified curve is degenerated
         /// according to specified tolerance.
         /// Returns <theActTol> less than <theMaxTol>, which shows
@@ -1324,7 +1369,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepLib_MakeFace_as_BRepLib_MakeShape_mut"]
         fn make_face_as_make_shape_mut(self_: Pin<&mut MakeFace>) -> Pin<&mut MakeShape>;
         /// ======================== BRepLib_MakeEdge ========================
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:69 - `BRepLib_MakeEdge`
         ///
         /// Provides methods to build edges.
         ///
@@ -1359,120 +1404,120 @@ pub(crate) mod ffi {
         /// be open in this direction.
         #[cxx_name = "BRepLib_MakeEdge"]
         type MakeEdge;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:74 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor"]
         fn MakeEdge_ctor() -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:76 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_vertex2"]
         fn MakeEdge_ctor_vertex2(V1: &TopoDS_Vertex, V2: &TopoDS_Vertex) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:78 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_pnt2"]
         fn MakeEdge_ctor_pnt2(P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:80 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_lin"]
         fn MakeEdge_ctor_lin(L: &gp_Lin) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:82 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_lin_real2"]
         fn MakeEdge_ctor_lin_real2(L: &gp_Lin, p1: f64, p2: f64) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:84 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_lin_pnt2"]
         fn MakeEdge_ctor_lin_pnt2(L: &gp_Lin, P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:86 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_lin_vertex2"]
         fn MakeEdge_ctor_lin_vertex2(
             L: &gp_Lin,
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:90 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_circ"]
         fn MakeEdge_ctor_circ(L: &gp_Circ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:92 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_circ_real2"]
         fn MakeEdge_ctor_circ_real2(L: &gp_Circ, p1: f64, p2: f64) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:96 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_circ_pnt2"]
         fn MakeEdge_ctor_circ_pnt2(L: &gp_Circ, P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:98 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_circ_vertex2"]
         fn MakeEdge_ctor_circ_vertex2(
             L: &gp_Circ,
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:102 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_elips"]
         fn MakeEdge_ctor_elips(L: &gp_Elips) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:104 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_elips_real2"]
         fn MakeEdge_ctor_elips_real2(L: &gp_Elips, p1: f64, p2: f64) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:108 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_elips_pnt2"]
         fn MakeEdge_ctor_elips_pnt2(L: &gp_Elips, P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:110 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_elips_vertex2"]
         fn MakeEdge_ctor_elips_vertex2(
             L: &gp_Elips,
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:114 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_hypr"]
         fn MakeEdge_ctor_hypr(L: &gp_Hypr) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:116 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_hypr_real2"]
         fn MakeEdge_ctor_hypr_real2(L: &gp_Hypr, p1: f64, p2: f64) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:120 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_hypr_pnt2"]
         fn MakeEdge_ctor_hypr_pnt2(L: &gp_Hypr, P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:122 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_hypr_vertex2"]
         fn MakeEdge_ctor_hypr_vertex2(
             L: &gp_Hypr,
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:126 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_parab"]
         fn MakeEdge_ctor_parab(L: &gp_Parab) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:128 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_parab_real2"]
         fn MakeEdge_ctor_parab_real2(L: &gp_Parab, p1: f64, p2: f64) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:132 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_parab_pnt2"]
         fn MakeEdge_ctor_parab_pnt2(L: &gp_Parab, P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:134 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_parab_vertex2"]
         fn MakeEdge_ctor_parab_vertex2(
             L: &gp_Parab,
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:138 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_handlecurve"]
         fn MakeEdge_ctor_handlecurve(L: &HandleGeomCurve) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:140 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_handlecurve_real2"]
         fn MakeEdge_ctor_handlecurve_real2(
             L: &HandleGeomCurve,
             p1: f64,
             p2: f64,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:144 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_handlecurve_pnt2"]
         fn MakeEdge_ctor_handlecurve_pnt2(
             L: &HandleGeomCurve,
             P1: &gp_Pnt,
             P2: &gp_Pnt,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:146 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_handlecurve_vertex2"]
         fn MakeEdge_ctor_handlecurve_vertex2(
             L: &HandleGeomCurve,
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:150 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_handlecurve_pnt2_real2"]
         fn MakeEdge_ctor_handlecurve_pnt2_real2(
             L: &HandleGeomCurve,
@@ -1481,7 +1526,7 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:156 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_handlecurve_vertex2_real2"]
         fn MakeEdge_ctor_handlecurve_vertex2_real2(
             L: &HandleGeomCurve,
@@ -1490,13 +1535,13 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:162 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_handlecurve_handlesurface"]
         fn MakeEdge_ctor_handlecurve_handlesurface(
             L: &HandleGeom2dCurve,
             S: &HandleGeomSurface,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:164 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_handlecurve_handlesurface_real2"]
         fn MakeEdge_ctor_handlecurve_handlesurface_real2(
             L: &HandleGeom2dCurve,
@@ -1504,7 +1549,7 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:169 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_handlecurve_handlesurface_pnt2"]
         fn MakeEdge_ctor_handlecurve_handlesurface_pnt2(
             L: &HandleGeom2dCurve,
@@ -1512,7 +1557,7 @@ pub(crate) mod ffi {
             P1: &gp_Pnt,
             P2: &gp_Pnt,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:174 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_handlecurve_handlesurface_vertex2"]
         fn MakeEdge_ctor_handlecurve_handlesurface_vertex2(
             L: &HandleGeom2dCurve,
@@ -1520,7 +1565,7 @@ pub(crate) mod ffi {
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:179 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_handlecurve_handlesurface_pnt2_real2"]
         fn MakeEdge_ctor_handlecurve_handlesurface_pnt2_real2(
             L: &HandleGeom2dCurve,
@@ -1530,7 +1575,7 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         ) -> UniquePtr<MakeEdge>;
-        /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+        /// **Source:** `BRepLib_MakeEdge.hxx`:186 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
         #[cxx_name = "BRepLib_MakeEdge_ctor_handlecurve_handlesurface_vertex2_real2"]
         fn MakeEdge_ctor_handlecurve_handlesurface_vertex2_real2(
             L: &HandleGeom2dCurve,
@@ -1540,10 +1585,13 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         ) -> UniquePtr<MakeEdge>;
+        /// **Source:** `BRepLib_MakeEdge.hxx`:193 - `BRepLib_MakeEdge::Init()`
         #[cxx_name = "Init"]
         fn init_handlecurve(self: Pin<&mut MakeEdge>, C: &HandleGeomCurve);
+        /// **Source:** `BRepLib_MakeEdge.hxx`:195 - `BRepLib_MakeEdge::Init()`
         #[cxx_name = "Init"]
         fn init_handlecurve_real2(self: Pin<&mut MakeEdge>, C: &HandleGeomCurve, p1: f64, p2: f64);
+        /// **Source:** `BRepLib_MakeEdge.hxx`:199 - `BRepLib_MakeEdge::Init()`
         #[cxx_name = "Init"]
         fn init_handlecurve_pnt2(
             self: Pin<&mut MakeEdge>,
@@ -1551,6 +1599,7 @@ pub(crate) mod ffi {
             P1: &gp_Pnt,
             P2: &gp_Pnt,
         );
+        /// **Source:** `BRepLib_MakeEdge.hxx`:201 - `BRepLib_MakeEdge::Init()`
         #[cxx_name = "Init"]
         fn init_handlecurve_vertex2(
             self: Pin<&mut MakeEdge>,
@@ -1558,6 +1607,7 @@ pub(crate) mod ffi {
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         );
+        /// **Source:** `BRepLib_MakeEdge.hxx`:205 - `BRepLib_MakeEdge::Init()`
         #[cxx_name = "Init"]
         fn init_handlecurve_pnt2_real2(
             self: Pin<&mut MakeEdge>,
@@ -1567,6 +1617,7 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         );
+        /// **Source:** `BRepLib_MakeEdge.hxx`:211 - `BRepLib_MakeEdge::Init()`
         #[cxx_name = "Init"]
         fn init_handlecurve_vertex2_real2(
             self: Pin<&mut MakeEdge>,
@@ -1576,12 +1627,14 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         );
+        /// **Source:** `BRepLib_MakeEdge.hxx`:217 - `BRepLib_MakeEdge::Init()`
         #[cxx_name = "Init"]
         fn init_handlecurve_handlesurface(
             self: Pin<&mut MakeEdge>,
             C: &HandleGeom2dCurve,
             S: &HandleGeomSurface,
         );
+        /// **Source:** `BRepLib_MakeEdge.hxx`:219 - `BRepLib_MakeEdge::Init()`
         #[cxx_name = "Init"]
         fn init_handlecurve_handlesurface_real2(
             self: Pin<&mut MakeEdge>,
@@ -1590,6 +1643,7 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         );
+        /// **Source:** `BRepLib_MakeEdge.hxx`:224 - `BRepLib_MakeEdge::Init()`
         #[cxx_name = "Init"]
         fn init_handlecurve_handlesurface_pnt2(
             self: Pin<&mut MakeEdge>,
@@ -1598,6 +1652,7 @@ pub(crate) mod ffi {
             P1: &gp_Pnt,
             P2: &gp_Pnt,
         );
+        /// **Source:** `BRepLib_MakeEdge.hxx`:229 - `BRepLib_MakeEdge::Init()`
         #[cxx_name = "Init"]
         fn init_handlecurve_handlesurface_vertex2(
             self: Pin<&mut MakeEdge>,
@@ -1606,6 +1661,7 @@ pub(crate) mod ffi {
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         );
+        /// **Source:** `BRepLib_MakeEdge.hxx`:234 - `BRepLib_MakeEdge::Init()`
         #[cxx_name = "Init"]
         fn init_handlecurve_handlesurface_pnt2_real2(
             self: Pin<&mut MakeEdge>,
@@ -1616,6 +1672,7 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         );
+        /// **Source:** `BRepLib_MakeEdge.hxx`:241 - `BRepLib_MakeEdge::Init()`
         #[cxx_name = "Init"]
         fn init_handlecurve_handlesurface_vertex2_real2(
             self: Pin<&mut MakeEdge>,
@@ -1626,11 +1683,16 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         );
+        /// **Source:** `BRepLib_MakeEdge.hxx`:251 - `BRepLib_MakeEdge::Edge()`
         #[cxx_name = "Edge"]
         fn edge(self: Pin<&mut MakeEdge>) -> &TopoDS_Edge;
+        /// **Source:** `BRepLib_MakeEdge.hxx`:255 - `BRepLib_MakeEdge::Vertex1()`
+        ///
         /// Returns the first vertex of the edge. May be Null.
         #[cxx_name = "Vertex1"]
         fn vertex1(self: &MakeEdge) -> &TopoDS_Vertex;
+        /// **Source:** `BRepLib_MakeEdge.hxx`:258 - `BRepLib_MakeEdge::Vertex2()`
+        ///
         /// Returns the second vertex of the edge. May be Null.
         #[cxx_name = "Vertex2"]
         fn vertex2(self: &MakeEdge) -> &TopoDS_Vertex;

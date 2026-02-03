@@ -176,7 +176,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== ShapeAnalysis_FreeBounds ========================
-        /// **Source:** `ShapeAnalysis_FreeBounds.hxx` - `ShapeAnalysis_FreeBounds`
+        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:57 - `ShapeAnalysis_FreeBounds`
         ///
         /// This class is intended to output free bounds of the shape.
         ///
@@ -208,12 +208,12 @@ pub(crate) mod ffi {
         /// NOTE. Ends of the edge or wire mean hereafter their end vertices.
         #[cxx_name = "ShapeAnalysis_FreeBounds"]
         type FreeBounds;
-        /// **Source:** `ShapeAnalysis_FreeBounds.hxx` - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
+        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:63 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
         ///
         /// Empty constructor
         #[cxx_name = "ShapeAnalysis_FreeBounds_ctor"]
         fn FreeBounds_ctor() -> UniquePtr<FreeBounds>;
-        /// **Source:** `ShapeAnalysis_FreeBounds.hxx` - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
+        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:76 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
         ///
         /// Builds forecasting free bounds of the <shape>.
         /// <shape> should be a compound of faces.
@@ -233,7 +233,7 @@ pub(crate) mod ffi {
             splitclosed: bool,
             splitopen: bool,
         ) -> UniquePtr<FreeBounds>;
-        /// **Source:** `ShapeAnalysis_FreeBounds.hxx` - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
+        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:92 - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
         ///
         /// Builds actual free bounds of the <shape>.
         /// <shape> should be a compound of shells.
@@ -253,12 +253,18 @@ pub(crate) mod ffi {
             splitopen: bool,
             checkinternaledges: bool,
         ) -> UniquePtr<FreeBounds>;
+        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:99 - `ShapeAnalysis_FreeBounds::GetClosedWires()`
+        ///
         /// Returns compound of closed wires out of free edges.
         #[cxx_name = "GetClosedWires"]
         fn get_closed_wires(self: &FreeBounds) -> &TopoDS_Compound;
+        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:102 - `ShapeAnalysis_FreeBounds::GetOpenWires()`
+        ///
         /// Returns compound of open wires out of free edges.
         #[cxx_name = "GetOpenWires"]
         fn get_open_wires(self: &FreeBounds) -> &TopoDS_Compound;
+        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:115 - `ShapeAnalysis_FreeBounds::ConnectEdgesToWires()`
+        ///
         /// Builds sequence of <wires> out of sequence of not sorted
         /// <edges>.
         /// Tries to build wires of maximum length. Building a wire is
@@ -277,6 +283,7 @@ pub(crate) mod ffi {
             shared: bool,
             wires: Pin<&mut HandleTopToolsHSequenceOfShape>,
         );
+        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:120 - `ShapeAnalysis_FreeBounds::ConnectWiresToWires()`
         #[cxx_name = "ShapeAnalysis_FreeBounds_ConnectWiresToWires_handlehsequenceofshape_real_bool_handlehsequenceofshape"]
         fn FreeBounds_connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape(
             iwires: Pin<&mut HandleTopToolsHSequenceOfShape>,
@@ -284,6 +291,8 @@ pub(crate) mod ffi {
             shared: bool,
             owires: Pin<&mut HandleTopToolsHSequenceOfShape>,
         );
+        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:138 - `ShapeAnalysis_FreeBounds::ConnectWiresToWires()`
+        ///
         /// Builds sequence of <owires> out of sequence of not sorted
         /// <iwires>.
         /// Tries to build wires of maximum length. Building a wire is
@@ -305,6 +314,8 @@ pub(crate) mod ffi {
             owires: Pin<&mut HandleTopToolsHSequenceOfShape>,
             vertices: Pin<&mut TopTools_DataMapOfShapeShape>,
         );
+        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:151 - `ShapeAnalysis_FreeBounds::SplitWires()`
+        ///
         /// Extracts closed sub-wires out of <wires> and adds them
         /// to <closed>, open wires remained after extraction are put
         /// into <open>.
@@ -320,6 +331,8 @@ pub(crate) mod ffi {
             closed: Pin<&mut HandleTopToolsHSequenceOfShape>,
             open: Pin<&mut HandleTopToolsHSequenceOfShape>,
         );
+        /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:160 - `ShapeAnalysis_FreeBounds::DispatchWires()`
+        ///
         /// Dispatches sequence of <wires> into two compounds
         /// <closed> for closed wires and <open> for open wires.
         /// If a compound is not empty wires are added into it.

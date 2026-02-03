@@ -29,20 +29,25 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepAlgo_Image ========================
-        /// **Source:** `BRepAlgo_Image.hxx` - `BRepAlgo_Image`
+        /// **Source:** `BRepAlgo_Image.hxx`:33 - `BRepAlgo_Image`
         ///
         /// Stores link between a shape <S> and a shape <NewS>
         /// obtained from <S>. <NewS> is an image of <S>.
         #[cxx_name = "BRepAlgo_Image"]
         type Image;
-        /// **Source:** `BRepAlgo_Image.hxx` - `BRepAlgo_Image::BRepAlgo_Image()`
+        /// **Source:** `BRepAlgo_Image.hxx`:38 - `BRepAlgo_Image::BRepAlgo_Image()`
         #[cxx_name = "BRepAlgo_Image_ctor"]
         fn Image_ctor() -> UniquePtr<Image>;
+        /// **Source:** `BRepAlgo_Image.hxx`:40 - `BRepAlgo_Image::SetRoot()`
         #[cxx_name = "SetRoot"]
         fn set_root(self: Pin<&mut Image>, S: &TopoDS_Shape);
+        /// **Source:** `BRepAlgo_Image.hxx`:43 - `BRepAlgo_Image::Bind()`
+        ///
         /// Links <NewS> as image of <OldS>.
         #[cxx_name = "Bind"]
         fn bind_shape2(self: Pin<&mut Image>, OldS: &TopoDS_Shape, NewS: &TopoDS_Shape);
+        /// **Source:** `BRepAlgo_Image.hxx`:46 - `BRepAlgo_Image::Bind()`
+        ///
         /// Links <NewS> as image of <OldS>.
         #[cxx_name = "Bind"]
         fn bind_shape_listofshape(
@@ -50,9 +55,13 @@ pub(crate) mod ffi {
             OldS: &TopoDS_Shape,
             NewS: &TopTools_ListOfShape,
         );
+        /// **Source:** `BRepAlgo_Image.hxx`:49 - `BRepAlgo_Image::Add()`
+        ///
         /// Add <NewS> to the image of <OldS>.
         #[cxx_name = "Add"]
         fn add_shape2(self: Pin<&mut Image>, OldS: &TopoDS_Shape, NewS: &TopoDS_Shape);
+        /// **Source:** `BRepAlgo_Image.hxx`:52 - `BRepAlgo_Image::Add()`
+        ///
         /// Add <NewS> to the image of <OldS>.
         #[cxx_name = "Add"]
         fn add_shape_listofshape(
@@ -60,39 +69,59 @@ pub(crate) mod ffi {
             OldS: &TopoDS_Shape,
             NewS: &TopTools_ListOfShape,
         );
+        /// **Source:** `BRepAlgo_Image.hxx`:54 - `BRepAlgo_Image::Clear()`
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Image>);
+        /// **Source:** `BRepAlgo_Image.hxx`:57 - `BRepAlgo_Image::Remove()`
+        ///
         /// Remove <S> to set of images.
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut Image>, S: &TopoDS_Shape);
+        /// **Source:** `BRepAlgo_Image.hxx`:60 - `BRepAlgo_Image::RemoveRoot()`
+        ///
         /// Removes the root <theRoot> from the list of roots and up and down maps.
         #[cxx_name = "RemoveRoot"]
         fn remove_root(self: Pin<&mut Image>, Root: &TopoDS_Shape);
+        /// **Source:** `BRepAlgo_Image.hxx`:65 - `BRepAlgo_Image::ReplaceRoot()`
+        ///
         /// Replaces the <OldRoot> with the <NewRoot>, so all images
         /// of the <OldRoot> become the images of the <NewRoot>.
         /// The <OldRoot> is removed.
         #[cxx_name = "ReplaceRoot"]
         fn replace_root(self: Pin<&mut Image>, OldRoot: &TopoDS_Shape, NewRoot: &TopoDS_Shape);
+        /// **Source:** `BRepAlgo_Image.hxx`:67 - `BRepAlgo_Image::Roots()`
         #[cxx_name = "Roots"]
         fn roots(self: &Image) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepAlgo_Image.hxx`:69 - `BRepAlgo_Image::IsImage()`
         #[cxx_name = "IsImage"]
         fn is_image(self: &Image, S: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepAlgo_Image.hxx`:72 - `BRepAlgo_Image::ImageFrom()`
+        ///
         /// Returns the generator of <S>
         #[cxx_name = "ImageFrom"]
         fn image_from(self: &Image, S: &TopoDS_Shape) -> &TopoDS_Shape;
+        /// **Source:** `BRepAlgo_Image.hxx`:75 - `BRepAlgo_Image::Root()`
+        ///
         /// Returns the upper generator of <S>
         #[cxx_name = "Root"]
         fn root(self: &Image, S: &TopoDS_Shape) -> &TopoDS_Shape;
+        /// **Source:** `BRepAlgo_Image.hxx`:77 - `BRepAlgo_Image::HasImage()`
         #[cxx_name = "HasImage"]
         fn has_image(self: &Image, S: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepAlgo_Image.hxx`:81 - `BRepAlgo_Image::Image()`
+        ///
         /// Returns the Image of <S>.
         /// Returns <S> in the list if HasImage(S) is false.
         #[cxx_name = "Image"]
         fn image(self: &Image, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `BRepAlgo_Image.hxx`:85 - `BRepAlgo_Image::LastImage()`
+        ///
         /// Stores in <L> the images of images of...images of <S>.
         /// <L> contains only <S> if  HasImage(S) is false.
         #[cxx_name = "LastImage"]
         fn last_image(self: &Image, S: &TopoDS_Shape, L: Pin<&mut TopTools_ListOfShape>);
+        /// **Source:** `BRepAlgo_Image.hxx`:88 - `BRepAlgo_Image::Compact()`
+        ///
         /// Keeps only the link between roots and lastimage.
         #[cxx_name = "Compact"]
         fn compact(self: Pin<&mut Image>);

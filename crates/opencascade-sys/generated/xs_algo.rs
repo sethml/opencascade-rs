@@ -64,13 +64,13 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== XSAlgo_ShapeProcessor ========================
-        /// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor`
+        /// **Source:** `XSAlgo_ShapeProcessor.hxx`:32 - `XSAlgo_ShapeProcessor`
         ///
         /// Shape Processing module.
         /// Allows to define and apply general Shape Processing as a customizable sequence of operators.
         #[cxx_name = "XSAlgo_ShapeProcessor"]
         type ShapeProcessor;
-        /// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor()`
+        /// **Source:** `XSAlgo_ShapeProcessor.hxx`:53 - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor()`
         ///
         /// Constructor.
         /// @param theParameters Parameters to be used in the processing.
@@ -78,6 +78,8 @@ pub(crate) mod ffi {
         fn ShapeProcessor_ctor_shapefixparameters(
             theParameters: &DE_ShapeFixParameters,
         ) -> UniquePtr<ShapeProcessor>;
+        /// **Source:** `XSAlgo_ShapeProcessor.hxx`:72 - `XSAlgo_ShapeProcessor::MergeTransferInfo()`
+        ///
         /// Merge the results of the shape processing with the transfer process.
         /// @param theTransientProcess Transfer process to merge with.
         /// @param theFirstTPItemIndex Index of the first item in the transfer process to merge with.
@@ -87,6 +89,8 @@ pub(crate) mod ffi {
             theTransientProcess: &HandleTransferTransientProcess,
             theFirstTPItemIndex: i32,
         );
+        /// **Source:** `XSAlgo_ShapeProcessor.hxx`:78 - `XSAlgo_ShapeProcessor::MergeTransferInfo()`
+        ///
         /// Merge the results of the shape processing with the finder process.
         /// @param theFinderProcess Finder process to merge with.
         #[cxx_name = "MergeTransferInfo"]
@@ -101,6 +105,8 @@ pub(crate) mod ffi {
         fn ShapeProcessor_get_context(
             self_: Pin<&mut ShapeProcessor>,
         ) -> UniquePtr<HandleShapeProcessShapeContext>;
+        /// **Source:** `XSAlgo_ShapeProcessor.hxx`:87 - `XSAlgo_ShapeProcessor::CheckPCurve()`
+        ///
         /// Check quality of pcurve of the edge on the given face, and correct it if necessary.
         /// @param theEdge Edge to check.
         /// @param theFace Face on which the edge is located.
@@ -114,6 +120,8 @@ pub(crate) mod ffi {
             thePrecision: f64,
             theIsSeam: bool,
         ) -> bool;
+        /// **Source:** `XSAlgo_ShapeProcessor.hxx`:160 - `XSAlgo_ShapeProcessor::PrepareForTransfer()`
+        ///
         /// The function is designed to set the length unit for the application before performing a
         /// transfer operation. It ensures that the length unit is correctly configured based on the
         /// value associated with the key "xstep.cascade.unit".

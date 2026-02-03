@@ -342,7 +342,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepAdaptor_Curve ========================
-        /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve`
+        /// **Source:** `BRepAdaptor_Curve.hxx`:58 - `BRepAdaptor_Curve`
         ///
         /// The Curve from BRepAdaptor  allows to use  an Edge
         /// of the BRep topology like a 3D curve.
@@ -358,18 +358,18 @@ pub(crate) mod ffi {
         /// an Edge and a Face.
         #[cxx_name = "BRepAdaptor_Curve"]
         type Curve;
-        /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
+        /// **Source:** `BRepAdaptor_Curve.hxx`:63 - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
         ///
         /// Creates an undefined Curve with no Edge loaded.
         #[cxx_name = "BRepAdaptor_Curve_ctor"]
         fn Curve_ctor() -> UniquePtr<Curve>;
-        /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
+        /// **Source:** `BRepAdaptor_Curve.hxx`:67 - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
         ///
         /// Creates a Curve  to  access the geometry of edge
         /// <E>.
         #[cxx_name = "BRepAdaptor_Curve_ctor_edge"]
         fn Curve_ctor_edge(E: &TopoDS_Edge) -> UniquePtr<Curve>;
-        /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
+        /// **Source:** `BRepAdaptor_Curve.hxx`:74 - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
         ///
         /// Creates a Curve to access  the geometry  of edge
         /// <E>.   The geometry  will   be  computed using the
@@ -378,15 +378,22 @@ pub(crate) mod ffi {
         /// the face.
         #[cxx_name = "BRepAdaptor_Curve_ctor_edge_face"]
         fn Curve_ctor_edge_face(E: &TopoDS_Edge, F: &TopoDS_Face) -> UniquePtr<Curve>;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:60 - `BRepAdaptor_Curve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Curve) -> &HandleStandardType;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:80 - `BRepAdaptor_Curve::Reset()`
+        ///
         /// Reset currently loaded curve (undone Load()).
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut Curve>);
+        /// **Source:** `BRepAdaptor_Curve.hxx`:84 - `BRepAdaptor_Curve::Initialize()`
+        ///
         /// Sets  the Curve <me>  to access the  geometry of
         /// edge <E>.
         #[cxx_name = "Initialize"]
         fn initialize_edge(self: Pin<&mut Curve>, E: &TopoDS_Edge);
+        /// **Source:** `BRepAdaptor_Curve.hxx`:91 - `BRepAdaptor_Curve::Initialize()`
+        ///
         /// Sets the Curve <me>  to access  the  geometry of
         /// edge <E>.  The geometry will be computed using the
         /// parametric curve of <E>  on the face <F>. An Error
@@ -394,48 +401,73 @@ pub(crate) mod ffi {
         /// the face.
         #[cxx_name = "Initialize"]
         fn initialize_edge_face(self: Pin<&mut Curve>, E: &TopoDS_Edge, F: &TopoDS_Face);
+        /// **Source:** `BRepAdaptor_Curve.hxx`:94 - `BRepAdaptor_Curve::Trsf()`
+        ///
         /// Returns the coordinate system of the curve.
         #[cxx_name = "Trsf"]
         fn trsf(self: &Curve) -> &gp_Trsf;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:98 - `BRepAdaptor_Curve::Is3DCurve()`
+        ///
         /// Returns True if the edge geometry is computed from
         /// a 3D curve.
         #[cxx_name = "Is3DCurve"]
         fn is3_d_curve(self: &Curve) -> bool;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:102 - `BRepAdaptor_Curve::IsCurveOnSurface()`
+        ///
         /// Returns True if the edge geometry is computed from
         /// a pcurve on a surface.
         #[cxx_name = "IsCurveOnSurface"]
         fn is_curve_on_surface(self: &Curve) -> bool;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:105 - `BRepAdaptor_Curve::Curve()`
+        ///
         /// Returns the Curve of  the  edge.
         #[cxx_name = "Curve"]
         fn curve(self: &Curve) -> &GeomAdaptor_Curve;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:108 - `BRepAdaptor_Curve::CurveOnSurface()`
+        ///
         /// Returns the CurveOnSurface of the edge.
         #[cxx_name = "CurveOnSurface"]
         fn curve_on_surface(self: &Curve) -> &Adaptor3d_CurveOnSurface;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:111 - `BRepAdaptor_Curve::Edge()`
+        ///
         /// Returns the edge.
         #[cxx_name = "Edge"]
         fn edge(self: &Curve) -> &TopoDS_Edge;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:114 - `BRepAdaptor_Curve::Tolerance()`
+        ///
         /// Returns the edge tolerance.
         #[cxx_name = "Tolerance"]
         fn tolerance(self: &Curve) -> f64;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:116 - `BRepAdaptor_Curve::FirstParameter()`
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &Curve) -> f64;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:118 - `BRepAdaptor_Curve::LastParameter()`
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &Curve) -> f64;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:142 - `BRepAdaptor_Curve::IsClosed()`
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &Curve) -> bool;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:144 - `BRepAdaptor_Curve::IsPeriodic()`
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &Curve) -> bool;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:146 - `BRepAdaptor_Curve::Period()`
         #[cxx_name = "Period"]
         fn period(self: &Curve) -> f64;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:152 - `BRepAdaptor_Curve::D0()`
+        ///
         /// Computes the point of parameter U.
         #[cxx_name = "D0"]
         fn d0(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `BRepAdaptor_Curve.hxx`:158 - `BRepAdaptor_Curve::D1()`
+        ///
         /// Computes the point of parameter U on the curve
         /// with its first derivative.
         /// Raised if the continuity of the current interval
         /// is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>, V: Pin<&mut gp_Vec>);
+        /// **Source:** `BRepAdaptor_Curve.hxx`:164 - `BRepAdaptor_Curve::D2()`
+        ///
         /// Returns the point P of parameter U, the first and second
         /// derivatives V1 and V2.
         /// Raised if the continuity of the current interval
@@ -448,6 +480,8 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `BRepAdaptor_Curve.hxx`:173 - `BRepAdaptor_Curve::D3()`
+        ///
         /// Returns the point P of parameter U, the first, the second
         /// and the third derivative.
         /// Raised if the continuity of the current interval
@@ -461,15 +495,21 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec>,
             V3: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `BRepAdaptor_Curve.hxx`:188 - `BRepAdaptor_Curve::Resolution()`
+        ///
         /// returns the parametric resolution
         #[cxx_name = "Resolution"]
         fn resolution(self: &Curve, R3d: f64) -> f64;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:202 - `BRepAdaptor_Curve::Degree()`
         #[cxx_name = "Degree"]
         fn degree(self: &Curve) -> i32;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:204 - `BRepAdaptor_Curve::IsRational()`
         #[cxx_name = "IsRational"]
         fn is_rational(self: &Curve) -> bool;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:206 - `BRepAdaptor_Curve::NbPoles()`
         #[cxx_name = "NbPoles"]
         fn nb_poles(self: &Curve) -> i32;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:208 - `BRepAdaptor_Curve::NbKnots()`
         #[cxx_name = "NbKnots"]
         fn nb_knots(self: &Curve) -> i32;
         /// Shallow copy of adaptor
@@ -518,6 +558,7 @@ pub(crate) mod ffi {
         fn Curve_b_spline(self_: &Curve) -> UniquePtr<HandleGeomBSplineCurve>;
         #[cxx_name = "BRepAdaptor_Curve_OffsetCurve"]
         fn Curve_offset_curve(self_: &Curve) -> UniquePtr<HandleGeomOffsetCurve>;
+        /// **Source:** `BRepAdaptor_Curve.hxx`:60 - `BRepAdaptor_Curve::get_type_name()`
         #[cxx_name = "BRepAdaptor_Curve_get_type_name"]
         fn Curve_get_type_name() -> String;
         /// Upcast BRepAdaptor_Curve to Adaptor3d_Curve
@@ -527,7 +568,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepAdaptor_Curve_as_Adaptor3d_Curve_mut"]
         fn curve_as_adaptor3d_curve_mut(self_: Pin<&mut Curve>) -> Pin<&mut Adaptor3d_Curve>;
         /// ======================== BRepAdaptor_Surface ========================
-        /// **Source:** `BRepAdaptor_Surface.hxx` - `BRepAdaptor_Surface`
+        /// **Source:** `BRepAdaptor_Surface.hxx`:53 - `BRepAdaptor_Surface`
         ///
         /// The Surface from BRepAdaptor allows to  use a Face
         /// of the BRep topology look like a 3D surface.
@@ -543,12 +584,12 @@ pub(crate) mod ffi {
         /// set to false.
         #[cxx_name = "BRepAdaptor_Surface"]
         type Surface;
-        /// **Source:** `BRepAdaptor_Surface.hxx` - `BRepAdaptor_Surface::BRepAdaptor_Surface()`
+        /// **Source:** `BRepAdaptor_Surface.hxx`:58 - `BRepAdaptor_Surface::BRepAdaptor_Surface()`
         ///
         /// Creates an undefined surface with no face loaded.
         #[cxx_name = "BRepAdaptor_Surface_ctor"]
         fn Surface_ctor() -> UniquePtr<Surface>;
-        /// **Source:** `BRepAdaptor_Surface.hxx` - `BRepAdaptor_Surface::BRepAdaptor_Surface()`
+        /// **Source:** `BRepAdaptor_Surface.hxx`:64 - `BRepAdaptor_Surface::BRepAdaptor_Surface()`
         ///
         /// Creates a surface to  access the geometry  of <F>.
         /// If  <Restriction> is  true  the parameter range is
@@ -556,49 +597,76 @@ pub(crate) mod ffi {
         /// restriction.
         #[cxx_name = "BRepAdaptor_Surface_ctor_face_bool"]
         fn Surface_ctor_face_bool(F: &TopoDS_Face, R: bool) -> UniquePtr<Surface>;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:55 - `BRepAdaptor_Surface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Surface) -> &HandleStandardType;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:71 - `BRepAdaptor_Surface::Initialize()`
+        ///
         /// Sets the surface to the geometry of <F>.
         #[cxx_name = "Initialize"]
         fn initialize(self: Pin<&mut Surface>, F: &TopoDS_Face, Restriction: bool);
+        /// **Source:** `BRepAdaptor_Surface.hxx`:75 - `BRepAdaptor_Surface::Surface()`
+        ///
         /// Returns the surface.
         #[cxx_name = "Surface"]
         fn surface(self: &Surface) -> &GeomAdaptor_Surface;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:78 - `BRepAdaptor_Surface::ChangeSurface()`
+        ///
         /// Returns the surface.
         #[cxx_name = "ChangeSurface"]
         fn change_surface(self: Pin<&mut Surface>) -> Pin<&mut GeomAdaptor_Surface>;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:81 - `BRepAdaptor_Surface::Trsf()`
+        ///
         /// Returns the surface coordinate system.
         #[cxx_name = "Trsf"]
         fn trsf(self: &Surface) -> &gp_Trsf;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:84 - `BRepAdaptor_Surface::Face()`
+        ///
         /// Returns the face.
         #[cxx_name = "Face"]
         fn face(self: &Surface) -> &TopoDS_Face;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:87 - `BRepAdaptor_Surface::Tolerance()`
+        ///
         /// Returns the face tolerance.
         #[cxx_name = "Tolerance"]
         fn tolerance(self: &Surface) -> f64;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:89 - `BRepAdaptor_Surface::FirstUParameter()`
         #[cxx_name = "FirstUParameter"]
         fn first_u_parameter(self: &Surface) -> f64;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:94 - `BRepAdaptor_Surface::LastUParameter()`
         #[cxx_name = "LastUParameter"]
         fn last_u_parameter(self: &Surface) -> f64;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:96 - `BRepAdaptor_Surface::FirstVParameter()`
         #[cxx_name = "FirstVParameter"]
         fn first_v_parameter(self: &Surface) -> f64;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:101 - `BRepAdaptor_Surface::LastVParameter()`
         #[cxx_name = "LastVParameter"]
         fn last_v_parameter(self: &Surface) -> f64;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:150 - `BRepAdaptor_Surface::IsUClosed()`
         #[cxx_name = "IsUClosed"]
         fn is_u_closed(self: &Surface) -> bool;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:152 - `BRepAdaptor_Surface::IsVClosed()`
         #[cxx_name = "IsVClosed"]
         fn is_v_closed(self: &Surface) -> bool;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:154 - `BRepAdaptor_Surface::IsUPeriodic()`
         #[cxx_name = "IsUPeriodic"]
         fn is_u_periodic(self: &Surface) -> bool;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:156 - `BRepAdaptor_Surface::UPeriod()`
         #[cxx_name = "UPeriod"]
         fn u_period(self: &Surface) -> f64;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:158 - `BRepAdaptor_Surface::IsVPeriodic()`
         #[cxx_name = "IsVPeriodic"]
         fn is_v_periodic(self: &Surface) -> bool;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:160 - `BRepAdaptor_Surface::VPeriod()`
         #[cxx_name = "VPeriod"]
         fn v_period(self: &Surface) -> f64;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:168 - `BRepAdaptor_Surface::D0()`
+        ///
         /// Computes the point of parameters U,V on the surface.
         #[cxx_name = "D0"]
         fn d0(self: &Surface, U: f64, V: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `BRepAdaptor_Surface.hxx`:176 - `BRepAdaptor_Surface::D1()`
+        ///
         /// Computes the point  and the first derivatives on the surface.
         /// Raised if the continuity of the current intervals is not C1.
         ///
@@ -612,6 +680,8 @@ pub(crate) mod ffi {
             D1U: Pin<&mut gp_Vec>,
             D1V: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `BRepAdaptor_Surface.hxx`:186 - `BRepAdaptor_Surface::D2()`
+        ///
         /// Computes   the point,  the  first  and  second
         /// derivatives on the surface.
         /// Raised  if   the   continuity   of the current
@@ -628,6 +698,8 @@ pub(crate) mod ffi {
             D2V: Pin<&mut gp_Vec>,
             D2UV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `BRepAdaptor_Surface.hxx`:199 - `BRepAdaptor_Surface::D3()`
+        ///
         /// Computes the point,  the first, second and third
         /// derivatives on the surface.
         /// Raised  if   the   continuity   of the current
@@ -648,30 +720,43 @@ pub(crate) mod ffi {
             D3UUV: Pin<&mut gp_Vec>,
             D3UVV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `BRepAdaptor_Surface.hxx`:224 - `BRepAdaptor_Surface::UResolution()`
+        ///
         /// Returns the parametric U  resolution corresponding
         /// to the real space resolution <R3d>.
         #[cxx_name = "UResolution"]
         fn u_resolution(self: &Surface, theR3d: f64) -> f64;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:231 - `BRepAdaptor_Surface::VResolution()`
+        ///
         /// Returns the parametric V  resolution corresponding
         /// to the real space resolution <R3d>.
         #[cxx_name = "VResolution"]
         fn v_resolution(self: &Surface, theR3d: f64) -> f64;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:252 - `BRepAdaptor_Surface::UDegree()`
         #[cxx_name = "UDegree"]
         fn u_degree(self: &Surface) -> i32;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:254 - `BRepAdaptor_Surface::NbUPoles()`
         #[cxx_name = "NbUPoles"]
         fn nb_u_poles(self: &Surface) -> i32;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:256 - `BRepAdaptor_Surface::VDegree()`
         #[cxx_name = "VDegree"]
         fn v_degree(self: &Surface) -> i32;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:258 - `BRepAdaptor_Surface::NbVPoles()`
         #[cxx_name = "NbVPoles"]
         fn nb_v_poles(self: &Surface) -> i32;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:260 - `BRepAdaptor_Surface::NbUKnots()`
         #[cxx_name = "NbUKnots"]
         fn nb_u_knots(self: &Surface) -> i32;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:262 - `BRepAdaptor_Surface::NbVKnots()`
         #[cxx_name = "NbVKnots"]
         fn nb_v_knots(self: &Surface) -> i32;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:264 - `BRepAdaptor_Surface::IsURational()`
         #[cxx_name = "IsURational"]
         fn is_u_rational(self: &Surface) -> bool;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:266 - `BRepAdaptor_Surface::IsVRational()`
         #[cxx_name = "IsVRational"]
         fn is_v_rational(self: &Surface) -> bool;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:288 - `BRepAdaptor_Surface::OffsetValue()`
         #[cxx_name = "OffsetValue"]
         fn offset_value(self: &Surface) -> f64;
         /// Shallow copy of adaptor
@@ -741,6 +826,7 @@ pub(crate) mod ffi {
         fn Surface_basis_curve(self_: &Surface) -> UniquePtr<HandleAdaptor3dCurve>;
         #[cxx_name = "BRepAdaptor_Surface_BasisSurface"]
         fn Surface_basis_surface(self_: &Surface) -> UniquePtr<HandleAdaptor3dSurface>;
+        /// **Source:** `BRepAdaptor_Surface.hxx`:55 - `BRepAdaptor_Surface::get_type_name()`
         #[cxx_name = "BRepAdaptor_Surface_get_type_name"]
         fn Surface_get_type_name() -> String;
         /// Upcast BRepAdaptor_Surface to Adaptor3d_Surface
@@ -752,7 +838,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut Surface>,
         ) -> Pin<&mut Adaptor3d_Surface>;
         /// ======================== BRepAdaptor_Curve2d ========================
-        /// **Source:** `BRepAdaptor_Curve2d.hxx` - `BRepAdaptor_Curve2d`
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:38 - `BRepAdaptor_Curve2d`
         ///
         /// The Curve2d from BRepAdaptor allows to use an Edge
         /// on   a Face like   a  2d   curve. (curve  in   the
@@ -766,30 +852,38 @@ pub(crate) mod ffi {
         /// Geom2dAdaptor.
         #[cxx_name = "BRepAdaptor_Curve2d"]
         type Curve2d;
-        /// **Source:** `BRepAdaptor_Curve2d.hxx` - `BRepAdaptor_Curve2d::BRepAdaptor_Curve2d()`
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:43 - `BRepAdaptor_Curve2d::BRepAdaptor_Curve2d()`
         ///
         /// Creates an uninitialized curve2d.
         #[cxx_name = "BRepAdaptor_Curve2d_ctor"]
         fn Curve2d_ctor() -> UniquePtr<Curve2d>;
-        /// **Source:** `BRepAdaptor_Curve2d.hxx` - `BRepAdaptor_Curve2d::BRepAdaptor_Curve2d()`
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:46 - `BRepAdaptor_Curve2d::BRepAdaptor_Curve2d()`
         ///
         /// Creates with the pcurve of <E> on <F>.
         #[cxx_name = "BRepAdaptor_Curve2d_ctor_edge_face"]
         fn Curve2d_ctor_edge_face(E: &TopoDS_Edge, F: &TopoDS_Face) -> UniquePtr<Curve2d>;
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:40 - `BRepAdaptor_Curve2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Curve2d) -> &HandleStandardType;
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:52 - `BRepAdaptor_Curve2d::Initialize()`
+        ///
         /// Initialize with the pcurve of <E> on <F>.
         #[cxx_name = "Initialize"]
         fn initialize(self: Pin<&mut Curve2d>, E: &TopoDS_Edge, F: &TopoDS_Face);
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:55 - `BRepAdaptor_Curve2d::Edge()`
+        ///
         /// Returns the Edge.
         #[cxx_name = "Edge"]
         fn edge(self: &Curve2d) -> &TopoDS_Edge;
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:58 - `BRepAdaptor_Curve2d::Face()`
+        ///
         /// Returns the Face.
         #[cxx_name = "Face"]
         fn face(self: &Curve2d) -> &TopoDS_Face;
         /// Shallow copy of adaptor
         #[cxx_name = "BRepAdaptor_Curve2d_ShallowCopy"]
         fn Curve2d_shallow_copy(self_: &Curve2d) -> UniquePtr<HandleAdaptor2dCurve2d>;
+        /// **Source:** `BRepAdaptor_Curve2d.hxx`:40 - `BRepAdaptor_Curve2d::get_type_name()`
         #[cxx_name = "BRepAdaptor_Curve2d_get_type_name"]
         fn Curve2d_get_type_name() -> String;
         /// Upcast BRepAdaptor_Curve2d to Adaptor2d_Curve2d

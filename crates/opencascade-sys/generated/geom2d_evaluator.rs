@@ -38,18 +38,24 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Geom2dEvaluator_Curve ========================
-        /// **Source:** `Geom2dEvaluator_Curve.hxx` - `Geom2dEvaluator_Curve`
+        /// **Source:** `Geom2dEvaluator_Curve.hxx`:26 - `Geom2dEvaluator_Curve`
         ///
         /// Interface for calculation of values and derivatives for different kinds of curves in 2D.
         /// Works both with adaptors and curves.
         #[cxx_name = "Geom2dEvaluator_Curve"]
         type Curve;
+        /// **Source:** `Geom2dEvaluator_Curve.hxx`:32 - `Geom2dEvaluator_Curve::D0()`
+        ///
         /// Value of 2D curve
         #[cxx_name = "D0"]
         fn d0(self: &Curve, theU: f64, theValue: Pin<&mut gp_Pnt2d>);
+        /// **Source:** `Geom2dEvaluator_Curve.hxx`:34 - `Geom2dEvaluator_Curve::D1()`
+        ///
         /// Value and first derivatives of curve
         #[cxx_name = "D1"]
         fn d1(self: &Curve, theU: f64, theValue: Pin<&mut gp_Pnt2d>, theD1: Pin<&mut gp_Vec2d>);
+        /// **Source:** `Geom2dEvaluator_Curve.hxx`:36 - `Geom2dEvaluator_Curve::D2()`
+        ///
         /// Value, first and second derivatives of curve
         #[cxx_name = "D2"]
         fn d2(
@@ -59,6 +65,8 @@ pub(crate) mod ffi {
             theD1: Pin<&mut gp_Vec2d>,
             theD2: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `Geom2dEvaluator_Curve.hxx`:41 - `Geom2dEvaluator_Curve::D3()`
+        ///
         /// Value, first, second and third derivatives of curve
         #[cxx_name = "D3"]
         fn d3(
@@ -69,6 +77,7 @@ pub(crate) mod ffi {
             theD2: Pin<&mut gp_Vec2d>,
             theD3: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `Geom2dEvaluator_Curve.hxx`:51 - `Geom2dEvaluator_Curve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Curve) -> &HandleStandardType;
         /// Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1
@@ -76,6 +85,7 @@ pub(crate) mod ffi {
         fn Curve_dn(self_: &Curve, theU: f64, theDerU: i32) -> UniquePtr<gp_Vec2d>;
         #[cxx_name = "Geom2dEvaluator_Curve_ShallowCopy"]
         fn Curve_shallow_copy(self_: &Curve) -> UniquePtr<HandleGeom2dEvaluatorCurve>;
+        /// **Source:** `Geom2dEvaluator_Curve.hxx`:51 - `Geom2dEvaluator_Curve::get_type_name()`
         #[cxx_name = "Geom2dEvaluator_Curve_get_type_name"]
         fn Curve_get_type_name() -> String;
 

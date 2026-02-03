@@ -265,23 +265,23 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== ChFiDS_SecHArray1 ========================
-        /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1`
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1`
         #[cxx_name = "ChFiDS_SecHArray1"]
         type SecHArray1;
-        /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor"]
         fn SecHArray1_ctor() -> UniquePtr<SecHArray1>;
-        /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor_int2"]
         fn SecHArray1_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<SecHArray1>;
-        /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor_int2_circsection"]
         fn SecHArray1_ctor_int2_circsection(
             theLower: i32,
             theUpper: i32,
             theValue: &CircSection,
         ) -> UniquePtr<SecHArray1>;
-        /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor_circsection_int2_bool"]
         fn SecHArray1_ctor_circsection_int2_bool(
             theBegin: &CircSection,
@@ -289,68 +289,88 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<SecHArray1>;
-        /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor_secarray1"]
         fn SecHArray1_ctor_secarray1(theOther: &ChFiDS_SecArray1) -> UniquePtr<SecHArray1>;
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::Array1()`
         #[cxx_name = "Array1"]
         fn array1(self: &SecHArray1) -> &ChFiDS_SecArray1;
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChangeArray1()`
         #[cxx_name = "ChangeArray1"]
         fn change_array1(self: Pin<&mut SecHArray1>) -> Pin<&mut ChFiDS_SecArray1>;
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &SecHArray1) -> &HandleStandardType;
+        /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::get_type_name()`
         #[cxx_name = "ChFiDS_SecHArray1_get_type_name"]
         fn SecHArray1_get_type_name() -> String;
         /// Wrap ChFiDS_SecHArray1 in a Handle (reference-counted smart pointer)
         #[cxx_name = "ChFiDS_SecHArray1_to_handle"]
         fn SecHArray1_to_handle(obj: UniquePtr<SecHArray1>) -> UniquePtr<HandleChFiDSSecHArray1>;
         /// ======================== ChFiDS_CircSection ========================
-        /// **Source:** `ChFiDS_CircSection.hxx` - `ChFiDS_CircSection`
+        /// **Source:** `ChFiDS_CircSection.hxx`:28 - `ChFiDS_CircSection`
         ///
         /// A Section of fillet.
         #[cxx_name = "ChFiDS_CircSection"]
         type CircSection;
-        /// **Source:** `ChFiDS_CircSection.hxx` - `ChFiDS_CircSection::ChFiDS_CircSection()`
+        /// **Source:** `ChFiDS_CircSection.hxx`:33 - `ChFiDS_CircSection::ChFiDS_CircSection()`
         #[cxx_name = "ChFiDS_CircSection_ctor"]
         fn CircSection_ctor() -> UniquePtr<CircSection>;
+        /// **Source:** `ChFiDS_CircSection.hxx`:35 - `ChFiDS_CircSection::Set()`
         #[cxx_name = "Set"]
         fn set_circ_real2(self: Pin<&mut CircSection>, C: &gp_Circ, F: f64, L: f64);
+        /// **Source:** `ChFiDS_CircSection.hxx`:37 - `ChFiDS_CircSection::Set()`
         #[cxx_name = "Set"]
         fn set_lin_real2(self: Pin<&mut CircSection>, C: &gp_Lin, F: f64, L: f64);
+        /// **Source:** `ChFiDS_CircSection.hxx`:39 - `ChFiDS_CircSection::Get()`
         #[cxx_name = "Get"]
         fn get_circ_real2(self: &CircSection, C: Pin<&mut gp_Circ>, F: &mut f64, L: &mut f64);
+        /// **Source:** `ChFiDS_CircSection.hxx`:41 - `ChFiDS_CircSection::Get()`
         #[cxx_name = "Get"]
         fn get_lin_real2(self: &CircSection, C: Pin<&mut gp_Lin>, F: &mut f64, L: &mut f64);
         /// ======================== ChFiDS_ElSpine ========================
-        /// **Source:** `ChFiDS_ElSpine.hxx` - `ChFiDS_ElSpine`
+        /// **Source:** `ChFiDS_ElSpine.hxx`:47 - `ChFiDS_ElSpine`
         ///
         /// Elementary  Spine for cheminements and approximations.
         #[cxx_name = "ChFiDS_ElSpine"]
         type ElSpine;
-        /// **Source:** `ChFiDS_ElSpine.hxx` - `ChFiDS_ElSpine::ChFiDS_ElSpine()`
+        /// **Source:** `ChFiDS_ElSpine.hxx`:51 - `ChFiDS_ElSpine::ChFiDS_ElSpine()`
         #[cxx_name = "ChFiDS_ElSpine_ctor"]
         fn ElSpine_ctor() -> UniquePtr<ElSpine>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ElSpine) -> &HandleStandardType;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:56 - `ChFiDS_ElSpine::FirstParameter()`
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &ElSpine) -> f64;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:58 - `ChFiDS_ElSpine::LastParameter()`
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &ElSpine) -> f64;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:60 - `ChFiDS_ElSpine::GetSavedFirstParameter()`
         #[cxx_name = "GetSavedFirstParameter"]
         fn get_saved_first_parameter(self: &ElSpine) -> f64;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:62 - `ChFiDS_ElSpine::GetSavedLastParameter()`
         #[cxx_name = "GetSavedLastParameter"]
         fn get_saved_last_parameter(self: &ElSpine) -> f64;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:79 - `ChFiDS_ElSpine::Resolution()`
         #[cxx_name = "Resolution"]
         fn resolution(self: &ElSpine, R3d: f64) -> f64;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:83 - `ChFiDS_ElSpine::IsPeriodic()`
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &ElSpine) -> bool;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:85 - `ChFiDS_ElSpine::SetPeriodic()`
         #[cxx_name = "SetPeriodic"]
         fn set_periodic(self: Pin<&mut ElSpine>, I: bool);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:87 - `ChFiDS_ElSpine::Period()`
         #[cxx_name = "Period"]
         fn period(self: &ElSpine) -> f64;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:91 - `ChFiDS_ElSpine::D0()`
         #[cxx_name = "D0"]
         fn d0(self: &ElSpine, AbsC: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:93 - `ChFiDS_ElSpine::D1()`
         #[cxx_name = "D1"]
         fn d1(self: &ElSpine, AbsC: f64, P: Pin<&mut gp_Pnt>, V1: Pin<&mut gp_Vec>);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:97 - `ChFiDS_ElSpine::D2()`
         #[cxx_name = "D2"]
         fn d2(
             self: &ElSpine,
@@ -359,6 +379,7 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `ChFiDS_ElSpine.hxx`:102 - `ChFiDS_ElSpine::D3()`
         #[cxx_name = "D3"]
         fn d3(
             self: &ElSpine,
@@ -368,38 +389,55 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec>,
             V3: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `ChFiDS_ElSpine.hxx`:108 - `ChFiDS_ElSpine::FirstParameter()`
         #[cxx_name = "FirstParameter"]
         fn first_parameter_real(self: Pin<&mut ElSpine>, P: f64);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:110 - `ChFiDS_ElSpine::LastParameter()`
         #[cxx_name = "LastParameter"]
         fn last_parameter_real(self: Pin<&mut ElSpine>, P: f64);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:112 - `ChFiDS_ElSpine::SaveFirstParameter()`
         #[cxx_name = "SaveFirstParameter"]
         fn save_first_parameter(self: Pin<&mut ElSpine>);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:114 - `ChFiDS_ElSpine::SaveLastParameter()`
         #[cxx_name = "SaveLastParameter"]
         fn save_last_parameter(self: Pin<&mut ElSpine>);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:116 - `ChFiDS_ElSpine::SetOrigin()`
         #[cxx_name = "SetOrigin"]
         fn set_origin(self: Pin<&mut ElSpine>, O: f64);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:118 - `ChFiDS_ElSpine::FirstPointAndTgt()`
         #[cxx_name = "FirstPointAndTgt"]
         fn first_point_and_tgt(self: &ElSpine, P: Pin<&mut gp_Pnt>, T: Pin<&mut gp_Vec>);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:120 - `ChFiDS_ElSpine::LastPointAndTgt()`
         #[cxx_name = "LastPointAndTgt"]
         fn last_point_and_tgt(self: &ElSpine, P: Pin<&mut gp_Pnt>, T: Pin<&mut gp_Vec>);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:122 - `ChFiDS_ElSpine::NbVertices()`
         #[cxx_name = "NbVertices"]
         fn nb_vertices(self: &ElSpine) -> i32;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:124 - `ChFiDS_ElSpine::VertexWithTangent()`
         #[cxx_name = "VertexWithTangent"]
         fn vertex_with_tangent(self: &ElSpine, Index: i32) -> &gp_Ax1;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:126 - `ChFiDS_ElSpine::SetFirstPointAndTgt()`
         #[cxx_name = "SetFirstPointAndTgt"]
         fn set_first_point_and_tgt(self: Pin<&mut ElSpine>, P: &gp_Pnt, T: &gp_Vec);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:128 - `ChFiDS_ElSpine::SetLastPointAndTgt()`
         #[cxx_name = "SetLastPointAndTgt"]
         fn set_last_point_and_tgt(self: Pin<&mut ElSpine>, P: &gp_Pnt, T: &gp_Vec);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:130 - `ChFiDS_ElSpine::AddVertexWithTangent()`
         #[cxx_name = "AddVertexWithTangent"]
         fn add_vertex_with_tangent(self: Pin<&mut ElSpine>, anAx1: &gp_Ax1);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:132 - `ChFiDS_ElSpine::SetCurve()`
         #[cxx_name = "SetCurve"]
         fn set_curve(self: Pin<&mut ElSpine>, C: &HandleGeomCurve);
+        /// **Source:** `ChFiDS_ElSpine.hxx`:134 - `ChFiDS_ElSpine::Previous()`
         #[cxx_name = "Previous"]
         fn previous(self: &ElSpine) -> &HandleChFiDSSurfData;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:136 - `ChFiDS_ElSpine::ChangePrevious()`
         #[cxx_name = "ChangePrevious"]
         fn change_previous(self: Pin<&mut ElSpine>) -> Pin<&mut HandleChFiDSSurfData>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:138 - `ChFiDS_ElSpine::Next()`
         #[cxx_name = "Next"]
         fn next(self: &ElSpine) -> &HandleChFiDSSurfData;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:140 - `ChFiDS_ElSpine::ChangeNext()`
         #[cxx_name = "ChangeNext"]
         fn change_next(self: Pin<&mut ElSpine>) -> Pin<&mut HandleChFiDSSurfData>;
         /// Shallow copy of adaptor
@@ -431,6 +469,7 @@ pub(crate) mod ffi {
         fn ElSpine_bezier(self_: &ElSpine) -> UniquePtr<HandleGeomBezierCurve>;
         #[cxx_name = "ChFiDS_ElSpine_BSpline"]
         fn ElSpine_b_spline(self_: &ElSpine) -> UniquePtr<HandleGeomBSplineCurve>;
+        /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::get_type_name()`
         #[cxx_name = "ChFiDS_ElSpine_get_type_name"]
         fn ElSpine_get_type_name() -> String;
         /// Upcast ChFiDS_ElSpine to Adaptor3d_Curve
@@ -440,103 +479,148 @@ pub(crate) mod ffi {
         #[cxx_name = "ChFiDS_ElSpine_as_Adaptor3d_Curve_mut"]
         fn el_spine_as_adaptor3d_curve_mut(self_: Pin<&mut ElSpine>) -> Pin<&mut Adaptor3d_Curve>;
         /// ======================== ChFiDS_SurfData ========================
-        /// **Source:** `ChFiDS_SurfData.hxx` - `ChFiDS_SurfData`
+        /// **Source:** `ChFiDS_SurfData.hxx`:35 - `ChFiDS_SurfData`
         ///
         /// data structure for all information related to  the
         /// fillet and to 2 faces vis a vis
         #[cxx_name = "ChFiDS_SurfData"]
         type SurfData;
-        /// **Source:** `ChFiDS_SurfData.hxx` - `ChFiDS_SurfData::ChFiDS_SurfData()`
+        /// **Source:** `ChFiDS_SurfData.hxx`:39 - `ChFiDS_SurfData::ChFiDS_SurfData()`
         #[cxx_name = "ChFiDS_SurfData_ctor"]
         fn SurfData_ctor() -> UniquePtr<SurfData>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:41 - `ChFiDS_SurfData::Copy()`
         #[cxx_name = "Copy"]
         fn copy(self: Pin<&mut SurfData>, Other: &HandleChFiDSSurfData);
+        /// **Source:** `ChFiDS_SurfData.hxx`:43 - `ChFiDS_SurfData::IndexOfS1()`
         #[cxx_name = "IndexOfS1"]
         fn index_of_s1(self: &SurfData) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:45 - `ChFiDS_SurfData::IndexOfS2()`
         #[cxx_name = "IndexOfS2"]
         fn index_of_s2(self: &SurfData) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:47 - `ChFiDS_SurfData::IsOnCurve1()`
         #[cxx_name = "IsOnCurve1"]
         fn is_on_curve1(self: &SurfData) -> bool;
+        /// **Source:** `ChFiDS_SurfData.hxx`:49 - `ChFiDS_SurfData::IsOnCurve2()`
         #[cxx_name = "IsOnCurve2"]
         fn is_on_curve2(self: &SurfData) -> bool;
+        /// **Source:** `ChFiDS_SurfData.hxx`:51 - `ChFiDS_SurfData::IndexOfC1()`
         #[cxx_name = "IndexOfC1"]
         fn index_of_c1(self: &SurfData) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:53 - `ChFiDS_SurfData::IndexOfC2()`
         #[cxx_name = "IndexOfC2"]
         fn index_of_c2(self: &SurfData) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:55 - `ChFiDS_SurfData::Surf()`
         #[cxx_name = "Surf"]
         fn surf(self: &SurfData) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:59 - `ChFiDS_SurfData::InterferenceOnS1()`
         #[cxx_name = "InterferenceOnS1"]
         fn interference_on_s1(self: &SurfData) -> &FaceInterference;
+        /// **Source:** `ChFiDS_SurfData.hxx`:61 - `ChFiDS_SurfData::InterferenceOnS2()`
         #[cxx_name = "InterferenceOnS2"]
         fn interference_on_s2(self: &SurfData) -> &FaceInterference;
+        /// **Source:** `ChFiDS_SurfData.hxx`:63 - `ChFiDS_SurfData::VertexFirstOnS1()`
         #[cxx_name = "VertexFirstOnS1"]
         fn vertex_first_on_s1(self: &SurfData) -> &CommonPoint;
+        /// **Source:** `ChFiDS_SurfData.hxx`:65 - `ChFiDS_SurfData::VertexFirstOnS2()`
         #[cxx_name = "VertexFirstOnS2"]
         fn vertex_first_on_s2(self: &SurfData) -> &CommonPoint;
+        /// **Source:** `ChFiDS_SurfData.hxx`:67 - `ChFiDS_SurfData::VertexLastOnS1()`
         #[cxx_name = "VertexLastOnS1"]
         fn vertex_last_on_s1(self: &SurfData) -> &CommonPoint;
+        /// **Source:** `ChFiDS_SurfData.hxx`:69 - `ChFiDS_SurfData::VertexLastOnS2()`
         #[cxx_name = "VertexLastOnS2"]
         fn vertex_last_on_s2(self: &SurfData) -> &CommonPoint;
+        /// **Source:** `ChFiDS_SurfData.hxx`:71 - `ChFiDS_SurfData::ChangeIndexOfS1()`
         #[cxx_name = "ChangeIndexOfS1"]
         fn change_index_of_s1(self: Pin<&mut SurfData>, Index: i32);
+        /// **Source:** `ChFiDS_SurfData.hxx`:73 - `ChFiDS_SurfData::ChangeIndexOfS2()`
         #[cxx_name = "ChangeIndexOfS2"]
         fn change_index_of_s2(self: Pin<&mut SurfData>, Index: i32);
+        /// **Source:** `ChFiDS_SurfData.hxx`:75 - `ChFiDS_SurfData::ChangeSurf()`
         #[cxx_name = "ChangeSurf"]
         fn change_surf(self: Pin<&mut SurfData>, Index: i32);
+        /// **Source:** `ChFiDS_SurfData.hxx`:77 - `ChFiDS_SurfData::SetIndexOfC1()`
         #[cxx_name = "SetIndexOfC1"]
         fn set_index_of_c1(self: Pin<&mut SurfData>, Index: i32);
+        /// **Source:** `ChFiDS_SurfData.hxx`:79 - `ChFiDS_SurfData::SetIndexOfC2()`
         #[cxx_name = "SetIndexOfC2"]
         fn set_index_of_c2(self: Pin<&mut SurfData>, Index: i32);
+        /// **Source:** `ChFiDS_SurfData.hxx`:83 - `ChFiDS_SurfData::ChangeInterferenceOnS1()`
         #[cxx_name = "ChangeInterferenceOnS1"]
         fn change_interference_on_s1(self: Pin<&mut SurfData>) -> Pin<&mut FaceInterference>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:85 - `ChFiDS_SurfData::ChangeInterferenceOnS2()`
         #[cxx_name = "ChangeInterferenceOnS2"]
         fn change_interference_on_s2(self: Pin<&mut SurfData>) -> Pin<&mut FaceInterference>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:87 - `ChFiDS_SurfData::ChangeVertexFirstOnS1()`
         #[cxx_name = "ChangeVertexFirstOnS1"]
         fn change_vertex_first_on_s1(self: Pin<&mut SurfData>) -> Pin<&mut CommonPoint>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:89 - `ChFiDS_SurfData::ChangeVertexFirstOnS2()`
         #[cxx_name = "ChangeVertexFirstOnS2"]
         fn change_vertex_first_on_s2(self: Pin<&mut SurfData>) -> Pin<&mut CommonPoint>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:91 - `ChFiDS_SurfData::ChangeVertexLastOnS1()`
         #[cxx_name = "ChangeVertexLastOnS1"]
         fn change_vertex_last_on_s1(self: Pin<&mut SurfData>) -> Pin<&mut CommonPoint>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:93 - `ChFiDS_SurfData::ChangeVertexLastOnS2()`
         #[cxx_name = "ChangeVertexLastOnS2"]
         fn change_vertex_last_on_s2(self: Pin<&mut SurfData>) -> Pin<&mut CommonPoint>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:95 - `ChFiDS_SurfData::Interference()`
         #[cxx_name = "Interference"]
         fn interference(self: &SurfData, OnS: i32) -> &FaceInterference;
+        /// **Source:** `ChFiDS_SurfData.hxx`:97 - `ChFiDS_SurfData::ChangeInterference()`
         #[cxx_name = "ChangeInterference"]
         fn change_interference(self: Pin<&mut SurfData>, OnS: i32) -> Pin<&mut FaceInterference>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:99 - `ChFiDS_SurfData::Index()`
         #[cxx_name = "Index"]
         fn index(self: &SurfData, OfS: i32) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:103 - `ChFiDS_SurfData::Vertex()`
+        ///
         /// returns one of the four vertices  whether First is true
         /// or wrong and OnS equals 1 or 2.
         #[cxx_name = "Vertex"]
         fn vertex(self: &SurfData, First: bool, OnS: i32) -> &CommonPoint;
+        /// **Source:** `ChFiDS_SurfData.hxx`:108 - `ChFiDS_SurfData::ChangeVertex()`
+        ///
         /// returns one of the four vertices  whether First is true
         /// or wrong and OnS equals 1 or 2.
         #[cxx_name = "ChangeVertex"]
         fn change_vertex(self: Pin<&mut SurfData>, First: bool, OnS: i32) -> Pin<&mut CommonPoint>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:111 - `ChFiDS_SurfData::IsOnCurve()`
         #[cxx_name = "IsOnCurve"]
         fn is_on_curve(self: &SurfData, OnS: i32) -> bool;
+        /// **Source:** `ChFiDS_SurfData.hxx`:113 - `ChFiDS_SurfData::IndexOfC()`
         #[cxx_name = "IndexOfC"]
         fn index_of_c(self: &SurfData, OnS: i32) -> i32;
+        /// **Source:** `ChFiDS_SurfData.hxx`:115 - `ChFiDS_SurfData::FirstSpineParam()`
         #[cxx_name = "FirstSpineParam"]
         fn first_spine_param(self: &SurfData) -> f64;
+        /// **Source:** `ChFiDS_SurfData.hxx`:117 - `ChFiDS_SurfData::LastSpineParam()`
         #[cxx_name = "LastSpineParam"]
         fn last_spine_param(self: &SurfData) -> f64;
+        /// **Source:** `ChFiDS_SurfData.hxx`:119 - `ChFiDS_SurfData::FirstSpineParam()`
         #[cxx_name = "FirstSpineParam"]
         fn first_spine_param_real(self: Pin<&mut SurfData>, Par: f64);
+        /// **Source:** `ChFiDS_SurfData.hxx`:121 - `ChFiDS_SurfData::LastSpineParam()`
         #[cxx_name = "LastSpineParam"]
         fn last_spine_param_real(self: Pin<&mut SurfData>, Par: f64);
+        /// **Source:** `ChFiDS_SurfData.hxx`:123 - `ChFiDS_SurfData::FirstExtensionValue()`
         #[cxx_name = "FirstExtensionValue"]
         fn first_extension_value(self: &SurfData) -> f64;
+        /// **Source:** `ChFiDS_SurfData.hxx`:125 - `ChFiDS_SurfData::LastExtensionValue()`
         #[cxx_name = "LastExtensionValue"]
         fn last_extension_value(self: &SurfData) -> f64;
+        /// **Source:** `ChFiDS_SurfData.hxx`:127 - `ChFiDS_SurfData::FirstExtensionValue()`
         #[cxx_name = "FirstExtensionValue"]
         fn first_extension_value_real(self: Pin<&mut SurfData>, Extend: f64);
+        /// **Source:** `ChFiDS_SurfData.hxx`:129 - `ChFiDS_SurfData::LastExtensionValue()`
         #[cxx_name = "LastExtensionValue"]
         fn last_extension_value_real(self: Pin<&mut SurfData>, Extend: f64);
+        /// **Source:** `ChFiDS_SurfData.hxx`:133 - `ChFiDS_SurfData::SetSimul()`
         #[cxx_name = "SetSimul"]
         fn set_simul(self: Pin<&mut SurfData>, S: &HandleStandardTransient);
+        /// **Source:** `ChFiDS_SurfData.hxx`:135 - `ChFiDS_SurfData::ResetSimul()`
         #[cxx_name = "ResetSimul"]
         fn reset_simul(self: Pin<&mut SurfData>);
+        /// **Source:** `ChFiDS_SurfData.hxx`:140 - `ChFiDS_SurfData::Get2dPoints()`
         #[cxx_name = "Get2dPoints"]
         fn get2d_points_pnt2d4(
             self: &SurfData,
@@ -545,6 +629,7 @@ pub(crate) mod ffi {
             P2df2: Pin<&mut gp_Pnt2d>,
             P2dl2: Pin<&mut gp_Pnt2d>,
         );
+        /// **Source:** `ChFiDS_SurfData.hxx`:145 - `ChFiDS_SurfData::Set2dPoints()`
         #[cxx_name = "Set2dPoints"]
         fn set2d_points(
             self: Pin<&mut SurfData>,
@@ -553,14 +638,19 @@ pub(crate) mod ffi {
             P2df2: &gp_Pnt2d,
             P2dl2: &gp_Pnt2d,
         );
+        /// **Source:** `ChFiDS_SurfData.hxx`:150 - `ChFiDS_SurfData::TwistOnS1()`
         #[cxx_name = "TwistOnS1"]
         fn twist_on_s1(self: &SurfData) -> bool;
+        /// **Source:** `ChFiDS_SurfData.hxx`:152 - `ChFiDS_SurfData::TwistOnS2()`
         #[cxx_name = "TwistOnS2"]
         fn twist_on_s2(self: &SurfData) -> bool;
+        /// **Source:** `ChFiDS_SurfData.hxx`:154 - `ChFiDS_SurfData::TwistOnS1()`
         #[cxx_name = "TwistOnS1"]
         fn twist_on_s1_bool(self: Pin<&mut SurfData>, T: bool);
+        /// **Source:** `ChFiDS_SurfData.hxx`:156 - `ChFiDS_SurfData::TwistOnS2()`
         #[cxx_name = "TwistOnS2"]
         fn twist_on_s2_bool(self: Pin<&mut SurfData>, T: bool);
+        /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &SurfData) -> &HandleStandardType;
         #[cxx_name = "ChFiDS_SurfData_Simul"]
@@ -571,299 +661,410 @@ pub(crate) mod ffi {
             First: bool,
             OnS: i32,
         ) -> UniquePtr<gp_Pnt2d>;
+        /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::get_type_name()`
         #[cxx_name = "ChFiDS_SurfData_get_type_name"]
         fn SurfData_get_type_name() -> String;
         /// Wrap ChFiDS_SurfData in a Handle (reference-counted smart pointer)
         #[cxx_name = "ChFiDS_SurfData_to_handle"]
         fn SurfData_to_handle(obj: UniquePtr<SurfData>) -> UniquePtr<HandleChFiDSSurfData>;
         /// ======================== ChFiDS_CommonPoint ========================
-        /// **Source:** `ChFiDS_CommonPoint.hxx` - `ChFiDS_CommonPoint`
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:34 - `ChFiDS_CommonPoint`
         ///
         /// point    start/end of  fillet common  to  2 adjacent  filets
         /// and  to an edge on  one of 2 faces participating
         /// in  the construction of  the  fillet
         #[cxx_name = "ChFiDS_CommonPoint"]
         type CommonPoint;
-        /// **Source:** `ChFiDS_CommonPoint.hxx` - `ChFiDS_CommonPoint::ChFiDS_CommonPoint()`
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:40 - `ChFiDS_CommonPoint::ChFiDS_CommonPoint()`
         ///
         /// Empty constructor.
         #[cxx_name = "ChFiDS_CommonPoint_ctor"]
         fn CommonPoint_ctor() -> UniquePtr<CommonPoint>;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:43 - `ChFiDS_CommonPoint::Reset()`
+        ///
         /// default value for all fields
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut CommonPoint>);
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:48 - `ChFiDS_CommonPoint::SetVertex()`
+        ///
         /// Sets the values of a point which is a vertex on
         /// the initial facet of restriction of one
         /// of the surface.
         #[cxx_name = "SetVertex"]
         fn set_vertex(self: Pin<&mut CommonPoint>, theVertex: &TopoDS_Vertex);
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:62 - `ChFiDS_CommonPoint::SetParameter()`
+        ///
         /// Sets the value of the parameter on the spine
         #[cxx_name = "SetParameter"]
         fn set_parameter(self: Pin<&mut CommonPoint>, Param: f64);
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:66 - `ChFiDS_CommonPoint::SetPoint()`
+        ///
         /// Set the 3d point for a commonpoint that is not
         /// a vertex or on an arc.
         #[cxx_name = "SetPoint"]
         fn set_point(self: Pin<&mut CommonPoint>, thePoint: &gp_Pnt);
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:69 - `ChFiDS_CommonPoint::SetVector()`
+        ///
         /// Set the output 3d  vector
         #[cxx_name = "SetVector"]
         fn set_vector(self: Pin<&mut CommonPoint>, theVector: &gp_Vec);
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:76 - `ChFiDS_CommonPoint::SetTolerance()`
+        ///
         /// This method set the fuzziness on the point.
         #[cxx_name = "SetTolerance"]
         fn set_tolerance(self: Pin<&mut CommonPoint>, Tol: f64);
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:85 - `ChFiDS_CommonPoint::Tolerance()`
+        ///
         /// This method returns the fuzziness on the point.
         #[cxx_name = "Tolerance"]
         fn tolerance(self: &CommonPoint) -> f64;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:89 - `ChFiDS_CommonPoint::IsVertex()`
+        ///
         /// Returns TRUE if the point is a vertex on the initial
         /// restriction facet of the surface.
         #[cxx_name = "IsVertex"]
         fn is_vertex(self: &CommonPoint) -> bool;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:95 - `ChFiDS_CommonPoint::Vertex()`
+        ///
         /// Returns the information about the point when it is
         /// on the domain of the first patch, i-e when the function
         /// IsVertex returns True.
         /// Otherwise, an exception is raised.
         #[cxx_name = "Vertex"]
         fn vertex(self: &CommonPoint) -> &TopoDS_Vertex;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:106 - `ChFiDS_CommonPoint::IsOnArc()`
+        ///
         /// Returns TRUE if the point is a on an edge of the initial
         /// restriction facet of the surface.
         #[cxx_name = "IsOnArc"]
         fn is_on_arc(self: &CommonPoint) -> bool;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:110 - `ChFiDS_CommonPoint::Arc()`
+        ///
         /// Returns the arc of restriction containing the
         /// vertex.
         #[cxx_name = "Arc"]
         fn arc(self: &CommonPoint) -> &TopoDS_Edge;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:118 - `ChFiDS_CommonPoint::ParameterOnArc()`
+        ///
         /// Returns the parameter of the point on the
         /// arc returned by the method Arc().
         #[cxx_name = "ParameterOnArc"]
         fn parameter_on_arc(self: &CommonPoint) -> f64;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:121 - `ChFiDS_CommonPoint::Parameter()`
+        ///
         /// Returns the parameter on the spine
         #[cxx_name = "Parameter"]
         fn parameter(self: &CommonPoint) -> f64;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:124 - `ChFiDS_CommonPoint::Point()`
+        ///
         /// Returns the 3d point
         #[cxx_name = "Point"]
         fn point(self: &CommonPoint) -> &gp_Pnt;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:127 - `ChFiDS_CommonPoint::HasVector()`
+        ///
         /// Returns TRUE if the output vector is  stored.
         #[cxx_name = "HasVector"]
         fn has_vector(self: &CommonPoint) -> bool;
+        /// **Source:** `ChFiDS_CommonPoint.hxx`:130 - `ChFiDS_CommonPoint::Vector()`
+        ///
         /// Returns the output  3d vector
         #[cxx_name = "Vector"]
         fn vector(self: &CommonPoint) -> &gp_Vec;
         /// ======================== ChFiDS_FaceInterference ========================
-        /// **Source:** `ChFiDS_FaceInterference.hxx` - `ChFiDS_FaceInterference`
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:31 - `ChFiDS_FaceInterference`
         ///
         /// interference face/fillet
         #[cxx_name = "ChFiDS_FaceInterference"]
         type FaceInterference;
-        /// **Source:** `ChFiDS_FaceInterference.hxx` - `ChFiDS_FaceInterference::ChFiDS_FaceInterference()`
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:36 - `ChFiDS_FaceInterference::ChFiDS_FaceInterference()`
         #[cxx_name = "ChFiDS_FaceInterference_ctor"]
         fn FaceInterference_ctor() -> UniquePtr<FaceInterference>;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:45 - `ChFiDS_FaceInterference::SetFirstParameter()`
         #[cxx_name = "SetFirstParameter"]
         fn set_first_parameter(self: Pin<&mut FaceInterference>, U1: f64);
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:47 - `ChFiDS_FaceInterference::SetLastParameter()`
         #[cxx_name = "SetLastParameter"]
         fn set_last_parameter(self: Pin<&mut FaceInterference>, U1: f64);
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:49 - `ChFiDS_FaceInterference::SetParameter()`
         #[cxx_name = "SetParameter"]
         fn set_parameter(self: Pin<&mut FaceInterference>, U1: f64, IsFirst: bool);
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:51 - `ChFiDS_FaceInterference::LineIndex()`
         #[cxx_name = "LineIndex"]
         fn line_index(self: &FaceInterference) -> i32;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:53 - `ChFiDS_FaceInterference::SetLineIndex()`
         #[cxx_name = "SetLineIndex"]
         fn set_line_index(self: Pin<&mut FaceInterference>, I: i32);
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:57 - `ChFiDS_FaceInterference::PCurveOnFace()`
         #[cxx_name = "PCurveOnFace"]
         fn p_curve_on_face(self: &FaceInterference) -> &HandleGeom2dCurve;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:59 - `ChFiDS_FaceInterference::PCurveOnSurf()`
         #[cxx_name = "PCurveOnSurf"]
         fn p_curve_on_surf(self: &FaceInterference) -> &HandleGeom2dCurve;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:61 - `ChFiDS_FaceInterference::ChangePCurveOnFace()`
         #[cxx_name = "ChangePCurveOnFace"]
         fn change_p_curve_on_face(self: Pin<&mut FaceInterference>) -> Pin<&mut HandleGeom2dCurve>;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:63 - `ChFiDS_FaceInterference::ChangePCurveOnSurf()`
         #[cxx_name = "ChangePCurveOnSurf"]
         fn change_p_curve_on_surf(self: Pin<&mut FaceInterference>) -> Pin<&mut HandleGeom2dCurve>;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:65 - `ChFiDS_FaceInterference::FirstParameter()`
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &FaceInterference) -> f64;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:67 - `ChFiDS_FaceInterference::LastParameter()`
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &FaceInterference) -> f64;
+        /// **Source:** `ChFiDS_FaceInterference.hxx`:69 - `ChFiDS_FaceInterference::Parameter()`
         #[cxx_name = "Parameter"]
         fn parameter(self: &FaceInterference, IsFirst: bool) -> f64;
         /// ======================== ChFiDS_Stripe ========================
-        /// **Source:** `ChFiDS_Stripe.hxx` - `ChFiDS_Stripe`
+        /// **Source:** `ChFiDS_Stripe.hxx`:34 - `ChFiDS_Stripe`
         ///
         /// Data characterising a band of fillet.
         #[cxx_name = "ChFiDS_Stripe"]
         type Stripe;
-        /// **Source:** `ChFiDS_Stripe.hxx` - `ChFiDS_Stripe::ChFiDS_Stripe()`
+        /// **Source:** `ChFiDS_Stripe.hxx`:38 - `ChFiDS_Stripe::ChFiDS_Stripe()`
         #[cxx_name = "ChFiDS_Stripe_ctor"]
         fn Stripe_ctor() -> UniquePtr<Stripe>;
+        /// **Source:** `ChFiDS_Stripe.hxx`:41 - `ChFiDS_Stripe::Reset()`
+        ///
         /// Reset everything except Spine.
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut Stripe>);
+        /// **Source:** `ChFiDS_Stripe.hxx`:43 - `ChFiDS_Stripe::SetOfSurfData()`
         #[cxx_name = "SetOfSurfData"]
         fn set_of_surf_data(self: &Stripe) -> &HandleChFiDSHData;
+        /// **Source:** `ChFiDS_Stripe.hxx`:45 - `ChFiDS_Stripe::Spine()`
         #[cxx_name = "Spine"]
         fn spine(self: &Stripe) -> &HandleChFiDSSpine;
+        /// **Source:** `ChFiDS_Stripe.hxx`:51 - `ChFiDS_Stripe::Choix()`
         #[cxx_name = "Choix"]
         fn choix(self: &Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:53 - `ChFiDS_Stripe::ChangeSetOfSurfData()`
         #[cxx_name = "ChangeSetOfSurfData"]
         fn change_set_of_surf_data(self: Pin<&mut Stripe>) -> Pin<&mut HandleChFiDSHData>;
+        /// **Source:** `ChFiDS_Stripe.hxx`:55 - `ChFiDS_Stripe::ChangeSpine()`
         #[cxx_name = "ChangeSpine"]
         fn change_spine(self: Pin<&mut Stripe>) -> Pin<&mut HandleChFiDSSpine>;
+        /// **Source:** `ChFiDS_Stripe.hxx`:61 - `ChFiDS_Stripe::Choix()`
         #[cxx_name = "Choix"]
         fn choix_int(self: Pin<&mut Stripe>, C: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:63 - `ChFiDS_Stripe::FirstParameters()`
         #[cxx_name = "FirstParameters"]
         fn first_parameters(self: &Stripe, Pdeb: &mut f64, Pfin: &mut f64);
+        /// **Source:** `ChFiDS_Stripe.hxx`:65 - `ChFiDS_Stripe::LastParameters()`
         #[cxx_name = "LastParameters"]
         fn last_parameters(self: &Stripe, Pdeb: &mut f64, Pfin: &mut f64);
+        /// **Source:** `ChFiDS_Stripe.hxx`:67 - `ChFiDS_Stripe::ChangeFirstParameters()`
         #[cxx_name = "ChangeFirstParameters"]
         fn change_first_parameters(self: Pin<&mut Stripe>, Pdeb: f64, Pfin: f64);
+        /// **Source:** `ChFiDS_Stripe.hxx`:69 - `ChFiDS_Stripe::ChangeLastParameters()`
         #[cxx_name = "ChangeLastParameters"]
         fn change_last_parameters(self: Pin<&mut Stripe>, Pdeb: f64, Pfin: f64);
+        /// **Source:** `ChFiDS_Stripe.hxx`:71 - `ChFiDS_Stripe::FirstCurve()`
         #[cxx_name = "FirstCurve"]
         fn first_curve(self: &Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:73 - `ChFiDS_Stripe::LastCurve()`
         #[cxx_name = "LastCurve"]
         fn last_curve(self: &Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:75 - `ChFiDS_Stripe::ChangeFirstCurve()`
         #[cxx_name = "ChangeFirstCurve"]
         fn change_first_curve(self: Pin<&mut Stripe>, Index: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:77 - `ChFiDS_Stripe::ChangeLastCurve()`
         #[cxx_name = "ChangeLastCurve"]
         fn change_last_curve(self: Pin<&mut Stripe>, Index: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:79 - `ChFiDS_Stripe::FirstPCurve()`
         #[cxx_name = "FirstPCurve"]
         fn first_p_curve(self: &Stripe) -> &HandleGeom2dCurve;
+        /// **Source:** `ChFiDS_Stripe.hxx`:81 - `ChFiDS_Stripe::LastPCurve()`
         #[cxx_name = "LastPCurve"]
         fn last_p_curve(self: &Stripe) -> &HandleGeom2dCurve;
+        /// **Source:** `ChFiDS_Stripe.hxx`:83 - `ChFiDS_Stripe::ChangeFirstPCurve()`
         #[cxx_name = "ChangeFirstPCurve"]
         fn change_first_p_curve(self: Pin<&mut Stripe>) -> Pin<&mut HandleGeom2dCurve>;
+        /// **Source:** `ChFiDS_Stripe.hxx`:85 - `ChFiDS_Stripe::ChangeLastPCurve()`
         #[cxx_name = "ChangeLastPCurve"]
         fn change_last_p_curve(self: Pin<&mut Stripe>) -> Pin<&mut HandleGeom2dCurve>;
+        /// **Source:** `ChFiDS_Stripe.hxx`:95 - `ChFiDS_Stripe::IndexFirstPointOnS1()`
         #[cxx_name = "IndexFirstPointOnS1"]
         fn index_first_point_on_s1(self: &Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:97 - `ChFiDS_Stripe::IndexFirstPointOnS2()`
         #[cxx_name = "IndexFirstPointOnS2"]
         fn index_first_point_on_s2(self: &Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:99 - `ChFiDS_Stripe::IndexLastPointOnS1()`
         #[cxx_name = "IndexLastPointOnS1"]
         fn index_last_point_on_s1(self: &Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:101 - `ChFiDS_Stripe::IndexLastPointOnS2()`
         #[cxx_name = "IndexLastPointOnS2"]
         fn index_last_point_on_s2(self: &Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:103 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS1()`
         #[cxx_name = "ChangeIndexFirstPointOnS1"]
         fn change_index_first_point_on_s1(self: Pin<&mut Stripe>, Index: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:105 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS2()`
         #[cxx_name = "ChangeIndexFirstPointOnS2"]
         fn change_index_first_point_on_s2(self: Pin<&mut Stripe>, Index: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:107 - `ChFiDS_Stripe::ChangeIndexLastPointOnS1()`
         #[cxx_name = "ChangeIndexLastPointOnS1"]
         fn change_index_last_point_on_s1(self: Pin<&mut Stripe>, Index: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:109 - `ChFiDS_Stripe::ChangeIndexLastPointOnS2()`
         #[cxx_name = "ChangeIndexLastPointOnS2"]
         fn change_index_last_point_on_s2(self: Pin<&mut Stripe>, Index: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:111 - `ChFiDS_Stripe::Parameters()`
         #[cxx_name = "Parameters"]
         fn parameters(self: &Stripe, First: bool, Pdeb: &mut f64, Pfin: &mut f64);
+        /// **Source:** `ChFiDS_Stripe.hxx`:115 - `ChFiDS_Stripe::SetParameters()`
         #[cxx_name = "SetParameters"]
         fn set_parameters(self: Pin<&mut Stripe>, First: bool, Pdeb: f64, Pfin: f64);
+        /// **Source:** `ChFiDS_Stripe.hxx`:119 - `ChFiDS_Stripe::Curve()`
         #[cxx_name = "Curve"]
         fn curve(self: &Stripe, First: bool) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:121 - `ChFiDS_Stripe::SetCurve()`
         #[cxx_name = "SetCurve"]
         fn set_curve(self: Pin<&mut Stripe>, Index: i32, First: bool);
+        /// **Source:** `ChFiDS_Stripe.hxx`:123 - `ChFiDS_Stripe::PCurve()`
         #[cxx_name = "PCurve"]
         fn p_curve(self: &Stripe, First: bool) -> &HandleGeom2dCurve;
+        /// **Source:** `ChFiDS_Stripe.hxx`:125 - `ChFiDS_Stripe::ChangePCurve()`
         #[cxx_name = "ChangePCurve"]
         fn change_p_curve(self: Pin<&mut Stripe>, First: bool) -> Pin<&mut HandleGeom2dCurve>;
+        /// **Source:** `ChFiDS_Stripe.hxx`:135 - `ChFiDS_Stripe::IndexPoint()`
         #[cxx_name = "IndexPoint"]
         fn index_point(self: &Stripe, First: bool, OnS: i32) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:138 - `ChFiDS_Stripe::SetIndexPoint()`
         #[cxx_name = "SetIndexPoint"]
         fn set_index_point(self: Pin<&mut Stripe>, Index: i32, First: bool, OnS: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:142 - `ChFiDS_Stripe::SolidIndex()`
         #[cxx_name = "SolidIndex"]
         fn solid_index(self: &Stripe) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:144 - `ChFiDS_Stripe::SetSolidIndex()`
         #[cxx_name = "SetSolidIndex"]
         fn set_solid_index(self: Pin<&mut Stripe>, Index: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:147 - `ChFiDS_Stripe::InDS()`
+        ///
         /// Set nb of SurfData's at end put in DS
         #[cxx_name = "InDS"]
         fn in_ds(self: Pin<&mut Stripe>, First: bool, Nb: i32);
+        /// **Source:** `ChFiDS_Stripe.hxx`:150 - `ChFiDS_Stripe::IsInDS()`
+        ///
         /// Returns nb of SurfData's at end being in DS
         #[cxx_name = "IsInDS"]
         fn is_in_ds(self: &Stripe, First: bool) -> i32;
+        /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Stripe) -> &HandleStandardType;
+        /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::get_type_name()`
         #[cxx_name = "ChFiDS_Stripe_get_type_name"]
         fn Stripe_get_type_name() -> String;
         /// Wrap ChFiDS_Stripe in a Handle (reference-counted smart pointer)
         #[cxx_name = "ChFiDS_Stripe_to_handle"]
         fn Stripe_to_handle(obj: UniquePtr<Stripe>) -> UniquePtr<HandleChFiDSStripe>;
         /// ======================== ChFiDS_HData ========================
-        /// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData`
+        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData`
         #[cxx_name = "ChFiDS_HData"]
         type HData;
-        /// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData::ChFiDS_HData()`
+        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
         #[cxx_name = "ChFiDS_HData_ctor"]
         fn HData_ctor() -> UniquePtr<HData>;
-        /// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData::ChFiDS_HData()`
+        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
         #[cxx_name = "ChFiDS_HData_ctor_sequenceofsurfdata"]
         fn HData_ctor_sequenceofsurfdata(theOther: &ChFiDS_SequenceOfSurfData) -> UniquePtr<HData>;
+        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Sequence()`
         #[cxx_name = "Sequence"]
         fn sequence(self: &HData) -> &ChFiDS_SequenceOfSurfData;
+        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Append()`
         #[cxx_name = "Append"]
         fn append_sequenceofsurfdata(
             self: Pin<&mut HData>,
             theSequence: Pin<&mut ChFiDS_SequenceOfSurfData>,
         );
+        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChangeSequence()`
         #[cxx_name = "ChangeSequence"]
         fn change_sequence(self: Pin<&mut HData>) -> Pin<&mut ChFiDS_SequenceOfSurfData>;
+        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &HData) -> &HandleStandardType;
+        /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::get_type_name()`
         #[cxx_name = "ChFiDS_HData_get_type_name"]
         fn HData_get_type_name() -> String;
         /// Wrap ChFiDS_HData in a Handle (reference-counted smart pointer)
         #[cxx_name = "ChFiDS_HData_to_handle"]
         fn HData_to_handle(obj: UniquePtr<HData>) -> UniquePtr<HandleChFiDSHData>;
         /// ======================== ChFiDS_Map ========================
-        /// **Source:** `ChFiDS_Map.hxx` - `ChFiDS_Map`
+        /// **Source:** `ChFiDS_Map.hxx`:31 - `ChFiDS_Map`
         ///
         /// Encapsulation of IndexedDataMapOfShapeListOfShape.
         #[cxx_name = "ChFiDS_Map"]
         type Map;
-        /// **Source:** `ChFiDS_Map.hxx` - `ChFiDS_Map::ChFiDS_Map()`
+        /// **Source:** `ChFiDS_Map.hxx`:37 - `ChFiDS_Map::ChFiDS_Map()`
         ///
         /// Create an empty Map
         #[cxx_name = "ChFiDS_Map_ctor"]
         fn Map_ctor() -> UniquePtr<Map>;
+        /// **Source:** `ChFiDS_Map.hxx`:45 - `ChFiDS_Map::Contains()`
         #[cxx_name = "Contains"]
         fn contains(self: &Map, S: &TopoDS_Shape) -> bool;
+        /// **Source:** `ChFiDS_Map.hxx`:47 - `ChFiDS_Map::FindFromKey()`
         #[cxx_name = "FindFromKey"]
         fn find_from_key(self: &Map, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `ChFiDS_Map.hxx`:51 - `ChFiDS_Map::FindFromIndex()`
         #[cxx_name = "FindFromIndex"]
         fn find_from_index(self: &Map, I: i32) -> &TopTools_ListOfShape;
         /// ======================== ChFiDS_StripeMap ========================
-        /// **Source:** `ChFiDS_StripeMap.hxx` - `ChFiDS_StripeMap`
+        /// **Source:** `ChFiDS_StripeMap.hxx`:31 - `ChFiDS_StripeMap`
         ///
         /// encapsulation of IndexedDataMapOfVertexListOfStripe
         #[cxx_name = "ChFiDS_StripeMap"]
         type StripeMap;
-        /// **Source:** `ChFiDS_StripeMap.hxx` - `ChFiDS_StripeMap::ChFiDS_StripeMap()`
+        /// **Source:** `ChFiDS_StripeMap.hxx`:36 - `ChFiDS_StripeMap::ChFiDS_StripeMap()`
         #[cxx_name = "ChFiDS_StripeMap_ctor"]
         fn StripeMap_ctor() -> UniquePtr<StripeMap>;
+        /// **Source:** `ChFiDS_StripeMap.hxx`:38 - `ChFiDS_StripeMap::Add()`
         #[cxx_name = "Add"]
         fn add(self: Pin<&mut StripeMap>, V: &TopoDS_Vertex, F: &HandleChFiDSStripe);
+        /// **Source:** `ChFiDS_StripeMap.hxx`:40 - `ChFiDS_StripeMap::Extent()`
         #[cxx_name = "Extent"]
         fn extent(self: &StripeMap) -> i32;
+        /// **Source:** `ChFiDS_StripeMap.hxx`:42 - `ChFiDS_StripeMap::FindFromKey()`
         #[cxx_name = "FindFromKey"]
         fn find_from_key(self: &StripeMap, V: &TopoDS_Vertex) -> &ChFiDS_ListOfStripe;
+        /// **Source:** `ChFiDS_StripeMap.hxx`:46 - `ChFiDS_StripeMap::FindFromIndex()`
         #[cxx_name = "FindFromIndex"]
         fn find_from_index(self: &StripeMap, I: i32) -> &ChFiDS_ListOfStripe;
+        /// **Source:** `ChFiDS_StripeMap.hxx`:50 - `ChFiDS_StripeMap::FindKey()`
         #[cxx_name = "FindKey"]
         fn find_key(self: &StripeMap, I: i32) -> &TopoDS_Vertex;
+        /// **Source:** `ChFiDS_StripeMap.hxx`:52 - `ChFiDS_StripeMap::Clear()`
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut StripeMap>);
         /// ======================== ChFiDS_Regul ========================
-        /// **Source:** `ChFiDS_Regul.hxx` - `ChFiDS_Regul`
+        /// **Source:** `ChFiDS_Regul.hxx`:27 - `ChFiDS_Regul`
         ///
         /// Storage of  a curve  and its 2 faces or surfaces of  support.
         #[cxx_name = "ChFiDS_Regul"]
         type Regul;
-        /// **Source:** `ChFiDS_Regul.hxx` - `ChFiDS_Regul::ChFiDS_Regul()`
+        /// **Source:** `ChFiDS_Regul.hxx`:32 - `ChFiDS_Regul::ChFiDS_Regul()`
         #[cxx_name = "ChFiDS_Regul_ctor"]
         fn Regul_ctor() -> UniquePtr<Regul>;
+        /// **Source:** `ChFiDS_Regul.hxx`:34 - `ChFiDS_Regul::SetCurve()`
         #[cxx_name = "SetCurve"]
         fn set_curve(self: Pin<&mut Regul>, IC: i32);
+        /// **Source:** `ChFiDS_Regul.hxx`:36 - `ChFiDS_Regul::SetS1()`
         #[cxx_name = "SetS1"]
         fn set_s1(self: Pin<&mut Regul>, IS1: i32, IsFace: bool);
+        /// **Source:** `ChFiDS_Regul.hxx`:39 - `ChFiDS_Regul::SetS2()`
         #[cxx_name = "SetS2"]
         fn set_s2(self: Pin<&mut Regul>, IS2: i32, IsFace: bool);
+        /// **Source:** `ChFiDS_Regul.hxx`:42 - `ChFiDS_Regul::IsSurface1()`
         #[cxx_name = "IsSurface1"]
         fn is_surface1(self: &Regul) -> bool;
+        /// **Source:** `ChFiDS_Regul.hxx`:44 - `ChFiDS_Regul::IsSurface2()`
         #[cxx_name = "IsSurface2"]
         fn is_surface2(self: &Regul) -> bool;
+        /// **Source:** `ChFiDS_Regul.hxx`:46 - `ChFiDS_Regul::Curve()`
         #[cxx_name = "Curve"]
         fn curve(self: &Regul) -> i32;
+        /// **Source:** `ChFiDS_Regul.hxx`:48 - `ChFiDS_Regul::S1()`
         #[cxx_name = "S1"]
         fn s1(self: &Regul) -> i32;
+        /// **Source:** `ChFiDS_Regul.hxx`:50 - `ChFiDS_Regul::S2()`
         #[cxx_name = "S2"]
         fn s2(self: &Regul) -> i32;
 

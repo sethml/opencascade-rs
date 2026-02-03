@@ -142,48 +142,64 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepFill_PipeShell ========================
-        /// **Source:** `BRepFill_PipeShell.hxx` - `BRepFill_PipeShell`
+        /// **Source:** `BRepFill_PipeShell.hxx`:52 - `BRepFill_PipeShell`
         ///
         /// Computes a topological shell using some wires
         /// (spines and profiles) and displacement option
         /// Perform general sweeping construction
         #[cxx_name = "BRepFill_PipeShell"]
         type PipeShell;
-        /// **Source:** `BRepFill_PipeShell.hxx` - `BRepFill_PipeShell::BRepFill_PipeShell()`
+        /// **Source:** `BRepFill_PipeShell.hxx`:58 - `BRepFill_PipeShell::BRepFill_PipeShell()`
         ///
         /// Set an sweep's mode
         /// If no mode are set, the mode used in MakePipe is used
         #[cxx_name = "BRepFill_PipeShell_ctor_wire"]
         fn PipeShell_ctor_wire(Spine: &TopoDS_Wire) -> UniquePtr<PipeShell>;
+        /// **Source:** `BRepFill_PipeShell.hxx`:62 - `BRepFill_PipeShell::Set()`
+        ///
         /// Set an Frenet or an CorrectedFrenet trihedron
         /// to  perform  the  sweeping
         #[cxx_name = "Set"]
         fn set_bool(self: Pin<&mut PipeShell>, Frenet: bool);
+        /// **Source:** `BRepFill_PipeShell.hxx`:66 - `BRepFill_PipeShell::SetDiscrete()`
+        ///
         /// Set a Discrete trihedron
         /// to  perform  the  sweeping
         #[cxx_name = "SetDiscrete"]
         fn set_discrete(self: Pin<&mut PipeShell>);
+        /// **Source:** `BRepFill_PipeShell.hxx`:70 - `BRepFill_PipeShell::Set()`
+        ///
         /// Set  an  fixed  trihedron  to  perform  the  sweeping
         /// all sections will be parallel.
         #[cxx_name = "Set"]
         fn set_ax2(self: Pin<&mut PipeShell>, Axe: &gp_Ax2);
+        /// **Source:** `BRepFill_PipeShell.hxx`:74 - `BRepFill_PipeShell::Set()`
+        ///
         /// Set an fixed  BiNormal  direction to  perform
         /// the sweeping
         #[cxx_name = "Set"]
         fn set_dir(self: Pin<&mut PipeShell>, BiNormal: &gp_Dir);
+        /// **Source:** `BRepFill_PipeShell.hxx`:80 - `BRepFill_PipeShell::Set()`
+        ///
         /// Set support to the spine to define the BiNormal
         /// at   the spine, like    the  normal the surfaces.
         /// Warning: To  be  effective,  Each  edge  of  the  <spine>  must
         /// have an  representation  on   one   face  of<SpineSupport>
         #[cxx_name = "Set"]
         fn set_shape(self: Pin<&mut PipeShell>, SpineSupport: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRepFill_PipeShell.hxx`:107 - `BRepFill_PipeShell::SetMaxDegree()`
+        ///
         /// Define the maximum V degree of resulting surface
         #[cxx_name = "SetMaxDegree"]
         fn set_max_degree(self: Pin<&mut PipeShell>, NewMaxDegree: i32);
+        /// **Source:** `BRepFill_PipeShell.hxx`:111 - `BRepFill_PipeShell::SetMaxSegments()`
+        ///
         /// Define the maximum number of spans in V-direction
         /// on resulting surface
         #[cxx_name = "SetMaxSegments"]
         fn set_max_segments(self: Pin<&mut PipeShell>, NewMaxSegments: i32);
+        /// **Source:** `BRepFill_PipeShell.hxx`:123 - `BRepFill_PipeShell::SetForceApproxC1()`
+        ///
         /// Set the flag that indicates attempt to approximate
         /// a C1-continuous surface if a swept surface proved
         /// to be C0.
@@ -196,6 +212,8 @@ pub(crate) mod ffi {
         /// spine
         #[cxx_name = "SetForceApproxC1"]
         fn set_force_approx_c1(self: Pin<&mut PipeShell>, ForceApproxC1: bool);
+        /// **Source:** `BRepFill_PipeShell.hxx`:126 - `BRepFill_PipeShell::Add()`
+        ///
         /// Set an section. The correspondence with the spine, will be automatically performed.
         #[cxx_name = "Add"]
         fn add_shape_bool2(
@@ -204,6 +222,8 @@ pub(crate) mod ffi {
             WithContact: bool,
             WithCorrection: bool,
         );
+        /// **Source:** `BRepFill_PipeShell.hxx`:131 - `BRepFill_PipeShell::Add()`
+        ///
         /// Set an section. The correspondence with the spine, is given by Location.
         #[cxx_name = "Add"]
         fn add_shape_vertex_bool2(
@@ -213,6 +233,8 @@ pub(crate) mod ffi {
             WithContact: bool,
             WithCorrection: bool,
         );
+        /// **Source:** `BRepFill_PipeShell.hxx`:138 - `BRepFill_PipeShell::SetLaw()`
+        ///
         /// Set  an    section  and  an   homotetic    law.
         /// The  homotetie's  centers  is  given  by  point  on  the  <Spine>.
         #[cxx_name = "SetLaw"]
@@ -223,6 +245,8 @@ pub(crate) mod ffi {
             WithContact: bool,
             WithCorrection: bool,
         );
+        /// **Source:** `BRepFill_PipeShell.hxx`:145 - `BRepFill_PipeShell::SetLaw()`
+        ///
         /// Set  an    section  and  an   homotetic    law.
         /// The  homotetie  center  is  given  by  point  on  the  <Spine>
         #[cxx_name = "SetLaw"]
@@ -234,15 +258,22 @@ pub(crate) mod ffi {
             WithContact: bool,
             WithCorrection: bool,
         );
+        /// **Source:** `BRepFill_PipeShell.hxx`:152 - `BRepFill_PipeShell::DeleteProfile()`
+        ///
         /// Delete an section.
         #[cxx_name = "DeleteProfile"]
         fn delete_profile(self: Pin<&mut PipeShell>, Profile: &TopoDS_Shape);
+        /// **Source:** `BRepFill_PipeShell.hxx`:156 - `BRepFill_PipeShell::IsReady()`
+        ///
         /// Say if <me> is ready to build the shape
         /// return False if <me> do not have section definition
         #[cxx_name = "IsReady"]
         fn is_ready(self: &PipeShell) -> bool;
+        /// **Source:** `BRepFill_PipeShell.hxx`:161 - `BRepFill_PipeShell::SetTolerance()`
         #[cxx_name = "SetTolerance"]
         fn set_tolerance(self: Pin<&mut PipeShell>, Tol3d: f64, BoundTol: f64, TolAngular: f64);
+        /// **Source:** `BRepFill_PipeShell.hxx`:173 - `BRepFill_PipeShell::Simulate()`
+        ///
         /// Perform simulation of the sweep :
         /// Some Section are returned.
         #[cxx_name = "Simulate"]
@@ -251,30 +282,47 @@ pub(crate) mod ffi {
             NumberOfSection: i32,
             Sections: Pin<&mut TopTools_ListOfShape>,
         );
+        /// **Source:** `BRepFill_PipeShell.hxx`:177 - `BRepFill_PipeShell::Build()`
+        ///
         /// Builds the resulting shape (redefined from MakeShape).
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut PipeShell>) -> bool;
+        /// **Source:** `BRepFill_PipeShell.hxx`:181 - `BRepFill_PipeShell::MakeSolid()`
+        ///
         /// Transform the sweeping Shell in Solid.
         /// If the section are not closed returns False
         #[cxx_name = "MakeSolid"]
         fn make_solid(self: Pin<&mut PipeShell>) -> bool;
+        /// **Source:** `BRepFill_PipeShell.hxx`:184 - `BRepFill_PipeShell::Shape()`
+        ///
         /// Returns the result Shape.
         #[cxx_name = "Shape"]
         fn shape(self: &PipeShell) -> &TopoDS_Shape;
+        /// **Source:** `BRepFill_PipeShell.hxx`:186 - `BRepFill_PipeShell::ErrorOnSurface()`
         #[cxx_name = "ErrorOnSurface"]
         fn error_on_surface(self: &PipeShell) -> f64;
+        /// **Source:** `BRepFill_PipeShell.hxx`:189 - `BRepFill_PipeShell::FirstShape()`
+        ///
         /// Returns the  TopoDS  Shape of the bottom of the sweep.
         #[cxx_name = "FirstShape"]
         fn first_shape(self: &PipeShell) -> &TopoDS_Shape;
+        /// **Source:** `BRepFill_PipeShell.hxx`:192 - `BRepFill_PipeShell::LastShape()`
+        ///
         /// Returns the TopoDS Shape of the top of the sweep.
         #[cxx_name = "LastShape"]
         fn last_shape(self: &PipeShell) -> &TopoDS_Shape;
+        /// **Source:** `BRepFill_PipeShell.hxx`:195 - `BRepFill_PipeShell::Profiles()`
+        ///
         /// Returns the list of original profiles
         #[cxx_name = "Profiles"]
         fn profiles(self: Pin<&mut PipeShell>, theProfiles: Pin<&mut TopTools_ListOfShape>);
+        /// **Source:** `BRepFill_PipeShell.hxx`:202 - `BRepFill_PipeShell::Spine()`
+        ///
         /// Returns the spine
         #[cxx_name = "Spine"]
         fn spine(self: Pin<&mut PipeShell>) -> &TopoDS_Wire;
+        /// **Source:** `BRepFill_PipeShell.hxx`:206 - `BRepFill_PipeShell::Generated()`
+        ///
         /// Returns the  list   of shapes generated   from the
         /// shape <S>.
         #[cxx_name = "Generated"]
@@ -283,23 +331,25 @@ pub(crate) mod ffi {
             S: &TopoDS_Shape,
             L: Pin<&mut TopTools_ListOfShape>,
         );
+        /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &PipeShell) -> &HandleStandardType;
+        /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::get_type_name()`
         #[cxx_name = "BRepFill_PipeShell_get_type_name"]
         fn PipeShell_get_type_name() -> String;
         /// Wrap BRepFill_PipeShell in a Handle (reference-counted smart pointer)
         #[cxx_name = "BRepFill_PipeShell_to_handle"]
         fn PipeShell_to_handle(obj: UniquePtr<PipeShell>) -> UniquePtr<HandleBRepFillPipeShell>;
         /// ======================== BRepFill_Section ========================
-        /// **Source:** `BRepFill_Section.hxx` - `BRepFill_Section`
+        /// **Source:** `BRepFill_Section.hxx`:27 - `BRepFill_Section`
         ///
         /// To store section definition
         #[cxx_name = "BRepFill_Section"]
         type Section;
-        /// **Source:** `BRepFill_Section.hxx` - `BRepFill_Section::BRepFill_Section()`
+        /// **Source:** `BRepFill_Section.hxx`:32 - `BRepFill_Section::BRepFill_Section()`
         #[cxx_name = "BRepFill_Section_ctor"]
         fn Section_ctor() -> UniquePtr<Section>;
-        /// **Source:** `BRepFill_Section.hxx` - `BRepFill_Section::BRepFill_Section()`
+        /// **Source:** `BRepFill_Section.hxx`:34 - `BRepFill_Section::BRepFill_Section()`
         #[cxx_name = "BRepFill_Section_ctor_shape_vertex_bool2"]
         fn Section_ctor_shape_vertex_bool2(
             Profile: &TopoDS_Shape,
@@ -307,20 +357,28 @@ pub(crate) mod ffi {
             WithContact: bool,
             WithCorrection: bool,
         ) -> UniquePtr<Section>;
+        /// **Source:** `BRepFill_Section.hxx`:39 - `BRepFill_Section::Set()`
         #[cxx_name = "Set"]
         fn set(self: Pin<&mut Section>, IsLaw: bool);
+        /// **Source:** `BRepFill_Section.hxx`:41 - `BRepFill_Section::OriginalShape()`
         #[cxx_name = "OriginalShape"]
         fn original_shape(self: &Section) -> &TopoDS_Shape;
+        /// **Source:** `BRepFill_Section.hxx`:43 - `BRepFill_Section::Wire()`
         #[cxx_name = "Wire"]
         fn wire(self: &Section) -> &TopoDS_Wire;
+        /// **Source:** `BRepFill_Section.hxx`:45 - `BRepFill_Section::Vertex()`
         #[cxx_name = "Vertex"]
         fn vertex(self: &Section) -> &TopoDS_Vertex;
+        /// **Source:** `BRepFill_Section.hxx`:49 - `BRepFill_Section::IsLaw()`
         #[cxx_name = "IsLaw"]
         fn is_law(self: &Section) -> bool;
+        /// **Source:** `BRepFill_Section.hxx`:51 - `BRepFill_Section::IsPunctual()`
         #[cxx_name = "IsPunctual"]
         fn is_punctual(self: &Section) -> bool;
+        /// **Source:** `BRepFill_Section.hxx`:53 - `BRepFill_Section::WithContact()`
         #[cxx_name = "WithContact"]
         fn with_contact(self: &Section) -> bool;
+        /// **Source:** `BRepFill_Section.hxx`:55 - `BRepFill_Section::WithCorrection()`
         #[cxx_name = "WithCorrection"]
         fn with_correction(self: &Section) -> bool;
         #[cxx_name = "BRepFill_Section_ModifiedShape"]
@@ -329,7 +387,7 @@ pub(crate) mod ffi {
             theShape: &TopoDS_Shape,
         ) -> UniquePtr<TopoDS_Shape>;
         /// ======================== BRepFill_Pipe ========================
-        /// **Source:** `BRepFill_Pipe.hxx` - `BRepFill_Pipe`
+        /// **Source:** `BRepFill_Pipe.hxx`:46 - `BRepFill_Pipe`
         ///
         /// Create a  shape by sweeping a shape  (the profile)
         /// along a wire (the spine).
@@ -339,9 +397,10 @@ pub(crate) mod ffi {
         /// of the profile.
         #[cxx_name = "BRepFill_Pipe"]
         type Pipe;
-        /// **Source:** `BRepFill_Pipe.hxx` - `BRepFill_Pipe::BRepFill_Pipe()`
+        /// **Source:** `BRepFill_Pipe.hxx`:51 - `BRepFill_Pipe::BRepFill_Pipe()`
         #[cxx_name = "BRepFill_Pipe_ctor"]
         fn Pipe_ctor() -> UniquePtr<Pipe>;
+        /// **Source:** `BRepFill_Pipe.hxx`:59 - `BRepFill_Pipe::Perform()`
         #[cxx_name = "Perform"]
         fn perform(
             self: Pin<&mut Pipe>,
@@ -349,18 +408,26 @@ pub(crate) mod ffi {
             Profile: &TopoDS_Shape,
             GeneratePartCase: bool,
         );
+        /// **Source:** `BRepFill_Pipe.hxx`:63 - `BRepFill_Pipe::Spine()`
         #[cxx_name = "Spine"]
         fn spine(self: &Pipe) -> &TopoDS_Shape;
+        /// **Source:** `BRepFill_Pipe.hxx`:65 - `BRepFill_Pipe::Profile()`
         #[cxx_name = "Profile"]
         fn profile(self: &Pipe) -> &TopoDS_Shape;
+        /// **Source:** `BRepFill_Pipe.hxx`:67 - `BRepFill_Pipe::Shape()`
         #[cxx_name = "Shape"]
         fn shape(self: &Pipe) -> &TopoDS_Shape;
+        /// **Source:** `BRepFill_Pipe.hxx`:69 - `BRepFill_Pipe::ErrorOnSurface()`
         #[cxx_name = "ErrorOnSurface"]
         fn error_on_surface(self: &Pipe) -> f64;
+        /// **Source:** `BRepFill_Pipe.hxx`:71 - `BRepFill_Pipe::FirstShape()`
         #[cxx_name = "FirstShape"]
         fn first_shape(self: &Pipe) -> &TopoDS_Shape;
+        /// **Source:** `BRepFill_Pipe.hxx`:73 - `BRepFill_Pipe::LastShape()`
         #[cxx_name = "LastShape"]
         fn last_shape(self: &Pipe) -> &TopoDS_Shape;
+        /// **Source:** `BRepFill_Pipe.hxx`:77 - `BRepFill_Pipe::Generated()`
+        ///
         /// Returns the  list   of shapes generated   from the
         /// shape <S>.
         #[cxx_name = "Generated"]
@@ -394,7 +461,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepFill_Pipe_PipeLine"]
         fn Pipe_pipe_line(self_: Pin<&mut Pipe>, Point: &gp_Pnt) -> UniquePtr<TopoDS_Wire>;
         /// ======================== BRepFill_OffsetWire ========================
-        /// **Source:** `BRepFill_OffsetWire.hxx` - `BRepFill_OffsetWire`
+        /// **Source:** `BRepFill_OffsetWire.hxx`:48 - `BRepFill_OffsetWire`
         ///
         /// Constructs a Offset Wire to a spine (wire or face).
         /// Offset direction will be to outer region in case of
@@ -410,21 +477,29 @@ pub(crate) mod ffi {
         /// The Wire or the Face must be planar and oriented correctly.
         #[cxx_name = "BRepFill_OffsetWire"]
         type OffsetWire;
-        /// **Source:** `BRepFill_OffsetWire.hxx` - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
+        /// **Source:** `BRepFill_OffsetWire.hxx`:53 - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
         #[cxx_name = "BRepFill_OffsetWire_ctor"]
         fn OffsetWire_ctor() -> UniquePtr<OffsetWire>;
+        /// **Source:** `BRepFill_OffsetWire.hxx`:67 - `BRepFill_OffsetWire::Perform()`
+        ///
         /// Performs  an OffsetWire at  an altitude <Alt> from
         /// the  face ( According  to  the orientation of  the
         /// face)
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut OffsetWire>, Offset: f64, Alt: f64);
+        /// **Source:** `BRepFill_OffsetWire.hxx`:77 - `BRepFill_OffsetWire::IsDone()`
         #[cxx_name = "IsDone"]
         fn is_done(self: &OffsetWire) -> bool;
+        /// **Source:** `BRepFill_OffsetWire.hxx`:79 - `BRepFill_OffsetWire::Spine()`
         #[cxx_name = "Spine"]
         fn spine(self: &OffsetWire) -> &TopoDS_Face;
+        /// **Source:** `BRepFill_OffsetWire.hxx`:82 - `BRepFill_OffsetWire::Shape()`
+        ///
         /// returns the generated shape.
         #[cxx_name = "Shape"]
         fn shape(self: &OffsetWire) -> &TopoDS_Shape;
+        /// **Source:** `BRepFill_OffsetWire.hxx`:87 - `BRepFill_OffsetWire::GeneratedShapes()`
+        ///
         /// Returns   the  shapes  created  from   a  subshape
         /// <SpineShape> of the spine.
         /// Returns the last computed Offset.

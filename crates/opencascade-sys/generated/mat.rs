@@ -52,31 +52,40 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== MAT_BasicElt ========================
-        /// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt`
+        /// **Source:** `MAT_BasicElt.hxx`:32 - `MAT_BasicElt`
         ///
         /// A    BasicELt  is  associated   to  each  elementary
         /// constituent of  the figure.
         #[cxx_name = "MAT_BasicElt"]
         type BasicElt;
-        /// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt::MAT_BasicElt()`
+        /// **Source:** `MAT_BasicElt.hxx`:37 - `MAT_BasicElt::MAT_BasicElt()`
         ///
         /// Constructor, <anInteger> is the <index> of <me>.
         #[cxx_name = "MAT_BasicElt_ctor_int"]
         fn BasicElt_ctor_int(anInteger: i32) -> UniquePtr<BasicElt>;
+        /// **Source:** `MAT_BasicElt.hxx`:48 - `MAT_BasicElt::Index()`
+        ///
         /// Return the <index> of <me> in Graph.TheBasicElts.
         #[cxx_name = "Index"]
         fn index(self: &BasicElt) -> i32;
+        /// **Source:** `MAT_BasicElt.hxx`:51 - `MAT_BasicElt::GeomIndex()`
+        ///
         /// Return the <GeomIndex> of <me>.
         #[cxx_name = "GeomIndex"]
         fn geom_index(self: &BasicElt) -> i32;
+        /// **Source:** `MAT_BasicElt.hxx`:53 - `MAT_BasicElt::SetStartArc()`
         #[cxx_name = "SetStartArc"]
         fn set_start_arc(self: Pin<&mut BasicElt>, anArc: &HandleMATArc);
+        /// **Source:** `MAT_BasicElt.hxx`:55 - `MAT_BasicElt::SetEndArc()`
         #[cxx_name = "SetEndArc"]
         fn set_end_arc(self: Pin<&mut BasicElt>, anArc: &HandleMATArc);
+        /// **Source:** `MAT_BasicElt.hxx`:57 - `MAT_BasicElt::SetIndex()`
         #[cxx_name = "SetIndex"]
         fn set_index(self: Pin<&mut BasicElt>, anInteger: i32);
+        /// **Source:** `MAT_BasicElt.hxx`:59 - `MAT_BasicElt::SetGeomIndex()`
         #[cxx_name = "SetGeomIndex"]
         fn set_geom_index(self: Pin<&mut BasicElt>, anInteger: i32);
+        /// **Source:** `MAT_BasicElt.hxx`:61 - `MAT_BasicElt::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BasicElt) -> &HandleStandardType;
         /// Return <startArcLeft> or <startArcRight> corresponding
@@ -87,6 +96,7 @@ pub(crate) mod ffi {
         /// to <aSide>.
         #[cxx_name = "MAT_BasicElt_EndArc"]
         fn BasicElt_end_arc(self_: &BasicElt) -> UniquePtr<HandleMATArc>;
+        /// **Source:** `MAT_BasicElt.hxx`:61 - `MAT_BasicElt::get_type_name()`
         #[cxx_name = "MAT_BasicElt_get_type_name"]
         fn BasicElt_get_type_name() -> String;
         /// Wrap MAT_BasicElt in a Handle (reference-counted smart pointer)

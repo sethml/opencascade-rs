@@ -231,7 +231,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== GeomAPI_Interpolate ========================
-        /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate`
+        /// **Source:** `GeomAPI_Interpolate.hxx`:50 - `GeomAPI_Interpolate`
         ///
         /// This  class  is  used  to  interpolate a  BsplineCurve
         /// passing   through  an  array  of  points,  with  a  C2
@@ -253,7 +253,7 @@ pub(crate) mod ffi {
         /// -   consulting the results.
         #[cxx_name = "GeomAPI_Interpolate"]
         type Interpolate;
-        /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate::GeomAPI_Interpolate()`
+        /// **Source:** `GeomAPI_Interpolate.hxx`:91 - `GeomAPI_Interpolate::GeomAPI_Interpolate()`
         ///
         /// Initializes an algorithm for constructing a
         /// constrained BSpline curve passing through the points of the table   Points.
@@ -297,7 +297,7 @@ pub(crate) mod ffi {
             PeriodicFlag: bool,
             Tolerance: f64,
         ) -> UniquePtr<Interpolate>;
-        /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate::GeomAPI_Interpolate()`
+        /// **Source:** `GeomAPI_Interpolate.hxx`:133 - `GeomAPI_Interpolate::GeomAPI_Interpolate()`
         ///
         /// Initializes an algorithm for constructing a
         /// constrained BSpline curve passing through the points of the table
@@ -344,6 +344,8 @@ pub(crate) mod ffi {
             PeriodicFlag: bool,
             Tolerance: f64,
         ) -> UniquePtr<Interpolate>;
+        /// **Source:** `GeomAPI_Interpolate.hxx`:144 - `GeomAPI_Interpolate::Load()`
+        ///
         /// Assigns this constrained BSpline curve to be
         /// tangential to vectors InitialTangent and FinalTangent
         /// at its first and last points respectively (i.e.
@@ -357,6 +359,8 @@ pub(crate) mod ffi {
             FinalTangent: &gp_Vec,
             Scale: bool,
         );
+        /// **Source:** `GeomAPI_Interpolate.hxx`:157 - `GeomAPI_Interpolate::Load()`
+        ///
         /// Assigns this constrained BSpline curve to be
         /// tangential to vectors defined in the table Tangents,
         /// which is parallel to the table of points
@@ -373,25 +377,33 @@ pub(crate) mod ffi {
             TangentFlags: &HandleTColStdHArray1OfBoolean,
             Scale: bool,
         );
+        /// **Source:** `GeomAPI_Interpolate.hxx`:163 - `GeomAPI_Interpolate::ClearTangents()`
+        ///
         /// Clears all tangency constraints on this
         /// constrained BSpline curve (as initialized by the function Load).
         #[cxx_name = "ClearTangents"]
         fn clear_tangents(self: Pin<&mut Interpolate>);
+        /// **Source:** `GeomAPI_Interpolate.hxx`:168 - `GeomAPI_Interpolate::Perform()`
+        ///
         /// Computes the constrained BSpline curve.
         /// Use the function IsDone to verify that the
         /// computation is successful, and then the function Curve to obtain the result.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut Interpolate>);
+        /// **Source:** `GeomAPI_Interpolate.hxx`:172 - `GeomAPI_Interpolate::Curve()`
+        ///
         /// Returns the computed BSpline curve.
         /// Raises StdFail_NotDone if the interpolation fails.
         #[cxx_name = "Curve"]
         fn curve(self: &Interpolate) -> &HandleGeomBSplineCurve;
+        /// **Source:** `GeomAPI_Interpolate.hxx`:177 - `GeomAPI_Interpolate::IsDone()`
+        ///
         /// Returns true if the constrained BSpline curve is successfully constructed.
         /// Note: in this case, the result is given by the function Curve.
         #[cxx_name = "IsDone"]
         fn is_done(self: &Interpolate) -> bool;
         /// ======================== GeomAPI_PointsToBSpline ========================
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx` - `GeomAPI_PointsToBSpline`
+        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:38 - `GeomAPI_PointsToBSpline`
         ///
         /// This  class  is  used  to  approximate a  BsplineCurve
         /// passing  through an  array  of points,  with  a  given Continuity.
@@ -402,32 +414,35 @@ pub(crate) mod ffi {
         /// -   implementing the approximation algorithm, and consulting the results.
         #[cxx_name = "GeomAPI_PointsToBSpline"]
         type PointsToBSpline;
-        /// **Source:** `GeomAPI_PointsToBSpline.hxx` - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
+        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:45 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
         ///
         /// Constructs an empty approximation algorithm.
         /// Use an Init function to define and build the BSpline curve.
         #[cxx_name = "GeomAPI_PointsToBSpline_ctor"]
         fn PointsToBSpline_ctor() -> UniquePtr<PointsToBSpline>;
+        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:159 - `GeomAPI_PointsToBSpline::Curve()`
+        ///
         /// Returns the computed BSpline curve.
         /// Raises StdFail_NotDone if the curve is not built.
         #[cxx_name = "Curve"]
         fn curve(self: &PointsToBSpline) -> &HandleGeomBSplineCurve;
+        /// **Source:** `GeomAPI_PointsToBSpline.hxx`:162 - `GeomAPI_PointsToBSpline::IsDone()`
         #[cxx_name = "IsDone"]
         fn is_done(self: &PointsToBSpline) -> bool;
         /// ======================== GeomAPI_ProjectPointOnCurve ========================
-        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve`
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:32 - `GeomAPI_ProjectPointOnCurve`
         ///
         /// This class implements methods for  computing all the orthogonal
         /// projections of a 3D point onto a  3D curve.
         #[cxx_name = "GeomAPI_ProjectPointOnCurve"]
         type ProjectPointOnCurve;
-        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:39 - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
         ///
         /// Creates an empty object. Use an
         /// Init function for further initialization.
         #[cxx_name = "GeomAPI_ProjectPointOnCurve_ctor"]
         fn ProjectPointOnCurve_ctor() -> UniquePtr<ProjectPointOnCurve>;
-        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:43 - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
         ///
         /// Create the projection  of a  point  <P> on a curve
         /// <Curve>
@@ -436,7 +451,7 @@ pub(crate) mod ffi {
             P: &gp_Pnt,
             Curve: &HandleGeomCurve,
         ) -> UniquePtr<ProjectPointOnCurve>;
-        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:47 - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
         ///
         /// Create  the projection  of a point <P>  on a curve
         /// <Curve> limited by the two points of parameter Umin and Usup.
@@ -447,6 +462,8 @@ pub(crate) mod ffi {
             Umin: f64,
             Usup: f64,
         ) -> UniquePtr<ProjectPointOnCurve>;
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:54 - `GeomAPI_ProjectPointOnCurve::Init()`
+        ///
         /// Init the projection  of a  point  <P> on a curve
         /// <Curve>
         #[cxx_name = "Init"]
@@ -455,6 +472,8 @@ pub(crate) mod ffi {
             P: &gp_Pnt,
             Curve: &HandleGeomCurve,
         );
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:58 - `GeomAPI_ProjectPointOnCurve::Init()`
+        ///
         /// Init  the  projection  of a  point <P>  on a curve
         /// <Curve> limited by the two points of parameter Umin and Usup.
         #[cxx_name = "Init"]
@@ -465,6 +484,8 @@ pub(crate) mod ffi {
             Umin: f64,
             Usup: f64,
         );
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:65 - `GeomAPI_ProjectPointOnCurve::Init()`
+        ///
         /// Init  the  projection  of a  point <P>  on a curve
         /// <Curve> limited by the two points of parameter Umin and Usup.
         #[cxx_name = "Init"]
@@ -474,14 +495,20 @@ pub(crate) mod ffi {
             Umin: f64,
             Usup: f64,
         );
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:70 - `GeomAPI_ProjectPointOnCurve::Perform()`
+        ///
         /// Performs the projection of a point on the current curve.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut ProjectPointOnCurve>, P: &gp_Pnt);
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:75 - `GeomAPI_ProjectPointOnCurve::NbPoints()`
+        ///
         /// Returns the number of computed
         /// orthogonal projection points.
         /// Note: if this algorithm fails, NbPoints returns 0.
         #[cxx_name = "NbPoints"]
         fn nb_points(self: &ProjectPointOnCurve) -> i32;
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:91 - `GeomAPI_ProjectPointOnCurve::Parameter()`
+        ///
         /// Returns the parameter on the curve
         /// of the point, which is the orthogonal projection. Index is a
         /// number of a computed point.
@@ -490,6 +517,8 @@ pub(crate) mod ffi {
         /// NbPoints is the number of solution points.
         #[cxx_name = "Parameter"]
         fn parameter_int(self: &ProjectPointOnCurve, Index: i32) -> f64;
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:99 - `GeomAPI_ProjectPointOnCurve::Parameter()`
+        ///
         /// Returns the parameter on the curve
         /// of the point, which is the orthogonal projection. Index is a
         /// number of a computed point.
@@ -498,6 +527,8 @@ pub(crate) mod ffi {
         /// NbPoints is the number of solution points.-
         #[cxx_name = "Parameter"]
         fn parameter_int_real(self: &ProjectPointOnCurve, Index: i32, U: &mut f64);
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:106 - `GeomAPI_ProjectPointOnCurve::Distance()`
+        ///
         /// Computes the distance between the
         /// point and its orthogonal projection on the curve. Index is a number of a computed point.
         /// Exceptions
@@ -505,16 +536,22 @@ pub(crate) mod ffi {
         /// NbPoints is the number of solution points.
         #[cxx_name = "Distance"]
         fn distance(self: &ProjectPointOnCurve, Index: i32) -> f64;
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:117 - `GeomAPI_ProjectPointOnCurve::LowerDistanceParameter()`
+        ///
         /// Returns the parameter on the curve
         /// of the nearest orthogonal projection of the point.
         /// Exceptions: StdFail_NotDone if this algorithm fails.
         #[cxx_name = "LowerDistanceParameter"]
         fn lower_distance_parameter(self: &ProjectPointOnCurve) -> f64;
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:122 - `GeomAPI_ProjectPointOnCurve::LowerDistance()`
+        ///
         /// Computes the distance between the
         /// point and its nearest orthogonal projection on the curve.
         /// Exceptions: StdFail_NotDone if this algorithm fails.
         #[cxx_name = "LowerDistance"]
         fn lower_distance(self: &ProjectPointOnCurve) -> f64;
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:126 - `GeomAPI_ProjectPointOnCurve::Extrema()`
+        ///
         /// return the algorithmic object from Extrema
         #[cxx_name = "Extrema"]
         fn extrema(self: &ProjectPointOnCurve) -> &Extrema_ExtPC;
@@ -531,27 +568,34 @@ pub(crate) mod ffi {
         #[cxx_name = "GeomAPI_ProjectPointOnCurve_NearestPoint"]
         fn ProjectPointOnCurve_nearest_point(self_: &ProjectPointOnCurve) -> UniquePtr<gp_Pnt>;
         /// ======================== GeomAPI_ProjectPointOnSurf ========================
-        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx` - `GeomAPI_ProjectPointOnSurf`
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:34 - `GeomAPI_ProjectPointOnSurf`
         ///
         /// This class implements methods for  computing all the orthogonal
         /// projections of a point onto a  surface.
         #[cxx_name = "GeomAPI_ProjectPointOnSurf"]
         type ProjectPointOnSurf;
-        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx` - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:41 - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
         ///
         /// Creates an empty object. Use the
         /// Init function for further initialization.
         #[cxx_name = "GeomAPI_ProjectPointOnSurf_ctor"]
         fn ProjectPointOnSurf_ctor() -> UniquePtr<ProjectPointOnSurf>;
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:134 - `GeomAPI_ProjectPointOnSurf::Perform()`
+        ///
         /// Performs the projection of a point on the current surface.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut ProjectPointOnSurf>, P: &gp_Pnt);
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:136 - `GeomAPI_ProjectPointOnSurf::IsDone()`
         #[cxx_name = "IsDone"]
         fn is_done(self: &ProjectPointOnSurf) -> bool;
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:140 - `GeomAPI_ProjectPointOnSurf::NbPoints()`
+        ///
         /// Returns the number of computed orthogonal projection points.
         /// Note: if projection fails, NbPoints returns 0.
         #[cxx_name = "NbPoints"]
         fn nb_points(self: &ProjectPointOnSurf) -> i32;
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:156 - `GeomAPI_ProjectPointOnSurf::Parameters()`
+        ///
         /// Returns the parameters (U,V) on the
         /// surface of the orthogonal projection. Index is a number of a
         /// computed point.
@@ -560,6 +604,8 @@ pub(crate) mod ffi {
         /// NbPoints is the number of solution points.
         #[cxx_name = "Parameters"]
         fn parameters(self: &ProjectPointOnSurf, Index: i32, U: &mut f64, V: &mut f64);
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:166 - `GeomAPI_ProjectPointOnSurf::Distance()`
+        ///
         /// Computes the distance between the
         /// point and its orthogonal projection on the surface. Index is a number
         /// of a computed point.
@@ -568,18 +614,24 @@ pub(crate) mod ffi {
         /// NbPoints is the number of solution points.
         #[cxx_name = "Distance"]
         fn distance(self: &ProjectPointOnSurf, Index: i32) -> f64;
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:179 - `GeomAPI_ProjectPointOnSurf::LowerDistanceParameters()`
+        ///
         /// Returns the parameters (U,V) on the
         /// surface of the nearest computed orthogonal projection of the point.
         /// Exceptions
         /// StdFail_NotDone if projection fails.
         #[cxx_name = "LowerDistanceParameters"]
         fn lower_distance_parameters(self: &ProjectPointOnSurf, U: &mut f64, V: &mut f64);
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:185 - `GeomAPI_ProjectPointOnSurf::LowerDistance()`
+        ///
         /// Computes the distance between the
         /// point and its nearest orthogonal projection on the surface.
         /// Exceptions
         /// StdFail_NotDone if projection fails.
         #[cxx_name = "LowerDistance"]
         fn lower_distance(self: &ProjectPointOnSurf) -> f64;
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:189 - `GeomAPI_ProjectPointOnSurf::Extrema()`
+        ///
         /// return the algorithmic object from Extrema
         #[cxx_name = "Extrema"]
         fn extrema(self: &ProjectPointOnSurf) -> &Extrema_ExtPS;

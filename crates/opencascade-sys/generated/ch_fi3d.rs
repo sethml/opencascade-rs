@@ -127,19 +127,25 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== ChFi3d_FilBuilder ========================
-        /// **Source:** `ChFi3d_FilBuilder.hxx` - `ChFi3d_FilBuilder`
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:44 - `ChFi3d_FilBuilder`
         ///
         /// Tool  of  construction of  fillets 3d on  edges (on a solid).
         #[cxx_name = "ChFi3d_FilBuilder"]
         type FilBuilder;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:62 - `ChFi3d_FilBuilder::Add()`
+        ///
         /// initialisation of  a contour with the first edge
         /// (the following are found  by propagation).
         /// Attention, you  need  to start  with  SetRadius.
         #[cxx_name = "Add"]
         fn add_edge(self: Pin<&mut FilBuilder>, E: &TopoDS_Edge);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:65 - `ChFi3d_FilBuilder::Add()`
+        ///
         /// initialisation of the constant vector the corresponding  1st  edge.
         #[cxx_name = "Add"]
         fn add_real_edge(self: Pin<&mut FilBuilder>, Radius: f64, E: &TopoDS_Edge);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:68 - `ChFi3d_FilBuilder::SetRadius()`
+        ///
         /// Set the radius of the contour of index IC.
         #[cxx_name = "SetRadius"]
         fn set_radius_handlefunction_int2(
@@ -148,16 +154,24 @@ pub(crate) mod ffi {
             IC: i32,
             IinC: i32,
         );
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:73 - `ChFi3d_FilBuilder::IsConstant()`
+        ///
         /// Returns true the contour is flagged as edge constant.
         #[cxx_name = "IsConstant"]
         fn is_constant_int(self: Pin<&mut FilBuilder>, IC: i32) -> bool;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:77 - `ChFi3d_FilBuilder::Radius()`
+        ///
         /// Returns the vector if the contour is flagged as edge
         /// constant.
         #[cxx_name = "Radius"]
         fn radius_int(self: Pin<&mut FilBuilder>, IC: i32) -> f64;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:80 - `ChFi3d_FilBuilder::ResetContour()`
+        ///
         /// Reset all vectors of contour IC.
         #[cxx_name = "ResetContour"]
         fn reset_contour(self: Pin<&mut FilBuilder>, IC: i32);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:84 - `ChFi3d_FilBuilder::SetRadius()`
+        ///
         /// Set a constant on edge E of  the contour of
         /// index IC. Since  then  E is flagged as constant.
         #[cxx_name = "SetRadius"]
@@ -167,9 +181,13 @@ pub(crate) mod ffi {
             IC: i32,
             E: &TopoDS_Edge,
         );
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:89 - `ChFi3d_FilBuilder::UnSet()`
+        ///
         /// Extracts the flag constant and the vector of edge E.
         #[cxx_name = "UnSet"]
         fn un_set_int_edge(self: Pin<&mut FilBuilder>, IC: i32, E: &TopoDS_Edge);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:92 - `ChFi3d_FilBuilder::SetRadius()`
+        ///
         /// Set a vector on vertex  V of  the contour of index IC.
         #[cxx_name = "SetRadius"]
         fn set_radius_real_int_vertex(
@@ -178,19 +196,29 @@ pub(crate) mod ffi {
             IC: i32,
             V: &TopoDS_Vertex,
         );
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:97 - `ChFi3d_FilBuilder::UnSet()`
+        ///
         /// Extracts the vector of  the vertex V.
         #[cxx_name = "UnSet"]
         fn un_set_int_vertex(self: Pin<&mut FilBuilder>, IC: i32, V: &TopoDS_Vertex);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:101 - `ChFi3d_FilBuilder::SetRadius()`
+        ///
         /// Set  a vertex on the point of parametre U in the edge IinC
         /// of  the contour of index IC
         #[cxx_name = "SetRadius"]
         fn set_radius_xy_int2(self: Pin<&mut FilBuilder>, UandR: &gp_XY, IC: i32, IinC: i32);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:106 - `ChFi3d_FilBuilder::IsConstant()`
+        ///
         /// Returns true E is flagged as edge constant.
         #[cxx_name = "IsConstant"]
         fn is_constant_int_edge(self: Pin<&mut FilBuilder>, IC: i32, E: &TopoDS_Edge) -> bool;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:109 - `ChFi3d_FilBuilder::Radius()`
+        ///
         /// Returns the vector if E is flagged as edge constant.
         #[cxx_name = "Radius"]
         fn radius_int_edge(self: Pin<&mut FilBuilder>, IC: i32, E: &TopoDS_Edge) -> f64;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:114 - `ChFi3d_FilBuilder::GetBounds()`
+        ///
         /// Returns in First and Last  les extremities of  the
         /// part of variable  vector framing E, returns
         /// False  if  E is flagged as edge constant.
@@ -202,12 +230,16 @@ pub(crate) mod ffi {
             First: &mut f64,
             Last: &mut f64,
         ) -> bool;
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:126 - `ChFi3d_FilBuilder::SetLaw()`
+        ///
         /// Sets the rule of elementary evolution of  the
         /// part to variable  vector framing E.
         #[cxx_name = "SetLaw"]
         fn set_law(self: Pin<&mut FilBuilder>, IC: i32, E: &TopoDS_Edge, L: &HandleLawFunction);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:130 - `ChFi3d_FilBuilder::Simulate()`
         #[cxx_name = "Simulate"]
         fn simulate(self: Pin<&mut FilBuilder>, IC: i32);
+        /// **Source:** `ChFi3d_FilBuilder.hxx`:132 - `ChFi3d_FilBuilder::NbSurf()`
         #[cxx_name = "NbSurf"]
         fn nb_surf(self: &FilBuilder, IC: i32) -> i32;
         /// Returns the rule of  elementary  evolution of  the
@@ -232,13 +264,14 @@ pub(crate) mod ffi {
         #[cxx_name = "ChFi3d_FilBuilder_as_ChFi3d_Builder_mut"]
         fn fil_builder_as_builder_mut(self_: Pin<&mut FilBuilder>) -> Pin<&mut Builder>;
         /// ======================== ChFi3d_Builder ========================
-        /// **Source:** `ChFi3d_Builder.hxx` - `ChFi3d_Builder`
+        /// **Source:** `ChFi3d_Builder.hxx`:64 - `ChFi3d_Builder`
         ///
         /// Root  class  for calculation of  surfaces (fillets,
         /// chamfers)  destined  to smooth edges  of
         /// a gap on a Shape and the reconstruction of  the   Shape.
         #[cxx_name = "ChFi3d_Builder"]
         type Builder;
+        /// **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
         #[cxx_name = "SetParams"]
         fn set_params(
             self: Pin<&mut Builder>,
@@ -249,72 +282,110 @@ pub(crate) mod ffi {
             TolApp2d: f64,
             Fleche: f64,
         );
+        /// **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
+        ///
         /// extracts from  the list the contour containing edge E.
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut Builder>, E: &TopoDS_Edge);
+        /// **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
+        ///
         /// gives the number of  the contour containing E or 0
         /// if E does  not  belong to  any  contour.
         #[cxx_name = "Contains"]
         fn contains_edge(self: &Builder, E: &TopoDS_Edge) -> i32;
+        /// **Source:** `ChFi3d_Builder.hxx`:91 - `ChFi3d_Builder::Contains()`
+        ///
         /// gives  the number of  the contour containing E or 0
         /// if E does  not  belong  to  any  contour.
         /// Sets in IndexInSpine the index of E in the contour if it's found
         #[cxx_name = "Contains"]
         fn contains_edge_int(self: &Builder, E: &TopoDS_Edge, IndexInSpine: &mut i32) -> i32;
+        /// **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
+        ///
         /// gives the number of  disjoint contours on  which
         /// the  fillets  are  calculated
         #[cxx_name = "NbElements"]
         fn nb_elements(self: &Builder) -> i32;
+        /// **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
+        ///
         /// returns the length of  the contour of index IC.
         #[cxx_name = "Length"]
         fn length(self: &Builder, IC: i32) -> f64;
+        /// **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
+        ///
         /// returns the abscissa of the vertex V on
         /// the contour of index IC.
         #[cxx_name = "Abscissa"]
         fn abscissa(self: &Builder, IC: i32, V: &TopoDS_Vertex) -> f64;
+        /// **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
+        ///
         /// returns the relative abscissa([0.,1.]) of the
         /// vertex V on the contour of index IC.
         #[cxx_name = "RelativeAbscissa"]
         fn relative_abscissa(self: &Builder, IC: i32, V: &TopoDS_Vertex) -> f64;
+        /// **Source:** `ChFi3d_Builder.hxx`:124 - `ChFi3d_Builder::ClosedAndTangent()`
+        ///
         /// returns true if the contour of index IC is closed
         /// an tangent.
         #[cxx_name = "ClosedAndTangent"]
         fn closed_and_tangent(self: &Builder, IC: i32) -> bool;
+        /// **Source:** `ChFi3d_Builder.hxx`:127 - `ChFi3d_Builder::Closed()`
+        ///
         /// returns true if the contour of index IC is closed
         #[cxx_name = "Closed"]
         fn closed(self: &Builder, IC: i32) -> bool;
+        /// **Source:** `ChFi3d_Builder.hxx`:131 - `ChFi3d_Builder::Compute()`
+        ///
         /// general calculation of geometry on all edges,
         /// topologic reconstruction.
         #[cxx_name = "Compute"]
         fn compute(self: Pin<&mut Builder>);
+        /// **Source:** `ChFi3d_Builder.hxx`:134 - `ChFi3d_Builder::IsDone()`
+        ///
         /// returns True if the computation  is  success
         #[cxx_name = "IsDone"]
         fn is_done(self: &Builder) -> bool;
+        /// **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
+        ///
         /// Advanced  function for the history
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut Builder>, EouV: &TopoDS_Shape) -> &TopTools_ListOfShape;
+        /// **Source:** `ChFi3d_Builder.hxx`:145 - `ChFi3d_Builder::NbFaultyContours()`
+        ///
         /// Returns the number of contours on  which the calculation
         /// has failed.
         #[cxx_name = "NbFaultyContours"]
         fn nb_faulty_contours(self: &Builder) -> i32;
+        /// **Source:** `ChFi3d_Builder.hxx`:149 - `ChFi3d_Builder::FaultyContour()`
+        ///
         /// Returns the number of  I'th contour on  which the calculation
         /// has failed.
         #[cxx_name = "FaultyContour"]
         fn faulty_contour(self: &Builder, I: i32) -> i32;
+        /// **Source:** `ChFi3d_Builder.hxx`:152 - `ChFi3d_Builder::NbComputedSurfaces()`
+        ///
         /// Returns the number of  surfaces calculated  on  the contour IC.
         #[cxx_name = "NbComputedSurfaces"]
         fn nb_computed_surfaces(self: &Builder, IC: i32) -> i32;
+        /// **Source:** `ChFi3d_Builder.hxx`:160 - `ChFi3d_Builder::NbFaultyVertices()`
+        ///
         /// Returns the number of vertices on  which the calculation
         /// has failed.
         #[cxx_name = "NbFaultyVertices"]
         fn nb_faulty_vertices(self: &Builder) -> i32;
+        /// **Source:** `ChFi3d_Builder.hxx`:166 - `ChFi3d_Builder::HasResult()`
+        ///
         /// returns True if  a partial result has  been  calculated
         #[cxx_name = "HasResult"]
         fn has_result(self: &Builder) -> bool;
+        /// **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
+        ///
         /// Reset all results of compute and returns the algorithm
         /// in the state of the last acquisition to enable modification of contours or areas.
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut Builder>);
+        /// **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
+        ///
         /// Method, implemented in the inheritants, calculates
         /// the elements of construction of the surface (fillet or
         /// chamfer).
@@ -332,6 +403,7 @@ pub(crate) mod ffi {
             Intf: &mut bool,
             Intl: &mut bool,
         ) -> bool;
+        /// **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
         #[cxx_name = "PerformTwoCornerbyInter"]
         fn perform_two_cornerby_inter(self: Pin<&mut Builder>, Index: i32) -> bool;
         /// gives the n'th set  of edges (contour)
@@ -368,17 +440,19 @@ pub(crate) mod ffi {
         #[cxx_name = "ChFi3d_Builder_Builder"]
         fn Builder_builder(self_: &Builder) -> UniquePtr<HandleTopOpeBRepBuildHBuilder>;
         /// ======================== ChFi3d_ChBuilder ========================
-        /// **Source:** `ChFi3d_ChBuilder.hxx` - `ChFi3d_ChBuilder`
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:42 - `ChFi3d_ChBuilder`
         ///
         /// construction tool for 3D chamfers on edges (on a solid).
         #[cxx_name = "ChFi3d_ChBuilder"]
         type ChBuilder;
-        /// **Source:** `ChFi3d_ChBuilder.hxx` - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:49 - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
         ///
         /// initializes the Builder with the Shape <S> for the
         /// computation of chamfers
         #[cxx_name = "ChFi3d_ChBuilder_ctor_shape_real"]
         fn ChBuilder_ctor_shape_real(S: &TopoDS_Shape, Ta: f64) -> UniquePtr<ChBuilder>;
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:56 - `ChFi3d_ChBuilder::Add()`
+        ///
         /// initializes a contour with the edge <E> as first
         /// (the next are found by propagation ).
         /// The two distances (parameters of the chamfer) must
@@ -386,22 +460,30 @@ pub(crate) mod ffi {
         /// if the edge <E> has more than 2 adjacent faces
         #[cxx_name = "Add"]
         fn add_edge(self: Pin<&mut ChBuilder>, E: &TopoDS_Edge);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:62 - `ChFi3d_ChBuilder::Add()`
+        ///
         /// initializes a new contour with the edge <E> as first
         /// (the next are found by propagation ), and  the
         /// distance <Dis>
         /// if the edge <E> has more than 2 adjacent faces
         #[cxx_name = "Add"]
         fn add_real_edge(self: Pin<&mut ChBuilder>, Dis: f64, E: &TopoDS_Edge);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:68 - `ChFi3d_ChBuilder::SetDist()`
+        ///
         /// set the distance <Dis> of the fillet
         /// contour of index <IC> in the DS with <Dis> on <F>.
         /// if the face <F> is not one of common faces
         /// of an edge of the contour <IC>
         #[cxx_name = "SetDist"]
         fn set_dist(self: Pin<&mut ChBuilder>, Dis: f64, IC: i32, F: &TopoDS_Face);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:74 - `ChFi3d_ChBuilder::GetDist()`
+        ///
         /// gives the distances <Dis> of the fillet
         /// contour of index <IC> in the DS
         #[cxx_name = "GetDist"]
         fn get_dist(self: &ChBuilder, IC: i32, Dis: &mut f64);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:80 - `ChFi3d_ChBuilder::Add()`
+        ///
         /// initializes a new contour with the edge <E> as first
         /// (the next are found by propagation ), and  the
         /// distance <Dis1> and <Dis2>
@@ -414,16 +496,22 @@ pub(crate) mod ffi {
             E: &TopoDS_Edge,
             F: &TopoDS_Face,
         );
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:89 - `ChFi3d_ChBuilder::SetDists()`
+        ///
         /// set the distances <Dis1> and <Dis2> of the fillet
         /// contour of index <IC> in the DS with <Dis1> on <F>.
         /// if the face <F> is not one of common faces
         /// of an edge of the contour <IC>
         #[cxx_name = "SetDists"]
         fn set_dists(self: Pin<&mut ChBuilder>, Dis1: f64, Dis2: f64, IC: i32, F: &TopoDS_Face);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:96 - `ChFi3d_ChBuilder::Dists()`
+        ///
         /// gives the distances <Dis1> and <Dis2> of the fillet
         /// contour of index <IC> in the DS
         #[cxx_name = "Dists"]
         fn dists(self: &ChBuilder, IC: i32, Dis1: &mut f64, Dis2: &mut f64);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:104 - `ChFi3d_ChBuilder::AddDA()`
+        ///
         /// initializes a new contour with the edge <E> as first
         /// (the next are found by propagation ), and  the
         /// distance <Dis1> and <Angle>
@@ -436,6 +524,8 @@ pub(crate) mod ffi {
             E: &TopoDS_Edge,
             F: &TopoDS_Face,
         );
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:113 - `ChFi3d_ChBuilder::SetDistAngle()`
+        ///
         /// set the distance <Dis> and <Angle> of the fillet
         /// contour of index <IC> in the DS with <Dis> on <F>.
         /// if the face <F> is not one of common faces
@@ -448,17 +538,25 @@ pub(crate) mod ffi {
             IC: i32,
             F: &TopoDS_Face,
         );
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:120 - `ChFi3d_ChBuilder::GetDistAngle()`
+        ///
         /// gives the distances <Dis> and <Angle> of the fillet
         /// contour of index <IC> in the DS
         #[cxx_name = "GetDistAngle"]
         fn get_dist_angle(self: &ChBuilder, IC: i32, Dis: &mut f64, Angle: &mut f64);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:134 - `ChFi3d_ChBuilder::ResetContour()`
+        ///
         /// Reset tous rayons du contour IC.
         #[cxx_name = "ResetContour"]
         fn reset_contour(self: Pin<&mut ChBuilder>, IC: i32);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:136 - `ChFi3d_ChBuilder::Simulate()`
         #[cxx_name = "Simulate"]
         fn simulate(self: Pin<&mut ChBuilder>, IC: i32);
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:138 - `ChFi3d_ChBuilder::NbSurf()`
         #[cxx_name = "NbSurf"]
         fn nb_surf(self: &ChBuilder, IC: i32) -> i32;
+        /// **Source:** `ChFi3d_ChBuilder.hxx`:227 - `ChFi3d_ChBuilder::PerformSurf()`
+        ///
         /// Methode, implemented in inheritants, calculates
         /// the elements of construction of  the surface (fillet
         /// or chamfer).

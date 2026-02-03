@@ -430,7 +430,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRep_Builder ========================
-        /// **Source:** `BRep_Builder.hxx` - `BRep_Builder`
+        /// **Source:** `BRep_Builder.hxx`:57 - `BRep_Builder`
         ///
         /// A framework providing advanced tolerance control.
         /// It is used to build Shapes.
@@ -450,9 +450,13 @@ pub(crate) mod ffi {
         /// tolerance spheres of two vertices
         #[cxx_name = "BRep_Builder"]
         type Builder;
+        /// **Source:** `BRep_Builder.hxx`:63 - `BRep_Builder::MakeFace()`
+        ///
         /// Makes an undefined Face.
         #[cxx_name = "MakeFace"]
         fn make_face_face(self: &Builder, F: Pin<&mut TopoDS_Face>);
+        /// **Source:** `BRep_Builder.hxx`:66 - `BRep_Builder::MakeFace()`
+        ///
         /// Makes a Face with a surface.
         #[cxx_name = "MakeFace"]
         fn make_face_face_handlesurface_real(
@@ -461,6 +465,8 @@ pub(crate) mod ffi {
             S: &HandleGeomSurface,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:71 - `BRep_Builder::MakeFace()`
+        ///
         /// Makes a Face with a surface and a location.
         #[cxx_name = "MakeFace"]
         fn make_face_face_handlesurface_location_real(
@@ -470,6 +476,8 @@ pub(crate) mod ffi {
             L: &TopLoc_Location,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:78 - `BRep_Builder::MakeFace()`
+        ///
         /// Makes a theFace with a single triangulation. The triangulation
         /// is in the same reference system than the TFace.
         #[cxx_name = "MakeFace"]
@@ -478,6 +486,8 @@ pub(crate) mod ffi {
             theFace: Pin<&mut TopoDS_Face>,
             theTriangulation: &HandlePolyTriangulation,
         );
+        /// **Source:** `BRep_Builder.hxx`:84 - `BRep_Builder::MakeFace()`
+        ///
         /// Makes a Face with a list of triangulations and active one.
         /// Use NULL active triangulation to set the first triangulation in list as active.
         /// The triangulations is in the same reference system than the TFace.
@@ -488,6 +498,8 @@ pub(crate) mod ffi {
             theTriangulations: &Poly_ListOfTriangulation,
             theActiveTriangulation: &HandlePolyTriangulation,
         );
+        /// **Source:** `BRep_Builder.hxx`:91 - `BRep_Builder::UpdateFace()`
+        ///
         /// Updates the face F using the tolerance value Tol,
         /// surface S and location Location.
         #[cxx_name = "UpdateFace"]
@@ -498,6 +510,8 @@ pub(crate) mod ffi {
             L: &TopLoc_Location,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:102 - `BRep_Builder::UpdateFace()`
+        ///
         /// Changes a face triangulation.
         /// A NULL theTriangulation removes face triangulations.
         /// If theToReset is TRUE face triangulations will be reset to new list with only one input
@@ -511,15 +525,23 @@ pub(crate) mod ffi {
             theTriangulation: &HandlePolyTriangulation,
             theToReset: bool,
         );
+        /// **Source:** `BRep_Builder.hxx`:107 - `BRep_Builder::UpdateFace()`
+        ///
         /// Updates the face Tolerance.
         #[cxx_name = "UpdateFace"]
         fn update_face_face_real(self: &Builder, F: &TopoDS_Face, Tol: f64);
+        /// **Source:** `BRep_Builder.hxx`:110 - `BRep_Builder::NaturalRestriction()`
+        ///
         /// Sets the  NaturalRestriction flag of  the face.
         #[cxx_name = "NaturalRestriction"]
         fn natural_restriction(self: &Builder, F: &TopoDS_Face, N: bool);
+        /// **Source:** `BRep_Builder.hxx`:113 - `BRep_Builder::MakeEdge()`
+        ///
         /// Makes an undefined Edge (no geometry).
         #[cxx_name = "MakeEdge"]
         fn make_edge_edge(self: &Builder, E: Pin<&mut TopoDS_Edge>);
+        /// **Source:** `BRep_Builder.hxx`:116 - `BRep_Builder::MakeEdge()`
+        ///
         /// Makes an Edge with a curve.
         #[cxx_name = "MakeEdge"]
         fn make_edge_edge_handlecurve_real(
@@ -528,6 +550,8 @@ pub(crate) mod ffi {
             C: &HandleGeomCurve,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:119 - `BRep_Builder::MakeEdge()`
+        ///
         /// Makes an Edge with a curve and a location.
         #[cxx_name = "MakeEdge"]
         fn make_edge_edge_handlecurve_location_real(
@@ -537,6 +561,8 @@ pub(crate) mod ffi {
             L: &TopLoc_Location,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:125 - `BRep_Builder::MakeEdge()`
+        ///
         /// Makes an Edge with a polygon 3d.
         #[cxx_name = "MakeEdge"]
         fn make_edge_edge_handlepolygon3d(
@@ -544,6 +570,8 @@ pub(crate) mod ffi {
             E: Pin<&mut TopoDS_Edge>,
             P: &HandlePolyPolygon3D,
         );
+        /// **Source:** `BRep_Builder.hxx`:128 - `BRep_Builder::MakeEdge()`
+        ///
         /// makes an Edge polygon on Triangulation.
         #[cxx_name = "MakeEdge"]
         fn make_edge_edge_handlepolygonontriangulation_handletriangulation(
@@ -552,6 +580,8 @@ pub(crate) mod ffi {
             N: &HandlePolyPolygonOnTriangulation,
             T: &HandlePolyTriangulation,
         );
+        /// **Source:** `BRep_Builder.hxx`:133 - `BRep_Builder::MakeEdge()`
+        ///
         /// makes an Edge polygon on Triangulation.
         #[cxx_name = "MakeEdge"]
         fn make_edge_edge_handlepolygonontriangulation_handletriangulation_location(
@@ -561,6 +591,8 @@ pub(crate) mod ffi {
             T: &HandlePolyTriangulation,
             L: &TopLoc_Location,
         );
+        /// **Source:** `BRep_Builder.hxx`:140 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Sets a 3D curve for the edge.
         /// If <C> is a null handle, remove any existing 3d curve.
         #[cxx_name = "UpdateEdge"]
@@ -570,6 +602,8 @@ pub(crate) mod ffi {
             C: &HandleGeomCurve,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:144 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Sets a 3D curve for the edge.
         /// If <C> is a null handle, remove any existing 3d curve.
         #[cxx_name = "UpdateEdge"]
@@ -580,6 +614,8 @@ pub(crate) mod ffi {
             L: &TopLoc_Location,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:151 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Sets a pcurve for the edge on the face.
         /// If <C> is a null handle, remove any existing pcurve.
         #[cxx_name = "UpdateEdge"]
@@ -590,6 +626,8 @@ pub(crate) mod ffi {
             F: &TopoDS_Face,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:159 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Sets pcurves for the edge on the  closed face.  If
         /// <C1> or <C2> is a null handle, remove any existing
         /// pcurve.
@@ -602,6 +640,8 @@ pub(crate) mod ffi {
             F: &TopoDS_Face,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:167 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Sets a pcurve for the edge on the face.
         /// If <C> is a null handle, remove any existing pcurve.
         #[cxx_name = "UpdateEdge"]
@@ -613,6 +653,8 @@ pub(crate) mod ffi {
             L: &TopLoc_Location,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:176 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Sets a pcurve for the edge on the face.
         /// If <C> is a null handle, remove any existing pcurve.
         /// Sets UV bounds for curve repsentation
@@ -627,6 +669,8 @@ pub(crate) mod ffi {
             Pf: &gp_Pnt2d,
             Pl: &gp_Pnt2d,
         );
+        /// **Source:** `BRep_Builder.hxx`:187 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Sets pcurves for the edge on the closed surface.
         /// <C1> or <C2> is a null handle, remove any existing
         /// pcurve.
@@ -640,6 +684,8 @@ pub(crate) mod ffi {
             L: &TopLoc_Location,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:198 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Sets pcurves for the edge on the closed surface.
         /// <C1> or <C2> is a null handle, remove any existing
         /// pcurve.
@@ -656,6 +702,8 @@ pub(crate) mod ffi {
             Pf: &gp_Pnt2d,
             Pl: &gp_Pnt2d,
         );
+        /// **Source:** `BRep_Builder.hxx`:209 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Changes an Edge 3D polygon.
         /// A null Polygon removes the 3d Polygon.
         #[cxx_name = "UpdateEdge"]
@@ -664,6 +712,8 @@ pub(crate) mod ffi {
             E: &TopoDS_Edge,
             P: &HandlePolyPolygon3D,
         );
+        /// **Source:** `BRep_Builder.hxx`:213 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Changes an Edge 3D polygon.
         /// A null Polygon removes the 3d Polygon.
         #[cxx_name = "UpdateEdge"]
@@ -673,6 +723,8 @@ pub(crate) mod ffi {
             P: &HandlePolyPolygon3D,
             L: &TopLoc_Location,
         );
+        /// **Source:** `BRep_Builder.hxx`:218 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Changes an Edge polygon on Triangulation.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygonontriangulation_handletriangulation(
@@ -681,6 +733,8 @@ pub(crate) mod ffi {
             N: &HandlePolyPolygonOnTriangulation,
             T: &HandlePolyTriangulation,
         );
+        /// **Source:** `BRep_Builder.hxx`:223 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Changes an Edge polygon on Triangulation.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygonontriangulation_handletriangulation_location(
@@ -690,6 +744,8 @@ pub(crate) mod ffi {
             T: &HandlePolyTriangulation,
             L: &TopLoc_Location,
         );
+        /// **Source:** `BRep_Builder.hxx`:229 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Changes an Edge polygon on Triangulation.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygonontriangulation2_handletriangulation(
@@ -699,6 +755,8 @@ pub(crate) mod ffi {
             N2: &HandlePolyPolygonOnTriangulation,
             T: &HandlePolyTriangulation,
         );
+        /// **Source:** `BRep_Builder.hxx`:235 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Changes an Edge polygon on Triangulation.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygonontriangulation2_handletriangulation_location(
@@ -709,6 +767,8 @@ pub(crate) mod ffi {
             T: &HandlePolyTriangulation,
             L: &TopLoc_Location,
         );
+        /// **Source:** `BRep_Builder.hxx`:242 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Changes Edge polygon on a face.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygon2d_face(
@@ -717,6 +777,8 @@ pub(crate) mod ffi {
             P: &HandlePolyPolygon2D,
             S: &TopoDS_Face,
         );
+        /// **Source:** `BRep_Builder.hxx`:247 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Changes Edge polygon on a face.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygon2d_handlesurface_location(
@@ -726,6 +788,8 @@ pub(crate) mod ffi {
             S: &HandleGeomSurface,
             T: &TopLoc_Location,
         );
+        /// **Source:** `BRep_Builder.hxx`:255 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Changes Edge polygons on a face.
         ///
         /// A null Polygon removes the 2d Polygon.
@@ -737,6 +801,8 @@ pub(crate) mod ffi {
             P2: &HandlePolyPolygon2D,
             S: &TopoDS_Face,
         );
+        /// **Source:** `BRep_Builder.hxx`:263 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Changes Edge polygons on a face.
         ///
         /// A null Polygon removes the 2d Polygon.
@@ -749,18 +815,28 @@ pub(crate) mod ffi {
             S: &HandleGeomSurface,
             L: &TopLoc_Location,
         );
+        /// **Source:** `BRep_Builder.hxx`:270 - `BRep_Builder::UpdateEdge()`
+        ///
         /// Updates the edge tolerance.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_real(self: &Builder, E: &TopoDS_Edge, Tol: f64);
+        /// **Source:** `BRep_Builder.hxx`:287 - `BRep_Builder::SameParameter()`
+        ///
         /// Sets the same parameter flag for the edge <E>.
         #[cxx_name = "SameParameter"]
         fn same_parameter(self: &Builder, E: &TopoDS_Edge, S: bool);
+        /// **Source:** `BRep_Builder.hxx`:290 - `BRep_Builder::SameRange()`
+        ///
         /// Sets the same range flag for the edge <E>.
         #[cxx_name = "SameRange"]
         fn same_range(self: &Builder, E: &TopoDS_Edge, S: bool);
+        /// **Source:** `BRep_Builder.hxx`:293 - `BRep_Builder::Degenerated()`
+        ///
         /// Sets the degenerated flag for the edge <E>.
         #[cxx_name = "Degenerated"]
         fn degenerated(self: &Builder, E: &TopoDS_Edge, D: bool);
+        /// **Source:** `BRep_Builder.hxx`:297 - `BRep_Builder::Range()`
+        ///
         /// Sets the range of the 3d curve if Only3d=TRUE,
         /// otherwise sets the range to all the representations
         #[cxx_name = "Range"]
@@ -771,6 +847,8 @@ pub(crate) mod ffi {
             Last: f64,
             Only3d: bool,
         );
+        /// **Source:** `BRep_Builder.hxx`:304 - `BRep_Builder::Range()`
+        ///
         /// Sets the range  of the edge  on the pcurve on  the
         /// surface.
         #[cxx_name = "Range"]
@@ -782,6 +860,8 @@ pub(crate) mod ffi {
             First: f64,
             Last: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:311 - `BRep_Builder::Range()`
+        ///
         /// Sets the range of the edge on the pcurve on the face.
         #[cxx_name = "Range"]
         fn range_edge_face_real2(
@@ -791,13 +871,19 @@ pub(crate) mod ffi {
             First: f64,
             Last: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:318 - `BRep_Builder::Transfert()`
+        ///
         /// Add  to <Eout>  the  geometric representations  of
         /// <Ein>.
         #[cxx_name = "Transfert"]
         fn transfert_edge2(self: &Builder, Ein: &TopoDS_Edge, Eout: &TopoDS_Edge);
+        /// **Source:** `BRep_Builder.hxx`:321 - `BRep_Builder::MakeVertex()`
+        ///
         /// Makes an udefined vertex without geometry.
         #[cxx_name = "MakeVertex"]
         fn make_vertex_vertex(self: &Builder, V: Pin<&mut TopoDS_Vertex>);
+        /// **Source:** `BRep_Builder.hxx`:324 - `BRep_Builder::MakeVertex()`
+        ///
         /// Makes a vertex from a 3D point.
         #[cxx_name = "MakeVertex"]
         fn make_vertex_vertex_pnt_real(
@@ -806,9 +892,13 @@ pub(crate) mod ffi {
             P: &gp_Pnt,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:327 - `BRep_Builder::UpdateVertex()`
+        ///
         /// Sets a 3D point on the vertex.
         #[cxx_name = "UpdateVertex"]
         fn update_vertex_vertex_pnt_real(self: &Builder, V: &TopoDS_Vertex, P: &gp_Pnt, Tol: f64);
+        /// **Source:** `BRep_Builder.hxx`:333 - `BRep_Builder::UpdateVertex()`
+        ///
         /// Sets  the parameter  for the   vertex on the  edge
         /// curves.
         #[cxx_name = "UpdateVertex"]
@@ -819,6 +909,8 @@ pub(crate) mod ffi {
             E: &TopoDS_Edge,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:340 - `BRep_Builder::UpdateVertex()`
+        ///
         /// Sets  the parameter  for the  vertex  on the  edge
         /// pcurve  on the face.
         #[cxx_name = "UpdateVertex"]
@@ -830,6 +922,8 @@ pub(crate) mod ffi {
             F: &TopoDS_Face,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:348 - `BRep_Builder::UpdateVertex()`
+        ///
         /// Sets  the parameter  for the  vertex  on the  edge
         /// pcurve  on the surface.
         #[cxx_name = "UpdateVertex"]
@@ -842,6 +936,8 @@ pub(crate) mod ffi {
             L: &TopLoc_Location,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:356 - `BRep_Builder::UpdateVertex()`
+        ///
         /// Sets the parameters for the vertex on the face.
         #[cxx_name = "UpdateVertex"]
         fn update_vertex_vertex_real2_face_real(
@@ -852,9 +948,13 @@ pub(crate) mod ffi {
             F: &TopoDS_Face,
             Tol: f64,
         );
+        /// **Source:** `BRep_Builder.hxx`:363 - `BRep_Builder::UpdateVertex()`
+        ///
         /// Updates the vertex tolerance.
         #[cxx_name = "UpdateVertex"]
         fn update_vertex_vertex_real(self: &Builder, V: &TopoDS_Vertex, Tol: f64);
+        /// **Source:** `BRep_Builder.hxx`:367 - `BRep_Builder::Transfert()`
+        ///
         /// Transfert the parameters  of   Vin on  Ein as  the
         /// parameter of Vout on Eout.
         #[cxx_name = "Transfert"]
@@ -872,12 +972,14 @@ pub(crate) mod ffi {
         #[cxx_name = "BRep_Builder_as_TopoDS_Builder_mut"]
         fn builder_as_topo_ds_builder_mut(self_: Pin<&mut Builder>) -> Pin<&mut TopoDS_Builder>;
         /// ======================== BRep_Tool ========================
-        /// **Source:** `BRep_Tool.hxx` - `BRep_Tool`
+        /// **Source:** `BRep_Tool.hxx`:44 - `BRep_Tool`
         ///
         /// Provides class methods  to  access to the geometry
         /// of BRep shapes.
         #[cxx_name = "BRep_Tool"]
         type Tool;
+        /// **Source:** `BRep_Tool.hxx`:54 - `BRep_Tool::IsClosed()`
+        ///
         /// If S is Shell, returns True if it has no free boundaries (edges).
         /// If S is Wire, returns True if it has no free ends (vertices).
         /// (Internal and External sub-shepes are ignored in these checks)
@@ -885,23 +987,35 @@ pub(crate) mod ffi {
         /// For other shape types returns S.Closed().
         #[cxx_name = "BRep_Tool_IsClosed_shape"]
         fn Tool_is_closed_shape(S: &TopoDS_Shape) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:63 - `BRep_Tool::Surface()`
+        ///
         /// Returns the geometric  surface of the face. It can
         /// be a copy if there is a Location.
         #[cxx_name = "BRep_Tool_Surface_face"]
         fn Tool_surface_face(F: &TopoDS_Face) -> UniquePtr<HandleGeomSurface>;
+        /// **Source:** `BRep_Tool.hxx`:87 - `BRep_Tool::Tolerance()`
+        ///
         /// Returns the tolerance of the face.
         #[cxx_name = "BRep_Tool_Tolerance_face"]
         fn Tool_tolerance_face(F: &TopoDS_Face) -> f64;
+        /// **Source:** `BRep_Tool.hxx`:90 - `BRep_Tool::NaturalRestriction()`
+        ///
         /// Returns the  NaturalRestriction  flag of the  face.
         #[cxx_name = "BRep_Tool_NaturalRestriction"]
         fn Tool_natural_restriction(F: &TopoDS_Face) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:93 - `BRep_Tool::IsGeometric()`
+        ///
         /// Returns True if <F> has a surface, false otherwise.
         #[cxx_name = "BRep_Tool_IsGeometric_face"]
         fn Tool_is_geometric_face(F: &TopoDS_Face) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:97 - `BRep_Tool::IsGeometric()`
+        ///
         /// Returns True if <E> is a 3d curve or a curve on
         /// surface.
         #[cxx_name = "BRep_Tool_IsGeometric_edge"]
         fn Tool_is_geometric_edge(E: &TopoDS_Edge) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:110 - `BRep_Tool::Curve()`
+        ///
         /// Returns the 3D curve  of the edge. May be a Null handle.
         /// In <First> and <Last> the parameter range.
         /// It can be a copy if there is a Location.
@@ -911,6 +1025,8 @@ pub(crate) mod ffi {
             First: &mut f64,
             Last: &mut f64,
         ) -> UniquePtr<HandleGeomCurve>;
+        /// **Source:** `BRep_Tool.hxx`:150 - `BRep_Tool::CurveOnPlane()`
+        ///
         /// For the planar surface builds the 2d curve for the edge
         /// by projection of the edge on plane.
         /// Returns a NULL handle if the surface is not planar or
@@ -923,6 +1039,8 @@ pub(crate) mod ffi {
             First: &mut f64,
             Last: &mut f64,
         ) -> UniquePtr<HandleGeom2dCurve>;
+        /// **Source:** `BRep_Tool.hxx`:160 - `BRep_Tool::CurveOnSurface()`
+        ///
         /// Returns in <C>, <S>, <L> a 2d curve, a surface and
         /// a location for the edge <E>. <C> and <S>  are null
         /// if the  edge has no curve on  surface.  Returns in
@@ -936,6 +1054,8 @@ pub(crate) mod ffi {
             First: &mut f64,
             Last: &mut f64,
         );
+        /// **Source:** `BRep_Tool.hxx`:171 - `BRep_Tool::CurveOnSurface()`
+        ///
         /// Returns in <C>, <S>, <L> the 2d curve, the surface
         /// and the location for the edge <E> of rank <Index>.
         /// <C> and <S> are null if the index is out of range.
@@ -950,6 +1070,8 @@ pub(crate) mod ffi {
             Last: &mut f64,
             Index: i32,
         );
+        /// **Source:** `BRep_Tool.hxx`:182 - `BRep_Tool::PolygonOnSurface()`
+        ///
         /// Returns the polygon associated to the  edge in  the
         /// parametric  space of  the  face.  Returns   a NULL
         /// handle  if this polygon  does not exist.
@@ -958,6 +1080,8 @@ pub(crate) mod ffi {
             E: &TopoDS_Edge,
             F: &TopoDS_Face,
         ) -> UniquePtr<HandlePolyPolygon2D>;
+        /// **Source:** `BRep_Tool.hxx`:188 - `BRep_Tool::PolygonOnSurface()`
+        ///
         /// Returns the polygon associated to the  edge in  the
         /// parametric  space of  the surface. Returns   a NULL
         /// handle  if this polygon  does not exist.
@@ -967,6 +1091,8 @@ pub(crate) mod ffi {
             S: &HandleGeomSurface,
             L: &TopLoc_Location,
         ) -> UniquePtr<HandlePolyPolygon2D>;
+        /// **Source:** `BRep_Tool.hxx`:195 - `BRep_Tool::PolygonOnSurface()`
+        ///
         /// Returns in <C>, <S>, <L> a 2d curve, a surface and
         /// a location for the edge <E>. <C> and <S>  are null
         /// if the  edge has no polygon on  surface.
@@ -977,6 +1103,8 @@ pub(crate) mod ffi {
             S: Pin<&mut HandleGeomSurface>,
             L: Pin<&mut TopLoc_Location>,
         );
+        /// **Source:** `BRep_Tool.hxx`:203 - `BRep_Tool::PolygonOnSurface()`
+        ///
         /// Returns in <C>, <S>, <L> the 2d curve, the surface
         /// and the location for the edge <E> of rank <Index>.
         /// <C> and <S> are null if the index is out of range.
@@ -988,6 +1116,8 @@ pub(crate) mod ffi {
             L: Pin<&mut TopLoc_Location>,
             Index: i32,
         );
+        /// **Source:** `BRep_Tool.hxx`:221 - `BRep_Tool::PolygonOnTriangulation()`
+        ///
         /// Returns in <P>, <T>, <L> a polygon on triangulation, a
         /// triangulation and a location for the edge <E>.
         /// <P>  and  <T>  are null  if  the  edge has no
@@ -999,6 +1129,8 @@ pub(crate) mod ffi {
             T: Pin<&mut HandlePolyTriangulation>,
             L: Pin<&mut TopLoc_Location>,
         );
+        /// **Source:** `BRep_Tool.hxx`:230 - `BRep_Tool::PolygonOnTriangulation()`
+        ///
         /// Returns   in   <P>,  <T>,    <L> a     polygon  on
         /// triangulation,   a triangulation  and a  location for
         /// the edge <E> for the range index.  <C> and <S> are
@@ -1011,11 +1143,15 @@ pub(crate) mod ffi {
             L: Pin<&mut TopLoc_Location>,
             Index: i32,
         );
+        /// **Source:** `BRep_Tool.hxx`:239 - `BRep_Tool::IsClosed()`
+        ///
         /// Returns  True  if  <E>  has  two  PCurves  in  the
         /// parametric space of <F>. i.e.  <F>  is on a closed
         /// surface and <E> is on the closing curve.
         #[cxx_name = "BRep_Tool_IsClosed_edge_face"]
         fn Tool_is_closed_edge_face(E: &TopoDS_Edge, F: &TopoDS_Face) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:244 - `BRep_Tool::IsClosed()`
+        ///
         /// Returns  True  if  <E>  has  two  PCurves  in  the
         /// parametric space  of <S>.  i.e.   <S>  is a closed
         /// surface and <E> is on the closing curve.
@@ -1025,6 +1161,8 @@ pub(crate) mod ffi {
             S: &HandleGeomSurface,
             L: &TopLoc_Location,
         ) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:250 - `BRep_Tool::IsClosed()`
+        ///
         /// Returns  True  if <E> has two arrays of indices in
         /// the triangulation <T>.
         #[cxx_name = "BRep_Tool_IsClosed_edge_handletriangulation_location"]
@@ -1033,21 +1171,33 @@ pub(crate) mod ffi {
             T: &HandlePolyTriangulation,
             L: &TopLoc_Location,
         ) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:255 - `BRep_Tool::Tolerance()`
+        ///
         /// Returns the tolerance for <E>.
         #[cxx_name = "BRep_Tool_Tolerance_edge"]
         fn Tool_tolerance_edge(E: &TopoDS_Edge) -> f64;
+        /// **Source:** `BRep_Tool.hxx`:258 - `BRep_Tool::SameParameter()`
+        ///
         /// Returns the SameParameter flag for the edge.
         #[cxx_name = "BRep_Tool_SameParameter"]
         fn Tool_same_parameter(E: &TopoDS_Edge) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:261 - `BRep_Tool::SameRange()`
+        ///
         /// Returns the SameRange flag for the edge.
         #[cxx_name = "BRep_Tool_SameRange"]
         fn Tool_same_range(E: &TopoDS_Edge) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:264 - `BRep_Tool::Degenerated()`
+        ///
         /// Returns True  if the edge is degenerated.
         #[cxx_name = "BRep_Tool_Degenerated"]
         fn Tool_degenerated(E: &TopoDS_Edge) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:267 - `BRep_Tool::Range()`
+        ///
         /// Gets the range of the 3d curve.
         #[cxx_name = "BRep_Tool_Range_edge_real2"]
         fn Tool_range_edge_real2(E: &TopoDS_Edge, First: &mut f64, Last: &mut f64);
+        /// **Source:** `BRep_Tool.hxx`:273 - `BRep_Tool::Range()`
+        ///
         /// Gets the range  of the edge  on the pcurve on  the
         /// surface.
         #[cxx_name = "BRep_Tool_Range_edge_handlesurface_location_real2"]
@@ -1058,6 +1208,8 @@ pub(crate) mod ffi {
             First: &mut f64,
             Last: &mut f64,
         );
+        /// **Source:** `BRep_Tool.hxx`:280 - `BRep_Tool::Range()`
+        ///
         /// Gets the range of the edge on the pcurve on the face.
         #[cxx_name = "BRep_Tool_Range_edge_face_real2"]
         fn Tool_range_edge_face_real2(
@@ -1066,6 +1218,8 @@ pub(crate) mod ffi {
             First: &mut f64,
             Last: &mut f64,
         );
+        /// **Source:** `BRep_Tool.hxx`:286 - `BRep_Tool::UVPoints()`
+        ///
         /// Gets the UV locations of the extremities of the edge.
         #[cxx_name = "BRep_Tool_UVPoints_edge_handlesurface_location_pnt2d2"]
         fn Tool_uv_points_edge_handlesurface_location_pnt2d2(
@@ -1075,6 +1229,8 @@ pub(crate) mod ffi {
             PFirst: Pin<&mut gp_Pnt2d>,
             PLast: Pin<&mut gp_Pnt2d>,
         );
+        /// **Source:** `BRep_Tool.hxx`:293 - `BRep_Tool::UVPoints()`
+        ///
         /// Gets the UV locations of the extremities of the edge.
         #[cxx_name = "BRep_Tool_UVPoints_edge_face_pnt2d2"]
         fn Tool_uv_points_edge_face_pnt2d2(
@@ -1083,6 +1239,8 @@ pub(crate) mod ffi {
             PFirst: Pin<&mut gp_Pnt2d>,
             PLast: Pin<&mut gp_Pnt2d>,
         );
+        /// **Source:** `BRep_Tool.hxx`:299 - `BRep_Tool::SetUVPoints()`
+        ///
         /// Sets the UV locations of the extremities of the edge.
         #[cxx_name = "BRep_Tool_SetUVPoints_edge_handlesurface_location_pnt2d2"]
         fn Tool_set_uv_points_edge_handlesurface_location_pnt2d2(
@@ -1092,6 +1250,8 @@ pub(crate) mod ffi {
             PFirst: &gp_Pnt2d,
             PLast: &gp_Pnt2d,
         );
+        /// **Source:** `BRep_Tool.hxx`:306 - `BRep_Tool::SetUVPoints()`
+        ///
         /// Sets the UV locations of the extremities of the edge.
         #[cxx_name = "BRep_Tool_SetUVPoints_edge_face_pnt2d2"]
         fn Tool_set_uv_points_edge_face_pnt2d2(
@@ -1100,6 +1260,8 @@ pub(crate) mod ffi {
             PFirst: &gp_Pnt2d,
             PLast: &gp_Pnt2d,
         );
+        /// **Source:** `BRep_Tool.hxx`:313 - `BRep_Tool::HasContinuity()`
+        ///
         /// Returns True if the edge is on the surfaces of the
         /// two faces.
         #[cxx_name = "BRep_Tool_HasContinuity_edge_face2"]
@@ -1108,6 +1270,8 @@ pub(crate) mod ffi {
             F1: &TopoDS_Face,
             F2: &TopoDS_Face,
         ) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:323 - `BRep_Tool::HasContinuity()`
+        ///
         /// Returns True if the edge is on the surfaces.
         #[cxx_name = "BRep_Tool_HasContinuity_edge_handlesurface2_location2"]
         fn Tool_has_continuity_edge_handlesurface2_location2(
@@ -1117,16 +1281,24 @@ pub(crate) mod ffi {
             L1: &TopLoc_Location,
             L2: &TopLoc_Location,
         ) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:338 - `BRep_Tool::HasContinuity()`
+        ///
         /// Returns True if the edge has regularity on some
         /// two surfaces
         #[cxx_name = "BRep_Tool_HasContinuity_edge"]
         fn Tool_has_continuity_edge(E: &TopoDS_Edge) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:345 - `BRep_Tool::Pnt()`
+        ///
         /// Returns the 3d point.
         #[cxx_name = "BRep_Tool_Pnt"]
         fn Tool_pnt(V: &TopoDS_Vertex) -> UniquePtr<gp_Pnt>;
+        /// **Source:** `BRep_Tool.hxx`:348 - `BRep_Tool::Tolerance()`
+        ///
         /// Returns the tolerance.
         #[cxx_name = "BRep_Tool_Tolerance_vertex"]
         fn Tool_tolerance_vertex(V: &TopoDS_Vertex) -> f64;
+        /// **Source:** `BRep_Tool.hxx`:355 - `BRep_Tool::Parameter()`
+        ///
         /// Finds the parameter of <theV> on <theE>.
         /// @param[in] theV  input vertex
         /// @param[in] theE  input edge
@@ -1138,10 +1310,14 @@ pub(crate) mod ffi {
             theE: &TopoDS_Edge,
             theParam: &mut f64,
         ) -> bool;
+        /// **Source:** `BRep_Tool.hxx`:361 - `BRep_Tool::Parameter()`
+        ///
         /// Returns the parameter of <V> on <E>.
         /// Throws Standard_NoSuchObject if no parameter on edge
         #[cxx_name = "BRep_Tool_Parameter_vertex_edge"]
         fn Tool_parameter_vertex_edge(V: &TopoDS_Vertex, E: &TopoDS_Edge) -> f64;
+        /// **Source:** `BRep_Tool.hxx`:365 - `BRep_Tool::Parameter()`
+        ///
         /// Returns the  parameters  of   the  vertex   on the
         /// pcurve of the edge on the face.
         #[cxx_name = "BRep_Tool_Parameter_vertex_edge_face"]
@@ -1150,6 +1326,8 @@ pub(crate) mod ffi {
             E: &TopoDS_Edge,
             F: &TopoDS_Face,
         ) -> f64;
+        /// **Source:** `BRep_Tool.hxx`:371 - `BRep_Tool::Parameter()`
+        ///
         /// Returns the  parameters  of   the  vertex   on the
         /// pcurve of the edge on the surface.
         #[cxx_name = "BRep_Tool_Parameter_vertex_edge_handlesurface_location"]
@@ -1159,6 +1337,8 @@ pub(crate) mod ffi {
             S: &HandleGeomSurface,
             L: &TopLoc_Location,
         ) -> f64;
+        /// **Source:** `BRep_Tool.hxx`:377 - `BRep_Tool::Parameters()`
+        ///
         /// Returns the parameters of the vertex on the face.
         #[cxx_name = "BRep_Tool_Parameters"]
         fn Tool_parameters(V: &TopoDS_Vertex, F: &TopoDS_Face) -> UniquePtr<gp_Pnt2d>;

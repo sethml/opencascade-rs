@@ -121,6 +121,12 @@ fn get_entity_file(entity: &Entity) -> Option<std::path::PathBuf> {
     entity_path.canonicalize().ok().or(Some(entity_path))
 }
 
+/// Get the source line number for an entity
+fn get_entity_line(entity: &Entity) -> Option<u32> {
+    let location = entity.get_location()?;
+    Some(location.get_file_location().line)
+}
+
 /// Visit top-level entities for batch parsing
 /// Distributes entities to the appropriate ParsedHeader based on source file
 fn visit_top_level_batch(
@@ -348,6 +354,7 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
         module,
         comment,
         source_header: source_header.to_string(),
+        source_line: get_entity_line(entity),
         constructors,
         methods,
         static_methods,
@@ -626,6 +633,7 @@ fn has_standard_export(entity: &Entity) -> bool {
 fn parse_constructor(entity: &Entity, verbose: bool) -> Option<Constructor> {
     let comment = extract_doxygen_comment(entity);
     let params = parse_params(entity);
+    let source_line = get_entity_line(entity);
 
     if verbose {
         let param_str = params
@@ -636,7 +644,7 @@ fn parse_constructor(entity: &Entity, verbose: bool) -> Option<Constructor> {
         println!("    Constructor({})", param_str);
     }
 
-    Some(Constructor { comment, params })
+    Some(Constructor { comment, params, source_line })
 }
 
 /// Parse an instance method
@@ -646,6 +654,7 @@ fn parse_method(entity: &Entity, verbose: bool) -> Option<Method> {
     let is_const = entity.is_const_method();
     let params = parse_params(entity);
     let return_type = parse_return_type(entity);
+    let source_line = get_entity_line(entity);
 
     if verbose {
         let const_str = if is_const { " const" } else { "" };
@@ -662,6 +671,7 @@ fn parse_method(entity: &Entity, verbose: bool) -> Option<Method> {
         is_const,
         params,
         return_type,
+        source_line,
     })
 }
 
@@ -671,6 +681,7 @@ fn parse_static_method(entity: &Entity, verbose: bool) -> Option<StaticMethod> {
     let comment = extract_doxygen_comment(entity);
     let params = parse_params(entity);
     let return_type = parse_return_type(entity);
+    let source_line = get_entity_line(entity);
 
     if verbose {
         let ret_str = return_type
@@ -685,6 +696,7 @@ fn parse_static_method(entity: &Entity, verbose: bool) -> Option<StaticMethod> {
         comment,
         params,
         return_type,
+        source_line,
     })
 }
 

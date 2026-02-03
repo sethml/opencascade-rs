@@ -465,7 +465,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== TopoDS_Shape ========================
-        /// **Source:** `TopoDS_Shape.hxx` - `TopoDS_Shape`
+        /// **Source:** `TopoDS_Shape.hxx`:40 - `TopoDS_Shape`
         ///
         /// Describes a shape which
         /// - references an underlying shape with the potential
@@ -479,23 +479,31 @@ pub(crate) mod ffi {
         /// shape which has an empty list of shapes.
         #[cxx_name = "TopoDS_Shape"]
         type Shape;
-        /// **Source:** `TopoDS_Shape.hxx` - `TopoDS_Shape::TopoDS_Shape()`
+        /// **Source:** `TopoDS_Shape.hxx`:46 - `TopoDS_Shape::TopoDS_Shape()`
         ///
         /// Creates a NULL Shape referring to nothing.
         #[cxx_name = "TopoDS_Shape_ctor"]
         fn Shape_ctor() -> UniquePtr<Shape>;
+        /// **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
+        ///
         /// Returns true if this shape is null. In other words, it
         /// references no underlying shape with the potential to
         /// be given a location and an orientation.
         #[cxx_name = "IsNull"]
         fn is_null(self: &Shape) -> bool;
+        /// **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`
+        ///
         /// Destroys the reference to the underlying shape
         /// stored in this shape. As a result, this shape becomes null.
         #[cxx_name = "Nullify"]
         fn nullify(self: Pin<&mut Shape>);
+        /// **Source:** `TopoDS_Shape.hxx`:90 - `TopoDS_Shape::Location()`
+        ///
         /// Returns the shape local coordinate system.
         #[cxx_name = "Location"]
         fn location(self: &Shape) -> &TopLoc_Location;
+        /// **Source:** `TopoDS_Shape.hxx`:95 - `TopoDS_Shape::Location()`
+        ///
         /// Sets the shape local coordinate system.
         /// @param theLoc the new local coordinate system.
         /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
@@ -505,97 +513,150 @@ pub(crate) mod ffi {
             theLoc: &TopLoc_Location,
             theRaiseExc: bool,
         );
+        /// **Source:** `TopoDS_Shape.hxx`:134 - `TopoDS_Shape::TShape()`
+        ///
         /// Returns a handle to the actual shape implementation.
         #[cxx_name = "TShape"]
         fn t_shape(self: &Shape) -> &HandleTopoDSTShape;
+        /// **Source:** `TopoDS_Shape.hxx`:144 - `TopoDS_Shape::Free()`
+        ///
         /// Returns the free flag.
         #[cxx_name = "Free"]
         fn free(self: &Shape) -> bool;
+        /// **Source:** `TopoDS_Shape.hxx`:147 - `TopoDS_Shape::Free()`
+        ///
         /// Sets the free flag.
         #[cxx_name = "Free"]
         fn free_bool(self: Pin<&mut Shape>, theIsFree: bool);
+        /// **Source:** `TopoDS_Shape.hxx`:150 - `TopoDS_Shape::Locked()`
+        ///
         /// Returns the locked flag.
         #[cxx_name = "Locked"]
         fn locked(self: &Shape) -> bool;
+        /// **Source:** `TopoDS_Shape.hxx`:153 - `TopoDS_Shape::Locked()`
+        ///
         /// Sets the locked flag.
         #[cxx_name = "Locked"]
         fn locked_bool(self: Pin<&mut Shape>, theIsLocked: bool);
+        /// **Source:** `TopoDS_Shape.hxx`:156 - `TopoDS_Shape::Modified()`
+        ///
         /// Returns the modification flag.
         #[cxx_name = "Modified"]
         fn modified(self: &Shape) -> bool;
+        /// **Source:** `TopoDS_Shape.hxx`:159 - `TopoDS_Shape::Modified()`
+        ///
         /// Sets the modification flag.
         #[cxx_name = "Modified"]
         fn modified_bool(self: Pin<&mut Shape>, theIsModified: bool);
+        /// **Source:** `TopoDS_Shape.hxx`:162 - `TopoDS_Shape::Checked()`
+        ///
         /// Returns the checked flag.
         #[cxx_name = "Checked"]
         fn checked(self: &Shape) -> bool;
+        /// **Source:** `TopoDS_Shape.hxx`:165 - `TopoDS_Shape::Checked()`
+        ///
         /// Sets the checked flag.
         #[cxx_name = "Checked"]
         fn checked_bool(self: Pin<&mut Shape>, theIsChecked: bool);
+        /// **Source:** `TopoDS_Shape.hxx`:168 - `TopoDS_Shape::Orientable()`
+        ///
         /// Returns the orientability flag.
         #[cxx_name = "Orientable"]
         fn orientable(self: &Shape) -> bool;
+        /// **Source:** `TopoDS_Shape.hxx`:171 - `TopoDS_Shape::Orientable()`
+        ///
         /// Sets the orientability flag.
         #[cxx_name = "Orientable"]
         fn orientable_bool(self: Pin<&mut Shape>, theIsOrientable: bool);
+        /// **Source:** `TopoDS_Shape.hxx`:174 - `TopoDS_Shape::Closed()`
+        ///
         /// Returns the closedness flag.
         #[cxx_name = "Closed"]
         fn closed(self: &Shape) -> bool;
+        /// **Source:** `TopoDS_Shape.hxx`:177 - `TopoDS_Shape::Closed()`
+        ///
         /// Sets the closedness flag.
         #[cxx_name = "Closed"]
         fn closed_bool(self: Pin<&mut Shape>, theIsClosed: bool);
+        /// **Source:** `TopoDS_Shape.hxx`:180 - `TopoDS_Shape::Infinite()`
+        ///
         /// Returns the infinity flag.
         #[cxx_name = "Infinite"]
         fn infinite(self: &Shape) -> bool;
+        /// **Source:** `TopoDS_Shape.hxx`:183 - `TopoDS_Shape::Infinite()`
+        ///
         /// Sets the infinity flag.
         #[cxx_name = "Infinite"]
         fn infinite_bool(self: Pin<&mut Shape>, theIsInfinite: bool);
+        /// **Source:** `TopoDS_Shape.hxx`:186 - `TopoDS_Shape::Convex()`
+        ///
         /// Returns the convexness flag.
         #[cxx_name = "Convex"]
         fn convex(self: &Shape) -> bool;
+        /// **Source:** `TopoDS_Shape.hxx`:189 - `TopoDS_Shape::Convex()`
+        ///
         /// Sets the convexness flag.
         #[cxx_name = "Convex"]
         fn convex_bool(self: Pin<&mut Shape>, theIsConvex: bool);
+        /// **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
+        ///
         /// Multiplies the Shape location by thePosition.
         /// @param thePosition the transformation to apply.
         /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
         #[cxx_name = "Move"]
         fn move_(self: Pin<&mut Shape>, thePosition: &TopLoc_Location, theRaiseExc: bool);
+        /// **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
+        ///
         /// Reverses the orientation, using the Reverse method
         /// from the TopAbs package.
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut Shape>);
+        /// **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
+        ///
         /// Complements the orientation, using the  Complement
         /// method from the TopAbs package.
         #[cxx_name = "Complement"]
         fn complement(self: Pin<&mut Shape>);
+        /// **Source:** `TopoDS_Shape.hxx`:260 - `TopoDS_Shape::NbChildren()`
+        ///
         /// Returns the number of direct sub-shapes (children).
         /// @sa TopoDS_Iterator for accessing sub-shapes
         #[cxx_name = "NbChildren"]
         fn nb_children(self: &Shape) -> i32;
+        /// **Source:** `TopoDS_Shape.hxx`:265 - `TopoDS_Shape::IsPartner()`
+        ///
         /// Returns True if two shapes  are partners, i.e.  if
         /// they   share   the   same  TShape.  Locations  and
         /// Orientations may differ.
         #[cxx_name = "IsPartner"]
         fn is_partner(self: &Shape, theOther: &Shape) -> bool;
+        /// **Source:** `TopoDS_Shape.hxx`:273 - `TopoDS_Shape::IsSame()`
+        ///
         /// Returns True if two shapes are same, i.e.  if they
         /// share  the  same TShape  with the same  Locations.
         /// Orientations may differ.
         #[cxx_name = "IsSame"]
         fn is_same(self: &Shape, theOther: &Shape) -> bool;
+        /// **Source:** `TopoDS_Shape.hxx`:281 - `TopoDS_Shape::IsEqual()`
+        ///
         /// Returns True if two shapes are equal, i.e. if they
         /// share the same TShape with  the same Locations and
         /// Orientations.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &Shape, theOther: &Shape) -> bool;
+        /// **Source:** `TopoDS_Shape.hxx`:290 - `TopoDS_Shape::IsNotEqual()`
+        ///
         /// Negation of the IsEqual method.
         #[cxx_name = "IsNotEqual"]
         fn is_not_equal(self: &Shape, theOther: &Shape) -> bool;
+        /// **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
+        ///
         /// Replace   <me> by  a  new   Shape with the    same
         /// Orientation and Location and a new TShape with the
         /// same geometry and no sub-shapes.
         #[cxx_name = "EmptyCopy"]
         fn empty_copy(self: Pin<&mut Shape>);
+        /// **Source:** `TopoDS_Shape.hxx`:309 - `TopoDS_Shape::TShape()`
         #[cxx_name = "TShape"]
         fn t_shape_handletshape(self: Pin<&mut Shape>, theTShape: &HandleTopoDSTShape);
         /// Returns a  shape  similar to <me> with the local
@@ -638,7 +699,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Shape_to_owned(self_: &Shape) -> UniquePtr<Shape>;
         /// ======================== TopoDS_Vertex ========================
-        /// **Source:** `TopoDS_Vertex.hxx` - `TopoDS_Vertex`
+        /// **Source:** `TopoDS_Vertex.hxx`:30 - `TopoDS_Vertex`
         ///
         /// Describes a vertex which
         /// - references an underlying vertex with the potential
@@ -650,7 +711,7 @@ pub(crate) mod ffi {
         /// relation to other shapes).
         #[cxx_name = "TopoDS_Vertex"]
         type Vertex;
-        /// **Source:** `TopoDS_Vertex.hxx` - `TopoDS_Vertex::TopoDS_Vertex()`
+        /// **Source:** `TopoDS_Vertex.hxx`:36 - `TopoDS_Vertex::TopoDS_Vertex()`
         ///
         /// Undefined Vertex.
         #[cxx_name = "TopoDS_Vertex_ctor"]
@@ -665,7 +726,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Vertex_to_owned(self_: &Vertex) -> UniquePtr<Vertex>;
         /// ======================== TopoDS_Edge ========================
-        /// **Source:** `TopoDS_Edge.hxx` - `TopoDS_Edge`
+        /// **Source:** `TopoDS_Edge.hxx`:30 - `TopoDS_Edge`
         ///
         /// Describes an edge which
         /// - references an underlying edge with the potential to
@@ -677,7 +738,7 @@ pub(crate) mod ffi {
         /// relation to other shapes).
         #[cxx_name = "TopoDS_Edge"]
         type Edge;
-        /// **Source:** `TopoDS_Edge.hxx` - `TopoDS_Edge::TopoDS_Edge()`
+        /// **Source:** `TopoDS_Edge.hxx`:36 - `TopoDS_Edge::TopoDS_Edge()`
         ///
         /// Undefined Edge.
         #[cxx_name = "TopoDS_Edge_ctor"]
@@ -692,7 +753,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Edge_to_owned(self_: &Edge) -> UniquePtr<Edge>;
         /// ======================== TopoDS_Wire ========================
-        /// **Source:** `TopoDS_Wire.hxx` - `TopoDS_Wire`
+        /// **Source:** `TopoDS_Wire.hxx`:29 - `TopoDS_Wire`
         ///
         /// Describes a wire which
         /// - references an underlying wire with the potential to
@@ -703,7 +764,7 @@ pub(crate) mod ffi {
         /// of its geometry (as opposed to orientation in relation to other shapes).
         #[cxx_name = "TopoDS_Wire"]
         type Wire;
-        /// **Source:** `TopoDS_Wire.hxx` - `TopoDS_Wire::TopoDS_Wire()`
+        /// **Source:** `TopoDS_Wire.hxx`:35 - `TopoDS_Wire::TopoDS_Wire()`
         ///
         /// Undefined Wire.
         #[cxx_name = "TopoDS_Wire_ctor"]
@@ -718,7 +779,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Wire_to_owned(self_: &Wire) -> UniquePtr<Wire>;
         /// ======================== TopoDS_Face ========================
-        /// **Source:** `TopoDS_Face.hxx` - `TopoDS_Face`
+        /// **Source:** `TopoDS_Face.hxx`:29 - `TopoDS_Face`
         ///
         /// Describes a face which
         /// - references an underlying face with the potential to
@@ -729,7 +790,7 @@ pub(crate) mod ffi {
         /// of its geometry (as opposed to orientation in relation to other shapes).
         #[cxx_name = "TopoDS_Face"]
         type Face;
-        /// **Source:** `TopoDS_Face.hxx` - `TopoDS_Face::TopoDS_Face()`
+        /// **Source:** `TopoDS_Face.hxx`:35 - `TopoDS_Face::TopoDS_Face()`
         ///
         /// Undefined Face.
         #[cxx_name = "TopoDS_Face_ctor"]
@@ -744,7 +805,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Face_to_owned(self_: &Face) -> UniquePtr<Face>;
         /// ======================== TopoDS_Shell ========================
-        /// **Source:** `TopoDS_Shell.hxx` - `TopoDS_Shell`
+        /// **Source:** `TopoDS_Shell.hxx`:29 - `TopoDS_Shell`
         ///
         /// Describes a shell which
         /// - references an underlying shell with the potential to
@@ -755,7 +816,7 @@ pub(crate) mod ffi {
         /// of its geometry (as opposed to orientation in relation to other shapes).
         #[cxx_name = "TopoDS_Shell"]
         type Shell;
-        /// **Source:** `TopoDS_Shell.hxx` - `TopoDS_Shell::TopoDS_Shell()`
+        /// **Source:** `TopoDS_Shell.hxx`:35 - `TopoDS_Shell::TopoDS_Shell()`
         ///
         /// Constructs an Undefined Shell.
         #[cxx_name = "TopoDS_Shell_ctor"]
@@ -770,7 +831,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Shell_to_owned(self_: &Shell) -> UniquePtr<Shell>;
         /// ======================== TopoDS_Solid ========================
-        /// **Source:** `TopoDS_Solid.hxx` - `TopoDS_Solid`
+        /// **Source:** `TopoDS_Solid.hxx`:30 - `TopoDS_Solid`
         ///
         /// Describes a solid shape which
         /// - references an underlying solid shape with the
@@ -782,7 +843,7 @@ pub(crate) mod ffi {
         /// relation to other shapes).
         #[cxx_name = "TopoDS_Solid"]
         type Solid;
-        /// **Source:** `TopoDS_Solid.hxx` - `TopoDS_Solid::TopoDS_Solid()`
+        /// **Source:** `TopoDS_Solid.hxx`:36 - `TopoDS_Solid::TopoDS_Solid()`
         ///
         /// Constructs an Undefined Solid.
         #[cxx_name = "TopoDS_Solid_ctor"]
@@ -797,7 +858,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Solid_to_owned(self_: &Solid) -> UniquePtr<Solid>;
         /// ======================== TopoDS_Compound ========================
-        /// **Source:** `TopoDS_Compound.hxx` - `TopoDS_Compound`
+        /// **Source:** `TopoDS_Compound.hxx`:31 - `TopoDS_Compound`
         ///
         /// Describes a compound which
         /// - references an underlying compound with the
@@ -810,7 +871,7 @@ pub(crate) mod ffi {
         /// Casts shape S to the more specialized return type, Compound.
         #[cxx_name = "TopoDS_Compound"]
         type Compound;
-        /// **Source:** `TopoDS_Compound.hxx` - `TopoDS_Compound::TopoDS_Compound()`
+        /// **Source:** `TopoDS_Compound.hxx`:37 - `TopoDS_Compound::TopoDS_Compound()`
         ///
         /// Constructs an Undefined Compound.
         #[cxx_name = "TopoDS_Compound_ctor"]
@@ -825,7 +886,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Compound_to_owned(self_: &Compound) -> UniquePtr<Compound>;
         /// ======================== TopoDS_CompSolid ========================
-        /// **Source:** `TopoDS_CompSolid.hxx` - `TopoDS_CompSolid`
+        /// **Source:** `TopoDS_CompSolid.hxx`:31 - `TopoDS_CompSolid`
         ///
         /// Describes a composite solid which
         /// - references an underlying composite solid with the
@@ -838,7 +899,7 @@ pub(crate) mod ffi {
         /// Casts shape S to the more specialized return type, CompSolid.
         #[cxx_name = "TopoDS_CompSolid"]
         type CompSolid;
-        /// **Source:** `TopoDS_CompSolid.hxx` - `TopoDS_CompSolid::TopoDS_CompSolid()`
+        /// **Source:** `TopoDS_CompSolid.hxx`:37 - `TopoDS_CompSolid::TopoDS_CompSolid()`
         ///
         /// Constructs an Undefined CompSolid.
         #[cxx_name = "TopoDS_CompSolid_ctor"]
@@ -853,7 +914,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn CompSolid_to_owned(self_: &CompSolid) -> UniquePtr<CompSolid>;
         /// ======================== TopoDS_Builder ========================
-        /// **Source:** `TopoDS_Builder.hxx` - `TopoDS_Builder`
+        /// **Source:** `TopoDS_Builder.hxx`:71 - `TopoDS_Builder`
         ///
         /// A  Builder is used   to  create  Topological  Data
         /// Structures.It is the root of the Builder class hierarchy.
@@ -896,27 +957,41 @@ pub(crate) mod ffi {
         /// - Nothing can be added in a VERTEX.
         #[cxx_name = "TopoDS_Builder"]
         type Builder;
+        /// **Source:** `TopoDS_Builder.hxx`:77 - `TopoDS_Builder::MakeWire()`
+        ///
         /// Make an empty Wire.
         #[cxx_name = "MakeWire"]
         fn make_wire(self: &Builder, W: Pin<&mut Wire>);
+        /// **Source:** `TopoDS_Builder.hxx`:80 - `TopoDS_Builder::MakeShell()`
+        ///
         /// Make an empty Shell.
         #[cxx_name = "MakeShell"]
         fn make_shell(self: &Builder, S: Pin<&mut Shell>);
+        /// **Source:** `TopoDS_Builder.hxx`:83 - `TopoDS_Builder::MakeSolid()`
+        ///
         /// Make a Solid covering the whole 3D space.
         #[cxx_name = "MakeSolid"]
         fn make_solid(self: &Builder, S: Pin<&mut Solid>);
+        /// **Source:** `TopoDS_Builder.hxx`:86 - `TopoDS_Builder::MakeCompSolid()`
+        ///
         /// Make an empty Composite Solid.
         #[cxx_name = "MakeCompSolid"]
         fn make_comp_solid(self: &Builder, C: Pin<&mut CompSolid>);
+        /// **Source:** `TopoDS_Builder.hxx`:89 - `TopoDS_Builder::MakeCompound()`
+        ///
         /// Make an empty Compound.
         #[cxx_name = "MakeCompound"]
         fn make_compound(self: &Builder, C: Pin<&mut Compound>);
+        /// **Source:** `TopoDS_Builder.hxx`:95 - `TopoDS_Builder::Add()`
+        ///
         /// Add the Shape C in the Shape S.
         /// Exceptions
         /// - TopoDS_FrozenShape if S is not free and cannot be modified.
         /// - TopoDS__UnCompatibleShapes if S and C are not compatible.
         #[cxx_name = "Add"]
         fn add(self: &Builder, S: Pin<&mut Shape>, C: &Shape);
+        /// **Source:** `TopoDS_Builder.hxx`:100 - `TopoDS_Builder::Remove()`
+        ///
         /// Remove the Shape C from the Shape S.
         /// Exceptions
         /// TopoDS_FrozenShape if S is frozen and cannot be modified.
@@ -926,7 +1001,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Builder_to_owned(self_: &Builder) -> UniquePtr<Builder>;
         /// ======================== TopoDS_Iterator ========================
-        /// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator`
+        /// **Source:** `TopoDS_Iterator.hxx`:31 - `TopoDS_Iterator`
         ///
         /// Iterates on the underlying shape underlying a given
         /// TopoDS_Shape object, providing access to its
@@ -935,12 +1010,12 @@ pub(crate) mod ffi {
         /// and a compound of the original values and the relative values.
         #[cxx_name = "TopoDS_Iterator"]
         type Iterator;
-        /// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator::TopoDS_Iterator()`
+        /// **Source:** `TopoDS_Iterator.hxx`:37 - `TopoDS_Iterator::TopoDS_Iterator()`
         ///
         /// Creates an empty Iterator.
         #[cxx_name = "TopoDS_Iterator_ctor"]
         fn Iterator_ctor() -> UniquePtr<Iterator>;
-        /// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator::TopoDS_Iterator()`
+        /// **Source:** `TopoDS_Iterator.hxx`:49 - `TopoDS_Iterator::TopoDS_Iterator()`
         ///
         /// Creates an Iterator on <S> sub-shapes.
         /// Note:
@@ -951,6 +1026,8 @@ pub(crate) mod ffi {
         /// each sub-shape the transformation that is associated with S.
         #[cxx_name = "TopoDS_Iterator_ctor_shape_bool2"]
         fn Iterator_ctor_shape_bool2(S: &Shape, cumOri: bool, cumLoc: bool) -> UniquePtr<Iterator>;
+        /// **Source:** `TopoDS_Iterator.hxx`:63 - `TopoDS_Iterator::Initialize()`
+        ///
         /// Initializes this iterator with shape S.
         /// Note:
         /// - If cumOri is true, the function composes all
@@ -960,16 +1037,22 @@ pub(crate) mod ffi {
         /// each sub-shape the transformation that is associated with S.
         #[cxx_name = "Initialize"]
         fn initialize(self: Pin<&mut Iterator>, S: &Shape, cumOri: bool, cumLoc: bool);
+        /// **Source:** `TopoDS_Iterator.hxx`:69 - `TopoDS_Iterator::More()`
+        ///
         /// Returns true if there is another sub-shape in the
         /// shape which this iterator is scanning.
         #[cxx_name = "More"]
         fn more(self: &Iterator) -> bool;
+        /// **Source:** `TopoDS_Iterator.hxx`:75 - `TopoDS_Iterator::Next()`
+        ///
         /// Moves on to the next sub-shape in the shape which
         /// this iterator is scanning.
         /// Exceptions
         /// Standard_NoMoreObject if there are no more sub-shapes in the shape.
         #[cxx_name = "Next"]
         fn next(self: Pin<&mut Iterator>);
+        /// **Source:** `TopoDS_Iterator.hxx`:81 - `TopoDS_Iterator::Value()`
+        ///
         /// Returns the current sub-shape in the shape which
         /// this iterator is scanning.
         /// Exceptions
@@ -980,7 +1063,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Iterator_to_owned(self_: &Iterator) -> UniquePtr<Iterator>;
         /// ======================== TopoDS_TShape ========================
-        /// **Source:** `TopoDS_TShape.hxx` - `TopoDS_TShape`
+        /// **Source:** `TopoDS_TShape.hxx`:54 - `TopoDS_TShape`
         ///
         /// A TShape  is a topological  structure describing a
         /// set of points in a 2D or 3D space.
@@ -1009,63 +1092,99 @@ pub(crate) mod ffi {
         /// derived from Shape.
         #[cxx_name = "TopoDS_TShape"]
         type TShape;
+        /// **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
+        ///
         /// Returns the free flag.
         #[cxx_name = "Free"]
         fn free(self: &TShape) -> bool;
+        /// **Source:** `TopoDS_TShape.hxx`:62 - `TopoDS_TShape::Free()`
+        ///
         /// Sets the free flag.
         #[cxx_name = "Free"]
         fn free_bool(self: Pin<&mut TShape>, theIsFree: bool);
+        /// **Source:** `TopoDS_TShape.hxx`:65 - `TopoDS_TShape::Locked()`
+        ///
         /// Returns the locked flag.
         #[cxx_name = "Locked"]
         fn locked(self: &TShape) -> bool;
+        /// **Source:** `TopoDS_TShape.hxx`:68 - `TopoDS_TShape::Locked()`
+        ///
         /// Sets the locked flag.
         #[cxx_name = "Locked"]
         fn locked_bool(self: Pin<&mut TShape>, theIsLocked: bool);
+        /// **Source:** `TopoDS_TShape.hxx`:71 - `TopoDS_TShape::Modified()`
+        ///
         /// Returns the modification flag.
         #[cxx_name = "Modified"]
         fn modified(self: &TShape) -> bool;
+        /// **Source:** `TopoDS_TShape.hxx`:74 - `TopoDS_TShape::Modified()`
+        ///
         /// Sets the modification flag.
         #[cxx_name = "Modified"]
         fn modified_bool(self: Pin<&mut TShape>, theIsModified: bool);
+        /// **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Checked()`
+        ///
         /// Returns the checked flag.
         #[cxx_name = "Checked"]
         fn checked(self: &TShape) -> bool;
+        /// **Source:** `TopoDS_TShape.hxx`:89 - `TopoDS_TShape::Checked()`
+        ///
         /// Sets the checked flag.
         #[cxx_name = "Checked"]
         fn checked_bool(self: Pin<&mut TShape>, theIsChecked: bool);
+        /// **Source:** `TopoDS_TShape.hxx`:95 - `TopoDS_TShape::Orientable()`
+        ///
         /// Returns the orientability flag.
         #[cxx_name = "Orientable"]
         fn orientable(self: &TShape) -> bool;
+        /// **Source:** `TopoDS_TShape.hxx`:98 - `TopoDS_TShape::Orientable()`
+        ///
         /// Sets the orientability flag.
         #[cxx_name = "Orientable"]
         fn orientable_bool(self: Pin<&mut TShape>, theIsOrientable: bool);
+        /// **Source:** `TopoDS_TShape.hxx`:104 - `TopoDS_TShape::Closed()`
+        ///
         /// Returns the closedness flag.
         #[cxx_name = "Closed"]
         fn closed(self: &TShape) -> bool;
+        /// **Source:** `TopoDS_TShape.hxx`:107 - `TopoDS_TShape::Closed()`
+        ///
         /// Sets the closedness flag.
         #[cxx_name = "Closed"]
         fn closed_bool(self: Pin<&mut TShape>, theIsClosed: bool);
+        /// **Source:** `TopoDS_TShape.hxx`:110 - `TopoDS_TShape::Infinite()`
+        ///
         /// Returns the infinity flag.
         #[cxx_name = "Infinite"]
         fn infinite(self: &TShape) -> bool;
+        /// **Source:** `TopoDS_TShape.hxx`:113 - `TopoDS_TShape::Infinite()`
+        ///
         /// Sets the infinity flag.
         #[cxx_name = "Infinite"]
         fn infinite_bool(self: Pin<&mut TShape>, theIsInfinite: bool);
+        /// **Source:** `TopoDS_TShape.hxx`:119 - `TopoDS_TShape::Convex()`
+        ///
         /// Returns the convexness flag.
         #[cxx_name = "Convex"]
         fn convex(self: &TShape) -> bool;
+        /// **Source:** `TopoDS_TShape.hxx`:122 - `TopoDS_TShape::Convex()`
+        ///
         /// Sets the convexness flag.
         #[cxx_name = "Convex"]
         fn convex_bool(self: Pin<&mut TShape>, theIsConvex: bool);
+        /// **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
+        ///
         /// Returns the number of direct sub-shapes (children).
         /// @sa TopoDS_Iterator for accessing sub-shapes
         #[cxx_name = "NbChildren"]
         fn nb_children(self: &TShape) -> i32;
+        /// **Source:** `TopoDS_TShape.hxx`:142 - `TopoDS_TShape::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TShape) -> &HandleStandardType;
         /// Returns a copy  of the  TShape  with no sub-shapes.
         #[cxx_name = "TopoDS_TShape_EmptyCopy"]
         fn TShape_empty_copy(self_: &TShape) -> UniquePtr<HandleTopoDSTShape>;
+        /// **Source:** `TopoDS_TShape.hxx`:142 - `TopoDS_TShape::get_type_name()`
         #[cxx_name = "TopoDS_TShape_get_type_name"]
         fn TShape_get_type_name() -> String;
 

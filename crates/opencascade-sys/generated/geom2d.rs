@@ -669,7 +669,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Geom2d_Geometry ========================
-        /// **Source:** `Geom2d_Geometry.hxx` - `Geom2d_Geometry`
+        /// **Source:** `Geom2d_Geometry.hxx`:56 - `Geom2d_Geometry`
         ///
         /// The general abstract class Geometry in 2D space describes
         /// the common behaviour of all the geometric entities.
@@ -696,28 +696,42 @@ pub(crate) mod ffi {
         /// transformations are implemented using the Transform method.
         #[cxx_name = "Geom2d_Geometry"]
         type Geometry;
+        /// **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
+        ///
         /// Performs the symmetrical transformation of a Geometry
         /// with respect to the point P which is the center of the
         /// symmetry and assigns the result to this geometric object.
         #[cxx_name = "Mirror"]
         fn mirror_pnt2d(self: Pin<&mut Geometry>, P: &gp_Pnt2d);
+        /// **Source:** `Geom2d_Geometry.hxx`:67 - `Geom2d_Geometry::Mirror()`
+        ///
         /// Performs the symmetrical transformation of a Geometry
         /// with respect to an axis placement which is the axis of the symmetry.
         #[cxx_name = "Mirror"]
         fn mirror_ax2d(self: Pin<&mut Geometry>, A: &gp_Ax2d);
+        /// **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
+        ///
         /// Rotates a Geometry. P is the center of the rotation.
         /// Ang is the angular value of the rotation in radians.
         #[cxx_name = "Rotate"]
         fn rotate(self: Pin<&mut Geometry>, P: &gp_Pnt2d, Ang: f64);
+        /// **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
+        ///
         /// Scales a Geometry. S is the scaling value.
         #[cxx_name = "Scale"]
         fn scale(self: Pin<&mut Geometry>, P: &gp_Pnt2d, S: f64);
+        /// **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
+        ///
         /// Translates a Geometry.  V is the vector of the translation.
         #[cxx_name = "Translate"]
         fn translate_vec2d(self: Pin<&mut Geometry>, V: &gp_Vec2d);
+        /// **Source:** `Geom2d_Geometry.hxx`:80 - `Geom2d_Geometry::Translate()`
+        ///
         /// Translates a Geometry from the point P1 to the point P2.
         #[cxx_name = "Translate"]
         fn translate_pnt2d2(self: Pin<&mut Geometry>, P1: &gp_Pnt2d, P2: &gp_Pnt2d);
+        /// **Source:** `Geom2d_Geometry.hxx`:90 - `Geom2d_Geometry::Transform()`
+        ///
         /// Transformation of a geometric object. This transformation
         /// can be a translation, a rotation, a symmetry, a scaling
         /// or a complex transformation obtained by combination of
@@ -728,6 +742,7 @@ pub(crate) mod ffi {
         /// itself. A copy of the object is returned.
         #[cxx_name = "Transform"]
         fn transform(self: Pin<&mut Geometry>, T: &gp_Trsf2d);
+        /// **Source:** `Geom2d_Geometry.hxx`:115 - `Geom2d_Geometry::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Geometry) -> &HandleStandardType;
         #[cxx_name = "Geom2d_Geometry_Mirrored"]
@@ -766,10 +781,11 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleGeom2dGeometry>;
         #[cxx_name = "Geom2d_Geometry_Copy"]
         fn Geometry_copy(self_: &Geometry) -> UniquePtr<HandleGeom2dGeometry>;
+        /// **Source:** `Geom2d_Geometry.hxx`:115 - `Geom2d_Geometry::get_type_name()`
         #[cxx_name = "Geom2d_Geometry_get_type_name"]
         fn Geometry_get_type_name() -> String;
         /// ======================== Geom2d_Curve ========================
-        /// **Source:** `Geom2d_Curve.hxx` - `Geom2d_Curve`
+        /// **Source:** `Geom2d_Curve.hxx`:60 - `Geom2d_Curve`
         ///
         /// The abstract class Curve describes the common
         /// behavior of curves in 2D space. The Geom2d
@@ -799,6 +815,8 @@ pub(crate) mod ffi {
         /// self-intersect.
         #[cxx_name = "Geom2d_Curve"]
         type Curve;
+        /// **Source:** `Geom2d_Curve.hxx`:70 - `Geom2d_Curve::Reverse()`
+        ///
         /// Changes the direction of parametrization of <me>.
         /// The "FirstParameter" and the "LastParameter" are not changed
         /// but the orientation  of the curve is modified. If the curve
@@ -807,6 +825,8 @@ pub(crate) mod ffi {
         /// curve becomes the StartPoint of the reversed curve.
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut Curve>);
+        /// **Source:** `Geom2d_Curve.hxx`:77 - `Geom2d_Curve::ReversedParameter()`
+        ///
         /// Computes the parameter on the reversed curve for
         /// the point of parameter U on this curve.
         /// Note: The point of parameter U on this curve is
@@ -814,12 +834,16 @@ pub(crate) mod ffi {
         /// ReversedParameter(U) on the reversed curve.
         #[cxx_name = "ReversedParameter"]
         fn reversed_parameter(self: &Curve, U: f64) -> f64;
+        /// **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
+        ///
         /// Computes the parameter on the curve transformed by
         /// T for the point of parameter U on this curve.
         /// Note: this function generally returns U but it can be
         /// redefined (for example, on a line).
         #[cxx_name = "TransformedParameter"]
         fn transformed_parameter(self: &Curve, U: f64, T: &gp_Trsf2d) -> f64;
+        /// **Source:** `Geom2d_Curve.hxx`:94 - `Geom2d_Curve::ParametricTransformation()`
+        ///
         /// Returns the coefficient required to compute the
         /// parametric transformation of this curve when
         /// transformation T is applied. This coefficient is the
@@ -830,18 +854,24 @@ pub(crate) mod ffi {
         /// redefined (for example, on a line).
         #[cxx_name = "ParametricTransformation"]
         fn parametric_transformation(self: &Curve, T: &gp_Trsf2d) -> f64;
+        /// **Source:** `Geom2d_Curve.hxx`:111 - `Geom2d_Curve::FirstParameter()`
+        ///
         /// Returns the value of the first parameter.
         /// Warnings :
         /// It can be RealFirst or RealLast from package Standard
         /// if the curve is infinite
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &Curve) -> f64;
+        /// **Source:** `Geom2d_Curve.hxx`:117 - `Geom2d_Curve::LastParameter()`
+        ///
         /// Value of the last parameter.
         /// Warnings :
         /// It can be RealFirst or RealLast from package Standard
         /// if the curve is infinite
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &Curve) -> f64;
+        /// **Source:** `Geom2d_Curve.hxx`:128 - `Geom2d_Curve::IsClosed()`
+        ///
         /// Returns true if the curve is closed.
         /// Examples :
         /// Some curves such as circle are always closed, others such as line
@@ -853,6 +883,8 @@ pub(crate) mod ffi {
         /// application.
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &Curve) -> bool;
+        /// **Source:** `Geom2d_Curve.hxx`:145 - `Geom2d_Curve::IsPeriodic()`
+        ///
         /// Returns true if the parameter of the curve is periodic.
         /// It is possible only if the curve is closed and if the
         /// following relation is satisfied :
@@ -870,14 +902,20 @@ pub(crate) mod ffi {
         /// curve  if you want the curve to be periodic.
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &Curve) -> bool;
+        /// **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::Period()`
+        ///
         /// Returns the period of this curve.
         /// raises if the curve is not periodic
         #[cxx_name = "Period"]
         fn period(self: &Curve) -> f64;
+        /// **Source:** `Geom2d_Curve.hxx`:163 - `Geom2d_Curve::IsCN()`
+        ///
         /// Returns true if the degree of continuity of this curve is at least N.
         /// Exceptions Standard_RangeError if N is less than 0.
         #[cxx_name = "IsCN"]
         fn is_cn(self: &Curve, N: i32) -> bool;
+        /// **Source:** `Geom2d_Curve.hxx`:174 - `Geom2d_Curve::D0()`
+        ///
         /// Returns in P the point of parameter U.
         /// If the curve is periodic  then the returned point is P(U) with
         /// U = Ustart + (U - Uend)  where Ustart and Uend are the
@@ -889,10 +927,14 @@ pub(crate) mod ffi {
         /// are parallel.
         #[cxx_name = "D0"]
         fn d0(self: &Curve, U: f64, P: Pin<&mut gp_Pnt2d>);
+        /// **Source:** `Geom2d_Curve.hxx`:178 - `Geom2d_Curve::D1()`
+        ///
         /// Returns the point P of parameter U and the first derivative V1.
         /// Raised if the continuity of the curve is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &Curve, U: f64, P: Pin<&mut gp_Pnt2d>, V1: Pin<&mut gp_Vec2d>);
+        /// **Source:** `Geom2d_Curve.hxx`:183 - `Geom2d_Curve::D2()`
+        ///
         /// Returns the point P of parameter U, the first and second
         /// derivatives V1 and V2.
         /// Raised if the continuity of the curve is not C2.
@@ -904,6 +946,8 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec2d>,
             V2: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `Geom2d_Curve.hxx`:191 - `Geom2d_Curve::D3()`
+        ///
         /// Returns the point P of parameter U, the first, the second
         /// and the third derivative.
         /// Raised if the continuity of the curve is not C3.
@@ -916,6 +960,7 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec2d>,
             V3: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `Geom2d_Curve.hxx`:225 - `Geom2d_Curve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Curve) -> &HandleStandardType;
         /// Creates a reversed duplicate Changes the orientation of this curve. The first and
@@ -953,6 +998,7 @@ pub(crate) mod ffi {
         /// are parallel.
         #[cxx_name = "Geom2d_Curve_Value"]
         fn Curve_value(self_: &Curve, U: f64) -> UniquePtr<gp_Pnt2d>;
+        /// **Source:** `Geom2d_Curve.hxx`:225 - `Geom2d_Curve::get_type_name()`
         #[cxx_name = "Geom2d_Curve_get_type_name"]
         fn Curve_get_type_name() -> String;
         /// Upcast Geom2d_Curve to Geom2d_Geometry
@@ -965,7 +1011,7 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleGeom2dCurve_to_HandleGeom2dGeometry"]
         fn curve_to_handle_geometry(handle: &HandleGeom2dCurve) -> UniquePtr<HandleGeom2dGeometry>;
         /// ======================== Geom2d_BoundedCurve ========================
-        /// **Source:** `Geom2d_BoundedCurve.hxx` - `Geom2d_BoundedCurve`
+        /// **Source:** `Geom2d_BoundedCurve.hxx`:45 - `Geom2d_BoundedCurve`
         ///
         /// The abstract class BoundedCurve describes the
         /// common behavior of bounded curves in 2D space. A
@@ -985,6 +1031,7 @@ pub(crate) mod ffi {
         /// the parameter of the basis curve.
         #[cxx_name = "Geom2d_BoundedCurve"]
         type BoundedCurve;
+        /// **Source:** `Geom2d_BoundedCurve.hxx`:63 - `Geom2d_BoundedCurve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BoundedCurve) -> &HandleStandardType;
         /// Returns the end point of the curve.
@@ -997,6 +1044,7 @@ pub(crate) mod ffi {
         /// "FirstParameter" of the curve.
         #[cxx_name = "Geom2d_BoundedCurve_StartPoint"]
         fn BoundedCurve_start_point(self_: &BoundedCurve) -> UniquePtr<gp_Pnt2d>;
+        /// **Source:** `Geom2d_BoundedCurve.hxx`:63 - `Geom2d_BoundedCurve::get_type_name()`
         #[cxx_name = "Geom2d_BoundedCurve_get_type_name"]
         fn BoundedCurve_get_type_name() -> String;
         /// Upcast Geom2d_BoundedCurve to Geom2d_Curve
@@ -1022,7 +1070,7 @@ pub(crate) mod ffi {
             handle: &HandleGeom2dBoundedCurve,
         ) -> UniquePtr<HandleGeom2dGeometry>;
         /// ======================== Geom2d_Conic ========================
-        /// **Source:** `Geom2d_Conic.hxx` - `Geom2d_Conic`
+        /// **Source:** `Geom2d_Conic.hxx`:41 - `Geom2d_Conic`
         ///
         /// The abstract class Conic describes the common
         /// behavior of conic curves in 2D space and, in
@@ -1041,10 +1089,14 @@ pub(crate) mod ffi {
         /// the parameter of the conic.
         #[cxx_name = "Geom2d_Conic"]
         type Conic;
+        /// **Source:** `Geom2d_Conic.hxx`:46 - `Geom2d_Conic::SetAxis()`
+        ///
         /// Modifies this conic, redefining its local coordinate system
         /// partially, by assigning theA as its axis
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Conic>, theA: &gp_Ax22d);
+        /// **Source:** `Geom2d_Conic.hxx`:54 - `Geom2d_Conic::SetXAxis()`
+        ///
         /// Assigns the origin and unit vector of axis theA to the
         /// origin of the local coordinate system of this conic and X Direction.
         /// The other unit vector of the local coordinate system
@@ -1053,6 +1105,8 @@ pub(crate) mod ffi {
         /// system (right-handed or left-handed).
         #[cxx_name = "SetXAxis"]
         fn set_x_axis(self: Pin<&mut Conic>, theAX: &gp_Ax2d);
+        /// **Source:** `Geom2d_Conic.hxx`:62 - `Geom2d_Conic::SetYAxis()`
+        ///
         /// Assigns the origin and unit vector of axis theA to the
         /// origin of the local coordinate system of this conic and Y Direction.
         /// The other unit vector of the local coordinate system
@@ -1061,10 +1115,14 @@ pub(crate) mod ffi {
         /// system (right-handed or left-handed).
         #[cxx_name = "SetYAxis"]
         fn set_y_axis(self: Pin<&mut Conic>, theAY: &gp_Ax2d);
+        /// **Source:** `Geom2d_Conic.hxx`:66 - `Geom2d_Conic::SetLocation()`
+        ///
         /// Modifies this conic, redefining its local coordinate
         /// system partially, by assigning theP as its origin.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut Conic>, theP: &gp_Pnt2d);
+        /// **Source:** `Geom2d_Conic.hxx`:84 - `Geom2d_Conic::Eccentricity()`
+        ///
         /// returns the eccentricity value of the conic e.
         /// e = 0 for a circle
         /// 0 < e < 1 for an ellipse  (e = 0 if MajorRadius = MinorRadius)
@@ -1072,25 +1130,36 @@ pub(crate) mod ffi {
         /// e = 1 for a parabola
         #[cxx_name = "Eccentricity"]
         fn eccentricity(self: &Conic) -> f64;
+        /// **Source:** `Geom2d_Conic.hxx`:89 - `Geom2d_Conic::Location()`
+        ///
         /// Returns the location point of the conic.
         /// For the circle, the ellipse and the hyperbola it is the center of
         /// the conic. For the parabola it is the vertex of the parabola.
         #[cxx_name = "Location"]
         fn location(self: &Conic) -> &gp_Pnt2d;
+        /// **Source:** `Geom2d_Conic.hxx`:92 - `Geom2d_Conic::Position()`
+        ///
         /// Returns the local coordinates system of the conic.
         #[cxx_name = "Position"]
         fn position(self: &Conic) -> &gp_Ax22d;
+        /// **Source:** `Geom2d_Conic.hxx`:96 - `Geom2d_Conic::Reverse()`
+        ///
         /// Reverses the direction of parameterization of <me>.
         /// The local coordinate system of the conic is modified.
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut Conic>);
+        /// **Source:** `Geom2d_Conic.hxx`:100 - `Geom2d_Conic::ReversedParameter()`
+        ///
         /// Returns the  parameter on the  reversed  curve for
         /// the point of parameter U on <me>.
         #[cxx_name = "ReversedParameter"]
         fn reversed_parameter(self: &Conic, U: f64) -> f64;
+        /// **Source:** `Geom2d_Conic.hxx`:107 - `Geom2d_Conic::IsCN()`
+        ///
         /// Returns True, the order of continuity of a conic is infinite.
         #[cxx_name = "IsCN"]
         fn is_cn(self: &Conic, N: i32) -> bool;
+        /// **Source:** `Geom2d_Conic.hxx`:113 - `Geom2d_Conic::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Conic) -> &HandleStandardType;
         /// Returns the "XAxis" of the conic.
@@ -1104,6 +1173,7 @@ pub(crate) mod ffi {
         /// The "YAxis" is perpendicular to the "Xaxis".
         #[cxx_name = "Geom2d_Conic_YAxis"]
         fn Conic_y_axis(self_: &Conic) -> UniquePtr<gp_Ax2d>;
+        /// **Source:** `Geom2d_Conic.hxx`:113 - `Geom2d_Conic::get_type_name()`
         #[cxx_name = "Geom2d_Conic_get_type_name"]
         fn Conic_get_type_name() -> String;
         /// Upcast Geom2d_Conic to Geom2d_Curve
@@ -1125,7 +1195,7 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleGeom2dConic_to_HandleGeom2dGeometry"]
         fn conic_to_handle_geometry(handle: &HandleGeom2dConic) -> UniquePtr<HandleGeom2dGeometry>;
         /// ======================== Geom2d_Ellipse ========================
-        /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse`
+        /// **Source:** `Geom2d_Ellipse.hxx`:65 - `Geom2d_Ellipse`
         ///
         /// Describes an ellipse in the plane (2D space).
         /// An ellipse is defined by its major and minor radii and,
@@ -1158,12 +1228,12 @@ pub(crate) mod ffi {
         /// gp_Elips2d for an equivalent, non-parameterized data structure
         #[cxx_name = "Geom2d_Ellipse"]
         type Ellipse;
-        /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
+        /// **Source:** `Geom2d_Ellipse.hxx`:70 - `Geom2d_Ellipse::Geom2d_Ellipse()`
         ///
         /// Creates an ellipse by conversion of the gp_Elips2d ellipse E.
         #[cxx_name = "Geom2d_Ellipse_ctor_elips2d"]
         fn Ellipse_ctor_elips2d(E: &gp_Elips2d) -> UniquePtr<Ellipse>;
-        /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
+        /// **Source:** `Geom2d_Ellipse.hxx`:87 - `Geom2d_Ellipse::Geom2d_Ellipse()`
         ///
         /// Creates an ellipse defined by its major and minor radii,
         /// MajorRadius and MinorRadius, and positioned
@@ -1187,7 +1257,7 @@ pub(crate) mod ffi {
             MinorRadius: f64,
             Sense: bool,
         ) -> UniquePtr<Ellipse>;
-        /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
+        /// **Source:** `Geom2d_Ellipse.hxx`:110 - `Geom2d_Ellipse::Geom2d_Ellipse()`
         ///
         /// Creates an ellipse defined by its major and minor radii,
         /// MajorRadius and MinorRadius, where the
@@ -1213,9 +1283,13 @@ pub(crate) mod ffi {
             MajorRadius: f64,
             MinorRadius: f64,
         ) -> UniquePtr<Ellipse>;
+        /// **Source:** `Geom2d_Ellipse.hxx`:115 - `Geom2d_Ellipse::SetElips2d()`
+        ///
         /// Converts the gp_Elips2d ellipse E into this ellipse.
         #[cxx_name = "SetElips2d"]
         fn set_elips2d(self: Pin<&mut Ellipse>, E: &gp_Elips2d);
+        /// **Source:** `Geom2d_Ellipse.hxx`:123 - `Geom2d_Ellipse::SetMajorRadius()`
+        ///
         /// Assigns a value to the major radius of this ellipse.
         /// Exceptions
         /// Standard_ConstructionError if:
@@ -1224,6 +1298,8 @@ pub(crate) mod ffi {
         /// - MinorRadius is less than 0.
         #[cxx_name = "SetMajorRadius"]
         fn set_major_radius(self: Pin<&mut Ellipse>, MajorRadius: f64);
+        /// **Source:** `Geom2d_Ellipse.hxx`:131 - `Geom2d_Ellipse::SetMinorRadius()`
+        ///
         /// Assigns a value to the minor radius of this ellipse.
         /// Exceptions
         /// Standard_ConstructionError if:
@@ -1232,57 +1308,82 @@ pub(crate) mod ffi {
         /// - MinorRadius is less than 0.
         #[cxx_name = "SetMinorRadius"]
         fn set_minor_radius(self: Pin<&mut Ellipse>, MinorRadius: f64);
+        /// **Source:** `Geom2d_Ellipse.hxx`:139 - `Geom2d_Ellipse::ReversedParameter()`
+        ///
         /// Computes the parameter on the reversed ellipse for
         /// the point of parameter U on this ellipse.
         /// For an ellipse, the returned value is: 2.*Pi - U.
         #[cxx_name = "ReversedParameter"]
         fn reversed_parameter(self: &Ellipse, U: f64) -> f64;
+        /// **Source:** `Geom2d_Ellipse.hxx`:164 - `Geom2d_Ellipse::Eccentricity()`
+        ///
         /// Returns the eccentricity of the ellipse  between 0.0 and 1.0
         /// If f is the distance between the center of the ellipse and
         /// the Focus1 then the eccentricity e = f / MajorRadius.
         /// Returns 0 if MajorRadius = 0
         #[cxx_name = "Eccentricity"]
         fn eccentricity(self: &Ellipse) -> f64;
+        /// **Source:** `Geom2d_Ellipse.hxx`:168 - `Geom2d_Ellipse::Focal()`
+        ///
         /// Computes the focal distance. The focal distance is the distance between the center
         /// and a focus of the ellipse.
         #[cxx_name = "Focal"]
         fn focal(self: &Ellipse) -> f64;
+        /// **Source:** `Geom2d_Ellipse.hxx`:179 - `Geom2d_Ellipse::MajorRadius()`
+        ///
         /// Returns the major radius of this ellipse.
         #[cxx_name = "MajorRadius"]
         fn major_radius(self: &Ellipse) -> f64;
+        /// **Source:** `Geom2d_Ellipse.hxx`:182 - `Geom2d_Ellipse::MinorRadius()`
+        ///
         /// Returns the minor radius of this ellipse.
         #[cxx_name = "MinorRadius"]
         fn minor_radius(self: &Ellipse) -> f64;
+        /// **Source:** `Geom2d_Ellipse.hxx`:188 - `Geom2d_Ellipse::Parameter()`
+        ///
         /// Computes the parameter of this ellipse. This value is
         /// given by the formula p = (1 - e * e) * MajorRadius where e is the eccentricity
         /// of the ellipse.
         /// Returns 0 if MajorRadius = 0
         #[cxx_name = "Parameter"]
         fn parameter(self: &Ellipse) -> f64;
+        /// **Source:** `Geom2d_Ellipse.hxx`:193 - `Geom2d_Ellipse::FirstParameter()`
+        ///
         /// Returns the value of the first parameter of this
         /// ellipse. This is  0.0, which gives the start point of this ellipse.
         /// The start point and end point of an ellipse are coincident.
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &Ellipse) -> f64;
+        /// **Source:** `Geom2d_Ellipse.hxx`:198 - `Geom2d_Ellipse::LastParameter()`
+        ///
         /// Returns the value of the  last parameter of this
         /// ellipse. This is  2.*Pi, which gives the end point of this ellipse.
         /// The start point and end point of an ellipse are coincident.
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &Ellipse) -> f64;
+        /// **Source:** `Geom2d_Ellipse.hxx`:201 - `Geom2d_Ellipse::IsClosed()`
+        ///
         /// return True.
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &Ellipse) -> bool;
+        /// **Source:** `Geom2d_Ellipse.hxx`:204 - `Geom2d_Ellipse::IsPeriodic()`
+        ///
         /// return True.
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &Ellipse) -> bool;
+        /// **Source:** `Geom2d_Ellipse.hxx`:210 - `Geom2d_Ellipse::D0()`
+        ///
         /// Returns in P the point of parameter U.
         /// P = C + MajorRadius * Cos (U) * XDir + MinorRadius * Sin (U) * YDir
         /// where C is the center of the ellipse , XDir the direction of
         /// the "XAxis" and "YDir" the "YAxis" of the ellipse.
         #[cxx_name = "D0"]
         fn d0(self: &Ellipse, U: f64, P: Pin<&mut gp_Pnt2d>);
+        /// **Source:** `Geom2d_Ellipse.hxx`:212 - `Geom2d_Ellipse::D1()`
         #[cxx_name = "D1"]
         fn d1(self: &Ellipse, U: f64, P: Pin<&mut gp_Pnt2d>, V1: Pin<&mut gp_Vec2d>);
+        /// **Source:** `Geom2d_Ellipse.hxx`:216 - `Geom2d_Ellipse::D2()`
+        ///
         /// Returns the point P of parameter U. The vectors V1 and V2
         /// are the first and second derivatives at this point.
         #[cxx_name = "D2"]
@@ -1293,6 +1394,8 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec2d>,
             V2: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `Geom2d_Ellipse.hxx`:223 - `Geom2d_Ellipse::D3()`
+        ///
         /// Returns the point P of parameter U, the first second and
         /// third derivatives V1 V2 and V3.
         #[cxx_name = "D3"]
@@ -1304,9 +1407,12 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec2d>,
             V3: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `Geom2d_Ellipse.hxx`:236 - `Geom2d_Ellipse::Transform()`
+        ///
         /// Applies the transformation T to this ellipse.
         #[cxx_name = "Transform"]
         fn transform(self: Pin<&mut Ellipse>, T: &gp_Trsf2d);
+        /// **Source:** `Geom2d_Ellipse.hxx`:245 - `Geom2d_Ellipse::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Ellipse) -> &HandleStandardType;
         /// Converts this ellipse into a gp_Elips2d ellipse.
@@ -1347,6 +1453,7 @@ pub(crate) mod ffi {
         /// Creates a new object which is a copy of this ellipse.
         #[cxx_name = "Geom2d_Ellipse_Copy"]
         fn Ellipse_copy(self_: &Ellipse) -> UniquePtr<HandleGeom2dGeometry>;
+        /// **Source:** `Geom2d_Ellipse.hxx`:245 - `Geom2d_Ellipse::get_type_name()`
         #[cxx_name = "Geom2d_Ellipse_get_type_name"]
         fn Ellipse_get_type_name() -> String;
         /// Upcast Geom2d_Ellipse to Geom2d_Conic
@@ -1382,7 +1489,7 @@ pub(crate) mod ffi {
             handle: &HandleGeom2dEllipse,
         ) -> UniquePtr<HandleGeom2dGeometry>;
         /// ======================== Geom2d_TrimmedCurve ========================
-        /// **Source:** `Geom2d_TrimmedCurve.hxx` - `Geom2d_TrimmedCurve`
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:42 - `Geom2d_TrimmedCurve`
         ///
         /// Defines a portion of a curve limited by two values of
         /// parameters inside the parametric domain of the curve.
@@ -1393,7 +1500,7 @@ pub(crate) mod ffi {
         /// orientation as the basis curve or the opposite orientation.
         #[cxx_name = "Geom2d_TrimmedCurve"]
         type TrimmedCurve;
-        /// **Source:** `Geom2d_TrimmedCurve.hxx` - `Geom2d_TrimmedCurve::Geom2d_TrimmedCurve()`
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:78 - `Geom2d_TrimmedCurve::Geom2d_TrimmedCurve()`
         ///
         /// Creates a trimmed curve from the basis curve C limited between
         /// U1 and U2.
@@ -1435,6 +1542,8 @@ pub(crate) mod ffi {
             Sense: bool,
             theAdjustPeriodic: bool,
         ) -> UniquePtr<TrimmedCurve>;
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:96 - `Geom2d_TrimmedCurve::Reverse()`
+        ///
         /// Changes the direction of parametrization of <me>. The first and
         /// the last parametric values are modified. The "StartPoint"
         /// of the initial curve becomes the "EndPoint" of the reversed
@@ -1449,12 +1558,16 @@ pub(crate) mod ffi {
         /// and 1. - U1 (last parameter).
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut TrimmedCurve>);
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:102 - `Geom2d_TrimmedCurve::ReversedParameter()`
+        ///
         /// Returns the  parameter on the  reversed  curve for
         /// the point of parameter U on <me>.
         ///
         /// returns UFirst + ULast - U
         #[cxx_name = "ReversedParameter"]
         fn reversed_parameter(self: &TrimmedCurve, U: f64) -> f64;
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:121 - `Geom2d_TrimmedCurve::SetTrim()`
+        ///
         /// Changes this trimmed curve, by redefining the
         /// parameter values U1 and U2, which limit its basis curve.
         /// Note: If the basis curve is periodic, the trimmed curve
@@ -1480,6 +1593,8 @@ pub(crate) mod ffi {
             Sense: bool,
             theAdjustPeriodic: bool,
         );
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:149 - `Geom2d_TrimmedCurve::IsCN()`
+        ///
         /// --- Purpose
         /// Returns True if the order of continuity of the
         /// trimmed curve is N. A trimmed curve is at least "C0" continuous.
@@ -1490,37 +1605,53 @@ pub(crate) mod ffi {
         /// Raised if N < 0.
         #[cxx_name = "IsCN"]
         fn is_cn(self: &TrimmedCurve, N: i32) -> bool;
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:158 - `Geom2d_TrimmedCurve::FirstParameter()`
+        ///
         /// Returns the value of the first parameter of <me>.
         /// The first parameter is the parameter of the "StartPoint"
         /// of the trimmed curve.
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &TrimmedCurve) -> f64;
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:163 - `Geom2d_TrimmedCurve::IsClosed()`
+        ///
         /// Returns True if the distance between the StartPoint and
         /// the EndPoint is lower or equal to Resolution from package
         /// gp.
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &TrimmedCurve) -> bool;
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:166 - `Geom2d_TrimmedCurve::IsPeriodic()`
+        ///
         /// Always returns FALSE (independently of the type of basis curve).
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &TrimmedCurve) -> bool;
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:171 - `Geom2d_TrimmedCurve::Period()`
+        ///
         /// Returns the period of the basis curve of this trimmed curve.
         /// Exceptions
         /// Standard_NoSuchObject if the basis curve is not periodic.
         #[cxx_name = "Period"]
         fn period(self: &TrimmedCurve) -> f64;
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:176 - `Geom2d_TrimmedCurve::LastParameter()`
+        ///
         /// Returns the value of the last parameter of <me>.
         /// The last parameter is the parameter of the "EndPoint" of the
         /// trimmed curve.
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &TrimmedCurve) -> f64;
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:190 - `Geom2d_TrimmedCurve::D0()`
+        ///
         /// If the basis curve is an OffsetCurve sometimes it is not
         /// possible to do the evaluation of the curve at the parameter
         /// U (see class OffsetCurve).
         #[cxx_name = "D0"]
         fn d0(self: &TrimmedCurve, U: f64, P: Pin<&mut gp_Pnt2d>);
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:193 - `Geom2d_TrimmedCurve::D1()`
+        ///
         /// Raised if the continuity of the curve is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &TrimmedCurve, U: f64, P: Pin<&mut gp_Pnt2d>, V1: Pin<&mut gp_Vec2d>);
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:196 - `Geom2d_TrimmedCurve::D2()`
+        ///
         /// Raised if the continuity of the curve is not C2.
         #[cxx_name = "D2"]
         fn d2(
@@ -1530,6 +1661,8 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec2d>,
             V2: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:202 - `Geom2d_TrimmedCurve::D3()`
+        ///
         /// Raised if the continuity of the curve is not C3.
         #[cxx_name = "D3"]
         fn d3(
@@ -1540,10 +1673,14 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec2d>,
             V3: Pin<&mut gp_Vec2d>,
         );
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:223 - `Geom2d_TrimmedCurve::Transform()`
+        ///
         /// Applies the transformation T to this trimmed curve.
         /// Warning The basis curve is also modified.
         #[cxx_name = "Transform"]
         fn transform(self: Pin<&mut TrimmedCurve>, T: &gp_Trsf2d);
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:235 - `Geom2d_TrimmedCurve::TransformedParameter()`
+        ///
         /// Returns the  parameter on the  transformed  curve for
         /// the transform of the point of parameter U on <me>.
         ///
@@ -1556,6 +1693,8 @@ pub(crate) mod ffi {
         /// This methods calls the basis curve method.
         #[cxx_name = "TransformedParameter"]
         fn transformed_parameter(self: &TrimmedCurve, U: f64, T: &gp_Trsf2d) -> f64;
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:250 - `Geom2d_TrimmedCurve::ParametricTransformation()`
+        ///
         /// Returns a  coefficient to compute the parameter on
         /// the transformed  curve  for  the transform  of the
         /// point on <me>.
@@ -1569,6 +1708,7 @@ pub(crate) mod ffi {
         /// This methods calls the basis curve method.
         #[cxx_name = "ParametricTransformation"]
         fn parametric_transformation(self: &TrimmedCurve, T: &gp_Trsf2d) -> f64;
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:260 - `Geom2d_TrimmedCurve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TrimmedCurve) -> &HandleStandardType;
         /// Returns the basis curve.
@@ -1606,6 +1746,7 @@ pub(crate) mod ffi {
         /// Creates a new object, which is a copy of this trimmed curve.
         #[cxx_name = "Geom2d_TrimmedCurve_Copy"]
         fn TrimmedCurve_copy(self_: &TrimmedCurve) -> UniquePtr<HandleGeom2dGeometry>;
+        /// **Source:** `Geom2d_TrimmedCurve.hxx`:260 - `Geom2d_TrimmedCurve::get_type_name()`
         #[cxx_name = "Geom2d_TrimmedCurve_get_type_name"]
         fn TrimmedCurve_get_type_name() -> String;
         /// Upcast Geom2d_TrimmedCurve to Geom2d_BoundedCurve

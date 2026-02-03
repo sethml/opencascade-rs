@@ -293,7 +293,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== GeomAdaptor_Curve ========================
-        /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve`
+        /// **Source:** `GeomAdaptor_Curve.hxx`:38 - `GeomAdaptor_Curve`
         ///
         /// This class provides an interface between the services provided by any
         /// curve from the package Geom and those required of the curve by algorithms which use it.
@@ -304,13 +304,13 @@ pub(crate) mod ffi {
         /// thread-safe and parallel evaluations need to be prevented.
         #[cxx_name = "GeomAdaptor_Curve"]
         type Curve;
-        /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
+        /// **Source:** `GeomAdaptor_Curve.hxx`:42 - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
         #[cxx_name = "GeomAdaptor_Curve_ctor"]
         fn Curve_ctor() -> UniquePtr<Curve>;
-        /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
+        /// **Source:** `GeomAdaptor_Curve.hxx`:49 - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
         #[cxx_name = "GeomAdaptor_Curve_ctor_handlecurve"]
         fn Curve_ctor_handlecurve(theCurve: &HandleGeomCurve) -> UniquePtr<Curve>;
-        /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
+        /// **Source:** `GeomAdaptor_Curve.hxx`:52 - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
         ///
         /// Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion()
         #[cxx_name = "GeomAdaptor_Curve_ctor_handlecurve_real2"]
@@ -319,13 +319,19 @@ pub(crate) mod ffi {
             theUFirst: f64,
             theULast: f64,
         ) -> UniquePtr<Curve>;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:40 - `GeomAdaptor_Curve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Curve) -> &HandleStandardType;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:63 - `GeomAdaptor_Curve::Reset()`
+        ///
         /// Reset currently loaded curve (undone Load()).
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut Curve>);
+        /// **Source:** `GeomAdaptor_Curve.hxx`:65 - `GeomAdaptor_Curve::Load()`
         #[cxx_name = "Load"]
         fn load_handlecurve(self: Pin<&mut Curve>, theCurve: &HandleGeomCurve);
+        /// **Source:** `GeomAdaptor_Curve.hxx`:75 - `GeomAdaptor_Curve::Load()`
+        ///
         /// Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion()
         #[cxx_name = "Load"]
         fn load_handlecurve_real2(
@@ -334,23 +340,34 @@ pub(crate) mod ffi {
             theUFirst: f64,
             theULast: f64,
         );
+        /// **Source:** `GeomAdaptor_Curve.hxx`:92 - `GeomAdaptor_Curve::Curve()`
+        ///
         /// Provides a curve inherited from Hcurve from Adaptor.
         /// This is inherited to provide easy to use constructors.
         #[cxx_name = "Curve"]
         fn curve(self: &Curve) -> &HandleGeomCurve;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:94 - `GeomAdaptor_Curve::FirstParameter()`
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &Curve) -> f64;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:96 - `GeomAdaptor_Curve::LastParameter()`
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &Curve) -> f64;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:120 - `GeomAdaptor_Curve::IsClosed()`
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &Curve) -> bool;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:122 - `GeomAdaptor_Curve::IsPeriodic()`
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &Curve) -> bool;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:124 - `GeomAdaptor_Curve::Period()`
         #[cxx_name = "Period"]
         fn period(self: &Curve) -> f64;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:130 - `GeomAdaptor_Curve::D0()`
+        ///
         /// Computes the point of parameter U.
         #[cxx_name = "D0"]
         fn d0(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `GeomAdaptor_Curve.hxx`:139 - `GeomAdaptor_Curve::D1()`
+        ///
         /// Computes the point of parameter U on the curve
         /// with its first derivative.
         ///
@@ -360,6 +377,8 @@ pub(crate) mod ffi {
         /// else the derivatives are computed on the basis curve.
         #[cxx_name = "D1"]
         fn d1(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>, V: Pin<&mut gp_Vec>);
+        /// **Source:** `GeomAdaptor_Curve.hxx`:148 - `GeomAdaptor_Curve::D2()`
+        ///
         /// Returns the point P of parameter U, the first and second
         /// derivatives V1 and V2.
         ///
@@ -375,6 +394,8 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `GeomAdaptor_Curve.hxx`:160 - `GeomAdaptor_Curve::D3()`
+        ///
         /// Returns the point P of parameter U, the first, the second
         /// and the third derivative.
         ///
@@ -391,24 +412,34 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec>,
             V3: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `GeomAdaptor_Curve.hxx`:177 - `GeomAdaptor_Curve::Resolution()`
+        ///
         /// returns the parametric resolution
         #[cxx_name = "Resolution"]
         fn resolution(self: &Curve, R3d: f64) -> f64;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:194 - `GeomAdaptor_Curve::Degree()`
+        ///
         /// this should NEVER make a copy
         /// of the underlying curve to read
         /// the relevant information
         #[cxx_name = "Degree"]
         fn degree(self: &Curve) -> i32;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:199 - `GeomAdaptor_Curve::IsRational()`
+        ///
         /// this should NEVER make a copy
         /// of the underlying curve to read
         /// the relevant information
         #[cxx_name = "IsRational"]
         fn is_rational(self: &Curve) -> bool;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:204 - `GeomAdaptor_Curve::NbPoles()`
+        ///
         /// this should NEVER make a copy
         /// of the underlying curve to read
         /// the relevant information
         #[cxx_name = "NbPoles"]
         fn nb_poles(self: &Curve) -> i32;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:209 - `GeomAdaptor_Curve::NbKnots()`
+        ///
         /// this should NEVER make a copy
         /// of the underlying curve to read
         /// the relevant information
@@ -466,6 +497,7 @@ pub(crate) mod ffi {
         fn Curve_b_spline(self_: &Curve) -> UniquePtr<HandleGeomBSplineCurve>;
         #[cxx_name = "GeomAdaptor_Curve_OffsetCurve"]
         fn Curve_offset_curve(self_: &Curve) -> UniquePtr<HandleGeomOffsetCurve>;
+        /// **Source:** `GeomAdaptor_Curve.hxx`:40 - `GeomAdaptor_Curve::get_type_name()`
         #[cxx_name = "GeomAdaptor_Curve_get_type_name"]
         fn Curve_get_type_name() -> String;
         /// Upcast GeomAdaptor_Curve to Adaptor3d_Curve
@@ -475,7 +507,7 @@ pub(crate) mod ffi {
         #[cxx_name = "GeomAdaptor_Curve_as_Adaptor3d_Curve_mut"]
         fn curve_as_adaptor3d_curve_mut(self_: Pin<&mut Curve>) -> Pin<&mut Adaptor3d_Curve>;
         /// ======================== GeomAdaptor_Surface ========================
-        /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface`
+        /// **Source:** `GeomAdaptor_Surface.hxx`:38 - `GeomAdaptor_Surface`
         ///
         /// An interface between the services provided by any
         /// surface from the package Geom and those required
@@ -487,13 +519,13 @@ pub(crate) mod ffi {
         /// thread-safe and parallel evaluations need to be prevented.
         #[cxx_name = "GeomAdaptor_Surface"]
         type Surface;
-        /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
+        /// **Source:** `GeomAdaptor_Surface.hxx`:42 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
         #[cxx_name = "GeomAdaptor_Surface_ctor"]
         fn Surface_ctor() -> UniquePtr<Surface>;
-        /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
+        /// **Source:** `GeomAdaptor_Surface.hxx`:53 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
         #[cxx_name = "GeomAdaptor_Surface_ctor_handlesurface"]
         fn Surface_ctor_handlesurface(theSurf: &HandleGeomSurface) -> UniquePtr<Surface>;
-        /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
+        /// **Source:** `GeomAdaptor_Surface.hxx`:61 - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
         ///
         /// Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast
         #[cxx_name = "GeomAdaptor_Surface_ctor_handlesurface_real6"]
@@ -506,10 +538,14 @@ pub(crate) mod ffi {
             theTolU: f64,
             theTolV: f64,
         ) -> UniquePtr<Surface>;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:40 - `GeomAdaptor_Surface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Surface) -> &HandleStandardType;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:75 - `GeomAdaptor_Surface::Load()`
         #[cxx_name = "Load"]
         fn load_handlesurface(self: Pin<&mut Surface>, theSurf: &HandleGeomSurface);
+        /// **Source:** `GeomAdaptor_Surface.hxx`:88 - `GeomAdaptor_Surface::Load()`
+        ///
         /// Standard_ConstructionError is raised if theUFirst>theULast or theVFirst>theVLast
         #[cxx_name = "Load"]
         fn load_handlesurface_real6(
@@ -522,31 +558,46 @@ pub(crate) mod ffi {
             theTolU: f64,
             theTolV: f64,
         );
+        /// **Source:** `GeomAdaptor_Surface.hxx`:108 - `GeomAdaptor_Surface::Surface()`
         #[cxx_name = "Surface"]
         fn surface(self: &Surface) -> &HandleGeomSurface;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:110 - `GeomAdaptor_Surface::FirstUParameter()`
         #[cxx_name = "FirstUParameter"]
         fn first_u_parameter(self: &Surface) -> f64;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:112 - `GeomAdaptor_Surface::LastUParameter()`
         #[cxx_name = "LastUParameter"]
         fn last_u_parameter(self: &Surface) -> f64;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:114 - `GeomAdaptor_Surface::FirstVParameter()`
         #[cxx_name = "FirstVParameter"]
         fn first_v_parameter(self: &Surface) -> f64;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:116 - `GeomAdaptor_Surface::LastVParameter()`
         #[cxx_name = "LastVParameter"]
         fn last_v_parameter(self: &Surface) -> f64;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:157 - `GeomAdaptor_Surface::IsUClosed()`
         #[cxx_name = "IsUClosed"]
         fn is_u_closed(self: &Surface) -> bool;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:159 - `GeomAdaptor_Surface::IsVClosed()`
         #[cxx_name = "IsVClosed"]
         fn is_v_closed(self: &Surface) -> bool;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:161 - `GeomAdaptor_Surface::IsUPeriodic()`
         #[cxx_name = "IsUPeriodic"]
         fn is_u_periodic(self: &Surface) -> bool;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:163 - `GeomAdaptor_Surface::UPeriod()`
         #[cxx_name = "UPeriod"]
         fn u_period(self: &Surface) -> f64;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:165 - `GeomAdaptor_Surface::IsVPeriodic()`
         #[cxx_name = "IsVPeriodic"]
         fn is_v_periodic(self: &Surface) -> bool;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:167 - `GeomAdaptor_Surface::VPeriod()`
         #[cxx_name = "VPeriod"]
         fn v_period(self: &Surface) -> f64;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:174 - `GeomAdaptor_Surface::D0()`
+        ///
         /// Computes the point of parameters U,V on the surface.
         #[cxx_name = "D0"]
         fn d0(self: &Surface, U: f64, V: f64, P: Pin<&mut gp_Pnt>);
+        /// **Source:** `GeomAdaptor_Surface.hxx`:185 - `GeomAdaptor_Surface::D1()`
+        ///
         /// Computes the point  and the first derivatives on
         /// the surface.
         ///
@@ -563,6 +614,8 @@ pub(crate) mod ffi {
             D1U: Pin<&mut gp_Vec>,
             D1V: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `GeomAdaptor_Surface.hxx`:198 - `GeomAdaptor_Surface::D2()`
+        ///
         /// Computes   the point,  the  first  and  second
         /// derivatives on the surface.
         ///
@@ -582,6 +635,8 @@ pub(crate) mod ffi {
             D2V: Pin<&mut gp_Vec>,
             D2UV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `GeomAdaptor_Surface.hxx`:214 - `GeomAdaptor_Surface::D3()`
+        ///
         /// Computes the point,  the first, second and third
         /// derivatives on the surface.
         ///
@@ -605,30 +660,43 @@ pub(crate) mod ffi {
             D3UUV: Pin<&mut gp_Vec>,
             D3UVV: Pin<&mut gp_Vec>,
         );
+        /// **Source:** `GeomAdaptor_Surface.hxx`:242 - `GeomAdaptor_Surface::UResolution()`
+        ///
         /// Returns the parametric U  resolution corresponding
         /// to the real space resolution <R3d>.
         #[cxx_name = "UResolution"]
         fn u_resolution(self: &Surface, R3d: f64) -> f64;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:246 - `GeomAdaptor_Surface::VResolution()`
+        ///
         /// Returns the parametric V  resolution corresponding
         /// to the real space resolution <R3d>.
         #[cxx_name = "VResolution"]
         fn v_resolution(self: &Surface, R3d: f64) -> f64;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:264 - `GeomAdaptor_Surface::UDegree()`
         #[cxx_name = "UDegree"]
         fn u_degree(self: &Surface) -> i32;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:266 - `GeomAdaptor_Surface::NbUPoles()`
         #[cxx_name = "NbUPoles"]
         fn nb_u_poles(self: &Surface) -> i32;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:268 - `GeomAdaptor_Surface::VDegree()`
         #[cxx_name = "VDegree"]
         fn v_degree(self: &Surface) -> i32;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:270 - `GeomAdaptor_Surface::NbVPoles()`
         #[cxx_name = "NbVPoles"]
         fn nb_v_poles(self: &Surface) -> i32;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:272 - `GeomAdaptor_Surface::NbUKnots()`
         #[cxx_name = "NbUKnots"]
         fn nb_u_knots(self: &Surface) -> i32;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:274 - `GeomAdaptor_Surface::NbVKnots()`
         #[cxx_name = "NbVKnots"]
         fn nb_v_knots(self: &Surface) -> i32;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:276 - `GeomAdaptor_Surface::IsURational()`
         #[cxx_name = "IsURational"]
         fn is_u_rational(self: &Surface) -> bool;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:278 - `GeomAdaptor_Surface::IsVRational()`
         #[cxx_name = "IsVRational"]
         fn is_v_rational(self: &Surface) -> bool;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:302 - `GeomAdaptor_Surface::OffsetValue()`
         #[cxx_name = "OffsetValue"]
         fn offset_value(self: &Surface) -> f64;
         /// Shallow copy of adaptor
@@ -702,6 +770,7 @@ pub(crate) mod ffi {
         fn Surface_basis_curve(self_: &Surface) -> UniquePtr<HandleAdaptor3dCurve>;
         #[cxx_name = "GeomAdaptor_Surface_BasisSurface"]
         fn Surface_basis_surface(self_: &Surface) -> UniquePtr<HandleAdaptor3dSurface>;
+        /// **Source:** `GeomAdaptor_Surface.hxx`:40 - `GeomAdaptor_Surface::get_type_name()`
         #[cxx_name = "GeomAdaptor_Surface_get_type_name"]
         fn Surface_get_type_name() -> String;
         /// Upcast GeomAdaptor_Surface to Adaptor3d_Surface
