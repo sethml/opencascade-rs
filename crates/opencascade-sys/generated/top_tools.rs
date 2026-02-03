@@ -73,6 +73,9 @@ impl HArray2OfShape {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_top_tools.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== TopTools_HSequenceOfShape ========================"]
         #[doc = "/// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape`"]
         #[cxx_name = "TopTools_HSequenceOfShape"]
@@ -144,6 +147,9 @@ pub(crate) mod ffi {
         fn HArray2OfShape_to_handle(
             obj: UniquePtr<HArray2OfShape>,
         ) -> UniquePtr<HandleTopToolsHArray2OfShape>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -210,6 +216,9 @@ pub(crate) mod ffi {
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
         #[doc = "Wire from topo_ds module"]
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_Array2OfShape"]
         type TopTools_Array2OfShape;

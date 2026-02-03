@@ -44,6 +44,9 @@ impl NumShape {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_sweep.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Sweep_NumShapeTool ========================"]
         #[doc = "/// **Source:** `Sweep_NumShapeTool.hxx` - `Sweep_NumShapeTool`"]
         #[doc = ""]
@@ -95,6 +98,9 @@ pub(crate) mod ffi {
         fn beg_infinite(self: &NumShape) -> bool;
         #[cxx_name = "EndInfinite"]
         fn end_infinite(self: &NumShape) -> bool;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "TopAbs from top_abs module"]
         type TopAbs = crate::top_abs::ffi::TopAbs;
     }

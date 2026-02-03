@@ -181,6 +181,9 @@ impl GaussLeastSquare {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_math.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== math_Matrix ========================"]
         #[doc = "/// **Source:** `math_Matrix.hxx` - `math_Matrix`"]
         #[doc = ""]
@@ -535,6 +538,9 @@ pub(crate) mod ffi {
         #[doc = "Given the input Vector <B> this routine solves the set of linear equations A . X = B. Exception NotDone is raised if the decomposition of A was not done successfully. Exception DimensionError is raised if the range of B Inv is not equal to the rowrange of A. Exception DimensionError is raised if the range of X Inv is not equal to the colrange of A."]
         #[cxx_name = "Solve"]
         fn solve(self: &GaussLeastSquare, B: &math_Vector, X: Pin<&mut math_Vector>);
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -597,6 +603,9 @@ pub(crate) mod ffi {
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
         #[doc = "PackedMapOfInteger from t_col_std module"]
         type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;

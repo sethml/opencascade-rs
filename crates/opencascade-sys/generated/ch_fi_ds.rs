@@ -234,6 +234,9 @@ impl Regul {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_ch_fi_ds.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== ChFiDS_SecHArray1 ========================"]
         #[doc = "/// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1`"]
         #[cxx_name = "ChFiDS_SecHArray1"]
@@ -819,6 +822,9 @@ pub(crate) mod ffi {
         fn s1(self: &Regul) -> i32;
         #[cxx_name = "S2"]
         fn s2(self: &Regul) -> i32;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Curve from adaptor3d module"]
         type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
         #[doc = "CurveOnSurface from adaptor3d module"]
@@ -1041,6 +1047,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "ChFiDS_ListOfStripe"]
         type ChFiDS_ListOfStripe;

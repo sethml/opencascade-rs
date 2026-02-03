@@ -51,6 +51,9 @@ impl NotDone {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_std_fail.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== StdFail_NotDone ========================"]
         #[doc = "/// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone`"]
         #[cxx_name = "StdFail_NotDone"]
@@ -79,6 +82,9 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStdFailNotDone>;
         #[cxx_name = "StdFail_NotDone_get_type_name"]
         fn NotDone_get_type_name() -> String;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -121,6 +127,9 @@ pub(crate) mod ffi {
         type Standard_Type = crate::standard::ffi::Type;
         #[doc = "TypeMismatch from standard module"]
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Standard_SStream"]
         type Standard_SStream;

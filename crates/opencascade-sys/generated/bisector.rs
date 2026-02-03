@@ -20,6 +20,9 @@ impl Bisec {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_bisector.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Bisector_Bisec ========================"]
         #[doc = "/// **Source:** `Bisector_Bisec.hxx` - `Bisector_Bisec`"]
         #[doc = ""]
@@ -74,6 +77,9 @@ pub(crate) mod ffi {
         #[doc = "Returns the Curve of <me>."]
         #[cxx_name = "ChangeValue"]
         fn change_value(self: Pin<&mut Bisec>) -> &HandleGeom2dTrimmedCurve;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "BoundedCurve from geom2d module"]
         type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
         #[doc = "Conic from geom2d module"]
@@ -162,6 +168,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Geom2d_Point"]
         type Geom2d_Point;

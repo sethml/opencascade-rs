@@ -314,6 +314,9 @@ impl MakeFillet2d {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_fillet_api.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepFilletAPI_LocalOperation ========================"]
         #[doc = "/// **Source:** `BRepFilletAPI_LocalOperation.hxx` - `BRepFilletAPI_LocalOperation`"]
         #[doc = ""]
@@ -927,6 +930,9 @@ pub(crate) mod ffi {
         fn make_fillet2d_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut MakeFillet2d>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Command from b_rep_builder_api module"]
         type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
         #[doc = "MakeEdge from b_rep_builder_api module"]
@@ -1071,6 +1077,9 @@ pub(crate) mod ffi {
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
         #[doc = "Wire from topo_ds module"]
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColgp_Array1OfPnt2d"]
         type TColgp_Array1OfPnt2d;

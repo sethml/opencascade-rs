@@ -405,6 +405,9 @@ impl GWedge {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_prim.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepPrim_Torus ========================"]
         #[doc = "/// **Source:** `BRepPrim_Torus.hxx` - `BRepPrim_Torus`"]
         #[doc = ""]
@@ -1036,6 +1039,9 @@ pub(crate) mod ffi {
         #[doc = "Returns the coordinates system from <me>."]
         #[cxx_name = "BRepPrim_GWedge_Axes"]
         fn GWedge_axes(self_: &GWedge) -> UniquePtr<gp_Ax2>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Builder from b_rep module"]
         type BRep_Builder = crate::b_rep::ffi::Builder;
         #[doc = "Tool from b_rep module"]
@@ -1178,6 +1184,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dCurve"]
         type HandleGeom2dCurve;

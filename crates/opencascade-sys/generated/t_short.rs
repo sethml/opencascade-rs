@@ -52,6 +52,9 @@ impl HArray1OfShortReal {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_t_short.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== TShort_HArray1OfShortReal ========================"]
         #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal`"]
         #[cxx_name = "TShort_HArray1OfShortReal"]
@@ -98,6 +101,9 @@ pub(crate) mod ffi {
         fn HArray1OfShortReal_to_handle(
             obj: UniquePtr<HArray1OfShortReal>,
         ) -> UniquePtr<HandleTShortHArray1OfShortReal>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -140,6 +146,9 @@ pub(crate) mod ffi {
         type Standard_Type = crate::standard::ffi::Type;
         #[doc = "TypeMismatch from standard module"]
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TShort_Array1OfShortReal"]
         type TShort_Array1OfShortReal;

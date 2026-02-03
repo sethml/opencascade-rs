@@ -654,6 +654,9 @@ impl MakeEdge {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_lib.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepLib_MakeWire ========================"]
         #[doc = "/// **Source:** `BRepLib_MakeWire.hxx` - `BRepLib_MakeWire`"]
         #[doc = ""]
@@ -1383,6 +1386,9 @@ pub(crate) mod ffi {
         #[doc = "Upcast BRepLib_MakeEdge to BRepLib_MakeShape (mutable)"]
         #[cxx_name = "BRepLib_MakeEdge_as_BRepLib_MakeShape_mut"]
         fn make_edge_as_make_shape_mut(self_: Pin<&mut MakeEdge>) -> Pin<&mut MakeShape>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "BoundedCurve from geom2d module"]
         type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
         #[doc = "Conic from geom2d module"]
@@ -1525,6 +1531,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;

@@ -452,6 +452,9 @@ impl Section {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_algo_api.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepAlgoAPI_BuilderAlgo ========================"]
         #[doc = "/// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx` - `BRepAlgoAPI_BuilderAlgo`"]
         #[doc = ""]
@@ -947,6 +950,9 @@ pub(crate) mod ffi {
         fn section_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut Section>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "BOP from bop_algo module"]
         type BOPAlgo_BOP = crate::bop_algo::ffi::BOP;
         #[doc = "Builder from bop_algo module"]
@@ -1145,6 +1151,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "BOPAlgo_PBuilder"]
         type BOPAlgo_PBuilder;

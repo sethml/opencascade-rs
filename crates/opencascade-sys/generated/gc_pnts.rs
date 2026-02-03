@@ -124,6 +124,9 @@ impl TangentialDeflection {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_gc_pnts.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== GCPnts_TangentialDeflection ========================"]
         #[doc = "/// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection`"]
         #[doc = ""]
@@ -257,6 +260,9 @@ pub(crate) mod ffi {
             theAngularDeflection: f64,
             theMinLength: f64,
         ) -> f64;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Curve2d from adaptor2d module"]
         type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
         #[doc = "Curve from adaptor3d module"]

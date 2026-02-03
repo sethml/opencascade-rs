@@ -249,6 +249,9 @@ impl Builder {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_feat.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepFeat_MakeCylindricalHole ========================"]
         #[doc = "/// **Source:** `BRepFeat_MakeCylindricalHole.hxx` - `BRepFeat_MakeCylindricalHole`"]
         #[doc = ""]
@@ -605,6 +608,9 @@ pub(crate) mod ffi {
         fn builder_as_bop_algo_tools_provider_mut(
             self_: Pin<&mut Builder>,
         ) -> Pin<&mut BOPAlgo_ToolsProvider>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "BOP from bop_algo module"]
         type BOPAlgo_BOP = crate::bop_algo::ffi::BOP;
         #[doc = "Builder from bop_algo module"]
@@ -795,6 +801,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColGeom_SequenceOfCurve"]
         type TColGeom_SequenceOfCurve;

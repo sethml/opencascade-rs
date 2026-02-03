@@ -29,6 +29,9 @@ impl Curve {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom2d_evaluator.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Geom2dEvaluator_Curve ========================"]
         #[doc = "/// **Source:** `Geom2dEvaluator_Curve.hxx` - `Geom2dEvaluator_Curve`"]
         #[doc = ""]
@@ -69,6 +72,9 @@ pub(crate) mod ffi {
         fn Curve_shallow_copy(self_: &Curve) -> UniquePtr<HandleGeom2dEvaluatorCurve>;
         #[cxx_name = "Geom2dEvaluator_Curve_get_type_name"]
         fn Curve_get_type_name() -> String;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -187,6 +193,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dEvaluatorCurve"]
         type HandleGeom2dEvaluatorCurve;

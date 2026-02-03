@@ -105,6 +105,9 @@ impl SpecificLib {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_iges_data.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== IGESData_BasicEditor ========================"]
         #[doc = "/// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor`"]
         #[doc = ""]
@@ -243,6 +246,9 @@ pub(crate) mod ffi {
             amodule: &HandleIGESDataSpecificModule,
             aprotocol: &HandleIGESDataProtocol,
         );
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -285,6 +291,9 @@ pub(crate) mod ffi {
         type Standard_Type = crate::standard::ffi::Type;
         #[doc = "TypeMismatch from standard module"]
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "IGESData_IGESEntity"]
         type IGESData_IGESEntity;

@@ -110,6 +110,9 @@ impl Builder {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_ch_fi2d.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== ChFi2d_Builder ========================"]
         #[doc = "/// **Source:** `ChFi2d_Builder.hxx` - `ChFi2d_Builder`"]
         #[doc = ""]
@@ -214,6 +217,9 @@ pub(crate) mod ffi {
         #[doc = "returns the modified face"]
         #[cxx_name = "ChFi2d_Builder_Result"]
         fn Builder_result(self_: &Builder) -> UniquePtr<TopoDS_Face>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "HArray2OfShape from top_tools module"]
         type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
         #[doc = "HSequenceOfShape from top_tools module"]
@@ -242,6 +248,9 @@ pub(crate) mod ffi {
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
         #[doc = "Wire from topo_ds module"]
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_SequenceOfShape"]
         type TopTools_SequenceOfShape;

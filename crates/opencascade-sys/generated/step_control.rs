@@ -76,6 +76,9 @@ impl Writer {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_step_control.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== STEPControl_Reader ========================"]
         #[doc = "/// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader`"]
         #[doc = ""]
@@ -168,6 +171,9 @@ pub(crate) mod ffi {
             self_: Pin<&mut Writer>,
             newone: bool,
         ) -> UniquePtr<HandleStepDataStepModel>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Parameters from destep module"]
         type DESTEP_Parameters = crate::destep::ffi::Parameters;
         #[doc = "Message from message module"]
@@ -244,6 +250,9 @@ pub(crate) mod ffi {
         type XSAlgo_ShapeProcessor = crate::xs_algo::ffi::ShapeProcessor;
         #[doc = "Reader from xs_control module"]
         type XSControl_Reader = crate::xs_control::ffi::Reader;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "DE_ShapeFixParameters"]
         type DE_ShapeFixParameters;

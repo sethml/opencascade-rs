@@ -71,13 +71,9 @@ fn generate_doc_comments(source_header: &Option<String>, cpp_identifier: &str, c
     result
 }
 
-/// Convert TokenStream with #[doc = "..."] attributes to string with /// comments
-/// Also adds source attribution for better traceability  
+/// Convert TokenStream to formatted string, converting section marker doc comments to regular comments
 fn convert_doc_attributes_to_comments(tokens: &TokenStream) -> String {
     let code = tokens.to_string();
-    
-    // TODO: Implement better doc comment conversion - regex approach breaks syntax
-    // For now, keep the #[doc = "..."] format working correctly
     
     // Add basic formatting by inserting newlines in key places to make it more readable  
     let formatted = code
@@ -90,6 +86,22 @@ fn convert_doc_attributes_to_comments(tokens: &TokenStream) -> String {
         .replace(" impl ", "\nimpl ");
     
     formatted
+}
+
+/// Convert section marker doc comments (starting with "// SECTION:") back to regular comments
+/// This is called after rustfmt formatting to preserve section headers in the output
+pub fn convert_section_markers_to_comments(code: &str) -> String {
+    use regex::Regex;
+    
+    // Match doc comments that contain section markers
+    // Pattern: /// SECTION: ... or #[doc = " SECTION: ..."]
+    let doc_comment_re = Regex::new(r#"/// SECTION: ([^\n]*)"#).unwrap();
+    let attr_re = Regex::new(r#"#\[doc = " SECTION: ([^"]+)"\]"#).unwrap();
+    
+    let result = doc_comment_re.replace_all(code, "// $1");
+    let result = attr_re.replace_all(&result, "// $1");
+    
+    result.into_owned()
 }
 
 /// Convert a method name to a safe Rust identifier, adding underscore suffix for keywords
@@ -205,6 +217,63 @@ pub fn generate_module(
     // Generate the file header
     let file_header = generate_file_header(&module.name, headers);
 
+    // Build section headers conditionally - only when there's content
+    // Doc attributes need an item to attach to, so we prepend them to the first item in the section
+    let enum_section = if !enum_items.is_empty() {
+        quote! {
+            #[doc = " SECTION: ========================"]
+            #[doc = " SECTION: Shared enums"]
+            #[doc = " SECTION: ========================"]
+            #(#enum_items)*
+        }
+    } else {
+        quote! {}
+    };
+
+    let class_section = if !class_items.is_empty() {
+        quote! {
+            #[doc = " SECTION: ========================"]
+            #[doc = " SECTION: Module types and methods"]
+            #[doc = " SECTION: ========================"]
+            #(#class_items)*
+        }
+    } else {
+        quote! {}
+    };
+
+    let function_section = if !function_items.is_empty() {
+        quote! {
+            #[doc = " SECTION: ========================"]
+            #[doc = " SECTION: Free functions"]
+            #[doc = " SECTION: ========================"]
+            #(#function_items)*
+        }
+    } else {
+        quote! {}
+    };
+
+    let alias_section = if !type_aliases.is_empty() {
+        quote! {
+            #[doc = " SECTION: ========================"]
+            #[doc = " SECTION: Cross-module type aliases"]
+            #[doc = " SECTION: ========================"]
+            #(#type_aliases)*
+        }
+    } else {
+        quote! {}
+    };
+
+    let opaque_section = if !opaque_type_decls.is_empty() {
+        quote! {
+            #[doc = " SECTION: ========================"]
+            #[doc = " SECTION: Referenced types (opaque)"]
+            #[doc = " SECTION: ========================"]
+            #(#opaque_type_decls)*
+        }
+    } else {
+        quote! {}
+    };
+
     // Assemble the module as TokenStream first
     let tokens = quote! {
         #![allow(dead_code)]
@@ -222,33 +291,15 @@ pub fn generate_module(
 
         #[cxx::bridge]
         pub(crate) mod ffi {
-            // ========================
-            // Shared enums
-            // ========================
-            #(#enum_items)*
+            #enum_section
 
             unsafe extern "C++" {
                 include!(#include_file);
 
-                // ========================
-                // Module types and methods
-                // ========================
-                #(#class_items)*
-
-                // ========================
-                // Free functions
-                // ========================
-                #(#function_items)*
-
-                // ========================
-                // Cross-module type aliases
-                // ========================
-                #(#type_aliases)*
-
-                // ========================
-                // Referenced types (opaque)
-                // ========================
-                #(#opaque_type_decls)*
+                #class_section
+                #function_section
+                #alias_section
+                #opaque_section
             }
 
             #(#unique_ptr_impls)*

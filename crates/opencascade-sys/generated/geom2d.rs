@@ -407,6 +407,9 @@ impl ffi::HandleGeom2dTrimmedCurve {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom2d.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Geom2d_Geometry ========================"]
         #[doc = "/// **Source:** `Geom2d_Geometry.hxx` - `Geom2d_Geometry`"]
         #[doc = ""]
@@ -955,6 +958,9 @@ pub(crate) mod ffi {
         fn trimmed_curve_to_handle_geometry(
             handle: &HandleGeom2dTrimmedCurve,
         ) -> UniquePtr<HandleGeom2dGeometry>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -1073,6 +1079,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dBoundedCurve"]
         type HandleGeom2dBoundedCurve;

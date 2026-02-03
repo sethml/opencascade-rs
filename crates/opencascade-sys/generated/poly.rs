@@ -330,6 +330,9 @@ impl PolygonOnTriangulation {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_poly.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Poly_Triangulation ========================"]
         #[doc = "/// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation`"]
         #[doc = ""]
@@ -939,6 +942,9 @@ pub(crate) mod ffi {
         fn PolygonOnTriangulation_to_handle(
             obj: UniquePtr<PolygonOnTriangulation>,
         ) -> UniquePtr<HandlePolyPolygonOnTriangulation>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "B2d from bnd module"]
         type Bnd_B2d = crate::bnd::ffi::B2d;
         #[doc = "Box from bnd module"]
@@ -1113,6 +1119,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "OSD_FileSystem"]
         type OSD_FileSystem;

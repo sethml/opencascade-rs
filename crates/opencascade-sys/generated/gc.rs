@@ -119,6 +119,9 @@ impl Root {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_gc.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== GC_MakeArcOfCircle ========================"]
         #[doc = "/// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle`"]
         #[doc = ""]
@@ -237,6 +240,9 @@ pub(crate) mod ffi {
         #[doc = "Returns the status of the construction: -   gce_Done, if the construction is successful, or -   another value of the gce_ErrorType enumeration indicating why the construction failed."]
         #[cxx_name = "GC_Root_Status"]
         fn Root_status(self_: &Root) -> UniquePtr<gce_ErrorType>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "BSplineCurve from geom module"]
         type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
         #[doc = "BSplineSurface from geom module"]
@@ -339,6 +345,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gce_ErrorType"]
         type gce_ErrorType;

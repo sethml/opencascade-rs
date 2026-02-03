@@ -51,6 +51,9 @@ impl Surface {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom_evaluator.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== GeomEvaluator_Curve ========================"]
         #[doc = "/// **Source:** `GeomEvaluator_Curve.hxx` - `GeomEvaluator_Curve`"]
         #[doc = ""]
@@ -155,6 +158,9 @@ pub(crate) mod ffi {
         fn Surface_shallow_copy(self_: &Surface) -> UniquePtr<HandleGeomEvaluatorSurface>;
         #[cxx_name = "GeomEvaluator_Surface_get_type_name"]
         fn Surface_get_type_name() -> String;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -273,6 +279,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomEvaluatorCurve"]
         type HandleGeomEvaluatorCurve;

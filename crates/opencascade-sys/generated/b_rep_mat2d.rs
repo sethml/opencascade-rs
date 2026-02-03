@@ -80,6 +80,9 @@ impl LinkTopoBilo {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_mat2d.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepMAT2d_BisectingLocus ========================"]
         #[doc = "/// **Source:** `BRepMAT2d_BisectingLocus.hxx` - `BRepMAT2d_BisectingLocus`"]
         #[doc = ""]
@@ -168,6 +171,9 @@ pub(crate) mod ffi {
             self_: &LinkTopoBilo,
             aBE: &HandleMATBasicElt,
         ) -> UniquePtr<TopoDS_Shape>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Bisec from bisector module"]
         type Bisector_Bisec = crate::bisector::ffi::Bisec;
         #[doc = "BoundedCurve from geom2d module"]
@@ -284,6 +290,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "BRepMAT2d_Explorer"]
         type BRepMAT2d_Explorer;

@@ -349,6 +349,9 @@ impl ECC {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_extrema.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Extrema_ExtCC ========================"]
         #[doc = "/// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC`"]
         #[doc = ""]
@@ -1147,6 +1150,9 @@ pub(crate) mod ffi {
         #[doc = "Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one."]
         #[cxx_name = "Points"]
         fn points(self: &ECC, N: i32, P1: Pin<&mut POnCurv>, P2: Pin<&mut POnCurv>);
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Curve from adaptor3d module"]
         type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
         #[doc = "CurveOnSurface from adaptor3d module"]
@@ -1245,6 +1251,9 @@ pub(crate) mod ffi {
         type math_GaussLeastSquare = crate::math::ffi::GaussLeastSquare;
         #[doc = "Matrix from math module"]
         type math_Matrix = crate::math::ffi::Matrix;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "math_Vector"]
         type math_Vector;

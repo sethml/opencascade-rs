@@ -70,6 +70,9 @@ impl IncAllocator {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_n_collection.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== NCollection_Buffer ========================"]
         #[doc = "/// **Source:** `NCollection_Buffer.hxx` - `NCollection_Buffer`"]
         #[doc = ""]
@@ -181,6 +184,9 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &IncAllocator) -> &HandleStandardType;
         #[cxx_name = "NCollection_IncAllocator_get_type_name"]
         fn IncAllocator_get_type_name() -> String;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -223,6 +229,9 @@ pub(crate) mod ffi {
         type Standard_Type = crate::standard::ffi::Type;
         #[doc = "TypeMismatch from standard module"]
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleNCollectionBaseAllocator"]
         type HandleNCollectionBaseAllocator;

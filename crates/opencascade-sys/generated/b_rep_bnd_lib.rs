@@ -53,6 +53,9 @@ impl BRepBndLib {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_bnd_lib.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepBndLib ========================"]
         #[doc = "/// **Source:** `BRepBndLib.hxx` - `BRepBndLib`"]
         #[doc = ""]
@@ -82,6 +85,9 @@ pub(crate) mod ffi {
             theIsOptimal: bool,
             theIsShapeToleranceUsed: bool,
         );
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "B2d from bnd module"]
         type Bnd_B2d = crate::bnd::ffi::B2d;
         #[doc = "Box from bnd module"]

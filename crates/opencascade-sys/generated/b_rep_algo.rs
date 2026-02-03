@@ -20,6 +20,9 @@ impl Image {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_algo.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepAlgo_Image ========================"]
         #[doc = "/// **Source:** `BRepAlgo_Image.hxx` - `BRepAlgo_Image`"]
         #[doc = ""]
@@ -83,6 +86,9 @@ pub(crate) mod ffi {
         #[doc = "Keeps only the link between roots and lastimage."]
         #[cxx_name = "Compact"]
         fn compact(self: Pin<&mut Image>);
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "TopAbs from top_abs module"]
         type TopAbs = crate::top_abs::ffi::TopAbs;
         #[doc = "HArray2OfShape from top_tools module"]
@@ -113,6 +119,9 @@ pub(crate) mod ffi {
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
         #[doc = "Wire from topo_ds module"]
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;

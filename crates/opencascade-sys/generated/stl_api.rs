@@ -31,6 +31,9 @@ impl Writer {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_stl_api.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== StlAPI_Writer ========================"]
         #[doc = "/// **Source:** `StlAPI_Writer.hxx` - `StlAPI_Writer`"]
         #[doc = ""]
@@ -53,6 +56,9 @@ pub(crate) mod ffi {
             theFileName: &str,
             theProgress: &Message_ProgressRange,
         ) -> bool;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Message from message module"]
         type Message = crate::message::ffi::Message;
         #[doc = "Alert from message module"]

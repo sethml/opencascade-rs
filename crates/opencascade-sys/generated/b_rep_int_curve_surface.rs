@@ -26,6 +26,9 @@ impl Inter {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_int_curve_surface.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepIntCurveSurface_Inter ========================"]
         #[doc = "/// **Source:** `BRepIntCurveSurface_Inter.hxx` - `BRepIntCurveSurface_Inter`"]
         #[doc = ""]
@@ -85,6 +88,9 @@ pub(crate) mod ffi {
         #[doc = "returns the current Intersection point."]
         #[cxx_name = "BRepIntCurveSurface_Inter_Point"]
         fn Inter_point(self_: &Inter) -> UniquePtr<IntCurveSurface_IntersectionPoint>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Curve from geom_adaptor module"]
         type GeomAdaptor_Curve = crate::geom_adaptor::ffi::Curve;
         #[doc = "Surface from geom_adaptor module"]

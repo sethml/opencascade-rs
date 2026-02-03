@@ -72,6 +72,9 @@ impl Writer {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_iges_control.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== IGESControl_Reader ========================"]
         #[doc = "/// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader`"]
         #[doc = ""]
@@ -159,6 +162,9 @@ pub(crate) mod ffi {
         #[doc = "Prepares and writes an IGES model either to an OStream, S or to a file name,CString. Returns True if the operation was performed correctly and False if an error occurred (for instance, if the processor could not create the file)."]
         #[cxx_name = "IGESControl_Writer_Write"]
         fn Writer_write(self_: Pin<&mut Writer>, file: &str, fnes: bool) -> bool;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "BasicEditor from iges_data module"]
         type IGESData_BasicEditor = crate::iges_data::ffi::BasicEditor;
         #[doc = "SpecificLib from iges_data module"]
@@ -259,6 +265,9 @@ pub(crate) mod ffi {
         type XSAlgo_ShapeProcessor = crate::xs_algo::ffi::ShapeProcessor;
         #[doc = "Reader from xs_control module"]
         type XSControl_Reader = crate::xs_control::ffi::Reader;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "DE_ShapeFixParameters"]
         type DE_ShapeFixParameters;

@@ -42,6 +42,9 @@ impl UnifySameDomain {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_shape_upgrade.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== ShapeUpgrade_UnifySameDomain ========================"]
         #[doc = "/// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain`"]
         #[doc = ""]
@@ -111,6 +114,9 @@ pub(crate) mod ffi {
         fn UnifySameDomain_to_handle(
             obj: UniquePtr<UnifySameDomain>,
         ) -> UniquePtr<HandleShapeUpgradeUnifySameDomain>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "BRepTools from b_rep_tools module"]
         type BRepTools = crate::b_rep_tools::ffi::BRepTools;
         #[doc = "History from b_rep_tools module"]
@@ -189,6 +195,9 @@ pub(crate) mod ffi {
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
         #[doc = "Wire from topo_ds module"]
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_MapOfShape"]
         type TopTools_MapOfShape;

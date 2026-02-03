@@ -42,6 +42,9 @@ impl Shape {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_i_mesh_data.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== IMeshData_Model ========================"]
         #[doc = "/// **Source:** `IMeshData_Model.hxx` - `IMeshData_Model`"]
         #[doc = ""]
@@ -86,6 +89,9 @@ pub(crate) mod ffi {
         #[doc = "Wrap IMeshData_Shape in a Handle (reference-counted smart pointer)"]
         #[cxx_name = "IMeshData_Shape_to_handle"]
         fn Shape_to_handle(obj: UniquePtr<Shape>) -> UniquePtr<HandleIMeshDataShape>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -152,6 +158,9 @@ pub(crate) mod ffi {
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
         #[doc = "Wire from topo_ds module"]
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleIMeshDataShape"]
         type HandleIMeshDataShape;

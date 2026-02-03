@@ -46,6 +46,9 @@ impl GProps {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_g_prop.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== GProp_GProps ========================"]
         #[doc = "/// **Source:** `GProp_GProps.hxx` - `GProp_GProps`"]
         #[doc = ""]
@@ -89,6 +92,9 @@ pub(crate) mod ffi {
         #[doc = "Clone GProp_GProps into a new UniquePtr via copy constructor"]
         #[cxx_name = "construct_unique"]
         fn GProps_to_owned(self_: &GProps) -> UniquePtr<GProps>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Ax1 from gp module"]
         type gp_Ax1 = crate::gp::ffi::Ax1;
         #[doc = "Ax2 from gp module"]
@@ -165,6 +171,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "GProp_PrincipalProps"]
         type GProp_PrincipalProps;

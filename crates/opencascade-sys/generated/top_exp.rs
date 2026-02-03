@@ -82,6 +82,9 @@ impl TopExp {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_top_exp.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== TopExp_Explorer ========================"]
         #[doc = "/// **Source:** `TopExp_Explorer.hxx` - `TopExp_Explorer`"]
         #[doc = ""]
@@ -169,6 +172,9 @@ pub(crate) mod ffi {
             E2: &TopoDS_Edge,
             V: Pin<&mut TopoDS_Vertex>,
         ) -> bool;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "TopAbs from top_abs module"]
         type TopAbs = crate::top_abs::ffi::TopAbs;
         #[doc = "HArray2OfShape from top_tools module"]
@@ -199,6 +205,9 @@ pub(crate) mod ffi {
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
         #[doc = "Wire from topo_ds module"]
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape"]
         type TopTools_IndexedDataMapOfShapeListOfShape;

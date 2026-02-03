@@ -358,6 +358,9 @@ impl Tool {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRep_Builder ========================"]
         #[doc = "/// **Source:** `BRep_Builder.hxx` - `BRep_Builder`"]
         #[doc = ""]
@@ -994,6 +997,9 @@ pub(crate) mod ffi {
         #[doc = "Returns the parameters of the vertex on the face."]
         #[cxx_name = "BRep_Tool_Parameters"]
         fn Tool_parameters(V: &TopoDS_Vertex, F: &TopoDS_Face) -> UniquePtr<gp_Pnt2d>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "BoundedCurve from geom2d module"]
         type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
         #[doc = "Conic from geom2d module"]
@@ -1154,6 +1160,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Poly_ListOfTriangulation"]
         type Poly_ListOfTriangulation;

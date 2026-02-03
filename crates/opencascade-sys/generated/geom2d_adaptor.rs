@@ -102,6 +102,9 @@ impl Curve {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom2d_adaptor.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Geom2dAdaptor_Curve ========================"]
         #[doc = "/// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve`"]
         #[doc = ""]
@@ -227,6 +230,9 @@ pub(crate) mod ffi {
         #[doc = "Upcast Geom2dAdaptor_Curve to Adaptor2d_Curve2d (mutable)"]
         #[cxx_name = "Geom2dAdaptor_Curve_as_Adaptor2d_Curve2d_mut"]
         fn curve_as_adaptor2d_curve2d_mut(self_: Pin<&mut Curve>) -> Pin<&mut Adaptor2d_Curve2d>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Curve2d from adaptor2d module"]
         type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
         #[doc = "BoundedCurve from geom2d module"]
@@ -379,6 +385,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Geom2d_BSplineCurve"]
         type Geom2d_BSplineCurve;

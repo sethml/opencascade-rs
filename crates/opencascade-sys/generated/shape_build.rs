@@ -37,6 +37,9 @@ impl ReShape {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_shape_build.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== ShapeBuild_ReShape ========================"]
         #[doc = "/// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape`"]
         #[doc = ""]
@@ -68,6 +71,9 @@ pub(crate) mod ffi {
         fn re_shape_as_b_rep_tools_re_shape_mut(
             self_: Pin<&mut ReShape>,
         ) -> Pin<&mut BRepTools_ReShape>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "BRepTools from b_rep_tools module"]
         type BRepTools = crate::b_rep_tools::ffi::BRepTools;
         #[doc = "History from b_rep_tools module"]
@@ -144,6 +150,9 @@ pub(crate) mod ffi {
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
         #[doc = "Wire from topo_ds module"]
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;

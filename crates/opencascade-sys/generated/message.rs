@@ -294,6 +294,9 @@ impl AlertExtended {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_message.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Message_ProgressRange ========================"]
         #[doc = "/// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange`"]
         #[doc = ""]
@@ -822,6 +825,9 @@ pub(crate) mod ffi {
         #[doc = "Upcast Message_AlertExtended to Message_Alert (mutable)"]
         #[cxx_name = "Message_AlertExtended_as_Message_Alert_mut"]
         fn alert_extended_as_alert_mut(self_: Pin<&mut AlertExtended>) -> Pin<&mut Alert>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "BaseAllocator from n_collection module"]
         type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
         #[doc = "BaseList from n_collection module"]
@@ -904,6 +910,9 @@ pub(crate) mod ffi {
         type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
         #[doc = "HExtendedString from t_collection module"]
         type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Message_Attribute"]
         type Message_Attribute;

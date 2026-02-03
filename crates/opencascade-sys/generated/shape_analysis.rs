@@ -91,6 +91,9 @@ impl FreeBounds {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_shape_analysis.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== ShapeAnalysis_FreeBounds ========================"]
         #[doc = "/// **Source:** `ShapeAnalysis_FreeBounds.hxx` - `ShapeAnalysis_FreeBounds`"]
         #[doc = ""]
@@ -168,6 +171,9 @@ pub(crate) mod ffi {
             closed: Pin<&mut TopoDS_Compound>,
             open: Pin<&mut TopoDS_Compound>,
         );
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "HArray2OfShape from top_tools module"]
         type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
         #[doc = "HSequenceOfShape from top_tools module"]
@@ -196,6 +202,9 @@ pub(crate) mod ffi {
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
         #[doc = "Wire from topo_ds module"]
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_DataMapOfShapeShape"]
         type TopTools_DataMapOfShapeShape;

@@ -34,6 +34,9 @@ impl GeneralLib {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_interface.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Interface_GeneralLib ========================"]
         #[doc = "/// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib`"]
         #[cxx_name = "Interface_GeneralLib"]
@@ -88,6 +91,9 @@ pub(crate) mod ffi {
             amodule: &HandleInterfaceGeneralModule,
             aprotocol: &HandleInterfaceProtocol,
         );
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -130,6 +136,9 @@ pub(crate) mod ffi {
         type Standard_Type = crate::standard::ffi::Type;
         #[doc = "TypeMismatch from standard module"]
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Interface_GeneralModule"]
         type Interface_GeneralModule;

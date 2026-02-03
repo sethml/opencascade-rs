@@ -769,6 +769,9 @@ impl ModifyShape {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_builder_api.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepBuilderAPI_Command ========================"]
         #[doc = "/// **Source:** `BRepBuilderAPI_Command.hxx` - `BRepBuilderAPI_Command`"]
         #[doc = ""]
@@ -1755,6 +1758,9 @@ pub(crate) mod ffi {
         #[doc = "Upcast BRepBuilderAPI_ModifyShape to BRepBuilderAPI_MakeShape (mutable)"]
         #[cxx_name = "BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_MakeShape_mut"]
         fn modify_shape_as_make_shape_mut(self_: Pin<&mut ModifyShape>) -> Pin<&mut MakeShape>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "BRepTools from b_rep_tools module"]
         type BRepTools = crate::b_rep_tools::ffi::BRepTools;
         #[doc = "History from b_rep_tools module"]
@@ -1973,6 +1979,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;

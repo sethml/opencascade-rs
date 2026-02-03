@@ -38,6 +38,9 @@ impl ShapeProcess {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_shape_process.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== ShapeProcess ========================"]
         #[doc = "/// **Source:** `ShapeProcess.hxx` - `ShapeProcess`"]
         #[doc = ""]
@@ -58,6 +61,9 @@ pub(crate) mod ffi {
             seq: &str,
             theProgress: &Message_ProgressRange,
         ) -> bool;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Message from message module"]
         type Message = crate::message::ffi::Message;
         #[doc = "Alert from message module"]
@@ -84,6 +90,9 @@ pub(crate) mod ffi {
         type Message_ProgressScope = crate::message::ffi::ProgressScope;
         #[doc = "Report from message module"]
         type Message_Report = crate::message::ffi::Report;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "ShapeProcess_Context"]
         type ShapeProcess_Context;

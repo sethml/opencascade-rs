@@ -85,6 +85,9 @@ impl Reader {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_xs_control.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== XSControl_Reader ========================"]
         #[doc = "/// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader`"]
         #[doc = ""]
@@ -199,6 +202,9 @@ pub(crate) mod ffi {
         #[doc = "Returns all of the results in a single shape which is: - a null shape if there are no results, - a shape if there is one result, - a compound containing the resulting shapes if there are more than one."]
         #[cxx_name = "XSControl_Reader_OneShape"]
         fn Reader_one_shape(self_: &Reader) -> UniquePtr<TopoDS_Shape>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "GeneralLib from interface module"]
         type Interface_GeneralLib = crate::interface::ffi::GeneralLib;
         #[doc = "Message from message module"]
@@ -315,6 +321,9 @@ pub(crate) mod ffi {
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
         #[doc = "ShapeProcessor from xs_algo module"]
         type XSAlgo_ShapeProcessor = crate::xs_algo::ffi::ShapeProcessor;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "DE_ShapeFixParameters"]
         type DE_ShapeFixParameters;

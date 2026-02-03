@@ -472,6 +472,9 @@ impl Translation {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_sweep.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepSweep_Revol ========================"]
         #[doc = "/// **Source:** `BRepSweep_Revol.hxx` - `BRepSweep_Revol`"]
         #[doc = ""]
@@ -1192,6 +1195,9 @@ pub(crate) mod ffi {
         #[doc = "Upcast BRepSweep_Translation to BRepSweep_Trsf (mutable)"]
         #[cxx_name = "BRepSweep_Translation_as_BRepSweep_Trsf_mut"]
         fn translation_as_trsf_mut(self_: Pin<&mut Translation>) -> Pin<&mut Trsf>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Builder from b_rep module"]
         type BRep_Builder = crate::b_rep::ffi::Builder;
         #[doc = "Tool from b_rep module"]

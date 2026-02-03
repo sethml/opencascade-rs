@@ -102,6 +102,9 @@ impl ProjectPointOnSurf {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom_api.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== GeomAPI_Interpolate ========================"]
         #[doc = "/// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate`"]
         #[doc = ""]
@@ -294,6 +297,9 @@ pub(crate) mod ffi {
         #[doc = "Returns the nearest orthogonal projection of the point on the surface. Exceptions StdFail_NotDone if projection fails."]
         #[cxx_name = "GeomAPI_ProjectPointOnSurf_NearestPoint"]
         fn ProjectPointOnSurf_nearest_point(self_: &ProjectPointOnSurf) -> UniquePtr<gp_Pnt>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "ECC from extrema module"]
         type Extrema_ECC = crate::extrema::ffi::ECC;
         #[doc = "EPCOfExtPC from extrema module"]
@@ -450,6 +456,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;

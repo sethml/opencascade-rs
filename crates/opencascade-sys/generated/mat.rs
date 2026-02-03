@@ -41,6 +41,9 @@ impl BasicElt {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_mat.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== MAT_BasicElt ========================"]
         #[doc = "/// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt`"]
         #[doc = ""]
@@ -79,6 +82,9 @@ pub(crate) mod ffi {
         #[doc = "Wrap MAT_BasicElt in a Handle (reference-counted smart pointer)"]
         #[cxx_name = "MAT_BasicElt_to_handle"]
         fn BasicElt_to_handle(obj: UniquePtr<BasicElt>) -> UniquePtr<HandleMATBasicElt>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -121,6 +127,9 @@ pub(crate) mod ffi {
         type Standard_Type = crate::standard::ffi::Type;
         #[doc = "TypeMismatch from standard module"]
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "MAT_Arc"]
         type MAT_Arc;

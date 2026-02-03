@@ -1089,6 +1089,9 @@ impl ffi::HandleGeomTrimmedCurve {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Geom_Geometry ========================"]
         #[doc = "/// **Source:** `Geom_Geometry.hxx` - `Geom_Geometry`"]
         #[doc = ""]
@@ -3548,6 +3551,9 @@ pub(crate) mod ffi {
         fn trimmed_curve_to_handle_geometry(
             handle: &HandleGeomTrimmedCurve,
         ) -> UniquePtr<HandleGeomGeometry>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -3694,6 +3700,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_Array1OfInteger"]
         type TColStd_Array1OfInteger;

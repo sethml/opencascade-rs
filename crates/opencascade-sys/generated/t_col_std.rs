@@ -298,6 +298,9 @@ impl HArray1OfBoolean {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_t_col_std.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== TColStd_HArray1OfInteger ========================"]
         #[doc = "/// **Source:** `TColStd_HArray1OfInteger.hxx` - `TColStd_HArray1OfInteger`"]
         #[cxx_name = "TColStd_HArray1OfInteger"]
@@ -725,6 +728,9 @@ pub(crate) mod ffi {
         fn HArray1OfBoolean_to_handle(
             obj: UniquePtr<HArray1OfBoolean>,
         ) -> UniquePtr<HandleTColStdHArray1OfBoolean>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "BaseAllocator from n_collection module"]
         type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
         #[doc = "BaseList from n_collection module"]
@@ -777,6 +783,9 @@ pub(crate) mod ffi {
         type Standard_Type = crate::standard::ffi::Type;
         #[doc = "TypeMismatch from standard module"]
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_Array1OfBoolean"]
         type TColStd_Array1OfBoolean;

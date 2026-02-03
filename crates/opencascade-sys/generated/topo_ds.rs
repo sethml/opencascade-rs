@@ -285,6 +285,9 @@ impl TShape {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_topo_ds.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== TopoDS_Shape ========================"]
         #[doc = "/// **Source:** `TopoDS_Shape.hxx` - `TopoDS_Shape`"]
         #[doc = ""]
@@ -703,6 +706,9 @@ pub(crate) mod ffi {
         fn TShape_empty_copy(self_: &TShape) -> UniquePtr<HandleTopoDSTShape>;
         #[cxx_name = "TopoDS_TShape_get_type_name"]
         fn TShape_get_type_name() -> String;
+        // ========================
+        // Free functions
+        // ========================
         #[doc = "Casts shape theShape to the more specialized return type, Vertex. @param theShape the shape to be cast @return the casted shape as TopoDS_Vertex @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
         #[cxx_name = "TopoDS_fn_Vertex"]
         fn vertex(theShape: &Shape) -> &Vertex;
@@ -751,6 +757,9 @@ pub(crate) mod ffi {
         #[doc = "Casts shape theShape to the more specialized return type, Compound. @param theShape the shape to be cast @return the casted shape as TopoDS_Compound @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
         #[cxx_name = "TopoDS_fn_Compound_mut"]
         fn compound_mut(theShape: Pin<&mut Shape>) -> Pin<&mut Compound>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -799,6 +808,9 @@ pub(crate) mod ffi {
         type TopLoc_Location = crate::top_loc::ffi::Location;
         #[doc = "SListOfItemLocation from top_loc module"]
         type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;

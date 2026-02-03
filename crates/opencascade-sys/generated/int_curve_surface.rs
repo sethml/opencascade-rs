@@ -45,6 +45,9 @@ impl IntersectionPoint {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_int_curve_surface.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== IntCurveSurface_HInter ========================"]
         #[doc = "/// **Source:** `IntCurveSurface_HInter.hxx` - `IntCurveSurface_HInter`"]
         #[cxx_name = "IntCurveSurface_HInter"]
@@ -165,6 +168,9 @@ pub(crate) mod ffi {
         #[doc = "Dump all the fields."]
         #[cxx_name = "Dump"]
         fn dump(self: &IntersectionPoint);
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Curve from adaptor3d module"]
         type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
         #[doc = "CurveOnSurface from adaptor3d module"]
@@ -261,6 +267,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Bnd_BoundSortBox"]
         type Bnd_BoundSortBox;

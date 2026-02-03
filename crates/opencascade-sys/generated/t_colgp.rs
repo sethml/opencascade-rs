@@ -171,6 +171,9 @@ impl HArray2OfPnt {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_t_colgp.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== TColgp_HArray1OfPnt ========================"]
         #[doc = "/// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt`"]
         #[cxx_name = "TColgp_HArray1OfPnt"]
@@ -333,6 +336,9 @@ pub(crate) mod ffi {
         fn HArray2OfPnt_to_handle(
             obj: UniquePtr<HArray2OfPnt>,
         ) -> UniquePtr<HandleTColgpHArray2OfPnt>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -451,6 +457,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColgp_Array1OfPnt"]
         type TColgp_Array1OfPnt;

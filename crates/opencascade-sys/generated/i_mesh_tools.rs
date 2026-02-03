@@ -86,6 +86,9 @@ impl ModelAlgo {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_i_mesh_tools.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== IMeshTools_Context ========================"]
         #[doc = "/// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context`"]
         #[doc = ""]
@@ -233,6 +236,9 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &ModelAlgo) -> &HandleStandardType;
         #[cxx_name = "IMeshTools_ModelAlgo_get_type_name"]
         fn ModelAlgo_get_type_name() -> String;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Model from i_mesh_data module"]
         type IMeshData_Model = crate::i_mesh_data::ffi::Model;
         #[doc = "Shape from i_mesh_data module"]
@@ -329,6 +335,9 @@ pub(crate) mod ffi {
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
         #[doc = "Wire from topo_ds module"]
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleIMeshDataModel"]
         type HandleIMeshDataModel;

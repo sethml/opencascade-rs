@@ -359,6 +359,9 @@ impl ReShape {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_tools.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepTools ========================"]
         #[doc = "/// **Source:** `BRepTools.hxx` - `BRepTools`"]
         #[doc = ""]
@@ -732,6 +735,9 @@ pub(crate) mod ffi {
         #[doc = "Wrap BRepTools_ReShape in a Handle (reference-counted smart pointer)"]
         #[cxx_name = "BRepTools_ReShape_to_handle"]
         fn ReShape_to_handle(obj: UniquePtr<ReShape>) -> UniquePtr<HandleBRepToolsReShape>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Builder from b_rep module"]
         type BRep_Builder = crate::b_rep::ffi::Builder;
         #[doc = "Tool from b_rep module"]
@@ -964,6 +970,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "BRepTools_Modification"]
         type BRepTools_Modification;

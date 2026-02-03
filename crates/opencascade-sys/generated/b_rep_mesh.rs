@@ -149,6 +149,9 @@ impl OrientedEdge {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_mesh.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepMesh_IncrementalMesh ========================"]
         #[doc = "/// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh`"]
         #[doc = ""]
@@ -395,6 +398,9 @@ pub(crate) mod ffi {
         #[doc = "Checks this and other edge for equality. @param theOther edge to be checked against this one. @return TRUE if edges have the same orientation, FALSE if not."]
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &OrientedEdge, theOther: &OrientedEdge) -> bool;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Context from i_mesh_tools module"]
         type IMeshTools_Context = crate::i_mesh_tools::ffi::Context;
         #[doc = "ModelAlgo from i_mesh_tools module"]
@@ -571,6 +577,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleBRepMeshDiscretRoot"]
         type HandleBRepMeshDiscretRoot;

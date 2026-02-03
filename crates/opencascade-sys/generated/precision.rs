@@ -106,6 +106,9 @@ impl Precision {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_precision.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Precision ========================"]
         #[doc = "/// **Source:** `Precision.hxx` - `Precision`"]
         #[doc = ""]

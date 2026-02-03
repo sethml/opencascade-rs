@@ -45,6 +45,9 @@ impl ShapeProcessor {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_xs_algo.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== XSAlgo_ShapeProcessor ========================"]
         #[doc = "/// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor`"]
         #[doc = ""]
@@ -87,6 +90,9 @@ pub(crate) mod ffi {
         #[doc = "The function is designed to set the length unit for the application before performing a transfer operation. It ensures that the length unit is correctly configured based on the value associated with the key \"xstep.cascade.unit\"."]
         #[cxx_name = "XSAlgo_ShapeProcessor_PrepareForTransfer"]
         fn ShapeProcessor_prepare_for_transfer();
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Message from message module"]
         type Message = crate::message::ffi::Message;
         #[doc = "Alert from message module"]
@@ -151,6 +157,9 @@ pub(crate) mod ffi {
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
         #[doc = "Wire from topo_ds module"]
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "DE_ShapeFixParameters"]
         type DE_ShapeFixParameters;

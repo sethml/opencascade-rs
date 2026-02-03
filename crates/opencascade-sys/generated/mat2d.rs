@@ -37,6 +37,9 @@ impl BiInt {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_mat2d.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== MAT2d_Tool2d ========================"]
         #[doc = "/// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d`"]
         #[doc = ""]
@@ -137,6 +140,9 @@ pub(crate) mod ffi {
         fn second_index_int(self: Pin<&mut BiInt>, I2: i32);
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &BiInt, B: &BiInt) -> bool;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Bisec from bisector module"]
         type Bisector_Bisec = crate::bisector::ffi::Bisec;
         #[doc = "BoundedCurve from geom2d module"]
@@ -229,6 +235,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "MAT2d_Circuit"]
         type MAT2d_Circuit;

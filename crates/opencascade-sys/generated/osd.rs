@@ -31,6 +31,9 @@ impl MemInfo {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_osd.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== OSD_MemInfo ========================"]
         #[doc = "/// **Source:** `OSD_MemInfo.hxx` - `OSD_MemInfo`"]
         #[doc = ""]
@@ -57,6 +60,9 @@ pub(crate) mod ffi {
         #[doc = "Return the string representation for all available counter."]
         #[cxx_name = "OSD_MemInfo_PrintInfo"]
         fn MemInfo_print_info() -> UniquePtr<TCollection_AsciiString>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "AsciiString from t_collection module"]
         type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
         #[doc = "ExtendedString from t_collection module"]

@@ -25,6 +25,9 @@ impl Parameters {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_destep.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== DESTEP_Parameters ========================"]
         #[doc = "/// **Source:** `DESTEP_Parameters.hxx` - `DESTEP_Parameters`"]
         #[cxx_name = "DESTEP_Parameters"]
@@ -41,6 +44,9 @@ pub(crate) mod ffi {
         #[doc = "Returns default shape fix parameters for transferring STEP files."]
         #[cxx_name = "DESTEP_Parameters_GetDefaultShapeFixParameters"]
         fn Parameters_get_default_shape_fix_parameters() -> UniquePtr<DE_ShapeFixParameters>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "AsciiString from t_collection module"]
         type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
         #[doc = "ExtendedString from t_collection module"]
@@ -49,6 +55,9 @@ pub(crate) mod ffi {
         type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
         #[doc = "HExtendedString from t_collection module"]
         type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "DE_ShapeFixParameters"]
         type DE_ShapeFixParameters;

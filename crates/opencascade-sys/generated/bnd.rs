@@ -261,6 +261,9 @@ impl HArray1OfBox {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_bnd.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Bnd_Box ========================"]
         #[doc = "/// **Source:** `Bnd_Box.hxx` - `Bnd_Box`"]
         #[doc = ""]
@@ -899,6 +902,9 @@ pub(crate) mod ffi {
         #[cxx_name = "Bnd_HArray1OfBox_to_handle"]
         fn HArray1OfBox_to_handle(obj: UniquePtr<HArray1OfBox>)
             -> UniquePtr<HandleBndHArray1OfBox>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -1045,6 +1051,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Bnd_Array1OfBox"]
         type Bnd_Array1OfBox;

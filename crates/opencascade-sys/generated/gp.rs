@@ -2761,6 +2761,9 @@ impl XYZ {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_gp.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== gp_Ax1 ========================"]
         #[doc = "/// **Source:** `gp_Ax1.hxx` - `gp_Ax1`"]
         #[doc = ""]
@@ -7298,6 +7301,9 @@ pub(crate) mod ffi {
         #[doc = "Clone gp_XYZ into a new UniquePtr via copy constructor"]
         #[cxx_name = "construct_unique"]
         fn XYZ_to_owned(self_: &XYZ) -> UniquePtr<XYZ>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -7360,6 +7366,9 @@ pub(crate) mod ffi {
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
         #[doc = "PackedMapOfInteger from t_col_std module"]
         type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Standard_SStream"]
         type Standard_SStream;

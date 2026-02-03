@@ -807,6 +807,9 @@ impl ConstructionError {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_standard.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Standard_Failure ========================"]
         #[doc = "/// **Source:** `Standard_Failure.hxx` - `Standard_Failure`"]
         #[doc = ""]
@@ -1520,6 +1523,9 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStandardConstructionError>;
         #[cxx_name = "Standard_ConstructionError_get_type_name"]
         fn ConstructionError_get_type_name() -> String;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "BaseAllocator from n_collection module"]
         type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
         #[doc = "BaseList from n_collection module"]
@@ -1538,6 +1544,9 @@ pub(crate) mod ffi {
         type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
         #[doc = "HExtendedString from t_collection module"]
         type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Standard_JmpBuf"]
         type Standard_JmpBuf;

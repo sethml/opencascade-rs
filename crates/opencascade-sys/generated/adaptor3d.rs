@@ -259,6 +259,9 @@ impl CurveOnSurface {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_adaptor3d.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Adaptor3d_Curve ========================"]
         #[doc = "/// **Source:** `Adaptor3d_Curve.hxx` - `Adaptor3d_Curve`"]
         #[doc = ""]
@@ -628,6 +631,9 @@ pub(crate) mod ffi {
         #[doc = "Upcast Adaptor3d_CurveOnSurface to Adaptor3d_Curve (mutable)"]
         #[cxx_name = "Adaptor3d_CurveOnSurface_as_Adaptor3d_Curve_mut"]
         fn curve_on_surface_as_curve_mut(self_: Pin<&mut CurveOnSurface>) -> Pin<&mut Curve>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Curve2d from adaptor2d module"]
         type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
         #[doc = "BSplineCurve from geom module"]
@@ -794,6 +800,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Geom_OffsetCurve"]
         type Geom_OffsetCurve;

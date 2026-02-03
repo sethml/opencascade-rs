@@ -132,6 +132,9 @@ impl ffi::HandleLawInterpol {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_law.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== Law_Function ========================"]
         #[doc = "/// **Source:** `Law_Function.hxx` - `Law_Function`"]
         #[doc = ""]
@@ -284,6 +287,9 @@ pub(crate) mod ffi {
         #[doc = "Upcast Handle<Law_Interpol> to Handle<Law_Function>"]
         #[cxx_name = "HandleLawInterpol_to_HandleLawFunction"]
         fn interpol_to_handle_function(handle: &HandleLawInterpol) -> UniquePtr<HandleLawFunction>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -354,6 +360,9 @@ pub(crate) mod ffi {
         type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
         #[doc = "HArray2OfPnt from t_colgp module"]
         type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Law_BSpline"]
         type Law_BSpline;

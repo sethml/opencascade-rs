@@ -91,6 +91,9 @@ impl SListOfItemLocation {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_top_loc.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== TopLoc_Location ========================"]
         #[doc = "/// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location`"]
         #[doc = ""]
@@ -223,6 +226,9 @@ pub(crate) mod ffi {
         fn SListOfItemLocation_to_owned(
             self_: &SListOfItemLocation,
         ) -> UniquePtr<SListOfItemLocation>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -341,6 +347,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopLoc_Datum3D"]
         type TopLoc_Datum3D;

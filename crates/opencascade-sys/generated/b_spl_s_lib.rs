@@ -217,6 +217,9 @@ impl EvaluatorFunction {}
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_spl_s_lib.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BSplSLib_Cache ========================"]
         #[doc = "/// **Source:** `BSplSLib_Cache.hxx` - `BSplSLib_Cache`"]
         #[doc = ""]
@@ -398,6 +401,9 @@ pub(crate) mod ffi {
             theResult: &mut f64,
             theErrorCode: &mut i32,
         );
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -544,6 +550,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_Array1OfInteger"]
         type TColStd_Array1OfInteger;

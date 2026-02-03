@@ -19,12 +19,18 @@ impl TopAbs {}
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_top_abs.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== TopAbs ========================"]
         #[doc = "/// **Source:** `TopAbs.hxx` - `TopAbs`"]
         #[doc = ""]
         #[doc = "This package gives resources for Topology oriented applications such as : Topological Data Structure, Topological Algorithms. It contains : * The ShapeEnum   enumeration  to  describe  the different topological shapes. * The  Orientation  enumeration to  describe the orientation of a topological shape. * The  State    enumeration  to  describes  the position of a point relative to a Shape. * Methods to manage the enumerations."]
         #[cxx_name = "TopAbs"]
         type TopAbs;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]

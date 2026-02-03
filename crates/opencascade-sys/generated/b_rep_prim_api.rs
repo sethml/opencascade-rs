@@ -630,6 +630,9 @@ impl MakeOneAxis {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_prim_api.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepPrimAPI_MakeBox ========================"]
         #[doc = "/// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox`"]
         #[doc = ""]
@@ -1303,6 +1306,9 @@ pub(crate) mod ffi {
         fn make_one_axis_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut MakeOneAxis>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Command from b_rep_builder_api module"]
         type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
         #[doc = "MakeEdge from b_rep_builder_api module"]
@@ -1529,6 +1535,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_ListOfShape"]
         type TopTools_ListOfShape;

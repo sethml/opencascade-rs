@@ -105,6 +105,9 @@ impl ChBuilder {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_ch_fi3d.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== ChFi3d_FilBuilder ========================"]
         #[doc = "/// **Source:** `ChFi3d_FilBuilder.hxx` - `ChFi3d_FilBuilder`"]
         #[doc = ""]
@@ -416,6 +419,9 @@ pub(crate) mod ffi {
         #[doc = "Upcast ChFi3d_ChBuilder to ChFi3d_Builder (mutable)"]
         #[cxx_name = "ChFi3d_ChBuilder_as_ChFi3d_Builder_mut"]
         fn ch_builder_as_builder_mut(self_: Pin<&mut ChBuilder>) -> Pin<&mut Builder>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Curve from adaptor3d module"]
         type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
         #[doc = "CurveOnSurface from adaptor3d module"]
@@ -604,6 +610,9 @@ pub(crate) mod ffi {
         type math_GaussLeastSquare = crate::math::ffi::GaussLeastSquare;
         #[doc = "Matrix from math module"]
         type math_Matrix = crate::math::ffi::Matrix;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Adaptor3d_TopolTool"]
         type Adaptor3d_TopolTool;

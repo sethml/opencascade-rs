@@ -97,6 +97,9 @@ impl Interval {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_offset.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepOffset_MakeOffset ========================"]
         #[doc = "/// **Source:** `BRepOffset_MakeOffset.hxx` - `BRepOffset_MakeOffset`"]
         #[cxx_name = "BRepOffset_MakeOffset"]
@@ -359,6 +362,9 @@ pub(crate) mod ffi {
         fn first(self: &Interval) -> f64;
         #[cxx_name = "Last"]
         fn last(self: &Interval) -> f64;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Image from b_rep_algo module"]
         type BRepAlgo_Image = crate::b_rep_algo::ffi::Image;
         #[doc = "CircSection from ch_fi_ds module"]
@@ -445,6 +451,9 @@ pub(crate) mod ffi {
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
         #[doc = "Wire from topo_ds module"]
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "BRepAlgo_AsDes"]
         type BRepAlgo_AsDes;

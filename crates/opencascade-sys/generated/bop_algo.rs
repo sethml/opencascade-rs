@@ -235,6 +235,9 @@ impl Options {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_bop_algo.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BOPAlgo_BOP ========================"]
         #[doc = "/// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP`"]
         #[doc = ""]
@@ -564,6 +567,9 @@ pub(crate) mod ffi {
         #[doc = "Sets the global parallel mode"]
         #[cxx_name = "BOPAlgo_Options_SetParallelMode"]
         fn Options_set_parallel_mode(theNewMode: bool);
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "BRepTools from b_rep_tools module"]
         type BRepTools = crate::b_rep_tools::ffi::BRepTools;
         #[doc = "History from b_rep_tools module"]
@@ -700,6 +706,9 @@ pub(crate) mod ffi {
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
         #[doc = "Wire from topo_ds module"]
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "BOPAlgo_PPaveFiller"]
         type BOPAlgo_PPaveFiller;

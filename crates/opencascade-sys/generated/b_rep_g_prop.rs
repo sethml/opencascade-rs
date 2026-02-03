@@ -131,6 +131,9 @@ impl Face {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_g_prop.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepGProp ========================"]
         #[doc = "/// **Source:** `BRepGProp.hxx` - `BRepGProp`"]
         #[doc = ""]
@@ -286,6 +289,9 @@ pub(crate) mod ffi {
         #[doc = "Returns the value of the boundary curve of the face."]
         #[cxx_name = "BRepGProp_Face_Value2d"]
         fn Face_value2d(self_: &Face, U: f64) -> UniquePtr<gp_Pnt2d>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "GProps from g_prop module"]
         type GProp_GProps = crate::g_prop::ffi::GProps;
         #[doc = "HArray1OfBoolean from t_col_std module"]
@@ -408,6 +414,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;

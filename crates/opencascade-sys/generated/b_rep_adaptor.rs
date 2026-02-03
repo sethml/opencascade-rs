@@ -262,6 +262,9 @@ impl Curve2d {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_adaptor.hxx");
+        // ========================
+        // Module types and methods
+        // ========================
         #[doc = " ======================== BRepAdaptor_Curve ========================"]
         #[doc = "/// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve`"]
         #[doc = ""]
@@ -634,6 +637,9 @@ pub(crate) mod ffi {
         fn curve2d_as_geom2d_adaptor_curve_mut(
             self_: Pin<&mut Curve2d>,
         ) -> Pin<&mut Geom2dAdaptor_Curve>;
+        // ========================
+        // Cross-module type aliases
+        // ========================
         #[doc = "Curve2d from adaptor2d module"]
         type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
         #[doc = "Curve from adaptor3d module"]
@@ -836,6 +842,9 @@ pub(crate) mod ffi {
         type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
+        // ========================
+        // Referenced types (opaque)
+        // ========================
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Geom_OffsetCurve"]
         type Geom_OffsetCurve;

@@ -362,6 +362,17 @@ fn main() -> Result<()> {
             Ok(s) => eprintln!("  Warning: rustfmt exited with status: {}", s),
             Err(e) => eprintln!("  Warning: Failed to run rustfmt: {}", e),
         }
+        
+        // Post-process: convert section marker doc comments back to regular comments
+        println!("  Converting section markers to comments...");
+        for rs_file in &generated_rs_files {
+            if let Ok(content) = std::fs::read_to_string(rs_file) {
+                let processed = codegen::rust::convert_section_markers_to_comments(&content);
+                if processed != content {
+                    let _ = std::fs::write(rs_file, &processed);
+                }
+            }
+        }
     }
 
     println!("\nCode generation complete!");
