@@ -18,120 +18,85 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::MakeOffset;
+impl MakeOffset {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::MakeOffset_ctor()
+    }
+}
+pub use ffi::MakeSimpleOffset;
+impl MakeSimpleOffset {
+    #[doc = "Constructor. Does nothing."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::MakeSimpleOffset_ctor()
+    }
+
+    #[doc = "Constructor."]
+    pub fn new_shape_real(
+        theInputShape: &ffi::TopoDS_Shape,
+        theOffsetValue: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeSimpleOffset_ctor_shape_real(theInputShape, theOffsetValue)
+    }
+
+    #[doc = "Gets error message."]
+    pub fn get_error_message(&self) -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
+        ffi::MakeSimpleOffset_get_error_message(self)
+    }
+
+    #[doc = "Returns result shape for the given one (if exists)."]
+    pub fn generated(&self, theShape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::MakeSimpleOffset_generated(self, theShape)
+    }
+
+    #[doc = "Returns modified shape for the given one (if exists)."]
+    pub fn modified(&self, theShape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::MakeSimpleOffset_modified(self, theShape)
+    }
+}
+pub use ffi::Analyse;
+impl Analyse {
+    #[doc = "@name Constructors Empty c-tor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Analyse_ctor()
+    }
+
+    #[doc = "C-tor performing the job inside"]
+    pub fn new_shape_real(theS: &ffi::TopoDS_Shape, theAngle: f64) -> cxx::UniquePtr<Self> {
+        ffi::Analyse_ctor_shape_real(theS, theAngle)
+    }
+
+    #[doc = "Returns the new face constructed for the edge connecting the two tangent faces having different offset values"]
+    pub fn generated(&self, theS: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Analyse_generated(self, theS)
+    }
+}
+pub use ffi::MakeLoops;
+impl MakeLoops {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::MakeLoops_ctor()
+    }
+}
+pub use ffi::Offset;
+impl Offset {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Offset_ctor()
+    }
+
+    pub fn generated(&self, Shape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Offset_generated(self, Shape)
+    }
+}
+pub use ffi::Interval;
+impl Interval {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Interval_ctor()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_offset.hxx");
-        #[doc = "Image from b_rep_algo module"]
-        type BRepAlgo_Image = crate::b_rep_algo::ffi::Image;
-        #[doc = "CircSection from ch_fi_ds module"]
-        type ChFiDS_CircSection = crate::ch_fi_ds::ffi::CircSection;
-        #[doc = "CommonPoint from ch_fi_ds module"]
-        type ChFiDS_CommonPoint = crate::ch_fi_ds::ffi::CommonPoint;
-        #[doc = "ElSpine from ch_fi_ds module"]
-        type ChFiDS_ElSpine = crate::ch_fi_ds::ffi::ElSpine;
-        #[doc = "FaceInterference from ch_fi_ds module"]
-        type ChFiDS_FaceInterference = crate::ch_fi_ds::ffi::FaceInterference;
-        #[doc = "HData from ch_fi_ds module"]
-        type ChFiDS_HData = crate::ch_fi_ds::ffi::HData;
-        #[doc = "Map from ch_fi_ds module"]
-        type ChFiDS_Map = crate::ch_fi_ds::ffi::Map;
-        #[doc = "Regul from ch_fi_ds module"]
-        type ChFiDS_Regul = crate::ch_fi_ds::ffi::Regul;
-        #[doc = "SecHArray1 from ch_fi_ds module"]
-        type ChFiDS_SecHArray1 = crate::ch_fi_ds::ffi::SecHArray1;
-        #[doc = "Stripe from ch_fi_ds module"]
-        type ChFiDS_Stripe = crate::ch_fi_ds::ffi::Stripe;
-        #[doc = "StripeMap from ch_fi_ds module"]
-        type ChFiDS_StripeMap = crate::ch_fi_ds::ffi::StripeMap;
-        #[doc = "SurfData from ch_fi_ds module"]
-        type ChFiDS_SurfData = crate::ch_fi_ds::ffi::SurfData;
-        #[doc = "Message from message module"]
-        type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
-        type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
-        type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "AsciiString from t_collection module"]
-        type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
-        #[doc = "ExtendedString from t_collection module"]
-        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
-        #[doc = "HAsciiString from t_collection module"]
-        type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
-        #[doc = "HExtendedString from t_collection module"]
-        type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "BRepAlgo_AsDes"]
-        type BRepAlgo_AsDes;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "BRepOffset_ListOfInterval"]
-        type BRepOffset_ListOfInterval;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_DataMapOfShapeReal"]
-        type TopTools_DataMapOfShapeReal;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_DataMapOfShapeShape"]
-        type TopTools_DataMapOfShapeShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_IndexedMapOfShape"]
-        type TopTools_IndexedMapOfShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_MapOfShape"]
-        type TopTools_MapOfShape;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBRepAlgoAsDes"]
-        type HandleBRepAlgoAsDes;
         #[doc = " ======================== BRepOffset_MakeOffset ========================"]
         #[doc = "/// **Source:** `BRepOffset_MakeOffset.hxx` - `BRepOffset_MakeOffset`"]
         #[cxx_name = "BRepOffset_MakeOffset"]
@@ -394,6 +359,116 @@ pub(crate) mod ffi {
         fn first(self: &Interval) -> f64;
         #[cxx_name = "Last"]
         fn last(self: &Interval) -> f64;
+        #[doc = "Image from b_rep_algo module"]
+        type BRepAlgo_Image = crate::b_rep_algo::ffi::Image;
+        #[doc = "CircSection from ch_fi_ds module"]
+        type ChFiDS_CircSection = crate::ch_fi_ds::ffi::CircSection;
+        #[doc = "CommonPoint from ch_fi_ds module"]
+        type ChFiDS_CommonPoint = crate::ch_fi_ds::ffi::CommonPoint;
+        #[doc = "ElSpine from ch_fi_ds module"]
+        type ChFiDS_ElSpine = crate::ch_fi_ds::ffi::ElSpine;
+        #[doc = "FaceInterference from ch_fi_ds module"]
+        type ChFiDS_FaceInterference = crate::ch_fi_ds::ffi::FaceInterference;
+        #[doc = "HData from ch_fi_ds module"]
+        type ChFiDS_HData = crate::ch_fi_ds::ffi::HData;
+        #[doc = "Map from ch_fi_ds module"]
+        type ChFiDS_Map = crate::ch_fi_ds::ffi::Map;
+        #[doc = "Regul from ch_fi_ds module"]
+        type ChFiDS_Regul = crate::ch_fi_ds::ffi::Regul;
+        #[doc = "SecHArray1 from ch_fi_ds module"]
+        type ChFiDS_SecHArray1 = crate::ch_fi_ds::ffi::SecHArray1;
+        #[doc = "Stripe from ch_fi_ds module"]
+        type ChFiDS_Stripe = crate::ch_fi_ds::ffi::Stripe;
+        #[doc = "StripeMap from ch_fi_ds module"]
+        type ChFiDS_StripeMap = crate::ch_fi_ds::ffi::StripeMap;
+        #[doc = "SurfData from ch_fi_ds module"]
+        type ChFiDS_SurfData = crate::ch_fi_ds::ffi::SurfData;
+        #[doc = "Message from message module"]
+        type Message = crate::message::ffi::Message;
+        #[doc = "Alert from message module"]
+        type Message_Alert = crate::message::ffi::Alert;
+        #[doc = "AlertExtended from message module"]
+        type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
+        #[doc = "AsciiString from t_collection module"]
+        type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
+        #[doc = "ExtendedString from t_collection module"]
+        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
+        #[doc = "HAsciiString from t_collection module"]
+        type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
+        #[doc = "HExtendedString from t_collection module"]
+        type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "BRepAlgo_AsDes"]
+        type BRepAlgo_AsDes;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "BRepOffset_ListOfInterval"]
+        type BRepOffset_ListOfInterval;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_DataMapOfShapeReal"]
+        type TopTools_DataMapOfShapeReal;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_DataMapOfShapeShape"]
+        type TopTools_DataMapOfShapeShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_IndexedMapOfShape"]
+        type TopTools_IndexedMapOfShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_MapOfShape"]
+        type TopTools_MapOfShape;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBRepAlgoAsDes"]
+        type HandleBRepAlgoAsDes;
     }
     impl UniquePtr<MakeOffset> {}
     impl UniquePtr<MakeSimpleOffset> {}
@@ -401,79 +476,4 @@ pub(crate) mod ffi {
     impl UniquePtr<MakeLoops> {}
     impl UniquePtr<Offset> {}
     impl UniquePtr<Interval> {}
-}
-pub use ffi::MakeOffset;
-impl MakeOffset {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::MakeOffset_ctor()
-    }
-}
-pub use ffi::MakeSimpleOffset;
-impl MakeSimpleOffset {
-    #[doc = "Constructor. Does nothing."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::MakeSimpleOffset_ctor()
-    }
-
-    #[doc = "Constructor."]
-    pub fn new_shape_real(
-        theInputShape: &ffi::TopoDS_Shape,
-        theOffsetValue: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeSimpleOffset_ctor_shape_real(theInputShape, theOffsetValue)
-    }
-
-    #[doc = "Gets error message."]
-    pub fn get_error_message(&self) -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
-        ffi::MakeSimpleOffset_get_error_message(self)
-    }
-
-    #[doc = "Returns result shape for the given one (if exists)."]
-    pub fn generated(&self, theShape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::MakeSimpleOffset_generated(self, theShape)
-    }
-
-    #[doc = "Returns modified shape for the given one (if exists)."]
-    pub fn modified(&self, theShape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::MakeSimpleOffset_modified(self, theShape)
-    }
-}
-pub use ffi::Analyse;
-impl Analyse {
-    #[doc = "@name Constructors Empty c-tor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Analyse_ctor()
-    }
-
-    #[doc = "C-tor performing the job inside"]
-    pub fn new_shape_real(theS: &ffi::TopoDS_Shape, theAngle: f64) -> cxx::UniquePtr<Self> {
-        ffi::Analyse_ctor_shape_real(theS, theAngle)
-    }
-
-    #[doc = "Returns the new face constructed for the edge connecting the two tangent faces having different offset values"]
-    pub fn generated(&self, theS: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Analyse_generated(self, theS)
-    }
-}
-pub use ffi::MakeLoops;
-impl MakeLoops {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::MakeLoops_ctor()
-    }
-}
-pub use ffi::Offset;
-impl Offset {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Offset_ctor()
-    }
-
-    pub fn generated(&self, Shape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Offset_generated(self, Shape)
-    }
-}
-pub use ffi::Interval;
-impl Interval {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Interval_ctor()
-    }
 }

@@ -26,154 +26,274 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::ProgressRange;
+impl ProgressRange {
+    #[doc = "Constructor of the empty range"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::ProgressRange_ctor()
+    }
+
+    #[doc = "Copy constructor disarms the source"]
+    pub fn new_progressrange(theOther: &ffi::ProgressRange) -> cxx::UniquePtr<Self> {
+        ffi::ProgressRange_ctor_progressrange(theOther)
+    }
+}
+pub use ffi::Message;
+impl Message {
+    pub fn send_fail_asciistring(theMessage: &ffi::TCollection_AsciiString) {
+        ffi::Message_send_fail_asciistring(theMessage)
+    }
+
+    pub fn send_alarm_asciistring(theMessage: &ffi::TCollection_AsciiString) {
+        ffi::Message_send_alarm_asciistring(theMessage)
+    }
+
+    pub fn send_warning_asciistring(theMessage: &ffi::TCollection_AsciiString) {
+        ffi::Message_send_warning_asciistring(theMessage)
+    }
+
+    pub fn send_info_asciistring(theMessage: &ffi::TCollection_AsciiString) {
+        ffi::Message_send_info_asciistring(theMessage)
+    }
+
+    pub fn send_trace_asciistring(theMessage: &ffi::TCollection_AsciiString) {
+        ffi::Message_send_trace_asciistring(theMessage)
+    }
+
+    #[doc = "Returns the string filled with values of hours, minutes and seconds. Example: 1. (5, 12, 26.3345) returns \"05h:12m:26.33s\", 2. (0,  6, 34.496 ) returns \"06m:34.50s\", 3. (0,  0,  4.5   ) returns \"4.50s\""]
+    pub fn fill_time(
+        Hour: i32,
+        Minute: i32,
+        Second: f64,
+    ) -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
+        ffi::Message_fill_time(Hour, Minute, Second)
+    }
+}
+pub use ffi::Messenger;
+impl Messenger {
+    #[doc = "Empty constructor; initializes by single printer directed to std::cout. Note: the default messenger is not empty but directed to cout in order to protect against possibility to forget defining printers. If printing to cout is not needed, clear messenger by GetPrinters().Clear()"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Messenger_ctor()
+    }
+
+    #[doc = "Create messenger with single printer"]
+    pub fn new_handleprinter(thePrinter: &ffi::HandleMessagePrinter) -> cxx::UniquePtr<Self> {
+        ffi::Messenger_ctor_handleprinter(thePrinter)
+    }
+
+    #[doc = "Wrap Message_Messenger in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMessageMessenger> {
+        ffi::Messenger_to_handle(obj)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Messenger_get_type_name()
+    }
+}
+pub use ffi::Printer;
+impl Printer {
+    pub fn get_type_name() -> String {
+        ffi::Printer_get_type_name()
+    }
+}
+pub use ffi::ProgressScope;
+impl ProgressScope {
+    #[doc = "@name Preparation methods Creates dummy scope. It can be safely passed to algorithms; no progress indication will be done."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::ProgressScope_ctor()
+    }
+
+    #[doc = "Creates a new scope taking responsibility of the part of the progress scale described by theRange. The new scope has own range from 0 to theMax, which is mapped to the given range. The topmost scope is created and owned by Message_ProgressIndicator and its pointer is contained in the Message_ProgressRange returned by the Start() method of progress indicator. @param[in][out] theRange  range to fill (will be disarmed) @param[in] theName        new scope name @param[in] theMax         number of steps in scope @param[in] isInfinite     infinite flag"]
+    pub fn new_progressrange_asciistring_real_bool(
+        theRange: &ffi::ProgressRange,
+        theName: &ffi::TCollection_AsciiString,
+        theMax: f64,
+        isInfinite: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::ProgressScope_ctor_progressrange_asciistring_real_bool(
+            theRange, theName, theMax, isInfinite,
+        )
+    }
+
+    #[doc = "Advances position by specified step and returns the range covering this step"]
+    pub fn next(
+        self: std::pin::Pin<&mut Self>,
+        theStep: f64,
+    ) -> cxx::UniquePtr<ffi::ProgressRange> {
+        ffi::ProgressScope_next(self, theStep)
+    }
+
+    #[doc = "Returns the name of the scope (may be null). Scopes with null name (e.g. root scope) should be bypassed when reporting progress to the user."]
+    pub fn name(&self) -> String {
+        ffi::ProgressScope_name(self)
+    }
+}
+pub use ffi::ProgressIndicator;
+impl ProgressIndicator {
+    #[doc = "Resets the indicator to zero, calls Reset(), and returns the range. This range refers to the scope that has no name and is initialized with max value 1 and step 1. Use this method to get the top level range for progress indication."]
+    pub fn start(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::ProgressRange> {
+        ffi::ProgressIndicator_start(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::ProgressIndicator_get_type_name()
+    }
+
+    #[doc = "If argument is non-null handle, returns theProgress->Start(). Otherwise, returns dummy range that can be safely used in the algorithms but not bound to progress indicator."]
+    pub fn start_handleprogressindicator(
+        theProgress: &ffi::HandleMessageProgressIndicator,
+    ) -> cxx::UniquePtr<ffi::ProgressRange> {
+        ffi::ProgressIndicator_start_handleprogressindicator(theProgress)
+    }
+}
+pub use ffi::Algorithm;
+impl Algorithm {
+    #[doc = "Empty constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Algorithm_ctor()
+    }
+
+    #[doc = "Wrap Message_Algorithm in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMessageAlgorithm> {
+        ffi::Algorithm_to_handle(obj)
+    }
+
+    #[doc = "Returns messenger of algorithm. The returned handle is always non-null and can be used for sending messages."]
+    pub fn get_messenger(&self) -> cxx::UniquePtr<ffi::HandleMessageMessenger> {
+        ffi::Algorithm_get_messenger(self)
+    }
+
+    #[doc = "Prepares a string containing a list of integers contained in theError map, but not more than theMaxCount"]
+    pub fn prepare_report_handlehpackedmapofinteger_int(
+        theError: &ffi::HandleTColStdHPackedMapOfInteger,
+        theMaxCount: i32,
+    ) -> cxx::UniquePtr<ffi::TCollection_ExtendedString> {
+        ffi::Algorithm_prepare_report_handlehpackedmapofinteger_int(theError, theMaxCount)
+    }
+
+    #[doc = "Prepares a string containing a list of names contained in theReportSeq sequence, but not more than theMaxCount"]
+    pub fn prepare_report_sequenceofhextendedstring_int(
+        theReportSeq: &ffi::TColStd_SequenceOfHExtendedString,
+        theMaxCount: i32,
+    ) -> cxx::UniquePtr<ffi::TCollection_ExtendedString> {
+        ffi::Algorithm_prepare_report_sequenceofhextendedstring_int(theReportSeq, theMaxCount)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Algorithm_get_type_name()
+    }
+}
+pub use ffi::ExecStatus;
+impl ExecStatus {
+    #[doc = "Create empty execution status"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::ExecStatus_ctor()
+    }
+}
+pub use ffi::Msg;
+impl Msg {
+    #[doc = "Empty constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Msg_ctor()
+    }
+
+    #[doc = "Copy constructor"]
+    pub fn new_msg(theMsg: &ffi::Msg) -> cxx::UniquePtr<Self> {
+        ffi::Msg_ctor_msg(theMsg)
+    }
+
+    #[doc = "Create a message using a corresponding entry in Message_MsgFile"]
+    pub fn new_charptr(theKey: &str) -> cxx::UniquePtr<Self> {
+        ffi::Msg_ctor_charptr(theKey)
+    }
+
+    #[doc = "Create a message using a corresponding entry in Message_MsgFile"]
+    pub fn new_extendedstring(theKey: &ffi::TCollection_ExtendedString) -> cxx::UniquePtr<Self> {
+        ffi::Msg_ctor_extendedstring(theKey)
+    }
+
+    #[doc = "Set a message body text -- can be used as alternative to using messages from resource file"]
+    pub fn set_charptr(self: std::pin::Pin<&mut Self>, theMsg: &str) -> () {
+        ffi::Msg_set_charptr(self, theMsg)
+    }
+}
+pub use ffi::Report;
+impl Report {
+    #[doc = "Empty constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Report_ctor()
+    }
+
+    #[doc = "Wrap Message_Report in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMessageReport> {
+        ffi::Report_to_handle(obj)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Report_get_type_name()
+    }
+}
+pub use ffi::Level;
+impl Level {
+    #[doc = "Constructor. One string key is used for all alert meters. The perf meter is not started automatically, it will be done in AddAlert() method"]
+    pub fn new_asciistring(theName: &ffi::TCollection_AsciiString) -> cxx::UniquePtr<Self> {
+        ffi::Level_ctor_asciistring(theName)
+    }
+}
+pub use ffi::Alert;
+impl Alert {
+    #[doc = "Wrap Message_Alert in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMessageAlert> {
+        ffi::Alert_to_handle(obj)
+    }
+
+    #[doc = "Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance."]
+    pub fn get_message_key(&self) -> String {
+        ffi::Alert_get_message_key(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Alert_get_type_name()
+    }
+}
+pub use ffi::AlertExtended;
+impl AlertExtended {
+    #[doc = "Empty constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::AlertExtended_ctor()
+    }
+
+    #[doc = "Upcast to Message_Alert"]
+    pub fn as_alert(&self) -> &Alert {
+        ffi::alert_extended_as_alert(self)
+    }
+
+    #[doc = "Upcast to Message_Alert (mutable)"]
+    pub fn as_alert_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Alert> {
+        ffi::alert_extended_as_alert_mut(self)
+    }
+
+    #[doc = "Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance."]
+    pub fn get_message_key(&self) -> String {
+        ffi::AlertExtended_get_message_key(self)
+    }
+
+    #[doc = "Returns class provided hierarchy of alerts if created or create if the parameter is true @param theToCreate if composite alert has not been created for this alert, it should be created @return instance or NULL"]
+    pub fn composite_alerts(
+        self: std::pin::Pin<&mut Self>,
+        theToCreate: bool,
+    ) -> cxx::UniquePtr<ffi::HandleMessageCompositeAlerts> {
+        ffi::AlertExtended_composite_alerts(self, theToCreate)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::AlertExtended_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_message.hxx");
-        #[doc = "BaseAllocator from n_collection module"]
-        type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
-        #[doc = "BaseList from n_collection module"]
-        type NCollection_BaseList = crate::n_collection::ffi::BaseList;
-        #[doc = "BasePointerVector from n_collection module"]
-        type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
-        #[doc = "IncAllocator from n_collection module"]
-        type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
-        #[doc = "MemInfo from osd module"]
-        type OSD_MemInfo = crate::osd::ffi::MemInfo;
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "AsciiString from t_collection module"]
-        type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
-        #[doc = "ExtendedString from t_collection module"]
-        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
-        #[doc = "HAsciiString from t_collection module"]
-        type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
-        #[doc = "HExtendedString from t_collection module"]
-        type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Message_Attribute"]
-        type Message_Attribute;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Message_CompositeAlerts"]
-        type Message_CompositeAlerts;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Message_ListOfAlert"]
-        type Message_ListOfAlert;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Message_SequenceOfPrinters"]
-        type Message_SequenceOfPrinters;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Standard_SStream"]
-        type Standard_SStream;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_HPackedMapOfInteger"]
-        type TColStd_HPackedMapOfInteger;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_SequenceOfHExtendedString"]
-        type TColStd_SequenceOfHExtendedString;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageAlert"]
-        type HandleMessageAlert;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageAlertExtended"]
-        type HandleMessageAlertExtended;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageAlgorithm"]
-        type HandleMessageAlgorithm;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageAttribute"]
-        type HandleMessageAttribute;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageCompositeAlerts"]
-        type HandleMessageCompositeAlerts;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageMessenger"]
-        type HandleMessageMessenger;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessagePrinter"]
-        type HandleMessagePrinter;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageProgressIndicator"]
-        type HandleMessageProgressIndicator;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMessageReport"]
-        type HandleMessageReport;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardTransient"]
-        type HandleStandardTransient;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHPackedMapOfInteger"]
-        type HandleTColStdHPackedMapOfInteger;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHSequenceOfHExtendedString"]
-        type HandleTColStdHSequenceOfHExtendedString;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTCollectionHAsciiString"]
-        type HandleTCollectionHAsciiString;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTCollectionHExtendedString"]
-        type HandleTCollectionHExtendedString;
         #[doc = " ======================== Message_ProgressRange ========================"]
         #[doc = "/// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange`"]
         #[doc = ""]
@@ -202,95 +322,6 @@ pub(crate) mod ffi {
         #[doc = "Closes the current range and advances indicator"]
         #[cxx_name = "Close"]
         fn close(self: Pin<&mut ProgressRange>);
-        #[doc = " ======================== Message_ProgressScope ========================"]
-        #[doc = "/// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope`"]
-        #[doc = ""]
-        #[doc = "Message_ProgressScope class provides convenient way to advance progress indicator in context of complex program organized in hierarchical way, where usually it is difficult (or even not possible) to consider process as linear with fixed step. On every level (sub-operation) in hierarchy of operations the local instance of the Message_ProgressScope class is created. It takes a part of the upper-level scope (via Message_ProgressRange) and provides a way to consider this part as independent scale with locally defined range. The position on the local scale may be advanced using the method Next(), which allows iteration-like advancement. This method can take argument to advance by the specified value (with default step equal to 1). This method returns Message_ProgressRange object that takes responsibility of making the specified step, either directly at its destruction or by delegating this task to another sub-scope created from that range object. It is important that sub-scope must have life time less than the life time of its parent scope that provided the range. The usage pattern is to create scope objects as local variables in the functions that do the job, and pass range objects returned by Next() to the functions of the lower level, to allow them creating their own scopes. The scope has a name that can be used in visualization of the progress. It can be null. Note that when C string literal is used as a name, then its value is not copied, just pointer is stored. In other variants (char pointer or a string class) the string is copied, which is additional overhead. The same instance of the progress scope! must not be used concurrently from different threads. For the algorithm running its tasks in parallel threads, a common scope is created before the parallel execution, and the range objects produced by method Next() are used to initialise the data pertinent to each task. Then the progress is advanced within each task using its own range object. See example below. Note that while a range of the scope is specified using Standard_Real (double) parameter, it is expected to be a positive integer value. If the range is not an integer, method Next() shall be called with explicit step argument, and the rounded value returned by method Value() may be not coherent with the step and range. A scope can be created with option \"infinite\". This is useful when the number of steps is not known by the time of the scope creation. In this case the progress will be advanced logarithmically, approaching the end of the scope at infinite number of steps. The parameter Max for infinite scope indicates number of steps corresponding to mid-range. A progress scope created with empty constructor is not connected to any progress indicator, and passing the range created on it to any algorithm allows it executing safely without actual progress indication. Example of preparation of progress indicator: @code{.cpp} Handle(Message_ProgressIndicator) aProgress = ...; // assume it can be null func (Message_ProgressIndicator::Start (aProgress)); @endcode Example of usage in sequential process: @code{.cpp} Message_ProgressScope aWholePS(aRange, \"Whole process\", 100); // do one step taking 20% func1 (aWholePS.Next (20)); // func1 will take 20% of the whole scope if (aWholePS.UserBreak()) // exit prematurely if the user requested break return; // ... do next step taking 50% func2 (aWholePS.Next (50)); if (aWholePS.UserBreak()) return; @endcode Example of usage in nested cycle: @code{.cpp} // Outer cycle Message_ProgressScope anOuter (theProgress, \"Outer\", nbOuter); for (Standard_Integer i = 0; i < nbOuter && anOuter.More(); i++) { // Inner cycle Message_ProgressScope anInner (anOuter.Next(), \"Inner\", nbInner); for (Standard_Integer j = 0; j < nbInner && anInner.More(); j++) { // Cycle body func (anInner.Next());
-    }
-} @endcode Example of use in function: @code{.cpp} //! Implementation of iterative algorithm showing its progress func (const Message_ProgressRange& theProgress) { // Create local scope covering the given progress range. // Set this scope to count aNbSteps steps. Message_ProgressScope aScope (theProgress, \"\", aNbSteps); for (Standard_Integer i = 0; i < aNbSteps && aScope.More(); i++) { // Optional: pass range returned by method Next() to the nested algorithm // to allow it to show its progress too (by creating its own scope object). // In any case the progress will advance to the next step by the end of the func2 call. func2 (aScope.Next());
-    }
-} @endcode Example of usage in parallel process: @code{.cpp} struct Task { Data& Data; Message_ProgressRange Range; Task (const Data& theData, const Message_ProgressRange& theRange) : Data (theData), Range (theRange) {} }; struct Functor { void operator() (Task& theTask) const { // Note: it is essential that this method is executed only once for the same Task object Message_ProgressScope aPS (theTask.Range, NULL, theTask.Data.NbItems); for (Standard_Integer i = 0; i < theTask.Data.NbSteps && aPS.More(); i++) { do_job (theTask.Data.Item[i], aPS.Next());
-    }
-} }; ... { std::vector<Data> aData = ...; std::vector<Task> aTasks; Message_ProgressScope aPS (aRootRange, \"Data processing\", aData.size()); for (Standard_Integer i = 0; i < aData.size(); ++i) aTasks.push_back (Task (aData[i], aPS.Next())); OSD_Parallel::ForEach (aTasks.begin(), aTasks.end(), Functor()); } @endcode For lightweight algorithms that do not need advancing the progress within individual tasks the code can be simplified to avoid inner scopes: @code struct Functor { void operator() (Task& theTask) const { if (theTask.Range.More()) { do_job (theTask.Data); // advance the progress theTask.Range.Close();
-    }
-} }; @endcode"]
-        #[cxx_name = "Message_ProgressScope"]
-        type ProgressScope;
-        #[doc = "/// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope::Message_ProgressScope()`"]
-        #[doc = ""]
-        #[doc = "@name Preparation methods Creates dummy scope. It can be safely passed to algorithms; no progress indication will be done."]
-        #[cxx_name = "Message_ProgressScope_ctor"]
-        fn ProgressScope_ctor() -> UniquePtr<ProgressScope>;
-        #[doc = "/// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope::Message_ProgressScope()`"]
-        #[doc = ""]
-        #[doc = "Creates a new scope taking responsibility of the part of the progress scale described by theRange. The new scope has own range from 0 to theMax, which is mapped to the given range. The topmost scope is created and owned by Message_ProgressIndicator and its pointer is contained in the Message_ProgressRange returned by the Start() method of progress indicator. @param[in][out] theRange  range to fill (will be disarmed) @param[in] theName        new scope name @param[in] theMax         number of steps in scope @param[in] isInfinite     infinite flag"]
-        #[cxx_name = "Message_ProgressScope_ctor_progressrange_asciistring_real_bool"]
-        fn ProgressScope_ctor_progressrange_asciistring_real_bool(
-            theRange: &ProgressRange,
-            theName: &TCollection_AsciiString,
-            theMax: f64,
-            isInfinite: bool,
-        ) -> UniquePtr<ProgressScope>;
-        #[doc = "Sets the name of the scope."]
-        #[cxx_name = "SetName"]
-        fn set_name(self: Pin<&mut ProgressScope>, theName: &TCollection_AsciiString);
-        #[doc = "@name Advance by iterations Returns true if ProgressIndicator signals UserBreak"]
-        #[cxx_name = "UserBreak"]
-        fn user_break(self: &ProgressScope) -> bool;
-        #[doc = "Returns false if ProgressIndicator signals UserBreak"]
-        #[cxx_name = "More"]
-        fn more(self: &ProgressScope) -> bool;
-        #[doc = "@name Auxiliary methods to use in ProgressIndicator Force update of presentation of the progress indicator. Should not be called concurrently."]
-        #[cxx_name = "Show"]
-        fn show(self: Pin<&mut ProgressScope>);
-        #[doc = "Returns true if this progress scope is attached to some indicator."]
-        #[cxx_name = "IsActive"]
-        fn is_active(self: &ProgressScope) -> bool;
-        #[doc = "Returns the maximal value of progress in this scope"]
-        #[cxx_name = "MaxValue"]
-        fn max_value(self: &ProgressScope) -> f64;
-        #[doc = "Returns the current value of progress in this scope. The value is computed by mapping current global progress into this scope range; the result is rounded up to integer. Note that if MaxValue() is not an integer, Value() can be greater than MaxValue() due to that rounding. This method should not be called concurrently while the progress is advancing, except from implementation of method Show() in descendant of Message_ProgressIndicator."]
-        #[cxx_name = "Value"]
-        fn value(self: &ProgressScope) -> f64;
-        #[doc = "Returns the infinite flag"]
-        #[cxx_name = "IsInfinite"]
-        fn is_infinite(self: &ProgressScope) -> bool;
-        #[doc = "Get the portion of the indicator covered by this scope (from 0 to 1)"]
-        #[cxx_name = "GetPortion"]
-        fn get_portion(self: &ProgressScope) -> f64;
-        #[doc = "Closes the scope and advances the progress to its end. Closed scope should not be used."]
-        #[cxx_name = "Close"]
-        fn close(self: Pin<&mut ProgressScope>);
-        #[doc = "Advances position by specified step and returns the range covering this step"]
-        #[cxx_name = "Message_ProgressScope_Next"]
-        fn ProgressScope_next(
-            self_: Pin<&mut ProgressScope>,
-            theStep: f64,
-        ) -> UniquePtr<ProgressRange>;
-        #[doc = "Returns the name of the scope (may be null). Scopes with null name (e.g. root scope) should be bypassed when reporting progress to the user."]
-        #[cxx_name = "Message_ProgressScope_Name"]
-        fn ProgressScope_name(self_: &ProgressScope) -> String;
-        #[doc = " ======================== Message_ProgressIndicator ========================"]
-        #[doc = "/// **Source:** `Message_ProgressIndicator.hxx` - `Message_ProgressIndicator`"]
-        #[doc = ""]
-        #[doc = "Defines abstract interface from program to the user. This includes progress indication and user break mechanisms. The progress indicator controls the progress scale with range from 0 to 1. Method Start() should be called once, at the top level of the call stack, to reset progress indicator and get access to the root range: @code{.cpp} Handle(Message_ProgressIndicator) aProgress = ...; anAlgorithm.Perform (aProgress->Start()); @endcode To advance the progress indicator in the algorithm, use the class Message_ProgressScope that provides iterator-like interface for incrementing progress; see documentation of that class for details. The object of class Message_ProgressRange will automatically advance the indicator if it is not passed to any Message_ProgressScope. The progress indicator supports concurrent processing and can be used in multithreaded applications. The derived class should be created to connect this interface to actual implementation of progress indicator, to take care of visualization of the progress (e.g. show total position at the graphical bar, print scopes in text mode, or else), and for implementation of user break mechanism (if necessary). See details in documentation of methods Show() and UserBreak()."]
-        #[cxx_name = "Message_ProgressIndicator"]
-        type ProgressIndicator;
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &ProgressIndicator) -> &HandleStandardType;
-        #[doc = "Returns total progress position ranged from 0 to 1. Should not be called concurrently while the progress is advancing, except from implementation of method Show()."]
-        #[cxx_name = "GetPosition"]
-        fn get_position(self: &ProgressIndicator) -> f64;
-        #[doc = "Resets the indicator to zero, calls Reset(), and returns the range. This range refers to the scope that has no name and is initialized with max value 1 and step 1. Use this method to get the top level range for progress indication."]
-        #[cxx_name = "Message_ProgressIndicator_Start"]
-        fn ProgressIndicator_start(self_: Pin<&mut ProgressIndicator>) -> UniquePtr<ProgressRange>;
-        #[cxx_name = "Message_ProgressIndicator_get_type_name"]
-        fn ProgressIndicator_get_type_name() -> String;
-        #[doc = "If argument is non-null handle, returns theProgress->Start(). Otherwise, returns dummy range that can be safely used in the algorithms but not bound to progress indicator."]
-        #[cxx_name = "Message_ProgressIndicator_Start_handleprogressindicator"]
-        fn ProgressIndicator_start_handleprogressindicator(
-            theProgress: &HandleMessageProgressIndicator,
-        ) -> UniquePtr<ProgressRange>;
         #[doc = " ======================== Message ========================"]
         #[doc = "/// **Source:** `Message.hxx` - `Message`"]
         #[doc = ""]
@@ -380,6 +411,95 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &Printer) -> &HandleStandardType;
         #[cxx_name = "Message_Printer_get_type_name"]
         fn Printer_get_type_name() -> String;
+        #[doc = " ======================== Message_ProgressScope ========================"]
+        #[doc = "/// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope`"]
+        #[doc = ""]
+        #[doc = "Message_ProgressScope class provides convenient way to advance progress indicator in context of complex program organized in hierarchical way, where usually it is difficult (or even not possible) to consider process as linear with fixed step. On every level (sub-operation) in hierarchy of operations the local instance of the Message_ProgressScope class is created. It takes a part of the upper-level scope (via Message_ProgressRange) and provides a way to consider this part as independent scale with locally defined range. The position on the local scale may be advanced using the method Next(), which allows iteration-like advancement. This method can take argument to advance by the specified value (with default step equal to 1). This method returns Message_ProgressRange object that takes responsibility of making the specified step, either directly at its destruction or by delegating this task to another sub-scope created from that range object. It is important that sub-scope must have life time less than the life time of its parent scope that provided the range. The usage pattern is to create scope objects as local variables in the functions that do the job, and pass range objects returned by Next() to the functions of the lower level, to allow them creating their own scopes. The scope has a name that can be used in visualization of the progress. It can be null. Note that when C string literal is used as a name, then its value is not copied, just pointer is stored. In other variants (char pointer or a string class) the string is copied, which is additional overhead. The same instance of the progress scope! must not be used concurrently from different threads. For the algorithm running its tasks in parallel threads, a common scope is created before the parallel execution, and the range objects produced by method Next() are used to initialise the data pertinent to each task. Then the progress is advanced within each task using its own range object. See example below. Note that while a range of the scope is specified using Standard_Real (double) parameter, it is expected to be a positive integer value. If the range is not an integer, method Next() shall be called with explicit step argument, and the rounded value returned by method Value() may be not coherent with the step and range. A scope can be created with option \"infinite\". This is useful when the number of steps is not known by the time of the scope creation. In this case the progress will be advanced logarithmically, approaching the end of the scope at infinite number of steps. The parameter Max for infinite scope indicates number of steps corresponding to mid-range. A progress scope created with empty constructor is not connected to any progress indicator, and passing the range created on it to any algorithm allows it executing safely without actual progress indication. Example of preparation of progress indicator: @code{.cpp} Handle(Message_ProgressIndicator) aProgress = ...; // assume it can be null func (Message_ProgressIndicator::Start (aProgress)); @endcode Example of usage in sequential process: @code{.cpp} Message_ProgressScope aWholePS(aRange, \"Whole process\", 100); // do one step taking 20% func1 (aWholePS.Next (20)); // func1 will take 20% of the whole scope if (aWholePS.UserBreak()) // exit prematurely if the user requested break return; // ... do next step taking 50% func2 (aWholePS.Next (50)); if (aWholePS.UserBreak()) return; @endcode Example of usage in nested cycle: @code{.cpp} // Outer cycle Message_ProgressScope anOuter (theProgress, \"Outer\", nbOuter); for (Standard_Integer i = 0; i < nbOuter && anOuter.More(); i++) { // Inner cycle Message_ProgressScope anInner (anOuter.Next(), \"Inner\", nbInner); for (Standard_Integer j = 0; j < nbInner && anInner.More(); j++) { // Cycle body func (anInner.Next());
+    }
+} @endcode Example of use in function: @code{.cpp} //! Implementation of iterative algorithm showing its progress func (const Message_ProgressRange& theProgress) { // Create local scope covering the given progress range. // Set this scope to count aNbSteps steps. Message_ProgressScope aScope (theProgress, \"\", aNbSteps); for (Standard_Integer i = 0; i < aNbSteps && aScope.More(); i++) { // Optional: pass range returned by method Next() to the nested algorithm // to allow it to show its progress too (by creating its own scope object). // In any case the progress will advance to the next step by the end of the func2 call. func2 (aScope.Next());
+    }
+} @endcode Example of usage in parallel process: @code{.cpp} struct Task { Data& Data; Message_ProgressRange Range; Task (const Data& theData, const Message_ProgressRange& theRange) : Data (theData), Range (theRange) {} }; struct Functor { void operator() (Task& theTask) const { // Note: it is essential that this method is executed only once for the same Task object Message_ProgressScope aPS (theTask.Range, NULL, theTask.Data.NbItems); for (Standard_Integer i = 0; i < theTask.Data.NbSteps && aPS.More(); i++) { do_job (theTask.Data.Item[i], aPS.Next());
+    }
+} }; ... { std::vector<Data> aData = ...; std::vector<Task> aTasks; Message_ProgressScope aPS (aRootRange, \"Data processing\", aData.size()); for (Standard_Integer i = 0; i < aData.size(); ++i) aTasks.push_back (Task (aData[i], aPS.Next())); OSD_Parallel::ForEach (aTasks.begin(), aTasks.end(), Functor()); } @endcode For lightweight algorithms that do not need advancing the progress within individual tasks the code can be simplified to avoid inner scopes: @code struct Functor { void operator() (Task& theTask) const { if (theTask.Range.More()) { do_job (theTask.Data); // advance the progress theTask.Range.Close();
+    }
+} }; @endcode"]
+        #[cxx_name = "Message_ProgressScope"]
+        type ProgressScope;
+        #[doc = "/// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope::Message_ProgressScope()`"]
+        #[doc = ""]
+        #[doc = "@name Preparation methods Creates dummy scope. It can be safely passed to algorithms; no progress indication will be done."]
+        #[cxx_name = "Message_ProgressScope_ctor"]
+        fn ProgressScope_ctor() -> UniquePtr<ProgressScope>;
+        #[doc = "/// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope::Message_ProgressScope()`"]
+        #[doc = ""]
+        #[doc = "Creates a new scope taking responsibility of the part of the progress scale described by theRange. The new scope has own range from 0 to theMax, which is mapped to the given range. The topmost scope is created and owned by Message_ProgressIndicator and its pointer is contained in the Message_ProgressRange returned by the Start() method of progress indicator. @param[in][out] theRange  range to fill (will be disarmed) @param[in] theName        new scope name @param[in] theMax         number of steps in scope @param[in] isInfinite     infinite flag"]
+        #[cxx_name = "Message_ProgressScope_ctor_progressrange_asciistring_real_bool"]
+        fn ProgressScope_ctor_progressrange_asciistring_real_bool(
+            theRange: &ProgressRange,
+            theName: &TCollection_AsciiString,
+            theMax: f64,
+            isInfinite: bool,
+        ) -> UniquePtr<ProgressScope>;
+        #[doc = "Sets the name of the scope."]
+        #[cxx_name = "SetName"]
+        fn set_name(self: Pin<&mut ProgressScope>, theName: &TCollection_AsciiString);
+        #[doc = "@name Advance by iterations Returns true if ProgressIndicator signals UserBreak"]
+        #[cxx_name = "UserBreak"]
+        fn user_break(self: &ProgressScope) -> bool;
+        #[doc = "Returns false if ProgressIndicator signals UserBreak"]
+        #[cxx_name = "More"]
+        fn more(self: &ProgressScope) -> bool;
+        #[doc = "@name Auxiliary methods to use in ProgressIndicator Force update of presentation of the progress indicator. Should not be called concurrently."]
+        #[cxx_name = "Show"]
+        fn show(self: Pin<&mut ProgressScope>);
+        #[doc = "Returns true if this progress scope is attached to some indicator."]
+        #[cxx_name = "IsActive"]
+        fn is_active(self: &ProgressScope) -> bool;
+        #[doc = "Returns the maximal value of progress in this scope"]
+        #[cxx_name = "MaxValue"]
+        fn max_value(self: &ProgressScope) -> f64;
+        #[doc = "Returns the current value of progress in this scope. The value is computed by mapping current global progress into this scope range; the result is rounded up to integer. Note that if MaxValue() is not an integer, Value() can be greater than MaxValue() due to that rounding. This method should not be called concurrently while the progress is advancing, except from implementation of method Show() in descendant of Message_ProgressIndicator."]
+        #[cxx_name = "Value"]
+        fn value(self: &ProgressScope) -> f64;
+        #[doc = "Returns the infinite flag"]
+        #[cxx_name = "IsInfinite"]
+        fn is_infinite(self: &ProgressScope) -> bool;
+        #[doc = "Get the portion of the indicator covered by this scope (from 0 to 1)"]
+        #[cxx_name = "GetPortion"]
+        fn get_portion(self: &ProgressScope) -> f64;
+        #[doc = "Closes the scope and advances the progress to its end. Closed scope should not be used."]
+        #[cxx_name = "Close"]
+        fn close(self: Pin<&mut ProgressScope>);
+        #[doc = "Advances position by specified step and returns the range covering this step"]
+        #[cxx_name = "Message_ProgressScope_Next"]
+        fn ProgressScope_next(
+            self_: Pin<&mut ProgressScope>,
+            theStep: f64,
+        ) -> UniquePtr<ProgressRange>;
+        #[doc = "Returns the name of the scope (may be null). Scopes with null name (e.g. root scope) should be bypassed when reporting progress to the user."]
+        #[cxx_name = "Message_ProgressScope_Name"]
+        fn ProgressScope_name(self_: &ProgressScope) -> String;
+        #[doc = " ======================== Message_ProgressIndicator ========================"]
+        #[doc = "/// **Source:** `Message_ProgressIndicator.hxx` - `Message_ProgressIndicator`"]
+        #[doc = ""]
+        #[doc = "Defines abstract interface from program to the user. This includes progress indication and user break mechanisms. The progress indicator controls the progress scale with range from 0 to 1. Method Start() should be called once, at the top level of the call stack, to reset progress indicator and get access to the root range: @code{.cpp} Handle(Message_ProgressIndicator) aProgress = ...; anAlgorithm.Perform (aProgress->Start()); @endcode To advance the progress indicator in the algorithm, use the class Message_ProgressScope that provides iterator-like interface for incrementing progress; see documentation of that class for details. The object of class Message_ProgressRange will automatically advance the indicator if it is not passed to any Message_ProgressScope. The progress indicator supports concurrent processing and can be used in multithreaded applications. The derived class should be created to connect this interface to actual implementation of progress indicator, to take care of visualization of the progress (e.g. show total position at the graphical bar, print scopes in text mode, or else), and for implementation of user break mechanism (if necessary). See details in documentation of methods Show() and UserBreak()."]
+        #[cxx_name = "Message_ProgressIndicator"]
+        type ProgressIndicator;
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &ProgressIndicator) -> &HandleStandardType;
+        #[doc = "Returns total progress position ranged from 0 to 1. Should not be called concurrently while the progress is advancing, except from implementation of method Show()."]
+        #[cxx_name = "GetPosition"]
+        fn get_position(self: &ProgressIndicator) -> f64;
+        #[doc = "Resets the indicator to zero, calls Reset(), and returns the range. This range refers to the scope that has no name and is initialized with max value 1 and step 1. Use this method to get the top level range for progress indication."]
+        #[cxx_name = "Message_ProgressIndicator_Start"]
+        fn ProgressIndicator_start(self_: Pin<&mut ProgressIndicator>) -> UniquePtr<ProgressRange>;
+        #[cxx_name = "Message_ProgressIndicator_get_type_name"]
+        fn ProgressIndicator_get_type_name() -> String;
+        #[doc = "If argument is non-null handle, returns theProgress->Start(). Otherwise, returns dummy range that can be safely used in the algorithms but not bound to progress indicator."]
+        #[cxx_name = "Message_ProgressIndicator_Start_handleprogressindicator"]
+        fn ProgressIndicator_start_handleprogressindicator(
+            theProgress: &HandleMessageProgressIndicator,
+        ) -> UniquePtr<ProgressRange>;
         #[doc = " ======================== Message_Algorithm ========================"]
         #[doc = "/// **Source:** `Message_Algorithm.hxx` - `Message_Algorithm`"]
         #[doc = ""]
@@ -702,13 +822,161 @@ pub(crate) mod ffi {
         #[doc = "Upcast Message_AlertExtended to Message_Alert (mutable)"]
         #[cxx_name = "Message_AlertExtended_as_Message_Alert_mut"]
         fn alert_extended_as_alert_mut(self_: Pin<&mut AlertExtended>) -> Pin<&mut Alert>;
+        #[doc = "BaseAllocator from n_collection module"]
+        type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
+        #[doc = "BaseList from n_collection module"]
+        type NCollection_BaseList = crate::n_collection::ffi::BaseList;
+        #[doc = "BasePointerVector from n_collection module"]
+        type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
+        #[doc = "Buffer from n_collection module"]
+        type NCollection_Buffer = crate::n_collection::ffi::Buffer;
+        #[doc = "IncAllocator from n_collection module"]
+        type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
+        #[doc = "MemInfo from osd module"]
+        type OSD_MemInfo = crate::osd::ffi::MemInfo;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HSequenceOfInteger from t_col_std module"]
+        type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "AsciiString from t_collection module"]
+        type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
+        #[doc = "ExtendedString from t_collection module"]
+        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
+        #[doc = "HAsciiString from t_collection module"]
+        type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
+        #[doc = "HExtendedString from t_collection module"]
+        type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Message_Attribute"]
+        type Message_Attribute;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Message_CompositeAlerts"]
+        type Message_CompositeAlerts;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Message_ListOfAlert"]
+        type Message_ListOfAlert;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Message_SequenceOfPrinters"]
+        type Message_SequenceOfPrinters;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Standard_SStream"]
+        type Standard_SStream;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_HPackedMapOfInteger"]
+        type TColStd_HPackedMapOfInteger;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_SequenceOfHExtendedString"]
+        type TColStd_SequenceOfHExtendedString;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageAlert"]
+        type HandleMessageAlert;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageAlertExtended"]
+        type HandleMessageAlertExtended;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageAlgorithm"]
+        type HandleMessageAlgorithm;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageAttribute"]
+        type HandleMessageAttribute;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageCompositeAlerts"]
+        type HandleMessageCompositeAlerts;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageMessenger"]
+        type HandleMessageMessenger;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessagePrinter"]
+        type HandleMessagePrinter;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageProgressIndicator"]
+        type HandleMessageProgressIndicator;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMessageReport"]
+        type HandleMessageReport;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardTransient"]
+        type HandleStandardTransient;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColStdHPackedMapOfInteger"]
+        type HandleTColStdHPackedMapOfInteger;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColStdHSequenceOfHExtendedString"]
+        type HandleTColStdHSequenceOfHExtendedString;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTCollectionHAsciiString"]
+        type HandleTCollectionHAsciiString;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTCollectionHExtendedString"]
+        type HandleTCollectionHExtendedString;
     }
     impl UniquePtr<ProgressRange> {}
-    impl UniquePtr<ProgressScope> {}
-    impl UniquePtr<ProgressIndicator> {}
     impl UniquePtr<Message> {}
     impl UniquePtr<Messenger> {}
     impl UniquePtr<Printer> {}
+    impl UniquePtr<ProgressScope> {}
+    impl UniquePtr<ProgressIndicator> {}
     impl UniquePtr<Algorithm> {}
     impl UniquePtr<ExecStatus> {}
     impl UniquePtr<Msg> {}
@@ -716,268 +984,4 @@ pub(crate) mod ffi {
     impl UniquePtr<Level> {}
     impl UniquePtr<Alert> {}
     impl UniquePtr<AlertExtended> {}
-}
-pub use ffi::ProgressRange;
-impl ProgressRange {
-    #[doc = "Constructor of the empty range"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::ProgressRange_ctor()
-    }
-
-    #[doc = "Copy constructor disarms the source"]
-    pub fn new_progressrange(theOther: &ffi::ProgressRange) -> cxx::UniquePtr<Self> {
-        ffi::ProgressRange_ctor_progressrange(theOther)
-    }
-}
-pub use ffi::ProgressScope;
-impl ProgressScope {
-    #[doc = "@name Preparation methods Creates dummy scope. It can be safely passed to algorithms; no progress indication will be done."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::ProgressScope_ctor()
-    }
-
-    #[doc = "Creates a new scope taking responsibility of the part of the progress scale described by theRange. The new scope has own range from 0 to theMax, which is mapped to the given range. The topmost scope is created and owned by Message_ProgressIndicator and its pointer is contained in the Message_ProgressRange returned by the Start() method of progress indicator. @param[in][out] theRange  range to fill (will be disarmed) @param[in] theName        new scope name @param[in] theMax         number of steps in scope @param[in] isInfinite     infinite flag"]
-    pub fn new_progressrange_asciistring_real_bool(
-        theRange: &ffi::ProgressRange,
-        theName: &ffi::TCollection_AsciiString,
-        theMax: f64,
-        isInfinite: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::ProgressScope_ctor_progressrange_asciistring_real_bool(
-            theRange, theName, theMax, isInfinite,
-        )
-    }
-
-    #[doc = "Advances position by specified step and returns the range covering this step"]
-    pub fn next(
-        self: std::pin::Pin<&mut Self>,
-        theStep: f64,
-    ) -> cxx::UniquePtr<ffi::ProgressRange> {
-        ffi::ProgressScope_next(self, theStep)
-    }
-
-    #[doc = "Returns the name of the scope (may be null). Scopes with null name (e.g. root scope) should be bypassed when reporting progress to the user."]
-    pub fn name(&self) -> String {
-        ffi::ProgressScope_name(self)
-    }
-}
-pub use ffi::ProgressIndicator;
-impl ProgressIndicator {
-    #[doc = "Resets the indicator to zero, calls Reset(), and returns the range. This range refers to the scope that has no name and is initialized with max value 1 and step 1. Use this method to get the top level range for progress indication."]
-    pub fn start(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::ProgressRange> {
-        ffi::ProgressIndicator_start(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::ProgressIndicator_get_type_name()
-    }
-
-    #[doc = "If argument is non-null handle, returns theProgress->Start(). Otherwise, returns dummy range that can be safely used in the algorithms but not bound to progress indicator."]
-    pub fn start_handleprogressindicator(
-        theProgress: &ffi::HandleMessageProgressIndicator,
-    ) -> cxx::UniquePtr<ffi::ProgressRange> {
-        ffi::ProgressIndicator_start_handleprogressindicator(theProgress)
-    }
-}
-pub use ffi::Message;
-impl Message {
-    pub fn send_fail_asciistring(theMessage: &ffi::TCollection_AsciiString) {
-        ffi::Message_send_fail_asciistring(theMessage)
-    }
-
-    pub fn send_alarm_asciistring(theMessage: &ffi::TCollection_AsciiString) {
-        ffi::Message_send_alarm_asciistring(theMessage)
-    }
-
-    pub fn send_warning_asciistring(theMessage: &ffi::TCollection_AsciiString) {
-        ffi::Message_send_warning_asciistring(theMessage)
-    }
-
-    pub fn send_info_asciistring(theMessage: &ffi::TCollection_AsciiString) {
-        ffi::Message_send_info_asciistring(theMessage)
-    }
-
-    pub fn send_trace_asciistring(theMessage: &ffi::TCollection_AsciiString) {
-        ffi::Message_send_trace_asciistring(theMessage)
-    }
-
-    #[doc = "Returns the string filled with values of hours, minutes and seconds. Example: 1. (5, 12, 26.3345) returns \"05h:12m:26.33s\", 2. (0,  6, 34.496 ) returns \"06m:34.50s\", 3. (0,  0,  4.5   ) returns \"4.50s\""]
-    pub fn fill_time(
-        Hour: i32,
-        Minute: i32,
-        Second: f64,
-    ) -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
-        ffi::Message_fill_time(Hour, Minute, Second)
-    }
-}
-pub use ffi::Messenger;
-impl Messenger {
-    #[doc = "Empty constructor; initializes by single printer directed to std::cout. Note: the default messenger is not empty but directed to cout in order to protect against possibility to forget defining printers. If printing to cout is not needed, clear messenger by GetPrinters().Clear()"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Messenger_ctor()
-    }
-
-    #[doc = "Create messenger with single printer"]
-    pub fn new_handleprinter(thePrinter: &ffi::HandleMessagePrinter) -> cxx::UniquePtr<Self> {
-        ffi::Messenger_ctor_handleprinter(thePrinter)
-    }
-
-    #[doc = "Wrap Message_Messenger in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMessageMessenger> {
-        ffi::Messenger_to_handle(obj)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Messenger_get_type_name()
-    }
-}
-pub use ffi::Printer;
-impl Printer {
-    pub fn get_type_name() -> String {
-        ffi::Printer_get_type_name()
-    }
-}
-pub use ffi::Algorithm;
-impl Algorithm {
-    #[doc = "Empty constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Algorithm_ctor()
-    }
-
-    #[doc = "Wrap Message_Algorithm in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMessageAlgorithm> {
-        ffi::Algorithm_to_handle(obj)
-    }
-
-    #[doc = "Returns messenger of algorithm. The returned handle is always non-null and can be used for sending messages."]
-    pub fn get_messenger(&self) -> cxx::UniquePtr<ffi::HandleMessageMessenger> {
-        ffi::Algorithm_get_messenger(self)
-    }
-
-    #[doc = "Prepares a string containing a list of integers contained in theError map, but not more than theMaxCount"]
-    pub fn prepare_report_handlehpackedmapofinteger_int(
-        theError: &ffi::HandleTColStdHPackedMapOfInteger,
-        theMaxCount: i32,
-    ) -> cxx::UniquePtr<ffi::TCollection_ExtendedString> {
-        ffi::Algorithm_prepare_report_handlehpackedmapofinteger_int(theError, theMaxCount)
-    }
-
-    #[doc = "Prepares a string containing a list of names contained in theReportSeq sequence, but not more than theMaxCount"]
-    pub fn prepare_report_sequenceofhextendedstring_int(
-        theReportSeq: &ffi::TColStd_SequenceOfHExtendedString,
-        theMaxCount: i32,
-    ) -> cxx::UniquePtr<ffi::TCollection_ExtendedString> {
-        ffi::Algorithm_prepare_report_sequenceofhextendedstring_int(theReportSeq, theMaxCount)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Algorithm_get_type_name()
-    }
-}
-pub use ffi::ExecStatus;
-impl ExecStatus {
-    #[doc = "Create empty execution status"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::ExecStatus_ctor()
-    }
-}
-pub use ffi::Msg;
-impl Msg {
-    #[doc = "Empty constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Msg_ctor()
-    }
-
-    #[doc = "Copy constructor"]
-    pub fn new_msg(theMsg: &ffi::Msg) -> cxx::UniquePtr<Self> {
-        ffi::Msg_ctor_msg(theMsg)
-    }
-
-    #[doc = "Create a message using a corresponding entry in Message_MsgFile"]
-    pub fn new_charptr(theKey: &str) -> cxx::UniquePtr<Self> {
-        ffi::Msg_ctor_charptr(theKey)
-    }
-
-    #[doc = "Create a message using a corresponding entry in Message_MsgFile"]
-    pub fn new_extendedstring(theKey: &ffi::TCollection_ExtendedString) -> cxx::UniquePtr<Self> {
-        ffi::Msg_ctor_extendedstring(theKey)
-    }
-
-    #[doc = "Set a message body text -- can be used as alternative to using messages from resource file"]
-    pub fn set_charptr(self: std::pin::Pin<&mut Self>, theMsg: &str) -> () {
-        ffi::Msg_set_charptr(self, theMsg)
-    }
-}
-pub use ffi::Report;
-impl Report {
-    #[doc = "Empty constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Report_ctor()
-    }
-
-    #[doc = "Wrap Message_Report in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMessageReport> {
-        ffi::Report_to_handle(obj)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Report_get_type_name()
-    }
-}
-pub use ffi::Level;
-impl Level {
-    #[doc = "Constructor. One string key is used for all alert meters. The perf meter is not started automatically, it will be done in AddAlert() method"]
-    pub fn new_asciistring(theName: &ffi::TCollection_AsciiString) -> cxx::UniquePtr<Self> {
-        ffi::Level_ctor_asciistring(theName)
-    }
-}
-pub use ffi::Alert;
-impl Alert {
-    #[doc = "Wrap Message_Alert in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMessageAlert> {
-        ffi::Alert_to_handle(obj)
-    }
-
-    #[doc = "Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance."]
-    pub fn get_message_key(&self) -> String {
-        ffi::Alert_get_message_key(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Alert_get_type_name()
-    }
-}
-pub use ffi::AlertExtended;
-impl AlertExtended {
-    #[doc = "Empty constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::AlertExtended_ctor()
-    }
-
-    #[doc = "Upcast to Message_Alert"]
-    pub fn as_alert(&self) -> &Alert {
-        ffi::alert_extended_as_alert(self)
-    }
-
-    #[doc = "Upcast to Message_Alert (mutable)"]
-    pub fn as_alert_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Alert> {
-        ffi::alert_extended_as_alert_mut(self)
-    }
-
-    #[doc = "Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance."]
-    pub fn get_message_key(&self) -> String {
-        ffi::AlertExtended_get_message_key(self)
-    }
-
-    #[doc = "Returns class provided hierarchy of alerts if created or create if the parameter is true @param theToCreate if composite alert has not been created for this alert, it should be created @return instance or NULL"]
-    pub fn composite_alerts(
-        self: std::pin::Pin<&mut Self>,
-        theToCreate: bool,
-    ) -> cxx::UniquePtr<ffi::HandleMessageCompositeAlerts> {
-        ffi::AlertExtended_composite_alerts(self, theToCreate)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::AlertExtended_get_type_name()
-    }
 }

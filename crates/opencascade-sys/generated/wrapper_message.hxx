@@ -68,44 +68,6 @@ inline std::unique_ptr<Message_ProgressRange> Message_ProgressRange_ctor_progres
 
 
 // ========================
-// Message_ProgressScope wrappers
-// ========================
-
-inline std::unique_ptr<Message_ProgressScope> Message_ProgressScope_ctor() {
-    return std::make_unique<Message_ProgressScope>();
-}
-
-inline std::unique_ptr<Message_ProgressScope> Message_ProgressScope_ctor_progressrange_asciistring_real_bool(const Message_ProgressRange& theRange, const TCollection_AsciiString& theName, Standard_Real theMax, Standard_Boolean isInfinite) {
-    return std::make_unique<Message_ProgressScope>(theRange, theName, theMax, isInfinite);
-}
-
-inline std::unique_ptr<Message_ProgressRange> Message_ProgressScope_Next(Message_ProgressScope& self, Standard_Real theStep) {
-    return std::make_unique<Message_ProgressRange>(self.Next(theStep));
-}
-
-inline rust::String Message_ProgressScope_Name(const Message_ProgressScope& self) {
-    return rust::String(self.Name());
-}
-
-
-// ========================
-// Message_ProgressIndicator wrappers
-// ========================
-
-inline std::unique_ptr<Message_ProgressRange> Message_ProgressIndicator_Start(Message_ProgressIndicator& self) {
-    return std::make_unique<Message_ProgressRange>(self.Start());
-}
-
-inline rust::String Message_ProgressIndicator_get_type_name() {
-    return rust::String(Message_ProgressIndicator::get_type_name());
-}
-
-inline std::unique_ptr<Message_ProgressRange> Message_ProgressIndicator_Start_handleprogressindicator(const opencascade::handle<Message_ProgressIndicator>& theProgress) {
-    return std::make_unique<Message_ProgressRange>(Message_ProgressIndicator::Start(theProgress));
-}
-
-
-// ========================
 // Message wrappers
 // ========================
 
@@ -160,6 +122,44 @@ inline std::unique_ptr<HandleMessageMessenger> Message_Messenger_to_handle(std::
 
 inline rust::String Message_Printer_get_type_name() {
     return rust::String(Message_Printer::get_type_name());
+}
+
+
+// ========================
+// Message_ProgressScope wrappers
+// ========================
+
+inline std::unique_ptr<Message_ProgressScope> Message_ProgressScope_ctor() {
+    return std::make_unique<Message_ProgressScope>();
+}
+
+inline std::unique_ptr<Message_ProgressScope> Message_ProgressScope_ctor_progressrange_asciistring_real_bool(const Message_ProgressRange& theRange, const TCollection_AsciiString& theName, Standard_Real theMax, Standard_Boolean isInfinite) {
+    return std::make_unique<Message_ProgressScope>(theRange, theName, theMax, isInfinite);
+}
+
+inline std::unique_ptr<Message_ProgressRange> Message_ProgressScope_Next(Message_ProgressScope& self, Standard_Real theStep) {
+    return std::make_unique<Message_ProgressRange>(self.Next(theStep));
+}
+
+inline rust::String Message_ProgressScope_Name(const Message_ProgressScope& self) {
+    return rust::String(self.Name());
+}
+
+
+// ========================
+// Message_ProgressIndicator wrappers
+// ========================
+
+inline std::unique_ptr<Message_ProgressRange> Message_ProgressIndicator_Start(Message_ProgressIndicator& self) {
+    return std::make_unique<Message_ProgressRange>(self.Start());
+}
+
+inline rust::String Message_ProgressIndicator_get_type_name() {
+    return rust::String(Message_ProgressIndicator::get_type_name());
+}
+
+inline std::unique_ptr<Message_ProgressRange> Message_ProgressIndicator_Start_handleprogressindicator(const opencascade::handle<Message_ProgressIndicator>& theProgress) {
+    return std::make_unique<Message_ProgressRange>(Message_ProgressIndicator::Start(theProgress));
 }
 
 

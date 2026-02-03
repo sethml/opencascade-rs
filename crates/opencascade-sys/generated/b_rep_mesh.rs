@@ -18,158 +18,137 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::IncrementalMesh;
+impl IncrementalMesh {
+    #[doc = "@name mesher API Default constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::IncrementalMesh_ctor()
+    }
+
+    #[doc = "Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theLinDeflection linear deflection. @param isRelative if TRUE deflection used for discretization of each edge will be <theLinDeflection> * <size of edge>. Deflection used for the faces will be the maximum deflection of their edges. @param theAngDeflection angular deflection. @param isInParallel if TRUE shape will be meshed in parallel."]
+    pub fn new_shape_real_bool_real_bool(
+        theShape: &ffi::TopoDS_Shape,
+        theLinDeflection: f64,
+        isRelative: bool,
+        theAngDeflection: f64,
+        isInParallel: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::IncrementalMesh_ctor_shape_real_bool_real_bool(
+            theShape,
+            theLinDeflection,
+            isRelative,
+            theAngDeflection,
+            isInParallel,
+        )
+    }
+
+    #[doc = "Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theParameters - parameters of meshing"]
+    pub fn new_shape_parameters_progressrange(
+        theShape: &ffi::TopoDS_Shape,
+        theParameters: &ffi::IMeshTools_Parameters,
+        theRange: &ffi::Message_ProgressRange,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::IncrementalMesh_ctor_shape_parameters_progressrange(theShape, theParameters, theRange)
+    }
+
+    #[doc = "Upcast to BRepMesh_DiscretRoot"]
+    pub fn as_discret_root(&self) -> &DiscretRoot {
+        ffi::incremental_mesh_as_discret_root(self)
+    }
+
+    #[doc = "Upcast to BRepMesh_DiscretRoot (mutable)"]
+    pub fn as_discret_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut DiscretRoot> {
+        ffi::incremental_mesh_as_discret_root_mut(self)
+    }
+
+    #[doc = "Returns multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories)."]
+    pub fn is_parallel_default() -> bool {
+        ffi::IncrementalMesh_is_parallel_default()
+    }
+
+    #[doc = "Setup multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories)."]
+    pub fn set_parallel_default(isInParallel: bool) {
+        ffi::IncrementalMesh_set_parallel_default(isInParallel)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::IncrementalMesh_get_type_name()
+    }
+}
+pub use ffi::DiscretRoot;
+impl DiscretRoot {
+    pub fn get_type_name() -> String {
+        ffi::DiscretRoot_get_type_name()
+    }
+}
+pub use ffi::Vertex;
+impl Vertex {
+    #[doc = "Default constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Vertex_ctor()
+    }
+}
+pub use ffi::Circle;
+impl Circle {
+    #[doc = "Default constructor."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Circle_ctor()
+    }
+
+    #[doc = "Constructor. @param theLocation location of a circle. @param theRadius radius of a circle."]
+    pub fn new_xy_real(theLocation: &ffi::gp_XY, theRadius: f64) -> cxx::UniquePtr<Self> {
+        ffi::Circle_ctor_xy_real(theLocation, theRadius)
+    }
+}
+pub use ffi::Triangle;
+impl Triangle {
+    #[doc = "Default constructor."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Triangle_ctor()
+    }
+}
+pub use ffi::PairOfIndex;
+impl PairOfIndex {
+    #[doc = "Default constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::PairOfIndex_ctor()
+    }
+}
+pub use ffi::Edge;
+impl Edge {
+    #[doc = "Default constructor."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Edge_ctor()
+    }
+
+    #[doc = "Upcast to BRepMesh_OrientedEdge"]
+    pub fn as_oriented_edge(&self) -> &OrientedEdge {
+        ffi::edge_as_oriented_edge(self)
+    }
+
+    #[doc = "Upcast to BRepMesh_OrientedEdge (mutable)"]
+    pub fn as_oriented_edge_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut OrientedEdge> {
+        ffi::edge_as_oriented_edge_mut(self)
+    }
+}
+pub use ffi::OrientedEdge;
+impl OrientedEdge {
+    #[doc = "Default constructor."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::OrientedEdge_ctor()
+    }
+
+    #[doc = "Constructs a link between two vertices."]
+    pub fn new_int2(theFirstNode: i32, theLastNode: i32) -> cxx::UniquePtr<Self> {
+        ffi::OrientedEdge_ctor_int2(theFirstNode, theLastNode)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_mesh.hxx");
-        #[doc = "Context from i_mesh_tools module"]
-        type IMeshTools_Context = crate::i_mesh_tools::ffi::Context;
-        #[doc = "ModelAlgo from i_mesh_tools module"]
-        type IMeshTools_ModelAlgo = crate::i_mesh_tools::ffi::ModelAlgo;
-        #[doc = "ModelBuilder from i_mesh_tools module"]
-        type IMeshTools_ModelBuilder = crate::i_mesh_tools::ffi::ModelBuilder;
-        #[doc = "Parameters from i_mesh_tools module"]
-        type IMeshTools_Parameters = crate::i_mesh_tools::ffi::Parameters;
-        #[doc = "Message from message module"]
-        type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
-        type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
-        type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_XY"]
-        type gp_XY;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBRepMeshDiscretRoot"]
-        type HandleBRepMeshDiscretRoot;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIMeshToolsContext"]
-        type HandleIMeshToolsContext;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
         #[doc = " ======================== BRepMesh_IncrementalMesh ========================"]
         #[doc = "/// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh`"]
         #[doc = ""]
@@ -416,6 +395,191 @@ pub(crate) mod ffi {
         #[doc = "Checks this and other edge for equality. @param theOther edge to be checked against this one. @return TRUE if edges have the same orientation, FALSE if not."]
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &OrientedEdge, theOther: &OrientedEdge) -> bool;
+        #[doc = "Context from i_mesh_tools module"]
+        type IMeshTools_Context = crate::i_mesh_tools::ffi::Context;
+        #[doc = "ModelAlgo from i_mesh_tools module"]
+        type IMeshTools_ModelAlgo = crate::i_mesh_tools::ffi::ModelAlgo;
+        #[doc = "ModelBuilder from i_mesh_tools module"]
+        type IMeshTools_ModelBuilder = crate::i_mesh_tools::ffi::ModelBuilder;
+        #[doc = "Parameters from i_mesh_tools module"]
+        type IMeshTools_Parameters = crate::i_mesh_tools::ffi::Parameters;
+        #[doc = "Message from message module"]
+        type Message = crate::message::ffi::Message;
+        #[doc = "Alert from message module"]
+        type Message_Alert = crate::message::ffi::Alert;
+        #[doc = "AlertExtended from message module"]
+        type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBRepMeshDiscretRoot"]
+        type HandleBRepMeshDiscretRoot;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleIMeshToolsContext"]
+        type HandleIMeshToolsContext;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
     }
     impl UniquePtr<IncrementalMesh> {}
     impl UniquePtr<DiscretRoot> {}
@@ -425,131 +589,4 @@ pub(crate) mod ffi {
     impl UniquePtr<PairOfIndex> {}
     impl UniquePtr<Edge> {}
     impl UniquePtr<OrientedEdge> {}
-}
-pub use ffi::IncrementalMesh;
-impl IncrementalMesh {
-    #[doc = "@name mesher API Default constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::IncrementalMesh_ctor()
-    }
-
-    #[doc = "Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theLinDeflection linear deflection. @param isRelative if TRUE deflection used for discretization of each edge will be <theLinDeflection> * <size of edge>. Deflection used for the faces will be the maximum deflection of their edges. @param theAngDeflection angular deflection. @param isInParallel if TRUE shape will be meshed in parallel."]
-    pub fn new_shape_real_bool_real_bool(
-        theShape: &ffi::TopoDS_Shape,
-        theLinDeflection: f64,
-        isRelative: bool,
-        theAngDeflection: f64,
-        isInParallel: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::IncrementalMesh_ctor_shape_real_bool_real_bool(
-            theShape,
-            theLinDeflection,
-            isRelative,
-            theAngDeflection,
-            isInParallel,
-        )
-    }
-
-    #[doc = "Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theParameters - parameters of meshing"]
-    pub fn new_shape_parameters_progressrange(
-        theShape: &ffi::TopoDS_Shape,
-        theParameters: &ffi::IMeshTools_Parameters,
-        theRange: &ffi::Message_ProgressRange,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::IncrementalMesh_ctor_shape_parameters_progressrange(theShape, theParameters, theRange)
-    }
-
-    #[doc = "Upcast to BRepMesh_DiscretRoot"]
-    pub fn as_discret_root(&self) -> &DiscretRoot {
-        ffi::incremental_mesh_as_discret_root(self)
-    }
-
-    #[doc = "Upcast to BRepMesh_DiscretRoot (mutable)"]
-    pub fn as_discret_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut DiscretRoot> {
-        ffi::incremental_mesh_as_discret_root_mut(self)
-    }
-
-    #[doc = "Returns multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories)."]
-    pub fn is_parallel_default() -> bool {
-        ffi::IncrementalMesh_is_parallel_default()
-    }
-
-    #[doc = "Setup multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories)."]
-    pub fn set_parallel_default(isInParallel: bool) {
-        ffi::IncrementalMesh_set_parallel_default(isInParallel)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::IncrementalMesh_get_type_name()
-    }
-}
-pub use ffi::DiscretRoot;
-impl DiscretRoot {
-    pub fn get_type_name() -> String {
-        ffi::DiscretRoot_get_type_name()
-    }
-}
-pub use ffi::Vertex;
-impl Vertex {
-    #[doc = "Default constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Vertex_ctor()
-    }
-}
-pub use ffi::Circle;
-impl Circle {
-    #[doc = "Default constructor."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Circle_ctor()
-    }
-
-    #[doc = "Constructor. @param theLocation location of a circle. @param theRadius radius of a circle."]
-    pub fn new_xy_real(theLocation: &ffi::gp_XY, theRadius: f64) -> cxx::UniquePtr<Self> {
-        ffi::Circle_ctor_xy_real(theLocation, theRadius)
-    }
-}
-pub use ffi::Triangle;
-impl Triangle {
-    #[doc = "Default constructor."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Triangle_ctor()
-    }
-}
-pub use ffi::PairOfIndex;
-impl PairOfIndex {
-    #[doc = "Default constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::PairOfIndex_ctor()
-    }
-}
-pub use ffi::Edge;
-impl Edge {
-    #[doc = "Default constructor."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Edge_ctor()
-    }
-
-    #[doc = "Upcast to BRepMesh_OrientedEdge"]
-    pub fn as_oriented_edge(&self) -> &OrientedEdge {
-        ffi::edge_as_oriented_edge(self)
-    }
-
-    #[doc = "Upcast to BRepMesh_OrientedEdge (mutable)"]
-    pub fn as_oriented_edge_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut OrientedEdge> {
-        ffi::edge_as_oriented_edge_mut(self)
-    }
-}
-pub use ffi::OrientedEdge;
-impl OrientedEdge {
-    #[doc = "Default constructor."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::OrientedEdge_ctor()
-    }
-
-    #[doc = "Constructs a link between two vertices."]
-    pub fn new_int2(theFirstNode: i32, theLastNode: i32) -> cxx::UniquePtr<Self> {
-        ffi::OrientedEdge_ctor_int2(theFirstNode, theLastNode)
-    }
 }

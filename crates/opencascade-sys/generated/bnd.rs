@@ -16,138 +16,251 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Box_ as Box;
+impl Box {
+    #[doc = "Creates an empty Box. The constructed box is qualified Void. Its gap is null."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Box__ctor()
+    }
+
+    #[doc = "Creates a bounding box, it contains: -   minimum/maximum point of bounding box, The constructed box is qualified Void. Its gap is null."]
+    pub fn new_pnt2(theMin: &ffi::gp_Pnt, theMax: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        ffi::Box__ctor_pnt2(theMin, theMax)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::Box__to_owned(self)
+    }
+
+    #[doc = "Returns the lower corner of this bounding box. The gap is included. If this bounding box is infinite (i.e. \"open\"), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()"]
+    pub fn corner_min(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::Box__corner_min(self)
+    }
+
+    #[doc = "Returns the upper corner of this bounding box. The gap is included. If this bounding box is infinite (i.e. \"open\"), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()"]
+    pub fn corner_max(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::Box__corner_max(self)
+    }
+
+    #[doc = "Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it."]
+    pub fn transformed(&self, T: &ffi::gp_Trsf) -> cxx::UniquePtr<ffi::Box_> {
+        ffi::Box__transformed(self, T)
+    }
+
+    #[doc = "Returns a finite part of an infinite bounding box (returns self if this is already finite box). This can be a Void box in case if its sides has been defined as infinite (Open) without adding any finite points. WARNING! This method relies on Open flags, the infinite points added using Add() method will be returned as is."]
+    pub fn finite_part(&self) -> cxx::UniquePtr<ffi::Box_> {
+        ffi::Box__finite_part(self)
+    }
+}
+pub use ffi::OBB;
+impl OBB {
+    #[doc = "Empty constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::OBB_ctor()
+    }
+
+    #[doc = "Constructor taking all defining parameters"]
+    pub fn new_pnt_dir3_real3(
+        theCenter: &ffi::gp_Pnt,
+        theXDirection: &ffi::gp_Dir,
+        theYDirection: &ffi::gp_Dir,
+        theZDirection: &ffi::gp_Dir,
+        theHXSize: f64,
+        theHYSize: f64,
+        theHZSize: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::OBB_ctor_pnt_dir3_real3(
+            theCenter,
+            theXDirection,
+            theYDirection,
+            theZDirection,
+            theHXSize,
+            theHYSize,
+            theHZSize,
+        )
+    }
+
+    #[doc = "Constructor to create OBB from AABB."]
+    pub fn new_box(theBox: &ffi::Box_) -> cxx::UniquePtr<Self> {
+        ffi::OBB_ctor_box(theBox)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::OBB_to_owned(self)
+    }
+
+    #[doc = "Returns the local coordinates system of this oriented box. So that applying it to axis-aligned box ((-XHSize, -YHSize, -ZHSize), (XHSize, YHSize, ZHSize)) will produce this oriented box. @code gp_Trsf aLoc; aLoc.SetTransformation (theOBB.Position(), gp::XOY()); @endcode"]
+    pub fn position(&self) -> cxx::UniquePtr<ffi::gp_Ax3> {
+        ffi::OBB_position(self)
+    }
+}
+pub use ffi::HArray1OfSphere;
+impl HArray1OfSphere {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfSphere_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfSphere_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_sphere(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &ffi::Sphere,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfSphere_ctor_int2_sphere(theLower, theUpper, theValue)
+    }
+
+    pub fn new_sphere_int2_bool(
+        theBegin: &ffi::Sphere,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfSphere_ctor_sphere_int2_bool(theBegin, theLower, theUpper, arg3)
+    }
+
+    pub fn new_array1ofsphere(theOther: &ffi::Bnd_Array1OfSphere) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfSphere_ctor_array1ofsphere(theOther)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfSphere_to_owned(self)
+    }
+
+    #[doc = "Wrap Bnd_HArray1OfSphere in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBndHArray1OfSphere> {
+        ffi::HArray1OfSphere_to_handle(obj)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::HArray1OfSphere_get_type_name()
+    }
+}
+pub use ffi::Sphere;
+impl Sphere {
+    #[doc = "Empty constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Sphere_ctor()
+    }
+
+    #[doc = "Constructor of a definite sphere"]
+    pub fn new_xyz_real_int2(
+        theCntr: &ffi::gp_XYZ,
+        theRad: f64,
+        theU: i32,
+        theV: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Sphere_ctor_xyz_real_int2(theCntr, theRad, theU, theV)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::Sphere_to_owned(self)
+    }
+}
+pub use ffi::Box2d;
+impl Box2d {
+    #[doc = "Creates an empty 2D bounding box. The constructed box is qualified Void. Its gap is null."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Box2d_ctor()
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::Box2d_to_owned(self)
+    }
+
+    #[doc = "Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it."]
+    pub fn transformed(&self, T: &ffi::gp_Trsf2d) -> cxx::UniquePtr<ffi::Box2d> {
+        ffi::Box2d_transformed(self, T)
+    }
+}
+pub use ffi::B2d;
+impl B2d {
+    #[doc = "Empty constructor."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::B2d_ctor()
+    }
+
+    #[doc = "Constructor."]
+    pub fn new_xy2(theCenter: &ffi::gp_XY, theHSize: &ffi::gp_XY) -> cxx::UniquePtr<Self> {
+        ffi::B2d_ctor_xy2(theCenter, theHSize)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::B2d_to_owned(self)
+    }
+
+    #[doc = "Query a box corner: (Center - HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result."]
+    pub fn corner_min(&self) -> cxx::UniquePtr<ffi::gp_XY> {
+        ffi::B2d_corner_min(self)
+    }
+
+    #[doc = "Query a box corner: (Center + HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result."]
+    pub fn corner_max(&self) -> cxx::UniquePtr<ffi::gp_XY> {
+        ffi::B2d_corner_max(self)
+    }
+
+    #[doc = "Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation."]
+    pub fn transformed(&self, theTrsf: &ffi::gp_Trsf2d) -> cxx::UniquePtr<ffi::B2d> {
+        ffi::B2d_transformed(self, theTrsf)
+    }
+}
+pub use ffi::HArray1OfBox;
+impl HArray1OfBox {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfBox_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfBox_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_box(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &ffi::Box_,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfBox_ctor_int2_box(theLower, theUpper, theValue)
+    }
+
+    pub fn new_box_int2_bool(
+        theBegin: &ffi::Box_,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfBox_ctor_box_int2_bool(theBegin, theLower, theUpper, arg3)
+    }
+
+    pub fn new_array1ofbox(theOther: &ffi::Bnd_Array1OfBox) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfBox_ctor_array1ofbox(theOther)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfBox_to_owned(self)
+    }
+
+    #[doc = "Wrap Bnd_HArray1OfBox in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBndHArray1OfBox> {
+        ffi::HArray1OfBox_to_handle(obj)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::HArray1OfBox_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_bnd.hxx");
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfPnt from t_colgp module"]
-        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
-        #[doc = "HArray1OfPnt2d from t_colgp module"]
-        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
-        #[doc = "HArray1OfVec from t_colgp module"]
-        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
-        #[doc = "HArray2OfPnt from t_colgp module"]
-        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Bnd_Array1OfBox"]
-        type Bnd_Array1OfBox;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Bnd_Array1OfSphere"]
-        type Bnd_Array1OfSphere;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array1OfPnt"]
-        type TColgp_Array1OfPnt;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Lin2d"]
-        type gp_Lin2d;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_XY"]
-        type gp_XY;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBndHArray1OfBox"]
-        type HandleBndHArray1OfBox;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBndHArray1OfSphere"]
-        type HandleBndHArray1OfSphere;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
         #[doc = " ======================== Bnd_Box ========================"]
         #[doc = "/// **Source:** `Bnd_Box.hxx` - `Bnd_Box`"]
         #[doc = ""]
@@ -427,6 +540,120 @@ pub(crate) mod ffi {
         #[doc = "Clone Bnd_OBB into a new UniquePtr via copy constructor"]
         #[cxx_name = "construct_unique"]
         fn OBB_to_owned(self_: &OBB) -> UniquePtr<OBB>;
+        #[doc = " ======================== Bnd_HArray1OfSphere ========================"]
+        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere`"]
+        #[cxx_name = "Bnd_HArray1OfSphere"]
+        type HArray1OfSphere;
+        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
+        #[cxx_name = "Bnd_HArray1OfSphere_ctor"]
+        fn HArray1OfSphere_ctor() -> UniquePtr<HArray1OfSphere>;
+        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
+        #[cxx_name = "Bnd_HArray1OfSphere_ctor_int2"]
+        fn HArray1OfSphere_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfSphere>;
+        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
+        #[cxx_name = "Bnd_HArray1OfSphere_ctor_int2_sphere"]
+        fn HArray1OfSphere_ctor_int2_sphere(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &Sphere,
+        ) -> UniquePtr<HArray1OfSphere>;
+        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
+        #[cxx_name = "Bnd_HArray1OfSphere_ctor_sphere_int2_bool"]
+        fn HArray1OfSphere_ctor_sphere_int2_bool(
+            theBegin: &Sphere,
+            theLower: i32,
+            theUpper: i32,
+            arg3: bool,
+        ) -> UniquePtr<HArray1OfSphere>;
+        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
+        #[cxx_name = "Bnd_HArray1OfSphere_ctor_array1ofsphere"]
+        fn HArray1OfSphere_ctor_array1ofsphere(
+            theOther: &Bnd_Array1OfSphere,
+        ) -> UniquePtr<HArray1OfSphere>;
+        #[cxx_name = "Array1"]
+        fn array1(self: &HArray1OfSphere) -> &Bnd_Array1OfSphere;
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut HArray1OfSphere>) -> Pin<&mut Bnd_Array1OfSphere>;
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &HArray1OfSphere) -> &HandleStandardType;
+        #[cxx_name = "Bnd_HArray1OfSphere_get_type_name"]
+        fn HArray1OfSphere_get_type_name() -> String;
+        #[doc = "Clone Bnd_HArray1OfSphere into a new UniquePtr via copy constructor"]
+        #[cxx_name = "construct_unique"]
+        fn HArray1OfSphere_to_owned(self_: &HArray1OfSphere) -> UniquePtr<HArray1OfSphere>;
+        #[doc = "Wrap Bnd_HArray1OfSphere in a Handle (reference-counted smart pointer)"]
+        #[cxx_name = "Bnd_HArray1OfSphere_to_handle"]
+        fn HArray1OfSphere_to_handle(
+            obj: UniquePtr<HArray1OfSphere>,
+        ) -> UniquePtr<HandleBndHArray1OfSphere>;
+        #[doc = " ======================== Bnd_Sphere ========================"]
+        #[doc = "/// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere`"]
+        #[doc = ""]
+        #[doc = "This class represents a bounding sphere of a geometric entity (triangle, segment of line or whatever else)."]
+        #[cxx_name = "Bnd_Sphere"]
+        type Sphere;
+        #[doc = "/// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`"]
+        #[doc = ""]
+        #[doc = "Empty constructor"]
+        #[cxx_name = "Bnd_Sphere_ctor"]
+        fn Sphere_ctor() -> UniquePtr<Sphere>;
+        #[doc = "/// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`"]
+        #[doc = ""]
+        #[doc = "Constructor of a definite sphere"]
+        #[cxx_name = "Bnd_Sphere_ctor_xyz_real_int2"]
+        fn Sphere_ctor_xyz_real_int2(
+            theCntr: &gp_XYZ,
+            theRad: f64,
+            theU: i32,
+            theV: i32,
+        ) -> UniquePtr<Sphere>;
+        #[doc = "Returns the U parameter on shape"]
+        #[cxx_name = "U"]
+        fn u(self: &Sphere) -> i32;
+        #[doc = "Returns the V parameter on shape"]
+        #[cxx_name = "V"]
+        fn v(self: &Sphere) -> i32;
+        #[doc = "Returns validity status, indicating that this sphere corresponds to a real entity"]
+        #[cxx_name = "IsValid"]
+        fn is_valid(self: &Sphere) -> bool;
+        #[cxx_name = "SetValid"]
+        fn set_valid(self: Pin<&mut Sphere>, isValid: bool);
+        #[doc = "Returns center of sphere object"]
+        #[cxx_name = "Center"]
+        fn center(self: &Sphere) -> &gp_XYZ;
+        #[doc = "Returns the radius value"]
+        #[cxx_name = "Radius"]
+        fn radius(self: &Sphere) -> f64;
+        #[doc = "Calculate and return minimal and maximal distance to sphere. NOTE: This function is tightly optimized; any modifications may affect performance!"]
+        #[cxx_name = "Distances"]
+        fn distances(self: &Sphere, theXYZ: &gp_XYZ, theMin: &mut f64, theMax: &mut f64);
+        #[doc = "Calculate and return minimal and maximal distance to sphere. NOTE: This function is tightly optimized; any modifications may affect performance!"]
+        #[cxx_name = "SquareDistances"]
+        fn square_distances(self: &Sphere, theXYZ: &gp_XYZ, theMin: &mut f64, theMax: &mut f64);
+        #[doc = "Projects a point on entity. Returns true if success"]
+        #[cxx_name = "Project"]
+        fn project(
+            self: &Sphere,
+            theNode: &gp_XYZ,
+            theProjNode: Pin<&mut gp_XYZ>,
+            theDist: &mut f64,
+            theInside: &mut bool,
+        ) -> bool;
+        #[cxx_name = "Distance"]
+        fn distance(self: &Sphere, theNode: &gp_XYZ) -> f64;
+        #[cxx_name = "SquareDistance"]
+        fn square_distance(self: &Sphere, theNode: &gp_XYZ) -> f64;
+        #[cxx_name = "Add"]
+        fn add(self: Pin<&mut Sphere>, theOther: &Sphere);
+        #[cxx_name = "IsOut"]
+        fn is_out_sphere(self: &Sphere, theOther: &Sphere) -> bool;
+        #[cxx_name = "IsOut"]
+        fn is_out_xyz_real(self: &Sphere, thePnt: &gp_XYZ, theMaxDist: &mut f64) -> bool;
+        #[cxx_name = "SquareExtent"]
+        fn square_extent(self: &Sphere) -> f64;
+        #[doc = "Clone Bnd_Sphere into a new UniquePtr via copy constructor"]
+        #[cxx_name = "construct_unique"]
+        fn Sphere_to_owned(self_: &Sphere) -> UniquePtr<Sphere>;
         #[doc = " ======================== Bnd_Box2d ========================"]
         #[doc = "/// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d`"]
         #[doc = ""]
@@ -672,367 +899,176 @@ pub(crate) mod ffi {
         #[cxx_name = "Bnd_HArray1OfBox_to_handle"]
         fn HArray1OfBox_to_handle(obj: UniquePtr<HArray1OfBox>)
             -> UniquePtr<HandleBndHArray1OfBox>;
-        #[doc = " ======================== Bnd_HArray1OfSphere ========================"]
-        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere`"]
-        #[cxx_name = "Bnd_HArray1OfSphere"]
-        type HArray1OfSphere;
-        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
-        #[cxx_name = "Bnd_HArray1OfSphere_ctor"]
-        fn HArray1OfSphere_ctor() -> UniquePtr<HArray1OfSphere>;
-        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
-        #[cxx_name = "Bnd_HArray1OfSphere_ctor_int2"]
-        fn HArray1OfSphere_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfSphere>;
-        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
-        #[cxx_name = "Bnd_HArray1OfSphere_ctor_int2_sphere"]
-        fn HArray1OfSphere_ctor_int2_sphere(
-            theLower: i32,
-            theUpper: i32,
-            theValue: &Sphere,
-        ) -> UniquePtr<HArray1OfSphere>;
-        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
-        #[cxx_name = "Bnd_HArray1OfSphere_ctor_sphere_int2_bool"]
-        fn HArray1OfSphere_ctor_sphere_int2_bool(
-            theBegin: &Sphere,
-            theLower: i32,
-            theUpper: i32,
-            arg3: bool,
-        ) -> UniquePtr<HArray1OfSphere>;
-        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
-        #[cxx_name = "Bnd_HArray1OfSphere_ctor_array1ofsphere"]
-        fn HArray1OfSphere_ctor_array1ofsphere(
-            theOther: &Bnd_Array1OfSphere,
-        ) -> UniquePtr<HArray1OfSphere>;
-        #[cxx_name = "Array1"]
-        fn array1(self: &HArray1OfSphere) -> &Bnd_Array1OfSphere;
-        #[cxx_name = "ChangeArray1"]
-        fn change_array1(self: Pin<&mut HArray1OfSphere>) -> Pin<&mut Bnd_Array1OfSphere>;
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &HArray1OfSphere) -> &HandleStandardType;
-        #[cxx_name = "Bnd_HArray1OfSphere_get_type_name"]
-        fn HArray1OfSphere_get_type_name() -> String;
-        #[doc = "Clone Bnd_HArray1OfSphere into a new UniquePtr via copy constructor"]
-        #[cxx_name = "construct_unique"]
-        fn HArray1OfSphere_to_owned(self_: &HArray1OfSphere) -> UniquePtr<HArray1OfSphere>;
-        #[doc = "Wrap Bnd_HArray1OfSphere in a Handle (reference-counted smart pointer)"]
-        #[cxx_name = "Bnd_HArray1OfSphere_to_handle"]
-        fn HArray1OfSphere_to_handle(
-            obj: UniquePtr<HArray1OfSphere>,
-        ) -> UniquePtr<HandleBndHArray1OfSphere>;
-        #[doc = " ======================== Bnd_Sphere ========================"]
-        #[doc = "/// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere`"]
-        #[doc = ""]
-        #[doc = "This class represents a bounding sphere of a geometric entity (triangle, segment of line or whatever else)."]
-        #[cxx_name = "Bnd_Sphere"]
-        type Sphere;
-        #[doc = "/// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor"]
-        #[cxx_name = "Bnd_Sphere_ctor"]
-        fn Sphere_ctor() -> UniquePtr<Sphere>;
-        #[doc = "/// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`"]
-        #[doc = ""]
-        #[doc = "Constructor of a definite sphere"]
-        #[cxx_name = "Bnd_Sphere_ctor_xyz_real_int2"]
-        fn Sphere_ctor_xyz_real_int2(
-            theCntr: &gp_XYZ,
-            theRad: f64,
-            theU: i32,
-            theV: i32,
-        ) -> UniquePtr<Sphere>;
-        #[doc = "Returns the U parameter on shape"]
-        #[cxx_name = "U"]
-        fn u(self: &Sphere) -> i32;
-        #[doc = "Returns the V parameter on shape"]
-        #[cxx_name = "V"]
-        fn v(self: &Sphere) -> i32;
-        #[doc = "Returns validity status, indicating that this sphere corresponds to a real entity"]
-        #[cxx_name = "IsValid"]
-        fn is_valid(self: &Sphere) -> bool;
-        #[cxx_name = "SetValid"]
-        fn set_valid(self: Pin<&mut Sphere>, isValid: bool);
-        #[doc = "Returns center of sphere object"]
-        #[cxx_name = "Center"]
-        fn center(self: &Sphere) -> &gp_XYZ;
-        #[doc = "Returns the radius value"]
-        #[cxx_name = "Radius"]
-        fn radius(self: &Sphere) -> f64;
-        #[doc = "Calculate and return minimal and maximal distance to sphere. NOTE: This function is tightly optimized; any modifications may affect performance!"]
-        #[cxx_name = "Distances"]
-        fn distances(self: &Sphere, theXYZ: &gp_XYZ, theMin: &mut f64, theMax: &mut f64);
-        #[doc = "Calculate and return minimal and maximal distance to sphere. NOTE: This function is tightly optimized; any modifications may affect performance!"]
-        #[cxx_name = "SquareDistances"]
-        fn square_distances(self: &Sphere, theXYZ: &gp_XYZ, theMin: &mut f64, theMax: &mut f64);
-        #[doc = "Projects a point on entity. Returns true if success"]
-        #[cxx_name = "Project"]
-        fn project(
-            self: &Sphere,
-            theNode: &gp_XYZ,
-            theProjNode: Pin<&mut gp_XYZ>,
-            theDist: &mut f64,
-            theInside: &mut bool,
-        ) -> bool;
-        #[cxx_name = "Distance"]
-        fn distance(self: &Sphere, theNode: &gp_XYZ) -> f64;
-        #[cxx_name = "SquareDistance"]
-        fn square_distance(self: &Sphere, theNode: &gp_XYZ) -> f64;
-        #[cxx_name = "Add"]
-        fn add(self: Pin<&mut Sphere>, theOther: &Sphere);
-        #[cxx_name = "IsOut"]
-        fn is_out_sphere(self: &Sphere, theOther: &Sphere) -> bool;
-        #[cxx_name = "IsOut"]
-        fn is_out_xyz_real(self: &Sphere, thePnt: &gp_XYZ, theMaxDist: &mut f64) -> bool;
-        #[cxx_name = "SquareExtent"]
-        fn square_extent(self: &Sphere) -> f64;
-        #[doc = "Clone Bnd_Sphere into a new UniquePtr via copy constructor"]
-        #[cxx_name = "construct_unique"]
-        fn Sphere_to_owned(self_: &Sphere) -> UniquePtr<Sphere>;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HSequenceOfInteger from t_col_std module"]
+        type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "HArray1OfPnt from t_colgp module"]
+        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
+        #[doc = "HArray1OfPnt2d from t_colgp module"]
+        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
+        #[doc = "HArray1OfVec from t_colgp module"]
+        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
+        #[doc = "HArray2OfPnt from t_colgp module"]
+        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Bnd_Array1OfBox"]
+        type Bnd_Array1OfBox;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Bnd_Array1OfSphere"]
+        type Bnd_Array1OfSphere;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColgp_Array1OfPnt"]
+        type TColgp_Array1OfPnt;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBndHArray1OfBox"]
+        type HandleBndHArray1OfBox;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBndHArray1OfSphere"]
+        type HandleBndHArray1OfSphere;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
     }
     impl UniquePtr<Box_> {}
     impl UniquePtr<OBB> {}
+    impl UniquePtr<HArray1OfSphere> {}
+    impl UniquePtr<Sphere> {}
     impl UniquePtr<Box2d> {}
     impl UniquePtr<B2d> {}
     impl UniquePtr<HArray1OfBox> {}
-    impl UniquePtr<HArray1OfSphere> {}
-    impl UniquePtr<Sphere> {}
-}
-pub use ffi::Box_ as Box;
-impl Box {
-    #[doc = "Creates an empty Box. The constructed box is qualified Void. Its gap is null."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Box__ctor()
-    }
-
-    #[doc = "Creates a bounding box, it contains: -   minimum/maximum point of bounding box, The constructed box is qualified Void. Its gap is null."]
-    pub fn new_pnt2(theMin: &ffi::gp_Pnt, theMax: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
-        ffi::Box__ctor_pnt2(theMin, theMax)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::Box__to_owned(self)
-    }
-
-    #[doc = "Returns the lower corner of this bounding box. The gap is included. If this bounding box is infinite (i.e. \"open\"), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()"]
-    pub fn corner_min(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::Box__corner_min(self)
-    }
-
-    #[doc = "Returns the upper corner of this bounding box. The gap is included. If this bounding box is infinite (i.e. \"open\"), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()"]
-    pub fn corner_max(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::Box__corner_max(self)
-    }
-
-    #[doc = "Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it."]
-    pub fn transformed(&self, T: &ffi::gp_Trsf) -> cxx::UniquePtr<ffi::Box_> {
-        ffi::Box__transformed(self, T)
-    }
-
-    #[doc = "Returns a finite part of an infinite bounding box (returns self if this is already finite box). This can be a Void box in case if its sides has been defined as infinite (Open) without adding any finite points. WARNING! This method relies on Open flags, the infinite points added using Add() method will be returned as is."]
-    pub fn finite_part(&self) -> cxx::UniquePtr<ffi::Box_> {
-        ffi::Box__finite_part(self)
-    }
-}
-pub use ffi::OBB;
-impl OBB {
-    #[doc = "Empty constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::OBB_ctor()
-    }
-
-    #[doc = "Constructor taking all defining parameters"]
-    pub fn new_pnt_dir3_real3(
-        theCenter: &ffi::gp_Pnt,
-        theXDirection: &ffi::gp_Dir,
-        theYDirection: &ffi::gp_Dir,
-        theZDirection: &ffi::gp_Dir,
-        theHXSize: f64,
-        theHYSize: f64,
-        theHZSize: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::OBB_ctor_pnt_dir3_real3(
-            theCenter,
-            theXDirection,
-            theYDirection,
-            theZDirection,
-            theHXSize,
-            theHYSize,
-            theHZSize,
-        )
-    }
-
-    #[doc = "Constructor to create OBB from AABB."]
-    pub fn new_box(theBox: &ffi::Box_) -> cxx::UniquePtr<Self> {
-        ffi::OBB_ctor_box(theBox)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::OBB_to_owned(self)
-    }
-
-    #[doc = "Returns the local coordinates system of this oriented box. So that applying it to axis-aligned box ((-XHSize, -YHSize, -ZHSize), (XHSize, YHSize, ZHSize)) will produce this oriented box. @code gp_Trsf aLoc; aLoc.SetTransformation (theOBB.Position(), gp::XOY()); @endcode"]
-    pub fn position(&self) -> cxx::UniquePtr<ffi::gp_Ax3> {
-        ffi::OBB_position(self)
-    }
-}
-pub use ffi::Box2d;
-impl Box2d {
-    #[doc = "Creates an empty 2D bounding box. The constructed box is qualified Void. Its gap is null."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Box2d_ctor()
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::Box2d_to_owned(self)
-    }
-
-    #[doc = "Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it."]
-    pub fn transformed(&self, T: &ffi::gp_Trsf2d) -> cxx::UniquePtr<ffi::Box2d> {
-        ffi::Box2d_transformed(self, T)
-    }
-}
-pub use ffi::B2d;
-impl B2d {
-    #[doc = "Empty constructor."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::B2d_ctor()
-    }
-
-    #[doc = "Constructor."]
-    pub fn new_xy2(theCenter: &ffi::gp_XY, theHSize: &ffi::gp_XY) -> cxx::UniquePtr<Self> {
-        ffi::B2d_ctor_xy2(theCenter, theHSize)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::B2d_to_owned(self)
-    }
-
-    #[doc = "Query a box corner: (Center - HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result."]
-    pub fn corner_min(&self) -> cxx::UniquePtr<ffi::gp_XY> {
-        ffi::B2d_corner_min(self)
-    }
-
-    #[doc = "Query a box corner: (Center + HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result."]
-    pub fn corner_max(&self) -> cxx::UniquePtr<ffi::gp_XY> {
-        ffi::B2d_corner_max(self)
-    }
-
-    #[doc = "Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation."]
-    pub fn transformed(&self, theTrsf: &ffi::gp_Trsf2d) -> cxx::UniquePtr<ffi::B2d> {
-        ffi::B2d_transformed(self, theTrsf)
-    }
-}
-pub use ffi::HArray1OfBox;
-impl HArray1OfBox {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfBox_ctor()
-    }
-
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfBox_ctor_int2(theLower, theUpper)
-    }
-
-    pub fn new_int2_box(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &ffi::Box_,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfBox_ctor_int2_box(theLower, theUpper, theValue)
-    }
-
-    pub fn new_box_int2_bool(
-        theBegin: &ffi::Box_,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfBox_ctor_box_int2_bool(theBegin, theLower, theUpper, arg3)
-    }
-
-    pub fn new_array1ofbox(theOther: &ffi::Bnd_Array1OfBox) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfBox_ctor_array1ofbox(theOther)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfBox_to_owned(self)
-    }
-
-    #[doc = "Wrap Bnd_HArray1OfBox in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBndHArray1OfBox> {
-        ffi::HArray1OfBox_to_handle(obj)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::HArray1OfBox_get_type_name()
-    }
-}
-pub use ffi::HArray1OfSphere;
-impl HArray1OfSphere {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfSphere_ctor()
-    }
-
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfSphere_ctor_int2(theLower, theUpper)
-    }
-
-    pub fn new_int2_sphere(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &ffi::Sphere,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfSphere_ctor_int2_sphere(theLower, theUpper, theValue)
-    }
-
-    pub fn new_sphere_int2_bool(
-        theBegin: &ffi::Sphere,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfSphere_ctor_sphere_int2_bool(theBegin, theLower, theUpper, arg3)
-    }
-
-    pub fn new_array1ofsphere(theOther: &ffi::Bnd_Array1OfSphere) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfSphere_ctor_array1ofsphere(theOther)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfSphere_to_owned(self)
-    }
-
-    #[doc = "Wrap Bnd_HArray1OfSphere in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBndHArray1OfSphere> {
-        ffi::HArray1OfSphere_to_handle(obj)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::HArray1OfSphere_get_type_name()
-    }
-}
-pub use ffi::Sphere;
-impl Sphere {
-    #[doc = "Empty constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Sphere_ctor()
-    }
-
-    #[doc = "Constructor of a definite sphere"]
-    pub fn new_xyz_real_int2(
-        theCntr: &ffi::gp_XYZ,
-        theRad: f64,
-        theU: i32,
-        theV: i32,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Sphere_ctor_xyz_real_int2(theCntr, theRad, theU, theV)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::Sphere_to_owned(self)
-    }
 }

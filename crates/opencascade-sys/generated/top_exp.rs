@@ -11,49 +11,77 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Explorer;
+impl Explorer {
+    #[doc = "Creates an empty explorer, becomes useful after Init."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Explorer_ctor()
+    }
+}
+pub use ffi::TopExp;
+impl TopExp {
+    #[doc = "Stores in the map <M> all  the sub-shapes of <S>. - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S."]
+    pub fn map_shapes_shape_indexedmapofshape_bool2(
+        S: &ffi::TopoDS_Shape,
+        M: std::pin::Pin<&mut ffi::TopTools_IndexedMapOfShape>,
+        cumOri: bool,
+        cumLoc: bool,
+    ) {
+        ffi::TopExp_map_shapes_shape_indexedmapofshape_bool2(S, M, cumOri, cumLoc)
+    }
+
+    #[doc = "Stores in the map <M> all  the sub-shapes of <S>. - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S."]
+    pub fn map_shapes_shape_mapofshape_bool2(
+        S: &ffi::TopoDS_Shape,
+        M: std::pin::Pin<&mut ffi::TopTools_MapOfShape>,
+        cumOri: bool,
+        cumLoc: bool,
+    ) {
+        ffi::TopExp_map_shapes_shape_mapofshape_bool2(S, M, cumOri, cumLoc)
+    }
+
+    #[doc = "Returns the Vertex of orientation FORWARD in E. If there is none returns a Null Shape. CumOri = True : taking account the edge orientation"]
+    pub fn first_vertex(E: &ffi::TopoDS_Edge, CumOri: bool) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
+        ffi::TopExp_first_vertex(E, CumOri)
+    }
+
+    #[doc = "Returns the Vertex of orientation REVERSED in E. If there is none returns a Null Shape. CumOri = True : taking account the edge orientation"]
+    pub fn last_vertex(E: &ffi::TopoDS_Edge, CumOri: bool) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
+        ffi::TopExp_last_vertex(E, CumOri)
+    }
+
+    #[doc = "Returns in Vfirst, Vlast the  FORWARD and REVERSED vertices of the edge <E>. May be null shapes. CumOri = True : taking account the edge orientation"]
+    pub fn vertices_edge_vertex2_bool(
+        E: &ffi::TopoDS_Edge,
+        Vfirst: std::pin::Pin<&mut ffi::TopoDS_Vertex>,
+        Vlast: std::pin::Pin<&mut ffi::TopoDS_Vertex>,
+        CumOri: bool,
+    ) {
+        ffi::TopExp_vertices_edge_vertex2_bool(E, Vfirst, Vlast, CumOri)
+    }
+
+    #[doc = "Returns  in  Vfirst,  Vlast   the first   and last vertices of the open wire <W>. May be null shapes. if   <W>  is closed Vfirst and Vlast  are a same vertex on <W>. if <W> is no manifold. VFirst and VLast are null shapes."]
+    pub fn vertices_wire_vertex2(
+        W: &ffi::TopoDS_Wire,
+        Vfirst: std::pin::Pin<&mut ffi::TopoDS_Vertex>,
+        Vlast: std::pin::Pin<&mut ffi::TopoDS_Vertex>,
+    ) {
+        ffi::TopExp_vertices_wire_vertex2(W, Vfirst, Vlast)
+    }
+
+    #[doc = "Finds   the  vertex <V> common   to  the two edges <E1,E2>, returns True if this vertex exists. Warning: <V> has sense only if the value <True> is returned"]
+    pub fn common_vertex(
+        E1: &ffi::TopoDS_Edge,
+        E2: &ffi::TopoDS_Edge,
+        V: std::pin::Pin<&mut ffi::TopoDS_Vertex>,
+    ) -> bool {
+        ffi::TopExp_common_vertex(E1, E2, V)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_top_exp.hxx");
-        #[doc = "TopAbs from top_abs module"]
-        type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape"]
-        type TopTools_IndexedDataMapOfShapeListOfShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_IndexedMapOfShape"]
-        type TopTools_IndexedMapOfShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_MapOfShape"]
-        type TopTools_MapOfShape;
         #[doc = " ======================== TopExp_Explorer ========================"]
         #[doc = "/// **Source:** `TopExp_Explorer.hxx` - `TopExp_Explorer`"]
         #[doc = ""]
@@ -141,74 +169,46 @@ pub(crate) mod ffi {
             E2: &TopoDS_Edge,
             V: Pin<&mut TopoDS_Vertex>,
         ) -> bool;
+        #[doc = "TopAbs from top_abs module"]
+        type TopAbs = crate::top_abs::ffi::TopAbs;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape"]
+        type TopTools_IndexedDataMapOfShapeListOfShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_IndexedMapOfShape"]
+        type TopTools_IndexedMapOfShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_MapOfShape"]
+        type TopTools_MapOfShape;
     }
     impl UniquePtr<Explorer> {}
     impl UniquePtr<TopExp> {}
-}
-pub use ffi::Explorer;
-impl Explorer {
-    #[doc = "Creates an empty explorer, becomes useful after Init."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Explorer_ctor()
-    }
-}
-pub use ffi::TopExp;
-impl TopExp {
-    #[doc = "Stores in the map <M> all  the sub-shapes of <S>. - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S."]
-    pub fn map_shapes_shape_indexedmapofshape_bool2(
-        S: &ffi::TopoDS_Shape,
-        M: std::pin::Pin<&mut ffi::TopTools_IndexedMapOfShape>,
-        cumOri: bool,
-        cumLoc: bool,
-    ) {
-        ffi::TopExp_map_shapes_shape_indexedmapofshape_bool2(S, M, cumOri, cumLoc)
-    }
-
-    #[doc = "Stores in the map <M> all  the sub-shapes of <S>. - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S."]
-    pub fn map_shapes_shape_mapofshape_bool2(
-        S: &ffi::TopoDS_Shape,
-        M: std::pin::Pin<&mut ffi::TopTools_MapOfShape>,
-        cumOri: bool,
-        cumLoc: bool,
-    ) {
-        ffi::TopExp_map_shapes_shape_mapofshape_bool2(S, M, cumOri, cumLoc)
-    }
-
-    #[doc = "Returns the Vertex of orientation FORWARD in E. If there is none returns a Null Shape. CumOri = True : taking account the edge orientation"]
-    pub fn first_vertex(E: &ffi::TopoDS_Edge, CumOri: bool) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
-        ffi::TopExp_first_vertex(E, CumOri)
-    }
-
-    #[doc = "Returns the Vertex of orientation REVERSED in E. If there is none returns a Null Shape. CumOri = True : taking account the edge orientation"]
-    pub fn last_vertex(E: &ffi::TopoDS_Edge, CumOri: bool) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
-        ffi::TopExp_last_vertex(E, CumOri)
-    }
-
-    #[doc = "Returns in Vfirst, Vlast the  FORWARD and REVERSED vertices of the edge <E>. May be null shapes. CumOri = True : taking account the edge orientation"]
-    pub fn vertices_edge_vertex2_bool(
-        E: &ffi::TopoDS_Edge,
-        Vfirst: std::pin::Pin<&mut ffi::TopoDS_Vertex>,
-        Vlast: std::pin::Pin<&mut ffi::TopoDS_Vertex>,
-        CumOri: bool,
-    ) {
-        ffi::TopExp_vertices_edge_vertex2_bool(E, Vfirst, Vlast, CumOri)
-    }
-
-    #[doc = "Returns  in  Vfirst,  Vlast   the first   and last vertices of the open wire <W>. May be null shapes. if   <W>  is closed Vfirst and Vlast  are a same vertex on <W>. if <W> is no manifold. VFirst and VLast are null shapes."]
-    pub fn vertices_wire_vertex2(
-        W: &ffi::TopoDS_Wire,
-        Vfirst: std::pin::Pin<&mut ffi::TopoDS_Vertex>,
-        Vlast: std::pin::Pin<&mut ffi::TopoDS_Vertex>,
-    ) {
-        ffi::TopExp_vertices_wire_vertex2(W, Vfirst, Vlast)
-    }
-
-    #[doc = "Finds   the  vertex <V> common   to  the two edges <E1,E2>, returns True if this vertex exists. Warning: <V> has sense only if the value <True> is returned"]
-    pub fn common_vertex(
-        E1: &ffi::TopoDS_Edge,
-        E2: &ffi::TopoDS_Edge,
-        V: std::pin::Pin<&mut ffi::TopoDS_Vertex>,
-    ) -> bool {
-        ffi::TopExp_common_vertex(E1, E2, V)
-    }
 }

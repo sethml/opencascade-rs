@@ -10,145 +10,81 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Reader;
+impl Reader {
+    #[doc = "Creates a Reader from scratch (creates an empty WorkSession) A WorkSession or a Controller must be provided before running"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Reader_ctor()
+    }
+
+    #[doc = "Creates a Reader from scratch, with a norm name which identifies a Controller"]
+    pub fn new_charptr(norm: &str) -> cxx::UniquePtr<Self> {
+        ffi::Reader_ctor_charptr(norm)
+    }
+
+    #[doc = "Creates a Reader from an already existing Session, with a Controller already set Virtual destructor"]
+    pub fn new_handleworksession_bool(
+        WS: &ffi::HandleXSControlWorkSession,
+        scratch: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Reader_ctor_handleworksession_bool(WS, scratch)
+    }
+
+    #[doc = "Sets a specific norm to <me> Returns True if done, False if <norm> is not available"]
+    pub fn set_norm(self: std::pin::Pin<&mut Self>, norm: &str) -> bool {
+        ffi::Reader_set_norm(self, norm)
+    }
+
+    #[doc = "Returns the session used in <me>"]
+    pub fn ws(&self) -> cxx::UniquePtr<ffi::HandleXSControlWorkSession> {
+        ffi::Reader_ws(self)
+    }
+
+    #[doc = "Returns the model. It can then be consulted (header, product)"]
+    pub fn model(&self) -> cxx::UniquePtr<ffi::HandleInterfaceInterfaceModel> {
+        ffi::Reader_model(self)
+    }
+
+    #[doc = "Returns a list of entities from the IGES or STEP file according to the following rules: - if first and second are empty strings, the whole file is selected. - if first is an entity number or label, the entity referred to is selected. - if first is a list of entity numbers/labels separated by commas, the entities referred to are selected, - if first is the name of a selection in the worksession and second is not defined, the list contains the standard output for that selection. - if first is the name of a selection and second is defined, the criterion defined by second is applied to the result of the first selection. A selection is an operator which computes a list of entities from a list given in input according to its type. If no list is specified, the selection computes its list of entities from the whole model. A selection can be: - A predefined selection (xst-transferrable-mode) - A filter based on a signature A Signature is an operator which returns a string from an entity according to its type. For example: - \"xst-type\" (CDL) - \"iges-level\" - \"step-type\". For example, if you wanted to select only the advanced_faces in a STEP file you would use the following code: Example Reader.GiveList(\"xst-transferrable-roots\",\"step-type(ADVANCED_FACE)\"); Warning If the value given to second is incorrect, it will simply be ignored."]
+    pub fn give_list_charptr2(
+        self: std::pin::Pin<&mut Self>,
+        first: &str,
+        second: &str,
+    ) -> cxx::UniquePtr<ffi::HandleTColStdHSequenceOfTransient> {
+        ffi::Reader_give_list_charptr2(self, first, second)
+    }
+
+    #[doc = "Computes a List of entities from the model as follows <first> being a Selection, <ent> being an entity or a list of entities (as a HSequenceOfTransient) : the standard result of this selection applied to this list if <first> is erroneous, a null handle is returned"]
+    pub fn give_list_charptr_handletransient(
+        self: std::pin::Pin<&mut Self>,
+        first: &str,
+        ent: &ffi::HandleStandardTransient,
+    ) -> cxx::UniquePtr<ffi::HandleTColStdHSequenceOfTransient> {
+        ffi::Reader_give_list_charptr_handletransient(self, first, ent)
+    }
+
+    #[doc = "Returns an IGES or STEP root entity for translation. The entity is identified by its rank in a list."]
+    pub fn root_for_transfer(
+        self: std::pin::Pin<&mut Self>,
+        num: i32,
+    ) -> cxx::UniquePtr<ffi::HandleStandardTransient> {
+        ffi::Reader_root_for_transfer(self, num)
+    }
+
+    #[doc = "Returns the shape resulting from a translation and identified by the rank num. num equals 1 by default. In other words, the first shape resulting from the translation is returned."]
+    pub fn shape(&self, num: i32) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Reader_shape(self, num)
+    }
+
+    #[doc = "Returns all of the results in a single shape which is: - a null shape if there are no results, - a shape if there is one result, - a compound containing the resulting shapes if there are more than one."]
+    pub fn one_shape(&self) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Reader_one_shape(self)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_xs_control.hxx");
-        #[doc = "GeneralLib from interface module"]
-        type Interface_GeneralLib = crate::interface::ffi::GeneralLib;
-        #[doc = "Message from message module"]
-        type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
-        type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
-        type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "ShapeProcessor from xs_algo module"]
-        type XSAlgo_ShapeProcessor = crate::xs_algo::ffi::ShapeProcessor;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "DE_ShapeFixParameters"]
-        type DE_ShapeFixParameters;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Interface_InterfaceModel"]
-        type Interface_InterfaceModel;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "XSControl_WorkSession"]
-        type XSControl_WorkSession;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleInterfaceInterfaceModel"]
-        type HandleInterfaceInterfaceModel;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardTransient"]
-        type HandleStandardTransient;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHSequenceOfTransient"]
-        type HandleTColStdHSequenceOfTransient;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleXSControlWorkSession"]
-        type HandleXSControlWorkSession;
         #[doc = " ======================== XSControl_Reader ========================"]
         #[doc = "/// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader`"]
         #[doc = ""]
@@ -263,77 +199,143 @@ pub(crate) mod ffi {
         #[doc = "Returns all of the results in a single shape which is: - a null shape if there are no results, - a shape if there is one result, - a compound containing the resulting shapes if there are more than one."]
         #[cxx_name = "XSControl_Reader_OneShape"]
         fn Reader_one_shape(self_: &Reader) -> UniquePtr<TopoDS_Shape>;
+        #[doc = "GeneralLib from interface module"]
+        type Interface_GeneralLib = crate::interface::ffi::GeneralLib;
+        #[doc = "Message from message module"]
+        type Message = crate::message::ffi::Message;
+        #[doc = "Alert from message module"]
+        type Message_Alert = crate::message::ffi::Alert;
+        #[doc = "AlertExtended from message module"]
+        type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HSequenceOfInteger from t_col_std module"]
+        type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "ShapeProcessor from xs_algo module"]
+        type XSAlgo_ShapeProcessor = crate::xs_algo::ffi::ShapeProcessor;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "DE_ShapeFixParameters"]
+        type DE_ShapeFixParameters;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Interface_InterfaceModel"]
+        type Interface_InterfaceModel;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "XSControl_WorkSession"]
+        type XSControl_WorkSession;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleInterfaceInterfaceModel"]
+        type HandleInterfaceInterfaceModel;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardTransient"]
+        type HandleStandardTransient;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColStdHSequenceOfTransient"]
+        type HandleTColStdHSequenceOfTransient;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleXSControlWorkSession"]
+        type HandleXSControlWorkSession;
     }
     impl UniquePtr<Reader> {}
-}
-pub use ffi::Reader;
-impl Reader {
-    #[doc = "Creates a Reader from scratch (creates an empty WorkSession) A WorkSession or a Controller must be provided before running"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Reader_ctor()
-    }
-
-    #[doc = "Creates a Reader from scratch, with a norm name which identifies a Controller"]
-    pub fn new_charptr(norm: &str) -> cxx::UniquePtr<Self> {
-        ffi::Reader_ctor_charptr(norm)
-    }
-
-    #[doc = "Creates a Reader from an already existing Session, with a Controller already set Virtual destructor"]
-    pub fn new_handleworksession_bool(
-        WS: &ffi::HandleXSControlWorkSession,
-        scratch: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Reader_ctor_handleworksession_bool(WS, scratch)
-    }
-
-    #[doc = "Sets a specific norm to <me> Returns True if done, False if <norm> is not available"]
-    pub fn set_norm(self: std::pin::Pin<&mut Self>, norm: &str) -> bool {
-        ffi::Reader_set_norm(self, norm)
-    }
-
-    #[doc = "Returns the session used in <me>"]
-    pub fn ws(&self) -> cxx::UniquePtr<ffi::HandleXSControlWorkSession> {
-        ffi::Reader_ws(self)
-    }
-
-    #[doc = "Returns the model. It can then be consulted (header, product)"]
-    pub fn model(&self) -> cxx::UniquePtr<ffi::HandleInterfaceInterfaceModel> {
-        ffi::Reader_model(self)
-    }
-
-    #[doc = "Returns a list of entities from the IGES or STEP file according to the following rules: - if first and second are empty strings, the whole file is selected. - if first is an entity number or label, the entity referred to is selected. - if first is a list of entity numbers/labels separated by commas, the entities referred to are selected, - if first is the name of a selection in the worksession and second is not defined, the list contains the standard output for that selection. - if first is the name of a selection and second is defined, the criterion defined by second is applied to the result of the first selection. A selection is an operator which computes a list of entities from a list given in input according to its type. If no list is specified, the selection computes its list of entities from the whole model. A selection can be: - A predefined selection (xst-transferrable-mode) - A filter based on a signature A Signature is an operator which returns a string from an entity according to its type. For example: - \"xst-type\" (CDL) - \"iges-level\" - \"step-type\". For example, if you wanted to select only the advanced_faces in a STEP file you would use the following code: Example Reader.GiveList(\"xst-transferrable-roots\",\"step-type(ADVANCED_FACE)\"); Warning If the value given to second is incorrect, it will simply be ignored."]
-    pub fn give_list_charptr2(
-        self: std::pin::Pin<&mut Self>,
-        first: &str,
-        second: &str,
-    ) -> cxx::UniquePtr<ffi::HandleTColStdHSequenceOfTransient> {
-        ffi::Reader_give_list_charptr2(self, first, second)
-    }
-
-    #[doc = "Computes a List of entities from the model as follows <first> being a Selection, <ent> being an entity or a list of entities (as a HSequenceOfTransient) : the standard result of this selection applied to this list if <first> is erroneous, a null handle is returned"]
-    pub fn give_list_charptr_handletransient(
-        self: std::pin::Pin<&mut Self>,
-        first: &str,
-        ent: &ffi::HandleStandardTransient,
-    ) -> cxx::UniquePtr<ffi::HandleTColStdHSequenceOfTransient> {
-        ffi::Reader_give_list_charptr_handletransient(self, first, ent)
-    }
-
-    #[doc = "Returns an IGES or STEP root entity for translation. The entity is identified by its rank in a list."]
-    pub fn root_for_transfer(
-        self: std::pin::Pin<&mut Self>,
-        num: i32,
-    ) -> cxx::UniquePtr<ffi::HandleStandardTransient> {
-        ffi::Reader_root_for_transfer(self, num)
-    }
-
-    #[doc = "Returns the shape resulting from a translation and identified by the rank num. num equals 1 by default. In other words, the first shape resulting from the translation is returned."]
-    pub fn shape(&self, num: i32) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Reader_shape(self, num)
-    }
-
-    #[doc = "Returns all of the results in a single shape which is: - a null shape if there are no results, - a shape if there is one result, - a compound containing the resulting shapes if there are more than one."]
-    pub fn one_shape(&self) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Reader_one_shape(self)
-    }
 }

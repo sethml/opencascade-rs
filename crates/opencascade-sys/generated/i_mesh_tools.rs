@@ -14,118 +14,78 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Context;
+impl Context {
+    #[doc = "Constructor."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Context_ctor()
+    }
+
+    #[doc = "Upcast to IMeshData_Shape"]
+    pub fn as_i_mesh_data_shape(&self) -> &crate::i_mesh_data::Shape {
+        ffi::context_as_i_mesh_data_shape(self)
+    }
+
+    #[doc = "Upcast to IMeshData_Shape (mutable)"]
+    pub fn as_i_mesh_data_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::i_mesh_data::Shape> {
+        ffi::context_as_i_mesh_data_shape_mut(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Context_get_type_name()
+    }
+}
+pub use ffi::ModelBuilder;
+impl ModelBuilder {
+    #[doc = "Upcast to Message_Algorithm"]
+    pub fn as_message_algorithm(&self) -> &crate::message::Algorithm {
+        ffi::model_builder_as_message_algorithm(self)
+    }
+
+    #[doc = "Upcast to Message_Algorithm (mutable)"]
+    pub fn as_message_algorithm_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::message::Algorithm> {
+        ffi::model_builder_as_message_algorithm_mut(self)
+    }
+
+    #[doc = "Exceptions protected method to create discrete model for the given shape. Returns nullptr in case of failure."]
+    pub fn perform(
+        self: std::pin::Pin<&mut Self>,
+        theShape: &ffi::TopoDS_Shape,
+        theParameters: &ffi::Parameters,
+    ) -> cxx::UniquePtr<ffi::HandleIMeshDataModel> {
+        ffi::ModelBuilder_perform(self, theShape, theParameters)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::ModelBuilder_get_type_name()
+    }
+}
+pub use ffi::Parameters;
+impl Parameters {
+    #[doc = "Default constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Parameters_ctor()
+    }
+
+    #[doc = "Returns factor used to compute default value of MinSize (minimum mesh edge length) from deflection"]
+    pub fn rel_min_size() -> f64 {
+        ffi::Parameters_rel_min_size()
+    }
+}
+pub use ffi::ModelAlgo;
+impl ModelAlgo {
+    pub fn get_type_name() -> String {
+        ffi::ModelAlgo_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_i_mesh_tools.hxx");
-        #[doc = "Model from i_mesh_data module"]
-        type IMeshData_Model = crate::i_mesh_data::ffi::Model;
-        #[doc = "Shape from i_mesh_data module"]
-        type IMeshData_Shape = crate::i_mesh_data::ffi::Shape;
-        #[doc = "Message from message module"]
-        type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
-        type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
-        type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIMeshDataModel"]
-        type HandleIMeshDataModel;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIMeshToolsModelAlgo"]
-        type HandleIMeshToolsModelAlgo;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIMeshToolsModelBuilder"]
-        type HandleIMeshToolsModelBuilder;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
         #[doc = " ======================== IMeshTools_Context ========================"]
         #[doc = "/// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context`"]
         #[doc = ""]
@@ -273,77 +233,117 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &ModelAlgo) -> &HandleStandardType;
         #[cxx_name = "IMeshTools_ModelAlgo_get_type_name"]
         fn ModelAlgo_get_type_name() -> String;
+        #[doc = "Model from i_mesh_data module"]
+        type IMeshData_Model = crate::i_mesh_data::ffi::Model;
+        #[doc = "Shape from i_mesh_data module"]
+        type IMeshData_Shape = crate::i_mesh_data::ffi::Shape;
+        #[doc = "Message from message module"]
+        type Message = crate::message::ffi::Message;
+        #[doc = "Alert from message module"]
+        type Message_Alert = crate::message::ffi::Alert;
+        #[doc = "AlertExtended from message module"]
+        type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleIMeshDataModel"]
+        type HandleIMeshDataModel;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleIMeshToolsModelAlgo"]
+        type HandleIMeshToolsModelAlgo;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleIMeshToolsModelBuilder"]
+        type HandleIMeshToolsModelBuilder;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
     }
     impl UniquePtr<Context> {}
     impl UniquePtr<ModelBuilder> {}
     impl UniquePtr<Parameters> {}
     impl UniquePtr<ModelAlgo> {}
-}
-pub use ffi::Context;
-impl Context {
-    #[doc = "Constructor."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Context_ctor()
-    }
-
-    #[doc = "Upcast to IMeshData_Shape"]
-    pub fn as_i_mesh_data_shape(&self) -> &crate::i_mesh_data::Shape {
-        ffi::context_as_i_mesh_data_shape(self)
-    }
-
-    #[doc = "Upcast to IMeshData_Shape (mutable)"]
-    pub fn as_i_mesh_data_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::i_mesh_data::Shape> {
-        ffi::context_as_i_mesh_data_shape_mut(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Context_get_type_name()
-    }
-}
-pub use ffi::ModelBuilder;
-impl ModelBuilder {
-    #[doc = "Upcast to Message_Algorithm"]
-    pub fn as_message_algorithm(&self) -> &crate::message::Algorithm {
-        ffi::model_builder_as_message_algorithm(self)
-    }
-
-    #[doc = "Upcast to Message_Algorithm (mutable)"]
-    pub fn as_message_algorithm_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::message::Algorithm> {
-        ffi::model_builder_as_message_algorithm_mut(self)
-    }
-
-    #[doc = "Exceptions protected method to create discrete model for the given shape. Returns nullptr in case of failure."]
-    pub fn perform(
-        self: std::pin::Pin<&mut Self>,
-        theShape: &ffi::TopoDS_Shape,
-        theParameters: &ffi::Parameters,
-    ) -> cxx::UniquePtr<ffi::HandleIMeshDataModel> {
-        ffi::ModelBuilder_perform(self, theShape, theParameters)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::ModelBuilder_get_type_name()
-    }
-}
-pub use ffi::Parameters;
-impl Parameters {
-    #[doc = "Default constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Parameters_ctor()
-    }
-
-    #[doc = "Returns factor used to compute default value of MinSize (minimum mesh edge length) from deflection"]
-    pub fn rel_min_size() -> f64 {
-        ffi::Parameters_rel_min_size()
-    }
-}
-pub use ffi::ModelAlgo;
-impl ModelAlgo {
-    pub fn get_type_name() -> String {
-        ffi::ModelAlgo_get_type_name()
-    }
 }

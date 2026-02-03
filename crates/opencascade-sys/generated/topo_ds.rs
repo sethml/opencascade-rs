@@ -22,64 +22,269 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::{
+    comp_solid, comp_solid_mut, compound, compound_mut, edge, edge_mut, face, face_mut, shell,
+    shell_mut, solid, solid_mut, vertex, vertex_mut, wire, wire_mut, Shape,
+};
+impl Shape {
+    #[doc = "Creates a NULL Shape referring to nothing."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Shape_ctor()
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::Shape_to_owned(self)
+    }
+
+    #[doc = "Returns a  shape  similar to <me> with the local coordinate system set to <Loc>. @param theLoc the new local coordinate system. @param theRaiseExc flag to raise exception in case of transformation with scale or negative. @return the located shape."]
+    pub fn located(
+        &self,
+        theLoc: &ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<ffi::Shape> {
+        ffi::Shape_located(self, theLoc, theRaiseExc)
+    }
+
+    #[doc = "Returns a shape similar to <me> with a location multiplied by thePosition. @param thePosition the transformation to apply. @param theRaiseExc flag to raise exception in case of transformation with scale or negative. @return the moved shape."]
+    pub fn moved(
+        &self,
+        thePosition: &ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> cxx::UniquePtr<ffi::Shape> {
+        ffi::Shape_moved(self, thePosition, theRaiseExc)
+    }
+
+    #[doc = "Returns    a shape  similar    to  <me>  with  the orientation  reversed, using  the   Reverse method from the TopAbs package."]
+    pub fn reversed(&self) -> cxx::UniquePtr<ffi::Shape> {
+        ffi::Shape_reversed(self)
+    }
+
+    #[doc = "Returns  a   shape  similar  to   <me>   with  the orientation complemented,  using   the  Complement method from the TopAbs package."]
+    pub fn complemented(&self) -> cxx::UniquePtr<ffi::Shape> {
+        ffi::Shape_complemented(self)
+    }
+
+    #[doc = "Returns a new Shape with the  same Orientation and Location and  a new TShape  with the same geometry and no sub-shapes."]
+    pub fn empty_copied(&self) -> cxx::UniquePtr<ffi::Shape> {
+        ffi::Shape_empty_copied(self)
+    }
+}
+pub use ffi::Vertex;
+impl Vertex {
+    #[doc = "Undefined Vertex."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Vertex_ctor()
+    }
+
+    #[doc = "Upcast to TopoDS_Shape"]
+    pub fn as_shape(&self) -> &Shape {
+        ffi::vertex_as_shape(self)
+    }
+
+    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
+        ffi::vertex_as_shape_mut(self)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::Vertex_to_owned(self)
+    }
+}
+pub use ffi::Edge;
+impl Edge {
+    #[doc = "Undefined Edge."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Edge_ctor()
+    }
+
+    #[doc = "Upcast to TopoDS_Shape"]
+    pub fn as_shape(&self) -> &Shape {
+        ffi::edge_as_shape(self)
+    }
+
+    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
+        ffi::edge_as_shape_mut(self)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::Edge_to_owned(self)
+    }
+}
+pub use ffi::Wire;
+impl Wire {
+    #[doc = "Undefined Wire."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Wire_ctor()
+    }
+
+    #[doc = "Upcast to TopoDS_Shape"]
+    pub fn as_shape(&self) -> &Shape {
+        ffi::wire_as_shape(self)
+    }
+
+    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
+        ffi::wire_as_shape_mut(self)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::Wire_to_owned(self)
+    }
+}
+pub use ffi::Face;
+impl Face {
+    #[doc = "Undefined Face."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Face_ctor()
+    }
+
+    #[doc = "Upcast to TopoDS_Shape"]
+    pub fn as_shape(&self) -> &Shape {
+        ffi::face_as_shape(self)
+    }
+
+    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
+        ffi::face_as_shape_mut(self)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::Face_to_owned(self)
+    }
+}
+pub use ffi::Shell;
+impl Shell {
+    #[doc = "Constructs an Undefined Shell."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Shell_ctor()
+    }
+
+    #[doc = "Upcast to TopoDS_Shape"]
+    pub fn as_shape(&self) -> &Shape {
+        ffi::shell_as_shape(self)
+    }
+
+    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
+        ffi::shell_as_shape_mut(self)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::Shell_to_owned(self)
+    }
+}
+pub use ffi::Solid;
+impl Solid {
+    #[doc = "Constructs an Undefined Solid."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Solid_ctor()
+    }
+
+    #[doc = "Upcast to TopoDS_Shape"]
+    pub fn as_shape(&self) -> &Shape {
+        ffi::solid_as_shape(self)
+    }
+
+    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
+        ffi::solid_as_shape_mut(self)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::Solid_to_owned(self)
+    }
+}
+pub use ffi::Compound;
+impl Compound {
+    #[doc = "Constructs an Undefined Compound."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Compound_ctor()
+    }
+
+    #[doc = "Upcast to TopoDS_Shape"]
+    pub fn as_shape(&self) -> &Shape {
+        ffi::compound_as_shape(self)
+    }
+
+    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
+        ffi::compound_as_shape_mut(self)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::Compound_to_owned(self)
+    }
+}
+pub use ffi::CompSolid;
+impl CompSolid {
+    #[doc = "Constructs an Undefined CompSolid."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::CompSolid_ctor()
+    }
+
+    #[doc = "Upcast to TopoDS_Shape"]
+    pub fn as_shape(&self) -> &Shape {
+        ffi::comp_solid_as_shape(self)
+    }
+
+    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
+        ffi::comp_solid_as_shape_mut(self)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::CompSolid_to_owned(self)
+    }
+}
+pub use ffi::Builder;
+impl Builder {
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::Builder_to_owned(self)
+    }
+}
+pub use ffi::Iterator;
+impl Iterator {
+    #[doc = "Creates an empty Iterator."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Iterator_ctor()
+    }
+
+    #[doc = "Creates an Iterator on <S> sub-shapes. Note: - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S."]
+    pub fn new_shape_bool2(S: &ffi::Shape, cumOri: bool, cumLoc: bool) -> cxx::UniquePtr<Self> {
+        ffi::Iterator_ctor_shape_bool2(S, cumOri, cumLoc)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::Iterator_to_owned(self)
+    }
+}
+pub use ffi::TShape;
+impl TShape {
+    #[doc = "Returns a copy  of the  TShape  with no sub-shapes."]
+    pub fn empty_copy(&self) -> cxx::UniquePtr<ffi::HandleTopoDSTShape> {
+        ffi::TShape_empty_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::TShape_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_topo_ds.hxx");
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "TopAbs from top_abs module"]
-        type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "Location from top_loc module"]
-        type TopLoc_Location = crate::top_loc::ffi::Location;
-        #[doc = "SListOfItemLocation from top_loc module"]
-        type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTopoDSTShape"]
-        type HandleTopoDSTShape;
         #[doc = " ======================== TopoDS_Shape ========================"]
         #[doc = "/// **Source:** `TopoDS_Shape.hxx` - `TopoDS_Shape`"]
         #[doc = ""]
@@ -546,6 +751,60 @@ pub(crate) mod ffi {
         #[doc = "Casts shape theShape to the more specialized return type, Compound. @param theShape the shape to be cast @return the casted shape as TopoDS_Compound @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
         #[cxx_name = "TopoDS_fn_Compound_mut"]
         fn compound_mut(theShape: Pin<&mut Shape>) -> Pin<&mut Compound>;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "TopAbs from top_abs module"]
+        type TopAbs = crate::top_abs::ffi::TopAbs;
+        #[doc = "Location from top_loc module"]
+        type TopLoc_Location = crate::top_loc::ffi::Location;
+        #[doc = "SListOfItemLocation from top_loc module"]
+        type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTopoDSTShape"]
+        type HandleTopoDSTShape;
     }
     impl UniquePtr<Shape> {}
     impl UniquePtr<Vertex> {}
@@ -559,263 +818,4 @@ pub(crate) mod ffi {
     impl UniquePtr<Builder> {}
     impl UniquePtr<Iterator> {}
     impl UniquePtr<TShape> {}
-}
-pub use ffi::{
-    comp_solid, comp_solid_mut, compound, compound_mut, edge, edge_mut, face, face_mut, shell,
-    shell_mut, solid, solid_mut, vertex, vertex_mut, wire, wire_mut, Shape,
-};
-impl Shape {
-    #[doc = "Creates a NULL Shape referring to nothing."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Shape_ctor()
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::Shape_to_owned(self)
-    }
-
-    #[doc = "Returns a  shape  similar to <me> with the local coordinate system set to <Loc>. @param theLoc the new local coordinate system. @param theRaiseExc flag to raise exception in case of transformation with scale or negative. @return the located shape."]
-    pub fn located(
-        &self,
-        theLoc: &ffi::TopLoc_Location,
-        theRaiseExc: bool,
-    ) -> cxx::UniquePtr<ffi::Shape> {
-        ffi::Shape_located(self, theLoc, theRaiseExc)
-    }
-
-    #[doc = "Returns a shape similar to <me> with a location multiplied by thePosition. @param thePosition the transformation to apply. @param theRaiseExc flag to raise exception in case of transformation with scale or negative. @return the moved shape."]
-    pub fn moved(
-        &self,
-        thePosition: &ffi::TopLoc_Location,
-        theRaiseExc: bool,
-    ) -> cxx::UniquePtr<ffi::Shape> {
-        ffi::Shape_moved(self, thePosition, theRaiseExc)
-    }
-
-    #[doc = "Returns    a shape  similar    to  <me>  with  the orientation  reversed, using  the   Reverse method from the TopAbs package."]
-    pub fn reversed(&self) -> cxx::UniquePtr<ffi::Shape> {
-        ffi::Shape_reversed(self)
-    }
-
-    #[doc = "Returns  a   shape  similar  to   <me>   with  the orientation complemented,  using   the  Complement method from the TopAbs package."]
-    pub fn complemented(&self) -> cxx::UniquePtr<ffi::Shape> {
-        ffi::Shape_complemented(self)
-    }
-
-    #[doc = "Returns a new Shape with the  same Orientation and Location and  a new TShape  with the same geometry and no sub-shapes."]
-    pub fn empty_copied(&self) -> cxx::UniquePtr<ffi::Shape> {
-        ffi::Shape_empty_copied(self)
-    }
-}
-pub use ffi::Vertex;
-impl Vertex {
-    #[doc = "Undefined Vertex."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Vertex_ctor()
-    }
-
-    #[doc = "Upcast to TopoDS_Shape"]
-    pub fn as_shape(&self) -> &Shape {
-        ffi::vertex_as_shape(self)
-    }
-
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
-    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
-        ffi::vertex_as_shape_mut(self)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::Vertex_to_owned(self)
-    }
-}
-pub use ffi::Edge;
-impl Edge {
-    #[doc = "Undefined Edge."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Edge_ctor()
-    }
-
-    #[doc = "Upcast to TopoDS_Shape"]
-    pub fn as_shape(&self) -> &Shape {
-        ffi::edge_as_shape(self)
-    }
-
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
-    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
-        ffi::edge_as_shape_mut(self)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::Edge_to_owned(self)
-    }
-}
-pub use ffi::Wire;
-impl Wire {
-    #[doc = "Undefined Wire."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Wire_ctor()
-    }
-
-    #[doc = "Upcast to TopoDS_Shape"]
-    pub fn as_shape(&self) -> &Shape {
-        ffi::wire_as_shape(self)
-    }
-
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
-    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
-        ffi::wire_as_shape_mut(self)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::Wire_to_owned(self)
-    }
-}
-pub use ffi::Face;
-impl Face {
-    #[doc = "Undefined Face."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Face_ctor()
-    }
-
-    #[doc = "Upcast to TopoDS_Shape"]
-    pub fn as_shape(&self) -> &Shape {
-        ffi::face_as_shape(self)
-    }
-
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
-    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
-        ffi::face_as_shape_mut(self)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::Face_to_owned(self)
-    }
-}
-pub use ffi::Shell;
-impl Shell {
-    #[doc = "Constructs an Undefined Shell."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Shell_ctor()
-    }
-
-    #[doc = "Upcast to TopoDS_Shape"]
-    pub fn as_shape(&self) -> &Shape {
-        ffi::shell_as_shape(self)
-    }
-
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
-    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
-        ffi::shell_as_shape_mut(self)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::Shell_to_owned(self)
-    }
-}
-pub use ffi::Solid;
-impl Solid {
-    #[doc = "Constructs an Undefined Solid."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Solid_ctor()
-    }
-
-    #[doc = "Upcast to TopoDS_Shape"]
-    pub fn as_shape(&self) -> &Shape {
-        ffi::solid_as_shape(self)
-    }
-
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
-    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
-        ffi::solid_as_shape_mut(self)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::Solid_to_owned(self)
-    }
-}
-pub use ffi::Compound;
-impl Compound {
-    #[doc = "Constructs an Undefined Compound."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Compound_ctor()
-    }
-
-    #[doc = "Upcast to TopoDS_Shape"]
-    pub fn as_shape(&self) -> &Shape {
-        ffi::compound_as_shape(self)
-    }
-
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
-    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
-        ffi::compound_as_shape_mut(self)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::Compound_to_owned(self)
-    }
-}
-pub use ffi::CompSolid;
-impl CompSolid {
-    #[doc = "Constructs an Undefined CompSolid."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::CompSolid_ctor()
-    }
-
-    #[doc = "Upcast to TopoDS_Shape"]
-    pub fn as_shape(&self) -> &Shape {
-        ffi::comp_solid_as_shape(self)
-    }
-
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
-    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
-        ffi::comp_solid_as_shape_mut(self)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::CompSolid_to_owned(self)
-    }
-}
-pub use ffi::Builder;
-impl Builder {
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::Builder_to_owned(self)
-    }
-}
-pub use ffi::Iterator;
-impl Iterator {
-    #[doc = "Creates an empty Iterator."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Iterator_ctor()
-    }
-
-    #[doc = "Creates an Iterator on <S> sub-shapes. Note: - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S."]
-    pub fn new_shape_bool2(S: &ffi::Shape, cumOri: bool, cumLoc: bool) -> cxx::UniquePtr<Self> {
-        ffi::Iterator_ctor_shape_bool2(S, cumOri, cumLoc)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::Iterator_to_owned(self)
-    }
-}
-pub use ffi::TShape;
-impl TShape {
-    #[doc = "Returns a copy  of the  TShape  with no sub-shapes."]
-    pub fn empty_copy(&self) -> cxx::UniquePtr<ffi::HandleTopoDSTShape> {
-        ffi::TShape_empty_copy(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::TShape_get_type_name()
-    }
 }

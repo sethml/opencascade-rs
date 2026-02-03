@@ -86,6 +86,51 @@ inline std::unique_ptr<gp_Ax3> Bnd_OBB_Position(const Bnd_OBB& self) {
 
 
 // ========================
+// Bnd_HArray1OfSphere wrappers
+// ========================
+
+inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor() {
+    return std::make_unique<Bnd_HArray1OfSphere>();
+}
+
+inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<Bnd_HArray1OfSphere>(theLower, theUpper);
+}
+
+inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor_int2_sphere(Standard_Integer theLower, Standard_Integer theUpper, const Bnd_Sphere& theValue) {
+    return std::make_unique<Bnd_HArray1OfSphere>(theLower, theUpper, theValue);
+}
+
+inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor_sphere_int2_bool(const Bnd_Sphere& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
+    return std::make_unique<Bnd_HArray1OfSphere>(theBegin, theLower, theUpper, arg3);
+}
+
+inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor_array1ofsphere(const Bnd_Array1OfSphere& theOther) {
+    return std::make_unique<Bnd_HArray1OfSphere>(theOther);
+}
+
+inline rust::String Bnd_HArray1OfSphere_get_type_name() {
+    return rust::String(Bnd_HArray1OfSphere::get_type_name());
+}
+
+inline std::unique_ptr<HandleBndHArray1OfSphere> Bnd_HArray1OfSphere_to_handle(std::unique_ptr<Bnd_HArray1OfSphere> obj) {
+    return std::make_unique<HandleBndHArray1OfSphere>(obj.release());
+}
+
+// ========================
+// Bnd_Sphere wrappers
+// ========================
+
+inline std::unique_ptr<Bnd_Sphere> Bnd_Sphere_ctor() {
+    return std::make_unique<Bnd_Sphere>();
+}
+
+inline std::unique_ptr<Bnd_Sphere> Bnd_Sphere_ctor_xyz_real_int2(const gp_XYZ& theCntr, Standard_Real theRad, Standard_Integer theU, Standard_Integer theV) {
+    return std::make_unique<Bnd_Sphere>(theCntr, theRad, theU, theV);
+}
+
+
+// ========================
 // Bnd_Box2d wrappers
 // ========================
 
@@ -154,49 +199,4 @@ inline rust::String Bnd_HArray1OfBox_get_type_name() {
 inline std::unique_ptr<HandleBndHArray1OfBox> Bnd_HArray1OfBox_to_handle(std::unique_ptr<Bnd_HArray1OfBox> obj) {
     return std::make_unique<HandleBndHArray1OfBox>(obj.release());
 }
-
-// ========================
-// Bnd_HArray1OfSphere wrappers
-// ========================
-
-inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor() {
-    return std::make_unique<Bnd_HArray1OfSphere>();
-}
-
-inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return std::make_unique<Bnd_HArray1OfSphere>(theLower, theUpper);
-}
-
-inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor_int2_sphere(Standard_Integer theLower, Standard_Integer theUpper, const Bnd_Sphere& theValue) {
-    return std::make_unique<Bnd_HArray1OfSphere>(theLower, theUpper, theValue);
-}
-
-inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor_sphere_int2_bool(const Bnd_Sphere& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
-    return std::make_unique<Bnd_HArray1OfSphere>(theBegin, theLower, theUpper, arg3);
-}
-
-inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor_array1ofsphere(const Bnd_Array1OfSphere& theOther) {
-    return std::make_unique<Bnd_HArray1OfSphere>(theOther);
-}
-
-inline rust::String Bnd_HArray1OfSphere_get_type_name() {
-    return rust::String(Bnd_HArray1OfSphere::get_type_name());
-}
-
-inline std::unique_ptr<HandleBndHArray1OfSphere> Bnd_HArray1OfSphere_to_handle(std::unique_ptr<Bnd_HArray1OfSphere> obj) {
-    return std::make_unique<HandleBndHArray1OfSphere>(obj.release());
-}
-
-// ========================
-// Bnd_Sphere wrappers
-// ========================
-
-inline std::unique_ptr<Bnd_Sphere> Bnd_Sphere_ctor() {
-    return std::make_unique<Bnd_Sphere>();
-}
-
-inline std::unique_ptr<Bnd_Sphere> Bnd_Sphere_ctor_xyz_real_int2(const gp_XYZ& theCntr, Standard_Real theRad, Standard_Integer theU, Standard_Integer theV) {
-    return std::make_unique<Bnd_Sphere>(theCntr, theRad, theU, theV);
-}
-
 

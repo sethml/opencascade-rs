@@ -22,174 +22,1073 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Geometry;
+impl Geometry {
+    pub fn mirrored_pnt(&self, P: &ffi::gp_Pnt) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::Geometry_mirrored_pnt(self, P)
+    }
+
+    pub fn mirrored_ax1(&self, A1: &ffi::gp_Ax1) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::Geometry_mirrored_ax1(self, A1)
+    }
+
+    pub fn mirrored_ax2(&self, A2: &ffi::gp_Ax2) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::Geometry_mirrored_ax2(self, A2)
+    }
+
+    pub fn rotated(&self, A1: &ffi::gp_Ax1, Ang: f64) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::Geometry_rotated(self, A1, Ang)
+    }
+
+    pub fn scaled(&self, P: &ffi::gp_Pnt, S: f64) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::Geometry_scaled(self, P, S)
+    }
+
+    pub fn transformed(&self, T: &ffi::gp_Trsf) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::Geometry_transformed(self, T)
+    }
+
+    pub fn translated_vec(&self, V: &ffi::gp_Vec) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::Geometry_translated_vec(self, V)
+    }
+
+    pub fn translated_pnt2(
+        &self,
+        P1: &ffi::gp_Pnt,
+        P2: &ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::Geometry_translated_pnt2(self, P1, P2)
+    }
+
+    #[doc = "Creates a new object which is a copy of this geometric object."]
+    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::Geometry_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Geometry_get_type_name()
+    }
+}
+pub use ffi::Curve;
+impl Curve {
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::curve_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::curve_as_geometry_mut(self)
+    }
+
+    #[doc = "Returns a copy of <me> reversed."]
+    pub fn reversed(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::Curve_reversed(self)
+    }
+
+    #[doc = "The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the curve is not CN. Raised if the   derivative  cannot  be  computed easily. e.g. rational bspline and n > 3. Raised if N < 1."]
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::Curve_dn(self, U, N)
+    }
+
+    #[doc = "Computes the point of parameter U on <me>. If the curve is periodic  then the returned point is P(U) with U = Ustart + (U - Uend)  where Ustart and Uend are the parametric bounds of the curve. it is implemented with D0. Raised only for the \"OffsetCurve\" if it is not possible to compute the current point. For example when the first derivative on the basis curve and the offset direction are parallel."]
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::Curve_value(self, U)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Curve_get_type_name()
+    }
+}
+pub use ffi::Surface;
+impl Surface {
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::surface_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::surface_as_geometry_mut(self)
+    }
+
+    #[doc = "Reverses the U direction of parametrization of <me>. The bounds of the surface are not modified. A copy of <me> is returned."]
+    pub fn u_reversed(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
+        ffi::Surface_u_reversed(self)
+    }
+
+    #[doc = "Reverses the V direction of parametrization of <me>. The bounds of the surface are not modified. A copy of <me> is returned."]
+    pub fn v_reversed(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
+        ffi::Surface_v_reversed(self)
+    }
+
+    #[doc = "Returns a 2d transformation  used to find the  new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are  obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method returns an identity transformation It  can be redefined.  For  example on  the Plane, Cylinder, Cone, Revolved and Extruded surfaces."]
+    pub fn parametric_transformation(&self, T: &ffi::gp_Trsf) -> cxx::UniquePtr<ffi::gp_GTrsf2d> {
+        ffi::Surface_parametric_transformation(self, T)
+    }
+
+    #[doc = "Computes the U isoparametric curve."]
+    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::Surface_u_iso(self, U)
+    }
+
+    #[doc = "Computes the V isoparametric curve."]
+    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::Surface_v_iso(self, V)
+    }
+
+    #[doc = "Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Raised if the continuity of the surface is not CNu in the U direction or not CNv in the V direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0."]
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::Surface_dn(self, U, V, Nu, Nv)
+    }
+
+    #[doc = "Computes the point of parameter (U, V) on the surface. It is implemented with D0. Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point. Raised only for an \"OffsetSurface\" if it is not possible to compute the current point."]
+    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::Surface_value(self, U, V)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Surface_get_type_name()
+    }
+}
+pub use ffi::BoundedCurve;
+impl BoundedCurve {
+    #[doc = "Upcast to Geom_Curve"]
+    pub fn as_curve(&self) -> &Curve {
+        ffi::bounded_curve_as_curve(self)
+    }
+
+    #[doc = "Upcast to Geom_Curve (mutable)"]
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        ffi::bounded_curve_as_curve_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::bounded_curve_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::bounded_curve_as_geometry_mut(self)
+    }
+
+    #[doc = "Returns the end point of the curve."]
+    pub fn end_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::BoundedCurve_end_point(self)
+    }
+
+    #[doc = "Returns the start point of the curve."]
+    pub fn start_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::BoundedCurve_start_point(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::BoundedCurve_get_type_name()
+    }
+}
+pub use ffi::BoundedSurface;
+impl BoundedSurface {
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::bounded_surface_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::bounded_surface_as_geometry_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface"]
+    pub fn as_surface(&self) -> &Surface {
+        ffi::bounded_surface_as_surface(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface (mutable)"]
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        ffi::bounded_surface_as_surface_mut(self)
+    }
+
+    #[doc = "Wrap Geom_BoundedSurface in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeomBoundedSurface> {
+        ffi::BoundedSurface_to_handle(obj)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::BoundedSurface_get_type_name()
+    }
+}
+pub use ffi::ElementarySurface;
+impl ElementarySurface {
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::elementary_surface_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::elementary_surface_as_geometry_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface"]
+    pub fn as_surface(&self) -> &Surface {
+        ffi::elementary_surface_as_surface(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface (mutable)"]
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        ffi::elementary_surface_as_surface_mut(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::ElementarySurface_get_type_name()
+    }
+}
+pub use ffi::BezierCurve;
+impl BezierCurve {
+    #[doc = "Creates a non rational Bezier curve with a set of poles CurvePoles.  The weights are defaulted to all being 1. Raises ConstructionError if the number of poles is greater than MaxDegree + 1 or lower than 2."]
+    pub fn new_array1ofpnt(CurvePoles: &ffi::TColgp_Array1OfPnt) -> cxx::UniquePtr<Self> {
+        ffi::BezierCurve_ctor_array1ofpnt(CurvePoles)
+    }
+
+    #[doc = "Creates a rational Bezier curve with the set of poles CurvePoles and the set of weights  PoleWeights . If all the weights are identical the curve is considered as non rational. Raises ConstructionError if the number of poles is greater than  MaxDegree + 1 or lower than 2 or CurvePoles and CurveWeights have not the same length or one weight value is lower or equal to Resolution from package gp."]
+    pub fn new_array1ofpnt_array1ofreal(
+        CurvePoles: &ffi::TColgp_Array1OfPnt,
+        PoleWeights: &ffi::TColStd_Array1OfReal,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::BezierCurve_ctor_array1ofpnt_array1ofreal(CurvePoles, PoleWeights)
+    }
+
+    #[doc = "Upcast to Geom_BoundedCurve"]
+    pub fn as_bounded_curve(&self) -> &BoundedCurve {
+        ffi::bezier_curve_as_bounded_curve(self)
+    }
+
+    #[doc = "Upcast to Geom_BoundedCurve (mutable)"]
+    pub fn as_bounded_curve_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BoundedCurve> {
+        ffi::bezier_curve_as_bounded_curve_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Curve"]
+    pub fn as_curve(&self) -> &Curve {
+        ffi::bezier_curve_as_curve(self)
+    }
+
+    #[doc = "Upcast to Geom_Curve (mutable)"]
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        ffi::bezier_curve_as_curve_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::bezier_curve_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::bezier_curve_as_geometry_mut(self)
+    }
+
+    #[doc = "Wrap Geom_BezierCurve in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeomBezierCurve> {
+        ffi::BezierCurve_to_handle(obj)
+    }
+
+    #[doc = "For the point of parameter U of this Bezier curve, computes the vector corresponding to the Nth derivative. Note: the parameter U can be outside the bounds of the curve. Exceptions Standard_RangeError if N is less than 1."]
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::BezierCurve_dn(self, U, N)
+    }
+
+    #[doc = "Returns Value (U=0.), it is the first control point of the curve."]
+    pub fn start_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::BezierCurve_start_point(self)
+    }
+
+    #[doc = "Returns Value (U=1.), it is the last control point of the Bezier curve."]
+    pub fn end_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::BezierCurve_end_point(self)
+    }
+
+    #[doc = "Creates a new object which is a copy of this Bezier curve."]
+    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::BezierCurve_copy(self)
+    }
+
+    #[doc = "Returns the value of the maximum polynomial degree of any Geom_BezierCurve curve. This value is 25."]
+    pub fn max_degree() -> i32 {
+        ffi::BezierCurve_max_degree()
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::BezierCurve_get_type_name()
+    }
+}
+pub use ffi::BezierSurface;
+impl BezierSurface {
+    #[doc = "Creates a non-rational Bezier surface with a set of poles. Control points representation : SPoles(Uorigin,Vorigin) ...................SPoles(Uorigin,Vend) .                                     . .                                     . SPoles(Uend, Vorigin) .....................SPoles(Uend, Vend) For the double array the row indice corresponds to the parametric U direction and the columns indice corresponds to the parametric V direction. The weights are defaulted to all being 1. Raised if the number of poles of the surface is lower than 2 or greater than MaxDegree + 1 in one of the two directions U or V."]
+    pub fn new_array2ofpnt(SurfacePoles: &ffi::TColgp_Array2OfPnt) -> cxx::UniquePtr<Self> {
+        ffi::BezierSurface_ctor_array2ofpnt(SurfacePoles)
+    }
+
+    #[doc = "---Purpose Creates a rational Bezier surface with a set of poles and a set of weights. For the double array the row indice corresponds to the parametric U direction and the columns indice corresponds to the parametric V direction. If all the weights are identical the surface is considered as non-rational (the tolerance criterion is Resolution from package gp). Raised if SurfacePoles and PoleWeights have not the same Rowlength or have not the same ColLength. Raised if PoleWeights (i, j) <= Resolution from gp; Raised if the number of poles of the surface is lower than 2 or greater than MaxDegree + 1 in one of the two directions U or V."]
+    pub fn new_array2ofpnt_array2ofreal(
+        SurfacePoles: &ffi::TColgp_Array2OfPnt,
+        PoleWeights: &ffi::TColStd_Array2OfReal,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::BezierSurface_ctor_array2ofpnt_array2ofreal(SurfacePoles, PoleWeights)
+    }
+
+    #[doc = "Upcast to Geom_BoundedSurface"]
+    pub fn as_bounded_surface(&self) -> &BoundedSurface {
+        ffi::bezier_surface_as_bounded_surface(self)
+    }
+
+    #[doc = "Upcast to Geom_BoundedSurface (mutable)"]
+    pub fn as_bounded_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BoundedSurface> {
+        ffi::bezier_surface_as_bounded_surface_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::bezier_surface_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::bezier_surface_as_geometry_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface"]
+    pub fn as_surface(&self) -> &Surface {
+        ffi::bezier_surface_as_surface(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface (mutable)"]
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        ffi::bezier_surface_as_surface_mut(self)
+    }
+
+    #[doc = "Wrap Geom_BezierSurface in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeomBezierSurface> {
+        ffi::BezierSurface_to_handle(obj)
+    }
+
+    #[doc = "Computes the derivative of order Nu in the u parametric direction, and Nv in the v parametric direction, at the point of parameters (U, V) of this Bezier surface. Note: The parameters U and V can be outside the bounds of the surface. Exceptions Standard_RangeError if: - Nu + Nv is less than 1, or Nu or Nv is negative."]
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::BezierSurface_dn(self, U, V, Nu, Nv)
+    }
+
+    #[doc = "Computes the U isoparametric curve. For a Bezier surface the UIso curve is a Bezier curve."]
+    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::BezierSurface_u_iso(self, U)
+    }
+
+    #[doc = "Computes the V isoparametric curve. For a Bezier surface the VIso  curve is a Bezier curve."]
+    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::BezierSurface_v_iso(self, V)
+    }
+
+    #[doc = "Creates a new object which is a copy of this Bezier surface."]
+    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::BezierSurface_copy(self)
+    }
+
+    #[doc = "Returns the value of the maximum polynomial degree of a Bezier surface. This value is 25."]
+    pub fn max_degree() -> i32 {
+        ffi::BezierSurface_max_degree()
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::BezierSurface_get_type_name()
+    }
+}
+pub use ffi::BSplineCurve;
+impl BSplineCurve {
+    #[doc = "Creates a  non-rational B_spline curve   on  the basis <Knots, Multiplicities> of degree <Degree>."]
+    pub fn new_array1ofpnt_array1ofreal_array1ofinteger_int_bool(
+        Poles: &ffi::TColgp_Array1OfPnt,
+        Knots: &ffi::TColStd_Array1OfReal,
+        Multiplicities: &ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::BSplineCurve_ctor_array1ofpnt_array1ofreal_array1ofinteger_int_bool(
+            Poles,
+            Knots,
+            Multiplicities,
+            Degree,
+            Periodic,
+        )
+    }
+
+    #[doc = "Creates  a rational B_spline  curve  on the basis <Knots, Multiplicities> of degree <Degree>. Raises ConstructionError subject to the following conditions 0 < Degree <= MaxDegree. Weights.Length() == Poles.Length() Knots.Length() == Mults.Length() >= 2 Knots(i) < Knots(i+1) (Knots are increasing) 1 <= Mults(i) <= Degree On a non periodic curve the first and last multiplicities may be Degree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). On a periodic  curve the first  and  the last multicities must be the same. on non-periodic curves Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2 on periodic curves Poles.Length() == Sum(Mults(i)) except the first or last"]
+    pub fn new_array1ofpnt_array1ofreal2_array1ofinteger_int_bool2(
+        Poles: &ffi::TColgp_Array1OfPnt,
+        Weights: &ffi::TColStd_Array1OfReal,
+        Knots: &ffi::TColStd_Array1OfReal,
+        Multiplicities: &ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+        CheckRational: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::BSplineCurve_ctor_array1ofpnt_array1ofreal2_array1ofinteger_int_bool2(
+            Poles,
+            Weights,
+            Knots,
+            Multiplicities,
+            Degree,
+            Periodic,
+            CheckRational,
+        )
+    }
+
+    #[doc = "Upcast to Geom_BoundedCurve"]
+    pub fn as_bounded_curve(&self) -> &BoundedCurve {
+        ffi::b_spline_curve_as_bounded_curve(self)
+    }
+
+    #[doc = "Upcast to Geom_BoundedCurve (mutable)"]
+    pub fn as_bounded_curve_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BoundedCurve> {
+        ffi::b_spline_curve_as_bounded_curve_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Curve"]
+    pub fn as_curve(&self) -> &Curve {
+        ffi::b_spline_curve_as_curve(self)
+    }
+
+    #[doc = "Upcast to Geom_Curve (mutable)"]
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        ffi::b_spline_curve_as_curve_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::b_spline_curve_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::b_spline_curve_as_geometry_mut(self)
+    }
+
+    #[doc = "Wrap Geom_BSplineCurve in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeomBSplineCurve> {
+        ffi::BSplineCurve_to_handle(obj)
+    }
+
+    #[doc = "For the point of parameter U of this BSpline curve, computes the vector corresponding to the Nth derivative. Warning On a point where the continuity of the curve is not the one requested, this function impacts the part defined by the parameter with a value greater than U, i.e. the part of the curve to the \"right\" of the singularity. Exceptions Standard_RangeError if N is less than 1. The following functions compute the point of parameter U and the derivatives at this point on the B-spline curve arc defined between the knot FromK1 and the knot ToK2. U can be out of bounds [Knot (FromK1),  Knot (ToK2)] but for the computation we only use the definition of the curve between these two knots. This method is useful to compute local derivative, if the order of continuity of the whole curve is not greater enough.    Inside the parametric domain Knot (FromK1), Knot (ToK2) the evaluations are the same as if we consider the whole definition of the curve. Of course the evaluations are different outside this parametric domain."]
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::BSplineCurve_dn(self, U, N)
+    }
+
+    #[doc = "Raised if FromK1 = ToK2."]
+    pub fn local_value(&self, U: f64, FromK1: i32, ToK2: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::BSplineCurve_local_value(self, U, FromK1, ToK2)
+    }
+
+    #[doc = "Raised if the local continuity of the curve is not CN between the knot K1 and the knot K2. Raised if FromK1 = ToK2. Raised if N < 1."]
+    pub fn local_dn(&self, U: f64, FromK1: i32, ToK2: i32, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::BSplineCurve_local_dn(self, U, FromK1, ToK2, N)
+    }
+
+    #[doc = "Returns the last point of the curve. Warnings : The last point of the curve is different from the last pole of the curve if the multiplicity of the last knot is lower than Degree."]
+    pub fn end_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::BSplineCurve_end_point(self)
+    }
+
+    #[doc = "Returns the start point of the curve. Warnings : This point is different from the first pole of the curve if the multiplicity of the first knot is lower than Degree."]
+    pub fn start_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::BSplineCurve_start_point(self)
+    }
+
+    #[doc = "Creates a new object which is a copy of this BSpline curve."]
+    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::BSplineCurve_copy(self)
+    }
+
+    #[doc = "Returns the value of the maximum degree of the normalized B-spline basis functions in this package."]
+    pub fn max_degree() -> i32 {
+        ffi::BSplineCurve_max_degree()
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::BSplineCurve_get_type_name()
+    }
+}
+pub use ffi::BSplineSurface;
+impl BSplineSurface {
+    #[doc = "Creates  a non-rational b-spline surface (weights default value is 1.). The following conditions must be verified. 0 < UDegree <= MaxDegree. UKnots.Length() == UMults.Length() >= 2 UKnots(i) < UKnots(i+1) (Knots are increasing) 1 <= UMults(i) <= UDegree On a   non  uperiodic   surface    the  first and    last umultiplicities  may  be     UDegree+1  (this   is   even recommended if you want the curve  to start and finish on the first and last pole). On a uperiodic     surface  the first    and   the   last umultiplicities must be the same. on non-uperiodic surfaces Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2 on uperiodic surfaces Poles.ColLength() == Sum(UMults(i)) except the first or last The previous conditions for U holds  also for V, with the RowLength of the poles."]
+    pub fn new_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool2(
+        Poles: &ffi::TColgp_Array2OfPnt,
+        UKnots: &ffi::TColStd_Array1OfReal,
+        VKnots: &ffi::TColStd_Array1OfReal,
+        UMults: &ffi::TColStd_Array1OfInteger,
+        VMults: &ffi::TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        UPeriodic: bool,
+        VPeriodic: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::BSplineSurface_ctor_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool2(
+            Poles, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, VPeriodic,
+        )
+    }
+
+    #[doc = "Creates  a non-rational b-spline surface (weights default value is 1.). The following conditions must be verified. 0 < UDegree <= MaxDegree. UKnots.Length() == UMults.Length() >= 2 UKnots(i) < UKnots(i+1) (Knots are increasing) 1 <= UMults(i) <= UDegree On a   non  uperiodic   surface    the  first and    last umultiplicities  may  be     UDegree+1  (this   is   even recommended if you want the curve  to start and finish on the first and last pole). On a uperiodic     surface  the first    and   the   last umultiplicities must be the same. on non-uperiodic surfaces Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2 on uperiodic surfaces Poles.ColLength() == Sum(UMults(i)) except the first or last The previous conditions for U holds  also for V, with the RowLength of the poles."]
+    pub fn new_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(
+        Poles: &ffi::TColgp_Array2OfPnt,
+        Weights: &ffi::TColStd_Array2OfReal,
+        UKnots: &ffi::TColStd_Array1OfReal,
+        VKnots: &ffi::TColStd_Array1OfReal,
+        UMults: &ffi::TColStd_Array1OfInteger,
+        VMults: &ffi::TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        UPeriodic: bool,
+        VPeriodic: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(
+            Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, VPeriodic,
+        )
+    }
+
+    #[doc = "Upcast to Geom_BoundedSurface"]
+    pub fn as_bounded_surface(&self) -> &BoundedSurface {
+        ffi::b_spline_surface_as_bounded_surface(self)
+    }
+
+    #[doc = "Upcast to Geom_BoundedSurface (mutable)"]
+    pub fn as_bounded_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BoundedSurface> {
+        ffi::b_spline_surface_as_bounded_surface_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::b_spline_surface_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::b_spline_surface_as_geometry_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface"]
+    pub fn as_surface(&self) -> &Surface {
+        ffi::b_spline_surface_as_surface(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface (mutable)"]
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        ffi::b_spline_surface_as_surface_mut(self)
+    }
+
+    #[doc = "Wrap Geom_BSplineSurface in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeomBSplineSurface> {
+        ffi::BSplineSurface_to_handle(obj)
+    }
+
+    #[doc = "Nu is the order of derivation in the U parametric direction and Nv is the order of derivation in the V parametric direction. Raised if the continuity of the surface is not CNu in the U direction and CNv in the V direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0. The following functions computes the point for the parametric values (U, V) and the derivatives at this point on the B-spline surface patch delimited with the knots FromUK1, FromVK1 and the knots ToUK2, ToVK2.  (U, V) can be out of these parametric bounds but for the computation we only use the definition of the surface between these knots. This method is useful to compute local derivative, if the order of continuity of the whole surface is not greater enough. Inside the parametric knot's domain previously defined the evaluations are the same as if we consider the whole definition of the surface. Of course the evaluations are different outside this parametric domain."]
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::BSplineSurface_dn(self, U, V, Nu, Nv)
+    }
+
+    #[doc = "Raised if the local continuity of the surface is not CNu between the knots FromUK1, ToUK2 and CNv between the knots FromVK1, ToVK2. Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2."]
+    pub fn local_dn(
+        &self,
+        U: f64,
+        V: f64,
+        FromUK1: i32,
+        ToUK2: i32,
+        FromVK1: i32,
+        ToVK2: i32,
+        Nu: i32,
+        Nv: i32,
+    ) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::BSplineSurface_local_dn(self, U, V, FromUK1, ToUK2, FromVK1, ToVK2, Nu, Nv)
+    }
+
+    #[doc = "Computes the point of parameter U, V on the BSpline surface patch defines between the knots UK1 UK2, VK1, VK2. U can be out of the bounds [Knot UK1, Knot UK2] and V can be outof the bounds [Knot VK1, Knot VK2]  but for the computation we only use the definition of the surface between these knot values. Raises if FromUK1 = ToUK2 or FromVK1 = ToVK2."]
+    pub fn local_value(
+        &self,
+        U: f64,
+        V: f64,
+        FromUK1: i32,
+        ToUK2: i32,
+        FromVK1: i32,
+        ToVK2: i32,
+    ) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::BSplineSurface_local_value(self, U, V, FromUK1, ToUK2, FromVK1, ToVK2)
+    }
+
+    #[doc = "Computes the U isoparametric curve. A B-spline curve is returned."]
+    pub fn u_iso_real(&self, U: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::BSplineSurface_u_iso_real(self, U)
+    }
+
+    #[doc = "Computes the V isoparametric curve. A B-spline curve is returned."]
+    pub fn v_iso_real(&self, V: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::BSplineSurface_v_iso_real(self, V)
+    }
+
+    #[doc = "Computes the U isoparametric curve. If CheckRational=False, no try to make it non-rational. A B-spline curve is returned."]
+    pub fn u_iso_real_bool(
+        &self,
+        U: f64,
+        CheckRational: bool,
+    ) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::BSplineSurface_u_iso_real_bool(self, U, CheckRational)
+    }
+
+    #[doc = "Computes the V isoparametric curve. If CheckRational=False, no try to make it non-rational. A B-spline curve is returned. transformations"]
+    pub fn v_iso_real_bool(
+        &self,
+        V: f64,
+        CheckRational: bool,
+    ) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::BSplineSurface_v_iso_real_bool(self, V, CheckRational)
+    }
+
+    #[doc = "Creates a new object which is a copy of this BSpline surface."]
+    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::BSplineSurface_copy(self)
+    }
+
+    #[doc = "Returns the value of the maximum degree of the normalized B-spline basis functions in the u and v directions."]
+    pub fn max_degree() -> i32 {
+        ffi::BSplineSurface_max_degree()
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::BSplineSurface_get_type_name()
+    }
+}
+pub use ffi::CylindricalSurface;
+impl CylindricalSurface {
+    #[doc = "A3 defines the local coordinate system of the cylindrical surface. The \"ZDirection\" of A3 defines the direction of the surface's axis of symmetry. At the creation the parametrization of the surface is defined such that the normal Vector (N = D1U ^ D1V) is oriented towards the \"outside region\" of the surface. Warnings: It is not forbidden to create a cylindrical surface with Radius = 0.0 Raised if Radius < 0.0"]
+    pub fn new_ax3_real(A3: &ffi::gp_Ax3, Radius: f64) -> cxx::UniquePtr<Self> {
+        ffi::CylindricalSurface_ctor_ax3_real(A3, Radius)
+    }
+
+    #[doc = "Creates a CylindricalSurface from a non transient gp_Cylinder."]
+    pub fn new_cylinder(C: &ffi::gp_Cylinder) -> cxx::UniquePtr<Self> {
+        ffi::CylindricalSurface_ctor_cylinder(C)
+    }
+
+    #[doc = "Upcast to Geom_ElementarySurface"]
+    pub fn as_elementary_surface(&self) -> &ElementarySurface {
+        ffi::cylindrical_surface_as_elementary_surface(self)
+    }
+
+    #[doc = "Upcast to Geom_ElementarySurface (mutable)"]
+    pub fn as_elementary_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut ElementarySurface> {
+        ffi::cylindrical_surface_as_elementary_surface_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::cylindrical_surface_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::cylindrical_surface_as_geometry_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface"]
+    pub fn as_surface(&self) -> &Surface {
+        ffi::cylindrical_surface_as_surface(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface (mutable)"]
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        ffi::cylindrical_surface_as_surface_mut(self)
+    }
+
+    #[doc = "Wrap Geom_CylindricalSurface in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<ffi::HandleGeomCylindricalSurface> {
+        ffi::CylindricalSurface_to_handle(obj)
+    }
+
+    #[doc = "returns a non transient cylinder with the same geometric properties as <me>."]
+    pub fn cylinder(&self) -> cxx::UniquePtr<ffi::gp_Cylinder> {
+        ffi::CylindricalSurface_cylinder(self)
+    }
+
+    #[doc = "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method returns a scale centered on the U axis with T.ScaleFactor"]
+    pub fn parametric_transformation(&self, T: &ffi::gp_Trsf) -> cxx::UniquePtr<ffi::gp_GTrsf2d> {
+        ffi::CylindricalSurface_parametric_transformation(self, T)
+    }
+
+    #[doc = "The UIso curve is a Line. The location point of this line is on the placement plane (XAxis, YAxis) of the surface. This line is parallel to the axis of symmetry of the surface."]
+    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::CylindricalSurface_u_iso(self, U)
+    }
+
+    #[doc = "The VIso curve is a circle. The start point of this circle (U = 0) is defined with the \"XAxis\" of the surface. The center of the circle is on the symmetry axis."]
+    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::CylindricalSurface_v_iso(self, V)
+    }
+
+    #[doc = "Computes the derivative of order Nu in the direction u and Nv in the direction v. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0."]
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::CylindricalSurface_dn(self, U, V, Nu, Nv)
+    }
+
+    #[doc = "Creates a new object which is a copy of this cylinder."]
+    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::CylindricalSurface_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::CylindricalSurface_get_type_name()
+    }
+}
+pub use ffi::Plane;
+impl Plane {
+    #[doc = "Creates a plane located in 3D space with an axis placement three axis. The \"ZDirection\" of \"A3\" is the direction normal to the plane.  The \"Location\" point of \"A3\" is the origin of the plane. The \"XDirection\" and \"YDirection\" of \"A3\" define the directions of the U isoparametric and V isoparametric curves."]
+    pub fn new_ax3(A3: &ffi::gp_Ax3) -> cxx::UniquePtr<Self> {
+        ffi::Plane_ctor_ax3(A3)
+    }
+
+    #[doc = "Creates a plane from a non transient plane from package gp."]
+    pub fn new_pln(Pl: &ffi::gp_Pln) -> cxx::UniquePtr<Self> {
+        ffi::Plane_ctor_pln(Pl)
+    }
+
+    #[doc = "P is the \"Location\" point or origin of the plane. V is the direction normal to the plane."]
+    pub fn new_pnt_dir(P: &ffi::gp_Pnt, V: &ffi::gp_Dir) -> cxx::UniquePtr<Self> {
+        ffi::Plane_ctor_pnt_dir(P, V)
+    }
+
+    #[doc = "Creates a plane from its cartesian equation: @code Ax + By + Cz + D = 0.0 @endcode Raised if Sqrt (A*A + B*B + C*C) <= Resolution from gp"]
+    pub fn new_real4(A: f64, B: f64, C: f64, D: f64) -> cxx::UniquePtr<Self> {
+        ffi::Plane_ctor_real4(A, B, C, D)
+    }
+
+    #[doc = "Upcast to Geom_ElementarySurface"]
+    pub fn as_elementary_surface(&self) -> &ElementarySurface {
+        ffi::plane_as_elementary_surface(self)
+    }
+
+    #[doc = "Upcast to Geom_ElementarySurface (mutable)"]
+    pub fn as_elementary_surface_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut ElementarySurface> {
+        ffi::plane_as_elementary_surface_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::plane_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::plane_as_geometry_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface"]
+    pub fn as_surface(&self) -> &Surface {
+        ffi::plane_as_surface(self)
+    }
+
+    #[doc = "Upcast to Geom_Surface (mutable)"]
+    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
+        ffi::plane_as_surface_mut(self)
+    }
+
+    #[doc = "Wrap Geom_Plane in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeomPlane> {
+        ffi::Plane_to_handle(obj)
+    }
+
+    #[doc = "Converts this plane into a gp_Pln plane."]
+    pub fn pln(&self) -> cxx::UniquePtr<ffi::gp_Pln> {
+        ffi::Plane_pln(self)
+    }
+
+    #[doc = "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are  obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method returns a scale centered on the origin with T.ScaleFactor"]
+    pub fn parametric_transformation(&self, T: &ffi::gp_Trsf) -> cxx::UniquePtr<ffi::gp_GTrsf2d> {
+        ffi::Plane_parametric_transformation(self, T)
+    }
+
+    #[doc = "Computes the U isoparametric curve. This is a Line parallel to the YAxis of the plane."]
+    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::Plane_u_iso(self, U)
+    }
+
+    #[doc = "Computes the V isoparametric curve. This is a Line parallel to the XAxis of the plane."]
+    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::Plane_v_iso(self, V)
+    }
+
+    #[doc = "Computes the derivative of order Nu in the direction u and Nv in the direction v. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0."]
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::Plane_dn(self, U, V, Nu, Nv)
+    }
+
+    #[doc = "Creates a new object which is a copy of this plane."]
+    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::Plane_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Plane_get_type_name()
+    }
+}
+pub use ffi::TrimmedCurve;
+impl TrimmedCurve {
+    #[doc = "Constructs a trimmed curve from the basis curve C which is limited between parameter values U1 and U2. Note: - U1 can be greater or less than U2; in both cases, the returned curve is oriented from U1 to U2. - If the basis curve C is periodic, there is an ambiguity because two parts are available. In this case, the trimmed curve has the same orientation as the basis curve if Sense is true (default value) or the opposite orientation if Sense is false. - If the curve is closed but not periodic, it is not possible to keep the part of the curve which includes the junction point (except if the junction point is at the beginning or at the end of the trimmed curve). If you tried to do this, you could alter the fundamental characteristics of the basis curve, which are used, for example, to compute the derivatives of the trimmed curve. The rules for a closed curve are therefore the same as those for an open curve. Warning: The trimmed curve is built from a copy of curve C. Therefore, when C is modified, the trimmed curve is not modified. - If the basis curve is periodic and theAdjustPeriodic is True, the bounds of the trimmed curve may be different from U1 and U2 if the parametric origin of the basis curve is within the arc of the trimmed curve. In this case, the modified parameter will be equal to U1 or U2 plus or minus the period. When theAdjustPeriodic is False, parameters U1 and U2 will be the same, without adjustment into the first period. Exceptions Standard_ConstructionError if: - C is not periodic and U1 or U2 is outside the bounds of C, or - U1 is equal to U2."]
+    pub fn new_handlecurve_real2_bool2(
+        C: &ffi::HandleGeomCurve,
+        U1: f64,
+        U2: f64,
+        Sense: bool,
+        theAdjustPeriodic: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TrimmedCurve_ctor_handlecurve_real2_bool2(C, U1, U2, Sense, theAdjustPeriodic)
+    }
+
+    #[doc = "Upcast to Geom_BoundedCurve"]
+    pub fn as_bounded_curve(&self) -> &BoundedCurve {
+        ffi::trimmed_curve_as_bounded_curve(self)
+    }
+
+    #[doc = "Upcast to Geom_BoundedCurve (mutable)"]
+    pub fn as_bounded_curve_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BoundedCurve> {
+        ffi::trimmed_curve_as_bounded_curve_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Curve"]
+    pub fn as_curve(&self) -> &Curve {
+        ffi::trimmed_curve_as_curve(self)
+    }
+
+    #[doc = "Upcast to Geom_Curve (mutable)"]
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        ffi::trimmed_curve_as_curve_mut(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::trimmed_curve_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::trimmed_curve_as_geometry_mut(self)
+    }
+
+    #[doc = "Wrap Geom_TrimmedCurve in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeomTrimmedCurve> {
+        ffi::TrimmedCurve_to_handle(obj)
+    }
+
+    #[doc = "Returns the basis curve. Warning This function does not return a constant reference. Consequently, any modification of the returned value directly modifies the trimmed curve."]
+    pub fn basis_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::TrimmedCurve_basis_curve(self)
+    }
+
+    #[doc = "Returns the end point of <me>. This point is the evaluation of the curve for the \"LastParameter\"."]
+    pub fn end_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::TrimmedCurve_end_point(self)
+    }
+
+    #[doc = "Returns the start point of <me>. This point is the evaluation of the curve from the \"FirstParameter\". value and derivatives Warnings : The returned derivatives have the same orientation as the derivatives of the basis curve even if the trimmed curve has not the same orientation as the basis curve."]
+    pub fn start_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::TrimmedCurve_start_point(self)
+    }
+
+    #[doc = "N is the order of derivation. Raised if the continuity of the curve is not CN. Raised if N < 1. geometric transformations"]
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::TrimmedCurve_dn(self, U, N)
+    }
+
+    #[doc = "Creates a new object which is a copy of this trimmed curve."]
+    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::TrimmedCurve_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::TrimmedCurve_get_type_name()
+    }
+}
+impl ffi::HandleGeomCurve {
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::curve_to_handle_geometry(self)
+    }
+}
+impl ffi::HandleGeomSurface {
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::surface_to_handle_geometry(self)
+    }
+}
+impl ffi::HandleGeomBoundedCurve {
+    #[doc = "Upcast to Handle<Geom_Curve>"]
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::bounded_curve_to_handle_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::bounded_curve_to_handle_geometry(self)
+    }
+}
+impl ffi::HandleGeomBoundedSurface {
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::bounded_surface_to_handle_geometry(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Surface>"]
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
+        ffi::bounded_surface_to_handle_surface(self)
+    }
+}
+impl ffi::HandleGeomElementarySurface {
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::elementary_surface_to_handle_geometry(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Surface>"]
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
+        ffi::elementary_surface_to_handle_surface(self)
+    }
+}
+impl ffi::HandleGeomBezierCurve {
+    #[doc = "Upcast to Handle<Geom_BoundedCurve>"]
+    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedCurve> {
+        ffi::bezier_curve_to_handle_bounded_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Curve>"]
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::bezier_curve_to_handle_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::bezier_curve_to_handle_geometry(self)
+    }
+}
+impl ffi::HandleGeomBezierSurface {
+    #[doc = "Upcast to Handle<Geom_BoundedSurface>"]
+    pub fn to_handle_bounded_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedSurface> {
+        ffi::bezier_surface_to_handle_bounded_surface(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::bezier_surface_to_handle_geometry(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Surface>"]
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
+        ffi::bezier_surface_to_handle_surface(self)
+    }
+}
+impl ffi::HandleGeomBSplineCurve {
+    #[doc = "Upcast to Handle<Geom_BoundedCurve>"]
+    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedCurve> {
+        ffi::b_spline_curve_to_handle_bounded_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Curve>"]
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::b_spline_curve_to_handle_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::b_spline_curve_to_handle_geometry(self)
+    }
+}
+impl ffi::HandleGeomBSplineSurface {
+    #[doc = "Upcast to Handle<Geom_BoundedSurface>"]
+    pub fn to_handle_bounded_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedSurface> {
+        ffi::b_spline_surface_to_handle_bounded_surface(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::b_spline_surface_to_handle_geometry(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Surface>"]
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
+        ffi::b_spline_surface_to_handle_surface(self)
+    }
+}
+impl ffi::HandleGeomCylindricalSurface {
+    #[doc = "Upcast to Handle<Geom_ElementarySurface>"]
+    pub fn to_handle_elementary_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomElementarySurface> {
+        ffi::cylindrical_surface_to_handle_elementary_surface(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::cylindrical_surface_to_handle_geometry(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Surface>"]
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
+        ffi::cylindrical_surface_to_handle_surface(self)
+    }
+}
+impl ffi::HandleGeomPlane {
+    #[doc = "Upcast to Handle<Geom_ElementarySurface>"]
+    pub fn to_handle_elementary_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomElementarySurface> {
+        ffi::plane_to_handle_elementary_surface(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::plane_to_handle_geometry(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Surface>"]
+    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
+        ffi::plane_to_handle_surface(self)
+    }
+}
+impl ffi::HandleGeomTrimmedCurve {
+    #[doc = "Upcast to Handle<Geom_BoundedCurve>"]
+    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedCurve> {
+        ffi::trimmed_curve_to_handle_bounded_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Curve>"]
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
+        ffi::trimmed_curve_to_handle_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
+        ffi::trimmed_curve_to_handle_geometry(self)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom.hxx");
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfPnt from t_colgp module"]
-        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
-        #[doc = "HArray1OfPnt2d from t_colgp module"]
-        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
-        #[doc = "HArray1OfVec from t_colgp module"]
-        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
-        #[doc = "HArray2OfPnt from t_colgp module"]
-        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfInteger"]
-        type TColStd_Array1OfInteger;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfReal"]
-        type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array2OfReal"]
-        type TColStd_Array2OfReal;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array1OfPnt"]
-        type TColgp_Array1OfPnt;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array2OfPnt"]
-        type TColgp_Array2OfPnt;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Cylinder"]
-        type gp_Cylinder;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBSplineCurve"]
-        type HandleGeomBSplineCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBSplineSurface"]
-        type HandleGeomBSplineSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBezierCurve"]
-        type HandleGeomBezierCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBezierSurface"]
-        type HandleGeomBezierSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBoundedCurve"]
-        type HandleGeomBoundedCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBoundedSurface"]
-        type HandleGeomBoundedSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomCurve"]
-        type HandleGeomCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomCylindricalSurface"]
-        type HandleGeomCylindricalSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomElementarySurface"]
-        type HandleGeomElementarySurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomGeometry"]
-        type HandleGeomGeometry;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomPlane"]
-        type HandleGeomPlane;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomSurface"]
-        type HandleGeomSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomTrimmedCurve"]
-        type HandleGeomTrimmedCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
         #[doc = " ======================== Geom_Geometry ========================"]
         #[doc = "/// **Source:** `Geom_Geometry.hxx` - `Geom_Geometry`"]
         #[doc = ""]
@@ -2649,6 +3548,209 @@ pub(crate) mod ffi {
         fn trimmed_curve_to_handle_geometry(
             handle: &HandleGeomTrimmedCurve,
         ) -> UniquePtr<HandleGeomGeometry>;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HSequenceOfInteger from t_col_std module"]
+        type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "HArray1OfPnt from t_colgp module"]
+        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
+        #[doc = "HArray1OfPnt2d from t_colgp module"]
+        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
+        #[doc = "HArray1OfVec from t_colgp module"]
+        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
+        #[doc = "HArray2OfPnt from t_colgp module"]
+        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfInteger"]
+        type TColStd_Array1OfInteger;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfReal"]
+        type TColStd_Array1OfReal;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array2OfReal"]
+        type TColStd_Array2OfReal;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColgp_Array1OfPnt"]
+        type TColgp_Array1OfPnt;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColgp_Array2OfPnt"]
+        type TColgp_Array2OfPnt;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBSplineCurve"]
+        type HandleGeomBSplineCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBSplineSurface"]
+        type HandleGeomBSplineSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBezierCurve"]
+        type HandleGeomBezierCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBezierSurface"]
+        type HandleGeomBezierSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBoundedCurve"]
+        type HandleGeomBoundedCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBoundedSurface"]
+        type HandleGeomBoundedSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomCurve"]
+        type HandleGeomCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomCylindricalSurface"]
+        type HandleGeomCylindricalSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomElementarySurface"]
+        type HandleGeomElementarySurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomGeometry"]
+        type HandleGeomGeometry;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomPlane"]
+        type HandleGeomPlane;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomSurface"]
+        type HandleGeomSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomTrimmedCurve"]
+        type HandleGeomTrimmedCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
     }
     impl UniquePtr<Geometry> {}
     impl UniquePtr<Curve> {}
@@ -2663,1067 +3765,4 @@ pub(crate) mod ffi {
     impl UniquePtr<CylindricalSurface> {}
     impl UniquePtr<Plane> {}
     impl UniquePtr<TrimmedCurve> {}
-}
-pub use ffi::Geometry;
-impl Geometry {
-    pub fn mirrored_pnt(&self, P: &ffi::gp_Pnt) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::Geometry_mirrored_pnt(self, P)
-    }
-
-    pub fn mirrored_ax1(&self, A1: &ffi::gp_Ax1) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::Geometry_mirrored_ax1(self, A1)
-    }
-
-    pub fn mirrored_ax2(&self, A2: &ffi::gp_Ax2) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::Geometry_mirrored_ax2(self, A2)
-    }
-
-    pub fn rotated(&self, A1: &ffi::gp_Ax1, Ang: f64) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::Geometry_rotated(self, A1, Ang)
-    }
-
-    pub fn scaled(&self, P: &ffi::gp_Pnt, S: f64) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::Geometry_scaled(self, P, S)
-    }
-
-    pub fn transformed(&self, T: &ffi::gp_Trsf) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::Geometry_transformed(self, T)
-    }
-
-    pub fn translated_vec(&self, V: &ffi::gp_Vec) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::Geometry_translated_vec(self, V)
-    }
-
-    pub fn translated_pnt2(
-        &self,
-        P1: &ffi::gp_Pnt,
-        P2: &ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::Geometry_translated_pnt2(self, P1, P2)
-    }
-
-    #[doc = "Creates a new object which is a copy of this geometric object."]
-    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::Geometry_copy(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Geometry_get_type_name()
-    }
-}
-pub use ffi::Curve;
-impl Curve {
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::curve_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::curve_as_geometry_mut(self)
-    }
-
-    #[doc = "Returns a copy of <me> reversed."]
-    pub fn reversed(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::Curve_reversed(self)
-    }
-
-    #[doc = "The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the curve is not CN. Raised if the   derivative  cannot  be  computed easily. e.g. rational bspline and n > 3. Raised if N < 1."]
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::Curve_dn(self, U, N)
-    }
-
-    #[doc = "Computes the point of parameter U on <me>. If the curve is periodic  then the returned point is P(U) with U = Ustart + (U - Uend)  where Ustart and Uend are the parametric bounds of the curve. it is implemented with D0. Raised only for the \"OffsetCurve\" if it is not possible to compute the current point. For example when the first derivative on the basis curve and the offset direction are parallel."]
-    pub fn value(&self, U: f64) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::Curve_value(self, U)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Curve_get_type_name()
-    }
-}
-pub use ffi::Surface;
-impl Surface {
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::surface_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::surface_as_geometry_mut(self)
-    }
-
-    #[doc = "Reverses the U direction of parametrization of <me>. The bounds of the surface are not modified. A copy of <me> is returned."]
-    pub fn u_reversed(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
-        ffi::Surface_u_reversed(self)
-    }
-
-    #[doc = "Reverses the V direction of parametrization of <me>. The bounds of the surface are not modified. A copy of <me> is returned."]
-    pub fn v_reversed(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
-        ffi::Surface_v_reversed(self)
-    }
-
-    #[doc = "Returns a 2d transformation  used to find the  new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are  obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method returns an identity transformation It  can be redefined.  For  example on  the Plane, Cylinder, Cone, Revolved and Extruded surfaces."]
-    pub fn parametric_transformation(&self, T: &ffi::gp_Trsf) -> cxx::UniquePtr<ffi::gp_GTrsf2d> {
-        ffi::Surface_parametric_transformation(self, T)
-    }
-
-    #[doc = "Computes the U isoparametric curve."]
-    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::Surface_u_iso(self, U)
-    }
-
-    #[doc = "Computes the V isoparametric curve."]
-    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::Surface_v_iso(self, V)
-    }
-
-    #[doc = "Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Raised if the continuity of the surface is not CNu in the U direction or not CNv in the V direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0."]
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::Surface_dn(self, U, V, Nu, Nv)
-    }
-
-    #[doc = "Computes the point of parameter (U, V) on the surface. It is implemented with D0. Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point. Raised only for an \"OffsetSurface\" if it is not possible to compute the current point."]
-    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::Surface_value(self, U, V)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Surface_get_type_name()
-    }
-}
-pub use ffi::BoundedCurve;
-impl BoundedCurve {
-    #[doc = "Upcast to Geom_Curve"]
-    pub fn as_curve(&self) -> &Curve {
-        ffi::bounded_curve_as_curve(self)
-    }
-
-    #[doc = "Upcast to Geom_Curve (mutable)"]
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        ffi::bounded_curve_as_curve_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::bounded_curve_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::bounded_curve_as_geometry_mut(self)
-    }
-
-    #[doc = "Returns the end point of the curve."]
-    pub fn end_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::BoundedCurve_end_point(self)
-    }
-
-    #[doc = "Returns the start point of the curve."]
-    pub fn start_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::BoundedCurve_start_point(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::BoundedCurve_get_type_name()
-    }
-}
-pub use ffi::BoundedSurface;
-impl BoundedSurface {
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::bounded_surface_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::bounded_surface_as_geometry_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface"]
-    pub fn as_surface(&self) -> &Surface {
-        ffi::bounded_surface_as_surface(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface (mutable)"]
-    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
-        ffi::bounded_surface_as_surface_mut(self)
-    }
-
-    #[doc = "Wrap Geom_BoundedSurface in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeomBoundedSurface> {
-        ffi::BoundedSurface_to_handle(obj)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::BoundedSurface_get_type_name()
-    }
-}
-pub use ffi::ElementarySurface;
-impl ElementarySurface {
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::elementary_surface_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::elementary_surface_as_geometry_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface"]
-    pub fn as_surface(&self) -> &Surface {
-        ffi::elementary_surface_as_surface(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface (mutable)"]
-    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
-        ffi::elementary_surface_as_surface_mut(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::ElementarySurface_get_type_name()
-    }
-}
-pub use ffi::BezierCurve;
-impl BezierCurve {
-    #[doc = "Creates a non rational Bezier curve with a set of poles CurvePoles.  The weights are defaulted to all being 1. Raises ConstructionError if the number of poles is greater than MaxDegree + 1 or lower than 2."]
-    pub fn new_array1ofpnt(CurvePoles: &ffi::TColgp_Array1OfPnt) -> cxx::UniquePtr<Self> {
-        ffi::BezierCurve_ctor_array1ofpnt(CurvePoles)
-    }
-
-    #[doc = "Creates a rational Bezier curve with the set of poles CurvePoles and the set of weights  PoleWeights . If all the weights are identical the curve is considered as non rational. Raises ConstructionError if the number of poles is greater than  MaxDegree + 1 or lower than 2 or CurvePoles and CurveWeights have not the same length or one weight value is lower or equal to Resolution from package gp."]
-    pub fn new_array1ofpnt_array1ofreal(
-        CurvePoles: &ffi::TColgp_Array1OfPnt,
-        PoleWeights: &ffi::TColStd_Array1OfReal,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::BezierCurve_ctor_array1ofpnt_array1ofreal(CurvePoles, PoleWeights)
-    }
-
-    #[doc = "Upcast to Geom_BoundedCurve"]
-    pub fn as_bounded_curve(&self) -> &BoundedCurve {
-        ffi::bezier_curve_as_bounded_curve(self)
-    }
-
-    #[doc = "Upcast to Geom_BoundedCurve (mutable)"]
-    pub fn as_bounded_curve_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BoundedCurve> {
-        ffi::bezier_curve_as_bounded_curve_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Curve"]
-    pub fn as_curve(&self) -> &Curve {
-        ffi::bezier_curve_as_curve(self)
-    }
-
-    #[doc = "Upcast to Geom_Curve (mutable)"]
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        ffi::bezier_curve_as_curve_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::bezier_curve_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::bezier_curve_as_geometry_mut(self)
-    }
-
-    #[doc = "Wrap Geom_BezierCurve in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeomBezierCurve> {
-        ffi::BezierCurve_to_handle(obj)
-    }
-
-    #[doc = "For the point of parameter U of this Bezier curve, computes the vector corresponding to the Nth derivative. Note: the parameter U can be outside the bounds of the curve. Exceptions Standard_RangeError if N is less than 1."]
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::BezierCurve_dn(self, U, N)
-    }
-
-    #[doc = "Returns Value (U=0.), it is the first control point of the curve."]
-    pub fn start_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::BezierCurve_start_point(self)
-    }
-
-    #[doc = "Returns Value (U=1.), it is the last control point of the Bezier curve."]
-    pub fn end_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::BezierCurve_end_point(self)
-    }
-
-    #[doc = "Creates a new object which is a copy of this Bezier curve."]
-    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::BezierCurve_copy(self)
-    }
-
-    #[doc = "Returns the value of the maximum polynomial degree of any Geom_BezierCurve curve. This value is 25."]
-    pub fn max_degree() -> i32 {
-        ffi::BezierCurve_max_degree()
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::BezierCurve_get_type_name()
-    }
-}
-pub use ffi::BezierSurface;
-impl BezierSurface {
-    #[doc = "Creates a non-rational Bezier surface with a set of poles. Control points representation : SPoles(Uorigin,Vorigin) ...................SPoles(Uorigin,Vend) .                                     . .                                     . SPoles(Uend, Vorigin) .....................SPoles(Uend, Vend) For the double array the row indice corresponds to the parametric U direction and the columns indice corresponds to the parametric V direction. The weights are defaulted to all being 1. Raised if the number of poles of the surface is lower than 2 or greater than MaxDegree + 1 in one of the two directions U or V."]
-    pub fn new_array2ofpnt(SurfacePoles: &ffi::TColgp_Array2OfPnt) -> cxx::UniquePtr<Self> {
-        ffi::BezierSurface_ctor_array2ofpnt(SurfacePoles)
-    }
-
-    #[doc = "---Purpose Creates a rational Bezier surface with a set of poles and a set of weights. For the double array the row indice corresponds to the parametric U direction and the columns indice corresponds to the parametric V direction. If all the weights are identical the surface is considered as non-rational (the tolerance criterion is Resolution from package gp). Raised if SurfacePoles and PoleWeights have not the same Rowlength or have not the same ColLength. Raised if PoleWeights (i, j) <= Resolution from gp; Raised if the number of poles of the surface is lower than 2 or greater than MaxDegree + 1 in one of the two directions U or V."]
-    pub fn new_array2ofpnt_array2ofreal(
-        SurfacePoles: &ffi::TColgp_Array2OfPnt,
-        PoleWeights: &ffi::TColStd_Array2OfReal,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::BezierSurface_ctor_array2ofpnt_array2ofreal(SurfacePoles, PoleWeights)
-    }
-
-    #[doc = "Upcast to Geom_BoundedSurface"]
-    pub fn as_bounded_surface(&self) -> &BoundedSurface {
-        ffi::bezier_surface_as_bounded_surface(self)
-    }
-
-    #[doc = "Upcast to Geom_BoundedSurface (mutable)"]
-    pub fn as_bounded_surface_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BoundedSurface> {
-        ffi::bezier_surface_as_bounded_surface_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::bezier_surface_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::bezier_surface_as_geometry_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface"]
-    pub fn as_surface(&self) -> &Surface {
-        ffi::bezier_surface_as_surface(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface (mutable)"]
-    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
-        ffi::bezier_surface_as_surface_mut(self)
-    }
-
-    #[doc = "Wrap Geom_BezierSurface in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeomBezierSurface> {
-        ffi::BezierSurface_to_handle(obj)
-    }
-
-    #[doc = "Computes the derivative of order Nu in the u parametric direction, and Nv in the v parametric direction, at the point of parameters (U, V) of this Bezier surface. Note: The parameters U and V can be outside the bounds of the surface. Exceptions Standard_RangeError if: - Nu + Nv is less than 1, or Nu or Nv is negative."]
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::BezierSurface_dn(self, U, V, Nu, Nv)
-    }
-
-    #[doc = "Computes the U isoparametric curve. For a Bezier surface the UIso curve is a Bezier curve."]
-    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::BezierSurface_u_iso(self, U)
-    }
-
-    #[doc = "Computes the V isoparametric curve. For a Bezier surface the VIso  curve is a Bezier curve."]
-    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::BezierSurface_v_iso(self, V)
-    }
-
-    #[doc = "Creates a new object which is a copy of this Bezier surface."]
-    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::BezierSurface_copy(self)
-    }
-
-    #[doc = "Returns the value of the maximum polynomial degree of a Bezier surface. This value is 25."]
-    pub fn max_degree() -> i32 {
-        ffi::BezierSurface_max_degree()
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::BezierSurface_get_type_name()
-    }
-}
-pub use ffi::BSplineCurve;
-impl BSplineCurve {
-    #[doc = "Creates a  non-rational B_spline curve   on  the basis <Knots, Multiplicities> of degree <Degree>."]
-    pub fn new_array1ofpnt_array1ofreal_array1ofinteger_int_bool(
-        Poles: &ffi::TColgp_Array1OfPnt,
-        Knots: &ffi::TColStd_Array1OfReal,
-        Multiplicities: &ffi::TColStd_Array1OfInteger,
-        Degree: i32,
-        Periodic: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::BSplineCurve_ctor_array1ofpnt_array1ofreal_array1ofinteger_int_bool(
-            Poles,
-            Knots,
-            Multiplicities,
-            Degree,
-            Periodic,
-        )
-    }
-
-    #[doc = "Creates  a rational B_spline  curve  on the basis <Knots, Multiplicities> of degree <Degree>. Raises ConstructionError subject to the following conditions 0 < Degree <= MaxDegree. Weights.Length() == Poles.Length() Knots.Length() == Mults.Length() >= 2 Knots(i) < Knots(i+1) (Knots are increasing) 1 <= Mults(i) <= Degree On a non periodic curve the first and last multiplicities may be Degree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). On a periodic  curve the first  and  the last multicities must be the same. on non-periodic curves Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2 on periodic curves Poles.Length() == Sum(Mults(i)) except the first or last"]
-    pub fn new_array1ofpnt_array1ofreal2_array1ofinteger_int_bool2(
-        Poles: &ffi::TColgp_Array1OfPnt,
-        Weights: &ffi::TColStd_Array1OfReal,
-        Knots: &ffi::TColStd_Array1OfReal,
-        Multiplicities: &ffi::TColStd_Array1OfInteger,
-        Degree: i32,
-        Periodic: bool,
-        CheckRational: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::BSplineCurve_ctor_array1ofpnt_array1ofreal2_array1ofinteger_int_bool2(
-            Poles,
-            Weights,
-            Knots,
-            Multiplicities,
-            Degree,
-            Periodic,
-            CheckRational,
-        )
-    }
-
-    #[doc = "Upcast to Geom_BoundedCurve"]
-    pub fn as_bounded_curve(&self) -> &BoundedCurve {
-        ffi::b_spline_curve_as_bounded_curve(self)
-    }
-
-    #[doc = "Upcast to Geom_BoundedCurve (mutable)"]
-    pub fn as_bounded_curve_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BoundedCurve> {
-        ffi::b_spline_curve_as_bounded_curve_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Curve"]
-    pub fn as_curve(&self) -> &Curve {
-        ffi::b_spline_curve_as_curve(self)
-    }
-
-    #[doc = "Upcast to Geom_Curve (mutable)"]
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        ffi::b_spline_curve_as_curve_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::b_spline_curve_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::b_spline_curve_as_geometry_mut(self)
-    }
-
-    #[doc = "Wrap Geom_BSplineCurve in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeomBSplineCurve> {
-        ffi::BSplineCurve_to_handle(obj)
-    }
-
-    #[doc = "For the point of parameter U of this BSpline curve, computes the vector corresponding to the Nth derivative. Warning On a point where the continuity of the curve is not the one requested, this function impacts the part defined by the parameter with a value greater than U, i.e. the part of the curve to the \"right\" of the singularity. Exceptions Standard_RangeError if N is less than 1. The following functions compute the point of parameter U and the derivatives at this point on the B-spline curve arc defined between the knot FromK1 and the knot ToK2. U can be out of bounds [Knot (FromK1),  Knot (ToK2)] but for the computation we only use the definition of the curve between these two knots. This method is useful to compute local derivative, if the order of continuity of the whole curve is not greater enough.    Inside the parametric domain Knot (FromK1), Knot (ToK2) the evaluations are the same as if we consider the whole definition of the curve. Of course the evaluations are different outside this parametric domain."]
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::BSplineCurve_dn(self, U, N)
-    }
-
-    #[doc = "Raised if FromK1 = ToK2."]
-    pub fn local_value(&self, U: f64, FromK1: i32, ToK2: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::BSplineCurve_local_value(self, U, FromK1, ToK2)
-    }
-
-    #[doc = "Raised if the local continuity of the curve is not CN between the knot K1 and the knot K2. Raised if FromK1 = ToK2. Raised if N < 1."]
-    pub fn local_dn(&self, U: f64, FromK1: i32, ToK2: i32, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::BSplineCurve_local_dn(self, U, FromK1, ToK2, N)
-    }
-
-    #[doc = "Returns the last point of the curve. Warnings : The last point of the curve is different from the last pole of the curve if the multiplicity of the last knot is lower than Degree."]
-    pub fn end_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::BSplineCurve_end_point(self)
-    }
-
-    #[doc = "Returns the start point of the curve. Warnings : This point is different from the first pole of the curve if the multiplicity of the first knot is lower than Degree."]
-    pub fn start_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::BSplineCurve_start_point(self)
-    }
-
-    #[doc = "Creates a new object which is a copy of this BSpline curve."]
-    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::BSplineCurve_copy(self)
-    }
-
-    #[doc = "Returns the value of the maximum degree of the normalized B-spline basis functions in this package."]
-    pub fn max_degree() -> i32 {
-        ffi::BSplineCurve_max_degree()
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::BSplineCurve_get_type_name()
-    }
-}
-pub use ffi::BSplineSurface;
-impl BSplineSurface {
-    #[doc = "Creates  a non-rational b-spline surface (weights default value is 1.). The following conditions must be verified. 0 < UDegree <= MaxDegree. UKnots.Length() == UMults.Length() >= 2 UKnots(i) < UKnots(i+1) (Knots are increasing) 1 <= UMults(i) <= UDegree On a   non  uperiodic   surface    the  first and    last umultiplicities  may  be     UDegree+1  (this   is   even recommended if you want the curve  to start and finish on the first and last pole). On a uperiodic     surface  the first    and   the   last umultiplicities must be the same. on non-uperiodic surfaces Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2 on uperiodic surfaces Poles.ColLength() == Sum(UMults(i)) except the first or last The previous conditions for U holds  also for V, with the RowLength of the poles."]
-    pub fn new_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool2(
-        Poles: &ffi::TColgp_Array2OfPnt,
-        UKnots: &ffi::TColStd_Array1OfReal,
-        VKnots: &ffi::TColStd_Array1OfReal,
-        UMults: &ffi::TColStd_Array1OfInteger,
-        VMults: &ffi::TColStd_Array1OfInteger,
-        UDegree: i32,
-        VDegree: i32,
-        UPeriodic: bool,
-        VPeriodic: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::BSplineSurface_ctor_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool2(
-            Poles, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, VPeriodic,
-        )
-    }
-
-    #[doc = "Creates  a non-rational b-spline surface (weights default value is 1.). The following conditions must be verified. 0 < UDegree <= MaxDegree. UKnots.Length() == UMults.Length() >= 2 UKnots(i) < UKnots(i+1) (Knots are increasing) 1 <= UMults(i) <= UDegree On a   non  uperiodic   surface    the  first and    last umultiplicities  may  be     UDegree+1  (this   is   even recommended if you want the curve  to start and finish on the first and last pole). On a uperiodic     surface  the first    and   the   last umultiplicities must be the same. on non-uperiodic surfaces Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2 on uperiodic surfaces Poles.ColLength() == Sum(UMults(i)) except the first or last The previous conditions for U holds  also for V, with the RowLength of the poles."]
-    pub fn new_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(
-        Poles: &ffi::TColgp_Array2OfPnt,
-        Weights: &ffi::TColStd_Array2OfReal,
-        UKnots: &ffi::TColStd_Array1OfReal,
-        VKnots: &ffi::TColStd_Array1OfReal,
-        UMults: &ffi::TColStd_Array1OfInteger,
-        VMults: &ffi::TColStd_Array1OfInteger,
-        UDegree: i32,
-        VDegree: i32,
-        UPeriodic: bool,
-        VPeriodic: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(
-            Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, VPeriodic,
-        )
-    }
-
-    #[doc = "Upcast to Geom_BoundedSurface"]
-    pub fn as_bounded_surface(&self) -> &BoundedSurface {
-        ffi::b_spline_surface_as_bounded_surface(self)
-    }
-
-    #[doc = "Upcast to Geom_BoundedSurface (mutable)"]
-    pub fn as_bounded_surface_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BoundedSurface> {
-        ffi::b_spline_surface_as_bounded_surface_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::b_spline_surface_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::b_spline_surface_as_geometry_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface"]
-    pub fn as_surface(&self) -> &Surface {
-        ffi::b_spline_surface_as_surface(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface (mutable)"]
-    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
-        ffi::b_spline_surface_as_surface_mut(self)
-    }
-
-    #[doc = "Wrap Geom_BSplineSurface in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeomBSplineSurface> {
-        ffi::BSplineSurface_to_handle(obj)
-    }
-
-    #[doc = "Nu is the order of derivation in the U parametric direction and Nv is the order of derivation in the V parametric direction. Raised if the continuity of the surface is not CNu in the U direction and CNv in the V direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0. The following functions computes the point for the parametric values (U, V) and the derivatives at this point on the B-spline surface patch delimited with the knots FromUK1, FromVK1 and the knots ToUK2, ToVK2.  (U, V) can be out of these parametric bounds but for the computation we only use the definition of the surface between these knots. This method is useful to compute local derivative, if the order of continuity of the whole surface is not greater enough. Inside the parametric knot's domain previously defined the evaluations are the same as if we consider the whole definition of the surface. Of course the evaluations are different outside this parametric domain."]
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::BSplineSurface_dn(self, U, V, Nu, Nv)
-    }
-
-    #[doc = "Raised if the local continuity of the surface is not CNu between the knots FromUK1, ToUK2 and CNv between the knots FromVK1, ToVK2. Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2."]
-    pub fn local_dn(
-        &self,
-        U: f64,
-        V: f64,
-        FromUK1: i32,
-        ToUK2: i32,
-        FromVK1: i32,
-        ToVK2: i32,
-        Nu: i32,
-        Nv: i32,
-    ) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::BSplineSurface_local_dn(self, U, V, FromUK1, ToUK2, FromVK1, ToVK2, Nu, Nv)
-    }
-
-    #[doc = "Computes the point of parameter U, V on the BSpline surface patch defines between the knots UK1 UK2, VK1, VK2. U can be out of the bounds [Knot UK1, Knot UK2] and V can be outof the bounds [Knot VK1, Knot VK2]  but for the computation we only use the definition of the surface between these knot values. Raises if FromUK1 = ToUK2 or FromVK1 = ToVK2."]
-    pub fn local_value(
-        &self,
-        U: f64,
-        V: f64,
-        FromUK1: i32,
-        ToUK2: i32,
-        FromVK1: i32,
-        ToVK2: i32,
-    ) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::BSplineSurface_local_value(self, U, V, FromUK1, ToUK2, FromVK1, ToVK2)
-    }
-
-    #[doc = "Computes the U isoparametric curve. A B-spline curve is returned."]
-    pub fn u_iso_real(&self, U: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::BSplineSurface_u_iso_real(self, U)
-    }
-
-    #[doc = "Computes the V isoparametric curve. A B-spline curve is returned."]
-    pub fn v_iso_real(&self, V: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::BSplineSurface_v_iso_real(self, V)
-    }
-
-    #[doc = "Computes the U isoparametric curve. If CheckRational=False, no try to make it non-rational. A B-spline curve is returned."]
-    pub fn u_iso_real_bool(
-        &self,
-        U: f64,
-        CheckRational: bool,
-    ) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::BSplineSurface_u_iso_real_bool(self, U, CheckRational)
-    }
-
-    #[doc = "Computes the V isoparametric curve. If CheckRational=False, no try to make it non-rational. A B-spline curve is returned. transformations"]
-    pub fn v_iso_real_bool(
-        &self,
-        V: f64,
-        CheckRational: bool,
-    ) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::BSplineSurface_v_iso_real_bool(self, V, CheckRational)
-    }
-
-    #[doc = "Creates a new object which is a copy of this BSpline surface."]
-    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::BSplineSurface_copy(self)
-    }
-
-    #[doc = "Returns the value of the maximum degree of the normalized B-spline basis functions in the u and v directions."]
-    pub fn max_degree() -> i32 {
-        ffi::BSplineSurface_max_degree()
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::BSplineSurface_get_type_name()
-    }
-}
-pub use ffi::CylindricalSurface;
-impl CylindricalSurface {
-    #[doc = "A3 defines the local coordinate system of the cylindrical surface. The \"ZDirection\" of A3 defines the direction of the surface's axis of symmetry. At the creation the parametrization of the surface is defined such that the normal Vector (N = D1U ^ D1V) is oriented towards the \"outside region\" of the surface. Warnings: It is not forbidden to create a cylindrical surface with Radius = 0.0 Raised if Radius < 0.0"]
-    pub fn new_ax3_real(A3: &ffi::gp_Ax3, Radius: f64) -> cxx::UniquePtr<Self> {
-        ffi::CylindricalSurface_ctor_ax3_real(A3, Radius)
-    }
-
-    #[doc = "Creates a CylindricalSurface from a non transient gp_Cylinder."]
-    pub fn new_cylinder(C: &ffi::gp_Cylinder) -> cxx::UniquePtr<Self> {
-        ffi::CylindricalSurface_ctor_cylinder(C)
-    }
-
-    #[doc = "Upcast to Geom_ElementarySurface"]
-    pub fn as_elementary_surface(&self) -> &ElementarySurface {
-        ffi::cylindrical_surface_as_elementary_surface(self)
-    }
-
-    #[doc = "Upcast to Geom_ElementarySurface (mutable)"]
-    pub fn as_elementary_surface_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut ElementarySurface> {
-        ffi::cylindrical_surface_as_elementary_surface_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::cylindrical_surface_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::cylindrical_surface_as_geometry_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface"]
-    pub fn as_surface(&self) -> &Surface {
-        ffi::cylindrical_surface_as_surface(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface (mutable)"]
-    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
-        ffi::cylindrical_surface_as_surface_mut(self)
-    }
-
-    #[doc = "Wrap Geom_CylindricalSurface in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<ffi::HandleGeomCylindricalSurface> {
-        ffi::CylindricalSurface_to_handle(obj)
-    }
-
-    #[doc = "returns a non transient cylinder with the same geometric properties as <me>."]
-    pub fn cylinder(&self) -> cxx::UniquePtr<ffi::gp_Cylinder> {
-        ffi::CylindricalSurface_cylinder(self)
-    }
-
-    #[doc = "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method returns a scale centered on the U axis with T.ScaleFactor"]
-    pub fn parametric_transformation(&self, T: &ffi::gp_Trsf) -> cxx::UniquePtr<ffi::gp_GTrsf2d> {
-        ffi::CylindricalSurface_parametric_transformation(self, T)
-    }
-
-    #[doc = "The UIso curve is a Line. The location point of this line is on the placement plane (XAxis, YAxis) of the surface. This line is parallel to the axis of symmetry of the surface."]
-    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::CylindricalSurface_u_iso(self, U)
-    }
-
-    #[doc = "The VIso curve is a circle. The start point of this circle (U = 0) is defined with the \"XAxis\" of the surface. The center of the circle is on the symmetry axis."]
-    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::CylindricalSurface_v_iso(self, V)
-    }
-
-    #[doc = "Computes the derivative of order Nu in the direction u and Nv in the direction v. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0."]
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::CylindricalSurface_dn(self, U, V, Nu, Nv)
-    }
-
-    #[doc = "Creates a new object which is a copy of this cylinder."]
-    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::CylindricalSurface_copy(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::CylindricalSurface_get_type_name()
-    }
-}
-pub use ffi::Plane;
-impl Plane {
-    #[doc = "Creates a plane located in 3D space with an axis placement three axis. The \"ZDirection\" of \"A3\" is the direction normal to the plane.  The \"Location\" point of \"A3\" is the origin of the plane. The \"XDirection\" and \"YDirection\" of \"A3\" define the directions of the U isoparametric and V isoparametric curves."]
-    pub fn new_ax3(A3: &ffi::gp_Ax3) -> cxx::UniquePtr<Self> {
-        ffi::Plane_ctor_ax3(A3)
-    }
-
-    #[doc = "Creates a plane from a non transient plane from package gp."]
-    pub fn new_pln(Pl: &ffi::gp_Pln) -> cxx::UniquePtr<Self> {
-        ffi::Plane_ctor_pln(Pl)
-    }
-
-    #[doc = "P is the \"Location\" point or origin of the plane. V is the direction normal to the plane."]
-    pub fn new_pnt_dir(P: &ffi::gp_Pnt, V: &ffi::gp_Dir) -> cxx::UniquePtr<Self> {
-        ffi::Plane_ctor_pnt_dir(P, V)
-    }
-
-    #[doc = "Creates a plane from its cartesian equation: @code Ax + By + Cz + D = 0.0 @endcode Raised if Sqrt (A*A + B*B + C*C) <= Resolution from gp"]
-    pub fn new_real4(A: f64, B: f64, C: f64, D: f64) -> cxx::UniquePtr<Self> {
-        ffi::Plane_ctor_real4(A, B, C, D)
-    }
-
-    #[doc = "Upcast to Geom_ElementarySurface"]
-    pub fn as_elementary_surface(&self) -> &ElementarySurface {
-        ffi::plane_as_elementary_surface(self)
-    }
-
-    #[doc = "Upcast to Geom_ElementarySurface (mutable)"]
-    pub fn as_elementary_surface_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut ElementarySurface> {
-        ffi::plane_as_elementary_surface_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::plane_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::plane_as_geometry_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface"]
-    pub fn as_surface(&self) -> &Surface {
-        ffi::plane_as_surface(self)
-    }
-
-    #[doc = "Upcast to Geom_Surface (mutable)"]
-    pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
-        ffi::plane_as_surface_mut(self)
-    }
-
-    #[doc = "Wrap Geom_Plane in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeomPlane> {
-        ffi::Plane_to_handle(obj)
-    }
-
-    #[doc = "Converts this plane into a gp_Pln plane."]
-    pub fn pln(&self) -> cxx::UniquePtr<ffi::gp_Pln> {
-        ffi::Plane_pln(self)
-    }
-
-    #[doc = "Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are  obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method returns a scale centered on the origin with T.ScaleFactor"]
-    pub fn parametric_transformation(&self, T: &ffi::gp_Trsf) -> cxx::UniquePtr<ffi::gp_GTrsf2d> {
-        ffi::Plane_parametric_transformation(self, T)
-    }
-
-    #[doc = "Computes the U isoparametric curve. This is a Line parallel to the YAxis of the plane."]
-    pub fn u_iso(&self, U: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::Plane_u_iso(self, U)
-    }
-
-    #[doc = "Computes the V isoparametric curve. This is a Line parallel to the XAxis of the plane."]
-    pub fn v_iso(&self, V: f64) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::Plane_v_iso(self, V)
-    }
-
-    #[doc = "Computes the derivative of order Nu in the direction u and Nv in the direction v. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0."]
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::Plane_dn(self, U, V, Nu, Nv)
-    }
-
-    #[doc = "Creates a new object which is a copy of this plane."]
-    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::Plane_copy(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Plane_get_type_name()
-    }
-}
-pub use ffi::TrimmedCurve;
-impl TrimmedCurve {
-    #[doc = "Constructs a trimmed curve from the basis curve C which is limited between parameter values U1 and U2. Note: - U1 can be greater or less than U2; in both cases, the returned curve is oriented from U1 to U2. - If the basis curve C is periodic, there is an ambiguity because two parts are available. In this case, the trimmed curve has the same orientation as the basis curve if Sense is true (default value) or the opposite orientation if Sense is false. - If the curve is closed but not periodic, it is not possible to keep the part of the curve which includes the junction point (except if the junction point is at the beginning or at the end of the trimmed curve). If you tried to do this, you could alter the fundamental characteristics of the basis curve, which are used, for example, to compute the derivatives of the trimmed curve. The rules for a closed curve are therefore the same as those for an open curve. Warning: The trimmed curve is built from a copy of curve C. Therefore, when C is modified, the trimmed curve is not modified. - If the basis curve is periodic and theAdjustPeriodic is True, the bounds of the trimmed curve may be different from U1 and U2 if the parametric origin of the basis curve is within the arc of the trimmed curve. In this case, the modified parameter will be equal to U1 or U2 plus or minus the period. When theAdjustPeriodic is False, parameters U1 and U2 will be the same, without adjustment into the first period. Exceptions Standard_ConstructionError if: - C is not periodic and U1 or U2 is outside the bounds of C, or - U1 is equal to U2."]
-    pub fn new_handlecurve_real2_bool2(
-        C: &ffi::HandleGeomCurve,
-        U1: f64,
-        U2: f64,
-        Sense: bool,
-        theAdjustPeriodic: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::TrimmedCurve_ctor_handlecurve_real2_bool2(C, U1, U2, Sense, theAdjustPeriodic)
-    }
-
-    #[doc = "Upcast to Geom_BoundedCurve"]
-    pub fn as_bounded_curve(&self) -> &BoundedCurve {
-        ffi::trimmed_curve_as_bounded_curve(self)
-    }
-
-    #[doc = "Upcast to Geom_BoundedCurve (mutable)"]
-    pub fn as_bounded_curve_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BoundedCurve> {
-        ffi::trimmed_curve_as_bounded_curve_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Curve"]
-    pub fn as_curve(&self) -> &Curve {
-        ffi::trimmed_curve_as_curve(self)
-    }
-
-    #[doc = "Upcast to Geom_Curve (mutable)"]
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        ffi::trimmed_curve_as_curve_mut(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::trimmed_curve_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::trimmed_curve_as_geometry_mut(self)
-    }
-
-    #[doc = "Wrap Geom_TrimmedCurve in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeomTrimmedCurve> {
-        ffi::TrimmedCurve_to_handle(obj)
-    }
-
-    #[doc = "Returns the basis curve. Warning This function does not return a constant reference. Consequently, any modification of the returned value directly modifies the trimmed curve."]
-    pub fn basis_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::TrimmedCurve_basis_curve(self)
-    }
-
-    #[doc = "Returns the end point of <me>. This point is the evaluation of the curve for the \"LastParameter\"."]
-    pub fn end_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::TrimmedCurve_end_point(self)
-    }
-
-    #[doc = "Returns the start point of <me>. This point is the evaluation of the curve from the \"FirstParameter\". value and derivatives Warnings : The returned derivatives have the same orientation as the derivatives of the basis curve even if the trimmed curve has not the same orientation as the basis curve."]
-    pub fn start_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::TrimmedCurve_start_point(self)
-    }
-
-    #[doc = "N is the order of derivation. Raised if the continuity of the curve is not CN. Raised if N < 1. geometric transformations"]
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::TrimmedCurve_dn(self, U, N)
-    }
-
-    #[doc = "Creates a new object which is a copy of this trimmed curve."]
-    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::TrimmedCurve_copy(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::TrimmedCurve_get_type_name()
-    }
-}
-impl ffi::HandleGeomCurve {
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::curve_to_handle_geometry(self)
-    }
-}
-impl ffi::HandleGeomSurface {
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::surface_to_handle_geometry(self)
-    }
-}
-impl ffi::HandleGeomBoundedCurve {
-    #[doc = "Upcast to Handle<Geom_Curve>"]
-    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::bounded_curve_to_handle_curve(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::bounded_curve_to_handle_geometry(self)
-    }
-}
-impl ffi::HandleGeomBoundedSurface {
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::bounded_surface_to_handle_geometry(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Surface>"]
-    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
-        ffi::bounded_surface_to_handle_surface(self)
-    }
-}
-impl ffi::HandleGeomElementarySurface {
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::elementary_surface_to_handle_geometry(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Surface>"]
-    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
-        ffi::elementary_surface_to_handle_surface(self)
-    }
-}
-impl ffi::HandleGeomBezierCurve {
-    #[doc = "Upcast to Handle<Geom_BoundedCurve>"]
-    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedCurve> {
-        ffi::bezier_curve_to_handle_bounded_curve(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Curve>"]
-    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::bezier_curve_to_handle_curve(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::bezier_curve_to_handle_geometry(self)
-    }
-}
-impl ffi::HandleGeomBezierSurface {
-    #[doc = "Upcast to Handle<Geom_BoundedSurface>"]
-    pub fn to_handle_bounded_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedSurface> {
-        ffi::bezier_surface_to_handle_bounded_surface(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::bezier_surface_to_handle_geometry(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Surface>"]
-    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
-        ffi::bezier_surface_to_handle_surface(self)
-    }
-}
-impl ffi::HandleGeomBSplineCurve {
-    #[doc = "Upcast to Handle<Geom_BoundedCurve>"]
-    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedCurve> {
-        ffi::b_spline_curve_to_handle_bounded_curve(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Curve>"]
-    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::b_spline_curve_to_handle_curve(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::b_spline_curve_to_handle_geometry(self)
-    }
-}
-impl ffi::HandleGeomBSplineSurface {
-    #[doc = "Upcast to Handle<Geom_BoundedSurface>"]
-    pub fn to_handle_bounded_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedSurface> {
-        ffi::b_spline_surface_to_handle_bounded_surface(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::b_spline_surface_to_handle_geometry(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Surface>"]
-    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
-        ffi::b_spline_surface_to_handle_surface(self)
-    }
-}
-impl ffi::HandleGeomCylindricalSurface {
-    #[doc = "Upcast to Handle<Geom_ElementarySurface>"]
-    pub fn to_handle_elementary_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomElementarySurface> {
-        ffi::cylindrical_surface_to_handle_elementary_surface(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::cylindrical_surface_to_handle_geometry(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Surface>"]
-    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
-        ffi::cylindrical_surface_to_handle_surface(self)
-    }
-}
-impl ffi::HandleGeomPlane {
-    #[doc = "Upcast to Handle<Geom_ElementarySurface>"]
-    pub fn to_handle_elementary_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomElementarySurface> {
-        ffi::plane_to_handle_elementary_surface(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::plane_to_handle_geometry(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Surface>"]
-    pub fn to_handle_surface(&self) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
-        ffi::plane_to_handle_surface(self)
-    }
-}
-impl ffi::HandleGeomTrimmedCurve {
-    #[doc = "Upcast to Handle<Geom_BoundedCurve>"]
-    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomBoundedCurve> {
-        ffi::trimmed_curve_to_handle_bounded_curve(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Curve>"]
-    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
-        ffi::trimmed_curve_to_handle_curve(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
-        ffi::trimmed_curve_to_handle_geometry(self)
-    }
 }

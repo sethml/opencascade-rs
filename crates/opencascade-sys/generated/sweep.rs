@@ -11,12 +11,39 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::NumShapeTool;
+impl NumShapeTool {
+    #[doc = "Create a new NumShapeTool with <aShape>.  The Tool must prepare an indexation  for  all the subshapes of this shape."]
+    pub fn new_numshape(aShape: &ffi::NumShape) -> cxx::UniquePtr<Self> {
+        ffi::NumShapeTool_ctor_numshape(aShape)
+    }
+
+    #[doc = "Returns the Shape at index anIndex"]
+    pub fn shape(&self, anIndex: i32) -> cxx::UniquePtr<ffi::NumShape> {
+        ffi::NumShapeTool_shape(self, anIndex)
+    }
+
+    #[doc = "Returns the first vertex."]
+    pub fn first_vertex(&self) -> cxx::UniquePtr<ffi::NumShape> {
+        ffi::NumShapeTool_first_vertex(self)
+    }
+
+    #[doc = "Returns the last vertex."]
+    pub fn last_vertex(&self) -> cxx::UniquePtr<ffi::NumShape> {
+        ffi::NumShapeTool_last_vertex(self)
+    }
+}
+pub use ffi::NumShape;
+impl NumShape {
+    #[doc = "Creates a dummy indexed edge."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::NumShape_ctor()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_sweep.hxx");
-        #[doc = "TopAbs from top_abs module"]
-        type TopAbs = crate::top_abs::ffi::TopAbs;
         #[doc = " ======================== Sweep_NumShapeTool ========================"]
         #[doc = "/// **Source:** `Sweep_NumShapeTool.hxx` - `Sweep_NumShapeTool`"]
         #[doc = ""]
@@ -68,36 +95,9 @@ pub(crate) mod ffi {
         fn beg_infinite(self: &NumShape) -> bool;
         #[cxx_name = "EndInfinite"]
         fn end_infinite(self: &NumShape) -> bool;
+        #[doc = "TopAbs from top_abs module"]
+        type TopAbs = crate::top_abs::ffi::TopAbs;
     }
     impl UniquePtr<NumShapeTool> {}
     impl UniquePtr<NumShape> {}
-}
-pub use ffi::NumShapeTool;
-impl NumShapeTool {
-    #[doc = "Create a new NumShapeTool with <aShape>.  The Tool must prepare an indexation  for  all the subshapes of this shape."]
-    pub fn new_numshape(aShape: &ffi::NumShape) -> cxx::UniquePtr<Self> {
-        ffi::NumShapeTool_ctor_numshape(aShape)
-    }
-
-    #[doc = "Returns the Shape at index anIndex"]
-    pub fn shape(&self, anIndex: i32) -> cxx::UniquePtr<ffi::NumShape> {
-        ffi::NumShapeTool_shape(self, anIndex)
-    }
-
-    #[doc = "Returns the first vertex."]
-    pub fn first_vertex(&self) -> cxx::UniquePtr<ffi::NumShape> {
-        ffi::NumShapeTool_first_vertex(self)
-    }
-
-    #[doc = "Returns the last vertex."]
-    pub fn last_vertex(&self) -> cxx::UniquePtr<ffi::NumShape> {
-        ffi::NumShapeTool_last_vertex(self)
-    }
-}
-pub use ffi::NumShape;
-impl NumShape {
-    #[doc = "Creates a dummy indexed edge."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::NumShape_ctor()
-    }
 }

@@ -13,10 +13,18 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::TopAbs;
+impl TopAbs {}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_top_abs.hxx");
+        #[doc = " ======================== TopAbs ========================"]
+        #[doc = "/// **Source:** `TopAbs.hxx` - `TopAbs`"]
+        #[doc = ""]
+        #[doc = "This package gives resources for Topology oriented applications such as : Topological Data Structure, Topological Algorithms. It contains : * The ShapeEnum   enumeration  to  describe  the different topological shapes. * The  Orientation  enumeration to  describe the orientation of a topological shape. * The  State    enumeration  to  describes  the position of a point relative to a Shape. * Methods to manage the enumerations."]
+        #[cxx_name = "TopAbs"]
+        type TopAbs;
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -59,14 +67,6 @@ pub(crate) mod ffi {
         type Standard_Type = crate::standard::ffi::Type;
         #[doc = "TypeMismatch from standard module"]
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = " ======================== TopAbs ========================"]
-        #[doc = "/// **Source:** `TopAbs.hxx` - `TopAbs`"]
-        #[doc = ""]
-        #[doc = "This package gives resources for Topology oriented applications such as : Topological Data Structure, Topological Algorithms. It contains : * The ShapeEnum   enumeration  to  describe  the different topological shapes. * The  Orientation  enumeration to  describe the orientation of a topological shape. * The  State    enumeration  to  describes  the position of a point relative to a Shape. * Methods to manage the enumerations."]
-        #[cxx_name = "TopAbs"]
-        type TopAbs;
     }
     impl UniquePtr<TopAbs> {}
 }
-pub use ffi::TopAbs;
-impl TopAbs {}

@@ -18,199 +18,618 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::MakeBox;
+impl MakeBox {
+    #[doc = "Default constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::MakeBox_ctor()
+    }
+
+    #[doc = "Make a box with a corner at 0,0,0 and the other dx,dy,dz"]
+    pub fn new_real3(dx: f64, dy: f64, dz: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeBox_ctor_real3(dx, dy, dz)
+    }
+
+    #[doc = "Make a box with a corner at P and size dx, dy, dz."]
+    pub fn new_pnt_real3(P: &ffi::gp_Pnt, dx: f64, dy: f64, dz: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeBox_ctor_pnt_real3(P, dx, dy, dz)
+    }
+
+    #[doc = "Make a box with corners P1,P2."]
+    pub fn new_pnt2(P1: &ffi::gp_Pnt, P2: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        ffi::MakeBox_ctor_pnt2(P1, P2)
+    }
+
+    #[doc = "Make a box with Ax2 (the left corner and the axis) and size dx, dy, dz."]
+    pub fn new_ax2_real3(Axes: &ffi::gp_Ax2, dx: f64, dy: f64, dz: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeBox_ctor_ax2_real3(Axes, dx, dy, dz)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_box_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_box_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::make_box_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::make_box_as_b_rep_builder_api_make_shape_mut(self)
+    }
+}
+pub use ffi::MakeCone;
+impl MakeCone {
+    #[doc = "Make a cone. @param[in] R1  cone bottom radius, may be null (z = 0) @param[in] R2  cone top radius, may be null (z = H) @param[in] H   cone height"]
+    pub fn new_real3(R1: f64, R2: f64, H: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeCone_ctor_real3(R1, R2, H)
+    }
+
+    #[doc = "Make a cone. @param[in] R1     cone bottom radius, may be null (z = 0) @param[in] R2     cone top radius, may be null (z = H) @param[in] H      cone height @param[in] angle  angle to create a part cone"]
+    pub fn new_real4(R1: f64, R2: f64, H: f64, angle: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeCone_ctor_real4(R1, R2, H, angle)
+    }
+
+    #[doc = "Make a cone. @param[in] axes  coordinate system for the construction of the cone @param[in] R1    cone bottom radius, may be null (z = 0) @param[in] R2    cone top radius, may be null (z = H) @param[in] H     cone height"]
+    pub fn new_ax2_real3(Axes: &ffi::gp_Ax2, R1: f64, R2: f64, H: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeCone_ctor_ax2_real3(Axes, R1, R2, H)
+    }
+
+    #[doc = "Make a cone of height H radius R1 in the plane z = 0, R2 in the plane Z = H. R1 and R2 may be null. Take a section of <angle> Constructs a cone, or a portion of a cone, of height H, and radius R1 in the plane z = 0 and R2 in the plane z = H. The result is a sharp cone if R1 or R2 is equal to 0. The cone is constructed about the \"Z Axis\" of either: -   the global coordinate system, or -   the local coordinate system Axes. It is limited in these coordinate systems as follows: -   in the v parametric direction (the Z coordinate), by the two parameter values 0 and H, -   and in the u parametric direction (defined by the angle of rotation around the Z axis), in the case of a portion of a cone, by the two parameter values 0 and angle. Angle is given in radians. The resulting shape is composed of: -   a lateral conical face -   two planar faces in the planes z = 0 and z = H, or only one planar face in one of these two planes if a radius value is null (in the case of a complete cone, these faces are circles), and -   and in the case of a portion of a cone, two planar faces to close the shape. (either two parallelograms or two triangles, in the planes u = 0 and u = angle). Exceptions Standard_DomainError if: -   H is less than or equal to Precision::Confusion(), or -   the half-angle at the apex of the cone, defined by R1, R2 and H, is less than Precision::Confusion()/H, or greater than (Pi/2)-Precision::Confusion()/H.f"]
+    pub fn new_ax2_real4(
+        Axes: &ffi::gp_Ax2,
+        R1: f64,
+        R2: f64,
+        H: f64,
+        angle: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeCone_ctor_ax2_real4(Axes, R1, R2, H, angle)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_cone_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_cone_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::make_cone_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::make_cone_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis"]
+    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
+        ffi::make_cone_as_make_one_axis(self)
+    }
+
+    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis (mutable)"]
+    pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
+        ffi::make_cone_as_make_one_axis_mut(self)
+    }
+}
+pub use ffi::MakeCylinder;
+impl MakeCylinder {
+    #[doc = "Make a cylinder. @param[in] R  cylinder radius @param[in] H  cylinder height"]
+    pub fn new_real2(R: f64, H: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeCylinder_ctor_real2(R, H)
+    }
+
+    #[doc = "Make a cylinder (part cylinder). @param[in] R      cylinder radius @param[in] H      cylinder height @param[in] Angle  defines the missing portion of the cylinder"]
+    pub fn new_real3(R: f64, H: f64, Angle: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeCylinder_ctor_real3(R, H, Angle)
+    }
+
+    #[doc = "Make a cylinder of radius R and length H. @param[in] Axes  coordinate system for the construction of the cylinder @param[in] R     cylinder radius @param[in] H     cylinder height"]
+    pub fn new_ax2_real2(Axes: &ffi::gp_Ax2, R: f64, H: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeCylinder_ctor_ax2_real2(Axes, R, H)
+    }
+
+    #[doc = "Make a cylinder   of  radius R  and  length H with angle  H. Constructs -   a cylinder of radius R and height H, or -   a portion of cylinder of radius R and height H, and of the angle Angle defining the missing portion of the cylinder. The cylinder is constructed about the \"Z Axis\" of either: -   the global coordinate system, or -   the local coordinate system Axes. It is limited in this coordinate system as follows: -   in the v parametric direction (the Z axis), by the two parameter values 0 and H, -   and in the u parametric direction (the rotation angle around the Z Axis), in the case of a portion of a cylinder, by the two parameter values 0 and Angle. Angle is given in radians. The resulting shape is composed of: -   a lateral cylindrical face, -   two planar faces in the planes z = 0 and z = H (in the case of a complete cylinder, these faces are circles), and -   in case of a portion of a cylinder, two additional planar faces to close the shape.(two rectangles in the planes u = 0 and u = Angle). Exceptions Standard_DomainError if: -   R is less than or equal to Precision::Confusion(), or -   H is less than or equal to Precision::Confusion()."]
+    pub fn new_ax2_real3(Axes: &ffi::gp_Ax2, R: f64, H: f64, Angle: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeCylinder_ctor_ax2_real3(Axes, R, H, Angle)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_cylinder_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_cylinder_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::make_cylinder_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::make_cylinder_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis"]
+    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
+        ffi::make_cylinder_as_make_one_axis(self)
+    }
+
+    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis (mutable)"]
+    pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
+        ffi::make_cylinder_as_make_one_axis_mut(self)
+    }
+}
+pub use ffi::MakePrism;
+impl MakePrism {
+    #[doc = "Builds the prism of base S and vector V. If C is true, S is copied. If Canonize is true then generated surfaces are attempted to be canonized in simple types"]
+    pub fn new_shape_vec_bool2(
+        S: &ffi::TopoDS_Shape,
+        V: &ffi::gp_Vec,
+        Copy: bool,
+        Canonize: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakePrism_ctor_shape_vec_bool2(S, V, Copy, Canonize)
+    }
+
+    #[doc = "Builds a semi-infinite or an infinite prism of base S. If Inf is true the prism  is infinite, if Inf is false the prism is semi-infinite (in the direction D).  If C is true S is copied (for semi-infinite prisms). If Canonize is true then generated surfaces are attempted to be canonized in simple types"]
+    pub fn new_shape_dir_bool3(
+        S: &ffi::TopoDS_Shape,
+        D: &ffi::gp_Dir,
+        Inf: bool,
+        Copy: bool,
+        Canonize: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakePrism_ctor_shape_dir_bool3(S, D, Inf, Copy, Canonize)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_prism_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_prism_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::make_prism_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::make_prism_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BRepPrimAPI_MakeSweep"]
+    pub fn as_make_sweep(&self) -> &MakeSweep {
+        ffi::make_prism_as_make_sweep(self)
+    }
+
+    #[doc = "Upcast to BRepPrimAPI_MakeSweep (mutable)"]
+    pub fn as_make_sweep_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeSweep> {
+        ffi::make_prism_as_make_sweep_mut(self)
+    }
+
+    #[doc = "Returns the  TopoDS  Shape of the bottom of the prism."]
+    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::MakePrism_first_shape(self)
+    }
+
+    #[doc = "Returns the TopoDS Shape of the top of the prism. In the case of a finite prism, FirstShape returns the basis of the prism, in other words, S if Copy is false; otherwise, the copy of S belonging to the prism. LastShape returns the copy of S translated by V at the time of construction."]
+    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::MakePrism_last_shape(self)
+    }
+
+    #[doc = "Returns the TopoDS Shape of the bottom  of the  prism. generated  with  theShape (subShape of the  generating shape)."]
+    pub fn first_shape_shape(
+        self: std::pin::Pin<&mut Self>,
+        theShape: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::MakePrism_first_shape_shape(self, theShape)
+    }
+
+    #[doc = "Returns the  TopoDS  Shape of the top  of  the  prism. generated  with  theShape (subShape of the  generating shape)."]
+    pub fn last_shape_shape(
+        self: std::pin::Pin<&mut Self>,
+        theShape: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::MakePrism_last_shape_shape(self, theShape)
+    }
+}
+pub use ffi::MakeRevol;
+impl MakeRevol {
+    #[doc = "Builds the Revol of base S, axis  A and angle  D. If C is true, S is copied."]
+    pub fn new_shape_ax1_real_bool(
+        S: &ffi::TopoDS_Shape,
+        A: &ffi::gp_Ax1,
+        D: f64,
+        Copy: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeRevol_ctor_shape_ax1_real_bool(S, A, D, Copy)
+    }
+
+    #[doc = "Builds the Revol of base S, axis  A and angle 2*Pi. If C is true, S is copied."]
+    pub fn new_shape_ax1_bool(
+        S: &ffi::TopoDS_Shape,
+        A: &ffi::gp_Ax1,
+        Copy: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeRevol_ctor_shape_ax1_bool(S, A, Copy)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_revol_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_revol_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::make_revol_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::make_revol_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BRepPrimAPI_MakeSweep"]
+    pub fn as_make_sweep(&self) -> &MakeSweep {
+        ffi::make_revol_as_make_sweep(self)
+    }
+
+    #[doc = "Upcast to BRepPrimAPI_MakeSweep (mutable)"]
+    pub fn as_make_sweep_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeSweep> {
+        ffi::make_revol_as_make_sweep_mut(self)
+    }
+
+    #[doc = "Returns the first shape of the revol  (coinciding with the generating shape)."]
+    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::MakeRevol_first_shape(self)
+    }
+
+    #[doc = "Returns the TopoDS Shape of the end of the revol."]
+    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::MakeRevol_last_shape(self)
+    }
+
+    #[doc = "Returns the TopoDS Shape of the beginning of the revolution, generated with theShape  (subShape of the generating shape)."]
+    pub fn first_shape_shape(
+        self: std::pin::Pin<&mut Self>,
+        theShape: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::MakeRevol_first_shape_shape(self, theShape)
+    }
+
+    #[doc = "Returns the TopoDS Shape of the end of the revolution, generated with  theShape (subShape of the  generating shape)."]
+    pub fn last_shape_shape(
+        self: std::pin::Pin<&mut Self>,
+        theShape: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::MakeRevol_last_shape_shape(self, theShape)
+    }
+}
+pub use ffi::MakeSphere;
+impl MakeSphere {
+    #[doc = "Make a sphere. @param[in] R  sphere radius"]
+    pub fn new_real(R: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeSphere_ctor_real(R)
+    }
+
+    #[doc = "Make a sphere (spherical wedge). @param[in] R      sphere radius @param[in] angle  angle between the radii lying within the bounding semidisks"]
+    pub fn new_real2(R: f64, angle: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeSphere_ctor_real2(R, angle)
+    }
+
+    #[doc = "Make a sphere (spherical segment). @param[in] R  sphere radius @param[in] angle1  first angle defining a spherical segment @param[in] angle2  second angle defining a spherical segment"]
+    pub fn new_real3(R: f64, angle1: f64, angle2: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeSphere_ctor_real3(R, angle1, angle2)
+    }
+
+    #[doc = "Make a sphere (spherical segment). @param[in] R       sphere radius @param[in] angle1  first angle defining a spherical segment @param[in] angle2  second angle defining a spherical segment @param[in] angle3  angle between the radii lying within the bounding semidisks"]
+    pub fn new_real4(R: f64, angle1: f64, angle2: f64, angle3: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeSphere_ctor_real4(R, angle1, angle2, angle3)
+    }
+
+    #[doc = "Make a sphere. @param[in] Center  sphere center coordinates @param[in] R       sphere radius"]
+    pub fn new_pnt_real(Center: &ffi::gp_Pnt, R: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeSphere_ctor_pnt_real(Center, R)
+    }
+
+    #[doc = "Make a sphere (spherical wedge). @param[in] Center  sphere center coordinates @param[in] R       sphere radius @param[in] angle   angle between the radii lying within the bounding semidisks"]
+    pub fn new_pnt_real2(Center: &ffi::gp_Pnt, R: f64, angle: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeSphere_ctor_pnt_real2(Center, R, angle)
+    }
+
+    #[doc = "Make a sphere (spherical segment). @param[in] Center  sphere center coordinates @param[in] R       sphere radius @param[in] angle1  first angle defining a spherical segment @param[in] angle2  second angle defining a spherical segment"]
+    pub fn new_pnt_real3(
+        Center: &ffi::gp_Pnt,
+        R: f64,
+        angle1: f64,
+        angle2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeSphere_ctor_pnt_real3(Center, R, angle1, angle2)
+    }
+
+    #[doc = "Make a sphere (spherical segment). @param[in] Center  sphere center coordinates @param[in] R       sphere radius @param[in] angle1  first angle defining a spherical segment @param[in] angle2  second angle defining a spherical segment @param[in] angle3  angle between the radii lying within the bounding semidisks"]
+    pub fn new_pnt_real4(
+        Center: &ffi::gp_Pnt,
+        R: f64,
+        angle1: f64,
+        angle2: f64,
+        angle3: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeSphere_ctor_pnt_real4(Center, R, angle1, angle2, angle3)
+    }
+
+    #[doc = "Make a sphere. @param[in] Axis  coordinate system for the construction of the sphere @param[in] R     sphere radius"]
+    pub fn new_ax2_real(Axis: &ffi::gp_Ax2, R: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeSphere_ctor_ax2_real(Axis, R)
+    }
+
+    #[doc = "Make a sphere (spherical wedge). @param[in] Axis   coordinate system for the construction of the sphere @param[in] R      sphere radius @param[in] angle  angle between the radii lying within the bounding semidisks"]
+    pub fn new_ax2_real2(Axis: &ffi::gp_Ax2, R: f64, angle: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeSphere_ctor_ax2_real2(Axis, R, angle)
+    }
+
+    #[doc = "Make a sphere (spherical segment). @param[in] Axis    coordinate system for the construction of the sphere @param[in] R       sphere radius @param[in] angle1  first angle defining a spherical segment @param[in] angle2  second angle defining a spherical segment"]
+    pub fn new_ax2_real3(
+        Axis: &ffi::gp_Ax2,
+        R: f64,
+        angle1: f64,
+        angle2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeSphere_ctor_ax2_real3(Axis, R, angle1, angle2)
+    }
+
+    #[doc = "Make a sphere of radius R. For all algorithms The resulting shape is composed of -   a lateral spherical face, -   two planar faces parallel to the plane z = 0 if the sphere is truncated in the v parametric direction, or only one planar face if angle1 is equal to -p/2 or if angle2 is equal to p/2 (these faces are circles in case of a complete truncated sphere), -   and in case of a portion of sphere, two planar faces to shut the shape.(in the planes u = 0 and u = angle)."]
+    pub fn new_ax2_real4(
+        Axis: &ffi::gp_Ax2,
+        R: f64,
+        angle1: f64,
+        angle2: f64,
+        angle3: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeSphere_ctor_ax2_real4(Axis, R, angle1, angle2, angle3)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_sphere_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_sphere_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::make_sphere_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::make_sphere_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis"]
+    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
+        ffi::make_sphere_as_make_one_axis(self)
+    }
+
+    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis (mutable)"]
+    pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
+        ffi::make_sphere_as_make_one_axis_mut(self)
+    }
+}
+pub use ffi::MakeTorus;
+impl MakeTorus {
+    #[doc = "Make a torus. @param[in] R1  distance from the center of the pipe to the center of the torus @param[in] R2  radius of the pipe"]
+    pub fn new_real2(R1: f64, R2: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeTorus_ctor_real2(R1, R2)
+    }
+
+    #[doc = "Make a section of a torus. @param[in] R1     distance from the center of the pipe to the center of the torus @param[in] R2     radius of the pipe @param[in] angle  angle to create a torus pipe segment"]
+    pub fn new_real3(R1: f64, R2: f64, angle: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeTorus_ctor_real3(R1, R2, angle)
+    }
+
+    #[doc = "Make  a torus with angles on the small circle. @param[in] R1      distance from the center of the pipe to the center of the torus @param[in] R2      radius of the pipe @param[in] angle1  first  angle to create a torus ring segment @param[in] angle2  second angle to create a torus ring segment"]
+    pub fn new_real4(R1: f64, R2: f64, angle1: f64, angle2: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeTorus_ctor_real4(R1, R2, angle1, angle2)
+    }
+
+    #[doc = "Make  a torus with angles on the small circle. @param[in] R1      distance from the center of the pipe to the center of the torus @param[in] R2      radius of the pipe @param[in] angle1  first  angle to create a torus ring segment @param[in] angle2  second angle to create a torus ring segment @param[in] angle   angle to create a torus pipe segment"]
+    pub fn new_real5(
+        R1: f64,
+        R2: f64,
+        angle1: f64,
+        angle2: f64,
+        angle: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeTorus_ctor_real5(R1, R2, angle1, angle2, angle)
+    }
+
+    #[doc = "Make a torus. @param[in] Axes  coordinate system for the construction of the sphere @param[in] R1    distance from the center of the pipe to the center of the torus @param[in] R2    radius of the pipe"]
+    pub fn new_ax2_real2(Axes: &ffi::gp_Ax2, R1: f64, R2: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeTorus_ctor_ax2_real2(Axes, R1, R2)
+    }
+
+    #[doc = "Make a section of a torus. @param[in] Axes   coordinate system for the construction of the sphere @param[in] R1     distance from the center of the pipe to the center of the torus @param[in] R2     radius of the pipe @param[in] angle  angle to create a torus pipe segment"]
+    pub fn new_ax2_real3(Axes: &ffi::gp_Ax2, R1: f64, R2: f64, angle: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeTorus_ctor_ax2_real3(Axes, R1, R2, angle)
+    }
+
+    #[doc = "Make a torus. @param[in] Axes    coordinate system for the construction of the sphere @param[in] R1      distance from the center of the pipe to the center of the torus @param[in] R2      radius of the pipe @param[in] angle1  first  angle to create a torus ring segment @param[in] angle2  second angle to create a torus ring segment"]
+    pub fn new_ax2_real4(
+        Axes: &ffi::gp_Ax2,
+        R1: f64,
+        R2: f64,
+        angle1: f64,
+        angle2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeTorus_ctor_ax2_real4(Axes, R1, R2, angle1, angle2)
+    }
+
+    #[doc = "Make a section of a torus of radii R1 R2. For all algorithms The resulting shape is composed of -      a lateral toroidal face, -      two conical faces (defined  by the equation v = angle1 and v = angle2) if the sphere is truncated in the v parametric direction (they may be cylindrical faces in some particular conditions), and in case of a portion of torus, two planar faces to close the shape.(in the planes u = 0 and u = angle). Notes: -      The u parameter corresponds to a rotation angle around the Z axis. -      The circle whose radius is equal to the minor radius, located in the plane defined by the X axis and the Z axis, centered on the X axis, on its positive side, and positioned at a distance from the origin equal to the major radius, is the reference circle of the torus. The rotation around an axis parallel to the Y axis and passing through the center of the reference circle gives the v parameter on the reference circle. The X axis gives the origin of the v parameter. Near 0, as v increases, the Z coordinate decreases."]
+    pub fn new_ax2_real5(
+        Axes: &ffi::gp_Ax2,
+        R1: f64,
+        R2: f64,
+        angle1: f64,
+        angle2: f64,
+        angle: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeTorus_ctor_ax2_real5(Axes, R1, R2, angle1, angle2, angle)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_torus_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_torus_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::make_torus_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::make_torus_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis"]
+    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
+        ffi::make_torus_as_make_one_axis(self)
+    }
+
+    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis (mutable)"]
+    pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
+        ffi::make_torus_as_make_one_axis_mut(self)
+    }
+}
+pub use ffi::MakeSweep;
+impl MakeSweep {
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_sweep_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_sweep_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::make_sweep_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::make_sweep_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Returns the  TopoDS  Shape of the bottom of the sweep."]
+    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::MakeSweep_first_shape(self)
+    }
+
+    #[doc = "Returns the TopoDS Shape of the top of the sweep."]
+    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::MakeSweep_last_shape(self)
+    }
+}
+pub use ffi::MakeOneAxis;
+impl MakeOneAxis {
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_one_axis_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_one_axis_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::make_one_axis_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::make_one_axis_as_b_rep_builder_api_make_shape_mut(self)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_prim_api.hxx");
-        #[doc = "Command from b_rep_builder_api module"]
-        type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
-        #[doc = "MakeEdge from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeEdge = crate::b_rep_builder_api::ffi::MakeEdge;
-        #[doc = "MakeFace from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeFace = crate::b_rep_builder_api::ffi::MakeFace;
-        #[doc = "MakeShape from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
-        #[doc = "MakeSolid from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeSolid = crate::b_rep_builder_api::ffi::MakeSolid;
-        #[doc = "MakeVertex from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeVertex = crate::b_rep_builder_api::ffi::MakeVertex;
-        #[doc = "MakeWire from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeWire = crate::b_rep_builder_api::ffi::MakeWire;
-        #[doc = "ModifyShape from b_rep_builder_api module"]
-        type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
-        #[doc = "Sewing from b_rep_builder_api module"]
-        type BRepBuilderAPI_Sewing = crate::b_rep_builder_api::ffi::Sewing;
-        #[doc = "Transform from b_rep_builder_api module"]
-        type BRepBuilderAPI_Transform = crate::b_rep_builder_api::ffi::Transform;
-        #[doc = "Builder from b_rep_prim module"]
-        type BRepPrim_Builder = crate::b_rep_prim::ffi::Builder;
-        #[doc = "Cone from b_rep_prim module"]
-        type BRepPrim_Cone = crate::b_rep_prim::ffi::Cone;
-        #[doc = "Cylinder from b_rep_prim module"]
-        type BRepPrim_Cylinder = crate::b_rep_prim::ffi::Cylinder;
-        #[doc = "GWedge from b_rep_prim module"]
-        type BRepPrim_GWedge = crate::b_rep_prim::ffi::GWedge;
-        #[doc = "OneAxis from b_rep_prim module"]
-        type BRepPrim_OneAxis = crate::b_rep_prim::ffi::OneAxis;
-        #[doc = "Revolution from b_rep_prim module"]
-        type BRepPrim_Revolution = crate::b_rep_prim::ffi::Revolution;
-        #[doc = "Sphere from b_rep_prim module"]
-        type BRepPrim_Sphere = crate::b_rep_prim::ffi::Sphere;
-        #[doc = "Torus from b_rep_prim module"]
-        type BRepPrim_Torus = crate::b_rep_prim::ffi::Torus;
-        #[doc = "Wedge from b_rep_prim module"]
-        type BRepPrim_Wedge = crate::b_rep_prim::ffi::Wedge;
-        #[doc = "Builder from b_rep_sweep module"]
-        type BRepSweep_Builder = crate::b_rep_sweep::ffi::Builder;
-        #[doc = "NumLinearRegularSweep from b_rep_sweep module"]
-        type BRepSweep_NumLinearRegularSweep = crate::b_rep_sweep::ffi::NumLinearRegularSweep;
-        #[doc = "Prism from b_rep_sweep module"]
-        type BRepSweep_Prism = crate::b_rep_sweep::ffi::Prism;
-        #[doc = "Revol from b_rep_sweep module"]
-        type BRepSweep_Revol = crate::b_rep_sweep::ffi::Revol;
-        #[doc = "Rotation from b_rep_sweep module"]
-        type BRepSweep_Rotation = crate::b_rep_sweep::ffi::Rotation;
-        #[doc = "Tool from b_rep_sweep module"]
-        type BRepSweep_Tool = crate::b_rep_sweep::ffi::Tool;
-        #[doc = "Translation from b_rep_sweep module"]
-        type BRepSweep_Translation = crate::b_rep_sweep::ffi::Translation;
-        #[doc = "Trsf from b_rep_sweep module"]
-        type BRepSweep_Trsf = crate::b_rep_sweep::ffi::Trsf;
-        #[doc = "Message from message module"]
-        type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
-        type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
-        type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
         #[doc = " ======================== BRepPrimAPI_MakeBox ========================"]
         #[doc = "/// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox`"]
         #[doc = ""]
@@ -884,6 +1303,235 @@ pub(crate) mod ffi {
         fn make_one_axis_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut MakeOneAxis>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        #[doc = "Command from b_rep_builder_api module"]
+        type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
+        #[doc = "MakeEdge from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeEdge = crate::b_rep_builder_api::ffi::MakeEdge;
+        #[doc = "MakeFace from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeFace = crate::b_rep_builder_api::ffi::MakeFace;
+        #[doc = "MakeShape from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
+        #[doc = "MakeSolid from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeSolid = crate::b_rep_builder_api::ffi::MakeSolid;
+        #[doc = "MakeVertex from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeVertex = crate::b_rep_builder_api::ffi::MakeVertex;
+        #[doc = "MakeWire from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeWire = crate::b_rep_builder_api::ffi::MakeWire;
+        #[doc = "ModifyShape from b_rep_builder_api module"]
+        type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
+        #[doc = "Sewing from b_rep_builder_api module"]
+        type BRepBuilderAPI_Sewing = crate::b_rep_builder_api::ffi::Sewing;
+        #[doc = "Transform from b_rep_builder_api module"]
+        type BRepBuilderAPI_Transform = crate::b_rep_builder_api::ffi::Transform;
+        #[doc = "Builder from b_rep_prim module"]
+        type BRepPrim_Builder = crate::b_rep_prim::ffi::Builder;
+        #[doc = "Cone from b_rep_prim module"]
+        type BRepPrim_Cone = crate::b_rep_prim::ffi::Cone;
+        #[doc = "Cylinder from b_rep_prim module"]
+        type BRepPrim_Cylinder = crate::b_rep_prim::ffi::Cylinder;
+        #[doc = "GWedge from b_rep_prim module"]
+        type BRepPrim_GWedge = crate::b_rep_prim::ffi::GWedge;
+        #[doc = "OneAxis from b_rep_prim module"]
+        type BRepPrim_OneAxis = crate::b_rep_prim::ffi::OneAxis;
+        #[doc = "Revolution from b_rep_prim module"]
+        type BRepPrim_Revolution = crate::b_rep_prim::ffi::Revolution;
+        #[doc = "Sphere from b_rep_prim module"]
+        type BRepPrim_Sphere = crate::b_rep_prim::ffi::Sphere;
+        #[doc = "Torus from b_rep_prim module"]
+        type BRepPrim_Torus = crate::b_rep_prim::ffi::Torus;
+        #[doc = "Wedge from b_rep_prim module"]
+        type BRepPrim_Wedge = crate::b_rep_prim::ffi::Wedge;
+        #[doc = "Builder from b_rep_sweep module"]
+        type BRepSweep_Builder = crate::b_rep_sweep::ffi::Builder;
+        #[doc = "NumLinearRegularSweep from b_rep_sweep module"]
+        type BRepSweep_NumLinearRegularSweep = crate::b_rep_sweep::ffi::NumLinearRegularSweep;
+        #[doc = "Prism from b_rep_sweep module"]
+        type BRepSweep_Prism = crate::b_rep_sweep::ffi::Prism;
+        #[doc = "Revol from b_rep_sweep module"]
+        type BRepSweep_Revol = crate::b_rep_sweep::ffi::Revol;
+        #[doc = "Rotation from b_rep_sweep module"]
+        type BRepSweep_Rotation = crate::b_rep_sweep::ffi::Rotation;
+        #[doc = "Tool from b_rep_sweep module"]
+        type BRepSweep_Tool = crate::b_rep_sweep::ffi::Tool;
+        #[doc = "Translation from b_rep_sweep module"]
+        type BRepSweep_Translation = crate::b_rep_sweep::ffi::Translation;
+        #[doc = "Trsf from b_rep_sweep module"]
+        type BRepSweep_Trsf = crate::b_rep_sweep::ffi::Trsf;
+        #[doc = "Message from message module"]
+        type Message = crate::message::ffi::Message;
+        #[doc = "Alert from message module"]
+        type Message_Alert = crate::message::ffi::Alert;
+        #[doc = "AlertExtended from message module"]
+        type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
     }
     impl UniquePtr<MakeBox> {}
     impl UniquePtr<MakeCone> {}
@@ -894,612 +1542,4 @@ pub(crate) mod ffi {
     impl UniquePtr<MakeTorus> {}
     impl UniquePtr<MakeSweep> {}
     impl UniquePtr<MakeOneAxis> {}
-}
-pub use ffi::MakeBox;
-impl MakeBox {
-    #[doc = "Default constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::MakeBox_ctor()
-    }
-
-    #[doc = "Make a box with a corner at 0,0,0 and the other dx,dy,dz"]
-    pub fn new_real3(dx: f64, dy: f64, dz: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeBox_ctor_real3(dx, dy, dz)
-    }
-
-    #[doc = "Make a box with a corner at P and size dx, dy, dz."]
-    pub fn new_pnt_real3(P: &ffi::gp_Pnt, dx: f64, dy: f64, dz: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeBox_ctor_pnt_real3(P, dx, dy, dz)
-    }
-
-    #[doc = "Make a box with corners P1,P2."]
-    pub fn new_pnt2(P1: &ffi::gp_Pnt, P2: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
-        ffi::MakeBox_ctor_pnt2(P1, P2)
-    }
-
-    #[doc = "Make a box with Ax2 (the left corner and the axis) and size dx, dy, dz."]
-    pub fn new_ax2_real3(Axes: &ffi::gp_Ax2, dx: f64, dy: f64, dz: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeBox_ctor_ax2_real3(Axes, dx, dy, dz)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_box_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_box_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::make_box_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::make_box_as_b_rep_builder_api_make_shape_mut(self)
-    }
-}
-pub use ffi::MakeCone;
-impl MakeCone {
-    #[doc = "Make a cone. @param[in] R1  cone bottom radius, may be null (z = 0) @param[in] R2  cone top radius, may be null (z = H) @param[in] H   cone height"]
-    pub fn new_real3(R1: f64, R2: f64, H: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeCone_ctor_real3(R1, R2, H)
-    }
-
-    #[doc = "Make a cone. @param[in] R1     cone bottom radius, may be null (z = 0) @param[in] R2     cone top radius, may be null (z = H) @param[in] H      cone height @param[in] angle  angle to create a part cone"]
-    pub fn new_real4(R1: f64, R2: f64, H: f64, angle: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeCone_ctor_real4(R1, R2, H, angle)
-    }
-
-    #[doc = "Make a cone. @param[in] axes  coordinate system for the construction of the cone @param[in] R1    cone bottom radius, may be null (z = 0) @param[in] R2    cone top radius, may be null (z = H) @param[in] H     cone height"]
-    pub fn new_ax2_real3(Axes: &ffi::gp_Ax2, R1: f64, R2: f64, H: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeCone_ctor_ax2_real3(Axes, R1, R2, H)
-    }
-
-    #[doc = "Make a cone of height H radius R1 in the plane z = 0, R2 in the plane Z = H. R1 and R2 may be null. Take a section of <angle> Constructs a cone, or a portion of a cone, of height H, and radius R1 in the plane z = 0 and R2 in the plane z = H. The result is a sharp cone if R1 or R2 is equal to 0. The cone is constructed about the \"Z Axis\" of either: -   the global coordinate system, or -   the local coordinate system Axes. It is limited in these coordinate systems as follows: -   in the v parametric direction (the Z coordinate), by the two parameter values 0 and H, -   and in the u parametric direction (defined by the angle of rotation around the Z axis), in the case of a portion of a cone, by the two parameter values 0 and angle. Angle is given in radians. The resulting shape is composed of: -   a lateral conical face -   two planar faces in the planes z = 0 and z = H, or only one planar face in one of these two planes if a radius value is null (in the case of a complete cone, these faces are circles), and -   and in the case of a portion of a cone, two planar faces to close the shape. (either two parallelograms or two triangles, in the planes u = 0 and u = angle). Exceptions Standard_DomainError if: -   H is less than or equal to Precision::Confusion(), or -   the half-angle at the apex of the cone, defined by R1, R2 and H, is less than Precision::Confusion()/H, or greater than (Pi/2)-Precision::Confusion()/H.f"]
-    pub fn new_ax2_real4(
-        Axes: &ffi::gp_Ax2,
-        R1: f64,
-        R2: f64,
-        H: f64,
-        angle: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeCone_ctor_ax2_real4(Axes, R1, R2, H, angle)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_cone_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_cone_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::make_cone_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::make_cone_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
-    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis"]
-    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
-        ffi::make_cone_as_make_one_axis(self)
-    }
-
-    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis (mutable)"]
-    pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
-        ffi::make_cone_as_make_one_axis_mut(self)
-    }
-}
-pub use ffi::MakeCylinder;
-impl MakeCylinder {
-    #[doc = "Make a cylinder. @param[in] R  cylinder radius @param[in] H  cylinder height"]
-    pub fn new_real2(R: f64, H: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeCylinder_ctor_real2(R, H)
-    }
-
-    #[doc = "Make a cylinder (part cylinder). @param[in] R      cylinder radius @param[in] H      cylinder height @param[in] Angle  defines the missing portion of the cylinder"]
-    pub fn new_real3(R: f64, H: f64, Angle: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeCylinder_ctor_real3(R, H, Angle)
-    }
-
-    #[doc = "Make a cylinder of radius R and length H. @param[in] Axes  coordinate system for the construction of the cylinder @param[in] R     cylinder radius @param[in] H     cylinder height"]
-    pub fn new_ax2_real2(Axes: &ffi::gp_Ax2, R: f64, H: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeCylinder_ctor_ax2_real2(Axes, R, H)
-    }
-
-    #[doc = "Make a cylinder   of  radius R  and  length H with angle  H. Constructs -   a cylinder of radius R and height H, or -   a portion of cylinder of radius R and height H, and of the angle Angle defining the missing portion of the cylinder. The cylinder is constructed about the \"Z Axis\" of either: -   the global coordinate system, or -   the local coordinate system Axes. It is limited in this coordinate system as follows: -   in the v parametric direction (the Z axis), by the two parameter values 0 and H, -   and in the u parametric direction (the rotation angle around the Z Axis), in the case of a portion of a cylinder, by the two parameter values 0 and Angle. Angle is given in radians. The resulting shape is composed of: -   a lateral cylindrical face, -   two planar faces in the planes z = 0 and z = H (in the case of a complete cylinder, these faces are circles), and -   in case of a portion of a cylinder, two additional planar faces to close the shape.(two rectangles in the planes u = 0 and u = Angle). Exceptions Standard_DomainError if: -   R is less than or equal to Precision::Confusion(), or -   H is less than or equal to Precision::Confusion()."]
-    pub fn new_ax2_real3(Axes: &ffi::gp_Ax2, R: f64, H: f64, Angle: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeCylinder_ctor_ax2_real3(Axes, R, H, Angle)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_cylinder_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_cylinder_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::make_cylinder_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::make_cylinder_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
-    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis"]
-    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
-        ffi::make_cylinder_as_make_one_axis(self)
-    }
-
-    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis (mutable)"]
-    pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
-        ffi::make_cylinder_as_make_one_axis_mut(self)
-    }
-}
-pub use ffi::MakePrism;
-impl MakePrism {
-    #[doc = "Builds the prism of base S and vector V. If C is true, S is copied. If Canonize is true then generated surfaces are attempted to be canonized in simple types"]
-    pub fn new_shape_vec_bool2(
-        S: &ffi::TopoDS_Shape,
-        V: &ffi::gp_Vec,
-        Copy: bool,
-        Canonize: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakePrism_ctor_shape_vec_bool2(S, V, Copy, Canonize)
-    }
-
-    #[doc = "Builds a semi-infinite or an infinite prism of base S. If Inf is true the prism  is infinite, if Inf is false the prism is semi-infinite (in the direction D).  If C is true S is copied (for semi-infinite prisms). If Canonize is true then generated surfaces are attempted to be canonized in simple types"]
-    pub fn new_shape_dir_bool3(
-        S: &ffi::TopoDS_Shape,
-        D: &ffi::gp_Dir,
-        Inf: bool,
-        Copy: bool,
-        Canonize: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakePrism_ctor_shape_dir_bool3(S, D, Inf, Copy, Canonize)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_prism_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_prism_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::make_prism_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::make_prism_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
-    #[doc = "Upcast to BRepPrimAPI_MakeSweep"]
-    pub fn as_make_sweep(&self) -> &MakeSweep {
-        ffi::make_prism_as_make_sweep(self)
-    }
-
-    #[doc = "Upcast to BRepPrimAPI_MakeSweep (mutable)"]
-    pub fn as_make_sweep_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeSweep> {
-        ffi::make_prism_as_make_sweep_mut(self)
-    }
-
-    #[doc = "Returns the  TopoDS  Shape of the bottom of the prism."]
-    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::MakePrism_first_shape(self)
-    }
-
-    #[doc = "Returns the TopoDS Shape of the top of the prism. In the case of a finite prism, FirstShape returns the basis of the prism, in other words, S if Copy is false; otherwise, the copy of S belonging to the prism. LastShape returns the copy of S translated by V at the time of construction."]
-    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::MakePrism_last_shape(self)
-    }
-
-    #[doc = "Returns the TopoDS Shape of the bottom  of the  prism. generated  with  theShape (subShape of the  generating shape)."]
-    pub fn first_shape_shape(
-        self: std::pin::Pin<&mut Self>,
-        theShape: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::MakePrism_first_shape_shape(self, theShape)
-    }
-
-    #[doc = "Returns the  TopoDS  Shape of the top  of  the  prism. generated  with  theShape (subShape of the  generating shape)."]
-    pub fn last_shape_shape(
-        self: std::pin::Pin<&mut Self>,
-        theShape: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::MakePrism_last_shape_shape(self, theShape)
-    }
-}
-pub use ffi::MakeRevol;
-impl MakeRevol {
-    #[doc = "Builds the Revol of base S, axis  A and angle  D. If C is true, S is copied."]
-    pub fn new_shape_ax1_real_bool(
-        S: &ffi::TopoDS_Shape,
-        A: &ffi::gp_Ax1,
-        D: f64,
-        Copy: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeRevol_ctor_shape_ax1_real_bool(S, A, D, Copy)
-    }
-
-    #[doc = "Builds the Revol of base S, axis  A and angle 2*Pi. If C is true, S is copied."]
-    pub fn new_shape_ax1_bool(
-        S: &ffi::TopoDS_Shape,
-        A: &ffi::gp_Ax1,
-        Copy: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeRevol_ctor_shape_ax1_bool(S, A, Copy)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_revol_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_revol_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::make_revol_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::make_revol_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
-    #[doc = "Upcast to BRepPrimAPI_MakeSweep"]
-    pub fn as_make_sweep(&self) -> &MakeSweep {
-        ffi::make_revol_as_make_sweep(self)
-    }
-
-    #[doc = "Upcast to BRepPrimAPI_MakeSweep (mutable)"]
-    pub fn as_make_sweep_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeSweep> {
-        ffi::make_revol_as_make_sweep_mut(self)
-    }
-
-    #[doc = "Returns the first shape of the revol  (coinciding with the generating shape)."]
-    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::MakeRevol_first_shape(self)
-    }
-
-    #[doc = "Returns the TopoDS Shape of the end of the revol."]
-    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::MakeRevol_last_shape(self)
-    }
-
-    #[doc = "Returns the TopoDS Shape of the beginning of the revolution, generated with theShape  (subShape of the generating shape)."]
-    pub fn first_shape_shape(
-        self: std::pin::Pin<&mut Self>,
-        theShape: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::MakeRevol_first_shape_shape(self, theShape)
-    }
-
-    #[doc = "Returns the TopoDS Shape of the end of the revolution, generated with  theShape (subShape of the  generating shape)."]
-    pub fn last_shape_shape(
-        self: std::pin::Pin<&mut Self>,
-        theShape: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::MakeRevol_last_shape_shape(self, theShape)
-    }
-}
-pub use ffi::MakeSphere;
-impl MakeSphere {
-    #[doc = "Make a sphere. @param[in] R  sphere radius"]
-    pub fn new_real(R: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeSphere_ctor_real(R)
-    }
-
-    #[doc = "Make a sphere (spherical wedge). @param[in] R      sphere radius @param[in] angle  angle between the radii lying within the bounding semidisks"]
-    pub fn new_real2(R: f64, angle: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeSphere_ctor_real2(R, angle)
-    }
-
-    #[doc = "Make a sphere (spherical segment). @param[in] R  sphere radius @param[in] angle1  first angle defining a spherical segment @param[in] angle2  second angle defining a spherical segment"]
-    pub fn new_real3(R: f64, angle1: f64, angle2: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeSphere_ctor_real3(R, angle1, angle2)
-    }
-
-    #[doc = "Make a sphere (spherical segment). @param[in] R       sphere radius @param[in] angle1  first angle defining a spherical segment @param[in] angle2  second angle defining a spherical segment @param[in] angle3  angle between the radii lying within the bounding semidisks"]
-    pub fn new_real4(R: f64, angle1: f64, angle2: f64, angle3: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeSphere_ctor_real4(R, angle1, angle2, angle3)
-    }
-
-    #[doc = "Make a sphere. @param[in] Center  sphere center coordinates @param[in] R       sphere radius"]
-    pub fn new_pnt_real(Center: &ffi::gp_Pnt, R: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeSphere_ctor_pnt_real(Center, R)
-    }
-
-    #[doc = "Make a sphere (spherical wedge). @param[in] Center  sphere center coordinates @param[in] R       sphere radius @param[in] angle   angle between the radii lying within the bounding semidisks"]
-    pub fn new_pnt_real2(Center: &ffi::gp_Pnt, R: f64, angle: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeSphere_ctor_pnt_real2(Center, R, angle)
-    }
-
-    #[doc = "Make a sphere (spherical segment). @param[in] Center  sphere center coordinates @param[in] R       sphere radius @param[in] angle1  first angle defining a spherical segment @param[in] angle2  second angle defining a spherical segment"]
-    pub fn new_pnt_real3(
-        Center: &ffi::gp_Pnt,
-        R: f64,
-        angle1: f64,
-        angle2: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeSphere_ctor_pnt_real3(Center, R, angle1, angle2)
-    }
-
-    #[doc = "Make a sphere (spherical segment). @param[in] Center  sphere center coordinates @param[in] R       sphere radius @param[in] angle1  first angle defining a spherical segment @param[in] angle2  second angle defining a spherical segment @param[in] angle3  angle between the radii lying within the bounding semidisks"]
-    pub fn new_pnt_real4(
-        Center: &ffi::gp_Pnt,
-        R: f64,
-        angle1: f64,
-        angle2: f64,
-        angle3: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeSphere_ctor_pnt_real4(Center, R, angle1, angle2, angle3)
-    }
-
-    #[doc = "Make a sphere. @param[in] Axis  coordinate system for the construction of the sphere @param[in] R     sphere radius"]
-    pub fn new_ax2_real(Axis: &ffi::gp_Ax2, R: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeSphere_ctor_ax2_real(Axis, R)
-    }
-
-    #[doc = "Make a sphere (spherical wedge). @param[in] Axis   coordinate system for the construction of the sphere @param[in] R      sphere radius @param[in] angle  angle between the radii lying within the bounding semidisks"]
-    pub fn new_ax2_real2(Axis: &ffi::gp_Ax2, R: f64, angle: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeSphere_ctor_ax2_real2(Axis, R, angle)
-    }
-
-    #[doc = "Make a sphere (spherical segment). @param[in] Axis    coordinate system for the construction of the sphere @param[in] R       sphere radius @param[in] angle1  first angle defining a spherical segment @param[in] angle2  second angle defining a spherical segment"]
-    pub fn new_ax2_real3(
-        Axis: &ffi::gp_Ax2,
-        R: f64,
-        angle1: f64,
-        angle2: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeSphere_ctor_ax2_real3(Axis, R, angle1, angle2)
-    }
-
-    #[doc = "Make a sphere of radius R. For all algorithms The resulting shape is composed of -   a lateral spherical face, -   two planar faces parallel to the plane z = 0 if the sphere is truncated in the v parametric direction, or only one planar face if angle1 is equal to -p/2 or if angle2 is equal to p/2 (these faces are circles in case of a complete truncated sphere), -   and in case of a portion of sphere, two planar faces to shut the shape.(in the planes u = 0 and u = angle)."]
-    pub fn new_ax2_real4(
-        Axis: &ffi::gp_Ax2,
-        R: f64,
-        angle1: f64,
-        angle2: f64,
-        angle3: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeSphere_ctor_ax2_real4(Axis, R, angle1, angle2, angle3)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_sphere_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_sphere_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::make_sphere_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::make_sphere_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
-    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis"]
-    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
-        ffi::make_sphere_as_make_one_axis(self)
-    }
-
-    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis (mutable)"]
-    pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
-        ffi::make_sphere_as_make_one_axis_mut(self)
-    }
-}
-pub use ffi::MakeTorus;
-impl MakeTorus {
-    #[doc = "Make a torus. @param[in] R1  distance from the center of the pipe to the center of the torus @param[in] R2  radius of the pipe"]
-    pub fn new_real2(R1: f64, R2: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeTorus_ctor_real2(R1, R2)
-    }
-
-    #[doc = "Make a section of a torus. @param[in] R1     distance from the center of the pipe to the center of the torus @param[in] R2     radius of the pipe @param[in] angle  angle to create a torus pipe segment"]
-    pub fn new_real3(R1: f64, R2: f64, angle: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeTorus_ctor_real3(R1, R2, angle)
-    }
-
-    #[doc = "Make  a torus with angles on the small circle. @param[in] R1      distance from the center of the pipe to the center of the torus @param[in] R2      radius of the pipe @param[in] angle1  first  angle to create a torus ring segment @param[in] angle2  second angle to create a torus ring segment"]
-    pub fn new_real4(R1: f64, R2: f64, angle1: f64, angle2: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeTorus_ctor_real4(R1, R2, angle1, angle2)
-    }
-
-    #[doc = "Make  a torus with angles on the small circle. @param[in] R1      distance from the center of the pipe to the center of the torus @param[in] R2      radius of the pipe @param[in] angle1  first  angle to create a torus ring segment @param[in] angle2  second angle to create a torus ring segment @param[in] angle   angle to create a torus pipe segment"]
-    pub fn new_real5(
-        R1: f64,
-        R2: f64,
-        angle1: f64,
-        angle2: f64,
-        angle: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeTorus_ctor_real5(R1, R2, angle1, angle2, angle)
-    }
-
-    #[doc = "Make a torus. @param[in] Axes  coordinate system for the construction of the sphere @param[in] R1    distance from the center of the pipe to the center of the torus @param[in] R2    radius of the pipe"]
-    pub fn new_ax2_real2(Axes: &ffi::gp_Ax2, R1: f64, R2: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeTorus_ctor_ax2_real2(Axes, R1, R2)
-    }
-
-    #[doc = "Make a section of a torus. @param[in] Axes   coordinate system for the construction of the sphere @param[in] R1     distance from the center of the pipe to the center of the torus @param[in] R2     radius of the pipe @param[in] angle  angle to create a torus pipe segment"]
-    pub fn new_ax2_real3(Axes: &ffi::gp_Ax2, R1: f64, R2: f64, angle: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeTorus_ctor_ax2_real3(Axes, R1, R2, angle)
-    }
-
-    #[doc = "Make a torus. @param[in] Axes    coordinate system for the construction of the sphere @param[in] R1      distance from the center of the pipe to the center of the torus @param[in] R2      radius of the pipe @param[in] angle1  first  angle to create a torus ring segment @param[in] angle2  second angle to create a torus ring segment"]
-    pub fn new_ax2_real4(
-        Axes: &ffi::gp_Ax2,
-        R1: f64,
-        R2: f64,
-        angle1: f64,
-        angle2: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeTorus_ctor_ax2_real4(Axes, R1, R2, angle1, angle2)
-    }
-
-    #[doc = "Make a section of a torus of radii R1 R2. For all algorithms The resulting shape is composed of -      a lateral toroidal face, -      two conical faces (defined  by the equation v = angle1 and v = angle2) if the sphere is truncated in the v parametric direction (they may be cylindrical faces in some particular conditions), and in case of a portion of torus, two planar faces to close the shape.(in the planes u = 0 and u = angle). Notes: -      The u parameter corresponds to a rotation angle around the Z axis. -      The circle whose radius is equal to the minor radius, located in the plane defined by the X axis and the Z axis, centered on the X axis, on its positive side, and positioned at a distance from the origin equal to the major radius, is the reference circle of the torus. The rotation around an axis parallel to the Y axis and passing through the center of the reference circle gives the v parameter on the reference circle. The X axis gives the origin of the v parameter. Near 0, as v increases, the Z coordinate decreases."]
-    pub fn new_ax2_real5(
-        Axes: &ffi::gp_Ax2,
-        R1: f64,
-        R2: f64,
-        angle1: f64,
-        angle2: f64,
-        angle: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeTorus_ctor_ax2_real5(Axes, R1, R2, angle1, angle2, angle)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_torus_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_torus_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::make_torus_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::make_torus_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
-    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis"]
-    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
-        ffi::make_torus_as_make_one_axis(self)
-    }
-
-    #[doc = "Upcast to BRepPrimAPI_MakeOneAxis (mutable)"]
-    pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
-        ffi::make_torus_as_make_one_axis_mut(self)
-    }
-}
-pub use ffi::MakeSweep;
-impl MakeSweep {
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_sweep_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_sweep_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::make_sweep_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::make_sweep_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
-    #[doc = "Returns the  TopoDS  Shape of the bottom of the sweep."]
-    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::MakeSweep_first_shape(self)
-    }
-
-    #[doc = "Returns the TopoDS Shape of the top of the sweep."]
-    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::MakeSweep_last_shape(self)
-    }
-}
-pub use ffi::MakeOneAxis;
-impl MakeOneAxis {
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_one_axis_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_one_axis_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::make_one_axis_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::make_one_axis_as_b_rep_builder_api_make_shape_mut(self)
-    }
 }

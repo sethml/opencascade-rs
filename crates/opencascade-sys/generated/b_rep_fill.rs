@@ -16,138 +16,91 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::PipeShell;
+impl PipeShell {
+    #[doc = "Set an sweep's mode If no mode are set, the mode used in MakePipe is used"]
+    pub fn new_wire(Spine: &ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
+        ffi::PipeShell_ctor_wire(Spine)
+    }
+
+    #[doc = "Wrap BRepFill_PipeShell in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBRepFillPipeShell> {
+        ffi::PipeShell_to_handle(obj)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::PipeShell_get_type_name()
+    }
+}
+pub use ffi::Section;
+impl Section {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Section_ctor()
+    }
+
+    pub fn new_shape_vertex_bool2(
+        Profile: &ffi::TopoDS_Shape,
+        V: &ffi::TopoDS_Vertex,
+        WithContact: bool,
+        WithCorrection: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Section_ctor_shape_vertex_bool2(Profile, V, WithContact, WithCorrection)
+    }
+
+    pub fn modified_shape(
+        &self,
+        theShape: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Section_modified_shape(self, theShape)
+    }
+}
+pub use ffi::Pipe;
+impl Pipe {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Pipe_ctor()
+    }
+
+    #[doc = "Returns the face created from an edge of the spine and an edge of the profile. if the edges are not in the spine or the profile"]
+    pub fn face(
+        self: std::pin::Pin<&mut Self>,
+        ESpine: &ffi::TopoDS_Edge,
+        EProfile: &ffi::TopoDS_Edge,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Face> {
+        ffi::Pipe_face(self, ESpine, EProfile)
+    }
+
+    #[doc = "Returns the edge created from an edge of the spine and a vertex of the profile. if the edge or the vertex are not in  the spine or the profile."]
+    pub fn edge(
+        self: std::pin::Pin<&mut Self>,
+        ESpine: &ffi::TopoDS_Edge,
+        VProfile: &ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
+        ffi::Pipe_edge(self, ESpine, VProfile)
+    }
+
+    #[doc = "Returns  the shape created from the profile at the position of the vertex VSpine. if the vertex is not in the Spine"]
+    pub fn section(&self, VSpine: &ffi::TopoDS_Vertex) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Pipe_section(self, VSpine)
+    }
+
+    #[doc = "Create a Wire by sweeping the Point along the <spine> if the <Spine> is undefined"]
+    pub fn pipe_line(
+        self: std::pin::Pin<&mut Self>,
+        Point: &ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Wire> {
+        ffi::Pipe_pipe_line(self, Point)
+    }
+}
+pub use ffi::OffsetWire;
+impl OffsetWire {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::OffsetWire_ctor()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_fill.hxx");
-        #[doc = "BisectingLocus from b_rep_mat2d module"]
-        type BRepMAT2d_BisectingLocus = crate::b_rep_mat2d::ffi::BisectingLocus;
-        #[doc = "LinkTopoBilo from b_rep_mat2d module"]
-        type BRepMAT2d_LinkTopoBilo = crate::b_rep_mat2d::ffi::LinkTopoBilo;
-        #[doc = "BSpFunc from law module"]
-        type Law_BSpFunc = crate::law::ffi::BSpFunc;
-        #[doc = "Function from law module"]
-        type Law_Function = crate::law::ffi::Function;
-        #[doc = "Interpol from law module"]
-        type Law_Interpol = crate::law::ffi::Interpol;
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBRepFillPipeShell"]
-        type HandleBRepFillPipeShell;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleLawFunction"]
-        type HandleLawFunction;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
         #[doc = " ======================== BRepFill_PipeShell ========================"]
         #[doc = "/// **Source:** `BRepFill_PipeShell.hxx` - `BRepFill_PipeShell`"]
         #[doc = ""]
@@ -385,90 +338,177 @@ pub(crate) mod ffi {
             self: Pin<&mut OffsetWire>,
             SpineShape: &TopoDS_Shape,
         ) -> &TopTools_ListOfShape;
+        #[doc = "BisectingLocus from b_rep_mat2d module"]
+        type BRepMAT2d_BisectingLocus = crate::b_rep_mat2d::ffi::BisectingLocus;
+        #[doc = "LinkTopoBilo from b_rep_mat2d module"]
+        type BRepMAT2d_LinkTopoBilo = crate::b_rep_mat2d::ffi::LinkTopoBilo;
+        #[doc = "BSpFunc from law module"]
+        type Law_BSpFunc = crate::law::ffi::BSpFunc;
+        #[doc = "Function from law module"]
+        type Law_Function = crate::law::ffi::Function;
+        #[doc = "Interpol from law module"]
+        type Law_Interpol = crate::law::ffi::Interpol;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBRepFillPipeShell"]
+        type HandleBRepFillPipeShell;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleLawFunction"]
+        type HandleLawFunction;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
     }
     impl UniquePtr<PipeShell> {}
     impl UniquePtr<Section> {}
     impl UniquePtr<Pipe> {}
     impl UniquePtr<OffsetWire> {}
-}
-pub use ffi::PipeShell;
-impl PipeShell {
-    #[doc = "Set an sweep's mode If no mode are set, the mode used in MakePipe is used"]
-    pub fn new_wire(Spine: &ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
-        ffi::PipeShell_ctor_wire(Spine)
-    }
-
-    #[doc = "Wrap BRepFill_PipeShell in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBRepFillPipeShell> {
-        ffi::PipeShell_to_handle(obj)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::PipeShell_get_type_name()
-    }
-}
-pub use ffi::Section;
-impl Section {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Section_ctor()
-    }
-
-    pub fn new_shape_vertex_bool2(
-        Profile: &ffi::TopoDS_Shape,
-        V: &ffi::TopoDS_Vertex,
-        WithContact: bool,
-        WithCorrection: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Section_ctor_shape_vertex_bool2(Profile, V, WithContact, WithCorrection)
-    }
-
-    pub fn modified_shape(
-        &self,
-        theShape: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Section_modified_shape(self, theShape)
-    }
-}
-pub use ffi::Pipe;
-impl Pipe {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Pipe_ctor()
-    }
-
-    #[doc = "Returns the face created from an edge of the spine and an edge of the profile. if the edges are not in the spine or the profile"]
-    pub fn face(
-        self: std::pin::Pin<&mut Self>,
-        ESpine: &ffi::TopoDS_Edge,
-        EProfile: &ffi::TopoDS_Edge,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Face> {
-        ffi::Pipe_face(self, ESpine, EProfile)
-    }
-
-    #[doc = "Returns the edge created from an edge of the spine and a vertex of the profile. if the edge or the vertex are not in  the spine or the profile."]
-    pub fn edge(
-        self: std::pin::Pin<&mut Self>,
-        ESpine: &ffi::TopoDS_Edge,
-        VProfile: &ffi::TopoDS_Vertex,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
-        ffi::Pipe_edge(self, ESpine, VProfile)
-    }
-
-    #[doc = "Returns  the shape created from the profile at the position of the vertex VSpine. if the vertex is not in the Spine"]
-    pub fn section(&self, VSpine: &ffi::TopoDS_Vertex) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Pipe_section(self, VSpine)
-    }
-
-    #[doc = "Create a Wire by sweeping the Point along the <spine> if the <Spine> is undefined"]
-    pub fn pipe_line(
-        self: std::pin::Pin<&mut Self>,
-        Point: &ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Wire> {
-        ffi::Pipe_pipe_line(self, Point)
-    }
-}
-pub use ffi::OffsetWire;
-impl OffsetWire {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::OffsetWire_ctor()
-    }
 }

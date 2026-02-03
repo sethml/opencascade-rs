@@ -10,10 +10,54 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::ShapeProcess;
+impl ShapeProcess {
+    #[doc = "Registers operator to make it visible for Performer"]
+    pub fn register_operator(name: &str, op: &ffi::HandleShapeProcessOperator) -> bool {
+        ffi::ShapeProcess_register_operator(name, op)
+    }
+
+    #[doc = "Finds operator by its name"]
+    pub fn find_operator(
+        name: &str,
+        op: std::pin::Pin<&mut ffi::HandleShapeProcessOperator>,
+    ) -> bool {
+        ffi::ShapeProcess_find_operator(name, op)
+    }
+
+    #[doc = "Performs a specified sequence of operators on Context Resource file and other data should be already loaded to Context (including description of sequence seq)"]
+    pub fn perform_handlecontext_charptr_progressrange(
+        context: &ffi::HandleShapeProcessContext,
+        seq: &str,
+        theProgress: &ffi::Message_ProgressRange,
+    ) -> bool {
+        ffi::ShapeProcess_perform_handlecontext_charptr_progressrange(context, seq, theProgress)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_shape_process.hxx");
+        #[doc = " ======================== ShapeProcess ========================"]
+        #[doc = "/// **Source:** `ShapeProcess.hxx` - `ShapeProcess`"]
+        #[doc = ""]
+        #[doc = "Shape Processing module allows to define and apply general Shape Processing as a customizable sequence of Shape Healing operators. The customization is implemented via user-editable resource file which defines sequence of operators to be executed and their parameters."]
+        #[cxx_name = "ShapeProcess"]
+        type ShapeProcess;
+        #[doc = "Registers operator to make it visible for Performer"]
+        #[cxx_name = "ShapeProcess_RegisterOperator"]
+        fn ShapeProcess_register_operator(name: &str, op: &HandleShapeProcessOperator) -> bool;
+        #[doc = "Finds operator by its name"]
+        #[cxx_name = "ShapeProcess_FindOperator"]
+        fn ShapeProcess_find_operator(name: &str, op: Pin<&mut HandleShapeProcessOperator>)
+            -> bool;
+        #[doc = "Performs a specified sequence of operators on Context Resource file and other data should be already loaded to Context (including description of sequence seq)"]
+        #[cxx_name = "ShapeProcess_Perform_handlecontext_charptr_progressrange"]
+        fn ShapeProcess_perform_handlecontext_charptr_progressrange(
+            context: &HandleShapeProcessContext,
+            seq: &str,
+            theProgress: &Message_ProgressRange,
+        ) -> bool;
         #[doc = "Message from message module"]
         type Message = crate::message::ffi::Message;
         #[doc = "Alert from message module"]
@@ -52,50 +96,6 @@ pub(crate) mod ffi {
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleShapeProcessOperator"]
         type HandleShapeProcessOperator;
-        #[doc = " ======================== ShapeProcess ========================"]
-        #[doc = "/// **Source:** `ShapeProcess.hxx` - `ShapeProcess`"]
-        #[doc = ""]
-        #[doc = "Shape Processing module allows to define and apply general Shape Processing as a customizable sequence of Shape Healing operators. The customization is implemented via user-editable resource file which defines sequence of operators to be executed and their parameters."]
-        #[cxx_name = "ShapeProcess"]
-        type ShapeProcess;
-        #[doc = "Registers operator to make it visible for Performer"]
-        #[cxx_name = "ShapeProcess_RegisterOperator"]
-        fn ShapeProcess_register_operator(name: &str, op: &HandleShapeProcessOperator) -> bool;
-        #[doc = "Finds operator by its name"]
-        #[cxx_name = "ShapeProcess_FindOperator"]
-        fn ShapeProcess_find_operator(name: &str, op: Pin<&mut HandleShapeProcessOperator>)
-            -> bool;
-        #[doc = "Performs a specified sequence of operators on Context Resource file and other data should be already loaded to Context (including description of sequence seq)"]
-        #[cxx_name = "ShapeProcess_Perform_handlecontext_charptr_progressrange"]
-        fn ShapeProcess_perform_handlecontext_charptr_progressrange(
-            context: &HandleShapeProcessContext,
-            seq: &str,
-            theProgress: &Message_ProgressRange,
-        ) -> bool;
     }
     impl UniquePtr<ShapeProcess> {}
-}
-pub use ffi::ShapeProcess;
-impl ShapeProcess {
-    #[doc = "Registers operator to make it visible for Performer"]
-    pub fn register_operator(name: &str, op: &ffi::HandleShapeProcessOperator) -> bool {
-        ffi::ShapeProcess_register_operator(name, op)
-    }
-
-    #[doc = "Finds operator by its name"]
-    pub fn find_operator(
-        name: &str,
-        op: std::pin::Pin<&mut ffi::HandleShapeProcessOperator>,
-    ) -> bool {
-        ffi::ShapeProcess_find_operator(name, op)
-    }
-
-    #[doc = "Performs a specified sequence of operators on Context Resource file and other data should be already loaded to Context (including description of sequence seq)"]
-    pub fn perform_handlecontext_charptr_progressrange(
-        context: &ffi::HandleShapeProcessContext,
-        seq: &str,
-        theProgress: &ffi::Message_ProgressRange,
-    ) -> bool {
-        ffi::ShapeProcess_perform_handlecontext_charptr_progressrange(context, seq, theProgress)
-    }
 }

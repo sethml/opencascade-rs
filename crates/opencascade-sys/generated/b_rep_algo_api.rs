@@ -16,186 +16,442 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::BuilderAlgo;
+impl BuilderAlgo {
+    #[doc = "@name Constructors Empty constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::BuilderAlgo_ctor()
+    }
+
+    #[doc = "Constructor with prepared Filler object"]
+    pub fn new_pavefiller(thePF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
+        ffi::BuilderAlgo_ctor_pavefiller(thePF)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::builder_algo_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::builder_algo_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::builder_algo_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::builder_algo_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "History tool"]
+    pub fn history(&self) -> cxx::UniquePtr<ffi::HandleBRepToolsHistory> {
+        ffi::BuilderAlgo_history(self)
+    }
+}
+pub use ffi::BooleanOperation;
+impl BooleanOperation {
+    #[doc = "@name Constructors Empty constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::BooleanOperation_ctor()
+    }
+
+    #[doc = "Constructor with precomputed intersections of arguments."]
+    pub fn new_pavefiller(thePF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
+        ffi::BooleanOperation_ctor_pavefiller(thePF)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
+    pub fn as_builder_algo(&self) -> &BuilderAlgo {
+        ffi::boolean_operation_as_builder_algo(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
+    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
+        ffi::boolean_operation_as_builder_algo_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::boolean_operation_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::boolean_operation_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::boolean_operation_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::boolean_operation_as_b_rep_builder_api_make_shape_mut(self)
+    }
+}
+pub use ffi::Common;
+impl Common {
+    #[doc = "Empty constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Common_ctor()
+    }
+
+    #[doc = "Empty constructor <PF> - PaveFiller object that is carried out"]
+    pub fn new_pavefiller(PF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
+        ffi::Common_ctor_pavefiller(PF)
+    }
+
+    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation Obsolete"]
+    pub fn new_shape2_progressrange(
+        S1: &ffi::TopoDS_Shape,
+        S2: &ffi::TopoDS_Shape,
+        theRange: &ffi::Message_ProgressRange,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Common_ctor_shape2_progressrange(S1, S2, theRange)
+    }
+
+    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete"]
+    pub fn new_shape2_pavefiller_progressrange(
+        S1: &ffi::TopoDS_Shape,
+        S2: &ffi::TopoDS_Shape,
+        PF: &ffi::BOPAlgo_PaveFiller,
+        theRange: &ffi::Message_ProgressRange,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Common_ctor_shape2_pavefiller_progressrange(S1, S2, PF, theRange)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation"]
+    pub fn as_boolean_operation(&self) -> &BooleanOperation {
+        ffi::common_as_boolean_operation(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation (mutable)"]
+    pub fn as_boolean_operation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BooleanOperation> {
+        ffi::common_as_boolean_operation_mut(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
+    pub fn as_builder_algo(&self) -> &BuilderAlgo {
+        ffi::common_as_builder_algo(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
+    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
+        ffi::common_as_builder_algo_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::common_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::common_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::common_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::common_as_b_rep_builder_api_make_shape_mut(self)
+    }
+}
+pub use ffi::Cut;
+impl Cut {
+    #[doc = "Empty constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Cut_ctor()
+    }
+
+    #[doc = "Empty constructor <PF> - PaveFiller object that is carried out"]
+    pub fn new_pavefiller(PF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
+        ffi::Cut_ctor_pavefiller(PF)
+    }
+
+    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation Obsolete"]
+    pub fn new_shape2_progressrange(
+        S1: &ffi::TopoDS_Shape,
+        S2: &ffi::TopoDS_Shape,
+        theRange: &ffi::Message_ProgressRange,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Cut_ctor_shape2_progressrange(S1, S2, theRange)
+    }
+
+    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete"]
+    pub fn new_shape2_pavefiller_bool_progressrange(
+        S1: &ffi::TopoDS_Shape,
+        S2: &ffi::TopoDS_Shape,
+        aDSF: &ffi::BOPAlgo_PaveFiller,
+        bFWD: bool,
+        theRange: &ffi::Message_ProgressRange,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Cut_ctor_shape2_pavefiller_bool_progressrange(S1, S2, aDSF, bFWD, theRange)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation"]
+    pub fn as_boolean_operation(&self) -> &BooleanOperation {
+        ffi::cut_as_boolean_operation(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation (mutable)"]
+    pub fn as_boolean_operation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BooleanOperation> {
+        ffi::cut_as_boolean_operation_mut(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
+    pub fn as_builder_algo(&self) -> &BuilderAlgo {
+        ffi::cut_as_builder_algo(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
+    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
+        ffi::cut_as_builder_algo_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::cut_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::cut_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::cut_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::cut_as_b_rep_builder_api_make_shape_mut(self)
+    }
+}
+pub use ffi::Fuse;
+impl Fuse {
+    #[doc = "Empty constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Fuse_ctor()
+    }
+
+    #[doc = "Empty constructor <PF> - PaveFiller object that is carried out"]
+    pub fn new_pavefiller(PF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
+        ffi::Fuse_ctor_pavefiller(PF)
+    }
+
+    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation Obsolete"]
+    pub fn new_shape2_progressrange(
+        S1: &ffi::TopoDS_Shape,
+        S2: &ffi::TopoDS_Shape,
+        theRange: &ffi::Message_ProgressRange,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Fuse_ctor_shape2_progressrange(S1, S2, theRange)
+    }
+
+    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete"]
+    pub fn new_shape2_pavefiller_progressrange(
+        S1: &ffi::TopoDS_Shape,
+        S2: &ffi::TopoDS_Shape,
+        aDSF: &ffi::BOPAlgo_PaveFiller,
+        theRange: &ffi::Message_ProgressRange,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Fuse_ctor_shape2_pavefiller_progressrange(S1, S2, aDSF, theRange)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation"]
+    pub fn as_boolean_operation(&self) -> &BooleanOperation {
+        ffi::fuse_as_boolean_operation(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation (mutable)"]
+    pub fn as_boolean_operation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BooleanOperation> {
+        ffi::fuse_as_boolean_operation_mut(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
+    pub fn as_builder_algo(&self) -> &BuilderAlgo {
+        ffi::fuse_as_builder_algo(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
+    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
+        ffi::fuse_as_builder_algo_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::fuse_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::fuse_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::fuse_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::fuse_as_b_rep_builder_api_make_shape_mut(self)
+    }
+}
+pub use ffi::Section;
+impl Section {
+    #[doc = "Empty constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Section_ctor()
+    }
+
+    #[doc = "Empty constructor <PF> - PaveFiller object that is carried out"]
+    pub fn new_pavefiller(PF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
+        ffi::Section_ctor_pavefiller(PF)
+    }
+
+    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete"]
+    pub fn new_shape2_bool(
+        S1: &ffi::TopoDS_Shape,
+        S2: &ffi::TopoDS_Shape,
+        PerformNow: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Section_ctor_shape2_bool(S1, S2, PerformNow)
+    }
+
+    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <PF> - PaveFiller object that is carried out <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete"]
+    pub fn new_shape2_pavefiller_bool(
+        S1: &ffi::TopoDS_Shape,
+        S2: &ffi::TopoDS_Shape,
+        aDSF: &ffi::BOPAlgo_PaveFiller,
+        PerformNow: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Section_ctor_shape2_pavefiller_bool(S1, S2, aDSF, PerformNow)
+    }
+
+    #[doc = "Constructor with two shapes <S1>  - argument <Pl>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete"]
+    pub fn new_shape_pln_bool(
+        S1: &ffi::TopoDS_Shape,
+        Pl: &ffi::gp_Pln,
+        PerformNow: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Section_ctor_shape_pln_bool(S1, Pl, PerformNow)
+    }
+
+    #[doc = "Constructor with two shapes <S1>  - argument <Sf>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete"]
+    pub fn new_shape_handlesurface_bool(
+        S1: &ffi::TopoDS_Shape,
+        Sf: &ffi::HandleGeomSurface,
+        PerformNow: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Section_ctor_shape_handlesurface_bool(S1, Sf, PerformNow)
+    }
+
+    #[doc = "Constructor with two shapes <Sf>  - argument <S2>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete"]
+    pub fn new_handlesurface_shape_bool(
+        Sf: &ffi::HandleGeomSurface,
+        S2: &ffi::TopoDS_Shape,
+        PerformNow: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Section_ctor_handlesurface_shape_bool(Sf, S2, PerformNow)
+    }
+
+    #[doc = "Constructor with two shapes <Sf1>  - argument <Sf2>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete"]
+    pub fn new_handlesurface2_bool(
+        Sf1: &ffi::HandleGeomSurface,
+        Sf2: &ffi::HandleGeomSurface,
+        PerformNow: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Section_ctor_handlesurface2_bool(Sf1, Sf2, PerformNow)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation"]
+    pub fn as_boolean_operation(&self) -> &BooleanOperation {
+        ffi::section_as_boolean_operation(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation (mutable)"]
+    pub fn as_boolean_operation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BooleanOperation> {
+        ffi::section_as_boolean_operation_mut(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
+    pub fn as_builder_algo(&self) -> &BuilderAlgo {
+        ffi::section_as_builder_algo(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
+    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
+        ffi::section_as_builder_algo_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::section_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::section_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::section_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::section_as_b_rep_builder_api_make_shape_mut(self)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_algo_api.hxx");
-        #[doc = "BOP from bop_algo module"]
-        type BOPAlgo_BOP = crate::bop_algo::ffi::BOP;
-        #[doc = "Builder from bop_algo module"]
-        type BOPAlgo_Builder = crate::bop_algo::ffi::Builder;
-        #[doc = "BuilderShape from bop_algo module"]
-        type BOPAlgo_BuilderShape = crate::bop_algo::ffi::BuilderShape;
-        #[doc = "Options from bop_algo module"]
-        type BOPAlgo_Options = crate::bop_algo::ffi::Options;
-        #[doc = "PISteps from bop_algo module"]
-        type BOPAlgo_PISteps = crate::bop_algo::ffi::PISteps;
-        #[doc = "ParallelAlgo from bop_algo module"]
-        type BOPAlgo_ParallelAlgo = crate::bop_algo::ffi::ParallelAlgo;
-        #[doc = "ToolsProvider from bop_algo module"]
-        type BOPAlgo_ToolsProvider = crate::bop_algo::ffi::ToolsProvider;
-        #[doc = "Command from b_rep_builder_api module"]
-        type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
-        #[doc = "MakeEdge from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeEdge = crate::b_rep_builder_api::ffi::MakeEdge;
-        #[doc = "MakeFace from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeFace = crate::b_rep_builder_api::ffi::MakeFace;
-        #[doc = "MakeShape from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
-        #[doc = "MakeSolid from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeSolid = crate::b_rep_builder_api::ffi::MakeSolid;
-        #[doc = "MakeVertex from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeVertex = crate::b_rep_builder_api::ffi::MakeVertex;
-        #[doc = "MakeWire from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeWire = crate::b_rep_builder_api::ffi::MakeWire;
-        #[doc = "ModifyShape from b_rep_builder_api module"]
-        type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
-        #[doc = "Sewing from b_rep_builder_api module"]
-        type BRepBuilderAPI_Sewing = crate::b_rep_builder_api::ffi::Sewing;
-        #[doc = "Transform from b_rep_builder_api module"]
-        type BRepBuilderAPI_Transform = crate::b_rep_builder_api::ffi::Transform;
-        #[doc = "BRepTools from b_rep_tools module"]
-        type BRepTools = crate::b_rep_tools::ffi::BRepTools;
-        #[doc = "History from b_rep_tools module"]
-        type BRepTools_History = crate::b_rep_tools::ffi::History;
-        #[doc = "Modifier from b_rep_tools module"]
-        type BRepTools_Modifier = crate::b_rep_tools::ffi::Modifier;
-        #[doc = "ReShape from b_rep_tools module"]
-        type BRepTools_ReShape = crate::b_rep_tools::ffi::ReShape;
-        #[doc = "BSplineCurve from geom module"]
-        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
-        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
-        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
-        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
-        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
-        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
-        type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
-        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
-        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
-        type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
-        type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
-        type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
-        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "Message from message module"]
-        type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
-        type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
-        type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "BOPAlgo_PBuilder"]
-        type BOPAlgo_PBuilder;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "BOPAlgo_PPaveFiller"]
-        type BOPAlgo_PPaveFiller;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "BOPAlgo_PaveFiller"]
-        type BOPAlgo_PaveFiller;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBRepToolsHistory"]
-        type HandleBRepToolsHistory;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomSurface"]
-        type HandleGeomSurface;
         #[doc = " ======================== BRepAlgoAPI_BuilderAlgo ========================"]
         #[doc = "/// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx` - `BRepAlgoAPI_BuilderAlgo`"]
         #[doc = ""]
@@ -691,6 +947,222 @@ pub(crate) mod ffi {
         fn section_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut Section>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        #[doc = "BOP from bop_algo module"]
+        type BOPAlgo_BOP = crate::bop_algo::ffi::BOP;
+        #[doc = "Builder from bop_algo module"]
+        type BOPAlgo_Builder = crate::bop_algo::ffi::Builder;
+        #[doc = "BuilderShape from bop_algo module"]
+        type BOPAlgo_BuilderShape = crate::bop_algo::ffi::BuilderShape;
+        #[doc = "Options from bop_algo module"]
+        type BOPAlgo_Options = crate::bop_algo::ffi::Options;
+        #[doc = "PISteps from bop_algo module"]
+        type BOPAlgo_PISteps = crate::bop_algo::ffi::PISteps;
+        #[doc = "ParallelAlgo from bop_algo module"]
+        type BOPAlgo_ParallelAlgo = crate::bop_algo::ffi::ParallelAlgo;
+        #[doc = "ToolsProvider from bop_algo module"]
+        type BOPAlgo_ToolsProvider = crate::bop_algo::ffi::ToolsProvider;
+        #[doc = "Command from b_rep_builder_api module"]
+        type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
+        #[doc = "MakeEdge from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeEdge = crate::b_rep_builder_api::ffi::MakeEdge;
+        #[doc = "MakeFace from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeFace = crate::b_rep_builder_api::ffi::MakeFace;
+        #[doc = "MakeShape from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
+        #[doc = "MakeSolid from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeSolid = crate::b_rep_builder_api::ffi::MakeSolid;
+        #[doc = "MakeVertex from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeVertex = crate::b_rep_builder_api::ffi::MakeVertex;
+        #[doc = "MakeWire from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeWire = crate::b_rep_builder_api::ffi::MakeWire;
+        #[doc = "ModifyShape from b_rep_builder_api module"]
+        type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
+        #[doc = "Sewing from b_rep_builder_api module"]
+        type BRepBuilderAPI_Sewing = crate::b_rep_builder_api::ffi::Sewing;
+        #[doc = "Transform from b_rep_builder_api module"]
+        type BRepBuilderAPI_Transform = crate::b_rep_builder_api::ffi::Transform;
+        #[doc = "BRepTools from b_rep_tools module"]
+        type BRepTools = crate::b_rep_tools::ffi::BRepTools;
+        #[doc = "History from b_rep_tools module"]
+        type BRepTools_History = crate::b_rep_tools::ffi::History;
+        #[doc = "Modifier from b_rep_tools module"]
+        type BRepTools_Modifier = crate::b_rep_tools::ffi::Modifier;
+        #[doc = "ReShape from b_rep_tools module"]
+        type BRepTools_ReShape = crate::b_rep_tools::ffi::ReShape;
+        #[doc = "BSplineCurve from geom module"]
+        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
+        #[doc = "BSplineSurface from geom module"]
+        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
+        #[doc = "BezierCurve from geom module"]
+        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
+        #[doc = "BezierSurface from geom module"]
+        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BoundedCurve from geom module"]
+        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
+        #[doc = "BoundedSurface from geom module"]
+        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
+        #[doc = "Curve from geom module"]
+        type Geom_Curve = crate::geom::ffi::Curve;
+        #[doc = "CylindricalSurface from geom module"]
+        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
+        #[doc = "ElementarySurface from geom module"]
+        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
+        #[doc = "Geometry from geom module"]
+        type Geom_Geometry = crate::geom::ffi::Geometry;
+        #[doc = "Plane from geom module"]
+        type Geom_Plane = crate::geom::ffi::Plane;
+        #[doc = "Surface from geom module"]
+        type Geom_Surface = crate::geom::ffi::Surface;
+        #[doc = "TrimmedCurve from geom module"]
+        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
+        #[doc = "Message from message module"]
+        type Message = crate::message::ffi::Message;
+        #[doc = "Alert from message module"]
+        type Message_Alert = crate::message::ffi::Alert;
+        #[doc = "AlertExtended from message module"]
+        type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "BOPAlgo_PBuilder"]
+        type BOPAlgo_PBuilder;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "BOPAlgo_PPaveFiller"]
+        type BOPAlgo_PPaveFiller;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "BOPAlgo_PaveFiller"]
+        type BOPAlgo_PaveFiller;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBRepToolsHistory"]
+        type HandleBRepToolsHistory;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomSurface"]
+        type HandleGeomSurface;
     }
     impl UniquePtr<BuilderAlgo> {}
     impl UniquePtr<BooleanOperation> {}
@@ -698,436 +1170,4 @@ pub(crate) mod ffi {
     impl UniquePtr<Cut> {}
     impl UniquePtr<Fuse> {}
     impl UniquePtr<Section> {}
-}
-pub use ffi::BuilderAlgo;
-impl BuilderAlgo {
-    #[doc = "@name Constructors Empty constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::BuilderAlgo_ctor()
-    }
-
-    #[doc = "Constructor with prepared Filler object"]
-    pub fn new_pavefiller(thePF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
-        ffi::BuilderAlgo_ctor_pavefiller(thePF)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::builder_algo_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::builder_algo_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::builder_algo_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::builder_algo_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
-    #[doc = "History tool"]
-    pub fn history(&self) -> cxx::UniquePtr<ffi::HandleBRepToolsHistory> {
-        ffi::BuilderAlgo_history(self)
-    }
-}
-pub use ffi::BooleanOperation;
-impl BooleanOperation {
-    #[doc = "@name Constructors Empty constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::BooleanOperation_ctor()
-    }
-
-    #[doc = "Constructor with precomputed intersections of arguments."]
-    pub fn new_pavefiller(thePF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
-        ffi::BooleanOperation_ctor_pavefiller(thePF)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
-    pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        ffi::boolean_operation_as_builder_algo(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
-    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
-        ffi::boolean_operation_as_builder_algo_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::boolean_operation_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::boolean_operation_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::boolean_operation_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::boolean_operation_as_b_rep_builder_api_make_shape_mut(self)
-    }
-}
-pub use ffi::Common;
-impl Common {
-    #[doc = "Empty constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Common_ctor()
-    }
-
-    #[doc = "Empty constructor <PF> - PaveFiller object that is carried out"]
-    pub fn new_pavefiller(PF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
-        ffi::Common_ctor_pavefiller(PF)
-    }
-
-    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation Obsolete"]
-    pub fn new_shape2_progressrange(
-        S1: &ffi::TopoDS_Shape,
-        S2: &ffi::TopoDS_Shape,
-        theRange: &ffi::Message_ProgressRange,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Common_ctor_shape2_progressrange(S1, S2, theRange)
-    }
-
-    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete"]
-    pub fn new_shape2_pavefiller_progressrange(
-        S1: &ffi::TopoDS_Shape,
-        S2: &ffi::TopoDS_Shape,
-        PF: &ffi::BOPAlgo_PaveFiller,
-        theRange: &ffi::Message_ProgressRange,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Common_ctor_shape2_pavefiller_progressrange(S1, S2, PF, theRange)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation"]
-    pub fn as_boolean_operation(&self) -> &BooleanOperation {
-        ffi::common_as_boolean_operation(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation (mutable)"]
-    pub fn as_boolean_operation_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BooleanOperation> {
-        ffi::common_as_boolean_operation_mut(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
-    pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        ffi::common_as_builder_algo(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
-    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
-        ffi::common_as_builder_algo_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::common_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::common_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::common_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::common_as_b_rep_builder_api_make_shape_mut(self)
-    }
-}
-pub use ffi::Cut;
-impl Cut {
-    #[doc = "Empty constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Cut_ctor()
-    }
-
-    #[doc = "Empty constructor <PF> - PaveFiller object that is carried out"]
-    pub fn new_pavefiller(PF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
-        ffi::Cut_ctor_pavefiller(PF)
-    }
-
-    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation Obsolete"]
-    pub fn new_shape2_progressrange(
-        S1: &ffi::TopoDS_Shape,
-        S2: &ffi::TopoDS_Shape,
-        theRange: &ffi::Message_ProgressRange,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Cut_ctor_shape2_progressrange(S1, S2, theRange)
-    }
-
-    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete"]
-    pub fn new_shape2_pavefiller_bool_progressrange(
-        S1: &ffi::TopoDS_Shape,
-        S2: &ffi::TopoDS_Shape,
-        aDSF: &ffi::BOPAlgo_PaveFiller,
-        bFWD: bool,
-        theRange: &ffi::Message_ProgressRange,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Cut_ctor_shape2_pavefiller_bool_progressrange(S1, S2, aDSF, bFWD, theRange)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation"]
-    pub fn as_boolean_operation(&self) -> &BooleanOperation {
-        ffi::cut_as_boolean_operation(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation (mutable)"]
-    pub fn as_boolean_operation_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BooleanOperation> {
-        ffi::cut_as_boolean_operation_mut(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
-    pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        ffi::cut_as_builder_algo(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
-    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
-        ffi::cut_as_builder_algo_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::cut_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::cut_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::cut_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::cut_as_b_rep_builder_api_make_shape_mut(self)
-    }
-}
-pub use ffi::Fuse;
-impl Fuse {
-    #[doc = "Empty constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Fuse_ctor()
-    }
-
-    #[doc = "Empty constructor <PF> - PaveFiller object that is carried out"]
-    pub fn new_pavefiller(PF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
-        ffi::Fuse_ctor_pavefiller(PF)
-    }
-
-    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation Obsolete"]
-    pub fn new_shape2_progressrange(
-        S1: &ffi::TopoDS_Shape,
-        S2: &ffi::TopoDS_Shape,
-        theRange: &ffi::Message_ProgressRange,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Fuse_ctor_shape2_progressrange(S1, S2, theRange)
-    }
-
-    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete"]
-    pub fn new_shape2_pavefiller_progressrange(
-        S1: &ffi::TopoDS_Shape,
-        S2: &ffi::TopoDS_Shape,
-        aDSF: &ffi::BOPAlgo_PaveFiller,
-        theRange: &ffi::Message_ProgressRange,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Fuse_ctor_shape2_pavefiller_progressrange(S1, S2, aDSF, theRange)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation"]
-    pub fn as_boolean_operation(&self) -> &BooleanOperation {
-        ffi::fuse_as_boolean_operation(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation (mutable)"]
-    pub fn as_boolean_operation_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BooleanOperation> {
-        ffi::fuse_as_boolean_operation_mut(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
-    pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        ffi::fuse_as_builder_algo(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
-    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
-        ffi::fuse_as_builder_algo_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::fuse_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::fuse_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::fuse_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::fuse_as_b_rep_builder_api_make_shape_mut(self)
-    }
-}
-pub use ffi::Section;
-impl Section {
-    #[doc = "Empty constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Section_ctor()
-    }
-
-    #[doc = "Empty constructor <PF> - PaveFiller object that is carried out"]
-    pub fn new_pavefiller(PF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
-        ffi::Section_ctor_pavefiller(PF)
-    }
-
-    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete"]
-    pub fn new_shape2_bool(
-        S1: &ffi::TopoDS_Shape,
-        S2: &ffi::TopoDS_Shape,
-        PerformNow: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Section_ctor_shape2_bool(S1, S2, PerformNow)
-    }
-
-    #[doc = "Constructor with two shapes <S1>  -argument <S2>  -tool <PF> - PaveFiller object that is carried out <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete"]
-    pub fn new_shape2_pavefiller_bool(
-        S1: &ffi::TopoDS_Shape,
-        S2: &ffi::TopoDS_Shape,
-        aDSF: &ffi::BOPAlgo_PaveFiller,
-        PerformNow: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Section_ctor_shape2_pavefiller_bool(S1, S2, aDSF, PerformNow)
-    }
-
-    #[doc = "Constructor with two shapes <S1>  - argument <Pl>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete"]
-    pub fn new_shape_pln_bool(
-        S1: &ffi::TopoDS_Shape,
-        Pl: &ffi::gp_Pln,
-        PerformNow: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Section_ctor_shape_pln_bool(S1, Pl, PerformNow)
-    }
-
-    #[doc = "Constructor with two shapes <S1>  - argument <Sf>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete"]
-    pub fn new_shape_handlesurface_bool(
-        S1: &ffi::TopoDS_Shape,
-        Sf: &ffi::HandleGeomSurface,
-        PerformNow: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Section_ctor_shape_handlesurface_bool(S1, Sf, PerformNow)
-    }
-
-    #[doc = "Constructor with two shapes <Sf>  - argument <S2>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete"]
-    pub fn new_handlesurface_shape_bool(
-        Sf: &ffi::HandleGeomSurface,
-        S2: &ffi::TopoDS_Shape,
-        PerformNow: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Section_ctor_handlesurface_shape_bool(Sf, S2, PerformNow)
-    }
-
-    #[doc = "Constructor with two shapes <Sf1>  - argument <Sf2>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete"]
-    pub fn new_handlesurface2_bool(
-        Sf1: &ffi::HandleGeomSurface,
-        Sf2: &ffi::HandleGeomSurface,
-        PerformNow: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Section_ctor_handlesurface2_bool(Sf1, Sf2, PerformNow)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation"]
-    pub fn as_boolean_operation(&self) -> &BooleanOperation {
-        ffi::section_as_boolean_operation(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BooleanOperation (mutable)"]
-    pub fn as_boolean_operation_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BooleanOperation> {
-        ffi::section_as_boolean_operation_mut(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
-    pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        ffi::section_as_builder_algo(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
-    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
-        ffi::section_as_builder_algo_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::section_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::section_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::section_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::section_as_b_rep_builder_api_make_shape_mut(self)
-    }
 }

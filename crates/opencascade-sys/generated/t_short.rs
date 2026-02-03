@@ -10,10 +10,94 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::HArray1OfShortReal;
+impl HArray1OfShortReal {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfShortReal_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfShortReal_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_float(theLower: i32, theUpper: i32, theValue: &f32) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfShortReal_ctor_int2_float(theLower, theUpper, theValue)
+    }
+
+    pub fn new_float_int2_bool(
+        theBegin: &f32,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfShortReal_ctor_float_int2_bool(theBegin, theLower, theUpper, arg3)
+    }
+
+    pub fn new_array1ofshortreal(theOther: &ffi::TShort_Array1OfShortReal) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfShortReal_ctor_array1ofshortreal(theOther)
+    }
+
+    #[doc = "Wrap TShort_HArray1OfShortReal in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<ffi::HandleTShortHArray1OfShortReal> {
+        ffi::HArray1OfShortReal_to_handle(obj)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::HArray1OfShortReal_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_t_short.hxx");
+        #[doc = " ======================== TShort_HArray1OfShortReal ========================"]
+        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal`"]
+        #[cxx_name = "TShort_HArray1OfShortReal"]
+        type HArray1OfShortReal;
+        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
+        #[cxx_name = "TShort_HArray1OfShortReal_ctor"]
+        fn HArray1OfShortReal_ctor() -> UniquePtr<HArray1OfShortReal>;
+        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
+        #[cxx_name = "TShort_HArray1OfShortReal_ctor_int2"]
+        fn HArray1OfShortReal_ctor_int2(
+            theLower: i32,
+            theUpper: i32,
+        ) -> UniquePtr<HArray1OfShortReal>;
+        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
+        #[cxx_name = "TShort_HArray1OfShortReal_ctor_int2_float"]
+        fn HArray1OfShortReal_ctor_int2_float(
+            theLower: i32,
+            theUpper: i32,
+            theValue: &f32,
+        ) -> UniquePtr<HArray1OfShortReal>;
+        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
+        #[cxx_name = "TShort_HArray1OfShortReal_ctor_float_int2_bool"]
+        fn HArray1OfShortReal_ctor_float_int2_bool(
+            theBegin: &f32,
+            theLower: i32,
+            theUpper: i32,
+            arg3: bool,
+        ) -> UniquePtr<HArray1OfShortReal>;
+        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
+        #[cxx_name = "TShort_HArray1OfShortReal_ctor_array1ofshortreal"]
+        fn HArray1OfShortReal_ctor_array1ofshortreal(
+            theOther: &TShort_Array1OfShortReal,
+        ) -> UniquePtr<HArray1OfShortReal>;
+        #[cxx_name = "Array1"]
+        fn array1(self: &HArray1OfShortReal) -> &TShort_Array1OfShortReal;
+        #[cxx_name = "ChangeArray1"]
+        fn change_array1(self: Pin<&mut HArray1OfShortReal>) -> Pin<&mut TShort_Array1OfShortReal>;
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &HArray1OfShortReal) -> &HandleStandardType;
+        #[cxx_name = "TShort_HArray1OfShortReal_get_type_name"]
+        fn HArray1OfShortReal_get_type_name() -> String;
+        #[doc = "Wrap TShort_HArray1OfShortReal in a Handle (reference-counted smart pointer)"]
+        #[cxx_name = "TShort_HArray1OfShortReal_to_handle"]
+        fn HArray1OfShortReal_to_handle(
+            obj: UniquePtr<HArray1OfShortReal>,
+        ) -> UniquePtr<HandleTShortHArray1OfShortReal>;
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -65,90 +149,6 @@ pub(crate) mod ffi {
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTShortHArray1OfShortReal"]
         type HandleTShortHArray1OfShortReal;
-        #[doc = " ======================== TShort_HArray1OfShortReal ========================"]
-        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal`"]
-        #[cxx_name = "TShort_HArray1OfShortReal"]
-        type HArray1OfShortReal;
-        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
-        #[cxx_name = "TShort_HArray1OfShortReal_ctor"]
-        fn HArray1OfShortReal_ctor() -> UniquePtr<HArray1OfShortReal>;
-        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
-        #[cxx_name = "TShort_HArray1OfShortReal_ctor_int2"]
-        fn HArray1OfShortReal_ctor_int2(
-            theLower: i32,
-            theUpper: i32,
-        ) -> UniquePtr<HArray1OfShortReal>;
-        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
-        #[cxx_name = "TShort_HArray1OfShortReal_ctor_int2_float"]
-        fn HArray1OfShortReal_ctor_int2_float(
-            theLower: i32,
-            theUpper: i32,
-            theValue: &f32,
-        ) -> UniquePtr<HArray1OfShortReal>;
-        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
-        #[cxx_name = "TShort_HArray1OfShortReal_ctor_float_int2_bool"]
-        fn HArray1OfShortReal_ctor_float_int2_bool(
-            theBegin: &f32,
-            theLower: i32,
-            theUpper: i32,
-            arg3: bool,
-        ) -> UniquePtr<HArray1OfShortReal>;
-        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
-        #[cxx_name = "TShort_HArray1OfShortReal_ctor_array1ofshortreal"]
-        fn HArray1OfShortReal_ctor_array1ofshortreal(
-            theOther: &TShort_Array1OfShortReal,
-        ) -> UniquePtr<HArray1OfShortReal>;
-        #[cxx_name = "Array1"]
-        fn array1(self: &HArray1OfShortReal) -> &TShort_Array1OfShortReal;
-        #[cxx_name = "ChangeArray1"]
-        fn change_array1(self: Pin<&mut HArray1OfShortReal>) -> Pin<&mut TShort_Array1OfShortReal>;
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &HArray1OfShortReal) -> &HandleStandardType;
-        #[cxx_name = "TShort_HArray1OfShortReal_get_type_name"]
-        fn HArray1OfShortReal_get_type_name() -> String;
-        #[doc = "Wrap TShort_HArray1OfShortReal in a Handle (reference-counted smart pointer)"]
-        #[cxx_name = "TShort_HArray1OfShortReal_to_handle"]
-        fn HArray1OfShortReal_to_handle(
-            obj: UniquePtr<HArray1OfShortReal>,
-        ) -> UniquePtr<HandleTShortHArray1OfShortReal>;
     }
     impl UniquePtr<HArray1OfShortReal> {}
-}
-pub use ffi::HArray1OfShortReal;
-impl HArray1OfShortReal {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfShortReal_ctor()
-    }
-
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfShortReal_ctor_int2(theLower, theUpper)
-    }
-
-    pub fn new_int2_float(theLower: i32, theUpper: i32, theValue: &f32) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfShortReal_ctor_int2_float(theLower, theUpper, theValue)
-    }
-
-    pub fn new_float_int2_bool(
-        theBegin: &f32,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfShortReal_ctor_float_int2_bool(theBegin, theLower, theUpper, arg3)
-    }
-
-    pub fn new_array1ofshortreal(theOther: &ffi::TShort_Array1OfShortReal) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfShortReal_ctor_array1ofshortreal(theOther)
-    }
-
-    #[doc = "Wrap TShort_HArray1OfShortReal in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<ffi::HandleTShortHArray1OfShortReal> {
-        ffi::HArray1OfShortReal_to_handle(obj)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::HArray1OfShortReal_get_type_name()
-    }
 }

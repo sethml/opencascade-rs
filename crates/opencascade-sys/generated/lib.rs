@@ -58,6 +58,7 @@ pub mod interface;
 pub mod law;
 pub mod mat;
 pub mod mat2d;
+pub mod math;
 pub mod message;
 pub mod n_collection;
 pub mod osd;

@@ -13,238 +13,352 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::BRepTools;
+impl BRepTools {
+    #[doc = "Returns in UMin,  UMax, VMin,  VMax  the  bounding values in the parametric space of F."]
+    pub fn uv_bounds_face_real4(
+        F: &ffi::TopoDS_Face,
+        UMin: &mut f64,
+        UMax: &mut f64,
+        VMin: &mut f64,
+        VMax: &mut f64,
+    ) {
+        ffi::BRepTools_uv_bounds_face_real4(F, UMin, UMax, VMin, VMax)
+    }
+
+    #[doc = "Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the wire in the parametric space of F."]
+    pub fn uv_bounds_face_wire_real4(
+        F: &ffi::TopoDS_Face,
+        W: &ffi::TopoDS_Wire,
+        UMin: &mut f64,
+        UMax: &mut f64,
+        VMin: &mut f64,
+        VMax: &mut f64,
+    ) {
+        ffi::BRepTools_uv_bounds_face_wire_real4(F, W, UMin, UMax, VMin, VMax)
+    }
+
+    #[doc = "Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the edge in the parametric space of F."]
+    pub fn uv_bounds_face_edge_real4(
+        F: &ffi::TopoDS_Face,
+        E: &ffi::TopoDS_Edge,
+        UMin: &mut f64,
+        UMax: &mut f64,
+        VMin: &mut f64,
+        VMax: &mut f64,
+    ) {
+        ffi::BRepTools_uv_bounds_face_edge_real4(F, E, UMin, UMax, VMin, VMax)
+    }
+
+    #[doc = "Adds  to  the box <B>  the bounding values in  the parametric space of F."]
+    pub fn add_uv_bounds_face_box2d(F: &ffi::TopoDS_Face, B: std::pin::Pin<&mut ffi::Bnd_Box2d>) {
+        ffi::BRepTools_add_uv_bounds_face_box2d(F, B)
+    }
+
+    #[doc = "Adds  to the box  <B>  the bounding  values of the wire in the parametric space of F."]
+    pub fn add_uv_bounds_face_wire_box2d(
+        F: &ffi::TopoDS_Face,
+        W: &ffi::TopoDS_Wire,
+        B: std::pin::Pin<&mut ffi::Bnd_Box2d>,
+    ) {
+        ffi::BRepTools_add_uv_bounds_face_wire_box2d(F, W, B)
+    }
+
+    #[doc = "Adds to  the box <B>  the  bounding values  of the edge in the parametric space of F."]
+    pub fn add_uv_bounds_face_edge_box2d(
+        F: &ffi::TopoDS_Face,
+        E: &ffi::TopoDS_Edge,
+        B: std::pin::Pin<&mut ffi::Bnd_Box2d>,
+    ) {
+        ffi::BRepTools_add_uv_bounds_face_edge_box2d(F, E, B)
+    }
+
+    #[doc = "Update a vertex (nothing is done)"]
+    pub fn update_vertex(V: &ffi::TopoDS_Vertex) {
+        ffi::BRepTools_update_vertex(V)
+    }
+
+    #[doc = "Update an edge, compute 2d bounding boxes."]
+    pub fn update_edge(E: &ffi::TopoDS_Edge) {
+        ffi::BRepTools_update_edge(E)
+    }
+
+    #[doc = "Update a wire (nothing is done)"]
+    pub fn update_wire(W: &ffi::TopoDS_Wire) {
+        ffi::BRepTools_update_wire(W)
+    }
+
+    #[doc = "Update a Face, update UV points."]
+    pub fn update_face(F: &ffi::TopoDS_Face) {
+        ffi::BRepTools_update_face(F)
+    }
+
+    #[doc = "Update a shell (nothing is done)"]
+    pub fn update_shell(S: &ffi::TopoDS_Shell) {
+        ffi::BRepTools_update_shell(S)
+    }
+
+    #[doc = "Update a solid (nothing is done)"]
+    pub fn update_solid(S: &ffi::TopoDS_Solid) {
+        ffi::BRepTools_update_solid(S)
+    }
+
+    #[doc = "Update a composite solid (nothing is done)"]
+    pub fn update_compsolid(C: &ffi::TopoDS_CompSolid) {
+        ffi::BRepTools_update_compsolid(C)
+    }
+
+    #[doc = "Update a compound (nothing is done)"]
+    pub fn update_compound(C: &ffi::TopoDS_Compound) {
+        ffi::BRepTools_update_compound(C)
+    }
+
+    #[doc = "Update a shape, call the correct update."]
+    pub fn update_shape(S: &ffi::TopoDS_Shape) {
+        ffi::BRepTools_update_shape(S)
+    }
+
+    #[doc = "For each edge of the face <F> reset the UV points to the bounding points of the parametric curve of the edge on the face."]
+    pub fn update_face_uv_points(theF: &ffi::TopoDS_Face) {
+        ffi::BRepTools_update_face_uv_points(theF)
+    }
+
+    #[doc = "Removes all cached polygonal representation of the shape, i.e. the triangulations of the faces of <S> and polygons on triangulations and polygons 3d of the edges. In case polygonal representation is the only available representation for the shape (shape does not have geometry) it is not removed. @param[in] theShape   the shape to clean @param[in] theForce   allows removing all polygonal representations from the shape, including polygons on triangulations irrelevant for the faces of the given shape."]
+    pub fn clean(theShape: &ffi::TopoDS_Shape, theForce: bool) {
+        ffi::BRepTools_clean(theShape, theForce)
+    }
+
+    #[doc = "Removes geometry (curves and surfaces) from all edges and faces of the shape"]
+    pub fn clean_geometry(theShape: &ffi::TopoDS_Shape) {
+        ffi::BRepTools_clean_geometry(theShape)
+    }
+
+    #[doc = "Removes all the pcurves of the edges of <S> that refer to surfaces not belonging to any face of <S>"]
+    pub fn remove_unused_p_curves(S: &ffi::TopoDS_Shape) {
+        ffi::BRepTools_remove_unused_p_curves(S)
+    }
+
+    #[doc = "Verifies that each Face from the shape has got a triangulation with a deflection smaller or equal to specified one and the Edges a discretization on this triangulation. @param[in] theShape    shape to verify @param[in] theLinDefl  maximum allowed linear deflection @param[in] theToCheckFreeEdges  if TRUE, then free Edges are required to have 3D polygon @return FALSE if input Shape contains Faces without triangulation, or that triangulation has worse (greater) deflection than specified one, or Edges in Shape lack polygons on triangulation or free Edges in Shape lack 3D polygons"]
+    pub fn triangulation(
+        theShape: &ffi::TopoDS_Shape,
+        theLinDefl: f64,
+        theToCheckFreeEdges: bool,
+    ) -> bool {
+        ffi::BRepTools_triangulation(theShape, theLinDefl, theToCheckFreeEdges)
+    }
+
+    #[doc = "Loads triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape             shape to load triangulations @param[in] theTriangulationIdx  index defining what triangulation should be loaded. Starts from 0. -1 is used in specific case to load currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be loaded for it. Exception will be thrown in case of invalid negative index @param[in] theToSetAsActive     flag to activate triangulation after its loading @param[in] theFileSystem        shared file system @return TRUE if at least one triangulation is loaded."]
+    pub fn load_triangulation(
+        theShape: &ffi::TopoDS_Shape,
+        theTriangulationIdx: i32,
+        theToSetAsActive: bool,
+        theFileSystem: &ffi::HandleOSDFileSystem,
+    ) -> bool {
+        ffi::BRepTools_load_triangulation(
+            theShape,
+            theTriangulationIdx,
+            theToSetAsActive,
+            theFileSystem,
+        )
+    }
+
+    #[doc = "Releases triangulation data for each face of the shape if there is deferred storage to load it later @param[in] theShape             shape to unload triangulations @param[in] theTriangulationIdx  index defining what triangulation should be unloaded. Starts from 0. -1 is used in specific case to unload currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be unloaded for it. Exception will be thrown in case of invalid negative index @return TRUE if at least one triangulation is unloaded."]
+    pub fn unload_triangulation(theShape: &ffi::TopoDS_Shape, theTriangulationIdx: i32) -> bool {
+        ffi::BRepTools_unload_triangulation(theShape, theTriangulationIdx)
+    }
+
+    #[doc = "Activates triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape               shape to activate triangulations @param[in] theTriangulationIdx    index defining what triangulation should be activated. Starts from 0. Exception will be thrown in case of invalid negative index @param[in] theToActivateStrictly  flag to activate exactly triangulation with defined theTriangulationIdx index. In TRUE case if some face doesn't contain triangulation with this index, active triangulation will not be changed for it. Else the last available triangulation will be activated. @return TRUE if at least one active triangulation was changed."]
+    pub fn activate_triangulation(
+        theShape: &ffi::TopoDS_Shape,
+        theTriangulationIdx: i32,
+        theToActivateStrictly: bool,
+    ) -> bool {
+        ffi::BRepTools_activate_triangulation(theShape, theTriangulationIdx, theToActivateStrictly)
+    }
+
+    #[doc = "Loads all available triangulations for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape       shape to load triangulations @param[in] theFileSystem  shared file system @return TRUE if at least one triangulation is loaded."]
+    pub fn load_all_triangulations(
+        theShape: &ffi::TopoDS_Shape,
+        theFileSystem: &ffi::HandleOSDFileSystem,
+    ) -> bool {
+        ffi::BRepTools_load_all_triangulations(theShape, theFileSystem)
+    }
+
+    #[doc = "Releases all available triangulations for each face of the shape if there is deferred storage to load them later @param[in] theShape       shape to unload triangulations @return TRUE if at least one triangulation is unloaded."]
+    pub fn unload_all_triangulations(theShape: &ffi::TopoDS_Shape) -> bool {
+        ffi::BRepTools_unload_all_triangulations(theShape)
+    }
+
+    #[doc = "Returns  True if  the    distance between the  two vertices is lower than their tolerance."]
+    pub fn compare_vertex2(V1: &ffi::TopoDS_Vertex, V2: &ffi::TopoDS_Vertex) -> bool {
+        ffi::BRepTools_compare_vertex2(V1, V2)
+    }
+
+    #[doc = "Returns  True if  the    distance between the  two edges is lower than their tolerance."]
+    pub fn compare_edge2(E1: &ffi::TopoDS_Edge, E2: &ffi::TopoDS_Edge) -> bool {
+        ffi::BRepTools_compare_edge2(E1, E2)
+    }
+
+    #[doc = "Returns the outer most wire of <F>. Returns a Null wire if <F> has no wires."]
+    pub fn outer_wire(F: &ffi::TopoDS_Face) -> cxx::UniquePtr<ffi::TopoDS_Wire> {
+        ffi::BRepTools_outer_wire(F)
+    }
+
+    #[doc = "Stores in the map  <M> all the 3D topology edges of <S>."]
+    pub fn map3_d_edges(
+        S: &ffi::TopoDS_Shape,
+        M: std::pin::Pin<&mut ffi::TopTools_IndexedMapOfShape>,
+    ) {
+        ffi::BRepTools_map3_d_edges(S, M)
+    }
+
+    #[doc = "Verifies that the edge  <E> is found two  times on the face <F> before calling BRep_Tool::IsClosed."]
+    pub fn is_really_closed(E: &ffi::TopoDS_Edge, F: &ffi::TopoDS_Face) -> bool {
+        ffi::BRepTools_is_really_closed(E, F)
+    }
+
+    #[doc = "Detect closedness of face in U and V directions"]
+    pub fn detect_closedness(
+        theFace: &ffi::TopoDS_Face,
+        theUclosed: &mut bool,
+        theVclosed: &mut bool,
+    ) {
+        ffi::BRepTools_detect_closedness(theFace, theUclosed, theVclosed)
+    }
+
+    #[doc = "Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1. This alias writes shape with triangulation data. @param[in] theShape  the shape to write @param[in] theFile   the path to file to output shape into @param theProgress the range of progress indicator to fill in"]
+    pub fn write_shape_charptr_progressrange(
+        theShape: &ffi::TopoDS_Shape,
+        theFile: &str,
+        theProgress: &ffi::Message_ProgressRange,
+    ) -> bool {
+        ffi::BRepTools_write_shape_charptr_progressrange(theShape, theFile, theProgress)
+    }
+
+    #[doc = "Reads a Shape  from <File>,  returns it in  <Sh>. <B> is used to build the shape."]
+    pub fn read_shape_charptr_builder_progressrange(
+        Sh: std::pin::Pin<&mut ffi::TopoDS_Shape>,
+        File: &str,
+        B: &ffi::BRep_Builder,
+        theProgress: &ffi::Message_ProgressRange,
+    ) -> bool {
+        ffi::BRepTools_read_shape_charptr_builder_progressrange(Sh, File, B, theProgress)
+    }
+
+    #[doc = "Evals real tolerance of edge  <theE>. <theC3d>, <theC2d>, <theS>, <theF>, <theL> are correspondently 3d curve of edge, 2d curve on surface <theS> and rang of edge If calculated tolerance is more then current edge tolerance, edge is updated. Method returns actual tolerance of edge"]
+    pub fn eval_and_update_tol(
+        theE: &ffi::TopoDS_Edge,
+        theC3d: &ffi::HandleGeomCurve,
+        theC2d: &ffi::HandleGeom2dCurve,
+        theS: &ffi::HandleGeomSurface,
+        theF: f64,
+        theL: f64,
+    ) -> f64 {
+        ffi::BRepTools_eval_and_update_tol(theE, theC3d, theC2d, theS, theF, theL)
+    }
+
+    #[doc = "Removes internal sub-shapes from the shape. The check on internal status is based on orientation of sub-shapes, classification is not performed. Before removal of internal sub-shapes the algorithm checks if such removal is not going to break topological connectivity between sub-shapes. The flag <theForce> if set to true disables the connectivity check and clears the given shape from all sub-shapes with internal orientation."]
+    pub fn remove_internals(theS: std::pin::Pin<&mut ffi::TopoDS_Shape>, theForce: bool) {
+        ffi::BRepTools_remove_internals(theS, theForce)
+    }
+
+    #[doc = "Check all locations of shape according criterium: aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec()) All sub-shapes having such locations are put in list theProblemShapes"]
+    pub fn check_locations(
+        theS: &ffi::TopoDS_Shape,
+        theProblemShapes: std::pin::Pin<&mut ffi::TopTools_ListOfShape>,
+    ) {
+        ffi::BRepTools_check_locations(theS, theProblemShapes)
+    }
+}
+pub use ffi::History;
+impl History {
+    #[doc = "@name Constructors for History creation Empty constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::History_ctor()
+    }
+
+    #[doc = "Wrap BRepTools_History in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBRepToolsHistory> {
+        ffi::History_to_handle(obj)
+    }
+
+    #[doc = "Returns 'true' if the type of the shape is supported by the history."]
+    pub fn is_supported_type(theShape: &ffi::TopoDS_Shape) -> bool {
+        ffi::History_is_supported_type(theShape)
+    }
+
+    #[doc = "Define the OCCT RTTI for the type."]
+    pub fn get_type_name() -> String {
+        ffi::History_get_type_name()
+    }
+}
+pub use ffi::Modifier;
+impl Modifier {
+    #[doc = "Creates an empty Modifier."]
+    pub fn new_bool(theMutableInput: bool) -> cxx::UniquePtr<Self> {
+        ffi::Modifier_ctor_bool(theMutableInput)
+    }
+
+    #[doc = "Creates a modifier on the shape <S>."]
+    pub fn new_shape(S: &ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        ffi::Modifier_ctor_shape(S)
+    }
+
+    #[doc = "Creates a modifier on  the shape <S>, and performs the modifications described by <M>."]
+    pub fn new_shape_handlemodification(
+        S: &ffi::TopoDS_Shape,
+        M: &ffi::HandleBRepToolsModification,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Modifier_ctor_shape_handlemodification(S, M)
+    }
+}
+pub use ffi::ReShape;
+impl ReShape {
+    #[doc = "Returns an empty Reshape"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::ReShape_ctor()
+    }
+
+    #[doc = "Wrap BRepTools_ReShape in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBRepToolsReShape> {
+        ffi::ReShape_to_handle(obj)
+    }
+
+    #[doc = "Returns the new value for an individual shape If not recorded, returns the original shape itself If to be Removed, returns a Null Shape Else, returns the replacing item"]
+    pub fn value(&self, shape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::ReShape_value(self, shape)
+    }
+
+    pub fn copy_vertex_vertex_real(
+        self: std::pin::Pin<&mut Self>,
+        theV: &ffi::TopoDS_Vertex,
+        theTol: f64,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
+        ffi::ReShape_copy_vertex_vertex_real(self, theV, theTol)
+    }
+
+    pub fn copy_vertex_vertex_pnt_real(
+        self: std::pin::Pin<&mut Self>,
+        theV: &ffi::TopoDS_Vertex,
+        theNewPos: &ffi::gp_Pnt,
+        aTol: f64,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
+        ffi::ReShape_copy_vertex_vertex_pnt_real(self, theV, theNewPos, aTol)
+    }
+
+    #[doc = "Returns the history of the substituted shapes."]
+    pub fn history(&self) -> cxx::UniquePtr<ffi::HandleBRepToolsHistory> {
+        ffi::ReShape_history(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::ReShape_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_tools.hxx");
-        #[doc = "Builder from b_rep module"]
-        type BRep_Builder = crate::b_rep::ffi::Builder;
-        #[doc = "Tool from b_rep module"]
-        type BRep_Tool = crate::b_rep::ffi::Tool;
-        #[doc = "B2d from bnd module"]
-        type Bnd_B2d = crate::bnd::ffi::B2d;
-        #[doc = "Box from bnd module"]
-        type Bnd_Box = crate::bnd::ffi::Box_;
-        #[doc = "Box2d from bnd module"]
-        type Bnd_Box2d = crate::bnd::ffi::Box2d;
-        #[doc = "HArray1OfBox from bnd module"]
-        type Bnd_HArray1OfBox = crate::bnd::ffi::HArray1OfBox;
-        #[doc = "HArray1OfSphere from bnd module"]
-        type Bnd_HArray1OfSphere = crate::bnd::ffi::HArray1OfSphere;
-        #[doc = "OBB from bnd module"]
-        type Bnd_OBB = crate::bnd::ffi::OBB;
-        #[doc = "Sphere from bnd module"]
-        type Bnd_Sphere = crate::bnd::ffi::Sphere;
-        #[doc = "BoundedCurve from geom2d module"]
-        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
-        type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Curve from geom2d module"]
-        type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "Ellipse from geom2d module"]
-        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "Geometry from geom2d module"]
-        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "TrimmedCurve from geom2d module"]
-        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
-        #[doc = "BSplineCurve from geom module"]
-        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
-        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
-        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
-        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
-        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
-        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
-        type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
-        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
-        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
-        type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
-        type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
-        type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
-        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "Message from message module"]
-        type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
-        type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
-        type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "MemInfo from osd module"]
-        type OSD_MemInfo = crate::osd::ffi::MemInfo;
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "TopAbs from top_abs module"]
-        type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "BRepTools_Modification"]
-        type BRepTools_Modification;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "OSD_FileSystem"]
-        type OSD_FileSystem;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_IndexedMapOfShape"]
-        type TopTools_IndexedMapOfShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBRepToolsHistory"]
-        type HandleBRepToolsHistory;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBRepToolsModification"]
-        type HandleBRepToolsModification;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBRepToolsReShape"]
-        type HandleBRepToolsReShape;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dCurve"]
-        type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomCurve"]
-        type HandleGeomCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomSurface"]
-        type HandleGeomSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleOSDFileSystem"]
-        type HandleOSDFileSystem;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
         #[doc = " ======================== BRepTools ========================"]
         #[doc = "/// **Source:** `BRepTools.hxx` - `BRepTools`"]
         #[doc = ""]
@@ -618,351 +732,277 @@ pub(crate) mod ffi {
         #[doc = "Wrap BRepTools_ReShape in a Handle (reference-counted smart pointer)"]
         #[cxx_name = "BRepTools_ReShape_to_handle"]
         fn ReShape_to_handle(obj: UniquePtr<ReShape>) -> UniquePtr<HandleBRepToolsReShape>;
+        #[doc = "Builder from b_rep module"]
+        type BRep_Builder = crate::b_rep::ffi::Builder;
+        #[doc = "Tool from b_rep module"]
+        type BRep_Tool = crate::b_rep::ffi::Tool;
+        #[doc = "B2d from bnd module"]
+        type Bnd_B2d = crate::bnd::ffi::B2d;
+        #[doc = "Box from bnd module"]
+        type Bnd_Box = crate::bnd::ffi::Box_;
+        #[doc = "Box2d from bnd module"]
+        type Bnd_Box2d = crate::bnd::ffi::Box2d;
+        #[doc = "HArray1OfBox from bnd module"]
+        type Bnd_HArray1OfBox = crate::bnd::ffi::HArray1OfBox;
+        #[doc = "HArray1OfSphere from bnd module"]
+        type Bnd_HArray1OfSphere = crate::bnd::ffi::HArray1OfSphere;
+        #[doc = "OBB from bnd module"]
+        type Bnd_OBB = crate::bnd::ffi::OBB;
+        #[doc = "Sphere from bnd module"]
+        type Bnd_Sphere = crate::bnd::ffi::Sphere;
+        #[doc = "BoundedCurve from geom2d module"]
+        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
+        #[doc = "Conic from geom2d module"]
+        type Geom2d_Conic = crate::geom2d::ffi::Conic;
+        #[doc = "Curve from geom2d module"]
+        type Geom2d_Curve = crate::geom2d::ffi::Curve;
+        #[doc = "Ellipse from geom2d module"]
+        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
+        #[doc = "Geometry from geom2d module"]
+        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
+        #[doc = "TrimmedCurve from geom2d module"]
+        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
+        #[doc = "BSplineCurve from geom module"]
+        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
+        #[doc = "BSplineSurface from geom module"]
+        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
+        #[doc = "BezierCurve from geom module"]
+        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
+        #[doc = "BezierSurface from geom module"]
+        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BoundedCurve from geom module"]
+        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
+        #[doc = "BoundedSurface from geom module"]
+        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
+        #[doc = "Curve from geom module"]
+        type Geom_Curve = crate::geom::ffi::Curve;
+        #[doc = "CylindricalSurface from geom module"]
+        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
+        #[doc = "ElementarySurface from geom module"]
+        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
+        #[doc = "Geometry from geom module"]
+        type Geom_Geometry = crate::geom::ffi::Geometry;
+        #[doc = "Plane from geom module"]
+        type Geom_Plane = crate::geom::ffi::Plane;
+        #[doc = "Surface from geom module"]
+        type Geom_Surface = crate::geom::ffi::Surface;
+        #[doc = "TrimmedCurve from geom module"]
+        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
+        #[doc = "Message from message module"]
+        type Message = crate::message::ffi::Message;
+        #[doc = "Alert from message module"]
+        type Message_Alert = crate::message::ffi::Alert;
+        #[doc = "AlertExtended from message module"]
+        type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
+        #[doc = "MemInfo from osd module"]
+        type OSD_MemInfo = crate::osd::ffi::MemInfo;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "TopAbs from top_abs module"]
+        type TopAbs = crate::top_abs::ffi::TopAbs;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "BRepTools_Modification"]
+        type BRepTools_Modification;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "OSD_FileSystem"]
+        type OSD_FileSystem;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_IndexedMapOfShape"]
+        type TopTools_IndexedMapOfShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBRepToolsHistory"]
+        type HandleBRepToolsHistory;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBRepToolsModification"]
+        type HandleBRepToolsModification;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBRepToolsReShape"]
+        type HandleBRepToolsReShape;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dCurve"]
+        type HandleGeom2dCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomCurve"]
+        type HandleGeomCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomSurface"]
+        type HandleGeomSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleOSDFileSystem"]
+        type HandleOSDFileSystem;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
     }
     impl UniquePtr<BRepTools> {}
     impl UniquePtr<History> {}
     impl UniquePtr<Modifier> {}
     impl UniquePtr<ReShape> {}
-}
-pub use ffi::BRepTools;
-impl BRepTools {
-    #[doc = "Returns in UMin,  UMax, VMin,  VMax  the  bounding values in the parametric space of F."]
-    pub fn uv_bounds_face_real4(
-        F: &ffi::TopoDS_Face,
-        UMin: &mut f64,
-        UMax: &mut f64,
-        VMin: &mut f64,
-        VMax: &mut f64,
-    ) {
-        ffi::BRepTools_uv_bounds_face_real4(F, UMin, UMax, VMin, VMax)
-    }
-
-    #[doc = "Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the wire in the parametric space of F."]
-    pub fn uv_bounds_face_wire_real4(
-        F: &ffi::TopoDS_Face,
-        W: &ffi::TopoDS_Wire,
-        UMin: &mut f64,
-        UMax: &mut f64,
-        VMin: &mut f64,
-        VMax: &mut f64,
-    ) {
-        ffi::BRepTools_uv_bounds_face_wire_real4(F, W, UMin, UMax, VMin, VMax)
-    }
-
-    #[doc = "Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the edge in the parametric space of F."]
-    pub fn uv_bounds_face_edge_real4(
-        F: &ffi::TopoDS_Face,
-        E: &ffi::TopoDS_Edge,
-        UMin: &mut f64,
-        UMax: &mut f64,
-        VMin: &mut f64,
-        VMax: &mut f64,
-    ) {
-        ffi::BRepTools_uv_bounds_face_edge_real4(F, E, UMin, UMax, VMin, VMax)
-    }
-
-    #[doc = "Adds  to  the box <B>  the bounding values in  the parametric space of F."]
-    pub fn add_uv_bounds_face_box2d(F: &ffi::TopoDS_Face, B: std::pin::Pin<&mut ffi::Bnd_Box2d>) {
-        ffi::BRepTools_add_uv_bounds_face_box2d(F, B)
-    }
-
-    #[doc = "Adds  to the box  <B>  the bounding  values of the wire in the parametric space of F."]
-    pub fn add_uv_bounds_face_wire_box2d(
-        F: &ffi::TopoDS_Face,
-        W: &ffi::TopoDS_Wire,
-        B: std::pin::Pin<&mut ffi::Bnd_Box2d>,
-    ) {
-        ffi::BRepTools_add_uv_bounds_face_wire_box2d(F, W, B)
-    }
-
-    #[doc = "Adds to  the box <B>  the  bounding values  of the edge in the parametric space of F."]
-    pub fn add_uv_bounds_face_edge_box2d(
-        F: &ffi::TopoDS_Face,
-        E: &ffi::TopoDS_Edge,
-        B: std::pin::Pin<&mut ffi::Bnd_Box2d>,
-    ) {
-        ffi::BRepTools_add_uv_bounds_face_edge_box2d(F, E, B)
-    }
-
-    #[doc = "Update a vertex (nothing is done)"]
-    pub fn update_vertex(V: &ffi::TopoDS_Vertex) {
-        ffi::BRepTools_update_vertex(V)
-    }
-
-    #[doc = "Update an edge, compute 2d bounding boxes."]
-    pub fn update_edge(E: &ffi::TopoDS_Edge) {
-        ffi::BRepTools_update_edge(E)
-    }
-
-    #[doc = "Update a wire (nothing is done)"]
-    pub fn update_wire(W: &ffi::TopoDS_Wire) {
-        ffi::BRepTools_update_wire(W)
-    }
-
-    #[doc = "Update a Face, update UV points."]
-    pub fn update_face(F: &ffi::TopoDS_Face) {
-        ffi::BRepTools_update_face(F)
-    }
-
-    #[doc = "Update a shell (nothing is done)"]
-    pub fn update_shell(S: &ffi::TopoDS_Shell) {
-        ffi::BRepTools_update_shell(S)
-    }
-
-    #[doc = "Update a solid (nothing is done)"]
-    pub fn update_solid(S: &ffi::TopoDS_Solid) {
-        ffi::BRepTools_update_solid(S)
-    }
-
-    #[doc = "Update a composite solid (nothing is done)"]
-    pub fn update_compsolid(C: &ffi::TopoDS_CompSolid) {
-        ffi::BRepTools_update_compsolid(C)
-    }
-
-    #[doc = "Update a compound (nothing is done)"]
-    pub fn update_compound(C: &ffi::TopoDS_Compound) {
-        ffi::BRepTools_update_compound(C)
-    }
-
-    #[doc = "Update a shape, call the correct update."]
-    pub fn update_shape(S: &ffi::TopoDS_Shape) {
-        ffi::BRepTools_update_shape(S)
-    }
-
-    #[doc = "For each edge of the face <F> reset the UV points to the bounding points of the parametric curve of the edge on the face."]
-    pub fn update_face_uv_points(theF: &ffi::TopoDS_Face) {
-        ffi::BRepTools_update_face_uv_points(theF)
-    }
-
-    #[doc = "Removes all cached polygonal representation of the shape, i.e. the triangulations of the faces of <S> and polygons on triangulations and polygons 3d of the edges. In case polygonal representation is the only available representation for the shape (shape does not have geometry) it is not removed. @param[in] theShape   the shape to clean @param[in] theForce   allows removing all polygonal representations from the shape, including polygons on triangulations irrelevant for the faces of the given shape."]
-    pub fn clean(theShape: &ffi::TopoDS_Shape, theForce: bool) {
-        ffi::BRepTools_clean(theShape, theForce)
-    }
-
-    #[doc = "Removes geometry (curves and surfaces) from all edges and faces of the shape"]
-    pub fn clean_geometry(theShape: &ffi::TopoDS_Shape) {
-        ffi::BRepTools_clean_geometry(theShape)
-    }
-
-    #[doc = "Removes all the pcurves of the edges of <S> that refer to surfaces not belonging to any face of <S>"]
-    pub fn remove_unused_p_curves(S: &ffi::TopoDS_Shape) {
-        ffi::BRepTools_remove_unused_p_curves(S)
-    }
-
-    #[doc = "Verifies that each Face from the shape has got a triangulation with a deflection smaller or equal to specified one and the Edges a discretization on this triangulation. @param[in] theShape    shape to verify @param[in] theLinDefl  maximum allowed linear deflection @param[in] theToCheckFreeEdges  if TRUE, then free Edges are required to have 3D polygon @return FALSE if input Shape contains Faces without triangulation, or that triangulation has worse (greater) deflection than specified one, or Edges in Shape lack polygons on triangulation or free Edges in Shape lack 3D polygons"]
-    pub fn triangulation(
-        theShape: &ffi::TopoDS_Shape,
-        theLinDefl: f64,
-        theToCheckFreeEdges: bool,
-    ) -> bool {
-        ffi::BRepTools_triangulation(theShape, theLinDefl, theToCheckFreeEdges)
-    }
-
-    #[doc = "Loads triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape             shape to load triangulations @param[in] theTriangulationIdx  index defining what triangulation should be loaded. Starts from 0. -1 is used in specific case to load currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be loaded for it. Exception will be thrown in case of invalid negative index @param[in] theToSetAsActive     flag to activate triangulation after its loading @param[in] theFileSystem        shared file system @return TRUE if at least one triangulation is loaded."]
-    pub fn load_triangulation(
-        theShape: &ffi::TopoDS_Shape,
-        theTriangulationIdx: i32,
-        theToSetAsActive: bool,
-        theFileSystem: &ffi::HandleOSDFileSystem,
-    ) -> bool {
-        ffi::BRepTools_load_triangulation(
-            theShape,
-            theTriangulationIdx,
-            theToSetAsActive,
-            theFileSystem,
-        )
-    }
-
-    #[doc = "Releases triangulation data for each face of the shape if there is deferred storage to load it later @param[in] theShape             shape to unload triangulations @param[in] theTriangulationIdx  index defining what triangulation should be unloaded. Starts from 0. -1 is used in specific case to unload currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be unloaded for it. Exception will be thrown in case of invalid negative index @return TRUE if at least one triangulation is unloaded."]
-    pub fn unload_triangulation(theShape: &ffi::TopoDS_Shape, theTriangulationIdx: i32) -> bool {
-        ffi::BRepTools_unload_triangulation(theShape, theTriangulationIdx)
-    }
-
-    #[doc = "Activates triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape               shape to activate triangulations @param[in] theTriangulationIdx    index defining what triangulation should be activated. Starts from 0. Exception will be thrown in case of invalid negative index @param[in] theToActivateStrictly  flag to activate exactly triangulation with defined theTriangulationIdx index. In TRUE case if some face doesn't contain triangulation with this index, active triangulation will not be changed for it. Else the last available triangulation will be activated. @return TRUE if at least one active triangulation was changed."]
-    pub fn activate_triangulation(
-        theShape: &ffi::TopoDS_Shape,
-        theTriangulationIdx: i32,
-        theToActivateStrictly: bool,
-    ) -> bool {
-        ffi::BRepTools_activate_triangulation(theShape, theTriangulationIdx, theToActivateStrictly)
-    }
-
-    #[doc = "Loads all available triangulations for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape       shape to load triangulations @param[in] theFileSystem  shared file system @return TRUE if at least one triangulation is loaded."]
-    pub fn load_all_triangulations(
-        theShape: &ffi::TopoDS_Shape,
-        theFileSystem: &ffi::HandleOSDFileSystem,
-    ) -> bool {
-        ffi::BRepTools_load_all_triangulations(theShape, theFileSystem)
-    }
-
-    #[doc = "Releases all available triangulations for each face of the shape if there is deferred storage to load them later @param[in] theShape       shape to unload triangulations @return TRUE if at least one triangulation is unloaded."]
-    pub fn unload_all_triangulations(theShape: &ffi::TopoDS_Shape) -> bool {
-        ffi::BRepTools_unload_all_triangulations(theShape)
-    }
-
-    #[doc = "Returns  True if  the    distance between the  two vertices is lower than their tolerance."]
-    pub fn compare_vertex2(V1: &ffi::TopoDS_Vertex, V2: &ffi::TopoDS_Vertex) -> bool {
-        ffi::BRepTools_compare_vertex2(V1, V2)
-    }
-
-    #[doc = "Returns  True if  the    distance between the  two edges is lower than their tolerance."]
-    pub fn compare_edge2(E1: &ffi::TopoDS_Edge, E2: &ffi::TopoDS_Edge) -> bool {
-        ffi::BRepTools_compare_edge2(E1, E2)
-    }
-
-    #[doc = "Returns the outer most wire of <F>. Returns a Null wire if <F> has no wires."]
-    pub fn outer_wire(F: &ffi::TopoDS_Face) -> cxx::UniquePtr<ffi::TopoDS_Wire> {
-        ffi::BRepTools_outer_wire(F)
-    }
-
-    #[doc = "Stores in the map  <M> all the 3D topology edges of <S>."]
-    pub fn map3_d_edges(
-        S: &ffi::TopoDS_Shape,
-        M: std::pin::Pin<&mut ffi::TopTools_IndexedMapOfShape>,
-    ) {
-        ffi::BRepTools_map3_d_edges(S, M)
-    }
-
-    #[doc = "Verifies that the edge  <E> is found two  times on the face <F> before calling BRep_Tool::IsClosed."]
-    pub fn is_really_closed(E: &ffi::TopoDS_Edge, F: &ffi::TopoDS_Face) -> bool {
-        ffi::BRepTools_is_really_closed(E, F)
-    }
-
-    #[doc = "Detect closedness of face in U and V directions"]
-    pub fn detect_closedness(
-        theFace: &ffi::TopoDS_Face,
-        theUclosed: &mut bool,
-        theVclosed: &mut bool,
-    ) {
-        ffi::BRepTools_detect_closedness(theFace, theUclosed, theVclosed)
-    }
-
-    #[doc = "Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1. This alias writes shape with triangulation data. @param[in] theShape  the shape to write @param[in] theFile   the path to file to output shape into @param theProgress the range of progress indicator to fill in"]
-    pub fn write_shape_charptr_progressrange(
-        theShape: &ffi::TopoDS_Shape,
-        theFile: &str,
-        theProgress: &ffi::Message_ProgressRange,
-    ) -> bool {
-        ffi::BRepTools_write_shape_charptr_progressrange(theShape, theFile, theProgress)
-    }
-
-    #[doc = "Reads a Shape  from <File>,  returns it in  <Sh>. <B> is used to build the shape."]
-    pub fn read_shape_charptr_builder_progressrange(
-        Sh: std::pin::Pin<&mut ffi::TopoDS_Shape>,
-        File: &str,
-        B: &ffi::BRep_Builder,
-        theProgress: &ffi::Message_ProgressRange,
-    ) -> bool {
-        ffi::BRepTools_read_shape_charptr_builder_progressrange(Sh, File, B, theProgress)
-    }
-
-    #[doc = "Evals real tolerance of edge  <theE>. <theC3d>, <theC2d>, <theS>, <theF>, <theL> are correspondently 3d curve of edge, 2d curve on surface <theS> and rang of edge If calculated tolerance is more then current edge tolerance, edge is updated. Method returns actual tolerance of edge"]
-    pub fn eval_and_update_tol(
-        theE: &ffi::TopoDS_Edge,
-        theC3d: &ffi::HandleGeomCurve,
-        theC2d: &ffi::HandleGeom2dCurve,
-        theS: &ffi::HandleGeomSurface,
-        theF: f64,
-        theL: f64,
-    ) -> f64 {
-        ffi::BRepTools_eval_and_update_tol(theE, theC3d, theC2d, theS, theF, theL)
-    }
-
-    #[doc = "Removes internal sub-shapes from the shape. The check on internal status is based on orientation of sub-shapes, classification is not performed. Before removal of internal sub-shapes the algorithm checks if such removal is not going to break topological connectivity between sub-shapes. The flag <theForce> if set to true disables the connectivity check and clears the given shape from all sub-shapes with internal orientation."]
-    pub fn remove_internals(theS: std::pin::Pin<&mut ffi::TopoDS_Shape>, theForce: bool) {
-        ffi::BRepTools_remove_internals(theS, theForce)
-    }
-
-    #[doc = "Check all locations of shape according criterium: aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec()) All sub-shapes having such locations are put in list theProblemShapes"]
-    pub fn check_locations(
-        theS: &ffi::TopoDS_Shape,
-        theProblemShapes: std::pin::Pin<&mut ffi::TopTools_ListOfShape>,
-    ) {
-        ffi::BRepTools_check_locations(theS, theProblemShapes)
-    }
-}
-pub use ffi::History;
-impl History {
-    #[doc = "@name Constructors for History creation Empty constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::History_ctor()
-    }
-
-    #[doc = "Wrap BRepTools_History in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBRepToolsHistory> {
-        ffi::History_to_handle(obj)
-    }
-
-    #[doc = "Returns 'true' if the type of the shape is supported by the history."]
-    pub fn is_supported_type(theShape: &ffi::TopoDS_Shape) -> bool {
-        ffi::History_is_supported_type(theShape)
-    }
-
-    #[doc = "Define the OCCT RTTI for the type."]
-    pub fn get_type_name() -> String {
-        ffi::History_get_type_name()
-    }
-}
-pub use ffi::Modifier;
-impl Modifier {
-    #[doc = "Creates an empty Modifier."]
-    pub fn new_bool(theMutableInput: bool) -> cxx::UniquePtr<Self> {
-        ffi::Modifier_ctor_bool(theMutableInput)
-    }
-
-    #[doc = "Creates a modifier on the shape <S>."]
-    pub fn new_shape(S: &ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        ffi::Modifier_ctor_shape(S)
-    }
-
-    #[doc = "Creates a modifier on  the shape <S>, and performs the modifications described by <M>."]
-    pub fn new_shape_handlemodification(
-        S: &ffi::TopoDS_Shape,
-        M: &ffi::HandleBRepToolsModification,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Modifier_ctor_shape_handlemodification(S, M)
-    }
-}
-pub use ffi::ReShape;
-impl ReShape {
-    #[doc = "Returns an empty Reshape"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::ReShape_ctor()
-    }
-
-    #[doc = "Wrap BRepTools_ReShape in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBRepToolsReShape> {
-        ffi::ReShape_to_handle(obj)
-    }
-
-    #[doc = "Returns the new value for an individual shape If not recorded, returns the original shape itself If to be Removed, returns a Null Shape Else, returns the replacing item"]
-    pub fn value(&self, shape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::ReShape_value(self, shape)
-    }
-
-    pub fn copy_vertex_vertex_real(
-        self: std::pin::Pin<&mut Self>,
-        theV: &ffi::TopoDS_Vertex,
-        theTol: f64,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
-        ffi::ReShape_copy_vertex_vertex_real(self, theV, theTol)
-    }
-
-    pub fn copy_vertex_vertex_pnt_real(
-        self: std::pin::Pin<&mut Self>,
-        theV: &ffi::TopoDS_Vertex,
-        theNewPos: &ffi::gp_Pnt,
-        aTol: f64,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
-        ffi::ReShape_copy_vertex_vertex_pnt_real(self, theV, theNewPos, aTol)
-    }
-
-    #[doc = "Returns the history of the substituted shapes."]
-    pub fn history(&self) -> cxx::UniquePtr<ffi::HandleBRepToolsHistory> {
-        ffi::ReShape_history(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::ReShape_get_type_name()
-    }
 }

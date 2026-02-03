@@ -14,81 +14,37 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::HInter;
+impl HInter {
+    #[doc = "Empty Constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::HInter_ctor()
+    }
+}
+pub use ffi::IntersectionSegment;
+impl IntersectionSegment {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::IntersectionSegment_ctor()
+    }
+
+    pub fn new_intersectionpoint2(
+        P1: &ffi::IntersectionPoint,
+        P2: &ffi::IntersectionPoint,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::IntersectionSegment_ctor_intersectionpoint2(P1, P2)
+    }
+}
+pub use ffi::IntersectionPoint;
+impl IntersectionPoint {
+    #[doc = "Empty Constructor."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::IntersectionPoint_ctor()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_int_curve_surface.hxx");
-        #[doc = "Curve from adaptor3d module"]
-        type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
-        #[doc = "CurveOnSurface from adaptor3d module"]
-        type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
-        #[doc = "Surface from adaptor3d module"]
-        type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
-        #[doc = "B2d from bnd module"]
-        type Bnd_B2d = crate::bnd::ffi::B2d;
-        #[doc = "Box from bnd module"]
-        type Bnd_Box = crate::bnd::ffi::Box_;
-        #[doc = "Box2d from bnd module"]
-        type Bnd_Box2d = crate::bnd::ffi::Box2d;
-        #[doc = "HArray1OfBox from bnd module"]
-        type Bnd_HArray1OfBox = crate::bnd::ffi::HArray1OfBox;
-        #[doc = "HArray1OfSphere from bnd module"]
-        type Bnd_HArray1OfSphere = crate::bnd::ffi::HArray1OfSphere;
-        #[doc = "OBB from bnd module"]
-        type Bnd_OBB = crate::bnd::ffi::OBB;
-        #[doc = "Sphere from bnd module"]
-        type Bnd_Sphere = crate::bnd::ffi::Sphere;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Bnd_BoundSortBox"]
-        type Bnd_BoundSortBox;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "IntCurveSurface_ThePolygonOfHInter"]
-        type IntCurveSurface_ThePolygonOfHInter;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "IntCurveSurface_ThePolyhedronOfHInter"]
-        type IntCurveSurface_ThePolyhedronOfHInter;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleAdaptor3dCurve"]
-        type HandleAdaptor3dCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleAdaptor3dSurface"]
-        type HandleAdaptor3dSurface;
         #[doc = " ======================== IntCurveSurface_HInter ========================"]
         #[doc = "/// **Source:** `IntCurveSurface_HInter.hxx` - `IntCurveSurface_HInter`"]
         #[cxx_name = "IntCurveSurface_HInter"]
@@ -209,35 +165,119 @@ pub(crate) mod ffi {
         #[doc = "Dump all the fields."]
         #[cxx_name = "Dump"]
         fn dump(self: &IntersectionPoint);
+        #[doc = "Curve from adaptor3d module"]
+        type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
+        #[doc = "CurveOnSurface from adaptor3d module"]
+        type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
+        #[doc = "Surface from adaptor3d module"]
+        type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
+        #[doc = "B2d from bnd module"]
+        type Bnd_B2d = crate::bnd::ffi::B2d;
+        #[doc = "Box from bnd module"]
+        type Bnd_Box = crate::bnd::ffi::Box_;
+        #[doc = "Box2d from bnd module"]
+        type Bnd_Box2d = crate::bnd::ffi::Box2d;
+        #[doc = "HArray1OfBox from bnd module"]
+        type Bnd_HArray1OfBox = crate::bnd::ffi::HArray1OfBox;
+        #[doc = "HArray1OfSphere from bnd module"]
+        type Bnd_HArray1OfSphere = crate::bnd::ffi::HArray1OfSphere;
+        #[doc = "OBB from bnd module"]
+        type Bnd_OBB = crate::bnd::ffi::OBB;
+        #[doc = "Sphere from bnd module"]
+        type Bnd_Sphere = crate::bnd::ffi::Sphere;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Bnd_BoundSortBox"]
+        type Bnd_BoundSortBox;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "IntCurveSurface_ThePolygonOfHInter"]
+        type IntCurveSurface_ThePolygonOfHInter;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "IntCurveSurface_ThePolyhedronOfHInter"]
+        type IntCurveSurface_ThePolyhedronOfHInter;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleAdaptor3dCurve"]
+        type HandleAdaptor3dCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleAdaptor3dSurface"]
+        type HandleAdaptor3dSurface;
     }
     impl UniquePtr<HInter> {}
     impl UniquePtr<IntersectionSegment> {}
     impl UniquePtr<IntersectionPoint> {}
-}
-pub use ffi::HInter;
-impl HInter {
-    #[doc = "Empty Constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::HInter_ctor()
-    }
-}
-pub use ffi::IntersectionSegment;
-impl IntersectionSegment {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::IntersectionSegment_ctor()
-    }
-
-    pub fn new_intersectionpoint2(
-        P1: &ffi::IntersectionPoint,
-        P2: &ffi::IntersectionPoint,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::IntersectionSegment_ctor_intersectionpoint2(P1, P2)
-    }
-}
-pub use ffi::IntersectionPoint;
-impl IntersectionPoint {
-    #[doc = "Empty Constructor."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::IntersectionPoint_ctor()
-    }
 }

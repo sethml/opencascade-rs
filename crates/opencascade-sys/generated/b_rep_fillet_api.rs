@@ -13,178 +13,307 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::LocalOperation;
+impl LocalOperation {
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::local_operation_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::local_operation_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::local_operation_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::local_operation_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Returns the first Vertex of the contour of index IC."]
+    pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
+        ffi::LocalOperation_first_vertex(self, IC)
+    }
+
+    #[doc = "Returns the last Vertex of the contour of index IC."]
+    pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
+        ffi::LocalOperation_last_vertex(self, IC)
+    }
+
+    pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<ffi::HandleChFiDSSecHArray1> {
+        ffi::LocalOperation_sect(self, IC, IS)
+    }
+}
+pub use ffi::MakeChamfer;
+impl MakeChamfer {
+    #[doc = "Initializes an algorithm for computing chamfers on the shape S. The edges on which chamfers are built are defined using the Add function."]
+    pub fn new_shape(S: &ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        ffi::MakeChamfer_ctor_shape(S)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_chamfer_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_chamfer_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::make_chamfer_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::make_chamfer_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BRepFilletAPI_LocalOperation"]
+    pub fn as_local_operation(&self) -> &LocalOperation {
+        ffi::make_chamfer_as_local_operation(self)
+    }
+
+    #[doc = "Upcast to BRepFilletAPI_LocalOperation (mutable)"]
+    pub fn as_local_operation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut LocalOperation> {
+        ffi::make_chamfer_as_local_operation_mut(self)
+    }
+
+    #[doc = "Returns the first vertex of the contour of index IC in the internal data structure of this algorithm. Warning Returns a null shape if IC is outside the bounds of the table of contours."]
+    pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
+        ffi::MakeChamfer_first_vertex(self, IC)
+    }
+
+    #[doc = "Returns the last vertex of the contour of index IC in the internal data structure of this algorithm. Warning Returns a null shape if IC is outside the bounds of the table of contours."]
+    pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
+        ffi::MakeChamfer_last_vertex(self, IC)
+    }
+
+    #[doc = "Returns the internal filleting algorithm."]
+    pub fn builder(&self) -> cxx::UniquePtr<ffi::HandleTopOpeBRepBuildHBuilder> {
+        ffi::MakeChamfer_builder(self)
+    }
+
+    pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<ffi::HandleChFiDSSecHArray1> {
+        ffi::MakeChamfer_sect(self, IC, IS)
+    }
+}
+pub use ffi::MakeFillet;
+impl MakeFillet {
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_fillet_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_fillet_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::make_fillet_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::make_fillet_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BRepFilletAPI_LocalOperation"]
+    pub fn as_local_operation(&self) -> &LocalOperation {
+        ffi::make_fillet_as_local_operation(self)
+    }
+
+    #[doc = "Upcast to BRepFilletAPI_LocalOperation (mutable)"]
+    pub fn as_local_operation_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut LocalOperation> {
+        ffi::make_fillet_as_local_operation_mut(self)
+    }
+
+    pub fn get_law(
+        self: std::pin::Pin<&mut Self>,
+        IC: i32,
+        E: &ffi::TopoDS_Edge,
+    ) -> cxx::UniquePtr<ffi::HandleLawFunction> {
+        ffi::MakeFillet_get_law(self, IC, E)
+    }
+
+    #[doc = "Returns the first vertex of the contour of index IC in the internal data structure of this algorithm. Warning Returns a null shape if IC is outside the bounds of the table of contours."]
+    pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
+        ffi::MakeFillet_first_vertex(self, IC)
+    }
+
+    #[doc = "Returns the  last vertex of the contour of index IC in the internal data structure of this algorithm. Warning Returns a null shape if IC is outside the bounds of the table of contours."]
+    pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
+        ffi::MakeFillet_last_vertex(self, IC)
+    }
+
+    #[doc = "Returns the internal topology building algorithm."]
+    pub fn builder(&self) -> cxx::UniquePtr<ffi::HandleTopOpeBRepBuildHBuilder> {
+        ffi::MakeFillet_builder(self)
+    }
+
+    pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<ffi::HandleChFiDSSecHArray1> {
+        ffi::MakeFillet_sect(self, IC, IS)
+    }
+
+    #[doc = "returns the surface number IS concerning the contour IC"]
+    pub fn computed_surface(&self, IC: i32, IS: i32) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
+        ffi::MakeFillet_computed_surface(self, IC, IS)
+    }
+
+    #[doc = "returns the vertex where the computation failed"]
+    pub fn faulty_vertex(&self, IV: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
+        ffi::MakeFillet_faulty_vertex(self, IV)
+    }
+
+    #[doc = "if (HasResult()) returns the partial result"]
+    pub fn bad_shape(&self) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::MakeFillet_bad_shape(self)
+    }
+}
+pub use ffi::MakeFillet2d;
+impl MakeFillet2d {
+    #[doc = "Initializes an empty algorithm for computing fillets and chamfers. The face on which the fillets and chamfers are built is defined using the Init function. The vertices on which fillets or chamfers are built are defined using the AddFillet or AddChamfer function. Warning The status of the initialization, as given by the Status function, can be one of the following: -   ChFi2d_Ready if the initialization is correct, -   ChFi2d_NotPlanar if F is not planar, -   ChFi2d_NoFace if F is a null face."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::MakeFillet2d_ctor()
+    }
+
+    #[doc = "Initializes an algorithm for computing fillets and chamfers on the face F. The vertices on which fillets or chamfers are built are defined using the AddFillet or AddChamfer function. Warning The status of the initialization, as given by the Status function, can be one of the following: -   ChFi2d_Ready if the initialization is correct, -   ChFi2d_NotPlanar if F is not planar, -   ChFi2d_NoFace if F is a null face."]
+    pub fn new_face(F: &ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
+        ffi::MakeFillet2d_ctor_face(F)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::make_fillet2d_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::make_fillet2d_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::make_fillet2d_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::make_fillet2d_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Adds a fillet of radius Radius between the two edges adjacent to the vertex V on the face modified by this algorithm. The two edges do not need to be rectilinear. This function returns the fillet and builds the resulting face. Warning The status of the construction, as given by the Status function, can be one of the following: - ChFi2d_IsDone if the fillet is built, - ChFi2d_ConnexionError if V does not belong to the initial face, -   ChFi2d_ComputationError if Radius is too large to build a fillet between the two adjacent edges, -   ChFi2d_NotAuthorized -   if one of the two edges connected to V is a fillet or chamfer, or -   if a curve other than a straight line or an arc of a circle is used as E, E1 or E2. Do not use the returned fillet if the status of the construction is not ChFi2d_IsDone. Exceptions Standard_NegativeValue if Radius is less than or equal to zero."]
+    pub fn add_fillet(
+        self: std::pin::Pin<&mut Self>,
+        V: &ffi::TopoDS_Vertex,
+        Radius: f64,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
+        ffi::MakeFillet2d_add_fillet(self, V, Radius)
+    }
+
+    #[doc = "Assigns the radius Radius to the fillet Fillet already built on the face modified by this algorithm. This function returns the new fillet and modifies the existing face. Warning The status of the construction, as given by the Status function, can be one of the following: -   ChFi2d_IsDone if the new fillet is built, -   ChFi2d_ConnexionError if Fillet does not belong to the existing face, -   ChFi2d_ComputationError if Radius is too large to build a fillet between the two adjacent edges. Do not use the returned fillet if the status of the construction is not ChFi2d_IsDone. Exceptions Standard_NegativeValue if Radius is less than or equal to zero."]
+    pub fn modify_fillet(
+        self: std::pin::Pin<&mut Self>,
+        Fillet: &ffi::TopoDS_Edge,
+        Radius: f64,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
+        ffi::MakeFillet2d_modify_fillet(self, Fillet, Radius)
+    }
+
+    #[doc = "Removes the fillet Fillet already built on the face modified by this algorithm. This function returns the vertex connecting the two adjacent edges of Fillet and modifies the existing face. Warning -   The returned vertex is only valid if the Status function returns ChFi2d_IsDone. -   A null vertex is returned if the edge Fillet does not belong to the initial face."]
+    pub fn remove_fillet(
+        self: std::pin::Pin<&mut Self>,
+        Fillet: &ffi::TopoDS_Edge,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
+        ffi::MakeFillet2d_remove_fillet(self, Fillet)
+    }
+
+    #[doc = "Adds a chamfer on the face modified by this algorithm between the two adjacent edges E1 and E2, where the extremities of the chamfer are on E1 and E2 at distances D1 and D2 respectively In cases where the edges are not rectilinear, distances are measured using the curvilinear abscissa of the edges and the angle is measured with respect to the tangent at the corresponding point. The angle Ang is given in radians. This function returns the chamfer and builds the resulting face."]
+    pub fn add_chamfer_edge2_real2(
+        self: std::pin::Pin<&mut Self>,
+        E1: &ffi::TopoDS_Edge,
+        E2: &ffi::TopoDS_Edge,
+        D1: f64,
+        D2: f64,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
+        ffi::MakeFillet2d_add_chamfer_edge2_real2(self, E1, E2, D1, D2)
+    }
+
+    #[doc = "Adds a chamfer on the face modified by this algorithm between the two edges connected by the vertex V, where E is one of the two edges. The chamfer makes an angle Ang with E and one of its extremities is on E at distance D from V. In cases where the edges are not rectilinear, distances are measured using the curvilinear abscissa of the edges and the angle is measured with respect to the tangent at the corresponding point. The angle Ang is given in radians. This function returns the chamfer and builds the resulting face. Warning The status of the construction, as given by the Status function, can be one of the following: -          ChFi2d_IsDone if the chamfer is built, -  ChFi2d_ParametersError if D1, D2, D or Ang is less than or equal to zero, -          ChFi2d_ConnexionError if: - the edge E, E1 or E2 does not belong to the initial face, or -  the edges E1 and E2 are not adjacent, or -  the vertex V is not one of the limit points of the edge E, -          ChFi2d_ComputationError if the parameters of the chamfer are too large to build a chamfer between the two adjacent edges, -          ChFi2d_NotAuthorized if: - the edge E1, E2 or one of the two edges connected to V is a fillet or chamfer, or - a curve other than a straight line or an arc of a circle is used as E, E1 or E2. Do not use the returned chamfer if the status of the construction is not ChFi2d_IsDone."]
+    pub fn add_chamfer_edge_vertex_real2(
+        self: std::pin::Pin<&mut Self>,
+        E: &ffi::TopoDS_Edge,
+        V: &ffi::TopoDS_Vertex,
+        D: f64,
+        Ang: f64,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
+        ffi::MakeFillet2d_add_chamfer_edge_vertex_real2(self, E, V, D, Ang)
+    }
+
+    #[doc = "Modifies the chamfer Chamfer on the face modified by this algorithm, where: E1 and E2 are the two adjacent edges on which Chamfer is already built; the extremities of the new chamfer are on E1 and E2 at distances D1 and D2 respectively."]
+    pub fn modify_chamfer_edge3_real2(
+        self: std::pin::Pin<&mut Self>,
+        Chamfer: &ffi::TopoDS_Edge,
+        E1: &ffi::TopoDS_Edge,
+        E2: &ffi::TopoDS_Edge,
+        D1: f64,
+        D2: f64,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
+        ffi::MakeFillet2d_modify_chamfer_edge3_real2(self, Chamfer, E1, E2, D1, D2)
+    }
+
+    #[doc = "Modifies the chamfer Chamfer on the face modified by this algorithm, where: E is one of the two adjacent edges on which Chamfer is already built; the new chamfer makes an angle Ang with E and one of its extremities is on E at distance D from the vertex on which the chamfer is built. In cases where the edges are not rectilinear, the distances are measured using the curvilinear abscissa of the edges and the angle is measured with respect to the tangent at the corresponding point. The angle Ang is given in radians. This function returns the new chamfer and modifies the existing face. Warning The status of the construction, as given by the Status function, can be one of the following: -   ChFi2d_IsDone if the chamfer is built, -   ChFi2d_ParametersError if D1, D2, D or Ang is less than or equal to zero, -   ChFi2d_ConnexionError if: -   the edge E, E1, E2 or Chamfer does not belong to the existing face, or -   the edges E1 and E2 are not adjacent, -   ChFi2d_ComputationError if the parameters of the chamfer are too large to build a chamfer between the two adjacent edges, -   ChFi2d_NotAuthorized if E1 or E2 is a fillet or chamfer. Do not use the returned chamfer if the status of the construction is not ChFi2d_IsDone."]
+    pub fn modify_chamfer_edge2_real2(
+        self: std::pin::Pin<&mut Self>,
+        Chamfer: &ffi::TopoDS_Edge,
+        E: &ffi::TopoDS_Edge,
+        D: f64,
+        Ang: f64,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
+        ffi::MakeFillet2d_modify_chamfer_edge2_real2(self, Chamfer, E, D, Ang)
+    }
+
+    #[doc = "Removes the chamfer Chamfer already built on the face modified by this algorithm. This function returns the vertex connecting the two adjacent edges of Chamfer and modifies the existing face. Warning -   The returned vertex is only valid if the Status function returns ChFi2d_IsDone. -   A null vertex is returned if the edge Chamfer does not belong to the initial face."]
+    pub fn remove_chamfer(
+        self: std::pin::Pin<&mut Self>,
+        Chamfer: &ffi::TopoDS_Edge,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
+        ffi::MakeFillet2d_remove_chamfer(self, Chamfer)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_fillet_api.hxx");
-        #[doc = "Command from b_rep_builder_api module"]
-        type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
-        #[doc = "MakeEdge from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeEdge = crate::b_rep_builder_api::ffi::MakeEdge;
-        #[doc = "MakeFace from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeFace = crate::b_rep_builder_api::ffi::MakeFace;
-        #[doc = "MakeShape from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
-        #[doc = "MakeSolid from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeSolid = crate::b_rep_builder_api::ffi::MakeSolid;
-        #[doc = "MakeVertex from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeVertex = crate::b_rep_builder_api::ffi::MakeVertex;
-        #[doc = "MakeWire from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeWire = crate::b_rep_builder_api::ffi::MakeWire;
-        #[doc = "ModifyShape from b_rep_builder_api module"]
-        type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
-        #[doc = "Sewing from b_rep_builder_api module"]
-        type BRepBuilderAPI_Sewing = crate::b_rep_builder_api::ffi::Sewing;
-        #[doc = "Transform from b_rep_builder_api module"]
-        type BRepBuilderAPI_Transform = crate::b_rep_builder_api::ffi::Transform;
-        #[doc = "Builder from ch_fi2d module"]
-        type ChFi2d_Builder = crate::ch_fi2d::ffi::Builder;
-        #[doc = "Builder from ch_fi3d module"]
-        type ChFi3d_Builder = crate::ch_fi3d::ffi::Builder;
-        #[doc = "ChBuilder from ch_fi3d module"]
-        type ChFi3d_ChBuilder = crate::ch_fi3d::ffi::ChBuilder;
-        #[doc = "FilBuilder from ch_fi3d module"]
-        type ChFi3d_FilBuilder = crate::ch_fi3d::ffi::FilBuilder;
-        #[doc = "CircSection from ch_fi_ds module"]
-        type ChFiDS_CircSection = crate::ch_fi_ds::ffi::CircSection;
-        #[doc = "CommonPoint from ch_fi_ds module"]
-        type ChFiDS_CommonPoint = crate::ch_fi_ds::ffi::CommonPoint;
-        #[doc = "ElSpine from ch_fi_ds module"]
-        type ChFiDS_ElSpine = crate::ch_fi_ds::ffi::ElSpine;
-        #[doc = "FaceInterference from ch_fi_ds module"]
-        type ChFiDS_FaceInterference = crate::ch_fi_ds::ffi::FaceInterference;
-        #[doc = "HData from ch_fi_ds module"]
-        type ChFiDS_HData = crate::ch_fi_ds::ffi::HData;
-        #[doc = "Map from ch_fi_ds module"]
-        type ChFiDS_Map = crate::ch_fi_ds::ffi::Map;
-        #[doc = "Regul from ch_fi_ds module"]
-        type ChFiDS_Regul = crate::ch_fi_ds::ffi::Regul;
-        #[doc = "SecHArray1 from ch_fi_ds module"]
-        type ChFiDS_SecHArray1 = crate::ch_fi_ds::ffi::SecHArray1;
-        #[doc = "Stripe from ch_fi_ds module"]
-        type ChFiDS_Stripe = crate::ch_fi_ds::ffi::Stripe;
-        #[doc = "StripeMap from ch_fi_ds module"]
-        type ChFiDS_StripeMap = crate::ch_fi_ds::ffi::StripeMap;
-        #[doc = "SurfData from ch_fi_ds module"]
-        type ChFiDS_SurfData = crate::ch_fi_ds::ffi::SurfData;
-        #[doc = "BSplineCurve from geom module"]
-        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
-        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
-        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
-        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
-        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
-        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
-        type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
-        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
-        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
-        type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
-        type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
-        type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
-        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "BSpFunc from law module"]
-        type Law_BSpFunc = crate::law::ffi::BSpFunc;
-        #[doc = "Function from law module"]
-        type Law_Function = crate::law::ffi::Function;
-        #[doc = "Interpol from law module"]
-        type Law_Interpol = crate::law::ffi::Interpol;
-        #[doc = "Message from message module"]
-        type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
-        type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
-        type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "HArray1OfPnt from t_colgp module"]
-        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
-        #[doc = "HArray1OfPnt2d from t_colgp module"]
-        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
-        #[doc = "HArray1OfVec from t_colgp module"]
-        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
-        #[doc = "HArray2OfPnt from t_colgp module"]
-        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array1OfPnt2d"]
-        type TColgp_Array1OfPnt2d;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopOpeBRepBuild_HBuilder"]
-        type TopOpeBRepBuild_HBuilder;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_SequenceOfShape"]
-        type TopTools_SequenceOfShape;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleChFiDSSecHArray1"]
-        type HandleChFiDSSecHArray1;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomSurface"]
-        type HandleGeomSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleLawFunction"]
-        type HandleLawFunction;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTopOpeBRepBuildHBuilder"]
-        type HandleTopOpeBRepBuildHBuilder;
         #[doc = " ======================== BRepFilletAPI_LocalOperation ========================"]
         #[doc = "/// **Source:** `BRepFilletAPI_LocalOperation.hxx` - `BRepFilletAPI_LocalOperation`"]
         #[doc = ""]
@@ -798,306 +927,177 @@ pub(crate) mod ffi {
         fn make_fillet2d_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut MakeFillet2d>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        #[doc = "Command from b_rep_builder_api module"]
+        type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
+        #[doc = "MakeEdge from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeEdge = crate::b_rep_builder_api::ffi::MakeEdge;
+        #[doc = "MakeFace from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeFace = crate::b_rep_builder_api::ffi::MakeFace;
+        #[doc = "MakeShape from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
+        #[doc = "MakeSolid from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeSolid = crate::b_rep_builder_api::ffi::MakeSolid;
+        #[doc = "MakeVertex from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeVertex = crate::b_rep_builder_api::ffi::MakeVertex;
+        #[doc = "MakeWire from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeWire = crate::b_rep_builder_api::ffi::MakeWire;
+        #[doc = "ModifyShape from b_rep_builder_api module"]
+        type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
+        #[doc = "Sewing from b_rep_builder_api module"]
+        type BRepBuilderAPI_Sewing = crate::b_rep_builder_api::ffi::Sewing;
+        #[doc = "Transform from b_rep_builder_api module"]
+        type BRepBuilderAPI_Transform = crate::b_rep_builder_api::ffi::Transform;
+        #[doc = "Builder from ch_fi2d module"]
+        type ChFi2d_Builder = crate::ch_fi2d::ffi::Builder;
+        #[doc = "Builder from ch_fi3d module"]
+        type ChFi3d_Builder = crate::ch_fi3d::ffi::Builder;
+        #[doc = "ChBuilder from ch_fi3d module"]
+        type ChFi3d_ChBuilder = crate::ch_fi3d::ffi::ChBuilder;
+        #[doc = "FilBuilder from ch_fi3d module"]
+        type ChFi3d_FilBuilder = crate::ch_fi3d::ffi::FilBuilder;
+        #[doc = "CircSection from ch_fi_ds module"]
+        type ChFiDS_CircSection = crate::ch_fi_ds::ffi::CircSection;
+        #[doc = "CommonPoint from ch_fi_ds module"]
+        type ChFiDS_CommonPoint = crate::ch_fi_ds::ffi::CommonPoint;
+        #[doc = "ElSpine from ch_fi_ds module"]
+        type ChFiDS_ElSpine = crate::ch_fi_ds::ffi::ElSpine;
+        #[doc = "FaceInterference from ch_fi_ds module"]
+        type ChFiDS_FaceInterference = crate::ch_fi_ds::ffi::FaceInterference;
+        #[doc = "HData from ch_fi_ds module"]
+        type ChFiDS_HData = crate::ch_fi_ds::ffi::HData;
+        #[doc = "Map from ch_fi_ds module"]
+        type ChFiDS_Map = crate::ch_fi_ds::ffi::Map;
+        #[doc = "Regul from ch_fi_ds module"]
+        type ChFiDS_Regul = crate::ch_fi_ds::ffi::Regul;
+        #[doc = "SecHArray1 from ch_fi_ds module"]
+        type ChFiDS_SecHArray1 = crate::ch_fi_ds::ffi::SecHArray1;
+        #[doc = "Stripe from ch_fi_ds module"]
+        type ChFiDS_Stripe = crate::ch_fi_ds::ffi::Stripe;
+        #[doc = "StripeMap from ch_fi_ds module"]
+        type ChFiDS_StripeMap = crate::ch_fi_ds::ffi::StripeMap;
+        #[doc = "SurfData from ch_fi_ds module"]
+        type ChFiDS_SurfData = crate::ch_fi_ds::ffi::SurfData;
+        #[doc = "BSplineCurve from geom module"]
+        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
+        #[doc = "BSplineSurface from geom module"]
+        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
+        #[doc = "BezierCurve from geom module"]
+        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
+        #[doc = "BezierSurface from geom module"]
+        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BoundedCurve from geom module"]
+        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
+        #[doc = "BoundedSurface from geom module"]
+        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
+        #[doc = "Curve from geom module"]
+        type Geom_Curve = crate::geom::ffi::Curve;
+        #[doc = "CylindricalSurface from geom module"]
+        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
+        #[doc = "ElementarySurface from geom module"]
+        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
+        #[doc = "Geometry from geom module"]
+        type Geom_Geometry = crate::geom::ffi::Geometry;
+        #[doc = "Plane from geom module"]
+        type Geom_Plane = crate::geom::ffi::Plane;
+        #[doc = "Surface from geom module"]
+        type Geom_Surface = crate::geom::ffi::Surface;
+        #[doc = "TrimmedCurve from geom module"]
+        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
+        #[doc = "BSpFunc from law module"]
+        type Law_BSpFunc = crate::law::ffi::BSpFunc;
+        #[doc = "Function from law module"]
+        type Law_Function = crate::law::ffi::Function;
+        #[doc = "Interpol from law module"]
+        type Law_Interpol = crate::law::ffi::Interpol;
+        #[doc = "Message from message module"]
+        type Message = crate::message::ffi::Message;
+        #[doc = "Alert from message module"]
+        type Message_Alert = crate::message::ffi::Alert;
+        #[doc = "AlertExtended from message module"]
+        type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
+        #[doc = "HArray1OfPnt from t_colgp module"]
+        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
+        #[doc = "HArray1OfPnt2d from t_colgp module"]
+        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
+        #[doc = "HArray1OfVec from t_colgp module"]
+        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
+        #[doc = "HArray2OfPnt from t_colgp module"]
+        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColgp_Array1OfPnt2d"]
+        type TColgp_Array1OfPnt2d;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopOpeBRepBuild_HBuilder"]
+        type TopOpeBRepBuild_HBuilder;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_SequenceOfShape"]
+        type TopTools_SequenceOfShape;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleChFiDSSecHArray1"]
+        type HandleChFiDSSecHArray1;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomSurface"]
+        type HandleGeomSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleLawFunction"]
+        type HandleLawFunction;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTopOpeBRepBuildHBuilder"]
+        type HandleTopOpeBRepBuildHBuilder;
     }
     impl UniquePtr<LocalOperation> {}
     impl UniquePtr<MakeChamfer> {}
     impl UniquePtr<MakeFillet> {}
     impl UniquePtr<MakeFillet2d> {}
-}
-pub use ffi::LocalOperation;
-impl LocalOperation {
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::local_operation_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::local_operation_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::local_operation_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::local_operation_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
-    #[doc = "Returns the first Vertex of the contour of index IC."]
-    pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
-        ffi::LocalOperation_first_vertex(self, IC)
-    }
-
-    #[doc = "Returns the last Vertex of the contour of index IC."]
-    pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
-        ffi::LocalOperation_last_vertex(self, IC)
-    }
-
-    pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<ffi::HandleChFiDSSecHArray1> {
-        ffi::LocalOperation_sect(self, IC, IS)
-    }
-}
-pub use ffi::MakeChamfer;
-impl MakeChamfer {
-    #[doc = "Initializes an algorithm for computing chamfers on the shape S. The edges on which chamfers are built are defined using the Add function."]
-    pub fn new_shape(S: &ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        ffi::MakeChamfer_ctor_shape(S)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_chamfer_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_chamfer_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::make_chamfer_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::make_chamfer_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
-    #[doc = "Upcast to BRepFilletAPI_LocalOperation"]
-    pub fn as_local_operation(&self) -> &LocalOperation {
-        ffi::make_chamfer_as_local_operation(self)
-    }
-
-    #[doc = "Upcast to BRepFilletAPI_LocalOperation (mutable)"]
-    pub fn as_local_operation_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut LocalOperation> {
-        ffi::make_chamfer_as_local_operation_mut(self)
-    }
-
-    #[doc = "Returns the first vertex of the contour of index IC in the internal data structure of this algorithm. Warning Returns a null shape if IC is outside the bounds of the table of contours."]
-    pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
-        ffi::MakeChamfer_first_vertex(self, IC)
-    }
-
-    #[doc = "Returns the last vertex of the contour of index IC in the internal data structure of this algorithm. Warning Returns a null shape if IC is outside the bounds of the table of contours."]
-    pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
-        ffi::MakeChamfer_last_vertex(self, IC)
-    }
-
-    #[doc = "Returns the internal filleting algorithm."]
-    pub fn builder(&self) -> cxx::UniquePtr<ffi::HandleTopOpeBRepBuildHBuilder> {
-        ffi::MakeChamfer_builder(self)
-    }
-
-    pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<ffi::HandleChFiDSSecHArray1> {
-        ffi::MakeChamfer_sect(self, IC, IS)
-    }
-}
-pub use ffi::MakeFillet;
-impl MakeFillet {
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_fillet_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_fillet_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::make_fillet_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::make_fillet_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
-    #[doc = "Upcast to BRepFilletAPI_LocalOperation"]
-    pub fn as_local_operation(&self) -> &LocalOperation {
-        ffi::make_fillet_as_local_operation(self)
-    }
-
-    #[doc = "Upcast to BRepFilletAPI_LocalOperation (mutable)"]
-    pub fn as_local_operation_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut LocalOperation> {
-        ffi::make_fillet_as_local_operation_mut(self)
-    }
-
-    pub fn get_law(
-        self: std::pin::Pin<&mut Self>,
-        IC: i32,
-        E: &ffi::TopoDS_Edge,
-    ) -> cxx::UniquePtr<ffi::HandleLawFunction> {
-        ffi::MakeFillet_get_law(self, IC, E)
-    }
-
-    #[doc = "Returns the first vertex of the contour of index IC in the internal data structure of this algorithm. Warning Returns a null shape if IC is outside the bounds of the table of contours."]
-    pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
-        ffi::MakeFillet_first_vertex(self, IC)
-    }
-
-    #[doc = "Returns the  last vertex of the contour of index IC in the internal data structure of this algorithm. Warning Returns a null shape if IC is outside the bounds of the table of contours."]
-    pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
-        ffi::MakeFillet_last_vertex(self, IC)
-    }
-
-    #[doc = "Returns the internal topology building algorithm."]
-    pub fn builder(&self) -> cxx::UniquePtr<ffi::HandleTopOpeBRepBuildHBuilder> {
-        ffi::MakeFillet_builder(self)
-    }
-
-    pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<ffi::HandleChFiDSSecHArray1> {
-        ffi::MakeFillet_sect(self, IC, IS)
-    }
-
-    #[doc = "returns the surface number IS concerning the contour IC"]
-    pub fn computed_surface(&self, IC: i32, IS: i32) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
-        ffi::MakeFillet_computed_surface(self, IC, IS)
-    }
-
-    #[doc = "returns the vertex where the computation failed"]
-    pub fn faulty_vertex(&self, IV: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
-        ffi::MakeFillet_faulty_vertex(self, IV)
-    }
-
-    #[doc = "if (HasResult()) returns the partial result"]
-    pub fn bad_shape(&self) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::MakeFillet_bad_shape(self)
-    }
-}
-pub use ffi::MakeFillet2d;
-impl MakeFillet2d {
-    #[doc = "Initializes an empty algorithm for computing fillets and chamfers. The face on which the fillets and chamfers are built is defined using the Init function. The vertices on which fillets or chamfers are built are defined using the AddFillet or AddChamfer function. Warning The status of the initialization, as given by the Status function, can be one of the following: -   ChFi2d_Ready if the initialization is correct, -   ChFi2d_NotPlanar if F is not planar, -   ChFi2d_NoFace if F is a null face."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::MakeFillet2d_ctor()
-    }
-
-    #[doc = "Initializes an algorithm for computing fillets and chamfers on the face F. The vertices on which fillets or chamfers are built are defined using the AddFillet or AddChamfer function. Warning The status of the initialization, as given by the Status function, can be one of the following: -   ChFi2d_Ready if the initialization is correct, -   ChFi2d_NotPlanar if F is not planar, -   ChFi2d_NoFace if F is a null face."]
-    pub fn new_face(F: &ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
-        ffi::MakeFillet2d_ctor_face(F)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::make_fillet2d_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::make_fillet2d_as_b_rep_builder_api_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::make_fillet2d_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::make_fillet2d_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
-    #[doc = "Adds a fillet of radius Radius between the two edges adjacent to the vertex V on the face modified by this algorithm. The two edges do not need to be rectilinear. This function returns the fillet and builds the resulting face. Warning The status of the construction, as given by the Status function, can be one of the following: - ChFi2d_IsDone if the fillet is built, - ChFi2d_ConnexionError if V does not belong to the initial face, -   ChFi2d_ComputationError if Radius is too large to build a fillet between the two adjacent edges, -   ChFi2d_NotAuthorized -   if one of the two edges connected to V is a fillet or chamfer, or -   if a curve other than a straight line or an arc of a circle is used as E, E1 or E2. Do not use the returned fillet if the status of the construction is not ChFi2d_IsDone. Exceptions Standard_NegativeValue if Radius is less than or equal to zero."]
-    pub fn add_fillet(
-        self: std::pin::Pin<&mut Self>,
-        V: &ffi::TopoDS_Vertex,
-        Radius: f64,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
-        ffi::MakeFillet2d_add_fillet(self, V, Radius)
-    }
-
-    #[doc = "Assigns the radius Radius to the fillet Fillet already built on the face modified by this algorithm. This function returns the new fillet and modifies the existing face. Warning The status of the construction, as given by the Status function, can be one of the following: -   ChFi2d_IsDone if the new fillet is built, -   ChFi2d_ConnexionError if Fillet does not belong to the existing face, -   ChFi2d_ComputationError if Radius is too large to build a fillet between the two adjacent edges. Do not use the returned fillet if the status of the construction is not ChFi2d_IsDone. Exceptions Standard_NegativeValue if Radius is less than or equal to zero."]
-    pub fn modify_fillet(
-        self: std::pin::Pin<&mut Self>,
-        Fillet: &ffi::TopoDS_Edge,
-        Radius: f64,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
-        ffi::MakeFillet2d_modify_fillet(self, Fillet, Radius)
-    }
-
-    #[doc = "Removes the fillet Fillet already built on the face modified by this algorithm. This function returns the vertex connecting the two adjacent edges of Fillet and modifies the existing face. Warning -   The returned vertex is only valid if the Status function returns ChFi2d_IsDone. -   A null vertex is returned if the edge Fillet does not belong to the initial face."]
-    pub fn remove_fillet(
-        self: std::pin::Pin<&mut Self>,
-        Fillet: &ffi::TopoDS_Edge,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
-        ffi::MakeFillet2d_remove_fillet(self, Fillet)
-    }
-
-    #[doc = "Adds a chamfer on the face modified by this algorithm between the two adjacent edges E1 and E2, where the extremities of the chamfer are on E1 and E2 at distances D1 and D2 respectively In cases where the edges are not rectilinear, distances are measured using the curvilinear abscissa of the edges and the angle is measured with respect to the tangent at the corresponding point. The angle Ang is given in radians. This function returns the chamfer and builds the resulting face."]
-    pub fn add_chamfer_edge2_real2(
-        self: std::pin::Pin<&mut Self>,
-        E1: &ffi::TopoDS_Edge,
-        E2: &ffi::TopoDS_Edge,
-        D1: f64,
-        D2: f64,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
-        ffi::MakeFillet2d_add_chamfer_edge2_real2(self, E1, E2, D1, D2)
-    }
-
-    #[doc = "Adds a chamfer on the face modified by this algorithm between the two edges connected by the vertex V, where E is one of the two edges. The chamfer makes an angle Ang with E and one of its extremities is on E at distance D from V. In cases where the edges are not rectilinear, distances are measured using the curvilinear abscissa of the edges and the angle is measured with respect to the tangent at the corresponding point. The angle Ang is given in radians. This function returns the chamfer and builds the resulting face. Warning The status of the construction, as given by the Status function, can be one of the following: -          ChFi2d_IsDone if the chamfer is built, -  ChFi2d_ParametersError if D1, D2, D or Ang is less than or equal to zero, -          ChFi2d_ConnexionError if: - the edge E, E1 or E2 does not belong to the initial face, or -  the edges E1 and E2 are not adjacent, or -  the vertex V is not one of the limit points of the edge E, -          ChFi2d_ComputationError if the parameters of the chamfer are too large to build a chamfer between the two adjacent edges, -          ChFi2d_NotAuthorized if: - the edge E1, E2 or one of the two edges connected to V is a fillet or chamfer, or - a curve other than a straight line or an arc of a circle is used as E, E1 or E2. Do not use the returned chamfer if the status of the construction is not ChFi2d_IsDone."]
-    pub fn add_chamfer_edge_vertex_real2(
-        self: std::pin::Pin<&mut Self>,
-        E: &ffi::TopoDS_Edge,
-        V: &ffi::TopoDS_Vertex,
-        D: f64,
-        Ang: f64,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
-        ffi::MakeFillet2d_add_chamfer_edge_vertex_real2(self, E, V, D, Ang)
-    }
-
-    #[doc = "Modifies the chamfer Chamfer on the face modified by this algorithm, where: E1 and E2 are the two adjacent edges on which Chamfer is already built; the extremities of the new chamfer are on E1 and E2 at distances D1 and D2 respectively."]
-    pub fn modify_chamfer_edge3_real2(
-        self: std::pin::Pin<&mut Self>,
-        Chamfer: &ffi::TopoDS_Edge,
-        E1: &ffi::TopoDS_Edge,
-        E2: &ffi::TopoDS_Edge,
-        D1: f64,
-        D2: f64,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
-        ffi::MakeFillet2d_modify_chamfer_edge3_real2(self, Chamfer, E1, E2, D1, D2)
-    }
-
-    #[doc = "Modifies the chamfer Chamfer on the face modified by this algorithm, where: E is one of the two adjacent edges on which Chamfer is already built; the new chamfer makes an angle Ang with E and one of its extremities is on E at distance D from the vertex on which the chamfer is built. In cases where the edges are not rectilinear, the distances are measured using the curvilinear abscissa of the edges and the angle is measured with respect to the tangent at the corresponding point. The angle Ang is given in radians. This function returns the new chamfer and modifies the existing face. Warning The status of the construction, as given by the Status function, can be one of the following: -   ChFi2d_IsDone if the chamfer is built, -   ChFi2d_ParametersError if D1, D2, D or Ang is less than or equal to zero, -   ChFi2d_ConnexionError if: -   the edge E, E1, E2 or Chamfer does not belong to the existing face, or -   the edges E1 and E2 are not adjacent, -   ChFi2d_ComputationError if the parameters of the chamfer are too large to build a chamfer between the two adjacent edges, -   ChFi2d_NotAuthorized if E1 or E2 is a fillet or chamfer. Do not use the returned chamfer if the status of the construction is not ChFi2d_IsDone."]
-    pub fn modify_chamfer_edge2_real2(
-        self: std::pin::Pin<&mut Self>,
-        Chamfer: &ffi::TopoDS_Edge,
-        E: &ffi::TopoDS_Edge,
-        D: f64,
-        Ang: f64,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
-        ffi::MakeFillet2d_modify_chamfer_edge2_real2(self, Chamfer, E, D, Ang)
-    }
-
-    #[doc = "Removes the chamfer Chamfer already built on the face modified by this algorithm. This function returns the vertex connecting the two adjacent edges of Chamfer and modifies the existing face. Warning -   The returned vertex is only valid if the Status function returns ChFi2d_IsDone. -   A null vertex is returned if the edge Chamfer does not belong to the initial face."]
-    pub fn remove_chamfer(
-        self: std::pin::Pin<&mut Self>,
-        Chamfer: &ffi::TopoDS_Edge,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
-        ffi::MakeFillet2d_remove_chamfer(self, Chamfer)
-    }
 }

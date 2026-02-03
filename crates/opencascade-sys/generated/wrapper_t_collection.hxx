@@ -149,6 +149,59 @@ inline Standard_Boolean TCollection_AsciiString_IsSameString(const TCollection_A
 
 
 // ========================
+// TCollection_ExtendedString wrappers
+// ========================
+
+inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor() {
+    return std::make_unique<TCollection_ExtendedString>();
+}
+
+inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_charptr_bool(rust::Str astring, Standard_Boolean isMultiByte) {
+    return std::make_unique<TCollection_ExtendedString>(std::string(astring).c_str(), isMultiByte);
+}
+
+inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_int(Standard_Integer value) {
+    return std::make_unique<TCollection_ExtendedString>(value);
+}
+
+inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_real(Standard_Real value) {
+    return std::make_unique<TCollection_ExtendedString>(value);
+}
+
+inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_extendedstring(const TCollection_ExtendedString& astring) {
+    return std::make_unique<TCollection_ExtendedString>(astring);
+}
+
+inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_asciistring_bool(const TCollection_AsciiString& astring, Standard_Boolean isMultiByte) {
+    return std::make_unique<TCollection_ExtendedString>(astring, isMultiByte);
+}
+
+inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_Cat(const TCollection_ExtendedString& self, const TCollection_ExtendedString& other) {
+    return std::make_unique<TCollection_ExtendedString>(self.Cat(other));
+}
+
+inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_Split(TCollection_ExtendedString& self, Standard_Integer where) {
+    return std::make_unique<TCollection_ExtendedString>(self.Split(where));
+}
+
+inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_Token(const TCollection_ExtendedString& self, Standard_ExtString separators, Standard_Integer whichone) {
+    return std::make_unique<TCollection_ExtendedString>(self.Token(separators, whichone));
+}
+
+inline std::unique_ptr<Standard_ExtString> TCollection_ExtendedString_ToExtString(const TCollection_ExtendedString& self) {
+    return std::make_unique<Standard_ExtString>(self.ToExtString());
+}
+
+inline std::unique_ptr<Standard_ExtCharacter> TCollection_ExtendedString_Value(const TCollection_ExtendedString& self, Standard_Integer where) {
+    return std::make_unique<Standard_ExtCharacter>(self.Value(where));
+}
+
+inline Standard_Boolean TCollection_ExtendedString_IsEqual_extendedstring2(const TCollection_ExtendedString& theString1, const TCollection_ExtendedString& theString2) {
+    return TCollection_ExtendedString::IsEqual(theString1, theString2);
+}
+
+
+// ========================
 // TCollection_HAsciiString wrappers
 // ========================
 
@@ -283,57 +336,4 @@ inline rust::String TCollection_HExtendedString_get_type_name() {
 inline std::unique_ptr<HandleTCollectionHExtendedString> TCollection_HExtendedString_to_handle(std::unique_ptr<TCollection_HExtendedString> obj) {
     return std::make_unique<HandleTCollectionHExtendedString>(obj.release());
 }
-
-// ========================
-// TCollection_ExtendedString wrappers
-// ========================
-
-inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor() {
-    return std::make_unique<TCollection_ExtendedString>();
-}
-
-inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_charptr_bool(rust::Str astring, Standard_Boolean isMultiByte) {
-    return std::make_unique<TCollection_ExtendedString>(std::string(astring).c_str(), isMultiByte);
-}
-
-inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_int(Standard_Integer value) {
-    return std::make_unique<TCollection_ExtendedString>(value);
-}
-
-inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_real(Standard_Real value) {
-    return std::make_unique<TCollection_ExtendedString>(value);
-}
-
-inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_extendedstring(const TCollection_ExtendedString& astring) {
-    return std::make_unique<TCollection_ExtendedString>(astring);
-}
-
-inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_ctor_asciistring_bool(const TCollection_AsciiString& astring, Standard_Boolean isMultiByte) {
-    return std::make_unique<TCollection_ExtendedString>(astring, isMultiByte);
-}
-
-inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_Cat(const TCollection_ExtendedString& self, const TCollection_ExtendedString& other) {
-    return std::make_unique<TCollection_ExtendedString>(self.Cat(other));
-}
-
-inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_Split(TCollection_ExtendedString& self, Standard_Integer where) {
-    return std::make_unique<TCollection_ExtendedString>(self.Split(where));
-}
-
-inline std::unique_ptr<TCollection_ExtendedString> TCollection_ExtendedString_Token(const TCollection_ExtendedString& self, Standard_ExtString separators, Standard_Integer whichone) {
-    return std::make_unique<TCollection_ExtendedString>(self.Token(separators, whichone));
-}
-
-inline std::unique_ptr<Standard_ExtString> TCollection_ExtendedString_ToExtString(const TCollection_ExtendedString& self) {
-    return std::make_unique<Standard_ExtString>(self.ToExtString());
-}
-
-inline std::unique_ptr<Standard_ExtCharacter> TCollection_ExtendedString_Value(const TCollection_ExtendedString& self, Standard_Integer where) {
-    return std::make_unique<Standard_ExtCharacter>(self.Value(where));
-}
-
-inline Standard_Boolean TCollection_ExtendedString_IsEqual_extendedstring2(const TCollection_ExtendedString& theString1, const TCollection_ExtendedString& theString2) {
-    return TCollection_ExtendedString::IsEqual(theString1, theString2);
-}
-
 

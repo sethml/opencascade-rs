@@ -12,10 +12,138 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::HSequenceOfShape;
+impl HSequenceOfShape {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::HSequenceOfShape_ctor()
+    }
+
+    pub fn new_sequenceofshape(theOther: &ffi::TopTools_SequenceOfShape) -> cxx::UniquePtr<Self> {
+        ffi::HSequenceOfShape_ctor_sequenceofshape(theOther)
+    }
+
+    #[doc = "Wrap TopTools_HSequenceOfShape in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<ffi::HandleTopToolsHSequenceOfShape> {
+        ffi::HSequenceOfShape_to_handle(obj)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::HSequenceOfShape_get_type_name()
+    }
+}
+pub use ffi::HArray2OfShape;
+impl HArray2OfShape {
+    pub fn new_int4(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::HArray2OfShape_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
+    }
+
+    pub fn new_int4_shape(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::HArray2OfShape_ctor_int4_shape(theRowLow, theRowUpp, theColLow, theColUpp, theValue)
+    }
+
+    pub fn new_array2ofshape(theOther: &ffi::TopTools_Array2OfShape) -> cxx::UniquePtr<Self> {
+        ffi::HArray2OfShape_ctor_array2ofshape(theOther)
+    }
+
+    #[doc = "Wrap TopTools_HArray2OfShape in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<ffi::HandleTopToolsHArray2OfShape> {
+        ffi::HArray2OfShape_to_handle(obj)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::HArray2OfShape_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_top_tools.hxx");
+        #[doc = " ======================== TopTools_HSequenceOfShape ========================"]
+        #[doc = "/// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape`"]
+        #[cxx_name = "TopTools_HSequenceOfShape"]
+        type HSequenceOfShape;
+        #[doc = "/// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`"]
+        #[cxx_name = "TopTools_HSequenceOfShape_ctor"]
+        fn HSequenceOfShape_ctor() -> UniquePtr<HSequenceOfShape>;
+        #[doc = "/// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`"]
+        #[cxx_name = "TopTools_HSequenceOfShape_ctor_sequenceofshape"]
+        fn HSequenceOfShape_ctor_sequenceofshape(
+            theOther: &TopTools_SequenceOfShape,
+        ) -> UniquePtr<HSequenceOfShape>;
+        #[cxx_name = "Sequence"]
+        fn sequence(self: &HSequenceOfShape) -> &TopTools_SequenceOfShape;
+        #[cxx_name = "Append"]
+        fn append_shape(self: Pin<&mut HSequenceOfShape>, theItem: &TopoDS_Shape);
+        #[cxx_name = "Append"]
+        fn append_sequenceofshape(
+            self: Pin<&mut HSequenceOfShape>,
+            theSequence: Pin<&mut TopTools_SequenceOfShape>,
+        );
+        #[cxx_name = "ChangeSequence"]
+        fn change_sequence(self: Pin<&mut HSequenceOfShape>) -> Pin<&mut TopTools_SequenceOfShape>;
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &HSequenceOfShape) -> &HandleStandardType;
+        #[cxx_name = "TopTools_HSequenceOfShape_get_type_name"]
+        fn HSequenceOfShape_get_type_name() -> String;
+        #[doc = "Wrap TopTools_HSequenceOfShape in a Handle (reference-counted smart pointer)"]
+        #[cxx_name = "TopTools_HSequenceOfShape_to_handle"]
+        fn HSequenceOfShape_to_handle(
+            obj: UniquePtr<HSequenceOfShape>,
+        ) -> UniquePtr<HandleTopToolsHSequenceOfShape>;
+        #[doc = " ======================== TopTools_HArray2OfShape ========================"]
+        #[doc = "/// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape`"]
+        #[cxx_name = "TopTools_HArray2OfShape"]
+        type HArray2OfShape;
+        #[doc = "/// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`"]
+        #[cxx_name = "TopTools_HArray2OfShape_ctor_int4"]
+        fn HArray2OfShape_ctor_int4(
+            theRowLow: i32,
+            theRowUpp: i32,
+            theColLow: i32,
+            theColUpp: i32,
+        ) -> UniquePtr<HArray2OfShape>;
+        #[doc = "/// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`"]
+        #[cxx_name = "TopTools_HArray2OfShape_ctor_int4_shape"]
+        fn HArray2OfShape_ctor_int4_shape(
+            theRowLow: i32,
+            theRowUpp: i32,
+            theColLow: i32,
+            theColUpp: i32,
+            theValue: &TopoDS_Shape,
+        ) -> UniquePtr<HArray2OfShape>;
+        #[doc = "/// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`"]
+        #[cxx_name = "TopTools_HArray2OfShape_ctor_array2ofshape"]
+        fn HArray2OfShape_ctor_array2ofshape(
+            theOther: &TopTools_Array2OfShape,
+        ) -> UniquePtr<HArray2OfShape>;
+        #[cxx_name = "Array2"]
+        fn array2(self: &HArray2OfShape) -> &TopTools_Array2OfShape;
+        #[cxx_name = "ChangeArray2"]
+        fn change_array2(self: Pin<&mut HArray2OfShape>) -> Pin<&mut TopTools_Array2OfShape>;
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &HArray2OfShape) -> &HandleStandardType;
+        #[cxx_name = "TopTools_HArray2OfShape_get_type_name"]
+        fn HArray2OfShape_get_type_name() -> String;
+        #[doc = "Wrap TopTools_HArray2OfShape in a Handle (reference-counted smart pointer)"]
+        #[cxx_name = "TopTools_HArray2OfShape_to_handle"]
+        fn HArray2OfShape_to_handle(
+            obj: UniquePtr<HArray2OfShape>,
+        ) -> UniquePtr<HandleTopToolsHArray2OfShape>;
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -96,78 +224,7 @@ pub(crate) mod ffi {
         type HandleTopToolsHArray2OfShape;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTopToolsHSequenceOfShape"]
-        type HandleTopToolsHSequenceOfShape;
-        #[doc = " ======================== TopTools_HSequenceOfShape ========================"]
-        #[doc = "/// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape`"]
-        #[cxx_name = "TopTools_HSequenceOfShape"]
-        type HSequenceOfShape;
-        #[doc = "/// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`"]
-        #[cxx_name = "TopTools_HSequenceOfShape_ctor"]
-        fn HSequenceOfShape_ctor() -> UniquePtr<HSequenceOfShape>;
-        #[doc = "/// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`"]
-        #[cxx_name = "TopTools_HSequenceOfShape_ctor_sequenceofshape"]
-        fn HSequenceOfShape_ctor_sequenceofshape(
-            theOther: &TopTools_SequenceOfShape,
-        ) -> UniquePtr<HSequenceOfShape>;
-        #[cxx_name = "Sequence"]
-        fn sequence(self: &HSequenceOfShape) -> &TopTools_SequenceOfShape;
-        #[cxx_name = "Append"]
-        fn append_shape(self: Pin<&mut HSequenceOfShape>, theItem: &TopoDS_Shape);
-        #[cxx_name = "Append"]
-        fn append_sequenceofshape(
-            self: Pin<&mut HSequenceOfShape>,
-            theSequence: Pin<&mut TopTools_SequenceOfShape>,
-        );
-        #[cxx_name = "ChangeSequence"]
-        fn change_sequence(self: Pin<&mut HSequenceOfShape>) -> Pin<&mut TopTools_SequenceOfShape>;
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &HSequenceOfShape) -> &HandleStandardType;
-        #[cxx_name = "TopTools_HSequenceOfShape_get_type_name"]
-        fn HSequenceOfShape_get_type_name() -> String;
-        #[doc = "Wrap TopTools_HSequenceOfShape in a Handle (reference-counted smart pointer)"]
-        #[cxx_name = "TopTools_HSequenceOfShape_to_handle"]
-        fn HSequenceOfShape_to_handle(
-            obj: UniquePtr<HSequenceOfShape>,
-        ) -> UniquePtr<HandleTopToolsHSequenceOfShape>;
-        #[doc = " ======================== TopTools_HArray2OfShape ========================"]
-        #[doc = "/// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape`"]
-        #[cxx_name = "TopTools_HArray2OfShape"]
-        type HArray2OfShape;
-        #[doc = "/// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`"]
-        #[cxx_name = "TopTools_HArray2OfShape_ctor_int4"]
-        fn HArray2OfShape_ctor_int4(
-            theRowLow: i32,
-            theRowUpp: i32,
-            theColLow: i32,
-            theColUpp: i32,
-        ) -> UniquePtr<HArray2OfShape>;
-        #[doc = "/// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`"]
-        #[cxx_name = "TopTools_HArray2OfShape_ctor_int4_shape"]
-        fn HArray2OfShape_ctor_int4_shape(
-            theRowLow: i32,
-            theRowUpp: i32,
-            theColLow: i32,
-            theColUpp: i32,
-            theValue: &TopoDS_Shape,
-        ) -> UniquePtr<HArray2OfShape>;
-        #[doc = "/// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`"]
-        #[cxx_name = "TopTools_HArray2OfShape_ctor_array2ofshape"]
-        fn HArray2OfShape_ctor_array2ofshape(
-            theOther: &TopTools_Array2OfShape,
-        ) -> UniquePtr<HArray2OfShape>;
-        #[cxx_name = "Array2"]
-        fn array2(self: &HArray2OfShape) -> &TopTools_Array2OfShape;
-        #[cxx_name = "ChangeArray2"]
-        fn change_array2(self: Pin<&mut HArray2OfShape>) -> Pin<&mut TopTools_Array2OfShape>;
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &HArray2OfShape) -> &HandleStandardType;
-        #[cxx_name = "TopTools_HArray2OfShape_get_type_name"]
-        fn HArray2OfShape_get_type_name() -> String;
-        #[doc = "Wrap TopTools_HArray2OfShape in a Handle (reference-counted smart pointer)"]
-        #[cxx_name = "TopTools_HArray2OfShape_to_handle"]
-        fn HArray2OfShape_to_handle(
-            obj: UniquePtr<HArray2OfShape>,
-        ) -> UniquePtr<HandleTopToolsHArray2OfShape>; // Collection element types from other modules
+        type HandleTopToolsHSequenceOfShape; // Collection element types from other modules
 
         // ========================
         // Collection type wrappers
@@ -383,63 +440,6 @@ pub(crate) mod ffi {
     }
     impl UniquePtr<HSequenceOfShape> {}
     impl UniquePtr<HArray2OfShape> {}
-}
-pub use ffi::HSequenceOfShape;
-impl HSequenceOfShape {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::HSequenceOfShape_ctor()
-    }
-
-    pub fn new_sequenceofshape(theOther: &ffi::TopTools_SequenceOfShape) -> cxx::UniquePtr<Self> {
-        ffi::HSequenceOfShape_ctor_sequenceofshape(theOther)
-    }
-
-    #[doc = "Wrap TopTools_HSequenceOfShape in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<ffi::HandleTopToolsHSequenceOfShape> {
-        ffi::HSequenceOfShape_to_handle(obj)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::HSequenceOfShape_get_type_name()
-    }
-}
-pub use ffi::HArray2OfShape;
-impl HArray2OfShape {
-    pub fn new_int4(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::HArray2OfShape_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
-    }
-
-    pub fn new_int4_shape(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::HArray2OfShape_ctor_int4_shape(theRowLow, theRowUpp, theColLow, theColUpp, theValue)
-    }
-
-    pub fn new_array2ofshape(theOther: &ffi::TopTools_Array2OfShape) -> cxx::UniquePtr<Self> {
-        ffi::HArray2OfShape_ctor_array2ofshape(theOther)
-    }
-
-    #[doc = "Wrap TopTools_HArray2OfShape in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<ffi::HandleTopToolsHArray2OfShape> {
-        ffi::HArray2OfShape_to_handle(obj)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::HArray2OfShape_get_type_name()
-    }
 }
 // Collection type re-exports
 pub use ffi::{

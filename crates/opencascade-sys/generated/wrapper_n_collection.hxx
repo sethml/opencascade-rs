@@ -9,13 +9,40 @@
 #include <NCollection_BaseMap.hxx>
 #include <NCollection_BasePointerVector.hxx>
 #include <NCollection_BaseSequence.hxx>
+#include <NCollection_Buffer.hxx>
 #include <NCollection_IncAllocator.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<NCollection_BaseAllocator> HandleNCollectionBaseAllocator;
+typedef opencascade::handle<NCollection_Buffer> HandleNCollectionBuffer;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
+
+// ========================
+// NCollection_Buffer wrappers
+// ========================
+
+inline rust::String NCollection_Buffer_get_type_name() {
+    return rust::String(NCollection_Buffer::get_type_name());
+}
+
+inline std::unique_ptr<HandleNCollectionBuffer> NCollection_Buffer_to_handle(std::unique_ptr<NCollection_Buffer> obj) {
+    return std::make_unique<HandleNCollectionBuffer>(obj.release());
+}
+
+// ========================
+// NCollection_BasePointerVector wrappers
+// ========================
+
+inline std::unique_ptr<NCollection_BasePointerVector> NCollection_BasePointerVector_ctor() {
+    return std::make_unique<NCollection_BasePointerVector>();
+}
+
+inline std::unique_ptr<NCollection_BasePointerVector> NCollection_BasePointerVector_ctor_basepointervector(const NCollection_BasePointerVector& theOther) {
+    return std::make_unique<NCollection_BasePointerVector>(theOther);
+}
+
 
 // ========================
 // NCollection_BaseAllocator wrappers
@@ -35,16 +62,8 @@ inline std::unique_ptr<HandleNCollectionBaseAllocator> NCollection_BaseAllocator
 
 
 // ========================
-// NCollection_BasePointerVector wrappers
+// NCollection_BaseList wrappers
 // ========================
-
-inline std::unique_ptr<NCollection_BasePointerVector> NCollection_BasePointerVector_ctor() {
-    return std::make_unique<NCollection_BasePointerVector>();
-}
-
-inline std::unique_ptr<NCollection_BasePointerVector> NCollection_BasePointerVector_ctor_basepointervector(const NCollection_BasePointerVector& theOther) {
-    return std::make_unique<NCollection_BasePointerVector>(theOther);
-}
 
 
 // ========================
@@ -63,10 +82,5 @@ inline std::unique_ptr<NCollection_IncAllocator> NCollection_IncAllocator_ctor_u
 inline rust::String NCollection_IncAllocator_get_type_name() {
     return rust::String(NCollection_IncAllocator::get_type_name());
 }
-
-
-// ========================
-// NCollection_BaseList wrappers
-// ========================
 
 

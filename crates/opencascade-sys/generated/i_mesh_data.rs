@@ -11,10 +11,81 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Model;
+impl Model {
+    #[doc = "Upcast to IMeshData_Shape"]
+    pub fn as_shape(&self) -> &Shape {
+        ffi::model_as_shape(self)
+    }
+
+    #[doc = "Upcast to IMeshData_Shape (mutable)"]
+    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
+        ffi::model_as_shape_mut(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Model_get_type_name()
+    }
+}
+pub use ffi::Shape;
+impl Shape {
+    #[doc = "Wrap IMeshData_Shape in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleIMeshDataShape> {
+        ffi::Shape_to_handle(obj)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Shape_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_i_mesh_data.hxx");
+        #[doc = " ======================== IMeshData_Model ========================"]
+        #[doc = "/// **Source:** `IMeshData_Model.hxx` - `IMeshData_Model`"]
+        #[doc = ""]
+        #[doc = "Interface class representing discrete model of a shape."]
+        #[cxx_name = "IMeshData_Model"]
+        type Model;
+        #[doc = "Returns maximum size of shape model."]
+        #[cxx_name = "GetMaxSize"]
+        fn get_max_size(self: &Model) -> f64;
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &Model) -> &HandleStandardType;
+        #[doc = "@name discrete faces Returns number of faces in discrete model."]
+        #[cxx_name = "FacesNb"]
+        fn faces_nb(self: &Model) -> i32;
+        #[doc = "@name discrete edges Returns number of edges in discrete model."]
+        #[cxx_name = "EdgesNb"]
+        fn edges_nb(self: &Model) -> i32;
+        #[cxx_name = "IMeshData_Model_get_type_name"]
+        fn Model_get_type_name() -> String;
+        #[doc = "Upcast IMeshData_Model to IMeshData_Shape"]
+        #[cxx_name = "IMeshData_Model_as_IMeshData_Shape"]
+        fn model_as_shape(self_: &Model) -> &Shape;
+        #[doc = "Upcast IMeshData_Model to IMeshData_Shape (mutable)"]
+        #[cxx_name = "IMeshData_Model_as_IMeshData_Shape_mut"]
+        fn model_as_shape_mut(self_: Pin<&mut Model>) -> Pin<&mut Shape>;
+        #[doc = " ======================== IMeshData_Shape ========================"]
+        #[doc = "/// **Source:** `IMeshData_Shape.hxx` - `IMeshData_Shape`"]
+        #[doc = ""]
+        #[doc = "Interface class representing model with associated TopoDS_Shape. Intended for inheritance by structures and algorithms keeping reference TopoDS_Shape."]
+        #[cxx_name = "IMeshData_Shape"]
+        type Shape;
+        #[doc = "Assigns shape to discrete shape."]
+        #[cxx_name = "SetShape"]
+        fn set_shape(self: Pin<&mut Shape>, theShape: &TopoDS_Shape);
+        #[doc = "Returns shape assigned to discrete shape."]
+        #[cxx_name = "GetShape"]
+        fn get_shape(self: &Shape) -> &TopoDS_Shape;
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &Shape) -> &HandleStandardType;
+        #[cxx_name = "IMeshData_Shape_get_type_name"]
+        fn Shape_get_type_name() -> String;
+        #[doc = "Wrap IMeshData_Shape in a Handle (reference-counted smart pointer)"]
+        #[cxx_name = "IMeshData_Shape_to_handle"]
+        fn Shape_to_handle(obj: UniquePtr<Shape>) -> UniquePtr<HandleIMeshDataShape>;
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -87,78 +158,7 @@ pub(crate) mod ffi {
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = " ======================== IMeshData_Model ========================"]
-        #[doc = "/// **Source:** `IMeshData_Model.hxx` - `IMeshData_Model`"]
-        #[doc = ""]
-        #[doc = "Interface class representing discrete model of a shape."]
-        #[cxx_name = "IMeshData_Model"]
-        type Model;
-        #[doc = "Returns maximum size of shape model."]
-        #[cxx_name = "GetMaxSize"]
-        fn get_max_size(self: &Model) -> f64;
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &Model) -> &HandleStandardType;
-        #[doc = "@name discrete faces Returns number of faces in discrete model."]
-        #[cxx_name = "FacesNb"]
-        fn faces_nb(self: &Model) -> i32;
-        #[doc = "@name discrete edges Returns number of edges in discrete model."]
-        #[cxx_name = "EdgesNb"]
-        fn edges_nb(self: &Model) -> i32;
-        #[cxx_name = "IMeshData_Model_get_type_name"]
-        fn Model_get_type_name() -> String;
-        #[doc = "Upcast IMeshData_Model to IMeshData_Shape"]
-        #[cxx_name = "IMeshData_Model_as_IMeshData_Shape"]
-        fn model_as_shape(self_: &Model) -> &Shape;
-        #[doc = "Upcast IMeshData_Model to IMeshData_Shape (mutable)"]
-        #[cxx_name = "IMeshData_Model_as_IMeshData_Shape_mut"]
-        fn model_as_shape_mut(self_: Pin<&mut Model>) -> Pin<&mut Shape>;
-        #[doc = " ======================== IMeshData_Shape ========================"]
-        #[doc = "/// **Source:** `IMeshData_Shape.hxx` - `IMeshData_Shape`"]
-        #[doc = ""]
-        #[doc = "Interface class representing model with associated TopoDS_Shape. Intended for inheritance by structures and algorithms keeping reference TopoDS_Shape."]
-        #[cxx_name = "IMeshData_Shape"]
-        type Shape;
-        #[doc = "Assigns shape to discrete shape."]
-        #[cxx_name = "SetShape"]
-        fn set_shape(self: Pin<&mut Shape>, theShape: &TopoDS_Shape);
-        #[doc = "Returns shape assigned to discrete shape."]
-        #[cxx_name = "GetShape"]
-        fn get_shape(self: &Shape) -> &TopoDS_Shape;
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &Shape) -> &HandleStandardType;
-        #[cxx_name = "IMeshData_Shape_get_type_name"]
-        fn Shape_get_type_name() -> String;
-        #[doc = "Wrap IMeshData_Shape in a Handle (reference-counted smart pointer)"]
-        #[cxx_name = "IMeshData_Shape_to_handle"]
-        fn Shape_to_handle(obj: UniquePtr<Shape>) -> UniquePtr<HandleIMeshDataShape>;
     }
     impl UniquePtr<Model> {}
     impl UniquePtr<Shape> {}
-}
-pub use ffi::Model;
-impl Model {
-    #[doc = "Upcast to IMeshData_Shape"]
-    pub fn as_shape(&self) -> &Shape {
-        ffi::model_as_shape(self)
-    }
-
-    #[doc = "Upcast to IMeshData_Shape (mutable)"]
-    pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
-        ffi::model_as_shape_mut(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Model_get_type_name()
-    }
-}
-pub use ffi::Shape;
-impl Shape {
-    #[doc = "Wrap IMeshData_Shape in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleIMeshDataShape> {
-        ffi::Shape_to_handle(obj)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Shape_get_type_name()
-    }
 }

@@ -10,18 +10,27 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::MemInfo;
+impl MemInfo {
+    #[doc = "Create and initialize. By default all countes are active"]
+    pub fn new_bool(theImmediateUpdate: bool) -> cxx::UniquePtr<Self> {
+        ffi::MemInfo_ctor_bool(theImmediateUpdate)
+    }
+
+    #[doc = "Return the string representation for all available counter."]
+    pub fn to_string(&self) -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
+        ffi::MemInfo_to_string(self)
+    }
+
+    #[doc = "Return the string representation for all available counter."]
+    pub fn print_info() -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
+        ffi::MemInfo_print_info()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_osd.hxx");
-        #[doc = "AsciiString from t_collection module"]
-        type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
-        #[doc = "ExtendedString from t_collection module"]
-        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
-        #[doc = "HAsciiString from t_collection module"]
-        type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
-        #[doc = "HExtendedString from t_collection module"]
-        type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
         #[doc = " ======================== OSD_MemInfo ========================"]
         #[doc = "/// **Source:** `OSD_MemInfo.hxx` - `OSD_MemInfo`"]
         #[doc = ""]
@@ -48,23 +57,14 @@ pub(crate) mod ffi {
         #[doc = "Return the string representation for all available counter."]
         #[cxx_name = "OSD_MemInfo_PrintInfo"]
         fn MemInfo_print_info() -> UniquePtr<TCollection_AsciiString>;
+        #[doc = "AsciiString from t_collection module"]
+        type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
+        #[doc = "ExtendedString from t_collection module"]
+        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
+        #[doc = "HAsciiString from t_collection module"]
+        type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
+        #[doc = "HExtendedString from t_collection module"]
+        type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
     }
     impl UniquePtr<MemInfo> {}
-}
-pub use ffi::MemInfo;
-impl MemInfo {
-    #[doc = "Create and initialize. By default all countes are active"]
-    pub fn new_bool(theImmediateUpdate: bool) -> cxx::UniquePtr<Self> {
-        ffi::MemInfo_ctor_bool(theImmediateUpdate)
-    }
-
-    #[doc = "Return the string representation for all available counter."]
-    pub fn to_string(&self) -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
-        ffi::MemInfo_to_string(self)
-    }
-
-    #[doc = "Return the string representation for all available counter."]
-    pub fn print_info() -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
-        ffi::MemInfo_print_info()
-    }
 }

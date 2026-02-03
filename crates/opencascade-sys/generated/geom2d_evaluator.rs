@@ -10,10 +10,65 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Curve;
+impl Curve {
+    #[doc = "Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1"]
+    pub fn dn(&self, theU: f64, theDerU: i32) -> cxx::UniquePtr<ffi::gp_Vec2d> {
+        ffi::Curve_dn(self, theU, theDerU)
+    }
+
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<ffi::HandleGeom2dEvaluatorCurve> {
+        ffi::Curve_shallow_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Curve_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom2d_evaluator.hxx");
+        #[doc = " ======================== Geom2dEvaluator_Curve ========================"]
+        #[doc = "/// **Source:** `Geom2dEvaluator_Curve.hxx` - `Geom2dEvaluator_Curve`"]
+        #[doc = ""]
+        #[doc = "Interface for calculation of values and derivatives for different kinds of curves in 2D. Works both with adaptors and curves."]
+        #[cxx_name = "Geom2dEvaluator_Curve"]
+        type Curve;
+        #[doc = "Value of 2D curve"]
+        #[cxx_name = "D0"]
+        fn d0(self: &Curve, theU: f64, theValue: Pin<&mut gp_Pnt2d>);
+        #[doc = "Value and first derivatives of curve"]
+        #[cxx_name = "D1"]
+        fn d1(self: &Curve, theU: f64, theValue: Pin<&mut gp_Pnt2d>, theD1: Pin<&mut gp_Vec2d>);
+        #[doc = "Value, first and second derivatives of curve"]
+        #[cxx_name = "D2"]
+        fn d2(
+            self: &Curve,
+            theU: f64,
+            theValue: Pin<&mut gp_Pnt2d>,
+            theD1: Pin<&mut gp_Vec2d>,
+            theD2: Pin<&mut gp_Vec2d>,
+        );
+        #[doc = "Value, first, second and third derivatives of curve"]
+        #[cxx_name = "D3"]
+        fn d3(
+            self: &Curve,
+            theU: f64,
+            theValue: Pin<&mut gp_Pnt2d>,
+            theD1: Pin<&mut gp_Vec2d>,
+            theD2: Pin<&mut gp_Vec2d>,
+            theD3: Pin<&mut gp_Vec2d>,
+        );
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &Curve) -> &HandleStandardType;
+        #[doc = "Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1"]
+        #[cxx_name = "Geom2dEvaluator_Curve_DN"]
+        fn Curve_dn(self_: &Curve, theU: f64, theDerU: i32) -> UniquePtr<gp_Vec2d>;
+        #[cxx_name = "Geom2dEvaluator_Curve_ShallowCopy"]
+        fn Curve_shallow_copy(self_: &Curve) -> UniquePtr<HandleGeom2dEvaluatorCurve>;
+        #[cxx_name = "Geom2dEvaluator_Curve_get_type_name"]
+        fn Curve_get_type_name() -> String;
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -60,28 +115,64 @@ pub(crate) mod ffi {
         type gp_Ax1 = crate::gp::ffi::Ax1;
         #[doc = "Ax2 from gp module"]
         type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
         #[doc = "Ax2d from gp module"]
         type gp_Ax2d = crate::gp::ffi::Ax2d;
         #[doc = "Ax3 from gp module"]
         type gp_Ax3 = crate::gp::ffi::Ax3;
         #[doc = "Circ from gp module"]
         type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
         #[doc = "Dir from gp module"]
         type gp_Dir = crate::gp::ffi::Dir;
         #[doc = "Dir2d from gp module"]
         type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
         #[doc = "GTrsf from gp module"]
         type gp_GTrsf = crate::gp::ffi::GTrsf;
         #[doc = "GTrsf2d from gp module"]
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
         #[doc = "Lin from gp module"]
         type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
         #[doc = "Pnt from gp module"]
         type gp_Pnt = crate::gp::ffi::Pnt;
         #[doc = "Pnt2d from gp module"]
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
         #[doc = "Trsf from gp module"]
         type gp_Trsf = crate::gp::ffi::Trsf;
         #[doc = "Trsf2d from gp module"]
@@ -90,6 +181,10 @@ pub(crate) mod ffi {
         type gp_Vec = crate::gp::ffi::Vec_;
         #[doc = "Vec2d from gp module"]
         type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
         #[doc = "XYZ from gp module"]
         type gp_XYZ = crate::gp::ffi::XYZ;
         #[doc = r" Handle to OCCT object"]
@@ -98,61 +193,6 @@ pub(crate) mod ffi {
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = " ======================== Geom2dEvaluator_Curve ========================"]
-        #[doc = "/// **Source:** `Geom2dEvaluator_Curve.hxx` - `Geom2dEvaluator_Curve`"]
-        #[doc = ""]
-        #[doc = "Interface for calculation of values and derivatives for different kinds of curves in 2D. Works both with adaptors and curves."]
-        #[cxx_name = "Geom2dEvaluator_Curve"]
-        type Curve;
-        #[doc = "Value of 2D curve"]
-        #[cxx_name = "D0"]
-        fn d0(self: &Curve, theU: f64, theValue: Pin<&mut gp_Pnt2d>);
-        #[doc = "Value and first derivatives of curve"]
-        #[cxx_name = "D1"]
-        fn d1(self: &Curve, theU: f64, theValue: Pin<&mut gp_Pnt2d>, theD1: Pin<&mut gp_Vec2d>);
-        #[doc = "Value, first and second derivatives of curve"]
-        #[cxx_name = "D2"]
-        fn d2(
-            self: &Curve,
-            theU: f64,
-            theValue: Pin<&mut gp_Pnt2d>,
-            theD1: Pin<&mut gp_Vec2d>,
-            theD2: Pin<&mut gp_Vec2d>,
-        );
-        #[doc = "Value, first, second and third derivatives of curve"]
-        #[cxx_name = "D3"]
-        fn d3(
-            self: &Curve,
-            theU: f64,
-            theValue: Pin<&mut gp_Pnt2d>,
-            theD1: Pin<&mut gp_Vec2d>,
-            theD2: Pin<&mut gp_Vec2d>,
-            theD3: Pin<&mut gp_Vec2d>,
-        );
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &Curve) -> &HandleStandardType;
-        #[doc = "Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1"]
-        #[cxx_name = "Geom2dEvaluator_Curve_DN"]
-        fn Curve_dn(self_: &Curve, theU: f64, theDerU: i32) -> UniquePtr<gp_Vec2d>;
-        #[cxx_name = "Geom2dEvaluator_Curve_ShallowCopy"]
-        fn Curve_shallow_copy(self_: &Curve) -> UniquePtr<HandleGeom2dEvaluatorCurve>;
-        #[cxx_name = "Geom2dEvaluator_Curve_get_type_name"]
-        fn Curve_get_type_name() -> String;
     }
     impl UniquePtr<Curve> {}
-}
-pub use ffi::Curve;
-impl Curve {
-    #[doc = "Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1"]
-    pub fn dn(&self, theU: f64, theDerU: i32) -> cxx::UniquePtr<ffi::gp_Vec2d> {
-        ffi::Curve_dn(self, theU, theDerU)
-    }
-
-    pub fn shallow_copy(&self) -> cxx::UniquePtr<ffi::HandleGeom2dEvaluatorCurve> {
-        ffi::Curve_shallow_copy(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Curve_get_type_name()
-    }
 }

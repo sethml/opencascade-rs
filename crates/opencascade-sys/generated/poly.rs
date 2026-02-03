@@ -17,203 +17,319 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Triangulation;
+impl Triangulation {
+    #[doc = "Constructs an empty triangulation."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Triangulation_ctor()
+    }
+
+    #[doc = "Constructs a triangulation from a set of triangles. The triangulation is initialized without a triangle or a node, but capable of containing specified number of nodes and triangles. @param[in] theNbNodes      number of nodes to allocate @param[in] theNbTriangles  number of triangles to allocate @param[in] theHasUVNodes   indicates whether 2D nodes will be associated with 3D ones, (i.e. to enable a 2D representation) @param[in] theHasNormals   indicates whether normals will be given and associated with nodes"]
+    pub fn new_int2_bool2(
+        theNbNodes: i32,
+        theNbTriangles: i32,
+        theHasUVNodes: bool,
+        theHasNormals: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Triangulation_ctor_int2_bool2(theNbNodes, theNbTriangles, theHasUVNodes, theHasNormals)
+    }
+
+    #[doc = "Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes and triangles from Triangles."]
+    pub fn new_array1ofpnt_array1oftriangle(
+        Nodes: &ffi::TColgp_Array1OfPnt,
+        Triangles: &ffi::Poly_Array1OfTriangle,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Triangulation_ctor_array1ofpnt_array1oftriangle(Nodes, Triangles)
+    }
+
+    #[doc = "Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes, 2D points from UVNodes and triangles from Triangles, where coordinates of a 2D point from UVNodes are the (u, v) parameters of the corresponding 3D point from Nodes on the surface approximated by the constructed triangulation."]
+    pub fn new_array1ofpnt_array1ofpnt2d_array1oftriangle(
+        Nodes: &ffi::TColgp_Array1OfPnt,
+        UVNodes: &ffi::TColgp_Array1OfPnt2d,
+        Triangles: &ffi::Poly_Array1OfTriangle,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Triangulation_ctor_array1ofpnt_array1ofpnt2d_array1oftriangle(
+            Nodes, UVNodes, Triangles,
+        )
+    }
+
+    #[doc = "Copy constructor for triangulation."]
+    pub fn new_handletriangulation(
+        theTriangulation: &ffi::HandlePolyTriangulation,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Triangulation_ctor_handletriangulation(theTriangulation)
+    }
+
+    #[doc = "Wrap Poly_Triangulation in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandlePolyTriangulation> {
+        ffi::Triangulation_to_handle(obj)
+    }
+
+    #[doc = "Creates full copy of current triangulation"]
+    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandlePolyTriangulation> {
+        ffi::Triangulation_copy(self)
+    }
+
+    #[doc = "Returns a node at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return 3D point coordinates"]
+    pub fn node(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::Triangulation_node(self, theIndex)
+    }
+
+    #[doc = "Returns UV-node at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return 2D point defining UV coordinates"]
+    pub fn uv_node(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
+        ffi::Triangulation_uv_node(self, theIndex)
+    }
+
+    #[doc = "Returns normal at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return normalized 3D vector defining a surface normal"]
+    pub fn normal_int(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Dir> {
+        ffi::Triangulation_normal_int(self, theIndex)
+    }
+
+    #[doc = "Returns the table of 3D points for read-only access or NULL if nodes array is undefined. Poly_Triangulation::Node() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
+    pub fn map_node_array(&self) -> cxx::UniquePtr<ffi::HandleTColgpHArray1OfPnt> {
+        ffi::Triangulation_map_node_array(self)
+    }
+
+    #[doc = "Returns the triangle array for read-only access or NULL if triangle array is undefined. Poly_Triangulation::Triangle() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
+    pub fn map_triangle_array(&self) -> cxx::UniquePtr<ffi::HandlePolyHArray1OfTriangle> {
+        ffi::Triangulation_map_triangle_array(self)
+    }
+
+    #[doc = "Returns the table of 2D nodes for read-only access or NULL if UV nodes array is undefined. Poly_Triangulation::UVNode() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
+    pub fn map_uv_node_array(&self) -> cxx::UniquePtr<ffi::HandleTColgpHArray1OfPnt2d> {
+        ffi::Triangulation_map_uv_node_array(self)
+    }
+
+    #[doc = "Returns the table of per-vertex normals for read-only access or NULL if normals array is undefined. Poly_Triangulation::Normal() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
+    pub fn map_normal_array(&self) -> cxx::UniquePtr<ffi::HandleTShortHArray1OfShortReal> {
+        ffi::Triangulation_map_normal_array(self)
+    }
+
+    #[doc = "Loads triangulation data into new Poly_Triangulation object from some deferred storage using specified shared input file system."]
+    pub fn detached_load_deferred_data(
+        &self,
+        theFileSystem: &ffi::HandleOSDFileSystem,
+    ) -> cxx::UniquePtr<ffi::HandlePolyTriangulation> {
+        ffi::Triangulation_detached_load_deferred_data(self, theFileSystem)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Triangulation_get_type_name()
+    }
+}
+pub use ffi::HArray1OfTriangle;
+impl HArray1OfTriangle {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfTriangle_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfTriangle_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_triangle(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &ffi::Triangle,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfTriangle_ctor_int2_triangle(theLower, theUpper, theValue)
+    }
+
+    pub fn new_triangle_int2_bool(
+        theBegin: &ffi::Triangle,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfTriangle_ctor_triangle_int2_bool(theBegin, theLower, theUpper, arg3)
+    }
+
+    pub fn new_array1oftriangle(theOther: &ffi::Poly_Array1OfTriangle) -> cxx::UniquePtr<Self> {
+        ffi::HArray1OfTriangle_ctor_array1oftriangle(theOther)
+    }
+
+    #[doc = "Wrap Poly_HArray1OfTriangle in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<ffi::HandlePolyHArray1OfTriangle> {
+        ffi::HArray1OfTriangle_to_handle(obj)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::HArray1OfTriangle_get_type_name()
+    }
+}
+pub use ffi::ArrayOfNodes;
+impl ArrayOfNodes {
+    #[doc = "Empty constructor of double-precision array."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::ArrayOfNodes_ctor()
+    }
+
+    #[doc = "Constructor of double-precision array."]
+    pub fn new_int(theLength: i32) -> cxx::UniquePtr<Self> {
+        ffi::ArrayOfNodes_ctor_int(theLength)
+    }
+
+    #[doc = "Copy constructor"]
+    pub fn new_arrayofnodes(theOther: &ffi::ArrayOfNodes) -> cxx::UniquePtr<Self> {
+        ffi::ArrayOfNodes_ctor_arrayofnodes(theOther)
+    }
+
+    #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
+    pub fn new_pnt_int(theBegin: &ffi::gp_Pnt, theLength: i32) -> cxx::UniquePtr<Self> {
+        ffi::ArrayOfNodes_ctor_pnt_int(theBegin, theLength)
+    }
+
+    #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
+    pub fn new_vec3f_int(theBegin: &ffi::gp_Vec3f, theLength: i32) -> cxx::UniquePtr<Self> {
+        ffi::ArrayOfNodes_ctor_vec3f_int(theBegin, theLength)
+    }
+
+    #[doc = "A generalized accessor to point."]
+    pub fn value(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::ArrayOfNodes_value(self, theIndex)
+    }
+}
+pub use ffi::ArrayOfUVNodes;
+impl ArrayOfUVNodes {
+    #[doc = "Empty constructor of double-precision array."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::ArrayOfUVNodes_ctor()
+    }
+
+    #[doc = "Constructor of double-precision array."]
+    pub fn new_int(theLength: i32) -> cxx::UniquePtr<Self> {
+        ffi::ArrayOfUVNodes_ctor_int(theLength)
+    }
+
+    #[doc = "Copy constructor"]
+    pub fn new_arrayofuvnodes(theOther: &ffi::ArrayOfUVNodes) -> cxx::UniquePtr<Self> {
+        ffi::ArrayOfUVNodes_ctor_arrayofuvnodes(theOther)
+    }
+
+    #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
+    pub fn new_pnt2d_int(theBegin: &ffi::gp_Pnt2d, theLength: i32) -> cxx::UniquePtr<Self> {
+        ffi::ArrayOfUVNodes_ctor_pnt2d_int(theBegin, theLength)
+    }
+
+    #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
+    pub fn new_vec2f_int(theBegin: &ffi::gp_Vec2f, theLength: i32) -> cxx::UniquePtr<Self> {
+        ffi::ArrayOfUVNodes_ctor_vec2f_int(theBegin, theLength)
+    }
+
+    #[doc = "A generalized accessor to point."]
+    pub fn value(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
+        ffi::ArrayOfUVNodes_value(self, theIndex)
+    }
+}
+pub use ffi::Triangle;
+impl Triangle {
+    #[doc = "Constructs a triangle and sets all indices to zero."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Triangle_ctor()
+    }
+
+    #[doc = "Constructs a triangle and sets its three indices, where these node values are indices in the table of nodes specific to an existing triangulation of a shape."]
+    pub fn new_int3(theN1: i32, theN2: i32, theN3: i32) -> cxx::UniquePtr<Self> {
+        ffi::Triangle_ctor_int3(theN1, theN2, theN3)
+    }
+}
+pub use ffi::Polygon3D;
+impl Polygon3D {
+    #[doc = "Constructs a 3D polygon with specific number of nodes."]
+    pub fn new_int_bool(theNbNodes: i32, theHasParams: bool) -> cxx::UniquePtr<Self> {
+        ffi::Polygon3D_ctor_int_bool(theNbNodes, theHasParams)
+    }
+
+    #[doc = "Constructs a 3D polygon defined by the table of points, Nodes."]
+    pub fn new_array1ofpnt(Nodes: &ffi::TColgp_Array1OfPnt) -> cxx::UniquePtr<Self> {
+        ffi::Polygon3D_ctor_array1ofpnt(Nodes)
+    }
+
+    #[doc = "Constructs a 3D polygon defined by the table of points, Nodes, and the parallel table of parameters, Parameters, where each value of the table Parameters is the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning Both the Nodes and Parameters tables must have the same bounds. This property is not checked at construction time."]
+    pub fn new_array1ofpnt_array1ofreal(
+        Nodes: &ffi::TColgp_Array1OfPnt,
+        Parameters: &ffi::TColStd_Array1OfReal,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Polygon3D_ctor_array1ofpnt_array1ofreal(Nodes, Parameters)
+    }
+
+    #[doc = "Wrap Poly_Polygon3D in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandlePolyPolygon3D> {
+        ffi::Polygon3D_to_handle(obj)
+    }
+
+    #[doc = "Creates a copy of current polygon"]
+    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandlePolyPolygon3D> {
+        ffi::Polygon3D_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Polygon3D_get_type_name()
+    }
+}
+pub use ffi::Polygon2D;
+impl Polygon2D {
+    #[doc = "Constructs a 2D polygon with specified number of nodes."]
+    pub fn new_int(theNbNodes: i32) -> cxx::UniquePtr<Self> {
+        ffi::Polygon2D_ctor_int(theNbNodes)
+    }
+
+    #[doc = "Constructs a 2D polygon defined by the table of points, <Nodes>."]
+    pub fn new_array1ofpnt2d(Nodes: &ffi::TColgp_Array1OfPnt2d) -> cxx::UniquePtr<Self> {
+        ffi::Polygon2D_ctor_array1ofpnt2d(Nodes)
+    }
+
+    #[doc = "Wrap Poly_Polygon2D in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandlePolyPolygon2D> {
+        ffi::Polygon2D_to_handle(obj)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Polygon2D_get_type_name()
+    }
+}
+pub use ffi::PolygonOnTriangulation;
+impl PolygonOnTriangulation {
+    #[doc = "Constructs a 3D polygon on the triangulation of a shape with specified size of nodes."]
+    pub fn new_int_bool(theNbNodes: i32, theHasParams: bool) -> cxx::UniquePtr<Self> {
+        ffi::PolygonOnTriangulation_ctor_int_bool(theNbNodes, theHasParams)
+    }
+
+    #[doc = "Constructs a 3D polygon on the triangulation of a shape, defined by the table of nodes, <Nodes>."]
+    pub fn new_array1ofinteger(Nodes: &ffi::TColStd_Array1OfInteger) -> cxx::UniquePtr<Self> {
+        ffi::PolygonOnTriangulation_ctor_array1ofinteger(Nodes)
+    }
+
+    #[doc = "Constructs a 3D polygon on the triangulation of a shape, defined by: -   the table of nodes, Nodes, and the table of parameters, <Parameters>. where: -   a node value is an index in the table of nodes specific to an existing triangulation of a shape -   and a parameter value is the value of the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning The tables Nodes and Parameters must be the same size. This property is not checked at construction time."]
+    pub fn new_array1ofinteger_array1ofreal(
+        Nodes: &ffi::TColStd_Array1OfInteger,
+        Parameters: &ffi::TColStd_Array1OfReal,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::PolygonOnTriangulation_ctor_array1ofinteger_array1ofreal(Nodes, Parameters)
+    }
+
+    #[doc = "Wrap Poly_PolygonOnTriangulation in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<ffi::HandlePolyPolygonOnTriangulation> {
+        ffi::PolygonOnTriangulation_to_handle(obj)
+    }
+
+    #[doc = "Creates a copy of current polygon"]
+    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandlePolyPolygonOnTriangulation> {
+        ffi::PolygonOnTriangulation_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::PolygonOnTriangulation_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_poly.hxx");
-        #[doc = "B2d from bnd module"]
-        type Bnd_B2d = crate::bnd::ffi::B2d;
-        #[doc = "Box from bnd module"]
-        type Bnd_Box = crate::bnd::ffi::Box_;
-        #[doc = "Box2d from bnd module"]
-        type Bnd_Box2d = crate::bnd::ffi::Box2d;
-        #[doc = "HArray1OfBox from bnd module"]
-        type Bnd_HArray1OfBox = crate::bnd::ffi::HArray1OfBox;
-        #[doc = "HArray1OfSphere from bnd module"]
-        type Bnd_HArray1OfSphere = crate::bnd::ffi::HArray1OfSphere;
-        #[doc = "OBB from bnd module"]
-        type Bnd_OBB = crate::bnd::ffi::OBB;
-        #[doc = "Sphere from bnd module"]
-        type Bnd_Sphere = crate::bnd::ffi::Sphere;
-        #[doc = "BaseAllocator from n_collection module"]
-        type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
-        #[doc = "BaseList from n_collection module"]
-        type NCollection_BaseList = crate::n_collection::ffi::BaseList;
-        #[doc = "BasePointerVector from n_collection module"]
-        type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
-        #[doc = "IncAllocator from n_collection module"]
-        type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
-        #[doc = "MemInfo from osd module"]
-        type OSD_MemInfo = crate::osd::ffi::MemInfo;
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfPnt from t_colgp module"]
-        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
-        #[doc = "HArray1OfPnt2d from t_colgp module"]
-        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
-        #[doc = "HArray1OfVec from t_colgp module"]
-        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
-        #[doc = "HArray2OfPnt from t_colgp module"]
-        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
-        #[doc = "HArray1OfShortReal from t_short module"]
-        type TShort_HArray1OfShortReal = crate::t_short::ffi::HArray1OfShortReal;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "OSD_FileSystem"]
-        type OSD_FileSystem;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Poly_Array1OfTriangle"]
-        type Poly_Array1OfTriangle;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Poly_TriangulationParameters"]
-        type Poly_TriangulationParameters;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfInteger"]
-        type TColStd_Array1OfInteger;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfReal"]
-        type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array1OfPnt"]
-        type TColgp_Array1OfPnt;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array1OfPnt2d"]
-        type TColgp_Array1OfPnt2d;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Vec2f"]
-        type gp_Vec2f;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Vec3f"]
-        type gp_Vec3f;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleOSDFileSystem"]
-        type HandleOSDFileSystem;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandlePolyHArray1OfTriangle"]
-        type HandlePolyHArray1OfTriangle;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandlePolyPolygon2D"]
-        type HandlePolyPolygon2D;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandlePolyPolygon3D"]
-        type HandlePolyPolygon3D;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandlePolyPolygonOnTriangulation"]
-        type HandlePolyPolygonOnTriangulation;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandlePolyTriangulation"]
-        type HandlePolyTriangulation;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandlePolyTriangulationParameters"]
-        type HandlePolyTriangulationParameters;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHArray1OfReal"]
-        type HandleTColStdHArray1OfReal;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColgpHArray1OfPnt"]
-        type HandleTColgpHArray1OfPnt;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColgpHArray1OfPnt2d"]
-        type HandleTColgpHArray1OfPnt2d;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTShortHArray1OfShortReal"]
-        type HandleTShortHArray1OfShortReal;
         #[doc = " ======================== Poly_Triangulation ========================"]
         #[doc = "/// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation`"]
         #[doc = ""]
@@ -823,6 +939,243 @@ pub(crate) mod ffi {
         fn PolygonOnTriangulation_to_handle(
             obj: UniquePtr<PolygonOnTriangulation>,
         ) -> UniquePtr<HandlePolyPolygonOnTriangulation>;
+        #[doc = "B2d from bnd module"]
+        type Bnd_B2d = crate::bnd::ffi::B2d;
+        #[doc = "Box from bnd module"]
+        type Bnd_Box = crate::bnd::ffi::Box_;
+        #[doc = "Box2d from bnd module"]
+        type Bnd_Box2d = crate::bnd::ffi::Box2d;
+        #[doc = "HArray1OfBox from bnd module"]
+        type Bnd_HArray1OfBox = crate::bnd::ffi::HArray1OfBox;
+        #[doc = "HArray1OfSphere from bnd module"]
+        type Bnd_HArray1OfSphere = crate::bnd::ffi::HArray1OfSphere;
+        #[doc = "OBB from bnd module"]
+        type Bnd_OBB = crate::bnd::ffi::OBB;
+        #[doc = "Sphere from bnd module"]
+        type Bnd_Sphere = crate::bnd::ffi::Sphere;
+        #[doc = "BaseAllocator from n_collection module"]
+        type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
+        #[doc = "BaseList from n_collection module"]
+        type NCollection_BaseList = crate::n_collection::ffi::BaseList;
+        #[doc = "BasePointerVector from n_collection module"]
+        type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
+        #[doc = "Buffer from n_collection module"]
+        type NCollection_Buffer = crate::n_collection::ffi::Buffer;
+        #[doc = "IncAllocator from n_collection module"]
+        type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
+        #[doc = "MemInfo from osd module"]
+        type OSD_MemInfo = crate::osd::ffi::MemInfo;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HSequenceOfInteger from t_col_std module"]
+        type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "HArray1OfPnt from t_colgp module"]
+        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
+        #[doc = "HArray1OfPnt2d from t_colgp module"]
+        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
+        #[doc = "HArray1OfVec from t_colgp module"]
+        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
+        #[doc = "HArray2OfPnt from t_colgp module"]
+        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
+        #[doc = "HArray1OfShortReal from t_short module"]
+        type TShort_HArray1OfShortReal = crate::t_short::ffi::HArray1OfShortReal;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "OSD_FileSystem"]
+        type OSD_FileSystem;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Poly_Array1OfTriangle"]
+        type Poly_Array1OfTriangle;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Poly_TriangulationParameters"]
+        type Poly_TriangulationParameters;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfInteger"]
+        type TColStd_Array1OfInteger;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfReal"]
+        type TColStd_Array1OfReal;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColgp_Array1OfPnt"]
+        type TColgp_Array1OfPnt;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColgp_Array1OfPnt2d"]
+        type TColgp_Array1OfPnt2d;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Vec2f"]
+        type gp_Vec2f;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Vec3f"]
+        type gp_Vec3f;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleOSDFileSystem"]
+        type HandleOSDFileSystem;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandlePolyHArray1OfTriangle"]
+        type HandlePolyHArray1OfTriangle;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandlePolyPolygon2D"]
+        type HandlePolyPolygon2D;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandlePolyPolygon3D"]
+        type HandlePolyPolygon3D;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandlePolyPolygonOnTriangulation"]
+        type HandlePolyPolygonOnTriangulation;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandlePolyTriangulation"]
+        type HandlePolyTriangulation;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandlePolyTriangulationParameters"]
+        type HandlePolyTriangulationParameters;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColStdHArray1OfReal"]
+        type HandleTColStdHArray1OfReal;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColgpHArray1OfPnt"]
+        type HandleTColgpHArray1OfPnt;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColgpHArray1OfPnt2d"]
+        type HandleTColgpHArray1OfPnt2d;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTShortHArray1OfShortReal"]
+        type HandleTShortHArray1OfShortReal;
     }
     impl UniquePtr<Triangulation> {}
     impl UniquePtr<HArray1OfTriangle> {}
@@ -832,313 +1185,4 @@ pub(crate) mod ffi {
     impl UniquePtr<Polygon3D> {}
     impl UniquePtr<Polygon2D> {}
     impl UniquePtr<PolygonOnTriangulation> {}
-}
-pub use ffi::Triangulation;
-impl Triangulation {
-    #[doc = "Constructs an empty triangulation."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Triangulation_ctor()
-    }
-
-    #[doc = "Constructs a triangulation from a set of triangles. The triangulation is initialized without a triangle or a node, but capable of containing specified number of nodes and triangles. @param[in] theNbNodes      number of nodes to allocate @param[in] theNbTriangles  number of triangles to allocate @param[in] theHasUVNodes   indicates whether 2D nodes will be associated with 3D ones, (i.e. to enable a 2D representation) @param[in] theHasNormals   indicates whether normals will be given and associated with nodes"]
-    pub fn new_int2_bool2(
-        theNbNodes: i32,
-        theNbTriangles: i32,
-        theHasUVNodes: bool,
-        theHasNormals: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Triangulation_ctor_int2_bool2(theNbNodes, theNbTriangles, theHasUVNodes, theHasNormals)
-    }
-
-    #[doc = "Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes and triangles from Triangles."]
-    pub fn new_array1ofpnt_array1oftriangle(
-        Nodes: &ffi::TColgp_Array1OfPnt,
-        Triangles: &ffi::Poly_Array1OfTriangle,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Triangulation_ctor_array1ofpnt_array1oftriangle(Nodes, Triangles)
-    }
-
-    #[doc = "Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes, 2D points from UVNodes and triangles from Triangles, where coordinates of a 2D point from UVNodes are the (u, v) parameters of the corresponding 3D point from Nodes on the surface approximated by the constructed triangulation."]
-    pub fn new_array1ofpnt_array1ofpnt2d_array1oftriangle(
-        Nodes: &ffi::TColgp_Array1OfPnt,
-        UVNodes: &ffi::TColgp_Array1OfPnt2d,
-        Triangles: &ffi::Poly_Array1OfTriangle,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Triangulation_ctor_array1ofpnt_array1ofpnt2d_array1oftriangle(
-            Nodes, UVNodes, Triangles,
-        )
-    }
-
-    #[doc = "Copy constructor for triangulation."]
-    pub fn new_handletriangulation(
-        theTriangulation: &ffi::HandlePolyTriangulation,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Triangulation_ctor_handletriangulation(theTriangulation)
-    }
-
-    #[doc = "Wrap Poly_Triangulation in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandlePolyTriangulation> {
-        ffi::Triangulation_to_handle(obj)
-    }
-
-    #[doc = "Creates full copy of current triangulation"]
-    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandlePolyTriangulation> {
-        ffi::Triangulation_copy(self)
-    }
-
-    #[doc = "Returns a node at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return 3D point coordinates"]
-    pub fn node(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::Triangulation_node(self, theIndex)
-    }
-
-    #[doc = "Returns UV-node at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return 2D point defining UV coordinates"]
-    pub fn uv_node(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
-        ffi::Triangulation_uv_node(self, theIndex)
-    }
-
-    #[doc = "Returns normal at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return normalized 3D vector defining a surface normal"]
-    pub fn normal_int(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Dir> {
-        ffi::Triangulation_normal_int(self, theIndex)
-    }
-
-    #[doc = "Returns the table of 3D points for read-only access or NULL if nodes array is undefined. Poly_Triangulation::Node() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
-    pub fn map_node_array(&self) -> cxx::UniquePtr<ffi::HandleTColgpHArray1OfPnt> {
-        ffi::Triangulation_map_node_array(self)
-    }
-
-    #[doc = "Returns the triangle array for read-only access or NULL if triangle array is undefined. Poly_Triangulation::Triangle() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
-    pub fn map_triangle_array(&self) -> cxx::UniquePtr<ffi::HandlePolyHArray1OfTriangle> {
-        ffi::Triangulation_map_triangle_array(self)
-    }
-
-    #[doc = "Returns the table of 2D nodes for read-only access or NULL if UV nodes array is undefined. Poly_Triangulation::UVNode() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
-    pub fn map_uv_node_array(&self) -> cxx::UniquePtr<ffi::HandleTColgpHArray1OfPnt2d> {
-        ffi::Triangulation_map_uv_node_array(self)
-    }
-
-    #[doc = "Returns the table of per-vertex normals for read-only access or NULL if normals array is undefined. Poly_Triangulation::Normal() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
-    pub fn map_normal_array(&self) -> cxx::UniquePtr<ffi::HandleTShortHArray1OfShortReal> {
-        ffi::Triangulation_map_normal_array(self)
-    }
-
-    #[doc = "Loads triangulation data into new Poly_Triangulation object from some deferred storage using specified shared input file system."]
-    pub fn detached_load_deferred_data(
-        &self,
-        theFileSystem: &ffi::HandleOSDFileSystem,
-    ) -> cxx::UniquePtr<ffi::HandlePolyTriangulation> {
-        ffi::Triangulation_detached_load_deferred_data(self, theFileSystem)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Triangulation_get_type_name()
-    }
-}
-pub use ffi::HArray1OfTriangle;
-impl HArray1OfTriangle {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfTriangle_ctor()
-    }
-
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfTriangle_ctor_int2(theLower, theUpper)
-    }
-
-    pub fn new_int2_triangle(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &ffi::Triangle,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfTriangle_ctor_int2_triangle(theLower, theUpper, theValue)
-    }
-
-    pub fn new_triangle_int2_bool(
-        theBegin: &ffi::Triangle,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfTriangle_ctor_triangle_int2_bool(theBegin, theLower, theUpper, arg3)
-    }
-
-    pub fn new_array1oftriangle(theOther: &ffi::Poly_Array1OfTriangle) -> cxx::UniquePtr<Self> {
-        ffi::HArray1OfTriangle_ctor_array1oftriangle(theOther)
-    }
-
-    #[doc = "Wrap Poly_HArray1OfTriangle in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<ffi::HandlePolyHArray1OfTriangle> {
-        ffi::HArray1OfTriangle_to_handle(obj)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::HArray1OfTriangle_get_type_name()
-    }
-}
-pub use ffi::ArrayOfNodes;
-impl ArrayOfNodes {
-    #[doc = "Empty constructor of double-precision array."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::ArrayOfNodes_ctor()
-    }
-
-    #[doc = "Constructor of double-precision array."]
-    pub fn new_int(theLength: i32) -> cxx::UniquePtr<Self> {
-        ffi::ArrayOfNodes_ctor_int(theLength)
-    }
-
-    #[doc = "Copy constructor"]
-    pub fn new_arrayofnodes(theOther: &ffi::ArrayOfNodes) -> cxx::UniquePtr<Self> {
-        ffi::ArrayOfNodes_ctor_arrayofnodes(theOther)
-    }
-
-    #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
-    pub fn new_pnt_int(theBegin: &ffi::gp_Pnt, theLength: i32) -> cxx::UniquePtr<Self> {
-        ffi::ArrayOfNodes_ctor_pnt_int(theBegin, theLength)
-    }
-
-    #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
-    pub fn new_vec3f_int(theBegin: &ffi::gp_Vec3f, theLength: i32) -> cxx::UniquePtr<Self> {
-        ffi::ArrayOfNodes_ctor_vec3f_int(theBegin, theLength)
-    }
-
-    #[doc = "A generalized accessor to point."]
-    pub fn value(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::ArrayOfNodes_value(self, theIndex)
-    }
-}
-pub use ffi::ArrayOfUVNodes;
-impl ArrayOfUVNodes {
-    #[doc = "Empty constructor of double-precision array."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::ArrayOfUVNodes_ctor()
-    }
-
-    #[doc = "Constructor of double-precision array."]
-    pub fn new_int(theLength: i32) -> cxx::UniquePtr<Self> {
-        ffi::ArrayOfUVNodes_ctor_int(theLength)
-    }
-
-    #[doc = "Copy constructor"]
-    pub fn new_arrayofuvnodes(theOther: &ffi::ArrayOfUVNodes) -> cxx::UniquePtr<Self> {
-        ffi::ArrayOfUVNodes_ctor_arrayofuvnodes(theOther)
-    }
-
-    #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
-    pub fn new_pnt2d_int(theBegin: &ffi::gp_Pnt2d, theLength: i32) -> cxx::UniquePtr<Self> {
-        ffi::ArrayOfUVNodes_ctor_pnt2d_int(theBegin, theLength)
-    }
-
-    #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
-    pub fn new_vec2f_int(theBegin: &ffi::gp_Vec2f, theLength: i32) -> cxx::UniquePtr<Self> {
-        ffi::ArrayOfUVNodes_ctor_vec2f_int(theBegin, theLength)
-    }
-
-    #[doc = "A generalized accessor to point."]
-    pub fn value(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
-        ffi::ArrayOfUVNodes_value(self, theIndex)
-    }
-}
-pub use ffi::Triangle;
-impl Triangle {
-    #[doc = "Constructs a triangle and sets all indices to zero."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Triangle_ctor()
-    }
-
-    #[doc = "Constructs a triangle and sets its three indices, where these node values are indices in the table of nodes specific to an existing triangulation of a shape."]
-    pub fn new_int3(theN1: i32, theN2: i32, theN3: i32) -> cxx::UniquePtr<Self> {
-        ffi::Triangle_ctor_int3(theN1, theN2, theN3)
-    }
-}
-pub use ffi::Polygon3D;
-impl Polygon3D {
-    #[doc = "Constructs a 3D polygon with specific number of nodes."]
-    pub fn new_int_bool(theNbNodes: i32, theHasParams: bool) -> cxx::UniquePtr<Self> {
-        ffi::Polygon3D_ctor_int_bool(theNbNodes, theHasParams)
-    }
-
-    #[doc = "Constructs a 3D polygon defined by the table of points, Nodes."]
-    pub fn new_array1ofpnt(Nodes: &ffi::TColgp_Array1OfPnt) -> cxx::UniquePtr<Self> {
-        ffi::Polygon3D_ctor_array1ofpnt(Nodes)
-    }
-
-    #[doc = "Constructs a 3D polygon defined by the table of points, Nodes, and the parallel table of parameters, Parameters, where each value of the table Parameters is the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning Both the Nodes and Parameters tables must have the same bounds. This property is not checked at construction time."]
-    pub fn new_array1ofpnt_array1ofreal(
-        Nodes: &ffi::TColgp_Array1OfPnt,
-        Parameters: &ffi::TColStd_Array1OfReal,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Polygon3D_ctor_array1ofpnt_array1ofreal(Nodes, Parameters)
-    }
-
-    #[doc = "Wrap Poly_Polygon3D in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandlePolyPolygon3D> {
-        ffi::Polygon3D_to_handle(obj)
-    }
-
-    #[doc = "Creates a copy of current polygon"]
-    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandlePolyPolygon3D> {
-        ffi::Polygon3D_copy(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Polygon3D_get_type_name()
-    }
-}
-pub use ffi::Polygon2D;
-impl Polygon2D {
-    #[doc = "Constructs a 2D polygon with specified number of nodes."]
-    pub fn new_int(theNbNodes: i32) -> cxx::UniquePtr<Self> {
-        ffi::Polygon2D_ctor_int(theNbNodes)
-    }
-
-    #[doc = "Constructs a 2D polygon defined by the table of points, <Nodes>."]
-    pub fn new_array1ofpnt2d(Nodes: &ffi::TColgp_Array1OfPnt2d) -> cxx::UniquePtr<Self> {
-        ffi::Polygon2D_ctor_array1ofpnt2d(Nodes)
-    }
-
-    #[doc = "Wrap Poly_Polygon2D in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandlePolyPolygon2D> {
-        ffi::Polygon2D_to_handle(obj)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Polygon2D_get_type_name()
-    }
-}
-pub use ffi::PolygonOnTriangulation;
-impl PolygonOnTriangulation {
-    #[doc = "Constructs a 3D polygon on the triangulation of a shape with specified size of nodes."]
-    pub fn new_int_bool(theNbNodes: i32, theHasParams: bool) -> cxx::UniquePtr<Self> {
-        ffi::PolygonOnTriangulation_ctor_int_bool(theNbNodes, theHasParams)
-    }
-
-    #[doc = "Constructs a 3D polygon on the triangulation of a shape, defined by the table of nodes, <Nodes>."]
-    pub fn new_array1ofinteger(Nodes: &ffi::TColStd_Array1OfInteger) -> cxx::UniquePtr<Self> {
-        ffi::PolygonOnTriangulation_ctor_array1ofinteger(Nodes)
-    }
-
-    #[doc = "Constructs a 3D polygon on the triangulation of a shape, defined by: -   the table of nodes, Nodes, and the table of parameters, <Parameters>. where: -   a node value is an index in the table of nodes specific to an existing triangulation of a shape -   and a parameter value is the value of the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning The tables Nodes and Parameters must be the same size. This property is not checked at construction time."]
-    pub fn new_array1ofinteger_array1ofreal(
-        Nodes: &ffi::TColStd_Array1OfInteger,
-        Parameters: &ffi::TColStd_Array1OfReal,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::PolygonOnTriangulation_ctor_array1ofinteger_array1ofreal(Nodes, Parameters)
-    }
-
-    #[doc = "Wrap Poly_PolygonOnTriangulation in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<ffi::HandlePolyPolygonOnTriangulation> {
-        ffi::PolygonOnTriangulation_to_handle(obj)
-    }
-
-    #[doc = "Creates a copy of current polygon"]
-    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandlePolyPolygonOnTriangulation> {
-        ffi::PolygonOnTriangulation_copy(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::PolygonOnTriangulation_get_type_name()
-    }
 }

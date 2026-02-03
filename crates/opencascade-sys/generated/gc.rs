@@ -12,78 +12,113 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::MakeArcOfCircle;
+impl MakeArcOfCircle {
+    #[doc = "Make an arc of circle (TrimmedCurve from Geom) from a circle between two angles Alpha1 and Alpha2 given in radiians."]
+    pub fn new_circ_real2_bool(
+        Circ: &ffi::gp_Circ,
+        Alpha1: f64,
+        Alpha2: f64,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeArcOfCircle_ctor_circ_real2_bool(Circ, Alpha1, Alpha2, Sense)
+    }
+
+    #[doc = "Make an arc of circle (TrimmedCurve from Geom) from a circle between point <P> and the angle Alpha given in radians."]
+    pub fn new_circ_pnt_real_bool(
+        Circ: &ffi::gp_Circ,
+        P: &ffi::gp_Pnt,
+        Alpha: f64,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeArcOfCircle_ctor_circ_pnt_real_bool(Circ, P, Alpha, Sense)
+    }
+
+    #[doc = "Make an arc of circle (TrimmedCurve from Geom) from a circle between two points P1 and P2."]
+    pub fn new_circ_pnt2_bool(
+        Circ: &ffi::gp_Circ,
+        P1: &ffi::gp_Pnt,
+        P2: &ffi::gp_Pnt,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeArcOfCircle_ctor_circ_pnt2_bool(Circ, P1, P2, Sense)
+    }
+
+    #[doc = "Make an arc of circle (TrimmedCurve from Geom) from three points P1,P2,P3 between two points P1 and P2."]
+    pub fn new_pnt3(P1: &ffi::gp_Pnt, P2: &ffi::gp_Pnt, P3: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        ffi::MakeArcOfCircle_ctor_pnt3(P1, P2, P3)
+    }
+
+    #[doc = "Make an arc of circle (TrimmedCurve from Geom) from two points P1,P2 and the tangente to the solution at the point P1. The orientation of the arc is: -   the sense determined by the order of the points P1, P3 and P2; -   the sense defined by the vector V; or -   for other syntaxes: -   the sense of Circ if Sense is true, or -   the opposite sense if Sense is false. Note: Alpha1, Alpha2 and Alpha are angle values, given in radians. Warning If an error occurs (that is, when IsDone returns false), the Status function returns: -   gce_ConfusedPoints if: -   any 2 of the 3 points P1, P2 and P3 are coincident, or -   P1 and P2 are coincident; or -   gce_IntersectionError if: -   P1, P2 and P3 are collinear and not coincident, or -   the vector defined by the points P1 and P2 is collinear with the vector V."]
+    pub fn new_pnt_vec_pnt(
+        P1: &ffi::gp_Pnt,
+        V: &ffi::gp_Vec,
+        P2: &ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeArcOfCircle_ctor_pnt_vec_pnt(P1, V, P2)
+    }
+
+    #[doc = "Upcast to GC_Root"]
+    pub fn as_root(&self) -> &Root {
+        ffi::make_arc_of_circle_as_root(self)
+    }
+
+    #[doc = "Upcast to GC_Root (mutable)"]
+    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
+        ffi::make_arc_of_circle_as_root_mut(self)
+    }
+}
+pub use ffi::MakeSegment;
+impl MakeSegment {
+    #[doc = "Make a segment of Line from the 2 points <P1> and <P2>. It returns NullObject if <P1> and <P2> are confused."]
+    pub fn new_pnt2(P1: &ffi::gp_Pnt, P2: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        ffi::MakeSegment_ctor_pnt2(P1, P2)
+    }
+
+    #[doc = "Make a segment of Line from the line <Line1> between the two parameters U1 and U2. It returns NullObject if <U1> is equal <U2>."]
+    pub fn new_lin_real2(Line: &ffi::gp_Lin, U1: f64, U2: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeSegment_ctor_lin_real2(Line, U1, U2)
+    }
+
+    #[doc = "Make a segment of Line from the line <Line1> between the point <Point> and the parameter Ulast. It returns NullObject if <U1> is equal <U2>."]
+    pub fn new_lin_pnt_real(
+        Line: &ffi::gp_Lin,
+        Point: &ffi::gp_Pnt,
+        Ulast: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeSegment_ctor_lin_pnt_real(Line, Point, Ulast)
+    }
+
+    #[doc = "Make a segment of Line from the line <Line1> between the two points <P1> and <P2>. It returns NullObject if <U1> is equal <U2>."]
+    pub fn new_lin_pnt2(
+        Line: &ffi::gp_Lin,
+        P1: &ffi::gp_Pnt,
+        P2: &ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeSegment_ctor_lin_pnt2(Line, P1, P2)
+    }
+
+    #[doc = "Upcast to GC_Root"]
+    pub fn as_root(&self) -> &Root {
+        ffi::make_segment_as_root(self)
+    }
+
+    #[doc = "Upcast to GC_Root (mutable)"]
+    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
+        ffi::make_segment_as_root_mut(self)
+    }
+}
+pub use ffi::Root;
+impl Root {
+    #[doc = "Returns the status of the construction: -   gce_Done, if the construction is successful, or -   another value of the gce_ErrorType enumeration indicating why the construction failed."]
+    pub fn status(&self) -> cxx::UniquePtr<ffi::gce_ErrorType> {
+        ffi::Root_status(self)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_gc.hxx");
-        #[doc = "BSplineCurve from geom module"]
-        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
-        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
-        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
-        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
-        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
-        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
-        type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
-        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
-        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
-        type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
-        type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
-        type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
-        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gce_ErrorType"]
-        type gce_ErrorType;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomTrimmedCurve"]
-        type HandleGeomTrimmedCurve;
         #[doc = " ======================== GC_MakeArcOfCircle ========================"]
         #[doc = "/// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle`"]
         #[doc = ""]
@@ -202,111 +237,116 @@ pub(crate) mod ffi {
         #[doc = "Returns the status of the construction: -   gce_Done, if the construction is successful, or -   another value of the gce_ErrorType enumeration indicating why the construction failed."]
         #[cxx_name = "GC_Root_Status"]
         fn Root_status(self_: &Root) -> UniquePtr<gce_ErrorType>;
+        #[doc = "BSplineCurve from geom module"]
+        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
+        #[doc = "BSplineSurface from geom module"]
+        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
+        #[doc = "BezierCurve from geom module"]
+        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
+        #[doc = "BezierSurface from geom module"]
+        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BoundedCurve from geom module"]
+        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
+        #[doc = "BoundedSurface from geom module"]
+        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
+        #[doc = "Curve from geom module"]
+        type Geom_Curve = crate::geom::ffi::Curve;
+        #[doc = "CylindricalSurface from geom module"]
+        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
+        #[doc = "ElementarySurface from geom module"]
+        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
+        #[doc = "Geometry from geom module"]
+        type Geom_Geometry = crate::geom::ffi::Geometry;
+        #[doc = "Plane from geom module"]
+        type Geom_Plane = crate::geom::ffi::Plane;
+        #[doc = "Surface from geom module"]
+        type Geom_Surface = crate::geom::ffi::Surface;
+        #[doc = "TrimmedCurve from geom module"]
+        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gce_ErrorType"]
+        type gce_ErrorType;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomTrimmedCurve"]
+        type HandleGeomTrimmedCurve;
     }
     impl UniquePtr<MakeArcOfCircle> {}
     impl UniquePtr<MakeSegment> {}
     impl UniquePtr<Root> {}
-}
-pub use ffi::MakeArcOfCircle;
-impl MakeArcOfCircle {
-    #[doc = "Make an arc of circle (TrimmedCurve from Geom) from a circle between two angles Alpha1 and Alpha2 given in radiians."]
-    pub fn new_circ_real2_bool(
-        Circ: &ffi::gp_Circ,
-        Alpha1: f64,
-        Alpha2: f64,
-        Sense: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeArcOfCircle_ctor_circ_real2_bool(Circ, Alpha1, Alpha2, Sense)
-    }
-
-    #[doc = "Make an arc of circle (TrimmedCurve from Geom) from a circle between point <P> and the angle Alpha given in radians."]
-    pub fn new_circ_pnt_real_bool(
-        Circ: &ffi::gp_Circ,
-        P: &ffi::gp_Pnt,
-        Alpha: f64,
-        Sense: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeArcOfCircle_ctor_circ_pnt_real_bool(Circ, P, Alpha, Sense)
-    }
-
-    #[doc = "Make an arc of circle (TrimmedCurve from Geom) from a circle between two points P1 and P2."]
-    pub fn new_circ_pnt2_bool(
-        Circ: &ffi::gp_Circ,
-        P1: &ffi::gp_Pnt,
-        P2: &ffi::gp_Pnt,
-        Sense: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeArcOfCircle_ctor_circ_pnt2_bool(Circ, P1, P2, Sense)
-    }
-
-    #[doc = "Make an arc of circle (TrimmedCurve from Geom) from three points P1,P2,P3 between two points P1 and P2."]
-    pub fn new_pnt3(P1: &ffi::gp_Pnt, P2: &ffi::gp_Pnt, P3: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
-        ffi::MakeArcOfCircle_ctor_pnt3(P1, P2, P3)
-    }
-
-    #[doc = "Make an arc of circle (TrimmedCurve from Geom) from two points P1,P2 and the tangente to the solution at the point P1. The orientation of the arc is: -   the sense determined by the order of the points P1, P3 and P2; -   the sense defined by the vector V; or -   for other syntaxes: -   the sense of Circ if Sense is true, or -   the opposite sense if Sense is false. Note: Alpha1, Alpha2 and Alpha are angle values, given in radians. Warning If an error occurs (that is, when IsDone returns false), the Status function returns: -   gce_ConfusedPoints if: -   any 2 of the 3 points P1, P2 and P3 are coincident, or -   P1 and P2 are coincident; or -   gce_IntersectionError if: -   P1, P2 and P3 are collinear and not coincident, or -   the vector defined by the points P1 and P2 is collinear with the vector V."]
-    pub fn new_pnt_vec_pnt(
-        P1: &ffi::gp_Pnt,
-        V: &ffi::gp_Vec,
-        P2: &ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeArcOfCircle_ctor_pnt_vec_pnt(P1, V, P2)
-    }
-
-    #[doc = "Upcast to GC_Root"]
-    pub fn as_root(&self) -> &Root {
-        ffi::make_arc_of_circle_as_root(self)
-    }
-
-    #[doc = "Upcast to GC_Root (mutable)"]
-    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
-        ffi::make_arc_of_circle_as_root_mut(self)
-    }
-}
-pub use ffi::MakeSegment;
-impl MakeSegment {
-    #[doc = "Make a segment of Line from the 2 points <P1> and <P2>. It returns NullObject if <P1> and <P2> are confused."]
-    pub fn new_pnt2(P1: &ffi::gp_Pnt, P2: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
-        ffi::MakeSegment_ctor_pnt2(P1, P2)
-    }
-
-    #[doc = "Make a segment of Line from the line <Line1> between the two parameters U1 and U2. It returns NullObject if <U1> is equal <U2>."]
-    pub fn new_lin_real2(Line: &ffi::gp_Lin, U1: f64, U2: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeSegment_ctor_lin_real2(Line, U1, U2)
-    }
-
-    #[doc = "Make a segment of Line from the line <Line1> between the point <Point> and the parameter Ulast. It returns NullObject if <U1> is equal <U2>."]
-    pub fn new_lin_pnt_real(
-        Line: &ffi::gp_Lin,
-        Point: &ffi::gp_Pnt,
-        Ulast: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeSegment_ctor_lin_pnt_real(Line, Point, Ulast)
-    }
-
-    #[doc = "Make a segment of Line from the line <Line1> between the two points <P1> and <P2>. It returns NullObject if <U1> is equal <U2>."]
-    pub fn new_lin_pnt2(
-        Line: &ffi::gp_Lin,
-        P1: &ffi::gp_Pnt,
-        P2: &ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeSegment_ctor_lin_pnt2(Line, P1, P2)
-    }
-
-    #[doc = "Upcast to GC_Root"]
-    pub fn as_root(&self) -> &Root {
-        ffi::make_segment_as_root(self)
-    }
-
-    #[doc = "Upcast to GC_Root (mutable)"]
-    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
-        ffi::make_segment_as_root_mut(self)
-    }
-}
-pub use ffi::Root;
-impl Root {
-    #[doc = "Returns the status of the construction: -   gce_Done, if the construction is successful, or -   another value of the gce_ErrorType enumeration indicating why the construction failed."]
-    pub fn status(&self) -> cxx::UniquePtr<ffi::gce_ErrorType> {
-        ffi::Root_status(self)
-    }
 }

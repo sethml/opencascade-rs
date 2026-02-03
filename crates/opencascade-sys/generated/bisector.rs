@@ -10,70 +10,16 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Bisec;
+impl Bisec {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Bisec_ctor()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_bisector.hxx");
-        #[doc = "BoundedCurve from geom2d module"]
-        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
-        type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Curve from geom2d module"]
-        type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "Ellipse from geom2d module"]
-        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "Geometry from geom2d module"]
-        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "TrimmedCurve from geom2d module"]
-        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Geom2d_Point"]
-        type Geom2d_Point;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dCurve"]
-        type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dPoint"]
-        type HandleGeom2dPoint;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dTrimmedCurve"]
-        type HandleGeom2dTrimmedCurve;
         #[doc = " ======================== Bisector_Bisec ========================"]
         #[doc = "/// **Source:** `Bisector_Bisec.hxx` - `Bisector_Bisec`"]
         #[doc = ""]
@@ -128,12 +74,106 @@ pub(crate) mod ffi {
         #[doc = "Returns the Curve of <me>."]
         #[cxx_name = "ChangeValue"]
         fn change_value(self: Pin<&mut Bisec>) -> &HandleGeom2dTrimmedCurve;
+        #[doc = "BoundedCurve from geom2d module"]
+        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
+        #[doc = "Conic from geom2d module"]
+        type Geom2d_Conic = crate::geom2d::ffi::Conic;
+        #[doc = "Curve from geom2d module"]
+        type Geom2d_Curve = crate::geom2d::ffi::Curve;
+        #[doc = "Ellipse from geom2d module"]
+        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
+        #[doc = "Geometry from geom2d module"]
+        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
+        #[doc = "TrimmedCurve from geom2d module"]
+        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Geom2d_Point"]
+        type Geom2d_Point;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dCurve"]
+        type HandleGeom2dCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dPoint"]
+        type HandleGeom2dPoint;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dTrimmedCurve"]
+        type HandleGeom2dTrimmedCurve;
     }
     impl UniquePtr<Bisec> {}
-}
-pub use ffi::Bisec;
-impl Bisec {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Bisec_ctor()
-    }
 }

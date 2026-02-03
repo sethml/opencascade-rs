@@ -11,79 +11,100 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::BasicEditor;
+impl BasicEditor {
+    #[doc = "Creates an empty Basic Editor which should be initialized via Init() method."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::BasicEditor_ctor()
+    }
+
+    #[doc = "Creates a Basic Editor, with a new IGESModel, ready to run"]
+    pub fn new_handleprotocol(protocol: &ffi::HandleIGESDataProtocol) -> cxx::UniquePtr<Self> {
+        ffi::BasicEditor_ctor_handleprotocol(protocol)
+    }
+
+    #[doc = "Creates a Basic Editor for IGES Data, ready to run"]
+    pub fn new_handleigesmodel_handleprotocol(
+        model: &ffi::HandleIGESDataIGESModel,
+        protocol: &ffi::HandleIGESDataProtocol,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::BasicEditor_ctor_handleigesmodel_handleprotocol(model, protocol)
+    }
+
+    #[doc = "Returns the designated model"]
+    pub fn model(&self) -> cxx::UniquePtr<ffi::HandleIGESDataIGESModel> {
+        ffi::BasicEditor_model(self)
+    }
+
+    #[doc = "Sets a new unit from its name (param 15 of Global Section) Returns True if done, False if <name> is incorrect Remark : if <flag> has been set to 3 (user defined), <name> is then free"]
+    pub fn set_unit_name(self: std::pin::Pin<&mut Self>, name: &str) -> bool {
+        ffi::BasicEditor_set_unit_name(self, name)
+    }
+
+    #[doc = "From the name of unit, computes flag number, 0 if incorrect (in this case, user defined entity remains possible)"]
+    pub fn unit_name_flag(name: &str) -> i32 {
+        ffi::BasicEditor_unit_name_flag(name)
+    }
+
+    #[doc = "From the flag of unit, determines value in MM, 0 if incorrect"]
+    pub fn unit_flag_value(flag: i32) -> f64 {
+        ffi::BasicEditor_unit_flag_value(flag)
+    }
+
+    #[doc = "From the flag of unit, determines its name, \"\" if incorrect"]
+    pub fn unit_flag_name(flag: i32) -> String {
+        ffi::BasicEditor_unit_flag_name(flag)
+    }
+
+    #[doc = "From the flag of IGES version, returns name, \"\" if incorrect"]
+    pub fn iges_version_name(flag: i32) -> String {
+        ffi::BasicEditor_iges_version_name(flag)
+    }
+
+    #[doc = "Returns the maximum allowed value for IGESVersion Flag"]
+    pub fn iges_version_max() -> i32 {
+        ffi::BasicEditor_iges_version_max()
+    }
+
+    #[doc = "From the flag of drafting standard, returns name, \"\" if incorrect"]
+    pub fn drafting_name(flag: i32) -> String {
+        ffi::BasicEditor_drafting_name(flag)
+    }
+
+    #[doc = "Returns the maximum allowed value for Drafting Flag"]
+    pub fn drafting_max() -> i32 {
+        ffi::BasicEditor_drafting_max()
+    }
+
+    #[doc = "Returns Flag corresponding to the scaling theValue. Returns 0 if there's no such flag."]
+    pub fn get_flag_by_value(theValue: f64) -> i32 {
+        ffi::BasicEditor_get_flag_by_value(theValue)
+    }
+}
+pub use ffi::SpecificLib;
+impl SpecificLib {
+    #[doc = "Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources"]
+    pub fn new_handleprotocol(aprotocol: &ffi::HandleIGESDataProtocol) -> cxx::UniquePtr<Self> {
+        ffi::SpecificLib_ctor_handleprotocol(aprotocol)
+    }
+
+    #[doc = "Creates an empty Library : it will later by filled by method AddProtocol"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::SpecificLib_ctor()
+    }
+
+    #[doc = "Adds a couple (Module-Protocol) into the global definition set for this class of Library."]
+    pub fn set_global(
+        amodule: &ffi::HandleIGESDataSpecificModule,
+        aprotocol: &ffi::HandleIGESDataProtocol,
+    ) {
+        ffi::SpecificLib_set_global(amodule, aprotocol)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_iges_data.hxx");
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "IGESData_IGESEntity"]
-        type IGESData_IGESEntity;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "IGESData_IGESModel"]
-        type IGESData_IGESModel;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "IGESData_Protocol"]
-        type IGESData_Protocol;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "IGESData_SpecificModule"]
-        type IGESData_SpecificModule;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIGESDataIGESEntity"]
-        type HandleIGESDataIGESEntity;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIGESDataIGESModel"]
-        type HandleIGESDataIGESModel;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIGESDataProtocol"]
-        type HandleIGESDataProtocol;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIGESDataSpecificModule"]
-        type HandleIGESDataSpecificModule;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardTransient"]
-        type HandleStandardTransient;
         #[doc = " ======================== IGESData_BasicEditor ========================"]
         #[doc = "/// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor`"]
         #[doc = ""]
@@ -222,97 +243,76 @@ pub(crate) mod ffi {
             amodule: &HandleIGESDataSpecificModule,
             aprotocol: &HandleIGESDataProtocol,
         );
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "IGESData_IGESEntity"]
+        type IGESData_IGESEntity;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "IGESData_IGESModel"]
+        type IGESData_IGESModel;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "IGESData_Protocol"]
+        type IGESData_Protocol;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "IGESData_SpecificModule"]
+        type IGESData_SpecificModule;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleIGESDataIGESEntity"]
+        type HandleIGESDataIGESEntity;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleIGESDataIGESModel"]
+        type HandleIGESDataIGESModel;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleIGESDataProtocol"]
+        type HandleIGESDataProtocol;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleIGESDataSpecificModule"]
+        type HandleIGESDataSpecificModule;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardTransient"]
+        type HandleStandardTransient;
     }
     impl UniquePtr<BasicEditor> {}
     impl UniquePtr<SpecificLib> {}
-}
-pub use ffi::BasicEditor;
-impl BasicEditor {
-    #[doc = "Creates an empty Basic Editor which should be initialized via Init() method."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::BasicEditor_ctor()
-    }
-
-    #[doc = "Creates a Basic Editor, with a new IGESModel, ready to run"]
-    pub fn new_handleprotocol(protocol: &ffi::HandleIGESDataProtocol) -> cxx::UniquePtr<Self> {
-        ffi::BasicEditor_ctor_handleprotocol(protocol)
-    }
-
-    #[doc = "Creates a Basic Editor for IGES Data, ready to run"]
-    pub fn new_handleigesmodel_handleprotocol(
-        model: &ffi::HandleIGESDataIGESModel,
-        protocol: &ffi::HandleIGESDataProtocol,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::BasicEditor_ctor_handleigesmodel_handleprotocol(model, protocol)
-    }
-
-    #[doc = "Returns the designated model"]
-    pub fn model(&self) -> cxx::UniquePtr<ffi::HandleIGESDataIGESModel> {
-        ffi::BasicEditor_model(self)
-    }
-
-    #[doc = "Sets a new unit from its name (param 15 of Global Section) Returns True if done, False if <name> is incorrect Remark : if <flag> has been set to 3 (user defined), <name> is then free"]
-    pub fn set_unit_name(self: std::pin::Pin<&mut Self>, name: &str) -> bool {
-        ffi::BasicEditor_set_unit_name(self, name)
-    }
-
-    #[doc = "From the name of unit, computes flag number, 0 if incorrect (in this case, user defined entity remains possible)"]
-    pub fn unit_name_flag(name: &str) -> i32 {
-        ffi::BasicEditor_unit_name_flag(name)
-    }
-
-    #[doc = "From the flag of unit, determines value in MM, 0 if incorrect"]
-    pub fn unit_flag_value(flag: i32) -> f64 {
-        ffi::BasicEditor_unit_flag_value(flag)
-    }
-
-    #[doc = "From the flag of unit, determines its name, \"\" if incorrect"]
-    pub fn unit_flag_name(flag: i32) -> String {
-        ffi::BasicEditor_unit_flag_name(flag)
-    }
-
-    #[doc = "From the flag of IGES version, returns name, \"\" if incorrect"]
-    pub fn iges_version_name(flag: i32) -> String {
-        ffi::BasicEditor_iges_version_name(flag)
-    }
-
-    #[doc = "Returns the maximum allowed value for IGESVersion Flag"]
-    pub fn iges_version_max() -> i32 {
-        ffi::BasicEditor_iges_version_max()
-    }
-
-    #[doc = "From the flag of drafting standard, returns name, \"\" if incorrect"]
-    pub fn drafting_name(flag: i32) -> String {
-        ffi::BasicEditor_drafting_name(flag)
-    }
-
-    #[doc = "Returns the maximum allowed value for Drafting Flag"]
-    pub fn drafting_max() -> i32 {
-        ffi::BasicEditor_drafting_max()
-    }
-
-    #[doc = "Returns Flag corresponding to the scaling theValue. Returns 0 if there's no such flag."]
-    pub fn get_flag_by_value(theValue: f64) -> i32 {
-        ffi::BasicEditor_get_flag_by_value(theValue)
-    }
-}
-pub use ffi::SpecificLib;
-impl SpecificLib {
-    #[doc = "Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources"]
-    pub fn new_handleprotocol(aprotocol: &ffi::HandleIGESDataProtocol) -> cxx::UniquePtr<Self> {
-        ffi::SpecificLib_ctor_handleprotocol(aprotocol)
-    }
-
-    #[doc = "Creates an empty Library : it will later by filled by method AddProtocol"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::SpecificLib_ctor()
-    }
-
-    #[doc = "Adds a couple (Module-Protocol) into the global definition set for this class of Library."]
-    pub fn set_global(
-        amodule: &ffi::HandleIGESDataSpecificModule,
-        aprotocol: &ffi::HandleIGESDataProtocol,
-    ) {
-        ffi::SpecificLib_set_global(amodule, aprotocol)
-    }
 }

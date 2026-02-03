@@ -10,52 +10,42 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::GProps;
+impl GProps {
+    #[doc = "The origin (0, 0, 0) of the absolute cartesian coordinate system is used to compute the global properties."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::GProps_ctor()
+    }
+
+    #[doc = "The point SystemLocation is used to compute the global properties of the system. For more accuracy it is better to define this point closed to the location of the system. For example it could be a point around the centre of mass of the system. This point is referred to as the reference point for this framework. For greater accuracy it is better for the reference point to be close to the location of the system. It can, for example, be a point near the center of mass of the system. At initialization, the framework is empty; i.e. it retains no dimensional information such as mass, or inertia. However, it is now able to bring together global properties of various other systems, whose global properties have already been computed using another framework. To do this, use the function Add to define the components of the system. Use it once per component of the system, and then use the interrogation functions available to access the computed values."]
+    pub fn new_pnt(SystemLocation: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        ffi::GProps_ctor_pnt(SystemLocation)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::GProps_to_owned(self)
+    }
+
+    #[doc = "Returns the center of mass of the current system. If the gravitational field is uniform, it is the center of gravity. The coordinates returned for the center of mass are expressed in the absolute Cartesian coordinate system."]
+    pub fn centre_of_mass(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::GProps_centre_of_mass(self)
+    }
+
+    #[doc = "returns the matrix of inertia. It is a symmetrical matrix. The coefficients of the matrix are the quadratic moments of inertia. | Ixx  Ixy  Ixz | matrix =    | Ixy  Iyy  Iyz | | Ixz  Iyz  Izz | The moments of inertia are denoted by Ixx, Iyy, Izz. The products of inertia are denoted by Ixy, Ixz, Iyz. The matrix of inertia is returned in the central coordinate system (G, Gx, Gy, Gz) where G is the centre of mass of the system and Gx, Gy, Gz the directions parallel to the X(1,0,0) Y(0,1,0) Z(0,0,1) directions of the absolute cartesian coordinate system. It is possible to compute the matrix of inertia at another location point using the Huyghens theorem (you can use the method of package GProp : HOperator)."]
+    pub fn matrix_of_inertia(&self) -> cxx::UniquePtr<ffi::gp_Mat> {
+        ffi::GProps_matrix_of_inertia(self)
+    }
+
+    #[doc = "Computes the principal properties of inertia of the current system. There is always a set of axes for which the products of inertia of a geometric system are equal to 0; i.e. the matrix of inertia of the system is diagonal. These axes are the principal axes of inertia. Their origin is coincident with the center of mass of the system. The associated moments are called the principal moments of inertia. This function computes the eigen values and the eigen vectors of the matrix of inertia of the system. Results are stored by using a presentation framework of principal properties of inertia (GProp_PrincipalProps object) which may be queried to access the value sought."]
+    pub fn principal_properties(&self) -> cxx::UniquePtr<ffi::GProp_PrincipalProps> {
+        ffi::GProps_principal_properties(self)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_g_prop.hxx");
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "GProp_PrincipalProps"]
-        type GProp_PrincipalProps;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Mat"]
-        type gp_Mat;
         #[doc = " ======================== GProp_GProps ========================"]
         #[doc = "/// **Source:** `GProp_GProps.hxx` - `GProp_GProps`"]
         #[doc = ""]
@@ -99,38 +89,85 @@ pub(crate) mod ffi {
         #[doc = "Clone GProp_GProps into a new UniquePtr via copy constructor"]
         #[cxx_name = "construct_unique"]
         fn GProps_to_owned(self_: &GProps) -> UniquePtr<GProps>;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "GProp_PrincipalProps"]
+        type GProp_PrincipalProps;
     }
     impl UniquePtr<GProps> {}
-}
-pub use ffi::GProps;
-impl GProps {
-    #[doc = "The origin (0, 0, 0) of the absolute cartesian coordinate system is used to compute the global properties."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::GProps_ctor()
-    }
-
-    #[doc = "The point SystemLocation is used to compute the global properties of the system. For more accuracy it is better to define this point closed to the location of the system. For example it could be a point around the centre of mass of the system. This point is referred to as the reference point for this framework. For greater accuracy it is better for the reference point to be close to the location of the system. It can, for example, be a point near the center of mass of the system. At initialization, the framework is empty; i.e. it retains no dimensional information such as mass, or inertia. However, it is now able to bring together global properties of various other systems, whose global properties have already been computed using another framework. To do this, use the function Add to define the components of the system. Use it once per component of the system, and then use the interrogation functions available to access the computed values."]
-    pub fn new_pnt(SystemLocation: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
-        ffi::GProps_ctor_pnt(SystemLocation)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::GProps_to_owned(self)
-    }
-
-    #[doc = "Returns the center of mass of the current system. If the gravitational field is uniform, it is the center of gravity. The coordinates returned for the center of mass are expressed in the absolute Cartesian coordinate system."]
-    pub fn centre_of_mass(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::GProps_centre_of_mass(self)
-    }
-
-    #[doc = "returns the matrix of inertia. It is a symmetrical matrix. The coefficients of the matrix are the quadratic moments of inertia. | Ixx  Ixy  Ixz | matrix =    | Ixy  Iyy  Iyz | | Ixz  Iyz  Izz | The moments of inertia are denoted by Ixx, Iyy, Izz. The products of inertia are denoted by Ixy, Ixz, Iyz. The matrix of inertia is returned in the central coordinate system (G, Gx, Gy, Gz) where G is the centre of mass of the system and Gx, Gy, Gz the directions parallel to the X(1,0,0) Y(0,1,0) Z(0,0,1) directions of the absolute cartesian coordinate system. It is possible to compute the matrix of inertia at another location point using the Huyghens theorem (you can use the method of package GProp : HOperator)."]
-    pub fn matrix_of_inertia(&self) -> cxx::UniquePtr<ffi::gp_Mat> {
-        ffi::GProps_matrix_of_inertia(self)
-    }
-
-    #[doc = "Computes the principal properties of inertia of the current system. There is always a set of axes for which the products of inertia of a geometric system are equal to 0; i.e. the matrix of inertia of the system is diagonal. These axes are the principal axes of inertia. Their origin is coincident with the center of mass of the system. The associated moments are called the principal moments of inertia. This function computes the eigen values and the eigen vectors of the matrix of inertia of the system. Results are stored by using a presentation framework of principal properties of inertia (GProp_PrincipalProps object) which may be queried to access the value sought."]
-    pub fn principal_properties(&self) -> cxx::UniquePtr<ffi::GProp_PrincipalProps> {
-        ffi::GProps_principal_properties(self)
-    }
 }

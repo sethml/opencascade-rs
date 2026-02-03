@@ -13,76 +13,425 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::AsciiString;
+impl AsciiString {
+    #[doc = "Initializes a AsciiString to an empty AsciiString."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::AsciiString_ctor()
+    }
+
+    #[doc = "Initializes a AsciiString with a CString."]
+    pub fn new_charptr(message: &str) -> cxx::UniquePtr<Self> {
+        ffi::AsciiString_ctor_charptr(message)
+    }
+
+    #[doc = "Initializes a AsciiString with a CString."]
+    pub fn new_charptr_int(message: &str, aLen: i32) -> cxx::UniquePtr<Self> {
+        ffi::AsciiString_ctor_charptr_int(message, aLen)
+    }
+
+    #[doc = "Initializes an AsciiString with an integer value"]
+    pub fn new_int(value: i32) -> cxx::UniquePtr<Self> {
+        ffi::AsciiString_ctor_int(value)
+    }
+
+    #[doc = "Initializes an AsciiString with a real value"]
+    pub fn new_real(value: f64) -> cxx::UniquePtr<Self> {
+        ffi::AsciiString_ctor_real(value)
+    }
+
+    #[doc = "Initializes a AsciiString with another AsciiString."]
+    pub fn new_asciistring(astring: &ffi::AsciiString) -> cxx::UniquePtr<Self> {
+        ffi::AsciiString_ctor_asciistring(astring)
+    }
+
+    #[doc = "Initializes a AsciiString with copy of another AsciiString concatenated with the message string."]
+    pub fn new_asciistring_charptr(
+        astring: &ffi::AsciiString,
+        message: &str,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::AsciiString_ctor_asciistring_charptr(astring, message)
+    }
+
+    #[doc = "Initializes a AsciiString with copy of another AsciiString concatenated with the message string."]
+    pub fn new_asciistring2(
+        astring: &ffi::AsciiString,
+        message: &ffi::AsciiString,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::AsciiString_ctor_asciistring2(astring, message)
+    }
+
+    #[doc = "Appends <other>  to me. This is an unary operator. ex: aString += \"Dummy\" To catenate more than one CString, you must put a AsciiString before. Example: aString += \"Hello \" + \"Dolly\"  IS NOT VALID ! But astring += anotherString + \"Hello \" + \"Dolly\" is valid."]
+    pub fn assign_cat_charptr(self: std::pin::Pin<&mut Self>, other: &str) -> () {
+        ffi::AsciiString_assign_cat_charptr(self, other)
+    }
+
+    #[doc = "Appends <other>  to me. Syntax: aString = aString + 15; Example: aString contains \"I say \" gives \"I say 15\" To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too."]
+    pub fn cat_int(&self, other: i32) -> cxx::UniquePtr<ffi::AsciiString> {
+        ffi::AsciiString_cat_int(self, other)
+    }
+
+    #[doc = "Appends <other>  to me. Syntax: aString = aString + 15.15; Example: aString contains \"I say \" gives \"I say 15.15\" To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too."]
+    pub fn cat_real(&self, other: f64) -> cxx::UniquePtr<ffi::AsciiString> {
+        ffi::AsciiString_cat_real(self, other)
+    }
+
+    #[doc = "Appends <other>  to me. Syntax: aString = aString + \"Dummy\" Example: aString contains \"I say \" aString = aString + \"Hello \" + \"Dolly\" gives \"I say Hello Dolly\" To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too."]
+    pub fn cat_charptr(&self, other: &str) -> cxx::UniquePtr<ffi::AsciiString> {
+        ffi::AsciiString_cat_charptr(self, other)
+    }
+
+    #[doc = "Appends <other> to me. Example: aString = aString + anotherString"]
+    pub fn cat_asciistring(&self, other: &ffi::AsciiString) -> cxx::UniquePtr<ffi::AsciiString> {
+        ffi::AsciiString_cat_asciistring(self, other)
+    }
+
+    #[doc = "Copy <fromwhere> to <me>. Used as operator = Example: aString = anotherCString;"]
+    pub fn copy_charptr(self: std::pin::Pin<&mut Self>, fromwhere: &str) -> () {
+        ffi::AsciiString_copy_charptr(self, fromwhere)
+    }
+
+    #[doc = "Inserts a CString at position <where>. Example: aString contains \"O more\" aString.Insert(2,\"nce\");  gives \"Once more\""]
+    pub fn insert_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) -> () {
+        ffi::AsciiString_insert_int_charptr(self, where_, what)
+    }
+
+    #[doc = "Returns true if the characters in this ASCII string are identical to the characters in ASCII string other. Note that this method is an alias of operator ==."]
+    pub fn is_equal_charptr(&self, other: &str) -> bool {
+        ffi::AsciiString_is_equal_charptr(self, other)
+    }
+
+    #[doc = "Returns true if there are differences between the characters in this ASCII string and ASCII string other. Note that this method is an alias of operator !="]
+    pub fn is_different_charptr(&self, other: &str) -> bool {
+        ffi::AsciiString_is_different_charptr(self, other)
+    }
+
+    #[doc = "Returns TRUE if <me> is 'ASCII' less than <other>."]
+    pub fn is_less_charptr(&self, other: &str) -> bool {
+        ffi::AsciiString_is_less_charptr(self, other)
+    }
+
+    #[doc = "Returns TRUE if <me> is 'ASCII' greater than <other>."]
+    pub fn is_greater_charptr(&self, other: &str) -> bool {
+        ffi::AsciiString_is_greater_charptr(self, other)
+    }
+
+    #[doc = "Searches a CString in <me> from the beginning and returns position of first item <what> matching. it returns -1 if not found. Example: aString contains \"Sample single test\" aString.Search(\"le\") returns 5"]
+    pub fn search_charptr(&self, what: &str) -> i32 {
+        ffi::AsciiString_search_charptr(self, what)
+    }
+
+    #[doc = "Searches a CString in a AsciiString from the end and returns position of first item <what> matching. It returns -1 if not found. Example: aString contains \"Sample single test\" aString.SearchFromEnd(\"le\") returns 12"]
+    pub fn search_from_end_charptr(&self, what: &str) -> i32 {
+        ffi::AsciiString_search_from_end_charptr(self, what)
+    }
+
+    #[doc = "Replaces a part of <me> by a CString. If <where> is less than zero or greater than the length of <me> an exception is raised. Example: aString contains \"abcde\" aString.SetValue(4,\"1234567\") gives <me> = \"abc1234567\""]
+    pub fn set_value_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) -> () {
+        ffi::AsciiString_set_value_int_charptr(self, where_, what)
+    }
+
+    #[doc = "Splits a AsciiString into two sub-strings. Example: aString contains \"abcdefg\" aString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
+    pub fn split(self: std::pin::Pin<&mut Self>, where_: i32) -> cxx::UniquePtr<ffi::AsciiString> {
+        ffi::AsciiString_split(self, where_)
+    }
+
+    #[doc = "Creation of a sub-string of the string <me>. The sub-string starts to the index Fromindex and ends to the index ToIndex. Raises an exception if ToIndex or FromIndex is out of bounds Example: before me = \"abcdefg\", ToIndex=3, FromIndex=6 after me = \"abcdefg\" returns \"cdef\""]
+    pub fn sub_string(&self, FromIndex: i32, ToIndex: i32) -> cxx::UniquePtr<ffi::AsciiString> {
+        ffi::AsciiString_sub_string(self, FromIndex, ToIndex)
+    }
+
+    #[doc = "Returns pointer to AsciiString (char *). This is useful for some casual manipulations. Warning: Because this \"char *\" is 'const', you can't modify its contents."]
+    pub fn to_c_string(&self) -> String {
+        ffi::AsciiString_to_c_string(self)
+    }
+
+    #[doc = "Extracts <whichone> token from <me>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns empty AsciiString. Example: aString contains \"This is a     message\" aString.Token()  returns \"This\" aString.Token(\" \",4) returns \"message\" aString.Token(\" \",2) returns \"is\" aString.Token(\" \",9) returns \"\" Other separators than space character and tabulation are allowed : aString contains \"1234; test:message   , value\" aString.Token(\"; :,\",4) returns \"value\" aString.Token(\"; :,\",2) returns \"test\""]
+    pub fn token(&self, separators: &str, whichone: i32) -> cxx::UniquePtr<ffi::AsciiString> {
+        ffi::AsciiString_token(self, separators, whichone)
+    }
+
+    #[doc = "Returns character at position <where> in <me>. If <where> is less than zero or greater than the length of <me>, an exception is raised. Example: aString contains \"Hello\" aString.Value(2) returns 'e'"]
+    pub fn value(&self, where_: i32) -> cxx::UniquePtr<ffi::Standard_Character> {
+        ffi::AsciiString_value(self, where_)
+    }
+
+    #[doc = "Returns True  when the two  strings are the same. (Just for HashCode for AsciiString)"]
+    pub fn is_equal_asciistring2(string1: &ffi::AsciiString, string2: &ffi::AsciiString) -> bool {
+        ffi::AsciiString_is_equal_asciistring2(string1, string2)
+    }
+
+    #[doc = "Returns True  when the two  strings are the same. (Just for HashCode for AsciiString)"]
+    pub fn is_equal_asciistring_charptr(string1: &ffi::AsciiString, string2: &str) -> bool {
+        ffi::AsciiString_is_equal_asciistring_charptr(string1, string2)
+    }
+
+    #[doc = "Returns True if the strings contain same characters."]
+    pub fn is_same_string(
+        theString1: &ffi::AsciiString,
+        theString2: &ffi::AsciiString,
+        theIsCaseSensitive: bool,
+    ) -> bool {
+        ffi::AsciiString_is_same_string(theString1, theString2, theIsCaseSensitive)
+    }
+}
+pub use ffi::ExtendedString;
+impl ExtendedString {
+    #[doc = "Initializes a ExtendedString to an empty ExtendedString."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::ExtendedString_ctor()
+    }
+
+    #[doc = "Creation by converting a CString to an extended string.  If <isMultiByte> is true then the string is treated as having UTF-8 coding.  If it is not a UTF-8 then <isMultiByte> is ignored and each character is copied to ExtCharacter."]
+    pub fn new_charptr_bool(astring: &str, isMultiByte: bool) -> cxx::UniquePtr<Self> {
+        ffi::ExtendedString_ctor_charptr_bool(astring, isMultiByte)
+    }
+
+    #[doc = "Initializes an ExtendedString with an integer value"]
+    pub fn new_int(value: i32) -> cxx::UniquePtr<Self> {
+        ffi::ExtendedString_ctor_int(value)
+    }
+
+    #[doc = "Initializes an ExtendedString with a real value"]
+    pub fn new_real(value: f64) -> cxx::UniquePtr<Self> {
+        ffi::ExtendedString_ctor_real(value)
+    }
+
+    #[doc = "Initializes a ExtendedString with another ExtendedString."]
+    pub fn new_extendedstring(astring: &ffi::ExtendedString) -> cxx::UniquePtr<Self> {
+        ffi::ExtendedString_ctor_extendedstring(astring)
+    }
+
+    #[doc = "Creation by converting an Ascii string to an extended string. The string is treated as having UTF-8 coding. If it is not a UTF-8 or multi byte then each character is copied to ExtCharacter."]
+    pub fn new_asciistring_bool(
+        astring: &ffi::AsciiString,
+        isMultiByte: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::ExtendedString_ctor_asciistring_bool(astring, isMultiByte)
+    }
+
+    #[doc = "Appends <other> to me."]
+    pub fn cat(&self, other: &ffi::ExtendedString) -> cxx::UniquePtr<ffi::ExtendedString> {
+        ffi::ExtendedString_cat(self, other)
+    }
+
+    #[doc = "Splits this extended string into two sub-strings at position where. -   The second sub-string (from position where + 1 of this string to the end) is returned in a new extended string. -   this extended string is modified: its last characters are removed, it becomes equal to the first sub-string (from the first character to position where). Example: aString contains \"abcdefg\" aString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
+    pub fn split(
+        self: std::pin::Pin<&mut Self>,
+        where_: i32,
+    ) -> cxx::UniquePtr<ffi::ExtendedString> {
+        ffi::ExtendedString_split(self, where_)
+    }
+
+    #[doc = "Returns pointer to ExtString"]
+    pub fn to_ext_string(&self) -> cxx::UniquePtr<ffi::Standard_ExtString> {
+        ffi::ExtendedString_to_ext_string(self)
+    }
+
+    #[doc = "Returns character at position <where> in <me>. If <where> is less than zero or greater than the length of <me>, an exception is raised. Example: aString contains \"Hello\" aString.Value(2) returns 'e' Exceptions Standard_OutOfRange if where lies outside the bounds of this extended string."]
+    pub fn value(&self, where_: i32) -> cxx::UniquePtr<ffi::Standard_ExtCharacter> {
+        ffi::ExtendedString_value(self, where_)
+    }
+
+    #[doc = "Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==."]
+    pub fn is_equal_extendedstring2(
+        theString1: &ffi::ExtendedString,
+        theString2: &ffi::ExtendedString,
+    ) -> bool {
+        ffi::ExtendedString_is_equal_extendedstring2(theString1, theString2)
+    }
+}
+pub use ffi::HAsciiString;
+impl HAsciiString {
+    #[doc = "Initializes a HAsciiString to an empty AsciiString."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::HAsciiString_ctor()
+    }
+
+    #[doc = "Initializes a HAsciiString with a CString."]
+    pub fn new_charptr(message: &str) -> cxx::UniquePtr<Self> {
+        ffi::HAsciiString_ctor_charptr(message)
+    }
+
+    #[doc = "Initializes a HAsciiString with an integer value"]
+    pub fn new_int(value: i32) -> cxx::UniquePtr<Self> {
+        ffi::HAsciiString_ctor_int(value)
+    }
+
+    #[doc = "Initializes a HAsciiString with a real value"]
+    pub fn new_real(value: f64) -> cxx::UniquePtr<Self> {
+        ffi::HAsciiString_ctor_real(value)
+    }
+
+    #[doc = "Initializes a HAsciiString with a AsciiString."]
+    pub fn new_asciistring(aString: &ffi::AsciiString) -> cxx::UniquePtr<Self> {
+        ffi::HAsciiString_ctor_asciistring(aString)
+    }
+
+    #[doc = "Initializes a HAsciiString with a HAsciiString."]
+    pub fn new_handlehasciistring(
+        aString: &ffi::HandleTCollectionHAsciiString,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::HAsciiString_ctor_handlehasciistring(aString)
+    }
+
+    #[doc = "Wrap TCollection_HAsciiString in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<ffi::HandleTCollectionHAsciiString> {
+        ffi::HAsciiString_to_handle(obj)
+    }
+
+    #[doc = "Appends <other>  to me."]
+    pub fn assign_cat_charptr(self: std::pin::Pin<&mut Self>, other: &str) -> () {
+        ffi::HAsciiString_assign_cat_charptr(self, other)
+    }
+
+    #[doc = "Creates a new string by concatenation of this ASCII string and the other ASCII string. Example: aString = aString + anotherString aString = aString + \"Dummy\" aString contains \"I say \" aString = aString + \"Hello \" + \"Dolly\" gives \"I say Hello Dolly\" Warning: To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too."]
+    pub fn cat_charptr(&self, other: &str) -> cxx::UniquePtr<ffi::HandleTCollectionHAsciiString> {
+        ffi::HAsciiString_cat_charptr(self, other)
+    }
+
+    #[doc = "Creates a new string by concatenation of this ASCII string and the other ASCII string. Example:  aString = aString + anotherString"]
+    pub fn cat_handlehasciistring(
+        &self,
+        other: &ffi::HandleTCollectionHAsciiString,
+    ) -> cxx::UniquePtr<ffi::HandleTCollectionHAsciiString> {
+        ffi::HAsciiString_cat_handlehasciistring(self, other)
+    }
+
+    #[doc = "Insert a HAsciiString at position <where>."]
+    pub fn insert_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) -> () {
+        ffi::HAsciiString_insert_int_charptr(self, where_, what)
+    }
+
+    #[doc = "Searches a CString in <me> from the beginning and returns position of first item <what> matching. It returns -1 if not found. Example: aString contains \"Sample single test\" aString.Search(\"le\") returns 5"]
+    pub fn search_charptr(&self, what: &str) -> i32 {
+        ffi::HAsciiString_search_charptr(self, what)
+    }
+
+    #[doc = "Searches a CString in a String from the end and returns position of first item <what> matching. It returns -1 if not found. Example: aString contains \"Sample single test\" aString.SearchFromEnd(\"le\") returns 12"]
+    pub fn search_from_end_charptr(&self, what: &str) -> i32 {
+        ffi::HAsciiString_search_from_end_charptr(self, what)
+    }
+
+    #[doc = "Replaces a part of <me> in the string at position <where>. If <where> is less than zero or greater than the length of <me> an exception is raised. Example: aString contains \"Garbake\" astring.Replace(6,'g')  gives <me> = \"Garbage\""]
+    pub fn set_value_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) -> () {
+        ffi::HAsciiString_set_value_int_charptr(self, where_, what)
+    }
+
+    #[doc = "Splits a HAsciiString into two sub-strings. Example: aString contains \"abcdefg\" aString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
+    pub fn split(
+        self: std::pin::Pin<&mut Self>,
+        where_: i32,
+    ) -> cxx::UniquePtr<ffi::HandleTCollectionHAsciiString> {
+        ffi::HAsciiString_split(self, where_)
+    }
+
+    #[doc = "Creation of a sub-string of the string <me>. The sub-string starts to the index Fromindex and ends to the index ToIndex. Raises an exception if ToIndex or FromIndex is out of bounds Example: before me = \"abcdefg\", ToIndex=3, FromIndex=6 after me = \"abcdefg\" returns \"cdef\""]
+    pub fn sub_string(
+        &self,
+        FromIndex: i32,
+        ToIndex: i32,
+    ) -> cxx::UniquePtr<ffi::HandleTCollectionHAsciiString> {
+        ffi::HAsciiString_sub_string(self, FromIndex, ToIndex)
+    }
+
+    #[doc = "Returns pointer to string (char *) This is useful for some casual manipulations Because this \"char *\" is 'const', you can't modify its contents."]
+    pub fn to_c_string(&self) -> String {
+        ffi::HAsciiString_to_c_string(self)
+    }
+
+    #[doc = "Extracts <whichone> token from <me>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns an empty String. Example: aString contains \"This is a     message\" aString.Token()  returns \"This\" aString.Token(\" \",4) returns \"message\" aString.Token(\" \",2) returns \"is\" aString.Token(\" \",9) returns \"\" Other separators than space character and tabulation are allowed aString contains \"1234; test:message   , value\" aString.Token(\"; :,\",4) returns \"value\" aString.Token(\"; :,\",2) returns \"test\""]
+    pub fn token(
+        &self,
+        separators: &str,
+        whichone: i32,
+    ) -> cxx::UniquePtr<ffi::HandleTCollectionHAsciiString> {
+        ffi::HAsciiString_token(self, separators, whichone)
+    }
+
+    #[doc = "Returns character at position <where> in <me>. If <where> is less than zero or greater than the length of <me>, an exception is raised. Example: aString contains \"Hello\" aString.Value(2) returns 'e'"]
+    pub fn value(&self, where_: i32) -> cxx::UniquePtr<ffi::Standard_Character> {
+        ffi::HAsciiString_value(self, where_)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::HAsciiString_get_type_name()
+    }
+}
+pub use ffi::HExtendedString;
+impl HExtendedString {
+    #[doc = "Initializes a HExtendedString to an empty ExtendedString."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::HExtendedString_ctor()
+    }
+
+    #[doc = "Initializes a HExtendedString with a CString."]
+    pub fn new_charptr(message: &str) -> cxx::UniquePtr<Self> {
+        ffi::HExtendedString_ctor_charptr(message)
+    }
+
+    #[doc = "Initializes a HExtendedString with a ExtendedString."]
+    pub fn new_extendedstring(aString: &ffi::ExtendedString) -> cxx::UniquePtr<Self> {
+        ffi::HExtendedString_ctor_extendedstring(aString)
+    }
+
+    #[doc = "Initializes a HExtendedString with an HAsciiString."]
+    pub fn new_handlehasciistring(
+        aString: &ffi::HandleTCollectionHAsciiString,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::HExtendedString_ctor_handlehasciistring(aString)
+    }
+
+    #[doc = "Initializes a HExtendedString with a HExtendedString."]
+    pub fn new_handlehextendedstring(
+        aString: &ffi::HandleTCollectionHExtendedString,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::HExtendedString_ctor_handlehextendedstring(aString)
+    }
+
+    #[doc = "Wrap TCollection_HExtendedString in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<ffi::HandleTCollectionHExtendedString> {
+        ffi::HExtendedString_to_handle(obj)
+    }
+
+    #[doc = "Returns a string appending <other>  to me."]
+    pub fn cat(
+        &self,
+        other: &ffi::HandleTCollectionHExtendedString,
+    ) -> cxx::UniquePtr<ffi::HandleTCollectionHExtendedString> {
+        ffi::HExtendedString_cat(self, other)
+    }
+
+    #[doc = "Splits a ExtendedString into two sub-strings. Example: aString contains \"abcdefg\" aString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
+    pub fn split(
+        self: std::pin::Pin<&mut Self>,
+        where_: i32,
+    ) -> cxx::UniquePtr<ffi::HandleTCollectionHExtendedString> {
+        ffi::HExtendedString_split(self, where_)
+    }
+
+    #[doc = "Returns pointer to ExtString"]
+    pub fn to_ext_string(&self) -> cxx::UniquePtr<ffi::Standard_ExtString> {
+        ffi::HExtendedString_to_ext_string(self)
+    }
+
+    #[doc = "Returns ExtCharacter at position <where> in <me>. If <where> is less than zero or greater than the length of <me>, an exception is raised. Example: aString contains \"Hello\" aString.Value(2) returns 'e'"]
+    pub fn value(&self, where_: i32) -> cxx::UniquePtr<ffi::Standard_ExtCharacter> {
+        ffi::HExtendedString_value(self, where_)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::HExtendedString_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_t_collection.hxx");
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Standard_Character"]
-        type Standard_Character;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Standard_ExtCharacter"]
-        type Standard_ExtCharacter;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Standard_ExtString"]
-        type Standard_ExtString;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Standard_PCharacter"]
-        type Standard_PCharacter;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Standard_Utf16Char"]
-        type Standard_Utf16Char;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTCollectionHAsciiString"]
-        type HandleTCollectionHAsciiString;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTCollectionHExtendedString"]
-        type HandleTCollectionHExtendedString;
         #[doc = " ======================== TCollection_AsciiString ========================"]
         #[doc = "/// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString`"]
         #[doc = ""]
@@ -344,6 +693,152 @@ pub(crate) mod ffi {
             theString1: &AsciiString,
             theString2: &AsciiString,
             theIsCaseSensitive: bool,
+        ) -> bool;
+        #[doc = " ======================== TCollection_ExtendedString ========================"]
+        #[doc = "/// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString`"]
+        #[doc = ""]
+        #[doc = "A variable-length sequence of \"extended\" (UNICODE) characters (16-bit character type). It provides editing operations with built-in memory management to make ExtendedString objects easier to use than ordinary extended character arrays. ExtendedString objects follow \"value semantics\", that is, they are the actual strings, not handles to strings, and are copied through assignment. You may use HExtendedString objects to get handles to strings. Beware that class can transparently store UTF-16 string with surrogate pairs (Unicode symbol represented by two 16-bit code units). However, surrogate pairs are not considered by the following methods: - Method ::Length() return the number of 16-bit code units, not the number of Unicode symbols. - Methods taking/returning symbol index work with 16-bit code units, not true Unicode symbols, including ::Remove(), ::SetValue(), ::Value(), ::Search(), ::Trunc() and others. If application needs to process surrogate pairs, NCollection_Utf16Iter class can be used for iterating through Unicode string (UTF-32 code unit will be returned for each position)."]
+        #[cxx_name = "TCollection_ExtendedString"]
+        type ExtendedString;
+        #[doc = "/// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`"]
+        #[doc = ""]
+        #[doc = "Initializes a ExtendedString to an empty ExtendedString."]
+        #[cxx_name = "TCollection_ExtendedString_ctor"]
+        fn ExtendedString_ctor() -> UniquePtr<ExtendedString>;
+        #[doc = "/// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`"]
+        #[doc = ""]
+        #[doc = "Creation by converting a CString to an extended string.  If <isMultiByte> is true then the string is treated as having UTF-8 coding.  If it is not a UTF-8 then <isMultiByte> is ignored and each character is copied to ExtCharacter."]
+        #[cxx_name = "TCollection_ExtendedString_ctor_charptr_bool"]
+        fn ExtendedString_ctor_charptr_bool(
+            astring: &str,
+            isMultiByte: bool,
+        ) -> UniquePtr<ExtendedString>;
+        #[doc = "/// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`"]
+        #[doc = ""]
+        #[doc = "Initializes an ExtendedString with an integer value"]
+        #[cxx_name = "TCollection_ExtendedString_ctor_int"]
+        fn ExtendedString_ctor_int(value: i32) -> UniquePtr<ExtendedString>;
+        #[doc = "/// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`"]
+        #[doc = ""]
+        #[doc = "Initializes an ExtendedString with a real value"]
+        #[cxx_name = "TCollection_ExtendedString_ctor_real"]
+        fn ExtendedString_ctor_real(value: f64) -> UniquePtr<ExtendedString>;
+        #[doc = "/// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`"]
+        #[doc = ""]
+        #[doc = "Initializes a ExtendedString with another ExtendedString."]
+        #[cxx_name = "TCollection_ExtendedString_ctor_extendedstring"]
+        fn ExtendedString_ctor_extendedstring(
+            astring: &ExtendedString,
+        ) -> UniquePtr<ExtendedString>;
+        #[doc = "/// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`"]
+        #[doc = ""]
+        #[doc = "Creation by converting an Ascii string to an extended string. The string is treated as having UTF-8 coding. If it is not a UTF-8 or multi byte then each character is copied to ExtCharacter."]
+        #[cxx_name = "TCollection_ExtendedString_ctor_asciistring_bool"]
+        fn ExtendedString_ctor_asciistring_bool(
+            astring: &AsciiString,
+            isMultiByte: bool,
+        ) -> UniquePtr<ExtendedString>;
+        #[doc = "Appends the other extended string to this extended string. Note that this method is an alias of operator +=. Example: aString += anotherString"]
+        #[cxx_name = "AssignCat"]
+        fn assign_cat_extendedstring(self: Pin<&mut ExtendedString>, other: &ExtendedString);
+        #[doc = "Removes all characters contained in <me>. This produces an empty ExtendedString."]
+        #[cxx_name = "Clear"]
+        fn clear(self: Pin<&mut ExtendedString>);
+        #[doc = "Copy <fromwhere> to <me>. Used as operator ="]
+        #[cxx_name = "Copy"]
+        fn copy(self: Pin<&mut ExtendedString>, fromwhere: &ExtendedString);
+        #[doc = "Exchange the data of two strings (without reallocating memory)."]
+        #[cxx_name = "Swap"]
+        fn swap(self: Pin<&mut ExtendedString>, theOther: Pin<&mut ExtendedString>);
+        #[doc = "Insert a ExtendedString at position <where>."]
+        #[cxx_name = "Insert"]
+        fn insert_int_extendedstring(
+            self: Pin<&mut ExtendedString>,
+            where_: i32,
+            what: &ExtendedString,
+        );
+        #[doc = "Returns True if this string contains no characters."]
+        #[cxx_name = "IsEmpty"]
+        fn is_empty(self: &ExtendedString) -> bool;
+        #[doc = "Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator =="]
+        #[cxx_name = "IsEqual"]
+        fn is_equal_extendedstring(self: &ExtendedString, other: &ExtendedString) -> bool;
+        #[doc = "Returns true if there are differences between the characters in this extended string and the other extended string. Note that this method is an alias of operator !=."]
+        #[cxx_name = "IsDifferent"]
+        fn is_different_extendedstring(self: &ExtendedString, other: &ExtendedString) -> bool;
+        #[doc = "Returns TRUE if <me> is less than <other>."]
+        #[cxx_name = "IsLess"]
+        fn is_less_extendedstring(self: &ExtendedString, other: &ExtendedString) -> bool;
+        #[doc = "Returns TRUE if <me> is greater than <other>."]
+        #[cxx_name = "IsGreater"]
+        fn is_greater_extendedstring(self: &ExtendedString, other: &ExtendedString) -> bool;
+        #[doc = "Determines whether the beginning of this string instance matches the specified string."]
+        #[cxx_name = "StartsWith"]
+        fn starts_with(self: &ExtendedString, theStartString: &ExtendedString) -> bool;
+        #[doc = "Determines whether the end of this string instance matches the specified string."]
+        #[cxx_name = "EndsWith"]
+        fn ends_with(self: &ExtendedString, theEndString: &ExtendedString) -> bool;
+        #[doc = "Returns True if the ExtendedString contains only \"Ascii Range\" characters ."]
+        #[cxx_name = "IsAscii"]
+        fn is_ascii(self: &ExtendedString) -> bool;
+        #[doc = "Returns the number of 16-bit code units (might be greater than number of Unicode symbols if string contains surrogate pairs)."]
+        #[cxx_name = "Length"]
+        fn length(self: &ExtendedString) -> i32;
+        #[doc = "Erases <ahowmany> characters from position <where>,<where> included."]
+        #[cxx_name = "Remove"]
+        fn remove(self: Pin<&mut ExtendedString>, where_: i32, ahowmany: i32);
+        #[doc = "Searches a ExtendedString in <me> from the beginning and returns position of first item <what> matching. it returns -1 if not found."]
+        #[cxx_name = "Search"]
+        fn search(self: &ExtendedString, what: &ExtendedString) -> i32;
+        #[doc = "Searches a ExtendedString in another ExtendedString from the end and returns position of first item <what> matching. it returns -1 if not found."]
+        #[cxx_name = "SearchFromEnd"]
+        fn search_from_end(self: &ExtendedString, what: &ExtendedString) -> i32;
+        #[doc = "Replaces a part of <me> by another ExtendedString see above."]
+        #[cxx_name = "SetValue"]
+        fn set_value_int_extendedstring(
+            self: Pin<&mut ExtendedString>,
+            where_: i32,
+            what: &ExtendedString,
+        );
+        #[doc = "Truncates <me> to <ahowmany> characters. Example:  me = \"Hello Dolly\" -> Trunc(3) -> me = \"Hel\" Exceptions Standard_OutOfRange if ahowmany is greater than the length of this string."]
+        #[cxx_name = "Trunc"]
+        fn trunc(self: Pin<&mut ExtendedString>, ahowmany: i32);
+        #[doc = "Returns a hashed value for the extended string. Note: if string is ASCII, the computed value is the same as the value computed with the HashCode function on a TCollection_AsciiString string composed with equivalent ASCII characters. @return a computed hash code"]
+        #[cxx_name = "HashCode"]
+        fn hash_code(self: &ExtendedString) -> usize;
+        #[doc = "Converts the internal <mystring> to UTF8 coding and returns length of the out CString. A memory for the <theCString> should be allocated before call!"]
+        #[cxx_name = "ToUTF8CString"]
+        fn to_utf8c_string(self: &ExtendedString, theCString: Pin<&mut Standard_PCharacter>)
+            -> i32;
+        #[doc = "Returns expected CString length in UTF8 coding. It can be used for  memory  calculation  before converting to CString containing symbols in UTF8 coding."]
+        #[cxx_name = "LengthOfCString"]
+        fn length_of_c_string(self: &ExtendedString) -> i32;
+        #[doc = "Appends <other> to me."]
+        #[cxx_name = "TCollection_ExtendedString_Cat"]
+        fn ExtendedString_cat(
+            self_: &ExtendedString,
+            other: &ExtendedString,
+        ) -> UniquePtr<ExtendedString>;
+        #[doc = "Splits this extended string into two sub-strings at position where. -   The second sub-string (from position where + 1 of this string to the end) is returned in a new extended string. -   this extended string is modified: its last characters are removed, it becomes equal to the first sub-string (from the first character to position where). Example: aString contains \"abcdefg\" aString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
+        #[cxx_name = "TCollection_ExtendedString_Split"]
+        fn ExtendedString_split(
+            self_: Pin<&mut ExtendedString>,
+            where_: i32,
+        ) -> UniquePtr<ExtendedString>;
+        #[doc = "Returns pointer to ExtString"]
+        #[cxx_name = "TCollection_ExtendedString_ToExtString"]
+        fn ExtendedString_to_ext_string(self_: &ExtendedString) -> UniquePtr<Standard_ExtString>;
+        #[doc = "Returns character at position <where> in <me>. If <where> is less than zero or greater than the length of <me>, an exception is raised. Example: aString contains \"Hello\" aString.Value(2) returns 'e' Exceptions Standard_OutOfRange if where lies outside the bounds of this extended string."]
+        #[cxx_name = "TCollection_ExtendedString_Value"]
+        fn ExtendedString_value(
+            self_: &ExtendedString,
+            where_: i32,
+        ) -> UniquePtr<Standard_ExtCharacter>;
+        #[doc = "Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==."]
+        #[cxx_name = "TCollection_ExtendedString_IsEqual_extendedstring2"]
+        fn ExtendedString_is_equal_extendedstring2(
+            theString1: &ExtendedString,
+            theString2: &ExtendedString,
         ) -> bool;
         #[doc = " ======================== TCollection_HAsciiString ========================"]
         #[doc = "/// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString`"]
@@ -716,570 +1211,75 @@ pub(crate) mod ffi {
         fn HExtendedString_to_handle(
             obj: UniquePtr<HExtendedString>,
         ) -> UniquePtr<HandleTCollectionHExtendedString>;
-        #[doc = " ======================== TCollection_ExtendedString ========================"]
-        #[doc = "/// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString`"]
-        #[doc = ""]
-        #[doc = "A variable-length sequence of \"extended\" (UNICODE) characters (16-bit character type). It provides editing operations with built-in memory management to make ExtendedString objects easier to use than ordinary extended character arrays. ExtendedString objects follow \"value semantics\", that is, they are the actual strings, not handles to strings, and are copied through assignment. You may use HExtendedString objects to get handles to strings. Beware that class can transparently store UTF-16 string with surrogate pairs (Unicode symbol represented by two 16-bit code units). However, surrogate pairs are not considered by the following methods: - Method ::Length() return the number of 16-bit code units, not the number of Unicode symbols. - Methods taking/returning symbol index work with 16-bit code units, not true Unicode symbols, including ::Remove(), ::SetValue(), ::Value(), ::Search(), ::Trunc() and others. If application needs to process surrogate pairs, NCollection_Utf16Iter class can be used for iterating through Unicode string (UTF-32 code unit will be returned for each position)."]
-        #[cxx_name = "TCollection_ExtendedString"]
-        type ExtendedString;
-        #[doc = "/// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`"]
-        #[doc = ""]
-        #[doc = "Initializes a ExtendedString to an empty ExtendedString."]
-        #[cxx_name = "TCollection_ExtendedString_ctor"]
-        fn ExtendedString_ctor() -> UniquePtr<ExtendedString>;
-        #[doc = "/// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`"]
-        #[doc = ""]
-        #[doc = "Creation by converting a CString to an extended string.  If <isMultiByte> is true then the string is treated as having UTF-8 coding.  If it is not a UTF-8 then <isMultiByte> is ignored and each character is copied to ExtCharacter."]
-        #[cxx_name = "TCollection_ExtendedString_ctor_charptr_bool"]
-        fn ExtendedString_ctor_charptr_bool(
-            astring: &str,
-            isMultiByte: bool,
-        ) -> UniquePtr<ExtendedString>;
-        #[doc = "/// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`"]
-        #[doc = ""]
-        #[doc = "Initializes an ExtendedString with an integer value"]
-        #[cxx_name = "TCollection_ExtendedString_ctor_int"]
-        fn ExtendedString_ctor_int(value: i32) -> UniquePtr<ExtendedString>;
-        #[doc = "/// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`"]
-        #[doc = ""]
-        #[doc = "Initializes an ExtendedString with a real value"]
-        #[cxx_name = "TCollection_ExtendedString_ctor_real"]
-        fn ExtendedString_ctor_real(value: f64) -> UniquePtr<ExtendedString>;
-        #[doc = "/// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`"]
-        #[doc = ""]
-        #[doc = "Initializes a ExtendedString with another ExtendedString."]
-        #[cxx_name = "TCollection_ExtendedString_ctor_extendedstring"]
-        fn ExtendedString_ctor_extendedstring(
-            astring: &ExtendedString,
-        ) -> UniquePtr<ExtendedString>;
-        #[doc = "/// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`"]
-        #[doc = ""]
-        #[doc = "Creation by converting an Ascii string to an extended string. The string is treated as having UTF-8 coding. If it is not a UTF-8 or multi byte then each character is copied to ExtCharacter."]
-        #[cxx_name = "TCollection_ExtendedString_ctor_asciistring_bool"]
-        fn ExtendedString_ctor_asciistring_bool(
-            astring: &AsciiString,
-            isMultiByte: bool,
-        ) -> UniquePtr<ExtendedString>;
-        #[doc = "Appends the other extended string to this extended string. Note that this method is an alias of operator +=. Example: aString += anotherString"]
-        #[cxx_name = "AssignCat"]
-        fn assign_cat_extendedstring(self: Pin<&mut ExtendedString>, other: &ExtendedString);
-        #[doc = "Removes all characters contained in <me>. This produces an empty ExtendedString."]
-        #[cxx_name = "Clear"]
-        fn clear(self: Pin<&mut ExtendedString>);
-        #[doc = "Copy <fromwhere> to <me>. Used as operator ="]
-        #[cxx_name = "Copy"]
-        fn copy(self: Pin<&mut ExtendedString>, fromwhere: &ExtendedString);
-        #[doc = "Exchange the data of two strings (without reallocating memory)."]
-        #[cxx_name = "Swap"]
-        fn swap(self: Pin<&mut ExtendedString>, theOther: Pin<&mut ExtendedString>);
-        #[doc = "Insert a ExtendedString at position <where>."]
-        #[cxx_name = "Insert"]
-        fn insert_int_extendedstring(
-            self: Pin<&mut ExtendedString>,
-            where_: i32,
-            what: &ExtendedString,
-        );
-        #[doc = "Returns True if this string contains no characters."]
-        #[cxx_name = "IsEmpty"]
-        fn is_empty(self: &ExtendedString) -> bool;
-        #[doc = "Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator =="]
-        #[cxx_name = "IsEqual"]
-        fn is_equal_extendedstring(self: &ExtendedString, other: &ExtendedString) -> bool;
-        #[doc = "Returns true if there are differences between the characters in this extended string and the other extended string. Note that this method is an alias of operator !=."]
-        #[cxx_name = "IsDifferent"]
-        fn is_different_extendedstring(self: &ExtendedString, other: &ExtendedString) -> bool;
-        #[doc = "Returns TRUE if <me> is less than <other>."]
-        #[cxx_name = "IsLess"]
-        fn is_less_extendedstring(self: &ExtendedString, other: &ExtendedString) -> bool;
-        #[doc = "Returns TRUE if <me> is greater than <other>."]
-        #[cxx_name = "IsGreater"]
-        fn is_greater_extendedstring(self: &ExtendedString, other: &ExtendedString) -> bool;
-        #[doc = "Determines whether the beginning of this string instance matches the specified string."]
-        #[cxx_name = "StartsWith"]
-        fn starts_with(self: &ExtendedString, theStartString: &ExtendedString) -> bool;
-        #[doc = "Determines whether the end of this string instance matches the specified string."]
-        #[cxx_name = "EndsWith"]
-        fn ends_with(self: &ExtendedString, theEndString: &ExtendedString) -> bool;
-        #[doc = "Returns True if the ExtendedString contains only \"Ascii Range\" characters ."]
-        #[cxx_name = "IsAscii"]
-        fn is_ascii(self: &ExtendedString) -> bool;
-        #[doc = "Returns the number of 16-bit code units (might be greater than number of Unicode symbols if string contains surrogate pairs)."]
-        #[cxx_name = "Length"]
-        fn length(self: &ExtendedString) -> i32;
-        #[doc = "Erases <ahowmany> characters from position <where>,<where> included."]
-        #[cxx_name = "Remove"]
-        fn remove(self: Pin<&mut ExtendedString>, where_: i32, ahowmany: i32);
-        #[doc = "Searches a ExtendedString in <me> from the beginning and returns position of first item <what> matching. it returns -1 if not found."]
-        #[cxx_name = "Search"]
-        fn search(self: &ExtendedString, what: &ExtendedString) -> i32;
-        #[doc = "Searches a ExtendedString in another ExtendedString from the end and returns position of first item <what> matching. it returns -1 if not found."]
-        #[cxx_name = "SearchFromEnd"]
-        fn search_from_end(self: &ExtendedString, what: &ExtendedString) -> i32;
-        #[doc = "Replaces a part of <me> by another ExtendedString see above."]
-        #[cxx_name = "SetValue"]
-        fn set_value_int_extendedstring(
-            self: Pin<&mut ExtendedString>,
-            where_: i32,
-            what: &ExtendedString,
-        );
-        #[doc = "Truncates <me> to <ahowmany> characters. Example:  me = \"Hello Dolly\" -> Trunc(3) -> me = \"Hel\" Exceptions Standard_OutOfRange if ahowmany is greater than the length of this string."]
-        #[cxx_name = "Trunc"]
-        fn trunc(self: Pin<&mut ExtendedString>, ahowmany: i32);
-        #[doc = "Returns a hashed value for the extended string. Note: if string is ASCII, the computed value is the same as the value computed with the HashCode function on a TCollection_AsciiString string composed with equivalent ASCII characters. @return a computed hash code"]
-        #[cxx_name = "HashCode"]
-        fn hash_code(self: &ExtendedString) -> usize;
-        #[doc = "Converts the internal <mystring> to UTF8 coding and returns length of the out CString. A memory for the <theCString> should be allocated before call!"]
-        #[cxx_name = "ToUTF8CString"]
-        fn to_utf8c_string(self: &ExtendedString, theCString: Pin<&mut Standard_PCharacter>)
-            -> i32;
-        #[doc = "Returns expected CString length in UTF8 coding. It can be used for  memory  calculation  before converting to CString containing symbols in UTF8 coding."]
-        #[cxx_name = "LengthOfCString"]
-        fn length_of_c_string(self: &ExtendedString) -> i32;
-        #[doc = "Appends <other> to me."]
-        #[cxx_name = "TCollection_ExtendedString_Cat"]
-        fn ExtendedString_cat(
-            self_: &ExtendedString,
-            other: &ExtendedString,
-        ) -> UniquePtr<ExtendedString>;
-        #[doc = "Splits this extended string into two sub-strings at position where. -   The second sub-string (from position where + 1 of this string to the end) is returned in a new extended string. -   this extended string is modified: its last characters are removed, it becomes equal to the first sub-string (from the first character to position where). Example: aString contains \"abcdefg\" aString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
-        #[cxx_name = "TCollection_ExtendedString_Split"]
-        fn ExtendedString_split(
-            self_: Pin<&mut ExtendedString>,
-            where_: i32,
-        ) -> UniquePtr<ExtendedString>;
-        #[doc = "Returns pointer to ExtString"]
-        #[cxx_name = "TCollection_ExtendedString_ToExtString"]
-        fn ExtendedString_to_ext_string(self_: &ExtendedString) -> UniquePtr<Standard_ExtString>;
-        #[doc = "Returns character at position <where> in <me>. If <where> is less than zero or greater than the length of <me>, an exception is raised. Example: aString contains \"Hello\" aString.Value(2) returns 'e' Exceptions Standard_OutOfRange if where lies outside the bounds of this extended string."]
-        #[cxx_name = "TCollection_ExtendedString_Value"]
-        fn ExtendedString_value(
-            self_: &ExtendedString,
-            where_: i32,
-        ) -> UniquePtr<Standard_ExtCharacter>;
-        #[doc = "Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==."]
-        #[cxx_name = "TCollection_ExtendedString_IsEqual_extendedstring2"]
-        fn ExtendedString_is_equal_extendedstring2(
-            theString1: &ExtendedString,
-            theString2: &ExtendedString,
-        ) -> bool;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Standard_Character"]
+        type Standard_Character;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Standard_ExtCharacter"]
+        type Standard_ExtCharacter;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Standard_ExtString"]
+        type Standard_ExtString;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Standard_PCharacter"]
+        type Standard_PCharacter;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Standard_Utf16Char"]
+        type Standard_Utf16Char;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTCollectionHAsciiString"]
+        type HandleTCollectionHAsciiString;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTCollectionHExtendedString"]
+        type HandleTCollectionHExtendedString;
     }
     impl UniquePtr<AsciiString> {}
+    impl UniquePtr<ExtendedString> {}
     impl UniquePtr<HAsciiString> {}
     impl UniquePtr<HExtendedString> {}
-    impl UniquePtr<ExtendedString> {}
-}
-pub use ffi::AsciiString;
-impl AsciiString {
-    #[doc = "Initializes a AsciiString to an empty AsciiString."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::AsciiString_ctor()
-    }
-
-    #[doc = "Initializes a AsciiString with a CString."]
-    pub fn new_charptr(message: &str) -> cxx::UniquePtr<Self> {
-        ffi::AsciiString_ctor_charptr(message)
-    }
-
-    #[doc = "Initializes a AsciiString with a CString."]
-    pub fn new_charptr_int(message: &str, aLen: i32) -> cxx::UniquePtr<Self> {
-        ffi::AsciiString_ctor_charptr_int(message, aLen)
-    }
-
-    #[doc = "Initializes an AsciiString with an integer value"]
-    pub fn new_int(value: i32) -> cxx::UniquePtr<Self> {
-        ffi::AsciiString_ctor_int(value)
-    }
-
-    #[doc = "Initializes an AsciiString with a real value"]
-    pub fn new_real(value: f64) -> cxx::UniquePtr<Self> {
-        ffi::AsciiString_ctor_real(value)
-    }
-
-    #[doc = "Initializes a AsciiString with another AsciiString."]
-    pub fn new_asciistring(astring: &ffi::AsciiString) -> cxx::UniquePtr<Self> {
-        ffi::AsciiString_ctor_asciistring(astring)
-    }
-
-    #[doc = "Initializes a AsciiString with copy of another AsciiString concatenated with the message string."]
-    pub fn new_asciistring_charptr(
-        astring: &ffi::AsciiString,
-        message: &str,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::AsciiString_ctor_asciistring_charptr(astring, message)
-    }
-
-    #[doc = "Initializes a AsciiString with copy of another AsciiString concatenated with the message string."]
-    pub fn new_asciistring2(
-        astring: &ffi::AsciiString,
-        message: &ffi::AsciiString,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::AsciiString_ctor_asciistring2(astring, message)
-    }
-
-    #[doc = "Appends <other>  to me. This is an unary operator. ex: aString += \"Dummy\" To catenate more than one CString, you must put a AsciiString before. Example: aString += \"Hello \" + \"Dolly\"  IS NOT VALID ! But astring += anotherString + \"Hello \" + \"Dolly\" is valid."]
-    pub fn assign_cat_charptr(self: std::pin::Pin<&mut Self>, other: &str) -> () {
-        ffi::AsciiString_assign_cat_charptr(self, other)
-    }
-
-    #[doc = "Appends <other>  to me. Syntax: aString = aString + 15; Example: aString contains \"I say \" gives \"I say 15\" To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too."]
-    pub fn cat_int(&self, other: i32) -> cxx::UniquePtr<ffi::AsciiString> {
-        ffi::AsciiString_cat_int(self, other)
-    }
-
-    #[doc = "Appends <other>  to me. Syntax: aString = aString + 15.15; Example: aString contains \"I say \" gives \"I say 15.15\" To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too."]
-    pub fn cat_real(&self, other: f64) -> cxx::UniquePtr<ffi::AsciiString> {
-        ffi::AsciiString_cat_real(self, other)
-    }
-
-    #[doc = "Appends <other>  to me. Syntax: aString = aString + \"Dummy\" Example: aString contains \"I say \" aString = aString + \"Hello \" + \"Dolly\" gives \"I say Hello Dolly\" To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too."]
-    pub fn cat_charptr(&self, other: &str) -> cxx::UniquePtr<ffi::AsciiString> {
-        ffi::AsciiString_cat_charptr(self, other)
-    }
-
-    #[doc = "Appends <other> to me. Example: aString = aString + anotherString"]
-    pub fn cat_asciistring(&self, other: &ffi::AsciiString) -> cxx::UniquePtr<ffi::AsciiString> {
-        ffi::AsciiString_cat_asciistring(self, other)
-    }
-
-    #[doc = "Copy <fromwhere> to <me>. Used as operator = Example: aString = anotherCString;"]
-    pub fn copy_charptr(self: std::pin::Pin<&mut Self>, fromwhere: &str) -> () {
-        ffi::AsciiString_copy_charptr(self, fromwhere)
-    }
-
-    #[doc = "Inserts a CString at position <where>. Example: aString contains \"O more\" aString.Insert(2,\"nce\");  gives \"Once more\""]
-    pub fn insert_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) -> () {
-        ffi::AsciiString_insert_int_charptr(self, where_, what)
-    }
-
-    #[doc = "Returns true if the characters in this ASCII string are identical to the characters in ASCII string other. Note that this method is an alias of operator ==."]
-    pub fn is_equal_charptr(&self, other: &str) -> bool {
-        ffi::AsciiString_is_equal_charptr(self, other)
-    }
-
-    #[doc = "Returns true if there are differences between the characters in this ASCII string and ASCII string other. Note that this method is an alias of operator !="]
-    pub fn is_different_charptr(&self, other: &str) -> bool {
-        ffi::AsciiString_is_different_charptr(self, other)
-    }
-
-    #[doc = "Returns TRUE if <me> is 'ASCII' less than <other>."]
-    pub fn is_less_charptr(&self, other: &str) -> bool {
-        ffi::AsciiString_is_less_charptr(self, other)
-    }
-
-    #[doc = "Returns TRUE if <me> is 'ASCII' greater than <other>."]
-    pub fn is_greater_charptr(&self, other: &str) -> bool {
-        ffi::AsciiString_is_greater_charptr(self, other)
-    }
-
-    #[doc = "Searches a CString in <me> from the beginning and returns position of first item <what> matching. it returns -1 if not found. Example: aString contains \"Sample single test\" aString.Search(\"le\") returns 5"]
-    pub fn search_charptr(&self, what: &str) -> i32 {
-        ffi::AsciiString_search_charptr(self, what)
-    }
-
-    #[doc = "Searches a CString in a AsciiString from the end and returns position of first item <what> matching. It returns -1 if not found. Example: aString contains \"Sample single test\" aString.SearchFromEnd(\"le\") returns 12"]
-    pub fn search_from_end_charptr(&self, what: &str) -> i32 {
-        ffi::AsciiString_search_from_end_charptr(self, what)
-    }
-
-    #[doc = "Replaces a part of <me> by a CString. If <where> is less than zero or greater than the length of <me> an exception is raised. Example: aString contains \"abcde\" aString.SetValue(4,\"1234567\") gives <me> = \"abc1234567\""]
-    pub fn set_value_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) -> () {
-        ffi::AsciiString_set_value_int_charptr(self, where_, what)
-    }
-
-    #[doc = "Splits a AsciiString into two sub-strings. Example: aString contains \"abcdefg\" aString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
-    pub fn split(self: std::pin::Pin<&mut Self>, where_: i32) -> cxx::UniquePtr<ffi::AsciiString> {
-        ffi::AsciiString_split(self, where_)
-    }
-
-    #[doc = "Creation of a sub-string of the string <me>. The sub-string starts to the index Fromindex and ends to the index ToIndex. Raises an exception if ToIndex or FromIndex is out of bounds Example: before me = \"abcdefg\", ToIndex=3, FromIndex=6 after me = \"abcdefg\" returns \"cdef\""]
-    pub fn sub_string(&self, FromIndex: i32, ToIndex: i32) -> cxx::UniquePtr<ffi::AsciiString> {
-        ffi::AsciiString_sub_string(self, FromIndex, ToIndex)
-    }
-
-    #[doc = "Returns pointer to AsciiString (char *). This is useful for some casual manipulations. Warning: Because this \"char *\" is 'const', you can't modify its contents."]
-    pub fn to_c_string(&self) -> String {
-        ffi::AsciiString_to_c_string(self)
-    }
-
-    #[doc = "Extracts <whichone> token from <me>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns empty AsciiString. Example: aString contains \"This is a     message\" aString.Token()  returns \"This\" aString.Token(\" \",4) returns \"message\" aString.Token(\" \",2) returns \"is\" aString.Token(\" \",9) returns \"\" Other separators than space character and tabulation are allowed : aString contains \"1234; test:message   , value\" aString.Token(\"; :,\",4) returns \"value\" aString.Token(\"; :,\",2) returns \"test\""]
-    pub fn token(&self, separators: &str, whichone: i32) -> cxx::UniquePtr<ffi::AsciiString> {
-        ffi::AsciiString_token(self, separators, whichone)
-    }
-
-    #[doc = "Returns character at position <where> in <me>. If <where> is less than zero or greater than the length of <me>, an exception is raised. Example: aString contains \"Hello\" aString.Value(2) returns 'e'"]
-    pub fn value(&self, where_: i32) -> cxx::UniquePtr<ffi::Standard_Character> {
-        ffi::AsciiString_value(self, where_)
-    }
-
-    #[doc = "Returns True  when the two  strings are the same. (Just for HashCode for AsciiString)"]
-    pub fn is_equal_asciistring2(string1: &ffi::AsciiString, string2: &ffi::AsciiString) -> bool {
-        ffi::AsciiString_is_equal_asciistring2(string1, string2)
-    }
-
-    #[doc = "Returns True  when the two  strings are the same. (Just for HashCode for AsciiString)"]
-    pub fn is_equal_asciistring_charptr(string1: &ffi::AsciiString, string2: &str) -> bool {
-        ffi::AsciiString_is_equal_asciistring_charptr(string1, string2)
-    }
-
-    #[doc = "Returns True if the strings contain same characters."]
-    pub fn is_same_string(
-        theString1: &ffi::AsciiString,
-        theString2: &ffi::AsciiString,
-        theIsCaseSensitive: bool,
-    ) -> bool {
-        ffi::AsciiString_is_same_string(theString1, theString2, theIsCaseSensitive)
-    }
-}
-pub use ffi::HAsciiString;
-impl HAsciiString {
-    #[doc = "Initializes a HAsciiString to an empty AsciiString."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::HAsciiString_ctor()
-    }
-
-    #[doc = "Initializes a HAsciiString with a CString."]
-    pub fn new_charptr(message: &str) -> cxx::UniquePtr<Self> {
-        ffi::HAsciiString_ctor_charptr(message)
-    }
-
-    #[doc = "Initializes a HAsciiString with an integer value"]
-    pub fn new_int(value: i32) -> cxx::UniquePtr<Self> {
-        ffi::HAsciiString_ctor_int(value)
-    }
-
-    #[doc = "Initializes a HAsciiString with a real value"]
-    pub fn new_real(value: f64) -> cxx::UniquePtr<Self> {
-        ffi::HAsciiString_ctor_real(value)
-    }
-
-    #[doc = "Initializes a HAsciiString with a AsciiString."]
-    pub fn new_asciistring(aString: &ffi::AsciiString) -> cxx::UniquePtr<Self> {
-        ffi::HAsciiString_ctor_asciistring(aString)
-    }
-
-    #[doc = "Initializes a HAsciiString with a HAsciiString."]
-    pub fn new_handlehasciistring(
-        aString: &ffi::HandleTCollectionHAsciiString,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::HAsciiString_ctor_handlehasciistring(aString)
-    }
-
-    #[doc = "Wrap TCollection_HAsciiString in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<ffi::HandleTCollectionHAsciiString> {
-        ffi::HAsciiString_to_handle(obj)
-    }
-
-    #[doc = "Appends <other>  to me."]
-    pub fn assign_cat_charptr(self: std::pin::Pin<&mut Self>, other: &str) -> () {
-        ffi::HAsciiString_assign_cat_charptr(self, other)
-    }
-
-    #[doc = "Creates a new string by concatenation of this ASCII string and the other ASCII string. Example: aString = aString + anotherString aString = aString + \"Dummy\" aString contains \"I say \" aString = aString + \"Hello \" + \"Dolly\" gives \"I say Hello Dolly\" Warning: To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = \"Hello \" + \"Dolly\"  THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too."]
-    pub fn cat_charptr(&self, other: &str) -> cxx::UniquePtr<ffi::HandleTCollectionHAsciiString> {
-        ffi::HAsciiString_cat_charptr(self, other)
-    }
-
-    #[doc = "Creates a new string by concatenation of this ASCII string and the other ASCII string. Example:  aString = aString + anotherString"]
-    pub fn cat_handlehasciistring(
-        &self,
-        other: &ffi::HandleTCollectionHAsciiString,
-    ) -> cxx::UniquePtr<ffi::HandleTCollectionHAsciiString> {
-        ffi::HAsciiString_cat_handlehasciistring(self, other)
-    }
-
-    #[doc = "Insert a HAsciiString at position <where>."]
-    pub fn insert_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) -> () {
-        ffi::HAsciiString_insert_int_charptr(self, where_, what)
-    }
-
-    #[doc = "Searches a CString in <me> from the beginning and returns position of first item <what> matching. It returns -1 if not found. Example: aString contains \"Sample single test\" aString.Search(\"le\") returns 5"]
-    pub fn search_charptr(&self, what: &str) -> i32 {
-        ffi::HAsciiString_search_charptr(self, what)
-    }
-
-    #[doc = "Searches a CString in a String from the end and returns position of first item <what> matching. It returns -1 if not found. Example: aString contains \"Sample single test\" aString.SearchFromEnd(\"le\") returns 12"]
-    pub fn search_from_end_charptr(&self, what: &str) -> i32 {
-        ffi::HAsciiString_search_from_end_charptr(self, what)
-    }
-
-    #[doc = "Replaces a part of <me> in the string at position <where>. If <where> is less than zero or greater than the length of <me> an exception is raised. Example: aString contains \"Garbake\" astring.Replace(6,'g')  gives <me> = \"Garbage\""]
-    pub fn set_value_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) -> () {
-        ffi::HAsciiString_set_value_int_charptr(self, where_, what)
-    }
-
-    #[doc = "Splits a HAsciiString into two sub-strings. Example: aString contains \"abcdefg\" aString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
-    pub fn split(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-    ) -> cxx::UniquePtr<ffi::HandleTCollectionHAsciiString> {
-        ffi::HAsciiString_split(self, where_)
-    }
-
-    #[doc = "Creation of a sub-string of the string <me>. The sub-string starts to the index Fromindex and ends to the index ToIndex. Raises an exception if ToIndex or FromIndex is out of bounds Example: before me = \"abcdefg\", ToIndex=3, FromIndex=6 after me = \"abcdefg\" returns \"cdef\""]
-    pub fn sub_string(
-        &self,
-        FromIndex: i32,
-        ToIndex: i32,
-    ) -> cxx::UniquePtr<ffi::HandleTCollectionHAsciiString> {
-        ffi::HAsciiString_sub_string(self, FromIndex, ToIndex)
-    }
-
-    #[doc = "Returns pointer to string (char *) This is useful for some casual manipulations Because this \"char *\" is 'const', you can't modify its contents."]
-    pub fn to_c_string(&self) -> String {
-        ffi::HAsciiString_to_c_string(self)
-    }
-
-    #[doc = "Extracts <whichone> token from <me>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns an empty String. Example: aString contains \"This is a     message\" aString.Token()  returns \"This\" aString.Token(\" \",4) returns \"message\" aString.Token(\" \",2) returns \"is\" aString.Token(\" \",9) returns \"\" Other separators than space character and tabulation are allowed aString contains \"1234; test:message   , value\" aString.Token(\"; :,\",4) returns \"value\" aString.Token(\"; :,\",2) returns \"test\""]
-    pub fn token(
-        &self,
-        separators: &str,
-        whichone: i32,
-    ) -> cxx::UniquePtr<ffi::HandleTCollectionHAsciiString> {
-        ffi::HAsciiString_token(self, separators, whichone)
-    }
-
-    #[doc = "Returns character at position <where> in <me>. If <where> is less than zero or greater than the length of <me>, an exception is raised. Example: aString contains \"Hello\" aString.Value(2) returns 'e'"]
-    pub fn value(&self, where_: i32) -> cxx::UniquePtr<ffi::Standard_Character> {
-        ffi::HAsciiString_value(self, where_)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::HAsciiString_get_type_name()
-    }
-}
-pub use ffi::HExtendedString;
-impl HExtendedString {
-    #[doc = "Initializes a HExtendedString to an empty ExtendedString."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::HExtendedString_ctor()
-    }
-
-    #[doc = "Initializes a HExtendedString with a CString."]
-    pub fn new_charptr(message: &str) -> cxx::UniquePtr<Self> {
-        ffi::HExtendedString_ctor_charptr(message)
-    }
-
-    #[doc = "Initializes a HExtendedString with a ExtendedString."]
-    pub fn new_extendedstring(aString: &ffi::ExtendedString) -> cxx::UniquePtr<Self> {
-        ffi::HExtendedString_ctor_extendedstring(aString)
-    }
-
-    #[doc = "Initializes a HExtendedString with an HAsciiString."]
-    pub fn new_handlehasciistring(
-        aString: &ffi::HandleTCollectionHAsciiString,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::HExtendedString_ctor_handlehasciistring(aString)
-    }
-
-    #[doc = "Initializes a HExtendedString with a HExtendedString."]
-    pub fn new_handlehextendedstring(
-        aString: &ffi::HandleTCollectionHExtendedString,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::HExtendedString_ctor_handlehextendedstring(aString)
-    }
-
-    #[doc = "Wrap TCollection_HExtendedString in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<ffi::HandleTCollectionHExtendedString> {
-        ffi::HExtendedString_to_handle(obj)
-    }
-
-    #[doc = "Returns a string appending <other>  to me."]
-    pub fn cat(
-        &self,
-        other: &ffi::HandleTCollectionHExtendedString,
-    ) -> cxx::UniquePtr<ffi::HandleTCollectionHExtendedString> {
-        ffi::HExtendedString_cat(self, other)
-    }
-
-    #[doc = "Splits a ExtendedString into two sub-strings. Example: aString contains \"abcdefg\" aString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
-    pub fn split(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-    ) -> cxx::UniquePtr<ffi::HandleTCollectionHExtendedString> {
-        ffi::HExtendedString_split(self, where_)
-    }
-
-    #[doc = "Returns pointer to ExtString"]
-    pub fn to_ext_string(&self) -> cxx::UniquePtr<ffi::Standard_ExtString> {
-        ffi::HExtendedString_to_ext_string(self)
-    }
-
-    #[doc = "Returns ExtCharacter at position <where> in <me>. If <where> is less than zero or greater than the length of <me>, an exception is raised. Example: aString contains \"Hello\" aString.Value(2) returns 'e'"]
-    pub fn value(&self, where_: i32) -> cxx::UniquePtr<ffi::Standard_ExtCharacter> {
-        ffi::HExtendedString_value(self, where_)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::HExtendedString_get_type_name()
-    }
-}
-pub use ffi::ExtendedString;
-impl ExtendedString {
-    #[doc = "Initializes a ExtendedString to an empty ExtendedString."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::ExtendedString_ctor()
-    }
-
-    #[doc = "Creation by converting a CString to an extended string.  If <isMultiByte> is true then the string is treated as having UTF-8 coding.  If it is not a UTF-8 then <isMultiByte> is ignored and each character is copied to ExtCharacter."]
-    pub fn new_charptr_bool(astring: &str, isMultiByte: bool) -> cxx::UniquePtr<Self> {
-        ffi::ExtendedString_ctor_charptr_bool(astring, isMultiByte)
-    }
-
-    #[doc = "Initializes an ExtendedString with an integer value"]
-    pub fn new_int(value: i32) -> cxx::UniquePtr<Self> {
-        ffi::ExtendedString_ctor_int(value)
-    }
-
-    #[doc = "Initializes an ExtendedString with a real value"]
-    pub fn new_real(value: f64) -> cxx::UniquePtr<Self> {
-        ffi::ExtendedString_ctor_real(value)
-    }
-
-    #[doc = "Initializes a ExtendedString with another ExtendedString."]
-    pub fn new_extendedstring(astring: &ffi::ExtendedString) -> cxx::UniquePtr<Self> {
-        ffi::ExtendedString_ctor_extendedstring(astring)
-    }
-
-    #[doc = "Creation by converting an Ascii string to an extended string. The string is treated as having UTF-8 coding. If it is not a UTF-8 or multi byte then each character is copied to ExtCharacter."]
-    pub fn new_asciistring_bool(
-        astring: &ffi::AsciiString,
-        isMultiByte: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::ExtendedString_ctor_asciistring_bool(astring, isMultiByte)
-    }
-
-    #[doc = "Appends <other> to me."]
-    pub fn cat(&self, other: &ffi::ExtendedString) -> cxx::UniquePtr<ffi::ExtendedString> {
-        ffi::ExtendedString_cat(self, other)
-    }
-
-    #[doc = "Splits this extended string into two sub-strings at position where. -   The second sub-string (from position where + 1 of this string to the end) is returned in a new extended string. -   this extended string is modified: its last characters are removed, it becomes equal to the first sub-string (from the first character to position where). Example: aString contains \"abcdefg\" aString.Split(3) gives <me> = \"abc\" and returns \"defg\""]
-    pub fn split(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-    ) -> cxx::UniquePtr<ffi::ExtendedString> {
-        ffi::ExtendedString_split(self, where_)
-    }
-
-    #[doc = "Returns pointer to ExtString"]
-    pub fn to_ext_string(&self) -> cxx::UniquePtr<ffi::Standard_ExtString> {
-        ffi::ExtendedString_to_ext_string(self)
-    }
-
-    #[doc = "Returns character at position <where> in <me>. If <where> is less than zero or greater than the length of <me>, an exception is raised. Example: aString contains \"Hello\" aString.Value(2) returns 'e' Exceptions Standard_OutOfRange if where lies outside the bounds of this extended string."]
-    pub fn value(&self, where_: i32) -> cxx::UniquePtr<ffi::Standard_ExtCharacter> {
-        ffi::ExtendedString_value(self, where_)
-    }
-
-    #[doc = "Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==."]
-    pub fn is_equal_extendedstring2(
-        theString1: &ffi::ExtendedString,
-        theString2: &ffi::ExtendedString,
-    ) -> bool {
-        ffi::ExtendedString_is_equal_extendedstring2(theString1, theString2)
-    }
 }

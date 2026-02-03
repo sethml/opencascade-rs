@@ -17,84 +17,461 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Revol;
+impl Revol {
+    #[doc = "Builds the Revol of meridian S axis A  and angle D. If C is true S is copied."]
+    pub fn new_shape_ax1_real_bool(
+        S: &ffi::TopoDS_Shape,
+        A: &ffi::gp_Ax1,
+        D: f64,
+        C: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Revol_ctor_shape_ax1_real_bool(S, A, D, C)
+    }
+
+    #[doc = "Builds the Revol of meridian S  axis A and angle 2*Pi. If C is true S is copied."]
+    pub fn new_shape_ax1_bool(
+        S: &ffi::TopoDS_Shape,
+        A: &ffi::gp_Ax1,
+        C: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Revol_ctor_shape_ax1_bool(S, A, C)
+    }
+
+    #[doc = "Returns the TopoDS Shape attached to the Revol."]
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Revol_shape(self)
+    }
+
+    #[doc = "Returns    the  TopoDS  Shape   generated  with  aGenS (subShape  of the generating shape)."]
+    pub fn shape_shape(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Revol_shape_shape(self, aGenS)
+    }
+
+    #[doc = "Returns the first shape of the revol  (coinciding with the generating shape)."]
+    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Revol_first_shape(self)
+    }
+
+    #[doc = "Returns the first shape of the revol  (coinciding with the generating shape)."]
+    pub fn first_shape_shape(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Revol_first_shape_shape(self, aGenS)
+    }
+
+    #[doc = "Returns the TopoDS Shape of the top of the prism."]
+    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Revol_last_shape(self)
+    }
+
+    #[doc = "Returns the  TopoDS  Shape of the top  of  the  prism. generated  with  aGenS  (subShape  of  the  generating shape)."]
+    pub fn last_shape_shape(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Revol_last_shape_shape(self, aGenS)
+    }
+
+    #[doc = "returns the axis"]
+    pub fn axe(&self) -> cxx::UniquePtr<ffi::gp_Ax1> {
+        ffi::Revol_axe(self)
+    }
+}
+pub use ffi::Rotation;
+impl Rotation {
+    #[doc = "Creates a topology  by rotating <S>  around A with the angle D."]
+    pub fn new_shape_numshape_location_ax1_real_bool(
+        S: &ffi::TopoDS_Shape,
+        N: &ffi::Sweep_NumShape,
+        L: &ffi::TopLoc_Location,
+        A: &ffi::gp_Ax1,
+        D: f64,
+        C: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Rotation_ctor_shape_numshape_location_ax1_real_bool(S, N, L, A, D, C)
+    }
+
+    #[doc = "Upcast to BRepSweep_NumLinearRegularSweep"]
+    pub fn as_num_linear_regular_sweep(&self) -> &NumLinearRegularSweep {
+        ffi::rotation_as_num_linear_regular_sweep(self)
+    }
+
+    #[doc = "Upcast to BRepSweep_NumLinearRegularSweep (mutable)"]
+    pub fn as_num_linear_regular_sweep_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut NumLinearRegularSweep> {
+        ffi::rotation_as_num_linear_regular_sweep_mut(self)
+    }
+
+    #[doc = "Upcast to BRepSweep_Trsf"]
+    pub fn as_trsf(&self) -> &Trsf {
+        ffi::rotation_as_trsf(self)
+    }
+
+    #[doc = "Upcast to BRepSweep_Trsf (mutable)"]
+    pub fn as_trsf_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Trsf> {
+        ffi::rotation_as_trsf_mut(self)
+    }
+
+    #[doc = "Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but without subcomponents."]
+    pub fn make_empty_vertex(
+        self: std::pin::Pin<&mut Self>,
+        aGenV: &ffi::TopoDS_Shape,
+        aDirV: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Rotation_make_empty_vertex(self, aGenV, aDirV)
+    }
+
+    #[doc = "Builds the edge addressed by [aGenV,aDirE], with its geometric part, but without subcomponents."]
+    pub fn make_empty_directing_edge(
+        self: std::pin::Pin<&mut Self>,
+        aGenV: &ffi::TopoDS_Shape,
+        aDirE: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Rotation_make_empty_directing_edge(self, aGenV, aDirE)
+    }
+
+    #[doc = "Builds the edge addressed by [aGenE,aDirV], with its geometric part, but without subcomponents."]
+    pub fn make_empty_generating_edge(
+        self: std::pin::Pin<&mut Self>,
+        aGenE: &ffi::TopoDS_Shape,
+        aDirV: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Rotation_make_empty_generating_edge(self, aGenE, aDirV)
+    }
+
+    #[doc = "Builds the face  addressed by [aGenS,aDirS],  with its geometric part, but without subcomponents. The couple aGenS, aDirS can be  a \"generating face and a  directing vertex\" or  \"a generating  edge and a directing edge\"."]
+    pub fn make_empty_face(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &ffi::TopoDS_Shape,
+        aDirS: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Rotation_make_empty_face(self, aGenS, aDirS)
+    }
+
+    #[doc = "In  some  particular  cases  the   topology  of  a generated  Shell must be  composed  of  independent closed Shells,  in this case  this function returns a Compound of independent Shells."]
+    pub fn split_shell(&self, aNewShape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Rotation_split_shell(self, aNewShape)
+    }
+
+    #[doc = "returns the axis"]
+    pub fn axe(&self) -> cxx::UniquePtr<ffi::gp_Ax1> {
+        ffi::Rotation_axe(self)
+    }
+}
+pub use ffi::Trsf;
+impl Trsf {
+    #[doc = "Upcast to BRepSweep_NumLinearRegularSweep"]
+    pub fn as_num_linear_regular_sweep(&self) -> &NumLinearRegularSweep {
+        ffi::trsf_as_num_linear_regular_sweep(self)
+    }
+
+    #[doc = "Upcast to BRepSweep_NumLinearRegularSweep (mutable)"]
+    pub fn as_num_linear_regular_sweep_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut NumLinearRegularSweep> {
+        ffi::trsf_as_num_linear_regular_sweep_mut(self)
+    }
+
+    #[doc = "Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but without subcomponents."]
+    pub fn make_empty_vertex(
+        self: std::pin::Pin<&mut Self>,
+        aGenV: &ffi::TopoDS_Shape,
+        aDirV: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Trsf_make_empty_vertex(self, aGenV, aDirV)
+    }
+
+    #[doc = "Builds the edge addressed by [aGenV,aDirE], with its geometric part, but without subcomponents."]
+    pub fn make_empty_directing_edge(
+        self: std::pin::Pin<&mut Self>,
+        aGenV: &ffi::TopoDS_Shape,
+        aDirE: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Trsf_make_empty_directing_edge(self, aGenV, aDirE)
+    }
+
+    #[doc = "Builds the edge addressed by [aGenE,aDirV], with its geometric part, but without subcomponents."]
+    pub fn make_empty_generating_edge(
+        self: std::pin::Pin<&mut Self>,
+        aGenE: &ffi::TopoDS_Shape,
+        aDirV: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Trsf_make_empty_generating_edge(self, aGenE, aDirV)
+    }
+
+    #[doc = "Builds  the face addressed  by [aGenS,aDirS], with its geometric part, but without subcomponents. The couple aGenS, aDirS can be  a \"generating face and a  directing vertex\" or \"a   generating edge and a directing  edge\"."]
+    pub fn make_empty_face(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &ffi::TopoDS_Shape,
+        aDirS: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Trsf_make_empty_face(self, aGenS, aDirS)
+    }
+}
+pub use ffi::NumLinearRegularSweep;
+impl NumLinearRegularSweep {
+    #[doc = "Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but without subcomponents."]
+    pub fn make_empty_vertex(
+        self: std::pin::Pin<&mut Self>,
+        aGenV: &ffi::TopoDS_Shape,
+        aDirV: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::NumLinearRegularSweep_make_empty_vertex(self, aGenV, aDirV)
+    }
+
+    #[doc = "Builds the edge addressed by [aGenV,aDirE], with its geometric part, but without subcomponents."]
+    pub fn make_empty_directing_edge(
+        self: std::pin::Pin<&mut Self>,
+        aGenV: &ffi::TopoDS_Shape,
+        aDirE: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::NumLinearRegularSweep_make_empty_directing_edge(self, aGenV, aDirE)
+    }
+
+    #[doc = "Builds the edge addressed by [aGenE,aDirV], with its geometric part, but without subcomponents."]
+    pub fn make_empty_generating_edge(
+        self: std::pin::Pin<&mut Self>,
+        aGenE: &ffi::TopoDS_Shape,
+        aDirV: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::NumLinearRegularSweep_make_empty_generating_edge(self, aGenE, aDirV)
+    }
+
+    #[doc = "Builds the face  addressed by  [aGenS,aDirS], with its geometric part, but without subcomponents. The couple aGenS, aDirS  can be a \"generating face and a directing vertex\"   or \"a generating  edge and a directing  edge\"."]
+    pub fn make_empty_face(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &ffi::TopoDS_Shape,
+        aDirS: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::NumLinearRegularSweep_make_empty_face(self, aGenS, aDirS)
+    }
+
+    #[doc = "In  some  particular  cases  the   topology  of  a generated  Shell must be  composed  of  independent closed Shells,  in this case  this function returns a Compound of independent Shells."]
+    pub fn split_shell(&self, aNewShape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::NumLinearRegularSweep_split_shell(self, aNewShape)
+    }
+
+    #[doc = "Returns the resulting  Shape indexed by aDirS  and aGenS."]
+    pub fn shape_shape_numshape(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &ffi::TopoDS_Shape,
+        aDirS: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::NumLinearRegularSweep_shape_shape_numshape(self, aGenS, aDirS)
+    }
+
+    #[doc = "Returns  the resulting Shape  indexed by myDirWire and aGenS."]
+    pub fn shape_shape(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::NumLinearRegularSweep_shape_shape(self, aGenS)
+    }
+
+    #[doc = "Returns the resulting  Shape indexed by  myDirWire and myGenShape."]
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::NumLinearRegularSweep_shape(self)
+    }
+
+    #[doc = "Returns the resulting Shape  indexed by the  first Vertex  of myDirWire and myGenShape."]
+    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::NumLinearRegularSweep_first_shape(self)
+    }
+
+    #[doc = "Returns the  resulting Shape  indexed by the  last Vertex of myDirWire and myGenShape."]
+    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::NumLinearRegularSweep_last_shape(self)
+    }
+
+    #[doc = "Returns the resulting Shape  indexed by the  first Vertex  of myDirWire and aGenS."]
+    pub fn first_shape_shape(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::NumLinearRegularSweep_first_shape_shape(self, aGenS)
+    }
+
+    #[doc = "Returns the  resulting Shape  indexed by the  last Vertex of myDirWire and aGenS."]
+    pub fn last_shape_shape(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::NumLinearRegularSweep_last_shape_shape(self, aGenS)
+    }
+}
+pub use ffi::Builder;
+impl Builder {
+    #[doc = "Creates a Builder."]
+    pub fn new_builder(aBuilder: &ffi::BRep_Builder) -> cxx::UniquePtr<Self> {
+        ffi::Builder_ctor_builder(aBuilder)
+    }
+}
+pub use ffi::Tool;
+impl Tool {
+    #[doc = "Initialize the tool  with <aShape>.  The IndexTool must prepare an indexation for  all  the subshapes of this shape."]
+    pub fn new_shape(aShape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
+        ffi::Tool_ctor_shape(aShape)
+    }
+
+    #[doc = "Returns the Shape at Index anIdex."]
+    pub fn shape(&self, anIndex: i32) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Tool_shape(self, anIndex)
+    }
+}
+pub use ffi::Prism;
+impl Prism {
+    #[doc = "Builds the prism of base S and vector V. If C is true, S is copied. If Canonize is true then generated surfaces are attempted to be canonized in simple types"]
+    pub fn new_shape_vec_bool2(
+        S: &ffi::TopoDS_Shape,
+        V: &ffi::gp_Vec,
+        Copy: bool,
+        Canonize: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Prism_ctor_shape_vec_bool2(S, V, Copy, Canonize)
+    }
+
+    #[doc = "Builds a semi-infinite or an infinite prism of base S. If Copy is true S is copied.  If Inf is true the prism is infinite, if Inf is false the  prism is infinite in the direction D. If Canonize is true then generated surfaces are attempted to be canonized in simple types"]
+    pub fn new_shape_dir_bool3(
+        S: &ffi::TopoDS_Shape,
+        D: &ffi::gp_Dir,
+        Inf: bool,
+        Copy: bool,
+        Canonize: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Prism_ctor_shape_dir_bool3(S, D, Inf, Copy, Canonize)
+    }
+
+    #[doc = "Returns the TopoDS Shape attached to the prism."]
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Prism_shape(self)
+    }
+
+    #[doc = "Returns    the  TopoDS  Shape   generated  with  aGenS (subShape  of the generating shape)."]
+    pub fn shape_shape(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Prism_shape_shape(self, aGenS)
+    }
+
+    #[doc = "Returns the  TopoDS  Shape of the bottom of the prism."]
+    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Prism_first_shape(self)
+    }
+
+    #[doc = "Returns the TopoDS Shape of the bottom  of the  prism. generated  with  aGenS  (subShape  of  the  generating shape)."]
+    pub fn first_shape_shape(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Prism_first_shape_shape(self, aGenS)
+    }
+
+    #[doc = "Returns the TopoDS Shape of the top of the prism."]
+    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Prism_last_shape(self)
+    }
+
+    #[doc = "Returns the  TopoDS  Shape of the top  of  the  prism. generated  with  aGenS  (subShape  of  the  generating shape)."]
+    pub fn last_shape_shape(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Prism_last_shape_shape(self, aGenS)
+    }
+
+    #[doc = "Returns the Vector of the Prism,  if it is an infinite prism the Vec is unitar."]
+    pub fn vec(&self) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::Prism_vec(self)
+    }
+}
+pub use ffi::Translation;
+impl Translation {
+    #[doc = "Creates  a  topology by  translating <S>  with the vector  <V>. If  C  is   true S Sucomponents   are copied. If Canonize is true then generated surfaces are attempted to be canonized in simple types"]
+    pub fn new_shape_numshape_location_vec_bool2(
+        S: &ffi::TopoDS_Shape,
+        N: &ffi::Sweep_NumShape,
+        L: &ffi::TopLoc_Location,
+        V: &ffi::gp_Vec,
+        C: bool,
+        Canonize: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Translation_ctor_shape_numshape_location_vec_bool2(S, N, L, V, C, Canonize)
+    }
+
+    #[doc = "Upcast to BRepSweep_NumLinearRegularSweep"]
+    pub fn as_num_linear_regular_sweep(&self) -> &NumLinearRegularSweep {
+        ffi::translation_as_num_linear_regular_sweep(self)
+    }
+
+    #[doc = "Upcast to BRepSweep_NumLinearRegularSweep (mutable)"]
+    pub fn as_num_linear_regular_sweep_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut NumLinearRegularSweep> {
+        ffi::translation_as_num_linear_regular_sweep_mut(self)
+    }
+
+    #[doc = "Upcast to BRepSweep_Trsf"]
+    pub fn as_trsf(&self) -> &Trsf {
+        ffi::translation_as_trsf(self)
+    }
+
+    #[doc = "Upcast to BRepSweep_Trsf (mutable)"]
+    pub fn as_trsf_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Trsf> {
+        ffi::translation_as_trsf_mut(self)
+    }
+
+    #[doc = "Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but without subcomponents."]
+    pub fn make_empty_vertex(
+        self: std::pin::Pin<&mut Self>,
+        aGenV: &ffi::TopoDS_Shape,
+        aDirV: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Translation_make_empty_vertex(self, aGenV, aDirV)
+    }
+
+    #[doc = "Builds the edge addressed by [aGenV,aDirE], with its geometric part, but without subcomponents."]
+    pub fn make_empty_directing_edge(
+        self: std::pin::Pin<&mut Self>,
+        aGenV: &ffi::TopoDS_Shape,
+        aDirE: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Translation_make_empty_directing_edge(self, aGenV, aDirE)
+    }
+
+    #[doc = "Builds the edge addressed by [aGenE,aDirV], with its geometric part, but without subcomponents."]
+    pub fn make_empty_generating_edge(
+        self: std::pin::Pin<&mut Self>,
+        aGenE: &ffi::TopoDS_Shape,
+        aDirV: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Translation_make_empty_generating_edge(self, aGenE, aDirV)
+    }
+
+    #[doc = "Builds the  face addressed  by [aGenS,aDirS], with its geometric part, but without subcomponents. The couple aGenS, aDirS can  be a \"generating face and a  directing  vertex\" or  \"a generating edge and a directing  edge\"."]
+    pub fn make_empty_face(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &ffi::TopoDS_Shape,
+        aDirS: &ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::Translation_make_empty_face(self, aGenS, aDirS)
+    }
+
+    #[doc = "Returns the Vector of the Prism,  if it is an infinite prism the Vec is unitar."]
+    pub fn vec(&self) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::Translation_vec(self)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_sweep.hxx");
-        #[doc = "Builder from b_rep module"]
-        type BRep_Builder = crate::b_rep::ffi::Builder;
-        #[doc = "Tool from b_rep module"]
-        type BRep_Tool = crate::b_rep::ffi::Tool;
-        #[doc = "NumShape from sweep module"]
-        type Sweep_NumShape = crate::sweep::ffi::NumShape;
-        #[doc = "NumShapeTool from sweep module"]
-        type Sweep_NumShapeTool = crate::sweep::ffi::NumShapeTool;
-        #[doc = "TopAbs from top_abs module"]
-        type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "Location from top_loc module"]
-        type TopLoc_Location = crate::top_loc::ffi::Location;
-        #[doc = "SListOfItemLocation from top_loc module"]
-        type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
         #[doc = " ======================== BRepSweep_Revol ========================"]
         #[doc = "/// **Source:** `BRepSweep_Revol.hxx` - `BRepSweep_Revol`"]
         #[doc = ""]
@@ -815,6 +1192,120 @@ pub(crate) mod ffi {
         #[doc = "Upcast BRepSweep_Translation to BRepSweep_Trsf (mutable)"]
         #[cxx_name = "BRepSweep_Translation_as_BRepSweep_Trsf_mut"]
         fn translation_as_trsf_mut(self_: Pin<&mut Translation>) -> Pin<&mut Trsf>;
+        #[doc = "Builder from b_rep module"]
+        type BRep_Builder = crate::b_rep::ffi::Builder;
+        #[doc = "Tool from b_rep module"]
+        type BRep_Tool = crate::b_rep::ffi::Tool;
+        #[doc = "NumShape from sweep module"]
+        type Sweep_NumShape = crate::sweep::ffi::NumShape;
+        #[doc = "NumShapeTool from sweep module"]
+        type Sweep_NumShapeTool = crate::sweep::ffi::NumShapeTool;
+        #[doc = "TopAbs from top_abs module"]
+        type TopAbs = crate::top_abs::ffi::TopAbs;
+        #[doc = "Location from top_loc module"]
+        type TopLoc_Location = crate::top_loc::ffi::Location;
+        #[doc = "SListOfItemLocation from top_loc module"]
+        type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
     }
     impl UniquePtr<Revol> {}
     impl UniquePtr<Rotation> {}
@@ -824,455 +1315,4 @@ pub(crate) mod ffi {
     impl UniquePtr<Tool> {}
     impl UniquePtr<Prism> {}
     impl UniquePtr<Translation> {}
-}
-pub use ffi::Revol;
-impl Revol {
-    #[doc = "Builds the Revol of meridian S axis A  and angle D. If C is true S is copied."]
-    pub fn new_shape_ax1_real_bool(
-        S: &ffi::TopoDS_Shape,
-        A: &ffi::gp_Ax1,
-        D: f64,
-        C: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Revol_ctor_shape_ax1_real_bool(S, A, D, C)
-    }
-
-    #[doc = "Builds the Revol of meridian S  axis A and angle 2*Pi. If C is true S is copied."]
-    pub fn new_shape_ax1_bool(
-        S: &ffi::TopoDS_Shape,
-        A: &ffi::gp_Ax1,
-        C: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Revol_ctor_shape_ax1_bool(S, A, C)
-    }
-
-    #[doc = "Returns the TopoDS Shape attached to the Revol."]
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Revol_shape(self)
-    }
-
-    #[doc = "Returns    the  TopoDS  Shape   generated  with  aGenS (subShape  of the generating shape)."]
-    pub fn shape_shape(
-        self: std::pin::Pin<&mut Self>,
-        aGenS: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Revol_shape_shape(self, aGenS)
-    }
-
-    #[doc = "Returns the first shape of the revol  (coinciding with the generating shape)."]
-    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Revol_first_shape(self)
-    }
-
-    #[doc = "Returns the first shape of the revol  (coinciding with the generating shape)."]
-    pub fn first_shape_shape(
-        self: std::pin::Pin<&mut Self>,
-        aGenS: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Revol_first_shape_shape(self, aGenS)
-    }
-
-    #[doc = "Returns the TopoDS Shape of the top of the prism."]
-    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Revol_last_shape(self)
-    }
-
-    #[doc = "Returns the  TopoDS  Shape of the top  of  the  prism. generated  with  aGenS  (subShape  of  the  generating shape)."]
-    pub fn last_shape_shape(
-        self: std::pin::Pin<&mut Self>,
-        aGenS: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Revol_last_shape_shape(self, aGenS)
-    }
-
-    #[doc = "returns the axis"]
-    pub fn axe(&self) -> cxx::UniquePtr<ffi::gp_Ax1> {
-        ffi::Revol_axe(self)
-    }
-}
-pub use ffi::Rotation;
-impl Rotation {
-    #[doc = "Creates a topology  by rotating <S>  around A with the angle D."]
-    pub fn new_shape_numshape_location_ax1_real_bool(
-        S: &ffi::TopoDS_Shape,
-        N: &ffi::Sweep_NumShape,
-        L: &ffi::TopLoc_Location,
-        A: &ffi::gp_Ax1,
-        D: f64,
-        C: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Rotation_ctor_shape_numshape_location_ax1_real_bool(S, N, L, A, D, C)
-    }
-
-    #[doc = "Upcast to BRepSweep_NumLinearRegularSweep"]
-    pub fn as_num_linear_regular_sweep(&self) -> &NumLinearRegularSweep {
-        ffi::rotation_as_num_linear_regular_sweep(self)
-    }
-
-    #[doc = "Upcast to BRepSweep_NumLinearRegularSweep (mutable)"]
-    pub fn as_num_linear_regular_sweep_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut NumLinearRegularSweep> {
-        ffi::rotation_as_num_linear_regular_sweep_mut(self)
-    }
-
-    #[doc = "Upcast to BRepSweep_Trsf"]
-    pub fn as_trsf(&self) -> &Trsf {
-        ffi::rotation_as_trsf(self)
-    }
-
-    #[doc = "Upcast to BRepSweep_Trsf (mutable)"]
-    pub fn as_trsf_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Trsf> {
-        ffi::rotation_as_trsf_mut(self)
-    }
-
-    #[doc = "Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but without subcomponents."]
-    pub fn make_empty_vertex(
-        self: std::pin::Pin<&mut Self>,
-        aGenV: &ffi::TopoDS_Shape,
-        aDirV: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Rotation_make_empty_vertex(self, aGenV, aDirV)
-    }
-
-    #[doc = "Builds the edge addressed by [aGenV,aDirE], with its geometric part, but without subcomponents."]
-    pub fn make_empty_directing_edge(
-        self: std::pin::Pin<&mut Self>,
-        aGenV: &ffi::TopoDS_Shape,
-        aDirE: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Rotation_make_empty_directing_edge(self, aGenV, aDirE)
-    }
-
-    #[doc = "Builds the edge addressed by [aGenE,aDirV], with its geometric part, but without subcomponents."]
-    pub fn make_empty_generating_edge(
-        self: std::pin::Pin<&mut Self>,
-        aGenE: &ffi::TopoDS_Shape,
-        aDirV: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Rotation_make_empty_generating_edge(self, aGenE, aDirV)
-    }
-
-    #[doc = "Builds the face  addressed by [aGenS,aDirS],  with its geometric part, but without subcomponents. The couple aGenS, aDirS can be  a \"generating face and a  directing vertex\" or  \"a generating  edge and a directing edge\"."]
-    pub fn make_empty_face(
-        self: std::pin::Pin<&mut Self>,
-        aGenS: &ffi::TopoDS_Shape,
-        aDirS: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Rotation_make_empty_face(self, aGenS, aDirS)
-    }
-
-    #[doc = "In  some  particular  cases  the   topology  of  a generated  Shell must be  composed  of  independent closed Shells,  in this case  this function returns a Compound of independent Shells."]
-    pub fn split_shell(&self, aNewShape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Rotation_split_shell(self, aNewShape)
-    }
-
-    #[doc = "returns the axis"]
-    pub fn axe(&self) -> cxx::UniquePtr<ffi::gp_Ax1> {
-        ffi::Rotation_axe(self)
-    }
-}
-pub use ffi::Trsf;
-impl Trsf {
-    #[doc = "Upcast to BRepSweep_NumLinearRegularSweep"]
-    pub fn as_num_linear_regular_sweep(&self) -> &NumLinearRegularSweep {
-        ffi::trsf_as_num_linear_regular_sweep(self)
-    }
-
-    #[doc = "Upcast to BRepSweep_NumLinearRegularSweep (mutable)"]
-    pub fn as_num_linear_regular_sweep_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut NumLinearRegularSweep> {
-        ffi::trsf_as_num_linear_regular_sweep_mut(self)
-    }
-
-    #[doc = "Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but without subcomponents."]
-    pub fn make_empty_vertex(
-        self: std::pin::Pin<&mut Self>,
-        aGenV: &ffi::TopoDS_Shape,
-        aDirV: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Trsf_make_empty_vertex(self, aGenV, aDirV)
-    }
-
-    #[doc = "Builds the edge addressed by [aGenV,aDirE], with its geometric part, but without subcomponents."]
-    pub fn make_empty_directing_edge(
-        self: std::pin::Pin<&mut Self>,
-        aGenV: &ffi::TopoDS_Shape,
-        aDirE: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Trsf_make_empty_directing_edge(self, aGenV, aDirE)
-    }
-
-    #[doc = "Builds the edge addressed by [aGenE,aDirV], with its geometric part, but without subcomponents."]
-    pub fn make_empty_generating_edge(
-        self: std::pin::Pin<&mut Self>,
-        aGenE: &ffi::TopoDS_Shape,
-        aDirV: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Trsf_make_empty_generating_edge(self, aGenE, aDirV)
-    }
-
-    #[doc = "Builds  the face addressed  by [aGenS,aDirS], with its geometric part, but without subcomponents. The couple aGenS, aDirS can be  a \"generating face and a  directing vertex\" or \"a   generating edge and a directing  edge\"."]
-    pub fn make_empty_face(
-        self: std::pin::Pin<&mut Self>,
-        aGenS: &ffi::TopoDS_Shape,
-        aDirS: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Trsf_make_empty_face(self, aGenS, aDirS)
-    }
-}
-pub use ffi::NumLinearRegularSweep;
-impl NumLinearRegularSweep {
-    #[doc = "Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but without subcomponents."]
-    pub fn make_empty_vertex(
-        self: std::pin::Pin<&mut Self>,
-        aGenV: &ffi::TopoDS_Shape,
-        aDirV: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::NumLinearRegularSweep_make_empty_vertex(self, aGenV, aDirV)
-    }
-
-    #[doc = "Builds the edge addressed by [aGenV,aDirE], with its geometric part, but without subcomponents."]
-    pub fn make_empty_directing_edge(
-        self: std::pin::Pin<&mut Self>,
-        aGenV: &ffi::TopoDS_Shape,
-        aDirE: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::NumLinearRegularSweep_make_empty_directing_edge(self, aGenV, aDirE)
-    }
-
-    #[doc = "Builds the edge addressed by [aGenE,aDirV], with its geometric part, but without subcomponents."]
-    pub fn make_empty_generating_edge(
-        self: std::pin::Pin<&mut Self>,
-        aGenE: &ffi::TopoDS_Shape,
-        aDirV: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::NumLinearRegularSweep_make_empty_generating_edge(self, aGenE, aDirV)
-    }
-
-    #[doc = "Builds the face  addressed by  [aGenS,aDirS], with its geometric part, but without subcomponents. The couple aGenS, aDirS  can be a \"generating face and a directing vertex\"   or \"a generating  edge and a directing  edge\"."]
-    pub fn make_empty_face(
-        self: std::pin::Pin<&mut Self>,
-        aGenS: &ffi::TopoDS_Shape,
-        aDirS: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::NumLinearRegularSweep_make_empty_face(self, aGenS, aDirS)
-    }
-
-    #[doc = "In  some  particular  cases  the   topology  of  a generated  Shell must be  composed  of  independent closed Shells,  in this case  this function returns a Compound of independent Shells."]
-    pub fn split_shell(&self, aNewShape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::NumLinearRegularSweep_split_shell(self, aNewShape)
-    }
-
-    #[doc = "Returns the resulting  Shape indexed by aDirS  and aGenS."]
-    pub fn shape_shape_numshape(
-        self: std::pin::Pin<&mut Self>,
-        aGenS: &ffi::TopoDS_Shape,
-        aDirS: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::NumLinearRegularSweep_shape_shape_numshape(self, aGenS, aDirS)
-    }
-
-    #[doc = "Returns  the resulting Shape  indexed by myDirWire and aGenS."]
-    pub fn shape_shape(
-        self: std::pin::Pin<&mut Self>,
-        aGenS: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::NumLinearRegularSweep_shape_shape(self, aGenS)
-    }
-
-    #[doc = "Returns the resulting  Shape indexed by  myDirWire and myGenShape."]
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::NumLinearRegularSweep_shape(self)
-    }
-
-    #[doc = "Returns the resulting Shape  indexed by the  first Vertex  of myDirWire and myGenShape."]
-    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::NumLinearRegularSweep_first_shape(self)
-    }
-
-    #[doc = "Returns the  resulting Shape  indexed by the  last Vertex of myDirWire and myGenShape."]
-    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::NumLinearRegularSweep_last_shape(self)
-    }
-
-    #[doc = "Returns the resulting Shape  indexed by the  first Vertex  of myDirWire and aGenS."]
-    pub fn first_shape_shape(
-        self: std::pin::Pin<&mut Self>,
-        aGenS: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::NumLinearRegularSweep_first_shape_shape(self, aGenS)
-    }
-
-    #[doc = "Returns the  resulting Shape  indexed by the  last Vertex of myDirWire and aGenS."]
-    pub fn last_shape_shape(
-        self: std::pin::Pin<&mut Self>,
-        aGenS: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::NumLinearRegularSweep_last_shape_shape(self, aGenS)
-    }
-}
-pub use ffi::Builder;
-impl Builder {
-    #[doc = "Creates a Builder."]
-    pub fn new_builder(aBuilder: &ffi::BRep_Builder) -> cxx::UniquePtr<Self> {
-        ffi::Builder_ctor_builder(aBuilder)
-    }
-}
-pub use ffi::Tool;
-impl Tool {
-    #[doc = "Initialize the tool  with <aShape>.  The IndexTool must prepare an indexation for  all  the subshapes of this shape."]
-    pub fn new_shape(aShape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        ffi::Tool_ctor_shape(aShape)
-    }
-
-    #[doc = "Returns the Shape at Index anIdex."]
-    pub fn shape(&self, anIndex: i32) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Tool_shape(self, anIndex)
-    }
-}
-pub use ffi::Prism;
-impl Prism {
-    #[doc = "Builds the prism of base S and vector V. If C is true, S is copied. If Canonize is true then generated surfaces are attempted to be canonized in simple types"]
-    pub fn new_shape_vec_bool2(
-        S: &ffi::TopoDS_Shape,
-        V: &ffi::gp_Vec,
-        Copy: bool,
-        Canonize: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Prism_ctor_shape_vec_bool2(S, V, Copy, Canonize)
-    }
-
-    #[doc = "Builds a semi-infinite or an infinite prism of base S. If Copy is true S is copied.  If Inf is true the prism is infinite, if Inf is false the  prism is infinite in the direction D. If Canonize is true then generated surfaces are attempted to be canonized in simple types"]
-    pub fn new_shape_dir_bool3(
-        S: &ffi::TopoDS_Shape,
-        D: &ffi::gp_Dir,
-        Inf: bool,
-        Copy: bool,
-        Canonize: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Prism_ctor_shape_dir_bool3(S, D, Inf, Copy, Canonize)
-    }
-
-    #[doc = "Returns the TopoDS Shape attached to the prism."]
-    pub fn shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Prism_shape(self)
-    }
-
-    #[doc = "Returns    the  TopoDS  Shape   generated  with  aGenS (subShape  of the generating shape)."]
-    pub fn shape_shape(
-        self: std::pin::Pin<&mut Self>,
-        aGenS: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Prism_shape_shape(self, aGenS)
-    }
-
-    #[doc = "Returns the  TopoDS  Shape of the bottom of the prism."]
-    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Prism_first_shape(self)
-    }
-
-    #[doc = "Returns the TopoDS Shape of the bottom  of the  prism. generated  with  aGenS  (subShape  of  the  generating shape)."]
-    pub fn first_shape_shape(
-        self: std::pin::Pin<&mut Self>,
-        aGenS: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Prism_first_shape_shape(self, aGenS)
-    }
-
-    #[doc = "Returns the TopoDS Shape of the top of the prism."]
-    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Prism_last_shape(self)
-    }
-
-    #[doc = "Returns the  TopoDS  Shape of the top  of  the  prism. generated  with  aGenS  (subShape  of  the  generating shape)."]
-    pub fn last_shape_shape(
-        self: std::pin::Pin<&mut Self>,
-        aGenS: &ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Prism_last_shape_shape(self, aGenS)
-    }
-
-    #[doc = "Returns the Vector of the Prism,  if it is an infinite prism the Vec is unitar."]
-    pub fn vec(&self) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::Prism_vec(self)
-    }
-}
-pub use ffi::Translation;
-impl Translation {
-    #[doc = "Creates  a  topology by  translating <S>  with the vector  <V>. If  C  is   true S Sucomponents   are copied. If Canonize is true then generated surfaces are attempted to be canonized in simple types"]
-    pub fn new_shape_numshape_location_vec_bool2(
-        S: &ffi::TopoDS_Shape,
-        N: &ffi::Sweep_NumShape,
-        L: &ffi::TopLoc_Location,
-        V: &ffi::gp_Vec,
-        C: bool,
-        Canonize: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Translation_ctor_shape_numshape_location_vec_bool2(S, N, L, V, C, Canonize)
-    }
-
-    #[doc = "Upcast to BRepSweep_NumLinearRegularSweep"]
-    pub fn as_num_linear_regular_sweep(&self) -> &NumLinearRegularSweep {
-        ffi::translation_as_num_linear_regular_sweep(self)
-    }
-
-    #[doc = "Upcast to BRepSweep_NumLinearRegularSweep (mutable)"]
-    pub fn as_num_linear_regular_sweep_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut NumLinearRegularSweep> {
-        ffi::translation_as_num_linear_regular_sweep_mut(self)
-    }
-
-    #[doc = "Upcast to BRepSweep_Trsf"]
-    pub fn as_trsf(&self) -> &Trsf {
-        ffi::translation_as_trsf(self)
-    }
-
-    #[doc = "Upcast to BRepSweep_Trsf (mutable)"]
-    pub fn as_trsf_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Trsf> {
-        ffi::translation_as_trsf_mut(self)
-    }
-
-    #[doc = "Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but without subcomponents."]
-    pub fn make_empty_vertex(
-        self: std::pin::Pin<&mut Self>,
-        aGenV: &ffi::TopoDS_Shape,
-        aDirV: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Translation_make_empty_vertex(self, aGenV, aDirV)
-    }
-
-    #[doc = "Builds the edge addressed by [aGenV,aDirE], with its geometric part, but without subcomponents."]
-    pub fn make_empty_directing_edge(
-        self: std::pin::Pin<&mut Self>,
-        aGenV: &ffi::TopoDS_Shape,
-        aDirE: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Translation_make_empty_directing_edge(self, aGenV, aDirE)
-    }
-
-    #[doc = "Builds the edge addressed by [aGenE,aDirV], with its geometric part, but without subcomponents."]
-    pub fn make_empty_generating_edge(
-        self: std::pin::Pin<&mut Self>,
-        aGenE: &ffi::TopoDS_Shape,
-        aDirV: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Translation_make_empty_generating_edge(self, aGenE, aDirV)
-    }
-
-    #[doc = "Builds the  face addressed  by [aGenS,aDirS], with its geometric part, but without subcomponents. The couple aGenS, aDirS can  be a \"generating face and a  directing  vertex\" or  \"a generating edge and a directing  edge\"."]
-    pub fn make_empty_face(
-        self: std::pin::Pin<&mut Self>,
-        aGenS: &ffi::TopoDS_Shape,
-        aDirS: &ffi::Sweep_NumShape,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::Translation_make_empty_face(self, aGenS, aDirS)
-    }
-
-    #[doc = "Returns the Vector of the Prism,  if it is an infinite prism the Vec is unitar."]
-    pub fn vec(&self) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::Translation_vec(self)
-    }
 }

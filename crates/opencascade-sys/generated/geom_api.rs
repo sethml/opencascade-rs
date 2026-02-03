@@ -13,147 +13,95 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Interpolate;
+impl Interpolate {
+    #[doc = "Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table   Points. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: -   points are not too close to each other, or -   tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be \"C2\" continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only \"C1\" continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning -   There must be at least 2 points in the table Points. -   If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. -   If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions -   Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. -   Standard_OutOfRange if: -   there are less than two points in the table Points, or -   conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected."]
+    pub fn new_handleharray1ofpnt_bool_real(
+        Points: &ffi::HandleTColgpHArray1OfPnt,
+        PeriodicFlag: bool,
+        Tolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Interpolate_ctor_handleharray1ofpnt_bool_real(Points, PeriodicFlag, Tolerance)
+    }
+
+    #[doc = "Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table Points, where the parameters of each of its points are given by the parallel table Parameters. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: -   points are not too close to each other, or -   tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be \"C2\" continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only \"C1\" continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning -   There must be at least 2 points in the table Points. -   If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. -   If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions -   Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. -   Standard_OutOfRange if: -   there are less than two points in the table Points, or -   conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected."]
+    pub fn new_handleharray1ofpnt_handleharray1ofreal_bool_real(
+        Points: &ffi::HandleTColgpHArray1OfPnt,
+        Parameters: &ffi::HandleTColStdHArray1OfReal,
+        PeriodicFlag: bool,
+        Tolerance: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Interpolate_ctor_handleharray1ofpnt_handleharray1ofreal_bool_real(
+            Points,
+            Parameters,
+            PeriodicFlag,
+            Tolerance,
+        )
+    }
+}
+pub use ffi::PointsToBSpline;
+impl PointsToBSpline {
+    #[doc = "Constructs an empty approximation algorithm. Use an Init function to define and build the BSpline curve."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::PointsToBSpline_ctor()
+    }
+}
+pub use ffi::ProjectPointOnCurve;
+impl ProjectPointOnCurve {
+    #[doc = "Creates an empty object. Use an Init function for further initialization."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::ProjectPointOnCurve_ctor()
+    }
+
+    #[doc = "Create the projection  of a  point  <P> on a curve <Curve>"]
+    pub fn new_pnt_handlecurve(
+        P: &ffi::gp_Pnt,
+        Curve: &ffi::HandleGeomCurve,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::ProjectPointOnCurve_ctor_pnt_handlecurve(P, Curve)
+    }
+
+    #[doc = "Create  the projection  of a point <P>  on a curve <Curve> limited by the two points of parameter Umin and Usup."]
+    pub fn new_pnt_handlecurve_real2(
+        P: &ffi::gp_Pnt,
+        Curve: &ffi::HandleGeomCurve,
+        Umin: f64,
+        Usup: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::ProjectPointOnCurve_ctor_pnt_handlecurve_real2(P, Curve, Umin, Usup)
+    }
+
+    #[doc = "Returns the orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points."]
+    pub fn point(&self, Index: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::ProjectPointOnCurve_point(self, Index)
+    }
+
+    #[doc = "Returns the nearest orthogonal projection of the point on the curve. Exceptions: StdFail_NotDone if this algorithm fails."]
+    pub fn nearest_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::ProjectPointOnCurve_nearest_point(self)
+    }
+}
+pub use ffi::ProjectPointOnSurf;
+impl ProjectPointOnSurf {
+    #[doc = "Creates an empty object. Use the Init function for further initialization."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::ProjectPointOnSurf_ctor()
+    }
+
+    #[doc = "Returns the orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points."]
+    pub fn point(&self, Index: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::ProjectPointOnSurf_point(self, Index)
+    }
+
+    #[doc = "Returns the nearest orthogonal projection of the point on the surface. Exceptions StdFail_NotDone if projection fails."]
+    pub fn nearest_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::ProjectPointOnSurf_nearest_point(self)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom_api.hxx");
-        #[doc = "EPCOfExtPC from extrema module"]
-        type Extrema_EPCOfExtPC = crate::extrema::ffi::EPCOfExtPC;
-        #[doc = "ExtPC from extrema module"]
-        type Extrema_ExtPC = crate::extrema::ffi::ExtPC;
-        #[doc = "ExtPElC from extrema module"]
-        type Extrema_ExtPElC = crate::extrema::ffi::ExtPElC;
-        #[doc = "ExtPElS from extrema module"]
-        type Extrema_ExtPElS = crate::extrema::ffi::ExtPElS;
-        #[doc = "ExtPS from extrema module"]
-        type Extrema_ExtPS = crate::extrema::ffi::ExtPS;
-        #[doc = "FuncPSNorm from extrema module"]
-        type Extrema_FuncPSNorm = crate::extrema::ffi::FuncPSNorm;
-        #[doc = "GenExtPS from extrema module"]
-        type Extrema_GenExtPS = crate::extrema::ffi::GenExtPS;
-        #[doc = "PCFOfEPCOfExtPC from extrema module"]
-        type Extrema_PCFOfEPCOfExtPC = crate::extrema::ffi::PCFOfEPCOfExtPC;
-        #[doc = "POnCurv from extrema module"]
-        type Extrema_POnCurv = crate::extrema::ffi::POnCurv;
-        #[doc = "POnSurf from extrema module"]
-        type Extrema_POnSurf = crate::extrema::ffi::POnSurf;
-        #[doc = "POnSurfParams from extrema module"]
-        type Extrema_POnSurfParams = crate::extrema::ffi::POnSurfParams;
-        #[doc = "BSplineCurve from geom module"]
-        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
-        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
-        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
-        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
-        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
-        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
-        type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
-        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
-        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
-        type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
-        type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
-        type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
-        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfPnt from t_colgp module"]
-        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
-        #[doc = "HArray1OfPnt2d from t_colgp module"]
-        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
-        #[doc = "HArray1OfVec from t_colgp module"]
-        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
-        #[doc = "HArray2OfPnt from t_colgp module"]
-        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfReal"]
-        type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array1OfPnt"]
-        type TColgp_Array1OfPnt;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array1OfVec"]
-        type TColgp_Array1OfVec;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBSplineCurve"]
-        type HandleGeomBSplineCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomCurve"]
-        type HandleGeomCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomSurface"]
-        type HandleGeomSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHArray1OfBoolean"]
-        type HandleTColStdHArray1OfBoolean;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColStdHArray1OfReal"]
-        type HandleTColStdHArray1OfReal;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTColgpHArray1OfPnt"]
-        type HandleTColgpHArray1OfPnt;
         #[doc = " ======================== GeomAPI_Interpolate ========================"]
         #[doc = "/// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate`"]
         #[doc = ""]
@@ -346,94 +294,192 @@ pub(crate) mod ffi {
         #[doc = "Returns the nearest orthogonal projection of the point on the surface. Exceptions StdFail_NotDone if projection fails."]
         #[cxx_name = "GeomAPI_ProjectPointOnSurf_NearestPoint"]
         fn ProjectPointOnSurf_nearest_point(self_: &ProjectPointOnSurf) -> UniquePtr<gp_Pnt>;
+        #[doc = "ECC from extrema module"]
+        type Extrema_ECC = crate::extrema::ffi::ECC;
+        #[doc = "EPCOfExtPC from extrema module"]
+        type Extrema_EPCOfExtPC = crate::extrema::ffi::EPCOfExtPC;
+        #[doc = "ExtCC from extrema module"]
+        type Extrema_ExtCC = crate::extrema::ffi::ExtCC;
+        #[doc = "ExtPC from extrema module"]
+        type Extrema_ExtPC = crate::extrema::ffi::ExtPC;
+        #[doc = "ExtPElC from extrema module"]
+        type Extrema_ExtPElC = crate::extrema::ffi::ExtPElC;
+        #[doc = "ExtPElS from extrema module"]
+        type Extrema_ExtPElS = crate::extrema::ffi::ExtPElS;
+        #[doc = "ExtPS from extrema module"]
+        type Extrema_ExtPS = crate::extrema::ffi::ExtPS;
+        #[doc = "FuncPSNorm from extrema module"]
+        type Extrema_FuncPSNorm = crate::extrema::ffi::FuncPSNorm;
+        #[doc = "GenExtPS from extrema module"]
+        type Extrema_GenExtPS = crate::extrema::ffi::GenExtPS;
+        #[doc = "PCFOfEPCOfExtPC from extrema module"]
+        type Extrema_PCFOfEPCOfExtPC = crate::extrema::ffi::PCFOfEPCOfExtPC;
+        #[doc = "POnCurv from extrema module"]
+        type Extrema_POnCurv = crate::extrema::ffi::POnCurv;
+        #[doc = "POnSurf from extrema module"]
+        type Extrema_POnSurf = crate::extrema::ffi::POnSurf;
+        #[doc = "POnSurfParams from extrema module"]
+        type Extrema_POnSurfParams = crate::extrema::ffi::POnSurfParams;
+        #[doc = "BSplineCurve from geom module"]
+        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
+        #[doc = "BSplineSurface from geom module"]
+        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
+        #[doc = "BezierCurve from geom module"]
+        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
+        #[doc = "BezierSurface from geom module"]
+        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BoundedCurve from geom module"]
+        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
+        #[doc = "BoundedSurface from geom module"]
+        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
+        #[doc = "Curve from geom module"]
+        type Geom_Curve = crate::geom::ffi::Curve;
+        #[doc = "CylindricalSurface from geom module"]
+        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
+        #[doc = "ElementarySurface from geom module"]
+        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
+        #[doc = "Geometry from geom module"]
+        type Geom_Geometry = crate::geom::ffi::Geometry;
+        #[doc = "Plane from geom module"]
+        type Geom_Plane = crate::geom::ffi::Plane;
+        #[doc = "Surface from geom module"]
+        type Geom_Surface = crate::geom::ffi::Surface;
+        #[doc = "TrimmedCurve from geom module"]
+        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HSequenceOfInteger from t_col_std module"]
+        type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "HArray1OfPnt from t_colgp module"]
+        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
+        #[doc = "HArray1OfPnt2d from t_colgp module"]
+        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
+        #[doc = "HArray1OfVec from t_colgp module"]
+        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
+        #[doc = "HArray2OfPnt from t_colgp module"]
+        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfReal"]
+        type TColStd_Array1OfReal;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColgp_Array1OfPnt"]
+        type TColgp_Array1OfPnt;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColgp_Array1OfVec"]
+        type TColgp_Array1OfVec;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBSplineCurve"]
+        type HandleGeomBSplineCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomCurve"]
+        type HandleGeomCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomSurface"]
+        type HandleGeomSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColStdHArray1OfBoolean"]
+        type HandleTColStdHArray1OfBoolean;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColStdHArray1OfReal"]
+        type HandleTColStdHArray1OfReal;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTColgpHArray1OfPnt"]
+        type HandleTColgpHArray1OfPnt;
     }
     impl UniquePtr<Interpolate> {}
     impl UniquePtr<PointsToBSpline> {}
     impl UniquePtr<ProjectPointOnCurve> {}
     impl UniquePtr<ProjectPointOnSurf> {}
-}
-pub use ffi::Interpolate;
-impl Interpolate {
-    #[doc = "Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table   Points. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: -   points are not too close to each other, or -   tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be \"C2\" continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only \"C1\" continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning -   There must be at least 2 points in the table Points. -   If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. -   If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions -   Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. -   Standard_OutOfRange if: -   there are less than two points in the table Points, or -   conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected."]
-    pub fn new_handleharray1ofpnt_bool_real(
-        Points: &ffi::HandleTColgpHArray1OfPnt,
-        PeriodicFlag: bool,
-        Tolerance: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Interpolate_ctor_handleharray1ofpnt_bool_real(Points, PeriodicFlag, Tolerance)
-    }
-
-    #[doc = "Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table Points, where the parameters of each of its points are given by the parallel table Parameters. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: -   points are not too close to each other, or -   tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be \"C2\" continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only \"C1\" continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning -   There must be at least 2 points in the table Points. -   If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. -   If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions -   Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. -   Standard_OutOfRange if: -   there are less than two points in the table Points, or -   conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected."]
-    pub fn new_handleharray1ofpnt_handleharray1ofreal_bool_real(
-        Points: &ffi::HandleTColgpHArray1OfPnt,
-        Parameters: &ffi::HandleTColStdHArray1OfReal,
-        PeriodicFlag: bool,
-        Tolerance: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Interpolate_ctor_handleharray1ofpnt_handleharray1ofreal_bool_real(
-            Points,
-            Parameters,
-            PeriodicFlag,
-            Tolerance,
-        )
-    }
-}
-pub use ffi::PointsToBSpline;
-impl PointsToBSpline {
-    #[doc = "Constructs an empty approximation algorithm. Use an Init function to define and build the BSpline curve."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::PointsToBSpline_ctor()
-    }
-}
-pub use ffi::ProjectPointOnCurve;
-impl ProjectPointOnCurve {
-    #[doc = "Creates an empty object. Use an Init function for further initialization."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::ProjectPointOnCurve_ctor()
-    }
-
-    #[doc = "Create the projection  of a  point  <P> on a curve <Curve>"]
-    pub fn new_pnt_handlecurve(
-        P: &ffi::gp_Pnt,
-        Curve: &ffi::HandleGeomCurve,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::ProjectPointOnCurve_ctor_pnt_handlecurve(P, Curve)
-    }
-
-    #[doc = "Create  the projection  of a point <P>  on a curve <Curve> limited by the two points of parameter Umin and Usup."]
-    pub fn new_pnt_handlecurve_real2(
-        P: &ffi::gp_Pnt,
-        Curve: &ffi::HandleGeomCurve,
-        Umin: f64,
-        Usup: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::ProjectPointOnCurve_ctor_pnt_handlecurve_real2(P, Curve, Umin, Usup)
-    }
-
-    #[doc = "Returns the orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points."]
-    pub fn point(&self, Index: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::ProjectPointOnCurve_point(self, Index)
-    }
-
-    #[doc = "Returns the nearest orthogonal projection of the point on the curve. Exceptions: StdFail_NotDone if this algorithm fails."]
-    pub fn nearest_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::ProjectPointOnCurve_nearest_point(self)
-    }
-}
-pub use ffi::ProjectPointOnSurf;
-impl ProjectPointOnSurf {
-    #[doc = "Creates an empty object. Use the Init function for further initialization."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::ProjectPointOnSurf_ctor()
-    }
-
-    #[doc = "Returns the orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points."]
-    pub fn point(&self, Index: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::ProjectPointOnSurf_point(self, Index)
-    }
-
-    #[doc = "Returns the nearest orthogonal projection of the point on the surface. Exceptions StdFail_NotDone if projection fails."]
-    pub fn nearest_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::ProjectPointOnSurf_nearest_point(self)
-    }
 }

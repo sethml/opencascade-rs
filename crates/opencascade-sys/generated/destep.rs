@@ -10,21 +10,21 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Parameters;
+impl Parameters {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Parameters_ctor()
+    }
+
+    #[doc = "Returns default shape fix parameters for transferring STEP files."]
+    pub fn get_default_shape_fix_parameters() -> cxx::UniquePtr<ffi::DE_ShapeFixParameters> {
+        ffi::Parameters_get_default_shape_fix_parameters()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_destep.hxx");
-        #[doc = "AsciiString from t_collection module"]
-        type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
-        #[doc = "ExtendedString from t_collection module"]
-        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
-        #[doc = "HAsciiString from t_collection module"]
-        type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
-        #[doc = "HExtendedString from t_collection module"]
-        type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "DE_ShapeFixParameters"]
-        type DE_ShapeFixParameters;
         #[doc = " ======================== DESTEP_Parameters ========================"]
         #[doc = "/// **Source:** `DESTEP_Parameters.hxx` - `DESTEP_Parameters`"]
         #[cxx_name = "DESTEP_Parameters"]
@@ -41,17 +41,17 @@ pub(crate) mod ffi {
         #[doc = "Returns default shape fix parameters for transferring STEP files."]
         #[cxx_name = "DESTEP_Parameters_GetDefaultShapeFixParameters"]
         fn Parameters_get_default_shape_fix_parameters() -> UniquePtr<DE_ShapeFixParameters>;
+        #[doc = "AsciiString from t_collection module"]
+        type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
+        #[doc = "ExtendedString from t_collection module"]
+        type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
+        #[doc = "HAsciiString from t_collection module"]
+        type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
+        #[doc = "HExtendedString from t_collection module"]
+        type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "DE_ShapeFixParameters"]
+        type DE_ShapeFixParameters;
     }
     impl UniquePtr<Parameters> {}
-}
-pub use ffi::Parameters;
-impl Parameters {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Parameters_ctor()
-    }
-
-    #[doc = "Returns default shape fix parameters for transferring STEP files."]
-    pub fn get_default_shape_fix_parameters() -> cxx::UniquePtr<ffi::DE_ShapeFixParameters> {
-        ffi::Parameters_get_default_shape_fix_parameters()
-    }
 }

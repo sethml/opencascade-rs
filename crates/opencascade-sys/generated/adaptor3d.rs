@@ -12,188 +12,253 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Curve;
+impl Curve {
+    #[doc = "Wrap Adaptor3d_Curve in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
+        ffi::Curve_to_handle(obj)
+    }
+
+    #[doc = "Shallow copy of adaptor"]
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
+        ffi::Curve_shallow_copy(self)
+    }
+
+    #[doc = "Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>"]
+    pub fn trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
+        ffi::Curve_trim(self, First, Last, Tol)
+    }
+
+    #[doc = "Computes the point of parameter U on the curve."]
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::Curve_value(self, U)
+    }
+
+    #[doc = "The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1."]
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::Curve_dn(self, U, N)
+    }
+
+    pub fn line(&self) -> cxx::UniquePtr<ffi::gp_Lin> {
+        ffi::Curve_line(self)
+    }
+
+    pub fn circle(&self) -> cxx::UniquePtr<ffi::gp_Circ> {
+        ffi::Curve_circle(self)
+    }
+
+    pub fn ellipse(&self) -> cxx::UniquePtr<ffi::gp_Elips> {
+        ffi::Curve_ellipse(self)
+    }
+
+    pub fn hyperbola(&self) -> cxx::UniquePtr<ffi::gp_Hypr> {
+        ffi::Curve_hyperbola(self)
+    }
+
+    pub fn parabola(&self) -> cxx::UniquePtr<ffi::gp_Parab> {
+        ffi::Curve_parabola(self)
+    }
+
+    pub fn bezier(&self) -> cxx::UniquePtr<ffi::HandleGeomBezierCurve> {
+        ffi::Curve_bezier(self)
+    }
+
+    pub fn b_spline(&self) -> cxx::UniquePtr<ffi::HandleGeomBSplineCurve> {
+        ffi::Curve_b_spline(self)
+    }
+
+    pub fn offset_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomOffsetCurve> {
+        ffi::Curve_offset_curve(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Curve_get_type_name()
+    }
+}
+pub use ffi::Surface;
+impl Surface {
+    #[doc = "Wrap Adaptor3d_Surface in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleAdaptor3dSurface> {
+        ffi::Surface_to_handle(obj)
+    }
+
+    #[doc = "Shallow copy of adaptor"]
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<ffi::HandleAdaptor3dSurface> {
+        ffi::Surface_shallow_copy(self)
+    }
+
+    #[doc = "Returns    a  surface trimmed in the U direction equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>"]
+    pub fn u_trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<ffi::HandleAdaptor3dSurface> {
+        ffi::Surface_u_trim(self, First, Last, Tol)
+    }
+
+    #[doc = "Returns    a  surface trimmed in the V direction  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>"]
+    pub fn v_trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<ffi::HandleAdaptor3dSurface> {
+        ffi::Surface_v_trim(self, First, Last, Tol)
+    }
+
+    #[doc = "Computes the point of parameters U,V on the surface. Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point."]
+    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::Surface_value(self, U, V)
+    }
+
+    #[doc = "Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Raised if the current U  interval is not not CNu and the current V interval is not CNv. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0."]
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::Surface_dn(self, U, V, Nu, Nv)
+    }
+
+    pub fn plane(&self) -> cxx::UniquePtr<ffi::gp_Pln> {
+        ffi::Surface_plane(self)
+    }
+
+    pub fn cylinder(&self) -> cxx::UniquePtr<ffi::gp_Cylinder> {
+        ffi::Surface_cylinder(self)
+    }
+
+    pub fn cone(&self) -> cxx::UniquePtr<ffi::gp_Cone> {
+        ffi::Surface_cone(self)
+    }
+
+    pub fn sphere(&self) -> cxx::UniquePtr<ffi::gp_Sphere> {
+        ffi::Surface_sphere(self)
+    }
+
+    pub fn torus(&self) -> cxx::UniquePtr<ffi::gp_Torus> {
+        ffi::Surface_torus(self)
+    }
+
+    pub fn bezier(&self) -> cxx::UniquePtr<ffi::HandleGeomBezierSurface> {
+        ffi::Surface_bezier(self)
+    }
+
+    pub fn b_spline(&self) -> cxx::UniquePtr<ffi::HandleGeomBSplineSurface> {
+        ffi::Surface_b_spline(self)
+    }
+
+    pub fn axe_of_revolution(&self) -> cxx::UniquePtr<ffi::gp_Ax1> {
+        ffi::Surface_axe_of_revolution(self)
+    }
+
+    pub fn direction(&self) -> cxx::UniquePtr<ffi::gp_Dir> {
+        ffi::Surface_direction(self)
+    }
+
+    pub fn basis_curve(&self) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
+        ffi::Surface_basis_curve(self)
+    }
+
+    pub fn basis_surface(&self) -> cxx::UniquePtr<ffi::HandleAdaptor3dSurface> {
+        ffi::Surface_basis_surface(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Surface_get_type_name()
+    }
+}
+pub use ffi::CurveOnSurface;
+impl CurveOnSurface {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::CurveOnSurface_ctor()
+    }
+
+    pub fn new_handlesurface(S: &ffi::HandleAdaptor3dSurface) -> cxx::UniquePtr<Self> {
+        ffi::CurveOnSurface_ctor_handlesurface(S)
+    }
+
+    #[doc = "Creates a CurveOnSurface from the 2d curve <C> and the surface <S>."]
+    pub fn new_handlecurve2d_handlesurface(
+        C: &ffi::HandleAdaptor2dCurve2d,
+        S: &ffi::HandleAdaptor3dSurface,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::CurveOnSurface_ctor_handlecurve2d_handlesurface(C, S)
+    }
+
+    #[doc = "Upcast to Adaptor3d_Curve"]
+    pub fn as_curve(&self) -> &Curve {
+        ffi::curve_on_surface_as_curve(self)
+    }
+
+    #[doc = "Upcast to Adaptor3d_Curve (mutable)"]
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        ffi::curve_on_surface_as_curve_mut(self)
+    }
+
+    #[doc = "Shallow copy of adaptor"]
+    pub fn shallow_copy(&self) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
+        ffi::CurveOnSurface_shallow_copy(self)
+    }
+
+    #[doc = "Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>"]
+    pub fn trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
+        ffi::CurveOnSurface_trim(self, First, Last, Tol)
+    }
+
+    #[doc = "Computes the point of parameter U on the curve."]
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<ffi::gp_Pnt> {
+        ffi::CurveOnSurface_value(self, U)
+    }
+
+    #[doc = "The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1."]
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
+        ffi::CurveOnSurface_dn(self, U, N)
+    }
+
+    pub fn line(&self) -> cxx::UniquePtr<ffi::gp_Lin> {
+        ffi::CurveOnSurface_line(self)
+    }
+
+    pub fn circle(&self) -> cxx::UniquePtr<ffi::gp_Circ> {
+        ffi::CurveOnSurface_circle(self)
+    }
+
+    pub fn ellipse(&self) -> cxx::UniquePtr<ffi::gp_Elips> {
+        ffi::CurveOnSurface_ellipse(self)
+    }
+
+    pub fn hyperbola(&self) -> cxx::UniquePtr<ffi::gp_Hypr> {
+        ffi::CurveOnSurface_hyperbola(self)
+    }
+
+    pub fn parabola(&self) -> cxx::UniquePtr<ffi::gp_Parab> {
+        ffi::CurveOnSurface_parabola(self)
+    }
+
+    pub fn bezier(&self) -> cxx::UniquePtr<ffi::HandleGeomBezierCurve> {
+        ffi::CurveOnSurface_bezier(self)
+    }
+
+    pub fn b_spline(&self) -> cxx::UniquePtr<ffi::HandleGeomBSplineCurve> {
+        ffi::CurveOnSurface_b_spline(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::CurveOnSurface_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_adaptor3d.hxx");
-        #[doc = "Curve2d from adaptor2d module"]
-        type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
-        #[doc = "BSplineCurve from geom module"]
-        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
-        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
-        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
-        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
-        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
-        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
-        type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
-        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
-        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
-        type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
-        type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
-        type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
-        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Geom_OffsetCurve"]
-        type Geom_OffsetCurve;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfReal"]
-        type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Cone"]
-        type gp_Cone;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Cylinder"]
-        type gp_Cylinder;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Elips"]
-        type gp_Elips;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Hypr"]
-        type gp_Hypr;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Parab"]
-        type gp_Parab;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Sphere"]
-        type gp_Sphere;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Torus"]
-        type gp_Torus;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleAdaptor2dCurve2d"]
-        type HandleAdaptor2dCurve2d;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleAdaptor3dCurve"]
-        type HandleAdaptor3dCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleAdaptor3dSurface"]
-        type HandleAdaptor3dSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBSplineCurve"]
-        type HandleGeomBSplineCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBSplineSurface"]
-        type HandleGeomBSplineSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBezierCurve"]
-        type HandleGeomBezierCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBezierSurface"]
-        type HandleGeomBezierSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomOffsetCurve"]
-        type HandleGeomOffsetCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
         #[doc = " ======================== Adaptor3d_Curve ========================"]
         #[doc = "/// **Source:** `Adaptor3d_Curve.hxx` - `Adaptor3d_Curve`"]
         #[doc = ""]
@@ -563,251 +628,207 @@ pub(crate) mod ffi {
         #[doc = "Upcast Adaptor3d_CurveOnSurface to Adaptor3d_Curve (mutable)"]
         #[cxx_name = "Adaptor3d_CurveOnSurface_as_Adaptor3d_Curve_mut"]
         fn curve_on_surface_as_curve_mut(self_: Pin<&mut CurveOnSurface>) -> Pin<&mut Curve>;
+        #[doc = "Curve2d from adaptor2d module"]
+        type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
+        #[doc = "BSplineCurve from geom module"]
+        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
+        #[doc = "BSplineSurface from geom module"]
+        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
+        #[doc = "BezierCurve from geom module"]
+        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
+        #[doc = "BezierSurface from geom module"]
+        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BoundedCurve from geom module"]
+        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
+        #[doc = "BoundedSurface from geom module"]
+        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
+        #[doc = "Curve from geom module"]
+        type Geom_Curve = crate::geom::ffi::Curve;
+        #[doc = "CylindricalSurface from geom module"]
+        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
+        #[doc = "ElementarySurface from geom module"]
+        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
+        #[doc = "Geometry from geom module"]
+        type Geom_Geometry = crate::geom::ffi::Geometry;
+        #[doc = "Plane from geom module"]
+        type Geom_Plane = crate::geom::ffi::Plane;
+        #[doc = "Surface from geom module"]
+        type Geom_Surface = crate::geom::ffi::Surface;
+        #[doc = "TrimmedCurve from geom module"]
+        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HSequenceOfInteger from t_col_std module"]
+        type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Geom_OffsetCurve"]
+        type Geom_OffsetCurve;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfReal"]
+        type TColStd_Array1OfReal;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleAdaptor2dCurve2d"]
+        type HandleAdaptor2dCurve2d;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleAdaptor3dCurve"]
+        type HandleAdaptor3dCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleAdaptor3dSurface"]
+        type HandleAdaptor3dSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBSplineCurve"]
+        type HandleGeomBSplineCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBSplineSurface"]
+        type HandleGeomBSplineSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBezierCurve"]
+        type HandleGeomBezierCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBezierSurface"]
+        type HandleGeomBezierSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomOffsetCurve"]
+        type HandleGeomOffsetCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
     }
     impl UniquePtr<Curve> {}
     impl UniquePtr<Surface> {}
     impl UniquePtr<CurveOnSurface> {}
-}
-pub use ffi::Curve;
-impl Curve {
-    #[doc = "Wrap Adaptor3d_Curve in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
-        ffi::Curve_to_handle(obj)
-    }
-
-    #[doc = "Shallow copy of adaptor"]
-    pub fn shallow_copy(&self) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
-        ffi::Curve_shallow_copy(self)
-    }
-
-    #[doc = "Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>"]
-    pub fn trim(
-        &self,
-        First: f64,
-        Last: f64,
-        Tol: f64,
-    ) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
-        ffi::Curve_trim(self, First, Last, Tol)
-    }
-
-    #[doc = "Computes the point of parameter U on the curve."]
-    pub fn value(&self, U: f64) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::Curve_value(self, U)
-    }
-
-    #[doc = "The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1."]
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::Curve_dn(self, U, N)
-    }
-
-    pub fn line(&self) -> cxx::UniquePtr<ffi::gp_Lin> {
-        ffi::Curve_line(self)
-    }
-
-    pub fn circle(&self) -> cxx::UniquePtr<ffi::gp_Circ> {
-        ffi::Curve_circle(self)
-    }
-
-    pub fn ellipse(&self) -> cxx::UniquePtr<ffi::gp_Elips> {
-        ffi::Curve_ellipse(self)
-    }
-
-    pub fn hyperbola(&self) -> cxx::UniquePtr<ffi::gp_Hypr> {
-        ffi::Curve_hyperbola(self)
-    }
-
-    pub fn parabola(&self) -> cxx::UniquePtr<ffi::gp_Parab> {
-        ffi::Curve_parabola(self)
-    }
-
-    pub fn bezier(&self) -> cxx::UniquePtr<ffi::HandleGeomBezierCurve> {
-        ffi::Curve_bezier(self)
-    }
-
-    pub fn b_spline(&self) -> cxx::UniquePtr<ffi::HandleGeomBSplineCurve> {
-        ffi::Curve_b_spline(self)
-    }
-
-    pub fn offset_curve(&self) -> cxx::UniquePtr<ffi::HandleGeomOffsetCurve> {
-        ffi::Curve_offset_curve(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Curve_get_type_name()
-    }
-}
-pub use ffi::Surface;
-impl Surface {
-    #[doc = "Wrap Adaptor3d_Surface in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleAdaptor3dSurface> {
-        ffi::Surface_to_handle(obj)
-    }
-
-    #[doc = "Shallow copy of adaptor"]
-    pub fn shallow_copy(&self) -> cxx::UniquePtr<ffi::HandleAdaptor3dSurface> {
-        ffi::Surface_shallow_copy(self)
-    }
-
-    #[doc = "Returns    a  surface trimmed in the U direction equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>"]
-    pub fn u_trim(
-        &self,
-        First: f64,
-        Last: f64,
-        Tol: f64,
-    ) -> cxx::UniquePtr<ffi::HandleAdaptor3dSurface> {
-        ffi::Surface_u_trim(self, First, Last, Tol)
-    }
-
-    #[doc = "Returns    a  surface trimmed in the V direction  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>"]
-    pub fn v_trim(
-        &self,
-        First: f64,
-        Last: f64,
-        Tol: f64,
-    ) -> cxx::UniquePtr<ffi::HandleAdaptor3dSurface> {
-        ffi::Surface_v_trim(self, First, Last, Tol)
-    }
-
-    #[doc = "Computes the point of parameters U,V on the surface. Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point."]
-    pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::Surface_value(self, U, V)
-    }
-
-    #[doc = "Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Raised if the current U  interval is not not CNu and the current V interval is not CNv. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0."]
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::Surface_dn(self, U, V, Nu, Nv)
-    }
-
-    pub fn plane(&self) -> cxx::UniquePtr<ffi::gp_Pln> {
-        ffi::Surface_plane(self)
-    }
-
-    pub fn cylinder(&self) -> cxx::UniquePtr<ffi::gp_Cylinder> {
-        ffi::Surface_cylinder(self)
-    }
-
-    pub fn cone(&self) -> cxx::UniquePtr<ffi::gp_Cone> {
-        ffi::Surface_cone(self)
-    }
-
-    pub fn sphere(&self) -> cxx::UniquePtr<ffi::gp_Sphere> {
-        ffi::Surface_sphere(self)
-    }
-
-    pub fn torus(&self) -> cxx::UniquePtr<ffi::gp_Torus> {
-        ffi::Surface_torus(self)
-    }
-
-    pub fn bezier(&self) -> cxx::UniquePtr<ffi::HandleGeomBezierSurface> {
-        ffi::Surface_bezier(self)
-    }
-
-    pub fn b_spline(&self) -> cxx::UniquePtr<ffi::HandleGeomBSplineSurface> {
-        ffi::Surface_b_spline(self)
-    }
-
-    pub fn axe_of_revolution(&self) -> cxx::UniquePtr<ffi::gp_Ax1> {
-        ffi::Surface_axe_of_revolution(self)
-    }
-
-    pub fn direction(&self) -> cxx::UniquePtr<ffi::gp_Dir> {
-        ffi::Surface_direction(self)
-    }
-
-    pub fn basis_curve(&self) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
-        ffi::Surface_basis_curve(self)
-    }
-
-    pub fn basis_surface(&self) -> cxx::UniquePtr<ffi::HandleAdaptor3dSurface> {
-        ffi::Surface_basis_surface(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Surface_get_type_name()
-    }
-}
-pub use ffi::CurveOnSurface;
-impl CurveOnSurface {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::CurveOnSurface_ctor()
-    }
-
-    pub fn new_handlesurface(S: &ffi::HandleAdaptor3dSurface) -> cxx::UniquePtr<Self> {
-        ffi::CurveOnSurface_ctor_handlesurface(S)
-    }
-
-    #[doc = "Creates a CurveOnSurface from the 2d curve <C> and the surface <S>."]
-    pub fn new_handlecurve2d_handlesurface(
-        C: &ffi::HandleAdaptor2dCurve2d,
-        S: &ffi::HandleAdaptor3dSurface,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::CurveOnSurface_ctor_handlecurve2d_handlesurface(C, S)
-    }
-
-    #[doc = "Upcast to Adaptor3d_Curve"]
-    pub fn as_curve(&self) -> &Curve {
-        ffi::curve_on_surface_as_curve(self)
-    }
-
-    #[doc = "Upcast to Adaptor3d_Curve (mutable)"]
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        ffi::curve_on_surface_as_curve_mut(self)
-    }
-
-    #[doc = "Shallow copy of adaptor"]
-    pub fn shallow_copy(&self) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
-        ffi::CurveOnSurface_shallow_copy(self)
-    }
-
-    #[doc = "Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>"]
-    pub fn trim(
-        &self,
-        First: f64,
-        Last: f64,
-        Tol: f64,
-    ) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
-        ffi::CurveOnSurface_trim(self, First, Last, Tol)
-    }
-
-    #[doc = "Computes the point of parameter U on the curve."]
-    pub fn value(&self, U: f64) -> cxx::UniquePtr<ffi::gp_Pnt> {
-        ffi::CurveOnSurface_value(self, U)
-    }
-
-    #[doc = "The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1."]
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
-        ffi::CurveOnSurface_dn(self, U, N)
-    }
-
-    pub fn line(&self) -> cxx::UniquePtr<ffi::gp_Lin> {
-        ffi::CurveOnSurface_line(self)
-    }
-
-    pub fn circle(&self) -> cxx::UniquePtr<ffi::gp_Circ> {
-        ffi::CurveOnSurface_circle(self)
-    }
-
-    pub fn ellipse(&self) -> cxx::UniquePtr<ffi::gp_Elips> {
-        ffi::CurveOnSurface_ellipse(self)
-    }
-
-    pub fn hyperbola(&self) -> cxx::UniquePtr<ffi::gp_Hypr> {
-        ffi::CurveOnSurface_hyperbola(self)
-    }
-
-    pub fn parabola(&self) -> cxx::UniquePtr<ffi::gp_Parab> {
-        ffi::CurveOnSurface_parabola(self)
-    }
-
-    pub fn bezier(&self) -> cxx::UniquePtr<ffi::HandleGeomBezierCurve> {
-        ffi::CurveOnSurface_bezier(self)
-    }
-
-    pub fn b_spline(&self) -> cxx::UniquePtr<ffi::HandleGeomBSplineCurve> {
-        ffi::CurveOnSurface_b_spline(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::CurveOnSurface_get_type_name()
-    }
 }

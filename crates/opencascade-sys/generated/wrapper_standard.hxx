@@ -48,131 +48,6 @@ typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<Standard_TypeMismatch> HandleStandardTypeMismatch;
 
 // ========================
-// Standard_Mutex wrappers
-// ========================
-
-inline std::unique_ptr<Standard_Mutex> Standard_Mutex_ctor() {
-    return std::make_unique<Standard_Mutex>();
-}
-
-
-// ========================
-// Standard_Transient wrappers
-// ========================
-
-inline std::unique_ptr<Standard_Transient> Standard_Transient_ctor() {
-    return std::make_unique<Standard_Transient>();
-}
-
-inline std::unique_ptr<Standard_Transient> Standard_Transient_ctor_transient(const Standard_Transient& arg0) {
-    return std::make_unique<Standard_Transient>(arg0);
-}
-
-inline Standard_Boolean Standard_Transient_IsInstance(const Standard_Transient& self, rust::Str theTypeName) {
-    return self.IsInstance(std::string(theTypeName).c_str());
-}
-
-inline Standard_Boolean Standard_Transient_IsKind(const Standard_Transient& self, rust::Str theTypeName) {
-    return self.IsKind(std::string(theTypeName).c_str());
-}
-
-inline rust::String Standard_Transient_get_type_name() {
-    return rust::String(Standard_Transient::get_type_name());
-}
-
-
-// ========================
-// Standard wrappers
-// ========================
-
-inline Standard_Integer Standard_Purge() {
-    return Standard::Purge();
-}
-
-
-// ========================
-// Standard_ErrorHandler wrappers
-// ========================
-
-inline std::unique_ptr<Standard_ErrorHandler> Standard_ErrorHandler_ctor() {
-    return std::make_unique<Standard_ErrorHandler>();
-}
-
-inline std::unique_ptr<opencascade::handle<Standard_Failure>> Standard_ErrorHandler_Error(const Standard_ErrorHandler& self) {
-    return std::make_unique<opencascade::handle<Standard_Failure>>(self.Error());
-}
-
-inline std::unique_ptr<opencascade::handle<Standard_Failure>> Standard_ErrorHandler_LastCaughtError() {
-    return std::make_unique<opencascade::handle<Standard_Failure>>(Standard_ErrorHandler::LastCaughtError());
-}
-
-inline Standard_Boolean Standard_ErrorHandler_IsInTryBlock() {
-    return Standard_ErrorHandler::IsInTryBlock();
-}
-
-
-// ========================
-// Standard_Type wrappers
-// ========================
-
-inline Standard_Boolean Standard_Type_SubType(const Standard_Type& self, rust::Str theOther) {
-    return self.SubType(std::string(theOther).c_str());
-}
-
-inline rust::String Standard_Type_SystemName(const Standard_Type& self) {
-    return rust::String(self.SystemName());
-}
-
-inline rust::String Standard_Type_Name(const Standard_Type& self) {
-    return rust::String(self.Name());
-}
-
-inline rust::String Standard_Type_get_type_name() {
-    return rust::String(Standard_Type::get_type_name());
-}
-
-inline std::unique_ptr<HandleStandardType> Standard_Type_to_handle(std::unique_ptr<Standard_Type> obj) {
-    return std::make_unique<HandleStandardType>(obj.release());
-}
-
-// ========================
-// Standard_ProgramError wrappers
-// ========================
-
-inline std::unique_ptr<Standard_ProgramError> Standard_ProgramError_ctor() {
-    return std::make_unique<Standard_ProgramError>();
-}
-
-inline std::unique_ptr<Standard_ProgramError> Standard_ProgramError_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_ProgramError>(std::string(theMessage).c_str());
-}
-
-inline std::unique_ptr<Standard_ProgramError> Standard_ProgramError_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_ProgramError>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-
-inline void Standard_ProgramError_Raise_charptr(rust::Str theMessage) {
-    Standard_ProgramError::Raise(std::string(theMessage).c_str());
-}
-
-inline void Standard_ProgramError_Raise_sstream(Standard_SStream& theMessage) {
-    Standard_ProgramError::Raise(theMessage);
-}
-
-inline std::unique_ptr<opencascade::handle<Standard_ProgramError>> Standard_ProgramError_NewInstance_charptr(rust::Str theMessage) {
-    return std::make_unique<opencascade::handle<Standard_ProgramError>>(Standard_ProgramError::NewInstance(std::string(theMessage).c_str()));
-}
-
-inline std::unique_ptr<opencascade::handle<Standard_ProgramError>> Standard_ProgramError_NewInstance_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<opencascade::handle<Standard_ProgramError>>(Standard_ProgramError::NewInstance(std::string(theMessage).c_str(), std::string(theStackTrace).c_str()));
-}
-
-inline rust::String Standard_ProgramError_get_type_name() {
-    return rust::String(Standard_ProgramError::get_type_name());
-}
-
-
-// ========================
 // Standard_Failure wrappers
 // ========================
 
@@ -245,76 +120,103 @@ inline std::unique_ptr<HandleStandardFailure> Standard_Failure_to_handle(std::un
 }
 
 // ========================
-// Standard_TypeMismatch wrappers
+// Standard_Mutex wrappers
 // ========================
 
-inline std::unique_ptr<Standard_TypeMismatch> Standard_TypeMismatch_ctor() {
-    return std::make_unique<Standard_TypeMismatch>();
-}
-
-inline std::unique_ptr<Standard_TypeMismatch> Standard_TypeMismatch_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_TypeMismatch>(std::string(theMessage).c_str());
-}
-
-inline std::unique_ptr<Standard_TypeMismatch> Standard_TypeMismatch_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_TypeMismatch>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-
-inline void Standard_TypeMismatch_Raise_charptr(rust::Str theMessage) {
-    Standard_TypeMismatch::Raise(std::string(theMessage).c_str());
-}
-
-inline void Standard_TypeMismatch_Raise_sstream(Standard_SStream& theMessage) {
-    Standard_TypeMismatch::Raise(theMessage);
-}
-
-inline std::unique_ptr<opencascade::handle<Standard_TypeMismatch>> Standard_TypeMismatch_NewInstance_charptr(rust::Str theMessage) {
-    return std::make_unique<opencascade::handle<Standard_TypeMismatch>>(Standard_TypeMismatch::NewInstance(std::string(theMessage).c_str()));
-}
-
-inline std::unique_ptr<opencascade::handle<Standard_TypeMismatch>> Standard_TypeMismatch_NewInstance_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<opencascade::handle<Standard_TypeMismatch>>(Standard_TypeMismatch::NewInstance(std::string(theMessage).c_str(), std::string(theStackTrace).c_str()));
-}
-
-inline rust::String Standard_TypeMismatch_get_type_name() {
-    return rust::String(Standard_TypeMismatch::get_type_name());
+inline std::unique_ptr<Standard_Mutex> Standard_Mutex_ctor() {
+    return std::make_unique<Standard_Mutex>();
 }
 
 
 // ========================
-// Standard_NoSuchObject wrappers
+// Standard_DumpValue wrappers
 // ========================
 
-inline std::unique_ptr<Standard_NoSuchObject> Standard_NoSuchObject_ctor() {
-    return std::make_unique<Standard_NoSuchObject>();
+inline std::unique_ptr<Standard_DumpValue> Standard_DumpValue_ctor() {
+    return std::make_unique<Standard_DumpValue>();
 }
 
-inline std::unique_ptr<Standard_NoSuchObject> Standard_NoSuchObject_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_NoSuchObject>(std::string(theMessage).c_str());
+inline std::unique_ptr<Standard_DumpValue> Standard_DumpValue_ctor_asciistring_int(const TCollection_AsciiString& theValue, Standard_Integer theStartPos) {
+    return std::make_unique<Standard_DumpValue>(theValue, theStartPos);
 }
 
-inline std::unique_ptr<Standard_NoSuchObject> Standard_NoSuchObject_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_NoSuchObject>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
+
+// ========================
+// Standard_Dump wrappers
+// ========================
+
+inline std::unique_ptr<TCollection_AsciiString> Standard_Dump_Text(const Standard_SStream& theStream) {
+    return std::make_unique<TCollection_AsciiString>(Standard_Dump::Text(theStream));
 }
 
-inline void Standard_NoSuchObject_Raise_charptr(rust::Str theMessage) {
-    Standard_NoSuchObject::Raise(std::string(theMessage).c_str());
+inline std::unique_ptr<TCollection_AsciiString> Standard_Dump_FormatJson(const Standard_SStream& theStream, Standard_Integer theIndent) {
+    return std::make_unique<TCollection_AsciiString>(Standard_Dump::FormatJson(theStream, theIndent));
 }
 
-inline void Standard_NoSuchObject_Raise_sstream(Standard_SStream& theMessage) {
-    Standard_NoSuchObject::Raise(theMessage);
+inline Standard_Boolean Standard_Dump_HasChildKey(const TCollection_AsciiString& theSourceValue) {
+    return Standard_Dump::HasChildKey(theSourceValue);
 }
 
-inline std::unique_ptr<opencascade::handle<Standard_NoSuchObject>> Standard_NoSuchObject_NewInstance_charptr(rust::Str theMessage) {
-    return std::make_unique<opencascade::handle<Standard_NoSuchObject>>(Standard_NoSuchObject::NewInstance(std::string(theMessage).c_str()));
+inline std::unique_ptr<TCollection_AsciiString> Standard_Dump_GetPointerPrefix() {
+    return std::make_unique<TCollection_AsciiString>(Standard_Dump::GetPointerPrefix());
 }
 
-inline std::unique_ptr<opencascade::handle<Standard_NoSuchObject>> Standard_NoSuchObject_NewInstance_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<opencascade::handle<Standard_NoSuchObject>>(Standard_NoSuchObject::NewInstance(std::string(theMessage).c_str(), std::string(theStackTrace).c_str()));
+inline std::unique_ptr<TCollection_AsciiString> Standard_Dump_GetPointerInfo_handletransient_bool(const opencascade::handle<Standard_Transient>& thePointer, Standard_Boolean isShortInfo) {
+    return std::make_unique<TCollection_AsciiString>(Standard_Dump::GetPointerInfo(thePointer, isShortInfo));
 }
 
-inline rust::String Standard_NoSuchObject_get_type_name() {
-    return rust::String(Standard_NoSuchObject::get_type_name());
+inline Standard_Boolean Standard_Dump_ProcessStreamName(const TCollection_AsciiString& theStreamStr, const TCollection_AsciiString& theName, Standard_Integer& theStreamPos) {
+    return Standard_Dump::ProcessStreamName(theStreamStr, theName, theStreamPos);
+}
+
+inline Standard_Boolean Standard_Dump_ProcessFieldName(const TCollection_AsciiString& theStreamStr, const TCollection_AsciiString& theName, Standard_Integer& theStreamPos) {
+    return Standard_Dump::ProcessFieldName(theStreamStr, theName, theStreamPos);
+}
+
+inline Standard_Boolean Standard_Dump_InitRealValues(const TCollection_AsciiString& theStreamStr, Standard_Integer& theStreamPos, Standard_Integer theCount) {
+    return Standard_Dump::InitRealValues(theStreamStr, theStreamPos, theCount);
+}
+
+inline Standard_Boolean Standard_Dump_InitValue(const TCollection_AsciiString& theStreamStr, Standard_Integer& theStreamPos, TCollection_AsciiString& theValue) {
+    return Standard_Dump::InitValue(theStreamStr, theStreamPos, theValue);
+}
+
+inline std::unique_ptr<TCollection_AsciiString> Standard_Dump_DumpFieldToName(const TCollection_AsciiString& theField) {
+    return std::make_unique<TCollection_AsciiString>(Standard_Dump::DumpFieldToName(theField));
+}
+
+
+// ========================
+// Standard_Transient wrappers
+// ========================
+
+inline std::unique_ptr<Standard_Transient> Standard_Transient_ctor() {
+    return std::make_unique<Standard_Transient>();
+}
+
+inline std::unique_ptr<Standard_Transient> Standard_Transient_ctor_transient(const Standard_Transient& arg0) {
+    return std::make_unique<Standard_Transient>(arg0);
+}
+
+inline Standard_Boolean Standard_Transient_IsInstance(const Standard_Transient& self, rust::Str theTypeName) {
+    return self.IsInstance(std::string(theTypeName).c_str());
+}
+
+inline Standard_Boolean Standard_Transient_IsKind(const Standard_Transient& self, rust::Str theTypeName) {
+    return self.IsKind(std::string(theTypeName).c_str());
+}
+
+inline rust::String Standard_Transient_get_type_name() {
+    return rust::String(Standard_Transient::get_type_name());
+}
+
+
+// ========================
+// Standard wrappers
+// ========================
+
+inline Standard_Integer Standard_Purge() {
+    return Standard::Purge();
 }
 
 
@@ -467,6 +369,67 @@ inline rust::String Standard_OutOfRange_get_type_name() {
 
 
 // ========================
+// Standard_ProgramError wrappers
+// ========================
+
+inline std::unique_ptr<Standard_ProgramError> Standard_ProgramError_ctor() {
+    return std::make_unique<Standard_ProgramError>();
+}
+
+inline std::unique_ptr<Standard_ProgramError> Standard_ProgramError_ctor_charptr(rust::Str theMessage) {
+    return std::make_unique<Standard_ProgramError>(std::string(theMessage).c_str());
+}
+
+inline std::unique_ptr<Standard_ProgramError> Standard_ProgramError_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
+    return std::make_unique<Standard_ProgramError>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
+}
+
+inline void Standard_ProgramError_Raise_charptr(rust::Str theMessage) {
+    Standard_ProgramError::Raise(std::string(theMessage).c_str());
+}
+
+inline void Standard_ProgramError_Raise_sstream(Standard_SStream& theMessage) {
+    Standard_ProgramError::Raise(theMessage);
+}
+
+inline std::unique_ptr<opencascade::handle<Standard_ProgramError>> Standard_ProgramError_NewInstance_charptr(rust::Str theMessage) {
+    return std::make_unique<opencascade::handle<Standard_ProgramError>>(Standard_ProgramError::NewInstance(std::string(theMessage).c_str()));
+}
+
+inline std::unique_ptr<opencascade::handle<Standard_ProgramError>> Standard_ProgramError_NewInstance_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
+    return std::make_unique<opencascade::handle<Standard_ProgramError>>(Standard_ProgramError::NewInstance(std::string(theMessage).c_str(), std::string(theStackTrace).c_str()));
+}
+
+inline rust::String Standard_ProgramError_get_type_name() {
+    return rust::String(Standard_ProgramError::get_type_name());
+}
+
+
+// ========================
+// Standard_Type wrappers
+// ========================
+
+inline Standard_Boolean Standard_Type_SubType(const Standard_Type& self, rust::Str theOther) {
+    return self.SubType(std::string(theOther).c_str());
+}
+
+inline rust::String Standard_Type_SystemName(const Standard_Type& self) {
+    return rust::String(self.SystemName());
+}
+
+inline rust::String Standard_Type_Name(const Standard_Type& self) {
+    return rust::String(self.Name());
+}
+
+inline rust::String Standard_Type_get_type_name() {
+    return rust::String(Standard_Type::get_type_name());
+}
+
+inline std::unique_ptr<HandleStandardType> Standard_Type_to_handle(std::unique_ptr<Standard_Type> obj) {
+    return std::make_unique<HandleStandardType>(obj.release());
+}
+
+// ========================
 // Standard_RangeError wrappers
 // ========================
 
@@ -578,6 +541,101 @@ inline rust::String Standard_DimensionError_get_type_name() {
 
 
 // ========================
+// Standard_TypeMismatch wrappers
+// ========================
+
+inline std::unique_ptr<Standard_TypeMismatch> Standard_TypeMismatch_ctor() {
+    return std::make_unique<Standard_TypeMismatch>();
+}
+
+inline std::unique_ptr<Standard_TypeMismatch> Standard_TypeMismatch_ctor_charptr(rust::Str theMessage) {
+    return std::make_unique<Standard_TypeMismatch>(std::string(theMessage).c_str());
+}
+
+inline std::unique_ptr<Standard_TypeMismatch> Standard_TypeMismatch_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
+    return std::make_unique<Standard_TypeMismatch>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
+}
+
+inline void Standard_TypeMismatch_Raise_charptr(rust::Str theMessage) {
+    Standard_TypeMismatch::Raise(std::string(theMessage).c_str());
+}
+
+inline void Standard_TypeMismatch_Raise_sstream(Standard_SStream& theMessage) {
+    Standard_TypeMismatch::Raise(theMessage);
+}
+
+inline std::unique_ptr<opencascade::handle<Standard_TypeMismatch>> Standard_TypeMismatch_NewInstance_charptr(rust::Str theMessage) {
+    return std::make_unique<opencascade::handle<Standard_TypeMismatch>>(Standard_TypeMismatch::NewInstance(std::string(theMessage).c_str()));
+}
+
+inline std::unique_ptr<opencascade::handle<Standard_TypeMismatch>> Standard_TypeMismatch_NewInstance_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
+    return std::make_unique<opencascade::handle<Standard_TypeMismatch>>(Standard_TypeMismatch::NewInstance(std::string(theMessage).c_str(), std::string(theStackTrace).c_str()));
+}
+
+inline rust::String Standard_TypeMismatch_get_type_name() {
+    return rust::String(Standard_TypeMismatch::get_type_name());
+}
+
+
+// ========================
+// Standard_NoSuchObject wrappers
+// ========================
+
+inline std::unique_ptr<Standard_NoSuchObject> Standard_NoSuchObject_ctor() {
+    return std::make_unique<Standard_NoSuchObject>();
+}
+
+inline std::unique_ptr<Standard_NoSuchObject> Standard_NoSuchObject_ctor_charptr(rust::Str theMessage) {
+    return std::make_unique<Standard_NoSuchObject>(std::string(theMessage).c_str());
+}
+
+inline std::unique_ptr<Standard_NoSuchObject> Standard_NoSuchObject_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
+    return std::make_unique<Standard_NoSuchObject>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
+}
+
+inline void Standard_NoSuchObject_Raise_charptr(rust::Str theMessage) {
+    Standard_NoSuchObject::Raise(std::string(theMessage).c_str());
+}
+
+inline void Standard_NoSuchObject_Raise_sstream(Standard_SStream& theMessage) {
+    Standard_NoSuchObject::Raise(theMessage);
+}
+
+inline std::unique_ptr<opencascade::handle<Standard_NoSuchObject>> Standard_NoSuchObject_NewInstance_charptr(rust::Str theMessage) {
+    return std::make_unique<opencascade::handle<Standard_NoSuchObject>>(Standard_NoSuchObject::NewInstance(std::string(theMessage).c_str()));
+}
+
+inline std::unique_ptr<opencascade::handle<Standard_NoSuchObject>> Standard_NoSuchObject_NewInstance_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
+    return std::make_unique<opencascade::handle<Standard_NoSuchObject>>(Standard_NoSuchObject::NewInstance(std::string(theMessage).c_str(), std::string(theStackTrace).c_str()));
+}
+
+inline rust::String Standard_NoSuchObject_get_type_name() {
+    return rust::String(Standard_NoSuchObject::get_type_name());
+}
+
+
+// ========================
+// Standard_ErrorHandler wrappers
+// ========================
+
+inline std::unique_ptr<Standard_ErrorHandler> Standard_ErrorHandler_ctor() {
+    return std::make_unique<Standard_ErrorHandler>();
+}
+
+inline std::unique_ptr<opencascade::handle<Standard_Failure>> Standard_ErrorHandler_Error(const Standard_ErrorHandler& self) {
+    return std::make_unique<opencascade::handle<Standard_Failure>>(self.Error());
+}
+
+inline std::unique_ptr<opencascade::handle<Standard_Failure>> Standard_ErrorHandler_LastCaughtError() {
+    return std::make_unique<opencascade::handle<Standard_Failure>>(Standard_ErrorHandler::LastCaughtError());
+}
+
+inline Standard_Boolean Standard_ErrorHandler_IsInTryBlock() {
+    return Standard_ErrorHandler::IsInTryBlock();
+}
+
+
+// ========================
 // Standard_NumericError wrappers
 // ========================
 
@@ -685,64 +743,6 @@ inline std::unique_ptr<opencascade::handle<Standard_ConstructionError>> Standard
 
 inline rust::String Standard_ConstructionError_get_type_name() {
     return rust::String(Standard_ConstructionError::get_type_name());
-}
-
-
-// ========================
-// Standard_DumpValue wrappers
-// ========================
-
-inline std::unique_ptr<Standard_DumpValue> Standard_DumpValue_ctor() {
-    return std::make_unique<Standard_DumpValue>();
-}
-
-inline std::unique_ptr<Standard_DumpValue> Standard_DumpValue_ctor_asciistring_int(const TCollection_AsciiString& theValue, Standard_Integer theStartPos) {
-    return std::make_unique<Standard_DumpValue>(theValue, theStartPos);
-}
-
-
-// ========================
-// Standard_Dump wrappers
-// ========================
-
-inline std::unique_ptr<TCollection_AsciiString> Standard_Dump_Text(const Standard_SStream& theStream) {
-    return std::make_unique<TCollection_AsciiString>(Standard_Dump::Text(theStream));
-}
-
-inline std::unique_ptr<TCollection_AsciiString> Standard_Dump_FormatJson(const Standard_SStream& theStream, Standard_Integer theIndent) {
-    return std::make_unique<TCollection_AsciiString>(Standard_Dump::FormatJson(theStream, theIndent));
-}
-
-inline Standard_Boolean Standard_Dump_HasChildKey(const TCollection_AsciiString& theSourceValue) {
-    return Standard_Dump::HasChildKey(theSourceValue);
-}
-
-inline std::unique_ptr<TCollection_AsciiString> Standard_Dump_GetPointerPrefix() {
-    return std::make_unique<TCollection_AsciiString>(Standard_Dump::GetPointerPrefix());
-}
-
-inline std::unique_ptr<TCollection_AsciiString> Standard_Dump_GetPointerInfo_handletransient_bool(const opencascade::handle<Standard_Transient>& thePointer, Standard_Boolean isShortInfo) {
-    return std::make_unique<TCollection_AsciiString>(Standard_Dump::GetPointerInfo(thePointer, isShortInfo));
-}
-
-inline Standard_Boolean Standard_Dump_ProcessStreamName(const TCollection_AsciiString& theStreamStr, const TCollection_AsciiString& theName, Standard_Integer& theStreamPos) {
-    return Standard_Dump::ProcessStreamName(theStreamStr, theName, theStreamPos);
-}
-
-inline Standard_Boolean Standard_Dump_ProcessFieldName(const TCollection_AsciiString& theStreamStr, const TCollection_AsciiString& theName, Standard_Integer& theStreamPos) {
-    return Standard_Dump::ProcessFieldName(theStreamStr, theName, theStreamPos);
-}
-
-inline Standard_Boolean Standard_Dump_InitRealValues(const TCollection_AsciiString& theStreamStr, Standard_Integer& theStreamPos, Standard_Integer theCount) {
-    return Standard_Dump::InitRealValues(theStreamStr, theStreamPos, theCount);
-}
-
-inline Standard_Boolean Standard_Dump_InitValue(const TCollection_AsciiString& theStreamStr, Standard_Integer& theStreamPos, TCollection_AsciiString& theValue) {
-    return Standard_Dump::InitValue(theStreamStr, theStreamPos, theValue);
-}
-
-inline std::unique_ptr<TCollection_AsciiString> Standard_Dump_DumpFieldToName(const TCollection_AsciiString& theField) {
-    return std::make_unique<TCollection_AsciiString>(Standard_Dump::DumpFieldToName(theField));
 }
 
 

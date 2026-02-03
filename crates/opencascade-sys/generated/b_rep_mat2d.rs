@@ -11,113 +11,75 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::BisectingLocus;
+impl BisectingLocus {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::BisectingLocus_ctor()
+    }
+
+    #[doc = "Returns <theGraph> of <me>."]
+    pub fn graph(&self) -> cxx::UniquePtr<ffi::HandleMATGraph> {
+        ffi::BisectingLocus_graph(self)
+    }
+
+    #[doc = "Returns the BasicElts located at the position <Index> on the contour designed by <IndLine>. Remark: the BasicElts on a contour are sorted."]
+    pub fn basic_elt(&self, IndLine: i32, Index: i32) -> cxx::UniquePtr<ffi::HandleMATBasicElt> {
+        ffi::BisectingLocus_basic_elt(self, IndLine, Index)
+    }
+
+    #[doc = "Returns the geometry linked to the <BasicElt>."]
+    pub fn geom_elt_handlebasicelt(
+        &self,
+        aBasicElt: &ffi::HandleMATBasicElt,
+    ) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::BisectingLocus_geom_elt_handlebasicelt(self, aBasicElt)
+    }
+
+    #[doc = "Returns the geometry of  type <gp> linked to the <Node>."]
+    pub fn geom_elt_handlenode(&self, aNode: &ffi::HandleMATNode) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
+        ffi::BisectingLocus_geom_elt_handlenode(self, aNode)
+    }
+
+    #[doc = "Returns the  geometry of type <Bissec> linked   to the arc <ARC>. <Reverse> is False when the FirstNode of <anArc> correspond to the first point of geometry."]
+    pub fn geom_bis(
+        &self,
+        anArc: &ffi::HandleMATArc,
+        Reverse: &mut bool,
+    ) -> cxx::UniquePtr<ffi::Bisector_Bisec> {
+        ffi::BisectingLocus_geom_bis(self, anArc, Reverse)
+    }
+}
+pub use ffi::LinkTopoBilo;
+impl LinkTopoBilo {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::LinkTopoBilo_ctor()
+    }
+
+    #[doc = "Constructs the links Between S and BiLo. raises if <S> is not a face."]
+    pub fn new_explorer_bisectinglocus(
+        Explo: &ffi::BRepMAT2d_Explorer,
+        BiLo: &ffi::BisectingLocus,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::LinkTopoBilo_ctor_explorer_bisectinglocus(Explo, BiLo)
+    }
+
+    #[doc = "Returns the current BasicElt."]
+    pub fn value(&self) -> cxx::UniquePtr<ffi::HandleMATBasicElt> {
+        ffi::LinkTopoBilo_value(self)
+    }
+
+    #[doc = "Returns the Shape linked to <aBE>."]
+    pub fn generating_shape(
+        &self,
+        aBE: &ffi::HandleMATBasicElt,
+    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
+        ffi::LinkTopoBilo_generating_shape(self, aBE)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_mat2d.hxx");
-        #[doc = "Bisec from bisector module"]
-        type Bisector_Bisec = crate::bisector::ffi::Bisec;
-        #[doc = "BoundedCurve from geom2d module"]
-        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
-        type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Curve from geom2d module"]
-        type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "Ellipse from geom2d module"]
-        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "Geometry from geom2d module"]
-        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "TrimmedCurve from geom2d module"]
-        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
-        #[doc = "BasicElt from mat module"]
-        type MAT_BasicElt = crate::mat::ffi::BasicElt;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "BRepMAT2d_Explorer"]
-        type BRepMAT2d_Explorer;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "MAT_Arc"]
-        type MAT_Arc;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "MAT_Graph"]
-        type MAT_Graph;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "MAT_Node"]
-        type MAT_Node;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dGeometry"]
-        type HandleGeom2dGeometry;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMATArc"]
-        type HandleMATArc;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMATBasicElt"]
-        type HandleMATBasicElt;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMATGraph"]
-        type HandleMATGraph;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleMATNode"]
-        type HandleMATNode;
         #[doc = " ======================== BRepMAT2d_BisectingLocus ========================"]
         #[doc = "/// **Source:** `BRepMAT2d_BisectingLocus.hxx` - `BRepMAT2d_BisectingLocus`"]
         #[doc = ""]
@@ -206,72 +168,150 @@ pub(crate) mod ffi {
             self_: &LinkTopoBilo,
             aBE: &HandleMATBasicElt,
         ) -> UniquePtr<TopoDS_Shape>;
+        #[doc = "Bisec from bisector module"]
+        type Bisector_Bisec = crate::bisector::ffi::Bisec;
+        #[doc = "BoundedCurve from geom2d module"]
+        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
+        #[doc = "Conic from geom2d module"]
+        type Geom2d_Conic = crate::geom2d::ffi::Conic;
+        #[doc = "Curve from geom2d module"]
+        type Geom2d_Curve = crate::geom2d::ffi::Curve;
+        #[doc = "Ellipse from geom2d module"]
+        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
+        #[doc = "Geometry from geom2d module"]
+        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
+        #[doc = "TrimmedCurve from geom2d module"]
+        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
+        #[doc = "BasicElt from mat module"]
+        type MAT_BasicElt = crate::mat::ffi::BasicElt;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "BRepMAT2d_Explorer"]
+        type BRepMAT2d_Explorer;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "MAT_Arc"]
+        type MAT_Arc;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "MAT_Graph"]
+        type MAT_Graph;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "MAT_Node"]
+        type MAT_Node;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dGeometry"]
+        type HandleGeom2dGeometry;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMATArc"]
+        type HandleMATArc;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMATBasicElt"]
+        type HandleMATBasicElt;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMATGraph"]
+        type HandleMATGraph;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleMATNode"]
+        type HandleMATNode;
     }
     impl UniquePtr<BisectingLocus> {}
     impl UniquePtr<LinkTopoBilo> {}
-}
-pub use ffi::BisectingLocus;
-impl BisectingLocus {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::BisectingLocus_ctor()
-    }
-
-    #[doc = "Returns <theGraph> of <me>."]
-    pub fn graph(&self) -> cxx::UniquePtr<ffi::HandleMATGraph> {
-        ffi::BisectingLocus_graph(self)
-    }
-
-    #[doc = "Returns the BasicElts located at the position <Index> on the contour designed by <IndLine>. Remark: the BasicElts on a contour are sorted."]
-    pub fn basic_elt(&self, IndLine: i32, Index: i32) -> cxx::UniquePtr<ffi::HandleMATBasicElt> {
-        ffi::BisectingLocus_basic_elt(self, IndLine, Index)
-    }
-
-    #[doc = "Returns the geometry linked to the <BasicElt>."]
-    pub fn geom_elt_handlebasicelt(
-        &self,
-        aBasicElt: &ffi::HandleMATBasicElt,
-    ) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::BisectingLocus_geom_elt_handlebasicelt(self, aBasicElt)
-    }
-
-    #[doc = "Returns the geometry of  type <gp> linked to the <Node>."]
-    pub fn geom_elt_handlenode(&self, aNode: &ffi::HandleMATNode) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
-        ffi::BisectingLocus_geom_elt_handlenode(self, aNode)
-    }
-
-    #[doc = "Returns the  geometry of type <Bissec> linked   to the arc <ARC>. <Reverse> is False when the FirstNode of <anArc> correspond to the first point of geometry."]
-    pub fn geom_bis(
-        &self,
-        anArc: &ffi::HandleMATArc,
-        Reverse: &mut bool,
-    ) -> cxx::UniquePtr<ffi::Bisector_Bisec> {
-        ffi::BisectingLocus_geom_bis(self, anArc, Reverse)
-    }
-}
-pub use ffi::LinkTopoBilo;
-impl LinkTopoBilo {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::LinkTopoBilo_ctor()
-    }
-
-    #[doc = "Constructs the links Between S and BiLo. raises if <S> is not a face."]
-    pub fn new_explorer_bisectinglocus(
-        Explo: &ffi::BRepMAT2d_Explorer,
-        BiLo: &ffi::BisectingLocus,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::LinkTopoBilo_ctor_explorer_bisectinglocus(Explo, BiLo)
-    }
-
-    #[doc = "Returns the current BasicElt."]
-    pub fn value(&self) -> cxx::UniquePtr<ffi::HandleMATBasicElt> {
-        ffi::LinkTopoBilo_value(self)
-    }
-
-    #[doc = "Returns the Shape linked to <aBE>."]
-    pub fn generating_shape(
-        &self,
-        aBE: &ffi::HandleMATBasicElt,
-    ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
-        ffi::LinkTopoBilo_generating_shape(self, aBE)
-    }
 }

@@ -10,10 +10,64 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::ReShape;
+impl ReShape {
+    #[doc = "Returns an empty Reshape"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::ReShape_ctor()
+    }
+
+    #[doc = "Upcast to BRepTools_ReShape"]
+    pub fn as_b_rep_tools_re_shape(&self) -> &crate::b_rep_tools::ReShape {
+        ffi::re_shape_as_b_rep_tools_re_shape(self)
+    }
+
+    #[doc = "Upcast to BRepTools_ReShape (mutable)"]
+    pub fn as_b_rep_tools_re_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_tools::ReShape> {
+        ffi::re_shape_as_b_rep_tools_re_shape_mut(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::ReShape_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_shape_build.hxx");
+        #[doc = " ======================== ShapeBuild_ReShape ========================"]
+        #[doc = "/// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape`"]
+        #[doc = ""]
+        #[doc = "Rebuilds a Shape by making pre-defined substitutions on some of its components In a first phase, it records requests to replace or remove some individual shapes For each shape, the last given request is recorded Requests may be applied \"Oriented\" (i.e. only to an item with the SAME orientation) or not (the orientation of replacing shape is respectful of that of the original one) Then, these requests may be applied to any shape which may contain one or more of these individual shapes"]
+        #[cxx_name = "ShapeBuild_ReShape"]
+        type ReShape;
+        #[doc = "/// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape::ShapeBuild_ReShape()`"]
+        #[doc = ""]
+        #[doc = "Returns an empty Reshape"]
+        #[cxx_name = "ShapeBuild_ReShape_ctor"]
+        fn ReShape_ctor() -> UniquePtr<ReShape>;
+        #[doc = "Returns a complete substitution status for a shape 0  : not recorded,   <newsh> = original <shape> < 0: to be removed,  <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape."]
+        #[cxx_name = "Status"]
+        fn status_shape2_bool(
+            self: Pin<&mut ReShape>,
+            shape: &TopoDS_Shape,
+            newsh: Pin<&mut TopoDS_Shape>,
+            last: bool,
+        ) -> i32;
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &ReShape) -> &HandleStandardType;
+        #[cxx_name = "ShapeBuild_ReShape_get_type_name"]
+        fn ReShape_get_type_name() -> String;
+        #[doc = "Upcast ShapeBuild_ReShape to BRepTools_ReShape"]
+        #[cxx_name = "ShapeBuild_ReShape_as_BRepTools_ReShape"]
+        fn re_shape_as_b_rep_tools_re_shape(self_: &ReShape) -> &BRepTools_ReShape;
+        #[doc = "Upcast ShapeBuild_ReShape to BRepTools_ReShape (mutable)"]
+        #[cxx_name = "ShapeBuild_ReShape_as_BRepTools_ReShape_mut"]
+        fn re_shape_as_b_rep_tools_re_shape_mut(
+            self_: Pin<&mut ReShape>,
+        ) -> Pin<&mut BRepTools_ReShape>;
         #[doc = "BRepTools from b_rep_tools module"]
         type BRepTools = crate::b_rep_tools::ffi::BRepTools;
         #[doc = "History from b_rep_tools module"]
@@ -93,60 +147,6 @@ pub(crate) mod ffi {
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = " ======================== ShapeBuild_ReShape ========================"]
-        #[doc = "/// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape`"]
-        #[doc = ""]
-        #[doc = "Rebuilds a Shape by making pre-defined substitutions on some of its components In a first phase, it records requests to replace or remove some individual shapes For each shape, the last given request is recorded Requests may be applied \"Oriented\" (i.e. only to an item with the SAME orientation) or not (the orientation of replacing shape is respectful of that of the original one) Then, these requests may be applied to any shape which may contain one or more of these individual shapes"]
-        #[cxx_name = "ShapeBuild_ReShape"]
-        type ReShape;
-        #[doc = "/// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape::ShapeBuild_ReShape()`"]
-        #[doc = ""]
-        #[doc = "Returns an empty Reshape"]
-        #[cxx_name = "ShapeBuild_ReShape_ctor"]
-        fn ReShape_ctor() -> UniquePtr<ReShape>;
-        #[doc = "Returns a complete substitution status for a shape 0  : not recorded,   <newsh> = original <shape> < 0: to be removed,  <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape."]
-        #[cxx_name = "Status"]
-        fn status_shape2_bool(
-            self: Pin<&mut ReShape>,
-            shape: &TopoDS_Shape,
-            newsh: Pin<&mut TopoDS_Shape>,
-            last: bool,
-        ) -> i32;
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &ReShape) -> &HandleStandardType;
-        #[cxx_name = "ShapeBuild_ReShape_get_type_name"]
-        fn ReShape_get_type_name() -> String;
-        #[doc = "Upcast ShapeBuild_ReShape to BRepTools_ReShape"]
-        #[cxx_name = "ShapeBuild_ReShape_as_BRepTools_ReShape"]
-        fn re_shape_as_b_rep_tools_re_shape(self_: &ReShape) -> &BRepTools_ReShape;
-        #[doc = "Upcast ShapeBuild_ReShape to BRepTools_ReShape (mutable)"]
-        #[cxx_name = "ShapeBuild_ReShape_as_BRepTools_ReShape_mut"]
-        fn re_shape_as_b_rep_tools_re_shape_mut(
-            self_: Pin<&mut ReShape>,
-        ) -> Pin<&mut BRepTools_ReShape>;
     }
     impl UniquePtr<ReShape> {}
-}
-pub use ffi::ReShape;
-impl ReShape {
-    #[doc = "Returns an empty Reshape"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::ReShape_ctor()
-    }
-
-    #[doc = "Upcast to BRepTools_ReShape"]
-    pub fn as_b_rep_tools_re_shape(&self) -> &crate::b_rep_tools::ReShape {
-        ffi::re_shape_as_b_rep_tools_re_shape(self)
-    }
-
-    #[doc = "Upcast to BRepTools_ReShape (mutable)"]
-    pub fn as_b_rep_tools_re_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_tools::ReShape> {
-        ffi::re_shape_as_b_rep_tools_re_shape_mut(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::ReShape_get_type_name()
-    }
 }

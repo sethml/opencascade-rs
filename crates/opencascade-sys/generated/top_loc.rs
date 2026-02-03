@@ -11,97 +11,86 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Location;
+impl Location {
+    #[doc = "Constructs an empty local coordinate system object. Note: A Location constructed from a default datum is said to be \"empty\"."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Location_ctor()
+    }
+
+    #[doc = "Constructs the local coordinate system object defined by the transformation T. T invokes in turn, a TopLoc_Datum3D object."]
+    pub fn new_trsf(T: &ffi::gp_Trsf) -> cxx::UniquePtr<Self> {
+        ffi::Location_ctor_trsf(T)
+    }
+
+    #[doc = "Constructs the local coordinate system object defined by the 3D datum D. Exceptions Standard_ConstructionError if the transformation T does not represent a 3D coordinate system."]
+    pub fn new_handledatum3d(D: &ffi::HandleTopLocDatum3D) -> cxx::UniquePtr<Self> {
+        ffi::Location_ctor_handledatum3d(D)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::Location_to_owned(self)
+    }
+
+    #[doc = "Returns the inverse of <me>. <me> * Inverted() is an Identity."]
+    pub fn inverted(&self) -> cxx::UniquePtr<ffi::Location> {
+        ffi::Location_inverted(self)
+    }
+
+    #[doc = "Returns <me> * <Other>, the  elementary datums are concatenated."]
+    pub fn multiplied(&self, Other: &ffi::Location) -> cxx::UniquePtr<ffi::Location> {
+        ffi::Location_multiplied(self, Other)
+    }
+
+    #[doc = "Returns  <me> / <Other>."]
+    pub fn divided(&self, Other: &ffi::Location) -> cxx::UniquePtr<ffi::Location> {
+        ffi::Location_divided(self, Other)
+    }
+
+    #[doc = "Returns <Other>.Inverted() * <me>."]
+    pub fn predivided(&self, Other: &ffi::Location) -> cxx::UniquePtr<ffi::Location> {
+        ffi::Location_predivided(self, Other)
+    }
+
+    #[doc = "Returns me at the power <pwr>.   If <pwr>  is zero returns  Identity.  <pwr> can  be lower  than zero (usual meaning for powers)."]
+    pub fn powered(&self, pwr: i32) -> cxx::UniquePtr<ffi::Location> {
+        ffi::Location_powered(self, pwr)
+    }
+
+    pub fn scale_prec() -> f64 {
+        ffi::Location_scale_prec()
+    }
+}
+pub use ffi::SListOfItemLocation;
+impl SListOfItemLocation {
+    #[doc = "Creates an empty List."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::SListOfItemLocation_ctor()
+    }
+
+    #[doc = "Creates a List with <anItem> as value  and <aTail> as tail."]
+    pub fn new_itemlocation_slistofitemlocation(
+        anItem: &ffi::TopLoc_ItemLocation,
+        aTail: &ffi::SListOfItemLocation,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::SListOfItemLocation_ctor_itemlocation_slistofitemlocation(anItem, aTail)
+    }
+
+    #[doc = "Creates a list from an other one. The lists  are shared."]
+    pub fn new_slistofitemlocation(Other: &ffi::SListOfItemLocation) -> cxx::UniquePtr<Self> {
+        ffi::SListOfItemLocation_ctor_slistofitemlocation(Other)
+    }
+
+    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        ffi::SListOfItemLocation_to_owned(self)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_top_loc.hxx");
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopLoc_Datum3D"]
-        type TopLoc_Datum3D;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopLoc_ItemLocation"]
-        type TopLoc_ItemLocation;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTopLocDatum3D"]
-        type HandleTopLocDatum3D;
         #[doc = " ======================== TopLoc_Location ========================"]
         #[doc = "/// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location`"]
         #[doc = ""]
@@ -234,83 +223,134 @@ pub(crate) mod ffi {
         fn SListOfItemLocation_to_owned(
             self_: &SListOfItemLocation,
         ) -> UniquePtr<SListOfItemLocation>;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopLoc_Datum3D"]
+        type TopLoc_Datum3D;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopLoc_ItemLocation"]
+        type TopLoc_ItemLocation;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTopLocDatum3D"]
+        type HandleTopLocDatum3D;
     }
     impl UniquePtr<Location> {}
     impl UniquePtr<SListOfItemLocation> {}
-}
-pub use ffi::Location;
-impl Location {
-    #[doc = "Constructs an empty local coordinate system object. Note: A Location constructed from a default datum is said to be \"empty\"."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Location_ctor()
-    }
-
-    #[doc = "Constructs the local coordinate system object defined by the transformation T. T invokes in turn, a TopLoc_Datum3D object."]
-    pub fn new_trsf(T: &ffi::gp_Trsf) -> cxx::UniquePtr<Self> {
-        ffi::Location_ctor_trsf(T)
-    }
-
-    #[doc = "Constructs the local coordinate system object defined by the 3D datum D. Exceptions Standard_ConstructionError if the transformation T does not represent a 3D coordinate system."]
-    pub fn new_handledatum3d(D: &ffi::HandleTopLocDatum3D) -> cxx::UniquePtr<Self> {
-        ffi::Location_ctor_handledatum3d(D)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::Location_to_owned(self)
-    }
-
-    #[doc = "Returns the inverse of <me>. <me> * Inverted() is an Identity."]
-    pub fn inverted(&self) -> cxx::UniquePtr<ffi::Location> {
-        ffi::Location_inverted(self)
-    }
-
-    #[doc = "Returns <me> * <Other>, the  elementary datums are concatenated."]
-    pub fn multiplied(&self, Other: &ffi::Location) -> cxx::UniquePtr<ffi::Location> {
-        ffi::Location_multiplied(self, Other)
-    }
-
-    #[doc = "Returns  <me> / <Other>."]
-    pub fn divided(&self, Other: &ffi::Location) -> cxx::UniquePtr<ffi::Location> {
-        ffi::Location_divided(self, Other)
-    }
-
-    #[doc = "Returns <Other>.Inverted() * <me>."]
-    pub fn predivided(&self, Other: &ffi::Location) -> cxx::UniquePtr<ffi::Location> {
-        ffi::Location_predivided(self, Other)
-    }
-
-    #[doc = "Returns me at the power <pwr>.   If <pwr>  is zero returns  Identity.  <pwr> can  be lower  than zero (usual meaning for powers)."]
-    pub fn powered(&self, pwr: i32) -> cxx::UniquePtr<ffi::Location> {
-        ffi::Location_powered(self, pwr)
-    }
-
-    pub fn scale_prec() -> f64 {
-        ffi::Location_scale_prec()
-    }
-}
-pub use ffi::SListOfItemLocation;
-impl SListOfItemLocation {
-    #[doc = "Creates an empty List."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::SListOfItemLocation_ctor()
-    }
-
-    #[doc = "Creates a List with <anItem> as value  and <aTail> as tail."]
-    pub fn new_itemlocation_slistofitemlocation(
-        anItem: &ffi::TopLoc_ItemLocation,
-        aTail: &ffi::SListOfItemLocation,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::SListOfItemLocation_ctor_itemlocation_slistofitemlocation(anItem, aTail)
-    }
-
-    #[doc = "Creates a list from an other one. The lists  are shared."]
-    pub fn new_slistofitemlocation(Other: &ffi::SListOfItemLocation) -> cxx::UniquePtr<Self> {
-        ffi::SListOfItemLocation_ctor_slistofitemlocation(Other)
-    }
-
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        ffi::SListOfItemLocation_to_owned(self)
-    }
 }

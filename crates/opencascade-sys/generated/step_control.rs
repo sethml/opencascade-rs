@@ -12,102 +12,70 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Reader;
+impl Reader {
+    #[doc = "Creates a reader object with an empty STEP model."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Reader_ctor()
+    }
+
+    #[doc = "Creates a Reader for STEP from an already existing Session Clears the session if it was not yet set for STEP"]
+    pub fn new_handleworksession_bool(
+        WS: &ffi::HandleXSControlWorkSession,
+        scratch: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Reader_ctor_handleworksession_bool(WS, scratch)
+    }
+
+    #[doc = "Upcast to XSControl_Reader"]
+    pub fn as_xs_control_reader(&self) -> &crate::xs_control::Reader {
+        ffi::reader_as_xs_control_reader(self)
+    }
+
+    #[doc = "Upcast to XSControl_Reader (mutable)"]
+    pub fn as_xs_control_reader_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::xs_control::Reader> {
+        ffi::reader_as_xs_control_reader_mut(self)
+    }
+
+    #[doc = "Returns the model as a StepModel. It can then be consulted (header, product)"]
+    pub fn step_model(&self) -> cxx::UniquePtr<ffi::HandleStepDataStepModel> {
+        ffi::Reader_step_model(self)
+    }
+}
+pub use ffi::Writer;
+impl Writer {
+    #[doc = "Creates a Writer from scratch"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Writer_ctor()
+    }
+
+    #[doc = "Creates a Writer from an already existing Session If <scratch> is True (D), clears already recorded data"]
+    pub fn new_handleworksession_bool(
+        WS: &ffi::HandleXSControlWorkSession,
+        scratch: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Writer_ctor_handleworksession_bool(WS, scratch)
+    }
+
+    #[doc = "Returns the session used in <me>"]
+    pub fn ws(&self) -> cxx::UniquePtr<ffi::HandleXSControlWorkSession> {
+        ffi::Writer_ws(self)
+    }
+
+    #[doc = "Returns the produced model. Produces a new one if not yet done or if <newone> is True This method allows for instance to edit product or header data before writing."]
+    pub fn model(
+        self: std::pin::Pin<&mut Self>,
+        newone: bool,
+    ) -> cxx::UniquePtr<ffi::HandleStepDataStepModel> {
+        ffi::Writer_model(self, newone)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_step_control.hxx");
-        #[doc = "Parameters from destep module"]
-        type DESTEP_Parameters = crate::destep::ffi::Parameters;
-        #[doc = "Message from message module"]
-        type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
-        type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
-        type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "ShapeProcessor from xs_algo module"]
-        type XSAlgo_ShapeProcessor = crate::xs_algo::ffi::ShapeProcessor;
-        #[doc = "Reader from xs_control module"]
-        type XSControl_Reader = crate::xs_control::ffi::Reader;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "DE_ShapeFixParameters"]
-        type DE_ShapeFixParameters;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "StepData_StepModel"]
-        type StepData_StepModel;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_SequenceOfAsciiString"]
-        type TColStd_SequenceOfAsciiString;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "XSControl_WorkSession"]
-        type XSControl_WorkSession;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStepDataStepModel"]
-        type HandleStepDataStepModel;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleXSControlWorkSession"]
-        type HandleXSControlWorkSession;
         #[doc = " ======================== STEPControl_Reader ========================"]
         #[doc = "/// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader`"]
         #[doc = ""]
@@ -200,67 +168,101 @@ pub(crate) mod ffi {
             self_: Pin<&mut Writer>,
             newone: bool,
         ) -> UniquePtr<HandleStepDataStepModel>;
+        #[doc = "Parameters from destep module"]
+        type DESTEP_Parameters = crate::destep::ffi::Parameters;
+        #[doc = "Message from message module"]
+        type Message = crate::message::ffi::Message;
+        #[doc = "Alert from message module"]
+        type Message_Alert = crate::message::ffi::Alert;
+        #[doc = "AlertExtended from message module"]
+        type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HSequenceOfInteger from t_col_std module"]
+        type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "ShapeProcessor from xs_algo module"]
+        type XSAlgo_ShapeProcessor = crate::xs_algo::ffi::ShapeProcessor;
+        #[doc = "Reader from xs_control module"]
+        type XSControl_Reader = crate::xs_control::ffi::Reader;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "DE_ShapeFixParameters"]
+        type DE_ShapeFixParameters;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "StepData_StepModel"]
+        type StepData_StepModel;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_SequenceOfAsciiString"]
+        type TColStd_SequenceOfAsciiString;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "XSControl_WorkSession"]
+        type XSControl_WorkSession;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStepDataStepModel"]
+        type HandleStepDataStepModel;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleXSControlWorkSession"]
+        type HandleXSControlWorkSession;
     }
     impl UniquePtr<Reader> {}
     impl UniquePtr<Writer> {}
-}
-pub use ffi::Reader;
-impl Reader {
-    #[doc = "Creates a reader object with an empty STEP model."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Reader_ctor()
-    }
-
-    #[doc = "Creates a Reader for STEP from an already existing Session Clears the session if it was not yet set for STEP"]
-    pub fn new_handleworksession_bool(
-        WS: &ffi::HandleXSControlWorkSession,
-        scratch: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Reader_ctor_handleworksession_bool(WS, scratch)
-    }
-
-    #[doc = "Upcast to XSControl_Reader"]
-    pub fn as_xs_control_reader(&self) -> &crate::xs_control::Reader {
-        ffi::reader_as_xs_control_reader(self)
-    }
-
-    #[doc = "Upcast to XSControl_Reader (mutable)"]
-    pub fn as_xs_control_reader_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::xs_control::Reader> {
-        ffi::reader_as_xs_control_reader_mut(self)
-    }
-
-    #[doc = "Returns the model as a StepModel. It can then be consulted (header, product)"]
-    pub fn step_model(&self) -> cxx::UniquePtr<ffi::HandleStepDataStepModel> {
-        ffi::Reader_step_model(self)
-    }
-}
-pub use ffi::Writer;
-impl Writer {
-    #[doc = "Creates a Writer from scratch"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Writer_ctor()
-    }
-
-    #[doc = "Creates a Writer from an already existing Session If <scratch> is True (D), clears already recorded data"]
-    pub fn new_handleworksession_bool(
-        WS: &ffi::HandleXSControlWorkSession,
-        scratch: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Writer_ctor_handleworksession_bool(WS, scratch)
-    }
-
-    #[doc = "Returns the session used in <me>"]
-    pub fn ws(&self) -> cxx::UniquePtr<ffi::HandleXSControlWorkSession> {
-        ffi::Writer_ws(self)
-    }
-
-    #[doc = "Returns the produced model. Produces a new one if not yet done or if <newone> is True This method allows for instance to edit product or header data before writing."]
-    pub fn model(
-        self: std::pin::Pin<&mut Self>,
-        newone: bool,
-    ) -> cxx::UniquePtr<ffi::HandleStepDataStepModel> {
-        ffi::Writer_model(self, newone)
-    }
 }

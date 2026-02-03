@@ -15,115 +15,398 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Geometry;
+impl Geometry {
+    pub fn mirrored_pnt2d(&self, P: &ffi::gp_Pnt2d) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::Geometry_mirrored_pnt2d(self, P)
+    }
+
+    pub fn mirrored_ax2d(&self, A: &ffi::gp_Ax2d) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::Geometry_mirrored_ax2d(self, A)
+    }
+
+    pub fn rotated(
+        &self,
+        P: &ffi::gp_Pnt2d,
+        Ang: f64,
+    ) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::Geometry_rotated(self, P, Ang)
+    }
+
+    pub fn scaled(&self, P: &ffi::gp_Pnt2d, S: f64) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::Geometry_scaled(self, P, S)
+    }
+
+    pub fn transformed(&self, T: &ffi::gp_Trsf2d) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::Geometry_transformed(self, T)
+    }
+
+    pub fn translated_vec2d(&self, V: &ffi::gp_Vec2d) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::Geometry_translated_vec2d(self, V)
+    }
+
+    pub fn translated_pnt2d2(
+        &self,
+        P1: &ffi::gp_Pnt2d,
+        P2: &ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::Geometry_translated_pnt2d2(self, P1, P2)
+    }
+
+    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::Geometry_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Geometry_get_type_name()
+    }
+}
+pub use ffi::Curve;
+impl Curve {
+    #[doc = "Upcast to Geom2d_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::curve_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::curve_as_geometry_mut(self)
+    }
+
+    #[doc = "Creates a reversed duplicate Changes the orientation of this curve. The first and last parameters are not changed, but the parametric direction of the curve is reversed. If the curve is bounded: - the start point of the initial curve becomes the end point of the reversed curve, and - the end point of the initial curve becomes the start point of the reversed curve. - Reversed creates a new curve."]
+    pub fn reversed(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
+        ffi::Curve_reversed(self)
+    }
+
+    #[doc = "For the point of parameter U of this curve, computes the vector corresponding to the Nth derivative. Exceptions StdFail_UndefinedDerivative if: - the continuity of the curve is not \"CN\", or - the derivative vector cannot be computed easily; this is the case with specific types of curve (for example, a rational BSpline curve where N is greater than 3). Standard_RangeError if N is less than 1."]
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec2d> {
+        ffi::Curve_dn(self, U, N)
+    }
+
+    #[doc = "Computes the point of parameter U on <me>. If the curve is periodic  then the returned point is P(U) with U = Ustart + (U - Uend)  where Ustart and Uend are the parametric bounds of the curve. it is implemented with D0. Raised only for the \"OffsetCurve\" if it is not possible to compute the current point. For example when the first derivative on the basis curve and the offset direction are parallel."]
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
+        ffi::Curve_value(self, U)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Curve_get_type_name()
+    }
+}
+pub use ffi::BoundedCurve;
+impl BoundedCurve {
+    #[doc = "Upcast to Geom2d_Curve"]
+    pub fn as_curve(&self) -> &Curve {
+        ffi::bounded_curve_as_curve(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Curve (mutable)"]
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        ffi::bounded_curve_as_curve_mut(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::bounded_curve_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::bounded_curve_as_geometry_mut(self)
+    }
+
+    #[doc = "Returns the end point of the curve. The end point is the value of the curve for the \"LastParameter\" of the curve."]
+    pub fn end_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
+        ffi::BoundedCurve_end_point(self)
+    }
+
+    #[doc = "Returns the start point of the curve. The start point is the value of the curve for the \"FirstParameter\" of the curve."]
+    pub fn start_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
+        ffi::BoundedCurve_start_point(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::BoundedCurve_get_type_name()
+    }
+}
+pub use ffi::Conic;
+impl Conic {
+    #[doc = "Upcast to Geom2d_Curve"]
+    pub fn as_curve(&self) -> &Curve {
+        ffi::conic_as_curve(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Curve (mutable)"]
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        ffi::conic_as_curve_mut(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::conic_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::conic_as_geometry_mut(self)
+    }
+
+    #[doc = "Returns the \"XAxis\" of the conic. This axis defines the origin of parametrization of the conic. This axis and the \"Yaxis\" define the local coordinate system of the conic. -C++: return const&"]
+    pub fn x_axis(&self) -> cxx::UniquePtr<ffi::gp_Ax2d> {
+        ffi::Conic_x_axis(self)
+    }
+
+    #[doc = "Returns the \"YAxis\" of the conic. The \"YAxis\" is perpendicular to the \"Xaxis\"."]
+    pub fn y_axis(&self) -> cxx::UniquePtr<ffi::gp_Ax2d> {
+        ffi::Conic_y_axis(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Conic_get_type_name()
+    }
+}
+pub use ffi::Ellipse;
+impl Ellipse {
+    #[doc = "Creates an ellipse by conversion of the gp_Elips2d ellipse E."]
+    pub fn new_elips2d(E: &ffi::gp_Elips2d) -> cxx::UniquePtr<Self> {
+        ffi::Ellipse_ctor_elips2d(E)
+    }
+
+    #[doc = "Creates an ellipse defined by its major and minor radii, MajorRadius and MinorRadius, and positioned in the plane by its major axis MajorAxis; the center of the ellipse is the origin of MajorAxis and the unit vector of MajorAxis is the \"X Direction\" of the local coordinate system of the ellipse; this coordinate system is direct if Sense is true (default value) or indirect if Sense is false. Warnings : It is not forbidden to create an ellipse with MajorRadius = MinorRadius. Exceptions Standard_ConstructionError if: - MajorRadius is less than MinorRadius, or - MinorRadius is less than 0."]
+    pub fn new_ax2d_real2_bool(
+        MajorAxis: &ffi::gp_Ax2d,
+        MajorRadius: f64,
+        MinorRadius: f64,
+        Sense: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Ellipse_ctor_ax2d_real2_bool(MajorAxis, MajorRadius, MinorRadius, Sense)
+    }
+
+    #[doc = "Creates an ellipse defined by its major and minor radii, MajorRadius and MinorRadius, where the coordinate system Axis locates the ellipse and defines its orientation in the plane such that: - the center of the ellipse is the origin of Axis, - the \"X Direction\" of Axis defines the major axis of the ellipse, - the \"Y Direction\" of Axis defines the minor axis of the ellipse, - the orientation of Axis (direct or indirect) gives the orientation of the ellipse. Warnings : It is not forbidden to create an ellipse with MajorRadius = MinorRadius. Exceptions Standard_ConstructionError if: - MajorRadius is less than MinorRadius, or - MinorRadius is less than 0."]
+    pub fn new_ax22d_real2(
+        Axis: &ffi::gp_Ax22d,
+        MajorRadius: f64,
+        MinorRadius: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Ellipse_ctor_ax22d_real2(Axis, MajorRadius, MinorRadius)
+    }
+
+    #[doc = "Upcast to Geom2d_Conic"]
+    pub fn as_conic(&self) -> &Conic {
+        ffi::ellipse_as_conic(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Conic (mutable)"]
+    pub fn as_conic_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Conic> {
+        ffi::ellipse_as_conic_mut(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Curve"]
+    pub fn as_curve(&self) -> &Curve {
+        ffi::ellipse_as_curve(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Curve (mutable)"]
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        ffi::ellipse_as_curve_mut(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::ellipse_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::ellipse_as_geometry_mut(self)
+    }
+
+    #[doc = "Wrap Geom2d_Ellipse in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeom2dEllipse> {
+        ffi::Ellipse_to_handle(obj)
+    }
+
+    #[doc = "Converts this ellipse into a gp_Elips2d ellipse."]
+    pub fn elips2d(&self) -> cxx::UniquePtr<ffi::gp_Elips2d> {
+        ffi::Ellipse_elips2d(self)
+    }
+
+    #[doc = "Computes the directrices of this ellipse. This directrix is the line normal to the XAxis of the ellipse in the local plane (Z = 0) at a distance d = MajorRadius / e from the center of the ellipse, where e is the eccentricity of the ellipse. This line is parallel to the \"YAxis\". The intersection point between directrix1 and the \"XAxis\" is the \"Location\" point of the directrix1. This point is on the positive side of the \"XAxis\". Raises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates into a circle)"]
+    pub fn directrix1(&self) -> cxx::UniquePtr<ffi::gp_Ax2d> {
+        ffi::Ellipse_directrix1(self)
+    }
+
+    #[doc = "This line is obtained by the symmetrical transformation of \"Directrix1\" with respect to the \"YAxis\" of the ellipse. Raises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates into a circle)."]
+    pub fn directrix2(&self) -> cxx::UniquePtr<ffi::gp_Ax2d> {
+        ffi::Ellipse_directrix2(self)
+    }
+
+    #[doc = "Returns the first focus of the ellipse. This focus is on the positive side of the \"XAxis\" of the ellipse."]
+    pub fn focus1(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
+        ffi::Ellipse_focus1(self)
+    }
+
+    #[doc = "Returns the second focus of the ellipse. This focus is on the negative side of the \"XAxis\" of the ellipse."]
+    pub fn focus2(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
+        ffi::Ellipse_focus2(self)
+    }
+
+    #[doc = "For the point of parameter U of this ellipse, computes the vector corresponding to the Nth derivative. Exceptions Standard_RangeError if N is less than 1."]
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec2d> {
+        ffi::Ellipse_dn(self, U, N)
+    }
+
+    #[doc = "Creates a new object which is a copy of this ellipse."]
+    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::Ellipse_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::Ellipse_get_type_name()
+    }
+}
+pub use ffi::TrimmedCurve;
+impl TrimmedCurve {
+    #[doc = "Creates a trimmed curve from the basis curve C limited between U1 and U2. . U1 can be greater or lower than U2. . The returned curve is oriented from U1 to U2. . If the basis curve C is periodic there is an ambiguity because two parts are available. In this case by default the trimmed curve has the same orientation as the basis curve (Sense = True). If Sense = False then the orientation of the trimmed curve is opposite to the orientation of the basis curve C. If the curve is closed but not periodic it is not possible to keep the part of the curve including the junction point (except if the junction point is at the beginning or at the end of the trimmed curve) because you could lose the fundamental characteristics of the basis curve which are used for example to compute the derivatives of the trimmed curve. So for a closed curve the rules are the same as for a open curve. Warnings : In this package the entities are not shared. The TrimmedCurve is built with a copy of the curve C. So when C is modified the TrimmedCurve is not modified Warnings : If <C> is periodic and <theAdjustPeriodic> is True, parametrics bounds of the TrimmedCurve, can be different to [<U1>;<U2>}, if <U1> or <U2> are not in the principal period. Include : For more explanation see the scheme given with this class. Raises ConstructionError the C is not periodic and U1 or U2 are out of the bounds of C. Raised if U1 = U2."]
+    pub fn new_handlecurve_real2_bool2(
+        C: &ffi::HandleGeom2dCurve,
+        U1: f64,
+        U2: f64,
+        Sense: bool,
+        theAdjustPeriodic: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::TrimmedCurve_ctor_handlecurve_real2_bool2(C, U1, U2, Sense, theAdjustPeriodic)
+    }
+
+    #[doc = "Upcast to Geom2d_BoundedCurve"]
+    pub fn as_bounded_curve(&self) -> &BoundedCurve {
+        ffi::trimmed_curve_as_bounded_curve(self)
+    }
+
+    #[doc = "Upcast to Geom2d_BoundedCurve (mutable)"]
+    pub fn as_bounded_curve_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut BoundedCurve> {
+        ffi::trimmed_curve_as_bounded_curve_mut(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Curve"]
+    pub fn as_curve(&self) -> &Curve {
+        ffi::trimmed_curve_as_curve(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Curve (mutable)"]
+    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
+        ffi::trimmed_curve_as_curve_mut(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Geometry"]
+    pub fn as_geometry(&self) -> &Geometry {
+        ffi::trimmed_curve_as_geometry(self)
+    }
+
+    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
+    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
+        ffi::trimmed_curve_as_geometry_mut(self)
+    }
+
+    #[doc = "Wrap Geom2d_TrimmedCurve in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeom2dTrimmedCurve> {
+        ffi::TrimmedCurve_to_handle(obj)
+    }
+
+    #[doc = "Returns the basis curve. Warning This function does not return a constant reference. Consequently, any modification of the returned value directly modifies the trimmed curve."]
+    pub fn basis_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
+        ffi::TrimmedCurve_basis_curve(self)
+    }
+
+    #[doc = "Returns the end point of <me>. This point is the evaluation of the curve for the \"LastParameter\"."]
+    pub fn end_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
+        ffi::TrimmedCurve_end_point(self)
+    }
+
+    #[doc = "Returns the start point of <me>. This point is the evaluation of the curve from the \"FirstParameter\". value and derivatives Warnings : The returned derivatives have the same orientation as the derivatives of the basis curve."]
+    pub fn start_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
+        ffi::TrimmedCurve_start_point(self)
+    }
+
+    #[doc = "For the point of parameter U of this trimmed curve, computes the vector corresponding to the Nth derivative. Warning The returned derivative vector has the same orientation as the derivative vector of the basis curve, even if the trimmed curve does not have the same orientation as the basis curve. Exceptions Standard_RangeError if N is less than 1. geometric transformations"]
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec2d> {
+        ffi::TrimmedCurve_dn(self, U, N)
+    }
+
+    #[doc = "Creates a new object, which is a copy of this trimmed curve."]
+    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::TrimmedCurve_copy(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::TrimmedCurve_get_type_name()
+    }
+}
+impl ffi::HandleGeom2dCurve {
+    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::curve_to_handle_geometry(self)
+    }
+}
+impl ffi::HandleGeom2dBoundedCurve {
+    #[doc = "Upcast to Handle<Geom2d_Curve>"]
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
+        ffi::bounded_curve_to_handle_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::bounded_curve_to_handle_geometry(self)
+    }
+}
+impl ffi::HandleGeom2dConic {
+    #[doc = "Upcast to Handle<Geom2d_Curve>"]
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
+        ffi::conic_to_handle_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::conic_to_handle_geometry(self)
+    }
+}
+impl ffi::HandleGeom2dEllipse {
+    #[doc = "Upcast to Handle<Geom2d_Conic>"]
+    pub fn to_handle_conic(&self) -> cxx::UniquePtr<ffi::HandleGeom2dConic> {
+        ffi::ellipse_to_handle_conic(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom2d_Curve>"]
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
+        ffi::ellipse_to_handle_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::ellipse_to_handle_geometry(self)
+    }
+}
+impl ffi::HandleGeom2dTrimmedCurve {
+    #[doc = "Upcast to Handle<Geom2d_BoundedCurve>"]
+    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dBoundedCurve> {
+        ffi::trimmed_curve_to_handle_bounded_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom2d_Curve>"]
+    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
+        ffi::trimmed_curve_to_handle_curve(self)
+    }
+
+    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
+    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
+        ffi::trimmed_curve_to_handle_geometry(self)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom2d.hxx");
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Ax22d"]
-        type gp_Ax22d;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Elips2d"]
-        type gp_Elips2d;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dBoundedCurve"]
-        type HandleGeom2dBoundedCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dConic"]
-        type HandleGeom2dConic;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dCurve"]
-        type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dEllipse"]
-        type HandleGeom2dEllipse;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dGeometry"]
-        type HandleGeom2dGeometry;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dTrimmedCurve"]
-        type HandleGeom2dTrimmedCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
         #[doc = " ======================== Geom2d_Geometry ========================"]
         #[doc = "/// **Source:** `Geom2d_Geometry.hxx` - `Geom2d_Geometry`"]
         #[doc = ""]
@@ -672,6 +955,145 @@ pub(crate) mod ffi {
         fn trimmed_curve_to_handle_geometry(
             handle: &HandleGeom2dTrimmedCurve,
         ) -> UniquePtr<HandleGeom2dGeometry>;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dBoundedCurve"]
+        type HandleGeom2dBoundedCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dConic"]
+        type HandleGeom2dConic;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dCurve"]
+        type HandleGeom2dCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dEllipse"]
+        type HandleGeom2dEllipse;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dGeometry"]
+        type HandleGeom2dGeometry;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dTrimmedCurve"]
+        type HandleGeom2dTrimmedCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
     }
     impl UniquePtr<Geometry> {}
     impl UniquePtr<Curve> {}
@@ -679,392 +1101,4 @@ pub(crate) mod ffi {
     impl UniquePtr<Conic> {}
     impl UniquePtr<Ellipse> {}
     impl UniquePtr<TrimmedCurve> {}
-}
-pub use ffi::Geometry;
-impl Geometry {
-    pub fn mirrored_pnt2d(&self, P: &ffi::gp_Pnt2d) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::Geometry_mirrored_pnt2d(self, P)
-    }
-
-    pub fn mirrored_ax2d(&self, A: &ffi::gp_Ax2d) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::Geometry_mirrored_ax2d(self, A)
-    }
-
-    pub fn rotated(
-        &self,
-        P: &ffi::gp_Pnt2d,
-        Ang: f64,
-    ) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::Geometry_rotated(self, P, Ang)
-    }
-
-    pub fn scaled(&self, P: &ffi::gp_Pnt2d, S: f64) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::Geometry_scaled(self, P, S)
-    }
-
-    pub fn transformed(&self, T: &ffi::gp_Trsf2d) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::Geometry_transformed(self, T)
-    }
-
-    pub fn translated_vec2d(&self, V: &ffi::gp_Vec2d) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::Geometry_translated_vec2d(self, V)
-    }
-
-    pub fn translated_pnt2d2(
-        &self,
-        P1: &ffi::gp_Pnt2d,
-        P2: &ffi::gp_Pnt2d,
-    ) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::Geometry_translated_pnt2d2(self, P1, P2)
-    }
-
-    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::Geometry_copy(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Geometry_get_type_name()
-    }
-}
-pub use ffi::Curve;
-impl Curve {
-    #[doc = "Upcast to Geom2d_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::curve_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::curve_as_geometry_mut(self)
-    }
-
-    #[doc = "Creates a reversed duplicate Changes the orientation of this curve. The first and last parameters are not changed, but the parametric direction of the curve is reversed. If the curve is bounded: - the start point of the initial curve becomes the end point of the reversed curve, and - the end point of the initial curve becomes the start point of the reversed curve. - Reversed creates a new curve."]
-    pub fn reversed(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
-        ffi::Curve_reversed(self)
-    }
-
-    #[doc = "For the point of parameter U of this curve, computes the vector corresponding to the Nth derivative. Exceptions StdFail_UndefinedDerivative if: - the continuity of the curve is not \"CN\", or - the derivative vector cannot be computed easily; this is the case with specific types of curve (for example, a rational BSpline curve where N is greater than 3). Standard_RangeError if N is less than 1."]
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec2d> {
-        ffi::Curve_dn(self, U, N)
-    }
-
-    #[doc = "Computes the point of parameter U on <me>. If the curve is periodic  then the returned point is P(U) with U = Ustart + (U - Uend)  where Ustart and Uend are the parametric bounds of the curve. it is implemented with D0. Raised only for the \"OffsetCurve\" if it is not possible to compute the current point. For example when the first derivative on the basis curve and the offset direction are parallel."]
-    pub fn value(&self, U: f64) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
-        ffi::Curve_value(self, U)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Curve_get_type_name()
-    }
-}
-pub use ffi::BoundedCurve;
-impl BoundedCurve {
-    #[doc = "Upcast to Geom2d_Curve"]
-    pub fn as_curve(&self) -> &Curve {
-        ffi::bounded_curve_as_curve(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Curve (mutable)"]
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        ffi::bounded_curve_as_curve_mut(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::bounded_curve_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::bounded_curve_as_geometry_mut(self)
-    }
-
-    #[doc = "Returns the end point of the curve. The end point is the value of the curve for the \"LastParameter\" of the curve."]
-    pub fn end_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
-        ffi::BoundedCurve_end_point(self)
-    }
-
-    #[doc = "Returns the start point of the curve. The start point is the value of the curve for the \"FirstParameter\" of the curve."]
-    pub fn start_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
-        ffi::BoundedCurve_start_point(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::BoundedCurve_get_type_name()
-    }
-}
-pub use ffi::Conic;
-impl Conic {
-    #[doc = "Upcast to Geom2d_Curve"]
-    pub fn as_curve(&self) -> &Curve {
-        ffi::conic_as_curve(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Curve (mutable)"]
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        ffi::conic_as_curve_mut(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::conic_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::conic_as_geometry_mut(self)
-    }
-
-    #[doc = "Returns the \"XAxis\" of the conic. This axis defines the origin of parametrization of the conic. This axis and the \"Yaxis\" define the local coordinate system of the conic. -C++: return const&"]
-    pub fn x_axis(&self) -> cxx::UniquePtr<ffi::gp_Ax2d> {
-        ffi::Conic_x_axis(self)
-    }
-
-    #[doc = "Returns the \"YAxis\" of the conic. The \"YAxis\" is perpendicular to the \"Xaxis\"."]
-    pub fn y_axis(&self) -> cxx::UniquePtr<ffi::gp_Ax2d> {
-        ffi::Conic_y_axis(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Conic_get_type_name()
-    }
-}
-pub use ffi::Ellipse;
-impl Ellipse {
-    #[doc = "Creates an ellipse by conversion of the gp_Elips2d ellipse E."]
-    pub fn new_elips2d(E: &ffi::gp_Elips2d) -> cxx::UniquePtr<Self> {
-        ffi::Ellipse_ctor_elips2d(E)
-    }
-
-    #[doc = "Creates an ellipse defined by its major and minor radii, MajorRadius and MinorRadius, and positioned in the plane by its major axis MajorAxis; the center of the ellipse is the origin of MajorAxis and the unit vector of MajorAxis is the \"X Direction\" of the local coordinate system of the ellipse; this coordinate system is direct if Sense is true (default value) or indirect if Sense is false. Warnings : It is not forbidden to create an ellipse with MajorRadius = MinorRadius. Exceptions Standard_ConstructionError if: - MajorRadius is less than MinorRadius, or - MinorRadius is less than 0."]
-    pub fn new_ax2d_real2_bool(
-        MajorAxis: &ffi::gp_Ax2d,
-        MajorRadius: f64,
-        MinorRadius: f64,
-        Sense: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Ellipse_ctor_ax2d_real2_bool(MajorAxis, MajorRadius, MinorRadius, Sense)
-    }
-
-    #[doc = "Creates an ellipse defined by its major and minor radii, MajorRadius and MinorRadius, where the coordinate system Axis locates the ellipse and defines its orientation in the plane such that: - the center of the ellipse is the origin of Axis, - the \"X Direction\" of Axis defines the major axis of the ellipse, - the \"Y Direction\" of Axis defines the minor axis of the ellipse, - the orientation of Axis (direct or indirect) gives the orientation of the ellipse. Warnings : It is not forbidden to create an ellipse with MajorRadius = MinorRadius. Exceptions Standard_ConstructionError if: - MajorRadius is less than MinorRadius, or - MinorRadius is less than 0."]
-    pub fn new_ax22d_real2(
-        Axis: &ffi::gp_Ax22d,
-        MajorRadius: f64,
-        MinorRadius: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Ellipse_ctor_ax22d_real2(Axis, MajorRadius, MinorRadius)
-    }
-
-    #[doc = "Upcast to Geom2d_Conic"]
-    pub fn as_conic(&self) -> &Conic {
-        ffi::ellipse_as_conic(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Conic (mutable)"]
-    pub fn as_conic_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Conic> {
-        ffi::ellipse_as_conic_mut(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Curve"]
-    pub fn as_curve(&self) -> &Curve {
-        ffi::ellipse_as_curve(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Curve (mutable)"]
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        ffi::ellipse_as_curve_mut(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::ellipse_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::ellipse_as_geometry_mut(self)
-    }
-
-    #[doc = "Wrap Geom2d_Ellipse in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeom2dEllipse> {
-        ffi::Ellipse_to_handle(obj)
-    }
-
-    #[doc = "Converts this ellipse into a gp_Elips2d ellipse."]
-    pub fn elips2d(&self) -> cxx::UniquePtr<ffi::gp_Elips2d> {
-        ffi::Ellipse_elips2d(self)
-    }
-
-    #[doc = "Computes the directrices of this ellipse. This directrix is the line normal to the XAxis of the ellipse in the local plane (Z = 0) at a distance d = MajorRadius / e from the center of the ellipse, where e is the eccentricity of the ellipse. This line is parallel to the \"YAxis\". The intersection point between directrix1 and the \"XAxis\" is the \"Location\" point of the directrix1. This point is on the positive side of the \"XAxis\". Raises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates into a circle)"]
-    pub fn directrix1(&self) -> cxx::UniquePtr<ffi::gp_Ax2d> {
-        ffi::Ellipse_directrix1(self)
-    }
-
-    #[doc = "This line is obtained by the symmetrical transformation of \"Directrix1\" with respect to the \"YAxis\" of the ellipse. Raises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates into a circle)."]
-    pub fn directrix2(&self) -> cxx::UniquePtr<ffi::gp_Ax2d> {
-        ffi::Ellipse_directrix2(self)
-    }
-
-    #[doc = "Returns the first focus of the ellipse. This focus is on the positive side of the \"XAxis\" of the ellipse."]
-    pub fn focus1(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
-        ffi::Ellipse_focus1(self)
-    }
-
-    #[doc = "Returns the second focus of the ellipse. This focus is on the negative side of the \"XAxis\" of the ellipse."]
-    pub fn focus2(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
-        ffi::Ellipse_focus2(self)
-    }
-
-    #[doc = "For the point of parameter U of this ellipse, computes the vector corresponding to the Nth derivative. Exceptions Standard_RangeError if N is less than 1."]
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec2d> {
-        ffi::Ellipse_dn(self, U, N)
-    }
-
-    #[doc = "Creates a new object which is a copy of this ellipse."]
-    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::Ellipse_copy(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::Ellipse_get_type_name()
-    }
-}
-pub use ffi::TrimmedCurve;
-impl TrimmedCurve {
-    #[doc = "Creates a trimmed curve from the basis curve C limited between U1 and U2. . U1 can be greater or lower than U2. . The returned curve is oriented from U1 to U2. . If the basis curve C is periodic there is an ambiguity because two parts are available. In this case by default the trimmed curve has the same orientation as the basis curve (Sense = True). If Sense = False then the orientation of the trimmed curve is opposite to the orientation of the basis curve C. If the curve is closed but not periodic it is not possible to keep the part of the curve including the junction point (except if the junction point is at the beginning or at the end of the trimmed curve) because you could lose the fundamental characteristics of the basis curve which are used for example to compute the derivatives of the trimmed curve. So for a closed curve the rules are the same as for a open curve. Warnings : In this package the entities are not shared. The TrimmedCurve is built with a copy of the curve C. So when C is modified the TrimmedCurve is not modified Warnings : If <C> is periodic and <theAdjustPeriodic> is True, parametrics bounds of the TrimmedCurve, can be different to [<U1>;<U2>}, if <U1> or <U2> are not in the principal period. Include : For more explanation see the scheme given with this class. Raises ConstructionError the C is not periodic and U1 or U2 are out of the bounds of C. Raised if U1 = U2."]
-    pub fn new_handlecurve_real2_bool2(
-        C: &ffi::HandleGeom2dCurve,
-        U1: f64,
-        U2: f64,
-        Sense: bool,
-        theAdjustPeriodic: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::TrimmedCurve_ctor_handlecurve_real2_bool2(C, U1, U2, Sense, theAdjustPeriodic)
-    }
-
-    #[doc = "Upcast to Geom2d_BoundedCurve"]
-    pub fn as_bounded_curve(&self) -> &BoundedCurve {
-        ffi::trimmed_curve_as_bounded_curve(self)
-    }
-
-    #[doc = "Upcast to Geom2d_BoundedCurve (mutable)"]
-    pub fn as_bounded_curve_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut BoundedCurve> {
-        ffi::trimmed_curve_as_bounded_curve_mut(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Curve"]
-    pub fn as_curve(&self) -> &Curve {
-        ffi::trimmed_curve_as_curve(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Curve (mutable)"]
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        ffi::trimmed_curve_as_curve_mut(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Geometry"]
-    pub fn as_geometry(&self) -> &Geometry {
-        ffi::trimmed_curve_as_geometry(self)
-    }
-
-    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
-    pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
-        ffi::trimmed_curve_as_geometry_mut(self)
-    }
-
-    #[doc = "Wrap Geom2d_TrimmedCurve in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeom2dTrimmedCurve> {
-        ffi::TrimmedCurve_to_handle(obj)
-    }
-
-    #[doc = "Returns the basis curve. Warning This function does not return a constant reference. Consequently, any modification of the returned value directly modifies the trimmed curve."]
-    pub fn basis_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
-        ffi::TrimmedCurve_basis_curve(self)
-    }
-
-    #[doc = "Returns the end point of <me>. This point is the evaluation of the curve for the \"LastParameter\"."]
-    pub fn end_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
-        ffi::TrimmedCurve_end_point(self)
-    }
-
-    #[doc = "Returns the start point of <me>. This point is the evaluation of the curve from the \"FirstParameter\". value and derivatives Warnings : The returned derivatives have the same orientation as the derivatives of the basis curve."]
-    pub fn start_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
-        ffi::TrimmedCurve_start_point(self)
-    }
-
-    #[doc = "For the point of parameter U of this trimmed curve, computes the vector corresponding to the Nth derivative. Warning The returned derivative vector has the same orientation as the derivative vector of the basis curve, even if the trimmed curve does not have the same orientation as the basis curve. Exceptions Standard_RangeError if N is less than 1. geometric transformations"]
-    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec2d> {
-        ffi::TrimmedCurve_dn(self, U, N)
-    }
-
-    #[doc = "Creates a new object, which is a copy of this trimmed curve."]
-    pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::TrimmedCurve_copy(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::TrimmedCurve_get_type_name()
-    }
-}
-impl ffi::HandleGeom2dCurve {
-    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::curve_to_handle_geometry(self)
-    }
-}
-impl ffi::HandleGeom2dBoundedCurve {
-    #[doc = "Upcast to Handle<Geom2d_Curve>"]
-    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
-        ffi::bounded_curve_to_handle_curve(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::bounded_curve_to_handle_geometry(self)
-    }
-}
-impl ffi::HandleGeom2dConic {
-    #[doc = "Upcast to Handle<Geom2d_Curve>"]
-    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
-        ffi::conic_to_handle_curve(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::conic_to_handle_geometry(self)
-    }
-}
-impl ffi::HandleGeom2dEllipse {
-    #[doc = "Upcast to Handle<Geom2d_Conic>"]
-    pub fn to_handle_conic(&self) -> cxx::UniquePtr<ffi::HandleGeom2dConic> {
-        ffi::ellipse_to_handle_conic(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom2d_Curve>"]
-    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
-        ffi::ellipse_to_handle_curve(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::ellipse_to_handle_geometry(self)
-    }
-}
-impl ffi::HandleGeom2dTrimmedCurve {
-    #[doc = "Upcast to Handle<Geom2d_BoundedCurve>"]
-    pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dBoundedCurve> {
-        ffi::trimmed_curve_to_handle_bounded_curve(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom2d_Curve>"]
-    pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
-        ffi::trimmed_curve_to_handle_curve(self)
-    }
-
-    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
-    pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
-        ffi::trimmed_curve_to_handle_geometry(self)
-    }
 }

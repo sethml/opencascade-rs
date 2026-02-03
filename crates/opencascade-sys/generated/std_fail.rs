@@ -10,10 +10,75 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::NotDone;
+impl NotDone {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::NotDone_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        ffi::NotDone_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        ffi::NotDone_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise_charptr(theMessage: &str) {
+        ffi::NotDone_raise_charptr(theMessage)
+    }
+
+    pub fn raise_sstream(theMessage: std::pin::Pin<&mut ffi::Standard_SStream>) {
+        ffi::NotDone_raise_sstream(theMessage)
+    }
+
+    pub fn new_instance_charptr(theMessage: &str) -> cxx::UniquePtr<ffi::HandleStdFailNotDone> {
+        ffi::NotDone_new_instance_charptr(theMessage)
+    }
+
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> cxx::UniquePtr<ffi::HandleStdFailNotDone> {
+        ffi::NotDone_new_instance_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::NotDone_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_std_fail.hxx");
+        #[doc = " ======================== StdFail_NotDone ========================"]
+        #[doc = "/// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone`"]
+        #[cxx_name = "StdFail_NotDone"]
+        type NotDone;
+        #[doc = "/// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`"]
+        #[cxx_name = "StdFail_NotDone_ctor"]
+        fn NotDone_ctor() -> UniquePtr<NotDone>;
+        #[doc = "/// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`"]
+        #[cxx_name = "StdFail_NotDone_ctor_charptr"]
+        fn NotDone_ctor_charptr(theMessage: &str) -> UniquePtr<NotDone>;
+        #[doc = "/// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`"]
+        #[cxx_name = "StdFail_NotDone_ctor_charptr2"]
+        fn NotDone_ctor_charptr2(theMessage: &str, theStackTrace: &str) -> UniquePtr<NotDone>;
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &NotDone) -> &HandleStandardType;
+        #[cxx_name = "StdFail_NotDone_Raise_charptr"]
+        fn NotDone_raise_charptr(theMessage: &str);
+        #[cxx_name = "StdFail_NotDone_Raise_sstream"]
+        fn NotDone_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
+        #[cxx_name = "StdFail_NotDone_NewInstance_charptr"]
+        fn NotDone_new_instance_charptr(theMessage: &str) -> UniquePtr<HandleStdFailNotDone>;
+        #[cxx_name = "StdFail_NotDone_NewInstance_charptr2"]
+        fn NotDone_new_instance_charptr2(
+            theMessage: &str,
+            theStackTrace: &str,
+        ) -> UniquePtr<HandleStdFailNotDone>;
+        #[cxx_name = "StdFail_NotDone_get_type_name"]
+        fn NotDone_get_type_name() -> String;
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -65,71 +130,6 @@ pub(crate) mod ffi {
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStdFailNotDone"]
         type HandleStdFailNotDone;
-        #[doc = " ======================== StdFail_NotDone ========================"]
-        #[doc = "/// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone`"]
-        #[cxx_name = "StdFail_NotDone"]
-        type NotDone;
-        #[doc = "/// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`"]
-        #[cxx_name = "StdFail_NotDone_ctor"]
-        fn NotDone_ctor() -> UniquePtr<NotDone>;
-        #[doc = "/// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`"]
-        #[cxx_name = "StdFail_NotDone_ctor_charptr"]
-        fn NotDone_ctor_charptr(theMessage: &str) -> UniquePtr<NotDone>;
-        #[doc = "/// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`"]
-        #[cxx_name = "StdFail_NotDone_ctor_charptr2"]
-        fn NotDone_ctor_charptr2(theMessage: &str, theStackTrace: &str) -> UniquePtr<NotDone>;
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &NotDone) -> &HandleStandardType;
-        #[cxx_name = "StdFail_NotDone_Raise_charptr"]
-        fn NotDone_raise_charptr(theMessage: &str);
-        #[cxx_name = "StdFail_NotDone_Raise_sstream"]
-        fn NotDone_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
-        #[cxx_name = "StdFail_NotDone_NewInstance_charptr"]
-        fn NotDone_new_instance_charptr(theMessage: &str) -> UniquePtr<HandleStdFailNotDone>;
-        #[cxx_name = "StdFail_NotDone_NewInstance_charptr2"]
-        fn NotDone_new_instance_charptr2(
-            theMessage: &str,
-            theStackTrace: &str,
-        ) -> UniquePtr<HandleStdFailNotDone>;
-        #[cxx_name = "StdFail_NotDone_get_type_name"]
-        fn NotDone_get_type_name() -> String;
     }
     impl UniquePtr<NotDone> {}
-}
-pub use ffi::NotDone;
-impl NotDone {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::NotDone_ctor()
-    }
-
-    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
-        ffi::NotDone_ctor_charptr(theMessage)
-    }
-
-    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
-        ffi::NotDone_ctor_charptr2(theMessage, theStackTrace)
-    }
-
-    pub fn raise_charptr(theMessage: &str) {
-        ffi::NotDone_raise_charptr(theMessage)
-    }
-
-    pub fn raise_sstream(theMessage: std::pin::Pin<&mut ffi::Standard_SStream>) {
-        ffi::NotDone_raise_sstream(theMessage)
-    }
-
-    pub fn new_instance_charptr(theMessage: &str) -> cxx::UniquePtr<ffi::HandleStdFailNotDone> {
-        ffi::NotDone_new_instance_charptr(theMessage)
-    }
-
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> cxx::UniquePtr<ffi::HandleStdFailNotDone> {
-        ffi::NotDone_new_instance_charptr2(theMessage, theStackTrace)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::NotDone_get_type_name()
-    }
 }

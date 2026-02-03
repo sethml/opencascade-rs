@@ -12,321 +12,6 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
-#[cxx::bridge]
-pub(crate) mod ffi {
-    unsafe extern "C++" {
-        include!("wrapper_b_spl_s_lib.hxx");
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfPnt from t_colgp module"]
-        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
-        #[doc = "HArray1OfPnt2d from t_colgp module"]
-        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
-        #[doc = "HArray1OfVec from t_colgp module"]
-        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
-        #[doc = "HArray2OfPnt from t_colgp module"]
-        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfInteger"]
-        type TColStd_Array1OfInteger;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfReal"]
-        type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array2OfReal"]
-        type TColStd_Array2OfReal;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array1OfPnt"]
-        type TColgp_Array1OfPnt;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColgp_Array2OfPnt"]
-        type TColgp_Array2OfPnt;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBSplSLibCache"]
-        type HandleBSplSLibCache;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
-        #[doc = " ======================== BSplSLib_Cache ========================"]
-        #[doc = "/// **Source:** `BSplSLib_Cache.hxx` - `BSplSLib_Cache`"]
-        #[doc = ""]
-        #[doc = "\\brief A cache class for Bezier and B-spline surfaces. Defines all data, that can be cached on a span of the surface. The data should be recalculated in going from span to span."]
-        #[cxx_name = "BSplSLib_Cache"]
-        type Cache;
-        #[doc = "Verifies validity of the cache using parameters of the point \\param theParameterU  first parameter of the point placed in the span \\param theParameterV  second parameter of the point placed in the span"]
-        #[cxx_name = "IsCacheValid"]
-        fn is_cache_valid(self: &Cache, theParameterU: f64, theParameterV: f64) -> bool;
-        #[doc = "Calculates the point on the surface for specified parameters \\param[in]  theU      first parameter for calculation of the value \\param[in]  theV      second parameter for calculation of the value \\param[out] thePoint  the result of calculation (the point on the surface)"]
-        #[cxx_name = "D0"]
-        fn d0(self: &Cache, theU: &f64, theV: &f64, thePoint: Pin<&mut gp_Pnt>);
-        #[doc = "Calculates the point on the surface and its first derivative \\param[in]  theU         first parameter of calculation of the value \\param[in]  theV         second parameter of calculation of the value \\param[out] thePoint     the result of calculation (the point on the surface) \\param[out] theTangentU  tangent vector along U axis in the calculated point \\param[out] theTangentV  tangent vector along V axis in the calculated point"]
-        #[cxx_name = "D1"]
-        fn d1(
-            self: &Cache,
-            theU: &f64,
-            theV: &f64,
-            thePoint: Pin<&mut gp_Pnt>,
-            theTangentU: Pin<&mut gp_Vec>,
-            theTangentV: Pin<&mut gp_Vec>,
-        );
-        #[doc = "Calculates the point on the surface and derivatives till second order \\param[in]  theU            first parameter of calculation of the value \\param[in]  theV            second parameter of calculation of the value \\param[out] thePoint        the result of calculation (the point on the surface) \\param[out] theTangentU     tangent vector along U axis in the calculated point \\param[out] theTangentV     tangent vector along V axis in the calculated point \\param[out] theCurvatureU   curvature vector (2nd derivative on U) along U axis \\param[out] theCurvatureV   curvature vector (2nd derivative on V) along V axis \\param[out] theCurvatureUV  2nd mixed derivative on U anv V"]
-        #[cxx_name = "D2"]
-        fn d2(
-            self: &Cache,
-            theU: &f64,
-            theV: &f64,
-            thePoint: Pin<&mut gp_Pnt>,
-            theTangentU: Pin<&mut gp_Vec>,
-            theTangentV: Pin<&mut gp_Vec>,
-            theCurvatureU: Pin<&mut gp_Vec>,
-            theCurvatureV: Pin<&mut gp_Vec>,
-            theCurvatureUV: Pin<&mut gp_Vec>,
-        );
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &Cache) -> &HandleStandardType;
-        #[cxx_name = "BSplSLib_Cache_get_type_name"]
-        fn Cache_get_type_name() -> String;
-        #[doc = "Wrap BSplSLib_Cache in a Handle (reference-counted smart pointer)"]
-        #[cxx_name = "BSplSLib_Cache_to_handle"]
-        fn Cache_to_handle(obj: UniquePtr<Cache>) -> UniquePtr<HandleBSplSLibCache>;
-        #[doc = " ======================== BSplSLib ========================"]
-        #[doc = "/// **Source:** `BSplSLib.hxx` - `BSplSLib`"]
-        #[doc = ""]
-        #[doc = "BSplSLib   B-spline surface Library This  package provides   an  implementation  of  geometric functions for rational and non rational, periodic  and non periodic B-spline surface computation. this package uses   the  multi-dimensions splines  methods provided in the package BSplCLib. In this package the B-spline surface is defined with : . its control points :  Array2OfPnt     Poles . its weights        :  Array2OfReal    Weights . its knots and their multiplicity in the two parametric direction U and V  :  Array1OfReal    UKnots, VKnots and Array1OfInteger UMults, VMults. . the degree of the normalized Spline functions : UDegree, VDegree . the Booleans URational, VRational to know if the weights are constant in the U or V direction. . the Booleans UPeriodic,   VRational  to know if the  the surface is periodic in the U or V direction. Warnings : The  bounds of UKnots  and UMults should be the same, the bounds of VKnots and VMults should be  the same, the bounds of Poles and Weights should be the same. The Control points representation is : Poles(Uorigin,Vorigin) ...................Poles(Uorigin,Vend) .                                     . .                                     . Poles(Uend, Vorigin) .....................Poles(Uend, Vend) For  the double array  the row indice   corresponds to the parametric U direction  and the columns indice corresponds to the parametric V direction. Note: weight and multiplicity arrays can be passed by pointer for some functions so that NULL pointer is valid. That means no weights/no multiplicities passed. KeyWords : B-spline surface, Functions, Library References : . A survey of curve and surface methods in CADG Wolfgang BOHM CAGD 1 (1984) . On de Boor-like algorithms and blossoming Wolfgang BOEHM cagd 5 (1988) . Blossoming and knot insertion algorithms for B-spline curves Ronald N. GOLDMAN . Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA . Curves and Surfaces for Computer Aided Geometric Design, a practical guide Gerald Farin"]
-        #[cxx_name = "BSplSLib"]
-        type BSplSLib;
-        #[doc = "this is a one dimensional function typedef  void (*EvaluatorFunction)  ( Standard_Integer     // Derivative Request Standard_Real    *   // StartEnd[2][2] //  [0] = U //  [1] = V //        [0] = start //        [1] = end Standard_Real        // UParameter Standard_Real        // VParamerer Standard_Real    &   // Result Standard_Integer &) ;// Error Code serves to multiply a given vectorial BSpline by a function Computes  the     derivatives   of  a    ratio  of two-variables functions  x(u,v) / w(u,v) at orders <N,M>,    x(u,v)    is   a  vector in    dimension <3>. <Ders> is  an array  containing the values  of the input derivatives from 0  to Min(<N>,<UDeg>), 0 to Min(<M>,<VDeg>).    For orders    higher      than <UDeg,VDeg>  the  input derivatives are assumed to be 0. The <Ders> is a 2d array and the  dimension of the lines is always (<VDeg>+1) * (<3>+1), even if   <N> is smaller  than  <Udeg> (the derivatives higher than <N> are not used). Content of <Ders> : x(i,j)[k] means :  the composant  k of x derivated (i) times in u and (j) times in v. ... First line ... x[1],x[2],...,x[3],w x(0,1)[1],...,x(0,1)[3],w(1,0) ... x(0,VDeg)[1],...,x(0,VDeg)[3],w(0,VDeg) ... Then second line ... x(1,0)[1],...,x(1,0)[3],w(1,0) x(1,1)[1],...,x(1,1)[3],w(1,1) ... x(1,VDeg)[1],...,x(1,VDeg)[3],w(1,VDeg) ... ... Last line ... x(UDeg,0)[1],...,x(UDeg,0)[3],w(UDeg,0) x(UDeg,1)[1],...,x(UDeg,1)[3],w(UDeg,1) ... x(Udeg,VDeg)[1],...,x(UDeg,VDeg)[3],w(Udeg,VDeg) If <All>  is false, only  the derivative  at order <N,M> is computed.  <RDers> is an  array of length 3 which will contain the result : x(1)/w , x(2)/w ,  ... derivated <N> <M> times If   <All>    is  true  multiples  derivatives are computed. All the  derivatives (i,j) with 0 <= i+j <= Max(N,M) are  computed.  <RDers> is an array of length 3 *  (<N>+1)  * (<M>+1) which  will contains : x(1)/w , x(2)/w ,  ... x(1)/w , x(2)/w ,  ... derivated <0,1> times x(1)/w , x(2)/w ,  ... derivated <0,2> times ... x(1)/w , x(2)/w ,  ... derivated <0,N> times x(1)/w , x(2)/w ,  ... derivated <1,0> times x(1)/w , x(2)/w ,  ... derivated <1,1> times ... x(1)/w , x(2)/w ,  ... derivated <1,N> times x(1)/w , x(2)/w ,  ... derivated <N,0> times .... Warning: <RDers> must be dimensioned properly."]
-        #[cxx_name = "BSplSLib_RationalDerivative"]
-        fn BSplSLib_rational_derivative(
-            UDeg: i32,
-            VDeg: i32,
-            N: i32,
-            M: i32,
-            Ders: &mut f64,
-            RDers: &mut f64,
-            All: bool,
-        );
-        #[doc = "Reverses the array of poles. Last is the Index of the new first Row( Col) of Poles. On  a  non periodic surface Last is Poles.Upper(). On a periodic curve last is (number of flat knots - degree - 1) or (sum of multiplicities(but  for the last) + degree - 1)"]
-        #[cxx_name = "BSplSLib_Reverse_array2ofpnt_int_bool"]
-        fn BSplSLib_reverse_array2ofpnt_int_bool(
-            Poles: Pin<&mut TColgp_Array2OfPnt>,
-            Last: i32,
-            UDirection: bool,
-        );
-        #[doc = "Reverses the array of weights."]
-        #[cxx_name = "BSplSLib_Reverse_array2ofreal_int_bool"]
-        fn BSplSLib_reverse_array2ofreal_int_bool(
-            Weights: Pin<&mut TColStd_Array2OfReal>,
-            Last: i32,
-            UDirection: bool,
-        );
-        #[doc = "Returns False if all the weights  of the  array <Weights> in the area [I1,I2] * [J1,J2] are  identic. Epsilon  is used for comparing  weights. If Epsilon  is 0. the  Epsilon of the first weight is used."]
-        #[cxx_name = "BSplSLib_IsRational"]
-        fn BSplSLib_is_rational(
-            Weights: &TColStd_Array2OfReal,
-            I1: i32,
-            I2: i32,
-            J1: i32,
-            J2: i32,
-            Epsilon: f64,
-        ) -> bool;
-        #[doc = "Copy in FP the coordinates of the poles."]
-        #[cxx_name = "BSplSLib_SetPoles_array2ofpnt_array1ofreal_bool"]
-        fn BSplSLib_set_poles_array2ofpnt_array1ofreal_bool(
-            Poles: &TColgp_Array2OfPnt,
-            FP: Pin<&mut TColStd_Array1OfReal>,
-            UDirection: bool,
-        );
-        #[doc = "Copy in FP the coordinates of the poles."]
-        #[cxx_name = "BSplSLib_SetPoles_array2ofpnt_array2ofreal_array1ofreal_bool"]
-        fn BSplSLib_set_poles_array2ofpnt_array2ofreal_array1ofreal_bool(
-            Poles: &TColgp_Array2OfPnt,
-            Weights: &TColStd_Array2OfReal,
-            FP: Pin<&mut TColStd_Array1OfReal>,
-            UDirection: bool,
-        );
-        #[doc = "Get from FP the coordinates of the poles."]
-        #[cxx_name = "BSplSLib_GetPoles_array1ofreal_array2ofpnt_bool"]
-        fn BSplSLib_get_poles_array1ofreal_array2ofpnt_bool(
-            FP: &TColStd_Array1OfReal,
-            Poles: Pin<&mut TColgp_Array2OfPnt>,
-            UDirection: bool,
-        );
-        #[doc = "Get from FP the coordinates of the poles."]
-        #[cxx_name = "BSplSLib_GetPoles_array1ofreal_array2ofpnt_array2ofreal_bool"]
-        fn BSplSLib_get_poles_array1ofreal_array2ofpnt_array2ofreal_bool(
-            FP: &TColStd_Array1OfReal,
-            Poles: Pin<&mut TColgp_Array2OfPnt>,
-            Weights: Pin<&mut TColStd_Array2OfReal>,
-            UDirection: bool,
-        );
-        #[doc = "Find the new poles which allows an old point (with a given u,v  as parameters)  to  reach a  new position UIndex1,UIndex2 indicate the  range of poles we can move for U (1, UNbPoles-1) or (2, UNbPoles) -> no constraint for one side in U (2, UNbPoles-1)   -> the ends are enforced for U don't enter (1,NbPoles) and (1,VNbPoles) -> error: rigid move if problem in BSplineBasis calculation, no change for the curve  and UFirstIndex, VLastIndex = 0 VFirstIndex, VLastIndex = 0"]
-        #[cxx_name = "BSplSLib_MovePoint"]
-        fn BSplSLib_move_point(
-            U: f64,
-            V: f64,
-            Displ: &gp_Vec,
-            UIndex1: i32,
-            UIndex2: i32,
-            VIndex1: i32,
-            VIndex2: i32,
-            UDegree: i32,
-            VDegree: i32,
-            Rational: bool,
-            Poles: &TColgp_Array2OfPnt,
-            Weights: &TColStd_Array2OfReal,
-            UFlatKnots: &TColStd_Array1OfReal,
-            VFlatKnots: &TColStd_Array1OfReal,
-            UFirstIndex: &mut i32,
-            ULastIndex: &mut i32,
-            VFirstIndex: &mut i32,
-            VLastIndex: &mut i32,
-            NewPoles: Pin<&mut TColgp_Array2OfPnt>,
-        );
-        #[doc = "Warning! To be used for BezierSurfaces ONLY!!!"]
-        #[cxx_name = "BSplSLib_PolesCoefficients_array2ofpnt2"]
-        fn BSplSLib_poles_coefficients_array2ofpnt2(
-            Poles: &TColgp_Array2OfPnt,
-            CachePoles: Pin<&mut TColgp_Array2OfPnt>,
-        );
-        #[doc = "Performs the interpolation of the data points given in the   Poles       array      in   the      form [1,...,RL][1,...,RC][1...PolesDimension]    .    The ColLength CL and the Length of UParameters must be the same. The length of VFlatKnots is VDegree + CL + 1. The  RowLength RL and the Length of VParameters must be the  same. The length of VFlatKnots is Degree + RL + 1. Warning: the method used  to do that  interpolation is gauss  elimination  WITHOUT pivoting.  Thus if  the diagonal is not  dominant  there is no guarantee  that the   algorithm will    work.  Nevertheless  for Cubic interpolation  at knots or interpolation at Scheonberg points  the method   will work.  The  InversionProblem will  report 0 if there   was no problem  else it will give the index of the faulty pivot"]
-        #[cxx_name = "BSplSLib_Interpolate_int2_array1ofreal4_array2ofpnt_array2ofreal_int"]
-        fn BSplSLib_interpolate_int2_array1ofreal4_array2ofpnt_array2ofreal_int(
-            UDegree: i32,
-            VDegree: i32,
-            UFlatKnots: &TColStd_Array1OfReal,
-            VFlatKnots: &TColStd_Array1OfReal,
-            UParameters: &TColStd_Array1OfReal,
-            VParameters: &TColStd_Array1OfReal,
-            Poles: Pin<&mut TColgp_Array2OfPnt>,
-            Weights: Pin<&mut TColStd_Array2OfReal>,
-            InversionProblem: &mut i32,
-        );
-        #[doc = "Performs the interpolation of the data points given in the  Poles array. The  ColLength CL and the Length of UParameters must be the  same. The length of VFlatKnots is VDegree + CL + 1. The  RowLength RL and the Length of VParameters must be the  same. The length of VFlatKnots is Degree + RL + 1. Warning: the method used  to do that  interpolation is gauss  elimination  WITHOUT pivoting.  Thus if  the diagonal is not  dominant  there is no guarantee  that the   algorithm will    work.  Nevertheless  for Cubic interpolation  at knots or interpolation at Scheonberg points  the method   will work.  The  InversionProblem will  report 0 if there   was no problem  else it will give the index of the faulty pivot"]
-        #[cxx_name = "BSplSLib_Interpolate_int2_array1ofreal4_array2ofpnt_int"]
-        fn BSplSLib_interpolate_int2_array1ofreal4_array2ofpnt_int(
-            UDegree: i32,
-            VDegree: i32,
-            UFlatKnots: &TColStd_Array1OfReal,
-            VFlatKnots: &TColStd_Array1OfReal,
-            UParameters: &TColStd_Array1OfReal,
-            VParameters: &TColStd_Array1OfReal,
-            Poles: Pin<&mut TColgp_Array2OfPnt>,
-            InversionProblem: &mut i32,
-        );
-        #[doc = " ======================== BSplSLib_EvaluatorFunction ========================"]
-        #[doc = "/// **Source:** `BSplSLib_EvaluatorFunction.hxx` - `BSplSLib_EvaluatorFunction`"]
-        #[cxx_name = "BSplSLib_EvaluatorFunction"]
-        type EvaluatorFunction;
-        #[doc = "Function evaluation method to be defined by descendant"]
-        #[cxx_name = "Evaluate"]
-        fn evaluate(
-            self: &EvaluatorFunction,
-            theDerivativeRequest: i32,
-            theUParameter: f64,
-            theVParameter: f64,
-            theResult: &mut f64,
-            theErrorCode: &mut i32,
-        );
-    }
-    impl UniquePtr<Cache> {}
-    impl UniquePtr<BSplSLib> {}
-    impl UniquePtr<EvaluatorFunction> {}
-}
 pub use ffi::Cache;
 impl Cache {
     #[doc = "Wrap BSplSLib_Cache in a Handle (reference-counted smart pointer)"]
@@ -528,3 +213,360 @@ impl BSplSLib {
 }
 pub use ffi::EvaluatorFunction;
 impl EvaluatorFunction {}
+#[cxx::bridge]
+pub(crate) mod ffi {
+    unsafe extern "C++" {
+        include!("wrapper_b_spl_s_lib.hxx");
+        #[doc = " ======================== BSplSLib_Cache ========================"]
+        #[doc = "/// **Source:** `BSplSLib_Cache.hxx` - `BSplSLib_Cache`"]
+        #[doc = ""]
+        #[doc = "\\brief A cache class for Bezier and B-spline surfaces. Defines all data, that can be cached on a span of the surface. The data should be recalculated in going from span to span."]
+        #[cxx_name = "BSplSLib_Cache"]
+        type Cache;
+        #[doc = "Verifies validity of the cache using parameters of the point \\param theParameterU  first parameter of the point placed in the span \\param theParameterV  second parameter of the point placed in the span"]
+        #[cxx_name = "IsCacheValid"]
+        fn is_cache_valid(self: &Cache, theParameterU: f64, theParameterV: f64) -> bool;
+        #[doc = "Calculates the point on the surface for specified parameters \\param[in]  theU      first parameter for calculation of the value \\param[in]  theV      second parameter for calculation of the value \\param[out] thePoint  the result of calculation (the point on the surface)"]
+        #[cxx_name = "D0"]
+        fn d0(self: &Cache, theU: &f64, theV: &f64, thePoint: Pin<&mut gp_Pnt>);
+        #[doc = "Calculates the point on the surface and its first derivative \\param[in]  theU         first parameter of calculation of the value \\param[in]  theV         second parameter of calculation of the value \\param[out] thePoint     the result of calculation (the point on the surface) \\param[out] theTangentU  tangent vector along U axis in the calculated point \\param[out] theTangentV  tangent vector along V axis in the calculated point"]
+        #[cxx_name = "D1"]
+        fn d1(
+            self: &Cache,
+            theU: &f64,
+            theV: &f64,
+            thePoint: Pin<&mut gp_Pnt>,
+            theTangentU: Pin<&mut gp_Vec>,
+            theTangentV: Pin<&mut gp_Vec>,
+        );
+        #[doc = "Calculates the point on the surface and derivatives till second order \\param[in]  theU            first parameter of calculation of the value \\param[in]  theV            second parameter of calculation of the value \\param[out] thePoint        the result of calculation (the point on the surface) \\param[out] theTangentU     tangent vector along U axis in the calculated point \\param[out] theTangentV     tangent vector along V axis in the calculated point \\param[out] theCurvatureU   curvature vector (2nd derivative on U) along U axis \\param[out] theCurvatureV   curvature vector (2nd derivative on V) along V axis \\param[out] theCurvatureUV  2nd mixed derivative on U anv V"]
+        #[cxx_name = "D2"]
+        fn d2(
+            self: &Cache,
+            theU: &f64,
+            theV: &f64,
+            thePoint: Pin<&mut gp_Pnt>,
+            theTangentU: Pin<&mut gp_Vec>,
+            theTangentV: Pin<&mut gp_Vec>,
+            theCurvatureU: Pin<&mut gp_Vec>,
+            theCurvatureV: Pin<&mut gp_Vec>,
+            theCurvatureUV: Pin<&mut gp_Vec>,
+        );
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &Cache) -> &HandleStandardType;
+        #[cxx_name = "BSplSLib_Cache_get_type_name"]
+        fn Cache_get_type_name() -> String;
+        #[doc = "Wrap BSplSLib_Cache in a Handle (reference-counted smart pointer)"]
+        #[cxx_name = "BSplSLib_Cache_to_handle"]
+        fn Cache_to_handle(obj: UniquePtr<Cache>) -> UniquePtr<HandleBSplSLibCache>;
+        #[doc = " ======================== BSplSLib ========================"]
+        #[doc = "/// **Source:** `BSplSLib.hxx` - `BSplSLib`"]
+        #[doc = ""]
+        #[doc = "BSplSLib   B-spline surface Library This  package provides   an  implementation  of  geometric functions for rational and non rational, periodic  and non periodic B-spline surface computation. this package uses   the  multi-dimensions splines  methods provided in the package BSplCLib. In this package the B-spline surface is defined with : . its control points :  Array2OfPnt     Poles . its weights        :  Array2OfReal    Weights . its knots and their multiplicity in the two parametric direction U and V  :  Array1OfReal    UKnots, VKnots and Array1OfInteger UMults, VMults. . the degree of the normalized Spline functions : UDegree, VDegree . the Booleans URational, VRational to know if the weights are constant in the U or V direction. . the Booleans UPeriodic,   VRational  to know if the  the surface is periodic in the U or V direction. Warnings : The  bounds of UKnots  and UMults should be the same, the bounds of VKnots and VMults should be  the same, the bounds of Poles and Weights should be the same. The Control points representation is : Poles(Uorigin,Vorigin) ...................Poles(Uorigin,Vend) .                                     . .                                     . Poles(Uend, Vorigin) .....................Poles(Uend, Vend) For  the double array  the row indice   corresponds to the parametric U direction  and the columns indice corresponds to the parametric V direction. Note: weight and multiplicity arrays can be passed by pointer for some functions so that NULL pointer is valid. That means no weights/no multiplicities passed. KeyWords : B-spline surface, Functions, Library References : . A survey of curve and surface methods in CADG Wolfgang BOHM CAGD 1 (1984) . On de Boor-like algorithms and blossoming Wolfgang BOEHM cagd 5 (1988) . Blossoming and knot insertion algorithms for B-spline curves Ronald N. GOLDMAN . Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA . Curves and Surfaces for Computer Aided Geometric Design, a practical guide Gerald Farin"]
+        #[cxx_name = "BSplSLib"]
+        type BSplSLib;
+        #[doc = "this is a one dimensional function typedef  void (*EvaluatorFunction)  ( Standard_Integer     // Derivative Request Standard_Real    *   // StartEnd[2][2] //  [0] = U //  [1] = V //        [0] = start //        [1] = end Standard_Real        // UParameter Standard_Real        // VParamerer Standard_Real    &   // Result Standard_Integer &) ;// Error Code serves to multiply a given vectorial BSpline by a function Computes  the     derivatives   of  a    ratio  of two-variables functions  x(u,v) / w(u,v) at orders <N,M>,    x(u,v)    is   a  vector in    dimension <3>. <Ders> is  an array  containing the values  of the input derivatives from 0  to Min(<N>,<UDeg>), 0 to Min(<M>,<VDeg>).    For orders    higher      than <UDeg,VDeg>  the  input derivatives are assumed to be 0. The <Ders> is a 2d array and the  dimension of the lines is always (<VDeg>+1) * (<3>+1), even if   <N> is smaller  than  <Udeg> (the derivatives higher than <N> are not used). Content of <Ders> : x(i,j)[k] means :  the composant  k of x derivated (i) times in u and (j) times in v. ... First line ... x[1],x[2],...,x[3],w x(0,1)[1],...,x(0,1)[3],w(1,0) ... x(0,VDeg)[1],...,x(0,VDeg)[3],w(0,VDeg) ... Then second line ... x(1,0)[1],...,x(1,0)[3],w(1,0) x(1,1)[1],...,x(1,1)[3],w(1,1) ... x(1,VDeg)[1],...,x(1,VDeg)[3],w(1,VDeg) ... ... Last line ... x(UDeg,0)[1],...,x(UDeg,0)[3],w(UDeg,0) x(UDeg,1)[1],...,x(UDeg,1)[3],w(UDeg,1) ... x(Udeg,VDeg)[1],...,x(UDeg,VDeg)[3],w(Udeg,VDeg) If <All>  is false, only  the derivative  at order <N,M> is computed.  <RDers> is an  array of length 3 which will contain the result : x(1)/w , x(2)/w ,  ... derivated <N> <M> times If   <All>    is  true  multiples  derivatives are computed. All the  derivatives (i,j) with 0 <= i+j <= Max(N,M) are  computed.  <RDers> is an array of length 3 *  (<N>+1)  * (<M>+1) which  will contains : x(1)/w , x(2)/w ,  ... x(1)/w , x(2)/w ,  ... derivated <0,1> times x(1)/w , x(2)/w ,  ... derivated <0,2> times ... x(1)/w , x(2)/w ,  ... derivated <0,N> times x(1)/w , x(2)/w ,  ... derivated <1,0> times x(1)/w , x(2)/w ,  ... derivated <1,1> times ... x(1)/w , x(2)/w ,  ... derivated <1,N> times x(1)/w , x(2)/w ,  ... derivated <N,0> times .... Warning: <RDers> must be dimensioned properly."]
+        #[cxx_name = "BSplSLib_RationalDerivative"]
+        fn BSplSLib_rational_derivative(
+            UDeg: i32,
+            VDeg: i32,
+            N: i32,
+            M: i32,
+            Ders: &mut f64,
+            RDers: &mut f64,
+            All: bool,
+        );
+        #[doc = "Reverses the array of poles. Last is the Index of the new first Row( Col) of Poles. On  a  non periodic surface Last is Poles.Upper(). On a periodic curve last is (number of flat knots - degree - 1) or (sum of multiplicities(but  for the last) + degree - 1)"]
+        #[cxx_name = "BSplSLib_Reverse_array2ofpnt_int_bool"]
+        fn BSplSLib_reverse_array2ofpnt_int_bool(
+            Poles: Pin<&mut TColgp_Array2OfPnt>,
+            Last: i32,
+            UDirection: bool,
+        );
+        #[doc = "Reverses the array of weights."]
+        #[cxx_name = "BSplSLib_Reverse_array2ofreal_int_bool"]
+        fn BSplSLib_reverse_array2ofreal_int_bool(
+            Weights: Pin<&mut TColStd_Array2OfReal>,
+            Last: i32,
+            UDirection: bool,
+        );
+        #[doc = "Returns False if all the weights  of the  array <Weights> in the area [I1,I2] * [J1,J2] are  identic. Epsilon  is used for comparing  weights. If Epsilon  is 0. the  Epsilon of the first weight is used."]
+        #[cxx_name = "BSplSLib_IsRational"]
+        fn BSplSLib_is_rational(
+            Weights: &TColStd_Array2OfReal,
+            I1: i32,
+            I2: i32,
+            J1: i32,
+            J2: i32,
+            Epsilon: f64,
+        ) -> bool;
+        #[doc = "Copy in FP the coordinates of the poles."]
+        #[cxx_name = "BSplSLib_SetPoles_array2ofpnt_array1ofreal_bool"]
+        fn BSplSLib_set_poles_array2ofpnt_array1ofreal_bool(
+            Poles: &TColgp_Array2OfPnt,
+            FP: Pin<&mut TColStd_Array1OfReal>,
+            UDirection: bool,
+        );
+        #[doc = "Copy in FP the coordinates of the poles."]
+        #[cxx_name = "BSplSLib_SetPoles_array2ofpnt_array2ofreal_array1ofreal_bool"]
+        fn BSplSLib_set_poles_array2ofpnt_array2ofreal_array1ofreal_bool(
+            Poles: &TColgp_Array2OfPnt,
+            Weights: &TColStd_Array2OfReal,
+            FP: Pin<&mut TColStd_Array1OfReal>,
+            UDirection: bool,
+        );
+        #[doc = "Get from FP the coordinates of the poles."]
+        #[cxx_name = "BSplSLib_GetPoles_array1ofreal_array2ofpnt_bool"]
+        fn BSplSLib_get_poles_array1ofreal_array2ofpnt_bool(
+            FP: &TColStd_Array1OfReal,
+            Poles: Pin<&mut TColgp_Array2OfPnt>,
+            UDirection: bool,
+        );
+        #[doc = "Get from FP the coordinates of the poles."]
+        #[cxx_name = "BSplSLib_GetPoles_array1ofreal_array2ofpnt_array2ofreal_bool"]
+        fn BSplSLib_get_poles_array1ofreal_array2ofpnt_array2ofreal_bool(
+            FP: &TColStd_Array1OfReal,
+            Poles: Pin<&mut TColgp_Array2OfPnt>,
+            Weights: Pin<&mut TColStd_Array2OfReal>,
+            UDirection: bool,
+        );
+        #[doc = "Find the new poles which allows an old point (with a given u,v  as parameters)  to  reach a  new position UIndex1,UIndex2 indicate the  range of poles we can move for U (1, UNbPoles-1) or (2, UNbPoles) -> no constraint for one side in U (2, UNbPoles-1)   -> the ends are enforced for U don't enter (1,NbPoles) and (1,VNbPoles) -> error: rigid move if problem in BSplineBasis calculation, no change for the curve  and UFirstIndex, VLastIndex = 0 VFirstIndex, VLastIndex = 0"]
+        #[cxx_name = "BSplSLib_MovePoint"]
+        fn BSplSLib_move_point(
+            U: f64,
+            V: f64,
+            Displ: &gp_Vec,
+            UIndex1: i32,
+            UIndex2: i32,
+            VIndex1: i32,
+            VIndex2: i32,
+            UDegree: i32,
+            VDegree: i32,
+            Rational: bool,
+            Poles: &TColgp_Array2OfPnt,
+            Weights: &TColStd_Array2OfReal,
+            UFlatKnots: &TColStd_Array1OfReal,
+            VFlatKnots: &TColStd_Array1OfReal,
+            UFirstIndex: &mut i32,
+            ULastIndex: &mut i32,
+            VFirstIndex: &mut i32,
+            VLastIndex: &mut i32,
+            NewPoles: Pin<&mut TColgp_Array2OfPnt>,
+        );
+        #[doc = "Warning! To be used for BezierSurfaces ONLY!!!"]
+        #[cxx_name = "BSplSLib_PolesCoefficients_array2ofpnt2"]
+        fn BSplSLib_poles_coefficients_array2ofpnt2(
+            Poles: &TColgp_Array2OfPnt,
+            CachePoles: Pin<&mut TColgp_Array2OfPnt>,
+        );
+        #[doc = "Performs the interpolation of the data points given in the   Poles       array      in   the      form [1,...,RL][1,...,RC][1...PolesDimension]    .    The ColLength CL and the Length of UParameters must be the same. The length of VFlatKnots is VDegree + CL + 1. The  RowLength RL and the Length of VParameters must be the  same. The length of VFlatKnots is Degree + RL + 1. Warning: the method used  to do that  interpolation is gauss  elimination  WITHOUT pivoting.  Thus if  the diagonal is not  dominant  there is no guarantee  that the   algorithm will    work.  Nevertheless  for Cubic interpolation  at knots or interpolation at Scheonberg points  the method   will work.  The  InversionProblem will  report 0 if there   was no problem  else it will give the index of the faulty pivot"]
+        #[cxx_name = "BSplSLib_Interpolate_int2_array1ofreal4_array2ofpnt_array2ofreal_int"]
+        fn BSplSLib_interpolate_int2_array1ofreal4_array2ofpnt_array2ofreal_int(
+            UDegree: i32,
+            VDegree: i32,
+            UFlatKnots: &TColStd_Array1OfReal,
+            VFlatKnots: &TColStd_Array1OfReal,
+            UParameters: &TColStd_Array1OfReal,
+            VParameters: &TColStd_Array1OfReal,
+            Poles: Pin<&mut TColgp_Array2OfPnt>,
+            Weights: Pin<&mut TColStd_Array2OfReal>,
+            InversionProblem: &mut i32,
+        );
+        #[doc = "Performs the interpolation of the data points given in the  Poles array. The  ColLength CL and the Length of UParameters must be the  same. The length of VFlatKnots is VDegree + CL + 1. The  RowLength RL and the Length of VParameters must be the  same. The length of VFlatKnots is Degree + RL + 1. Warning: the method used  to do that  interpolation is gauss  elimination  WITHOUT pivoting.  Thus if  the diagonal is not  dominant  there is no guarantee  that the   algorithm will    work.  Nevertheless  for Cubic interpolation  at knots or interpolation at Scheonberg points  the method   will work.  The  InversionProblem will  report 0 if there   was no problem  else it will give the index of the faulty pivot"]
+        #[cxx_name = "BSplSLib_Interpolate_int2_array1ofreal4_array2ofpnt_int"]
+        fn BSplSLib_interpolate_int2_array1ofreal4_array2ofpnt_int(
+            UDegree: i32,
+            VDegree: i32,
+            UFlatKnots: &TColStd_Array1OfReal,
+            VFlatKnots: &TColStd_Array1OfReal,
+            UParameters: &TColStd_Array1OfReal,
+            VParameters: &TColStd_Array1OfReal,
+            Poles: Pin<&mut TColgp_Array2OfPnt>,
+            InversionProblem: &mut i32,
+        );
+        #[doc = " ======================== BSplSLib_EvaluatorFunction ========================"]
+        #[doc = "/// **Source:** `BSplSLib_EvaluatorFunction.hxx` - `BSplSLib_EvaluatorFunction`"]
+        #[cxx_name = "BSplSLib_EvaluatorFunction"]
+        type EvaluatorFunction;
+        #[doc = "Function evaluation method to be defined by descendant"]
+        #[cxx_name = "Evaluate"]
+        fn evaluate(
+            self: &EvaluatorFunction,
+            theDerivativeRequest: i32,
+            theUParameter: f64,
+            theVParameter: f64,
+            theResult: &mut f64,
+            theErrorCode: &mut i32,
+        );
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HSequenceOfInteger from t_col_std module"]
+        type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "HArray1OfPnt from t_colgp module"]
+        type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
+        #[doc = "HArray1OfPnt2d from t_colgp module"]
+        type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
+        #[doc = "HArray1OfVec from t_colgp module"]
+        type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
+        #[doc = "HArray2OfPnt from t_colgp module"]
+        type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfInteger"]
+        type TColStd_Array1OfInteger;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfReal"]
+        type TColStd_Array1OfReal;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array2OfReal"]
+        type TColStd_Array2OfReal;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColgp_Array1OfPnt"]
+        type TColgp_Array1OfPnt;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColgp_Array2OfPnt"]
+        type TColgp_Array2OfPnt;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBSplSLibCache"]
+        type HandleBSplSLibCache;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
+    }
+    impl UniquePtr<Cache> {}
+    impl UniquePtr<BSplSLib> {}
+    impl UniquePtr<EvaluatorFunction> {}
+}

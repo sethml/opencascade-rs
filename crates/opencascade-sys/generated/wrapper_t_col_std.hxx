@@ -17,10 +17,12 @@
 #include <TColStd_HArray1OfTransient.hxx>
 #include <TColStd_HArray2OfReal.hxx>
 #include <TColStd_HSequenceOfHExtendedString.hxx>
+#include <TColStd_HSequenceOfInteger.hxx>
 #include <TColStd_HSequenceOfReal.hxx>
 #include <TColStd_HSequenceOfTransient.hxx>
 #include <TColStd_PackedMapOfInteger.hxx>
 #include <TColStd_SequenceOfHExtendedString.hxx>
+#include <TColStd_SequenceOfInteger.hxx>
 #include <TColStd_SequenceOfReal.hxx>
 #include <TColStd_SequenceOfTransient.hxx>
 
@@ -32,8 +34,137 @@ typedef opencascade::handle<TColStd_HArray1OfReal> HandleTColStdHArray1OfReal;
 typedef opencascade::handle<TColStd_HArray1OfTransient> HandleTColStdHArray1OfTransient;
 typedef opencascade::handle<TColStd_HArray2OfReal> HandleTColStdHArray2OfReal;
 typedef opencascade::handle<TColStd_HSequenceOfHExtendedString> HandleTColStdHSequenceOfHExtendedString;
+typedef opencascade::handle<TColStd_HSequenceOfInteger> HandleTColStdHSequenceOfInteger;
 typedef opencascade::handle<TColStd_HSequenceOfReal> HandleTColStdHSequenceOfReal;
 typedef opencascade::handle<TColStd_HSequenceOfTransient> HandleTColStdHSequenceOfTransient;
+
+// ========================
+// TColStd_HArray1OfInteger wrappers
+// ========================
+
+inline std::unique_ptr<TColStd_HArray1OfInteger> TColStd_HArray1OfInteger_ctor() {
+    return std::make_unique<TColStd_HArray1OfInteger>();
+}
+
+inline std::unique_ptr<TColStd_HArray1OfInteger> TColStd_HArray1OfInteger_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<TColStd_HArray1OfInteger>(theLower, theUpper);
+}
+
+inline std::unique_ptr<TColStd_HArray1OfInteger> TColStd_HArray1OfInteger_ctor_int3(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Integer& theValue) {
+    return std::make_unique<TColStd_HArray1OfInteger>(theLower, theUpper, theValue);
+}
+
+inline std::unique_ptr<TColStd_HArray1OfInteger> TColStd_HArray1OfInteger_ctor_int3_bool(const Standard_Integer& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
+    return std::make_unique<TColStd_HArray1OfInteger>(theBegin, theLower, theUpper, arg3);
+}
+
+inline std::unique_ptr<TColStd_HArray1OfInteger> TColStd_HArray1OfInteger_ctor_array1ofinteger(const TColStd_Array1OfInteger& theOther) {
+    return std::make_unique<TColStd_HArray1OfInteger>(theOther);
+}
+
+inline rust::String TColStd_HArray1OfInteger_get_type_name() {
+    return rust::String(TColStd_HArray1OfInteger::get_type_name());
+}
+
+inline std::unique_ptr<HandleTColStdHArray1OfInteger> TColStd_HArray1OfInteger_to_handle(std::unique_ptr<TColStd_HArray1OfInteger> obj) {
+    return std::make_unique<HandleTColStdHArray1OfInteger>(obj.release());
+}
+
+// ========================
+// TColStd_HArray1OfReal wrappers
+// ========================
+
+inline std::unique_ptr<TColStd_HArray1OfReal> TColStd_HArray1OfReal_ctor() {
+    return std::make_unique<TColStd_HArray1OfReal>();
+}
+
+inline std::unique_ptr<TColStd_HArray1OfReal> TColStd_HArray1OfReal_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return std::make_unique<TColStd_HArray1OfReal>(theLower, theUpper);
+}
+
+inline std::unique_ptr<TColStd_HArray1OfReal> TColStd_HArray1OfReal_ctor_int2_real(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Real& theValue) {
+    return std::make_unique<TColStd_HArray1OfReal>(theLower, theUpper, theValue);
+}
+
+inline std::unique_ptr<TColStd_HArray1OfReal> TColStd_HArray1OfReal_ctor_real_int2_bool(const Standard_Real& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
+    return std::make_unique<TColStd_HArray1OfReal>(theBegin, theLower, theUpper, arg3);
+}
+
+inline std::unique_ptr<TColStd_HArray1OfReal> TColStd_HArray1OfReal_ctor_array1ofreal(const TColStd_Array1OfReal& theOther) {
+    return std::make_unique<TColStd_HArray1OfReal>(theOther);
+}
+
+inline rust::String TColStd_HArray1OfReal_get_type_name() {
+    return rust::String(TColStd_HArray1OfReal::get_type_name());
+}
+
+inline std::unique_ptr<HandleTColStdHArray1OfReal> TColStd_HArray1OfReal_to_handle(std::unique_ptr<TColStd_HArray1OfReal> obj) {
+    return std::make_unique<HandleTColStdHArray1OfReal>(obj.release());
+}
+
+// ========================
+// TColStd_HSequenceOfInteger wrappers
+// ========================
+
+inline std::unique_ptr<TColStd_HSequenceOfInteger> TColStd_HSequenceOfInteger_ctor() {
+    return std::make_unique<TColStd_HSequenceOfInteger>();
+}
+
+inline std::unique_ptr<TColStd_HSequenceOfInteger> TColStd_HSequenceOfInteger_ctor_sequenceofinteger(const TColStd_SequenceOfInteger& theOther) {
+    return std::make_unique<TColStd_HSequenceOfInteger>(theOther);
+}
+
+inline rust::String TColStd_HSequenceOfInteger_get_type_name() {
+    return rust::String(TColStd_HSequenceOfInteger::get_type_name());
+}
+
+inline std::unique_ptr<HandleTColStdHSequenceOfInteger> TColStd_HSequenceOfInteger_to_handle(std::unique_ptr<TColStd_HSequenceOfInteger> obj) {
+    return std::make_unique<HandleTColStdHSequenceOfInteger>(obj.release());
+}
+
+// ========================
+// TColStd_HSequenceOfReal wrappers
+// ========================
+
+inline std::unique_ptr<TColStd_HSequenceOfReal> TColStd_HSequenceOfReal_ctor() {
+    return std::make_unique<TColStd_HSequenceOfReal>();
+}
+
+inline std::unique_ptr<TColStd_HSequenceOfReal> TColStd_HSequenceOfReal_ctor_sequenceofreal(const TColStd_SequenceOfReal& theOther) {
+    return std::make_unique<TColStd_HSequenceOfReal>(theOther);
+}
+
+inline rust::String TColStd_HSequenceOfReal_get_type_name() {
+    return rust::String(TColStd_HSequenceOfReal::get_type_name());
+}
+
+inline std::unique_ptr<HandleTColStdHSequenceOfReal> TColStd_HSequenceOfReal_to_handle(std::unique_ptr<TColStd_HSequenceOfReal> obj) {
+    return std::make_unique<HandleTColStdHSequenceOfReal>(obj.release());
+}
+
+// ========================
+// TColStd_HArray2OfReal wrappers
+// ========================
+
+inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_int4(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp) {
+    return std::make_unique<TColStd_HArray2OfReal>(theRowLow, theRowUpp, theColLow, theColUpp);
+}
+
+inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_int4_real(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp, const Standard_Real& theValue) {
+    return std::make_unique<TColStd_HArray2OfReal>(theRowLow, theRowUpp, theColLow, theColUpp, theValue);
+}
+
+inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_array2ofreal(const TColStd_Array2OfReal& theOther) {
+    return std::make_unique<TColStd_HArray2OfReal>(theOther);
+}
+
+inline rust::String TColStd_HArray2OfReal_get_type_name() {
+    return rust::String(TColStd_HArray2OfReal::get_type_name());
+}
+
+inline std::unique_ptr<HandleTColStdHArray2OfReal> TColStd_HArray2OfReal_to_handle(std::unique_ptr<TColStd_HArray2OfReal> obj) {
+    return std::make_unique<HandleTColStdHArray2OfReal>(obj.release());
+}
 
 // ========================
 // TColStd_HSequenceOfTransient wrappers
@@ -110,114 +241,6 @@ inline rust::String TColStd_HSequenceOfHExtendedString_get_type_name() {
 
 inline std::unique_ptr<HandleTColStdHSequenceOfHExtendedString> TColStd_HSequenceOfHExtendedString_to_handle(std::unique_ptr<TColStd_HSequenceOfHExtendedString> obj) {
     return std::make_unique<HandleTColStdHSequenceOfHExtendedString>(obj.release());
-}
-
-// ========================
-// TColStd_HArray2OfReal wrappers
-// ========================
-
-inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_int4(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp) {
-    return std::make_unique<TColStd_HArray2OfReal>(theRowLow, theRowUpp, theColLow, theColUpp);
-}
-
-inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_int4_real(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp, const Standard_Real& theValue) {
-    return std::make_unique<TColStd_HArray2OfReal>(theRowLow, theRowUpp, theColLow, theColUpp, theValue);
-}
-
-inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_array2ofreal(const TColStd_Array2OfReal& theOther) {
-    return std::make_unique<TColStd_HArray2OfReal>(theOther);
-}
-
-inline rust::String TColStd_HArray2OfReal_get_type_name() {
-    return rust::String(TColStd_HArray2OfReal::get_type_name());
-}
-
-inline std::unique_ptr<HandleTColStdHArray2OfReal> TColStd_HArray2OfReal_to_handle(std::unique_ptr<TColStd_HArray2OfReal> obj) {
-    return std::make_unique<HandleTColStdHArray2OfReal>(obj.release());
-}
-
-// ========================
-// TColStd_HArray1OfInteger wrappers
-// ========================
-
-inline std::unique_ptr<TColStd_HArray1OfInteger> TColStd_HArray1OfInteger_ctor() {
-    return std::make_unique<TColStd_HArray1OfInteger>();
-}
-
-inline std::unique_ptr<TColStd_HArray1OfInteger> TColStd_HArray1OfInteger_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return std::make_unique<TColStd_HArray1OfInteger>(theLower, theUpper);
-}
-
-inline std::unique_ptr<TColStd_HArray1OfInteger> TColStd_HArray1OfInteger_ctor_int3(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Integer& theValue) {
-    return std::make_unique<TColStd_HArray1OfInteger>(theLower, theUpper, theValue);
-}
-
-inline std::unique_ptr<TColStd_HArray1OfInteger> TColStd_HArray1OfInteger_ctor_int3_bool(const Standard_Integer& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
-    return std::make_unique<TColStd_HArray1OfInteger>(theBegin, theLower, theUpper, arg3);
-}
-
-inline std::unique_ptr<TColStd_HArray1OfInteger> TColStd_HArray1OfInteger_ctor_array1ofinteger(const TColStd_Array1OfInteger& theOther) {
-    return std::make_unique<TColStd_HArray1OfInteger>(theOther);
-}
-
-inline rust::String TColStd_HArray1OfInteger_get_type_name() {
-    return rust::String(TColStd_HArray1OfInteger::get_type_name());
-}
-
-inline std::unique_ptr<HandleTColStdHArray1OfInteger> TColStd_HArray1OfInteger_to_handle(std::unique_ptr<TColStd_HArray1OfInteger> obj) {
-    return std::make_unique<HandleTColStdHArray1OfInteger>(obj.release());
-}
-
-// ========================
-// TColStd_HArray1OfReal wrappers
-// ========================
-
-inline std::unique_ptr<TColStd_HArray1OfReal> TColStd_HArray1OfReal_ctor() {
-    return std::make_unique<TColStd_HArray1OfReal>();
-}
-
-inline std::unique_ptr<TColStd_HArray1OfReal> TColStd_HArray1OfReal_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return std::make_unique<TColStd_HArray1OfReal>(theLower, theUpper);
-}
-
-inline std::unique_ptr<TColStd_HArray1OfReal> TColStd_HArray1OfReal_ctor_int2_real(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Real& theValue) {
-    return std::make_unique<TColStd_HArray1OfReal>(theLower, theUpper, theValue);
-}
-
-inline std::unique_ptr<TColStd_HArray1OfReal> TColStd_HArray1OfReal_ctor_real_int2_bool(const Standard_Real& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
-    return std::make_unique<TColStd_HArray1OfReal>(theBegin, theLower, theUpper, arg3);
-}
-
-inline std::unique_ptr<TColStd_HArray1OfReal> TColStd_HArray1OfReal_ctor_array1ofreal(const TColStd_Array1OfReal& theOther) {
-    return std::make_unique<TColStd_HArray1OfReal>(theOther);
-}
-
-inline rust::String TColStd_HArray1OfReal_get_type_name() {
-    return rust::String(TColStd_HArray1OfReal::get_type_name());
-}
-
-inline std::unique_ptr<HandleTColStdHArray1OfReal> TColStd_HArray1OfReal_to_handle(std::unique_ptr<TColStd_HArray1OfReal> obj) {
-    return std::make_unique<HandleTColStdHArray1OfReal>(obj.release());
-}
-
-// ========================
-// TColStd_HSequenceOfReal wrappers
-// ========================
-
-inline std::unique_ptr<TColStd_HSequenceOfReal> TColStd_HSequenceOfReal_ctor() {
-    return std::make_unique<TColStd_HSequenceOfReal>();
-}
-
-inline std::unique_ptr<TColStd_HSequenceOfReal> TColStd_HSequenceOfReal_ctor_sequenceofreal(const TColStd_SequenceOfReal& theOther) {
-    return std::make_unique<TColStd_HSequenceOfReal>(theOther);
-}
-
-inline rust::String TColStd_HSequenceOfReal_get_type_name() {
-    return rust::String(TColStd_HSequenceOfReal::get_type_name());
-}
-
-inline std::unique_ptr<HandleTColStdHSequenceOfReal> TColStd_HSequenceOfReal_to_handle(std::unique_ptr<TColStd_HSequenceOfReal> obj) {
-    return std::make_unique<HandleTColStdHSequenceOfReal>(obj.release());
 }
 
 // ========================

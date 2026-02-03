@@ -6,9 +6,11 @@
 
 #include <Adaptor3d_Curve.hxx>
 #include <Adaptor3d_Surface.hxx>
+#include <Extrema_ECC.hxx>
 #include <Extrema_EPCOfExtPC.hxx>
 #include <Extrema_ElementType.hxx>
 #include <Extrema_ExtAlgo.hxx>
+#include <Extrema_ExtCC.hxx>
 #include <Extrema_ExtFlag.hxx>
 #include <Extrema_ExtPC.hxx>
 #include <Extrema_ExtPElC.hxx>
@@ -35,6 +37,40 @@
 #include <math_Vector.hxx>
 
 // ========================
+// Extrema_ExtCC wrappers
+// ========================
+
+inline std::unique_ptr<Extrema_ExtCC> Extrema_ExtCC_ctor_real2(Standard_Real TolC1, Standard_Real TolC2) {
+    return std::make_unique<Extrema_ExtCC>(TolC1, TolC2);
+}
+
+inline std::unique_ptr<Extrema_ExtCC> Extrema_ExtCC_ctor_curve2_real2(const Adaptor3d_Curve& C1, const Adaptor3d_Curve& C2, Standard_Real TolC1, Standard_Real TolC2) {
+    return std::make_unique<Extrema_ExtCC>(C1, C2, TolC1, TolC2);
+}
+
+inline std::unique_ptr<Extrema_ExtCC> Extrema_ExtCC_ctor_curve2_real6(const Adaptor3d_Curve& C1, const Adaptor3d_Curve& C2, Standard_Real U1, Standard_Real U2, Standard_Real V1, Standard_Real V2, Standard_Real TolC1, Standard_Real TolC2) {
+    return std::make_unique<Extrema_ExtCC>(C1, C2, U1, U2, V1, V2, TolC1, TolC2);
+}
+
+
+// ========================
+// Extrema_ExtPC wrappers
+// ========================
+
+inline std::unique_ptr<Extrema_ExtPC> Extrema_ExtPC_ctor() {
+    return std::make_unique<Extrema_ExtPC>();
+}
+
+inline std::unique_ptr<Extrema_ExtPC> Extrema_ExtPC_ctor_pnt_curve_real3(const gp_Pnt& P, const Adaptor3d_Curve& C, Standard_Real Uinf, Standard_Real Usup, Standard_Real TolF) {
+    return std::make_unique<Extrema_ExtPC>(P, C, Uinf, Usup, TolF);
+}
+
+inline std::unique_ptr<Extrema_ExtPC> Extrema_ExtPC_ctor_pnt_curve_real(const gp_Pnt& P, const Adaptor3d_Curve& C, Standard_Real TolF) {
+    return std::make_unique<Extrema_ExtPC>(P, C, TolF);
+}
+
+
+// ========================
 // Extrema_ExtPS wrappers
 // ========================
 
@@ -44,53 +80,11 @@ inline std::unique_ptr<Extrema_ExtPS> Extrema_ExtPS_ctor() {
 
 
 // ========================
-// Extrema_ExtPElS wrappers
-// ========================
-
-inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor() {
-    return std::make_unique<Extrema_ExtPElS>();
-}
-
-inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_cylinder_real(const gp_Pnt& P, const gp_Cylinder& S, Standard_Real Tol) {
-    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
-}
-
-inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_pln_real(const gp_Pnt& P, const gp_Pln& S, Standard_Real Tol) {
-    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
-}
-
-inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_cone_real(const gp_Pnt& P, const gp_Cone& S, Standard_Real Tol) {
-    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
-}
-
-inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_torus_real(const gp_Pnt& P, const gp_Torus& S, Standard_Real Tol) {
-    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
-}
-
-inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_sphere_real(const gp_Pnt& P, const gp_Sphere& S, Standard_Real Tol) {
-    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
-}
-
-
-// ========================
 // Extrema_GenExtPS wrappers
 // ========================
 
 inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor() {
     return std::make_unique<Extrema_GenExtPS>();
-}
-
-
-// ========================
-// Extrema_POnSurf wrappers
-// ========================
-
-inline std::unique_ptr<Extrema_POnSurf> Extrema_POnSurf_ctor() {
-    return std::make_unique<Extrema_POnSurf>();
-}
-
-inline std::unique_ptr<Extrema_POnSurf> Extrema_POnSurf_ctor_real2_pnt(Standard_Real U, Standard_Real V, const gp_Pnt& P) {
-    return std::make_unique<Extrema_POnSurf>(U, V, P);
 }
 
 
@@ -123,19 +117,44 @@ inline std::unique_ptr<Extrema_FuncPSNorm> Extrema_FuncPSNorm_ctor_pnt_surface(c
 
 
 // ========================
-// Extrema_ExtPC wrappers
+// Extrema_POnSurf wrappers
 // ========================
 
-inline std::unique_ptr<Extrema_ExtPC> Extrema_ExtPC_ctor() {
-    return std::make_unique<Extrema_ExtPC>();
+inline std::unique_ptr<Extrema_POnSurf> Extrema_POnSurf_ctor() {
+    return std::make_unique<Extrema_POnSurf>();
 }
 
-inline std::unique_ptr<Extrema_ExtPC> Extrema_ExtPC_ctor_pnt_curve_real3(const gp_Pnt& P, const Adaptor3d_Curve& C, Standard_Real Uinf, Standard_Real Usup, Standard_Real TolF) {
-    return std::make_unique<Extrema_ExtPC>(P, C, Uinf, Usup, TolF);
+inline std::unique_ptr<Extrema_POnSurf> Extrema_POnSurf_ctor_real2_pnt(Standard_Real U, Standard_Real V, const gp_Pnt& P) {
+    return std::make_unique<Extrema_POnSurf>(U, V, P);
 }
 
-inline std::unique_ptr<Extrema_ExtPC> Extrema_ExtPC_ctor_pnt_curve_real(const gp_Pnt& P, const Adaptor3d_Curve& C, Standard_Real TolF) {
-    return std::make_unique<Extrema_ExtPC>(P, C, TolF);
+
+// ========================
+// Extrema_ExtPElS wrappers
+// ========================
+
+inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor() {
+    return std::make_unique<Extrema_ExtPElS>();
+}
+
+inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_cylinder_real(const gp_Pnt& P, const gp_Cylinder& S, Standard_Real Tol) {
+    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
+}
+
+inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_pln_real(const gp_Pnt& P, const gp_Pln& S, Standard_Real Tol) {
+    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
+}
+
+inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_cone_real(const gp_Pnt& P, const gp_Cone& S, Standard_Real Tol) {
+    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
+}
+
+inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_torus_real(const gp_Pnt& P, const gp_Torus& S, Standard_Real Tol) {
+    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
+}
+
+inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_sphere_real(const gp_Pnt& P, const gp_Sphere& S, Standard_Real Tol) {
+    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
 }
 
 
@@ -197,6 +216,10 @@ inline std::unique_ptr<Extrema_PCFOfEPCOfExtPC> Extrema_PCFOfEPCOfExtPC_ctor_pnt
     return std::make_unique<Extrema_PCFOfEPCOfExtPC>(P, C);
 }
 
+inline const math_Function& Extrema_PCFOfEPCOfExtPC_as_math_Function(const Extrema_PCFOfEPCOfExtPC& self) { return self; }
+inline math_Function& Extrema_PCFOfEPCOfExtPC_as_math_Function_mut(Extrema_PCFOfEPCOfExtPC& self) { return self; }
+inline const math_FunctionWithDerivative& Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative(const Extrema_PCFOfEPCOfExtPC& self) { return self; }
+inline math_FunctionWithDerivative& Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative_mut(Extrema_PCFOfEPCOfExtPC& self) { return self; }
 
 // ========================
 // Extrema_POnCurv wrappers
@@ -208,6 +231,23 @@ inline std::unique_ptr<Extrema_POnCurv> Extrema_POnCurv_ctor() {
 
 inline std::unique_ptr<Extrema_POnCurv> Extrema_POnCurv_ctor_real_pnt(Standard_Real U, const gp_Pnt& P) {
     return std::make_unique<Extrema_POnCurv>(U, P);
+}
+
+
+// ========================
+// Extrema_ECC wrappers
+// ========================
+
+inline std::unique_ptr<Extrema_ECC> Extrema_ECC_ctor() {
+    return std::make_unique<Extrema_ECC>();
+}
+
+inline std::unique_ptr<Extrema_ECC> Extrema_ECC_ctor_curve2(const Adaptor3d_Curve& C1, const Adaptor3d_Curve& C2) {
+    return std::make_unique<Extrema_ECC>(C1, C2);
+}
+
+inline std::unique_ptr<Extrema_ECC> Extrema_ECC_ctor_curve2_real4(const Adaptor3d_Curve& C1, const Adaptor3d_Curve& C2, Standard_Real Uinf, Standard_Real Usup, Standard_Real Vinf, Standard_Real Vsup) {
+    return std::make_unique<Extrema_ECC>(C1, C2, Uinf, Usup, Vinf, Vsup);
 }
 
 

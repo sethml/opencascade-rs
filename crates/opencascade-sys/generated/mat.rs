@@ -11,10 +11,74 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::BasicElt;
+impl BasicElt {
+    #[doc = "Constructor, <anInteger> is the <index> of <me>."]
+    pub fn new_int(anInteger: i32) -> cxx::UniquePtr<Self> {
+        ffi::BasicElt_ctor_int(anInteger)
+    }
+
+    #[doc = "Wrap MAT_BasicElt in a Handle (reference-counted smart pointer)"]
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMATBasicElt> {
+        ffi::BasicElt_to_handle(obj)
+    }
+
+    #[doc = "Return <startArcLeft> or <startArcRight> corresponding to <aSide>."]
+    pub fn start_arc(&self) -> cxx::UniquePtr<ffi::HandleMATArc> {
+        ffi::BasicElt_start_arc(self)
+    }
+
+    #[doc = "Return <endArcLeft> or <endArcRight> corresponding to <aSide>."]
+    pub fn end_arc(&self) -> cxx::UniquePtr<ffi::HandleMATArc> {
+        ffi::BasicElt_end_arc(self)
+    }
+
+    pub fn get_type_name() -> String {
+        ffi::BasicElt_get_type_name()
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_mat.hxx");
+        #[doc = " ======================== MAT_BasicElt ========================"]
+        #[doc = "/// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt`"]
+        #[doc = ""]
+        #[doc = "A    BasicELt  is  associated   to  each  elementary constituent of  the figure."]
+        #[cxx_name = "MAT_BasicElt"]
+        type BasicElt;
+        #[doc = "/// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt::MAT_BasicElt()`"]
+        #[doc = ""]
+        #[doc = "Constructor, <anInteger> is the <index> of <me>."]
+        #[cxx_name = "MAT_BasicElt_ctor_int"]
+        fn BasicElt_ctor_int(anInteger: i32) -> UniquePtr<BasicElt>;
+        #[doc = "Return the <index> of <me> in Graph.TheBasicElts."]
+        #[cxx_name = "Index"]
+        fn index(self: &BasicElt) -> i32;
+        #[doc = "Return the <GeomIndex> of <me>."]
+        #[cxx_name = "GeomIndex"]
+        fn geom_index(self: &BasicElt) -> i32;
+        #[cxx_name = "SetStartArc"]
+        fn set_start_arc(self: Pin<&mut BasicElt>, anArc: &HandleMATArc);
+        #[cxx_name = "SetEndArc"]
+        fn set_end_arc(self: Pin<&mut BasicElt>, anArc: &HandleMATArc);
+        #[cxx_name = "SetIndex"]
+        fn set_index(self: Pin<&mut BasicElt>, anInteger: i32);
+        #[cxx_name = "SetGeomIndex"]
+        fn set_geom_index(self: Pin<&mut BasicElt>, anInteger: i32);
+        #[cxx_name = "DynamicType"]
+        fn dynamic_type(self: &BasicElt) -> &HandleStandardType;
+        #[doc = "Return <startArcLeft> or <startArcRight> corresponding to <aSide>."]
+        #[cxx_name = "MAT_BasicElt_StartArc"]
+        fn BasicElt_start_arc(self_: &BasicElt) -> UniquePtr<HandleMATArc>;
+        #[doc = "Return <endArcLeft> or <endArcRight> corresponding to <aSide>."]
+        #[cxx_name = "MAT_BasicElt_EndArc"]
+        fn BasicElt_end_arc(self_: &BasicElt) -> UniquePtr<HandleMATArc>;
+        #[cxx_name = "MAT_BasicElt_get_type_name"]
+        fn BasicElt_get_type_name() -> String;
+        #[doc = "Wrap MAT_BasicElt in a Handle (reference-counted smart pointer)"]
+        #[cxx_name = "MAT_BasicElt_to_handle"]
+        fn BasicElt_to_handle(obj: UniquePtr<BasicElt>) -> UniquePtr<HandleMATBasicElt>;
         #[doc = "Standard from standard module"]
         type Standard = crate::standard::ffi::Standard;
         #[doc = "ConstructionError from standard module"]
@@ -69,70 +133,6 @@ pub(crate) mod ffi {
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = " ======================== MAT_BasicElt ========================"]
-        #[doc = "/// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt`"]
-        #[doc = ""]
-        #[doc = "A    BasicELt  is  associated   to  each  elementary constituent of  the figure."]
-        #[cxx_name = "MAT_BasicElt"]
-        type BasicElt;
-        #[doc = "/// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt::MAT_BasicElt()`"]
-        #[doc = ""]
-        #[doc = "Constructor, <anInteger> is the <index> of <me>."]
-        #[cxx_name = "MAT_BasicElt_ctor_int"]
-        fn BasicElt_ctor_int(anInteger: i32) -> UniquePtr<BasicElt>;
-        #[doc = "Return the <index> of <me> in Graph.TheBasicElts."]
-        #[cxx_name = "Index"]
-        fn index(self: &BasicElt) -> i32;
-        #[doc = "Return the <GeomIndex> of <me>."]
-        #[cxx_name = "GeomIndex"]
-        fn geom_index(self: &BasicElt) -> i32;
-        #[cxx_name = "SetStartArc"]
-        fn set_start_arc(self: Pin<&mut BasicElt>, anArc: &HandleMATArc);
-        #[cxx_name = "SetEndArc"]
-        fn set_end_arc(self: Pin<&mut BasicElt>, anArc: &HandleMATArc);
-        #[cxx_name = "SetIndex"]
-        fn set_index(self: Pin<&mut BasicElt>, anInteger: i32);
-        #[cxx_name = "SetGeomIndex"]
-        fn set_geom_index(self: Pin<&mut BasicElt>, anInteger: i32);
-        #[cxx_name = "DynamicType"]
-        fn dynamic_type(self: &BasicElt) -> &HandleStandardType;
-        #[doc = "Return <startArcLeft> or <startArcRight> corresponding to <aSide>."]
-        #[cxx_name = "MAT_BasicElt_StartArc"]
-        fn BasicElt_start_arc(self_: &BasicElt) -> UniquePtr<HandleMATArc>;
-        #[doc = "Return <endArcLeft> or <endArcRight> corresponding to <aSide>."]
-        #[cxx_name = "MAT_BasicElt_EndArc"]
-        fn BasicElt_end_arc(self_: &BasicElt) -> UniquePtr<HandleMATArc>;
-        #[cxx_name = "MAT_BasicElt_get_type_name"]
-        fn BasicElt_get_type_name() -> String;
-        #[doc = "Wrap MAT_BasicElt in a Handle (reference-counted smart pointer)"]
-        #[cxx_name = "MAT_BasicElt_to_handle"]
-        fn BasicElt_to_handle(obj: UniquePtr<BasicElt>) -> UniquePtr<HandleMATBasicElt>;
     }
     impl UniquePtr<BasicElt> {}
-}
-pub use ffi::BasicElt;
-impl BasicElt {
-    #[doc = "Constructor, <anInteger> is the <index> of <me>."]
-    pub fn new_int(anInteger: i32) -> cxx::UniquePtr<Self> {
-        ffi::BasicElt_ctor_int(anInteger)
-    }
-
-    #[doc = "Wrap MAT_BasicElt in a Handle (reference-counted smart pointer)"]
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMATBasicElt> {
-        ffi::BasicElt_to_handle(obj)
-    }
-
-    #[doc = "Return <startArcLeft> or <startArcRight> corresponding to <aSide>."]
-    pub fn start_arc(&self) -> cxx::UniquePtr<ffi::HandleMATArc> {
-        ffi::BasicElt_start_arc(self)
-    }
-
-    #[doc = "Return <endArcLeft> or <endArcRight> corresponding to <aSide>."]
-    pub fn end_arc(&self) -> cxx::UniquePtr<ffi::HandleMATArc> {
-        ffi::BasicElt_end_arc(self)
-    }
-
-    pub fn get_type_name() -> String {
-        ffi::BasicElt_get_type_name()
-    }
 }

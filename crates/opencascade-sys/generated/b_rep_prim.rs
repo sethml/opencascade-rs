@@ -19,124 +19,392 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::Torus;
+impl Torus {
+    #[doc = "the STEP definition Position : center and axes Major, Minor : Radii Errors : Major < Resolution Minor < Resolution"]
+    pub fn new_ax2_real2(Position: &ffi::gp_Ax2, Major: f64, Minor: f64) -> cxx::UniquePtr<Self> {
+        ffi::Torus_ctor_ax2_real2(Position, Major, Minor)
+    }
+
+    #[doc = "Torus centered at origin"]
+    pub fn new_real2(Major: f64, Minor: f64) -> cxx::UniquePtr<Self> {
+        ffi::Torus_ctor_real2(Major, Minor)
+    }
+
+    #[doc = "Torus at Center"]
+    pub fn new_pnt_real2(Center: &ffi::gp_Pnt, Major: f64, Minor: f64) -> cxx::UniquePtr<Self> {
+        ffi::Torus_ctor_pnt_real2(Center, Major, Minor)
+    }
+
+    #[doc = "Upcast to BRepPrim_OneAxis"]
+    pub fn as_one_axis(&self) -> &OneAxis {
+        ffi::torus_as_one_axis(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_OneAxis (mutable)"]
+    pub fn as_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut OneAxis> {
+        ffi::torus_as_one_axis_mut(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_Revolution"]
+    pub fn as_revolution(&self) -> &Revolution {
+        ffi::torus_as_revolution(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_Revolution (mutable)"]
+    pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
+        ffi::torus_as_revolution_mut(self)
+    }
+
+    #[doc = "The surface normal should be directed  towards the outside."]
+    pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
+        ffi::Torus_make_empty_lateral_face(self)
+    }
+}
+pub use ffi::Revolution;
+impl Revolution {
+    #[doc = "Create a  revolution body <M>  is the  meridian nd must   be in the XZ  plane   of <A>. <PM>  is  the meridian in the XZ plane."]
+    pub fn new_ax2_real2_handlecurve2(
+        A: &ffi::gp_Ax2,
+        VMin: f64,
+        VMax: f64,
+        M: &ffi::HandleGeomCurve,
+        PM: &ffi::HandleGeom2dCurve,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Revolution_ctor_ax2_real2_handlecurve2(A, VMin, VMax, M, PM)
+    }
+
+    #[doc = "Upcast to BRepPrim_OneAxis"]
+    pub fn as_one_axis(&self) -> &OneAxis {
+        ffi::revolution_as_one_axis(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_OneAxis (mutable)"]
+    pub fn as_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut OneAxis> {
+        ffi::revolution_as_one_axis_mut(self)
+    }
+
+    #[doc = "The surface normal should be directed  towards the outside."]
+    pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
+        ffi::Revolution_make_empty_lateral_face(self)
+    }
+
+    #[doc = "Returns  an  edge with  a 3D curve   made from the meridian  in the XZ  plane rotated by <Ang> around the Z-axis. Ang may be 0 or myAngle."]
+    pub fn make_empty_meridian_edge(&self, Ang: f64) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
+        ffi::Revolution_make_empty_meridian_edge(self, Ang)
+    }
+
+    #[doc = "Returns the meridian point at parameter <V> in the plane XZ."]
+    pub fn meridian_value(&self, V: f64) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
+        ffi::Revolution_meridian_value(self, V)
+    }
+}
+pub use ffi::OneAxis;
+impl OneAxis {
+    #[doc = "Returns a face with  no edges.  The surface is the lateral surface with normals pointing outward. The U parameter is the angle with the  origin on the X axis. The  V parameter is   the  parameter of  the meridian."]
+    pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
+        ffi::OneAxis_make_empty_lateral_face(self)
+    }
+
+    #[doc = "Returns  an  edge with  a 3D curve   made from the meridian  in the XZ  plane rotated by <Ang> around the Z-axis. Ang may be 0 or myAngle."]
+    pub fn make_empty_meridian_edge(&self, Ang: f64) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
+        ffi::OneAxis_make_empty_meridian_edge(self, Ang)
+    }
+
+    #[doc = "Returns the meridian point at parameter <V> in the plane XZ."]
+    pub fn meridian_value(&self, V: f64) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
+        ffi::OneAxis_meridian_value(self, V)
+    }
+}
+pub use ffi::Builder;
+impl Builder {
+    #[doc = "Creates an empty, useless  Builder. Necesseray for compilation."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Builder_ctor()
+    }
+
+    #[doc = "Creates from a Builder."]
+    pub fn new_builder(B: &ffi::BRep_Builder) -> cxx::UniquePtr<Self> {
+        ffi::Builder_ctor_builder(B)
+    }
+}
+pub use ffi::Sphere;
+impl Sphere {
+    #[doc = "Creates a Sphere at  origin with  Radius. The axes of the sphere are the  reference axes. An error is raised if the radius is < Resolution."]
+    pub fn new_real(Radius: f64) -> cxx::UniquePtr<Self> {
+        ffi::Sphere_ctor_real(Radius)
+    }
+
+    #[doc = "Creates a Sphere with Center and Radius. Axes are the reference axes. This is the STEP constructor."]
+    pub fn new_pnt_real(Center: &ffi::gp_Pnt, Radius: f64) -> cxx::UniquePtr<Self> {
+        ffi::Sphere_ctor_pnt_real(Center, Radius)
+    }
+
+    #[doc = "Creates a sphere with given axes system."]
+    pub fn new_ax2_real(Axes: &ffi::gp_Ax2, Radius: f64) -> cxx::UniquePtr<Self> {
+        ffi::Sphere_ctor_ax2_real(Axes, Radius)
+    }
+
+    #[doc = "Upcast to BRepPrim_OneAxis"]
+    pub fn as_one_axis(&self) -> &OneAxis {
+        ffi::sphere_as_one_axis(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_OneAxis (mutable)"]
+    pub fn as_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut OneAxis> {
+        ffi::sphere_as_one_axis_mut(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_Revolution"]
+    pub fn as_revolution(&self) -> &Revolution {
+        ffi::sphere_as_revolution(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_Revolution (mutable)"]
+    pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
+        ffi::sphere_as_revolution_mut(self)
+    }
+
+    #[doc = "The surface normal should be directed  towards the outside."]
+    pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
+        ffi::Sphere_make_empty_lateral_face(self)
+    }
+}
+pub use ffi::Cylinder;
+impl Cylinder {
+    #[doc = "the STEP definition Position : center of a Face and Axis Radius : radius of cylinder Height : distance between faces on positive side Errors : Height < Resolution Radius < Resolution"]
+    pub fn new_ax2_real2(Position: &ffi::gp_Ax2, Radius: f64, Height: f64) -> cxx::UniquePtr<Self> {
+        ffi::Cylinder_ctor_ax2_real2(Position, Radius, Height)
+    }
+
+    #[doc = "infinite Cylinder at origin on Z negative"]
+    pub fn new_real(Radius: f64) -> cxx::UniquePtr<Self> {
+        ffi::Cylinder_ctor_real(Radius)
+    }
+
+    #[doc = "infinite Cylinder at Center on Z negative"]
+    pub fn new_pnt_real(Center: &ffi::gp_Pnt, Radius: f64) -> cxx::UniquePtr<Self> {
+        ffi::Cylinder_ctor_pnt_real(Center, Radius)
+    }
+
+    #[doc = "infinite Cylinder at Axes on Z negative"]
+    pub fn new_ax2_real(Axes: &ffi::gp_Ax2, Radius: f64) -> cxx::UniquePtr<Self> {
+        ffi::Cylinder_ctor_ax2_real(Axes, Radius)
+    }
+
+    #[doc = "create a Cylinder  at origin on Z  axis, of height H and radius R Error  : Radius  < Resolution H < Resolution H negative"]
+    pub fn new_real2(R: f64, H: f64) -> cxx::UniquePtr<Self> {
+        ffi::Cylinder_ctor_real2(R, H)
+    }
+
+    #[doc = "same as above but at a given point"]
+    pub fn new_pnt_real2(Center: &ffi::gp_Pnt, R: f64, H: f64) -> cxx::UniquePtr<Self> {
+        ffi::Cylinder_ctor_pnt_real2(Center, R, H)
+    }
+
+    #[doc = "Upcast to BRepPrim_OneAxis"]
+    pub fn as_one_axis(&self) -> &OneAxis {
+        ffi::cylinder_as_one_axis(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_OneAxis (mutable)"]
+    pub fn as_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut OneAxis> {
+        ffi::cylinder_as_one_axis_mut(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_Revolution"]
+    pub fn as_revolution(&self) -> &Revolution {
+        ffi::cylinder_as_revolution(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_Revolution (mutable)"]
+    pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
+        ffi::cylinder_as_revolution_mut(self)
+    }
+
+    #[doc = "The surface normal should be directed  towards the outside."]
+    pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
+        ffi::Cylinder_make_empty_lateral_face(self)
+    }
+}
+pub use ffi::Cone;
+impl Cone {
+    #[doc = "the STEP definition Angle = semi-angle of the cone Position : the coordinate system Height : height of the cone. Radius : radius of truncated face at z = 0 The apex is on z < 0 Errors : Height < Resolution Angle < Resolution / Height Angle > PI/2 - Resolution / Height"]
+    pub fn new_real_ax2_real2(
+        Angle: f64,
+        Position: &ffi::gp_Ax2,
+        Height: f64,
+        Radius: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Cone_ctor_real_ax2_real2(Angle, Position, Height, Radius)
+    }
+
+    #[doc = "infinite cone at origin on Z negative"]
+    pub fn new_real(Angle: f64) -> cxx::UniquePtr<Self> {
+        ffi::Cone_ctor_real(Angle)
+    }
+
+    #[doc = "infinite cone at Apex on Z negative"]
+    pub fn new_real_pnt(Angle: f64, Apex: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        ffi::Cone_ctor_real_pnt(Angle, Apex)
+    }
+
+    #[doc = "infinite cone with Axes"]
+    pub fn new_real_ax2(Angle: f64, Axes: &ffi::gp_Ax2) -> cxx::UniquePtr<Self> {
+        ffi::Cone_ctor_real_ax2(Angle, Axes)
+    }
+
+    #[doc = "create a  Cone at origin  on Z axis, of height  H, radius R1 at Z = 0, R2 at  Z = H, X is  the origin of angles.  If R1 or  R2 is 0   there is  an apex. Otherwise, it is a truncated cone. Error  : R1 and R2  < Resolution R1 or R2 negative Abs(R1-R2) < Resolution H < Resolution H negative"]
+    pub fn new_real3(R1: f64, R2: f64, H: f64) -> cxx::UniquePtr<Self> {
+        ffi::Cone_ctor_real3(R1, R2, H)
+    }
+
+    #[doc = "same as above but at a given point"]
+    pub fn new_pnt_real3(Center: &ffi::gp_Pnt, R1: f64, R2: f64, H: f64) -> cxx::UniquePtr<Self> {
+        ffi::Cone_ctor_pnt_real3(Center, R1, R2, H)
+    }
+
+    #[doc = "same as above with given axes system."]
+    pub fn new_ax2_real3(Axes: &ffi::gp_Ax2, R1: f64, R2: f64, H: f64) -> cxx::UniquePtr<Self> {
+        ffi::Cone_ctor_ax2_real3(Axes, R1, R2, H)
+    }
+
+    #[doc = "Upcast to BRepPrim_OneAxis"]
+    pub fn as_one_axis(&self) -> &OneAxis {
+        ffi::cone_as_one_axis(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_OneAxis (mutable)"]
+    pub fn as_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut OneAxis> {
+        ffi::cone_as_one_axis_mut(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_Revolution"]
+    pub fn as_revolution(&self) -> &Revolution {
+        ffi::cone_as_revolution(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_Revolution (mutable)"]
+    pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
+        ffi::cone_as_revolution_mut(self)
+    }
+
+    #[doc = "The surface normal should be directed  towards the outside."]
+    pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
+        ffi::Cone_make_empty_lateral_face(self)
+    }
+}
+pub use ffi::Wedge;
+impl Wedge {
+    #[doc = "Default constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::Wedge_ctor()
+    }
+
+    #[doc = "Creates a  Wedge  algorithm.   <Axes> is  the axis system for the primitive. XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = XMin X2Max = XMax The result is a box dx,dy,dz should be positive"]
+    pub fn new_ax2_real3(Axes: &ffi::gp_Ax2, dx: f64, dy: f64, dz: f64) -> cxx::UniquePtr<Self> {
+        ffi::Wedge_ctor_ax2_real3(Axes, dx, dy, dz)
+    }
+
+    #[doc = "Creates  a Wedge  primitive. <Axes> is   the  axis system for the primitive. XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = ltx X2Max = ltx The result is a STEP right angular wedge dx,dy,dz should be positive ltx should not be negative"]
+    pub fn new_ax2_real4(
+        Axes: &ffi::gp_Ax2,
+        dx: f64,
+        dy: f64,
+        dz: f64,
+        ltx: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Wedge_ctor_ax2_real4(Axes, dx, dy, dz, ltx)
+    }
+
+    #[doc = "Create  a Wedge primitive.   <Axes>  is  the  axis system for the primitive. all the fields are set to the corresponding value XYZMax - XYZMin should be positive ZX2Max - ZX2Min should not be negative"]
+    pub fn new_ax2_real10(
+        Axes: &ffi::gp_Ax2,
+        xmin: f64,
+        ymin: f64,
+        zmin: f64,
+        z2min: f64,
+        x2min: f64,
+        xmax: f64,
+        ymax: f64,
+        zmax: f64,
+        z2max: f64,
+        x2max: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::Wedge_ctor_ax2_real10(
+            Axes, xmin, ymin, zmin, z2min, x2min, xmax, ymax, zmax, z2max, x2max,
+        )
+    }
+
+    #[doc = "Upcast to BRepPrim_GWedge"]
+    pub fn as_g_wedge(&self) -> &GWedge {
+        ffi::wedge_as_g_wedge(self)
+    }
+
+    #[doc = "Upcast to BRepPrim_GWedge (mutable)"]
+    pub fn as_g_wedge_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut GWedge> {
+        ffi::wedge_as_g_wedge_mut(self)
+    }
+}
+pub use ffi::GWedge;
+impl GWedge {
+    #[doc = "Default constructor"]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::GWedge_ctor()
+    }
+
+    #[doc = "Creates a GWedge algorithm. <Axes> is the axis system for the primitive. XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = XMin X2Max = XMax The result is a box dx,dy,dz should be positive"]
+    pub fn new_builder_ax2_real3(
+        B: &ffi::Builder,
+        Axes: &ffi::gp_Ax2,
+        dx: f64,
+        dy: f64,
+        dz: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::GWedge_ctor_builder_ax2_real3(B, Axes, dx, dy, dz)
+    }
+
+    #[doc = "Creates a GWedge primitive. <Axes> is the axis system for the primitive. XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = ltx X2Max = ltx The result is a STEP right angular wedge dx,dy,dz should be positive ltx should not be negative"]
+    pub fn new_builder_ax2_real4(
+        B: &ffi::Builder,
+        Axes: &ffi::gp_Ax2,
+        dx: f64,
+        dy: f64,
+        dz: f64,
+        ltx: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::GWedge_ctor_builder_ax2_real4(B, Axes, dx, dy, dz, ltx)
+    }
+
+    #[doc = "Create a GWedge primitive. <Axes> is the axis system for the primitive. all the fields are set to the corresponding value XYZMax - XYZMin should be positive ZX2Max - ZX2Min should not be negative"]
+    pub fn new_builder_ax2_real10(
+        B: &ffi::Builder,
+        Axes: &ffi::gp_Ax2,
+        xmin: f64,
+        ymin: f64,
+        zmin: f64,
+        z2min: f64,
+        x2min: f64,
+        xmax: f64,
+        ymax: f64,
+        zmax: f64,
+        z2max: f64,
+        x2max: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::GWedge_ctor_builder_ax2_real10(
+            B, Axes, xmin, ymin, zmin, z2min, x2min, xmax, ymax, zmax, z2max, x2max,
+        )
+    }
+
+    #[doc = "Returns the coordinates system from <me>."]
+    pub fn axes(&self) -> cxx::UniquePtr<ffi::gp_Ax2> {
+        ffi::GWedge_axes(self)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_prim.hxx");
-        #[doc = "Builder from b_rep module"]
-        type BRep_Builder = crate::b_rep::ffi::Builder;
-        #[doc = "Tool from b_rep module"]
-        type BRep_Tool = crate::b_rep::ffi::Tool;
-        #[doc = "BoundedCurve from geom2d module"]
-        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
-        type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Curve from geom2d module"]
-        type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "Ellipse from geom2d module"]
-        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "Geometry from geom2d module"]
-        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "TrimmedCurve from geom2d module"]
-        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
-        #[doc = "BSplineCurve from geom module"]
-        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
-        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
-        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
-        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
-        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
-        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
-        type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
-        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
-        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
-        type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
-        type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
-        type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
-        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Circ2d"]
-        type gp_Circ2d;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Lin2d"]
-        type gp_Lin2d;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dCurve"]
-        type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomCurve"]
-        type HandleGeomCurve;
         #[doc = " ======================== BRepPrim_Torus ========================"]
         #[doc = "/// **Source:** `BRepPrim_Torus.hxx` - `BRepPrim_Torus`"]
         #[doc = ""]
@@ -768,6 +1036,154 @@ pub(crate) mod ffi {
         #[doc = "Returns the coordinates system from <me>."]
         #[cxx_name = "BRepPrim_GWedge_Axes"]
         fn GWedge_axes(self_: &GWedge) -> UniquePtr<gp_Ax2>;
+        #[doc = "Builder from b_rep module"]
+        type BRep_Builder = crate::b_rep::ffi::Builder;
+        #[doc = "Tool from b_rep module"]
+        type BRep_Tool = crate::b_rep::ffi::Tool;
+        #[doc = "BoundedCurve from geom2d module"]
+        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
+        #[doc = "Conic from geom2d module"]
+        type Geom2d_Conic = crate::geom2d::ffi::Conic;
+        #[doc = "Curve from geom2d module"]
+        type Geom2d_Curve = crate::geom2d::ffi::Curve;
+        #[doc = "Ellipse from geom2d module"]
+        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
+        #[doc = "Geometry from geom2d module"]
+        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
+        #[doc = "TrimmedCurve from geom2d module"]
+        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
+        #[doc = "BSplineCurve from geom module"]
+        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
+        #[doc = "BSplineSurface from geom module"]
+        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
+        #[doc = "BezierCurve from geom module"]
+        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
+        #[doc = "BezierSurface from geom module"]
+        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BoundedCurve from geom module"]
+        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
+        #[doc = "BoundedSurface from geom module"]
+        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
+        #[doc = "Curve from geom module"]
+        type Geom_Curve = crate::geom::ffi::Curve;
+        #[doc = "CylindricalSurface from geom module"]
+        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
+        #[doc = "ElementarySurface from geom module"]
+        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
+        #[doc = "Geometry from geom module"]
+        type Geom_Geometry = crate::geom::ffi::Geometry;
+        #[doc = "Plane from geom module"]
+        type Geom_Plane = crate::geom::ffi::Plane;
+        #[doc = "Surface from geom module"]
+        type Geom_Surface = crate::geom::ffi::Surface;
+        #[doc = "TrimmedCurve from geom module"]
+        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dCurve"]
+        type HandleGeom2dCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomCurve"]
+        type HandleGeomCurve;
     }
     impl UniquePtr<Torus> {}
     impl UniquePtr<Revolution> {}
@@ -778,386 +1194,4 @@ pub(crate) mod ffi {
     impl UniquePtr<Cone> {}
     impl UniquePtr<Wedge> {}
     impl UniquePtr<GWedge> {}
-}
-pub use ffi::Torus;
-impl Torus {
-    #[doc = "the STEP definition Position : center and axes Major, Minor : Radii Errors : Major < Resolution Minor < Resolution"]
-    pub fn new_ax2_real2(Position: &ffi::gp_Ax2, Major: f64, Minor: f64) -> cxx::UniquePtr<Self> {
-        ffi::Torus_ctor_ax2_real2(Position, Major, Minor)
-    }
-
-    #[doc = "Torus centered at origin"]
-    pub fn new_real2(Major: f64, Minor: f64) -> cxx::UniquePtr<Self> {
-        ffi::Torus_ctor_real2(Major, Minor)
-    }
-
-    #[doc = "Torus at Center"]
-    pub fn new_pnt_real2(Center: &ffi::gp_Pnt, Major: f64, Minor: f64) -> cxx::UniquePtr<Self> {
-        ffi::Torus_ctor_pnt_real2(Center, Major, Minor)
-    }
-
-    #[doc = "Upcast to BRepPrim_OneAxis"]
-    pub fn as_one_axis(&self) -> &OneAxis {
-        ffi::torus_as_one_axis(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_OneAxis (mutable)"]
-    pub fn as_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut OneAxis> {
-        ffi::torus_as_one_axis_mut(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_Revolution"]
-    pub fn as_revolution(&self) -> &Revolution {
-        ffi::torus_as_revolution(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_Revolution (mutable)"]
-    pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
-        ffi::torus_as_revolution_mut(self)
-    }
-
-    #[doc = "The surface normal should be directed  towards the outside."]
-    pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
-        ffi::Torus_make_empty_lateral_face(self)
-    }
-}
-pub use ffi::Revolution;
-impl Revolution {
-    #[doc = "Create a  revolution body <M>  is the  meridian nd must   be in the XZ  plane   of <A>. <PM>  is  the meridian in the XZ plane."]
-    pub fn new_ax2_real2_handlecurve2(
-        A: &ffi::gp_Ax2,
-        VMin: f64,
-        VMax: f64,
-        M: &ffi::HandleGeomCurve,
-        PM: &ffi::HandleGeom2dCurve,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Revolution_ctor_ax2_real2_handlecurve2(A, VMin, VMax, M, PM)
-    }
-
-    #[doc = "Upcast to BRepPrim_OneAxis"]
-    pub fn as_one_axis(&self) -> &OneAxis {
-        ffi::revolution_as_one_axis(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_OneAxis (mutable)"]
-    pub fn as_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut OneAxis> {
-        ffi::revolution_as_one_axis_mut(self)
-    }
-
-    #[doc = "The surface normal should be directed  towards the outside."]
-    pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
-        ffi::Revolution_make_empty_lateral_face(self)
-    }
-
-    #[doc = "Returns  an  edge with  a 3D curve   made from the meridian  in the XZ  plane rotated by <Ang> around the Z-axis. Ang may be 0 or myAngle."]
-    pub fn make_empty_meridian_edge(&self, Ang: f64) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
-        ffi::Revolution_make_empty_meridian_edge(self, Ang)
-    }
-
-    #[doc = "Returns the meridian point at parameter <V> in the plane XZ."]
-    pub fn meridian_value(&self, V: f64) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
-        ffi::Revolution_meridian_value(self, V)
-    }
-}
-pub use ffi::OneAxis;
-impl OneAxis {
-    #[doc = "Returns a face with  no edges.  The surface is the lateral surface with normals pointing outward. The U parameter is the angle with the  origin on the X axis. The  V parameter is   the  parameter of  the meridian."]
-    pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
-        ffi::OneAxis_make_empty_lateral_face(self)
-    }
-
-    #[doc = "Returns  an  edge with  a 3D curve   made from the meridian  in the XZ  plane rotated by <Ang> around the Z-axis. Ang may be 0 or myAngle."]
-    pub fn make_empty_meridian_edge(&self, Ang: f64) -> cxx::UniquePtr<ffi::TopoDS_Edge> {
-        ffi::OneAxis_make_empty_meridian_edge(self, Ang)
-    }
-
-    #[doc = "Returns the meridian point at parameter <V> in the plane XZ."]
-    pub fn meridian_value(&self, V: f64) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
-        ffi::OneAxis_meridian_value(self, V)
-    }
-}
-pub use ffi::Builder;
-impl Builder {
-    #[doc = "Creates an empty, useless  Builder. Necesseray for compilation."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Builder_ctor()
-    }
-
-    #[doc = "Creates from a Builder."]
-    pub fn new_builder(B: &ffi::BRep_Builder) -> cxx::UniquePtr<Self> {
-        ffi::Builder_ctor_builder(B)
-    }
-}
-pub use ffi::Sphere;
-impl Sphere {
-    #[doc = "Creates a Sphere at  origin with  Radius. The axes of the sphere are the  reference axes. An error is raised if the radius is < Resolution."]
-    pub fn new_real(Radius: f64) -> cxx::UniquePtr<Self> {
-        ffi::Sphere_ctor_real(Radius)
-    }
-
-    #[doc = "Creates a Sphere with Center and Radius. Axes are the reference axes. This is the STEP constructor."]
-    pub fn new_pnt_real(Center: &ffi::gp_Pnt, Radius: f64) -> cxx::UniquePtr<Self> {
-        ffi::Sphere_ctor_pnt_real(Center, Radius)
-    }
-
-    #[doc = "Creates a sphere with given axes system."]
-    pub fn new_ax2_real(Axes: &ffi::gp_Ax2, Radius: f64) -> cxx::UniquePtr<Self> {
-        ffi::Sphere_ctor_ax2_real(Axes, Radius)
-    }
-
-    #[doc = "Upcast to BRepPrim_OneAxis"]
-    pub fn as_one_axis(&self) -> &OneAxis {
-        ffi::sphere_as_one_axis(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_OneAxis (mutable)"]
-    pub fn as_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut OneAxis> {
-        ffi::sphere_as_one_axis_mut(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_Revolution"]
-    pub fn as_revolution(&self) -> &Revolution {
-        ffi::sphere_as_revolution(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_Revolution (mutable)"]
-    pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
-        ffi::sphere_as_revolution_mut(self)
-    }
-
-    #[doc = "The surface normal should be directed  towards the outside."]
-    pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
-        ffi::Sphere_make_empty_lateral_face(self)
-    }
-}
-pub use ffi::Cylinder;
-impl Cylinder {
-    #[doc = "the STEP definition Position : center of a Face and Axis Radius : radius of cylinder Height : distance between faces on positive side Errors : Height < Resolution Radius < Resolution"]
-    pub fn new_ax2_real2(Position: &ffi::gp_Ax2, Radius: f64, Height: f64) -> cxx::UniquePtr<Self> {
-        ffi::Cylinder_ctor_ax2_real2(Position, Radius, Height)
-    }
-
-    #[doc = "infinite Cylinder at origin on Z negative"]
-    pub fn new_real(Radius: f64) -> cxx::UniquePtr<Self> {
-        ffi::Cylinder_ctor_real(Radius)
-    }
-
-    #[doc = "infinite Cylinder at Center on Z negative"]
-    pub fn new_pnt_real(Center: &ffi::gp_Pnt, Radius: f64) -> cxx::UniquePtr<Self> {
-        ffi::Cylinder_ctor_pnt_real(Center, Radius)
-    }
-
-    #[doc = "infinite Cylinder at Axes on Z negative"]
-    pub fn new_ax2_real(Axes: &ffi::gp_Ax2, Radius: f64) -> cxx::UniquePtr<Self> {
-        ffi::Cylinder_ctor_ax2_real(Axes, Radius)
-    }
-
-    #[doc = "create a Cylinder  at origin on Z  axis, of height H and radius R Error  : Radius  < Resolution H < Resolution H negative"]
-    pub fn new_real2(R: f64, H: f64) -> cxx::UniquePtr<Self> {
-        ffi::Cylinder_ctor_real2(R, H)
-    }
-
-    #[doc = "same as above but at a given point"]
-    pub fn new_pnt_real2(Center: &ffi::gp_Pnt, R: f64, H: f64) -> cxx::UniquePtr<Self> {
-        ffi::Cylinder_ctor_pnt_real2(Center, R, H)
-    }
-
-    #[doc = "Upcast to BRepPrim_OneAxis"]
-    pub fn as_one_axis(&self) -> &OneAxis {
-        ffi::cylinder_as_one_axis(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_OneAxis (mutable)"]
-    pub fn as_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut OneAxis> {
-        ffi::cylinder_as_one_axis_mut(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_Revolution"]
-    pub fn as_revolution(&self) -> &Revolution {
-        ffi::cylinder_as_revolution(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_Revolution (mutable)"]
-    pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
-        ffi::cylinder_as_revolution_mut(self)
-    }
-
-    #[doc = "The surface normal should be directed  towards the outside."]
-    pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
-        ffi::Cylinder_make_empty_lateral_face(self)
-    }
-}
-pub use ffi::Cone;
-impl Cone {
-    #[doc = "the STEP definition Angle = semi-angle of the cone Position : the coordinate system Height : height of the cone. Radius : radius of truncated face at z = 0 The apex is on z < 0 Errors : Height < Resolution Angle < Resolution / Height Angle > PI/2 - Resolution / Height"]
-    pub fn new_real_ax2_real2(
-        Angle: f64,
-        Position: &ffi::gp_Ax2,
-        Height: f64,
-        Radius: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Cone_ctor_real_ax2_real2(Angle, Position, Height, Radius)
-    }
-
-    #[doc = "infinite cone at origin on Z negative"]
-    pub fn new_real(Angle: f64) -> cxx::UniquePtr<Self> {
-        ffi::Cone_ctor_real(Angle)
-    }
-
-    #[doc = "infinite cone at Apex on Z negative"]
-    pub fn new_real_pnt(Angle: f64, Apex: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
-        ffi::Cone_ctor_real_pnt(Angle, Apex)
-    }
-
-    #[doc = "infinite cone with Axes"]
-    pub fn new_real_ax2(Angle: f64, Axes: &ffi::gp_Ax2) -> cxx::UniquePtr<Self> {
-        ffi::Cone_ctor_real_ax2(Angle, Axes)
-    }
-
-    #[doc = "create a  Cone at origin  on Z axis, of height  H, radius R1 at Z = 0, R2 at  Z = H, X is  the origin of angles.  If R1 or  R2 is 0   there is  an apex. Otherwise, it is a truncated cone. Error  : R1 and R2  < Resolution R1 or R2 negative Abs(R1-R2) < Resolution H < Resolution H negative"]
-    pub fn new_real3(R1: f64, R2: f64, H: f64) -> cxx::UniquePtr<Self> {
-        ffi::Cone_ctor_real3(R1, R2, H)
-    }
-
-    #[doc = "same as above but at a given point"]
-    pub fn new_pnt_real3(Center: &ffi::gp_Pnt, R1: f64, R2: f64, H: f64) -> cxx::UniquePtr<Self> {
-        ffi::Cone_ctor_pnt_real3(Center, R1, R2, H)
-    }
-
-    #[doc = "same as above with given axes system."]
-    pub fn new_ax2_real3(Axes: &ffi::gp_Ax2, R1: f64, R2: f64, H: f64) -> cxx::UniquePtr<Self> {
-        ffi::Cone_ctor_ax2_real3(Axes, R1, R2, H)
-    }
-
-    #[doc = "Upcast to BRepPrim_OneAxis"]
-    pub fn as_one_axis(&self) -> &OneAxis {
-        ffi::cone_as_one_axis(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_OneAxis (mutable)"]
-    pub fn as_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut OneAxis> {
-        ffi::cone_as_one_axis_mut(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_Revolution"]
-    pub fn as_revolution(&self) -> &Revolution {
-        ffi::cone_as_revolution(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_Revolution (mutable)"]
-    pub fn as_revolution_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Revolution> {
-        ffi::cone_as_revolution_mut(self)
-    }
-
-    #[doc = "The surface normal should be directed  towards the outside."]
-    pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
-        ffi::Cone_make_empty_lateral_face(self)
-    }
-}
-pub use ffi::Wedge;
-impl Wedge {
-    #[doc = "Default constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::Wedge_ctor()
-    }
-
-    #[doc = "Creates a  Wedge  algorithm.   <Axes> is  the axis system for the primitive. XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = XMin X2Max = XMax The result is a box dx,dy,dz should be positive"]
-    pub fn new_ax2_real3(Axes: &ffi::gp_Ax2, dx: f64, dy: f64, dz: f64) -> cxx::UniquePtr<Self> {
-        ffi::Wedge_ctor_ax2_real3(Axes, dx, dy, dz)
-    }
-
-    #[doc = "Creates  a Wedge  primitive. <Axes> is   the  axis system for the primitive. XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = ltx X2Max = ltx The result is a STEP right angular wedge dx,dy,dz should be positive ltx should not be negative"]
-    pub fn new_ax2_real4(
-        Axes: &ffi::gp_Ax2,
-        dx: f64,
-        dy: f64,
-        dz: f64,
-        ltx: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Wedge_ctor_ax2_real4(Axes, dx, dy, dz, ltx)
-    }
-
-    #[doc = "Create  a Wedge primitive.   <Axes>  is  the  axis system for the primitive. all the fields are set to the corresponding value XYZMax - XYZMin should be positive ZX2Max - ZX2Min should not be negative"]
-    pub fn new_ax2_real10(
-        Axes: &ffi::gp_Ax2,
-        xmin: f64,
-        ymin: f64,
-        zmin: f64,
-        z2min: f64,
-        x2min: f64,
-        xmax: f64,
-        ymax: f64,
-        zmax: f64,
-        z2max: f64,
-        x2max: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::Wedge_ctor_ax2_real10(
-            Axes, xmin, ymin, zmin, z2min, x2min, xmax, ymax, zmax, z2max, x2max,
-        )
-    }
-
-    #[doc = "Upcast to BRepPrim_GWedge"]
-    pub fn as_g_wedge(&self) -> &GWedge {
-        ffi::wedge_as_g_wedge(self)
-    }
-
-    #[doc = "Upcast to BRepPrim_GWedge (mutable)"]
-    pub fn as_g_wedge_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut GWedge> {
-        ffi::wedge_as_g_wedge_mut(self)
-    }
-}
-pub use ffi::GWedge;
-impl GWedge {
-    #[doc = "Default constructor"]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::GWedge_ctor()
-    }
-
-    #[doc = "Creates a GWedge algorithm. <Axes> is the axis system for the primitive. XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = XMin X2Max = XMax The result is a box dx,dy,dz should be positive"]
-    pub fn new_builder_ax2_real3(
-        B: &ffi::Builder,
-        Axes: &ffi::gp_Ax2,
-        dx: f64,
-        dy: f64,
-        dz: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::GWedge_ctor_builder_ax2_real3(B, Axes, dx, dy, dz)
-    }
-
-    #[doc = "Creates a GWedge primitive. <Axes> is the axis system for the primitive. XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = ltx X2Max = ltx The result is a STEP right angular wedge dx,dy,dz should be positive ltx should not be negative"]
-    pub fn new_builder_ax2_real4(
-        B: &ffi::Builder,
-        Axes: &ffi::gp_Ax2,
-        dx: f64,
-        dy: f64,
-        dz: f64,
-        ltx: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::GWedge_ctor_builder_ax2_real4(B, Axes, dx, dy, dz, ltx)
-    }
-
-    #[doc = "Create a GWedge primitive. <Axes> is the axis system for the primitive. all the fields are set to the corresponding value XYZMax - XYZMin should be positive ZX2Max - ZX2Min should not be negative"]
-    pub fn new_builder_ax2_real10(
-        B: &ffi::Builder,
-        Axes: &ffi::gp_Ax2,
-        xmin: f64,
-        ymin: f64,
-        zmin: f64,
-        z2min: f64,
-        x2min: f64,
-        xmax: f64,
-        ymax: f64,
-        zmax: f64,
-        z2max: f64,
-        x2max: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::GWedge_ctor_builder_ax2_real10(
-            B, Axes, xmin, ymin, zmin, z2min, x2min, xmax, ymax, zmax, z2max, x2max,
-        )
-    }
-
-    #[doc = "Returns the coordinates system from <me>."]
-    pub fn axes(&self) -> cxx::UniquePtr<ffi::gp_Ax2> {
-        ffi::GWedge_axes(self)
-    }
 }

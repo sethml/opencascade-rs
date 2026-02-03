@@ -20,145 +20,640 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+pub use ffi::MakeWire;
+impl MakeWire {
+    #[doc = "NotDone MakeWire."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::MakeWire_ctor()
+    }
+
+    #[doc = "Make a Wire from an edge."]
+    pub fn new_edge(E: &ffi::TopoDS_Edge) -> cxx::UniquePtr<Self> {
+        ffi::MakeWire_ctor_edge(E)
+    }
+
+    #[doc = "Make a Wire from two edges."]
+    pub fn new_edge2(E1: &ffi::TopoDS_Edge, E2: &ffi::TopoDS_Edge) -> cxx::UniquePtr<Self> {
+        ffi::MakeWire_ctor_edge2(E1, E2)
+    }
+
+    #[doc = "Make a Wire from three edges."]
+    pub fn new_edge3(
+        E1: &ffi::TopoDS_Edge,
+        E2: &ffi::TopoDS_Edge,
+        E3: &ffi::TopoDS_Edge,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeWire_ctor_edge3(E1, E2, E3)
+    }
+
+    #[doc = "Make a Wire from four edges."]
+    pub fn new_edge4(
+        E1: &ffi::TopoDS_Edge,
+        E2: &ffi::TopoDS_Edge,
+        E3: &ffi::TopoDS_Edge,
+        E4: &ffi::TopoDS_Edge,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeWire_ctor_edge4(E1, E2, E3, E4)
+    }
+
+    #[doc = "Make a Wire from a Wire. Useful for adding later."]
+    pub fn new_wire(W: &ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
+        ffi::MakeWire_ctor_wire(W)
+    }
+
+    #[doc = "Add an edge to a wire."]
+    pub fn new_wire_edge(W: &ffi::TopoDS_Wire, E: &ffi::TopoDS_Edge) -> cxx::UniquePtr<Self> {
+        ffi::MakeWire_ctor_wire_edge(W, E)
+    }
+
+    #[doc = "Upcast to BRepLib_Command"]
+    pub fn as_command(&self) -> &Command {
+        ffi::make_wire_as_command(self)
+    }
+
+    #[doc = "Upcast to BRepLib_Command (mutable)"]
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        ffi::make_wire_as_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape"]
+    pub fn as_make_shape(&self) -> &MakeShape {
+        ffi::make_wire_as_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        ffi::make_wire_as_make_shape_mut(self)
+    }
+}
+pub use ffi::MakeShape;
+impl MakeShape {
+    #[doc = "Upcast to BRepLib_Command"]
+    pub fn as_command(&self) -> &Command {
+        ffi::make_shape_as_command(self)
+    }
+
+    #[doc = "Upcast to BRepLib_Command (mutable)"]
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        ffi::make_shape_as_command_mut(self)
+    }
+}
+pub use ffi::Command;
+impl Command {}
+pub use ffi::MakeVertex;
+impl MakeVertex {
+    pub fn new_pnt(P: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        ffi::MakeVertex_ctor_pnt(P)
+    }
+
+    #[doc = "Upcast to BRepLib_Command"]
+    pub fn as_command(&self) -> &Command {
+        ffi::make_vertex_as_command(self)
+    }
+
+    #[doc = "Upcast to BRepLib_Command (mutable)"]
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        ffi::make_vertex_as_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape"]
+    pub fn as_make_shape(&self) -> &MakeShape {
+        ffi::make_vertex_as_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        ffi::make_vertex_as_make_shape_mut(self)
+    }
+}
+pub use ffi::MakeSolid;
+impl MakeSolid {
+    #[doc = "Solid covers whole space."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::MakeSolid_ctor()
+    }
+
+    #[doc = "Make a solid from a CompSolid."]
+    pub fn new_compsolid(S: &ffi::TopoDS_CompSolid) -> cxx::UniquePtr<Self> {
+        ffi::MakeSolid_ctor_compsolid(S)
+    }
+
+    #[doc = "Make a solid from a shell."]
+    pub fn new_shell(S: &ffi::TopoDS_Shell) -> cxx::UniquePtr<Self> {
+        ffi::MakeSolid_ctor_shell(S)
+    }
+
+    #[doc = "Make a solid from two shells."]
+    pub fn new_shell2(S1: &ffi::TopoDS_Shell, S2: &ffi::TopoDS_Shell) -> cxx::UniquePtr<Self> {
+        ffi::MakeSolid_ctor_shell2(S1, S2)
+    }
+
+    #[doc = "Make a solid from three shells."]
+    pub fn new_shell3(
+        S1: &ffi::TopoDS_Shell,
+        S2: &ffi::TopoDS_Shell,
+        S3: &ffi::TopoDS_Shell,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeSolid_ctor_shell3(S1, S2, S3)
+    }
+
+    #[doc = "Make a solid from a solid. Useful for adding later."]
+    pub fn new_solid(So: &ffi::TopoDS_Solid) -> cxx::UniquePtr<Self> {
+        ffi::MakeSolid_ctor_solid(So)
+    }
+
+    #[doc = "Add a shell to a solid."]
+    pub fn new_solid_shell(So: &ffi::TopoDS_Solid, S: &ffi::TopoDS_Shell) -> cxx::UniquePtr<Self> {
+        ffi::MakeSolid_ctor_solid_shell(So, S)
+    }
+
+    #[doc = "Upcast to BRepLib_Command"]
+    pub fn as_command(&self) -> &Command {
+        ffi::make_solid_as_command(self)
+    }
+
+    #[doc = "Upcast to BRepLib_Command (mutable)"]
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        ffi::make_solid_as_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape"]
+    pub fn as_make_shape(&self) -> &MakeShape {
+        ffi::make_solid_as_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        ffi::make_solid_as_make_shape_mut(self)
+    }
+}
+pub use ffi::MakeFace;
+impl MakeFace {
+    #[doc = "Not done."]
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor()
+    }
+
+    #[doc = "Load a face. Useful to add wires."]
+    pub fn new_face(F: &ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_face(F)
+    }
+
+    #[doc = "Make a face from a plane."]
+    pub fn new_pln(P: &ffi::gp_Pln) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_pln(P)
+    }
+
+    #[doc = "Make a face from a cylinder."]
+    pub fn new_cylinder(C: &ffi::gp_Cylinder) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_cylinder(C)
+    }
+
+    #[doc = "Make a face from a cone."]
+    pub fn new_cone(C: &ffi::gp_Cone) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_cone(C)
+    }
+
+    #[doc = "Make a face from a sphere."]
+    pub fn new_sphere(S: &ffi::gp_Sphere) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_sphere(S)
+    }
+
+    #[doc = "Make a face from a torus."]
+    pub fn new_torus(C: &ffi::gp_Torus) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_torus(C)
+    }
+
+    #[doc = "Make a face from a Surface. Accepts tolerance value (TolDegen) for resolution of degenerated edges."]
+    pub fn new_handlesurface_real(
+        S: &ffi::HandleGeomSurface,
+        TolDegen: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_handlesurface_real(S, TolDegen)
+    }
+
+    #[doc = "Make a face from a plane."]
+    pub fn new_pln_real4(
+        P: &ffi::gp_Pln,
+        UMin: f64,
+        UMax: f64,
+        VMin: f64,
+        VMax: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_pln_real4(P, UMin, UMax, VMin, VMax)
+    }
+
+    #[doc = "Make a face from a cylinder."]
+    pub fn new_cylinder_real4(
+        C: &ffi::gp_Cylinder,
+        UMin: f64,
+        UMax: f64,
+        VMin: f64,
+        VMax: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_cylinder_real4(C, UMin, UMax, VMin, VMax)
+    }
+
+    #[doc = "Make a face from a cone."]
+    pub fn new_cone_real4(
+        C: &ffi::gp_Cone,
+        UMin: f64,
+        UMax: f64,
+        VMin: f64,
+        VMax: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_cone_real4(C, UMin, UMax, VMin, VMax)
+    }
+
+    #[doc = "Make a face from a sphere."]
+    pub fn new_sphere_real4(
+        S: &ffi::gp_Sphere,
+        UMin: f64,
+        UMax: f64,
+        VMin: f64,
+        VMax: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_sphere_real4(S, UMin, UMax, VMin, VMax)
+    }
+
+    #[doc = "Make a face from a torus."]
+    pub fn new_torus_real4(
+        C: &ffi::gp_Torus,
+        UMin: f64,
+        UMax: f64,
+        VMin: f64,
+        VMax: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_torus_real4(C, UMin, UMax, VMin, VMax)
+    }
+
+    #[doc = "Make a face from a Surface. Accepts min & max parameters to construct the face's bounds. Also accepts tolerance value (TolDegen) for resolution of degenerated edges."]
+    pub fn new_handlesurface_real5(
+        S: &ffi::HandleGeomSurface,
+        UMin: f64,
+        UMax: f64,
+        VMin: f64,
+        VMax: f64,
+        TolDegen: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_handlesurface_real5(S, UMin, UMax, VMin, VMax, TolDegen)
+    }
+
+    #[doc = "Find a surface from the wire and make a face. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set."]
+    pub fn new_wire_bool(W: &ffi::TopoDS_Wire, OnlyPlane: bool) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_wire_bool(W, OnlyPlane)
+    }
+
+    #[doc = "Make a face from a plane and a wire."]
+    pub fn new_pln_wire_bool(
+        P: &ffi::gp_Pln,
+        W: &ffi::TopoDS_Wire,
+        Inside: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_pln_wire_bool(P, W, Inside)
+    }
+
+    #[doc = "Make a face from a cylinder and a wire."]
+    pub fn new_cylinder_wire_bool(
+        C: &ffi::gp_Cylinder,
+        W: &ffi::TopoDS_Wire,
+        Inside: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_cylinder_wire_bool(C, W, Inside)
+    }
+
+    #[doc = "Make a face from a cone and a wire."]
+    pub fn new_cone_wire_bool(
+        C: &ffi::gp_Cone,
+        W: &ffi::TopoDS_Wire,
+        Inside: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_cone_wire_bool(C, W, Inside)
+    }
+
+    #[doc = "Make a face from a sphere and a wire."]
+    pub fn new_sphere_wire_bool(
+        S: &ffi::gp_Sphere,
+        W: &ffi::TopoDS_Wire,
+        Inside: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_sphere_wire_bool(S, W, Inside)
+    }
+
+    #[doc = "Make a face from a torus and a wire."]
+    pub fn new_torus_wire_bool(
+        C: &ffi::gp_Torus,
+        W: &ffi::TopoDS_Wire,
+        Inside: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_torus_wire_bool(C, W, Inside)
+    }
+
+    #[doc = "Make a face from a Surface and a wire."]
+    pub fn new_handlesurface_wire_bool(
+        S: &ffi::HandleGeomSurface,
+        W: &ffi::TopoDS_Wire,
+        Inside: bool,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_handlesurface_wire_bool(S, W, Inside)
+    }
+
+    #[doc = "Adds the wire <W> in the face <F>"]
+    pub fn new_face_wire(F: &ffi::TopoDS_Face, W: &ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
+        ffi::MakeFace_ctor_face_wire(F, W)
+    }
+
+    #[doc = "Upcast to BRepLib_Command"]
+    pub fn as_command(&self) -> &Command {
+        ffi::make_face_as_command(self)
+    }
+
+    #[doc = "Upcast to BRepLib_Command (mutable)"]
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        ffi::make_face_as_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape"]
+    pub fn as_make_shape(&self) -> &MakeShape {
+        ffi::make_face_as_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        ffi::make_face_as_make_shape_mut(self)
+    }
+
+    #[doc = "Checks the specified curve is degenerated according to specified tolerance. Returns <theActTol> less than <theMaxTol>, which shows actual tolerance to decide the curve is degenerated. Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell."]
+    pub fn is_degenerated(
+        theCurve: &ffi::HandleGeomCurve,
+        theMaxTol: f64,
+        theActTol: &mut f64,
+    ) -> bool {
+        ffi::MakeFace_is_degenerated(theCurve, theMaxTol, theActTol)
+    }
+}
+pub use ffi::MakeEdge;
+impl MakeEdge {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor()
+    }
+
+    pub fn new_vertex2(V1: &ffi::TopoDS_Vertex, V2: &ffi::TopoDS_Vertex) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_vertex2(V1, V2)
+    }
+
+    pub fn new_pnt2(P1: &ffi::gp_Pnt, P2: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_pnt2(P1, P2)
+    }
+
+    pub fn new_lin(L: &ffi::gp_Lin) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_lin(L)
+    }
+
+    pub fn new_lin_real2(L: &ffi::gp_Lin, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_lin_real2(L, p1, p2)
+    }
+
+    pub fn new_lin_pnt2(
+        L: &ffi::gp_Lin,
+        P1: &ffi::gp_Pnt,
+        P2: &ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_lin_pnt2(L, P1, P2)
+    }
+
+    pub fn new_lin_vertex2(
+        L: &ffi::gp_Lin,
+        V1: &ffi::TopoDS_Vertex,
+        V2: &ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_lin_vertex2(L, V1, V2)
+    }
+
+    pub fn new_circ(L: &ffi::gp_Circ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_circ(L)
+    }
+
+    pub fn new_circ_real2(L: &ffi::gp_Circ, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_circ_real2(L, p1, p2)
+    }
+
+    pub fn new_circ_pnt2(
+        L: &ffi::gp_Circ,
+        P1: &ffi::gp_Pnt,
+        P2: &ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_circ_pnt2(L, P1, P2)
+    }
+
+    pub fn new_circ_vertex2(
+        L: &ffi::gp_Circ,
+        V1: &ffi::TopoDS_Vertex,
+        V2: &ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_circ_vertex2(L, V1, V2)
+    }
+
+    pub fn new_elips(L: &ffi::gp_Elips) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_elips(L)
+    }
+
+    pub fn new_elips_real2(L: &ffi::gp_Elips, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_elips_real2(L, p1, p2)
+    }
+
+    pub fn new_elips_pnt2(
+        L: &ffi::gp_Elips,
+        P1: &ffi::gp_Pnt,
+        P2: &ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_elips_pnt2(L, P1, P2)
+    }
+
+    pub fn new_elips_vertex2(
+        L: &ffi::gp_Elips,
+        V1: &ffi::TopoDS_Vertex,
+        V2: &ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_elips_vertex2(L, V1, V2)
+    }
+
+    pub fn new_hypr(L: &ffi::gp_Hypr) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_hypr(L)
+    }
+
+    pub fn new_hypr_real2(L: &ffi::gp_Hypr, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_hypr_real2(L, p1, p2)
+    }
+
+    pub fn new_hypr_pnt2(
+        L: &ffi::gp_Hypr,
+        P1: &ffi::gp_Pnt,
+        P2: &ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_hypr_pnt2(L, P1, P2)
+    }
+
+    pub fn new_hypr_vertex2(
+        L: &ffi::gp_Hypr,
+        V1: &ffi::TopoDS_Vertex,
+        V2: &ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_hypr_vertex2(L, V1, V2)
+    }
+
+    pub fn new_parab(L: &ffi::gp_Parab) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_parab(L)
+    }
+
+    pub fn new_parab_real2(L: &ffi::gp_Parab, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_parab_real2(L, p1, p2)
+    }
+
+    pub fn new_parab_pnt2(
+        L: &ffi::gp_Parab,
+        P1: &ffi::gp_Pnt,
+        P2: &ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_parab_pnt2(L, P1, P2)
+    }
+
+    pub fn new_parab_vertex2(
+        L: &ffi::gp_Parab,
+        V1: &ffi::TopoDS_Vertex,
+        V2: &ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_parab_vertex2(L, V1, V2)
+    }
+
+    pub fn new_handlecurve(L: &ffi::HandleGeomCurve) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_handlecurve(L)
+    }
+
+    pub fn new_handlecurve_real2(
+        L: &ffi::HandleGeomCurve,
+        p1: f64,
+        p2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_handlecurve_real2(L, p1, p2)
+    }
+
+    pub fn new_handlecurve_pnt2(
+        L: &ffi::HandleGeomCurve,
+        P1: &ffi::gp_Pnt,
+        P2: &ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_handlecurve_pnt2(L, P1, P2)
+    }
+
+    pub fn new_handlecurve_vertex2(
+        L: &ffi::HandleGeomCurve,
+        V1: &ffi::TopoDS_Vertex,
+        V2: &ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_handlecurve_vertex2(L, V1, V2)
+    }
+
+    pub fn new_handlecurve_pnt2_real2(
+        L: &ffi::HandleGeomCurve,
+        P1: &ffi::gp_Pnt,
+        P2: &ffi::gp_Pnt,
+        p1: f64,
+        p2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_handlecurve_pnt2_real2(L, P1, P2, p1, p2)
+    }
+
+    pub fn new_handlecurve_vertex2_real2(
+        L: &ffi::HandleGeomCurve,
+        V1: &ffi::TopoDS_Vertex,
+        V2: &ffi::TopoDS_Vertex,
+        p1: f64,
+        p2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_handlecurve_vertex2_real2(L, V1, V2, p1, p2)
+    }
+
+    pub fn new_handlecurve_handlesurface(
+        L: &ffi::HandleGeom2dCurve,
+        S: &ffi::HandleGeomSurface,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_handlecurve_handlesurface(L, S)
+    }
+
+    pub fn new_handlecurve_handlesurface_real2(
+        L: &ffi::HandleGeom2dCurve,
+        S: &ffi::HandleGeomSurface,
+        p1: f64,
+        p2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_handlecurve_handlesurface_real2(L, S, p1, p2)
+    }
+
+    pub fn new_handlecurve_handlesurface_pnt2(
+        L: &ffi::HandleGeom2dCurve,
+        S: &ffi::HandleGeomSurface,
+        P1: &ffi::gp_Pnt,
+        P2: &ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_handlecurve_handlesurface_pnt2(L, S, P1, P2)
+    }
+
+    pub fn new_handlecurve_handlesurface_vertex2(
+        L: &ffi::HandleGeom2dCurve,
+        S: &ffi::HandleGeomSurface,
+        V1: &ffi::TopoDS_Vertex,
+        V2: &ffi::TopoDS_Vertex,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_handlecurve_handlesurface_vertex2(L, S, V1, V2)
+    }
+
+    pub fn new_handlecurve_handlesurface_pnt2_real2(
+        L: &ffi::HandleGeom2dCurve,
+        S: &ffi::HandleGeomSurface,
+        P1: &ffi::gp_Pnt,
+        P2: &ffi::gp_Pnt,
+        p1: f64,
+        p2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_handlecurve_handlesurface_pnt2_real2(L, S, P1, P2, p1, p2)
+    }
+
+    pub fn new_handlecurve_handlesurface_vertex2_real2(
+        L: &ffi::HandleGeom2dCurve,
+        S: &ffi::HandleGeomSurface,
+        V1: &ffi::TopoDS_Vertex,
+        V2: &ffi::TopoDS_Vertex,
+        p1: f64,
+        p2: f64,
+    ) -> cxx::UniquePtr<Self> {
+        ffi::MakeEdge_ctor_handlecurve_handlesurface_vertex2_real2(L, S, V1, V2, p1, p2)
+    }
+
+    #[doc = "Upcast to BRepLib_Command"]
+    pub fn as_command(&self) -> &Command {
+        ffi::make_edge_as_command(self)
+    }
+
+    #[doc = "Upcast to BRepLib_Command (mutable)"]
+    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
+        ffi::make_edge_as_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape"]
+    pub fn as_make_shape(&self) -> &MakeShape {
+        ffi::make_edge_as_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
+    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
+        ffi::make_edge_as_make_shape_mut(self)
+    }
+}
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_lib.hxx");
-        #[doc = "BoundedCurve from geom2d module"]
-        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
-        type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Curve from geom2d module"]
-        type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "Ellipse from geom2d module"]
-        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "Geometry from geom2d module"]
-        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "TrimmedCurve from geom2d module"]
-        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
-        #[doc = "BSplineCurve from geom module"]
-        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
-        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
-        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
-        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
-        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
-        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
-        type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
-        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
-        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
-        type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
-        type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
-        type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
-        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Cone"]
-        type gp_Cone;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Cylinder"]
-        type gp_Cylinder;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Elips"]
-        type gp_Elips;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Hypr"]
-        type gp_Hypr;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Parab"]
-        type gp_Parab;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Sphere"]
-        type gp_Sphere;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Torus"]
-        type gp_Torus;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dCurve"]
-        type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomCurve"]
-        type HandleGeomCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomSurface"]
-        type HandleGeomSurface;
         #[doc = " ======================== BRepLib_MakeWire ========================"]
         #[doc = "/// **Source:** `BRepLib_MakeWire.hxx` - `BRepLib_MakeWire`"]
         #[doc = ""]
@@ -888,6 +1383,160 @@ pub(crate) mod ffi {
         #[doc = "Upcast BRepLib_MakeEdge to BRepLib_MakeShape (mutable)"]
         #[cxx_name = "BRepLib_MakeEdge_as_BRepLib_MakeShape_mut"]
         fn make_edge_as_make_shape_mut(self_: Pin<&mut MakeEdge>) -> Pin<&mut MakeShape>;
+        #[doc = "BoundedCurve from geom2d module"]
+        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
+        #[doc = "Conic from geom2d module"]
+        type Geom2d_Conic = crate::geom2d::ffi::Conic;
+        #[doc = "Curve from geom2d module"]
+        type Geom2d_Curve = crate::geom2d::ffi::Curve;
+        #[doc = "Ellipse from geom2d module"]
+        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
+        #[doc = "Geometry from geom2d module"]
+        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
+        #[doc = "TrimmedCurve from geom2d module"]
+        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
+        #[doc = "BSplineCurve from geom module"]
+        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
+        #[doc = "BSplineSurface from geom module"]
+        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
+        #[doc = "BezierCurve from geom module"]
+        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
+        #[doc = "BezierSurface from geom module"]
+        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BoundedCurve from geom module"]
+        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
+        #[doc = "BoundedSurface from geom module"]
+        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
+        #[doc = "Curve from geom module"]
+        type Geom_Curve = crate::geom::ffi::Curve;
+        #[doc = "CylindricalSurface from geom module"]
+        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
+        #[doc = "ElementarySurface from geom module"]
+        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
+        #[doc = "Geometry from geom module"]
+        type Geom_Geometry = crate::geom::ffi::Geometry;
+        #[doc = "Plane from geom module"]
+        type Geom_Plane = crate::geom::ffi::Plane;
+        #[doc = "Surface from geom module"]
+        type Geom_Surface = crate::geom::ffi::Surface;
+        #[doc = "TrimmedCurve from geom module"]
+        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax22d from gp module"]
+        type gp_Ax22d = crate::gp::ffi::Ax22d;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Circ2d from gp module"]
+        type gp_Circ2d = crate::gp::ffi::Circ2d;
+        #[doc = "Cone from gp module"]
+        type gp_Cone = crate::gp::ffi::Cone;
+        #[doc = "Cylinder from gp module"]
+        type gp_Cylinder = crate::gp::ffi::Cylinder;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "Elips from gp module"]
+        type gp_Elips = crate::gp::ffi::Elips;
+        #[doc = "Elips2d from gp module"]
+        type gp_Elips2d = crate::gp::ffi::Elips2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Hypr from gp module"]
+        type gp_Hypr = crate::gp::ffi::Hypr;
+        #[doc = "Hypr2d from gp module"]
+        type gp_Hypr2d = crate::gp::ffi::Hypr2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Lin2d from gp module"]
+        type gp_Lin2d = crate::gp::ffi::Lin2d;
+        #[doc = "Mat from gp module"]
+        type gp_Mat = crate::gp::ffi::Mat;
+        #[doc = "Mat2d from gp module"]
+        type gp_Mat2d = crate::gp::ffi::Mat2d;
+        #[doc = "Parab from gp module"]
+        type gp_Parab = crate::gp::ffi::Parab;
+        #[doc = "Parab2d from gp module"]
+        type gp_Parab2d = crate::gp::ffi::Parab2d;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Quaternion from gp module"]
+        type gp_Quaternion = crate::gp::ffi::Quaternion;
+        #[doc = "QuaternionNLerp from gp module"]
+        type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
+        #[doc = "QuaternionSLerp from gp module"]
+        type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
+        #[doc = "Sphere from gp module"]
+        type gp_Sphere = crate::gp::ffi::Sphere;
+        #[doc = "Torus from gp module"]
+        type gp_Torus = crate::gp::ffi::Torus;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "VectorWithNullMagnitude from gp module"]
+        type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
+        #[doc = "XY from gp module"]
+        type gp_XY = crate::gp::ffi::XY;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dCurve"]
+        type HandleGeom2dCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomCurve"]
+        type HandleGeomCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomSurface"]
+        type HandleGeomSurface;
     }
     impl UniquePtr<MakeWire> {}
     impl UniquePtr<MakeShape> {}
@@ -896,634 +1545,4 @@ pub(crate) mod ffi {
     impl UniquePtr<MakeSolid> {}
     impl UniquePtr<MakeFace> {}
     impl UniquePtr<MakeEdge> {}
-}
-pub use ffi::MakeWire;
-impl MakeWire {
-    #[doc = "NotDone MakeWire."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::MakeWire_ctor()
-    }
-
-    #[doc = "Make a Wire from an edge."]
-    pub fn new_edge(E: &ffi::TopoDS_Edge) -> cxx::UniquePtr<Self> {
-        ffi::MakeWire_ctor_edge(E)
-    }
-
-    #[doc = "Make a Wire from two edges."]
-    pub fn new_edge2(E1: &ffi::TopoDS_Edge, E2: &ffi::TopoDS_Edge) -> cxx::UniquePtr<Self> {
-        ffi::MakeWire_ctor_edge2(E1, E2)
-    }
-
-    #[doc = "Make a Wire from three edges."]
-    pub fn new_edge3(
-        E1: &ffi::TopoDS_Edge,
-        E2: &ffi::TopoDS_Edge,
-        E3: &ffi::TopoDS_Edge,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeWire_ctor_edge3(E1, E2, E3)
-    }
-
-    #[doc = "Make a Wire from four edges."]
-    pub fn new_edge4(
-        E1: &ffi::TopoDS_Edge,
-        E2: &ffi::TopoDS_Edge,
-        E3: &ffi::TopoDS_Edge,
-        E4: &ffi::TopoDS_Edge,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeWire_ctor_edge4(E1, E2, E3, E4)
-    }
-
-    #[doc = "Make a Wire from a Wire. Useful for adding later."]
-    pub fn new_wire(W: &ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
-        ffi::MakeWire_ctor_wire(W)
-    }
-
-    #[doc = "Add an edge to a wire."]
-    pub fn new_wire_edge(W: &ffi::TopoDS_Wire, E: &ffi::TopoDS_Edge) -> cxx::UniquePtr<Self> {
-        ffi::MakeWire_ctor_wire_edge(W, E)
-    }
-
-    #[doc = "Upcast to BRepLib_Command"]
-    pub fn as_command(&self) -> &Command {
-        ffi::make_wire_as_command(self)
-    }
-
-    #[doc = "Upcast to BRepLib_Command (mutable)"]
-    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
-        ffi::make_wire_as_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepLib_MakeShape"]
-    pub fn as_make_shape(&self) -> &MakeShape {
-        ffi::make_wire_as_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
-    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
-        ffi::make_wire_as_make_shape_mut(self)
-    }
-}
-pub use ffi::MakeShape;
-impl MakeShape {
-    #[doc = "Upcast to BRepLib_Command"]
-    pub fn as_command(&self) -> &Command {
-        ffi::make_shape_as_command(self)
-    }
-
-    #[doc = "Upcast to BRepLib_Command (mutable)"]
-    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
-        ffi::make_shape_as_command_mut(self)
-    }
-}
-pub use ffi::Command;
-impl Command {}
-pub use ffi::MakeVertex;
-impl MakeVertex {
-    pub fn new_pnt(P: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
-        ffi::MakeVertex_ctor_pnt(P)
-    }
-
-    #[doc = "Upcast to BRepLib_Command"]
-    pub fn as_command(&self) -> &Command {
-        ffi::make_vertex_as_command(self)
-    }
-
-    #[doc = "Upcast to BRepLib_Command (mutable)"]
-    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
-        ffi::make_vertex_as_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepLib_MakeShape"]
-    pub fn as_make_shape(&self) -> &MakeShape {
-        ffi::make_vertex_as_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
-    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
-        ffi::make_vertex_as_make_shape_mut(self)
-    }
-}
-pub use ffi::MakeSolid;
-impl MakeSolid {
-    #[doc = "Solid covers whole space."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::MakeSolid_ctor()
-    }
-
-    #[doc = "Make a solid from a CompSolid."]
-    pub fn new_compsolid(S: &ffi::TopoDS_CompSolid) -> cxx::UniquePtr<Self> {
-        ffi::MakeSolid_ctor_compsolid(S)
-    }
-
-    #[doc = "Make a solid from a shell."]
-    pub fn new_shell(S: &ffi::TopoDS_Shell) -> cxx::UniquePtr<Self> {
-        ffi::MakeSolid_ctor_shell(S)
-    }
-
-    #[doc = "Make a solid from two shells."]
-    pub fn new_shell2(S1: &ffi::TopoDS_Shell, S2: &ffi::TopoDS_Shell) -> cxx::UniquePtr<Self> {
-        ffi::MakeSolid_ctor_shell2(S1, S2)
-    }
-
-    #[doc = "Make a solid from three shells."]
-    pub fn new_shell3(
-        S1: &ffi::TopoDS_Shell,
-        S2: &ffi::TopoDS_Shell,
-        S3: &ffi::TopoDS_Shell,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeSolid_ctor_shell3(S1, S2, S3)
-    }
-
-    #[doc = "Make a solid from a solid. Useful for adding later."]
-    pub fn new_solid(So: &ffi::TopoDS_Solid) -> cxx::UniquePtr<Self> {
-        ffi::MakeSolid_ctor_solid(So)
-    }
-
-    #[doc = "Add a shell to a solid."]
-    pub fn new_solid_shell(So: &ffi::TopoDS_Solid, S: &ffi::TopoDS_Shell) -> cxx::UniquePtr<Self> {
-        ffi::MakeSolid_ctor_solid_shell(So, S)
-    }
-
-    #[doc = "Upcast to BRepLib_Command"]
-    pub fn as_command(&self) -> &Command {
-        ffi::make_solid_as_command(self)
-    }
-
-    #[doc = "Upcast to BRepLib_Command (mutable)"]
-    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
-        ffi::make_solid_as_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepLib_MakeShape"]
-    pub fn as_make_shape(&self) -> &MakeShape {
-        ffi::make_solid_as_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
-    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
-        ffi::make_solid_as_make_shape_mut(self)
-    }
-}
-pub use ffi::MakeFace;
-impl MakeFace {
-    #[doc = "Not done."]
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor()
-    }
-
-    #[doc = "Load a face. Useful to add wires."]
-    pub fn new_face(F: &ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_face(F)
-    }
-
-    #[doc = "Make a face from a plane."]
-    pub fn new_pln(P: &ffi::gp_Pln) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_pln(P)
-    }
-
-    #[doc = "Make a face from a cylinder."]
-    pub fn new_cylinder(C: &ffi::gp_Cylinder) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_cylinder(C)
-    }
-
-    #[doc = "Make a face from a cone."]
-    pub fn new_cone(C: &ffi::gp_Cone) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_cone(C)
-    }
-
-    #[doc = "Make a face from a sphere."]
-    pub fn new_sphere(S: &ffi::gp_Sphere) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_sphere(S)
-    }
-
-    #[doc = "Make a face from a torus."]
-    pub fn new_torus(C: &ffi::gp_Torus) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_torus(C)
-    }
-
-    #[doc = "Make a face from a Surface. Accepts tolerance value (TolDegen) for resolution of degenerated edges."]
-    pub fn new_handlesurface_real(
-        S: &ffi::HandleGeomSurface,
-        TolDegen: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_handlesurface_real(S, TolDegen)
-    }
-
-    #[doc = "Make a face from a plane."]
-    pub fn new_pln_real4(
-        P: &ffi::gp_Pln,
-        UMin: f64,
-        UMax: f64,
-        VMin: f64,
-        VMax: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_pln_real4(P, UMin, UMax, VMin, VMax)
-    }
-
-    #[doc = "Make a face from a cylinder."]
-    pub fn new_cylinder_real4(
-        C: &ffi::gp_Cylinder,
-        UMin: f64,
-        UMax: f64,
-        VMin: f64,
-        VMax: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_cylinder_real4(C, UMin, UMax, VMin, VMax)
-    }
-
-    #[doc = "Make a face from a cone."]
-    pub fn new_cone_real4(
-        C: &ffi::gp_Cone,
-        UMin: f64,
-        UMax: f64,
-        VMin: f64,
-        VMax: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_cone_real4(C, UMin, UMax, VMin, VMax)
-    }
-
-    #[doc = "Make a face from a sphere."]
-    pub fn new_sphere_real4(
-        S: &ffi::gp_Sphere,
-        UMin: f64,
-        UMax: f64,
-        VMin: f64,
-        VMax: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_sphere_real4(S, UMin, UMax, VMin, VMax)
-    }
-
-    #[doc = "Make a face from a torus."]
-    pub fn new_torus_real4(
-        C: &ffi::gp_Torus,
-        UMin: f64,
-        UMax: f64,
-        VMin: f64,
-        VMax: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_torus_real4(C, UMin, UMax, VMin, VMax)
-    }
-
-    #[doc = "Make a face from a Surface. Accepts min & max parameters to construct the face's bounds. Also accepts tolerance value (TolDegen) for resolution of degenerated edges."]
-    pub fn new_handlesurface_real5(
-        S: &ffi::HandleGeomSurface,
-        UMin: f64,
-        UMax: f64,
-        VMin: f64,
-        VMax: f64,
-        TolDegen: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_handlesurface_real5(S, UMin, UMax, VMin, VMax, TolDegen)
-    }
-
-    #[doc = "Find a surface from the wire and make a face. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set."]
-    pub fn new_wire_bool(W: &ffi::TopoDS_Wire, OnlyPlane: bool) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_wire_bool(W, OnlyPlane)
-    }
-
-    #[doc = "Make a face from a plane and a wire."]
-    pub fn new_pln_wire_bool(
-        P: &ffi::gp_Pln,
-        W: &ffi::TopoDS_Wire,
-        Inside: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_pln_wire_bool(P, W, Inside)
-    }
-
-    #[doc = "Make a face from a cylinder and a wire."]
-    pub fn new_cylinder_wire_bool(
-        C: &ffi::gp_Cylinder,
-        W: &ffi::TopoDS_Wire,
-        Inside: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_cylinder_wire_bool(C, W, Inside)
-    }
-
-    #[doc = "Make a face from a cone and a wire."]
-    pub fn new_cone_wire_bool(
-        C: &ffi::gp_Cone,
-        W: &ffi::TopoDS_Wire,
-        Inside: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_cone_wire_bool(C, W, Inside)
-    }
-
-    #[doc = "Make a face from a sphere and a wire."]
-    pub fn new_sphere_wire_bool(
-        S: &ffi::gp_Sphere,
-        W: &ffi::TopoDS_Wire,
-        Inside: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_sphere_wire_bool(S, W, Inside)
-    }
-
-    #[doc = "Make a face from a torus and a wire."]
-    pub fn new_torus_wire_bool(
-        C: &ffi::gp_Torus,
-        W: &ffi::TopoDS_Wire,
-        Inside: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_torus_wire_bool(C, W, Inside)
-    }
-
-    #[doc = "Make a face from a Surface and a wire."]
-    pub fn new_handlesurface_wire_bool(
-        S: &ffi::HandleGeomSurface,
-        W: &ffi::TopoDS_Wire,
-        Inside: bool,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_handlesurface_wire_bool(S, W, Inside)
-    }
-
-    #[doc = "Adds the wire <W> in the face <F>"]
-    pub fn new_face_wire(F: &ffi::TopoDS_Face, W: &ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
-        ffi::MakeFace_ctor_face_wire(F, W)
-    }
-
-    #[doc = "Upcast to BRepLib_Command"]
-    pub fn as_command(&self) -> &Command {
-        ffi::make_face_as_command(self)
-    }
-
-    #[doc = "Upcast to BRepLib_Command (mutable)"]
-    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
-        ffi::make_face_as_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepLib_MakeShape"]
-    pub fn as_make_shape(&self) -> &MakeShape {
-        ffi::make_face_as_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
-    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
-        ffi::make_face_as_make_shape_mut(self)
-    }
-
-    #[doc = "Checks the specified curve is degenerated according to specified tolerance. Returns <theActTol> less than <theMaxTol>, which shows actual tolerance to decide the curve is degenerated. Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell."]
-    pub fn is_degenerated(
-        theCurve: &ffi::HandleGeomCurve,
-        theMaxTol: f64,
-        theActTol: &mut f64,
-    ) -> bool {
-        ffi::MakeFace_is_degenerated(theCurve, theMaxTol, theActTol)
-    }
-}
-pub use ffi::MakeEdge;
-impl MakeEdge {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor()
-    }
-
-    pub fn new_vertex2(V1: &ffi::TopoDS_Vertex, V2: &ffi::TopoDS_Vertex) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_vertex2(V1, V2)
-    }
-
-    pub fn new_pnt2(P1: &ffi::gp_Pnt, P2: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_pnt2(P1, P2)
-    }
-
-    pub fn new_lin(L: &ffi::gp_Lin) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_lin(L)
-    }
-
-    pub fn new_lin_real2(L: &ffi::gp_Lin, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_lin_real2(L, p1, p2)
-    }
-
-    pub fn new_lin_pnt2(
-        L: &ffi::gp_Lin,
-        P1: &ffi::gp_Pnt,
-        P2: &ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_lin_pnt2(L, P1, P2)
-    }
-
-    pub fn new_lin_vertex2(
-        L: &ffi::gp_Lin,
-        V1: &ffi::TopoDS_Vertex,
-        V2: &ffi::TopoDS_Vertex,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_lin_vertex2(L, V1, V2)
-    }
-
-    pub fn new_circ(L: &ffi::gp_Circ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_circ(L)
-    }
-
-    pub fn new_circ_real2(L: &ffi::gp_Circ, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_circ_real2(L, p1, p2)
-    }
-
-    pub fn new_circ_pnt2(
-        L: &ffi::gp_Circ,
-        P1: &ffi::gp_Pnt,
-        P2: &ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_circ_pnt2(L, P1, P2)
-    }
-
-    pub fn new_circ_vertex2(
-        L: &ffi::gp_Circ,
-        V1: &ffi::TopoDS_Vertex,
-        V2: &ffi::TopoDS_Vertex,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_circ_vertex2(L, V1, V2)
-    }
-
-    pub fn new_elips(L: &ffi::gp_Elips) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_elips(L)
-    }
-
-    pub fn new_elips_real2(L: &ffi::gp_Elips, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_elips_real2(L, p1, p2)
-    }
-
-    pub fn new_elips_pnt2(
-        L: &ffi::gp_Elips,
-        P1: &ffi::gp_Pnt,
-        P2: &ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_elips_pnt2(L, P1, P2)
-    }
-
-    pub fn new_elips_vertex2(
-        L: &ffi::gp_Elips,
-        V1: &ffi::TopoDS_Vertex,
-        V2: &ffi::TopoDS_Vertex,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_elips_vertex2(L, V1, V2)
-    }
-
-    pub fn new_hypr(L: &ffi::gp_Hypr) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_hypr(L)
-    }
-
-    pub fn new_hypr_real2(L: &ffi::gp_Hypr, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_hypr_real2(L, p1, p2)
-    }
-
-    pub fn new_hypr_pnt2(
-        L: &ffi::gp_Hypr,
-        P1: &ffi::gp_Pnt,
-        P2: &ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_hypr_pnt2(L, P1, P2)
-    }
-
-    pub fn new_hypr_vertex2(
-        L: &ffi::gp_Hypr,
-        V1: &ffi::TopoDS_Vertex,
-        V2: &ffi::TopoDS_Vertex,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_hypr_vertex2(L, V1, V2)
-    }
-
-    pub fn new_parab(L: &ffi::gp_Parab) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_parab(L)
-    }
-
-    pub fn new_parab_real2(L: &ffi::gp_Parab, p1: f64, p2: f64) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_parab_real2(L, p1, p2)
-    }
-
-    pub fn new_parab_pnt2(
-        L: &ffi::gp_Parab,
-        P1: &ffi::gp_Pnt,
-        P2: &ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_parab_pnt2(L, P1, P2)
-    }
-
-    pub fn new_parab_vertex2(
-        L: &ffi::gp_Parab,
-        V1: &ffi::TopoDS_Vertex,
-        V2: &ffi::TopoDS_Vertex,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_parab_vertex2(L, V1, V2)
-    }
-
-    pub fn new_handlecurve(L: &ffi::HandleGeomCurve) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_handlecurve(L)
-    }
-
-    pub fn new_handlecurve_real2(
-        L: &ffi::HandleGeomCurve,
-        p1: f64,
-        p2: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_handlecurve_real2(L, p1, p2)
-    }
-
-    pub fn new_handlecurve_pnt2(
-        L: &ffi::HandleGeomCurve,
-        P1: &ffi::gp_Pnt,
-        P2: &ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_handlecurve_pnt2(L, P1, P2)
-    }
-
-    pub fn new_handlecurve_vertex2(
-        L: &ffi::HandleGeomCurve,
-        V1: &ffi::TopoDS_Vertex,
-        V2: &ffi::TopoDS_Vertex,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_handlecurve_vertex2(L, V1, V2)
-    }
-
-    pub fn new_handlecurve_pnt2_real2(
-        L: &ffi::HandleGeomCurve,
-        P1: &ffi::gp_Pnt,
-        P2: &ffi::gp_Pnt,
-        p1: f64,
-        p2: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_handlecurve_pnt2_real2(L, P1, P2, p1, p2)
-    }
-
-    pub fn new_handlecurve_vertex2_real2(
-        L: &ffi::HandleGeomCurve,
-        V1: &ffi::TopoDS_Vertex,
-        V2: &ffi::TopoDS_Vertex,
-        p1: f64,
-        p2: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_handlecurve_vertex2_real2(L, V1, V2, p1, p2)
-    }
-
-    pub fn new_handlecurve_handlesurface(
-        L: &ffi::HandleGeom2dCurve,
-        S: &ffi::HandleGeomSurface,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_handlecurve_handlesurface(L, S)
-    }
-
-    pub fn new_handlecurve_handlesurface_real2(
-        L: &ffi::HandleGeom2dCurve,
-        S: &ffi::HandleGeomSurface,
-        p1: f64,
-        p2: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_handlecurve_handlesurface_real2(L, S, p1, p2)
-    }
-
-    pub fn new_handlecurve_handlesurface_pnt2(
-        L: &ffi::HandleGeom2dCurve,
-        S: &ffi::HandleGeomSurface,
-        P1: &ffi::gp_Pnt,
-        P2: &ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_handlecurve_handlesurface_pnt2(L, S, P1, P2)
-    }
-
-    pub fn new_handlecurve_handlesurface_vertex2(
-        L: &ffi::HandleGeom2dCurve,
-        S: &ffi::HandleGeomSurface,
-        V1: &ffi::TopoDS_Vertex,
-        V2: &ffi::TopoDS_Vertex,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_handlecurve_handlesurface_vertex2(L, S, V1, V2)
-    }
-
-    pub fn new_handlecurve_handlesurface_pnt2_real2(
-        L: &ffi::HandleGeom2dCurve,
-        S: &ffi::HandleGeomSurface,
-        P1: &ffi::gp_Pnt,
-        P2: &ffi::gp_Pnt,
-        p1: f64,
-        p2: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_handlecurve_handlesurface_pnt2_real2(L, S, P1, P2, p1, p2)
-    }
-
-    pub fn new_handlecurve_handlesurface_vertex2_real2(
-        L: &ffi::HandleGeom2dCurve,
-        S: &ffi::HandleGeomSurface,
-        V1: &ffi::TopoDS_Vertex,
-        V2: &ffi::TopoDS_Vertex,
-        p1: f64,
-        p2: f64,
-    ) -> cxx::UniquePtr<Self> {
-        ffi::MakeEdge_ctor_handlecurve_handlesurface_vertex2_real2(L, S, V1, V2, p1, p2)
-    }
-
-    #[doc = "Upcast to BRepLib_Command"]
-    pub fn as_command(&self) -> &Command {
-        ffi::make_edge_as_command(self)
-    }
-
-    #[doc = "Upcast to BRepLib_Command (mutable)"]
-    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
-        ffi::make_edge_as_command_mut(self)
-    }
-
-    #[doc = "Upcast to BRepLib_MakeShape"]
-    pub fn as_make_shape(&self) -> &MakeShape {
-        ffi::make_edge_as_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepLib_MakeShape (mutable)"]
-    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
-        ffi::make_edge_as_make_shape_mut(self)
-    }
 }

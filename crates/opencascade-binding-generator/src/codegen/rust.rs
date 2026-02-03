@@ -211,6 +211,15 @@ pub fn generate_module(
         #![allow(non_snake_case)]
         #![allow(clippy::missing_safety_doc)]
 
+        // Re-exports
+        #(#re_exports)*
+
+        // to_handle free function exports
+        #(#to_handle_exports)*
+
+        // Handle type impl blocks
+        #(#handle_impls)*
+
         #[cxx::bridge]
         pub(crate) mod ffi {
             // ========================
@@ -222,16 +231,6 @@ pub fn generate_module(
                 include!(#include_file);
 
                 // ========================
-                // Cross-module type aliases
-                // ========================
-                #(#type_aliases)*
-
-                // ========================
-                // Referenced types (opaque)
-                // ========================
-                #(#opaque_type_decls)*
-
-                // ========================
                 // Module types and methods
                 // ========================
                 #(#class_items)*
@@ -240,19 +239,20 @@ pub fn generate_module(
                 // Free functions
                 // ========================
                 #(#function_items)*
+
+                // ========================
+                // Cross-module type aliases
+                // ========================
+                #(#type_aliases)*
+
+                // ========================
+                // Referenced types (opaque)
+                // ========================
+                #(#opaque_type_decls)*
             }
 
             #(#unique_ptr_impls)*
         }
-
-        // Re-exports
-        #(#re_exports)*
-
-        // to_handle free function exports
-        #(#to_handle_exports)*
-
-        // Handle type impl blocks
-        #(#handle_impls)*
     };
 
     // Convert to string and apply doc comment conversion
