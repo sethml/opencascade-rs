@@ -13,7 +13,9 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::NumShapeTool;
 impl NumShapeTool {
-    /// Create a new NumShapeTool with <aShape>.  The Tool must prepare an indexation  for  all the subshapes of this shape.
+    /// Create a new NumShapeTool with <aShape>.  The Tool
+    /// must prepare an indexation  for  all the subshapes
+    /// of this shape.
     pub fn new_numshape(aShape: &ffi::NumShape) -> cxx::UniquePtr<Self> {
         ffi::NumShapeTool_ctor_numshape(aShape)
     }
@@ -51,12 +53,16 @@ pub(crate) mod ffi {
         /// ======================== Sweep_NumShapeTool ========================
         /// /// **Source:** `Sweep_NumShapeTool.hxx` - `Sweep_NumShapeTool`
         ///
-        /// This class provides  the indexation and  type analysis services required by  the NumShape Directing Shapes of Swept Primitives.
+        /// This class provides  the indexation and  type analysis
+        /// services required by  the NumShape Directing Shapes of
+        /// Swept Primitives.
         #[cxx_name = "Sweep_NumShapeTool"]
         type NumShapeTool;
         /// /// **Source:** `Sweep_NumShapeTool.hxx` - `Sweep_NumShapeTool::Sweep_NumShapeTool()`
         ///
-        /// Create a new NumShapeTool with <aShape>.  The Tool must prepare an indexation  for  all the subshapes of this shape.
+        /// Create a new NumShapeTool with <aShape>.  The Tool
+        /// must prepare an indexation  for  all the subshapes
+        /// of this shape.
         #[cxx_name = "Sweep_NumShapeTool_ctor_numshape"]
         fn NumShapeTool_ctor_numshape(aShape: &NumShape) -> UniquePtr<NumShapeTool>;
         /// Returns the number of subshapes in the shape.
@@ -83,7 +89,8 @@ pub(crate) mod ffi {
         /// ======================== Sweep_NumShape ========================
         /// /// **Source:** `Sweep_NumShape.hxx` - `Sweep_NumShape`
         ///
-        /// Gives    a  simple  indexed   representation  of a Directing Edge topology.
+        /// Gives    a  simple  indexed   representation  of a
+        /// Directing Edge topology.
         #[cxx_name = "Sweep_NumShape"]
         type NumShape;
         /// /// **Source:** `Sweep_NumShape.hxx` - `Sweep_NumShape::Sweep_NumShape()`

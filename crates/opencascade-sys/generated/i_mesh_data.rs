@@ -57,10 +57,12 @@ pub(crate) mod ffi {
         fn get_max_size(self: &Model) -> f64;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Model) -> &HandleStandardType;
-        /// @name discrete faces Returns number of faces in discrete model.
+        /// @name discrete faces
+        /// Returns number of faces in discrete model.
         #[cxx_name = "FacesNb"]
         fn faces_nb(self: &Model) -> i32;
-        /// @name discrete edges Returns number of edges in discrete model.
+        /// @name discrete edges
+        /// Returns number of edges in discrete model.
         #[cxx_name = "EdgesNb"]
         fn edges_nb(self: &Model) -> i32;
         #[cxx_name = "IMeshData_Model_get_type_name"]
@@ -74,7 +76,9 @@ pub(crate) mod ffi {
         /// ======================== IMeshData_Shape ========================
         /// /// **Source:** `IMeshData_Shape.hxx` - `IMeshData_Shape`
         ///
-        /// Interface class representing model with associated TopoDS_Shape. Intended for inheritance by structures and algorithms keeping reference TopoDS_Shape.
+        /// Interface class representing model with associated TopoDS_Shape.
+        /// Intended for inheritance by structures and algorithms keeping
+        /// reference TopoDS_Shape.
         #[cxx_name = "IMeshData_Shape"]
         type Shape;
         /// Assigns shape to discrete shape.

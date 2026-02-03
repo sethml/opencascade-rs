@@ -25,7 +25,89 @@ impl Cache {
 }
 pub use ffi::BSplSLib;
 impl BSplSLib {
-    /// this is a one dimensional function typedef  void (*EvaluatorFunction)  ( Standard_Integer     // Derivative Request Standard_Real    *   // StartEnd[2][2] //  [0] = U //  [1] = V //        [0] = start //        [1] = end Standard_Real        // UParameter Standard_Real        // VParamerer Standard_Real    &   // Result Standard_Integer &) ;// Error Code serves to multiply a given vectorial BSpline by a function Computes  the     derivatives   of  a    ratio  of two-variables functions  x(u,v) / w(u,v) at orders <N,M>,    x(u,v)    is   a  vector in    dimension <3>. <Ders> is  an array  containing the values  of the input derivatives from 0  to Min(<N>,<UDeg>), 0 to Min(<M>,<VDeg>).    For orders    higher      than <UDeg,VDeg>  the  input derivatives are assumed to be 0. The <Ders> is a 2d array and the  dimension of the lines is always (<VDeg>+1) * (<3>+1), even if   <N> is smaller  than  <Udeg> (the derivatives higher than <N> are not used). Content of <Ders> : x(i,j)[k] means :  the composant  k of x derivated (i) times in u and (j) times in v. ... First line ... x[1],x[2],...,x[3],w x(0,1)[1],...,x(0,1)[3],w(1,0) ... x(0,VDeg)[1],...,x(0,VDeg)[3],w(0,VDeg) ... Then second line ... x(1,0)[1],...,x(1,0)[3],w(1,0) x(1,1)[1],...,x(1,1)[3],w(1,1) ... x(1,VDeg)[1],...,x(1,VDeg)[3],w(1,VDeg) ... ... Last line ... x(UDeg,0)[1],...,x(UDeg,0)[3],w(UDeg,0) x(UDeg,1)[1],...,x(UDeg,1)[3],w(UDeg,1) ... x(Udeg,VDeg)[1],...,x(UDeg,VDeg)[3],w(Udeg,VDeg) If <All>  is false, only  the derivative  at order <N,M> is computed.  <RDers> is an  array of length 3 which will contain the result : x(1)/w , x(2)/w ,  ... derivated <N> <M> times If   <All>    is  true  multiples  derivatives are computed. All the  derivatives (i,j) with 0 <= i+j <= Max(N,M) are  computed.  <RDers> is an array of length 3 *  (<N>+1)  * (<M>+1) which  will contains : x(1)/w , x(2)/w ,  ... x(1)/w , x(2)/w ,  ... derivated <0,1> times x(1)/w , x(2)/w ,  ... derivated <0,2> times ... x(1)/w , x(2)/w ,  ... derivated <0,N> times x(1)/w , x(2)/w ,  ... derivated <1,0> times x(1)/w , x(2)/w ,  ... derivated <1,1> times ... x(1)/w , x(2)/w ,  ... derivated <1,N> times x(1)/w , x(2)/w ,  ... derivated <N,0> times .... Warning: <RDers> must be dimensioned properly.
+    /// this is a one dimensional function
+    /// typedef  void (*EvaluatorFunction)  (
+    /// Standard_Integer     // Derivative Request
+    /// Standard_Real    *   // StartEnd[2][2]
+    /// //  [0] = U
+    /// //  [1] = V
+    /// //        [0] = start
+    /// //        [1] = end
+    /// Standard_Real        // UParameter
+    /// Standard_Real        // VParamerer
+    /// Standard_Real    &   // Result
+    /// Standard_Integer &) ;// Error Code
+    /// serves to multiply a given vectorial BSpline by a function
+    /// Computes  the     derivatives   of  a    ratio  of
+    /// two-variables functions  x(u,v) / w(u,v) at orders
+    /// <N,M>,    x(u,v)    is   a  vector in    dimension
+    /// <3>.
+    ///
+    /// <Ders> is  an array  containing the values  of the
+    /// input derivatives from 0  to Min(<N>,<UDeg>), 0 to
+    /// Min(<M>,<VDeg>).    For orders    higher      than
+    /// <UDeg,VDeg>  the  input derivatives are assumed to
+    /// be 0.
+    ///
+    /// The <Ders> is a 2d array and the  dimension of the
+    /// lines is always (<VDeg>+1) * (<3>+1), even
+    /// if   <N> is smaller  than  <Udeg> (the derivatives
+    /// higher than <N> are not used).
+    ///
+    /// Content of <Ders> :
+    ///
+    /// x(i,j)[k] means :  the composant  k of x derivated
+    /// (i) times in u and (j) times in v.
+    ///
+    /// ... First line ...
+    ///
+    /// x[1],x[2],...,x[3],w
+    /// x(0,1)[1],...,x(0,1)[3],w(1,0)
+    /// ...
+    /// x(0,VDeg)[1],...,x(0,VDeg)[3],w(0,VDeg)
+    ///
+    /// ... Then second line ...
+    ///
+    /// x(1,0)[1],...,x(1,0)[3],w(1,0)
+    /// x(1,1)[1],...,x(1,1)[3],w(1,1)
+    /// ...
+    /// x(1,VDeg)[1],...,x(1,VDeg)[3],w(1,VDeg)
+    ///
+    /// ...
+    ///
+    /// ... Last line ...
+    ///
+    /// x(UDeg,0)[1],...,x(UDeg,0)[3],w(UDeg,0)
+    /// x(UDeg,1)[1],...,x(UDeg,1)[3],w(UDeg,1)
+    /// ...
+    /// x(Udeg,VDeg)[1],...,x(UDeg,VDeg)[3],w(Udeg,VDeg)
+    ///
+    /// If <All>  is false, only  the derivative  at order
+    /// <N,M> is computed.  <RDers> is an  array of length
+    /// 3 which will contain the result :
+    ///
+    /// x(1)/w , x(2)/w ,  ... derivated <N> <M> times
+    ///
+    /// If   <All>    is  true  multiples  derivatives are
+    /// computed. All the  derivatives (i,j) with 0 <= i+j
+    /// <= Max(N,M) are  computed.  <RDers> is an array of
+    /// length 3 *  (<N>+1)  * (<M>+1) which  will
+    /// contains :
+    ///
+    /// x(1)/w , x(2)/w ,  ...
+    /// x(1)/w , x(2)/w ,  ... derivated <0,1> times
+    /// x(1)/w , x(2)/w ,  ... derivated <0,2> times
+    /// ...
+    /// x(1)/w , x(2)/w ,  ... derivated <0,N> times
+    ///
+    /// x(1)/w , x(2)/w ,  ... derivated <1,0> times
+    /// x(1)/w , x(2)/w ,  ... derivated <1,1> times
+    /// ...
+    /// x(1)/w , x(2)/w ,  ... derivated <1,N> times
+    ///
+    /// x(1)/w , x(2)/w ,  ... derivated <N,0> times
+    /// ....
+    /// Warning: <RDers> must be dimensioned properly.
     pub fn rational_derivative(
         UDeg: i32,
         VDeg: i32,
@@ -38,7 +120,15 @@ impl BSplSLib {
         ffi::BSplSLib_rational_derivative(UDeg, VDeg, N, M, Ders, RDers, All)
     }
 
-    /// Reverses the array of poles. Last is the Index of the new first Row( Col) of Poles. On  a  non periodic surface Last is Poles.Upper(). On a periodic curve last is (number of flat knots - degree - 1) or (sum of multiplicities(but  for the last) + degree - 1)
+    /// Reverses the array of poles. Last is the Index of
+    /// the new first Row( Col) of Poles.
+    /// On  a  non periodic surface Last is
+    /// Poles.Upper().
+    /// On a periodic curve last is
+    /// (number of flat knots - degree - 1)
+    /// or
+    /// (sum of multiplicities(but  for the last) + degree
+    /// - 1)
     pub fn reverse_array2ofpnt_int_bool(
         Poles: std::pin::Pin<&mut ffi::TColgp_Array2OfPnt>,
         Last: i32,
@@ -56,7 +146,10 @@ impl BSplSLib {
         ffi::BSplSLib_reverse_array2ofreal_int_bool(Weights, Last, UDirection)
     }
 
-    /// Returns False if all the weights  of the  array <Weights> in the area [I1,I2] * [J1,J2] are  identic. Epsilon  is used for comparing  weights. If Epsilon  is 0. the  Epsilon of the first weight is used.
+    /// Returns False if all the weights  of the  array <Weights>
+    /// in the area [I1,I2] * [J1,J2] are  identic.
+    /// Epsilon  is used for comparing  weights.
+    /// If Epsilon  is 0. the  Epsilon of the first weight is used.
     pub fn is_rational(
         Weights: &ffi::TColStd_Array2OfReal,
         I1: i32,
@@ -110,7 +203,19 @@ impl BSplSLib {
         )
     }
 
-    /// Find the new poles which allows an old point (with a given u,v  as parameters)  to  reach a  new position UIndex1,UIndex2 indicate the  range of poles we can move for U (1, UNbPoles-1) or (2, UNbPoles) -> no constraint for one side in U (2, UNbPoles-1)   -> the ends are enforced for U don't enter (1,NbPoles) and (1,VNbPoles) -> error: rigid move if problem in BSplineBasis calculation, no change for the curve  and UFirstIndex, VLastIndex = 0 VFirstIndex, VLastIndex = 0
+    /// Find the new poles which allows an old point (with a
+    /// given u,v  as parameters)  to  reach a  new position
+    /// UIndex1,UIndex2 indicate the  range of poles we can
+    /// move for U
+    /// (1, UNbPoles-1) or (2, UNbPoles) -> no constraint
+    /// for one side in U
+    /// (2, UNbPoles-1)   -> the ends are enforced for U
+    /// don't enter (1,NbPoles) and (1,VNbPoles)
+    /// -> error: rigid move
+    /// if problem in BSplineBasis calculation, no change
+    /// for the curve  and
+    /// UFirstIndex, VLastIndex = 0
+    /// VFirstIndex, VLastIndex = 0
     pub fn move_point(
         U: f64,
         V: f64,
@@ -163,7 +268,23 @@ impl BSplSLib {
         ffi::BSplSLib_poles_coefficients_array2ofpnt2(Poles, CachePoles)
     }
 
-    /// Performs the interpolation of the data points given in the   Poles       array      in   the      form [1,...,RL][1,...,RC][1...PolesDimension]    .    The ColLength CL and the Length of UParameters must be the same. The length of VFlatKnots is VDegree + CL + 1. The  RowLength RL and the Length of VParameters must be the  same. The length of VFlatKnots is Degree + RL + 1. Warning: the method used  to do that  interpolation is gauss  elimination  WITHOUT pivoting.  Thus if  the diagonal is not  dominant  there is no guarantee  that the   algorithm will    work.  Nevertheless  for Cubic interpolation  at knots or interpolation at Scheonberg points  the method   will work.  The  InversionProblem will  report 0 if there   was no problem  else it will give the index of the faulty pivot
+    /// Performs the interpolation of the data points given in
+    /// the   Poles       array      in   the      form
+    /// [1,...,RL][1,...,RC][1...PolesDimension]    .    The
+    /// ColLength CL and the Length of UParameters must be the
+    /// same. The length of VFlatKnots is VDegree + CL + 1.
+    ///
+    /// The  RowLength RL and the Length of VParameters must be
+    /// the  same. The length of VFlatKnots is Degree + RL + 1.
+    ///
+    /// Warning: the method used  to do that  interpolation
+    /// is gauss  elimination  WITHOUT pivoting.  Thus if  the
+    /// diagonal is not  dominant  there is no guarantee  that
+    /// the   algorithm will    work.  Nevertheless  for Cubic
+    /// interpolation  at knots or interpolation at Scheonberg
+    /// points  the method   will work.  The  InversionProblem
+    /// will  report 0 if there   was no problem  else it will
+    /// give the index of the faulty pivot
     pub fn interpolate_int2_array1ofreal4_array2ofpnt_array2ofreal_int(
         UDegree: i32,
         VDegree: i32,
@@ -188,7 +309,22 @@ impl BSplSLib {
         )
     }
 
-    /// Performs the interpolation of the data points given in the  Poles array. The  ColLength CL and the Length of UParameters must be the  same. The length of VFlatKnots is VDegree + CL + 1. The  RowLength RL and the Length of VParameters must be the  same. The length of VFlatKnots is Degree + RL + 1. Warning: the method used  to do that  interpolation is gauss  elimination  WITHOUT pivoting.  Thus if  the diagonal is not  dominant  there is no guarantee  that the   algorithm will    work.  Nevertheless  for Cubic interpolation  at knots or interpolation at Scheonberg points  the method   will work.  The  InversionProblem will  report 0 if there   was no problem  else it will give the index of the faulty pivot
+    /// Performs the interpolation of the data points given in
+    /// the  Poles array.
+    /// The  ColLength CL and the Length of UParameters must be
+    /// the  same. The length of VFlatKnots is VDegree + CL + 1.
+    ///
+    /// The  RowLength RL and the Length of VParameters must be
+    /// the  same. The length of VFlatKnots is Degree + RL + 1.
+    ///
+    /// Warning: the method used  to do that  interpolation
+    /// is gauss  elimination  WITHOUT pivoting.  Thus if  the
+    /// diagonal is not  dominant  there is no guarantee  that
+    /// the   algorithm will    work.  Nevertheless  for Cubic
+    /// interpolation  at knots or interpolation at Scheonberg
+    /// points  the method   will work.  The  InversionProblem
+    /// will  report 0 if there   was no problem  else it will
+    /// give the index of the faulty pivot
     pub fn interpolate_int2_array1ofreal4_array2ofpnt_int(
         UDegree: i32,
         VDegree: i32,
@@ -224,16 +360,29 @@ pub(crate) mod ffi {
         /// ======================== BSplSLib_Cache ========================
         /// /// **Source:** `BSplSLib_Cache.hxx` - `BSplSLib_Cache`
         ///
-        /// \\brief A cache class for Bezier and B-spline surfaces. Defines all data, that can be cached on a span of the surface. The data should be recalculated in going from span to span.
+        /// \\brief A cache class for Bezier and B-spline surfaces.
+        ///
+        /// Defines all data, that can be cached on a span of the surface.
+        /// The data should be recalculated in going from span to span.
         #[cxx_name = "BSplSLib_Cache"]
         type Cache;
-        /// Verifies validity of the cache using parameters of the point \\param theParameterU  first parameter of the point placed in the span \\param theParameterV  second parameter of the point placed in the span
+        /// Verifies validity of the cache using parameters of the point
+        /// \\param theParameterU  first parameter of the point placed in the span
+        /// \\param theParameterV  second parameter of the point placed in the span
         #[cxx_name = "IsCacheValid"]
         fn is_cache_valid(self: &Cache, theParameterU: f64, theParameterV: f64) -> bool;
-        /// Calculates the point on the surface for specified parameters \\param[in]  theU      first parameter for calculation of the value \\param[in]  theV      second parameter for calculation of the value \\param[out] thePoint  the result of calculation (the point on the surface)
+        /// Calculates the point on the surface for specified parameters
+        /// \\param[in]  theU      first parameter for calculation of the value
+        /// \\param[in]  theV      second parameter for calculation of the value
+        /// \\param[out] thePoint  the result of calculation (the point on the surface)
         #[cxx_name = "D0"]
         fn d0(self: &Cache, theU: &f64, theV: &f64, thePoint: Pin<&mut gp_Pnt>);
-        /// Calculates the point on the surface and its first derivative \\param[in]  theU         first parameter of calculation of the value \\param[in]  theV         second parameter of calculation of the value \\param[out] thePoint     the result of calculation (the point on the surface) \\param[out] theTangentU  tangent vector along U axis in the calculated point \\param[out] theTangentV  tangent vector along V axis in the calculated point
+        /// Calculates the point on the surface and its first derivative
+        /// \\param[in]  theU         first parameter of calculation of the value
+        /// \\param[in]  theV         second parameter of calculation of the value
+        /// \\param[out] thePoint     the result of calculation (the point on the surface)
+        /// \\param[out] theTangentU  tangent vector along U axis in the calculated point
+        /// \\param[out] theTangentV  tangent vector along V axis in the calculated point
         #[cxx_name = "D1"]
         fn d1(
             self: &Cache,
@@ -243,7 +392,15 @@ pub(crate) mod ffi {
             theTangentU: Pin<&mut gp_Vec>,
             theTangentV: Pin<&mut gp_Vec>,
         );
-        /// Calculates the point on the surface and derivatives till second order \\param[in]  theU            first parameter of calculation of the value \\param[in]  theV            second parameter of calculation of the value \\param[out] thePoint        the result of calculation (the point on the surface) \\param[out] theTangentU     tangent vector along U axis in the calculated point \\param[out] theTangentV     tangent vector along V axis in the calculated point \\param[out] theCurvatureU   curvature vector (2nd derivative on U) along U axis \\param[out] theCurvatureV   curvature vector (2nd derivative on V) along V axis \\param[out] theCurvatureUV  2nd mixed derivative on U anv V
+        /// Calculates the point on the surface and derivatives till second order
+        /// \\param[in]  theU            first parameter of calculation of the value
+        /// \\param[in]  theV            second parameter of calculation of the value
+        /// \\param[out] thePoint        the result of calculation (the point on the surface)
+        /// \\param[out] theTangentU     tangent vector along U axis in the calculated point
+        /// \\param[out] theTangentV     tangent vector along V axis in the calculated point
+        /// \\param[out] theCurvatureU   curvature vector (2nd derivative on U) along U axis
+        /// \\param[out] theCurvatureV   curvature vector (2nd derivative on V) along V axis
+        /// \\param[out] theCurvatureUV  2nd mixed derivative on U anv V
         #[cxx_name = "D2"]
         fn d2(
             self: &Cache,
@@ -266,10 +423,145 @@ pub(crate) mod ffi {
         /// ======================== BSplSLib ========================
         /// /// **Source:** `BSplSLib.hxx` - `BSplSLib`
         ///
-        /// BSplSLib   B-spline surface Library This  package provides   an  implementation  of  geometric functions for rational and non rational, periodic  and non periodic B-spline surface computation. this package uses   the  multi-dimensions splines  methods provided in the package BSplCLib. In this package the B-spline surface is defined with : . its control points :  Array2OfPnt     Poles . its weights        :  Array2OfReal    Weights . its knots and their multiplicity in the two parametric direction U and V  :  Array1OfReal    UKnots, VKnots and Array1OfInteger UMults, VMults. . the degree of the normalized Spline functions : UDegree, VDegree . the Booleans URational, VRational to know if the weights are constant in the U or V direction. . the Booleans UPeriodic,   VRational  to know if the  the surface is periodic in the U or V direction. Warnings : The  bounds of UKnots  and UMults should be the same, the bounds of VKnots and VMults should be  the same, the bounds of Poles and Weights should be the same. The Control points representation is : Poles(Uorigin,Vorigin) ...................Poles(Uorigin,Vend) .                                     . .                                     . Poles(Uend, Vorigin) .....................Poles(Uend, Vend) For  the double array  the row indice   corresponds to the parametric U direction  and the columns indice corresponds to the parametric V direction. Note: weight and multiplicity arrays can be passed by pointer for some functions so that NULL pointer is valid. That means no weights/no multiplicities passed. KeyWords : B-spline surface, Functions, Library References : . A survey of curve and surface methods in CADG Wolfgang BOHM CAGD 1 (1984) . On de Boor-like algorithms and blossoming Wolfgang BOEHM cagd 5 (1988) . Blossoming and knot insertion algorithms for B-spline curves Ronald N. GOLDMAN . Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA . Curves and Surfaces for Computer Aided Geometric Design, a practical guide Gerald Farin
+        /// BSplSLib   B-spline surface Library
+        /// This  package provides   an  implementation  of  geometric
+        /// functions for rational and non rational, periodic  and non
+        /// periodic B-spline surface computation.
+        ///
+        /// this package uses   the  multi-dimensions splines  methods
+        /// provided in the package BSplCLib.
+        ///
+        /// In this package the B-spline surface is defined with :
+        /// . its control points :  Array2OfPnt     Poles
+        /// . its weights        :  Array2OfReal    Weights
+        /// . its knots and their multiplicity in the two parametric
+        /// direction U and V  :  Array1OfReal    UKnots, VKnots and
+        /// Array1OfInteger UMults, VMults.
+        /// . the degree of the normalized Spline functions :
+        /// UDegree, VDegree
+        ///
+        /// . the Booleans URational, VRational to know if the weights
+        /// are constant in the U or V direction.
+        ///
+        /// . the Booleans UPeriodic,   VRational  to know if the  the
+        /// surface is periodic in the U or V direction.
+        ///
+        /// Warnings : The  bounds of UKnots  and UMults should be the
+        /// same, the bounds of VKnots and VMults should be  the same,
+        /// the bounds of Poles and Weights should be the same.
+        ///
+        /// The Control points representation is :
+        /// Poles(Uorigin,Vorigin) ...................Poles(Uorigin,Vend)
+        /// .                                     .
+        /// .                                     .
+        /// Poles(Uend, Vorigin) .....................Poles(Uend, Vend)
+        ///
+        /// For  the double array  the row indice   corresponds to the
+        /// parametric U direction  and the columns indice corresponds
+        /// to the parametric V direction.
+        ///
+        /// Note: weight and multiplicity arrays can be passed by pointer for
+        /// some functions so that NULL pointer is valid.
+        /// That means no weights/no multiplicities passed.
+        ///
+        /// KeyWords :
+        /// B-spline surface, Functions, Library
+        ///
+        /// References :
+        /// . A survey of curve and surface methods in CADG Wolfgang BOHM
+        /// CAGD 1 (1984)
+        /// . On de Boor-like algorithms and blossoming Wolfgang BOEHM
+        /// cagd 5 (1988)
+        /// . Blossoming and knot insertion algorithms for B-spline curves
+        /// Ronald N. GOLDMAN
+        /// . Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA
+        /// . Curves and Surfaces for Computer Aided Geometric Design,
+        /// a practical guide Gerald Farin
         #[cxx_name = "BSplSLib"]
         type BSplSLib;
-        /// this is a one dimensional function typedef  void (*EvaluatorFunction)  ( Standard_Integer     // Derivative Request Standard_Real    *   // StartEnd[2][2] //  [0] = U //  [1] = V //        [0] = start //        [1] = end Standard_Real        // UParameter Standard_Real        // VParamerer Standard_Real    &   // Result Standard_Integer &) ;// Error Code serves to multiply a given vectorial BSpline by a function Computes  the     derivatives   of  a    ratio  of two-variables functions  x(u,v) / w(u,v) at orders <N,M>,    x(u,v)    is   a  vector in    dimension <3>. <Ders> is  an array  containing the values  of the input derivatives from 0  to Min(<N>,<UDeg>), 0 to Min(<M>,<VDeg>).    For orders    higher      than <UDeg,VDeg>  the  input derivatives are assumed to be 0. The <Ders> is a 2d array and the  dimension of the lines is always (<VDeg>+1) * (<3>+1), even if   <N> is smaller  than  <Udeg> (the derivatives higher than <N> are not used). Content of <Ders> : x(i,j)[k] means :  the composant  k of x derivated (i) times in u and (j) times in v. ... First line ... x[1],x[2],...,x[3],w x(0,1)[1],...,x(0,1)[3],w(1,0) ... x(0,VDeg)[1],...,x(0,VDeg)[3],w(0,VDeg) ... Then second line ... x(1,0)[1],...,x(1,0)[3],w(1,0) x(1,1)[1],...,x(1,1)[3],w(1,1) ... x(1,VDeg)[1],...,x(1,VDeg)[3],w(1,VDeg) ... ... Last line ... x(UDeg,0)[1],...,x(UDeg,0)[3],w(UDeg,0) x(UDeg,1)[1],...,x(UDeg,1)[3],w(UDeg,1) ... x(Udeg,VDeg)[1],...,x(UDeg,VDeg)[3],w(Udeg,VDeg) If <All>  is false, only  the derivative  at order <N,M> is computed.  <RDers> is an  array of length 3 which will contain the result : x(1)/w , x(2)/w ,  ... derivated <N> <M> times If   <All>    is  true  multiples  derivatives are computed. All the  derivatives (i,j) with 0 <= i+j <= Max(N,M) are  computed.  <RDers> is an array of length 3 *  (<N>+1)  * (<M>+1) which  will contains : x(1)/w , x(2)/w ,  ... x(1)/w , x(2)/w ,  ... derivated <0,1> times x(1)/w , x(2)/w ,  ... derivated <0,2> times ... x(1)/w , x(2)/w ,  ... derivated <0,N> times x(1)/w , x(2)/w ,  ... derivated <1,0> times x(1)/w , x(2)/w ,  ... derivated <1,1> times ... x(1)/w , x(2)/w ,  ... derivated <1,N> times x(1)/w , x(2)/w ,  ... derivated <N,0> times .... Warning: <RDers> must be dimensioned properly.
+        /// this is a one dimensional function
+        /// typedef  void (*EvaluatorFunction)  (
+        /// Standard_Integer     // Derivative Request
+        /// Standard_Real    *   // StartEnd[2][2]
+        /// //  [0] = U
+        /// //  [1] = V
+        /// //        [0] = start
+        /// //        [1] = end
+        /// Standard_Real        // UParameter
+        /// Standard_Real        // VParamerer
+        /// Standard_Real    &   // Result
+        /// Standard_Integer &) ;// Error Code
+        /// serves to multiply a given vectorial BSpline by a function
+        /// Computes  the     derivatives   of  a    ratio  of
+        /// two-variables functions  x(u,v) / w(u,v) at orders
+        /// <N,M>,    x(u,v)    is   a  vector in    dimension
+        /// <3>.
+        ///
+        /// <Ders> is  an array  containing the values  of the
+        /// input derivatives from 0  to Min(<N>,<UDeg>), 0 to
+        /// Min(<M>,<VDeg>).    For orders    higher      than
+        /// <UDeg,VDeg>  the  input derivatives are assumed to
+        /// be 0.
+        ///
+        /// The <Ders> is a 2d array and the  dimension of the
+        /// lines is always (<VDeg>+1) * (<3>+1), even
+        /// if   <N> is smaller  than  <Udeg> (the derivatives
+        /// higher than <N> are not used).
+        ///
+        /// Content of <Ders> :
+        ///
+        /// x(i,j)[k] means :  the composant  k of x derivated
+        /// (i) times in u and (j) times in v.
+        ///
+        /// ... First line ...
+        ///
+        /// x[1],x[2],...,x[3],w
+        /// x(0,1)[1],...,x(0,1)[3],w(1,0)
+        /// ...
+        /// x(0,VDeg)[1],...,x(0,VDeg)[3],w(0,VDeg)
+        ///
+        /// ... Then second line ...
+        ///
+        /// x(1,0)[1],...,x(1,0)[3],w(1,0)
+        /// x(1,1)[1],...,x(1,1)[3],w(1,1)
+        /// ...
+        /// x(1,VDeg)[1],...,x(1,VDeg)[3],w(1,VDeg)
+        ///
+        /// ...
+        ///
+        /// ... Last line ...
+        ///
+        /// x(UDeg,0)[1],...,x(UDeg,0)[3],w(UDeg,0)
+        /// x(UDeg,1)[1],...,x(UDeg,1)[3],w(UDeg,1)
+        /// ...
+        /// x(Udeg,VDeg)[1],...,x(UDeg,VDeg)[3],w(Udeg,VDeg)
+        ///
+        /// If <All>  is false, only  the derivative  at order
+        /// <N,M> is computed.  <RDers> is an  array of length
+        /// 3 which will contain the result :
+        ///
+        /// x(1)/w , x(2)/w ,  ... derivated <N> <M> times
+        ///
+        /// If   <All>    is  true  multiples  derivatives are
+        /// computed. All the  derivatives (i,j) with 0 <= i+j
+        /// <= Max(N,M) are  computed.  <RDers> is an array of
+        /// length 3 *  (<N>+1)  * (<M>+1) which  will
+        /// contains :
+        ///
+        /// x(1)/w , x(2)/w ,  ...
+        /// x(1)/w , x(2)/w ,  ... derivated <0,1> times
+        /// x(1)/w , x(2)/w ,  ... derivated <0,2> times
+        /// ...
+        /// x(1)/w , x(2)/w ,  ... derivated <0,N> times
+        ///
+        /// x(1)/w , x(2)/w ,  ... derivated <1,0> times
+        /// x(1)/w , x(2)/w ,  ... derivated <1,1> times
+        /// ...
+        /// x(1)/w , x(2)/w ,  ... derivated <1,N> times
+        ///
+        /// x(1)/w , x(2)/w ,  ... derivated <N,0> times
+        /// ....
+        /// Warning: <RDers> must be dimensioned properly.
         #[cxx_name = "BSplSLib_RationalDerivative"]
         fn BSplSLib_rational_derivative(
             UDeg: i32,
@@ -280,7 +572,15 @@ pub(crate) mod ffi {
             RDers: &mut f64,
             All: bool,
         );
-        /// Reverses the array of poles. Last is the Index of the new first Row( Col) of Poles. On  a  non periodic surface Last is Poles.Upper(). On a periodic curve last is (number of flat knots - degree - 1) or (sum of multiplicities(but  for the last) + degree - 1)
+        /// Reverses the array of poles. Last is the Index of
+        /// the new first Row( Col) of Poles.
+        /// On  a  non periodic surface Last is
+        /// Poles.Upper().
+        /// On a periodic curve last is
+        /// (number of flat knots - degree - 1)
+        /// or
+        /// (sum of multiplicities(but  for the last) + degree
+        /// - 1)
         #[cxx_name = "BSplSLib_Reverse_array2ofpnt_int_bool"]
         fn BSplSLib_reverse_array2ofpnt_int_bool(
             Poles: Pin<&mut TColgp_Array2OfPnt>,
@@ -294,7 +594,10 @@ pub(crate) mod ffi {
             Last: i32,
             UDirection: bool,
         );
-        /// Returns False if all the weights  of the  array <Weights> in the area [I1,I2] * [J1,J2] are  identic. Epsilon  is used for comparing  weights. If Epsilon  is 0. the  Epsilon of the first weight is used.
+        /// Returns False if all the weights  of the  array <Weights>
+        /// in the area [I1,I2] * [J1,J2] are  identic.
+        /// Epsilon  is used for comparing  weights.
+        /// If Epsilon  is 0. the  Epsilon of the first weight is used.
         #[cxx_name = "BSplSLib_IsRational"]
         fn BSplSLib_is_rational(
             Weights: &TColStd_Array2OfReal,
@@ -334,7 +637,19 @@ pub(crate) mod ffi {
             Weights: Pin<&mut TColStd_Array2OfReal>,
             UDirection: bool,
         );
-        /// Find the new poles which allows an old point (with a given u,v  as parameters)  to  reach a  new position UIndex1,UIndex2 indicate the  range of poles we can move for U (1, UNbPoles-1) or (2, UNbPoles) -> no constraint for one side in U (2, UNbPoles-1)   -> the ends are enforced for U don't enter (1,NbPoles) and (1,VNbPoles) -> error: rigid move if problem in BSplineBasis calculation, no change for the curve  and UFirstIndex, VLastIndex = 0 VFirstIndex, VLastIndex = 0
+        /// Find the new poles which allows an old point (with a
+        /// given u,v  as parameters)  to  reach a  new position
+        /// UIndex1,UIndex2 indicate the  range of poles we can
+        /// move for U
+        /// (1, UNbPoles-1) or (2, UNbPoles) -> no constraint
+        /// for one side in U
+        /// (2, UNbPoles-1)   -> the ends are enforced for U
+        /// don't enter (1,NbPoles) and (1,VNbPoles)
+        /// -> error: rigid move
+        /// if problem in BSplineBasis calculation, no change
+        /// for the curve  and
+        /// UFirstIndex, VLastIndex = 0
+        /// VFirstIndex, VLastIndex = 0
         #[cxx_name = "BSplSLib_MovePoint"]
         fn BSplSLib_move_point(
             U: f64,
@@ -363,7 +678,23 @@ pub(crate) mod ffi {
             Poles: &TColgp_Array2OfPnt,
             CachePoles: Pin<&mut TColgp_Array2OfPnt>,
         );
-        /// Performs the interpolation of the data points given in the   Poles       array      in   the      form [1,...,RL][1,...,RC][1...PolesDimension]    .    The ColLength CL and the Length of UParameters must be the same. The length of VFlatKnots is VDegree + CL + 1. The  RowLength RL and the Length of VParameters must be the  same. The length of VFlatKnots is Degree + RL + 1. Warning: the method used  to do that  interpolation is gauss  elimination  WITHOUT pivoting.  Thus if  the diagonal is not  dominant  there is no guarantee  that the   algorithm will    work.  Nevertheless  for Cubic interpolation  at knots or interpolation at Scheonberg points  the method   will work.  The  InversionProblem will  report 0 if there   was no problem  else it will give the index of the faulty pivot
+        /// Performs the interpolation of the data points given in
+        /// the   Poles       array      in   the      form
+        /// [1,...,RL][1,...,RC][1...PolesDimension]    .    The
+        /// ColLength CL and the Length of UParameters must be the
+        /// same. The length of VFlatKnots is VDegree + CL + 1.
+        ///
+        /// The  RowLength RL and the Length of VParameters must be
+        /// the  same. The length of VFlatKnots is Degree + RL + 1.
+        ///
+        /// Warning: the method used  to do that  interpolation
+        /// is gauss  elimination  WITHOUT pivoting.  Thus if  the
+        /// diagonal is not  dominant  there is no guarantee  that
+        /// the   algorithm will    work.  Nevertheless  for Cubic
+        /// interpolation  at knots or interpolation at Scheonberg
+        /// points  the method   will work.  The  InversionProblem
+        /// will  report 0 if there   was no problem  else it will
+        /// give the index of the faulty pivot
         #[cxx_name = "BSplSLib_Interpolate_int2_array1ofreal4_array2ofpnt_array2ofreal_int"]
         fn BSplSLib_interpolate_int2_array1ofreal4_array2ofpnt_array2ofreal_int(
             UDegree: i32,
@@ -376,7 +707,22 @@ pub(crate) mod ffi {
             Weights: Pin<&mut TColStd_Array2OfReal>,
             InversionProblem: &mut i32,
         );
-        /// Performs the interpolation of the data points given in the  Poles array. The  ColLength CL and the Length of UParameters must be the  same. The length of VFlatKnots is VDegree + CL + 1. The  RowLength RL and the Length of VParameters must be the  same. The length of VFlatKnots is Degree + RL + 1. Warning: the method used  to do that  interpolation is gauss  elimination  WITHOUT pivoting.  Thus if  the diagonal is not  dominant  there is no guarantee  that the   algorithm will    work.  Nevertheless  for Cubic interpolation  at knots or interpolation at Scheonberg points  the method   will work.  The  InversionProblem will  report 0 if there   was no problem  else it will give the index of the faulty pivot
+        /// Performs the interpolation of the data points given in
+        /// the  Poles array.
+        /// The  ColLength CL and the Length of UParameters must be
+        /// the  same. The length of VFlatKnots is VDegree + CL + 1.
+        ///
+        /// The  RowLength RL and the Length of VParameters must be
+        /// the  same. The length of VFlatKnots is Degree + RL + 1.
+        ///
+        /// Warning: the method used  to do that  interpolation
+        /// is gauss  elimination  WITHOUT pivoting.  Thus if  the
+        /// diagonal is not  dominant  there is no guarantee  that
+        /// the   algorithm will    work.  Nevertheless  for Cubic
+        /// interpolation  at knots or interpolation at Scheonberg
+        /// points  the method   will work.  The  InversionProblem
+        /// will  report 0 if there   was no problem  else it will
+        /// give the index of the faulty pivot
         #[cxx_name = "BSplSLib_Interpolate_int2_array1ofreal4_array2ofpnt_int"]
         fn BSplSLib_interpolate_int2_array1ofreal4_array2ofpnt_int(
             UDegree: i32,

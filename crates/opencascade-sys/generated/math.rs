@@ -20,7 +20,13 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Matrix;
 impl Matrix {
-    /// Constructs a non-initialized  matrix of range [LowerRow..UpperRow, LowerCol..UpperCol] For the constructed matrix: -   LowerRow and UpperRow are the indexes of the lower and upper bounds of a row, and -   LowerCol and UpperCol are the indexes of the lower and upper bounds of a column.
+    /// Constructs a non-initialized  matrix of range [LowerRow..UpperRow,
+    /// LowerCol..UpperCol]
+    /// For the constructed matrix:
+    /// -   LowerRow and UpperRow are the indexes of the
+    /// lower and upper bounds of a row, and
+    /// -   LowerCol and UpperCol are the indexes of the
+    /// lower and upper bounds of a column.
     pub fn new_int4(
         LowerRow: i32,
         UpperRow: i32,
@@ -30,7 +36,9 @@ impl Matrix {
         ffi::Matrix_ctor_int4(LowerRow, UpperRow, LowerCol, UpperCol)
     }
 
-    /// constructs a non-initialized matrix of range [LowerRow..UpperRow, LowerCol..UpperCol] whose values are all initialized with the value InitialValue.
+    /// constructs a non-initialized matrix of range [LowerRow..UpperRow,
+    /// LowerCol..UpperCol]
+    /// whose values are all initialized with the value InitialValue.
     pub fn new_int4_real(
         LowerRow: i32,
         UpperRow: i32,
@@ -41,57 +49,86 @@ impl Matrix {
         ffi::Matrix_ctor_int4_real(LowerRow, UpperRow, LowerCol, UpperCol, InitialValue)
     }
 
-    /// constructs a matrix for copy in initialization. An exception is raised if the matrixes have not the same dimensions.
+    /// constructs a matrix for copy in initialization.
+    /// An exception is raised if the matrixes have not the same dimensions.
     pub fn new_matrix(Other: &ffi::Matrix) -> cxx::UniquePtr<Self> {
         ffi::Matrix_ctor_matrix(Other)
     }
 
-    /// multiplies all the elements of a matrix by the value <Right>.
+    /// multiplies all the elements of a matrix by the
+    /// value <Right>.
     pub fn multiplied_real(&self, Right: f64) -> cxx::UniquePtr<ffi::Matrix> {
         ffi::Matrix_multiplied_real(self, Right)
     }
 
-    /// Sets this matrix to the product of the transposed matrix TLeft, and the matrix Right. Example math_Matrix A (1, 3, 1, 3); math_Matrix B (1, 3, 1, 3); // A = ... , B = ... math_Matrix C (1, 3, 1, 3); C.Multiply(A, B); Exceptions Standard_DimensionError if matrices are of incompatible dimensions, i.e. if: -   the number of columns of matrix Left, or the number of rows of matrix TLeft is not equal to the number of rows of matrix Right, or -   the number of rows of matrix Left, or the number of columns of matrix TLeft is not equal to the number of rows of this matrix, or -   the number of columns of matrix Right is not equal to the number of columns of this matrix.
+    /// Sets this matrix to the product of the
+    /// transposed matrix TLeft, and the matrix Right.
+    /// Example
+    /// math_Matrix A (1, 3, 1, 3);
+    /// math_Matrix B (1, 3, 1, 3);
+    /// // A = ... , B = ...
+    /// math_Matrix C (1, 3, 1, 3);
+    /// C.Multiply(A, B);
+    /// Exceptions
+    /// Standard_DimensionError if matrices are of incompatible dimensions, i.e. if:
+    /// -   the number of columns of matrix Left, or the number of
+    /// rows of matrix TLeft is not equal to the number of rows
+    /// of matrix Right, or
+    /// -   the number of rows of matrix Left, or the number of
+    /// columns of matrix TLeft is not equal to the number of
+    /// rows of this matrix, or
+    /// -   the number of columns of matrix Right is not equal to
+    /// the number of columns of this matrix.
     pub fn t_multiplied(&self, Right: f64) -> cxx::UniquePtr<ffi::Matrix> {
         ffi::Matrix_t_multiplied(self, Right)
     }
 
-    /// divides all the elements of a matrix by the value <Right>. An exception is raised if <Right> = 0.
+    /// divides all the elements of a matrix by the value <Right>.
+    /// An exception is raised if <Right> = 0.
     pub fn divided(&self, Right: f64) -> cxx::UniquePtr<ffi::Matrix> {
         ffi::Matrix_divided(self, Right)
     }
 
-    /// adds the matrix <Right> to a matrix. An exception is raised if the dimensions are different.
+    /// adds the matrix <Right> to a matrix.
+    /// An exception is raised if the dimensions are different.
     pub fn added(&self, Right: &ffi::Matrix) -> cxx::UniquePtr<ffi::Matrix> {
         ffi::Matrix_added(self, Right)
     }
 
-    /// Returns the result of the subtraction of <Right> from <me>. An exception is raised if the dimensions are different.
+    /// Returns the result of the subtraction of <Right> from <me>.
+    /// An exception is raised if the dimensions are different.
     pub fn subtracted(&self, Right: &ffi::Matrix) -> cxx::UniquePtr<ffi::Matrix> {
         ffi::Matrix_subtracted(self, Right)
     }
 
-    /// Teturns the transposed of a matrix. An exception is raised if the matrix is not a square matrix.
+    /// Teturns the transposed of a matrix.
+    /// An exception is raised if the matrix is not a square matrix.
     pub fn transposed(&self) -> cxx::UniquePtr<ffi::Matrix> {
         ffi::Matrix_transposed(self)
     }
 
-    /// Returns the inverse of a matrix. Exception NotSquare is raised if the matrix is not square. Exception SingularMatrix is raised if the matrix is singular.
+    /// Returns the inverse of a matrix.
+    /// Exception NotSquare is raised if the matrix is not square.
+    /// Exception SingularMatrix is raised if the matrix is singular.
     pub fn inverse(&self) -> cxx::UniquePtr<ffi::Matrix> {
         ffi::Matrix_inverse(self)
     }
 
-    /// Returns the product of the transpose of a matrix with the matrix <Right>. An exception is raised if the dimensions are different.
+    /// Returns the product of the transpose of a matrix with
+    /// the matrix <Right>.
+    /// An exception is raised if the dimensions are different.
     pub fn t_multiply_matrix(&self, Right: &ffi::Matrix) -> cxx::UniquePtr<ffi::Matrix> {
         ffi::Matrix_t_multiply_matrix(self, Right)
     }
 
-    /// Returns the product of 2 matrices. An exception is raised if the dimensions are different.
+    /// Returns the product of 2 matrices.
+    /// An exception is raised if the dimensions are different.
     pub fn multiplied_matrix(&self, Right: &ffi::Matrix) -> cxx::UniquePtr<ffi::Matrix> {
         ffi::Matrix_multiplied_matrix(self, Right)
     }
 
-    /// Returns the opposite of a matrix. An exception is raised if the dimensions are different.
+    /// Returns the opposite of a matrix.
+    /// An exception is raised if the dimensions are different.
     pub fn opposite(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::Matrix> {
         ffi::Matrix_opposite(self)
     }
@@ -112,17 +149,20 @@ impl FunctionWithDerivative {
 }
 pub use ffi::DirectPolynomialRoots;
 impl DirectPolynomialRoots {
-    /// computes all the real roots of the polynomial Ax4 + Bx3 + Cx2 + Dx + E using a direct method.
+    /// computes all the real roots of the polynomial
+    /// Ax4 + Bx3 + Cx2 + Dx + E using a direct method.
     pub fn new_real5(A: f64, B: f64, C: f64, D: f64, E: f64) -> cxx::UniquePtr<Self> {
         ffi::DirectPolynomialRoots_ctor_real5(A, B, C, D, E)
     }
 
-    /// computes all the real roots of the polynomial Ax3 + Bx2 + Cx + D using a direct method.
+    /// computes all the real roots of the polynomial
+    /// Ax3 + Bx2 + Cx + D using a direct method.
     pub fn new_real4(A: f64, B: f64, C: f64, D: f64) -> cxx::UniquePtr<Self> {
         ffi::DirectPolynomialRoots_ctor_real4(A, B, C, D)
     }
 
-    /// computes all the real roots of the polynomial Ax2 + Bx + C using a direct method.
+    /// computes all the real roots of the polynomial
+    /// Ax2 + Bx + C using a direct method.
     pub fn new_real3(A: f64, B: f64, C: f64) -> cxx::UniquePtr<Self> {
         ffi::DirectPolynomialRoots_ctor_real3(A, B, C)
     }
@@ -134,19 +174,23 @@ impl DirectPolynomialRoots {
 }
 pub use ffi::BissecNewton;
 impl BissecNewton {
-    /// Constructor. @param theXTolerance - algorithm tolerance.
+    /// Constructor.
+    /// @param theXTolerance - algorithm tolerance.
     pub fn new_real(theXTolerance: f64) -> cxx::UniquePtr<Self> {
         ffi::BissecNewton_ctor_real(theXTolerance)
     }
 }
 pub use ffi::BrentMinimum;
 impl BrentMinimum {
-    /// This constructor should be used in a sub-class to initialize correctly all the fields of this class.
+    /// This constructor should be used in a sub-class to initialize
+    /// correctly all the fields of this class.
     pub fn new_real_int_real(TolX: f64, NbIterations: i32, ZEPS: f64) -> cxx::UniquePtr<Self> {
         ffi::BrentMinimum_ctor_real_int_real(TolX, NbIterations, ZEPS)
     }
 
-    /// This constructor should be used in a sub-class to initialize correctly all the fields of this class. It has to be used if F(Bx) is known.
+    /// This constructor should be used in a sub-class to initialize
+    /// correctly all the fields of this class.
+    /// It has to be used if F(Bx) is known.
     pub fn new_real2_int_real(
         TolX: f64,
         Fbx: f64,
@@ -165,14 +209,21 @@ impl EigenValuesSearcher {
         ffi::EigenValuesSearcher_ctor_array1ofreal2(Diagonal, Subdiagonal)
     }
 
-    /// Returns the Index_th eigen vector of matrix Index must be in [1, Dimension()]
+    /// Returns the Index_th eigen vector of matrix
+    /// Index must be in [1, Dimension()]
     pub fn eigen_vector(&self, Index: i32) -> cxx::UniquePtr<ffi::math_Vector> {
         ffi::EigenValuesSearcher_eigen_vector(self, Index)
     }
 }
 pub use ffi::GaussLeastSquare;
 impl GaussLeastSquare {
-    /// Given an input n X m matrix A with n >= m this constructor performs the LU decomposition with partial pivoting (interchange of rows) of the matrix AA = A.Transposed() * A; This LU decomposition is stored internally and may be used to do subsequent calculation. If the largest pivot found is less than MinPivot the matrix <A> is considered as singular.
+    /// Given an input n X m matrix A with n >= m this constructor
+    /// performs the LU decomposition with partial pivoting
+    /// (interchange of rows) of the matrix AA = A.Transposed() * A;
+    /// This LU decomposition is stored internally and may be used
+    /// to do subsequent calculation.
+    /// If the largest pivot found is less than MinPivot the matrix <A>
+    /// is considered as singular.
     pub fn new_matrix_real(A: &ffi::Matrix, MinPivot: f64) -> cxx::UniquePtr<Self> {
         ffi::GaussLeastSquare_ctor_matrix_real(A, MinPivot)
     }
@@ -188,12 +239,18 @@ pub(crate) mod ffi {
         /// ======================== math_Matrix ========================
         /// /// **Source:** `math_Matrix.hxx` - `math_Matrix`
         ///
-        #[doc = "This class implements the real matrix abstract data type. Matrixes can have an arbitrary range which must be defined at the declaration and cannot be changed after this declaration math_Matrix(-3,5,2,4); //a vector with range [-3..5, 2..4] Matrix values may be initialized and retrieved using indexes which must lie within the range of definition of the matrix. Matrix objects follow \"value semantics\", that is, they cannot be shared and are copied through assignment Matrices are copied through assignment: @code math_Matrix M2(1, 9, 1, 3); ... M2 = M1; M1(1) = 2.0;//the matrix M2 will not be modified. @endcode The exception RangeError is raised when trying to access outside the range of a matrix : @code M1(11, 1)=0.0// --> will raise RangeError. @endcode The exception DimensionError is raised when the dimensions of two matrices or vectors are not compatible. @code math_Matrix M3(1, 2, 1, 2); M3 = M1;   // will raise DimensionError M1.Add(M3) // --> will raise DimensionError. @endcode A Matrix can be constructed with a pointer to \"c array\". It allows to carry the bounds inside the matrix. Example : @code Standard_Real tab1[10][20]; Standard_Real tab2[200]; math_Matrix A (tab1[0][0], 1, 10, 1, 20); math_Matrix B (tab2[0],    1, 10, 1, 20); @endcode"]
+        #[doc = "This class implements the real matrix abstract data type.\nMatrixes can have an arbitrary range which must be defined\nat the declaration and cannot be changed after this declaration\nmath_Matrix(-3,5,2,4); //a vector with range [-3..5, 2..4]\nMatrix values may be initialized and\nretrieved using indexes which must lie within the range\nof definition of the matrix.\nMatrix objects follow \"value semantics\", that is, they\ncannot be shared and are copied through assignment\nMatrices are copied through assignment:\n@code\nmath_Matrix M2(1, 9, 1, 3);\n...\nM2 = M1;\nM1(1) = 2.0;//the matrix M2 will not be modified.\n@endcode\nThe exception RangeError is raised when trying to access\noutside the range of a matrix :\n@code\nM1(11, 1)=0.0// --> will raise RangeError.\n@endcode\n\nThe exception DimensionError is raised when the dimensions of\ntwo matrices or vectors are not compatible.\n@code\nmath_Matrix M3(1, 2, 1, 2);\nM3 = M1;   // will raise DimensionError\nM1.Add(M3) // --> will raise DimensionError.\n@endcode\nA Matrix can be constructed with a pointer to \"c array\".\nIt allows to carry the bounds inside the matrix.\nExample :\n@code\nStandard_Real tab1[10][20];\nStandard_Real tab2[200];\n\nmath_Matrix A (tab1[0][0], 1, 10, 1, 20);\nmath_Matrix B (tab2[0],    1, 10, 1, 20);\n@endcode"]
         #[cxx_name = "math_Matrix"]
         type Matrix;
         /// /// **Source:** `math_Matrix.hxx` - `math_Matrix::math_Matrix()`
         ///
-        /// Constructs a non-initialized  matrix of range [LowerRow..UpperRow, LowerCol..UpperCol] For the constructed matrix: -   LowerRow and UpperRow are the indexes of the lower and upper bounds of a row, and -   LowerCol and UpperCol are the indexes of the lower and upper bounds of a column.
+        /// Constructs a non-initialized  matrix of range [LowerRow..UpperRow,
+        /// LowerCol..UpperCol]
+        /// For the constructed matrix:
+        /// -   LowerRow and UpperRow are the indexes of the
+        /// lower and upper bounds of a row, and
+        /// -   LowerCol and UpperCol are the indexes of the
+        /// lower and upper bounds of a column.
         #[cxx_name = "math_Matrix_ctor_int4"]
         fn Matrix_ctor_int4(
             LowerRow: i32,
@@ -203,7 +260,9 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Matrix>;
         /// /// **Source:** `math_Matrix.hxx` - `math_Matrix::math_Matrix()`
         ///
-        /// constructs a non-initialized matrix of range [LowerRow..UpperRow, LowerCol..UpperCol] whose values are all initialized with the value InitialValue.
+        /// constructs a non-initialized matrix of range [LowerRow..UpperRow,
+        /// LowerCol..UpperCol]
+        /// whose values are all initialized with the value InitialValue.
         #[cxx_name = "math_Matrix_ctor_int4_real"]
         fn Matrix_ctor_int4_real(
             LowerRow: i32,
@@ -214,136 +273,261 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Matrix>;
         /// /// **Source:** `math_Matrix.hxx` - `math_Matrix::math_Matrix()`
         ///
-        /// constructs a matrix for copy in initialization. An exception is raised if the matrixes have not the same dimensions.
+        /// constructs a matrix for copy in initialization.
+        /// An exception is raised if the matrixes have not the same dimensions.
         #[cxx_name = "math_Matrix_ctor_matrix"]
         fn Matrix_ctor_matrix(Other: &Matrix) -> UniquePtr<Matrix>;
         /// Initialize all the elements of a matrix to InitialValue.
         #[cxx_name = "Init"]
         fn init(self: Pin<&mut Matrix>, InitialValue: f64);
-        /// Returns the number of rows  of this matrix. Note that for a matrix A you always have the following relations: - A.RowNumber() = A.UpperRow() -   A.LowerRow() + 1 - A.ColNumber() = A.UpperCol() -   A.LowerCol() + 1 - the length of a row of A is equal to the number of columns of A, - the length of a column of A is equal to the number of rows of A.returns the row range of a matrix.
+        /// Returns the number of rows  of this matrix.
+        /// Note that for a matrix A you always have the following relations:
+        /// - A.RowNumber() = A.UpperRow() -   A.LowerRow() + 1
+        /// - A.ColNumber() = A.UpperCol() -   A.LowerCol() + 1
+        /// - the length of a row of A is equal to the number of columns of A,
+        /// - the length of a column of A is equal to the number of
+        /// rows of A.returns the row range of a matrix.
         #[cxx_name = "RowNumber"]
         fn row_number(self: &Matrix) -> i32;
-        /// Returns the number of rows  of this matrix. Note that for a matrix A you always have the following relations: - A.RowNumber() = A.UpperRow() -   A.LowerRow() + 1 - A.ColNumber() = A.UpperCol() -   A.LowerCol() + 1 - the length of a row of A is equal to the number of columns of A, - the length of a column of A is equal to the number of rows of A.returns the row range of a matrix.
+        /// Returns the number of rows  of this matrix.
+        /// Note that for a matrix A you always have the following relations:
+        /// - A.RowNumber() = A.UpperRow() -   A.LowerRow() + 1
+        /// - A.ColNumber() = A.UpperCol() -   A.LowerCol() + 1
+        /// - the length of a row of A is equal to the number of columns of A,
+        /// - the length of a column of A is equal to the number of
+        /// rows of A.returns the row range of a matrix.
         #[cxx_name = "ColNumber"]
         fn col_number(self: &Matrix) -> i32;
-        /// Returns the value of the Lower index of the row range of a matrix.
+        /// Returns the value of the Lower index of the row
+        /// range of a matrix.
         #[cxx_name = "LowerRow"]
         fn lower_row(self: &Matrix) -> i32;
-        /// Returns the Upper index of the row range of a matrix.
+        /// Returns the Upper index of the row range
+        /// of a matrix.
         #[cxx_name = "UpperRow"]
         fn upper_row(self: &Matrix) -> i32;
-        /// Returns the value of the Lower index of the column range of a matrix.
+        /// Returns the value of the Lower index of the
+        /// column range of a matrix.
         #[cxx_name = "LowerCol"]
         fn lower_col(self: &Matrix) -> i32;
-        /// Returns the value of the upper index of the column range of a matrix.
+        /// Returns the value of the upper index of the
+        /// column range of a matrix.
         #[cxx_name = "UpperCol"]
         fn upper_col(self: &Matrix) -> i32;
-        /// Computes the determinant of a matrix. An exception is raised if the matrix is not a square matrix.
+        /// Computes the determinant of a matrix.
+        /// An exception is raised if the matrix is not a square matrix.
         #[cxx_name = "Determinant"]
         fn determinant(self: &Matrix) -> f64;
-        /// Transposes a given matrix. An exception is raised if the matrix is not a square matrix.
+        /// Transposes a given matrix.
+        /// An exception is raised if the matrix is not a square matrix.
         #[cxx_name = "Transpose"]
         fn transpose(self: Pin<&mut Matrix>);
-        /// Inverts a matrix using Gauss algorithm. Exception NotSquare is raised if the matrix is not square. Exception SingularMatrix is raised if the matrix is singular.
+        /// Inverts a matrix using Gauss algorithm.
+        /// Exception NotSquare is raised if the matrix is not square.
+        /// Exception SingularMatrix is raised if the matrix is singular.
         #[cxx_name = "Invert"]
         fn invert(self: Pin<&mut Matrix>);
-        /// Sets this matrix to the product of the matrix Left, and the matrix Right. Example math_Matrix A (1, 3, 1, 3); math_Matrix B (1, 3, 1, 3); // A = ... , B = ... math_Matrix C (1, 3, 1, 3); C.Multiply(A, B); Exceptions Standard_DimensionError if matrices are of incompatible dimensions, i.e. if: -   the number of columns of matrix Left, or the number of rows of matrix TLeft is not equal to the number of rows of matrix Right, or -   the number of rows of matrix Left, or the number of columns of matrix TLeft is not equal to the number of rows of this matrix, or -   the number of columns of matrix Right is not equal to the number of columns of this matrix.
+        /// Sets this matrix to the product of the matrix Left, and the matrix Right.
+        /// Example
+        /// math_Matrix A (1, 3, 1, 3);
+        /// math_Matrix B (1, 3, 1, 3);
+        /// // A = ... , B = ...
+        /// math_Matrix C (1, 3, 1, 3);
+        /// C.Multiply(A, B);
+        /// Exceptions
+        /// Standard_DimensionError if matrices are of incompatible dimensions, i.e. if:
+        /// -   the number of columns of matrix Left, or the number of
+        /// rows of matrix TLeft is not equal to the number of rows
+        /// of matrix Right, or
+        /// -   the number of rows of matrix Left, or the number of
+        /// columns of matrix TLeft is not equal to the number of
+        /// rows of this matrix, or
+        /// -   the number of columns of matrix Right is not equal to
+        /// the number of columns of this matrix.
         #[cxx_name = "Multiply"]
         fn multiply_real(self: Pin<&mut Matrix>, Right: f64);
-        /// divides all the elements of a matrix by the value <Right>. An exception is raised if <Right> = 0.
+        /// divides all the elements of a matrix by the value <Right>.
+        /// An exception is raised if <Right> = 0.
         #[cxx_name = "Divide"]
         fn divide(self: Pin<&mut Matrix>, Right: f64);
-        /// adds the matrix <Right> to a matrix. An exception is raised if the dimensions are different. Warning In order to save time when copying matrices, it is preferable to use operator += or the function Add whenever possible.
+        /// adds the matrix <Right> to a matrix.
+        /// An exception is raised if the dimensions are different.
+        /// Warning
+        /// In order to save time when copying matrices, it is
+        /// preferable to use operator += or the function Add
+        /// whenever possible.
         #[cxx_name = "Add"]
         fn add_matrix(self: Pin<&mut Matrix>, Right: &Matrix);
-        /// sets a  matrix to the addition of <Left> and <Right>. An exception is raised if the dimensions are different.
+        /// sets a  matrix to the addition of <Left> and <Right>.
+        /// An exception is raised if the dimensions are different.
         #[cxx_name = "Add"]
         fn add_matrix2(self: Pin<&mut Matrix>, Left: &Matrix, Right: &Matrix);
-        /// Subtracts the matrix <Right> from <me>. An exception is raised if the dimensions are different. Warning In order to avoid time-consuming copying of matrices, it is preferable to use operator -= or the function Subtract whenever possible.
+        /// Subtracts the matrix <Right> from <me>.
+        /// An exception is raised if the dimensions are different.
+        /// Warning
+        /// In order to avoid time-consuming copying of matrices, it
+        /// is preferable to use operator -= or the function
+        /// Subtract whenever possible.
         #[cxx_name = "Subtract"]
         fn subtract_matrix(self: Pin<&mut Matrix>, Right: &Matrix);
-        /// Sets the values of this matrix, -   from index I1 to index I2 on the row dimension, and -   from index J1 to index J2 on the column dimension, to those of matrix M. Exceptions Standard_DimensionError if: -   I1 is less than the index of the lower row bound of this matrix, or -   I2 is greater than the index of the upper row bound of this matrix, or -   J1 is less than the index of the lower column bound of this matrix, or -   J2 is greater than the index of the upper column bound of this matrix, or -   I2 - I1 + 1 is not equal to the number of rows of matrix M, or -   J2 - J1 + 1 is not equal to the number of columns of matrix M.
+        /// Sets the values of this matrix,
+        /// -   from index I1 to index I2 on the row dimension, and
+        /// -   from index J1 to index J2 on the column dimension,
+        /// to those of matrix M.
+        /// Exceptions
+        /// Standard_DimensionError if:
+        /// -   I1 is less than the index of the lower row bound of this matrix, or
+        /// -   I2 is greater than the index of the upper row bound of this matrix, or
+        /// -   J1 is less than the index of the lower column bound of this matrix, or
+        /// -   J2 is greater than the index of the upper column bound of this matrix, or
+        /// -   I2 - I1 + 1 is not equal to the number of rows of matrix M, or
+        /// -   J2 - J1 + 1 is not equal to the number of columns of matrix M.
         #[cxx_name = "Set"]
         fn set(self: Pin<&mut Matrix>, I1: i32, I2: i32, J1: i32, J2: i32, M: &Matrix);
-        /// Sets the diagonal of a matrix to the value <Value>. An exception is raised if the matrix is not square.
+        /// Sets the diagonal of a matrix to the value <Value>.
+        /// An exception is raised if the matrix is not square.
         #[cxx_name = "SetDiag"]
         fn set_diag(self: Pin<&mut Matrix>, Value: f64);
-        /// Swaps the rows of index Row1 and Row2. An exception is raised if <Row1> or <Row2> is out of range.
+        /// Swaps the rows of index Row1 and Row2.
+        /// An exception is raised if <Row1> or <Row2> is out of range.
         #[cxx_name = "SwapRow"]
         fn swap_row(self: Pin<&mut Matrix>, Row1: i32, Row2: i32);
-        /// Swaps the columns of index <Col1> and <Col2>. An exception is raised if <Col1> or <Col2> is out of range.
+        /// Swaps the columns of index <Col1> and <Col2>.
+        /// An exception is raised if <Col1> or <Col2> is out of range.
         #[cxx_name = "SwapCol"]
         fn swap_col(self: Pin<&mut Matrix>, Col1: i32, Col2: i32);
-        /// Computes a matrix as the product of 2 matrixes. An exception is raised if the dimensions are different.
+        /// Computes a matrix as the product of 2 matrixes.
+        /// An exception is raised if the dimensions are different.
         #[cxx_name = "Multiply"]
         fn multiply_matrix2(self: Pin<&mut Matrix>, Left: &Matrix, Right: &Matrix);
-        /// Computes a matrix to the product of the transpose of the matrix <TLeft> with the matrix <Right>. An exception is raised if the dimensions are different.
+        /// Computes a matrix to the product of the transpose of
+        /// the matrix <TLeft> with the matrix <Right>.
+        /// An exception is raised if the dimensions are different.
         #[cxx_name = "TMultiply"]
         fn t_multiply_matrix2(self: Pin<&mut Matrix>, TLeft: &Matrix, Right: &Matrix);
-        /// Sets a matrix to the Subtraction of the matrix <Right> from the matrix <Left>. An exception is raised if the dimensions are different.
+        /// Sets a matrix to the Subtraction of the matrix <Right>
+        /// from the matrix <Left>.
+        /// An exception is raised if the dimensions are different.
         #[cxx_name = "Subtract"]
         fn subtract_matrix2(self: Pin<&mut Matrix>, Left: &Matrix, Right: &Matrix);
-        /// Matrixes are copied through assignment. An exception is raised if the dimensions are different.
+        /// Matrixes are copied through assignment.
+        /// An exception is raised if the dimensions are different.
         #[cxx_name = "Initialized"]
         fn initialized(self: Pin<&mut Matrix>, Other: &Matrix) -> Pin<&mut Matrix>;
-        /// Returns the product of 2 matrices. An exception is raised if the dimensions are different.
+        /// Returns the product of 2 matrices.
+        /// An exception is raised if the dimensions are different.
         #[cxx_name = "Multiply"]
         fn multiply_matrix(self: Pin<&mut Matrix>, Right: &Matrix);
-        /// multiplies all the elements of a matrix by the value <Right>.
+        /// multiplies all the elements of a matrix by the
+        /// value <Right>.
         #[cxx_name = "math_Matrix_Multiplied"]
         fn Matrix_multiplied_real(self_: &Matrix, Right: f64) -> UniquePtr<Matrix>;
-        /// Sets this matrix to the product of the transposed matrix TLeft, and the matrix Right. Example math_Matrix A (1, 3, 1, 3); math_Matrix B (1, 3, 1, 3); // A = ... , B = ... math_Matrix C (1, 3, 1, 3); C.Multiply(A, B); Exceptions Standard_DimensionError if matrices are of incompatible dimensions, i.e. if: -   the number of columns of matrix Left, or the number of rows of matrix TLeft is not equal to the number of rows of matrix Right, or -   the number of rows of matrix Left, or the number of columns of matrix TLeft is not equal to the number of rows of this matrix, or -   the number of columns of matrix Right is not equal to the number of columns of this matrix.
+        /// Sets this matrix to the product of the
+        /// transposed matrix TLeft, and the matrix Right.
+        /// Example
+        /// math_Matrix A (1, 3, 1, 3);
+        /// math_Matrix B (1, 3, 1, 3);
+        /// // A = ... , B = ...
+        /// math_Matrix C (1, 3, 1, 3);
+        /// C.Multiply(A, B);
+        /// Exceptions
+        /// Standard_DimensionError if matrices are of incompatible dimensions, i.e. if:
+        /// -   the number of columns of matrix Left, or the number of
+        /// rows of matrix TLeft is not equal to the number of rows
+        /// of matrix Right, or
+        /// -   the number of rows of matrix Left, or the number of
+        /// columns of matrix TLeft is not equal to the number of
+        /// rows of this matrix, or
+        /// -   the number of columns of matrix Right is not equal to
+        /// the number of columns of this matrix.
         #[cxx_name = "math_Matrix_TMultiplied"]
         fn Matrix_t_multiplied(self_: &Matrix, Right: f64) -> UniquePtr<Matrix>;
-        /// divides all the elements of a matrix by the value <Right>. An exception is raised if <Right> = 0.
+        /// divides all the elements of a matrix by the value <Right>.
+        /// An exception is raised if <Right> = 0.
         #[cxx_name = "math_Matrix_Divided"]
         fn Matrix_divided(self_: &Matrix, Right: f64) -> UniquePtr<Matrix>;
-        /// adds the matrix <Right> to a matrix. An exception is raised if the dimensions are different.
+        /// adds the matrix <Right> to a matrix.
+        /// An exception is raised if the dimensions are different.
         #[cxx_name = "math_Matrix_Added"]
         fn Matrix_added(self_: &Matrix, Right: &Matrix) -> UniquePtr<Matrix>;
-        /// Returns the result of the subtraction of <Right> from <me>. An exception is raised if the dimensions are different.
+        /// Returns the result of the subtraction of <Right> from <me>.
+        /// An exception is raised if the dimensions are different.
         #[cxx_name = "math_Matrix_Subtracted"]
         fn Matrix_subtracted(self_: &Matrix, Right: &Matrix) -> UniquePtr<Matrix>;
-        /// Teturns the transposed of a matrix. An exception is raised if the matrix is not a square matrix.
+        /// Teturns the transposed of a matrix.
+        /// An exception is raised if the matrix is not a square matrix.
         #[cxx_name = "math_Matrix_Transposed"]
         fn Matrix_transposed(self_: &Matrix) -> UniquePtr<Matrix>;
-        /// Returns the inverse of a matrix. Exception NotSquare is raised if the matrix is not square. Exception SingularMatrix is raised if the matrix is singular.
+        /// Returns the inverse of a matrix.
+        /// Exception NotSquare is raised if the matrix is not square.
+        /// Exception SingularMatrix is raised if the matrix is singular.
         #[cxx_name = "math_Matrix_Inverse"]
         fn Matrix_inverse(self_: &Matrix) -> UniquePtr<Matrix>;
-        /// Returns the product of the transpose of a matrix with the matrix <Right>. An exception is raised if the dimensions are different.
+        /// Returns the product of the transpose of a matrix with
+        /// the matrix <Right>.
+        /// An exception is raised if the dimensions are different.
         #[cxx_name = "math_Matrix_TMultiply"]
         fn Matrix_t_multiply_matrix(self_: &Matrix, Right: &Matrix) -> UniquePtr<Matrix>;
-        /// Returns the product of 2 matrices. An exception is raised if the dimensions are different.
+        /// Returns the product of 2 matrices.
+        /// An exception is raised if the dimensions are different.
         #[cxx_name = "math_Matrix_Multiplied"]
         fn Matrix_multiplied_matrix(self_: &Matrix, Right: &Matrix) -> UniquePtr<Matrix>;
-        /// Returns the opposite of a matrix. An exception is raised if the dimensions are different.
+        /// Returns the opposite of a matrix.
+        /// An exception is raised if the dimensions are different.
         #[cxx_name = "math_Matrix_Opposite"]
         fn Matrix_opposite(self_: Pin<&mut Matrix>) -> UniquePtr<Matrix>;
         /// ======================== math_Function ========================
         /// /// **Source:** `math_Function.hxx` - `math_Function`
         ///
-        /// This abstract class describes the virtual functions associated with a Function of a single variable.
+        /// This abstract class describes the virtual functions
+        /// associated with a Function of a single variable.
         #[cxx_name = "math_Function"]
         type Function;
-        /// Computes the value of the function <F> for a given value of variable <X>. returns True if the computation was done successfully, False otherwise.
+        /// Computes the value of the function <F> for a given value of
+        /// variable <X>.
+        /// returns True if the computation was done successfully,
+        /// False otherwise.
         #[cxx_name = "Value"]
         fn value(self: Pin<&mut Function>, X: f64, F: &mut f64) -> bool;
-        /// returns the state of the function corresponding to the latest call of any methods associated with the function. This function is called by each of the algorithms described later which defined the function Integer Algorithm::StateNumber(). The algorithm has the responsibility to call this function when it has found a solution (i.e. a root or a minimum) and has to maintain the association between the solution found and this StateNumber. Byu default, this method returns 0 (which means for the algorithm: no state has been saved). It is the responsibility of the programmer to decide if he needs to save the current state of the function and to return an Integer that allows retrieval of the state.
+        /// returns the state of the function corresponding to the
+        /// latest call of any methods associated with the function.
+        /// This function is called by each of the algorithms
+        /// described later which defined the function Integer
+        /// Algorithm::StateNumber(). The algorithm has the
+        /// responsibility to call this function when it has found
+        /// a solution (i.e. a root or a minimum) and has to maintain
+        /// the association between the solution found and this
+        /// StateNumber.
+        /// Byu default, this method returns 0 (which means for the
+        /// algorithm: no state has been saved). It is the
+        /// responsibility of the programmer to decide if he needs
+        /// to save the current state of the function and to return
+        /// an Integer that allows retrieval of the state.
         #[cxx_name = "GetStateNumber"]
         fn get_state_number(self: Pin<&mut Function>) -> i32;
         /// ======================== math_FunctionWithDerivative ========================
         /// /// **Source:** `math_FunctionWithDerivative.hxx` - `math_FunctionWithDerivative`
         ///
-        /// This abstract class describes the virtual functions associated with a function of a single variable for which the first derivative is available.
+        /// This abstract class describes the virtual functions associated with
+        /// a function of a single variable for which the first derivative is
+        /// available.
         #[cxx_name = "math_FunctionWithDerivative"]
         type FunctionWithDerivative;
-        /// Computes the value <F>of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
+        /// Computes the value <F>of the function for the variable <X>.
+        /// Returns True if the calculation were successfully done,
+        /// False otherwise.
         #[cxx_name = "Value"]
         fn value(self: Pin<&mut FunctionWithDerivative>, X: f64, F: &mut f64) -> bool;
-        /// Computes the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
+        /// Computes the derivative <D> of the function
+        /// for the variable <X>.
+        /// Returns True if the calculation were successfully done,
+        /// False otherwise.
         #[cxx_name = "Derivative"]
         fn derivative(self: Pin<&mut FunctionWithDerivative>, X: f64, D: &mut f64) -> bool;
-        /// Computes the value <F> and the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
+        /// Computes the value <F> and the derivative <D> of the
+        /// function for the variable <X>.
+        /// Returns True if the calculation were successfully done,
+        /// False otherwise.
         #[cxx_name = "Values"]
         fn values(self: Pin<&mut FunctionWithDerivative>, X: f64, F: &mut f64, D: &mut f64)
             -> bool;
@@ -358,12 +542,15 @@ pub(crate) mod ffi {
         /// ======================== math_DirectPolynomialRoots ========================
         /// /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots`
         ///
-        /// This class implements the calculation of all the real roots of a real polynomial of degree <= 4 using a direct method. Once found, the roots are polished using the Newton method.
+        /// This class implements the calculation of all the real roots of a real
+        /// polynomial of degree <= 4 using a direct method. Once found,
+        /// the roots are polished using the Newton method.
         #[cxx_name = "math_DirectPolynomialRoots"]
         type DirectPolynomialRoots;
         /// /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
         ///
-        /// computes all the real roots of the polynomial Ax4 + Bx3 + Cx2 + Dx + E using a direct method.
+        /// computes all the real roots of the polynomial
+        /// Ax4 + Bx3 + Cx2 + Dx + E using a direct method.
         #[cxx_name = "math_DirectPolynomialRoots_ctor_real5"]
         fn DirectPolynomialRoots_ctor_real5(
             A: f64,
@@ -374,7 +561,8 @@ pub(crate) mod ffi {
         ) -> UniquePtr<DirectPolynomialRoots>;
         /// /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
         ///
-        /// computes all the real roots of the polynomial Ax3 + Bx2 + Cx + D using a direct method.
+        /// computes all the real roots of the polynomial
+        /// Ax3 + Bx2 + Cx + D using a direct method.
         #[cxx_name = "math_DirectPolynomialRoots_ctor_real4"]
         fn DirectPolynomialRoots_ctor_real4(
             A: f64,
@@ -384,7 +572,8 @@ pub(crate) mod ffi {
         ) -> UniquePtr<DirectPolynomialRoots>;
         /// /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
         ///
-        /// computes all the real roots of the polynomial Ax2 + Bx + C using a direct method.
+        /// computes all the real roots of the polynomial
+        /// Ax2 + Bx + C using a direct method.
         #[cxx_name = "math_DirectPolynomialRoots_ctor_real3"]
         fn DirectPolynomialRoots_ctor_real3(
             A: f64,
@@ -402,24 +591,37 @@ pub(crate) mod ffi {
         /// Returns true if there is an infinity of roots, otherwise returns false.
         #[cxx_name = "InfiniteRoots"]
         fn infinite_roots(self: &DirectPolynomialRoots) -> bool;
-        /// returns the number of solutions. An exception is raised if there are an infinity of roots.
+        /// returns the number of solutions.
+        /// An exception is raised if there are an infinity of roots.
         #[cxx_name = "NbSolutions"]
         fn nb_solutions(self: &DirectPolynomialRoots) -> i32;
-        /// returns the value of the Nieme root. An exception is raised if there are an infinity of roots. Exception RangeError is raised if Nieme is < 1 or Nieme > NbSolutions.
+        /// returns the value of the Nieme root.
+        /// An exception is raised if there are an infinity of roots.
+        /// Exception RangeError is raised if Nieme is < 1
+        /// or Nieme > NbSolutions.
         #[cxx_name = "Value"]
         fn value(self: &DirectPolynomialRoots, Nieme: i32) -> f64;
         /// ======================== math_BissecNewton ========================
         /// /// **Source:** `math_BissecNewton.hxx` - `math_BissecNewton`
         ///
-        /// This class implements a combination of Newton-Raphson and bissection methods to find the root of the function between two bounds. Knowledge of the derivative is required.
+        /// This class implements a combination of Newton-Raphson and bissection
+        /// methods to find the root of the function between two bounds.
+        /// Knowledge of the derivative is required.
         #[cxx_name = "math_BissecNewton"]
         type BissecNewton;
         /// /// **Source:** `math_BissecNewton.hxx` - `math_BissecNewton::math_BissecNewton()`
         ///
-        /// Constructor. @param theXTolerance - algorithm tolerance.
+        /// Constructor.
+        /// @param theXTolerance - algorithm tolerance.
         #[cxx_name = "math_BissecNewton_ctor_real"]
         fn BissecNewton_ctor_real(theXTolerance: f64) -> UniquePtr<BissecNewton>;
-        /// A combination of Newton-Raphson and bissection methods is done to find the root of the function F between the bounds Bound1 and Bound2 on the function F. The tolerance required on the root is given by TolX. The solution is found when: abs(Xi - Xi-1) <= TolX and F(Xi) * F(Xi-1) <= 0 The maximum number of iterations allowed is given by NbIterations.
+        /// A combination of Newton-Raphson and bissection methods is done to find
+        /// the root of the function F between the bounds Bound1 and Bound2
+        /// on the function F.
+        /// The tolerance required on the root is given by TolX.
+        /// The solution is found when:
+        /// abs(Xi - Xi-1) <= TolX and F(Xi) * F(Xi-1) <= 0
+        /// The maximum number of iterations allowed is given by NbIterations.
         #[cxx_name = "Perform"]
         fn perform(
             self: Pin<&mut BissecNewton>,
@@ -428,7 +630,10 @@ pub(crate) mod ffi {
             Bound2: f64,
             NbIterations: i32,
         );
-        /// This method is called at the end of each iteration to check if the solution has been found. It can be redefined in a sub-class to implement a specific test to stop the iterations.
+        /// This method is called at the end of each iteration to check if the
+        /// solution has been found.
+        /// It can be redefined in a sub-class to implement a specific test to
+        /// stop the iterations.
         #[cxx_name = "IsSolutionReached"]
         fn is_solution_reached(
             self: Pin<&mut BissecNewton>,
@@ -437,24 +642,30 @@ pub(crate) mod ffi {
         /// Tests is the root has been successfully found.
         #[cxx_name = "IsDone"]
         fn is_done(self: &BissecNewton) -> bool;
-        /// returns the value of the root. Exception NotDone is raised if the minimum was not found.
+        /// returns the value of the root.
+        /// Exception NotDone is raised if the minimum was not found.
         #[cxx_name = "Root"]
         fn root(self: &BissecNewton) -> f64;
-        /// returns the value of the derivative at the root. Exception NotDone is raised if the minimum was not found.
+        /// returns the value of the derivative at the root.
+        /// Exception NotDone is raised if the minimum was not found.
         #[cxx_name = "Derivative"]
         fn derivative(self: &BissecNewton) -> f64;
-        /// returns the value of the function at the root. Exception NotDone is raised if the minimum was not found.
+        /// returns the value of the function at the root.
+        /// Exception NotDone is raised if the minimum was not found.
         #[cxx_name = "Value"]
         fn value(self: &BissecNewton) -> f64;
         /// ======================== math_BrentMinimum ========================
         /// /// **Source:** `math_BrentMinimum.hxx` - `math_BrentMinimum`
         ///
-        /// This class implements the Brent's method to find the minimum of a function of a single variable. No knowledge of the derivative is required.
+        /// This class implements the Brent's method to find the minimum of
+        /// a function of a single variable.
+        /// No knowledge of the derivative is required.
         #[cxx_name = "math_BrentMinimum"]
         type BrentMinimum;
         /// /// **Source:** `math_BrentMinimum.hxx` - `math_BrentMinimum::math_BrentMinimum()`
         ///
-        /// This constructor should be used in a sub-class to initialize correctly all the fields of this class.
+        /// This constructor should be used in a sub-class to initialize
+        /// correctly all the fields of this class.
         #[cxx_name = "math_BrentMinimum_ctor_real_int_real"]
         fn BrentMinimum_ctor_real_int_real(
             TolX: f64,
@@ -463,7 +674,9 @@ pub(crate) mod ffi {
         ) -> UniquePtr<BrentMinimum>;
         /// /// **Source:** `math_BrentMinimum.hxx` - `math_BrentMinimum::math_BrentMinimum()`
         ///
-        /// This constructor should be used in a sub-class to initialize correctly all the fields of this class. It has to be used if F(Bx) is known.
+        /// This constructor should be used in a sub-class to initialize
+        /// correctly all the fields of this class.
+        /// It has to be used if F(Bx) is known.
         #[cxx_name = "math_BrentMinimum_ctor_real2_int_real"]
         fn BrentMinimum_ctor_real2_int_real(
             TolX: f64,
@@ -471,10 +684,16 @@ pub(crate) mod ffi {
             NbIterations: i32,
             ZEPS: f64,
         ) -> UniquePtr<BrentMinimum>;
-        /// Brent minimization is performed on function F from a given bracketing triplet of abscissas Ax, Bx, Cx (such that Bx is between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx)) The solution is found when: abs(Xi - Xi-1) <= TolX * abs(Xi) + ZEPS;
+        /// Brent minimization is performed on function F from a given
+        /// bracketing triplet of abscissas Ax, Bx, Cx (such that Bx is
+        /// between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx))
+        /// The solution is found when: abs(Xi - Xi-1) <= TolX * abs(Xi) + ZEPS;
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut BrentMinimum>, F: Pin<&mut Function>, Ax: f64, Bx: f64, Cx: f64);
-        /// This method is called at the end of each iteration to check if the solution is found. It can be redefined in a sub-class to implement a specific test to stop the iterations.
+        /// This method is called at the end of each iteration to check if the
+        /// solution is found.
+        /// It can be redefined in a sub-class to implement a specific test to
+        /// stop the iterations.
         #[cxx_name = "IsSolutionReached"]
         fn is_solution_reached(
             self: Pin<&mut BrentMinimum>,
@@ -483,19 +702,24 @@ pub(crate) mod ffi {
         /// Returns true if the computations are successful, otherwise returns false.
         #[cxx_name = "IsDone"]
         fn is_done(self: &BrentMinimum) -> bool;
-        /// returns the location value of the minimum. Exception NotDone is raised if the minimum was not found.
+        /// returns the location value of the minimum.
+        /// Exception NotDone is raised if the minimum was not found.
         #[cxx_name = "Location"]
         fn location(self: &BrentMinimum) -> f64;
-        /// returns the value of the minimum. Exception NotDone is raised if the minimum was not found.
+        /// returns the value of the minimum.
+        /// Exception NotDone is raised if the minimum was not found.
         #[cxx_name = "Minimum"]
         fn minimum(self: &BrentMinimum) -> f64;
-        /// returns the number of iterations really done during the computation of the minimum. Exception NotDone is raised if the minimum was not found.
+        /// returns the number of iterations really done during the
+        /// computation of the minimum.
+        /// Exception NotDone is raised if the minimum was not found.
         #[cxx_name = "NbIterations"]
         fn nb_iterations(self: &BrentMinimum) -> i32;
         /// ======================== math_EigenValuesSearcher ========================
         /// /// **Source:** `math_EigenValuesSearcher.hxx` - `math_EigenValuesSearcher`
         ///
-        /// This class finds eigen values and vectors of real symmetric tridiagonal matrix
+        /// This class finds eigen values and vectors of
+        /// real symmetric tridiagonal matrix
         #[cxx_name = "math_EigenValuesSearcher"]
         type EigenValuesSearcher;
         /// /// **Source:** `math_EigenValuesSearcher.hxx` - `math_EigenValuesSearcher::math_EigenValuesSearcher()`
@@ -504,16 +728,19 @@ pub(crate) mod ffi {
             Diagonal: &TColStd_Array1OfReal,
             Subdiagonal: &TColStd_Array1OfReal,
         ) -> UniquePtr<EigenValuesSearcher>;
-        /// Returns Standard_True if computation is performed successfully.
+        /// Returns Standard_True if computation is performed
+        /// successfully.
         #[cxx_name = "IsDone"]
         fn is_done(self: &EigenValuesSearcher) -> bool;
         /// Returns the dimension of matrix
         #[cxx_name = "Dimension"]
         fn dimension(self: &EigenValuesSearcher) -> i32;
-        /// Returns the Index_th eigen value of matrix Index must be in [1, Dimension()]
+        /// Returns the Index_th eigen value of matrix
+        /// Index must be in [1, Dimension()]
         #[cxx_name = "EigenValue"]
         fn eigen_value(self: &EigenValuesSearcher, Index: i32) -> f64;
-        /// Returns the Index_th eigen vector of matrix Index must be in [1, Dimension()]
+        /// Returns the Index_th eigen vector of matrix
+        /// Index must be in [1, Dimension()]
         #[cxx_name = "math_EigenValuesSearcher_EigenVector"]
         fn EigenValuesSearcher_eigen_vector(
             self_: &EigenValuesSearcher,
@@ -522,12 +749,22 @@ pub(crate) mod ffi {
         /// ======================== math_GaussLeastSquare ========================
         /// /// **Source:** `math_GaussLeastSquare.hxx` - `math_GaussLeastSquare`
         ///
-        /// This class implements the least square solution of a set of n linear equations of m unknowns (n >= m) using the gauss LU decomposition algorithm. This algorithm is more likely subject to numerical instability than math_SVD.
+        /// This class implements the least square solution of a set of
+        /// n linear equations of m unknowns (n >= m) using the gauss LU
+        /// decomposition algorithm.
+        /// This algorithm is more likely subject to numerical instability
+        /// than math_SVD.
         #[cxx_name = "math_GaussLeastSquare"]
         type GaussLeastSquare;
         /// /// **Source:** `math_GaussLeastSquare.hxx` - `math_GaussLeastSquare::math_GaussLeastSquare()`
         ///
-        /// Given an input n X m matrix A with n >= m this constructor performs the LU decomposition with partial pivoting (interchange of rows) of the matrix AA = A.Transposed() * A; This LU decomposition is stored internally and may be used to do subsequent calculation. If the largest pivot found is less than MinPivot the matrix <A> is considered as singular.
+        /// Given an input n X m matrix A with n >= m this constructor
+        /// performs the LU decomposition with partial pivoting
+        /// (interchange of rows) of the matrix AA = A.Transposed() * A;
+        /// This LU decomposition is stored internally and may be used
+        /// to do subsequent calculation.
+        /// If the largest pivot found is less than MinPivot the matrix <A>
+        /// is considered as singular.
         #[cxx_name = "math_GaussLeastSquare_ctor_matrix_real"]
         fn GaussLeastSquare_ctor_matrix_real(
             A: &Matrix,
@@ -536,7 +773,14 @@ pub(crate) mod ffi {
         /// Returns true if the computations are successful, otherwise returns false.e
         #[cxx_name = "IsDone"]
         fn is_done(self: &GaussLeastSquare) -> bool;
-        /// Given the input Vector <B> this routine solves the set of linear equations A . X = B. Exception NotDone is raised if the decomposition of A was not done successfully. Exception DimensionError is raised if the range of B Inv is not equal to the rowrange of A. Exception DimensionError is raised if the range of X Inv is not equal to the colrange of A.
+        /// Given the input Vector <B> this routine solves the set
+        /// of linear equations A . X = B.
+        /// Exception NotDone is raised if the decomposition of A was
+        /// not done successfully.
+        /// Exception DimensionError is raised if the range of B Inv is
+        /// not equal to the rowrange of A.
+        /// Exception DimensionError is raised if the range of X Inv is
+        /// not equal to the colrange of A.
         #[cxx_name = "Solve"]
         fn solve(self: &GaussLeastSquare, B: &math_Vector, X: Pin<&mut math_Vector>);
 

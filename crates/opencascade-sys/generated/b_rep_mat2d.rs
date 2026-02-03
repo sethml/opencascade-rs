@@ -22,7 +22,9 @@ impl BisectingLocus {
         ffi::BisectingLocus_graph(self)
     }
 
-    /// Returns the BasicElts located at the position <Index> on the contour designed by <IndLine>. Remark: the BasicElts on a contour are sorted.
+    /// Returns the BasicElts located at the position
+    /// <Index> on the contour designed by <IndLine>.
+    /// Remark: the BasicElts on a contour are sorted.
     pub fn basic_elt(&self, IndLine: i32, Index: i32) -> cxx::UniquePtr<ffi::HandleMATBasicElt> {
         ffi::BisectingLocus_basic_elt(self, IndLine, Index)
     }
@@ -35,12 +37,16 @@ impl BisectingLocus {
         ffi::BisectingLocus_geom_elt_handlebasicelt(self, aBasicElt)
     }
 
-    /// Returns the geometry of  type <gp> linked to the <Node>.
+    /// Returns the geometry of  type <gp> linked to
+    /// the <Node>.
     pub fn geom_elt_handlenode(&self, aNode: &ffi::HandleMATNode) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
         ffi::BisectingLocus_geom_elt_handlenode(self, aNode)
     }
 
-    /// Returns the  geometry of type <Bissec> linked   to the arc <ARC>. <Reverse> is False when the FirstNode of <anArc> correspond to the first point of geometry.
+    /// Returns the  geometry of type <Bissec>
+    /// linked   to the arc <ARC>.
+    /// <Reverse> is False when the FirstNode of <anArc>
+    /// correspond to the first point of geometry.
     pub fn geom_bis(
         &self,
         anArc: &ffi::HandleMATArc,
@@ -55,7 +61,9 @@ impl LinkTopoBilo {
         ffi::LinkTopoBilo_ctor()
     }
 
-    /// Constructs the links Between S and BiLo. raises if <S> is not a face.
+    /// Constructs the links Between S and BiLo.
+    ///
+    /// raises if <S> is not a face.
     pub fn new_explorer_bisectinglocus(
         Explo: &ffi::BRepMAT2d_Explorer,
         BiLo: &ffi::BisectingLocus,
@@ -87,7 +95,40 @@ pub(crate) mod ffi {
         /// ======================== BRepMAT2d_BisectingLocus ========================
         /// /// **Source:** `BRepMAT2d_BisectingLocus.hxx` - `BRepMAT2d_BisectingLocus`
         ///
-        /// BisectingLocus generates and contains the Bisecting_Locus of a set of lines from Geom2d, defined by <ExploSet>. If the set of lines contains closed lines: ------------------------------------------ These lines cut the plane  in areas. One map can  be  computed for each area. Bisecting locus computes a map in an area. The area is defined by a side (MAT_Left,MAT_Right) on one of the closed lines. If the set of lines contains only open lines: -------------------------------------------- the map recovers all the plane. Warning: Assume the orientation of the   closed  lines  are compatible. Assume the explo contains only lines located in the area where the bisecting locus will be computed. Assume a line don't cross itself or an other line. Remark: the  curves  coming   from   the  explorer can   be decomposed in different parts. It  the  case for the curves other than circles or lines. The map of bisecting  locus is described by a graph. - The  BasicsElements  correspond  to elements on the figure described by the Explorer from BRepMAT2d. - The Arcs correspond to the bisectors. - The Nodes are the extremities of the arcs.
+        /// BisectingLocus generates and contains the Bisecting_Locus
+        /// of a set of lines from Geom2d, defined by <ExploSet>.
+        ///
+        /// If the set of lines contains closed lines:
+        /// ------------------------------------------
+        /// These lines cut the plane  in areas.
+        /// One map can  be  computed for each area.
+        ///
+        /// Bisecting locus computes a map in an area.
+        /// The area is defined by a side (MAT_Left,MAT_Right)
+        /// on one of the closed lines.
+        ///
+        /// If the set of lines contains only open lines:
+        /// --------------------------------------------
+        /// the map recovers all the plane.
+        ///
+        /// Warning: Assume the orientation of the   closed  lines  are
+        /// compatible.
+        ///
+        /// Assume the explo contains only lines located in the
+        /// area where the bisecting locus will be computed.
+        ///
+        /// Assume a line don't cross itself or an other line.
+        ///
+        /// Remark:
+        /// the  curves  coming   from   the  explorer can   be
+        /// decomposed in different parts. It  the  case for the
+        /// curves other than circles or lines.
+        ///
+        /// The map of bisecting  locus is described by a graph.
+        /// - The  BasicsElements  correspond  to elements on
+        /// the figure described by the Explorer from BRepMAT2d.
+        /// - The Arcs correspond to the bisectors.
+        /// - The Nodes are the extremities of the arcs.
         #[cxx_name = "BRepMAT2d_BisectingLocus"]
         type BisectingLocus;
         /// /// **Source:** `BRepMAT2d_BisectingLocus.hxx` - `BRepMAT2d_BisectingLocus::BRepMAT2d_BisectingLocus()`
@@ -99,16 +140,21 @@ pub(crate) mod ffi {
         /// Returns the number of contours.
         #[cxx_name = "NumberOfContours"]
         fn number_of_contours(self: &BisectingLocus) -> i32;
-        /// Returns the number of BasicElts on the line <IndLine>.
+        /// Returns the number of BasicElts on the line
+        /// <IndLine>.
         #[cxx_name = "NumberOfElts"]
         fn number_of_elts(self: &BisectingLocus, IndLine: i32) -> i32;
-        /// Returns the number of sections of a curve. this curve is the Indexth curve in the IndLineth contour given by anExplo.
+        /// Returns the number of sections of a curve.
+        /// this curve is the Indexth curve in the IndLineth contour
+        /// given by anExplo.
         #[cxx_name = "NumberOfSections"]
         fn number_of_sections(self: &BisectingLocus, IndLine: i32, Index: i32) -> i32;
         /// Returns <theGraph> of <me>.
         #[cxx_name = "BRepMAT2d_BisectingLocus_Graph"]
         fn BisectingLocus_graph(self_: &BisectingLocus) -> UniquePtr<HandleMATGraph>;
-        /// Returns the BasicElts located at the position <Index> on the contour designed by <IndLine>. Remark: the BasicElts on a contour are sorted.
+        /// Returns the BasicElts located at the position
+        /// <Index> on the contour designed by <IndLine>.
+        /// Remark: the BasicElts on a contour are sorted.
         #[cxx_name = "BRepMAT2d_BisectingLocus_BasicElt"]
         fn BisectingLocus_basic_elt(
             self_: &BisectingLocus,
@@ -121,13 +167,17 @@ pub(crate) mod ffi {
             self_: &BisectingLocus,
             aBasicElt: &HandleMATBasicElt,
         ) -> UniquePtr<HandleGeom2dGeometry>;
-        /// Returns the geometry of  type <gp> linked to the <Node>.
+        /// Returns the geometry of  type <gp> linked to
+        /// the <Node>.
         #[cxx_name = "BRepMAT2d_BisectingLocus_GeomElt"]
         fn BisectingLocus_geom_elt_handlenode(
             self_: &BisectingLocus,
             aNode: &HandleMATNode,
         ) -> UniquePtr<gp_Pnt2d>;
-        /// Returns the  geometry of type <Bissec> linked   to the arc <ARC>. <Reverse> is False when the FirstNode of <anArc> correspond to the first point of geometry.
+        /// Returns the  geometry of type <Bissec>
+        /// linked   to the arc <ARC>.
+        /// <Reverse> is False when the FirstNode of <anArc>
+        /// correspond to the first point of geometry.
         #[cxx_name = "BRepMAT2d_BisectingLocus_GeomBis"]
         fn BisectingLocus_geom_bis(
             self_: &BisectingLocus,
@@ -137,7 +187,8 @@ pub(crate) mod ffi {
         /// ======================== BRepMAT2d_LinkTopoBilo ========================
         /// /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx` - `BRepMAT2d_LinkTopoBilo`
         ///
-        /// Constructs links between the Wire or the Face of the explorer and the BasicElts contained in the bisecting locus.
+        /// Constructs links between the Wire or the Face of the explorer and
+        /// the BasicElts contained in the bisecting locus.
         #[cxx_name = "BRepMAT2d_LinkTopoBilo"]
         type LinkTopoBilo;
         /// /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx` - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
@@ -145,16 +196,23 @@ pub(crate) mod ffi {
         fn LinkTopoBilo_ctor() -> UniquePtr<LinkTopoBilo>;
         /// /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx` - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
         ///
-        /// Constructs the links Between S and BiLo. raises if <S> is not a face.
+        /// Constructs the links Between S and BiLo.
+        ///
+        /// raises if <S> is not a face.
         #[cxx_name = "BRepMAT2d_LinkTopoBilo_ctor_explorer_bisectinglocus"]
         fn LinkTopoBilo_ctor_explorer_bisectinglocus(
             Explo: &BRepMAT2d_Explorer,
             BiLo: &BisectingLocus,
         ) -> UniquePtr<LinkTopoBilo>;
-        /// Constructs the links Between S and BiLo. raises if <S> is not a face or a wire.
+        /// Constructs the links Between S and BiLo.
+        ///
+        /// raises if <S> is not a face or a wire.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut LinkTopoBilo>, Explo: &BRepMAT2d_Explorer, BiLo: &BisectingLocus);
-        /// Initialise the Iterator on <S> <S> is an edge or a vertex of the initial wire or face. raises if <S> is not an edge or a vertex.
+        /// Initialise the Iterator on <S>
+        /// <S> is an edge or a vertex of the initial
+        /// wire or face.
+        /// raises if <S> is not an edge or a vertex.
         #[cxx_name = "Init"]
         fn init(self: Pin<&mut LinkTopoBilo>, S: &TopoDS_Shape);
         /// Returns True if there  is a current  BasicElt.

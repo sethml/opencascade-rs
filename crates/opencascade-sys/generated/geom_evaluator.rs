@@ -28,7 +28,9 @@ impl Curve {
 }
 pub use ffi::Surface;
 impl Surface {
-    /// Calculates N-th derivatives of surface, where N = theDerU + theDerV. Raises if N < 1 or theDerU < 0 or theDerV < 0
+    /// Calculates N-th derivatives of surface, where N = theDerU + theDerV.
+    ///
+    /// Raises if N < 1 or theDerU < 0 or theDerV < 0
     pub fn dn(
         &self,
         theU: f64,
@@ -58,7 +60,8 @@ pub(crate) mod ffi {
         /// ======================== GeomEvaluator_Curve ========================
         /// /// **Source:** `GeomEvaluator_Curve.hxx` - `GeomEvaluator_Curve`
         ///
-        /// Interface for calculation of values and derivatives for different kinds of curves in 3D. Works both with adaptors and curves.
+        /// Interface for calculation of values and derivatives for different kinds of curves in 3D.
+        /// Works both with adaptors and curves.
         #[cxx_name = "GeomEvaluator_Curve"]
         type Curve;
         /// Value of 3D curve
@@ -98,7 +101,8 @@ pub(crate) mod ffi {
         /// ======================== GeomEvaluator_Surface ========================
         /// /// **Source:** `GeomEvaluator_Surface.hxx` - `GeomEvaluator_Surface`
         ///
-        /// Interface for calculation of values and derivatives for different kinds of surfaces. Works both with adaptors and surfaces.
+        /// Interface for calculation of values and derivatives for different kinds of surfaces.
+        /// Works both with adaptors and surfaces.
         #[cxx_name = "GeomEvaluator_Surface"]
         type Surface;
         /// Value of surface
@@ -146,7 +150,9 @@ pub(crate) mod ffi {
         );
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Surface) -> &HandleStandardType;
-        /// Calculates N-th derivatives of surface, where N = theDerU + theDerV. Raises if N < 1 or theDerU < 0 or theDerV < 0
+        /// Calculates N-th derivatives of surface, where N = theDerU + theDerV.
+        ///
+        /// Raises if N < 1 or theDerU < 0 or theDerV < 0
         #[cxx_name = "GeomEvaluator_Surface_DN"]
         fn Surface_dn(
             self_: &Surface,

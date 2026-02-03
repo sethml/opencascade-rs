@@ -17,7 +17,8 @@ impl UnifySameDomain {
         ffi::UnifySameDomain_ctor()
     }
 
-    /// Constructor defining input shape and necessary flags. It does not perform unification.
+    /// Constructor defining input shape and necessary flags.
+    /// It does not perform unification.
     pub fn new_shape_bool3(
         aShape: &ffi::TopoDS_Shape,
         UnifyEdges: bool,
@@ -49,7 +50,34 @@ pub(crate) mod ffi {
         /// ======================== ShapeUpgrade_UnifySameDomain ========================
         /// /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain`
         ///
-        /// This tool tries to unify faces and edges of the shape which lie on the same geometry. Faces/edges are considering as 'same-domain' if a group of neighbouring faces/edges are lying on coincident surfaces/curves. In this case these faces/edges can be unified into one face/edge. ShapeUpgrade_UnifySameDomain is initialized by a shape and the next optional parameters: UnifyFaces - tries to unify all possible faces UnifyEdges - tries to unify all possible edges ConcatBSplines - if this flag is set to true then all neighbouring edges, which lay on BSpline or Bezier curves with C1 continuity on their common vertices, will be merged into one common edge. The input shape can be of any type containing faces or edges - compsolid, solid, shell, wire, compound of any kind of shapes. The algorithm preserves the structure of compsolids, solids, shells and wires. E.g., if two shells have a common edge and the faces sharing this edge lie on the same surface the algorithm will not unify these faces, otherwise the structure of shells would be broken. However, if such faces belong to different compounds of faces they will be unified. The output result of the tool is the unified shape. All the modifications of initial shape are recorded during unifying. Methods History are intended to: <br> - set a place holder for the history of modifications of sub-shapes of the initial shape; <br> - get the collected history. <br> The algorithm provides a place holder for the history and collects the history by default. To avoid collecting of the history the place holder should be set to null handle.
+        /// This tool tries to unify faces and edges of the shape which lie on the same geometry.
+        /// Faces/edges are considering as 'same-domain' if a group of neighbouring faces/edges
+        /// are lying on coincident surfaces/curves.
+        /// In this case these faces/edges can be unified into one face/edge.
+        /// ShapeUpgrade_UnifySameDomain is initialized by a shape and the next optional parameters:
+        /// UnifyFaces - tries to unify all possible faces
+        /// UnifyEdges - tries to unify all possible edges
+        /// ConcatBSplines - if this flag is set to true then all neighbouring edges, which lay
+        /// on BSpline or Bezier curves with C1 continuity on their common vertices,
+        /// will be merged into one common edge.
+        ///
+        /// The input shape can be of any type containing faces or edges - compsolid, solid, shell,
+        /// wire, compound of any kind of shapes. The algorithm preserves the structure of compsolids,
+        /// solids, shells and wires. E.g., if two shells have a common edge and the faces sharing
+        /// this edge lie on the same surface the algorithm will not unify these faces, otherwise
+        /// the structure of shells would be broken. However, if such faces belong to different
+        /// compounds of faces they will be unified.
+        ///
+        /// The output result of the tool is the unified shape.
+        ///
+        /// All the modifications of initial shape are recorded during unifying.
+        /// Methods History are intended to: <br>
+        /// - set a place holder for the history of modifications of sub-shapes of
+        /// the initial shape; <br>
+        /// - get the collected history. <br>
+        /// The algorithm provides a place holder for the history and collects the
+        /// history by default.
+        /// To avoid collecting of the history the place holder should be set to null handle.
         #[cxx_name = "ShapeUpgrade_UnifySameDomain"]
         type UnifySameDomain;
         /// /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
@@ -59,7 +87,8 @@ pub(crate) mod ffi {
         fn UnifySameDomain_ctor() -> UniquePtr<UnifySameDomain>;
         /// /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
         ///
-        /// Constructor defining input shape and necessary flags. It does not perform unification.
+        /// Constructor defining input shape and necessary flags.
+        /// It does not perform unification.
         #[cxx_name = "ShapeUpgrade_UnifySameDomain_ctor_shape_bool3"]
         fn UnifySameDomain_ctor_shape_bool3(
             aShape: &TopoDS_Shape,
@@ -67,7 +96,10 @@ pub(crate) mod ffi {
             UnifyFaces: bool,
             ConcatBSplines: bool,
         ) -> UniquePtr<UnifySameDomain>;
-        /// Initializes with a shape and necessary flags. It does not perform unification. If you intend to nullify the History place holder do it after initialization.
+        /// Initializes with a shape and necessary flags.
+        /// It does not perform unification.
+        /// If you intend to nullify the History place holder do it after
+        /// initialization.
         #[cxx_name = "Initialize"]
         fn initialize(
             self: Pin<&mut UnifySameDomain>,
@@ -76,22 +108,36 @@ pub(crate) mod ffi {
             UnifyFaces: bool,
             ConcatBSplines: bool,
         );
-        /// Sets the flag defining whether it is allowed to create internal edges inside merged faces in the case of non-manifold topology. Without this flag merging through multi connected edge is forbidden. Default value is false.
+        /// Sets the flag defining whether it is allowed to create
+        /// internal edges inside merged faces in the case of non-manifold
+        /// topology. Without this flag merging through multi connected edge
+        /// is forbidden. Default value is false.
         #[cxx_name = "AllowInternalEdges"]
         fn allow_internal_edges(self: Pin<&mut UnifySameDomain>, theValue: bool);
-        /// Sets the shape for avoid merging of the faces/edges. This shape can be vertex or edge. If the shape is a vertex it forbids merging of connected edges. If the shape is a edge it forbids merging of connected faces. This method can be called several times to keep several shapes.
+        /// Sets the shape for avoid merging of the faces/edges.
+        /// This shape can be vertex or edge.
+        /// If the shape is a vertex it forbids merging of connected edges.
+        /// If the shape is a edge it forbids merging of connected faces.
+        /// This method can be called several times to keep several shapes.
         #[cxx_name = "KeepShape"]
         fn keep_shape(self: Pin<&mut UnifySameDomain>, theShape: &TopoDS_Shape);
-        /// Sets the map of shapes for avoid merging of the faces/edges. It allows passing a ready to use map instead of calling many times the method KeepShape.
+        /// Sets the map of shapes for avoid merging of the faces/edges.
+        /// It allows passing a ready to use map instead of calling many times
+        /// the method KeepShape.
         #[cxx_name = "KeepShapes"]
         fn keep_shapes(self: Pin<&mut UnifySameDomain>, theShapes: &TopTools_MapOfShape);
-        /// Sets the flag defining the behavior of the algorithm regarding modification of input shape. If this flag is equal to True then the input (original) shape can't be modified during modification process. Default value is true.
+        /// Sets the flag defining the behavior of the algorithm regarding
+        /// modification of input shape.
+        /// If this flag is equal to True then the input (original) shape can't be
+        /// modified during modification process. Default value is true.
         #[cxx_name = "SetSafeInputMode"]
         fn set_safe_input_mode(self: Pin<&mut UnifySameDomain>, theValue: bool);
-        /// Sets the linear tolerance. It plays the role of chord error when taking decision about merging of shapes. Default value is Precision::Confusion().
+        /// Sets the linear tolerance. It plays the role of chord error when
+        /// taking decision about merging of shapes. Default value is Precision::Confusion().
         #[cxx_name = "SetLinearTolerance"]
         fn set_linear_tolerance(self: Pin<&mut UnifySameDomain>, theValue: f64);
-        /// Sets the angular tolerance. If two shapes form a connection angle greater than this value they will not be merged. Default value is Precision::Angular().
+        /// Sets the angular tolerance. If two shapes form a connection angle greater than
+        /// this value they will not be merged. Default value is Precision::Angular().
         #[cxx_name = "SetAngularTolerance"]
         fn set_angular_tolerance(self: Pin<&mut UnifySameDomain>, theValue: f64);
         /// Performs unification and builds the resulting shape.

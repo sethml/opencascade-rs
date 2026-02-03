@@ -12,21 +12,29 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::ShapeProcessor;
 impl ShapeProcessor {
-    /// Constructor. @param theParameters Parameters to be used in the processing.
+    /// Constructor.
+    /// @param theParameters Parameters to be used in the processing.
     pub fn new_shapefixparameters(
         theParameters: &ffi::DE_ShapeFixParameters,
     ) -> cxx::UniquePtr<Self> {
         ffi::ShapeProcessor_ctor_shapefixparameters(theParameters)
     }
 
-    /// Get the context of the last processing. Only valid after the ProcessShape() method was called. @return Shape context.
+    /// Get the context of the last processing.
+    /// Only valid after the ProcessShape() method was called.
+    /// @return Shape context.
     pub fn get_context(
         self: std::pin::Pin<&mut Self>,
     ) -> cxx::UniquePtr<ffi::HandleShapeProcessShapeContext> {
         ffi::ShapeProcessor_get_context(self)
     }
 
-    /// Check quality of pcurve of the edge on the given face, and correct it if necessary. @param theEdge Edge to check. @param theFace Face on which the edge is located. @param thePrecision Precision to use for checking. @param theIsSeam Flag indicating whether the edge is a seam edge. @return True if the pcurve was corrected, false if it was dropped.
+    /// Check quality of pcurve of the edge on the given face, and correct it if necessary.
+    /// @param theEdge Edge to check.
+    /// @param theFace Face on which the edge is located.
+    /// @param thePrecision Precision to use for checking.
+    /// @param theIsSeam Flag indicating whether the edge is a seam edge.
+    /// @return True if the pcurve was corrected, false if it was dropped.
     pub fn check_p_curve(
         theEdge: &ffi::TopoDS_Edge,
         theFace: &ffi::TopoDS_Face,
@@ -36,7 +44,7 @@ impl ShapeProcessor {
         ffi::ShapeProcessor_check_p_curve(theEdge, theFace, thePrecision, theIsSeam)
     }
 
-    #[doc = "The function is designed to set the length unit for the application before performing a transfer operation. It ensures that the length unit is correctly configured based on the value associated with the key \"xstep.cascade.unit\"."]
+    #[doc = "The function is designed to set the length unit for the application before performing a\ntransfer operation. It ensures that the length unit is correctly configured based on the\nvalue associated with the key \"xstep.cascade.unit\"."]
     pub fn prepare_for_transfer() {
         ffi::ShapeProcessor_prepare_for_transfer()
     }
@@ -52,35 +60,47 @@ pub(crate) mod ffi {
         /// ======================== XSAlgo_ShapeProcessor ========================
         /// /// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor`
         ///
-        /// Shape Processing module. Allows to define and apply general Shape Processing as a customizable sequence of operators.
+        /// Shape Processing module.
+        /// Allows to define and apply general Shape Processing as a customizable sequence of operators.
         #[cxx_name = "XSAlgo_ShapeProcessor"]
         type ShapeProcessor;
         /// /// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor()`
         ///
-        /// Constructor. @param theParameters Parameters to be used in the processing.
+        /// Constructor.
+        /// @param theParameters Parameters to be used in the processing.
         #[cxx_name = "XSAlgo_ShapeProcessor_ctor_shapefixparameters"]
         fn ShapeProcessor_ctor_shapefixparameters(
             theParameters: &DE_ShapeFixParameters,
         ) -> UniquePtr<ShapeProcessor>;
-        /// Merge the results of the shape processing with the transfer process. @param theTransientProcess Transfer process to merge with. @param theFirstTPItemIndex Index of the first item in the transfer process to merge with.
+        /// Merge the results of the shape processing with the transfer process.
+        /// @param theTransientProcess Transfer process to merge with.
+        /// @param theFirstTPItemIndex Index of the first item in the transfer process to merge with.
         #[cxx_name = "MergeTransferInfo"]
         fn merge_transfer_info_handletransientprocess_int(
             self: &ShapeProcessor,
             theTransientProcess: &HandleTransferTransientProcess,
             theFirstTPItemIndex: i32,
         );
-        /// Merge the results of the shape processing with the finder process. @param theFinderProcess Finder process to merge with.
+        /// Merge the results of the shape processing with the finder process.
+        /// @param theFinderProcess Finder process to merge with.
         #[cxx_name = "MergeTransferInfo"]
         fn merge_transfer_info_handlefinderprocess(
             self: &ShapeProcessor,
             theFinderProcess: &HandleTransferFinderProcess,
         );
-        /// Get the context of the last processing. Only valid after the ProcessShape() method was called. @return Shape context.
+        /// Get the context of the last processing.
+        /// Only valid after the ProcessShape() method was called.
+        /// @return Shape context.
         #[cxx_name = "XSAlgo_ShapeProcessor_GetContext"]
         fn ShapeProcessor_get_context(
             self_: Pin<&mut ShapeProcessor>,
         ) -> UniquePtr<HandleShapeProcessShapeContext>;
-        /// Check quality of pcurve of the edge on the given face, and correct it if necessary. @param theEdge Edge to check. @param theFace Face on which the edge is located. @param thePrecision Precision to use for checking. @param theIsSeam Flag indicating whether the edge is a seam edge. @return True if the pcurve was corrected, false if it was dropped.
+        /// Check quality of pcurve of the edge on the given face, and correct it if necessary.
+        /// @param theEdge Edge to check.
+        /// @param theFace Face on which the edge is located.
+        /// @param thePrecision Precision to use for checking.
+        /// @param theIsSeam Flag indicating whether the edge is a seam edge.
+        /// @return True if the pcurve was corrected, false if it was dropped.
         #[cxx_name = "XSAlgo_ShapeProcessor_CheckPCurve"]
         fn ShapeProcessor_check_p_curve(
             theEdge: &TopoDS_Edge,
@@ -88,7 +108,7 @@ pub(crate) mod ffi {
             thePrecision: f64,
             theIsSeam: bool,
         ) -> bool;
-        #[doc = "The function is designed to set the length unit for the application before performing a transfer operation. It ensures that the length unit is correctly configured based on the value associated with the key \"xstep.cascade.unit\"."]
+        #[doc = "The function is designed to set the length unit for the application before performing a\ntransfer operation. It ensures that the length unit is correctly configured based on the\nvalue associated with the key \"xstep.cascade.unit\"."]
         #[cxx_name = "XSAlgo_ShapeProcessor_PrepareForTransfer"]
         fn ShapeProcessor_prepare_for_transfer();
 

@@ -33,9 +33,26 @@ pub(crate) mod ffi {
         /// ======================== BRepIntCurveSurface_Inter ========================
         /// /// **Source:** `BRepIntCurveSurface_Inter.hxx` - `BRepIntCurveSurface_Inter`
         ///
-        /// Computes the intersection between a face and a curve. To intersect one curve with shape method Init(Shape, curve, tTol) should be used. To intersect a few curves with specified shape it is necessary to load shape one time using method Load(shape, tol) and find intersection points for each curve using method Init(curve). For iteration by intersection points method More() and Next() should be used. Example: Inter.Load(shape, tol); for( i =1; i <= nbCurves;i++) { Inter.Init(curve); for(  ;Inter.More(); Inter.Next()) { .......
-/// }
-/// }
+        /// Computes the intersection between a face and a
+        /// curve. To intersect one curve with shape method
+        /// Init(Shape, curve, tTol) should be used. To
+        /// intersect a few curves with specified shape it is
+        /// necessary to load shape one time using method
+        /// Load(shape, tol) and find intersection points for
+        /// each curve using method Init(curve). For
+        /// iteration by intersection points method More() and
+        /// Next() should be used.
+        ///
+        /// Example:
+        /// Inter.Load(shape, tol);
+        /// for( i =1; i <= nbCurves;i++)
+        /// {
+        /// Inter.Init(curve);
+        /// for(  ;Inter.More(); Inter.Next())
+        /// {
+        /// .......
+        /// }
+        /// }
         #[cxx_name = "BRepIntCurveSurface_Inter"]
         type Inter;
         /// /// **Source:** `BRepIntCurveSurface_Inter.hxx` - `BRepIntCurveSurface_Inter::BRepIntCurveSurface_Inter()`
@@ -43,7 +60,8 @@ pub(crate) mod ffi {
         /// Empty constructor;
         #[cxx_name = "BRepIntCurveSurface_Inter_ctor"]
         fn Inter_ctor() -> UniquePtr<Inter>;
-        /// Load the Shape, the curve and initialize the tolerance used for the classification.
+        /// Load the Shape, the curve and initialize the
+        /// tolerance used for the classification.
         #[cxx_name = "Init"]
         fn init_shape_curve_real(
             self: Pin<&mut Inter>,
@@ -51,7 +69,8 @@ pub(crate) mod ffi {
             theCurve: &GeomAdaptor_Curve,
             theTol: f64,
         );
-        /// Load the Shape, the curve and initialize the tolerance used for the classification.
+        /// Load the Shape, the curve and initialize the
+        /// tolerance used for the classification.
         #[cxx_name = "Init"]
         fn init_shape_lin_real(
             self: Pin<&mut Inter>,
@@ -59,7 +78,8 @@ pub(crate) mod ffi {
             theLine: &gp_Lin,
             theTol: f64,
         );
-        /// Load the Shape, and initialize the tolerance used for the classification.
+        /// Load the Shape, and initialize the
+        /// tolerance used for the classification.
         #[cxx_name = "Load"]
         fn load(self: Pin<&mut Inter>, theShape: &TopoDS_Shape, theTol: f64);
         /// Method to find intersections of specified curve with loaded shape.
@@ -74,13 +94,16 @@ pub(crate) mod ffi {
         /// returns the current geometric Point
         #[cxx_name = "Pnt"]
         fn pnt(self: &Inter) -> &gp_Pnt;
-        /// returns the U parameter of the current point on the current face.
+        /// returns the U parameter of the current point
+        /// on the current face.
         #[cxx_name = "U"]
         fn u(self: &Inter) -> f64;
-        /// returns the V parameter of the current point on the current face.
+        /// returns the V parameter of the current point
+        /// on the current face.
         #[cxx_name = "V"]
         fn v(self: &Inter) -> f64;
-        /// returns the parameter of the current point on the curve.
+        /// returns the parameter of the current point
+        /// on the curve.
         #[cxx_name = "W"]
         fn w(self: &Inter) -> f64;
         /// returns the current face.

@@ -12,17 +12,22 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::GeneralLib;
 impl GeneralLib {
-    /// Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources
+    /// Creates a Library which complies with a Protocol, that is :
+    /// Same class (criterium IsInstance)
+    /// This creation gets the Modules from the global set, those
+    /// which are bound to the given Protocol and its Resources
     pub fn new_handleprotocol(aprotocol: &ffi::HandleInterfaceProtocol) -> cxx::UniquePtr<Self> {
         ffi::GeneralLib_ctor_handleprotocol(aprotocol)
     }
 
-    /// Creates an empty Library : it will later by filled by method AddProtocol
+    /// Creates an empty Library : it will later by filled by method
+    /// AddProtocol
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::GeneralLib_ctor()
     }
 
-    /// Adds a couple (Module-Protocol) into the global definition set for this class of Library.
+    /// Adds a couple (Module-Protocol) into the global definition set
+    /// for this class of Library.
     pub fn set_global(
         amodule: &ffi::HandleInterfaceGeneralModule,
         aprotocol: &ffi::HandleInterfaceProtocol,
@@ -44,26 +49,40 @@ pub(crate) mod ffi {
         type GeneralLib;
         /// /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib::Interface_GeneralLib()`
         ///
-        /// Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources
+        /// Creates a Library which complies with a Protocol, that is :
+        /// Same class (criterium IsInstance)
+        /// This creation gets the Modules from the global set, those
+        /// which are bound to the given Protocol and its Resources
         #[cxx_name = "Interface_GeneralLib_ctor_handleprotocol"]
         fn GeneralLib_ctor_handleprotocol(
             aprotocol: &HandleInterfaceProtocol,
         ) -> UniquePtr<GeneralLib>;
         /// /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib::Interface_GeneralLib()`
         ///
-        /// Creates an empty Library : it will later by filled by method AddProtocol
+        /// Creates an empty Library : it will later by filled by method
+        /// AddProtocol
         #[cxx_name = "Interface_GeneralLib_ctor"]
         fn GeneralLib_ctor() -> UniquePtr<GeneralLib>;
-        /// Adds a couple (Module-Protocol) to the Library, given the class of a Protocol. Takes Resources into account. (if <aprotocol> is not of type TheProtocol, it is not added)
+        /// Adds a couple (Module-Protocol) to the Library, given the
+        /// class of a Protocol. Takes Resources into account.
+        /// (if <aprotocol> is not of type TheProtocol, it is not added)
         #[cxx_name = "AddProtocol"]
         fn add_protocol(self: Pin<&mut GeneralLib>, aprotocol: &HandleStandardTransient);
-        /// Clears the list of Modules of a library (can be used to redefine the order of Modules before action : Clear then refill the Library by calls to AddProtocol)
+        /// Clears the list of Modules of a library (can be used to
+        /// redefine the order of Modules before action : Clear then
+        /// refill the Library by calls to AddProtocol)
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut GeneralLib>);
-        /// Sets a library to be defined with the complete Global list (all the couples Protocol/Modules recorded in it)
+        /// Sets a library to be defined with the complete Global list
+        /// (all the couples Protocol/Modules recorded in it)
         #[cxx_name = "SetComplete"]
         fn set_complete(self: Pin<&mut GeneralLib>);
-        /// Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType)
+        /// Selects a Module from the Library, given an Object.
+        /// Returns True if Select has succeeded, False else.
+        /// Also Returns (as arguments) the selected Module and the Case
+        /// Number determined by the associated Protocol.
+        /// If Select has failed, <module> is Null Handle and CN is zero.
+        /// (Select can work on any criterium, such as Object DynamicType)
         #[cxx_name = "Select"]
         fn select(
             self: &GeneralLib,
@@ -77,7 +96,8 @@ pub(crate) mod ffi {
         /// Returns True if there are more Modules to iterate on
         #[cxx_name = "More"]
         fn more(self: &GeneralLib) -> bool;
-        /// Iterates by getting the next Module in the list If there is none, the exception will be raised by Value
+        /// Iterates by getting the next Module in the list
+        /// If there is none, the exception will be raised by Value
         #[cxx_name = "Next"]
         fn next(self: Pin<&mut GeneralLib>);
         /// Returns the current Module in the Iteration
@@ -86,7 +106,8 @@ pub(crate) mod ffi {
         /// Returns the current Protocol in the Iteration
         #[cxx_name = "Protocol"]
         fn protocol(self: &GeneralLib) -> &HandleInterfaceProtocol;
-        /// Adds a couple (Module-Protocol) into the global definition set for this class of Library.
+        /// Adds a couple (Module-Protocol) into the global definition set
+        /// for this class of Library.
         #[cxx_name = "Interface_GeneralLib_SetGlobal"]
         fn GeneralLib_set_global(
             amodule: &HandleInterfaceGeneralModule,

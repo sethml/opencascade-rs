@@ -47,7 +47,10 @@ impl Curve {
         ffi::Curve_shallow_copy(self)
     }
 
-    /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+    /// Returns    a  curve equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
     pub fn trim(
         &self,
         First: f64,
@@ -62,7 +65,13 @@ impl Curve {
         ffi::Curve_value(self, U)
     }
 
-    /// The returned vector gives the value of the derivative for the order of derivation N. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve. Raised if N < 1.
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Warning : On the specific case of BSplineCurve:
+    /// if the curve is cut in interval of continuity CN, the
+    /// derivatives are computed on the current interval.
+    /// else the derivatives are computed on the basis curve.
+    /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
         ffi::Curve_dn(self, U, N)
     }
@@ -87,12 +96,20 @@ impl Curve {
         ffi::Curve_parabola(self)
     }
 
-    /// this will NOT make a copy of the Bezier Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
+    /// this will NOT make a copy of the
+    /// Bezier Curve : If you want to modify
+    /// the Curve please make a copy yourself
+    /// Also it will NOT trim the surface to
+    /// myFirst/Last.
     pub fn bezier(&self) -> cxx::UniquePtr<ffi::HandleGeomBezierCurve> {
         ffi::Curve_bezier(self)
     }
 
-    /// this will NOT make a copy of the BSpline Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
+    /// this will NOT make a copy of the
+    /// BSpline Curve : If you want to modify
+    /// the Curve please make a copy yourself
+    /// Also it will NOT trim the surface to
+    /// myFirst/Last.
     pub fn b_spline(&self) -> cxx::UniquePtr<ffi::HandleGeomBSplineCurve> {
         ffi::Curve_b_spline(self)
     }
@@ -147,7 +164,11 @@ impl Surface {
         ffi::Surface_shallow_copy(self)
     }
 
-    /// Returns    a  surface trimmed in the U direction equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+    /// Returns    a  surface trimmed in the U direction
+    /// equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
     pub fn u_trim(
         &self,
         First: f64,
@@ -157,7 +178,10 @@ impl Surface {
         ffi::Surface_u_trim(self, First, Last, Tol)
     }
 
-    /// Returns    a  surface trimmed in the V direction  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+    /// Returns    a  surface trimmed in the V direction  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
     pub fn v_trim(
         &self,
         First: f64,
@@ -172,7 +196,14 @@ impl Surface {
         ffi::Surface_value(self, U, V)
     }
 
-    /// Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    /// Computes the derivative of order Nu in the
+    /// direction U and Nv in the direction V at the point P(U, V).
+    ///
+    /// Warning : On the specific case of BSplineSurface:
+    /// if the surface is cut in interval of continuity CN,
+    /// the derivatives are computed on the current interval.
+    /// else the derivatives are computed on the basis surface.
+    /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
     pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
         ffi::Surface_dn(self, U, V, Nu, Nv)
     }
@@ -197,12 +228,20 @@ impl Surface {
         ffi::Surface_torus(self)
     }
 
-    /// This will NOT make a copy of the Bezier Surface : If you want to modify the Surface please make a copy yourself Also it will NOT trim the surface to myU/VFirst/Last.
+    /// This will NOT make a copy of the
+    /// Bezier Surface : If you want to modify
+    /// the Surface please make a copy yourself
+    /// Also it will NOT trim the surface to
+    /// myU/VFirst/Last.
     pub fn bezier(&self) -> cxx::UniquePtr<ffi::HandleGeomBezierSurface> {
         ffi::Surface_bezier(self)
     }
 
-    /// This will NOT make a copy of the BSpline Surface : If you want to modify the Surface please make a copy yourself Also it will NOT trim the surface to myU/VFirst/Last.
+    /// This will NOT make a copy of the
+    /// BSpline Surface : If you want to modify
+    /// the Surface please make a copy yourself
+    /// Also it will NOT trim the surface to
+    /// myU/VFirst/Last.
     pub fn b_spline(&self) -> cxx::UniquePtr<ffi::HandleGeomBSplineSurface> {
         ffi::Surface_b_spline(self)
     }
@@ -238,7 +277,13 @@ pub(crate) mod ffi {
         /// ======================== GeomAdaptor_Curve ========================
         /// /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve`
         ///
-        /// This class provides an interface between the services provided by any curve from the package Geom and those required of the curve by algorithms which use it. Creation of the loaded curve the curve is C1 by piece. Polynomial coefficients of BSpline curves used for their evaluation are cached for better performance. Therefore these evaluations are not thread-safe and parallel evaluations need to be prevented.
+        /// This class provides an interface between the services provided by any
+        /// curve from the package Geom and those required of the curve by algorithms which use it.
+        /// Creation of the loaded curve the curve is C1 by piece.
+        ///
+        /// Polynomial coefficients of BSpline curves used for their evaluation are
+        /// cached for better performance. Therefore these evaluations are not
+        /// thread-safe and parallel evaluations need to be prevented.
         #[cxx_name = "GeomAdaptor_Curve"]
         type Curve;
         /// /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
@@ -271,7 +316,8 @@ pub(crate) mod ffi {
             theUFirst: f64,
             theULast: f64,
         );
-        /// Provides a curve inherited from Hcurve from Adaptor. This is inherited to provide easy to use constructors.
+        /// Provides a curve inherited from Hcurve from Adaptor.
+        /// This is inherited to provide easy to use constructors.
         #[cxx_name = "Curve"]
         fn curve(self: &Curve) -> &HandleGeomCurve;
         #[cxx_name = "FirstParameter"]
@@ -287,10 +333,22 @@ pub(crate) mod ffi {
         /// Computes the point of parameter U.
         #[cxx_name = "D0"]
         fn d0(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>);
-        /// Computes the point of parameter U on the curve with its first derivative. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C1, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
+        /// Computes the point of parameter U on the curve
+        /// with its first derivative.
+        ///
+        /// Warning : On the specific case of BSplineCurve:
+        /// if the curve is cut in interval of continuity at least C1, the
+        /// derivatives are computed on the current interval.
+        /// else the derivatives are computed on the basis curve.
         #[cxx_name = "D1"]
         fn d1(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>, V: Pin<&mut gp_Vec>);
-        /// Returns the point P of parameter U, the first and second derivatives V1 and V2. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C2, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
+        /// Returns the point P of parameter U, the first and second
+        /// derivatives V1 and V2.
+        ///
+        /// Warning : On the specific case of BSplineCurve:
+        /// if the curve is cut in interval of continuity at least C2, the
+        /// derivatives are computed on the current interval.
+        /// else the derivatives are computed on the basis curve.
         #[cxx_name = "D2"]
         fn d2(
             self: &Curve,
@@ -299,7 +357,13 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
-        /// Returns the point P of parameter U, the first, the second and the third derivative. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C3, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
+        /// Returns the point P of parameter U, the first, the second
+        /// and the third derivative.
+        ///
+        /// Warning : On the specific case of BSplineCurve:
+        /// if the curve is cut in interval of continuity at least C3, the
+        /// derivatives are computed on the current interval.
+        /// else the derivatives are computed on the basis curve.
         #[cxx_name = "D3"]
         fn d3(
             self: &Curve,
@@ -312,22 +376,33 @@ pub(crate) mod ffi {
         /// returns the parametric resolution
         #[cxx_name = "Resolution"]
         fn resolution(self: &Curve, R3d: f64) -> f64;
-        /// this should NEVER make a copy of the underlying curve to read the relevant information
+        /// this should NEVER make a copy
+        /// of the underlying curve to read
+        /// the relevant information
         #[cxx_name = "Degree"]
         fn degree(self: &Curve) -> i32;
-        /// this should NEVER make a copy of the underlying curve to read the relevant information
+        /// this should NEVER make a copy
+        /// of the underlying curve to read
+        /// the relevant information
         #[cxx_name = "IsRational"]
         fn is_rational(self: &Curve) -> bool;
-        /// this should NEVER make a copy of the underlying curve to read the relevant information
+        /// this should NEVER make a copy
+        /// of the underlying curve to read
+        /// the relevant information
         #[cxx_name = "NbPoles"]
         fn nb_poles(self: &Curve) -> i32;
-        /// this should NEVER make a copy of the underlying curve to read the relevant information
+        /// this should NEVER make a copy
+        /// of the underlying curve to read
+        /// the relevant information
         #[cxx_name = "NbKnots"]
         fn nb_knots(self: &Curve) -> i32;
         /// Shallow copy of adaptor
         #[cxx_name = "GeomAdaptor_Curve_ShallowCopy"]
         fn Curve_shallow_copy(self_: &Curve) -> UniquePtr<HandleAdaptor3dCurve>;
-        /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+        /// Returns    a  curve equivalent   of  <me>  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
+        /// If <First> >= <Last>
         #[cxx_name = "GeomAdaptor_Curve_Trim"]
         fn Curve_trim(
             self_: &Curve,
@@ -338,7 +413,13 @@ pub(crate) mod ffi {
         /// Computes the point of parameter U on the curve
         #[cxx_name = "GeomAdaptor_Curve_Value"]
         fn Curve_value(self_: &Curve, U: f64) -> UniquePtr<gp_Pnt>;
-        /// The returned vector gives the value of the derivative for the order of derivation N. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve. Raised if N < 1.
+        /// The returned vector gives the value of the derivative for the
+        /// order of derivation N.
+        /// Warning : On the specific case of BSplineCurve:
+        /// if the curve is cut in interval of continuity CN, the
+        /// derivatives are computed on the current interval.
+        /// else the derivatives are computed on the basis curve.
+        /// Raised if N < 1.
         #[cxx_name = "GeomAdaptor_Curve_DN"]
         fn Curve_dn(self_: &Curve, U: f64, N: i32) -> UniquePtr<gp_Vec>;
         #[cxx_name = "GeomAdaptor_Curve_Line"]
@@ -351,10 +432,18 @@ pub(crate) mod ffi {
         fn Curve_hyperbola(self_: &Curve) -> UniquePtr<gp_Hypr>;
         #[cxx_name = "GeomAdaptor_Curve_Parabola"]
         fn Curve_parabola(self_: &Curve) -> UniquePtr<gp_Parab>;
-        /// this will NOT make a copy of the Bezier Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
+        /// this will NOT make a copy of the
+        /// Bezier Curve : If you want to modify
+        /// the Curve please make a copy yourself
+        /// Also it will NOT trim the surface to
+        /// myFirst/Last.
         #[cxx_name = "GeomAdaptor_Curve_Bezier"]
         fn Curve_bezier(self_: &Curve) -> UniquePtr<HandleGeomBezierCurve>;
-        /// this will NOT make a copy of the BSpline Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
+        /// this will NOT make a copy of the
+        /// BSpline Curve : If you want to modify
+        /// the Curve please make a copy yourself
+        /// Also it will NOT trim the surface to
+        /// myFirst/Last.
         #[cxx_name = "GeomAdaptor_Curve_BSpline"]
         fn Curve_b_spline(self_: &Curve) -> UniquePtr<HandleGeomBSplineCurve>;
         #[cxx_name = "GeomAdaptor_Curve_OffsetCurve"]
@@ -370,7 +459,14 @@ pub(crate) mod ffi {
         /// ======================== GeomAdaptor_Surface ========================
         /// /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface`
         ///
-        /// An interface between the services provided by any surface from the package Geom and those required of the surface by algorithms which use it. Creation of the loaded surface the surface is C1 by piece Polynomial coefficients of BSpline surfaces used for their evaluation are cached for better performance. Therefore these evaluations are not thread-safe and parallel evaluations need to be prevented.
+        /// An interface between the services provided by any
+        /// surface from the package Geom and those required
+        /// of the surface by algorithms which use it.
+        /// Creation of the loaded surface the surface is C1 by piece
+        ///
+        /// Polynomial coefficients of BSpline surfaces used for their evaluation are
+        /// cached for better performance. Therefore these evaluations are not
+        /// thread-safe and parallel evaluations need to be prevented.
         #[cxx_name = "GeomAdaptor_Surface"]
         type Surface;
         /// /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
@@ -433,7 +529,13 @@ pub(crate) mod ffi {
         /// Computes the point of parameters U,V on the surface.
         #[cxx_name = "D0"]
         fn d0(self: &Surface, U: f64, V: f64, P: Pin<&mut gp_Pnt>);
-        /// Computes the point  and the first derivatives on the surface. Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C1, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
+        /// Computes the point  and the first derivatives on
+        /// the surface.
+        ///
+        /// Warning : On the specific case of BSplineSurface:
+        /// if the surface is cut in interval of continuity at least C1,
+        /// the derivatives are computed on the current interval.
+        /// else the derivatives are computed on the basis surface.
         #[cxx_name = "D1"]
         fn d1(
             self: &Surface,
@@ -443,7 +545,13 @@ pub(crate) mod ffi {
             D1U: Pin<&mut gp_Vec>,
             D1V: Pin<&mut gp_Vec>,
         );
-        /// Computes   the point,  the  first  and  second derivatives on the surface. Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C2, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
+        /// Computes   the point,  the  first  and  second
+        /// derivatives on the surface.
+        ///
+        /// Warning : On the specific case of BSplineSurface:
+        /// if the surface is cut in interval of continuity at least C2,
+        /// the derivatives are computed on the current interval.
+        /// else the derivatives are computed on the basis surface.
         #[cxx_name = "D2"]
         fn d2(
             self: &Surface,
@@ -456,7 +564,13 @@ pub(crate) mod ffi {
             D2V: Pin<&mut gp_Vec>,
             D2UV: Pin<&mut gp_Vec>,
         );
-        /// Computes the point,  the first, second and third derivatives on the surface. Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C3, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
+        /// Computes the point,  the first, second and third
+        /// derivatives on the surface.
+        ///
+        /// Warning : On the specific case of BSplineSurface:
+        /// if the surface is cut in interval of continuity at least C3,
+        /// the derivatives are computed on the current interval.
+        /// else the derivatives are computed on the basis surface.
         #[cxx_name = "D3"]
         fn d3(
             self: &Surface,
@@ -473,10 +587,12 @@ pub(crate) mod ffi {
             D3UUV: Pin<&mut gp_Vec>,
             D3UVV: Pin<&mut gp_Vec>,
         );
-        /// Returns the parametric U  resolution corresponding to the real space resolution <R3d>.
+        /// Returns the parametric U  resolution corresponding
+        /// to the real space resolution <R3d>.
         #[cxx_name = "UResolution"]
         fn u_resolution(self: &Surface, R3d: f64) -> f64;
-        /// Returns the parametric V  resolution corresponding to the real space resolution <R3d>.
+        /// Returns the parametric V  resolution corresponding
+        /// to the real space resolution <R3d>.
         #[cxx_name = "VResolution"]
         fn v_resolution(self: &Surface, R3d: f64) -> f64;
         #[cxx_name = "UDegree"]
@@ -500,7 +616,11 @@ pub(crate) mod ffi {
         /// Shallow copy of adaptor
         #[cxx_name = "GeomAdaptor_Surface_ShallowCopy"]
         fn Surface_shallow_copy(self_: &Surface) -> UniquePtr<HandleAdaptor3dSurface>;
-        /// Returns    a  surface trimmed in the U direction equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+        /// Returns    a  surface trimmed in the U direction
+        /// equivalent   of  <me>  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
+        /// If <First> >= <Last>
         #[cxx_name = "GeomAdaptor_Surface_UTrim"]
         fn Surface_u_trim(
             self_: &Surface,
@@ -508,7 +628,10 @@ pub(crate) mod ffi {
             Last: f64,
             Tol: f64,
         ) -> UniquePtr<HandleAdaptor3dSurface>;
-        /// Returns    a  surface trimmed in the V direction  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+        /// Returns    a  surface trimmed in the V direction  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
+        /// If <First> >= <Last>
         #[cxx_name = "GeomAdaptor_Surface_VTrim"]
         fn Surface_v_trim(
             self_: &Surface,
@@ -519,7 +642,14 @@ pub(crate) mod ffi {
         /// Computes the point of parameters U,V on the surface.
         #[cxx_name = "GeomAdaptor_Surface_Value"]
         fn Surface_value(self_: &Surface, U: f64, V: f64) -> UniquePtr<gp_Pnt>;
-        /// Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+        /// Computes the derivative of order Nu in the
+        /// direction U and Nv in the direction V at the point P(U, V).
+        ///
+        /// Warning : On the specific case of BSplineSurface:
+        /// if the surface is cut in interval of continuity CN,
+        /// the derivatives are computed on the current interval.
+        /// else the derivatives are computed on the basis surface.
+        /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
         #[cxx_name = "GeomAdaptor_Surface_DN"]
         fn Surface_dn(self_: &Surface, U: f64, V: f64, Nu: i32, Nv: i32) -> UniquePtr<gp_Vec>;
         #[cxx_name = "GeomAdaptor_Surface_Plane"]
@@ -532,10 +662,18 @@ pub(crate) mod ffi {
         fn Surface_sphere(self_: &Surface) -> UniquePtr<gp_Sphere>;
         #[cxx_name = "GeomAdaptor_Surface_Torus"]
         fn Surface_torus(self_: &Surface) -> UniquePtr<gp_Torus>;
-        /// This will NOT make a copy of the Bezier Surface : If you want to modify the Surface please make a copy yourself Also it will NOT trim the surface to myU/VFirst/Last.
+        /// This will NOT make a copy of the
+        /// Bezier Surface : If you want to modify
+        /// the Surface please make a copy yourself
+        /// Also it will NOT trim the surface to
+        /// myU/VFirst/Last.
         #[cxx_name = "GeomAdaptor_Surface_Bezier"]
         fn Surface_bezier(self_: &Surface) -> UniquePtr<HandleGeomBezierSurface>;
-        /// This will NOT make a copy of the BSpline Surface : If you want to modify the Surface please make a copy yourself Also it will NOT trim the surface to myU/VFirst/Last.
+        /// This will NOT make a copy of the
+        /// BSpline Surface : If you want to modify
+        /// the Surface please make a copy yourself
+        /// Also it will NOT trim the surface to
+        /// myU/VFirst/Last.
         #[cxx_name = "GeomAdaptor_Surface_BSpline"]
         fn Surface_b_spline(self_: &Surface) -> UniquePtr<HandleGeomBSplineSurface>;
         #[cxx_name = "GeomAdaptor_Surface_AxeOfRevolution"]

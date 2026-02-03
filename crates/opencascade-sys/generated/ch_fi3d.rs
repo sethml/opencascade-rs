@@ -25,7 +25,9 @@ impl FilBuilder {
         ffi::fil_builder_as_builder_mut(self)
     }
 
-    /// Returns the rule of  elementary  evolution of  the part to  variable vector framing E, returns a rule zero if E is flagged as edge constant.
+    /// Returns the rule of  elementary  evolution of  the
+    /// part to  variable vector framing E, returns a
+    /// rule zero if E is flagged as edge constant.
     pub fn get_law(
         self: std::pin::Pin<&mut Self>,
         IC: i32,
@@ -40,22 +42,26 @@ impl FilBuilder {
 }
 pub use ffi::Builder;
 impl Builder {
-    /// gives the n'th set  of edges (contour) if I >NbElements()
+    /// gives the n'th set  of edges (contour)
+    /// if I >NbElements()
     pub fn value(&self, I: i32) -> cxx::UniquePtr<ffi::HandleChFiDSSpine> {
         ffi::Builder_value(self, I)
     }
 
-    /// returns the First vertex V of the contour of index IC.
+    /// returns the First vertex V of
+    /// the contour of index IC.
     pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
         ffi::Builder_first_vertex(self, IC)
     }
 
-    /// returns the Last vertex V of the contour of index IC.
+    /// returns the Last vertex V of
+    /// the contour of index IC.
     pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
         ffi::Builder_last_vertex(self, IC)
     }
 
-    /// if (Isdone()) makes the result. if (!Isdone())
+    /// if (Isdone()) makes the result.
+    /// if (!Isdone())
     pub fn shape(&self) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::Builder_shape(self)
     }
@@ -70,7 +76,8 @@ impl Builder {
         ffi::Builder_faulty_vertex(self, IV)
     }
 
-    /// if (HasResult()) returns partial result if (!HasResult())
+    /// if (HasResult()) returns partial result
+    /// if (!HasResult())
     pub fn bad_shape(&self) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::Builder_bad_shape(self)
     }
@@ -82,7 +89,8 @@ impl Builder {
 }
 pub use ffi::ChBuilder;
 impl ChBuilder {
-    /// initializes the Builder with the Shape <S> for the computation of chamfers
+    /// initializes the Builder with the Shape <S> for the
+    /// computation of chamfers
     pub fn new_shape_real(S: &ffi::TopoDS_Shape, Ta: f64) -> cxx::UniquePtr<Self> {
         ffi::ChBuilder_ctor_shape_real(S, Ta)
     }
@@ -115,7 +123,9 @@ pub(crate) mod ffi {
         /// Tool  of  construction of  fillets 3d on  edges (on a solid).
         #[cxx_name = "ChFi3d_FilBuilder"]
         type FilBuilder;
-        /// initialisation of  a contour with the first edge (the following are found  by propagation). Attention, you  need  to start  with  SetRadius.
+        /// initialisation of  a contour with the first edge
+        /// (the following are found  by propagation).
+        /// Attention, you  need  to start  with  SetRadius.
         #[cxx_name = "Add"]
         fn add_edge(self: Pin<&mut FilBuilder>, E: &TopoDS_Edge);
         /// initialisation of the constant vector the corresponding  1st  edge.
@@ -132,13 +142,15 @@ pub(crate) mod ffi {
         /// Returns true the contour is flagged as edge constant.
         #[cxx_name = "IsConstant"]
         fn is_constant_int(self: Pin<&mut FilBuilder>, IC: i32) -> bool;
-        /// Returns the vector if the contour is flagged as edge constant.
+        /// Returns the vector if the contour is flagged as edge
+        /// constant.
         #[cxx_name = "Radius"]
         fn radius_int(self: Pin<&mut FilBuilder>, IC: i32) -> f64;
         /// Reset all vectors of contour IC.
         #[cxx_name = "ResetContour"]
         fn reset_contour(self: Pin<&mut FilBuilder>, IC: i32);
-        /// Set a constant on edge E of  the contour of index IC. Since  then  E is flagged as constant.
+        /// Set a constant on edge E of  the contour of
+        /// index IC. Since  then  E is flagged as constant.
         #[cxx_name = "SetRadius"]
         fn set_radius_real_int_edge(
             self: Pin<&mut FilBuilder>,
@@ -160,7 +172,8 @@ pub(crate) mod ffi {
         /// Extracts the vector of  the vertex V.
         #[cxx_name = "UnSet"]
         fn un_set_int_vertex(self: Pin<&mut FilBuilder>, IC: i32, V: &TopoDS_Vertex);
-        /// Set  a vertex on the point of parametre U in the edge IinC of  the contour of index IC
+        /// Set  a vertex on the point of parametre U in the edge IinC
+        /// of  the contour of index IC
         #[cxx_name = "SetRadius"]
         fn set_radius_xy_int2(self: Pin<&mut FilBuilder>, UandR: &gp_XY, IC: i32, IinC: i32);
         /// Returns true E is flagged as edge constant.
@@ -169,7 +182,9 @@ pub(crate) mod ffi {
         /// Returns the vector if E is flagged as edge constant.
         #[cxx_name = "Radius"]
         fn radius_int_edge(self: Pin<&mut FilBuilder>, IC: i32, E: &TopoDS_Edge) -> f64;
-        /// Returns in First and Last  les extremities of  the part of variable  vector framing E, returns False  if  E is flagged as edge constant.
+        /// Returns in First and Last  les extremities of  the
+        /// part of variable  vector framing E, returns
+        /// False  if  E is flagged as edge constant.
         #[cxx_name = "GetBounds"]
         fn get_bounds(
             self: Pin<&mut FilBuilder>,
@@ -178,14 +193,17 @@ pub(crate) mod ffi {
             First: &mut f64,
             Last: &mut f64,
         ) -> bool;
-        /// Sets the rule of elementary evolution of  the part to variable  vector framing E.
+        /// Sets the rule of elementary evolution of  the
+        /// part to variable  vector framing E.
         #[cxx_name = "SetLaw"]
         fn set_law(self: Pin<&mut FilBuilder>, IC: i32, E: &TopoDS_Edge, L: &HandleLawFunction);
         #[cxx_name = "Simulate"]
         fn simulate(self: Pin<&mut FilBuilder>, IC: i32);
         #[cxx_name = "NbSurf"]
         fn nb_surf(self: &FilBuilder, IC: i32) -> i32;
-        /// Returns the rule of  elementary  evolution of  the part to  variable vector framing E, returns a rule zero if E is flagged as edge constant.
+        /// Returns the rule of  elementary  evolution of  the
+        /// part to  variable vector framing E, returns a
+        /// rule zero if E is flagged as edge constant.
         #[cxx_name = "ChFi3d_FilBuilder_GetLaw"]
         fn FilBuilder_get_law(
             self_: Pin<&mut FilBuilder>,
@@ -207,7 +225,9 @@ pub(crate) mod ffi {
         /// ======================== ChFi3d_Builder ========================
         /// /// **Source:** `ChFi3d_Builder.hxx` - `ChFi3d_Builder`
         ///
-        /// Root  class  for calculation of  surfaces (fillets, chamfers)  destined  to smooth edges  of a gap on a Shape and the reconstruction of  the   Shape.
+        /// Root  class  for calculation of  surfaces (fillets,
+        /// chamfers)  destined  to smooth edges  of
+        /// a gap on a Shape and the reconstruction of  the   Shape.
         #[cxx_name = "ChFi3d_Builder"]
         type Builder;
         #[cxx_name = "SetParams"]
@@ -223,31 +243,39 @@ pub(crate) mod ffi {
         /// extracts from  the list the contour containing edge E.
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut Builder>, E: &TopoDS_Edge);
-        /// gives the number of  the contour containing E or 0 if E does  not  belong to  any  contour.
+        /// gives the number of  the contour containing E or 0
+        /// if E does  not  belong to  any  contour.
         #[cxx_name = "Contains"]
         fn contains_edge(self: &Builder, E: &TopoDS_Edge) -> i32;
-        /// gives  the number of  the contour containing E or 0 if E does  not  belong  to  any  contour. Sets in IndexInSpine the index of E in the contour if it's found
+        /// gives  the number of  the contour containing E or 0
+        /// if E does  not  belong  to  any  contour.
+        /// Sets in IndexInSpine the index of E in the contour if it's found
         #[cxx_name = "Contains"]
         fn contains_edge_int(self: &Builder, E: &TopoDS_Edge, IndexInSpine: &mut i32) -> i32;
-        /// gives the number of  disjoint contours on  which the  fillets  are  calculated
+        /// gives the number of  disjoint contours on  which
+        /// the  fillets  are  calculated
         #[cxx_name = "NbElements"]
         fn nb_elements(self: &Builder) -> i32;
         /// returns the length of  the contour of index IC.
         #[cxx_name = "Length"]
         fn length(self: &Builder, IC: i32) -> f64;
-        /// returns the abscissa of the vertex V on the contour of index IC.
+        /// returns the abscissa of the vertex V on
+        /// the contour of index IC.
         #[cxx_name = "Abscissa"]
         fn abscissa(self: &Builder, IC: i32, V: &TopoDS_Vertex) -> f64;
-        /// returns the relative abscissa([0.,1.]) of the vertex V on the contour of index IC.
+        /// returns the relative abscissa([0.,1.]) of the
+        /// vertex V on the contour of index IC.
         #[cxx_name = "RelativeAbscissa"]
         fn relative_abscissa(self: &Builder, IC: i32, V: &TopoDS_Vertex) -> f64;
-        /// returns true if the contour of index IC is closed an tangent.
+        /// returns true if the contour of index IC is closed
+        /// an tangent.
         #[cxx_name = "ClosedAndTangent"]
         fn closed_and_tangent(self: &Builder, IC: i32) -> bool;
         /// returns true if the contour of index IC is closed
         #[cxx_name = "Closed"]
         fn closed(self: &Builder, IC: i32) -> bool;
-        /// general calculation of geometry on all edges, topologic reconstruction.
+        /// general calculation of geometry on all edges,
+        /// topologic reconstruction.
         #[cxx_name = "Compute"]
         fn compute(self: Pin<&mut Builder>);
         /// returns True if the computation  is  success
@@ -256,25 +284,31 @@ pub(crate) mod ffi {
         /// Advanced  function for the history
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut Builder>, EouV: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        /// Returns the number of contours on  which the calculation has failed.
+        /// Returns the number of contours on  which the calculation
+        /// has failed.
         #[cxx_name = "NbFaultyContours"]
         fn nb_faulty_contours(self: &Builder) -> i32;
-        /// Returns the number of  I'th contour on  which the calculation has failed.
+        /// Returns the number of  I'th contour on  which the calculation
+        /// has failed.
         #[cxx_name = "FaultyContour"]
         fn faulty_contour(self: &Builder, I: i32) -> i32;
         /// Returns the number of  surfaces calculated  on  the contour IC.
         #[cxx_name = "NbComputedSurfaces"]
         fn nb_computed_surfaces(self: &Builder, IC: i32) -> i32;
-        /// Returns the number of vertices on  which the calculation has failed.
+        /// Returns the number of vertices on  which the calculation
+        /// has failed.
         #[cxx_name = "NbFaultyVertices"]
         fn nb_faulty_vertices(self: &Builder) -> i32;
         /// returns True if  a partial result has  been  calculated
         #[cxx_name = "HasResult"]
         fn has_result(self: &Builder) -> bool;
-        /// Reset all results of compute and returns the algorithm in the state of the last acquisition to enable modification of contours or areas.
+        /// Reset all results of compute and returns the algorithm
+        /// in the state of the last acquisition to enable modification of contours or areas.
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut Builder>);
-        /// Method, implemented in the inheritants, calculates the elements of construction of the surface (fillet or chamfer).
+        /// Method, implemented in the inheritants, calculates
+        /// the elements of construction of the surface (fillet or
+        /// chamfer).
         #[cxx_name = "SplitKPart"]
         fn split_k_part(
             self: Pin<&mut Builder>,
@@ -291,16 +325,20 @@ pub(crate) mod ffi {
         ) -> bool;
         #[cxx_name = "PerformTwoCornerbyInter"]
         fn perform_two_cornerby_inter(self: Pin<&mut Builder>, Index: i32) -> bool;
-        /// gives the n'th set  of edges (contour) if I >NbElements()
+        /// gives the n'th set  of edges (contour)
+        /// if I >NbElements()
         #[cxx_name = "ChFi3d_Builder_Value"]
         fn Builder_value(self_: &Builder, I: i32) -> UniquePtr<HandleChFiDSSpine>;
-        /// returns the First vertex V of the contour of index IC.
+        /// returns the First vertex V of
+        /// the contour of index IC.
         #[cxx_name = "ChFi3d_Builder_FirstVertex"]
         fn Builder_first_vertex(self_: &Builder, IC: i32) -> UniquePtr<TopoDS_Vertex>;
-        /// returns the Last vertex V of the contour of index IC.
+        /// returns the Last vertex V of
+        /// the contour of index IC.
         #[cxx_name = "ChFi3d_Builder_LastVertex"]
         fn Builder_last_vertex(self_: &Builder, IC: i32) -> UniquePtr<TopoDS_Vertex>;
-        /// if (Isdone()) makes the result. if (!Isdone())
+        /// if (Isdone()) makes the result.
+        /// if (!Isdone())
         #[cxx_name = "ChFi3d_Builder_Shape"]
         fn Builder_shape(self_: &Builder) -> UniquePtr<TopoDS_Shape>;
         /// Returns the IS'th surface calculated on  the contour IC.
@@ -313,7 +351,8 @@ pub(crate) mod ffi {
         /// Returns the IV'th vertex on  which the calculation has failed.
         #[cxx_name = "ChFi3d_Builder_FaultyVertex"]
         fn Builder_faulty_vertex(self_: &Builder, IV: i32) -> UniquePtr<TopoDS_Vertex>;
-        /// if (HasResult()) returns partial result if (!HasResult())
+        /// if (HasResult()) returns partial result
+        /// if (!HasResult())
         #[cxx_name = "ChFi3d_Builder_BadShape"]
         fn Builder_bad_shape(self_: &Builder) -> UniquePtr<TopoDS_Shape>;
         /// Returns the Builder of  topologic operations.
@@ -327,22 +366,37 @@ pub(crate) mod ffi {
         type ChBuilder;
         /// /// **Source:** `ChFi3d_ChBuilder.hxx` - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
         ///
-        /// initializes the Builder with the Shape <S> for the computation of chamfers
+        /// initializes the Builder with the Shape <S> for the
+        /// computation of chamfers
         #[cxx_name = "ChFi3d_ChBuilder_ctor_shape_real"]
         fn ChBuilder_ctor_shape_real(S: &TopoDS_Shape, Ta: f64) -> UniquePtr<ChBuilder>;
-        /// initializes a contour with the edge <E> as first (the next are found by propagation ). The two distances (parameters of the chamfer) must be set after. if the edge <E> has more than 2 adjacent faces
+        /// initializes a contour with the edge <E> as first
+        /// (the next are found by propagation ).
+        /// The two distances (parameters of the chamfer) must
+        /// be set after.
+        /// if the edge <E> has more than 2 adjacent faces
         #[cxx_name = "Add"]
         fn add_edge(self: Pin<&mut ChBuilder>, E: &TopoDS_Edge);
-        /// initializes a new contour with the edge <E> as first (the next are found by propagation ), and  the distance <Dis> if the edge <E> has more than 2 adjacent faces
+        /// initializes a new contour with the edge <E> as first
+        /// (the next are found by propagation ), and  the
+        /// distance <Dis>
+        /// if the edge <E> has more than 2 adjacent faces
         #[cxx_name = "Add"]
         fn add_real_edge(self: Pin<&mut ChBuilder>, Dis: f64, E: &TopoDS_Edge);
-        /// set the distance <Dis> of the fillet contour of index <IC> in the DS with <Dis> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>
+        /// set the distance <Dis> of the fillet
+        /// contour of index <IC> in the DS with <Dis> on <F>.
+        /// if the face <F> is not one of common faces
+        /// of an edge of the contour <IC>
         #[cxx_name = "SetDist"]
         fn set_dist(self: Pin<&mut ChBuilder>, Dis: f64, IC: i32, F: &TopoDS_Face);
-        /// gives the distances <Dis> of the fillet contour of index <IC> in the DS
+        /// gives the distances <Dis> of the fillet
+        /// contour of index <IC> in the DS
         #[cxx_name = "GetDist"]
         fn get_dist(self: &ChBuilder, IC: i32, Dis: &mut f64);
-        /// initializes a new contour with the edge <E> as first (the next are found by propagation ), and  the distance <Dis1> and <Dis2> if the edge <E> has more than 2 adjacent faces
+        /// initializes a new contour with the edge <E> as first
+        /// (the next are found by propagation ), and  the
+        /// distance <Dis1> and <Dis2>
+        /// if the edge <E> has more than 2 adjacent faces
         #[cxx_name = "Add"]
         fn add_real2_edge_face(
             self: Pin<&mut ChBuilder>,
@@ -351,13 +405,20 @@ pub(crate) mod ffi {
             E: &TopoDS_Edge,
             F: &TopoDS_Face,
         );
-        /// set the distances <Dis1> and <Dis2> of the fillet contour of index <IC> in the DS with <Dis1> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>
+        /// set the distances <Dis1> and <Dis2> of the fillet
+        /// contour of index <IC> in the DS with <Dis1> on <F>.
+        /// if the face <F> is not one of common faces
+        /// of an edge of the contour <IC>
         #[cxx_name = "SetDists"]
         fn set_dists(self: Pin<&mut ChBuilder>, Dis1: f64, Dis2: f64, IC: i32, F: &TopoDS_Face);
-        /// gives the distances <Dis1> and <Dis2> of the fillet contour of index <IC> in the DS
+        /// gives the distances <Dis1> and <Dis2> of the fillet
+        /// contour of index <IC> in the DS
         #[cxx_name = "Dists"]
         fn dists(self: &ChBuilder, IC: i32, Dis1: &mut f64, Dis2: &mut f64);
-        /// initializes a new contour with the edge <E> as first (the next are found by propagation ), and  the distance <Dis1> and <Angle> if the edge <E> has more than 2 adjacent faces
+        /// initializes a new contour with the edge <E> as first
+        /// (the next are found by propagation ), and  the
+        /// distance <Dis1> and <Angle>
+        /// if the edge <E> has more than 2 adjacent faces
         #[cxx_name = "AddDA"]
         fn add_da(
             self: Pin<&mut ChBuilder>,
@@ -366,7 +427,10 @@ pub(crate) mod ffi {
             E: &TopoDS_Edge,
             F: &TopoDS_Face,
         );
-        /// set the distance <Dis> and <Angle> of the fillet contour of index <IC> in the DS with <Dis> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>
+        /// set the distance <Dis> and <Angle> of the fillet
+        /// contour of index <IC> in the DS with <Dis> on <F>.
+        /// if the face <F> is not one of common faces
+        /// of an edge of the contour <IC>
         #[cxx_name = "SetDistAngle"]
         fn set_dist_angle(
             self: Pin<&mut ChBuilder>,
@@ -375,7 +439,8 @@ pub(crate) mod ffi {
             IC: i32,
             F: &TopoDS_Face,
         );
-        /// gives the distances <Dis> and <Angle> of the fillet contour of index <IC> in the DS
+        /// gives the distances <Dis> and <Angle> of the fillet
+        /// contour of index <IC> in the DS
         #[cxx_name = "GetDistAngle"]
         fn get_dist_angle(self: &ChBuilder, IC: i32, Dis: &mut f64, Angle: &mut f64);
         /// Reset tous rayons du contour IC.
@@ -385,7 +450,9 @@ pub(crate) mod ffi {
         fn simulate(self: Pin<&mut ChBuilder>, IC: i32);
         #[cxx_name = "NbSurf"]
         fn nb_surf(self: &ChBuilder, IC: i32) -> i32;
-        /// Methode, implemented in inheritants, calculates the elements of construction of  the surface (fillet or chamfer).
+        /// Methode, implemented in inheritants, calculates
+        /// the elements of construction of  the surface (fillet
+        /// or chamfer).
         #[cxx_name = "PerformSurf"]
         fn perform_surf_sequenceofsurfdata_handleelspine_handlespine_int_handlesurface_handletopoltool_handlesurface_handletopoltool_real5_bool5_vector_int2(
             self: Pin<&mut ChBuilder>,

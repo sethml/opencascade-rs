@@ -25,7 +25,9 @@ impl ShapeProcess {
         ffi::ShapeProcess_find_operator(name, op)
     }
 
-    /// Performs a specified sequence of operators on Context Resource file and other data should be already loaded to Context (including description of sequence seq)
+    /// Performs a specified sequence of operators on Context
+    /// Resource file and other data should be already loaded
+    /// to Context (including description of sequence seq)
     pub fn perform_handlecontext_charptr_progressrange(
         context: &ffi::HandleShapeProcessContext,
         seq: &str,
@@ -45,7 +47,12 @@ pub(crate) mod ffi {
         /// ======================== ShapeProcess ========================
         /// /// **Source:** `ShapeProcess.hxx` - `ShapeProcess`
         ///
-        /// Shape Processing module allows to define and apply general Shape Processing as a customizable sequence of Shape Healing operators. The customization is implemented via user-editable resource file which defines sequence of operators to be executed and their parameters.
+        /// Shape Processing module
+        /// allows to define and apply general Shape Processing as a
+        /// customizable sequence of Shape Healing operators. The
+        /// customization is implemented via user-editable resource
+        /// file which defines sequence of operators to be executed
+        /// and their parameters.
         #[cxx_name = "ShapeProcess"]
         type ShapeProcess;
         /// Registers operator to make it visible for Performer
@@ -55,7 +62,9 @@ pub(crate) mod ffi {
         #[cxx_name = "ShapeProcess_FindOperator"]
         fn ShapeProcess_find_operator(name: &str, op: Pin<&mut HandleShapeProcessOperator>)
             -> bool;
-        /// Performs a specified sequence of operators on Context Resource file and other data should be already loaded to Context (including description of sequence seq)
+        /// Performs a specified sequence of operators on Context
+        /// Resource file and other data should be already loaded
+        /// to Context (including description of sequence seq)
         #[cxx_name = "ShapeProcess_Perform_handlecontext_charptr_progressrange"]
         fn ShapeProcess_perform_handlecontext_charptr_progressrange(
             context: &HandleShapeProcessContext,

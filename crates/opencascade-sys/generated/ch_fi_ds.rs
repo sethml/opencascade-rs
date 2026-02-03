@@ -93,7 +93,9 @@ impl ElSpine {
         ffi::ElSpine_shallow_copy(self)
     }
 
-    /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion.
+    /// Returns    a  curve equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
     pub fn trim(
         &self,
         First: f64,
@@ -379,7 +381,9 @@ pub(crate) mod ffi {
         /// Shallow copy of adaptor
         #[cxx_name = "ChFiDS_ElSpine_ShallowCopy"]
         fn ElSpine_shallow_copy(self_: &ElSpine) -> UniquePtr<HandleAdaptor3dCurve>;
-        /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion.
+        /// Returns    a  curve equivalent   of  <me>  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
         #[cxx_name = "ChFiDS_ElSpine_Trim"]
         fn ElSpine_trim(
             self_: &ElSpine,
@@ -414,7 +418,8 @@ pub(crate) mod ffi {
         /// ======================== ChFiDS_SurfData ========================
         /// /// **Source:** `ChFiDS_SurfData.hxx` - `ChFiDS_SurfData`
         ///
-        /// data structure for all information related to  the fillet and to 2 faces vis a vis
+        /// data structure for all information related to  the
+        /// fillet and to 2 faces vis a vis
         #[cxx_name = "ChFiDS_SurfData"]
         type SurfData;
         /// /// **Source:** `ChFiDS_SurfData.hxx` - `ChFiDS_SurfData::ChFiDS_SurfData()`
@@ -476,10 +481,12 @@ pub(crate) mod ffi {
         fn change_interference(self: Pin<&mut SurfData>, OnS: i32) -> Pin<&mut FaceInterference>;
         #[cxx_name = "Index"]
         fn index(self: &SurfData, OfS: i32) -> i32;
-        /// returns one of the four vertices  whether First is true or wrong and OnS equals 1 or 2.
+        /// returns one of the four vertices  whether First is true
+        /// or wrong and OnS equals 1 or 2.
         #[cxx_name = "Vertex"]
         fn vertex(self: &SurfData, First: bool, OnS: i32) -> &CommonPoint;
-        /// returns one of the four vertices  whether First is true or wrong and OnS equals 1 or 2.
+        /// returns one of the four vertices  whether First is true
+        /// or wrong and OnS equals 1 or 2.
         #[cxx_name = "ChangeVertex"]
         fn change_vertex(self: Pin<&mut SurfData>, First: bool, OnS: i32) -> Pin<&mut CommonPoint>;
         #[cxx_name = "IsOnCurve"]
@@ -548,7 +555,9 @@ pub(crate) mod ffi {
         /// ======================== ChFiDS_CommonPoint ========================
         /// /// **Source:** `ChFiDS_CommonPoint.hxx` - `ChFiDS_CommonPoint`
         ///
-        /// point    start/end of  fillet common  to  2 adjacent  filets and  to an edge on  one of 2 faces participating in  the construction of  the  fillet
+        /// point    start/end of  fillet common  to  2 adjacent  filets
+        /// and  to an edge on  one of 2 faces participating
+        /// in  the construction of  the  fillet
         #[cxx_name = "ChFiDS_CommonPoint"]
         type CommonPoint;
         /// /// **Source:** `ChFiDS_CommonPoint.hxx` - `ChFiDS_CommonPoint::ChFiDS_CommonPoint()`
@@ -559,13 +568,16 @@ pub(crate) mod ffi {
         /// default value for all fields
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut CommonPoint>);
-        /// Sets the values of a point which is a vertex on the initial facet of restriction of one of the surface.
+        /// Sets the values of a point which is a vertex on
+        /// the initial facet of restriction of one
+        /// of the surface.
         #[cxx_name = "SetVertex"]
         fn set_vertex(self: Pin<&mut CommonPoint>, theVertex: &TopoDS_Vertex);
         /// Sets the value of the parameter on the spine
         #[cxx_name = "SetParameter"]
         fn set_parameter(self: Pin<&mut CommonPoint>, Param: f64);
-        /// Set the 3d point for a commonpoint that is not a vertex or on an arc.
+        /// Set the 3d point for a commonpoint that is not
+        /// a vertex or on an arc.
         #[cxx_name = "SetPoint"]
         fn set_point(self: Pin<&mut CommonPoint>, thePoint: &gp_Pnt);
         /// Set the output 3d  vector
@@ -577,19 +589,26 @@ pub(crate) mod ffi {
         /// This method returns the fuzziness on the point.
         #[cxx_name = "Tolerance"]
         fn tolerance(self: &CommonPoint) -> f64;
-        /// Returns TRUE if the point is a vertex on the initial restriction facet of the surface.
+        /// Returns TRUE if the point is a vertex on the initial
+        /// restriction facet of the surface.
         #[cxx_name = "IsVertex"]
         fn is_vertex(self: &CommonPoint) -> bool;
-        /// Returns the information about the point when it is on the domain of the first patch, i-e when the function IsVertex returns True. Otherwise, an exception is raised.
+        /// Returns the information about the point when it is
+        /// on the domain of the first patch, i-e when the function
+        /// IsVertex returns True.
+        /// Otherwise, an exception is raised.
         #[cxx_name = "Vertex"]
         fn vertex(self: &CommonPoint) -> &TopoDS_Vertex;
-        /// Returns TRUE if the point is a on an edge of the initial restriction facet of the surface.
+        /// Returns TRUE if the point is a on an edge of the initial
+        /// restriction facet of the surface.
         #[cxx_name = "IsOnArc"]
         fn is_on_arc(self: &CommonPoint) -> bool;
-        /// Returns the arc of restriction containing the vertex.
+        /// Returns the arc of restriction containing the
+        /// vertex.
         #[cxx_name = "Arc"]
         fn arc(self: &CommonPoint) -> &TopoDS_Edge;
-        /// Returns the parameter of the point on the arc returned by the method Arc().
+        /// Returns the parameter of the point on the
+        /// arc returned by the method Arc().
         #[cxx_name = "ParameterOnArc"]
         fn parameter_on_arc(self: &CommonPoint) -> f64;
         /// Returns the parameter on the spine

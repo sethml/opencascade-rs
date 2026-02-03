@@ -20,7 +20,12 @@ impl Explorer {
 }
 pub use ffi::TopExp;
 impl TopExp {
-    /// Stores in the map <M> all  the sub-shapes of <S>. - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
+    /// Stores in the map <M> all  the sub-shapes of <S>.
+    /// - If cumOri is true, the function composes all
+    /// sub-shapes with the orientation of S.
+    /// - If cumLoc is true, the function multiplies all
+    /// sub-shapes by the location of S, i.e. it applies to
+    /// each sub-shape the transformation that is associated with S.
     pub fn map_shapes_shape_indexedmapofshape_bool2(
         S: &ffi::TopoDS_Shape,
         M: std::pin::Pin<&mut ffi::TopTools_IndexedMapOfShape>,
@@ -30,7 +35,12 @@ impl TopExp {
         ffi::TopExp_map_shapes_shape_indexedmapofshape_bool2(S, M, cumOri, cumLoc)
     }
 
-    /// Stores in the map <M> all  the sub-shapes of <S>. - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
+    /// Stores in the map <M> all  the sub-shapes of <S>.
+    /// - If cumOri is true, the function composes all
+    /// sub-shapes with the orientation of S.
+    /// - If cumLoc is true, the function multiplies all
+    /// sub-shapes by the location of S, i.e. it applies to
+    /// each sub-shape the transformation that is associated with S.
     pub fn map_shapes_shape_mapofshape_bool2(
         S: &ffi::TopoDS_Shape,
         M: std::pin::Pin<&mut ffi::TopTools_MapOfShape>,
@@ -40,17 +50,23 @@ impl TopExp {
         ffi::TopExp_map_shapes_shape_mapofshape_bool2(S, M, cumOri, cumLoc)
     }
 
-    /// Returns the Vertex of orientation FORWARD in E. If there is none returns a Null Shape. CumOri = True : taking account the edge orientation
+    /// Returns the Vertex of orientation FORWARD in E. If
+    /// there is none returns a Null Shape.
+    /// CumOri = True : taking account the edge orientation
     pub fn first_vertex(E: &ffi::TopoDS_Edge, CumOri: bool) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
         ffi::TopExp_first_vertex(E, CumOri)
     }
 
-    /// Returns the Vertex of orientation REVERSED in E. If there is none returns a Null Shape. CumOri = True : taking account the edge orientation
+    /// Returns the Vertex of orientation REVERSED in E. If
+    /// there is none returns a Null Shape.
+    /// CumOri = True : taking account the edge orientation
     pub fn last_vertex(E: &ffi::TopoDS_Edge, CumOri: bool) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
         ffi::TopExp_last_vertex(E, CumOri)
     }
 
-    /// Returns in Vfirst, Vlast the  FORWARD and REVERSED vertices of the edge <E>. May be null shapes. CumOri = True : taking account the edge orientation
+    /// Returns in Vfirst, Vlast the  FORWARD and REVERSED
+    /// vertices of the edge <E>. May be null shapes.
+    /// CumOri = True : taking account the edge orientation
     pub fn vertices_edge_vertex2_bool(
         E: &ffi::TopoDS_Edge,
         Vfirst: std::pin::Pin<&mut ffi::TopoDS_Vertex>,
@@ -60,7 +76,12 @@ impl TopExp {
         ffi::TopExp_vertices_edge_vertex2_bool(E, Vfirst, Vlast, CumOri)
     }
 
-    /// Returns  in  Vfirst,  Vlast   the first   and last vertices of the open wire <W>. May be null shapes. if   <W>  is closed Vfirst and Vlast  are a same vertex on <W>. if <W> is no manifold. VFirst and VLast are null shapes.
+    /// Returns  in  Vfirst,  Vlast   the first   and last
+    /// vertices of the open wire <W>. May be null shapes.
+    /// if   <W>  is closed Vfirst and Vlast  are a same
+    /// vertex on <W>.
+    /// if <W> is no manifold. VFirst and VLast are null
+    /// shapes.
     pub fn vertices_wire_vertex2(
         W: &ffi::TopoDS_Wire,
         Vfirst: std::pin::Pin<&mut ffi::TopoDS_Vertex>,
@@ -69,7 +90,10 @@ impl TopExp {
         ffi::TopExp_vertices_wire_vertex2(W, Vfirst, Vlast)
     }
 
-    /// Finds   the  vertex <V> common   to  the two edges <E1,E2>, returns True if this vertex exists. Warning: <V> has sense only if the value <True> is returned
+    /// Finds   the  vertex <V> common   to  the two edges
+    /// <E1,E2>, returns True if this vertex exists.
+    ///
+    /// Warning: <V> has sense only if the value <True> is returned
     pub fn common_vertex(
         E1: &ffi::TopoDS_Edge,
         E2: &ffi::TopoDS_Edge,
@@ -89,9 +113,63 @@ pub(crate) mod ffi {
         /// ======================== TopExp_Explorer ========================
         /// /// **Source:** `TopExp_Explorer.hxx` - `TopExp_Explorer`
         ///
-        /// An Explorer is a Tool to visit  a Topological Data Structure form the TopoDS package. An Explorer is built with : * The Shape to explore. * The type of Shapes to find : e.g VERTEX, EDGE. This type cannot be SHAPE. * The type of Shapes to avoid. e.g  SHELL, EDGE. By default   this type is  SHAPE which  means no restriction on the exploration. The Explorer  visits  all the  structure   to find shapes of the   requested  type  which   are   not contained in the type to avoid. Example to find all the Faces in the Shape S : TopExp_Explorer Ex; for (Ex.Init(S,TopAbs_FACE); Ex.More(); Ex.Next()) { ProcessFace(Ex.Current()); } // an other way TopExp_Explorer Ex(S,TopAbs_FACE); while (Ex.More()) { ProcessFace(Ex.Current()); Ex.Next(); } To find all the vertices which are not in an edge : for (Ex.Init(S,TopAbs_VERTEX,TopAbs_EDGE); ...) To  find all the faces  in   a SHELL, then all the faces not in a SHELL : TopExp_Explorer Ex1, Ex2; for (Ex1.Init(S,TopAbs_SHELL),...) { // visit all shells for (Ex2.Init(Ex1.Current(),TopAbs_FACE),...) { // visit all the faces of the current shell
-/// }
-/// } for (Ex1.Init(S,TopAbs_FACE,TopAbs_SHELL),...) { // visit all faces not in a shell } If   the type  to avoid  is   the same  or is less complex than the type to find it has no effect. For example searching edges  not in a vertex  does not make a difference.
+        /// An Explorer is a Tool to visit  a Topological Data
+        /// Structure form the TopoDS package.
+        ///
+        /// An Explorer is built with :
+        ///
+        /// * The Shape to explore.
+        ///
+        /// * The type of Shapes to find : e.g VERTEX, EDGE.
+        /// This type cannot be SHAPE.
+        ///
+        /// * The type of Shapes to avoid. e.g  SHELL, EDGE.
+        /// By default   this type is  SHAPE which  means no
+        /// restriction on the exploration.
+        ///
+        /// The Explorer  visits  all the  structure   to find
+        /// shapes of the   requested  type  which   are   not
+        /// contained in the type to avoid.
+        ///
+        /// Example to find all the Faces in the Shape S :
+        ///
+        /// TopExp_Explorer Ex;
+        /// for (Ex.Init(S,TopAbs_FACE); Ex.More(); Ex.Next()) {
+        /// ProcessFace(Ex.Current());
+        /// }
+        ///
+        /// // an other way
+        /// TopExp_Explorer Ex(S,TopAbs_FACE);
+        /// while (Ex.More()) {
+        /// ProcessFace(Ex.Current());
+        /// Ex.Next();
+        /// }
+        ///
+        /// To find all the vertices which are not in an edge :
+        ///
+        /// for (Ex.Init(S,TopAbs_VERTEX,TopAbs_EDGE); ...)
+        ///
+        /// To  find all the faces  in   a SHELL, then all the
+        /// faces not in a SHELL :
+        ///
+        /// TopExp_Explorer Ex1, Ex2;
+        ///
+        /// for (Ex1.Init(S,TopAbs_SHELL),...) {
+        /// // visit all shells
+        /// for (Ex2.Init(Ex1.Current(),TopAbs_FACE),...) {
+        /// // visit all the faces of the current shell
+        /// }
+        /// }
+        ///
+        /// for (Ex1.Init(S,TopAbs_FACE,TopAbs_SHELL),...) {
+        /// // visit all faces not in a shell
+        /// }
+        ///
+        /// If   the type  to avoid  is   the same  or is less
+        /// complex than the type to find it has no effect.
+        ///
+        /// For example searching edges  not in a vertex  does
+        /// not make a difference.
         #[cxx_name = "TopExp_Explorer"]
         type Explorer;
         /// /// **Source:** `TopExp_Explorer.hxx` - `TopExp_Explorer::TopExp_Explorer()`
@@ -102,13 +180,19 @@ pub(crate) mod ffi {
         /// Returns True if there are more shapes in the exploration.
         #[cxx_name = "More"]
         fn more(self: &Explorer) -> bool;
-        /// Moves to the next Shape in the exploration. Exceptions Standard_NoMoreObject if there are no more shapes to explore.
+        /// Moves to the next Shape in the exploration.
+        /// Exceptions
+        /// Standard_NoMoreObject if there are no more shapes to explore.
         #[cxx_name = "Next"]
         fn next(self: Pin<&mut Explorer>);
-        /// Returns the current shape in the exploration. Exceptions Standard_NoSuchObject if this explorer has no more shapes to explore.
+        /// Returns the current shape in the exploration.
+        /// Exceptions
+        /// Standard_NoSuchObject if this explorer has no more shapes to explore.
         #[cxx_name = "Value"]
         fn value(self: &Explorer) -> &TopoDS_Shape;
-        /// Returns the current shape in the exploration. Exceptions Standard_NoSuchObject if this explorer has no more shapes to explore.
+        /// Returns the current shape in the exploration.
+        /// Exceptions
+        /// Standard_NoSuchObject if this explorer has no more shapes to explore.
         #[cxx_name = "Current"]
         fn current(self: &Explorer) -> &TopoDS_Shape;
         /// Reinitialize the exploration with the original arguments.
@@ -117,19 +201,35 @@ pub(crate) mod ffi {
         /// Return explored shape.
         #[cxx_name = "ExploredShape"]
         fn explored_shape(self: &Explorer) -> &TopoDS_Shape;
-        /// Returns the current depth of the exploration. 0 is the shape to explore itself.
+        /// Returns the current depth of the exploration. 0 is
+        /// the shape to explore itself.
         #[cxx_name = "Depth"]
         fn depth(self: &Explorer) -> i32;
-        /// Clears the content of the explorer. It will return False on More().
+        /// Clears the content of the explorer. It will return
+        /// False on More().
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Explorer>);
         /// ======================== TopExp ========================
         /// /// **Source:** `TopExp.hxx` - `TopExp`
         ///
-        /// This package   provides  basic tools  to   explore the topological data structures. * Explorer : A tool to find all sub-shapes of  a given type. e.g. all faces of a solid. * Package methods to map sub-shapes of a shape. Level : Public All methods of all  classes will be public.
+        /// This package   provides  basic tools  to   explore the
+        /// topological data structures.
+        ///
+        /// * Explorer : A tool to find all sub-shapes of  a given
+        /// type. e.g. all faces of a solid.
+        ///
+        /// * Package methods to map sub-shapes of a shape.
+        ///
+        /// Level : Public
+        /// All methods of all  classes will be public.
         #[cxx_name = "TopExp"]
         type TopExp;
-        /// Stores in the map <M> all  the sub-shapes of <S>. - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
+        /// Stores in the map <M> all  the sub-shapes of <S>.
+        /// - If cumOri is true, the function composes all
+        /// sub-shapes with the orientation of S.
+        /// - If cumLoc is true, the function multiplies all
+        /// sub-shapes by the location of S, i.e. it applies to
+        /// each sub-shape the transformation that is associated with S.
         #[cxx_name = "TopExp_MapShapes_shape_indexedmapofshape_bool2"]
         fn TopExp_map_shapes_shape_indexedmapofshape_bool2(
             S: &TopoDS_Shape,
@@ -137,7 +237,12 @@ pub(crate) mod ffi {
             cumOri: bool,
             cumLoc: bool,
         );
-        /// Stores in the map <M> all  the sub-shapes of <S>. - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
+        /// Stores in the map <M> all  the sub-shapes of <S>.
+        /// - If cumOri is true, the function composes all
+        /// sub-shapes with the orientation of S.
+        /// - If cumLoc is true, the function multiplies all
+        /// sub-shapes by the location of S, i.e. it applies to
+        /// each sub-shape the transformation that is associated with S.
         #[cxx_name = "TopExp_MapShapes_shape_mapofshape_bool2"]
         fn TopExp_map_shapes_shape_mapofshape_bool2(
             S: &TopoDS_Shape,
@@ -145,13 +250,19 @@ pub(crate) mod ffi {
             cumOri: bool,
             cumLoc: bool,
         );
-        /// Returns the Vertex of orientation FORWARD in E. If there is none returns a Null Shape. CumOri = True : taking account the edge orientation
+        /// Returns the Vertex of orientation FORWARD in E. If
+        /// there is none returns a Null Shape.
+        /// CumOri = True : taking account the edge orientation
         #[cxx_name = "TopExp_FirstVertex"]
         fn TopExp_first_vertex(E: &TopoDS_Edge, CumOri: bool) -> UniquePtr<TopoDS_Vertex>;
-        /// Returns the Vertex of orientation REVERSED in E. If there is none returns a Null Shape. CumOri = True : taking account the edge orientation
+        /// Returns the Vertex of orientation REVERSED in E. If
+        /// there is none returns a Null Shape.
+        /// CumOri = True : taking account the edge orientation
         #[cxx_name = "TopExp_LastVertex"]
         fn TopExp_last_vertex(E: &TopoDS_Edge, CumOri: bool) -> UniquePtr<TopoDS_Vertex>;
-        /// Returns in Vfirst, Vlast the  FORWARD and REVERSED vertices of the edge <E>. May be null shapes. CumOri = True : taking account the edge orientation
+        /// Returns in Vfirst, Vlast the  FORWARD and REVERSED
+        /// vertices of the edge <E>. May be null shapes.
+        /// CumOri = True : taking account the edge orientation
         #[cxx_name = "TopExp_Vertices_edge_vertex2_bool"]
         fn TopExp_vertices_edge_vertex2_bool(
             E: &TopoDS_Edge,
@@ -159,14 +270,22 @@ pub(crate) mod ffi {
             Vlast: Pin<&mut TopoDS_Vertex>,
             CumOri: bool,
         );
-        /// Returns  in  Vfirst,  Vlast   the first   and last vertices of the open wire <W>. May be null shapes. if   <W>  is closed Vfirst and Vlast  are a same vertex on <W>. if <W> is no manifold. VFirst and VLast are null shapes.
+        /// Returns  in  Vfirst,  Vlast   the first   and last
+        /// vertices of the open wire <W>. May be null shapes.
+        /// if   <W>  is closed Vfirst and Vlast  are a same
+        /// vertex on <W>.
+        /// if <W> is no manifold. VFirst and VLast are null
+        /// shapes.
         #[cxx_name = "TopExp_Vertices_wire_vertex2"]
         fn TopExp_vertices_wire_vertex2(
             W: &TopoDS_Wire,
             Vfirst: Pin<&mut TopoDS_Vertex>,
             Vlast: Pin<&mut TopoDS_Vertex>,
         );
-        /// Finds   the  vertex <V> common   to  the two edges <E1,E2>, returns True if this vertex exists. Warning: <V> has sense only if the value <True> is returned
+        /// Finds   the  vertex <V> common   to  the two edges
+        /// <E1,E2>, returns True if this vertex exists.
+        ///
+        /// Warning: <V> has sense only if the value <True> is returned
         #[cxx_name = "TopExp_CommonVertex"]
         fn TopExp_common_vertex(
             E1: &TopoDS_Edge,

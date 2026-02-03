@@ -242,7 +242,39 @@ pub(crate) mod ffi {
         /// ======================== BOPAlgo_BOP ========================
         /// /// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP`
         ///
-        /// The class represents the Building part of the Boolean Operations algorithm.<br> The arguments of the algorithms are divided in two groups - *Objects* and *Tools*.<br> The algorithm builds the splits of the given arguments using the intersection results and combines the result of Boolean Operation of given type:<br> - *FUSE* - union of two groups of objects;<br> - *COMMON* - intersection of two groups of objects;<br> - *CUT* - subtraction of one group from the other.<br> The rules for the arguments and type of the operation are the following:<br> - For Boolean operation *FUSE* all arguments should have equal dimensions;<br> - For Boolean operation *CUT* the minimal dimension of *Tools* should not be less than the maximal dimension of *Objects*;<br> - For Boolean operation *COMMON* the arguments can have any dimension.<br> The class is a General Fuse based algorithm. Thus, all options of the General Fuse algorithm such as Fuzzy mode, safe processing mode, parallel processing mode, gluing mode and history support are also available in this algorithm.<br> Additionally to the Warnings of the parent class the algorithm returns the following warnings: - *BOPAlgo_AlertEmptyShape* - in case some of the input shapes are empty shapes. Additionally to Errors of the parent class the algorithm returns the following Error statuses: - *BOPAlgo_AlertBOPIsNotSet* - in case the type of Boolean operation is not set; - *BOPAlgo_AlertBOPNotAllowed* - in case the operation of given type is not allowed on given inputs; - *BOPAlgo_AlertSolidBuilderFailed* - in case the BuilderSolid algorithm failed to produce the Fused solid.
+        ///
+        /// The class represents the Building part of the Boolean Operations
+        /// algorithm.<br>
+        /// The arguments of the algorithms are divided in two groups - *Objects*
+        /// and *Tools*.<br>
+        /// The algorithm builds the splits of the given arguments using the intersection
+        /// results and combines the result of Boolean Operation of given type:<br>
+        /// - *FUSE* - union of two groups of objects;<br>
+        /// - *COMMON* - intersection of two groups of objects;<br>
+        /// - *CUT* - subtraction of one group from the other.<br>
+        ///
+        /// The rules for the arguments and type of the operation are the following:<br>
+        /// - For Boolean operation *FUSE* all arguments should have equal dimensions;<br>
+        /// - For Boolean operation *CUT* the minimal dimension of *Tools* should not be
+        /// less than the maximal dimension of *Objects*;<br>
+        /// - For Boolean operation *COMMON* the arguments can have any dimension.<br>
+        ///
+        /// The class is a General Fuse based algorithm. Thus, all options
+        /// of the General Fuse algorithm such as Fuzzy mode, safe processing mode,
+        /// parallel processing mode, gluing mode and history support are also
+        /// available in this algorithm.<br>
+        ///
+        /// Additionally to the Warnings of the parent class the algorithm returns
+        /// the following warnings:
+        /// - *BOPAlgo_AlertEmptyShape* - in case some of the input shapes are empty shapes.
+        ///
+        /// Additionally to Errors of the parent class the algorithm returns
+        /// the following Error statuses:
+        /// - *BOPAlgo_AlertBOPIsNotSet* - in case the type of Boolean operation is not set;
+        /// - *BOPAlgo_AlertBOPNotAllowed* - in case the operation of given type is not allowed on
+        /// given inputs;
+        /// - *BOPAlgo_AlertSolidBuilderFailed* - in case the BuilderSolid algorithm failed to
+        /// produce the Fused solid.
         #[cxx_name = "BOPAlgo_BOP"]
         type BOP;
         /// /// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP::BOPAlgo_BOP()`
@@ -335,7 +367,38 @@ pub(crate) mod ffi {
         /// ======================== BOPAlgo_Builder ========================
         /// /// **Source:** `BOPAlgo_Builder.hxx` - `BOPAlgo_Builder`
         ///
-        /// The class is a General Fuse algorithm - base algorithm for the algorithms in the Boolean Component. Its main purpose is to build the split parts of the argument shapes from which the result of the operations is combined.<br> The result of the General Fuse algorithm itself is a compound containing all split parts of the arguments. <br> Additionally to the options of the base classes, the algorithm has the following options:<br> - *Safe processing mode* - allows to avoid modification of the input shapes during the operation (by default it is off);<br> - *Gluing options* - allows to speed up the calculation of the intersections on the special cases, in which some sub-shapes are coinciding.<br> - *Disabling the check for inverted solids* - Disables/Enables the check of the input solids for inverted status (holes in the space). The default value is TRUE, i.e. the check is performed. Setting this flag to FALSE for inverted solids, most likely will lead to incorrect results. The algorithm returns the following warnings: - *BOPAlgo_AlertUnableToOrientTheShape* - in case the check on the orientation of the split shape to match the orientation of the original shape has failed. The algorithm returns the following Error statuses: - *BOPAlgo_AlertTooFewArguments* - in case there are no enough arguments to perform the operation; - *BOPAlgo_AlertNoFiller* - in case the intersection tool has not been created; - *BOPAlgo_AlertIntersectionFailed* - in case the intersection of the arguments has failed; - *BOPAlgo_AlertBuilderFailed* - in case building splits of arguments has failed with some unexpected error.
+        ///
+        /// The class is a General Fuse algorithm - base algorithm for the
+        /// algorithms in the Boolean Component. Its main purpose is to build
+        /// the split parts of the argument shapes from which the result of
+        /// the operations is combined.<br>
+        /// The result of the General Fuse algorithm itself is a compound
+        /// containing all split parts of the arguments. <br>
+        ///
+        /// Additionally to the options of the base classes, the algorithm has
+        /// the following options:<br>
+        /// - *Safe processing mode* - allows to avoid modification of the input
+        /// shapes during the operation (by default it is off);<br>
+        /// - *Gluing options* - allows to speed up the calculation of the intersections
+        /// on the special cases, in which some sub-shapes are coinciding.<br>
+        /// - *Disabling the check for inverted solids* - Disables/Enables the check of the input solids
+        /// for inverted status (holes in the space). The default value is TRUE,
+        /// i.e. the check is performed. Setting this flag to FALSE for inverted
+        /// solids, most likely will lead to incorrect results.
+        ///
+        /// The algorithm returns the following warnings:
+        /// - *BOPAlgo_AlertUnableToOrientTheShape* - in case the check on the orientation of the split
+        /// shape
+        /// to match the orientation of the original shape has
+        /// failed.
+        ///
+        /// The algorithm returns the following Error statuses:
+        /// - *BOPAlgo_AlertTooFewArguments* - in case there are no enough arguments to perform the
+        /// operation;
+        /// - *BOPAlgo_AlertNoFiller* - in case the intersection tool has not been created;
+        /// - *BOPAlgo_AlertIntersectionFailed* - in case the intersection of the arguments has failed;
+        /// - *BOPAlgo_AlertBuilderFailed* - in case building splits of arguments has failed with some
+        /// unexpected error.
         #[cxx_name = "BOPAlgo_Builder"]
         type Builder;
         /// /// **Source:** `BOPAlgo_Builder.hxx` - `BOPAlgo_Builder::BOPAlgo_Builder()`
@@ -351,7 +414,8 @@ pub(crate) mod ffi {
         /// Clears the content of the algorithm.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Builder>);
-        /// @name Arguments Adds the argument to the operation.
+        /// @name Arguments
+        /// Adds the argument to the operation.
         #[cxx_name = "AddArgument"]
         fn add_argument(self: Pin<&mut Builder>, theShape: &TopoDS_Shape);
         /// Sets the list of arguments for the operation.
@@ -360,35 +424,49 @@ pub(crate) mod ffi {
         /// Returns the list of arguments.
         #[cxx_name = "Arguments"]
         fn arguments(self: &Builder) -> &TopTools_ListOfShape;
-        /// @name Options Sets the flag that defines the mode of treatment. In non-destructive mode the argument shapes are not modified. Instead a copy of a sub-shape is created in the result if it is needed to be updated. This flag is taken into account if internal PaveFiller is used only. In the case of calling PerformWithFiller the corresponding flag of that PaveFiller is in force.
+        /// @name Options
+        /// Sets the flag that defines the mode of treatment.
+        /// In non-destructive mode the argument shapes are not modified. Instead
+        /// a copy of a sub-shape is created in the result if it is needed to be updated.
+        /// This flag is taken into account if internal PaveFiller is used only.
+        /// In the case of calling PerformWithFiller the corresponding flag of that PaveFiller
+        /// is in force.
         #[cxx_name = "SetNonDestructive"]
         fn set_non_destructive(self: Pin<&mut Builder>, theFlag: bool);
-        /// Returns the flag that defines the mode of treatment. In non-destructive mode the argument shapes are not modified. Instead a copy of a sub-shape is created in the result if it is needed to be updated.
+        /// Returns the flag that defines the mode of treatment.
+        /// In non-destructive mode the argument shapes are not modified. Instead
+        /// a copy of a sub-shape is created in the result if it is needed to be updated.
         #[cxx_name = "NonDestructive"]
         fn non_destructive(self: &Builder) -> bool;
         /// Enables/Disables the check of the input solids for inverted status
         #[cxx_name = "SetCheckInverted"]
         fn set_check_inverted(self: Pin<&mut Builder>, theCheck: bool);
-        /// Returns the flag defining whether the check for input solids on inverted status should be performed or not.
+        /// Returns the flag defining whether the check for input solids on inverted status
+        /// should be performed or not.
         #[cxx_name = "CheckInverted"]
         fn check_inverted(self: &Builder) -> bool;
-        /// @name Performing the operation Performs the operation. The intersection will be performed also.
+        /// @name Performing the operation
+        /// Performs the operation.
+        /// The intersection will be performed also.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut Builder>, theRange: &Message_ProgressRange);
-        /// Performs the operation with the prepared filler. The intersection will not be performed in this case.
+        /// Performs the operation with the prepared filler.
+        /// The intersection will not be performed in this case.
         #[cxx_name = "PerformWithFiller"]
         fn perform_with_filler(
             self: Pin<&mut Builder>,
             theFiller: &BOPAlgo_PaveFiller,
             theRange: &Message_ProgressRange,
         );
-        /// @name Images/Origins Returns the map of images.
+        /// @name Images/Origins
+        /// Returns the map of images.
         #[cxx_name = "Images"]
         fn images(self: &Builder) -> &TopTools_DataMapOfShapeListOfShape;
         /// Returns the map of origins.
         #[cxx_name = "Origins"]
         fn origins(self: &Builder) -> &TopTools_DataMapOfShapeListOfShape;
-        /// Returns the map of Same Domain (SD) shapes - coinciding shapes from different arguments.
+        /// Returns the map of Same Domain (SD) shapes - coinciding shapes
+        /// from different arguments.
         #[cxx_name = "ShapesSD"]
         fn shapes_sd(self: &Builder) -> &TopTools_DataMapOfShapeShape;
         /// Returns the PaveFiller, algorithm for sub-shapes intersection.
@@ -415,19 +493,28 @@ pub(crate) mod ffi {
         /// ======================== BOPAlgo_BuilderShape ========================
         /// /// **Source:** `BOPAlgo_BuilderShape.hxx` - `BOPAlgo_BuilderShape`
         ///
-        /// Root class for algorithms that has shape as result. The class provides the History mechanism, which allows tracking the modification of the input shapes during the operation. It uses the *BRepTools_History* tool as a storer for history objects.
+        /// Root class for algorithms that has shape as result.
+        ///
+        /// The class provides the History mechanism, which allows
+        /// tracking the modification of the input shapes during
+        /// the operation. It uses the *BRepTools_History* tool
+        /// as a storer for history objects.
         #[cxx_name = "BOPAlgo_BuilderShape"]
         type BuilderShape;
-        /// @name Getting the result Returns the result of algorithm
+        /// @name Getting the result
+        /// Returns the result of algorithm
         #[cxx_name = "Shape"]
         fn shape(self: &BuilderShape) -> &TopoDS_Shape;
-        /// @name History methods Returns the list of shapes Modified from the shape theS.
+        /// @name History methods
+        /// Returns the list of shapes Modified from the shape theS.
         #[cxx_name = "Modified"]
         fn modified(self: Pin<&mut BuilderShape>, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
         /// Returns the list of shapes Generated from the shape theS.
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut BuilderShape>, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        /// Returns true if the shape theS has been deleted. In this case the shape will have no Modified elements, but can have Generated elements.
+        /// Returns true if the shape theS has been deleted.
+        /// In this case the shape will have no Modified elements,
+        /// but can have Generated elements.
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut BuilderShape>, theS: &TopoDS_Shape) -> bool;
         /// Returns true if any of the input shapes has been modified during operation.
@@ -439,7 +526,8 @@ pub(crate) mod ffi {
         /// Returns true if any of the input shapes has been deleted during operation.
         #[cxx_name = "HasDeleted"]
         fn has_deleted(self: &BuilderShape) -> bool;
-        /// @name Enabling/Disabling the history collection. Allows disabling the history collection
+        /// @name Enabling/Disabling the history collection.
+        /// Allows disabling the history collection
         #[cxx_name = "SetToFillHistory"]
         fn set_to_fill_history(self: Pin<&mut BuilderShape>, theHistFlag: bool);
         /// Returns flag of history availability
@@ -458,7 +546,9 @@ pub(crate) mod ffi {
         /// ======================== BOPAlgo_ParallelAlgo ========================
         /// /// **Source:** `BOPAlgo_Algo.hxx` - `BOPAlgo_ParallelAlgo`
         ///
-        /// Additional root class to provide interface to be launched from parallel vector. It already has the range as a field, and has to be used with caution to create scope from the range only once.
+        /// Additional root class to provide interface to be launched from parallel vector.
+        /// It already has the range as a field, and has to be used with caution to create
+        /// scope from the range only once.
         #[cxx_name = "BOPAlgo_ParallelAlgo"]
         type ParallelAlgo;
         /// The main method to implement the operation
@@ -476,7 +566,8 @@ pub(crate) mod ffi {
         /// ======================== BOPAlgo_PISteps ========================
         /// /// **Source:** `BOPAlgo_Algo.hxx` - `BOPAlgo_PISteps`
         ///
-        /// Class for representing the relative contribution of each step of the operation to the whole progress
+        /// Class for representing the relative contribution of each step of
+        /// the operation to the whole progress
         #[cxx_name = "BOPAlgo_PISteps"]
         type PISteps;
         /// /// **Source:** `BOPAlgo_Algo.hxx` - `BOPAlgo_PISteps::BOPAlgo_PISteps()`
@@ -499,7 +590,16 @@ pub(crate) mod ffi {
         /// ======================== BOPAlgo_Options ========================
         /// /// **Source:** `BOPAlgo_Options.hxx` - `BOPAlgo_Options`
         ///
-        /// The class provides the following options for the algorithms in Boolean Component: - *Memory allocation tool* - tool for memory allocations; - *Error and warning reporting* - allows recording warnings and errors occurred during the operation. Error means that the algorithm has failed. - *Parallel processing mode* - provides the possibility to perform operation in parallel mode; - *Fuzzy tolerance* - additional tolerance for the operation to detect touching or coinciding cases; - *Using the Oriented Bounding Boxes* - Allows using the Oriented Bounding Boxes of the shapes for filtering the intersections.
+        /// The class provides the following options for the algorithms in Boolean Component:
+        /// - *Memory allocation tool* - tool for memory allocations;
+        /// - *Error and warning reporting* - allows recording warnings and errors occurred
+        /// during the operation.
+        /// Error means that the algorithm has failed.
+        /// - *Parallel processing mode* - provides the possibility to perform operation in parallel mode;
+        /// - *Fuzzy tolerance* - additional tolerance for the operation to detect
+        /// touching or coinciding cases;
+        /// - *Using the Oriented Bounding Boxes* - Allows using the Oriented Bounding Boxes of the shapes
+        /// for filtering the intersections.
         #[cxx_name = "BOPAlgo_Options"]
         type Options;
         /// /// **Source:** `BOPAlgo_Options.hxx` - `BOPAlgo_Options::BOPAlgo_Options()`
@@ -517,7 +617,8 @@ pub(crate) mod ffi {
         /// Returns allocator
         #[cxx_name = "Allocator"]
         fn allocator(self: &Options) -> &HandleNCollectionBaseAllocator;
-        /// Clears all warnings and errors, and any data cached by the algorithm. User defined options are not cleared.
+        /// Clears all warnings and errors, and any data cached by the algorithm.
+        /// User defined options are not cleared.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Options>);
         /// Adds the alert as error (fail)
@@ -544,7 +645,9 @@ pub(crate) mod ffi {
         /// Clears the warnings of the algorithm
         #[cxx_name = "ClearWarnings"]
         fn clear_warnings(self: Pin<&mut Options>);
-        /// Set the flag of parallel processing if <theFlag> is true  the parallel processing is switched on if <theFlag> is false the parallel processing is switched off
+        /// Set the flag of parallel processing
+        /// if <theFlag> is true  the parallel processing is switched on
+        /// if <theFlag> is false the parallel processing is switched off
         #[cxx_name = "SetRunParallel"]
         fn set_run_parallel(self: Pin<&mut Options>, theFlag: bool);
         /// Returns the flag of parallel processing

@@ -18,7 +18,8 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::PipeShell;
 impl PipeShell {
-    /// Set an sweep's mode If no mode are set, the mode used in MakePipe is used
+    /// Set an sweep's mode
+    /// If no mode are set, the mode used in MakePipe is used
     pub fn new_wire(Spine: &ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
         ffi::PipeShell_ctor_wire(Spine)
     }
@@ -60,7 +61,9 @@ impl Pipe {
         ffi::Pipe_ctor()
     }
 
-    /// Returns the face created from an edge of the spine and an edge of the profile. if the edges are not in the spine or the profile
+    /// Returns the face created from an edge of the spine
+    /// and an edge of the profile.
+    /// if the edges are not in the spine or the profile
     pub fn face(
         self: std::pin::Pin<&mut Self>,
         ESpine: &ffi::TopoDS_Edge,
@@ -69,7 +72,10 @@ impl Pipe {
         ffi::Pipe_face(self, ESpine, EProfile)
     }
 
-    /// Returns the edge created from an edge of the spine and a vertex of the profile. if the edge or the vertex are not in  the spine or the profile.
+    /// Returns the edge created from an edge of the spine
+    /// and a vertex of the profile.
+    /// if the edge or the vertex are not in  the spine or
+    /// the profile.
     pub fn edge(
         self: std::pin::Pin<&mut Self>,
         ESpine: &ffi::TopoDS_Edge,
@@ -78,12 +84,15 @@ impl Pipe {
         ffi::Pipe_edge(self, ESpine, VProfile)
     }
 
-    /// Returns  the shape created from the profile at the position of the vertex VSpine. if the vertex is not in the Spine
+    /// Returns  the shape created from the profile at the
+    /// position of the vertex VSpine.
+    /// if the vertex is not in the Spine
     pub fn section(&self, VSpine: &ffi::TopoDS_Vertex) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::Pipe_section(self, VSpine)
     }
 
-    /// Create a Wire by sweeping the Point along the <spine> if the <Spine> is undefined
+    /// Create a Wire by sweeping the Point along the <spine>
+    /// if the <Spine> is undefined
     pub fn pipe_line(
         self: std::pin::Pin<&mut Self>,
         Point: &ffi::gp_Pnt,
@@ -108,36 +117,56 @@ pub(crate) mod ffi {
         /// ======================== BRepFill_PipeShell ========================
         /// /// **Source:** `BRepFill_PipeShell.hxx` - `BRepFill_PipeShell`
         ///
-        /// Computes a topological shell using some wires (spines and profiles) and displacement option Perform general sweeping construction
+        /// Computes a topological shell using some wires
+        /// (spines and profiles) and displacement option
+        /// Perform general sweeping construction
         #[cxx_name = "BRepFill_PipeShell"]
         type PipeShell;
         /// /// **Source:** `BRepFill_PipeShell.hxx` - `BRepFill_PipeShell::BRepFill_PipeShell()`
         ///
-        /// Set an sweep's mode If no mode are set, the mode used in MakePipe is used
+        /// Set an sweep's mode
+        /// If no mode are set, the mode used in MakePipe is used
         #[cxx_name = "BRepFill_PipeShell_ctor_wire"]
         fn PipeShell_ctor_wire(Spine: &TopoDS_Wire) -> UniquePtr<PipeShell>;
-        /// Set an Frenet or an CorrectedFrenet trihedron to  perform  the  sweeping
+        /// Set an Frenet or an CorrectedFrenet trihedron
+        /// to  perform  the  sweeping
         #[cxx_name = "Set"]
         fn set_bool(self: Pin<&mut PipeShell>, Frenet: bool);
-        /// Set a Discrete trihedron to  perform  the  sweeping
+        /// Set a Discrete trihedron
+        /// to  perform  the  sweeping
         #[cxx_name = "SetDiscrete"]
         fn set_discrete(self: Pin<&mut PipeShell>);
-        /// Set  an  fixed  trihedron  to  perform  the  sweeping all sections will be parallel.
+        /// Set  an  fixed  trihedron  to  perform  the  sweeping
+        /// all sections will be parallel.
         #[cxx_name = "Set"]
         fn set_ax2(self: Pin<&mut PipeShell>, Axe: &gp_Ax2);
-        /// Set an fixed  BiNormal  direction to  perform the sweeping
+        /// Set an fixed  BiNormal  direction to  perform
+        /// the sweeping
         #[cxx_name = "Set"]
         fn set_dir(self: Pin<&mut PipeShell>, BiNormal: &gp_Dir);
-        /// Set support to the spine to define the BiNormal at   the spine, like    the  normal the surfaces. Warning: To  be  effective,  Each  edge  of  the  <spine>  must have an  representation  on   one   face  of<SpineSupport>
+        /// Set support to the spine to define the BiNormal
+        /// at   the spine, like    the  normal the surfaces.
+        /// Warning: To  be  effective,  Each  edge  of  the  <spine>  must
+        /// have an  representation  on   one   face  of<SpineSupport>
         #[cxx_name = "Set"]
         fn set_shape(self: Pin<&mut PipeShell>, SpineSupport: &TopoDS_Shape) -> bool;
         /// Define the maximum V degree of resulting surface
         #[cxx_name = "SetMaxDegree"]
         fn set_max_degree(self: Pin<&mut PipeShell>, NewMaxDegree: i32);
-        /// Define the maximum number of spans in V-direction on resulting surface
+        /// Define the maximum number of spans in V-direction
+        /// on resulting surface
         #[cxx_name = "SetMaxSegments"]
         fn set_max_segments(self: Pin<&mut PipeShell>, NewMaxSegments: i32);
-        /// Set the flag that indicates attempt to approximate a C1-continuous surface if a swept surface proved to be C0. Give section to sweep. Possibilities are : - Give one or several profile - Give one profile and an homotetic law. - Automatic compute of correspondence between profile, and section on the sweeped shape - correspondence between profile, and section on the sweeped shape defined by a vertex of the spine
+        /// Set the flag that indicates attempt to approximate
+        /// a C1-continuous surface if a swept surface proved
+        /// to be C0.
+        /// Give section to sweep.
+        /// Possibilities are :
+        /// - Give one or several profile
+        /// - Give one profile and an homotetic law.
+        /// - Automatic compute of correspondence between profile, and section on the sweeped shape
+        /// - correspondence between profile, and section on the sweeped shape defined by a vertex of the
+        /// spine
         #[cxx_name = "SetForceApproxC1"]
         fn set_force_approx_c1(self: Pin<&mut PipeShell>, ForceApproxC1: bool);
         /// Set an section. The correspondence with the spine, will be automatically performed.
@@ -157,7 +186,8 @@ pub(crate) mod ffi {
             WithContact: bool,
             WithCorrection: bool,
         );
-        /// Set  an    section  and  an   homotetic    law. The  homotetie's  centers  is  given  by  point  on  the  <Spine>.
+        /// Set  an    section  and  an   homotetic    law.
+        /// The  homotetie's  centers  is  given  by  point  on  the  <Spine>.
         #[cxx_name = "SetLaw"]
         fn set_law_shape_handlefunction_bool2(
             self: Pin<&mut PipeShell>,
@@ -166,7 +196,8 @@ pub(crate) mod ffi {
             WithContact: bool,
             WithCorrection: bool,
         );
-        /// Set  an    section  and  an   homotetic    law. The  homotetie  center  is  given  by  point  on  the  <Spine>
+        /// Set  an    section  and  an   homotetic    law.
+        /// The  homotetie  center  is  given  by  point  on  the  <Spine>
         #[cxx_name = "SetLaw"]
         fn set_law_shape_handlefunction_vertex_bool2(
             self: Pin<&mut PipeShell>,
@@ -179,12 +210,14 @@ pub(crate) mod ffi {
         /// Delete an section.
         #[cxx_name = "DeleteProfile"]
         fn delete_profile(self: Pin<&mut PipeShell>, Profile: &TopoDS_Shape);
-        /// Say if <me> is ready to build the shape return False if <me> do not have section definition
+        /// Say if <me> is ready to build the shape
+        /// return False if <me> do not have section definition
         #[cxx_name = "IsReady"]
         fn is_ready(self: &PipeShell) -> bool;
         #[cxx_name = "SetTolerance"]
         fn set_tolerance(self: Pin<&mut PipeShell>, Tol3d: f64, BoundTol: f64, TolAngular: f64);
-        /// Perform simulation of the sweep : Some Section are returned.
+        /// Perform simulation of the sweep :
+        /// Some Section are returned.
         #[cxx_name = "Simulate"]
         fn simulate(
             self: Pin<&mut PipeShell>,
@@ -194,7 +227,8 @@ pub(crate) mod ffi {
         /// Builds the resulting shape (redefined from MakeShape).
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut PipeShell>) -> bool;
-        /// Transform the sweeping Shell in Solid. If the section are not closed returns False
+        /// Transform the sweeping Shell in Solid.
+        /// If the section are not closed returns False
         #[cxx_name = "MakeSolid"]
         fn make_solid(self: Pin<&mut PipeShell>) -> bool;
         /// Returns the result Shape.
@@ -214,7 +248,8 @@ pub(crate) mod ffi {
         /// Returns the spine
         #[cxx_name = "Spine"]
         fn spine(self: Pin<&mut PipeShell>) -> &TopoDS_Wire;
-        /// Returns the  list   of shapes generated   from the shape <S>.
+        /// Returns the  list   of shapes generated   from the
+        /// shape <S>.
         #[cxx_name = "Generated"]
         fn generated(
             self: Pin<&mut PipeShell>,
@@ -269,7 +304,12 @@ pub(crate) mod ffi {
         /// ======================== BRepFill_Pipe ========================
         /// /// **Source:** `BRepFill_Pipe.hxx` - `BRepFill_Pipe`
         ///
-        /// Create a  shape by sweeping a shape  (the profile) along a wire (the spine). For each edge  or vertex from the spine  the  user may ask for the shape generated from each subshape of the profile.
+        /// Create a  shape by sweeping a shape  (the profile)
+        /// along a wire (the spine).
+        ///
+        /// For each edge  or vertex from the spine  the  user
+        /// may ask for the shape generated from each subshape
+        /// of the profile.
         #[cxx_name = "BRepFill_Pipe"]
         type Pipe;
         /// /// **Source:** `BRepFill_Pipe.hxx` - `BRepFill_Pipe::BRepFill_Pipe()`
@@ -294,39 +334,61 @@ pub(crate) mod ffi {
         fn first_shape(self: &Pipe) -> &TopoDS_Shape;
         #[cxx_name = "LastShape"]
         fn last_shape(self: &Pipe) -> &TopoDS_Shape;
-        /// Returns the  list   of shapes generated   from the shape <S>.
+        /// Returns the  list   of shapes generated   from the
+        /// shape <S>.
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut Pipe>, S: &TopoDS_Shape, L: Pin<&mut TopTools_ListOfShape>);
-        /// Returns the face created from an edge of the spine and an edge of the profile. if the edges are not in the spine or the profile
+        /// Returns the face created from an edge of the spine
+        /// and an edge of the profile.
+        /// if the edges are not in the spine or the profile
         #[cxx_name = "BRepFill_Pipe_Face"]
         fn Pipe_face(
             self_: Pin<&mut Pipe>,
             ESpine: &TopoDS_Edge,
             EProfile: &TopoDS_Edge,
         ) -> UniquePtr<TopoDS_Face>;
-        /// Returns the edge created from an edge of the spine and a vertex of the profile. if the edge or the vertex are not in  the spine or the profile.
+        /// Returns the edge created from an edge of the spine
+        /// and a vertex of the profile.
+        /// if the edge or the vertex are not in  the spine or
+        /// the profile.
         #[cxx_name = "BRepFill_Pipe_Edge"]
         fn Pipe_edge(
             self_: Pin<&mut Pipe>,
             ESpine: &TopoDS_Edge,
             VProfile: &TopoDS_Vertex,
         ) -> UniquePtr<TopoDS_Edge>;
-        /// Returns  the shape created from the profile at the position of the vertex VSpine. if the vertex is not in the Spine
+        /// Returns  the shape created from the profile at the
+        /// position of the vertex VSpine.
+        /// if the vertex is not in the Spine
         #[cxx_name = "BRepFill_Pipe_Section"]
         fn Pipe_section(self_: &Pipe, VSpine: &TopoDS_Vertex) -> UniquePtr<TopoDS_Shape>;
-        /// Create a Wire by sweeping the Point along the <spine> if the <Spine> is undefined
+        /// Create a Wire by sweeping the Point along the <spine>
+        /// if the <Spine> is undefined
         #[cxx_name = "BRepFill_Pipe_PipeLine"]
         fn Pipe_pipe_line(self_: Pin<&mut Pipe>, Point: &gp_Pnt) -> UniquePtr<TopoDS_Wire>;
         /// ======================== BRepFill_OffsetWire ========================
         /// /// **Source:** `BRepFill_OffsetWire.hxx` - `BRepFill_OffsetWire`
         ///
-        /// Constructs a Offset Wire to a spine (wire or face). Offset direction will be to outer region in case of positive offset value and to inner region in case of negative offset value. Inner/Outer region for open wire is defined by the following rule: when we go along the wire (taking into account of edges orientation) then outer region will be on the right side, inner region will be on the left side. In case of closed wire, inner region will always be inside the wire (at that, edges orientation is not taken into account). The Wire or the Face must be planar and oriented correctly.
+        /// Constructs a Offset Wire to a spine (wire or face).
+        /// Offset direction will be to outer region in case of
+        /// positive offset value and to inner region in case of
+        /// negative offset value.
+        /// Inner/Outer region for open wire is defined by the
+        /// following rule: when we go along the wire (taking into
+        /// account of edges orientation) then outer region will be
+        /// on the right side, inner region will be on the left side.
+        /// In case of closed wire, inner region will always be
+        /// inside the wire (at that, edges orientation is not taken
+        /// into account).
+        /// The Wire or the Face must be planar and oriented correctly.
         #[cxx_name = "BRepFill_OffsetWire"]
         type OffsetWire;
         /// /// **Source:** `BRepFill_OffsetWire.hxx` - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
         #[cxx_name = "BRepFill_OffsetWire_ctor"]
         fn OffsetWire_ctor() -> UniquePtr<OffsetWire>;
-        /// Performs  an OffsetWire at  an altitude <Alt> from the  face ( According  to  the orientation of  the face)
+        /// Performs  an OffsetWire at  an altitude <Alt> from
+        /// the  face ( According  to  the orientation of  the
+        /// face)
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut OffsetWire>, Offset: f64, Alt: f64);
         #[cxx_name = "IsDone"]
@@ -336,7 +398,9 @@ pub(crate) mod ffi {
         /// returns the generated shape.
         #[cxx_name = "Shape"]
         fn shape(self: &OffsetWire) -> &TopoDS_Shape;
-        /// Returns   the  shapes  created  from   a  subshape <SpineShape> of the spine. Returns the last computed Offset.
+        /// Returns   the  shapes  created  from   a  subshape
+        /// <SpineShape> of the spine.
+        /// Returns the last computed Offset.
         #[cxx_name = "GeneratedShapes"]
         fn generated_shapes(
             self: Pin<&mut OffsetWire>,

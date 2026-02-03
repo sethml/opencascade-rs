@@ -24,7 +24,10 @@ impl Curve {
         ffi::Curve_shallow_copy(self)
     }
 
-    /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+    /// Returns    a  curve equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
     pub fn trim(
         &self,
         First: f64,
@@ -39,7 +42,11 @@ impl Curve {
         ffi::Curve_value(self, U)
     }
 
-    /// The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
         ffi::Curve_dn(self, U, N)
     }
@@ -92,7 +99,11 @@ impl Surface {
         ffi::Surface_shallow_copy(self)
     }
 
-    /// Returns    a  surface trimmed in the U direction equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+    /// Returns    a  surface trimmed in the U direction
+    /// equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
     pub fn u_trim(
         &self,
         First: f64,
@@ -102,7 +113,10 @@ impl Surface {
         ffi::Surface_u_trim(self, First, Last, Tol)
     }
 
-    /// Returns    a  surface trimmed in the V direction  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+    /// Returns    a  surface trimmed in the V direction  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
     pub fn v_trim(
         &self,
         First: f64,
@@ -112,12 +126,17 @@ impl Surface {
         ffi::Surface_v_trim(self, First, Last, Tol)
     }
 
-    /// Computes the point of parameters U,V on the surface. Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
+    /// Computes the point of parameters U,V on the surface.
+    /// Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
     pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::Surface_value(self, U, V)
     }
 
-    /// Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Raised if the current U  interval is not not CNu and the current V interval is not CNv. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    /// Computes the derivative of order Nu in the direction U and Nv
+    /// in the direction V at the point P(U, V).
+    /// Raised if the current U  interval is not not CNu
+    /// and the current V interval is not CNv.
+    /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
     pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
         ffi::Surface_dn(self, U, V, Nu, Nv)
     }
@@ -180,7 +199,8 @@ impl CurveOnSurface {
         ffi::CurveOnSurface_ctor_handlesurface(S)
     }
 
-    /// Creates a CurveOnSurface from the 2d curve <C> and the surface <S>.
+    /// Creates a CurveOnSurface from the 2d curve <C> and
+    /// the surface <S>.
     pub fn new_handlecurve2d_handlesurface(
         C: &ffi::HandleAdaptor2dCurve2d,
         S: &ffi::HandleAdaptor3dSurface,
@@ -203,7 +223,10 @@ impl CurveOnSurface {
         ffi::CurveOnSurface_shallow_copy(self)
     }
 
-    /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+    /// Returns    a  curve equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
     pub fn trim(
         &self,
         First: f64,
@@ -218,7 +241,11 @@ impl CurveOnSurface {
         ffi::CurveOnSurface_value(self, U)
     }
 
-    /// The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
         ffi::CurveOnSurface_dn(self, U, N)
     }
@@ -266,7 +293,19 @@ pub(crate) mod ffi {
         /// ======================== Adaptor3d_Curve ========================
         /// /// **Source:** `Adaptor3d_Curve.hxx` - `Adaptor3d_Curve`
         ///
-        /// Root class for 3D curves on which geometric algorithms work. An adapted curve is an interface between the services provided by a curve and those required of the curve by algorithms which use it. Two derived concrete classes are provided: - GeomAdaptor_Curve for a curve from the Geom package - Adaptor3d_CurveOnSurface for a curve lying on a surface from the Geom package. Polynomial coefficients of BSpline curves used for their evaluation are cached for better performance. Therefore these evaluations are not thread-safe and parallel evaluations need to be prevented.
+        /// Root class for 3D curves on which geometric
+        /// algorithms work.
+        /// An adapted curve is an interface between the
+        /// services provided by a curve and those required of
+        /// the curve by algorithms which use it.
+        /// Two derived concrete classes are provided:
+        /// - GeomAdaptor_Curve for a curve from the Geom package
+        /// - Adaptor3d_CurveOnSurface for a curve lying on
+        /// a surface from the Geom package.
+        ///
+        /// Polynomial coefficients of BSpline curves used for their evaluation are
+        /// cached for better performance. Therefore these evaluations are not
+        /// thread-safe and parallel evaluations need to be prevented.
         #[cxx_name = "Adaptor3d_Curve"]
         type Curve;
         #[cxx_name = "DynamicType"]
@@ -284,10 +323,16 @@ pub(crate) mod ffi {
         /// Computes the point of parameter U on the curve.
         #[cxx_name = "D0"]
         fn d0(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>);
-        /// Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
+        /// Computes the point of parameter U on the curve with its
+        /// first derivative.
+        /// Raised if the continuity of the current interval
+        /// is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>, V: Pin<&mut gp_Vec>);
-        /// Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
+        /// Returns the point P of parameter U, the first and second
+        /// derivatives V1 and V2.
+        /// Raised if the continuity of the current interval
+        /// is not C2.
         #[cxx_name = "D2"]
         fn d2(
             self: &Curve,
@@ -296,7 +341,10 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
-        /// Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
+        /// Returns the point P of parameter U, the first, the second
+        /// and the third derivative.
+        /// Raised if the continuity of the current interval
+        /// is not C3.
         #[cxx_name = "D3"]
         fn d3(
             self: &Curve,
@@ -306,7 +354,8 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec>,
             V3: Pin<&mut gp_Vec>,
         );
-        /// Returns the parametric  resolution corresponding to the real space resolution <R3d>.
+        /// Returns the parametric  resolution corresponding
+        /// to the real space resolution <R3d>.
         #[cxx_name = "Resolution"]
         fn resolution(self: &Curve, R3d: f64) -> f64;
         #[cxx_name = "Degree"]
@@ -320,7 +369,10 @@ pub(crate) mod ffi {
         /// Shallow copy of adaptor
         #[cxx_name = "Adaptor3d_Curve_ShallowCopy"]
         fn Curve_shallow_copy(self_: &Curve) -> UniquePtr<HandleAdaptor3dCurve>;
-        /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+        /// Returns    a  curve equivalent   of  <me>  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
+        /// If <First> >= <Last>
         #[cxx_name = "Adaptor3d_Curve_Trim"]
         fn Curve_trim(
             self_: &Curve,
@@ -331,7 +383,11 @@ pub(crate) mod ffi {
         /// Computes the point of parameter U on the curve.
         #[cxx_name = "Adaptor3d_Curve_Value"]
         fn Curve_value(self_: &Curve, U: f64) -> UniquePtr<gp_Pnt>;
-        /// The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
+        /// The returned vector gives the value of the derivative for the
+        /// order of derivation N.
+        /// Raised if the continuity of the current interval
+        /// is not CN.
+        /// Raised if N < 1.
         #[cxx_name = "Adaptor3d_Curve_DN"]
         fn Curve_dn(self_: &Curve, U: f64, N: i32) -> UniquePtr<gp_Vec>;
         #[cxx_name = "Adaptor3d_Curve_Line"]
@@ -358,7 +414,25 @@ pub(crate) mod ffi {
         /// ======================== Adaptor3d_Surface ========================
         /// /// **Source:** `Adaptor3d_Surface.hxx` - `Adaptor3d_Surface`
         ///
-        /// Root class for surfaces on which geometric algorithms work. An adapted surface is an interface between the services provided by a surface and those required of the surface by algorithms which use it. A derived concrete class is provided: GeomAdaptor_Surface for a surface from the Geom package. The  Surface class describes  the standard behaviour of a surface for generic algorithms. The Surface can  be decomposed in intervals of any continuity in U and V using the method NbIntervals. A current interval can be set. Most of the methods apply to the current interval. Warning: All the methods are virtual and implemented with a raise to allow to redefined only the methods really used. Polynomial coefficients of BSpline surfaces used for their evaluation are cached for better performance. Therefore these evaluations are not thread-safe and parallel evaluations need to be prevented.
+        /// Root class for surfaces on which geometric algorithms work.
+        /// An adapted surface is an interface between the
+        /// services provided by a surface and those required of
+        /// the surface by algorithms which use it.
+        /// A derived concrete class is provided:
+        /// GeomAdaptor_Surface for a surface from the Geom package.
+        /// The  Surface class describes  the standard behaviour
+        /// of a surface for generic algorithms.
+        ///
+        /// The Surface can  be decomposed in intervals of any
+        /// continuity in U and V using the method NbIntervals.
+        /// A current interval can be set.
+        /// Most of the methods apply to the current interval.
+        /// Warning: All the methods are virtual and implemented with a
+        /// raise to allow to redefined only the methods really used.
+        ///
+        /// Polynomial coefficients of BSpline surfaces used for their evaluation are cached for better
+        /// performance. Therefore these evaluations are not thread-safe and parallel evaluations need to be
+        /// prevented.
         #[cxx_name = "Adaptor3d_Surface"]
         type Surface;
         #[cxx_name = "DynamicType"]
@@ -386,7 +460,10 @@ pub(crate) mod ffi {
         /// Computes the point of parameters U,V on the surface.
         #[cxx_name = "D0"]
         fn d0(self: &Surface, U: f64, V: f64, P: Pin<&mut gp_Pnt>);
-        /// Computes the point  and the first derivatives on the surface. Raised if the continuity of the current intervals is not C1. Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
+        /// Computes the point  and the first derivatives on the surface.
+        /// Raised if the continuity of the current intervals is not C1.
+        ///
+        /// Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
         #[cxx_name = "D1"]
         fn d1(
             self: &Surface,
@@ -396,7 +473,10 @@ pub(crate) mod ffi {
             D1U: Pin<&mut gp_Vec>,
             D1V: Pin<&mut gp_Vec>,
         );
-        /// Computes   the point,  the  first  and  second derivatives on the surface. Raised  if   the   continuity   of the current intervals is not C2.
+        /// Computes   the point,  the  first  and  second
+        /// derivatives on the surface.
+        /// Raised  if   the   continuity   of the current
+        /// intervals is not C2.
         #[cxx_name = "D2"]
         fn d2(
             self: &Surface,
@@ -409,7 +489,10 @@ pub(crate) mod ffi {
             D2V: Pin<&mut gp_Vec>,
             D2UV: Pin<&mut gp_Vec>,
         );
-        /// Computes the point,  the first, second and third derivatives on the surface. Raised  if   the   continuity   of the current intervals is not C3.
+        /// Computes the point,  the first, second and third
+        /// derivatives on the surface.
+        /// Raised  if   the   continuity   of the current
+        /// intervals is not C3.
         #[cxx_name = "D3"]
         fn d3(
             self: &Surface,
@@ -426,10 +509,12 @@ pub(crate) mod ffi {
             D3UUV: Pin<&mut gp_Vec>,
             D3UVV: Pin<&mut gp_Vec>,
         );
-        /// Returns the parametric U  resolution corresponding to the real space resolution <R3d>.
+        /// Returns the parametric U  resolution corresponding
+        /// to the real space resolution <R3d>.
         #[cxx_name = "UResolution"]
         fn u_resolution(self: &Surface, R3d: f64) -> f64;
-        /// Returns the parametric V  resolution corresponding to the real space resolution <R3d>.
+        /// Returns the parametric V  resolution corresponding
+        /// to the real space resolution <R3d>.
         #[cxx_name = "VResolution"]
         fn v_resolution(self: &Surface, R3d: f64) -> f64;
         #[cxx_name = "UDegree"]
@@ -453,7 +538,11 @@ pub(crate) mod ffi {
         /// Shallow copy of adaptor
         #[cxx_name = "Adaptor3d_Surface_ShallowCopy"]
         fn Surface_shallow_copy(self_: &Surface) -> UniquePtr<HandleAdaptor3dSurface>;
-        /// Returns    a  surface trimmed in the U direction equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+        /// Returns    a  surface trimmed in the U direction
+        /// equivalent   of  <me>  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
+        /// If <First> >= <Last>
         #[cxx_name = "Adaptor3d_Surface_UTrim"]
         fn Surface_u_trim(
             self_: &Surface,
@@ -461,7 +550,10 @@ pub(crate) mod ffi {
             Last: f64,
             Tol: f64,
         ) -> UniquePtr<HandleAdaptor3dSurface>;
-        /// Returns    a  surface trimmed in the V direction  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+        /// Returns    a  surface trimmed in the V direction  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
+        /// If <First> >= <Last>
         #[cxx_name = "Adaptor3d_Surface_VTrim"]
         fn Surface_v_trim(
             self_: &Surface,
@@ -469,10 +561,15 @@ pub(crate) mod ffi {
             Last: f64,
             Tol: f64,
         ) -> UniquePtr<HandleAdaptor3dSurface>;
-        /// Computes the point of parameters U,V on the surface. Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
+        /// Computes the point of parameters U,V on the surface.
+        /// Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
         #[cxx_name = "Adaptor3d_Surface_Value"]
         fn Surface_value(self_: &Surface, U: f64, V: f64) -> UniquePtr<gp_Pnt>;
-        /// Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Raised if the current U  interval is not not CNu and the current V interval is not CNv. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+        /// Computes the derivative of order Nu in the direction U and Nv
+        /// in the direction V at the point P(U, V).
+        /// Raised if the current U  interval is not not CNu
+        /// and the current V interval is not CNv.
+        /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
         #[cxx_name = "Adaptor3d_Surface_DN"]
         fn Surface_dn(self_: &Surface, U: f64, V: f64, Nu: i32, Nv: i32) -> UniquePtr<gp_Vec>;
         #[cxx_name = "Adaptor3d_Surface_Plane"]
@@ -505,7 +602,11 @@ pub(crate) mod ffi {
         /// ======================== Adaptor3d_CurveOnSurface ========================
         /// /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface`
         ///
-        /// An interface between the services provided by a curve lying on a surface from the package Geom and those required of the curve by algorithms which use it. The curve is defined as a 2D curve from the Geom2d package, in the parametric space of the surface.
+        /// An interface between the services provided by a curve
+        /// lying on a surface from the package Geom and those
+        /// required of the curve by algorithms which use it. The
+        /// curve is defined as a 2D curve from the Geom2d
+        /// package, in the parametric space of the surface.
         #[cxx_name = "Adaptor3d_CurveOnSurface"]
         type CurveOnSurface;
         /// /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
@@ -518,7 +619,8 @@ pub(crate) mod ffi {
         ) -> UniquePtr<CurveOnSurface>;
         /// /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
         ///
-        /// Creates a CurveOnSurface from the 2d curve <C> and the surface <S>.
+        /// Creates a CurveOnSurface from the 2d curve <C> and
+        /// the surface <S>.
         #[cxx_name = "Adaptor3d_CurveOnSurface_ctor_handlecurve2d_handlesurface"]
         fn CurveOnSurface_ctor_handlecurve2d_handlesurface(
             C: &HandleAdaptor2dCurve2d,
@@ -560,10 +662,16 @@ pub(crate) mod ffi {
         /// Computes the point of parameter U on the curve.
         #[cxx_name = "D0"]
         fn d0(self: &CurveOnSurface, U: f64, P: Pin<&mut gp_Pnt>);
-        /// Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
+        /// Computes the point of parameter U on the curve with its
+        /// first derivative.
+        /// Raised if the continuity of the current interval
+        /// is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &CurveOnSurface, U: f64, P: Pin<&mut gp_Pnt>, V: Pin<&mut gp_Vec>);
-        /// Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
+        /// Returns the point P of parameter U, the first and second
+        /// derivatives V1 and V2.
+        /// Raised if the continuity of the current interval
+        /// is not C2.
         #[cxx_name = "D2"]
         fn d2(
             self: &CurveOnSurface,
@@ -572,7 +680,10 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
-        /// Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
+        /// Returns the point P of parameter U, the first, the second
+        /// and the third derivative.
+        /// Raised if the continuity of the current interval
+        /// is not C3.
         #[cxx_name = "D3"]
         fn d3(
             self: &CurveOnSurface,
@@ -582,7 +693,8 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec>,
             V3: Pin<&mut gp_Vec>,
         );
-        /// Returns the parametric  resolution corresponding to the real space resolution <R3d>.
+        /// Returns the parametric  resolution corresponding
+        /// to the real space resolution <R3d>.
         #[cxx_name = "Resolution"]
         fn resolution(self: &CurveOnSurface, R3d: f64) -> f64;
         #[cxx_name = "Degree"]
@@ -596,7 +708,10 @@ pub(crate) mod ffi {
         /// Shallow copy of adaptor
         #[cxx_name = "Adaptor3d_CurveOnSurface_ShallowCopy"]
         fn CurveOnSurface_shallow_copy(self_: &CurveOnSurface) -> UniquePtr<HandleAdaptor3dCurve>;
-        /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+        /// Returns    a  curve equivalent   of  <me>  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
+        /// If <First> >= <Last>
         #[cxx_name = "Adaptor3d_CurveOnSurface_Trim"]
         fn CurveOnSurface_trim(
             self_: &CurveOnSurface,
@@ -607,7 +722,11 @@ pub(crate) mod ffi {
         /// Computes the point of parameter U on the curve.
         #[cxx_name = "Adaptor3d_CurveOnSurface_Value"]
         fn CurveOnSurface_value(self_: &CurveOnSurface, U: f64) -> UniquePtr<gp_Pnt>;
-        /// The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
+        /// The returned vector gives the value of the derivative for the
+        /// order of derivation N.
+        /// Raised if the continuity of the current interval
+        /// is not CN.
+        /// Raised if N < 1.
         #[cxx_name = "Adaptor3d_CurveOnSurface_DN"]
         fn CurveOnSurface_dn(self_: &CurveOnSurface, U: f64, N: i32) -> UniquePtr<gp_Vec>;
         #[cxx_name = "Adaptor3d_CurveOnSurface_Line"]

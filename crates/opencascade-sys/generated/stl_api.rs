@@ -17,7 +17,8 @@ impl Writer {
         ffi::Writer_ctor()
     }
 
-    /// Converts a given shape to STL format and writes it to file with a given filename. \\return the error state.
+    /// Converts a given shape to STL format and writes it to file with a given filename.
+    /// \\return the error state.
     pub fn write(
         self: std::pin::Pin<&mut Self>,
         theShape: &ffi::TopoDS_Shape,
@@ -38,7 +39,9 @@ pub(crate) mod ffi {
         /// ======================== StlAPI_Writer ========================
         /// /// **Source:** `StlAPI_Writer.hxx` - `StlAPI_Writer`
         ///
-        /// This class creates and writes STL files from Open CASCADE shapes. An STL file can be written to an existing STL file or to a new one.
+        /// This class creates and writes
+        /// STL files from Open CASCADE shapes. An STL file can be written to an existing STL file or to a
+        /// new one.
         #[cxx_name = "StlAPI_Writer"]
         type Writer;
         /// /// **Source:** `StlAPI_Writer.hxx` - `StlAPI_Writer::StlAPI_Writer()`
@@ -46,10 +49,14 @@ pub(crate) mod ffi {
         /// Creates a writer object with default parameters: ASCIIMode.
         #[cxx_name = "StlAPI_Writer_ctor"]
         fn Writer_ctor() -> UniquePtr<Writer>;
-        /// Returns the address to the flag defining the mode for writing the file. This address may be used to either read or change the flag. If the mode returns True (default value) the generated file is an ASCII file. If the mode returns False, the generated file is a binary file.
+        /// Returns the address to the flag defining the mode for writing the file.
+        /// This address may be used to either read or change the flag.
+        /// If the mode returns True (default value) the generated file is an ASCII file.
+        /// If the mode returns False, the generated file is a binary file.
         #[cxx_name = "ASCIIMode"]
         fn ascii_mode(self: Pin<&mut Writer>) -> &mut bool;
-        /// Converts a given shape to STL format and writes it to file with a given filename. \\return the error state.
+        /// Converts a given shape to STL format and writes it to file with a given filename.
+        /// \\return the error state.
         #[cxx_name = "StlAPI_Writer_Write"]
         fn Writer_write(
             self_: Pin<&mut Writer>,

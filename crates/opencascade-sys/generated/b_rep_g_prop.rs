@@ -13,7 +13,45 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::BRepGProp;
 impl BRepGProp {
-    /// Computes the linear global properties of the shape S, i.e. the global properties induced by each edge of the shape S, and brings them together with the global properties still retained by the framework LProps. If the current system of LProps was empty, its global properties become equal to the linear global properties of S. For this computation no linear density is attached to the edges. So, for example, the added mass corresponds to the sum of the lengths of the edges of S. The density of the composed systems, i.e. that of each component of the current system of LProps, and that of S which is considered to be equal to 1, must be coherent. Note that this coherence cannot be checked. You are advised to use a separate framework for each density, and then to bring these frameworks together into a global one. The point relative to which the inertia of the system is computed is the reference point of the framework LProps. Note: if your programming ensures that the framework LProps retains only linear global properties (brought together for example, by the function LinearProperties) for objects the density of which is equal to 1 (or is not defined), the function Mass will return the total length of edges of the system analysed by LProps. Warning No check is performed to verify that the shape S retains truly linear properties. If S is simply a vertex, it is not considered to present any additional global properties. SkipShared is a special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, edges, shared by two or more faces, are taken into calculation only once. If we have cube with sizes 1, 1, 1, its linear properties = 12 for SkipEdges = true and 24 for SkipEdges = false. UseTriangulation is a special flag, which defines preferable source of geometry data. If UseTriangulation = Standard_False, exact geometry objects (curves) are used, otherwise polygons of triangulation are used first.
+    /// Computes the linear global properties of the shape S,
+    /// i.e. the global properties induced by each edge of the
+    /// shape S, and brings them together with the global
+    /// properties still retained by the framework LProps. If
+    /// the current system of LProps was empty, its global
+    /// properties become equal to the linear global
+    /// properties of S.
+    /// For this computation no linear density is attached to
+    /// the edges. So, for example, the added mass
+    /// corresponds to the sum of the lengths of the edges of
+    /// S. The density of the composed systems, i.e. that of
+    /// each component of the current system of LProps, and
+    /// that of S which is considered to be equal to 1, must be coherent.
+    /// Note that this coherence cannot be checked. You are
+    /// advised to use a separate framework for each
+    /// density, and then to bring these frameworks together
+    /// into a global one.
+    /// The point relative to which the inertia of the system is
+    /// computed is the reference point of the framework LProps.
+    /// Note: if your programming ensures that the framework
+    /// LProps retains only linear global properties (brought
+    /// together for example, by the function
+    /// LinearProperties) for objects the density of which is
+    /// equal to 1 (or is not defined), the function Mass will
+    /// return the total length of edges of the system analysed by LProps.
+    /// Warning
+    /// No check is performed to verify that the shape S
+    /// retains truly linear properties. If S is simply a vertex, it
+    /// is not considered to present any additional global properties.
+    /// SkipShared is a special flag, which allows taking in calculation
+    /// shared topological entities or not.
+    /// For ex., if SkipShared = True, edges, shared by two or more faces,
+    /// are taken into calculation only once.
+    /// If we have cube with sizes 1, 1, 1, its linear properties = 12
+    /// for SkipEdges = true and 24 for SkipEdges = false.
+    /// UseTriangulation is a special flag, which defines preferable
+    /// source of geometry data. If UseTriangulation = Standard_False,
+    /// exact geometry objects (curves) are used, otherwise polygons of
+    /// triangulation are used first.
     pub fn linear_properties(
         S: &ffi::TopoDS_Shape,
         LProps: std::pin::Pin<&mut ffi::GProp_GProps>,
@@ -23,7 +61,46 @@ impl BRepGProp {
         ffi::BRepGProp_linear_properties(S, LProps, SkipShared, UseTriangulation)
     }
 
-    /// Computes the surface global properties of the shape S, i.e. the global properties induced by each face of the shape S, and brings them together with the global properties still retained by the framework SProps. If the current system of SProps was empty, its global properties become equal to the surface global properties of S. For this computation, no surface density is attached to the faces. Consequently, the added mass corresponds to the sum of the areas of the faces of S. The density of the component systems, i.e. that of each component of the current system of SProps, and that of S which is considered to be equal to 1, must be coherent. Note that this coherence cannot be checked. You are advised to use a framework for each different value of density, and then to bring these frameworks together into a global one. The point relative to which the inertia of the system is computed is the reference point of the framework SProps. Note : if your programming ensures that the framework SProps retains only surface global properties, brought together, for example, by the function SurfaceProperties, for objects the density of which is equal to 1 (or is not defined), the function Mass will return the total area of faces of the system analysed by SProps. Warning No check is performed to verify that the shape S retains truly surface properties. If S is simply a vertex, an edge or a wire, it is not considered to present any additional global properties. SkipShared is a special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, faces, shared by two or more shells, are taken into calculation only once. UseTriangulation is a special flag, which defines preferable source of geometry data. If UseTriangulation = Standard_False, exact geometry objects (surfaces) are used, otherwise face triangulations are used first.
+    /// Computes the surface global properties of the
+    /// shape S, i.e. the global properties induced by each
+    /// face of the shape S, and brings them together with
+    /// the global properties still retained by the framework
+    /// SProps. If the current system of SProps was empty,
+    /// its global properties become equal to the surface
+    /// global properties of S.
+    /// For this computation, no surface density is attached
+    /// to the faces. Consequently, the added mass
+    /// corresponds to the sum of the areas of the faces of
+    /// S. The density of the component systems, i.e. that
+    /// of each component of the current system of
+    /// SProps, and that of S which is considered to be
+    /// equal to 1, must be coherent.
+    /// Note that this coherence cannot be checked. You
+    /// are advised to use a framework for each different
+    /// value of density, and then to bring these
+    /// frameworks together into a global one.
+    /// The point relative to which the inertia of the system
+    /// is computed is the reference point of the framework SProps.
+    /// Note : if your programming ensures that the
+    /// framework SProps retains only surface global
+    /// properties, brought together, for example, by the
+    /// function SurfaceProperties, for objects the density
+    /// of which is equal to 1 (or is not defined), the
+    /// function Mass will return the total area of faces of
+    /// the system analysed by SProps.
+    /// Warning
+    /// No check is performed to verify that the shape S
+    /// retains truly surface properties. If S is simply a
+    /// vertex, an edge or a wire, it is not considered to
+    /// present any additional global properties.
+    /// SkipShared is a special flag, which allows taking in calculation
+    /// shared topological entities or not.
+    /// For ex., if SkipShared = True, faces, shared by two or more shells,
+    /// are taken into calculation only once.
+    /// UseTriangulation is a special flag, which defines preferable
+    /// source of geometry data. If UseTriangulation = Standard_False,
+    /// exact geometry objects (surfaces) are used,
+    /// otherwise face triangulations are used first.
     pub fn surface_properties_shape_gprops_bool2(
         S: &ffi::TopoDS_Shape,
         SProps: std::pin::Pin<&mut ffi::GProp_GProps>,
@@ -38,7 +115,18 @@ impl BRepGProp {
         )
     }
 
-    /// Updates <SProps> with the shape <S>, that contains its principal properties. The surface properties of all the faces in <S> are computed. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (area) for each face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. Method returns estimation of relative error reached for whole shape. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration. SkipShared is a special flag, which allows taking in calculation shared topological entities or not For ex., if SkipShared = True, faces, shared by two or more shells, are taken into calculation only once.
+    /// Updates <SProps> with the shape <S>, that contains its principal properties.
+    /// The surface properties of all the faces in <S> are computed.
+    /// Adaptive 2D Gauss integration is used.
+    /// Parameter Eps sets maximal relative error of computed mass (area) for each face.
+    /// Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values
+    /// for two successive steps of adaptive integration.
+    /// Method returns estimation of relative error reached for whole shape.
+    /// WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
+    /// SkipShared is a special flag, which allows taking in calculation
+    /// shared topological entities or not
+    /// For ex., if SkipShared = True, faces, shared by two or more shells,
+    /// are taken into calculation only once.
     pub fn surface_properties_shape_gprops_real_bool(
         S: &ffi::TopoDS_Shape,
         SProps: std::pin::Pin<&mut ffi::GProp_GProps>,
@@ -48,7 +136,48 @@ impl BRepGProp {
         ffi::BRepGProp_surface_properties_shape_gprops_real_bool(S, SProps, Eps, SkipShared)
     }
 
-    /// Computes the global volume properties of the solid S, and brings them together with the global properties still retained by the framework VProps. If the current system of VProps was empty, its global properties become equal to the global properties of S for volume. For this computation, no volume density is attached to the solid. Consequently, the added mass corresponds to the volume of S. The density of the component systems, i.e. that of each component of the current system of VProps, and that of S which is considered to be equal to 1, must be coherent to each other. Note that this coherence cannot be checked. You are advised to use a separate framework for each density, and then to bring these frameworks together into a global one. The point relative to which the inertia of the system is computed is the reference point of the framework VProps. Note: if your programming ensures that the framework VProps retains only global properties of volume (brought together for example, by the function VolumeProperties) for objects the density of which is equal to 1 (or is not defined), the function Mass will return the total volume of the solids of the system analysed by VProps. Warning The shape S must represent an object whose global volume properties can be computed. It may be a finite solid, or a series of finite solids all oriented in a coherent way. Nonetheless, S must be exempt of any free boundary. Note that these conditions of coherence are not checked by this algorithm, and results will be false if they are not respected. SkipShared a is special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, the volumes formed by the equal (the same TShape, location and orientation) faces are taken into calculation only once. UseTriangulation is a special flag, which defines preferable source of geometry data. If UseTriangulation = Standard_False, exact geometry objects (surfaces) are used, otherwise face triangulations are used first.
+    ///
+    /// Computes the global volume properties of the solid
+    /// S, and brings them together with the global
+    /// properties still retained by the framework VProps. If
+    /// the current system of VProps was empty, its global
+    /// properties become equal to the global properties of S for volume.
+    /// For this computation, no volume density is attached
+    /// to the solid. Consequently, the added mass
+    /// corresponds to the volume of S. The density of the
+    /// component systems, i.e. that of each component of
+    /// the current system of VProps, and that of S which
+    /// is considered to be equal to 1, must be coherent to each other.
+    /// Note that this coherence cannot be checked. You
+    /// are advised to use a separate framework for each
+    /// density, and then to bring these frameworks
+    /// together into a global one.
+    /// The point relative to which the inertia of the system
+    /// is computed is the reference point of the framework VProps.
+    /// Note: if your programming ensures that the
+    /// framework VProps retains only global properties of
+    /// volume (brought together for example, by the
+    /// function VolumeProperties) for objects the density
+    /// of which is equal to 1 (or is not defined), the
+    /// function Mass will return the total volume of the
+    /// solids of the system analysed by VProps.
+    /// Warning
+    /// The shape S must represent an object whose
+    /// global volume properties can be computed. It may
+    /// be a finite solid, or a series of finite solids all
+    /// oriented in a coherent way. Nonetheless, S must be
+    /// exempt of any free boundary. Note that these
+    /// conditions of coherence are not checked by this
+    /// algorithm, and results will be false if they are not respected.
+    /// SkipShared a is special flag, which allows taking in calculation
+    /// shared topological entities or not.
+    /// For ex., if SkipShared = True, the volumes formed by the equal
+    /// (the same TShape, location and orientation) faces are taken
+    /// into calculation only once.
+    /// UseTriangulation is a special flag, which defines preferable
+    /// source of geometry data. If UseTriangulation = Standard_False,
+    /// exact geometry objects (surfaces) are used,
+    /// otherwise face triangulations are used first.
     pub fn volume_properties_shape_gprops_bool3(
         S: &ffi::TopoDS_Shape,
         VProps: std::pin::Pin<&mut ffi::GProp_GProps>,
@@ -65,7 +194,20 @@ impl BRepGProp {
         )
     }
 
-    /// Updates <VProps> with the shape <S>, that contains its principal properties. The volume properties of all the FORWARD and REVERSED faces in <S> are computed. If OnlyClosed is True then computed faces must belong to closed Shells. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for each face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. Method returns estimation of relative error reached for whole shape. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration. SkipShared is a special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, the volumes formed by the equal (the same TShape, location and orientation) faces are taken into calculation only once.
+    /// Updates <VProps> with the shape <S>, that contains its principal properties.
+    /// The volume properties of all the FORWARD and REVERSED faces in <S> are computed.
+    /// If OnlyClosed is True then computed faces must belong to closed Shells.
+    /// Adaptive 2D Gauss integration is used.
+    /// Parameter Eps sets maximal relative error of computed mass (volume) for each face.
+    /// Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values
+    /// for two successive steps of adaptive integration.
+    /// Method returns estimation of relative error reached for whole shape.
+    /// WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
+    /// SkipShared is a special flag, which allows taking in calculation shared
+    /// topological entities or not.
+    /// For ex., if SkipShared = True, the volumes formed by the equal
+    /// (the same TShape, location and orientation)
+    /// faces are taken into calculation only once.
     pub fn volume_properties_shape_gprops_real_bool2(
         S: &ffi::TopoDS_Shape,
         VProps: std::pin::Pin<&mut ffi::GProp_GProps>,
@@ -78,7 +220,21 @@ impl BRepGProp {
         )
     }
 
-    /// Updates <VProps> with the shape <S>, that contains its principal properties. The volume properties of all the FORWARD and REVERSED faces in <S> are computed. If OnlyClosed is True then computed faces must belong to closed Shells. Adaptive 2D Gauss integration is used. Parameter IsUseSpan says if it is necessary to define spans on a face. This option has an effect only for BSpline faces. Parameter Eps sets maximal relative error of computed property for each face. Error is delivered by the adaptive Gauss-Kronrod method of integral computation that is used for properties computation. Method returns estimation of relative error reached for whole shape. Returns negative value if the computation is failed. SkipShared is a special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, the volumes formed by the equal (the same TShape, location and orientation) faces are taken into calculation only once.
+    /// Updates <VProps> with the shape <S>, that contains its principal properties.
+    /// The volume properties of all the FORWARD and REVERSED faces in <S> are computed.
+    /// If OnlyClosed is True then computed faces must belong to closed Shells.
+    /// Adaptive 2D Gauss integration is used.
+    /// Parameter IsUseSpan says if it is necessary to define spans on a face.
+    /// This option has an effect only for BSpline faces.
+    /// Parameter Eps sets maximal relative error of computed property for each face.
+    /// Error is delivered by the adaptive Gauss-Kronrod method of integral computation
+    /// that is used for properties computation.
+    /// Method returns estimation of relative error reached for whole shape.
+    /// Returns negative value if the computation is failed.
+    /// SkipShared is a special flag, which allows taking in calculation
+    /// shared topological entities or not.
+    /// For ex., if SkipShared = True, the volumes formed by the equal
+    /// (the same TShape, location and orientation) faces are taken into calculation only once.
     pub fn volume_properties_gk_shape_gprops_real_bool5(
         S: &ffi::TopoDS_Shape,
         VProps: std::pin::Pin<&mut ffi::GProp_GProps>,
@@ -112,12 +268,19 @@ impl BRepGProp {
 }
 pub use ffi::Face;
 impl Face {
-    /// Constructor. Initializes the object with a flag IsUseSpan that says if it is necessary to define spans on a face. This option has an effect only for BSpline faces. Spans are returned by the methods GetUKnots and GetTKnots.
+    /// Constructor. Initializes the object with a flag IsUseSpan
+    /// that says if it is necessary to define spans on a face.
+    /// This option has an effect only for BSpline faces. Spans
+    /// are returned by the methods GetUKnots and GetTKnots.
     pub fn new_bool(IsUseSpan: bool) -> cxx::UniquePtr<Self> {
         ffi::Face_ctor_bool(IsUseSpan)
     }
 
-    /// Constructor. Initializes the object with the face and the flag IsUseSpan that says if it is necessary to define spans on a face. This option has an effect only for BSpline faces. Spans are returned by the methods GetUKnots and GetTKnots.
+    /// Constructor. Initializes the object with the face and the
+    /// flag IsUseSpan that says if it is necessary to define
+    /// spans on a face. This option has an effect only for
+    /// BSpline faces. Spans are returned by the methods GetUKnots
+    /// and GetTKnots.
     pub fn new_face_bool(F: &ffi::TopoDS_Face, IsUseSpan: bool) -> cxx::UniquePtr<Self> {
         ffi::Face_ctor_face_bool(F, IsUseSpan)
     }
@@ -138,10 +301,59 @@ pub(crate) mod ffi {
         /// ======================== BRepGProp ========================
         /// /// **Source:** `BRepGProp.hxx` - `BRepGProp`
         ///
-        /// Provides global functions to compute a shape's global properties for lines, surfaces or volumes, and bring them together with the global properties already computed for a geometric system. The global properties computed for a system are : - its mass, - its center of mass, - its matrix of inertia, - its moment about an axis, - its radius of gyration about an axis, - and its principal properties of inertia such as principal axis, principal moments, principal radius of gyration.
+        /// Provides global functions to compute a shape's global
+        /// properties for lines, surfaces or volumes, and bring
+        /// them together with the global properties already
+        /// computed for a geometric system.
+        /// The global properties computed for a system are :
+        /// - its mass,
+        /// - its center of mass,
+        /// - its matrix of inertia,
+        /// - its moment about an axis,
+        /// - its radius of gyration about an axis,
+        /// - and its principal properties of inertia such as
+        /// principal axis, principal moments, principal radius of gyration.
         #[cxx_name = "BRepGProp"]
         type BRepGProp;
-        /// Computes the linear global properties of the shape S, i.e. the global properties induced by each edge of the shape S, and brings them together with the global properties still retained by the framework LProps. If the current system of LProps was empty, its global properties become equal to the linear global properties of S. For this computation no linear density is attached to the edges. So, for example, the added mass corresponds to the sum of the lengths of the edges of S. The density of the composed systems, i.e. that of each component of the current system of LProps, and that of S which is considered to be equal to 1, must be coherent. Note that this coherence cannot be checked. You are advised to use a separate framework for each density, and then to bring these frameworks together into a global one. The point relative to which the inertia of the system is computed is the reference point of the framework LProps. Note: if your programming ensures that the framework LProps retains only linear global properties (brought together for example, by the function LinearProperties) for objects the density of which is equal to 1 (or is not defined), the function Mass will return the total length of edges of the system analysed by LProps. Warning No check is performed to verify that the shape S retains truly linear properties. If S is simply a vertex, it is not considered to present any additional global properties. SkipShared is a special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, edges, shared by two or more faces, are taken into calculation only once. If we have cube with sizes 1, 1, 1, its linear properties = 12 for SkipEdges = true and 24 for SkipEdges = false. UseTriangulation is a special flag, which defines preferable source of geometry data. If UseTriangulation = Standard_False, exact geometry objects (curves) are used, otherwise polygons of triangulation are used first.
+        /// Computes the linear global properties of the shape S,
+        /// i.e. the global properties induced by each edge of the
+        /// shape S, and brings them together with the global
+        /// properties still retained by the framework LProps. If
+        /// the current system of LProps was empty, its global
+        /// properties become equal to the linear global
+        /// properties of S.
+        /// For this computation no linear density is attached to
+        /// the edges. So, for example, the added mass
+        /// corresponds to the sum of the lengths of the edges of
+        /// S. The density of the composed systems, i.e. that of
+        /// each component of the current system of LProps, and
+        /// that of S which is considered to be equal to 1, must be coherent.
+        /// Note that this coherence cannot be checked. You are
+        /// advised to use a separate framework for each
+        /// density, and then to bring these frameworks together
+        /// into a global one.
+        /// The point relative to which the inertia of the system is
+        /// computed is the reference point of the framework LProps.
+        /// Note: if your programming ensures that the framework
+        /// LProps retains only linear global properties (brought
+        /// together for example, by the function
+        /// LinearProperties) for objects the density of which is
+        /// equal to 1 (or is not defined), the function Mass will
+        /// return the total length of edges of the system analysed by LProps.
+        /// Warning
+        /// No check is performed to verify that the shape S
+        /// retains truly linear properties. If S is simply a vertex, it
+        /// is not considered to present any additional global properties.
+        /// SkipShared is a special flag, which allows taking in calculation
+        /// shared topological entities or not.
+        /// For ex., if SkipShared = True, edges, shared by two or more faces,
+        /// are taken into calculation only once.
+        /// If we have cube with sizes 1, 1, 1, its linear properties = 12
+        /// for SkipEdges = true and 24 for SkipEdges = false.
+        /// UseTriangulation is a special flag, which defines preferable
+        /// source of geometry data. If UseTriangulation = Standard_False,
+        /// exact geometry objects (curves) are used, otherwise polygons of
+        /// triangulation are used first.
         #[cxx_name = "BRepGProp_LinearProperties"]
         fn BRepGProp_linear_properties(
             S: &TopoDS_Shape,
@@ -149,7 +361,46 @@ pub(crate) mod ffi {
             SkipShared: bool,
             UseTriangulation: bool,
         );
-        /// Computes the surface global properties of the shape S, i.e. the global properties induced by each face of the shape S, and brings them together with the global properties still retained by the framework SProps. If the current system of SProps was empty, its global properties become equal to the surface global properties of S. For this computation, no surface density is attached to the faces. Consequently, the added mass corresponds to the sum of the areas of the faces of S. The density of the component systems, i.e. that of each component of the current system of SProps, and that of S which is considered to be equal to 1, must be coherent. Note that this coherence cannot be checked. You are advised to use a framework for each different value of density, and then to bring these frameworks together into a global one. The point relative to which the inertia of the system is computed is the reference point of the framework SProps. Note : if your programming ensures that the framework SProps retains only surface global properties, brought together, for example, by the function SurfaceProperties, for objects the density of which is equal to 1 (or is not defined), the function Mass will return the total area of faces of the system analysed by SProps. Warning No check is performed to verify that the shape S retains truly surface properties. If S is simply a vertex, an edge or a wire, it is not considered to present any additional global properties. SkipShared is a special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, faces, shared by two or more shells, are taken into calculation only once. UseTriangulation is a special flag, which defines preferable source of geometry data. If UseTriangulation = Standard_False, exact geometry objects (surfaces) are used, otherwise face triangulations are used first.
+        /// Computes the surface global properties of the
+        /// shape S, i.e. the global properties induced by each
+        /// face of the shape S, and brings them together with
+        /// the global properties still retained by the framework
+        /// SProps. If the current system of SProps was empty,
+        /// its global properties become equal to the surface
+        /// global properties of S.
+        /// For this computation, no surface density is attached
+        /// to the faces. Consequently, the added mass
+        /// corresponds to the sum of the areas of the faces of
+        /// S. The density of the component systems, i.e. that
+        /// of each component of the current system of
+        /// SProps, and that of S which is considered to be
+        /// equal to 1, must be coherent.
+        /// Note that this coherence cannot be checked. You
+        /// are advised to use a framework for each different
+        /// value of density, and then to bring these
+        /// frameworks together into a global one.
+        /// The point relative to which the inertia of the system
+        /// is computed is the reference point of the framework SProps.
+        /// Note : if your programming ensures that the
+        /// framework SProps retains only surface global
+        /// properties, brought together, for example, by the
+        /// function SurfaceProperties, for objects the density
+        /// of which is equal to 1 (or is not defined), the
+        /// function Mass will return the total area of faces of
+        /// the system analysed by SProps.
+        /// Warning
+        /// No check is performed to verify that the shape S
+        /// retains truly surface properties. If S is simply a
+        /// vertex, an edge or a wire, it is not considered to
+        /// present any additional global properties.
+        /// SkipShared is a special flag, which allows taking in calculation
+        /// shared topological entities or not.
+        /// For ex., if SkipShared = True, faces, shared by two or more shells,
+        /// are taken into calculation only once.
+        /// UseTriangulation is a special flag, which defines preferable
+        /// source of geometry data. If UseTriangulation = Standard_False,
+        /// exact geometry objects (surfaces) are used,
+        /// otherwise face triangulations are used first.
         #[cxx_name = "BRepGProp_SurfaceProperties_shape_gprops_bool2"]
         fn BRepGProp_surface_properties_shape_gprops_bool2(
             S: &TopoDS_Shape,
@@ -157,7 +408,18 @@ pub(crate) mod ffi {
             SkipShared: bool,
             UseTriangulation: bool,
         );
-        /// Updates <SProps> with the shape <S>, that contains its principal properties. The surface properties of all the faces in <S> are computed. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (area) for each face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. Method returns estimation of relative error reached for whole shape. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration. SkipShared is a special flag, which allows taking in calculation shared topological entities or not For ex., if SkipShared = True, faces, shared by two or more shells, are taken into calculation only once.
+        /// Updates <SProps> with the shape <S>, that contains its principal properties.
+        /// The surface properties of all the faces in <S> are computed.
+        /// Adaptive 2D Gauss integration is used.
+        /// Parameter Eps sets maximal relative error of computed mass (area) for each face.
+        /// Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values
+        /// for two successive steps of adaptive integration.
+        /// Method returns estimation of relative error reached for whole shape.
+        /// WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
+        /// SkipShared is a special flag, which allows taking in calculation
+        /// shared topological entities or not
+        /// For ex., if SkipShared = True, faces, shared by two or more shells,
+        /// are taken into calculation only once.
         #[cxx_name = "BRepGProp_SurfaceProperties_shape_gprops_real_bool"]
         fn BRepGProp_surface_properties_shape_gprops_real_bool(
             S: &TopoDS_Shape,
@@ -165,7 +427,48 @@ pub(crate) mod ffi {
             Eps: f64,
             SkipShared: bool,
         ) -> f64;
-        /// Computes the global volume properties of the solid S, and brings them together with the global properties still retained by the framework VProps. If the current system of VProps was empty, its global properties become equal to the global properties of S for volume. For this computation, no volume density is attached to the solid. Consequently, the added mass corresponds to the volume of S. The density of the component systems, i.e. that of each component of the current system of VProps, and that of S which is considered to be equal to 1, must be coherent to each other. Note that this coherence cannot be checked. You are advised to use a separate framework for each density, and then to bring these frameworks together into a global one. The point relative to which the inertia of the system is computed is the reference point of the framework VProps. Note: if your programming ensures that the framework VProps retains only global properties of volume (brought together for example, by the function VolumeProperties) for objects the density of which is equal to 1 (or is not defined), the function Mass will return the total volume of the solids of the system analysed by VProps. Warning The shape S must represent an object whose global volume properties can be computed. It may be a finite solid, or a series of finite solids all oriented in a coherent way. Nonetheless, S must be exempt of any free boundary. Note that these conditions of coherence are not checked by this algorithm, and results will be false if they are not respected. SkipShared a is special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, the volumes formed by the equal (the same TShape, location and orientation) faces are taken into calculation only once. UseTriangulation is a special flag, which defines preferable source of geometry data. If UseTriangulation = Standard_False, exact geometry objects (surfaces) are used, otherwise face triangulations are used first.
+        ///
+        /// Computes the global volume properties of the solid
+        /// S, and brings them together with the global
+        /// properties still retained by the framework VProps. If
+        /// the current system of VProps was empty, its global
+        /// properties become equal to the global properties of S for volume.
+        /// For this computation, no volume density is attached
+        /// to the solid. Consequently, the added mass
+        /// corresponds to the volume of S. The density of the
+        /// component systems, i.e. that of each component of
+        /// the current system of VProps, and that of S which
+        /// is considered to be equal to 1, must be coherent to each other.
+        /// Note that this coherence cannot be checked. You
+        /// are advised to use a separate framework for each
+        /// density, and then to bring these frameworks
+        /// together into a global one.
+        /// The point relative to which the inertia of the system
+        /// is computed is the reference point of the framework VProps.
+        /// Note: if your programming ensures that the
+        /// framework VProps retains only global properties of
+        /// volume (brought together for example, by the
+        /// function VolumeProperties) for objects the density
+        /// of which is equal to 1 (or is not defined), the
+        /// function Mass will return the total volume of the
+        /// solids of the system analysed by VProps.
+        /// Warning
+        /// The shape S must represent an object whose
+        /// global volume properties can be computed. It may
+        /// be a finite solid, or a series of finite solids all
+        /// oriented in a coherent way. Nonetheless, S must be
+        /// exempt of any free boundary. Note that these
+        /// conditions of coherence are not checked by this
+        /// algorithm, and results will be false if they are not respected.
+        /// SkipShared a is special flag, which allows taking in calculation
+        /// shared topological entities or not.
+        /// For ex., if SkipShared = True, the volumes formed by the equal
+        /// (the same TShape, location and orientation) faces are taken
+        /// into calculation only once.
+        /// UseTriangulation is a special flag, which defines preferable
+        /// source of geometry data. If UseTriangulation = Standard_False,
+        /// exact geometry objects (surfaces) are used,
+        /// otherwise face triangulations are used first.
         #[cxx_name = "BRepGProp_VolumeProperties_shape_gprops_bool3"]
         fn BRepGProp_volume_properties_shape_gprops_bool3(
             S: &TopoDS_Shape,
@@ -174,7 +477,20 @@ pub(crate) mod ffi {
             SkipShared: bool,
             UseTriangulation: bool,
         );
-        /// Updates <VProps> with the shape <S>, that contains its principal properties. The volume properties of all the FORWARD and REVERSED faces in <S> are computed. If OnlyClosed is True then computed faces must belong to closed Shells. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for each face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. Method returns estimation of relative error reached for whole shape. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration. SkipShared is a special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, the volumes formed by the equal (the same TShape, location and orientation) faces are taken into calculation only once.
+        /// Updates <VProps> with the shape <S>, that contains its principal properties.
+        /// The volume properties of all the FORWARD and REVERSED faces in <S> are computed.
+        /// If OnlyClosed is True then computed faces must belong to closed Shells.
+        /// Adaptive 2D Gauss integration is used.
+        /// Parameter Eps sets maximal relative error of computed mass (volume) for each face.
+        /// Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values
+        /// for two successive steps of adaptive integration.
+        /// Method returns estimation of relative error reached for whole shape.
+        /// WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
+        /// SkipShared is a special flag, which allows taking in calculation shared
+        /// topological entities or not.
+        /// For ex., if SkipShared = True, the volumes formed by the equal
+        /// (the same TShape, location and orientation)
+        /// faces are taken into calculation only once.
         #[cxx_name = "BRepGProp_VolumeProperties_shape_gprops_real_bool2"]
         fn BRepGProp_volume_properties_shape_gprops_real_bool2(
             S: &TopoDS_Shape,
@@ -183,7 +499,21 @@ pub(crate) mod ffi {
             OnlyClosed: bool,
             SkipShared: bool,
         ) -> f64;
-        /// Updates <VProps> with the shape <S>, that contains its principal properties. The volume properties of all the FORWARD and REVERSED faces in <S> are computed. If OnlyClosed is True then computed faces must belong to closed Shells. Adaptive 2D Gauss integration is used. Parameter IsUseSpan says if it is necessary to define spans on a face. This option has an effect only for BSpline faces. Parameter Eps sets maximal relative error of computed property for each face. Error is delivered by the adaptive Gauss-Kronrod method of integral computation that is used for properties computation. Method returns estimation of relative error reached for whole shape. Returns negative value if the computation is failed. SkipShared is a special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, the volumes formed by the equal (the same TShape, location and orientation) faces are taken into calculation only once.
+        /// Updates <VProps> with the shape <S>, that contains its principal properties.
+        /// The volume properties of all the FORWARD and REVERSED faces in <S> are computed.
+        /// If OnlyClosed is True then computed faces must belong to closed Shells.
+        /// Adaptive 2D Gauss integration is used.
+        /// Parameter IsUseSpan says if it is necessary to define spans on a face.
+        /// This option has an effect only for BSpline faces.
+        /// Parameter Eps sets maximal relative error of computed property for each face.
+        /// Error is delivered by the adaptive Gauss-Kronrod method of integral computation
+        /// that is used for properties computation.
+        /// Method returns estimation of relative error reached for whole shape.
+        /// Returns negative value if the computation is failed.
+        /// SkipShared is a special flag, which allows taking in calculation
+        /// shared topological entities or not.
+        /// For ex., if SkipShared = True, the volumes formed by the equal
+        /// (the same TShape, location and orientation) faces are taken into calculation only once.
         #[cxx_name = "BRepGProp_VolumePropertiesGK_shape_gprops_real_bool5"]
         fn BRepGProp_volume_properties_gk_shape_gprops_real_bool5(
             S: &TopoDS_Shape,
@@ -213,12 +543,19 @@ pub(crate) mod ffi {
         type Face;
         /// /// **Source:** `BRepGProp_Face.hxx` - `BRepGProp_Face::BRepGProp_Face()`
         ///
-        /// Constructor. Initializes the object with a flag IsUseSpan that says if it is necessary to define spans on a face. This option has an effect only for BSpline faces. Spans are returned by the methods GetUKnots and GetTKnots.
+        /// Constructor. Initializes the object with a flag IsUseSpan
+        /// that says if it is necessary to define spans on a face.
+        /// This option has an effect only for BSpline faces. Spans
+        /// are returned by the methods GetUKnots and GetTKnots.
         #[cxx_name = "BRepGProp_Face_ctor_bool"]
         fn Face_ctor_bool(IsUseSpan: bool) -> UniquePtr<Face>;
         /// /// **Source:** `BRepGProp_Face.hxx` - `BRepGProp_Face::BRepGProp_Face()`
         ///
-        /// Constructor. Initializes the object with the face and the flag IsUseSpan that says if it is necessary to define spans on a face. This option has an effect only for BSpline faces. Spans are returned by the methods GetUKnots and GetTKnots.
+        /// Constructor. Initializes the object with the face and the
+        /// flag IsUseSpan that says if it is necessary to define
+        /// spans on a face. This option has an effect only for
+        /// BSpline faces. Spans are returned by the methods GetUKnots
+        /// and GetTKnots.
         #[cxx_name = "BRepGProp_Face_ctor_face_bool"]
         fn Face_ctor_face_bool(F: &TopoDS_Face, IsUseSpan: bool) -> UniquePtr<Face>;
         #[cxx_name = "Load"]
@@ -247,31 +584,44 @@ pub(crate) mod ffi {
         fn l_int_subs(self: &Face) -> i32;
         #[cxx_name = "LKnots"]
         fn l_knots(self: &Face, Knots: Pin<&mut TColStd_Array1OfReal>);
-        /// Returns the number of points required to do the integration in the U parametric direction with a good accuracy.
+        /// Returns the number of points required to do the
+        /// integration in the U parametric direction with
+        /// a good accuracy.
         #[cxx_name = "UIntegrationOrder"]
         fn u_integration_order(self: &Face) -> i32;
         /// Returns the parametric bounds of the Face.
         #[cxx_name = "Bounds"]
         fn bounds(self: &Face, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64);
-        /// Computes the point of parameter U, V on the Face <S> and the normal to the face at this point.
+        /// Computes the point of parameter U, V on the Face <S> and
+        /// the normal to the face at this point.
         #[cxx_name = "Normal"]
         fn normal(self: &Face, U: f64, V: f64, P: Pin<&mut gp_Pnt>, VNor: Pin<&mut gp_Vec>);
-        /// Loading the boundary arc. Returns FALSE if edge has no P-Curve.
+        /// Loading the boundary arc.
+        /// Returns FALSE if edge has no P-Curve.
         #[cxx_name = "Load"]
         fn load_edge(self: Pin<&mut Face>, E: &TopoDS_Edge) -> bool;
-        /// Returns the parametric value of the start point of the current arc of curve.
+        /// Returns the parametric value of the start point of
+        /// the current arc of curve.
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &Face) -> f64;
-        /// Returns the parametric value of the end point of the current arc of curve.
+        /// Returns the parametric value of the end point of
+        /// the current arc of curve.
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &Face) -> f64;
-        /// Returns the number of points required to do the integration along the parameter of curve.
+        /// Returns the number of points required to do the
+        /// integration along the parameter of curve.
         #[cxx_name = "IntegrationOrder"]
         fn integration_order(self: &Face) -> i32;
-        /// Returns the point of parameter U and the first derivative at this point of a boundary curve.
+        /// Returns the point of parameter U and the first derivative
+        /// at this point of a boundary curve.
         #[cxx_name = "D12d"]
         fn d12d(self: &Face, U: f64, P: Pin<&mut gp_Pnt2d>, V1: Pin<&mut gp_Vec2d>);
-        /// Returns an array of U knots of the face. The first and last elements of the array will be theUMin and theUMax. The middle elements will be the U Knots of the face greater then theUMin and lower then theUMax in increasing order. If the face is not a BSpline, the array initialized with theUMin and theUMax only.
+        /// Returns an array of U knots of the face. The first and last
+        /// elements of the array will be theUMin and theUMax. The
+        /// middle elements will be the U Knots of the face greater
+        /// then theUMin and lower then theUMax in increasing order.
+        /// If the face is not a BSpline, the array initialized with
+        /// theUMin and theUMax only.
         #[cxx_name = "GetUKnots"]
         fn get_u_knots(
             self: &Face,
@@ -279,7 +629,15 @@ pub(crate) mod ffi {
             theUMax: f64,
             theUKnots: Pin<&mut HandleTColStdHArray1OfReal>,
         );
-        /// Returns an array of combination of T knots of the arc and V knots of the face. The first and last elements of the array will be theTMin and theTMax. The middle elements will be the Knots of the arc and the values of parameters of arc on which the value points have V coordinates close to V knots of face. All the parameter will be greater then theTMin and lower then theTMax in increasing order. If the face is not a BSpline, the array initialized with theTMin and theTMax only.
+        /// Returns an array of combination of T knots of the arc and
+        /// V knots of the face. The first and last elements of the
+        /// array will be theTMin and theTMax. The middle elements will
+        /// be the Knots of the arc and the values of parameters of
+        /// arc on which the value points have V coordinates close to V
+        /// knots of face. All the parameter will be greater then
+        /// theTMin and lower then theTMax in increasing order.
+        /// If the face is not a BSpline, the array initialized with
+        /// theTMin and theTMax only.
         #[cxx_name = "GetTKnots"]
         fn get_t_knots(
             self: &Face,

@@ -97,24 +97,27 @@ pub fn convert_section_markers_to_comments(code: &str) -> String {
     use regex::Regex;
     
     // First, convert all #[doc = "..."] to /// ... format
-    // This regex matches #[doc = "content"] and captures the content (including newlines)
+    // This regex captures leading whitespace and the content
     // We use (?s) to make . match newlines
-    let doc_attr_re = Regex::new(r#"(?s)#\[doc = "([^"]*)"\]"#).unwrap();
+    let doc_attr_re = Regex::new(r#"(?s)([ \t]*)#\[doc = "([^"]*)"\]"#).unwrap();
     let result = doc_attr_re.replace_all(code, |caps: &regex::Captures| {
-        let content = &caps[1];
+        let indent = &caps[1];
+        let content = &caps[2];
         // Handle empty doc comments
         if content.is_empty() {
-            "///".to_string()
+            format!("{}///", indent)
         } else {
-            // Handle multi-line content: each line needs its own ///
-            content
+            // Handle escaped newlines from quote! macro - convert \n to actual newlines
+            // then split into lines, each getting its own /// with proper indentation
+            let unescaped = content.replace("\\n", "\n");
+            unescaped
                 .lines()
                 .map(|line| {
                     let trimmed = line.trim();
                     if trimmed.is_empty() {
-                        "///".to_string()
+                        format!("{}///", indent)
                     } else {
-                        format!("/// {}", trimmed)
+                        format!("{}/// {}", indent, trimmed)
                     }
                 })
                 .collect::<Vec<_>>()

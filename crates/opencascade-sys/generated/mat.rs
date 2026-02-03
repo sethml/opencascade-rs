@@ -23,12 +23,14 @@ impl BasicElt {
         ffi::BasicElt_to_handle(obj)
     }
 
-    /// Return <startArcLeft> or <startArcRight> corresponding to <aSide>.
+    /// Return <startArcLeft> or <startArcRight> corresponding
+    /// to <aSide>.
     pub fn start_arc(&self) -> cxx::UniquePtr<ffi::HandleMATArc> {
         ffi::BasicElt_start_arc(self)
     }
 
-    /// Return <endArcLeft> or <endArcRight> corresponding to <aSide>.
+    /// Return <endArcLeft> or <endArcRight> corresponding
+    /// to <aSide>.
     pub fn end_arc(&self) -> cxx::UniquePtr<ffi::HandleMATArc> {
         ffi::BasicElt_end_arc(self)
     }
@@ -48,7 +50,8 @@ pub(crate) mod ffi {
         /// ======================== MAT_BasicElt ========================
         /// /// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt`
         ///
-        /// A    BasicELt  is  associated   to  each  elementary constituent of  the figure.
+        /// A    BasicELt  is  associated   to  each  elementary
+        /// constituent of  the figure.
         #[cxx_name = "MAT_BasicElt"]
         type BasicElt;
         /// /// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt::MAT_BasicElt()`
@@ -72,10 +75,12 @@ pub(crate) mod ffi {
         fn set_geom_index(self: Pin<&mut BasicElt>, anInteger: i32);
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BasicElt) -> &HandleStandardType;
-        /// Return <startArcLeft> or <startArcRight> corresponding to <aSide>.
+        /// Return <startArcLeft> or <startArcRight> corresponding
+        /// to <aSide>.
         #[cxx_name = "MAT_BasicElt_StartArc"]
         fn BasicElt_start_arc(self_: &BasicElt) -> UniquePtr<HandleMATArc>;
-        /// Return <endArcLeft> or <endArcRight> corresponding to <aSide>.
+        /// Return <endArcLeft> or <endArcRight> corresponding
+        /// to <aSide>.
         #[cxx_name = "MAT_BasicElt_EndArc"]
         fn BasicElt_end_arc(self_: &BasicElt) -> UniquePtr<HandleMATArc>;
         #[cxx_name = "MAT_BasicElt_get_type_name"]

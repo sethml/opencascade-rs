@@ -44,7 +44,8 @@ pub(crate) mod ffi {
         /// ======================== MAT2d_Tool2d ========================
         /// /// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d`
         ///
-        /// Set of the methods useful for the MAT's computation. Tool2d contains the geometry of the bisecting locus.
+        /// Set of the methods useful for the MAT's computation.
+        /// Tool2d contains the geometry of the bisecting locus.
         #[cxx_name = "MAT2d_Tool2d"]
         type Tool2d;
         /// /// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d::MAT2d_Tool2d()`
@@ -52,7 +53,9 @@ pub(crate) mod ffi {
         /// Empty Constructor.
         #[cxx_name = "MAT2d_Tool2d_ctor"]
         fn Tool2d_ctor() -> UniquePtr<Tool2d>;
-        /// InitItems cuts the line in Items. this Items are the geometrics representations of the BasicElts from MAT.
+        /// InitItems cuts the line in Items.
+        /// this Items are the geometrics representations of
+        /// the BasicElts from MAT.
         #[cxx_name = "InitItems"]
         fn init_items(self: Pin<&mut Tool2d>, aCircuit: &HandleMAT2dCircuit);
         /// Returns the Number of Items .
@@ -61,35 +64,55 @@ pub(crate) mod ffi {
         /// Returns tolerance to test the confusion of two points.
         #[cxx_name = "ToleranceOfConfusion"]
         fn tolerance_of_confusion(self: &Tool2d) -> f64;
-        /// Creates the point at the origin of the bisector between anitem and the previous  item. dist is the distance from the FirstPoint to <anitem>. Returns the index of this point in <theGeomPnts>.
+        /// Creates the point at the origin of the bisector between
+        /// anitem and the previous  item.
+        /// dist is the distance from the FirstPoint to <anitem>.
+        /// Returns the index of this point in <theGeomPnts>.
         #[cxx_name = "FirstPoint"]
         fn first_point(self: Pin<&mut Tool2d>, anitem: i32, dist: &mut f64) -> i32;
-        /// Creates the Tangent at the end of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>
+        /// Creates the Tangent at the end of the Item defined
+        /// by <anitem>. Returns the index of this vector in
+        /// <theGeomVecs>
         #[cxx_name = "TangentBefore"]
         fn tangent_before(self: Pin<&mut Tool2d>, anitem: i32, IsOpenResult: bool) -> i32;
-        /// Creates the Reversed Tangent at the origin of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>
+        /// Creates the Reversed Tangent at the origin of the Item
+        /// defined by <anitem>. Returns the index of this vector in
+        /// <theGeomVecs>
         #[cxx_name = "TangentAfter"]
         fn tangent_after(self: Pin<&mut Tool2d>, anitem: i32, IsOpenResult: bool) -> i32;
-        /// Creates the Tangent at the end of the bisector defined by <bisector>. Returns the index of this vector in <theGeomVecs>
+        /// Creates the Tangent at the end of the bisector defined
+        /// by <bisector>. Returns the index of this vector in
+        /// <theGeomVecs>
         #[cxx_name = "Tangent"]
         fn tangent(self: Pin<&mut Tool2d>, bisector: i32) -> i32;
         /// Creates the geometric bisector defined by <abisector>.
         #[cxx_name = "CreateBisector"]
         fn create_bisector(self: Pin<&mut Tool2d>, abisector: &HandleMATBisector);
-        /// Trims the geometric bisector by the <firstparameter> of <abisector>. If the parameter is out of the bisector, Return FALSE. else Return True.
+        /// Trims the geometric bisector by the <firstparameter>
+        /// of <abisector>.
+        /// If the parameter is out of the bisector, Return FALSE.
+        /// else Return True.
         #[cxx_name = "TrimBisector"]
         fn trim_bisector_handlebisector(
             self: Pin<&mut Tool2d>,
             abisector: &HandleMATBisector,
         ) -> bool;
-        /// Trims the geometric bisector by the point of index <apoint> in <theGeomPnts>. If the point is out of the bisector, Return FALSE. else Return True.
+        /// Trims the geometric bisector by the point of index
+        /// <apoint> in <theGeomPnts>.
+        /// If the point is out of the bisector, Return FALSE.
+        /// else Return True.
         #[cxx_name = "TrimBisector"]
         fn trim_bisector_handlebisector_int(
             self: Pin<&mut Tool2d>,
             abisector: &HandleMATBisector,
             apoint: i32,
         ) -> bool;
-        /// Computes  the point  of  intersection between  the bisectors defined  by  <bisectorone>  and <bisectortwo> . If this point exists,  <intpnt> is its  index in <theGeomPnts> and Return the distance of the point from the bisector else Return <RealLast>.
+        /// Computes  the point  of  intersection between  the
+        /// bisectors defined  by  <bisectorone>  and
+        /// <bisectortwo> .
+        /// If this point exists,  <intpnt> is its  index
+        /// in <theGeomPnts> and Return the distance of the point
+        /// from the bisector else Return <RealLast>.
         #[cxx_name = "IntersectBisector"]
         fn intersect_bisector(
             self: Pin<&mut Tool2d>,
@@ -97,24 +120,29 @@ pub(crate) mod ffi {
             bisectortwo: &HandleMATBisector,
             intpnt: &mut i32,
         ) -> f64;
-        /// Returns the distance between the two points designed by their parameters on <abisector>.
+        /// Returns the distance between the two points designed
+        /// by their parameters on <abisector>.
         #[cxx_name = "Distance"]
         fn distance(self: &Tool2d, abisector: &HandleMATBisector, param1: f64, param2: f64) -> f64;
-        /// displays information about the bisector defined by <bisector>.
+        /// displays information about the bisector defined by
+        /// <bisector>.
         #[cxx_name = "Dump"]
         fn dump(self: &Tool2d, bisector: i32, erease: i32);
-        /// Returns the <Bisec> of index <Index> in <theGeomBisectors>.
+        /// Returns the <Bisec> of index <Index> in
+        /// <theGeomBisectors>.
         #[cxx_name = "GeomBis"]
         fn geom_bis(self: &Tool2d, Index: i32) -> &Bisector_Bisec;
         /// Returns the point of index <Index> in the <theGeomPnts>.
         #[cxx_name = "GeomPnt"]
         fn geom_pnt(self: &Tool2d, Index: i32) -> &gp_Pnt2d;
-        /// Returns the  vector  of index <Index> in the <theGeomVecs>.
+        /// Returns the  vector  of index <Index> in the
+        /// <theGeomVecs>.
         #[cxx_name = "GeomVec"]
         fn geom_vec(self: &Tool2d, Index: i32) -> &gp_Vec2d;
         #[cxx_name = "BisecFusion"]
         fn bisec_fusion(self: Pin<&mut Tool2d>, Index1: i32, Index2: i32);
-        /// Returns the <Bisec> of index <Index> in <theGeomBisectors>.
+        /// Returns the <Bisec> of index <Index> in
+        /// <theGeomBisectors>.
         #[cxx_name = "ChangeGeomBis"]
         fn change_geom_bis(self: Pin<&mut Tool2d>, Index: i32) -> Pin<&mut Bisector_Bisec>;
         /// Returns the Geometry of index <Index> in <theGeomElts>.

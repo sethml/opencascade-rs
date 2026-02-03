@@ -558,14 +558,14 @@ fn extract_doxygen_comment(entity: &Entity) -> Option<String> {
                     .trim_start_matches('*')
                     .trim()
             })
-            .filter(|line| !line.is_empty())
             .collect();
 
-        if cleaned.is_empty() {
+        if cleaned.iter().all(|line| line.is_empty()) {
             return None;
         }
 
-        return Some(cleaned.join(" "));
+        // Preserve newlines in the comment for proper formatting
+        return Some(cleaned.join("\n"));
     }
     None
 }

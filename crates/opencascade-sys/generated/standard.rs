@@ -42,12 +42,12 @@ impl Failure {
         ffi::Failure_ctor_failure(f)
     }
 
-    #[doc = "Creates a status object of type \"Failure\". @param[in] theDesc  exception description"]
+    #[doc = "Creates a status object of type \"Failure\".\n@param[in] theDesc  exception description"]
     pub fn new_charptr(theDesc: &str) -> cxx::UniquePtr<Self> {
         ffi::Failure_ctor_charptr(theDesc)
     }
 
-    #[doc = "Creates a status object of type \"Failure\" with stack trace. @param[in] theDesc  exception description @param[in] theStackTrace  associated stack trace"]
+    #[doc = "Creates a status object of type \"Failure\" with stack trace.\n@param[in] theDesc  exception description\n@param[in] theStackTrace  associated stack trace"]
     pub fn new_charptr2(theDesc: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
         ffi::Failure_ctor_charptr2(theDesc, theStackTrace)
     }
@@ -81,17 +81,19 @@ impl Failure {
         ffi::Failure_reraise_charptr(self, aMessage)
     }
 
-    #[doc = "Raises an exception of type \"Failure\" and associates an error message to it. The message can be printed in an exception handler."]
+    #[doc = "Raises an exception of type \"Failure\" and associates\nan error message to it. The message can be printed\nin an exception handler."]
     pub fn raise_charptr(aMessage: &str) {
         ffi::Failure_raise_charptr(aMessage)
     }
 
-    #[doc = "Raises an exception of type \"Failure\" and associates an error message to it. The message can be constructed at run-time."]
+    #[doc = "Raises an exception of type \"Failure\" and associates\nan error message to it. The message can be constructed\nat run-time."]
     pub fn raise_sstream(aReason: &ffi::Standard_SStream) {
         ffi::Failure_raise_sstream(aReason)
     }
 
-    /// Used to construct an instance of the exception object as a handle. Shall be used to protect against possible construction of exception object in C stack, which is dangerous since some of methods require that object was allocated dynamically.
+    /// Used to construct an instance of the exception object as a handle.
+    /// Shall be used to protect against possible construction of exception object in C stack,
+    /// which is dangerous since some of methods require that object was allocated dynamically.
     pub fn new_instance_charptr(theMessage: &str) -> cxx::UniquePtr<ffi::HandleStandardFailure> {
         ffi::Failure_new_instance_charptr(theMessage)
     }
@@ -104,7 +106,8 @@ impl Failure {
         ffi::Failure_new_instance_charptr2(theMessage, theStackTrace)
     }
 
-    /// Returns the default length of stack trace to be captured by Standard_Failure constructor; 0 by default meaning no stack trace.
+    /// Returns the default length of stack trace to be captured by Standard_Failure constructor;
+    /// 0 by default meaning no stack trace.
     pub fn default_stack_trace_length() -> i32 {
         ffi::Failure_default_stack_trace_length()
     }
@@ -120,7 +123,9 @@ impl Failure {
 }
 pub use ffi::Mutex;
 impl Mutex {
-    /// Constructor: creates a mutex object and initializes it. It is strongly recommended that mutexes were created as static objects whenever possible.
+    /// Constructor: creates a mutex object and initializes it.
+    /// It is strongly recommended that mutexes were created as
+    /// static objects whenever possible.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Mutex_ctor()
     }
@@ -140,12 +145,26 @@ impl DumpValue {
 }
 pub use ffi::Dump;
 impl Dump {
-    /// Converts stream value to string value. The result is original stream value. @param theStream source value @return text presentation
+    /// Converts stream value to string value. The result is original stream value.
+    /// @param theStream source value
+    /// @return text presentation
     pub fn text(theStream: &ffi::Standard_SStream) -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
         ffi::Dump_text(theStream)
     }
 
-    /// Converts stream value to string value. Improves the text presentation with the following cases: - for '{' append after '\\n' and indent to the next value, increment current indent value - for '}' append '\\n' and current indent before it, decrement indent value - for ',' append after '\\n' and indent to the next value. If the current symbol is in massive container [], do nothing Covers result with opened and closed brackets on the top level, if it has no symbols there. @param theStream source value @param theIndent count of ' ' symbols to apply hierarchical indent of the text values @return text presentation
+    /// Converts stream value to string value. Improves the text presentation with the following
+    /// cases:
+    /// - for '{' append after '\
+    /// ' and indent to the next value, increment current indent value
+    /// - for '}' append '\
+    /// ' and current indent before it, decrement indent value
+    /// - for ',' append after '\
+    /// ' and indent to the next value. If the current symbol is in massive
+    /// container [], do nothing Covers result with opened and closed brackets on the top level, if it
+    /// has no symbols there.
+    /// @param theStream source value
+    /// @param theIndent count of ' ' symbols to apply hierarchical indent of the text values
+    /// @return text presentation
     pub fn format_json(
         theStream: &ffi::Standard_SStream,
         theIndent: i32,
@@ -158,12 +177,17 @@ impl Dump {
         ffi::Dump_has_child_key(theSourceValue)
     }
 
-    /// Returns default prefix added for each pointer info string if short presentation of pointer used
+    /// Returns default prefix added for each pointer info string if short presentation of pointer
+    /// used
     pub fn get_pointer_prefix() -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
         ffi::Dump_get_pointer_prefix()
     }
 
-    /// Convert handle pointer to address of the pointer. If the handle is NULL, the result is an empty string. @param thePointer a pointer @param isShortInfo if true, all '0' symbols in the beginning of the pointer are skipped @return the string value
+    /// Convert handle pointer to address of the pointer. If the handle is NULL, the result is an
+    /// empty string.
+    /// @param thePointer a pointer
+    /// @param isShortInfo if true, all '0' symbols in the beginning of the pointer are skipped
+    /// @return the string value
     pub fn get_pointer_info_handletransient_bool(
         thePointer: &ffi::HandleStandardTransient,
         isShortInfo: bool,
@@ -171,7 +195,10 @@ impl Dump {
         ffi::Dump_get_pointer_info_handletransient_bool(thePointer, isShortInfo)
     }
 
-    /// Check whether the parameter name is equal to the name in the stream at position @param[in]  theStreamStr stream with values @param[in]  theName      stream key value @param[out] theStreamPos current position in the stream
+    /// Check whether the parameter name is equal to the name in the stream at position
+    /// @param[in]  theStreamStr stream with values
+    /// @param[in]  theName      stream key value
+    /// @param[out] theStreamPos current position in the stream
     pub fn process_stream_name(
         theStreamStr: &ffi::TCollection_AsciiString,
         theName: &ffi::TCollection_AsciiString,
@@ -180,7 +207,10 @@ impl Dump {
         ffi::Dump_process_stream_name(theStreamStr, theName, theStreamPos)
     }
 
-    /// Check whether the field name is equal to the name in the stream at position @param[in]  theStreamStr stream with values @param[in]  theName      stream key field value @param[out] theStreamPos current position in the stream
+    /// Check whether the field name is equal to the name in the stream at position
+    /// @param[in]  theStreamStr stream with values
+    /// @param[in]  theName      stream key field value
+    /// @param[out] theStreamPos current position in the stream
     pub fn process_field_name(
         theStreamStr: &ffi::TCollection_AsciiString,
         theName: &ffi::TCollection_AsciiString,
@@ -189,7 +219,10 @@ impl Dump {
         ffi::Dump_process_field_name(theStreamStr, theName, theStreamPos)
     }
 
-    /// Unite values in one value using template: value_1, value_2, ..., value_n @param[in]  theStreamStr stream with values @param[out] theStreamPos current position in the stream @param[in]  theCount     number of values
+    /// Unite values in one value using template: value_1, value_2, ..., value_n
+    /// @param[in]  theStreamStr stream with values
+    /// @param[out] theStreamPos current position in the stream
+    /// @param[in]  theCount     number of values
     pub fn init_real_values(
         theStreamStr: &ffi::TCollection_AsciiString,
         theStreamPos: &mut i32,
@@ -198,7 +231,10 @@ impl Dump {
         ffi::Dump_init_real_values(theStreamStr, theStreamPos, theCount)
     }
 
-    /// Returns real value @param[in]  theStreamStr stream with values @param[out] theStreamPos current position in the stream @param[out] theValue     stream value
+    /// Returns real value
+    /// @param[in]  theStreamStr stream with values
+    /// @param[out] theStreamPos current position in the stream
+    /// @param[out] theValue     stream value
     pub fn init_value(
         theStreamStr: &ffi::TCollection_AsciiString,
         theStreamPos: &mut i32,
@@ -207,7 +243,7 @@ impl Dump {
         ffi::Dump_init_value(theStreamStr, theStreamPos, theValue)
     }
 
-    #[doc = "Convert field name into dump text value, removes \"&\" and \"my\" prefixes An example, for field myValue, theName is Value, for &myCLass, the name is Class @param theField a source value"]
+    #[doc = "Convert field name into dump text value, removes \"&\" and \"my\" prefixes\nAn example, for field myValue, theName is Value, for &myCLass, the name is Class\n@param theField a source value"]
     pub fn dump_field_to_name(
         theField: &ffi::TCollection_AsciiString,
     ) -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
@@ -231,7 +267,9 @@ impl Transient {
         ffi::Transient_is_instance_charptr(self, theTypeName)
     }
 
-    /// Returns true if this is an instance of TypeName or an instance of any class that inherits from TypeName. Note that multiple inheritance is not supported by OCCT RTTI mechanism.
+    /// Returns true if this is an instance of TypeName or an
+    /// instance of any class that inherits from TypeName.
+    /// Note that multiple inheritance is not supported by OCCT RTTI mechanism.
     pub fn is_kind_charptr(&self, theTypeName: &str) -> bool {
         ffi::Transient_is_kind_charptr(self, theTypeName)
     }
@@ -242,7 +280,9 @@ impl Transient {
 }
 pub use ffi::Standard;
 impl Standard {
-    /// Deallocates the storage retained on the free list and clears the list. Returns non-zero if some memory has been actually freed.
+    /// Deallocates the storage retained on the free list
+    /// and clears the list.
+    /// Returns non-zero if some memory has been actually freed.
     pub fn purge() -> i32 {
         ffi::Standard_purge()
     }
@@ -464,7 +504,8 @@ impl Type {
         ffi::Type_name(self)
     }
 
-    /// Returns True if this type is the same as theOther, or inherits from theOther. Note that multiple inheritance is not supported.
+    /// Returns True if this type is the same as theOther, or inherits from theOther.
+    /// Note that multiple inheritance is not supported.
     pub fn sub_type_charptr(&self, theOther: &str) -> bool {
         ffi::Type_sub_type_charptr(self, theOther)
     }
@@ -668,7 +709,7 @@ impl NoSuchObject {
 }
 pub use ffi::ErrorHandler;
 impl ErrorHandler {
-    #[doc = "Create a ErrorHandler (to be used with try{}catch(){}). It uses the \"setjmp\" and \"longjmp\" routines."]
+    #[doc = "Create a ErrorHandler (to be used with try{}catch(){}).\nIt uses the \"setjmp\" and \"longjmp\" routines."]
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ErrorHandler_ctor()
     }
@@ -829,12 +870,12 @@ pub(crate) mod ffi {
         fn Failure_ctor_failure(f: &Failure) -> UniquePtr<Failure>;
         /// /// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`
         ///
-        #[doc = "Creates a status object of type \"Failure\". @param[in] theDesc  exception description"]
+        #[doc = "Creates a status object of type \"Failure\".\n@param[in] theDesc  exception description"]
         #[cxx_name = "Standard_Failure_ctor_charptr"]
         fn Failure_ctor_charptr(theDesc: &str) -> UniquePtr<Failure>;
         /// /// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`
         ///
-        #[doc = "Creates a status object of type \"Failure\" with stack trace. @param[in] theDesc  exception description @param[in] theStackTrace  associated stack trace"]
+        #[doc = "Creates a status object of type \"Failure\" with stack trace.\n@param[in] theDesc  exception description\n@param[in] theStackTrace  associated stack trace"]
         #[cxx_name = "Standard_Failure_ctor_charptr2"]
         fn Failure_ctor_charptr2(theDesc: &str, theStackTrace: &str) -> UniquePtr<Failure>;
         #[cxx_name = "Reraise"]
@@ -842,7 +883,11 @@ pub(crate) mod ffi {
         /// Reraises a caught exception and changes its error message.
         #[cxx_name = "Reraise"]
         fn reraise_sstream(self: Pin<&mut Failure>, aReason: &Standard_SStream);
-        /// Used to throw CASCADE exception from C signal handler. On platforms that do not allow throwing C++ exceptions from this handler (e.g. Linux), uses longjump to get to the current active signal handler, and only then is converted to C++ exception.
+        /// Used to throw CASCADE exception from C signal handler.
+        /// On platforms that do not allow throwing C++ exceptions
+        /// from this handler (e.g. Linux), uses longjump to get to
+        /// the current active signal handler, and only then is
+        /// converted to C++ exception.
         #[cxx_name = "Jump"]
         fn jump(self: Pin<&mut Failure>);
         #[cxx_name = "DynamicType"]
@@ -861,13 +906,15 @@ pub(crate) mod ffi {
         fn Failure_set_stack_string(self_: Pin<&mut Failure>, theStack: &str);
         #[cxx_name = "Standard_Failure_Reraise"]
         fn Failure_reraise_charptr(self_: Pin<&mut Failure>, aMessage: &str);
-        #[doc = "Raises an exception of type \"Failure\" and associates an error message to it. The message can be printed in an exception handler."]
+        #[doc = "Raises an exception of type \"Failure\" and associates\nan error message to it. The message can be printed\nin an exception handler."]
         #[cxx_name = "Standard_Failure_Raise_charptr"]
         fn Failure_raise_charptr(aMessage: &str);
-        #[doc = "Raises an exception of type \"Failure\" and associates an error message to it. The message can be constructed at run-time."]
+        #[doc = "Raises an exception of type \"Failure\" and associates\nan error message to it. The message can be constructed\nat run-time."]
         #[cxx_name = "Standard_Failure_Raise_sstream"]
         fn Failure_raise_sstream(aReason: &Standard_SStream);
-        /// Used to construct an instance of the exception object as a handle. Shall be used to protect against possible construction of exception object in C stack, which is dangerous since some of methods require that object was allocated dynamically.
+        /// Used to construct an instance of the exception object as a handle.
+        /// Shall be used to protect against possible construction of exception object in C stack,
+        /// which is dangerous since some of methods require that object was allocated dynamically.
         #[cxx_name = "Standard_Failure_NewInstance_charptr"]
         fn Failure_new_instance_charptr(theMessage: &str) -> UniquePtr<HandleStandardFailure>;
         /// Used to construct an instance of the exception object as a handle.
@@ -876,7 +923,8 @@ pub(crate) mod ffi {
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardFailure>;
-        /// Returns the default length of stack trace to be captured by Standard_Failure constructor; 0 by default meaning no stack trace.
+        /// Returns the default length of stack trace to be captured by Standard_Failure constructor;
+        /// 0 by default meaning no stack trace.
         #[cxx_name = "Standard_Failure_DefaultStackTraceLength"]
         fn Failure_default_stack_trace_length() -> i32;
         /// Sets default length of stack trace to be captured by Standard_Failure constructor.
@@ -890,18 +938,53 @@ pub(crate) mod ffi {
         /// ======================== Standard_Mutex ========================
         /// /// **Source:** `Standard_Mutex.hxx` - `Standard_Mutex`
         ///
-        /// @brief Mutex: a class to synchronize access to shared data. This is simple encapsulation of tools provided by the operating system to synchronize access to shared data from threads within one process. Current implementation is very simple and straightforward; it is just a wrapper around POSIX pthread library on UNIX/Linux, and CRITICAL_SECTIONs on Windows NT. It does not provide any advanced functionality such as recursive calls to the same mutex from within one thread (such call will freeze the execution). Note that all the methods of that class are made inline, in order to keep maximal performance. This means that a library using the mutex might need to be linked to threads library directly. The typical use of this class should be as follows: - create instance of the class Standard_Mutex in the global scope (whenever possible, or as a field of your class) - create instance of class Standard_Mutex::Sentry using that Mutex when entering critical section Note that this class provides one feature specific to Open CASCADE: safe unlocking the mutex when signal is raised and converted to OCC exceptions (Note that with current implementation of this functionality on UNIX and Linux, C longjumps are used for that, thus destructors of classes are not called automatically). To use this feature, call RegisterCallback() after Lock() or successful TryLock(), and UnregisterCallback() before Unlock() (or use Sentry classes).
+        ///
+        /// @brief Mutex: a class to synchronize access to shared data.
+        ///
+        /// This is simple encapsulation of tools provided by the
+        /// operating system to synchronize access to shared data
+        /// from threads within one process.
+        ///
+        /// Current implementation is very simple and straightforward;
+        /// it is just a wrapper around POSIX pthread library on UNIX/Linux,
+        /// and CRITICAL_SECTIONs on Windows NT. It does not provide any
+        /// advanced functionality such as recursive calls to the same mutex from
+        /// within one thread (such call will freeze the execution).
+        ///
+        /// Note that all the methods of that class are made inline, in order
+        /// to keep maximal performance. This means that a library using the mutex
+        /// might need to be linked to threads library directly.
+        ///
+        /// The typical use of this class should be as follows:
+        /// - create instance of the class Standard_Mutex in the global scope
+        /// (whenever possible, or as a field of your class)
+        /// - create instance of class Standard_Mutex::Sentry using that Mutex
+        /// when entering critical section
+        ///
+        /// Note that this class provides one feature specific to Open CASCADE:
+        /// safe unlocking the mutex when signal is raised and converted to OCC
+        /// exceptions (Note that with current implementation of this functionality
+        /// on UNIX and Linux, C longjumps are used for that, thus destructors of
+        /// classes are not called automatically).
+        ///
+        /// To use this feature, call RegisterCallback() after Lock() or successful
+        /// TryLock(), and UnregisterCallback() before Unlock() (or use Sentry classes).
         #[cxx_name = "Standard_Mutex"]
         type Mutex;
         /// /// **Source:** `Standard_Mutex.hxx` - `Standard_Mutex::Standard_Mutex()`
         ///
-        /// Constructor: creates a mutex object and initializes it. It is strongly recommended that mutexes were created as static objects whenever possible.
+        /// Constructor: creates a mutex object and initializes it.
+        /// It is strongly recommended that mutexes were created as
+        /// static objects whenever possible.
         #[cxx_name = "Standard_Mutex_ctor"]
         fn Mutex_ctor() -> UniquePtr<Mutex>;
-        /// Method to lock the mutex; waits until the mutex is released by other threads, locks it and then returns
+        /// Method to lock the mutex; waits until the mutex is released
+        /// by other threads, locks it and then returns
         #[cxx_name = "Lock"]
         fn lock(self: Pin<&mut Mutex>);
-        /// Method to test the mutex; if the mutex is not hold by other thread, locks it and returns True; otherwise returns False without waiting mutex to be released.
+        /// Method to test the mutex; if the mutex is not hold by other thread,
+        /// locks it and returns True; otherwise returns False without waiting
+        /// mutex to be released.
         #[cxx_name = "TryLock"]
         fn try_lock(self: Pin<&mut Mutex>) -> bool;
         /// Method to unlock the mutex; releases it to other users
@@ -928,10 +1011,24 @@ pub(crate) mod ffi {
         /// This interface has some tool methods for stream (in JSON format) processing.
         #[cxx_name = "Standard_Dump"]
         type Dump;
-        /// Converts stream value to string value. The result is original stream value. @param theStream source value @return text presentation
+        /// Converts stream value to string value. The result is original stream value.
+        /// @param theStream source value
+        /// @return text presentation
         #[cxx_name = "Standard_Dump_Text"]
         fn Dump_text(theStream: &Standard_SStream) -> UniquePtr<TCollection_AsciiString>;
-        /// Converts stream value to string value. Improves the text presentation with the following cases: - for '{' append after '\\n' and indent to the next value, increment current indent value - for '}' append '\\n' and current indent before it, decrement indent value - for ',' append after '\\n' and indent to the next value. If the current symbol is in massive container [], do nothing Covers result with opened and closed brackets on the top level, if it has no symbols there. @param theStream source value @param theIndent count of ' ' symbols to apply hierarchical indent of the text values @return text presentation
+        /// Converts stream value to string value. Improves the text presentation with the following
+        /// cases:
+        /// - for '{' append after '\
+        /// ' and indent to the next value, increment current indent value
+        /// - for '}' append '\
+        /// ' and current indent before it, decrement indent value
+        /// - for ',' append after '\
+        /// ' and indent to the next value. If the current symbol is in massive
+        /// container [], do nothing Covers result with opened and closed brackets on the top level, if it
+        /// has no symbols there.
+        /// @param theStream source value
+        /// @param theIndent count of ' ' symbols to apply hierarchical indent of the text values
+        /// @return text presentation
         #[cxx_name = "Standard_Dump_FormatJson"]
         fn Dump_format_json(
             theStream: &Standard_SStream,
@@ -940,44 +1037,61 @@ pub(crate) mod ffi {
         /// Returns true if the value has bracket key
         #[cxx_name = "Standard_Dump_HasChildKey"]
         fn Dump_has_child_key(theSourceValue: &TCollection_AsciiString) -> bool;
-        /// Returns default prefix added for each pointer info string if short presentation of pointer used
+        /// Returns default prefix added for each pointer info string if short presentation of pointer
+        /// used
         #[cxx_name = "Standard_Dump_GetPointerPrefix"]
         fn Dump_get_pointer_prefix() -> UniquePtr<TCollection_AsciiString>;
-        /// Convert handle pointer to address of the pointer. If the handle is NULL, the result is an empty string. @param thePointer a pointer @param isShortInfo if true, all '0' symbols in the beginning of the pointer are skipped @return the string value
+        /// Convert handle pointer to address of the pointer. If the handle is NULL, the result is an
+        /// empty string.
+        /// @param thePointer a pointer
+        /// @param isShortInfo if true, all '0' symbols in the beginning of the pointer are skipped
+        /// @return the string value
         #[cxx_name = "Standard_Dump_GetPointerInfo_handletransient_bool"]
         fn Dump_get_pointer_info_handletransient_bool(
             thePointer: &HandleStandardTransient,
             isShortInfo: bool,
         ) -> UniquePtr<TCollection_AsciiString>;
-        /// Check whether the parameter name is equal to the name in the stream at position @param[in]  theStreamStr stream with values @param[in]  theName      stream key value @param[out] theStreamPos current position in the stream
+        /// Check whether the parameter name is equal to the name in the stream at position
+        /// @param[in]  theStreamStr stream with values
+        /// @param[in]  theName      stream key value
+        /// @param[out] theStreamPos current position in the stream
         #[cxx_name = "Standard_Dump_ProcessStreamName"]
         fn Dump_process_stream_name(
             theStreamStr: &TCollection_AsciiString,
             theName: &TCollection_AsciiString,
             theStreamPos: &mut i32,
         ) -> bool;
-        /// Check whether the field name is equal to the name in the stream at position @param[in]  theStreamStr stream with values @param[in]  theName      stream key field value @param[out] theStreamPos current position in the stream
+        /// Check whether the field name is equal to the name in the stream at position
+        /// @param[in]  theStreamStr stream with values
+        /// @param[in]  theName      stream key field value
+        /// @param[out] theStreamPos current position in the stream
         #[cxx_name = "Standard_Dump_ProcessFieldName"]
         fn Dump_process_field_name(
             theStreamStr: &TCollection_AsciiString,
             theName: &TCollection_AsciiString,
             theStreamPos: &mut i32,
         ) -> bool;
-        /// Unite values in one value using template: value_1, value_2, ..., value_n @param[in]  theStreamStr stream with values @param[out] theStreamPos current position in the stream @param[in]  theCount     number of values
+        /// Unite values in one value using template: value_1, value_2, ..., value_n
+        /// @param[in]  theStreamStr stream with values
+        /// @param[out] theStreamPos current position in the stream
+        /// @param[in]  theCount     number of values
         #[cxx_name = "Standard_Dump_InitRealValues"]
         fn Dump_init_real_values(
             theStreamStr: &TCollection_AsciiString,
             theStreamPos: &mut i32,
             theCount: i32,
         ) -> bool;
-        /// Returns real value @param[in]  theStreamStr stream with values @param[out] theStreamPos current position in the stream @param[out] theValue     stream value
+        /// Returns real value
+        /// @param[in]  theStreamStr stream with values
+        /// @param[out] theStreamPos current position in the stream
+        /// @param[out] theValue     stream value
         #[cxx_name = "Standard_Dump_InitValue"]
         fn Dump_init_value(
             theStreamStr: &TCollection_AsciiString,
             theStreamPos: &mut i32,
             theValue: Pin<&mut TCollection_AsciiString>,
         ) -> bool;
-        #[doc = "Convert field name into dump text value, removes \"&\" and \"my\" prefixes An example, for field myValue, theName is Value, for &myCLass, the name is Class @param theField a source value"]
+        #[doc = "Convert field name into dump text value, removes \"&\" and \"my\" prefixes\nAn example, for field myValue, theName is Value, for &myCLass, the name is Class\n@param theField a source value"]
         #[cxx_name = "Standard_Dump_DumpFieldToName"]
         fn Dump_dump_field_to_name(
             theField: &TCollection_AsciiString,
@@ -985,7 +1099,8 @@ pub(crate) mod ffi {
         /// ======================== Standard_Transient ========================
         /// /// **Source:** `Standard_Transient.hxx` - `Standard_Transient`
         ///
-        /// Abstract class which forms the root of the entire Transient class hierarchy.
+        /// Abstract class which forms the root of the entire
+        /// Transient class hierarchy.
         #[cxx_name = "Standard_Transient"]
         type Transient;
         /// /// **Source:** `Standard_Transient.hxx` - `Standard_Transient::Standard_Transient()`
@@ -1004,7 +1119,9 @@ pub(crate) mod ffi {
         /// Returns a true value if this is an instance of Type.
         #[cxx_name = "IsInstance"]
         fn is_instance_handletype(self: &Transient, theType: &HandleStandardType) -> bool;
-        /// Returns true if this is an instance of Type or an instance of any class that inherits from Type. Note that multiple inheritance is not supported by OCCT RTTI mechanism.
+        /// Returns true if this is an instance of Type or an
+        /// instance of any class that inherits from Type.
+        /// Note that multiple inheritance is not supported by OCCT RTTI mechanism.
         #[cxx_name = "IsKind"]
         fn is_kind_handletype(self: &Transient, theType: &HandleStandardType) -> bool;
         /// Get the reference counter of this object
@@ -1013,7 +1130,8 @@ pub(crate) mod ffi {
         /// Increments the reference counter of this object
         #[cxx_name = "IncrementRefCounter"]
         fn increment_ref_counter(self: Pin<&mut Transient>);
-        /// Decrements the reference counter of this object; returns the decremented value
+        /// Decrements the reference counter of this object;
+        /// returns the decremented value
         #[cxx_name = "DecrementRefCounter"]
         fn decrement_ref_counter(self: Pin<&mut Transient>) -> i32;
         /// Memory deallocator for transient classes
@@ -1022,7 +1140,9 @@ pub(crate) mod ffi {
         /// Returns a true value if this is an instance of TypeName.
         #[cxx_name = "Standard_Transient_IsInstance"]
         fn Transient_is_instance_charptr(self_: &Transient, theTypeName: &str) -> bool;
-        /// Returns true if this is an instance of TypeName or an instance of any class that inherits from TypeName. Note that multiple inheritance is not supported by OCCT RTTI mechanism.
+        /// Returns true if this is an instance of TypeName or an
+        /// instance of any class that inherits from TypeName.
+        /// Note that multiple inheritance is not supported by OCCT RTTI mechanism.
         #[cxx_name = "Standard_Transient_IsKind"]
         fn Transient_is_kind_charptr(self_: &Transient, theTypeName: &str) -> bool;
         #[cxx_name = "Standard_Transient_get_type_name"]
@@ -1030,10 +1150,13 @@ pub(crate) mod ffi {
         /// ======================== Standard ========================
         /// /// **Source:** `Standard.hxx` - `Standard`
         ///
-        /// The package Standard provides global memory allocator and other basic services used by other OCCT components.
+        /// The package Standard provides global memory allocator and other basic
+        /// services used by other OCCT components.
         #[cxx_name = "Standard"]
         type Standard;
-        /// Deallocates the storage retained on the free list and clears the list. Returns non-zero if some memory has been actually freed.
+        /// Deallocates the storage retained on the free list
+        /// and clears the list.
+        /// Returns non-zero if some memory has been actually freed.
         #[cxx_name = "Standard_Purge"]
         fn Standard_purge() -> i32;
         /// ======================== Standard_DimensionMismatch ========================
@@ -1072,7 +1195,19 @@ pub(crate) mod ffi {
         /// ======================== Standard_OutOfMemory ========================
         /// /// **Source:** `Standard_OutOfMemory.hxx` - `Standard_OutOfMemory`
         ///
-        /// Standard_OutOfMemory exception is defined explicitly and not by macro DEFINE_STANDARD_EXCEPTION, to avoid necessity of dynamic memory allocations during throwing and stack unwinding: - method NewInstance() returns static instance (singleton) - method Raise() raises copy of that singleton, resetting its message string - message string is stored as field, not allocated dynamically (storable message length is limited by buffer size) The reason is that in out-of-memory condition any memory allocation can fail, thus use of operator new for allocation of new exception instance is dangerous (can cause recursion until stack overflow, see #24836).
+        /// Standard_OutOfMemory exception is defined explicitly and not by
+        /// macro DEFINE_STANDARD_EXCEPTION, to avoid necessity of dynamic
+        /// memory allocations during throwing and stack unwinding:
+        ///
+        /// - method NewInstance() returns static instance (singleton)
+        /// - method Raise() raises copy of that singleton, resetting
+        /// its message string
+        /// - message string is stored as field, not allocated dynamically
+        /// (storable message length is limited by buffer size)
+        ///
+        /// The reason is that in out-of-memory condition any memory allocation can
+        /// fail, thus use of operator new for allocation of new exception instance
+        /// is dangerous (can cause recursion until stack overflow, see #24836).
         #[cxx_name = "Standard_OutOfMemory"]
         type OutOfMemory;
         /// /// **Source:** `Standard_OutOfMemory.hxx` - `Standard_OutOfMemory::Standard_OutOfMemory()`
@@ -1206,7 +1341,28 @@ pub(crate) mod ffi {
         /// ======================== Standard_Type ========================
         /// /// **Source:** `Standard_Type.hxx` - `Standard_Type`
         ///
-        /// This class provides legacy interface (type descriptor) to run-time type information (RTTI) for OCCT classes inheriting from Standard_Transient. In addition to features provided by standard C++ RTTI (type_info), Standard_Type allows passing descriptor as an object and using it for analysis of the type: - get descriptor of a parent class - get user-defined name of the class - get size of the object Use static template method Instance() to get descriptor for a given type. Objects supporting OCCT RTTI return their type descriptor by method DynamicType(). To be usable with OCCT type system, the class should provide: - typedef base_type to its base class in the hierarchy - method get_type_name() returning programmer-defined name of the class (as a statically allocated constant C string or string literal) Note that user-defined name is used since typeid.name() is usually mangled in compiler-dependent way. Only single chain of inheritance is supported, with a root base class Standard_Transient.
+        /// This class provides legacy interface (type descriptor) to run-time type
+        /// information (RTTI) for OCCT classes inheriting from Standard_Transient.
+        ///
+        /// In addition to features provided by standard C++ RTTI (type_info),
+        /// Standard_Type allows passing descriptor as an object and using it for
+        /// analysis of the type:
+        /// - get descriptor of a parent class
+        /// - get user-defined name of the class
+        /// - get size of the object
+        ///
+        /// Use static template method Instance() to get descriptor for a given type.
+        /// Objects supporting OCCT RTTI return their type descriptor by method DynamicType().
+        ///
+        /// To be usable with OCCT type system, the class should provide:
+        /// - typedef base_type to its base class in the hierarchy
+        /// - method get_type_name() returning programmer-defined name of the class
+        /// (as a statically allocated constant C string or string literal)
+        ///
+        /// Note that user-defined name is used since typeid.name() is usually mangled in
+        /// compiler-dependent way.
+        ///
+        /// Only single chain of inheritance is supported, with a root base class Standard_Transient.
         #[cxx_name = "Standard_Type"]
         type Type;
         /// Returns the size of the class instance in bytes
@@ -1215,7 +1371,8 @@ pub(crate) mod ffi {
         /// Returns descriptor of the base class in the hierarchy
         #[cxx_name = "Parent"]
         fn parent(self: &Type) -> &HandleStandardType;
-        /// Returns True if this type is the same as theOther, or inherits from theOther. Note that multiple inheritance is not supported.
+        /// Returns True if this type is the same as theOther, or inherits from theOther.
+        /// Note that multiple inheritance is not supported.
         #[cxx_name = "SubType"]
         fn sub_type_handletype(self: &Type, theOther: &HandleStandardType) -> bool;
         #[cxx_name = "DynamicType"]
@@ -1226,7 +1383,8 @@ pub(crate) mod ffi {
         /// Returns the given name of the class type (get_type_name)
         #[cxx_name = "Standard_Type_Name"]
         fn Type_name(self_: &Type) -> String;
-        /// Returns True if this type is the same as theOther, or inherits from theOther. Note that multiple inheritance is not supported.
+        /// Returns True if this type is the same as theOther, or inherits from theOther.
+        /// Note that multiple inheritance is not supported.
         #[cxx_name = "Standard_Type_SubType"]
         fn Type_sub_type_charptr(self_: &Type, theOther: &str) -> bool;
         #[cxx_name = "Standard_Type_get_type_name"]
@@ -1399,12 +1557,18 @@ pub(crate) mod ffi {
         /// ======================== Standard_ErrorHandler ========================
         /// /// **Source:** `Standard_ErrorHandler.hxx` - `Standard_ErrorHandler`
         ///
-        /// Class implementing mechanics of conversion of signals to exceptions. Each instance of it stores data for jump placement, thread id, and callbacks to be called during jump (for proper resource release). The active handlers are stored in the global stack, which is used to find appropriate handler when signal is raised.
+        /// Class implementing mechanics of conversion of signals to exceptions.
+        ///
+        /// Each instance of it stores data for jump placement, thread id,
+        /// and callbacks to be called during jump (for proper resource release).
+        ///
+        /// The active handlers are stored in the global stack, which is used
+        /// to find appropriate handler when signal is raised.
         #[cxx_name = "Standard_ErrorHandler"]
         type ErrorHandler;
         /// /// **Source:** `Standard_ErrorHandler.hxx` - `Standard_ErrorHandler::Standard_ErrorHandler()`
         ///
-        #[doc = "Create a ErrorHandler (to be used with try{}catch(){}). It uses the \"setjmp\" and \"longjmp\" routines."]
+        #[doc = "Create a ErrorHandler (to be used with try{}catch(){}).\nIt uses the \"setjmp\" and \"longjmp\" routines."]
         #[cxx_name = "Standard_ErrorHandler_ctor"]
         fn ErrorHandler_ctor() -> UniquePtr<ErrorHandler>;
         /// Unlinks and checks if there is a raised exception.
@@ -1413,7 +1577,7 @@ pub(crate) mod ffi {
         /// Removes handler from the handlers list
         #[cxx_name = "Unlink"]
         fn unlink(self: Pin<&mut ErrorHandler>);
-        #[doc = "Returns \"True\" if the caught exception has the same type or inherits from \"aType\""]
+        #[doc = "Returns \"True\" if the caught exception has the same type\nor inherits from \"aType\""]
         #[cxx_name = "Catches"]
         fn catches(self: Pin<&mut ErrorHandler>, aType: &HandleStandardType) -> bool;
         /// Returns label for jump

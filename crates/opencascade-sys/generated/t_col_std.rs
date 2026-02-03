@@ -528,6 +528,7 @@ pub(crate) mod ffi {
         /// ======================== TColStd_PackedMapOfInteger ========================
         /// /// **Source:** `TColStd_PackedMapOfInteger.hxx` - `TColStd_PackedMapOfInteger`
         ///
+        ///
         /// Optimized Map of integer values. Each block of 32 integers is stored in 8 bytes in memory.
         #[cxx_name = "TColStd_PackedMapOfInteger"]
         type PackedMapOfInteger;
@@ -558,7 +559,8 @@ pub(crate) mod ffi {
         fn contains(self: &PackedMapOfInteger, aKey: i32) -> bool;
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut PackedMapOfInteger>, aKey: i32) -> bool;
-        /// Returns the number of map buckets (not that since integers are packed in this map, the number is smaller than extent).
+        /// Returns the number of map buckets (not that since integers are packed in this map, the number
+        /// is smaller than extent).
         #[cxx_name = "NbBuckets"]
         fn nb_buckets(self: &PackedMapOfInteger) -> i32;
         /// Returns map extent.
@@ -567,58 +569,102 @@ pub(crate) mod ffi {
         /// Returns TRUE if map is empty.
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &PackedMapOfInteger) -> bool;
+        ///
         /// Query the minimal contained key value.
         #[cxx_name = "GetMinimalMapped"]
         fn get_minimal_mapped(self: &PackedMapOfInteger) -> i32;
+        ///
         /// Query the maximal contained key value.
         #[cxx_name = "GetMaximalMapped"]
         fn get_maximal_mapped(self: &PackedMapOfInteger) -> i32;
-        /// Sets this Map to be the result of union (aka addition, fuse, merge, boolean OR) operation between two given Maps. The new Map contains the values that are contained either in the first map or in the second map or in both. All previous contents of this Map is cleared. This map (result of the boolean operation) can also be passed as one of operands.
+        ///
+        /// Sets this Map to be the result of union (aka addition, fuse, merge, boolean OR) operation
+        /// between two given Maps. The new Map contains the values that are contained either in the first
+        /// map or in the second map or in both. All previous contents of this Map is cleared. This map
+        /// (result of the boolean operation) can also be passed as one of operands.
         #[cxx_name = "Union"]
         fn union(
             self: Pin<&mut PackedMapOfInteger>,
             arg0: &PackedMapOfInteger,
             arg1: &PackedMapOfInteger,
         );
-        /// Apply to this Map the boolean operation union (aka addition, fuse, merge, boolean OR) with another (given) Map. The result contains the values that were previously contained in this map or contained in the given (operand) map. This algorithm is similar to method Union(). @return True if content of this map is changed
+        ///
+        /// Apply to this Map the boolean operation union (aka addition, fuse, merge, boolean OR) with
+        /// another (given) Map. The result contains the values that were previously contained in this map
+        /// or contained in the given (operand) map. This algorithm is similar to method Union().
+        /// @return True if content of this map is changed
         #[cxx_name = "Unite"]
         fn unite(self: Pin<&mut PackedMapOfInteger>, arg0: &PackedMapOfInteger) -> bool;
-        /// Sets this Map to be the result of intersection (aka multiplication, common, boolean AND) operation between two given Maps. The new Map contains only the values that are contained in both map operands. All previous contents of this Map is cleared. This same map (result of the boolean operation) can also be used as one of operands. The order of operands makes no difference; the method minimizes internally the number of iterations using the smallest map for the loop.
+        ///
+        /// Sets this Map to be the result of intersection (aka multiplication, common, boolean AND)
+        /// operation between two given Maps. The new Map contains only the values that are contained in
+        /// both map operands. All previous contents of this Map is cleared. This same map (result of the
+        /// boolean operation) can also be used as one of operands. The order of operands makes no
+        /// difference; the method minimizes internally the number of iterations using the smallest map for
+        /// the loop.
         #[cxx_name = "Intersection"]
         fn intersection(
             self: Pin<&mut PackedMapOfInteger>,
             arg0: &PackedMapOfInteger,
             arg1: &PackedMapOfInteger,
         );
-        /// Apply to this Map the intersection operation (aka multiplication, common,  boolean AND) with another (given) Map. The result contains only the values that are contained in both this and the given maps. This algorithm is similar to method Intersection(). @return True if content of this map is changed
+        ///
+        /// Apply to this Map the intersection operation (aka multiplication, common,  boolean AND) with
+        /// another (given) Map. The result contains only the values that are contained in both this and
+        /// the given maps. This algorithm is similar to method Intersection().
+        /// @return True if content of this map is changed
         #[cxx_name = "Intersect"]
         fn intersect(self: Pin<&mut PackedMapOfInteger>, arg0: &PackedMapOfInteger) -> bool;
-        /// Sets this Map to be the result of subtraction (aka set-theoretic difference, relative complement, exclude, cut, boolean NOT) operation between two given Maps. The new Map contains only the values that are contained in the first map operands and not contained in the second one. All previous contents of this Map is cleared. This map (result of the boolean operation) can also be used as the first operand.
+        ///
+        /// Sets this Map to be the result of subtraction
+        /// (aka set-theoretic difference, relative complement, exclude, cut, boolean NOT) operation
+        /// between two given Maps. The new Map contains only the values that are contained in the first
+        /// map operands and not contained in the second one. All previous contents of this Map is cleared.
+        /// This map (result of the boolean operation) can also be used as the first operand.
         #[cxx_name = "Subtraction"]
         fn subtraction(
             self: Pin<&mut PackedMapOfInteger>,
             arg0: &PackedMapOfInteger,
             arg1: &PackedMapOfInteger,
         );
-        /// Apply to this Map the subtraction (aka set-theoretic difference, relative complement, exclude, cut, boolean NOT) operation with another (given) Map. The result contains only the values that were previously contained in this map and not contained in this map. This algorithm is similar to method Subtract() with two operands. @return True if contents of this map is changed
+        ///
+        /// Apply to this Map the subtraction (aka set-theoretic difference, relative complement, exclude,
+        /// cut, boolean NOT) operation with another (given) Map. The result contains only the values that
+        /// were previously contained in this map and not contained in this map. This algorithm is similar
+        /// to method Subtract() with two operands.
+        /// @return True if contents of this map is changed
         #[cxx_name = "Subtract"]
         fn subtract(self: Pin<&mut PackedMapOfInteger>, arg0: &PackedMapOfInteger) -> bool;
-        /// Sets this Map to be the result of symmetric difference (aka exclusive disjunction, boolean XOR) operation between two given Maps. The new Map contains the values that are contained only in the first or the second operand maps but not in both. All previous contents of this Map is cleared. This map (result of the boolean operation) can also be used as one of operands.
+        ///
+        /// Sets this Map to be the result of symmetric difference (aka exclusive disjunction, boolean XOR)
+        /// operation between two given Maps. The new Map contains the values that are contained only in
+        /// the first or the second operand maps but not in both. All previous contents of this Map is
+        /// cleared. This map (result of the boolean operation) can also be used as one of operands.
         #[cxx_name = "Difference"]
         fn difference(
             self: Pin<&mut PackedMapOfInteger>,
             arg0: &PackedMapOfInteger,
             arg1: &PackedMapOfInteger,
         );
-        /// Apply to this Map the symmetric difference (aka exclusive disjunction, boolean XOR) operation with another (given) Map. The result contains the values that are contained only in this or the operand map, but not in both. This algorithm is similar to method Difference(). @return True if contents of this map is changed
+        ///
+        /// Apply to this Map the symmetric difference (aka exclusive disjunction, boolean XOR) operation
+        /// with another (given) Map. The result contains the values that are contained only in this or the
+        /// operand map, but not in both. This algorithm is similar to method Difference().
+        /// @return True if contents of this map is changed
         #[cxx_name = "Differ"]
         fn differ(self: Pin<&mut PackedMapOfInteger>, arg0: &PackedMapOfInteger) -> bool;
-        /// Returns True if this map is equal to the given one, i.e. they contain the same sets of elements
+        ///
+        /// Returns True if this map is equal to the given one, i.e. they contain the
+        /// same sets of elements
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &PackedMapOfInteger, arg0: &PackedMapOfInteger) -> bool;
-        /// Returns True if this map is subset of the given one, i.e. all elements contained in this map is contained also in the operand map. if this map is empty that this method returns true for any operand map.
+        ///
+        /// Returns True if this map is subset of the given one, i.e. all elements
+        /// contained in this map is contained also in the operand map.
+        /// if this map is empty that this method returns true for any operand map.
         #[cxx_name = "IsSubset"]
         fn is_subset(self: &PackedMapOfInteger, arg0: &PackedMapOfInteger) -> bool;
+        ///
         /// Returns True if this map has common items with the given one.
         #[cxx_name = "HasIntersection"]
         fn has_intersection(self: &PackedMapOfInteger, arg0: &PackedMapOfInteger) -> bool;

@@ -44,7 +44,7 @@ pub(crate) mod ffi {
         /// ======================== ShapeBuild_ReShape ========================
         /// /// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape`
         ///
-        #[doc = "Rebuilds a Shape by making pre-defined substitutions on some of its components In a first phase, it records requests to replace or remove some individual shapes For each shape, the last given request is recorded Requests may be applied \"Oriented\" (i.e. only to an item with the SAME orientation) or not (the orientation of replacing shape is respectful of that of the original one) Then, these requests may be applied to any shape which may contain one or more of these individual shapes"]
+        #[doc = "Rebuilds a Shape by making pre-defined substitutions on some\nof its components\n\nIn a first phase, it records requests to replace or remove\nsome individual shapes\nFor each shape, the last given request is recorded\nRequests may be applied \"Oriented\" (i.e. only to an item with\nthe SAME orientation) or not (the orientation of replacing\nshape is respectful of that of the original one)\n\nThen, these requests may be applied to any shape which may\ncontain one or more of these individual shapes"]
         #[cxx_name = "ShapeBuild_ReShape"]
         type ReShape;
         /// /// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape::ShapeBuild_ReShape()`
@@ -52,7 +52,13 @@ pub(crate) mod ffi {
         /// Returns an empty Reshape
         #[cxx_name = "ShapeBuild_ReShape_ctor"]
         fn ReShape_ctor() -> UniquePtr<ReShape>;
-        /// Returns a complete substitution status for a shape 0  : not recorded,   <newsh> = original <shape> < 0: to be removed,  <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape.
+        /// Returns a complete substitution status for a shape
+        /// 0  : not recorded,   <newsh> = original <shape>
+        /// < 0: to be removed,  <newsh> is NULL
+        /// > 0: to be replaced, <newsh> is a new item
+        /// If <last> is False, returns status and new shape recorded in
+        /// the map directly for the shape, if True and status > 0 then
+        /// recursively searches for the last status and new shape.
         #[cxx_name = "Status"]
         fn status_shape2_bool(
             self: Pin<&mut ReShape>,

@@ -19,12 +19,17 @@ impl Curve {
         ffi::Curve_ctor()
     }
 
-    /// Creates a Curve  to  access the geometry of edge <E>.
+    /// Creates a Curve  to  access the geometry of edge
+    /// <E>.
     pub fn new_edge(E: &ffi::TopoDS_Edge) -> cxx::UniquePtr<Self> {
         ffi::Curve_ctor_edge(E)
     }
 
-    /// Creates a Curve to access  the geometry  of edge <E>.   The geometry  will   be  computed using the parametric curve of <E> on the face  <F>. An Error is  raised if  the edge does  not have a pcurve on the face.
+    /// Creates a Curve to access  the geometry  of edge
+    /// <E>.   The geometry  will   be  computed using the
+    /// parametric curve of <E> on the face  <F>. An Error
+    /// is  raised if  the edge does  not have a pcurve on
+    /// the face.
     pub fn new_edge_face(E: &ffi::TopoDS_Edge, F: &ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
         ffi::Curve_ctor_edge_face(E, F)
     }
@@ -46,7 +51,10 @@ impl Curve {
         ffi::Curve_shallow_copy(self)
     }
 
-    /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+    /// Returns    a  curve equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
     pub fn trim(
         &self,
         First: f64,
@@ -61,7 +69,11 @@ impl Curve {
         ffi::Curve_value(self, U)
     }
 
-    /// The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
         ffi::Curve_dn(self, U, N)
     }
@@ -86,12 +98,16 @@ impl Curve {
         ffi::Curve_parabola(self)
     }
 
-    /// Warning: This will make a copy of the Bezier Curve since it applies to it myTsrf. Be careful when using this method.
+    /// Warning:
+    /// This will make a copy of the Bezier Curve since it applies to it myTsrf.
+    /// Be careful when using this method.
     pub fn bezier(&self) -> cxx::UniquePtr<ffi::HandleGeomBezierCurve> {
         ffi::Curve_bezier(self)
     }
 
-    /// Warning: This will make a copy of the BSpline Curve since it applies to it myTsrf. Be careful when using this method.
+    /// Warning:
+    /// This will make a copy of the BSpline Curve since it applies to it myTsrf.
+    /// Be careful when using this method.
     pub fn b_spline(&self) -> cxx::UniquePtr<ffi::HandleGeomBSplineCurve> {
         ffi::Curve_b_spline(self)
     }
@@ -111,7 +127,10 @@ impl Surface {
         ffi::Surface_ctor()
     }
 
-    /// Creates a surface to  access the geometry  of <F>. If  <Restriction> is  true  the parameter range is the  parameter  range  in   the  UV space  of  the restriction.
+    /// Creates a surface to  access the geometry  of <F>.
+    /// If  <Restriction> is  true  the parameter range is
+    /// the  parameter  range  in   the  UV space  of  the
+    /// restriction.
     pub fn new_face_bool(F: &ffi::TopoDS_Face, R: bool) -> cxx::UniquePtr<Self> {
         ffi::Surface_ctor_face_bool(F, R)
     }
@@ -133,7 +152,11 @@ impl Surface {
         ffi::Surface_shallow_copy(self)
     }
 
-    /// Returns    a  surface trimmed in the U direction equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+    /// Returns    a  surface trimmed in the U direction
+    /// equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
     pub fn u_trim(
         &self,
         First: f64,
@@ -143,7 +166,10 @@ impl Surface {
         ffi::Surface_u_trim(self, First, Last, Tol)
     }
 
-    /// Returns    a  surface trimmed in the V direction  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+    /// Returns    a  surface trimmed in the V direction  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
     pub fn v_trim(
         &self,
         First: f64,
@@ -153,12 +179,17 @@ impl Surface {
         ffi::Surface_v_trim(self, First, Last, Tol)
     }
 
-    /// Computes the point of parameters U,V on the surface. Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
+    /// Computes the point of parameters U,V on the surface.
+    /// Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
     pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::Surface_value(self, U, V)
     }
 
-    /// Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Raised if the current U  interval is not not CNu and the current V interval is not CNv. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    /// Computes the derivative of order Nu in the direction
+    /// U and Nv in the direction V at the point P(U, V).
+    /// Raised if the current U  interval is not not CNu
+    /// and the current V interval is not CNv.
+    /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
     pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
         ffi::Surface_dn(self, U, V, Nu, Nv)
     }
@@ -187,7 +218,10 @@ impl Surface {
         ffi::Surface_bezier(self)
     }
 
-    /// Warning : this will make a copy of the BSpline Surface since it applies to it the myTsrf transformation Be Careful when using this method
+    /// Warning : this will make a copy of the
+    /// BSpline Surface since it applies
+    /// to it the myTsrf transformation
+    /// Be Careful when using this method
     pub fn b_spline(&self) -> cxx::UniquePtr<ffi::HandleGeomBSplineSurface> {
         ffi::Surface_b_spline(self)
     }
@@ -200,7 +234,10 @@ impl Surface {
         ffi::Surface_direction(self)
     }
 
-    /// only for SurfaceOfExtrusion and SurfaceOfRevolution Warning: this will make a copy of the underlying curve since it applies to it the transformation myTrsf. Be careful when using this method.
+    /// only for SurfaceOfExtrusion and SurfaceOfRevolution
+    /// Warning: this will make a copy of the underlying curve
+    /// since it applies to it the transformation
+    /// myTrsf. Be careful when using this method.
     pub fn basis_curve(&self) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
         ffi::Surface_basis_curve(self)
     }
@@ -269,7 +306,18 @@ pub(crate) mod ffi {
         /// ======================== BRepAdaptor_Curve ========================
         /// /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve`
         ///
-        /// The Curve from BRepAdaptor  allows to use  an Edge of the BRep topology like a 3D curve. It has the methods the class Curve from Adaptor3d. It  is created or  Initialized  with  an Edge.  It takes  into account local  coordinate systems.  If the Edge has a 3D curve it is  use  with priority. If the edge  has no 3D curve one  of the curves on surface is used. It is possible to enforce using a curve on surface by creating  or initialising with an Edge and a Face.
+        /// The Curve from BRepAdaptor  allows to use  an Edge
+        /// of the BRep topology like a 3D curve.
+        ///
+        /// It has the methods the class Curve from Adaptor3d.
+        ///
+        /// It  is created or  Initialized  with  an Edge.  It
+        /// takes  into account local  coordinate systems.  If
+        /// the Edge has a 3D curve it is  use  with priority.
+        /// If the edge  has no 3D curve one  of the curves on
+        /// surface is used. It is possible to enforce using a
+        /// curve on surface by creating  or initialising with
+        /// an Edge and a Face.
         #[cxx_name = "BRepAdaptor_Curve"]
         type Curve;
         /// /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
@@ -279,12 +327,17 @@ pub(crate) mod ffi {
         fn Curve_ctor() -> UniquePtr<Curve>;
         /// /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
         ///
-        /// Creates a Curve  to  access the geometry of edge <E>.
+        /// Creates a Curve  to  access the geometry of edge
+        /// <E>.
         #[cxx_name = "BRepAdaptor_Curve_ctor_edge"]
         fn Curve_ctor_edge(E: &TopoDS_Edge) -> UniquePtr<Curve>;
         /// /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
         ///
-        /// Creates a Curve to access  the geometry  of edge <E>.   The geometry  will   be  computed using the parametric curve of <E> on the face  <F>. An Error is  raised if  the edge does  not have a pcurve on the face.
+        /// Creates a Curve to access  the geometry  of edge
+        /// <E>.   The geometry  will   be  computed using the
+        /// parametric curve of <E> on the face  <F>. An Error
+        /// is  raised if  the edge does  not have a pcurve on
+        /// the face.
         #[cxx_name = "BRepAdaptor_Curve_ctor_edge_face"]
         fn Curve_ctor_edge_face(E: &TopoDS_Edge, F: &TopoDS_Face) -> UniquePtr<Curve>;
         #[cxx_name = "DynamicType"]
@@ -292,19 +345,26 @@ pub(crate) mod ffi {
         /// Reset currently loaded curve (undone Load()).
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut Curve>);
-        /// Sets  the Curve <me>  to access the  geometry of edge <E>.
+        /// Sets  the Curve <me>  to access the  geometry of
+        /// edge <E>.
         #[cxx_name = "Initialize"]
         fn initialize_edge(self: Pin<&mut Curve>, E: &TopoDS_Edge);
-        /// Sets the Curve <me>  to access  the  geometry of edge <E>.  The geometry will be computed using the parametric curve of <E>  on the face <F>. An Error is raised if the edge  does not  have a pcurve  on the face.
+        /// Sets the Curve <me>  to access  the  geometry of
+        /// edge <E>.  The geometry will be computed using the
+        /// parametric curve of <E>  on the face <F>. An Error
+        /// is raised if the edge  does not  have a pcurve  on
+        /// the face.
         #[cxx_name = "Initialize"]
         fn initialize_edge_face(self: Pin<&mut Curve>, E: &TopoDS_Edge, F: &TopoDS_Face);
         /// Returns the coordinate system of the curve.
         #[cxx_name = "Trsf"]
         fn trsf(self: &Curve) -> &gp_Trsf;
-        /// Returns True if the edge geometry is computed from a 3D curve.
+        /// Returns True if the edge geometry is computed from
+        /// a 3D curve.
         #[cxx_name = "Is3DCurve"]
         fn is3_d_curve(self: &Curve) -> bool;
-        /// Returns True if the edge geometry is computed from a pcurve on a surface.
+        /// Returns True if the edge geometry is computed from
+        /// a pcurve on a surface.
         #[cxx_name = "IsCurveOnSurface"]
         fn is_curve_on_surface(self: &Curve) -> bool;
         /// Returns the Curve of  the  edge.
@@ -332,10 +392,16 @@ pub(crate) mod ffi {
         /// Computes the point of parameter U.
         #[cxx_name = "D0"]
         fn d0(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>);
-        /// Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
+        /// Computes the point of parameter U on the curve
+        /// with its first derivative.
+        /// Raised if the continuity of the current interval
+        /// is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>, V: Pin<&mut gp_Vec>);
-        /// Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
+        /// Returns the point P of parameter U, the first and second
+        /// derivatives V1 and V2.
+        /// Raised if the continuity of the current interval
+        /// is not C2.
         #[cxx_name = "D2"]
         fn d2(
             self: &Curve,
@@ -344,7 +410,10 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
-        /// Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
+        /// Returns the point P of parameter U, the first, the second
+        /// and the third derivative.
+        /// Raised if the continuity of the current interval
+        /// is not C3.
         #[cxx_name = "D3"]
         fn d3(
             self: &Curve,
@@ -368,7 +437,10 @@ pub(crate) mod ffi {
         /// Shallow copy of adaptor
         #[cxx_name = "BRepAdaptor_Curve_ShallowCopy"]
         fn Curve_shallow_copy(self_: &Curve) -> UniquePtr<HandleAdaptor3dCurve>;
-        /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+        /// Returns    a  curve equivalent   of  <me>  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
+        /// If <First> >= <Last>
         #[cxx_name = "BRepAdaptor_Curve_Trim"]
         fn Curve_trim(
             self_: &Curve,
@@ -379,7 +451,11 @@ pub(crate) mod ffi {
         /// Computes the point of parameter U on the curve
         #[cxx_name = "BRepAdaptor_Curve_Value"]
         fn Curve_value(self_: &Curve, U: f64) -> UniquePtr<gp_Pnt>;
-        /// The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
+        /// The returned vector gives the value of the derivative for the
+        /// order of derivation N.
+        /// Raised if the continuity of the current interval
+        /// is not CN.
+        /// Raised if N < 1.
         #[cxx_name = "BRepAdaptor_Curve_DN"]
         fn Curve_dn(self_: &Curve, U: f64, N: i32) -> UniquePtr<gp_Vec>;
         #[cxx_name = "BRepAdaptor_Curve_Line"]
@@ -392,10 +468,14 @@ pub(crate) mod ffi {
         fn Curve_hyperbola(self_: &Curve) -> UniquePtr<gp_Hypr>;
         #[cxx_name = "BRepAdaptor_Curve_Parabola"]
         fn Curve_parabola(self_: &Curve) -> UniquePtr<gp_Parab>;
-        /// Warning: This will make a copy of the Bezier Curve since it applies to it myTsrf. Be careful when using this method.
+        /// Warning:
+        /// This will make a copy of the Bezier Curve since it applies to it myTsrf.
+        /// Be careful when using this method.
         #[cxx_name = "BRepAdaptor_Curve_Bezier"]
         fn Curve_bezier(self_: &Curve) -> UniquePtr<HandleGeomBezierCurve>;
-        /// Warning: This will make a copy of the BSpline Curve since it applies to it myTsrf. Be careful when using this method.
+        /// Warning:
+        /// This will make a copy of the BSpline Curve since it applies to it myTsrf.
+        /// Be careful when using this method.
         #[cxx_name = "BRepAdaptor_Curve_BSpline"]
         fn Curve_b_spline(self_: &Curve) -> UniquePtr<HandleGeomBSplineCurve>;
         #[cxx_name = "BRepAdaptor_Curve_OffsetCurve"]
@@ -411,7 +491,18 @@ pub(crate) mod ffi {
         /// ======================== BRepAdaptor_Surface ========================
         /// /// **Source:** `BRepAdaptor_Surface.hxx` - `BRepAdaptor_Surface`
         ///
-        /// The Surface from BRepAdaptor allows to  use a Face of the BRep topology look like a 3D surface. It  has  the methods  of  the class   Surface from Adaptor3d. It is created or initialized with a Face. It takes into account the local coordinates system. The  u,v parameter range is   the minmax value for the  restriction,  unless  the flag restriction is set to false.
+        /// The Surface from BRepAdaptor allows to  use a Face
+        /// of the BRep topology look like a 3D surface.
+        ///
+        /// It  has  the methods  of  the class   Surface from
+        /// Adaptor3d.
+        ///
+        /// It is created or initialized with a Face. It takes
+        /// into account the local coordinates system.
+        ///
+        /// The  u,v parameter range is   the minmax value for
+        /// the  restriction,  unless  the flag restriction is
+        /// set to false.
         #[cxx_name = "BRepAdaptor_Surface"]
         type Surface;
         /// /// **Source:** `BRepAdaptor_Surface.hxx` - `BRepAdaptor_Surface::BRepAdaptor_Surface()`
@@ -421,7 +512,10 @@ pub(crate) mod ffi {
         fn Surface_ctor() -> UniquePtr<Surface>;
         /// /// **Source:** `BRepAdaptor_Surface.hxx` - `BRepAdaptor_Surface::BRepAdaptor_Surface()`
         ///
-        /// Creates a surface to  access the geometry  of <F>. If  <Restriction> is  true  the parameter range is the  parameter  range  in   the  UV space  of  the restriction.
+        /// Creates a surface to  access the geometry  of <F>.
+        /// If  <Restriction> is  true  the parameter range is
+        /// the  parameter  range  in   the  UV space  of  the
+        /// restriction.
         #[cxx_name = "BRepAdaptor_Surface_ctor_face_bool"]
         fn Surface_ctor_face_bool(F: &TopoDS_Face, R: bool) -> UniquePtr<Surface>;
         #[cxx_name = "DynamicType"]
@@ -467,7 +561,10 @@ pub(crate) mod ffi {
         /// Computes the point of parameters U,V on the surface.
         #[cxx_name = "D0"]
         fn d0(self: &Surface, U: f64, V: f64, P: Pin<&mut gp_Pnt>);
-        /// Computes the point  and the first derivatives on the surface. Raised if the continuity of the current intervals is not C1. Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
+        /// Computes the point  and the first derivatives on the surface.
+        /// Raised if the continuity of the current intervals is not C1.
+        ///
+        /// Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
         #[cxx_name = "D1"]
         fn d1(
             self: &Surface,
@@ -477,7 +574,10 @@ pub(crate) mod ffi {
             D1U: Pin<&mut gp_Vec>,
             D1V: Pin<&mut gp_Vec>,
         );
-        /// Computes   the point,  the  first  and  second derivatives on the surface. Raised  if   the   continuity   of the current intervals is not C2.
+        /// Computes   the point,  the  first  and  second
+        /// derivatives on the surface.
+        /// Raised  if   the   continuity   of the current
+        /// intervals is not C2.
         #[cxx_name = "D2"]
         fn d2(
             self: &Surface,
@@ -490,7 +590,10 @@ pub(crate) mod ffi {
             D2V: Pin<&mut gp_Vec>,
             D2UV: Pin<&mut gp_Vec>,
         );
-        /// Computes the point,  the first, second and third derivatives on the surface. Raised  if   the   continuity   of the current intervals is not C3.
+        /// Computes the point,  the first, second and third
+        /// derivatives on the surface.
+        /// Raised  if   the   continuity   of the current
+        /// intervals is not C3.
         #[cxx_name = "D3"]
         fn d3(
             self: &Surface,
@@ -507,10 +610,12 @@ pub(crate) mod ffi {
             D3UUV: Pin<&mut gp_Vec>,
             D3UVV: Pin<&mut gp_Vec>,
         );
-        /// Returns the parametric U  resolution corresponding to the real space resolution <R3d>.
+        /// Returns the parametric U  resolution corresponding
+        /// to the real space resolution <R3d>.
         #[cxx_name = "UResolution"]
         fn u_resolution(self: &Surface, theR3d: f64) -> f64;
-        /// Returns the parametric V  resolution corresponding to the real space resolution <R3d>.
+        /// Returns the parametric V  resolution corresponding
+        /// to the real space resolution <R3d>.
         #[cxx_name = "VResolution"]
         fn v_resolution(self: &Surface, theR3d: f64) -> f64;
         #[cxx_name = "UDegree"]
@@ -534,7 +639,11 @@ pub(crate) mod ffi {
         /// Shallow copy of adaptor
         #[cxx_name = "BRepAdaptor_Surface_ShallowCopy"]
         fn Surface_shallow_copy(self_: &Surface) -> UniquePtr<HandleAdaptor3dSurface>;
-        /// Returns    a  surface trimmed in the U direction equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+        /// Returns    a  surface trimmed in the U direction
+        /// equivalent   of  <me>  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
+        /// If <First> >= <Last>
         #[cxx_name = "BRepAdaptor_Surface_UTrim"]
         fn Surface_u_trim(
             self_: &Surface,
@@ -542,7 +651,10 @@ pub(crate) mod ffi {
             Last: f64,
             Tol: f64,
         ) -> UniquePtr<HandleAdaptor3dSurface>;
-        /// Returns    a  surface trimmed in the V direction  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+        /// Returns    a  surface trimmed in the V direction  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
+        /// If <First> >= <Last>
         #[cxx_name = "BRepAdaptor_Surface_VTrim"]
         fn Surface_v_trim(
             self_: &Surface,
@@ -550,10 +662,15 @@ pub(crate) mod ffi {
             Last: f64,
             Tol: f64,
         ) -> UniquePtr<HandleAdaptor3dSurface>;
-        /// Computes the point of parameters U,V on the surface. Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
+        /// Computes the point of parameters U,V on the surface.
+        /// Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
         #[cxx_name = "BRepAdaptor_Surface_Value"]
         fn Surface_value(self_: &Surface, U: f64, V: f64) -> UniquePtr<gp_Pnt>;
-        /// Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Raised if the current U  interval is not not CNu and the current V interval is not CNv. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+        /// Computes the derivative of order Nu in the direction
+        /// U and Nv in the direction V at the point P(U, V).
+        /// Raised if the current U  interval is not not CNu
+        /// and the current V interval is not CNv.
+        /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
         #[cxx_name = "BRepAdaptor_Surface_DN"]
         fn Surface_dn(self_: &Surface, U: f64, V: f64, Nu: i32, Nv: i32) -> UniquePtr<gp_Vec>;
         #[cxx_name = "BRepAdaptor_Surface_Plane"]
@@ -568,14 +685,20 @@ pub(crate) mod ffi {
         fn Surface_torus(self_: &Surface) -> UniquePtr<gp_Torus>;
         #[cxx_name = "BRepAdaptor_Surface_Bezier"]
         fn Surface_bezier(self_: &Surface) -> UniquePtr<HandleGeomBezierSurface>;
-        /// Warning : this will make a copy of the BSpline Surface since it applies to it the myTsrf transformation Be Careful when using this method
+        /// Warning : this will make a copy of the
+        /// BSpline Surface since it applies
+        /// to it the myTsrf transformation
+        /// Be Careful when using this method
         #[cxx_name = "BRepAdaptor_Surface_BSpline"]
         fn Surface_b_spline(self_: &Surface) -> UniquePtr<HandleGeomBSplineSurface>;
         #[cxx_name = "BRepAdaptor_Surface_AxeOfRevolution"]
         fn Surface_axe_of_revolution(self_: &Surface) -> UniquePtr<gp_Ax1>;
         #[cxx_name = "BRepAdaptor_Surface_Direction"]
         fn Surface_direction(self_: &Surface) -> UniquePtr<gp_Dir>;
-        /// only for SurfaceOfExtrusion and SurfaceOfRevolution Warning: this will make a copy of the underlying curve since it applies to it the transformation myTrsf. Be careful when using this method.
+        /// only for SurfaceOfExtrusion and SurfaceOfRevolution
+        /// Warning: this will make a copy of the underlying curve
+        /// since it applies to it the transformation
+        /// myTrsf. Be careful when using this method.
         #[cxx_name = "BRepAdaptor_Surface_BasisCurve"]
         fn Surface_basis_curve(self_: &Surface) -> UniquePtr<HandleAdaptor3dCurve>;
         #[cxx_name = "BRepAdaptor_Surface_BasisSurface"]
@@ -593,7 +716,16 @@ pub(crate) mod ffi {
         /// ======================== BRepAdaptor_Curve2d ========================
         /// /// **Source:** `BRepAdaptor_Curve2d.hxx` - `BRepAdaptor_Curve2d`
         ///
-        /// The Curve2d from BRepAdaptor allows to use an Edge on   a Face like   a  2d   curve. (curve  in   the parametric space). It  has  the methods    of the class Curve2d  from Adpator. It  is created or  initialized with a  Face and an Edge.  The methods are  inherited from  Curve from Geom2dAdaptor.
+        /// The Curve2d from BRepAdaptor allows to use an Edge
+        /// on   a Face like   a  2d   curve. (curve  in   the
+        /// parametric space).
+        ///
+        /// It  has  the methods    of the class Curve2d  from
+        /// Adpator.
+        ///
+        /// It  is created or  initialized with a  Face and an
+        /// Edge.  The methods are  inherited from  Curve from
+        /// Geom2dAdaptor.
         #[cxx_name = "BRepAdaptor_Curve2d"]
         type Curve2d;
         /// /// **Source:** `BRepAdaptor_Curve2d.hxx` - `BRepAdaptor_Curve2d::BRepAdaptor_Curve2d()`

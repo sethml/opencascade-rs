@@ -18,12 +18,15 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Box_ as Box;
 impl Box {
-    /// Creates an empty Box. The constructed box is qualified Void. Its gap is null.
+    /// Creates an empty Box.
+    /// The constructed box is qualified Void. Its gap is null.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Box__ctor()
     }
 
-    /// Creates a bounding box, it contains: -   minimum/maximum point of bounding box, The constructed box is qualified Void. Its gap is null.
+    /// Creates a bounding box, it contains:
+    /// -   minimum/maximum point of bounding box,
+    /// The constructed box is qualified Void. Its gap is null.
     pub fn new_pnt2(theMin: &ffi::gp_Pnt, theMax: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
         ffi::Box__ctor_pnt2(theMin, theMax)
     }
@@ -33,22 +36,30 @@ impl Box {
         ffi::Box__to_owned(self)
     }
 
-    #[doc = "Returns the lower corner of this bounding box. The gap is included. If this bounding box is infinite (i.e. \"open\"), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()"]
+    #[doc = "Returns the lower corner of this bounding box. The gap is included.\nIf this bounding box is infinite (i.e. \"open\"), returned values\nmay be equal to +/- Precision::Infinite().\nStandard_ConstructionError exception will be thrown if the box is void.\nif IsVoid()"]
     pub fn corner_min(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::Box__corner_min(self)
     }
 
-    #[doc = "Returns the upper corner of this bounding box. The gap is included. If this bounding box is infinite (i.e. \"open\"), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()"]
+    #[doc = "Returns the upper corner of this bounding box. The gap is included.\nIf this bounding box is infinite (i.e. \"open\"), returned values\nmay be equal to +/- Precision::Infinite().\nStandard_ConstructionError exception will be thrown if the box is void.\nif IsVoid()"]
     pub fn corner_max(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::Box__corner_max(self)
     }
 
-    /// Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it.
+    /// Returns a bounding box which is the result of applying the
+    /// transformation T to this bounding box.
+    /// Warning
+    /// Applying a geometric transformation (for example, a
+    /// rotation) to a bounding box generally increases its
+    /// dimensions. This is not optimal for algorithms which use it.
     pub fn transformed(&self, T: &ffi::gp_Trsf) -> cxx::UniquePtr<ffi::Box_> {
         ffi::Box__transformed(self, T)
     }
 
-    /// Returns a finite part of an infinite bounding box (returns self if this is already finite box). This can be a Void box in case if its sides has been defined as infinite (Open) without adding any finite points. WARNING! This method relies on Open flags, the infinite points added using Add() method will be returned as is.
+    /// Returns a finite part of an infinite bounding box (returns self if this is already finite
+    /// box). This can be a Void box in case if its sides has been defined as infinite (Open) without
+    /// adding any finite points. WARNING! This method relies on Open flags, the infinite points added
+    /// using Add() method will be returned as is.
     pub fn finite_part(&self) -> cxx::UniquePtr<ffi::Box_> {
         ffi::Box__finite_part(self)
     }
@@ -91,7 +102,13 @@ impl OBB {
         ffi::OBB_to_owned(self)
     }
 
-    /// Returns the local coordinates system of this oriented box. So that applying it to axis-aligned box ((-XHSize, -YHSize, -ZHSize), (XHSize, YHSize, ZHSize)) will produce this oriented box. @code gp_Trsf aLoc; aLoc.SetTransformation (theOBB.Position(), gp::XOY()); @endcode
+    /// Returns the local coordinates system of this oriented box.
+    /// So that applying it to axis-aligned box ((-XHSize, -YHSize, -ZHSize), (XHSize, YHSize,
+    /// ZHSize)) will produce this oriented box.
+    /// @code
+    /// gp_Trsf aLoc;
+    /// aLoc.SetTransformation (theOBB.Position(), gp::XOY());
+    /// @endcode
     pub fn position(&self) -> cxx::UniquePtr<ffi::gp_Ax3> {
         ffi::OBB_position(self)
     }
@@ -165,7 +182,8 @@ impl Sphere {
 }
 pub use ffi::Box2d;
 impl Box2d {
-    /// Creates an empty 2D bounding box. The constructed box is qualified Void. Its gap is null.
+    /// Creates an empty 2D bounding box.
+    /// The constructed box is qualified Void. Its gap is null.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Box2d_ctor()
     }
@@ -175,7 +193,12 @@ impl Box2d {
         ffi::Box2d_to_owned(self)
     }
 
-    /// Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it.
+    /// Returns a bounding box which is the result of applying the
+    /// transformation T to this bounding box.
+    /// Warning
+    /// Applying a geometric transformation (for example, a
+    /// rotation) to a bounding box generally increases its
+    /// dimensions. This is not optimal for algorithms which use it.
     pub fn transformed(&self, T: &ffi::gp_Trsf2d) -> cxx::UniquePtr<ffi::Box2d> {
         ffi::Box2d_transformed(self, T)
     }
@@ -197,17 +220,22 @@ impl B2d {
         ffi::B2d_to_owned(self)
     }
 
-    /// Query a box corner: (Center - HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
+    /// Query a box corner: (Center - HSize). You must make sure that
+    /// the box is NOT VOID (see IsVoid()), otherwise the method returns
+    /// irrelevant result.
     pub fn corner_min(&self) -> cxx::UniquePtr<ffi::gp_XY> {
         ffi::B2d_corner_min(self)
     }
 
-    /// Query a box corner: (Center + HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
+    /// Query a box corner: (Center + HSize). You must make sure that
+    /// the box is NOT VOID (see IsVoid()), otherwise the method returns
+    /// irrelevant result.
     pub fn corner_max(&self) -> cxx::UniquePtr<ffi::gp_XY> {
         ffi::B2d_corner_max(self)
     }
 
-    /// Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation.
+    /// Transform the bounding box with the given transformation.
+    /// The resulting box will be larger if theTrsf contains rotation.
     pub fn transformed(&self, theTrsf: &ffi::gp_Trsf2d) -> cxx::UniquePtr<ffi::B2d> {
         ffi::B2d_transformed(self, theTrsf)
     }
@@ -268,32 +296,42 @@ pub(crate) mod ffi {
         /// ======================== Bnd_Box ========================
         /// /// **Source:** `Bnd_Box.hxx` - `Bnd_Box`
         ///
-        #[doc = "Describes a bounding box in 3D space. A bounding box is parallel to the axes of the coordinates system. If it is finite, it is defined by the three intervals: -   [ Xmin,Xmax ], -   [ Ymin,Ymax ], -   [ Zmin,Zmax ]. A bounding box may be infinite (i.e. open) in one or more directions. It is said to be: -   OpenXmin if it is infinite on the negative side of the   \"X Direction\"; -   OpenXmax if it is infinite on the positive side of the \"X Direction\"; -   OpenYmin if it is infinite on the negative side of the   \"Y Direction\"; -   OpenYmax if it is infinite on the positive side of the \"Y Direction\"; -   OpenZmin if it is infinite on the negative side of the   \"Z Direction\"; -   OpenZmax if it is infinite on the positive side of the \"Z Direction\"; -   WholeSpace if it is infinite in all six directions. In this case, any point of the space is inside the box; -   Void if it is empty. In this case, there is no point included in the box. A bounding box is defined by: -   six bounds (Xmin, Xmax, Ymin, Ymax, Zmin and Zmax) which limit the bounding box if it is finite, -   eight flags (OpenXmin, OpenXmax, OpenYmin, OpenYmax, OpenZmin, OpenZmax, WholeSpace and Void) which describe the bounding box if it is infinite or empty, and -   a gap, which is included on both sides in any direction when consulting the finite bounds of the box."]
+        #[doc = "Describes a bounding box in 3D space.\nA bounding box is parallel to the axes of the coordinates\nsystem. If it is finite, it is defined by the three intervals:\n-   [ Xmin,Xmax ],\n-   [ Ymin,Ymax ],\n-   [ Zmin,Zmax ].\nA bounding box may be infinite (i.e. open) in one or more\ndirections. It is said to be:\n-   OpenXmin if it is infinite on the negative side of the   \"X Direction\";\n-   OpenXmax if it is infinite on the positive side of the \"X Direction\";\n-   OpenYmin if it is infinite on the negative side of the   \"Y Direction\";\n-   OpenYmax if it is infinite on the positive side of the \"Y Direction\";\n-   OpenZmin if it is infinite on the negative side of the   \"Z Direction\";\n-   OpenZmax if it is infinite on the positive side of the \"Z Direction\";\n-   WholeSpace if it is infinite in all six directions. In this\ncase, any point of the space is inside the box;\n-   Void if it is empty. In this case, there is no point included in the box.\nA bounding box is defined by:\n-   six bounds (Xmin, Xmax, Ymin, Ymax, Zmin and\nZmax) which limit the bounding box if it is finite,\n-   eight flags (OpenXmin, OpenXmax, OpenYmin,\nOpenYmax, OpenZmin, OpenZmax,\nWholeSpace and Void) which describe the\nbounding box if it is infinite or empty, and\n-   a gap, which is included on both sides in any direction\nwhen consulting the finite bounds of the box."]
         #[cxx_name = "Bnd_Box"]
         type Box_;
         /// /// **Source:** `Bnd_Box.hxx` - `Bnd_Box::Bnd_Box()`
         ///
-        /// Creates an empty Box. The constructed box is qualified Void. Its gap is null.
+        /// Creates an empty Box.
+        /// The constructed box is qualified Void. Its gap is null.
         #[cxx_name = "Bnd_Box_ctor"]
         fn Box__ctor() -> UniquePtr<Box_>;
         /// /// **Source:** `Bnd_Box.hxx` - `Bnd_Box::Bnd_Box()`
         ///
-        /// Creates a bounding box, it contains: -   minimum/maximum point of bounding box, The constructed box is qualified Void. Its gap is null.
+        /// Creates a bounding box, it contains:
+        /// -   minimum/maximum point of bounding box,
+        /// The constructed box is qualified Void. Its gap is null.
         #[cxx_name = "Bnd_Box_ctor_pnt2"]
         fn Box__ctor_pnt2(theMin: &gp_Pnt, theMax: &gp_Pnt) -> UniquePtr<Box_>;
-        /// Sets this bounding box so that it covers the whole of 3D space. It is infinitely long in all directions.
+        /// Sets this bounding box so that it covers the whole of 3D space.
+        /// It is infinitely long in all directions.
         #[cxx_name = "SetWhole"]
         fn set_whole(self: Pin<&mut Box_>);
         /// Sets this bounding box so that it is empty. All points are outside a void box.
         #[cxx_name = "SetVoid"]
         fn set_void(self: Pin<&mut Box_>);
-        /// Sets this bounding box so that it bounds -   the point P. This involves first setting this bounding box to be void and then adding the point P.
+        /// Sets this bounding box so that it bounds
+        /// -   the point P. This involves first setting this bounding box
+        /// to be void and then adding the point P.
         #[cxx_name = "Set"]
         fn set_pnt(self: Pin<&mut Box_>, P: &gp_Pnt);
-        /// Sets this bounding box so that it bounds the half-line defined by point P and direction D, i.e. all points M defined by M=P+u*D, where u is greater than or equal to 0, are inside the bounding volume. This involves first setting this box to be void and then adding   the half-line.
+        /// Sets this bounding box so that it bounds
+        /// the half-line defined by point P and direction D, i.e. all
+        /// points M defined by M=P+u*D, where u is greater than
+        /// or equal to 0, are inside the bounding volume. This
+        /// involves first setting this box to be void and then adding   the half-line.
         #[cxx_name = "Set"]
         fn set_pnt_dir(self: Pin<&mut Box_>, P: &gp_Pnt, D: &gp_Dir);
-        #[doc = "Enlarges this bounding box, if required, so that it contains at least: -   interval [ aXmin,aXmax ] in the \"X Direction\", -   interval [ aYmin,aYmax ] in the \"Y Direction\", -   interval [ aZmin,aZmax ] in the \"Z Direction\";"]
+        #[doc = "Enlarges this bounding box, if required, so that it\ncontains at least:\n-   interval [ aXmin,aXmax ] in the \"X Direction\",\n-   interval [ aYmin,aYmax ] in the \"Y Direction\",\n-   interval [ aZmin,aZmax ] in the \"Z Direction\";"]
         #[cxx_name = "Update"]
         fn update_real6(
             self: Pin<&mut Box_>,
@@ -313,10 +351,15 @@ pub(crate) mod ffi {
         /// Set the gap of this bounding box to abs(Tol).
         #[cxx_name = "SetGap"]
         fn set_gap(self: Pin<&mut Box_>, Tol: f64);
-        /// Enlarges the      box    with    a   tolerance   value. (minvalues-Abs(<tol>) and maxvalues+Abs(<tol>)) This means that the minimum values of its X, Y and Z intervals of definition, when they are finite, are reduced by the absolute value of Tol, while the maximum values are increased by the same amount.
+        /// Enlarges the      box    with    a   tolerance   value.
+        /// (minvalues-Abs(<tol>) and maxvalues+Abs(<tol>))
+        /// This means that the minimum values of its X, Y and Z
+        /// intervals of definition, when they are finite, are reduced by
+        /// the absolute value of Tol, while the maximum values are
+        /// increased by the same amount.
         #[cxx_name = "Enlarge"]
         fn enlarge(self: Pin<&mut Box_>, Tol: f64);
-        #[doc = "Returns the bounds of this bounding box. The gap is included. If this bounding box is infinite (i.e. \"open\"), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()"]
+        #[doc = "Returns the bounds of this bounding box. The gap is included.\nIf this bounding box is infinite (i.e. \"open\"), returned values\nmay be equal to +/- Precision::Infinite().\nStandard_ConstructionError exception will be thrown if the box is void.\nif IsVoid()"]
         #[cxx_name = "Get"]
         fn get(
             self: &Box_,
@@ -327,22 +370,28 @@ pub(crate) mod ffi {
             theYmax: &mut f64,
             theZmax: &mut f64,
         );
-        /// The   Box will be   infinitely   long  in the Xmin direction.
+        /// The   Box will be   infinitely   long  in the Xmin
+        /// direction.
         #[cxx_name = "OpenXmin"]
         fn open_xmin(self: Pin<&mut Box_>);
-        /// The   Box will be   infinitely   long  in the Xmax direction.
+        /// The   Box will be   infinitely   long  in the Xmax
+        /// direction.
         #[cxx_name = "OpenXmax"]
         fn open_xmax(self: Pin<&mut Box_>);
-        /// The   Box will be   infinitely   long  in the Ymin direction.
+        /// The   Box will be   infinitely   long  in the Ymin
+        /// direction.
         #[cxx_name = "OpenYmin"]
         fn open_ymin(self: Pin<&mut Box_>);
-        /// The   Box will be   infinitely   long  in the Ymax direction.
+        /// The   Box will be   infinitely   long  in the Ymax
+        /// direction.
         #[cxx_name = "OpenYmax"]
         fn open_ymax(self: Pin<&mut Box_>);
-        /// The   Box will be   infinitely   long  in the Zmin direction.
+        /// The   Box will be   infinitely   long  in the Zmin
+        /// direction.
         #[cxx_name = "OpenZmin"]
         fn open_zmin(self: Pin<&mut Box_>);
-        /// The   Box will be   infinitely   long  in the Zmax direction.
+        /// The   Box will be   infinitely   long  in the Zmax
+        /// direction.
         #[cxx_name = "OpenZmax"]
         fn open_zmax(self: Pin<&mut Box_>);
         /// Returns true if this bounding box has at least one open direction.
@@ -381,7 +430,8 @@ pub(crate) mod ffi {
         /// true if zmax-zmin < tol.
         #[cxx_name = "IsZThin"]
         fn is_z_thin(self: &Box_, tol: f64) -> bool;
-        /// Returns true if IsXThin, IsYThin and IsZThin are all true, i.e. if the box is thin in all three dimensions.
+        /// Returns true if IsXThin, IsYThin and IsZThin are all true,
+        /// i.e. if the box is thin in all three dimensions.
         #[cxx_name = "IsThin"]
         fn is_thin(self: &Box_, tol: f64) -> bool;
         /// Adds the box <Other> to <me>.
@@ -393,7 +443,9 @@ pub(crate) mod ffi {
         /// Extends  <me> from the Pnt <P> in the direction <D>.
         #[cxx_name = "Add"]
         fn add_pnt_dir(self: Pin<&mut Box_>, P: &gp_Pnt, D: &gp_Dir);
-        /// Extends the Box  in the given Direction, i.e. adds an  half-line. The   box  may become   infinite in 1,2 or 3 directions.
+        /// Extends the Box  in the given Direction, i.e. adds
+        /// an  half-line. The   box  may become   infinite in
+        /// 1,2 or 3 directions.
         #[cxx_name = "Add"]
         fn add_dir(self: Pin<&mut Box_>, D: &gp_Dir);
         /// Returns True if the Pnt is out the box.
@@ -408,13 +460,17 @@ pub(crate) mod ffi {
         /// Returns False if the <Box> intersects or is inside <me>.
         #[cxx_name = "IsOut"]
         fn is_out_box(self: &Box_, Other: &Box_) -> bool;
-        /// Returns False if  the transformed <Box> intersects or  is inside <me>.
+        /// Returns False if  the transformed <Box> intersects
+        /// or  is inside <me>.
         #[cxx_name = "IsOut"]
         fn is_out_box_trsf(self: &Box_, Other: &Box_, T: &gp_Trsf) -> bool;
-        /// Returns False  if the transformed <Box> intersects or  is inside the transformed box <me>.
+        /// Returns False  if the transformed <Box> intersects
+        /// or  is inside the transformed box <me>.
         #[cxx_name = "IsOut"]
         fn is_out_trsf_box_trsf(self: &Box_, T1: &gp_Trsf, Other: &Box_, T2: &gp_Trsf) -> bool;
-        /// Returns False  if the flat band lying between two parallel lines represented by their reference points <P1>, <P2> and direction <D> intersects the box.
+        /// Returns False  if the flat band lying between two parallel
+        /// lines represented by their reference points <P1>, <P2> and
+        /// direction <D> intersects the box.
         #[cxx_name = "IsOut"]
         fn is_out_pnt2_dir(self: &Box_, P1: &gp_Pnt, P2: &gp_Pnt, D: &gp_Dir) -> bool;
         /// Computes the minimum distance between two boxes.
@@ -428,16 +484,24 @@ pub(crate) mod ffi {
         /// Returns TRUE if this box has finite part.
         #[cxx_name = "HasFinitePart"]
         fn has_finite_part(self: &Box_) -> bool;
-        #[doc = "Returns the lower corner of this bounding box. The gap is included. If this bounding box is infinite (i.e. \"open\"), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()"]
+        #[doc = "Returns the lower corner of this bounding box. The gap is included.\nIf this bounding box is infinite (i.e. \"open\"), returned values\nmay be equal to +/- Precision::Infinite().\nStandard_ConstructionError exception will be thrown if the box is void.\nif IsVoid()"]
         #[cxx_name = "Bnd_Box_CornerMin"]
         fn Box__corner_min(self_: &Box_) -> UniquePtr<gp_Pnt>;
-        #[doc = "Returns the upper corner of this bounding box. The gap is included. If this bounding box is infinite (i.e. \"open\"), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()"]
+        #[doc = "Returns the upper corner of this bounding box. The gap is included.\nIf this bounding box is infinite (i.e. \"open\"), returned values\nmay be equal to +/- Precision::Infinite().\nStandard_ConstructionError exception will be thrown if the box is void.\nif IsVoid()"]
         #[cxx_name = "Bnd_Box_CornerMax"]
         fn Box__corner_max(self_: &Box_) -> UniquePtr<gp_Pnt>;
-        /// Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it.
+        /// Returns a bounding box which is the result of applying the
+        /// transformation T to this bounding box.
+        /// Warning
+        /// Applying a geometric transformation (for example, a
+        /// rotation) to a bounding box generally increases its
+        /// dimensions. This is not optimal for algorithms which use it.
         #[cxx_name = "Bnd_Box_Transformed"]
         fn Box__transformed(self_: &Box_, T: &gp_Trsf) -> UniquePtr<Box_>;
-        /// Returns a finite part of an infinite bounding box (returns self if this is already finite box). This can be a Void box in case if its sides has been defined as infinite (Open) without adding any finite points. WARNING! This method relies on Open flags, the infinite points added using Add() method will be returned as is.
+        /// Returns a finite part of an infinite bounding box (returns self if this is already finite
+        /// box). This can be a Void box in case if its sides has been defined as infinite (Open) without
+        /// adding any finite points. WARNING! This method relies on Open flags, the infinite points added
+        /// using Add() method will be returned as is.
         #[cxx_name = "Bnd_Box_FinitePart"]
         fn Box__finite_part(self_: &Box_) -> UniquePtr<Box_>;
         /// Clone Bnd_Box into a new UniquePtr via copy constructor
@@ -446,7 +510,13 @@ pub(crate) mod ffi {
         /// ======================== Bnd_OBB ========================
         /// /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB`
         ///
-        /// The class describes the Oriented Bounding Box (OBB), much tighter enclosing volume for the shape than the Axis Aligned Bounding Box (AABB). The OBB is defined by a center of the box, the axes and the halves of its three dimensions. The OBB can be used more effectively than AABB as a rejection mechanism for non-interfering objects.
+        /// The class describes the Oriented Bounding Box (OBB),
+        /// much tighter enclosing volume for the shape than the
+        /// Axis Aligned Bounding Box (AABB).
+        /// The OBB is defined by a center of the box, the axes and the halves
+        /// of its three dimensions.
+        /// The OBB can be used more effectively than AABB as a rejection mechanism
+        /// for non-interfering objects.
         #[cxx_name = "Bnd_OBB"]
         type OBB;
         /// /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`
@@ -532,13 +602,21 @@ pub(crate) mod ffi {
         /// Check if the theOther is completely inside *this.
         #[cxx_name = "IsCompletelyInside"]
         fn is_completely_inside(self: &OBB, theOther: &OBB) -> bool;
-        /// Rebuilds this in order to include all previous objects (which it was created from) and theOther.
+        /// Rebuilds this in order to include all previous objects
+        /// (which it was created from) and theOther.
         #[cxx_name = "Add"]
         fn add_obb(self: Pin<&mut OBB>, theOther: &OBB);
-        /// Rebuilds this in order to include all previous objects (which it was created from) and theP.
+        /// Rebuilds this in order to include all previous objects
+        /// (which it was created from) and theP.
         #[cxx_name = "Add"]
         fn add_pnt(self: Pin<&mut OBB>, theP: &gp_Pnt);
-        /// Returns the local coordinates system of this oriented box. So that applying it to axis-aligned box ((-XHSize, -YHSize, -ZHSize), (XHSize, YHSize, ZHSize)) will produce this oriented box. @code gp_Trsf aLoc; aLoc.SetTransformation (theOBB.Position(), gp::XOY()); @endcode
+        /// Returns the local coordinates system of this oriented box.
+        /// So that applying it to axis-aligned box ((-XHSize, -YHSize, -ZHSize), (XHSize, YHSize,
+        /// ZHSize)) will produce this oriented box.
+        /// @code
+        /// gp_Trsf aLoc;
+        /// aLoc.SetTransformation (theOBB.Position(), gp::XOY());
+        /// @endcode
         #[cxx_name = "Bnd_OBB_Position"]
         fn OBB_position(self_: &OBB) -> UniquePtr<gp_Ax3>;
         /// Clone Bnd_OBB into a new UniquePtr via copy constructor
@@ -593,7 +671,8 @@ pub(crate) mod ffi {
         /// ======================== Bnd_Sphere ========================
         /// /// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere`
         ///
-        /// This class represents a bounding sphere of a geometric entity (triangle, segment of line or whatever else).
+        /// This class represents a bounding sphere of a geometric entity
+        /// (triangle, segment of line or whatever else).
         #[cxx_name = "Bnd_Sphere"]
         type Sphere;
         /// /// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`
@@ -617,7 +696,8 @@ pub(crate) mod ffi {
         /// Returns the V parameter on shape
         #[cxx_name = "V"]
         fn v(self: &Sphere) -> i32;
-        /// Returns validity status, indicating that this sphere corresponds to a real entity
+        /// Returns validity status, indicating that this
+        /// sphere corresponds to a real entity
         #[cxx_name = "IsValid"]
         fn is_valid(self: &Sphere) -> bool;
         #[cxx_name = "SetValid"]
@@ -628,13 +708,18 @@ pub(crate) mod ffi {
         /// Returns the radius value
         #[cxx_name = "Radius"]
         fn radius(self: &Sphere) -> f64;
-        /// Calculate and return minimal and maximal distance to sphere. NOTE: This function is tightly optimized; any modifications may affect performance!
+        /// Calculate and return minimal and maximal distance to sphere.
+        /// NOTE: This function is tightly optimized; any modifications
+        /// may affect performance!
         #[cxx_name = "Distances"]
         fn distances(self: &Sphere, theXYZ: &gp_XYZ, theMin: &mut f64, theMax: &mut f64);
-        /// Calculate and return minimal and maximal distance to sphere. NOTE: This function is tightly optimized; any modifications may affect performance!
+        /// Calculate and return minimal and maximal distance to sphere.
+        /// NOTE: This function is tightly optimized; any modifications
+        /// may affect performance!
         #[cxx_name = "SquareDistances"]
         fn square_distances(self: &Sphere, theXYZ: &gp_XYZ, theMin: &mut f64, theMax: &mut f64);
-        /// Projects a point on entity. Returns true if success
+        /// Projects a point on entity.
+        /// Returns true if success
         #[cxx_name = "Project"]
         fn project(
             self: &Sphere,
@@ -661,27 +746,35 @@ pub(crate) mod ffi {
         /// ======================== Bnd_Box2d ========================
         /// /// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d`
         ///
-        #[doc = "Describes a bounding box in 2D space. A bounding box is parallel to the axes of the coordinates system. If it is finite, it is defined by the two intervals: -   [ Xmin,Xmax ], and -   [ Ymin,Ymax ]. A bounding box may be infinite (i.e. open) in one or more directions. It is said to be: -   OpenXmin if it is infinite on the negative side of the   \"X Direction\"; -   OpenXmax if it is infinite on the positive side of the   \"X Direction\"; -   OpenYmin if it is infinite on the negative side of the   \"Y Direction\"; -   OpenYmax if it is infinite on the positive side of the   \"Y Direction\"; -   WholeSpace if it is infinite in all four directions. In this case, any point of the space is inside the box; -   Void if it is empty. In this case, there is no point included in the box. A bounding box is defined by four bounds (Xmin, Xmax, Ymin and Ymax) which limit the bounding box if it is finite, six flags (OpenXmin, OpenXmax, OpenYmin, OpenYmax, WholeSpace and Void) which describe the bounding box if it is infinite or empty, and -   a gap, which is included on both sides in any direction when consulting the finite bounds of the box."]
+        #[doc = "Describes a bounding box in 2D space.\nA bounding box is parallel to the axes of the coordinates\nsystem. If it is finite, it is defined by the two intervals:\n-   [ Xmin,Xmax ], and\n-   [ Ymin,Ymax ].\nA bounding box may be infinite (i.e. open) in one or more\ndirections. It is said to be:\n-   OpenXmin if it is infinite on the negative side of the   \"X Direction\";\n-   OpenXmax if it is infinite on the positive side of the   \"X Direction\";\n-   OpenYmin if it is infinite on the negative side of the   \"Y Direction\";\n-   OpenYmax if it is infinite on the positive side of the   \"Y Direction\";\n-   WholeSpace if it is infinite in all four directions. In\nthis case, any point of the space is inside the box;\n-   Void if it is empty. In this case, there is no point included in the box.\nA bounding box is defined by four bounds (Xmin, Xmax, Ymin and Ymax) which\nlimit the bounding box if it is finite, six flags (OpenXmin, OpenXmax, OpenYmin,\nOpenYmax, WholeSpace and Void) which describe the bounding box if it is infinite or empty, and\n-   a gap, which is included on both sides in any direction when consulting the finite bounds of\nthe box."]
         #[cxx_name = "Bnd_Box2d"]
         type Box2d;
         /// /// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d::Bnd_Box2d()`
         ///
-        /// Creates an empty 2D bounding box. The constructed box is qualified Void. Its gap is null.
+        /// Creates an empty 2D bounding box.
+        /// The constructed box is qualified Void. Its gap is null.
         #[cxx_name = "Bnd_Box2d_ctor"]
         fn Box2d_ctor() -> UniquePtr<Box2d>;
-        /// Sets this bounding box so that it covers the whole 2D space, i.e. it is infinite in all directions.
+        /// Sets this bounding box so that it covers the whole 2D
+        /// space, i.e. it is infinite in all directions.
         #[cxx_name = "SetWhole"]
         fn set_whole(self: Pin<&mut Box2d>);
         /// Sets this 2D bounding box so that it is empty. All points are outside a void box.
         #[cxx_name = "SetVoid"]
         fn set_void(self: Pin<&mut Box2d>);
-        /// Sets this 2D bounding box so that it bounds the point P. This involves first setting this bounding box to be void and then adding the point PThe rectangle bounds   the  point <P>.
+        /// Sets this 2D bounding box so that it bounds
+        /// the point P. This involves first setting this bounding box
+        /// to be void and then adding the point PThe rectangle bounds   the  point <P>.
         #[cxx_name = "Set"]
         fn set_pnt2d(self: Pin<&mut Box2d>, thePnt: &gp_Pnt2d);
-        /// Sets this 2D bounding box so that it bounds the half-line defined by point P and direction D, i.e. all points M defined by M=P+u*D, where u is greater than or equal to 0, are inside the bounding area. This involves first setting this 2D box to be void and then adding the   half-line.
+        /// Sets this 2D bounding box so that it bounds
+        /// the half-line defined by point P and direction D, i.e. all
+        /// points M defined by M=P+u*D, where u is greater than
+        /// or equal to 0, are inside the bounding area. This involves
+        /// first setting this 2D box to be void and then adding the   half-line.
         #[cxx_name = "Set"]
         fn set_pnt2d_dir2d(self: Pin<&mut Box2d>, thePnt: &gp_Pnt2d, theDir: &gp_Dir2d);
-        #[doc = "Enlarges this 2D bounding box, if required, so that it contains at least: -   interval [ aXmin,aXmax ] in the \"X Direction\", -   interval [ aYmin,aYmax ] in the \"Y Direction\""]
+        #[doc = "Enlarges this 2D bounding box, if required, so that it\ncontains at least:\n-   interval [ aXmin,aXmax ] in the \"X Direction\",\n-   interval [ aYmin,aYmax ] in the \"Y Direction\""]
         #[cxx_name = "Update"]
         fn update_real4(self: Pin<&mut Box2d>, aXmin: f64, aYmin: f64, aXmax: f64, aYmax: f64);
         /// Adds a point of coordinates (X,Y) to this bounding box.
@@ -693,10 +786,14 @@ pub(crate) mod ffi {
         /// Set the gap of this 2D bounding box to abs(Tol).
         #[cxx_name = "SetGap"]
         fn set_gap(self: Pin<&mut Box2d>, Tol: f64);
-        /// Enlarges     the  box  with    a  tolerance  value. This means that the minimum values of its X and Y intervals of definition, when they are finite, are reduced by the absolute value of Tol, while the maximum values are increased by the same amount.
+        /// Enlarges     the  box  with    a  tolerance  value.
+        /// This means that the minimum values of its X and Y
+        /// intervals of definition, when they are finite, are reduced by
+        /// the absolute value of Tol, while the maximum values are
+        /// increased by the same amount.
         #[cxx_name = "Enlarge"]
         fn enlarge(self: Pin<&mut Box2d>, theTol: f64);
-        #[doc = "Returns the bounds of this 2D bounding box. The gap is included. If this bounding box is infinite (i.e. \"open\"), returned values may be equal to +/- Precision::Infinite(). if IsVoid()"]
+        #[doc = "Returns the bounds of this 2D bounding box.\nThe gap is included. If this bounding box is infinite (i.e. \"open\"), returned values\nmay be equal to +/- Precision::Infinite().\nif IsVoid()"]
         #[cxx_name = "Get"]
         fn get(self: &Box2d, aXmin: &mut f64, aYmin: &mut f64, aXmax: &mut f64, aYmax: &mut f64);
         /// The Box will be infinitely long in the Xmin direction.
@@ -723,7 +820,8 @@ pub(crate) mod ffi {
         /// Returns true if this bounding box is open in the Ymax direction.
         #[cxx_name = "IsOpenYmax"]
         fn is_open_ymax(self: &Box2d) -> bool;
-        /// Returns true if this bounding box is infinite in all 4 directions (Whole Space flag).
+        /// Returns true if this bounding box is infinite in all 4
+        /// directions (Whole Space flag).
         #[cxx_name = "IsWhole"]
         fn is_whole(self: &Box2d) -> bool;
         /// Returns true if this 2D bounding box is empty (Void flag).
@@ -738,7 +836,9 @@ pub(crate) mod ffi {
         /// Extends bounding box from thePnt in the direction theDir.
         #[cxx_name = "Add"]
         fn add_pnt2d_dir2d(self: Pin<&mut Box2d>, thePnt: &gp_Pnt2d, theDir: &gp_Dir2d);
-        /// Extends the Box  in the given Direction, i.e. adds a half-line. The box may become infinite in 1 or 2 directions.
+        /// Extends the Box  in the given Direction, i.e. adds
+        /// a half-line. The box may become infinite in 1 or 2
+        /// directions.
         #[cxx_name = "Add"]
         fn add_dir2d(self: Pin<&mut Box2d>, D: &gp_Dir2d);
         /// Returns True if the 2d pnt <P> is out <me>.
@@ -756,7 +856,9 @@ pub(crate) mod ffi {
         /// Returns True if transformed <Box2d> is out <me>.
         #[cxx_name = "IsOut"]
         fn is_out_box2d_trsf2d(self: &Box2d, theOther: &Box2d, theTrsf: &gp_Trsf2d) -> bool;
-        /// Compares  a transformed  bounding with  a    transformed bounding. The default implementation is  to make a copy of <me> and <Other>, to transform them and to test.
+        /// Compares  a transformed  bounding with  a    transformed
+        /// bounding. The default implementation is  to make a copy
+        /// of <me> and <Other>, to transform them and to test.
         #[cxx_name = "IsOut"]
         fn is_out_trsf2d_box2d_trsf2d(
             self: &Box2d,
@@ -769,7 +871,12 @@ pub(crate) mod ffi {
         /// Computes the squared diagonal of me.
         #[cxx_name = "SquareExtent"]
         fn square_extent(self: &Box2d) -> f64;
-        /// Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it.
+        /// Returns a bounding box which is the result of applying the
+        /// transformation T to this bounding box.
+        /// Warning
+        /// Applying a geometric transformation (for example, a
+        /// rotation) to a bounding box generally increases its
+        /// dimensions. This is not optimal for algorithms which use it.
         #[cxx_name = "Bnd_Box2d_Transformed"]
         fn Box2d_transformed(self_: &Box2d, T: &gp_Trsf2d) -> UniquePtr<Box2d>;
         /// Clone Bnd_Box2d into a new UniquePtr via copy constructor
@@ -804,19 +911,24 @@ pub(crate) mod ffi {
         /// Update the box by another box.
         #[cxx_name = "Add"]
         fn add_b2d(self: Pin<&mut B2d>, theBox: &B2d);
-        /// Query the square diagonal. If the box is VOID (see method IsVoid()) then a very big real value is returned.
+        /// Query the square diagonal. If the box is VOID (see method IsVoid())
+        /// then a very big real value is returned.
         #[cxx_name = "SquareExtent"]
         fn square_extent(self: &B2d) -> f64;
         /// Extend the Box by the absolute value of theDiff.
         #[cxx_name = "Enlarge"]
         fn enlarge(self: Pin<&mut B2d>, theDiff: f64);
-        /// Limit the Box by the internals of theOtherBox. Returns True if the limitation takes place, otherwise False indicating that the boxes do not intersect.
+        /// Limit the Box by the internals of theOtherBox.
+        /// Returns True if the limitation takes place, otherwise False
+        /// indicating that the boxes do not intersect.
         #[cxx_name = "Limit"]
         fn limit(self: Pin<&mut B2d>, theOtherBox: &B2d) -> bool;
-        /// Check the given point for the inclusion in the Box. Returns True if the point is outside.
+        /// Check the given point for the inclusion in the Box.
+        /// Returns True if the point is outside.
         #[cxx_name = "IsOut"]
         fn is_out_xy(self: &B2d, thePnt: &gp_XY) -> bool;
-        /// Check a circle for the intersection with the current box. Returns True if there is no intersection between boxes.
+        /// Check a circle for the intersection with the current box.
+        /// Returns True if there is no intersection between boxes.
         #[cxx_name = "IsOut"]
         fn is_out_xy_real_bool(
             self: &B2d,
@@ -824,37 +936,52 @@ pub(crate) mod ffi {
             theRadius: f64,
             isCircleHollow: bool,
         ) -> bool;
-        /// Check the given box for the intersection with the current box. Returns True if there is no intersection between boxes.
+        /// Check the given box for the intersection with the current box.
+        /// Returns True if there is no intersection between boxes.
         #[cxx_name = "IsOut"]
         fn is_out_b2d(self: &B2d, theOtherBox: &B2d) -> bool;
-        /// Check the given box oriented by the given transformation for the intersection with the current box. Returns True if there is no intersection between boxes.
+        /// Check the given box oriented by the given transformation
+        /// for the intersection with the current box.
+        /// Returns True if there is no intersection between boxes.
         #[cxx_name = "IsOut"]
         fn is_out_b2d_trsf2d(self: &B2d, theOtherBox: &B2d, theTrsf: &gp_Trsf2d) -> bool;
-        /// Check the given Line for the intersection with the current box. Returns True if there is no intersection.
+        /// Check the given Line for the intersection with the current box.
+        /// Returns True if there is no intersection.
         #[cxx_name = "IsOut"]
         fn is_out_ax2d(self: &B2d, theLine: &gp_Ax2d) -> bool;
-        /// Check the Segment defined by the couple of input points for the intersection with the current box. Returns True if there is no intersection.
+        /// Check the Segment defined by the couple of input points
+        /// for the intersection with the current box.
+        /// Returns True if there is no intersection.
         #[cxx_name = "IsOut"]
         fn is_out_xy2(self: &B2d, theP0: &gp_XY, theP1: &gp_XY) -> bool;
-        /// Check that the box 'this' is inside the given box 'theBox'. Returns True if 'this' box is fully inside 'theBox'.
+        /// Check that the box 'this' is inside the given box 'theBox'. Returns
+        /// True if 'this' box is fully inside 'theBox'.
         #[cxx_name = "IsIn"]
         fn is_in_b2d(self: &B2d, theBox: &B2d) -> bool;
-        /// Check that the box 'this' is inside the given box 'theBox' transformed by 'theTrsf'. Returns True if 'this' box is fully inside the transformed 'theBox'.
+        /// Check that the box 'this' is inside the given box 'theBox'
+        /// transformed by 'theTrsf'. Returns True if 'this' box is fully
+        /// inside the transformed 'theBox'.
         #[cxx_name = "IsIn"]
         fn is_in_b2d_trsf2d(self: &B2d, theBox: &B2d, theTrsf: &gp_Trsf2d) -> bool;
         /// Set the Center coordinates
         #[cxx_name = "SetCenter"]
         fn set_center(self: Pin<&mut B2d>, theCenter: &gp_XY);
-        /// Set the HSize (half-diagonal) coordinates. All components of theHSize must be non-negative.
+        /// Set the HSize (half-diagonal) coordinates.
+        /// All components of theHSize must be non-negative.
         #[cxx_name = "SetHSize"]
         fn set_h_size(self: Pin<&mut B2d>, theHSize: &gp_XY);
-        /// Query a box corner: (Center - HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
+        /// Query a box corner: (Center - HSize). You must make sure that
+        /// the box is NOT VOID (see IsVoid()), otherwise the method returns
+        /// irrelevant result.
         #[cxx_name = "Bnd_B2d_CornerMin"]
         fn B2d_corner_min(self_: &B2d) -> UniquePtr<gp_XY>;
-        /// Query a box corner: (Center + HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
+        /// Query a box corner: (Center + HSize). You must make sure that
+        /// the box is NOT VOID (see IsVoid()), otherwise the method returns
+        /// irrelevant result.
         #[cxx_name = "Bnd_B2d_CornerMax"]
         fn B2d_corner_max(self_: &B2d) -> UniquePtr<gp_XY>;
-        /// Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation.
+        /// Transform the bounding box with the given transformation.
+        /// The resulting box will be larger if theTrsf contains rotation.
         #[cxx_name = "Bnd_B2d_Transformed"]
         fn B2d_transformed(self_: &B2d, theTrsf: &gp_Trsf2d) -> UniquePtr<B2d>;
         /// Clone Bnd_B2d into a new UniquePtr via copy constructor

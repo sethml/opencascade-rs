@@ -12,12 +12,31 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::GProps;
 impl GProps {
-    /// The origin (0, 0, 0) of the absolute cartesian coordinate system is used to compute the global properties.
+    /// The origin (0, 0, 0) of the absolute cartesian coordinate system
+    /// is used to compute the global properties.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::GProps_ctor()
     }
 
-    /// The point SystemLocation is used to compute the global properties of the system. For more accuracy it is better to define this point closed to the location of the system. For example it could be a point around the centre of mass of the system. This point is referred to as the reference point for this framework. For greater accuracy it is better for the reference point to be close to the location of the system. It can, for example, be a point near the center of mass of the system. At initialization, the framework is empty; i.e. it retains no dimensional information such as mass, or inertia. However, it is now able to bring together global properties of various other systems, whose global properties have already been computed using another framework. To do this, use the function Add to define the components of the system. Use it once per component of the system, and then use the interrogation functions available to access the computed values.
+    /// The point SystemLocation is used to compute the global properties
+    /// of the system. For more accuracy it is better to define this
+    /// point closed to the location of the system. For example it could
+    /// be a point around the centre of mass of the system.
+    /// This point is referred to as the reference point for
+    /// this framework. For greater accuracy it is better for
+    /// the reference point to be close to the location of the
+    /// system. It can, for example, be a point near the
+    /// center of mass of the system.
+    /// At initialization, the framework is empty; i.e. it
+    /// retains no dimensional information such as mass, or
+    /// inertia. However, it is now able to bring together
+    /// global properties of various other systems, whose
+    /// global properties have already been computed
+    /// using another framework. To do this, use the
+    /// function Add to define the components of the
+    /// system. Use it once per component of the system,
+    /// and then use the interrogation functions available to
+    /// access the computed values.
     pub fn new_pnt(SystemLocation: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
         ffi::GProps_ctor_pnt(SystemLocation)
     }
@@ -27,17 +46,48 @@ impl GProps {
         ffi::GProps_to_owned(self)
     }
 
-    /// Returns the center of mass of the current system. If the gravitational field is uniform, it is the center of gravity. The coordinates returned for the center of mass are expressed in the absolute Cartesian coordinate system.
+    /// Returns the center of mass of the current system. If
+    /// the gravitational field is uniform, it is the center of gravity.
+    /// The coordinates returned for the center of mass are
+    /// expressed in the absolute Cartesian coordinate system.
     pub fn centre_of_mass(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::GProps_centre_of_mass(self)
     }
 
-    /// returns the matrix of inertia. It is a symmetrical matrix. The coefficients of the matrix are the quadratic moments of inertia. | Ixx  Ixy  Ixz | matrix =    | Ixy  Iyy  Iyz | | Ixz  Iyz  Izz | The moments of inertia are denoted by Ixx, Iyy, Izz. The products of inertia are denoted by Ixy, Ixz, Iyz. The matrix of inertia is returned in the central coordinate system (G, Gx, Gy, Gz) where G is the centre of mass of the system and Gx, Gy, Gz the directions parallel to the X(1,0,0) Y(0,1,0) Z(0,0,1) directions of the absolute cartesian coordinate system. It is possible to compute the matrix of inertia at another location point using the Huyghens theorem (you can use the method of package GProp : HOperator).
+    /// returns the matrix of inertia. It is a symmetrical matrix.
+    /// The coefficients of the matrix are the quadratic moments of
+    /// inertia.
+    ///
+    /// | Ixx  Ixy  Ixz |
+    /// matrix =    | Ixy  Iyy  Iyz |
+    /// | Ixz  Iyz  Izz |
+    ///
+    /// The moments of inertia are denoted by Ixx, Iyy, Izz.
+    /// The products of inertia are denoted by Ixy, Ixz, Iyz.
+    /// The matrix of inertia is returned in the central coordinate
+    /// system (G, Gx, Gy, Gz) where G is the centre of mass of the
+    /// system and Gx, Gy, Gz the directions parallel to the X(1,0,0)
+    /// Y(0,1,0) Z(0,0,1) directions of the absolute cartesian
+    /// coordinate system. It is possible to compute the matrix of
+    /// inertia at another location point using the Huyghens theorem
+    /// (you can use the method of package GProp : HOperator).
     pub fn matrix_of_inertia(&self) -> cxx::UniquePtr<ffi::gp_Mat> {
         ffi::GProps_matrix_of_inertia(self)
     }
 
-    /// Computes the principal properties of inertia of the current system. There is always a set of axes for which the products of inertia of a geometric system are equal to 0; i.e. the matrix of inertia of the system is diagonal. These axes are the principal axes of inertia. Their origin is coincident with the center of mass of the system. The associated moments are called the principal moments of inertia. This function computes the eigen values and the eigen vectors of the matrix of inertia of the system. Results are stored by using a presentation framework of principal properties of inertia (GProp_PrincipalProps object) which may be queried to access the value sought.
+    /// Computes the principal properties of inertia of the current system.
+    /// There is always a set of axes for which the products
+    /// of inertia of a geometric system are equal to 0; i.e. the
+    /// matrix of inertia of the system is diagonal. These axes
+    /// are the principal axes of inertia. Their origin is
+    /// coincident with the center of mass of the system. The
+    /// associated moments are called the principal moments of inertia.
+    /// This function computes the eigen values and the
+    /// eigen vectors of the matrix of inertia of the system.
+    /// Results are stored by using a presentation framework
+    /// of principal properties of inertia
+    /// (GProp_PrincipalProps object) which may be
+    /// queried to access the value sought.
     pub fn principal_properties(&self) -> cxx::UniquePtr<ffi::GProp_PrincipalProps> {
         ffi::GProps_principal_properties(self)
     }
@@ -53,41 +103,153 @@ pub(crate) mod ffi {
         /// ======================== GProp_GProps ========================
         /// /// **Source:** `GProp_GProps.hxx` - `GProp_GProps`
         ///
-        #[doc = "Implements a general mechanism to compute the global properties of a \"compound geometric system\" in 3d space    by composition of the global properties of \"elementary geometric entities\"       such as (curve, surface, solid, set of points).  It is possible to compose the properties of several \"compound geometric systems\" too. To computes the global properties of a compound geometric system you should : . declare the GProps using a constructor which initializes the GProps and defines the location point used to compute the inertia . compose the global properties of your geometric components with the properties of your system using the method Add. To compute the global properties of the geometric components of the system you should  use the services of the following classes : - class PGProps for a set of points, - class CGProps for a curve, - class SGProps for a surface, - class VGProps for a \"solid\". The classes CGProps, SGProps, VGProps are generic classes and must be instantiated for your application. The global properties computed are : - the dimension (length, area or volume) - the mass, - the centre of mass, - the moments of inertia (static moments and quadratic moments), - the moment about an axis, - the radius of gyration about an axis, - the principal properties of inertia  : (sea also class PrincipalProps) . the principal moments, . the principal axis of inertia, . the principal radius of gyration, Example of utilisation in a simplified C++ implementation : //declares the GProps, the point (0.0, 0.0, 0.0) of the //absolute cartesian coordinate system is used as //default reference point to compute the centre of mass GProp_GProps System (); //computes the inertia of a 3d curve Your_CGProps Component1 (curve, ....); //computes the inertia of surfaces Your_SGprops Component2 (surface1, ....); Your_SGprops Component3 (surface2,....); //composes the global properties of components 1, 2, 3 //a density can be associated with the components, the //density can be defaulted to 1. Real Density1 = 2.0; Real Density2 = 3.0; System.Add (Component1, Density1); System.Add (Component2, Density2); System.Add (Component3); //returns the centre of mass of the system in the //absolute cartesian coordinate system gp_Pnt G = System.CentreOfMass (); //computes the principales inertia of the system GProp_PrincipalProps Pp  = System.PrincipalProperties(); //returns the principal moments and radius of gyration Real Ixx, Iyy, Izz, Rxx, Ryy, Rzz; Pp.Moments (Ixx, Iyy, Izz); Pp.RadiusOfGyration (Ixx, Iyy, Izz);"]
+        #[doc = "Implements a general mechanism to compute the global properties of\na \"compound geometric system\" in 3d space    by composition of the\nglobal properties of \"elementary geometric entities\"       such as\n(curve, surface, solid, set of points).  It is possible to compose\nthe properties of several \"compound geometric systems\" too.\n\nTo computes the global properties of a compound geometric\nsystem you should :\n. declare the GProps using a constructor which initializes the\nGProps and defines the location point used to compute the inertia\n. compose the global properties of your geometric components with\nthe properties of your system using the method Add.\n\nTo compute the global properties of the geometric components of\nthe system you should  use the services of the following classes :\n- class PGProps for a set of points,\n- class CGProps for a curve,\n- class SGProps for a surface,\n- class VGProps for a \"solid\".\nThe classes CGProps, SGProps, VGProps are generic classes and\nmust be instantiated for your application.\n\nThe global properties computed are :\n- the dimension (length, area or volume)\n- the mass,\n- the centre of mass,\n- the moments of inertia (static moments and quadratic moments),\n- the moment about an axis,\n- the radius of gyration about an axis,\n- the principal properties of inertia  :\n(sea also class PrincipalProps)\n. the principal moments,\n. the principal axis of inertia,\n. the principal radius of gyration,\n\nExample of utilisation in a simplified C++ implementation :\n\n//declares the GProps, the point (0.0, 0.0, 0.0) of the\n//absolute cartesian coordinate system is used as\n//default reference point to compute the centre of mass\nGProp_GProps System ();\n\n//computes the inertia of a 3d curve\nYour_CGProps Component1 (curve, ....);\n\n//computes the inertia of surfaces\nYour_SGprops Component2 (surface1, ....);\nYour_SGprops Component3 (surface2,....);\n\n//composes the global properties of components 1, 2, 3\n//a density can be associated with the components, the\n//density can be defaulted to 1.\nReal Density1 = 2.0;\nReal Density2 = 3.0;\nSystem.Add (Component1, Density1);\nSystem.Add (Component2, Density2);\nSystem.Add (Component3);\n\n//returns the centre of mass of the system in the\n//absolute cartesian coordinate system\ngp_Pnt G = System.CentreOfMass ();\n\n//computes the principales inertia of the system\nGProp_PrincipalProps Pp  = System.PrincipalProperties();\n\n//returns the principal moments and radius of gyration\nReal Ixx, Iyy, Izz, Rxx, Ryy, Rzz;\nPp.Moments (Ixx, Iyy, Izz);\nPp.RadiusOfGyration (Ixx, Iyy, Izz);"]
         #[cxx_name = "GProp_GProps"]
         type GProps;
         /// /// **Source:** `GProp_GProps.hxx` - `GProp_GProps::GProp_GProps()`
         ///
-        /// The origin (0, 0, 0) of the absolute cartesian coordinate system is used to compute the global properties.
+        /// The origin (0, 0, 0) of the absolute cartesian coordinate system
+        /// is used to compute the global properties.
         #[cxx_name = "GProp_GProps_ctor"]
         fn GProps_ctor() -> UniquePtr<GProps>;
         /// /// **Source:** `GProp_GProps.hxx` - `GProp_GProps::GProp_GProps()`
         ///
-        /// The point SystemLocation is used to compute the global properties of the system. For more accuracy it is better to define this point closed to the location of the system. For example it could be a point around the centre of mass of the system. This point is referred to as the reference point for this framework. For greater accuracy it is better for the reference point to be close to the location of the system. It can, for example, be a point near the center of mass of the system. At initialization, the framework is empty; i.e. it retains no dimensional information such as mass, or inertia. However, it is now able to bring together global properties of various other systems, whose global properties have already been computed using another framework. To do this, use the function Add to define the components of the system. Use it once per component of the system, and then use the interrogation functions available to access the computed values.
+        /// The point SystemLocation is used to compute the global properties
+        /// of the system. For more accuracy it is better to define this
+        /// point closed to the location of the system. For example it could
+        /// be a point around the centre of mass of the system.
+        /// This point is referred to as the reference point for
+        /// this framework. For greater accuracy it is better for
+        /// the reference point to be close to the location of the
+        /// system. It can, for example, be a point near the
+        /// center of mass of the system.
+        /// At initialization, the framework is empty; i.e. it
+        /// retains no dimensional information such as mass, or
+        /// inertia. However, it is now able to bring together
+        /// global properties of various other systems, whose
+        /// global properties have already been computed
+        /// using another framework. To do this, use the
+        /// function Add to define the components of the
+        /// system. Use it once per component of the system,
+        /// and then use the interrogation functions available to
+        /// access the computed values.
         #[cxx_name = "GProp_GProps_ctor_pnt"]
         fn GProps_ctor_pnt(SystemLocation: &gp_Pnt) -> UniquePtr<GProps>;
-        /// Either - initializes the global properties retained by this framework from those retained by the framework Item, or - brings together the global properties still retained by this framework with those retained by the framework Item. The value Density, which is 1.0 by default, is used as the density of the system analysed by Item. Sometimes the density will have already been given at the time of construction of the framework Item. This may be the case for example, if Item is a GProp_PGProps framework built to compute the global properties of a set of points ; or another GProp_GProps object which already retains composite global properties. In these cases the real density was perhaps already taken into account at the time of construction of Item. Note that this is not checked: if the density of parts of the system is taken into account two or more times, results of the computation will be false. Notes : - The point relative to which the inertia of Item is computed (i.e. the reference point of Item) may be different from the reference point in this framework. Huygens' theorem is applied automatically to transfer inertia values to the reference point in this framework. - The function Add is used once per component of the system. After that, you use the interrogation functions available to access values computed for the system. - The system whose global properties are already brought together by this framework is referred to as the current system. However, the current system is not retained by this framework, which maintains only its global properties. Exceptions Standard_DomainError if Density is less than or equal to gp::Resolution().
+        /// Either
+        /// - initializes the global properties retained by this
+        /// framework from those retained by the framework Item, or
+        /// - brings together the global properties still retained by
+        /// this framework with those retained by the framework Item.
+        /// The value Density, which is 1.0 by default, is used as
+        /// the density of the system analysed by Item.
+        /// Sometimes the density will have already been given at
+        /// the time of construction of the framework Item. This
+        /// may be the case for example, if Item is a
+        /// GProp_PGProps framework built to compute the
+        /// global properties of a set of points ; or another
+        /// GProp_GProps object which already retains
+        /// composite global properties. In these cases the real
+        /// density was perhaps already taken into account at the
+        /// time of construction of Item. Note that this is not
+        /// checked: if the density of parts of the system is taken
+        /// into account two or more times, results of the
+        /// computation will be false.
+        /// Notes :
+        /// - The point relative to which the inertia of Item is
+        /// computed (i.e. the reference point of Item) may be
+        /// different from the reference point in this
+        /// framework. Huygens' theorem is applied
+        /// automatically to transfer inertia values to the
+        /// reference point in this framework.
+        /// - The function Add is used once per component of
+        /// the system. After that, you use the interrogation
+        /// functions available to access values computed for the system.
+        /// - The system whose global properties are already
+        /// brought together by this framework is referred to
+        /// as the current system. However, the current system
+        /// is not retained by this framework, which maintains
+        /// only its global properties.
+        /// Exceptions
+        /// Standard_DomainError if Density is less than or
+        /// equal to gp::Resolution().
         #[cxx_name = "Add"]
         fn add(self: Pin<&mut GProps>, Item: &GProps, Density: f64);
-        /// Returns the mass of the current system. If no density is attached to the components of the current system the returned value corresponds to : - the total length of the edges of the current system if this framework retains only linear properties, as is the case for example, when using only the LinearProperties function to combine properties of lines from shapes, or - the total area of the faces of the current system if this framework retains only surface properties, as is the case for example, when using only the SurfaceProperties function to combine properties of surfaces from shapes, or - the total volume of the solids of the current system if this framework retains only volume properties, as is the case for example, when using only the VolumeProperties function to combine properties of volumes from solids. Warning A length, an area, or a volume is computed in the current data unit system. The mass of a single object is obtained by multiplying its length, its area or its volume by the given density. You must be consistent with respect to the units used.
+        /// Returns the mass of the current system.
+        /// If no density is attached to the components of the
+        /// current system the returned value corresponds to :
+        /// - the total length of the edges of the current
+        /// system if this framework retains only linear
+        /// properties, as is the case for example, when
+        /// using only the LinearProperties function to
+        /// combine properties of lines from shapes, or
+        /// - the total area of the faces of the current system if
+        /// this framework retains only surface properties,
+        /// as is the case for example, when using only the
+        /// SurfaceProperties function to combine
+        /// properties of surfaces from shapes, or
+        /// - the total volume of the solids of the current
+        /// system if this framework retains only volume
+        /// properties, as is the case for example, when
+        /// using only the VolumeProperties function to
+        /// combine properties of volumes from solids.
+        /// Warning
+        /// A length, an area, or a volume is computed in the
+        /// current data unit system. The mass of a single
+        /// object is obtained by multiplying its length, its area
+        /// or its volume by the given density. You must be
+        /// consistent with respect to the units used.
         #[cxx_name = "Mass"]
         fn mass(self: &GProps) -> f64;
-        /// Returns Ix, Iy, Iz, the static moments of inertia of the current system; i.e. the moments of inertia about the three axes of the Cartesian coordinate system.
+        /// Returns Ix, Iy, Iz, the static moments of inertia of the
+        /// current system; i.e. the moments of inertia about the
+        /// three axes of the Cartesian coordinate system.
         #[cxx_name = "StaticMoments"]
         fn static_moments(self: &GProps, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64);
-        /// computes the moment of inertia of the material system about the axis A.
+        /// computes the moment of inertia of the material system about the
+        /// axis A.
         #[cxx_name = "MomentOfInertia"]
         fn moment_of_inertia(self: &GProps, A: &gp_Ax1) -> f64;
         /// Returns the radius of gyration of the current system about the axis A.
         #[cxx_name = "RadiusOfGyration"]
         fn radius_of_gyration(self: &GProps, A: &gp_Ax1) -> f64;
-        /// Returns the center of mass of the current system. If the gravitational field is uniform, it is the center of gravity. The coordinates returned for the center of mass are expressed in the absolute Cartesian coordinate system.
+        /// Returns the center of mass of the current system. If
+        /// the gravitational field is uniform, it is the center of gravity.
+        /// The coordinates returned for the center of mass are
+        /// expressed in the absolute Cartesian coordinate system.
         #[cxx_name = "GProp_GProps_CentreOfMass"]
         fn GProps_centre_of_mass(self_: &GProps) -> UniquePtr<gp_Pnt>;
-        /// returns the matrix of inertia. It is a symmetrical matrix. The coefficients of the matrix are the quadratic moments of inertia. | Ixx  Ixy  Ixz | matrix =    | Ixy  Iyy  Iyz | | Ixz  Iyz  Izz | The moments of inertia are denoted by Ixx, Iyy, Izz. The products of inertia are denoted by Ixy, Ixz, Iyz. The matrix of inertia is returned in the central coordinate system (G, Gx, Gy, Gz) where G is the centre of mass of the system and Gx, Gy, Gz the directions parallel to the X(1,0,0) Y(0,1,0) Z(0,0,1) directions of the absolute cartesian coordinate system. It is possible to compute the matrix of inertia at another location point using the Huyghens theorem (you can use the method of package GProp : HOperator).
+        /// returns the matrix of inertia. It is a symmetrical matrix.
+        /// The coefficients of the matrix are the quadratic moments of
+        /// inertia.
+        ///
+        /// | Ixx  Ixy  Ixz |
+        /// matrix =    | Ixy  Iyy  Iyz |
+        /// | Ixz  Iyz  Izz |
+        ///
+        /// The moments of inertia are denoted by Ixx, Iyy, Izz.
+        /// The products of inertia are denoted by Ixy, Ixz, Iyz.
+        /// The matrix of inertia is returned in the central coordinate
+        /// system (G, Gx, Gy, Gz) where G is the centre of mass of the
+        /// system and Gx, Gy, Gz the directions parallel to the X(1,0,0)
+        /// Y(0,1,0) Z(0,0,1) directions of the absolute cartesian
+        /// coordinate system. It is possible to compute the matrix of
+        /// inertia at another location point using the Huyghens theorem
+        /// (you can use the method of package GProp : HOperator).
         #[cxx_name = "GProp_GProps_MatrixOfInertia"]
         fn GProps_matrix_of_inertia(self_: &GProps) -> UniquePtr<gp_Mat>;
-        /// Computes the principal properties of inertia of the current system. There is always a set of axes for which the products of inertia of a geometric system are equal to 0; i.e. the matrix of inertia of the system is diagonal. These axes are the principal axes of inertia. Their origin is coincident with the center of mass of the system. The associated moments are called the principal moments of inertia. This function computes the eigen values and the eigen vectors of the matrix of inertia of the system. Results are stored by using a presentation framework of principal properties of inertia (GProp_PrincipalProps object) which may be queried to access the value sought.
+        /// Computes the principal properties of inertia of the current system.
+        /// There is always a set of axes for which the products
+        /// of inertia of a geometric system are equal to 0; i.e. the
+        /// matrix of inertia of the system is diagonal. These axes
+        /// are the principal axes of inertia. Their origin is
+        /// coincident with the center of mass of the system. The
+        /// associated moments are called the principal moments of inertia.
+        /// This function computes the eigen values and the
+        /// eigen vectors of the matrix of inertia of the system.
+        /// Results are stored by using a presentation framework
+        /// of principal properties of inertia
+        /// (GProp_PrincipalProps object) which may be
+        /// queried to access the value sought.
         #[cxx_name = "GProp_GProps_PrincipalProperties"]
         fn GProps_principal_properties(self_: &GProps) -> UniquePtr<GProp_PrincipalProps>;
         /// Clone GProp_GProps into a new UniquePtr via copy constructor

@@ -95,7 +95,15 @@ impl MakeCylindricalHole {
 }
 pub use ffi::MakeDPrism;
 impl MakeDPrism {
-    /// A face Pbase is selected in the shape Sbase to serve as the basis for the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed. Initializes the draft prism class
+    /// A face Pbase is selected in the shape
+    /// Sbase to serve as the basis for the draft prism. The
+    /// draft will be defined by the angle Angle and Fuse offers a choice between:
+    /// - removing matter with a Boolean cut using the setting 0
+    /// - adding matter with Boolean fusion using the setting 1.
+    /// The sketch face Skface serves to determine the type of
+    /// operation. If it is inside the basis shape, a local
+    /// operation such as glueing can be performed.
+    /// Initializes the draft prism class
     pub fn new_shape_face2_real_int_bool(
         Sbase: &ffi::TopoDS_Shape,
         Pbase: &ffi::TopoDS_Face,
@@ -267,13 +275,21 @@ pub(crate) mod ffi {
         /// Sets the axis of the hole(s).
         #[cxx_name = "Init"]
         fn init_ax1(self: Pin<&mut MakeCylindricalHole>, Axis: &gp_Ax1);
-        /// Sets the shape and  axis on which hole(s)  will be performed.
+        /// Sets the shape and  axis on which hole(s)  will be
+        /// performed.
         #[cxx_name = "Init"]
         fn init_shape_ax1(self: Pin<&mut MakeCylindricalHole>, S: &TopoDS_Shape, Axis: &gp_Ax1);
-        /// Performs every  hole of    radius  <Radius>.  This command  has the  same effect as   a cut operation with an  infinite cylinder   defined by the  given axis and <Radius>.
+        /// Performs every  hole of    radius  <Radius>.  This
+        /// command  has the  same effect as   a cut operation
+        /// with an  infinite cylinder   defined by the  given
+        /// axis and <Radius>.
         #[cxx_name = "Perform"]
         fn perform_real(self: Pin<&mut MakeCylindricalHole>, Radius: f64);
-        /// Performs every  hole  of  radius  <Radius> located between PFrom  and  PTo  on the  given  axis.   If <WithControl> is set  to Standard_False no control are  done  on   the  resulting  shape   after  the operation is performed.
+        /// Performs every  hole  of  radius  <Radius> located
+        /// between PFrom  and  PTo  on the  given  axis.   If
+        /// <WithControl> is set  to Standard_False no control
+        /// are  done  on   the  resulting  shape   after  the
+        /// operation is performed.
         #[cxx_name = "Perform"]
         fn perform_real3_bool(
             self: Pin<&mut MakeCylindricalHole>,
@@ -282,13 +298,26 @@ pub(crate) mod ffi {
             PTo: f64,
             WithControl: bool,
         );
-        /// Performs the first hole of radius <Radius>, in the direction of  the defined axis. First hole signify first encountered after the origin of the axis. If <WithControl> is set  to Standard_False no control are  done  on   the  resulting  shape   after  the operation is performed.
+        /// Performs the first hole of radius <Radius>, in the
+        /// direction of  the defined axis. First hole signify
+        /// first encountered after the origin of the axis. If
+        /// <WithControl> is set  to Standard_False no control
+        /// are  done  on   the  resulting  shape   after  the
+        /// operation is performed.
         #[cxx_name = "PerformThruNext"]
         fn perform_thru_next(self: Pin<&mut MakeCylindricalHole>, Radius: f64, WithControl: bool);
-        /// Performs every  hole of   radius  <Radius> located after  the   origin  of   the given    axis.    If <WithControl> is  set to Standard_False no control are done   on   the  resulting  shape   after  the operation is performed.
+        /// Performs every  hole of   radius  <Radius> located
+        /// after  the   origin  of   the given    axis.    If
+        /// <WithControl> is  set to Standard_False no control
+        /// are done   on   the  resulting  shape   after  the
+        /// operation is performed.
         #[cxx_name = "PerformUntilEnd"]
         fn perform_until_end(self: Pin<&mut MakeCylindricalHole>, Radius: f64, WithControl: bool);
-        /// Performs a  blind   hole of radius    <Radius> and length <Length>.  The length is  measured from the origin of the given  axis. If <WithControl> is set to  Standard_False no  control  are done after the operation is performed.
+        /// Performs a  blind   hole of radius    <Radius> and
+        /// length <Length>.  The length is  measured from the
+        /// origin of the given  axis. If <WithControl> is set
+        /// to  Standard_False no  control  are done after the
+        /// operation is performed.
         #[cxx_name = "PerformBlind"]
         fn perform_blind(
             self: Pin<&mut MakeCylindricalHole>,
@@ -296,7 +325,10 @@ pub(crate) mod ffi {
             Length: f64,
             WithControl: bool,
         );
-        /// Builds the    resulting shape  (redefined     from MakeShape). Invalidates the  given parts  of tools if  any,   and performs the  result   of the local operation.
+        /// Builds the    resulting shape  (redefined     from
+        /// MakeShape). Invalidates the  given parts  of tools
+        /// if  any,   and performs the  result   of the local
+        /// operation.
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut MakeCylindricalHole>);
         /// Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BOP
@@ -358,12 +390,35 @@ pub(crate) mod ffi {
         /// ======================== BRepFeat_MakeDPrism ========================
         /// /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism`
         ///
-        /// Describes functions to build draft prism topologies from basis shape surfaces. These can be depressions or protrusions. The semantics of draft prism feature creation is based on the construction of shapes: -          along a length -          up to a limiting face -          from a limiting face to a height. The shape defining construction of the draft prism feature can be either the supporting edge or the concerned area of a face. In case of the supporting edge, this contour can be attached to a face of the basis shape by binding. When the contour is bound to this face, the information that the contour will slide on the face becomes available to the relevant class methods. In case of the concerned area of a face, you could, for example, cut it out and move it to a different height which will define the limiting face of a protrusion or depression.
+        /// Describes functions to build draft
+        /// prism topologies from basis shape surfaces. These can be depressions or protrusions.
+        /// The semantics of draft prism feature creation is based on the
+        /// construction of shapes:
+        /// -          along a length
+        /// -          up to a limiting face
+        /// -          from a limiting face to a height.
+        /// The shape defining construction of the draft prism feature can be
+        /// either the supporting edge or the concerned area of a face.
+        /// In case of the supporting edge, this contour can be attached to a
+        /// face of the basis shape by binding. When the contour is bound to this
+        /// face, the information that the contour will slide on the face
+        /// becomes available to the relevant class methods.
+        /// In case of the concerned area of a face, you could, for example, cut
+        /// it out and move it to a different height which will define the
+        /// limiting face of a protrusion or depression.
         #[cxx_name = "BRepFeat_MakeDPrism"]
         type MakeDPrism;
         /// /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
         ///
-        /// A face Pbase is selected in the shape Sbase to serve as the basis for the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed. Initializes the draft prism class
+        /// A face Pbase is selected in the shape
+        /// Sbase to serve as the basis for the draft prism. The
+        /// draft will be defined by the angle Angle and Fuse offers a choice between:
+        /// - removing matter with a Boolean cut using the setting 0
+        /// - adding matter with Boolean fusion using the setting 1.
+        /// The sketch face Skface serves to determine the type of
+        /// operation. If it is inside the basis shape, a local
+        /// operation such as glueing can be performed.
+        /// Initializes the draft prism class
         #[cxx_name = "BRepFeat_MakeDPrism_ctor_shape_face2_real_int_bool"]
         fn MakeDPrism_ctor_shape_face2_real_int_bool(
             Sbase: &TopoDS_Shape,
@@ -376,7 +431,15 @@ pub(crate) mod ffi {
         /// /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
         #[cxx_name = "BRepFeat_MakeDPrism_ctor"]
         fn MakeDPrism_ctor() -> UniquePtr<MakeDPrism>;
-        /// Initializes this algorithm for building draft prisms along surfaces. A face Pbase is selected in the basis shape Sbase to serve as the basis from the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: -   removing matter with a Boolean cut using the setting 0 -   adding matter with Boolean fusion using the setting  1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
+        /// Initializes this algorithm for building draft prisms along surfaces.
+        /// A face Pbase is selected in the basis shape Sbase to
+        /// serve as the basis from the draft prism. The draft will be
+        /// defined by the angle Angle and Fuse offers a choice between:
+        /// -   removing matter with a Boolean cut using the setting 0
+        /// -   adding matter with Boolean fusion using the setting  1.
+        /// The sketch face Skface serves to determine the type of
+        /// operation. If it is inside the basis shape, a local
+        /// operation such as glueing can be performed.
         #[cxx_name = "Init"]
         fn init(
             self: Pin<&mut MakeDPrism>,
@@ -387,14 +450,21 @@ pub(crate) mod ffi {
             Fuse: i32,
             Modify: bool,
         );
-        /// Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the  face does not belong to the basis shape, or the edge to the prismed shape.
+        /// Indicates that the edge <E> will slide on the face
+        /// <OnFace>.
+        /// Raises ConstructionError if the  face does not belong to the
+        /// basis shape, or the edge to the prismed shape.
         #[cxx_name = "Add"]
         fn add(self: Pin<&mut MakeDPrism>, E: &TopoDS_Edge, OnFace: &TopoDS_Face);
         #[cxx_name = "Perform"]
         fn perform_real(self: Pin<&mut MakeDPrism>, Height: f64);
         #[cxx_name = "Perform"]
         fn perform_shape(self: Pin<&mut MakeDPrism>, Until: &TopoDS_Shape);
-        /// Assigns one of the following semantics -   to a height Height -   to a face Until -   from a face From to a height Until. Reconstructs the feature topologically according to the semantic option chosen.
+        /// Assigns one of the following semantics
+        /// -   to a height Height
+        /// -   to a face Until
+        /// -   from a face From to a height Until.
+        /// Reconstructs the feature topologically according to the semantic option chosen.
         #[cxx_name = "Perform"]
         fn perform_shape2(self: Pin<&mut MakeDPrism>, From: &TopoDS_Shape, Until: &TopoDS_Shape);
         /// Realizes a semi-infinite prism, limited by the position of the prism base.
@@ -406,12 +476,16 @@ pub(crate) mod ffi {
         /// Builds an infinite prism. The infinite descendants will not be kept in the result.
         #[cxx_name = "PerformThruAll"]
         fn perform_thru_all(self: Pin<&mut MakeDPrism>);
-        /// Assigns both a limiting shape, Until from TopoDS_Shape, and a height, Height at which to stop generation of the prism feature.
+        /// Assigns both a limiting shape, Until from
+        /// TopoDS_Shape, and a height, Height at which to stop
+        /// generation of the prism feature.
         #[cxx_name = "PerformUntilHeight"]
         fn perform_until_height(self: Pin<&mut MakeDPrism>, Until: &TopoDS_Shape, Height: f64);
         #[cxx_name = "Curves"]
         fn curves(self: Pin<&mut MakeDPrism>, S: Pin<&mut TColGeom_SequenceOfCurve>);
-        /// Determination of TopEdges and LatEdges. sig = 1 -> TopEdges = FirstShape of the DPrism sig = 2 -> TOpEdges = LastShape of the DPrism
+        /// Determination of TopEdges and LatEdges.
+        /// sig = 1 -> TopEdges = FirstShape of the DPrism
+        /// sig = 2 -> TOpEdges = LastShape of the DPrism
         #[cxx_name = "BossEdges"]
         fn boss_edges(self: Pin<&mut MakeDPrism>, sig: i32);
         /// Returns the list of TopoDS Edges of the top of the boss.
@@ -450,27 +524,67 @@ pub(crate) mod ffi {
         /// ======================== BRepFeat_Form ========================
         /// /// **Source:** `BRepFeat_Form.hxx` - `BRepFeat_Form`
         ///
-        /// Provides general functions to build form features. Form features can be depressions or protrusions and include the following types: -          Cylinder -          Draft Prism -          Prism -          Revolved feature -          Pipe In each case, you have a choice of operation type between the following: -          removing matter (a Boolean cut: Fuse setting 0) -          adding matter (Boolean fusion: Fuse setting 1) The semantics of form feature creation is based on the construction of shapes: -      along a length -      up to a limiting face -      from a limiting face to a  height -      above and/or below a plane The shape defining construction of the feature can be either the supporting edge or the concerned area of a face. In case of the supporting edge, this contour can be attached to a face of the basis shape by binding. When the contour is bound to this face, the information that the contour will slide on the face becomes available to the relevant class methods. In case of the concerned area of a face, you could, for example, cut it out and move it to a different height which will define the limiting face of a protrusion or depression. Topological definition with local operations of this sort makes calculations simpler and faster than a global operation. The latter would entail a second phase of removing unwanted matter to get the same result.
+        /// Provides general functions to build form features.
+        /// Form features can be depressions or protrusions and include the following types:
+        /// -          Cylinder
+        /// -          Draft Prism
+        /// -          Prism
+        /// -          Revolved feature
+        /// -          Pipe
+        /// In each case, you have a choice of operation type between the following:
+        /// -          removing matter (a Boolean cut: Fuse setting 0)
+        /// -          adding matter (Boolean fusion: Fuse setting 1)
+        /// The semantics of form feature creation is based on the construction of shapes:
+        /// -      along a length
+        /// -      up to a limiting face
+        /// -      from a limiting face to a  height
+        /// -      above and/or below a plane
+        /// The shape defining construction of the feature can be either the
+        /// supporting edge or the concerned area of a face.
+        /// In case of the supporting edge, this contour can be attached to a
+        /// face of the basis shape by binding. When the contour is bound to this
+        /// face, the information that the contour will slide on the face
+        /// becomes available to the relevant class methods. In case of the
+        /// concerned area of a face, you could, for example, cut it out and
+        /// move it to a different height which will define the limiting face of a
+        /// protrusion or depression.
+        /// Topological definition with local operations of this sort makes
+        /// calculations simpler and faster than a global operation. The latter
+        /// would entail a second phase of removing unwanted matter to get the same result.
         #[cxx_name = "BRepFeat_Form"]
         type Form;
         /// returns the list of generated Faces.
         #[cxx_name = "Modified"]
         fn modified(self: Pin<&mut Form>, F: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        /// returns a list of the created faces from the shape <S>.
+        /// returns a list of the created faces
+        /// from the shape <S>.
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut Form>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut Form>, S: &TopoDS_Shape) -> bool;
-        /// Returns the list  of shapes created  at the bottom  of the created form.  It may be an empty list.
+        /// Returns the list  of shapes created  at the bottom  of
+        /// the created form.  It may be an empty list.
         #[cxx_name = "FirstShape"]
         fn first_shape(self: &Form) -> &TopTools_ListOfShape;
-        /// Returns  the list of shapes  created at the top of the created form.  It may be an empty list.
+        /// Returns  the list of shapes  created at the top of the
+        /// created form.  It may be an empty list.
         #[cxx_name = "LastShape"]
         fn last_shape(self: &Form) -> &TopTools_ListOfShape;
-        /// Returns a list of the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape. The list provides the information necessary for subsequent addition of fillets. It may be an empty list.
+        /// Returns a list of the limiting and glueing edges
+        /// generated by the feature. These edges did not originally
+        /// exist in the basis shape.
+        /// The list provides the information necessary for
+        /// subsequent addition of fillets. It may be an empty list.
         #[cxx_name = "NewEdges"]
         fn new_edges(self: &Form) -> &TopTools_ListOfShape;
-        /// Returns a list of the tangent edges among the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape and are tangent to the face against which the feature is built. The list provides the information necessary for subsequent addition of fillets. It may be an empty list. If an edge is tangent, no fillet is possible, and the edge must subsequently be removed if you want to add a fillet.
+        /// Returns a list of the tangent edges among the limiting
+        /// and glueing edges generated by the feature. These
+        /// edges did not originally exist in the basis shape and are
+        /// tangent to the face against which the feature is built.
+        /// The list provides the information necessary for
+        /// subsequent addition of fillets. It may be an empty list.
+        /// If an edge is tangent, no fillet is possible, and the edge
+        /// must subsequently be removed if you want to add a fillet.
         #[cxx_name = "TgtEdges"]
         fn tgt_edges(self: &Form) -> &TopTools_ListOfShape;
         /// Initializes the topological construction if the basis shape is present.
@@ -479,16 +593,20 @@ pub(crate) mod ffi {
         /// Initializes the topological construction if the generated shape S is present.
         #[cxx_name = "GeneratedShapeValid"]
         fn generated_shape_valid(self: Pin<&mut Form>);
-        /// Initializes the topological construction if the shape is present from the specified integer on.
+        /// Initializes the topological construction if the shape is
+        /// present from the specified integer on.
         #[cxx_name = "ShapeFromValid"]
         fn shape_from_valid(self: Pin<&mut Form>);
-        /// Initializes the topological construction if the shape is present until the specified integer.
+        /// Initializes the topological construction if the shape is
+        /// present until the specified integer.
         #[cxx_name = "ShapeUntilValid"]
         fn shape_until_valid(self: Pin<&mut Form>);
         /// Initializes the topological construction if the glued face is present.
         #[cxx_name = "GluedFacesValid"]
         fn glued_faces_valid(self: Pin<&mut Form>);
-        /// Initializes the topological construction if the sketch face is present. If the sketch face is inside the basis shape, local operations such as glueing can be performed.
+        /// Initializes the topological construction if the sketch face
+        /// is present. If the sketch face is inside the basis shape,
+        /// local operations such as glueing can be performed.
         #[cxx_name = "SketchFaceValid"]
         fn sketch_face_valid(self: Pin<&mut Form>);
         /// Initializes the topological construction if the selected face is present.
@@ -517,7 +635,21 @@ pub(crate) mod ffi {
         /// ======================== BRepFeat_Builder ========================
         /// /// **Source:** `BRepFeat_Builder.hxx` - `BRepFeat_Builder`
         ///
-        /// Provides a basic tool to implement features topological operations. The main goal of the algorithm is to perform the result of the operation according to the kept parts of the tool. Input data: a) DS; b) The kept parts of the tool; If the map of the kept parts of the tool is not filled boolean operation of the given type will be performed; c) Operation required. Steps: a) Fill myShapes, myRemoved maps; b) Rebuild edges and faces; c) Build images of the object; d) Build the result of the operation. Result: Result shape of the operation required.
+        /// Provides a basic tool to implement features topological
+        /// operations. The main goal of the algorithm is to perform
+        /// the result of the operation according to the
+        /// kept parts of the tool.
+        /// Input data: a) DS;
+        /// b) The kept parts of the tool;
+        /// If the map of the kept parts of the tool
+        /// is not filled boolean operation of the
+        /// given type will be performed;
+        /// c) Operation required.
+        /// Steps: a) Fill myShapes, myRemoved maps;
+        /// b) Rebuild edges and faces;
+        /// c) Build images of the object;
+        /// d) Build the result of the operation.
+        /// Result: Result shape of the operation required.
         #[cxx_name = "BRepFeat_Builder"]
         type Builder;
         /// /// **Source:** `BRepFeat_Builder.hxx` - `BRepFeat_Builder::BRepFeat_Builder()`
@@ -532,22 +664,29 @@ pub(crate) mod ffi {
         /// Initializes the arguments of local boolean operation.
         #[cxx_name = "Init"]
         fn init_shape2(self: Pin<&mut Builder>, theShape: &TopoDS_Shape, theTool: &TopoDS_Shape);
-        /// Sets the operation of local boolean operation. If theFuse = 0 than the operation is CUT, otherwise FUSE.
+        /// Sets the operation of local boolean operation.
+        /// If theFuse = 0 than the operation is CUT, otherwise FUSE.
         #[cxx_name = "SetOperation"]
         fn set_operation_int(self: Pin<&mut Builder>, theFuse: i32);
-        /// Sets the operation of local boolean operation. If theFlag = TRUE it means that no selection of parts of the tool is needed, t.e. no second part. In that case if theFuse = 0 than operation is COMMON, otherwise CUT21. If theFlag = FALSE SetOperation(theFuse) function  is called.
+        /// Sets the operation of local boolean operation.
+        /// If theFlag = TRUE it means that no selection of parts
+        /// of the tool is needed, t.e. no second part. In that case
+        /// if theFuse = 0 than operation is COMMON, otherwise CUT21.
+        /// If theFlag = FALSE SetOperation(theFuse) function  is called.
         #[cxx_name = "SetOperation"]
         fn set_operation_int_bool(self: Pin<&mut Builder>, theFuse: i32, theFlag: bool);
         /// Collects parts of the tool.
         #[cxx_name = "PartsOfTool"]
         fn parts_of_tool(self: Pin<&mut Builder>, theLT: Pin<&mut TopTools_ListOfShape>);
-        /// Initializes parts of the tool for second step of algorithm. Collects shapes and all sub-shapes into myShapes map.
+        /// Initializes parts of the tool for second step of algorithm.
+        /// Collects shapes and all sub-shapes into myShapes map.
         #[cxx_name = "KeepParts"]
         fn keep_parts(self: Pin<&mut Builder>, theIm: &TopTools_ListOfShape);
         /// Adds shape theS and all its sub-shapes into myShapes map.
         #[cxx_name = "KeepPart"]
         fn keep_part(self: Pin<&mut Builder>, theS: &TopoDS_Shape);
-        /// Main function to build the result of the local operation required.
+        /// Main function to build the result of the
+        /// local operation required.
         #[cxx_name = "PerformResult"]
         fn perform_result(self: Pin<&mut Builder>, theRange: &Message_ProgressRange);
         /// Rebuilds faces in accordance with the kept parts of the tool.
@@ -562,7 +701,8 @@ pub(crate) mod ffi {
             theME: &TopTools_MapOfShape,
             aLEIm: Pin<&mut TopTools_ListOfShape>,
         );
-        /// Collects the images of the object, that contains in the images of the tool.
+        /// Collects the images of the object, that contains in
+        /// the images of the tool.
         #[cxx_name = "CheckSolidImages"]
         fn check_solid_images(self: Pin<&mut Builder>);
         /// Collects the removed parts of the tool into myRemoved map.

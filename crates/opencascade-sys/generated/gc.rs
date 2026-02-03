@@ -14,7 +14,9 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::MakeArcOfCircle;
 impl MakeArcOfCircle {
-    /// Make an arc of circle (TrimmedCurve from Geom) from a circle between two angles Alpha1 and Alpha2 given in radiians.
+    /// Make an arc of circle (TrimmedCurve from Geom) from
+    /// a circle between two angles Alpha1 and Alpha2
+    /// given in radiians.
     pub fn new_circ_real2_bool(
         Circ: &ffi::gp_Circ,
         Alpha1: f64,
@@ -24,7 +26,9 @@ impl MakeArcOfCircle {
         ffi::MakeArcOfCircle_ctor_circ_real2_bool(Circ, Alpha1, Alpha2, Sense)
     }
 
-    /// Make an arc of circle (TrimmedCurve from Geom) from a circle between point <P> and the angle Alpha given in radians.
+    /// Make an arc of circle (TrimmedCurve from Geom) from
+    /// a circle between point <P> and the angle Alpha
+    /// given in radians.
     pub fn new_circ_pnt_real_bool(
         Circ: &ffi::gp_Circ,
         P: &ffi::gp_Pnt,
@@ -34,7 +38,8 @@ impl MakeArcOfCircle {
         ffi::MakeArcOfCircle_ctor_circ_pnt_real_bool(Circ, P, Alpha, Sense)
     }
 
-    /// Make an arc of circle (TrimmedCurve from Geom) from a circle between two points P1 and P2.
+    /// Make an arc of circle (TrimmedCurve from Geom) from
+    /// a circle between two points P1 and P2.
     pub fn new_circ_pnt2_bool(
         Circ: &ffi::gp_Circ,
         P1: &ffi::gp_Pnt,
@@ -44,12 +49,32 @@ impl MakeArcOfCircle {
         ffi::MakeArcOfCircle_ctor_circ_pnt2_bool(Circ, P1, P2, Sense)
     }
 
-    /// Make an arc of circle (TrimmedCurve from Geom) from three points P1,P2,P3 between two points P1 and P2.
+    /// Make an arc of circle (TrimmedCurve from Geom) from
+    /// three points P1,P2,P3 between two points P1 and P2.
     pub fn new_pnt3(P1: &ffi::gp_Pnt, P2: &ffi::gp_Pnt, P3: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
         ffi::MakeArcOfCircle_ctor_pnt3(P1, P2, P3)
     }
 
-    /// Make an arc of circle (TrimmedCurve from Geom) from two points P1,P2 and the tangente to the solution at the point P1. The orientation of the arc is: -   the sense determined by the order of the points P1, P3 and P2; -   the sense defined by the vector V; or -   for other syntaxes: -   the sense of Circ if Sense is true, or -   the opposite sense if Sense is false. Note: Alpha1, Alpha2 and Alpha are angle values, given in radians. Warning If an error occurs (that is, when IsDone returns false), the Status function returns: -   gce_ConfusedPoints if: -   any 2 of the 3 points P1, P2 and P3 are coincident, or -   P1 and P2 are coincident; or -   gce_IntersectionError if: -   P1, P2 and P3 are collinear and not coincident, or -   the vector defined by the points P1 and P2 is collinear with the vector V.
+    /// Make an arc of circle (TrimmedCurve from Geom) from
+    /// two points P1,P2 and the tangente to the solution at
+    /// the point P1.
+    /// The orientation of the arc is:
+    /// -   the sense determined by the order of the points P1, P3 and P2;
+    /// -   the sense defined by the vector V; or
+    /// -   for other syntaxes:
+    /// -   the sense of Circ if Sense is true, or
+    /// -   the opposite sense if Sense is false.
+    /// Note: Alpha1, Alpha2 and Alpha are angle values, given in radians.
+    /// Warning
+    /// If an error occurs (that is, when IsDone returns
+    /// false), the Status function returns:
+    /// -   gce_ConfusedPoints if:
+    /// -   any 2 of the 3 points P1, P2 and P3 are coincident, or
+    /// -   P1 and P2 are coincident; or
+    /// -   gce_IntersectionError if:
+    /// -   P1, P2 and P3 are collinear and not coincident, or
+    /// -   the vector defined by the points P1 and
+    /// P2 is collinear with the vector V.
     pub fn new_pnt_vec_pnt(
         P1: &ffi::gp_Pnt,
         V: &ffi::gp_Vec,
@@ -70,17 +95,22 @@ impl MakeArcOfCircle {
 }
 pub use ffi::MakeSegment;
 impl MakeSegment {
-    /// Make a segment of Line from the 2 points <P1> and <P2>. It returns NullObject if <P1> and <P2> are confused.
+    /// Make a segment of Line from the 2 points <P1> and <P2>.
+    /// It returns NullObject if <P1> and <P2> are confused.
     pub fn new_pnt2(P1: &ffi::gp_Pnt, P2: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
         ffi::MakeSegment_ctor_pnt2(P1, P2)
     }
 
-    /// Make a segment of Line from the line <Line1> between the two parameters U1 and U2. It returns NullObject if <U1> is equal <U2>.
+    /// Make a segment of Line from the line <Line1>
+    /// between the two parameters U1 and U2.
+    /// It returns NullObject if <U1> is equal <U2>.
     pub fn new_lin_real2(Line: &ffi::gp_Lin, U1: f64, U2: f64) -> cxx::UniquePtr<Self> {
         ffi::MakeSegment_ctor_lin_real2(Line, U1, U2)
     }
 
-    /// Make a segment of Line from the line <Line1> between the point <Point> and the parameter Ulast. It returns NullObject if <U1> is equal <U2>.
+    /// Make a segment of Line from the line <Line1>
+    /// between the point <Point> and the parameter Ulast.
+    /// It returns NullObject if <U1> is equal <U2>.
     pub fn new_lin_pnt_real(
         Line: &ffi::gp_Lin,
         Point: &ffi::gp_Pnt,
@@ -89,7 +119,9 @@ impl MakeSegment {
         ffi::MakeSegment_ctor_lin_pnt_real(Line, Point, Ulast)
     }
 
-    /// Make a segment of Line from the line <Line1> between the two points <P1> and <P2>. It returns NullObject if <U1> is equal <U2>.
+    /// Make a segment of Line from the line <Line1>
+    /// between the two points <P1> and <P2>.
+    /// It returns NullObject if <U1> is equal <U2>.
     pub fn new_lin_pnt2(
         Line: &ffi::gp_Lin,
         P1: &ffi::gp_Pnt,
@@ -110,7 +142,10 @@ impl MakeSegment {
 }
 pub use ffi::Root;
 impl Root {
-    /// Returns the status of the construction: -   gce_Done, if the construction is successful, or -   another value of the gce_ErrorType enumeration indicating why the construction failed.
+    /// Returns the status of the construction:
+    /// -   gce_Done, if the construction is successful, or
+    /// -   another value of the gce_ErrorType enumeration
+    /// indicating why the construction failed.
     pub fn status(&self) -> cxx::UniquePtr<ffi::gce_ErrorType> {
         ffi::Root_status(self)
     }
@@ -126,12 +161,20 @@ pub(crate) mod ffi {
         /// ======================== GC_MakeArcOfCircle ========================
         /// /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle`
         ///
-        /// Implements construction algorithms for an arc of circle in 3D space. The result is a Geom_TrimmedCurve curve. A MakeArcOfCircle object provides a framework for: -   defining the construction of the arc of circle, -   implementing the construction algorithm, and -   consulting the results. In particular, the Value function returns the constructed arc of circle.
+        /// Implements construction algorithms for an
+        /// arc of circle in 3D space. The result is a Geom_TrimmedCurve curve.
+        /// A MakeArcOfCircle object provides a framework for:
+        /// -   defining the construction of the arc of circle,
+        /// -   implementing the construction algorithm, and
+        /// -   consulting the results. In particular, the
+        /// Value function returns the constructed arc of circle.
         #[cxx_name = "GC_MakeArcOfCircle"]
         type MakeArcOfCircle;
         /// /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
         ///
-        /// Make an arc of circle (TrimmedCurve from Geom) from a circle between two angles Alpha1 and Alpha2 given in radiians.
+        /// Make an arc of circle (TrimmedCurve from Geom) from
+        /// a circle between two angles Alpha1 and Alpha2
+        /// given in radiians.
         #[cxx_name = "GC_MakeArcOfCircle_ctor_circ_real2_bool"]
         fn MakeArcOfCircle_ctor_circ_real2_bool(
             Circ: &gp_Circ,
@@ -141,7 +184,9 @@ pub(crate) mod ffi {
         ) -> UniquePtr<MakeArcOfCircle>;
         /// /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
         ///
-        /// Make an arc of circle (TrimmedCurve from Geom) from a circle between point <P> and the angle Alpha given in radians.
+        /// Make an arc of circle (TrimmedCurve from Geom) from
+        /// a circle between point <P> and the angle Alpha
+        /// given in radians.
         #[cxx_name = "GC_MakeArcOfCircle_ctor_circ_pnt_real_bool"]
         fn MakeArcOfCircle_ctor_circ_pnt_real_bool(
             Circ: &gp_Circ,
@@ -151,7 +196,8 @@ pub(crate) mod ffi {
         ) -> UniquePtr<MakeArcOfCircle>;
         /// /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
         ///
-        /// Make an arc of circle (TrimmedCurve from Geom) from a circle between two points P1 and P2.
+        /// Make an arc of circle (TrimmedCurve from Geom) from
+        /// a circle between two points P1 and P2.
         #[cxx_name = "GC_MakeArcOfCircle_ctor_circ_pnt2_bool"]
         fn MakeArcOfCircle_ctor_circ_pnt2_bool(
             Circ: &gp_Circ,
@@ -161,7 +207,8 @@ pub(crate) mod ffi {
         ) -> UniquePtr<MakeArcOfCircle>;
         /// /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
         ///
-        /// Make an arc of circle (TrimmedCurve from Geom) from three points P1,P2,P3 between two points P1 and P2.
+        /// Make an arc of circle (TrimmedCurve from Geom) from
+        /// three points P1,P2,P3 between two points P1 and P2.
         #[cxx_name = "GC_MakeArcOfCircle_ctor_pnt3"]
         fn MakeArcOfCircle_ctor_pnt3(
             P1: &gp_Pnt,
@@ -170,14 +217,34 @@ pub(crate) mod ffi {
         ) -> UniquePtr<MakeArcOfCircle>;
         /// /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
         ///
-        /// Make an arc of circle (TrimmedCurve from Geom) from two points P1,P2 and the tangente to the solution at the point P1. The orientation of the arc is: -   the sense determined by the order of the points P1, P3 and P2; -   the sense defined by the vector V; or -   for other syntaxes: -   the sense of Circ if Sense is true, or -   the opposite sense if Sense is false. Note: Alpha1, Alpha2 and Alpha are angle values, given in radians. Warning If an error occurs (that is, when IsDone returns false), the Status function returns: -   gce_ConfusedPoints if: -   any 2 of the 3 points P1, P2 and P3 are coincident, or -   P1 and P2 are coincident; or -   gce_IntersectionError if: -   P1, P2 and P3 are collinear and not coincident, or -   the vector defined by the points P1 and P2 is collinear with the vector V.
+        /// Make an arc of circle (TrimmedCurve from Geom) from
+        /// two points P1,P2 and the tangente to the solution at
+        /// the point P1.
+        /// The orientation of the arc is:
+        /// -   the sense determined by the order of the points P1, P3 and P2;
+        /// -   the sense defined by the vector V; or
+        /// -   for other syntaxes:
+        /// -   the sense of Circ if Sense is true, or
+        /// -   the opposite sense if Sense is false.
+        /// Note: Alpha1, Alpha2 and Alpha are angle values, given in radians.
+        /// Warning
+        /// If an error occurs (that is, when IsDone returns
+        /// false), the Status function returns:
+        /// -   gce_ConfusedPoints if:
+        /// -   any 2 of the 3 points P1, P2 and P3 are coincident, or
+        /// -   P1 and P2 are coincident; or
+        /// -   gce_IntersectionError if:
+        /// -   P1, P2 and P3 are collinear and not coincident, or
+        /// -   the vector defined by the points P1 and
+        /// P2 is collinear with the vector V.
         #[cxx_name = "GC_MakeArcOfCircle_ctor_pnt_vec_pnt"]
         fn MakeArcOfCircle_ctor_pnt_vec_pnt(
             P1: &gp_Pnt,
             V: &gp_Vec,
             P2: &gp_Pnt,
         ) -> UniquePtr<MakeArcOfCircle>;
-        /// Returns the constructed arc of circle. Exceptions StdFail_NotDone if no arc of circle is constructed.
+        /// Returns the constructed arc of circle.
+        /// Exceptions StdFail_NotDone if no arc of circle is constructed.
         #[cxx_name = "Value"]
         fn value(self: &MakeArcOfCircle) -> &HandleGeomTrimmedCurve;
         /// Upcast GC_MakeArcOfCircle to GC_Root
@@ -189,22 +256,35 @@ pub(crate) mod ffi {
         /// ======================== GC_MakeSegment ========================
         /// /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment`
         ///
-        /// Implements construction algorithms for a line segment in 3D space. Makes a segment of Line from the 2 points <P1> and <P2>. The result is a Geom_TrimmedCurve curve. A MakeSegment object provides a framework for: -   defining the construction of the line segment, -   implementing the construction algorithm, and -   consulting the results. In particular, the Value function returns the constructed line segment.
+        /// Implements construction algorithms for a line
+        /// segment in 3D space.
+        /// Makes a segment of Line from the 2 points <P1> and <P2>.
+        /// The result is a Geom_TrimmedCurve curve.
+        /// A MakeSegment object provides a framework for:
+        /// -   defining the construction of the line segment,
+        /// -   implementing the construction algorithm, and
+        /// -   consulting the results. In particular, the Value
+        /// function returns the constructed line segment.
         #[cxx_name = "GC_MakeSegment"]
         type MakeSegment;
         /// /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment::GC_MakeSegment()`
         ///
-        /// Make a segment of Line from the 2 points <P1> and <P2>. It returns NullObject if <P1> and <P2> are confused.
+        /// Make a segment of Line from the 2 points <P1> and <P2>.
+        /// It returns NullObject if <P1> and <P2> are confused.
         #[cxx_name = "GC_MakeSegment_ctor_pnt2"]
         fn MakeSegment_ctor_pnt2(P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeSegment>;
         /// /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment::GC_MakeSegment()`
         ///
-        /// Make a segment of Line from the line <Line1> between the two parameters U1 and U2. It returns NullObject if <U1> is equal <U2>.
+        /// Make a segment of Line from the line <Line1>
+        /// between the two parameters U1 and U2.
+        /// It returns NullObject if <U1> is equal <U2>.
         #[cxx_name = "GC_MakeSegment_ctor_lin_real2"]
         fn MakeSegment_ctor_lin_real2(Line: &gp_Lin, U1: f64, U2: f64) -> UniquePtr<MakeSegment>;
         /// /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment::GC_MakeSegment()`
         ///
-        /// Make a segment of Line from the line <Line1> between the point <Point> and the parameter Ulast. It returns NullObject if <U1> is equal <U2>.
+        /// Make a segment of Line from the line <Line1>
+        /// between the point <Point> and the parameter Ulast.
+        /// It returns NullObject if <U1> is equal <U2>.
         #[cxx_name = "GC_MakeSegment_ctor_lin_pnt_real"]
         fn MakeSegment_ctor_lin_pnt_real(
             Line: &gp_Lin,
@@ -213,7 +293,9 @@ pub(crate) mod ffi {
         ) -> UniquePtr<MakeSegment>;
         /// /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment::GC_MakeSegment()`
         ///
-        /// Make a segment of Line from the line <Line1> between the two points <P1> and <P2>. It returns NullObject if <U1> is equal <U2>.
+        /// Make a segment of Line from the line <Line1>
+        /// between the two points <P1> and <P2>.
+        /// It returns NullObject if <U1> is equal <U2>.
         #[cxx_name = "GC_MakeSegment_ctor_lin_pnt2"]
         fn MakeSegment_ctor_lin_pnt2(
             Line: &gp_Lin,
@@ -232,13 +314,17 @@ pub(crate) mod ffi {
         /// ======================== GC_Root ========================
         /// /// **Source:** `GC_Root.hxx` - `GC_Root`
         ///
-        /// This class implements the common services for all classes of gce which report error.
+        /// This class implements the common services for
+        /// all classes of gce which report error.
         #[cxx_name = "GC_Root"]
         type Root;
         /// Returns true if the construction is successful.
         #[cxx_name = "IsDone"]
         fn is_done(self: &Root) -> bool;
-        /// Returns the status of the construction: -   gce_Done, if the construction is successful, or -   another value of the gce_ErrorType enumeration indicating why the construction failed.
+        /// Returns the status of the construction:
+        /// -   gce_Done, if the construction is successful, or
+        /// -   another value of the gce_ErrorType enumeration
+        /// indicating why the construction failed.
         #[cxx_name = "GC_Root_Status"]
         fn Root_status(self_: &Root) -> UniquePtr<gce_ErrorType>;
 

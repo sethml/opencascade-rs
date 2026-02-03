@@ -14,7 +14,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Function;
 impl Function {
-    /// Returns a  law equivalent of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
+    /// Returns a  law equivalent of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// It is usfule to determines the derivatives
+    /// in these values <First> and <Last> if
+    /// the Law is not Cn.
     pub fn trim(
         &self,
         PFirst: f64,
@@ -57,7 +62,12 @@ impl BSpFunc {
         ffi::BSpFunc_to_handle(obj)
     }
 
-    /// Returns a  law equivalent of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
+    /// Returns a  law equivalent of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// It is usfule to determines the derivatives
+    /// in these values <First> and <Last> if
+    /// the Law is not Cn.
     pub fn trim(
         &self,
         PFirst: f64,
@@ -77,7 +87,8 @@ impl BSpFunc {
 }
 pub use ffi::Interpol;
 impl Interpol {
-    /// Constructs an empty interpolative evolution law. The function Set is used to define the law.
+    /// Constructs an empty interpolative evolution law.
+    /// The function Set is used to define the law.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Interpol_ctor()
     }
@@ -145,10 +156,12 @@ pub(crate) mod ffi {
         /// Returns the value of the function at the point of parameter X.
         #[cxx_name = "Value"]
         fn value(self: Pin<&mut Function>, X: f64) -> f64;
-        /// Returns the value F and the first derivative D of the function at the point of parameter X.
+        /// Returns the value F and the first derivative D of the
+        /// function at the point of parameter X.
         #[cxx_name = "D1"]
         fn d1(self: Pin<&mut Function>, X: f64, F: &mut f64, D: &mut f64);
-        /// Returns the value, first and seconde derivatives at parameter X.
+        /// Returns the value, first and seconde derivatives
+        /// at parameter X.
         #[cxx_name = "D2"]
         fn d2(self: Pin<&mut Function>, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64);
         /// Returns the parametric bounds of the function.
@@ -156,7 +169,12 @@ pub(crate) mod ffi {
         fn bounds(self: Pin<&mut Function>, PFirst: &mut f64, PLast: &mut f64);
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Function) -> &HandleStandardType;
-        /// Returns a  law equivalent of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
+        /// Returns a  law equivalent of  <me>  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
+        /// It is usfule to determines the derivatives
+        /// in these values <First> and <Last> if
+        /// the Law is not Cn.
         #[cxx_name = "Law_Function_Trim"]
         fn Function_trim(
             self_: &Function,
@@ -169,7 +187,10 @@ pub(crate) mod ffi {
         /// ======================== Law_BSpFunc ========================
         /// /// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc`
         ///
-        /// Law Function based on a BSpline curve 1d.  Package methods and classes are implemented in package Law to    construct  the  basis    curve with  several constraints.
+        /// Law Function based on a BSpline curve 1d.  Package
+        /// methods and classes are implemented in package Law
+        /// to    construct  the  basis    curve with  several
+        /// constraints.
         #[cxx_name = "Law_BSpFunc"]
         type BSpFunc;
         /// /// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc::Law_BSpFunc()`
@@ -194,7 +215,12 @@ pub(crate) mod ffi {
         fn set_curve(self: Pin<&mut BSpFunc>, C: &HandleLawBSpline);
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BSpFunc) -> &HandleStandardType;
-        /// Returns a  law equivalent of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
+        /// Returns a  law equivalent of  <me>  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
+        /// It is usfule to determines the derivatives
+        /// in these values <First> and <Last> if
+        /// the Law is not Cn.
         #[cxx_name = "Law_BSpFunc_Trim"]
         fn BSpFunc_trim(
             self_: &BSpFunc,
@@ -221,15 +247,29 @@ pub(crate) mod ffi {
         /// ======================== Law_Interpol ========================
         /// /// **Source:** `Law_Interpol.hxx` - `Law_Interpol`
         ///
-        /// Provides an evolution law that interpolates a set of parameter and value pairs (wi, radi)
+        /// Provides an evolution law that interpolates a set
+        /// of parameter and value pairs (wi, radi)
         #[cxx_name = "Law_Interpol"]
         type Interpol;
         /// /// **Source:** `Law_Interpol.hxx` - `Law_Interpol::Law_Interpol()`
         ///
-        /// Constructs an empty interpolative evolution law. The function Set is used to define the law.
+        /// Constructs an empty interpolative evolution law.
+        /// The function Set is used to define the law.
         #[cxx_name = "Law_Interpol_ctor"]
         fn Interpol_ctor() -> UniquePtr<Interpol>;
-        /// Defines this evolution law by interpolating the set of 2D points ParAndRad. The Y coordinate of a point of ParAndRad is the value of the function at the parameter point given by its X coordinate. If Periodic is true, this function is assumed to be periodic. Warning -   The X coordinates of points in the table ParAndRad must be given in ascendant order. -   If Periodic is true, the first and last Y coordinates of points in the table ParAndRad are assumed to be equal. In addition, with the second syntax, Dd and Df are also assumed to be equal. If this is not the case, Set uses the first value(s) as last value(s).
+        /// Defines this evolution law by interpolating the set of 2D
+        /// points ParAndRad. The Y coordinate of a point of
+        /// ParAndRad is the value of the function at the parameter
+        /// point given by its X coordinate.
+        /// If Periodic is true, this function is assumed to be periodic.
+        /// Warning
+        /// -   The X coordinates of points in the table ParAndRad
+        /// must be given in ascendant order.
+        /// -   If Periodic is true, the first and last Y coordinates of
+        /// points in the table ParAndRad are assumed to be
+        /// equal. In addition, with the second syntax, Dd and Df
+        /// are also assumed to be equal. If this is not the case,
+        /// Set uses the first value(s) as last value(s).
         #[cxx_name = "Set"]
         fn set_array1ofpnt2d_bool(
             self: Pin<&mut Interpol>,
@@ -244,7 +284,21 @@ pub(crate) mod ffi {
             Uf: f64,
             Periodic: bool,
         );
-        /// Defines this evolution law by interpolating the set of 2D points ParAndRad. The Y coordinate of a point of ParAndRad is the value of the function at the parameter point given by its X coordinate. If Periodic is true, this function is assumed to be periodic. In the second syntax, Dd and Df define the values of the first derivative of the function at its first and last points. Warning -   The X coordinates of points in the table ParAndRad must be given in ascendant order. -   If Periodic is true, the first and last Y coordinates of points in the table ParAndRad are assumed to be equal. In addition, with the second syntax, Dd and Df are also assumed to be equal. If this is not the case, Set uses the first value(s) as last value(s).
+        /// Defines this evolution law by interpolating the set of 2D
+        /// points ParAndRad. The Y coordinate of a point of
+        /// ParAndRad is the value of the function at the parameter
+        /// point given by its X coordinate.
+        /// If Periodic is true, this function is assumed to be periodic.
+        /// In the second syntax, Dd and Df define the values of
+        /// the first derivative of the function at its first and last points.
+        /// Warning
+        /// -   The X coordinates of points in the table ParAndRad
+        /// must be given in ascendant order.
+        /// -   If Periodic is true, the first and last Y coordinates of
+        /// points in the table ParAndRad are assumed to be
+        /// equal. In addition, with the second syntax, Dd and Df
+        /// are also assumed to be equal. If this is not the case,
+        /// Set uses the first value(s) as last value(s).
         #[cxx_name = "Set"]
         fn set_array1ofpnt2d_real2_bool(
             self: Pin<&mut Interpol>,

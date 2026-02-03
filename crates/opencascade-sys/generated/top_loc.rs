@@ -13,17 +13,21 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Location;
 impl Location {
-    #[doc = "Constructs an empty local coordinate system object. Note: A Location constructed from a default datum is said to be \"empty\"."]
+    #[doc = "Constructs an empty local coordinate system object.\nNote: A Location constructed from a default datum is said to be \"empty\"."]
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Location_ctor()
     }
 
-    /// Constructs the local coordinate system object defined by the transformation T. T invokes in turn, a TopLoc_Datum3D object.
+    /// Constructs the local coordinate system object defined
+    /// by the transformation T. T invokes in turn, a TopLoc_Datum3D object.
     pub fn new_trsf(T: &ffi::gp_Trsf) -> cxx::UniquePtr<Self> {
         ffi::Location_ctor_trsf(T)
     }
 
-    /// Constructs the local coordinate system object defined by the 3D datum D. Exceptions Standard_ConstructionError if the transformation T does not represent a 3D coordinate system.
+    /// Constructs the local coordinate system object defined by the 3D datum D.
+    /// Exceptions
+    /// Standard_ConstructionError if the transformation
+    /// T does not represent a 3D coordinate system.
     pub fn new_handledatum3d(D: &ffi::HandleTopLocDatum3D) -> cxx::UniquePtr<Self> {
         ffi::Location_ctor_handledatum3d(D)
     }
@@ -33,12 +37,15 @@ impl Location {
         ffi::Location_to_owned(self)
     }
 
-    /// Returns the inverse of <me>. <me> * Inverted() is an Identity.
+    /// Returns the inverse of <me>.
+    ///
+    /// <me> * Inverted() is an Identity.
     pub fn inverted(&self) -> cxx::UniquePtr<ffi::Location> {
         ffi::Location_inverted(self)
     }
 
-    /// Returns <me> * <Other>, the  elementary datums are concatenated.
+    /// Returns <me> * <Other>, the  elementary datums are
+    /// concatenated.
     pub fn multiplied(&self, Other: &ffi::Location) -> cxx::UniquePtr<ffi::Location> {
         ffi::Location_multiplied(self, Other)
     }
@@ -53,7 +60,9 @@ impl Location {
         ffi::Location_predivided(self, Other)
     }
 
-    /// Returns me at the power <pwr>.   If <pwr>  is zero returns  Identity.  <pwr> can  be lower  than zero (usual meaning for powers).
+    /// Returns me at the power <pwr>.   If <pwr>  is zero
+    /// returns  Identity.  <pwr> can  be lower  than zero
+    /// (usual meaning for powers).
     pub fn powered(&self, pwr: i32) -> cxx::UniquePtr<ffi::Location> {
         ffi::Location_powered(self, pwr)
     }
@@ -98,22 +107,29 @@ pub(crate) mod ffi {
         /// ======================== TopLoc_Location ========================
         /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location`
         ///
-        /// A Location is a composite transition. It comprises a series of elementary reference coordinates, i.e. objects of type TopLoc_Datum3D, and the powers to which these objects are raised.
+        /// A Location is a composite transition. It comprises a
+        /// series of elementary reference coordinates, i.e.
+        /// objects of type TopLoc_Datum3D, and the powers to
+        /// which these objects are raised.
         #[cxx_name = "TopLoc_Location"]
         type Location;
         /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`
         ///
-        #[doc = "Constructs an empty local coordinate system object. Note: A Location constructed from a default datum is said to be \"empty\"."]
+        #[doc = "Constructs an empty local coordinate system object.\nNote: A Location constructed from a default datum is said to be \"empty\"."]
         #[cxx_name = "TopLoc_Location_ctor"]
         fn Location_ctor() -> UniquePtr<Location>;
         /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`
         ///
-        /// Constructs the local coordinate system object defined by the transformation T. T invokes in turn, a TopLoc_Datum3D object.
+        /// Constructs the local coordinate system object defined
+        /// by the transformation T. T invokes in turn, a TopLoc_Datum3D object.
         #[cxx_name = "TopLoc_Location_ctor_trsf"]
         fn Location_ctor_trsf(T: &gp_Trsf) -> UniquePtr<Location>;
         /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`
         ///
-        /// Constructs the local coordinate system object defined by the 3D datum D. Exceptions Standard_ConstructionError if the transformation T does not represent a 3D coordinate system.
+        /// Constructs the local coordinate system object defined by the 3D datum D.
+        /// Exceptions
+        /// Standard_ConstructionError if the transformation
+        /// T does not represent a 3D coordinate system.
         #[cxx_name = "TopLoc_Location_ctor_handledatum3d"]
         fn Location_ctor_handledatum3d(D: &HandleTopLocDatum3D) -> UniquePtr<Location>;
         /// Returns true if this location is equal to the Identity transformation.
@@ -122,34 +138,58 @@ pub(crate) mod ffi {
         /// Resets this location to the Identity transformation.
         #[cxx_name = "Identity"]
         fn identity(self: Pin<&mut Location>);
-        /// Returns    the  first   elementary  datum  of  the Location.  Use the NextLocation function recursively to access the other data comprising this location. Exceptions Standard_NoSuchObject if this location is empty.
+        /// Returns    the  first   elementary  datum  of  the
+        /// Location.  Use the NextLocation function recursively to access
+        /// the other data comprising this location.
+        /// Exceptions
+        /// Standard_NoSuchObject if this location is empty.
         #[cxx_name = "FirstDatum"]
         fn first_datum(self: &Location) -> &HandleTopLocDatum3D;
-        /// Returns   the  power  elevation  of    the   first elementary datum. Exceptions Standard_NoSuchObject if this location is empty.
+        /// Returns   the  power  elevation  of    the   first
+        /// elementary datum.
+        /// Exceptions
+        /// Standard_NoSuchObject if this location is empty.
         #[cxx_name = "FirstPower"]
         fn first_power(self: &Location) -> i32;
-        /// Returns  a Location representing  <me> without the first datum. We have the relation : <me> = NextLocation() * FirstDatum() ^ FirstPower() Exceptions Standard_NoSuchObject if this location is empty.
+        /// Returns  a Location representing  <me> without the
+        /// first datum. We have the relation :
+        ///
+        /// <me> = NextLocation() * FirstDatum() ^ FirstPower()
+        /// Exceptions
+        /// Standard_NoSuchObject if this location is empty.
         #[cxx_name = "NextLocation"]
         fn next_location(self: &Location) -> &Location;
-        /// Returns  the transformation    associated  to  the coordinate system.
+        /// Returns  the transformation    associated  to  the
+        /// coordinate system.
         #[cxx_name = "Transformation"]
         fn transformation(self: &Location) -> &gp_Trsf;
-        /// Returns a hashed value for this local coordinate system. This value is used, with map tables, to store and retrieve the object easily @return a computed hash code
+        /// Returns a hashed value for this local coordinate system. This value is used, with map tables,
+        /// to store and retrieve the object easily
+        /// @return a computed hash code
         #[cxx_name = "HashCode"]
         fn hash_code(self: &Location) -> usize;
-        /// Returns true if this location and the location Other have the same elementary data, i.e. contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator ==.
+        /// Returns true if this location and the location Other
+        /// have the same elementary data, i.e. contain the same
+        /// series of TopLoc_Datum3D and respective powers.
+        /// This method is an alias for operator ==.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &Location, Other: &Location) -> bool;
-        /// Returns true if this location and the location Other do not have the same elementary data, i.e. do not contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator !=.
+        /// Returns true if this location and the location Other do
+        /// not have the same elementary data, i.e. do not
+        /// contain the same series of TopLoc_Datum3D and respective powers.
+        /// This method is an alias for operator !=.
         #[cxx_name = "IsDifferent"]
         fn is_different(self: &Location, Other: &Location) -> bool;
         /// Clear myItems
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Location>);
-        /// Returns the inverse of <me>. <me> * Inverted() is an Identity.
+        /// Returns the inverse of <me>.
+        ///
+        /// <me> * Inverted() is an Identity.
         #[cxx_name = "TopLoc_Location_Inverted"]
         fn Location_inverted(self_: &Location) -> UniquePtr<Location>;
-        /// Returns <me> * <Other>, the  elementary datums are concatenated.
+        /// Returns <me> * <Other>, the  elementary datums are
+        /// concatenated.
         #[cxx_name = "TopLoc_Location_Multiplied"]
         fn Location_multiplied(self_: &Location, Other: &Location) -> UniquePtr<Location>;
         /// Returns  <me> / <Other>.
@@ -158,7 +198,9 @@ pub(crate) mod ffi {
         /// Returns <Other>.Inverted() * <me>.
         #[cxx_name = "TopLoc_Location_Predivided"]
         fn Location_predivided(self_: &Location, Other: &Location) -> UniquePtr<Location>;
-        /// Returns me at the power <pwr>.   If <pwr>  is zero returns  Identity.  <pwr> can  be lower  than zero (usual meaning for powers).
+        /// Returns me at the power <pwr>.   If <pwr>  is zero
+        /// returns  Identity.  <pwr> can  be lower  than zero
+        /// (usual meaning for powers).
         #[cxx_name = "TopLoc_Location_Powered"]
         fn Location_powered(self_: &Location, pwr: i32) -> UniquePtr<Location>;
         #[cxx_name = "TopLoc_Location_ScalePrec"]
@@ -169,7 +211,21 @@ pub(crate) mod ffi {
         /// ======================== TopLoc_SListOfItemLocation ========================
         /// /// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation`
         ///
-        /// An SListOfItemLocation is a LISP like list of Items. An SListOfItemLocation is : . Empty. . Or it has a Value and a  Tail  which is an other SListOfItemLocation. The Tail of an empty list is an empty list. SListOfItemLocation are  shared.  It  means   that they  can  be modified through other lists. SListOfItemLocation may  be used  as Iterators. They  have Next, More, and value methods. To iterate on the content of the list S just do. SListOfItemLocation Iterator; for (Iterator = S; Iterator.More(); Iterator.Next()) X = Iterator.Value();
+        /// An SListOfItemLocation is a LISP like list of Items.
+        /// An SListOfItemLocation is :
+        /// . Empty.
+        /// . Or it has a Value and a  Tail  which is an other SListOfItemLocation.
+        ///
+        /// The Tail of an empty list is an empty list.
+        /// SListOfItemLocation are  shared.  It  means   that they  can  be
+        /// modified through other lists.
+        /// SListOfItemLocation may  be used  as Iterators. They  have Next,
+        /// More, and value methods. To iterate on the content
+        /// of the list S just do.
+        ///
+        /// SListOfItemLocation Iterator;
+        /// for (Iterator = S; Iterator.More(); Iterator.Next())
+        /// X = Iterator.Value();
         #[cxx_name = "TopLoc_SListOfItemLocation"]
         type SListOfItemLocation;
         /// /// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`
@@ -192,7 +248,8 @@ pub(crate) mod ffi {
         fn SListOfItemLocation_ctor_slistofitemlocation(
             Other: &SListOfItemLocation,
         ) -> UniquePtr<SListOfItemLocation>;
-        /// Sets  a list  from  an  other  one. The  lists are shared. The list itself is returned.
+        /// Sets  a list  from  an  other  one. The  lists are
+        /// shared. The list itself is returned.
         #[cxx_name = "Assign"]
         fn assign(
             self: Pin<&mut SListOfItemLocation>,
@@ -204,22 +261,27 @@ pub(crate) mod ffi {
         /// Sets the list to be empty.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut SListOfItemLocation>);
-        /// Returns the current value of the list. An error is raised  if the list is empty.
+        /// Returns the current value of the list. An error is
+        /// raised  if the list is empty.
         #[cxx_name = "Value"]
         fn value(self: &SListOfItemLocation) -> &TopLoc_ItemLocation;
-        /// Returns the current tail of  the list. On an empty list the tail is the list itself.
+        /// Returns the current tail of  the list. On an empty
+        /// list the tail is the list itself.
         #[cxx_name = "Tail"]
         fn tail(self: &SListOfItemLocation) -> &SListOfItemLocation;
-        /// Replaces the list by a list with <anItem> as Value and the  list <me> as  tail.
+        /// Replaces the list by a list with <anItem> as Value
+        /// and the  list <me> as  tail.
         #[cxx_name = "Construct"]
         fn construct(self: Pin<&mut SListOfItemLocation>, anItem: &TopLoc_ItemLocation);
         /// Replaces the list <me> by its tail.
         #[cxx_name = "ToTail"]
         fn to_tail(self: Pin<&mut SListOfItemLocation>);
-        /// Returns True if the iterator  has a current value. This is !IsEmpty()
+        /// Returns True if the iterator  has a current value.
+        /// This is !IsEmpty()
         #[cxx_name = "More"]
         fn more(self: &SListOfItemLocation) -> bool;
-        /// Moves the iterator to the next object in the list. If the iterator is empty it will  stay empty. This is ToTail()
+        /// Moves the iterator to the next object in the list.
+        /// If the iterator is empty it will  stay empty. This is ToTail()
         #[cxx_name = "Next"]
         fn next(self: Pin<&mut SListOfItemLocation>);
         /// Clone TopLoc_SListOfItemLocation into a new UniquePtr via copy constructor

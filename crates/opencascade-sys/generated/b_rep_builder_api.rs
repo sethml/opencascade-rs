@@ -265,7 +265,7 @@ impl MakeEdge {
         ffi::MakeEdge_ctor_handlecurve_handlesurface_pnt2_real2(L, S, P1, P2, p1, p2)
     }
 
-    #[doc = "The general method to directly create an edge is to give -      a 3D curve C as the support (geometric domain) of the edge, -      two vertices V1 and V2 to limit the curve (definition of the restriction of the edge), and -      two real values p1 and p2 which are the parameters for the vertices V1 and V2 on the curve. The curve may be defined as a 2d curve in the parametric space of a surface: a pcurve. The surface on which the edge is built is then kept at the level of the edge. The default tolerance will be associated with this edge. Rules applied to the arguments: For the curve: -      The curve must not be a 'null handle'. -      If the curve is a trimmed curve the basis curve is used. For the vertices: -      Vertices may be null shapes. When V1 or V2 is null the edge is open in the corresponding direction and the parameter value p1 or p2 must be infinite (remember that Precision::Infinite() defines an infinite value). -      The two vertices must be identical if they have the same 3D location. Identical vertices are used in particular when the curve is closed. For the parameters: -      The parameters must be in the parametric range of the curve (or the basis curve if the curve is trimmed). If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_ParameterOutOfRange. -      Parameter values must not be equal. If this condition is not satisfied (i.e. if | p1 - p2 | ) the edge is not built, and the Error function will return BRepAPI_LineThroughIdenticPoints. Parameter values are expected to be given in increasing order: C->FirstParameter() - If the parameter values are given in decreasing order the vertices are switched, i.e. the \"first vertex\" is on the point of parameter p2 and the \"second vertex\" is on the point of parameter p1. In such a case, to keep the original intent of the construction, the edge will be oriented \"reversed\". - On a periodic curve the parameter values p1 and p2 are adjusted by adding or subtracting the period to obtain p1 in the parametric range of the curve, and p2] such that [ p1 , where Period is the period of the curve. - A parameter value may be infinite. The edge is open in the corresponding direction. However the corresponding vertex must be a null shape. If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_PointWithInfiniteParameter. - The distance between the vertex and the point evaluated on the curve with the parameter, must be lower than the precision of the vertex. If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_DifferentsPointAndParameter. Other edge constructions - The parameter values can be omitted, they will be computed by projecting the vertices on the curve. Note that projection is the only way to evaluate the parameter values of the vertices on the curve: vertices must be given on the curve, i.e. the distance from a vertex to the curve must be less than or equal to the precision of the vertex. If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_PointProjectionFailed. -      3D points can be given in place of vertices. Vertices will be created from the points (with the default topological precision Precision::Confusion()). Note: -      Giving vertices is useful when creating a connected edge. -      If the parameter values correspond to the extremities of a closed curve, points must be identical, or at least coincident. If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_DifferentPointsOnClosedCurve. -      The vertices or points can be omitted if the parameter values are given. The points will be computed from the parameters on the curve. The vertices or points and the parameter values can be omitted. The first and last parameters of the curve will then be used. Auxiliary methods"]
+    #[doc = "The general method to directly create an edge is to give\n-      a 3D curve C as the support (geometric domain) of the edge,\n-      two vertices V1 and V2 to limit the curve (definition of the restriction of\nthe edge), and\n-      two real values p1 and p2 which are the parameters for the vertices V1 and V2\non the curve.\nThe curve may be defined as a 2d curve in the parametric space of a surface: a\npcurve. The surface on which the edge is built is then kept at the level of the edge.\nThe default tolerance will be associated with this edge.\nRules applied to the arguments:\nFor the curve:\n-      The curve must not be a 'null handle'.\n-      If the curve is a trimmed curve the basis curve is used.\nFor the vertices:\n-      Vertices may be null shapes. When V1 or V2 is null the edge is open in the\ncorresponding direction and the parameter value p1 or p2 must be infinite\n(remember that Precision::Infinite() defines an infinite value).\n-      The two vertices must be identical if they have the same 3D location.\nIdentical vertices are used in particular when the curve is closed.\nFor the parameters:\n-      The parameters must be in the parametric range of the curve (or the basis\ncurve if the curve is trimmed). If this condition is not satisfied the edge is not\nbuilt, and the Error function will return BRepAPI_ParameterOutOfRange.\n-      Parameter values must not be equal. If this condition is not satisfied (i.e.\nif | p1 - p2 | ) the edge is not built, and the Error function will return\nBRepAPI_LineThroughIdenticPoints.\nParameter values are expected to be given in increasing order:\nC->FirstParameter()\n- If the parameter values are given in decreasing order the vertices are switched,\ni.e. the \"first vertex\" is on the point of parameter p2 and the \"second vertex\" is\non the point of parameter p1. In such a case, to keep the original intent of the\nconstruction, the edge will be oriented \"reversed\".\n- On a periodic curve the parameter values p1 and p2 are adjusted by adding or\nsubtracting the period to obtain p1 in the parametric range of the curve, and p2]\nsuch that [ p1 , where Period is the period of the curve.\n- A parameter value may be infinite. The edge is open in the corresponding\ndirection. However the corresponding vertex must be a null shape. If this condition\nis not satisfied the edge is not built, and the Error function will return\nBRepAPI_PointWithInfiniteParameter.\n- The distance between the vertex and the point evaluated on the curve with the\nparameter, must be lower than the precision of the vertex. If this condition is not\nsatisfied the edge is not built, and the Error function will return\nBRepAPI_DifferentsPointAndParameter.\nOther edge constructions\n- The parameter values can be omitted, they will be computed by projecting the\nvertices on the curve. Note that projection is the only way to evaluate the\nparameter values of the vertices on the curve: vertices must be given on the curve,\ni.e. the distance from a vertex to the curve must be less than or equal to the\nprecision of the vertex. If this condition is not satisfied the edge is not built,\nand the Error function will return BRepAPI_PointProjectionFailed.\n-      3D points can be given in place of vertices. Vertices will be created from the\npoints (with the default topological precision Precision::Confusion()).\nNote:\n-      Giving vertices is useful when creating a connected edge.\n-      If the parameter values correspond to the extremities of a closed curve,\npoints must be identical, or at least coincident. If this condition is not\nsatisfied the edge is not built, and the Error function will return\nBRepAPI_DifferentPointsOnClosedCurve.\n-      The vertices or points can be omitted if the parameter values are given. The\npoints will be computed from the parameters on the curve.\nThe vertices or points and the parameter values can be omitted. The first and last\nparameters of the curve will then be used.\n\nAuxiliary methods"]
     pub fn new_handlecurve_handlesurface_vertex2_real2(
         L: &ffi::HandleGeom2dCurve,
         S: &ffi::HandleGeomSurface,
@@ -334,7 +334,8 @@ impl MakeFace {
         ffi::MakeFace_ctor_torus(C)
     }
 
-    /// Make a face from a Surface. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
+    /// Make a face from a Surface. Accepts tolerance value (TolDegen)
+    /// for resolution of degenerated edges.
     pub fn new_handlesurface_real(
         S: &ffi::HandleGeomSurface,
         TolDegen: f64,
@@ -397,7 +398,8 @@ impl MakeFace {
         ffi::MakeFace_ctor_torus_real4(C, UMin, UMax, VMin, VMax)
     }
 
-    /// Make a face from a Surface. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
+    /// Make a face from a Surface. Accepts tolerance value (TolDegen)
+    /// for resolution of degenerated edges.
     pub fn new_handlesurface_real5(
         S: &ffi::HandleGeomSurface,
         UMin: f64,
@@ -409,7 +411,10 @@ impl MakeFace {
         ffi::MakeFace_ctor_handlesurface_real5(S, UMin, UMax, VMin, VMax, TolDegen)
     }
 
-    /// Find a surface from the wire and make a face. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set.
+    /// Find a surface from the wire and make a face.
+    /// if <OnlyPlane> is true, the computed surface will be
+    /// a plane. If it is not possible to find a plane, the
+    /// flag NotDone will be set.
     pub fn new_wire_bool(W: &ffi::TopoDS_Wire, OnlyPlane: bool) -> cxx::UniquePtr<Self> {
         ffi::MakeFace_ctor_wire_bool(W, OnlyPlane)
     }
@@ -459,7 +464,10 @@ impl MakeFace {
         ffi::MakeFace_ctor_torus_wire_bool(C, W, Inside)
     }
 
-    /// Make a face from a Surface and a wire. If the surface S is not plane, it must contain pcurves for all edges in W, otherwise the wrong shape will be created.
+    /// Make a face from a Surface and a wire.
+    /// If the surface S is not plane,
+    /// it must contain pcurves for all edges in W,
+    /// otherwise the wrong shape will be created.
     pub fn new_handlesurface_wire_bool(
         S: &ffi::HandleGeomSurface,
         W: &ffi::TopoDS_Wire,
@@ -468,7 +476,49 @@ impl MakeFace {
         ffi::MakeFace_ctor_handlesurface_wire_bool(S, W, Inside)
     }
 
-    /// Adds the wire <W> in the face <F> A general method to create a face is to give -      a surface S as the support (the geometric domain) of the face, -      and a wire W to bound it. The bounds of the face can also be defined by four parameter values umin, umax, vmin, vmax which determine isoparametric limitations on the parametric space of the surface. In this way, a patch is defined. The parameter values are optional. If they are omitted, the natural bounds of the surface are used. A wire is automatically built using the defined bounds. Up to four edges and four vertices are created with this wire (no edge is created when the corresponding parameter value is infinite). Wires can then be added using the function Add to define other restrictions on the face. These restrictions represent holes. More than one wire may be added by this way, provided that the wires do not cross each other and that they define only one area on the surface. (Be careful, however, as this is not checked). Forbidden addition of wires Note that in this schema, the third case is valid if edges of the wire W are declared internal to the face. As a result, these edges are no longer bounds of the face. A default tolerance (Precision::Confusion()) is given to the face, this tolerance may be increased during construction of the face using various algorithms. Rules applied to the arguments For the surface: -      The surface must not be a 'null handle'. -      If the surface is a trimmed surface, the basis surface is used. -      For the wire: the wire is composed of connected edges, each edge having a parametric curve description in the parametric domain of the surface; in other words, as a pcurve. For the parameters: -      The parameter values must be in the parametric range of the surface (or the basis surface, if the surface is trimmed). If this condition is not satisfied, the face is not built, and the Error function will return BRepBuilderAPI_ParametersOutOfRange. -      The bounding parameters p1 and p2 are adjusted on a periodic surface in a given parametric direction by adding or subtracting the period to obtain p1 in the parametric range of the surface and such p2, that p2 - p1 <= Period, where Period is the period of the surface in this parametric direction. -      A parameter value may be infinite. There will be no edge and no vertex in the corresponding direction.
+    /// Adds the wire <W> in the face <F>
+    /// A general method to create a face is to give
+    /// -      a surface S as the support (the geometric domain) of the face,
+    /// -      and a wire W to bound it.
+    /// The bounds of the face can also be defined by four parameter values
+    /// umin, umax, vmin, vmax which determine isoparametric limitations on
+    /// the parametric space of the surface. In this way, a patch is
+    /// defined. The parameter values are optional. If they are omitted, the
+    /// natural bounds of the surface are used. A wire is automatically
+    /// built using the defined bounds. Up to four edges and four vertices
+    /// are created with this wire (no edge is created when the
+    /// corresponding parameter value is infinite).
+    /// Wires can then be added using the function Add to define other
+    /// restrictions on the face. These restrictions represent holes. More
+    /// than one wire may be added by this way, provided that the wires do
+    /// not cross each other and that they define only one area on the
+    /// surface. (Be careful, however, as this is not checked).
+    /// Forbidden addition of wires
+    /// Note that in this schema, the third case is valid if edges of the
+    /// wire W are declared internal to the face. As a result, these edges
+    /// are no longer bounds of the face.
+    /// A default tolerance (Precision::Confusion()) is given to the face,
+    /// this tolerance may be increased during construction of the face
+    /// using various algorithms.
+    /// Rules applied to the arguments
+    /// For the surface:
+    /// -      The surface must not be a 'null handle'.
+    /// -      If the surface is a trimmed surface, the basis surface is used.
+    /// -      For the wire: the wire is composed of connected edges, each
+    /// edge having a parametric curve description in the parametric
+    /// domain of the surface; in other words, as a pcurve.
+    /// For the parameters:
+    /// -      The parameter values must be in the parametric range of the
+    /// surface (or the basis surface, if the surface is trimmed). If this
+    /// condition is not satisfied, the face is not built, and the Error
+    /// function will return BRepBuilderAPI_ParametersOutOfRange.
+    /// -      The bounding parameters p1 and p2 are adjusted on a periodic
+    /// surface in a given parametric direction by adding or subtracting
+    /// the period to obtain p1 in the parametric range of the surface and
+    /// such p2, that p2 - p1 <= Period, where Period is the period of the
+    /// surface in this parametric direction.
+    /// -      A parameter value may be infinite. There will be no edge and
+    /// no vertex in the corresponding direction.
     pub fn new_face_wire(F: &ffi::TopoDS_Face, W: &ffi::TopoDS_Wire) -> cxx::UniquePtr<Self> {
         ffi::MakeFace_ctor_face_wire(F, W)
     }
@@ -495,7 +545,9 @@ impl MakeFace {
 }
 pub use ffi::MakeSolid;
 impl MakeSolid {
-    /// Initializes the construction of a solid. An empty solid is considered to cover the whole space. The Add function is used to define shells to bound it.
+    /// Initializes the construction of a solid. An empty solid is
+    /// considered to cover the whole space. The Add function
+    /// is used to define shells to bound it.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::MakeSolid_ctor()
     }
@@ -515,7 +567,21 @@ impl MakeSolid {
         ffi::MakeSolid_ctor_shell2(S1, S2)
     }
 
-    /// Make a solid from three shells. Constructs a solid -   covering the whole space, or -   from shell S, or -   from two shells S1 and S2, or -   from three shells S1, S2 and S3, or Warning No check is done to verify the conditions of coherence of the resulting solid. In particular, S1, S2 (and S3) must not intersect each other. Besides, after all shells have been added using the Add function, one of these shells should constitute the outside skin of the solid; it may be closed (a finite solid) or open (an infinite solid). Other shells form hollows (cavities) in these previous ones. Each must bound a closed volume.
+    /// Make a solid from three shells.
+    /// Constructs a solid
+    /// -   covering the whole space, or
+    /// -   from shell S, or
+    /// -   from two shells S1 and S2, or
+    /// -   from three shells S1, S2 and S3, or
+    /// Warning
+    /// No check is done to verify the conditions of coherence
+    /// of the resulting solid. In particular, S1, S2 (and S3) must
+    /// not intersect each other.
+    /// Besides, after all shells have been added using the Add
+    /// function, one of these shells should constitute the outside
+    /// skin of the solid; it may be closed (a finite solid) or open
+    /// (an infinite solid). Other shells form hollows (cavities) in
+    /// these previous ones. Each must bound a closed volume.
     pub fn new_shell3(
         S1: &ffi::TopoDS_Shell,
         S2: &ffi::TopoDS_Shell,
@@ -529,7 +595,19 @@ impl MakeSolid {
         ffi::MakeSolid_ctor_solid(So)
     }
 
-    /// Add a shell to a solid. Constructs a solid: -   from the solid So, to which shells can be added, or -   by adding the shell S to the solid So. Warning No check is done to verify the conditions of coherence of the resulting solid. In particular S must not intersect the solid S0. Besides, after all shells have been added using the Add function, one of these shells should constitute the outside skin of the solid. It may be closed (a finite solid) or open (an infinite solid). Other shells form hollows (cavities) in the previous ones. Each must bound a closed volume.
+    /// Add a shell to a solid.
+    ///
+    /// Constructs a solid:
+    /// -   from the solid So, to which shells can be added, or
+    /// -   by adding the shell S to the solid So.
+    /// Warning
+    /// No check is done to verify the conditions of coherence
+    /// of the resulting solid. In particular S must not intersect the solid S0.
+    /// Besides, after all shells have been added using the Add
+    /// function, one of these shells should constitute the outside
+    /// skin of the solid. It may be closed (a finite solid) or open
+    /// (an infinite solid). Other shells form hollows (cavities) in
+    /// the previous ones. Each must bound a closed volume.
     pub fn new_solid_shell(So: &ffi::TopoDS_Solid, S: &ffi::TopoDS_Shell) -> cxx::UniquePtr<Self> {
         ffi::MakeSolid_ctor_solid_shell(So, S)
     }
@@ -556,7 +634,10 @@ impl MakeSolid {
 }
 pub use ffi::MakeVertex;
 impl MakeVertex {
-    /// Constructs a vertex from point P. Example create a vertex from a 3D point. gp_Pnt P(0,0,10); TopoDS_Vertex V = BRepBuilderAPI_MakeVertex(P);
+    /// Constructs a vertex from point P.
+    /// Example create a vertex from a 3D point.
+    /// gp_Pnt P(0,0,10);
+    /// TopoDS_Vertex V = BRepBuilderAPI_MakeVertex(P);
     pub fn new_pnt(P: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
         ffi::MakeVertex_ctor_pnt(P)
     }
@@ -583,7 +664,14 @@ impl MakeVertex {
 }
 pub use ffi::MakeWire;
 impl MakeWire {
-    /// Constructs an empty wire framework, to which edges are added using the Add function. As soon as the wire contains one edge, it can return with the use of the function Wire. Warning The function Error will return BRepBuilderAPI_EmptyWire if it is called before at least one edge is added to the wire under construction.
+    /// Constructs an empty wire framework, to which edges
+    /// are added using the Add function.
+    /// As soon as the wire contains one edge, it can return
+    /// with the use of the function Wire.
+    /// Warning
+    /// The function Error will return
+    /// BRepBuilderAPI_EmptyWire if it is called before at
+    /// least one edge is added to the wire under construction.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::MakeWire_ctor()
     }
@@ -607,7 +695,27 @@ impl MakeWire {
         ffi::MakeWire_ctor_edge3(E1, E2, E3)
     }
 
-    /// Make a Wire from four edges. Constructs a wire -   from the TopoDS_Wire W composed of the edge E, or -   from edge E, or -   from two edges E1 and E2, or -   from three edges E1, E2 and E3, or -   from four edges E1, E2, E3 and E4. Further edges can be added using the function Add. Given edges are added in a sequence. Each of them must be connectable to the wire under construction, and so must satisfy the following condition (unless it is the first edge of the wire): one of its vertices must be geometrically coincident with one of the vertices of the wire (provided that the highest tolerance factor is assigned to the two vertices). It could also be the same vertex. Warning If an edge is not connectable to the wire under construction it is not added. The function Error will return BRepBuilderAPI_DisconnectedWire, the function IsDone will return false and the function Wire will raise an error, until a new connectable edge is added.
+    /// Make a Wire from four edges.
+    /// Constructs a wire
+    /// -   from the TopoDS_Wire W composed of the edge E, or
+    /// -   from edge E, or
+    /// -   from two edges E1 and E2, or
+    /// -   from three edges E1, E2 and E3, or
+    /// -   from four edges E1, E2, E3 and E4.
+    /// Further edges can be added using the function Add.
+    /// Given edges are added in a sequence. Each of them
+    /// must be connectable to the wire under construction,
+    /// and so must satisfy the following condition (unless it is
+    /// the first edge of the wire): one of its vertices must be
+    /// geometrically coincident with one of the vertices of the
+    /// wire (provided that the highest tolerance factor is
+    /// assigned to the two vertices). It could also be the same vertex.
+    /// Warning
+    /// If an edge is not connectable to the wire under
+    /// construction it is not added. The function Error will
+    /// return BRepBuilderAPI_DisconnectedWire, the
+    /// function IsDone will return false and the function Wire
+    /// will raise an error, until a new connectable edge is added.
     pub fn new_edge4(
         E1: &ffi::TopoDS_Edge,
         E2: &ffi::TopoDS_Edge,
@@ -649,7 +757,12 @@ impl MakeWire {
 }
 pub use ffi::Sewing;
 impl Sewing {
-    /// Creates an object with tolerance of connexity option for sewing (if false only control) option for analysis of degenerated shapes option for cutting of free edges. option for non manifold processing
+    /// Creates an object with
+    /// tolerance of connexity
+    /// option for sewing (if false only control)
+    /// option for analysis of degenerated shapes
+    /// option for cutting of free edges.
+    /// option for non manifold processing
     pub fn new_real_bool4(
         tolerance: f64,
         option1: bool,
@@ -688,12 +801,22 @@ impl Sewing {
 }
 pub use ffi::Transform;
 impl Transform {
-    /// Constructs a framework for applying the geometric transformation T to a shape. Use the function Perform to define the shape to transform.
+    /// Constructs a framework for applying the geometric
+    /// transformation T to a shape. Use the function Perform
+    /// to define the shape to transform.
     pub fn new_trsf(T: &ffi::gp_Trsf) -> cxx::UniquePtr<Self> {
         ffi::Transform_ctor_trsf(T)
     }
 
-    /// Creates a transformation from the gp_Trsf <theTrsf>, and applies it to the shape <theShape>. If the transformation is  direct   and isometric (determinant  =  1) and <theCopyGeom> =  Standard_False,  the resulting shape  is <theShape> on   which  a  new  location has    been  set. Otherwise,  the   transformation is applied   on a duplication of <theShape>. If <theCopyMesh> is true, the triangulation will be copied, and the copy will be assigned to the result shape.
+    /// Creates a transformation from the gp_Trsf <theTrsf>, and
+    /// applies it to the shape <theShape>. If the transformation
+    /// is  direct   and isometric (determinant  =  1) and
+    /// <theCopyGeom> =  Standard_False,  the resulting shape  is
+    /// <theShape> on   which  a  new  location has    been  set.
+    /// Otherwise,  the   transformation is applied   on a
+    /// duplication of <theShape>.
+    /// If <theCopyMesh> is true, the triangulation will be copied,
+    /// and the copy will be assigned to the result shape.
     pub fn new_shape_trsf_bool2(
         theShape: &ffi::TopoDS_Shape,
         theTrsf: &ffi::gp_Trsf,
@@ -760,7 +883,14 @@ impl ModifyShape {
         ffi::modify_shape_as_make_shape_mut(self)
     }
 
-    /// Returns the modified shape corresponding to <S>. S can correspond to the entire initial shape or to its subshape. Exceptions Standard_NoSuchObject if S is not the initial shape or a subshape of the initial shape to which the transformation has been applied. Raises NoSuchObject from Standard if S is not the initial shape or a sub-shape of the initial shape.
+    /// Returns the modified shape corresponding to <S>.
+    /// S can correspond to the entire initial shape or to its subshape.
+    /// Exceptions
+    /// Standard_NoSuchObject if S is not the initial shape or
+    /// a subshape of the initial shape to which the
+    /// transformation has been applied. Raises NoSuchObject from Standard
+    /// if S is not the initial shape or a sub-shape
+    /// of the initial shape.
     pub fn modified_shape(&self, S: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::ModifyShape_modified_shape(self, S)
     }
@@ -776,7 +906,15 @@ pub(crate) mod ffi {
         /// ======================== BRepBuilderAPI_Command ========================
         /// /// **Source:** `BRepBuilderAPI_Command.hxx` - `BRepBuilderAPI_Command`
         ///
-        /// Root class for all commands in BRepBuilderAPI. Provides : * Managements of the notDone flag. * Catching of exceptions (not implemented). * Logging (not implemented).
+        /// Root class for all commands in BRepBuilderAPI.
+        ///
+        /// Provides :
+        ///
+        /// * Managements of the notDone flag.
+        ///
+        /// * Catching of exceptions (not implemented).
+        ///
+        /// * Logging (not implemented).
         #[cxx_name = "BRepBuilderAPI_Command"]
         type Command;
         #[cxx_name = "IsDone"]
@@ -787,19 +925,27 @@ pub(crate) mod ffi {
         /// ======================== BRepBuilderAPI_MakeShape ========================
         /// /// **Source:** `BRepBuilderAPI_MakeShape.hxx` - `BRepBuilderAPI_MakeShape`
         ///
-        /// This    is  the  root     class for     all  shape constructions.  It stores the result. It  provides deferred methods to trace the history of sub-shapes.
+        /// This    is  the  root     class for     all  shape
+        /// constructions.  It stores the result.
+        ///
+        /// It  provides deferred methods to trace the history
+        /// of sub-shapes.
         #[cxx_name = "BRepBuilderAPI_MakeShape"]
         type MakeShape;
-        /// This is  called by  Shape().  It does  nothing but may be redefined.
+        /// This is  called by  Shape().  It does  nothing but
+        /// may be redefined.
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut MakeShape>, theRange: &Message_ProgressRange);
-        /// Returns a shape built by the shape construction algorithm. Raises exception StdFail_NotDone if the shape was not built.
+        /// Returns a shape built by the shape construction algorithm.
+        /// Raises exception StdFail_NotDone if the shape was not built.
         #[cxx_name = "Shape"]
         fn shape(self: Pin<&mut MakeShape>) -> &TopoDS_Shape;
-        /// Returns the  list   of shapes generated   from the shape <S>.
+        /// Returns the  list   of shapes generated   from the
+        /// shape <S>.
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut MakeShape>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        /// Returns the list  of shapes modified from the shape <S>.
+        /// Returns the list  of shapes modified from the shape
+        /// <S>.
         #[cxx_name = "Modified"]
         fn modified(self: Pin<&mut MakeShape>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
         /// Returns true if the shape S has been deleted.
@@ -814,7 +960,37 @@ pub(crate) mod ffi {
         /// ======================== BRepBuilderAPI_MakeEdge ========================
         /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge`
         ///
-        /// Provides methods to build edges. The   methods have  the  following   syntax, where TheCurve is one of Lin, Circ, ... Create(C : TheCurve) Makes an edge on  the whole curve.  Add vertices on finite curves. Create(C : TheCurve; p1,p2 : Real) Make an edge  on the curve between parameters p1 and p2. if p2 < p1 the edge will be REVERSED. If p1  or p2 is infinite the  curve will be open in that  direction. Vertices are created for finite values of p1 and p2. Create(C : TheCurve; P1, P2 : Pnt from gp) Make an edge on the curve  between the points P1 and P2. The  points are projected on   the curve and the   previous method is  used. An  error is raised if the points are not on the curve. Create(C : TheCurve; V1, V2 : Vertex from TopoDS) Make an edge  on the curve  between the vertices V1 and V2. Same as the  previous but no vertices are created. If a vertex is  Null the curve will be open in this direction.
+        /// Provides methods to build edges.
+        ///
+        /// The   methods have  the  following   syntax, where
+        /// TheCurve is one of Lin, Circ, ...
+        ///
+        /// Create(C : TheCurve)
+        ///
+        /// Makes an edge on  the whole curve.  Add vertices
+        /// on finite curves.
+        ///
+        /// Create(C : TheCurve; p1,p2 : Real)
+        ///
+        /// Make an edge  on the curve between parameters p1
+        /// and p2. if p2 < p1 the edge will be REVERSED. If
+        /// p1  or p2 is infinite the  curve will be open in
+        /// that  direction. Vertices are created for finite
+        /// values of p1 and p2.
+        ///
+        /// Create(C : TheCurve; P1, P2 : Pnt from gp)
+        ///
+        /// Make an edge on the curve  between the points P1
+        /// and P2. The  points are projected on   the curve
+        /// and the   previous method is  used. An  error is
+        /// raised if the points are not on the curve.
+        ///
+        /// Create(C : TheCurve; V1, V2 : Vertex from TopoDS)
+        ///
+        /// Make an edge  on the curve  between the vertices
+        /// V1 and V2. Same as the  previous but no vertices
+        /// are created. If a vertex is  Null the curve will
+        /// be open in this direction.
         #[cxx_name = "BRepBuilderAPI_MakeEdge"]
         type MakeEdge;
         /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
@@ -990,7 +1166,7 @@ pub(crate) mod ffi {
         ) -> UniquePtr<MakeEdge>;
         /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         ///
-        #[doc = "The general method to directly create an edge is to give -      a 3D curve C as the support (geometric domain) of the edge, -      two vertices V1 and V2 to limit the curve (definition of the restriction of the edge), and -      two real values p1 and p2 which are the parameters for the vertices V1 and V2 on the curve. The curve may be defined as a 2d curve in the parametric space of a surface: a pcurve. The surface on which the edge is built is then kept at the level of the edge. The default tolerance will be associated with this edge. Rules applied to the arguments: For the curve: -      The curve must not be a 'null handle'. -      If the curve is a trimmed curve the basis curve is used. For the vertices: -      Vertices may be null shapes. When V1 or V2 is null the edge is open in the corresponding direction and the parameter value p1 or p2 must be infinite (remember that Precision::Infinite() defines an infinite value). -      The two vertices must be identical if they have the same 3D location. Identical vertices are used in particular when the curve is closed. For the parameters: -      The parameters must be in the parametric range of the curve (or the basis curve if the curve is trimmed). If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_ParameterOutOfRange. -      Parameter values must not be equal. If this condition is not satisfied (i.e. if | p1 - p2 | ) the edge is not built, and the Error function will return BRepAPI_LineThroughIdenticPoints. Parameter values are expected to be given in increasing order: C->FirstParameter() - If the parameter values are given in decreasing order the vertices are switched, i.e. the \"first vertex\" is on the point of parameter p2 and the \"second vertex\" is on the point of parameter p1. In such a case, to keep the original intent of the construction, the edge will be oriented \"reversed\". - On a periodic curve the parameter values p1 and p2 are adjusted by adding or subtracting the period to obtain p1 in the parametric range of the curve, and p2] such that [ p1 , where Period is the period of the curve. - A parameter value may be infinite. The edge is open in the corresponding direction. However the corresponding vertex must be a null shape. If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_PointWithInfiniteParameter. - The distance between the vertex and the point evaluated on the curve with the parameter, must be lower than the precision of the vertex. If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_DifferentsPointAndParameter. Other edge constructions - The parameter values can be omitted, they will be computed by projecting the vertices on the curve. Note that projection is the only way to evaluate the parameter values of the vertices on the curve: vertices must be given on the curve, i.e. the distance from a vertex to the curve must be less than or equal to the precision of the vertex. If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_PointProjectionFailed. -      3D points can be given in place of vertices. Vertices will be created from the points (with the default topological precision Precision::Confusion()). Note: -      Giving vertices is useful when creating a connected edge. -      If the parameter values correspond to the extremities of a closed curve, points must be identical, or at least coincident. If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_DifferentPointsOnClosedCurve. -      The vertices or points can be omitted if the parameter values are given. The points will be computed from the parameters on the curve. The vertices or points and the parameter values can be omitted. The first and last parameters of the curve will then be used. Auxiliary methods"]
+        #[doc = "The general method to directly create an edge is to give\n-      a 3D curve C as the support (geometric domain) of the edge,\n-      two vertices V1 and V2 to limit the curve (definition of the restriction of\nthe edge), and\n-      two real values p1 and p2 which are the parameters for the vertices V1 and V2\non the curve.\nThe curve may be defined as a 2d curve in the parametric space of a surface: a\npcurve. The surface on which the edge is built is then kept at the level of the edge.\nThe default tolerance will be associated with this edge.\nRules applied to the arguments:\nFor the curve:\n-      The curve must not be a 'null handle'.\n-      If the curve is a trimmed curve the basis curve is used.\nFor the vertices:\n-      Vertices may be null shapes. When V1 or V2 is null the edge is open in the\ncorresponding direction and the parameter value p1 or p2 must be infinite\n(remember that Precision::Infinite() defines an infinite value).\n-      The two vertices must be identical if they have the same 3D location.\nIdentical vertices are used in particular when the curve is closed.\nFor the parameters:\n-      The parameters must be in the parametric range of the curve (or the basis\ncurve if the curve is trimmed). If this condition is not satisfied the edge is not\nbuilt, and the Error function will return BRepAPI_ParameterOutOfRange.\n-      Parameter values must not be equal. If this condition is not satisfied (i.e.\nif | p1 - p2 | ) the edge is not built, and the Error function will return\nBRepAPI_LineThroughIdenticPoints.\nParameter values are expected to be given in increasing order:\nC->FirstParameter()\n- If the parameter values are given in decreasing order the vertices are switched,\ni.e. the \"first vertex\" is on the point of parameter p2 and the \"second vertex\" is\non the point of parameter p1. In such a case, to keep the original intent of the\nconstruction, the edge will be oriented \"reversed\".\n- On a periodic curve the parameter values p1 and p2 are adjusted by adding or\nsubtracting the period to obtain p1 in the parametric range of the curve, and p2]\nsuch that [ p1 , where Period is the period of the curve.\n- A parameter value may be infinite. The edge is open in the corresponding\ndirection. However the corresponding vertex must be a null shape. If this condition\nis not satisfied the edge is not built, and the Error function will return\nBRepAPI_PointWithInfiniteParameter.\n- The distance between the vertex and the point evaluated on the curve with the\nparameter, must be lower than the precision of the vertex. If this condition is not\nsatisfied the edge is not built, and the Error function will return\nBRepAPI_DifferentsPointAndParameter.\nOther edge constructions\n- The parameter values can be omitted, they will be computed by projecting the\nvertices on the curve. Note that projection is the only way to evaluate the\nparameter values of the vertices on the curve: vertices must be given on the curve,\ni.e. the distance from a vertex to the curve must be less than or equal to the\nprecision of the vertex. If this condition is not satisfied the edge is not built,\nand the Error function will return BRepAPI_PointProjectionFailed.\n-      3D points can be given in place of vertices. Vertices will be created from the\npoints (with the default topological precision Precision::Confusion()).\nNote:\n-      Giving vertices is useful when creating a connected edge.\n-      If the parameter values correspond to the extremities of a closed curve,\npoints must be identical, or at least coincident. If this condition is not\nsatisfied the edge is not built, and the Error function will return\nBRepAPI_DifferentPointsOnClosedCurve.\n-      The vertices or points can be omitted if the parameter values are given. The\npoints will be computed from the parameters on the curve.\nThe vertices or points and the parameter values can be omitted. The first and last\nparameters of the curve will then be used.\n\nAuxiliary methods"]
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_handlecurve_handlesurface_vertex2_real2"]
         fn MakeEdge_ctor_handlecurve_handlesurface_vertex2_real2(
             L: &HandleGeom2dCurve,
@@ -1076,7 +1252,8 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         );
-        /// Defines or redefines the arguments for the construction of an edge. This function is currently used after the empty constructor BRepAPI_MakeEdge().
+        /// Defines or redefines the arguments for the construction of an edge.
+        /// This function is currently used after the empty constructor BRepAPI_MakeEdge().
         #[cxx_name = "Init"]
         fn init_handlecurve_handlesurface_vertex2_real2(
             self: Pin<&mut MakeEdge>,
@@ -1090,13 +1267,23 @@ pub(crate) mod ffi {
         /// Returns true if the edge is built.
         #[cxx_name = "IsDone"]
         fn is_done(self: &MakeEdge) -> bool;
-        /// Returns the constructed edge. Exceptions StdFail_NotDone if the edge is not built.
+        /// Returns the constructed edge.
+        /// Exceptions StdFail_NotDone if the edge is not built.
         #[cxx_name = "Edge"]
         fn edge(self: Pin<&mut MakeEdge>) -> &TopoDS_Edge;
         /// Returns the first vertex of the edge. May be Null.
         #[cxx_name = "Vertex1"]
         fn vertex1(self: &MakeEdge) -> &TopoDS_Vertex;
-        /// Returns the second vertex of the edge. May be Null. Warning The returned vertex in each function corresponds respectively to -   the lowest, or -   the highest parameter on the curve along which the edge is built. It does not correspond to the first or second vertex given at the time of the construction, if the edge is oriented reversed. Exceptions StdFail_NotDone if the edge is not built.
+        /// Returns the second vertex of the edge. May be Null.
+        ///
+        /// Warning
+        /// The returned vertex in each function corresponds respectively to
+        /// -   the lowest, or
+        /// -   the highest parameter on the curve along which the edge is built.
+        /// It does not correspond to the first or second vertex
+        /// given at the time of the construction, if the edge is oriented reversed.
+        /// Exceptions
+        /// StdFail_NotDone if the edge is not built.
         #[cxx_name = "Vertex2"]
         fn vertex2(self: &MakeEdge) -> &TopoDS_Vertex;
         /// Upcast BRepBuilderAPI_MakeEdge to BRepBuilderAPI_Command
@@ -1114,7 +1301,31 @@ pub(crate) mod ffi {
         /// ======================== BRepBuilderAPI_MakeFace ========================
         /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace`
         ///
-        /// Provides methods to build faces. A face may be built : * From a surface. - Elementary surface from gp. - Surface from Geom. * From a surface and U,V values. * From a wire. - Find the surface automatically if possible. * From a surface and a wire. - A flag Inside is given, when this flag is True the  wire is  oriented to bound a finite area on the surface. * From a face and a wire. - The new wire is a perforation.
+        /// Provides methods to build faces.
+        ///
+        /// A face may be built :
+        ///
+        /// * From a surface.
+        ///
+        /// - Elementary surface from gp.
+        ///
+        /// - Surface from Geom.
+        ///
+        /// * From a surface and U,V values.
+        ///
+        /// * From a wire.
+        ///
+        /// - Find the surface automatically if possible.
+        ///
+        /// * From a surface and a wire.
+        ///
+        /// - A flag Inside is given, when this flag is True
+        /// the  wire is  oriented to bound a finite area on
+        /// the surface.
+        ///
+        /// * From a face and a wire.
+        ///
+        /// - The new wire is a perforation.
         #[cxx_name = "BRepBuilderAPI_MakeFace"]
         type MakeFace;
         /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
@@ -1154,7 +1365,8 @@ pub(crate) mod ffi {
         fn MakeFace_ctor_torus(C: &gp_Torus) -> UniquePtr<MakeFace>;
         /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
-        /// Make a face from a Surface. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
+        /// Make a face from a Surface. Accepts tolerance value (TolDegen)
+        /// for resolution of degenerated edges.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_handlesurface_real"]
         fn MakeFace_ctor_handlesurface_real(
             S: &HandleGeomSurface,
@@ -1217,7 +1429,8 @@ pub(crate) mod ffi {
         ) -> UniquePtr<MakeFace>;
         /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
-        /// Make a face from a Surface. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
+        /// Make a face from a Surface. Accepts tolerance value (TolDegen)
+        /// for resolution of degenerated edges.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_handlesurface_real5"]
         fn MakeFace_ctor_handlesurface_real5(
             S: &HandleGeomSurface,
@@ -1229,7 +1442,10 @@ pub(crate) mod ffi {
         ) -> UniquePtr<MakeFace>;
         /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
-        /// Find a surface from the wire and make a face. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set.
+        /// Find a surface from the wire and make a face.
+        /// if <OnlyPlane> is true, the computed surface will be
+        /// a plane. If it is not possible to find a plane, the
+        /// flag NotDone will be set.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_wire_bool"]
         fn MakeFace_ctor_wire_bool(W: &TopoDS_Wire, OnlyPlane: bool) -> UniquePtr<MakeFace>;
         /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
@@ -1279,7 +1495,10 @@ pub(crate) mod ffi {
         ) -> UniquePtr<MakeFace>;
         /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
-        /// Make a face from a Surface and a wire. If the surface S is not plane, it must contain pcurves for all edges in W, otherwise the wrong shape will be created.
+        /// Make a face from a Surface and a wire.
+        /// If the surface S is not plane,
+        /// it must contain pcurves for all edges in W,
+        /// otherwise the wrong shape will be created.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_handlesurface_wire_bool"]
         fn MakeFace_ctor_handlesurface_wire_bool(
             S: &HandleGeomSurface,
@@ -1288,13 +1507,67 @@ pub(crate) mod ffi {
         ) -> UniquePtr<MakeFace>;
         /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
-        /// Adds the wire <W> in the face <F> A general method to create a face is to give -      a surface S as the support (the geometric domain) of the face, -      and a wire W to bound it. The bounds of the face can also be defined by four parameter values umin, umax, vmin, vmax which determine isoparametric limitations on the parametric space of the surface. In this way, a patch is defined. The parameter values are optional. If they are omitted, the natural bounds of the surface are used. A wire is automatically built using the defined bounds. Up to four edges and four vertices are created with this wire (no edge is created when the corresponding parameter value is infinite). Wires can then be added using the function Add to define other restrictions on the face. These restrictions represent holes. More than one wire may be added by this way, provided that the wires do not cross each other and that they define only one area on the surface. (Be careful, however, as this is not checked). Forbidden addition of wires Note that in this schema, the third case is valid if edges of the wire W are declared internal to the face. As a result, these edges are no longer bounds of the face. A default tolerance (Precision::Confusion()) is given to the face, this tolerance may be increased during construction of the face using various algorithms. Rules applied to the arguments For the surface: -      The surface must not be a 'null handle'. -      If the surface is a trimmed surface, the basis surface is used. -      For the wire: the wire is composed of connected edges, each edge having a parametric curve description in the parametric domain of the surface; in other words, as a pcurve. For the parameters: -      The parameter values must be in the parametric range of the surface (or the basis surface, if the surface is trimmed). If this condition is not satisfied, the face is not built, and the Error function will return BRepBuilderAPI_ParametersOutOfRange. -      The bounding parameters p1 and p2 are adjusted on a periodic surface in a given parametric direction by adding or subtracting the period to obtain p1 in the parametric range of the surface and such p2, that p2 - p1 <= Period, where Period is the period of the surface in this parametric direction. -      A parameter value may be infinite. There will be no edge and no vertex in the corresponding direction.
+        /// Adds the wire <W> in the face <F>
+        /// A general method to create a face is to give
+        /// -      a surface S as the support (the geometric domain) of the face,
+        /// -      and a wire W to bound it.
+        /// The bounds of the face can also be defined by four parameter values
+        /// umin, umax, vmin, vmax which determine isoparametric limitations on
+        /// the parametric space of the surface. In this way, a patch is
+        /// defined. The parameter values are optional. If they are omitted, the
+        /// natural bounds of the surface are used. A wire is automatically
+        /// built using the defined bounds. Up to four edges and four vertices
+        /// are created with this wire (no edge is created when the
+        /// corresponding parameter value is infinite).
+        /// Wires can then be added using the function Add to define other
+        /// restrictions on the face. These restrictions represent holes. More
+        /// than one wire may be added by this way, provided that the wires do
+        /// not cross each other and that they define only one area on the
+        /// surface. (Be careful, however, as this is not checked).
+        /// Forbidden addition of wires
+        /// Note that in this schema, the third case is valid if edges of the
+        /// wire W are declared internal to the face. As a result, these edges
+        /// are no longer bounds of the face.
+        /// A default tolerance (Precision::Confusion()) is given to the face,
+        /// this tolerance may be increased during construction of the face
+        /// using various algorithms.
+        /// Rules applied to the arguments
+        /// For the surface:
+        /// -      The surface must not be a 'null handle'.
+        /// -      If the surface is a trimmed surface, the basis surface is used.
+        /// -      For the wire: the wire is composed of connected edges, each
+        /// edge having a parametric curve description in the parametric
+        /// domain of the surface; in other words, as a pcurve.
+        /// For the parameters:
+        /// -      The parameter values must be in the parametric range of the
+        /// surface (or the basis surface, if the surface is trimmed). If this
+        /// condition is not satisfied, the face is not built, and the Error
+        /// function will return BRepBuilderAPI_ParametersOutOfRange.
+        /// -      The bounding parameters p1 and p2 are adjusted on a periodic
+        /// surface in a given parametric direction by adding or subtracting
+        /// the period to obtain p1 in the parametric range of the surface and
+        /// such p2, that p2 - p1 <= Period, where Period is the period of the
+        /// surface in this parametric direction.
+        /// -      A parameter value may be infinite. There will be no edge and
+        /// no vertex in the corresponding direction.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_face_wire"]
         fn MakeFace_ctor_face_wire(F: &TopoDS_Face, W: &TopoDS_Wire) -> UniquePtr<MakeFace>;
-        /// Initializes (or reinitializes) the construction of a face by creating a new object which is a copy of the face F, in order to add wires to it, using the function Add. Note: this complete copy of the geometry is only required if you want to work on the geometries of the two faces independently.
+        /// Initializes (or reinitializes) the
+        /// construction of a face by creating a new object which is a copy of
+        /// the face F, in order to add wires to it, using the function Add.
+        /// Note: this complete copy of the geometry is only required if you
+        /// want to work on the geometries of the two faces independently.
         #[cxx_name = "Init"]
         fn init_face(self: Pin<&mut MakeFace>, F: &TopoDS_Face);
-        /// Initializes (or reinitializes) the construction of a face on the surface S. If Bound is true, a wire is automatically created from the natural bounds of the surface S and added to the face in order to bound it. If Bound is false, no wire is added. This option is used when real bounds are known. These will be added to the face after this initialization, using the function Add. TolDegen parameter is used for resolution of degenerated edges if calculation of natural bounds is turned on.
+        /// Initializes (or reinitializes) the construction of a face on
+        /// the surface S. If Bound is true, a wire is
+        /// automatically created from the natural bounds of the
+        /// surface S and added to the face in order to bound it. If
+        /// Bound is false, no wire is added. This option is used
+        /// when real bounds are known. These will be added to
+        /// the face after this initialization, using the function Add.
+        /// TolDegen parameter is used for resolution of degenerated edges
+        /// if calculation of natural bounds is turned on.
         #[cxx_name = "Init"]
         fn init_handlesurface_bool_real(
             self: Pin<&mut MakeFace>,
@@ -1302,7 +1575,16 @@ pub(crate) mod ffi {
             Bound: bool,
             TolDegen: f64,
         );
-        /// Initializes (or reinitializes) the construction of a face on the surface S, limited in the u parametric direction by the two parameter values UMin and UMax and in the v parametric direction by the two parameter values VMin and VMax. Warning Error returns: -      BRepBuilderAPI_ParametersOutOfRange when the parameters given are outside the bounds of the surface or the basis surface of a trimmed surface. TolDegen parameter is used for resolution of degenerated edges.
+        /// Initializes (or reinitializes) the construction of a face on
+        /// the surface S, limited in the u parametric direction by
+        /// the two parameter values UMin and UMax and in the
+        /// v parametric direction by the two parameter values VMin and VMax.
+        /// Warning
+        /// Error returns:
+        /// -      BRepBuilderAPI_ParametersOutOfRange
+        /// when the parameters given are outside the bounds of the
+        /// surface or the basis surface of a trimmed surface.
+        /// TolDegen parameter is used for resolution of degenerated edges.
         #[cxx_name = "Init"]
         fn init_handlesurface_real5(
             self: Pin<&mut MakeFace>,
@@ -1313,13 +1595,27 @@ pub(crate) mod ffi {
             VMax: f64,
             TolDegen: f64,
         );
-        /// Adds the wire W to the constructed face as a hole. Warning W must not cross the other bounds of the face, and all the bounds must define only one area on the surface. (Be careful, however, as this is not checked.) Example // a cylinder gp_Cylinder C = ..; // a wire TopoDS_Wire W = ...; BRepBuilderAPI_MakeFace MF(C); MF.Add(W); TopoDS_Face F = MF;
+        /// Adds the wire W to the constructed face as a hole.
+        /// Warning
+        /// W must not cross the other bounds of the face, and all
+        /// the bounds must define only one area on the surface.
+        /// (Be careful, however, as this is not checked.)
+        /// Example
+        /// // a cylinder
+        /// gp_Cylinder C = ..;
+        /// // a wire
+        /// TopoDS_Wire W = ...;
+        /// BRepBuilderAPI_MakeFace MF(C);
+        /// MF.Add(W);
+        /// TopoDS_Face F = MF;
         #[cxx_name = "Add"]
         fn add(self: Pin<&mut MakeFace>, W: &TopoDS_Wire);
         /// Returns true if this algorithm has a valid face.
         #[cxx_name = "IsDone"]
         fn is_done(self: &MakeFace) -> bool;
-        /// Returns the constructed face. Exceptions StdFail_NotDone if no face is built.
+        /// Returns the constructed face.
+        /// Exceptions
+        /// StdFail_NotDone if no face is built.
         #[cxx_name = "Face"]
         fn face(self: &MakeFace) -> &TopoDS_Face;
         /// Upcast BRepBuilderAPI_MakeFace to BRepBuilderAPI_Command
@@ -1337,12 +1633,23 @@ pub(crate) mod ffi {
         /// ======================== BRepBuilderAPI_MakeSolid ========================
         /// /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid`
         ///
-        /// Describes functions to build a solid from shells. A solid is made of one shell, or a series of shells, which do not intersect each other. One of these shells constitutes the outside skin of the solid. It may be closed (a finite solid) or open (an infinite solid). Other shells form hollows (cavities) in these previous ones. Each must bound a closed volume. A MakeSolid object provides a framework for: -   defining and implementing the construction of a solid, and -   consulting the result.
+        /// Describes functions to build a solid from shells.
+        /// A solid is made of one shell, or a series of shells, which
+        /// do not intersect each other. One of these shells
+        /// constitutes the outside skin of the solid. It may be closed
+        /// (a finite solid) or open (an infinite solid). Other shells
+        /// form hollows (cavities) in these previous ones. Each
+        /// must bound a closed volume.
+        /// A MakeSolid object provides a framework for:
+        /// -   defining and implementing the construction of a solid, and
+        /// -   consulting the result.
         #[cxx_name = "BRepBuilderAPI_MakeSolid"]
         type MakeSolid;
         /// /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
         ///
-        /// Initializes the construction of a solid. An empty solid is considered to cover the whole space. The Add function is used to define shells to bound it.
+        /// Initializes the construction of a solid. An empty solid is
+        /// considered to cover the whole space. The Add function
+        /// is used to define shells to bound it.
         #[cxx_name = "BRepBuilderAPI_MakeSolid_ctor"]
         fn MakeSolid_ctor() -> UniquePtr<MakeSolid>;
         /// /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
@@ -1362,7 +1669,21 @@ pub(crate) mod ffi {
         fn MakeSolid_ctor_shell2(S1: &TopoDS_Shell, S2: &TopoDS_Shell) -> UniquePtr<MakeSolid>;
         /// /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
         ///
-        /// Make a solid from three shells. Constructs a solid -   covering the whole space, or -   from shell S, or -   from two shells S1 and S2, or -   from three shells S1, S2 and S3, or Warning No check is done to verify the conditions of coherence of the resulting solid. In particular, S1, S2 (and S3) must not intersect each other. Besides, after all shells have been added using the Add function, one of these shells should constitute the outside skin of the solid; it may be closed (a finite solid) or open (an infinite solid). Other shells form hollows (cavities) in these previous ones. Each must bound a closed volume.
+        /// Make a solid from three shells.
+        /// Constructs a solid
+        /// -   covering the whole space, or
+        /// -   from shell S, or
+        /// -   from two shells S1 and S2, or
+        /// -   from three shells S1, S2 and S3, or
+        /// Warning
+        /// No check is done to verify the conditions of coherence
+        /// of the resulting solid. In particular, S1, S2 (and S3) must
+        /// not intersect each other.
+        /// Besides, after all shells have been added using the Add
+        /// function, one of these shells should constitute the outside
+        /// skin of the solid; it may be closed (a finite solid) or open
+        /// (an infinite solid). Other shells form hollows (cavities) in
+        /// these previous ones. Each must bound a closed volume.
         #[cxx_name = "BRepBuilderAPI_MakeSolid_ctor_shell3"]
         fn MakeSolid_ctor_shell3(
             S1: &TopoDS_Shell,
@@ -1376,13 +1697,38 @@ pub(crate) mod ffi {
         fn MakeSolid_ctor_solid(So: &TopoDS_Solid) -> UniquePtr<MakeSolid>;
         /// /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
         ///
-        /// Add a shell to a solid. Constructs a solid: -   from the solid So, to which shells can be added, or -   by adding the shell S to the solid So. Warning No check is done to verify the conditions of coherence of the resulting solid. In particular S must not intersect the solid S0. Besides, after all shells have been added using the Add function, one of these shells should constitute the outside skin of the solid. It may be closed (a finite solid) or open (an infinite solid). Other shells form hollows (cavities) in the previous ones. Each must bound a closed volume.
+        /// Add a shell to a solid.
+        ///
+        /// Constructs a solid:
+        /// -   from the solid So, to which shells can be added, or
+        /// -   by adding the shell S to the solid So.
+        /// Warning
+        /// No check is done to verify the conditions of coherence
+        /// of the resulting solid. In particular S must not intersect the solid S0.
+        /// Besides, after all shells have been added using the Add
+        /// function, one of these shells should constitute the outside
+        /// skin of the solid. It may be closed (a finite solid) or open
+        /// (an infinite solid). Other shells form hollows (cavities) in
+        /// the previous ones. Each must bound a closed volume.
         #[cxx_name = "BRepBuilderAPI_MakeSolid_ctor_solid_shell"]
         fn MakeSolid_ctor_solid_shell(So: &TopoDS_Solid, S: &TopoDS_Shell) -> UniquePtr<MakeSolid>;
-        /// Adds the shell to the current solid. Warning No check is done to verify the conditions of coherence of the resulting solid. In particular, S must not intersect other shells of the solid under construction. Besides, after all shells have been added, one of these shells should constitute the outside skin of the solid. It may be closed (a finite solid) or open (an infinite solid). Other shells form hollows (cavities) in these previous ones. Each must bound a closed volume.
+        /// Adds the shell to the current solid.
+        /// Warning
+        /// No check is done to verify the conditions of coherence
+        /// of the resulting solid. In particular, S must not intersect
+        /// other shells of the solid under construction.
+        /// Besides, after all shells have been added, one of
+        /// these shells should constitute the outside skin of the
+        /// solid. It may be closed (a finite solid) or open (an
+        /// infinite solid). Other shells form hollows (cavities) in
+        /// these previous ones. Each must bound a closed volume.
         #[cxx_name = "Add"]
         fn add(self: Pin<&mut MakeSolid>, S: &TopoDS_Shell);
-        /// Returns true if the solid is built. For this class, a solid under construction is always valid. If no shell has been added, it could be a whole-space solid. However, no check was done to verify the conditions of coherence of the resulting solid.
+        /// Returns true if the solid is built.
+        /// For this class, a solid under construction is always valid.
+        /// If no shell has been added, it could be a whole-space
+        /// solid. However, no check was done to verify the
+        /// conditions of coherence of the resulting solid.
         #[cxx_name = "IsDone"]
         fn is_done(self: &MakeSolid) -> bool;
         /// Returns the new Solid.
@@ -1405,12 +1751,23 @@ pub(crate) mod ffi {
         /// ======================== BRepBuilderAPI_MakeVertex ========================
         /// /// **Source:** `BRepBuilderAPI_MakeVertex.hxx` - `BRepBuilderAPI_MakeVertex`
         ///
-        /// Describes functions to build BRepBuilder vertices directly from 3D geometric points. A vertex built using a MakeVertex object is only composed of a 3D point and a default precision value (Precision::Confusion()). Later on, 2D representations can be added, for example, when inserting a vertex in an edge. A MakeVertex object provides a framework for: -   defining and implementing the construction of a vertex, and -   consulting the result.
+        /// Describes functions to build BRepBuilder vertices directly
+        /// from 3D geometric points. A vertex built using a
+        /// MakeVertex object is only composed of a 3D point and
+        /// a default precision value (Precision::Confusion()).
+        /// Later on, 2D representations can be added, for example,
+        /// when inserting a vertex in an edge.
+        /// A MakeVertex object provides a framework for:
+        /// -   defining and implementing the construction of a vertex, and
+        /// -   consulting the result.
         #[cxx_name = "BRepBuilderAPI_MakeVertex"]
         type MakeVertex;
         /// /// **Source:** `BRepBuilderAPI_MakeVertex.hxx` - `BRepBuilderAPI_MakeVertex::BRepBuilderAPI_MakeVertex()`
         ///
-        /// Constructs a vertex from point P. Example create a vertex from a 3D point. gp_Pnt P(0,0,10); TopoDS_Vertex V = BRepBuilderAPI_MakeVertex(P);
+        /// Constructs a vertex from point P.
+        /// Example create a vertex from a 3D point.
+        /// gp_Pnt P(0,0,10);
+        /// TopoDS_Vertex V = BRepBuilderAPI_MakeVertex(P);
         #[cxx_name = "BRepBuilderAPI_MakeVertex_ctor_pnt"]
         fn MakeVertex_ctor_pnt(P: &gp_Pnt) -> UniquePtr<MakeVertex>;
         /// Returns the constructed vertex.
@@ -1431,12 +1788,49 @@ pub(crate) mod ffi {
         /// ======================== BRepBuilderAPI_MakeWire ========================
         /// /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire`
         ///
-        /// Describes functions to build wires from edges. A wire can be built from any number of edges. To build a wire you first initialize the construction, then add edges in sequence. An unlimited number of edges can be added. The initialization of construction is done with: -   no edge (an empty wire), or -   edges of an existing wire, or -   up to four connectable edges. In order to be added to a wire under construction, an edge (unless it is the first one) must satisfy the following condition: one of its vertices must be geometrically coincident with one of the vertices of the wire (provided that the highest tolerance factor is assigned to the two vertices). It could also be the same vertex. -   The given edge is shared by the wire if it contains: -   two vertices, identical to two vertices of the wire under construction (a general case of the wire closure), or -   one vertex, identical to a vertex of the wire under construction; the other vertex not being geometrically coincident with another vertex of the wire. -   In other cases, when one of the vertices of the edge is simply geometrically coincident with a vertex of the wire under construction (provided that the highest tolerance factor is assigned to the two vertices), the given edge is first copied and the coincident vertex is replaced in this new edge, by the coincident vertex of the wire. Note: it is possible to build non manifold wires using this construction tool. A MakeWire object provides a framework for: -   initializing the construction of a wire, -   adding edges to the wire under construction, and -   consulting the result.
+        /// Describes functions to build wires from edges. A wire can
+        /// be built from any number of edges.
+        /// To build a wire you first initialize the construction, then
+        /// add edges in sequence. An unlimited number of edges
+        /// can be added. The initialization of construction is done with:
+        /// -   no edge (an empty wire), or
+        /// -   edges of an existing wire, or
+        /// -   up to four connectable edges.
+        /// In order to be added to a wire under construction, an
+        /// edge (unless it is the first one) must satisfy the following
+        /// condition: one of its vertices must be geometrically
+        /// coincident with one of the vertices of the wire (provided
+        /// that the highest tolerance factor is assigned to the two
+        /// vertices). It could also be the same vertex.
+        /// -   The given edge is shared by the wire if it contains:
+        /// -   two vertices, identical to two vertices of the wire
+        /// under construction (a general case of the wire closure), or
+        /// -   one vertex, identical to a vertex of the wire under
+        /// construction; the other vertex not being
+        /// geometrically coincident with another vertex of the wire.
+        /// -   In other cases, when one of the vertices of the edge
+        /// is simply geometrically coincident with a vertex of the
+        /// wire under construction (provided that the highest
+        /// tolerance factor is assigned to the two vertices), the
+        /// given edge is first copied and the coincident vertex is
+        /// replaced in this new edge, by the coincident vertex of the wire.
+        /// Note: it is possible to build non manifold wires using this construction tool.
+        /// A MakeWire object provides a framework for:
+        /// -   initializing the construction of a wire,
+        /// -   adding edges to the wire under construction, and
+        /// -   consulting the result.
         #[cxx_name = "BRepBuilderAPI_MakeWire"]
         type MakeWire;
         /// /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
         ///
-        /// Constructs an empty wire framework, to which edges are added using the Add function. As soon as the wire contains one edge, it can return with the use of the function Wire. Warning The function Error will return BRepBuilderAPI_EmptyWire if it is called before at least one edge is added to the wire under construction.
+        /// Constructs an empty wire framework, to which edges
+        /// are added using the Add function.
+        /// As soon as the wire contains one edge, it can return
+        /// with the use of the function Wire.
+        /// Warning
+        /// The function Error will return
+        /// BRepBuilderAPI_EmptyWire if it is called before at
+        /// least one edge is added to the wire under construction.
         #[cxx_name = "BRepBuilderAPI_MakeWire_ctor"]
         fn MakeWire_ctor() -> UniquePtr<MakeWire>;
         /// /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
@@ -1460,7 +1854,27 @@ pub(crate) mod ffi {
         ) -> UniquePtr<MakeWire>;
         /// /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
         ///
-        /// Make a Wire from four edges. Constructs a wire -   from the TopoDS_Wire W composed of the edge E, or -   from edge E, or -   from two edges E1 and E2, or -   from three edges E1, E2 and E3, or -   from four edges E1, E2, E3 and E4. Further edges can be added using the function Add. Given edges are added in a sequence. Each of them must be connectable to the wire under construction, and so must satisfy the following condition (unless it is the first edge of the wire): one of its vertices must be geometrically coincident with one of the vertices of the wire (provided that the highest tolerance factor is assigned to the two vertices). It could also be the same vertex. Warning If an edge is not connectable to the wire under construction it is not added. The function Error will return BRepBuilderAPI_DisconnectedWire, the function IsDone will return false and the function Wire will raise an error, until a new connectable edge is added.
+        /// Make a Wire from four edges.
+        /// Constructs a wire
+        /// -   from the TopoDS_Wire W composed of the edge E, or
+        /// -   from edge E, or
+        /// -   from two edges E1 and E2, or
+        /// -   from three edges E1, E2 and E3, or
+        /// -   from four edges E1, E2, E3 and E4.
+        /// Further edges can be added using the function Add.
+        /// Given edges are added in a sequence. Each of them
+        /// must be connectable to the wire under construction,
+        /// and so must satisfy the following condition (unless it is
+        /// the first edge of the wire): one of its vertices must be
+        /// geometrically coincident with one of the vertices of the
+        /// wire (provided that the highest tolerance factor is
+        /// assigned to the two vertices). It could also be the same vertex.
+        /// Warning
+        /// If an edge is not connectable to the wire under
+        /// construction it is not added. The function Error will
+        /// return BRepBuilderAPI_DisconnectedWire, the
+        /// function IsDone will return false and the function Wire
+        /// will raise an error, until a new connectable edge is added.
         #[cxx_name = "BRepBuilderAPI_MakeWire_ctor_edge4"]
         fn MakeWire_ctor_edge4(
             E1: &TopoDS_Edge,
@@ -1478,25 +1892,53 @@ pub(crate) mod ffi {
         /// Add an edge to a wire.
         #[cxx_name = "BRepBuilderAPI_MakeWire_ctor_wire_edge"]
         fn MakeWire_ctor_wire_edge(W: &TopoDS_Wire, E: &TopoDS_Edge) -> UniquePtr<MakeWire>;
-        /// Adds the edge E to the wire under construction. E must be connectable to the wire under construction, and, unless it is the first edge of the wire, must satisfy the following condition: one of its vertices must be geometrically coincident with one of the vertices of the wire (provided that the highest tolerance factor is assigned to the two vertices). It could also be the same vertex. Warning If E is not connectable to the wire under construction it is not added. The function Error will return BRepBuilderAPI_DisconnectedWire, the function IsDone will return false and the function Wire will raise an error, until a new connectable edge is added.
+        /// Adds the edge E to the wire under construction.
+        /// E must be connectable to the wire under construction, and, unless it
+        /// is the first edge of the wire, must satisfy the following
+        /// condition: one of its vertices must be geometrically coincident
+        /// with one of the vertices of the wire (provided that the highest
+        /// tolerance factor is assigned to the two vertices). It could also
+        /// be the same vertex.
+        /// Warning
+        /// If E is not connectable to the wire under construction it is not
+        /// added. The function Error will return
+        /// BRepBuilderAPI_DisconnectedWire, the function IsDone will return
+        /// false and the function Wire will raise an error, until a new
+        /// connectable edge is added.
         #[cxx_name = "Add"]
         fn add_edge(self: Pin<&mut MakeWire>, E: &TopoDS_Edge);
         /// Add the edges of <W> to the current wire.
         #[cxx_name = "Add"]
         fn add_wire(self: Pin<&mut MakeWire>, W: &TopoDS_Wire);
-        #[doc = "Adds  the edges of <L>   to the current  wire.  The edges are not to be consecutive.   But they are to be  all  connected geometrically or topologically. If some of them are  not connected the Status give DisconnectedWire but the \"Maker\" is Done() and you can get the  partial result. (ie connected to  the first edgeof the list <L>)"]
+        #[doc = "Adds  the edges of <L>   to the current  wire.  The\nedges are not to be consecutive.   But they are to\nbe  all  connected geometrically or topologically.\nIf some of them are  not connected the Status give\nDisconnectedWire but the \"Maker\" is Done() and you\ncan get the  partial result. (ie connected to  the\nfirst edgeof the list <L>)"]
         #[cxx_name = "Add"]
         fn add_listofshape(self: Pin<&mut MakeWire>, L: &TopTools_ListOfShape);
-        /// Returns true if this algorithm contains a valid wire. IsDone returns false if: -   there are no edges in the wire, or -   the last edge which you tried to add was not connectable.
+        /// Returns true if this algorithm contains a valid wire.
+        /// IsDone returns false if:
+        /// -   there are no edges in the wire, or
+        /// -   the last edge which you tried to add was not connectable.
         #[cxx_name = "IsDone"]
         fn is_done(self: &MakeWire) -> bool;
-        /// Returns the constructed wire; or the part of the wire under construction already built. Exceptions StdFail_NotDone if a wire is not built.
+        /// Returns the constructed wire; or the part of the wire
+        /// under construction already built.
+        /// Exceptions StdFail_NotDone if a wire is not built.
         #[cxx_name = "Wire"]
         fn wire(self: Pin<&mut MakeWire>) -> &TopoDS_Wire;
-        /// Returns the last edge added to the wire under construction. Warning -   This edge can be different from the original one (the argument of the function Add, for instance,) -   A null edge is returned if there are no edges in the wire under construction, or if the last edge which you tried to add was not connectable..
+        /// Returns the last edge added to the wire under construction.
+        /// Warning
+        /// -   This edge can be different from the original one (the
+        /// argument of the function Add, for instance,)
+        /// -   A null edge is returned if there are no edges in the
+        /// wire under construction, or if the last edge which you
+        /// tried to add was not connectable..
         #[cxx_name = "Edge"]
         fn edge(self: &MakeWire) -> &TopoDS_Edge;
-        /// Returns the last vertex of the last edge added to the wire under construction. Warning A null vertex is returned if there are no edges in the wire under construction, or if the last edge which you tried to add was not connectableR
+        /// Returns the last vertex of the last edge added to the
+        /// wire under construction.
+        /// Warning
+        /// A null vertex is returned if there are no edges in the wire
+        /// under construction, or if the last edge which you tried to
+        /// add was not connectableR
         #[cxx_name = "Vertex"]
         fn vertex(self: &MakeWire) -> &TopoDS_Vertex;
         /// Upcast BRepBuilderAPI_MakeWire to BRepBuilderAPI_Command
@@ -1514,12 +1956,38 @@ pub(crate) mod ffi {
         /// ======================== BRepBuilderAPI_Sewing ========================
         /// /// **Source:** `BRepBuilderAPI_Sewing.hxx` - `BRepBuilderAPI_Sewing`
         ///
-        /// Provides methods to - identify possible contiguous boundaries (for control afterwards (of continuity: C0, C1, ...)) - assemble contiguous shapes into one shape. Only manifold shapes will be found. Sewing will not be done in case of multiple edges. For sewing, use this function as following: - create an empty object - default tolerance 1.E-06 - with face analysis on - with sewing operation on - set the cutting option as you need (default True) - define a tolerance - add shapes to be sewed -> Add - compute -> Perform - output the resulted shapes - output free edges if necessary - output multiple edges if necessary - output the problems if any
+        /// Provides methods to
+        ///
+        /// - identify possible contiguous boundaries (for control
+        /// afterwards (of continuity: C0, C1, ...))
+        ///
+        /// - assemble contiguous shapes into one shape.
+        /// Only manifold shapes will be found. Sewing will not
+        /// be done in case of multiple edges.
+        ///
+        /// For sewing, use this function as following:
+        /// - create an empty object
+        /// - default tolerance 1.E-06
+        /// - with face analysis on
+        /// - with sewing operation on
+        /// - set the cutting option as you need (default True)
+        /// - define a tolerance
+        /// - add shapes to be sewed -> Add
+        /// - compute -> Perform
+        /// - output the resulted shapes
+        /// - output free edges if necessary
+        /// - output multiple edges if necessary
+        /// - output the problems if any
         #[cxx_name = "BRepBuilderAPI_Sewing"]
         type Sewing;
         /// /// **Source:** `BRepBuilderAPI_Sewing.hxx` - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
         ///
-        /// Creates an object with tolerance of connexity option for sewing (if false only control) option for analysis of degenerated shapes option for cutting of free edges. option for non manifold processing
+        /// Creates an object with
+        /// tolerance of connexity
+        /// option for sewing (if false only control)
+        /// option for analysis of degenerated shapes
+        /// option for cutting of free edges.
+        /// option for non manifold processing
         #[cxx_name = "BRepBuilderAPI_Sewing_ctor_real_bool4"]
         fn Sewing_ctor_real_bool4(
             tolerance: f64,
@@ -1544,10 +2012,13 @@ pub(crate) mod ffi {
         /// Defines the shapes to be sewed or controlled
         #[cxx_name = "Add"]
         fn add(self: Pin<&mut Sewing>, shape: &TopoDS_Shape);
-        /// Computing theProgress - progress indicator of algorithm
+        /// Computing
+        /// theProgress - progress indicator of algorithm
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut Sewing>, theProgress: &Message_ProgressRange);
-        /// Gives the sewed shape a null shape if nothing constructed may be a face, a shell, a solid or a compound
+        /// Gives the sewed shape
+        /// a null shape if nothing constructed
+        /// may be a face, a shell, a solid or a compound
         #[cxx_name = "SewedShape"]
         fn sewed_shape(self: &Sewing) -> &TopoDS_Shape;
         /// set context
@@ -1562,7 +2033,8 @@ pub(crate) mod ffi {
         /// Gives each free edge
         #[cxx_name = "FreeEdge"]
         fn free_edge(self: &Sewing, index: i32) -> &TopoDS_Edge;
-        /// Gives the number of multiple edges (edge shared by more than two faces)
+        /// Gives the number of multiple edges
+        /// (edge shared by more than two faces)
         #[cxx_name = "NbMultipleEdges"]
         fn nb_multiple_edges(self: &Sewing) -> i32;
         /// Gives each multiple edge
@@ -1580,7 +2052,11 @@ pub(crate) mod ffi {
         /// Indicates if a section is bound (before use SectionToBoundary)
         #[cxx_name = "IsSectionBound"]
         fn is_section_bound(self: &Sewing, section: &TopoDS_Edge) -> bool;
-        /// Gives the original edge (free boundary) which becomes the the section. Remember that sections constitute  common edges. This information is important for control because with original edge we can find the surface to which the section is attached.
+        /// Gives the original edge (free boundary) which becomes the
+        /// the section. Remember that sections constitute  common edges.
+        /// This information is important for control because with
+        /// original edge we can find the surface to which the section
+        /// is attached.
         #[cxx_name = "SectionToBoundary"]
         fn section_to_boundary(self: &Sewing, section: &TopoDS_Edge) -> &TopoDS_Edge;
         /// Gives the number of degenerated shapes
@@ -1643,19 +2119,26 @@ pub(crate) mod ffi {
         /// Returns mode for sewing floating edges By default - false.
         #[cxx_name = "FloatingEdgesMode"]
         fn floating_edges_mode(self: &Sewing) -> bool;
-        /// Sets mode for sewing floating edges By default - false. Returns mode for cutting floating edges By default - false. Sets mode for cutting floating edges By default - false.
+        /// Sets mode for sewing floating edges By default - false.
+        /// Returns mode for cutting floating edges By default - false.
+        /// Sets mode for cutting floating edges By default - false.
         #[cxx_name = "SetFloatingEdgesMode"]
         fn set_floating_edges_mode(self: Pin<&mut Sewing>, theFloatingEdgesMode: bool);
-        /// Returns mode for accounting of local tolerances of edges and vertices during of merging.
+        /// Returns mode for accounting of local tolerances
+        /// of edges and vertices during of merging.
         #[cxx_name = "LocalTolerancesMode"]
         fn local_tolerances_mode(self: &Sewing) -> bool;
-        /// Sets mode for accounting of local tolerances of edges and vertices during of merging in this case WorkTolerance = myTolerance + tolEdge1+ tolEdg2;
+        /// Sets mode for accounting of local tolerances
+        /// of edges and vertices during of merging
+        /// in this case WorkTolerance = myTolerance + tolEdge1+ tolEdg2;
         #[cxx_name = "SetLocalTolerancesMode"]
         fn set_local_tolerances_mode(self: Pin<&mut Sewing>, theLocalTolerancesMode: bool);
         /// Sets mode for non-manifold sewing.
         #[cxx_name = "SetNonManifoldMode"]
         fn set_non_manifold_mode(self: Pin<&mut Sewing>, theNonManifoldMode: bool);
-        /// Gets mode for non-manifold sewing. INTERNAL FUNCTIONS ---
+        /// Gets mode for non-manifold sewing.
+        ///
+        /// INTERNAL FUNCTIONS ---
         #[cxx_name = "NonManifoldMode"]
         fn non_manifold_mode(self: &Sewing) -> bool;
         #[cxx_name = "DynamicType"]
@@ -1681,17 +2164,37 @@ pub(crate) mod ffi {
         /// ======================== BRepBuilderAPI_Transform ========================
         /// /// **Source:** `BRepBuilderAPI_Transform.hxx` - `BRepBuilderAPI_Transform`
         ///
-        /// Geometric transformation on a shape. The transformation to be applied is defined as a gp_Trsf transformation, i.e. a transformation which does not modify the underlying geometry of shapes. The transformation is applied to: -   all curves which support edges of a shape, and -   all surfaces which support its faces. A Transform object provides a framework for: -   defining the geometric transformation to be applied, -   implementing the transformation algorithm, and -   consulting the results.
+        /// Geometric transformation on a shape.
+        /// The transformation to be applied is defined as a
+        /// gp_Trsf transformation, i.e. a transformation which does
+        /// not modify the underlying geometry of shapes.
+        /// The transformation is applied to:
+        /// -   all curves which support edges of a shape, and
+        /// -   all surfaces which support its faces.
+        /// A Transform object provides a framework for:
+        /// -   defining the geometric transformation to be applied,
+        /// -   implementing the transformation algorithm, and
+        /// -   consulting the results.
         #[cxx_name = "BRepBuilderAPI_Transform"]
         type Transform;
         /// /// **Source:** `BRepBuilderAPI_Transform.hxx` - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
         ///
-        /// Constructs a framework for applying the geometric transformation T to a shape. Use the function Perform to define the shape to transform.
+        /// Constructs a framework for applying the geometric
+        /// transformation T to a shape. Use the function Perform
+        /// to define the shape to transform.
         #[cxx_name = "BRepBuilderAPI_Transform_ctor_trsf"]
         fn Transform_ctor_trsf(T: &gp_Trsf) -> UniquePtr<Transform>;
         /// /// **Source:** `BRepBuilderAPI_Transform.hxx` - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
         ///
-        /// Creates a transformation from the gp_Trsf <theTrsf>, and applies it to the shape <theShape>. If the transformation is  direct   and isometric (determinant  =  1) and <theCopyGeom> =  Standard_False,  the resulting shape  is <theShape> on   which  a  new  location has    been  set. Otherwise,  the   transformation is applied   on a duplication of <theShape>. If <theCopyMesh> is true, the triangulation will be copied, and the copy will be assigned to the result shape.
+        /// Creates a transformation from the gp_Trsf <theTrsf>, and
+        /// applies it to the shape <theShape>. If the transformation
+        /// is  direct   and isometric (determinant  =  1) and
+        /// <theCopyGeom> =  Standard_False,  the resulting shape  is
+        /// <theShape> on   which  a  new  location has    been  set.
+        /// Otherwise,  the   transformation is applied   on a
+        /// duplication of <theShape>.
+        /// If <theCopyMesh> is true, the triangulation will be copied,
+        /// and the copy will be assigned to the result shape.
         #[cxx_name = "BRepBuilderAPI_Transform_ctor_shape_trsf_bool2"]
         fn Transform_ctor_shape_trsf_bool2(
             theShape: &TopoDS_Shape,
@@ -1699,7 +2202,20 @@ pub(crate) mod ffi {
             theCopyGeom: bool,
             theCopyMesh: bool,
         ) -> UniquePtr<Transform>;
-        /// Applies the geometric transformation defined at the time of construction of this framework to the shape S. - If the transformation T is direct and isometric, in other words, if the determinant of the vectorial part of T is equal to 1., and if theCopyGeom equals false (the default value), the resulting shape is the same as the original but with a new location assigned to it. - In all other cases, the transformation is applied to a duplicate of theShape. - If theCopyMesh is true, the triangulation will be copied, and the copy will be assigned to the result shape. Use the function Shape to access the result. Note: this framework can be reused to apply the same geometric transformation to other shapes. You only need to specify them by calling the function Perform again.
+        /// Applies the geometric transformation defined at the
+        /// time of construction of this framework to the shape S.
+        /// - If the transformation T is direct and isometric, in
+        /// other words, if the determinant of the vectorial part
+        /// of T is equal to 1., and if theCopyGeom equals false (the
+        /// default value), the resulting shape is the same as
+        /// the original but with a new location assigned to it.
+        /// - In all other cases, the transformation is applied to a duplicate of theShape.
+        /// - If theCopyMesh is true, the triangulation will be copied,
+        /// and the copy will be assigned to the result shape.
+        /// Use the function Shape to access the result.
+        /// Note: this framework can be reused to apply the same
+        /// geometric transformation to other shapes. You only
+        /// need to specify them by calling the function Perform again.
         #[cxx_name = "Perform"]
         fn perform(
             self: Pin<&mut Transform>,
@@ -1707,7 +2223,8 @@ pub(crate) mod ffi {
             theCopyGeom: bool,
             theCopyMesh: bool,
         );
-        /// Returns the list  of shapes modified from the shape <S>.
+        /// Returns the list  of shapes modified from the shape
+        /// <S>.
         #[cxx_name = "Modified"]
         fn modified(self: Pin<&mut Transform>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
         /// Returns the modified shape corresponding to <S>.
@@ -1735,13 +2252,35 @@ pub(crate) mod ffi {
         /// ======================== BRepBuilderAPI_ModifyShape ========================
         /// /// **Source:** `BRepBuilderAPI_ModifyShape.hxx` - `BRepBuilderAPI_ModifyShape`
         ///
-        /// Implements   the  methods   of MakeShape for   the constant  topology modifications.  The methods are implemented  when the modification uses a Modifier from BRepTools. Some of  them have to be redefined if  the  modification is  implemented with another tool (see Transform from BRepBuilderAPI for example). The BRepBuilderAPI package provides the following frameworks to perform modifications of this sort: -   BRepBuilderAPI_Copy to produce the copy of a shape, -   BRepBuilderAPI_Transform and BRepBuilderAPI_GTransform to apply a geometric transformation to a shape, -   BRepBuilderAPI_NurbsConvert to convert the whole geometry of a shape into NURBS geometry, -   BRepOffsetAPI_DraftAngle to build a tapered shape.
+        /// Implements   the  methods   of MakeShape for   the
+        /// constant  topology modifications.  The methods are
+        /// implemented  when the modification uses a Modifier
+        /// from BRepTools. Some of  them have to be redefined
+        /// if  the  modification is  implemented with another
+        /// tool (see Transform from BRepBuilderAPI for example).
+        /// The BRepBuilderAPI package provides the following
+        /// frameworks to perform modifications of this sort:
+        /// -   BRepBuilderAPI_Copy to produce the copy of a shape,
+        /// -   BRepBuilderAPI_Transform and
+        /// BRepBuilderAPI_GTransform to apply a geometric
+        /// transformation to a shape,
+        /// -   BRepBuilderAPI_NurbsConvert to convert the
+        /// whole geometry of a shape into NURBS geometry,
+        /// -   BRepOffsetAPI_DraftAngle to build a tapered shape.
         #[cxx_name = "BRepBuilderAPI_ModifyShape"]
         type ModifyShape;
-        /// Returns the list  of shapes modified from the shape <S>.
+        /// Returns the list  of shapes modified from the shape
+        /// <S>.
         #[cxx_name = "Modified"]
         fn modified(self: Pin<&mut ModifyShape>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        /// Returns the modified shape corresponding to <S>. S can correspond to the entire initial shape or to its subshape. Exceptions Standard_NoSuchObject if S is not the initial shape or a subshape of the initial shape to which the transformation has been applied. Raises NoSuchObject from Standard if S is not the initial shape or a sub-shape of the initial shape.
+        /// Returns the modified shape corresponding to <S>.
+        /// S can correspond to the entire initial shape or to its subshape.
+        /// Exceptions
+        /// Standard_NoSuchObject if S is not the initial shape or
+        /// a subshape of the initial shape to which the
+        /// transformation has been applied. Raises NoSuchObject from Standard
+        /// if S is not the initial shape or a sub-shape
+        /// of the initial shape.
         #[cxx_name = "BRepBuilderAPI_ModifyShape_ModifiedShape"]
         fn ModifyShape_modified_shape(
             self_: &ModifyShape,

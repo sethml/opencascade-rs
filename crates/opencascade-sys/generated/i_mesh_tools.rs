@@ -51,7 +51,8 @@ impl ModelBuilder {
         ffi::model_builder_as_message_algorithm_mut(self)
     }
 
-    /// Exceptions protected method to create discrete model for the given shape. Returns nullptr in case of failure.
+    /// Exceptions protected method to create discrete model for the given shape.
+    /// Returns nullptr in case of failure.
     pub fn perform(
         self: std::pin::Pin<&mut Self>,
         theShape: &ffi::TopoDS_Shape,
@@ -71,7 +72,8 @@ impl Parameters {
         ffi::Parameters_ctor()
     }
 
-    /// Returns factor used to compute default value of MinSize (minimum mesh edge length) from deflection
+    /// Returns factor used to compute default value of MinSize
+    /// (minimum mesh edge length) from deflection
     pub fn rel_min_size() -> f64 {
         ffi::Parameters_rel_min_size()
     }
@@ -93,7 +95,9 @@ pub(crate) mod ffi {
         /// ======================== IMeshTools_Context ========================
         /// /// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context`
         ///
-        /// Interface class representing context of BRepMesh algorithm. Intended to cache discrete model and instances of tools for its processing.
+        /// Interface class representing context of BRepMesh algorithm.
+        /// Intended to cache discrete model and instances of tools for
+        /// its processing.
         #[cxx_name = "IMeshTools_Context"]
         type Context;
         /// /// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context::IMeshTools_Context()`
@@ -101,22 +105,30 @@ pub(crate) mod ffi {
         /// Constructor.
         #[cxx_name = "IMeshTools_Context_ctor"]
         fn Context_ctor() -> UniquePtr<Context>;
-        /// Builds model using assigned model builder. @return True on success, False elsewhere.
+        /// Builds model using assigned model builder.
+        /// @return True on success, False elsewhere.
         #[cxx_name = "BuildModel"]
         fn build_model(self: Pin<&mut Context>) -> bool;
-        /// Performs discretization of model edges using assigned edge discret algorithm. @return True on success, False elsewhere.
+        /// Performs discretization of model edges using assigned edge discret algorithm.
+        /// @return True on success, False elsewhere.
         #[cxx_name = "DiscretizeEdges"]
         fn discretize_edges(self: Pin<&mut Context>) -> bool;
-        /// Performs healing of discrete model built by DiscretizeEdges() method using assigned healing algorithm. @return True on success, False elsewhere.
+        /// Performs healing of discrete model built by DiscretizeEdges() method
+        /// using assigned healing algorithm.
+        /// @return True on success, False elsewhere.
         #[cxx_name = "HealModel"]
         fn heal_model(self: Pin<&mut Context>) -> bool;
-        /// Performs pre-processing of discrete model using assigned algorithm. Performs auxiliary actions such as cleaning shape from old triangulation. @return True on success, False elsewhere.
+        /// Performs pre-processing of discrete model using assigned algorithm.
+        /// Performs auxiliary actions such as cleaning shape from old triangulation.
+        /// @return True on success, False elsewhere.
         #[cxx_name = "PreProcessModel"]
         fn pre_process_model(self: Pin<&mut Context>) -> bool;
-        /// Performs meshing of faces of discrete model using assigned meshing algorithm. @return True on success, False elsewhere.
+        /// Performs meshing of faces of discrete model using assigned meshing algorithm.
+        /// @return True on success, False elsewhere.
         #[cxx_name = "DiscretizeFaces"]
         fn discretize_faces(self: Pin<&mut Context>, theRange: &Message_ProgressRange) -> bool;
-        /// Performs post-processing of discrete model using assigned algorithm. @return True on success, False elsewhere.
+        /// Performs post-processing of discrete model using assigned algorithm.
+        /// @return True on success, False elsewhere.
         #[cxx_name = "PostProcessModel"]
         fn post_process_model(self: Pin<&mut Context>) -> bool;
         /// Cleans temporary context data.
@@ -183,12 +195,18 @@ pub(crate) mod ffi {
         /// ======================== IMeshTools_ModelBuilder ========================
         /// /// **Source:** `IMeshTools_ModelBuilder.hxx` - `IMeshTools_ModelBuilder`
         ///
-        /// Interface class represents API for tool building discrete model. The following statuses should be used by default: Message_Done1 - model has been successfully built. Message_Fail1 - empty shape. Message_Fail2 - model has not been build due to unexpected reason.
+        /// Interface class represents API for tool building discrete model.
+        ///
+        /// The following statuses should be used by default:
+        /// Message_Done1 - model has been successfully built.
+        /// Message_Fail1 - empty shape.
+        /// Message_Fail2 - model has not been build due to unexpected reason.
         #[cxx_name = "IMeshTools_ModelBuilder"]
         type ModelBuilder;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ModelBuilder) -> &HandleStandardType;
-        /// Exceptions protected method to create discrete model for the given shape. Returns nullptr in case of failure.
+        /// Exceptions protected method to create discrete model for the given shape.
+        /// Returns nullptr in case of failure.
         #[cxx_name = "IMeshTools_ModelBuilder_Perform"]
         fn ModelBuilder_perform(
             self_: Pin<&mut ModelBuilder>,
@@ -216,7 +234,8 @@ pub(crate) mod ffi {
         /// Default constructor
         #[cxx_name = "IMeshTools_Parameters_ctor"]
         fn Parameters_ctor() -> UniquePtr<Parameters>;
-        /// Returns factor used to compute default value of MinSize (minimum mesh edge length) from deflection
+        /// Returns factor used to compute default value of MinSize
+        /// (minimum mesh edge length) from deflection
         #[cxx_name = "IMeshTools_Parameters_RelMinSize"]
         fn Parameters_rel_min_size() -> f64;
         /// ======================== IMeshTools_ModelAlgo ========================

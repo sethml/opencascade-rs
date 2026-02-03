@@ -36,12 +36,16 @@ impl BasicEditor {
         ffi::BasicEditor_model(self)
     }
 
-    /// Sets a new unit from its name (param 15 of Global Section) Returns True if done, False if <name> is incorrect Remark : if <flag> has been set to 3 (user defined), <name> is then free
+    /// Sets a new unit from its name (param 15 of Global Section)
+    /// Returns True if done, False if <name> is incorrect
+    /// Remark : if <flag> has been set to 3 (user defined), <name>
+    /// is then free
     pub fn set_unit_name(self: std::pin::Pin<&mut Self>, name: &str) -> bool {
         ffi::BasicEditor_set_unit_name(self, name)
     }
 
-    /// From the name of unit, computes flag number, 0 if incorrect (in this case, user defined entity remains possible)
+    /// From the name of unit, computes flag number, 0 if incorrect
+    /// (in this case, user defined entity remains possible)
     pub fn unit_name_flag(name: &str) -> i32 {
         ffi::BasicEditor_unit_name_flag(name)
     }
@@ -76,24 +80,30 @@ impl BasicEditor {
         ffi::BasicEditor_drafting_max()
     }
 
-    /// Returns Flag corresponding to the scaling theValue. Returns 0 if there's no such flag.
+    /// Returns Flag corresponding to the scaling theValue.
+    /// Returns 0 if there's no such flag.
     pub fn get_flag_by_value(theValue: f64) -> i32 {
         ffi::BasicEditor_get_flag_by_value(theValue)
     }
 }
 pub use ffi::SpecificLib;
 impl SpecificLib {
-    /// Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources
+    /// Creates a Library which complies with a Protocol, that is :
+    /// Same class (criterium IsInstance)
+    /// This creation gets the Modules from the global set, those
+    /// which are bound to the given Protocol and its Resources
     pub fn new_handleprotocol(aprotocol: &ffi::HandleIGESDataProtocol) -> cxx::UniquePtr<Self> {
         ffi::SpecificLib_ctor_handleprotocol(aprotocol)
     }
 
-    /// Creates an empty Library : it will later by filled by method AddProtocol
+    /// Creates an empty Library : it will later by filled by method
+    /// AddProtocol
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::SpecificLib_ctor()
     }
 
-    /// Adds a couple (Module-Protocol) into the global definition set for this class of Library.
+    /// Adds a couple (Module-Protocol) into the global definition set
+    /// for this class of Library.
     pub fn set_global(
         amodule: &ffi::HandleIGESDataSpecificModule,
         aprotocol: &ffi::HandleIGESDataProtocol,
@@ -112,7 +122,15 @@ pub(crate) mod ffi {
         /// ======================== IGESData_BasicEditor ========================
         /// /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor`
         ///
-        /// This class provides various functions of basic edition, such as : - setting header unit (WARNING : DOES NOT convert entities) - computation of the status (Subordinate, UseFlag) of entities of IGES Entities on a whole model - auto correction of IGES Entities, defined both by DirChecker and by specific service AutoCorrect (this auto correction performs non-ambigious, rather logic, editions)
+        /// This class provides various functions of basic edition,
+        /// such as :
+        /// - setting header unit (WARNING : DOES NOT convert entities)
+        /// - computation of the status (Subordinate, UseFlag) of entities
+        /// of IGES Entities on a whole model
+        /// - auto correction of IGES Entities, defined both by DirChecker
+        /// and by specific service AutoCorrect
+        /// (this auto correction performs non-ambigious, rather logic,
+        /// editions)
         #[cxx_name = "IGESData_BasicEditor"]
         type BasicEditor;
         /// /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor::IGESData_BasicEditor()`
@@ -145,31 +163,48 @@ pub(crate) mod ffi {
             model: &HandleIGESDataIGESModel,
             protocol: &HandleIGESDataProtocol,
         );
-        /// Sets a new unit from its flag (param 14 of Global Section) Returns True if done, False if <flag> is incorrect
+        /// Sets a new unit from its flag (param 14 of Global Section)
+        /// Returns True if done, False if <flag> is incorrect
         #[cxx_name = "SetUnitFlag"]
         fn set_unit_flag(self: Pin<&mut BasicEditor>, flag: i32) -> bool;
-        /// Sets a new unit from its value in meters (rounded to the closest one, max gap 1%) Returns True if done, False if <val> is too far from a suitable value
+        /// Sets a new unit from its value in meters (rounded to the
+        /// closest one, max gap 1%)
+        /// Returns True if done, False if <val> is too far from a
+        /// suitable value
         #[cxx_name = "SetUnitValue"]
         fn set_unit_value(self: Pin<&mut BasicEditor>, val: f64) -> bool;
-        /// Applies unit value to convert header data : Resolution, MaxCoord, MaxLineWeight Applies unit only once after SetUnit... has been called, if <enforce> is given as True. It can be called just before writing the model to a file, i.e. when definitive values are finally known
+        /// Applies unit value to convert header data : Resolution,
+        /// MaxCoord, MaxLineWeight
+        /// Applies unit only once after SetUnit... has been called,
+        /// if <enforce> is given as True.
+        /// It can be called just before writing the model to a file,
+        /// i.e. when definitive values are finally known
         #[cxx_name = "ApplyUnit"]
         fn apply_unit(self: Pin<&mut BasicEditor>, enforce: bool);
-        /// Performs the re-computation of status on the whole model (Subordinate Status and Use Flag of each IGES Entity), which can have required values according the way they are referenced (see definitions of Logical use, Physical use, etc...)
+        /// Performs the re-computation of status on the whole model
+        /// (Subordinate Status and Use Flag of each IGES Entity), which
+        /// can have required values according the way they are referenced
+        /// (see definitions of Logical use, Physical use, etc...)
         #[cxx_name = "ComputeStatus"]
         fn compute_status(self: Pin<&mut BasicEditor>);
-        #[doc = "Performs auto-correction on an IGESEntity Returns True if something has changed, False if nothing done. Works with the specific IGES Services : DirChecker which allows to correct data in \"Directory Part\" of Entities (such as required values for status, or references to be null), and the specific IGES service OwnCorrect, which is specialised for each type of entity."]
+        #[doc = "Performs auto-correction on an IGESEntity\nReturns True if something has changed, False if nothing done.\n\nWorks with the specific IGES Services : DirChecker which\nallows to correct data in \"Directory Part\" of Entities (such\nas required values for status, or references to be null), and\nthe specific IGES service OwnCorrect, which is specialised for\neach type of entity."]
         #[cxx_name = "AutoCorrect"]
         fn auto_correct(self: Pin<&mut BasicEditor>, ent: &HandleIGESDataIGESEntity) -> bool;
-        /// Performs auto-correction on the whole Model Returns the count of modified entities
+        /// Performs auto-correction on the whole Model
+        /// Returns the count of modified entities
         #[cxx_name = "AutoCorrectModel"]
         fn auto_correct_model(self: Pin<&mut BasicEditor>) -> i32;
         /// Returns the designated model
         #[cxx_name = "IGESData_BasicEditor_Model"]
         fn BasicEditor_model(self_: &BasicEditor) -> UniquePtr<HandleIGESDataIGESModel>;
-        /// Sets a new unit from its name (param 15 of Global Section) Returns True if done, False if <name> is incorrect Remark : if <flag> has been set to 3 (user defined), <name> is then free
+        /// Sets a new unit from its name (param 15 of Global Section)
+        /// Returns True if done, False if <name> is incorrect
+        /// Remark : if <flag> has been set to 3 (user defined), <name>
+        /// is then free
         #[cxx_name = "IGESData_BasicEditor_SetUnitName"]
         fn BasicEditor_set_unit_name(self_: Pin<&mut BasicEditor>, name: &str) -> bool;
-        /// From the name of unit, computes flag number, 0 if incorrect (in this case, user defined entity remains possible)
+        /// From the name of unit, computes flag number, 0 if incorrect
+        /// (in this case, user defined entity remains possible)
         #[cxx_name = "IGESData_BasicEditor_UnitNameFlag"]
         fn BasicEditor_unit_name_flag(name: &str) -> i32;
         /// From the flag of unit, determines value in MM, 0 if incorrect
@@ -190,7 +225,8 @@ pub(crate) mod ffi {
         /// Returns the maximum allowed value for Drafting Flag
         #[cxx_name = "IGESData_BasicEditor_DraftingMax"]
         fn BasicEditor_drafting_max() -> i32;
-        /// Returns Flag corresponding to the scaling theValue. Returns 0 if there's no such flag.
+        /// Returns Flag corresponding to the scaling theValue.
+        /// Returns 0 if there's no such flag.
         #[cxx_name = "IGESData_BasicEditor_GetFlagByValue"]
         fn BasicEditor_get_flag_by_value(theValue: f64) -> i32;
         /// ======================== IGESData_SpecificLib ========================
@@ -199,26 +235,40 @@ pub(crate) mod ffi {
         type SpecificLib;
         /// /// **Source:** `IGESData_SpecificLib.hxx` - `IGESData_SpecificLib::IGESData_SpecificLib()`
         ///
-        /// Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources
+        /// Creates a Library which complies with a Protocol, that is :
+        /// Same class (criterium IsInstance)
+        /// This creation gets the Modules from the global set, those
+        /// which are bound to the given Protocol and its Resources
         #[cxx_name = "IGESData_SpecificLib_ctor_handleprotocol"]
         fn SpecificLib_ctor_handleprotocol(
             aprotocol: &HandleIGESDataProtocol,
         ) -> UniquePtr<SpecificLib>;
         /// /// **Source:** `IGESData_SpecificLib.hxx` - `IGESData_SpecificLib::IGESData_SpecificLib()`
         ///
-        /// Creates an empty Library : it will later by filled by method AddProtocol
+        /// Creates an empty Library : it will later by filled by method
+        /// AddProtocol
         #[cxx_name = "IGESData_SpecificLib_ctor"]
         fn SpecificLib_ctor() -> UniquePtr<SpecificLib>;
-        /// Adds a couple (Module-Protocol) to the Library, given the class of a Protocol. Takes Resources into account. (if <aprotocol> is not of type TheProtocol, it is not added)
+        /// Adds a couple (Module-Protocol) to the Library, given the
+        /// class of a Protocol. Takes Resources into account.
+        /// (if <aprotocol> is not of type TheProtocol, it is not added)
         #[cxx_name = "AddProtocol"]
         fn add_protocol(self: Pin<&mut SpecificLib>, aprotocol: &HandleStandardTransient);
-        /// Clears the list of Modules of a library (can be used to redefine the order of Modules before action : Clear then refill the Library by calls to AddProtocol)
+        /// Clears the list of Modules of a library (can be used to
+        /// redefine the order of Modules before action : Clear then
+        /// refill the Library by calls to AddProtocol)
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut SpecificLib>);
-        /// Sets a library to be defined with the complete Global list (all the couples Protocol/Modules recorded in it)
+        /// Sets a library to be defined with the complete Global list
+        /// (all the couples Protocol/Modules recorded in it)
         #[cxx_name = "SetComplete"]
         fn set_complete(self: Pin<&mut SpecificLib>);
-        /// Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType)
+        /// Selects a Module from the Library, given an Object.
+        /// Returns True if Select has succeeded, False else.
+        /// Also Returns (as arguments) the selected Module and the Case
+        /// Number determined by the associated Protocol.
+        /// If Select has failed, <module> is Null Handle and CN is zero.
+        /// (Select can work on any criterium, such as Object DynamicType)
         #[cxx_name = "Select"]
         fn select(
             self: &SpecificLib,
@@ -232,7 +282,8 @@ pub(crate) mod ffi {
         /// Returns True if there are more Modules to iterate on
         #[cxx_name = "More"]
         fn more(self: &SpecificLib) -> bool;
-        /// Iterates by getting the next Module in the list If there is none, the exception will be raised by Value
+        /// Iterates by getting the next Module in the list
+        /// If there is none, the exception will be raised by Value
         #[cxx_name = "Next"]
         fn next(self: Pin<&mut SpecificLib>);
         /// Returns the current Module in the Iteration
@@ -241,7 +292,8 @@ pub(crate) mod ffi {
         /// Returns the current Protocol in the Iteration
         #[cxx_name = "Protocol"]
         fn protocol(self: &SpecificLib) -> &HandleIGESDataProtocol;
-        /// Adds a couple (Module-Protocol) into the global definition set for this class of Library.
+        /// Adds a couple (Module-Protocol) into the global definition set
+        /// for this class of Library.
         #[cxx_name = "IGESData_SpecificLib_SetGlobal"]
         fn SpecificLib_set_global(
             amodule: &HandleIGESDataSpecificModule,

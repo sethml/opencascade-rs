@@ -15,7 +15,7 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Interpolate;
 impl Interpolate {
-    #[doc = "Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table   Points. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: -   points are not too close to each other, or -   tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be \"C2\" continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only \"C1\" continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning -   There must be at least 2 points in the table Points. -   If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. -   If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions -   Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. -   Standard_OutOfRange if: -   there are less than two points in the table Points, or -   conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected."]
+    #[doc = "Initializes an algorithm for constructing a\nconstrained BSpline curve passing through the points of the table   Points.\nTangential vectors can then be assigned, using the function Load.\nIf PeriodicFlag is true, the constrained BSpline\ncurve will be periodic and closed. In this case,\nthe junction point is the first point of the table Points.\nThe tolerance value Tolerance is used to check that:\n-   points are not too close to each other, or\n-   tangential vectors (defined using the\nfunction Load) are not too small.\nThe resulting BSpline curve will be \"C2\"\ncontinuous, except where a tangency\nconstraint is defined on a point through which\nthe curve passes (by using the Load function).\nIn this case, it will be only \"C1\" continuous.\nOnce all the constraints are defined, use the\nfunction Perform to compute the curve.\nWarning\n-   There must be at least 2 points in the table Points.\n-   If PeriodicFlag is false, there must be as\nmany parameters in the array Parameters as\nthere are points in the array Points.\n-   If PeriodicFlag is true, there must be one\nmore parameter in the table Parameters: this\nis used to give the parameter on the\nresulting BSpline curve of the junction point\nof the curve (which is also the first point of the table Points).\nExceptions\n-   Standard_ConstructionError if the\ndistance between two consecutive points in\nthe table Points is less than or equal to Tolerance.\n-   Standard_OutOfRange if:\n-   there are less than two points in the table Points, or\n-   conditions relating to the respective\nnumber of elements in the parallel tables\nPoints and Parameters are not respected."]
     pub fn new_handleharray1ofpnt_bool_real(
         Points: &ffi::HandleTColgpHArray1OfPnt,
         PeriodicFlag: bool,
@@ -24,7 +24,7 @@ impl Interpolate {
         ffi::Interpolate_ctor_handleharray1ofpnt_bool_real(Points, PeriodicFlag, Tolerance)
     }
 
-    #[doc = "Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table Points, where the parameters of each of its points are given by the parallel table Parameters. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: -   points are not too close to each other, or -   tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be \"C2\" continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only \"C1\" continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning -   There must be at least 2 points in the table Points. -   If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. -   If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions -   Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. -   Standard_OutOfRange if: -   there are less than two points in the table Points, or -   conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected."]
+    #[doc = "Initializes an algorithm for constructing a\nconstrained BSpline curve passing through the points of the table\nPoints, where the parameters of each of its\npoints are given by the parallel table Parameters.\nTangential vectors can then be assigned, using the function Load.\nIf PeriodicFlag is true, the constrained BSpline\ncurve will be periodic and closed. In this case,\nthe junction point is the first point of the table Points.\nThe tolerance value Tolerance is used to check that:\n-   points are not too close to each other, or\n-   tangential vectors (defined using the\nfunction Load) are not too small.\nThe resulting BSpline curve will be \"C2\"\ncontinuous, except where a tangency\nconstraint is defined on a point through which\nthe curve passes (by using the Load function).\nIn this case, it will be only \"C1\" continuous.\nOnce all the constraints are defined, use the\nfunction Perform to compute the curve.\nWarning\n-   There must be at least 2 points in the table Points.\n-   If PeriodicFlag is false, there must be as\nmany parameters in the array Parameters as\nthere are points in the array Points.\n-   If PeriodicFlag is true, there must be one\nmore parameter in the table Parameters: this\nis used to give the parameter on the\nresulting BSpline curve of the junction point\nof the curve (which is also the first point of the table Points).\nExceptions\n-   Standard_ConstructionError if the\ndistance between two consecutive points in\nthe table Points is less than or equal to Tolerance.\n-   Standard_OutOfRange if:\n-   there are less than two points in the table Points, or\n-   conditions relating to the respective\nnumber of elements in the parallel tables\nPoints and Parameters are not respected."]
     pub fn new_handleharray1ofpnt_handleharray1ofreal_bool_real(
         Points: &ffi::HandleTColgpHArray1OfPnt,
         Parameters: &ffi::HandleTColStdHArray1OfReal,
@@ -41,19 +41,22 @@ impl Interpolate {
 }
 pub use ffi::PointsToBSpline;
 impl PointsToBSpline {
-    /// Constructs an empty approximation algorithm. Use an Init function to define and build the BSpline curve.
+    /// Constructs an empty approximation algorithm.
+    /// Use an Init function to define and build the BSpline curve.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::PointsToBSpline_ctor()
     }
 }
 pub use ffi::ProjectPointOnCurve;
 impl ProjectPointOnCurve {
-    /// Creates an empty object. Use an Init function for further initialization.
+    /// Creates an empty object. Use an
+    /// Init function for further initialization.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ProjectPointOnCurve_ctor()
     }
 
-    /// Create the projection  of a  point  <P> on a curve <Curve>
+    /// Create the projection  of a  point  <P> on a curve
+    /// <Curve>
     pub fn new_pnt_handlecurve(
         P: &ffi::gp_Pnt,
         Curve: &ffi::HandleGeomCurve,
@@ -61,7 +64,8 @@ impl ProjectPointOnCurve {
         ffi::ProjectPointOnCurve_ctor_pnt_handlecurve(P, Curve)
     }
 
-    /// Create  the projection  of a point <P>  on a curve <Curve> limited by the two points of parameter Umin and Usup.
+    /// Create  the projection  of a point <P>  on a curve
+    /// <Curve> limited by the two points of parameter Umin and Usup.
     pub fn new_pnt_handlecurve_real2(
         P: &ffi::gp_Pnt,
         Curve: &ffi::HandleGeomCurve,
@@ -71,29 +75,43 @@ impl ProjectPointOnCurve {
         ffi::ProjectPointOnCurve_ctor_pnt_handlecurve_real2(P, Curve, Umin, Usup)
     }
 
-    /// Returns the orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
+    /// Returns the orthogonal projection
+    /// on the curve. Index is a number of a computed point.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+    /// NbPoints is the number of solution points.
     pub fn point(&self, Index: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::ProjectPointOnCurve_point(self, Index)
     }
 
-    /// Returns the nearest orthogonal projection of the point on the curve. Exceptions: StdFail_NotDone if this algorithm fails.
+    /// Returns the nearest orthogonal
+    /// projection of the point on the curve.
+    /// Exceptions: StdFail_NotDone if this algorithm fails.
     pub fn nearest_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::ProjectPointOnCurve_nearest_point(self)
     }
 }
 pub use ffi::ProjectPointOnSurf;
 impl ProjectPointOnSurf {
-    /// Creates an empty object. Use the Init function for further initialization.
+    /// Creates an empty object. Use the
+    /// Init function for further initialization.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ProjectPointOnSurf_ctor()
     }
 
-    /// Returns the orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
+    /// Returns the orthogonal projection
+    /// on the surface. Index is a number of a computed point.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+    /// NbPoints is the number of solution points.
     pub fn point(&self, Index: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::ProjectPointOnSurf_point(self, Index)
     }
 
-    /// Returns the nearest orthogonal projection of the point on the surface. Exceptions StdFail_NotDone if projection fails.
+    /// Returns the nearest orthogonal projection of the point
+    /// on the surface.
+    /// Exceptions
+    /// StdFail_NotDone if projection fails.
     pub fn nearest_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::ProjectPointOnSurf_nearest_point(self)
     }
@@ -109,12 +127,29 @@ pub(crate) mod ffi {
         /// ======================== GeomAPI_Interpolate ========================
         /// /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate`
         ///
-        /// This  class  is  used  to  interpolate a  BsplineCurve passing   through  an  array  of  points,  with  a  C2 Continuity if tangency is not requested at the point. If tangency is requested at the point the continuity will be C1.  If Perodicity is requested the curve will be closed and the junction will be the first point given. The curve will than be only C1 Describes functions for building a constrained 3D BSpline curve. The curve is defined by a table of points through which it passes, and if required: -   by a parallel table of reals which gives the value of the parameter of each point through which the resulting BSpline curve passes, and -   by vectors tangential to these points. An Interpolate object provides a framework for: -   defining the constraints of the BSpline curve, -   implementing the interpolation algorithm, and -   consulting the results.
+        /// This  class  is  used  to  interpolate a  BsplineCurve
+        /// passing   through  an  array  of  points,  with  a  C2
+        /// Continuity if tangency is not requested at the point.
+        /// If tangency is requested at the point the continuity will
+        /// be C1.  If Perodicity is requested the curve will be closed
+        /// and the junction will be the first point given. The curve
+        /// will than be only C1
+        /// Describes functions for building a constrained 3D BSpline curve.
+        /// The curve is defined by a table of points
+        /// through which it passes, and if required:
+        /// -   by a parallel table of reals which gives the
+        /// value of the parameter of each point through
+        /// which the resulting BSpline curve passes, and
+        /// -   by vectors tangential to these points.
+        /// An Interpolate object provides a framework for:
+        /// -   defining the constraints of the BSpline curve,
+        /// -   implementing the interpolation algorithm, and
+        /// -   consulting the results.
         #[cxx_name = "GeomAPI_Interpolate"]
         type Interpolate;
         /// /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate::GeomAPI_Interpolate()`
         ///
-        #[doc = "Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table   Points. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: -   points are not too close to each other, or -   tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be \"C2\" continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only \"C1\" continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning -   There must be at least 2 points in the table Points. -   If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. -   If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions -   Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. -   Standard_OutOfRange if: -   there are less than two points in the table Points, or -   conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected."]
+        #[doc = "Initializes an algorithm for constructing a\nconstrained BSpline curve passing through the points of the table   Points.\nTangential vectors can then be assigned, using the function Load.\nIf PeriodicFlag is true, the constrained BSpline\ncurve will be periodic and closed. In this case,\nthe junction point is the first point of the table Points.\nThe tolerance value Tolerance is used to check that:\n-   points are not too close to each other, or\n-   tangential vectors (defined using the\nfunction Load) are not too small.\nThe resulting BSpline curve will be \"C2\"\ncontinuous, except where a tangency\nconstraint is defined on a point through which\nthe curve passes (by using the Load function).\nIn this case, it will be only \"C1\" continuous.\nOnce all the constraints are defined, use the\nfunction Perform to compute the curve.\nWarning\n-   There must be at least 2 points in the table Points.\n-   If PeriodicFlag is false, there must be as\nmany parameters in the array Parameters as\nthere are points in the array Points.\n-   If PeriodicFlag is true, there must be one\nmore parameter in the table Parameters: this\nis used to give the parameter on the\nresulting BSpline curve of the junction point\nof the curve (which is also the first point of the table Points).\nExceptions\n-   Standard_ConstructionError if the\ndistance between two consecutive points in\nthe table Points is less than or equal to Tolerance.\n-   Standard_OutOfRange if:\n-   there are less than two points in the table Points, or\n-   conditions relating to the respective\nnumber of elements in the parallel tables\nPoints and Parameters are not respected."]
         #[cxx_name = "GeomAPI_Interpolate_ctor_handleharray1ofpnt_bool_real"]
         fn Interpolate_ctor_handleharray1ofpnt_bool_real(
             Points: &HandleTColgpHArray1OfPnt,
@@ -123,7 +158,7 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Interpolate>;
         /// /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate::GeomAPI_Interpolate()`
         ///
-        #[doc = "Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table Points, where the parameters of each of its points are given by the parallel table Parameters. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: -   points are not too close to each other, or -   tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be \"C2\" continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only \"C1\" continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning -   There must be at least 2 points in the table Points. -   If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. -   If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions -   Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. -   Standard_OutOfRange if: -   there are less than two points in the table Points, or -   conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected."]
+        #[doc = "Initializes an algorithm for constructing a\nconstrained BSpline curve passing through the points of the table\nPoints, where the parameters of each of its\npoints are given by the parallel table Parameters.\nTangential vectors can then be assigned, using the function Load.\nIf PeriodicFlag is true, the constrained BSpline\ncurve will be periodic and closed. In this case,\nthe junction point is the first point of the table Points.\nThe tolerance value Tolerance is used to check that:\n-   points are not too close to each other, or\n-   tangential vectors (defined using the\nfunction Load) are not too small.\nThe resulting BSpline curve will be \"C2\"\ncontinuous, except where a tangency\nconstraint is defined on a point through which\nthe curve passes (by using the Load function).\nIn this case, it will be only \"C1\" continuous.\nOnce all the constraints are defined, use the\nfunction Perform to compute the curve.\nWarning\n-   There must be at least 2 points in the table Points.\n-   If PeriodicFlag is false, there must be as\nmany parameters in the array Parameters as\nthere are points in the array Points.\n-   If PeriodicFlag is true, there must be one\nmore parameter in the table Parameters: this\nis used to give the parameter on the\nresulting BSpline curve of the junction point\nof the curve (which is also the first point of the table Points).\nExceptions\n-   Standard_ConstructionError if the\ndistance between two consecutive points in\nthe table Points is less than or equal to Tolerance.\n-   Standard_OutOfRange if:\n-   there are less than two points in the table Points, or\n-   conditions relating to the respective\nnumber of elements in the parallel tables\nPoints and Parameters are not respected."]
         #[cxx_name = "GeomAPI_Interpolate_ctor_handleharray1ofpnt_handleharray1ofreal_bool_real"]
         fn Interpolate_ctor_handleharray1ofpnt_handleharray1ofreal_bool_real(
             Points: &HandleTColgpHArray1OfPnt,
@@ -131,7 +166,12 @@ pub(crate) mod ffi {
             PeriodicFlag: bool,
             Tolerance: f64,
         ) -> UniquePtr<Interpolate>;
-        /// Assigns this constrained BSpline curve to be tangential to vectors InitialTangent and FinalTangent at its first and last points respectively (i.e. the first and last points of the table of points through which the curve passes, as defined at the time of initialization).
+        /// Assigns this constrained BSpline curve to be
+        /// tangential to vectors InitialTangent and FinalTangent
+        /// at its first and last points respectively (i.e.
+        /// the first and last points of the table of
+        /// points through which the curve passes, as
+        /// defined at the time of initialization).
         #[cxx_name = "Load"]
         fn load_vec2_bool(
             self: Pin<&mut Interpolate>,
@@ -139,7 +179,15 @@ pub(crate) mod ffi {
             FinalTangent: &gp_Vec,
             Scale: bool,
         );
-        /// Assigns this constrained BSpline curve to be tangential to vectors defined in the table Tangents, which is parallel to the table of points through which the curve passes, as defined at the time of initialization. Vectors in the table Tangents are defined only if the flag given in the parallel table TangentFlags is true: only these vectors are set as tangency constraints.
+        /// Assigns this constrained BSpline curve to be
+        /// tangential to vectors defined in the table Tangents,
+        /// which is parallel to the table of points
+        /// through which the curve passes, as
+        /// defined at the time of initialization. Vectors
+        /// in the table Tangents are defined only if
+        /// the flag given in the parallel table
+        /// TangentFlags is true: only these vectors
+        /// are set as tangency constraints.
         #[cxx_name = "Load"]
         fn load_array1ofvec_handleharray1ofboolean_bool(
             self: Pin<&mut Interpolate>,
@@ -147,30 +195,43 @@ pub(crate) mod ffi {
             TangentFlags: &HandleTColStdHArray1OfBoolean,
             Scale: bool,
         );
-        /// Clears all tangency constraints on this constrained BSpline curve (as initialized by the function Load).
+        /// Clears all tangency constraints on this
+        /// constrained BSpline curve (as initialized by the function Load).
         #[cxx_name = "ClearTangents"]
         fn clear_tangents(self: Pin<&mut Interpolate>);
-        /// Computes the constrained BSpline curve. Use the function IsDone to verify that the computation is successful, and then the function Curve to obtain the result.
+        /// Computes the constrained BSpline curve.
+        /// Use the function IsDone to verify that the
+        /// computation is successful, and then the function Curve to obtain the result.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut Interpolate>);
-        /// Returns the computed BSpline curve. Raises StdFail_NotDone if the interpolation fails.
+        /// Returns the computed BSpline curve.
+        /// Raises StdFail_NotDone if the interpolation fails.
         #[cxx_name = "Curve"]
         fn curve(self: &Interpolate) -> &HandleGeomBSplineCurve;
-        /// Returns true if the constrained BSpline curve is successfully constructed. Note: in this case, the result is given by the function Curve.
+        /// Returns true if the constrained BSpline curve is successfully constructed.
+        /// Note: in this case, the result is given by the function Curve.
         #[cxx_name = "IsDone"]
         fn is_done(self: &Interpolate) -> bool;
         /// ======================== GeomAPI_PointsToBSpline ========================
         /// /// **Source:** `GeomAPI_PointsToBSpline.hxx` - `GeomAPI_PointsToBSpline`
         ///
-        /// This  class  is  used  to  approximate a  BsplineCurve passing  through an  array  of points,  with  a  given Continuity. Describes functions for building a 3D BSpline curve which approximates a set of points. A PointsToBSpline object provides a framework for: -   defining the data of the BSpline curve to be built, -   implementing the approximation algorithm, and consulting the results.
+        /// This  class  is  used  to  approximate a  BsplineCurve
+        /// passing  through an  array  of points,  with  a  given Continuity.
+        /// Describes functions for building a 3D BSpline
+        /// curve which approximates a set of points.
+        /// A PointsToBSpline object provides a framework for:
+        /// -   defining the data of the BSpline curve to be built,
+        /// -   implementing the approximation algorithm, and consulting the results.
         #[cxx_name = "GeomAPI_PointsToBSpline"]
         type PointsToBSpline;
         /// /// **Source:** `GeomAPI_PointsToBSpline.hxx` - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
         ///
-        /// Constructs an empty approximation algorithm. Use an Init function to define and build the BSpline curve.
+        /// Constructs an empty approximation algorithm.
+        /// Use an Init function to define and build the BSpline curve.
         #[cxx_name = "GeomAPI_PointsToBSpline_ctor"]
         fn PointsToBSpline_ctor() -> UniquePtr<PointsToBSpline>;
-        /// Returns the computed BSpline curve. Raises StdFail_NotDone if the curve is not built.
+        /// Returns the computed BSpline curve.
+        /// Raises StdFail_NotDone if the curve is not built.
         #[cxx_name = "Curve"]
         fn curve(self: &PointsToBSpline) -> &HandleGeomBSplineCurve;
         #[cxx_name = "IsDone"]
@@ -178,17 +239,20 @@ pub(crate) mod ffi {
         /// ======================== GeomAPI_ProjectPointOnCurve ========================
         /// /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve`
         ///
-        /// This class implements methods for  computing all the orthogonal projections of a 3D point onto a  3D curve.
+        /// This class implements methods for  computing all the orthogonal
+        /// projections of a 3D point onto a  3D curve.
         #[cxx_name = "GeomAPI_ProjectPointOnCurve"]
         type ProjectPointOnCurve;
         /// /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
         ///
-        /// Creates an empty object. Use an Init function for further initialization.
+        /// Creates an empty object. Use an
+        /// Init function for further initialization.
         #[cxx_name = "GeomAPI_ProjectPointOnCurve_ctor"]
         fn ProjectPointOnCurve_ctor() -> UniquePtr<ProjectPointOnCurve>;
         /// /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
         ///
-        /// Create the projection  of a  point  <P> on a curve <Curve>
+        /// Create the projection  of a  point  <P> on a curve
+        /// <Curve>
         #[cxx_name = "GeomAPI_ProjectPointOnCurve_ctor_pnt_handlecurve"]
         fn ProjectPointOnCurve_ctor_pnt_handlecurve(
             P: &gp_Pnt,
@@ -196,7 +260,8 @@ pub(crate) mod ffi {
         ) -> UniquePtr<ProjectPointOnCurve>;
         /// /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
         ///
-        /// Create  the projection  of a point <P>  on a curve <Curve> limited by the two points of parameter Umin and Usup.
+        /// Create  the projection  of a point <P>  on a curve
+        /// <Curve> limited by the two points of parameter Umin and Usup.
         #[cxx_name = "GeomAPI_ProjectPointOnCurve_ctor_pnt_handlecurve_real2"]
         fn ProjectPointOnCurve_ctor_pnt_handlecurve_real2(
             P: &gp_Pnt,
@@ -204,14 +269,16 @@ pub(crate) mod ffi {
             Umin: f64,
             Usup: f64,
         ) -> UniquePtr<ProjectPointOnCurve>;
-        /// Init the projection  of a  point  <P> on a curve <Curve>
+        /// Init the projection  of a  point  <P> on a curve
+        /// <Curve>
         #[cxx_name = "Init"]
         fn init_pnt_handlecurve(
             self: Pin<&mut ProjectPointOnCurve>,
             P: &gp_Pnt,
             Curve: &HandleGeomCurve,
         );
-        /// Init  the  projection  of a  point <P>  on a curve <Curve> limited by the two points of parameter Umin and Usup.
+        /// Init  the  projection  of a  point <P>  on a curve
+        /// <Curve> limited by the two points of parameter Umin and Usup.
         #[cxx_name = "Init"]
         fn init_pnt_handlecurve_real2(
             self: Pin<&mut ProjectPointOnCurve>,
@@ -220,7 +287,8 @@ pub(crate) mod ffi {
             Umin: f64,
             Usup: f64,
         );
-        /// Init  the  projection  of a  point <P>  on a curve <Curve> limited by the two points of parameter Umin and Usup.
+        /// Init  the  projection  of a  point <P>  on a curve
+        /// <Curve> limited by the two points of parameter Umin and Usup.
         #[cxx_name = "Init"]
         fn init_handlecurve_real2(
             self: Pin<&mut ProjectPointOnCurve>,
@@ -231,42 +299,70 @@ pub(crate) mod ffi {
         /// Performs the projection of a point on the current curve.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut ProjectPointOnCurve>, P: &gp_Pnt);
-        /// Returns the number of computed orthogonal projection points. Note: if this algorithm fails, NbPoints returns 0.
+        /// Returns the number of computed
+        /// orthogonal projection points.
+        /// Note: if this algorithm fails, NbPoints returns 0.
         #[cxx_name = "NbPoints"]
         fn nb_points(self: &ProjectPointOnCurve) -> i32;
-        /// Returns the parameter on the curve of the point, which is the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
+        /// Returns the parameter on the curve
+        /// of the point, which is the orthogonal projection. Index is a
+        /// number of a computed point.
+        /// Exceptions
+        /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+        /// NbPoints is the number of solution points.
         #[cxx_name = "Parameter"]
         fn parameter_int(self: &ProjectPointOnCurve, Index: i32) -> f64;
-        /// Returns the parameter on the curve of the point, which is the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.-
+        /// Returns the parameter on the curve
+        /// of the point, which is the orthogonal projection. Index is a
+        /// number of a computed point.
+        /// Exceptions
+        /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+        /// NbPoints is the number of solution points.-
         #[cxx_name = "Parameter"]
         fn parameter_int_real(self: &ProjectPointOnCurve, Index: i32, U: &mut f64);
-        /// Computes the distance between the point and its orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
+        /// Computes the distance between the
+        /// point and its orthogonal projection on the curve. Index is a number of a computed point.
+        /// Exceptions
+        /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+        /// NbPoints is the number of solution points.
         #[cxx_name = "Distance"]
         fn distance(self: &ProjectPointOnCurve, Index: i32) -> f64;
-        /// Returns the parameter on the curve of the nearest orthogonal projection of the point. Exceptions: StdFail_NotDone if this algorithm fails.
+        /// Returns the parameter on the curve
+        /// of the nearest orthogonal projection of the point.
+        /// Exceptions: StdFail_NotDone if this algorithm fails.
         #[cxx_name = "LowerDistanceParameter"]
         fn lower_distance_parameter(self: &ProjectPointOnCurve) -> f64;
-        /// Computes the distance between the point and its nearest orthogonal projection on the curve. Exceptions: StdFail_NotDone if this algorithm fails.
+        /// Computes the distance between the
+        /// point and its nearest orthogonal projection on the curve.
+        /// Exceptions: StdFail_NotDone if this algorithm fails.
         #[cxx_name = "LowerDistance"]
         fn lower_distance(self: &ProjectPointOnCurve) -> f64;
         /// return the algorithmic object from Extrema
         #[cxx_name = "Extrema"]
         fn extrema(self: &ProjectPointOnCurve) -> &Extrema_ExtPC;
-        /// Returns the orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
+        /// Returns the orthogonal projection
+        /// on the curve. Index is a number of a computed point.
+        /// Exceptions
+        /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+        /// NbPoints is the number of solution points.
         #[cxx_name = "GeomAPI_ProjectPointOnCurve_Point"]
         fn ProjectPointOnCurve_point(self_: &ProjectPointOnCurve, Index: i32) -> UniquePtr<gp_Pnt>;
-        /// Returns the nearest orthogonal projection of the point on the curve. Exceptions: StdFail_NotDone if this algorithm fails.
+        /// Returns the nearest orthogonal
+        /// projection of the point on the curve.
+        /// Exceptions: StdFail_NotDone if this algorithm fails.
         #[cxx_name = "GeomAPI_ProjectPointOnCurve_NearestPoint"]
         fn ProjectPointOnCurve_nearest_point(self_: &ProjectPointOnCurve) -> UniquePtr<gp_Pnt>;
         /// ======================== GeomAPI_ProjectPointOnSurf ========================
         /// /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx` - `GeomAPI_ProjectPointOnSurf`
         ///
-        /// This class implements methods for  computing all the orthogonal projections of a point onto a  surface.
+        /// This class implements methods for  computing all the orthogonal
+        /// projections of a point onto a  surface.
         #[cxx_name = "GeomAPI_ProjectPointOnSurf"]
         type ProjectPointOnSurf;
         /// /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx` - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
         ///
-        /// Creates an empty object. Use the Init function for further initialization.
+        /// Creates an empty object. Use the
+        /// Init function for further initialization.
         #[cxx_name = "GeomAPI_ProjectPointOnSurf_ctor"]
         fn ProjectPointOnSurf_ctor() -> UniquePtr<ProjectPointOnSurf>;
         /// Performs the projection of a point on the current surface.
@@ -274,28 +370,52 @@ pub(crate) mod ffi {
         fn perform(self: Pin<&mut ProjectPointOnSurf>, P: &gp_Pnt);
         #[cxx_name = "IsDone"]
         fn is_done(self: &ProjectPointOnSurf) -> bool;
-        /// Returns the number of computed orthogonal projection points. Note: if projection fails, NbPoints returns 0.
+        /// Returns the number of computed orthogonal projection points.
+        /// Note: if projection fails, NbPoints returns 0.
         #[cxx_name = "NbPoints"]
         fn nb_points(self: &ProjectPointOnSurf) -> i32;
-        /// Returns the parameters (U,V) on the surface of the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
+        /// Returns the parameters (U,V) on the
+        /// surface of the orthogonal projection. Index is a number of a
+        /// computed point.
+        /// Exceptions
+        /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+        /// NbPoints is the number of solution points.
         #[cxx_name = "Parameters"]
         fn parameters(self: &ProjectPointOnSurf, Index: i32, U: &mut f64, V: &mut f64);
-        /// Computes the distance between the point and its orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
+        /// Computes the distance between the
+        /// point and its orthogonal projection on the surface. Index is a number
+        /// of a computed point.
+        /// Exceptions
+        /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+        /// NbPoints is the number of solution points.
         #[cxx_name = "Distance"]
         fn distance(self: &ProjectPointOnSurf, Index: i32) -> f64;
-        /// Returns the parameters (U,V) on the surface of the nearest computed orthogonal projection of the point. Exceptions StdFail_NotDone if projection fails.
+        /// Returns the parameters (U,V) on the
+        /// surface of the nearest computed orthogonal projection of the point.
+        /// Exceptions
+        /// StdFail_NotDone if projection fails.
         #[cxx_name = "LowerDistanceParameters"]
         fn lower_distance_parameters(self: &ProjectPointOnSurf, U: &mut f64, V: &mut f64);
-        /// Computes the distance between the point and its nearest orthogonal projection on the surface. Exceptions StdFail_NotDone if projection fails.
+        /// Computes the distance between the
+        /// point and its nearest orthogonal projection on the surface.
+        /// Exceptions
+        /// StdFail_NotDone if projection fails.
         #[cxx_name = "LowerDistance"]
         fn lower_distance(self: &ProjectPointOnSurf) -> f64;
         /// return the algorithmic object from Extrema
         #[cxx_name = "Extrema"]
         fn extrema(self: &ProjectPointOnSurf) -> &Extrema_ExtPS;
-        /// Returns the orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
+        /// Returns the orthogonal projection
+        /// on the surface. Index is a number of a computed point.
+        /// Exceptions
+        /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+        /// NbPoints is the number of solution points.
         #[cxx_name = "GeomAPI_ProjectPointOnSurf_Point"]
         fn ProjectPointOnSurf_point(self_: &ProjectPointOnSurf, Index: i32) -> UniquePtr<gp_Pnt>;
-        /// Returns the nearest orthogonal projection of the point on the surface. Exceptions StdFail_NotDone if projection fails.
+        /// Returns the nearest orthogonal projection of the point
+        /// on the surface.
+        /// Exceptions
+        /// StdFail_NotDone if projection fails.
         #[cxx_name = "GeomAPI_ProjectPointOnSurf_NearestPoint"]
         fn ProjectPointOnSurf_nearest_point(self_: &ProjectPointOnSurf) -> UniquePtr<gp_Pnt>;
 

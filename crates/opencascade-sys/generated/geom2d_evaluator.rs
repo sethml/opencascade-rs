@@ -36,7 +36,8 @@ pub(crate) mod ffi {
         /// ======================== Geom2dEvaluator_Curve ========================
         /// /// **Source:** `Geom2dEvaluator_Curve.hxx` - `Geom2dEvaluator_Curve`
         ///
-        /// Interface for calculation of values and derivatives for different kinds of curves in 2D. Works both with adaptors and curves.
+        /// Interface for calculation of values and derivatives for different kinds of curves in 2D.
+        /// Works both with adaptors and curves.
         #[cxx_name = "Geom2dEvaluator_Curve"]
         type Curve;
         /// Value of 2D curve

@@ -46,7 +46,10 @@ impl Curve {
         ffi::Curve_shallow_copy(self)
     }
 
-    /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+    /// Returns    a  curve equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
     pub fn trim(
         &self,
         First: f64,
@@ -61,7 +64,11 @@ impl Curve {
         ffi::Curve_value(self, U)
     }
 
-    /// The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec2d> {
         ffi::Curve_dn(self, U, N)
     }
@@ -109,7 +116,13 @@ pub(crate) mod ffi {
         /// ======================== Geom2dAdaptor_Curve ========================
         /// /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve`
         ///
-        /// An interface between the services provided by any curve from the package Geom2d and those required of the curve by algorithms which use it. Polynomial coefficients of BSpline curves used for their evaluation are cached for better performance. Therefore these evaluations are not thread-safe and parallel evaluations need to be prevented.
+        /// An interface between the services provided by any
+        /// curve from the package Geom2d and those required
+        /// of the curve by algorithms which use it.
+        ///
+        /// Polynomial coefficients of BSpline curves used for their evaluation are
+        /// cached for better performance. Therefore these evaluations are not
+        /// thread-safe and parallel evaluations need to be prevented.
         #[cxx_name = "Geom2dAdaptor_Curve"]
         type Curve;
         /// /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
@@ -157,10 +170,16 @@ pub(crate) mod ffi {
         /// Computes the point of parameter U.
         #[cxx_name = "D0"]
         fn d0(self: &Curve, U: f64, P: Pin<&mut gp_Pnt2d>);
-        /// Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
+        /// Computes the point of parameter U on the curve with its
+        /// first derivative.
+        /// Raised if the continuity of the current interval
+        /// is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &Curve, U: f64, P: Pin<&mut gp_Pnt2d>, V: Pin<&mut gp_Vec2d>);
-        /// Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
+        /// Returns the point P of parameter U, the first and second
+        /// derivatives V1 and V2.
+        /// Raised if the continuity of the current interval
+        /// is not C2.
         #[cxx_name = "D2"]
         fn d2(
             self: &Curve,
@@ -169,7 +188,10 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec2d>,
             V2: Pin<&mut gp_Vec2d>,
         );
-        /// Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
+        /// Returns the point P of parameter U, the first, the second
+        /// and the third derivative.
+        /// Raised if the continuity of the current interval
+        /// is not C3.
         #[cxx_name = "D3"]
         fn d3(
             self: &Curve,
@@ -195,7 +217,10 @@ pub(crate) mod ffi {
         /// Shallow copy of adaptor
         #[cxx_name = "Geom2dAdaptor_Curve_ShallowCopy"]
         fn Curve_shallow_copy(self_: &Curve) -> UniquePtr<HandleAdaptor2dCurve2d>;
-        /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
+        /// Returns    a  curve equivalent   of  <me>  between
+        /// parameters <First>  and <Last>. <Tol>  is used  to
+        /// test for 3d points confusion.
+        /// If <First> >= <Last>
         #[cxx_name = "Geom2dAdaptor_Curve_Trim"]
         fn Curve_trim(
             self_: &Curve,
@@ -206,7 +231,11 @@ pub(crate) mod ffi {
         /// Computes the point of parameter U on the curve
         #[cxx_name = "Geom2dAdaptor_Curve_Value"]
         fn Curve_value(self_: &Curve, U: f64) -> UniquePtr<gp_Pnt2d>;
-        /// The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
+        /// The returned vector gives the value of the derivative for the
+        /// order of derivation N.
+        /// Raised if the continuity of the current interval
+        /// is not CN.
+        /// Raised if N < 1.
         #[cxx_name = "Geom2dAdaptor_Curve_DN"]
         fn Curve_dn(self_: &Curve, U: f64, N: i32) -> UniquePtr<gp_Vec2d>;
         #[cxx_name = "Geom2dAdaptor_Curve_Line"]

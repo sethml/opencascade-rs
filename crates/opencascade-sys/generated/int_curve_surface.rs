@@ -58,14 +58,17 @@ pub(crate) mod ffi {
         /// Empty Constructor
         #[cxx_name = "IntCurveSurface_HInter_ctor"]
         fn HInter_ctor() -> UniquePtr<HInter>;
-        /// Compute the Intersection between the curve and the surface
+        /// Compute the Intersection between the curve and the
+        /// surface
         #[cxx_name = "Perform"]
         fn perform_handlecurve_handlesurface(
             self: Pin<&mut HInter>,
             Curve: &HandleAdaptor3dCurve,
             Surface: &HandleAdaptor3dSurface,
         );
-        /// Compute the Intersection  between the curve  and the surface. The   Curve is already  sampled and its polygon : <Polygon> is given.
+        /// Compute the Intersection  between the curve  and
+        /// the surface. The   Curve is already  sampled and
+        /// its polygon : <Polygon> is given.
         #[cxx_name = "Perform"]
         fn perform_handlecurve_thepolygonofhinter_handlesurface(
             self: Pin<&mut HInter>,
@@ -73,7 +76,10 @@ pub(crate) mod ffi {
             Polygon: &IntCurveSurface_ThePolygonOfHInter,
             Surface: &HandleAdaptor3dSurface,
         );
-        /// Compute the Intersection  between the curve  and the surface. The   Curve is already  sampled and its polygon : <Polygon> is given. The Surface is also sampled and <Polyhedron> is given.
+        /// Compute the Intersection  between the curve  and
+        /// the surface. The   Curve is already  sampled and
+        /// its polygon : <Polygon> is given. The Surface is
+        /// also sampled and <Polyhedron> is given.
         #[cxx_name = "Perform"]
         fn perform_handlecurve_thepolygonofhinter_handlesurface_thepolyhedronofhinter(
             self: Pin<&mut HInter>,
@@ -82,7 +88,10 @@ pub(crate) mod ffi {
             Surface: &HandleAdaptor3dSurface,
             Polyhedron: &IntCurveSurface_ThePolyhedronOfHInter,
         );
-        /// Compute the Intersection  between the curve  and the surface. The   Curve is already  sampled and its polygon : <Polygon> is given. The Surface is also sampled and <Polyhedron> is given.
+        /// Compute the Intersection  between the curve  and
+        /// the surface. The   Curve is already  sampled and
+        /// its polygon : <Polygon> is given. The Surface is
+        /// also sampled and <Polyhedron> is given.
         #[cxx_name = "Perform"]
         fn perform_handlecurve_thepolygonofhinter_handlesurface_thepolyhedronofhinter_boundsortbox(
             self: Pin<&mut HInter>,
@@ -92,7 +101,9 @@ pub(crate) mod ffi {
             Polyhedron: &IntCurveSurface_ThePolyhedronOfHInter,
             BndBSB: Pin<&mut Bnd_BoundSortBox>,
         );
-        /// Compute the Intersection  between the curve  and the surface. The Surface is already  sampled and its polyhedron : <Polyhedron> is given.
+        /// Compute the Intersection  between the curve  and
+        /// the surface. The Surface is already  sampled and
+        /// its polyhedron : <Polyhedron> is given.
         #[cxx_name = "Perform"]
         fn perform_handlecurve_handlesurface_thepolyhedronofhinter(
             self: Pin<&mut HInter>,
@@ -103,7 +114,9 @@ pub(crate) mod ffi {
         /// ======================== IntCurveSurface_IntersectionSegment ========================
         /// /// **Source:** `IntCurveSurface_IntersectionSegment.hxx` - `IntCurveSurface_IntersectionSegment`
         ///
-        /// A IntersectionSegment describes a segment of curve (w1,w2) where distance(C(w),Surface) is less than a given tolerances.
+        /// A IntersectionSegment describes a segment of curve
+        /// (w1,w2) where distance(C(w),Surface) is less than a
+        /// given tolerances.
         #[cxx_name = "IntCurveSurface_IntersectionSegment"]
         type IntersectionSegment;
         /// /// **Source:** `IntCurveSurface_IntersectionSegment.hxx` - `IntCurveSurface_IntersectionSegment::IntCurveSurface_IntersectionSegment()`
@@ -146,7 +159,8 @@ pub(crate) mod ffi {
         /// ======================== IntCurveSurface_IntersectionPoint ========================
         /// /// **Source:** `IntCurveSurface_IntersectionPoint.hxx` - `IntCurveSurface_IntersectionPoint`
         ///
-        /// Definition of an interserction point between a curve and a surface.
+        /// Definition of an interserction point between a
+        /// curve and a surface.
         #[cxx_name = "IntCurveSurface_IntersectionPoint"]
         type IntersectionPoint;
         /// /// **Source:** `IntCurveSurface_IntersectionPoint.hxx` - `IntCurveSurface_IntersectionPoint::IntCurveSurface_IntersectionPoint()`

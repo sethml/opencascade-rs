@@ -20,12 +20,21 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::IncrementalMesh;
 impl IncrementalMesh {
-    /// @name mesher API Default constructor
+    /// @name mesher API
+    /// Default constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::IncrementalMesh_ctor()
     }
 
-    /// Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theLinDeflection linear deflection. @param isRelative if TRUE deflection used for discretization of each edge will be <theLinDeflection> * <size of edge>. Deflection used for the faces will be the maximum deflection of their edges. @param theAngDeflection angular deflection. @param isInParallel if TRUE shape will be meshed in parallel.
+    /// Constructor.
+    /// Automatically calls method Perform.
+    /// @param theShape shape to be meshed.
+    /// @param theLinDeflection linear deflection.
+    /// @param isRelative if TRUE deflection used for discretization of
+    /// each edge will be <theLinDeflection> * <size of edge>. Deflection
+    /// used for the faces will be the maximum deflection of their edges.
+    /// @param theAngDeflection angular deflection.
+    /// @param isInParallel if TRUE shape will be meshed in parallel.
     pub fn new_shape_real_bool_real_bool(
         theShape: &ffi::TopoDS_Shape,
         theLinDeflection: f64,
@@ -42,7 +51,10 @@ impl IncrementalMesh {
         )
     }
 
-    /// Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theParameters - parameters of meshing
+    /// Constructor.
+    /// Automatically calls method Perform.
+    /// @param theShape shape to be meshed.
+    /// @param theParameters - parameters of meshing
     pub fn new_shape_parameters_progressrange(
         theShape: &ffi::TopoDS_Shape,
         theParameters: &ffi::IMeshTools_Parameters,
@@ -61,12 +73,14 @@ impl IncrementalMesh {
         ffi::incremental_mesh_as_discret_root_mut(self)
     }
 
-    /// Returns multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories).
+    /// Returns multi-threading usage flag set by default in
+    /// Discret() static method (thus applied only to Mesh Factories).
     pub fn is_parallel_default() -> bool {
         ffi::IncrementalMesh_is_parallel_default()
     }
 
-    /// Setup multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories).
+    /// Setup multi-threading usage flag set by default in
+    /// Discret() static method (thus applied only to Mesh Factories).
     pub fn set_parallel_default(isInParallel: bool) {
         ffi::IncrementalMesh_set_parallel_default(isInParallel)
     }
@@ -95,7 +109,9 @@ impl Circle {
         ffi::Circle_ctor()
     }
 
-    /// Constructor. @param theLocation location of a circle. @param theRadius radius of a circle.
+    /// Constructor.
+    /// @param theLocation location of a circle.
+    /// @param theRadius radius of a circle.
     pub fn new_xy_real(theLocation: &ffi::gp_XY, theRadius: f64) -> cxx::UniquePtr<Self> {
         ffi::Circle_ctor_xy_real(theLocation, theRadius)
     }
@@ -156,17 +172,27 @@ pub(crate) mod ffi {
         /// ======================== BRepMesh_IncrementalMesh ========================
         /// /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh`
         ///
-        /// Builds the mesh of a shape with respect of their correctly triangulated parts
+        /// Builds the mesh of a shape with respect of their
+        /// correctly triangulated parts
         #[cxx_name = "BRepMesh_IncrementalMesh"]
         type IncrementalMesh;
         /// /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
         ///
-        /// @name mesher API Default constructor
+        /// @name mesher API
+        /// Default constructor
         #[cxx_name = "BRepMesh_IncrementalMesh_ctor"]
         fn IncrementalMesh_ctor() -> UniquePtr<IncrementalMesh>;
         /// /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
         ///
-        /// Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theLinDeflection linear deflection. @param isRelative if TRUE deflection used for discretization of each edge will be <theLinDeflection> * <size of edge>. Deflection used for the faces will be the maximum deflection of their edges. @param theAngDeflection angular deflection. @param isInParallel if TRUE shape will be meshed in parallel.
+        /// Constructor.
+        /// Automatically calls method Perform.
+        /// @param theShape shape to be meshed.
+        /// @param theLinDeflection linear deflection.
+        /// @param isRelative if TRUE deflection used for discretization of
+        /// each edge will be <theLinDeflection> * <size of edge>. Deflection
+        /// used for the faces will be the maximum deflection of their edges.
+        /// @param theAngDeflection angular deflection.
+        /// @param isInParallel if TRUE shape will be meshed in parallel.
         #[cxx_name = "BRepMesh_IncrementalMesh_ctor_shape_real_bool_real_bool"]
         fn IncrementalMesh_ctor_shape_real_bool_real_bool(
             theShape: &TopoDS_Shape,
@@ -177,7 +203,10 @@ pub(crate) mod ffi {
         ) -> UniquePtr<IncrementalMesh>;
         /// /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
         ///
-        /// Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theParameters - parameters of meshing
+        /// Constructor.
+        /// Automatically calls method Perform.
+        /// @param theShape shape to be meshed.
+        /// @param theParameters - parameters of meshing
         #[cxx_name = "BRepMesh_IncrementalMesh_ctor_shape_parameters_progressrange"]
         fn IncrementalMesh_ctor_shape_parameters_progressrange(
             theShape: &TopoDS_Shape,
@@ -194,7 +223,8 @@ pub(crate) mod ffi {
             theContext: &HandleIMeshToolsContext,
             theRange: &Message_ProgressRange,
         );
-        /// @name accessing to parameters. Returns meshing parameters
+        /// @name accessing to parameters.
+        /// Returns meshing parameters
         #[cxx_name = "Parameters"]
         fn parameters(self: &IncrementalMesh) -> &IMeshTools_Parameters;
         /// Returns modifiable meshing parameters
@@ -208,10 +238,12 @@ pub(crate) mod ffi {
         fn get_status_flags(self: &IncrementalMesh) -> i32;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &IncrementalMesh) -> &HandleStandardType;
-        /// Returns multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories).
+        /// Returns multi-threading usage flag set by default in
+        /// Discret() static method (thus applied only to Mesh Factories).
         #[cxx_name = "BRepMesh_IncrementalMesh_IsParallelDefault"]
         fn IncrementalMesh_is_parallel_default() -> bool;
-        /// Setup multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories).
+        /// Setup multi-threading usage flag set by default in
+        /// Discret() static method (thus applied only to Mesh Factories).
         #[cxx_name = "BRepMesh_IncrementalMesh_SetParallelDefault"]
         fn IncrementalMesh_set_parallel_default(isInParallel: bool);
         #[cxx_name = "BRepMesh_IncrementalMesh_get_type_name"]
@@ -227,7 +259,8 @@ pub(crate) mod ffi {
         /// ======================== BRepMesh_DiscretRoot ========================
         /// /// **Source:** `BRepMesh_DiscretRoot.hxx` - `BRepMesh_DiscretRoot`
         ///
-        /// This is a common interface for meshing algorithms instantiated by Mesh Factory and implemented by plugins.
+        /// This is a common interface for meshing algorithms
+        /// instantiated by Mesh Factory and implemented by plugins.
         #[cxx_name = "BRepMesh_DiscretRoot"]
         type DiscretRoot;
         /// Set the shape to triangulate.
@@ -248,7 +281,9 @@ pub(crate) mod ffi {
         /// ======================== BRepMesh_Vertex ========================
         /// /// **Source:** `BRepMesh_Vertex.hxx` - `BRepMesh_Vertex`
         ///
-        /// Light weighted structure representing vertex of the mesh in parametric space. Vertex could be associated with 3d point stored in external map.
+        /// Light weighted structure representing vertex
+        /// of the mesh in parametric space. Vertex could be
+        /// associated with 3d point stored in external map.
         #[cxx_name = "BRepMesh_Vertex"]
         type Vertex;
         /// /// **Source:** `BRepMesh_Vertex.hxx` - `BRepMesh_Vertex::BRepMesh_Vertex()`
@@ -265,13 +300,16 @@ pub(crate) mod ffi {
         /// Returns index of 3d point associated with the vertex.
         #[cxx_name = "Location3d"]
         fn location3d(self: &Vertex) -> i32;
-        /// Checks for equality with another vertex. @param theOther vertex to be checked against this one. @return TRUE if equal, FALSE if not.
+        /// Checks for equality with another vertex.
+        /// @param theOther vertex to be checked against this one.
+        /// @return TRUE if equal, FALSE if not.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &Vertex, theOther: &Vertex) -> bool;
         /// ======================== BRepMesh_Circle ========================
         /// /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle`
         ///
-        /// Describes a 2d circle with a size of only 3 Standard_Real numbers instead of gp who needs 7 Standard_Real numbers.
+        /// Describes a 2d circle with a size of only 3 Standard_Real
+        /// numbers instead of gp who needs 7 Standard_Real numbers.
         #[cxx_name = "BRepMesh_Circle"]
         type Circle;
         /// /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle::BRepMesh_Circle()`
@@ -281,13 +319,17 @@ pub(crate) mod ffi {
         fn Circle_ctor() -> UniquePtr<Circle>;
         /// /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle::BRepMesh_Circle()`
         ///
-        /// Constructor. @param theLocation location of a circle. @param theRadius radius of a circle.
+        /// Constructor.
+        /// @param theLocation location of a circle.
+        /// @param theRadius radius of a circle.
         #[cxx_name = "BRepMesh_Circle_ctor_xy_real"]
         fn Circle_ctor_xy_real(theLocation: &gp_XY, theRadius: f64) -> UniquePtr<Circle>;
-        /// Sets location of a circle. @param theLocation location of a circle.
+        /// Sets location of a circle.
+        /// @param theLocation location of a circle.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut Circle>, theLocation: &gp_XY);
-        /// Sets radius of a circle. @param theRadius radius of a circle.
+        /// Sets radius of a circle.
+        /// @param theRadius radius of a circle.
         #[cxx_name = "SetRadius"]
         fn set_radius(self: Pin<&mut Circle>, theRadius: f64);
         /// Returns location of a circle.
@@ -299,7 +341,8 @@ pub(crate) mod ffi {
         /// ======================== BRepMesh_Triangle ========================
         /// /// **Source:** `BRepMesh_Triangle.hxx` - `BRepMesh_Triangle`
         ///
-        /// Light weighted structure representing triangle of mesh consisting of oriented links.
+        /// Light weighted structure representing triangle
+        /// of mesh consisting of oriented links.
         #[cxx_name = "BRepMesh_Triangle"]
         type Triangle;
         /// /// **Source:** `BRepMesh_Triangle.hxx` - `BRepMesh_Triangle::BRepMesh_Triangle()`
@@ -307,13 +350,17 @@ pub(crate) mod ffi {
         /// Default constructor.
         #[cxx_name = "BRepMesh_Triangle_ctor"]
         fn Triangle_ctor() -> UniquePtr<Triangle>;
-        /// Checks for equality with another triangle. @param theOther triangle to be checked against this one. @return TRUE if equal, FALSE if not.
+        /// Checks for equality with another triangle.
+        /// @param theOther triangle to be checked against this one.
+        /// @return TRUE if equal, FALSE if not.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &Triangle, theOther: &Triangle) -> bool;
         /// ======================== BRepMesh_PairOfIndex ========================
         /// /// **Source:** `BRepMesh_PairOfIndex.hxx` - `BRepMesh_PairOfIndex`
         ///
-        /// This class represents a pair of integer indices to store element indices connected to link. It is restricted to store more than two indices in it.
+        /// This class represents a pair of integer indices to store
+        /// element indices connected to link. It is restricted to
+        /// store more than two indices in it.
         #[cxx_name = "BRepMesh_PairOfIndex"]
         type PairOfIndex;
         /// /// **Source:** `BRepMesh_PairOfIndex.hxx` - `BRepMesh_PairOfIndex::BRepMesh_PairOfIndex()`
@@ -342,13 +389,17 @@ pub(crate) mod ffi {
         /// Returns last index of pair
         #[cxx_name = "LastIndex"]
         fn last_index(self: &PairOfIndex) -> i32;
-        /// Returns index corresponding to the given position in the pair. @param thePairPos position of index in the pair (1 or 2).
+        /// Returns index corresponding to the given position in the pair.
+        /// @param thePairPos position of index in the pair (1 or 2).
         #[cxx_name = "Index"]
         fn index(self: &PairOfIndex, thePairPos: i32) -> i32;
-        /// Sets index corresponding to the given position in the pair. @param thePairPos position of index in the pair (1 or 2). @param theIndex index to be stored.
+        /// Sets index corresponding to the given position in the pair.
+        /// @param thePairPos position of index in the pair (1 or 2).
+        /// @param theIndex index to be stored.
         #[cxx_name = "SetIndex"]
         fn set_index(self: Pin<&mut PairOfIndex>, thePairPos: i32, theIndex: i32);
-        /// Remove index from the given position. @param thePairPos position of index in the pair (1 or 2).
+        /// Remove index from the given position.
+        /// @param thePairPos position of index in the pair (1 or 2).
         #[cxx_name = "RemoveIndex"]
         fn remove_index(self: Pin<&mut PairOfIndex>, thePairPos: i32);
         /// ======================== BRepMesh_Edge ========================
@@ -362,10 +413,14 @@ pub(crate) mod ffi {
         /// Default constructor.
         #[cxx_name = "BRepMesh_Edge_ctor"]
         fn Edge_ctor() -> UniquePtr<Edge>;
-        /// Checks if the given edge and this one have the same orientation. @param theOther edge to be checked against this one. \\return TRUE if edges have the same orientation, FALSE if not.
+        /// Checks if the given edge and this one have the same orientation.
+        /// @param theOther edge to be checked against this one.
+        /// \\return TRUE if edges have the same orientation, FALSE if not.
         #[cxx_name = "IsSameOrientation"]
         fn is_same_orientation(self: &Edge, theOther: &Edge) -> bool;
-        /// Checks for equality with another edge. @param theOther edge to be checked against this one. @return TRUE if equal, FALSE if not.
+        /// Checks for equality with another edge.
+        /// @param theOther edge to be checked against this one.
+        /// @return TRUE if equal, FALSE if not.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &Edge, theOther: &Edge) -> bool;
         /// Upcast BRepMesh_Edge to BRepMesh_OrientedEdge
@@ -396,7 +451,9 @@ pub(crate) mod ffi {
         /// Returns index of last node of the Link.
         #[cxx_name = "LastNode"]
         fn last_node(self: &OrientedEdge) -> i32;
-        /// Checks this and other edge for equality. @param theOther edge to be checked against this one. @return TRUE if edges have the same orientation, FALSE if not.
+        /// Checks this and other edge for equality.
+        /// @param theOther edge to be checked against this one.
+        /// @return TRUE if edges have the same orientation, FALSE if not.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &OrientedEdge, theOther: &OrientedEdge) -> bool;
 

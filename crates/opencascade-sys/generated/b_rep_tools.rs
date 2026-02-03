@@ -15,7 +15,8 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::BRepTools;
 impl BRepTools {
-    /// Returns in UMin,  UMax, VMin,  VMax  the  bounding values in the parametric space of F.
+    /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
+    /// values in the parametric space of F.
     pub fn uv_bounds_face_real4(
         F: &ffi::TopoDS_Face,
         UMin: &mut f64,
@@ -26,7 +27,8 @@ impl BRepTools {
         ffi::BRepTools_uv_bounds_face_real4(F, UMin, UMax, VMin, VMax)
     }
 
-    /// Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the wire in the parametric space of F.
+    /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
+    /// values of the wire in the parametric space of F.
     pub fn uv_bounds_face_wire_real4(
         F: &ffi::TopoDS_Face,
         W: &ffi::TopoDS_Wire,
@@ -38,7 +40,8 @@ impl BRepTools {
         ffi::BRepTools_uv_bounds_face_wire_real4(F, W, UMin, UMax, VMin, VMax)
     }
 
-    /// Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the edge in the parametric space of F.
+    /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
+    /// values of the edge in the parametric space of F.
     pub fn uv_bounds_face_edge_real4(
         F: &ffi::TopoDS_Face,
         E: &ffi::TopoDS_Edge,
@@ -50,12 +53,14 @@ impl BRepTools {
         ffi::BRepTools_uv_bounds_face_edge_real4(F, E, UMin, UMax, VMin, VMax)
     }
 
-    /// Adds  to  the box <B>  the bounding values in  the parametric space of F.
+    /// Adds  to  the box <B>  the bounding values in  the
+    /// parametric space of F.
     pub fn add_uv_bounds_face_box2d(F: &ffi::TopoDS_Face, B: std::pin::Pin<&mut ffi::Bnd_Box2d>) {
         ffi::BRepTools_add_uv_bounds_face_box2d(F, B)
     }
 
-    /// Adds  to the box  <B>  the bounding  values of the wire in the parametric space of F.
+    /// Adds  to the box  <B>  the bounding  values of the
+    /// wire in the parametric space of F.
     pub fn add_uv_bounds_face_wire_box2d(
         F: &ffi::TopoDS_Face,
         W: &ffi::TopoDS_Wire,
@@ -64,7 +69,8 @@ impl BRepTools {
         ffi::BRepTools_add_uv_bounds_face_wire_box2d(F, W, B)
     }
 
-    /// Adds to  the box <B>  the  bounding values  of the edge in the parametric space of F.
+    /// Adds to  the box <B>  the  bounding values  of the
+    /// edge in the parametric space of F.
     pub fn add_uv_bounds_face_edge_box2d(
         F: &ffi::TopoDS_Face,
         E: &ffi::TopoDS_Edge,
@@ -118,12 +124,22 @@ impl BRepTools {
         ffi::BRepTools_update_shape(S)
     }
 
-    /// For each edge of the face <F> reset the UV points to the bounding points of the parametric curve of the edge on the face.
+    /// For each edge of the face <F> reset the UV points
+    /// to the bounding points of the parametric curve of the
+    /// edge on the face.
     pub fn update_face_uv_points(theF: &ffi::TopoDS_Face) {
         ffi::BRepTools_update_face_uv_points(theF)
     }
 
-    /// Removes all cached polygonal representation of the shape, i.e. the triangulations of the faces of <S> and polygons on triangulations and polygons 3d of the edges. In case polygonal representation is the only available representation for the shape (shape does not have geometry) it is not removed. @param[in] theShape   the shape to clean @param[in] theForce   allows removing all polygonal representations from the shape, including polygons on triangulations irrelevant for the faces of the given shape.
+    /// Removes all cached polygonal representation of the shape,
+    /// i.e. the triangulations of the faces of <S> and polygons on
+    /// triangulations and polygons 3d of the edges.
+    /// In case polygonal representation is the only available representation
+    /// for the shape (shape does not have geometry) it is not removed.
+    /// @param[in] theShape   the shape to clean
+    /// @param[in] theForce   allows removing all polygonal representations from the shape,
+    /// including polygons on triangulations irrelevant for the faces of the
+    /// given shape.
     pub fn clean(theShape: &ffi::TopoDS_Shape, theForce: bool) {
         ffi::BRepTools_clean(theShape, theForce)
     }
@@ -133,12 +149,21 @@ impl BRepTools {
         ffi::BRepTools_clean_geometry(theShape)
     }
 
-    /// Removes all the pcurves of the edges of <S> that refer to surfaces not belonging to any face of <S>
+    /// Removes all the pcurves of the edges of <S> that
+    /// refer to surfaces not belonging to any face of <S>
     pub fn remove_unused_p_curves(S: &ffi::TopoDS_Shape) {
         ffi::BRepTools_remove_unused_p_curves(S)
     }
 
-    /// Verifies that each Face from the shape has got a triangulation with a deflection smaller or equal to specified one and the Edges a discretization on this triangulation. @param[in] theShape    shape to verify @param[in] theLinDefl  maximum allowed linear deflection @param[in] theToCheckFreeEdges  if TRUE, then free Edges are required to have 3D polygon @return FALSE if input Shape contains Faces without triangulation, or that triangulation has worse (greater) deflection than specified one, or Edges in Shape lack polygons on triangulation or free Edges in Shape lack 3D polygons
+    /// Verifies that each Face from the shape has got a triangulation with a deflection smaller or
+    /// equal to specified one and the Edges a discretization on this triangulation.
+    /// @param[in] theShape    shape to verify
+    /// @param[in] theLinDefl  maximum allowed linear deflection
+    /// @param[in] theToCheckFreeEdges  if TRUE, then free Edges are required to have 3D polygon
+    /// @return FALSE if input Shape contains Faces without triangulation,
+    /// or that triangulation has worse (greater) deflection than specified one,
+    /// or Edges in Shape lack polygons on triangulation
+    /// or free Edges in Shape lack 3D polygons
     pub fn triangulation(
         theShape: &ffi::TopoDS_Shape,
         theLinDefl: f64,
@@ -147,7 +172,17 @@ impl BRepTools {
         ffi::BRepTools_triangulation(theShape, theLinDefl, theToCheckFreeEdges)
     }
 
-    /// Loads triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape             shape to load triangulations @param[in] theTriangulationIdx  index defining what triangulation should be loaded. Starts from 0. -1 is used in specific case to load currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be loaded for it. Exception will be thrown in case of invalid negative index @param[in] theToSetAsActive     flag to activate triangulation after its loading @param[in] theFileSystem        shared file system @return TRUE if at least one triangulation is loaded.
+    /// Loads triangulation data for each face of the shape
+    /// from some deferred storage using specified shared input file system
+    /// @param[in] theShape             shape to load triangulations
+    /// @param[in] theTriangulationIdx  index defining what triangulation should be loaded. Starts
+    /// from 0.
+    /// -1 is used in specific case to load currently already active triangulation.
+    /// If some face doesn't contain triangulation with this index, nothing will be loaded for
+    /// it. Exception will be thrown in case of invalid negative index
+    /// @param[in] theToSetAsActive     flag to activate triangulation after its loading
+    /// @param[in] theFileSystem        shared file system
+    /// @return TRUE if at least one triangulation is loaded.
     pub fn load_triangulation(
         theShape: &ffi::TopoDS_Shape,
         theTriangulationIdx: i32,
@@ -162,12 +197,31 @@ impl BRepTools {
         )
     }
 
-    /// Releases triangulation data for each face of the shape if there is deferred storage to load it later @param[in] theShape             shape to unload triangulations @param[in] theTriangulationIdx  index defining what triangulation should be unloaded. Starts from 0. -1 is used in specific case to unload currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be unloaded for it. Exception will be thrown in case of invalid negative index @return TRUE if at least one triangulation is unloaded.
+    /// Releases triangulation data for each face of the shape if there is deferred storage to load it
+    /// later
+    /// @param[in] theShape             shape to unload triangulations
+    /// @param[in] theTriangulationIdx  index defining what triangulation should be unloaded. Starts
+    /// from 0.
+    /// -1 is used in specific case to unload currently already active triangulation.
+    /// If some face doesn't contain triangulation with this index, nothing will be unloaded
+    /// for it. Exception will be thrown in case of invalid negative index
+    /// @return TRUE if at least one triangulation is unloaded.
     pub fn unload_triangulation(theShape: &ffi::TopoDS_Shape, theTriangulationIdx: i32) -> bool {
         ffi::BRepTools_unload_triangulation(theShape, theTriangulationIdx)
     }
 
-    /// Activates triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape               shape to activate triangulations @param[in] theTriangulationIdx    index defining what triangulation should be activated. Starts from 0. Exception will be thrown in case of invalid negative index @param[in] theToActivateStrictly  flag to activate exactly triangulation with defined theTriangulationIdx index. In TRUE case if some face doesn't contain triangulation with this index, active triangulation will not be changed for it. Else the last available triangulation will be activated. @return TRUE if at least one active triangulation was changed.
+    /// Activates triangulation data for each face of the shape
+    /// from some deferred storage using specified shared input file system
+    /// @param[in] theShape               shape to activate triangulations
+    /// @param[in] theTriangulationIdx    index defining what triangulation should be activated.
+    /// Starts from 0.
+    /// Exception will be thrown in case of invalid negative index
+    /// @param[in] theToActivateStrictly  flag to activate exactly triangulation with defined
+    /// theTriangulationIdx index.
+    /// In TRUE case if some face doesn't contain triangulation with this index, active
+    /// triangulation will not be changed for it. Else the last available triangulation will be
+    /// activated.
+    /// @return TRUE if at least one active triangulation was changed.
     pub fn activate_triangulation(
         theShape: &ffi::TopoDS_Shape,
         theTriangulationIdx: i32,
@@ -176,7 +230,11 @@ impl BRepTools {
         ffi::BRepTools_activate_triangulation(theShape, theTriangulationIdx, theToActivateStrictly)
     }
 
-    /// Loads all available triangulations for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape       shape to load triangulations @param[in] theFileSystem  shared file system @return TRUE if at least one triangulation is loaded.
+    /// Loads all available triangulations for each face of the shape
+    /// from some deferred storage using specified shared input file system
+    /// @param[in] theShape       shape to load triangulations
+    /// @param[in] theFileSystem  shared file system
+    /// @return TRUE if at least one triangulation is loaded.
     pub fn load_all_triangulations(
         theShape: &ffi::TopoDS_Shape,
         theFileSystem: &ffi::HandleOSDFileSystem,
@@ -184,27 +242,34 @@ impl BRepTools {
         ffi::BRepTools_load_all_triangulations(theShape, theFileSystem)
     }
 
-    /// Releases all available triangulations for each face of the shape if there is deferred storage to load them later @param[in] theShape       shape to unload triangulations @return TRUE if at least one triangulation is unloaded.
+    /// Releases all available triangulations for each face of the shape if there is deferred storage
+    /// to load them later
+    /// @param[in] theShape       shape to unload triangulations
+    /// @return TRUE if at least one triangulation is unloaded.
     pub fn unload_all_triangulations(theShape: &ffi::TopoDS_Shape) -> bool {
         ffi::BRepTools_unload_all_triangulations(theShape)
     }
 
-    /// Returns  True if  the    distance between the  two vertices is lower than their tolerance.
+    /// Returns  True if  the    distance between the  two
+    /// vertices is lower than their tolerance.
     pub fn compare_vertex2(V1: &ffi::TopoDS_Vertex, V2: &ffi::TopoDS_Vertex) -> bool {
         ffi::BRepTools_compare_vertex2(V1, V2)
     }
 
-    /// Returns  True if  the    distance between the  two edges is lower than their tolerance.
+    /// Returns  True if  the    distance between the  two
+    /// edges is lower than their tolerance.
     pub fn compare_edge2(E1: &ffi::TopoDS_Edge, E2: &ffi::TopoDS_Edge) -> bool {
         ffi::BRepTools_compare_edge2(E1, E2)
     }
 
-    /// Returns the outer most wire of <F>. Returns a Null wire if <F> has no wires.
+    /// Returns the outer most wire of <F>. Returns a Null
+    /// wire if <F> has no wires.
     pub fn outer_wire(F: &ffi::TopoDS_Face) -> cxx::UniquePtr<ffi::TopoDS_Wire> {
         ffi::BRepTools_outer_wire(F)
     }
 
-    /// Stores in the map  <M> all the 3D topology edges of <S>.
+    /// Stores in the map  <M> all the 3D topology edges
+    /// of <S>.
     pub fn map3_d_edges(
         S: &ffi::TopoDS_Shape,
         M: std::pin::Pin<&mut ffi::TopTools_IndexedMapOfShape>,
@@ -212,7 +277,8 @@ impl BRepTools {
         ffi::BRepTools_map3_d_edges(S, M)
     }
 
-    /// Verifies that the edge  <E> is found two  times on the face <F> before calling BRep_Tool::IsClosed.
+    /// Verifies that the edge  <E> is found two  times on
+    /// the face <F> before calling BRep_Tool::IsClosed.
     pub fn is_really_closed(E: &ffi::TopoDS_Edge, F: &ffi::TopoDS_Face) -> bool {
         ffi::BRepTools_is_really_closed(E, F)
     }
@@ -226,7 +292,11 @@ impl BRepTools {
         ffi::BRepTools_detect_closedness(theFace, theUclosed, theVclosed)
     }
 
-    /// Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1. This alias writes shape with triangulation data. @param[in] theShape  the shape to write @param[in] theFile   the path to file to output shape into @param theProgress the range of progress indicator to fill in
+    /// Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1.
+    /// This alias writes shape with triangulation data.
+    /// @param[in] theShape  the shape to write
+    /// @param[in] theFile   the path to file to output shape into
+    /// @param theProgress the range of progress indicator to fill in
     pub fn write_shape_charptr_progressrange(
         theShape: &ffi::TopoDS_Shape,
         theFile: &str,
@@ -235,7 +305,8 @@ impl BRepTools {
         ffi::BRepTools_write_shape_charptr_progressrange(theShape, theFile, theProgress)
     }
 
-    /// Reads a Shape  from <File>,  returns it in  <Sh>. <B> is used to build the shape.
+    /// Reads a Shape  from <File>,  returns it in  <Sh>.
+    /// <B> is used to build the shape.
     pub fn read_shape_charptr_builder_progressrange(
         Sh: std::pin::Pin<&mut ffi::TopoDS_Shape>,
         File: &str,
@@ -245,7 +316,12 @@ impl BRepTools {
         ffi::BRepTools_read_shape_charptr_builder_progressrange(Sh, File, B, theProgress)
     }
 
-    /// Evals real tolerance of edge  <theE>. <theC3d>, <theC2d>, <theS>, <theF>, <theL> are correspondently 3d curve of edge, 2d curve on surface <theS> and rang of edge If calculated tolerance is more then current edge tolerance, edge is updated. Method returns actual tolerance of edge
+    /// Evals real tolerance of edge  <theE>.
+    /// <theC3d>, <theC2d>, <theS>, <theF>, <theL> are
+    /// correspondently 3d curve of edge, 2d curve on surface <theS> and
+    /// rang of edge
+    /// If calculated tolerance is more then current edge tolerance, edge is updated.
+    /// Method returns actual tolerance of edge
     pub fn eval_and_update_tol(
         theE: &ffi::TopoDS_Edge,
         theC3d: &ffi::HandleGeomCurve,
@@ -257,12 +333,20 @@ impl BRepTools {
         ffi::BRepTools_eval_and_update_tol(theE, theC3d, theC2d, theS, theF, theL)
     }
 
-    /// Removes internal sub-shapes from the shape. The check on internal status is based on orientation of sub-shapes, classification is not performed. Before removal of internal sub-shapes the algorithm checks if such removal is not going to break topological connectivity between sub-shapes. The flag <theForce> if set to true disables the connectivity check and clears the given shape from all sub-shapes with internal orientation.
+    /// Removes internal sub-shapes from the shape.
+    /// The check on internal status is based on orientation of sub-shapes,
+    /// classification is not performed.
+    /// Before removal of internal sub-shapes the algorithm checks if such
+    /// removal is not going to break topological connectivity between sub-shapes.
+    /// The flag <theForce> if set to true disables the connectivity check and clears
+    /// the given shape from all sub-shapes with internal orientation.
     pub fn remove_internals(theS: std::pin::Pin<&mut ffi::TopoDS_Shape>, theForce: bool) {
         ffi::BRepTools_remove_internals(theS, theForce)
     }
 
-    /// Check all locations of shape according criterium: aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec()) All sub-shapes having such locations are put in list theProblemShapes
+    /// Check all locations of shape according criterium:
+    /// aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec())
+    /// All sub-shapes having such locations are put in list theProblemShapes
     pub fn check_locations(
         theS: &ffi::TopoDS_Shape,
         theProblemShapes: std::pin::Pin<&mut ffi::TopTools_ListOfShape>,
@@ -272,7 +356,8 @@ impl BRepTools {
 }
 pub use ffi::History;
 impl History {
-    /// @name Constructors for History creation Empty constructor
+    /// @name Constructors for History creation
+    /// Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::History_ctor()
     }
@@ -304,7 +389,8 @@ impl Modifier {
         ffi::Modifier_ctor_shape(S)
     }
 
-    /// Creates a modifier on  the shape <S>, and performs the modifications described by <M>.
+    /// Creates a modifier on  the shape <S>, and performs
+    /// the modifications described by <M>.
     pub fn new_shape_handlemodification(
         S: &ffi::TopoDS_Shape,
         M: &ffi::HandleBRepToolsModification,
@@ -324,7 +410,10 @@ impl ReShape {
         ffi::ReShape_to_handle(obj)
     }
 
-    /// Returns the new value for an individual shape If not recorded, returns the original shape itself If to be Removed, returns a Null Shape Else, returns the replacing item
+    /// Returns the new value for an individual shape
+    /// If not recorded, returns the original shape itself
+    /// If to be Removed, returns a Null Shape
+    /// Else, returns the replacing item
     pub fn value(&self, shape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::ReShape_value(self, shape)
     }
@@ -366,10 +455,40 @@ pub(crate) mod ffi {
         /// ======================== BRepTools ========================
         /// /// **Source:** `BRepTools.hxx` - `BRepTools`
         ///
-        /// The BRepTools package provides  utilities for BRep data structures. * WireExplorer : A tool to explore the topology of a wire in the order of the edges. * ShapeSet :  Tools used for  dumping, writing and reading. * UVBounds : Methods to compute the  limits of the boundary  of a  face,  a wire or   an edge in  the parametric space of a face. *  Update : Methods  to call when   a topology has been created to compute all missing data. * UpdateFaceUVPoints: Method to update the UV points stored with the edges on a face. * Compare : Method to compare two vertices. * Compare : Method to compare two edges. * OuterWire : A method to find the outer wire of a face. * Map3DEdges : A method to map all the 3D Edges of a Shape. * Dump : A method to dump a BRep object.
+        /// The BRepTools package provides  utilities for BRep
+        /// data structures.
+        ///
+        /// * WireExplorer : A tool to explore the topology of
+        /// a wire in the order of the edges.
+        ///
+        /// * ShapeSet :  Tools used for  dumping, writing and
+        /// reading.
+        ///
+        /// * UVBounds : Methods to compute the  limits of the
+        /// boundary  of a  face,  a wire or   an edge in  the
+        /// parametric space of a face.
+        ///
+        /// *  Update : Methods  to call when   a topology has
+        /// been created to compute all missing data.
+        ///
+        /// * UpdateFaceUVPoints: Method to update the UV points
+        /// stored with the edges on a face.
+        ///
+        /// * Compare : Method to compare two vertices.
+        ///
+        /// * Compare : Method to compare two edges.
+        ///
+        /// * OuterWire : A method to find the outer wire of a
+        /// face.
+        ///
+        /// * Map3DEdges : A method to map all the 3D Edges of
+        /// a Shape.
+        ///
+        /// * Dump : A method to dump a BRep object.
         #[cxx_name = "BRepTools"]
         type BRepTools;
-        /// Returns in UMin,  UMax, VMin,  VMax  the  bounding values in the parametric space of F.
+        /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
+        /// values in the parametric space of F.
         #[cxx_name = "BRepTools_UVBounds_face_real4"]
         fn BRepTools_uv_bounds_face_real4(
             F: &TopoDS_Face,
@@ -378,7 +497,8 @@ pub(crate) mod ffi {
             VMin: &mut f64,
             VMax: &mut f64,
         );
-        /// Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the wire in the parametric space of F.
+        /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
+        /// values of the wire in the parametric space of F.
         #[cxx_name = "BRepTools_UVBounds_face_wire_real4"]
         fn BRepTools_uv_bounds_face_wire_real4(
             F: &TopoDS_Face,
@@ -388,7 +508,8 @@ pub(crate) mod ffi {
             VMin: &mut f64,
             VMax: &mut f64,
         );
-        /// Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the edge in the parametric space of F.
+        /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
+        /// values of the edge in the parametric space of F.
         #[cxx_name = "BRepTools_UVBounds_face_edge_real4"]
         fn BRepTools_uv_bounds_face_edge_real4(
             F: &TopoDS_Face,
@@ -398,17 +519,20 @@ pub(crate) mod ffi {
             VMin: &mut f64,
             VMax: &mut f64,
         );
-        /// Adds  to  the box <B>  the bounding values in  the parametric space of F.
+        /// Adds  to  the box <B>  the bounding values in  the
+        /// parametric space of F.
         #[cxx_name = "BRepTools_AddUVBounds_face_box2d"]
         fn BRepTools_add_uv_bounds_face_box2d(F: &TopoDS_Face, B: Pin<&mut Bnd_Box2d>);
-        /// Adds  to the box  <B>  the bounding  values of the wire in the parametric space of F.
+        /// Adds  to the box  <B>  the bounding  values of the
+        /// wire in the parametric space of F.
         #[cxx_name = "BRepTools_AddUVBounds_face_wire_box2d"]
         fn BRepTools_add_uv_bounds_face_wire_box2d(
             F: &TopoDS_Face,
             W: &TopoDS_Wire,
             B: Pin<&mut Bnd_Box2d>,
         );
-        /// Adds to  the box <B>  the  bounding values  of the edge in the parametric space of F.
+        /// Adds to  the box <B>  the  bounding values  of the
+        /// edge in the parametric space of F.
         #[cxx_name = "BRepTools_AddUVBounds_face_edge_box2d"]
         fn BRepTools_add_uv_bounds_face_edge_box2d(
             F: &TopoDS_Face,
@@ -442,26 +566,55 @@ pub(crate) mod ffi {
         /// Update a shape, call the correct update.
         #[cxx_name = "BRepTools_Update_shape"]
         fn BRepTools_update_shape(S: &TopoDS_Shape);
-        /// For each edge of the face <F> reset the UV points to the bounding points of the parametric curve of the edge on the face.
+        /// For each edge of the face <F> reset the UV points
+        /// to the bounding points of the parametric curve of the
+        /// edge on the face.
         #[cxx_name = "BRepTools_UpdateFaceUVPoints"]
         fn BRepTools_update_face_uv_points(theF: &TopoDS_Face);
-        /// Removes all cached polygonal representation of the shape, i.e. the triangulations of the faces of <S> and polygons on triangulations and polygons 3d of the edges. In case polygonal representation is the only available representation for the shape (shape does not have geometry) it is not removed. @param[in] theShape   the shape to clean @param[in] theForce   allows removing all polygonal representations from the shape, including polygons on triangulations irrelevant for the faces of the given shape.
+        /// Removes all cached polygonal representation of the shape,
+        /// i.e. the triangulations of the faces of <S> and polygons on
+        /// triangulations and polygons 3d of the edges.
+        /// In case polygonal representation is the only available representation
+        /// for the shape (shape does not have geometry) it is not removed.
+        /// @param[in] theShape   the shape to clean
+        /// @param[in] theForce   allows removing all polygonal representations from the shape,
+        /// including polygons on triangulations irrelevant for the faces of the
+        /// given shape.
         #[cxx_name = "BRepTools_Clean"]
         fn BRepTools_clean(theShape: &TopoDS_Shape, theForce: bool);
         /// Removes geometry (curves and surfaces) from all edges and faces of the shape
         #[cxx_name = "BRepTools_CleanGeometry"]
         fn BRepTools_clean_geometry(theShape: &TopoDS_Shape);
-        /// Removes all the pcurves of the edges of <S> that refer to surfaces not belonging to any face of <S>
+        /// Removes all the pcurves of the edges of <S> that
+        /// refer to surfaces not belonging to any face of <S>
         #[cxx_name = "BRepTools_RemoveUnusedPCurves"]
         fn BRepTools_remove_unused_p_curves(S: &TopoDS_Shape);
-        /// Verifies that each Face from the shape has got a triangulation with a deflection smaller or equal to specified one and the Edges a discretization on this triangulation. @param[in] theShape    shape to verify @param[in] theLinDefl  maximum allowed linear deflection @param[in] theToCheckFreeEdges  if TRUE, then free Edges are required to have 3D polygon @return FALSE if input Shape contains Faces without triangulation, or that triangulation has worse (greater) deflection than specified one, or Edges in Shape lack polygons on triangulation or free Edges in Shape lack 3D polygons
+        /// Verifies that each Face from the shape has got a triangulation with a deflection smaller or
+        /// equal to specified one and the Edges a discretization on this triangulation.
+        /// @param[in] theShape    shape to verify
+        /// @param[in] theLinDefl  maximum allowed linear deflection
+        /// @param[in] theToCheckFreeEdges  if TRUE, then free Edges are required to have 3D polygon
+        /// @return FALSE if input Shape contains Faces without triangulation,
+        /// or that triangulation has worse (greater) deflection than specified one,
+        /// or Edges in Shape lack polygons on triangulation
+        /// or free Edges in Shape lack 3D polygons
         #[cxx_name = "BRepTools_Triangulation"]
         fn BRepTools_triangulation(
             theShape: &TopoDS_Shape,
             theLinDefl: f64,
             theToCheckFreeEdges: bool,
         ) -> bool;
-        /// Loads triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape             shape to load triangulations @param[in] theTriangulationIdx  index defining what triangulation should be loaded. Starts from 0. -1 is used in specific case to load currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be loaded for it. Exception will be thrown in case of invalid negative index @param[in] theToSetAsActive     flag to activate triangulation after its loading @param[in] theFileSystem        shared file system @return TRUE if at least one triangulation is loaded.
+        /// Loads triangulation data for each face of the shape
+        /// from some deferred storage using specified shared input file system
+        /// @param[in] theShape             shape to load triangulations
+        /// @param[in] theTriangulationIdx  index defining what triangulation should be loaded. Starts
+        /// from 0.
+        /// -1 is used in specific case to load currently already active triangulation.
+        /// If some face doesn't contain triangulation with this index, nothing will be loaded for
+        /// it. Exception will be thrown in case of invalid negative index
+        /// @param[in] theToSetAsActive     flag to activate triangulation after its loading
+        /// @param[in] theFileSystem        shared file system
+        /// @return TRUE if at least one triangulation is loaded.
         #[cxx_name = "BRepTools_LoadTriangulation"]
         fn BRepTools_load_triangulation(
             theShape: &TopoDS_Shape,
@@ -469,41 +622,72 @@ pub(crate) mod ffi {
             theToSetAsActive: bool,
             theFileSystem: &HandleOSDFileSystem,
         ) -> bool;
-        /// Releases triangulation data for each face of the shape if there is deferred storage to load it later @param[in] theShape             shape to unload triangulations @param[in] theTriangulationIdx  index defining what triangulation should be unloaded. Starts from 0. -1 is used in specific case to unload currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be unloaded for it. Exception will be thrown in case of invalid negative index @return TRUE if at least one triangulation is unloaded.
+        /// Releases triangulation data for each face of the shape if there is deferred storage to load it
+        /// later
+        /// @param[in] theShape             shape to unload triangulations
+        /// @param[in] theTriangulationIdx  index defining what triangulation should be unloaded. Starts
+        /// from 0.
+        /// -1 is used in specific case to unload currently already active triangulation.
+        /// If some face doesn't contain triangulation with this index, nothing will be unloaded
+        /// for it. Exception will be thrown in case of invalid negative index
+        /// @return TRUE if at least one triangulation is unloaded.
         #[cxx_name = "BRepTools_UnloadTriangulation"]
         fn BRepTools_unload_triangulation(
             theShape: &TopoDS_Shape,
             theTriangulationIdx: i32,
         ) -> bool;
-        /// Activates triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape               shape to activate triangulations @param[in] theTriangulationIdx    index defining what triangulation should be activated. Starts from 0. Exception will be thrown in case of invalid negative index @param[in] theToActivateStrictly  flag to activate exactly triangulation with defined theTriangulationIdx index. In TRUE case if some face doesn't contain triangulation with this index, active triangulation will not be changed for it. Else the last available triangulation will be activated. @return TRUE if at least one active triangulation was changed.
+        /// Activates triangulation data for each face of the shape
+        /// from some deferred storage using specified shared input file system
+        /// @param[in] theShape               shape to activate triangulations
+        /// @param[in] theTriangulationIdx    index defining what triangulation should be activated.
+        /// Starts from 0.
+        /// Exception will be thrown in case of invalid negative index
+        /// @param[in] theToActivateStrictly  flag to activate exactly triangulation with defined
+        /// theTriangulationIdx index.
+        /// In TRUE case if some face doesn't contain triangulation with this index, active
+        /// triangulation will not be changed for it. Else the last available triangulation will be
+        /// activated.
+        /// @return TRUE if at least one active triangulation was changed.
         #[cxx_name = "BRepTools_ActivateTriangulation"]
         fn BRepTools_activate_triangulation(
             theShape: &TopoDS_Shape,
             theTriangulationIdx: i32,
             theToActivateStrictly: bool,
         ) -> bool;
-        /// Loads all available triangulations for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape       shape to load triangulations @param[in] theFileSystem  shared file system @return TRUE if at least one triangulation is loaded.
+        /// Loads all available triangulations for each face of the shape
+        /// from some deferred storage using specified shared input file system
+        /// @param[in] theShape       shape to load triangulations
+        /// @param[in] theFileSystem  shared file system
+        /// @return TRUE if at least one triangulation is loaded.
         #[cxx_name = "BRepTools_LoadAllTriangulations"]
         fn BRepTools_load_all_triangulations(
             theShape: &TopoDS_Shape,
             theFileSystem: &HandleOSDFileSystem,
         ) -> bool;
-        /// Releases all available triangulations for each face of the shape if there is deferred storage to load them later @param[in] theShape       shape to unload triangulations @return TRUE if at least one triangulation is unloaded.
+        /// Releases all available triangulations for each face of the shape if there is deferred storage
+        /// to load them later
+        /// @param[in] theShape       shape to unload triangulations
+        /// @return TRUE if at least one triangulation is unloaded.
         #[cxx_name = "BRepTools_UnloadAllTriangulations"]
         fn BRepTools_unload_all_triangulations(theShape: &TopoDS_Shape) -> bool;
-        /// Returns  True if  the    distance between the  two vertices is lower than their tolerance.
+        /// Returns  True if  the    distance between the  two
+        /// vertices is lower than their tolerance.
         #[cxx_name = "BRepTools_Compare_vertex2"]
         fn BRepTools_compare_vertex2(V1: &TopoDS_Vertex, V2: &TopoDS_Vertex) -> bool;
-        /// Returns  True if  the    distance between the  two edges is lower than their tolerance.
+        /// Returns  True if  the    distance between the  two
+        /// edges is lower than their tolerance.
         #[cxx_name = "BRepTools_Compare_edge2"]
         fn BRepTools_compare_edge2(E1: &TopoDS_Edge, E2: &TopoDS_Edge) -> bool;
-        /// Returns the outer most wire of <F>. Returns a Null wire if <F> has no wires.
+        /// Returns the outer most wire of <F>. Returns a Null
+        /// wire if <F> has no wires.
         #[cxx_name = "BRepTools_OuterWire"]
         fn BRepTools_outer_wire(F: &TopoDS_Face) -> UniquePtr<TopoDS_Wire>;
-        /// Stores in the map  <M> all the 3D topology edges of <S>.
+        /// Stores in the map  <M> all the 3D topology edges
+        /// of <S>.
         #[cxx_name = "BRepTools_Map3DEdges"]
         fn BRepTools_map3_d_edges(S: &TopoDS_Shape, M: Pin<&mut TopTools_IndexedMapOfShape>);
-        /// Verifies that the edge  <E> is found two  times on the face <F> before calling BRep_Tool::IsClosed.
+        /// Verifies that the edge  <E> is found two  times on
+        /// the face <F> before calling BRep_Tool::IsClosed.
         #[cxx_name = "BRepTools_IsReallyClosed"]
         fn BRepTools_is_really_closed(E: &TopoDS_Edge, F: &TopoDS_Face) -> bool;
         /// Detect closedness of face in U and V directions
@@ -513,14 +697,19 @@ pub(crate) mod ffi {
             theUclosed: &mut bool,
             theVclosed: &mut bool,
         );
-        /// Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1. This alias writes shape with triangulation data. @param[in] theShape  the shape to write @param[in] theFile   the path to file to output shape into @param theProgress the range of progress indicator to fill in
+        /// Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1.
+        /// This alias writes shape with triangulation data.
+        /// @param[in] theShape  the shape to write
+        /// @param[in] theFile   the path to file to output shape into
+        /// @param theProgress the range of progress indicator to fill in
         #[cxx_name = "BRepTools_Write_shape_charptr_progressrange"]
         fn BRepTools_write_shape_charptr_progressrange(
             theShape: &TopoDS_Shape,
             theFile: &str,
             theProgress: &Message_ProgressRange,
         ) -> bool;
-        /// Reads a Shape  from <File>,  returns it in  <Sh>. <B> is used to build the shape.
+        /// Reads a Shape  from <File>,  returns it in  <Sh>.
+        /// <B> is used to build the shape.
         #[cxx_name = "BRepTools_Read_shape_charptr_builder_progressrange"]
         fn BRepTools_read_shape_charptr_builder_progressrange(
             Sh: Pin<&mut TopoDS_Shape>,
@@ -528,7 +717,12 @@ pub(crate) mod ffi {
             B: &BRep_Builder,
             theProgress: &Message_ProgressRange,
         ) -> bool;
-        /// Evals real tolerance of edge  <theE>. <theC3d>, <theC2d>, <theS>, <theF>, <theL> are correspondently 3d curve of edge, 2d curve on surface <theS> and rang of edge If calculated tolerance is more then current edge tolerance, edge is updated. Method returns actual tolerance of edge
+        /// Evals real tolerance of edge  <theE>.
+        /// <theC3d>, <theC2d>, <theS>, <theF>, <theL> are
+        /// correspondently 3d curve of edge, 2d curve on surface <theS> and
+        /// rang of edge
+        /// If calculated tolerance is more then current edge tolerance, edge is updated.
+        /// Method returns actual tolerance of edge
         #[cxx_name = "BRepTools_EvalAndUpdateTol"]
         fn BRepTools_eval_and_update_tol(
             theE: &TopoDS_Edge,
@@ -538,10 +732,18 @@ pub(crate) mod ffi {
             theF: f64,
             theL: f64,
         ) -> f64;
-        /// Removes internal sub-shapes from the shape. The check on internal status is based on orientation of sub-shapes, classification is not performed. Before removal of internal sub-shapes the algorithm checks if such removal is not going to break topological connectivity between sub-shapes. The flag <theForce> if set to true disables the connectivity check and clears the given shape from all sub-shapes with internal orientation.
+        /// Removes internal sub-shapes from the shape.
+        /// The check on internal status is based on orientation of sub-shapes,
+        /// classification is not performed.
+        /// Before removal of internal sub-shapes the algorithm checks if such
+        /// removal is not going to break topological connectivity between sub-shapes.
+        /// The flag <theForce> if set to true disables the connectivity check and clears
+        /// the given shape from all sub-shapes with internal orientation.
         #[cxx_name = "BRepTools_RemoveInternals"]
         fn BRepTools_remove_internals(theS: Pin<&mut TopoDS_Shape>, theForce: bool);
-        /// Check all locations of shape according criterium: aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec()) All sub-shapes having such locations are put in list theProblemShapes
+        /// Check all locations of shape according criterium:
+        /// aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec())
+        /// All sub-shapes having such locations are put in list theProblemShapes
         #[cxx_name = "BRepTools_CheckLocations"]
         fn BRepTools_check_locations(
             theS: &TopoDS_Shape,
@@ -550,15 +752,78 @@ pub(crate) mod ffi {
         /// ======================== BRepTools_History ========================
         /// /// **Source:** `BRepTools_History.hxx` - `BRepTools_History`
         ///
-        /// The history keeps the following relations between the input shapes (S1, ..., Sm) and output shapes (T1, ..., Tn): 1) an output shape Tj is generated from an input shape Si: Tj <= G(Si); 2) a output shape Tj is modified from an input shape Si: Tj <= M(Si); 3) an input shape (Si) is removed: R(Si) == 1. The relations are kept only for shapes of types vertex, edge, face, and solid. The last relation means that: 1) shape Si is not an output shape and 2) no any shape is modified (produced) from shape Si: R(Si) == 1 ==> Si != Tj, M(Si) == 0. It means that the input shape cannot be removed and modified simultaneously. However, the shapes may be generated from the removed shape. For instance, in Fillet operation the edges generate faces and then are removed. No any shape could be generated and modified from the same shape simultaneously: sets G(Si) and M(Si) are not intersected (G(Si) ^ M(Si) == 0). Each output shape should be: 1) an input shape or 2) generated or modified from an input shape (even generated from the implicit null shape if necessary): Tj == Si V (exists Si that Tj <= G(Si) U M(Si)). Recommendations to choose between relations 'generated' and 'modified': 1) a shape is generated from input shapes if it dimension is greater or smaller than the dimensions of the input shapes; 2) a shape is generated from input shapes if these shapes are also output shapes; 3) a shape is generated from input shapes of the same dimension if it is produced by joining shapes generated from these shapes; 4) a shape is modified from an input shape if it replaces the input shape by changes of the location, the tolerance, the bounds of the parametric space (the faces for a solid), the parametrization and/or by applying of an approximation; 5) a shape is modified from input shapes of the same dimension if it is produced by joining shapes modified from these shapes. Two sequential histories: - one history (H12) of shapes S1, ..., Sm to shapes T1, ..., Tn and - another history (H23) of shapes T1, ..., Tn to shapes Q1, ..., Ql could be merged to the single history (H13) of shapes S1, ..., Sm to shapes Q1, ..., Ql. During the merge: 1) if shape Tj is generated from shape Si then each shape generated or modified from shape Tj is considered as a shape generated from shape Si among shapes Q1, ..., Ql: Tj <= G12(Si), Qk <= G23(Tj) U M23(Tj) ==> Qk <= G13(Si). 2) if shape Tj is modified from shape Si, shape Qk is generated from shape Tj then shape Qk is considered as a shape generated from shape Si among shapes Q1, ..., Ql: Tj <= M12(Si), Qk <= G23(Tj) ==> Qk <= G13(Si); 3) if shape Tj is modified from shape Si, shape Qk is modified from shape Tj then shape Qk is considered as a shape modified from shape Si among shapes Q1, ..., Ql: Tj <= M12(Si), Qk <= M23(Tj) ==> Qk <= M13(Si);
+        /// The history keeps the following relations between the input shapes
+        /// (S1, ..., Sm) and output shapes (T1, ..., Tn):
+        /// 1) an output shape Tj is generated from an input shape Si: Tj <= G(Si);
+        /// 2) a output shape Tj is modified from an input shape Si: Tj <= M(Si);
+        /// 3) an input shape (Si) is removed: R(Si) == 1.
+        ///
+        /// The relations are kept only for shapes of types vertex, edge, face, and
+        /// solid.
+        ///
+        /// The last relation means that:
+        /// 1) shape Si is not an output shape and
+        /// 2) no any shape is modified (produced) from shape Si:
+        /// R(Si) == 1 ==> Si != Tj, M(Si) == 0.
+        ///
+        /// It means that the input shape cannot be removed and modified
+        /// simultaneously. However, the shapes may be generated from the
+        /// removed shape. For instance, in Fillet operation the edges
+        /// generate faces and then are removed.
+        ///
+        /// No any shape could be generated and modified from the same shape
+        /// simultaneously: sets G(Si) and M(Si) are not intersected
+        /// (G(Si) ^ M(Si) == 0).
+        ///
+        /// Each output shape should be:
+        /// 1) an input shape or
+        /// 2) generated or modified from an input shape (even generated from the
+        /// implicit null shape if necessary):
+        /// Tj == Si V (exists Si that Tj <= G(Si) U M(Si)).
+        ///
+        /// Recommendations to choose between relations 'generated' and 'modified':
+        /// 1) a shape is generated from input shapes if it dimension is greater or
+        /// smaller than the dimensions of the input shapes;
+        /// 2) a shape is generated from input shapes if these shapes are also output
+        /// shapes;
+        /// 3) a shape is generated from input shapes of the same dimension if it is
+        /// produced by joining shapes generated from these shapes;
+        /// 4) a shape is modified from an input shape if it replaces the input shape by
+        /// changes of the location, the tolerance, the bounds of the parametric
+        /// space (the faces for a solid), the parametrization and/or by applying of
+        /// an approximation;
+        /// 5) a shape is modified from input shapes of the same dimension if it is
+        /// produced by joining shapes modified from these shapes.
+        ///
+        /// Two sequential histories:
+        /// - one history (H12) of shapes S1, ..., Sm to shapes T1, ..., Tn and
+        /// - another history (H23) of shapes T1, ..., Tn to shapes Q1, ..., Ql
+        /// could be merged to the single history (H13) of shapes S1, ..., Sm to shapes
+        /// Q1, ..., Ql.
+        ///
+        /// During the merge:
+        /// 1) if shape Tj is generated from shape Si then each shape generated or
+        /// modified from shape Tj is considered as a shape generated from shape Si
+        /// among shapes Q1, ..., Ql:
+        /// Tj <= G12(Si), Qk <= G23(Tj) U M23(Tj) ==> Qk <= G13(Si).
+        /// 2) if shape Tj is modified from shape Si, shape Qk is generated from shape
+        /// Tj then shape Qk is considered as a shape generated from shape Si among
+        /// shapes Q1, ..., Ql:
+        /// Tj <= M12(Si), Qk <= G23(Tj) ==> Qk <= G13(Si);
+        /// 3) if shape Tj is modified from shape Si, shape Qk is modified from shape
+        /// Tj then shape Qk is considered as a shape modified from shape Si among
+        /// shapes Q1, ..., Ql:
+        /// Tj <= M12(Si), Qk <= M23(Tj) ==> Qk <= M13(Si);
         #[cxx_name = "BRepTools_History"]
         type History;
         /// /// **Source:** `BRepTools_History.hxx` - `BRepTools_History::BRepTools_History()`
         ///
-        /// @name Constructors for History creation Empty constructor
+        /// @name Constructors for History creation
+        /// Empty constructor
         #[cxx_name = "BRepTools_History_ctor"]
         fn History_ctor() -> UniquePtr<History>;
-        /// Methods to set the history. Set the second shape as generated one from the first shape.
+        /// Methods to set the history.
+        /// Set the second shape as generated one from the first shape.
         #[cxx_name = "AddGenerated"]
         fn add_generated(
             self: Pin<&mut History>,
@@ -592,7 +857,8 @@ pub(crate) mod ffi {
         /// Clears the history.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut History>);
-        /// Methods to read the history. Returns all shapes generated from the shape.
+        /// Methods to read the history.
+        /// Returns all shapes generated from the shape.
         #[cxx_name = "Generated"]
         fn generated(self: &History, theInitial: &TopoDS_Shape) -> &TopTools_ListOfShape;
         /// Returns all shapes modified from the shape.
@@ -610,7 +876,8 @@ pub(crate) mod ffi {
         /// Returns 'true' if there any removed shapes present
         #[cxx_name = "HasRemoved"]
         fn has_removed(self: &History) -> bool;
-        /// A method to merge a next history to this history. Merges the next history to this history.
+        /// A method to merge a next history to this history.
+        /// Merges the next history to this history.
         #[cxx_name = "Merge"]
         fn merge_handlehistory(self: Pin<&mut History>, theHistory23: &HandleBRepToolsHistory);
         /// Merges the next history to this history.
@@ -646,7 +913,8 @@ pub(crate) mod ffi {
         fn Modifier_ctor_shape(S: &TopoDS_Shape) -> UniquePtr<Modifier>;
         /// /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`
         ///
-        /// Creates a modifier on  the shape <S>, and performs the modifications described by <M>.
+        /// Creates a modifier on  the shape <S>, and performs
+        /// the modifications described by <M>.
         #[cxx_name = "BRepTools_Modifier_ctor_shape_handlemodification"]
         fn Modifier_ctor_shape_handlemodification(
             S: &TopoDS_Shape,
@@ -662,13 +930,16 @@ pub(crate) mod ffi {
             M: &HandleBRepToolsModification,
             theProgress: &Message_ProgressRange,
         );
-        /// Returns Standard_True if the modification has been computed successfully.
+        /// Returns Standard_True if the modification has
+        /// been computed successfully.
         #[cxx_name = "IsDone"]
         fn is_done(self: &Modifier) -> bool;
         /// Returns the current mutable input state
         #[cxx_name = "IsMutableInput"]
         fn is_mutable_input(self: &Modifier) -> bool;
-        /// Sets the mutable input state If true then the input (original) shape can be modified during modification process
+        /// Sets the mutable input state
+        /// If true then the input (original) shape can be modified
+        /// during modification process
         #[cxx_name = "SetMutableInput"]
         fn set_mutable_input(self: Pin<&mut Modifier>, theMutableInput: bool);
         /// Returns the modified shape corresponding to <S>.
@@ -677,7 +948,7 @@ pub(crate) mod ffi {
         /// ======================== BRepTools_ReShape ========================
         /// /// **Source:** `BRepTools_ReShape.hxx` - `BRepTools_ReShape`
         ///
-        #[doc = "Rebuilds a Shape by making pre-defined substitutions on some of its components In a first phase, it records requests to replace or remove some individual shapes For each shape, the last given request is recorded Requests may be applied \"Oriented\" (i.e. only to an item with the SAME orientation) or not (the orientation of replacing shape is respectful of that of the original one) Then, these requests may be applied to any shape which may contain one or more of these individual shapes Supports the 'BRepTools_History' history by method 'History'."]
+        #[doc = "Rebuilds a Shape by making pre-defined substitutions on some\nof its components\n\nIn a first phase, it records requests to replace or remove\nsome individual shapes\nFor each shape, the last given request is recorded\nRequests may be applied \"Oriented\" (i.e. only to an item with\nthe SAME orientation) or not (the orientation of replacing\nshape is respectful of that of the original one)\n\nThen, these requests may be applied to any shape which may\ncontain one or more of these individual shapes\n\nSupports the 'BRepTools_History' history by method 'History'."]
         #[cxx_name = "BRepTools_ReShape"]
         type ReShape;
         /// /// **Source:** `BRepTools_ReShape.hxx` - `BRepTools_ReShape::BRepTools_ReShape()`
@@ -697,7 +968,13 @@ pub(crate) mod ffi {
         /// Tells if a shape is recorded for Replace/Remove
         #[cxx_name = "IsRecorded"]
         fn is_recorded(self: &ReShape, shape: &TopoDS_Shape) -> bool;
-        /// Returns a complete substitution status for a shape 0  : not recorded,   <newsh> = original <shape> < 0: to be removed,  <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape.
+        /// Returns a complete substitution status for a shape
+        /// 0  : not recorded,   <newsh> = original <shape>
+        /// < 0: to be removed,  <newsh> is NULL
+        /// > 0: to be replaced, <newsh> is a new item
+        /// If <last> is False, returns status and new shape recorded in
+        /// the map directly for the shape, if True and status > 0 then
+        /// recursively searches for the last status and new shape.
         #[cxx_name = "Status"]
         fn status(
             self: Pin<&mut ReShape>,
@@ -705,14 +982,18 @@ pub(crate) mod ffi {
             newsh: Pin<&mut TopoDS_Shape>,
             last: bool,
         ) -> i32;
-        /// Returns (modifiable) the flag which defines whether Location of shape take into account during replacing shapes.
+        /// Returns (modifiable) the flag which defines whether Location of shape take into account
+        /// during replacing shapes.
         #[cxx_name = "ModeConsiderLocation"]
         fn mode_consider_location(self: Pin<&mut ReShape>) -> &mut bool;
         #[cxx_name = "IsNewShape"]
         fn is_new_shape(self: &ReShape, theShape: &TopoDS_Shape) -> bool;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ReShape) -> &HandleStandardType;
-        /// Returns the new value for an individual shape If not recorded, returns the original shape itself If to be Removed, returns a Null Shape Else, returns the replacing item
+        /// Returns the new value for an individual shape
+        /// If not recorded, returns the original shape itself
+        /// If to be Removed, returns a Null Shape
+        /// Else, returns the replacing item
         #[cxx_name = "BRepTools_ReShape_Value"]
         fn ReShape_value(self_: &ReShape, shape: &TopoDS_Shape) -> UniquePtr<TopoDS_Shape>;
         #[cxx_name = "BRepTools_ReShape_CopyVertex"]

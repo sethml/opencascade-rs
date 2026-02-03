@@ -224,7 +224,8 @@ impl MakeFace {
         ffi::MakeFace_ctor_torus(C)
     }
 
-    /// Make a face from a Surface. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
+    /// Make a face from a Surface. Accepts tolerance value (TolDegen)
+    /// for resolution of degenerated edges.
     pub fn new_handlesurface_real(
         S: &ffi::HandleGeomSurface,
         TolDegen: f64,
@@ -287,7 +288,9 @@ impl MakeFace {
         ffi::MakeFace_ctor_torus_real4(C, UMin, UMax, VMin, VMax)
     }
 
-    /// Make a face from a Surface. Accepts min & max parameters to construct the face's bounds. Also accepts tolerance value (TolDegen) for resolution of degenerated edges.
+    /// Make a face from a Surface. Accepts min & max parameters
+    /// to construct the face's bounds. Also accepts tolerance value (TolDegen)
+    /// for resolution of degenerated edges.
     pub fn new_handlesurface_real5(
         S: &ffi::HandleGeomSurface,
         UMin: f64,
@@ -299,7 +302,10 @@ impl MakeFace {
         ffi::MakeFace_ctor_handlesurface_real5(S, UMin, UMax, VMin, VMax, TolDegen)
     }
 
-    /// Find a surface from the wire and make a face. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set.
+    /// Find a surface from the wire and make a face.
+    /// if <OnlyPlane> is true, the computed surface will be
+    /// a plane. If it is not possible to find a plane, the
+    /// flag NotDone will be set.
     pub fn new_wire_bool(W: &ffi::TopoDS_Wire, OnlyPlane: bool) -> cxx::UniquePtr<Self> {
         ffi::MakeFace_ctor_wire_bool(W, OnlyPlane)
     }
@@ -383,7 +389,11 @@ impl MakeFace {
         ffi::make_face_as_make_shape_mut(self)
     }
 
-    /// Checks the specified curve is degenerated according to specified tolerance. Returns <theActTol> less than <theMaxTol>, which shows actual tolerance to decide the curve is degenerated. Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell.
+    /// Checks the specified curve is degenerated
+    /// according to specified tolerance.
+    /// Returns <theActTol> less than <theMaxTol>, which shows
+    /// actual tolerance to decide the curve is degenerated.
+    /// Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell.
     pub fn is_degenerated(
         theCurve: &ffi::HandleGeomCurve,
         theMaxTol: f64,
@@ -661,7 +671,48 @@ pub(crate) mod ffi {
         /// ======================== BRepLib_MakeWire ========================
         /// /// **Source:** `BRepLib_MakeWire.hxx` - `BRepLib_MakeWire`
         ///
-        /// Provides methods to build wires. A wire may be built : * From a single edge. * From a wire and an edge. - A new wire  is created with the edges  of  the wire + the edge. - If the edge is not connected  to the wire the flag NotDone   is set and  the  method Wire will raise an error. - The connection may be : . Through an existing vertex. The edge is shared. . Through a geometric coincidence of vertices. The edge is  copied  and the vertices from the edge are  replaced  by  the vertices from  the wire. . The new edge and the connection vertices are kept by the algorithm. * From 2, 3, 4 edges. - A wire is  created from  the first edge, the following edges are added. * From many edges. - The following syntax may be used : BRepLib_MakeWire MW; // for all the edges ... MW.Add(anEdge); TopoDS_Wire W = MW;
+        /// Provides methods to build wires.
+        ///
+        /// A wire may be built :
+        ///
+        /// * From a single edge.
+        ///
+        /// * From a wire and an edge.
+        ///
+        /// - A new wire  is created with the edges  of  the
+        /// wire + the edge.
+        ///
+        /// - If the edge is not connected  to the wire the
+        /// flag NotDone   is set and  the  method Wire will
+        /// raise an error.
+        ///
+        /// - The connection may be :
+        ///
+        /// . Through an existing vertex. The edge is shared.
+        ///
+        /// . Through a geometric coincidence of vertices.
+        /// The edge is  copied  and the vertices from the
+        /// edge are  replaced  by  the vertices from  the
+        /// wire.
+        ///
+        /// . The new edge and the connection vertices are
+        /// kept by the algorithm.
+        ///
+        /// * From 2, 3, 4 edges.
+        ///
+        /// - A wire is  created from  the first edge, the
+        /// following edges are added.
+        ///
+        /// * From many edges.
+        ///
+        /// - The following syntax may be used :
+        ///
+        /// BRepLib_MakeWire MW;
+        ///
+        /// // for all the edges ...
+        /// MW.Add(anEdge);
+        ///
+        /// TopoDS_Wire W = MW;
         #[cxx_name = "BRepLib_MakeWire"]
         type MakeWire;
         /// /// **Source:** `BRepLib_MakeWire.hxx` - `BRepLib_MakeWire::BRepLib_MakeWire()`
@@ -714,7 +765,9 @@ pub(crate) mod ffi {
         /// Add the edges of <W> to the current wire.
         #[cxx_name = "Add"]
         fn add_wire(self: Pin<&mut MakeWire>, W: &TopoDS_Wire);
-        /// Add the edges of <L> to the current wire. The edges are not to be consecutive.  But they are to be all connected geometrically or topologically.
+        /// Add the edges of <L> to the current wire.
+        /// The edges are not to be consecutive.  But they are
+        /// to be all connected geometrically or topologically.
         #[cxx_name = "Add"]
         fn add_listofshape(self: Pin<&mut MakeWire>, L: &TopTools_ListOfShape);
         /// Returns the new wire.
@@ -741,10 +794,15 @@ pub(crate) mod ffi {
         /// ======================== BRepLib_MakeShape ========================
         /// /// **Source:** `BRepLib_MakeShape.hxx` - `BRepLib_MakeShape`
         ///
-        /// This    is  the  root     class for     all  shape constructions.  It stores the result. It  provides deferred methods to trace the history of sub-shapes.
+        /// This    is  the  root     class for     all  shape
+        /// constructions.  It stores the result.
+        ///
+        /// It  provides deferred methods to trace the history
+        /// of sub-shapes.
         #[cxx_name = "BRepLib_MakeShape"]
         type MakeShape;
-        /// This is  called by  Shape().  It does  nothing but may be redefined.
+        /// This is  called by  Shape().  It does  nothing but
+        /// may be redefined.
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut MakeShape>);
         #[cxx_name = "Shape"]
@@ -755,13 +813,15 @@ pub(crate) mod ffi {
         /// returns the list of generated Faces.
         #[cxx_name = "DescendantFaces"]
         fn descendant_faces(self: Pin<&mut MakeShape>, F: &TopoDS_Face) -> &TopTools_ListOfShape;
-        /// returns the number of surfaces after the shape creation.
+        /// returns the number of surfaces
+        /// after the shape creation.
         #[cxx_name = "NbSurfaces"]
         fn nb_surfaces(self: &MakeShape) -> i32;
         /// Return the faces created for surface I.
         #[cxx_name = "NewFaces"]
         fn new_faces(self: Pin<&mut MakeShape>, I: i32) -> &TopTools_ListOfShape;
-        /// returns a list of the created faces from the edge <E>.
+        /// returns a list of the created faces
+        /// from the edge <E>.
         #[cxx_name = "FacesFromEdges"]
         fn faces_from_edges(self: Pin<&mut MakeShape>, E: &TopoDS_Edge) -> &TopTools_ListOfShape;
         /// Upcast BRepLib_MakeShape to BRepLib_Command
@@ -773,7 +833,15 @@ pub(crate) mod ffi {
         /// ======================== BRepLib_Command ========================
         /// /// **Source:** `BRepLib_Command.hxx` - `BRepLib_Command`
         ///
-        /// Root class for all commands in BRepLib. Provides : * Managements of the notDone flag. * Catching of exceptions (not implemented). * Logging (not implemented).
+        /// Root class for all commands in BRepLib.
+        ///
+        /// Provides :
+        ///
+        /// * Managements of the notDone flag.
+        ///
+        /// * Catching of exceptions (not implemented).
+        ///
+        /// * Logging (not implemented).
         #[cxx_name = "BRepLib_Command"]
         type Command;
         #[cxx_name = "IsDone"]
@@ -870,7 +938,31 @@ pub(crate) mod ffi {
         /// ======================== BRepLib_MakeFace ========================
         /// /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace`
         ///
-        /// Provides methods to build faces. A face may be built : * From a surface. - Elementary surface from gp. - Surface from Geom. * From a surface and U,V values. * From a wire. - Find the surface automatically if possible. * From a surface and a wire. - A flag Inside is given, when this flag is True the  wire is  oriented to bound a finite area on the surface. * From a face and a wire. - The new wire is a perforation.
+        /// Provides methods to build faces.
+        ///
+        /// A face may be built :
+        ///
+        /// * From a surface.
+        ///
+        /// - Elementary surface from gp.
+        ///
+        /// - Surface from Geom.
+        ///
+        /// * From a surface and U,V values.
+        ///
+        /// * From a wire.
+        ///
+        /// - Find the surface automatically if possible.
+        ///
+        /// * From a surface and a wire.
+        ///
+        /// - A flag Inside is given, when this flag is True
+        /// the  wire is  oriented to bound a finite area on
+        /// the surface.
+        ///
+        /// * From a face and a wire.
+        ///
+        /// - The new wire is a perforation.
         #[cxx_name = "BRepLib_MakeFace"]
         type MakeFace;
         /// /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
@@ -910,7 +1002,8 @@ pub(crate) mod ffi {
         fn MakeFace_ctor_torus(C: &gp_Torus) -> UniquePtr<MakeFace>;
         /// /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
-        /// Make a face from a Surface. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
+        /// Make a face from a Surface. Accepts tolerance value (TolDegen)
+        /// for resolution of degenerated edges.
         #[cxx_name = "BRepLib_MakeFace_ctor_handlesurface_real"]
         fn MakeFace_ctor_handlesurface_real(
             S: &HandleGeomSurface,
@@ -973,7 +1066,9 @@ pub(crate) mod ffi {
         ) -> UniquePtr<MakeFace>;
         /// /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
-        /// Make a face from a Surface. Accepts min & max parameters to construct the face's bounds. Also accepts tolerance value (TolDegen) for resolution of degenerated edges.
+        /// Make a face from a Surface. Accepts min & max parameters
+        /// to construct the face's bounds. Also accepts tolerance value (TolDegen)
+        /// for resolution of degenerated edges.
         #[cxx_name = "BRepLib_MakeFace_ctor_handlesurface_real5"]
         fn MakeFace_ctor_handlesurface_real5(
             S: &HandleGeomSurface,
@@ -985,7 +1080,10 @@ pub(crate) mod ffi {
         ) -> UniquePtr<MakeFace>;
         /// /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
         ///
-        /// Find a surface from the wire and make a face. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set.
+        /// Find a surface from the wire and make a face.
+        /// if <OnlyPlane> is true, the computed surface will be
+        /// a plane. If it is not possible to find a plane, the
+        /// flag NotDone will be set.
         #[cxx_name = "BRepLib_MakeFace_ctor_wire_bool"]
         fn MakeFace_ctor_wire_bool(W: &TopoDS_Wire, OnlyPlane: bool) -> UniquePtr<MakeFace>;
         /// /// **Source:** `BRepLib_MakeFace.hxx` - `BRepLib_MakeFace::BRepLib_MakeFace()`
@@ -1050,7 +1148,10 @@ pub(crate) mod ffi {
         /// Load the face.
         #[cxx_name = "Init"]
         fn init_face(self: Pin<&mut MakeFace>, F: &TopoDS_Face);
-        /// Creates the face  from the  surface. If Bound is True a wire is made from the natural bounds. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
+        /// Creates the face  from the  surface. If Bound is
+        /// True a wire is made from the natural bounds.
+        /// Accepts tolerance value (TolDegen) for resolution
+        /// of degenerated edges.
         #[cxx_name = "Init"]
         fn init_handlesurface_bool_real(
             self: Pin<&mut MakeFace>,
@@ -1058,7 +1159,9 @@ pub(crate) mod ffi {
             Bound: bool,
             TolDegen: f64,
         );
-        /// Creates the face from the surface and the min-max values. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
+        /// Creates the face from the surface and the min-max
+        /// values. Accepts tolerance value (TolDegen) for resolution
+        /// of degenerated edges.
         #[cxx_name = "Init"]
         fn init_handlesurface_real5(
             self: Pin<&mut MakeFace>,
@@ -1075,7 +1178,11 @@ pub(crate) mod ffi {
         /// Returns the new face.
         #[cxx_name = "Face"]
         fn face(self: &MakeFace) -> &TopoDS_Face;
-        /// Checks the specified curve is degenerated according to specified tolerance. Returns <theActTol> less than <theMaxTol>, which shows actual tolerance to decide the curve is degenerated. Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell.
+        /// Checks the specified curve is degenerated
+        /// according to specified tolerance.
+        /// Returns <theActTol> less than <theMaxTol>, which shows
+        /// actual tolerance to decide the curve is degenerated.
+        /// Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell.
         #[cxx_name = "BRepLib_MakeFace_IsDegenerated"]
         fn MakeFace_is_degenerated(
             theCurve: &HandleGeomCurve,
@@ -1097,7 +1204,37 @@ pub(crate) mod ffi {
         /// ======================== BRepLib_MakeEdge ========================
         /// /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge`
         ///
-        /// Provides methods to build edges. The   methods have  the  following   syntax, where TheCurve is one of Lin, Circ, ... Create(C : TheCurve) Makes an edge on  the whole curve.  Add vertices on finite curves. Create(C : TheCurve; p1,p2 : Real) Make an edge  on the curve between parameters p1 and p2. if p2 < p1 the edge will be REVERSED. If p1  or p2 is infinite the  curve will be open in that  direction. Vertices are created for finite values of p1 and p2. Create(C : TheCurve; P1, P2 : Pnt from gp) Make an edge on the curve  between the points P1 and P2. The  points are projected on   the curve and the   previous method is  used. An  error is raised if the points are not on the curve. Create(C : TheCurve; V1, V2 : Vertex from TopoDS) Make an edge  on the curve  between the vertices V1 and V2. Same as the  previous but no vertices are created. If a vertex is  Null the curve will be open in this direction.
+        /// Provides methods to build edges.
+        ///
+        /// The   methods have  the  following   syntax, where
+        /// TheCurve is one of Lin, Circ, ...
+        ///
+        /// Create(C : TheCurve)
+        ///
+        /// Makes an edge on  the whole curve.  Add vertices
+        /// on finite curves.
+        ///
+        /// Create(C : TheCurve; p1,p2 : Real)
+        ///
+        /// Make an edge  on the curve between parameters p1
+        /// and p2. if p2 < p1 the edge will be REVERSED. If
+        /// p1  or p2 is infinite the  curve will be open in
+        /// that  direction. Vertices are created for finite
+        /// values of p1 and p2.
+        ///
+        /// Create(C : TheCurve; P1, P2 : Pnt from gp)
+        ///
+        /// Make an edge on the curve  between the points P1
+        /// and P2. The  points are projected on   the curve
+        /// and the   previous method is  used. An  error is
+        /// raised if the points are not on the curve.
+        ///
+        /// Create(C : TheCurve; V1, V2 : Vertex from TopoDS)
+        ///
+        /// Make an edge  on the curve  between the vertices
+        /// V1 and V2. Same as the  previous but no vertices
+        /// are created. If a vertex is  Null the curve will
+        /// be open in this direction.
         #[cxx_name = "BRepLib_MakeEdge"]
         type MakeEdge;
         /// /// **Source:** `BRepLib_MakeEdge.hxx` - `BRepLib_MakeEdge::BRepLib_MakeEdge()`

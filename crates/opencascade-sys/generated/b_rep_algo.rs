@@ -27,7 +27,8 @@ pub(crate) mod ffi {
         /// ======================== BRepAlgo_Image ========================
         /// /// **Source:** `BRepAlgo_Image.hxx` - `BRepAlgo_Image`
         ///
-        /// Stores link between a shape <S> and a shape <NewS> obtained from <S>. <NewS> is an image of <S>.
+        /// Stores link between a shape <S> and a shape <NewS>
+        /// obtained from <S>. <NewS> is an image of <S>.
         #[cxx_name = "BRepAlgo_Image"]
         type Image;
         /// /// **Source:** `BRepAlgo_Image.hxx` - `BRepAlgo_Image::BRepAlgo_Image()`
@@ -63,7 +64,9 @@ pub(crate) mod ffi {
         /// Removes the root <theRoot> from the list of roots and up and down maps.
         #[cxx_name = "RemoveRoot"]
         fn remove_root(self: Pin<&mut Image>, Root: &TopoDS_Shape);
-        /// Replaces the <OldRoot> with the <NewRoot>, so all images of the <OldRoot> become the images of the <NewRoot>. The <OldRoot> is removed.
+        /// Replaces the <OldRoot> with the <NewRoot>, so all images
+        /// of the <OldRoot> become the images of the <NewRoot>.
+        /// The <OldRoot> is removed.
         #[cxx_name = "ReplaceRoot"]
         fn replace_root(self: Pin<&mut Image>, OldRoot: &TopoDS_Shape, NewRoot: &TopoDS_Shape);
         #[cxx_name = "Roots"]
@@ -78,10 +81,12 @@ pub(crate) mod ffi {
         fn root(self: &Image, S: &TopoDS_Shape) -> &TopoDS_Shape;
         #[cxx_name = "HasImage"]
         fn has_image(self: &Image, S: &TopoDS_Shape) -> bool;
-        /// Returns the Image of <S>. Returns <S> in the list if HasImage(S) is false.
+        /// Returns the Image of <S>.
+        /// Returns <S> in the list if HasImage(S) is false.
         #[cxx_name = "Image"]
         fn image(self: &Image, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        /// Stores in <L> the images of images of...images of <S>. <L> contains only <S> if  HasImage(S) is false.
+        /// Stores in <L> the images of images of...images of <S>.
+        /// <L> contains only <S> if  HasImage(S) is false.
         #[cxx_name = "LastImage"]
         fn last_image(self: &Image, S: &TopoDS_Shape, L: Pin<&mut TopTools_ListOfShape>);
         /// Keeps only the link between roots and lastimage.

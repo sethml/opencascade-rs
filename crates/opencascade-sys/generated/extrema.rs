@@ -61,7 +61,15 @@ impl ExtPC {
         ffi::ExtPC_ctor()
     }
 
-    /// It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Zeros are searched between uinf and usup. Tol  is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// Zeros are searched between uinf and usup.
+    /// Tol  is used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
     pub fn new_pnt_curve_real3(
         P: &ffi::gp_Pnt,
         C: &ffi::Adaptor3d_Curve,
@@ -72,7 +80,14 @@ impl ExtPC {
         ffi::ExtPC_ctor_pnt_curve_real3(P, C, Uinf, Usup, TolF)
     }
 
-    /// It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// Tol is used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
     pub fn new_pnt_curve_real(
         P: &ffi::gp_Pnt,
         C: &ffi::Adaptor3d_Curve,
@@ -101,7 +116,8 @@ impl POnSurfParams {
         ffi::POnSurfParams_ctor()
     }
 
-    /// Creation of a point on surface with parameter values on the surface and a Pnt from gp.
+    /// Creation of a point on surface with parameter
+    /// values on the surface and a Pnt from gp.
     pub fn new_real2_pnt(theU: f64, theV: f64, thePnt: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
         ffi::POnSurfParams_ctor_real2_pnt(theU, theV, thePnt)
     }
@@ -133,7 +149,8 @@ impl POnSurf {
         ffi::POnSurf_ctor()
     }
 
-    /// Creation of a point on surface with parameter values on the surface and a Pnt from gp.
+    /// Creation of a point on surface with parameter
+    /// values on the surface and a Pnt from gp.
     pub fn new_real2_pnt(U: f64, V: f64, P: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
         ffi::POnSurf_ctor_real2_pnt(U, V, P)
     }
@@ -144,7 +161,9 @@ impl ExtPElS {
         ffi::ExtPElS_ctor()
     }
 
-    /// It calculates all the distances between a point and a cylinder from gp. Tol is used to test if the point is on the axis.
+    /// It calculates all the distances between a point
+    /// and a cylinder from gp.
+    /// Tol is used to test if the point is on the axis.
     pub fn new_pnt_cylinder_real(
         P: &ffi::gp_Pnt,
         S: &ffi::gp_Cylinder,
@@ -153,17 +172,24 @@ impl ExtPElS {
         ffi::ExtPElS_ctor_pnt_cylinder_real(P, S, Tol)
     }
 
-    /// It calculates all the distances between a point and a plane from gp. Tol is used to test if the point is on the plane.
+    /// It calculates all the distances between a point
+    /// and a plane from gp.
+    /// Tol is used to test if the point is on the plane.
     pub fn new_pnt_pln_real(P: &ffi::gp_Pnt, S: &ffi::gp_Pln, Tol: f64) -> cxx::UniquePtr<Self> {
         ffi::ExtPElS_ctor_pnt_pln_real(P, S, Tol)
     }
 
-    /// It calculates all the distances between a point and a cone from gp. Tol is used to test if the point is at the apex or on the axis.
+    /// It calculates all the distances between a point
+    /// and a cone from gp.
+    /// Tol is used to test if the point is at the apex or
+    /// on the axis.
     pub fn new_pnt_cone_real(P: &ffi::gp_Pnt, S: &ffi::gp_Cone, Tol: f64) -> cxx::UniquePtr<Self> {
         ffi::ExtPElS_ctor_pnt_cone_real(P, S, Tol)
     }
 
-    /// It calculates all the distances between a point and a torus from gp. Tol is used to test if the point is on the axis.
+    /// It calculates all the distances between a point
+    /// and a torus from gp.
+    /// Tol is used to test if the point is on the axis.
     pub fn new_pnt_torus_real(
         P: &ffi::gp_Pnt,
         S: &ffi::gp_Torus,
@@ -172,7 +198,9 @@ impl ExtPElS {
         ffi::ExtPElS_ctor_pnt_torus_real(P, S, Tol)
     }
 
-    /// It calculates all the distances between a point and a sphere from gp. Tol is used to test if the point is at the center.
+    /// It calculates all the distances between a point
+    /// and a sphere from gp.
+    /// Tol is used to test if the point is at the center.
     pub fn new_pnt_sphere_real(
         P: &ffi::gp_Pnt,
         S: &ffi::gp_Sphere,
@@ -187,7 +215,8 @@ impl ExtPElC {
         ffi::ExtPElC_ctor()
     }
 
-    /// Calculates the extremum distance between the point P and the segment [Uinf,Usup] of the line C.
+    /// Calculates the extremum distance between the
+    /// point P and the segment [Uinf,Usup] of the line C.
     pub fn new_pnt_lin_real3(
         P: &ffi::gp_Pnt,
         C: &ffi::gp_Lin,
@@ -198,7 +227,17 @@ impl ExtPElC {
         ffi::ExtPElC_ctor_pnt_lin_real3(P, C, Tol, Uinf, Usup)
     }
 
-    /// Calculates the 2 extremum distances between the point P and the segment [Uinf,Usup] of the circle C. Tol is used to determine if P is on the axis of the circle or if an extremum is on an endpoint of the segment. If P is on the axis of the circle, there are infinite solution then IsDone(me)=False. The conditions on the Uinf and Usup are: 0. <= Uinf <= 2.*PI and Usup > Uinf. If Usup > Uinf + 2.*PI, then only the solutions in the range [Uinf,Uinf+2.*PI[ are computed.
+    /// Calculates the 2 extremum distances between the
+    /// point P and the segment [Uinf,Usup] of the circle C.
+    /// Tol is used to determine
+    /// if P is on the axis of the circle or
+    /// if an extremum is on an endpoint of the segment.
+    /// If P is on the axis of the circle,
+    /// there are infinite solution then IsDone(me)=False.
+    /// The conditions on the Uinf and Usup are:
+    /// 0. <= Uinf <= 2.*PI and Usup > Uinf.
+    /// If Usup > Uinf + 2.*PI, then only the solutions in
+    /// the range [Uinf,Uinf+2.*PI[ are computed.
     pub fn new_pnt_circ_real3(
         P: &ffi::gp_Pnt,
         C: &ffi::gp_Circ,
@@ -209,7 +248,18 @@ impl ExtPElC {
         ffi::ExtPElC_ctor_pnt_circ_real3(P, C, Tol, Uinf, Usup)
     }
 
-    /// Calculates the 4 extremum distances between the point P and the segment [Uinf,Usup] of the ellipse C. Tol is used to determine if the point is on the axis of the ellipse and if the major radius is equal to the minor radius or if an extremum is on an endpoint of the segment. If P is on the axis of the ellipse, there are infinite solution then IsDone(me)=False. The conditions on the Uinf and Usup are: 0. <= Uinf <= 2.*PI and Usup > Uinf. If Usup > Uinf + 2.*PI, then only the solutions in the range [Uinf,Uinf+2.*PI[ are computed.
+    /// Calculates the 4 extremum distances between the
+    /// point P and the segment [Uinf,Usup] of the ellipse C.
+    /// Tol is used to determine
+    /// if the point is on the axis of the ellipse and
+    /// if the major radius is equal to the minor radius or
+    /// if an extremum is on an endpoint of the segment.
+    /// If P is on the axis of the ellipse,
+    /// there are infinite solution then IsDone(me)=False.
+    /// The conditions on the Uinf and Usup are:
+    /// 0. <= Uinf <= 2.*PI and Usup > Uinf.
+    /// If Usup > Uinf + 2.*PI, then only the solutions in
+    /// the range [Uinf,Uinf+2.*PI[ are computed.
     pub fn new_pnt_elips_real3(
         P: &ffi::gp_Pnt,
         C: &ffi::gp_Elips,
@@ -220,7 +270,12 @@ impl ExtPElC {
         ffi::ExtPElC_ctor_pnt_elips_real3(P, C, Tol, Uinf, Usup)
     }
 
-    /// Calculates the extremum distances between the point P and the segment [Uinf,Usup] of the hyperbola C. Tol is used to determine if two solutions u and v are identical; the condition is: dist(C(u),C(v)) < Tol.
+    /// Calculates the extremum distances between the
+    /// point P and the segment [Uinf,Usup] of the hyperbola
+    /// C.
+    /// Tol is used to determine if two solutions u and v
+    /// are identical; the condition is:
+    /// dist(C(u),C(v)) < Tol.
     pub fn new_pnt_hypr_real3(
         P: &ffi::gp_Pnt,
         C: &ffi::gp_Hypr,
@@ -231,7 +286,12 @@ impl ExtPElC {
         ffi::ExtPElC_ctor_pnt_hypr_real3(P, C, Tol, Uinf, Usup)
     }
 
-    /// Calculates the 4 extremum distances between the point P and the segment [Uinf,Usup] of the parabola C. Tol is used to determine if two solutions u and v are identical; the condition is: dist(C(u),C(v)) < Tol.
+    /// Calculates the 4 extremum distances between the
+    /// point P and the segment [Uinf,Usup] of the parabola
+    /// C.
+    /// Tol is used to determine if two solutions u and v
+    /// are identical; the condition is:
+    /// dist(C(u),C(v)) < Tol.
     pub fn new_pnt_parab_real3(
         P: &ffi::gp_Pnt,
         C: &ffi::gp_Parab,
@@ -248,7 +308,16 @@ impl EPCOfExtPC {
         ffi::EPCOfExtPC_ctor()
     }
 
-    /// It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// NbU is used to locate the close points to
+    /// find the zeros.
+    /// Tol and TolU are used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
     pub fn new_pnt_curve_int_real2(
         P: &ffi::gp_Pnt,
         C: &ffi::Adaptor3d_Curve,
@@ -259,7 +328,17 @@ impl EPCOfExtPC {
         ffi::EPCOfExtPC_ctor_pnt_curve_int_real2(P, C, NbU, TolU, TolF)
     }
 
-    /// It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Zeros are searched between umin and usup. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
+    /// It calculates all the distances.
+    /// The function F(u)=distance(P,C(u)) has an extremum
+    /// when g(u)=dF/du=0. The algorithm searches all the
+    /// zeros inside the definition range of the curve.
+    /// NbU is used to locate the close points to
+    /// find the zeros.
+    /// Zeros are searched between umin and usup.
+    /// Tol and TolU are used to decide to stop the
+    /// iterations according to the following condition:
+    /// if n is the number of iterations,
+    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
     pub fn new_pnt_curve_int_real4(
         P: &ffi::gp_Pnt,
         C: &ffi::Adaptor3d_Curve,
@@ -313,19 +392,25 @@ impl POnCurv {
         ffi::POnCurv_ctor()
     }
 
-    /// Creation of a point on curve with a parameter value on the curve and a Pnt from gp.
+    /// Creation of a point on curve with a parameter
+    /// value on the curve and a Pnt from gp.
     pub fn new_real_pnt(U: f64, P: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
         ffi::POnCurv_ctor_real_pnt(U, P)
     }
 }
 pub use ffi::ECC;
 impl ECC {
-    /// Calculates all the distances as above between Uinf and Usup for C1 and  between Vinf and Vsup for C2.
+    /// Calculates all the distances as above
+    /// between Uinf and Usup for C1 and  between Vinf and Vsup
+    /// for C2.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ECC_ctor()
     }
 
-    /// It calculates all the distances. The function F(u,v)=distance(C1(u),C2(v)) has an extremum when gradient(f)=0. The algorithm uses Evtushenko's global optimization solver.
+    /// It calculates all the distances.
+    /// The function F(u,v)=distance(C1(u),C2(v)) has an
+    /// extremum when gradient(f)=0. The algorithm uses
+    /// Evtushenko's global optimization solver.
     pub fn new_curve2(
         C1: &ffi::Adaptor3d_Curve,
         C2: &ffi::Adaptor3d_Curve,
@@ -333,7 +418,9 @@ impl ECC {
         ffi::ECC_ctor_curve2(C1, C2)
     }
 
-    /// Calculates all the distances as above between Uinf and Usup for C1 and  between Vinf and Vsup for C2.
+    /// Calculates all the distances as above
+    /// between Uinf and Usup for C1 and  between Vinf and Vsup
+    /// for C2.
     pub fn new_curve2_real4(
         C1: &ffi::Adaptor3d_Curve,
         C2: &ffi::Adaptor3d_Curve,
@@ -356,7 +443,8 @@ pub(crate) mod ffi {
         /// ======================== Extrema_ExtCC ========================
         /// /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC`
         ///
-        /// It calculates all the distance between two curves. These distances can be maximum or minimum.
+        /// It calculates all the distance between two curves.
+        /// These distances can be maximum or minimum.
         #[cxx_name = "Extrema_ExtCC"]
         type ExtCC;
         /// /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC::Extrema_ExtCC()`
@@ -436,10 +524,14 @@ pub(crate) mod ffi {
         /// Returns the value of the Nth extremum square distance.
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &ExtCC, N: i32) -> f64;
-        /// Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one.
+        /// Returns the points of the Nth extremum distance.
+        /// P1 is on the first curve, P2 on the second one.
         #[cxx_name = "Points"]
         fn points(self: &ExtCC, N: i32, P1: Pin<&mut POnCurv>, P2: Pin<&mut POnCurv>);
-        /// if the curve is a trimmed curve, dist11 is a square distance between the point on C1 of parameter FirstParameter and the point of parameter FirstParameter on C2.
+        /// if the curve is a trimmed curve,
+        /// dist11 is a square distance between the point on C1
+        /// of parameter FirstParameter and the point of
+        /// parameter FirstParameter on C2.
         #[cxx_name = "TrimmedSquareDistances"]
         fn trimmed_square_distances(
             self: &ExtCC,
@@ -467,7 +559,15 @@ pub(crate) mod ffi {
         fn ExtPC_ctor() -> UniquePtr<ExtPC>;
         /// /// **Source:** `Extrema_ExtPC.hxx` - `Extrema_ExtPC::Extrema_ExtPC()`
         ///
-        /// It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Zeros are searched between uinf and usup. Tol  is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+        /// It calculates all the distances.
+        /// The function F(u)=distance(P,C(u)) has an extremum
+        /// when g(u)=dF/du=0. The algorithm searches all the
+        /// zeros inside the definition range of the curve.
+        /// Zeros are searched between uinf and usup.
+        /// Tol  is used to decide to stop the
+        /// iterations according to the following condition:
+        /// if n is the number of iterations,
+        /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
         #[cxx_name = "Extrema_ExtPC_ctor_pnt_curve_real3"]
         fn ExtPC_ctor_pnt_curve_real3(
             P: &gp_Pnt,
@@ -478,7 +578,14 @@ pub(crate) mod ffi {
         ) -> UniquePtr<ExtPC>;
         /// /// **Source:** `Extrema_ExtPC.hxx` - `Extrema_ExtPC::Extrema_ExtPC()`
         ///
-        /// It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
+        /// It calculates all the distances.
+        /// The function F(u)=distance(P,C(u)) has an extremum
+        /// when g(u)=dF/du=0. The algorithm searches all the
+        /// zeros inside the definition range of the curve.
+        /// Tol is used to decide to stop the
+        /// iterations according to the following condition:
+        /// if n is the number of iterations,
+        /// the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
         #[cxx_name = "Extrema_ExtPC_ctor_pnt_curve_real"]
         fn ExtPC_ctor_pnt_curve_real(
             P: &gp_Pnt,
@@ -488,7 +595,8 @@ pub(crate) mod ffi {
         /// initializes the fields of the algorithm.
         #[cxx_name = "Initialize"]
         fn initialize(self: Pin<&mut ExtPC>, C: &Adaptor3d_Curve, Uinf: f64, Usup: f64, TolF: f64);
-        /// An exception is raised if the fields have not been initialized.
+        /// An exception is raised if the fields have not been
+        /// initialized.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut ExtPC>, P: &gp_Pnt);
         /// True if the distances are found.
@@ -500,13 +608,18 @@ pub(crate) mod ffi {
         /// Returns the number of extremum distances.
         #[cxx_name = "NbExt"]
         fn nb_ext(self: &ExtPC) -> i32;
-        /// Returns True if the <N>th extremum distance is a minimum.
+        /// Returns True if the <N>th extremum distance is a
+        /// minimum.
         #[cxx_name = "IsMin"]
         fn is_min(self: &ExtPC, N: i32) -> bool;
         /// Returns the point of the <N>th extremum distance.
         #[cxx_name = "Point"]
         fn point(self: &ExtPC, N: i32) -> &POnCurv;
-        /// if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <P1> and dist2 is a square distance between <P> and the point of parameter LastParameter <P2>.
+        /// if the curve is a trimmed curve,
+        /// dist1 is a square distance between <P> and the point
+        /// of parameter FirstParameter <P1> and
+        /// dist2 is a square distance between <P> and the point
+        /// of parameter LastParameter <P2>.
         #[cxx_name = "TrimmedSquareDistances"]
         fn trimmed_square_distances(
             self: &ExtPC,
@@ -518,7 +631,9 @@ pub(crate) mod ffi {
         /// ======================== Extrema_ExtPS ========================
         /// /// **Source:** `Extrema_ExtPS.hxx` - `Extrema_ExtPS`
         ///
-        /// It calculates all the extremum distances between a point and a surface. These distances can be minimum or maximum.
+        /// It calculates all the extremum distances
+        /// between a point and a surface.
+        /// These distances can be minimum or maximum.
         #[cxx_name = "Extrema_ExtPS"]
         type ExtPS;
         /// /// **Source:** `Extrema_ExtPS.hxx` - `Extrema_ExtPS::Extrema_ExtPS()`
@@ -536,7 +651,9 @@ pub(crate) mod ffi {
             TolU: f64,
             TolV: f64,
         );
-        /// Computes the distances. An exception is raised if the fields have not been initialized.
+        /// Computes the distances.
+        /// An exception is raised if the fields have not been
+        /// initialized.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut ExtPS>, P: &gp_Pnt);
         /// Returns True if the distances are found.
@@ -551,7 +668,15 @@ pub(crate) mod ffi {
         /// Returns the point of the Nth resulting distance.
         #[cxx_name = "Point"]
         fn point(self: &ExtPS, N: i32) -> &POnSurf;
-        /// if the surface is a trimmed surface, dUfVf is a square distance between <P> and the point of parameter FirstUParameter and FirstVParameter <PUfVf>. dUfVl is a square distance between <P> and the point of parameter FirstUParameter and LastVParameter <PUfVl>. dUlVf is a square distance between <P> and the point of parameter LastUParameter and FirstVParameter <PUlVf>. dUlVl is a square distance between <P> and the point of parameter LastUParameter and LastVParameter <PUlVl>.
+        /// if the surface is a trimmed surface,
+        /// dUfVf is a square distance between <P> and the point
+        /// of parameter FirstUParameter and FirstVParameter <PUfVf>.
+        /// dUfVl is a square distance between <P> and the point
+        /// of parameter FirstUParameter and LastVParameter <PUfVl>.
+        /// dUlVf is a square distance between <P> and the point
+        /// of parameter LastUParameter and FirstVParameter <PUlVf>.
+        /// dUlVl is a square distance between <P> and the point
+        /// of parameter LastUParameter and LastVParameter <PUlVl>.
         #[cxx_name = "TrimmedSquareDistances"]
         fn trimmed_square_distances(
             self: &ExtPS,
@@ -567,7 +692,9 @@ pub(crate) mod ffi {
         /// ======================== Extrema_GenExtPS ========================
         /// /// **Source:** `Extrema_GenExtPS.hxx` - `Extrema_GenExtPS`
         ///
-        /// It calculates all the extremum distances between a point and a surface. These distances can be minimum or maximum.
+        /// It calculates all the extremum distances
+        /// between a point and a surface.
+        /// These distances can be minimum or maximum.
         #[cxx_name = "Extrema_GenExtPS"]
         type GenExtPS;
         /// /// **Source:** `Extrema_GenExtPS.hxx` - `Extrema_GenExtPS::Extrema_GenExtPS()`
@@ -597,7 +724,9 @@ pub(crate) mod ffi {
             TolU: f64,
             TolV: f64,
         );
-        /// the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
+        /// the algorithm is done with the point P.
+        /// An exception is raised if the fields have not
+        /// been initialized.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut GenExtPS>, P: &gp_Pnt);
         /// Returns True if the distances are found.
@@ -615,7 +744,9 @@ pub(crate) mod ffi {
         /// ======================== Extrema_POnSurfParams ========================
         /// /// **Source:** `Extrema_POnSurfParams.hxx` - `Extrema_POnSurfParams`
         ///
-        /// Data container for point on surface parameters. These parameters are required to compute an initial approximation for extrema computation.
+        /// Data container for point on surface parameters. These parameters
+        /// are required to compute an initial approximation for extrema
+        /// computation.
         #[cxx_name = "Extrema_POnSurfParams"]
         type POnSurfParams;
         /// /// **Source:** `Extrema_POnSurfParams.hxx` - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
@@ -625,23 +756,27 @@ pub(crate) mod ffi {
         fn POnSurfParams_ctor() -> UniquePtr<POnSurfParams>;
         /// /// **Source:** `Extrema_POnSurfParams.hxx` - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
         ///
-        /// Creation of a point on surface with parameter values on the surface and a Pnt from gp.
+        /// Creation of a point on surface with parameter
+        /// values on the surface and a Pnt from gp.
         #[cxx_name = "Extrema_POnSurfParams_ctor_real2_pnt"]
         fn POnSurfParams_ctor_real2_pnt(
             theU: f64,
             theV: f64,
             thePnt: &gp_Pnt,
         ) -> UniquePtr<POnSurfParams>;
-        /// Sets the square distance from this point to another one (e.g. to the point to be projected).
+        /// Sets the square distance from this point to another one
+        /// (e.g. to the point to be projected).
         #[cxx_name = "SetSqrDistance"]
         fn set_sqr_distance(self: Pin<&mut POnSurfParams>, theSqrDistance: f64);
         /// Query the square distance from this point to another one.
         #[cxx_name = "GetSqrDistance"]
         fn get_sqr_distance(self: &POnSurfParams) -> f64;
-        /// Sets the U and V indices of an element that contains this point.
+        /// Sets the U and V indices of an element that contains
+        /// this point.
         #[cxx_name = "SetIndices"]
         fn set_indices(self: Pin<&mut POnSurfParams>, theIndexU: i32, theIndexV: i32);
-        /// Query the U and V indices of an element that contains this point.
+        /// Query the U and V indices of an element that contains
+        /// this point.
         #[cxx_name = "GetIndices"]
         fn get_indices(self: &POnSurfParams, theIndexU: &mut i32, theIndexV: &mut i32);
         /// Upcast Extrema_POnSurfParams to Extrema_POnSurf
@@ -653,7 +788,26 @@ pub(crate) mod ffi {
         /// ======================== Extrema_FuncPSNorm ========================
         /// /// **Source:** `Extrema_FuncPSNorm.hxx` - `Extrema_FuncPSNorm`
         ///
-        /// Functional for search of extremum of the distance between point P and surface S, starting from approximate solution (u0, v0). The class inherits math_FunctionSetWithDerivatives and thus is intended for use in math_FunctionSetRoot algorithm . Denoting derivatives of the surface S(u,v) by u and v, respectively, as Su and Sv, the two functions to be nullified are: F1(u,v) = (S - P) * Su F2(u,v) = (S - P) * Sv The derivatives of the functional are: Duf1(u,v) = Su^2    + (S-P) * Suu; Dvf1(u,v) = Su * Sv + (S-P) * Suv Duf2(u,v) = Sv * Su + (S-P) * Suv = Dvf1 Dvf2(u,v) = Sv^2    + (S-P) * Svv Here * denotes scalar product, and ^2 is square power.
+        /// Functional for search of extremum of the distance between point P and
+        /// surface S, starting from approximate solution (u0, v0).
+        ///
+        /// The class inherits math_FunctionSetWithDerivatives and thus is intended
+        /// for use in math_FunctionSetRoot algorithm .
+        ///
+        /// Denoting derivatives of the surface S(u,v) by u and v, respectively, as
+        /// Su and Sv, the two functions to be nullified are:
+        ///
+        /// F1(u,v) = (S - P) * Su
+        /// F2(u,v) = (S - P) * Sv
+        ///
+        /// The derivatives of the functional are:
+        ///
+        /// Duf1(u,v) = Su^2    + (S-P) * Suu;
+        /// Dvf1(u,v) = Su * Sv + (S-P) * Suv
+        /// Duf2(u,v) = Sv * Su + (S-P) * Suv = Dvf1
+        /// Dvf2(u,v) = Sv^2    + (S-P) * Svv
+        ///
+        /// Here * denotes scalar product, and ^2 is square power.
         #[cxx_name = "Extrema_FuncPSNorm"]
         type FuncPSNorm;
         /// /// **Source:** `Extrema_FuncPSNorm.hxx` - `Extrema_FuncPSNorm::Extrema_FuncPSNorm()`
@@ -715,13 +869,15 @@ pub(crate) mod ffi {
         fn POnSurf_ctor() -> UniquePtr<POnSurf>;
         /// /// **Source:** `Extrema_POnSurf.hxx` - `Extrema_POnSurf::Extrema_POnSurf()`
         ///
-        /// Creation of a point on surface with parameter values on the surface and a Pnt from gp.
+        /// Creation of a point on surface with parameter
+        /// values on the surface and a Pnt from gp.
         #[cxx_name = "Extrema_POnSurf_ctor_real2_pnt"]
         fn POnSurf_ctor_real2_pnt(U: f64, V: f64, P: &gp_Pnt) -> UniquePtr<POnSurf>;
         /// Returns the 3d point.
         #[cxx_name = "Value"]
         fn value(self: &POnSurf) -> &gp_Pnt;
-        /// Sets the params of current POnSurf instance. (e.g. to the point to be projected).
+        /// Sets the params of current POnSurf instance.
+        /// (e.g. to the point to be projected).
         #[cxx_name = "SetParameters"]
         fn set_parameters(self: Pin<&mut POnSurf>, theU: f64, theV: f64, thePnt: &gp_Pnt);
         /// Returns the parameter values on the surface.
@@ -730,7 +886,9 @@ pub(crate) mod ffi {
         /// ======================== Extrema_ExtPElS ========================
         /// /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS`
         ///
-        /// It calculates all the extremum distances between a point and a surface. These distances can be minimum or maximum.
+        /// It calculates all the extremum distances
+        /// between a point and a surface.
+        /// These distances can be minimum or maximum.
         #[cxx_name = "Extrema_ExtPElS"]
         type ExtPElS;
         /// /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
@@ -738,7 +896,9 @@ pub(crate) mod ffi {
         fn ExtPElS_ctor() -> UniquePtr<ExtPElS>;
         /// /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
-        /// It calculates all the distances between a point and a cylinder from gp. Tol is used to test if the point is on the axis.
+        /// It calculates all the distances between a point
+        /// and a cylinder from gp.
+        /// Tol is used to test if the point is on the axis.
         #[cxx_name = "Extrema_ExtPElS_ctor_pnt_cylinder_real"]
         fn ExtPElS_ctor_pnt_cylinder_real(
             P: &gp_Pnt,
@@ -747,22 +907,31 @@ pub(crate) mod ffi {
         ) -> UniquePtr<ExtPElS>;
         /// /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
-        /// It calculates all the distances between a point and a plane from gp. Tol is used to test if the point is on the plane.
+        /// It calculates all the distances between a point
+        /// and a plane from gp.
+        /// Tol is used to test if the point is on the plane.
         #[cxx_name = "Extrema_ExtPElS_ctor_pnt_pln_real"]
         fn ExtPElS_ctor_pnt_pln_real(P: &gp_Pnt, S: &gp_Pln, Tol: f64) -> UniquePtr<ExtPElS>;
         /// /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
-        /// It calculates all the distances between a point and a cone from gp. Tol is used to test if the point is at the apex or on the axis.
+        /// It calculates all the distances between a point
+        /// and a cone from gp.
+        /// Tol is used to test if the point is at the apex or
+        /// on the axis.
         #[cxx_name = "Extrema_ExtPElS_ctor_pnt_cone_real"]
         fn ExtPElS_ctor_pnt_cone_real(P: &gp_Pnt, S: &gp_Cone, Tol: f64) -> UniquePtr<ExtPElS>;
         /// /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
-        /// It calculates all the distances between a point and a torus from gp. Tol is used to test if the point is on the axis.
+        /// It calculates all the distances between a point
+        /// and a torus from gp.
+        /// Tol is used to test if the point is on the axis.
         #[cxx_name = "Extrema_ExtPElS_ctor_pnt_torus_real"]
         fn ExtPElS_ctor_pnt_torus_real(P: &gp_Pnt, S: &gp_Torus, Tol: f64) -> UniquePtr<ExtPElS>;
         /// /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
-        /// It calculates all the distances between a point and a sphere from gp. Tol is used to test if the point is at the center.
+        /// It calculates all the distances between a point
+        /// and a sphere from gp.
+        /// Tol is used to test if the point is at the center.
         #[cxx_name = "Extrema_ExtPElS_ctor_pnt_sphere_real"]
         fn ExtPElS_ctor_pnt_sphere_real(P: &gp_Pnt, S: &gp_Sphere, Tol: f64) -> UniquePtr<ExtPElS>;
         #[cxx_name = "Perform"]
@@ -795,7 +964,9 @@ pub(crate) mod ffi {
         /// ======================== Extrema_ExtPElC ========================
         /// /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC`
         ///
-        /// It calculates all the distances between a point and an elementary curve. These distances can be minimum or maximum.
+        /// It calculates all the distances between a point
+        /// and an elementary curve.
+        /// These distances can be minimum or maximum.
         #[cxx_name = "Extrema_ExtPElC"]
         type ExtPElC;
         /// /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
@@ -803,7 +974,8 @@ pub(crate) mod ffi {
         fn ExtPElC_ctor() -> UniquePtr<ExtPElC>;
         /// /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
-        /// Calculates the extremum distance between the point P and the segment [Uinf,Usup] of the line C.
+        /// Calculates the extremum distance between the
+        /// point P and the segment [Uinf,Usup] of the line C.
         #[cxx_name = "Extrema_ExtPElC_ctor_pnt_lin_real3"]
         fn ExtPElC_ctor_pnt_lin_real3(
             P: &gp_Pnt,
@@ -814,7 +986,17 @@ pub(crate) mod ffi {
         ) -> UniquePtr<ExtPElC>;
         /// /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
-        /// Calculates the 2 extremum distances between the point P and the segment [Uinf,Usup] of the circle C. Tol is used to determine if P is on the axis of the circle or if an extremum is on an endpoint of the segment. If P is on the axis of the circle, there are infinite solution then IsDone(me)=False. The conditions on the Uinf and Usup are: 0. <= Uinf <= 2.*PI and Usup > Uinf. If Usup > Uinf + 2.*PI, then only the solutions in the range [Uinf,Uinf+2.*PI[ are computed.
+        /// Calculates the 2 extremum distances between the
+        /// point P and the segment [Uinf,Usup] of the circle C.
+        /// Tol is used to determine
+        /// if P is on the axis of the circle or
+        /// if an extremum is on an endpoint of the segment.
+        /// If P is on the axis of the circle,
+        /// there are infinite solution then IsDone(me)=False.
+        /// The conditions on the Uinf and Usup are:
+        /// 0. <= Uinf <= 2.*PI and Usup > Uinf.
+        /// If Usup > Uinf + 2.*PI, then only the solutions in
+        /// the range [Uinf,Uinf+2.*PI[ are computed.
         #[cxx_name = "Extrema_ExtPElC_ctor_pnt_circ_real3"]
         fn ExtPElC_ctor_pnt_circ_real3(
             P: &gp_Pnt,
@@ -825,7 +1007,18 @@ pub(crate) mod ffi {
         ) -> UniquePtr<ExtPElC>;
         /// /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
-        /// Calculates the 4 extremum distances between the point P and the segment [Uinf,Usup] of the ellipse C. Tol is used to determine if the point is on the axis of the ellipse and if the major radius is equal to the minor radius or if an extremum is on an endpoint of the segment. If P is on the axis of the ellipse, there are infinite solution then IsDone(me)=False. The conditions on the Uinf and Usup are: 0. <= Uinf <= 2.*PI and Usup > Uinf. If Usup > Uinf + 2.*PI, then only the solutions in the range [Uinf,Uinf+2.*PI[ are computed.
+        /// Calculates the 4 extremum distances between the
+        /// point P and the segment [Uinf,Usup] of the ellipse C.
+        /// Tol is used to determine
+        /// if the point is on the axis of the ellipse and
+        /// if the major radius is equal to the minor radius or
+        /// if an extremum is on an endpoint of the segment.
+        /// If P is on the axis of the ellipse,
+        /// there are infinite solution then IsDone(me)=False.
+        /// The conditions on the Uinf and Usup are:
+        /// 0. <= Uinf <= 2.*PI and Usup > Uinf.
+        /// If Usup > Uinf + 2.*PI, then only the solutions in
+        /// the range [Uinf,Uinf+2.*PI[ are computed.
         #[cxx_name = "Extrema_ExtPElC_ctor_pnt_elips_real3"]
         fn ExtPElC_ctor_pnt_elips_real3(
             P: &gp_Pnt,
@@ -836,7 +1029,12 @@ pub(crate) mod ffi {
         ) -> UniquePtr<ExtPElC>;
         /// /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
-        /// Calculates the extremum distances between the point P and the segment [Uinf,Usup] of the hyperbola C. Tol is used to determine if two solutions u and v are identical; the condition is: dist(C(u),C(v)) < Tol.
+        /// Calculates the extremum distances between the
+        /// point P and the segment [Uinf,Usup] of the hyperbola
+        /// C.
+        /// Tol is used to determine if two solutions u and v
+        /// are identical; the condition is:
+        /// dist(C(u),C(v)) < Tol.
         #[cxx_name = "Extrema_ExtPElC_ctor_pnt_hypr_real3"]
         fn ExtPElC_ctor_pnt_hypr_real3(
             P: &gp_Pnt,
@@ -847,7 +1045,12 @@ pub(crate) mod ffi {
         ) -> UniquePtr<ExtPElC>;
         /// /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
-        /// Calculates the 4 extremum distances between the point P and the segment [Uinf,Usup] of the parabola C. Tol is used to determine if two solutions u and v are identical; the condition is: dist(C(u),C(v)) < Tol.
+        /// Calculates the 4 extremum distances between the
+        /// point P and the segment [Uinf,Usup] of the parabola
+        /// C.
+        /// Tol is used to determine if two solutions u and v
+        /// are identical; the condition is:
+        /// dist(C(u),C(v)) < Tol.
         #[cxx_name = "Extrema_ExtPElC_ctor_pnt_parab_real3"]
         fn ExtPElC_ctor_pnt_parab_real3(
             P: &gp_Pnt,
@@ -910,7 +1113,8 @@ pub(crate) mod ffi {
         /// Returns the value of the Nth extremum square distance.
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &ExtPElC, N: i32) -> f64;
-        /// Returns True if the Nth extremum distance is a minimum.
+        /// Returns True if the Nth extremum distance is a
+        /// minimum.
         #[cxx_name = "IsMin"]
         fn is_min(self: &ExtPElC, N: i32) -> bool;
         /// Returns the point of the Nth extremum distance.
@@ -925,7 +1129,16 @@ pub(crate) mod ffi {
         fn EPCOfExtPC_ctor() -> UniquePtr<EPCOfExtPC>;
         /// /// **Source:** `Extrema_EPCOfExtPC.hxx` - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
         ///
-        /// It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
+        /// It calculates all the distances.
+        /// The function F(u)=distance(P,C(u)) has an extremum
+        /// when g(u)=dF/du=0. The algorithm searches all the
+        /// zeros inside the definition range of the curve.
+        /// NbU is used to locate the close points to
+        /// find the zeros.
+        /// Tol and TolU are used to decide to stop the
+        /// iterations according to the following condition:
+        /// if n is the number of iterations,
+        /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
         #[cxx_name = "Extrema_EPCOfExtPC_ctor_pnt_curve_int_real2"]
         fn EPCOfExtPC_ctor_pnt_curve_int_real2(
             P: &gp_Pnt,
@@ -936,7 +1149,17 @@ pub(crate) mod ffi {
         ) -> UniquePtr<EPCOfExtPC>;
         /// /// **Source:** `Extrema_EPCOfExtPC.hxx` - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
         ///
-        /// It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Zeros are searched between umin and usup. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
+        /// It calculates all the distances.
+        /// The function F(u)=distance(P,C(u)) has an extremum
+        /// when g(u)=dF/du=0. The algorithm searches all the
+        /// zeros inside the definition range of the curve.
+        /// NbU is used to locate the close points to
+        /// find the zeros.
+        /// Zeros are searched between umin and usup.
+        /// Tol and TolU are used to decide to stop the
+        /// iterations according to the following condition:
+        /// if n is the number of iterations,
+        /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
         #[cxx_name = "Extrema_EPCOfExtPC_ctor_pnt_curve_int_real4"]
         fn EPCOfExtPC_ctor_pnt_curve_int_real4(
             P: &gp_Pnt,
@@ -980,7 +1203,9 @@ pub(crate) mod ffi {
             TolU: f64,
             TolF: f64,
         );
-        /// the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
+        /// the algorithm is done with the point P.
+        /// An exception is raised if the fields have not
+        /// been initialized.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut EPCOfExtPC>, P: &gp_Pnt);
         /// True if the distances are found.
@@ -992,7 +1217,8 @@ pub(crate) mod ffi {
         /// Returns the value of the Nth extremum square distance.
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &EPCOfExtPC, N: i32) -> f64;
-        /// Returns True if the Nth extremum distance is a minimum.
+        /// Returns True if the Nth extremum distance is a
+        /// minimum.
         #[cxx_name = "IsMin"]
         fn is_min(self: &EPCOfExtPC, N: i32) -> bool;
         /// Returns the point of the Nth extremum distance.
@@ -1044,7 +1270,8 @@ pub(crate) mod ffi {
         /// Determines boundaries of subinterval for find of root.
         #[cxx_name = "SubIntervalInitialize"]
         fn sub_interval_initialize(self: Pin<&mut PCFOfEPCOfExtPC>, theUfirst: f64, theUlast: f64);
-        /// Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
+        /// Computes a Tol value. If 1st derivative of curve
+        /// |D1|<Tol, it is considered D1=0.
         #[cxx_name = "SearchOfTolerance"]
         fn search_of_tolerance(self: Pin<&mut PCFOfEPCOfExtPC>) -> f64;
         /// Upcast Extrema_PCFOfEPCOfExtPC to math_Function
@@ -1076,7 +1303,8 @@ pub(crate) mod ffi {
         fn POnCurv_ctor() -> UniquePtr<POnCurv>;
         /// /// **Source:** `Extrema_POnCurv.hxx` - `Extrema_POnCurv::Extrema_POnCurv()`
         ///
-        /// Creation of a point on curve with a parameter value on the curve and a Pnt from gp.
+        /// Creation of a point on curve with a parameter
+        /// value on the curve and a Pnt from gp.
         #[cxx_name = "Extrema_POnCurv_ctor_real_pnt"]
         fn POnCurv_ctor_real_pnt(U: f64, P: &gp_Pnt) -> UniquePtr<POnCurv>;
         /// sets the point and parameter values.
@@ -1094,17 +1322,24 @@ pub(crate) mod ffi {
         type ECC;
         /// /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC::Extrema_ECC()`
         ///
-        /// Calculates all the distances as above between Uinf and Usup for C1 and  between Vinf and Vsup for C2.
+        /// Calculates all the distances as above
+        /// between Uinf and Usup for C1 and  between Vinf and Vsup
+        /// for C2.
         #[cxx_name = "Extrema_ECC_ctor"]
         fn ECC_ctor() -> UniquePtr<ECC>;
         /// /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC::Extrema_ECC()`
         ///
-        /// It calculates all the distances. The function F(u,v)=distance(C1(u),C2(v)) has an extremum when gradient(f)=0. The algorithm uses Evtushenko's global optimization solver.
+        /// It calculates all the distances.
+        /// The function F(u,v)=distance(C1(u),C2(v)) has an
+        /// extremum when gradient(f)=0. The algorithm uses
+        /// Evtushenko's global optimization solver.
         #[cxx_name = "Extrema_ECC_ctor_curve2"]
         fn ECC_ctor_curve2(C1: &Adaptor3d_Curve, C2: &Adaptor3d_Curve) -> UniquePtr<ECC>;
         /// /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC::Extrema_ECC()`
         ///
-        /// Calculates all the distances as above between Uinf and Usup for C1 and  between Vinf and Vsup for C2.
+        /// Calculates all the distances as above
+        /// between Uinf and Usup for C1 and  between Vinf and Vsup
+        /// for C2.
         #[cxx_name = "Extrema_ECC_ctor_curve2_real4"]
         fn ECC_ctor_curve2_real4(
             C1: &Adaptor3d_Curve,
@@ -1148,7 +1383,8 @@ pub(crate) mod ffi {
         /// Returns the value of the Nth square extremum distance.
         #[cxx_name = "SquareDistance"]
         fn square_distance(self: &ECC, N: i32) -> f64;
-        /// Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one.
+        /// Returns the points of the Nth extremum distance.
+        /// P1 is on the first curve, P2 on the second one.
         #[cxx_name = "Points"]
         fn points(self: &ECC, N: i32, P1: Pin<&mut POnCurv>, P2: Pin<&mut POnCurv>);
 

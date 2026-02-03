@@ -26,7 +26,22 @@ pub(crate) mod ffi {
         /// ======================== TopAbs ========================
         /// /// **Source:** `TopAbs.hxx` - `TopAbs`
         ///
-        /// This package gives resources for Topology oriented applications such as : Topological Data Structure, Topological Algorithms. It contains : * The ShapeEnum   enumeration  to  describe  the different topological shapes. * The  Orientation  enumeration to  describe the orientation of a topological shape. * The  State    enumeration  to  describes  the position of a point relative to a Shape. * Methods to manage the enumerations.
+        /// This package gives resources for Topology oriented
+        /// applications such as : Topological Data Structure,
+        /// Topological Algorithms.
+        ///
+        /// It contains :
+        ///
+        /// * The ShapeEnum   enumeration  to  describe  the
+        /// different topological shapes.
+        ///
+        /// * The  Orientation  enumeration to  describe the
+        /// orientation of a topological shape.
+        ///
+        /// * The  State    enumeration  to  describes  the
+        /// position of a point relative to a Shape.
+        ///
+        /// * Methods to manage the enumerations.
         #[cxx_name = "TopAbs"]
         type TopAbs;
 

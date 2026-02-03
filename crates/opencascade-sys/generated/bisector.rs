@@ -27,13 +27,34 @@ pub(crate) mod ffi {
         /// ======================== Bisector_Bisec ========================
         /// /// **Source:** `Bisector_Bisec.hxx` - `Bisector_Bisec`
         ///
-        /// Bisec provides the bisecting line between two elements This line is trimmed by a point <P> and it's contained in the domain defined by the two vectors <V1>, <V2> and <Sense>. Definition of the domain: if <Sense>  is  true the bisecting line is contained in the sector defined by <-V1> and <-V2> in the sense indirect. if <Sense>  is  false the bisecting line is contained in the sector defined by <-V1> and <-V2> in the sense direct. <Tolerance> is used to define degenerate bisector. if the bisector is an hyperbola and one of this radius is smaller than <Tolerance>, the bisector is replaced by a line or semi_line corresponding to one of hyperbola's axes. if the bisector is a parabola on the focal length is smaller than <Tolerance>, the bisector is replaced by a semi_line corresponding to the axe of symmetry of the parabola. if the bisector is an ellipse  and the minor radius is smaller than <Tolerance>, the bisector is replaced by a segment corresponding to the great axe of the ellipse.
+        /// Bisec provides the bisecting line between two elements
+        /// This line is trimmed by a point <P> and it's contained in the domain
+        /// defined by the two vectors <V1>, <V2> and <Sense>.
+        ///
+        /// Definition of the domain:
+        /// if <Sense>  is  true the bisecting line is contained in the sector
+        /// defined by <-V1> and <-V2> in the sense indirect.
+        /// if <Sense>  is  false the bisecting line is contained in the sector
+        /// defined by <-V1> and <-V2> in the sense direct.
+        ///
+        /// <Tolerance> is used to define degenerate bisector.
+        /// if the bisector is an hyperbola and one of this radius is smaller
+        /// than <Tolerance>, the bisector is replaced by a line or semi_line
+        /// corresponding to one of hyperbola's axes.
+        /// if the bisector is a parabola on the focal length is smaller than
+        /// <Tolerance>, the bisector is replaced by a semi_line corresponding
+        /// to the axe of symmetry of the parabola.
+        /// if the bisector is an ellipse  and the minor radius is smaller than
+        /// <Tolerance>, the bisector is replaced by a segment corresponding
+        /// to the great axe of the ellipse.
         #[cxx_name = "Bisector_Bisec"]
         type Bisec;
         /// /// **Source:** `Bisector_Bisec.hxx` - `Bisector_Bisec::Bisector_Bisec()`
         #[cxx_name = "Bisector_Bisec_ctor"]
         fn Bisec_ctor() -> UniquePtr<Bisec>;
-        /// Performs  the bisecting line  between the  curve <Cu1> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
+        /// Performs  the bisecting line  between the  curve
+        /// <Cu1> and the point <Pnt>.
+        /// <oncurve> is True if the point <P> is the point <Pnt>.
         #[cxx_name = "Perform"]
         fn perform_handlecurve_handlepoint_pnt2d_vec2d2_real2_bool(
             self: Pin<&mut Bisec>,
@@ -46,7 +67,9 @@ pub(crate) mod ffi {
             Tolerance: f64,
             oncurve: bool,
         );
-        /// Performs  the bisecting line  between the  curve <Cu> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
+        /// Performs  the bisecting line  between the  curve
+        /// <Cu> and the point <Pnt>.
+        /// <oncurve> is True if the point <P> is the point <Pnt>.
         #[cxx_name = "Perform"]
         fn perform_handlepoint_handlecurve_pnt2d_vec2d2_real2_bool(
             self: Pin<&mut Bisec>,
@@ -59,7 +82,8 @@ pub(crate) mod ffi {
             Tolerance: f64,
             oncurve: bool,
         );
-        /// Performs  the bisecting line  between the two points <Pnt1>  and <Pnt2>.
+        /// Performs  the bisecting line  between the two points
+        /// <Pnt1>  and <Pnt2>.
         #[cxx_name = "Perform"]
         fn perform_handlepoint2_pnt2d_vec2d2_real2_bool(
             self: Pin<&mut Bisec>,

@@ -56,7 +56,8 @@ impl MakeSimpleOffset {
 }
 pub use ffi::Analyse;
 impl Analyse {
-    /// @name Constructors Empty c-tor
+    /// @name Constructors
+    /// Empty c-tor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Analyse_ctor()
     }
@@ -66,7 +67,8 @@ impl Analyse {
         ffi::Analyse_ctor_shape_real(theS, theAngle)
     }
 
-    /// Returns the new face constructed for the edge connecting the two tangent faces having different offset values
+    /// Returns the new face constructed for the edge connecting
+    /// the two tangent faces having different offset values
     pub fn generated(&self, theS: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::Analyse_generated(self, theS)
     }
@@ -113,7 +115,8 @@ pub(crate) mod ffi {
         /// Changes the flag allowing the linearization
         #[cxx_name = "AllowLinearization"]
         fn allow_linearization(self: Pin<&mut MakeOffset>, theIsAllowed: bool);
-        /// Add Closing Faces,  <F>  has to be  in  the initial shape S.
+        /// Add Closing Faces,  <F>  has to be  in  the initial
+        /// shape S.
         #[cxx_name = "AddFace"]
         fn add_face(self: Pin<&mut MakeOffset>, F: &TopoDS_Face);
         /// set the offset <Off> on the Face <F>
@@ -131,22 +134,31 @@ pub(crate) mod ffi {
         fn shape(self: &MakeOffset) -> &TopoDS_Shape;
         #[cxx_name = "InitShape"]
         fn init_shape(self: &MakeOffset) -> &TopoDS_Shape;
-        /// Returns <Image> containing links between initials shapes and offset faces.
+        /// Returns <Image> containing links between initials
+        /// shapes and offset faces.
         #[cxx_name = "OffsetFacesFromShapes"]
         fn offset_faces_from_shapes(self: &MakeOffset) -> &BRepAlgo_Image;
-        /// Returns <Image> containing links between initials shapes and offset edges.
+        /// Returns <Image> containing links between initials
+        /// shapes and offset edges.
         #[cxx_name = "OffsetEdgesFromShapes"]
         fn offset_edges_from_shapes(self: &MakeOffset) -> &BRepAlgo_Image;
         /// Returns the list of closing faces stores by AddFace
         #[cxx_name = "ClosingFaces"]
         fn closing_faces(self: &MakeOffset) -> &TopTools_IndexedMapOfShape;
-        /// Makes pre analysis of possibility offset perform. Use method Error() to get more information. Finds first error. List of checks: 1) Check for existence object with non-null offset. 2) Check for connectivity in offset shell. 3) Check continuity of input surfaces. 4) Check for normals existence on grid. @return True if possible make computations and false otherwise.
+        /// Makes pre analysis of possibility offset perform. Use method Error() to get more information.
+        /// Finds first error. List of checks:
+        /// 1) Check for existence object with non-null offset.
+        /// 2) Check for connectivity in offset shell.
+        /// 3) Check continuity of input surfaces.
+        /// 4) Check for normals existence on grid.
+        /// @return True if possible make computations and false otherwise.
         #[cxx_name = "CheckInputData"]
         fn check_input_data(self: Pin<&mut MakeOffset>, theRange: &Message_ProgressRange) -> bool;
         /// Return bad shape, which obtained in CheckInputData.
         #[cxx_name = "GetBadShape"]
         fn get_bad_shape(self: &MakeOffset) -> &TopoDS_Shape;
-        /// @name History methods Returns the  list of shapes generated from the shape <S>.
+        /// @name History methods
+        /// Returns the  list of shapes generated from the shape <S>.
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut MakeOffset>, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
         /// Returns the list of shapes modified from the shape <S>.
@@ -158,7 +170,16 @@ pub(crate) mod ffi {
         /// ======================== BRepOffset_MakeSimpleOffset ========================
         /// /// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset`
         ///
-        /// Limitations: According to the algorithm nature result depends on the smoothness of input data. Smooth (G1-continuity) input shape will lead to the good result. The possible drawback of the simple algorithm is that it leads, in general case, to tolerance increasing. The tolerances have to grow in order to cover the gaps between the neighbor faces in the output. It should be noted that the actual tolerance growth depends on the offset distance and the quality of joints between the input faces. Anyway the good input shell (smooth connections between adjacent faces) will lead to good result.
+        ///
+        /// Limitations:
+        /// According to the algorithm nature result depends on the smoothness of input data. Smooth
+        /// (G1-continuity) input shape will lead to the good result.
+        ///
+        /// The possible drawback of the simple algorithm is that it leads, in general case, to tolerance
+        /// increasing. The tolerances have to grow in order to cover the gaps between the neighbor faces in
+        /// the output. It should be noted that the actual tolerance growth depends on the offset distance
+        /// and the quality of joints between the input faces. Anyway the good input shell (smooth
+        /// connections between adjacent faces) will lead to good result.
         #[cxx_name = "BRepOffset_MakeSimpleOffset"]
         type MakeSimpleOffset;
         /// /// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset::BRepOffset_MakeSimpleOffset()`
@@ -231,12 +252,14 @@ pub(crate) mod ffi {
         /// ======================== BRepOffset_Analyse ========================
         /// /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse`
         ///
-        /// Analyses the shape to find the parts of edges connecting the convex, concave or tangent faces.
+        /// Analyses the shape to find the parts of edges
+        /// connecting the convex, concave or tangent faces.
         #[cxx_name = "BRepOffset_Analyse"]
         type Analyse;
         /// /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse::BRepOffset_Analyse()`
         ///
-        /// @name Constructors Empty c-tor
+        /// @name Constructors
+        /// Empty c-tor
         #[cxx_name = "BRepOffset_Analyse_ctor"]
         fn Analyse_ctor() -> UniquePtr<Analyse>;
         /// /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse::BRepOffset_Analyse()`
@@ -244,7 +267,8 @@ pub(crate) mod ffi {
         /// C-tor performing the job inside
         #[cxx_name = "BRepOffset_Analyse_ctor_shape_real"]
         fn Analyse_ctor_shape_real(theS: &TopoDS_Shape, theAngle: f64) -> UniquePtr<Analyse>;
-        /// @name Performing analysis Performs the analysis
+        /// @name Performing analysis
+        /// Performs the analysis
         #[cxx_name = "Perform"]
         fn perform(
             self: Pin<&mut Analyse>,
@@ -252,13 +276,15 @@ pub(crate) mod ffi {
             theAngle: f64,
             theRange: &Message_ProgressRange,
         );
-        /// @name Results Returns status of the algorithm
+        /// @name Results
+        /// Returns status of the algorithm
         #[cxx_name = "IsDone"]
         fn is_done(self: &Analyse) -> bool;
         /// Returns the connectivity type of the edge
         #[cxx_name = "Type"]
         fn type_(self: &Analyse, theE: &TopoDS_Edge) -> &BRepOffset_ListOfInterval;
-        /// set in <Edges> all  the Edges of <Shape> which are tangent to <Edge> at the vertex <Vertex>.
+        /// set in <Edges> all  the Edges of <Shape> which are
+        /// tangent to <Edge> at the vertex <Vertex>.
         #[cxx_name = "TangentEdges"]
         fn tangent_edges(
             self: &Analyse,
@@ -277,23 +303,27 @@ pub(crate) mod ffi {
         /// Sets the face-offset data map to analyze tangential cases
         #[cxx_name = "SetFaceOffsetMap"]
         fn set_face_offset_map(self: Pin<&mut Analyse>, theMap: &TopTools_DataMapOfShapeReal);
-        /// Returns the new faces constructed between tangent faces having different offset values on the shape
+        /// Returns the new faces constructed between tangent faces
+        /// having different offset values on the shape
         #[cxx_name = "NewFaces"]
         fn new_faces(self: &Analyse) -> &TopTools_ListOfShape;
         /// Checks if the edge has generated a new face.
         #[cxx_name = "HasGenerated"]
         fn has_generated(self: &Analyse, theS: &TopoDS_Shape) -> bool;
-        /// Returns the replacement of the edge in the face. If no replacement exists, returns the edge
+        /// Returns the replacement of the edge in the face.
+        /// If no replacement exists, returns the edge
         #[cxx_name = "EdgeReplacement"]
         fn edge_replacement(
             self: &Analyse,
             theFace: &TopoDS_Face,
             theEdge: &TopoDS_Edge,
         ) -> &TopoDS_Edge;
-        /// @name Clearing the content Clears the content of the algorithm
+        /// @name Clearing the content
+        /// Clears the content of the algorithm
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Analyse>);
-        /// Returns the new face constructed for the edge connecting the two tangent faces having different offset values
+        /// Returns the new face constructed for the edge connecting
+        /// the two tangent faces having different offset values
         #[cxx_name = "BRepOffset_Analyse_Generated"]
         fn Analyse_generated(self_: &Analyse, theS: &TopoDS_Shape) -> UniquePtr<TopoDS_Shape>;
         /// ======================== BRepOffset_MakeLoops ========================
@@ -333,7 +363,11 @@ pub(crate) mod ffi {
         /// ======================== BRepOffset_Offset ========================
         /// /// **Source:** `BRepOffset_Offset.hxx` - `BRepOffset_Offset`
         ///
-        /// This class compute elemenary offset surface. Evaluate the offset generated : 1 - from a face. 2 - from an edge. 3 - from a vertex.
+        /// This class compute elemenary offset surface.
+        /// Evaluate the offset generated :
+        /// 1 - from a face.
+        /// 2 - from an edge.
+        /// 3 - from a vertex.
         #[cxx_name = "BRepOffset_Offset"]
         type Offset;
         /// /// **Source:** `BRepOffset_Offset.hxx` - `BRepOffset_Offset::BRepOffset_Offset()`

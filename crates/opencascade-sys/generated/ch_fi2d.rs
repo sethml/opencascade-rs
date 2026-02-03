@@ -17,12 +17,17 @@ impl Builder {
         ffi::Builder_ctor()
     }
 
-    /// The face  <F> can be build  on a closed or an open wire.
+    /// The face  <F> can be build  on a closed or an open
+    /// wire.
     pub fn new_face(F: &ffi::TopoDS_Face) -> cxx::UniquePtr<Self> {
         ffi::Builder_ctor_face(F)
     }
 
-    /// Add  a fillet  of   radius  <Radius> on  the  wire between the two edges connected to the vertex <V>. <AddFillet> returns the  fillet edge. The returned edge has  sense only   if the status   <status> is <IsDone>
+    /// Add  a fillet  of   radius  <Radius> on  the  wire
+    /// between the two edges connected to the vertex <V>.
+    /// <AddFillet> returns the  fillet edge. The returned
+    /// edge has  sense only   if the status   <status> is
+    /// <IsDone>
     pub fn add_fillet(
         self: std::pin::Pin<&mut Self>,
         V: &ffi::TopoDS_Vertex,
@@ -31,7 +36,9 @@ impl Builder {
         ffi::Builder_add_fillet(self, V, Radius)
     }
 
-    /// modify the fillet radius and return the new fillet edge. this    edge has sense  only if   the status <status> is <IsDone>.
+    /// modify the fillet radius and return the new fillet
+    /// edge. this    edge has sense  only if   the status
+    /// <status> is <IsDone>.
     pub fn modify_fillet(
         self: std::pin::Pin<&mut Self>,
         Fillet: &ffi::TopoDS_Edge,
@@ -40,7 +47,8 @@ impl Builder {
         ffi::Builder_modify_fillet(self, Fillet, Radius)
     }
 
-    /// removes the fillet <Fillet> and returns the vertex connecting the two adjacent edges to  this fillet.
+    /// removes the fillet <Fillet> and returns the vertex
+    /// connecting the two adjacent edges to  this fillet.
     pub fn remove_fillet(
         self: std::pin::Pin<&mut Self>,
         Fillet: &ffi::TopoDS_Edge,
@@ -48,7 +56,10 @@ impl Builder {
         ffi::Builder_remove_fillet(self, Fillet)
     }
 
-    /// Add a chamfer on  the  wire between the two  edges connected <E1> and  <E2>. <AddChamfer> returns the chamfer  edge. This  edge  has  sense only if  the status <status> is <IsDone>.
+    /// Add a chamfer on  the  wire between the two  edges
+    /// connected <E1> and  <E2>. <AddChamfer> returns the
+    /// chamfer  edge. This  edge  has  sense only if  the
+    /// status <status> is <IsDone>.
     pub fn add_chamfer_edge2_real2(
         self: std::pin::Pin<&mut Self>,
         E1: &ffi::TopoDS_Edge,
@@ -59,7 +70,13 @@ impl Builder {
         ffi::Builder_add_chamfer_edge2_real2(self, E1, E2, D1, D2)
     }
 
-    /// Add  a chamfer on the   wire between the two edges connected to the vertex <V>. The chamfer will make an  angle <Ang> with the edge  <E>, and one of its extremities  will be on  <E>  at distance <D>. The returned   edge has sense   only   if the   status <status> is <IsDone>. Warning: The value of <Ang> must be expressed in Radian.
+    /// Add  a chamfer on the   wire between the two edges
+    /// connected to the vertex <V>. The chamfer will make
+    /// an  angle <Ang> with the edge  <E>, and one of its
+    /// extremities  will be on  <E>  at distance <D>. The
+    /// returned   edge has sense   only   if the   status
+    /// <status> is <IsDone>.
+    /// Warning: The value of <Ang> must be expressed in Radian.
     pub fn add_chamfer_edge_vertex_real2(
         self: std::pin::Pin<&mut Self>,
         E: &ffi::TopoDS_Edge,
@@ -70,7 +87,10 @@ impl Builder {
         ffi::Builder_add_chamfer_edge_vertex_real2(self, E, V, D, Ang)
     }
 
-    /// modify the chamfer <Chamfer>  and returns  the new chamfer edge. This edge as sense only  if the status <status> is <IsDone>.
+    /// modify the chamfer <Chamfer>  and returns  the new
+    /// chamfer edge.
+    /// This edge as sense only  if the status <status> is
+    /// <IsDone>.
     pub fn modify_chamfer_edge3_real2(
         self: std::pin::Pin<&mut Self>,
         Chamfer: &ffi::TopoDS_Edge,
@@ -82,7 +102,10 @@ impl Builder {
         ffi::Builder_modify_chamfer_edge3_real2(self, Chamfer, E1, E2, D1, D2)
     }
 
-    /// modify the  chamfer <Chamfer>  and returns the new chamfer edge. This    edge as sense  only   if the status <status>   is  <IsDone>. Warning: The value of <Ang> must be expressed in Radian.
+    /// modify the  chamfer <Chamfer>  and returns the new
+    /// chamfer edge. This    edge as sense  only   if the
+    /// status <status>   is  <IsDone>.
+    /// Warning: The value of <Ang> must be expressed in Radian.
     pub fn modify_chamfer_edge2_real2(
         self: std::pin::Pin<&mut Self>,
         Chamfer: &ffi::TopoDS_Edge,
@@ -93,7 +116,9 @@ impl Builder {
         ffi::Builder_modify_chamfer_edge2_real2(self, Chamfer, E, D, Ang)
     }
 
-    /// removes   the chamfer  <Chamfer>   and returns the vertex connecting  the two adjacent  edges to this chamfer.
+    /// removes   the chamfer  <Chamfer>   and returns the
+    /// vertex connecting  the two adjacent  edges to this
+    /// chamfer.
     pub fn remove_chamfer(
         self: std::pin::Pin<&mut Self>,
         Chamfer: &ffi::TopoDS_Edge,
@@ -117,7 +142,8 @@ pub(crate) mod ffi {
         /// ======================== ChFi2d_Builder ========================
         /// /// **Source:** `ChFi2d_Builder.hxx` - `ChFi2d_Builder`
         ///
-        /// This  class contains  the algorithm  used to build fillet on planar wire.
+        /// This  class contains  the algorithm  used to build
+        /// fillet on planar wire.
         #[cxx_name = "ChFi2d_Builder"]
         type Builder;
         /// /// **Source:** `ChFi2d_Builder.hxx` - `ChFi2d_Builder::ChFi2d_Builder()`
@@ -125,7 +151,8 @@ pub(crate) mod ffi {
         fn Builder_ctor() -> UniquePtr<Builder>;
         /// /// **Source:** `ChFi2d_Builder.hxx` - `ChFi2d_Builder::ChFi2d_Builder()`
         ///
-        /// The face  <F> can be build  on a closed or an open wire.
+        /// The face  <F> can be build  on a closed or an open
+        /// wire.
         #[cxx_name = "ChFi2d_Builder_ctor_face"]
         fn Builder_ctor_face(F: &TopoDS_Face) -> UniquePtr<Builder>;
         #[cxx_name = "Init"]
@@ -146,33 +173,46 @@ pub(crate) mod ffi {
         fn nb_chamfer(self: &Builder) -> i32;
         #[cxx_name = "HasDescendant"]
         fn has_descendant(self: &Builder, E: &TopoDS_Edge) -> bool;
-        /// returns the modified edge if <E> has descendant or <E> in the other case.
+        /// returns the modified edge if <E> has descendant or
+        /// <E> in the other case.
         #[cxx_name = "DescendantEdge"]
         fn descendant_edge(self: &Builder, E: &TopoDS_Edge) -> &TopoDS_Edge;
-        /// Returns the parent edge of  <E> Warning: If <E>is a basis edge,  the returned edge would be equal to <E>
+        /// Returns the parent edge of  <E>
+        /// Warning: If <E>is a basis edge,  the returned edge would be
+        /// equal to <E>
         #[cxx_name = "BasisEdge"]
         fn basis_edge(self: &Builder, E: &TopoDS_Edge) -> &TopoDS_Edge;
-        /// Add  a fillet  of   radius  <Radius> on  the  wire between the two edges connected to the vertex <V>. <AddFillet> returns the  fillet edge. The returned edge has  sense only   if the status   <status> is <IsDone>
+        /// Add  a fillet  of   radius  <Radius> on  the  wire
+        /// between the two edges connected to the vertex <V>.
+        /// <AddFillet> returns the  fillet edge. The returned
+        /// edge has  sense only   if the status   <status> is
+        /// <IsDone>
         #[cxx_name = "ChFi2d_Builder_AddFillet"]
         fn Builder_add_fillet(
             self_: Pin<&mut Builder>,
             V: &TopoDS_Vertex,
             Radius: f64,
         ) -> UniquePtr<TopoDS_Edge>;
-        /// modify the fillet radius and return the new fillet edge. this    edge has sense  only if   the status <status> is <IsDone>.
+        /// modify the fillet radius and return the new fillet
+        /// edge. this    edge has sense  only if   the status
+        /// <status> is <IsDone>.
         #[cxx_name = "ChFi2d_Builder_ModifyFillet"]
         fn Builder_modify_fillet(
             self_: Pin<&mut Builder>,
             Fillet: &TopoDS_Edge,
             Radius: f64,
         ) -> UniquePtr<TopoDS_Edge>;
-        /// removes the fillet <Fillet> and returns the vertex connecting the two adjacent edges to  this fillet.
+        /// removes the fillet <Fillet> and returns the vertex
+        /// connecting the two adjacent edges to  this fillet.
         #[cxx_name = "ChFi2d_Builder_RemoveFillet"]
         fn Builder_remove_fillet(
             self_: Pin<&mut Builder>,
             Fillet: &TopoDS_Edge,
         ) -> UniquePtr<TopoDS_Vertex>;
-        /// Add a chamfer on  the  wire between the two  edges connected <E1> and  <E2>. <AddChamfer> returns the chamfer  edge. This  edge  has  sense only if  the status <status> is <IsDone>.
+        /// Add a chamfer on  the  wire between the two  edges
+        /// connected <E1> and  <E2>. <AddChamfer> returns the
+        /// chamfer  edge. This  edge  has  sense only if  the
+        /// status <status> is <IsDone>.
         #[cxx_name = "ChFi2d_Builder_AddChamfer"]
         fn Builder_add_chamfer_edge2_real2(
             self_: Pin<&mut Builder>,
@@ -181,7 +221,13 @@ pub(crate) mod ffi {
             D1: f64,
             D2: f64,
         ) -> UniquePtr<TopoDS_Edge>;
-        /// Add  a chamfer on the   wire between the two edges connected to the vertex <V>. The chamfer will make an  angle <Ang> with the edge  <E>, and one of its extremities  will be on  <E>  at distance <D>. The returned   edge has sense   only   if the   status <status> is <IsDone>. Warning: The value of <Ang> must be expressed in Radian.
+        /// Add  a chamfer on the   wire between the two edges
+        /// connected to the vertex <V>. The chamfer will make
+        /// an  angle <Ang> with the edge  <E>, and one of its
+        /// extremities  will be on  <E>  at distance <D>. The
+        /// returned   edge has sense   only   if the   status
+        /// <status> is <IsDone>.
+        /// Warning: The value of <Ang> must be expressed in Radian.
         #[cxx_name = "ChFi2d_Builder_AddChamfer"]
         fn Builder_add_chamfer_edge_vertex_real2(
             self_: Pin<&mut Builder>,
@@ -190,7 +236,10 @@ pub(crate) mod ffi {
             D: f64,
             Ang: f64,
         ) -> UniquePtr<TopoDS_Edge>;
-        /// modify the chamfer <Chamfer>  and returns  the new chamfer edge. This edge as sense only  if the status <status> is <IsDone>.
+        /// modify the chamfer <Chamfer>  and returns  the new
+        /// chamfer edge.
+        /// This edge as sense only  if the status <status> is
+        /// <IsDone>.
         #[cxx_name = "ChFi2d_Builder_ModifyChamfer"]
         fn Builder_modify_chamfer_edge3_real2(
             self_: Pin<&mut Builder>,
@@ -200,7 +249,10 @@ pub(crate) mod ffi {
             D1: f64,
             D2: f64,
         ) -> UniquePtr<TopoDS_Edge>;
-        /// modify the  chamfer <Chamfer>  and returns the new chamfer edge. This    edge as sense  only   if the status <status>   is  <IsDone>. Warning: The value of <Ang> must be expressed in Radian.
+        /// modify the  chamfer <Chamfer>  and returns the new
+        /// chamfer edge. This    edge as sense  only   if the
+        /// status <status>   is  <IsDone>.
+        /// Warning: The value of <Ang> must be expressed in Radian.
         #[cxx_name = "ChFi2d_Builder_ModifyChamfer"]
         fn Builder_modify_chamfer_edge2_real2(
             self_: Pin<&mut Builder>,
@@ -209,7 +261,9 @@ pub(crate) mod ffi {
             D: f64,
             Ang: f64,
         ) -> UniquePtr<TopoDS_Edge>;
-        /// removes   the chamfer  <Chamfer>   and returns the vertex connecting  the two adjacent  edges to this chamfer.
+        /// removes   the chamfer  <Chamfer>   and returns the
+        /// vertex connecting  the two adjacent  edges to this
+        /// chamfer.
         #[cxx_name = "ChFi2d_Builder_RemoveChamfer"]
         fn Builder_remove_chamfer(
             self_: Pin<&mut Builder>,

@@ -18,7 +18,8 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::BuilderAlgo;
 impl BuilderAlgo {
-    /// @name Constructors Empty constructor
+    /// @name Constructors
+    /// Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::BuilderAlgo_ctor()
     }
@@ -59,7 +60,8 @@ impl BuilderAlgo {
 }
 pub use ffi::BooleanOperation;
 impl BooleanOperation {
-    /// @name Constructors Empty constructor
+    /// @name Constructors
+    /// Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::BooleanOperation_ctor()
     }
@@ -110,12 +112,17 @@ impl Common {
         ffi::Common_ctor()
     }
 
-    /// Empty constructor <PF> - PaveFiller object that is carried out
+    /// Empty constructor
+    /// <PF> - PaveFiller object that is carried out
     pub fn new_pavefiller(PF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
         ffi::Common_ctor_pavefiller(PF)
     }
 
-    /// Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation Obsolete
+    /// Constructor with two shapes
+    /// <S1>  -argument
+    /// <S2>  -tool
+    /// <anOperation> - the type of the operation
+    /// Obsolete
     pub fn new_shape2_progressrange(
         S1: &ffi::TopoDS_Shape,
         S2: &ffi::TopoDS_Shape,
@@ -124,7 +131,12 @@ impl Common {
         ffi::Common_ctor_shape2_progressrange(S1, S2, theRange)
     }
 
-    /// Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete
+    /// Constructor with two shapes
+    /// <S1>  -argument
+    /// <S2>  -tool
+    /// <anOperation> - the type of the operation
+    /// <PF> - PaveFiller object that is carried out
+    /// Obsolete
     pub fn new_shape2_pavefiller_progressrange(
         S1: &ffi::TopoDS_Shape,
         S2: &ffi::TopoDS_Shape,
@@ -187,12 +199,17 @@ impl Cut {
         ffi::Cut_ctor()
     }
 
-    /// Empty constructor <PF> - PaveFiller object that is carried out
+    /// Empty constructor
+    /// <PF> - PaveFiller object that is carried out
     pub fn new_pavefiller(PF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
         ffi::Cut_ctor_pavefiller(PF)
     }
 
-    /// Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation Obsolete
+    /// Constructor with two shapes
+    /// <S1>  -argument
+    /// <S2>  -tool
+    /// <anOperation> - the type of the operation
+    /// Obsolete
     pub fn new_shape2_progressrange(
         S1: &ffi::TopoDS_Shape,
         S2: &ffi::TopoDS_Shape,
@@ -201,7 +218,12 @@ impl Cut {
         ffi::Cut_ctor_shape2_progressrange(S1, S2, theRange)
     }
 
-    /// Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete
+    /// Constructor with two shapes
+    /// <S1>  -argument
+    /// <S2>  -tool
+    /// <anOperation> - the type of the operation
+    /// <PF> - PaveFiller object that is carried out
+    /// Obsolete
     pub fn new_shape2_pavefiller_bool_progressrange(
         S1: &ffi::TopoDS_Shape,
         S2: &ffi::TopoDS_Shape,
@@ -265,12 +287,17 @@ impl Fuse {
         ffi::Fuse_ctor()
     }
 
-    /// Empty constructor <PF> - PaveFiller object that is carried out
+    /// Empty constructor
+    /// <PF> - PaveFiller object that is carried out
     pub fn new_pavefiller(PF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
         ffi::Fuse_ctor_pavefiller(PF)
     }
 
-    /// Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation Obsolete
+    /// Constructor with two shapes
+    /// <S1>  -argument
+    /// <S2>  -tool
+    /// <anOperation> - the type of the operation
+    /// Obsolete
     pub fn new_shape2_progressrange(
         S1: &ffi::TopoDS_Shape,
         S2: &ffi::TopoDS_Shape,
@@ -279,7 +306,12 @@ impl Fuse {
         ffi::Fuse_ctor_shape2_progressrange(S1, S2, theRange)
     }
 
-    /// Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete
+    /// Constructor with two shapes
+    /// <S1>  -argument
+    /// <S2>  -tool
+    /// <anOperation> - the type of the operation
+    /// <PF> - PaveFiller object that is carried out
+    /// Obsolete
     pub fn new_shape2_pavefiller_progressrange(
         S1: &ffi::TopoDS_Shape,
         S2: &ffi::TopoDS_Shape,
@@ -342,12 +374,18 @@ impl Section {
         ffi::Section_ctor()
     }
 
-    /// Empty constructor <PF> - PaveFiller object that is carried out
+    /// Empty constructor
+    /// <PF> - PaveFiller object that is carried out
     pub fn new_pavefiller(PF: &ffi::BOPAlgo_PaveFiller) -> cxx::UniquePtr<Self> {
         ffi::Section_ctor_pavefiller(PF)
     }
 
-    /// Constructor with two shapes <S1>  -argument <S2>  -tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete
+    /// Constructor with two shapes
+    /// <S1>  -argument
+    /// <S2>  -tool
+    /// <PerformNow> - the flag:
+    /// if <PerformNow>=True - the algorithm is performed immediately
+    /// Obsolete
     pub fn new_shape2_bool(
         S1: &ffi::TopoDS_Shape,
         S2: &ffi::TopoDS_Shape,
@@ -356,7 +394,13 @@ impl Section {
         ffi::Section_ctor_shape2_bool(S1, S2, PerformNow)
     }
 
-    /// Constructor with two shapes <S1>  -argument <S2>  -tool <PF> - PaveFiller object that is carried out <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete
+    /// Constructor with two shapes
+    /// <S1>  -argument
+    /// <S2>  -tool
+    /// <PF> - PaveFiller object that is carried out
+    /// <PerformNow> - the flag:
+    /// if <PerformNow>=True - the algorithm is performed immediately
+    /// Obsolete
     pub fn new_shape2_pavefiller_bool(
         S1: &ffi::TopoDS_Shape,
         S2: &ffi::TopoDS_Shape,
@@ -366,7 +410,12 @@ impl Section {
         ffi::Section_ctor_shape2_pavefiller_bool(S1, S2, aDSF, PerformNow)
     }
 
-    /// Constructor with two shapes <S1>  - argument <Pl>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete
+    /// Constructor with two shapes
+    /// <S1>  - argument
+    /// <Pl>  - tool
+    /// <PerformNow> - the flag:
+    /// if <PerformNow>=True - the algorithm is performed immediately
+    /// Obsolete
     pub fn new_shape_pln_bool(
         S1: &ffi::TopoDS_Shape,
         Pl: &ffi::gp_Pln,
@@ -375,7 +424,12 @@ impl Section {
         ffi::Section_ctor_shape_pln_bool(S1, Pl, PerformNow)
     }
 
-    /// Constructor with two shapes <S1>  - argument <Sf>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete
+    /// Constructor with two shapes
+    /// <S1>  - argument
+    /// <Sf>  - tool
+    /// <PerformNow> - the flag:
+    /// if <PerformNow>=True - the algorithm is performed immediately
+    /// Obsolete
     pub fn new_shape_handlesurface_bool(
         S1: &ffi::TopoDS_Shape,
         Sf: &ffi::HandleGeomSurface,
@@ -384,7 +438,12 @@ impl Section {
         ffi::Section_ctor_shape_handlesurface_bool(S1, Sf, PerformNow)
     }
 
-    /// Constructor with two shapes <Sf>  - argument <S2>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete
+    /// Constructor with two shapes
+    /// <Sf>  - argument
+    /// <S2>  - tool
+    /// <PerformNow> - the flag:
+    /// if <PerformNow>=True - the algorithm is performed immediately
+    /// Obsolete
     pub fn new_handlesurface_shape_bool(
         Sf: &ffi::HandleGeomSurface,
         S2: &ffi::TopoDS_Shape,
@@ -393,7 +452,12 @@ impl Section {
         ffi::Section_ctor_handlesurface_shape_bool(Sf, S2, PerformNow)
     }
 
-    /// Constructor with two shapes <Sf1>  - argument <Sf2>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete
+    /// Constructor with two shapes
+    /// <Sf1>  - argument
+    /// <Sf2>  - tool
+    /// <PerformNow> - the flag:
+    /// if <PerformNow>=True - the algorithm is performed immediately
+    /// Obsolete
     pub fn new_handlesurface2_bool(
         Sf1: &ffi::HandleGeomSurface,
         Sf2: &ffi::HandleGeomSurface,
@@ -459,12 +523,40 @@ pub(crate) mod ffi {
         /// ======================== BRepAlgoAPI_BuilderAlgo ========================
         /// /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx` - `BRepAlgoAPI_BuilderAlgo`
         ///
-        /// The class contains API level of the General Fuse algorithm.<br> Additionally to the options defined in the base class, the algorithm has the following options:<br> - *Safe processing mode* - allows to avoid modification of the input shapes during the operation (by default it is off); - *Gluing options* - allows to speed up the calculation of the intersections on the special cases, in which some sub-shapes are coinciding. - *Disabling the check for inverted solids* - Disables/Enables the check of the input solids for inverted status (holes in the space). The default value is TRUE, i.e. the check is performed. Setting this flag to FALSE for inverted solids, most likely will lead to incorrect results. - *Disabling history collection* - allows disabling the collection of the history of shapes modifications during the operation. It returns the following Error statuses:<br> - 0 - in case of success;<br> - *BOPAlgo_AlertTooFewArguments* - in case there are no enough arguments to perform the operation;<br> - *BOPAlgo_AlertIntersectionFailed* - in case the intersection of the arguments has failed;<br> - *BOPAlgo_AlertBuilderFailed* - in case building of the result shape has failed.<br> Warnings statuses from underlying DS Filler and Builder algorithms are collected in the report. The class provides possibility to simplify the resulting shape by unification of the tangential edges and faces. It is performed by the method *SimplifyResult*. See description of this method for more details.
+        /// The class contains API level of the General Fuse algorithm.<br>
+        ///
+        /// Additionally to the options defined in the base class, the algorithm has
+        /// the following options:<br>
+        /// - *Safe processing mode* - allows to avoid modification of the input
+        /// shapes during the operation (by default it is off);
+        /// - *Gluing options* - allows to speed up the calculation of the intersections
+        /// on the special cases, in which some sub-shapes are coinciding.
+        /// - *Disabling the check for inverted solids* - Disables/Enables the check of the input solids
+        /// for inverted status (holes in the space). The default value is TRUE,
+        /// i.e. the check is performed. Setting this flag to FALSE for inverted
+        /// solids, most likely will lead to incorrect results.
+        /// - *Disabling history collection* - allows disabling the collection of the history
+        /// of shapes modifications during the operation.
+        ///
+        /// It returns the following Error statuses:<br>
+        /// - 0 - in case of success;<br>
+        /// - *BOPAlgo_AlertTooFewArguments* - in case there are no enough arguments to perform the
+        /// operation;<br>
+        /// - *BOPAlgo_AlertIntersectionFailed* - in case the intersection of the arguments has failed;<br>
+        /// - *BOPAlgo_AlertBuilderFailed* - in case building of the result shape has failed.<br>
+        ///
+        /// Warnings statuses from underlying DS Filler and Builder algorithms
+        /// are collected in the report.
+        ///
+        /// The class provides possibility to simplify the resulting shape by unification
+        /// of the tangential edges and faces. It is performed by the method *SimplifyResult*.
+        /// See description of this method for more details.
         #[cxx_name = "BRepAlgoAPI_BuilderAlgo"]
         type BuilderAlgo;
         /// /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx` - `BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo()`
         ///
-        /// @name Constructors Empty constructor
+        /// @name Constructors
+        /// Empty constructor
         #[cxx_name = "BRepAlgoAPI_BuilderAlgo_ctor"]
         fn BuilderAlgo_ctor() -> UniquePtr<BuilderAlgo>;
         /// /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx` - `BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo()`
@@ -472,28 +564,59 @@ pub(crate) mod ffi {
         /// Constructor with prepared Filler object
         #[cxx_name = "BRepAlgoAPI_BuilderAlgo_ctor_pavefiller"]
         fn BuilderAlgo_ctor_pavefiller(thePF: &BOPAlgo_PaveFiller) -> UniquePtr<BuilderAlgo>;
-        /// @name Setting/Getting data for the algorithm Sets the arguments
+        /// @name Setting/Getting data for the algorithm
+        /// Sets the arguments
         #[cxx_name = "SetArguments"]
         fn set_arguments(self: Pin<&mut BuilderAlgo>, theLS: &TopTools_ListOfShape);
         /// Gets the arguments
         #[cxx_name = "Arguments"]
         fn arguments(self: &BuilderAlgo) -> &TopTools_ListOfShape;
-        /// @name Setting options Sets the flag that defines the mode of treatment. In non-destructive mode the argument shapes are not modified. Instead a copy of a sub-shape is created in the result if it is needed to be updated.
+        /// @name Setting options
+        /// Sets the flag that defines the mode of treatment.
+        /// In non-destructive mode the argument shapes are not modified. Instead
+        /// a copy of a sub-shape is created in the result if it is needed to be updated.
         #[cxx_name = "SetNonDestructive"]
         fn set_non_destructive(self: Pin<&mut BuilderAlgo>, theFlag: bool);
-        /// Returns the flag that defines the mode of treatment. In non-destructive mode the argument shapes are not modified. Instead a copy of a sub-shape is created in the result if it is needed to be updated.
+        /// Returns the flag that defines the mode of treatment.
+        /// In non-destructive mode the argument shapes are not modified. Instead
+        /// a copy of a sub-shape is created in the result if it is needed to be updated.
         #[cxx_name = "NonDestructive"]
         fn non_destructive(self: &BuilderAlgo) -> bool;
         /// Enables/Disables the check of the input solids for inverted status
         #[cxx_name = "SetCheckInverted"]
         fn set_check_inverted(self: Pin<&mut BuilderAlgo>, theCheck: bool);
-        /// Returns the flag defining whether the check for input solids on inverted status should be performed or not.
+        /// Returns the flag defining whether the check for input solids on inverted status
+        /// should be performed or not.
         #[cxx_name = "CheckInverted"]
         fn check_inverted(self: &BuilderAlgo) -> bool;
-        /// @name Performing the operation Performs the algorithm
+        /// @name Performing the operation
+        /// Performs the algorithm
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut BuilderAlgo>, theRange: &Message_ProgressRange);
-        /// @name Result simplification Simplification of the result shape is performed by the means of *ShapeUpgrade_UnifySameDomain* algorithm. The result of the operation will be overwritten with the simplified result. The simplification is performed without creation of the Internal shapes, i.e. shapes connections will never be broken. Simplification is performed on the whole result shape. Thus, if the input shapes contained connected tangent edges or faces unmodified during the operation they will also be unified. After simplification, the History of result simplification is merged into the main history of operation. So, it is taken into account when asking for Modified, Generated and Deleted shapes. Some options of the main operation are passed into the Unifier: - Fuzzy tolerance of the operation is given to the Unifier as the linear tolerance. - Non destructive mode here controls the safe input mode in Unifier. @param theUnifyEdges Controls the edges unification. TRUE by default. @param theUnifyFaces Controls the faces unification. TRUE by default. @param theAngularTol Angular criteria for tangency of edges and faces. Precision::Angular() by default.
+        /// @name Result simplification
+        /// Simplification of the result shape is performed by the means of
+        /// *ShapeUpgrade_UnifySameDomain* algorithm. The result of the operation will
+        /// be overwritten with the simplified result.
+        ///
+        /// The simplification is performed without creation of the Internal shapes,
+        /// i.e. shapes connections will never be broken.
+        ///
+        /// Simplification is performed on the whole result shape. Thus, if the input
+        /// shapes contained connected tangent edges or faces unmodified during the operation
+        /// they will also be unified.
+        ///
+        /// After simplification, the History of result simplification is merged into the main
+        /// history of operation. So, it is taken into account when asking for Modified,
+        /// Generated and Deleted shapes.
+        ///
+        /// Some options of the main operation are passed into the Unifier:
+        /// - Fuzzy tolerance of the operation is given to the Unifier as the linear tolerance.
+        /// - Non destructive mode here controls the safe input mode in Unifier.
+        ///
+        /// @param theUnifyEdges Controls the edges unification. TRUE by default.
+        /// @param theUnifyFaces Controls the faces unification. TRUE by default.
+        /// @param theAngularTol Angular criteria for tangency of edges and faces.
+        /// Precision::Angular() by default.
         #[cxx_name = "SimplifyResult"]
         fn simplify_result(
             self: Pin<&mut BuilderAlgo>,
@@ -501,13 +624,23 @@ pub(crate) mod ffi {
             theUnifyFaces: bool,
             theAngularTol: f64,
         );
-        /// @name History support Returns the shapes modified from the shape <theS>. If any, the list will contain only those splits of the given shape, contained in the result.
+        /// @name History support
+        /// Returns the shapes modified from the shape <theS>.
+        /// If any, the list will contain only those splits of the
+        /// given shape, contained in the result.
         #[cxx_name = "Modified"]
         fn modified(self: Pin<&mut BuilderAlgo>, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        /// Returns the list  of shapes generated from the shape <theS>. In frames of Boolean Operations algorithms only Edges and Faces could have Generated elements, as only they produce new elements during intersection: - Edges can generate new vertices; - Faces can generate new edges and vertices.
+        /// Returns the list  of shapes generated from the shape <theS>.
+        /// In frames of Boolean Operations algorithms only Edges and Faces
+        /// could have Generated elements, as only they produce new elements
+        /// during intersection:
+        /// - Edges can generate new vertices;
+        /// - Faces can generate new edges and vertices.
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut BuilderAlgo>, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        /// Checks if the shape <theS> has been completely removed from the result, i.e. the result does not contain the shape itself and any of its splits. Returns TRUE if the shape has been deleted.
+        /// Checks if the shape <theS> has been completely removed from the result,
+        /// i.e. the result does not contain the shape itself and any of its splits.
+        /// Returns TRUE if the shape has been deleted.
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut BuilderAlgo>, aS: &TopoDS_Shape) -> bool;
         /// Returns true if any of the input shapes has been modified during operation.
@@ -516,19 +649,25 @@ pub(crate) mod ffi {
         /// Returns true if any of the input shapes has generated shapes during operation.
         #[cxx_name = "HasGenerated"]
         fn has_generated(self: &BuilderAlgo) -> bool;
-        /// Returns true if any of the input shapes has been deleted during operation. Normally, General Fuse operation should not have Deleted elements, but all derived operation can have.
+        /// Returns true if any of the input shapes has been deleted during operation.
+        /// Normally, General Fuse operation should not have Deleted elements,
+        /// but all derived operation can have.
         #[cxx_name = "HasDeleted"]
         fn has_deleted(self: &BuilderAlgo) -> bool;
-        /// @name Enabling/Disabling the history collection. Allows disabling the history collection
+        /// @name Enabling/Disabling the history collection.
+        /// Allows disabling the history collection
         #[cxx_name = "SetToFillHistory"]
         fn set_to_fill_history(self: Pin<&mut BuilderAlgo>, theHistFlag: bool);
         /// Returns flag of history availability
         #[cxx_name = "HasHistory"]
         fn has_history(self: &BuilderAlgo) -> bool;
-        /// @name Getting the section edges Returns a list of section edges. The edges represent the result of intersection between arguments of operation.
+        /// @name Getting the section edges
+        /// Returns a list of section edges.
+        /// The edges represent the result of intersection between arguments of operation.
         #[cxx_name = "SectionEdges"]
         fn section_edges(self: Pin<&mut BuilderAlgo>) -> &TopTools_ListOfShape;
-        /// @name Getting tools performing the job Returns the Intersection tool
+        /// @name Getting tools performing the job
+        /// Returns the Intersection tool
         #[cxx_name = "DSFiller"]
         fn ds_filler(self: &BuilderAlgo) -> &BOPAlgo_PPaveFiller;
         /// Returns the Building tool
@@ -560,12 +699,34 @@ pub(crate) mod ffi {
         /// ======================== BRepAlgoAPI_BooleanOperation ========================
         /// /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx` - `BRepAlgoAPI_BooleanOperation`
         ///
-        /// The root API class for performing Boolean Operations on arbitrary shapes. The arguments of the operation are divided in two groups - *Objects* and *Tools*. Each group can contain any number of shapes, but each shape should be valid in terms of *BRepCheck_Analyzer* and *BOPAlgo_ArgumentAnalyzer*. The algorithm builds the splits of the given arguments using the intersection results and combines the result of Boolean Operation of given type: - *FUSE* - union of two groups of objects; - *COMMON* - intersection of two groups of objects; - *CUT* - subtraction of one group from the other; - *SECTION* - section edges and vertices of all arguments; The rules for the arguments and type of the operation are the following: - For Boolean operation *FUSE* all arguments should have equal dimensions; - For Boolean operation *CUT* the minimal dimension of *Tools* should not be less than the maximal dimension of *Objects*; - For Boolean operation *COMMON* the arguments can have any dimension. - For Boolean operation *SECTION* the arguments can be of any type. Additionally to the errors of the base class the algorithm returns the following Errors:<br> - *BOPAlgo_AlertBOPNotSet* - in case the type of Boolean Operation is not set.<br>
+        /// The root API class for performing Boolean Operations on arbitrary shapes.
+        ///
+        /// The arguments of the operation are divided in two groups - *Objects* and *Tools*.
+        /// Each group can contain any number of shapes, but each shape should be valid
+        /// in terms of *BRepCheck_Analyzer* and *BOPAlgo_ArgumentAnalyzer*.
+        /// The algorithm builds the splits of the given arguments using the intersection
+        /// results and combines the result of Boolean Operation of given type:
+        /// - *FUSE* - union of two groups of objects;
+        /// - *COMMON* - intersection of two groups of objects;
+        /// - *CUT* - subtraction of one group from the other;
+        /// - *SECTION* - section edges and vertices of all arguments;
+        ///
+        /// The rules for the arguments and type of the operation are the following:
+        /// - For Boolean operation *FUSE* all arguments should have equal dimensions;
+        /// - For Boolean operation *CUT* the minimal dimension of *Tools* should not be
+        /// less than the maximal dimension of *Objects*;
+        /// - For Boolean operation *COMMON* the arguments can have any dimension.
+        /// - For Boolean operation *SECTION* the arguments can be of any type.
+        ///
+        /// Additionally to the errors of the base class the algorithm returns
+        /// the following Errors:<br>
+        /// - *BOPAlgo_AlertBOPNotSet* - in case the type of Boolean Operation is not set.<br>
         #[cxx_name = "BRepAlgoAPI_BooleanOperation"]
         type BooleanOperation;
         /// /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx` - `BRepAlgoAPI_BooleanOperation::BRepAlgoAPI_BooleanOperation()`
         ///
-        /// @name Constructors Empty constructor
+        /// @name Constructors
+        /// Empty constructor
         #[cxx_name = "BRepAlgoAPI_BooleanOperation_ctor"]
         fn BooleanOperation_ctor() -> UniquePtr<BooleanOperation>;
         /// /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx` - `BRepAlgoAPI_BooleanOperation::BRepAlgoAPI_BooleanOperation()`
@@ -575,10 +736,13 @@ pub(crate) mod ffi {
         fn BooleanOperation_ctor_pavefiller(
             thePF: &BOPAlgo_PaveFiller,
         ) -> UniquePtr<BooleanOperation>;
-        /// @name Setting/getting arguments Returns the first argument involved in this Boolean operation. Obsolete
+        /// @name Setting/getting arguments
+        /// Returns the first argument involved in this Boolean operation.
+        /// Obsolete
         #[cxx_name = "Shape1"]
         fn shape1(self: &BooleanOperation) -> &TopoDS_Shape;
-        /// Returns the second argument involved in this Boolean operation. Obsolete
+        /// Returns the second argument involved in this Boolean operation.
+        /// Obsolete
         #[cxx_name = "Shape2"]
         fn shape2(self: &BooleanOperation) -> &TopoDS_Shape;
         /// Sets the Tool arguments
@@ -587,7 +751,8 @@ pub(crate) mod ffi {
         /// Returns the Tools arguments
         #[cxx_name = "Tools"]
         fn tools(self: &BooleanOperation) -> &TopTools_ListOfShape;
-        /// @name Performing the operation Performs the Boolean operation.
+        /// @name Performing the operation
+        /// Performs the Boolean operation.
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut BooleanOperation>, theRange: &Message_ProgressRange);
         /// Upcast BRepAlgoAPI_BooleanOperation to BRepAlgoAPI_BuilderAlgo
@@ -621,7 +786,8 @@ pub(crate) mod ffi {
         /// ======================== BRepAlgoAPI_Common ========================
         /// /// **Source:** `BRepAlgoAPI_Common.hxx` - `BRepAlgoAPI_Common`
         ///
-        /// The class provides Boolean common operation between arguments and tools (Boolean Intersection).
+        /// The class provides Boolean common operation
+        /// between arguments and tools (Boolean Intersection).
         #[cxx_name = "BRepAlgoAPI_Common"]
         type Common;
         /// /// **Source:** `BRepAlgoAPI_Common.hxx` - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
@@ -631,12 +797,17 @@ pub(crate) mod ffi {
         fn Common_ctor() -> UniquePtr<Common>;
         /// /// **Source:** `BRepAlgoAPI_Common.hxx` - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
         ///
-        /// Empty constructor <PF> - PaveFiller object that is carried out
+        /// Empty constructor
+        /// <PF> - PaveFiller object that is carried out
         #[cxx_name = "BRepAlgoAPI_Common_ctor_pavefiller"]
         fn Common_ctor_pavefiller(PF: &BOPAlgo_PaveFiller) -> UniquePtr<Common>;
         /// /// **Source:** `BRepAlgoAPI_Common.hxx` - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
         ///
-        /// Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation Obsolete
+        /// Constructor with two shapes
+        /// <S1>  -argument
+        /// <S2>  -tool
+        /// <anOperation> - the type of the operation
+        /// Obsolete
         #[cxx_name = "BRepAlgoAPI_Common_ctor_shape2_progressrange"]
         fn Common_ctor_shape2_progressrange(
             S1: &TopoDS_Shape,
@@ -645,7 +816,12 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Common>;
         /// /// **Source:** `BRepAlgoAPI_Common.hxx` - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
         ///
-        /// Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete
+        /// Constructor with two shapes
+        /// <S1>  -argument
+        /// <S2>  -tool
+        /// <anOperation> - the type of the operation
+        /// <PF> - PaveFiller object that is carried out
+        /// Obsolete
         #[cxx_name = "BRepAlgoAPI_Common_ctor_shape2_pavefiller_progressrange"]
         fn Common_ctor_shape2_pavefiller_progressrange(
             S1: &TopoDS_Shape,
@@ -684,7 +860,8 @@ pub(crate) mod ffi {
         /// ======================== BRepAlgoAPI_Cut ========================
         /// /// **Source:** `BRepAlgoAPI_Cut.hxx` - `BRepAlgoAPI_Cut`
         ///
-        /// The class Cut provides Boolean cut operation between arguments and tools (Boolean Subtraction).
+        /// The class Cut provides Boolean cut operation
+        /// between arguments and tools (Boolean Subtraction).
         #[cxx_name = "BRepAlgoAPI_Cut"]
         type Cut;
         /// /// **Source:** `BRepAlgoAPI_Cut.hxx` - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
@@ -694,12 +871,17 @@ pub(crate) mod ffi {
         fn Cut_ctor() -> UniquePtr<Cut>;
         /// /// **Source:** `BRepAlgoAPI_Cut.hxx` - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
         ///
-        /// Empty constructor <PF> - PaveFiller object that is carried out
+        /// Empty constructor
+        /// <PF> - PaveFiller object that is carried out
         #[cxx_name = "BRepAlgoAPI_Cut_ctor_pavefiller"]
         fn Cut_ctor_pavefiller(PF: &BOPAlgo_PaveFiller) -> UniquePtr<Cut>;
         /// /// **Source:** `BRepAlgoAPI_Cut.hxx` - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
         ///
-        /// Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation Obsolete
+        /// Constructor with two shapes
+        /// <S1>  -argument
+        /// <S2>  -tool
+        /// <anOperation> - the type of the operation
+        /// Obsolete
         #[cxx_name = "BRepAlgoAPI_Cut_ctor_shape2_progressrange"]
         fn Cut_ctor_shape2_progressrange(
             S1: &TopoDS_Shape,
@@ -708,7 +890,12 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Cut>;
         /// /// **Source:** `BRepAlgoAPI_Cut.hxx` - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
         ///
-        /// Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete
+        /// Constructor with two shapes
+        /// <S1>  -argument
+        /// <S2>  -tool
+        /// <anOperation> - the type of the operation
+        /// <PF> - PaveFiller object that is carried out
+        /// Obsolete
         #[cxx_name = "BRepAlgoAPI_Cut_ctor_shape2_pavefiller_bool_progressrange"]
         fn Cut_ctor_shape2_pavefiller_bool_progressrange(
             S1: &TopoDS_Shape,
@@ -748,7 +935,8 @@ pub(crate) mod ffi {
         /// ======================== BRepAlgoAPI_Fuse ========================
         /// /// **Source:** `BRepAlgoAPI_Fuse.hxx` - `BRepAlgoAPI_Fuse`
         ///
-        /// The class provides Boolean fusion operation between arguments and tools  (Boolean Union).
+        /// The class provides Boolean fusion operation
+        /// between arguments and tools  (Boolean Union).
         #[cxx_name = "BRepAlgoAPI_Fuse"]
         type Fuse;
         /// /// **Source:** `BRepAlgoAPI_Fuse.hxx` - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
@@ -758,12 +946,17 @@ pub(crate) mod ffi {
         fn Fuse_ctor() -> UniquePtr<Fuse>;
         /// /// **Source:** `BRepAlgoAPI_Fuse.hxx` - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
         ///
-        /// Empty constructor <PF> - PaveFiller object that is carried out
+        /// Empty constructor
+        /// <PF> - PaveFiller object that is carried out
         #[cxx_name = "BRepAlgoAPI_Fuse_ctor_pavefiller"]
         fn Fuse_ctor_pavefiller(PF: &BOPAlgo_PaveFiller) -> UniquePtr<Fuse>;
         /// /// **Source:** `BRepAlgoAPI_Fuse.hxx` - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
         ///
-        /// Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation Obsolete
+        /// Constructor with two shapes
+        /// <S1>  -argument
+        /// <S2>  -tool
+        /// <anOperation> - the type of the operation
+        /// Obsolete
         #[cxx_name = "BRepAlgoAPI_Fuse_ctor_shape2_progressrange"]
         fn Fuse_ctor_shape2_progressrange(
             S1: &TopoDS_Shape,
@@ -772,7 +965,12 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Fuse>;
         /// /// **Source:** `BRepAlgoAPI_Fuse.hxx` - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
         ///
-        /// Constructor with two shapes <S1>  -argument <S2>  -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete
+        /// Constructor with two shapes
+        /// <S1>  -argument
+        /// <S2>  -tool
+        /// <anOperation> - the type of the operation
+        /// <PF> - PaveFiller object that is carried out
+        /// Obsolete
         #[cxx_name = "BRepAlgoAPI_Fuse_ctor_shape2_pavefiller_progressrange"]
         fn Fuse_ctor_shape2_pavefiller_progressrange(
             S1: &TopoDS_Shape,
@@ -811,7 +1009,13 @@ pub(crate) mod ffi {
         /// ======================== BRepAlgoAPI_Section ========================
         /// /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section`
         ///
-        /// The algorithm is to build a Section operation between arguments and tools. The result of Section operation consists of vertices and edges. The result of Section operation contains: 1. new vertices that are subjects of V/V, E/E, E/F, F/F interferences 2. vertices that are subjects of V/E, V/F interferences 3. new edges that are subjects of F/F interferences 4. edges that are Common Blocks
+        /// The algorithm is to build a Section operation between arguments and tools.
+        /// The result of Section operation consists of vertices and edges.
+        /// The result of Section operation contains:
+        /// 1. new vertices that are subjects of V/V, E/E, E/F, F/F interferences
+        /// 2. vertices that are subjects of V/E, V/F interferences
+        /// 3. new edges that are subjects of F/F interferences
+        /// 4. edges that are Common Blocks
         #[cxx_name = "BRepAlgoAPI_Section"]
         type Section;
         /// /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
@@ -821,12 +1025,18 @@ pub(crate) mod ffi {
         fn Section_ctor() -> UniquePtr<Section>;
         /// /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
-        /// Empty constructor <PF> - PaveFiller object that is carried out
+        /// Empty constructor
+        /// <PF> - PaveFiller object that is carried out
         #[cxx_name = "BRepAlgoAPI_Section_ctor_pavefiller"]
         fn Section_ctor_pavefiller(PF: &BOPAlgo_PaveFiller) -> UniquePtr<Section>;
         /// /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
-        /// Constructor with two shapes <S1>  -argument <S2>  -tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete
+        /// Constructor with two shapes
+        /// <S1>  -argument
+        /// <S2>  -tool
+        /// <PerformNow> - the flag:
+        /// if <PerformNow>=True - the algorithm is performed immediately
+        /// Obsolete
         #[cxx_name = "BRepAlgoAPI_Section_ctor_shape2_bool"]
         fn Section_ctor_shape2_bool(
             S1: &TopoDS_Shape,
@@ -835,7 +1045,13 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Section>;
         /// /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
-        /// Constructor with two shapes <S1>  -argument <S2>  -tool <PF> - PaveFiller object that is carried out <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete
+        /// Constructor with two shapes
+        /// <S1>  -argument
+        /// <S2>  -tool
+        /// <PF> - PaveFiller object that is carried out
+        /// <PerformNow> - the flag:
+        /// if <PerformNow>=True - the algorithm is performed immediately
+        /// Obsolete
         #[cxx_name = "BRepAlgoAPI_Section_ctor_shape2_pavefiller_bool"]
         fn Section_ctor_shape2_pavefiller_bool(
             S1: &TopoDS_Shape,
@@ -845,7 +1061,12 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Section>;
         /// /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
-        /// Constructor with two shapes <S1>  - argument <Pl>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete
+        /// Constructor with two shapes
+        /// <S1>  - argument
+        /// <Pl>  - tool
+        /// <PerformNow> - the flag:
+        /// if <PerformNow>=True - the algorithm is performed immediately
+        /// Obsolete
         #[cxx_name = "BRepAlgoAPI_Section_ctor_shape_pln_bool"]
         fn Section_ctor_shape_pln_bool(
             S1: &TopoDS_Shape,
@@ -854,7 +1075,12 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Section>;
         /// /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
-        /// Constructor with two shapes <S1>  - argument <Sf>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete
+        /// Constructor with two shapes
+        /// <S1>  - argument
+        /// <Sf>  - tool
+        /// <PerformNow> - the flag:
+        /// if <PerformNow>=True - the algorithm is performed immediately
+        /// Obsolete
         #[cxx_name = "BRepAlgoAPI_Section_ctor_shape_handlesurface_bool"]
         fn Section_ctor_shape_handlesurface_bool(
             S1: &TopoDS_Shape,
@@ -863,7 +1089,12 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Section>;
         /// /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
-        /// Constructor with two shapes <Sf>  - argument <S2>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete
+        /// Constructor with two shapes
+        /// <Sf>  - argument
+        /// <S2>  - tool
+        /// <PerformNow> - the flag:
+        /// if <PerformNow>=True - the algorithm is performed immediately
+        /// Obsolete
         #[cxx_name = "BRepAlgoAPI_Section_ctor_handlesurface_shape_bool"]
         fn Section_ctor_handlesurface_shape_bool(
             Sf: &HandleGeomSurface,
@@ -872,50 +1103,108 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Section>;
         /// /// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
         ///
-        /// Constructor with two shapes <Sf1>  - argument <Sf2>  - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete
+        /// Constructor with two shapes
+        /// <Sf1>  - argument
+        /// <Sf2>  - tool
+        /// <PerformNow> - the flag:
+        /// if <PerformNow>=True - the algorithm is performed immediately
+        /// Obsolete
         #[cxx_name = "BRepAlgoAPI_Section_ctor_handlesurface2_bool"]
         fn Section_ctor_handlesurface2_bool(
             Sf1: &HandleGeomSurface,
             Sf2: &HandleGeomSurface,
             PerformNow: bool,
         ) -> UniquePtr<Section>;
-        /// initialize the argument <S1>  - argument Obsolete
+        /// initialize the argument
+        /// <S1>  - argument
+        /// Obsolete
         #[cxx_name = "Init1"]
         fn init1_shape(self: Pin<&mut Section>, S1: &TopoDS_Shape);
-        /// initialize the argument <Pl>  - argument Obsolete
+        /// initialize the argument
+        /// <Pl>  - argument
+        /// Obsolete
         #[cxx_name = "Init1"]
         fn init1_pln(self: Pin<&mut Section>, Pl: &gp_Pln);
-        /// initialize the argument <Sf>  - argument Obsolete
+        /// initialize the argument
+        /// <Sf>  - argument
+        /// Obsolete
         #[cxx_name = "Init1"]
         fn init1_handlesurface(self: Pin<&mut Section>, Sf: &HandleGeomSurface);
-        /// initialize the tool <S2>  - tool Obsolete
+        /// initialize the tool
+        /// <S2>  - tool
+        /// Obsolete
         #[cxx_name = "Init2"]
         fn init2_shape(self: Pin<&mut Section>, S2: &TopoDS_Shape);
-        /// initialize the tool <Pl>  - tool Obsolete
+        /// initialize the tool
+        /// <Pl>  - tool
+        /// Obsolete
         #[cxx_name = "Init2"]
         fn init2_pln(self: Pin<&mut Section>, Pl: &gp_Pln);
-        /// initialize the tool <Sf>  - tool Obsolete
+        /// initialize the tool
+        /// <Sf>  - tool
+        /// Obsolete
         #[cxx_name = "Init2"]
         fn init2_handlesurface(self: Pin<&mut Section>, Sf: &HandleGeomSurface);
         #[cxx_name = "Approximation"]
         fn approximation(self: Pin<&mut Section>, B: bool);
-        /// Indicates whether the P-Curve should be (or not) performed on the argument. By default, no parametric 2D curve (pcurve) is defined for the edges of the result. If ComputePCurve1 equals true, further computations performed to attach an P-Curve in the parametric space of the argument to the constructed edges. Obsolete
+        /// Indicates whether the P-Curve should be (or not)
+        /// performed on the argument.
+        /// By default, no parametric 2D curve (pcurve) is defined for the
+        /// edges of the result.
+        /// If ComputePCurve1 equals true, further computations performed
+        /// to attach an P-Curve in the parametric space of the argument
+        /// to the constructed edges.
+        /// Obsolete
         #[cxx_name = "ComputePCurveOn1"]
         fn compute_p_curve_on1(self: Pin<&mut Section>, B: bool);
-        /// Indicates whether the P-Curve should be (or not) performed on the tool. By default, no parametric 2D curve (pcurve) is defined for the edges of the result. If ComputePCurve1 equals true, further computations performed to attach an P-Curve in the parametric space of the tool to the constructed edges. Obsolete
+        /// Indicates whether the P-Curve should be (or not)
+        /// performed on the tool.
+        /// By default, no parametric 2D curve (pcurve) is defined for the
+        /// edges of the result.
+        /// If ComputePCurve1 equals true, further computations performed
+        /// to attach an P-Curve in the parametric space of the tool
+        /// to the constructed edges.
+        /// Obsolete
         #[cxx_name = "ComputePCurveOn2"]
         fn compute_p_curve_on2(self: Pin<&mut Section>, B: bool);
-        /// Performs the algorithm Filling interference Data Structure (if it is necessary) Building the result of the operation.
+        /// Performs the algorithm
+        /// Filling interference Data Structure (if it is necessary)
+        /// Building the result of the operation.
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut Section>, theRange: &Message_ProgressRange);
-        /// get the face of the first part giving section edge <E>. Returns True on the 3 following conditions : 1/ <E> is an edge returned by the Shape() metwod. 2/ First part of section performed is a shape. 3/ <E> is built on a intersection curve (i.e <E> is not the result of common edges) When False, F remains untouched. Obsolete
+        /// get the face of the first part giving section edge <E>.
+        /// Returns True on the 3 following conditions :
+        /// 1/ <E> is an edge returned by the Shape() metwod.
+        /// 2/ First part of section performed is a shape.
+        /// 3/ <E> is built on a intersection curve (i.e <E>
+        /// is not the result of common edges)
+        /// When False, F remains untouched.
+        /// Obsolete
         #[cxx_name = "HasAncestorFaceOn1"]
         fn has_ancestor_face_on1(
             self: &Section,
             E: &TopoDS_Shape,
             F: Pin<&mut TopoDS_Shape>,
         ) -> bool;
-        /// Identifies the ancestor faces of the intersection edge E resulting from the last computation performed in this framework, that is, the faces of the two original shapes on which the edge E lies: -      HasAncestorFaceOn1 gives the ancestor face in the first shape, and -      HasAncestorFaceOn2 gives the ancestor face in the second shape. These functions return true if an ancestor face F is found, or false if not. An ancestor face is identifiable for the edge E if the following conditions are satisfied: -  the first part on which this algorithm performed its last computation is a shape, that is, it was not given as a surface or a plane at the time of construction of this algorithm or at a later time by the Init1 function, - E is one of the elementary edges built by the last computation of this section algorithm. To use these functions properly, you have to test the returned Boolean value before using the ancestor face: F is significant only if the returned Boolean value equals true. Obsolete
+        /// Identifies the ancestor faces of
+        /// the intersection edge E resulting from the last
+        /// computation performed in this framework, that is, the faces of
+        /// the two original shapes on which the edge E lies:
+        /// -      HasAncestorFaceOn1 gives the ancestor face in the first shape, and
+        /// -      HasAncestorFaceOn2 gives the ancestor face in the second shape.
+        /// These functions return true if an ancestor face F is found, or false if not.
+        /// An ancestor face is identifiable for the edge E if the following
+        /// conditions are satisfied:
+        /// -  the first part on which this algorithm performed its
+        /// last computation is a shape, that is, it was not given as
+        /// a surface or a plane at the time of construction of this
+        /// algorithm or at a later time by the Init1 function,
+        /// - E is one of the elementary edges built by the
+        /// last computation of this section algorithm.
+        /// To use these functions properly, you have to test the returned
+        /// Boolean value before using the ancestor face: F is significant
+        /// only if the returned Boolean value equals true.
+        /// Obsolete
         #[cxx_name = "HasAncestorFaceOn2"]
         fn has_ancestor_face_on2(
             self: &Section,
