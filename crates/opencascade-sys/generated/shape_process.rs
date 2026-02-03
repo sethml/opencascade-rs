@@ -10,6 +10,13 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Shape Processing module
+/// allows to define and apply general Shape Processing as a
+/// customizable sequence of Shape Healing operators. The
+/// customization is implemented via user-editable resource
+/// file which defines sequence of operators to be executed
+/// and their parameters.
 pub use ffi::ShapeProcess;
 impl ShapeProcess {
     /// Registers operator to make it visible for Performer
@@ -46,7 +53,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== ShapeProcess ========================
-        /// /// **Source:** `ShapeProcess.hxx` - `ShapeProcess`
+        /// **Source:** `ShapeProcess.hxx` - `ShapeProcess`
         ///
         /// Shape Processing module
         /// allows to define and apply general Shape Processing as a

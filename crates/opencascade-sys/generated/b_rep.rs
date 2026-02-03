@@ -11,6 +11,23 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// A framework providing advanced tolerance control.
+/// It is used to build Shapes.
+/// If tolerance control is required, you are advised to:
+/// 1. build a default precision for topology, using the
+/// classes provided in the BRepAPI package
+/// 2. update the tolerance of the resulting shape.
+/// Note that only vertices, edges and faces have
+/// meaningful tolerance control. The tolerance value
+/// must always comply with the condition that face
+/// tolerances are more restrictive than edge tolerances
+/// which are more restrictive than vertex tolerances. In
+/// other words: Tol(Vertex) >= Tol(Edge) >= Tol(Face).
+/// Other rules in setting tolerance include:
+/// - you can open up tolerance but should never restrict it
+/// - an edge cannot be included within the fusion of the
+/// tolerance spheres of two vertices
 pub use ffi::Builder;
 impl Builder {
     /// Upcast to TopoDS_Builder
@@ -25,6 +42,9 @@ impl Builder {
         ffi::builder_as_topo_ds_builder_mut(self)
     }
 }
+
+/// Provides class methods  to  access to the geometry
+/// of BRep shapes.
 pub use ffi::Tool;
 impl Tool {
     /// If S is Shell, returns True if it has no free boundaries (edges).
@@ -410,7 +430,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRep_Builder ========================
-        /// /// **Source:** `BRep_Builder.hxx` - `BRep_Builder`
+        /// **Source:** `BRep_Builder.hxx` - `BRep_Builder`
         ///
         /// A framework providing advanced tolerance control.
         /// It is used to build Shapes.
@@ -852,7 +872,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRep_Builder_as_TopoDS_Builder_mut"]
         fn builder_as_topo_ds_builder_mut(self_: Pin<&mut Builder>) -> Pin<&mut TopoDS_Builder>;
         /// ======================== BRep_Tool ========================
-        /// /// **Source:** `BRep_Tool.hxx` - `BRep_Tool`
+        /// **Source:** `BRep_Tool.hxx` - `BRep_Tool`
         ///
         /// Provides class methods  to  access to the geometry
         /// of BRep shapes.

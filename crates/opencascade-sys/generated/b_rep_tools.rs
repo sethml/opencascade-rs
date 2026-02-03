@@ -13,6 +13,37 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// The BRepTools package provides  utilities for BRep
+/// data structures.
+///
+/// * WireExplorer : A tool to explore the topology of
+/// a wire in the order of the edges.
+///
+/// * ShapeSet :  Tools used for  dumping, writing and
+/// reading.
+///
+/// * UVBounds : Methods to compute the  limits of the
+/// boundary  of a  face,  a wire or   an edge in  the
+/// parametric space of a face.
+///
+/// *  Update : Methods  to call when   a topology has
+/// been created to compute all missing data.
+///
+/// * UpdateFaceUVPoints: Method to update the UV points
+/// stored with the edges on a face.
+///
+/// * Compare : Method to compare two vertices.
+///
+/// * Compare : Method to compare two edges.
+///
+/// * OuterWire : A method to find the outer wire of a
+/// face.
+///
+/// * Map3DEdges : A method to map all the 3D Edges of
+/// a Shape.
+///
+/// * Dump : A method to dump a BRep object.
 pub use ffi::BRepTools;
 impl BRepTools {
     /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
@@ -354,6 +385,69 @@ impl BRepTools {
         ffi::BRepTools_check_locations(theS, theProblemShapes)
     }
 }
+
+/// The history keeps the following relations between the input shapes
+/// (S1, ..., Sm) and output shapes (T1, ..., Tn):
+/// 1) an output shape Tj is generated from an input shape Si: Tj <= G(Si);
+/// 2) a output shape Tj is modified from an input shape Si: Tj <= M(Si);
+/// 3) an input shape (Si) is removed: R(Si) == 1.
+///
+/// The relations are kept only for shapes of types vertex, edge, face, and
+/// solid.
+///
+/// The last relation means that:
+/// 1) shape Si is not an output shape and
+/// 2) no any shape is modified (produced) from shape Si:
+/// R(Si) == 1 ==> Si != Tj, M(Si) == 0.
+///
+/// It means that the input shape cannot be removed and modified
+/// simultaneously. However, the shapes may be generated from the
+/// removed shape. For instance, in Fillet operation the edges
+/// generate faces and then are removed.
+///
+/// No any shape could be generated and modified from the same shape
+/// simultaneously: sets G(Si) and M(Si) are not intersected
+/// (G(Si) ^ M(Si) == 0).
+///
+/// Each output shape should be:
+/// 1) an input shape or
+/// 2) generated or modified from an input shape (even generated from the
+/// implicit null shape if necessary):
+/// Tj == Si V (exists Si that Tj <= G(Si) U M(Si)).
+///
+/// Recommendations to choose between relations 'generated' and 'modified':
+/// 1) a shape is generated from input shapes if it dimension is greater or
+/// smaller than the dimensions of the input shapes;
+/// 2) a shape is generated from input shapes if these shapes are also output
+/// shapes;
+/// 3) a shape is generated from input shapes of the same dimension if it is
+/// produced by joining shapes generated from these shapes;
+/// 4) a shape is modified from an input shape if it replaces the input shape by
+/// changes of the location, the tolerance, the bounds of the parametric
+/// space (the faces for a solid), the parametrization and/or by applying of
+/// an approximation;
+/// 5) a shape is modified from input shapes of the same dimension if it is
+/// produced by joining shapes modified from these shapes.
+///
+/// Two sequential histories:
+/// - one history (H12) of shapes S1, ..., Sm to shapes T1, ..., Tn and
+/// - another history (H23) of shapes T1, ..., Tn to shapes Q1, ..., Ql
+/// could be merged to the single history (H13) of shapes S1, ..., Sm to shapes
+/// Q1, ..., Ql.
+///
+/// During the merge:
+/// 1) if shape Tj is generated from shape Si then each shape generated or
+/// modified from shape Tj is considered as a shape generated from shape Si
+/// among shapes Q1, ..., Ql:
+/// Tj <= G12(Si), Qk <= G23(Tj) U M23(Tj) ==> Qk <= G13(Si).
+/// 2) if shape Tj is modified from shape Si, shape Qk is generated from shape
+/// Tj then shape Qk is considered as a shape generated from shape Si among
+/// shapes Q1, ..., Ql:
+/// Tj <= M12(Si), Qk <= G23(Tj) ==> Qk <= G13(Si);
+/// 3) if shape Tj is modified from shape Si, shape Qk is modified from shape
+/// Tj then shape Qk is considered as a shape modified from shape Si among
+/// shapes Q1, ..., Ql:
+/// Tj <= M12(Si), Qk <= M23(Tj) ==> Qk <= M13(Si);
 pub use ffi::History;
 impl History {
     /// @name Constructors for History creation
@@ -377,6 +471,8 @@ impl History {
         ffi::History_get_type_name()
     }
 }
+
+/// Performs geometric modifications on a shape.
 pub use ffi::Modifier;
 impl Modifier {
     /// Creates an empty Modifier.
@@ -398,6 +494,21 @@ impl Modifier {
         ffi::Modifier_ctor_shape_handlemodification(S, M)
     }
 }
+
+/// Rebuilds a Shape by making pre-defined substitutions on some
+/// of its components
+///
+/// In a first phase, it records requests to replace or remove
+/// some individual shapes
+/// For each shape, the last given request is recorded
+/// Requests may be applied "Oriented" (i.e. only to an item with
+/// the SAME orientation) or not (the orientation of replacing
+/// shape is respectful of that of the original one)
+///
+/// Then, these requests may be applied to any shape which may
+/// contain one or more of these individual shapes
+///
+/// Supports the 'BRepTools_History' history by method 'History'.
 pub use ffi::ReShape;
 impl ReShape {
     /// Returns an empty Reshape
@@ -454,7 +565,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepTools ========================
-        /// /// **Source:** `BRepTools.hxx` - `BRepTools`
+        /// **Source:** `BRepTools.hxx` - `BRepTools`
         ///
         /// The BRepTools package provides  utilities for BRep
         /// data structures.
@@ -751,7 +862,7 @@ pub(crate) mod ffi {
             theProblemShapes: Pin<&mut TopTools_ListOfShape>,
         );
         /// ======================== BRepTools_History ========================
-        /// /// **Source:** `BRepTools_History.hxx` - `BRepTools_History`
+        /// **Source:** `BRepTools_History.hxx` - `BRepTools_History`
         ///
         /// The history keeps the following relations between the input shapes
         /// (S1, ..., Sm) and output shapes (T1, ..., Tn):
@@ -817,7 +928,7 @@ pub(crate) mod ffi {
         /// Tj <= M12(Si), Qk <= M23(Tj) ==> Qk <= M13(Si);
         #[cxx_name = "BRepTools_History"]
         type History;
-        /// /// **Source:** `BRepTools_History.hxx` - `BRepTools_History::BRepTools_History()`
+        /// **Source:** `BRepTools_History.hxx` - `BRepTools_History::BRepTools_History()`
         ///
         /// @name Constructors for History creation
         /// Empty constructor
@@ -897,22 +1008,22 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepTools_History_to_handle"]
         fn History_to_handle(obj: UniquePtr<History>) -> UniquePtr<HandleBRepToolsHistory>;
         /// ======================== BRepTools_Modifier ========================
-        /// /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier`
+        /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier`
         ///
         /// Performs geometric modifications on a shape.
         #[cxx_name = "BRepTools_Modifier"]
         type Modifier;
-        /// /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`
+        /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`
         ///
         /// Creates an empty Modifier.
         #[cxx_name = "BRepTools_Modifier_ctor_bool"]
         fn Modifier_ctor_bool(theMutableInput: bool) -> UniquePtr<Modifier>;
-        /// /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`
+        /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`
         ///
         /// Creates a modifier on the shape <S>.
         #[cxx_name = "BRepTools_Modifier_ctor_shape"]
         fn Modifier_ctor_shape(S: &TopoDS_Shape) -> UniquePtr<Modifier>;
-        /// /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`
+        /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`
         ///
         /// Creates a modifier on  the shape <S>, and performs
         /// the modifications described by <M>.
@@ -947,7 +1058,7 @@ pub(crate) mod ffi {
         #[cxx_name = "ModifiedShape"]
         fn modified_shape(self: &Modifier, S: &TopoDS_Shape) -> &TopoDS_Shape;
         /// ======================== BRepTools_ReShape ========================
-        /// /// **Source:** `BRepTools_ReShape.hxx` - `BRepTools_ReShape`
+        /// **Source:** `BRepTools_ReShape.hxx` - `BRepTools_ReShape`
         ///
         /// Rebuilds a Shape by making pre-defined substitutions on some
         /// of its components
@@ -965,7 +1076,7 @@ pub(crate) mod ffi {
         /// Supports the 'BRepTools_History' history by method 'History'.
         #[cxx_name = "BRepTools_ReShape"]
         type ReShape;
-        /// /// **Source:** `BRepTools_ReShape.hxx` - `BRepTools_ReShape::BRepTools_ReShape()`
+        /// **Source:** `BRepTools_ReShape.hxx` - `BRepTools_ReShape::BRepTools_ReShape()`
         ///
         /// Returns an empty Reshape
         #[cxx_name = "BRepTools_ReShape_ctor"]

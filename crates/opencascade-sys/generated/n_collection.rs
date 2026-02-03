@@ -17,6 +17,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Low-level buffer object.
 pub use ffi::Buffer;
 impl Buffer {
     /// Wrap NCollection_Buffer in a Handle (reference-counted smart pointer)
@@ -28,6 +30,14 @@ impl Buffer {
         ffi::Buffer_get_type_name()
     }
 }
+
+/// Simplified class for vector of pointers of void.
+/// Offers basic functionality to scalable inserts,
+/// resizes and erasing last.
+///
+/// Control of processing values of pointers out-of-scope
+/// and should be controlled externally.
+/// Especially, copy operation should post-process elements of pointers to make deep copy.
 pub use ffi::BasePointerVector;
 impl BasePointerVector {
     /// Default constructor
@@ -40,6 +50,18 @@ impl BasePointerVector {
         ffi::BasePointerVector_ctor_basepointervector(theOther)
     }
 }
+
+///
+/// Purpose:     Basic class for memory allocation wizards.
+/// Defines  the  interface  for devising  different  allocators
+/// firstly to be used  by collections of NCollection, though it
+/// it is not  deferred. It allocates/frees  the memory  through
+/// Standard procedures, thus it is  unnecessary (and  sometimes
+/// injurious) to have  more than one such  allocator.  To avoid
+/// creation  of multiple  objects the  constructors  were  maid
+/// inaccessible.  To  create the  BaseAllocator use  the method
+/// CommonBaseAllocator.
+/// Note that this object is managed by Handle.
 pub use ffi::BaseAllocator;
 impl BaseAllocator {
     /// Wrap NCollection_BaseAllocator in a Handle (reference-counted smart pointer)
@@ -53,8 +75,33 @@ impl BaseAllocator {
         ffi::BaseAllocator_get_type_name()
     }
 }
+
 pub use ffi::BaseList;
 impl BaseList {}
+
+///
+/// Class NCollection_IncAllocator - incremental memory  allocator. This class
+/// allocates  memory  on  request  returning  the  pointer  to  an  allocated
+/// block. This memory is never returned  to the system until the allocator is
+/// destroyed.
+///
+/// By comparison with  the standard new() and malloc()  calls, this method is
+/// faster and consumes very small additional memory to maintain the heap.
+///
+/// All pointers  returned by Allocate() are  aligned to the size  of the data
+/// type "aligned_t". To  modify the size of memory  blocks requested from the
+/// OS,  use the parameter  of the  constructor (measured  in bytes);  if this
+/// parameter is  smaller than  25 bytes on  32bit or  49 bytes on  64bit, the
+/// block size will be the default 12 kbytes.
+///
+/// It is not recommended  to use memory blocks  larger than 16KB  on  Windows
+/// platform  for the repeated operations  because  Low Fragmentation Heap  is
+/// not going to be  used  for  these  allocations  which  may lead  to memory
+/// fragmentation and the general performance slow down.
+///
+/// Note that this allocator is most suitable for single-threaded algorithms
+/// (consider creating dedicated allocators per working thread),
+/// and thread-safety of allocations is DISABLED by default (see SetThreadSafe()).
 pub use ffi::IncAllocator;
 impl IncAllocator {
     /// Constructor.
@@ -84,7 +131,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== NCollection_Buffer ========================
-        /// /// **Source:** `NCollection_Buffer.hxx` - `NCollection_Buffer`
+        /// **Source:** `NCollection_Buffer.hxx` - `NCollection_Buffer`
         ///
         /// Low-level buffer object.
         #[cxx_name = "NCollection_Buffer"]
@@ -116,7 +163,7 @@ pub(crate) mod ffi {
         #[cxx_name = "NCollection_Buffer_to_handle"]
         fn Buffer_to_handle(obj: UniquePtr<Buffer>) -> UniquePtr<HandleNCollectionBuffer>;
         /// ======================== NCollection_BasePointerVector ========================
-        /// /// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector`
+        /// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector`
         ///
         /// Simplified class for vector of pointers of void.
         /// Offers basic functionality to scalable inserts,
@@ -127,12 +174,12 @@ pub(crate) mod ffi {
         /// Especially, copy operation should post-process elements of pointers to make deep copy.
         #[cxx_name = "NCollection_BasePointerVector"]
         type BasePointerVector;
-        /// /// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
+        /// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
         ///
         /// Default constructor
         #[cxx_name = "NCollection_BasePointerVector_ctor"]
         fn BasePointerVector_ctor() -> UniquePtr<BasePointerVector>;
-        /// /// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
+        /// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
         ///
         /// Copy data from another vector
         #[cxx_name = "NCollection_BasePointerVector_ctor_basepointervector"]
@@ -155,7 +202,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut BasePointerVector>, theReleaseMemory: bool);
         /// ======================== NCollection_BaseAllocator ========================
-        /// /// **Source:** `NCollection_BaseAllocator.hxx` - `NCollection_BaseAllocator`
+        /// **Source:** `NCollection_BaseAllocator.hxx` - `NCollection_BaseAllocator`
         ///
         ///
         /// Purpose:     Basic class for memory allocation wizards.
@@ -180,7 +227,7 @@ pub(crate) mod ffi {
             obj: UniquePtr<BaseAllocator>,
         ) -> UniquePtr<HandleNCollectionBaseAllocator>;
         /// ======================== NCollection_BaseList ========================
-        /// /// **Source:** `NCollection_BaseList.hxx` - `NCollection_BaseList`
+        /// **Source:** `NCollection_BaseList.hxx` - `NCollection_BaseList`
         #[cxx_name = "NCollection_BaseList"]
         type BaseList;
         #[cxx_name = "Extent"]
@@ -191,7 +238,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Allocator"]
         fn allocator(self: &BaseList) -> &HandleNCollectionBaseAllocator;
         /// ======================== NCollection_IncAllocator ========================
-        /// /// **Source:** `NCollection_IncAllocator.hxx` - `NCollection_IncAllocator`
+        /// **Source:** `NCollection_IncAllocator.hxx` - `NCollection_IncAllocator`
         ///
         ///
         /// Class NCollection_IncAllocator - incremental memory  allocator. This class
@@ -218,7 +265,7 @@ pub(crate) mod ffi {
         /// and thread-safety of allocations is DISABLED by default (see SetThreadSafe()).
         #[cxx_name = "NCollection_IncAllocator"]
         type IncAllocator;
-        /// /// **Source:** `NCollection_IncAllocator.hxx` - `NCollection_IncAllocator::NCollection_IncAllocator()`
+        /// **Source:** `NCollection_IncAllocator.hxx` - `NCollection_IncAllocator::NCollection_IncAllocator()`
         ///
         /// Constructor.
         /// Note that this constructor does NOT setup mutex for using allocator concurrently from

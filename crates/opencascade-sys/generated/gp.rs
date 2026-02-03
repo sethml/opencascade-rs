@@ -49,6 +49,19 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Describes an axis in 3D space.
+/// An axis is defined by:
+/// -   its origin (also referred to as its "Location point"), and
+/// -   its unit vector (referred to as its "Direction" or "main   Direction").
+/// An axis is used:
+/// -   to describe 3D geometric entities (for example, the
+/// axis of a revolution entity). It serves the same purpose
+/// as the STEP function "axis placement one axis", or
+/// -   to define geometric transformations (axis of
+/// symmetry, axis of rotation, and so on).
+/// For example, this entity can be used to locate a geometric entity
+/// or to define a symmetry axis.
 pub use ffi::Ax1;
 impl Ax1 {
     /// Creates an axis object representing Z axis of
@@ -128,6 +141,35 @@ impl Ax1 {
         ffi::Ax1_translated_pnt2(self, theP1, theP2)
     }
 }
+
+/// Describes a right-handed coordinate system in 3D space.
+/// A coordinate system is defined by:
+/// -   its origin (also referred to as its "Location point"), and
+/// -   three orthogonal unit vectors, termed respectively the
+/// "X Direction", the "Y Direction" and the "Direction" (also
+/// referred to as the "main Direction").
+/// The "Direction" of the coordinate system is called its
+/// "main Direction" because whenever this unit vector is
+/// modified, the "X Direction" and the "Y Direction" are
+/// recomputed. However, when we modify either the "X
+/// Direction" or the "Y Direction", "Direction" is not modified.
+/// The "main Direction" is also the "Z Direction".
+/// Since an Ax2 coordinate system is right-handed, its
+/// "main Direction" is always equal to the cross product of
+/// its "X Direction" and "Y Direction". (To define a
+/// left-handed coordinate system, use gp_Ax3.)
+/// A coordinate system is used:
+/// -   to describe geometric entities, in particular to position
+/// them. The local coordinate system of a geometric
+/// entity serves the same purpose as the STEP function
+/// "axis placement two axes", or
+/// -   to define geometric transformations.
+/// Note: we refer to the "X Axis", "Y Axis" and "Z Axis",
+/// respectively, as to axes having:
+/// - the origin of the coordinate system as their origin, and
+/// -   the unit vectors "X Direction", "Y Direction" and "main
+/// Direction", respectively, as their unit vectors.
+/// The "Z Axis" is also the "main Axis".
 pub use ffi::Ax2;
 impl Ax2 {
     /// Creates an object corresponding to the reference
@@ -252,6 +294,24 @@ impl Ax2 {
         ffi::Ax2_translated_pnt2(self, theP1, theP2)
     }
 }
+
+/// Describes a coordinate system in a plane (2D space).
+/// A coordinate system is defined by:
+/// -   its origin (also referred to as its "Location point"), and
+/// -   two orthogonal unit vectors, respectively, called the "X
+/// Direction" and the "Y Direction".
+/// A gp_Ax22d may be right-handed ("direct sense") or
+/// left-handed ("inverse" or "indirect sense").
+/// You use a gp_Ax22d to:
+/// - describe 2D geometric entities, in particular to position
+/// them. The local coordinate system of a geometric
+/// entity serves for the same purpose as the STEP
+/// function "axis placement two axes", or
+/// -   define geometric transformations.
+/// Note: we refer to the "X Axis" and "Y Axis" as the axes having:
+/// -   the origin of the coordinate system as their origin, and
+/// -   the unit vectors "X Direction" and "Y Direction",
+/// respectively, as their unit vectors.
 pub use ffi::Ax22d;
 impl Ax22d {
     /// Creates an object representing the reference
@@ -380,6 +440,25 @@ impl Ax22d {
         ffi::Ax22d_translated_pnt2d2(self, theP1, theP2)
     }
 }
+
+/// Describes an axis in the plane (2D space).
+/// An axis is defined by:
+/// -   its origin (also referred to as its "Location point"),   and
+/// -   its unit vector (referred to as its "Direction").
+/// An axis implicitly defines a direct, right-handed
+/// coordinate system in 2D space by:
+/// -   its origin,
+/// - its "Direction" (giving the "X Direction" of the coordinate system), and
+/// -   the unit vector normal to "Direction" (positive angle
+/// measured in the trigonometric sense).
+/// An axis is used:
+/// -   to describe 2D geometric entities (for example, the
+/// axis which defines angular coordinates on a circle).
+/// It serves for the same purpose as the STEP function
+/// "axis placement one axis", or
+/// -   to define geometric transformations (axis of
+/// symmetry, axis of rotation, and so on).
+/// Note: to define a left-handed 2D coordinate system, use gp_Ax22d.
 pub use ffi::Ax2d;
 impl Ax2d {
     /// Creates an axis object representing X axis of the reference co-ordinate system.
@@ -451,6 +530,41 @@ impl Ax2d {
         ffi::Ax2d_translated_pnt2d2(self, theP1, theP2)
     }
 }
+
+/// Describes a coordinate system in 3D space. Unlike a
+/// gp_Ax2 coordinate system, a gp_Ax3 can be
+/// right-handed ("direct sense") or left-handed ("indirect sense").
+/// A coordinate system is defined by:
+/// -   its origin (also referred to as its "Location point"), and
+/// -   three orthogonal unit vectors, termed the "X
+/// Direction", the "Y Direction" and the "Direction" (also
+/// referred to as the "main Direction").
+/// The "Direction" of the coordinate system is called its
+/// "main Direction" because whenever this unit vector is
+/// modified, the "X Direction" and the "Y Direction" are
+/// recomputed. However, when we modify either the "X
+/// Direction" or the "Y Direction", "Direction" is not modified.
+/// "Direction" is also the "Z Direction".
+/// The "main Direction" is always parallel to the cross
+/// product of its "X Direction" and "Y Direction".
+/// If the coordinate system is right-handed, it satisfies the equation:
+/// "main Direction" = "X Direction" ^ "Y Direction"
+/// and if it is left-handed, it satisfies the equation:
+/// "main Direction" = -"X Direction" ^ "Y Direction"
+/// A coordinate system is used:
+/// -   to describe geometric entities, in particular to position
+/// them. The local coordinate system of a geometric
+/// entity serves the same purpose as the STEP function
+/// "axis placement three axes", or
+/// -   to define geometric transformations.
+/// Note:
+/// -   We refer to the "X Axis", "Y Axis" and "Z Axis",
+/// respectively, as the axes having:
+/// -   the origin of the coordinate system as their origin, and
+/// -   the unit vectors "X Direction", "Y Direction" and
+/// "main Direction", respectively, as their unit vectors.
+/// -   The "Z Axis" is also the "main Axis".
+/// -   gp_Ax2 is used to define a coordinate system that must be always right-handed.
 pub use ffi::Ax3;
 impl Ax3 {
     /// Creates an object corresponding to the reference
@@ -571,6 +685,33 @@ impl Ax3 {
         ffi::Ax3_translated_pnt2(self, theP1, theP2)
     }
 }
+
+/// Describes a circle in 3D space.
+/// A circle is defined by its radius and positioned in space
+/// with a coordinate system (a gp_Ax2 object) as follows:
+/// -   the origin of the coordinate system is the center of the circle, and
+/// -   the origin, "X Direction" and "Y Direction" of the
+/// coordinate system define the plane of the circle.
+/// This positioning coordinate system is the "local
+/// coordinate system" of the circle. Its "main Direction"
+/// gives the normal vector to the plane of the circle. The
+/// "main Axis" of the coordinate system is referred to as
+/// the "Axis" of the circle.
+/// Note: when a gp_Circ circle is converted into a
+/// Geom_Circle circle, some implicit properties of the
+/// circle are used explicitly:
+/// -   the "main Direction" of the local coordinate system
+/// gives an implicit orientation to the circle (and defines
+/// its trigonometric sense),
+/// -   this orientation corresponds to the direction in
+/// which parameter values increase,
+/// -   the starting point for parameterization is that of the
+/// "X Axis" of the local coordinate system (i.e. the "X Axis" of the circle).
+/// See Also
+/// gce_MakeCirc which provides functions for more complex circle constructions
+/// Geom_Circle which provides additional functions for
+/// constructing circles and works, in particular, with the
+/// parametric equations of circles
 pub use ffi::Circ;
 impl Circ {
     /// Creates an indefinite circle.
@@ -657,6 +798,31 @@ impl Circ {
         ffi::Circ_translated_pnt2(self, theP1, theP2)
     }
 }
+
+/// Describes a circle in the plane (2D space).
+/// A circle is defined by its radius and positioned in the
+/// plane with a coordinate system (a gp_Ax22d object) as follows:
+/// -   the origin of the coordinate system is the center of the circle, and
+/// -   the orientation (direct or indirect) of the coordinate
+/// system gives an implicit orientation to the circle (and
+/// defines its trigonometric sense).
+/// This positioning coordinate system is the "local
+/// coordinate system" of the circle.
+/// Note: when a gp_Circ2d circle is converted into a
+/// Geom2d_Circle circle, some implicit properties of the
+/// circle are used explicitly:
+/// -   the implicit orientation corresponds to the direction in
+/// which parameter values increase,
+/// -   the starting point for parameterization is that of the "X
+/// Axis" of the local coordinate system (i.e. the "X Axis" of the circle).
+/// See Also
+/// GccAna and Geom2dGcc packages which provide
+/// functions for constructing circles defined by geometric constraints
+/// gce_MakeCirc2d which provides functions for more
+/// complex circle constructions
+/// Geom2d_Circle which provides additional functions for
+/// constructing circles and works, with the parametric
+/// equations of circles in particular  gp_Ax22d
 pub use ffi::Circ2d;
 impl Circ2d {
     /// creates an indefinite circle.
@@ -757,6 +923,36 @@ impl Circ2d {
         ffi::Circ2d_translated_pnt2d2(self, theP1, theP2)
     }
 }
+
+/// Defines an infinite conical surface.
+/// A cone is defined by its half-angle (can be negative) at the apex and
+/// positioned in space with a coordinate system (a gp_Ax3
+/// object) and a "reference radius" where:
+/// -   the "main Axis" of the coordinate system is the axis of   revolution of the cone,
+/// -   the plane defined by the origin, the "X Direction" and
+/// the "Y Direction" of the coordinate system is the
+/// reference plane of the cone; the intersection of the
+/// cone with this reference plane is a circle of radius
+/// equal to the reference radius,
+/// if the half-angle is positive, the apex of the cone is on
+/// the negative side of the "main Axis" of the coordinate
+/// system. If the half-angle is negative, the apex is on the   positive side.
+/// This coordinate system is the "local coordinate system" of the cone.
+/// Note: when a gp_Cone cone is converted into a
+/// Geom_ConicalSurface cone, some implicit properties of
+/// its local coordinate system are used explicitly:
+/// -   its origin, "X Direction", "Y Direction" and "main
+/// Direction" are used directly to define the parametric
+/// directions on the cone and the origin of the parameters,
+/// -   its implicit orientation (right-handed or left-handed)
+/// gives the orientation (direct or indirect) of the
+/// Geom_ConicalSurface cone.
+/// See Also
+/// gce_MakeCone which provides functions for more
+/// complex cone constructions
+/// Geom_ConicalSurface which provides additional
+/// functions for constructing cones and works, in particular,
+/// with the parametric equations of cones gp_Ax3
 pub use ffi::Cone;
 impl Cone {
     /// Creates an indefinite Cone.
@@ -847,6 +1043,27 @@ impl Cone {
         ffi::Cone_translated_pnt2(self, theP1, theP2)
     }
 }
+
+/// Describes an infinite cylindrical surface.
+/// A cylinder is defined by its radius and positioned in space
+/// with a coordinate system (a gp_Ax3 object), the "main
+/// Axis" of which is the axis of the cylinder. This coordinate
+/// system is the "local coordinate system" of the cylinder.
+/// Note: when a gp_Cylinder cylinder is converted into a
+/// Geom_CylindricalSurface cylinder, some implicit
+/// properties of its local coordinate system are used explicitly:
+/// -   its origin, "X Direction", "Y Direction" and "main
+/// Direction" are used directly to define the parametric
+/// directions on the cylinder and the origin of the parameters,
+/// -   its implicit orientation (right-handed or left-handed)
+/// gives an orientation (direct or indirect) to the
+/// Geom_CylindricalSurface cylinder.
+/// See Also
+/// gce_MakeCylinder which provides functions for more
+/// complex cylinder constructions
+/// Geom_CylindricalSurface which provides additional
+/// functions for constructing cylinders and works, in
+/// particular, with the parametric equations of cylinders gp_Ax3
 pub use ffi::Cylinder;
 impl Cylinder {
     /// Creates a indefinite cylinder.
@@ -929,6 +1146,14 @@ impl Cylinder {
         ffi::Cylinder_translated_pnt2(self, theP1, theP2)
     }
 }
+
+/// Describes a unit vector in 3D space. This unit vector is also called "Direction".
+/// See Also
+/// gce_MakeDir which provides functions for more complex
+/// unit vector constructions
+/// Geom_Direction which provides additional functions for
+/// constructing unit vectors and works, in particular, with the
+/// parametric equations of unit vectors.
 pub use ffi::Dir;
 impl Dir {
     /// Creates a direction corresponding to X axis.
@@ -1028,6 +1253,15 @@ impl Dir {
         ffi::Dir_transformed(self, theT)
     }
 }
+
+/// Describes a unit vector in the plane (2D space). This unit
+/// vector is also called "Direction".
+/// See Also
+/// gce_MakeDir2d which provides functions for more
+/// complex unit vector constructions
+/// Geom2d_Direction which provides additional functions
+/// for constructing unit vectors and works, in particular, with
+/// the parametric equations of unit vectors
 pub use ffi::Dir2d;
 impl Dir2d {
     /// Creates a direction corresponding to X axis.
@@ -1091,6 +1325,32 @@ impl Dir2d {
         ffi::Dir2d_transformed(self, theT)
     }
 }
+
+/// Describes an ellipse in 3D space.
+/// An ellipse is defined by its major and minor radii and
+/// positioned in space with a coordinate system (a gp_Ax2 object) as follows:
+/// -   the origin of the coordinate system is the center of the ellipse,
+/// -   its "X Direction" defines the major axis of the ellipse, and
+/// - its "Y Direction" defines the minor axis of the ellipse.
+/// Together, the origin, "X Direction" and "Y Direction" of
+/// this coordinate system define the plane of the ellipse.
+/// This coordinate system is the "local coordinate system"
+/// of the ellipse. In this coordinate system, the equation of
+/// the ellipse is:
+/// @code
+/// X*X / (MajorRadius**2) + Y*Y / (MinorRadius**2) = 1.0
+/// @endcode
+/// The "main Direction" of the local coordinate system gives
+/// the normal vector to the plane of the ellipse. This vector
+/// gives an implicit orientation to the ellipse (definition of the
+/// trigonometric sense). We refer to the "main Axis" of the
+/// local coordinate system as the "Axis" of the ellipse.
+/// See Also
+/// gce_MakeElips which provides functions for more
+/// complex ellipse constructions
+/// Geom_Ellipse which provides additional functions for
+/// constructing ellipses and works, in particular, with the
+/// parametric equations of ellipses
 pub use ffi::Elips;
 impl Elips {
     /// Creates an indefinite ellipse.
@@ -1222,6 +1482,27 @@ impl Elips {
         ffi::Elips_translated_pnt2(self, theP1, theP2)
     }
 }
+
+/// Describes an ellipse in the plane (2D space).
+/// An ellipse is defined by its major and minor radii and
+/// positioned in the plane with a coordinate system (a
+/// gp_Ax22d object) as follows:
+/// -   the origin of the coordinate system is the center of the ellipse,
+/// -   its "X Direction" defines the major axis of the ellipse, and
+/// -   its "Y Direction" defines the minor axis of the ellipse.
+/// This coordinate system is the "local coordinate system"
+/// of the ellipse. Its orientation (direct or indirect) gives an
+/// implicit orientation to the ellipse. In this coordinate
+/// system, the equation of the ellipse is:
+/// @code
+/// X*X / (MajorRadius**2) + Y*Y / (MinorRadius**2) = 1.0
+/// @endcode
+/// See Also
+/// gce_MakeElips2d which provides functions for more
+/// complex ellipse constructions
+/// Geom2d_Ellipse which provides additional functions for
+/// constructing ellipses and works, in particular, with the
+/// parametric equations of ellipses
 pub use ffi::Elips2d;
 impl Elips2d {
     /// Creates an indefinite ellipse.
@@ -1365,6 +1646,32 @@ impl Elips2d {
         ffi::Elips2d_translated_pnt2d2(self, theP1, theP2)
     }
 }
+
+/// Defines a non-persistent transformation in 3D space.
+/// This transformation is a general transformation.
+/// It can be a gp_Trsf, an affinity, or you can define
+/// your own transformation giving the matrix of transformation.
+///
+/// With a gp_GTrsf you can transform only a triplet of coordinates gp_XYZ.
+/// It is not possible to transform other geometric objects
+/// because these transformations can change the nature of non-elementary geometric objects.
+/// The transformation gp_GTrsf can be represented as follow:
+/// @code
+/// V1   V2   V3    T       XYZ        XYZ
+/// | a11  a12  a13   a14 |   | x |      | x'|
+/// | a21  a22  a23   a24 |   | y |      | y'|
+/// | a31  a32  a33   a34 |   | z |   =  | z'|
+/// |  0    0    0     1  |   | 1 |      | 1 |
+/// @endcode
+/// where {V1, V2, V3} define the vectorial part of the
+/// transformation and T defines the translation part of the transformation.
+/// Warning
+/// A gp_GTrsf transformation is only applicable to coordinates.
+/// Be careful if you apply such a transformation to all points of a geometric object,
+/// as this can change the nature of the object and thus render it incoherent!
+/// Typically, a circle is transformed into an ellipse by an affinity transformation.
+/// To avoid modifying the nature of an object, use a gp_Trsf transformation instead,
+/// as objects of this class respect the nature of geometric objects.
 pub use ffi::GTrsf;
 impl GTrsf {
     /// Returns the Identity transformation.
@@ -1438,6 +1745,31 @@ impl GTrsf {
         ffi::GTrsf_trsf(self)
     }
 }
+
+/// Defines a non persistent transformation in 2D space.
+/// This transformation is a general transformation.
+/// It can be a gp_Trsf2d, an affinity, or you can
+/// define your own transformation giving the corresponding matrix of transformation.
+///
+/// With a gp_GTrsf2d you can transform only a doublet of coordinates gp_XY.
+/// It is not possible to transform other geometric objects
+/// because these transformations can change the nature of non-elementary geometric objects.
+/// A gp_GTrsf2d is represented with a 2 rows * 3 columns matrix:
+/// @code
+/// V1   V2   T        XY         XY
+/// | a11  a12  a14 |   | x |      | x'|
+/// | a21  a22  a24 |   | y |   =  | y'|
+/// |  0    0    1  |   | 1 |      | 1 |
+/// @endcode
+/// where {V1, V2} defines the vectorial part of the
+/// transformation and T defines the translation part of the transformation.
+/// Warning
+/// A gp_GTrsf2d transformation is only applicable on coordinates.
+/// Be careful if you apply such a transformation to all the points of a geometric object,
+/// as this can change the nature of the object and thus render it incoherent!
+/// Typically, a circle is transformed into an ellipse by an affinity transformation.
+/// To avoid modifying the nature of an object, use a gp_Trsf2d transformation instead,
+/// as objects of this class respect the nature of geometric objects.
 pub use ffi::GTrsf2d;
 impl GTrsf2d {
     /// returns identity transformation.
@@ -1512,6 +1844,53 @@ impl GTrsf2d {
         ffi::GTrsf2d_trsf2d(self)
     }
 }
+
+/// Describes a branch of a hyperbola in 3D space.
+/// A hyperbola is defined by its major and minor radii and
+/// positioned in space with a coordinate system (a gp_Ax2
+/// object) of which:
+/// -   the origin is the center of the hyperbola,
+/// -   the "X Direction" defines the major axis of the
+/// hyperbola, and
+/// - the "Y Direction" defines the minor axis of the hyperbola.
+/// The origin, "X Direction" and "Y Direction" of this
+/// coordinate system together define the plane of the
+/// hyperbola. This coordinate system is the "local
+/// coordinate system" of the hyperbola. In this coordinate
+/// system, the equation of the hyperbola is:
+/// X*X/(MajorRadius**2)-Y*Y/(MinorRadius**2) = 1.0
+/// The branch of the hyperbola described is the one located
+/// on the positive side of the major axis.
+/// The "main Direction" of the local coordinate system is a
+/// normal vector to the plane of the hyperbola. This vector
+/// gives an implicit orientation to the hyperbola. We refer to
+/// the "main Axis" of the local coordinate system as the
+/// "Axis" of the hyperbola.
+/// The following schema shows the plane of the hyperbola,
+/// and in it, the respective positions of the three branches of
+/// hyperbolas constructed with the functions OtherBranch,
+/// ConjugateBranch1, and ConjugateBranch2:
+/// @code
+/// ^YAxis
+/// |
+/// FirstConjugateBranch
+/// |
+/// Other            |                Main
+/// --------------------- C ------------------------------>XAxis
+/// Branch           |                Branch
+/// |
+/// |
+/// SecondConjugateBranch
+/// |                  ^YAxis
+/// @endcode
+/// Warning
+/// The major radius can be less than the minor radius.
+/// See Also
+/// gce_MakeHypr which provides functions for more
+/// complex hyperbola constructions
+/// Geom_Hyperbola which provides additional functions for
+/// constructing hyperbolas and works, in particular, with the
+/// parametric equations of hyperbolas
 pub use ffi::Hypr;
 impl Hypr {
     /// Creates of an indefinite hyperbola.
@@ -1683,6 +2062,47 @@ impl Hypr {
         ffi::Hypr_translated_pnt2(self, theP1, theP2)
     }
 }
+
+/// Describes a branch of a hyperbola in the plane (2D space).
+/// A hyperbola is defined by its major and minor radii, and
+/// positioned in the plane with a coordinate system (a
+/// gp_Ax22d object) of which:
+/// -   the origin is the center of the hyperbola,
+/// -   the "X Direction" defines the major axis of the hyperbola, and
+/// -   the "Y Direction" defines the minor axis of the hyperbola.
+/// This coordinate system is the "local coordinate system"
+/// of the hyperbola. The orientation of this coordinate
+/// system (direct or indirect) gives an implicit orientation to
+/// the hyperbola. In this coordinate system, the equation of
+/// the hyperbola is:
+/// X*X/(MajorRadius**2)-Y*Y/(MinorRadius**2) = 1.0
+/// The branch of the hyperbola described is the one located
+/// on the positive side of the major axis.
+/// The following schema shows the plane of the hyperbola,
+/// and in it, the respective positions of the three branches of
+/// hyperbolas constructed with the functions OtherBranch,
+/// ConjugateBranch1, and ConjugateBranch2:
+/// @code
+/// ^YAxis
+/// |
+/// FirstConjugateBranch
+/// |
+/// Other            |                Main
+/// --------------------- C ------------------------------>XAxis
+/// Branch           |                Branch
+/// |
+/// |
+/// SecondConjugateBranch
+/// |
+/// @endcode
+/// Warning
+/// The major radius can be less than the minor radius.
+/// See Also
+/// gce_MakeHypr2d which provides functions for more
+/// complex hyperbola constructions
+/// Geom2d_Hyperbola which provides additional functions
+/// for constructing hyperbolas and works, in particular, with
+/// the parametric equations of hyperbolas
 pub use ffi::Hypr2d;
 impl Hypr2d {
     /// Creates of an indefinite hyperbola.
@@ -1881,6 +2301,21 @@ impl Hypr2d {
         ffi::Hypr2d_translated_pnt2d2(self, theP1, theP2)
     }
 }
+
+/// Describes a line in 3D space.
+/// A line is positioned in space with an axis (a gp_Ax1
+/// object) which gives it an origin and a unit vector.
+/// A line and an axis are similar objects, thus, we can
+/// convert one into the other. A line provides direct access
+/// to the majority of the edit and query functions available
+/// on its positioning axis. In addition, however, a line has
+/// specific functions for computing distances and positions.
+/// See Also
+/// gce_MakeLin which provides functions for more complex
+/// line constructions
+/// Geom_Line which provides additional functions for
+/// constructing lines and works, in particular, with the
+/// parametric equations of lines
 pub use ffi::Lin;
 impl Lin {
     /// Creates a Line corresponding to Z axis of the
@@ -1974,6 +2409,25 @@ impl Lin {
         ffi::Lin_translated_pnt2(self, theP1, theP2)
     }
 }
+
+/// Describes a line in 2D space.
+/// A line is positioned in the plane with an axis (a gp_Ax2d
+/// object) which gives the line its origin and unit vector. A
+/// line and an axis are similar objects, thus, we can convert
+/// one into the other.
+/// A line provides direct access to the majority of the edit
+/// and query functions available on its positioning axis. In
+/// addition, however, a line has specific functions for
+/// computing distances and positions.
+/// See Also
+/// GccAna and Geom2dGcc packages which provide
+/// functions for constructing lines defined by geometric
+/// constraints
+/// gce_MakeLin2d which provides functions for more
+/// complex line constructions
+/// Geom2d_Line which provides additional functions for
+/// constructing lines and works, in particular, with the
+/// parametric equations of lines
 pub use ffi::Lin2d;
 impl Lin2d {
     /// Creates a Line corresponding to X axis of the
@@ -2065,6 +2519,9 @@ impl Lin2d {
         ffi::Lin2d_translated_pnt2d2(self, theP1, theP2)
     }
 }
+
+/// Describes a three column, three row matrix.
+/// This sort of object is used in various vectorial or matrix computations.
 pub use ffi::Mat;
 impl Mat {
     /// creates  a matrix with null coefficients.
@@ -2173,6 +2630,9 @@ impl Mat {
         ffi::Mat_transposed(self)
     }
 }
+
+/// Describes a two column, two row matrix.
+/// This sort of object is used in various vectorial or matrix computations.
 pub use ffi::Mat2d;
 impl Mat2d {
     /// Creates  a matrix with null coefficients.
@@ -2260,6 +2720,34 @@ impl Mat2d {
         ffi::Mat2d_transposed(self)
     }
 }
+
+/// Describes a parabola in 3D space.
+/// A parabola is defined by its focal length (that is, the
+/// distance between its focus and apex) and positioned in
+/// space with a coordinate system (a gp_Ax2 object)
+/// where:
+/// -   the origin of the coordinate system is on the apex of
+/// the parabola,
+/// -   the "X Axis" of the coordinate system is the axis of
+/// symmetry; the parabola is on the positive side of this axis, and
+/// -   the origin, "X Direction" and "Y Direction" of the
+/// coordinate system define the plane of the parabola.
+/// The equation of the parabola in this coordinate system,
+/// which is the "local coordinate system" of the parabola, is:
+/// @code
+/// Y**2 = (2*P) * X.
+/// @endcode
+/// where P, referred to as the parameter of the parabola, is
+/// the distance between the focus and the directrix (P is
+/// twice the focal length).
+/// The "main Direction" of the local coordinate system gives
+/// the normal vector to the plane of the parabola.
+/// See Also
+/// gce_MakeParab which provides functions for more
+/// complex parabola constructions
+/// Geom_Parabola which provides additional functions for
+/// constructing parabolas and works, in particular, with the
+/// parametric equations of parabolas
 pub use ffi::Parab;
 impl Parab {
     /// Creates an indefinite Parabola.
@@ -2380,6 +2868,31 @@ impl Parab {
         ffi::Parab_translated_pnt2(self, theP1, theP2)
     }
 }
+
+/// Describes a parabola in the plane (2D space).
+/// A parabola is defined by its focal length (that is, the
+/// distance between its focus and apex) and positioned in
+/// the plane with a coordinate system (a gp_Ax22d object) where:
+/// -   the origin of the coordinate system is on the apex of
+/// the parabola, and
+/// -   the "X Axis" of the coordinate system is the axis of
+/// symmetry; the parabola is on the positive side of this axis.
+/// This coordinate system is the "local coordinate system"
+/// of the parabola. Its orientation (direct or indirect sense)
+/// gives an implicit orientation to the parabola.
+/// In this coordinate system, the equation for the parabola is:
+/// @code
+/// Y**2 = (2*P) * X.
+/// @endcode
+/// where P, referred to as the parameter of the parabola, is
+/// the distance between the focus and the directrix (P is
+/// twice the focal length).
+/// See Also
+/// GCE2d_MakeParab2d which provides functions for
+/// more complex parabola constructions
+/// Geom2d_Parabola which provides additional functions
+/// for constructing parabolas and works, in particular, with
+/// the parametric equations of parabolas
 pub use ffi::Parab2d;
 impl Parab2d {
     /// Creates an indefinite parabola.
@@ -2525,6 +3038,28 @@ impl Parab2d {
         ffi::Parab2d_translated_pnt2d2(self, theP1, theP2)
     }
 }
+
+/// Describes a plane.
+/// A plane is positioned in space with a coordinate system
+/// (a gp_Ax3 object), such that the plane is defined by the
+/// origin, "X Direction" and "Y Direction" of this coordinate
+/// system, which is the "local coordinate system" of the
+/// plane. The "main Direction" of the coordinate system is a
+/// vector normal to the plane. It gives the plane an implicit
+/// orientation such that the plane is said to be "direct", if the
+/// coordinate system is right-handed, or "indirect" in the other case.
+/// Note: when a gp_Pln plane is converted into a
+/// Geom_Plane plane, some implicit properties of its local
+/// coordinate system are used explicitly:
+/// -   its origin defines the origin of the two parameters of
+/// the planar surface,
+/// -   its implicit orientation is also that of the Geom_Plane.
+/// See Also
+/// gce_MakePln which provides functions for more complex
+/// plane constructions
+/// Geom_Plane which provides additional functions for
+/// constructing planes and works, in particular, with the
+/// parametric equations of planes
 pub use ffi::Pln;
 impl Pln {
     /// Creates a plane coincident with OXY plane of the
@@ -2637,6 +3172,8 @@ impl Pln {
         ffi::Pln_translated_pnt2(self, theP1, theP2)
     }
 }
+
+/// Defines a 3D cartesian point.
 pub use ffi::Pnt;
 impl Pnt {
     /// Creates a point with zero coordinates.
@@ -2699,6 +3236,8 @@ impl Pnt {
         ffi::Pnt_translated_pnt2(self, theP1, theP2)
     }
 }
+
+/// Defines  a non-persistent 2D cartesian point.
 pub use ffi::Pnt2d;
 impl Pnt2d {
     /// Creates a point with zero coordinates.
@@ -2755,6 +3294,14 @@ impl Pnt2d {
         ffi::Pnt2d_translated_pnt2d2(self, theP1, theP2)
     }
 }
+
+/// Represents operation of rotation in 3d space as quaternion
+/// and implements operations with rotations basing on
+/// quaternion mathematics.
+///
+/// In addition, provides methods for conversion to and from other
+/// representations of rotation (3*3 matrix, vector and
+/// angle, Euler angles)
 pub use ffi::Quaternion;
 impl Quaternion {
     /// Creates an identity quaternion
@@ -2864,6 +3411,9 @@ impl Quaternion {
         ffi::Quaternion_multiply_vec(self, theVec)
     }
 }
+
+/// Class perform linear interpolation (approximate rotation interpolation),
+/// result quaternion nonunit, its length lay between. sqrt(2)/2  and 1.0
 pub use ffi::QuaternionNLerp;
 impl QuaternionNLerp {
     /// Empty constructor,
@@ -2897,6 +3447,9 @@ impl QuaternionNLerp {
         ffi::QuaternionNLerp_interpolate_quaternion2_real(theQStart, theQEnd, theT)
     }
 }
+
+/// Perform Spherical Linear Interpolation of the quaternions,
+/// return unit length quaternion.
 pub use ffi::QuaternionSLerp;
 impl QuaternionSLerp {
     /// Empty constructor,
@@ -2930,6 +3483,27 @@ impl QuaternionSLerp {
         ffi::QuaternionSLerp_interpolate_quaternion2_real(theQStart, theQEnd, theT)
     }
 }
+
+/// Describes a sphere.
+/// A sphere is defined by its radius and positioned in space
+/// with a coordinate system (a gp_Ax3 object). The origin of
+/// the coordinate system is the center of the sphere. This
+/// coordinate system is the "local coordinate system" of the sphere.
+/// Note: when a gp_Sphere sphere is converted into a
+/// Geom_SphericalSurface sphere, some implicit
+/// properties of its local coordinate system are used explicitly:
+/// -   its origin, "X Direction", "Y Direction" and "main
+/// Direction" are used directly to define the parametric
+/// directions on the sphere and the origin of the parameters,
+/// -   its implicit orientation (right-handed or left-handed)
+/// gives the orientation (direct, indirect) to the
+/// Geom_SphericalSurface sphere.
+/// See Also
+/// gce_MakeSphere which provides functions for more
+/// complex sphere constructions
+/// Geom_SphericalSurface which provides additional
+/// functions for constructing spheres and works, in
+/// particular, with the parametric equations of spheres.
 pub use ffi::Sphere;
 impl Sphere {
     /// Creates an indefinite sphere.
@@ -3014,6 +3588,39 @@ impl Sphere {
         ffi::Sphere_translated_pnt2(self, theP1, theP2)
     }
 }
+
+/// Describes a torus.
+/// A torus is defined by its major and minor radii and
+/// positioned in space with a coordinate system (a gp_Ax3
+/// object) as follows:
+/// -   The origin of the coordinate system is the center of the torus;
+/// -   The surface is obtained by rotating a circle of radius
+/// equal to the minor radius of the torus about the "main
+/// Direction" of the coordinate system. This circle is
+/// located in the plane defined by the origin, the "X
+/// Direction" and the "main Direction" of the coordinate
+/// system. It is centered on the "X Axis" of this coordinate
+/// system, and located at a distance, from the origin of
+/// this coordinate system, equal to the major radius of the   torus;
+/// -   The "X Direction" and "Y Direction" define the
+/// reference plane of the torus.
+/// The coordinate system described above is the "local
+/// coordinate system" of the torus.
+/// Note: when a gp_Torus torus is converted into a
+/// Geom_ToroidalSurface torus, some implicit properties
+/// of its local coordinate system are used explicitly:
+/// -   its origin, "X Direction", "Y Direction" and "main
+/// Direction" are used directly to define the parametric
+/// directions on the torus and the origin of the parameters,
+/// -   its implicit orientation (right-handed or left-handed)
+/// gives the orientation (direct, indirect) to the
+/// Geom_ToroidalSurface torus.
+/// See Also
+/// gce_MakeTorus which provides functions for more
+/// complex torus constructions
+/// Geom_ToroidalSurface which provides additional
+/// functions for constructing tori and works, in particular,
+/// with the parametric equations of tori.
 pub use ffi::Torus;
 impl Torus {
     /// creates an indefinite Torus.
@@ -3105,6 +3712,26 @@ impl Torus {
         ffi::Torus_translated_pnt2(self, theP1, theP2)
     }
 }
+
+/// Defines a non-persistent transformation in 3D space.
+/// The following transformations are implemented :
+/// . Translation, Rotation, Scale
+/// . Symmetry with respect to a point, a line, a plane.
+/// Complex transformations can be obtained by combining the
+/// previous elementary transformations using the method
+/// Multiply.
+/// The transformations can be represented as follow :
+/// @code
+/// V1   V2   V3    T       XYZ        XYZ
+/// | a11  a12  a13   a14 |   | x |      | x'|
+/// | a21  a22  a23   a24 |   | y |      | y'|
+/// | a31  a32  a33   a34 |   | z |   =  | z'|
+/// |  0    0    0     1  |   | 1 |      | 1 |
+/// @endcode
+/// where {V1, V2, V3} defines the vectorial part of the
+/// transformation and T defines the translation part of the
+/// transformation.
+/// This transformation never change the nature of the objects.
 pub use ffi::Trsf;
 impl Trsf {
     /// Returns the identity transformation.
@@ -3182,6 +3809,23 @@ impl Trsf {
         ffi::Trsf_powered(self, theN)
     }
 }
+
+/// Defines a non-persistent transformation in 2D space.
+/// The following transformations are implemented :
+/// - Translation, Rotation, Scale
+/// - Symmetry with respect to a point and a line.
+/// Complex transformations can be obtained by combining the
+/// previous elementary transformations using the method Multiply.
+/// The transformations can be represented as follow :
+/// @code
+/// V1   V2   T       XY        XY
+/// | a11  a12  a13 |   | x |     | x'|
+/// | a21  a22  a23 |   | y |     | y'|
+/// |  0    0    1  |   | 1 |     | 1 |
+/// @endcode
+/// where {V1, V2} defines the vectorial part of the transformation
+/// and T defines the translation part of the transformation.
+/// This transformation never change the nature of the objects.
 pub use ffi::Trsf2d;
 impl Trsf2d {
     /// Returns identity transformation.
@@ -3229,6 +3873,8 @@ impl Trsf2d {
         ffi::Trsf2d_powered(self, theN)
     }
 }
+
+/// Defines a non-persistent vector in 3D space.
 pub use ffi::Vec_ as Vec;
 impl Vec {
     /// Creates a zero vector.
@@ -3342,6 +3988,8 @@ impl Vec {
         ffi::Vec__transformed(self, theT)
     }
 }
+
+/// Defines a non-persistent vector in 2D space.
 pub use ffi::Vec2d;
 impl Vec2d {
     /// Creates a zero vector.
@@ -3444,6 +4092,7 @@ impl Vec2d {
         ffi::Vec2d_transformed(self, theT)
     }
 }
+
 pub use ffi::VectorWithNullMagnitude;
 impl VectorWithNullMagnitude {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -3488,6 +4137,13 @@ impl VectorWithNullMagnitude {
         ffi::VectorWithNullMagnitude_get_type_name()
     }
 }
+
+/// This class describes a cartesian coordinate entity in 2D
+/// space {X,Y}. This class is non persistent. This entity used
+/// for algebraic calculation. An XY can be transformed with a
+/// Trsf2d or a  GTrsf2d from package gp.
+/// It is used in vectorial computations or for holding this type
+/// of information in data structures.
 pub use ffi::XY;
 impl XY {
     /// Creates XY object with zero coordinates (0,0).
@@ -3565,6 +4221,13 @@ impl XY {
         ffi::XY_subtracted(self, theOther)
     }
 }
+
+/// This class describes a cartesian coordinate entity in
+/// 3D space {X,Y,Z}. This entity is used for algebraic
+/// calculation. This entity can be transformed
+/// with a "Trsf" or a  "GTrsf" from package "gp".
+/// It is used in vectorial computations or for holding this type
+/// of information in data structures.
 pub use ffi::XYZ;
 impl XYZ {
     /// Creates an XYZ object with zero coordinates (0,0,0)
@@ -3676,7 +4339,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== gp_Ax1 ========================
-        /// /// **Source:** `gp_Ax1.hxx` - `gp_Ax1`
+        /// **Source:** `gp_Ax1.hxx` - `gp_Ax1`
         ///
         /// Describes an axis in 3D space.
         /// An axis is defined by:
@@ -3692,13 +4355,13 @@ pub(crate) mod ffi {
         /// or to define a symmetry axis.
         #[cxx_name = "gp_Ax1"]
         type Ax1;
-        /// /// **Source:** `gp_Ax1.hxx` - `gp_Ax1::gp_Ax1()`
+        /// **Source:** `gp_Ax1.hxx` - `gp_Ax1::gp_Ax1()`
         ///
         /// Creates an axis object representing Z axis of
         /// the reference coordinate system.
         #[cxx_name = "gp_Ax1_ctor"]
         fn Ax1_ctor() -> UniquePtr<Ax1>;
-        /// /// **Source:** `gp_Ax1.hxx` - `gp_Ax1::gp_Ax1()`
+        /// **Source:** `gp_Ax1.hxx` - `gp_Ax1::gp_Ax1()`
         ///
         /// P is the location point and V is the direction of <me>.
         #[cxx_name = "gp_Ax1_ctor_pnt_dir"]
@@ -3830,7 +4493,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Ax1_to_owned(self_: &Ax1) -> UniquePtr<Ax1>;
         /// ======================== gp_Ax2 ========================
-        /// /// **Source:** `gp_Ax2.hxx` - `gp_Ax2`
+        /// **Source:** `gp_Ax2.hxx` - `gp_Ax2`
         ///
         /// Describes a right-handed coordinate system in 3D space.
         /// A coordinate system is defined by:
@@ -3862,13 +4525,13 @@ pub(crate) mod ffi {
         /// The "Z Axis" is also the "main Axis".
         #[cxx_name = "gp_Ax2"]
         type Ax2;
-        /// /// **Source:** `gp_Ax2.hxx` - `gp_Ax2::gp_Ax2()`
+        /// **Source:** `gp_Ax2.hxx` - `gp_Ax2::gp_Ax2()`
         ///
         /// Creates an object corresponding to the reference
         /// coordinate system (OXYZ).
         #[cxx_name = "gp_Ax2_ctor"]
         fn Ax2_ctor() -> UniquePtr<Ax2>;
-        /// /// **Source:** `gp_Ax2.hxx` - `gp_Ax2::gp_Ax2()`
+        /// **Source:** `gp_Ax2.hxx` - `gp_Ax2::gp_Ax2()`
         ///
         /// Creates an axis placement with an origin P such that:
         /// -   N is the Direction, and
@@ -3878,7 +4541,7 @@ pub(crate) mod ffi {
         /// Exception: raises ConstructionError if N and Vx are parallel (same or opposite orientation).
         #[cxx_name = "gp_Ax2_ctor_pnt_dir2"]
         fn Ax2_ctor_pnt_dir2(P: &Pnt, N: &Dir, Vx: &Dir) -> UniquePtr<Ax2>;
-        /// /// **Source:** `gp_Ax2.hxx` - `gp_Ax2::gp_Ax2()`
+        /// **Source:** `gp_Ax2.hxx` - `gp_Ax2::gp_Ax2()`
         ///
         /// Creates -   a coordinate system with an origin P, where V
         /// gives the "main Direction" (here, "X Direction" and "Y
@@ -4110,7 +4773,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Ax2_to_owned(self_: &Ax2) -> UniquePtr<Ax2>;
         /// ======================== gp_Ax22d ========================
-        /// /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d`
+        /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d`
         ///
         /// Describes a coordinate system in a plane (2D space).
         /// A coordinate system is defined by:
@@ -4131,13 +4794,13 @@ pub(crate) mod ffi {
         /// respectively, as their unit vectors.
         #[cxx_name = "gp_Ax22d"]
         type Ax22d;
-        /// /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d::gp_Ax22d()`
+        /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d::gp_Ax22d()`
         ///
         /// Creates an object representing the reference
         /// coordinate system (OXY).
         #[cxx_name = "gp_Ax22d_ctor"]
         fn Ax22d_ctor() -> UniquePtr<Ax22d>;
-        /// /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d::gp_Ax22d()`
+        /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d::gp_Ax22d()`
         ///
         /// Creates a coordinate system with origin theP and where:
         /// -   theVx is the "X Direction", and
@@ -4147,7 +4810,7 @@ pub(crate) mod ffi {
         /// Raises ConstructionError if theVx and theVy are parallel (same or opposite orientation).
         #[cxx_name = "gp_Ax22d_ctor_pnt2d_dir2d2"]
         fn Ax22d_ctor_pnt2d_dir2d2(theP: &Pnt2d, theVx: &Dir2d, theVy: &Dir2d) -> UniquePtr<Ax22d>;
-        /// /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d::gp_Ax22d()`
+        /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d::gp_Ax22d()`
         ///
         /// Creates -   a coordinate system with origin theP and "X Direction"
         /// theV, which is:
@@ -4159,7 +4822,7 @@ pub(crate) mod ffi {
             theV: &Dir2d,
             theIsSense: bool,
         ) -> UniquePtr<Ax22d>;
-        /// /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d::gp_Ax22d()`
+        /// **Source:** `gp_Ax22d.hxx` - `gp_Ax22d::gp_Ax22d()`
         ///
         /// Creates -   a coordinate system where its origin is the origin of
         /// theA and its "X Direction" is the unit vector of theA, which   is:
@@ -4284,7 +4947,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Ax22d_to_owned(self_: &Ax22d) -> UniquePtr<Ax22d>;
         /// ======================== gp_Ax2d ========================
-        /// /// **Source:** `gp_Ax2d.hxx` - `gp_Ax2d`
+        /// **Source:** `gp_Ax2d.hxx` - `gp_Ax2d`
         ///
         /// Describes an axis in the plane (2D space).
         /// An axis is defined by:
@@ -4306,12 +4969,12 @@ pub(crate) mod ffi {
         /// Note: to define a left-handed 2D coordinate system, use gp_Ax22d.
         #[cxx_name = "gp_Ax2d"]
         type Ax2d;
-        /// /// **Source:** `gp_Ax2d.hxx` - `gp_Ax2d::gp_Ax2d()`
+        /// **Source:** `gp_Ax2d.hxx` - `gp_Ax2d::gp_Ax2d()`
         ///
         /// Creates an axis object representing X axis of the reference co-ordinate system.
         #[cxx_name = "gp_Ax2d_ctor"]
         fn Ax2d_ctor() -> UniquePtr<Ax2d>;
-        /// /// **Source:** `gp_Ax2d.hxx` - `gp_Ax2d::gp_Ax2d()`
+        /// **Source:** `gp_Ax2d.hxx` - `gp_Ax2d::gp_Ax2d()`
         ///
         /// Creates an Ax2d.
         /// <theP> is the "Location" point of the axis placement
@@ -4417,7 +5080,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Ax2d_to_owned(self_: &Ax2d) -> UniquePtr<Ax2d>;
         /// ======================== gp_Ax3 ========================
-        /// /// **Source:** `gp_Ax3.hxx` - `gp_Ax3`
+        /// **Source:** `gp_Ax3.hxx` - `gp_Ax3`
         ///
         /// Describes a coordinate system in 3D space. Unlike a
         /// gp_Ax2 coordinate system, a gp_Ax3 can be
@@ -4455,19 +5118,19 @@ pub(crate) mod ffi {
         /// -   gp_Ax2 is used to define a coordinate system that must be always right-handed.
         #[cxx_name = "gp_Ax3"]
         type Ax3;
-        /// /// **Source:** `gp_Ax3.hxx` - `gp_Ax3::gp_Ax3()`
+        /// **Source:** `gp_Ax3.hxx` - `gp_Ax3::gp_Ax3()`
         ///
         /// Creates an object corresponding to the reference
         /// coordinate system (OXYZ).
         #[cxx_name = "gp_Ax3_ctor"]
         fn Ax3_ctor() -> UniquePtr<Ax3>;
-        /// /// **Source:** `gp_Ax3.hxx` - `gp_Ax3::gp_Ax3()`
+        /// **Source:** `gp_Ax3.hxx` - `gp_Ax3::gp_Ax3()`
         ///
         /// Creates  a  coordinate  system from a right-handed
         /// coordinate system.
         #[cxx_name = "gp_Ax3_ctor_ax2"]
         fn Ax3_ctor_ax2(theA: &Ax2) -> UniquePtr<Ax3>;
-        /// /// **Source:** `gp_Ax3.hxx` - `gp_Ax3::gp_Ax3()`
+        /// **Source:** `gp_Ax3.hxx` - `gp_Ax3::gp_Ax3()`
         ///
         /// Creates a  right handed axis placement with the
         /// "Location" point theP and  two directions, theN gives the
@@ -4475,7 +5138,7 @@ pub(crate) mod ffi {
         /// Raises ConstructionError if theN and theVx are parallel (same or opposite orientation).
         #[cxx_name = "gp_Ax3_ctor_pnt_dir2"]
         fn Ax3_ctor_pnt_dir2(theP: &Pnt, theN: &Dir, theVx: &Dir) -> UniquePtr<Ax3>;
-        /// /// **Source:** `gp_Ax3.hxx` - `gp_Ax3::gp_Ax3()`
+        /// **Source:** `gp_Ax3.hxx` - `gp_Ax3::gp_Ax3()`
         ///
         /// Creates an axis placement with the "Location" point <theP>
         /// and the normal direction <theV>.
@@ -4671,7 +5334,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Ax3_to_owned(self_: &Ax3) -> UniquePtr<Ax3>;
         /// ======================== gp_Circ ========================
-        /// /// **Source:** `gp_Circ.hxx` - `gp_Circ`
+        /// **Source:** `gp_Circ.hxx` - `gp_Circ`
         ///
         /// Describes a circle in 3D space.
         /// A circle is defined by its radius and positioned in space
@@ -4701,12 +5364,12 @@ pub(crate) mod ffi {
         /// parametric equations of circles
         #[cxx_name = "gp_Circ"]
         type Circ;
-        /// /// **Source:** `gp_Circ.hxx` - `gp_Circ::gp_Circ()`
+        /// **Source:** `gp_Circ.hxx` - `gp_Circ::gp_Circ()`
         ///
         /// Creates an indefinite circle.
         #[cxx_name = "gp_Circ_ctor"]
         fn Circ_ctor() -> UniquePtr<Circ>;
-        /// /// **Source:** `gp_Circ.hxx` - `gp_Circ::gp_Circ()`
+        /// **Source:** `gp_Circ.hxx` - `gp_Circ::gp_Circ()`
         ///
         /// A2 locates the circle and gives its orientation in 3D space.
         /// Warnings :
@@ -4833,7 +5496,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Circ_to_owned(self_: &Circ) -> UniquePtr<Circ>;
         /// ======================== gp_Circ2d ========================
-        /// /// **Source:** `gp_Circ2d.hxx` - `gp_Circ2d`
+        /// **Source:** `gp_Circ2d.hxx` - `gp_Circ2d`
         ///
         /// Describes a circle in the plane (2D space).
         /// A circle is defined by its radius and positioned in the
@@ -4861,12 +5524,12 @@ pub(crate) mod ffi {
         /// equations of circles in particular  gp_Ax22d
         #[cxx_name = "gp_Circ2d"]
         type Circ2d;
-        /// /// **Source:** `gp_Circ2d.hxx` - `gp_Circ2d::gp_Circ2d()`
+        /// **Source:** `gp_Circ2d.hxx` - `gp_Circ2d::gp_Circ2d()`
         ///
         /// creates an indefinite circle.
         #[cxx_name = "gp_Circ2d_ctor"]
         fn Circ2d_ctor() -> UniquePtr<Circ2d>;
-        /// /// **Source:** `gp_Circ2d.hxx` - `gp_Circ2d::gp_Circ2d()`
+        /// **Source:** `gp_Circ2d.hxx` - `gp_Circ2d::gp_Circ2d()`
         ///
         /// The location point of theXAxis is the center of the circle.
         /// Warnings :
@@ -4878,7 +5541,7 @@ pub(crate) mod ffi {
             theRadius: f64,
             theIsSense: bool,
         ) -> UniquePtr<Circ2d>;
-        /// /// **Source:** `gp_Circ2d.hxx` - `gp_Circ2d::gp_Circ2d()`
+        /// **Source:** `gp_Circ2d.hxx` - `gp_Circ2d::gp_Circ2d()`
         ///
         /// theAxis defines the Xaxis and Yaxis of the circle which defines
         /// the origin and the sense of parametrization.
@@ -5025,7 +5688,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Circ2d_to_owned(self_: &Circ2d) -> UniquePtr<Circ2d>;
         /// ======================== gp_Cone ========================
-        /// /// **Source:** `gp_Cone.hxx` - `gp_Cone`
+        /// **Source:** `gp_Cone.hxx` - `gp_Cone`
         ///
         /// Defines an infinite conical surface.
         /// A cone is defined by its half-angle (can be negative) at the apex and
@@ -5058,12 +5721,12 @@ pub(crate) mod ffi {
         /// with the parametric equations of cones gp_Ax3
         #[cxx_name = "gp_Cone"]
         type Cone;
-        /// /// **Source:** `gp_Cone.hxx` - `gp_Cone::gp_Cone()`
+        /// **Source:** `gp_Cone.hxx` - `gp_Cone::gp_Cone()`
         ///
         /// Creates an indefinite Cone.
         #[cxx_name = "gp_Cone_ctor"]
         fn Cone_ctor() -> UniquePtr<Cone>;
-        /// /// **Source:** `gp_Cone.hxx` - `gp_Cone::gp_Cone()`
+        /// **Source:** `gp_Cone.hxx` - `gp_Cone::gp_Cone()`
         ///
         /// Creates an infinite conical surface. theA3 locates the cone
         /// in the space and defines the reference plane of the surface.
@@ -5207,7 +5870,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Cone_to_owned(self_: &Cone) -> UniquePtr<Cone>;
         /// ======================== gp_Cylinder ========================
-        /// /// **Source:** `gp_Cylinder.hxx` - `gp_Cylinder`
+        /// **Source:** `gp_Cylinder.hxx` - `gp_Cylinder`
         ///
         /// Describes an infinite cylindrical surface.
         /// A cylinder is defined by its radius and positioned in space
@@ -5231,12 +5894,12 @@ pub(crate) mod ffi {
         /// particular, with the parametric equations of cylinders gp_Ax3
         #[cxx_name = "gp_Cylinder"]
         type Cylinder;
-        /// /// **Source:** `gp_Cylinder.hxx` - `gp_Cylinder::gp_Cylinder()`
+        /// **Source:** `gp_Cylinder.hxx` - `gp_Cylinder::gp_Cylinder()`
         ///
         /// Creates a indefinite cylinder.
         #[cxx_name = "gp_Cylinder_ctor"]
         fn Cylinder_ctor() -> UniquePtr<Cylinder>;
-        /// /// **Source:** `gp_Cylinder.hxx` - `gp_Cylinder::gp_Cylinder()`
+        /// **Source:** `gp_Cylinder.hxx` - `gp_Cylinder::gp_Cylinder()`
         ///
         /// Creates a cylinder of radius Radius, whose axis is the "main
         /// Axis" of theA3. theA3 is the local coordinate system of the cylinder.   Raises
@@ -5362,7 +6025,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Cylinder_to_owned(self_: &Cylinder) -> UniquePtr<Cylinder>;
         /// ======================== gp_Dir ========================
-        /// /// **Source:** `gp_Dir.hxx` - `gp_Dir`
+        /// **Source:** `gp_Dir.hxx` - `gp_Dir`
         ///
         /// Describes a unit vector in 3D space. This unit vector is also called "Direction".
         /// See Also
@@ -5373,24 +6036,24 @@ pub(crate) mod ffi {
         /// parametric equations of unit vectors.
         #[cxx_name = "gp_Dir"]
         type Dir;
-        /// /// **Source:** `gp_Dir.hxx` - `gp_Dir::gp_Dir()`
+        /// **Source:** `gp_Dir.hxx` - `gp_Dir::gp_Dir()`
         ///
         /// Creates a direction corresponding to X axis.
         #[cxx_name = "gp_Dir_ctor"]
         fn Dir_ctor() -> UniquePtr<Dir>;
-        /// /// **Source:** `gp_Dir.hxx` - `gp_Dir::gp_Dir()`
+        /// **Source:** `gp_Dir.hxx` - `gp_Dir::gp_Dir()`
         ///
         /// Normalizes the vector theV and creates a direction. Raises ConstructionError if
         /// theV.Magnitude() <= Resolution.
         #[cxx_name = "gp_Dir_ctor_vec"]
         fn Dir_ctor_vec(theV: &Vec_) -> UniquePtr<Dir>;
-        /// /// **Source:** `gp_Dir.hxx` - `gp_Dir::gp_Dir()`
+        /// **Source:** `gp_Dir.hxx` - `gp_Dir::gp_Dir()`
         ///
         /// Creates a direction from a triplet of coordinates. Raises ConstructionError if
         /// theCoord.Modulus() <= Resolution from gp.
         #[cxx_name = "gp_Dir_ctor_xyz"]
         fn Dir_ctor_xyz(theCoord: &XYZ) -> UniquePtr<Dir>;
-        /// /// **Source:** `gp_Dir.hxx` - `gp_Dir::gp_Dir()`
+        /// **Source:** `gp_Dir.hxx` - `gp_Dir::gp_Dir()`
         ///
         /// Creates a direction with its 3 cartesian coordinates. Raises ConstructionError if
         /// Sqrt(theXv*theXv + theYv*theYv + theZv*theZv) <= Resolution Modification of the direction's
@@ -5573,7 +6236,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Dir_to_owned(self_: &Dir) -> UniquePtr<Dir>;
         /// ======================== gp_Dir2d ========================
-        /// /// **Source:** `gp_Dir2d.hxx` - `gp_Dir2d`
+        /// **Source:** `gp_Dir2d.hxx` - `gp_Dir2d`
         ///
         /// Describes a unit vector in the plane (2D space). This unit
         /// vector is also called "Direction".
@@ -5585,24 +6248,24 @@ pub(crate) mod ffi {
         /// the parametric equations of unit vectors
         #[cxx_name = "gp_Dir2d"]
         type Dir2d;
-        /// /// **Source:** `gp_Dir2d.hxx` - `gp_Dir2d::gp_Dir2d()`
+        /// **Source:** `gp_Dir2d.hxx` - `gp_Dir2d::gp_Dir2d()`
         ///
         /// Creates a direction corresponding to X axis.
         #[cxx_name = "gp_Dir2d_ctor"]
         fn Dir2d_ctor() -> UniquePtr<Dir2d>;
-        /// /// **Source:** `gp_Dir2d.hxx` - `gp_Dir2d::gp_Dir2d()`
+        /// **Source:** `gp_Dir2d.hxx` - `gp_Dir2d::gp_Dir2d()`
         ///
         /// Normalizes the vector theV and creates a Direction. Raises ConstructionError if
         /// theV.Magnitude() <= Resolution from gp.
         #[cxx_name = "gp_Dir2d_ctor_vec2d"]
         fn Dir2d_ctor_vec2d(theV: &Vec2d) -> UniquePtr<Dir2d>;
-        /// /// **Source:** `gp_Dir2d.hxx` - `gp_Dir2d::gp_Dir2d()`
+        /// **Source:** `gp_Dir2d.hxx` - `gp_Dir2d::gp_Dir2d()`
         ///
         /// Creates a Direction from a doublet of coordinates. Raises ConstructionError if
         /// theCoord.Modulus() <= Resolution from gp.
         #[cxx_name = "gp_Dir2d_ctor_xy"]
         fn Dir2d_ctor_xy(theCoord: &XY) -> UniquePtr<Dir2d>;
-        /// /// **Source:** `gp_Dir2d.hxx` - `gp_Dir2d::gp_Dir2d()`
+        /// **Source:** `gp_Dir2d.hxx` - `gp_Dir2d::gp_Dir2d()`
         ///
         /// Creates a Direction with its 2 cartesian coordinates. Raises ConstructionError if
         /// Sqrt(theXv*theXv + theYv*theYv) <= Resolution from gp.
@@ -5774,7 +6437,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Dir2d_to_owned(self_: &Dir2d) -> UniquePtr<Dir2d>;
         /// ======================== gp_Elips ========================
-        /// /// **Source:** `gp_Elips.hxx` - `gp_Elips`
+        /// **Source:** `gp_Elips.hxx` - `gp_Elips`
         ///
         /// Describes an ellipse in 3D space.
         /// An ellipse is defined by its major and minor radii and
@@ -5803,12 +6466,12 @@ pub(crate) mod ffi {
         /// parametric equations of ellipses
         #[cxx_name = "gp_Elips"]
         type Elips;
-        /// /// **Source:** `gp_Elips.hxx` - `gp_Elips::gp_Elips()`
+        /// **Source:** `gp_Elips.hxx` - `gp_Elips::gp_Elips()`
         ///
         /// Creates an indefinite ellipse.
         #[cxx_name = "gp_Elips_ctor"]
         fn Elips_ctor() -> UniquePtr<Elips>;
-        /// /// **Source:** `gp_Elips.hxx` - `gp_Elips::gp_Elips()`
+        /// **Source:** `gp_Elips.hxx` - `gp_Elips::gp_Elips()`
         ///
         /// The major radius of the ellipse is on the "XAxis" and the
         /// minor radius is on the "YAxis" of the ellipse. The "XAxis"
@@ -5978,7 +6641,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Elips_to_owned(self_: &Elips) -> UniquePtr<Elips>;
         /// ======================== gp_Elips2d ========================
-        /// /// **Source:** `gp_Elips2d.hxx` - `gp_Elips2d`
+        /// **Source:** `gp_Elips2d.hxx` - `gp_Elips2d`
         ///
         /// Describes an ellipse in the plane (2D space).
         /// An ellipse is defined by its major and minor radii and
@@ -6002,12 +6665,12 @@ pub(crate) mod ffi {
         /// parametric equations of ellipses
         #[cxx_name = "gp_Elips2d"]
         type Elips2d;
-        /// /// **Source:** `gp_Elips2d.hxx` - `gp_Elips2d::gp_Elips2d()`
+        /// **Source:** `gp_Elips2d.hxx` - `gp_Elips2d::gp_Elips2d()`
         ///
         /// Creates an indefinite ellipse.
         #[cxx_name = "gp_Elips2d_ctor"]
         fn Elips2d_ctor() -> UniquePtr<Elips2d>;
-        /// /// **Source:** `gp_Elips2d.hxx` - `gp_Elips2d::gp_Elips2d()`
+        /// **Source:** `gp_Elips2d.hxx` - `gp_Elips2d::gp_Elips2d()`
         ///
         /// Creates an ellipse with the major axis, the major and the
         /// minor radius. The location of the theMajorAxis is the center
@@ -6024,7 +6687,7 @@ pub(crate) mod ffi {
             theMinorRadius: f64,
             theIsSense: bool,
         ) -> UniquePtr<Elips2d>;
-        /// /// **Source:** `gp_Elips2d.hxx` - `gp_Elips2d::gp_Elips2d()`
+        /// **Source:** `gp_Elips2d.hxx` - `gp_Elips2d::gp_Elips2d()`
         ///
         /// Creates an ellipse with radii MajorRadius and
         /// MinorRadius, positioned in the plane by coordinate system theA where:
@@ -6206,7 +6869,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Elips2d_to_owned(self_: &Elips2d) -> UniquePtr<Elips2d>;
         /// ======================== gp_GTrsf ========================
-        /// /// **Source:** `gp_GTrsf.hxx` - `gp_GTrsf`
+        /// **Source:** `gp_GTrsf.hxx` - `gp_GTrsf`
         ///
         /// Defines a non-persistent transformation in 3D space.
         /// This transformation is a general transformation.
@@ -6235,19 +6898,19 @@ pub(crate) mod ffi {
         /// as objects of this class respect the nature of geometric objects.
         #[cxx_name = "gp_GTrsf"]
         type GTrsf;
-        /// /// **Source:** `gp_GTrsf.hxx` - `gp_GTrsf::gp_GTrsf()`
+        /// **Source:** `gp_GTrsf.hxx` - `gp_GTrsf::gp_GTrsf()`
         ///
         /// Returns the Identity transformation.
         #[cxx_name = "gp_GTrsf_ctor"]
         fn GTrsf_ctor() -> UniquePtr<GTrsf>;
-        /// /// **Source:** `gp_GTrsf.hxx` - `gp_GTrsf::gp_GTrsf()`
+        /// **Source:** `gp_GTrsf.hxx` - `gp_GTrsf::gp_GTrsf()`
         ///
         /// Converts the gp_Trsf transformation theT into a
         /// general transformation, i.e. Returns a GTrsf with
         /// the same matrix of coefficients as the Trsf theT.
         #[cxx_name = "gp_GTrsf_ctor_trsf"]
         fn GTrsf_ctor_trsf(theT: &Trsf) -> UniquePtr<GTrsf>;
-        /// /// **Source:** `gp_GTrsf.hxx` - `gp_GTrsf::gp_GTrsf()`
+        /// **Source:** `gp_GTrsf.hxx` - `gp_GTrsf::gp_GTrsf()`
         ///
         /// Creates a transformation based on the matrix theM and the
         /// vector theV where theM defines the vectorial part of
@@ -6384,7 +7047,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn GTrsf_to_owned(self_: &GTrsf) -> UniquePtr<GTrsf>;
         /// ======================== gp_GTrsf2d ========================
-        /// /// **Source:** `gp_GTrsf2d.hxx` - `gp_GTrsf2d`
+        /// **Source:** `gp_GTrsf2d.hxx` - `gp_GTrsf2d`
         ///
         /// Defines a non persistent transformation in 2D space.
         /// This transformation is a general transformation.
@@ -6412,18 +7075,18 @@ pub(crate) mod ffi {
         /// as objects of this class respect the nature of geometric objects.
         #[cxx_name = "gp_GTrsf2d"]
         type GTrsf2d;
-        /// /// **Source:** `gp_GTrsf2d.hxx` - `gp_GTrsf2d::gp_GTrsf2d()`
+        /// **Source:** `gp_GTrsf2d.hxx` - `gp_GTrsf2d::gp_GTrsf2d()`
         ///
         /// returns identity transformation.
         #[cxx_name = "gp_GTrsf2d_ctor"]
         fn GTrsf2d_ctor() -> UniquePtr<GTrsf2d>;
-        /// /// **Source:** `gp_GTrsf2d.hxx` - `gp_GTrsf2d::gp_GTrsf2d()`
+        /// **Source:** `gp_GTrsf2d.hxx` - `gp_GTrsf2d::gp_GTrsf2d()`
         ///
         /// Converts the gp_Trsf2d transformation theT into a
         /// general transformation.
         #[cxx_name = "gp_GTrsf2d_ctor_trsf2d"]
         fn GTrsf2d_ctor_trsf2d(theT: &Trsf2d) -> UniquePtr<GTrsf2d>;
-        /// /// **Source:** `gp_GTrsf2d.hxx` - `gp_GTrsf2d::gp_GTrsf2d()`
+        /// **Source:** `gp_GTrsf2d.hxx` - `gp_GTrsf2d::gp_GTrsf2d()`
         ///
         /// Creates   a transformation based on the matrix theM and the
         /// vector theV where theM defines the vectorial part of the
@@ -6543,7 +7206,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn GTrsf2d_to_owned(self_: &GTrsf2d) -> UniquePtr<GTrsf2d>;
         /// ======================== gp_Hypr ========================
-        /// /// **Source:** `gp_Hypr.hxx` - `gp_Hypr`
+        /// **Source:** `gp_Hypr.hxx` - `gp_Hypr`
         ///
         /// Describes a branch of a hyperbola in 3D space.
         /// A hyperbola is defined by its major and minor radii and
@@ -6593,12 +7256,12 @@ pub(crate) mod ffi {
         /// parametric equations of hyperbolas
         #[cxx_name = "gp_Hypr"]
         type Hypr;
-        /// /// **Source:** `gp_Hypr.hxx` - `gp_Hypr::gp_Hypr()`
+        /// **Source:** `gp_Hypr.hxx` - `gp_Hypr::gp_Hypr()`
         ///
         /// Creates of an indefinite hyperbola.
         #[cxx_name = "gp_Hypr_ctor"]
         fn Hypr_ctor() -> UniquePtr<Hypr>;
-        /// /// **Source:** `gp_Hypr.hxx` - `gp_Hypr::gp_Hypr()`
+        /// **Source:** `gp_Hypr.hxx` - `gp_Hypr::gp_Hypr()`
         ///
         /// Creates a hyperbola with radius theMajorRadius and
         /// theMinorRadius, positioned in the space by the
@@ -6800,7 +7463,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Hypr_to_owned(self_: &Hypr) -> UniquePtr<Hypr>;
         /// ======================== gp_Hypr2d ========================
-        /// /// **Source:** `gp_Hypr2d.hxx` - `gp_Hypr2d`
+        /// **Source:** `gp_Hypr2d.hxx` - `gp_Hypr2d`
         ///
         /// Describes a branch of a hyperbola in the plane (2D space).
         /// A hyperbola is defined by its major and minor radii, and
@@ -6844,12 +7507,12 @@ pub(crate) mod ffi {
         /// the parametric equations of hyperbolas
         #[cxx_name = "gp_Hypr2d"]
         type Hypr2d;
-        /// /// **Source:** `gp_Hypr2d.hxx` - `gp_Hypr2d::gp_Hypr2d()`
+        /// **Source:** `gp_Hypr2d.hxx` - `gp_Hypr2d::gp_Hypr2d()`
         ///
         /// Creates of an indefinite hyperbola.
         #[cxx_name = "gp_Hypr2d_ctor"]
         fn Hypr2d_ctor() -> UniquePtr<Hypr2d>;
-        /// /// **Source:** `gp_Hypr2d.hxx` - `gp_Hypr2d::gp_Hypr2d()`
+        /// **Source:** `gp_Hypr2d.hxx` - `gp_Hypr2d::gp_Hypr2d()`
         ///
         /// Creates a hyperbola with radii theMajorRadius and
         /// theMinorRadius, centered on the origin of theMajorAxis
@@ -6868,7 +7531,7 @@ pub(crate) mod ffi {
             theMinorRadius: f64,
             theIsSense: bool,
         ) -> UniquePtr<Hypr2d>;
-        /// /// **Source:** `gp_Hypr2d.hxx` - `gp_Hypr2d::gp_Hypr2d()`
+        /// **Source:** `gp_Hypr2d.hxx` - `gp_Hypr2d::gp_Hypr2d()`
         ///
         /// a hyperbola with radii theMajorRadius and
         /// theMinorRadius, positioned in the plane by coordinate system theA where:
@@ -7093,7 +7756,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Hypr2d_to_owned(self_: &Hypr2d) -> UniquePtr<Hypr2d>;
         /// ======================== gp_Lin ========================
-        /// /// **Source:** `gp_Lin.hxx` - `gp_Lin`
+        /// **Source:** `gp_Lin.hxx` - `gp_Lin`
         ///
         /// Describes a line in 3D space.
         /// A line is positioned in space with an axis (a gp_Ax1
@@ -7111,18 +7774,18 @@ pub(crate) mod ffi {
         /// parametric equations of lines
         #[cxx_name = "gp_Lin"]
         type Lin;
-        /// /// **Source:** `gp_Lin.hxx` - `gp_Lin::gp_Lin()`
+        /// **Source:** `gp_Lin.hxx` - `gp_Lin::gp_Lin()`
         ///
         /// Creates a Line corresponding to Z axis of the
         /// reference coordinate system.
         #[cxx_name = "gp_Lin_ctor"]
         fn Lin_ctor() -> UniquePtr<Lin>;
-        /// /// **Source:** `gp_Lin.hxx` - `gp_Lin::gp_Lin()`
+        /// **Source:** `gp_Lin.hxx` - `gp_Lin::gp_Lin()`
         ///
         /// Creates a line defined by axis theA1.
         #[cxx_name = "gp_Lin_ctor_ax1"]
         fn Lin_ctor_ax1(theA1: &Ax1) -> UniquePtr<Lin>;
-        /// /// **Source:** `gp_Lin.hxx` - `gp_Lin::gp_Lin()`
+        /// **Source:** `gp_Lin.hxx` - `gp_Lin::gp_Lin()`
         ///
         /// Creates a line passing through point theP and parallel to
         /// vector theV (theP and theV are, respectively, the origin and
@@ -7240,7 +7903,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Lin_to_owned(self_: &Lin) -> UniquePtr<Lin>;
         /// ======================== gp_Lin2d ========================
-        /// /// **Source:** `gp_Lin2d.hxx` - `gp_Lin2d`
+        /// **Source:** `gp_Lin2d.hxx` - `gp_Lin2d`
         ///
         /// Describes a line in 2D space.
         /// A line is positioned in the plane with an axis (a gp_Ax2d
@@ -7262,24 +7925,24 @@ pub(crate) mod ffi {
         /// parametric equations of lines
         #[cxx_name = "gp_Lin2d"]
         type Lin2d;
-        /// /// **Source:** `gp_Lin2d.hxx` - `gp_Lin2d::gp_Lin2d()`
+        /// **Source:** `gp_Lin2d.hxx` - `gp_Lin2d::gp_Lin2d()`
         ///
         /// Creates a Line corresponding to X axis of the
         /// reference coordinate system.
         #[cxx_name = "gp_Lin2d_ctor"]
         fn Lin2d_ctor() -> UniquePtr<Lin2d>;
-        /// /// **Source:** `gp_Lin2d.hxx` - `gp_Lin2d::gp_Lin2d()`
+        /// **Source:** `gp_Lin2d.hxx` - `gp_Lin2d::gp_Lin2d()`
         ///
         /// Creates a line located with theA.
         #[cxx_name = "gp_Lin2d_ctor_ax2d"]
         fn Lin2d_ctor_ax2d(theA: &Ax2d) -> UniquePtr<Lin2d>;
-        /// /// **Source:** `gp_Lin2d.hxx` - `gp_Lin2d::gp_Lin2d()`
+        /// **Source:** `gp_Lin2d.hxx` - `gp_Lin2d::gp_Lin2d()`
         ///
         /// <theP> is the location point (origin) of the line and
         /// <theV> is the direction of the line.
         #[cxx_name = "gp_Lin2d_ctor_pnt2d_dir2d"]
         fn Lin2d_ctor_pnt2d_dir2d(theP: &Pnt2d, theV: &Dir2d) -> UniquePtr<Lin2d>;
-        /// /// **Source:** `gp_Lin2d.hxx` - `gp_Lin2d::gp_Lin2d()`
+        /// **Source:** `gp_Lin2d.hxx` - `gp_Lin2d::gp_Lin2d()`
         ///
         /// Creates the line from the equation theA*X + theB*Y + theC = 0.0 Raises ConstructionError if
         /// Sqrt(theA*theA + theB*theB) <= Resolution from gp. Raised if Sqrt(theA*theA + theB*theB) <=
@@ -7391,18 +8054,18 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Lin2d_to_owned(self_: &Lin2d) -> UniquePtr<Lin2d>;
         /// ======================== gp_Mat ========================
-        /// /// **Source:** `gp_Mat.hxx` - `gp_Mat`
+        /// **Source:** `gp_Mat.hxx` - `gp_Mat`
         ///
         /// Describes a three column, three row matrix.
         /// This sort of object is used in various vectorial or matrix computations.
         #[cxx_name = "gp_Mat"]
         type Mat;
-        /// /// **Source:** `gp_Mat.hxx` - `gp_Mat::gp_Mat()`
+        /// **Source:** `gp_Mat.hxx` - `gp_Mat::gp_Mat()`
         ///
         /// creates  a matrix with null coefficients.
         #[cxx_name = "gp_Mat_ctor"]
         fn Mat_ctor() -> UniquePtr<Mat>;
-        /// /// **Source:** `gp_Mat.hxx` - `gp_Mat::gp_Mat()`
+        /// **Source:** `gp_Mat.hxx` - `gp_Mat::gp_Mat()`
         #[cxx_name = "gp_Mat_ctor_real9"]
         fn Mat_ctor_real9(
             theA11: f64,
@@ -7415,7 +8078,7 @@ pub(crate) mod ffi {
             theA32: f64,
             theA33: f64,
         ) -> UniquePtr<Mat>;
-        /// /// **Source:** `gp_Mat.hxx` - `gp_Mat::gp_Mat()`
+        /// **Source:** `gp_Mat.hxx` - `gp_Mat::gp_Mat()`
         ///
         /// Creates a matrix.
         /// theCol1, theCol2, theCol3 are the 3 columns of the matrix.
@@ -7576,18 +8239,18 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Mat_to_owned(self_: &Mat) -> UniquePtr<Mat>;
         /// ======================== gp_Mat2d ========================
-        /// /// **Source:** `gp_Mat2d.hxx` - `gp_Mat2d`
+        /// **Source:** `gp_Mat2d.hxx` - `gp_Mat2d`
         ///
         /// Describes a two column, two row matrix.
         /// This sort of object is used in various vectorial or matrix computations.
         #[cxx_name = "gp_Mat2d"]
         type Mat2d;
-        /// /// **Source:** `gp_Mat2d.hxx` - `gp_Mat2d::gp_Mat2d()`
+        /// **Source:** `gp_Mat2d.hxx` - `gp_Mat2d::gp_Mat2d()`
         ///
         /// Creates  a matrix with null coefficients.
         #[cxx_name = "gp_Mat2d_ctor"]
         fn Mat2d_ctor() -> UniquePtr<Mat2d>;
-        /// /// **Source:** `gp_Mat2d.hxx` - `gp_Mat2d::gp_Mat2d()`
+        /// **Source:** `gp_Mat2d.hxx` - `gp_Mat2d::gp_Mat2d()`
         ///
         /// theCol1, theCol2 are the 2 columns of the matrix.
         #[cxx_name = "gp_Mat2d_ctor_xy2"]
@@ -7727,7 +8390,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Mat2d_to_owned(self_: &Mat2d) -> UniquePtr<Mat2d>;
         /// ======================== gp_Parab ========================
-        /// /// **Source:** `gp_Parab.hxx` - `gp_Parab`
+        /// **Source:** `gp_Parab.hxx` - `gp_Parab`
         ///
         /// Describes a parabola in 3D space.
         /// A parabola is defined by its focal length (that is, the
@@ -7758,12 +8421,12 @@ pub(crate) mod ffi {
         /// parametric equations of parabolas
         #[cxx_name = "gp_Parab"]
         type Parab;
-        /// /// **Source:** `gp_Parab.hxx` - `gp_Parab::gp_Parab()`
+        /// **Source:** `gp_Parab.hxx` - `gp_Parab::gp_Parab()`
         ///
         /// Creates an indefinite Parabola.
         #[cxx_name = "gp_Parab_ctor"]
         fn Parab_ctor() -> UniquePtr<Parab>;
-        /// /// **Source:** `gp_Parab.hxx` - `gp_Parab::gp_Parab()`
+        /// **Source:** `gp_Parab.hxx` - `gp_Parab::gp_Parab()`
         ///
         /// Creates a parabola with its local coordinate system "theA2"
         /// and it's focal length "Focal".
@@ -7775,7 +8438,7 @@ pub(crate) mod ffi {
         /// Raised if theFocal < 0.0
         #[cxx_name = "gp_Parab_ctor_ax2_real"]
         fn Parab_ctor_ax2_real(theA2: &Ax2, theFocal: f64) -> UniquePtr<Parab>;
-        /// /// **Source:** `gp_Parab.hxx` - `gp_Parab::gp_Parab()`
+        /// **Source:** `gp_Parab.hxx` - `gp_Parab::gp_Parab()`
         ///
         /// theD is the directrix of the parabola and theF the focus point.
         /// The symmetry axis (XAxis) of the parabola is normal to the
@@ -7903,7 +8566,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Parab_to_owned(self_: &Parab) -> UniquePtr<Parab>;
         /// ======================== gp_Parab2d ========================
-        /// /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d`
+        /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d`
         ///
         /// Describes a parabola in the plane (2D space).
         /// A parabola is defined by its focal length (that is, the
@@ -7931,12 +8594,12 @@ pub(crate) mod ffi {
         /// the parametric equations of parabolas
         #[cxx_name = "gp_Parab2d"]
         type Parab2d;
-        /// /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d::gp_Parab2d()`
+        /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d::gp_Parab2d()`
         ///
         /// Creates an indefinite parabola.
         #[cxx_name = "gp_Parab2d_ctor"]
         fn Parab2d_ctor() -> UniquePtr<Parab2d>;
-        /// /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d::gp_Parab2d()`
+        /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d::gp_Parab2d()`
         ///
         /// Creates a parabola with its vertex point, its axis of symmetry
         /// ("XAxis") and its focal length.
@@ -7952,7 +8615,7 @@ pub(crate) mod ffi {
             theFocalLength: f64,
             theSense: bool,
         ) -> UniquePtr<Parab2d>;
-        /// /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d::gp_Parab2d()`
+        /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d::gp_Parab2d()`
         ///
         /// Creates a parabola with its vertex point, its axis of symmetry
         /// ("XAxis"), correspond Y-axis and its focal length.
@@ -7961,7 +8624,7 @@ pub(crate) mod ffi {
         /// Raises ConstructionError if Focal < 0.0
         #[cxx_name = "gp_Parab2d_ctor_ax22d_real"]
         fn Parab2d_ctor_ax22d_real(theAxes: &Ax22d, theFocalLength: f64) -> UniquePtr<Parab2d>;
-        /// /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d::gp_Parab2d()`
+        /// **Source:** `gp_Parab2d.hxx` - `gp_Parab2d::gp_Parab2d()`
         ///
         /// Creates a parabola with the directrix and the focus point.
         /// Y-axis of the parabola (in User Coordinate System - UCS) is
@@ -8110,7 +8773,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Parab2d_to_owned(self_: &Parab2d) -> UniquePtr<Parab2d>;
         /// ======================== gp_Pln ========================
-        /// /// **Source:** `gp_Pln.hxx` - `gp_Pln`
+        /// **Source:** `gp_Pln.hxx` - `gp_Pln`
         ///
         /// Describes a plane.
         /// A plane is positioned in space with a coordinate system
@@ -8135,13 +8798,13 @@ pub(crate) mod ffi {
         /// parametric equations of planes
         #[cxx_name = "gp_Pln"]
         type Pln;
-        /// /// **Source:** `gp_Pln.hxx` - `gp_Pln::gp_Pln()`
+        /// **Source:** `gp_Pln.hxx` - `gp_Pln::gp_Pln()`
         ///
         /// Creates a plane coincident with OXY plane of the
         /// reference coordinate system.
         #[cxx_name = "gp_Pln_ctor"]
         fn Pln_ctor() -> UniquePtr<Pln>;
-        /// /// **Source:** `gp_Pln.hxx` - `gp_Pln::gp_Pln()`
+        /// **Source:** `gp_Pln.hxx` - `gp_Pln::gp_Pln()`
         ///
         /// The coordinate system of the plane is defined with the axis
         /// placement theA3.
@@ -8151,13 +8814,13 @@ pub(crate) mod ffi {
         /// the "YAxis" of the plane used to parametrize the plane.
         #[cxx_name = "gp_Pln_ctor_ax3"]
         fn Pln_ctor_ax3(theA3: &Ax3) -> UniquePtr<Pln>;
-        /// /// **Source:** `gp_Pln.hxx` - `gp_Pln::gp_Pln()`
+        /// **Source:** `gp_Pln.hxx` - `gp_Pln::gp_Pln()`
         ///
         /// Creates a plane with the  "Location" point <theP>
         /// and the normal direction <theV>.
         #[cxx_name = "gp_Pln_ctor_pnt_dir"]
         fn Pln_ctor_pnt_dir(theP: &Pnt, theV: &Dir) -> UniquePtr<Pln>;
-        /// /// **Source:** `gp_Pln.hxx` - `gp_Pln::gp_Pln()`
+        /// **Source:** `gp_Pln.hxx` - `gp_Pln::gp_Pln()`
         ///
         /// Creates a plane from its cartesian equation :
         /// @code
@@ -8321,22 +8984,22 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Pln_to_owned(self_: &Pln) -> UniquePtr<Pln>;
         /// ======================== gp_Pnt ========================
-        /// /// **Source:** `gp_Pnt.hxx` - `gp_Pnt`
+        /// **Source:** `gp_Pnt.hxx` - `gp_Pnt`
         ///
         /// Defines a 3D cartesian point.
         #[cxx_name = "gp_Pnt"]
         type Pnt;
-        /// /// **Source:** `gp_Pnt.hxx` - `gp_Pnt::gp_Pnt()`
+        /// **Source:** `gp_Pnt.hxx` - `gp_Pnt::gp_Pnt()`
         ///
         /// Creates a point with zero coordinates.
         #[cxx_name = "gp_Pnt_ctor"]
         fn Pnt_ctor() -> UniquePtr<Pnt>;
-        /// /// **Source:** `gp_Pnt.hxx` - `gp_Pnt::gp_Pnt()`
+        /// **Source:** `gp_Pnt.hxx` - `gp_Pnt::gp_Pnt()`
         ///
         /// Creates a point from a XYZ object.
         #[cxx_name = "gp_Pnt_ctor_xyz"]
         fn Pnt_ctor_xyz(theCoord: &XYZ) -> UniquePtr<Pnt>;
-        /// /// **Source:** `gp_Pnt.hxx` - `gp_Pnt::gp_Pnt()`
+        /// **Source:** `gp_Pnt.hxx` - `gp_Pnt::gp_Pnt()`
         ///
         /// Creates a  point with its 3 cartesian's coordinates : theXp, theYp, theZp.
         #[cxx_name = "gp_Pnt_ctor_real3"]
@@ -8460,22 +9123,22 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Pnt_to_owned(self_: &Pnt) -> UniquePtr<Pnt>;
         /// ======================== gp_Pnt2d ========================
-        /// /// **Source:** `gp_Pnt2d.hxx` - `gp_Pnt2d`
+        /// **Source:** `gp_Pnt2d.hxx` - `gp_Pnt2d`
         ///
         /// Defines  a non-persistent 2D cartesian point.
         #[cxx_name = "gp_Pnt2d"]
         type Pnt2d;
-        /// /// **Source:** `gp_Pnt2d.hxx` - `gp_Pnt2d::gp_Pnt2d()`
+        /// **Source:** `gp_Pnt2d.hxx` - `gp_Pnt2d::gp_Pnt2d()`
         ///
         /// Creates a point with zero coordinates.
         #[cxx_name = "gp_Pnt2d_ctor"]
         fn Pnt2d_ctor() -> UniquePtr<Pnt2d>;
-        /// /// **Source:** `gp_Pnt2d.hxx` - `gp_Pnt2d::gp_Pnt2d()`
+        /// **Source:** `gp_Pnt2d.hxx` - `gp_Pnt2d::gp_Pnt2d()`
         ///
         /// Creates a point with a doublet of coordinates.
         #[cxx_name = "gp_Pnt2d_ctor_xy"]
         fn Pnt2d_ctor_xy(theCoord: &XY) -> UniquePtr<Pnt2d>;
-        /// /// **Source:** `gp_Pnt2d.hxx` - `gp_Pnt2d::gp_Pnt2d()`
+        /// **Source:** `gp_Pnt2d.hxx` - `gp_Pnt2d::gp_Pnt2d()`
         ///
         /// Creates a  point with its 2 cartesian's coordinates : theXp, theYp.
         #[cxx_name = "gp_Pnt2d_ctor_real2"]
@@ -8579,7 +9242,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Pnt2d_to_owned(self_: &Pnt2d) -> UniquePtr<Pnt2d>;
         /// ======================== gp_Quaternion ========================
-        /// /// **Source:** `gp_Quaternion.hxx` - `gp_Quaternion`
+        /// **Source:** `gp_Quaternion.hxx` - `gp_Quaternion`
         ///
         /// Represents operation of rotation in 3d space as quaternion
         /// and implements operations with rotations basing on
@@ -8590,12 +9253,12 @@ pub(crate) mod ffi {
         /// angle, Euler angles)
         #[cxx_name = "gp_Quaternion"]
         type Quaternion;
-        /// /// **Source:** `gp_Quaternion.hxx` - `gp_Quaternion::gp_Quaternion()`
+        /// **Source:** `gp_Quaternion.hxx` - `gp_Quaternion::gp_Quaternion()`
         ///
         /// Creates an identity quaternion
         #[cxx_name = "gp_Quaternion_ctor"]
         fn Quaternion_ctor() -> UniquePtr<Quaternion>;
-        /// /// **Source:** `gp_Quaternion.hxx` - `gp_Quaternion::gp_Quaternion()`
+        /// **Source:** `gp_Quaternion.hxx` - `gp_Quaternion::gp_Quaternion()`
         ///
         /// Creates quaternion directly from component values
         #[cxx_name = "gp_Quaternion_ctor_real4"]
@@ -8605,13 +9268,13 @@ pub(crate) mod ffi {
             theZ: f64,
             theW: f64,
         ) -> UniquePtr<Quaternion>;
-        /// /// **Source:** `gp_Quaternion.hxx` - `gp_Quaternion::gp_Quaternion()`
+        /// **Source:** `gp_Quaternion.hxx` - `gp_Quaternion::gp_Quaternion()`
         ///
         /// Creates quaternion representing shortest-arc rotation
         /// operator producing vector theVecTo from vector theVecFrom.
         #[cxx_name = "gp_Quaternion_ctor_vec2"]
         fn Quaternion_ctor_vec2(theVecFrom: &Vec_, theVecTo: &Vec_) -> UniquePtr<Quaternion>;
-        /// /// **Source:** `gp_Quaternion.hxx` - `gp_Quaternion::gp_Quaternion()`
+        /// **Source:** `gp_Quaternion.hxx` - `gp_Quaternion::gp_Quaternion()`
         ///
         /// Creates quaternion representing shortest-arc rotation
         /// operator producing vector theVecTo from vector theVecFrom.
@@ -8624,13 +9287,13 @@ pub(crate) mod ffi {
             theVecTo: &Vec_,
             theHelpCrossVec: &Vec_,
         ) -> UniquePtr<Quaternion>;
-        /// /// **Source:** `gp_Quaternion.hxx` - `gp_Quaternion::gp_Quaternion()`
+        /// **Source:** `gp_Quaternion.hxx` - `gp_Quaternion::gp_Quaternion()`
         ///
         /// Creates quaternion representing rotation on angle
         /// theAngle around vector theAxis
         #[cxx_name = "gp_Quaternion_ctor_vec_real"]
         fn Quaternion_ctor_vec_real(theAxis: &Vec_, theAngle: f64) -> UniquePtr<Quaternion>;
-        /// /// **Source:** `gp_Quaternion.hxx` - `gp_Quaternion::gp_Quaternion()`
+        /// **Source:** `gp_Quaternion.hxx` - `gp_Quaternion::gp_Quaternion()`
         ///
         /// Creates quaternion from rotation matrix 3*3
         /// (which should be orthonormal skew-symmetric matrix)
@@ -8777,18 +9440,18 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Quaternion_to_owned(self_: &Quaternion) -> UniquePtr<Quaternion>;
         /// ======================== gp_QuaternionNLerp ========================
-        /// /// **Source:** `gp_QuaternionNLerp.hxx` - `gp_QuaternionNLerp`
+        /// **Source:** `gp_QuaternionNLerp.hxx` - `gp_QuaternionNLerp`
         ///
         /// Class perform linear interpolation (approximate rotation interpolation),
         /// result quaternion nonunit, its length lay between. sqrt(2)/2  and 1.0
         #[cxx_name = "gp_QuaternionNLerp"]
         type QuaternionNLerp;
-        /// /// **Source:** `gp_QuaternionNLerp.hxx` - `gp_QuaternionNLerp::gp_QuaternionNLerp()`
+        /// **Source:** `gp_QuaternionNLerp.hxx` - `gp_QuaternionNLerp::gp_QuaternionNLerp()`
         ///
         /// Empty constructor,
         #[cxx_name = "gp_QuaternionNLerp_ctor"]
         fn QuaternionNLerp_ctor() -> UniquePtr<QuaternionNLerp>;
-        /// /// **Source:** `gp_QuaternionNLerp.hxx` - `gp_QuaternionNLerp::gp_QuaternionNLerp()`
+        /// **Source:** `gp_QuaternionNLerp.hxx` - `gp_QuaternionNLerp::gp_QuaternionNLerp()`
         ///
         /// Constructor with initialization.
         #[cxx_name = "gp_QuaternionNLerp_ctor_quaternion2"]
@@ -8824,18 +9487,18 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn QuaternionNLerp_to_owned(self_: &QuaternionNLerp) -> UniquePtr<QuaternionNLerp>;
         /// ======================== gp_QuaternionSLerp ========================
-        /// /// **Source:** `gp_QuaternionSLerp.hxx` - `gp_QuaternionSLerp`
+        /// **Source:** `gp_QuaternionSLerp.hxx` - `gp_QuaternionSLerp`
         ///
         /// Perform Spherical Linear Interpolation of the quaternions,
         /// return unit length quaternion.
         #[cxx_name = "gp_QuaternionSLerp"]
         type QuaternionSLerp;
-        /// /// **Source:** `gp_QuaternionSLerp.hxx` - `gp_QuaternionSLerp::gp_QuaternionSLerp()`
+        /// **Source:** `gp_QuaternionSLerp.hxx` - `gp_QuaternionSLerp::gp_QuaternionSLerp()`
         ///
         /// Empty constructor,
         #[cxx_name = "gp_QuaternionSLerp_ctor"]
         fn QuaternionSLerp_ctor() -> UniquePtr<QuaternionSLerp>;
-        /// /// **Source:** `gp_QuaternionSLerp.hxx` - `gp_QuaternionSLerp::gp_QuaternionSLerp()`
+        /// **Source:** `gp_QuaternionSLerp.hxx` - `gp_QuaternionSLerp::gp_QuaternionSLerp()`
         ///
         /// Constructor with initialization.
         #[cxx_name = "gp_QuaternionSLerp_ctor_quaternion2"]
@@ -8871,7 +9534,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn QuaternionSLerp_to_owned(self_: &QuaternionSLerp) -> UniquePtr<QuaternionSLerp>;
         /// ======================== gp_Sphere ========================
-        /// /// **Source:** `gp_Sphere.hxx` - `gp_Sphere`
+        /// **Source:** `gp_Sphere.hxx` - `gp_Sphere`
         ///
         /// Describes a sphere.
         /// A sphere is defined by its radius and positioned in space
@@ -8895,12 +9558,12 @@ pub(crate) mod ffi {
         /// particular, with the parametric equations of spheres.
         #[cxx_name = "gp_Sphere"]
         type Sphere;
-        /// /// **Source:** `gp_Sphere.hxx` - `gp_Sphere::gp_Sphere()`
+        /// **Source:** `gp_Sphere.hxx` - `gp_Sphere::gp_Sphere()`
         ///
         /// Creates an indefinite sphere.
         #[cxx_name = "gp_Sphere_ctor"]
         fn Sphere_ctor() -> UniquePtr<Sphere>;
-        /// /// **Source:** `gp_Sphere.hxx` - `gp_Sphere::gp_Sphere()`
+        /// **Source:** `gp_Sphere.hxx` - `gp_Sphere::gp_Sphere()`
         ///
         /// Constructs a sphere with radius theRadius, centered on the origin
         /// of theA3.  theA3 is the local coordinate system of the sphere.
@@ -9028,7 +9691,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Sphere_to_owned(self_: &Sphere) -> UniquePtr<Sphere>;
         /// ======================== gp_Torus ========================
-        /// /// **Source:** `gp_Torus.hxx` - `gp_Torus`
+        /// **Source:** `gp_Torus.hxx` - `gp_Torus`
         ///
         /// Describes a torus.
         /// A torus is defined by its major and minor radii and
@@ -9064,12 +9727,12 @@ pub(crate) mod ffi {
         /// with the parametric equations of tori.
         #[cxx_name = "gp_Torus"]
         type Torus;
-        /// /// **Source:** `gp_Torus.hxx` - `gp_Torus::gp_Torus()`
+        /// **Source:** `gp_Torus.hxx` - `gp_Torus::gp_Torus()`
         ///
         /// creates an indefinite Torus.
         #[cxx_name = "gp_Torus_ctor"]
         fn Torus_ctor() -> UniquePtr<Torus>;
-        /// /// **Source:** `gp_Torus.hxx` - `gp_Torus::gp_Torus()`
+        /// **Source:** `gp_Torus.hxx` - `gp_Torus::gp_Torus()`
         ///
         /// a torus centered on the origin of coordinate system
         /// theA3, with major radius theMajorRadius and minor radius
@@ -9220,7 +9883,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Torus_to_owned(self_: &Torus) -> UniquePtr<Torus>;
         /// ======================== gp_Trsf ========================
-        /// /// **Source:** `gp_Trsf.hxx` - `gp_Trsf`
+        /// **Source:** `gp_Trsf.hxx` - `gp_Trsf`
         ///
         /// Defines a non-persistent transformation in 3D space.
         /// The following transformations are implemented :
@@ -9243,12 +9906,12 @@ pub(crate) mod ffi {
         /// This transformation never change the nature of the objects.
         #[cxx_name = "gp_Trsf"]
         type Trsf;
-        /// /// **Source:** `gp_Trsf.hxx` - `gp_Trsf::gp_Trsf()`
+        /// **Source:** `gp_Trsf.hxx` - `gp_Trsf::gp_Trsf()`
         ///
         /// Returns the identity transformation.
         #[cxx_name = "gp_Trsf_ctor"]
         fn Trsf_ctor() -> UniquePtr<Trsf>;
-        /// /// **Source:** `gp_Trsf.hxx` - `gp_Trsf::gp_Trsf()`
+        /// **Source:** `gp_Trsf.hxx` - `gp_Trsf::gp_Trsf()`
         ///
         /// Creates  a 3D transformation from the 2D transformation theT.
         /// The resulting transformation has a homogeneous
@@ -9490,7 +10153,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Trsf_to_owned(self_: &Trsf) -> UniquePtr<Trsf>;
         /// ======================== gp_Trsf2d ========================
-        /// /// **Source:** `gp_Trsf2d.hxx` - `gp_Trsf2d`
+        /// **Source:** `gp_Trsf2d.hxx` - `gp_Trsf2d`
         ///
         /// Defines a non-persistent transformation in 2D space.
         /// The following transformations are implemented :
@@ -9510,12 +10173,12 @@ pub(crate) mod ffi {
         /// This transformation never change the nature of the objects.
         #[cxx_name = "gp_Trsf2d"]
         type Trsf2d;
-        /// /// **Source:** `gp_Trsf2d.hxx` - `gp_Trsf2d::gp_Trsf2d()`
+        /// **Source:** `gp_Trsf2d.hxx` - `gp_Trsf2d::gp_Trsf2d()`
         ///
         /// Returns identity transformation.
         #[cxx_name = "gp_Trsf2d_ctor"]
         fn Trsf2d_ctor() -> UniquePtr<Trsf2d>;
-        /// /// **Source:** `gp_Trsf2d.hxx` - `gp_Trsf2d::gp_Trsf2d()`
+        /// **Source:** `gp_Trsf2d.hxx` - `gp_Trsf2d::gp_Trsf2d()`
         ///
         /// Creates a 2d transformation in the XY plane from a
         /// 3d transformation .
@@ -9653,32 +10316,32 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Trsf2d_to_owned(self_: &Trsf2d) -> UniquePtr<Trsf2d>;
         /// ======================== gp_Vec ========================
-        /// /// **Source:** `gp_Vec.hxx` - `gp_Vec`
+        /// **Source:** `gp_Vec.hxx` - `gp_Vec`
         ///
         /// Defines a non-persistent vector in 3D space.
         #[cxx_name = "gp_Vec"]
         type Vec_;
-        /// /// **Source:** `gp_Vec.hxx` - `gp_Vec::gp_Vec()`
+        /// **Source:** `gp_Vec.hxx` - `gp_Vec::gp_Vec()`
         ///
         /// Creates a zero vector.
         #[cxx_name = "gp_Vec_ctor"]
         fn Vec__ctor() -> UniquePtr<Vec_>;
-        /// /// **Source:** `gp_Vec.hxx` - `gp_Vec::gp_Vec()`
+        /// **Source:** `gp_Vec.hxx` - `gp_Vec::gp_Vec()`
         ///
         /// Creates a unitary vector from a direction theV.
         #[cxx_name = "gp_Vec_ctor_dir"]
         fn Vec__ctor_dir(theV: &Dir) -> UniquePtr<Vec_>;
-        /// /// **Source:** `gp_Vec.hxx` - `gp_Vec::gp_Vec()`
+        /// **Source:** `gp_Vec.hxx` - `gp_Vec::gp_Vec()`
         ///
         /// Creates a vector with a triplet of coordinates.
         #[cxx_name = "gp_Vec_ctor_xyz"]
         fn Vec__ctor_xyz(theCoord: &XYZ) -> UniquePtr<Vec_>;
-        /// /// **Source:** `gp_Vec.hxx` - `gp_Vec::gp_Vec()`
+        /// **Source:** `gp_Vec.hxx` - `gp_Vec::gp_Vec()`
         ///
         /// Creates a point with its three cartesian coordinates.
         #[cxx_name = "gp_Vec_ctor_real3"]
         fn Vec__ctor_real3(theXv: f64, theYv: f64, theZv: f64) -> UniquePtr<Vec_>;
-        /// /// **Source:** `gp_Vec.hxx` - `gp_Vec::gp_Vec()`
+        /// **Source:** `gp_Vec.hxx` - `gp_Vec::gp_Vec()`
         ///
         /// Creates a vector from two points. The length of the vector
         /// is the distance between theP1 and theP2
@@ -9951,32 +10614,32 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Vec__to_owned(self_: &Vec_) -> UniquePtr<Vec_>;
         /// ======================== gp_Vec2d ========================
-        /// /// **Source:** `gp_Vec2d.hxx` - `gp_Vec2d`
+        /// **Source:** `gp_Vec2d.hxx` - `gp_Vec2d`
         ///
         /// Defines a non-persistent vector in 2D space.
         #[cxx_name = "gp_Vec2d"]
         type Vec2d;
-        /// /// **Source:** `gp_Vec2d.hxx` - `gp_Vec2d::gp_Vec2d()`
+        /// **Source:** `gp_Vec2d.hxx` - `gp_Vec2d::gp_Vec2d()`
         ///
         /// Creates a zero vector.
         #[cxx_name = "gp_Vec2d_ctor"]
         fn Vec2d_ctor() -> UniquePtr<Vec2d>;
-        /// /// **Source:** `gp_Vec2d.hxx` - `gp_Vec2d::gp_Vec2d()`
+        /// **Source:** `gp_Vec2d.hxx` - `gp_Vec2d::gp_Vec2d()`
         ///
         /// Creates a unitary vector from a direction theV.
         #[cxx_name = "gp_Vec2d_ctor_dir2d"]
         fn Vec2d_ctor_dir2d(theV: &Dir2d) -> UniquePtr<Vec2d>;
-        /// /// **Source:** `gp_Vec2d.hxx` - `gp_Vec2d::gp_Vec2d()`
+        /// **Source:** `gp_Vec2d.hxx` - `gp_Vec2d::gp_Vec2d()`
         ///
         /// Creates a vector with a doublet of coordinates.
         #[cxx_name = "gp_Vec2d_ctor_xy"]
         fn Vec2d_ctor_xy(theCoord: &XY) -> UniquePtr<Vec2d>;
-        /// /// **Source:** `gp_Vec2d.hxx` - `gp_Vec2d::gp_Vec2d()`
+        /// **Source:** `gp_Vec2d.hxx` - `gp_Vec2d::gp_Vec2d()`
         ///
         /// Creates a point with its two Cartesian coordinates.
         #[cxx_name = "gp_Vec2d_ctor_real2"]
         fn Vec2d_ctor_real2(theXv: f64, theYv: f64) -> UniquePtr<Vec2d>;
-        /// /// **Source:** `gp_Vec2d.hxx` - `gp_Vec2d::gp_Vec2d()`
+        /// **Source:** `gp_Vec2d.hxx` - `gp_Vec2d::gp_Vec2d()`
         ///
         /// Creates a vector from two points. The length of the vector
         /// is the distance between theP1 and theP2
@@ -10185,18 +10848,18 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Vec2d_to_owned(self_: &Vec2d) -> UniquePtr<Vec2d>;
         /// ======================== gp_VectorWithNullMagnitude ========================
-        /// /// **Source:** `gp_VectorWithNullMagnitude.hxx` - `gp_VectorWithNullMagnitude`
+        /// **Source:** `gp_VectorWithNullMagnitude.hxx` - `gp_VectorWithNullMagnitude`
         #[cxx_name = "gp_VectorWithNullMagnitude"]
         type VectorWithNullMagnitude;
-        /// /// **Source:** `gp_VectorWithNullMagnitude.hxx` - `gp_VectorWithNullMagnitude::gp_VectorWithNullMagnitude()`
+        /// **Source:** `gp_VectorWithNullMagnitude.hxx` - `gp_VectorWithNullMagnitude::gp_VectorWithNullMagnitude()`
         #[cxx_name = "gp_VectorWithNullMagnitude_ctor"]
         fn VectorWithNullMagnitude_ctor() -> UniquePtr<VectorWithNullMagnitude>;
-        /// /// **Source:** `gp_VectorWithNullMagnitude.hxx` - `gp_VectorWithNullMagnitude::gp_VectorWithNullMagnitude()`
+        /// **Source:** `gp_VectorWithNullMagnitude.hxx` - `gp_VectorWithNullMagnitude::gp_VectorWithNullMagnitude()`
         #[cxx_name = "gp_VectorWithNullMagnitude_ctor_charptr"]
         fn VectorWithNullMagnitude_ctor_charptr(
             theMessage: &str,
         ) -> UniquePtr<VectorWithNullMagnitude>;
-        /// /// **Source:** `gp_VectorWithNullMagnitude.hxx` - `gp_VectorWithNullMagnitude::gp_VectorWithNullMagnitude()`
+        /// **Source:** `gp_VectorWithNullMagnitude.hxx` - `gp_VectorWithNullMagnitude::gp_VectorWithNullMagnitude()`
         #[cxx_name = "gp_VectorWithNullMagnitude_ctor_charptr2"]
         fn VectorWithNullMagnitude_ctor_charptr2(
             theMessage: &str,
@@ -10225,7 +10888,7 @@ pub(crate) mod ffi {
             self_: &VectorWithNullMagnitude,
         ) -> UniquePtr<VectorWithNullMagnitude>;
         /// ======================== gp_XY ========================
-        /// /// **Source:** `gp_XY.hxx` - `gp_XY`
+        /// **Source:** `gp_XY.hxx` - `gp_XY`
         ///
         /// This class describes a cartesian coordinate entity in 2D
         /// space {X,Y}. This class is non persistent. This entity used
@@ -10235,12 +10898,12 @@ pub(crate) mod ffi {
         /// of information in data structures.
         #[cxx_name = "gp_XY"]
         type XY;
-        /// /// **Source:** `gp_XY.hxx` - `gp_XY::gp_XY()`
+        /// **Source:** `gp_XY.hxx` - `gp_XY::gp_XY()`
         ///
         /// Creates XY object with zero coordinates (0,0).
         #[cxx_name = "gp_XY_ctor"]
         fn XY_ctor() -> UniquePtr<XY>;
-        /// /// **Source:** `gp_XY.hxx` - `gp_XY::gp_XY()`
+        /// **Source:** `gp_XY.hxx` - `gp_XY::gp_XY()`
         ///
         /// a number pair defined by the XY coordinates
         #[cxx_name = "gp_XY_ctor_real2"]
@@ -10440,7 +11103,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn XY_to_owned(self_: &XY) -> UniquePtr<XY>;
         /// ======================== gp_XYZ ========================
-        /// /// **Source:** `gp_XYZ.hxx` - `gp_XYZ`
+        /// **Source:** `gp_XYZ.hxx` - `gp_XYZ`
         ///
         /// This class describes a cartesian coordinate entity in
         /// 3D space {X,Y,Z}. This entity is used for algebraic
@@ -10450,12 +11113,12 @@ pub(crate) mod ffi {
         /// of information in data structures.
         #[cxx_name = "gp_XYZ"]
         type XYZ;
-        /// /// **Source:** `gp_XYZ.hxx` - `gp_XYZ::gp_XYZ()`
+        /// **Source:** `gp_XYZ.hxx` - `gp_XYZ::gp_XYZ()`
         ///
         /// Creates an XYZ object with zero coordinates (0,0,0)
         #[cxx_name = "gp_XYZ_ctor"]
         fn XYZ_ctor() -> UniquePtr<XYZ>;
-        /// /// **Source:** `gp_XYZ.hxx` - `gp_XYZ::gp_XYZ()`
+        /// **Source:** `gp_XYZ.hxx` - `gp_XYZ::gp_XYZ()`
         ///
         /// creates an XYZ with given coordinates
         #[cxx_name = "gp_XYZ_ctor_real3"]

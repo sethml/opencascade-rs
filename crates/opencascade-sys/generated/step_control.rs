@@ -12,6 +12,42 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Reads STEP files, checks them and translates their contents
+/// into Open CASCADE models. The STEP data can be that of
+/// a whole model or that of a specific list of entities in the model.
+/// As in XSControl_Reader, you specify the list using a selection.
+/// For the translation of iges files it is possible to use next sequence:
+/// To change translation parameters
+/// class Interface_Static should be used before beginning of
+/// translation  (see STEP Parameters and General Parameters)
+/// Creation of reader - STEPControl_Reader reader;
+/// To load s file in a model use method reader.ReadFile("filename.stp")
+/// To print load results reader.PrintCheckLoad(failsonly,mode)
+/// where mode is equal to the value of enumeration IFSelect_PrintCount
+/// For definition number of candidates :
+/// Standard_Integer nbroots = reader. NbRootsForTransfer();
+/// To transfer entities from a model the following methods can be used:
+/// for the whole model - reader.TransferRoots();
+/// to transfer a list of entities: reader.TransferList(list);
+/// to transfer one entity Handle(Standard_Transient)
+/// ent = reader.RootForTransfer(num);
+/// reader.TransferEntity(ent), or
+/// reader.TransferOneRoot(num), or
+/// reader.TransferOne(num), or
+/// reader.TransferRoot(num)
+/// To obtain the result the following method can be used:
+/// reader.NbShapes() and reader.Shape(num); or reader.OneShape();
+/// To print the results of transfer use method:
+/// reader.PrintCheckTransfer(failwarn,mode);
+/// where printfail is equal to the value of enumeration
+/// IFSelect_PrintFail, mode see above; or reader.PrintStatsTransfer();
+/// Gets correspondence between a STEP entity and a result
+/// shape obtained from it.
+/// Handle(XSControl_WorkSession)
+/// WS = reader.WS();
+/// if ( WS->TransferReader()->HasResult(ent) )
+/// TopoDS_Shape shape = WS->TransferReader()->ShapeResult(ent);
 pub use ffi::Reader;
 impl Reader {
     /// Creates a reader object with an empty STEP model.
@@ -46,6 +82,12 @@ impl Reader {
         ffi::Reader_step_model(self)
     }
 }
+
+/// This class creates and writes
+/// STEP files from Open CASCADE models. A STEP file can be
+/// written to an existing STEP file or to a new one.
+/// Translation can be performed in one or several operations. Each
+/// translation operation outputs a distinct root entity in the STEP file.
 pub use ffi::Writer;
 impl Writer {
     /// Creates a Writer from scratch
@@ -88,7 +130,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== STEPControl_Reader ========================
-        /// /// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader`
+        /// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader`
         ///
         /// Reads STEP files, checks them and translates their contents
         /// into Open CASCADE models. The STEP data can be that of
@@ -127,12 +169,12 @@ pub(crate) mod ffi {
         /// TopoDS_Shape shape = WS->TransferReader()->ShapeResult(ent);
         #[cxx_name = "STEPControl_Reader"]
         type Reader;
-        /// /// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader::STEPControl_Reader()`
+        /// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader::STEPControl_Reader()`
         ///
         /// Creates a reader object with an empty STEP model.
         #[cxx_name = "STEPControl_Reader_ctor"]
         fn Reader_ctor() -> UniquePtr<Reader>;
-        /// /// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader::STEPControl_Reader()`
+        /// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader::STEPControl_Reader()`
         ///
         /// Creates a Reader for STEP from an already existing Session
         /// Clears the session if it was not yet set for STEP
@@ -183,7 +225,7 @@ pub(crate) mod ffi {
         #[cxx_name = "STEPControl_Reader_as_XSControl_Reader_mut"]
         fn reader_as_xs_control_reader_mut(self_: Pin<&mut Reader>) -> Pin<&mut XSControl_Reader>;
         /// ======================== STEPControl_Writer ========================
-        /// /// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer`
+        /// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer`
         ///
         /// This class creates and writes
         /// STEP files from Open CASCADE models. A STEP file can be
@@ -192,12 +234,12 @@ pub(crate) mod ffi {
         /// translation operation outputs a distinct root entity in the STEP file.
         #[cxx_name = "STEPControl_Writer"]
         type Writer;
-        /// /// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer::STEPControl_Writer()`
+        /// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer::STEPControl_Writer()`
         ///
         /// Creates a Writer from scratch
         #[cxx_name = "STEPControl_Writer_ctor"]
         fn Writer_ctor() -> UniquePtr<Writer>;
-        /// /// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer::STEPControl_Writer()`
+        /// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer::STEPControl_Writer()`
         ///
         /// Creates a Writer from an already existing Session
         /// If <scratch> is True (D), clears already recorded data

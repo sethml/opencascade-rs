@@ -10,6 +10,10 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// This package provides the bounding boxes for curves
+/// and surfaces from BRepAdaptor.
+/// Functions to add a topological shape to a bounding box
 pub use ffi::BRepBndLib;
 impl BRepBndLib {
     /// Adds the shape S to the bounding box B.
@@ -104,7 +108,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepBndLib ========================
-        /// /// **Source:** `BRepBndLib.hxx` - `BRepBndLib`
+        /// **Source:** `BRepBndLib.hxx` - `BRepBndLib`
         ///
         /// This package provides the bounding boxes for curves
         /// and surfaces from BRepAdaptor.

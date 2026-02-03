@@ -10,6 +10,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
 pub use ffi::NotDone;
 impl NotDone {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -57,16 +58,16 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== StdFail_NotDone ========================
-        /// /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone`
+        /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone`
         #[cxx_name = "StdFail_NotDone"]
         type NotDone;
-        /// /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`
+        /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`
         #[cxx_name = "StdFail_NotDone_ctor"]
         fn NotDone_ctor() -> UniquePtr<NotDone>;
-        /// /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`
+        /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`
         #[cxx_name = "StdFail_NotDone_ctor_charptr"]
         fn NotDone_ctor_charptr(theMessage: &str) -> UniquePtr<NotDone>;
-        /// /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`
+        /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`
         #[cxx_name = "StdFail_NotDone_ctor_charptr2"]
         fn NotDone_ctor_charptr2(theMessage: &str, theStackTrace: &str) -> UniquePtr<NotDone>;
         #[cxx_name = "DynamicType"]

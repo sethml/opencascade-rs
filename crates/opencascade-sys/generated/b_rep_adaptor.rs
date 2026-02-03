@@ -12,6 +12,19 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// The Curve from BRepAdaptor  allows to use  an Edge
+/// of the BRep topology like a 3D curve.
+///
+/// It has the methods the class Curve from Adaptor3d.
+///
+/// It  is created or  Initialized  with  an Edge.  It
+/// takes  into account local  coordinate systems.  If
+/// the Edge has a 3D curve it is  use  with priority.
+/// If the edge  has no 3D curve one  of the curves on
+/// surface is used. It is possible to enforce using a
+/// curve on surface by creating  or initialising with
+/// an Edge and a Face.
 pub use ffi::Curve;
 impl Curve {
     /// Creates an undefined Curve with no Edge loaded.
@@ -120,6 +133,19 @@ impl Curve {
         ffi::Curve_get_type_name()
     }
 }
+
+/// The Surface from BRepAdaptor allows to  use a Face
+/// of the BRep topology look like a 3D surface.
+///
+/// It  has  the methods  of  the class   Surface from
+/// Adaptor3d.
+///
+/// It is created or initialized with a Face. It takes
+/// into account the local coordinates system.
+///
+/// The  u,v parameter range is   the minmax value for
+/// the  restriction,  unless  the flag restriction is
+/// set to false.
 pub use ffi::Surface;
 impl Surface {
     /// Creates an undefined surface with no face loaded.
@@ -250,6 +276,17 @@ impl Surface {
         ffi::Surface_get_type_name()
     }
 }
+
+/// The Curve2d from BRepAdaptor allows to use an Edge
+/// on   a Face like   a  2d   curve. (curve  in   the
+/// parametric space).
+///
+/// It  has  the methods    of the class Curve2d  from
+/// Adpator.
+///
+/// It  is created or  initialized with a  Face and an
+/// Edge.  The methods are  inherited from  Curve from
+/// Geom2dAdaptor.
 pub use ffi::Curve2d;
 impl Curve2d {
     /// Creates an uninitialized curve2d.
@@ -305,7 +342,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepAdaptor_Curve ========================
-        /// /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve`
+        /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve`
         ///
         /// The Curve from BRepAdaptor  allows to use  an Edge
         /// of the BRep topology like a 3D curve.
@@ -321,18 +358,18 @@ pub(crate) mod ffi {
         /// an Edge and a Face.
         #[cxx_name = "BRepAdaptor_Curve"]
         type Curve;
-        /// /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
+        /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
         ///
         /// Creates an undefined Curve with no Edge loaded.
         #[cxx_name = "BRepAdaptor_Curve_ctor"]
         fn Curve_ctor() -> UniquePtr<Curve>;
-        /// /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
+        /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
         ///
         /// Creates a Curve  to  access the geometry of edge
         /// <E>.
         #[cxx_name = "BRepAdaptor_Curve_ctor_edge"]
         fn Curve_ctor_edge(E: &TopoDS_Edge) -> UniquePtr<Curve>;
-        /// /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
+        /// **Source:** `BRepAdaptor_Curve.hxx` - `BRepAdaptor_Curve::BRepAdaptor_Curve()`
         ///
         /// Creates a Curve to access  the geometry  of edge
         /// <E>.   The geometry  will   be  computed using the
@@ -490,7 +527,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepAdaptor_Curve_as_Adaptor3d_Curve_mut"]
         fn curve_as_adaptor3d_curve_mut(self_: Pin<&mut Curve>) -> Pin<&mut Adaptor3d_Curve>;
         /// ======================== BRepAdaptor_Surface ========================
-        /// /// **Source:** `BRepAdaptor_Surface.hxx` - `BRepAdaptor_Surface`
+        /// **Source:** `BRepAdaptor_Surface.hxx` - `BRepAdaptor_Surface`
         ///
         /// The Surface from BRepAdaptor allows to  use a Face
         /// of the BRep topology look like a 3D surface.
@@ -506,12 +543,12 @@ pub(crate) mod ffi {
         /// set to false.
         #[cxx_name = "BRepAdaptor_Surface"]
         type Surface;
-        /// /// **Source:** `BRepAdaptor_Surface.hxx` - `BRepAdaptor_Surface::BRepAdaptor_Surface()`
+        /// **Source:** `BRepAdaptor_Surface.hxx` - `BRepAdaptor_Surface::BRepAdaptor_Surface()`
         ///
         /// Creates an undefined surface with no face loaded.
         #[cxx_name = "BRepAdaptor_Surface_ctor"]
         fn Surface_ctor() -> UniquePtr<Surface>;
-        /// /// **Source:** `BRepAdaptor_Surface.hxx` - `BRepAdaptor_Surface::BRepAdaptor_Surface()`
+        /// **Source:** `BRepAdaptor_Surface.hxx` - `BRepAdaptor_Surface::BRepAdaptor_Surface()`
         ///
         /// Creates a surface to  access the geometry  of <F>.
         /// If  <Restriction> is  true  the parameter range is
@@ -715,7 +752,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut Surface>,
         ) -> Pin<&mut Adaptor3d_Surface>;
         /// ======================== BRepAdaptor_Curve2d ========================
-        /// /// **Source:** `BRepAdaptor_Curve2d.hxx` - `BRepAdaptor_Curve2d`
+        /// **Source:** `BRepAdaptor_Curve2d.hxx` - `BRepAdaptor_Curve2d`
         ///
         /// The Curve2d from BRepAdaptor allows to use an Edge
         /// on   a Face like   a  2d   curve. (curve  in   the
@@ -729,12 +766,12 @@ pub(crate) mod ffi {
         /// Geom2dAdaptor.
         #[cxx_name = "BRepAdaptor_Curve2d"]
         type Curve2d;
-        /// /// **Source:** `BRepAdaptor_Curve2d.hxx` - `BRepAdaptor_Curve2d::BRepAdaptor_Curve2d()`
+        /// **Source:** `BRepAdaptor_Curve2d.hxx` - `BRepAdaptor_Curve2d::BRepAdaptor_Curve2d()`
         ///
         /// Creates an uninitialized curve2d.
         #[cxx_name = "BRepAdaptor_Curve2d_ctor"]
         fn Curve2d_ctor() -> UniquePtr<Curve2d>;
-        /// /// **Source:** `BRepAdaptor_Curve2d.hxx` - `BRepAdaptor_Curve2d::BRepAdaptor_Curve2d()`
+        /// **Source:** `BRepAdaptor_Curve2d.hxx` - `BRepAdaptor_Curve2d::BRepAdaptor_Curve2d()`
         ///
         /// Creates with the pcurve of <E> on <F>.
         #[cxx_name = "BRepAdaptor_Curve2d_ctor_edge_face"]

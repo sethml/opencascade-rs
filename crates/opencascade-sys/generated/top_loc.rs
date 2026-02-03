@@ -11,6 +11,11 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// A Location is a composite transition. It comprises a
+/// series of elementary reference coordinates, i.e.
+/// objects of type TopLoc_Datum3D, and the powers to
+/// which these objects are raised.
 pub use ffi::Location;
 impl Location {
     /// Constructs an empty local coordinate system object.
@@ -72,6 +77,22 @@ impl Location {
         ffi::Location_scale_prec()
     }
 }
+
+/// An SListOfItemLocation is a LISP like list of Items.
+/// An SListOfItemLocation is :
+/// . Empty.
+/// . Or it has a Value and a  Tail  which is an other SListOfItemLocation.
+///
+/// The Tail of an empty list is an empty list.
+/// SListOfItemLocation are  shared.  It  means   that they  can  be
+/// modified through other lists.
+/// SListOfItemLocation may  be used  as Iterators. They  have Next,
+/// More, and value methods. To iterate on the content
+/// of the list S just do.
+///
+/// SListOfItemLocation Iterator;
+/// for (Iterator = S; Iterator.More(); Iterator.Next())
+/// X = Iterator.Value();
 pub use ffi::SListOfItemLocation;
 impl SListOfItemLocation {
     /// Creates an empty List.
@@ -107,7 +128,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== TopLoc_Location ========================
-        /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location`
+        /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location`
         ///
         /// A Location is a composite transition. It comprises a
         /// series of elementary reference coordinates, i.e.
@@ -115,19 +136,19 @@ pub(crate) mod ffi {
         /// which these objects are raised.
         #[cxx_name = "TopLoc_Location"]
         type Location;
-        /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`
+        /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`
         ///
         /// Constructs an empty local coordinate system object.
         /// Note: A Location constructed from a default datum is said to be "empty".
         #[cxx_name = "TopLoc_Location_ctor"]
         fn Location_ctor() -> UniquePtr<Location>;
-        /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`
+        /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`
         ///
         /// Constructs the local coordinate system object defined
         /// by the transformation T. T invokes in turn, a TopLoc_Datum3D object.
         #[cxx_name = "TopLoc_Location_ctor_trsf"]
         fn Location_ctor_trsf(T: &gp_Trsf) -> UniquePtr<Location>;
-        /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`
+        /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`
         ///
         /// Constructs the local coordinate system object defined by the 3D datum D.
         /// Exceptions
@@ -212,7 +233,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Location_to_owned(self_: &Location) -> UniquePtr<Location>;
         /// ======================== TopLoc_SListOfItemLocation ========================
-        /// /// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation`
+        /// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation`
         ///
         /// An SListOfItemLocation is a LISP like list of Items.
         /// An SListOfItemLocation is :
@@ -231,12 +252,12 @@ pub(crate) mod ffi {
         /// X = Iterator.Value();
         #[cxx_name = "TopLoc_SListOfItemLocation"]
         type SListOfItemLocation;
-        /// /// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`
+        /// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`
         ///
         /// Creates an empty List.
         #[cxx_name = "TopLoc_SListOfItemLocation_ctor"]
         fn SListOfItemLocation_ctor() -> UniquePtr<SListOfItemLocation>;
-        /// /// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`
+        /// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`
         ///
         /// Creates a List with <anItem> as value  and <aTail> as tail.
         #[cxx_name = "TopLoc_SListOfItemLocation_ctor_itemlocation_slistofitemlocation"]
@@ -244,7 +265,7 @@ pub(crate) mod ffi {
             anItem: &TopLoc_ItemLocation,
             aTail: &SListOfItemLocation,
         ) -> UniquePtr<SListOfItemLocation>;
-        /// /// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`
+        /// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`
         ///
         /// Creates a list from an other one. The lists  are shared.
         #[cxx_name = "TopLoc_SListOfItemLocation_ctor_slistofitemlocation"]

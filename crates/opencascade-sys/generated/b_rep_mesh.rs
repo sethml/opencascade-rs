@@ -18,6 +18,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Builds the mesh of a shape with respect of their
+/// correctly triangulated parts
 pub use ffi::IncrementalMesh;
 impl IncrementalMesh {
     /// @name mesher API
@@ -89,12 +92,19 @@ impl IncrementalMesh {
         ffi::IncrementalMesh_get_type_name()
     }
 }
+
+/// This is a common interface for meshing algorithms
+/// instantiated by Mesh Factory and implemented by plugins.
 pub use ffi::DiscretRoot;
 impl DiscretRoot {
     pub fn get_type_name() -> String {
         ffi::DiscretRoot_get_type_name()
     }
 }
+
+/// Light weighted structure representing vertex
+/// of the mesh in parametric space. Vertex could be
+/// associated with 3d point stored in external map.
 pub use ffi::Vertex;
 impl Vertex {
     /// Default constructor
@@ -102,6 +112,9 @@ impl Vertex {
         ffi::Vertex_ctor()
     }
 }
+
+/// Describes a 2d circle with a size of only 3 Standard_Real
+/// numbers instead of gp who needs 7 Standard_Real numbers.
 pub use ffi::Circle;
 impl Circle {
     /// Default constructor.
@@ -116,6 +129,9 @@ impl Circle {
         ffi::Circle_ctor_xy_real(theLocation, theRadius)
     }
 }
+
+/// Light weighted structure representing triangle
+/// of mesh consisting of oriented links.
 pub use ffi::Triangle;
 impl Triangle {
     /// Default constructor.
@@ -123,6 +139,10 @@ impl Triangle {
         ffi::Triangle_ctor()
     }
 }
+
+/// This class represents a pair of integer indices to store
+/// element indices connected to link. It is restricted to
+/// store more than two indices in it.
 pub use ffi::PairOfIndex;
 impl PairOfIndex {
     /// Default constructor
@@ -130,6 +150,8 @@ impl PairOfIndex {
         ffi::PairOfIndex_ctor()
     }
 }
+
+/// Light weighted structure representing link of the mesh.
 pub use ffi::Edge;
 impl Edge {
     /// Default constructor.
@@ -149,6 +171,8 @@ impl Edge {
         ffi::edge_as_oriented_edge_mut(self)
     }
 }
+
+/// Light weighted structure representing simple link.
 pub use ffi::OrientedEdge;
 impl OrientedEdge {
     /// Default constructor.
@@ -171,19 +195,19 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepMesh_IncrementalMesh ========================
-        /// /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh`
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh`
         ///
         /// Builds the mesh of a shape with respect of their
         /// correctly triangulated parts
         #[cxx_name = "BRepMesh_IncrementalMesh"]
         type IncrementalMesh;
-        /// /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
         ///
         /// @name mesher API
         /// Default constructor
         #[cxx_name = "BRepMesh_IncrementalMesh_ctor"]
         fn IncrementalMesh_ctor() -> UniquePtr<IncrementalMesh>;
-        /// /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
         ///
         /// Constructor.
         /// Automatically calls method Perform.
@@ -202,7 +226,7 @@ pub(crate) mod ffi {
             theAngDeflection: f64,
             isInParallel: bool,
         ) -> UniquePtr<IncrementalMesh>;
-        /// /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
+        /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
         ///
         /// Constructor.
         /// Automatically calls method Perform.
@@ -258,7 +282,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut IncrementalMesh>,
         ) -> Pin<&mut DiscretRoot>;
         /// ======================== BRepMesh_DiscretRoot ========================
-        /// /// **Source:** `BRepMesh_DiscretRoot.hxx` - `BRepMesh_DiscretRoot`
+        /// **Source:** `BRepMesh_DiscretRoot.hxx` - `BRepMesh_DiscretRoot`
         ///
         /// This is a common interface for meshing algorithms
         /// instantiated by Mesh Factory and implemented by plugins.
@@ -280,14 +304,14 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepMesh_DiscretRoot_get_type_name"]
         fn DiscretRoot_get_type_name() -> String;
         /// ======================== BRepMesh_Vertex ========================
-        /// /// **Source:** `BRepMesh_Vertex.hxx` - `BRepMesh_Vertex`
+        /// **Source:** `BRepMesh_Vertex.hxx` - `BRepMesh_Vertex`
         ///
         /// Light weighted structure representing vertex
         /// of the mesh in parametric space. Vertex could be
         /// associated with 3d point stored in external map.
         #[cxx_name = "BRepMesh_Vertex"]
         type Vertex;
-        /// /// **Source:** `BRepMesh_Vertex.hxx` - `BRepMesh_Vertex::BRepMesh_Vertex()`
+        /// **Source:** `BRepMesh_Vertex.hxx` - `BRepMesh_Vertex::BRepMesh_Vertex()`
         ///
         /// Default constructor
         #[cxx_name = "BRepMesh_Vertex_ctor"]
@@ -307,18 +331,18 @@ pub(crate) mod ffi {
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &Vertex, theOther: &Vertex) -> bool;
         /// ======================== BRepMesh_Circle ========================
-        /// /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle`
+        /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle`
         ///
         /// Describes a 2d circle with a size of only 3 Standard_Real
         /// numbers instead of gp who needs 7 Standard_Real numbers.
         #[cxx_name = "BRepMesh_Circle"]
         type Circle;
-        /// /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle::BRepMesh_Circle()`
+        /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle::BRepMesh_Circle()`
         ///
         /// Default constructor.
         #[cxx_name = "BRepMesh_Circle_ctor"]
         fn Circle_ctor() -> UniquePtr<Circle>;
-        /// /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle::BRepMesh_Circle()`
+        /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle::BRepMesh_Circle()`
         ///
         /// Constructor.
         /// @param theLocation location of a circle.
@@ -340,13 +364,13 @@ pub(crate) mod ffi {
         #[cxx_name = "Radius"]
         fn radius(self: &Circle) -> &f64;
         /// ======================== BRepMesh_Triangle ========================
-        /// /// **Source:** `BRepMesh_Triangle.hxx` - `BRepMesh_Triangle`
+        /// **Source:** `BRepMesh_Triangle.hxx` - `BRepMesh_Triangle`
         ///
         /// Light weighted structure representing triangle
         /// of mesh consisting of oriented links.
         #[cxx_name = "BRepMesh_Triangle"]
         type Triangle;
-        /// /// **Source:** `BRepMesh_Triangle.hxx` - `BRepMesh_Triangle::BRepMesh_Triangle()`
+        /// **Source:** `BRepMesh_Triangle.hxx` - `BRepMesh_Triangle::BRepMesh_Triangle()`
         ///
         /// Default constructor.
         #[cxx_name = "BRepMesh_Triangle_ctor"]
@@ -357,14 +381,14 @@ pub(crate) mod ffi {
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &Triangle, theOther: &Triangle) -> bool;
         /// ======================== BRepMesh_PairOfIndex ========================
-        /// /// **Source:** `BRepMesh_PairOfIndex.hxx` - `BRepMesh_PairOfIndex`
+        /// **Source:** `BRepMesh_PairOfIndex.hxx` - `BRepMesh_PairOfIndex`
         ///
         /// This class represents a pair of integer indices to store
         /// element indices connected to link. It is restricted to
         /// store more than two indices in it.
         #[cxx_name = "BRepMesh_PairOfIndex"]
         type PairOfIndex;
-        /// /// **Source:** `BRepMesh_PairOfIndex.hxx` - `BRepMesh_PairOfIndex::BRepMesh_PairOfIndex()`
+        /// **Source:** `BRepMesh_PairOfIndex.hxx` - `BRepMesh_PairOfIndex::BRepMesh_PairOfIndex()`
         ///
         /// Default constructor
         #[cxx_name = "BRepMesh_PairOfIndex_ctor"]
@@ -404,12 +428,12 @@ pub(crate) mod ffi {
         #[cxx_name = "RemoveIndex"]
         fn remove_index(self: Pin<&mut PairOfIndex>, thePairPos: i32);
         /// ======================== BRepMesh_Edge ========================
-        /// /// **Source:** `BRepMesh_Edge.hxx` - `BRepMesh_Edge`
+        /// **Source:** `BRepMesh_Edge.hxx` - `BRepMesh_Edge`
         ///
         /// Light weighted structure representing link of the mesh.
         #[cxx_name = "BRepMesh_Edge"]
         type Edge;
-        /// /// **Source:** `BRepMesh_Edge.hxx` - `BRepMesh_Edge::BRepMesh_Edge()`
+        /// **Source:** `BRepMesh_Edge.hxx` - `BRepMesh_Edge::BRepMesh_Edge()`
         ///
         /// Default constructor.
         #[cxx_name = "BRepMesh_Edge_ctor"]
@@ -431,17 +455,17 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut"]
         fn edge_as_oriented_edge_mut(self_: Pin<&mut Edge>) -> Pin<&mut OrientedEdge>;
         /// ======================== BRepMesh_OrientedEdge ========================
-        /// /// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge`
+        /// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge`
         ///
         /// Light weighted structure representing simple link.
         #[cxx_name = "BRepMesh_OrientedEdge"]
         type OrientedEdge;
-        /// /// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
+        /// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
         ///
         /// Default constructor.
         #[cxx_name = "BRepMesh_OrientedEdge_ctor"]
         fn OrientedEdge_ctor() -> UniquePtr<OrientedEdge>;
-        /// /// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
+        /// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
         ///
         /// Constructs a link between two vertices.
         #[cxx_name = "BRepMesh_OrientedEdge_ctor_int2"]

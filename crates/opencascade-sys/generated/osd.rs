@@ -10,6 +10,35 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// This class provide information about memory utilized by current process.
+/// This information includes:
+/// - Private Memory - synthetic value that tries to filter out the memory
+/// usage only by the process itself (allocated for data
+/// and stack), excluding dynamic libraries.
+/// These pages may be in RAM or in SWAP.
+/// - Virtual Memory - amount of reserved and committed memory in the
+/// user-mode portion of the virtual address space.
+/// Notice that this counter includes reserved memory
+/// (not yet in used) and shared between processes memory (libraries).
+/// - Working Set    - set of memory pages in the virtual address space of the process
+/// that are currently resident in physical memory (RAM).
+/// These pages are available for an application to use
+/// without triggering a page fault.
+/// - Pagefile Usage - space allocated for the pagefile, in bytes.
+/// Those pages may or may not be in memory (RAM)
+/// thus this counter couldn't be used to estimate
+/// how many active pages doesn't present in RAM.
+///
+/// Notice that none of these counters can be used as absolute measure of
+/// application memory consumption!
+///
+/// User should analyze all values in specific case to make correct decision
+/// about memory (over)usage. This is also preferred to use specialized
+/// tools to detect memory leaks.
+///
+/// This also means that these values should not be used for intellectual
+/// memory management by application itself.
 pub use ffi::MemInfo;
 impl MemInfo {
     /// Create and initialize. By default all countes are active
@@ -37,7 +66,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== OSD_MemInfo ========================
-        /// /// **Source:** `OSD_MemInfo.hxx` - `OSD_MemInfo`
+        /// **Source:** `OSD_MemInfo.hxx` - `OSD_MemInfo`
         ///
         /// This class provide information about memory utilized by current process.
         /// This information includes:
@@ -69,7 +98,7 @@ pub(crate) mod ffi {
         /// memory management by application itself.
         #[cxx_name = "OSD_MemInfo"]
         type MemInfo;
-        /// /// **Source:** `OSD_MemInfo.hxx` - `OSD_MemInfo::OSD_MemInfo()`
+        /// **Source:** `OSD_MemInfo.hxx` - `OSD_MemInfo::OSD_MemInfo()`
         ///
         /// Create and initialize. By default all countes are active
         #[cxx_name = "OSD_MemInfo_ctor_bool"]

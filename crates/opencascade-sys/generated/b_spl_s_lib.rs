@@ -12,6 +12,11 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// \brief A cache class for Bezier and B-spline surfaces.
+///
+/// Defines all data, that can be cached on a span of the surface.
+/// The data should be recalculated in going from span to span.
 pub use ffi::Cache;
 impl Cache {
     /// Wrap BSplSLib_Cache in a Handle (reference-counted smart pointer)
@@ -23,6 +28,61 @@ impl Cache {
         ffi::Cache_get_type_name()
     }
 }
+
+/// BSplSLib   B-spline surface Library
+/// This  package provides   an  implementation  of  geometric
+/// functions for rational and non rational, periodic  and non
+/// periodic B-spline surface computation.
+///
+/// this package uses   the  multi-dimensions splines  methods
+/// provided in the package BSplCLib.
+///
+/// In this package the B-spline surface is defined with :
+/// . its control points :  Array2OfPnt     Poles
+/// . its weights        :  Array2OfReal    Weights
+/// . its knots and their multiplicity in the two parametric
+/// direction U and V  :  Array1OfReal    UKnots, VKnots and
+/// Array1OfInteger UMults, VMults.
+/// . the degree of the normalized Spline functions :
+/// UDegree, VDegree
+///
+/// . the Booleans URational, VRational to know if the weights
+/// are constant in the U or V direction.
+///
+/// . the Booleans UPeriodic,   VRational  to know if the  the
+/// surface is periodic in the U or V direction.
+///
+/// Warnings : The  bounds of UKnots  and UMults should be the
+/// same, the bounds of VKnots and VMults should be  the same,
+/// the bounds of Poles and Weights should be the same.
+///
+/// The Control points representation is :
+/// Poles(Uorigin,Vorigin) ...................Poles(Uorigin,Vend)
+/// .                                     .
+/// .                                     .
+/// Poles(Uend, Vorigin) .....................Poles(Uend, Vend)
+///
+/// For  the double array  the row indice   corresponds to the
+/// parametric U direction  and the columns indice corresponds
+/// to the parametric V direction.
+///
+/// Note: weight and multiplicity arrays can be passed by pointer for
+/// some functions so that NULL pointer is valid.
+/// That means no weights/no multiplicities passed.
+///
+/// KeyWords :
+/// B-spline surface, Functions, Library
+///
+/// References :
+/// . A survey of curve and surface methods in CADG Wolfgang BOHM
+/// CAGD 1 (1984)
+/// . On de Boor-like algorithms and blossoming Wolfgang BOEHM
+/// cagd 5 (1988)
+/// . Blossoming and knot insertion algorithms for B-spline curves
+/// Ronald N. GOLDMAN
+/// . Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA
+/// . Curves and Surfaces for Computer Aided Geometric Design,
+/// a practical guide Gerald Farin
 pub use ffi::BSplSLib;
 impl BSplSLib {
     /// this is a one dimensional function
@@ -347,6 +407,7 @@ impl BSplSLib {
         )
     }
 }
+
 pub use ffi::EvaluatorFunction;
 impl EvaluatorFunction {}
 #[cxx::bridge]
@@ -359,7 +420,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BSplSLib_Cache ========================
-        /// /// **Source:** `BSplSLib_Cache.hxx` - `BSplSLib_Cache`
+        /// **Source:** `BSplSLib_Cache.hxx` - `BSplSLib_Cache`
         ///
         /// \brief A cache class for Bezier and B-spline surfaces.
         ///
@@ -422,7 +483,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BSplSLib_Cache_to_handle"]
         fn Cache_to_handle(obj: UniquePtr<Cache>) -> UniquePtr<HandleBSplSLibCache>;
         /// ======================== BSplSLib ========================
-        /// /// **Source:** `BSplSLib.hxx` - `BSplSLib`
+        /// **Source:** `BSplSLib.hxx` - `BSplSLib`
         ///
         /// BSplSLib   B-spline surface Library
         /// This  package provides   an  implementation  of  geometric
@@ -736,7 +797,7 @@ pub(crate) mod ffi {
             InversionProblem: &mut i32,
         );
         /// ======================== BSplSLib_EvaluatorFunction ========================
-        /// /// **Source:** `BSplSLib_EvaluatorFunction.hxx` - `BSplSLib_EvaluatorFunction`
+        /// **Source:** `BSplSLib_EvaluatorFunction.hxx` - `BSplSLib_EvaluatorFunction`
         #[cxx_name = "BSplSLib_EvaluatorFunction"]
         type EvaluatorFunction;
         /// Function evaluation method to be defined by descendant

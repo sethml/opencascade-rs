@@ -26,6 +26,25 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Auxiliary class representing a part of the global progress scale allocated by
+/// a step of the progress scope, see Message_ProgressScope::Next().
+///
+/// A range object takes responsibility of advancing the progress by the size of
+/// allocated step, which is then performed depending on how it is used:
+///
+/// - If Message_ProgressScope object is created using this range as argument, then
+/// this respondibility is taken over by that scope.
+///
+/// - Otherwise, a range advances progress directly upon destruction.
+///
+/// A range object can be copied, the responsibility for progress advancement is
+/// then taken by the copy.
+/// The same range object may be used (either copied or used to create scope) only once.
+/// Any consequent attempts to use range will give no result on the progress;
+/// in debug mode, an assert message will be generated.
+///
+/// @sa Message_ProgressScope for more details
 pub use ffi::ProgressRange;
 impl ProgressRange {
     /// Constructor of the empty range
@@ -38,6 +57,10 @@ impl ProgressRange {
         ffi::ProgressRange_ctor_progressrange(theOther)
     }
 }
+
+/// Defines
+/// - tools to work with messages
+/// - basic tools intended for progress indication
 pub use ffi::Message;
 impl Message {
     pub fn send_fail_asciistring(theMessage: &ffi::TCollection_AsciiString) {
@@ -73,6 +96,26 @@ impl Message {
         ffi::Message_fill_time(Hour, Minute, Second)
     }
 }
+
+/// Messenger is API class providing general-purpose interface for
+/// libraries that may issue text messages without knowledge
+/// of how these messages will be further processed.
+///
+/// The messenger contains a sequence of "printers" which can be
+/// customized by the application, and dispatches every received
+/// message to all the printers.
+///
+/// For convenience, a set of methods Send...() returning a string
+/// stream buffer is defined for use of stream-like syntax with operator <<
+///
+/// Example:
+/// ~~~~~
+/// Messenger->SendFail() << " Unknown fail at line " << aLineNo << " in file " << aFile;
+/// ~~~~~
+///
+/// The message is sent to messenger on destruction of the stream buffer,
+/// call to Flush(), or passing manipulator std::ends, std::endl, or std::flush.
+/// Empty messages are not sent except if manipulator is used.
 pub use ffi::Messenger;
 impl Messenger {
     /// Empty constructor; initializes by single printer directed to std::cout.
@@ -97,12 +140,181 @@ impl Messenger {
         ffi::Messenger_get_type_name()
     }
 }
+
+/// Abstract interface class defining printer as output context for text messages
+///
+/// The message, besides being text string, has associated gravity
+/// level, which can be used by printer to decide either to process a message or ignore it.
 pub use ffi::Printer;
 impl Printer {
     pub fn get_type_name() -> String {
         ffi::Printer_get_type_name()
     }
 }
+
+/// Message_ProgressScope class provides convenient way to advance progress
+/// indicator in context of complex program organized in hierarchical way,
+/// where usually it is difficult (or even not possible) to consider process
+/// as linear with fixed step.
+///
+/// On every level (sub-operation) in hierarchy of operations
+/// the local instance of the Message_ProgressScope class is created.
+/// It takes a part of the upper-level scope (via Message_ProgressRange) and provides
+/// a way to consider this part as independent scale with locally defined range.
+///
+/// The position on the local scale may be advanced using the method Next(),
+/// which allows iteration-like advancement. This method can take argument to
+/// advance by the specified value (with default step equal to 1).
+/// This method returns Message_ProgressRange object that takes responsibility
+/// of making the specified step, either directly at its destruction or by
+/// delegating this task to another sub-scope created from that range object.
+///
+/// It is important that sub-scope must have life time less than
+/// the life time of its parent scope that provided the range.
+/// The usage pattern is to create scope objects as local variables in the
+/// functions that do the job, and pass range objects returned by Next() to
+/// the functions of the lower level, to allow them creating their own scopes.
+///
+/// The scope has a name that can be used in visualization of the progress.
+/// It can be null. Note that when C string literal is used as a name, then its
+/// value is not copied, just pointer is stored. In other variants (char pointer
+/// or a string class) the string is copied, which is additional overhead.
+///
+/// The same instance of the progress scope! must not be used concurrently from different threads.
+/// For the algorithm running its tasks in parallel threads, a common scope is
+/// created before the parallel execution, and the range objects produced by method
+/// Next() are used to initialise the data pertinent to each task.
+/// Then the progress is advanced within each task using its own range object.
+/// See example below.
+///
+/// Note that while a range of the scope is specified using Standard_Real
+/// (double) parameter, it is expected to be a positive integer value.
+/// If the range is not an integer, method Next() shall be called with
+/// explicit step argument, and the rounded value returned by method Value()
+/// may be not coherent with the step and range.
+///
+/// A scope can be created with option "infinite". This is useful when
+/// the number of steps is not known by the time of the scope creation.
+/// In this case the progress will be advanced logarithmically, approaching
+/// the end of the scope at infinite number of steps. The parameter Max
+/// for infinite scope indicates number of steps corresponding to mid-range.
+///
+/// A progress scope created with empty constructor is not connected to any
+/// progress indicator, and passing the range created on it to any algorithm
+/// allows it executing safely without actual progress indication.
+///
+/// Example of preparation of progress indicator:
+///
+/// @code{.cpp}
+/// Handle(Message_ProgressIndicator) aProgress = ...; // assume it can be null
+/// func (Message_ProgressIndicator::Start (aProgress));
+/// @endcode
+///
+/// Example of usage in sequential process:
+///
+/// @code{.cpp}
+/// Message_ProgressScope aWholePS(aRange, "Whole process", 100);
+///
+/// // do one step taking 20%
+/// func1 (aWholePS.Next (20)); // func1 will take 20% of the whole scope
+/// if (aWholePS.UserBreak()) // exit prematurely if the user requested break
+/// return;
+///
+/// // ... do next step taking 50%
+/// func2 (aWholePS.Next (50));
+/// if (aWholePS.UserBreak())
+/// return;
+/// @endcode
+///
+/// Example of usage in nested cycle:
+///
+/// @code{.cpp}
+/// // Outer cycle
+/// Message_ProgressScope anOuter (theProgress, "Outer", nbOuter);
+/// for (Standard_Integer i = 0; i < nbOuter && anOuter.More(); i++)
+/// {
+/// // Inner cycle
+/// Message_ProgressScope anInner (anOuter.Next(), "Inner", nbInner);
+/// for (Standard_Integer j = 0; j < nbInner && anInner.More(); j++)
+/// {
+/// // Cycle body
+/// func (anInner.Next());
+/// }
+/// }
+/// @endcode
+///
+/// Example of use in function:
+///
+/// @code{.cpp}
+/// //! Implementation of iterative algorithm showing its progress
+/// func (const Message_ProgressRange& theProgress)
+/// {
+/// // Create local scope covering the given progress range.
+/// // Set this scope to count aNbSteps steps.
+/// Message_ProgressScope aScope (theProgress, "", aNbSteps);
+/// for (Standard_Integer i = 0; i < aNbSteps && aScope.More(); i++)
+/// {
+/// // Optional: pass range returned by method Next() to the nested algorithm
+/// // to allow it to show its progress too (by creating its own scope object).
+/// // In any case the progress will advance to the next step by the end of the func2 call.
+/// func2 (aScope.Next());
+/// }
+/// }
+/// @endcode
+///
+/// Example of usage in parallel process:
+///
+/// @code{.cpp}
+/// struct Task
+/// {
+/// Data& Data;
+/// Message_ProgressRange Range;
+///
+/// Task (const Data& theData, const Message_ProgressRange& theRange)
+/// : Data (theData), Range (theRange) {}
+/// };
+/// struct Functor
+/// {
+/// void operator() (Task& theTask) const
+/// {
+/// // Note: it is essential that this method is executed only once for the same Task object
+/// Message_ProgressScope aPS (theTask.Range, NULL, theTask.Data.NbItems);
+/// for (Standard_Integer i = 0; i < theTask.Data.NbSteps && aPS.More(); i++)
+/// {
+/// do_job (theTask.Data.Item[i], aPS.Next());
+/// }
+/// }
+/// };
+/// ...
+/// {
+/// std::vector<Data> aData = ...;
+/// std::vector<Task> aTasks;
+///
+/// Message_ProgressScope aPS (aRootRange, "Data processing", aData.size());
+/// for (Standard_Integer i = 0; i < aData.size(); ++i)
+/// aTasks.push_back (Task (aData[i], aPS.Next()));
+///
+/// OSD_Parallel::ForEach (aTasks.begin(), aTasks.end(), Functor());
+/// }
+/// @endcode
+///
+/// For lightweight algorithms that do not need advancing the progress
+/// within individual tasks the code can be simplified to avoid inner scopes:
+///
+/// @code
+/// struct Functor
+/// {
+/// void operator() (Task& theTask) const
+/// {
+/// if (theTask.Range.More())
+/// {
+/// do_job (theTask.Data);
+/// // advance the progress
+/// theTask.Range.Close();
+/// }
+/// }
+/// };
+/// @endcode
 pub use ffi::ProgressScope;
 impl ProgressScope {
     /// @name Preparation methods
@@ -151,6 +363,37 @@ impl ProgressScope {
         ffi::ProgressScope_name(self)
     }
 }
+
+/// Defines abstract interface from program to the user.
+/// This includes progress indication and user break mechanisms.
+///
+/// The progress indicator controls the progress scale with range from 0 to 1.
+///
+/// Method Start() should be called once, at the top level of the call stack,
+/// to reset progress indicator and get access to the root range:
+///
+/// @code{.cpp}
+/// Handle(Message_ProgressIndicator) aProgress = ...;
+/// anAlgorithm.Perform (aProgress->Start());
+/// @endcode
+///
+/// To advance the progress indicator in the algorithm,
+/// use the class Message_ProgressScope that provides iterator-like
+/// interface for incrementing progress; see documentation of that
+/// class for details.
+/// The object of class Message_ProgressRange will automatically advance
+/// the indicator if it is not passed to any Message_ProgressScope.
+///
+/// The progress indicator supports concurrent processing and
+/// can be used in multithreaded applications.
+///
+/// The derived class should be created to connect this interface to
+/// actual implementation of progress indicator, to take care of visualization
+/// of the progress (e.g. show total position at the graphical bar,
+/// print scopes in text mode, or else), and for implementation
+/// of user break mechanism (if necessary).
+///
+/// See details in documentation of methods Show() and UserBreak().
 pub use ffi::ProgressIndicator;
 impl ProgressIndicator {
     /// Resets the indicator to zero, calls Reset(), and returns the range.
@@ -174,6 +417,48 @@ impl ProgressIndicator {
         ffi::ProgressIndicator_start_handleprogressindicator(theProgress)
     }
 }
+
+/// Class Message_Algorithm is intended to be the base class for
+/// classes implementing algorithms or any operations that need
+/// to provide extended information on its execution to the
+/// caller / user.
+///
+/// It provides generic mechanism for management of the execution
+/// status, collection and output of messages.
+///
+/// The algorithm uses methods SetStatus() to set an execution status.
+/// It is possible to associate a status with a number or a string
+/// (second argument of SetStatus() methods) to indicate precisely
+/// the item (object, element etc.) in the input data which caused
+/// the problem.
+///
+/// Each execution status generated by the algorithm has associated
+/// text message that should be defined in the resource file loaded
+/// with call to Message_MsgFile::LoadFile().
+///
+/// The messages corresponding to the statuses generated during the
+/// algorithm execution are output to Message_Messenger using
+/// methods SendMessages(). If status have associated numbers
+/// or strings, they are included in the message body in place of
+/// "%s" placeholder which should be present in the message text.
+///
+/// The name of the message text in the resource file is constructed
+/// from name of the class and name of the status, separated by dot,
+/// for instance:
+///
+/// .TObj_CheckModel.Alarm2
+/// Error: Some objects (%s) have references to dead object(s)
+///
+/// If message for the status is not found with prefix of
+/// the current class type, the same message is searched for the base
+/// class(es) recursively.
+///
+/// Message can be set explicitly for the status; in this case the
+/// above procedure is not used and supplied message is used as is.
+///
+/// The messages are output to the messenger, stored in the field;
+/// though messenger can be changed, it is guaranteed to be non-null.
+/// By default, Message::DefaultMessenger() is used.
 pub use ffi::Algorithm;
 impl Algorithm {
     /// Empty constructor
@@ -215,6 +500,23 @@ impl Algorithm {
         ffi::Algorithm_get_type_name()
     }
 }
+
+///
+/// Tiny class for extended handling of error / execution
+/// status of algorithm in universal way.
+///
+/// It is in fact a set of integers represented as a collection of bit flags
+/// for each of four types of status; each status flag has its own symbolic
+/// name and can be set/tested individually.
+///
+/// The flags are grouped in semantic groups:
+/// - No flags means nothing done
+/// - Done flags correspond to some operation successfully completed
+/// - Warning flags correspond to warning messages on some
+/// potentially wrong situation, not harming algorithm execution
+/// - Alarm flags correspond to more severe warnings about incorrect
+/// user data, while not breaking algorithm execution
+/// - Fail flags correspond to cases when algorithm failed to complete
 pub use ffi::ExecStatus;
 impl ExecStatus {
     /// Create empty execution status
@@ -222,6 +524,27 @@ impl ExecStatus {
         ffi::ExecStatus_ctor()
     }
 }
+
+/// This class provides a tool for constructing the parametrized message
+/// basing on resources loaded by Message_MsgFile tool.
+///
+/// A Message is created from a keyword: this keyword identifies the
+/// message in a message file that should be previously loaded by call
+/// to Message_MsgFile::LoadFile().
+///
+/// The text of the message can contain placeholders for the parameters
+/// which are to be filled by the proper values when the message
+/// is prepared. Most of the format specifiers used in C can be used,
+/// for instance, %s for string, %d for integer etc. In addition,
+/// specifier %f is supported for double numbers (for compatibility
+/// with previous versions).
+///
+/// User fills the parameter fields in the text of the message by
+/// calling corresponding methods Arg() or operators .
+///
+/// The resulting message, filled with all parameters, can be obtained
+/// by method Get(). If some parameters were not filled, the text
+/// UNKNOWN is placed instead.
 pub use ffi::Msg;
 impl Msg {
     /// Empty constructor
@@ -250,6 +573,30 @@ impl Msg {
         ffi::Msg_set_charptr(self, theMsg)
     }
 }
+
+/// Container for alert messages, sorted according to their gravity.
+///
+/// For each gravity level, alerts are stored in simple list.
+/// If alert being added can be merged with another alert of the same
+/// type already in the list, it is merged and not added to the list.
+///
+/// This class is intended to be used as follows:
+///
+/// - In the process of execution, algorithm fills report by alert objects
+/// using methods AddAlert()
+///
+/// - The result can be queried for presence of particular alert using
+/// methods HasAlert()
+///
+/// - The reports produced by nested or sequentially executed algorithms
+/// can be collected in one using method Merge()
+///
+/// - The report can be shown to the user either as plain text with method
+/// Dump() or in more advanced way, by iterating over lists returned by GetAlerts()
+///
+/// - Report can be cleared by methods Clear() (usually after reporting)
+///
+/// Message_PrinterToReport is a printer in Messenger to convert data sent to messenger into report
 pub use ffi::Report;
 impl Report {
     /// Empty constructor
@@ -266,6 +613,20 @@ impl Report {
         ffi::Report_get_type_name()
     }
 }
+
+/// This class is an instance of Sentry to create a level in a message report
+/// Constructor of the class add new (active) level in the report, destructor removes it
+/// While the level is active in the report, new alerts are added below the level root alert.
+///
+/// The first added alert is a root alert, other are added below the root alert
+///
+/// If alert has Message_AttributeMeter attribute, active metrics of the default report are stored
+/// in the attribute: start value of metric on adding alert, stop on adding another alert or closing
+/// (delete) the level in the report.
+///
+/// Processing of this class is implemented in Message_Report, it is used only inside it.
+/// Levels using should be only through using OCCT_ADD_MESSAGE_LEVEL_SENTRY only. No other code is
+/// required outside.
 pub use ffi::Level;
 impl Level {
     /// Constructor.
@@ -275,6 +636,18 @@ impl Level {
         ffi::Level_ctor_asciistring(theName)
     }
 }
+
+/// Base class of the hierarchy of classes describing various situations
+/// occurring during execution of some algorithm or procedure.
+///
+/// Alert should provide unique text identifier that can be used to distinguish
+/// particular type of alerts, e.g. to get text message string describing it.
+/// See method GetMessageKey(); by default, dynamic type name is used.
+///
+/// Alert can contain some data. To avoid duplication of data, new alert
+/// can be merged with another one of the same type. Method SupportsMerge()
+/// should return true if merge is supported; method Merge() should do the
+/// merge if possible and return true in that case and false otherwise.
 pub use ffi::Alert;
 impl Alert {
     /// Wrap Message_Alert in a Handle (reference-counted smart pointer)
@@ -295,6 +668,11 @@ impl Alert {
         ffi::Alert_get_type_name()
     }
 }
+
+/// Inherited class of Message_Alert with some additional information.
+/// It has Message_Attributes to provide the alert name, and other custom information
+/// It has a container of composite alerts, if the alert might provide
+/// sub-alerts collecting.
 pub use ffi::AlertExtended;
 impl AlertExtended {
     /// Empty constructor
@@ -344,7 +722,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Message_ProgressRange ========================
-        /// /// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange`
+        /// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange`
         ///
         /// Auxiliary class representing a part of the global progress scale allocated by
         /// a step of the progress scope, see Message_ProgressScope::Next().
@@ -366,12 +744,12 @@ pub(crate) mod ffi {
         /// @sa Message_ProgressScope for more details
         #[cxx_name = "Message_ProgressRange"]
         type ProgressRange;
-        /// /// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange::Message_ProgressRange()`
+        /// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange::Message_ProgressRange()`
         ///
         /// Constructor of the empty range
         #[cxx_name = "Message_ProgressRange_ctor"]
         fn ProgressRange_ctor() -> UniquePtr<ProgressRange>;
-        /// /// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange::Message_ProgressRange()`
+        /// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange::Message_ProgressRange()`
         ///
         /// Copy constructor disarms the source
         #[cxx_name = "Message_ProgressRange_ctor_progressrange"]
@@ -389,7 +767,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Close"]
         fn close(self: Pin<&mut ProgressRange>);
         /// ======================== Message ========================
-        /// /// **Source:** `Message.hxx` - `Message`
+        /// **Source:** `Message.hxx` - `Message`
         ///
         /// Defines
         /// - tools to work with messages
@@ -418,7 +796,7 @@ pub(crate) mod ffi {
             Second: f64,
         ) -> UniquePtr<TCollection_AsciiString>;
         /// ======================== Message_Messenger ========================
-        /// /// **Source:** `Message_Messenger.hxx` - `Message_Messenger`
+        /// **Source:** `Message_Messenger.hxx` - `Message_Messenger`
         ///
         /// Messenger is API class providing general-purpose interface for
         /// libraries that may issue text messages without knowledge
@@ -441,7 +819,7 @@ pub(crate) mod ffi {
         /// Empty messages are not sent except if manipulator is used.
         #[cxx_name = "Message_Messenger"]
         type Messenger;
-        /// /// **Source:** `Message_Messenger.hxx` - `Message_Messenger::Message_Messenger()`
+        /// **Source:** `Message_Messenger.hxx` - `Message_Messenger::Message_Messenger()`
         ///
         /// Empty constructor; initializes by single printer directed to std::cout.
         /// Note: the default messenger is not empty but directed to cout
@@ -449,7 +827,7 @@ pub(crate) mod ffi {
         /// If printing to cout is not needed, clear messenger by GetPrinters().Clear()
         #[cxx_name = "Message_Messenger_ctor"]
         fn Messenger_ctor() -> UniquePtr<Messenger>;
-        /// /// **Source:** `Message_Messenger.hxx` - `Message_Messenger::Message_Messenger()`
+        /// **Source:** `Message_Messenger.hxx` - `Message_Messenger::Message_Messenger()`
         ///
         /// Create messenger with single printer
         #[cxx_name = "Message_Messenger_ctor_handleprinter"]
@@ -502,7 +880,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Message_Messenger_to_handle"]
         fn Messenger_to_handle(obj: UniquePtr<Messenger>) -> UniquePtr<HandleMessageMessenger>;
         /// ======================== Message_Printer ========================
-        /// /// **Source:** `Message_Printer.hxx` - `Message_Printer`
+        /// **Source:** `Message_Printer.hxx` - `Message_Printer`
         ///
         /// Abstract interface class defining printer as output context for text messages
         ///
@@ -515,7 +893,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Message_Printer_get_type_name"]
         fn Printer_get_type_name() -> String;
         /// ======================== Message_ProgressScope ========================
-        /// /// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope`
+        /// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope`
         ///
         /// Message_ProgressScope class provides convenient way to advance progress
         /// indicator in context of complex program organized in hierarchical way,
@@ -682,14 +1060,14 @@ pub(crate) mod ffi {
         /// @endcode
         #[cxx_name = "Message_ProgressScope"]
         type ProgressScope;
-        /// /// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope::Message_ProgressScope()`
+        /// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope::Message_ProgressScope()`
         ///
         /// @name Preparation methods
         /// Creates dummy scope.
         /// It can be safely passed to algorithms; no progress indication will be done.
         #[cxx_name = "Message_ProgressScope_ctor"]
         fn ProgressScope_ctor() -> UniquePtr<ProgressScope>;
-        /// /// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope::Message_ProgressScope()`
+        /// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope::Message_ProgressScope()`
         ///
         /// Creates a new scope taking responsibility of the part of the progress
         /// scale described by theRange. The new scope has own range from 0 to
@@ -766,7 +1144,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Message_ProgressScope_Name"]
         fn ProgressScope_name(self_: &ProgressScope) -> String;
         /// ======================== Message_ProgressIndicator ========================
-        /// /// **Source:** `Message_ProgressIndicator.hxx` - `Message_ProgressIndicator`
+        /// **Source:** `Message_ProgressIndicator.hxx` - `Message_ProgressIndicator`
         ///
         /// Defines abstract interface from program to the user.
         /// This includes progress indication and user break mechanisms.
@@ -823,7 +1201,7 @@ pub(crate) mod ffi {
             theProgress: &HandleMessageProgressIndicator,
         ) -> UniquePtr<ProgressRange>;
         /// ======================== Message_Algorithm ========================
-        /// /// **Source:** `Message_Algorithm.hxx` - `Message_Algorithm`
+        /// **Source:** `Message_Algorithm.hxx` - `Message_Algorithm`
         ///
         /// Class Message_Algorithm is intended to be the base class for
         /// classes implementing algorithms or any operations that need
@@ -868,7 +1246,7 @@ pub(crate) mod ffi {
         /// By default, Message::DefaultMessenger() is used.
         #[cxx_name = "Message_Algorithm"]
         type Algorithm;
-        /// /// **Source:** `Message_Algorithm.hxx` - `Message_Algorithm::Message_Algorithm()`
+        /// **Source:** `Message_Algorithm.hxx` - `Message_Algorithm::Message_Algorithm()`
         ///
         /// Empty constructor
         #[cxx_name = "Message_Algorithm_ctor"]
@@ -925,7 +1303,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Message_Algorithm_to_handle"]
         fn Algorithm_to_handle(obj: UniquePtr<Algorithm>) -> UniquePtr<HandleMessageAlgorithm>;
         /// ======================== Message_ExecStatus ========================
-        /// /// **Source:** `Message_ExecStatus.hxx` - `Message_ExecStatus`
+        /// **Source:** `Message_ExecStatus.hxx` - `Message_ExecStatus`
         ///
         ///
         /// Tiny class for extended handling of error / execution
@@ -945,7 +1323,7 @@ pub(crate) mod ffi {
         /// - Fail flags correspond to cases when algorithm failed to complete
         #[cxx_name = "Message_ExecStatus"]
         type ExecStatus;
-        /// /// **Source:** `Message_ExecStatus.hxx` - `Message_ExecStatus::Message_ExecStatus()`
+        /// **Source:** `Message_ExecStatus.hxx` - `Message_ExecStatus::Message_ExecStatus()`
         ///
         /// Create empty execution status
         #[cxx_name = "Message_ExecStatus_ctor"]
@@ -987,7 +1365,7 @@ pub(crate) mod ffi {
         #[cxx_name = "And"]
         fn and(self: Pin<&mut ExecStatus>, theOther: &ExecStatus);
         /// ======================== Message_Msg ========================
-        /// /// **Source:** `Message_Msg.hxx` - `Message_Msg`
+        /// **Source:** `Message_Msg.hxx` - `Message_Msg`
         ///
         /// This class provides a tool for constructing the parametrized message
         /// basing on resources loaded by Message_MsgFile tool.
@@ -1011,22 +1389,22 @@ pub(crate) mod ffi {
         /// UNKNOWN is placed instead.
         #[cxx_name = "Message_Msg"]
         type Msg;
-        /// /// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`
+        /// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`
         ///
         /// Empty constructor
         #[cxx_name = "Message_Msg_ctor"]
         fn Msg_ctor() -> UniquePtr<Msg>;
-        /// /// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`
+        /// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`
         ///
         /// Copy constructor
         #[cxx_name = "Message_Msg_ctor_msg"]
         fn Msg_ctor_msg(theMsg: &Msg) -> UniquePtr<Msg>;
-        /// /// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`
+        /// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`
         ///
         /// Create a message using a corresponding entry in Message_MsgFile
         #[cxx_name = "Message_Msg_ctor_charptr"]
         fn Msg_ctor_charptr(theKey: &str) -> UniquePtr<Msg>;
-        /// /// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`
+        /// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`
         ///
         /// Create a message using a corresponding entry in Message_MsgFile
         #[cxx_name = "Message_Msg_ctor_extendedstring"]
@@ -1086,7 +1464,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Message_Msg_Set"]
         fn Msg_set_charptr(self_: Pin<&mut Msg>, theMsg: &str);
         /// ======================== Message_Report ========================
-        /// /// **Source:** `Message_Report.hxx` - `Message_Report`
+        /// **Source:** `Message_Report.hxx` - `Message_Report`
         ///
         /// Container for alert messages, sorted according to their gravity.
         ///
@@ -1113,7 +1491,7 @@ pub(crate) mod ffi {
         /// Message_PrinterToReport is a printer in Messenger to convert data sent to messenger into report
         #[cxx_name = "Message_Report"]
         type Report;
-        /// /// **Source:** `Message_Report.hxx` - `Message_Report::Message_Report()`
+        /// **Source:** `Message_Report.hxx` - `Message_Report::Message_Report()`
         ///
         /// Empty constructor
         #[cxx_name = "Message_Report_ctor"]
@@ -1178,7 +1556,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Message_Report_to_handle"]
         fn Report_to_handle(obj: UniquePtr<Report>) -> UniquePtr<HandleMessageReport>;
         /// ======================== Message_Level ========================
-        /// /// **Source:** `Message_Level.hxx` - `Message_Level`
+        /// **Source:** `Message_Level.hxx` - `Message_Level`
         ///
         /// This class is an instance of Sentry to create a level in a message report
         /// Constructor of the class add new (active) level in the report, destructor removes it
@@ -1195,7 +1573,7 @@ pub(crate) mod ffi {
         /// required outside.
         #[cxx_name = "Message_Level"]
         type Level;
-        /// /// **Source:** `Message_Level.hxx` - `Message_Level::Message_Level()`
+        /// **Source:** `Message_Level.hxx` - `Message_Level::Message_Level()`
         ///
         /// Constructor.
         /// One string key is used for all alert meters.
@@ -1215,7 +1593,7 @@ pub(crate) mod ffi {
             isRequiredToStart: bool,
         );
         /// ======================== Message_Alert ========================
-        /// /// **Source:** `Message_Alert.hxx` - `Message_Alert`
+        /// **Source:** `Message_Alert.hxx` - `Message_Alert`
         ///
         /// Base class of the hierarchy of classes describing various situations
         /// occurring during execution of some algorithm or procedure.
@@ -1255,7 +1633,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Message_Alert_to_handle"]
         fn Alert_to_handle(obj: UniquePtr<Alert>) -> UniquePtr<HandleMessageAlert>;
         /// ======================== Message_AlertExtended ========================
-        /// /// **Source:** `Message_AlertExtended.hxx` - `Message_AlertExtended`
+        /// **Source:** `Message_AlertExtended.hxx` - `Message_AlertExtended`
         ///
         /// Inherited class of Message_Alert with some additional information.
         /// It has Message_Attributes to provide the alert name, and other custom information
@@ -1263,7 +1641,7 @@ pub(crate) mod ffi {
         /// sub-alerts collecting.
         #[cxx_name = "Message_AlertExtended"]
         type AlertExtended;
-        /// /// **Source:** `Message_AlertExtended.hxx` - `Message_AlertExtended::Message_AlertExtended()`
+        /// **Source:** `Message_AlertExtended.hxx` - `Message_AlertExtended::Message_AlertExtended()`
         ///
         /// Empty constructor
         #[cxx_name = "Message_AlertExtended_ctor"]

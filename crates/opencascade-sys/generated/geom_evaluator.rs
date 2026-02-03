@@ -11,6 +11,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Interface for calculation of values and derivatives for different kinds of curves in 3D.
+/// Works both with adaptors and curves.
 pub use ffi::Curve;
 impl Curve {
     /// Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1
@@ -26,6 +29,9 @@ impl Curve {
         ffi::Curve_get_type_name()
     }
 }
+
+/// Interface for calculation of values and derivatives for different kinds of surfaces.
+/// Works both with adaptors and surfaces.
 pub use ffi::Surface;
 impl Surface {
     /// Calculates N-th derivatives of surface, where N = theDerU + theDerV.
@@ -59,7 +65,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== GeomEvaluator_Curve ========================
-        /// /// **Source:** `GeomEvaluator_Curve.hxx` - `GeomEvaluator_Curve`
+        /// **Source:** `GeomEvaluator_Curve.hxx` - `GeomEvaluator_Curve`
         ///
         /// Interface for calculation of values and derivatives for different kinds of curves in 3D.
         /// Works both with adaptors and curves.
@@ -100,7 +106,7 @@ pub(crate) mod ffi {
         #[cxx_name = "GeomEvaluator_Curve_get_type_name"]
         fn Curve_get_type_name() -> String;
         /// ======================== GeomEvaluator_Surface ========================
-        /// /// **Source:** `GeomEvaluator_Surface.hxx` - `GeomEvaluator_Surface`
+        /// **Source:** `GeomEvaluator_Surface.hxx` - `GeomEvaluator_Surface`
         ///
         /// Interface for calculation of values and derivatives for different kinds of surfaces.
         /// Works both with adaptors and surfaces.

@@ -13,6 +13,25 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// This  class  is  used  to  interpolate a  BsplineCurve
+/// passing   through  an  array  of  points,  with  a  C2
+/// Continuity if tangency is not requested at the point.
+/// If tangency is requested at the point the continuity will
+/// be C1.  If Perodicity is requested the curve will be closed
+/// and the junction will be the first point given. The curve
+/// will than be only C1
+/// Describes functions for building a constrained 3D BSpline curve.
+/// The curve is defined by a table of points
+/// through which it passes, and if required:
+/// -   by a parallel table of reals which gives the
+/// value of the parameter of each point through
+/// which the resulting BSpline curve passes, and
+/// -   by vectors tangential to these points.
+/// An Interpolate object provides a framework for:
+/// -   defining the constraints of the BSpline curve,
+/// -   implementing the interpolation algorithm, and
+/// -   consulting the results.
 pub use ffi::Interpolate;
 impl Interpolate {
     /// Initializes an algorithm for constructing a
@@ -111,6 +130,14 @@ impl Interpolate {
         )
     }
 }
+
+/// This  class  is  used  to  approximate a  BsplineCurve
+/// passing  through an  array  of points,  with  a  given Continuity.
+/// Describes functions for building a 3D BSpline
+/// curve which approximates a set of points.
+/// A PointsToBSpline object provides a framework for:
+/// -   defining the data of the BSpline curve to be built,
+/// -   implementing the approximation algorithm, and consulting the results.
 pub use ffi::PointsToBSpline;
 impl PointsToBSpline {
     /// Constructs an empty approximation algorithm.
@@ -119,6 +146,9 @@ impl PointsToBSpline {
         ffi::PointsToBSpline_ctor()
     }
 }
+
+/// This class implements methods for  computing all the orthogonal
+/// projections of a 3D point onto a  3D curve.
 pub use ffi::ProjectPointOnCurve;
 impl ProjectPointOnCurve {
     /// Creates an empty object. Use an
@@ -163,6 +193,9 @@ impl ProjectPointOnCurve {
         ffi::ProjectPointOnCurve_nearest_point(self)
     }
 }
+
+/// This class implements methods for  computing all the orthogonal
+/// projections of a point onto a  surface.
 pub use ffi::ProjectPointOnSurf;
 impl ProjectPointOnSurf {
     /// Creates an empty object. Use the
@@ -198,7 +231,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== GeomAPI_Interpolate ========================
-        /// /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate`
+        /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate`
         ///
         /// This  class  is  used  to  interpolate a  BsplineCurve
         /// passing   through  an  array  of  points,  with  a  C2
@@ -220,7 +253,7 @@ pub(crate) mod ffi {
         /// -   consulting the results.
         #[cxx_name = "GeomAPI_Interpolate"]
         type Interpolate;
-        /// /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate::GeomAPI_Interpolate()`
+        /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate::GeomAPI_Interpolate()`
         ///
         /// Initializes an algorithm for constructing a
         /// constrained BSpline curve passing through the points of the table   Points.
@@ -264,7 +297,7 @@ pub(crate) mod ffi {
             PeriodicFlag: bool,
             Tolerance: f64,
         ) -> UniquePtr<Interpolate>;
-        /// /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate::GeomAPI_Interpolate()`
+        /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate::GeomAPI_Interpolate()`
         ///
         /// Initializes an algorithm for constructing a
         /// constrained BSpline curve passing through the points of the table
@@ -358,7 +391,7 @@ pub(crate) mod ffi {
         #[cxx_name = "IsDone"]
         fn is_done(self: &Interpolate) -> bool;
         /// ======================== GeomAPI_PointsToBSpline ========================
-        /// /// **Source:** `GeomAPI_PointsToBSpline.hxx` - `GeomAPI_PointsToBSpline`
+        /// **Source:** `GeomAPI_PointsToBSpline.hxx` - `GeomAPI_PointsToBSpline`
         ///
         /// This  class  is  used  to  approximate a  BsplineCurve
         /// passing  through an  array  of points,  with  a  given Continuity.
@@ -369,7 +402,7 @@ pub(crate) mod ffi {
         /// -   implementing the approximation algorithm, and consulting the results.
         #[cxx_name = "GeomAPI_PointsToBSpline"]
         type PointsToBSpline;
-        /// /// **Source:** `GeomAPI_PointsToBSpline.hxx` - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
+        /// **Source:** `GeomAPI_PointsToBSpline.hxx` - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
         ///
         /// Constructs an empty approximation algorithm.
         /// Use an Init function to define and build the BSpline curve.
@@ -382,19 +415,19 @@ pub(crate) mod ffi {
         #[cxx_name = "IsDone"]
         fn is_done(self: &PointsToBSpline) -> bool;
         /// ======================== GeomAPI_ProjectPointOnCurve ========================
-        /// /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve`
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve`
         ///
         /// This class implements methods for  computing all the orthogonal
         /// projections of a 3D point onto a  3D curve.
         #[cxx_name = "GeomAPI_ProjectPointOnCurve"]
         type ProjectPointOnCurve;
-        /// /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
         ///
         /// Creates an empty object. Use an
         /// Init function for further initialization.
         #[cxx_name = "GeomAPI_ProjectPointOnCurve_ctor"]
         fn ProjectPointOnCurve_ctor() -> UniquePtr<ProjectPointOnCurve>;
-        /// /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
         ///
         /// Create the projection  of a  point  <P> on a curve
         /// <Curve>
@@ -403,7 +436,7 @@ pub(crate) mod ffi {
             P: &gp_Pnt,
             Curve: &HandleGeomCurve,
         ) -> UniquePtr<ProjectPointOnCurve>;
-        /// /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
+        /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
         ///
         /// Create  the projection  of a point <P>  on a curve
         /// <Curve> limited by the two points of parameter Umin and Usup.
@@ -498,13 +531,13 @@ pub(crate) mod ffi {
         #[cxx_name = "GeomAPI_ProjectPointOnCurve_NearestPoint"]
         fn ProjectPointOnCurve_nearest_point(self_: &ProjectPointOnCurve) -> UniquePtr<gp_Pnt>;
         /// ======================== GeomAPI_ProjectPointOnSurf ========================
-        /// /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx` - `GeomAPI_ProjectPointOnSurf`
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx` - `GeomAPI_ProjectPointOnSurf`
         ///
         /// This class implements methods for  computing all the orthogonal
         /// projections of a point onto a  surface.
         #[cxx_name = "GeomAPI_ProjectPointOnSurf"]
         type ProjectPointOnSurf;
-        /// /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx` - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
+        /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx` - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
         ///
         /// Creates an empty object. Use the
         /// Init function for further initialization.

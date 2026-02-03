@@ -10,6 +10,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Shape Processing module.
+/// Allows to define and apply general Shape Processing as a customizable sequence of operators.
 pub use ffi::ShapeProcessor;
 impl ShapeProcessor {
     /// Constructor.
@@ -61,13 +64,13 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== XSAlgo_ShapeProcessor ========================
-        /// /// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor`
+        /// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor`
         ///
         /// Shape Processing module.
         /// Allows to define and apply general Shape Processing as a customizable sequence of operators.
         #[cxx_name = "XSAlgo_ShapeProcessor"]
         type ShapeProcessor;
-        /// /// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor()`
+        /// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor()`
         ///
         /// Constructor.
         /// @param theParameters Parameters to be used in the processing.

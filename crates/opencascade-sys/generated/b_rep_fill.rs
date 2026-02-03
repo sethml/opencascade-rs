@@ -16,6 +16,10 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Computes a topological shell using some wires
+/// (spines and profiles) and displacement option
+/// Perform general sweeping construction
 pub use ffi::PipeShell;
 impl PipeShell {
     /// Set an sweep's mode
@@ -33,6 +37,8 @@ impl PipeShell {
         ffi::PipeShell_get_type_name()
     }
 }
+
+/// To store section definition
 pub use ffi::Section;
 impl Section {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -55,6 +61,13 @@ impl Section {
         ffi::Section_modified_shape(self, theShape)
     }
 }
+
+/// Create a  shape by sweeping a shape  (the profile)
+/// along a wire (the spine).
+///
+/// For each edge  or vertex from the spine  the  user
+/// may ask for the shape generated from each subshape
+/// of the profile.
 pub use ffi::Pipe;
 impl Pipe {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -100,6 +113,19 @@ impl Pipe {
         ffi::Pipe_pipe_line(self, Point)
     }
 }
+
+/// Constructs a Offset Wire to a spine (wire or face).
+/// Offset direction will be to outer region in case of
+/// positive offset value and to inner region in case of
+/// negative offset value.
+/// Inner/Outer region for open wire is defined by the
+/// following rule: when we go along the wire (taking into
+/// account of edges orientation) then outer region will be
+/// on the right side, inner region will be on the left side.
+/// In case of closed wire, inner region will always be
+/// inside the wire (at that, edges orientation is not taken
+/// into account).
+/// The Wire or the Face must be planar and oriented correctly.
 pub use ffi::OffsetWire;
 impl OffsetWire {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -116,14 +142,14 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepFill_PipeShell ========================
-        /// /// **Source:** `BRepFill_PipeShell.hxx` - `BRepFill_PipeShell`
+        /// **Source:** `BRepFill_PipeShell.hxx` - `BRepFill_PipeShell`
         ///
         /// Computes a topological shell using some wires
         /// (spines and profiles) and displacement option
         /// Perform general sweeping construction
         #[cxx_name = "BRepFill_PipeShell"]
         type PipeShell;
-        /// /// **Source:** `BRepFill_PipeShell.hxx` - `BRepFill_PipeShell::BRepFill_PipeShell()`
+        /// **Source:** `BRepFill_PipeShell.hxx` - `BRepFill_PipeShell::BRepFill_PipeShell()`
         ///
         /// Set an sweep's mode
         /// If no mode are set, the mode used in MakePipe is used
@@ -265,15 +291,15 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepFill_PipeShell_to_handle"]
         fn PipeShell_to_handle(obj: UniquePtr<PipeShell>) -> UniquePtr<HandleBRepFillPipeShell>;
         /// ======================== BRepFill_Section ========================
-        /// /// **Source:** `BRepFill_Section.hxx` - `BRepFill_Section`
+        /// **Source:** `BRepFill_Section.hxx` - `BRepFill_Section`
         ///
         /// To store section definition
         #[cxx_name = "BRepFill_Section"]
         type Section;
-        /// /// **Source:** `BRepFill_Section.hxx` - `BRepFill_Section::BRepFill_Section()`
+        /// **Source:** `BRepFill_Section.hxx` - `BRepFill_Section::BRepFill_Section()`
         #[cxx_name = "BRepFill_Section_ctor"]
         fn Section_ctor() -> UniquePtr<Section>;
-        /// /// **Source:** `BRepFill_Section.hxx` - `BRepFill_Section::BRepFill_Section()`
+        /// **Source:** `BRepFill_Section.hxx` - `BRepFill_Section::BRepFill_Section()`
         #[cxx_name = "BRepFill_Section_ctor_shape_vertex_bool2"]
         fn Section_ctor_shape_vertex_bool2(
             Profile: &TopoDS_Shape,
@@ -303,7 +329,7 @@ pub(crate) mod ffi {
             theShape: &TopoDS_Shape,
         ) -> UniquePtr<TopoDS_Shape>;
         /// ======================== BRepFill_Pipe ========================
-        /// /// **Source:** `BRepFill_Pipe.hxx` - `BRepFill_Pipe`
+        /// **Source:** `BRepFill_Pipe.hxx` - `BRepFill_Pipe`
         ///
         /// Create a  shape by sweeping a shape  (the profile)
         /// along a wire (the spine).
@@ -313,7 +339,7 @@ pub(crate) mod ffi {
         /// of the profile.
         #[cxx_name = "BRepFill_Pipe"]
         type Pipe;
-        /// /// **Source:** `BRepFill_Pipe.hxx` - `BRepFill_Pipe::BRepFill_Pipe()`
+        /// **Source:** `BRepFill_Pipe.hxx` - `BRepFill_Pipe::BRepFill_Pipe()`
         #[cxx_name = "BRepFill_Pipe_ctor"]
         fn Pipe_ctor() -> UniquePtr<Pipe>;
         #[cxx_name = "Perform"]
@@ -368,7 +394,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepFill_Pipe_PipeLine"]
         fn Pipe_pipe_line(self_: Pin<&mut Pipe>, Point: &gp_Pnt) -> UniquePtr<TopoDS_Wire>;
         /// ======================== BRepFill_OffsetWire ========================
-        /// /// **Source:** `BRepFill_OffsetWire.hxx` - `BRepFill_OffsetWire`
+        /// **Source:** `BRepFill_OffsetWire.hxx` - `BRepFill_OffsetWire`
         ///
         /// Constructs a Offset Wire to a spine (wire or face).
         /// Offset direction will be to outer region in case of
@@ -384,7 +410,7 @@ pub(crate) mod ffi {
         /// The Wire or the Face must be planar and oriented correctly.
         #[cxx_name = "BRepFill_OffsetWire"]
         type OffsetWire;
-        /// /// **Source:** `BRepFill_OffsetWire.hxx` - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
+        /// **Source:** `BRepFill_OffsetWire.hxx` - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
         #[cxx_name = "BRepFill_OffsetWire_ctor"]
         fn OffsetWire_ctor() -> UniquePtr<OffsetWire>;
         /// Performs  an OffsetWire at  an altitude <Alt> from

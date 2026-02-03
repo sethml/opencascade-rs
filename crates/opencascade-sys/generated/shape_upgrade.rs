@@ -10,6 +10,35 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// This tool tries to unify faces and edges of the shape which lie on the same geometry.
+/// Faces/edges are considering as 'same-domain' if a group of neighbouring faces/edges
+/// are lying on coincident surfaces/curves.
+/// In this case these faces/edges can be unified into one face/edge.
+/// ShapeUpgrade_UnifySameDomain is initialized by a shape and the next optional parameters:
+/// UnifyFaces - tries to unify all possible faces
+/// UnifyEdges - tries to unify all possible edges
+/// ConcatBSplines - if this flag is set to true then all neighbouring edges, which lay
+/// on BSpline or Bezier curves with C1 continuity on their common vertices,
+/// will be merged into one common edge.
+///
+/// The input shape can be of any type containing faces or edges - compsolid, solid, shell,
+/// wire, compound of any kind of shapes. The algorithm preserves the structure of compsolids,
+/// solids, shells and wires. E.g., if two shells have a common edge and the faces sharing
+/// this edge lie on the same surface the algorithm will not unify these faces, otherwise
+/// the structure of shells would be broken. However, if such faces belong to different
+/// compounds of faces they will be unified.
+///
+/// The output result of the tool is the unified shape.
+///
+/// All the modifications of initial shape are recorded during unifying.
+/// Methods History are intended to: <br>
+/// - set a place holder for the history of modifications of sub-shapes of
+/// the initial shape; <br>
+/// - get the collected history. <br>
+/// The algorithm provides a place holder for the history and collects the
+/// history by default.
+/// To avoid collecting of the history the place holder should be set to null handle.
 pub use ffi::UnifySameDomain;
 impl UnifySameDomain {
     /// Empty constructor
@@ -49,7 +78,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== ShapeUpgrade_UnifySameDomain ========================
-        /// /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain`
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain`
         ///
         /// This tool tries to unify faces and edges of the shape which lie on the same geometry.
         /// Faces/edges are considering as 'same-domain' if a group of neighbouring faces/edges
@@ -81,12 +110,12 @@ pub(crate) mod ffi {
         /// To avoid collecting of the history the place holder should be set to null handle.
         #[cxx_name = "ShapeUpgrade_UnifySameDomain"]
         type UnifySameDomain;
-        /// /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
         ///
         /// Empty constructor
         #[cxx_name = "ShapeUpgrade_UnifySameDomain_ctor"]
         fn UnifySameDomain_ctor() -> UniquePtr<UnifySameDomain>;
-        /// /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
+        /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
         ///
         /// Constructor defining input shape and necessary flags.
         /// It does not perform unification.

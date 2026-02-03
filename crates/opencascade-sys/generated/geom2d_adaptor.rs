@@ -10,6 +10,14 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// An interface between the services provided by any
+/// curve from the package Geom2d and those required
+/// of the curve by algorithms which use it.
+///
+/// Polynomial coefficients of BSpline curves used for their evaluation are
+/// cached for better performance. Therefore these evaluations are not
+/// thread-safe and parallel evaluations need to be prevented.
 pub use ffi::Curve;
 impl Curve {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -115,7 +123,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Geom2dAdaptor_Curve ========================
-        /// /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve`
+        /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve`
         ///
         /// An interface between the services provided by any
         /// curve from the package Geom2d and those required
@@ -126,13 +134,13 @@ pub(crate) mod ffi {
         /// thread-safe and parallel evaluations need to be prevented.
         #[cxx_name = "Geom2dAdaptor_Curve"]
         type Curve;
-        /// /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
+        /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
         #[cxx_name = "Geom2dAdaptor_Curve_ctor"]
         fn Curve_ctor() -> UniquePtr<Curve>;
-        /// /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
+        /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
         #[cxx_name = "Geom2dAdaptor_Curve_ctor_handlecurve"]
         fn Curve_ctor_handlecurve(C: &HandleGeom2dCurve) -> UniquePtr<Curve>;
-        /// /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
+        /// **Source:** `Geom2dAdaptor_Curve.hxx` - `Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()`
         ///
         /// Standard_ConstructionError is raised if Ufirst>Ulast
         #[cxx_name = "Geom2dAdaptor_Curve_ctor_handlecurve_real2"]

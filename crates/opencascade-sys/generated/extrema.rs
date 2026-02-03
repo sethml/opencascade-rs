@@ -25,6 +25,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// It calculates all the distance between two curves.
+/// These distances can be maximum or minimum.
 pub use ffi::ExtCC;
 impl ExtCC {
     pub fn new_real2(TolC1: f64, TolC2: f64) -> cxx::UniquePtr<Self> {
@@ -55,6 +58,7 @@ impl ExtCC {
         ffi::ExtCC_ctor_curve2_real6(C1, C2, U1, U2, V1, V2, TolC1, TolC2)
     }
 }
+
 pub use ffi::ExtPC;
 impl ExtPC {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -96,12 +100,20 @@ impl ExtPC {
         ffi::ExtPC_ctor_pnt_curve_real(P, C, TolF)
     }
 }
+
+/// It calculates all the extremum distances
+/// between a point and a surface.
+/// These distances can be minimum or maximum.
 pub use ffi::ExtPS;
 impl ExtPS {
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ExtPS_ctor()
     }
 }
+
+/// It calculates all the extremum distances
+/// between a point and a surface.
+/// These distances can be minimum or maximum.
 pub use ffi::GenExtPS;
 impl GenExtPS {
     /// Empty constructor.
@@ -109,6 +121,10 @@ impl GenExtPS {
         ffi::GenExtPS_ctor()
     }
 }
+
+/// Data container for point on surface parameters. These parameters
+/// are required to compute an initial approximation for extrema
+/// computation.
 pub use ffi::POnSurfParams;
 impl POnSurfParams {
     /// empty constructor
@@ -132,6 +148,27 @@ impl POnSurfParams {
         ffi::p_on_surf_params_as_p_on_surf_mut(self)
     }
 }
+
+/// Functional for search of extremum of the distance between point P and
+/// surface S, starting from approximate solution (u0, v0).
+///
+/// The class inherits math_FunctionSetWithDerivatives and thus is intended
+/// for use in math_FunctionSetRoot algorithm .
+///
+/// Denoting derivatives of the surface S(u,v) by u and v, respectively, as
+/// Su and Sv, the two functions to be nullified are:
+///
+/// F1(u,v) = (S - P) * Su
+/// F2(u,v) = (S - P) * Sv
+///
+/// The derivatives of the functional are:
+///
+/// Duf1(u,v) = Su^2    + (S-P) * Suu;
+/// Dvf1(u,v) = Su * Sv + (S-P) * Suv
+/// Duf2(u,v) = Sv * Su + (S-P) * Suv = Dvf1
+/// Dvf2(u,v) = Sv^2    + (S-P) * Svv
+///
+/// Here * denotes scalar product, and ^2 is square power.
 pub use ffi::FuncPSNorm;
 impl FuncPSNorm {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -142,6 +179,8 @@ impl FuncPSNorm {
         ffi::FuncPSNorm_ctor_pnt_surface(P, S)
     }
 }
+
+/// Definition of a point on surface.
 pub use ffi::POnSurf;
 impl POnSurf {
     /// Creation of an indefinite point on surface.
@@ -155,6 +194,10 @@ impl POnSurf {
         ffi::POnSurf_ctor_real2_pnt(U, V, P)
     }
 }
+
+/// It calculates all the extremum distances
+/// between a point and a surface.
+/// These distances can be minimum or maximum.
 pub use ffi::ExtPElS;
 impl ExtPElS {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -209,6 +252,10 @@ impl ExtPElS {
         ffi::ExtPElS_ctor_pnt_sphere_real(P, S, Tol)
     }
 }
+
+/// It calculates all the distances between a point
+/// and an elementary curve.
+/// These distances can be minimum or maximum.
 pub use ffi::ExtPElC;
 impl ExtPElC {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -302,6 +349,7 @@ impl ExtPElC {
         ffi::ExtPElC_ctor_pnt_parab_real3(P, C, Tol, Uinf, Usup)
     }
 }
+
 pub use ffi::EPCOfExtPC;
 impl EPCOfExtPC {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -351,6 +399,7 @@ impl EPCOfExtPC {
         ffi::EPCOfExtPC_ctor_pnt_curve_int_real4(P, C, NbU, Umin, Usup, TolU, TolF)
     }
 }
+
 pub use ffi::PCFOfEPCOfExtPC;
 impl PCFOfEPCOfExtPC {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -385,6 +434,7 @@ impl PCFOfEPCOfExtPC {
         ffi::pcf_of_epc_of_ext_pc_as_math_function_with_derivative_mut(self)
     }
 }
+
 pub use ffi::POnCurv;
 impl POnCurv {
     /// Creation of an indefinite point on curve.
@@ -398,6 +448,7 @@ impl POnCurv {
         ffi::POnCurv_ctor_real_pnt(U, P)
     }
 }
+
 pub use ffi::ECC;
 impl ECC {
     /// Calculates all the distances as above
@@ -442,16 +493,16 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Extrema_ExtCC ========================
-        /// /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC`
+        /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC`
         ///
         /// It calculates all the distance between two curves.
         /// These distances can be maximum or minimum.
         #[cxx_name = "Extrema_ExtCC"]
         type ExtCC;
-        /// /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC::Extrema_ExtCC()`
+        /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC::Extrema_ExtCC()`
         #[cxx_name = "Extrema_ExtCC_ctor_real2"]
         fn ExtCC_ctor_real2(TolC1: f64, TolC2: f64) -> UniquePtr<ExtCC>;
-        /// /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC::Extrema_ExtCC()`
+        /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC::Extrema_ExtCC()`
         ///
         /// It calculates all the distances.
         #[cxx_name = "Extrema_ExtCC_ctor_curve2_real2"]
@@ -461,7 +512,7 @@ pub(crate) mod ffi {
             TolC1: f64,
             TolC2: f64,
         ) -> UniquePtr<ExtCC>;
-        /// /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC::Extrema_ExtCC()`
+        /// **Source:** `Extrema_ExtCC.hxx` - `Extrema_ExtCC::Extrema_ExtCC()`
         ///
         /// It calculates all the distances.
         #[cxx_name = "Extrema_ExtCC_ctor_curve2_real6"]
@@ -552,13 +603,13 @@ pub(crate) mod ffi {
         #[cxx_name = "GetSingleSolutionFlag"]
         fn get_single_solution_flag(self: &ExtCC) -> bool;
         /// ======================== Extrema_ExtPC ========================
-        /// /// **Source:** `Extrema_ExtPC.hxx` - `Extrema_ExtPC`
+        /// **Source:** `Extrema_ExtPC.hxx` - `Extrema_ExtPC`
         #[cxx_name = "Extrema_ExtPC"]
         type ExtPC;
-        /// /// **Source:** `Extrema_ExtPC.hxx` - `Extrema_ExtPC::Extrema_ExtPC()`
+        /// **Source:** `Extrema_ExtPC.hxx` - `Extrema_ExtPC::Extrema_ExtPC()`
         #[cxx_name = "Extrema_ExtPC_ctor"]
         fn ExtPC_ctor() -> UniquePtr<ExtPC>;
-        /// /// **Source:** `Extrema_ExtPC.hxx` - `Extrema_ExtPC::Extrema_ExtPC()`
+        /// **Source:** `Extrema_ExtPC.hxx` - `Extrema_ExtPC::Extrema_ExtPC()`
         ///
         /// It calculates all the distances.
         /// The function F(u)=distance(P,C(u)) has an extremum
@@ -577,7 +628,7 @@ pub(crate) mod ffi {
             Usup: f64,
             TolF: f64,
         ) -> UniquePtr<ExtPC>;
-        /// /// **Source:** `Extrema_ExtPC.hxx` - `Extrema_ExtPC::Extrema_ExtPC()`
+        /// **Source:** `Extrema_ExtPC.hxx` - `Extrema_ExtPC::Extrema_ExtPC()`
         ///
         /// It calculates all the distances.
         /// The function F(u)=distance(P,C(u)) has an extremum
@@ -630,14 +681,14 @@ pub(crate) mod ffi {
             P2: Pin<&mut gp_Pnt>,
         );
         /// ======================== Extrema_ExtPS ========================
-        /// /// **Source:** `Extrema_ExtPS.hxx` - `Extrema_ExtPS`
+        /// **Source:** `Extrema_ExtPS.hxx` - `Extrema_ExtPS`
         ///
         /// It calculates all the extremum distances
         /// between a point and a surface.
         /// These distances can be minimum or maximum.
         #[cxx_name = "Extrema_ExtPS"]
         type ExtPS;
-        /// /// **Source:** `Extrema_ExtPS.hxx` - `Extrema_ExtPS::Extrema_ExtPS()`
+        /// **Source:** `Extrema_ExtPS.hxx` - `Extrema_ExtPS::Extrema_ExtPS()`
         #[cxx_name = "Extrema_ExtPS_ctor"]
         fn ExtPS_ctor() -> UniquePtr<ExtPS>;
         /// Initializes the fields of the algorithm.
@@ -691,14 +742,14 @@ pub(crate) mod ffi {
             PUlVl: Pin<&mut gp_Pnt>,
         );
         /// ======================== Extrema_GenExtPS ========================
-        /// /// **Source:** `Extrema_GenExtPS.hxx` - `Extrema_GenExtPS`
+        /// **Source:** `Extrema_GenExtPS.hxx` - `Extrema_GenExtPS`
         ///
         /// It calculates all the extremum distances
         /// between a point and a surface.
         /// These distances can be minimum or maximum.
         #[cxx_name = "Extrema_GenExtPS"]
         type GenExtPS;
-        /// /// **Source:** `Extrema_GenExtPS.hxx` - `Extrema_GenExtPS::Extrema_GenExtPS()`
+        /// **Source:** `Extrema_GenExtPS.hxx` - `Extrema_GenExtPS::Extrema_GenExtPS()`
         ///
         /// Empty constructor.
         #[cxx_name = "Extrema_GenExtPS_ctor"]
@@ -743,19 +794,19 @@ pub(crate) mod ffi {
         #[cxx_name = "Point"]
         fn point(self: &GenExtPS, N: i32) -> &POnSurf;
         /// ======================== Extrema_POnSurfParams ========================
-        /// /// **Source:** `Extrema_POnSurfParams.hxx` - `Extrema_POnSurfParams`
+        /// **Source:** `Extrema_POnSurfParams.hxx` - `Extrema_POnSurfParams`
         ///
         /// Data container for point on surface parameters. These parameters
         /// are required to compute an initial approximation for extrema
         /// computation.
         #[cxx_name = "Extrema_POnSurfParams"]
         type POnSurfParams;
-        /// /// **Source:** `Extrema_POnSurfParams.hxx` - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
+        /// **Source:** `Extrema_POnSurfParams.hxx` - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
         ///
         /// empty constructor
         #[cxx_name = "Extrema_POnSurfParams_ctor"]
         fn POnSurfParams_ctor() -> UniquePtr<POnSurfParams>;
-        /// /// **Source:** `Extrema_POnSurfParams.hxx` - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
+        /// **Source:** `Extrema_POnSurfParams.hxx` - `Extrema_POnSurfParams::Extrema_POnSurfParams()`
         ///
         /// Creation of a point on surface with parameter
         /// values on the surface and a Pnt from gp.
@@ -787,7 +838,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Extrema_POnSurfParams_as_Extrema_POnSurf_mut"]
         fn p_on_surf_params_as_p_on_surf_mut(self_: Pin<&mut POnSurfParams>) -> Pin<&mut POnSurf>;
         /// ======================== Extrema_FuncPSNorm ========================
-        /// /// **Source:** `Extrema_FuncPSNorm.hxx` - `Extrema_FuncPSNorm`
+        /// **Source:** `Extrema_FuncPSNorm.hxx` - `Extrema_FuncPSNorm`
         ///
         /// Functional for search of extremum of the distance between point P and
         /// surface S, starting from approximate solution (u0, v0).
@@ -811,10 +862,10 @@ pub(crate) mod ffi {
         /// Here * denotes scalar product, and ^2 is square power.
         #[cxx_name = "Extrema_FuncPSNorm"]
         type FuncPSNorm;
-        /// /// **Source:** `Extrema_FuncPSNorm.hxx` - `Extrema_FuncPSNorm::Extrema_FuncPSNorm()`
+        /// **Source:** `Extrema_FuncPSNorm.hxx` - `Extrema_FuncPSNorm::Extrema_FuncPSNorm()`
         #[cxx_name = "Extrema_FuncPSNorm_ctor"]
         fn FuncPSNorm_ctor() -> UniquePtr<FuncPSNorm>;
-        /// /// **Source:** `Extrema_FuncPSNorm.hxx` - `Extrema_FuncPSNorm::Extrema_FuncPSNorm()`
+        /// **Source:** `Extrema_FuncPSNorm.hxx` - `Extrema_FuncPSNorm::Extrema_FuncPSNorm()`
         #[cxx_name = "Extrema_FuncPSNorm_ctor_pnt_surface"]
         fn FuncPSNorm_ctor_pnt_surface(P: &gp_Pnt, S: &Adaptor3d_Surface) -> UniquePtr<FuncPSNorm>;
         /// sets the field mysurf of the function.
@@ -858,17 +909,17 @@ pub(crate) mod ffi {
         #[cxx_name = "Point"]
         fn point(self: &FuncPSNorm, N: i32) -> &POnSurf;
         /// ======================== Extrema_POnSurf ========================
-        /// /// **Source:** `Extrema_POnSurf.hxx` - `Extrema_POnSurf`
+        /// **Source:** `Extrema_POnSurf.hxx` - `Extrema_POnSurf`
         ///
         /// Definition of a point on surface.
         #[cxx_name = "Extrema_POnSurf"]
         type POnSurf;
-        /// /// **Source:** `Extrema_POnSurf.hxx` - `Extrema_POnSurf::Extrema_POnSurf()`
+        /// **Source:** `Extrema_POnSurf.hxx` - `Extrema_POnSurf::Extrema_POnSurf()`
         ///
         /// Creation of an indefinite point on surface.
         #[cxx_name = "Extrema_POnSurf_ctor"]
         fn POnSurf_ctor() -> UniquePtr<POnSurf>;
-        /// /// **Source:** `Extrema_POnSurf.hxx` - `Extrema_POnSurf::Extrema_POnSurf()`
+        /// **Source:** `Extrema_POnSurf.hxx` - `Extrema_POnSurf::Extrema_POnSurf()`
         ///
         /// Creation of a point on surface with parameter
         /// values on the surface and a Pnt from gp.
@@ -885,17 +936,17 @@ pub(crate) mod ffi {
         #[cxx_name = "Parameter"]
         fn parameter(self: &POnSurf, U: &mut f64, V: &mut f64);
         /// ======================== Extrema_ExtPElS ========================
-        /// /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS`
+        /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS`
         ///
         /// It calculates all the extremum distances
         /// between a point and a surface.
         /// These distances can be minimum or maximum.
         #[cxx_name = "Extrema_ExtPElS"]
         type ExtPElS;
-        /// /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
+        /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
         #[cxx_name = "Extrema_ExtPElS_ctor"]
         fn ExtPElS_ctor() -> UniquePtr<ExtPElS>;
-        /// /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
+        /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
         /// It calculates all the distances between a point
         /// and a cylinder from gp.
@@ -906,14 +957,14 @@ pub(crate) mod ffi {
             S: &gp_Cylinder,
             Tol: f64,
         ) -> UniquePtr<ExtPElS>;
-        /// /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
+        /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
         /// It calculates all the distances between a point
         /// and a plane from gp.
         /// Tol is used to test if the point is on the plane.
         #[cxx_name = "Extrema_ExtPElS_ctor_pnt_pln_real"]
         fn ExtPElS_ctor_pnt_pln_real(P: &gp_Pnt, S: &gp_Pln, Tol: f64) -> UniquePtr<ExtPElS>;
-        /// /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
+        /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
         /// It calculates all the distances between a point
         /// and a cone from gp.
@@ -921,14 +972,14 @@ pub(crate) mod ffi {
         /// on the axis.
         #[cxx_name = "Extrema_ExtPElS_ctor_pnt_cone_real"]
         fn ExtPElS_ctor_pnt_cone_real(P: &gp_Pnt, S: &gp_Cone, Tol: f64) -> UniquePtr<ExtPElS>;
-        /// /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
+        /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
         /// It calculates all the distances between a point
         /// and a torus from gp.
         /// Tol is used to test if the point is on the axis.
         #[cxx_name = "Extrema_ExtPElS_ctor_pnt_torus_real"]
         fn ExtPElS_ctor_pnt_torus_real(P: &gp_Pnt, S: &gp_Torus, Tol: f64) -> UniquePtr<ExtPElS>;
-        /// /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
+        /// **Source:** `Extrema_ExtPElS.hxx` - `Extrema_ExtPElS::Extrema_ExtPElS()`
         ///
         /// It calculates all the distances between a point
         /// and a sphere from gp.
@@ -963,17 +1014,17 @@ pub(crate) mod ffi {
         #[cxx_name = "Point"]
         fn point(self: &ExtPElS, N: i32) -> &POnSurf;
         /// ======================== Extrema_ExtPElC ========================
-        /// /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC`
+        /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC`
         ///
         /// It calculates all the distances between a point
         /// and an elementary curve.
         /// These distances can be minimum or maximum.
         #[cxx_name = "Extrema_ExtPElC"]
         type ExtPElC;
-        /// /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
+        /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
         #[cxx_name = "Extrema_ExtPElC_ctor"]
         fn ExtPElC_ctor() -> UniquePtr<ExtPElC>;
-        /// /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
+        /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
         /// Calculates the extremum distance between the
         /// point P and the segment [Uinf,Usup] of the line C.
@@ -985,7 +1036,7 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         ) -> UniquePtr<ExtPElC>;
-        /// /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
+        /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
         /// Calculates the 2 extremum distances between the
         /// point P and the segment [Uinf,Usup] of the circle C.
@@ -1006,7 +1057,7 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         ) -> UniquePtr<ExtPElC>;
-        /// /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
+        /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
         /// Calculates the 4 extremum distances between the
         /// point P and the segment [Uinf,Usup] of the ellipse C.
@@ -1028,7 +1079,7 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         ) -> UniquePtr<ExtPElC>;
-        /// /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
+        /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
         /// Calculates the extremum distances between the
         /// point P and the segment [Uinf,Usup] of the hyperbola
@@ -1044,7 +1095,7 @@ pub(crate) mod ffi {
             Uinf: f64,
             Usup: f64,
         ) -> UniquePtr<ExtPElC>;
-        /// /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
+        /// **Source:** `Extrema_ExtPElC.hxx` - `Extrema_ExtPElC::Extrema_ExtPElC()`
         ///
         /// Calculates the 4 extremum distances between the
         /// point P and the segment [Uinf,Usup] of the parabola
@@ -1122,13 +1173,13 @@ pub(crate) mod ffi {
         #[cxx_name = "Point"]
         fn point(self: &ExtPElC, N: i32) -> &POnCurv;
         /// ======================== Extrema_EPCOfExtPC ========================
-        /// /// **Source:** `Extrema_EPCOfExtPC.hxx` - `Extrema_EPCOfExtPC`
+        /// **Source:** `Extrema_EPCOfExtPC.hxx` - `Extrema_EPCOfExtPC`
         #[cxx_name = "Extrema_EPCOfExtPC"]
         type EPCOfExtPC;
-        /// /// **Source:** `Extrema_EPCOfExtPC.hxx` - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
+        /// **Source:** `Extrema_EPCOfExtPC.hxx` - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
         #[cxx_name = "Extrema_EPCOfExtPC_ctor"]
         fn EPCOfExtPC_ctor() -> UniquePtr<EPCOfExtPC>;
-        /// /// **Source:** `Extrema_EPCOfExtPC.hxx` - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
+        /// **Source:** `Extrema_EPCOfExtPC.hxx` - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
         ///
         /// It calculates all the distances.
         /// The function F(u)=distance(P,C(u)) has an extremum
@@ -1148,7 +1199,7 @@ pub(crate) mod ffi {
             TolU: f64,
             TolF: f64,
         ) -> UniquePtr<EPCOfExtPC>;
-        /// /// **Source:** `Extrema_EPCOfExtPC.hxx` - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
+        /// **Source:** `Extrema_EPCOfExtPC.hxx` - `Extrema_EPCOfExtPC::Extrema_EPCOfExtPC()`
         ///
         /// It calculates all the distances.
         /// The function F(u)=distance(P,C(u)) has an extremum
@@ -1226,13 +1277,13 @@ pub(crate) mod ffi {
         #[cxx_name = "Point"]
         fn point(self: &EPCOfExtPC, N: i32) -> &POnCurv;
         /// ======================== Extrema_PCFOfEPCOfExtPC ========================
-        /// /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx` - `Extrema_PCFOfEPCOfExtPC`
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx` - `Extrema_PCFOfEPCOfExtPC`
         #[cxx_name = "Extrema_PCFOfEPCOfExtPC"]
         type PCFOfEPCOfExtPC;
-        /// /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx` - `Extrema_PCFOfEPCOfExtPC::Extrema_PCFOfEPCOfExtPC()`
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx` - `Extrema_PCFOfEPCOfExtPC::Extrema_PCFOfEPCOfExtPC()`
         #[cxx_name = "Extrema_PCFOfEPCOfExtPC_ctor"]
         fn PCFOfEPCOfExtPC_ctor() -> UniquePtr<PCFOfEPCOfExtPC>;
-        /// /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx` - `Extrema_PCFOfEPCOfExtPC::Extrema_PCFOfEPCOfExtPC()`
+        /// **Source:** `Extrema_PCFOfEPCOfExtPC.hxx` - `Extrema_PCFOfEPCOfExtPC::Extrema_PCFOfEPCOfExtPC()`
         #[cxx_name = "Extrema_PCFOfEPCOfExtPC_ctor_pnt_curve"]
         fn PCFOfEPCOfExtPC_ctor_pnt_curve(
             P: &gp_Pnt,
@@ -1294,15 +1345,15 @@ pub(crate) mod ffi {
             self_: Pin<&mut PCFOfEPCOfExtPC>,
         ) -> Pin<&mut math_FunctionWithDerivative>;
         /// ======================== Extrema_POnCurv ========================
-        /// /// **Source:** `Extrema_POnCurv.hxx` - `Extrema_POnCurv`
+        /// **Source:** `Extrema_POnCurv.hxx` - `Extrema_POnCurv`
         #[cxx_name = "Extrema_POnCurv"]
         type POnCurv;
-        /// /// **Source:** `Extrema_POnCurv.hxx` - `Extrema_POnCurv::Extrema_POnCurv()`
+        /// **Source:** `Extrema_POnCurv.hxx` - `Extrema_POnCurv::Extrema_POnCurv()`
         ///
         /// Creation of an indefinite point on curve.
         #[cxx_name = "Extrema_POnCurv_ctor"]
         fn POnCurv_ctor() -> UniquePtr<POnCurv>;
-        /// /// **Source:** `Extrema_POnCurv.hxx` - `Extrema_POnCurv::Extrema_POnCurv()`
+        /// **Source:** `Extrema_POnCurv.hxx` - `Extrema_POnCurv::Extrema_POnCurv()`
         ///
         /// Creation of a point on curve with a parameter
         /// value on the curve and a Pnt from gp.
@@ -1318,17 +1369,17 @@ pub(crate) mod ffi {
         #[cxx_name = "Parameter"]
         fn parameter(self: &POnCurv) -> f64;
         /// ======================== Extrema_ECC ========================
-        /// /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC`
+        /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC`
         #[cxx_name = "Extrema_ECC"]
         type ECC;
-        /// /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC::Extrema_ECC()`
+        /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC::Extrema_ECC()`
         ///
         /// Calculates all the distances as above
         /// between Uinf and Usup for C1 and  between Vinf and Vsup
         /// for C2.
         #[cxx_name = "Extrema_ECC_ctor"]
         fn ECC_ctor() -> UniquePtr<ECC>;
-        /// /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC::Extrema_ECC()`
+        /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC::Extrema_ECC()`
         ///
         /// It calculates all the distances.
         /// The function F(u,v)=distance(C1(u),C2(v)) has an
@@ -1336,7 +1387,7 @@ pub(crate) mod ffi {
         /// Evtushenko's global optimization solver.
         #[cxx_name = "Extrema_ECC_ctor_curve2"]
         fn ECC_ctor_curve2(C1: &Adaptor3d_Curve, C2: &Adaptor3d_Curve) -> UniquePtr<ECC>;
-        /// /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC::Extrema_ECC()`
+        /// **Source:** `Extrema_ECC.hxx` - `Extrema_ECC::Extrema_ECC()`
         ///
         /// Calculates all the distances as above
         /// between Uinf and Usup for C1 and  between Vinf and Vsup

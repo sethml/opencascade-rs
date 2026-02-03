@@ -46,7 +46,7 @@ fn generate_file_header(module_name: &str, headers: &[String]) -> String {
 
 /// Generate source attribution for a declaration (header and C++ identifier)
 fn format_source_attribution(header: &str, cpp_name: &str) -> String {
-    format!("/// **Source:** `{}` - `{}`", header, cpp_name)
+    format!("**Source:** `{}` - `{}`", header, cpp_name)
 }
 
 /// Generate doc comments in /// format (raw string approach for better control)
@@ -2002,16 +2002,26 @@ fn generate_re_exports(
         let short_name = class.short_name();
         let safe_name = class.safe_short_name();
         
+        // Generate doc comment for the re-export (use class comment if available)
+        // Include a BLANK_LINE before the doc to separate from previous items
+        let doc = class
+            .comment
+            .as_ref()
+            .map(|c| quote! { #[doc = "BLANK_LINE"] #[doc = #c] })
+            .unwrap_or_else(|| quote! { #[doc = "BLANK_LINE"] });
+        
         if is_reserved_name(short_name) {
             // For reserved names, re-export with alias: pub use ffi::Vec_ as Vec;
             let ffi_type = format_ident!("{}", safe_name);  // Vec_
             let pub_type = format_ident!("{}", short_name); // Vec
             exports.push(quote! {
+                #doc
                 pub use ffi::#ffi_type as #pub_type;
             });
         } else {
             let rust_type = format_ident!("{}", short_name);
             exports.push(quote! {
+                #doc
                 pub use ffi::#rust_type;
             });
         }

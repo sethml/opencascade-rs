@@ -17,6 +17,31 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Provides a triangulation for a surface, a set of surfaces, or more generally a shape.
+///
+/// A triangulation consists of an approximate representation of the actual shape,
+/// using a collection of points and triangles.
+/// The points are located on the surface.
+/// The edges of the triangles connect adjacent points with a straight line that approximates the
+/// true curve on the surface.
+///
+/// A triangulation comprises:
+/// - A table of 3D nodes (3D points on the surface).
+/// - A table of triangles.
+/// Each triangle (Poly_Triangle object) comprises a triplet of indices in the table of 3D nodes
+/// specific to the triangulation.
+/// - An optional table of 2D nodes (2D points), parallel to the table of 3D nodes.
+/// 2D point are the (u, v) parameters of the corresponding 3D point on the surface approximated
+/// by the triangulation.
+/// - An optional table of 3D vectors, parallel to the table of 3D nodes, defining normals to the
+/// surface at specified 3D point.
+/// - An optional deflection, which maximizes the distance from a point on the surface to the
+/// corresponding point on its approximate triangulation.
+///
+/// In many cases, algorithms do not need to work with the exact representation of a surface.
+/// A triangular representation induces simpler and more robust adjusting, faster performances, and
+/// the results are as good.
 pub use ffi::Triangulation;
 impl Triangulation {
     /// Constructs an empty triangulation.
@@ -147,6 +172,7 @@ impl Triangulation {
         ffi::Triangulation_get_type_name()
     }
 }
+
 pub use ffi::HArray1OfTriangle;
 impl HArray1OfTriangle {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -189,6 +215,8 @@ impl HArray1OfTriangle {
         ffi::HArray1OfTriangle_get_type_name()
     }
 }
+
+/// Defines an array of 3D nodes of single/double precision configurable at construction time.
 pub use ffi::ArrayOfNodes;
 impl ArrayOfNodes {
     /// Empty constructor of double-precision array.
@@ -221,6 +249,8 @@ impl ArrayOfNodes {
         ffi::ArrayOfNodes_value(self, theIndex)
     }
 }
+
+/// Defines an array of 2D nodes of single/double precision configurable at construction time.
 pub use ffi::ArrayOfUVNodes;
 impl ArrayOfUVNodes {
     /// Empty constructor of double-precision array.
@@ -253,6 +283,11 @@ impl ArrayOfUVNodes {
         ffi::ArrayOfUVNodes_value(self, theIndex)
     }
 }
+
+/// Describes a component triangle of a triangulation (Poly_Triangulation object).
+/// A Triangle is defined by a triplet of nodes within [1, Poly_Triangulation::NbNodes()] range.
+/// Each node is an index in the table of nodes specific to an existing
+/// triangulation of a shape, and represents a point on the surface.
 pub use ffi::Triangle;
 impl Triangle {
     /// Constructs a triangle and sets all indices to zero.
@@ -267,6 +302,12 @@ impl Triangle {
         ffi::Triangle_ctor_int3(theN1, theN2, theN3)
     }
 }
+
+/// This class Provides a polygon in 3D space. It is generally an approximate representation of a
+/// curve. A Polygon3D is defined by a table of nodes. Each node is a 3D point. If the polygon is
+/// closed, the point of closure is repeated at the end of the table of nodes. If the polygon is an
+/// approximate representation of a curve, you can associate with each of its nodes the value of the
+/// parameter of the corresponding point on the curve.
 pub use ffi::Polygon3D;
 impl Polygon3D {
     /// Constructs a 3D polygon with specific number of nodes.
@@ -308,6 +349,13 @@ impl Polygon3D {
         ffi::Polygon3D_get_type_name()
     }
 }
+
+/// Provides a polygon in 2D space (for example, in the
+/// parametric space of a surface). It is generally an
+/// approximate representation of a curve.
+/// A Polygon2D is defined by a table of nodes. Each node is
+/// a 2D point. If the polygon is closed, the point of closure is
+/// repeated at the end of the table of nodes.
 pub use ffi::Polygon2D;
 impl Polygon2D {
     /// Constructs a 2D polygon with specified number of nodes.
@@ -329,6 +377,19 @@ impl Polygon2D {
         ffi::Polygon2D_get_type_name()
     }
 }
+
+/// This class provides a polygon in 3D space, based on the triangulation
+/// of a surface. It may be the approximate representation of a
+/// curve on the surface, or more generally the shape.
+/// A PolygonOnTriangulation is defined by a table of
+/// nodes. Each node is an index in the table of nodes specific
+/// to a triangulation, and represents a point on the surface. If
+/// the polygon is closed, the index of the point of closure is
+/// repeated at the end of the table of nodes.
+/// If the polygon is an approximate representation of a curve
+/// on a surface, you can associate with each of its nodes the
+/// value of the parameter of the corresponding point on the
+/// curve.represents a 3d Polygon
 pub use ffi::PolygonOnTriangulation;
 impl PolygonOnTriangulation {
     /// Constructs a 3D polygon on the triangulation of a shape with specified size of nodes.
@@ -386,7 +447,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Poly_Triangulation ========================
-        /// /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation`
+        /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation`
         ///
         /// Provides a triangulation for a surface, a set of surfaces, or more generally a shape.
         ///
@@ -414,12 +475,12 @@ pub(crate) mod ffi {
         /// the results are as good.
         #[cxx_name = "Poly_Triangulation"]
         type Triangulation;
-        /// /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
         ///
         /// Constructs an empty triangulation.
         #[cxx_name = "Poly_Triangulation_ctor"]
         fn Triangulation_ctor() -> UniquePtr<Triangulation>;
-        /// /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
         ///
         /// Constructs a triangulation from a set of triangles.
         /// The triangulation is initialized without a triangle or a node,
@@ -436,7 +497,7 @@ pub(crate) mod ffi {
             theHasUVNodes: bool,
             theHasNormals: bool,
         ) -> UniquePtr<Triangulation>;
-        /// /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
         ///
         /// Constructs a triangulation from a set of triangles. The
         /// triangulation is initialized with 3D points from Nodes and triangles
@@ -446,7 +507,7 @@ pub(crate) mod ffi {
             Nodes: &TColgp_Array1OfPnt,
             Triangles: &Poly_Array1OfTriangle,
         ) -> UniquePtr<Triangulation>;
-        /// /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
         ///
         /// Constructs a triangulation from a set of triangles. The
         /// triangulation is initialized with 3D points from Nodes, 2D points from
@@ -461,7 +522,7 @@ pub(crate) mod ffi {
             UVNodes: &TColgp_Array1OfPnt2d,
             Triangles: &Poly_Array1OfTriangle,
         ) -> UniquePtr<Triangulation>;
-        /// /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
         ///
         /// Copy constructor for triangulation.
         #[cxx_name = "Poly_Triangulation_ctor_handletriangulation"]
@@ -718,26 +779,26 @@ pub(crate) mod ffi {
             obj: UniquePtr<Triangulation>,
         ) -> UniquePtr<HandlePolyTriangulation>;
         /// ======================== Poly_HArray1OfTriangle ========================
-        /// /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle`
+        /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle`
         #[cxx_name = "Poly_HArray1OfTriangle"]
         type HArray1OfTriangle;
-        /// /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+        /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor"]
         fn HArray1OfTriangle_ctor() -> UniquePtr<HArray1OfTriangle>;
-        /// /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+        /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor_int2"]
         fn HArray1OfTriangle_ctor_int2(
             theLower: i32,
             theUpper: i32,
         ) -> UniquePtr<HArray1OfTriangle>;
-        /// /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+        /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor_int2_triangle"]
         fn HArray1OfTriangle_ctor_int2_triangle(
             theLower: i32,
             theUpper: i32,
             theValue: &Triangle,
         ) -> UniquePtr<HArray1OfTriangle>;
-        /// /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+        /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor_triangle_int2_bool"]
         fn HArray1OfTriangle_ctor_triangle_int2_bool(
             theBegin: &Triangle,
@@ -745,7 +806,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfTriangle>;
-        /// /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+        /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor_array1oftriangle"]
         fn HArray1OfTriangle_ctor_array1oftriangle(
             theOther: &Poly_Array1OfTriangle,
@@ -764,32 +825,32 @@ pub(crate) mod ffi {
             obj: UniquePtr<HArray1OfTriangle>,
         ) -> UniquePtr<HandlePolyHArray1OfTriangle>;
         /// ======================== Poly_ArrayOfNodes ========================
-        /// /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes`
+        /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes`
         ///
         /// Defines an array of 3D nodes of single/double precision configurable at construction time.
         #[cxx_name = "Poly_ArrayOfNodes"]
         type ArrayOfNodes;
-        /// /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
         ///
         /// Empty constructor of double-precision array.
         #[cxx_name = "Poly_ArrayOfNodes_ctor"]
         fn ArrayOfNodes_ctor() -> UniquePtr<ArrayOfNodes>;
-        /// /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
         ///
         /// Constructor of double-precision array.
         #[cxx_name = "Poly_ArrayOfNodes_ctor_int"]
         fn ArrayOfNodes_ctor_int(theLength: i32) -> UniquePtr<ArrayOfNodes>;
-        /// /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
         ///
         /// Copy constructor
         #[cxx_name = "Poly_ArrayOfNodes_ctor_arrayofnodes"]
         fn ArrayOfNodes_ctor_arrayofnodes(theOther: &ArrayOfNodes) -> UniquePtr<ArrayOfNodes>;
-        /// /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
         ///
         /// Constructor wrapping pre-allocated C-array of values without copying them.
         #[cxx_name = "Poly_ArrayOfNodes_ctor_pnt_int"]
         fn ArrayOfNodes_ctor_pnt_int(theBegin: &gp_Pnt, theLength: i32) -> UniquePtr<ArrayOfNodes>;
-        /// /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
         ///
         /// Constructor wrapping pre-allocated C-array of values without copying them.
         #[cxx_name = "Poly_ArrayOfNodes_ctor_vec3f_int"]
@@ -823,29 +884,29 @@ pub(crate) mod ffi {
         #[cxx_name = "Poly_ArrayOfNodes_Value"]
         fn ArrayOfNodes_value(self_: &ArrayOfNodes, theIndex: i32) -> UniquePtr<gp_Pnt>;
         /// ======================== Poly_ArrayOfUVNodes ========================
-        /// /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes`
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes`
         ///
         /// Defines an array of 2D nodes of single/double precision configurable at construction time.
         #[cxx_name = "Poly_ArrayOfUVNodes"]
         type ArrayOfUVNodes;
-        /// /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
         ///
         /// Empty constructor of double-precision array.
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor"]
         fn ArrayOfUVNodes_ctor() -> UniquePtr<ArrayOfUVNodes>;
-        /// /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
         ///
         /// Constructor of double-precision array.
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor_int"]
         fn ArrayOfUVNodes_ctor_int(theLength: i32) -> UniquePtr<ArrayOfUVNodes>;
-        /// /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
         ///
         /// Copy constructor
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor_arrayofuvnodes"]
         fn ArrayOfUVNodes_ctor_arrayofuvnodes(
             theOther: &ArrayOfUVNodes,
         ) -> UniquePtr<ArrayOfUVNodes>;
-        /// /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
         ///
         /// Constructor wrapping pre-allocated C-array of values without copying them.
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor_pnt2d_int"]
@@ -853,7 +914,7 @@ pub(crate) mod ffi {
             theBegin: &gp_Pnt2d,
             theLength: i32,
         ) -> UniquePtr<ArrayOfUVNodes>;
-        /// /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
         ///
         /// Constructor wrapping pre-allocated C-array of values without copying them.
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor_vec2f_int"]
@@ -890,7 +951,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Poly_ArrayOfUVNodes_Value"]
         fn ArrayOfUVNodes_value(self_: &ArrayOfUVNodes, theIndex: i32) -> UniquePtr<gp_Pnt2d>;
         /// ======================== Poly_Triangle ========================
-        /// /// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle`
+        /// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle`
         ///
         /// Describes a component triangle of a triangulation (Poly_Triangulation object).
         /// A Triangle is defined by a triplet of nodes within [1, Poly_Triangulation::NbNodes()] range.
@@ -898,12 +959,12 @@ pub(crate) mod ffi {
         /// triangulation of a shape, and represents a point on the surface.
         #[cxx_name = "Poly_Triangle"]
         type Triangle;
-        /// /// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle::Poly_Triangle()`
+        /// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle::Poly_Triangle()`
         ///
         /// Constructs a triangle and sets all indices to zero.
         #[cxx_name = "Poly_Triangle_ctor"]
         fn Triangle_ctor() -> UniquePtr<Triangle>;
-        /// /// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle::Poly_Triangle()`
+        /// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle::Poly_Triangle()`
         ///
         /// Constructs a triangle and sets its three indices,
         /// where these node values are indices in the table of nodes specific to an existing
@@ -929,7 +990,7 @@ pub(crate) mod ffi {
         #[cxx_name = "ChangeValue"]
         fn change_value(self: Pin<&mut Triangle>, theIndex: i32) -> &mut i32;
         /// ======================== Poly_Polygon3D ========================
-        /// /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D`
+        /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D`
         ///
         /// This class Provides a polygon in 3D space. It is generally an approximate representation of a
         /// curve. A Polygon3D is defined by a table of nodes. Each node is a 3D point. If the polygon is
@@ -938,17 +999,17 @@ pub(crate) mod ffi {
         /// parameter of the corresponding point on the curve.
         #[cxx_name = "Poly_Polygon3D"]
         type Polygon3D;
-        /// /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`
+        /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`
         ///
         /// Constructs a 3D polygon with specific number of nodes.
         #[cxx_name = "Poly_Polygon3D_ctor_int_bool"]
         fn Polygon3D_ctor_int_bool(theNbNodes: i32, theHasParams: bool) -> UniquePtr<Polygon3D>;
-        /// /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`
+        /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`
         ///
         /// Constructs a 3D polygon defined by the table of points, Nodes.
         #[cxx_name = "Poly_Polygon3D_ctor_array1ofpnt"]
         fn Polygon3D_ctor_array1ofpnt(Nodes: &TColgp_Array1OfPnt) -> UniquePtr<Polygon3D>;
-        /// /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`
+        /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`
         ///
         /// Constructs a 3D polygon defined by
         /// the table of points, Nodes, and the parallel table of
@@ -1000,7 +1061,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Poly_Polygon3D_to_handle"]
         fn Polygon3D_to_handle(obj: UniquePtr<Polygon3D>) -> UniquePtr<HandlePolyPolygon3D>;
         /// ======================== Poly_Polygon2D ========================
-        /// /// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D`
+        /// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D`
         ///
         /// Provides a polygon in 2D space (for example, in the
         /// parametric space of a surface). It is generally an
@@ -1010,12 +1071,12 @@ pub(crate) mod ffi {
         /// repeated at the end of the table of nodes.
         #[cxx_name = "Poly_Polygon2D"]
         type Polygon2D;
-        /// /// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D::Poly_Polygon2D()`
+        /// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D::Poly_Polygon2D()`
         ///
         /// Constructs a 2D polygon with specified number of nodes.
         #[cxx_name = "Poly_Polygon2D_ctor_int"]
         fn Polygon2D_ctor_int(theNbNodes: i32) -> UniquePtr<Polygon2D>;
-        /// /// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D::Poly_Polygon2D()`
+        /// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D::Poly_Polygon2D()`
         ///
         /// Constructs a 2D polygon defined by the table of points, <Nodes>.
         #[cxx_name = "Poly_Polygon2D_ctor_array1ofpnt2d"]
@@ -1064,7 +1125,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Poly_Polygon2D_to_handle"]
         fn Polygon2D_to_handle(obj: UniquePtr<Polygon2D>) -> UniquePtr<HandlePolyPolygon2D>;
         /// ======================== Poly_PolygonOnTriangulation ========================
-        /// /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation`
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation`
         ///
         /// This class provides a polygon in 3D space, based on the triangulation
         /// of a surface. It may be the approximate representation of a
@@ -1080,7 +1141,7 @@ pub(crate) mod ffi {
         /// curve.represents a 3d Polygon
         #[cxx_name = "Poly_PolygonOnTriangulation"]
         type PolygonOnTriangulation;
-        /// /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
         ///
         /// Constructs a 3D polygon on the triangulation of a shape with specified size of nodes.
         #[cxx_name = "Poly_PolygonOnTriangulation_ctor_int_bool"]
@@ -1088,7 +1149,7 @@ pub(crate) mod ffi {
             theNbNodes: i32,
             theHasParams: bool,
         ) -> UniquePtr<PolygonOnTriangulation>;
-        /// /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
         ///
         /// Constructs a 3D polygon on the triangulation of a shape,
         /// defined by the table of nodes, <Nodes>.
@@ -1096,7 +1157,7 @@ pub(crate) mod ffi {
         fn PolygonOnTriangulation_ctor_array1ofinteger(
             Nodes: &TColStd_Array1OfInteger,
         ) -> UniquePtr<PolygonOnTriangulation>;
-        /// /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
+        /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
         ///
         /// Constructs a 3D polygon on the triangulation of a shape, defined by:
         /// -   the table of nodes, Nodes, and the table of parameters, <Parameters>.

@@ -10,6 +10,27 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Computes the intersection between a face and a
+/// curve. To intersect one curve with shape method
+/// Init(Shape, curve, tTol) should be used. To
+/// intersect a few curves with specified shape it is
+/// necessary to load shape one time using method
+/// Load(shape, tol) and find intersection points for
+/// each curve using method Init(curve). For
+/// iteration by intersection points method More() and
+/// Next() should be used.
+///
+/// Example:
+/// Inter.Load(shape, tol);
+/// for( i =1; i <= nbCurves;i++)
+/// {
+/// Inter.Init(curve);
+/// for(  ;Inter.More(); Inter.Next())
+/// {
+/// .......
+/// }
+/// }
 pub use ffi::Inter;
 impl Inter {
     /// Empty constructor;
@@ -32,7 +53,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepIntCurveSurface_Inter ========================
-        /// /// **Source:** `BRepIntCurveSurface_Inter.hxx` - `BRepIntCurveSurface_Inter`
+        /// **Source:** `BRepIntCurveSurface_Inter.hxx` - `BRepIntCurveSurface_Inter`
         ///
         /// Computes the intersection between a face and a
         /// curve. To intersect one curve with shape method
@@ -56,7 +77,7 @@ pub(crate) mod ffi {
         /// }
         #[cxx_name = "BRepIntCurveSurface_Inter"]
         type Inter;
-        /// /// **Source:** `BRepIntCurveSurface_Inter.hxx` - `BRepIntCurveSurface_Inter::BRepIntCurveSurface_Inter()`
+        /// **Source:** `BRepIntCurveSurface_Inter.hxx` - `BRepIntCurveSurface_Inter::BRepIntCurveSurface_Inter()`
         ///
         /// Empty constructor;
         #[cxx_name = "BRepIntCurveSurface_Inter_ctor"]

@@ -15,6 +15,13 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Describes algorithms for offsetting wires from a set of
+/// wires contained in a planar face.
+/// A MakeOffset object provides a framework for:
+/// - defining the construction of an offset,
+/// - implementing the construction algorithm, and
+/// - consulting the result.
 pub use ffi::MakeOffset;
 impl MakeOffset {
     /// Constructs an algorithm for creating an empty offset
@@ -55,6 +62,18 @@ impl MakeOffset {
         ffi::MakeOffset_convert_face(theFace, theAngleTolerance)
     }
 }
+
+/// Describes functions to build pipes.
+/// A pipe is built a basis shape (called the profile) along
+/// a wire (called the spine) by sweeping.
+/// The profile must not contain solids.
+/// A MakePipe object provides a framework for:
+/// - defining the construction of a pipe,
+/// - implementing the construction algorithm, and
+/// - consulting the result.
+/// Warning
+/// The MakePipe class implements pipe constructions
+/// with G1 continuous spines only.
 pub use ffi::MakePipe;
 impl MakePipe {
     /// Constructs a pipe by sweeping the shape Profile along
@@ -129,6 +148,25 @@ impl MakePipe {
         ffi::MakePipe_generated_shape2(self, SSpine, SProfile)
     }
 }
+
+/// This class provides for a framework to construct a shell
+/// or a solid along a spine consisting in a wire.
+/// To produce a solid, the initial wire must be closed.
+/// Two approaches are used:
+/// - definition by section
+/// - by a section and a scaling law
+/// - by addition of successive intermediary sections
+/// - definition by sweep mode.
+/// - pseudo-Frenet
+/// - constant
+/// - binormal constant
+/// - normal defined by a surface support
+/// - normal defined by a guiding contour.
+/// The two global approaches can also be combined.
+/// You can also close the surface later in order to form a solid.
+/// Warning: some limitations exist
+/// -- Mode with auxiliary spine is incompatible with hometetic laws
+/// -- Mode with auxiliary spine and keep contact produce only CO surface.
 pub use ffi::MakePipeShell;
 impl MakePipeShell {
     /// Constructs the shell-generating framework defined by the wire Spine.
@@ -184,6 +222,22 @@ impl MakePipeShell {
         ffi::MakePipeShell_last_shape(self)
     }
 }
+
+/// Describes functions to build hollowed solids.
+/// A hollowed solid is built from an initial solid and a set of
+/// faces on this solid, which are to be removed. The
+/// remaining faces of the solid become the walls of the
+/// hollowed solid, their thickness defined at the time of construction.
+/// the solid is built from an initial
+/// solid  <S> and a  set of  faces {Fi} from  <S>,
+/// builds a   solid  composed  by two shells closed  by
+/// the {Fi}. First shell <SS>   is composed by all
+/// the faces of <S> expected {Fi}.  Second shell is
+/// the offset shell of <SS>.
+/// A MakeThickSolid object provides a framework for:
+/// - defining the cross-section of a hollowed solid,
+/// - implementing the construction algorithm, and
+/// - consulting the result.
 pub use ffi::MakeThickSolid;
 impl MakeThickSolid {
     /// Constructor does nothing.
@@ -227,6 +281,11 @@ impl MakeThickSolid {
         ffi::make_thick_solid_as_make_offset_shape_mut(self)
     }
 }
+
+/// Describes functions to build a loft. This is a shell or a
+/// solid passing through a set of sections in a given
+/// sequence. Usually sections are wires, but the first and
+/// the last sections may be vertices (punctual sections).
 pub use ffi::ThruSections;
 impl ThruSections {
     /// Initializes an algorithm for building a shell or a solid
@@ -278,6 +337,13 @@ impl ThruSections {
         ffi::ThruSections_generated_face(self, Edge)
     }
 }
+
+/// Describes functions to build a shell out of a shape. The
+/// result is an unlooped shape parallel to the source shape.
+/// A MakeOffsetShape object provides a framework for:
+/// - defining the construction of a shell
+/// - implementing the construction algorithm
+/// - consulting the result.
 pub use ffi::MakeOffsetShape;
 impl MakeOffsetShape {
     /// Constructor does nothing.
@@ -319,7 +385,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepOffsetAPI_MakeOffset ========================
-        /// /// **Source:** `BRepOffsetAPI_MakeOffset.hxx` - `BRepOffsetAPI_MakeOffset`
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx` - `BRepOffsetAPI_MakeOffset`
         ///
         /// Describes algorithms for offsetting wires from a set of
         /// wires contained in a planar face.
@@ -329,7 +395,7 @@ pub(crate) mod ffi {
         /// - consulting the result.
         #[cxx_name = "BRepOffsetAPI_MakeOffset"]
         type MakeOffset;
-        /// /// **Source:** `BRepOffsetAPI_MakeOffset.hxx` - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
+        /// **Source:** `BRepOffsetAPI_MakeOffset.hxx` - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
         ///
         /// Constructs an algorithm for creating an empty offset
         #[cxx_name = "BRepOffsetAPI_MakeOffset_ctor"]
@@ -381,7 +447,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakeOffset>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         /// ======================== BRepOffsetAPI_MakePipe ========================
-        /// /// **Source:** `BRepOffsetAPI_MakePipe.hxx` - `BRepOffsetAPI_MakePipe`
+        /// **Source:** `BRepOffsetAPI_MakePipe.hxx` - `BRepOffsetAPI_MakePipe`
         ///
         /// Describes functions to build pipes.
         /// A pipe is built a basis shape (called the profile) along
@@ -396,7 +462,7 @@ pub(crate) mod ffi {
         /// with G1 continuous spines only.
         #[cxx_name = "BRepOffsetAPI_MakePipe"]
         type MakePipe;
-        /// /// **Source:** `BRepOffsetAPI_MakePipe.hxx` - `BRepOffsetAPI_MakePipe::BRepOffsetAPI_MakePipe()`
+        /// **Source:** `BRepOffsetAPI_MakePipe.hxx` - `BRepOffsetAPI_MakePipe::BRepOffsetAPI_MakePipe()`
         ///
         /// Constructs a pipe by sweeping the shape Profile along
         /// the wire Spine.The angle made by the spine with the profile is
@@ -461,7 +527,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakePipe>,
         ) -> Pin<&mut BRepPrimAPI_MakeSweep>;
         /// ======================== BRepOffsetAPI_MakePipeShell ========================
-        /// /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx` - `BRepOffsetAPI_MakePipeShell`
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx` - `BRepOffsetAPI_MakePipeShell`
         ///
         /// This class provides for a framework to construct a shell
         /// or a solid along a spine consisting in a wire.
@@ -483,7 +549,7 @@ pub(crate) mod ffi {
         /// -- Mode with auxiliary spine and keep contact produce only CO surface.
         #[cxx_name = "BRepOffsetAPI_MakePipeShell"]
         type MakePipeShell;
-        /// /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx` - `BRepOffsetAPI_MakePipeShell::BRepOffsetAPI_MakePipeShell()`
+        /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx` - `BRepOffsetAPI_MakePipeShell::BRepOffsetAPI_MakePipeShell()`
         ///
         /// Constructs the shell-generating framework defined by the wire Spine.
         /// Sets an sweep's mode
@@ -670,7 +736,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakePipeShell>,
         ) -> Pin<&mut BRepPrimAPI_MakeSweep>;
         /// ======================== BRepOffsetAPI_MakeThickSolid ========================
-        /// /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx` - `BRepOffsetAPI_MakeThickSolid`
+        /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx` - `BRepOffsetAPI_MakeThickSolid`
         ///
         /// Describes functions to build hollowed solids.
         /// A hollowed solid is built from an initial solid and a set of
@@ -689,7 +755,7 @@ pub(crate) mod ffi {
         /// - consulting the result.
         #[cxx_name = "BRepOffsetAPI_MakeThickSolid"]
         type MakeThickSolid;
-        /// /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx` - `BRepOffsetAPI_MakeThickSolid::BRepOffsetAPI_MakeThickSolid()`
+        /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx` - `BRepOffsetAPI_MakeThickSolid::BRepOffsetAPI_MakeThickSolid()`
         ///
         /// Constructor does nothing.
         #[cxx_name = "BRepOffsetAPI_MakeThickSolid_ctor"]
@@ -740,7 +806,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakeThickSolid>,
         ) -> Pin<&mut MakeOffsetShape>;
         /// ======================== BRepOffsetAPI_ThruSections ========================
-        /// /// **Source:** `BRepOffsetAPI_ThruSections.hxx` - `BRepOffsetAPI_ThruSections`
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx` - `BRepOffsetAPI_ThruSections`
         ///
         /// Describes functions to build a loft. This is a shell or a
         /// solid passing through a set of sections in a given
@@ -748,7 +814,7 @@ pub(crate) mod ffi {
         /// the last sections may be vertices (punctual sections).
         #[cxx_name = "BRepOffsetAPI_ThruSections"]
         type ThruSections;
-        /// /// **Source:** `BRepOffsetAPI_ThruSections.hxx` - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
+        /// **Source:** `BRepOffsetAPI_ThruSections.hxx` - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
         ///
         /// Initializes an algorithm for building a shell or a solid
         /// passing through a set of sections, where:
@@ -877,7 +943,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut ThruSections>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         /// ======================== BRepOffsetAPI_MakeOffsetShape ========================
-        /// /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx` - `BRepOffsetAPI_MakeOffsetShape`
+        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx` - `BRepOffsetAPI_MakeOffsetShape`
         ///
         /// Describes functions to build a shell out of a shape. The
         /// result is an unlooped shape parallel to the source shape.
@@ -887,7 +953,7 @@ pub(crate) mod ffi {
         /// - consulting the result.
         #[cxx_name = "BRepOffsetAPI_MakeOffsetShape"]
         type MakeOffsetShape;
-        /// /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx` - `BRepOffsetAPI_MakeOffsetShape::BRepOffsetAPI_MakeOffsetShape()`
+        /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx` - `BRepOffsetAPI_MakeOffsetShape::BRepOffsetAPI_MakeOffsetShape()`
         ///
         /// Constructor does nothing.
         #[cxx_name = "BRepOffsetAPI_MakeOffsetShape_ctor"]

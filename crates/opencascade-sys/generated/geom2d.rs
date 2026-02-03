@@ -15,6 +15,30 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// The general abstract class Geometry in 2D space describes
+/// the common behaviour of all the geometric entities.
+///
+/// All the objects derived from this class can be move with a
+/// geometric transformation. Only the transformations which
+/// doesn't modify the nature of the geometry are available in
+/// this package.
+/// The method Transform which defines a general transformation
+/// is deferred. The other specifics transformations used the
+/// method Transform.
+/// All the following transformations modify the object itself.
+/// Warning
+/// Only transformations which do not modify the nature
+/// of the geometry can be applied to Geom2d objects:
+/// this is the case with translations, rotations,
+/// symmetries and scales; this is also the case with
+/// gp_Trsf2d composite transformations which are
+/// used to define the geometric transformations applied
+/// using the Transform or Transformed functions.
+/// Note: Geometry defines the "prototype" of the
+/// abstract method Transform which is defined for each
+/// concrete type of derived object. All other
+/// transformations are implemented using the Transform method.
 pub use ffi::Geometry;
 impl Geometry {
     pub fn mirrored_pnt2d(&self, P: &ffi::gp_Pnt2d) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
@@ -61,6 +85,33 @@ impl Geometry {
         ffi::Geometry_get_type_name()
     }
 }
+
+/// The abstract class Curve describes the common
+/// behavior of curves in 2D space. The Geom2d
+/// package provides numerous concrete classes of
+/// derived curves, including lines, circles, conics, Bezier
+/// or BSpline curves, etc.
+/// The main characteristic of these curves is that they
+/// are parameterized. The Geom2d_Curve class shows:
+/// - how to work with the parametric equation of a
+/// curve in order to calculate the point of parameter
+/// u, together with the vector tangent and the
+/// derivative vectors of order 2, 3,..., N at this point;
+/// - how to obtain general information about the curve
+/// (for example, level of continuity, closed
+/// characteristics, periodicity, bounds of the parameter field);
+/// - how the parameter changes when a geometric
+/// transformation is applied to the curve or when the
+/// orientation of the curve is inverted.
+/// All curves must have a geometric continuity: a curve is
+/// at least "C0". Generally, this property is checked at
+/// the time of construction or when the curve is edited.
+/// Where this is not the case, the documentation
+/// explicitly states so.
+/// Warning
+/// The Geom2d package does not prevent the
+/// construction of curves with null length or curves which
+/// self-intersect.
 pub use ffi::Curve;
 impl Curve {
     /// Upcast to Geom2d_Geometry
@@ -118,6 +169,23 @@ impl Curve {
         ffi::Curve_get_type_name()
     }
 }
+
+/// The abstract class BoundedCurve describes the
+/// common behavior of bounded curves in 2D space. A
+/// bounded curve is limited by two finite values of the
+/// parameter, termed respectively "first parameter" and
+/// "last parameter". The "first parameter" gives the "start
+/// point" of the bounded curve, and the "last parameter"
+/// gives the "end point" of the bounded curve.
+/// The length of a bounded curve is finite.
+/// The Geom2d package provides three concrete
+/// classes of bounded curves:
+/// - two frequently used mathematical formulations of complex curves:
+/// - Geom2d_BezierCurve,
+/// - Geom2d_BSplineCurve, and
+/// - Geom2d_TrimmedCurve to trim a curve, i.e. to
+/// only take part of the curve limited by two values of
+/// the parameter of the basis curve.
 pub use ffi::BoundedCurve;
 impl BoundedCurve {
     /// Upcast to Geom2d_Curve
@@ -158,6 +226,22 @@ impl BoundedCurve {
         ffi::BoundedCurve_get_type_name()
     }
 }
+
+/// The abstract class Conic describes the common
+/// behavior of conic curves in 2D space and, in
+/// particular, their general characteristics. The Geom2d
+/// package provides four specific classes of conics:
+/// Geom2d_Circle, Geom2d_Ellipse,
+/// Geom2d_Hyperbola and Geom2d_Parabola.
+/// A conic is positioned in the plane with a coordinate
+/// system (gp_Ax22d object), where the origin is the
+/// center of the conic (or the apex in case of a parabola).
+/// This coordinate system is the local coordinate
+/// system of the conic. It gives the conic an explicit
+/// orientation, determining the direction in which the
+/// parameter increases along the conic. The "X Axis" of
+/// the local coordinate system also defines the origin of
+/// the parameter of the conic.
 pub use ffi::Conic;
 impl Conic {
     /// Upcast to Geom2d_Curve
@@ -199,6 +283,36 @@ impl Conic {
         ffi::Conic_get_type_name()
     }
 }
+
+/// Describes an ellipse in the plane (2D space).
+/// An ellipse is defined by its major and minor radii and,
+/// as with any conic curve, is positioned in the plane
+/// with a coordinate system (gp_Ax22d object) where:
+/// - the origin is the center of the ellipse,
+/// - the "X Direction" defines the major axis, and
+/// - the "Y Direction" defines the minor axis.
+/// This coordinate system is the local coordinate system of the ellipse.
+/// The orientation (direct or indirect) of the local
+/// coordinate system gives an explicit orientation to the
+/// ellipse, determining the direction in which the
+/// parameter increases along the ellipse.
+/// The Geom2d_Ellipse ellipse is parameterized by an angle:
+/// P(U) = O + MajorRad*Cos(U)*XDir + MinorRad*Sin(U)*YDir
+/// where:
+/// - P is the point of parameter U,
+/// - O, XDir and YDir are respectively the origin, "X
+/// Direction" and "Y Direction" of its local coordinate system,
+/// - MajorRad and MinorRad are the major and
+/// minor radii of the ellipse.
+/// The "X Axis" of the local coordinate system therefore
+/// defines the origin of the parameter of the ellipse.
+/// An ellipse is a closed and periodic curve. The period
+/// is 2.*Pi and the parameter range is [ 0,2.*Pi [.
+/// See Also
+/// GCE2d_MakeEllipse which provides functions for
+/// more complex ellipse constructions
+/// gp_Ax22d
+/// gp_Elips2d for an equivalent, non-parameterized data structure
 pub use ffi::Ellipse;
 impl Ellipse {
     /// Creates an ellipse by conversion of the gp_Elips2d ellipse E.
@@ -347,6 +461,14 @@ impl Ellipse {
         ffi::Ellipse_get_type_name()
     }
 }
+
+/// Defines a portion of a curve limited by two values of
+/// parameters inside the parametric domain of the curve.
+/// The trimmed curve is defined by:
+/// - the basis curve, and
+/// - the two parameter values which limit it.
+/// The trimmed curve can either have the same
+/// orientation as the basis curve or the opposite orientation.
 pub use ffi::TrimmedCurve;
 impl TrimmedCurve {
     /// Creates a trimmed curve from the basis curve C limited between
@@ -547,7 +669,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Geom2d_Geometry ========================
-        /// /// **Source:** `Geom2d_Geometry.hxx` - `Geom2d_Geometry`
+        /// **Source:** `Geom2d_Geometry.hxx` - `Geom2d_Geometry`
         ///
         /// The general abstract class Geometry in 2D space describes
         /// the common behaviour of all the geometric entities.
@@ -647,7 +769,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Geom2d_Geometry_get_type_name"]
         fn Geometry_get_type_name() -> String;
         /// ======================== Geom2d_Curve ========================
-        /// /// **Source:** `Geom2d_Curve.hxx` - `Geom2d_Curve`
+        /// **Source:** `Geom2d_Curve.hxx` - `Geom2d_Curve`
         ///
         /// The abstract class Curve describes the common
         /// behavior of curves in 2D space. The Geom2d
@@ -843,7 +965,7 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleGeom2dCurve_to_HandleGeom2dGeometry"]
         fn curve_to_handle_geometry(handle: &HandleGeom2dCurve) -> UniquePtr<HandleGeom2dGeometry>;
         /// ======================== Geom2d_BoundedCurve ========================
-        /// /// **Source:** `Geom2d_BoundedCurve.hxx` - `Geom2d_BoundedCurve`
+        /// **Source:** `Geom2d_BoundedCurve.hxx` - `Geom2d_BoundedCurve`
         ///
         /// The abstract class BoundedCurve describes the
         /// common behavior of bounded curves in 2D space. A
@@ -900,7 +1022,7 @@ pub(crate) mod ffi {
             handle: &HandleGeom2dBoundedCurve,
         ) -> UniquePtr<HandleGeom2dGeometry>;
         /// ======================== Geom2d_Conic ========================
-        /// /// **Source:** `Geom2d_Conic.hxx` - `Geom2d_Conic`
+        /// **Source:** `Geom2d_Conic.hxx` - `Geom2d_Conic`
         ///
         /// The abstract class Conic describes the common
         /// behavior of conic curves in 2D space and, in
@@ -1003,7 +1125,7 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleGeom2dConic_to_HandleGeom2dGeometry"]
         fn conic_to_handle_geometry(handle: &HandleGeom2dConic) -> UniquePtr<HandleGeom2dGeometry>;
         /// ======================== Geom2d_Ellipse ========================
-        /// /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse`
+        /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse`
         ///
         /// Describes an ellipse in the plane (2D space).
         /// An ellipse is defined by its major and minor radii and,
@@ -1036,12 +1158,12 @@ pub(crate) mod ffi {
         /// gp_Elips2d for an equivalent, non-parameterized data structure
         #[cxx_name = "Geom2d_Ellipse"]
         type Ellipse;
-        /// /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
+        /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
         ///
         /// Creates an ellipse by conversion of the gp_Elips2d ellipse E.
         #[cxx_name = "Geom2d_Ellipse_ctor_elips2d"]
         fn Ellipse_ctor_elips2d(E: &gp_Elips2d) -> UniquePtr<Ellipse>;
-        /// /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
+        /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
         ///
         /// Creates an ellipse defined by its major and minor radii,
         /// MajorRadius and MinorRadius, and positioned
@@ -1065,7 +1187,7 @@ pub(crate) mod ffi {
             MinorRadius: f64,
             Sense: bool,
         ) -> UniquePtr<Ellipse>;
-        /// /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
+        /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
         ///
         /// Creates an ellipse defined by its major and minor radii,
         /// MajorRadius and MinorRadius, where the
@@ -1260,7 +1382,7 @@ pub(crate) mod ffi {
             handle: &HandleGeom2dEllipse,
         ) -> UniquePtr<HandleGeom2dGeometry>;
         /// ======================== Geom2d_TrimmedCurve ========================
-        /// /// **Source:** `Geom2d_TrimmedCurve.hxx` - `Geom2d_TrimmedCurve`
+        /// **Source:** `Geom2d_TrimmedCurve.hxx` - `Geom2d_TrimmedCurve`
         ///
         /// Defines a portion of a curve limited by two values of
         /// parameters inside the parametric domain of the curve.
@@ -1271,7 +1393,7 @@ pub(crate) mod ffi {
         /// orientation as the basis curve or the opposite orientation.
         #[cxx_name = "Geom2d_TrimmedCurve"]
         type TrimmedCurve;
-        /// /// **Source:** `Geom2d_TrimmedCurve.hxx` - `Geom2d_TrimmedCurve::Geom2d_TrimmedCurve()`
+        /// **Source:** `Geom2d_TrimmedCurve.hxx` - `Geom2d_TrimmedCurve::Geom2d_TrimmedCurve()`
         ///
         /// Creates a trimmed curve from the basis curve C limited between
         /// U1 and U2.

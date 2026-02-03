@@ -16,6 +16,33 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Describes a bounding box in 3D space.
+/// A bounding box is parallel to the axes of the coordinates
+/// system. If it is finite, it is defined by the three intervals:
+/// -   [ Xmin,Xmax ],
+/// -   [ Ymin,Ymax ],
+/// -   [ Zmin,Zmax ].
+/// A bounding box may be infinite (i.e. open) in one or more
+/// directions. It is said to be:
+/// -   OpenXmin if it is infinite on the negative side of the   "X Direction";
+/// -   OpenXmax if it is infinite on the positive side of the "X Direction";
+/// -   OpenYmin if it is infinite on the negative side of the   "Y Direction";
+/// -   OpenYmax if it is infinite on the positive side of the "Y Direction";
+/// -   OpenZmin if it is infinite on the negative side of the   "Z Direction";
+/// -   OpenZmax if it is infinite on the positive side of the "Z Direction";
+/// -   WholeSpace if it is infinite in all six directions. In this
+/// case, any point of the space is inside the box;
+/// -   Void if it is empty. In this case, there is no point included in the box.
+/// A bounding box is defined by:
+/// -   six bounds (Xmin, Xmax, Ymin, Ymax, Zmin and
+/// Zmax) which limit the bounding box if it is finite,
+/// -   eight flags (OpenXmin, OpenXmax, OpenYmin,
+/// OpenYmax, OpenZmin, OpenZmax,
+/// WholeSpace and Void) which describe the
+/// bounding box if it is infinite or empty, and
+/// -   a gap, which is included on both sides in any direction
+/// when consulting the finite bounds of the box.
 pub use ffi::Box_ as Box;
 impl Box {
     /// Creates an empty Box.
@@ -72,6 +99,14 @@ impl Box {
         ffi::Box__finite_part(self)
     }
 }
+
+/// The class describes the Oriented Bounding Box (OBB),
+/// much tighter enclosing volume for the shape than the
+/// Axis Aligned Bounding Box (AABB).
+/// The OBB is defined by a center of the box, the axes and the halves
+/// of its three dimensions.
+/// The OBB can be used more effectively than AABB as a rejection mechanism
+/// for non-interfering objects.
 pub use ffi::OBB;
 impl OBB {
     /// Empty constructor
@@ -121,6 +156,7 @@ impl OBB {
         ffi::OBB_position(self)
     }
 }
+
 pub use ffi::HArray1OfSphere;
 impl HArray1OfSphere {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -166,6 +202,9 @@ impl HArray1OfSphere {
         ffi::HArray1OfSphere_get_type_name()
     }
 }
+
+/// This class represents a bounding sphere of a geometric entity
+/// (triangle, segment of line or whatever else).
 pub use ffi::Sphere;
 impl Sphere {
     /// Empty constructor
@@ -188,6 +227,26 @@ impl Sphere {
         ffi::Sphere_to_owned(self)
     }
 }
+
+/// Describes a bounding box in 2D space.
+/// A bounding box is parallel to the axes of the coordinates
+/// system. If it is finite, it is defined by the two intervals:
+/// -   [ Xmin,Xmax ], and
+/// -   [ Ymin,Ymax ].
+/// A bounding box may be infinite (i.e. open) in one or more
+/// directions. It is said to be:
+/// -   OpenXmin if it is infinite on the negative side of the   "X Direction";
+/// -   OpenXmax if it is infinite on the positive side of the   "X Direction";
+/// -   OpenYmin if it is infinite on the negative side of the   "Y Direction";
+/// -   OpenYmax if it is infinite on the positive side of the   "Y Direction";
+/// -   WholeSpace if it is infinite in all four directions. In
+/// this case, any point of the space is inside the box;
+/// -   Void if it is empty. In this case, there is no point included in the box.
+/// A bounding box is defined by four bounds (Xmin, Xmax, Ymin and Ymax) which
+/// limit the bounding box if it is finite, six flags (OpenXmin, OpenXmax, OpenYmin,
+/// OpenYmax, WholeSpace and Void) which describe the bounding box if it is infinite or empty, and
+/// -   a gap, which is included on both sides in any direction when consulting the finite bounds of
+/// the box.
 pub use ffi::Box2d;
 impl Box2d {
     /// Creates an empty 2D bounding box.
@@ -211,6 +270,7 @@ impl Box2d {
         ffi::Box2d_transformed(self, T)
     }
 }
+
 pub use ffi::B2d;
 impl B2d {
     /// Empty constructor.
@@ -248,6 +308,7 @@ impl B2d {
         ffi::B2d_transformed(self, theTrsf)
     }
 }
+
 pub use ffi::HArray1OfBox;
 impl HArray1OfBox {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -303,7 +364,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Bnd_Box ========================
-        /// /// **Source:** `Bnd_Box.hxx` - `Bnd_Box`
+        /// **Source:** `Bnd_Box.hxx` - `Bnd_Box`
         ///
         /// Describes a bounding box in 3D space.
         /// A bounding box is parallel to the axes of the coordinates
@@ -333,13 +394,13 @@ pub(crate) mod ffi {
         /// when consulting the finite bounds of the box.
         #[cxx_name = "Bnd_Box"]
         type Box_;
-        /// /// **Source:** `Bnd_Box.hxx` - `Bnd_Box::Bnd_Box()`
+        /// **Source:** `Bnd_Box.hxx` - `Bnd_Box::Bnd_Box()`
         ///
         /// Creates an empty Box.
         /// The constructed box is qualified Void. Its gap is null.
         #[cxx_name = "Bnd_Box_ctor"]
         fn Box__ctor() -> UniquePtr<Box_>;
-        /// /// **Source:** `Bnd_Box.hxx` - `Bnd_Box::Bnd_Box()`
+        /// **Source:** `Bnd_Box.hxx` - `Bnd_Box::Bnd_Box()`
         ///
         /// Creates a bounding box, it contains:
         /// -   minimum/maximum point of bounding box,
@@ -558,7 +619,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Box__to_owned(self_: &Box_) -> UniquePtr<Box_>;
         /// ======================== Bnd_OBB ========================
-        /// /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB`
+        /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB`
         ///
         /// The class describes the Oriented Bounding Box (OBB),
         /// much tighter enclosing volume for the shape than the
@@ -569,12 +630,12 @@ pub(crate) mod ffi {
         /// for non-interfering objects.
         #[cxx_name = "Bnd_OBB"]
         type OBB;
-        /// /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`
+        /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`
         ///
         /// Empty constructor
         #[cxx_name = "Bnd_OBB_ctor"]
         fn OBB_ctor() -> UniquePtr<OBB>;
-        /// /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`
+        /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`
         ///
         /// Constructor taking all defining parameters
         #[cxx_name = "Bnd_OBB_ctor_pnt_dir3_real3"]
@@ -587,7 +648,7 @@ pub(crate) mod ffi {
             theHYSize: f64,
             theHZSize: f64,
         ) -> UniquePtr<OBB>;
-        /// /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`
+        /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`
         ///
         /// Constructor to create OBB from AABB.
         #[cxx_name = "Bnd_OBB_ctor_box"]
@@ -673,23 +734,23 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn OBB_to_owned(self_: &OBB) -> UniquePtr<OBB>;
         /// ======================== Bnd_HArray1OfSphere ========================
-        /// /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere`
+        /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere`
         #[cxx_name = "Bnd_HArray1OfSphere"]
         type HArray1OfSphere;
-        /// /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
+        /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor"]
         fn HArray1OfSphere_ctor() -> UniquePtr<HArray1OfSphere>;
-        /// /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
+        /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor_int2"]
         fn HArray1OfSphere_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfSphere>;
-        /// /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
+        /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor_int2_sphere"]
         fn HArray1OfSphere_ctor_int2_sphere(
             theLower: i32,
             theUpper: i32,
             theValue: &Sphere,
         ) -> UniquePtr<HArray1OfSphere>;
-        /// /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
+        /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor_sphere_int2_bool"]
         fn HArray1OfSphere_ctor_sphere_int2_bool(
             theBegin: &Sphere,
@@ -697,7 +758,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfSphere>;
-        /// /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
+        /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor_array1ofsphere"]
         fn HArray1OfSphere_ctor_array1ofsphere(
             theOther: &Bnd_Array1OfSphere,
@@ -719,18 +780,18 @@ pub(crate) mod ffi {
             obj: UniquePtr<HArray1OfSphere>,
         ) -> UniquePtr<HandleBndHArray1OfSphere>;
         /// ======================== Bnd_Sphere ========================
-        /// /// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere`
+        /// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere`
         ///
         /// This class represents a bounding sphere of a geometric entity
         /// (triangle, segment of line or whatever else).
         #[cxx_name = "Bnd_Sphere"]
         type Sphere;
-        /// /// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`
+        /// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`
         ///
         /// Empty constructor
         #[cxx_name = "Bnd_Sphere_ctor"]
         fn Sphere_ctor() -> UniquePtr<Sphere>;
-        /// /// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`
+        /// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`
         ///
         /// Constructor of a definite sphere
         #[cxx_name = "Bnd_Sphere_ctor_xyz_real_int2"]
@@ -794,7 +855,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Sphere_to_owned(self_: &Sphere) -> UniquePtr<Sphere>;
         /// ======================== Bnd_Box2d ========================
-        /// /// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d`
+        /// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d`
         ///
         /// Describes a bounding box in 2D space.
         /// A bounding box is parallel to the axes of the coordinates
@@ -817,7 +878,7 @@ pub(crate) mod ffi {
         /// the box.
         #[cxx_name = "Bnd_Box2d"]
         type Box2d;
-        /// /// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d::Bnd_Box2d()`
+        /// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d::Bnd_Box2d()`
         ///
         /// Creates an empty 2D bounding box.
         /// The constructed box is qualified Void. Its gap is null.
@@ -957,15 +1018,15 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Box2d_to_owned(self_: &Box2d) -> UniquePtr<Box2d>;
         /// ======================== Bnd_B2d ========================
-        /// /// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d`
+        /// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d`
         #[cxx_name = "Bnd_B2d"]
         type B2d;
-        /// /// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d::Bnd_B2d()`
+        /// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d::Bnd_B2d()`
         ///
         /// Empty constructor.
         #[cxx_name = "Bnd_B2d_ctor"]
         fn B2d_ctor() -> UniquePtr<B2d>;
-        /// /// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d::Bnd_B2d()`
+        /// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d::Bnd_B2d()`
         ///
         /// Constructor.
         #[cxx_name = "Bnd_B2d_ctor_xy2"]
@@ -1062,23 +1123,23 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn B2d_to_owned(self_: &B2d) -> UniquePtr<B2d>;
         /// ======================== Bnd_HArray1OfBox ========================
-        /// /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox`
+        /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox`
         #[cxx_name = "Bnd_HArray1OfBox"]
         type HArray1OfBox;
-        /// /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
+        /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor"]
         fn HArray1OfBox_ctor() -> UniquePtr<HArray1OfBox>;
-        /// /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
+        /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor_int2"]
         fn HArray1OfBox_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfBox>;
-        /// /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
+        /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor_int2_box"]
         fn HArray1OfBox_ctor_int2_box(
             theLower: i32,
             theUpper: i32,
             theValue: &Box_,
         ) -> UniquePtr<HArray1OfBox>;
-        /// /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
+        /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor_box_int2_bool"]
         fn HArray1OfBox_ctor_box_int2_bool(
             theBegin: &Box_,
@@ -1086,7 +1147,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfBox>;
-        /// /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
+        /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor_array1ofbox"]
         fn HArray1OfBox_ctor_array1ofbox(theOther: &Bnd_Array1OfBox) -> UniquePtr<HArray1OfBox>;
         #[cxx_name = "Array1"]

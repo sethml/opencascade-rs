@@ -11,6 +11,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Interface class representing discrete model of a shape.
 pub use ffi::Model;
 impl Model {
     /// Upcast to IMeshData_Shape
@@ -27,6 +29,10 @@ impl Model {
         ffi::Model_get_type_name()
     }
 }
+
+/// Interface class representing model with associated TopoDS_Shape.
+/// Intended for inheritance by structures and algorithms keeping
+/// reference TopoDS_Shape.
 pub use ffi::Shape;
 impl Shape {
     /// Wrap IMeshData_Shape in a Handle (reference-counted smart pointer)
@@ -48,7 +54,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== IMeshData_Model ========================
-        /// /// **Source:** `IMeshData_Model.hxx` - `IMeshData_Model`
+        /// **Source:** `IMeshData_Model.hxx` - `IMeshData_Model`
         ///
         /// Interface class representing discrete model of a shape.
         #[cxx_name = "IMeshData_Model"]
@@ -75,7 +81,7 @@ pub(crate) mod ffi {
         #[cxx_name = "IMeshData_Model_as_IMeshData_Shape_mut"]
         fn model_as_shape_mut(self_: Pin<&mut Model>) -> Pin<&mut Shape>;
         /// ======================== IMeshData_Shape ========================
-        /// /// **Source:** `IMeshData_Shape.hxx` - `IMeshData_Shape`
+        /// **Source:** `IMeshData_Shape.hxx` - `IMeshData_Shape`
         ///
         /// Interface class representing model with associated TopoDS_Shape.
         /// Intended for inheritance by structures and algorithms keeping

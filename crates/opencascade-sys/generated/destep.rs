@@ -10,6 +10,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
 pub use ffi::Parameters;
 impl Parameters {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -31,10 +32,10 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== DESTEP_Parameters ========================
-        /// /// **Source:** `DESTEP_Parameters.hxx` - `DESTEP_Parameters`
+        /// **Source:** `DESTEP_Parameters.hxx` - `DESTEP_Parameters`
         #[cxx_name = "DESTEP_Parameters"]
         type Parameters;
-        /// /// **Source:** `DESTEP_Parameters.hxx` - `DESTEP_Parameters::DESTEP_Parameters()`
+        /// **Source:** `DESTEP_Parameters.hxx` - `DESTEP_Parameters::DESTEP_Parameters()`
         #[cxx_name = "DESTEP_Parameters_ctor"]
         fn Parameters_ctor() -> UniquePtr<Parameters>;
         /// Initialize parameters

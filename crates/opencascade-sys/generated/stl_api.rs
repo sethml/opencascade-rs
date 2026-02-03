@@ -10,6 +10,10 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// This class creates and writes
+/// STL files from Open CASCADE shapes. An STL file can be written to an existing STL file or to a
+/// new one.
 pub use ffi::Writer;
 impl Writer {
     /// Creates a writer object with default parameters: ASCIIMode.
@@ -38,14 +42,14 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== StlAPI_Writer ========================
-        /// /// **Source:** `StlAPI_Writer.hxx` - `StlAPI_Writer`
+        /// **Source:** `StlAPI_Writer.hxx` - `StlAPI_Writer`
         ///
         /// This class creates and writes
         /// STL files from Open CASCADE shapes. An STL file can be written to an existing STL file or to a
         /// new one.
         #[cxx_name = "StlAPI_Writer"]
         type Writer;
-        /// /// **Source:** `StlAPI_Writer.hxx` - `StlAPI_Writer::StlAPI_Writer()`
+        /// **Source:** `StlAPI_Writer.hxx` - `StlAPI_Writer::StlAPI_Writer()`
         ///
         /// Creates a writer object with default parameters: ASCIIMode.
         #[cxx_name = "StlAPI_Writer_ctor"]

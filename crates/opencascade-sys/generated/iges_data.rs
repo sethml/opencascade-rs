@@ -11,6 +11,16 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// This class provides various functions of basic edition,
+/// such as :
+/// - setting header unit (WARNING : DOES NOT convert entities)
+/// - computation of the status (Subordinate, UseFlag) of entities
+/// of IGES Entities on a whole model
+/// - auto correction of IGES Entities, defined both by DirChecker
+/// and by specific service AutoCorrect
+/// (this auto correction performs non-ambigious, rather logic,
+/// editions)
 pub use ffi::BasicEditor;
 impl BasicEditor {
     /// Creates an empty Basic Editor which should be initialized via Init() method.
@@ -86,6 +96,7 @@ impl BasicEditor {
         ffi::BasicEditor_get_flag_by_value(theValue)
     }
 }
+
 pub use ffi::SpecificLib;
 impl SpecificLib {
     /// Creates a Library which complies with a Protocol, that is :
@@ -121,7 +132,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== IGESData_BasicEditor ========================
-        /// /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor`
+        /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor`
         ///
         /// This class provides various functions of basic edition,
         /// such as :
@@ -134,19 +145,19 @@ pub(crate) mod ffi {
         /// editions)
         #[cxx_name = "IGESData_BasicEditor"]
         type BasicEditor;
-        /// /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor::IGESData_BasicEditor()`
+        /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor::IGESData_BasicEditor()`
         ///
         /// Creates an empty Basic Editor which should be initialized via Init() method.
         #[cxx_name = "IGESData_BasicEditor_ctor"]
         fn BasicEditor_ctor() -> UniquePtr<BasicEditor>;
-        /// /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor::IGESData_BasicEditor()`
+        /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor::IGESData_BasicEditor()`
         ///
         /// Creates a Basic Editor, with a new IGESModel, ready to run
         #[cxx_name = "IGESData_BasicEditor_ctor_handleprotocol"]
         fn BasicEditor_ctor_handleprotocol(
             protocol: &HandleIGESDataProtocol,
         ) -> UniquePtr<BasicEditor>;
-        /// /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor::IGESData_BasicEditor()`
+        /// **Source:** `IGESData_BasicEditor.hxx` - `IGESData_BasicEditor::IGESData_BasicEditor()`
         ///
         /// Creates a Basic Editor for IGES Data, ready to run
         #[cxx_name = "IGESData_BasicEditor_ctor_handleigesmodel_handleprotocol"]
@@ -238,10 +249,10 @@ pub(crate) mod ffi {
         #[cxx_name = "IGESData_BasicEditor_GetFlagByValue"]
         fn BasicEditor_get_flag_by_value(theValue: f64) -> i32;
         /// ======================== IGESData_SpecificLib ========================
-        /// /// **Source:** `IGESData_SpecificLib.hxx` - `IGESData_SpecificLib`
+        /// **Source:** `IGESData_SpecificLib.hxx` - `IGESData_SpecificLib`
         #[cxx_name = "IGESData_SpecificLib"]
         type SpecificLib;
-        /// /// **Source:** `IGESData_SpecificLib.hxx` - `IGESData_SpecificLib::IGESData_SpecificLib()`
+        /// **Source:** `IGESData_SpecificLib.hxx` - `IGESData_SpecificLib::IGESData_SpecificLib()`
         ///
         /// Creates a Library which complies with a Protocol, that is :
         /// Same class (criterium IsInstance)
@@ -251,7 +262,7 @@ pub(crate) mod ffi {
         fn SpecificLib_ctor_handleprotocol(
             aprotocol: &HandleIGESDataProtocol,
         ) -> UniquePtr<SpecificLib>;
-        /// /// **Source:** `IGESData_SpecificLib.hxx` - `IGESData_SpecificLib::IGESData_SpecificLib()`
+        /// **Source:** `IGESData_SpecificLib.hxx` - `IGESData_SpecificLib::IGESData_SpecificLib()`
         ///
         /// Creates an empty Library : it will later by filled by method
         /// AddProtocol

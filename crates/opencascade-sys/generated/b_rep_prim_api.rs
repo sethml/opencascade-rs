@@ -18,6 +18,25 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Describes functions to build parallelepiped boxes.
+/// A MakeBox object provides a framework for:
+/// -   defining the construction of a box,
+/// -   implementing the construction algorithm, and
+/// -   consulting the result.
+/// Constructs a box such that its sides are parallel to the axes of
+/// -   the global coordinate system, or
+/// -   the local coordinate system Axis. and
+/// -   with a corner at (0, 0, 0) and of size (dx, dy, dz), or
+/// -   with a corner at point P and of size (dx, dy, dz), or
+/// -   with corners at points P1 and P2.
+/// Exceptions
+/// Standard_DomainError if: dx, dy, dz are less than or equal to
+/// Precision::Confusion(), or
+/// -   the vector joining the points P1 and P2 has a
+/// component projected onto the global coordinate
+/// system less than or equal to Precision::Confusion().
+/// In these cases, the box would be flat.
 pub use ffi::MakeBox;
 impl MakeBox {
     /// Default constructor
@@ -69,6 +88,12 @@ impl MakeBox {
         ffi::make_box_as_b_rep_builder_api_make_shape_mut(self)
     }
 }
+
+/// Describes functions to build cones or portions of cones.
+/// A MakeCone object provides a framework for:
+/// -   defining the construction of a cone,
+/// -   implementing the construction algorithm, and
+/// -   consulting the result.
 pub use ffi::MakeCone;
 impl MakeCone {
     /// Make a cone.
@@ -172,6 +197,12 @@ impl MakeCone {
         ffi::make_cone_as_make_one_axis_mut(self)
     }
 }
+
+/// Describes functions to build cylinders or portions of  cylinders.
+/// A MakeCylinder object provides a framework for:
+/// -   defining the construction of a cylinder,
+/// -   implementing the construction algorithm, and
+/// -   consulting the result.
 pub use ffi::MakeCylinder;
 impl MakeCylinder {
     /// Make a cylinder.
@@ -261,6 +292,24 @@ impl MakeCylinder {
         ffi::make_cylinder_as_make_one_axis_mut(self)
     }
 }
+
+/// Describes functions to build linear swept topologies, called prisms.
+/// A prism is defined by:
+/// -   a basis shape, which is swept, and
+/// -   a sweeping direction, which is:
+/// -   a vector for finite prisms, or
+/// -   a direction for infinite or semi-infinite prisms.
+/// The basis shape must not contain any solids.
+/// The profile generates objects according to the following rules:
+/// -   Vertices generate Edges
+/// -   Edges generate Faces.
+/// -   Wires generate Shells.
+/// -   Faces generate Solids.
+/// -   Shells generate Composite Solids
+/// A MakePrism object provides a framework for:
+/// -   defining the construction of a prism,
+/// -   implementing the construction algorithm, and
+/// -   consulting the result.
 pub use ffi::MakePrism;
 impl MakePrism {
     /// Builds the prism of base S and vector V. If C is true,
@@ -358,6 +407,38 @@ impl MakePrism {
         ffi::MakePrism_last_shape_shape(self, theShape)
     }
 }
+
+/// Class to make revolved sweep topologies.
+///
+/// a revolved sweep is defined by :
+///
+/// * A basis topology which is swept.
+///
+/// The   basis topology  must   not  contain solids
+/// (neither composite solids.).
+///
+/// The basis topology  may be copied  or  shared in
+/// the result.
+///
+/// * A rotation axis and angle :
+///
+/// - The axis is an Ax1 from gp.
+///
+/// - The angle is in [0, 2*Pi].
+///
+/// - The angle default value is 2*Pi.
+///
+/// The result is a topology with a higher dimension :
+///
+/// - Vertex -> Edge.
+/// - Edge   -> Face.
+/// - Wire   -> Shell.
+/// - Face   -> Solid.
+/// - Shell  -> CompSolid.
+///
+/// Sweeping a Compound sweeps  the elements  of the
+/// compound  and creates    a  compound with    the
+/// results.
 pub use ffi::MakeRevol;
 impl MakeRevol {
     /// Builds the Revol of base S, axis  A and angle  D. If C
@@ -444,6 +525,12 @@ impl MakeRevol {
         ffi::MakeRevol_last_shape_shape(self, theShape)
     }
 }
+
+/// Describes functions to build spheres or portions of spheres.
+/// A MakeSphere object provides a framework for:
+/// -   defining the construction of a sphere,
+/// -   implementing the construction algorithm, and
+/// -   consulting the result.
 pub use ffi::MakeSphere;
 impl MakeSphere {
     /// Make a sphere.
@@ -604,6 +691,12 @@ impl MakeSphere {
         ffi::make_sphere_as_make_one_axis_mut(self)
     }
 }
+
+/// Describes functions to build tori or portions of tori.
+/// A MakeTorus object provides a framework for:
+/// -   defining the construction of a torus,
+/// -   implementing the construction algorithm, and
+/// -   consulting the result.
 pub use ffi::MakeTorus;
 impl MakeTorus {
     /// Make a torus.
@@ -744,6 +837,23 @@ impl MakeTorus {
         ffi::make_torus_as_make_one_axis_mut(self)
     }
 }
+
+/// The abstract class MakeSweep is
+/// the root class of swept primitives.
+/// Sweeps are objects you obtain by sweeping a profile along a path.
+/// The profile can be any topology and the path is usually a curve or
+/// a wire. The profile generates objects according to the following rules:
+/// -      Vertices generate Edges
+/// -      Edges generate Faces.
+/// -      Wires generate Shells.
+/// -      Faces generate Solids.
+/// -      Shells generate Composite  Solids.
+/// You are not allowed to sweep Solids and Composite Solids.
+/// Two kinds of sweeps are implemented in the BRepPrimAPI package:
+/// -      The linear sweep called a   Prism
+/// -      The rotational sweep    called a Revol
+/// Swept constructions along complex profiles such as BSpline curves
+/// are also available in the BRepOffsetAPI package..
 pub use ffi::MakeSweep;
 impl MakeSweep {
     /// Upcast to BRepBuilderAPI_Command
@@ -780,6 +890,9 @@ impl MakeSweep {
         ffi::MakeSweep_last_shape(self)
     }
 }
+
+/// The abstract class MakeOneAxis is the root class of
+/// algorithms used to construct rotational primitives.
 pub use ffi::MakeOneAxis;
 impl MakeOneAxis {
     /// Upcast to BRepBuilderAPI_Command
@@ -816,7 +929,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepPrimAPI_MakeBox ========================
-        /// /// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox`
+        /// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox`
         ///
         /// Describes functions to build parallelepiped boxes.
         /// A MakeBox object provides a framework for:
@@ -838,27 +951,27 @@ pub(crate) mod ffi {
         /// In these cases, the box would be flat.
         #[cxx_name = "BRepPrimAPI_MakeBox"]
         type MakeBox;
-        /// /// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
+        /// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
         ///
         /// Default constructor
         #[cxx_name = "BRepPrimAPI_MakeBox_ctor"]
         fn MakeBox_ctor() -> UniquePtr<MakeBox>;
-        /// /// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
+        /// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
         ///
         /// Make a box with a corner at 0,0,0 and the other dx,dy,dz
         #[cxx_name = "BRepPrimAPI_MakeBox_ctor_real3"]
         fn MakeBox_ctor_real3(dx: f64, dy: f64, dz: f64) -> UniquePtr<MakeBox>;
-        /// /// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
+        /// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
         ///
         /// Make a box with a corner at P and size dx, dy, dz.
         #[cxx_name = "BRepPrimAPI_MakeBox_ctor_pnt_real3"]
         fn MakeBox_ctor_pnt_real3(P: &gp_Pnt, dx: f64, dy: f64, dz: f64) -> UniquePtr<MakeBox>;
-        /// /// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
+        /// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
         ///
         /// Make a box with corners P1,P2.
         #[cxx_name = "BRepPrimAPI_MakeBox_ctor_pnt2"]
         fn MakeBox_ctor_pnt2(P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeBox>;
-        /// /// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
+        /// **Source:** `BRepPrimAPI_MakeBox.hxx` - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
         ///
         /// Make a box with Ax2 (the left corner and the axis) and size dx, dy, dz.
         #[cxx_name = "BRepPrimAPI_MakeBox_ctor_ax2_real3"]
@@ -934,7 +1047,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakeBox>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         /// ======================== BRepPrimAPI_MakeCone ========================
-        /// /// **Source:** `BRepPrimAPI_MakeCone.hxx` - `BRepPrimAPI_MakeCone`
+        /// **Source:** `BRepPrimAPI_MakeCone.hxx` - `BRepPrimAPI_MakeCone`
         ///
         /// Describes functions to build cones or portions of cones.
         /// A MakeCone object provides a framework for:
@@ -943,7 +1056,7 @@ pub(crate) mod ffi {
         /// -   consulting the result.
         #[cxx_name = "BRepPrimAPI_MakeCone"]
         type MakeCone;
-        /// /// **Source:** `BRepPrimAPI_MakeCone.hxx` - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
+        /// **Source:** `BRepPrimAPI_MakeCone.hxx` - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
         ///
         /// Make a cone.
         /// @param[in] R1  cone bottom radius, may be null (z = 0)
@@ -951,7 +1064,7 @@ pub(crate) mod ffi {
         /// @param[in] H   cone height
         #[cxx_name = "BRepPrimAPI_MakeCone_ctor_real3"]
         fn MakeCone_ctor_real3(R1: f64, R2: f64, H: f64) -> UniquePtr<MakeCone>;
-        /// /// **Source:** `BRepPrimAPI_MakeCone.hxx` - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
+        /// **Source:** `BRepPrimAPI_MakeCone.hxx` - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
         ///
         /// Make a cone.
         /// @param[in] R1     cone bottom radius, may be null (z = 0)
@@ -960,7 +1073,7 @@ pub(crate) mod ffi {
         /// @param[in] angle  angle to create a part cone
         #[cxx_name = "BRepPrimAPI_MakeCone_ctor_real4"]
         fn MakeCone_ctor_real4(R1: f64, R2: f64, H: f64, angle: f64) -> UniquePtr<MakeCone>;
-        /// /// **Source:** `BRepPrimAPI_MakeCone.hxx` - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
+        /// **Source:** `BRepPrimAPI_MakeCone.hxx` - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
         ///
         /// Make a cone.
         /// @param[in] axes  coordinate system for the construction of the cone
@@ -969,7 +1082,7 @@ pub(crate) mod ffi {
         /// @param[in] H     cone height
         #[cxx_name = "BRepPrimAPI_MakeCone_ctor_ax2_real3"]
         fn MakeCone_ctor_ax2_real3(Axes: &gp_Ax2, R1: f64, R2: f64, H: f64) -> UniquePtr<MakeCone>;
-        /// /// **Source:** `BRepPrimAPI_MakeCone.hxx` - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
+        /// **Source:** `BRepPrimAPI_MakeCone.hxx` - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
         ///
         /// Make a cone of height H radius R1 in the plane z =
         /// 0, R2 in the plane Z = H. R1 and R2 may be null.
@@ -1037,7 +1150,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis_mut"]
         fn make_cone_as_make_one_axis_mut(self_: Pin<&mut MakeCone>) -> Pin<&mut MakeOneAxis>;
         /// ======================== BRepPrimAPI_MakeCylinder ========================
-        /// /// **Source:** `BRepPrimAPI_MakeCylinder.hxx` - `BRepPrimAPI_MakeCylinder`
+        /// **Source:** `BRepPrimAPI_MakeCylinder.hxx` - `BRepPrimAPI_MakeCylinder`
         ///
         /// Describes functions to build cylinders or portions of  cylinders.
         /// A MakeCylinder object provides a framework for:
@@ -1046,14 +1159,14 @@ pub(crate) mod ffi {
         /// -   consulting the result.
         #[cxx_name = "BRepPrimAPI_MakeCylinder"]
         type MakeCylinder;
-        /// /// **Source:** `BRepPrimAPI_MakeCylinder.hxx` - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
+        /// **Source:** `BRepPrimAPI_MakeCylinder.hxx` - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
         ///
         /// Make a cylinder.
         /// @param[in] R  cylinder radius
         /// @param[in] H  cylinder height
         #[cxx_name = "BRepPrimAPI_MakeCylinder_ctor_real2"]
         fn MakeCylinder_ctor_real2(R: f64, H: f64) -> UniquePtr<MakeCylinder>;
-        /// /// **Source:** `BRepPrimAPI_MakeCylinder.hxx` - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
+        /// **Source:** `BRepPrimAPI_MakeCylinder.hxx` - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
         ///
         /// Make a cylinder (part cylinder).
         /// @param[in] R      cylinder radius
@@ -1061,7 +1174,7 @@ pub(crate) mod ffi {
         /// @param[in] Angle  defines the missing portion of the cylinder
         #[cxx_name = "BRepPrimAPI_MakeCylinder_ctor_real3"]
         fn MakeCylinder_ctor_real3(R: f64, H: f64, Angle: f64) -> UniquePtr<MakeCylinder>;
-        /// /// **Source:** `BRepPrimAPI_MakeCylinder.hxx` - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
+        /// **Source:** `BRepPrimAPI_MakeCylinder.hxx` - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
         ///
         /// Make a cylinder of radius R and length H.
         /// @param[in] Axes  coordinate system for the construction of the cylinder
@@ -1069,7 +1182,7 @@ pub(crate) mod ffi {
         /// @param[in] H     cylinder height
         #[cxx_name = "BRepPrimAPI_MakeCylinder_ctor_ax2_real2"]
         fn MakeCylinder_ctor_ax2_real2(Axes: &gp_Ax2, R: f64, H: f64) -> UniquePtr<MakeCylinder>;
-        /// /// **Source:** `BRepPrimAPI_MakeCylinder.hxx` - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
+        /// **Source:** `BRepPrimAPI_MakeCylinder.hxx` - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
         ///
         /// Make a cylinder   of  radius R  and  length H with
         /// angle  H.
@@ -1136,7 +1249,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakeCylinder>,
         ) -> Pin<&mut MakeOneAxis>;
         /// ======================== BRepPrimAPI_MakePrism ========================
-        /// /// **Source:** `BRepPrimAPI_MakePrism.hxx` - `BRepPrimAPI_MakePrism`
+        /// **Source:** `BRepPrimAPI_MakePrism.hxx` - `BRepPrimAPI_MakePrism`
         ///
         /// Describes functions to build linear swept topologies, called prisms.
         /// A prism is defined by:
@@ -1157,7 +1270,7 @@ pub(crate) mod ffi {
         /// -   consulting the result.
         #[cxx_name = "BRepPrimAPI_MakePrism"]
         type MakePrism;
-        /// /// **Source:** `BRepPrimAPI_MakePrism.hxx` - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
+        /// **Source:** `BRepPrimAPI_MakePrism.hxx` - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
         ///
         /// Builds the prism of base S and vector V. If C is true,
         /// S is copied. If Canonize is true then generated surfaces
@@ -1169,7 +1282,7 @@ pub(crate) mod ffi {
             Copy: bool,
             Canonize: bool,
         ) -> UniquePtr<MakePrism>;
-        /// /// **Source:** `BRepPrimAPI_MakePrism.hxx` - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
+        /// **Source:** `BRepPrimAPI_MakePrism.hxx` - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
         ///
         /// Builds a semi-infinite or an infinite prism of base S.
         /// If Inf is true the prism  is infinite, if Inf is false
@@ -1247,7 +1360,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep_mut"]
         fn make_prism_as_make_sweep_mut(self_: Pin<&mut MakePrism>) -> Pin<&mut MakeSweep>;
         /// ======================== BRepPrimAPI_MakeRevol ========================
-        /// /// **Source:** `BRepPrimAPI_MakeRevol.hxx` - `BRepPrimAPI_MakeRevol`
+        /// **Source:** `BRepPrimAPI_MakeRevol.hxx` - `BRepPrimAPI_MakeRevol`
         ///
         /// Class to make revolved sweep topologies.
         ///
@@ -1282,7 +1395,7 @@ pub(crate) mod ffi {
         /// results.
         #[cxx_name = "BRepPrimAPI_MakeRevol"]
         type MakeRevol;
-        /// /// **Source:** `BRepPrimAPI_MakeRevol.hxx` - `BRepPrimAPI_MakeRevol::BRepPrimAPI_MakeRevol()`
+        /// **Source:** `BRepPrimAPI_MakeRevol.hxx` - `BRepPrimAPI_MakeRevol::BRepPrimAPI_MakeRevol()`
         ///
         /// Builds the Revol of base S, axis  A and angle  D. If C
         /// is true, S is copied.
@@ -1293,7 +1406,7 @@ pub(crate) mod ffi {
             D: f64,
             Copy: bool,
         ) -> UniquePtr<MakeRevol>;
-        /// /// **Source:** `BRepPrimAPI_MakeRevol.hxx` - `BRepPrimAPI_MakeRevol::BRepPrimAPI_MakeRevol()`
+        /// **Source:** `BRepPrimAPI_MakeRevol.hxx` - `BRepPrimAPI_MakeRevol::BRepPrimAPI_MakeRevol()`
         ///
         /// Builds the Revol of base S, axis  A and angle 2*Pi. If
         /// C is true, S is copied.
@@ -1369,7 +1482,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep_mut"]
         fn make_revol_as_make_sweep_mut(self_: Pin<&mut MakeRevol>) -> Pin<&mut MakeSweep>;
         /// ======================== BRepPrimAPI_MakeSphere ========================
-        /// /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere`
+        /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere`
         ///
         /// Describes functions to build spheres or portions of spheres.
         /// A MakeSphere object provides a framework for:
@@ -1378,20 +1491,20 @@ pub(crate) mod ffi {
         /// -   consulting the result.
         #[cxx_name = "BRepPrimAPI_MakeSphere"]
         type MakeSphere;
-        /// /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+        /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
         ///
         /// Make a sphere.
         /// @param[in] R  sphere radius
         #[cxx_name = "BRepPrimAPI_MakeSphere_ctor_real"]
         fn MakeSphere_ctor_real(R: f64) -> UniquePtr<MakeSphere>;
-        /// /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+        /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
         ///
         /// Make a sphere (spherical wedge).
         /// @param[in] R      sphere radius
         /// @param[in] angle  angle between the radii lying within the bounding semidisks
         #[cxx_name = "BRepPrimAPI_MakeSphere_ctor_real2"]
         fn MakeSphere_ctor_real2(R: f64, angle: f64) -> UniquePtr<MakeSphere>;
-        /// /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+        /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
         ///
         /// Make a sphere (spherical segment).
         /// @param[in] R  sphere radius
@@ -1399,7 +1512,7 @@ pub(crate) mod ffi {
         /// @param[in] angle2  second angle defining a spherical segment
         #[cxx_name = "BRepPrimAPI_MakeSphere_ctor_real3"]
         fn MakeSphere_ctor_real3(R: f64, angle1: f64, angle2: f64) -> UniquePtr<MakeSphere>;
-        /// /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+        /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
         ///
         /// Make a sphere (spherical segment).
         /// @param[in] R       sphere radius
@@ -1413,14 +1526,14 @@ pub(crate) mod ffi {
             angle2: f64,
             angle3: f64,
         ) -> UniquePtr<MakeSphere>;
-        /// /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+        /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
         ///
         /// Make a sphere.
         /// @param[in] Center  sphere center coordinates
         /// @param[in] R       sphere radius
         #[cxx_name = "BRepPrimAPI_MakeSphere_ctor_pnt_real"]
         fn MakeSphere_ctor_pnt_real(Center: &gp_Pnt, R: f64) -> UniquePtr<MakeSphere>;
-        /// /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+        /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
         ///
         /// Make a sphere (spherical wedge).
         /// @param[in] Center  sphere center coordinates
@@ -1428,7 +1541,7 @@ pub(crate) mod ffi {
         /// @param[in] angle   angle between the radii lying within the bounding semidisks
         #[cxx_name = "BRepPrimAPI_MakeSphere_ctor_pnt_real2"]
         fn MakeSphere_ctor_pnt_real2(Center: &gp_Pnt, R: f64, angle: f64) -> UniquePtr<MakeSphere>;
-        /// /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+        /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
         ///
         /// Make a sphere (spherical segment).
         /// @param[in] Center  sphere center coordinates
@@ -1442,7 +1555,7 @@ pub(crate) mod ffi {
             angle1: f64,
             angle2: f64,
         ) -> UniquePtr<MakeSphere>;
-        /// /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+        /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
         ///
         /// Make a sphere (spherical segment).
         /// @param[in] Center  sphere center coordinates
@@ -1458,14 +1571,14 @@ pub(crate) mod ffi {
             angle2: f64,
             angle3: f64,
         ) -> UniquePtr<MakeSphere>;
-        /// /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+        /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
         ///
         /// Make a sphere.
         /// @param[in] Axis  coordinate system for the construction of the sphere
         /// @param[in] R     sphere radius
         #[cxx_name = "BRepPrimAPI_MakeSphere_ctor_ax2_real"]
         fn MakeSphere_ctor_ax2_real(Axis: &gp_Ax2, R: f64) -> UniquePtr<MakeSphere>;
-        /// /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+        /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
         ///
         /// Make a sphere (spherical wedge).
         /// @param[in] Axis   coordinate system for the construction of the sphere
@@ -1473,7 +1586,7 @@ pub(crate) mod ffi {
         /// @param[in] angle  angle between the radii lying within the bounding semidisks
         #[cxx_name = "BRepPrimAPI_MakeSphere_ctor_ax2_real2"]
         fn MakeSphere_ctor_ax2_real2(Axis: &gp_Ax2, R: f64, angle: f64) -> UniquePtr<MakeSphere>;
-        /// /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+        /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
         ///
         /// Make a sphere (spherical segment).
         /// @param[in] Axis    coordinate system for the construction of the sphere
@@ -1487,7 +1600,7 @@ pub(crate) mod ffi {
             angle1: f64,
             angle2: f64,
         ) -> UniquePtr<MakeSphere>;
-        /// /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+        /// **Source:** `BRepPrimAPI_MakeSphere.hxx` - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
         ///
         /// Make a sphere of radius R.
         /// For all algorithms The resulting shape is composed of
@@ -1535,7 +1648,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis_mut"]
         fn make_sphere_as_make_one_axis_mut(self_: Pin<&mut MakeSphere>) -> Pin<&mut MakeOneAxis>;
         /// ======================== BRepPrimAPI_MakeTorus ========================
-        /// /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus`
+        /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus`
         ///
         /// Describes functions to build tori or portions of tori.
         /// A MakeTorus object provides a framework for:
@@ -1544,14 +1657,14 @@ pub(crate) mod ffi {
         /// -   consulting the result.
         #[cxx_name = "BRepPrimAPI_MakeTorus"]
         type MakeTorus;
-        /// /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
+        /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
         ///
         /// Make a torus.
         /// @param[in] R1  distance from the center of the pipe to the center of the torus
         /// @param[in] R2  radius of the pipe
         #[cxx_name = "BRepPrimAPI_MakeTorus_ctor_real2"]
         fn MakeTorus_ctor_real2(R1: f64, R2: f64) -> UniquePtr<MakeTorus>;
-        /// /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
+        /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
         ///
         /// Make a section of a torus.
         /// @param[in] R1     distance from the center of the pipe to the center of the torus
@@ -1559,7 +1672,7 @@ pub(crate) mod ffi {
         /// @param[in] angle  angle to create a torus pipe segment
         #[cxx_name = "BRepPrimAPI_MakeTorus_ctor_real3"]
         fn MakeTorus_ctor_real3(R1: f64, R2: f64, angle: f64) -> UniquePtr<MakeTorus>;
-        /// /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
+        /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
         ///
         /// Make  a torus with angles on the small circle.
         /// @param[in] R1      distance from the center of the pipe to the center of the torus
@@ -1569,7 +1682,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepPrimAPI_MakeTorus_ctor_real4"]
         fn MakeTorus_ctor_real4(R1: f64, R2: f64, angle1: f64, angle2: f64)
             -> UniquePtr<MakeTorus>;
-        /// /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
+        /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
         ///
         /// Make  a torus with angles on the small circle.
         /// @param[in] R1      distance from the center of the pipe to the center of the torus
@@ -1585,7 +1698,7 @@ pub(crate) mod ffi {
             angle2: f64,
             angle: f64,
         ) -> UniquePtr<MakeTorus>;
-        /// /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
+        /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
         ///
         /// Make a torus.
         /// @param[in] Axes  coordinate system for the construction of the sphere
@@ -1593,7 +1706,7 @@ pub(crate) mod ffi {
         /// @param[in] R2    radius of the pipe
         #[cxx_name = "BRepPrimAPI_MakeTorus_ctor_ax2_real2"]
         fn MakeTorus_ctor_ax2_real2(Axes: &gp_Ax2, R1: f64, R2: f64) -> UniquePtr<MakeTorus>;
-        /// /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
+        /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
         ///
         /// Make a section of a torus.
         /// @param[in] Axes   coordinate system for the construction of the sphere
@@ -1607,7 +1720,7 @@ pub(crate) mod ffi {
             R2: f64,
             angle: f64,
         ) -> UniquePtr<MakeTorus>;
-        /// /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
+        /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
         ///
         /// Make a torus.
         /// @param[in] Axes    coordinate system for the construction of the sphere
@@ -1623,7 +1736,7 @@ pub(crate) mod ffi {
             angle1: f64,
             angle2: f64,
         ) -> UniquePtr<MakeTorus>;
-        /// /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
+        /// **Source:** `BRepPrimAPI_MakeTorus.hxx` - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
         ///
         /// Make a section of a torus of radii R1 R2.
         /// For all algorithms The resulting shape is composed of
@@ -1682,7 +1795,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis_mut"]
         fn make_torus_as_make_one_axis_mut(self_: Pin<&mut MakeTorus>) -> Pin<&mut MakeOneAxis>;
         /// ======================== BRepPrimAPI_MakeSweep ========================
-        /// /// **Source:** `BRepPrimAPI_MakeSweep.hxx` - `BRepPrimAPI_MakeSweep`
+        /// **Source:** `BRepPrimAPI_MakeSweep.hxx` - `BRepPrimAPI_MakeSweep`
         ///
         /// The abstract class MakeSweep is
         /// the root class of swept primitives.
@@ -1727,7 +1840,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakeSweep>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         /// ======================== BRepPrimAPI_MakeOneAxis ========================
-        /// /// **Source:** `BRepPrimAPI_MakeOneAxis.hxx` - `BRepPrimAPI_MakeOneAxis`
+        /// **Source:** `BRepPrimAPI_MakeOneAxis.hxx` - `BRepPrimAPI_MakeOneAxis`
         ///
         /// The abstract class MakeOneAxis is the root class of
         /// algorithms used to construct rotational primitives.

@@ -11,6 +11,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// A    BasicELt  is  associated   to  each  elementary
+/// constituent of  the figure.
 pub use ffi::BasicElt;
 impl BasicElt {
     /// Constructor, <anInteger> is the <index> of <me>.
@@ -49,13 +52,13 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== MAT_BasicElt ========================
-        /// /// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt`
+        /// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt`
         ///
         /// A    BasicELt  is  associated   to  each  elementary
         /// constituent of  the figure.
         #[cxx_name = "MAT_BasicElt"]
         type BasicElt;
-        /// /// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt::MAT_BasicElt()`
+        /// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt::MAT_BasicElt()`
         ///
         /// Constructor, <anInteger> is the <index> of <me>.
         #[cxx_name = "MAT_BasicElt_ctor_int"]

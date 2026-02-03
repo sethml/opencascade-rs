@@ -16,6 +16,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Provides a tool to make cylindrical holes on a shape.
 pub use ffi::MakeCylindricalHole;
 impl MakeCylindricalHole {
     /// Empty constructor.
@@ -93,6 +95,23 @@ impl MakeCylindricalHole {
         ffi::make_cylindrical_hole_as_builder_mut(self)
     }
 }
+
+/// Describes functions to build draft
+/// prism topologies from basis shape surfaces. These can be depressions or protrusions.
+/// The semantics of draft prism feature creation is based on the
+/// construction of shapes:
+/// -          along a length
+/// -          up to a limiting face
+/// -          from a limiting face to a height.
+/// The shape defining construction of the draft prism feature can be
+/// either the supporting edge or the concerned area of a face.
+/// In case of the supporting edge, this contour can be attached to a
+/// face of the basis shape by binding. When the contour is bound to this
+/// face, the information that the contour will slide on the face
+/// becomes available to the relevant class methods.
+/// In case of the concerned area of a face, you could, for example, cut
+/// it out and move it to a different height which will define the
+/// limiting face of a protrusion or depression.
 pub use ffi::MakeDPrism;
 impl MakeDPrism {
     /// A face Pbase is selected in the shape
@@ -157,6 +176,34 @@ impl MakeDPrism {
         ffi::MakeDPrism_baryc_curve(self)
     }
 }
+
+/// Provides general functions to build form features.
+/// Form features can be depressions or protrusions and include the following types:
+/// -          Cylinder
+/// -          Draft Prism
+/// -          Prism
+/// -          Revolved feature
+/// -          Pipe
+/// In each case, you have a choice of operation type between the following:
+/// -          removing matter (a Boolean cut: Fuse setting 0)
+/// -          adding matter (Boolean fusion: Fuse setting 1)
+/// The semantics of form feature creation is based on the construction of shapes:
+/// -      along a length
+/// -      up to a limiting face
+/// -      from a limiting face to a  height
+/// -      above and/or below a plane
+/// The shape defining construction of the feature can be either the
+/// supporting edge or the concerned area of a face.
+/// In case of the supporting edge, this contour can be attached to a
+/// face of the basis shape by binding. When the contour is bound to this
+/// face, the information that the contour will slide on the face
+/// becomes available to the relevant class methods. In case of the
+/// concerned area of a face, you could, for example, cut it out and
+/// move it to a different height which will define the limiting face of a
+/// protrusion or depression.
+/// Topological definition with local operations of this sort makes
+/// calculations simpler and faster than a global operation. The latter
+/// would entail a second phase of removing unwanted matter to get the same result.
 pub use ffi::Form;
 impl Form {
     /// Upcast to BRepBuilderAPI_Command
@@ -187,6 +234,22 @@ impl Form {
         ffi::Form_baryc_curve(self)
     }
 }
+
+/// Provides a basic tool to implement features topological
+/// operations. The main goal of the algorithm is to perform
+/// the result of the operation according to the
+/// kept parts of the tool.
+/// Input data: a) DS;
+/// b) The kept parts of the tool;
+/// If the map of the kept parts of the tool
+/// is not filled boolean operation of the
+/// given type will be performed;
+/// c) Operation required.
+/// Steps: a) Fill myShapes, myRemoved maps;
+/// b) Rebuild edges and faces;
+/// c) Build images of the object;
+/// d) Build the result of the operation.
+/// Result: Result shape of the operation required.
 pub use ffi::Builder;
 impl Builder {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -263,12 +326,12 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepFeat_MakeCylindricalHole ========================
-        /// /// **Source:** `BRepFeat_MakeCylindricalHole.hxx` - `BRepFeat_MakeCylindricalHole`
+        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx` - `BRepFeat_MakeCylindricalHole`
         ///
         /// Provides a tool to make cylindrical holes on a shape.
         #[cxx_name = "BRepFeat_MakeCylindricalHole"]
         type MakeCylindricalHole;
-        /// /// **Source:** `BRepFeat_MakeCylindricalHole.hxx` - `BRepFeat_MakeCylindricalHole::BRepFeat_MakeCylindricalHole()`
+        /// **Source:** `BRepFeat_MakeCylindricalHole.hxx` - `BRepFeat_MakeCylindricalHole::BRepFeat_MakeCylindricalHole()`
         ///
         /// Empty constructor.
         #[cxx_name = "BRepFeat_MakeCylindricalHole_ctor"]
@@ -389,7 +452,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakeCylindricalHole>,
         ) -> Pin<&mut Builder>;
         /// ======================== BRepFeat_MakeDPrism ========================
-        /// /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism`
+        /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism`
         ///
         /// Describes functions to build draft
         /// prism topologies from basis shape surfaces. These can be depressions or protrusions.
@@ -409,7 +472,7 @@ pub(crate) mod ffi {
         /// limiting face of a protrusion or depression.
         #[cxx_name = "BRepFeat_MakeDPrism"]
         type MakeDPrism;
-        /// /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
+        /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
         ///
         /// A face Pbase is selected in the shape
         /// Sbase to serve as the basis for the draft prism. The
@@ -429,7 +492,7 @@ pub(crate) mod ffi {
             Fuse: i32,
             Modify: bool,
         ) -> UniquePtr<MakeDPrism>;
-        /// /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
+        /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
         #[cxx_name = "BRepFeat_MakeDPrism_ctor"]
         fn MakeDPrism_ctor() -> UniquePtr<MakeDPrism>;
         /// Initializes this algorithm for building draft prisms along surfaces.
@@ -523,7 +586,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepFeat_MakeDPrism_as_BRepFeat_Form_mut"]
         fn make_d_prism_as_form_mut(self_: Pin<&mut MakeDPrism>) -> Pin<&mut Form>;
         /// ======================== BRepFeat_Form ========================
-        /// /// **Source:** `BRepFeat_Form.hxx` - `BRepFeat_Form`
+        /// **Source:** `BRepFeat_Form.hxx` - `BRepFeat_Form`
         ///
         /// Provides general functions to build form features.
         /// Form features can be depressions or protrusions and include the following types:
@@ -634,7 +697,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut Form>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         /// ======================== BRepFeat_Builder ========================
-        /// /// **Source:** `BRepFeat_Builder.hxx` - `BRepFeat_Builder`
+        /// **Source:** `BRepFeat_Builder.hxx` - `BRepFeat_Builder`
         ///
         /// Provides a basic tool to implement features topological
         /// operations. The main goal of the algorithm is to perform
@@ -653,7 +716,7 @@ pub(crate) mod ffi {
         /// Result: Result shape of the operation required.
         #[cxx_name = "BRepFeat_Builder"]
         type Builder;
-        /// /// **Source:** `BRepFeat_Builder.hxx` - `BRepFeat_Builder::BRepFeat_Builder()`
+        /// **Source:** `BRepFeat_Builder.hxx` - `BRepFeat_Builder::BRepFeat_Builder()`
         #[cxx_name = "BRepFeat_Builder_ctor"]
         fn Builder_ctor() -> UniquePtr<Builder>;
         /// Clears internal fields and arguments.

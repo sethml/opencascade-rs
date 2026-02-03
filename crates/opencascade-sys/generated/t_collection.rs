@@ -13,6 +13,22 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Class defines a variable-length sequence of 8-bit characters.
+/// Despite class name (kept for historical reasons), it is intended to store UTF-8 string, not just
+/// ASCII characters. However, multi-byte nature of UTF-8 is not considered by the following
+/// methods:
+/// - Method ::Length() return the number of bytes, not the number of Unicode symbols.
+/// - Methods taking/returning symbol index work with 8-bit code units, not true Unicode symbols,
+/// including ::Remove(), ::SetValue(), ::Value(), ::Search(), ::Trunc() and others.
+/// If application needs to process multi-byte Unicode symbols explicitly, NCollection_Utf8Iter
+/// class can be used for iterating through Unicode string (UTF-32 code unit will be returned for
+/// each position).
+///
+/// Class provides editing operations with built-in memory management to make AsciiString objects
+/// easier to use than ordinary character arrays. AsciiString objects follow value semantics; in
+/// other words, they are the actual strings, not handles to strings, and are copied through
+/// assignment. You may use HAsciiString objects to get handles to strings.
 pub use ffi::AsciiString;
 impl AsciiString {
     /// Initializes a AsciiString to an empty AsciiString.
@@ -268,6 +284,22 @@ impl AsciiString {
         ffi::AsciiString_is_same_string(theString1, theString2, theIsCaseSensitive)
     }
 }
+
+/// A variable-length sequence of "extended" (UNICODE) characters (16-bit character type).
+/// It provides editing operations with built-in memory management
+/// to make ExtendedString objects easier to use than ordinary extended character arrays.
+/// ExtendedString objects follow "value semantics", that is, they are the actual strings,
+/// not handles to strings, and are copied through assignment.
+/// You may use HExtendedString objects to get handles to strings.
+///
+/// Beware that class can transparently store UTF-16 string with surrogate pairs
+/// (Unicode symbol represented by two 16-bit code units).
+/// However, surrogate pairs are not considered by the following methods:
+/// - Method ::Length() return the number of 16-bit code units, not the number of Unicode symbols.
+/// - Methods taking/returning symbol index work with 16-bit code units, not true Unicode symbols,
+/// including ::Remove(), ::SetValue(), ::Value(), ::Search(), ::Trunc() and others.
+/// If application needs to process surrogate pairs, NCollection_Utf16Iter class can be used
+/// for iterating through Unicode string (UTF-32 code unit will be returned for each position).
 pub use ffi::ExtendedString;
 impl ExtendedString {
     /// Initializes a ExtendedString to an empty ExtendedString.
@@ -360,6 +392,15 @@ impl ExtendedString {
         ffi::ExtendedString_is_equal_extendedstring2(theString1, theString2)
     }
 }
+
+/// A variable-length sequence of ASCII characters
+/// (normal 8-bit character type). It provides editing
+/// operations with built-in memory management to
+/// make HAsciiString objects easier to use than ordinary character arrays.
+/// HAsciiString objects are handles to strings.
+/// -   HAsciiString strings may be shared by several objects.
+/// -   You may use an AsciiString object to get the actual string.
+/// Note: HAsciiString objects use an AsciiString string as a field.
 pub use ffi::HAsciiString;
 impl HAsciiString {
     /// Initializes a HAsciiString to an empty AsciiString.
@@ -542,6 +583,18 @@ impl HAsciiString {
         ffi::HAsciiString_get_type_name()
     }
 }
+
+/// A variable-length sequence of "extended"
+/// (UNICODE) characters (16-bit character
+/// type). It provides editing operations with
+/// built-in memory management to make
+/// ExtendedString objects easier to use than
+/// ordinary extended character arrays.
+/// HExtendedString objects are handles to strings.
+/// - HExtendedString strings may be shared by several objects.
+/// - You may use an ExtendedString object to get the actual string.
+/// Note: HExtendedString objects use an
+/// ExtendedString string as a field.
 pub use ffi::HExtendedString;
 impl HExtendedString {
     /// Initializes a HExtendedString to an empty ExtendedString.
@@ -628,7 +681,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== TCollection_AsciiString ========================
-        /// /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString`
+        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString`
         ///
         /// Class defines a variable-length sequence of 8-bit characters.
         /// Despite class name (kept for historical reasons), it is intended to store UTF-8 string, not just
@@ -647,37 +700,37 @@ pub(crate) mod ffi {
         /// assignment. You may use HAsciiString objects to get handles to strings.
         #[cxx_name = "TCollection_AsciiString"]
         type AsciiString;
-        /// /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes a AsciiString to an empty AsciiString.
         #[cxx_name = "TCollection_AsciiString_ctor"]
         fn AsciiString_ctor() -> UniquePtr<AsciiString>;
-        /// /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes a AsciiString with a CString.
         #[cxx_name = "TCollection_AsciiString_ctor_charptr"]
         fn AsciiString_ctor_charptr(message: &str) -> UniquePtr<AsciiString>;
-        /// /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes a AsciiString with a CString.
         #[cxx_name = "TCollection_AsciiString_ctor_charptr_int"]
         fn AsciiString_ctor_charptr_int(message: &str, aLen: i32) -> UniquePtr<AsciiString>;
-        /// /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes an AsciiString with an integer value
         #[cxx_name = "TCollection_AsciiString_ctor_int"]
         fn AsciiString_ctor_int(value: i32) -> UniquePtr<AsciiString>;
-        /// /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes an AsciiString with a real value
         #[cxx_name = "TCollection_AsciiString_ctor_real"]
         fn AsciiString_ctor_real(value: f64) -> UniquePtr<AsciiString>;
-        /// /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes a AsciiString with another AsciiString.
         #[cxx_name = "TCollection_AsciiString_ctor_asciistring"]
         fn AsciiString_ctor_asciistring(astring: &AsciiString) -> UniquePtr<AsciiString>;
-        /// /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes a AsciiString with copy of another AsciiString
         /// concatenated with the message string.
@@ -686,7 +739,7 @@ pub(crate) mod ffi {
             astring: &AsciiString,
             message: &str,
         ) -> UniquePtr<AsciiString>;
-        /// /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
+        /// **Source:** `TCollection_AsciiString.hxx` - `TCollection_AsciiString::TCollection_AsciiString()`
         ///
         /// Initializes a AsciiString with copy of another AsciiString
         /// concatenated with the message string.
@@ -1105,7 +1158,7 @@ pub(crate) mod ffi {
             theIsCaseSensitive: bool,
         ) -> bool;
         /// ======================== TCollection_ExtendedString ========================
-        /// /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString`
+        /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString`
         ///
         /// A variable-length sequence of "extended" (UNICODE) characters (16-bit character type).
         /// It provides editing operations with built-in memory management
@@ -1124,12 +1177,12 @@ pub(crate) mod ffi {
         /// for iterating through Unicode string (UTF-32 code unit will be returned for each position).
         #[cxx_name = "TCollection_ExtendedString"]
         type ExtendedString;
-        /// /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
+        /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
         ///
         /// Initializes a ExtendedString to an empty ExtendedString.
         #[cxx_name = "TCollection_ExtendedString_ctor"]
         fn ExtendedString_ctor() -> UniquePtr<ExtendedString>;
-        /// /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
+        /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
         ///
         /// Creation by converting a CString to an extended
         /// string.  If <isMultiByte> is true then the string is
@@ -1141,24 +1194,24 @@ pub(crate) mod ffi {
             astring: &str,
             isMultiByte: bool,
         ) -> UniquePtr<ExtendedString>;
-        /// /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
+        /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
         ///
         /// Initializes an ExtendedString with an integer value
         #[cxx_name = "TCollection_ExtendedString_ctor_int"]
         fn ExtendedString_ctor_int(value: i32) -> UniquePtr<ExtendedString>;
-        /// /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
+        /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
         ///
         /// Initializes an ExtendedString with a real value
         #[cxx_name = "TCollection_ExtendedString_ctor_real"]
         fn ExtendedString_ctor_real(value: f64) -> UniquePtr<ExtendedString>;
-        /// /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
+        /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
         ///
         /// Initializes a ExtendedString with another ExtendedString.
         #[cxx_name = "TCollection_ExtendedString_ctor_extendedstring"]
         fn ExtendedString_ctor_extendedstring(
             astring: &ExtendedString,
         ) -> UniquePtr<ExtendedString>;
-        /// /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
+        /// **Source:** `TCollection_ExtendedString.hxx` - `TCollection_ExtendedString::TCollection_ExtendedString()`
         ///
         /// Creation by converting an Ascii string to an extended
         /// string. The string is treated as having UTF-8 coding.
@@ -1317,7 +1370,7 @@ pub(crate) mod ffi {
             theString2: &ExtendedString,
         ) -> bool;
         /// ======================== TCollection_HAsciiString ========================
-        /// /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString`
+        /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString`
         ///
         /// A variable-length sequence of ASCII characters
         /// (normal 8-bit character type). It provides editing
@@ -1329,32 +1382,32 @@ pub(crate) mod ffi {
         /// Note: HAsciiString objects use an AsciiString string as a field.
         #[cxx_name = "TCollection_HAsciiString"]
         type HAsciiString;
-        /// /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
+        /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
         ///
         /// Initializes a HAsciiString to an empty AsciiString.
         #[cxx_name = "TCollection_HAsciiString_ctor"]
         fn HAsciiString_ctor() -> UniquePtr<HAsciiString>;
-        /// /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
+        /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
         ///
         /// Initializes a HAsciiString with a CString.
         #[cxx_name = "TCollection_HAsciiString_ctor_charptr"]
         fn HAsciiString_ctor_charptr(message: &str) -> UniquePtr<HAsciiString>;
-        /// /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
+        /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
         ///
         /// Initializes a HAsciiString with an integer value
         #[cxx_name = "TCollection_HAsciiString_ctor_int"]
         fn HAsciiString_ctor_int(value: i32) -> UniquePtr<HAsciiString>;
-        /// /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
+        /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
         ///
         /// Initializes a HAsciiString with a real value
         #[cxx_name = "TCollection_HAsciiString_ctor_real"]
         fn HAsciiString_ctor_real(value: f64) -> UniquePtr<HAsciiString>;
-        /// /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
+        /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
         ///
         /// Initializes a HAsciiString with a AsciiString.
         #[cxx_name = "TCollection_HAsciiString_ctor_asciistring"]
         fn HAsciiString_ctor_asciistring(aString: &AsciiString) -> UniquePtr<HAsciiString>;
-        /// /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
+        /// **Source:** `TCollection_HAsciiString.hxx` - `TCollection_HAsciiString::TCollection_HAsciiString()`
         ///
         /// Initializes a HAsciiString with a HAsciiString.
         #[cxx_name = "TCollection_HAsciiString_ctor_handlehasciistring"]
@@ -1720,7 +1773,7 @@ pub(crate) mod ffi {
             obj: UniquePtr<HAsciiString>,
         ) -> UniquePtr<HandleTCollectionHAsciiString>;
         /// ======================== TCollection_HExtendedString ========================
-        /// /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString`
+        /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString`
         ///
         /// A variable-length sequence of "extended"
         /// (UNICODE) characters (16-bit character
@@ -1735,31 +1788,31 @@ pub(crate) mod ffi {
         /// ExtendedString string as a field.
         #[cxx_name = "TCollection_HExtendedString"]
         type HExtendedString;
-        /// /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
+        /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
         ///
         /// Initializes a HExtendedString to an empty ExtendedString.
         #[cxx_name = "TCollection_HExtendedString_ctor"]
         fn HExtendedString_ctor() -> UniquePtr<HExtendedString>;
-        /// /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
+        /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
         ///
         /// Initializes a HExtendedString with a CString.
         #[cxx_name = "TCollection_HExtendedString_ctor_charptr"]
         fn HExtendedString_ctor_charptr(message: &str) -> UniquePtr<HExtendedString>;
-        /// /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
+        /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
         ///
         /// Initializes a HExtendedString with a ExtendedString.
         #[cxx_name = "TCollection_HExtendedString_ctor_extendedstring"]
         fn HExtendedString_ctor_extendedstring(
             aString: &ExtendedString,
         ) -> UniquePtr<HExtendedString>;
-        /// /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
+        /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
         ///
         /// Initializes a HExtendedString with an HAsciiString.
         #[cxx_name = "TCollection_HExtendedString_ctor_handlehasciistring"]
         fn HExtendedString_ctor_handlehasciistring(
             aString: &HandleTCollectionHAsciiString,
         ) -> UniquePtr<HExtendedString>;
-        /// /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
+        /// **Source:** `TCollection_HExtendedString.hxx` - `TCollection_HExtendedString::TCollection_HExtendedString()`
         ///
         /// Initializes a HExtendedString with a HExtendedString.
         #[cxx_name = "TCollection_HExtendedString_ctor_handlehextendedstring"]

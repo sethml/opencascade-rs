@@ -17,6 +17,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Provides natural constructors to build BRepSweep
+/// rotated swept Primitives.
 pub use ffi::Revol;
 impl Revol {
     /// Builds the Revol of meridian S axis A  and angle D. If
@@ -89,6 +92,9 @@ impl Revol {
         ffi::Revol_axe(self)
     }
 }
+
+/// Provides   an  algorithm   to   build  object   by
+/// Rotation sweep.
 pub use ffi::Rotation;
 impl Rotation {
     /// Creates a topology  by rotating <S>  around A with the
@@ -182,6 +188,20 @@ impl Rotation {
         ffi::Rotation_axe(self)
     }
 }
+
+/// This class is inherited from NumLinearRegularSweep
+/// to  implement the  simple   swept primitives built
+/// moving a Shape with a Trsf.  It  often is possible
+/// to  build  the constructed subshapes  by  a simple
+/// move of the  generating subshapes (shared topology
+/// and geometry).   So two  ways of construction  are
+/// proposed :
+///
+/// - sharing  basis elements  (the generatrice can be
+/// modified , for  example  PCurves can be added  on
+/// faces);
+///
+/// - copying everything.
 pub use ffi::Trsf;
 impl Trsf {
     /// Upcast to BRepSweep_NumLinearRegularSweep
@@ -239,6 +259,44 @@ impl Trsf {
         ffi::Trsf_make_empty_face(self, aGenS, aDirS)
     }
 }
+
+/// This  a generic  class  is  used   to build Sweept
+/// primitives   with    a  generating  "shape"  and a
+/// directing "line".
+///
+/// The indexation and type analysis services required
+/// for the generatrix are given by <Tool from BRepSweep>.
+///
+/// The indexation and type analysis services required
+/// for the directrix are given by <NumShapeTool from Sweep>.
+///
+/// The iteration services required for the generatrix
+/// are given by <Iterator from BRepSweep>.
+///
+/// The iteration services required  for the directrix
+/// are given by <NumShapeIterator from Sweep>.
+///
+/// The topology is like a grid of shapes.  Each shape
+/// of the grid  must be addressable without confusion
+/// by one  or  two objects   from  the generating  or
+/// directing   shapes.  Here are  examples of correct
+/// associations to address:
+///
+/// - a vertex : GenVertex - DirVertex
+/// - an edge  : GenVertex - DirEdge
+/// -          : GenEdge   - DirVertex
+/// - a face   : GenEdge   - DirEdge
+/// GenFace   - DirVertex
+/// ...
+///
+/// "GenObject" is used to identify an object from the
+/// Generating Shape, and "DirObject" from the
+/// Directing Shape. So may they be from different
+/// types.
+///
+/// The method Has... is given because in some special
+/// cases, a vertex, an  edge or a face may be
+/// geometricaly nonexistent or not useful.
 pub use ffi::NumLinearRegularSweep;
 impl NumLinearRegularSweep {
     /// Builds the vertex addressed by [aGenV,aDirV], with its
@@ -347,6 +405,8 @@ impl NumLinearRegularSweep {
         ffi::NumLinearRegularSweep_last_shape_shape(self, aGenS)
     }
 }
+
+/// implements the abstract Builder with the BRep Builder
 pub use ffi::Builder;
 impl Builder {
     /// Creates a Builder.
@@ -354,6 +414,9 @@ impl Builder {
         ffi::Builder_ctor_builder(aBuilder)
     }
 }
+
+/// Provides  the  indexation and type  analysis  services
+/// required by the TopoDS generating Shape of BRepSweep.
 pub use ffi::Tool;
 impl Tool {
     /// Initialize the tool  with <aShape>.  The IndexTool
@@ -368,6 +431,9 @@ impl Tool {
         ffi::Tool_shape(self, anIndex)
     }
 }
+
+/// Provides natural constructors to build BRepSweep
+/// translated swept Primitives.
 pub use ffi::Prism;
 impl Prism {
     /// Builds the prism of base S and vector V. If C is true,
@@ -447,6 +513,9 @@ impl Prism {
         ffi::Prism_vec(self)
     }
 }
+
+/// Provides   an  algorithm   to   build  object   by
+/// translation sweep.
 pub use ffi::Translation;
 impl Translation {
     /// Creates  a  topology by  translating <S>  with the
@@ -545,13 +614,13 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepSweep_Revol ========================
-        /// /// **Source:** `BRepSweep_Revol.hxx` - `BRepSweep_Revol`
+        /// **Source:** `BRepSweep_Revol.hxx` - `BRepSweep_Revol`
         ///
         /// Provides natural constructors to build BRepSweep
         /// rotated swept Primitives.
         #[cxx_name = "BRepSweep_Revol"]
         type Revol;
-        /// /// **Source:** `BRepSweep_Revol.hxx` - `BRepSweep_Revol::BRepSweep_Revol()`
+        /// **Source:** `BRepSweep_Revol.hxx` - `BRepSweep_Revol::BRepSweep_Revol()`
         ///
         /// Builds the Revol of meridian S axis A  and angle D. If
         /// C is true S is copied.
@@ -562,7 +631,7 @@ pub(crate) mod ffi {
             D: f64,
             C: bool,
         ) -> UniquePtr<Revol>;
-        /// /// **Source:** `BRepSweep_Revol.hxx` - `BRepSweep_Revol::BRepSweep_Revol()`
+        /// **Source:** `BRepSweep_Revol.hxx` - `BRepSweep_Revol::BRepSweep_Revol()`
         ///
         /// Builds the Revol of meridian S  axis A and angle 2*Pi.
         /// If C is true S is copied.
@@ -610,13 +679,13 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepSweep_Revol_Axe"]
         fn Revol_axe(self_: &Revol) -> UniquePtr<gp_Ax1>;
         /// ======================== BRepSweep_Rotation ========================
-        /// /// **Source:** `BRepSweep_Rotation.hxx` - `BRepSweep_Rotation`
+        /// **Source:** `BRepSweep_Rotation.hxx` - `BRepSweep_Rotation`
         ///
         /// Provides   an  algorithm   to   build  object   by
         /// Rotation sweep.
         #[cxx_name = "BRepSweep_Rotation"]
         type Rotation;
-        /// /// **Source:** `BRepSweep_Rotation.hxx` - `BRepSweep_Rotation::BRepSweep_Rotation()`
+        /// **Source:** `BRepSweep_Rotation.hxx` - `BRepSweep_Rotation::BRepSweep_Rotation()`
         ///
         /// Creates a topology  by rotating <S>  around A with the
         /// angle D.
@@ -778,7 +847,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepSweep_Rotation_as_BRepSweep_Trsf_mut"]
         fn rotation_as_trsf_mut(self_: Pin<&mut Rotation>) -> Pin<&mut Trsf>;
         /// ======================== BRepSweep_Trsf ========================
-        /// /// **Source:** `BRepSweep_Trsf.hxx` - `BRepSweep_Trsf`
+        /// **Source:** `BRepSweep_Trsf.hxx` - `BRepSweep_Trsf`
         ///
         /// This class is inherited from NumLinearRegularSweep
         /// to  implement the  simple   swept primitives built
@@ -936,7 +1005,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut Trsf>,
         ) -> Pin<&mut NumLinearRegularSweep>;
         /// ======================== BRepSweep_NumLinearRegularSweep ========================
-        /// /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx` - `BRepSweep_NumLinearRegularSweep`
+        /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx` - `BRepSweep_NumLinearRegularSweep`
         ///
         /// This  a generic  class  is  used   to build Sweept
         /// primitives   with    a  generating  "shape"  and a
@@ -1174,12 +1243,12 @@ pub(crate) mod ffi {
             aGenS: &TopoDS_Shape,
         ) -> UniquePtr<TopoDS_Shape>;
         /// ======================== BRepSweep_Builder ========================
-        /// /// **Source:** `BRepSweep_Builder.hxx` - `BRepSweep_Builder`
+        /// **Source:** `BRepSweep_Builder.hxx` - `BRepSweep_Builder`
         ///
         /// implements the abstract Builder with the BRep Builder
         #[cxx_name = "BRepSweep_Builder"]
         type Builder;
-        /// /// **Source:** `BRepSweep_Builder.hxx` - `BRepSweep_Builder::BRepSweep_Builder()`
+        /// **Source:** `BRepSweep_Builder.hxx` - `BRepSweep_Builder::BRepSweep_Builder()`
         ///
         /// Creates a Builder.
         #[cxx_name = "BRepSweep_Builder_ctor_builder"]
@@ -1205,13 +1274,13 @@ pub(crate) mod ffi {
         #[cxx_name = "Add"]
         fn add_shape2(self: &Builder, aShape1: Pin<&mut TopoDS_Shape>, aShape2: &TopoDS_Shape);
         /// ======================== BRepSweep_Tool ========================
-        /// /// **Source:** `BRepSweep_Tool.hxx` - `BRepSweep_Tool`
+        /// **Source:** `BRepSweep_Tool.hxx` - `BRepSweep_Tool`
         ///
         /// Provides  the  indexation and type  analysis  services
         /// required by the TopoDS generating Shape of BRepSweep.
         #[cxx_name = "BRepSweep_Tool"]
         type Tool;
-        /// /// **Source:** `BRepSweep_Tool.hxx` - `BRepSweep_Tool::BRepSweep_Tool()`
+        /// **Source:** `BRepSweep_Tool.hxx` - `BRepSweep_Tool::BRepSweep_Tool()`
         ///
         /// Initialize the tool  with <aShape>.  The IndexTool
         /// must prepare an indexation for  all  the subshapes
@@ -1228,13 +1297,13 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepSweep_Tool_Shape"]
         fn Tool_shape(self_: &Tool, anIndex: i32) -> UniquePtr<TopoDS_Shape>;
         /// ======================== BRepSweep_Prism ========================
-        /// /// **Source:** `BRepSweep_Prism.hxx` - `BRepSweep_Prism`
+        /// **Source:** `BRepSweep_Prism.hxx` - `BRepSweep_Prism`
         ///
         /// Provides natural constructors to build BRepSweep
         /// translated swept Primitives.
         #[cxx_name = "BRepSweep_Prism"]
         type Prism;
-        /// /// **Source:** `BRepSweep_Prism.hxx` - `BRepSweep_Prism::BRepSweep_Prism()`
+        /// **Source:** `BRepSweep_Prism.hxx` - `BRepSweep_Prism::BRepSweep_Prism()`
         ///
         /// Builds the prism of base S and vector V. If C is true,
         /// S is copied. If Canonize is true then generated surfaces
@@ -1246,7 +1315,7 @@ pub(crate) mod ffi {
             Copy: bool,
             Canonize: bool,
         ) -> UniquePtr<Prism>;
-        /// /// **Source:** `BRepSweep_Prism.hxx` - `BRepSweep_Prism::BRepSweep_Prism()`
+        /// **Source:** `BRepSweep_Prism.hxx` - `BRepSweep_Prism::BRepSweep_Prism()`
         ///
         /// Builds a semi-infinite or an infinite prism of base S.
         /// If Copy is true S is copied.  If Inf is true the prism
@@ -1306,13 +1375,13 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepSweep_Prism_Vec"]
         fn Prism_vec(self_: &Prism) -> UniquePtr<gp_Vec>;
         /// ======================== BRepSweep_Translation ========================
-        /// /// **Source:** `BRepSweep_Translation.hxx` - `BRepSweep_Translation`
+        /// **Source:** `BRepSweep_Translation.hxx` - `BRepSweep_Translation`
         ///
         /// Provides   an  algorithm   to   build  object   by
         /// translation sweep.
         #[cxx_name = "BRepSweep_Translation"]
         type Translation;
-        /// /// **Source:** `BRepSweep_Translation.hxx` - `BRepSweep_Translation::BRepSweep_Translation()`
+        /// **Source:** `BRepSweep_Translation.hxx` - `BRepSweep_Translation::BRepSweep_Translation()`
         ///
         /// Creates  a  topology by  translating <S>  with the
         /// vector  <V>. If  C  is   true S Sucomponents   are

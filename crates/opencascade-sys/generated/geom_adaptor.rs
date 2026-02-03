@@ -11,6 +11,14 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// This class provides an interface between the services provided by any
+/// curve from the package Geom and those required of the curve by algorithms which use it.
+/// Creation of the loaded curve the curve is C1 by piece.
+///
+/// Polynomial coefficients of BSpline curves used for their evaluation are
+/// cached for better performance. Therefore these evaluations are not
+/// thread-safe and parallel evaluations need to be prevented.
 pub use ffi::Curve;
 impl Curve {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -122,6 +130,15 @@ impl Curve {
         ffi::Curve_get_type_name()
     }
 }
+
+/// An interface between the services provided by any
+/// surface from the package Geom and those required
+/// of the surface by algorithms which use it.
+/// Creation of the loaded surface the surface is C1 by piece
+///
+/// Polynomial coefficients of BSpline surfaces used for their evaluation are
+/// cached for better performance. Therefore these evaluations are not
+/// thread-safe and parallel evaluations need to be prevented.
 pub use ffi::Surface;
 impl Surface {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -276,7 +293,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== GeomAdaptor_Curve ========================
-        /// /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve`
+        /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve`
         ///
         /// This class provides an interface between the services provided by any
         /// curve from the package Geom and those required of the curve by algorithms which use it.
@@ -287,13 +304,13 @@ pub(crate) mod ffi {
         /// thread-safe and parallel evaluations need to be prevented.
         #[cxx_name = "GeomAdaptor_Curve"]
         type Curve;
-        /// /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
+        /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
         #[cxx_name = "GeomAdaptor_Curve_ctor"]
         fn Curve_ctor() -> UniquePtr<Curve>;
-        /// /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
+        /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
         #[cxx_name = "GeomAdaptor_Curve_ctor_handlecurve"]
         fn Curve_ctor_handlecurve(theCurve: &HandleGeomCurve) -> UniquePtr<Curve>;
-        /// /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
+        /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
         ///
         /// Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion()
         #[cxx_name = "GeomAdaptor_Curve_ctor_handlecurve_real2"]
@@ -458,7 +475,7 @@ pub(crate) mod ffi {
         #[cxx_name = "GeomAdaptor_Curve_as_Adaptor3d_Curve_mut"]
         fn curve_as_adaptor3d_curve_mut(self_: Pin<&mut Curve>) -> Pin<&mut Adaptor3d_Curve>;
         /// ======================== GeomAdaptor_Surface ========================
-        /// /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface`
+        /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface`
         ///
         /// An interface between the services provided by any
         /// surface from the package Geom and those required
@@ -470,13 +487,13 @@ pub(crate) mod ffi {
         /// thread-safe and parallel evaluations need to be prevented.
         #[cxx_name = "GeomAdaptor_Surface"]
         type Surface;
-        /// /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
+        /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
         #[cxx_name = "GeomAdaptor_Surface_ctor"]
         fn Surface_ctor() -> UniquePtr<Surface>;
-        /// /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
+        /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
         #[cxx_name = "GeomAdaptor_Surface_ctor_handlesurface"]
         fn Surface_ctor_handlesurface(theSurf: &HandleGeomSurface) -> UniquePtr<Surface>;
-        /// /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
+        /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
         ///
         /// Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast
         #[cxx_name = "GeomAdaptor_Surface_ctor_handlesurface_real6"]

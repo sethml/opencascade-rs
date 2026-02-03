@@ -11,6 +11,64 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// An Explorer is a Tool to visit  a Topological Data
+/// Structure form the TopoDS package.
+///
+/// An Explorer is built with :
+///
+/// * The Shape to explore.
+///
+/// * The type of Shapes to find : e.g VERTEX, EDGE.
+/// This type cannot be SHAPE.
+///
+/// * The type of Shapes to avoid. e.g  SHELL, EDGE.
+/// By default   this type is  SHAPE which  means no
+/// restriction on the exploration.
+///
+/// The Explorer  visits  all the  structure   to find
+/// shapes of the   requested  type  which   are   not
+/// contained in the type to avoid.
+///
+/// Example to find all the Faces in the Shape S :
+///
+/// TopExp_Explorer Ex;
+/// for (Ex.Init(S,TopAbs_FACE); Ex.More(); Ex.Next()) {
+/// ProcessFace(Ex.Current());
+/// }
+///
+/// // an other way
+/// TopExp_Explorer Ex(S,TopAbs_FACE);
+/// while (Ex.More()) {
+/// ProcessFace(Ex.Current());
+/// Ex.Next();
+/// }
+///
+/// To find all the vertices which are not in an edge :
+///
+/// for (Ex.Init(S,TopAbs_VERTEX,TopAbs_EDGE); ...)
+///
+/// To  find all the faces  in   a SHELL, then all the
+/// faces not in a SHELL :
+///
+/// TopExp_Explorer Ex1, Ex2;
+///
+/// for (Ex1.Init(S,TopAbs_SHELL),...) {
+/// // visit all shells
+/// for (Ex2.Init(Ex1.Current(),TopAbs_FACE),...) {
+/// // visit all the faces of the current shell
+/// }
+/// }
+///
+/// for (Ex1.Init(S,TopAbs_FACE,TopAbs_SHELL),...) {
+/// // visit all faces not in a shell
+/// }
+///
+/// If   the type  to avoid  is   the same  or is less
+/// complex than the type to find it has no effect.
+///
+/// For example searching edges  not in a vertex  does
+/// not make a difference.
 pub use ffi::Explorer;
 impl Explorer {
     /// Creates an empty explorer, becomes useful after Init.
@@ -18,6 +76,17 @@ impl Explorer {
         ffi::Explorer_ctor()
     }
 }
+
+/// This package   provides  basic tools  to   explore the
+/// topological data structures.
+///
+/// * Explorer : A tool to find all sub-shapes of  a given
+/// type. e.g. all faces of a solid.
+///
+/// * Package methods to map sub-shapes of a shape.
+///
+/// Level : Public
+/// All methods of all  classes will be public.
 pub use ffi::TopExp;
 impl TopExp {
     /// Stores in the map <M> all  the sub-shapes of <S>.
@@ -112,7 +181,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== TopExp_Explorer ========================
-        /// /// **Source:** `TopExp_Explorer.hxx` - `TopExp_Explorer`
+        /// **Source:** `TopExp_Explorer.hxx` - `TopExp_Explorer`
         ///
         /// An Explorer is a Tool to visit  a Topological Data
         /// Structure form the TopoDS package.
@@ -173,7 +242,7 @@ pub(crate) mod ffi {
         /// not make a difference.
         #[cxx_name = "TopExp_Explorer"]
         type Explorer;
-        /// /// **Source:** `TopExp_Explorer.hxx` - `TopExp_Explorer::TopExp_Explorer()`
+        /// **Source:** `TopExp_Explorer.hxx` - `TopExp_Explorer::TopExp_Explorer()`
         ///
         /// Creates an empty explorer, becomes useful after Init.
         #[cxx_name = "TopExp_Explorer_ctor"]
@@ -211,7 +280,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Explorer>);
         /// ======================== TopExp ========================
-        /// /// **Source:** `TopExp.hxx` - `TopExp`
+        /// **Source:** `TopExp.hxx` - `TopExp`
         ///
         /// This package   provides  basic tools  to   explore the
         /// topological data structures.

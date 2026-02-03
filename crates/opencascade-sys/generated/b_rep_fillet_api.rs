@@ -13,6 +13,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Construction of fillets on the edges of a Shell.
 pub use ffi::LocalOperation;
 impl LocalOperation {
     /// Upcast to BRepBuilderAPI_Command
@@ -53,6 +55,14 @@ impl LocalOperation {
         ffi::LocalOperation_sect(self, IC, IS)
     }
 }
+
+/// Describes functions to build chamfers on edges of a shell or solid.
+/// Chamfered Edge of a Shell or Solid
+/// A MakeChamfer object provides a framework for:
+/// -   initializing the construction algorithm with a given shape,
+/// -   acquiring the data characterizing the chamfers,
+/// -   building the chamfers and constructing the resulting shape, and
+/// -   consulting the result.
 pub use ffi::MakeChamfer;
 impl MakeChamfer {
     /// Initializes an algorithm for computing chamfers on the shape S.
@@ -122,6 +132,13 @@ impl MakeChamfer {
         ffi::MakeChamfer_sect(self, IC, IS)
     }
 }
+
+/// Describes functions to build fillets on the broken edges of a shell or solid.
+/// A MakeFillet object provides a framework for:
+/// -   initializing the construction algorithm with a given shape,
+/// -   acquiring the data characterizing the fillets,
+/// -   building the fillets and constructing the resulting shape, and
+/// -   consulting the result.
 pub use ffi::MakeFillet;
 impl MakeFillet {
     /// Upcast to BRepBuilderAPI_Command
@@ -208,6 +225,19 @@ impl MakeFillet {
         ffi::MakeFillet_bad_shape(self)
     }
 }
+
+/// Describes functions to build fillets and chamfers on the
+/// vertices of a planar face.
+/// Fillets and Chamfers on the Vertices of a Planar Face
+/// A MakeFillet2d object provides a framework for:
+/// - initializing the construction algorithm with a given face,
+/// - acquiring the data characterizing the fillets and chamfers,
+/// -   building the fillets and chamfers, and constructing the
+/// resulting shape, and
+/// -   consulting the result.
+/// Warning
+/// Only segments of straight lines and arcs of circles are
+/// treated. BSplines are not processed.
 pub use ffi::MakeFillet2d;
 impl MakeFillet2d {
     /// Initializes an empty algorithm for computing fillets and
@@ -463,7 +493,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepFilletAPI_LocalOperation ========================
-        /// /// **Source:** `BRepFilletAPI_LocalOperation.hxx` - `BRepFilletAPI_LocalOperation`
+        /// **Source:** `BRepFilletAPI_LocalOperation.hxx` - `BRepFilletAPI_LocalOperation`
         ///
         /// Construction of fillets on the edges of a Shell.
         #[cxx_name = "BRepFilletAPI_LocalOperation"]
@@ -554,7 +584,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut LocalOperation>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         /// ======================== BRepFilletAPI_MakeChamfer ========================
-        /// /// **Source:** `BRepFilletAPI_MakeChamfer.hxx` - `BRepFilletAPI_MakeChamfer`
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx` - `BRepFilletAPI_MakeChamfer`
         ///
         /// Describes functions to build chamfers on edges of a shell or solid.
         /// Chamfered Edge of a Shell or Solid
@@ -565,7 +595,7 @@ pub(crate) mod ffi {
         /// -   consulting the result.
         #[cxx_name = "BRepFilletAPI_MakeChamfer"]
         type MakeChamfer;
-        /// /// **Source:** `BRepFilletAPI_MakeChamfer.hxx` - `BRepFilletAPI_MakeChamfer::BRepFilletAPI_MakeChamfer()`
+        /// **Source:** `BRepFilletAPI_MakeChamfer.hxx` - `BRepFilletAPI_MakeChamfer::BRepFilletAPI_MakeChamfer()`
         ///
         /// Initializes an algorithm for computing chamfers on the shape S.
         /// The edges on which chamfers are built are defined using the Add function.
@@ -840,7 +870,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakeChamfer>,
         ) -> Pin<&mut LocalOperation>;
         /// ======================== BRepFilletAPI_MakeFillet ========================
-        /// /// **Source:** `BRepFilletAPI_MakeFillet.hxx` - `BRepFilletAPI_MakeFillet`
+        /// **Source:** `BRepFilletAPI_MakeFillet.hxx` - `BRepFilletAPI_MakeFillet`
         ///
         /// Describes functions to build fillets on the broken edges of a shell or solid.
         /// A MakeFillet object provides a framework for:
@@ -1207,7 +1237,7 @@ pub(crate) mod ffi {
             self_: Pin<&mut MakeFillet>,
         ) -> Pin<&mut LocalOperation>;
         /// ======================== BRepFilletAPI_MakeFillet2d ========================
-        /// /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx` - `BRepFilletAPI_MakeFillet2d`
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx` - `BRepFilletAPI_MakeFillet2d`
         ///
         /// Describes functions to build fillets and chamfers on the
         /// vertices of a planar face.
@@ -1223,7 +1253,7 @@ pub(crate) mod ffi {
         /// treated. BSplines are not processed.
         #[cxx_name = "BRepFilletAPI_MakeFillet2d"]
         type MakeFillet2d;
-        /// /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx` - `BRepFilletAPI_MakeFillet2d::BRepFilletAPI_MakeFillet2d()`
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx` - `BRepFilletAPI_MakeFillet2d::BRepFilletAPI_MakeFillet2d()`
         ///
         /// Initializes an empty algorithm for computing fillets and
         /// chamfers. The face on which the fillets and
@@ -1238,7 +1268,7 @@ pub(crate) mod ffi {
         /// -   ChFi2d_NoFace if F is a null face.
         #[cxx_name = "BRepFilletAPI_MakeFillet2d_ctor"]
         fn MakeFillet2d_ctor() -> UniquePtr<MakeFillet2d>;
-        /// /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx` - `BRepFilletAPI_MakeFillet2d::BRepFilletAPI_MakeFillet2d()`
+        /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx` - `BRepFilletAPI_MakeFillet2d::BRepFilletAPI_MakeFillet2d()`
         ///
         /// Initializes an algorithm for computing fillets and chamfers on the face F.
         /// The vertices on which fillets or chamfers are built are

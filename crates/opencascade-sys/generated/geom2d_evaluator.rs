@@ -10,6 +10,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Interface for calculation of values and derivatives for different kinds of curves in 2D.
+/// Works both with adaptors and curves.
 pub use ffi::Curve;
 impl Curve {
     /// Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1
@@ -35,7 +38,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Geom2dEvaluator_Curve ========================
-        /// /// **Source:** `Geom2dEvaluator_Curve.hxx` - `Geom2dEvaluator_Curve`
+        /// **Source:** `Geom2dEvaluator_Curve.hxx` - `Geom2dEvaluator_Curve`
         ///
         /// Interface for calculation of values and derivatives for different kinds of curves in 2D.
         /// Works both with adaptors and curves.

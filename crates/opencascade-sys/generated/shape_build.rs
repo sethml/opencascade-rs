@@ -10,6 +10,19 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Rebuilds a Shape by making pre-defined substitutions on some
+/// of its components
+///
+/// In a first phase, it records requests to replace or remove
+/// some individual shapes
+/// For each shape, the last given request is recorded
+/// Requests may be applied "Oriented" (i.e. only to an item with
+/// the SAME orientation) or not (the orientation of replacing
+/// shape is respectful of that of the original one)
+///
+/// Then, these requests may be applied to any shape which may
+/// contain one or more of these individual shapes
 pub use ffi::ReShape;
 impl ReShape {
     /// Returns an empty Reshape
@@ -43,7 +56,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== ShapeBuild_ReShape ========================
-        /// /// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape`
+        /// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape`
         ///
         /// Rebuilds a Shape by making pre-defined substitutions on some
         /// of its components
@@ -59,7 +72,7 @@ pub(crate) mod ffi {
         /// contain one or more of these individual shapes
         #[cxx_name = "ShapeBuild_ReShape"]
         type ReShape;
-        /// /// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape::ShapeBuild_ReShape()`
+        /// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape::ShapeBuild_ReShape()`
         ///
         /// Returns an empty Reshape
         #[cxx_name = "ShapeBuild_ReShape_ctor"]

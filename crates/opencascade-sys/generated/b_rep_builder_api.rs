@@ -24,8 +24,24 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Root class for all commands in BRepBuilderAPI.
+///
+/// Provides :
+///
+/// * Managements of the notDone flag.
+///
+/// * Catching of exceptions (not implemented).
+///
+/// * Logging (not implemented).
 pub use ffi::Command;
 impl Command {}
+
+/// This    is  the  root     class for     all  shape
+/// constructions.  It stores the result.
+///
+/// It  provides deferred methods to trace the history
+/// of sub-shapes.
 pub use ffi::MakeShape;
 impl MakeShape {
     /// Upcast to BRepBuilderAPI_Command
@@ -38,6 +54,38 @@ impl MakeShape {
         ffi::make_shape_as_command_mut(self)
     }
 }
+
+/// Provides methods to build edges.
+///
+/// The   methods have  the  following   syntax, where
+/// TheCurve is one of Lin, Circ, ...
+///
+/// Create(C : TheCurve)
+///
+/// Makes an edge on  the whole curve.  Add vertices
+/// on finite curves.
+///
+/// Create(C : TheCurve; p1,p2 : Real)
+///
+/// Make an edge  on the curve between parameters p1
+/// and p2. if p2 < p1 the edge will be REVERSED. If
+/// p1  or p2 is infinite the  curve will be open in
+/// that  direction. Vertices are created for finite
+/// values of p1 and p2.
+///
+/// Create(C : TheCurve; P1, P2 : Pnt from gp)
+///
+/// Make an edge on the curve  between the points P1
+/// and P2. The  points are projected on   the curve
+/// and the   previous method is  used. An  error is
+/// raised if the points are not on the curve.
+///
+/// Create(C : TheCurve; V1, V2 : Vertex from TopoDS)
+///
+/// Make an edge  on the curve  between the vertices
+/// V1 and V2. Same as the  previous but no vertices
+/// are created. If a vertex is  Null the curve will
+/// be open in this direction.
 pub use ffi::MakeEdge;
 impl MakeEdge {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -360,6 +408,32 @@ impl MakeEdge {
         ffi::make_edge_as_make_shape_mut(self)
     }
 }
+
+/// Provides methods to build faces.
+///
+/// A face may be built :
+///
+/// * From a surface.
+///
+/// - Elementary surface from gp.
+///
+/// - Surface from Geom.
+///
+/// * From a surface and U,V values.
+///
+/// * From a wire.
+///
+/// - Find the surface automatically if possible.
+///
+/// * From a surface and a wire.
+///
+/// - A flag Inside is given, when this flag is True
+/// the  wire is  oriented to bound a finite area on
+/// the surface.
+///
+/// * From a face and a wire.
+///
+/// - The new wire is a perforation.
 pub use ffi::MakeFace;
 impl MakeFace {
     /// Not done.
@@ -606,6 +680,17 @@ impl MakeFace {
         ffi::make_face_as_make_shape_mut(self)
     }
 }
+
+/// Describes functions to build a solid from shells.
+/// A solid is made of one shell, or a series of shells, which
+/// do not intersect each other. One of these shells
+/// constitutes the outside skin of the solid. It may be closed
+/// (a finite solid) or open (an infinite solid). Other shells
+/// form hollows (cavities) in these previous ones. Each
+/// must bound a closed volume.
+/// A MakeSolid object provides a framework for:
+/// -   defining and implementing the construction of a solid, and
+/// -   consulting the result.
 pub use ffi::MakeSolid;
 impl MakeSolid {
     /// Initializes the construction of a solid. An empty solid is
@@ -695,6 +780,16 @@ impl MakeSolid {
         ffi::make_solid_as_make_shape_mut(self)
     }
 }
+
+/// Describes functions to build BRepBuilder vertices directly
+/// from 3D geometric points. A vertex built using a
+/// MakeVertex object is only composed of a 3D point and
+/// a default precision value (Precision::Confusion()).
+/// Later on, 2D representations can be added, for example,
+/// when inserting a vertex in an edge.
+/// A MakeVertex object provides a framework for:
+/// -   defining and implementing the construction of a vertex, and
+/// -   consulting the result.
 pub use ffi::MakeVertex;
 impl MakeVertex {
     /// Constructs a vertex from point P.
@@ -725,6 +820,38 @@ impl MakeVertex {
         ffi::make_vertex_as_make_shape_mut(self)
     }
 }
+
+/// Describes functions to build wires from edges. A wire can
+/// be built from any number of edges.
+/// To build a wire you first initialize the construction, then
+/// add edges in sequence. An unlimited number of edges
+/// can be added. The initialization of construction is done with:
+/// -   no edge (an empty wire), or
+/// -   edges of an existing wire, or
+/// -   up to four connectable edges.
+/// In order to be added to a wire under construction, an
+/// edge (unless it is the first one) must satisfy the following
+/// condition: one of its vertices must be geometrically
+/// coincident with one of the vertices of the wire (provided
+/// that the highest tolerance factor is assigned to the two
+/// vertices). It could also be the same vertex.
+/// -   The given edge is shared by the wire if it contains:
+/// -   two vertices, identical to two vertices of the wire
+/// under construction (a general case of the wire closure), or
+/// -   one vertex, identical to a vertex of the wire under
+/// construction; the other vertex not being
+/// geometrically coincident with another vertex of the wire.
+/// -   In other cases, when one of the vertices of the edge
+/// is simply geometrically coincident with a vertex of the
+/// wire under construction (provided that the highest
+/// tolerance factor is assigned to the two vertices), the
+/// given edge is first copied and the coincident vertex is
+/// replaced in this new edge, by the coincident vertex of the wire.
+/// Note: it is possible to build non manifold wires using this construction tool.
+/// A MakeWire object provides a framework for:
+/// -   initializing the construction of a wire,
+/// -   adding edges to the wire under construction, and
+/// -   consulting the result.
 pub use ffi::MakeWire;
 impl MakeWire {
     /// Constructs an empty wire framework, to which edges
@@ -818,6 +945,29 @@ impl MakeWire {
         ffi::make_wire_as_make_shape_mut(self)
     }
 }
+
+/// Provides methods to
+///
+/// - identify possible contiguous boundaries (for control
+/// afterwards (of continuity: C0, C1, ...))
+///
+/// - assemble contiguous shapes into one shape.
+/// Only manifold shapes will be found. Sewing will not
+/// be done in case of multiple edges.
+///
+/// For sewing, use this function as following:
+/// - create an empty object
+/// - default tolerance 1.E-06
+/// - with face analysis on
+/// - with sewing operation on
+/// - set the cutting option as you need (default True)
+/// - define a tolerance
+/// - add shapes to be sewed -> Add
+/// - compute -> Perform
+/// - output the resulted shapes
+/// - output free edges if necessary
+/// - output multiple edges if necessary
+/// - output the problems if any
 pub use ffi::Sewing;
 impl Sewing {
     /// Creates an object with
@@ -862,6 +1012,18 @@ impl Sewing {
         ffi::Sewing_get_type_name()
     }
 }
+
+/// Geometric transformation on a shape.
+/// The transformation to be applied is defined as a
+/// gp_Trsf transformation, i.e. a transformation which does
+/// not modify the underlying geometry of shapes.
+/// The transformation is applied to:
+/// -   all curves which support edges of a shape, and
+/// -   all surfaces which support its faces.
+/// A Transform object provides a framework for:
+/// -   defining the geometric transformation to be applied,
+/// -   implementing the transformation algorithm, and
+/// -   consulting the results.
 pub use ffi::Transform;
 impl Transform {
     /// Constructs a framework for applying the geometric
@@ -924,6 +1086,22 @@ impl Transform {
         ffi::Transform_modified_shape(self, S)
     }
 }
+
+/// Implements   the  methods   of MakeShape for   the
+/// constant  topology modifications.  The methods are
+/// implemented  when the modification uses a Modifier
+/// from BRepTools. Some of  them have to be redefined
+/// if  the  modification is  implemented with another
+/// tool (see Transform from BRepBuilderAPI for example).
+/// The BRepBuilderAPI package provides the following
+/// frameworks to perform modifications of this sort:
+/// -   BRepBuilderAPI_Copy to produce the copy of a shape,
+/// -   BRepBuilderAPI_Transform and
+/// BRepBuilderAPI_GTransform to apply a geometric
+/// transformation to a shape,
+/// -   BRepBuilderAPI_NurbsConvert to convert the
+/// whole geometry of a shape into NURBS geometry,
+/// -   BRepOffsetAPI_DraftAngle to build a tapered shape.
 pub use ffi::ModifyShape;
 impl ModifyShape {
     /// Upcast to BRepBuilderAPI_Command
@@ -968,7 +1146,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepBuilderAPI_Command ========================
-        /// /// **Source:** `BRepBuilderAPI_Command.hxx` - `BRepBuilderAPI_Command`
+        /// **Source:** `BRepBuilderAPI_Command.hxx` - `BRepBuilderAPI_Command`
         ///
         /// Root class for all commands in BRepBuilderAPI.
         ///
@@ -987,7 +1165,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Check"]
         fn check(self: &Command);
         /// ======================== BRepBuilderAPI_MakeShape ========================
-        /// /// **Source:** `BRepBuilderAPI_MakeShape.hxx` - `BRepBuilderAPI_MakeShape`
+        /// **Source:** `BRepBuilderAPI_MakeShape.hxx` - `BRepBuilderAPI_MakeShape`
         ///
         /// This    is  the  root     class for     all  shape
         /// constructions.  It stores the result.
@@ -1022,7 +1200,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepBuilderAPI_MakeShape_as_BRepBuilderAPI_Command_mut"]
         fn make_shape_as_command_mut(self_: Pin<&mut MakeShape>) -> Pin<&mut Command>;
         /// ======================== BRepBuilderAPI_MakeEdge ========================
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge`
         ///
         /// Provides methods to build edges.
         ///
@@ -1057,120 +1235,120 @@ pub(crate) mod ffi {
         /// be open in this direction.
         #[cxx_name = "BRepBuilderAPI_MakeEdge"]
         type MakeEdge;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor"]
         fn MakeEdge_ctor() -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_vertex2"]
         fn MakeEdge_ctor_vertex2(V1: &TopoDS_Vertex, V2: &TopoDS_Vertex) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_pnt2"]
         fn MakeEdge_ctor_pnt2(P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_lin"]
         fn MakeEdge_ctor_lin(L: &gp_Lin) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_lin_real2"]
         fn MakeEdge_ctor_lin_real2(L: &gp_Lin, p1: f64, p2: f64) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_lin_pnt2"]
         fn MakeEdge_ctor_lin_pnt2(L: &gp_Lin, P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_lin_vertex2"]
         fn MakeEdge_ctor_lin_vertex2(
             L: &gp_Lin,
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_circ"]
         fn MakeEdge_ctor_circ(L: &gp_Circ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_circ_real2"]
         fn MakeEdge_ctor_circ_real2(L: &gp_Circ, p1: f64, p2: f64) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_circ_pnt2"]
         fn MakeEdge_ctor_circ_pnt2(L: &gp_Circ, P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_circ_vertex2"]
         fn MakeEdge_ctor_circ_vertex2(
             L: &gp_Circ,
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_elips"]
         fn MakeEdge_ctor_elips(L: &gp_Elips) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_elips_real2"]
         fn MakeEdge_ctor_elips_real2(L: &gp_Elips, p1: f64, p2: f64) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_elips_pnt2"]
         fn MakeEdge_ctor_elips_pnt2(L: &gp_Elips, P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_elips_vertex2"]
         fn MakeEdge_ctor_elips_vertex2(
             L: &gp_Elips,
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_hypr"]
         fn MakeEdge_ctor_hypr(L: &gp_Hypr) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_hypr_real2"]
         fn MakeEdge_ctor_hypr_real2(L: &gp_Hypr, p1: f64, p2: f64) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_hypr_pnt2"]
         fn MakeEdge_ctor_hypr_pnt2(L: &gp_Hypr, P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_hypr_vertex2"]
         fn MakeEdge_ctor_hypr_vertex2(
             L: &gp_Hypr,
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_parab"]
         fn MakeEdge_ctor_parab(L: &gp_Parab) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_parab_real2"]
         fn MakeEdge_ctor_parab_real2(L: &gp_Parab, p1: f64, p2: f64) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_parab_pnt2"]
         fn MakeEdge_ctor_parab_pnt2(L: &gp_Parab, P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_parab_vertex2"]
         fn MakeEdge_ctor_parab_vertex2(
             L: &gp_Parab,
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_handlecurve"]
         fn MakeEdge_ctor_handlecurve(L: &HandleGeomCurve) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_handlecurve_real2"]
         fn MakeEdge_ctor_handlecurve_real2(
             L: &HandleGeomCurve,
             p1: f64,
             p2: f64,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_handlecurve_pnt2"]
         fn MakeEdge_ctor_handlecurve_pnt2(
             L: &HandleGeomCurve,
             P1: &gp_Pnt,
             P2: &gp_Pnt,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_handlecurve_vertex2"]
         fn MakeEdge_ctor_handlecurve_vertex2(
             L: &HandleGeomCurve,
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_handlecurve_pnt2_real2"]
         fn MakeEdge_ctor_handlecurve_pnt2_real2(
             L: &HandleGeomCurve,
@@ -1179,7 +1357,7 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_handlecurve_vertex2_real2"]
         fn MakeEdge_ctor_handlecurve_vertex2_real2(
             L: &HandleGeomCurve,
@@ -1188,13 +1366,13 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_handlecurve_handlesurface"]
         fn MakeEdge_ctor_handlecurve_handlesurface(
             L: &HandleGeom2dCurve,
             S: &HandleGeomSurface,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_handlecurve_handlesurface_real2"]
         fn MakeEdge_ctor_handlecurve_handlesurface_real2(
             L: &HandleGeom2dCurve,
@@ -1202,7 +1380,7 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_handlecurve_handlesurface_pnt2"]
         fn MakeEdge_ctor_handlecurve_handlesurface_pnt2(
             L: &HandleGeom2dCurve,
@@ -1210,7 +1388,7 @@ pub(crate) mod ffi {
             P1: &gp_Pnt,
             P2: &gp_Pnt,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_handlecurve_handlesurface_vertex2"]
         fn MakeEdge_ctor_handlecurve_handlesurface_vertex2(
             L: &HandleGeom2dCurve,
@@ -1218,7 +1396,7 @@ pub(crate) mod ffi {
             V1: &TopoDS_Vertex,
             V2: &TopoDS_Vertex,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         #[cxx_name = "BRepBuilderAPI_MakeEdge_ctor_handlecurve_handlesurface_pnt2_real2"]
         fn MakeEdge_ctor_handlecurve_handlesurface_pnt2_real2(
             L: &HandleGeom2dCurve,
@@ -1228,7 +1406,7 @@ pub(crate) mod ffi {
             p1: f64,
             p2: f64,
         ) -> UniquePtr<MakeEdge>;
-        /// /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+        /// **Source:** `BRepBuilderAPI_MakeEdge.hxx` - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
         ///
         /// The general method to directly create an edge is to give
         /// -      a 3D curve C as the support (geometric domain) of the edge,
@@ -1426,7 +1604,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_MakeShape_mut"]
         fn make_edge_as_make_shape_mut(self_: Pin<&mut MakeEdge>) -> Pin<&mut MakeShape>;
         /// ======================== BRepBuilderAPI_MakeFace ========================
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace`
         ///
         /// Provides methods to build faces.
         ///
@@ -1455,42 +1633,42 @@ pub(crate) mod ffi {
         /// - The new wire is a perforation.
         #[cxx_name = "BRepBuilderAPI_MakeFace"]
         type MakeFace;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Not done.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor"]
         fn MakeFace_ctor() -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Load a face. useful to add wires.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_face"]
         fn MakeFace_ctor_face(F: &TopoDS_Face) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a plane.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_pln"]
         fn MakeFace_ctor_pln(P: &gp_Pln) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a cylinder.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_cylinder"]
         fn MakeFace_ctor_cylinder(C: &gp_Cylinder) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a cone.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_cone"]
         fn MakeFace_ctor_cone(C: &gp_Cone) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a sphere.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_sphere"]
         fn MakeFace_ctor_sphere(S: &gp_Sphere) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a torus.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_torus"]
         fn MakeFace_ctor_torus(C: &gp_Torus) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a Surface. Accepts tolerance value (TolDegen)
         /// for resolution of degenerated edges.
@@ -1499,7 +1677,7 @@ pub(crate) mod ffi {
             S: &HandleGeomSurface,
             TolDegen: f64,
         ) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a plane.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_pln_real4"]
@@ -1510,7 +1688,7 @@ pub(crate) mod ffi {
             VMin: f64,
             VMax: f64,
         ) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a cylinder.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_cylinder_real4"]
@@ -1521,7 +1699,7 @@ pub(crate) mod ffi {
             VMin: f64,
             VMax: f64,
         ) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a cone.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_cone_real4"]
@@ -1532,7 +1710,7 @@ pub(crate) mod ffi {
             VMin: f64,
             VMax: f64,
         ) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a sphere.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_sphere_real4"]
@@ -1543,7 +1721,7 @@ pub(crate) mod ffi {
             VMin: f64,
             VMax: f64,
         ) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a torus.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_torus_real4"]
@@ -1554,7 +1732,7 @@ pub(crate) mod ffi {
             VMin: f64,
             VMax: f64,
         ) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a Surface. Accepts tolerance value (TolDegen)
         /// for resolution of degenerated edges.
@@ -1567,7 +1745,7 @@ pub(crate) mod ffi {
             VMax: f64,
             TolDegen: f64,
         ) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Find a surface from the wire and make a face.
         /// if <OnlyPlane> is true, the computed surface will be
@@ -1575,7 +1753,7 @@ pub(crate) mod ffi {
         /// flag NotDone will be set.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_wire_bool"]
         fn MakeFace_ctor_wire_bool(W: &TopoDS_Wire, OnlyPlane: bool) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a plane and a wire.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_pln_wire_bool"]
@@ -1584,7 +1762,7 @@ pub(crate) mod ffi {
             W: &TopoDS_Wire,
             Inside: bool,
         ) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a cylinder and a wire.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_cylinder_wire_bool"]
@@ -1593,7 +1771,7 @@ pub(crate) mod ffi {
             W: &TopoDS_Wire,
             Inside: bool,
         ) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a cone and a wire.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_cone_wire_bool"]
@@ -1602,7 +1780,7 @@ pub(crate) mod ffi {
             W: &TopoDS_Wire,
             Inside: bool,
         ) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a sphere and a wire.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_sphere_wire_bool"]
@@ -1611,7 +1789,7 @@ pub(crate) mod ffi {
             W: &TopoDS_Wire,
             Inside: bool,
         ) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a torus and a wire.
         #[cxx_name = "BRepBuilderAPI_MakeFace_ctor_torus_wire_bool"]
@@ -1620,7 +1798,7 @@ pub(crate) mod ffi {
             W: &TopoDS_Wire,
             Inside: bool,
         ) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Make a face from a Surface and a wire.
         /// If the surface S is not plane,
@@ -1632,7 +1810,7 @@ pub(crate) mod ffi {
             W: &TopoDS_Wire,
             Inside: bool,
         ) -> UniquePtr<MakeFace>;
-        /// /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+        /// **Source:** `BRepBuilderAPI_MakeFace.hxx` - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
         ///
         /// Adds the wire <W> in the face <F>
         /// A general method to create a face is to give
@@ -1758,7 +1936,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_MakeShape_mut"]
         fn make_face_as_make_shape_mut(self_: Pin<&mut MakeFace>) -> Pin<&mut MakeShape>;
         /// ======================== BRepBuilderAPI_MakeSolid ========================
-        /// /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid`
+        /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid`
         ///
         /// Describes functions to build a solid from shells.
         /// A solid is made of one shell, or a series of shells, which
@@ -1772,29 +1950,29 @@ pub(crate) mod ffi {
         /// -   consulting the result.
         #[cxx_name = "BRepBuilderAPI_MakeSolid"]
         type MakeSolid;
-        /// /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
+        /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
         ///
         /// Initializes the construction of a solid. An empty solid is
         /// considered to cover the whole space. The Add function
         /// is used to define shells to bound it.
         #[cxx_name = "BRepBuilderAPI_MakeSolid_ctor"]
         fn MakeSolid_ctor() -> UniquePtr<MakeSolid>;
-        /// /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
+        /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
         ///
         /// Make a solid from a CompSolid.
         #[cxx_name = "BRepBuilderAPI_MakeSolid_ctor_compsolid"]
         fn MakeSolid_ctor_compsolid(S: &TopoDS_CompSolid) -> UniquePtr<MakeSolid>;
-        /// /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
+        /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
         ///
         /// Make a solid from a shell.
         #[cxx_name = "BRepBuilderAPI_MakeSolid_ctor_shell"]
         fn MakeSolid_ctor_shell(S: &TopoDS_Shell) -> UniquePtr<MakeSolid>;
-        /// /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
+        /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
         ///
         /// Make a solid from two shells.
         #[cxx_name = "BRepBuilderAPI_MakeSolid_ctor_shell2"]
         fn MakeSolid_ctor_shell2(S1: &TopoDS_Shell, S2: &TopoDS_Shell) -> UniquePtr<MakeSolid>;
-        /// /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
+        /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
         ///
         /// Make a solid from three shells.
         /// Constructs a solid
@@ -1817,12 +1995,12 @@ pub(crate) mod ffi {
             S2: &TopoDS_Shell,
             S3: &TopoDS_Shell,
         ) -> UniquePtr<MakeSolid>;
-        /// /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
+        /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
         ///
         /// Make a solid from a solid. useful for adding later.
         #[cxx_name = "BRepBuilderAPI_MakeSolid_ctor_solid"]
         fn MakeSolid_ctor_solid(So: &TopoDS_Solid) -> UniquePtr<MakeSolid>;
-        /// /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
+        /// **Source:** `BRepBuilderAPI_MakeSolid.hxx` - `BRepBuilderAPI_MakeSolid::BRepBuilderAPI_MakeSolid()`
         ///
         /// Add a shell to a solid.
         ///
@@ -1876,7 +2054,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_MakeShape_mut"]
         fn make_solid_as_make_shape_mut(self_: Pin<&mut MakeSolid>) -> Pin<&mut MakeShape>;
         /// ======================== BRepBuilderAPI_MakeVertex ========================
-        /// /// **Source:** `BRepBuilderAPI_MakeVertex.hxx` - `BRepBuilderAPI_MakeVertex`
+        /// **Source:** `BRepBuilderAPI_MakeVertex.hxx` - `BRepBuilderAPI_MakeVertex`
         ///
         /// Describes functions to build BRepBuilder vertices directly
         /// from 3D geometric points. A vertex built using a
@@ -1889,7 +2067,7 @@ pub(crate) mod ffi {
         /// -   consulting the result.
         #[cxx_name = "BRepBuilderAPI_MakeVertex"]
         type MakeVertex;
-        /// /// **Source:** `BRepBuilderAPI_MakeVertex.hxx` - `BRepBuilderAPI_MakeVertex::BRepBuilderAPI_MakeVertex()`
+        /// **Source:** `BRepBuilderAPI_MakeVertex.hxx` - `BRepBuilderAPI_MakeVertex::BRepBuilderAPI_MakeVertex()`
         ///
         /// Constructs a vertex from point P.
         /// Example create a vertex from a 3D point.
@@ -1913,7 +2091,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI_MakeShape_mut"]
         fn make_vertex_as_make_shape_mut(self_: Pin<&mut MakeVertex>) -> Pin<&mut MakeShape>;
         /// ======================== BRepBuilderAPI_MakeWire ========================
-        /// /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire`
+        /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire`
         ///
         /// Describes functions to build wires from edges. A wire can
         /// be built from any number of edges.
@@ -1948,7 +2126,7 @@ pub(crate) mod ffi {
         /// -   consulting the result.
         #[cxx_name = "BRepBuilderAPI_MakeWire"]
         type MakeWire;
-        /// /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+        /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
         ///
         /// Constructs an empty wire framework, to which edges
         /// are added using the Add function.
@@ -1960,17 +2138,17 @@ pub(crate) mod ffi {
         /// least one edge is added to the wire under construction.
         #[cxx_name = "BRepBuilderAPI_MakeWire_ctor"]
         fn MakeWire_ctor() -> UniquePtr<MakeWire>;
-        /// /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+        /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
         ///
         /// Make a Wire from an edge.
         #[cxx_name = "BRepBuilderAPI_MakeWire_ctor_edge"]
         fn MakeWire_ctor_edge(E: &TopoDS_Edge) -> UniquePtr<MakeWire>;
-        /// /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+        /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
         ///
         /// Make a Wire from two edges.
         #[cxx_name = "BRepBuilderAPI_MakeWire_ctor_edge2"]
         fn MakeWire_ctor_edge2(E1: &TopoDS_Edge, E2: &TopoDS_Edge) -> UniquePtr<MakeWire>;
-        /// /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+        /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
         ///
         /// Make a Wire from three edges.
         #[cxx_name = "BRepBuilderAPI_MakeWire_ctor_edge3"]
@@ -1979,7 +2157,7 @@ pub(crate) mod ffi {
             E2: &TopoDS_Edge,
             E3: &TopoDS_Edge,
         ) -> UniquePtr<MakeWire>;
-        /// /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+        /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
         ///
         /// Make a Wire from four edges.
         /// Constructs a wire
@@ -2009,12 +2187,12 @@ pub(crate) mod ffi {
             E3: &TopoDS_Edge,
             E4: &TopoDS_Edge,
         ) -> UniquePtr<MakeWire>;
-        /// /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+        /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
         ///
         /// Make a Wire from a Wire. useful for adding later.
         #[cxx_name = "BRepBuilderAPI_MakeWire_ctor_wire"]
         fn MakeWire_ctor_wire(W: &TopoDS_Wire) -> UniquePtr<MakeWire>;
-        /// /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+        /// **Source:** `BRepBuilderAPI_MakeWire.hxx` - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
         ///
         /// Add an edge to a wire.
         #[cxx_name = "BRepBuilderAPI_MakeWire_ctor_wire_edge"]
@@ -2087,7 +2265,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_MakeShape_mut"]
         fn make_wire_as_make_shape_mut(self_: Pin<&mut MakeWire>) -> Pin<&mut MakeShape>;
         /// ======================== BRepBuilderAPI_Sewing ========================
-        /// /// **Source:** `BRepBuilderAPI_Sewing.hxx` - `BRepBuilderAPI_Sewing`
+        /// **Source:** `BRepBuilderAPI_Sewing.hxx` - `BRepBuilderAPI_Sewing`
         ///
         /// Provides methods to
         ///
@@ -2113,7 +2291,7 @@ pub(crate) mod ffi {
         /// - output the problems if any
         #[cxx_name = "BRepBuilderAPI_Sewing"]
         type Sewing;
-        /// /// **Source:** `BRepBuilderAPI_Sewing.hxx` - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
+        /// **Source:** `BRepBuilderAPI_Sewing.hxx` - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
         ///
         /// Creates an object with
         /// tolerance of connexity
@@ -2295,7 +2473,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepBuilderAPI_Sewing_to_handle"]
         fn Sewing_to_handle(obj: UniquePtr<Sewing>) -> UniquePtr<HandleBRepBuilderAPISewing>;
         /// ======================== BRepBuilderAPI_Transform ========================
-        /// /// **Source:** `BRepBuilderAPI_Transform.hxx` - `BRepBuilderAPI_Transform`
+        /// **Source:** `BRepBuilderAPI_Transform.hxx` - `BRepBuilderAPI_Transform`
         ///
         /// Geometric transformation on a shape.
         /// The transformation to be applied is defined as a
@@ -2310,14 +2488,14 @@ pub(crate) mod ffi {
         /// -   consulting the results.
         #[cxx_name = "BRepBuilderAPI_Transform"]
         type Transform;
-        /// /// **Source:** `BRepBuilderAPI_Transform.hxx` - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
+        /// **Source:** `BRepBuilderAPI_Transform.hxx` - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
         ///
         /// Constructs a framework for applying the geometric
         /// transformation T to a shape. Use the function Perform
         /// to define the shape to transform.
         #[cxx_name = "BRepBuilderAPI_Transform_ctor_trsf"]
         fn Transform_ctor_trsf(T: &gp_Trsf) -> UniquePtr<Transform>;
-        /// /// **Source:** `BRepBuilderAPI_Transform.hxx` - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
+        /// **Source:** `BRepBuilderAPI_Transform.hxx` - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
         ///
         /// Creates a transformation from the gp_Trsf <theTrsf>, and
         /// applies it to the shape <theShape>. If the transformation
@@ -2383,7 +2561,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape_mut"]
         fn transform_as_modify_shape_mut(self_: Pin<&mut Transform>) -> Pin<&mut ModifyShape>;
         /// ======================== BRepBuilderAPI_ModifyShape ========================
-        /// /// **Source:** `BRepBuilderAPI_ModifyShape.hxx` - `BRepBuilderAPI_ModifyShape`
+        /// **Source:** `BRepBuilderAPI_ModifyShape.hxx` - `BRepBuilderAPI_ModifyShape`
         ///
         /// Implements   the  methods   of MakeShape for   the
         /// constant  topology modifications.  The methods are

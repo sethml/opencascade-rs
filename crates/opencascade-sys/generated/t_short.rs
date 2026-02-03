@@ -10,6 +10,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
 pub use ffi::HArray1OfShortReal;
 impl HArray1OfShortReal {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -58,26 +59,26 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== TShort_HArray1OfShortReal ========================
-        /// /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal`
+        /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal`
         #[cxx_name = "TShort_HArray1OfShortReal"]
         type HArray1OfShortReal;
-        /// /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
+        /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor"]
         fn HArray1OfShortReal_ctor() -> UniquePtr<HArray1OfShortReal>;
-        /// /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
+        /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor_int2"]
         fn HArray1OfShortReal_ctor_int2(
             theLower: i32,
             theUpper: i32,
         ) -> UniquePtr<HArray1OfShortReal>;
-        /// /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
+        /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor_int2_float"]
         fn HArray1OfShortReal_ctor_int2_float(
             theLower: i32,
             theUpper: i32,
             theValue: &f32,
         ) -> UniquePtr<HArray1OfShortReal>;
-        /// /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
+        /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor_float_int2_bool"]
         fn HArray1OfShortReal_ctor_float_int2_bool(
             theBegin: &f32,
@@ -85,7 +86,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfShortReal>;
-        /// /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
+        /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor_array1ofshortreal"]
         fn HArray1OfShortReal_ctor_array1ofshortreal(
             theOther: &TShort_Array1OfShortReal,

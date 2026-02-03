@@ -18,6 +18,46 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// This class implements the real matrix abstract data type.
+/// Matrixes can have an arbitrary range which must be defined
+/// at the declaration and cannot be changed after this declaration
+/// math_Matrix(-3,5,2,4); //a vector with range [-3..5, 2..4]
+/// Matrix values may be initialized and
+/// retrieved using indexes which must lie within the range
+/// of definition of the matrix.
+/// Matrix objects follow "value semantics", that is, they
+/// cannot be shared and are copied through assignment
+/// Matrices are copied through assignment:
+/// @code
+/// math_Matrix M2(1, 9, 1, 3);
+/// ...
+/// M2 = M1;
+/// M1(1) = 2.0;//the matrix M2 will not be modified.
+/// @endcode
+/// The exception RangeError is raised when trying to access
+/// outside the range of a matrix :
+/// @code
+/// M1(11, 1)=0.0// --> will raise RangeError.
+/// @endcode
+///
+/// The exception DimensionError is raised when the dimensions of
+/// two matrices or vectors are not compatible.
+/// @code
+/// math_Matrix M3(1, 2, 1, 2);
+/// M3 = M1;   // will raise DimensionError
+/// M1.Add(M3) // --> will raise DimensionError.
+/// @endcode
+/// A Matrix can be constructed with a pointer to "c array".
+/// It allows to carry the bounds inside the matrix.
+/// Example :
+/// @code
+/// Standard_Real tab1[10][20];
+/// Standard_Real tab2[200];
+///
+/// math_Matrix A (tab1[0][0], 1, 10, 1, 20);
+/// math_Matrix B (tab2[0],    1, 10, 1, 20);
+/// @endcode
 pub use ffi::Matrix;
 impl Matrix {
     /// Constructs a non-initialized  matrix of range [LowerRow..UpperRow,
@@ -133,8 +173,15 @@ impl Matrix {
         ffi::Matrix_opposite(self)
     }
 }
+
+/// This abstract class describes the virtual functions
+/// associated with a Function of a single variable.
 pub use ffi::Function;
 impl Function {}
+
+/// This abstract class describes the virtual functions associated with
+/// a function of a single variable for which the first derivative is
+/// available.
 pub use ffi::FunctionWithDerivative;
 impl FunctionWithDerivative {
     /// Upcast to math_Function
@@ -147,6 +194,10 @@ impl FunctionWithDerivative {
         ffi::function_with_derivative_as_function_mut(self)
     }
 }
+
+/// This class implements the calculation of all the real roots of a real
+/// polynomial of degree <= 4 using a direct method. Once found,
+/// the roots are polished using the Newton method.
 pub use ffi::DirectPolynomialRoots;
 impl DirectPolynomialRoots {
     /// computes all the real roots of the polynomial
@@ -172,6 +223,10 @@ impl DirectPolynomialRoots {
         ffi::DirectPolynomialRoots_ctor_real2(A, B)
     }
 }
+
+/// This class implements a combination of Newton-Raphson and bissection
+/// methods to find the root of the function between two bounds.
+/// Knowledge of the derivative is required.
 pub use ffi::BissecNewton;
 impl BissecNewton {
     /// Constructor.
@@ -180,6 +235,10 @@ impl BissecNewton {
         ffi::BissecNewton_ctor_real(theXTolerance)
     }
 }
+
+/// This class implements the Brent's method to find the minimum of
+/// a function of a single variable.
+/// No knowledge of the derivative is required.
 pub use ffi::BrentMinimum;
 impl BrentMinimum {
     /// This constructor should be used in a sub-class to initialize
@@ -200,6 +259,9 @@ impl BrentMinimum {
         ffi::BrentMinimum_ctor_real2_int_real(TolX, Fbx, NbIterations, ZEPS)
     }
 }
+
+/// This class finds eigen values and vectors of
+/// real symmetric tridiagonal matrix
 pub use ffi::EigenValuesSearcher;
 impl EigenValuesSearcher {
     pub fn new_array1ofreal2(
@@ -215,6 +277,12 @@ impl EigenValuesSearcher {
         ffi::EigenValuesSearcher_eigen_vector(self, Index)
     }
 }
+
+/// This class implements the least square solution of a set of
+/// n linear equations of m unknowns (n >= m) using the gauss LU
+/// decomposition algorithm.
+/// This algorithm is more likely subject to numerical instability
+/// than math_SVD.
 pub use ffi::GaussLeastSquare;
 impl GaussLeastSquare {
     /// Given an input n X m matrix A with n >= m this constructor
@@ -238,7 +306,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== math_Matrix ========================
-        /// /// **Source:** `math_Matrix.hxx` - `math_Matrix`
+        /// **Source:** `math_Matrix.hxx` - `math_Matrix`
         ///
         /// This class implements the real matrix abstract data type.
         /// Matrixes can have an arbitrary range which must be defined
@@ -281,7 +349,7 @@ pub(crate) mod ffi {
         /// @endcode
         #[cxx_name = "math_Matrix"]
         type Matrix;
-        /// /// **Source:** `math_Matrix.hxx` - `math_Matrix::math_Matrix()`
+        /// **Source:** `math_Matrix.hxx` - `math_Matrix::math_Matrix()`
         ///
         /// Constructs a non-initialized  matrix of range [LowerRow..UpperRow,
         /// LowerCol..UpperCol]
@@ -297,7 +365,7 @@ pub(crate) mod ffi {
             LowerCol: i32,
             UpperCol: i32,
         ) -> UniquePtr<Matrix>;
-        /// /// **Source:** `math_Matrix.hxx` - `math_Matrix::math_Matrix()`
+        /// **Source:** `math_Matrix.hxx` - `math_Matrix::math_Matrix()`
         ///
         /// constructs a non-initialized matrix of range [LowerRow..UpperRow,
         /// LowerCol..UpperCol]
@@ -310,7 +378,7 @@ pub(crate) mod ffi {
             UpperCol: i32,
             InitialValue: f64,
         ) -> UniquePtr<Matrix>;
-        /// /// **Source:** `math_Matrix.hxx` - `math_Matrix::math_Matrix()`
+        /// **Source:** `math_Matrix.hxx` - `math_Matrix::math_Matrix()`
         ///
         /// constructs a matrix for copy in initialization.
         /// An exception is raised if the matrixes have not the same dimensions.
@@ -516,7 +584,7 @@ pub(crate) mod ffi {
         #[cxx_name = "math_Matrix_Opposite"]
         fn Matrix_opposite(self_: Pin<&mut Matrix>) -> UniquePtr<Matrix>;
         /// ======================== math_Function ========================
-        /// /// **Source:** `math_Function.hxx` - `math_Function`
+        /// **Source:** `math_Function.hxx` - `math_Function`
         ///
         /// This abstract class describes the virtual functions
         /// associated with a Function of a single variable.
@@ -545,7 +613,7 @@ pub(crate) mod ffi {
         #[cxx_name = "GetStateNumber"]
         fn get_state_number(self: Pin<&mut Function>) -> i32;
         /// ======================== math_FunctionWithDerivative ========================
-        /// /// **Source:** `math_FunctionWithDerivative.hxx` - `math_FunctionWithDerivative`
+        /// **Source:** `math_FunctionWithDerivative.hxx` - `math_FunctionWithDerivative`
         ///
         /// This abstract class describes the virtual functions associated with
         /// a function of a single variable for which the first derivative is
@@ -579,14 +647,14 @@ pub(crate) mod ffi {
             self_: Pin<&mut FunctionWithDerivative>,
         ) -> Pin<&mut Function>;
         /// ======================== math_DirectPolynomialRoots ========================
-        /// /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots`
+        /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots`
         ///
         /// This class implements the calculation of all the real roots of a real
         /// polynomial of degree <= 4 using a direct method. Once found,
         /// the roots are polished using the Newton method.
         #[cxx_name = "math_DirectPolynomialRoots"]
         type DirectPolynomialRoots;
-        /// /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
+        /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
         ///
         /// computes all the real roots of the polynomial
         /// Ax4 + Bx3 + Cx2 + Dx + E using a direct method.
@@ -598,7 +666,7 @@ pub(crate) mod ffi {
             D: f64,
             E: f64,
         ) -> UniquePtr<DirectPolynomialRoots>;
-        /// /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
+        /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
         ///
         /// computes all the real roots of the polynomial
         /// Ax3 + Bx2 + Cx + D using a direct method.
@@ -609,7 +677,7 @@ pub(crate) mod ffi {
             C: f64,
             D: f64,
         ) -> UniquePtr<DirectPolynomialRoots>;
-        /// /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
+        /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
         ///
         /// computes all the real roots of the polynomial
         /// Ax2 + Bx + C using a direct method.
@@ -619,7 +687,7 @@ pub(crate) mod ffi {
             B: f64,
             C: f64,
         ) -> UniquePtr<DirectPolynomialRoots>;
-        /// /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
+        /// **Source:** `math_DirectPolynomialRoots.hxx` - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
         ///
         /// computes the real root of the polynomial Ax + B.
         #[cxx_name = "math_DirectPolynomialRoots_ctor_real2"]
@@ -641,14 +709,14 @@ pub(crate) mod ffi {
         #[cxx_name = "Value"]
         fn value(self: &DirectPolynomialRoots, Nieme: i32) -> f64;
         /// ======================== math_BissecNewton ========================
-        /// /// **Source:** `math_BissecNewton.hxx` - `math_BissecNewton`
+        /// **Source:** `math_BissecNewton.hxx` - `math_BissecNewton`
         ///
         /// This class implements a combination of Newton-Raphson and bissection
         /// methods to find the root of the function between two bounds.
         /// Knowledge of the derivative is required.
         #[cxx_name = "math_BissecNewton"]
         type BissecNewton;
-        /// /// **Source:** `math_BissecNewton.hxx` - `math_BissecNewton::math_BissecNewton()`
+        /// **Source:** `math_BissecNewton.hxx` - `math_BissecNewton::math_BissecNewton()`
         ///
         /// Constructor.
         /// @param theXTolerance - algorithm tolerance.
@@ -694,14 +762,14 @@ pub(crate) mod ffi {
         #[cxx_name = "Value"]
         fn value(self: &BissecNewton) -> f64;
         /// ======================== math_BrentMinimum ========================
-        /// /// **Source:** `math_BrentMinimum.hxx` - `math_BrentMinimum`
+        /// **Source:** `math_BrentMinimum.hxx` - `math_BrentMinimum`
         ///
         /// This class implements the Brent's method to find the minimum of
         /// a function of a single variable.
         /// No knowledge of the derivative is required.
         #[cxx_name = "math_BrentMinimum"]
         type BrentMinimum;
-        /// /// **Source:** `math_BrentMinimum.hxx` - `math_BrentMinimum::math_BrentMinimum()`
+        /// **Source:** `math_BrentMinimum.hxx` - `math_BrentMinimum::math_BrentMinimum()`
         ///
         /// This constructor should be used in a sub-class to initialize
         /// correctly all the fields of this class.
@@ -711,7 +779,7 @@ pub(crate) mod ffi {
             NbIterations: i32,
             ZEPS: f64,
         ) -> UniquePtr<BrentMinimum>;
-        /// /// **Source:** `math_BrentMinimum.hxx` - `math_BrentMinimum::math_BrentMinimum()`
+        /// **Source:** `math_BrentMinimum.hxx` - `math_BrentMinimum::math_BrentMinimum()`
         ///
         /// This constructor should be used in a sub-class to initialize
         /// correctly all the fields of this class.
@@ -755,13 +823,13 @@ pub(crate) mod ffi {
         #[cxx_name = "NbIterations"]
         fn nb_iterations(self: &BrentMinimum) -> i32;
         /// ======================== math_EigenValuesSearcher ========================
-        /// /// **Source:** `math_EigenValuesSearcher.hxx` - `math_EigenValuesSearcher`
+        /// **Source:** `math_EigenValuesSearcher.hxx` - `math_EigenValuesSearcher`
         ///
         /// This class finds eigen values and vectors of
         /// real symmetric tridiagonal matrix
         #[cxx_name = "math_EigenValuesSearcher"]
         type EigenValuesSearcher;
-        /// /// **Source:** `math_EigenValuesSearcher.hxx` - `math_EigenValuesSearcher::math_EigenValuesSearcher()`
+        /// **Source:** `math_EigenValuesSearcher.hxx` - `math_EigenValuesSearcher::math_EigenValuesSearcher()`
         #[cxx_name = "math_EigenValuesSearcher_ctor_array1ofreal2"]
         fn EigenValuesSearcher_ctor_array1ofreal2(
             Diagonal: &TColStd_Array1OfReal,
@@ -786,7 +854,7 @@ pub(crate) mod ffi {
             Index: i32,
         ) -> UniquePtr<math_Vector>;
         /// ======================== math_GaussLeastSquare ========================
-        /// /// **Source:** `math_GaussLeastSquare.hxx` - `math_GaussLeastSquare`
+        /// **Source:** `math_GaussLeastSquare.hxx` - `math_GaussLeastSquare`
         ///
         /// This class implements the least square solution of a set of
         /// n linear equations of m unknowns (n >= m) using the gauss LU
@@ -795,7 +863,7 @@ pub(crate) mod ffi {
         /// than math_SVD.
         #[cxx_name = "math_GaussLeastSquare"]
         type GaussLeastSquare;
-        /// /// **Source:** `math_GaussLeastSquare.hxx` - `math_GaussLeastSquare::math_GaussLeastSquare()`
+        /// **Source:** `math_GaussLeastSquare.hxx` - `math_GaussLeastSquare::math_GaussLeastSquare()`
         ///
         /// Given an input n X m matrix A with n >= m this constructor
         /// performs the LU decomposition with partial pivoting

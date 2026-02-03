@@ -13,6 +13,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Tool  of  construction of  fillets 3d on  edges (on a solid).
 pub use ffi::FilBuilder;
 impl FilBuilder {
     /// Upcast to ChFi3d_Builder
@@ -40,6 +42,10 @@ impl FilBuilder {
         ffi::FilBuilder_sect(self, IC, IS)
     }
 }
+
+/// Root  class  for calculation of  surfaces (fillets,
+/// chamfers)  destined  to smooth edges  of
+/// a gap on a Shape and the reconstruction of  the   Shape.
 pub use ffi::Builder;
 impl Builder {
     /// gives the n'th set  of edges (contour)
@@ -87,6 +93,8 @@ impl Builder {
         ffi::Builder_builder(self)
     }
 }
+
+/// construction tool for 3D chamfers on edges (on a solid).
 pub use ffi::ChBuilder;
 impl ChBuilder {
     /// initializes the Builder with the Shape <S> for the
@@ -119,7 +127,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== ChFi3d_FilBuilder ========================
-        /// /// **Source:** `ChFi3d_FilBuilder.hxx` - `ChFi3d_FilBuilder`
+        /// **Source:** `ChFi3d_FilBuilder.hxx` - `ChFi3d_FilBuilder`
         ///
         /// Tool  of  construction of  fillets 3d on  edges (on a solid).
         #[cxx_name = "ChFi3d_FilBuilder"]
@@ -224,7 +232,7 @@ pub(crate) mod ffi {
         #[cxx_name = "ChFi3d_FilBuilder_as_ChFi3d_Builder_mut"]
         fn fil_builder_as_builder_mut(self_: Pin<&mut FilBuilder>) -> Pin<&mut Builder>;
         /// ======================== ChFi3d_Builder ========================
-        /// /// **Source:** `ChFi3d_Builder.hxx` - `ChFi3d_Builder`
+        /// **Source:** `ChFi3d_Builder.hxx` - `ChFi3d_Builder`
         ///
         /// Root  class  for calculation of  surfaces (fillets,
         /// chamfers)  destined  to smooth edges  of
@@ -360,12 +368,12 @@ pub(crate) mod ffi {
         #[cxx_name = "ChFi3d_Builder_Builder"]
         fn Builder_builder(self_: &Builder) -> UniquePtr<HandleTopOpeBRepBuildHBuilder>;
         /// ======================== ChFi3d_ChBuilder ========================
-        /// /// **Source:** `ChFi3d_ChBuilder.hxx` - `ChFi3d_ChBuilder`
+        /// **Source:** `ChFi3d_ChBuilder.hxx` - `ChFi3d_ChBuilder`
         ///
         /// construction tool for 3D chamfers on edges (on a solid).
         #[cxx_name = "ChFi3d_ChBuilder"]
         type ChBuilder;
-        /// /// **Source:** `ChFi3d_ChBuilder.hxx` - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
+        /// **Source:** `ChFi3d_ChBuilder.hxx` - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
         ///
         /// initializes the Builder with the Shape <S> for the
         /// computation of chamfers

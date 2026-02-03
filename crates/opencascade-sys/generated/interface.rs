@@ -10,6 +10,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
 pub use ffi::GeneralLib;
 impl GeneralLib {
     /// Creates a Library which complies with a Protocol, that is :
@@ -45,10 +46,10 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Interface_GeneralLib ========================
-        /// /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib`
+        /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib`
         #[cxx_name = "Interface_GeneralLib"]
         type GeneralLib;
-        /// /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib::Interface_GeneralLib()`
+        /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib::Interface_GeneralLib()`
         ///
         /// Creates a Library which complies with a Protocol, that is :
         /// Same class (criterium IsInstance)
@@ -58,7 +59,7 @@ pub(crate) mod ffi {
         fn GeneralLib_ctor_handleprotocol(
             aprotocol: &HandleInterfaceProtocol,
         ) -> UniquePtr<GeneralLib>;
-        /// /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib::Interface_GeneralLib()`
+        /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib::Interface_GeneralLib()`
         ///
         /// Creates an empty Library : it will later by filled by method
         /// AddProtocol

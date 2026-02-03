@@ -10,6 +10,76 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Implements a general mechanism to compute the global properties of
+/// a "compound geometric system" in 3d space    by composition of the
+/// global properties of "elementary geometric entities"       such as
+/// (curve, surface, solid, set of points).  It is possible to compose
+/// the properties of several "compound geometric systems" too.
+///
+/// To computes the global properties of a compound geometric
+/// system you should :
+/// . declare the GProps using a constructor which initializes the
+/// GProps and defines the location point used to compute the inertia
+/// . compose the global properties of your geometric components with
+/// the properties of your system using the method Add.
+///
+/// To compute the global properties of the geometric components of
+/// the system you should  use the services of the following classes :
+/// - class PGProps for a set of points,
+/// - class CGProps for a curve,
+/// - class SGProps for a surface,
+/// - class VGProps for a "solid".
+/// The classes CGProps, SGProps, VGProps are generic classes and
+/// must be instantiated for your application.
+///
+/// The global properties computed are :
+/// - the dimension (length, area or volume)
+/// - the mass,
+/// - the centre of mass,
+/// - the moments of inertia (static moments and quadratic moments),
+/// - the moment about an axis,
+/// - the radius of gyration about an axis,
+/// - the principal properties of inertia  :
+/// (sea also class PrincipalProps)
+/// . the principal moments,
+/// . the principal axis of inertia,
+/// . the principal radius of gyration,
+///
+/// Example of utilisation in a simplified C++ implementation :
+///
+/// //declares the GProps, the point (0.0, 0.0, 0.0) of the
+/// //absolute cartesian coordinate system is used as
+/// //default reference point to compute the centre of mass
+/// GProp_GProps System ();
+///
+/// //computes the inertia of a 3d curve
+/// Your_CGProps Component1 (curve, ....);
+///
+/// //computes the inertia of surfaces
+/// Your_SGprops Component2 (surface1, ....);
+/// Your_SGprops Component3 (surface2,....);
+///
+/// //composes the global properties of components 1, 2, 3
+/// //a density can be associated with the components, the
+/// //density can be defaulted to 1.
+/// Real Density1 = 2.0;
+/// Real Density2 = 3.0;
+/// System.Add (Component1, Density1);
+/// System.Add (Component2, Density2);
+/// System.Add (Component3);
+///
+/// //returns the centre of mass of the system in the
+/// //absolute cartesian coordinate system
+/// gp_Pnt G = System.CentreOfMass ();
+///
+/// //computes the principales inertia of the system
+/// GProp_PrincipalProps Pp  = System.PrincipalProperties();
+///
+/// //returns the principal moments and radius of gyration
+/// Real Ixx, Iyy, Izz, Rxx, Ryy, Rzz;
+/// Pp.Moments (Ixx, Iyy, Izz);
+/// Pp.RadiusOfGyration (Ixx, Iyy, Izz);
 pub use ffi::GProps;
 impl GProps {
     /// The origin (0, 0, 0) of the absolute cartesian coordinate system
@@ -102,7 +172,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== GProp_GProps ========================
-        /// /// **Source:** `GProp_GProps.hxx` - `GProp_GProps`
+        /// **Source:** `GProp_GProps.hxx` - `GProp_GProps`
         ///
         /// Implements a general mechanism to compute the global properties of
         /// a "compound geometric system" in 3d space    by composition of the
@@ -175,13 +245,13 @@ pub(crate) mod ffi {
         /// Pp.RadiusOfGyration (Ixx, Iyy, Izz);
         #[cxx_name = "GProp_GProps"]
         type GProps;
-        /// /// **Source:** `GProp_GProps.hxx` - `GProp_GProps::GProp_GProps()`
+        /// **Source:** `GProp_GProps.hxx` - `GProp_GProps::GProp_GProps()`
         ///
         /// The origin (0, 0, 0) of the absolute cartesian coordinate system
         /// is used to compute the global properties.
         #[cxx_name = "GProp_GProps_ctor"]
         fn GProps_ctor() -> UniquePtr<GProps>;
-        /// /// **Source:** `GProp_GProps.hxx` - `GProp_GProps::GProp_GProps()`
+        /// **Source:** `GProp_GProps.hxx` - `GProp_GProps::GProp_GProps()`
         ///
         /// The point SystemLocation is used to compute the global properties
         /// of the system. For more accuracy it is better to define this

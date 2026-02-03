@@ -10,6 +10,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Stores link between a shape <S> and a shape <NewS>
+/// obtained from <S>. <NewS> is an image of <S>.
 pub use ffi::Image;
 impl Image {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -26,13 +29,13 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepAlgo_Image ========================
-        /// /// **Source:** `BRepAlgo_Image.hxx` - `BRepAlgo_Image`
+        /// **Source:** `BRepAlgo_Image.hxx` - `BRepAlgo_Image`
         ///
         /// Stores link between a shape <S> and a shape <NewS>
         /// obtained from <S>. <NewS> is an image of <S>.
         #[cxx_name = "BRepAlgo_Image"]
         type Image;
-        /// /// **Source:** `BRepAlgo_Image.hxx` - `BRepAlgo_Image::BRepAlgo_Image()`
+        /// **Source:** `BRepAlgo_Image.hxx` - `BRepAlgo_Image::BRepAlgo_Image()`
         #[cxx_name = "BRepAlgo_Image_ctor"]
         fn Image_ctor() -> UniquePtr<Image>;
         #[cxx_name = "SetRoot"]

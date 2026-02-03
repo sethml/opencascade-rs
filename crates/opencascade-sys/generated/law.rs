@@ -12,6 +12,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Root class for evolution laws.
 pub use ffi::Function;
 impl Function {
     /// Returns a  law equivalent of  <me>  between
@@ -33,6 +35,11 @@ impl Function {
         ffi::Function_get_type_name()
     }
 }
+
+/// Law Function based on a BSpline curve 1d.  Package
+/// methods and classes are implemented in package Law
+/// to    construct  the  basis    curve with  several
+/// constraints.
 pub use ffi::BSpFunc;
 impl BSpFunc {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -85,6 +92,9 @@ impl BSpFunc {
         ffi::BSpFunc_get_type_name()
     }
 }
+
+/// Provides an evolution law that interpolates a set
+/// of parameter and value pairs (wi, radi)
 pub use ffi::Interpol;
 impl Interpol {
     /// Constructs an empty interpolative evolution law.
@@ -149,7 +159,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Law_Function ========================
-        /// /// **Source:** `Law_Function.hxx` - `Law_Function`
+        /// **Source:** `Law_Function.hxx` - `Law_Function`
         ///
         /// Root class for evolution laws.
         #[cxx_name = "Law_Function"]
@@ -186,7 +196,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Law_Function_get_type_name"]
         fn Function_get_type_name() -> String;
         /// ======================== Law_BSpFunc ========================
-        /// /// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc`
+        /// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc`
         ///
         /// Law Function based on a BSpline curve 1d.  Package
         /// methods and classes are implemented in package Law
@@ -194,10 +204,10 @@ pub(crate) mod ffi {
         /// constraints.
         #[cxx_name = "Law_BSpFunc"]
         type BSpFunc;
-        /// /// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc::Law_BSpFunc()`
+        /// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc::Law_BSpFunc()`
         #[cxx_name = "Law_BSpFunc_ctor"]
         fn BSpFunc_ctor() -> UniquePtr<BSpFunc>;
-        /// /// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc::Law_BSpFunc()`
+        /// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc::Law_BSpFunc()`
         #[cxx_name = "Law_BSpFunc_ctor_handlebspline_real2"]
         fn BSpFunc_ctor_handlebspline_real2(
             C: &HandleLawBSpline,
@@ -246,13 +256,13 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleLawBSpFunc_to_HandleLawFunction"]
         fn b_sp_func_to_handle_function(handle: &HandleLawBSpFunc) -> UniquePtr<HandleLawFunction>;
         /// ======================== Law_Interpol ========================
-        /// /// **Source:** `Law_Interpol.hxx` - `Law_Interpol`
+        /// **Source:** `Law_Interpol.hxx` - `Law_Interpol`
         ///
         /// Provides an evolution law that interpolates a set
         /// of parameter and value pairs (wi, radi)
         #[cxx_name = "Law_Interpol"]
         type Interpol;
-        /// /// **Source:** `Law_Interpol.hxx` - `Law_Interpol::Law_Interpol()`
+        /// **Source:** `Law_Interpol.hxx` - `Law_Interpol::Law_Interpol()`
         ///
         /// Constructs an empty interpolative evolution law.
         /// The function Set is used to define the law.

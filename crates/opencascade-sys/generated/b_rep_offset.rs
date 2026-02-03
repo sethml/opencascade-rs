@@ -18,12 +18,24 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
 pub use ffi::MakeOffset;
 impl MakeOffset {
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::MakeOffset_ctor()
     }
 }
+
+///
+/// Limitations:
+/// According to the algorithm nature result depends on the smoothness of input data. Smooth
+/// (G1-continuity) input shape will lead to the good result.
+///
+/// The possible drawback of the simple algorithm is that it leads, in general case, to tolerance
+/// increasing. The tolerances have to grow in order to cover the gaps between the neighbor faces in
+/// the output. It should be noted that the actual tolerance growth depends on the offset distance
+/// and the quality of joints between the input faces. Anyway the good input shell (smooth
+/// connections between adjacent faces) will lead to good result.
 pub use ffi::MakeSimpleOffset;
 impl MakeSimpleOffset {
     /// Constructor. Does nothing.
@@ -54,6 +66,9 @@ impl MakeSimpleOffset {
         ffi::MakeSimpleOffset_modified(self, theShape)
     }
 }
+
+/// Analyses the shape to find the parts of edges
+/// connecting the convex, concave or tangent faces.
 pub use ffi::Analyse;
 impl Analyse {
     /// @name Constructors
@@ -73,12 +88,19 @@ impl Analyse {
         ffi::Analyse_generated(self, theS)
     }
 }
+
 pub use ffi::MakeLoops;
 impl MakeLoops {
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::MakeLoops_ctor()
     }
 }
+
+/// This class compute elemenary offset surface.
+/// Evaluate the offset generated :
+/// 1 - from a face.
+/// 2 - from an edge.
+/// 3 - from a vertex.
 pub use ffi::Offset;
 impl Offset {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -89,6 +111,7 @@ impl Offset {
         ffi::Offset_generated(self, Shape)
     }
 }
+
 pub use ffi::Interval;
 impl Interval {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -105,10 +128,10 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepOffset_MakeOffset ========================
-        /// /// **Source:** `BRepOffset_MakeOffset.hxx` - `BRepOffset_MakeOffset`
+        /// **Source:** `BRepOffset_MakeOffset.hxx` - `BRepOffset_MakeOffset`
         #[cxx_name = "BRepOffset_MakeOffset"]
         type MakeOffset;
-        /// /// **Source:** `BRepOffset_MakeOffset.hxx` - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
+        /// **Source:** `BRepOffset_MakeOffset.hxx` - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
         #[cxx_name = "BRepOffset_MakeOffset_ctor"]
         fn MakeOffset_ctor() -> UniquePtr<MakeOffset>;
         #[cxx_name = "Clear"]
@@ -169,7 +192,7 @@ pub(crate) mod ffi {
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut MakeOffset>, S: &TopoDS_Shape) -> bool;
         /// ======================== BRepOffset_MakeSimpleOffset ========================
-        /// /// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset`
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset`
         ///
         ///
         /// Limitations:
@@ -183,12 +206,12 @@ pub(crate) mod ffi {
         /// connections between adjacent faces) will lead to good result.
         #[cxx_name = "BRepOffset_MakeSimpleOffset"]
         type MakeSimpleOffset;
-        /// /// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset::BRepOffset_MakeSimpleOffset()`
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset::BRepOffset_MakeSimpleOffset()`
         ///
         /// Constructor. Does nothing.
         #[cxx_name = "BRepOffset_MakeSimpleOffset_ctor"]
         fn MakeSimpleOffset_ctor() -> UniquePtr<MakeSimpleOffset>;
-        /// /// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset::BRepOffset_MakeSimpleOffset()`
+        /// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset::BRepOffset_MakeSimpleOffset()`
         ///
         /// Constructor.
         #[cxx_name = "BRepOffset_MakeSimpleOffset_ctor_shape_real"]
@@ -251,19 +274,19 @@ pub(crate) mod ffi {
             theShape: &TopoDS_Shape,
         ) -> UniquePtr<TopoDS_Shape>;
         /// ======================== BRepOffset_Analyse ========================
-        /// /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse`
+        /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse`
         ///
         /// Analyses the shape to find the parts of edges
         /// connecting the convex, concave or tangent faces.
         #[cxx_name = "BRepOffset_Analyse"]
         type Analyse;
-        /// /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse::BRepOffset_Analyse()`
+        /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse::BRepOffset_Analyse()`
         ///
         /// @name Constructors
         /// Empty c-tor
         #[cxx_name = "BRepOffset_Analyse_ctor"]
         fn Analyse_ctor() -> UniquePtr<Analyse>;
-        /// /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse::BRepOffset_Analyse()`
+        /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse::BRepOffset_Analyse()`
         ///
         /// C-tor performing the job inside
         #[cxx_name = "BRepOffset_Analyse_ctor_shape_real"]
@@ -328,10 +351,10 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepOffset_Analyse_Generated"]
         fn Analyse_generated(self_: &Analyse, theS: &TopoDS_Shape) -> UniquePtr<TopoDS_Shape>;
         /// ======================== BRepOffset_MakeLoops ========================
-        /// /// **Source:** `BRepOffset_MakeLoops.hxx` - `BRepOffset_MakeLoops`
+        /// **Source:** `BRepOffset_MakeLoops.hxx` - `BRepOffset_MakeLoops`
         #[cxx_name = "BRepOffset_MakeLoops"]
         type MakeLoops;
-        /// /// **Source:** `BRepOffset_MakeLoops.hxx` - `BRepOffset_MakeLoops::BRepOffset_MakeLoops()`
+        /// **Source:** `BRepOffset_MakeLoops.hxx` - `BRepOffset_MakeLoops::BRepOffset_MakeLoops()`
         #[cxx_name = "BRepOffset_MakeLoops_ctor"]
         fn MakeLoops_ctor() -> UniquePtr<MakeLoops>;
         #[cxx_name = "Build"]
@@ -362,7 +385,7 @@ pub(crate) mod ffi {
             theRange: &Message_ProgressRange,
         );
         /// ======================== BRepOffset_Offset ========================
-        /// /// **Source:** `BRepOffset_Offset.hxx` - `BRepOffset_Offset`
+        /// **Source:** `BRepOffset_Offset.hxx` - `BRepOffset_Offset`
         ///
         /// This class compute elemenary offset surface.
         /// Evaluate the offset generated :
@@ -371,7 +394,7 @@ pub(crate) mod ffi {
         /// 3 - from a vertex.
         #[cxx_name = "BRepOffset_Offset"]
         type Offset;
-        /// /// **Source:** `BRepOffset_Offset.hxx` - `BRepOffset_Offset::BRepOffset_Offset()`
+        /// **Source:** `BRepOffset_Offset.hxx` - `BRepOffset_Offset::BRepOffset_Offset()`
         #[cxx_name = "BRepOffset_Offset_ctor"]
         fn Offset_ctor() -> UniquePtr<Offset>;
         /// Only used in Rolling Ball. Pipe on Free Boundary
@@ -384,10 +407,10 @@ pub(crate) mod ffi {
         #[cxx_name = "BRepOffset_Offset_Generated"]
         fn Offset_generated(self_: &Offset, Shape: &TopoDS_Shape) -> UniquePtr<TopoDS_Shape>;
         /// ======================== BRepOffset_Interval ========================
-        /// /// **Source:** `BRepOffset_Interval.hxx` - `BRepOffset_Interval`
+        /// **Source:** `BRepOffset_Interval.hxx` - `BRepOffset_Interval`
         #[cxx_name = "BRepOffset_Interval"]
         type Interval;
-        /// /// **Source:** `BRepOffset_Interval.hxx` - `BRepOffset_Interval::BRepOffset_Interval()`
+        /// **Source:** `BRepOffset_Interval.hxx` - `BRepOffset_Interval::BRepOffset_Interval()`
         #[cxx_name = "BRepOffset_Interval_ctor"]
         fn Interval_ctor() -> UniquePtr<Interval>;
         #[cxx_name = "First"]

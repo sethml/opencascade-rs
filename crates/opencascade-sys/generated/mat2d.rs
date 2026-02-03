@@ -11,6 +11,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Set of the methods useful for the MAT's computation.
+/// Tool2d contains the geometry of the bisecting locus.
 pub use ffi::Tool2d;
 impl Tool2d {
     /// Empty Constructor.
@@ -27,6 +30,8 @@ impl Tool2d {
         ffi::Tool2d_circuit(self)
     }
 }
+
+/// BiInt is a set of two integers.
 pub use ffi::BiInt;
 impl BiInt {
     pub fn new_int2(I1: i32, I2: i32) -> cxx::UniquePtr<Self> {
@@ -43,13 +48,13 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== MAT2d_Tool2d ========================
-        /// /// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d`
+        /// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d`
         ///
         /// Set of the methods useful for the MAT's computation.
         /// Tool2d contains the geometry of the bisecting locus.
         #[cxx_name = "MAT2d_Tool2d"]
         type Tool2d;
-        /// /// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d::MAT2d_Tool2d()`
+        /// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d::MAT2d_Tool2d()`
         ///
         /// Empty Constructor.
         #[cxx_name = "MAT2d_Tool2d_ctor"]
@@ -152,12 +157,12 @@ pub(crate) mod ffi {
         #[cxx_name = "MAT2d_Tool2d_Circuit"]
         fn Tool2d_circuit(self_: &Tool2d) -> UniquePtr<HandleMAT2dCircuit>;
         /// ======================== MAT2d_BiInt ========================
-        /// /// **Source:** `MAT2d_BiInt.hxx` - `MAT2d_BiInt`
+        /// **Source:** `MAT2d_BiInt.hxx` - `MAT2d_BiInt`
         ///
         /// BiInt is a set of two integers.
         #[cxx_name = "MAT2d_BiInt"]
         type BiInt;
-        /// /// **Source:** `MAT2d_BiInt.hxx` - `MAT2d_BiInt::MAT2d_BiInt()`
+        /// **Source:** `MAT2d_BiInt.hxx` - `MAT2d_BiInt::MAT2d_BiInt()`
         #[cxx_name = "MAT2d_BiInt_ctor_int2"]
         fn BiInt_ctor_int2(I1: i32, I2: i32) -> UniquePtr<BiInt>;
         #[cxx_name = "FirstIndex"]

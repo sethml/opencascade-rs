@@ -11,6 +11,42 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Reads IGES files, checks them and translates their contents into Open CASCADE models.
+/// The IGES data can be that of a whole model or that of a specific list of entities in the model.
+/// As in XSControl_Reader, you specify the list using a selection.
+/// For translation of iges files it is possible to use the following sequence:
+/// To change parameters of translation
+/// class Interface_Static should be used before the beginning of translation
+/// (see IGES Parameters and General Parameters)
+/// Creation of reader
+/// IGESControl_Reader reader;
+/// To load a file in a model use method:
+/// reader.ReadFile("filename.igs")
+/// To check a loading file use method Check:
+/// reader.Check(failsonly); where failsonly is equal to Standard_True or
+/// Standard_False;
+/// To print the results of load:
+/// reader.PrintCheckLoad(failsonly,mode) where mode is equal to the value of
+/// enumeration IFSelect_PrintCount
+/// To transfer entities from a model the following methods can be used:
+/// for the whole model
+/// reader.TransferRoots(onlyvisible); where onlyvisible is equal to
+/// Standard_True or Standard_False;
+/// To transfer a list of entities:
+/// reader.TransferList(list);
+/// To transfer one entity
+/// reader.TransferEntity(ent) or reader.Transfer(num);
+/// To obtain a result the following method can be used:
+/// reader.IsDone()
+/// reader.NbShapes() and reader.Shape(num); or reader.OneShape();
+/// To print the results of transfer use method:
+/// reader.PrintTransferInfo(failwarn,mode); where printfail is equal to the
+/// value of enumeration IFSelect_PrintFail, mode see above.
+/// Gets correspondence between an IGES entity and a result shape obtained therefrom.
+/// reader.TransientProcess();
+/// TopoDS_Shape shape =
+/// TransferBRep::ShapeResult(reader.TransientProcess(),ent);
 pub use ffi::Reader;
 impl Reader {
     /// Creates a Reader from scratch
@@ -44,6 +80,17 @@ impl Reader {
         ffi::Reader_iges_model(self)
     }
 }
+
+/// This class creates and writes
+/// IGES files from CAS.CADE models. An IGES file can be written to
+/// an existing IGES file or to a new one.
+/// The translation can be performed in one or several
+/// operations. Each translation operation
+/// outputs a distinct root entity in the IGES file.
+/// To write an IGES file it is possible to use the following sequence:
+/// To modify the IGES file header or to change translation
+/// parameters it is necessary to use class Interface_Static (see
+/// IGESParameters and GeneralParameters).
 pub use ffi::Writer;
 impl Writer {
     /// Creates a writer object with the
@@ -96,7 +143,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== IGESControl_Reader ========================
-        /// /// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader`
+        /// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader`
         ///
         /// Reads IGES files, checks them and translates their contents into Open CASCADE models.
         /// The IGES data can be that of a whole model or that of a specific list of entities in the model.
@@ -135,12 +182,12 @@ pub(crate) mod ffi {
         /// TransferBRep::ShapeResult(reader.TransientProcess(),ent);
         #[cxx_name = "IGESControl_Reader"]
         type Reader;
-        /// /// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader::IGESControl_Reader()`
+        /// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader::IGESControl_Reader()`
         ///
         /// Creates a Reader from scratch
         #[cxx_name = "IGESControl_Reader_ctor"]
         fn Reader_ctor() -> UniquePtr<Reader>;
-        /// /// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader::IGESControl_Reader()`
+        /// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader::IGESControl_Reader()`
         ///
         /// Creates a Reader from an already existing Session
         #[cxx_name = "IGESControl_Reader_ctor_handleworksession_bool"]
@@ -170,7 +217,7 @@ pub(crate) mod ffi {
         #[cxx_name = "IGESControl_Reader_as_XSControl_Reader_mut"]
         fn reader_as_xs_control_reader_mut(self_: Pin<&mut Reader>) -> Pin<&mut XSControl_Reader>;
         /// ======================== IGESControl_Writer ========================
-        /// /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer`
+        /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer`
         ///
         /// This class creates and writes
         /// IGES files from CAS.CADE models. An IGES file can be written to
@@ -184,7 +231,7 @@ pub(crate) mod ffi {
         /// IGESParameters and GeneralParameters).
         #[cxx_name = "IGESControl_Writer"]
         type Writer;
-        /// /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`
+        /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`
         ///
         /// Creates a writer object with the
         /// default unit (millimeters) and write mode (Face).
@@ -192,7 +239,7 @@ pub(crate) mod ffi {
         /// const Standard_Integer modecr = 0);
         #[cxx_name = "IGESControl_Writer_ctor"]
         fn Writer_ctor() -> UniquePtr<Writer>;
-        /// /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`
+        /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`
         ///
         /// Creates a writer with given
         /// values for units and for write mode.
@@ -203,7 +250,7 @@ pub(crate) mod ffi {
         /// - 1: BRep.
         #[cxx_name = "IGESControl_Writer_ctor_charptr_int"]
         fn Writer_ctor_charptr_int(theUnit: &str, theModecr: i32) -> UniquePtr<Writer>;
-        /// /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`
+        /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`
         ///
         /// Creates a writer object with the
         /// prepared IGES model theModel in write mode.

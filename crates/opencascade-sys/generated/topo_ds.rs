@@ -22,9 +22,21 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Describes a shape which
+/// - references an underlying shape with the potential
+/// to be given a location and an orientation
+/// - has a location for the underlying shape, giving its
+/// placement in the local coordinate system
+/// - has an orientation for the underlying shape, in
+/// terms of its geometry (as opposed to orientation in
+/// relation to other shapes).
+/// Note: A Shape is empty if it references an underlying
+/// shape which has an empty list of shapes.
+pub use ffi::Shape;
 pub use ffi::{
     comp_solid, comp_solid_mut, compound, compound_mut, edge, edge_mut, face, face_mut, shell,
-    shell_mut, solid, solid_mut, vertex, vertex_mut, wire, wire_mut, Shape,
+    shell_mut, solid, solid_mut, vertex, vertex_mut, wire, wire_mut,
 };
 impl Shape {
     /// Creates a NULL Shape referring to nothing.
@@ -83,6 +95,15 @@ impl Shape {
         ffi::Shape_empty_copied(self)
     }
 }
+
+/// Describes a vertex which
+/// - references an underlying vertex with the potential
+/// to be given a location and an orientation
+/// - has a location for the underlying vertex, giving its
+/// placement in the local coordinate system
+/// - has an orientation for the underlying vertex, in
+/// terms of its geometry (as opposed to orientation in
+/// relation to other shapes).
 pub use ffi::Vertex;
 impl Vertex {
     /// Undefined Vertex.
@@ -105,6 +126,15 @@ impl Vertex {
         ffi::Vertex_to_owned(self)
     }
 }
+
+/// Describes an edge which
+/// - references an underlying edge with the potential to
+/// be given a location and an orientation
+/// - has a location for the underlying edge, giving its
+/// placement in the local coordinate system
+/// - has an orientation for the underlying edge, in terms
+/// of its geometry (as opposed to orientation in
+/// relation to other shapes).
 pub use ffi::Edge;
 impl Edge {
     /// Undefined Edge.
@@ -127,6 +157,14 @@ impl Edge {
         ffi::Edge_to_owned(self)
     }
 }
+
+/// Describes a wire which
+/// - references an underlying wire with the potential to
+/// be given a location and an orientation
+/// - has a location for the underlying wire, giving its
+/// placement in the local coordinate system
+/// - has an orientation for the underlying wire, in terms
+/// of its geometry (as opposed to orientation in relation to other shapes).
 pub use ffi::Wire;
 impl Wire {
     /// Undefined Wire.
@@ -149,6 +187,14 @@ impl Wire {
         ffi::Wire_to_owned(self)
     }
 }
+
+/// Describes a face which
+/// - references an underlying face with the potential to
+/// be given a location and an orientation
+/// - has a location for the underlying face, giving its
+/// placement in the local coordinate system
+/// - has an orientation for the underlying face, in terms
+/// of its geometry (as opposed to orientation in relation to other shapes).
 pub use ffi::Face;
 impl Face {
     /// Undefined Face.
@@ -171,6 +217,14 @@ impl Face {
         ffi::Face_to_owned(self)
     }
 }
+
+/// Describes a shell which
+/// - references an underlying shell with the potential to
+/// be given a location and an orientation
+/// - has a location for the underlying shell, giving its
+/// placement in the local coordinate system
+/// - has an orientation for the underlying shell, in terms
+/// of its geometry (as opposed to orientation in relation to other shapes).
 pub use ffi::Shell;
 impl Shell {
     /// Constructs an Undefined Shell.
@@ -193,6 +247,15 @@ impl Shell {
         ffi::Shell_to_owned(self)
     }
 }
+
+/// Describes a solid shape which
+/// - references an underlying solid shape with the
+/// potential to be given a location and an orientation
+/// - has a location for the underlying shape, giving its
+/// placement in the local coordinate system
+/// - has an orientation for the underlying shape, in
+/// terms of its geometry (as opposed to orientation in
+/// relation to other shapes).
 pub use ffi::Solid;
 impl Solid {
     /// Constructs an Undefined Solid.
@@ -215,6 +278,16 @@ impl Solid {
         ffi::Solid_to_owned(self)
     }
 }
+
+/// Describes a compound which
+/// - references an underlying compound with the
+/// potential to be given a location and an orientation
+/// - has a location for the underlying compound, giving
+/// its placement in the local coordinate system
+/// - has an orientation for the underlying compound, in
+/// terms of its geometry (as opposed to orientation in
+/// relation to other shapes).
+/// Casts shape S to the more specialized return type, Compound.
 pub use ffi::Compound;
 impl Compound {
     /// Constructs an Undefined Compound.
@@ -237,6 +310,16 @@ impl Compound {
         ffi::Compound_to_owned(self)
     }
 }
+
+/// Describes a composite solid which
+/// - references an underlying composite solid with the
+/// potential to be given a location and an orientation
+/// - has a location for the underlying composite solid,
+/// giving its placement in the local coordinate system
+/// - has an orientation for the underlying composite
+/// solid, in terms of its geometry (as opposed to
+/// orientation in relation to other shapes).
+/// Casts shape S to the more specialized return type, CompSolid.
 pub use ffi::CompSolid;
 impl CompSolid {
     /// Constructs an Undefined CompSolid.
@@ -259,6 +342,46 @@ impl CompSolid {
         ffi::CompSolid_to_owned(self)
     }
 }
+
+/// A  Builder is used   to  create  Topological  Data
+/// Structures.It is the root of the Builder class hierarchy.
+///
+/// There are three groups of methods in the Builder :
+///
+/// The Make methods create Shapes.
+///
+/// The Add method includes a Shape in another Shape.
+///
+/// The Remove  method  removes a  Shape from an other
+/// Shape.
+///
+/// The methods in Builder are not static. They can be
+/// redefined in inherited builders.
+///
+/// This   Builder does not  provide   methods to Make
+/// Vertices,  Edges, Faces,  Shells  or Solids. These
+/// methods are  provided  in  the inherited  Builders
+/// as they must provide the geometry.
+///
+/// The Add method check for the following rules :
+///
+/// - Any SHAPE can be added in a COMPOUND.
+///
+/// - Only SOLID can be added in a COMPSOLID.
+///
+/// - Only SHELL, EDGE and VERTEX can be added in a SOLID.
+/// EDGE and VERTEX as to be INTERNAL or EXTERNAL.
+///
+/// - Only FACE can be added in a SHELL.
+///
+/// - Only WIRE and VERTEX can be added in a FACE.
+/// VERTEX as to be INTERNAL or EXTERNAL.
+///
+/// - Only EDGE can be added in a WIRE.
+///
+/// - Only VERTEX can be added in an EDGE.
+///
+/// - Nothing can be added in a VERTEX.
 pub use ffi::Builder;
 impl Builder {
     /// Clone into a new UniquePtr via copy constructor
@@ -266,6 +389,12 @@ impl Builder {
         ffi::Builder_to_owned(self)
     }
 }
+
+/// Iterates on the underlying shape underlying a given
+/// TopoDS_Shape object, providing access to its
+/// component sub-shapes. Each component shape is
+/// returned as a TopoDS_Shape with an orientation,
+/// and a compound of the original values and the relative values.
 pub use ffi::Iterator;
 impl Iterator {
     /// Creates an empty Iterator.
@@ -289,6 +418,32 @@ impl Iterator {
         ffi::Iterator_to_owned(self)
     }
 }
+
+/// A TShape  is a topological  structure describing a
+/// set of points in a 2D or 3D space.
+///
+/// A topological shape is a structure made from other
+/// shapes.  This is a deferred class  used to support
+/// topological objects.
+///
+/// TShapes are   defined   by  their  optional domain
+/// (geometry)  and  their  components  (other TShapes
+/// with  Locations and Orientations).  The components
+/// are stored in a List of Shapes.
+///
+/// A   TShape contains  the   following boolean flags :
+///
+/// - Free       : Free or Frozen.
+/// - Modified   : Has been modified.
+/// - Checked    : Has been checked.
+/// - Orientable : Can be oriented.
+/// - Closed     : Is closed (note that only Wires and Shells may be closed).
+/// - Infinite   : Is infinite.
+/// - Convex     : Is convex.
+///
+/// Users have no direct access to the classes derived
+/// from TShape.  They  handle them with   the classes
+/// derived from Shape.
 pub use ffi::TShape;
 impl TShape {
     /// Returns a copy  of the  TShape  with no sub-shapes.
@@ -310,7 +465,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== TopoDS_Shape ========================
-        /// /// **Source:** `TopoDS_Shape.hxx` - `TopoDS_Shape`
+        /// **Source:** `TopoDS_Shape.hxx` - `TopoDS_Shape`
         ///
         /// Describes a shape which
         /// - references an underlying shape with the potential
@@ -324,7 +479,7 @@ pub(crate) mod ffi {
         /// shape which has an empty list of shapes.
         #[cxx_name = "TopoDS_Shape"]
         type Shape;
-        /// /// **Source:** `TopoDS_Shape.hxx` - `TopoDS_Shape::TopoDS_Shape()`
+        /// **Source:** `TopoDS_Shape.hxx` - `TopoDS_Shape::TopoDS_Shape()`
         ///
         /// Creates a NULL Shape referring to nothing.
         #[cxx_name = "TopoDS_Shape_ctor"]
@@ -483,7 +638,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Shape_to_owned(self_: &Shape) -> UniquePtr<Shape>;
         /// ======================== TopoDS_Vertex ========================
-        /// /// **Source:** `TopoDS_Vertex.hxx` - `TopoDS_Vertex`
+        /// **Source:** `TopoDS_Vertex.hxx` - `TopoDS_Vertex`
         ///
         /// Describes a vertex which
         /// - references an underlying vertex with the potential
@@ -495,7 +650,7 @@ pub(crate) mod ffi {
         /// relation to other shapes).
         #[cxx_name = "TopoDS_Vertex"]
         type Vertex;
-        /// /// **Source:** `TopoDS_Vertex.hxx` - `TopoDS_Vertex::TopoDS_Vertex()`
+        /// **Source:** `TopoDS_Vertex.hxx` - `TopoDS_Vertex::TopoDS_Vertex()`
         ///
         /// Undefined Vertex.
         #[cxx_name = "TopoDS_Vertex_ctor"]
@@ -510,7 +665,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Vertex_to_owned(self_: &Vertex) -> UniquePtr<Vertex>;
         /// ======================== TopoDS_Edge ========================
-        /// /// **Source:** `TopoDS_Edge.hxx` - `TopoDS_Edge`
+        /// **Source:** `TopoDS_Edge.hxx` - `TopoDS_Edge`
         ///
         /// Describes an edge which
         /// - references an underlying edge with the potential to
@@ -522,7 +677,7 @@ pub(crate) mod ffi {
         /// relation to other shapes).
         #[cxx_name = "TopoDS_Edge"]
         type Edge;
-        /// /// **Source:** `TopoDS_Edge.hxx` - `TopoDS_Edge::TopoDS_Edge()`
+        /// **Source:** `TopoDS_Edge.hxx` - `TopoDS_Edge::TopoDS_Edge()`
         ///
         /// Undefined Edge.
         #[cxx_name = "TopoDS_Edge_ctor"]
@@ -537,7 +692,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Edge_to_owned(self_: &Edge) -> UniquePtr<Edge>;
         /// ======================== TopoDS_Wire ========================
-        /// /// **Source:** `TopoDS_Wire.hxx` - `TopoDS_Wire`
+        /// **Source:** `TopoDS_Wire.hxx` - `TopoDS_Wire`
         ///
         /// Describes a wire which
         /// - references an underlying wire with the potential to
@@ -548,7 +703,7 @@ pub(crate) mod ffi {
         /// of its geometry (as opposed to orientation in relation to other shapes).
         #[cxx_name = "TopoDS_Wire"]
         type Wire;
-        /// /// **Source:** `TopoDS_Wire.hxx` - `TopoDS_Wire::TopoDS_Wire()`
+        /// **Source:** `TopoDS_Wire.hxx` - `TopoDS_Wire::TopoDS_Wire()`
         ///
         /// Undefined Wire.
         #[cxx_name = "TopoDS_Wire_ctor"]
@@ -563,7 +718,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Wire_to_owned(self_: &Wire) -> UniquePtr<Wire>;
         /// ======================== TopoDS_Face ========================
-        /// /// **Source:** `TopoDS_Face.hxx` - `TopoDS_Face`
+        /// **Source:** `TopoDS_Face.hxx` - `TopoDS_Face`
         ///
         /// Describes a face which
         /// - references an underlying face with the potential to
@@ -574,7 +729,7 @@ pub(crate) mod ffi {
         /// of its geometry (as opposed to orientation in relation to other shapes).
         #[cxx_name = "TopoDS_Face"]
         type Face;
-        /// /// **Source:** `TopoDS_Face.hxx` - `TopoDS_Face::TopoDS_Face()`
+        /// **Source:** `TopoDS_Face.hxx` - `TopoDS_Face::TopoDS_Face()`
         ///
         /// Undefined Face.
         #[cxx_name = "TopoDS_Face_ctor"]
@@ -589,7 +744,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Face_to_owned(self_: &Face) -> UniquePtr<Face>;
         /// ======================== TopoDS_Shell ========================
-        /// /// **Source:** `TopoDS_Shell.hxx` - `TopoDS_Shell`
+        /// **Source:** `TopoDS_Shell.hxx` - `TopoDS_Shell`
         ///
         /// Describes a shell which
         /// - references an underlying shell with the potential to
@@ -600,7 +755,7 @@ pub(crate) mod ffi {
         /// of its geometry (as opposed to orientation in relation to other shapes).
         #[cxx_name = "TopoDS_Shell"]
         type Shell;
-        /// /// **Source:** `TopoDS_Shell.hxx` - `TopoDS_Shell::TopoDS_Shell()`
+        /// **Source:** `TopoDS_Shell.hxx` - `TopoDS_Shell::TopoDS_Shell()`
         ///
         /// Constructs an Undefined Shell.
         #[cxx_name = "TopoDS_Shell_ctor"]
@@ -615,7 +770,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Shell_to_owned(self_: &Shell) -> UniquePtr<Shell>;
         /// ======================== TopoDS_Solid ========================
-        /// /// **Source:** `TopoDS_Solid.hxx` - `TopoDS_Solid`
+        /// **Source:** `TopoDS_Solid.hxx` - `TopoDS_Solid`
         ///
         /// Describes a solid shape which
         /// - references an underlying solid shape with the
@@ -627,7 +782,7 @@ pub(crate) mod ffi {
         /// relation to other shapes).
         #[cxx_name = "TopoDS_Solid"]
         type Solid;
-        /// /// **Source:** `TopoDS_Solid.hxx` - `TopoDS_Solid::TopoDS_Solid()`
+        /// **Source:** `TopoDS_Solid.hxx` - `TopoDS_Solid::TopoDS_Solid()`
         ///
         /// Constructs an Undefined Solid.
         #[cxx_name = "TopoDS_Solid_ctor"]
@@ -642,7 +797,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Solid_to_owned(self_: &Solid) -> UniquePtr<Solid>;
         /// ======================== TopoDS_Compound ========================
-        /// /// **Source:** `TopoDS_Compound.hxx` - `TopoDS_Compound`
+        /// **Source:** `TopoDS_Compound.hxx` - `TopoDS_Compound`
         ///
         /// Describes a compound which
         /// - references an underlying compound with the
@@ -655,7 +810,7 @@ pub(crate) mod ffi {
         /// Casts shape S to the more specialized return type, Compound.
         #[cxx_name = "TopoDS_Compound"]
         type Compound;
-        /// /// **Source:** `TopoDS_Compound.hxx` - `TopoDS_Compound::TopoDS_Compound()`
+        /// **Source:** `TopoDS_Compound.hxx` - `TopoDS_Compound::TopoDS_Compound()`
         ///
         /// Constructs an Undefined Compound.
         #[cxx_name = "TopoDS_Compound_ctor"]
@@ -670,7 +825,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Compound_to_owned(self_: &Compound) -> UniquePtr<Compound>;
         /// ======================== TopoDS_CompSolid ========================
-        /// /// **Source:** `TopoDS_CompSolid.hxx` - `TopoDS_CompSolid`
+        /// **Source:** `TopoDS_CompSolid.hxx` - `TopoDS_CompSolid`
         ///
         /// Describes a composite solid which
         /// - references an underlying composite solid with the
@@ -683,7 +838,7 @@ pub(crate) mod ffi {
         /// Casts shape S to the more specialized return type, CompSolid.
         #[cxx_name = "TopoDS_CompSolid"]
         type CompSolid;
-        /// /// **Source:** `TopoDS_CompSolid.hxx` - `TopoDS_CompSolid::TopoDS_CompSolid()`
+        /// **Source:** `TopoDS_CompSolid.hxx` - `TopoDS_CompSolid::TopoDS_CompSolid()`
         ///
         /// Constructs an Undefined CompSolid.
         #[cxx_name = "TopoDS_CompSolid_ctor"]
@@ -698,7 +853,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn CompSolid_to_owned(self_: &CompSolid) -> UniquePtr<CompSolid>;
         /// ======================== TopoDS_Builder ========================
-        /// /// **Source:** `TopoDS_Builder.hxx` - `TopoDS_Builder`
+        /// **Source:** `TopoDS_Builder.hxx` - `TopoDS_Builder`
         ///
         /// A  Builder is used   to  create  Topological  Data
         /// Structures.It is the root of the Builder class hierarchy.
@@ -771,7 +926,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Builder_to_owned(self_: &Builder) -> UniquePtr<Builder>;
         /// ======================== TopoDS_Iterator ========================
-        /// /// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator`
+        /// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator`
         ///
         /// Iterates on the underlying shape underlying a given
         /// TopoDS_Shape object, providing access to its
@@ -780,12 +935,12 @@ pub(crate) mod ffi {
         /// and a compound of the original values and the relative values.
         #[cxx_name = "TopoDS_Iterator"]
         type Iterator;
-        /// /// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator::TopoDS_Iterator()`
+        /// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator::TopoDS_Iterator()`
         ///
         /// Creates an empty Iterator.
         #[cxx_name = "TopoDS_Iterator_ctor"]
         fn Iterator_ctor() -> UniquePtr<Iterator>;
-        /// /// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator::TopoDS_Iterator()`
+        /// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator::TopoDS_Iterator()`
         ///
         /// Creates an Iterator on <S> sub-shapes.
         /// Note:
@@ -825,7 +980,7 @@ pub(crate) mod ffi {
         #[cxx_name = "construct_unique"]
         fn Iterator_to_owned(self_: &Iterator) -> UniquePtr<Iterator>;
         /// ======================== TopoDS_TShape ========================
-        /// /// **Source:** `TopoDS_TShape.hxx` - `TopoDS_TShape`
+        /// **Source:** `TopoDS_TShape.hxx` - `TopoDS_TShape`
         ///
         /// A TShape  is a topological  structure describing a
         /// set of points in a 2D or 3D space.

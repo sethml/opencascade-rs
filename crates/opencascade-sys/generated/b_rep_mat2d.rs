@@ -11,6 +11,41 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// BisectingLocus generates and contains the Bisecting_Locus
+/// of a set of lines from Geom2d, defined by <ExploSet>.
+///
+/// If the set of lines contains closed lines:
+/// ------------------------------------------
+/// These lines cut the plane  in areas.
+/// One map can  be  computed for each area.
+///
+/// Bisecting locus computes a map in an area.
+/// The area is defined by a side (MAT_Left,MAT_Right)
+/// on one of the closed lines.
+///
+/// If the set of lines contains only open lines:
+/// --------------------------------------------
+/// the map recovers all the plane.
+///
+/// Warning: Assume the orientation of the   closed  lines  are
+/// compatible.
+///
+/// Assume the explo contains only lines located in the
+/// area where the bisecting locus will be computed.
+///
+/// Assume a line don't cross itself or an other line.
+///
+/// Remark:
+/// the  curves  coming   from   the  explorer can   be
+/// decomposed in different parts. It  the  case for the
+/// curves other than circles or lines.
+///
+/// The map of bisecting  locus is described by a graph.
+/// - The  BasicsElements  correspond  to elements on
+/// the figure described by the Explorer from BRepMAT2d.
+/// - The Arcs correspond to the bisectors.
+/// - The Nodes are the extremities of the arcs.
 pub use ffi::BisectingLocus;
 impl BisectingLocus {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -55,6 +90,9 @@ impl BisectingLocus {
         ffi::BisectingLocus_geom_bis(self, anArc, Reverse)
     }
 }
+
+/// Constructs links between the Wire or the Face of the explorer and
+/// the BasicElts contained in the bisecting locus.
 pub use ffi::LinkTopoBilo;
 impl LinkTopoBilo {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -94,7 +132,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepMAT2d_BisectingLocus ========================
-        /// /// **Source:** `BRepMAT2d_BisectingLocus.hxx` - `BRepMAT2d_BisectingLocus`
+        /// **Source:** `BRepMAT2d_BisectingLocus.hxx` - `BRepMAT2d_BisectingLocus`
         ///
         /// BisectingLocus generates and contains the Bisecting_Locus
         /// of a set of lines from Geom2d, defined by <ExploSet>.
@@ -132,7 +170,7 @@ pub(crate) mod ffi {
         /// - The Nodes are the extremities of the arcs.
         #[cxx_name = "BRepMAT2d_BisectingLocus"]
         type BisectingLocus;
-        /// /// **Source:** `BRepMAT2d_BisectingLocus.hxx` - `BRepMAT2d_BisectingLocus::BRepMAT2d_BisectingLocus()`
+        /// **Source:** `BRepMAT2d_BisectingLocus.hxx` - `BRepMAT2d_BisectingLocus::BRepMAT2d_BisectingLocus()`
         #[cxx_name = "BRepMAT2d_BisectingLocus_ctor"]
         fn BisectingLocus_ctor() -> UniquePtr<BisectingLocus>;
         /// Returns True if Compute has succeeded.
@@ -186,16 +224,16 @@ pub(crate) mod ffi {
             Reverse: &mut bool,
         ) -> UniquePtr<Bisector_Bisec>;
         /// ======================== BRepMAT2d_LinkTopoBilo ========================
-        /// /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx` - `BRepMAT2d_LinkTopoBilo`
+        /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx` - `BRepMAT2d_LinkTopoBilo`
         ///
         /// Constructs links between the Wire or the Face of the explorer and
         /// the BasicElts contained in the bisecting locus.
         #[cxx_name = "BRepMAT2d_LinkTopoBilo"]
         type LinkTopoBilo;
-        /// /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx` - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
+        /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx` - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
         #[cxx_name = "BRepMAT2d_LinkTopoBilo_ctor"]
         fn LinkTopoBilo_ctor() -> UniquePtr<LinkTopoBilo>;
-        /// /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx` - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
+        /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx` - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
         ///
         /// Constructs the links Between S and BiLo.
         ///

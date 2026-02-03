@@ -14,6 +14,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
 pub use ffi::HInter;
 impl HInter {
     /// Empty Constructor
@@ -21,6 +22,10 @@ impl HInter {
         ffi::HInter_ctor()
     }
 }
+
+/// A IntersectionSegment describes a segment of curve
+/// (w1,w2) where distance(C(w),Surface) is less than a
+/// given tolerances.
 pub use ffi::IntersectionSegment;
 impl IntersectionSegment {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -34,6 +39,9 @@ impl IntersectionSegment {
         ffi::IntersectionSegment_ctor_intersectionpoint2(P1, P2)
     }
 }
+
+/// Definition of an interserction point between a
+/// curve and a surface.
 pub use ffi::IntersectionPoint;
 impl IntersectionPoint {
     /// Empty Constructor.
@@ -51,10 +59,10 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== IntCurveSurface_HInter ========================
-        /// /// **Source:** `IntCurveSurface_HInter.hxx` - `IntCurveSurface_HInter`
+        /// **Source:** `IntCurveSurface_HInter.hxx` - `IntCurveSurface_HInter`
         #[cxx_name = "IntCurveSurface_HInter"]
         type HInter;
-        /// /// **Source:** `IntCurveSurface_HInter.hxx` - `IntCurveSurface_HInter::IntCurveSurface_HInter()`
+        /// **Source:** `IntCurveSurface_HInter.hxx` - `IntCurveSurface_HInter::IntCurveSurface_HInter()`
         ///
         /// Empty Constructor
         #[cxx_name = "IntCurveSurface_HInter_ctor"]
@@ -113,17 +121,17 @@ pub(crate) mod ffi {
             Polyhedron: &IntCurveSurface_ThePolyhedronOfHInter,
         );
         /// ======================== IntCurveSurface_IntersectionSegment ========================
-        /// /// **Source:** `IntCurveSurface_IntersectionSegment.hxx` - `IntCurveSurface_IntersectionSegment`
+        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx` - `IntCurveSurface_IntersectionSegment`
         ///
         /// A IntersectionSegment describes a segment of curve
         /// (w1,w2) where distance(C(w),Surface) is less than a
         /// given tolerances.
         #[cxx_name = "IntCurveSurface_IntersectionSegment"]
         type IntersectionSegment;
-        /// /// **Source:** `IntCurveSurface_IntersectionSegment.hxx` - `IntCurveSurface_IntersectionSegment::IntCurveSurface_IntersectionSegment()`
+        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx` - `IntCurveSurface_IntersectionSegment::IntCurveSurface_IntersectionSegment()`
         #[cxx_name = "IntCurveSurface_IntersectionSegment_ctor"]
         fn IntersectionSegment_ctor() -> UniquePtr<IntersectionSegment>;
-        /// /// **Source:** `IntCurveSurface_IntersectionSegment.hxx` - `IntCurveSurface_IntersectionSegment::IntCurveSurface_IntersectionSegment()`
+        /// **Source:** `IntCurveSurface_IntersectionSegment.hxx` - `IntCurveSurface_IntersectionSegment::IntCurveSurface_IntersectionSegment()`
         #[cxx_name = "IntCurveSurface_IntersectionSegment_ctor_intersectionpoint2"]
         fn IntersectionSegment_ctor_intersectionpoint2(
             P1: &IntersectionPoint,
@@ -158,13 +166,13 @@ pub(crate) mod ffi {
         #[cxx_name = "Dump"]
         fn dump(self: &IntersectionSegment);
         /// ======================== IntCurveSurface_IntersectionPoint ========================
-        /// /// **Source:** `IntCurveSurface_IntersectionPoint.hxx` - `IntCurveSurface_IntersectionPoint`
+        /// **Source:** `IntCurveSurface_IntersectionPoint.hxx` - `IntCurveSurface_IntersectionPoint`
         ///
         /// Definition of an interserction point between a
         /// curve and a surface.
         #[cxx_name = "IntCurveSurface_IntersectionPoint"]
         type IntersectionPoint;
-        /// /// **Source:** `IntCurveSurface_IntersectionPoint.hxx` - `IntCurveSurface_IntersectionPoint::IntCurveSurface_IntersectionPoint()`
+        /// **Source:** `IntCurveSurface_IntersectionPoint.hxx` - `IntCurveSurface_IntersectionPoint::IntCurveSurface_IntersectionPoint()`
         ///
         /// Empty Constructor.
         #[cxx_name = "IntCurveSurface_IntersectionPoint_ctor"]

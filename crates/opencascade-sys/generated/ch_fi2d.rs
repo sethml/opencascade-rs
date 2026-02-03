@@ -11,6 +11,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// This  class contains  the algorithm  used to build
+/// fillet on planar wire.
 pub use ffi::Builder;
 impl Builder {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -141,16 +144,16 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== ChFi2d_Builder ========================
-        /// /// **Source:** `ChFi2d_Builder.hxx` - `ChFi2d_Builder`
+        /// **Source:** `ChFi2d_Builder.hxx` - `ChFi2d_Builder`
         ///
         /// This  class contains  the algorithm  used to build
         /// fillet on planar wire.
         #[cxx_name = "ChFi2d_Builder"]
         type Builder;
-        /// /// **Source:** `ChFi2d_Builder.hxx` - `ChFi2d_Builder::ChFi2d_Builder()`
+        /// **Source:** `ChFi2d_Builder.hxx` - `ChFi2d_Builder::ChFi2d_Builder()`
         #[cxx_name = "ChFi2d_Builder_ctor"]
         fn Builder_ctor() -> UniquePtr<Builder>;
-        /// /// **Source:** `ChFi2d_Builder.hxx` - `ChFi2d_Builder::ChFi2d_Builder()`
+        /// **Source:** `ChFi2d_Builder.hxx` - `ChFi2d_Builder::ChFi2d_Builder()`
         ///
         /// The face  <F> can be build  on a closed or an open
         /// wire.

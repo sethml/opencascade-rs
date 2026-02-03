@@ -12,6 +12,20 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Root class for 3D curves on which geometric
+/// algorithms work.
+/// An adapted curve is an interface between the
+/// services provided by a curve and those required of
+/// the curve by algorithms which use it.
+/// Two derived concrete classes are provided:
+/// - GeomAdaptor_Curve for a curve from the Geom package
+/// - Adaptor3d_CurveOnSurface for a curve lying on
+/// a surface from the Geom package.
+///
+/// Polynomial coefficients of BSpline curves used for their evaluation are
+/// cached for better performance. Therefore these evaluations are not
+/// thread-safe and parallel evaluations need to be prevented.
 pub use ffi::Curve;
 impl Curve {
     /// Wrap Adaptor3d_Curve in a Handle (reference-counted smart pointer)
@@ -87,6 +101,26 @@ impl Curve {
         ffi::Curve_get_type_name()
     }
 }
+
+/// Root class for surfaces on which geometric algorithms work.
+/// An adapted surface is an interface between the
+/// services provided by a surface and those required of
+/// the surface by algorithms which use it.
+/// A derived concrete class is provided:
+/// GeomAdaptor_Surface for a surface from the Geom package.
+/// The  Surface class describes  the standard behaviour
+/// of a surface for generic algorithms.
+///
+/// The Surface can  be decomposed in intervals of any
+/// continuity in U and V using the method NbIntervals.
+/// A current interval can be set.
+/// Most of the methods apply to the current interval.
+/// Warning: All the methods are virtual and implemented with a
+/// raise to allow to redefined only the methods really used.
+///
+/// Polynomial coefficients of BSpline surfaces used for their evaluation are cached for better
+/// performance. Therefore these evaluations are not thread-safe and parallel evaluations need to be
+/// prevented.
 pub use ffi::Surface;
 impl Surface {
     /// Wrap Adaptor3d_Surface in a Handle (reference-counted smart pointer)
@@ -189,6 +223,12 @@ impl Surface {
         ffi::Surface_get_type_name()
     }
 }
+
+/// An interface between the services provided by a curve
+/// lying on a surface from the package Geom and those
+/// required of the curve by algorithms which use it. The
+/// curve is defined as a 2D curve from the Geom2d
+/// package, in the parametric space of the surface.
 pub use ffi::CurveOnSurface;
 impl CurveOnSurface {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -292,7 +332,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Adaptor3d_Curve ========================
-        /// /// **Source:** `Adaptor3d_Curve.hxx` - `Adaptor3d_Curve`
+        /// **Source:** `Adaptor3d_Curve.hxx` - `Adaptor3d_Curve`
         ///
         /// Root class for 3D curves on which geometric
         /// algorithms work.
@@ -413,7 +453,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Adaptor3d_Curve_to_handle"]
         fn Curve_to_handle(obj: UniquePtr<Curve>) -> UniquePtr<HandleAdaptor3dCurve>;
         /// ======================== Adaptor3d_Surface ========================
-        /// /// **Source:** `Adaptor3d_Surface.hxx` - `Adaptor3d_Surface`
+        /// **Source:** `Adaptor3d_Surface.hxx` - `Adaptor3d_Surface`
         ///
         /// Root class for surfaces on which geometric algorithms work.
         /// An adapted surface is an interface between the
@@ -601,7 +641,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Adaptor3d_Surface_to_handle"]
         fn Surface_to_handle(obj: UniquePtr<Surface>) -> UniquePtr<HandleAdaptor3dSurface>;
         /// ======================== Adaptor3d_CurveOnSurface ========================
-        /// /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface`
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface`
         ///
         /// An interface between the services provided by a curve
         /// lying on a surface from the package Geom and those
@@ -610,15 +650,15 @@ pub(crate) mod ffi {
         /// package, in the parametric space of the surface.
         #[cxx_name = "Adaptor3d_CurveOnSurface"]
         type CurveOnSurface;
-        /// /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
         #[cxx_name = "Adaptor3d_CurveOnSurface_ctor"]
         fn CurveOnSurface_ctor() -> UniquePtr<CurveOnSurface>;
-        /// /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
         #[cxx_name = "Adaptor3d_CurveOnSurface_ctor_handlesurface"]
         fn CurveOnSurface_ctor_handlesurface(
             S: &HandleAdaptor3dSurface,
         ) -> UniquePtr<CurveOnSurface>;
-        /// /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
+        /// **Source:** `Adaptor3d_CurveOnSurface.hxx` - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
         ///
         /// Creates a CurveOnSurface from the 2d curve <C> and
         /// the surface <S>.

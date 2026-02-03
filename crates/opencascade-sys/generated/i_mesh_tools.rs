@@ -14,6 +14,10 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Interface class representing context of BRepMesh algorithm.
+/// Intended to cache discrete model and instances of tools for
+/// its processing.
 pub use ffi::Context;
 impl Context {
     /// Constructor.
@@ -37,6 +41,13 @@ impl Context {
         ffi::Context_get_type_name()
     }
 }
+
+/// Interface class represents API for tool building discrete model.
+///
+/// The following statuses should be used by default:
+/// Message_Done1 - model has been successfully built.
+/// Message_Fail1 - empty shape.
+/// Message_Fail2 - model has not been build due to unexpected reason.
 pub use ffi::ModelBuilder;
 impl ModelBuilder {
     /// Upcast to Message_Algorithm
@@ -65,6 +76,8 @@ impl ModelBuilder {
         ffi::ModelBuilder_get_type_name()
     }
 }
+
+/// Structure storing meshing parameters
 pub use ffi::Parameters;
 impl Parameters {
     /// Default constructor
@@ -78,6 +91,8 @@ impl Parameters {
         ffi::Parameters_rel_min_size()
     }
 }
+
+/// Interface class providing API for algorithms intended to update or modify discrete model.
 pub use ffi::ModelAlgo;
 impl ModelAlgo {
     pub fn get_type_name() -> String {
@@ -94,14 +109,14 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== IMeshTools_Context ========================
-        /// /// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context`
+        /// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context`
         ///
         /// Interface class representing context of BRepMesh algorithm.
         /// Intended to cache discrete model and instances of tools for
         /// its processing.
         #[cxx_name = "IMeshTools_Context"]
         type Context;
-        /// /// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context::IMeshTools_Context()`
+        /// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context::IMeshTools_Context()`
         ///
         /// Constructor.
         #[cxx_name = "IMeshTools_Context_ctor"]
@@ -194,7 +209,7 @@ pub(crate) mod ffi {
         #[cxx_name = "IMeshTools_Context_as_IMeshData_Shape_mut"]
         fn context_as_i_mesh_data_shape_mut(self_: Pin<&mut Context>) -> Pin<&mut IMeshData_Shape>;
         /// ======================== IMeshTools_ModelBuilder ========================
-        /// /// **Source:** `IMeshTools_ModelBuilder.hxx` - `IMeshTools_ModelBuilder`
+        /// **Source:** `IMeshTools_ModelBuilder.hxx` - `IMeshTools_ModelBuilder`
         ///
         /// Interface class represents API for tool building discrete model.
         ///
@@ -225,12 +240,12 @@ pub(crate) mod ffi {
             self_: Pin<&mut ModelBuilder>,
         ) -> Pin<&mut Message_Algorithm>;
         /// ======================== IMeshTools_Parameters ========================
-        /// /// **Source:** `IMeshTools_Parameters.hxx` - `IMeshTools_Parameters`
+        /// **Source:** `IMeshTools_Parameters.hxx` - `IMeshTools_Parameters`
         ///
         /// Structure storing meshing parameters
         #[cxx_name = "IMeshTools_Parameters"]
         type Parameters;
-        /// /// **Source:** `IMeshTools_Parameters.hxx` - `IMeshTools_Parameters::IMeshTools_Parameters()`
+        /// **Source:** `IMeshTools_Parameters.hxx` - `IMeshTools_Parameters::IMeshTools_Parameters()`
         ///
         /// Default constructor
         #[cxx_name = "IMeshTools_Parameters_ctor"]
@@ -240,7 +255,7 @@ pub(crate) mod ffi {
         #[cxx_name = "IMeshTools_Parameters_RelMinSize"]
         fn Parameters_rel_min_size() -> f64;
         /// ======================== IMeshTools_ModelAlgo ========================
-        /// /// **Source:** `IMeshTools_ModelAlgo.hxx` - `IMeshTools_ModelAlgo`
+        /// **Source:** `IMeshTools_ModelAlgo.hxx` - `IMeshTools_ModelAlgo`
         ///
         /// Interface class providing API for algorithms intended to update or modify discrete model.
         #[cxx_name = "IMeshTools_ModelAlgo"]

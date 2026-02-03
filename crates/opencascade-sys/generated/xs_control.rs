@@ -10,6 +10,38 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// A groundwork to convert a shape to data which complies
+/// with a particular norm. This data can be that of a whole
+/// model or that of a specific list of entities in the model.
+/// You specify the list using a single selection or a
+/// combination of selections. A selection is an operator which
+/// computes a list of entities from a list given in input. To
+/// specify the input, you can use:
+/// - A predefined selection such as "xst-transferrable-roots"
+/// - A filter based on a  signature.
+/// A signature is an operator which returns a string from an
+/// entity according to its type.
+/// For example:
+/// - "xst-type" (CDL)
+/// - "iges-level"
+/// - "step-type".
+/// A filter can be based on a signature by giving a value to
+/// be matched by the string returned. For example,
+/// "xst-type(Curve)".
+/// If no list is specified, the selection computes its list of
+/// entities from the whole model. To use this class, you have to
+/// initialize the transfer norm first, as shown in the example below.
+/// Example:
+/// Control_Reader reader;
+/// IFSelect_ReturnStatus status = reader.ReadFile (filename.);
+/// When using IGESControl_Reader or STEPControl_Reader - as the
+/// above example shows - the reader initializes the norm directly.
+/// Note that loading the file only stores the data. It does
+/// not translate this data. Shapes are accumulated by
+/// successive transfers. The last shape is cleared by:
+/// - ClearShapes which allows you to handle a new batch
+/// - TransferRoots which restarts the list of shapes from scratch.
 pub use ffi::Reader;
 impl Reader {
     /// Creates a Reader from scratch (creates an empty WorkSession)
@@ -135,7 +167,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== XSControl_Reader ========================
-        /// /// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader`
+        /// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader`
         ///
         /// A groundwork to convert a shape to data which complies
         /// with a particular norm. This data can be that of a whole
@@ -170,19 +202,19 @@ pub(crate) mod ffi {
         /// - TransferRoots which restarts the list of shapes from scratch.
         #[cxx_name = "XSControl_Reader"]
         type Reader;
-        /// /// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader::XSControl_Reader()`
+        /// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader::XSControl_Reader()`
         ///
         /// Creates a Reader from scratch (creates an empty WorkSession)
         /// A WorkSession or a Controller must be provided before running
         #[cxx_name = "XSControl_Reader_ctor"]
         fn Reader_ctor() -> UniquePtr<Reader>;
-        /// /// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader::XSControl_Reader()`
+        /// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader::XSControl_Reader()`
         ///
         /// Creates a Reader from scratch, with a norm name which
         /// identifies a Controller
         #[cxx_name = "XSControl_Reader_ctor_charptr"]
         fn Reader_ctor_charptr(norm: &str) -> UniquePtr<Reader>;
-        /// /// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader::XSControl_Reader()`
+        /// **Source:** `XSControl_Reader.hxx` - `XSControl_Reader::XSControl_Reader()`
         ///
         /// Creates a Reader from an already existing Session, with a
         /// Controller already set

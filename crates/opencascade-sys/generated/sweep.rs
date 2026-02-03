@@ -11,6 +11,10 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// This class provides  the indexation and  type analysis
+/// services required by  the NumShape Directing Shapes of
+/// Swept Primitives.
 pub use ffi::NumShapeTool;
 impl NumShapeTool {
     /// Create a new NumShapeTool with <aShape>.  The Tool
@@ -35,6 +39,9 @@ impl NumShapeTool {
         ffi::NumShapeTool_last_vertex(self)
     }
 }
+
+/// Gives    a  simple  indexed   representation  of a
+/// Directing Edge topology.
 pub use ffi::NumShape;
 impl NumShape {
     /// Creates a dummy indexed edge.
@@ -52,14 +59,14 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Sweep_NumShapeTool ========================
-        /// /// **Source:** `Sweep_NumShapeTool.hxx` - `Sweep_NumShapeTool`
+        /// **Source:** `Sweep_NumShapeTool.hxx` - `Sweep_NumShapeTool`
         ///
         /// This class provides  the indexation and  type analysis
         /// services required by  the NumShape Directing Shapes of
         /// Swept Primitives.
         #[cxx_name = "Sweep_NumShapeTool"]
         type NumShapeTool;
-        /// /// **Source:** `Sweep_NumShapeTool.hxx` - `Sweep_NumShapeTool::Sweep_NumShapeTool()`
+        /// **Source:** `Sweep_NumShapeTool.hxx` - `Sweep_NumShapeTool::Sweep_NumShapeTool()`
         ///
         /// Create a new NumShapeTool with <aShape>.  The Tool
         /// must prepare an indexation  for  all the subshapes
@@ -88,13 +95,13 @@ pub(crate) mod ffi {
         #[cxx_name = "Sweep_NumShapeTool_LastVertex"]
         fn NumShapeTool_last_vertex(self_: &NumShapeTool) -> UniquePtr<NumShape>;
         /// ======================== Sweep_NumShape ========================
-        /// /// **Source:** `Sweep_NumShape.hxx` - `Sweep_NumShape`
+        /// **Source:** `Sweep_NumShape.hxx` - `Sweep_NumShape`
         ///
         /// Gives    a  simple  indexed   representation  of a
         /// Directing Edge topology.
         #[cxx_name = "Sweep_NumShape"]
         type NumShape;
-        /// /// **Source:** `Sweep_NumShape.hxx` - `Sweep_NumShape::Sweep_NumShape()`
+        /// **Source:** `Sweep_NumShape.hxx` - `Sweep_NumShape::Sweep_NumShape()`
         ///
         /// Creates a dummy indexed edge.
         #[cxx_name = "Sweep_NumShape_ctor"]

@@ -12,6 +12,14 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Implements construction algorithms for an
+/// arc of circle in 3D space. The result is a Geom_TrimmedCurve curve.
+/// A MakeArcOfCircle object provides a framework for:
+/// -   defining the construction of the arc of circle,
+/// -   implementing the construction algorithm, and
+/// -   consulting the results. In particular, the
+/// Value function returns the constructed arc of circle.
 pub use ffi::MakeArcOfCircle;
 impl MakeArcOfCircle {
     /// Make an arc of circle (TrimmedCurve from Geom) from
@@ -93,6 +101,16 @@ impl MakeArcOfCircle {
         ffi::make_arc_of_circle_as_root_mut(self)
     }
 }
+
+/// Implements construction algorithms for a line
+/// segment in 3D space.
+/// Makes a segment of Line from the 2 points <P1> and <P2>.
+/// The result is a Geom_TrimmedCurve curve.
+/// A MakeSegment object provides a framework for:
+/// -   defining the construction of the line segment,
+/// -   implementing the construction algorithm, and
+/// -   consulting the results. In particular, the Value
+/// function returns the constructed line segment.
 pub use ffi::MakeSegment;
 impl MakeSegment {
     /// Make a segment of Line from the 2 points <P1> and <P2>.
@@ -140,6 +158,9 @@ impl MakeSegment {
         ffi::make_segment_as_root_mut(self)
     }
 }
+
+/// This class implements the common services for
+/// all classes of gce which report error.
 pub use ffi::Root;
 impl Root {
     /// Returns the status of the construction:
@@ -160,7 +181,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== GC_MakeArcOfCircle ========================
-        /// /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle`
+        /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle`
         ///
         /// Implements construction algorithms for an
         /// arc of circle in 3D space. The result is a Geom_TrimmedCurve curve.
@@ -171,7 +192,7 @@ pub(crate) mod ffi {
         /// Value function returns the constructed arc of circle.
         #[cxx_name = "GC_MakeArcOfCircle"]
         type MakeArcOfCircle;
-        /// /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
+        /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
         ///
         /// Make an arc of circle (TrimmedCurve from Geom) from
         /// a circle between two angles Alpha1 and Alpha2
@@ -183,7 +204,7 @@ pub(crate) mod ffi {
             Alpha2: f64,
             Sense: bool,
         ) -> UniquePtr<MakeArcOfCircle>;
-        /// /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
+        /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
         ///
         /// Make an arc of circle (TrimmedCurve from Geom) from
         /// a circle between point <P> and the angle Alpha
@@ -195,7 +216,7 @@ pub(crate) mod ffi {
             Alpha: f64,
             Sense: bool,
         ) -> UniquePtr<MakeArcOfCircle>;
-        /// /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
+        /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
         ///
         /// Make an arc of circle (TrimmedCurve from Geom) from
         /// a circle between two points P1 and P2.
@@ -206,7 +227,7 @@ pub(crate) mod ffi {
             P2: &gp_Pnt,
             Sense: bool,
         ) -> UniquePtr<MakeArcOfCircle>;
-        /// /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
+        /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
         ///
         /// Make an arc of circle (TrimmedCurve from Geom) from
         /// three points P1,P2,P3 between two points P1 and P2.
@@ -216,7 +237,7 @@ pub(crate) mod ffi {
             P2: &gp_Pnt,
             P3: &gp_Pnt,
         ) -> UniquePtr<MakeArcOfCircle>;
-        /// /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
+        /// **Source:** `GC_MakeArcOfCircle.hxx` - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
         ///
         /// Make an arc of circle (TrimmedCurve from Geom) from
         /// two points P1,P2 and the tangente to the solution at
@@ -255,7 +276,7 @@ pub(crate) mod ffi {
         #[cxx_name = "GC_MakeArcOfCircle_as_GC_Root_mut"]
         fn make_arc_of_circle_as_root_mut(self_: Pin<&mut MakeArcOfCircle>) -> Pin<&mut Root>;
         /// ======================== GC_MakeSegment ========================
-        /// /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment`
+        /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment`
         ///
         /// Implements construction algorithms for a line
         /// segment in 3D space.
@@ -268,20 +289,20 @@ pub(crate) mod ffi {
         /// function returns the constructed line segment.
         #[cxx_name = "GC_MakeSegment"]
         type MakeSegment;
-        /// /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment::GC_MakeSegment()`
+        /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment::GC_MakeSegment()`
         ///
         /// Make a segment of Line from the 2 points <P1> and <P2>.
         /// It returns NullObject if <P1> and <P2> are confused.
         #[cxx_name = "GC_MakeSegment_ctor_pnt2"]
         fn MakeSegment_ctor_pnt2(P1: &gp_Pnt, P2: &gp_Pnt) -> UniquePtr<MakeSegment>;
-        /// /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment::GC_MakeSegment()`
+        /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment::GC_MakeSegment()`
         ///
         /// Make a segment of Line from the line <Line1>
         /// between the two parameters U1 and U2.
         /// It returns NullObject if <U1> is equal <U2>.
         #[cxx_name = "GC_MakeSegment_ctor_lin_real2"]
         fn MakeSegment_ctor_lin_real2(Line: &gp_Lin, U1: f64, U2: f64) -> UniquePtr<MakeSegment>;
-        /// /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment::GC_MakeSegment()`
+        /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment::GC_MakeSegment()`
         ///
         /// Make a segment of Line from the line <Line1>
         /// between the point <Point> and the parameter Ulast.
@@ -292,7 +313,7 @@ pub(crate) mod ffi {
             Point: &gp_Pnt,
             Ulast: f64,
         ) -> UniquePtr<MakeSegment>;
-        /// /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment::GC_MakeSegment()`
+        /// **Source:** `GC_MakeSegment.hxx` - `GC_MakeSegment::GC_MakeSegment()`
         ///
         /// Make a segment of Line from the line <Line1>
         /// between the two points <P1> and <P2>.
@@ -313,7 +334,7 @@ pub(crate) mod ffi {
         #[cxx_name = "GC_MakeSegment_as_GC_Root_mut"]
         fn make_segment_as_root_mut(self_: Pin<&mut MakeSegment>) -> Pin<&mut Root>;
         /// ======================== GC_Root ========================
-        /// /// **Source:** `GC_Root.hxx` - `GC_Root`
+        /// **Source:** `GC_Root.hxx` - `GC_Root`
         ///
         /// This class implements the common services for
         /// all classes of gce which report error.

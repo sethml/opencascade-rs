@@ -22,6 +22,24 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// The abstract class Geometry for 3D space is the root
+/// class of all geometric objects from the Geom
+/// package. It describes the common behavior of these objects when:
+/// - applying geometric transformations to objects, and
+/// - constructing objects by geometric transformation (including copying).
+/// Warning
+/// Only transformations which do not modify the nature
+/// of the geometry can be applied to Geom objects: this
+/// is the case with translations, rotations, symmetries
+/// and scales; this is also the case with gp_Trsf
+/// composite transformations which are used to define
+/// the geometric transformations applied using the
+/// Transform or Transformed functions.
+/// Note: Geometry defines the "prototype" of the
+/// abstract method Transform which is defined for each
+/// concrete type of derived object. All other
+/// transformations are implemented using the Transform method.
 pub use ffi::Geometry;
 impl Geometry {
     pub fn mirrored_pnt(&self, P: &ffi::gp_Pnt) -> cxx::UniquePtr<ffi::HandleGeomGeometry> {
@@ -69,6 +87,32 @@ impl Geometry {
         ffi::Geometry_get_type_name()
     }
 }
+
+/// The abstract class Curve describes the common
+/// behavior of curves in 3D space. The Geom package
+/// provides numerous concrete classes of derived
+/// curves, including lines, circles, conics, Bezier or
+/// BSpline curves, etc.
+/// The main characteristic of these curves is that they
+/// are parameterized. The Geom_Curve class shows:
+/// - how to work with the parametric equation of a curve
+/// in order to calculate the point of parameter u,
+/// together with the vector tangent and the derivative
+/// vectors of order 2, 3,..., N at this point;
+/// - how to obtain general information about the curve
+/// (for example, level of continuity, closed
+/// characteristics, periodicity, bounds of the parameter field);
+/// - how the parameter changes when a geometric
+/// transformation is applied to the curve or when the
+/// orientation of the curve is inverted.
+/// All curves must have a geometric continuity: a curve is
+/// at least "C0". Generally, this property is checked at
+/// the time of construction or when the curve is edited.
+/// Where this is not the case, the documentation states so explicitly.
+/// Warning
+/// The Geom package does not prevent the
+/// construction of curves with null length or curves which
+/// self-intersect.
 pub use ffi::Curve;
 impl Curve {
     /// Upcast to Geom_Geometry
@@ -114,6 +158,29 @@ impl Curve {
         ffi::Curve_get_type_name()
     }
 }
+
+/// Describes the common behavior of surfaces in 3D space.
+/// The Geom package provides many implementations of concrete derived surfaces,
+/// such as planes, cylinders, cones, spheres and tori, surfaces of linear extrusion,
+/// surfaces of revolution, Bezier and BSpline surfaces, and so on.
+/// The key characteristic of these surfaces is that they are parameterized.
+/// Geom_Surface demonstrates:
+/// - how to work with the parametric equation of a surface
+/// to compute the point of parameters (u, v), and, at this point, the 1st, 2nd ... Nth
+/// derivative;
+/// - how to find global information about a surface in
+/// each parametric direction (for example, level of continuity, whether the surface is closed,
+/// its periodicity, the bounds of the parameters and so on);
+/// - how the parameters change when geometric transformations are applied to the surface,
+/// or the orientation is modified.
+///
+/// Note that all surfaces must have a geometric continuity, and any surface is at least "C0".
+/// Generally, continuity is checked at construction time or when the curve is edited.
+/// Where this is not the case, the documentation makes this explicit.
+///
+/// Warning
+/// The Geom package does not prevent the construction of
+/// surfaces with null areas, or surfaces which self-intersect.
 pub use ffi::Surface;
 impl Surface {
     /// Upcast to Geom_Geometry
@@ -195,6 +262,22 @@ impl Surface {
         ffi::Surface_get_type_name()
     }
 }
+
+/// The abstract class BoundedCurve describes the
+/// common behavior of bounded curves in 3D space. A
+/// bounded curve is limited by two finite values of the
+/// parameter, termed respectively "first parameter" and
+/// "last parameter". The "first parameter" gives the "start
+/// point" of the bounded curve, and the "last parameter"
+/// gives the "end point" of the bounded curve.
+/// The length of a bounded curve is finite.
+/// The Geom package provides three concrete classes of bounded curves:
+/// - two frequently used mathematical formulations of complex curves:
+/// - Geom_BezierCurve,
+/// - Geom_BSplineCurve, and
+/// - Geom_TrimmedCurve to trim a curve, i.e. to only
+/// take part of the curve limited by two values of the
+/// parameter of the basis curve.
 pub use ffi::BoundedCurve;
 impl BoundedCurve {
     /// Upcast to Geom_Curve
@@ -231,6 +314,32 @@ impl BoundedCurve {
         ffi::BoundedCurve_get_type_name()
     }
 }
+
+/// The root class for bounded surfaces in 3D space. A
+/// bounded surface is defined by a rectangle in its 2D parametric space, i.e.
+/// - its u parameter, which ranges between two finite
+/// values u0 and u1, referred to as "First u
+/// parameter" and "Last u parameter" respectively, and
+/// - its v parameter, which ranges between two finite
+/// values v0 and v1, referred to as "First v
+/// parameter" and the "Last v parameter" respectively.
+/// The surface is limited by four curves which are the
+/// boundaries of the surface:
+/// - its u0 and u1 isoparametric curves in the u parametric direction, and
+/// - its v0 and v1 isoparametric curves in the v parametric direction.
+/// A bounded surface is finite.
+/// The common behavior of all bounded surfaces is
+/// described by the Geom_Surface class.
+/// The Geom package provides three concrete
+/// implementations of bounded surfaces:
+/// - Geom_BezierSurface,
+/// - Geom_BSplineSurface, and
+/// - Geom_RectangularTrimmedSurface.
+/// The first two of these implement well known
+/// mathematical definitions of complex surfaces, the third
+/// trims a surface using four isoparametric curves, i.e. it
+/// limits the variation of its parameters to a rectangle in
+/// 2D parametric space.
 pub use ffi::BoundedSurface;
 impl BoundedSurface {
     /// Upcast to Geom_Geometry
@@ -262,6 +371,44 @@ impl BoundedSurface {
         ffi::BoundedSurface_get_type_name()
     }
 }
+
+/// Describes the common behavior of surfaces which
+/// have a simple parametric equation in a local
+/// coordinate system. The Geom package provides
+/// several implementations of concrete elementary surfaces:
+/// - the plane, and
+/// - four simple surfaces of revolution: the cylinder, the
+/// cone, the sphere and the torus.
+/// An elementary surface inherits the common behavior
+/// of Geom_Surface surfaces. Furthermore, it is located
+/// in 3D space by a coordinate system (a gp_Ax3
+/// object) which is also its local coordinate system.
+/// Any elementary surface is oriented, i.e. the normal
+/// vector is always defined, and gives the same
+/// orientation to the surface, at any point on the surface.
+/// In topology this property is referred to as the "outside
+/// region of the surface". This orientation is related to
+/// the two parametric directions of the surface.
+/// Rotation of a surface around the "main Axis" of its
+/// coordinate system, in the trigonometric sense given
+/// by the "X Direction" and the "Y Direction" of the
+/// coordinate system, defines the u parametric direction
+/// of that elementary surface of revolution. This is the
+/// default construction mode.
+/// It is also possible, however, to change the orientation
+/// of a surface by reversing one of the two parametric
+/// directions: use the UReverse or VReverse functions
+/// to change the orientation of the normal at any point on the surface.
+/// Warning
+/// The local coordinate system of an elementary surface
+/// is not necessarily direct:
+/// - if it is direct, the trigonometric sense defined by its
+/// "main Direction" is the same as the trigonometric
+/// sense defined by its two vectors "X Direction" and "Y Direction":
+/// "main Direction" = "X Direction" ^ "Y Direction"
+/// - if it is indirect, the two definitions of trigonometric
+/// sense are opposite:
+/// "main Direction" = - "X Direction" ^ "Y Direction"
 pub use ffi::ElementarySurface;
 impl ElementarySurface {
     /// Upcast to Geom_Geometry
@@ -288,6 +435,56 @@ impl ElementarySurface {
         ffi::ElementarySurface_get_type_name()
     }
 }
+
+/// Describes a rational or non-rational Bezier curve
+/// - a non-rational Bezier curve is defined by a table of
+/// poles (also called control points),
+/// - a rational Bezier curve is defined by a table of
+/// poles with varying weights.
+/// These data are manipulated by two parallel arrays:
+/// - the poles table, which is an array of gp_Pnt points, and
+/// - the weights table, which is an array of reals.
+/// The bounds of these arrays are 1 and "the number of "poles" of the curve.
+/// The poles of the curve are "control points" used to deform the curve.
+/// The first pole is the start point of the curve, and the
+/// last pole is the end point of the curve. The segment
+/// that joins the first pole to the second pole is the
+/// tangent to the curve at its start point, and the
+/// segment that joins the last pole to the
+/// second-from-last pole is the tangent to the curve at its end point.
+/// It is more difficult to give a geometric signification to
+/// the weights but they are useful for providing the exact
+/// representations of arcs of a circle or ellipse.
+/// Moreover, if the weights of all poles are equal, the
+/// curve is polynomial; it is therefore a non-rational
+/// curve. The non-rational curve is a special and
+/// frequently used case. The weights are defined and
+/// used only in the case of a rational curve.
+/// The degree of a Bezier curve is equal to the number
+/// of poles, minus 1. It must be greater than or equal to
+/// 1. However, the degree of a Geom_BezierCurve
+/// curve is limited to a value (25) which is defined and
+/// controlled by the system. This value is returned by the function MaxDegree.
+/// The parameter range for a Bezier curve is [ 0, 1 ].
+/// If the first and last control points of the Bezier curve
+/// are the same point then the curve is closed. For
+/// example, to create a closed Bezier curve with four
+/// control points, you have to give the set of control
+/// points P1, P2, P3 and P1.
+/// The continuity of a Bezier curve is infinite.
+/// It is not possible to build a Bezier curve with negative
+/// weights. We consider that a weight value is zero if it
+/// is less than or equal to gp::Resolution(). We
+/// also consider that two weight values W1 and W2 are equal if:
+/// |W2 - W1| <= gp::Resolution().
+/// Warning
+/// - When considering the continuity of a closed Bezier
+/// curve at the junction point, remember that a curve
+/// of this type is never periodic. This means that the
+/// derivatives for the parameter u = 0 have no
+/// reason to be the same as the derivatives for the
+/// parameter u = 1 even if the curve is closed.
+/// - The length of a Bezier curve can be null.
 pub use ffi::BezierCurve;
 impl BezierCurve {
     /// Creates a non rational Bezier curve with a set of poles
@@ -382,6 +579,74 @@ impl BezierCurve {
         ffi::BezierCurve_get_type_name()
     }
 }
+
+/// Describes a rational or non-rational Bezier surface.
+/// - A non-rational Bezier surface is defined by a table
+/// of poles (also known as control points).
+/// - A rational Bezier surface is defined by a table of
+/// poles with varying associated weights.
+/// This data is manipulated using two associative 2D arrays:
+/// - the poles table, which is a 2D array of gp_Pnt, and
+/// - the weights table, which is a 2D array of reals.
+/// The bounds of these arrays are:
+/// - 1 and NbUPoles for the row bounds, where
+/// NbUPoles is the number of poles of the surface
+/// in the u parametric direction, and
+/// - 1 and NbVPoles for the column bounds, where
+/// NbVPoles is the number of poles of the surface
+/// in the v parametric direction.
+/// The poles of the surface, the "control points", are the
+/// points used to shape and reshape the surface. They
+/// comprise a rectangular network of points:
+/// - The points (1, 1), (NbUPoles, 1), (1,
+/// NbVPoles) and (NbUPoles, NbVPoles)
+/// are the four parametric "corners" of the surface.
+/// - The first column of poles and the last column of
+/// poles define two Bezier curves which delimit the
+/// surface in the v parametric direction. These are
+/// the v isoparametric curves corresponding to
+/// values 0 and 1 of the v parameter.
+/// - The first row of poles and the last row of poles
+/// define two Bezier curves which delimit the surface
+/// in the u parametric direction. These are the u
+/// isoparametric curves corresponding to values 0
+/// and 1 of the u parameter.
+/// It is more difficult to define a geometrical significance
+/// for the weights. However they are useful for
+/// representing a quadric surface precisely. Moreover, if
+/// the weights of all the poles are equal, the surface has
+/// a polynomial equation, and hence is a "non-rational surface".
+/// The non-rational surface is a special, but frequently
+/// used, case, where all poles have identical weights.
+/// The weights are defined and used only in the case of
+/// a rational surface. This rational characteristic is
+/// defined in each parametric direction. Hence, a
+/// surface can be rational in the u parametric direction,
+/// and non-rational in the v parametric direction.
+/// Likewise, the degree of a surface is defined in each
+/// parametric direction. The degree of a Bezier surface
+/// in a given parametric direction is equal to the number
+/// of poles of the surface in that parametric direction,
+/// minus 1. This must be greater than or equal to 1.
+/// However, the degree for a Geom_BezierSurface is
+/// limited to a value of (25) which is defined and
+/// controlled by the system. This value is returned by the
+/// function MaxDegree.
+/// The parameter range for a Bezier surface is [ 0, 1 ]
+/// in the two parametric directions.
+/// A Bezier surface can also be closed, or open, in each
+/// parametric direction. If the first row of poles is
+/// identical to the last row of poles, the surface is closed
+/// in the u parametric direction. If the first column of
+/// poles is identical to the last column of poles, the
+/// surface is closed in the v parametric direction.
+/// The continuity of a Bezier surface is infinite in the u
+/// parametric direction and the in v parametric direction.
+/// Note: It is not possible to build a Bezier surface with
+/// negative weights. Any weight value that is less than,
+/// or equal to, gp::Resolution() is considered
+/// to be zero. Two weight values, W1 and W2, are
+/// considered equal if: |W2-W1| <= gp::Resolution()
 pub use ffi::BezierSurface;
 impl BezierSurface {
     /// Creates a non-rational Bezier surface with a set of poles.
@@ -499,6 +764,93 @@ impl BezierSurface {
         ffi::BezierSurface_get_type_name()
     }
 }
+
+/// Definition of the B_spline curve.
+/// A B-spline curve can be
+/// Uniform  or non-uniform
+/// Rational or non-rational
+/// Periodic or non-periodic
+///
+/// a b-spline curve is defined by :
+/// its degree; the degree for a
+/// Geom_BSplineCurve is limited to a value (25)
+/// which is defined and controlled by the system.
+/// This value is returned by the function MaxDegree;
+/// - its periodic or non-periodic nature;
+/// - a table of poles (also called control points), with
+/// their associated weights if the BSpline curve is
+/// rational. The poles of the curve are "control
+/// points" used to deform the curve. If the curve is
+/// non-periodic, the first pole is the start point of
+/// the curve, and the last pole is the end point of
+/// the curve. The segment which joins the first pole
+/// to the second pole is the tangent to the curve at
+/// its start point, and the segment which joins the
+/// last pole to the second-from-last pole is the
+/// tangent to the curve at its end point. If the curve
+/// is periodic, these geometric properties are not
+/// verified. It is more difficult to give a geometric
+/// signification to the weights but are useful for
+/// providing exact representations of the arcs of a
+/// circle or ellipse. Moreover, if the weights of all the
+/// poles are equal, the curve has a polynomial
+/// equation; it is therefore a non-rational curve.
+/// - a table of knots with their multiplicities. For a
+/// Geom_BSplineCurve, the table of knots is an
+/// increasing sequence of reals without repetition;
+/// the multiplicities define the repetition of the knots.
+/// A BSpline curve is a piecewise polynomial or
+/// rational curve. The knots are the parameters of
+/// junction points between two pieces. The
+/// multiplicity Mult(i) of the knot Knot(i) of
+/// the BSpline curve is related to the degree of
+/// continuity of the curve at the knot Knot(i),
+/// which is equal to Degree - Mult(i)
+/// where Degree is the degree of the BSpline curve.
+/// If the knots are regularly spaced (i.e. the difference
+/// between two consecutive knots is a constant), three
+/// specific and frequently used cases of knot
+/// distribution can be identified:
+/// - "uniform" if all multiplicities are equal to 1,
+/// - "quasi-uniform" if all multiplicities are equal to 1,
+/// except the first and the last knot which have a
+/// multiplicity of Degree + 1, where Degree is
+/// the degree of the BSpline curve,
+/// - "Piecewise Bezier" if all multiplicities are equal to
+/// Degree except the first and last knot which
+/// have a multiplicity of Degree + 1, where
+/// Degree is the degree of the BSpline curve. A
+/// curve of this type is a concatenation of arcs of Bezier curves.
+/// If the BSpline curve is not periodic:
+/// - the bounds of the Poles and Weights tables are 1
+/// and NbPoles, where NbPoles is the number
+/// of poles of the BSpline curve,
+/// - the bounds of the Knots and Multiplicities tables
+/// are 1 and NbKnots, where NbKnots is the
+/// number of knots of the BSpline curve.
+/// If the BSpline curve is periodic, and if there are k
+/// periodic knots and p periodic poles, the period is:
+/// period = Knot(k + 1) - Knot(1)
+/// and the poles and knots tables can be considered
+/// as infinite tables, verifying:
+/// - Knot(i+k) = Knot(i) + period
+/// - Pole(i+p) = Pole(i)
+/// Note: data structures of a periodic BSpline curve
+/// are more complex than those of a non-periodic one.
+/// Warning
+/// In this class, weight value is considered to be zero if
+/// the weight is less than or equal to gp::Resolution().
+///
+/// References :
+/// . A survey of curve and surface methods in CADG Wolfgang BOHM
+/// CAGD 1 (1984)
+/// . On de Boor-like algorithms and blossoming Wolfgang BOEHM
+/// cagd 5 (1988)
+/// . Blossoming and knot insertion algorithms for B-spline curves
+/// Ronald N. GOLDMAN
+/// . Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA
+/// . Curves and Surfaces for Computer Aided Geometric Design,
+/// a practical guide Gerald Farin
 pub use ffi::BSplineCurve;
 impl BSplineCurve {
     /// Creates a  non-rational B_spline curve   on  the
@@ -674,6 +1026,118 @@ impl BSplineCurve {
         ffi::BSplineCurve_get_type_name()
     }
 }
+
+/// Describes a BSpline surface.
+/// In each parametric direction, a BSpline surface can be:
+/// - uniform or non-uniform,
+/// - rational or non-rational,
+/// - periodic or non-periodic.
+/// A BSpline surface is defined by:
+/// - its degrees, in the u and v parametric directions,
+/// - its periodic characteristic, in the u and v parametric directions,
+/// - a table of poles, also called control points (together
+/// with the associated weights if the surface is rational), and
+/// - a table of knots, together with the associated multiplicities.
+/// The degree of a Geom_BSplineSurface is limited to
+/// a value (25) which is defined and controlled by the
+/// system. This value is returned by the function MaxDegree.
+/// Poles and Weights
+/// Poles and Weights are manipulated using two associative double arrays:
+/// - the poles table, which is a double array of gp_Pnt points, and
+/// - the weights table, which is a double array of reals.
+/// The bounds of the poles and weights arrays are:
+/// - 1 and NbUPoles for the row bounds (provided
+/// that the BSpline surface is not periodic in the u
+/// parametric direction), where NbUPoles is the
+/// number of poles of the surface in the u parametric direction, and
+/// - 1 and NbVPoles for the column bounds (provided
+/// that the BSpline surface is not periodic in the v
+/// parametric direction), where NbVPoles is the
+/// number of poles of the surface in the v parametric direction.
+/// The poles of the surface are the points used to shape
+/// and reshape the surface. They comprise a rectangular network.
+/// If the surface is not periodic:
+/// - The points (1, 1), (NbUPoles, 1), (1,
+/// NbVPoles), and (NbUPoles, NbVPoles)
+/// are the four parametric "corners" of the surface.
+/// - The first column of poles and the last column of
+/// poles define two BSpline curves which delimit the
+/// surface in the v parametric direction. These are the
+/// v isoparametric curves corresponding to the two
+/// bounds of the v parameter.
+/// - The first row of poles and the last row of poles
+/// define two BSpline curves which delimit the surface
+/// in the u parametric direction. These are the u
+/// isoparametric curves corresponding to the two bounds of the u parameter.
+/// If the surface is periodic, these geometric properties are not verified.
+/// It is more difficult to define a geometrical significance
+/// for the weights. However they are useful for
+/// representing a quadric surface precisely. Moreover, if
+/// the weights of all the poles are equal, the surface has
+/// a polynomial equation, and hence is a "non-rational surface".
+/// The non-rational surface is a special, but frequently
+/// used, case, where all poles have identical weights.
+/// The weights are defined and used only in the case of
+/// a rational surface. The rational characteristic is
+/// defined in each parametric direction. A surface can be
+/// rational in the u parametric direction, and
+/// non-rational in the v parametric direction.
+/// Knots and Multiplicities
+/// For a Geom_BSplineSurface the table of knots is
+/// made up of two increasing sequences of reals, without
+/// repetition, one for each parametric direction. The
+/// multiplicities define the repetition of the knots.
+/// A BSpline surface comprises multiple contiguous
+/// patches, which are themselves polynomial or rational
+/// surfaces. The knots are the parameters of the
+/// isoparametric curves which limit these contiguous
+/// patches. The multiplicity of a knot on a BSpline
+/// surface (in a given parametric direction) is related to
+/// the degree of continuity of the surface at that knot in
+/// that parametric direction:
+/// Degree of continuity at knot(i) = Degree - Multi(i) where:
+/// - Degree is the degree of the BSpline surface in
+/// the given parametric direction, and
+/// - Multi(i) is the multiplicity of knot number i in
+/// the given parametric direction.
+/// There are some special cases, where the knots are
+/// regularly spaced in one parametric direction (i.e. the
+/// difference between two consecutive knots is a constant).
+/// - "Uniform": all the multiplicities are equal to 1.
+/// - "Quasi-uniform": all the multiplicities are equal to 1,
+/// except for the first and last knots in this parametric
+/// direction, and these are equal to Degree + 1.
+/// - "Piecewise Bezier": all the multiplicities are equal to
+/// Degree except for the first and last knots, which
+/// are equal to Degree + 1. This surface is a
+/// concatenation of Bezier patches in the given
+/// parametric direction.
+/// If the BSpline surface is not periodic in a given
+/// parametric direction, the bounds of the knots and
+/// multiplicities tables are 1 and NbKnots, where
+/// NbKnots is the number of knots of the BSpline
+/// surface in that parametric direction.
+/// If the BSpline surface is periodic in a given parametric
+/// direction, and there are k periodic knots and p
+/// periodic poles in that parametric direction:
+/// - the period is such that:
+/// period = Knot(k+1) - Knot(1), and
+/// - the poles and knots tables in that parametric
+/// direction can be considered as infinite tables, such that:
+/// Knot(i+k) = Knot(i) + period, and
+/// Pole(i+p) = Pole(i)
+/// Note: The data structure tables for a periodic BSpline
+/// surface are more complex than those of a non-periodic one.
+/// References :
+/// . A survey of curve and surface methods in CADG Wolfgang BOHM
+/// CAGD 1 (1984)
+/// . On de Boor-like algorithms and blossoming Wolfgang BOEHM
+/// cagd 5 (1988)
+/// . Blossoming and knot insertion algorithms for B-spline curves
+/// Ronald N. GOLDMAN
+/// . Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA
+/// . Curves and Surfaces for Computer Aided Geometric Design,
+/// a practical guide Gerald Farin
 pub use ffi::BSplineSurface;
 impl BSplineSurface {
     /// Creates  a non-rational b-spline surface (weights
@@ -906,6 +1370,38 @@ impl BSplineSurface {
         ffi::BSplineSurface_get_type_name()
     }
 }
+
+/// This class defines the infinite cylindrical surface.
+///
+/// Every cylindrical surface is set by the following equation:
+/// @code
+/// S(U,V) = Location + R*cos(U)*XAxis + R*sin(U)*YAxis + V*ZAxis,
+/// @endcode
+/// where R is cylinder radius.
+///
+/// The local coordinate system of the CylindricalSurface is defined
+/// with an axis placement (see class ElementarySurface).
+///
+/// The "ZAxis" is the symmetry axis of the CylindricalSurface,
+/// it gives the direction of increasing parametric value V.
+///
+/// The parametrization range is :
+/// @code
+/// U [0, 2*PI],  V ]- infinite, + infinite[
+/// @endcode
+///
+/// The "XAxis" and the "YAxis" define the placement plane of the
+/// surface (Z = 0, and parametric value V = 0)  perpendicular to
+/// the symmetry axis. The "XAxis" defines the origin of the
+/// parameter U = 0.  The trigonometric sense gives the positive
+/// orientation for the parameter U.
+///
+/// When you create a CylindricalSurface the U and V directions of
+/// parametrization are such that at each point of the surface the
+/// normal is oriented towards the "outside region".
+///
+/// The methods UReverse VReverse change the orientation of the
+/// surface.
 pub use ffi::CylindricalSurface;
 impl CylindricalSurface {
     /// A3 defines the local coordinate system of the cylindrical surface.
@@ -1018,6 +1514,33 @@ impl CylindricalSurface {
         ffi::CylindricalSurface_get_type_name()
     }
 }
+
+/// Describes a plane in 3D space.
+/// A plane is positioned in space by a coordinate system
+/// (a gp_Ax3 object) such that the plane is defined by
+/// the origin, "X Direction" and "Y Direction" of this
+/// coordinate system.
+/// This coordinate system is the "local coordinate
+/// system" of the plane. The following apply:
+/// - Its "X Direction" and "Y Direction" are respectively
+/// the u and v parametric directions of the plane.
+/// - Its origin is the origin of the u and v parameters
+/// (also called the "origin" of the plane).
+/// - Its "main Direction" is a vector normal to the plane.
+/// This normal vector gives the orientation of the
+/// plane only if the local coordinate system is "direct".
+/// (The orientation of the plane is always defined by
+/// the "X Direction" and the "Y Direction" of its local
+/// coordinate system.)
+/// The parametric equation of the plane is:
+/// @code
+/// P(u, v) = O + u*XDir + v*YDir
+/// @endcode
+/// where O, XDir and YDir are respectively the
+/// origin, the "X Direction" and the "Y Direction" of the
+/// local coordinate system of the plane.
+/// The parametric range of the two parameters u and v
+/// is ] -infinity, +infinity [.
 pub use ffi::Plane;
 impl Plane {
     /// Creates a plane located in 3D space with an axis placement three axis.
@@ -1137,6 +1660,15 @@ impl Plane {
         ffi::Plane_get_type_name()
     }
 }
+
+/// Describes a portion of a curve (termed the "basis
+/// curve") limited by two parameter values inside the
+/// parametric domain of the basis curve.
+/// The trimmed curve is defined by:
+/// - the basis curve, and
+/// - the two parameter values which limit it.
+/// The trimmed curve can either have the same
+/// orientation as the basis curve or the opposite orientation.
 pub use ffi::TrimmedCurve;
 impl TrimmedCurve {
     /// Constructs a trimmed curve from the basis curve C
@@ -1432,7 +1964,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== Geom_Geometry ========================
-        /// /// **Source:** `Geom_Geometry.hxx` - `Geom_Geometry`
+        /// **Source:** `Geom_Geometry.hxx` - `Geom_Geometry`
         ///
         /// The abstract class Geometry for 3D space is the root
         /// class of all geometric objects from the Geom
@@ -1520,7 +2052,7 @@ pub(crate) mod ffi {
         #[cxx_name = "Geom_Geometry_get_type_name"]
         fn Geometry_get_type_name() -> String;
         /// ======================== Geom_Curve ========================
-        /// /// **Source:** `Geom_Curve.hxx` - `Geom_Curve`
+        /// **Source:** `Geom_Curve.hxx` - `Geom_Curve`
         ///
         /// The abstract class Curve describes the common
         /// behavior of curves in 3D space. The Geom package
@@ -1718,7 +2250,7 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleGeomCurve_to_HandleGeomGeometry"]
         fn curve_to_handle_geometry(handle: &HandleGeomCurve) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_Surface ========================
-        /// /// **Source:** `Geom_Surface.hxx` - `Geom_Surface`
+        /// **Source:** `Geom_Surface.hxx` - `Geom_Surface`
         ///
         /// Describes the common behavior of surfaces in 3D space.
         /// The Geom package provides many implementations of concrete derived surfaces,
@@ -1968,7 +2500,7 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleGeomSurface_to_HandleGeomGeometry"]
         fn surface_to_handle_geometry(handle: &HandleGeomSurface) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_BoundedCurve ========================
-        /// /// **Source:** `Geom_BoundedCurve.hxx` - `Geom_BoundedCurve`
+        /// **Source:** `Geom_BoundedCurve.hxx` - `Geom_BoundedCurve`
         ///
         /// The abstract class BoundedCurve describes the
         /// common behavior of bounded curves in 3D space. A
@@ -2020,7 +2552,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomBoundedCurve,
         ) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_BoundedSurface ========================
-        /// /// **Source:** `Geom_BoundedSurface.hxx` - `Geom_BoundedSurface`
+        /// **Source:** `Geom_BoundedSurface.hxx` - `Geom_BoundedSurface`
         ///
         /// The root class for bounded surfaces in 3D space. A
         /// bounded surface is defined by a rectangle in its 2D parametric space, i.e.
@@ -2081,7 +2613,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomBoundedSurface,
         ) -> UniquePtr<HandleGeomSurface>;
         /// ======================== Geom_ElementarySurface ========================
-        /// /// **Source:** `Geom_ElementarySurface.hxx` - `Geom_ElementarySurface`
+        /// **Source:** `Geom_ElementarySurface.hxx` - `Geom_ElementarySurface`
         ///
         /// Describes the common behavior of surfaces which
         /// have a simple parametric equation in a local
@@ -2204,7 +2736,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomElementarySurface,
         ) -> UniquePtr<HandleGeomSurface>;
         /// ======================== Geom_BezierCurve ========================
-        /// /// **Source:** `Geom_BezierCurve.hxx` - `Geom_BezierCurve`
+        /// **Source:** `Geom_BezierCurve.hxx` - `Geom_BezierCurve`
         ///
         /// Describes a rational or non-rational Bezier curve
         /// - a non-rational Bezier curve is defined by a table of
@@ -2257,7 +2789,7 @@ pub(crate) mod ffi {
         /// - The length of a Bezier curve can be null.
         #[cxx_name = "Geom_BezierCurve"]
         type BezierCurve;
-        /// /// **Source:** `Geom_BezierCurve.hxx` - `Geom_BezierCurve::Geom_BezierCurve()`
+        /// **Source:** `Geom_BezierCurve.hxx` - `Geom_BezierCurve::Geom_BezierCurve()`
         ///
         /// Creates a non rational Bezier curve with a set of poles
         /// CurvePoles.  The weights are defaulted to all being 1.
@@ -2265,7 +2797,7 @@ pub(crate) mod ffi {
         /// or lower than 2.
         #[cxx_name = "Geom_BezierCurve_ctor_array1ofpnt"]
         fn BezierCurve_ctor_array1ofpnt(CurvePoles: &TColgp_Array1OfPnt) -> UniquePtr<BezierCurve>;
-        /// /// **Source:** `Geom_BezierCurve.hxx` - `Geom_BezierCurve::Geom_BezierCurve()`
+        /// **Source:** `Geom_BezierCurve.hxx` - `Geom_BezierCurve::Geom_BezierCurve()`
         ///
         /// Creates a rational Bezier curve with the set of poles
         /// CurvePoles and the set of weights  PoleWeights .
@@ -2542,7 +3074,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomBezierCurve,
         ) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_BezierSurface ========================
-        /// /// **Source:** `Geom_BezierSurface.hxx` - `Geom_BezierSurface`
+        /// **Source:** `Geom_BezierSurface.hxx` - `Geom_BezierSurface`
         ///
         /// Describes a rational or non-rational Bezier surface.
         /// - A non-rational Bezier surface is defined by a table
@@ -2613,7 +3145,7 @@ pub(crate) mod ffi {
         /// considered equal if: |W2-W1| <= gp::Resolution()
         #[cxx_name = "Geom_BezierSurface"]
         type BezierSurface;
-        /// /// **Source:** `Geom_BezierSurface.hxx` - `Geom_BezierSurface::Geom_BezierSurface()`
+        /// **Source:** `Geom_BezierSurface.hxx` - `Geom_BezierSurface::Geom_BezierSurface()`
         ///
         /// Creates a non-rational Bezier surface with a set of poles.
         /// Control points representation :
@@ -2633,7 +3165,7 @@ pub(crate) mod ffi {
         fn BezierSurface_ctor_array2ofpnt(
             SurfacePoles: &TColgp_Array2OfPnt,
         ) -> UniquePtr<BezierSurface>;
-        /// /// **Source:** `Geom_BezierSurface.hxx` - `Geom_BezierSurface::Geom_BezierSurface()`
+        /// **Source:** `Geom_BezierSurface.hxx` - `Geom_BezierSurface::Geom_BezierSurface()`
         ///
         /// ---Purpose
         /// Creates a rational Bezier surface with a set of poles and a
@@ -3206,7 +3738,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomBezierSurface,
         ) -> UniquePtr<HandleGeomSurface>;
         /// ======================== Geom_BSplineCurve ========================
-        /// /// **Source:** `Geom_BSplineCurve.hxx` - `Geom_BSplineCurve`
+        /// **Source:** `Geom_BSplineCurve.hxx` - `Geom_BSplineCurve`
         ///
         /// Definition of the B_spline curve.
         /// A B-spline curve can be
@@ -3296,7 +3828,7 @@ pub(crate) mod ffi {
         /// a practical guide Gerald Farin
         #[cxx_name = "Geom_BSplineCurve"]
         type BSplineCurve;
-        /// /// **Source:** `Geom_BSplineCurve.hxx` - `Geom_BSplineCurve::Geom_BSplineCurve()`
+        /// **Source:** `Geom_BSplineCurve.hxx` - `Geom_BSplineCurve::Geom_BSplineCurve()`
         ///
         /// Creates a  non-rational B_spline curve   on  the
         /// basis <Knots, Multiplicities> of degree <Degree>.
@@ -3308,7 +3840,7 @@ pub(crate) mod ffi {
             Degree: i32,
             Periodic: bool,
         ) -> UniquePtr<BSplineCurve>;
-        /// /// **Source:** `Geom_BSplineCurve.hxx` - `Geom_BSplineCurve::Geom_BSplineCurve()`
+        /// **Source:** `Geom_BSplineCurve.hxx` - `Geom_BSplineCurve::Geom_BSplineCurve()`
         ///
         /// Creates  a rational B_spline  curve  on the basis
         /// <Knots, Multiplicities> of degree <Degree>.
@@ -4036,7 +4568,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomBSplineCurve,
         ) -> UniquePtr<HandleGeomGeometry>;
         /// ======================== Geom_BSplineSurface ========================
-        /// /// **Source:** `Geom_BSplineSurface.hxx` - `Geom_BSplineSurface`
+        /// **Source:** `Geom_BSplineSurface.hxx` - `Geom_BSplineSurface`
         ///
         /// Describes a BSpline surface.
         /// In each parametric direction, a BSpline surface can be:
@@ -4151,7 +4683,7 @@ pub(crate) mod ffi {
         /// a practical guide Gerald Farin
         #[cxx_name = "Geom_BSplineSurface"]
         type BSplineSurface;
-        /// /// **Source:** `Geom_BSplineSurface.hxx` - `Geom_BSplineSurface::Geom_BSplineSurface()`
+        /// **Source:** `Geom_BSplineSurface.hxx` - `Geom_BSplineSurface::Geom_BSplineSurface()`
         ///
         /// Creates  a non-rational b-spline surface (weights
         /// default value is 1.).
@@ -4184,7 +4716,7 @@ pub(crate) mod ffi {
             UPeriodic: bool,
             VPeriodic: bool,
         ) -> UniquePtr<BSplineSurface>;
-        /// /// **Source:** `Geom_BSplineSurface.hxx` - `Geom_BSplineSurface::Geom_BSplineSurface()`
+        /// **Source:** `Geom_BSplineSurface.hxx` - `Geom_BSplineSurface::Geom_BSplineSurface()`
         ///
         /// Creates  a non-rational b-spline surface (weights
         /// default value is 1.).
@@ -5384,7 +5916,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomBSplineSurface,
         ) -> UniquePtr<HandleGeomSurface>;
         /// ======================== Geom_CylindricalSurface ========================
-        /// /// **Source:** `Geom_CylindricalSurface.hxx` - `Geom_CylindricalSurface`
+        /// **Source:** `Geom_CylindricalSurface.hxx` - `Geom_CylindricalSurface`
         ///
         /// This class defines the infinite cylindrical surface.
         ///
@@ -5419,7 +5951,7 @@ pub(crate) mod ffi {
         /// surface.
         #[cxx_name = "Geom_CylindricalSurface"]
         type CylindricalSurface;
-        /// /// **Source:** `Geom_CylindricalSurface.hxx` - `Geom_CylindricalSurface::Geom_CylindricalSurface()`
+        /// **Source:** `Geom_CylindricalSurface.hxx` - `Geom_CylindricalSurface::Geom_CylindricalSurface()`
         ///
         /// A3 defines the local coordinate system of the cylindrical surface.
         /// The "ZDirection" of A3 defines the direction of the surface's axis of symmetry.
@@ -5435,7 +5967,7 @@ pub(crate) mod ffi {
             A3: &gp_Ax3,
             Radius: f64,
         ) -> UniquePtr<CylindricalSurface>;
-        /// /// **Source:** `Geom_CylindricalSurface.hxx` - `Geom_CylindricalSurface::Geom_CylindricalSurface()`
+        /// **Source:** `Geom_CylindricalSurface.hxx` - `Geom_CylindricalSurface::Geom_CylindricalSurface()`
         ///
         /// Creates a CylindricalSurface from a non transient gp_Cylinder.
         #[cxx_name = "Geom_CylindricalSurface_ctor_cylinder"]
@@ -5676,7 +6208,7 @@ pub(crate) mod ffi {
             handle: &HandleGeomCylindricalSurface,
         ) -> UniquePtr<HandleGeomSurface>;
         /// ======================== Geom_Plane ========================
-        /// /// **Source:** `Geom_Plane.hxx` - `Geom_Plane`
+        /// **Source:** `Geom_Plane.hxx` - `Geom_Plane`
         ///
         /// Describes a plane in 3D space.
         /// A plane is positioned in space by a coordinate system
@@ -5706,7 +6238,7 @@ pub(crate) mod ffi {
         /// is ] -infinity, +infinity [.
         #[cxx_name = "Geom_Plane"]
         type Plane;
-        /// /// **Source:** `Geom_Plane.hxx` - `Geom_Plane::Geom_Plane()`
+        /// **Source:** `Geom_Plane.hxx` - `Geom_Plane::Geom_Plane()`
         ///
         /// Creates a plane located in 3D space with an axis placement three axis.
         /// The "ZDirection" of "A3" is the direction normal
@@ -5715,18 +6247,18 @@ pub(crate) mod ffi {
         /// the directions of the U isoparametric and V isoparametric curves.
         #[cxx_name = "Geom_Plane_ctor_ax3"]
         fn Plane_ctor_ax3(A3: &gp_Ax3) -> UniquePtr<Plane>;
-        /// /// **Source:** `Geom_Plane.hxx` - `Geom_Plane::Geom_Plane()`
+        /// **Source:** `Geom_Plane.hxx` - `Geom_Plane::Geom_Plane()`
         ///
         /// Creates a plane from a non transient plane from package gp.
         #[cxx_name = "Geom_Plane_ctor_pln"]
         fn Plane_ctor_pln(Pl: &gp_Pln) -> UniquePtr<Plane>;
-        /// /// **Source:** `Geom_Plane.hxx` - `Geom_Plane::Geom_Plane()`
+        /// **Source:** `Geom_Plane.hxx` - `Geom_Plane::Geom_Plane()`
         ///
         /// P is the "Location" point or origin of the plane.
         /// V is the direction normal to the plane.
         #[cxx_name = "Geom_Plane_ctor_pnt_dir"]
         fn Plane_ctor_pnt_dir(P: &gp_Pnt, V: &gp_Dir) -> UniquePtr<Plane>;
-        /// /// **Source:** `Geom_Plane.hxx` - `Geom_Plane::Geom_Plane()`
+        /// **Source:** `Geom_Plane.hxx` - `Geom_Plane::Geom_Plane()`
         ///
         /// Creates a plane from its cartesian equation:
         /// @code
@@ -5925,7 +6457,7 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleGeomPlane_to_HandleGeomSurface"]
         fn plane_to_handle_surface(handle: &HandleGeomPlane) -> UniquePtr<HandleGeomSurface>;
         /// ======================== Geom_TrimmedCurve ========================
-        /// /// **Source:** `Geom_TrimmedCurve.hxx` - `Geom_TrimmedCurve`
+        /// **Source:** `Geom_TrimmedCurve.hxx` - `Geom_TrimmedCurve`
         ///
         /// Describes a portion of a curve (termed the "basis
         /// curve") limited by two parameter values inside the
@@ -5937,7 +6469,7 @@ pub(crate) mod ffi {
         /// orientation as the basis curve or the opposite orientation.
         #[cxx_name = "Geom_TrimmedCurve"]
         type TrimmedCurve;
-        /// /// **Source:** `Geom_TrimmedCurve.hxx` - `Geom_TrimmedCurve::Geom_TrimmedCurve()`
+        /// **Source:** `Geom_TrimmedCurve.hxx` - `Geom_TrimmedCurve::Geom_TrimmedCurve()`
         ///
         /// Constructs a trimmed curve from the basis curve C
         /// which is limited between parameter values U1 and U2.

@@ -11,6 +11,19 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+/// Provides global functions to compute a shape's global
+/// properties for lines, surfaces or volumes, and bring
+/// them together with the global properties already
+/// computed for a geometric system.
+/// The global properties computed for a system are :
+/// - its mass,
+/// - its center of mass,
+/// - its matrix of inertia,
+/// - its moment about an axis,
+/// - its radius of gyration about an axis,
+/// - and its principal properties of inertia such as
+/// principal axis, principal moments, principal radius of gyration.
 pub use ffi::BRepGProp;
 impl BRepGProp {
     /// Computes the linear global properties of the shape S,
@@ -266,6 +279,7 @@ impl BRepGProp {
         )
     }
 }
+
 pub use ffi::Face;
 impl Face {
     /// Constructor. Initializes the object with a flag IsUseSpan
@@ -300,7 +314,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BRepGProp ========================
-        /// /// **Source:** `BRepGProp.hxx` - `BRepGProp`
+        /// **Source:** `BRepGProp.hxx` - `BRepGProp`
         ///
         /// Provides global functions to compute a shape's global
         /// properties for lines, surfaces or volumes, and bring
@@ -539,10 +553,10 @@ pub(crate) mod ffi {
             SkipShared: bool,
         ) -> f64;
         /// ======================== BRepGProp_Face ========================
-        /// /// **Source:** `BRepGProp_Face.hxx` - `BRepGProp_Face`
+        /// **Source:** `BRepGProp_Face.hxx` - `BRepGProp_Face`
         #[cxx_name = "BRepGProp_Face"]
         type Face;
-        /// /// **Source:** `BRepGProp_Face.hxx` - `BRepGProp_Face::BRepGProp_Face()`
+        /// **Source:** `BRepGProp_Face.hxx` - `BRepGProp_Face::BRepGProp_Face()`
         ///
         /// Constructor. Initializes the object with a flag IsUseSpan
         /// that says if it is necessary to define spans on a face.
@@ -550,7 +564,7 @@ pub(crate) mod ffi {
         /// are returned by the methods GetUKnots and GetTKnots.
         #[cxx_name = "BRepGProp_Face_ctor_bool"]
         fn Face_ctor_bool(IsUseSpan: bool) -> UniquePtr<Face>;
-        /// /// **Source:** `BRepGProp_Face.hxx` - `BRepGProp_Face::BRepGProp_Face()`
+        /// **Source:** `BRepGProp_Face.hxx` - `BRepGProp_Face::BRepGProp_Face()`
         ///
         /// Constructor. Initializes the object with the face and the
         /// flag IsUseSpan that says if it is necessary to define

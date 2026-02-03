@@ -24,6 +24,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
 pub use ffi::SecHArray1;
 impl SecHArray1 {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -64,12 +65,16 @@ impl SecHArray1 {
         ffi::SecHArray1_get_type_name()
     }
 }
+
+/// A Section of fillet.
 pub use ffi::CircSection;
 impl CircSection {
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::CircSection_ctor()
     }
 }
+
+/// Elementary  Spine for cheminements and approximations.
 pub use ffi::ElSpine;
 impl ElSpine {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -141,6 +146,9 @@ impl ElSpine {
         ffi::ElSpine_get_type_name()
     }
 }
+
+/// data structure for all information related to  the
+/// fillet and to 2 faces vis a vis
 pub use ffi::SurfData;
 impl SurfData {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -164,6 +172,10 @@ impl SurfData {
         ffi::SurfData_get_type_name()
     }
 }
+
+/// point    start/end of  fillet common  to  2 adjacent  filets
+/// and  to an edge on  one of 2 faces participating
+/// in  the construction of  the  fillet
 pub use ffi::CommonPoint;
 impl CommonPoint {
     /// Empty constructor.
@@ -171,12 +183,16 @@ impl CommonPoint {
         ffi::CommonPoint_ctor()
     }
 }
+
+/// interference face/fillet
 pub use ffi::FaceInterference;
 impl FaceInterference {
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::FaceInterference_ctor()
     }
 }
+
+/// Data characterising a band of fillet.
 pub use ffi::Stripe;
 impl Stripe {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -192,6 +208,7 @@ impl Stripe {
         ffi::Stripe_get_type_name()
     }
 }
+
 pub use ffi::HData;
 impl HData {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -213,6 +230,8 @@ impl HData {
         ffi::HData_get_type_name()
     }
 }
+
+/// Encapsulation of IndexedDataMapOfShapeListOfShape.
 pub use ffi::Map;
 impl Map {
     /// Create an empty Map
@@ -220,12 +239,16 @@ impl Map {
         ffi::Map_ctor()
     }
 }
+
+/// encapsulation of IndexedDataMapOfVertexListOfStripe
 pub use ffi::StripeMap;
 impl StripeMap {
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::StripeMap_ctor()
     }
 }
+
+/// Storage of  a curve  and its 2 faces or surfaces of  support.
 pub use ffi::Regul;
 impl Regul {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -242,23 +265,23 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== ChFiDS_SecHArray1 ========================
-        /// /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1`
+        /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1`
         #[cxx_name = "ChFiDS_SecHArray1"]
         type SecHArray1;
-        /// /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor"]
         fn SecHArray1_ctor() -> UniquePtr<SecHArray1>;
-        /// /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor_int2"]
         fn SecHArray1_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<SecHArray1>;
-        /// /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor_int2_circsection"]
         fn SecHArray1_ctor_int2_circsection(
             theLower: i32,
             theUpper: i32,
             theValue: &CircSection,
         ) -> UniquePtr<SecHArray1>;
-        /// /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor_circsection_int2_bool"]
         fn SecHArray1_ctor_circsection_int2_bool(
             theBegin: &CircSection,
@@ -266,7 +289,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<SecHArray1>;
-        /// /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+        /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor_secarray1"]
         fn SecHArray1_ctor_secarray1(theOther: &ChFiDS_SecArray1) -> UniquePtr<SecHArray1>;
         #[cxx_name = "Array1"]
@@ -281,12 +304,12 @@ pub(crate) mod ffi {
         #[cxx_name = "ChFiDS_SecHArray1_to_handle"]
         fn SecHArray1_to_handle(obj: UniquePtr<SecHArray1>) -> UniquePtr<HandleChFiDSSecHArray1>;
         /// ======================== ChFiDS_CircSection ========================
-        /// /// **Source:** `ChFiDS_CircSection.hxx` - `ChFiDS_CircSection`
+        /// **Source:** `ChFiDS_CircSection.hxx` - `ChFiDS_CircSection`
         ///
         /// A Section of fillet.
         #[cxx_name = "ChFiDS_CircSection"]
         type CircSection;
-        /// /// **Source:** `ChFiDS_CircSection.hxx` - `ChFiDS_CircSection::ChFiDS_CircSection()`
+        /// **Source:** `ChFiDS_CircSection.hxx` - `ChFiDS_CircSection::ChFiDS_CircSection()`
         #[cxx_name = "ChFiDS_CircSection_ctor"]
         fn CircSection_ctor() -> UniquePtr<CircSection>;
         #[cxx_name = "Set"]
@@ -298,12 +321,12 @@ pub(crate) mod ffi {
         #[cxx_name = "Get"]
         fn get_lin_real2(self: &CircSection, C: Pin<&mut gp_Lin>, F: &mut f64, L: &mut f64);
         /// ======================== ChFiDS_ElSpine ========================
-        /// /// **Source:** `ChFiDS_ElSpine.hxx` - `ChFiDS_ElSpine`
+        /// **Source:** `ChFiDS_ElSpine.hxx` - `ChFiDS_ElSpine`
         ///
         /// Elementary  Spine for cheminements and approximations.
         #[cxx_name = "ChFiDS_ElSpine"]
         type ElSpine;
-        /// /// **Source:** `ChFiDS_ElSpine.hxx` - `ChFiDS_ElSpine::ChFiDS_ElSpine()`
+        /// **Source:** `ChFiDS_ElSpine.hxx` - `ChFiDS_ElSpine::ChFiDS_ElSpine()`
         #[cxx_name = "ChFiDS_ElSpine_ctor"]
         fn ElSpine_ctor() -> UniquePtr<ElSpine>;
         #[cxx_name = "DynamicType"]
@@ -417,13 +440,13 @@ pub(crate) mod ffi {
         #[cxx_name = "ChFiDS_ElSpine_as_Adaptor3d_Curve_mut"]
         fn el_spine_as_adaptor3d_curve_mut(self_: Pin<&mut ElSpine>) -> Pin<&mut Adaptor3d_Curve>;
         /// ======================== ChFiDS_SurfData ========================
-        /// /// **Source:** `ChFiDS_SurfData.hxx` - `ChFiDS_SurfData`
+        /// **Source:** `ChFiDS_SurfData.hxx` - `ChFiDS_SurfData`
         ///
         /// data structure for all information related to  the
         /// fillet and to 2 faces vis a vis
         #[cxx_name = "ChFiDS_SurfData"]
         type SurfData;
-        /// /// **Source:** `ChFiDS_SurfData.hxx` - `ChFiDS_SurfData::ChFiDS_SurfData()`
+        /// **Source:** `ChFiDS_SurfData.hxx` - `ChFiDS_SurfData::ChFiDS_SurfData()`
         #[cxx_name = "ChFiDS_SurfData_ctor"]
         fn SurfData_ctor() -> UniquePtr<SurfData>;
         #[cxx_name = "Copy"]
@@ -554,14 +577,14 @@ pub(crate) mod ffi {
         #[cxx_name = "ChFiDS_SurfData_to_handle"]
         fn SurfData_to_handle(obj: UniquePtr<SurfData>) -> UniquePtr<HandleChFiDSSurfData>;
         /// ======================== ChFiDS_CommonPoint ========================
-        /// /// **Source:** `ChFiDS_CommonPoint.hxx` - `ChFiDS_CommonPoint`
+        /// **Source:** `ChFiDS_CommonPoint.hxx` - `ChFiDS_CommonPoint`
         ///
         /// point    start/end of  fillet common  to  2 adjacent  filets
         /// and  to an edge on  one of 2 faces participating
         /// in  the construction of  the  fillet
         #[cxx_name = "ChFiDS_CommonPoint"]
         type CommonPoint;
-        /// /// **Source:** `ChFiDS_CommonPoint.hxx` - `ChFiDS_CommonPoint::ChFiDS_CommonPoint()`
+        /// **Source:** `ChFiDS_CommonPoint.hxx` - `ChFiDS_CommonPoint::ChFiDS_CommonPoint()`
         ///
         /// Empty constructor.
         #[cxx_name = "ChFiDS_CommonPoint_ctor"]
@@ -625,12 +648,12 @@ pub(crate) mod ffi {
         #[cxx_name = "Vector"]
         fn vector(self: &CommonPoint) -> &gp_Vec;
         /// ======================== ChFiDS_FaceInterference ========================
-        /// /// **Source:** `ChFiDS_FaceInterference.hxx` - `ChFiDS_FaceInterference`
+        /// **Source:** `ChFiDS_FaceInterference.hxx` - `ChFiDS_FaceInterference`
         ///
         /// interference face/fillet
         #[cxx_name = "ChFiDS_FaceInterference"]
         type FaceInterference;
-        /// /// **Source:** `ChFiDS_FaceInterference.hxx` - `ChFiDS_FaceInterference::ChFiDS_FaceInterference()`
+        /// **Source:** `ChFiDS_FaceInterference.hxx` - `ChFiDS_FaceInterference::ChFiDS_FaceInterference()`
         #[cxx_name = "ChFiDS_FaceInterference_ctor"]
         fn FaceInterference_ctor() -> UniquePtr<FaceInterference>;
         #[cxx_name = "SetFirstParameter"]
@@ -658,12 +681,12 @@ pub(crate) mod ffi {
         #[cxx_name = "Parameter"]
         fn parameter(self: &FaceInterference, IsFirst: bool) -> f64;
         /// ======================== ChFiDS_Stripe ========================
-        /// /// **Source:** `ChFiDS_Stripe.hxx` - `ChFiDS_Stripe`
+        /// **Source:** `ChFiDS_Stripe.hxx` - `ChFiDS_Stripe`
         ///
         /// Data characterising a band of fillet.
         #[cxx_name = "ChFiDS_Stripe"]
         type Stripe;
-        /// /// **Source:** `ChFiDS_Stripe.hxx` - `ChFiDS_Stripe::ChFiDS_Stripe()`
+        /// **Source:** `ChFiDS_Stripe.hxx` - `ChFiDS_Stripe::ChFiDS_Stripe()`
         #[cxx_name = "ChFiDS_Stripe_ctor"]
         fn Stripe_ctor() -> UniquePtr<Stripe>;
         /// Reset everything except Spine.
@@ -755,13 +778,13 @@ pub(crate) mod ffi {
         #[cxx_name = "ChFiDS_Stripe_to_handle"]
         fn Stripe_to_handle(obj: UniquePtr<Stripe>) -> UniquePtr<HandleChFiDSStripe>;
         /// ======================== ChFiDS_HData ========================
-        /// /// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData`
+        /// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData`
         #[cxx_name = "ChFiDS_HData"]
         type HData;
-        /// /// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData::ChFiDS_HData()`
+        /// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData::ChFiDS_HData()`
         #[cxx_name = "ChFiDS_HData_ctor"]
         fn HData_ctor() -> UniquePtr<HData>;
-        /// /// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData::ChFiDS_HData()`
+        /// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData::ChFiDS_HData()`
         #[cxx_name = "ChFiDS_HData_ctor_sequenceofsurfdata"]
         fn HData_ctor_sequenceofsurfdata(theOther: &ChFiDS_SequenceOfSurfData) -> UniquePtr<HData>;
         #[cxx_name = "Sequence"]
@@ -781,12 +804,12 @@ pub(crate) mod ffi {
         #[cxx_name = "ChFiDS_HData_to_handle"]
         fn HData_to_handle(obj: UniquePtr<HData>) -> UniquePtr<HandleChFiDSHData>;
         /// ======================== ChFiDS_Map ========================
-        /// /// **Source:** `ChFiDS_Map.hxx` - `ChFiDS_Map`
+        /// **Source:** `ChFiDS_Map.hxx` - `ChFiDS_Map`
         ///
         /// Encapsulation of IndexedDataMapOfShapeListOfShape.
         #[cxx_name = "ChFiDS_Map"]
         type Map;
-        /// /// **Source:** `ChFiDS_Map.hxx` - `ChFiDS_Map::ChFiDS_Map()`
+        /// **Source:** `ChFiDS_Map.hxx` - `ChFiDS_Map::ChFiDS_Map()`
         ///
         /// Create an empty Map
         #[cxx_name = "ChFiDS_Map_ctor"]
@@ -798,12 +821,12 @@ pub(crate) mod ffi {
         #[cxx_name = "FindFromIndex"]
         fn find_from_index(self: &Map, I: i32) -> &TopTools_ListOfShape;
         /// ======================== ChFiDS_StripeMap ========================
-        /// /// **Source:** `ChFiDS_StripeMap.hxx` - `ChFiDS_StripeMap`
+        /// **Source:** `ChFiDS_StripeMap.hxx` - `ChFiDS_StripeMap`
         ///
         /// encapsulation of IndexedDataMapOfVertexListOfStripe
         #[cxx_name = "ChFiDS_StripeMap"]
         type StripeMap;
-        /// /// **Source:** `ChFiDS_StripeMap.hxx` - `ChFiDS_StripeMap::ChFiDS_StripeMap()`
+        /// **Source:** `ChFiDS_StripeMap.hxx` - `ChFiDS_StripeMap::ChFiDS_StripeMap()`
         #[cxx_name = "ChFiDS_StripeMap_ctor"]
         fn StripeMap_ctor() -> UniquePtr<StripeMap>;
         #[cxx_name = "Add"]
@@ -819,12 +842,12 @@ pub(crate) mod ffi {
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut StripeMap>);
         /// ======================== ChFiDS_Regul ========================
-        /// /// **Source:** `ChFiDS_Regul.hxx` - `ChFiDS_Regul`
+        /// **Source:** `ChFiDS_Regul.hxx` - `ChFiDS_Regul`
         ///
         /// Storage of  a curve  and its 2 faces or surfaces of  support.
         #[cxx_name = "ChFiDS_Regul"]
         type Regul;
-        /// /// **Source:** `ChFiDS_Regul.hxx` - `ChFiDS_Regul::ChFiDS_Regul()`
+        /// **Source:** `ChFiDS_Regul.hxx` - `ChFiDS_Regul::ChFiDS_Regul()`
         #[cxx_name = "ChFiDS_Regul_ctor"]
         fn Regul_ctor() -> UniquePtr<Regul>;
         #[cxx_name = "SetCurve"]

@@ -12,6 +12,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
 pub use ffi::HSequenceOfShape;
 impl HSequenceOfShape {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -33,6 +34,7 @@ impl HSequenceOfShape {
         ffi::HSequenceOfShape_get_type_name()
     }
 }
+
 pub use ffi::HArray2OfShape;
 impl HArray2OfShape {
     pub fn new_int4(
@@ -79,13 +81,13 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== TopTools_HSequenceOfShape ========================
-        /// /// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape`
+        /// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape`
         #[cxx_name = "TopTools_HSequenceOfShape"]
         type HSequenceOfShape;
-        /// /// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`
+        /// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`
         #[cxx_name = "TopTools_HSequenceOfShape_ctor"]
         fn HSequenceOfShape_ctor() -> UniquePtr<HSequenceOfShape>;
-        /// /// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`
+        /// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`
         #[cxx_name = "TopTools_HSequenceOfShape_ctor_sequenceofshape"]
         fn HSequenceOfShape_ctor_sequenceofshape(
             theOther: &TopTools_SequenceOfShape,
@@ -111,10 +113,10 @@ pub(crate) mod ffi {
             obj: UniquePtr<HSequenceOfShape>,
         ) -> UniquePtr<HandleTopToolsHSequenceOfShape>;
         /// ======================== TopTools_HArray2OfShape ========================
-        /// /// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape`
+        /// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape`
         #[cxx_name = "TopTools_HArray2OfShape"]
         type HArray2OfShape;
-        /// /// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
+        /// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
         #[cxx_name = "TopTools_HArray2OfShape_ctor_int4"]
         fn HArray2OfShape_ctor_int4(
             theRowLow: i32,
@@ -122,7 +124,7 @@ pub(crate) mod ffi {
             theColLow: i32,
             theColUpp: i32,
         ) -> UniquePtr<HArray2OfShape>;
-        /// /// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
+        /// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
         #[cxx_name = "TopTools_HArray2OfShape_ctor_int4_shape"]
         fn HArray2OfShape_ctor_int4_shape(
             theRowLow: i32,
@@ -131,7 +133,7 @@ pub(crate) mod ffi {
             theColUpp: i32,
             theValue: &TopoDS_Shape,
         ) -> UniquePtr<HArray2OfShape>;
-        /// /// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
+        /// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
         #[cxx_name = "TopTools_HArray2OfShape_ctor_array2ofshape"]
         fn HArray2OfShape_ctor_array2ofshape(
             theOther: &TopTools_Array2OfShape,

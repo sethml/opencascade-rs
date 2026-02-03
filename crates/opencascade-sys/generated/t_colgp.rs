@@ -13,6 +13,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
 pub use ffi::HArray1OfPnt;
 impl HArray1OfPnt {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -53,6 +54,7 @@ impl HArray1OfPnt {
         ffi::HArray1OfPnt_get_type_name()
     }
 }
+
 pub use ffi::HArray1OfPnt2d;
 impl HArray1OfPnt2d {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -93,6 +95,7 @@ impl HArray1OfPnt2d {
         ffi::HArray1OfPnt2d_get_type_name()
     }
 }
+
 pub use ffi::HArray1OfVec;
 impl HArray1OfVec {
     pub fn new() -> cxx::UniquePtr<Self> {
@@ -133,6 +136,7 @@ impl HArray1OfVec {
         ffi::HArray1OfVec_get_type_name()
     }
 }
+
 pub use ffi::HArray2OfPnt;
 impl HArray2OfPnt {
     pub fn new_int4(
@@ -177,23 +181,23 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== TColgp_HArray1OfPnt ========================
-        /// /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt`
+        /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt`
         #[cxx_name = "TColgp_HArray1OfPnt"]
         type HArray1OfPnt;
-        /// /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
+        /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
         #[cxx_name = "TColgp_HArray1OfPnt_ctor"]
         fn HArray1OfPnt_ctor() -> UniquePtr<HArray1OfPnt>;
-        /// /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
+        /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
         #[cxx_name = "TColgp_HArray1OfPnt_ctor_int2"]
         fn HArray1OfPnt_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfPnt>;
-        /// /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
+        /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
         #[cxx_name = "TColgp_HArray1OfPnt_ctor_int2_pnt"]
         fn HArray1OfPnt_ctor_int2_pnt(
             theLower: i32,
             theUpper: i32,
             theValue: &gp_Pnt,
         ) -> UniquePtr<HArray1OfPnt>;
-        /// /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
+        /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
         #[cxx_name = "TColgp_HArray1OfPnt_ctor_pnt_int2_bool"]
         fn HArray1OfPnt_ctor_pnt_int2_bool(
             theBegin: &gp_Pnt,
@@ -201,7 +205,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfPnt>;
-        /// /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
+        /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
         #[cxx_name = "TColgp_HArray1OfPnt_ctor_array1ofpnt"]
         fn HArray1OfPnt_ctor_array1ofpnt(theOther: &TColgp_Array1OfPnt) -> UniquePtr<HArray1OfPnt>;
         #[cxx_name = "Array1"]
@@ -218,23 +222,23 @@ pub(crate) mod ffi {
             obj: UniquePtr<HArray1OfPnt>,
         ) -> UniquePtr<HandleTColgpHArray1OfPnt>;
         /// ======================== TColgp_HArray1OfPnt2d ========================
-        /// /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d`
+        /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d`
         #[cxx_name = "TColgp_HArray1OfPnt2d"]
         type HArray1OfPnt2d;
-        /// /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
+        /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
         #[cxx_name = "TColgp_HArray1OfPnt2d_ctor"]
         fn HArray1OfPnt2d_ctor() -> UniquePtr<HArray1OfPnt2d>;
-        /// /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
+        /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
         #[cxx_name = "TColgp_HArray1OfPnt2d_ctor_int2"]
         fn HArray1OfPnt2d_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfPnt2d>;
-        /// /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
+        /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
         #[cxx_name = "TColgp_HArray1OfPnt2d_ctor_int2_pnt2d"]
         fn HArray1OfPnt2d_ctor_int2_pnt2d(
             theLower: i32,
             theUpper: i32,
             theValue: &gp_Pnt2d,
         ) -> UniquePtr<HArray1OfPnt2d>;
-        /// /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
+        /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
         #[cxx_name = "TColgp_HArray1OfPnt2d_ctor_pnt2d_int2_bool"]
         fn HArray1OfPnt2d_ctor_pnt2d_int2_bool(
             theBegin: &gp_Pnt2d,
@@ -242,7 +246,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfPnt2d>;
-        /// /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
+        /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
         #[cxx_name = "TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d"]
         fn HArray1OfPnt2d_ctor_array1ofpnt2d(
             theOther: &TColgp_Array1OfPnt2d,
@@ -261,23 +265,23 @@ pub(crate) mod ffi {
             obj: UniquePtr<HArray1OfPnt2d>,
         ) -> UniquePtr<HandleTColgpHArray1OfPnt2d>;
         /// ======================== TColgp_HArray1OfVec ========================
-        /// /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec`
+        /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec`
         #[cxx_name = "TColgp_HArray1OfVec"]
         type HArray1OfVec;
-        /// /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
+        /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
         #[cxx_name = "TColgp_HArray1OfVec_ctor"]
         fn HArray1OfVec_ctor() -> UniquePtr<HArray1OfVec>;
-        /// /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
+        /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
         #[cxx_name = "TColgp_HArray1OfVec_ctor_int2"]
         fn HArray1OfVec_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfVec>;
-        /// /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
+        /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
         #[cxx_name = "TColgp_HArray1OfVec_ctor_int2_vec"]
         fn HArray1OfVec_ctor_int2_vec(
             theLower: i32,
             theUpper: i32,
             theValue: &gp_Vec,
         ) -> UniquePtr<HArray1OfVec>;
-        /// /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
+        /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
         #[cxx_name = "TColgp_HArray1OfVec_ctor_vec_int2_bool"]
         fn HArray1OfVec_ctor_vec_int2_bool(
             theBegin: &gp_Vec,
@@ -285,7 +289,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfVec>;
-        /// /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
+        /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
         #[cxx_name = "TColgp_HArray1OfVec_ctor_array1ofvec"]
         fn HArray1OfVec_ctor_array1ofvec(theOther: &TColgp_Array1OfVec) -> UniquePtr<HArray1OfVec>;
         #[cxx_name = "Array1"]
@@ -302,10 +306,10 @@ pub(crate) mod ffi {
             obj: UniquePtr<HArray1OfVec>,
         ) -> UniquePtr<HandleTColgpHArray1OfVec>;
         /// ======================== TColgp_HArray2OfPnt ========================
-        /// /// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt`
+        /// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt`
         #[cxx_name = "TColgp_HArray2OfPnt"]
         type HArray2OfPnt;
-        /// /// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt::TColgp_HArray2OfPnt()`
+        /// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt::TColgp_HArray2OfPnt()`
         #[cxx_name = "TColgp_HArray2OfPnt_ctor_int4"]
         fn HArray2OfPnt_ctor_int4(
             theRowLow: i32,
@@ -313,7 +317,7 @@ pub(crate) mod ffi {
             theColLow: i32,
             theColUpp: i32,
         ) -> UniquePtr<HArray2OfPnt>;
-        /// /// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt::TColgp_HArray2OfPnt()`
+        /// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt::TColgp_HArray2OfPnt()`
         #[cxx_name = "TColgp_HArray2OfPnt_ctor_int4_pnt"]
         fn HArray2OfPnt_ctor_int4_pnt(
             theRowLow: i32,
@@ -322,7 +326,7 @@ pub(crate) mod ffi {
             theColUpp: i32,
             theValue: &gp_Pnt,
         ) -> UniquePtr<HArray2OfPnt>;
-        /// /// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt::TColgp_HArray2OfPnt()`
+        /// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt::TColgp_HArray2OfPnt()`
         #[cxx_name = "TColgp_HArray2OfPnt_ctor_array2ofpnt"]
         fn HArray2OfPnt_ctor_array2ofpnt(theOther: &TColgp_Array2OfPnt) -> UniquePtr<HArray2OfPnt>;
         #[cxx_name = "Array2"]

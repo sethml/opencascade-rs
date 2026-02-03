@@ -17,6 +17,40 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 #![allow(clippy::missing_safety_doc)]
+
+///
+/// The class represents the Building part of the Boolean Operations
+/// algorithm.<br>
+/// The arguments of the algorithms are divided in two groups - *Objects*
+/// and *Tools*.<br>
+/// The algorithm builds the splits of the given arguments using the intersection
+/// results and combines the result of Boolean Operation of given type:<br>
+/// - *FUSE* - union of two groups of objects;<br>
+/// - *COMMON* - intersection of two groups of objects;<br>
+/// - *CUT* - subtraction of one group from the other.<br>
+///
+/// The rules for the arguments and type of the operation are the following:<br>
+/// - For Boolean operation *FUSE* all arguments should have equal dimensions;<br>
+/// - For Boolean operation *CUT* the minimal dimension of *Tools* should not be
+/// less than the maximal dimension of *Objects*;<br>
+/// - For Boolean operation *COMMON* the arguments can have any dimension.<br>
+///
+/// The class is a General Fuse based algorithm. Thus, all options
+/// of the General Fuse algorithm such as Fuzzy mode, safe processing mode,
+/// parallel processing mode, gluing mode and history support are also
+/// available in this algorithm.<br>
+///
+/// Additionally to the Warnings of the parent class the algorithm returns
+/// the following warnings:
+/// - *BOPAlgo_AlertEmptyShape* - in case some of the input shapes are empty shapes.
+///
+/// Additionally to Errors of the parent class the algorithm returns
+/// the following Error statuses:
+/// - *BOPAlgo_AlertBOPIsNotSet* - in case the type of Boolean operation is not set;
+/// - *BOPAlgo_AlertBOPNotAllowed* - in case the operation of given type is not allowed on
+/// given inputs;
+/// - *BOPAlgo_AlertSolidBuilderFailed* - in case the BuilderSolid algorithm failed to
+/// produce the Fused solid.
 pub use ffi::BOP;
 impl BOP {
     /// Empty constructor
@@ -74,6 +108,8 @@ impl BOP {
         ffi::bop_as_tools_provider_mut(self)
     }
 }
+
+/// Auxiliary class providing API to operate tool arguments.
 pub use ffi::ToolsProvider;
 impl ToolsProvider {
     /// Empty constructor
@@ -119,6 +155,39 @@ impl ToolsProvider {
         ffi::tools_provider_as_options_mut(self)
     }
 }
+
+///
+/// The class is a General Fuse algorithm - base algorithm for the
+/// algorithms in the Boolean Component. Its main purpose is to build
+/// the split parts of the argument shapes from which the result of
+/// the operations is combined.<br>
+/// The result of the General Fuse algorithm itself is a compound
+/// containing all split parts of the arguments. <br>
+///
+/// Additionally to the options of the base classes, the algorithm has
+/// the following options:<br>
+/// - *Safe processing mode* - allows to avoid modification of the input
+/// shapes during the operation (by default it is off);<br>
+/// - *Gluing options* - allows to speed up the calculation of the intersections
+/// on the special cases, in which some sub-shapes are coinciding.<br>
+/// - *Disabling the check for inverted solids* - Disables/Enables the check of the input solids
+/// for inverted status (holes in the space). The default value is TRUE,
+/// i.e. the check is performed. Setting this flag to FALSE for inverted
+/// solids, most likely will lead to incorrect results.
+///
+/// The algorithm returns the following warnings:
+/// - *BOPAlgo_AlertUnableToOrientTheShape* - in case the check on the orientation of the split
+/// shape
+/// to match the orientation of the original shape has
+/// failed.
+///
+/// The algorithm returns the following Error statuses:
+/// - *BOPAlgo_AlertTooFewArguments* - in case there are no enough arguments to perform the
+/// operation;
+/// - *BOPAlgo_AlertNoFiller* - in case the intersection tool has not been created;
+/// - *BOPAlgo_AlertIntersectionFailed* - in case the intersection of the arguments has failed;
+/// - *BOPAlgo_AlertBuilderFailed* - in case building splits of arguments has failed with some
+/// unexpected error.
 pub use ffi::Builder;
 impl Builder {
     /// Empty constructor.
@@ -171,6 +240,13 @@ impl Builder {
         ffi::Builder_context(self)
     }
 }
+
+/// Root class for algorithms that has shape as result.
+///
+/// The class provides the History mechanism, which allows
+/// tracking the modification of the input shapes during
+/// the operation. It uses the *BRepTools_History* tool
+/// as a storer for history objects.
 pub use ffi::BuilderShape;
 impl BuilderShape {
     /// Upcast to BOPAlgo_Options
@@ -188,6 +264,10 @@ impl BuilderShape {
         ffi::BuilderShape_history(self)
     }
 }
+
+/// Additional root class to provide interface to be launched from parallel vector.
+/// It already has the range as a field, and has to be used with caution to create
+/// scope from the range only once.
 pub use ffi::ParallelAlgo;
 impl ParallelAlgo {
     /// Upcast to BOPAlgo_Options
@@ -200,6 +280,9 @@ impl ParallelAlgo {
         ffi::parallel_algo_as_options_mut(self)
     }
 }
+
+/// Class for representing the relative contribution of each step of
+/// the operation to the whole progress
 pub use ffi::PISteps;
 impl PISteps {
     /// Constructor
@@ -207,6 +290,17 @@ impl PISteps {
         ffi::PISteps_ctor_int(theNbOp)
     }
 }
+
+/// The class provides the following options for the algorithms in Boolean Component:
+/// - *Memory allocation tool* - tool for memory allocations;
+/// - *Error and warning reporting* - allows recording warnings and errors occurred
+/// during the operation.
+/// Error means that the algorithm has failed.
+/// - *Parallel processing mode* - provides the possibility to perform operation in parallel mode;
+/// - *Fuzzy tolerance* - additional tolerance for the operation to detect
+/// touching or coinciding cases;
+/// - *Using the Oriented Bounding Boxes* - Allows using the Oriented Bounding Boxes of the shapes
+/// for filtering the intersections.
 pub use ffi::Options;
 impl Options {
     /// Empty constructor
@@ -241,7 +335,7 @@ pub(crate) mod ffi {
         // ========================
 
         /// ======================== BOPAlgo_BOP ========================
-        /// /// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP`
+        /// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP`
         ///
         ///
         /// The class represents the Building part of the Boolean Operations
@@ -278,12 +372,12 @@ pub(crate) mod ffi {
         /// produce the Fused solid.
         #[cxx_name = "BOPAlgo_BOP"]
         type BOP;
-        /// /// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP::BOPAlgo_BOP()`
+        /// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP::BOPAlgo_BOP()`
         ///
         /// Empty constructor
         #[cxx_name = "BOPAlgo_BOP_ctor"]
         fn BOP_ctor() -> UniquePtr<BOP>;
-        /// /// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP::BOPAlgo_BOP()`
+        /// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP::BOPAlgo_BOP()`
         #[cxx_name = "BOPAlgo_BOP_ctor_handlebaseallocator"]
         fn BOP_ctor_handlebaseallocator(
             theAllocator: &HandleNCollectionBaseAllocator,
@@ -318,17 +412,17 @@ pub(crate) mod ffi {
         #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_ToolsProvider_mut"]
         fn bop_as_tools_provider_mut(self_: Pin<&mut BOP>) -> Pin<&mut ToolsProvider>;
         /// ======================== BOPAlgo_ToolsProvider ========================
-        /// /// **Source:** `BOPAlgo_ToolsProvider.hxx` - `BOPAlgo_ToolsProvider`
+        /// **Source:** `BOPAlgo_ToolsProvider.hxx` - `BOPAlgo_ToolsProvider`
         ///
         /// Auxiliary class providing API to operate tool arguments.
         #[cxx_name = "BOPAlgo_ToolsProvider"]
         type ToolsProvider;
-        /// /// **Source:** `BOPAlgo_ToolsProvider.hxx` - `BOPAlgo_ToolsProvider::BOPAlgo_ToolsProvider()`
+        /// **Source:** `BOPAlgo_ToolsProvider.hxx` - `BOPAlgo_ToolsProvider::BOPAlgo_ToolsProvider()`
         ///
         /// Empty constructor
         #[cxx_name = "BOPAlgo_ToolsProvider_ctor"]
         fn ToolsProvider_ctor() -> UniquePtr<ToolsProvider>;
-        /// /// **Source:** `BOPAlgo_ToolsProvider.hxx` - `BOPAlgo_ToolsProvider::BOPAlgo_ToolsProvider()`
+        /// **Source:** `BOPAlgo_ToolsProvider.hxx` - `BOPAlgo_ToolsProvider::BOPAlgo_ToolsProvider()`
         #[cxx_name = "BOPAlgo_ToolsProvider_ctor_handlebaseallocator"]
         fn ToolsProvider_ctor_handlebaseallocator(
             theAllocator: &HandleNCollectionBaseAllocator,
@@ -366,7 +460,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BOPAlgo_ToolsProvider_as_BOPAlgo_Options_mut"]
         fn tools_provider_as_options_mut(self_: Pin<&mut ToolsProvider>) -> Pin<&mut Options>;
         /// ======================== BOPAlgo_Builder ========================
-        /// /// **Source:** `BOPAlgo_Builder.hxx` - `BOPAlgo_Builder`
+        /// **Source:** `BOPAlgo_Builder.hxx` - `BOPAlgo_Builder`
         ///
         ///
         /// The class is a General Fuse algorithm - base algorithm for the
@@ -402,12 +496,12 @@ pub(crate) mod ffi {
         /// unexpected error.
         #[cxx_name = "BOPAlgo_Builder"]
         type Builder;
-        /// /// **Source:** `BOPAlgo_Builder.hxx` - `BOPAlgo_Builder::BOPAlgo_Builder()`
+        /// **Source:** `BOPAlgo_Builder.hxx` - `BOPAlgo_Builder::BOPAlgo_Builder()`
         ///
         /// Empty constructor.
         #[cxx_name = "BOPAlgo_Builder_ctor"]
         fn Builder_ctor() -> UniquePtr<Builder>;
-        /// /// **Source:** `BOPAlgo_Builder.hxx` - `BOPAlgo_Builder::BOPAlgo_Builder()`
+        /// **Source:** `BOPAlgo_Builder.hxx` - `BOPAlgo_Builder::BOPAlgo_Builder()`
         #[cxx_name = "BOPAlgo_Builder_ctor_handlebaseallocator"]
         fn Builder_ctor_handlebaseallocator(
             theAllocator: &HandleNCollectionBaseAllocator,
@@ -492,7 +586,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BOPAlgo_Builder_as_BOPAlgo_Options_mut"]
         fn builder_as_options_mut(self_: Pin<&mut Builder>) -> Pin<&mut Options>;
         /// ======================== BOPAlgo_BuilderShape ========================
-        /// /// **Source:** `BOPAlgo_BuilderShape.hxx` - `BOPAlgo_BuilderShape`
+        /// **Source:** `BOPAlgo_BuilderShape.hxx` - `BOPAlgo_BuilderShape`
         ///
         /// Root class for algorithms that has shape as result.
         ///
@@ -545,7 +639,7 @@ pub(crate) mod ffi {
         #[cxx_name = "BOPAlgo_BuilderShape_as_BOPAlgo_Options_mut"]
         fn builder_shape_as_options_mut(self_: Pin<&mut BuilderShape>) -> Pin<&mut Options>;
         /// ======================== BOPAlgo_ParallelAlgo ========================
-        /// /// **Source:** `BOPAlgo_Algo.hxx` - `BOPAlgo_ParallelAlgo`
+        /// **Source:** `BOPAlgo_Algo.hxx` - `BOPAlgo_ParallelAlgo`
         ///
         /// Additional root class to provide interface to be launched from parallel vector.
         /// It already has the range as a field, and has to be used with caution to create
@@ -565,13 +659,13 @@ pub(crate) mod ffi {
         #[cxx_name = "BOPAlgo_ParallelAlgo_as_BOPAlgo_Options_mut"]
         fn parallel_algo_as_options_mut(self_: Pin<&mut ParallelAlgo>) -> Pin<&mut Options>;
         /// ======================== BOPAlgo_PISteps ========================
-        /// /// **Source:** `BOPAlgo_Algo.hxx` - `BOPAlgo_PISteps`
+        /// **Source:** `BOPAlgo_Algo.hxx` - `BOPAlgo_PISteps`
         ///
         /// Class for representing the relative contribution of each step of
         /// the operation to the whole progress
         #[cxx_name = "BOPAlgo_PISteps"]
         type PISteps;
-        /// /// **Source:** `BOPAlgo_Algo.hxx` - `BOPAlgo_PISteps::BOPAlgo_PISteps()`
+        /// **Source:** `BOPAlgo_Algo.hxx` - `BOPAlgo_PISteps::BOPAlgo_PISteps()`
         ///
         /// Constructor
         #[cxx_name = "BOPAlgo_PISteps_ctor_int"]
@@ -589,7 +683,7 @@ pub(crate) mod ffi {
         #[cxx_name = "GetStep"]
         fn get_step(self: Pin<&mut PISteps>, theOperation: i32) -> f64;
         /// ======================== BOPAlgo_Options ========================
-        /// /// **Source:** `BOPAlgo_Options.hxx` - `BOPAlgo_Options`
+        /// **Source:** `BOPAlgo_Options.hxx` - `BOPAlgo_Options`
         ///
         /// The class provides the following options for the algorithms in Boolean Component:
         /// - *Memory allocation tool* - tool for memory allocations;
@@ -603,12 +697,12 @@ pub(crate) mod ffi {
         /// for filtering the intersections.
         #[cxx_name = "BOPAlgo_Options"]
         type Options;
-        /// /// **Source:** `BOPAlgo_Options.hxx` - `BOPAlgo_Options::BOPAlgo_Options()`
+        /// **Source:** `BOPAlgo_Options.hxx` - `BOPAlgo_Options::BOPAlgo_Options()`
         ///
         /// Empty constructor
         #[cxx_name = "BOPAlgo_Options_ctor"]
         fn Options_ctor() -> UniquePtr<Options>;
-        /// /// **Source:** `BOPAlgo_Options.hxx` - `BOPAlgo_Options::BOPAlgo_Options()`
+        /// **Source:** `BOPAlgo_Options.hxx` - `BOPAlgo_Options::BOPAlgo_Options()`
         ///
         /// Constructor with allocator
         #[cxx_name = "BOPAlgo_Options_ctor_handlebaseallocator"]
