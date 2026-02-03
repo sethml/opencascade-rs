@@ -77,10 +77,10 @@ inline std::unique_ptr<BRepLib_MakeWire> BRepLib_MakeWire_ctor_wire_edge(const T
     return std::make_unique<BRepLib_MakeWire>(W, E);
 }
 
-inline const BRepLib_Command& BRepLib_MakeWire_as_BRepLib_Command(const BRepLib_MakeWire& self) { return self; }
-inline BRepLib_Command& BRepLib_MakeWire_as_BRepLib_Command_mut(BRepLib_MakeWire& self) { return self; }
 inline const BRepLib_MakeShape& BRepLib_MakeWire_as_BRepLib_MakeShape(const BRepLib_MakeWire& self) { return self; }
 inline BRepLib_MakeShape& BRepLib_MakeWire_as_BRepLib_MakeShape_mut(BRepLib_MakeWire& self) { return self; }
+inline const BRepLib_Command& BRepLib_MakeWire_as_BRepLib_Command(const BRepLib_MakeWire& self) { return self; }
+inline BRepLib_Command& BRepLib_MakeWire_as_BRepLib_Command_mut(BRepLib_MakeWire& self) { return self; }
 
 // ========================
 // BRepLib_MakeShape wrappers
@@ -102,10 +102,10 @@ inline std::unique_ptr<BRepLib_MakeVertex> BRepLib_MakeVertex_ctor_pnt(const gp_
     return std::make_unique<BRepLib_MakeVertex>(P);
 }
 
-inline const BRepLib_Command& BRepLib_MakeVertex_as_BRepLib_Command(const BRepLib_MakeVertex& self) { return self; }
-inline BRepLib_Command& BRepLib_MakeVertex_as_BRepLib_Command_mut(BRepLib_MakeVertex& self) { return self; }
 inline const BRepLib_MakeShape& BRepLib_MakeVertex_as_BRepLib_MakeShape(const BRepLib_MakeVertex& self) { return self; }
 inline BRepLib_MakeShape& BRepLib_MakeVertex_as_BRepLib_MakeShape_mut(BRepLib_MakeVertex& self) { return self; }
+inline const BRepLib_Command& BRepLib_MakeVertex_as_BRepLib_Command(const BRepLib_MakeVertex& self) { return self; }
+inline BRepLib_Command& BRepLib_MakeVertex_as_BRepLib_Command_mut(BRepLib_MakeVertex& self) { return self; }
 
 // ========================
 // BRepLib_MakeSolid wrappers
@@ -389,8 +389,8 @@ inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve_handl
     return std::make_unique<BRepLib_MakeEdge>(L, S, V1, V2, p1, p2);
 }
 
-inline const BRepLib_Command& BRepLib_MakeEdge_as_BRepLib_Command(const BRepLib_MakeEdge& self) { return self; }
-inline BRepLib_Command& BRepLib_MakeEdge_as_BRepLib_Command_mut(BRepLib_MakeEdge& self) { return self; }
 inline const BRepLib_MakeShape& BRepLib_MakeEdge_as_BRepLib_MakeShape(const BRepLib_MakeEdge& self) { return self; }
 inline BRepLib_MakeShape& BRepLib_MakeEdge_as_BRepLib_MakeShape_mut(BRepLib_MakeEdge& self) { return self; }
+inline const BRepLib_Command& BRepLib_MakeEdge_as_BRepLib_Command(const BRepLib_MakeEdge& self) { return self; }
+inline BRepLib_Command& BRepLib_MakeEdge_as_BRepLib_Command_mut(BRepLib_MakeEdge& self) { return self; }
 

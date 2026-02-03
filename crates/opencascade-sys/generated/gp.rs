@@ -32,17 +32,17 @@ pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_gp.hxx");
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Quaternion"]
-        type gp_Quaternion;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Mat"]
-        type gp_Mat;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_XY"]
         type gp_XY;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_TrsfForm"]
         type gp_TrsfForm;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Quaternion"]
+        type gp_Quaternion;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Mat"]
+        type gp_Mat;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Mat2d"]
         type gp_Mat2d;

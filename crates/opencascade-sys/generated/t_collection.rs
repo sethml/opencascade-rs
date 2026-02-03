@@ -60,26 +60,26 @@ pub(crate) mod ffi {
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Standard_ExtString"]
-        type Standard_ExtString;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Standard_ExtCharacter"]
-        type Standard_ExtCharacter;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "Standard_Utf16Char"]
         type Standard_Utf16Char;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Standard_PCharacter"]
         type Standard_PCharacter;
         #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Standard_ExtString"]
+        type Standard_ExtString;
+        #[doc = r" Referenced type from C++"]
         #[cxx_name = "Standard_Character"]
         type Standard_Character;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTCollectionHExtendedString"]
-        type HandleTCollectionHExtendedString;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Standard_ExtCharacter"]
+        type Standard_ExtCharacter;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTCollectionHAsciiString"]
         type HandleTCollectionHAsciiString;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTCollectionHExtendedString"]
+        type HandleTCollectionHExtendedString;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;

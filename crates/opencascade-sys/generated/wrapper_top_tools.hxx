@@ -72,6 +72,78 @@ inline std::unique_ptr<HandleTopToolsHArray2OfShape> TopTools_HArray2OfShape_to_
 // ========================
 
 // ========================
+// TopTools_IndexedMapOfShape - Set with integer index access (1-indexed)
+// ========================
+
+inline std::unique_ptr<TopTools_IndexedMapOfShape> TopTools_IndexedMapOfShape_new() {
+    return std::make_unique<TopTools_IndexedMapOfShape>();
+}
+
+struct IndexedMapOfShapeIterator {
+    const TopTools_IndexedMapOfShape* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+inline std::unique_ptr<IndexedMapOfShapeIterator> TopTools_IndexedMapOfShape_iter(const TopTools_IndexedMapOfShape& coll) {
+    auto iter = std::make_unique<IndexedMapOfShapeIterator>();
+    iter->coll = &coll;
+    iter->index = 1;
+    iter->extent = coll.Extent();
+    return iter;
+}
+
+inline std::unique_ptr<TopoDS_Shape> IndexedMapOfShapeIterator_next(IndexedMapOfShapeIterator& iter) {
+    if (iter.index > iter.extent) {
+        return nullptr;
+    }
+    auto result = std::make_unique<TopoDS_Shape>(iter.coll->FindKey(iter.index));
+    ++iter.index;
+    return result;
+}
+
+inline int TopTools_IndexedMapOfShape_add(TopTools_IndexedMapOfShape& coll, const TopoDS_Shape& item) {
+    return coll.Add(item);
+}
+
+inline int TopTools_IndexedMapOfShape_find_index(const TopTools_IndexedMapOfShape& coll, const TopoDS_Shape& item) {
+    return coll.FindIndex(item);
+}
+
+// ========================
+// TopTools_ListOfShape - Doubly-linked list
+// ========================
+
+inline std::unique_ptr<TopTools_ListOfShape> TopTools_ListOfShape_new() {
+    return std::make_unique<TopTools_ListOfShape>();
+}
+
+struct ListOfShapeIterator {
+    TopTools_ListOfShape::const_iterator current;
+    TopTools_ListOfShape::const_iterator end;
+};
+
+inline std::unique_ptr<ListOfShapeIterator> TopTools_ListOfShape_iter(const TopTools_ListOfShape& coll) {
+    auto iter = std::make_unique<ListOfShapeIterator>();
+    iter->current = coll.cbegin();
+    iter->end = coll.cend();
+    return iter;
+}
+
+inline std::unique_ptr<TopoDS_Shape> ListOfShapeIterator_next(ListOfShapeIterator& iter) {
+    if (iter.current == iter.end) {
+        return nullptr;
+    }
+    auto result = std::make_unique<TopoDS_Shape>(*iter.current);
+    ++iter.current;
+    return result;
+}
+
+inline void TopTools_ListOfShape_append(TopTools_ListOfShape& coll, const TopoDS_Shape& item) {
+    coll.Append(item);
+}
+
+// ========================
 // TopTools_MapOfShape - Unordered set
 // ========================
 
@@ -156,6 +228,41 @@ inline int TopTools_DataMapOfShapeShape_size(const TopTools_DataMapOfShapeShape&
 }
 
 // ========================
+// TopTools_SequenceOfShape - Dynamic array (1-indexed)
+// ========================
+
+inline std::unique_ptr<TopTools_SequenceOfShape> TopTools_SequenceOfShape_new() {
+    return std::make_unique<TopTools_SequenceOfShape>();
+}
+
+struct SequenceOfShapeIterator {
+    const TopTools_SequenceOfShape* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+inline std::unique_ptr<SequenceOfShapeIterator> TopTools_SequenceOfShape_iter(const TopTools_SequenceOfShape& coll) {
+    auto iter = std::make_unique<SequenceOfShapeIterator>();
+    iter->coll = &coll;
+    iter->index = 1;
+    iter->extent = coll.Length();
+    return iter;
+}
+
+inline std::unique_ptr<TopoDS_Shape> SequenceOfShapeIterator_next(SequenceOfShapeIterator& iter) {
+    if (iter.index > iter.extent) {
+        return nullptr;
+    }
+    auto result = std::make_unique<TopoDS_Shape>(iter.coll->Value(iter.index));
+    ++iter.index;
+    return result;
+}
+
+inline void TopTools_SequenceOfShape_append(TopTools_SequenceOfShape& coll, const TopoDS_Shape& item) {
+    coll.Append(item);
+}
+
+// ========================
 // TopTools_IndexedDataMapOfShapeListOfShape - Key-value map with index access (1-indexed)
 // ========================
 
@@ -212,112 +319,5 @@ inline int TopTools_IndexedDataMapOfShapeListOfShape_add(TopTools_IndexedDataMap
 
 inline int TopTools_IndexedDataMapOfShapeListOfShape_size(const TopTools_IndexedDataMapOfShapeListOfShape& coll) {
     return coll.Extent();
-}
-
-// ========================
-// TopTools_ListOfShape - Doubly-linked list
-// ========================
-
-inline std::unique_ptr<TopTools_ListOfShape> TopTools_ListOfShape_new() {
-    return std::make_unique<TopTools_ListOfShape>();
-}
-
-struct ListOfShapeIterator {
-    TopTools_ListOfShape::const_iterator current;
-    TopTools_ListOfShape::const_iterator end;
-};
-
-inline std::unique_ptr<ListOfShapeIterator> TopTools_ListOfShape_iter(const TopTools_ListOfShape& coll) {
-    auto iter = std::make_unique<ListOfShapeIterator>();
-    iter->current = coll.cbegin();
-    iter->end = coll.cend();
-    return iter;
-}
-
-inline std::unique_ptr<TopoDS_Shape> ListOfShapeIterator_next(ListOfShapeIterator& iter) {
-    if (iter.current == iter.end) {
-        return nullptr;
-    }
-    auto result = std::make_unique<TopoDS_Shape>(*iter.current);
-    ++iter.current;
-    return result;
-}
-
-inline void TopTools_ListOfShape_append(TopTools_ListOfShape& coll, const TopoDS_Shape& item) {
-    coll.Append(item);
-}
-
-// ========================
-// TopTools_SequenceOfShape - Dynamic array (1-indexed)
-// ========================
-
-inline std::unique_ptr<TopTools_SequenceOfShape> TopTools_SequenceOfShape_new() {
-    return std::make_unique<TopTools_SequenceOfShape>();
-}
-
-struct SequenceOfShapeIterator {
-    const TopTools_SequenceOfShape* coll;
-    int index;  // 1-indexed (OCCT convention)
-    int extent;
-};
-
-inline std::unique_ptr<SequenceOfShapeIterator> TopTools_SequenceOfShape_iter(const TopTools_SequenceOfShape& coll) {
-    auto iter = std::make_unique<SequenceOfShapeIterator>();
-    iter->coll = &coll;
-    iter->index = 1;
-    iter->extent = coll.Length();
-    return iter;
-}
-
-inline std::unique_ptr<TopoDS_Shape> SequenceOfShapeIterator_next(SequenceOfShapeIterator& iter) {
-    if (iter.index > iter.extent) {
-        return nullptr;
-    }
-    auto result = std::make_unique<TopoDS_Shape>(iter.coll->Value(iter.index));
-    ++iter.index;
-    return result;
-}
-
-inline void TopTools_SequenceOfShape_append(TopTools_SequenceOfShape& coll, const TopoDS_Shape& item) {
-    coll.Append(item);
-}
-
-// ========================
-// TopTools_IndexedMapOfShape - Set with integer index access (1-indexed)
-// ========================
-
-inline std::unique_ptr<TopTools_IndexedMapOfShape> TopTools_IndexedMapOfShape_new() {
-    return std::make_unique<TopTools_IndexedMapOfShape>();
-}
-
-struct IndexedMapOfShapeIterator {
-    const TopTools_IndexedMapOfShape* coll;
-    int index;  // 1-indexed (OCCT convention)
-    int extent;
-};
-
-inline std::unique_ptr<IndexedMapOfShapeIterator> TopTools_IndexedMapOfShape_iter(const TopTools_IndexedMapOfShape& coll) {
-    auto iter = std::make_unique<IndexedMapOfShapeIterator>();
-    iter->coll = &coll;
-    iter->index = 1;
-    iter->extent = coll.Extent();
-    return iter;
-}
-
-inline std::unique_ptr<TopoDS_Shape> IndexedMapOfShapeIterator_next(IndexedMapOfShapeIterator& iter) {
-    if (iter.index > iter.extent) {
-        return nullptr;
-    }
-    auto result = std::make_unique<TopoDS_Shape>(iter.coll->FindKey(iter.index));
-    ++iter.index;
-    return result;
-}
-
-inline int TopTools_IndexedMapOfShape_add(TopTools_IndexedMapOfShape& coll, const TopoDS_Shape& item) {
-    return coll.Add(item);
-}
-
-inline int TopTools_IndexedMapOfShape_find_index(const TopTools_IndexedMapOfShape& coll, const TopoDS_Shape& item) {
-    return coll.FindIndex(item);
 }
 

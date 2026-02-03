@@ -20,86 +20,32 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_feat.hxx");
-        #[doc = "Command from b_rep_builder_api module"]
-        type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
-        #[doc = "MakeShape from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
-        #[doc = "MakeEdge from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeEdge = crate::b_rep_builder_api::ffi::MakeEdge;
-        #[doc = "MakeFace from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeFace = crate::b_rep_builder_api::ffi::MakeFace;
-        #[doc = "MakeSolid from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeSolid = crate::b_rep_builder_api::ffi::MakeSolid;
-        #[doc = "MakeVertex from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeVertex = crate::b_rep_builder_api::ffi::MakeVertex;
-        #[doc = "MakeWire from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeWire = crate::b_rep_builder_api::ffi::MakeWire;
-        #[doc = "Sewing from b_rep_builder_api module"]
-        type BRepBuilderAPI_Sewing = crate::b_rep_builder_api::ffi::Sewing;
-        #[doc = "Transform from b_rep_builder_api module"]
-        type BRepBuilderAPI_Transform = crate::b_rep_builder_api::ffi::Transform;
-        #[doc = "ModifyShape from b_rep_builder_api module"]
-        type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
-        #[doc = "Pnt from gp module"]
-        type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
-        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Vec from gp module"]
-        type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
-        type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "Dir from gp module"]
-        type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
-        type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "XYZ from gp module"]
-        type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = "Ax1 from gp module"]
-        type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
-        type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax2d from gp module"]
-        type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
-        type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Trsf from gp module"]
-        type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
-        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "GTrsf from gp module"]
-        type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
-        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Lin from gp module"]
-        type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Circ from gp module"]
-        type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Pln from gp module"]
-        type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Geometry from geom module"]
+        type Geom_Geometry = crate::geom::ffi::Geometry;
+        #[doc = "Curve from geom module"]
+        type Geom_Curve = crate::geom::ffi::Curve;
+        #[doc = "Surface from geom module"]
+        type Geom_Surface = crate::geom::ffi::Surface;
+        #[doc = "BoundedCurve from geom module"]
+        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
+        #[doc = "BoundedSurface from geom module"]
+        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
+        #[doc = "ElementarySurface from geom module"]
+        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
+        #[doc = "BezierCurve from geom module"]
+        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
+        #[doc = "BezierSurface from geom module"]
+        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BSplineCurve from geom module"]
+        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
+        #[doc = "BSplineSurface from geom module"]
+        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
+        #[doc = "CylindricalSurface from geom module"]
+        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
+        #[doc = "Plane from geom module"]
+        type Geom_Plane = crate::geom::ffi::Plane;
+        #[doc = "TrimmedCurve from geom module"]
+        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
         #[doc = "ProgressRange from message module"]
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
         #[doc = "ProgressScope from message module"]
@@ -140,32 +86,86 @@ pub(crate) mod ffi {
         type BOPAlgo_PISteps = crate::bop_algo::ffi::PISteps;
         #[doc = "Options from bop_algo module"]
         type BOPAlgo_Options = crate::bop_algo::ffi::Options;
-        #[doc = "Geometry from geom module"]
-        type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Curve from geom module"]
-        type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "Surface from geom module"]
-        type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "BoundedCurve from geom module"]
-        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
-        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "ElementarySurface from geom module"]
-        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "BezierCurve from geom module"]
-        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
-        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BSplineCurve from geom module"]
-        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
-        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "CylindricalSurface from geom module"]
-        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "Plane from geom module"]
-        type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "TrimmedCurve from geom module"]
-        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
+        #[doc = "Pnt from gp module"]
+        type gp_Pnt = crate::gp::ffi::Pnt;
+        #[doc = "Pnt2d from gp module"]
+        type gp_Pnt2d = crate::gp::ffi::Pnt2d;
+        #[doc = "Vec from gp module"]
+        type gp_Vec = crate::gp::ffi::Vec_;
+        #[doc = "Vec2d from gp module"]
+        type gp_Vec2d = crate::gp::ffi::Vec2d;
+        #[doc = "Dir from gp module"]
+        type gp_Dir = crate::gp::ffi::Dir;
+        #[doc = "Dir2d from gp module"]
+        type gp_Dir2d = crate::gp::ffi::Dir2d;
+        #[doc = "XYZ from gp module"]
+        type gp_XYZ = crate::gp::ffi::XYZ;
+        #[doc = "Ax1 from gp module"]
+        type gp_Ax1 = crate::gp::ffi::Ax1;
+        #[doc = "Ax2 from gp module"]
+        type gp_Ax2 = crate::gp::ffi::Ax2;
+        #[doc = "Ax2d from gp module"]
+        type gp_Ax2d = crate::gp::ffi::Ax2d;
+        #[doc = "Ax3 from gp module"]
+        type gp_Ax3 = crate::gp::ffi::Ax3;
+        #[doc = "Trsf from gp module"]
+        type gp_Trsf = crate::gp::ffi::Trsf;
+        #[doc = "Trsf2d from gp module"]
+        type gp_Trsf2d = crate::gp::ffi::Trsf2d;
+        #[doc = "GTrsf from gp module"]
+        type gp_GTrsf = crate::gp::ffi::GTrsf;
+        #[doc = "GTrsf2d from gp module"]
+        type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
+        #[doc = "Lin from gp module"]
+        type gp_Lin = crate::gp::ffi::Lin;
+        #[doc = "Circ from gp module"]
+        type gp_Circ = crate::gp::ffi::Circ;
+        #[doc = "Pln from gp module"]
+        type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Command from b_rep_builder_api module"]
+        type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
+        #[doc = "MakeShape from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
+        #[doc = "MakeEdge from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeEdge = crate::b_rep_builder_api::ffi::MakeEdge;
+        #[doc = "MakeFace from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeFace = crate::b_rep_builder_api::ffi::MakeFace;
+        #[doc = "MakeSolid from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeSolid = crate::b_rep_builder_api::ffi::MakeSolid;
+        #[doc = "MakeVertex from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeVertex = crate::b_rep_builder_api::ffi::MakeVertex;
+        #[doc = "MakeWire from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeWire = crate::b_rep_builder_api::ffi::MakeWire;
+        #[doc = "Sewing from b_rep_builder_api module"]
+        type BRepBuilderAPI_Sewing = crate::b_rep_builder_api::ffi::Sewing;
+        #[doc = "Transform from b_rep_builder_api module"]
+        type BRepBuilderAPI_Transform = crate::b_rep_builder_api::ffi::Transform;
+        #[doc = "ModifyShape from b_rep_builder_api module"]
+        type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
         #[doc = "HSequenceOfShape from top_tools module"]
         type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
         #[doc = "HArray2OfShape from top_tools module"]
@@ -174,11 +174,11 @@ pub(crate) mod ffi {
         #[cxx_name = "TColGeom_SequenceOfCurve"]
         type TColGeom_SequenceOfCurve;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_MapOfShape"]
         type TopTools_MapOfShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomCurve"]
         type HandleGeomCurve;
@@ -238,6 +238,14 @@ pub(crate) mod ffi {
         fn make_cylindrical_hole_as_bop_algo_tools_provider_mut(
             self_: Pin<&mut MakeCylindricalHole>,
         ) -> Pin<&mut BOPAlgo_ToolsProvider>;
+        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BOP"]
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP"]
+        fn make_cylindrical_hole_as_bop_algo_bop(self_: &MakeCylindricalHole) -> &BOPAlgo_BOP;
+        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BOP (mutable)"]
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP_mut"]
+        fn make_cylindrical_hole_as_bop_algo_bop_mut(
+            self_: Pin<&mut MakeCylindricalHole>,
+        ) -> Pin<&mut BOPAlgo_BOP>;
         #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_Builder"]
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_Builder"]
         fn make_cylindrical_hole_as_bop_algo_builder(
@@ -248,6 +256,14 @@ pub(crate) mod ffi {
         fn make_cylindrical_hole_as_bop_algo_builder_mut(
             self_: Pin<&mut MakeCylindricalHole>,
         ) -> Pin<&mut BOPAlgo_Builder>;
+        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BRepFeat_Builder"]
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder"]
+        fn make_cylindrical_hole_as_builder(self_: &MakeCylindricalHole) -> &Builder;
+        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BRepFeat_Builder (mutable)"]
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder_mut"]
+        fn make_cylindrical_hole_as_builder_mut(
+            self_: Pin<&mut MakeCylindricalHole>,
+        ) -> Pin<&mut Builder>;
         #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BuilderShape"]
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_BuilderShape"]
         fn make_cylindrical_hole_as_bop_algo_builder_shape(
@@ -258,22 +274,6 @@ pub(crate) mod ffi {
         fn make_cylindrical_hole_as_bop_algo_builder_shape_mut(
             self_: Pin<&mut MakeCylindricalHole>,
         ) -> Pin<&mut BOPAlgo_BuilderShape>;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BOP"]
-        #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP"]
-        fn make_cylindrical_hole_as_bop_algo_bop(self_: &MakeCylindricalHole) -> &BOPAlgo_BOP;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BOP (mutable)"]
-        #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP_mut"]
-        fn make_cylindrical_hole_as_bop_algo_bop_mut(
-            self_: Pin<&mut MakeCylindricalHole>,
-        ) -> Pin<&mut BOPAlgo_BOP>;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BRepFeat_Builder"]
-        #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder"]
-        fn make_cylindrical_hole_as_builder(self_: &MakeCylindricalHole) -> &Builder;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BRepFeat_Builder (mutable)"]
-        #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder_mut"]
-        fn make_cylindrical_hole_as_builder_mut(
-            self_: Pin<&mut MakeCylindricalHole>,
-        ) -> Pin<&mut Builder>;
         #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_Options"]
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_Options"]
         fn make_cylindrical_hole_as_bop_algo_options(
@@ -351,6 +351,16 @@ pub(crate) mod ffi {
         fn lat_edges(self: Pin<&mut MakeDPrism>) -> &TopTools_ListOfShape;
         #[cxx_name = "BRepFeat_MakeDPrism_BarycCurve"]
         fn MakeDPrism_baryc_curve(self_: Pin<&mut MakeDPrism>) -> UniquePtr<HandleGeomCurve>;
+        #[doc = "Upcast BRepFeat_MakeDPrism to BRepBuilderAPI_MakeShape"]
+        #[cxx_name = "BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape"]
+        fn make_d_prism_as_b_rep_builder_api_make_shape(
+            self_: &MakeDPrism,
+        ) -> &BRepBuilderAPI_MakeShape;
+        #[doc = "Upcast BRepFeat_MakeDPrism to BRepBuilderAPI_MakeShape (mutable)"]
+        #[cxx_name = "BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape_mut"]
+        fn make_d_prism_as_b_rep_builder_api_make_shape_mut(
+            self_: Pin<&mut MakeDPrism>,
+        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         #[doc = "Upcast BRepFeat_MakeDPrism to BRepBuilderAPI_Command"]
         #[cxx_name = "BRepFeat_MakeDPrism_as_BRepBuilderAPI_Command"]
         fn make_d_prism_as_b_rep_builder_api_command(self_: &MakeDPrism)
@@ -366,16 +376,6 @@ pub(crate) mod ffi {
         #[doc = "Upcast BRepFeat_MakeDPrism to BRepFeat_Form (mutable)"]
         #[cxx_name = "BRepFeat_MakeDPrism_as_BRepFeat_Form_mut"]
         fn make_d_prism_as_form_mut(self_: Pin<&mut MakeDPrism>) -> Pin<&mut Form>;
-        #[doc = "Upcast BRepFeat_MakeDPrism to BRepBuilderAPI_MakeShape"]
-        #[cxx_name = "BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape"]
-        fn make_d_prism_as_b_rep_builder_api_make_shape(
-            self_: &MakeDPrism,
-        ) -> &BRepBuilderAPI_MakeShape;
-        #[doc = "Upcast BRepFeat_MakeDPrism to BRepBuilderAPI_MakeShape (mutable)"]
-        #[cxx_name = "BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape_mut"]
-        fn make_d_prism_as_b_rep_builder_api_make_shape_mut(
-            self_: Pin<&mut MakeDPrism>,
-        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         #[doc = " ======================== BRepFeat_Form ========================"]
         #[doc = "/// **Source:** `BRepFeat_Form.hxx` - `BRepFeat_Form`"]
         #[doc = ""]
@@ -427,14 +427,6 @@ pub(crate) mod ffi {
         fn curves(self: Pin<&mut Form>, S: Pin<&mut TColGeom_SequenceOfCurve>);
         #[cxx_name = "BRepFeat_Form_BarycCurve"]
         fn Form_baryc_curve(self_: Pin<&mut Form>) -> UniquePtr<HandleGeomCurve>;
-        #[doc = "Upcast BRepFeat_Form to BRepBuilderAPI_MakeShape"]
-        #[cxx_name = "BRepFeat_Form_as_BRepBuilderAPI_MakeShape"]
-        fn form_as_b_rep_builder_api_make_shape(self_: &Form) -> &BRepBuilderAPI_MakeShape;
-        #[doc = "Upcast BRepFeat_Form to BRepBuilderAPI_MakeShape (mutable)"]
-        #[cxx_name = "BRepFeat_Form_as_BRepBuilderAPI_MakeShape_mut"]
-        fn form_as_b_rep_builder_api_make_shape_mut(
-            self_: Pin<&mut Form>,
-        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         #[doc = "Upcast BRepFeat_Form to BRepBuilderAPI_Command"]
         #[cxx_name = "BRepFeat_Form_as_BRepBuilderAPI_Command"]
         fn form_as_b_rep_builder_api_command(self_: &Form) -> &BRepBuilderAPI_Command;
@@ -443,6 +435,14 @@ pub(crate) mod ffi {
         fn form_as_b_rep_builder_api_command_mut(
             self_: Pin<&mut Form>,
         ) -> Pin<&mut BRepBuilderAPI_Command>;
+        #[doc = "Upcast BRepFeat_Form to BRepBuilderAPI_MakeShape"]
+        #[cxx_name = "BRepFeat_Form_as_BRepBuilderAPI_MakeShape"]
+        fn form_as_b_rep_builder_api_make_shape(self_: &Form) -> &BRepBuilderAPI_MakeShape;
+        #[doc = "Upcast BRepFeat_Form to BRepBuilderAPI_MakeShape (mutable)"]
+        #[cxx_name = "BRepFeat_Form_as_BRepBuilderAPI_MakeShape_mut"]
+        fn form_as_b_rep_builder_api_make_shape_mut(
+            self_: Pin<&mut Form>,
+        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         #[doc = " ======================== BRepFeat_Builder ========================"]
         #[doc = "/// **Source:** `BRepFeat_Builder.hxx` - `BRepFeat_Builder`"]
         #[doc = ""]
@@ -504,6 +504,12 @@ pub(crate) mod ffi {
             theS: &TopoDS_Shape,
             theM: Pin<&mut TopTools_MapOfShape>,
         );
+        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_BOP"]
+        #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_BOP"]
+        fn builder_as_bop_algo_bop(self_: &Builder) -> &BOPAlgo_BOP;
+        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_BOP (mutable)"]
+        #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_BOP_mut"]
+        fn builder_as_bop_algo_bop_mut(self_: Pin<&mut Builder>) -> Pin<&mut BOPAlgo_BOP>;
         #[doc = "Upcast BRepFeat_Builder to BOPAlgo_BuilderShape"]
         #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_BuilderShape"]
         fn builder_as_bop_algo_builder_shape(self_: &Builder) -> &BOPAlgo_BuilderShape;
@@ -512,6 +518,12 @@ pub(crate) mod ffi {
         fn builder_as_bop_algo_builder_shape_mut(
             self_: Pin<&mut Builder>,
         ) -> Pin<&mut BOPAlgo_BuilderShape>;
+        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_Builder"]
+        #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_Builder"]
+        fn builder_as_bop_algo_builder(self_: &Builder) -> &BOPAlgo_Builder;
+        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_Builder (mutable)"]
+        #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_Builder_mut"]
+        fn builder_as_bop_algo_builder_mut(self_: Pin<&mut Builder>) -> Pin<&mut BOPAlgo_Builder>;
         #[doc = "Upcast BRepFeat_Builder to BOPAlgo_Options"]
         #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_Options"]
         fn builder_as_bop_algo_options(self_: &Builder) -> &BOPAlgo_Options;
@@ -526,18 +538,6 @@ pub(crate) mod ffi {
         fn builder_as_bop_algo_tools_provider_mut(
             self_: Pin<&mut Builder>,
         ) -> Pin<&mut BOPAlgo_ToolsProvider>;
-        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_BOP"]
-        #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_BOP"]
-        fn builder_as_bop_algo_bop(self_: &Builder) -> &BOPAlgo_BOP;
-        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_BOP (mutable)"]
-        #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_BOP_mut"]
-        fn builder_as_bop_algo_bop_mut(self_: Pin<&mut Builder>) -> Pin<&mut BOPAlgo_BOP>;
-        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_Builder"]
-        #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_Builder"]
-        fn builder_as_bop_algo_builder(self_: &Builder) -> &BOPAlgo_Builder;
-        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_Builder (mutable)"]
-        #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_Builder_mut"]
-        fn builder_as_bop_algo_builder_mut(self_: Pin<&mut Builder>) -> Pin<&mut BOPAlgo_Builder>;
     }
     impl UniquePtr<MakeCylindricalHole> {}
     impl UniquePtr<MakeDPrism> {}
@@ -561,40 +561,16 @@ impl MakeCylindricalHole {
         ffi::make_cylindrical_hole_as_builder_mut(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_Options"]
-    pub fn as_bop_algo_options(&self) -> &crate::bop_algo::Options {
-        ffi::make_cylindrical_hole_as_bop_algo_options(self)
+    #[doc = "Upcast to BOPAlgo_Builder"]
+    pub fn as_bop_algo_builder(&self) -> &crate::bop_algo::Builder {
+        ffi::make_cylindrical_hole_as_bop_algo_builder(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_Options (mutable)"]
-    pub fn as_bop_algo_options_mut(
+    #[doc = "Upcast to BOPAlgo_Builder (mutable)"]
+    pub fn as_bop_algo_builder_mut(
         self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::Options> {
-        ffi::make_cylindrical_hole_as_bop_algo_options_mut(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_ToolsProvider"]
-    pub fn as_bop_algo_tools_provider(&self) -> &crate::bop_algo::ToolsProvider {
-        ffi::make_cylindrical_hole_as_bop_algo_tools_provider(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_ToolsProvider (mutable)"]
-    pub fn as_bop_algo_tools_provider_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::ToolsProvider> {
-        ffi::make_cylindrical_hole_as_bop_algo_tools_provider_mut(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_BOP"]
-    pub fn as_bop_algo_bop(&self) -> &crate::bop_algo::BOP {
-        ffi::make_cylindrical_hole_as_bop_algo_bop(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_BOP (mutable)"]
-    pub fn as_bop_algo_bop_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::BOP> {
-        ffi::make_cylindrical_hole_as_bop_algo_bop_mut(self)
+    ) -> std::pin::Pin<&mut crate::bop_algo::Builder> {
+        ffi::make_cylindrical_hole_as_bop_algo_builder_mut(self)
     }
 
     #[doc = "Upcast to BOPAlgo_BuilderShape"]
@@ -609,16 +585,40 @@ impl MakeCylindricalHole {
         ffi::make_cylindrical_hole_as_bop_algo_builder_shape_mut(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_Builder"]
-    pub fn as_bop_algo_builder(&self) -> &crate::bop_algo::Builder {
-        ffi::make_cylindrical_hole_as_bop_algo_builder(self)
+    #[doc = "Upcast to BOPAlgo_Options"]
+    pub fn as_bop_algo_options(&self) -> &crate::bop_algo::Options {
+        ffi::make_cylindrical_hole_as_bop_algo_options(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_Builder (mutable)"]
-    pub fn as_bop_algo_builder_mut(
+    #[doc = "Upcast to BOPAlgo_Options (mutable)"]
+    pub fn as_bop_algo_options_mut(
         self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::Builder> {
-        ffi::make_cylindrical_hole_as_bop_algo_builder_mut(self)
+    ) -> std::pin::Pin<&mut crate::bop_algo::Options> {
+        ffi::make_cylindrical_hole_as_bop_algo_options_mut(self)
+    }
+
+    #[doc = "Upcast to BOPAlgo_BOP"]
+    pub fn as_bop_algo_bop(&self) -> &crate::bop_algo::BOP {
+        ffi::make_cylindrical_hole_as_bop_algo_bop(self)
+    }
+
+    #[doc = "Upcast to BOPAlgo_BOP (mutable)"]
+    pub fn as_bop_algo_bop_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::bop_algo::BOP> {
+        ffi::make_cylindrical_hole_as_bop_algo_bop_mut(self)
+    }
+
+    #[doc = "Upcast to BOPAlgo_ToolsProvider"]
+    pub fn as_bop_algo_tools_provider(&self) -> &crate::bop_algo::ToolsProvider {
+        ffi::make_cylindrical_hole_as_bop_algo_tools_provider(self)
+    }
+
+    #[doc = "Upcast to BOPAlgo_ToolsProvider (mutable)"]
+    pub fn as_bop_algo_tools_provider_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::bop_algo::ToolsProvider> {
+        ffi::make_cylindrical_hole_as_bop_algo_tools_provider_mut(self)
     }
 }
 pub use ffi::MakeDPrism;
@@ -639,28 +639,6 @@ impl MakeDPrism {
         ffi::MakeDPrism_ctor()
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::make_d_prism_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::make_d_prism_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
-    #[doc = "Upcast to BRepFeat_Form"]
-    pub fn as_form(&self) -> &Form {
-        ffi::make_d_prism_as_form(self)
-    }
-
-    #[doc = "Upcast to BRepFeat_Form (mutable)"]
-    pub fn as_form_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Form> {
-        ffi::make_d_prism_as_form_mut(self)
-    }
-
     #[doc = "Upcast to BRepBuilderAPI_Command"]
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         ffi::make_d_prism_as_b_rep_builder_api_command(self)
@@ -673,24 +651,34 @@ impl MakeDPrism {
         ffi::make_d_prism_as_b_rep_builder_api_command_mut(self)
     }
 
+    #[doc = "Upcast to BRepFeat_Form"]
+    pub fn as_form(&self) -> &Form {
+        ffi::make_d_prism_as_form(self)
+    }
+
+    #[doc = "Upcast to BRepFeat_Form (mutable)"]
+    pub fn as_form_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Form> {
+        ffi::make_d_prism_as_form_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::make_d_prism_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::make_d_prism_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
     pub fn baryc_curve(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
         ffi::MakeDPrism_baryc_curve(self)
     }
 }
 pub use ffi::Form;
 impl Form {
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        ffi::form_as_b_rep_builder_api_command(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        ffi::form_as_b_rep_builder_api_command_mut(self)
-    }
-
     #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         ffi::form_as_b_rep_builder_api_make_shape(self)
@@ -701,6 +689,18 @@ impl Form {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         ffi::form_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        ffi::form_as_b_rep_builder_api_command(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        ffi::form_as_b_rep_builder_api_command_mut(self)
     }
 
     pub fn baryc_curve(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
@@ -725,6 +725,18 @@ impl Builder {
         ffi::builder_as_bop_algo_builder_shape_mut(self)
     }
 
+    #[doc = "Upcast to BOPAlgo_Builder"]
+    pub fn as_bop_algo_builder(&self) -> &crate::bop_algo::Builder {
+        ffi::builder_as_bop_algo_builder(self)
+    }
+
+    #[doc = "Upcast to BOPAlgo_Builder (mutable)"]
+    pub fn as_bop_algo_builder_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::bop_algo::Builder> {
+        ffi::builder_as_bop_algo_builder_mut(self)
+    }
+
     #[doc = "Upcast to BOPAlgo_Options"]
     pub fn as_bop_algo_options(&self) -> &crate::bop_algo::Options {
         ffi::builder_as_bop_algo_options(self)
@@ -747,18 +759,6 @@ impl Builder {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::bop_algo::BOP> {
         ffi::builder_as_bop_algo_bop_mut(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_Builder"]
-    pub fn as_bop_algo_builder(&self) -> &crate::bop_algo::Builder {
-        ffi::builder_as_bop_algo_builder(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_Builder (mutable)"]
-    pub fn as_bop_algo_builder_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::Builder> {
-        ffi::builder_as_bop_algo_builder_mut(self)
     }
 
     #[doc = "Upcast to BOPAlgo_ToolsProvider"]

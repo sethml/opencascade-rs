@@ -62,6 +62,24 @@ pub(crate) mod ffi {
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
         #[doc = "HArray1OfPnt from t_colgp module"]
         type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
         #[doc = "HArray1OfPnt2d from t_colgp module"]
@@ -106,24 +124,12 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Lin2d"]
+        type gp_Lin2d;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_XY"]
+        type gp_XY;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Bnd_Array1OfSphere"]
         type Bnd_Array1OfSphere;
@@ -133,18 +139,12 @@ pub(crate) mod ffi {
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Bnd_Array1OfBox"]
         type Bnd_Array1OfBox;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Lin2d"]
-        type gp_Lin2d;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_XY"]
-        type gp_XY;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleBndHArray1OfBox"]
         type HandleBndHArray1OfBox;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleBndHArray1OfSphere"]
         type HandleBndHArray1OfSphere;

@@ -659,9 +659,35 @@ This would ensure both FFI and impl generation iterate over the exact same metho
 
 ---
 
-### � Step 4h: Two-Pass Architecture Refactor (PROPOSED)
+### 🔄 Step 4h: Two-Pass Architecture Refactor (IN PROGRESS)
 
-**Motivation:**
+**Status:** ✅ Phase 1 Complete - Symbol table infrastructure created
+
+**Current Progress:**
+
+1. ✅ Created `resolver.rs` (~1000 lines) with:
+   - `SymbolTable` struct with lookup methods
+   - `ResolvedClass`, `ResolvedMethod`, `ResolvedConstructor`, etc. types
+   - `BindingStatus` enum (Included/Excluded with ExclusionReason)
+   - `build_symbol_table()` function that resolves all symbols from parsed headers
+   - Centralized filter functions: `type_uses_enum`, `method_needs_explicit_lifetimes`, `method_has_unsupported_by_value_params`
+
+2. ✅ Integrated into main.rs:
+   - Symbol table is now built after parsing, before code generation
+   - Statistics are printed in verbose mode (classes, constructors, methods, etc.)
+   - Added `--dump-symbols` CLI flag for debugging
+
+3. ✅ All tests pass:
+   - `regenerate-bindings.sh` succeeds
+   - `opencascade-sys` compiles successfully
+
+**Remaining Work:**
+
+4. 🔲 Refactor `codegen/rust.rs` to consume SymbolTable instead of raw ParsedClass/Method data
+5. 🔲 Refactor `codegen/cpp.rs` similarly
+6. 🔲 Remove duplicate filter functions from rust.rs and cpp.rs
+
+**Original Motivation:**
 
 The current architecture mixes symbol analysis with code generation in a single pass. This leads to:
 

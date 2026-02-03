@@ -15,20 +15,6 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_mat2d.hxx");
-        #[doc = "Geometry from geom2d module"]
-        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "Curve from geom2d module"]
-        type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "BoundedCurve from geom2d module"]
-        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
-        type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Ellipse from geom2d module"]
-        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "TrimmedCurve from geom2d module"]
-        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
-        #[doc = "BasicElt from mat module"]
-        type MAT_BasicElt = crate::mat::ffi::BasicElt;
         #[doc = "Pnt from gp module"]
         type gp_Pnt = crate::gp::ffi::Pnt;
         #[doc = "Pnt2d from gp module"]
@@ -65,8 +51,22 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "BasicElt from mat module"]
+        type MAT_BasicElt = crate::mat::ffi::BasicElt;
         #[doc = "Bisec from bisector module"]
         type Bisector_Bisec = crate::bisector::ffi::Bisec;
+        #[doc = "Geometry from geom2d module"]
+        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
+        #[doc = "Curve from geom2d module"]
+        type Geom2d_Curve = crate::geom2d::ffi::Curve;
+        #[doc = "BoundedCurve from geom2d module"]
+        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
+        #[doc = "Conic from geom2d module"]
+        type Geom2d_Conic = crate::geom2d::ffi::Conic;
+        #[doc = "Ellipse from geom2d module"]
+        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
+        #[doc = "TrimmedCurve from geom2d module"]
+        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "MAT2d_Circuit"]
         type MAT2d_Circuit;
@@ -77,11 +77,11 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleMAT2dCircuit"]
         type HandleMAT2dCircuit;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dGeometry"]
-        type HandleGeom2dGeometry;
-        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleMATBisector"]
         type HandleMATBisector;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dGeometry"]
+        type HandleGeom2dGeometry;
         #[doc = " ======================== MAT2d_Tool2d ========================"]
         #[doc = "/// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d`"]
         #[doc = ""]

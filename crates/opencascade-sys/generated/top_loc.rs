@@ -94,11 +94,11 @@ pub(crate) mod ffi {
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopLoc_Datum3D"]
-        type TopLoc_Datum3D;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopLoc_ItemLocation"]
         type TopLoc_ItemLocation;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopLoc_Datum3D"]
+        type TopLoc_Datum3D;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTopLocDatum3D"]
         type HandleTopLocDatum3D;

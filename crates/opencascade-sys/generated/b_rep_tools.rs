@@ -17,20 +17,6 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_tools.hxx");
-        #[doc = "Box from bnd module"]
-        type Bnd_Box = crate::bnd::ffi::Box_;
-        #[doc = "OBB from bnd module"]
-        type Bnd_OBB = crate::bnd::ffi::OBB;
-        #[doc = "Box2d from bnd module"]
-        type Bnd_Box2d = crate::bnd::ffi::Box2d;
-        #[doc = "B2d from bnd module"]
-        type Bnd_B2d = crate::bnd::ffi::B2d;
-        #[doc = "HArray1OfBox from bnd module"]
-        type Bnd_HArray1OfBox = crate::bnd::ffi::HArray1OfBox;
-        #[doc = "HArray1OfSphere from bnd module"]
-        type Bnd_HArray1OfSphere = crate::bnd::ffi::HArray1OfSphere;
-        #[doc = "Sphere from bnd module"]
-        type Bnd_Sphere = crate::bnd::ffi::Sphere;
         #[doc = "Mutex from standard module"]
         type Standard_Mutex = crate::standard::ffi::Mutex;
         #[doc = "Transient from standard module"]
@@ -73,46 +59,12 @@ pub(crate) mod ffi {
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "MemInfo from osd module"]
-        type OSD_MemInfo = crate::osd::ffi::MemInfo;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
         #[doc = "TopAbs from top_abs module"]
         type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "Geometry from geom2d module"]
-        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "Curve from geom2d module"]
-        type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "BoundedCurve from geom2d module"]
-        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
-        type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Ellipse from geom2d module"]
-        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "TrimmedCurve from geom2d module"]
-        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
+        #[doc = "Builder from b_rep module"]
+        type BRep_Builder = crate::b_rep::ffi::Builder;
+        #[doc = "Tool from b_rep module"]
+        type BRep_Tool = crate::b_rep::ffi::Tool;
         #[doc = "Pnt from gp module"]
         type gp_Pnt = crate::gp::ffi::Pnt;
         #[doc = "Pnt2d from gp module"]
@@ -149,36 +101,6 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Builder from b_rep module"]
-        type BRep_Builder = crate::b_rep::ffi::Builder;
-        #[doc = "Tool from b_rep module"]
-        type BRep_Tool = crate::b_rep::ffi::Tool;
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "Message from message module"]
-        type Message = crate::message::ffi::Message;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
-        #[doc = "Alert from message module"]
-        type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
-        type Message_AlertExtended = crate::message::ffi::AlertExtended;
         #[doc = "HSequenceOfShape from top_tools module"]
         type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
         #[doc = "HArray2OfShape from top_tools module"]
@@ -209,33 +131,111 @@ pub(crate) mod ffi {
         type Geom_Plane = crate::geom::ffi::Plane;
         #[doc = "TrimmedCurve from geom module"]
         type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "OSD_FileSystem"]
-        type OSD_FileSystem;
+        #[doc = "Box from bnd module"]
+        type Bnd_Box = crate::bnd::ffi::Box_;
+        #[doc = "OBB from bnd module"]
+        type Bnd_OBB = crate::bnd::ffi::OBB;
+        #[doc = "Box2d from bnd module"]
+        type Bnd_Box2d = crate::bnd::ffi::Box2d;
+        #[doc = "B2d from bnd module"]
+        type Bnd_B2d = crate::bnd::ffi::B2d;
+        #[doc = "HArray1OfBox from bnd module"]
+        type Bnd_HArray1OfBox = crate::bnd::ffi::HArray1OfBox;
+        #[doc = "HArray1OfSphere from bnd module"]
+        type Bnd_HArray1OfSphere = crate::bnd::ffi::HArray1OfSphere;
+        #[doc = "Sphere from bnd module"]
+        type Bnd_Sphere = crate::bnd::ffi::Sphere;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "Message from message module"]
+        type Message = crate::message::ffi::Message;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Alert from message module"]
+        type Message_Alert = crate::message::ffi::Alert;
+        #[doc = "AlertExtended from message module"]
+        type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "MemInfo from osd module"]
+        type OSD_MemInfo = crate::osd::ffi::MemInfo;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "Geometry from geom2d module"]
+        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
+        #[doc = "Curve from geom2d module"]
+        type Geom2d_Curve = crate::geom2d::ffi::Curve;
+        #[doc = "BoundedCurve from geom2d module"]
+        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
+        #[doc = "Conic from geom2d module"]
+        type Geom2d_Conic = crate::geom2d::ffi::Conic;
+        #[doc = "Ellipse from geom2d module"]
+        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
+        #[doc = "TrimmedCurve from geom2d module"]
+        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_IndexedMapOfShape"]
         type TopTools_IndexedMapOfShape;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "BRepTools_Modification"]
         type BRepTools_Modification;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dCurve"]
-        type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomSurface"]
-        type HandleGeomSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBRepToolsHistory"]
-        type HandleBRepToolsHistory;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "OSD_FileSystem"]
+        type OSD_FileSystem;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleBRepToolsReShape"]
         type HandleBRepToolsReShape;
         #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBRepToolsHistory"]
+        type HandleBRepToolsHistory;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBRepToolsModification"]
+        type HandleBRepToolsModification;
+        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomCurve"]
         type HandleGeomCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomSurface"]
+        type HandleGeomSurface;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleOSDFileSystem"]
         type HandleOSDFileSystem;
@@ -243,8 +243,8 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBRepToolsModification"]
-        type HandleBRepToolsModification;
+        #[cxx_name = "HandleGeom2dCurve"]
+        type HandleGeom2dCurve;
         #[doc = " ======================== BRepTools ========================"]
         #[doc = "/// **Source:** `BRepTools.hxx` - `BRepTools`"]
         #[doc = ""]

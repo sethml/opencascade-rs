@@ -16,6 +16,8 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_adaptor3d.hxx");
+        #[doc = "Curve2d from adaptor2d module"]
+        type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
         #[doc = "HSequenceOfTransient from t_col_std module"]
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
         #[doc = "PackedMapOfInteger from t_col_std module"]
@@ -70,8 +72,6 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Curve2d from adaptor2d module"]
-        type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
         #[doc = "Mutex from standard module"]
         type Standard_Mutex = crate::standard::ffi::Mutex;
         #[doc = "Transient from standard module"]
@@ -141,14 +141,23 @@ pub(crate) mod ffi {
         #[doc = "TrimmedCurve from geom module"]
         type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Geom_OffsetCurve"]
-        type Geom_OffsetCurve;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Cone"]
         type gp_Cone;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Sphere"]
-        type gp_Sphere;
+        #[cxx_name = "gp_Torus"]
+        type gp_Torus;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Elips"]
+        type gp_Elips;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Hypr"]
+        type gp_Hypr;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Cylinder"]
+        type gp_Cylinder;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Geom_OffsetCurve"]
+        type Geom_OffsetCurve;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TColStd_Array1OfReal"]
         type TColStd_Array1OfReal;
@@ -156,44 +165,35 @@ pub(crate) mod ffi {
         #[cxx_name = "gp_Parab"]
         type gp_Parab;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Torus"]
-        type gp_Torus;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Hypr"]
-        type gp_Hypr;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Elips"]
-        type gp_Elips;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Cylinder"]
-        type gp_Cylinder;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBezierCurve"]
-        type HandleGeomBezierCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBSplineCurve"]
-        type HandleGeomBSplineCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBSplineSurface"]
-        type HandleGeomBSplineSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleAdaptor2dCurve2d"]
-        type HandleAdaptor2dCurve2d;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomOffsetCurve"]
-        type HandleGeomOffsetCurve;
+        #[cxx_name = "gp_Sphere"]
+        type gp_Sphere;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleAdaptor3dCurve"]
         type HandleAdaptor3dCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleAdaptor3dSurface"]
         type HandleAdaptor3dSurface;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomBezierSurface"]
         type HandleGeomBezierSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBSplineCurve"]
+        type HandleGeomBSplineCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleAdaptor2dCurve2d"]
+        type HandleAdaptor2dCurve2d;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBezierCurve"]
+        type HandleGeomBezierCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBSplineSurface"]
+        type HandleGeomBSplineSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomOffsetCurve"]
+        type HandleGeomOffsetCurve;
         #[doc = " ======================== Adaptor3d_Curve ========================"]
         #[doc = "/// **Source:** `Adaptor3d_Curve.hxx` - `Adaptor3d_Curve`"]
         #[doc = ""]

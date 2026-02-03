@@ -227,8 +227,8 @@ inline rust::String BRepAdaptor_Curve2d_get_type_name() {
     return rust::String(BRepAdaptor_Curve2d::get_type_name());
 }
 
-inline const Geom2dAdaptor_Curve& BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve(const BRepAdaptor_Curve2d& self) { return self; }
-inline Geom2dAdaptor_Curve& BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(BRepAdaptor_Curve2d& self) { return self; }
 inline const Adaptor2d_Curve2d& BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d(const BRepAdaptor_Curve2d& self) { return self; }
 inline Adaptor2d_Curve2d& BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(BRepAdaptor_Curve2d& self) { return self; }
+inline const Geom2dAdaptor_Curve& BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve(const BRepAdaptor_Curve2d& self) { return self; }
+inline Geom2dAdaptor_Curve& BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(BRepAdaptor_Curve2d& self) { return self; }
 

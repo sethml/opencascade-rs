@@ -14,6 +14,18 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_bisector.hxx");
+        #[doc = "Geometry from geom2d module"]
+        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
+        #[doc = "Curve from geom2d module"]
+        type Geom2d_Curve = crate::geom2d::ffi::Curve;
+        #[doc = "BoundedCurve from geom2d module"]
+        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
+        #[doc = "Conic from geom2d module"]
+        type Geom2d_Conic = crate::geom2d::ffi::Conic;
+        #[doc = "Ellipse from geom2d module"]
+        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
+        #[doc = "TrimmedCurve from geom2d module"]
+        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
         #[doc = "Pnt from gp module"]
         type gp_Pnt = crate::gp::ffi::Pnt;
         #[doc = "Pnt2d from gp module"]
@@ -50,30 +62,18 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Geometry from geom2d module"]
-        type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "Curve from geom2d module"]
-        type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "BoundedCurve from geom2d module"]
-        type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
-        type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Ellipse from geom2d module"]
-        type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "TrimmedCurve from geom2d module"]
-        type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Geom2d_Point"]
         type Geom2d_Point;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dCurve"]
+        type HandleGeom2dCurve;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dTrimmedCurve"]
         type HandleGeom2dTrimmedCurve;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dPoint"]
         type HandleGeom2dPoint;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dCurve"]
-        type HandleGeom2dCurve;
         #[doc = " ======================== Bisector_Bisec ========================"]
         #[doc = "/// **Source:** `Bisector_Bisec.hxx` - `Bisector_Bisec`"]
         #[doc = ""]

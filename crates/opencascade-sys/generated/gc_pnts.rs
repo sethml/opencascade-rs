@@ -14,14 +14,6 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_gc_pnts.hxx");
-        #[doc = "Curve2d from adaptor2d module"]
-        type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
-        #[doc = "Curve from adaptor3d module"]
-        type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
-        #[doc = "Surface from adaptor3d module"]
-        type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
-        #[doc = "CurveOnSurface from adaptor3d module"]
-        type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
         #[doc = "Pnt from gp module"]
         type gp_Pnt = crate::gp::ffi::Pnt;
         #[doc = "Pnt2d from gp module"]
@@ -58,6 +50,14 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
+        #[doc = "Curve from adaptor3d module"]
+        type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
+        #[doc = "Surface from adaptor3d module"]
+        type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
+        #[doc = "CurveOnSurface from adaptor3d module"]
+        type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
+        #[doc = "Curve2d from adaptor2d module"]
+        type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
         #[doc = " ======================== GCPnts_TangentialDeflection ========================"]
         #[doc = "/// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection`"]
         #[doc = ""]

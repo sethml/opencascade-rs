@@ -8,6 +8,7 @@ pub mod header_deps;
 pub mod model;
 pub mod module_graph;
 pub mod parser;
+pub mod resolver;
 pub mod type_mapping;
 
 use anyhow::Result;

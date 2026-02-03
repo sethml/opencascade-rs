@@ -15,6 +15,50 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep.hxx");
+        #[doc = "Triangulation from poly module"]
+        type Poly_Triangulation = crate::poly::ffi::Triangulation;
+        #[doc = "HArray1OfTriangle from poly module"]
+        type Poly_HArray1OfTriangle = crate::poly::ffi::HArray1OfTriangle;
+        #[doc = "ArrayOfNodes from poly module"]
+        type Poly_ArrayOfNodes = crate::poly::ffi::ArrayOfNodes;
+        #[doc = "ArrayOfUVNodes from poly module"]
+        type Poly_ArrayOfUVNodes = crate::poly::ffi::ArrayOfUVNodes;
+        #[doc = "Triangle from poly module"]
+        type Poly_Triangle = crate::poly::ffi::Triangle;
+        #[doc = "Polygon3D from poly module"]
+        type Poly_Polygon3D = crate::poly::ffi::Polygon3D;
+        #[doc = "Polygon2D from poly module"]
+        type Poly_Polygon2D = crate::poly::ffi::Polygon2D;
+        #[doc = "PolygonOnTriangulation from poly module"]
+        type Poly_PolygonOnTriangulation = crate::poly::ffi::PolygonOnTriangulation;
+        #[doc = "Location from top_loc module"]
+        type TopLoc_Location = crate::top_loc::ffi::Location;
+        #[doc = "SListOfItemLocation from top_loc module"]
+        type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
         #[doc = "Geometry from geom2d module"]
         type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
         #[doc = "Curve from geom2d module"]
@@ -65,30 +109,6 @@ pub(crate) mod ffi {
         type gp_Pln = crate::gp::ffi::Pln;
         #[doc = "TopAbs from top_abs module"]
         type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
         #[doc = "Geometry from geom module"]
         type Geom_Geometry = crate::geom::ffi::Geometry;
         #[doc = "Curve from geom module"]
@@ -115,50 +135,30 @@ pub(crate) mod ffi {
         type Geom_Plane = crate::geom::ffi::Plane;
         #[doc = "TrimmedCurve from geom module"]
         type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "Triangulation from poly module"]
-        type Poly_Triangulation = crate::poly::ffi::Triangulation;
-        #[doc = "HArray1OfTriangle from poly module"]
-        type Poly_HArray1OfTriangle = crate::poly::ffi::HArray1OfTriangle;
-        #[doc = "ArrayOfNodes from poly module"]
-        type Poly_ArrayOfNodes = crate::poly::ffi::ArrayOfNodes;
-        #[doc = "ArrayOfUVNodes from poly module"]
-        type Poly_ArrayOfUVNodes = crate::poly::ffi::ArrayOfUVNodes;
-        #[doc = "Triangle from poly module"]
-        type Poly_Triangle = crate::poly::ffi::Triangle;
-        #[doc = "Polygon3D from poly module"]
-        type Poly_Polygon3D = crate::poly::ffi::Polygon3D;
-        #[doc = "Polygon2D from poly module"]
-        type Poly_Polygon2D = crate::poly::ffi::Polygon2D;
-        #[doc = "PolygonOnTriangulation from poly module"]
-        type Poly_PolygonOnTriangulation = crate::poly::ffi::PolygonOnTriangulation;
-        #[doc = "Location from top_loc module"]
-        type TopLoc_Location = crate::top_loc::ffi::Location;
-        #[doc = "SListOfItemLocation from top_loc module"]
-        type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Poly_ListOfTriangulation"]
         type Poly_ListOfTriangulation;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandlePolyPolygon2D"]
+        type HandlePolyPolygon2D;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandlePolyPolygonOnTriangulation"]
+        type HandlePolyPolygonOnTriangulation;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomSurface"]
+        type HandleGeomSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dCurve"]
+        type HandleGeom2dCurve;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomCurve"]
+        type HandleGeomCurve;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandlePolyPolygon3D"]
         type HandlePolyPolygon3D;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandlePolyTriangulation"]
         type HandlePolyTriangulation;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomCurve"]
-        type HandleGeomCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomSurface"]
-        type HandleGeomSurface;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandlePolyPolygonOnTriangulation"]
-        type HandlePolyPolygonOnTriangulation;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dCurve"]
-        type HandleGeom2dCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandlePolyPolygon2D"]
-        type HandlePolyPolygon2D;
         #[doc = " ======================== BRep_Builder ========================"]
         #[doc = "/// **Source:** `BRep_Builder.hxx` - `BRep_Builder`"]
         #[doc = ""]

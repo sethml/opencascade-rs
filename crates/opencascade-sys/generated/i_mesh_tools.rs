@@ -18,10 +18,6 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_i_mesh_tools.hxx");
-        #[doc = "Model from i_mesh_data module"]
-        type IMeshData_Model = crate::i_mesh_data::ffi::Model;
-        #[doc = "Shape from i_mesh_data module"]
-        type IMeshData_Shape = crate::i_mesh_data::ffi::Shape;
         #[doc = "ProgressRange from message module"]
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
         #[doc = "ProgressScope from message module"]
@@ -48,6 +44,34 @@ pub(crate) mod ffi {
         type Message_Alert = crate::message::ffi::Alert;
         #[doc = "AlertExtended from message module"]
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "Model from i_mesh_data module"]
+        type IMeshData_Model = crate::i_mesh_data::ffi::Model;
+        #[doc = "Shape from i_mesh_data module"]
+        type IMeshData_Shape = crate::i_mesh_data::ffi::Shape;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
         #[doc = "Mutex from standard module"]
         type Standard_Mutex = crate::standard::ffi::Mutex;
         #[doc = "Transient from standard module"]
@@ -90,42 +114,18 @@ pub(crate) mod ffi {
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIMeshToolsModelAlgo"]
-        type HandleIMeshToolsModelAlgo;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleIMeshDataModel"]
         type HandleIMeshDataModel;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleIMeshToolsModelBuilder"]
         type HandleIMeshToolsModelBuilder;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleIMeshToolsModelAlgo"]
+        type HandleIMeshToolsModelAlgo;
         #[doc = " ======================== IMeshTools_Context ========================"]
         #[doc = "/// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context`"]
         #[doc = ""]

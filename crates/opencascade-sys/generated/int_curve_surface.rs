@@ -18,6 +18,12 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_int_curve_surface.hxx");
+        #[doc = "Curve from adaptor3d module"]
+        type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
+        #[doc = "Surface from adaptor3d module"]
+        type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
+        #[doc = "CurveOnSurface from adaptor3d module"]
+        type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
         #[doc = "Box from bnd module"]
         type Bnd_Box = crate::bnd::ffi::Box_;
         #[doc = "OBB from bnd module"]
@@ -32,12 +38,6 @@ pub(crate) mod ffi {
         type Bnd_HArray1OfSphere = crate::bnd::ffi::HArray1OfSphere;
         #[doc = "Sphere from bnd module"]
         type Bnd_Sphere = crate::bnd::ffi::Sphere;
-        #[doc = "Curve from adaptor3d module"]
-        type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
-        #[doc = "Surface from adaptor3d module"]
-        type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
-        #[doc = "CurveOnSurface from adaptor3d module"]
-        type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
         #[doc = "Pnt from gp module"]
         type gp_Pnt = crate::gp::ffi::Pnt;
         #[doc = "Pnt2d from gp module"]

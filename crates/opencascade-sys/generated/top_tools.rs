@@ -83,20 +83,20 @@ pub(crate) mod ffi {
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_SequenceOfShape"]
-        type TopTools_SequenceOfShape;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_Array2OfShape"]
         type TopTools_Array2OfShape;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTopToolsHArray2OfShape"]
-        type HandleTopToolsHArray2OfShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_SequenceOfShape"]
+        type TopTools_SequenceOfShape;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleTopToolsHSequenceOfShape"]
         type HandleTopToolsHSequenceOfShape;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleTopToolsHArray2OfShape"]
+        type HandleTopToolsHArray2OfShape;
         #[doc = " ======================== TopTools_HSequenceOfShape ========================"]
         #[doc = "/// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape`"]
         #[cxx_name = "TopTools_HSequenceOfShape"]
@@ -174,6 +174,58 @@ pub(crate) mod ffi {
         // ========================
 
         // ========================
+        // TopTools_IndexedMapOfShape - Set with integer index access (1-indexed)
+        // ========================
+
+        #[cxx_name = "TopTools_IndexedMapOfShape"]
+        type IndexedMapOfShape;
+
+        #[cxx_name = "TopTools_IndexedMapOfShape_new"]
+        fn IndexedMapOfShape_new() -> UniquePtr<IndexedMapOfShape>;
+
+        type IndexedMapOfShapeIterator;
+
+        #[cxx_name = "TopTools_IndexedMapOfShape_iter"]
+        fn IndexedMapOfShape_iterator(
+            coll: &IndexedMapOfShape,
+        ) -> UniquePtr<IndexedMapOfShapeIterator>;
+
+        #[cxx_name = "IndexedMapOfShapeIterator_next"]
+        fn IndexedMapOfShapeIterator_next(
+            iter: Pin<&mut IndexedMapOfShapeIterator>,
+        ) -> UniquePtr<TopoDS_Shape>;
+
+        /// Adds item to the map, returns its index (existing or new)
+        #[cxx_name = "TopTools_IndexedMapOfShape_add"]
+        fn IndexedMapOfShape_add(coll: Pin<&mut IndexedMapOfShape>, item: &TopoDS_Shape) -> i32;
+
+        /// Returns 0 if item is not in the map
+        #[cxx_name = "TopTools_IndexedMapOfShape_find_index"]
+        fn IndexedMapOfShape_find_index(coll: &IndexedMapOfShape, item: &TopoDS_Shape) -> i32;
+
+        // ========================
+        // TopTools_ListOfShape - Doubly-linked list
+        // ========================
+
+        #[cxx_name = "TopTools_ListOfShape"]
+        type ListOfShape;
+
+        #[cxx_name = "TopTools_ListOfShape_new"]
+        fn ListOfShape_new() -> UniquePtr<ListOfShape>;
+
+        type ListOfShapeIterator;
+
+        #[cxx_name = "TopTools_ListOfShape_iter"]
+        fn ListOfShape_iterator(coll: &ListOfShape) -> UniquePtr<ListOfShapeIterator>;
+
+        #[cxx_name = "ListOfShapeIterator_next"]
+        fn ListOfShapeIterator_next(iter: Pin<&mut ListOfShapeIterator>)
+            -> UniquePtr<TopoDS_Shape>;
+
+        #[cxx_name = "TopTools_ListOfShape_append"]
+        fn ListOfShape_append(coll: Pin<&mut ListOfShape>, item: &TopoDS_Shape);
+
+        // ========================
         // TopTools_MapOfShape - Unordered set
         // ========================
 
@@ -242,6 +294,29 @@ pub(crate) mod ffi {
         fn DataMapOfShapeShape_size(coll: &DataMapOfShapeShape) -> i32;
 
         // ========================
+        // TopTools_SequenceOfShape - Dynamic array (1-indexed)
+        // ========================
+
+        #[cxx_name = "TopTools_SequenceOfShape"]
+        type SequenceOfShape;
+
+        #[cxx_name = "TopTools_SequenceOfShape_new"]
+        fn SequenceOfShape_new() -> UniquePtr<SequenceOfShape>;
+
+        type SequenceOfShapeIterator;
+
+        #[cxx_name = "TopTools_SequenceOfShape_iter"]
+        fn SequenceOfShape_iterator(coll: &SequenceOfShape) -> UniquePtr<SequenceOfShapeIterator>;
+
+        #[cxx_name = "SequenceOfShapeIterator_next"]
+        fn SequenceOfShapeIterator_next(
+            iter: Pin<&mut SequenceOfShapeIterator>,
+        ) -> UniquePtr<TopoDS_Shape>;
+
+        #[cxx_name = "TopTools_SequenceOfShape_append"]
+        fn SequenceOfShape_append(coll: Pin<&mut SequenceOfShape>, item: &TopoDS_Shape);
+
+        // ========================
         // TopTools_IndexedDataMapOfShapeListOfShape - Key-value map with index access (1-indexed)
         // ========================
 
@@ -304,81 +379,6 @@ pub(crate) mod ffi {
 
         #[cxx_name = "TopTools_IndexedDataMapOfShapeListOfShape_size"]
         fn IndexedDataMapOfShapeListOfShape_size(coll: &IndexedDataMapOfShapeListOfShape) -> i32;
-
-        // ========================
-        // TopTools_ListOfShape - Doubly-linked list
-        // ========================
-
-        #[cxx_name = "TopTools_ListOfShape"]
-        type ListOfShape;
-
-        #[cxx_name = "TopTools_ListOfShape_new"]
-        fn ListOfShape_new() -> UniquePtr<ListOfShape>;
-
-        type ListOfShapeIterator;
-
-        #[cxx_name = "TopTools_ListOfShape_iter"]
-        fn ListOfShape_iterator(coll: &ListOfShape) -> UniquePtr<ListOfShapeIterator>;
-
-        #[cxx_name = "ListOfShapeIterator_next"]
-        fn ListOfShapeIterator_next(iter: Pin<&mut ListOfShapeIterator>)
-            -> UniquePtr<TopoDS_Shape>;
-
-        #[cxx_name = "TopTools_ListOfShape_append"]
-        fn ListOfShape_append(coll: Pin<&mut ListOfShape>, item: &TopoDS_Shape);
-
-        // ========================
-        // TopTools_SequenceOfShape - Dynamic array (1-indexed)
-        // ========================
-
-        #[cxx_name = "TopTools_SequenceOfShape"]
-        type SequenceOfShape;
-
-        #[cxx_name = "TopTools_SequenceOfShape_new"]
-        fn SequenceOfShape_new() -> UniquePtr<SequenceOfShape>;
-
-        type SequenceOfShapeIterator;
-
-        #[cxx_name = "TopTools_SequenceOfShape_iter"]
-        fn SequenceOfShape_iterator(coll: &SequenceOfShape) -> UniquePtr<SequenceOfShapeIterator>;
-
-        #[cxx_name = "SequenceOfShapeIterator_next"]
-        fn SequenceOfShapeIterator_next(
-            iter: Pin<&mut SequenceOfShapeIterator>,
-        ) -> UniquePtr<TopoDS_Shape>;
-
-        #[cxx_name = "TopTools_SequenceOfShape_append"]
-        fn SequenceOfShape_append(coll: Pin<&mut SequenceOfShape>, item: &TopoDS_Shape);
-
-        // ========================
-        // TopTools_IndexedMapOfShape - Set with integer index access (1-indexed)
-        // ========================
-
-        #[cxx_name = "TopTools_IndexedMapOfShape"]
-        type IndexedMapOfShape;
-
-        #[cxx_name = "TopTools_IndexedMapOfShape_new"]
-        fn IndexedMapOfShape_new() -> UniquePtr<IndexedMapOfShape>;
-
-        type IndexedMapOfShapeIterator;
-
-        #[cxx_name = "TopTools_IndexedMapOfShape_iter"]
-        fn IndexedMapOfShape_iterator(
-            coll: &IndexedMapOfShape,
-        ) -> UniquePtr<IndexedMapOfShapeIterator>;
-
-        #[cxx_name = "IndexedMapOfShapeIterator_next"]
-        fn IndexedMapOfShapeIterator_next(
-            iter: Pin<&mut IndexedMapOfShapeIterator>,
-        ) -> UniquePtr<TopoDS_Shape>;
-
-        /// Adds item to the map, returns its index (existing or new)
-        #[cxx_name = "TopTools_IndexedMapOfShape_add"]
-        fn IndexedMapOfShape_add(coll: Pin<&mut IndexedMapOfShape>, item: &TopoDS_Shape) -> i32;
-
-        /// Returns 0 if item is not in the map
-        #[cxx_name = "TopTools_IndexedMapOfShape_find_index"]
-        fn IndexedMapOfShape_find_index(coll: &IndexedMapOfShape, item: &TopoDS_Shape) -> i32;
 
     }
     impl UniquePtr<HSequenceOfShape> {}
@@ -448,6 +448,86 @@ pub use ffi::{
 };
 
 use crate::topo_ds::Shape;
+
+// ========================
+// IndexedMapOfShape iterator
+// ========================
+
+pub struct IndexedMapOfShapeIter {
+    inner: cxx::UniquePtr<ffi::IndexedMapOfShapeIterator>,
+}
+
+impl Iterator for IndexedMapOfShapeIter {
+    type Item = cxx::UniquePtr<Shape>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let item = ffi::IndexedMapOfShapeIterator_next(self.inner.pin_mut());
+        if item.is_null() {
+            None
+        } else {
+            Some(item)
+        }
+    }
+}
+
+impl IndexedMapOfShape {
+    pub fn iter(&self) -> IndexedMapOfShapeIter {
+        IndexedMapOfShapeIter { inner: ffi::IndexedMapOfShape_iterator(self) }
+    }
+
+    pub fn from_iter<'a>(items: impl IntoIterator<Item = &'a Shape>) -> cxx::UniquePtr<Self> {
+        let mut coll = ffi::IndexedMapOfShape_new();
+        for item in items {
+            ffi::IndexedMapOfShape_add(coll.pin_mut(), item);
+        }
+        coll
+    }
+
+    /// Returns Some(index) if found, None if not in map
+    pub fn find_index(&self, item: &Shape) -> Option<i32> {
+        let idx = ffi::IndexedMapOfShape_find_index(self, item);
+        if idx == 0 {
+            None
+        } else {
+            Some(idx)
+        }
+    }
+}
+
+// ========================
+// ListOfShape iterator
+// ========================
+
+pub struct ListOfShapeIter {
+    inner: cxx::UniquePtr<ffi::ListOfShapeIterator>,
+}
+
+impl Iterator for ListOfShapeIter {
+    type Item = cxx::UniquePtr<Shape>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let item = ffi::ListOfShapeIterator_next(self.inner.pin_mut());
+        if item.is_null() {
+            None
+        } else {
+            Some(item)
+        }
+    }
+}
+
+impl ListOfShape {
+    pub fn iter(&self) -> ListOfShapeIter {
+        ListOfShapeIter { inner: ffi::ListOfShape_iterator(self) }
+    }
+
+    pub fn from_iter<'a>(items: impl IntoIterator<Item = &'a Shape>) -> cxx::UniquePtr<Self> {
+        let mut coll = ffi::ListOfShape_new();
+        for item in items {
+            ffi::ListOfShape_append(coll.pin_mut(), item);
+        }
+        coll
+    }
+}
 
 // ========================
 // MapOfShape iterator
@@ -539,6 +619,41 @@ impl DataMapOfShapeShape {
 }
 
 // ========================
+// SequenceOfShape iterator
+// ========================
+
+pub struct SequenceOfShapeIter {
+    inner: cxx::UniquePtr<ffi::SequenceOfShapeIterator>,
+}
+
+impl Iterator for SequenceOfShapeIter {
+    type Item = cxx::UniquePtr<Shape>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let item = ffi::SequenceOfShapeIterator_next(self.inner.pin_mut());
+        if item.is_null() {
+            None
+        } else {
+            Some(item)
+        }
+    }
+}
+
+impl SequenceOfShape {
+    pub fn iter(&self) -> SequenceOfShapeIter {
+        SequenceOfShapeIter { inner: ffi::SequenceOfShape_iterator(self) }
+    }
+
+    pub fn from_iter<'a>(items: impl IntoIterator<Item = &'a Shape>) -> cxx::UniquePtr<Self> {
+        let mut coll = ffi::SequenceOfShape_new();
+        for item in items {
+            ffi::SequenceOfShape_append(coll.pin_mut(), item);
+        }
+        coll
+    }
+}
+
+// ========================
 // IndexedDataMapOfShapeListOfShape key iterator
 // ========================
 
@@ -602,120 +717,5 @@ impl IndexedDataMapOfShapeListOfShape {
 
     pub fn is_empty(&self) -> bool {
         self.len() == 0
-    }
-}
-
-// ========================
-// ListOfShape iterator
-// ========================
-
-pub struct ListOfShapeIter {
-    inner: cxx::UniquePtr<ffi::ListOfShapeIterator>,
-}
-
-impl Iterator for ListOfShapeIter {
-    type Item = cxx::UniquePtr<Shape>;
-
-    fn next(&mut self) -> Option<Self::Item> {
-        let item = ffi::ListOfShapeIterator_next(self.inner.pin_mut());
-        if item.is_null() {
-            None
-        } else {
-            Some(item)
-        }
-    }
-}
-
-impl ListOfShape {
-    pub fn iter(&self) -> ListOfShapeIter {
-        ListOfShapeIter { inner: ffi::ListOfShape_iterator(self) }
-    }
-
-    pub fn from_iter<'a>(items: impl IntoIterator<Item = &'a Shape>) -> cxx::UniquePtr<Self> {
-        let mut coll = ffi::ListOfShape_new();
-        for item in items {
-            ffi::ListOfShape_append(coll.pin_mut(), item);
-        }
-        coll
-    }
-}
-
-// ========================
-// SequenceOfShape iterator
-// ========================
-
-pub struct SequenceOfShapeIter {
-    inner: cxx::UniquePtr<ffi::SequenceOfShapeIterator>,
-}
-
-impl Iterator for SequenceOfShapeIter {
-    type Item = cxx::UniquePtr<Shape>;
-
-    fn next(&mut self) -> Option<Self::Item> {
-        let item = ffi::SequenceOfShapeIterator_next(self.inner.pin_mut());
-        if item.is_null() {
-            None
-        } else {
-            Some(item)
-        }
-    }
-}
-
-impl SequenceOfShape {
-    pub fn iter(&self) -> SequenceOfShapeIter {
-        SequenceOfShapeIter { inner: ffi::SequenceOfShape_iterator(self) }
-    }
-
-    pub fn from_iter<'a>(items: impl IntoIterator<Item = &'a Shape>) -> cxx::UniquePtr<Self> {
-        let mut coll = ffi::SequenceOfShape_new();
-        for item in items {
-            ffi::SequenceOfShape_append(coll.pin_mut(), item);
-        }
-        coll
-    }
-}
-
-// ========================
-// IndexedMapOfShape iterator
-// ========================
-
-pub struct IndexedMapOfShapeIter {
-    inner: cxx::UniquePtr<ffi::IndexedMapOfShapeIterator>,
-}
-
-impl Iterator for IndexedMapOfShapeIter {
-    type Item = cxx::UniquePtr<Shape>;
-
-    fn next(&mut self) -> Option<Self::Item> {
-        let item = ffi::IndexedMapOfShapeIterator_next(self.inner.pin_mut());
-        if item.is_null() {
-            None
-        } else {
-            Some(item)
-        }
-    }
-}
-
-impl IndexedMapOfShape {
-    pub fn iter(&self) -> IndexedMapOfShapeIter {
-        IndexedMapOfShapeIter { inner: ffi::IndexedMapOfShape_iterator(self) }
-    }
-
-    pub fn from_iter<'a>(items: impl IntoIterator<Item = &'a Shape>) -> cxx::UniquePtr<Self> {
-        let mut coll = ffi::IndexedMapOfShape_new();
-        for item in items {
-            ffi::IndexedMapOfShape_add(coll.pin_mut(), item);
-        }
-        coll
-    }
-
-    /// Returns Some(index) if found, None if not in map
-    pub fn find_index(&self, item: &Shape) -> Option<i32> {
-        let idx = ffi::IndexedMapOfShape_find_index(self, item);
-        if idx == 0 {
-            None
-        } else {
-            Some(idx)
-        }
     }
 }

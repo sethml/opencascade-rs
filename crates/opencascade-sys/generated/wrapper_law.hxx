@@ -79,17 +79,17 @@ inline rust::String Law_Interpol_get_type_name() {
     return rust::String(Law_Interpol::get_type_name());
 }
 
-inline const Law_Function& Law_Interpol_as_Law_Function(const Law_Interpol& self) { return self; }
-inline Law_Function& Law_Interpol_as_Law_Function_mut(Law_Interpol& self) { return self; }
 inline const Law_BSpFunc& Law_Interpol_as_Law_BSpFunc(const Law_Interpol& self) { return self; }
 inline Law_BSpFunc& Law_Interpol_as_Law_BSpFunc_mut(Law_Interpol& self) { return self; }
+inline const Law_Function& Law_Interpol_as_Law_Function(const Law_Interpol& self) { return self; }
+inline Law_Function& Law_Interpol_as_Law_Function_mut(Law_Interpol& self) { return self; }
 inline std::unique_ptr<HandleLawInterpol> Law_Interpol_to_handle(std::unique_ptr<Law_Interpol> obj) {
     return std::make_unique<HandleLawInterpol>(obj.release());
 }
-inline std::unique_ptr<HandleLawFunction> HandleLawInterpol_to_HandleLawFunction(const HandleLawInterpol& handle) {
-    return std::make_unique<HandleLawFunction>(handle);
-}
 inline std::unique_ptr<HandleLawBSpFunc> HandleLawInterpol_to_HandleLawBSpFunc(const HandleLawInterpol& handle) {
     return std::make_unique<HandleLawBSpFunc>(handle);
+}
+inline std::unique_ptr<HandleLawFunction> HandleLawInterpol_to_HandleLawFunction(const HandleLawInterpol& handle) {
+    return std::make_unique<HandleLawFunction>(handle);
 }
 

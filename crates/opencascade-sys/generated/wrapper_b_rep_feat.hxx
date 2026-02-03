@@ -32,20 +32,20 @@ inline std::unique_ptr<BRepFeat_MakeCylindricalHole> BRepFeat_MakeCylindricalHol
     return std::make_unique<BRepFeat_MakeCylindricalHole>();
 }
 
-inline const BOPAlgo_Options& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Options(const BRepFeat_MakeCylindricalHole& self) { return self; }
-inline BOPAlgo_Options& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Options_mut(BRepFeat_MakeCylindricalHole& self) { return self; }
-inline const BOPAlgo_Algo& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Algo(const BRepFeat_MakeCylindricalHole& self) { return self; }
-inline BOPAlgo_Algo& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Algo_mut(BRepFeat_MakeCylindricalHole& self) { return self; }
+inline const BRepFeat_Builder& BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder(const BRepFeat_MakeCylindricalHole& self) { return self; }
+inline BRepFeat_Builder& BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder_mut(BRepFeat_MakeCylindricalHole& self) { return self; }
+inline const BOPAlgo_BuilderShape& BRepFeat_MakeCylindricalHole_as_BOPAlgo_BuilderShape(const BRepFeat_MakeCylindricalHole& self) { return self; }
+inline BOPAlgo_BuilderShape& BRepFeat_MakeCylindricalHole_as_BOPAlgo_BuilderShape_mut(BRepFeat_MakeCylindricalHole& self) { return self; }
 inline const BOPAlgo_Builder& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Builder(const BRepFeat_MakeCylindricalHole& self) { return self; }
 inline BOPAlgo_Builder& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Builder_mut(BRepFeat_MakeCylindricalHole& self) { return self; }
 inline const BOPAlgo_BOP& BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP(const BRepFeat_MakeCylindricalHole& self) { return self; }
 inline BOPAlgo_BOP& BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP_mut(BRepFeat_MakeCylindricalHole& self) { return self; }
-inline const BRepFeat_Builder& BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder(const BRepFeat_MakeCylindricalHole& self) { return self; }
-inline BRepFeat_Builder& BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder_mut(BRepFeat_MakeCylindricalHole& self) { return self; }
+inline const BOPAlgo_Algo& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Algo(const BRepFeat_MakeCylindricalHole& self) { return self; }
+inline BOPAlgo_Algo& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Algo_mut(BRepFeat_MakeCylindricalHole& self) { return self; }
+inline const BOPAlgo_Options& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Options(const BRepFeat_MakeCylindricalHole& self) { return self; }
+inline BOPAlgo_Options& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Options_mut(BRepFeat_MakeCylindricalHole& self) { return self; }
 inline const BOPAlgo_ToolsProvider& BRepFeat_MakeCylindricalHole_as_BOPAlgo_ToolsProvider(const BRepFeat_MakeCylindricalHole& self) { return self; }
 inline BOPAlgo_ToolsProvider& BRepFeat_MakeCylindricalHole_as_BOPAlgo_ToolsProvider_mut(BRepFeat_MakeCylindricalHole& self) { return self; }
-inline const BOPAlgo_BuilderShape& BRepFeat_MakeCylindricalHole_as_BOPAlgo_BuilderShape(const BRepFeat_MakeCylindricalHole& self) { return self; }
-inline BOPAlgo_BuilderShape& BRepFeat_MakeCylindricalHole_as_BOPAlgo_BuilderShape_mut(BRepFeat_MakeCylindricalHole& self) { return self; }
 
 // ========================
 // BRepFeat_MakeDPrism wrappers
@@ -65,10 +65,10 @@ inline std::unique_ptr<opencascade::handle<Geom_Curve>> BRepFeat_MakeDPrism_Bary
 
 inline const BRepFeat_Form& BRepFeat_MakeDPrism_as_BRepFeat_Form(const BRepFeat_MakeDPrism& self) { return self; }
 inline BRepFeat_Form& BRepFeat_MakeDPrism_as_BRepFeat_Form_mut(BRepFeat_MakeDPrism& self) { return self; }
-inline const BRepBuilderAPI_MakeShape& BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape(const BRepFeat_MakeDPrism& self) { return self; }
-inline BRepBuilderAPI_MakeShape& BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape_mut(BRepFeat_MakeDPrism& self) { return self; }
 inline const BRepBuilderAPI_Command& BRepFeat_MakeDPrism_as_BRepBuilderAPI_Command(const BRepFeat_MakeDPrism& self) { return self; }
 inline BRepBuilderAPI_Command& BRepFeat_MakeDPrism_as_BRepBuilderAPI_Command_mut(BRepFeat_MakeDPrism& self) { return self; }
+inline const BRepBuilderAPI_MakeShape& BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape(const BRepFeat_MakeDPrism& self) { return self; }
+inline BRepBuilderAPI_MakeShape& BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape_mut(BRepFeat_MakeDPrism& self) { return self; }
 
 // ========================
 // BRepFeat_Form wrappers
@@ -91,16 +91,16 @@ inline std::unique_ptr<BRepFeat_Builder> BRepFeat_Builder_ctor() {
     return std::make_unique<BRepFeat_Builder>();
 }
 
+inline const BOPAlgo_ToolsProvider& BRepFeat_Builder_as_BOPAlgo_ToolsProvider(const BRepFeat_Builder& self) { return self; }
+inline BOPAlgo_ToolsProvider& BRepFeat_Builder_as_BOPAlgo_ToolsProvider_mut(BRepFeat_Builder& self) { return self; }
+inline const BOPAlgo_Algo& BRepFeat_Builder_as_BOPAlgo_Algo(const BRepFeat_Builder& self) { return self; }
+inline BOPAlgo_Algo& BRepFeat_Builder_as_BOPAlgo_Algo_mut(BRepFeat_Builder& self) { return self; }
+inline const BOPAlgo_BuilderShape& BRepFeat_Builder_as_BOPAlgo_BuilderShape(const BRepFeat_Builder& self) { return self; }
+inline BOPAlgo_BuilderShape& BRepFeat_Builder_as_BOPAlgo_BuilderShape_mut(BRepFeat_Builder& self) { return self; }
+inline const BOPAlgo_Options& BRepFeat_Builder_as_BOPAlgo_Options(const BRepFeat_Builder& self) { return self; }
+inline BOPAlgo_Options& BRepFeat_Builder_as_BOPAlgo_Options_mut(BRepFeat_Builder& self) { return self; }
 inline const BOPAlgo_BOP& BRepFeat_Builder_as_BOPAlgo_BOP(const BRepFeat_Builder& self) { return self; }
 inline BOPAlgo_BOP& BRepFeat_Builder_as_BOPAlgo_BOP_mut(BRepFeat_Builder& self) { return self; }
 inline const BOPAlgo_Builder& BRepFeat_Builder_as_BOPAlgo_Builder(const BRepFeat_Builder& self) { return self; }
 inline BOPAlgo_Builder& BRepFeat_Builder_as_BOPAlgo_Builder_mut(BRepFeat_Builder& self) { return self; }
-inline const BOPAlgo_BuilderShape& BRepFeat_Builder_as_BOPAlgo_BuilderShape(const BRepFeat_Builder& self) { return self; }
-inline BOPAlgo_BuilderShape& BRepFeat_Builder_as_BOPAlgo_BuilderShape_mut(BRepFeat_Builder& self) { return self; }
-inline const BOPAlgo_ToolsProvider& BRepFeat_Builder_as_BOPAlgo_ToolsProvider(const BRepFeat_Builder& self) { return self; }
-inline BOPAlgo_ToolsProvider& BRepFeat_Builder_as_BOPAlgo_ToolsProvider_mut(BRepFeat_Builder& self) { return self; }
-inline const BOPAlgo_Options& BRepFeat_Builder_as_BOPAlgo_Options(const BRepFeat_Builder& self) { return self; }
-inline BOPAlgo_Options& BRepFeat_Builder_as_BOPAlgo_Options_mut(BRepFeat_Builder& self) { return self; }
-inline const BOPAlgo_Algo& BRepFeat_Builder_as_BOPAlgo_Algo(const BRepFeat_Builder& self) { return self; }
-inline BOPAlgo_Algo& BRepFeat_Builder_as_BOPAlgo_Algo_mut(BRepFeat_Builder& self) { return self; }
 

@@ -15,54 +15,6 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_iges_control.hxx");
-        #[doc = "Mutex from standard module"]
-        type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "Transient from standard module"]
-        type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Standard from standard module"]
-        type Standard = crate::standard::ffi::Standard;
-        #[doc = "ErrorHandler from standard module"]
-        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Type from standard module"]
-        type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "ProgramError from standard module"]
-        type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "Failure from standard module"]
-        type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "TypeMismatch from standard module"]
-        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "NoSuchObject from standard module"]
-        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "DimensionMismatch from standard module"]
-        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "OutOfMemory from standard module"]
-        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "NotImplemented from standard module"]
-        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "OutOfRange from standard module"]
-        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "RangeError from standard module"]
-        type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "DomainError from standard module"]
-        type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "DimensionError from standard module"]
-        type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "NumericError from standard module"]
-        type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "NullObject from standard module"]
-        type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "ConstructionError from standard module"]
-        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DumpValue from standard module"]
-        type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "Dump from standard module"]
-        type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "BasicEditor from iges_data module"]
-        type IGESData_BasicEditor = crate::iges_data::ffi::BasicEditor;
-        #[doc = "SpecificLib from iges_data module"]
-        type IGESData_SpecificLib = crate::iges_data::ffi::SpecificLib;
-        #[doc = "Reader from xs_control module"]
-        type XSControl_Reader = crate::xs_control::ffi::Reader;
         #[doc = "ProgressRange from message module"]
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
         #[doc = "ProgressScope from message module"]
@@ -113,23 +65,74 @@ pub(crate) mod ffi {
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
         #[doc = "TShape from topo_ds module"]
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "BasicEditor from iges_data module"]
+        type IGESData_BasicEditor = crate::iges_data::ffi::BasicEditor;
+        #[doc = "SpecificLib from iges_data module"]
+        type IGESData_SpecificLib = crate::iges_data::ffi::SpecificLib;
         #[doc = "ShapeProcessor from xs_algo module"]
         type XSAlgo_ShapeProcessor = crate::xs_algo::ffi::ShapeProcessor;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "XSControl_WorkSession"]
-        type XSControl_WorkSession;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "IGESData_IGESModel"]
-        type IGESData_IGESModel;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "DE_ShapeFixParameters"]
-        type DE_ShapeFixParameters;
+        #[doc = "Mutex from standard module"]
+        type Standard_Mutex = crate::standard::ffi::Mutex;
+        #[doc = "Transient from standard module"]
+        type Standard_Transient = crate::standard::ffi::Transient;
+        #[doc = "Standard from standard module"]
+        type Standard = crate::standard::ffi::Standard;
+        #[doc = "ErrorHandler from standard module"]
+        type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
+        #[doc = "Type from standard module"]
+        type Standard_Type = crate::standard::ffi::Type;
+        #[doc = "ProgramError from standard module"]
+        type Standard_ProgramError = crate::standard::ffi::ProgramError;
+        #[doc = "Failure from standard module"]
+        type Standard_Failure = crate::standard::ffi::Failure;
+        #[doc = "TypeMismatch from standard module"]
+        type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+        #[doc = "NoSuchObject from standard module"]
+        type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
+        #[doc = "DimensionMismatch from standard module"]
+        type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
+        #[doc = "OutOfMemory from standard module"]
+        type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
+        #[doc = "NotImplemented from standard module"]
+        type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
+        #[doc = "OutOfRange from standard module"]
+        type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
+        #[doc = "RangeError from standard module"]
+        type Standard_RangeError = crate::standard::ffi::RangeError;
+        #[doc = "DomainError from standard module"]
+        type Standard_DomainError = crate::standard::ffi::DomainError;
+        #[doc = "DimensionError from standard module"]
+        type Standard_DimensionError = crate::standard::ffi::DimensionError;
+        #[doc = "NumericError from standard module"]
+        type Standard_NumericError = crate::standard::ffi::NumericError;
+        #[doc = "NullObject from standard module"]
+        type Standard_NullObject = crate::standard::ffi::NullObject;
+        #[doc = "ConstructionError from standard module"]
+        type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
+        #[doc = "DumpValue from standard module"]
+        type Standard_DumpValue = crate::standard::ffi::DumpValue;
+        #[doc = "Dump from standard module"]
+        type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "Reader from xs_control module"]
+        type XSControl_Reader = crate::xs_control::ffi::Reader;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Transfer_FinderProcess"]
         type Transfer_FinderProcess;
         #[doc = r" Referenced type from C++"]
+        #[cxx_name = "IGESData_IGESModel"]
+        type IGESData_IGESModel;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "XSControl_WorkSession"]
+        type XSControl_WorkSession;
+        #[doc = r" Referenced type from C++"]
         #[cxx_name = "IGESData_IGESEntity"]
         type IGESData_IGESEntity;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "DE_ShapeFixParameters"]
+        type DE_ShapeFixParameters;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardTransient"]
+        type HandleStandardTransient;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleIGESDataIGESModel"]
         type HandleIGESDataIGESModel;
@@ -137,14 +140,11 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleXSControlWorkSession"]
         type HandleXSControlWorkSession;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardTransient"]
-        type HandleStandardTransient;
+        #[cxx_name = "HandleTransferFinderProcess"]
+        type HandleTransferFinderProcess;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleIGESDataIGESEntity"]
         type HandleIGESDataIGESEntity;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleTransferFinderProcess"]
-        type HandleTransferFinderProcess;
         #[doc = " ======================== IGESControl_Reader ========================"]
         #[doc = "/// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader`"]
         #[doc = ""]

@@ -93,11 +93,11 @@ pub(crate) mod ffi {
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeom2dEvaluatorCurve"]
-        type HandleGeom2dEvaluatorCurve;
-        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeom2dEvaluatorCurve"]
+        type HandleGeom2dEvaluatorCurve;
         #[doc = " ======================== Geom2dEvaluator_Curve ========================"]
         #[doc = "/// **Source:** `Geom2dEvaluator_Curve.hxx` - `Geom2dEvaluator_Curve`"]
         #[doc = ""]

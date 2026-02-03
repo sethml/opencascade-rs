@@ -15,6 +15,10 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_ch_fi2d.hxx");
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
         #[doc = "Shape from topo_ds module"]
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
         #[doc = "Vertex from topo_ds module"]
@@ -39,10 +43,6 @@ pub(crate) mod ffi {
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
         #[doc = "TShape from topo_ds module"]
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_SequenceOfShape"]
         type TopTools_SequenceOfShape;

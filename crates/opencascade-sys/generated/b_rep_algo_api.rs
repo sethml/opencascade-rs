@@ -20,102 +20,6 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_algo_api.hxx");
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "BRepTools from b_rep_tools module"]
-        type BRepTools = crate::b_rep_tools::ffi::BRepTools;
-        #[doc = "History from b_rep_tools module"]
-        type BRepTools_History = crate::b_rep_tools::ffi::History;
-        #[doc = "Modifier from b_rep_tools module"]
-        type BRepTools_Modifier = crate::b_rep_tools::ffi::Modifier;
-        #[doc = "ReShape from b_rep_tools module"]
-        type BRepTools_ReShape = crate::b_rep_tools::ffi::ReShape;
-        #[doc = "Command from b_rep_builder_api module"]
-        type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
-        #[doc = "MakeShape from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
-        #[doc = "MakeEdge from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeEdge = crate::b_rep_builder_api::ffi::MakeEdge;
-        #[doc = "MakeFace from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeFace = crate::b_rep_builder_api::ffi::MakeFace;
-        #[doc = "MakeSolid from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeSolid = crate::b_rep_builder_api::ffi::MakeSolid;
-        #[doc = "MakeVertex from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeVertex = crate::b_rep_builder_api::ffi::MakeVertex;
-        #[doc = "MakeWire from b_rep_builder_api module"]
-        type BRepBuilderAPI_MakeWire = crate::b_rep_builder_api::ffi::MakeWire;
-        #[doc = "Sewing from b_rep_builder_api module"]
-        type BRepBuilderAPI_Sewing = crate::b_rep_builder_api::ffi::Sewing;
-        #[doc = "Transform from b_rep_builder_api module"]
-        type BRepBuilderAPI_Transform = crate::b_rep_builder_api::ffi::Transform;
-        #[doc = "ModifyShape from b_rep_builder_api module"]
-        type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
-        #[doc = "BOP from bop_algo module"]
-        type BOPAlgo_BOP = crate::bop_algo::ffi::BOP;
-        #[doc = "ToolsProvider from bop_algo module"]
-        type BOPAlgo_ToolsProvider = crate::bop_algo::ffi::ToolsProvider;
-        #[doc = "Builder from bop_algo module"]
-        type BOPAlgo_Builder = crate::bop_algo::ffi::Builder;
-        #[doc = "BuilderShape from bop_algo module"]
-        type BOPAlgo_BuilderShape = crate::bop_algo::ffi::BuilderShape;
-        #[doc = "ParallelAlgo from bop_algo module"]
-        type BOPAlgo_ParallelAlgo = crate::bop_algo::ffi::ParallelAlgo;
-        #[doc = "PISteps from bop_algo module"]
-        type BOPAlgo_PISteps = crate::bop_algo::ffi::PISteps;
-        #[doc = "Options from bop_algo module"]
-        type BOPAlgo_Options = crate::bop_algo::ffi::Options;
-        #[doc = "ProgressRange from message module"]
-        type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
-        type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "ProgressIndicator from message module"]
-        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "Message from message module"]
-        type Message = crate::message::ffi::Message;
-        #[doc = "Messenger from message module"]
-        type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Printer from message module"]
-        type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "Algorithm from message module"]
-        type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
-        type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Msg from message module"]
-        type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Report from message module"]
-        type Message_Report = crate::message::ffi::Report;
-        #[doc = "Level from message module"]
-        type Message_Level = crate::message::ffi::Level;
-        #[doc = "Alert from message module"]
-        type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
-        type Message_AlertExtended = crate::message::ffi::AlertExtended;
         #[doc = "Geometry from geom module"]
         type Geom_Geometry = crate::geom::ffi::Geometry;
         #[doc = "Curve from geom module"]
@@ -178,24 +82,120 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "BOPAlgo_PaveFiller"]
-        type BOPAlgo_PaveFiller;
+        #[doc = "ProgressRange from message module"]
+        type Message_ProgressRange = crate::message::ffi::ProgressRange;
+        #[doc = "ProgressScope from message module"]
+        type Message_ProgressScope = crate::message::ffi::ProgressScope;
+        #[doc = "ProgressIndicator from message module"]
+        type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
+        #[doc = "Message from message module"]
+        type Message = crate::message::ffi::Message;
+        #[doc = "Messenger from message module"]
+        type Message_Messenger = crate::message::ffi::Messenger;
+        #[doc = "Printer from message module"]
+        type Message_Printer = crate::message::ffi::Printer;
+        #[doc = "Algorithm from message module"]
+        type Message_Algorithm = crate::message::ffi::Algorithm;
+        #[doc = "ExecStatus from message module"]
+        type Message_ExecStatus = crate::message::ffi::ExecStatus;
+        #[doc = "Msg from message module"]
+        type Message_Msg = crate::message::ffi::Msg;
+        #[doc = "Report from message module"]
+        type Message_Report = crate::message::ffi::Report;
+        #[doc = "Level from message module"]
+        type Message_Level = crate::message::ffi::Level;
+        #[doc = "Alert from message module"]
+        type Message_Alert = crate::message::ffi::Alert;
+        #[doc = "AlertExtended from message module"]
+        type Message_AlertExtended = crate::message::ffi::AlertExtended;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
+        #[doc = "BRepTools from b_rep_tools module"]
+        type BRepTools = crate::b_rep_tools::ffi::BRepTools;
+        #[doc = "History from b_rep_tools module"]
+        type BRepTools_History = crate::b_rep_tools::ffi::History;
+        #[doc = "Modifier from b_rep_tools module"]
+        type BRepTools_Modifier = crate::b_rep_tools::ffi::Modifier;
+        #[doc = "ReShape from b_rep_tools module"]
+        type BRepTools_ReShape = crate::b_rep_tools::ffi::ReShape;
+        #[doc = "Command from b_rep_builder_api module"]
+        type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
+        #[doc = "MakeShape from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
+        #[doc = "MakeEdge from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeEdge = crate::b_rep_builder_api::ffi::MakeEdge;
+        #[doc = "MakeFace from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeFace = crate::b_rep_builder_api::ffi::MakeFace;
+        #[doc = "MakeSolid from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeSolid = crate::b_rep_builder_api::ffi::MakeSolid;
+        #[doc = "MakeVertex from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeVertex = crate::b_rep_builder_api::ffi::MakeVertex;
+        #[doc = "MakeWire from b_rep_builder_api module"]
+        type BRepBuilderAPI_MakeWire = crate::b_rep_builder_api::ffi::MakeWire;
+        #[doc = "Sewing from b_rep_builder_api module"]
+        type BRepBuilderAPI_Sewing = crate::b_rep_builder_api::ffi::Sewing;
+        #[doc = "Transform from b_rep_builder_api module"]
+        type BRepBuilderAPI_Transform = crate::b_rep_builder_api::ffi::Transform;
+        #[doc = "ModifyShape from b_rep_builder_api module"]
+        type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
+        #[doc = "BOP from bop_algo module"]
+        type BOPAlgo_BOP = crate::bop_algo::ffi::BOP;
+        #[doc = "ToolsProvider from bop_algo module"]
+        type BOPAlgo_ToolsProvider = crate::bop_algo::ffi::ToolsProvider;
+        #[doc = "Builder from bop_algo module"]
+        type BOPAlgo_Builder = crate::bop_algo::ffi::Builder;
+        #[doc = "BuilderShape from bop_algo module"]
+        type BOPAlgo_BuilderShape = crate::bop_algo::ffi::BuilderShape;
+        #[doc = "ParallelAlgo from bop_algo module"]
+        type BOPAlgo_ParallelAlgo = crate::bop_algo::ffi::ParallelAlgo;
+        #[doc = "PISteps from bop_algo module"]
+        type BOPAlgo_PISteps = crate::bop_algo::ffi::PISteps;
+        #[doc = "Options from bop_algo module"]
+        type BOPAlgo_Options = crate::bop_algo::ffi::Options;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "BOPAlgo_PPaveFiller"]
         type BOPAlgo_PPaveFiller;
         #[doc = r" Referenced type from C++"]
+        #[cxx_name = "BOPAlgo_PaveFiller"]
+        type BOPAlgo_PaveFiller;
+        #[doc = r" Referenced type from C++"]
         #[cxx_name = "BOPAlgo_PBuilder"]
         type BOPAlgo_PBuilder;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBRepToolsHistory"]
-        type HandleBRepToolsHistory;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBRepToolsHistory"]
+        type HandleBRepToolsHistory;
         #[doc = " ======================== BRepAlgoAPI_BuilderAlgo ========================"]
         #[doc = "/// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx` - `BRepAlgoAPI_BuilderAlgo`"]
         #[doc = ""]
@@ -330,16 +330,6 @@ pub(crate) mod ffi {
         #[doc = "@name Performing the operation Performs the Boolean operation."]
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut BooleanOperation>, theRange: &Message_ProgressRange);
-        #[doc = "Upcast BRepAlgoAPI_BooleanOperation to BRepBuilderAPI_MakeShape"]
-        #[cxx_name = "BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape"]
-        fn boolean_operation_as_b_rep_builder_api_make_shape(
-            self_: &BooleanOperation,
-        ) -> &BRepBuilderAPI_MakeShape;
-        #[doc = "Upcast BRepAlgoAPI_BooleanOperation to BRepBuilderAPI_MakeShape (mutable)"]
-        #[cxx_name = "BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape_mut"]
-        fn boolean_operation_as_b_rep_builder_api_make_shape_mut(
-            self_: Pin<&mut BooleanOperation>,
-        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         #[doc = "Upcast BRepAlgoAPI_BooleanOperation to BRepBuilderAPI_Command"]
         #[cxx_name = "BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_Command"]
         fn boolean_operation_as_b_rep_builder_api_command(
@@ -350,6 +340,16 @@ pub(crate) mod ffi {
         fn boolean_operation_as_b_rep_builder_api_command_mut(
             self_: Pin<&mut BooleanOperation>,
         ) -> Pin<&mut BRepBuilderAPI_Command>;
+        #[doc = "Upcast BRepAlgoAPI_BooleanOperation to BRepBuilderAPI_MakeShape"]
+        #[cxx_name = "BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape"]
+        fn boolean_operation_as_b_rep_builder_api_make_shape(
+            self_: &BooleanOperation,
+        ) -> &BRepBuilderAPI_MakeShape;
+        #[doc = "Upcast BRepAlgoAPI_BooleanOperation to BRepBuilderAPI_MakeShape (mutable)"]
+        #[cxx_name = "BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape_mut"]
+        fn boolean_operation_as_b_rep_builder_api_make_shape_mut(
+            self_: Pin<&mut BooleanOperation>,
+        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         #[doc = "Upcast BRepAlgoAPI_BooleanOperation to BRepAlgoAPI_BuilderAlgo"]
         #[cxx_name = "BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_BuilderAlgo"]
         fn boolean_operation_as_builder_algo(self_: &BooleanOperation) -> &BuilderAlgo;
@@ -393,26 +393,12 @@ pub(crate) mod ffi {
             PF: &BOPAlgo_PaveFiller,
             theRange: &Message_ProgressRange,
         ) -> UniquePtr<Common>;
-        #[doc = "Upcast BRepAlgoAPI_Common to BRepAlgoAPI_BooleanOperation"]
-        #[cxx_name = "BRepAlgoAPI_Common_as_BRepAlgoAPI_BooleanOperation"]
-        fn common_as_boolean_operation(self_: &Common) -> &BooleanOperation;
-        #[doc = "Upcast BRepAlgoAPI_Common to BRepAlgoAPI_BooleanOperation (mutable)"]
-        #[cxx_name = "BRepAlgoAPI_Common_as_BRepAlgoAPI_BooleanOperation_mut"]
-        fn common_as_boolean_operation_mut(self_: Pin<&mut Common>) -> Pin<&mut BooleanOperation>;
         #[doc = "Upcast BRepAlgoAPI_Common to BRepAlgoAPI_BuilderAlgo"]
         #[cxx_name = "BRepAlgoAPI_Common_as_BRepAlgoAPI_BuilderAlgo"]
         fn common_as_builder_algo(self_: &Common) -> &BuilderAlgo;
         #[doc = "Upcast BRepAlgoAPI_Common to BRepAlgoAPI_BuilderAlgo (mutable)"]
         #[cxx_name = "BRepAlgoAPI_Common_as_BRepAlgoAPI_BuilderAlgo_mut"]
         fn common_as_builder_algo_mut(self_: Pin<&mut Common>) -> Pin<&mut BuilderAlgo>;
-        #[doc = "Upcast BRepAlgoAPI_Common to BRepBuilderAPI_MakeShape"]
-        #[cxx_name = "BRepAlgoAPI_Common_as_BRepBuilderAPI_MakeShape"]
-        fn common_as_b_rep_builder_api_make_shape(self_: &Common) -> &BRepBuilderAPI_MakeShape;
-        #[doc = "Upcast BRepAlgoAPI_Common to BRepBuilderAPI_MakeShape (mutable)"]
-        #[cxx_name = "BRepAlgoAPI_Common_as_BRepBuilderAPI_MakeShape_mut"]
-        fn common_as_b_rep_builder_api_make_shape_mut(
-            self_: Pin<&mut Common>,
-        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         #[doc = "Upcast BRepAlgoAPI_Common to BRepBuilderAPI_Command"]
         #[cxx_name = "BRepAlgoAPI_Common_as_BRepBuilderAPI_Command"]
         fn common_as_b_rep_builder_api_command(self_: &Common) -> &BRepBuilderAPI_Command;
@@ -421,6 +407,20 @@ pub(crate) mod ffi {
         fn common_as_b_rep_builder_api_command_mut(
             self_: Pin<&mut Common>,
         ) -> Pin<&mut BRepBuilderAPI_Command>;
+        #[doc = "Upcast BRepAlgoAPI_Common to BRepBuilderAPI_MakeShape"]
+        #[cxx_name = "BRepAlgoAPI_Common_as_BRepBuilderAPI_MakeShape"]
+        fn common_as_b_rep_builder_api_make_shape(self_: &Common) -> &BRepBuilderAPI_MakeShape;
+        #[doc = "Upcast BRepAlgoAPI_Common to BRepBuilderAPI_MakeShape (mutable)"]
+        #[cxx_name = "BRepAlgoAPI_Common_as_BRepBuilderAPI_MakeShape_mut"]
+        fn common_as_b_rep_builder_api_make_shape_mut(
+            self_: Pin<&mut Common>,
+        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        #[doc = "Upcast BRepAlgoAPI_Common to BRepAlgoAPI_BooleanOperation"]
+        #[cxx_name = "BRepAlgoAPI_Common_as_BRepAlgoAPI_BooleanOperation"]
+        fn common_as_boolean_operation(self_: &Common) -> &BooleanOperation;
+        #[doc = "Upcast BRepAlgoAPI_Common to BRepAlgoAPI_BooleanOperation (mutable)"]
+        #[cxx_name = "BRepAlgoAPI_Common_as_BRepAlgoAPI_BooleanOperation_mut"]
+        fn common_as_boolean_operation_mut(self_: Pin<&mut Common>) -> Pin<&mut BooleanOperation>;
         #[doc = " ======================== BRepAlgoAPI_Cut ========================"]
         #[doc = "/// **Source:** `BRepAlgoAPI_Cut.hxx` - `BRepAlgoAPI_Cut`"]
         #[doc = ""]
@@ -457,26 +457,6 @@ pub(crate) mod ffi {
             bFWD: bool,
             theRange: &Message_ProgressRange,
         ) -> UniquePtr<Cut>;
-        #[doc = "Upcast BRepAlgoAPI_Cut to BRepAlgoAPI_BooleanOperation"]
-        #[cxx_name = "BRepAlgoAPI_Cut_as_BRepAlgoAPI_BooleanOperation"]
-        fn cut_as_boolean_operation(self_: &Cut) -> &BooleanOperation;
-        #[doc = "Upcast BRepAlgoAPI_Cut to BRepAlgoAPI_BooleanOperation (mutable)"]
-        #[cxx_name = "BRepAlgoAPI_Cut_as_BRepAlgoAPI_BooleanOperation_mut"]
-        fn cut_as_boolean_operation_mut(self_: Pin<&mut Cut>) -> Pin<&mut BooleanOperation>;
-        #[doc = "Upcast BRepAlgoAPI_Cut to BRepBuilderAPI_MakeShape"]
-        #[cxx_name = "BRepAlgoAPI_Cut_as_BRepBuilderAPI_MakeShape"]
-        fn cut_as_b_rep_builder_api_make_shape(self_: &Cut) -> &BRepBuilderAPI_MakeShape;
-        #[doc = "Upcast BRepAlgoAPI_Cut to BRepBuilderAPI_MakeShape (mutable)"]
-        #[cxx_name = "BRepAlgoAPI_Cut_as_BRepBuilderAPI_MakeShape_mut"]
-        fn cut_as_b_rep_builder_api_make_shape_mut(
-            self_: Pin<&mut Cut>,
-        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
-        #[doc = "Upcast BRepAlgoAPI_Cut to BRepAlgoAPI_BuilderAlgo"]
-        #[cxx_name = "BRepAlgoAPI_Cut_as_BRepAlgoAPI_BuilderAlgo"]
-        fn cut_as_builder_algo(self_: &Cut) -> &BuilderAlgo;
-        #[doc = "Upcast BRepAlgoAPI_Cut to BRepAlgoAPI_BuilderAlgo (mutable)"]
-        #[cxx_name = "BRepAlgoAPI_Cut_as_BRepAlgoAPI_BuilderAlgo_mut"]
-        fn cut_as_builder_algo_mut(self_: Pin<&mut Cut>) -> Pin<&mut BuilderAlgo>;
         #[doc = "Upcast BRepAlgoAPI_Cut to BRepBuilderAPI_Command"]
         #[cxx_name = "BRepAlgoAPI_Cut_as_BRepBuilderAPI_Command"]
         fn cut_as_b_rep_builder_api_command(self_: &Cut) -> &BRepBuilderAPI_Command;
@@ -485,6 +465,26 @@ pub(crate) mod ffi {
         fn cut_as_b_rep_builder_api_command_mut(
             self_: Pin<&mut Cut>,
         ) -> Pin<&mut BRepBuilderAPI_Command>;
+        #[doc = "Upcast BRepAlgoAPI_Cut to BRepAlgoAPI_BuilderAlgo"]
+        #[cxx_name = "BRepAlgoAPI_Cut_as_BRepAlgoAPI_BuilderAlgo"]
+        fn cut_as_builder_algo(self_: &Cut) -> &BuilderAlgo;
+        #[doc = "Upcast BRepAlgoAPI_Cut to BRepAlgoAPI_BuilderAlgo (mutable)"]
+        #[cxx_name = "BRepAlgoAPI_Cut_as_BRepAlgoAPI_BuilderAlgo_mut"]
+        fn cut_as_builder_algo_mut(self_: Pin<&mut Cut>) -> Pin<&mut BuilderAlgo>;
+        #[doc = "Upcast BRepAlgoAPI_Cut to BRepBuilderAPI_MakeShape"]
+        #[cxx_name = "BRepAlgoAPI_Cut_as_BRepBuilderAPI_MakeShape"]
+        fn cut_as_b_rep_builder_api_make_shape(self_: &Cut) -> &BRepBuilderAPI_MakeShape;
+        #[doc = "Upcast BRepAlgoAPI_Cut to BRepBuilderAPI_MakeShape (mutable)"]
+        #[cxx_name = "BRepAlgoAPI_Cut_as_BRepBuilderAPI_MakeShape_mut"]
+        fn cut_as_b_rep_builder_api_make_shape_mut(
+            self_: Pin<&mut Cut>,
+        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        #[doc = "Upcast BRepAlgoAPI_Cut to BRepAlgoAPI_BooleanOperation"]
+        #[cxx_name = "BRepAlgoAPI_Cut_as_BRepAlgoAPI_BooleanOperation"]
+        fn cut_as_boolean_operation(self_: &Cut) -> &BooleanOperation;
+        #[doc = "Upcast BRepAlgoAPI_Cut to BRepAlgoAPI_BooleanOperation (mutable)"]
+        #[cxx_name = "BRepAlgoAPI_Cut_as_BRepAlgoAPI_BooleanOperation_mut"]
+        fn cut_as_boolean_operation_mut(self_: Pin<&mut Cut>) -> Pin<&mut BooleanOperation>;
         #[doc = " ======================== BRepAlgoAPI_Fuse ========================"]
         #[doc = "/// **Source:** `BRepAlgoAPI_Fuse.hxx` - `BRepAlgoAPI_Fuse`"]
         #[doc = ""]
@@ -520,20 +520,6 @@ pub(crate) mod ffi {
             aDSF: &BOPAlgo_PaveFiller,
             theRange: &Message_ProgressRange,
         ) -> UniquePtr<Fuse>;
-        #[doc = "Upcast BRepAlgoAPI_Fuse to BRepAlgoAPI_BuilderAlgo"]
-        #[cxx_name = "BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BuilderAlgo"]
-        fn fuse_as_builder_algo(self_: &Fuse) -> &BuilderAlgo;
-        #[doc = "Upcast BRepAlgoAPI_Fuse to BRepAlgoAPI_BuilderAlgo (mutable)"]
-        #[cxx_name = "BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BuilderAlgo_mut"]
-        fn fuse_as_builder_algo_mut(self_: Pin<&mut Fuse>) -> Pin<&mut BuilderAlgo>;
-        #[doc = "Upcast BRepAlgoAPI_Fuse to BRepBuilderAPI_MakeShape"]
-        #[cxx_name = "BRepAlgoAPI_Fuse_as_BRepBuilderAPI_MakeShape"]
-        fn fuse_as_b_rep_builder_api_make_shape(self_: &Fuse) -> &BRepBuilderAPI_MakeShape;
-        #[doc = "Upcast BRepAlgoAPI_Fuse to BRepBuilderAPI_MakeShape (mutable)"]
-        #[cxx_name = "BRepAlgoAPI_Fuse_as_BRepBuilderAPI_MakeShape_mut"]
-        fn fuse_as_b_rep_builder_api_make_shape_mut(
-            self_: Pin<&mut Fuse>,
-        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
         #[doc = "Upcast BRepAlgoAPI_Fuse to BRepBuilderAPI_Command"]
         #[cxx_name = "BRepAlgoAPI_Fuse_as_BRepBuilderAPI_Command"]
         fn fuse_as_b_rep_builder_api_command(self_: &Fuse) -> &BRepBuilderAPI_Command;
@@ -548,6 +534,20 @@ pub(crate) mod ffi {
         #[doc = "Upcast BRepAlgoAPI_Fuse to BRepAlgoAPI_BooleanOperation (mutable)"]
         #[cxx_name = "BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BooleanOperation_mut"]
         fn fuse_as_boolean_operation_mut(self_: Pin<&mut Fuse>) -> Pin<&mut BooleanOperation>;
+        #[doc = "Upcast BRepAlgoAPI_Fuse to BRepBuilderAPI_MakeShape"]
+        #[cxx_name = "BRepAlgoAPI_Fuse_as_BRepBuilderAPI_MakeShape"]
+        fn fuse_as_b_rep_builder_api_make_shape(self_: &Fuse) -> &BRepBuilderAPI_MakeShape;
+        #[doc = "Upcast BRepAlgoAPI_Fuse to BRepBuilderAPI_MakeShape (mutable)"]
+        #[cxx_name = "BRepAlgoAPI_Fuse_as_BRepBuilderAPI_MakeShape_mut"]
+        fn fuse_as_b_rep_builder_api_make_shape_mut(
+            self_: Pin<&mut Fuse>,
+        ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        #[doc = "Upcast BRepAlgoAPI_Fuse to BRepAlgoAPI_BuilderAlgo"]
+        #[cxx_name = "BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BuilderAlgo"]
+        fn fuse_as_builder_algo(self_: &Fuse) -> &BuilderAlgo;
+        #[doc = "Upcast BRepAlgoAPI_Fuse to BRepAlgoAPI_BuilderAlgo (mutable)"]
+        #[cxx_name = "BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BuilderAlgo_mut"]
+        fn fuse_as_builder_algo_mut(self_: Pin<&mut Fuse>) -> Pin<&mut BuilderAlgo>;
         #[doc = " ======================== BRepAlgoAPI_Section ========================"]
         #[doc = "/// **Source:** `BRepAlgoAPI_Section.hxx` - `BRepAlgoAPI_Section`"]
         #[doc = ""]
@@ -711,18 +711,6 @@ impl BuilderAlgo {
         ffi::BuilderAlgo_ctor_pavefiller(thePF)
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::builder_algo_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::builder_algo_as_b_rep_builder_api_make_shape_mut(self)
-    }
-
     #[doc = "Upcast to BRepBuilderAPI_Command"]
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         ffi::builder_algo_as_b_rep_builder_api_command(self)
@@ -733,6 +721,18 @@ impl BuilderAlgo {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
         ffi::builder_algo_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::builder_algo_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::builder_algo_as_b_rep_builder_api_make_shape_mut(self)
     }
 
     #[doc = "History tool"]
@@ -817,16 +817,6 @@ impl Common {
         ffi::Common_ctor_shape2_pavefiller_progressrange(S1, S2, PF, theRange)
     }
 
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
-    pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        ffi::common_as_builder_algo(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
-    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
-        ffi::common_as_builder_algo_mut(self)
-    }
-
     #[doc = "Upcast to BRepAlgoAPI_BooleanOperation"]
     pub fn as_boolean_operation(&self) -> &BooleanOperation {
         ffi::common_as_boolean_operation(self)
@@ -839,16 +829,14 @@ impl Common {
         ffi::common_as_boolean_operation_mut(self)
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::common_as_b_rep_builder_api_make_shape(self)
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
+    pub fn as_builder_algo(&self) -> &BuilderAlgo {
+        ffi::common_as_builder_algo(self)
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::common_as_b_rep_builder_api_make_shape_mut(self)
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
+    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
+        ffi::common_as_builder_algo_mut(self)
     }
 
     #[doc = "Upcast to BRepBuilderAPI_Command"]
@@ -861,6 +849,18 @@ impl Common {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
         ffi::common_as_b_rep_builder_api_command_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::common_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::common_as_b_rep_builder_api_make_shape_mut(self)
     }
 }
 pub use ffi::Cut;
@@ -895,6 +895,16 @@ impl Cut {
         ffi::Cut_ctor_shape2_pavefiller_bool_progressrange(S1, S2, aDSF, bFWD, theRange)
     }
 
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
+    pub fn as_builder_algo(&self) -> &BuilderAlgo {
+        ffi::cut_as_builder_algo(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
+    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
+        ffi::cut_as_builder_algo_mut(self)
+    }
+
     #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         ffi::cut_as_b_rep_builder_api_make_shape(self)
@@ -917,16 +927,6 @@ impl Cut {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut BooleanOperation> {
         ffi::cut_as_boolean_operation_mut(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
-    pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        ffi::cut_as_builder_algo(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
-    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
-        ffi::cut_as_builder_algo_mut(self)
     }
 
     #[doc = "Upcast to BRepBuilderAPI_Command"]
@@ -984,16 +984,14 @@ impl Fuse {
         ffi::fuse_as_boolean_operation_mut(self)
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::fuse_as_b_rep_builder_api_make_shape(self)
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
+    pub fn as_builder_algo(&self) -> &BuilderAlgo {
+        ffi::fuse_as_builder_algo(self)
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::fuse_as_b_rep_builder_api_make_shape_mut(self)
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
+    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
+        ffi::fuse_as_builder_algo_mut(self)
     }
 
     #[doc = "Upcast to BRepBuilderAPI_Command"]
@@ -1008,14 +1006,16 @@ impl Fuse {
         ffi::fuse_as_b_rep_builder_api_command_mut(self)
     }
 
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
-    pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        ffi::fuse_as_builder_algo(self)
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::fuse_as_b_rep_builder_api_make_shape(self)
     }
 
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
-    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
-        ffi::fuse_as_builder_algo_mut(self)
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::fuse_as_b_rep_builder_api_make_shape_mut(self)
     }
 }
 pub use ffi::Section;
@@ -1085,6 +1085,28 @@ impl Section {
         ffi::Section_ctor_handlesurface2_bool(Sf1, Sf2, PerformNow)
     }
 
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
+    pub fn as_builder_algo(&self) -> &BuilderAlgo {
+        ffi::section_as_builder_algo(self)
+    }
+
+    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
+    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
+        ffi::section_as_builder_algo_mut(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        ffi::section_as_b_rep_builder_api_make_shape(self)
+    }
+
+    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        ffi::section_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
     #[doc = "Upcast to BRepBuilderAPI_Command"]
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         ffi::section_as_b_rep_builder_api_command(self)
@@ -1107,27 +1129,5 @@ impl Section {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut BooleanOperation> {
         ffi::section_as_boolean_operation_mut(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo"]
-    pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        ffi::section_as_builder_algo(self)
-    }
-
-    #[doc = "Upcast to BRepAlgoAPI_BuilderAlgo (mutable)"]
-    pub fn as_builder_algo_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BuilderAlgo> {
-        ffi::section_as_builder_algo_mut(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        ffi::section_as_b_rep_builder_api_make_shape(self)
-    }
-
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        ffi::section_as_b_rep_builder_api_make_shape_mut(self)
     }
 }

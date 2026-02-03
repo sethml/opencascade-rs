@@ -267,8 +267,8 @@ inline std::unique_ptr<gp_Vec> BRepSweep_Translation_Vec(const BRepSweep_Transla
     return std::make_unique<gp_Vec>(self.Vec());
 }
 
-inline const BRepSweep_NumLinearRegularSweep& BRepSweep_Translation_as_BRepSweep_NumLinearRegularSweep(const BRepSweep_Translation& self) { return self; }
-inline BRepSweep_NumLinearRegularSweep& BRepSweep_Translation_as_BRepSweep_NumLinearRegularSweep_mut(BRepSweep_Translation& self) { return self; }
 inline const BRepSweep_Trsf& BRepSweep_Translation_as_BRepSweep_Trsf(const BRepSweep_Translation& self) { return self; }
 inline BRepSweep_Trsf& BRepSweep_Translation_as_BRepSweep_Trsf_mut(BRepSweep_Translation& self) { return self; }
+inline const BRepSweep_NumLinearRegularSweep& BRepSweep_Translation_as_BRepSweep_NumLinearRegularSweep(const BRepSweep_Translation& self) { return self; }
+inline BRepSweep_NumLinearRegularSweep& BRepSweep_Translation_as_BRepSweep_NumLinearRegularSweep_mut(BRepSweep_Translation& self) { return self; }
 

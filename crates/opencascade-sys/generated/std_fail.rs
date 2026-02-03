@@ -60,11 +60,11 @@ pub(crate) mod ffi {
         #[cxx_name = "Standard_SStream"]
         type Standard_SStream;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
-        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStdFailNotDone"]
         type HandleStdFailNotDone;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
         #[doc = " ======================== StdFail_NotDone ========================"]
         #[doc = "/// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone`"]
         #[cxx_name = "StdFail_NotDone"]

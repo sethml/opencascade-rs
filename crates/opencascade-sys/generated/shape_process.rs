@@ -41,17 +41,17 @@ pub(crate) mod ffi {
         #[doc = "AlertExtended from message module"]
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "ShapeProcess_Operator"]
-        type ShapeProcess_Operator;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "ShapeProcess_Context"]
         type ShapeProcess_Context;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleShapeProcessOperator"]
-        type HandleShapeProcessOperator;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "ShapeProcess_Operator"]
+        type ShapeProcess_Operator;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleShapeProcessContext"]
         type HandleShapeProcessContext;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleShapeProcessOperator"]
+        type HandleShapeProcessOperator;
         #[doc = " ======================== ShapeProcess ========================"]
         #[doc = "/// **Source:** `ShapeProcess.hxx` - `ShapeProcess`"]
         #[doc = ""]

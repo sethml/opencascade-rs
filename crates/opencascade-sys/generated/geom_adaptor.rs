@@ -33,6 +33,32 @@ pub(crate) mod ffi {
         type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
         #[doc = "HArray1OfBoolean from t_col_std module"]
         type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "Geometry from geom module"]
+        type Geom_Geometry = crate::geom::ffi::Geometry;
+        #[doc = "Curve from geom module"]
+        type Geom_Curve = crate::geom::ffi::Curve;
+        #[doc = "Surface from geom module"]
+        type Geom_Surface = crate::geom::ffi::Surface;
+        #[doc = "BoundedCurve from geom module"]
+        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
+        #[doc = "BoundedSurface from geom module"]
+        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
+        #[doc = "ElementarySurface from geom module"]
+        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
+        #[doc = "BezierCurve from geom module"]
+        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
+        #[doc = "BezierSurface from geom module"]
+        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
+        #[doc = "BSplineCurve from geom module"]
+        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
+        #[doc = "BSplineSurface from geom module"]
+        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
+        #[doc = "CylindricalSurface from geom module"]
+        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
+        #[doc = "Plane from geom module"]
+        type Geom_Plane = crate::geom::ffi::Plane;
+        #[doc = "TrimmedCurve from geom module"]
+        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
         #[doc = "Mutex from standard module"]
         type Standard_Mutex = crate::standard::ffi::Mutex;
         #[doc = "Transient from standard module"]
@@ -117,38 +143,24 @@ pub(crate) mod ffi {
         type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
         #[doc = "CurveOnSurface from adaptor3d module"]
         type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
-        #[doc = "Geometry from geom module"]
-        type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Curve from geom module"]
-        type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "Surface from geom module"]
-        type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "BoundedCurve from geom module"]
-        type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
-        type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "ElementarySurface from geom module"]
-        type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "BezierCurve from geom module"]
-        type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
-        type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BSplineCurve from geom module"]
-        type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
-        type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "CylindricalSurface from geom module"]
-        type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "Plane from geom module"]
-        type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "TrimmedCurve from geom module"]
-        type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Sphere"]
         type gp_Sphere;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Geom_OffsetCurve"]
-        type Geom_OffsetCurve;
+        #[cxx_name = "gp_Cylinder"]
+        type gp_Cylinder;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Hypr"]
+        type gp_Hypr;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Torus"]
+        type gp_Torus;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Elips"]
+        type gp_Elips;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfReal"]
+        type TColStd_Array1OfReal;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Cone"]
         type gp_Cone;
@@ -156,32 +168,14 @@ pub(crate) mod ffi {
         #[cxx_name = "gp_Parab"]
         type gp_Parab;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Hypr"]
-        type gp_Hypr;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfReal"]
-        type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Cylinder"]
-        type gp_Cylinder;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Torus"]
-        type gp_Torus;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Elips"]
-        type gp_Elips;
+        #[cxx_name = "Geom_OffsetCurve"]
+        type Geom_OffsetCurve;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBSplineCurve"]
-        type HandleGeomBSplineCurve;
+        #[cxx_name = "HandleStandardType"]
+        type HandleStandardType;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomOffsetCurve"]
-        type HandleGeomOffsetCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleGeomBezierCurve"]
-        type HandleGeomBezierCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleAdaptor3dSurface"]
-        type HandleAdaptor3dSurface;
+        #[cxx_name = "HandleAdaptor3dCurve"]
+        type HandleAdaptor3dCurve;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomBezierSurface"]
         type HandleGeomBezierSurface;
@@ -189,17 +183,23 @@ pub(crate) mod ffi {
         #[cxx_name = "HandleGeomCurve"]
         type HandleGeomCurve;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleStandardType"]
-        type HandleStandardType;
+        #[cxx_name = "HandleGeomOffsetCurve"]
+        type HandleGeomOffsetCurve;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomSurface"]
         type HandleGeomSurface;
         #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBSplineCurve"]
+        type HandleGeomBSplineCurve;
+        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeomBSplineSurface"]
         type HandleGeomBSplineSurface;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleAdaptor3dCurve"]
-        type HandleAdaptor3dCurve;
+        #[cxx_name = "HandleAdaptor3dSurface"]
+        type HandleAdaptor3dSurface;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleGeomBezierCurve"]
+        type HandleGeomBezierCurve;
         #[doc = " ======================== GeomAdaptor_Curve ========================"]
         #[doc = "/// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve`"]
         #[doc = ""]

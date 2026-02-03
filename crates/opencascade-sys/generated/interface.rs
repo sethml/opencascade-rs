@@ -57,20 +57,20 @@ pub(crate) mod ffi {
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Interface_GeneralModule"]
-        type Interface_GeneralModule;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "Interface_Protocol"]
         type Interface_Protocol;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Interface_GeneralModule"]
+        type Interface_GeneralModule;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleInterfaceProtocol"]
-        type HandleInterfaceProtocol;
+        #[cxx_name = "HandleInterfaceGeneralModule"]
+        type HandleInterfaceGeneralModule;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardTransient"]
         type HandleStandardTransient;
         #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleInterfaceGeneralModule"]
-        type HandleInterfaceGeneralModule;
+        #[cxx_name = "HandleInterfaceProtocol"]
+        type HandleInterfaceProtocol;
         #[doc = " ======================== Interface_GeneralLib ========================"]
         #[doc = "/// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib`"]
         #[cxx_name = "Interface_GeneralLib"]

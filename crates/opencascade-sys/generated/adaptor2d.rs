@@ -14,6 +14,24 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_adaptor2d.hxx");
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
         #[doc = "Pnt from gp module"]
         type gp_Pnt = crate::gp::ffi::Pnt;
         #[doc = "Pnt2d from gp module"]
@@ -50,24 +68,6 @@ pub(crate) mod ffi {
         type gp_Circ = crate::gp::ffi::Circ;
         #[doc = "Pln from gp module"]
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
         #[doc = "Mutex from standard module"]
         type Standard_Mutex = crate::standard::ffi::Mutex;
         #[doc = "Transient from standard module"]
@@ -123,41 +123,41 @@ pub(crate) mod ffi {
         #[doc = "TrimmedCurve from geom2d module"]
         type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
         #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Circ2d"]
-        type gp_Circ2d;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfReal"]
-        type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "Geom2d_BezierCurve"]
-        type Geom2d_BezierCurve;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Elips2d"]
-        type gp_Elips2d;
-        #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Hypr2d"]
         type gp_Hypr2d;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "gp_Parab2d"]
-        type gp_Parab2d;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "Geom2d_BSplineCurve"]
         type Geom2d_BSplineCurve;
         #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Parab2d"]
+        type gp_Parab2d;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Circ2d"]
+        type gp_Circ2d;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "gp_Elips2d"]
+        type gp_Elips2d;
+        #[doc = r" Referenced type from C++"]
         #[cxx_name = "gp_Lin2d"]
         type gp_Lin2d;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "Geom2d_BezierCurve"]
+        type Geom2d_BezierCurve;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfReal"]
+        type TColStd_Array1OfReal;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dBezierCurve"]
         type HandleGeom2dBezierCurve;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleAdaptor2dCurve2d"]
-        type HandleAdaptor2dCurve2d;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleGeom2dBSplineCurve"]
         type HandleGeom2dBSplineCurve;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleAdaptor2dCurve2d"]
+        type HandleAdaptor2dCurve2d;
         #[doc = " ======================== Adaptor2d_Curve2d ========================"]
         #[doc = "/// **Source:** `Adaptor2d_Curve2d.hxx` - `Adaptor2d_Curve2d`"]
         #[doc = ""]

@@ -21,46 +21,6 @@
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_bop_algo.hxx");
-        #[doc = "HSequenceOfShape from top_tools module"]
-        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "HArray2OfShape from top_tools module"]
-        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "BaseAllocator from n_collection module"]
-        type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
-        #[doc = "BasePointerVector from n_collection module"]
-        type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
-        #[doc = "IncAllocator from n_collection module"]
-        type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
-        #[doc = "BaseList from n_collection module"]
-        type NCollection_BaseList = crate::n_collection::ffi::BaseList;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
-        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
-        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfTransient from t_col_std module"]
-        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
-        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HArray2OfReal from t_col_std module"]
-        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HArray1OfInteger from t_col_std module"]
-        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
-        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HSequenceOfReal from t_col_std module"]
-        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
-        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "BRepTools from b_rep_tools module"]
-        type BRepTools = crate::b_rep_tools::ffi::BRepTools;
-        #[doc = "History from b_rep_tools module"]
-        type BRepTools_History = crate::b_rep_tools::ffi::History;
-        #[doc = "Modifier from b_rep_tools module"]
-        type BRepTools_Modifier = crate::b_rep_tools::ffi::Modifier;
-        #[doc = "ReShape from b_rep_tools module"]
-        type BRepTools_ReShape = crate::b_rep_tools::ffi::ReShape;
-        #[doc = "TopAbs from top_abs module"]
-        type TopAbs = crate::top_abs::ffi::TopAbs;
         #[doc = "Mutex from standard module"]
         type Standard_Mutex = crate::standard::ffi::Mutex;
         #[doc = "Transient from standard module"]
@@ -103,6 +63,30 @@ pub(crate) mod ffi {
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
         #[doc = "Dump from standard module"]
         type Standard_Dump = crate::standard::ffi::Dump;
+        #[doc = "Shape from topo_ds module"]
+        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
+        #[doc = "Vertex from topo_ds module"]
+        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
+        #[doc = "Edge from topo_ds module"]
+        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
+        #[doc = "Wire from topo_ds module"]
+        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+        #[doc = "Face from topo_ds module"]
+        type TopoDS_Face = crate::topo_ds::ffi::Face;
+        #[doc = "Shell from topo_ds module"]
+        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
+        #[doc = "Solid from topo_ds module"]
+        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
+        #[doc = "Compound from topo_ds module"]
+        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
+        #[doc = "CompSolid from topo_ds module"]
+        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
+        #[doc = "Builder from topo_ds module"]
+        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
+        #[doc = "Iterator from topo_ds module"]
+        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
+        #[doc = "TShape from topo_ds module"]
+        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
         #[doc = "ProgressRange from message module"]
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
         #[doc = "ProgressScope from message module"]
@@ -129,72 +113,88 @@ pub(crate) mod ffi {
         type Message_Alert = crate::message::ffi::Alert;
         #[doc = "AlertExtended from message module"]
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Shape from topo_ds module"]
-        type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Vertex from topo_ds module"]
-        type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Edge from topo_ds module"]
-        type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Wire from topo_ds module"]
-        type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Face from topo_ds module"]
-        type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Shell from topo_ds module"]
-        type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
-        type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "Compound from topo_ds module"]
-        type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "CompSolid from topo_ds module"]
-        type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Builder from topo_ds module"]
-        type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "Iterator from topo_ds module"]
-        type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "TShape from topo_ds module"]
-        type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_ListOfShape"]
-        type TopTools_ListOfShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TopTools_DataMapOfShapeShape"]
-        type TopTools_DataMapOfShapeShape;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "IntTools_Context"]
-        type IntTools_Context;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "TColStd_Array1OfReal"]
-        type TColStd_Array1OfReal;
-        #[doc = r" Referenced type from C++"]
-        #[cxx_name = "BOPDS_PDS"]
-        type BOPDS_PDS;
+        #[doc = "HSequenceOfTransient from t_col_std module"]
+        type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
+        #[doc = "PackedMapOfInteger from t_col_std module"]
+        type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
+        #[doc = "HArray1OfTransient from t_col_std module"]
+        type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
+        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
+        #[doc = "HArray2OfReal from t_col_std module"]
+        type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
+        #[doc = "HArray1OfInteger from t_col_std module"]
+        type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
+        #[doc = "HArray1OfReal from t_col_std module"]
+        type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
+        #[doc = "HSequenceOfReal from t_col_std module"]
+        type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
+        #[doc = "HArray1OfBoolean from t_col_std module"]
+        type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
+        #[doc = "HSequenceOfShape from top_tools module"]
+        type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
+        #[doc = "HArray2OfShape from top_tools module"]
+        type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
+        #[doc = "TopAbs from top_abs module"]
+        type TopAbs = crate::top_abs::ffi::TopAbs;
+        #[doc = "BaseAllocator from n_collection module"]
+        type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
+        #[doc = "BasePointerVector from n_collection module"]
+        type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
+        #[doc = "IncAllocator from n_collection module"]
+        type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
+        #[doc = "BaseList from n_collection module"]
+        type NCollection_BaseList = crate::n_collection::ffi::BaseList;
+        #[doc = "BRepTools from b_rep_tools module"]
+        type BRepTools = crate::b_rep_tools::ffi::BRepTools;
+        #[doc = "History from b_rep_tools module"]
+        type BRepTools_History = crate::b_rep_tools::ffi::History;
+        #[doc = "Modifier from b_rep_tools module"]
+        type BRepTools_Modifier = crate::b_rep_tools::ffi::Modifier;
+        #[doc = "ReShape from b_rep_tools module"]
+        type BRepTools_ReShape = crate::b_rep_tools::ffi::ReShape;
         #[doc = r" Referenced type from C++"]
         #[cxx_name = "TopTools_DataMapOfShapeListOfShape"]
         type TopTools_DataMapOfShapeListOfShape;
         #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TColStd_Array1OfReal"]
+        type TColStd_Array1OfReal;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_ListOfShape"]
+        type TopTools_ListOfShape;
+        #[doc = r" Referenced type from C++"]
         #[cxx_name = "BOPAlgo_PPaveFiller"]
         type BOPAlgo_PPaveFiller;
         #[doc = r" Referenced type from C++"]
+        #[cxx_name = "TopTools_DataMapOfShapeShape"]
+        type TopTools_DataMapOfShapeShape;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "BOPDS_PDS"]
+        type BOPDS_PDS;
+        #[doc = r" Referenced type from C++"]
         #[cxx_name = "BOPAlgo_PaveFiller"]
         type BOPAlgo_PaveFiller;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleIntToolsContext"]
-        type HandleIntToolsContext;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleNCollectionBaseAllocator"]
-        type HandleNCollectionBaseAllocator;
-        #[doc = r" Handle to OCCT object"]
-        #[cxx_name = "HandleBRepToolsHistory"]
-        type HandleBRepToolsHistory;
+        #[doc = r" Referenced type from C++"]
+        #[cxx_name = "IntTools_Context"]
+        type IntTools_Context;
         #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleMessageAlert"]
         type HandleMessageAlert;
         #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleNCollectionBaseAllocator"]
+        type HandleNCollectionBaseAllocator;
+        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleStandardType"]
         type HandleStandardType;
         #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleIntToolsContext"]
+        type HandleIntToolsContext;
+        #[doc = r" Handle to OCCT object"]
         #[cxx_name = "HandleMessageReport"]
         type HandleMessageReport;
+        #[doc = r" Handle to OCCT object"]
+        #[cxx_name = "HandleBRepToolsHistory"]
+        type HandleBRepToolsHistory;
         #[doc = " ======================== BOPAlgo_BOP ========================"]
         #[doc = "/// **Source:** `BOPAlgo_BOP.hxx` - `BOPAlgo_BOP`"]
         #[doc = ""]
@@ -216,30 +216,30 @@ pub(crate) mod ffi {
         fn clear(self: Pin<&mut BOP>);
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut BOP>, theRange: &Message_ProgressRange);
-        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_Builder"]
-        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_Builder"]
-        fn bop_as_builder(self_: &BOP) -> &Builder;
-        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_Builder (mutable)"]
-        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_Builder_mut"]
-        fn bop_as_builder_mut(self_: Pin<&mut BOP>) -> Pin<&mut Builder>;
-        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_ToolsProvider"]
-        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_ToolsProvider"]
-        fn bop_as_tools_provider(self_: &BOP) -> &ToolsProvider;
-        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_ToolsProvider (mutable)"]
-        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_ToolsProvider_mut"]
-        fn bop_as_tools_provider_mut(self_: Pin<&mut BOP>) -> Pin<&mut ToolsProvider>;
-        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_Options"]
-        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_Options"]
-        fn bop_as_options(self_: &BOP) -> &Options;
-        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_Options (mutable)"]
-        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_Options_mut"]
-        fn bop_as_options_mut(self_: Pin<&mut BOP>) -> Pin<&mut Options>;
         #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_BuilderShape"]
         #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_BuilderShape"]
         fn bop_as_builder_shape(self_: &BOP) -> &BuilderShape;
         #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_BuilderShape (mutable)"]
         #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_BuilderShape_mut"]
         fn bop_as_builder_shape_mut(self_: Pin<&mut BOP>) -> Pin<&mut BuilderShape>;
+        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_Options"]
+        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_Options"]
+        fn bop_as_options(self_: &BOP) -> &Options;
+        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_Options (mutable)"]
+        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_Options_mut"]
+        fn bop_as_options_mut(self_: Pin<&mut BOP>) -> Pin<&mut Options>;
+        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_ToolsProvider"]
+        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_ToolsProvider"]
+        fn bop_as_tools_provider(self_: &BOP) -> &ToolsProvider;
+        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_ToolsProvider (mutable)"]
+        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_ToolsProvider_mut"]
+        fn bop_as_tools_provider_mut(self_: Pin<&mut BOP>) -> Pin<&mut ToolsProvider>;
+        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_Builder"]
+        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_Builder"]
+        fn bop_as_builder(self_: &BOP) -> &Builder;
+        #[doc = "Upcast BOPAlgo_BOP to BOPAlgo_Builder (mutable)"]
+        #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_Builder_mut"]
+        fn bop_as_builder_mut(self_: Pin<&mut BOP>) -> Pin<&mut Builder>;
         #[doc = " ======================== BOPAlgo_ToolsProvider ========================"]
         #[doc = "/// **Source:** `BOPAlgo_ToolsProvider.hxx` - `BOPAlgo_ToolsProvider`"]
         #[doc = ""]
@@ -268,6 +268,12 @@ pub(crate) mod ffi {
         #[doc = "Returns the Tool arguments of the operation"]
         #[cxx_name = "Tools"]
         fn tools(self: &ToolsProvider) -> &TopTools_ListOfShape;
+        #[doc = "Upcast BOPAlgo_ToolsProvider to BOPAlgo_Builder"]
+        #[cxx_name = "BOPAlgo_ToolsProvider_as_BOPAlgo_Builder"]
+        fn tools_provider_as_builder(self_: &ToolsProvider) -> &Builder;
+        #[doc = "Upcast BOPAlgo_ToolsProvider to BOPAlgo_Builder (mutable)"]
+        #[cxx_name = "BOPAlgo_ToolsProvider_as_BOPAlgo_Builder_mut"]
+        fn tools_provider_as_builder_mut(self_: Pin<&mut ToolsProvider>) -> Pin<&mut Builder>;
         #[doc = "Upcast BOPAlgo_ToolsProvider to BOPAlgo_BuilderShape"]
         #[cxx_name = "BOPAlgo_ToolsProvider_as_BOPAlgo_BuilderShape"]
         fn tools_provider_as_builder_shape(self_: &ToolsProvider) -> &BuilderShape;
@@ -282,12 +288,6 @@ pub(crate) mod ffi {
         #[doc = "Upcast BOPAlgo_ToolsProvider to BOPAlgo_Options (mutable)"]
         #[cxx_name = "BOPAlgo_ToolsProvider_as_BOPAlgo_Options_mut"]
         fn tools_provider_as_options_mut(self_: Pin<&mut ToolsProvider>) -> Pin<&mut Options>;
-        #[doc = "Upcast BOPAlgo_ToolsProvider to BOPAlgo_Builder"]
-        #[cxx_name = "BOPAlgo_ToolsProvider_as_BOPAlgo_Builder"]
-        fn tools_provider_as_builder(self_: &ToolsProvider) -> &Builder;
-        #[doc = "Upcast BOPAlgo_ToolsProvider to BOPAlgo_Builder (mutable)"]
-        #[cxx_name = "BOPAlgo_ToolsProvider_as_BOPAlgo_Builder_mut"]
-        fn tools_provider_as_builder_mut(self_: Pin<&mut ToolsProvider>) -> Pin<&mut Builder>;
         #[doc = " ======================== BOPAlgo_Builder ========================"]
         #[doc = "/// **Source:** `BOPAlgo_Builder.hxx` - `BOPAlgo_Builder`"]
         #[doc = ""]
@@ -546,28 +546,6 @@ impl BOP {
         ffi::BOP_ctor_handlebaseallocator(theAllocator)
     }
 
-    #[doc = "Upcast to BOPAlgo_Builder"]
-    pub fn as_builder(&self) -> &Builder {
-        ffi::bop_as_builder(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_Builder (mutable)"]
-    pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
-        ffi::bop_as_builder_mut(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_ToolsProvider"]
-    pub fn as_tools_provider(&self) -> &ToolsProvider {
-        ffi::bop_as_tools_provider(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_ToolsProvider (mutable)"]
-    pub fn as_tools_provider_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut ToolsProvider> {
-        ffi::bop_as_tools_provider_mut(self)
-    }
-
     #[doc = "Upcast to BOPAlgo_Options"]
     pub fn as_options(&self) -> &Options {
         ffi::bop_as_options(self)
@@ -589,6 +567,28 @@ impl BOP {
     ) -> std::pin::Pin<&mut BuilderShape> {
         ffi::bop_as_builder_shape_mut(self)
     }
+
+    #[doc = "Upcast to BOPAlgo_ToolsProvider"]
+    pub fn as_tools_provider(&self) -> &ToolsProvider {
+        ffi::bop_as_tools_provider(self)
+    }
+
+    #[doc = "Upcast to BOPAlgo_ToolsProvider (mutable)"]
+    pub fn as_tools_provider_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut ToolsProvider> {
+        ffi::bop_as_tools_provider_mut(self)
+    }
+
+    #[doc = "Upcast to BOPAlgo_Builder"]
+    pub fn as_builder(&self) -> &Builder {
+        ffi::bop_as_builder(self)
+    }
+
+    #[doc = "Upcast to BOPAlgo_Builder (mutable)"]
+    pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
+        ffi::bop_as_builder_mut(self)
+    }
 }
 pub use ffi::ToolsProvider;
 impl ToolsProvider {
@@ -603,16 +603,6 @@ impl ToolsProvider {
         ffi::ToolsProvider_ctor_handlebaseallocator(theAllocator)
     }
 
-    #[doc = "Upcast to BOPAlgo_Builder"]
-    pub fn as_builder(&self) -> &Builder {
-        ffi::tools_provider_as_builder(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_Builder (mutable)"]
-    pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
-        ffi::tools_provider_as_builder_mut(self)
-    }
-
     #[doc = "Upcast to BOPAlgo_BuilderShape"]
     pub fn as_builder_shape(&self) -> &BuilderShape {
         ffi::tools_provider_as_builder_shape(self)
@@ -623,6 +613,16 @@ impl ToolsProvider {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut BuilderShape> {
         ffi::tools_provider_as_builder_shape_mut(self)
+    }
+
+    #[doc = "Upcast to BOPAlgo_Builder"]
+    pub fn as_builder(&self) -> &Builder {
+        ffi::tools_provider_as_builder(self)
+    }
+
+    #[doc = "Upcast to BOPAlgo_Builder (mutable)"]
+    pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
+        ffi::tools_provider_as_builder_mut(self)
     }
 
     #[doc = "Upcast to BOPAlgo_Options"]
@@ -648,6 +648,16 @@ impl Builder {
         ffi::Builder_ctor_handlebaseallocator(theAllocator)
     }
 
+    #[doc = "Upcast to BOPAlgo_Options"]
+    pub fn as_options(&self) -> &Options {
+        ffi::builder_as_options(self)
+    }
+
+    #[doc = "Upcast to BOPAlgo_Options (mutable)"]
+    pub fn as_options_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Options> {
+        ffi::builder_as_options_mut(self)
+    }
+
     #[doc = "Upcast to BOPAlgo_BuilderShape"]
     pub fn as_builder_shape(&self) -> &BuilderShape {
         ffi::builder_as_builder_shape(self)
@@ -658,16 +668,6 @@ impl Builder {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut BuilderShape> {
         ffi::builder_as_builder_shape_mut(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_Options"]
-    pub fn as_options(&self) -> &Options {
-        ffi::builder_as_options(self)
-    }
-
-    #[doc = "Upcast to BOPAlgo_Options (mutable)"]
-    pub fn as_options_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Options> {
-        ffi::builder_as_options_mut(self)
     }
 
     #[doc = "Returns the PaveFiller, algorithm for sub-shapes intersection."]
