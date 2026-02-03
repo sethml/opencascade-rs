@@ -13,12 +13,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Builder;
 impl Builder {
-    #[doc = "Upcast to TopoDS_Builder"]
+    /// Upcast to TopoDS_Builder
     pub fn as_topo_ds_builder(&self) -> &crate::topo_ds::Builder {
         ffi::builder_as_topo_ds_builder(self)
     }
 
-    #[doc = "Upcast to TopoDS_Builder (mutable)"]
+    /// Upcast to TopoDS_Builder (mutable)
     pub fn as_topo_ds_builder_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::topo_ds::Builder> {
@@ -27,37 +27,37 @@ impl Builder {
 }
 pub use ffi::Tool;
 impl Tool {
-    #[doc = "If S is Shell, returns True if it has no free boundaries (edges). If S is Wire, returns True if it has no free ends (vertices). (Internal and External sub-shepes are ignored in these checks) If S is Edge, returns True if its vertices are the same. For other shape types returns S.Closed()."]
+    /// If S is Shell, returns True if it has no free boundaries (edges). If S is Wire, returns True if it has no free ends (vertices). (Internal and External sub-shepes are ignored in these checks) If S is Edge, returns True if its vertices are the same. For other shape types returns S.Closed().
     pub fn is_closed_shape(S: &ffi::TopoDS_Shape) -> bool {
         ffi::Tool_is_closed_shape(S)
     }
 
-    #[doc = "Returns the geometric  surface of the face. It can be a copy if there is a Location."]
+    /// Returns the geometric  surface of the face. It can be a copy if there is a Location.
     pub fn surface_face(F: &ffi::TopoDS_Face) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
         ffi::Tool_surface_face(F)
     }
 
-    #[doc = "Returns the tolerance of the face."]
+    /// Returns the tolerance of the face.
     pub fn tolerance_face(F: &ffi::TopoDS_Face) -> f64 {
         ffi::Tool_tolerance_face(F)
     }
 
-    #[doc = "Returns the  NaturalRestriction  flag of the  face."]
+    /// Returns the  NaturalRestriction  flag of the  face.
     pub fn natural_restriction(F: &ffi::TopoDS_Face) -> bool {
         ffi::Tool_natural_restriction(F)
     }
 
-    #[doc = "Returns True if <F> has a surface, false otherwise."]
+    /// Returns True if <F> has a surface, false otherwise.
     pub fn is_geometric_face(F: &ffi::TopoDS_Face) -> bool {
         ffi::Tool_is_geometric_face(F)
     }
 
-    #[doc = "Returns True if <E> is a 3d curve or a curve on surface."]
+    /// Returns True if <E> is a 3d curve or a curve on surface.
     pub fn is_geometric_edge(E: &ffi::TopoDS_Edge) -> bool {
         ffi::Tool_is_geometric_edge(E)
     }
 
-    #[doc = "Returns the 3D curve  of the edge. May be a Null handle. In <First> and <Last> the parameter range. It can be a copy if there is a Location."]
+    /// Returns the 3D curve  of the edge. May be a Null handle. In <First> and <Last> the parameter range. It can be a copy if there is a Location.
     pub fn curve_edge_real2(
         E: &ffi::TopoDS_Edge,
         First: &mut f64,
@@ -66,7 +66,7 @@ impl Tool {
         ffi::Tool_curve_edge_real2(E, First, Last)
     }
 
-    #[doc = "For the planar surface builds the 2d curve for the edge by projection of the edge on plane. Returns a NULL handle if the surface is not planar or the projection failed."]
+    /// For the planar surface builds the 2d curve for the edge by projection of the edge on plane. Returns a NULL handle if the surface is not planar or the projection failed.
     pub fn curve_on_plane(
         E: &ffi::TopoDS_Edge,
         S: &ffi::HandleGeomSurface,
@@ -77,7 +77,7 @@ impl Tool {
         ffi::Tool_curve_on_plane(E, S, L, First, Last)
     }
 
-    #[doc = "Returns in <C>, <S>, <L> a 2d curve, a surface and a location for the edge <E>. <C> and <S>  are null if the  edge has no curve on  surface.  Returns in <First> and <Last> the parameter range."]
+    /// Returns in <C>, <S>, <L> a 2d curve, a surface and a location for the edge <E>. <C> and <S>  are null if the  edge has no curve on  surface.  Returns in <First> and <Last> the parameter range.
     pub fn curve_on_surface_edge_handlecurve_handlesurface_location_real2(
         E: &ffi::TopoDS_Edge,
         C: std::pin::Pin<&mut ffi::HandleGeom2dCurve>,
@@ -91,7 +91,7 @@ impl Tool {
         )
     }
 
-    #[doc = "Returns in <C>, <S>, <L> the 2d curve, the surface and the location for the edge <E> of rank <Index>. <C> and <S> are null if the index is out of range. Returns in <First> and <Last> the parameter range."]
+    /// Returns in <C>, <S>, <L> the 2d curve, the surface and the location for the edge <E> of rank <Index>. <C> and <S> are null if the index is out of range. Returns in <First> and <Last> the parameter range.
     pub fn curve_on_surface_edge_handlecurve_handlesurface_location_real2_int(
         E: &ffi::TopoDS_Edge,
         C: std::pin::Pin<&mut ffi::HandleGeom2dCurve>,
@@ -106,7 +106,7 @@ impl Tool {
         )
     }
 
-    #[doc = "Returns the polygon associated to the  edge in  the parametric  space of  the  face.  Returns   a NULL handle  if this polygon  does not exist."]
+    /// Returns the polygon associated to the  edge in  the parametric  space of  the  face.  Returns   a NULL handle  if this polygon  does not exist.
     pub fn polygon_on_surface_edge_face(
         E: &ffi::TopoDS_Edge,
         F: &ffi::TopoDS_Face,
@@ -114,7 +114,7 @@ impl Tool {
         ffi::Tool_polygon_on_surface_edge_face(E, F)
     }
 
-    #[doc = "Returns the polygon associated to the  edge in  the parametric  space of  the surface. Returns   a NULL handle  if this polygon  does not exist."]
+    /// Returns the polygon associated to the  edge in  the parametric  space of  the surface. Returns   a NULL handle  if this polygon  does not exist.
     pub fn polygon_on_surface_edge_handlesurface_location(
         E: &ffi::TopoDS_Edge,
         S: &ffi::HandleGeomSurface,
@@ -123,7 +123,7 @@ impl Tool {
         ffi::Tool_polygon_on_surface_edge_handlesurface_location(E, S, L)
     }
 
-    #[doc = "Returns in <C>, <S>, <L> a 2d curve, a surface and a location for the edge <E>. <C> and <S>  are null if the  edge has no polygon on  surface."]
+    /// Returns in <C>, <S>, <L> a 2d curve, a surface and a location for the edge <E>. <C> and <S>  are null if the  edge has no polygon on  surface.
     pub fn polygon_on_surface_edge_handlepolygon2d_handlesurface_location(
         E: &ffi::TopoDS_Edge,
         C: std::pin::Pin<&mut ffi::HandlePolyPolygon2D>,
@@ -133,7 +133,7 @@ impl Tool {
         ffi::Tool_polygon_on_surface_edge_handlepolygon2d_handlesurface_location(E, C, S, L)
     }
 
-    #[doc = "Returns in <C>, <S>, <L> the 2d curve, the surface and the location for the edge <E> of rank <Index>. <C> and <S> are null if the index is out of range."]
+    /// Returns in <C>, <S>, <L> the 2d curve, the surface and the location for the edge <E> of rank <Index>. <C> and <S> are null if the index is out of range.
     pub fn polygon_on_surface_edge_handlepolygon2d_handlesurface_location_int(
         E: &ffi::TopoDS_Edge,
         C: std::pin::Pin<&mut ffi::HandlePolyPolygon2D>,
@@ -146,7 +146,7 @@ impl Tool {
         )
     }
 
-    #[doc = "Returns in <P>, <T>, <L> a polygon on triangulation, a triangulation and a location for the edge <E>. <P>  and  <T>  are null  if  the  edge has no polygon on  triangulation."]
+    /// Returns in <P>, <T>, <L> a polygon on triangulation, a triangulation and a location for the edge <E>. <P>  and  <T>  are null  if  the  edge has no polygon on  triangulation.
     pub fn polygon_on_triangulation_edge_handlepolygonontriangulation_handletriangulation_location(
         E: &ffi::TopoDS_Edge,
         P: std::pin::Pin<&mut ffi::HandlePolyPolygonOnTriangulation>,
@@ -156,7 +156,7 @@ impl Tool {
         ffi :: Tool_polygon_on_triangulation_edge_handlepolygonontriangulation_handletriangulation_location (E , P , T , L)
     }
 
-    #[doc = "Returns   in   <P>,  <T>,    <L> a     polygon  on triangulation,   a triangulation  and a  location for the edge <E> for the range index.  <C> and <S> are null if the edge has no polygon on triangulation."]
+    /// Returns   in   <P>,  <T>,    <L> a     polygon  on triangulation,   a triangulation  and a  location for the edge <E> for the range index.  <C> and <S> are null if the edge has no polygon on triangulation.
     pub fn polygon_on_triangulation_edge_handlepolygonontriangulation_handletriangulation_location_int(
         E: &ffi::TopoDS_Edge,
         P: std::pin::Pin<&mut ffi::HandlePolyPolygonOnTriangulation>,
@@ -167,12 +167,12 @@ impl Tool {
         ffi :: Tool_polygon_on_triangulation_edge_handlepolygonontriangulation_handletriangulation_location_int (E , P , T , L , Index)
     }
 
-    #[doc = "Returns  True  if  <E>  has  two  PCurves  in  the parametric space of <F>. i.e.  <F>  is on a closed surface and <E> is on the closing curve."]
+    /// Returns  True  if  <E>  has  two  PCurves  in  the parametric space of <F>. i.e.  <F>  is on a closed surface and <E> is on the closing curve.
     pub fn is_closed_edge_face(E: &ffi::TopoDS_Edge, F: &ffi::TopoDS_Face) -> bool {
         ffi::Tool_is_closed_edge_face(E, F)
     }
 
-    #[doc = "Returns  True  if  <E>  has  two  PCurves  in  the parametric space  of <S>.  i.e.   <S>  is a closed surface and <E> is on the closing curve."]
+    /// Returns  True  if  <E>  has  two  PCurves  in  the parametric space  of <S>.  i.e.   <S>  is a closed surface and <E> is on the closing curve.
     pub fn is_closed_edge_handlesurface_location(
         E: &ffi::TopoDS_Edge,
         S: &ffi::HandleGeomSurface,
@@ -181,7 +181,7 @@ impl Tool {
         ffi::Tool_is_closed_edge_handlesurface_location(E, S, L)
     }
 
-    #[doc = "Returns  True  if <E> has two arrays of indices in the triangulation <T>."]
+    /// Returns  True  if <E> has two arrays of indices in the triangulation <T>.
     pub fn is_closed_edge_handletriangulation_location(
         E: &ffi::TopoDS_Edge,
         T: &ffi::HandlePolyTriangulation,
@@ -190,32 +190,32 @@ impl Tool {
         ffi::Tool_is_closed_edge_handletriangulation_location(E, T, L)
     }
 
-    #[doc = "Returns the tolerance for <E>."]
+    /// Returns the tolerance for <E>.
     pub fn tolerance_edge(E: &ffi::TopoDS_Edge) -> f64 {
         ffi::Tool_tolerance_edge(E)
     }
 
-    #[doc = "Returns the SameParameter flag for the edge."]
+    /// Returns the SameParameter flag for the edge.
     pub fn same_parameter(E: &ffi::TopoDS_Edge) -> bool {
         ffi::Tool_same_parameter(E)
     }
 
-    #[doc = "Returns the SameRange flag for the edge."]
+    /// Returns the SameRange flag for the edge.
     pub fn same_range(E: &ffi::TopoDS_Edge) -> bool {
         ffi::Tool_same_range(E)
     }
 
-    #[doc = "Returns True  if the edge is degenerated."]
+    /// Returns True  if the edge is degenerated.
     pub fn degenerated(E: &ffi::TopoDS_Edge) -> bool {
         ffi::Tool_degenerated(E)
     }
 
-    #[doc = "Gets the range of the 3d curve."]
+    /// Gets the range of the 3d curve.
     pub fn range_edge_real2(E: &ffi::TopoDS_Edge, First: &mut f64, Last: &mut f64) {
         ffi::Tool_range_edge_real2(E, First, Last)
     }
 
-    #[doc = "Gets the range  of the edge  on the pcurve on  the surface."]
+    /// Gets the range  of the edge  on the pcurve on  the surface.
     pub fn range_edge_handlesurface_location_real2(
         E: &ffi::TopoDS_Edge,
         S: &ffi::HandleGeomSurface,
@@ -226,7 +226,7 @@ impl Tool {
         ffi::Tool_range_edge_handlesurface_location_real2(E, S, L, First, Last)
     }
 
-    #[doc = "Gets the range of the edge on the pcurve on the face."]
+    /// Gets the range of the edge on the pcurve on the face.
     pub fn range_edge_face_real2(
         E: &ffi::TopoDS_Edge,
         F: &ffi::TopoDS_Face,
@@ -236,7 +236,7 @@ impl Tool {
         ffi::Tool_range_edge_face_real2(E, F, First, Last)
     }
 
-    #[doc = "Gets the UV locations of the extremities of the edge."]
+    /// Gets the UV locations of the extremities of the edge.
     pub fn uv_points_edge_handlesurface_location_pnt2d2(
         E: &ffi::TopoDS_Edge,
         S: &ffi::HandleGeomSurface,
@@ -247,7 +247,7 @@ impl Tool {
         ffi::Tool_uv_points_edge_handlesurface_location_pnt2d2(E, S, L, PFirst, PLast)
     }
 
-    #[doc = "Gets the UV locations of the extremities of the edge."]
+    /// Gets the UV locations of the extremities of the edge.
     pub fn uv_points_edge_face_pnt2d2(
         E: &ffi::TopoDS_Edge,
         F: &ffi::TopoDS_Face,
@@ -257,7 +257,7 @@ impl Tool {
         ffi::Tool_uv_points_edge_face_pnt2d2(E, F, PFirst, PLast)
     }
 
-    #[doc = "Sets the UV locations of the extremities of the edge."]
+    /// Sets the UV locations of the extremities of the edge.
     pub fn set_uv_points_edge_handlesurface_location_pnt2d2(
         E: &ffi::TopoDS_Edge,
         S: &ffi::HandleGeomSurface,
@@ -268,7 +268,7 @@ impl Tool {
         ffi::Tool_set_uv_points_edge_handlesurface_location_pnt2d2(E, S, L, PFirst, PLast)
     }
 
-    #[doc = "Sets the UV locations of the extremities of the edge."]
+    /// Sets the UV locations of the extremities of the edge.
     pub fn set_uv_points_edge_face_pnt2d2(
         E: &ffi::TopoDS_Edge,
         F: &ffi::TopoDS_Face,
@@ -278,7 +278,7 @@ impl Tool {
         ffi::Tool_set_uv_points_edge_face_pnt2d2(E, F, PFirst, PLast)
     }
 
-    #[doc = "Returns True if the edge is on the surfaces of the two faces."]
+    /// Returns True if the edge is on the surfaces of the two faces.
     pub fn has_continuity_edge_face2(
         E: &ffi::TopoDS_Edge,
         F1: &ffi::TopoDS_Face,
@@ -287,7 +287,7 @@ impl Tool {
         ffi::Tool_has_continuity_edge_face2(E, F1, F2)
     }
 
-    #[doc = "Returns True if the edge is on the surfaces."]
+    /// Returns True if the edge is on the surfaces.
     pub fn has_continuity_edge_handlesurface2_location2(
         E: &ffi::TopoDS_Edge,
         S1: &ffi::HandleGeomSurface,
@@ -298,22 +298,22 @@ impl Tool {
         ffi::Tool_has_continuity_edge_handlesurface2_location2(E, S1, S2, L1, L2)
     }
 
-    #[doc = "Returns True if the edge has regularity on some two surfaces"]
+    /// Returns True if the edge has regularity on some two surfaces
     pub fn has_continuity_edge(E: &ffi::TopoDS_Edge) -> bool {
         ffi::Tool_has_continuity_edge(E)
     }
 
-    #[doc = "Returns the 3d point."]
+    /// Returns the 3d point.
     pub fn pnt(V: &ffi::TopoDS_Vertex) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::Tool_pnt(V)
     }
 
-    #[doc = "Returns the tolerance."]
+    /// Returns the tolerance.
     pub fn tolerance_vertex(V: &ffi::TopoDS_Vertex) -> f64 {
         ffi::Tool_tolerance_vertex(V)
     }
 
-    #[doc = "Finds the parameter of <theV> on <theE>. @param[in] theV  input vertex @param[in] theE  input edge @param[out] theParam   calculated parameter on the curve @return TRUE if done"]
+    /// Finds the parameter of <theV> on <theE>. @param[in] theV  input vertex @param[in] theE  input edge @param[out] theParam   calculated parameter on the curve @return TRUE if done
     pub fn parameter_vertex_edge_real(
         theV: &ffi::TopoDS_Vertex,
         theE: &ffi::TopoDS_Edge,
@@ -322,12 +322,12 @@ impl Tool {
         ffi::Tool_parameter_vertex_edge_real(theV, theE, theParam)
     }
 
-    #[doc = "Returns the parameter of <V> on <E>. Throws Standard_NoSuchObject if no parameter on edge"]
+    /// Returns the parameter of <V> on <E>. Throws Standard_NoSuchObject if no parameter on edge
     pub fn parameter_vertex_edge(V: &ffi::TopoDS_Vertex, E: &ffi::TopoDS_Edge) -> f64 {
         ffi::Tool_parameter_vertex_edge(V, E)
     }
 
-    #[doc = "Returns the  parameters  of   the  vertex   on the pcurve of the edge on the face."]
+    /// Returns the  parameters  of   the  vertex   on the pcurve of the edge on the face.
     pub fn parameter_vertex_edge_face(
         V: &ffi::TopoDS_Vertex,
         E: &ffi::TopoDS_Edge,
@@ -336,7 +336,7 @@ impl Tool {
         ffi::Tool_parameter_vertex_edge_face(V, E, F)
     }
 
-    #[doc = "Returns the  parameters  of   the  vertex   on the pcurve of the edge on the surface."]
+    /// Returns the  parameters  of   the  vertex   on the pcurve of the edge on the surface.
     pub fn parameter_vertex_edge_handlesurface_location(
         V: &ffi::TopoDS_Vertex,
         E: &ffi::TopoDS_Edge,
@@ -346,7 +346,7 @@ impl Tool {
         ffi::Tool_parameter_vertex_edge_handlesurface_location(V, E, S, L)
     }
 
-    #[doc = "Returns the parameters of the vertex on the face."]
+    /// Returns the parameters of the vertex on the face.
     pub fn parameters(
         V: &ffi::TopoDS_Vertex,
         F: &ffi::TopoDS_Face,
@@ -358,19 +358,20 @@ impl Tool {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== BRep_Builder ========================"]
-        #[doc = "/// **Source:** `BRep_Builder.hxx` - `BRep_Builder`"]
-        #[doc = ""]
-        #[doc = "A framework providing advanced tolerance control. It is used to build Shapes. If tolerance control is required, you are advised to: 1. build a default precision for topology, using the classes provided in the BRepAPI package 2. update the tolerance of the resulting shape. Note that only vertices, edges and faces have meaningful tolerance control. The tolerance value must always comply with the condition that face tolerances are more restrictive than edge tolerances which are more restrictive than vertex tolerances. In other words: Tol(Vertex) >= Tol(Edge) >= Tol(Face). Other rules in setting tolerance include: - you can open up tolerance but should never restrict it - an edge cannot be included within the fusion of the tolerance spheres of two vertices"]
+        /// ======================== BRep_Builder ========================
+        /// /// **Source:** `BRep_Builder.hxx` - `BRep_Builder`
+        ///
+        /// A framework providing advanced tolerance control. It is used to build Shapes. If tolerance control is required, you are advised to: 1. build a default precision for topology, using the classes provided in the BRepAPI package 2. update the tolerance of the resulting shape. Note that only vertices, edges and faces have meaningful tolerance control. The tolerance value must always comply with the condition that face tolerances are more restrictive than edge tolerances which are more restrictive than vertex tolerances. In other words: Tol(Vertex) >= Tol(Edge) >= Tol(Face). Other rules in setting tolerance include: - you can open up tolerance but should never restrict it - an edge cannot be included within the fusion of the tolerance spheres of two vertices
         #[cxx_name = "BRep_Builder"]
         type Builder;
-        #[doc = "Makes an undefined Face."]
+        /// Makes an undefined Face.
         #[cxx_name = "MakeFace"]
         fn make_face_face(self: &Builder, F: Pin<&mut TopoDS_Face>);
-        #[doc = "Makes a Face with a surface."]
+        /// Makes a Face with a surface.
         #[cxx_name = "MakeFace"]
         fn make_face_face_handlesurface_real(
             self: &Builder,
@@ -378,7 +379,7 @@ pub(crate) mod ffi {
             S: &HandleGeomSurface,
             Tol: f64,
         );
-        #[doc = "Makes a Face with a surface and a location."]
+        /// Makes a Face with a surface and a location.
         #[cxx_name = "MakeFace"]
         fn make_face_face_handlesurface_location_real(
             self: &Builder,
@@ -387,14 +388,14 @@ pub(crate) mod ffi {
             L: &TopLoc_Location,
             Tol: f64,
         );
-        #[doc = "Makes a theFace with a single triangulation. The triangulation is in the same reference system than the TFace."]
+        /// Makes a theFace with a single triangulation. The triangulation is in the same reference system than the TFace.
         #[cxx_name = "MakeFace"]
         fn make_face_face_handletriangulation(
             self: &Builder,
             theFace: Pin<&mut TopoDS_Face>,
             theTriangulation: &HandlePolyTriangulation,
         );
-        #[doc = "Makes a Face with a list of triangulations and active one. Use NULL active triangulation to set the first triangulation in list as active. The triangulations is in the same reference system than the TFace."]
+        /// Makes a Face with a list of triangulations and active one. Use NULL active triangulation to set the first triangulation in list as active. The triangulations is in the same reference system than the TFace.
         #[cxx_name = "MakeFace"]
         fn make_face_face_listoftriangulation_handletriangulation(
             self: &Builder,
@@ -402,7 +403,7 @@ pub(crate) mod ffi {
             theTriangulations: &Poly_ListOfTriangulation,
             theActiveTriangulation: &HandlePolyTriangulation,
         );
-        #[doc = "Updates the face F using the tolerance value Tol, surface S and location Location."]
+        /// Updates the face F using the tolerance value Tol, surface S and location Location.
         #[cxx_name = "UpdateFace"]
         fn update_face_face_handlesurface_location_real(
             self: &Builder,
@@ -411,7 +412,7 @@ pub(crate) mod ffi {
             L: &TopLoc_Location,
             Tol: f64,
         );
-        #[doc = "Changes a face triangulation. A NULL theTriangulation removes face triangulations. If theToReset is TRUE face triangulations will be reset to new list with only one input triangulation that will be active. Else if theTriangulation is contained in internal triangulations list it will be made active, else the active triangulation will be replaced to theTriangulation one."]
+        /// Changes a face triangulation. A NULL theTriangulation removes face triangulations. If theToReset is TRUE face triangulations will be reset to new list with only one input triangulation that will be active. Else if theTriangulation is contained in internal triangulations list it will be made active, else the active triangulation will be replaced to theTriangulation one.
         #[cxx_name = "UpdateFace"]
         fn update_face_face_handletriangulation_bool(
             self: &Builder,
@@ -419,16 +420,16 @@ pub(crate) mod ffi {
             theTriangulation: &HandlePolyTriangulation,
             theToReset: bool,
         );
-        #[doc = "Updates the face Tolerance."]
+        /// Updates the face Tolerance.
         #[cxx_name = "UpdateFace"]
         fn update_face_face_real(self: &Builder, F: &TopoDS_Face, Tol: f64);
-        #[doc = "Sets the  NaturalRestriction flag of  the face."]
+        /// Sets the  NaturalRestriction flag of  the face.
         #[cxx_name = "NaturalRestriction"]
         fn natural_restriction(self: &Builder, F: &TopoDS_Face, N: bool);
-        #[doc = "Makes an undefined Edge (no geometry)."]
+        /// Makes an undefined Edge (no geometry).
         #[cxx_name = "MakeEdge"]
         fn make_edge_edge(self: &Builder, E: Pin<&mut TopoDS_Edge>);
-        #[doc = "Makes an Edge with a curve."]
+        /// Makes an Edge with a curve.
         #[cxx_name = "MakeEdge"]
         fn make_edge_edge_handlecurve_real(
             self: &Builder,
@@ -436,7 +437,7 @@ pub(crate) mod ffi {
             C: &HandleGeomCurve,
             Tol: f64,
         );
-        #[doc = "Makes an Edge with a curve and a location."]
+        /// Makes an Edge with a curve and a location.
         #[cxx_name = "MakeEdge"]
         fn make_edge_edge_handlecurve_location_real(
             self: &Builder,
@@ -445,14 +446,14 @@ pub(crate) mod ffi {
             L: &TopLoc_Location,
             Tol: f64,
         );
-        #[doc = "Makes an Edge with a polygon 3d."]
+        /// Makes an Edge with a polygon 3d.
         #[cxx_name = "MakeEdge"]
         fn make_edge_edge_handlepolygon3d(
             self: &Builder,
             E: Pin<&mut TopoDS_Edge>,
             P: &HandlePolyPolygon3D,
         );
-        #[doc = "makes an Edge polygon on Triangulation."]
+        /// makes an Edge polygon on Triangulation.
         #[cxx_name = "MakeEdge"]
         fn make_edge_edge_handlepolygonontriangulation_handletriangulation(
             self: &Builder,
@@ -460,7 +461,7 @@ pub(crate) mod ffi {
             N: &HandlePolyPolygonOnTriangulation,
             T: &HandlePolyTriangulation,
         );
-        #[doc = "makes an Edge polygon on Triangulation."]
+        /// makes an Edge polygon on Triangulation.
         #[cxx_name = "MakeEdge"]
         fn make_edge_edge_handlepolygonontriangulation_handletriangulation_location(
             self: &Builder,
@@ -469,7 +470,7 @@ pub(crate) mod ffi {
             T: &HandlePolyTriangulation,
             L: &TopLoc_Location,
         );
-        #[doc = "Sets a 3D curve for the edge. If <C> is a null handle, remove any existing 3d curve."]
+        /// Sets a 3D curve for the edge. If <C> is a null handle, remove any existing 3d curve.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlecurve_real(
             self: &Builder,
@@ -477,7 +478,7 @@ pub(crate) mod ffi {
             C: &HandleGeomCurve,
             Tol: f64,
         );
-        #[doc = "Sets a 3D curve for the edge. If <C> is a null handle, remove any existing 3d curve."]
+        /// Sets a 3D curve for the edge. If <C> is a null handle, remove any existing 3d curve.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlecurve_location_real(
             self: &Builder,
@@ -486,7 +487,7 @@ pub(crate) mod ffi {
             L: &TopLoc_Location,
             Tol: f64,
         );
-        #[doc = "Sets a pcurve for the edge on the face. If <C> is a null handle, remove any existing pcurve."]
+        /// Sets a pcurve for the edge on the face. If <C> is a null handle, remove any existing pcurve.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlecurve_face_real(
             self: &Builder,
@@ -495,7 +496,7 @@ pub(crate) mod ffi {
             F: &TopoDS_Face,
             Tol: f64,
         );
-        #[doc = "Sets pcurves for the edge on the  closed face.  If <C1> or <C2> is a null handle, remove any existing pcurve."]
+        /// Sets pcurves for the edge on the  closed face.  If <C1> or <C2> is a null handle, remove any existing pcurve.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlecurve2_face_real(
             self: &Builder,
@@ -505,7 +506,7 @@ pub(crate) mod ffi {
             F: &TopoDS_Face,
             Tol: f64,
         );
-        #[doc = "Sets a pcurve for the edge on the face. If <C> is a null handle, remove any existing pcurve."]
+        /// Sets a pcurve for the edge on the face. If <C> is a null handle, remove any existing pcurve.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlecurve_handlesurface_location_real(
             self: &Builder,
@@ -515,7 +516,7 @@ pub(crate) mod ffi {
             L: &TopLoc_Location,
             Tol: f64,
         );
-        #[doc = "Sets a pcurve for the edge on the face. If <C> is a null handle, remove any existing pcurve. Sets UV bounds for curve repsentation"]
+        /// Sets a pcurve for the edge on the face. If <C> is a null handle, remove any existing pcurve. Sets UV bounds for curve repsentation
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlecurve_handlesurface_location_real_pnt2d2(
             self: &Builder,
@@ -527,7 +528,7 @@ pub(crate) mod ffi {
             Pf: &gp_Pnt2d,
             Pl: &gp_Pnt2d,
         );
-        #[doc = "Sets pcurves for the edge on the closed surface. <C1> or <C2> is a null handle, remove any existing pcurve."]
+        /// Sets pcurves for the edge on the closed surface. <C1> or <C2> is a null handle, remove any existing pcurve.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlecurve2_handlesurface_location_real(
             self: &Builder,
@@ -538,7 +539,7 @@ pub(crate) mod ffi {
             L: &TopLoc_Location,
             Tol: f64,
         );
-        #[doc = "Sets pcurves for the edge on the closed surface. <C1> or <C2> is a null handle, remove any existing pcurve. Sets UV bounds for curve repsentation"]
+        /// Sets pcurves for the edge on the closed surface. <C1> or <C2> is a null handle, remove any existing pcurve. Sets UV bounds for curve repsentation
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlecurve2_handlesurface_location_real_pnt2d2(
             self: &Builder,
@@ -551,14 +552,14 @@ pub(crate) mod ffi {
             Pf: &gp_Pnt2d,
             Pl: &gp_Pnt2d,
         );
-        #[doc = "Changes an Edge 3D polygon. A null Polygon removes the 3d Polygon."]
+        /// Changes an Edge 3D polygon. A null Polygon removes the 3d Polygon.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygon3d(
             self: &Builder,
             E: &TopoDS_Edge,
             P: &HandlePolyPolygon3D,
         );
-        #[doc = "Changes an Edge 3D polygon. A null Polygon removes the 3d Polygon."]
+        /// Changes an Edge 3D polygon. A null Polygon removes the 3d Polygon.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygon3d_location(
             self: &Builder,
@@ -566,7 +567,7 @@ pub(crate) mod ffi {
             P: &HandlePolyPolygon3D,
             L: &TopLoc_Location,
         );
-        #[doc = "Changes an Edge polygon on Triangulation."]
+        /// Changes an Edge polygon on Triangulation.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygonontriangulation_handletriangulation(
             self: &Builder,
@@ -574,7 +575,7 @@ pub(crate) mod ffi {
             N: &HandlePolyPolygonOnTriangulation,
             T: &HandlePolyTriangulation,
         );
-        #[doc = "Changes an Edge polygon on Triangulation."]
+        /// Changes an Edge polygon on Triangulation.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygonontriangulation_handletriangulation_location(
             self: &Builder,
@@ -583,7 +584,7 @@ pub(crate) mod ffi {
             T: &HandlePolyTriangulation,
             L: &TopLoc_Location,
         );
-        #[doc = "Changes an Edge polygon on Triangulation."]
+        /// Changes an Edge polygon on Triangulation.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygonontriangulation2_handletriangulation(
             self: &Builder,
@@ -592,7 +593,7 @@ pub(crate) mod ffi {
             N2: &HandlePolyPolygonOnTriangulation,
             T: &HandlePolyTriangulation,
         );
-        #[doc = "Changes an Edge polygon on Triangulation."]
+        /// Changes an Edge polygon on Triangulation.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygonontriangulation2_handletriangulation_location(
             self: &Builder,
@@ -602,7 +603,7 @@ pub(crate) mod ffi {
             T: &HandlePolyTriangulation,
             L: &TopLoc_Location,
         );
-        #[doc = "Changes Edge polygon on a face."]
+        /// Changes Edge polygon on a face.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygon2d_face(
             self: &Builder,
@@ -610,7 +611,7 @@ pub(crate) mod ffi {
             P: &HandlePolyPolygon2D,
             S: &TopoDS_Face,
         );
-        #[doc = "Changes Edge polygon on a face."]
+        /// Changes Edge polygon on a face.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygon2d_handlesurface_location(
             self: &Builder,
@@ -619,7 +620,7 @@ pub(crate) mod ffi {
             S: &HandleGeomSurface,
             T: &TopLoc_Location,
         );
-        #[doc = "Changes Edge polygons on a face. A null Polygon removes the 2d Polygon."]
+        /// Changes Edge polygons on a face. A null Polygon removes the 2d Polygon.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygon2d2_face(
             self: &Builder,
@@ -628,7 +629,7 @@ pub(crate) mod ffi {
             P2: &HandlePolyPolygon2D,
             S: &TopoDS_Face,
         );
-        #[doc = "Changes Edge polygons on a face. A null Polygon removes the 2d Polygon."]
+        /// Changes Edge polygons on a face. A null Polygon removes the 2d Polygon.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_handlepolygon2d2_handlesurface_location(
             self: &Builder,
@@ -638,19 +639,19 @@ pub(crate) mod ffi {
             S: &HandleGeomSurface,
             L: &TopLoc_Location,
         );
-        #[doc = "Updates the edge tolerance."]
+        /// Updates the edge tolerance.
         #[cxx_name = "UpdateEdge"]
         fn update_edge_edge_real(self: &Builder, E: &TopoDS_Edge, Tol: f64);
-        #[doc = "Sets the same parameter flag for the edge <E>."]
+        /// Sets the same parameter flag for the edge <E>.
         #[cxx_name = "SameParameter"]
         fn same_parameter(self: &Builder, E: &TopoDS_Edge, S: bool);
-        #[doc = "Sets the same range flag for the edge <E>."]
+        /// Sets the same range flag for the edge <E>.
         #[cxx_name = "SameRange"]
         fn same_range(self: &Builder, E: &TopoDS_Edge, S: bool);
-        #[doc = "Sets the degenerated flag for the edge <E>."]
+        /// Sets the degenerated flag for the edge <E>.
         #[cxx_name = "Degenerated"]
         fn degenerated(self: &Builder, E: &TopoDS_Edge, D: bool);
-        #[doc = "Sets the range of the 3d curve if Only3d=TRUE, otherwise sets the range to all the representations"]
+        /// Sets the range of the 3d curve if Only3d=TRUE, otherwise sets the range to all the representations
         #[cxx_name = "Range"]
         fn range_edge_real2_bool(
             self: &Builder,
@@ -659,7 +660,7 @@ pub(crate) mod ffi {
             Last: f64,
             Only3d: bool,
         );
-        #[doc = "Sets the range  of the edge  on the pcurve on  the surface."]
+        /// Sets the range  of the edge  on the pcurve on  the surface.
         #[cxx_name = "Range"]
         fn range_edge_handlesurface_location_real2(
             self: &Builder,
@@ -669,7 +670,7 @@ pub(crate) mod ffi {
             First: f64,
             Last: f64,
         );
-        #[doc = "Sets the range of the edge on the pcurve on the face."]
+        /// Sets the range of the edge on the pcurve on the face.
         #[cxx_name = "Range"]
         fn range_edge_face_real2(
             self: &Builder,
@@ -678,13 +679,13 @@ pub(crate) mod ffi {
             First: f64,
             Last: f64,
         );
-        #[doc = "Add  to <Eout>  the  geometric representations  of <Ein>."]
+        /// Add  to <Eout>  the  geometric representations  of <Ein>.
         #[cxx_name = "Transfert"]
         fn transfert_edge2(self: &Builder, Ein: &TopoDS_Edge, Eout: &TopoDS_Edge);
-        #[doc = "Makes an udefined vertex without geometry."]
+        /// Makes an udefined vertex without geometry.
         #[cxx_name = "MakeVertex"]
         fn make_vertex_vertex(self: &Builder, V: Pin<&mut TopoDS_Vertex>);
-        #[doc = "Makes a vertex from a 3D point."]
+        /// Makes a vertex from a 3D point.
         #[cxx_name = "MakeVertex"]
         fn make_vertex_vertex_pnt_real(
             self: &Builder,
@@ -692,10 +693,10 @@ pub(crate) mod ffi {
             P: &gp_Pnt,
             Tol: f64,
         );
-        #[doc = "Sets a 3D point on the vertex."]
+        /// Sets a 3D point on the vertex.
         #[cxx_name = "UpdateVertex"]
         fn update_vertex_vertex_pnt_real(self: &Builder, V: &TopoDS_Vertex, P: &gp_Pnt, Tol: f64);
-        #[doc = "Sets  the parameter  for the   vertex on the  edge curves."]
+        /// Sets  the parameter  for the   vertex on the  edge curves.
         #[cxx_name = "UpdateVertex"]
         fn update_vertex_vertex_real_edge_real(
             self: &Builder,
@@ -704,7 +705,7 @@ pub(crate) mod ffi {
             E: &TopoDS_Edge,
             Tol: f64,
         );
-        #[doc = "Sets  the parameter  for the  vertex  on the  edge pcurve  on the face."]
+        /// Sets  the parameter  for the  vertex  on the  edge pcurve  on the face.
         #[cxx_name = "UpdateVertex"]
         fn update_vertex_vertex_real_edge_face_real(
             self: &Builder,
@@ -714,7 +715,7 @@ pub(crate) mod ffi {
             F: &TopoDS_Face,
             Tol: f64,
         );
-        #[doc = "Sets  the parameter  for the  vertex  on the  edge pcurve  on the surface."]
+        /// Sets  the parameter  for the  vertex  on the  edge pcurve  on the surface.
         #[cxx_name = "UpdateVertex"]
         fn update_vertex_vertex_real_edge_handlesurface_location_real(
             self: &Builder,
@@ -725,7 +726,7 @@ pub(crate) mod ffi {
             L: &TopLoc_Location,
             Tol: f64,
         );
-        #[doc = "Sets the parameters for the vertex on the face."]
+        /// Sets the parameters for the vertex on the face.
         #[cxx_name = "UpdateVertex"]
         fn update_vertex_vertex_real2_face_real(
             self: &Builder,
@@ -735,10 +736,10 @@ pub(crate) mod ffi {
             F: &TopoDS_Face,
             Tol: f64,
         );
-        #[doc = "Updates the vertex tolerance."]
+        /// Updates the vertex tolerance.
         #[cxx_name = "UpdateVertex"]
         fn update_vertex_vertex_real(self: &Builder, V: &TopoDS_Vertex, Tol: f64);
-        #[doc = "Transfert the parameters  of   Vin on  Ein as  the parameter of Vout on Eout."]
+        /// Transfert the parameters  of   Vin on  Ein as  the parameter of Vout on Eout.
         #[cxx_name = "Transfert"]
         fn transfert_edge2_vertex2(
             self: &Builder,
@@ -747,44 +748,44 @@ pub(crate) mod ffi {
             Vin: &TopoDS_Vertex,
             Vout: &TopoDS_Vertex,
         );
-        #[doc = "Upcast BRep_Builder to TopoDS_Builder"]
+        /// Upcast BRep_Builder to TopoDS_Builder
         #[cxx_name = "BRep_Builder_as_TopoDS_Builder"]
         fn builder_as_topo_ds_builder(self_: &Builder) -> &TopoDS_Builder;
-        #[doc = "Upcast BRep_Builder to TopoDS_Builder (mutable)"]
+        /// Upcast BRep_Builder to TopoDS_Builder (mutable)
         #[cxx_name = "BRep_Builder_as_TopoDS_Builder_mut"]
         fn builder_as_topo_ds_builder_mut(self_: Pin<&mut Builder>) -> Pin<&mut TopoDS_Builder>;
-        #[doc = " ======================== BRep_Tool ========================"]
-        #[doc = "/// **Source:** `BRep_Tool.hxx` - `BRep_Tool`"]
-        #[doc = ""]
-        #[doc = "Provides class methods  to  access to the geometry of BRep shapes."]
+        /// ======================== BRep_Tool ========================
+        /// /// **Source:** `BRep_Tool.hxx` - `BRep_Tool`
+        ///
+        /// Provides class methods  to  access to the geometry of BRep shapes.
         #[cxx_name = "BRep_Tool"]
         type Tool;
-        #[doc = "If S is Shell, returns True if it has no free boundaries (edges). If S is Wire, returns True if it has no free ends (vertices). (Internal and External sub-shepes are ignored in these checks) If S is Edge, returns True if its vertices are the same. For other shape types returns S.Closed()."]
+        /// If S is Shell, returns True if it has no free boundaries (edges). If S is Wire, returns True if it has no free ends (vertices). (Internal and External sub-shepes are ignored in these checks) If S is Edge, returns True if its vertices are the same. For other shape types returns S.Closed().
         #[cxx_name = "BRep_Tool_IsClosed_shape"]
         fn Tool_is_closed_shape(S: &TopoDS_Shape) -> bool;
-        #[doc = "Returns the geometric  surface of the face. It can be a copy if there is a Location."]
+        /// Returns the geometric  surface of the face. It can be a copy if there is a Location.
         #[cxx_name = "BRep_Tool_Surface_face"]
         fn Tool_surface_face(F: &TopoDS_Face) -> UniquePtr<HandleGeomSurface>;
-        #[doc = "Returns the tolerance of the face."]
+        /// Returns the tolerance of the face.
         #[cxx_name = "BRep_Tool_Tolerance_face"]
         fn Tool_tolerance_face(F: &TopoDS_Face) -> f64;
-        #[doc = "Returns the  NaturalRestriction  flag of the  face."]
+        /// Returns the  NaturalRestriction  flag of the  face.
         #[cxx_name = "BRep_Tool_NaturalRestriction"]
         fn Tool_natural_restriction(F: &TopoDS_Face) -> bool;
-        #[doc = "Returns True if <F> has a surface, false otherwise."]
+        /// Returns True if <F> has a surface, false otherwise.
         #[cxx_name = "BRep_Tool_IsGeometric_face"]
         fn Tool_is_geometric_face(F: &TopoDS_Face) -> bool;
-        #[doc = "Returns True if <E> is a 3d curve or a curve on surface."]
+        /// Returns True if <E> is a 3d curve or a curve on surface.
         #[cxx_name = "BRep_Tool_IsGeometric_edge"]
         fn Tool_is_geometric_edge(E: &TopoDS_Edge) -> bool;
-        #[doc = "Returns the 3D curve  of the edge. May be a Null handle. In <First> and <Last> the parameter range. It can be a copy if there is a Location."]
+        /// Returns the 3D curve  of the edge. May be a Null handle. In <First> and <Last> the parameter range. It can be a copy if there is a Location.
         #[cxx_name = "BRep_Tool_Curve_edge_real2"]
         fn Tool_curve_edge_real2(
             E: &TopoDS_Edge,
             First: &mut f64,
             Last: &mut f64,
         ) -> UniquePtr<HandleGeomCurve>;
-        #[doc = "For the planar surface builds the 2d curve for the edge by projection of the edge on plane. Returns a NULL handle if the surface is not planar or the projection failed."]
+        /// For the planar surface builds the 2d curve for the edge by projection of the edge on plane. Returns a NULL handle if the surface is not planar or the projection failed.
         #[cxx_name = "BRep_Tool_CurveOnPlane"]
         fn Tool_curve_on_plane(
             E: &TopoDS_Edge,
@@ -793,7 +794,7 @@ pub(crate) mod ffi {
             First: &mut f64,
             Last: &mut f64,
         ) -> UniquePtr<HandleGeom2dCurve>;
-        #[doc = "Returns in <C>, <S>, <L> a 2d curve, a surface and a location for the edge <E>. <C> and <S>  are null if the  edge has no curve on  surface.  Returns in <First> and <Last> the parameter range."]
+        /// Returns in <C>, <S>, <L> a 2d curve, a surface and a location for the edge <E>. <C> and <S>  are null if the  edge has no curve on  surface.  Returns in <First> and <Last> the parameter range.
         #[cxx_name = "BRep_Tool_CurveOnSurface_edge_handlecurve_handlesurface_location_real2"]
         fn Tool_curve_on_surface_edge_handlecurve_handlesurface_location_real2(
             E: &TopoDS_Edge,
@@ -803,7 +804,7 @@ pub(crate) mod ffi {
             First: &mut f64,
             Last: &mut f64,
         );
-        #[doc = "Returns in <C>, <S>, <L> the 2d curve, the surface and the location for the edge <E> of rank <Index>. <C> and <S> are null if the index is out of range. Returns in <First> and <Last> the parameter range."]
+        /// Returns in <C>, <S>, <L> the 2d curve, the surface and the location for the edge <E> of rank <Index>. <C> and <S> are null if the index is out of range. Returns in <First> and <Last> the parameter range.
         #[cxx_name = "BRep_Tool_CurveOnSurface_edge_handlecurve_handlesurface_location_real2_int"]
         fn Tool_curve_on_surface_edge_handlecurve_handlesurface_location_real2_int(
             E: &TopoDS_Edge,
@@ -814,20 +815,20 @@ pub(crate) mod ffi {
             Last: &mut f64,
             Index: i32,
         );
-        #[doc = "Returns the polygon associated to the  edge in  the parametric  space of  the  face.  Returns   a NULL handle  if this polygon  does not exist."]
+        /// Returns the polygon associated to the  edge in  the parametric  space of  the  face.  Returns   a NULL handle  if this polygon  does not exist.
         #[cxx_name = "BRep_Tool_PolygonOnSurface_edge_face"]
         fn Tool_polygon_on_surface_edge_face(
             E: &TopoDS_Edge,
             F: &TopoDS_Face,
         ) -> UniquePtr<HandlePolyPolygon2D>;
-        #[doc = "Returns the polygon associated to the  edge in  the parametric  space of  the surface. Returns   a NULL handle  if this polygon  does not exist."]
+        /// Returns the polygon associated to the  edge in  the parametric  space of  the surface. Returns   a NULL handle  if this polygon  does not exist.
         #[cxx_name = "BRep_Tool_PolygonOnSurface_edge_handlesurface_location"]
         fn Tool_polygon_on_surface_edge_handlesurface_location(
             E: &TopoDS_Edge,
             S: &HandleGeomSurface,
             L: &TopLoc_Location,
         ) -> UniquePtr<HandlePolyPolygon2D>;
-        #[doc = "Returns in <C>, <S>, <L> a 2d curve, a surface and a location for the edge <E>. <C> and <S>  are null if the  edge has no polygon on  surface."]
+        /// Returns in <C>, <S>, <L> a 2d curve, a surface and a location for the edge <E>. <C> and <S>  are null if the  edge has no polygon on  surface.
         #[cxx_name = "BRep_Tool_PolygonOnSurface_edge_handlepolygon2d_handlesurface_location"]
         fn Tool_polygon_on_surface_edge_handlepolygon2d_handlesurface_location(
             E: &TopoDS_Edge,
@@ -835,7 +836,7 @@ pub(crate) mod ffi {
             S: Pin<&mut HandleGeomSurface>,
             L: Pin<&mut TopLoc_Location>,
         );
-        #[doc = "Returns in <C>, <S>, <L> the 2d curve, the surface and the location for the edge <E> of rank <Index>. <C> and <S> are null if the index is out of range."]
+        /// Returns in <C>, <S>, <L> the 2d curve, the surface and the location for the edge <E> of rank <Index>. <C> and <S> are null if the index is out of range.
         #[cxx_name = "BRep_Tool_PolygonOnSurface_edge_handlepolygon2d_handlesurface_location_int"]
         fn Tool_polygon_on_surface_edge_handlepolygon2d_handlesurface_location_int(
             E: &TopoDS_Edge,
@@ -844,7 +845,7 @@ pub(crate) mod ffi {
             L: Pin<&mut TopLoc_Location>,
             Index: i32,
         );
-        #[doc = "Returns in <P>, <T>, <L> a polygon on triangulation, a triangulation and a location for the edge <E>. <P>  and  <T>  are null  if  the  edge has no polygon on  triangulation."]
+        /// Returns in <P>, <T>, <L> a polygon on triangulation, a triangulation and a location for the edge <E>. <P>  and  <T>  are null  if  the  edge has no polygon on  triangulation.
         #[cxx_name = "BRep_Tool_PolygonOnTriangulation_edge_handlepolygonontriangulation_handletriangulation_location"]
         fn Tool_polygon_on_triangulation_edge_handlepolygonontriangulation_handletriangulation_location(
             E: &TopoDS_Edge,
@@ -852,7 +853,7 @@ pub(crate) mod ffi {
             T: Pin<&mut HandlePolyTriangulation>,
             L: Pin<&mut TopLoc_Location>,
         );
-        #[doc = "Returns   in   <P>,  <T>,    <L> a     polygon  on triangulation,   a triangulation  and a  location for the edge <E> for the range index.  <C> and <S> are null if the edge has no polygon on triangulation."]
+        /// Returns   in   <P>,  <T>,    <L> a     polygon  on triangulation,   a triangulation  and a  location for the edge <E> for the range index.  <C> and <S> are null if the edge has no polygon on triangulation.
         #[cxx_name = "BRep_Tool_PolygonOnTriangulation_edge_handlepolygonontriangulation_handletriangulation_location_int"]
         fn Tool_polygon_on_triangulation_edge_handlepolygonontriangulation_handletriangulation_location_int(
             E: &TopoDS_Edge,
@@ -861,39 +862,39 @@ pub(crate) mod ffi {
             L: Pin<&mut TopLoc_Location>,
             Index: i32,
         );
-        #[doc = "Returns  True  if  <E>  has  two  PCurves  in  the parametric space of <F>. i.e.  <F>  is on a closed surface and <E> is on the closing curve."]
+        /// Returns  True  if  <E>  has  two  PCurves  in  the parametric space of <F>. i.e.  <F>  is on a closed surface and <E> is on the closing curve.
         #[cxx_name = "BRep_Tool_IsClosed_edge_face"]
         fn Tool_is_closed_edge_face(E: &TopoDS_Edge, F: &TopoDS_Face) -> bool;
-        #[doc = "Returns  True  if  <E>  has  two  PCurves  in  the parametric space  of <S>.  i.e.   <S>  is a closed surface and <E> is on the closing curve."]
+        /// Returns  True  if  <E>  has  two  PCurves  in  the parametric space  of <S>.  i.e.   <S>  is a closed surface and <E> is on the closing curve.
         #[cxx_name = "BRep_Tool_IsClosed_edge_handlesurface_location"]
         fn Tool_is_closed_edge_handlesurface_location(
             E: &TopoDS_Edge,
             S: &HandleGeomSurface,
             L: &TopLoc_Location,
         ) -> bool;
-        #[doc = "Returns  True  if <E> has two arrays of indices in the triangulation <T>."]
+        /// Returns  True  if <E> has two arrays of indices in the triangulation <T>.
         #[cxx_name = "BRep_Tool_IsClosed_edge_handletriangulation_location"]
         fn Tool_is_closed_edge_handletriangulation_location(
             E: &TopoDS_Edge,
             T: &HandlePolyTriangulation,
             L: &TopLoc_Location,
         ) -> bool;
-        #[doc = "Returns the tolerance for <E>."]
+        /// Returns the tolerance for <E>.
         #[cxx_name = "BRep_Tool_Tolerance_edge"]
         fn Tool_tolerance_edge(E: &TopoDS_Edge) -> f64;
-        #[doc = "Returns the SameParameter flag for the edge."]
+        /// Returns the SameParameter flag for the edge.
         #[cxx_name = "BRep_Tool_SameParameter"]
         fn Tool_same_parameter(E: &TopoDS_Edge) -> bool;
-        #[doc = "Returns the SameRange flag for the edge."]
+        /// Returns the SameRange flag for the edge.
         #[cxx_name = "BRep_Tool_SameRange"]
         fn Tool_same_range(E: &TopoDS_Edge) -> bool;
-        #[doc = "Returns True  if the edge is degenerated."]
+        /// Returns True  if the edge is degenerated.
         #[cxx_name = "BRep_Tool_Degenerated"]
         fn Tool_degenerated(E: &TopoDS_Edge) -> bool;
-        #[doc = "Gets the range of the 3d curve."]
+        /// Gets the range of the 3d curve.
         #[cxx_name = "BRep_Tool_Range_edge_real2"]
         fn Tool_range_edge_real2(E: &TopoDS_Edge, First: &mut f64, Last: &mut f64);
-        #[doc = "Gets the range  of the edge  on the pcurve on  the surface."]
+        /// Gets the range  of the edge  on the pcurve on  the surface.
         #[cxx_name = "BRep_Tool_Range_edge_handlesurface_location_real2"]
         fn Tool_range_edge_handlesurface_location_real2(
             E: &TopoDS_Edge,
@@ -902,7 +903,7 @@ pub(crate) mod ffi {
             First: &mut f64,
             Last: &mut f64,
         );
-        #[doc = "Gets the range of the edge on the pcurve on the face."]
+        /// Gets the range of the edge on the pcurve on the face.
         #[cxx_name = "BRep_Tool_Range_edge_face_real2"]
         fn Tool_range_edge_face_real2(
             E: &TopoDS_Edge,
@@ -910,7 +911,7 @@ pub(crate) mod ffi {
             First: &mut f64,
             Last: &mut f64,
         );
-        #[doc = "Gets the UV locations of the extremities of the edge."]
+        /// Gets the UV locations of the extremities of the edge.
         #[cxx_name = "BRep_Tool_UVPoints_edge_handlesurface_location_pnt2d2"]
         fn Tool_uv_points_edge_handlesurface_location_pnt2d2(
             E: &TopoDS_Edge,
@@ -919,7 +920,7 @@ pub(crate) mod ffi {
             PFirst: Pin<&mut gp_Pnt2d>,
             PLast: Pin<&mut gp_Pnt2d>,
         );
-        #[doc = "Gets the UV locations of the extremities of the edge."]
+        /// Gets the UV locations of the extremities of the edge.
         #[cxx_name = "BRep_Tool_UVPoints_edge_face_pnt2d2"]
         fn Tool_uv_points_edge_face_pnt2d2(
             E: &TopoDS_Edge,
@@ -927,7 +928,7 @@ pub(crate) mod ffi {
             PFirst: Pin<&mut gp_Pnt2d>,
             PLast: Pin<&mut gp_Pnt2d>,
         );
-        #[doc = "Sets the UV locations of the extremities of the edge."]
+        /// Sets the UV locations of the extremities of the edge.
         #[cxx_name = "BRep_Tool_SetUVPoints_edge_handlesurface_location_pnt2d2"]
         fn Tool_set_uv_points_edge_handlesurface_location_pnt2d2(
             E: &TopoDS_Edge,
@@ -936,7 +937,7 @@ pub(crate) mod ffi {
             PFirst: &gp_Pnt2d,
             PLast: &gp_Pnt2d,
         );
-        #[doc = "Sets the UV locations of the extremities of the edge."]
+        /// Sets the UV locations of the extremities of the edge.
         #[cxx_name = "BRep_Tool_SetUVPoints_edge_face_pnt2d2"]
         fn Tool_set_uv_points_edge_face_pnt2d2(
             E: &TopoDS_Edge,
@@ -944,14 +945,14 @@ pub(crate) mod ffi {
             PFirst: &gp_Pnt2d,
             PLast: &gp_Pnt2d,
         );
-        #[doc = "Returns True if the edge is on the surfaces of the two faces."]
+        /// Returns True if the edge is on the surfaces of the two faces.
         #[cxx_name = "BRep_Tool_HasContinuity_edge_face2"]
         fn Tool_has_continuity_edge_face2(
             E: &TopoDS_Edge,
             F1: &TopoDS_Face,
             F2: &TopoDS_Face,
         ) -> bool;
-        #[doc = "Returns True if the edge is on the surfaces."]
+        /// Returns True if the edge is on the surfaces.
         #[cxx_name = "BRep_Tool_HasContinuity_edge_handlesurface2_location2"]
         fn Tool_has_continuity_edge_handlesurface2_location2(
             E: &TopoDS_Edge,
@@ -960,33 +961,33 @@ pub(crate) mod ffi {
             L1: &TopLoc_Location,
             L2: &TopLoc_Location,
         ) -> bool;
-        #[doc = "Returns True if the edge has regularity on some two surfaces"]
+        /// Returns True if the edge has regularity on some two surfaces
         #[cxx_name = "BRep_Tool_HasContinuity_edge"]
         fn Tool_has_continuity_edge(E: &TopoDS_Edge) -> bool;
-        #[doc = "Returns the 3d point."]
+        /// Returns the 3d point.
         #[cxx_name = "BRep_Tool_Pnt"]
         fn Tool_pnt(V: &TopoDS_Vertex) -> UniquePtr<gp_Pnt>;
-        #[doc = "Returns the tolerance."]
+        /// Returns the tolerance.
         #[cxx_name = "BRep_Tool_Tolerance_vertex"]
         fn Tool_tolerance_vertex(V: &TopoDS_Vertex) -> f64;
-        #[doc = "Finds the parameter of <theV> on <theE>. @param[in] theV  input vertex @param[in] theE  input edge @param[out] theParam   calculated parameter on the curve @return TRUE if done"]
+        /// Finds the parameter of <theV> on <theE>. @param[in] theV  input vertex @param[in] theE  input edge @param[out] theParam   calculated parameter on the curve @return TRUE if done
         #[cxx_name = "BRep_Tool_Parameter_vertex_edge_real"]
         fn Tool_parameter_vertex_edge_real(
             theV: &TopoDS_Vertex,
             theE: &TopoDS_Edge,
             theParam: &mut f64,
         ) -> bool;
-        #[doc = "Returns the parameter of <V> on <E>. Throws Standard_NoSuchObject if no parameter on edge"]
+        /// Returns the parameter of <V> on <E>. Throws Standard_NoSuchObject if no parameter on edge
         #[cxx_name = "BRep_Tool_Parameter_vertex_edge"]
         fn Tool_parameter_vertex_edge(V: &TopoDS_Vertex, E: &TopoDS_Edge) -> f64;
-        #[doc = "Returns the  parameters  of   the  vertex   on the pcurve of the edge on the face."]
+        /// Returns the  parameters  of   the  vertex   on the pcurve of the edge on the face.
         #[cxx_name = "BRep_Tool_Parameter_vertex_edge_face"]
         fn Tool_parameter_vertex_edge_face(
             V: &TopoDS_Vertex,
             E: &TopoDS_Edge,
             F: &TopoDS_Face,
         ) -> f64;
-        #[doc = "Returns the  parameters  of   the  vertex   on the pcurve of the edge on the surface."]
+        /// Returns the  parameters  of   the  vertex   on the pcurve of the edge on the surface.
         #[cxx_name = "BRep_Tool_Parameter_vertex_edge_handlesurface_location"]
         fn Tool_parameter_vertex_edge_handlesurface_location(
             V: &TopoDS_Vertex,
@@ -994,172 +995,174 @@ pub(crate) mod ffi {
             S: &HandleGeomSurface,
             L: &TopLoc_Location,
         ) -> f64;
-        #[doc = "Returns the parameters of the vertex on the face."]
+        /// Returns the parameters of the vertex on the face.
         #[cxx_name = "BRep_Tool_Parameters"]
         fn Tool_parameters(V: &TopoDS_Vertex, F: &TopoDS_Face) -> UniquePtr<gp_Pnt2d>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "BoundedCurve from geom2d module"]
+        /// BoundedCurve from geom2d module
         type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
+        /// Conic from geom2d module
         type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Curve from geom2d module"]
+        /// Curve from geom2d module
         type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "Ellipse from geom2d module"]
+        /// Ellipse from geom2d module
         type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "Geometry from geom2d module"]
+        /// Geometry from geom2d module
         type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "TrimmedCurve from geom2d module"]
+        /// TrimmedCurve from geom2d module
         type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
-        #[doc = "BSplineCurve from geom module"]
+        /// BSplineCurve from geom module
         type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
+        /// BSplineSurface from geom module
         type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
+        /// BezierCurve from geom module
         type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
+        /// BezierSurface from geom module
         type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
+        /// BoundedCurve from geom module
         type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
+        /// BoundedSurface from geom module
         type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
+        /// Curve from geom module
         type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
+        /// CylindricalSurface from geom module
         type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
+        /// ElementarySurface from geom module
         type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
+        /// Geometry from geom module
         type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
+        /// Plane from geom module
         type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
+        /// Surface from geom module
         type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
+        /// TrimmedCurve from geom module
         type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "ArrayOfNodes from poly module"]
+        /// ArrayOfNodes from poly module
         type Poly_ArrayOfNodes = crate::poly::ffi::ArrayOfNodes;
-        #[doc = "ArrayOfUVNodes from poly module"]
+        /// ArrayOfUVNodes from poly module
         type Poly_ArrayOfUVNodes = crate::poly::ffi::ArrayOfUVNodes;
-        #[doc = "HArray1OfTriangle from poly module"]
+        /// HArray1OfTriangle from poly module
         type Poly_HArray1OfTriangle = crate::poly::ffi::HArray1OfTriangle;
-        #[doc = "Polygon2D from poly module"]
+        /// Polygon2D from poly module
         type Poly_Polygon2D = crate::poly::ffi::Polygon2D;
-        #[doc = "Polygon3D from poly module"]
+        /// Polygon3D from poly module
         type Poly_Polygon3D = crate::poly::ffi::Polygon3D;
-        #[doc = "PolygonOnTriangulation from poly module"]
+        /// PolygonOnTriangulation from poly module
         type Poly_PolygonOnTriangulation = crate::poly::ffi::PolygonOnTriangulation;
-        #[doc = "Triangle from poly module"]
+        /// Triangle from poly module
         type Poly_Triangle = crate::poly::ffi::Triangle;
-        #[doc = "Triangulation from poly module"]
+        /// Triangulation from poly module
         type Poly_Triangulation = crate::poly::ffi::Triangulation;
-        #[doc = "TopAbs from top_abs module"]
+        /// TopAbs from top_abs module
         type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "Location from top_loc module"]
+        /// Location from top_loc module
         type TopLoc_Location = crate::top_loc::ffi::Location;
-        #[doc = "SListOfItemLocation from top_loc module"]
+        /// SListOfItemLocation from top_loc module
         type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
+
         // ========================
         // Referenced types (opaque)
         // ========================

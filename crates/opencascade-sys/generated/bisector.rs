@@ -20,19 +20,20 @@ impl Bisec {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_bisector.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== Bisector_Bisec ========================"]
-        #[doc = "/// **Source:** `Bisector_Bisec.hxx` - `Bisector_Bisec`"]
-        #[doc = ""]
-        #[doc = "Bisec provides the bisecting line between two elements This line is trimmed by a point <P> and it's contained in the domain defined by the two vectors <V1>, <V2> and <Sense>. Definition of the domain: if <Sense>  is  true the bisecting line is contained in the sector defined by <-V1> and <-V2> in the sense indirect. if <Sense>  is  false the bisecting line is contained in the sector defined by <-V1> and <-V2> in the sense direct. <Tolerance> is used to define degenerate bisector. if the bisector is an hyperbola and one of this radius is smaller than <Tolerance>, the bisector is replaced by a line or semi_line corresponding to one of hyperbola's axes. if the bisector is a parabola on the focal length is smaller than <Tolerance>, the bisector is replaced by a semi_line corresponding to the axe of symmetry of the parabola. if the bisector is an ellipse  and the minor radius is smaller than <Tolerance>, the bisector is replaced by a segment corresponding to the great axe of the ellipse."]
+        /// ======================== Bisector_Bisec ========================
+        /// /// **Source:** `Bisector_Bisec.hxx` - `Bisector_Bisec`
+        ///
+        /// Bisec provides the bisecting line between two elements This line is trimmed by a point <P> and it's contained in the domain defined by the two vectors <V1>, <V2> and <Sense>. Definition of the domain: if <Sense>  is  true the bisecting line is contained in the sector defined by <-V1> and <-V2> in the sense indirect. if <Sense>  is  false the bisecting line is contained in the sector defined by <-V1> and <-V2> in the sense direct. <Tolerance> is used to define degenerate bisector. if the bisector is an hyperbola and one of this radius is smaller than <Tolerance>, the bisector is replaced by a line or semi_line corresponding to one of hyperbola's axes. if the bisector is a parabola on the focal length is smaller than <Tolerance>, the bisector is replaced by a semi_line corresponding to the axe of symmetry of the parabola. if the bisector is an ellipse  and the minor radius is smaller than <Tolerance>, the bisector is replaced by a segment corresponding to the great axe of the ellipse.
         #[cxx_name = "Bisector_Bisec"]
         type Bisec;
-        #[doc = "/// **Source:** `Bisector_Bisec.hxx` - `Bisector_Bisec::Bisector_Bisec()`"]
+        /// /// **Source:** `Bisector_Bisec.hxx` - `Bisector_Bisec::Bisector_Bisec()`
         #[cxx_name = "Bisector_Bisec_ctor"]
         fn Bisec_ctor() -> UniquePtr<Bisec>;
-        #[doc = "Performs  the bisecting line  between the  curve <Cu1> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>."]
+        /// Performs  the bisecting line  between the  curve <Cu1> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
         #[cxx_name = "Perform"]
         fn perform_handlecurve_handlepoint_pnt2d_vec2d2_real2_bool(
             self: Pin<&mut Bisec>,
@@ -45,7 +46,7 @@ pub(crate) mod ffi {
             Tolerance: f64,
             oncurve: bool,
         );
-        #[doc = "Performs  the bisecting line  between the  curve <Cu> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>."]
+        /// Performs  the bisecting line  between the  curve <Cu> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
         #[cxx_name = "Perform"]
         fn perform_handlepoint_handlecurve_pnt2d_vec2d2_real2_bool(
             self: Pin<&mut Bisec>,
@@ -58,7 +59,7 @@ pub(crate) mod ffi {
             Tolerance: f64,
             oncurve: bool,
         );
-        #[doc = "Performs  the bisecting line  between the two points <Pnt1>  and <Pnt2>."]
+        /// Performs  the bisecting line  between the two points <Pnt1>  and <Pnt2>.
         #[cxx_name = "Perform"]
         fn perform_handlepoint2_pnt2d_vec2d2_real2_bool(
             self: Pin<&mut Bisec>,
@@ -71,103 +72,105 @@ pub(crate) mod ffi {
             Tolerance: f64,
             oncurve: bool,
         );
-        #[doc = "Returns the Curve of <me>."]
+        /// Returns the Curve of <me>.
         #[cxx_name = "Value"]
         fn value(self: &Bisec) -> &HandleGeom2dTrimmedCurve;
-        #[doc = "Returns the Curve of <me>."]
+        /// Returns the Curve of <me>.
         #[cxx_name = "ChangeValue"]
         fn change_value(self: Pin<&mut Bisec>) -> &HandleGeom2dTrimmedCurve;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "BoundedCurve from geom2d module"]
+        /// BoundedCurve from geom2d module
         type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
+        /// Conic from geom2d module
         type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Curve from geom2d module"]
+        /// Curve from geom2d module
         type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "Ellipse from geom2d module"]
+        /// Ellipse from geom2d module
         type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "Geometry from geom2d module"]
+        /// Geometry from geom2d module
         type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "TrimmedCurve from geom2d module"]
+        /// TrimmedCurve from geom2d module
         type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
+
         // ========================
         // Referenced types (opaque)
         // ========================

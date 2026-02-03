@@ -16,7 +16,7 @@ impl Parameters {
         ffi::Parameters_ctor()
     }
 
-    #[doc = "Returns default shape fix parameters for transferring STEP files."]
+    /// Returns default shape fix parameters for transferring STEP files.
     pub fn get_default_shape_fix_parameters() -> cxx::UniquePtr<ffi::DE_ShapeFixParameters> {
         ffi::Parameters_get_default_shape_fix_parameters()
     }
@@ -25,36 +25,39 @@ impl Parameters {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_destep.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== DESTEP_Parameters ========================"]
-        #[doc = "/// **Source:** `DESTEP_Parameters.hxx` - `DESTEP_Parameters`"]
+        /// ======================== DESTEP_Parameters ========================
+        /// /// **Source:** `DESTEP_Parameters.hxx` - `DESTEP_Parameters`
         #[cxx_name = "DESTEP_Parameters"]
         type Parameters;
-        #[doc = "/// **Source:** `DESTEP_Parameters.hxx` - `DESTEP_Parameters::DESTEP_Parameters()`"]
+        /// /// **Source:** `DESTEP_Parameters.hxx` - `DESTEP_Parameters::DESTEP_Parameters()`
         #[cxx_name = "DESTEP_Parameters_ctor"]
         fn Parameters_ctor() -> UniquePtr<Parameters>;
-        #[doc = "Initialize parameters"]
+        /// Initialize parameters
         #[cxx_name = "InitFromStatic"]
         fn init_from_static(self: Pin<&mut Parameters>);
-        #[doc = "Reset used parameters"]
+        /// Reset used parameters
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut Parameters>);
-        #[doc = "Returns default shape fix parameters for transferring STEP files."]
+        /// Returns default shape fix parameters for transferring STEP files.
         #[cxx_name = "DESTEP_Parameters_GetDefaultShapeFixParameters"]
         fn Parameters_get_default_shape_fix_parameters() -> UniquePtr<DE_ShapeFixParameters>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "AsciiString from t_collection module"]
+        /// AsciiString from t_collection module
         type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
-        #[doc = "ExtendedString from t_collection module"]
+        /// ExtendedString from t_collection module
         type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
-        #[doc = "HAsciiString from t_collection module"]
+        /// HAsciiString from t_collection module
         type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
-        #[doc = "HExtendedString from t_collection module"]
+        /// HExtendedString from t_collection module
         type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
+
         // ========================
         // Referenced types (opaque)
         // ========================

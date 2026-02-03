@@ -63,17 +63,17 @@ impl Geometry {
 }
 pub use ffi::Curve;
 impl Curve {
-    #[doc = "Upcast to Geom2d_Geometry"]
+    /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
         ffi::curve_as_geometry(self)
     }
 
-    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
+    /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
         ffi::curve_as_geometry_mut(self)
     }
 
-    #[doc = "Creates a reversed duplicate Changes the orientation of this curve. The first and last parameters are not changed, but the parametric direction of the curve is reversed. If the curve is bounded: - the start point of the initial curve becomes the end point of the reversed curve, and - the end point of the initial curve becomes the start point of the reversed curve. - Reversed creates a new curve."]
+    /// Creates a reversed duplicate Changes the orientation of this curve. The first and last parameters are not changed, but the parametric direction of the curve is reversed. If the curve is bounded: - the start point of the initial curve becomes the end point of the reversed curve, and - the end point of the initial curve becomes the start point of the reversed curve. - Reversed creates a new curve.
     pub fn reversed(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
         ffi::Curve_reversed(self)
     }
@@ -94,22 +94,22 @@ impl Curve {
 }
 pub use ffi::BoundedCurve;
 impl BoundedCurve {
-    #[doc = "Upcast to Geom2d_Curve"]
+    /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
         ffi::bounded_curve_as_curve(self)
     }
 
-    #[doc = "Upcast to Geom2d_Curve (mutable)"]
+    /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
         ffi::bounded_curve_as_curve_mut(self)
     }
 
-    #[doc = "Upcast to Geom2d_Geometry"]
+    /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
         ffi::bounded_curve_as_geometry(self)
     }
 
-    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
+    /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
         ffi::bounded_curve_as_geometry_mut(self)
     }
@@ -130,22 +130,22 @@ impl BoundedCurve {
 }
 pub use ffi::Conic;
 impl Conic {
-    #[doc = "Upcast to Geom2d_Curve"]
+    /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
         ffi::conic_as_curve(self)
     }
 
-    #[doc = "Upcast to Geom2d_Curve (mutable)"]
+    /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
         ffi::conic_as_curve_mut(self)
     }
 
-    #[doc = "Upcast to Geom2d_Geometry"]
+    /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
         ffi::conic_as_geometry(self)
     }
 
-    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
+    /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
         ffi::conic_as_geometry_mut(self)
     }
@@ -166,7 +166,7 @@ impl Conic {
 }
 pub use ffi::Ellipse;
 impl Ellipse {
-    #[doc = "Creates an ellipse by conversion of the gp_Elips2d ellipse E."]
+    /// Creates an ellipse by conversion of the gp_Elips2d ellipse E.
     pub fn new_elips2d(E: &ffi::gp_Elips2d) -> cxx::UniquePtr<Self> {
         ffi::Ellipse_ctor_elips2d(E)
     }
@@ -190,42 +190,42 @@ impl Ellipse {
         ffi::Ellipse_ctor_ax22d_real2(Axis, MajorRadius, MinorRadius)
     }
 
-    #[doc = "Upcast to Geom2d_Conic"]
+    /// Upcast to Geom2d_Conic
     pub fn as_conic(&self) -> &Conic {
         ffi::ellipse_as_conic(self)
     }
 
-    #[doc = "Upcast to Geom2d_Conic (mutable)"]
+    /// Upcast to Geom2d_Conic (mutable)
     pub fn as_conic_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Conic> {
         ffi::ellipse_as_conic_mut(self)
     }
 
-    #[doc = "Upcast to Geom2d_Curve"]
+    /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
         ffi::ellipse_as_curve(self)
     }
 
-    #[doc = "Upcast to Geom2d_Curve (mutable)"]
+    /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
         ffi::ellipse_as_curve_mut(self)
     }
 
-    #[doc = "Upcast to Geom2d_Geometry"]
+    /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
         ffi::ellipse_as_geometry(self)
     }
 
-    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
+    /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
         ffi::ellipse_as_geometry_mut(self)
     }
 
-    #[doc = "Wrap Geom2d_Ellipse in a Handle (reference-counted smart pointer)"]
+    /// Wrap Geom2d_Ellipse in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeom2dEllipse> {
         ffi::Ellipse_to_handle(obj)
     }
 
-    #[doc = "Converts this ellipse into a gp_Elips2d ellipse."]
+    /// Converts this ellipse into a gp_Elips2d ellipse.
     pub fn elips2d(&self) -> cxx::UniquePtr<ffi::gp_Elips2d> {
         ffi::Ellipse_elips2d(self)
     }
@@ -250,12 +250,12 @@ impl Ellipse {
         ffi::Ellipse_focus2(self)
     }
 
-    #[doc = "For the point of parameter U of this ellipse, computes the vector corresponding to the Nth derivative. Exceptions Standard_RangeError if N is less than 1."]
+    /// For the point of parameter U of this ellipse, computes the vector corresponding to the Nth derivative. Exceptions Standard_RangeError if N is less than 1.
     pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec2d> {
         ffi::Ellipse_dn(self, U, N)
     }
 
-    #[doc = "Creates a new object which is a copy of this ellipse."]
+    /// Creates a new object which is a copy of this ellipse.
     pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
         ffi::Ellipse_copy(self)
     }
@@ -266,7 +266,7 @@ impl Ellipse {
 }
 pub use ffi::TrimmedCurve;
 impl TrimmedCurve {
-    #[doc = "Creates a trimmed curve from the basis curve C limited between U1 and U2. . U1 can be greater or lower than U2. . The returned curve is oriented from U1 to U2. . If the basis curve C is periodic there is an ambiguity because two parts are available. In this case by default the trimmed curve has the same orientation as the basis curve (Sense = True). If Sense = False then the orientation of the trimmed curve is opposite to the orientation of the basis curve C. If the curve is closed but not periodic it is not possible to keep the part of the curve including the junction point (except if the junction point is at the beginning or at the end of the trimmed curve) because you could lose the fundamental characteristics of the basis curve which are used for example to compute the derivatives of the trimmed curve. So for a closed curve the rules are the same as for a open curve. Warnings : In this package the entities are not shared. The TrimmedCurve is built with a copy of the curve C. So when C is modified the TrimmedCurve is not modified Warnings : If <C> is periodic and <theAdjustPeriodic> is True, parametrics bounds of the TrimmedCurve, can be different to [<U1>;<U2>}, if <U1> or <U2> are not in the principal period. Include : For more explanation see the scheme given with this class. Raises ConstructionError the C is not periodic and U1 or U2 are out of the bounds of C. Raised if U1 = U2."]
+    /// Creates a trimmed curve from the basis curve C limited between U1 and U2. . U1 can be greater or lower than U2. . The returned curve is oriented from U1 to U2. . If the basis curve C is periodic there is an ambiguity because two parts are available. In this case by default the trimmed curve has the same orientation as the basis curve (Sense = True). If Sense = False then the orientation of the trimmed curve is opposite to the orientation of the basis curve C. If the curve is closed but not periodic it is not possible to keep the part of the curve including the junction point (except if the junction point is at the beginning or at the end of the trimmed curve) because you could lose the fundamental characteristics of the basis curve which are used for example to compute the derivatives of the trimmed curve. So for a closed curve the rules are the same as for a open curve. Warnings : In this package the entities are not shared. The TrimmedCurve is built with a copy of the curve C. So when C is modified the TrimmedCurve is not modified Warnings : If <C> is periodic and <theAdjustPeriodic> is True, parametrics bounds of the TrimmedCurve, can be different to [<U1>;<U2>}, if <U1> or <U2> are not in the principal period. Include : For more explanation see the scheme given with this class. Raises ConstructionError the C is not periodic and U1 or U2 are out of the bounds of C. Raised if U1 = U2.
     pub fn new_handlecurve_real2_bool2(
         C: &ffi::HandleGeom2dCurve,
         U1: f64,
@@ -277,44 +277,44 @@ impl TrimmedCurve {
         ffi::TrimmedCurve_ctor_handlecurve_real2_bool2(C, U1, U2, Sense, theAdjustPeriodic)
     }
 
-    #[doc = "Upcast to Geom2d_BoundedCurve"]
+    /// Upcast to Geom2d_BoundedCurve
     pub fn as_bounded_curve(&self) -> &BoundedCurve {
         ffi::trimmed_curve_as_bounded_curve(self)
     }
 
-    #[doc = "Upcast to Geom2d_BoundedCurve (mutable)"]
+    /// Upcast to Geom2d_BoundedCurve (mutable)
     pub fn as_bounded_curve_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut BoundedCurve> {
         ffi::trimmed_curve_as_bounded_curve_mut(self)
     }
 
-    #[doc = "Upcast to Geom2d_Curve"]
+    /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
         ffi::trimmed_curve_as_curve(self)
     }
 
-    #[doc = "Upcast to Geom2d_Curve (mutable)"]
+    /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
         ffi::trimmed_curve_as_curve_mut(self)
     }
 
-    #[doc = "Upcast to Geom2d_Geometry"]
+    /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
         ffi::trimmed_curve_as_geometry(self)
     }
 
-    #[doc = "Upcast to Geom2d_Geometry (mutable)"]
+    /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Geometry> {
         ffi::trimmed_curve_as_geometry_mut(self)
     }
 
-    #[doc = "Wrap Geom2d_TrimmedCurve in a Handle (reference-counted smart pointer)"]
+    /// Wrap Geom2d_TrimmedCurve in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleGeom2dTrimmedCurve> {
         ffi::TrimmedCurve_to_handle(obj)
     }
 
-    #[doc = "Returns the basis curve. Warning This function does not return a constant reference. Consequently, any modification of the returned value directly modifies the trimmed curve."]
+    /// Returns the basis curve. Warning This function does not return a constant reference. Consequently, any modification of the returned value directly modifies the trimmed curve.
     pub fn basis_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
         ffi::TrimmedCurve_basis_curve(self)
     }
@@ -329,12 +329,12 @@ impl TrimmedCurve {
         ffi::TrimmedCurve_start_point(self)
     }
 
-    #[doc = "For the point of parameter U of this trimmed curve, computes the vector corresponding to the Nth derivative. Warning The returned derivative vector has the same orientation as the derivative vector of the basis curve, even if the trimmed curve does not have the same orientation as the basis curve. Exceptions Standard_RangeError if N is less than 1. geometric transformations"]
+    /// For the point of parameter U of this trimmed curve, computes the vector corresponding to the Nth derivative. Warning The returned derivative vector has the same orientation as the derivative vector of the basis curve, even if the trimmed curve does not have the same orientation as the basis curve. Exceptions Standard_RangeError if N is less than 1. geometric transformations
     pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec2d> {
         ffi::TrimmedCurve_dn(self, U, N)
     }
 
-    #[doc = "Creates a new object, which is a copy of this trimmed curve."]
+    /// Creates a new object, which is a copy of this trimmed curve.
     pub fn copy(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
         ffi::TrimmedCurve_copy(self)
     }
@@ -344,61 +344,61 @@ impl TrimmedCurve {
     }
 }
 impl ffi::HandleGeom2dCurve {
-    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
+    /// Upcast to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
         ffi::curve_to_handle_geometry(self)
     }
 }
 impl ffi::HandleGeom2dBoundedCurve {
-    #[doc = "Upcast to Handle<Geom2d_Curve>"]
+    /// Upcast to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
         ffi::bounded_curve_to_handle_curve(self)
     }
 
-    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
+    /// Upcast to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
         ffi::bounded_curve_to_handle_geometry(self)
     }
 }
 impl ffi::HandleGeom2dConic {
-    #[doc = "Upcast to Handle<Geom2d_Curve>"]
+    /// Upcast to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
         ffi::conic_to_handle_curve(self)
     }
 
-    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
+    /// Upcast to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
         ffi::conic_to_handle_geometry(self)
     }
 }
 impl ffi::HandleGeom2dEllipse {
-    #[doc = "Upcast to Handle<Geom2d_Conic>"]
+    /// Upcast to Handle<Geom2d_Conic>
     pub fn to_handle_conic(&self) -> cxx::UniquePtr<ffi::HandleGeom2dConic> {
         ffi::ellipse_to_handle_conic(self)
     }
 
-    #[doc = "Upcast to Handle<Geom2d_Curve>"]
+    /// Upcast to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
         ffi::ellipse_to_handle_curve(self)
     }
 
-    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
+    /// Upcast to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
         ffi::ellipse_to_handle_geometry(self)
     }
 }
 impl ffi::HandleGeom2dTrimmedCurve {
-    #[doc = "Upcast to Handle<Geom2d_BoundedCurve>"]
+    /// Upcast to Handle<Geom2d_BoundedCurve>
     pub fn to_handle_bounded_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dBoundedCurve> {
         ffi::trimmed_curve_to_handle_bounded_curve(self)
     }
 
-    #[doc = "Upcast to Handle<Geom2d_Curve>"]
+    /// Upcast to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> cxx::UniquePtr<ffi::HandleGeom2dCurve> {
         ffi::trimmed_curve_to_handle_curve(self)
     }
 
-    #[doc = "Upcast to Handle<Geom2d_Geometry>"]
+    /// Upcast to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
         ffi::trimmed_curve_to_handle_geometry(self)
     }
@@ -407,34 +407,35 @@ impl ffi::HandleGeom2dTrimmedCurve {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom2d.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== Geom2d_Geometry ========================"]
-        #[doc = "/// **Source:** `Geom2d_Geometry.hxx` - `Geom2d_Geometry`"]
-        #[doc = ""]
+        /// ======================== Geom2d_Geometry ========================
+        /// /// **Source:** `Geom2d_Geometry.hxx` - `Geom2d_Geometry`
+        ///
         #[doc = "The general abstract class Geometry in 2D space describes the common behaviour of all the geometric entities. All the objects derived from this class can be move with a geometric transformation. Only the transformations which doesn't modify the nature of the geometry are available in this package. The method Transform which defines a general transformation is deferred. The other specifics transformations used the method Transform. All the following transformations modify the object itself. Warning Only transformations which do not modify the nature of the geometry can be applied to Geom2d objects: this is the case with translations, rotations, symmetries and scales; this is also the case with gp_Trsf2d composite transformations which are used to define the geometric transformations applied using the Transform or Transformed functions. Note: Geometry defines the \"prototype\" of the abstract method Transform which is defined for each concrete type of derived object. All other transformations are implemented using the Transform method."]
         #[cxx_name = "Geom2d_Geometry"]
         type Geometry;
-        #[doc = "Performs the symmetrical transformation of a Geometry with respect to the point P which is the center of the symmetry and assigns the result to this geometric object."]
+        /// Performs the symmetrical transformation of a Geometry with respect to the point P which is the center of the symmetry and assigns the result to this geometric object.
         #[cxx_name = "Mirror"]
         fn mirror_pnt2d(self: Pin<&mut Geometry>, P: &gp_Pnt2d);
-        #[doc = "Performs the symmetrical transformation of a Geometry with respect to an axis placement which is the axis of the symmetry."]
+        /// Performs the symmetrical transformation of a Geometry with respect to an axis placement which is the axis of the symmetry.
         #[cxx_name = "Mirror"]
         fn mirror_ax2d(self: Pin<&mut Geometry>, A: &gp_Ax2d);
-        #[doc = "Rotates a Geometry. P is the center of the rotation. Ang is the angular value of the rotation in radians."]
+        /// Rotates a Geometry. P is the center of the rotation. Ang is the angular value of the rotation in radians.
         #[cxx_name = "Rotate"]
         fn rotate(self: Pin<&mut Geometry>, P: &gp_Pnt2d, Ang: f64);
-        #[doc = "Scales a Geometry. S is the scaling value."]
+        /// Scales a Geometry. S is the scaling value.
         #[cxx_name = "Scale"]
         fn scale(self: Pin<&mut Geometry>, P: &gp_Pnt2d, S: f64);
-        #[doc = "Translates a Geometry.  V is the vector of the translation."]
+        /// Translates a Geometry.  V is the vector of the translation.
         #[cxx_name = "Translate"]
         fn translate_vec2d(self: Pin<&mut Geometry>, V: &gp_Vec2d);
-        #[doc = "Translates a Geometry from the point P1 to the point P2."]
+        /// Translates a Geometry from the point P1 to the point P2.
         #[cxx_name = "Translate"]
         fn translate_pnt2d2(self: Pin<&mut Geometry>, P1: &gp_Pnt2d, P2: &gp_Pnt2d);
-        #[doc = "Transformation of a geometric object. This transformation can be a translation, a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the previous elementaries transformations. (see class Transformation of the package Geom2d). The following transformations have the same properties as the previous ones but they don't modified the object itself. A copy of the object is returned."]
+        /// Transformation of a geometric object. This transformation can be a translation, a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the previous elementaries transformations. (see class Transformation of the package Geom2d). The following transformations have the same properties as the previous ones but they don't modified the object itself. A copy of the object is returned.
         #[cxx_name = "Transform"]
         fn transform(self: Pin<&mut Geometry>, T: &gp_Trsf2d);
         #[cxx_name = "DynamicType"]
@@ -477,49 +478,49 @@ pub(crate) mod ffi {
         fn Geometry_copy(self_: &Geometry) -> UniquePtr<HandleGeom2dGeometry>;
         #[cxx_name = "Geom2d_Geometry_get_type_name"]
         fn Geometry_get_type_name() -> String;
-        #[doc = " ======================== Geom2d_Curve ========================"]
-        #[doc = "/// **Source:** `Geom2d_Curve.hxx` - `Geom2d_Curve`"]
-        #[doc = ""]
+        /// ======================== Geom2d_Curve ========================
+        /// /// **Source:** `Geom2d_Curve.hxx` - `Geom2d_Curve`
+        ///
         #[doc = "The abstract class Curve describes the common behavior of curves in 2D space. The Geom2d package provides numerous concrete classes of derived curves, including lines, circles, conics, Bezier or BSpline curves, etc. The main characteristic of these curves is that they are parameterized. The Geom2d_Curve class shows: - how to work with the parametric equation of a curve in order to calculate the point of parameter u, together with the vector tangent and the derivative vectors of order 2, 3,..., N at this point; - how to obtain general information about the curve (for example, level of continuity, closed characteristics, periodicity, bounds of the parameter field); - how the parameter changes when a geometric transformation is applied to the curve or when the orientation of the curve is inverted. All curves must have a geometric continuity: a curve is at least \"C0\". Generally, this property is checked at the time of construction or when the curve is edited. Where this is not the case, the documentation explicitly states so. Warning The Geom2d package does not prevent the construction of curves with null length or curves which self-intersect."]
         #[cxx_name = "Geom2d_Curve"]
         type Curve;
         #[doc = "Changes the direction of parametrization of <me>. The \"FirstParameter\" and the \"LastParameter\" are not changed but the orientation  of the curve is modified. If the curve is bounded the StartPoint of the initial curve becomes the EndPoint of the reversed curve  and the EndPoint of the initial curve becomes the StartPoint of the reversed curve."]
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut Curve>);
-        #[doc = "Computes the parameter on the reversed curve for the point of parameter U on this curve. Note: The point of parameter U on this curve is identical to the point of parameter ReversedParameter(U) on the reversed curve."]
+        /// Computes the parameter on the reversed curve for the point of parameter U on this curve. Note: The point of parameter U on this curve is identical to the point of parameter ReversedParameter(U) on the reversed curve.
         #[cxx_name = "ReversedParameter"]
         fn reversed_parameter(self: &Curve, U: f64) -> f64;
-        #[doc = "Computes the parameter on the curve transformed by T for the point of parameter U on this curve. Note: this function generally returns U but it can be redefined (for example, on a line)."]
+        /// Computes the parameter on the curve transformed by T for the point of parameter U on this curve. Note: this function generally returns U but it can be redefined (for example, on a line).
         #[cxx_name = "TransformedParameter"]
         fn transformed_parameter(self: &Curve, U: f64, T: &gp_Trsf2d) -> f64;
-        #[doc = "Returns the coefficient required to compute the parametric transformation of this curve when transformation T is applied. This coefficient is the ratio between the parameter of a point on this curve and the parameter of the transformed point on the new curve transformed by T. Note: this function generally returns 1. but it can be redefined (for example, on a line)."]
+        /// Returns the coefficient required to compute the parametric transformation of this curve when transformation T is applied. This coefficient is the ratio between the parameter of a point on this curve and the parameter of the transformed point on the new curve transformed by T. Note: this function generally returns 1. but it can be redefined (for example, on a line).
         #[cxx_name = "ParametricTransformation"]
         fn parametric_transformation(self: &Curve, T: &gp_Trsf2d) -> f64;
-        #[doc = "Returns the value of the first parameter. Warnings : It can be RealFirst or RealLast from package Standard if the curve is infinite"]
+        /// Returns the value of the first parameter. Warnings : It can be RealFirst or RealLast from package Standard if the curve is infinite
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &Curve) -> f64;
-        #[doc = "Value of the last parameter. Warnings : It can be RealFirst or RealLast from package Standard if the curve is infinite"]
+        /// Value of the last parameter. Warnings : It can be RealFirst or RealLast from package Standard if the curve is infinite
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &Curve) -> f64;
-        #[doc = "Returns true if the curve is closed. Examples : Some curves such as circle are always closed, others such as line are never closed (by definition). Some Curves such as OffsetCurve can be closed or not. These curves are considered as closed if the distance between the first point and the last point of the curve is lower or equal to the Resolution from package gp which is a fixed criterion independent of the application."]
+        /// Returns true if the curve is closed. Examples : Some curves such as circle are always closed, others such as line are never closed (by definition). Some Curves such as OffsetCurve can be closed or not. These curves are considered as closed if the distance between the first point and the last point of the curve is lower or equal to the Resolution from package gp which is a fixed criterion independent of the application.
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &Curve) -> bool;
-        #[doc = "Returns true if the parameter of the curve is periodic. It is possible only if the curve is closed and if the following relation is satisfied : for each parametric value U the distance between the point P(u) and the point P (u + T) is lower or equal to Resolution from package gp, T is the period and must be a constant. There are three possibilities : . the curve is never periodic by definition (SegmentLine) . the curve is always periodic by definition (Circle) . the curve can be defined as periodic (BSpline). In this case a function SetPeriodic allows you to give the shape of the curve.  The general rule for this case is : if a curve can be periodic or not the default periodicity set is non periodic and you have to turn (explicitly) the curve into a periodic curve  if you want the curve to be periodic."]
+        /// Returns true if the parameter of the curve is periodic. It is possible only if the curve is closed and if the following relation is satisfied : for each parametric value U the distance between the point P(u) and the point P (u + T) is lower or equal to Resolution from package gp, T is the period and must be a constant. There are three possibilities : . the curve is never periodic by definition (SegmentLine) . the curve is always periodic by definition (Circle) . the curve can be defined as periodic (BSpline). In this case a function SetPeriodic allows you to give the shape of the curve.  The general rule for this case is : if a curve can be periodic or not the default periodicity set is non periodic and you have to turn (explicitly) the curve into a periodic curve  if you want the curve to be periodic.
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &Curve) -> bool;
-        #[doc = "Returns the period of this curve. raises if the curve is not periodic"]
+        /// Returns the period of this curve. raises if the curve is not periodic
         #[cxx_name = "Period"]
         fn period(self: &Curve) -> f64;
-        #[doc = "Returns true if the degree of continuity of this curve is at least N. Exceptions Standard_RangeError if N is less than 0."]
+        /// Returns true if the degree of continuity of this curve is at least N. Exceptions Standard_RangeError if N is less than 0.
         #[cxx_name = "IsCN"]
         fn is_cn(self: &Curve, N: i32) -> bool;
         #[doc = "Returns in P the point of parameter U. If the curve is periodic  then the returned point is P(U) with U = Ustart + (U - Uend)  where Ustart and Uend are the parametric bounds of the curve. Raised only for the \"OffsetCurve\" if it is not possible to compute the current point. For example when the first derivative on the basis curve and the offset direction are parallel."]
         #[cxx_name = "D0"]
         fn d0(self: &Curve, U: f64, P: Pin<&mut gp_Pnt2d>);
-        #[doc = "Returns the point P of parameter U and the first derivative V1. Raised if the continuity of the curve is not C1."]
+        /// Returns the point P of parameter U and the first derivative V1. Raised if the continuity of the curve is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &Curve, U: f64, P: Pin<&mut gp_Pnt2d>, V1: Pin<&mut gp_Vec2d>);
-        #[doc = "Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the curve is not C2."]
+        /// Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the curve is not C2.
         #[cxx_name = "D2"]
         fn d2(
             self: &Curve,
@@ -528,7 +529,7 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec2d>,
             V2: Pin<&mut gp_Vec2d>,
         );
-        #[doc = "Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the curve is not C3."]
+        /// Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the curve is not C3.
         #[cxx_name = "D3"]
         fn d3(
             self: &Curve,
@@ -540,7 +541,7 @@ pub(crate) mod ffi {
         );
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Curve) -> &HandleStandardType;
-        #[doc = "Creates a reversed duplicate Changes the orientation of this curve. The first and last parameters are not changed, but the parametric direction of the curve is reversed. If the curve is bounded: - the start point of the initial curve becomes the end point of the reversed curve, and - the end point of the initial curve becomes the start point of the reversed curve. - Reversed creates a new curve."]
+        /// Creates a reversed duplicate Changes the orientation of this curve. The first and last parameters are not changed, but the parametric direction of the curve is reversed. If the curve is bounded: - the start point of the initial curve becomes the end point of the reversed curve, and - the end point of the initial curve becomes the start point of the reversed curve. - Reversed creates a new curve.
         #[cxx_name = "Geom2d_Curve_Reversed"]
         fn Curve_reversed(self_: &Curve) -> UniquePtr<HandleGeom2dCurve>;
         #[doc = "For the point of parameter U of this curve, computes the vector corresponding to the Nth derivative. Exceptions StdFail_UndefinedDerivative if: - the continuity of the curve is not \"CN\", or - the derivative vector cannot be computed easily; this is the case with specific types of curve (for example, a rational BSpline curve where N is greater than 3). Standard_RangeError if N is less than 1."]
@@ -551,18 +552,18 @@ pub(crate) mod ffi {
         fn Curve_value(self_: &Curve, U: f64) -> UniquePtr<gp_Pnt2d>;
         #[cxx_name = "Geom2d_Curve_get_type_name"]
         fn Curve_get_type_name() -> String;
-        #[doc = "Upcast Geom2d_Curve to Geom2d_Geometry"]
+        /// Upcast Geom2d_Curve to Geom2d_Geometry
         #[cxx_name = "Geom2d_Curve_as_Geom2d_Geometry"]
         fn curve_as_geometry(self_: &Curve) -> &Geometry;
-        #[doc = "Upcast Geom2d_Curve to Geom2d_Geometry (mutable)"]
+        /// Upcast Geom2d_Curve to Geom2d_Geometry (mutable)
         #[cxx_name = "Geom2d_Curve_as_Geom2d_Geometry_mut"]
         fn curve_as_geometry_mut(self_: Pin<&mut Curve>) -> Pin<&mut Geometry>;
-        #[doc = "Upcast Handle<Geom2d_Curve> to Handle<Geom2d_Geometry>"]
+        /// Upcast Handle<Geom2d_Curve> to Handle<Geom2d_Geometry>
         #[cxx_name = "HandleGeom2dCurve_to_HandleGeom2dGeometry"]
         fn curve_to_handle_geometry(handle: &HandleGeom2dCurve) -> UniquePtr<HandleGeom2dGeometry>;
-        #[doc = " ======================== Geom2d_BoundedCurve ========================"]
-        #[doc = "/// **Source:** `Geom2d_BoundedCurve.hxx` - `Geom2d_BoundedCurve`"]
-        #[doc = ""]
+        /// ======================== Geom2d_BoundedCurve ========================
+        /// /// **Source:** `Geom2d_BoundedCurve.hxx` - `Geom2d_BoundedCurve`
+        ///
         #[doc = "The abstract class BoundedCurve describes the common behavior of bounded curves in 2D space. A bounded curve is limited by two finite values of the parameter, termed respectively \"first parameter\" and \"last parameter\". The \"first parameter\" gives the \"start point\" of the bounded curve, and the \"last parameter\" gives the \"end point\" of the bounded curve. The length of a bounded curve is finite. The Geom2d package provides three concrete classes of bounded curves: - two frequently used mathematical formulations of complex curves: - Geom2d_BezierCurve, - Geom2d_BSplineCurve, and - Geom2d_TrimmedCurve to trim a curve, i.e. to only take part of the curve limited by two values of the parameter of the basis curve."]
         #[cxx_name = "Geom2d_BoundedCurve"]
         type BoundedCurve;
@@ -576,62 +577,62 @@ pub(crate) mod ffi {
         fn BoundedCurve_start_point(self_: &BoundedCurve) -> UniquePtr<gp_Pnt2d>;
         #[cxx_name = "Geom2d_BoundedCurve_get_type_name"]
         fn BoundedCurve_get_type_name() -> String;
-        #[doc = "Upcast Geom2d_BoundedCurve to Geom2d_Curve"]
+        /// Upcast Geom2d_BoundedCurve to Geom2d_Curve
         #[cxx_name = "Geom2d_BoundedCurve_as_Geom2d_Curve"]
         fn bounded_curve_as_curve(self_: &BoundedCurve) -> &Curve;
-        #[doc = "Upcast Geom2d_BoundedCurve to Geom2d_Curve (mutable)"]
+        /// Upcast Geom2d_BoundedCurve to Geom2d_Curve (mutable)
         #[cxx_name = "Geom2d_BoundedCurve_as_Geom2d_Curve_mut"]
         fn bounded_curve_as_curve_mut(self_: Pin<&mut BoundedCurve>) -> Pin<&mut Curve>;
-        #[doc = "Upcast Geom2d_BoundedCurve to Geom2d_Geometry"]
+        /// Upcast Geom2d_BoundedCurve to Geom2d_Geometry
         #[cxx_name = "Geom2d_BoundedCurve_as_Geom2d_Geometry"]
         fn bounded_curve_as_geometry(self_: &BoundedCurve) -> &Geometry;
-        #[doc = "Upcast Geom2d_BoundedCurve to Geom2d_Geometry (mutable)"]
+        /// Upcast Geom2d_BoundedCurve to Geom2d_Geometry (mutable)
         #[cxx_name = "Geom2d_BoundedCurve_as_Geom2d_Geometry_mut"]
         fn bounded_curve_as_geometry_mut(self_: Pin<&mut BoundedCurve>) -> Pin<&mut Geometry>;
-        #[doc = "Upcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_Curve>"]
+        /// Upcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_Curve>
         #[cxx_name = "HandleGeom2dBoundedCurve_to_HandleGeom2dCurve"]
         fn bounded_curve_to_handle_curve(
             handle: &HandleGeom2dBoundedCurve,
         ) -> UniquePtr<HandleGeom2dCurve>;
-        #[doc = "Upcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_Geometry>"]
+        /// Upcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_Geometry>
         #[cxx_name = "HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry"]
         fn bounded_curve_to_handle_geometry(
             handle: &HandleGeom2dBoundedCurve,
         ) -> UniquePtr<HandleGeom2dGeometry>;
-        #[doc = " ======================== Geom2d_Conic ========================"]
-        #[doc = "/// **Source:** `Geom2d_Conic.hxx` - `Geom2d_Conic`"]
-        #[doc = ""]
+        /// ======================== Geom2d_Conic ========================
+        /// /// **Source:** `Geom2d_Conic.hxx` - `Geom2d_Conic`
+        ///
         #[doc = "The abstract class Conic describes the common behavior of conic curves in 2D space and, in particular, their general characteristics. The Geom2d package provides four specific classes of conics: Geom2d_Circle, Geom2d_Ellipse, Geom2d_Hyperbola and Geom2d_Parabola. A conic is positioned in the plane with a coordinate system (gp_Ax22d object), where the origin is the center of the conic (or the apex in case of a parabola). This coordinate system is the local coordinate system of the conic. It gives the conic an explicit orientation, determining the direction in which the parameter increases along the conic. The \"X Axis\" of the local coordinate system also defines the origin of the parameter of the conic."]
         #[cxx_name = "Geom2d_Conic"]
         type Conic;
-        #[doc = "Modifies this conic, redefining its local coordinate system partially, by assigning theA as its axis"]
+        /// Modifies this conic, redefining its local coordinate system partially, by assigning theA as its axis
         #[cxx_name = "SetAxis"]
         fn set_axis(self: Pin<&mut Conic>, theA: &gp_Ax22d);
-        #[doc = "Assigns the origin and unit vector of axis theA to the origin of the local coordinate system of this conic and X Direction. The other unit vector of the local coordinate system of this conic is recomputed normal to theA, without changing the orientation of the local coordinate system (right-handed or left-handed)."]
+        /// Assigns the origin and unit vector of axis theA to the origin of the local coordinate system of this conic and X Direction. The other unit vector of the local coordinate system of this conic is recomputed normal to theA, without changing the orientation of the local coordinate system (right-handed or left-handed).
         #[cxx_name = "SetXAxis"]
         fn set_x_axis(self: Pin<&mut Conic>, theAX: &gp_Ax2d);
-        #[doc = "Assigns the origin and unit vector of axis theA to the origin of the local coordinate system of this conic and Y Direction. The other unit vector of the local coordinate system of this conic is recomputed normal to theA, without changing the orientation of the local coordinate system (right-handed or left-handed)."]
+        /// Assigns the origin and unit vector of axis theA to the origin of the local coordinate system of this conic and Y Direction. The other unit vector of the local coordinate system of this conic is recomputed normal to theA, without changing the orientation of the local coordinate system (right-handed or left-handed).
         #[cxx_name = "SetYAxis"]
         fn set_y_axis(self: Pin<&mut Conic>, theAY: &gp_Ax2d);
-        #[doc = "Modifies this conic, redefining its local coordinate system partially, by assigning theP as its origin."]
+        /// Modifies this conic, redefining its local coordinate system partially, by assigning theP as its origin.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut Conic>, theP: &gp_Pnt2d);
-        #[doc = "returns the eccentricity value of the conic e. e = 0 for a circle 0 < e < 1 for an ellipse  (e = 0 if MajorRadius = MinorRadius) e > 1 for a hyperbola e = 1 for a parabola"]
+        /// returns the eccentricity value of the conic e. e = 0 for a circle 0 < e < 1 for an ellipse  (e = 0 if MajorRadius = MinorRadius) e > 1 for a hyperbola e = 1 for a parabola
         #[cxx_name = "Eccentricity"]
         fn eccentricity(self: &Conic) -> f64;
-        #[doc = "Returns the location point of the conic. For the circle, the ellipse and the hyperbola it is the center of the conic. For the parabola it is the vertex of the parabola."]
+        /// Returns the location point of the conic. For the circle, the ellipse and the hyperbola it is the center of the conic. For the parabola it is the vertex of the parabola.
         #[cxx_name = "Location"]
         fn location(self: &Conic) -> &gp_Pnt2d;
-        #[doc = "Returns the local coordinates system of the conic."]
+        /// Returns the local coordinates system of the conic.
         #[cxx_name = "Position"]
         fn position(self: &Conic) -> &gp_Ax22d;
-        #[doc = "Reverses the direction of parameterization of <me>. The local coordinate system of the conic is modified."]
+        /// Reverses the direction of parameterization of <me>. The local coordinate system of the conic is modified.
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut Conic>);
-        #[doc = "Returns the  parameter on the  reversed  curve for the point of parameter U on <me>."]
+        /// Returns the  parameter on the  reversed  curve for the point of parameter U on <me>.
         #[cxx_name = "ReversedParameter"]
         fn reversed_parameter(self: &Conic, U: f64) -> f64;
-        #[doc = "Returns True, the order of continuity of a conic is infinite."]
+        /// Returns True, the order of continuity of a conic is infinite.
         #[cxx_name = "IsCN"]
         fn is_cn(self: &Conic, N: i32) -> bool;
         #[cxx_name = "DynamicType"]
@@ -644,37 +645,37 @@ pub(crate) mod ffi {
         fn Conic_y_axis(self_: &Conic) -> UniquePtr<gp_Ax2d>;
         #[cxx_name = "Geom2d_Conic_get_type_name"]
         fn Conic_get_type_name() -> String;
-        #[doc = "Upcast Geom2d_Conic to Geom2d_Curve"]
+        /// Upcast Geom2d_Conic to Geom2d_Curve
         #[cxx_name = "Geom2d_Conic_as_Geom2d_Curve"]
         fn conic_as_curve(self_: &Conic) -> &Curve;
-        #[doc = "Upcast Geom2d_Conic to Geom2d_Curve (mutable)"]
+        /// Upcast Geom2d_Conic to Geom2d_Curve (mutable)
         #[cxx_name = "Geom2d_Conic_as_Geom2d_Curve_mut"]
         fn conic_as_curve_mut(self_: Pin<&mut Conic>) -> Pin<&mut Curve>;
-        #[doc = "Upcast Geom2d_Conic to Geom2d_Geometry"]
+        /// Upcast Geom2d_Conic to Geom2d_Geometry
         #[cxx_name = "Geom2d_Conic_as_Geom2d_Geometry"]
         fn conic_as_geometry(self_: &Conic) -> &Geometry;
-        #[doc = "Upcast Geom2d_Conic to Geom2d_Geometry (mutable)"]
+        /// Upcast Geom2d_Conic to Geom2d_Geometry (mutable)
         #[cxx_name = "Geom2d_Conic_as_Geom2d_Geometry_mut"]
         fn conic_as_geometry_mut(self_: Pin<&mut Conic>) -> Pin<&mut Geometry>;
-        #[doc = "Upcast Handle<Geom2d_Conic> to Handle<Geom2d_Curve>"]
+        /// Upcast Handle<Geom2d_Conic> to Handle<Geom2d_Curve>
         #[cxx_name = "HandleGeom2dConic_to_HandleGeom2dCurve"]
         fn conic_to_handle_curve(handle: &HandleGeom2dConic) -> UniquePtr<HandleGeom2dCurve>;
-        #[doc = "Upcast Handle<Geom2d_Conic> to Handle<Geom2d_Geometry>"]
+        /// Upcast Handle<Geom2d_Conic> to Handle<Geom2d_Geometry>
         #[cxx_name = "HandleGeom2dConic_to_HandleGeom2dGeometry"]
         fn conic_to_handle_geometry(handle: &HandleGeom2dConic) -> UniquePtr<HandleGeom2dGeometry>;
-        #[doc = " ======================== Geom2d_Ellipse ========================"]
-        #[doc = "/// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse`"]
-        #[doc = ""]
+        /// ======================== Geom2d_Ellipse ========================
+        /// /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse`
+        ///
         #[doc = "Describes an ellipse in the plane (2D space). An ellipse is defined by its major and minor radii and, as with any conic curve, is positioned in the plane with a coordinate system (gp_Ax22d object) where: - the origin is the center of the ellipse, - the \"X Direction\" defines the major axis, and - the \"Y Direction\" defines the minor axis. This coordinate system is the local coordinate system of the ellipse. The orientation (direct or indirect) of the local coordinate system gives an explicit orientation to the ellipse, determining the direction in which the parameter increases along the ellipse. The Geom2d_Ellipse ellipse is parameterized by an angle: P(U) = O + MajorRad*Cos(U)*XDir + MinorRad*Sin(U)*YDir where: - P is the point of parameter U, - O, XDir and YDir are respectively the origin, \"X Direction\" and \"Y Direction\" of its local coordinate system, - MajorRad and MinorRad are the major and minor radii of the ellipse. The \"X Axis\" of the local coordinate system therefore defines the origin of the parameter of the ellipse. An ellipse is a closed and periodic curve. The period is 2.*Pi and the parameter range is [ 0,2.*Pi [. See Also GCE2d_MakeEllipse which provides functions for more complex ellipse constructions gp_Ax22d gp_Elips2d for an equivalent, non-parameterized data structure"]
         #[cxx_name = "Geom2d_Ellipse"]
         type Ellipse;
-        #[doc = "/// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`"]
-        #[doc = ""]
-        #[doc = "Creates an ellipse by conversion of the gp_Elips2d ellipse E."]
+        /// /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
+        ///
+        /// Creates an ellipse by conversion of the gp_Elips2d ellipse E.
         #[cxx_name = "Geom2d_Ellipse_ctor_elips2d"]
         fn Ellipse_ctor_elips2d(E: &gp_Elips2d) -> UniquePtr<Ellipse>;
-        #[doc = "/// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`"]
-        #[doc = ""]
+        /// /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
+        ///
         #[doc = "Creates an ellipse defined by its major and minor radii, MajorRadius and MinorRadius, and positioned in the plane by its major axis MajorAxis; the center of the ellipse is the origin of MajorAxis and the unit vector of MajorAxis is the \"X Direction\" of the local coordinate system of the ellipse; this coordinate system is direct if Sense is true (default value) or indirect if Sense is false. Warnings : It is not forbidden to create an ellipse with MajorRadius = MinorRadius. Exceptions Standard_ConstructionError if: - MajorRadius is less than MinorRadius, or - MinorRadius is less than 0."]
         #[cxx_name = "Geom2d_Ellipse_ctor_ax2d_real2_bool"]
         fn Ellipse_ctor_ax2d_real2_bool(
@@ -683,8 +684,8 @@ pub(crate) mod ffi {
             MinorRadius: f64,
             Sense: bool,
         ) -> UniquePtr<Ellipse>;
-        #[doc = "/// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`"]
-        #[doc = ""]
+        /// /// **Source:** `Geom2d_Ellipse.hxx` - `Geom2d_Ellipse::Geom2d_Ellipse()`
+        ///
         #[doc = "Creates an ellipse defined by its major and minor radii, MajorRadius and MinorRadius, where the coordinate system Axis locates the ellipse and defines its orientation in the plane such that: - the center of the ellipse is the origin of Axis, - the \"X Direction\" of Axis defines the major axis of the ellipse, - the \"Y Direction\" of Axis defines the minor axis of the ellipse, - the orientation of Axis (direct or indirect) gives the orientation of the ellipse. Warnings : It is not forbidden to create an ellipse with MajorRadius = MinorRadius. Exceptions Standard_ConstructionError if: - MajorRadius is less than MinorRadius, or - MinorRadius is less than 0."]
         #[cxx_name = "Geom2d_Ellipse_ctor_ax22d_real2"]
         fn Ellipse_ctor_ax22d_real2(
@@ -692,43 +693,43 @@ pub(crate) mod ffi {
             MajorRadius: f64,
             MinorRadius: f64,
         ) -> UniquePtr<Ellipse>;
-        #[doc = "Converts the gp_Elips2d ellipse E into this ellipse."]
+        /// Converts the gp_Elips2d ellipse E into this ellipse.
         #[cxx_name = "SetElips2d"]
         fn set_elips2d(self: Pin<&mut Ellipse>, E: &gp_Elips2d);
-        #[doc = "Assigns a value to the major radius of this ellipse. Exceptions Standard_ConstructionError if: - the major radius of this ellipse becomes less than the minor radius, or - MinorRadius is less than 0."]
+        /// Assigns a value to the major radius of this ellipse. Exceptions Standard_ConstructionError if: - the major radius of this ellipse becomes less than the minor radius, or - MinorRadius is less than 0.
         #[cxx_name = "SetMajorRadius"]
         fn set_major_radius(self: Pin<&mut Ellipse>, MajorRadius: f64);
-        #[doc = "Assigns a value to the minor radius of this ellipse. Exceptions Standard_ConstructionError if: - the major radius of this ellipse becomes less than the minor radius, or - MinorRadius is less than 0."]
+        /// Assigns a value to the minor radius of this ellipse. Exceptions Standard_ConstructionError if: - the major radius of this ellipse becomes less than the minor radius, or - MinorRadius is less than 0.
         #[cxx_name = "SetMinorRadius"]
         fn set_minor_radius(self: Pin<&mut Ellipse>, MinorRadius: f64);
-        #[doc = "Computes the parameter on the reversed ellipse for the point of parameter U on this ellipse. For an ellipse, the returned value is: 2.*Pi - U."]
+        /// Computes the parameter on the reversed ellipse for the point of parameter U on this ellipse. For an ellipse, the returned value is: 2.*Pi - U.
         #[cxx_name = "ReversedParameter"]
         fn reversed_parameter(self: &Ellipse, U: f64) -> f64;
-        #[doc = "Returns the eccentricity of the ellipse  between 0.0 and 1.0 If f is the distance between the center of the ellipse and the Focus1 then the eccentricity e = f / MajorRadius. Returns 0 if MajorRadius = 0"]
+        /// Returns the eccentricity of the ellipse  between 0.0 and 1.0 If f is the distance between the center of the ellipse and the Focus1 then the eccentricity e = f / MajorRadius. Returns 0 if MajorRadius = 0
         #[cxx_name = "Eccentricity"]
         fn eccentricity(self: &Ellipse) -> f64;
-        #[doc = "Computes the focal distance. The focal distance is the distance between the center and a focus of the ellipse."]
+        /// Computes the focal distance. The focal distance is the distance between the center and a focus of the ellipse.
         #[cxx_name = "Focal"]
         fn focal(self: &Ellipse) -> f64;
-        #[doc = "Returns the major radius of this ellipse."]
+        /// Returns the major radius of this ellipse.
         #[cxx_name = "MajorRadius"]
         fn major_radius(self: &Ellipse) -> f64;
-        #[doc = "Returns the minor radius of this ellipse."]
+        /// Returns the minor radius of this ellipse.
         #[cxx_name = "MinorRadius"]
         fn minor_radius(self: &Ellipse) -> f64;
-        #[doc = "Computes the parameter of this ellipse. This value is given by the formula p = (1 - e * e) * MajorRadius where e is the eccentricity of the ellipse. Returns 0 if MajorRadius = 0"]
+        /// Computes the parameter of this ellipse. This value is given by the formula p = (1 - e * e) * MajorRadius where e is the eccentricity of the ellipse. Returns 0 if MajorRadius = 0
         #[cxx_name = "Parameter"]
         fn parameter(self: &Ellipse) -> f64;
-        #[doc = "Returns the value of the first parameter of this ellipse. This is  0.0, which gives the start point of this ellipse. The start point and end point of an ellipse are coincident."]
+        /// Returns the value of the first parameter of this ellipse. This is  0.0, which gives the start point of this ellipse. The start point and end point of an ellipse are coincident.
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &Ellipse) -> f64;
-        #[doc = "Returns the value of the  last parameter of this ellipse. This is  2.*Pi, which gives the end point of this ellipse. The start point and end point of an ellipse are coincident."]
+        /// Returns the value of the  last parameter of this ellipse. This is  2.*Pi, which gives the end point of this ellipse. The start point and end point of an ellipse are coincident.
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &Ellipse) -> f64;
-        #[doc = "return True."]
+        /// return True.
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &Ellipse) -> bool;
-        #[doc = "return True."]
+        /// return True.
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &Ellipse) -> bool;
         #[doc = "Returns in P the point of parameter U. P = C + MajorRadius * Cos (U) * XDir + MinorRadius * Sin (U) * YDir where C is the center of the ellipse , XDir the direction of the \"XAxis\" and \"YDir\" the \"YAxis\" of the ellipse."]
@@ -736,7 +737,7 @@ pub(crate) mod ffi {
         fn d0(self: &Ellipse, U: f64, P: Pin<&mut gp_Pnt2d>);
         #[cxx_name = "D1"]
         fn d1(self: &Ellipse, U: f64, P: Pin<&mut gp_Pnt2d>, V1: Pin<&mut gp_Vec2d>);
-        #[doc = "Returns the point P of parameter U. The vectors V1 and V2 are the first and second derivatives at this point."]
+        /// Returns the point P of parameter U. The vectors V1 and V2 are the first and second derivatives at this point.
         #[cxx_name = "D2"]
         fn d2(
             self: &Ellipse,
@@ -745,7 +746,7 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec2d>,
             V2: Pin<&mut gp_Vec2d>,
         );
-        #[doc = "Returns the point P of parameter U, the first second and third derivatives V1 V2 and V3."]
+        /// Returns the point P of parameter U, the first second and third derivatives V1 V2 and V3.
         #[cxx_name = "D3"]
         fn d3(
             self: &Ellipse,
@@ -755,12 +756,12 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec2d>,
             V3: Pin<&mut gp_Vec2d>,
         );
-        #[doc = "Applies the transformation T to this ellipse."]
+        /// Applies the transformation T to this ellipse.
         #[cxx_name = "Transform"]
         fn transform(self: Pin<&mut Ellipse>, T: &gp_Trsf2d);
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Ellipse) -> &HandleStandardType;
-        #[doc = "Converts this ellipse into a gp_Elips2d ellipse."]
+        /// Converts this ellipse into a gp_Elips2d ellipse.
         #[cxx_name = "Geom2d_Ellipse_Elips2d"]
         fn Ellipse_elips2d(self_: &Ellipse) -> UniquePtr<gp_Elips2d>;
         #[doc = "Computes the directrices of this ellipse. This directrix is the line normal to the XAxis of the ellipse in the local plane (Z = 0) at a distance d = MajorRadius / e from the center of the ellipse, where e is the eccentricity of the ellipse. This line is parallel to the \"YAxis\". The intersection point between directrix1 and the \"XAxis\" is the \"Location\" point of the directrix1. This point is on the positive side of the \"XAxis\". Raises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates into a circle)"]
@@ -775,55 +776,55 @@ pub(crate) mod ffi {
         #[doc = "Returns the second focus of the ellipse. This focus is on the negative side of the \"XAxis\" of the ellipse."]
         #[cxx_name = "Geom2d_Ellipse_Focus2"]
         fn Ellipse_focus2(self_: &Ellipse) -> UniquePtr<gp_Pnt2d>;
-        #[doc = "For the point of parameter U of this ellipse, computes the vector corresponding to the Nth derivative. Exceptions Standard_RangeError if N is less than 1."]
+        /// For the point of parameter U of this ellipse, computes the vector corresponding to the Nth derivative. Exceptions Standard_RangeError if N is less than 1.
         #[cxx_name = "Geom2d_Ellipse_DN"]
         fn Ellipse_dn(self_: &Ellipse, U: f64, N: i32) -> UniquePtr<gp_Vec2d>;
-        #[doc = "Creates a new object which is a copy of this ellipse."]
+        /// Creates a new object which is a copy of this ellipse.
         #[cxx_name = "Geom2d_Ellipse_Copy"]
         fn Ellipse_copy(self_: &Ellipse) -> UniquePtr<HandleGeom2dGeometry>;
         #[cxx_name = "Geom2d_Ellipse_get_type_name"]
         fn Ellipse_get_type_name() -> String;
-        #[doc = "Upcast Geom2d_Ellipse to Geom2d_Conic"]
+        /// Upcast Geom2d_Ellipse to Geom2d_Conic
         #[cxx_name = "Geom2d_Ellipse_as_Geom2d_Conic"]
         fn ellipse_as_conic(self_: &Ellipse) -> &Conic;
-        #[doc = "Upcast Geom2d_Ellipse to Geom2d_Conic (mutable)"]
+        /// Upcast Geom2d_Ellipse to Geom2d_Conic (mutable)
         #[cxx_name = "Geom2d_Ellipse_as_Geom2d_Conic_mut"]
         fn ellipse_as_conic_mut(self_: Pin<&mut Ellipse>) -> Pin<&mut Conic>;
-        #[doc = "Upcast Geom2d_Ellipse to Geom2d_Curve"]
+        /// Upcast Geom2d_Ellipse to Geom2d_Curve
         #[cxx_name = "Geom2d_Ellipse_as_Geom2d_Curve"]
         fn ellipse_as_curve(self_: &Ellipse) -> &Curve;
-        #[doc = "Upcast Geom2d_Ellipse to Geom2d_Curve (mutable)"]
+        /// Upcast Geom2d_Ellipse to Geom2d_Curve (mutable)
         #[cxx_name = "Geom2d_Ellipse_as_Geom2d_Curve_mut"]
         fn ellipse_as_curve_mut(self_: Pin<&mut Ellipse>) -> Pin<&mut Curve>;
-        #[doc = "Upcast Geom2d_Ellipse to Geom2d_Geometry"]
+        /// Upcast Geom2d_Ellipse to Geom2d_Geometry
         #[cxx_name = "Geom2d_Ellipse_as_Geom2d_Geometry"]
         fn ellipse_as_geometry(self_: &Ellipse) -> &Geometry;
-        #[doc = "Upcast Geom2d_Ellipse to Geom2d_Geometry (mutable)"]
+        /// Upcast Geom2d_Ellipse to Geom2d_Geometry (mutable)
         #[cxx_name = "Geom2d_Ellipse_as_Geom2d_Geometry_mut"]
         fn ellipse_as_geometry_mut(self_: Pin<&mut Ellipse>) -> Pin<&mut Geometry>;
-        #[doc = "Wrap Geom2d_Ellipse in a Handle (reference-counted smart pointer)"]
+        /// Wrap Geom2d_Ellipse in a Handle (reference-counted smart pointer)
         #[cxx_name = "Geom2d_Ellipse_to_handle"]
         fn Ellipse_to_handle(obj: UniquePtr<Ellipse>) -> UniquePtr<HandleGeom2dEllipse>;
-        #[doc = "Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Conic>"]
+        /// Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Conic>
         #[cxx_name = "HandleGeom2dEllipse_to_HandleGeom2dConic"]
         fn ellipse_to_handle_conic(handle: &HandleGeom2dEllipse) -> UniquePtr<HandleGeom2dConic>;
-        #[doc = "Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Curve>"]
+        /// Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Curve>
         #[cxx_name = "HandleGeom2dEllipse_to_HandleGeom2dCurve"]
         fn ellipse_to_handle_curve(handle: &HandleGeom2dEllipse) -> UniquePtr<HandleGeom2dCurve>;
-        #[doc = "Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Geometry>"]
+        /// Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Geometry>
         #[cxx_name = "HandleGeom2dEllipse_to_HandleGeom2dGeometry"]
         fn ellipse_to_handle_geometry(
             handle: &HandleGeom2dEllipse,
         ) -> UniquePtr<HandleGeom2dGeometry>;
-        #[doc = " ======================== Geom2d_TrimmedCurve ========================"]
-        #[doc = "/// **Source:** `Geom2d_TrimmedCurve.hxx` - `Geom2d_TrimmedCurve`"]
-        #[doc = ""]
-        #[doc = "Defines a portion of a curve limited by two values of parameters inside the parametric domain of the curve. The trimmed curve is defined by: - the basis curve, and - the two parameter values which limit it. The trimmed curve can either have the same orientation as the basis curve or the opposite orientation."]
+        /// ======================== Geom2d_TrimmedCurve ========================
+        /// /// **Source:** `Geom2d_TrimmedCurve.hxx` - `Geom2d_TrimmedCurve`
+        ///
+        /// Defines a portion of a curve limited by two values of parameters inside the parametric domain of the curve. The trimmed curve is defined by: - the basis curve, and - the two parameter values which limit it. The trimmed curve can either have the same orientation as the basis curve or the opposite orientation.
         #[cxx_name = "Geom2d_TrimmedCurve"]
         type TrimmedCurve;
-        #[doc = "/// **Source:** `Geom2d_TrimmedCurve.hxx` - `Geom2d_TrimmedCurve::Geom2d_TrimmedCurve()`"]
-        #[doc = ""]
-        #[doc = "Creates a trimmed curve from the basis curve C limited between U1 and U2. . U1 can be greater or lower than U2. . The returned curve is oriented from U1 to U2. . If the basis curve C is periodic there is an ambiguity because two parts are available. In this case by default the trimmed curve has the same orientation as the basis curve (Sense = True). If Sense = False then the orientation of the trimmed curve is opposite to the orientation of the basis curve C. If the curve is closed but not periodic it is not possible to keep the part of the curve including the junction point (except if the junction point is at the beginning or at the end of the trimmed curve) because you could lose the fundamental characteristics of the basis curve which are used for example to compute the derivatives of the trimmed curve. So for a closed curve the rules are the same as for a open curve. Warnings : In this package the entities are not shared. The TrimmedCurve is built with a copy of the curve C. So when C is modified the TrimmedCurve is not modified Warnings : If <C> is periodic and <theAdjustPeriodic> is True, parametrics bounds of the TrimmedCurve, can be different to [<U1>;<U2>}, if <U1> or <U2> are not in the principal period. Include : For more explanation see the scheme given with this class. Raises ConstructionError the C is not periodic and U1 or U2 are out of the bounds of C. Raised if U1 = U2."]
+        /// /// **Source:** `Geom2d_TrimmedCurve.hxx` - `Geom2d_TrimmedCurve::Geom2d_TrimmedCurve()`
+        ///
+        /// Creates a trimmed curve from the basis curve C limited between U1 and U2. . U1 can be greater or lower than U2. . The returned curve is oriented from U1 to U2. . If the basis curve C is periodic there is an ambiguity because two parts are available. In this case by default the trimmed curve has the same orientation as the basis curve (Sense = True). If Sense = False then the orientation of the trimmed curve is opposite to the orientation of the basis curve C. If the curve is closed but not periodic it is not possible to keep the part of the curve including the junction point (except if the junction point is at the beginning or at the end of the trimmed curve) because you could lose the fundamental characteristics of the basis curve which are used for example to compute the derivatives of the trimmed curve. So for a closed curve the rules are the same as for a open curve. Warnings : In this package the entities are not shared. The TrimmedCurve is built with a copy of the curve C. So when C is modified the TrimmedCurve is not modified Warnings : If <C> is periodic and <theAdjustPeriodic> is True, parametrics bounds of the TrimmedCurve, can be different to [<U1>;<U2>}, if <U1> or <U2> are not in the principal period. Include : For more explanation see the scheme given with this class. Raises ConstructionError the C is not periodic and U1 or U2 are out of the bounds of C. Raised if U1 = U2.
         #[cxx_name = "Geom2d_TrimmedCurve_ctor_handlecurve_real2_bool2"]
         fn TrimmedCurve_ctor_handlecurve_real2_bool2(
             C: &HandleGeom2dCurve,
@@ -835,10 +836,10 @@ pub(crate) mod ffi {
         #[doc = "Changes the direction of parametrization of <me>. The first and the last parametric values are modified. The \"StartPoint\" of the initial curve becomes the \"EndPoint\" of the reversed curve and the \"EndPoint\" of the initial curve becomes the \"StartPoint\" of the reversed curve. Example  -   If the trimmed curve is defined by: - a basis curve whose parameter range is [ 0.,1. ], and - the two trim values U1 (first parameter) and U2 (last parameter), the reversed trimmed curve is defined by: - the reversed basis curve, whose parameter range is still [ 0.,1. ], and - the two trim values 1. - U2 (first parameter) and 1. - U1 (last parameter)."]
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut TrimmedCurve>);
-        #[doc = "Returns the  parameter on the  reversed  curve for the point of parameter U on <me>. returns UFirst + ULast - U"]
+        /// Returns the  parameter on the  reversed  curve for the point of parameter U on <me>. returns UFirst + ULast - U
         #[cxx_name = "ReversedParameter"]
         fn reversed_parameter(self: &TrimmedCurve, U: f64) -> f64;
-        #[doc = "Changes this trimmed curve, by redefining the parameter values U1 and U2, which limit its basis curve. Note: If the basis curve is periodic, the trimmed curve has the same orientation as the basis curve if Sense is true (default value) or the opposite orientation if Sense is false. Warning If the basis curve is periodic and theAdjustPeriodic is True, the bounds of the trimmed curve may be different from U1 and U2 if the parametric origin of the basis curve is within the arc of the trimmed curve. In this case, the modified parameter will be equal to U1 or U2 plus or minus the period. If theAdjustPeriodic is False, parameters U1 and U2 will stay unchanged. Exceptions Standard_ConstructionError if: - the basis curve is not periodic, and either U1 or U2 are outside the bounds of the basis curve, or - U1 is equal to U2."]
+        /// Changes this trimmed curve, by redefining the parameter values U1 and U2, which limit its basis curve. Note: If the basis curve is periodic, the trimmed curve has the same orientation as the basis curve if Sense is true (default value) or the opposite orientation if Sense is false. Warning If the basis curve is periodic and theAdjustPeriodic is True, the bounds of the trimmed curve may be different from U1 and U2 if the parametric origin of the basis curve is within the arc of the trimmed curve. In this case, the modified parameter will be equal to U1 or U2 plus or minus the period. If theAdjustPeriodic is False, parameters U1 and U2 will stay unchanged. Exceptions Standard_ConstructionError if: - the basis curve is not periodic, and either U1 or U2 are outside the bounds of the basis curve, or - U1 is equal to U2.
         #[cxx_name = "SetTrim"]
         fn set_trim(
             self: Pin<&mut TrimmedCurve>,
@@ -853,25 +854,25 @@ pub(crate) mod ffi {
         #[doc = "Returns the value of the first parameter of <me>. The first parameter is the parameter of the \"StartPoint\" of the trimmed curve."]
         #[cxx_name = "FirstParameter"]
         fn first_parameter(self: &TrimmedCurve) -> f64;
-        #[doc = "Returns True if the distance between the StartPoint and the EndPoint is lower or equal to Resolution from package gp."]
+        /// Returns True if the distance between the StartPoint and the EndPoint is lower or equal to Resolution from package gp.
         #[cxx_name = "IsClosed"]
         fn is_closed(self: &TrimmedCurve) -> bool;
-        #[doc = "Always returns FALSE (independently of the type of basis curve)."]
+        /// Always returns FALSE (independently of the type of basis curve).
         #[cxx_name = "IsPeriodic"]
         fn is_periodic(self: &TrimmedCurve) -> bool;
-        #[doc = "Returns the period of the basis curve of this trimmed curve. Exceptions Standard_NoSuchObject if the basis curve is not periodic."]
+        /// Returns the period of the basis curve of this trimmed curve. Exceptions Standard_NoSuchObject if the basis curve is not periodic.
         #[cxx_name = "Period"]
         fn period(self: &TrimmedCurve) -> f64;
         #[doc = "Returns the value of the last parameter of <me>. The last parameter is the parameter of the \"EndPoint\" of the trimmed curve."]
         #[cxx_name = "LastParameter"]
         fn last_parameter(self: &TrimmedCurve) -> f64;
-        #[doc = "If the basis curve is an OffsetCurve sometimes it is not possible to do the evaluation of the curve at the parameter U (see class OffsetCurve)."]
+        /// If the basis curve is an OffsetCurve sometimes it is not possible to do the evaluation of the curve at the parameter U (see class OffsetCurve).
         #[cxx_name = "D0"]
         fn d0(self: &TrimmedCurve, U: f64, P: Pin<&mut gp_Pnt2d>);
-        #[doc = "Raised if the continuity of the curve is not C1."]
+        /// Raised if the continuity of the curve is not C1.
         #[cxx_name = "D1"]
         fn d1(self: &TrimmedCurve, U: f64, P: Pin<&mut gp_Pnt2d>, V1: Pin<&mut gp_Vec2d>);
-        #[doc = "Raised if the continuity of the curve is not C2."]
+        /// Raised if the continuity of the curve is not C2.
         #[cxx_name = "D2"]
         fn d2(
             self: &TrimmedCurve,
@@ -880,7 +881,7 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec2d>,
             V2: Pin<&mut gp_Vec2d>,
         );
-        #[doc = "Raised if the continuity of the curve is not C3."]
+        /// Raised if the continuity of the curve is not C3.
         #[cxx_name = "D3"]
         fn d3(
             self: &TrimmedCurve,
@@ -890,18 +891,18 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec2d>,
             V3: Pin<&mut gp_Vec2d>,
         );
-        #[doc = "Applies the transformation T to this trimmed curve. Warning The basis curve is also modified."]
+        /// Applies the transformation T to this trimmed curve. Warning The basis curve is also modified.
         #[cxx_name = "Transform"]
         fn transform(self: Pin<&mut TrimmedCurve>, T: &gp_Trsf2d);
-        #[doc = "Returns the  parameter on the  transformed  curve for the transform of the point of parameter U on <me>. me->Transformed(T)->Value(me->TransformedParameter(U,T)) is the same point as me->Value(U).Transformed(T) This methods calls the basis curve method."]
+        /// Returns the  parameter on the  transformed  curve for the transform of the point of parameter U on <me>. me->Transformed(T)->Value(me->TransformedParameter(U,T)) is the same point as me->Value(U).Transformed(T) This methods calls the basis curve method.
         #[cxx_name = "TransformedParameter"]
         fn transformed_parameter(self: &TrimmedCurve, U: f64, T: &gp_Trsf2d) -> f64;
-        #[doc = "Returns a  coefficient to compute the parameter on the transformed  curve  for  the transform  of the point on <me>. Transformed(T)->Value(U * ParametricTransformation(T)) is the same point as Value(U).Transformed(T) This methods calls the basis curve method."]
+        /// Returns a  coefficient to compute the parameter on the transformed  curve  for  the transform  of the point on <me>. Transformed(T)->Value(U * ParametricTransformation(T)) is the same point as Value(U).Transformed(T) This methods calls the basis curve method.
         #[cxx_name = "ParametricTransformation"]
         fn parametric_transformation(self: &TrimmedCurve, T: &gp_Trsf2d) -> f64;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TrimmedCurve) -> &HandleStandardType;
-        #[doc = "Returns the basis curve. Warning This function does not return a constant reference. Consequently, any modification of the returned value directly modifies the trimmed curve."]
+        /// Returns the basis curve. Warning This function does not return a constant reference. Consequently, any modification of the returned value directly modifies the trimmed curve.
         #[cxx_name = "Geom2d_TrimmedCurve_BasisCurve"]
         fn TrimmedCurve_basis_curve(self_: &TrimmedCurve) -> UniquePtr<HandleGeom2dCurve>;
         #[doc = "Returns the end point of <me>. This point is the evaluation of the curve for the \"LastParameter\"."]
@@ -910,175 +911,177 @@ pub(crate) mod ffi {
         #[doc = "Returns the start point of <me>. This point is the evaluation of the curve from the \"FirstParameter\". value and derivatives Warnings : The returned derivatives have the same orientation as the derivatives of the basis curve."]
         #[cxx_name = "Geom2d_TrimmedCurve_StartPoint"]
         fn TrimmedCurve_start_point(self_: &TrimmedCurve) -> UniquePtr<gp_Pnt2d>;
-        #[doc = "For the point of parameter U of this trimmed curve, computes the vector corresponding to the Nth derivative. Warning The returned derivative vector has the same orientation as the derivative vector of the basis curve, even if the trimmed curve does not have the same orientation as the basis curve. Exceptions Standard_RangeError if N is less than 1. geometric transformations"]
+        /// For the point of parameter U of this trimmed curve, computes the vector corresponding to the Nth derivative. Warning The returned derivative vector has the same orientation as the derivative vector of the basis curve, even if the trimmed curve does not have the same orientation as the basis curve. Exceptions Standard_RangeError if N is less than 1. geometric transformations
         #[cxx_name = "Geom2d_TrimmedCurve_DN"]
         fn TrimmedCurve_dn(self_: &TrimmedCurve, U: f64, N: i32) -> UniquePtr<gp_Vec2d>;
-        #[doc = "Creates a new object, which is a copy of this trimmed curve."]
+        /// Creates a new object, which is a copy of this trimmed curve.
         #[cxx_name = "Geom2d_TrimmedCurve_Copy"]
         fn TrimmedCurve_copy(self_: &TrimmedCurve) -> UniquePtr<HandleGeom2dGeometry>;
         #[cxx_name = "Geom2d_TrimmedCurve_get_type_name"]
         fn TrimmedCurve_get_type_name() -> String;
-        #[doc = "Upcast Geom2d_TrimmedCurve to Geom2d_BoundedCurve"]
+        /// Upcast Geom2d_TrimmedCurve to Geom2d_BoundedCurve
         #[cxx_name = "Geom2d_TrimmedCurve_as_Geom2d_BoundedCurve"]
         fn trimmed_curve_as_bounded_curve(self_: &TrimmedCurve) -> &BoundedCurve;
-        #[doc = "Upcast Geom2d_TrimmedCurve to Geom2d_BoundedCurve (mutable)"]
+        /// Upcast Geom2d_TrimmedCurve to Geom2d_BoundedCurve (mutable)
         #[cxx_name = "Geom2d_TrimmedCurve_as_Geom2d_BoundedCurve_mut"]
         fn trimmed_curve_as_bounded_curve_mut(
             self_: Pin<&mut TrimmedCurve>,
         ) -> Pin<&mut BoundedCurve>;
-        #[doc = "Upcast Geom2d_TrimmedCurve to Geom2d_Curve"]
+        /// Upcast Geom2d_TrimmedCurve to Geom2d_Curve
         #[cxx_name = "Geom2d_TrimmedCurve_as_Geom2d_Curve"]
         fn trimmed_curve_as_curve(self_: &TrimmedCurve) -> &Curve;
-        #[doc = "Upcast Geom2d_TrimmedCurve to Geom2d_Curve (mutable)"]
+        /// Upcast Geom2d_TrimmedCurve to Geom2d_Curve (mutable)
         #[cxx_name = "Geom2d_TrimmedCurve_as_Geom2d_Curve_mut"]
         fn trimmed_curve_as_curve_mut(self_: Pin<&mut TrimmedCurve>) -> Pin<&mut Curve>;
-        #[doc = "Upcast Geom2d_TrimmedCurve to Geom2d_Geometry"]
+        /// Upcast Geom2d_TrimmedCurve to Geom2d_Geometry
         #[cxx_name = "Geom2d_TrimmedCurve_as_Geom2d_Geometry"]
         fn trimmed_curve_as_geometry(self_: &TrimmedCurve) -> &Geometry;
-        #[doc = "Upcast Geom2d_TrimmedCurve to Geom2d_Geometry (mutable)"]
+        /// Upcast Geom2d_TrimmedCurve to Geom2d_Geometry (mutable)
         #[cxx_name = "Geom2d_TrimmedCurve_as_Geom2d_Geometry_mut"]
         fn trimmed_curve_as_geometry_mut(self_: Pin<&mut TrimmedCurve>) -> Pin<&mut Geometry>;
-        #[doc = "Wrap Geom2d_TrimmedCurve in a Handle (reference-counted smart pointer)"]
+        /// Wrap Geom2d_TrimmedCurve in a Handle (reference-counted smart pointer)
         #[cxx_name = "Geom2d_TrimmedCurve_to_handle"]
         fn TrimmedCurve_to_handle(
             obj: UniquePtr<TrimmedCurve>,
         ) -> UniquePtr<HandleGeom2dTrimmedCurve>;
-        #[doc = "Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_BoundedCurve>"]
+        /// Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_BoundedCurve>
         #[cxx_name = "HandleGeom2dTrimmedCurve_to_HandleGeom2dBoundedCurve"]
         fn trimmed_curve_to_handle_bounded_curve(
             handle: &HandleGeom2dTrimmedCurve,
         ) -> UniquePtr<HandleGeom2dBoundedCurve>;
-        #[doc = "Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_Curve>"]
+        /// Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_Curve>
         #[cxx_name = "HandleGeom2dTrimmedCurve_to_HandleGeom2dCurve"]
         fn trimmed_curve_to_handle_curve(
             handle: &HandleGeom2dTrimmedCurve,
         ) -> UniquePtr<HandleGeom2dCurve>;
-        #[doc = "Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_Geometry>"]
+        /// Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_Geometry>
         #[cxx_name = "HandleGeom2dTrimmedCurve_to_HandleGeom2dGeometry"]
         fn trimmed_curve_to_handle_geometry(
             handle: &HandleGeom2dTrimmedCurve,
         ) -> UniquePtr<HandleGeom2dGeometry>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
+
         // ========================
         // Referenced types (opaque)
         // ========================

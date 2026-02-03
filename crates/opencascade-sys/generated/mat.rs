@@ -13,22 +13,22 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::BasicElt;
 impl BasicElt {
-    #[doc = "Constructor, <anInteger> is the <index> of <me>."]
+    /// Constructor, <anInteger> is the <index> of <me>.
     pub fn new_int(anInteger: i32) -> cxx::UniquePtr<Self> {
         ffi::BasicElt_ctor_int(anInteger)
     }
 
-    #[doc = "Wrap MAT_BasicElt in a Handle (reference-counted smart pointer)"]
+    /// Wrap MAT_BasicElt in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMATBasicElt> {
         ffi::BasicElt_to_handle(obj)
     }
 
-    #[doc = "Return <startArcLeft> or <startArcRight> corresponding to <aSide>."]
+    /// Return <startArcLeft> or <startArcRight> corresponding to <aSide>.
     pub fn start_arc(&self) -> cxx::UniquePtr<ffi::HandleMATArc> {
         ffi::BasicElt_start_arc(self)
     }
 
-    #[doc = "Return <endArcLeft> or <endArcRight> corresponding to <aSide>."]
+    /// Return <endArcLeft> or <endArcRight> corresponding to <aSide>.
     pub fn end_arc(&self) -> cxx::UniquePtr<ffi::HandleMATArc> {
         ffi::BasicElt_end_arc(self)
     }
@@ -41,24 +41,25 @@ impl BasicElt {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_mat.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== MAT_BasicElt ========================"]
-        #[doc = "/// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt`"]
-        #[doc = ""]
-        #[doc = "A    BasicELt  is  associated   to  each  elementary constituent of  the figure."]
+        /// ======================== MAT_BasicElt ========================
+        /// /// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt`
+        ///
+        /// A    BasicELt  is  associated   to  each  elementary constituent of  the figure.
         #[cxx_name = "MAT_BasicElt"]
         type BasicElt;
-        #[doc = "/// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt::MAT_BasicElt()`"]
-        #[doc = ""]
-        #[doc = "Constructor, <anInteger> is the <index> of <me>."]
+        /// /// **Source:** `MAT_BasicElt.hxx` - `MAT_BasicElt::MAT_BasicElt()`
+        ///
+        /// Constructor, <anInteger> is the <index> of <me>.
         #[cxx_name = "MAT_BasicElt_ctor_int"]
         fn BasicElt_ctor_int(anInteger: i32) -> UniquePtr<BasicElt>;
-        #[doc = "Return the <index> of <me> in Graph.TheBasicElts."]
+        /// Return the <index> of <me> in Graph.TheBasicElts.
         #[cxx_name = "Index"]
         fn index(self: &BasicElt) -> i32;
-        #[doc = "Return the <GeomIndex> of <me>."]
+        /// Return the <GeomIndex> of <me>.
         #[cxx_name = "GeomIndex"]
         fn geom_index(self: &BasicElt) -> i32;
         #[cxx_name = "SetStartArc"]
@@ -71,62 +72,64 @@ pub(crate) mod ffi {
         fn set_geom_index(self: Pin<&mut BasicElt>, anInteger: i32);
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BasicElt) -> &HandleStandardType;
-        #[doc = "Return <startArcLeft> or <startArcRight> corresponding to <aSide>."]
+        /// Return <startArcLeft> or <startArcRight> corresponding to <aSide>.
         #[cxx_name = "MAT_BasicElt_StartArc"]
         fn BasicElt_start_arc(self_: &BasicElt) -> UniquePtr<HandleMATArc>;
-        #[doc = "Return <endArcLeft> or <endArcRight> corresponding to <aSide>."]
+        /// Return <endArcLeft> or <endArcRight> corresponding to <aSide>.
         #[cxx_name = "MAT_BasicElt_EndArc"]
         fn BasicElt_end_arc(self_: &BasicElt) -> UniquePtr<HandleMATArc>;
         #[cxx_name = "MAT_BasicElt_get_type_name"]
         fn BasicElt_get_type_name() -> String;
-        #[doc = "Wrap MAT_BasicElt in a Handle (reference-counted smart pointer)"]
+        /// Wrap MAT_BasicElt in a Handle (reference-counted smart pointer)
         #[cxx_name = "MAT_BasicElt_to_handle"]
         fn BasicElt_to_handle(obj: UniquePtr<BasicElt>) -> UniquePtr<HandleMATBasicElt>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+
         // ========================
         // Referenced types (opaque)
         // ========================

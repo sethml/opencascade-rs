@@ -12,21 +12,21 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::ShapeProcessor;
 impl ShapeProcessor {
-    #[doc = "Constructor. @param theParameters Parameters to be used in the processing."]
+    /// Constructor. @param theParameters Parameters to be used in the processing.
     pub fn new_shapefixparameters(
         theParameters: &ffi::DE_ShapeFixParameters,
     ) -> cxx::UniquePtr<Self> {
         ffi::ShapeProcessor_ctor_shapefixparameters(theParameters)
     }
 
-    #[doc = "Get the context of the last processing. Only valid after the ProcessShape() method was called. @return Shape context."]
+    /// Get the context of the last processing. Only valid after the ProcessShape() method was called. @return Shape context.
     pub fn get_context(
         self: std::pin::Pin<&mut Self>,
     ) -> cxx::UniquePtr<ffi::HandleShapeProcessShapeContext> {
         ffi::ShapeProcessor_get_context(self)
     }
 
-    #[doc = "Check quality of pcurve of the edge on the given face, and correct it if necessary. @param theEdge Edge to check. @param theFace Face on which the edge is located. @param thePrecision Precision to use for checking. @param theIsSeam Flag indicating whether the edge is a seam edge. @return True if the pcurve was corrected, false if it was dropped."]
+    /// Check quality of pcurve of the edge on the given face, and correct it if necessary. @param theEdge Edge to check. @param theFace Face on which the edge is located. @param thePrecision Precision to use for checking. @param theIsSeam Flag indicating whether the edge is a seam edge. @return True if the pcurve was corrected, false if it was dropped.
     pub fn check_p_curve(
         theEdge: &ffi::TopoDS_Edge,
         theFace: &ffi::TopoDS_Face,
@@ -45,41 +45,42 @@ impl ShapeProcessor {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_xs_algo.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== XSAlgo_ShapeProcessor ========================"]
-        #[doc = "/// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor`"]
-        #[doc = ""]
-        #[doc = "Shape Processing module. Allows to define and apply general Shape Processing as a customizable sequence of operators."]
+        /// ======================== XSAlgo_ShapeProcessor ========================
+        /// /// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor`
+        ///
+        /// Shape Processing module. Allows to define and apply general Shape Processing as a customizable sequence of operators.
         #[cxx_name = "XSAlgo_ShapeProcessor"]
         type ShapeProcessor;
-        #[doc = "/// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor()`"]
-        #[doc = ""]
-        #[doc = "Constructor. @param theParameters Parameters to be used in the processing."]
+        /// /// **Source:** `XSAlgo_ShapeProcessor.hxx` - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor()`
+        ///
+        /// Constructor. @param theParameters Parameters to be used in the processing.
         #[cxx_name = "XSAlgo_ShapeProcessor_ctor_shapefixparameters"]
         fn ShapeProcessor_ctor_shapefixparameters(
             theParameters: &DE_ShapeFixParameters,
         ) -> UniquePtr<ShapeProcessor>;
-        #[doc = "Merge the results of the shape processing with the transfer process. @param theTransientProcess Transfer process to merge with. @param theFirstTPItemIndex Index of the first item in the transfer process to merge with."]
+        /// Merge the results of the shape processing with the transfer process. @param theTransientProcess Transfer process to merge with. @param theFirstTPItemIndex Index of the first item in the transfer process to merge with.
         #[cxx_name = "MergeTransferInfo"]
         fn merge_transfer_info_handletransientprocess_int(
             self: &ShapeProcessor,
             theTransientProcess: &HandleTransferTransientProcess,
             theFirstTPItemIndex: i32,
         );
-        #[doc = "Merge the results of the shape processing with the finder process. @param theFinderProcess Finder process to merge with."]
+        /// Merge the results of the shape processing with the finder process. @param theFinderProcess Finder process to merge with.
         #[cxx_name = "MergeTransferInfo"]
         fn merge_transfer_info_handlefinderprocess(
             self: &ShapeProcessor,
             theFinderProcess: &HandleTransferFinderProcess,
         );
-        #[doc = "Get the context of the last processing. Only valid after the ProcessShape() method was called. @return Shape context."]
+        /// Get the context of the last processing. Only valid after the ProcessShape() method was called. @return Shape context.
         #[cxx_name = "XSAlgo_ShapeProcessor_GetContext"]
         fn ShapeProcessor_get_context(
             self_: Pin<&mut ShapeProcessor>,
         ) -> UniquePtr<HandleShapeProcessShapeContext>;
-        #[doc = "Check quality of pcurve of the edge on the given face, and correct it if necessary. @param theEdge Edge to check. @param theFace Face on which the edge is located. @param thePrecision Precision to use for checking. @param theIsSeam Flag indicating whether the edge is a seam edge. @return True if the pcurve was corrected, false if it was dropped."]
+        /// Check quality of pcurve of the edge on the given face, and correct it if necessary. @param theEdge Edge to check. @param theFace Face on which the edge is located. @param thePrecision Precision to use for checking. @param theIsSeam Flag indicating whether the edge is a seam edge. @return True if the pcurve was corrected, false if it was dropped.
         #[cxx_name = "XSAlgo_ShapeProcessor_CheckPCurve"]
         fn ShapeProcessor_check_p_curve(
             theEdge: &TopoDS_Edge,
@@ -90,73 +91,75 @@ pub(crate) mod ffi {
         #[doc = "The function is designed to set the length unit for the application before performing a transfer operation. It ensures that the length unit is correctly configured based on the value associated with the key \"xstep.cascade.unit\"."]
         #[cxx_name = "XSAlgo_ShapeProcessor_PrepareForTransfer"]
         fn ShapeProcessor_prepare_for_transfer();
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Message from message module"]
+        /// Message from message module
         type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
+        /// Alert from message module
         type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
+        /// AlertExtended from message module
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
+        /// Algorithm from message module
         type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
+        /// ExecStatus from message module
         type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
+        /// Level from message module
         type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
+        /// Messenger from message module
         type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
+        /// Msg from message module
         type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
+        /// Printer from message module
         type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
+        /// ProgressIndicator from message module
         type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
+        /// ProgressRange from message module
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
+        /// ProgressScope from message module
         type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
+        /// Report from message module
         type Message_Report = crate::message::ffi::Report;
-        #[doc = "ShapeProcess from shape_process module"]
+        /// ShapeProcess from shape_process module
         type ShapeProcess = crate::shape_process::ffi::ShapeProcess;
-        #[doc = "AsciiString from t_collection module"]
+        /// AsciiString from t_collection module
         type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
-        #[doc = "ExtendedString from t_collection module"]
+        /// ExtendedString from t_collection module
         type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
-        #[doc = "HAsciiString from t_collection module"]
+        /// HAsciiString from t_collection module
         type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
-        #[doc = "HExtendedString from t_collection module"]
+        /// HExtendedString from t_collection module
         type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
-        #[doc = "HArray2OfShape from top_tools module"]
+        /// HArray2OfShape from top_tools module
         type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
+        /// HSequenceOfShape from top_tools module
         type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+
         // ========================
         // Referenced types (opaque)
         // ========================

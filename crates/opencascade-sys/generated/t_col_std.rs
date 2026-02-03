@@ -46,7 +46,7 @@ impl HArray1OfInteger {
         ffi::HArray1OfInteger_ctor_array1ofinteger(theOther)
     }
 
-    #[doc = "Wrap TColStd_HArray1OfInteger in a Handle (reference-counted smart pointer)"]
+    /// Wrap TColStd_HArray1OfInteger in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<ffi::HandleTColStdHArray1OfInteger> {
@@ -84,7 +84,7 @@ impl HArray1OfReal {
         ffi::HArray1OfReal_ctor_array1ofreal(theOther)
     }
 
-    #[doc = "Wrap TColStd_HArray1OfReal in a Handle (reference-counted smart pointer)"]
+    /// Wrap TColStd_HArray1OfReal in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleTColStdHArray1OfReal> {
         ffi::HArray1OfReal_to_handle(obj)
     }
@@ -105,7 +105,7 @@ impl HSequenceOfInteger {
         ffi::HSequenceOfInteger_ctor_sequenceofinteger(theOther)
     }
 
-    #[doc = "Wrap TColStd_HSequenceOfInteger in a Handle (reference-counted smart pointer)"]
+    /// Wrap TColStd_HSequenceOfInteger in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<ffi::HandleTColStdHSequenceOfInteger> {
@@ -126,7 +126,7 @@ impl HSequenceOfReal {
         ffi::HSequenceOfReal_ctor_sequenceofreal(theOther)
     }
 
-    #[doc = "Wrap TColStd_HSequenceOfReal in a Handle (reference-counted smart pointer)"]
+    /// Wrap TColStd_HSequenceOfReal in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<ffi::HandleTColStdHSequenceOfReal> {
@@ -162,7 +162,7 @@ impl HArray2OfReal {
         ffi::HArray2OfReal_ctor_array2ofreal(theOther)
     }
 
-    #[doc = "Wrap TColStd_HArray2OfReal in a Handle (reference-counted smart pointer)"]
+    /// Wrap TColStd_HArray2OfReal in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleTColStdHArray2OfReal> {
         ffi::HArray2OfReal_to_handle(obj)
     }
@@ -183,7 +183,7 @@ impl HSequenceOfTransient {
         ffi::HSequenceOfTransient_ctor_sequenceoftransient(theOther)
     }
 
-    #[doc = "Wrap TColStd_HSequenceOfTransient in a Handle (reference-counted smart pointer)"]
+    /// Wrap TColStd_HSequenceOfTransient in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<ffi::HandleTColStdHSequenceOfTransient> {
@@ -196,12 +196,12 @@ impl HSequenceOfTransient {
 }
 pub use ffi::PackedMapOfInteger;
 impl PackedMapOfInteger {
-    #[doc = "Constructor"]
+    /// Constructor
     pub fn new_int(theNbBuckets: i32) -> cxx::UniquePtr<Self> {
         ffi::PackedMapOfInteger_ctor_int(theNbBuckets)
     }
 
-    #[doc = "Copy constructor"]
+    /// Copy constructor
     pub fn new_packedmapofinteger(theOther: &ffi::PackedMapOfInteger) -> cxx::UniquePtr<Self> {
         ffi::PackedMapOfInteger_ctor_packedmapofinteger(theOther)
     }
@@ -222,7 +222,7 @@ impl HArray1OfTransient {
         ffi::HArray1OfTransient_ctor_array1oftransient(theOther)
     }
 
-    #[doc = "Wrap TColStd_HArray1OfTransient in a Handle (reference-counted smart pointer)"]
+    /// Wrap TColStd_HArray1OfTransient in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<ffi::HandleTColStdHArray1OfTransient> {
@@ -245,7 +245,7 @@ impl HSequenceOfHExtendedString {
         ffi::HSequenceOfHExtendedString_ctor_sequenceofhextendedstring(theOther)
     }
 
-    #[doc = "Wrap TColStd_HSequenceOfHExtendedString in a Handle (reference-counted smart pointer)"]
+    /// Wrap TColStd_HSequenceOfHExtendedString in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<ffi::HandleTColStdHSequenceOfHExtendedString> {
@@ -283,7 +283,7 @@ impl HArray1OfBoolean {
         ffi::HArray1OfBoolean_ctor_array1ofboolean(theOther)
     }
 
-    #[doc = "Wrap TColStd_HArray1OfBoolean in a Handle (reference-counted smart pointer)"]
+    /// Wrap TColStd_HArray1OfBoolean in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<ffi::HandleTColStdHArray1OfBoolean> {
@@ -298,27 +298,28 @@ impl HArray1OfBoolean {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_t_col_std.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== TColStd_HArray1OfInteger ========================"]
-        #[doc = "/// **Source:** `TColStd_HArray1OfInteger.hxx` - `TColStd_HArray1OfInteger`"]
+        /// ======================== TColStd_HArray1OfInteger ========================
+        /// /// **Source:** `TColStd_HArray1OfInteger.hxx` - `TColStd_HArray1OfInteger`
         #[cxx_name = "TColStd_HArray1OfInteger"]
         type HArray1OfInteger;
-        #[doc = "/// **Source:** `TColStd_HArray1OfInteger.hxx` - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`"]
+        /// /// **Source:** `TColStd_HArray1OfInteger.hxx` - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
         #[cxx_name = "TColStd_HArray1OfInteger_ctor"]
         fn HArray1OfInteger_ctor() -> UniquePtr<HArray1OfInteger>;
-        #[doc = "/// **Source:** `TColStd_HArray1OfInteger.hxx` - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`"]
+        /// /// **Source:** `TColStd_HArray1OfInteger.hxx` - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
         #[cxx_name = "TColStd_HArray1OfInteger_ctor_int2"]
         fn HArray1OfInteger_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfInteger>;
-        #[doc = "/// **Source:** `TColStd_HArray1OfInteger.hxx` - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`"]
+        /// /// **Source:** `TColStd_HArray1OfInteger.hxx` - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
         #[cxx_name = "TColStd_HArray1OfInteger_ctor_int3"]
         fn HArray1OfInteger_ctor_int3(
             theLower: i32,
             theUpper: i32,
             theValue: &i32,
         ) -> UniquePtr<HArray1OfInteger>;
-        #[doc = "/// **Source:** `TColStd_HArray1OfInteger.hxx` - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`"]
+        /// /// **Source:** `TColStd_HArray1OfInteger.hxx` - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
         #[cxx_name = "TColStd_HArray1OfInteger_ctor_int3_bool"]
         fn HArray1OfInteger_ctor_int3_bool(
             theBegin: &i32,
@@ -326,7 +327,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfInteger>;
-        #[doc = "/// **Source:** `TColStd_HArray1OfInteger.hxx` - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`"]
+        /// /// **Source:** `TColStd_HArray1OfInteger.hxx` - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
         #[cxx_name = "TColStd_HArray1OfInteger_ctor_array1ofinteger"]
         fn HArray1OfInteger_ctor_array1ofinteger(
             theOther: &TColStd_Array1OfInteger,
@@ -339,29 +340,29 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HArray1OfInteger) -> &HandleStandardType;
         #[cxx_name = "TColStd_HArray1OfInteger_get_type_name"]
         fn HArray1OfInteger_get_type_name() -> String;
-        #[doc = "Wrap TColStd_HArray1OfInteger in a Handle (reference-counted smart pointer)"]
+        /// Wrap TColStd_HArray1OfInteger in a Handle (reference-counted smart pointer)
         #[cxx_name = "TColStd_HArray1OfInteger_to_handle"]
         fn HArray1OfInteger_to_handle(
             obj: UniquePtr<HArray1OfInteger>,
         ) -> UniquePtr<HandleTColStdHArray1OfInteger>;
-        #[doc = " ======================== TColStd_HArray1OfReal ========================"]
-        #[doc = "/// **Source:** `TColStd_HArray1OfReal.hxx` - `TColStd_HArray1OfReal`"]
+        /// ======================== TColStd_HArray1OfReal ========================
+        /// /// **Source:** `TColStd_HArray1OfReal.hxx` - `TColStd_HArray1OfReal`
         #[cxx_name = "TColStd_HArray1OfReal"]
         type HArray1OfReal;
-        #[doc = "/// **Source:** `TColStd_HArray1OfReal.hxx` - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`"]
+        /// /// **Source:** `TColStd_HArray1OfReal.hxx` - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
         #[cxx_name = "TColStd_HArray1OfReal_ctor"]
         fn HArray1OfReal_ctor() -> UniquePtr<HArray1OfReal>;
-        #[doc = "/// **Source:** `TColStd_HArray1OfReal.hxx` - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`"]
+        /// /// **Source:** `TColStd_HArray1OfReal.hxx` - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
         #[cxx_name = "TColStd_HArray1OfReal_ctor_int2"]
         fn HArray1OfReal_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfReal>;
-        #[doc = "/// **Source:** `TColStd_HArray1OfReal.hxx` - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`"]
+        /// /// **Source:** `TColStd_HArray1OfReal.hxx` - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
         #[cxx_name = "TColStd_HArray1OfReal_ctor_int2_real"]
         fn HArray1OfReal_ctor_int2_real(
             theLower: i32,
             theUpper: i32,
             theValue: &f64,
         ) -> UniquePtr<HArray1OfReal>;
-        #[doc = "/// **Source:** `TColStd_HArray1OfReal.hxx` - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`"]
+        /// /// **Source:** `TColStd_HArray1OfReal.hxx` - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
         #[cxx_name = "TColStd_HArray1OfReal_ctor_real_int2_bool"]
         fn HArray1OfReal_ctor_real_int2_bool(
             theBegin: &f64,
@@ -369,7 +370,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfReal>;
-        #[doc = "/// **Source:** `TColStd_HArray1OfReal.hxx` - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`"]
+        /// /// **Source:** `TColStd_HArray1OfReal.hxx` - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
         #[cxx_name = "TColStd_HArray1OfReal_ctor_array1ofreal"]
         fn HArray1OfReal_ctor_array1ofreal(
             theOther: &TColStd_Array1OfReal,
@@ -382,19 +383,19 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HArray1OfReal) -> &HandleStandardType;
         #[cxx_name = "TColStd_HArray1OfReal_get_type_name"]
         fn HArray1OfReal_get_type_name() -> String;
-        #[doc = "Wrap TColStd_HArray1OfReal in a Handle (reference-counted smart pointer)"]
+        /// Wrap TColStd_HArray1OfReal in a Handle (reference-counted smart pointer)
         #[cxx_name = "TColStd_HArray1OfReal_to_handle"]
         fn HArray1OfReal_to_handle(
             obj: UniquePtr<HArray1OfReal>,
         ) -> UniquePtr<HandleTColStdHArray1OfReal>;
-        #[doc = " ======================== TColStd_HSequenceOfInteger ========================"]
-        #[doc = "/// **Source:** `TColStd_HSequenceOfInteger.hxx` - `TColStd_HSequenceOfInteger`"]
+        /// ======================== TColStd_HSequenceOfInteger ========================
+        /// /// **Source:** `TColStd_HSequenceOfInteger.hxx` - `TColStd_HSequenceOfInteger`
         #[cxx_name = "TColStd_HSequenceOfInteger"]
         type HSequenceOfInteger;
-        #[doc = "/// **Source:** `TColStd_HSequenceOfInteger.hxx` - `TColStd_HSequenceOfInteger::TColStd_HSequenceOfInteger()`"]
+        /// /// **Source:** `TColStd_HSequenceOfInteger.hxx` - `TColStd_HSequenceOfInteger::TColStd_HSequenceOfInteger()`
         #[cxx_name = "TColStd_HSequenceOfInteger_ctor"]
         fn HSequenceOfInteger_ctor() -> UniquePtr<HSequenceOfInteger>;
-        #[doc = "/// **Source:** `TColStd_HSequenceOfInteger.hxx` - `TColStd_HSequenceOfInteger::TColStd_HSequenceOfInteger()`"]
+        /// /// **Source:** `TColStd_HSequenceOfInteger.hxx` - `TColStd_HSequenceOfInteger::TColStd_HSequenceOfInteger()`
         #[cxx_name = "TColStd_HSequenceOfInteger_ctor_sequenceofinteger"]
         fn HSequenceOfInteger_ctor_sequenceofinteger(
             theOther: &TColStd_SequenceOfInteger,
@@ -416,19 +417,19 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HSequenceOfInteger) -> &HandleStandardType;
         #[cxx_name = "TColStd_HSequenceOfInteger_get_type_name"]
         fn HSequenceOfInteger_get_type_name() -> String;
-        #[doc = "Wrap TColStd_HSequenceOfInteger in a Handle (reference-counted smart pointer)"]
+        /// Wrap TColStd_HSequenceOfInteger in a Handle (reference-counted smart pointer)
         #[cxx_name = "TColStd_HSequenceOfInteger_to_handle"]
         fn HSequenceOfInteger_to_handle(
             obj: UniquePtr<HSequenceOfInteger>,
         ) -> UniquePtr<HandleTColStdHSequenceOfInteger>;
-        #[doc = " ======================== TColStd_HSequenceOfReal ========================"]
-        #[doc = "/// **Source:** `TColStd_HSequenceOfReal.hxx` - `TColStd_HSequenceOfReal`"]
+        /// ======================== TColStd_HSequenceOfReal ========================
+        /// /// **Source:** `TColStd_HSequenceOfReal.hxx` - `TColStd_HSequenceOfReal`
         #[cxx_name = "TColStd_HSequenceOfReal"]
         type HSequenceOfReal;
-        #[doc = "/// **Source:** `TColStd_HSequenceOfReal.hxx` - `TColStd_HSequenceOfReal::TColStd_HSequenceOfReal()`"]
+        /// /// **Source:** `TColStd_HSequenceOfReal.hxx` - `TColStd_HSequenceOfReal::TColStd_HSequenceOfReal()`
         #[cxx_name = "TColStd_HSequenceOfReal_ctor"]
         fn HSequenceOfReal_ctor() -> UniquePtr<HSequenceOfReal>;
-        #[doc = "/// **Source:** `TColStd_HSequenceOfReal.hxx` - `TColStd_HSequenceOfReal::TColStd_HSequenceOfReal()`"]
+        /// /// **Source:** `TColStd_HSequenceOfReal.hxx` - `TColStd_HSequenceOfReal::TColStd_HSequenceOfReal()`
         #[cxx_name = "TColStd_HSequenceOfReal_ctor_sequenceofreal"]
         fn HSequenceOfReal_ctor_sequenceofreal(
             theOther: &TColStd_SequenceOfReal,
@@ -448,16 +449,16 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HSequenceOfReal) -> &HandleStandardType;
         #[cxx_name = "TColStd_HSequenceOfReal_get_type_name"]
         fn HSequenceOfReal_get_type_name() -> String;
-        #[doc = "Wrap TColStd_HSequenceOfReal in a Handle (reference-counted smart pointer)"]
+        /// Wrap TColStd_HSequenceOfReal in a Handle (reference-counted smart pointer)
         #[cxx_name = "TColStd_HSequenceOfReal_to_handle"]
         fn HSequenceOfReal_to_handle(
             obj: UniquePtr<HSequenceOfReal>,
         ) -> UniquePtr<HandleTColStdHSequenceOfReal>;
-        #[doc = " ======================== TColStd_HArray2OfReal ========================"]
-        #[doc = "/// **Source:** `TColStd_HArray2OfReal.hxx` - `TColStd_HArray2OfReal`"]
+        /// ======================== TColStd_HArray2OfReal ========================
+        /// /// **Source:** `TColStd_HArray2OfReal.hxx` - `TColStd_HArray2OfReal`
         #[cxx_name = "TColStd_HArray2OfReal"]
         type HArray2OfReal;
-        #[doc = "/// **Source:** `TColStd_HArray2OfReal.hxx` - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`"]
+        /// /// **Source:** `TColStd_HArray2OfReal.hxx` - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
         #[cxx_name = "TColStd_HArray2OfReal_ctor_int4"]
         fn HArray2OfReal_ctor_int4(
             theRowLow: i32,
@@ -465,7 +466,7 @@ pub(crate) mod ffi {
             theColLow: i32,
             theColUpp: i32,
         ) -> UniquePtr<HArray2OfReal>;
-        #[doc = "/// **Source:** `TColStd_HArray2OfReal.hxx` - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`"]
+        /// /// **Source:** `TColStd_HArray2OfReal.hxx` - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
         #[cxx_name = "TColStd_HArray2OfReal_ctor_int4_real"]
         fn HArray2OfReal_ctor_int4_real(
             theRowLow: i32,
@@ -474,7 +475,7 @@ pub(crate) mod ffi {
             theColUpp: i32,
             theValue: &f64,
         ) -> UniquePtr<HArray2OfReal>;
-        #[doc = "/// **Source:** `TColStd_HArray2OfReal.hxx` - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`"]
+        /// /// **Source:** `TColStd_HArray2OfReal.hxx` - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
         #[cxx_name = "TColStd_HArray2OfReal_ctor_array2ofreal"]
         fn HArray2OfReal_ctor_array2ofreal(
             theOther: &TColStd_Array2OfReal,
@@ -487,19 +488,19 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HArray2OfReal) -> &HandleStandardType;
         #[cxx_name = "TColStd_HArray2OfReal_get_type_name"]
         fn HArray2OfReal_get_type_name() -> String;
-        #[doc = "Wrap TColStd_HArray2OfReal in a Handle (reference-counted smart pointer)"]
+        /// Wrap TColStd_HArray2OfReal in a Handle (reference-counted smart pointer)
         #[cxx_name = "TColStd_HArray2OfReal_to_handle"]
         fn HArray2OfReal_to_handle(
             obj: UniquePtr<HArray2OfReal>,
         ) -> UniquePtr<HandleTColStdHArray2OfReal>;
-        #[doc = " ======================== TColStd_HSequenceOfTransient ========================"]
-        #[doc = "/// **Source:** `TColStd_HSequenceOfTransient.hxx` - `TColStd_HSequenceOfTransient`"]
+        /// ======================== TColStd_HSequenceOfTransient ========================
+        /// /// **Source:** `TColStd_HSequenceOfTransient.hxx` - `TColStd_HSequenceOfTransient`
         #[cxx_name = "TColStd_HSequenceOfTransient"]
         type HSequenceOfTransient;
-        #[doc = "/// **Source:** `TColStd_HSequenceOfTransient.hxx` - `TColStd_HSequenceOfTransient::TColStd_HSequenceOfTransient()`"]
+        /// /// **Source:** `TColStd_HSequenceOfTransient.hxx` - `TColStd_HSequenceOfTransient::TColStd_HSequenceOfTransient()`
         #[cxx_name = "TColStd_HSequenceOfTransient_ctor"]
         fn HSequenceOfTransient_ctor() -> UniquePtr<HSequenceOfTransient>;
-        #[doc = "/// **Source:** `TColStd_HSequenceOfTransient.hxx` - `TColStd_HSequenceOfTransient::TColStd_HSequenceOfTransient()`"]
+        /// /// **Source:** `TColStd_HSequenceOfTransient.hxx` - `TColStd_HSequenceOfTransient::TColStd_HSequenceOfTransient()`
         #[cxx_name = "TColStd_HSequenceOfTransient_ctor_sequenceoftransient"]
         fn HSequenceOfTransient_ctor_sequenceoftransient(
             theOther: &TColStd_SequenceOfTransient,
@@ -519,25 +520,25 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HSequenceOfTransient) -> &HandleStandardType;
         #[cxx_name = "TColStd_HSequenceOfTransient_get_type_name"]
         fn HSequenceOfTransient_get_type_name() -> String;
-        #[doc = "Wrap TColStd_HSequenceOfTransient in a Handle (reference-counted smart pointer)"]
+        /// Wrap TColStd_HSequenceOfTransient in a Handle (reference-counted smart pointer)
         #[cxx_name = "TColStd_HSequenceOfTransient_to_handle"]
         fn HSequenceOfTransient_to_handle(
             obj: UniquePtr<HSequenceOfTransient>,
         ) -> UniquePtr<HandleTColStdHSequenceOfTransient>;
-        #[doc = " ======================== TColStd_PackedMapOfInteger ========================"]
-        #[doc = "/// **Source:** `TColStd_PackedMapOfInteger.hxx` - `TColStd_PackedMapOfInteger`"]
-        #[doc = ""]
-        #[doc = "Optimized Map of integer values. Each block of 32 integers is stored in 8 bytes in memory."]
+        /// ======================== TColStd_PackedMapOfInteger ========================
+        /// /// **Source:** `TColStd_PackedMapOfInteger.hxx` - `TColStd_PackedMapOfInteger`
+        ///
+        /// Optimized Map of integer values. Each block of 32 integers is stored in 8 bytes in memory.
         #[cxx_name = "TColStd_PackedMapOfInteger"]
         type PackedMapOfInteger;
-        #[doc = "/// **Source:** `TColStd_PackedMapOfInteger.hxx` - `TColStd_PackedMapOfInteger::TColStd_PackedMapOfInteger()`"]
-        #[doc = ""]
-        #[doc = "Constructor"]
+        /// /// **Source:** `TColStd_PackedMapOfInteger.hxx` - `TColStd_PackedMapOfInteger::TColStd_PackedMapOfInteger()`
+        ///
+        /// Constructor
         #[cxx_name = "TColStd_PackedMapOfInteger_ctor_int"]
         fn PackedMapOfInteger_ctor_int(theNbBuckets: i32) -> UniquePtr<PackedMapOfInteger>;
-        #[doc = "/// **Source:** `TColStd_PackedMapOfInteger.hxx` - `TColStd_PackedMapOfInteger::TColStd_PackedMapOfInteger()`"]
-        #[doc = ""]
-        #[doc = "Copy constructor"]
+        /// /// **Source:** `TColStd_PackedMapOfInteger.hxx` - `TColStd_PackedMapOfInteger::TColStd_PackedMapOfInteger()`
+        ///
+        /// Copy constructor
         #[cxx_name = "TColStd_PackedMapOfInteger_ctor_packedmapofinteger"]
         fn PackedMapOfInteger_ctor_packedmapofinteger(
             theOther: &PackedMapOfInteger,
@@ -557,84 +558,84 @@ pub(crate) mod ffi {
         fn contains(self: &PackedMapOfInteger, aKey: i32) -> bool;
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut PackedMapOfInteger>, aKey: i32) -> bool;
-        #[doc = "Returns the number of map buckets (not that since integers are packed in this map, the number is smaller than extent)."]
+        /// Returns the number of map buckets (not that since integers are packed in this map, the number is smaller than extent).
         #[cxx_name = "NbBuckets"]
         fn nb_buckets(self: &PackedMapOfInteger) -> i32;
-        #[doc = "Returns map extent."]
+        /// Returns map extent.
         #[cxx_name = "Extent"]
         fn extent(self: &PackedMapOfInteger) -> i32;
-        #[doc = "Returns TRUE if map is empty."]
+        /// Returns TRUE if map is empty.
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &PackedMapOfInteger) -> bool;
-        #[doc = "Query the minimal contained key value."]
+        /// Query the minimal contained key value.
         #[cxx_name = "GetMinimalMapped"]
         fn get_minimal_mapped(self: &PackedMapOfInteger) -> i32;
-        #[doc = "Query the maximal contained key value."]
+        /// Query the maximal contained key value.
         #[cxx_name = "GetMaximalMapped"]
         fn get_maximal_mapped(self: &PackedMapOfInteger) -> i32;
-        #[doc = "Sets this Map to be the result of union (aka addition, fuse, merge, boolean OR) operation between two given Maps. The new Map contains the values that are contained either in the first map or in the second map or in both. All previous contents of this Map is cleared. This map (result of the boolean operation) can also be passed as one of operands."]
+        /// Sets this Map to be the result of union (aka addition, fuse, merge, boolean OR) operation between two given Maps. The new Map contains the values that are contained either in the first map or in the second map or in both. All previous contents of this Map is cleared. This map (result of the boolean operation) can also be passed as one of operands.
         #[cxx_name = "Union"]
         fn union(
             self: Pin<&mut PackedMapOfInteger>,
             arg0: &PackedMapOfInteger,
             arg1: &PackedMapOfInteger,
         );
-        #[doc = "Apply to this Map the boolean operation union (aka addition, fuse, merge, boolean OR) with another (given) Map. The result contains the values that were previously contained in this map or contained in the given (operand) map. This algorithm is similar to method Union(). @return True if content of this map is changed"]
+        /// Apply to this Map the boolean operation union (aka addition, fuse, merge, boolean OR) with another (given) Map. The result contains the values that were previously contained in this map or contained in the given (operand) map. This algorithm is similar to method Union(). @return True if content of this map is changed
         #[cxx_name = "Unite"]
         fn unite(self: Pin<&mut PackedMapOfInteger>, arg0: &PackedMapOfInteger) -> bool;
-        #[doc = "Sets this Map to be the result of intersection (aka multiplication, common, boolean AND) operation between two given Maps. The new Map contains only the values that are contained in both map operands. All previous contents of this Map is cleared. This same map (result of the boolean operation) can also be used as one of operands. The order of operands makes no difference; the method minimizes internally the number of iterations using the smallest map for the loop."]
+        /// Sets this Map to be the result of intersection (aka multiplication, common, boolean AND) operation between two given Maps. The new Map contains only the values that are contained in both map operands. All previous contents of this Map is cleared. This same map (result of the boolean operation) can also be used as one of operands. The order of operands makes no difference; the method minimizes internally the number of iterations using the smallest map for the loop.
         #[cxx_name = "Intersection"]
         fn intersection(
             self: Pin<&mut PackedMapOfInteger>,
             arg0: &PackedMapOfInteger,
             arg1: &PackedMapOfInteger,
         );
-        #[doc = "Apply to this Map the intersection operation (aka multiplication, common,  boolean AND) with another (given) Map. The result contains only the values that are contained in both this and the given maps. This algorithm is similar to method Intersection(). @return True if content of this map is changed"]
+        /// Apply to this Map the intersection operation (aka multiplication, common,  boolean AND) with another (given) Map. The result contains only the values that are contained in both this and the given maps. This algorithm is similar to method Intersection(). @return True if content of this map is changed
         #[cxx_name = "Intersect"]
         fn intersect(self: Pin<&mut PackedMapOfInteger>, arg0: &PackedMapOfInteger) -> bool;
-        #[doc = "Sets this Map to be the result of subtraction (aka set-theoretic difference, relative complement, exclude, cut, boolean NOT) operation between two given Maps. The new Map contains only the values that are contained in the first map operands and not contained in the second one. All previous contents of this Map is cleared. This map (result of the boolean operation) can also be used as the first operand."]
+        /// Sets this Map to be the result of subtraction (aka set-theoretic difference, relative complement, exclude, cut, boolean NOT) operation between two given Maps. The new Map contains only the values that are contained in the first map operands and not contained in the second one. All previous contents of this Map is cleared. This map (result of the boolean operation) can also be used as the first operand.
         #[cxx_name = "Subtraction"]
         fn subtraction(
             self: Pin<&mut PackedMapOfInteger>,
             arg0: &PackedMapOfInteger,
             arg1: &PackedMapOfInteger,
         );
-        #[doc = "Apply to this Map the subtraction (aka set-theoretic difference, relative complement, exclude, cut, boolean NOT) operation with another (given) Map. The result contains only the values that were previously contained in this map and not contained in this map. This algorithm is similar to method Subtract() with two operands. @return True if contents of this map is changed"]
+        /// Apply to this Map the subtraction (aka set-theoretic difference, relative complement, exclude, cut, boolean NOT) operation with another (given) Map. The result contains only the values that were previously contained in this map and not contained in this map. This algorithm is similar to method Subtract() with two operands. @return True if contents of this map is changed
         #[cxx_name = "Subtract"]
         fn subtract(self: Pin<&mut PackedMapOfInteger>, arg0: &PackedMapOfInteger) -> bool;
-        #[doc = "Sets this Map to be the result of symmetric difference (aka exclusive disjunction, boolean XOR) operation between two given Maps. The new Map contains the values that are contained only in the first or the second operand maps but not in both. All previous contents of this Map is cleared. This map (result of the boolean operation) can also be used as one of operands."]
+        /// Sets this Map to be the result of symmetric difference (aka exclusive disjunction, boolean XOR) operation between two given Maps. The new Map contains the values that are contained only in the first or the second operand maps but not in both. All previous contents of this Map is cleared. This map (result of the boolean operation) can also be used as one of operands.
         #[cxx_name = "Difference"]
         fn difference(
             self: Pin<&mut PackedMapOfInteger>,
             arg0: &PackedMapOfInteger,
             arg1: &PackedMapOfInteger,
         );
-        #[doc = "Apply to this Map the symmetric difference (aka exclusive disjunction, boolean XOR) operation with another (given) Map. The result contains the values that are contained only in this or the operand map, but not in both. This algorithm is similar to method Difference(). @return True if contents of this map is changed"]
+        /// Apply to this Map the symmetric difference (aka exclusive disjunction, boolean XOR) operation with another (given) Map. The result contains the values that are contained only in this or the operand map, but not in both. This algorithm is similar to method Difference(). @return True if contents of this map is changed
         #[cxx_name = "Differ"]
         fn differ(self: Pin<&mut PackedMapOfInteger>, arg0: &PackedMapOfInteger) -> bool;
-        #[doc = "Returns True if this map is equal to the given one, i.e. they contain the same sets of elements"]
+        /// Returns True if this map is equal to the given one, i.e. they contain the same sets of elements
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &PackedMapOfInteger, arg0: &PackedMapOfInteger) -> bool;
-        #[doc = "Returns True if this map is subset of the given one, i.e. all elements contained in this map is contained also in the operand map. if this map is empty that this method returns true for any operand map."]
+        /// Returns True if this map is subset of the given one, i.e. all elements contained in this map is contained also in the operand map. if this map is empty that this method returns true for any operand map.
         #[cxx_name = "IsSubset"]
         fn is_subset(self: &PackedMapOfInteger, arg0: &PackedMapOfInteger) -> bool;
-        #[doc = "Returns True if this map has common items with the given one."]
+        /// Returns True if this map has common items with the given one.
         #[cxx_name = "HasIntersection"]
         fn has_intersection(self: &PackedMapOfInteger, arg0: &PackedMapOfInteger) -> bool;
-        #[doc = " ======================== TColStd_HArray1OfTransient ========================"]
-        #[doc = "/// **Source:** `TColStd_HArray1OfTransient.hxx` - `TColStd_HArray1OfTransient`"]
+        /// ======================== TColStd_HArray1OfTransient ========================
+        /// /// **Source:** `TColStd_HArray1OfTransient.hxx` - `TColStd_HArray1OfTransient`
         #[cxx_name = "TColStd_HArray1OfTransient"]
         type HArray1OfTransient;
-        #[doc = "/// **Source:** `TColStd_HArray1OfTransient.hxx` - `TColStd_HArray1OfTransient::TColStd_HArray1OfTransient()`"]
+        /// /// **Source:** `TColStd_HArray1OfTransient.hxx` - `TColStd_HArray1OfTransient::TColStd_HArray1OfTransient()`
         #[cxx_name = "TColStd_HArray1OfTransient_ctor"]
         fn HArray1OfTransient_ctor() -> UniquePtr<HArray1OfTransient>;
-        #[doc = "/// **Source:** `TColStd_HArray1OfTransient.hxx` - `TColStd_HArray1OfTransient::TColStd_HArray1OfTransient()`"]
+        /// /// **Source:** `TColStd_HArray1OfTransient.hxx` - `TColStd_HArray1OfTransient::TColStd_HArray1OfTransient()`
         #[cxx_name = "TColStd_HArray1OfTransient_ctor_int2"]
         fn HArray1OfTransient_ctor_int2(
             theLower: i32,
             theUpper: i32,
         ) -> UniquePtr<HArray1OfTransient>;
-        #[doc = "/// **Source:** `TColStd_HArray1OfTransient.hxx` - `TColStd_HArray1OfTransient::TColStd_HArray1OfTransient()`"]
+        /// /// **Source:** `TColStd_HArray1OfTransient.hxx` - `TColStd_HArray1OfTransient::TColStd_HArray1OfTransient()`
         #[cxx_name = "TColStd_HArray1OfTransient_ctor_array1oftransient"]
         fn HArray1OfTransient_ctor_array1oftransient(
             theOther: &TColStd_Array1OfTransient,
@@ -648,19 +649,19 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HArray1OfTransient) -> &HandleStandardType;
         #[cxx_name = "TColStd_HArray1OfTransient_get_type_name"]
         fn HArray1OfTransient_get_type_name() -> String;
-        #[doc = "Wrap TColStd_HArray1OfTransient in a Handle (reference-counted smart pointer)"]
+        /// Wrap TColStd_HArray1OfTransient in a Handle (reference-counted smart pointer)
         #[cxx_name = "TColStd_HArray1OfTransient_to_handle"]
         fn HArray1OfTransient_to_handle(
             obj: UniquePtr<HArray1OfTransient>,
         ) -> UniquePtr<HandleTColStdHArray1OfTransient>;
-        #[doc = " ======================== TColStd_HSequenceOfHExtendedString ========================"]
-        #[doc = "/// **Source:** `TColStd_HSequenceOfHExtendedString.hxx` - `TColStd_HSequenceOfHExtendedString`"]
+        /// ======================== TColStd_HSequenceOfHExtendedString ========================
+        /// /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx` - `TColStd_HSequenceOfHExtendedString`
         #[cxx_name = "TColStd_HSequenceOfHExtendedString"]
         type HSequenceOfHExtendedString;
-        #[doc = "/// **Source:** `TColStd_HSequenceOfHExtendedString.hxx` - `TColStd_HSequenceOfHExtendedString::TColStd_HSequenceOfHExtendedString()`"]
+        /// /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx` - `TColStd_HSequenceOfHExtendedString::TColStd_HSequenceOfHExtendedString()`
         #[cxx_name = "TColStd_HSequenceOfHExtendedString_ctor"]
         fn HSequenceOfHExtendedString_ctor() -> UniquePtr<HSequenceOfHExtendedString>;
-        #[doc = "/// **Source:** `TColStd_HSequenceOfHExtendedString.hxx` - `TColStd_HSequenceOfHExtendedString::TColStd_HSequenceOfHExtendedString()`"]
+        /// /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx` - `TColStd_HSequenceOfHExtendedString::TColStd_HSequenceOfHExtendedString()`
         #[cxx_name = "TColStd_HSequenceOfHExtendedString_ctor_sequenceofhextendedstring"]
         fn HSequenceOfHExtendedString_ctor_sequenceofhextendedstring(
             theOther: &TColStd_SequenceOfHExtendedString,
@@ -680,29 +681,29 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HSequenceOfHExtendedString) -> &HandleStandardType;
         #[cxx_name = "TColStd_HSequenceOfHExtendedString_get_type_name"]
         fn HSequenceOfHExtendedString_get_type_name() -> String;
-        #[doc = "Wrap TColStd_HSequenceOfHExtendedString in a Handle (reference-counted smart pointer)"]
+        /// Wrap TColStd_HSequenceOfHExtendedString in a Handle (reference-counted smart pointer)
         #[cxx_name = "TColStd_HSequenceOfHExtendedString_to_handle"]
         fn HSequenceOfHExtendedString_to_handle(
             obj: UniquePtr<HSequenceOfHExtendedString>,
         ) -> UniquePtr<HandleTColStdHSequenceOfHExtendedString>;
-        #[doc = " ======================== TColStd_HArray1OfBoolean ========================"]
-        #[doc = "/// **Source:** `TColStd_HArray1OfBoolean.hxx` - `TColStd_HArray1OfBoolean`"]
+        /// ======================== TColStd_HArray1OfBoolean ========================
+        /// /// **Source:** `TColStd_HArray1OfBoolean.hxx` - `TColStd_HArray1OfBoolean`
         #[cxx_name = "TColStd_HArray1OfBoolean"]
         type HArray1OfBoolean;
-        #[doc = "/// **Source:** `TColStd_HArray1OfBoolean.hxx` - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`"]
+        /// /// **Source:** `TColStd_HArray1OfBoolean.hxx` - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
         #[cxx_name = "TColStd_HArray1OfBoolean_ctor"]
         fn HArray1OfBoolean_ctor() -> UniquePtr<HArray1OfBoolean>;
-        #[doc = "/// **Source:** `TColStd_HArray1OfBoolean.hxx` - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`"]
+        /// /// **Source:** `TColStd_HArray1OfBoolean.hxx` - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
         #[cxx_name = "TColStd_HArray1OfBoolean_ctor_int2"]
         fn HArray1OfBoolean_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfBoolean>;
-        #[doc = "/// **Source:** `TColStd_HArray1OfBoolean.hxx` - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`"]
+        /// /// **Source:** `TColStd_HArray1OfBoolean.hxx` - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
         #[cxx_name = "TColStd_HArray1OfBoolean_ctor_int2_bool"]
         fn HArray1OfBoolean_ctor_int2_bool(
             theLower: i32,
             theUpper: i32,
             theValue: &bool,
         ) -> UniquePtr<HArray1OfBoolean>;
-        #[doc = "/// **Source:** `TColStd_HArray1OfBoolean.hxx` - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`"]
+        /// /// **Source:** `TColStd_HArray1OfBoolean.hxx` - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
         #[cxx_name = "TColStd_HArray1OfBoolean_ctor_bool_int2_bool"]
         fn HArray1OfBoolean_ctor_bool_int2_bool(
             theBegin: &bool,
@@ -710,7 +711,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfBoolean>;
-        #[doc = "/// **Source:** `TColStd_HArray1OfBoolean.hxx` - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`"]
+        /// /// **Source:** `TColStd_HArray1OfBoolean.hxx` - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
         #[cxx_name = "TColStd_HArray1OfBoolean_ctor_array1ofboolean"]
         fn HArray1OfBoolean_ctor_array1ofboolean(
             theOther: &TColStd_Array1OfBoolean,
@@ -723,66 +724,68 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HArray1OfBoolean) -> &HandleStandardType;
         #[cxx_name = "TColStd_HArray1OfBoolean_get_type_name"]
         fn HArray1OfBoolean_get_type_name() -> String;
-        #[doc = "Wrap TColStd_HArray1OfBoolean in a Handle (reference-counted smart pointer)"]
+        /// Wrap TColStd_HArray1OfBoolean in a Handle (reference-counted smart pointer)
         #[cxx_name = "TColStd_HArray1OfBoolean_to_handle"]
         fn HArray1OfBoolean_to_handle(
             obj: UniquePtr<HArray1OfBoolean>,
         ) -> UniquePtr<HandleTColStdHArray1OfBoolean>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "BaseAllocator from n_collection module"]
+        /// BaseAllocator from n_collection module
         type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
-        #[doc = "BaseList from n_collection module"]
+        /// BaseList from n_collection module
         type NCollection_BaseList = crate::n_collection::ffi::BaseList;
-        #[doc = "BasePointerVector from n_collection module"]
+        /// BasePointerVector from n_collection module
         type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
-        #[doc = "Buffer from n_collection module"]
+        /// Buffer from n_collection module
         type NCollection_Buffer = crate::n_collection::ffi::Buffer;
-        #[doc = "IncAllocator from n_collection module"]
+        /// IncAllocator from n_collection module
         type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+
         // ========================
         // Referenced types (opaque)
         // ========================

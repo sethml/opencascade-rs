@@ -14,7 +14,7 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Function;
 impl Function {
-    #[doc = "Returns a  law equivalent of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn."]
+    /// Returns a  law equivalent of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
     pub fn trim(
         &self,
         PFirst: f64,
@@ -42,22 +42,22 @@ impl BSpFunc {
         ffi::BSpFunc_ctor_handlebspline_real2(C, First, Last)
     }
 
-    #[doc = "Upcast to Law_Function"]
+    /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
         ffi::b_sp_func_as_function(self)
     }
 
-    #[doc = "Upcast to Law_Function (mutable)"]
+    /// Upcast to Law_Function (mutable)
     pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
         ffi::b_sp_func_as_function_mut(self)
     }
 
-    #[doc = "Wrap Law_BSpFunc in a Handle (reference-counted smart pointer)"]
+    /// Wrap Law_BSpFunc in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleLawBSpFunc> {
         ffi::BSpFunc_to_handle(obj)
     }
 
-    #[doc = "Returns a  law equivalent of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn."]
+    /// Returns a  law equivalent of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
     pub fn trim(
         &self,
         PFirst: f64,
@@ -77,32 +77,32 @@ impl BSpFunc {
 }
 pub use ffi::Interpol;
 impl Interpol {
-    #[doc = "Constructs an empty interpolative evolution law. The function Set is used to define the law."]
+    /// Constructs an empty interpolative evolution law. The function Set is used to define the law.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Interpol_ctor()
     }
 
-    #[doc = "Upcast to Law_BSpFunc"]
+    /// Upcast to Law_BSpFunc
     pub fn as_b_sp_func(&self) -> &BSpFunc {
         ffi::interpol_as_b_sp_func(self)
     }
 
-    #[doc = "Upcast to Law_BSpFunc (mutable)"]
+    /// Upcast to Law_BSpFunc (mutable)
     pub fn as_b_sp_func_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut BSpFunc> {
         ffi::interpol_as_b_sp_func_mut(self)
     }
 
-    #[doc = "Upcast to Law_Function"]
+    /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
         ffi::interpol_as_function(self)
     }
 
-    #[doc = "Upcast to Law_Function (mutable)"]
+    /// Upcast to Law_Function (mutable)
     pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
         ffi::interpol_as_function_mut(self)
     }
 
-    #[doc = "Wrap Law_Interpol in a Handle (reference-counted smart pointer)"]
+    /// Wrap Law_Interpol in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleLawInterpol> {
         ffi::Interpol_to_handle(obj)
     }
@@ -112,18 +112,18 @@ impl Interpol {
     }
 }
 impl ffi::HandleLawBSpFunc {
-    #[doc = "Upcast to Handle<Law_Function>"]
+    /// Upcast to Handle<Law_Function>
     pub fn to_handle_function(&self) -> cxx::UniquePtr<ffi::HandleLawFunction> {
         ffi::b_sp_func_to_handle_function(self)
     }
 }
 impl ffi::HandleLawInterpol {
-    #[doc = "Upcast to Handle<Law_BSpFunc>"]
+    /// Upcast to Handle<Law_BSpFunc>
     pub fn to_handle_b_sp_func(&self) -> cxx::UniquePtr<ffi::HandleLawBSpFunc> {
         ffi::interpol_to_handle_b_sp_func(self)
     }
 
-    #[doc = "Upcast to Handle<Law_Function>"]
+    /// Upcast to Handle<Law_Function>
     pub fn to_handle_function(&self) -> cxx::UniquePtr<ffi::HandleLawFunction> {
         ffi::interpol_to_handle_function(self)
     }
@@ -132,30 +132,31 @@ impl ffi::HandleLawInterpol {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_law.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== Law_Function ========================"]
-        #[doc = "/// **Source:** `Law_Function.hxx` - `Law_Function`"]
-        #[doc = ""]
-        #[doc = "Root class for evolution laws."]
+        /// ======================== Law_Function ========================
+        /// /// **Source:** `Law_Function.hxx` - `Law_Function`
+        ///
+        /// Root class for evolution laws.
         #[cxx_name = "Law_Function"]
         type Function;
-        #[doc = "Returns the value of the function at the point of parameter X."]
+        /// Returns the value of the function at the point of parameter X.
         #[cxx_name = "Value"]
         fn value(self: Pin<&mut Function>, X: f64) -> f64;
-        #[doc = "Returns the value F and the first derivative D of the function at the point of parameter X."]
+        /// Returns the value F and the first derivative D of the function at the point of parameter X.
         #[cxx_name = "D1"]
         fn d1(self: Pin<&mut Function>, X: f64, F: &mut f64, D: &mut f64);
-        #[doc = "Returns the value, first and seconde derivatives at parameter X."]
+        /// Returns the value, first and seconde derivatives at parameter X.
         #[cxx_name = "D2"]
         fn d2(self: Pin<&mut Function>, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64);
-        #[doc = "Returns the parametric bounds of the function."]
+        /// Returns the parametric bounds of the function.
         #[cxx_name = "Bounds"]
         fn bounds(self: Pin<&mut Function>, PFirst: &mut f64, PLast: &mut f64);
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Function) -> &HandleStandardType;
-        #[doc = "Returns a  law equivalent of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn."]
+        /// Returns a  law equivalent of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
         #[cxx_name = "Law_Function_Trim"]
         fn Function_trim(
             self_: &Function,
@@ -165,16 +166,16 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleLawFunction>;
         #[cxx_name = "Law_Function_get_type_name"]
         fn Function_get_type_name() -> String;
-        #[doc = " ======================== Law_BSpFunc ========================"]
-        #[doc = "/// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc`"]
-        #[doc = ""]
-        #[doc = "Law Function based on a BSpline curve 1d.  Package methods and classes are implemented in package Law to    construct  the  basis    curve with  several constraints."]
+        /// ======================== Law_BSpFunc ========================
+        /// /// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc`
+        ///
+        /// Law Function based on a BSpline curve 1d.  Package methods and classes are implemented in package Law to    construct  the  basis    curve with  several constraints.
         #[cxx_name = "Law_BSpFunc"]
         type BSpFunc;
-        #[doc = "/// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc::Law_BSpFunc()`"]
+        /// /// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc::Law_BSpFunc()`
         #[cxx_name = "Law_BSpFunc_ctor"]
         fn BSpFunc_ctor() -> UniquePtr<BSpFunc>;
-        #[doc = "/// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc::Law_BSpFunc()`"]
+        /// /// **Source:** `Law_BSpFunc.hxx` - `Law_BSpFunc::Law_BSpFunc()`
         #[cxx_name = "Law_BSpFunc_ctor_handlebspline_real2"]
         fn BSpFunc_ctor_handlebspline_real2(
             C: &HandleLawBSpline,
@@ -193,7 +194,7 @@ pub(crate) mod ffi {
         fn set_curve(self: Pin<&mut BSpFunc>, C: &HandleLawBSpline);
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BSpFunc) -> &HandleStandardType;
-        #[doc = "Returns a  law equivalent of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn."]
+        /// Returns a  law equivalent of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
         #[cxx_name = "Law_BSpFunc_Trim"]
         fn BSpFunc_trim(
             self_: &BSpFunc,
@@ -205,30 +206,30 @@ pub(crate) mod ffi {
         fn BSpFunc_curve(self_: &BSpFunc) -> UniquePtr<HandleLawBSpline>;
         #[cxx_name = "Law_BSpFunc_get_type_name"]
         fn BSpFunc_get_type_name() -> String;
-        #[doc = "Upcast Law_BSpFunc to Law_Function"]
+        /// Upcast Law_BSpFunc to Law_Function
         #[cxx_name = "Law_BSpFunc_as_Law_Function"]
         fn b_sp_func_as_function(self_: &BSpFunc) -> &Function;
-        #[doc = "Upcast Law_BSpFunc to Law_Function (mutable)"]
+        /// Upcast Law_BSpFunc to Law_Function (mutable)
         #[cxx_name = "Law_BSpFunc_as_Law_Function_mut"]
         fn b_sp_func_as_function_mut(self_: Pin<&mut BSpFunc>) -> Pin<&mut Function>;
-        #[doc = "Wrap Law_BSpFunc in a Handle (reference-counted smart pointer)"]
+        /// Wrap Law_BSpFunc in a Handle (reference-counted smart pointer)
         #[cxx_name = "Law_BSpFunc_to_handle"]
         fn BSpFunc_to_handle(obj: UniquePtr<BSpFunc>) -> UniquePtr<HandleLawBSpFunc>;
-        #[doc = "Upcast Handle<Law_BSpFunc> to Handle<Law_Function>"]
+        /// Upcast Handle<Law_BSpFunc> to Handle<Law_Function>
         #[cxx_name = "HandleLawBSpFunc_to_HandleLawFunction"]
         fn b_sp_func_to_handle_function(handle: &HandleLawBSpFunc) -> UniquePtr<HandleLawFunction>;
-        #[doc = " ======================== Law_Interpol ========================"]
-        #[doc = "/// **Source:** `Law_Interpol.hxx` - `Law_Interpol`"]
-        #[doc = ""]
-        #[doc = "Provides an evolution law that interpolates a set of parameter and value pairs (wi, radi)"]
+        /// ======================== Law_Interpol ========================
+        /// /// **Source:** `Law_Interpol.hxx` - `Law_Interpol`
+        ///
+        /// Provides an evolution law that interpolates a set of parameter and value pairs (wi, radi)
         #[cxx_name = "Law_Interpol"]
         type Interpol;
-        #[doc = "/// **Source:** `Law_Interpol.hxx` - `Law_Interpol::Law_Interpol()`"]
-        #[doc = ""]
-        #[doc = "Constructs an empty interpolative evolution law. The function Set is used to define the law."]
+        /// /// **Source:** `Law_Interpol.hxx` - `Law_Interpol::Law_Interpol()`
+        ///
+        /// Constructs an empty interpolative evolution law. The function Set is used to define the law.
         #[cxx_name = "Law_Interpol_ctor"]
         fn Interpol_ctor() -> UniquePtr<Interpol>;
-        #[doc = "Defines this evolution law by interpolating the set of 2D points ParAndRad. The Y coordinate of a point of ParAndRad is the value of the function at the parameter point given by its X coordinate. If Periodic is true, this function is assumed to be periodic. Warning -   The X coordinates of points in the table ParAndRad must be given in ascendant order. -   If Periodic is true, the first and last Y coordinates of points in the table ParAndRad are assumed to be equal. In addition, with the second syntax, Dd and Df are also assumed to be equal. If this is not the case, Set uses the first value(s) as last value(s)."]
+        /// Defines this evolution law by interpolating the set of 2D points ParAndRad. The Y coordinate of a point of ParAndRad is the value of the function at the parameter point given by its X coordinate. If Periodic is true, this function is assumed to be periodic. Warning -   The X coordinates of points in the table ParAndRad must be given in ascendant order. -   If Periodic is true, the first and last Y coordinates of points in the table ParAndRad are assumed to be equal. In addition, with the second syntax, Dd and Df are also assumed to be equal. If this is not the case, Set uses the first value(s) as last value(s).
         #[cxx_name = "Set"]
         fn set_array1ofpnt2d_bool(
             self: Pin<&mut Interpol>,
@@ -243,7 +244,7 @@ pub(crate) mod ffi {
             Uf: f64,
             Periodic: bool,
         );
-        #[doc = "Defines this evolution law by interpolating the set of 2D points ParAndRad. The Y coordinate of a point of ParAndRad is the value of the function at the parameter point given by its X coordinate. If Periodic is true, this function is assumed to be periodic. In the second syntax, Dd and Df define the values of the first derivative of the function at its first and last points. Warning -   The X coordinates of points in the table ParAndRad must be given in ascendant order. -   If Periodic is true, the first and last Y coordinates of points in the table ParAndRad are assumed to be equal. In addition, with the second syntax, Dd and Df are also assumed to be equal. If this is not the case, Set uses the first value(s) as last value(s)."]
+        /// Defines this evolution law by interpolating the set of 2D points ParAndRad. The Y coordinate of a point of ParAndRad is the value of the function at the parameter point given by its X coordinate. If Periodic is true, this function is assumed to be periodic. In the second syntax, Dd and Df define the values of the first derivative of the function at its first and last points. Warning -   The X coordinates of points in the table ParAndRad must be given in ascendant order. -   If Periodic is true, the first and last Y coordinates of points in the table ParAndRad are assumed to be equal. In addition, with the second syntax, Dd and Df are also assumed to be equal. If this is not the case, Set uses the first value(s) as last value(s).
         #[cxx_name = "Set"]
         fn set_array1ofpnt2d_real2_bool(
             self: Pin<&mut Interpol>,
@@ -266,100 +267,102 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &Interpol) -> &HandleStandardType;
         #[cxx_name = "Law_Interpol_get_type_name"]
         fn Interpol_get_type_name() -> String;
-        #[doc = "Upcast Law_Interpol to Law_BSpFunc"]
+        /// Upcast Law_Interpol to Law_BSpFunc
         #[cxx_name = "Law_Interpol_as_Law_BSpFunc"]
         fn interpol_as_b_sp_func(self_: &Interpol) -> &BSpFunc;
-        #[doc = "Upcast Law_Interpol to Law_BSpFunc (mutable)"]
+        /// Upcast Law_Interpol to Law_BSpFunc (mutable)
         #[cxx_name = "Law_Interpol_as_Law_BSpFunc_mut"]
         fn interpol_as_b_sp_func_mut(self_: Pin<&mut Interpol>) -> Pin<&mut BSpFunc>;
-        #[doc = "Upcast Law_Interpol to Law_Function"]
+        /// Upcast Law_Interpol to Law_Function
         #[cxx_name = "Law_Interpol_as_Law_Function"]
         fn interpol_as_function(self_: &Interpol) -> &Function;
-        #[doc = "Upcast Law_Interpol to Law_Function (mutable)"]
+        /// Upcast Law_Interpol to Law_Function (mutable)
         #[cxx_name = "Law_Interpol_as_Law_Function_mut"]
         fn interpol_as_function_mut(self_: Pin<&mut Interpol>) -> Pin<&mut Function>;
-        #[doc = "Wrap Law_Interpol in a Handle (reference-counted smart pointer)"]
+        /// Wrap Law_Interpol in a Handle (reference-counted smart pointer)
         #[cxx_name = "Law_Interpol_to_handle"]
         fn Interpol_to_handle(obj: UniquePtr<Interpol>) -> UniquePtr<HandleLawInterpol>;
-        #[doc = "Upcast Handle<Law_Interpol> to Handle<Law_BSpFunc>"]
+        /// Upcast Handle<Law_Interpol> to Handle<Law_BSpFunc>
         #[cxx_name = "HandleLawInterpol_to_HandleLawBSpFunc"]
         fn interpol_to_handle_b_sp_func(handle: &HandleLawInterpol) -> UniquePtr<HandleLawBSpFunc>;
-        #[doc = "Upcast Handle<Law_Interpol> to Handle<Law_Function>"]
+        /// Upcast Handle<Law_Interpol> to Handle<Law_Function>
         #[cxx_name = "HandleLawInterpol_to_HandleLawFunction"]
         fn interpol_to_handle_function(handle: &HandleLawInterpol) -> UniquePtr<HandleLawFunction>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
+        /// HArray1OfBoolean from t_col_std module
         type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
+        /// HArray1OfInteger from t_col_std module
         type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
+        /// HArray1OfReal from t_col_std module
         type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
+        /// HArray1OfTransient from t_col_std module
         type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
+        /// HArray2OfReal from t_col_std module
         type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        /// HSequenceOfHExtendedString from t_col_std module
         type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfInteger from t_col_std module"]
+        /// HSequenceOfInteger from t_col_std module
         type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
-        #[doc = "HSequenceOfReal from t_col_std module"]
+        /// HSequenceOfReal from t_col_std module
         type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
+        /// HSequenceOfTransient from t_col_std module
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
+        /// PackedMapOfInteger from t_col_std module
         type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfPnt from t_colgp module"]
+        /// HArray1OfPnt from t_colgp module
         type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
-        #[doc = "HArray1OfPnt2d from t_colgp module"]
+        /// HArray1OfPnt2d from t_colgp module
         type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
-        #[doc = "HArray1OfVec from t_colgp module"]
+        /// HArray1OfVec from t_colgp module
         type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
-        #[doc = "HArray2OfPnt from t_colgp module"]
+        /// HArray2OfPnt from t_colgp module
         type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
+
         // ========================
         // Referenced types (opaque)
         // ========================

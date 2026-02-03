@@ -41,19 +41,19 @@ impl Interpolate {
 }
 pub use ffi::PointsToBSpline;
 impl PointsToBSpline {
-    #[doc = "Constructs an empty approximation algorithm. Use an Init function to define and build the BSpline curve."]
+    /// Constructs an empty approximation algorithm. Use an Init function to define and build the BSpline curve.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::PointsToBSpline_ctor()
     }
 }
 pub use ffi::ProjectPointOnCurve;
 impl ProjectPointOnCurve {
-    #[doc = "Creates an empty object. Use an Init function for further initialization."]
+    /// Creates an empty object. Use an Init function for further initialization.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ProjectPointOnCurve_ctor()
     }
 
-    #[doc = "Create the projection  of a  point  <P> on a curve <Curve>"]
+    /// Create the projection  of a  point  <P> on a curve <Curve>
     pub fn new_pnt_handlecurve(
         P: &ffi::gp_Pnt,
         Curve: &ffi::HandleGeomCurve,
@@ -61,7 +61,7 @@ impl ProjectPointOnCurve {
         ffi::ProjectPointOnCurve_ctor_pnt_handlecurve(P, Curve)
     }
 
-    #[doc = "Create  the projection  of a point <P>  on a curve <Curve> limited by the two points of parameter Umin and Usup."]
+    /// Create  the projection  of a point <P>  on a curve <Curve> limited by the two points of parameter Umin and Usup.
     pub fn new_pnt_handlecurve_real2(
         P: &ffi::gp_Pnt,
         Curve: &ffi::HandleGeomCurve,
@@ -71,29 +71,29 @@ impl ProjectPointOnCurve {
         ffi::ProjectPointOnCurve_ctor_pnt_handlecurve_real2(P, Curve, Umin, Usup)
     }
 
-    #[doc = "Returns the orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points."]
+    /// Returns the orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
     pub fn point(&self, Index: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::ProjectPointOnCurve_point(self, Index)
     }
 
-    #[doc = "Returns the nearest orthogonal projection of the point on the curve. Exceptions: StdFail_NotDone if this algorithm fails."]
+    /// Returns the nearest orthogonal projection of the point on the curve. Exceptions: StdFail_NotDone if this algorithm fails.
     pub fn nearest_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::ProjectPointOnCurve_nearest_point(self)
     }
 }
 pub use ffi::ProjectPointOnSurf;
 impl ProjectPointOnSurf {
-    #[doc = "Creates an empty object. Use the Init function for further initialization."]
+    /// Creates an empty object. Use the Init function for further initialization.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ProjectPointOnSurf_ctor()
     }
 
-    #[doc = "Returns the orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points."]
+    /// Returns the orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
     pub fn point(&self, Index: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::ProjectPointOnSurf_point(self, Index)
     }
 
-    #[doc = "Returns the nearest orthogonal projection of the point on the surface. Exceptions StdFail_NotDone if projection fails."]
+    /// Returns the nearest orthogonal projection of the point on the surface. Exceptions StdFail_NotDone if projection fails.
     pub fn nearest_point(&self) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::ProjectPointOnSurf_nearest_point(self)
     }
@@ -102,17 +102,18 @@ impl ProjectPointOnSurf {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom_api.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== GeomAPI_Interpolate ========================"]
-        #[doc = "/// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate`"]
-        #[doc = ""]
-        #[doc = "This  class  is  used  to  interpolate a  BsplineCurve passing   through  an  array  of  points,  with  a  C2 Continuity if tangency is not requested at the point. If tangency is requested at the point the continuity will be C1.  If Perodicity is requested the curve will be closed and the junction will be the first point given. The curve will than be only C1 Describes functions for building a constrained 3D BSpline curve. The curve is defined by a table of points through which it passes, and if required: -   by a parallel table of reals which gives the value of the parameter of each point through which the resulting BSpline curve passes, and -   by vectors tangential to these points. An Interpolate object provides a framework for: -   defining the constraints of the BSpline curve, -   implementing the interpolation algorithm, and -   consulting the results."]
+        /// ======================== GeomAPI_Interpolate ========================
+        /// /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate`
+        ///
+        /// This  class  is  used  to  interpolate a  BsplineCurve passing   through  an  array  of  points,  with  a  C2 Continuity if tangency is not requested at the point. If tangency is requested at the point the continuity will be C1.  If Perodicity is requested the curve will be closed and the junction will be the first point given. The curve will than be only C1 Describes functions for building a constrained 3D BSpline curve. The curve is defined by a table of points through which it passes, and if required: -   by a parallel table of reals which gives the value of the parameter of each point through which the resulting BSpline curve passes, and -   by vectors tangential to these points. An Interpolate object provides a framework for: -   defining the constraints of the BSpline curve, -   implementing the interpolation algorithm, and -   consulting the results.
         #[cxx_name = "GeomAPI_Interpolate"]
         type Interpolate;
-        #[doc = "/// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate::GeomAPI_Interpolate()`"]
-        #[doc = ""]
+        /// /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate::GeomAPI_Interpolate()`
+        ///
         #[doc = "Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table   Points. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: -   points are not too close to each other, or -   tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be \"C2\" continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only \"C1\" continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning -   There must be at least 2 points in the table Points. -   If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. -   If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions -   Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. -   Standard_OutOfRange if: -   there are less than two points in the table Points, or -   conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected."]
         #[cxx_name = "GeomAPI_Interpolate_ctor_handleharray1ofpnt_bool_real"]
         fn Interpolate_ctor_handleharray1ofpnt_bool_real(
@@ -120,8 +121,8 @@ pub(crate) mod ffi {
             PeriodicFlag: bool,
             Tolerance: f64,
         ) -> UniquePtr<Interpolate>;
-        #[doc = "/// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate::GeomAPI_Interpolate()`"]
-        #[doc = ""]
+        /// /// **Source:** `GeomAPI_Interpolate.hxx` - `GeomAPI_Interpolate::GeomAPI_Interpolate()`
+        ///
         #[doc = "Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table Points, where the parameters of each of its points are given by the parallel table Parameters. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: -   points are not too close to each other, or -   tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be \"C2\" continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only \"C1\" continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning -   There must be at least 2 points in the table Points. -   If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. -   If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions -   Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. -   Standard_OutOfRange if: -   there are less than two points in the table Points, or -   conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected."]
         #[cxx_name = "GeomAPI_Interpolate_ctor_handleharray1ofpnt_handleharray1ofreal_bool_real"]
         fn Interpolate_ctor_handleharray1ofpnt_handleharray1ofreal_bool_real(
@@ -130,7 +131,7 @@ pub(crate) mod ffi {
             PeriodicFlag: bool,
             Tolerance: f64,
         ) -> UniquePtr<Interpolate>;
-        #[doc = "Assigns this constrained BSpline curve to be tangential to vectors InitialTangent and FinalTangent at its first and last points respectively (i.e. the first and last points of the table of points through which the curve passes, as defined at the time of initialization)."]
+        /// Assigns this constrained BSpline curve to be tangential to vectors InitialTangent and FinalTangent at its first and last points respectively (i.e. the first and last points of the table of points through which the curve passes, as defined at the time of initialization).
         #[cxx_name = "Load"]
         fn load_vec2_bool(
             self: Pin<&mut Interpolate>,
@@ -138,7 +139,7 @@ pub(crate) mod ffi {
             FinalTangent: &gp_Vec,
             Scale: bool,
         );
-        #[doc = "Assigns this constrained BSpline curve to be tangential to vectors defined in the table Tangents, which is parallel to the table of points through which the curve passes, as defined at the time of initialization. Vectors in the table Tangents are defined only if the flag given in the parallel table TangentFlags is true: only these vectors are set as tangency constraints."]
+        /// Assigns this constrained BSpline curve to be tangential to vectors defined in the table Tangents, which is parallel to the table of points through which the curve passes, as defined at the time of initialization. Vectors in the table Tangents are defined only if the flag given in the parallel table TangentFlags is true: only these vectors are set as tangency constraints.
         #[cxx_name = "Load"]
         fn load_array1ofvec_handleharray1ofboolean_bool(
             self: Pin<&mut Interpolate>,
@@ -146,56 +147,56 @@ pub(crate) mod ffi {
             TangentFlags: &HandleTColStdHArray1OfBoolean,
             Scale: bool,
         );
-        #[doc = "Clears all tangency constraints on this constrained BSpline curve (as initialized by the function Load)."]
+        /// Clears all tangency constraints on this constrained BSpline curve (as initialized by the function Load).
         #[cxx_name = "ClearTangents"]
         fn clear_tangents(self: Pin<&mut Interpolate>);
-        #[doc = "Computes the constrained BSpline curve. Use the function IsDone to verify that the computation is successful, and then the function Curve to obtain the result."]
+        /// Computes the constrained BSpline curve. Use the function IsDone to verify that the computation is successful, and then the function Curve to obtain the result.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut Interpolate>);
-        #[doc = "Returns the computed BSpline curve. Raises StdFail_NotDone if the interpolation fails."]
+        /// Returns the computed BSpline curve. Raises StdFail_NotDone if the interpolation fails.
         #[cxx_name = "Curve"]
         fn curve(self: &Interpolate) -> &HandleGeomBSplineCurve;
-        #[doc = "Returns true if the constrained BSpline curve is successfully constructed. Note: in this case, the result is given by the function Curve."]
+        /// Returns true if the constrained BSpline curve is successfully constructed. Note: in this case, the result is given by the function Curve.
         #[cxx_name = "IsDone"]
         fn is_done(self: &Interpolate) -> bool;
-        #[doc = " ======================== GeomAPI_PointsToBSpline ========================"]
-        #[doc = "/// **Source:** `GeomAPI_PointsToBSpline.hxx` - `GeomAPI_PointsToBSpline`"]
-        #[doc = ""]
-        #[doc = "This  class  is  used  to  approximate a  BsplineCurve passing  through an  array  of points,  with  a  given Continuity. Describes functions for building a 3D BSpline curve which approximates a set of points. A PointsToBSpline object provides a framework for: -   defining the data of the BSpline curve to be built, -   implementing the approximation algorithm, and consulting the results."]
+        /// ======================== GeomAPI_PointsToBSpline ========================
+        /// /// **Source:** `GeomAPI_PointsToBSpline.hxx` - `GeomAPI_PointsToBSpline`
+        ///
+        /// This  class  is  used  to  approximate a  BsplineCurve passing  through an  array  of points,  with  a  given Continuity. Describes functions for building a 3D BSpline curve which approximates a set of points. A PointsToBSpline object provides a framework for: -   defining the data of the BSpline curve to be built, -   implementing the approximation algorithm, and consulting the results.
         #[cxx_name = "GeomAPI_PointsToBSpline"]
         type PointsToBSpline;
-        #[doc = "/// **Source:** `GeomAPI_PointsToBSpline.hxx` - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`"]
-        #[doc = ""]
-        #[doc = "Constructs an empty approximation algorithm. Use an Init function to define and build the BSpline curve."]
+        /// /// **Source:** `GeomAPI_PointsToBSpline.hxx` - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
+        ///
+        /// Constructs an empty approximation algorithm. Use an Init function to define and build the BSpline curve.
         #[cxx_name = "GeomAPI_PointsToBSpline_ctor"]
         fn PointsToBSpline_ctor() -> UniquePtr<PointsToBSpline>;
-        #[doc = "Returns the computed BSpline curve. Raises StdFail_NotDone if the curve is not built."]
+        /// Returns the computed BSpline curve. Raises StdFail_NotDone if the curve is not built.
         #[cxx_name = "Curve"]
         fn curve(self: &PointsToBSpline) -> &HandleGeomBSplineCurve;
         #[cxx_name = "IsDone"]
         fn is_done(self: &PointsToBSpline) -> bool;
-        #[doc = " ======================== GeomAPI_ProjectPointOnCurve ========================"]
-        #[doc = "/// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve`"]
-        #[doc = ""]
-        #[doc = "This class implements methods for  computing all the orthogonal projections of a 3D point onto a  3D curve."]
+        /// ======================== GeomAPI_ProjectPointOnCurve ========================
+        /// /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve`
+        ///
+        /// This class implements methods for  computing all the orthogonal projections of a 3D point onto a  3D curve.
         #[cxx_name = "GeomAPI_ProjectPointOnCurve"]
         type ProjectPointOnCurve;
-        #[doc = "/// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`"]
-        #[doc = ""]
-        #[doc = "Creates an empty object. Use an Init function for further initialization."]
+        /// /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
+        ///
+        /// Creates an empty object. Use an Init function for further initialization.
         #[cxx_name = "GeomAPI_ProjectPointOnCurve_ctor"]
         fn ProjectPointOnCurve_ctor() -> UniquePtr<ProjectPointOnCurve>;
-        #[doc = "/// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`"]
-        #[doc = ""]
-        #[doc = "Create the projection  of a  point  <P> on a curve <Curve>"]
+        /// /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
+        ///
+        /// Create the projection  of a  point  <P> on a curve <Curve>
         #[cxx_name = "GeomAPI_ProjectPointOnCurve_ctor_pnt_handlecurve"]
         fn ProjectPointOnCurve_ctor_pnt_handlecurve(
             P: &gp_Pnt,
             Curve: &HandleGeomCurve,
         ) -> UniquePtr<ProjectPointOnCurve>;
-        #[doc = "/// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`"]
-        #[doc = ""]
-        #[doc = "Create  the projection  of a point <P>  on a curve <Curve> limited by the two points of parameter Umin and Usup."]
+        /// /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx` - `GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve()`
+        ///
+        /// Create  the projection  of a point <P>  on a curve <Curve> limited by the two points of parameter Umin and Usup.
         #[cxx_name = "GeomAPI_ProjectPointOnCurve_ctor_pnt_handlecurve_real2"]
         fn ProjectPointOnCurve_ctor_pnt_handlecurve_real2(
             P: &gp_Pnt,
@@ -203,14 +204,14 @@ pub(crate) mod ffi {
             Umin: f64,
             Usup: f64,
         ) -> UniquePtr<ProjectPointOnCurve>;
-        #[doc = "Init the projection  of a  point  <P> on a curve <Curve>"]
+        /// Init the projection  of a  point  <P> on a curve <Curve>
         #[cxx_name = "Init"]
         fn init_pnt_handlecurve(
             self: Pin<&mut ProjectPointOnCurve>,
             P: &gp_Pnt,
             Curve: &HandleGeomCurve,
         );
-        #[doc = "Init  the  projection  of a  point <P>  on a curve <Curve> limited by the two points of parameter Umin and Usup."]
+        /// Init  the  projection  of a  point <P>  on a curve <Curve> limited by the two points of parameter Umin and Usup.
         #[cxx_name = "Init"]
         fn init_pnt_handlecurve_real2(
             self: Pin<&mut ProjectPointOnCurve>,
@@ -219,7 +220,7 @@ pub(crate) mod ffi {
             Umin: f64,
             Usup: f64,
         );
-        #[doc = "Init  the  projection  of a  point <P>  on a curve <Curve> limited by the two points of parameter Umin and Usup."]
+        /// Init  the  projection  of a  point <P>  on a curve <Curve> limited by the two points of parameter Umin and Usup.
         #[cxx_name = "Init"]
         fn init_handlecurve_real2(
             self: Pin<&mut ProjectPointOnCurve>,
@@ -227,235 +228,237 @@ pub(crate) mod ffi {
             Umin: f64,
             Usup: f64,
         );
-        #[doc = "Performs the projection of a point on the current curve."]
+        /// Performs the projection of a point on the current curve.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut ProjectPointOnCurve>, P: &gp_Pnt);
-        #[doc = "Returns the number of computed orthogonal projection points. Note: if this algorithm fails, NbPoints returns 0."]
+        /// Returns the number of computed orthogonal projection points. Note: if this algorithm fails, NbPoints returns 0.
         #[cxx_name = "NbPoints"]
         fn nb_points(self: &ProjectPointOnCurve) -> i32;
-        #[doc = "Returns the parameter on the curve of the point, which is the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points."]
+        /// Returns the parameter on the curve of the point, which is the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
         #[cxx_name = "Parameter"]
         fn parameter_int(self: &ProjectPointOnCurve, Index: i32) -> f64;
-        #[doc = "Returns the parameter on the curve of the point, which is the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.-"]
+        /// Returns the parameter on the curve of the point, which is the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.-
         #[cxx_name = "Parameter"]
         fn parameter_int_real(self: &ProjectPointOnCurve, Index: i32, U: &mut f64);
-        #[doc = "Computes the distance between the point and its orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points."]
+        /// Computes the distance between the point and its orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
         #[cxx_name = "Distance"]
         fn distance(self: &ProjectPointOnCurve, Index: i32) -> f64;
-        #[doc = "Returns the parameter on the curve of the nearest orthogonal projection of the point. Exceptions: StdFail_NotDone if this algorithm fails."]
+        /// Returns the parameter on the curve of the nearest orthogonal projection of the point. Exceptions: StdFail_NotDone if this algorithm fails.
         #[cxx_name = "LowerDistanceParameter"]
         fn lower_distance_parameter(self: &ProjectPointOnCurve) -> f64;
-        #[doc = "Computes the distance between the point and its nearest orthogonal projection on the curve. Exceptions: StdFail_NotDone if this algorithm fails."]
+        /// Computes the distance between the point and its nearest orthogonal projection on the curve. Exceptions: StdFail_NotDone if this algorithm fails.
         #[cxx_name = "LowerDistance"]
         fn lower_distance(self: &ProjectPointOnCurve) -> f64;
-        #[doc = "return the algorithmic object from Extrema"]
+        /// return the algorithmic object from Extrema
         #[cxx_name = "Extrema"]
         fn extrema(self: &ProjectPointOnCurve) -> &Extrema_ExtPC;
-        #[doc = "Returns the orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points."]
+        /// Returns the orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
         #[cxx_name = "GeomAPI_ProjectPointOnCurve_Point"]
         fn ProjectPointOnCurve_point(self_: &ProjectPointOnCurve, Index: i32) -> UniquePtr<gp_Pnt>;
-        #[doc = "Returns the nearest orthogonal projection of the point on the curve. Exceptions: StdFail_NotDone if this algorithm fails."]
+        /// Returns the nearest orthogonal projection of the point on the curve. Exceptions: StdFail_NotDone if this algorithm fails.
         #[cxx_name = "GeomAPI_ProjectPointOnCurve_NearestPoint"]
         fn ProjectPointOnCurve_nearest_point(self_: &ProjectPointOnCurve) -> UniquePtr<gp_Pnt>;
-        #[doc = " ======================== GeomAPI_ProjectPointOnSurf ========================"]
-        #[doc = "/// **Source:** `GeomAPI_ProjectPointOnSurf.hxx` - `GeomAPI_ProjectPointOnSurf`"]
-        #[doc = ""]
-        #[doc = "This class implements methods for  computing all the orthogonal projections of a point onto a  surface."]
+        /// ======================== GeomAPI_ProjectPointOnSurf ========================
+        /// /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx` - `GeomAPI_ProjectPointOnSurf`
+        ///
+        /// This class implements methods for  computing all the orthogonal projections of a point onto a  surface.
         #[cxx_name = "GeomAPI_ProjectPointOnSurf"]
         type ProjectPointOnSurf;
-        #[doc = "/// **Source:** `GeomAPI_ProjectPointOnSurf.hxx` - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`"]
-        #[doc = ""]
-        #[doc = "Creates an empty object. Use the Init function for further initialization."]
+        /// /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx` - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
+        ///
+        /// Creates an empty object. Use the Init function for further initialization.
         #[cxx_name = "GeomAPI_ProjectPointOnSurf_ctor"]
         fn ProjectPointOnSurf_ctor() -> UniquePtr<ProjectPointOnSurf>;
-        #[doc = "Performs the projection of a point on the current surface."]
+        /// Performs the projection of a point on the current surface.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut ProjectPointOnSurf>, P: &gp_Pnt);
         #[cxx_name = "IsDone"]
         fn is_done(self: &ProjectPointOnSurf) -> bool;
-        #[doc = "Returns the number of computed orthogonal projection points. Note: if projection fails, NbPoints returns 0."]
+        /// Returns the number of computed orthogonal projection points. Note: if projection fails, NbPoints returns 0.
         #[cxx_name = "NbPoints"]
         fn nb_points(self: &ProjectPointOnSurf) -> i32;
-        #[doc = "Returns the parameters (U,V) on the surface of the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points."]
+        /// Returns the parameters (U,V) on the surface of the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
         #[cxx_name = "Parameters"]
         fn parameters(self: &ProjectPointOnSurf, Index: i32, U: &mut f64, V: &mut f64);
-        #[doc = "Computes the distance between the point and its orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points."]
+        /// Computes the distance between the point and its orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
         #[cxx_name = "Distance"]
         fn distance(self: &ProjectPointOnSurf, Index: i32) -> f64;
-        #[doc = "Returns the parameters (U,V) on the surface of the nearest computed orthogonal projection of the point. Exceptions StdFail_NotDone if projection fails."]
+        /// Returns the parameters (U,V) on the surface of the nearest computed orthogonal projection of the point. Exceptions StdFail_NotDone if projection fails.
         #[cxx_name = "LowerDistanceParameters"]
         fn lower_distance_parameters(self: &ProjectPointOnSurf, U: &mut f64, V: &mut f64);
-        #[doc = "Computes the distance between the point and its nearest orthogonal projection on the surface. Exceptions StdFail_NotDone if projection fails."]
+        /// Computes the distance between the point and its nearest orthogonal projection on the surface. Exceptions StdFail_NotDone if projection fails.
         #[cxx_name = "LowerDistance"]
         fn lower_distance(self: &ProjectPointOnSurf) -> f64;
-        #[doc = "return the algorithmic object from Extrema"]
+        /// return the algorithmic object from Extrema
         #[cxx_name = "Extrema"]
         fn extrema(self: &ProjectPointOnSurf) -> &Extrema_ExtPS;
-        #[doc = "Returns the orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points."]
+        /// Returns the orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
         #[cxx_name = "GeomAPI_ProjectPointOnSurf_Point"]
         fn ProjectPointOnSurf_point(self_: &ProjectPointOnSurf, Index: i32) -> UniquePtr<gp_Pnt>;
-        #[doc = "Returns the nearest orthogonal projection of the point on the surface. Exceptions StdFail_NotDone if projection fails."]
+        /// Returns the nearest orthogonal projection of the point on the surface. Exceptions StdFail_NotDone if projection fails.
         #[cxx_name = "GeomAPI_ProjectPointOnSurf_NearestPoint"]
         fn ProjectPointOnSurf_nearest_point(self_: &ProjectPointOnSurf) -> UniquePtr<gp_Pnt>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "ECC from extrema module"]
+        /// ECC from extrema module
         type Extrema_ECC = crate::extrema::ffi::ECC;
-        #[doc = "EPCOfExtPC from extrema module"]
+        /// EPCOfExtPC from extrema module
         type Extrema_EPCOfExtPC = crate::extrema::ffi::EPCOfExtPC;
-        #[doc = "ExtCC from extrema module"]
+        /// ExtCC from extrema module
         type Extrema_ExtCC = crate::extrema::ffi::ExtCC;
-        #[doc = "ExtPC from extrema module"]
+        /// ExtPC from extrema module
         type Extrema_ExtPC = crate::extrema::ffi::ExtPC;
-        #[doc = "ExtPElC from extrema module"]
+        /// ExtPElC from extrema module
         type Extrema_ExtPElC = crate::extrema::ffi::ExtPElC;
-        #[doc = "ExtPElS from extrema module"]
+        /// ExtPElS from extrema module
         type Extrema_ExtPElS = crate::extrema::ffi::ExtPElS;
-        #[doc = "ExtPS from extrema module"]
+        /// ExtPS from extrema module
         type Extrema_ExtPS = crate::extrema::ffi::ExtPS;
-        #[doc = "FuncPSNorm from extrema module"]
+        /// FuncPSNorm from extrema module
         type Extrema_FuncPSNorm = crate::extrema::ffi::FuncPSNorm;
-        #[doc = "GenExtPS from extrema module"]
+        /// GenExtPS from extrema module
         type Extrema_GenExtPS = crate::extrema::ffi::GenExtPS;
-        #[doc = "PCFOfEPCOfExtPC from extrema module"]
+        /// PCFOfEPCOfExtPC from extrema module
         type Extrema_PCFOfEPCOfExtPC = crate::extrema::ffi::PCFOfEPCOfExtPC;
-        #[doc = "POnCurv from extrema module"]
+        /// POnCurv from extrema module
         type Extrema_POnCurv = crate::extrema::ffi::POnCurv;
-        #[doc = "POnSurf from extrema module"]
+        /// POnSurf from extrema module
         type Extrema_POnSurf = crate::extrema::ffi::POnSurf;
-        #[doc = "POnSurfParams from extrema module"]
+        /// POnSurfParams from extrema module
         type Extrema_POnSurfParams = crate::extrema::ffi::POnSurfParams;
-        #[doc = "BSplineCurve from geom module"]
+        /// BSplineCurve from geom module
         type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
+        /// BSplineSurface from geom module
         type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
+        /// BezierCurve from geom module
         type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
+        /// BezierSurface from geom module
         type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
+        /// BoundedCurve from geom module
         type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
+        /// BoundedSurface from geom module
         type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
+        /// Curve from geom module
         type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
+        /// CylindricalSurface from geom module
         type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
+        /// ElementarySurface from geom module
         type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
+        /// Geometry from geom module
         type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
+        /// Plane from geom module
         type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
+        /// Surface from geom module
         type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
+        /// TrimmedCurve from geom module
         type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
+        /// HArray1OfBoolean from t_col_std module
         type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
+        /// HArray1OfInteger from t_col_std module
         type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
+        /// HArray1OfReal from t_col_std module
         type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
+        /// HArray1OfTransient from t_col_std module
         type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
+        /// HArray2OfReal from t_col_std module
         type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        /// HSequenceOfHExtendedString from t_col_std module
         type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfInteger from t_col_std module"]
+        /// HSequenceOfInteger from t_col_std module
         type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
-        #[doc = "HSequenceOfReal from t_col_std module"]
+        /// HSequenceOfReal from t_col_std module
         type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
+        /// HSequenceOfTransient from t_col_std module
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
+        /// PackedMapOfInteger from t_col_std module
         type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfPnt from t_colgp module"]
+        /// HArray1OfPnt from t_colgp module
         type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
-        #[doc = "HArray1OfPnt2d from t_colgp module"]
+        /// HArray1OfPnt2d from t_colgp module
         type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
-        #[doc = "HArray1OfVec from t_colgp module"]
+        /// HArray1OfVec from t_colgp module
         type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
-        #[doc = "HArray2OfPnt from t_colgp module"]
+        /// HArray2OfPnt from t_colgp module
         type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
+
         // ========================
         // Referenced types (opaque)
         // ========================

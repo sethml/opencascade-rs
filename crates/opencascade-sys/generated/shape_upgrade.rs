@@ -12,12 +12,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::UnifySameDomain;
 impl UnifySameDomain {
-    #[doc = "Empty constructor"]
+    /// Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::UnifySameDomain_ctor()
     }
 
-    #[doc = "Constructor defining input shape and necessary flags. It does not perform unification."]
+    /// Constructor defining input shape and necessary flags. It does not perform unification.
     pub fn new_shape_bool3(
         aShape: &ffi::TopoDS_Shape,
         UnifyEdges: bool,
@@ -27,7 +27,7 @@ impl UnifySameDomain {
         ffi::UnifySameDomain_ctor_shape_bool3(aShape, UnifyEdges, UnifyFaces, ConcatBSplines)
     }
 
-    #[doc = "Wrap ShapeUpgrade_UnifySameDomain in a Handle (reference-counted smart pointer)"]
+    /// Wrap ShapeUpgrade_UnifySameDomain in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<ffi::HandleShapeUpgradeUnifySameDomain> {
@@ -42,23 +42,24 @@ impl UnifySameDomain {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_shape_upgrade.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== ShapeUpgrade_UnifySameDomain ========================"]
-        #[doc = "/// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain`"]
-        #[doc = ""]
-        #[doc = "This tool tries to unify faces and edges of the shape which lie on the same geometry. Faces/edges are considering as 'same-domain' if a group of neighbouring faces/edges are lying on coincident surfaces/curves. In this case these faces/edges can be unified into one face/edge. ShapeUpgrade_UnifySameDomain is initialized by a shape and the next optional parameters: UnifyFaces - tries to unify all possible faces UnifyEdges - tries to unify all possible edges ConcatBSplines - if this flag is set to true then all neighbouring edges, which lay on BSpline or Bezier curves with C1 continuity on their common vertices, will be merged into one common edge. The input shape can be of any type containing faces or edges - compsolid, solid, shell, wire, compound of any kind of shapes. The algorithm preserves the structure of compsolids, solids, shells and wires. E.g., if two shells have a common edge and the faces sharing this edge lie on the same surface the algorithm will not unify these faces, otherwise the structure of shells would be broken. However, if such faces belong to different compounds of faces they will be unified. The output result of the tool is the unified shape. All the modifications of initial shape are recorded during unifying. Methods History are intended to: <br> - set a place holder for the history of modifications of sub-shapes of the initial shape; <br> - get the collected history. <br> The algorithm provides a place holder for the history and collects the history by default. To avoid collecting of the history the place holder should be set to null handle."]
+        /// ======================== ShapeUpgrade_UnifySameDomain ========================
+        /// /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain`
+        ///
+        /// This tool tries to unify faces and edges of the shape which lie on the same geometry. Faces/edges are considering as 'same-domain' if a group of neighbouring faces/edges are lying on coincident surfaces/curves. In this case these faces/edges can be unified into one face/edge. ShapeUpgrade_UnifySameDomain is initialized by a shape and the next optional parameters: UnifyFaces - tries to unify all possible faces UnifyEdges - tries to unify all possible edges ConcatBSplines - if this flag is set to true then all neighbouring edges, which lay on BSpline or Bezier curves with C1 continuity on their common vertices, will be merged into one common edge. The input shape can be of any type containing faces or edges - compsolid, solid, shell, wire, compound of any kind of shapes. The algorithm preserves the structure of compsolids, solids, shells and wires. E.g., if two shells have a common edge and the faces sharing this edge lie on the same surface the algorithm will not unify these faces, otherwise the structure of shells would be broken. However, if such faces belong to different compounds of faces they will be unified. The output result of the tool is the unified shape. All the modifications of initial shape are recorded during unifying. Methods History are intended to: <br> - set a place holder for the history of modifications of sub-shapes of the initial shape; <br> - get the collected history. <br> The algorithm provides a place holder for the history and collects the history by default. To avoid collecting of the history the place holder should be set to null handle.
         #[cxx_name = "ShapeUpgrade_UnifySameDomain"]
         type UnifySameDomain;
-        #[doc = "/// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor"]
+        /// /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
+        ///
+        /// Empty constructor
         #[cxx_name = "ShapeUpgrade_UnifySameDomain_ctor"]
         fn UnifySameDomain_ctor() -> UniquePtr<UnifySameDomain>;
-        #[doc = "/// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`"]
-        #[doc = ""]
-        #[doc = "Constructor defining input shape and necessary flags. It does not perform unification."]
+        /// /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx` - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
+        ///
+        /// Constructor defining input shape and necessary flags. It does not perform unification.
         #[cxx_name = "ShapeUpgrade_UnifySameDomain_ctor_shape_bool3"]
         fn UnifySameDomain_ctor_shape_bool3(
             aShape: &TopoDS_Shape,
@@ -66,7 +67,7 @@ pub(crate) mod ffi {
             UnifyFaces: bool,
             ConcatBSplines: bool,
         ) -> UniquePtr<UnifySameDomain>;
-        #[doc = "Initializes with a shape and necessary flags. It does not perform unification. If you intend to nullify the History place holder do it after initialization."]
+        /// Initializes with a shape and necessary flags. It does not perform unification. If you intend to nullify the History place holder do it after initialization.
         #[cxx_name = "Initialize"]
         fn initialize(
             self: Pin<&mut UnifySameDomain>,
@@ -75,126 +76,128 @@ pub(crate) mod ffi {
             UnifyFaces: bool,
             ConcatBSplines: bool,
         );
-        #[doc = "Sets the flag defining whether it is allowed to create internal edges inside merged faces in the case of non-manifold topology. Without this flag merging through multi connected edge is forbidden. Default value is false."]
+        /// Sets the flag defining whether it is allowed to create internal edges inside merged faces in the case of non-manifold topology. Without this flag merging through multi connected edge is forbidden. Default value is false.
         #[cxx_name = "AllowInternalEdges"]
         fn allow_internal_edges(self: Pin<&mut UnifySameDomain>, theValue: bool);
-        #[doc = "Sets the shape for avoid merging of the faces/edges. This shape can be vertex or edge. If the shape is a vertex it forbids merging of connected edges. If the shape is a edge it forbids merging of connected faces. This method can be called several times to keep several shapes."]
+        /// Sets the shape for avoid merging of the faces/edges. This shape can be vertex or edge. If the shape is a vertex it forbids merging of connected edges. If the shape is a edge it forbids merging of connected faces. This method can be called several times to keep several shapes.
         #[cxx_name = "KeepShape"]
         fn keep_shape(self: Pin<&mut UnifySameDomain>, theShape: &TopoDS_Shape);
-        #[doc = "Sets the map of shapes for avoid merging of the faces/edges. It allows passing a ready to use map instead of calling many times the method KeepShape."]
+        /// Sets the map of shapes for avoid merging of the faces/edges. It allows passing a ready to use map instead of calling many times the method KeepShape.
         #[cxx_name = "KeepShapes"]
         fn keep_shapes(self: Pin<&mut UnifySameDomain>, theShapes: &TopTools_MapOfShape);
-        #[doc = "Sets the flag defining the behavior of the algorithm regarding modification of input shape. If this flag is equal to True then the input (original) shape can't be modified during modification process. Default value is true."]
+        /// Sets the flag defining the behavior of the algorithm regarding modification of input shape. If this flag is equal to True then the input (original) shape can't be modified during modification process. Default value is true.
         #[cxx_name = "SetSafeInputMode"]
         fn set_safe_input_mode(self: Pin<&mut UnifySameDomain>, theValue: bool);
-        #[doc = "Sets the linear tolerance. It plays the role of chord error when taking decision about merging of shapes. Default value is Precision::Confusion()."]
+        /// Sets the linear tolerance. It plays the role of chord error when taking decision about merging of shapes. Default value is Precision::Confusion().
         #[cxx_name = "SetLinearTolerance"]
         fn set_linear_tolerance(self: Pin<&mut UnifySameDomain>, theValue: f64);
-        #[doc = "Sets the angular tolerance. If two shapes form a connection angle greater than this value they will not be merged. Default value is Precision::Angular()."]
+        /// Sets the angular tolerance. If two shapes form a connection angle greater than this value they will not be merged. Default value is Precision::Angular().
         #[cxx_name = "SetAngularTolerance"]
         fn set_angular_tolerance(self: Pin<&mut UnifySameDomain>, theValue: f64);
-        #[doc = "Performs unification and builds the resulting shape."]
+        /// Performs unification and builds the resulting shape.
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut UnifySameDomain>);
-        #[doc = "Gives the resulting shape"]
+        /// Gives the resulting shape
         #[cxx_name = "Shape"]
         fn shape(self: &UnifySameDomain) -> &TopoDS_Shape;
-        #[doc = "Returns the history of the processed shapes."]
+        /// Returns the history of the processed shapes.
         #[cxx_name = "History"]
         fn history(self: &UnifySameDomain) -> &HandleBRepToolsHistory;
-        #[doc = "Returns the history of the processed shapes."]
+        /// Returns the history of the processed shapes.
         #[cxx_name = "History"]
         fn history_mut(self: Pin<&mut UnifySameDomain>) -> Pin<&mut HandleBRepToolsHistory>;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &UnifySameDomain) -> &HandleStandardType;
         #[cxx_name = "ShapeUpgrade_UnifySameDomain_get_type_name"]
         fn UnifySameDomain_get_type_name() -> String;
-        #[doc = "Wrap ShapeUpgrade_UnifySameDomain in a Handle (reference-counted smart pointer)"]
+        /// Wrap ShapeUpgrade_UnifySameDomain in a Handle (reference-counted smart pointer)
         #[cxx_name = "ShapeUpgrade_UnifySameDomain_to_handle"]
         fn UnifySameDomain_to_handle(
             obj: UniquePtr<UnifySameDomain>,
         ) -> UniquePtr<HandleShapeUpgradeUnifySameDomain>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "BRepTools from b_rep_tools module"]
+        /// BRepTools from b_rep_tools module
         type BRepTools = crate::b_rep_tools::ffi::BRepTools;
-        #[doc = "History from b_rep_tools module"]
+        /// History from b_rep_tools module
         type BRepTools_History = crate::b_rep_tools::ffi::History;
-        #[doc = "Modifier from b_rep_tools module"]
+        /// Modifier from b_rep_tools module
         type BRepTools_Modifier = crate::b_rep_tools::ffi::Modifier;
-        #[doc = "ReShape from b_rep_tools module"]
+        /// ReShape from b_rep_tools module
         type BRepTools_ReShape = crate::b_rep_tools::ffi::ReShape;
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray2OfShape from top_tools module"]
+        /// HArray2OfShape from top_tools module
         type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
+        /// HSequenceOfShape from top_tools module
         type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+
         // ========================
         // Referenced types (opaque)
         // ========================

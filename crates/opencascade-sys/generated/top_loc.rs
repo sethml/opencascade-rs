@@ -18,42 +18,42 @@ impl Location {
         ffi::Location_ctor()
     }
 
-    #[doc = "Constructs the local coordinate system object defined by the transformation T. T invokes in turn, a TopLoc_Datum3D object."]
+    /// Constructs the local coordinate system object defined by the transformation T. T invokes in turn, a TopLoc_Datum3D object.
     pub fn new_trsf(T: &ffi::gp_Trsf) -> cxx::UniquePtr<Self> {
         ffi::Location_ctor_trsf(T)
     }
 
-    #[doc = "Constructs the local coordinate system object defined by the 3D datum D. Exceptions Standard_ConstructionError if the transformation T does not represent a 3D coordinate system."]
+    /// Constructs the local coordinate system object defined by the 3D datum D. Exceptions Standard_ConstructionError if the transformation T does not represent a 3D coordinate system.
     pub fn new_handledatum3d(D: &ffi::HandleTopLocDatum3D) -> cxx::UniquePtr<Self> {
         ffi::Location_ctor_handledatum3d(D)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Location_to_owned(self)
     }
 
-    #[doc = "Returns the inverse of <me>. <me> * Inverted() is an Identity."]
+    /// Returns the inverse of <me>. <me> * Inverted() is an Identity.
     pub fn inverted(&self) -> cxx::UniquePtr<ffi::Location> {
         ffi::Location_inverted(self)
     }
 
-    #[doc = "Returns <me> * <Other>, the  elementary datums are concatenated."]
+    /// Returns <me> * <Other>, the  elementary datums are concatenated.
     pub fn multiplied(&self, Other: &ffi::Location) -> cxx::UniquePtr<ffi::Location> {
         ffi::Location_multiplied(self, Other)
     }
 
-    #[doc = "Returns  <me> / <Other>."]
+    /// Returns  <me> / <Other>.
     pub fn divided(&self, Other: &ffi::Location) -> cxx::UniquePtr<ffi::Location> {
         ffi::Location_divided(self, Other)
     }
 
-    #[doc = "Returns <Other>.Inverted() * <me>."]
+    /// Returns <Other>.Inverted() * <me>.
     pub fn predivided(&self, Other: &ffi::Location) -> cxx::UniquePtr<ffi::Location> {
         ffi::Location_predivided(self, Other)
     }
 
-    #[doc = "Returns me at the power <pwr>.   If <pwr>  is zero returns  Identity.  <pwr> can  be lower  than zero (usual meaning for powers)."]
+    /// Returns me at the power <pwr>.   If <pwr>  is zero returns  Identity.  <pwr> can  be lower  than zero (usual meaning for powers).
     pub fn powered(&self, pwr: i32) -> cxx::UniquePtr<ffi::Location> {
         ffi::Location_powered(self, pwr)
     }
@@ -64,12 +64,12 @@ impl Location {
 }
 pub use ffi::SListOfItemLocation;
 impl SListOfItemLocation {
-    #[doc = "Creates an empty List."]
+    /// Creates an empty List.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::SListOfItemLocation_ctor()
     }
 
-    #[doc = "Creates a List with <anItem> as value  and <aTail> as tail."]
+    /// Creates a List with <anItem> as value  and <aTail> as tail.
     pub fn new_itemlocation_slistofitemlocation(
         anItem: &ffi::TopLoc_ItemLocation,
         aTail: &ffi::SListOfItemLocation,
@@ -77,12 +77,12 @@ impl SListOfItemLocation {
         ffi::SListOfItemLocation_ctor_itemlocation_slistofitemlocation(anItem, aTail)
     }
 
-    #[doc = "Creates a list from an other one. The lists  are shared."]
+    /// Creates a list from an other one. The lists  are shared.
     pub fn new_slistofitemlocation(Other: &ffi::SListOfItemLocation) -> cxx::UniquePtr<Self> {
         ffi::SListOfItemLocation_ctor_slistofitemlocation(Other)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::SListOfItemLocation_to_owned(self)
     }
@@ -91,262 +91,265 @@ impl SListOfItemLocation {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_top_loc.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== TopLoc_Location ========================"]
-        #[doc = "/// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location`"]
-        #[doc = ""]
-        #[doc = "A Location is a composite transition. It comprises a series of elementary reference coordinates, i.e. objects of type TopLoc_Datum3D, and the powers to which these objects are raised."]
+        /// ======================== TopLoc_Location ========================
+        /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location`
+        ///
+        /// A Location is a composite transition. It comprises a series of elementary reference coordinates, i.e. objects of type TopLoc_Datum3D, and the powers to which these objects are raised.
         #[cxx_name = "TopLoc_Location"]
         type Location;
-        #[doc = "/// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`"]
-        #[doc = ""]
+        /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`
+        ///
         #[doc = "Constructs an empty local coordinate system object. Note: A Location constructed from a default datum is said to be \"empty\"."]
         #[cxx_name = "TopLoc_Location_ctor"]
         fn Location_ctor() -> UniquePtr<Location>;
-        #[doc = "/// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`"]
-        #[doc = ""]
-        #[doc = "Constructs the local coordinate system object defined by the transformation T. T invokes in turn, a TopLoc_Datum3D object."]
+        /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`
+        ///
+        /// Constructs the local coordinate system object defined by the transformation T. T invokes in turn, a TopLoc_Datum3D object.
         #[cxx_name = "TopLoc_Location_ctor_trsf"]
         fn Location_ctor_trsf(T: &gp_Trsf) -> UniquePtr<Location>;
-        #[doc = "/// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`"]
-        #[doc = ""]
-        #[doc = "Constructs the local coordinate system object defined by the 3D datum D. Exceptions Standard_ConstructionError if the transformation T does not represent a 3D coordinate system."]
+        /// /// **Source:** `TopLoc_Location.hxx` - `TopLoc_Location::TopLoc_Location()`
+        ///
+        /// Constructs the local coordinate system object defined by the 3D datum D. Exceptions Standard_ConstructionError if the transformation T does not represent a 3D coordinate system.
         #[cxx_name = "TopLoc_Location_ctor_handledatum3d"]
         fn Location_ctor_handledatum3d(D: &HandleTopLocDatum3D) -> UniquePtr<Location>;
-        #[doc = "Returns true if this location is equal to the Identity transformation."]
+        /// Returns true if this location is equal to the Identity transformation.
         #[cxx_name = "IsIdentity"]
         fn is_identity(self: &Location) -> bool;
-        #[doc = "Resets this location to the Identity transformation."]
+        /// Resets this location to the Identity transformation.
         #[cxx_name = "Identity"]
         fn identity(self: Pin<&mut Location>);
-        #[doc = "Returns    the  first   elementary  datum  of  the Location.  Use the NextLocation function recursively to access the other data comprising this location. Exceptions Standard_NoSuchObject if this location is empty."]
+        /// Returns    the  first   elementary  datum  of  the Location.  Use the NextLocation function recursively to access the other data comprising this location. Exceptions Standard_NoSuchObject if this location is empty.
         #[cxx_name = "FirstDatum"]
         fn first_datum(self: &Location) -> &HandleTopLocDatum3D;
-        #[doc = "Returns   the  power  elevation  of    the   first elementary datum. Exceptions Standard_NoSuchObject if this location is empty."]
+        /// Returns   the  power  elevation  of    the   first elementary datum. Exceptions Standard_NoSuchObject if this location is empty.
         #[cxx_name = "FirstPower"]
         fn first_power(self: &Location) -> i32;
-        #[doc = "Returns  a Location representing  <me> without the first datum. We have the relation : <me> = NextLocation() * FirstDatum() ^ FirstPower() Exceptions Standard_NoSuchObject if this location is empty."]
+        /// Returns  a Location representing  <me> without the first datum. We have the relation : <me> = NextLocation() * FirstDatum() ^ FirstPower() Exceptions Standard_NoSuchObject if this location is empty.
         #[cxx_name = "NextLocation"]
         fn next_location(self: &Location) -> &Location;
-        #[doc = "Returns  the transformation    associated  to  the coordinate system."]
+        /// Returns  the transformation    associated  to  the coordinate system.
         #[cxx_name = "Transformation"]
         fn transformation(self: &Location) -> &gp_Trsf;
-        #[doc = "Returns a hashed value for this local coordinate system. This value is used, with map tables, to store and retrieve the object easily @return a computed hash code"]
+        /// Returns a hashed value for this local coordinate system. This value is used, with map tables, to store and retrieve the object easily @return a computed hash code
         #[cxx_name = "HashCode"]
         fn hash_code(self: &Location) -> usize;
-        #[doc = "Returns true if this location and the location Other have the same elementary data, i.e. contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator ==."]
+        /// Returns true if this location and the location Other have the same elementary data, i.e. contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator ==.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &Location, Other: &Location) -> bool;
-        #[doc = "Returns true if this location and the location Other do not have the same elementary data, i.e. do not contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator !=."]
+        /// Returns true if this location and the location Other do not have the same elementary data, i.e. do not contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator !=.
         #[cxx_name = "IsDifferent"]
         fn is_different(self: &Location, Other: &Location) -> bool;
-        #[doc = "Clear myItems"]
+        /// Clear myItems
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Location>);
-        #[doc = "Returns the inverse of <me>. <me> * Inverted() is an Identity."]
+        /// Returns the inverse of <me>. <me> * Inverted() is an Identity.
         #[cxx_name = "TopLoc_Location_Inverted"]
         fn Location_inverted(self_: &Location) -> UniquePtr<Location>;
-        #[doc = "Returns <me> * <Other>, the  elementary datums are concatenated."]
+        /// Returns <me> * <Other>, the  elementary datums are concatenated.
         #[cxx_name = "TopLoc_Location_Multiplied"]
         fn Location_multiplied(self_: &Location, Other: &Location) -> UniquePtr<Location>;
-        #[doc = "Returns  <me> / <Other>."]
+        /// Returns  <me> / <Other>.
         #[cxx_name = "TopLoc_Location_Divided"]
         fn Location_divided(self_: &Location, Other: &Location) -> UniquePtr<Location>;
-        #[doc = "Returns <Other>.Inverted() * <me>."]
+        /// Returns <Other>.Inverted() * <me>.
         #[cxx_name = "TopLoc_Location_Predivided"]
         fn Location_predivided(self_: &Location, Other: &Location) -> UniquePtr<Location>;
-        #[doc = "Returns me at the power <pwr>.   If <pwr>  is zero returns  Identity.  <pwr> can  be lower  than zero (usual meaning for powers)."]
+        /// Returns me at the power <pwr>.   If <pwr>  is zero returns  Identity.  <pwr> can  be lower  than zero (usual meaning for powers).
         #[cxx_name = "TopLoc_Location_Powered"]
         fn Location_powered(self_: &Location, pwr: i32) -> UniquePtr<Location>;
         #[cxx_name = "TopLoc_Location_ScalePrec"]
         fn Location_scale_prec() -> f64;
-        #[doc = "Clone TopLoc_Location into a new UniquePtr via copy constructor"]
+        /// Clone TopLoc_Location into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Location_to_owned(self_: &Location) -> UniquePtr<Location>;
-        #[doc = " ======================== TopLoc_SListOfItemLocation ========================"]
-        #[doc = "/// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation`"]
-        #[doc = ""]
-        #[doc = "An SListOfItemLocation is a LISP like list of Items. An SListOfItemLocation is : . Empty. . Or it has a Value and a  Tail  which is an other SListOfItemLocation. The Tail of an empty list is an empty list. SListOfItemLocation are  shared.  It  means   that they  can  be modified through other lists. SListOfItemLocation may  be used  as Iterators. They  have Next, More, and value methods. To iterate on the content of the list S just do. SListOfItemLocation Iterator; for (Iterator = S; Iterator.More(); Iterator.Next()) X = Iterator.Value();"]
+        /// ======================== TopLoc_SListOfItemLocation ========================
+        /// /// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation`
+        ///
+        /// An SListOfItemLocation is a LISP like list of Items. An SListOfItemLocation is : . Empty. . Or it has a Value and a  Tail  which is an other SListOfItemLocation. The Tail of an empty list is an empty list. SListOfItemLocation are  shared.  It  means   that they  can  be modified through other lists. SListOfItemLocation may  be used  as Iterators. They  have Next, More, and value methods. To iterate on the content of the list S just do. SListOfItemLocation Iterator; for (Iterator = S; Iterator.More(); Iterator.Next()) X = Iterator.Value();
         #[cxx_name = "TopLoc_SListOfItemLocation"]
         type SListOfItemLocation;
-        #[doc = "/// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`"]
-        #[doc = ""]
-        #[doc = "Creates an empty List."]
+        /// /// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`
+        ///
+        /// Creates an empty List.
         #[cxx_name = "TopLoc_SListOfItemLocation_ctor"]
         fn SListOfItemLocation_ctor() -> UniquePtr<SListOfItemLocation>;
-        #[doc = "/// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`"]
-        #[doc = ""]
-        #[doc = "Creates a List with <anItem> as value  and <aTail> as tail."]
+        /// /// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`
+        ///
+        /// Creates a List with <anItem> as value  and <aTail> as tail.
         #[cxx_name = "TopLoc_SListOfItemLocation_ctor_itemlocation_slistofitemlocation"]
         fn SListOfItemLocation_ctor_itemlocation_slistofitemlocation(
             anItem: &TopLoc_ItemLocation,
             aTail: &SListOfItemLocation,
         ) -> UniquePtr<SListOfItemLocation>;
-        #[doc = "/// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`"]
-        #[doc = ""]
-        #[doc = "Creates a list from an other one. The lists  are shared."]
+        /// /// **Source:** `TopLoc_SListOfItemLocation.hxx` - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`
+        ///
+        /// Creates a list from an other one. The lists  are shared.
         #[cxx_name = "TopLoc_SListOfItemLocation_ctor_slistofitemlocation"]
         fn SListOfItemLocation_ctor_slistofitemlocation(
             Other: &SListOfItemLocation,
         ) -> UniquePtr<SListOfItemLocation>;
-        #[doc = "Sets  a list  from  an  other  one. The  lists are shared. The list itself is returned."]
+        /// Sets  a list  from  an  other  one. The  lists are shared. The list itself is returned.
         #[cxx_name = "Assign"]
         fn assign(
             self: Pin<&mut SListOfItemLocation>,
             Other: &SListOfItemLocation,
         ) -> Pin<&mut SListOfItemLocation>;
-        #[doc = "Return true if this list is empty"]
+        /// Return true if this list is empty
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &SListOfItemLocation) -> bool;
-        #[doc = "Sets the list to be empty."]
+        /// Sets the list to be empty.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut SListOfItemLocation>);
-        #[doc = "Returns the current value of the list. An error is raised  if the list is empty."]
+        /// Returns the current value of the list. An error is raised  if the list is empty.
         #[cxx_name = "Value"]
         fn value(self: &SListOfItemLocation) -> &TopLoc_ItemLocation;
-        #[doc = "Returns the current tail of  the list. On an empty list the tail is the list itself."]
+        /// Returns the current tail of  the list. On an empty list the tail is the list itself.
         #[cxx_name = "Tail"]
         fn tail(self: &SListOfItemLocation) -> &SListOfItemLocation;
-        #[doc = "Replaces the list by a list with <anItem> as Value and the  list <me> as  tail."]
+        /// Replaces the list by a list with <anItem> as Value and the  list <me> as  tail.
         #[cxx_name = "Construct"]
         fn construct(self: Pin<&mut SListOfItemLocation>, anItem: &TopLoc_ItemLocation);
-        #[doc = "Replaces the list <me> by its tail."]
+        /// Replaces the list <me> by its tail.
         #[cxx_name = "ToTail"]
         fn to_tail(self: Pin<&mut SListOfItemLocation>);
-        #[doc = "Returns True if the iterator  has a current value. This is !IsEmpty()"]
+        /// Returns True if the iterator  has a current value. This is !IsEmpty()
         #[cxx_name = "More"]
         fn more(self: &SListOfItemLocation) -> bool;
-        #[doc = "Moves the iterator to the next object in the list. If the iterator is empty it will  stay empty. This is ToTail()"]
+        /// Moves the iterator to the next object in the list. If the iterator is empty it will  stay empty. This is ToTail()
         #[cxx_name = "Next"]
         fn next(self: Pin<&mut SListOfItemLocation>);
-        #[doc = "Clone TopLoc_SListOfItemLocation into a new UniquePtr via copy constructor"]
+        /// Clone TopLoc_SListOfItemLocation into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn SListOfItemLocation_to_owned(
             self_: &SListOfItemLocation,
         ) -> UniquePtr<SListOfItemLocation>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
+
         // ========================
         // Referenced types (opaque)
         // ========================

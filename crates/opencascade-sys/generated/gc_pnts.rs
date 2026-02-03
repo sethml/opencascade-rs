@@ -12,12 +12,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::TangentialDeflection;
 impl TangentialDeflection {
-    #[doc = "Empty constructor. @sa Initialize()"]
+    /// Empty constructor. @sa Initialize()
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::TangentialDeflection_ctor()
     }
 
-    #[doc = "Constructor for 3D curve. @param[in] theC  3d curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length"]
+    /// Constructor for 3D curve. @param[in] theC  3d curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length
     pub fn new_curve_real2_int_real2(
         theC: &ffi::Adaptor3d_Curve,
         theAngularDeflection: f64,
@@ -36,7 +36,7 @@ impl TangentialDeflection {
         )
     }
 
-    #[doc = "Constructor for 3D curve with restricted range. @param[in] theC  3d curve @param[in] theFirstParameter  first parameter on curve @param[in] theLastParameter   last  parameter on curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param theUTo  l[in]  tolerance in curve parametric scope @param[in] theMinLen  minimal length"]
+    /// Constructor for 3D curve with restricted range. @param[in] theC  3d curve @param[in] theFirstParameter  first parameter on curve @param[in] theLastParameter   last  parameter on curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param theUTo  l[in]  tolerance in curve parametric scope @param[in] theMinLen  minimal length
     pub fn new_curve_real4_int_real2(
         theC: &ffi::Adaptor3d_Curve,
         theFirstParameter: f64,
@@ -59,7 +59,7 @@ impl TangentialDeflection {
         )
     }
 
-    #[doc = "Constructor for 2D curve. @param[in] theC  2d curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length"]
+    /// Constructor for 2D curve. @param[in] theC  2d curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length
     pub fn new_curve2d_real2_int_real2(
         theC: &ffi::Adaptor2d_Curve2d,
         theAngularDeflection: f64,
@@ -78,7 +78,7 @@ impl TangentialDeflection {
         )
     }
 
-    #[doc = "Constructor for 2D curve with restricted range. @param[in] theC  2d curve @param[in] theFirstParameter  first parameter on curve @param[in] theLastParameter   last  parameter on curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length"]
+    /// Constructor for 2D curve with restricted range. @param[in] theC  2d curve @param[in] theFirstParameter  first parameter on curve @param[in] theLastParameter   last  parameter on curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length
     pub fn new_curve2d_real4_int_real2(
         theC: &ffi::Adaptor2d_Curve2d,
         theFirstParameter: f64,
@@ -105,7 +105,7 @@ impl TangentialDeflection {
         ffi::TangentialDeflection_value(self, I)
     }
 
-    #[doc = "Computes angular step for the arc using the given parameters."]
+    /// Computes angular step for the arc using the given parameters.
     pub fn arc_angular_step(
         theRadius: f64,
         theLinearDeflection: f64,
@@ -124,23 +124,24 @@ impl TangentialDeflection {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_gc_pnts.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== GCPnts_TangentialDeflection ========================"]
-        #[doc = "/// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection`"]
-        #[doc = ""]
-        #[doc = "Computes a set of  points on a curve from package Adaptor3d  such  as between  two successive   points P1(u1)and P2(u2) : @code . ||P1P3^P3P2||/||P1P3||*||P3P2||<AngularDeflection . ||P1P2^P1P3||/||P1P2||<CurvatureDeflection @endcode where P3 is the point of abscissa ((u1+u2)/2), with u1 the abscissa of the point P1 and u2 the abscissa of the point P2. ^ is the cross product of two vectors, and ||P1P2|| the magnitude of the vector P1P2. The conditions AngularDeflection > gp::Resolution() and CurvatureDeflection > gp::Resolution() must be satisfied at the construction time. A minimum number of points can be fixed for a linear or circular element. Example: @code Handle(Geom_BezierCurve) aCurve = new Geom_BezierCurve (thePoles); GeomAdaptor_Curve aCurveAdaptor (aCurve); double aCDeflect  = 0.01; // Curvature deflection double anADeflect = 0.09; // Angular   deflection GCPnts_TangentialDeflection aPointsOnCurve; aPointsOnCurve.Initialize (aCurveAdaptor, anADeflect, aCDeflect); for (int i = 1; i <= aPointsOnCurve.NbPoints(); ++i) { double aU   = aPointsOnCurve.Parameter (i); gp_Pnt aPnt = aPointsOnCurve.Value (i); } @endcode"]
+        /// ======================== GCPnts_TangentialDeflection ========================
+        /// /// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection`
+        ///
+        /// Computes a set of  points on a curve from package Adaptor3d  such  as between  two successive   points P1(u1)and P2(u2) : @code . ||P1P3^P3P2||/||P1P3||*||P3P2||<AngularDeflection . ||P1P2^P1P3||/||P1P2||<CurvatureDeflection @endcode where P3 is the point of abscissa ((u1+u2)/2), with u1 the abscissa of the point P1 and u2 the abscissa of the point P2. ^ is the cross product of two vectors, and ||P1P2|| the magnitude of the vector P1P2. The conditions AngularDeflection > gp::Resolution() and CurvatureDeflection > gp::Resolution() must be satisfied at the construction time. A minimum number of points can be fixed for a linear or circular element. Example: @code Handle(Geom_BezierCurve) aCurve = new Geom_BezierCurve (thePoles); GeomAdaptor_Curve aCurveAdaptor (aCurve); double aCDeflect  = 0.01; // Curvature deflection double anADeflect = 0.09; // Angular   deflection GCPnts_TangentialDeflection aPointsOnCurve; aPointsOnCurve.Initialize (aCurveAdaptor, anADeflect, aCDeflect); for (int i = 1; i <= aPointsOnCurve.NbPoints(); ++i) { double aU   = aPointsOnCurve.Parameter (i); gp_Pnt aPnt = aPointsOnCurve.Value (i); } @endcode
         #[cxx_name = "GCPnts_TangentialDeflection"]
         type TangentialDeflection;
-        #[doc = "/// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor. @sa Initialize()"]
+        /// /// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
+        ///
+        /// Empty constructor. @sa Initialize()
         #[cxx_name = "GCPnts_TangentialDeflection_ctor"]
         fn TangentialDeflection_ctor() -> UniquePtr<TangentialDeflection>;
-        #[doc = "/// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`"]
-        #[doc = ""]
-        #[doc = "Constructor for 3D curve. @param[in] theC  3d curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length"]
+        /// /// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
+        ///
+        /// Constructor for 3D curve. @param[in] theC  3d curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length
         #[cxx_name = "GCPnts_TangentialDeflection_ctor_curve_real2_int_real2"]
         fn TangentialDeflection_ctor_curve_real2_int_real2(
             theC: &Adaptor3d_Curve,
@@ -150,9 +151,9 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         ) -> UniquePtr<TangentialDeflection>;
-        #[doc = "/// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`"]
-        #[doc = ""]
-        #[doc = "Constructor for 3D curve with restricted range. @param[in] theC  3d curve @param[in] theFirstParameter  first parameter on curve @param[in] theLastParameter   last  parameter on curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param theUTo  l[in]  tolerance in curve parametric scope @param[in] theMinLen  minimal length"]
+        /// /// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
+        ///
+        /// Constructor for 3D curve with restricted range. @param[in] theC  3d curve @param[in] theFirstParameter  first parameter on curve @param[in] theLastParameter   last  parameter on curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param theUTo  l[in]  tolerance in curve parametric scope @param[in] theMinLen  minimal length
         #[cxx_name = "GCPnts_TangentialDeflection_ctor_curve_real4_int_real2"]
         fn TangentialDeflection_ctor_curve_real4_int_real2(
             theC: &Adaptor3d_Curve,
@@ -164,9 +165,9 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         ) -> UniquePtr<TangentialDeflection>;
-        #[doc = "/// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`"]
-        #[doc = ""]
-        #[doc = "Constructor for 2D curve. @param[in] theC  2d curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length"]
+        /// /// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
+        ///
+        /// Constructor for 2D curve. @param[in] theC  2d curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length
         #[cxx_name = "GCPnts_TangentialDeflection_ctor_curve2d_real2_int_real2"]
         fn TangentialDeflection_ctor_curve2d_real2_int_real2(
             theC: &Adaptor2d_Curve2d,
@@ -176,9 +177,9 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         ) -> UniquePtr<TangentialDeflection>;
-        #[doc = "/// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`"]
-        #[doc = ""]
-        #[doc = "Constructor for 2D curve with restricted range. @param[in] theC  2d curve @param[in] theFirstParameter  first parameter on curve @param[in] theLastParameter   last  parameter on curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length"]
+        /// /// **Source:** `GCPnts_TangentialDeflection.hxx` - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
+        ///
+        /// Constructor for 2D curve with restricted range. @param[in] theC  2d curve @param[in] theFirstParameter  first parameter on curve @param[in] theLastParameter   last  parameter on curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length
         #[cxx_name = "GCPnts_TangentialDeflection_ctor_curve2d_real4_int_real2"]
         fn TangentialDeflection_ctor_curve2d_real4_int_real2(
             theC: &Adaptor2d_Curve2d,
@@ -190,7 +191,7 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         ) -> UniquePtr<TangentialDeflection>;
-        #[doc = "Initialize algorithm for 3D curve. @param[in] theC  3d curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length"]
+        /// Initialize algorithm for 3D curve. @param[in] theC  3d curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length
         #[cxx_name = "Initialize"]
         fn initialize_curve_real2_int_real2(
             self: Pin<&mut TangentialDeflection>,
@@ -201,7 +202,7 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         );
-        #[doc = "Initialize algorithm for 3D curve with restricted range. @param[in] theC  3d curve @param[in] theFirstParameter  first parameter on curve @param[in] theLastParameter   last  parameter on curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length"]
+        /// Initialize algorithm for 3D curve with restricted range. @param[in] theC  3d curve @param[in] theFirstParameter  first parameter on curve @param[in] theLastParameter   last  parameter on curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length
         #[cxx_name = "Initialize"]
         fn initialize_curve_real4_int_real2(
             self: Pin<&mut TangentialDeflection>,
@@ -214,7 +215,7 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         );
-        #[doc = "Initialize algorithm for 2D curve. @param[in] theC  2d curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length"]
+        /// Initialize algorithm for 2D curve. @param[in] theC  2d curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length
         #[cxx_name = "Initialize"]
         fn initialize_curve2d_real2_int_real2(
             self: Pin<&mut TangentialDeflection>,
@@ -225,7 +226,7 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         );
-        #[doc = "Initialize algorithm for 2D curve with restricted range. @param[in] theC  2d curve @param[in] theFirstParameter  first parameter on curve @param[in] theLastParameter   last  parameter on curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length"]
+        /// Initialize algorithm for 2D curve with restricted range. @param[in] theC  2d curve @param[in] theFirstParameter  first parameter on curve @param[in] theLastParameter   last  parameter on curve @param[in] theAngularDeflection    angular deflection in radians @param[in] theCurvatureDeflection  linear deflection @param[in] theMinimumOfPoints  minimum number of points @param[in] theUTol    tolerance in curve parametric scope @param[in] theMinLen  minimal length
         #[cxx_name = "Initialize"]
         fn initialize_curve2d_real4_int_real2(
             self: Pin<&mut TangentialDeflection>,
@@ -238,7 +239,7 @@ pub(crate) mod ffi {
             theUTol: f64,
             theMinLen: f64,
         );
-        #[doc = "Add point to already calculated points (or replace existing) Returns index of new added point or founded with parametric tolerance (replaced if theIsReplace is true)"]
+        /// Add point to already calculated points (or replace existing) Returns index of new added point or founded with parametric tolerance (replaced if theIsReplace is true)
         #[cxx_name = "AddPoint"]
         fn add_point(
             self: Pin<&mut TangentialDeflection>,
@@ -252,7 +253,7 @@ pub(crate) mod ffi {
         fn parameter(self: &TangentialDeflection, I: i32) -> f64;
         #[cxx_name = "GCPnts_TangentialDeflection_Value"]
         fn TangentialDeflection_value(self_: &TangentialDeflection, I: i32) -> UniquePtr<gp_Pnt>;
-        #[doc = "Computes angular step for the arc using the given parameters."]
+        /// Computes angular step for the arc using the given parameters.
         #[cxx_name = "GCPnts_TangentialDeflection_ArcAngularStep"]
         fn TangentialDeflection_arc_angular_step(
             theRadius: f64,
@@ -260,92 +261,93 @@ pub(crate) mod ffi {
             theAngularDeflection: f64,
             theMinLength: f64,
         ) -> f64;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Curve2d from adaptor2d module"]
+        /// Curve2d from adaptor2d module
         type Adaptor2d_Curve2d = crate::adaptor2d::ffi::Curve2d;
-        #[doc = "Curve from adaptor3d module"]
+        /// Curve from adaptor3d module
         type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
-        #[doc = "CurveOnSurface from adaptor3d module"]
+        /// CurveOnSurface from adaptor3d module
         type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
-        #[doc = "Surface from adaptor3d module"]
+        /// Surface from adaptor3d module
         type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
     }
     impl UniquePtr<TangentialDeflection> {}

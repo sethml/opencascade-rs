@@ -28,12 +28,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::ProgressRange;
 impl ProgressRange {
-    #[doc = "Constructor of the empty range"]
+    /// Constructor of the empty range
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ProgressRange_ctor()
     }
 
-    #[doc = "Copy constructor disarms the source"]
+    /// Copy constructor disarms the source
     pub fn new_progressrange(theOther: &ffi::ProgressRange) -> cxx::UniquePtr<Self> {
         ffi::ProgressRange_ctor_progressrange(theOther)
     }
@@ -71,17 +71,17 @@ impl Message {
 }
 pub use ffi::Messenger;
 impl Messenger {
-    #[doc = "Empty constructor; initializes by single printer directed to std::cout. Note: the default messenger is not empty but directed to cout in order to protect against possibility to forget defining printers. If printing to cout is not needed, clear messenger by GetPrinters().Clear()"]
+    /// Empty constructor; initializes by single printer directed to std::cout. Note: the default messenger is not empty but directed to cout in order to protect against possibility to forget defining printers. If printing to cout is not needed, clear messenger by GetPrinters().Clear()
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Messenger_ctor()
     }
 
-    #[doc = "Create messenger with single printer"]
+    /// Create messenger with single printer
     pub fn new_handleprinter(thePrinter: &ffi::HandleMessagePrinter) -> cxx::UniquePtr<Self> {
         ffi::Messenger_ctor_handleprinter(thePrinter)
     }
 
-    #[doc = "Wrap Message_Messenger in a Handle (reference-counted smart pointer)"]
+    /// Wrap Message_Messenger in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMessageMessenger> {
         ffi::Messenger_to_handle(obj)
     }
@@ -98,12 +98,12 @@ impl Printer {
 }
 pub use ffi::ProgressScope;
 impl ProgressScope {
-    #[doc = "@name Preparation methods Creates dummy scope. It can be safely passed to algorithms; no progress indication will be done."]
+    /// @name Preparation methods Creates dummy scope. It can be safely passed to algorithms; no progress indication will be done.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ProgressScope_ctor()
     }
 
-    #[doc = "Creates a new scope taking responsibility of the part of the progress scale described by theRange. The new scope has own range from 0 to theMax, which is mapped to the given range. The topmost scope is created and owned by Message_ProgressIndicator and its pointer is contained in the Message_ProgressRange returned by the Start() method of progress indicator. @param[in][out] theRange  range to fill (will be disarmed) @param[in] theName        new scope name @param[in] theMax         number of steps in scope @param[in] isInfinite     infinite flag"]
+    /// Creates a new scope taking responsibility of the part of the progress scale described by theRange. The new scope has own range from 0 to theMax, which is mapped to the given range. The topmost scope is created and owned by Message_ProgressIndicator and its pointer is contained in the Message_ProgressRange returned by the Start() method of progress indicator. @param[in][out] theRange  range to fill (will be disarmed) @param[in] theName        new scope name @param[in] theMax         number of steps in scope @param[in] isInfinite     infinite flag
     pub fn new_progressrange_asciistring_real_bool(
         theRange: &ffi::ProgressRange,
         theName: &ffi::TCollection_AsciiString,
@@ -115,7 +115,7 @@ impl ProgressScope {
         )
     }
 
-    #[doc = "Advances position by specified step and returns the range covering this step"]
+    /// Advances position by specified step and returns the range covering this step
     pub fn next(
         self: std::pin::Pin<&mut Self>,
         theStep: f64,
@@ -123,14 +123,14 @@ impl ProgressScope {
         ffi::ProgressScope_next(self, theStep)
     }
 
-    #[doc = "Returns the name of the scope (may be null). Scopes with null name (e.g. root scope) should be bypassed when reporting progress to the user."]
+    /// Returns the name of the scope (may be null). Scopes with null name (e.g. root scope) should be bypassed when reporting progress to the user.
     pub fn name(&self) -> String {
         ffi::ProgressScope_name(self)
     }
 }
 pub use ffi::ProgressIndicator;
 impl ProgressIndicator {
-    #[doc = "Resets the indicator to zero, calls Reset(), and returns the range. This range refers to the scope that has no name and is initialized with max value 1 and step 1. Use this method to get the top level range for progress indication."]
+    /// Resets the indicator to zero, calls Reset(), and returns the range. This range refers to the scope that has no name and is initialized with max value 1 and step 1. Use this method to get the top level range for progress indication.
     pub fn start(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::ProgressRange> {
         ffi::ProgressIndicator_start(self)
     }
@@ -139,7 +139,7 @@ impl ProgressIndicator {
         ffi::ProgressIndicator_get_type_name()
     }
 
-    #[doc = "If argument is non-null handle, returns theProgress->Start(). Otherwise, returns dummy range that can be safely used in the algorithms but not bound to progress indicator."]
+    /// If argument is non-null handle, returns theProgress->Start(). Otherwise, returns dummy range that can be safely used in the algorithms but not bound to progress indicator.
     pub fn start_handleprogressindicator(
         theProgress: &ffi::HandleMessageProgressIndicator,
     ) -> cxx::UniquePtr<ffi::ProgressRange> {
@@ -148,22 +148,22 @@ impl ProgressIndicator {
 }
 pub use ffi::Algorithm;
 impl Algorithm {
-    #[doc = "Empty constructor"]
+    /// Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Algorithm_ctor()
     }
 
-    #[doc = "Wrap Message_Algorithm in a Handle (reference-counted smart pointer)"]
+    /// Wrap Message_Algorithm in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMessageAlgorithm> {
         ffi::Algorithm_to_handle(obj)
     }
 
-    #[doc = "Returns messenger of algorithm. The returned handle is always non-null and can be used for sending messages."]
+    /// Returns messenger of algorithm. The returned handle is always non-null and can be used for sending messages.
     pub fn get_messenger(&self) -> cxx::UniquePtr<ffi::HandleMessageMessenger> {
         ffi::Algorithm_get_messenger(self)
     }
 
-    #[doc = "Prepares a string containing a list of integers contained in theError map, but not more than theMaxCount"]
+    /// Prepares a string containing a list of integers contained in theError map, but not more than theMaxCount
     pub fn prepare_report_handlehpackedmapofinteger_int(
         theError: &ffi::HandleTColStdHPackedMapOfInteger,
         theMaxCount: i32,
@@ -171,7 +171,7 @@ impl Algorithm {
         ffi::Algorithm_prepare_report_handlehpackedmapofinteger_int(theError, theMaxCount)
     }
 
-    #[doc = "Prepares a string containing a list of names contained in theReportSeq sequence, but not more than theMaxCount"]
+    /// Prepares a string containing a list of names contained in theReportSeq sequence, but not more than theMaxCount
     pub fn prepare_report_sequenceofhextendedstring_int(
         theReportSeq: &ffi::TColStd_SequenceOfHExtendedString,
         theMaxCount: i32,
@@ -185,46 +185,46 @@ impl Algorithm {
 }
 pub use ffi::ExecStatus;
 impl ExecStatus {
-    #[doc = "Create empty execution status"]
+    /// Create empty execution status
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ExecStatus_ctor()
     }
 }
 pub use ffi::Msg;
 impl Msg {
-    #[doc = "Empty constructor"]
+    /// Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Msg_ctor()
     }
 
-    #[doc = "Copy constructor"]
+    /// Copy constructor
     pub fn new_msg(theMsg: &ffi::Msg) -> cxx::UniquePtr<Self> {
         ffi::Msg_ctor_msg(theMsg)
     }
 
-    #[doc = "Create a message using a corresponding entry in Message_MsgFile"]
+    /// Create a message using a corresponding entry in Message_MsgFile
     pub fn new_charptr(theKey: &str) -> cxx::UniquePtr<Self> {
         ffi::Msg_ctor_charptr(theKey)
     }
 
-    #[doc = "Create a message using a corresponding entry in Message_MsgFile"]
+    /// Create a message using a corresponding entry in Message_MsgFile
     pub fn new_extendedstring(theKey: &ffi::TCollection_ExtendedString) -> cxx::UniquePtr<Self> {
         ffi::Msg_ctor_extendedstring(theKey)
     }
 
-    #[doc = "Set a message body text -- can be used as alternative to using messages from resource file"]
+    /// Set a message body text -- can be used as alternative to using messages from resource file
     pub fn set_charptr(self: std::pin::Pin<&mut Self>, theMsg: &str) -> () {
         ffi::Msg_set_charptr(self, theMsg)
     }
 }
 pub use ffi::Report;
 impl Report {
-    #[doc = "Empty constructor"]
+    /// Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Report_ctor()
     }
 
-    #[doc = "Wrap Message_Report in a Handle (reference-counted smart pointer)"]
+    /// Wrap Message_Report in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMessageReport> {
         ffi::Report_to_handle(obj)
     }
@@ -235,19 +235,19 @@ impl Report {
 }
 pub use ffi::Level;
 impl Level {
-    #[doc = "Constructor. One string key is used for all alert meters. The perf meter is not started automatically, it will be done in AddAlert() method"]
+    /// Constructor. One string key is used for all alert meters. The perf meter is not started automatically, it will be done in AddAlert() method
     pub fn new_asciistring(theName: &ffi::TCollection_AsciiString) -> cxx::UniquePtr<Self> {
         ffi::Level_ctor_asciistring(theName)
     }
 }
 pub use ffi::Alert;
 impl Alert {
-    #[doc = "Wrap Message_Alert in a Handle (reference-counted smart pointer)"]
+    /// Wrap Message_Alert in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleMessageAlert> {
         ffi::Alert_to_handle(obj)
     }
 
-    #[doc = "Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance."]
+    /// Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance.
     pub fn get_message_key(&self) -> String {
         ffi::Alert_get_message_key(self)
     }
@@ -258,27 +258,27 @@ impl Alert {
 }
 pub use ffi::AlertExtended;
 impl AlertExtended {
-    #[doc = "Empty constructor"]
+    /// Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::AlertExtended_ctor()
     }
 
-    #[doc = "Upcast to Message_Alert"]
+    /// Upcast to Message_Alert
     pub fn as_alert(&self) -> &Alert {
         ffi::alert_extended_as_alert(self)
     }
 
-    #[doc = "Upcast to Message_Alert (mutable)"]
+    /// Upcast to Message_Alert (mutable)
     pub fn as_alert_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Alert> {
         ffi::alert_extended_as_alert_mut(self)
     }
 
-    #[doc = "Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance."]
+    /// Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance.
     pub fn get_message_key(&self) -> String {
         ffi::AlertExtended_get_message_key(self)
     }
 
-    #[doc = "Returns class provided hierarchy of alerts if created or create if the parameter is true @param theToCreate if composite alert has not been created for this alert, it should be created @return instance or NULL"]
+    /// Returns class provided hierarchy of alerts if created or create if the parameter is true @param theToCreate if composite alert has not been created for this alert, it should be created @return instance or NULL
     pub fn composite_alerts(
         self: std::pin::Pin<&mut Self>,
         theToCreate: bool,
@@ -294,41 +294,42 @@ impl AlertExtended {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_message.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== Message_ProgressRange ========================"]
-        #[doc = "/// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange`"]
-        #[doc = ""]
-        #[doc = "Auxiliary class representing a part of the global progress scale allocated by a step of the progress scope, see Message_ProgressScope::Next(). A range object takes responsibility of advancing the progress by the size of allocated step, which is then performed depending on how it is used: - If Message_ProgressScope object is created using this range as argument, then this respondibility is taken over by that scope. - Otherwise, a range advances progress directly upon destruction. A range object can be copied, the responsibility for progress advancement is then taken by the copy. The same range object may be used (either copied or used to create scope) only once. Any consequent attempts to use range will give no result on the progress; in debug mode, an assert message will be generated. @sa Message_ProgressScope for more details"]
+        /// ======================== Message_ProgressRange ========================
+        /// /// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange`
+        ///
+        /// Auxiliary class representing a part of the global progress scale allocated by a step of the progress scope, see Message_ProgressScope::Next(). A range object takes responsibility of advancing the progress by the size of allocated step, which is then performed depending on how it is used: - If Message_ProgressScope object is created using this range as argument, then this respondibility is taken over by that scope. - Otherwise, a range advances progress directly upon destruction. A range object can be copied, the responsibility for progress advancement is then taken by the copy. The same range object may be used (either copied or used to create scope) only once. Any consequent attempts to use range will give no result on the progress; in debug mode, an assert message will be generated. @sa Message_ProgressScope for more details
         #[cxx_name = "Message_ProgressRange"]
         type ProgressRange;
-        #[doc = "/// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange::Message_ProgressRange()`"]
-        #[doc = ""]
-        #[doc = "Constructor of the empty range"]
+        /// /// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange::Message_ProgressRange()`
+        ///
+        /// Constructor of the empty range
         #[cxx_name = "Message_ProgressRange_ctor"]
         fn ProgressRange_ctor() -> UniquePtr<ProgressRange>;
-        #[doc = "/// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange::Message_ProgressRange()`"]
-        #[doc = ""]
-        #[doc = "Copy constructor disarms the source"]
+        /// /// **Source:** `Message_ProgressRange.hxx` - `Message_ProgressRange::Message_ProgressRange()`
+        ///
+        /// Copy constructor disarms the source
         #[cxx_name = "Message_ProgressRange_ctor_progressrange"]
         fn ProgressRange_ctor_progressrange(theOther: &ProgressRange) -> UniquePtr<ProgressRange>;
-        #[doc = "Returns true if ProgressIndicator signals UserBreak"]
+        /// Returns true if ProgressIndicator signals UserBreak
         #[cxx_name = "UserBreak"]
         fn user_break(self: &ProgressRange) -> bool;
-        #[doc = "Returns false if ProgressIndicator signals UserBreak"]
+        /// Returns false if ProgressIndicator signals UserBreak
         #[cxx_name = "More"]
         fn more(self: &ProgressRange) -> bool;
-        #[doc = "Returns true if this progress range is attached to some indicator."]
+        /// Returns true if this progress range is attached to some indicator.
         #[cxx_name = "IsActive"]
         fn is_active(self: &ProgressRange) -> bool;
-        #[doc = "Closes the current range and advances indicator"]
+        /// Closes the current range and advances indicator
         #[cxx_name = "Close"]
         fn close(self: Pin<&mut ProgressRange>);
-        #[doc = " ======================== Message ========================"]
-        #[doc = "/// **Source:** `Message.hxx` - `Message`"]
-        #[doc = ""]
-        #[doc = "Defines - tools to work with messages - basic tools intended for progress indication"]
+        /// ======================== Message ========================
+        /// /// **Source:** `Message.hxx` - `Message`
+        ///
+        /// Defines - tools to work with messages - basic tools intended for progress indication
         #[cxx_name = "Message"]
         type Message;
         #[cxx_name = "Message_SendFail_asciistring"]
@@ -348,75 +349,75 @@ pub(crate) mod ffi {
             Minute: i32,
             Second: f64,
         ) -> UniquePtr<TCollection_AsciiString>;
-        #[doc = " ======================== Message_Messenger ========================"]
-        #[doc = "/// **Source:** `Message_Messenger.hxx` - `Message_Messenger`"]
-        #[doc = ""]
+        /// ======================== Message_Messenger ========================
+        /// /// **Source:** `Message_Messenger.hxx` - `Message_Messenger`
+        ///
         #[doc = "Messenger is API class providing general-purpose interface for libraries that may issue text messages without knowledge of how these messages will be further processed. The messenger contains a sequence of \"printers\" which can be customized by the application, and dispatches every received message to all the printers. For convenience, a set of methods Send...() returning a string stream buffer is defined for use of stream-like syntax with operator << Example: ~~~~~ Messenger->SendFail() << \" Unknown fail at line \" << aLineNo << \" in file \" << aFile; ~~~~~ The message is sent to messenger on destruction of the stream buffer, call to Flush(), or passing manipulator std::ends, std::endl, or std::flush. Empty messages are not sent except if manipulator is used."]
         #[cxx_name = "Message_Messenger"]
         type Messenger;
-        #[doc = "/// **Source:** `Message_Messenger.hxx` - `Message_Messenger::Message_Messenger()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor; initializes by single printer directed to std::cout. Note: the default messenger is not empty but directed to cout in order to protect against possibility to forget defining printers. If printing to cout is not needed, clear messenger by GetPrinters().Clear()"]
+        /// /// **Source:** `Message_Messenger.hxx` - `Message_Messenger::Message_Messenger()`
+        ///
+        /// Empty constructor; initializes by single printer directed to std::cout. Note: the default messenger is not empty but directed to cout in order to protect against possibility to forget defining printers. If printing to cout is not needed, clear messenger by GetPrinters().Clear()
         #[cxx_name = "Message_Messenger_ctor"]
         fn Messenger_ctor() -> UniquePtr<Messenger>;
-        #[doc = "/// **Source:** `Message_Messenger.hxx` - `Message_Messenger::Message_Messenger()`"]
-        #[doc = ""]
-        #[doc = "Create messenger with single printer"]
+        /// /// **Source:** `Message_Messenger.hxx` - `Message_Messenger::Message_Messenger()`
+        ///
+        /// Create messenger with single printer
         #[cxx_name = "Message_Messenger_ctor_handleprinter"]
         fn Messenger_ctor_handleprinter(thePrinter: &HandleMessagePrinter) -> UniquePtr<Messenger>;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Messenger) -> &HandleStandardType;
-        #[doc = "Add a printer to the messenger. The printer will be added only if it is not yet in the list. Returns True if printer has been added."]
+        /// Add a printer to the messenger. The printer will be added only if it is not yet in the list. Returns True if printer has been added.
         #[cxx_name = "AddPrinter"]
         fn add_printer(self: Pin<&mut Messenger>, thePrinter: &HandleMessagePrinter) -> bool;
-        #[doc = "Removes specified printer from the messenger. Returns True if this printer has been found in the list and removed."]
+        /// Removes specified printer from the messenger. Returns True if this printer has been found in the list and removed.
         #[cxx_name = "RemovePrinter"]
         fn remove_printer(self: Pin<&mut Messenger>, thePrinter: &HandleMessagePrinter) -> bool;
-        #[doc = "Removes printers of specified type (including derived classes) from the messenger. Returns number of removed printers."]
+        /// Removes printers of specified type (including derived classes) from the messenger. Returns number of removed printers.
         #[cxx_name = "RemovePrinters"]
         fn remove_printers(self: Pin<&mut Messenger>, theType: &HandleStandardType) -> i32;
-        #[doc = "Returns current sequence of printers"]
+        /// Returns current sequence of printers
         #[cxx_name = "Printers"]
         fn printers(self: &Messenger) -> &Message_SequenceOfPrinters;
-        #[doc = "Returns sequence of printers The sequence can be modified."]
+        /// Returns sequence of printers The sequence can be modified.
         #[cxx_name = "ChangePrinters"]
         fn change_printers(self: Pin<&mut Messenger>) -> Pin<&mut Message_SequenceOfPrinters>;
-        #[doc = "Short-cut to Send (theMessage, Message_Fail)"]
+        /// Short-cut to Send (theMessage, Message_Fail)
         #[cxx_name = "SendFail"]
         fn send_fail_asciistring(self: Pin<&mut Messenger>, theMessage: &TCollection_AsciiString);
-        #[doc = "Short-cut to Send (theMessage, Message_Alarm)"]
+        /// Short-cut to Send (theMessage, Message_Alarm)
         #[cxx_name = "SendAlarm"]
         fn send_alarm_asciistring(self: Pin<&mut Messenger>, theMessage: &TCollection_AsciiString);
-        #[doc = "Short-cut to Send (theMessage, Message_Warning)"]
+        /// Short-cut to Send (theMessage, Message_Warning)
         #[cxx_name = "SendWarning"]
         fn send_warning_asciistring(
             self: Pin<&mut Messenger>,
             theMessage: &TCollection_AsciiString,
         );
-        #[doc = "Short-cut to Send (theMessage, Message_Info)"]
+        /// Short-cut to Send (theMessage, Message_Info)
         #[cxx_name = "SendInfo"]
         fn send_info_asciistring(self: Pin<&mut Messenger>, theMessage: &TCollection_AsciiString);
-        #[doc = "Short-cut to Send (theMessage, Message_Trace)"]
+        /// Short-cut to Send (theMessage, Message_Trace)
         #[cxx_name = "SendTrace"]
         fn send_trace_asciistring(self: Pin<&mut Messenger>, theMessage: &TCollection_AsciiString);
         #[cxx_name = "Message_Messenger_get_type_name"]
         fn Messenger_get_type_name() -> String;
-        #[doc = "Wrap Message_Messenger in a Handle (reference-counted smart pointer)"]
+        /// Wrap Message_Messenger in a Handle (reference-counted smart pointer)
         #[cxx_name = "Message_Messenger_to_handle"]
         fn Messenger_to_handle(obj: UniquePtr<Messenger>) -> UniquePtr<HandleMessageMessenger>;
-        #[doc = " ======================== Message_Printer ========================"]
-        #[doc = "/// **Source:** `Message_Printer.hxx` - `Message_Printer`"]
-        #[doc = ""]
-        #[doc = "Abstract interface class defining printer as output context for text messages The message, besides being text string, has associated gravity level, which can be used by printer to decide either to process a message or ignore it."]
+        /// ======================== Message_Printer ========================
+        /// /// **Source:** `Message_Printer.hxx` - `Message_Printer`
+        ///
+        /// Abstract interface class defining printer as output context for text messages The message, besides being text string, has associated gravity level, which can be used by printer to decide either to process a message or ignore it.
         #[cxx_name = "Message_Printer"]
         type Printer;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Printer) -> &HandleStandardType;
         #[cxx_name = "Message_Printer_get_type_name"]
         fn Printer_get_type_name() -> String;
-        #[doc = " ======================== Message_ProgressScope ========================"]
-        #[doc = "/// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope`"]
-        #[doc = ""]
+        /// ======================== Message_ProgressScope ========================
+        /// /// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope`
+        ///
         #[doc = "Message_ProgressScope class provides convenient way to advance progress indicator in context of complex program organized in hierarchical way, where usually it is difficult (or even not possible) to consider process as linear with fixed step. On every level (sub-operation) in hierarchy of operations the local instance of the Message_ProgressScope class is created. It takes a part of the upper-level scope (via Message_ProgressRange) and provides a way to consider this part as independent scale with locally defined range. The position on the local scale may be advanced using the method Next(), which allows iteration-like advancement. This method can take argument to advance by the specified value (with default step equal to 1). This method returns Message_ProgressRange object that takes responsibility of making the specified step, either directly at its destruction or by delegating this task to another sub-scope created from that range object. It is important that sub-scope must have life time less than the life time of its parent scope that provided the range. The usage pattern is to create scope objects as local variables in the functions that do the job, and pass range objects returned by Next() to the functions of the lower level, to allow them creating their own scopes. The scope has a name that can be used in visualization of the progress. It can be null. Note that when C string literal is used as a name, then its value is not copied, just pointer is stored. In other variants (char pointer or a string class) the string is copied, which is additional overhead. The same instance of the progress scope! must not be used concurrently from different threads. For the algorithm running its tasks in parallel threads, a common scope is created before the parallel execution, and the range objects produced by method Next() are used to initialise the data pertinent to each task. Then the progress is advanced within each task using its own range object. See example below. Note that while a range of the scope is specified using Standard_Real (double) parameter, it is expected to be a positive integer value. If the range is not an integer, method Next() shall be called with explicit step argument, and the rounded value returned by method Value() may be not coherent with the step and range. A scope can be created with option \"infinite\". This is useful when the number of steps is not known by the time of the scope creation. In this case the progress will be advanced logarithmically, approaching the end of the scope at infinite number of steps. The parameter Max for infinite scope indicates number of steps corresponding to mid-range. A progress scope created with empty constructor is not connected to any progress indicator, and passing the range created on it to any algorithm allows it executing safely without actual progress indication. Example of preparation of progress indicator: @code{.cpp} Handle(Message_ProgressIndicator) aProgress = ...; // assume it can be null func (Message_ProgressIndicator::Start (aProgress)); @endcode Example of usage in sequential process: @code{.cpp} Message_ProgressScope aWholePS(aRange, \"Whole process\", 100); // do one step taking 20% func1 (aWholePS.Next (20)); // func1 will take 20% of the whole scope if (aWholePS.UserBreak()) // exit prematurely if the user requested break return; // ... do next step taking 50% func2 (aWholePS.Next (50)); if (aWholePS.UserBreak()) return; @endcode Example of usage in nested cycle: @code{.cpp} // Outer cycle Message_ProgressScope anOuter (theProgress, \"Outer\", nbOuter); for (Standard_Integer i = 0; i < nbOuter && anOuter.More(); i++) { // Inner cycle Message_ProgressScope anInner (anOuter.Next(), \"Inner\", nbInner); for (Standard_Integer j = 0; j < nbInner && anInner.More(); j++) { // Cycle body func (anInner.Next());
     }
 } @endcode Example of use in function: @code{.cpp} //! Implementation of iterative algorithm showing its progress func (const Message_ProgressRange& theProgress) { // Create local scope covering the given progress range. // Set this scope to count aNbSteps steps. Message_ProgressScope aScope (theProgress, \"\", aNbSteps); for (Standard_Integer i = 0; i < aNbSteps && aScope.More(); i++) { // Optional: pass range returned by method Next() to the nested algorithm // to allow it to show its progress too (by creating its own scope object). // In any case the progress will advance to the next step by the end of the func2 call. func2 (aScope.Next());
@@ -428,14 +429,14 @@ pub(crate) mod ffi {
 } }; @endcode"]
         #[cxx_name = "Message_ProgressScope"]
         type ProgressScope;
-        #[doc = "/// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope::Message_ProgressScope()`"]
-        #[doc = ""]
-        #[doc = "@name Preparation methods Creates dummy scope. It can be safely passed to algorithms; no progress indication will be done."]
+        /// /// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope::Message_ProgressScope()`
+        ///
+        /// @name Preparation methods Creates dummy scope. It can be safely passed to algorithms; no progress indication will be done.
         #[cxx_name = "Message_ProgressScope_ctor"]
         fn ProgressScope_ctor() -> UniquePtr<ProgressScope>;
-        #[doc = "/// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope::Message_ProgressScope()`"]
-        #[doc = ""]
-        #[doc = "Creates a new scope taking responsibility of the part of the progress scale described by theRange. The new scope has own range from 0 to theMax, which is mapped to the given range. The topmost scope is created and owned by Message_ProgressIndicator and its pointer is contained in the Message_ProgressRange returned by the Start() method of progress indicator. @param[in][out] theRange  range to fill (will be disarmed) @param[in] theName        new scope name @param[in] theMax         number of steps in scope @param[in] isInfinite     infinite flag"]
+        /// /// **Source:** `Message_ProgressScope.hxx` - `Message_ProgressScope::Message_ProgressScope()`
+        ///
+        /// Creates a new scope taking responsibility of the part of the progress scale described by theRange. The new scope has own range from 0 to theMax, which is mapped to the given range. The topmost scope is created and owned by Message_ProgressIndicator and its pointer is contained in the Message_ProgressRange returned by the Start() method of progress indicator. @param[in][out] theRange  range to fill (will be disarmed) @param[in] theName        new scope name @param[in] theMax         number of steps in scope @param[in] isInfinite     infinite flag
         #[cxx_name = "Message_ProgressScope_ctor_progressrange_asciistring_real_bool"]
         fn ProgressScope_ctor_progressrange_asciistring_real_bool(
             theRange: &ProgressRange,
@@ -443,93 +444,93 @@ pub(crate) mod ffi {
             theMax: f64,
             isInfinite: bool,
         ) -> UniquePtr<ProgressScope>;
-        #[doc = "Sets the name of the scope."]
+        /// Sets the name of the scope.
         #[cxx_name = "SetName"]
         fn set_name(self: Pin<&mut ProgressScope>, theName: &TCollection_AsciiString);
-        #[doc = "@name Advance by iterations Returns true if ProgressIndicator signals UserBreak"]
+        /// @name Advance by iterations Returns true if ProgressIndicator signals UserBreak
         #[cxx_name = "UserBreak"]
         fn user_break(self: &ProgressScope) -> bool;
-        #[doc = "Returns false if ProgressIndicator signals UserBreak"]
+        /// Returns false if ProgressIndicator signals UserBreak
         #[cxx_name = "More"]
         fn more(self: &ProgressScope) -> bool;
-        #[doc = "@name Auxiliary methods to use in ProgressIndicator Force update of presentation of the progress indicator. Should not be called concurrently."]
+        /// @name Auxiliary methods to use in ProgressIndicator Force update of presentation of the progress indicator. Should not be called concurrently.
         #[cxx_name = "Show"]
         fn show(self: Pin<&mut ProgressScope>);
-        #[doc = "Returns true if this progress scope is attached to some indicator."]
+        /// Returns true if this progress scope is attached to some indicator.
         #[cxx_name = "IsActive"]
         fn is_active(self: &ProgressScope) -> bool;
-        #[doc = "Returns the maximal value of progress in this scope"]
+        /// Returns the maximal value of progress in this scope
         #[cxx_name = "MaxValue"]
         fn max_value(self: &ProgressScope) -> f64;
-        #[doc = "Returns the current value of progress in this scope. The value is computed by mapping current global progress into this scope range; the result is rounded up to integer. Note that if MaxValue() is not an integer, Value() can be greater than MaxValue() due to that rounding. This method should not be called concurrently while the progress is advancing, except from implementation of method Show() in descendant of Message_ProgressIndicator."]
+        /// Returns the current value of progress in this scope. The value is computed by mapping current global progress into this scope range; the result is rounded up to integer. Note that if MaxValue() is not an integer, Value() can be greater than MaxValue() due to that rounding. This method should not be called concurrently while the progress is advancing, except from implementation of method Show() in descendant of Message_ProgressIndicator.
         #[cxx_name = "Value"]
         fn value(self: &ProgressScope) -> f64;
-        #[doc = "Returns the infinite flag"]
+        /// Returns the infinite flag
         #[cxx_name = "IsInfinite"]
         fn is_infinite(self: &ProgressScope) -> bool;
-        #[doc = "Get the portion of the indicator covered by this scope (from 0 to 1)"]
+        /// Get the portion of the indicator covered by this scope (from 0 to 1)
         #[cxx_name = "GetPortion"]
         fn get_portion(self: &ProgressScope) -> f64;
-        #[doc = "Closes the scope and advances the progress to its end. Closed scope should not be used."]
+        /// Closes the scope and advances the progress to its end. Closed scope should not be used.
         #[cxx_name = "Close"]
         fn close(self: Pin<&mut ProgressScope>);
-        #[doc = "Advances position by specified step and returns the range covering this step"]
+        /// Advances position by specified step and returns the range covering this step
         #[cxx_name = "Message_ProgressScope_Next"]
         fn ProgressScope_next(
             self_: Pin<&mut ProgressScope>,
             theStep: f64,
         ) -> UniquePtr<ProgressRange>;
-        #[doc = "Returns the name of the scope (may be null). Scopes with null name (e.g. root scope) should be bypassed when reporting progress to the user."]
+        /// Returns the name of the scope (may be null). Scopes with null name (e.g. root scope) should be bypassed when reporting progress to the user.
         #[cxx_name = "Message_ProgressScope_Name"]
         fn ProgressScope_name(self_: &ProgressScope) -> String;
-        #[doc = " ======================== Message_ProgressIndicator ========================"]
-        #[doc = "/// **Source:** `Message_ProgressIndicator.hxx` - `Message_ProgressIndicator`"]
-        #[doc = ""]
-        #[doc = "Defines abstract interface from program to the user. This includes progress indication and user break mechanisms. The progress indicator controls the progress scale with range from 0 to 1. Method Start() should be called once, at the top level of the call stack, to reset progress indicator and get access to the root range: @code{.cpp} Handle(Message_ProgressIndicator) aProgress = ...; anAlgorithm.Perform (aProgress->Start()); @endcode To advance the progress indicator in the algorithm, use the class Message_ProgressScope that provides iterator-like interface for incrementing progress; see documentation of that class for details. The object of class Message_ProgressRange will automatically advance the indicator if it is not passed to any Message_ProgressScope. The progress indicator supports concurrent processing and can be used in multithreaded applications. The derived class should be created to connect this interface to actual implementation of progress indicator, to take care of visualization of the progress (e.g. show total position at the graphical bar, print scopes in text mode, or else), and for implementation of user break mechanism (if necessary). See details in documentation of methods Show() and UserBreak()."]
+        /// ======================== Message_ProgressIndicator ========================
+        /// /// **Source:** `Message_ProgressIndicator.hxx` - `Message_ProgressIndicator`
+        ///
+        /// Defines abstract interface from program to the user. This includes progress indication and user break mechanisms. The progress indicator controls the progress scale with range from 0 to 1. Method Start() should be called once, at the top level of the call stack, to reset progress indicator and get access to the root range: @code{.cpp} Handle(Message_ProgressIndicator) aProgress = ...; anAlgorithm.Perform (aProgress->Start()); @endcode To advance the progress indicator in the algorithm, use the class Message_ProgressScope that provides iterator-like interface for incrementing progress; see documentation of that class for details. The object of class Message_ProgressRange will automatically advance the indicator if it is not passed to any Message_ProgressScope. The progress indicator supports concurrent processing and can be used in multithreaded applications. The derived class should be created to connect this interface to actual implementation of progress indicator, to take care of visualization of the progress (e.g. show total position at the graphical bar, print scopes in text mode, or else), and for implementation of user break mechanism (if necessary). See details in documentation of methods Show() and UserBreak().
         #[cxx_name = "Message_ProgressIndicator"]
         type ProgressIndicator;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ProgressIndicator) -> &HandleStandardType;
-        #[doc = "Returns total progress position ranged from 0 to 1. Should not be called concurrently while the progress is advancing, except from implementation of method Show()."]
+        /// Returns total progress position ranged from 0 to 1. Should not be called concurrently while the progress is advancing, except from implementation of method Show().
         #[cxx_name = "GetPosition"]
         fn get_position(self: &ProgressIndicator) -> f64;
-        #[doc = "Resets the indicator to zero, calls Reset(), and returns the range. This range refers to the scope that has no name and is initialized with max value 1 and step 1. Use this method to get the top level range for progress indication."]
+        /// Resets the indicator to zero, calls Reset(), and returns the range. This range refers to the scope that has no name and is initialized with max value 1 and step 1. Use this method to get the top level range for progress indication.
         #[cxx_name = "Message_ProgressIndicator_Start"]
         fn ProgressIndicator_start(self_: Pin<&mut ProgressIndicator>) -> UniquePtr<ProgressRange>;
         #[cxx_name = "Message_ProgressIndicator_get_type_name"]
         fn ProgressIndicator_get_type_name() -> String;
-        #[doc = "If argument is non-null handle, returns theProgress->Start(). Otherwise, returns dummy range that can be safely used in the algorithms but not bound to progress indicator."]
+        /// If argument is non-null handle, returns theProgress->Start(). Otherwise, returns dummy range that can be safely used in the algorithms but not bound to progress indicator.
         #[cxx_name = "Message_ProgressIndicator_Start_handleprogressindicator"]
         fn ProgressIndicator_start_handleprogressindicator(
             theProgress: &HandleMessageProgressIndicator,
         ) -> UniquePtr<ProgressRange>;
-        #[doc = " ======================== Message_Algorithm ========================"]
-        #[doc = "/// **Source:** `Message_Algorithm.hxx` - `Message_Algorithm`"]
-        #[doc = ""]
+        /// ======================== Message_Algorithm ========================
+        /// /// **Source:** `Message_Algorithm.hxx` - `Message_Algorithm`
+        ///
         #[doc = "Class Message_Algorithm is intended to be the base class for classes implementing algorithms or any operations that need to provide extended information on its execution to the caller / user. It provides generic mechanism for management of the execution status, collection and output of messages. The algorithm uses methods SetStatus() to set an execution status. It is possible to associate a status with a number or a string (second argument of SetStatus() methods) to indicate precisely the item (object, element etc.) in the input data which caused the problem. Each execution status generated by the algorithm has associated text message that should be defined in the resource file loaded with call to Message_MsgFile::LoadFile(). The messages corresponding to the statuses generated during the algorithm execution are output to Message_Messenger using methods SendMessages(). If status have associated numbers or strings, they are included in the message body in place of \"%s\" placeholder which should be present in the message text. The name of the message text in the resource file is constructed from name of the class and name of the status, separated by dot, for instance: .TObj_CheckModel.Alarm2 Error: Some objects (%s) have references to dead object(s) If message for the status is not found with prefix of the current class type, the same message is searched for the base class(es) recursively. Message can be set explicitly for the status; in this case the above procedure is not used and supplied message is used as is. The messages are output to the messenger, stored in the field; though messenger can be changed, it is guaranteed to be non-null. By default, Message::DefaultMessenger() is used."]
         #[cxx_name = "Message_Algorithm"]
         type Algorithm;
-        #[doc = "/// **Source:** `Message_Algorithm.hxx` - `Message_Algorithm::Message_Algorithm()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor"]
+        /// /// **Source:** `Message_Algorithm.hxx` - `Message_Algorithm::Message_Algorithm()`
+        ///
+        /// Empty constructor
         #[cxx_name = "Message_Algorithm_ctor"]
         fn Algorithm_ctor() -> UniquePtr<Algorithm>;
-        #[doc = "Returns copy of exec status of algorithm"]
+        /// Returns copy of exec status of algorithm
         #[cxx_name = "GetStatus"]
         fn get_status(self: &Algorithm) -> &ExecStatus;
-        #[doc = "Returns exec status of algorithm"]
+        /// Returns exec status of algorithm
         #[cxx_name = "ChangeStatus"]
         fn change_status(self: Pin<&mut Algorithm>) -> Pin<&mut ExecStatus>;
-        #[doc = "Clear exec status of algorithm"]
+        /// Clear exec status of algorithm
         #[cxx_name = "ClearStatus"]
         fn clear_status(self: Pin<&mut Algorithm>);
-        #[doc = "Sets messenger to algorithm"]
+        /// Sets messenger to algorithm
         #[cxx_name = "SetMessenger"]
         fn set_messenger(self: Pin<&mut Algorithm>, theMsgr: &HandleMessageMessenger);
-        #[doc = "Add statuses to this algorithm from other algorithm (including messages)"]
+        /// Add statuses to this algorithm from other algorithm (including messages)
         #[cxx_name = "AddStatus"]
         fn add_status_handlealgorithm(self: Pin<&mut Algorithm>, theOther: &HandleMessageAlgorithm);
-        #[doc = "Add statuses to this algorithm from other algorithm, but only those items are moved that correspond to statuses set in theStatus"]
+        /// Add statuses to this algorithm from other algorithm, but only those items are moved that correspond to statuses set in theStatus
         #[cxx_name = "AddStatus"]
         fn add_status_execstatus_handlealgorithm(
             self: Pin<&mut Algorithm>,
@@ -538,16 +539,16 @@ pub(crate) mod ffi {
         );
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Algorithm) -> &HandleStandardType;
-        #[doc = "Returns messenger of algorithm. The returned handle is always non-null and can be used for sending messages."]
+        /// Returns messenger of algorithm. The returned handle is always non-null and can be used for sending messages.
         #[cxx_name = "Message_Algorithm_GetMessenger"]
         fn Algorithm_get_messenger(self_: &Algorithm) -> UniquePtr<HandleMessageMessenger>;
-        #[doc = "Prepares a string containing a list of integers contained in theError map, but not more than theMaxCount"]
+        /// Prepares a string containing a list of integers contained in theError map, but not more than theMaxCount
         #[cxx_name = "Message_Algorithm_PrepareReport_handlehpackedmapofinteger_int"]
         fn Algorithm_prepare_report_handlehpackedmapofinteger_int(
             theError: &HandleTColStdHPackedMapOfInteger,
             theMaxCount: i32,
         ) -> UniquePtr<TCollection_ExtendedString>;
-        #[doc = "Prepares a string containing a list of names contained in theReportSeq sequence, but not more than theMaxCount"]
+        /// Prepares a string containing a list of names contained in theReportSeq sequence, but not more than theMaxCount
         #[cxx_name = "Message_Algorithm_PrepareReport_sequenceofhextendedstring_int"]
         fn Algorithm_prepare_report_sequenceofhextendedstring_int(
             theReportSeq: &TColStd_SequenceOfHExtendedString,
@@ -555,21 +556,21 @@ pub(crate) mod ffi {
         ) -> UniquePtr<TCollection_ExtendedString>;
         #[cxx_name = "Message_Algorithm_get_type_name"]
         fn Algorithm_get_type_name() -> String;
-        #[doc = "Wrap Message_Algorithm in a Handle (reference-counted smart pointer)"]
+        /// Wrap Message_Algorithm in a Handle (reference-counted smart pointer)
         #[cxx_name = "Message_Algorithm_to_handle"]
         fn Algorithm_to_handle(obj: UniquePtr<Algorithm>) -> UniquePtr<HandleMessageAlgorithm>;
-        #[doc = " ======================== Message_ExecStatus ========================"]
-        #[doc = "/// **Source:** `Message_ExecStatus.hxx` - `Message_ExecStatus`"]
-        #[doc = ""]
-        #[doc = "Tiny class for extended handling of error / execution status of algorithm in universal way. It is in fact a set of integers represented as a collection of bit flags for each of four types of status; each status flag has its own symbolic name and can be set/tested individually. The flags are grouped in semantic groups: - No flags means nothing done - Done flags correspond to some operation successfully completed - Warning flags correspond to warning messages on some potentially wrong situation, not harming algorithm execution - Alarm flags correspond to more severe warnings about incorrect user data, while not breaking algorithm execution - Fail flags correspond to cases when algorithm failed to complete"]
+        /// ======================== Message_ExecStatus ========================
+        /// /// **Source:** `Message_ExecStatus.hxx` - `Message_ExecStatus`
+        ///
+        /// Tiny class for extended handling of error / execution status of algorithm in universal way. It is in fact a set of integers represented as a collection of bit flags for each of four types of status; each status flag has its own symbolic name and can be set/tested individually. The flags are grouped in semantic groups: - No flags means nothing done - Done flags correspond to some operation successfully completed - Warning flags correspond to warning messages on some potentially wrong situation, not harming algorithm execution - Alarm flags correspond to more severe warnings about incorrect user data, while not breaking algorithm execution - Fail flags correspond to cases when algorithm failed to complete
         #[cxx_name = "Message_ExecStatus"]
         type ExecStatus;
-        #[doc = "/// **Source:** `Message_ExecStatus.hxx` - `Message_ExecStatus::Message_ExecStatus()`"]
-        #[doc = ""]
-        #[doc = "Create empty execution status"]
+        /// /// **Source:** `Message_ExecStatus.hxx` - `Message_ExecStatus::Message_ExecStatus()`
+        ///
+        /// Create empty execution status
         #[cxx_name = "Message_ExecStatus_ctor"]
         fn ExecStatus_ctor() -> UniquePtr<ExecStatus>;
-        #[doc = "Check if at least one status of each type is set"]
+        /// Check if at least one status of each type is set
         #[cxx_name = "IsDone"]
         fn is_done(self: &ExecStatus) -> bool;
         #[cxx_name = "IsFail"]
@@ -578,7 +579,7 @@ pub(crate) mod ffi {
         fn is_warn(self: &ExecStatus) -> bool;
         #[cxx_name = "IsAlarm"]
         fn is_alarm(self: &ExecStatus) -> bool;
-        #[doc = "Set all statuses of each type"]
+        /// Set all statuses of each type
         #[cxx_name = "SetAllDone"]
         fn set_all_done(self: Pin<&mut ExecStatus>);
         #[cxx_name = "SetAllWarn"]
@@ -587,7 +588,7 @@ pub(crate) mod ffi {
         fn set_all_alarm(self: Pin<&mut ExecStatus>);
         #[cxx_name = "SetAllFail"]
         fn set_all_fail(self: Pin<&mut ExecStatus>);
-        #[doc = "Clear all statuses of each type"]
+        /// Clear all statuses of each type
         #[cxx_name = "ClearAllDone"]
         fn clear_all_done(self: Pin<&mut ExecStatus>);
         #[cxx_name = "ClearAllWarn"]
@@ -596,222 +597,222 @@ pub(crate) mod ffi {
         fn clear_all_alarm(self: Pin<&mut ExecStatus>);
         #[cxx_name = "ClearAllFail"]
         fn clear_all_fail(self: Pin<&mut ExecStatus>);
-        #[doc = "Clear all statuses"]
+        /// Clear all statuses
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut ExecStatus>);
-        #[doc = "Add statuses to me from theOther execution status"]
+        /// Add statuses to me from theOther execution status
         #[cxx_name = "Add"]
         fn add(self: Pin<&mut ExecStatus>, theOther: &ExecStatus);
-        #[doc = "Leave only the statuses common with theOther"]
+        /// Leave only the statuses common with theOther
         #[cxx_name = "And"]
         fn and(self: Pin<&mut ExecStatus>, theOther: &ExecStatus);
-        #[doc = " ======================== Message_Msg ========================"]
-        #[doc = "/// **Source:** `Message_Msg.hxx` - `Message_Msg`"]
-        #[doc = ""]
-        #[doc = "This class provides a tool for constructing the parametrized message basing on resources loaded by Message_MsgFile tool. A Message is created from a keyword: this keyword identifies the message in a message file that should be previously loaded by call to Message_MsgFile::LoadFile(). The text of the message can contain placeholders for the parameters which are to be filled by the proper values when the message is prepared. Most of the format specifiers used in C can be used, for instance, %s for string, %d for integer etc. In addition, specifier %f is supported for double numbers (for compatibility with previous versions). User fills the parameter fields in the text of the message by calling corresponding methods Arg() or operators . The resulting message, filled with all parameters, can be obtained by method Get(). If some parameters were not filled, the text UNKNOWN is placed instead."]
+        /// ======================== Message_Msg ========================
+        /// /// **Source:** `Message_Msg.hxx` - `Message_Msg`
+        ///
+        /// This class provides a tool for constructing the parametrized message basing on resources loaded by Message_MsgFile tool. A Message is created from a keyword: this keyword identifies the message in a message file that should be previously loaded by call to Message_MsgFile::LoadFile(). The text of the message can contain placeholders for the parameters which are to be filled by the proper values when the message is prepared. Most of the format specifiers used in C can be used, for instance, %s for string, %d for integer etc. In addition, specifier %f is supported for double numbers (for compatibility with previous versions). User fills the parameter fields in the text of the message by calling corresponding methods Arg() or operators . The resulting message, filled with all parameters, can be obtained by method Get(). If some parameters were not filled, the text UNKNOWN is placed instead.
         #[cxx_name = "Message_Msg"]
         type Msg;
-        #[doc = "/// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor"]
+        /// /// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`
+        ///
+        /// Empty constructor
         #[cxx_name = "Message_Msg_ctor"]
         fn Msg_ctor() -> UniquePtr<Msg>;
-        #[doc = "/// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`"]
-        #[doc = ""]
-        #[doc = "Copy constructor"]
+        /// /// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`
+        ///
+        /// Copy constructor
         #[cxx_name = "Message_Msg_ctor_msg"]
         fn Msg_ctor_msg(theMsg: &Msg) -> UniquePtr<Msg>;
-        #[doc = "/// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`"]
-        #[doc = ""]
-        #[doc = "Create a message using a corresponding entry in Message_MsgFile"]
+        /// /// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`
+        ///
+        /// Create a message using a corresponding entry in Message_MsgFile
         #[cxx_name = "Message_Msg_ctor_charptr"]
         fn Msg_ctor_charptr(theKey: &str) -> UniquePtr<Msg>;
-        #[doc = "/// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`"]
-        #[doc = ""]
-        #[doc = "Create a message using a corresponding entry in Message_MsgFile"]
+        /// /// **Source:** `Message_Msg.hxx` - `Message_Msg::Message_Msg()`
+        ///
+        /// Create a message using a corresponding entry in Message_MsgFile
         #[cxx_name = "Message_Msg_ctor_extendedstring"]
         fn Msg_ctor_extendedstring(theKey: &TCollection_ExtendedString) -> UniquePtr<Msg>;
-        #[doc = "Set a message body text -- can be used as alternative to using messages from resource file"]
+        /// Set a message body text -- can be used as alternative to using messages from resource file
         #[cxx_name = "Set"]
         fn set_extendedstring(self: Pin<&mut Msg>, theMsg: &TCollection_ExtendedString);
-        #[doc = "Set a value for %..s conversion"]
+        /// Set a value for %..s conversion
         #[cxx_name = "Arg"]
         fn arg_asciistring(
             self: Pin<&mut Msg>,
             theString: &TCollection_AsciiString,
         ) -> Pin<&mut Msg>;
-        #[doc = "Set a value for %..s conversion"]
+        /// Set a value for %..s conversion
         #[cxx_name = "Arg"]
         fn arg_handlehasciistring(
             self: Pin<&mut Msg>,
             theString: &HandleTCollectionHAsciiString,
         ) -> Pin<&mut Msg>;
-        #[doc = "Set a value for %..s conversion"]
+        /// Set a value for %..s conversion
         #[cxx_name = "Arg"]
         fn arg_extendedstring(
             self: Pin<&mut Msg>,
             theString: &TCollection_ExtendedString,
         ) -> Pin<&mut Msg>;
-        #[doc = "Set a value for %..s conversion"]
+        /// Set a value for %..s conversion
         #[cxx_name = "Arg"]
         fn arg_handlehextendedstring(
             self: Pin<&mut Msg>,
             theString: &HandleTCollectionHExtendedString,
         ) -> Pin<&mut Msg>;
-        #[doc = "Set a value for %..d, %..i, %..o, %..u, %..x or %..X conversion"]
+        /// Set a value for %..d, %..i, %..o, %..u, %..x or %..X conversion
         #[cxx_name = "Arg"]
         fn arg_int(self: Pin<&mut Msg>, theInt: i32) -> Pin<&mut Msg>;
-        #[doc = "Set a value for %..f, %..e, %..E, %..g or %..G conversion"]
+        /// Set a value for %..f, %..e, %..E, %..g or %..G conversion
         #[cxx_name = "Arg"]
         fn arg_real(self: Pin<&mut Msg>, theReal: f64) -> Pin<&mut Msg>;
-        #[doc = "Returns the original message text"]
+        /// Returns the original message text
         #[cxx_name = "Original"]
         fn original(self: &Msg) -> &TCollection_ExtendedString;
-        #[doc = "Returns current state of the message text with parameters to the moment"]
+        /// Returns current state of the message text with parameters to the moment
         #[cxx_name = "Value"]
         fn value(self: &Msg) -> &TCollection_ExtendedString;
-        #[doc = "Tells if Value differs from Original"]
+        /// Tells if Value differs from Original
         #[cxx_name = "IsEdited"]
         fn is_edited(self: &Msg) -> bool;
-        #[doc = "Return the resulting message string with all parameters filled. If some parameters were not yet filled by calls to methods Arg (or <<), these parameters are filled by the word UNKNOWN"]
+        /// Return the resulting message string with all parameters filled. If some parameters were not yet filled by calls to methods Arg (or <<), these parameters are filled by the word UNKNOWN
         #[cxx_name = "Get"]
         fn get(self: Pin<&mut Msg>) -> &TCollection_ExtendedString;
-        #[doc = "Set a message body text -- can be used as alternative to using messages from resource file"]
+        /// Set a message body text -- can be used as alternative to using messages from resource file
         #[cxx_name = "Message_Msg_Set"]
         fn Msg_set_charptr(self_: Pin<&mut Msg>, theMsg: &str);
-        #[doc = " ======================== Message_Report ========================"]
-        #[doc = "/// **Source:** `Message_Report.hxx` - `Message_Report`"]
-        #[doc = ""]
-        #[doc = "Container for alert messages, sorted according to their gravity. For each gravity level, alerts are stored in simple list. If alert being added can be merged with another alert of the same type already in the list, it is merged and not added to the list. This class is intended to be used as follows: - In the process of execution, algorithm fills report by alert objects using methods AddAlert() - The result can be queried for presence of particular alert using methods HasAlert() - The reports produced by nested or sequentially executed algorithms can be collected in one using method Merge() - The report can be shown to the user either as plain text with method Dump() or in more advanced way, by iterating over lists returned by GetAlerts() - Report can be cleared by methods Clear() (usually after reporting) Message_PrinterToReport is a printer in Messenger to convert data sent to messenger into report"]
+        /// ======================== Message_Report ========================
+        /// /// **Source:** `Message_Report.hxx` - `Message_Report`
+        ///
+        /// Container for alert messages, sorted according to their gravity. For each gravity level, alerts are stored in simple list. If alert being added can be merged with another alert of the same type already in the list, it is merged and not added to the list. This class is intended to be used as follows: - In the process of execution, algorithm fills report by alert objects using methods AddAlert() - The result can be queried for presence of particular alert using methods HasAlert() - The reports produced by nested or sequentially executed algorithms can be collected in one using method Merge() - The report can be shown to the user either as plain text with method Dump() or in more advanced way, by iterating over lists returned by GetAlerts() - Report can be cleared by methods Clear() (usually after reporting) Message_PrinterToReport is a printer in Messenger to convert data sent to messenger into report
         #[cxx_name = "Message_Report"]
         type Report;
-        #[doc = "/// **Source:** `Message_Report.hxx` - `Message_Report::Message_Report()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor"]
+        /// /// **Source:** `Message_Report.hxx` - `Message_Report::Message_Report()`
+        ///
+        /// Empty constructor
         #[cxx_name = "Message_Report_ctor"]
         fn Report_ctor() -> UniquePtr<Report>;
-        #[doc = "Returns true if specific type of alert is recorded"]
+        /// Returns true if specific type of alert is recorded
         #[cxx_name = "HasAlert"]
         fn has_alert_handletype(self: Pin<&mut Report>, theType: &HandleStandardType) -> bool;
-        #[doc = "Returns true if a report printer for the current report is registered in the messenger @param theMessenger the messenger. If it's NULL, the default messenger is used"]
+        /// Returns true if a report printer for the current report is registered in the messenger @param theMessenger the messenger. If it's NULL, the default messenger is used
         #[cxx_name = "IsActiveInMessenger"]
         fn is_active_in_messenger(self: &Report, theMessenger: &HandleMessageMessenger) -> bool;
-        #[doc = "Creates an instance of Message_PrinterToReport with the current report and register it in messenger @param toActivate if true, activated else deactivated @param theMessenger the messenger. If it's NULL, the default messenger is used"]
+        /// Creates an instance of Message_PrinterToReport with the current report and register it in messenger @param toActivate if true, activated else deactivated @param theMessenger the messenger. If it's NULL, the default messenger is used
         #[cxx_name = "ActivateInMessenger"]
         fn activate_in_messenger(
             self: Pin<&mut Report>,
             toActivate: bool,
             theMessenger: &HandleMessageMessenger,
         );
-        #[doc = "Updates internal flag IsActiveInMessenger. It becomes true if messenger contains at least one instance of Message_PrinterToReport. @param theMessenger the messenger. If it's NULL, the default messenger is used"]
+        /// Updates internal flag IsActiveInMessenger. It becomes true if messenger contains at least one instance of Message_PrinterToReport. @param theMessenger the messenger. If it's NULL, the default messenger is used
         #[cxx_name = "UpdateActiveInMessenger"]
         fn update_active_in_messenger(
             self: Pin<&mut Report>,
             theMessenger: &HandleMessageMessenger,
         );
-        #[doc = "Clears all collected alerts"]
+        /// Clears all collected alerts
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Report>);
-        #[doc = "Clears collected alerts with specified type"]
+        /// Clears collected alerts with specified type
         #[cxx_name = "Clear"]
         fn clear_handletype(self: Pin<&mut Report>, theType: &HandleStandardType);
-        #[doc = "Removes all activated metrics"]
+        /// Removes all activated metrics
         #[cxx_name = "ClearMetrics"]
         fn clear_metrics(self: Pin<&mut Report>);
-        #[doc = "Returns maximum number of collecting alerts. If the limit is achieved, first alert is removed, the new alert is added in the container. @return the limit value"]
+        /// Returns maximum number of collecting alerts. If the limit is achieved, first alert is removed, the new alert is added in the container. @return the limit value
         #[cxx_name = "Limit"]
         fn limit(self: &Report) -> i32;
-        #[doc = "Sets maximum number of collecting alerts. @param theLimit limit value"]
+        /// Sets maximum number of collecting alerts. @param theLimit limit value
         #[cxx_name = "SetLimit"]
         fn set_limit(self: Pin<&mut Report>, theLimit: i32);
-        #[doc = "Sends all collected alerts to messenger."]
+        /// Sends all collected alerts to messenger.
         #[cxx_name = "SendMessages"]
         fn send_messages_handlemessenger(
             self: Pin<&mut Report>,
             theMessenger: &HandleMessageMessenger,
         );
-        #[doc = "Merges data from theOther report into this"]
+        /// Merges data from theOther report into this
         #[cxx_name = "Merge"]
         fn merge_handlereport(self: Pin<&mut Report>, theOther: &HandleMessageReport);
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Report) -> &HandleStandardType;
         #[cxx_name = "Message_Report_get_type_name"]
         fn Report_get_type_name() -> String;
-        #[doc = "Wrap Message_Report in a Handle (reference-counted smart pointer)"]
+        /// Wrap Message_Report in a Handle (reference-counted smart pointer)
         #[cxx_name = "Message_Report_to_handle"]
         fn Report_to_handle(obj: UniquePtr<Report>) -> UniquePtr<HandleMessageReport>;
-        #[doc = " ======================== Message_Level ========================"]
-        #[doc = "/// **Source:** `Message_Level.hxx` - `Message_Level`"]
-        #[doc = ""]
-        #[doc = "This class is an instance of Sentry to create a level in a message report Constructor of the class add new (active) level in the report, destructor removes it While the level is active in the report, new alerts are added below the level root alert. The first added alert is a root alert, other are added below the root alert If alert has Message_AttributeMeter attribute, active metrics of the default report are stored in the attribute: start value of metric on adding alert, stop on adding another alert or closing (delete) the level in the report. Processing of this class is implemented in Message_Report, it is used only inside it. Levels using should be only through using OCCT_ADD_MESSAGE_LEVEL_SENTRY only. No other code is required outside."]
+        /// ======================== Message_Level ========================
+        /// /// **Source:** `Message_Level.hxx` - `Message_Level`
+        ///
+        /// This class is an instance of Sentry to create a level in a message report Constructor of the class add new (active) level in the report, destructor removes it While the level is active in the report, new alerts are added below the level root alert. The first added alert is a root alert, other are added below the root alert If alert has Message_AttributeMeter attribute, active metrics of the default report are stored in the attribute: start value of metric on adding alert, stop on adding another alert or closing (delete) the level in the report. Processing of this class is implemented in Message_Report, it is used only inside it. Levels using should be only through using OCCT_ADD_MESSAGE_LEVEL_SENTRY only. No other code is required outside.
         #[cxx_name = "Message_Level"]
         type Level;
-        #[doc = "/// **Source:** `Message_Level.hxx` - `Message_Level::Message_Level()`"]
-        #[doc = ""]
-        #[doc = "Constructor. One string key is used for all alert meters. The perf meter is not started automatically, it will be done in AddAlert() method"]
+        /// /// **Source:** `Message_Level.hxx` - `Message_Level::Message_Level()`
+        ///
+        /// Constructor. One string key is used for all alert meters. The perf meter is not started automatically, it will be done in AddAlert() method
         #[cxx_name = "Message_Level_ctor_asciistring"]
         fn Level_ctor_asciistring(theName: &TCollection_AsciiString) -> UniquePtr<Level>;
-        #[doc = "Returns root alert of the level @return alert instance or NULL"]
+        /// Returns root alert of the level @return alert instance or NULL
         #[cxx_name = "RootAlert"]
         fn root_alert(self: &Level) -> &HandleMessageAlertExtended;
-        #[doc = "Sets the root alert. Starts collects alert metrics if active. @param theAlert an alert"]
+        /// Sets the root alert. Starts collects alert metrics if active. @param theAlert an alert
         #[cxx_name = "SetRootAlert"]
         fn set_root_alert(
             self: Pin<&mut Level>,
             theAlert: &HandleMessageAlertExtended,
             isRequiredToStart: bool,
         );
-        #[doc = " ======================== Message_Alert ========================"]
-        #[doc = "/// **Source:** `Message_Alert.hxx` - `Message_Alert`"]
-        #[doc = ""]
-        #[doc = "Base class of the hierarchy of classes describing various situations occurring during execution of some algorithm or procedure. Alert should provide unique text identifier that can be used to distinguish particular type of alerts, e.g. to get text message string describing it. See method GetMessageKey(); by default, dynamic type name is used. Alert can contain some data. To avoid duplication of data, new alert can be merged with another one of the same type. Method SupportsMerge() should return true if merge is supported; method Merge() should do the merge if possible and return true in that case and false otherwise."]
+        /// ======================== Message_Alert ========================
+        /// /// **Source:** `Message_Alert.hxx` - `Message_Alert`
+        ///
+        /// Base class of the hierarchy of classes describing various situations occurring during execution of some algorithm or procedure. Alert should provide unique text identifier that can be used to distinguish particular type of alerts, e.g. to get text message string describing it. See method GetMessageKey(); by default, dynamic type name is used. Alert can contain some data. To avoid duplication of data, new alert can be merged with another one of the same type. Method SupportsMerge() should return true if merge is supported; method Merge() should do the merge if possible and return true in that case and false otherwise.
         #[cxx_name = "Message_Alert"]
         type Alert;
-        #[doc = "Return true if this type of alert can be merged with other of the same type to avoid duplication. Basis implementation returns true."]
+        /// Return true if this type of alert can be merged with other of the same type to avoid duplication. Basis implementation returns true.
         #[cxx_name = "SupportsMerge"]
         fn supports_merge(self: &Alert) -> bool;
-        #[doc = "If possible, merge data contained in this alert to theTarget. @return True if merged. Base implementation always returns true."]
+        /// If possible, merge data contained in this alert to theTarget. @return True if merged. Base implementation always returns true.
         #[cxx_name = "Merge"]
         fn merge(self: Pin<&mut Alert>, theTarget: &HandleMessageAlert) -> bool;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Alert) -> &HandleStandardType;
-        #[doc = "Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance."]
+        /// Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance.
         #[cxx_name = "Message_Alert_GetMessageKey"]
         fn Alert_get_message_key(self_: &Alert) -> String;
         #[cxx_name = "Message_Alert_get_type_name"]
         fn Alert_get_type_name() -> String;
-        #[doc = "Wrap Message_Alert in a Handle (reference-counted smart pointer)"]
+        /// Wrap Message_Alert in a Handle (reference-counted smart pointer)
         #[cxx_name = "Message_Alert_to_handle"]
         fn Alert_to_handle(obj: UniquePtr<Alert>) -> UniquePtr<HandleMessageAlert>;
-        #[doc = " ======================== Message_AlertExtended ========================"]
-        #[doc = "/// **Source:** `Message_AlertExtended.hxx` - `Message_AlertExtended`"]
-        #[doc = ""]
-        #[doc = "Inherited class of Message_Alert with some additional information. It has Message_Attributes to provide the alert name, and other custom information It has a container of composite alerts, if the alert might provide sub-alerts collecting."]
+        /// ======================== Message_AlertExtended ========================
+        /// /// **Source:** `Message_AlertExtended.hxx` - `Message_AlertExtended`
+        ///
+        /// Inherited class of Message_Alert with some additional information. It has Message_Attributes to provide the alert name, and other custom information It has a container of composite alerts, if the alert might provide sub-alerts collecting.
         #[cxx_name = "Message_AlertExtended"]
         type AlertExtended;
-        #[doc = "/// **Source:** `Message_AlertExtended.hxx` - `Message_AlertExtended::Message_AlertExtended()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor"]
+        /// /// **Source:** `Message_AlertExtended.hxx` - `Message_AlertExtended::Message_AlertExtended()`
+        ///
+        /// Empty constructor
         #[cxx_name = "Message_AlertExtended_ctor"]
         fn AlertExtended_ctor() -> UniquePtr<AlertExtended>;
-        #[doc = "Returns container of the alert attributes"]
+        /// Returns container of the alert attributes
         #[cxx_name = "Attribute"]
         fn attribute(self: &AlertExtended) -> &HandleMessageAttribute;
-        #[doc = "Sets container of the alert attributes @param theAttributes an attribute values"]
+        /// Sets container of the alert attributes @param theAttributes an attribute values
         #[cxx_name = "SetAttribute"]
         fn set_attribute(self: Pin<&mut AlertExtended>, theAttribute: &HandleMessageAttribute);
-        #[doc = "Return true if this type of alert can be merged with other of the same type to avoid duplication. Hierarchical alerts can not be merged Basis implementation returns true."]
+        /// Return true if this type of alert can be merged with other of the same type to avoid duplication. Hierarchical alerts can not be merged Basis implementation returns true.
         #[cxx_name = "SupportsMerge"]
         fn supports_merge(self: &AlertExtended) -> bool;
-        #[doc = "If possible, merge data contained in this alert to theTarget. Base implementation always returns false. @return True if merged"]
+        /// If possible, merge data contained in this alert to theTarget. Base implementation always returns false. @return True if merged
         #[cxx_name = "Merge"]
         fn merge(self: Pin<&mut AlertExtended>, theTarget: &HandleMessageAlert) -> bool;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &AlertExtended) -> &HandleStandardType;
-        #[doc = "Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance."]
+        /// Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance.
         #[cxx_name = "Message_AlertExtended_GetMessageKey"]
         fn AlertExtended_get_message_key(self_: &AlertExtended) -> String;
-        #[doc = "Returns class provided hierarchy of alerts if created or create if the parameter is true @param theToCreate if composite alert has not been created for this alert, it should be created @return instance or NULL"]
+        /// Returns class provided hierarchy of alerts if created or create if the parameter is true @param theToCreate if composite alert has not been created for this alert, it should be created @return instance or NULL
         #[cxx_name = "Message_AlertExtended_CompositeAlerts"]
         fn AlertExtended_composite_alerts(
             self_: Pin<&mut AlertExtended>,
@@ -819,97 +820,99 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleMessageCompositeAlerts>;
         #[cxx_name = "Message_AlertExtended_get_type_name"]
         fn AlertExtended_get_type_name() -> String;
-        #[doc = "Upcast Message_AlertExtended to Message_Alert"]
+        /// Upcast Message_AlertExtended to Message_Alert
         #[cxx_name = "Message_AlertExtended_as_Message_Alert"]
         fn alert_extended_as_alert(self_: &AlertExtended) -> &Alert;
-        #[doc = "Upcast Message_AlertExtended to Message_Alert (mutable)"]
+        /// Upcast Message_AlertExtended to Message_Alert (mutable)
         #[cxx_name = "Message_AlertExtended_as_Message_Alert_mut"]
         fn alert_extended_as_alert_mut(self_: Pin<&mut AlertExtended>) -> Pin<&mut Alert>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "BaseAllocator from n_collection module"]
+        /// BaseAllocator from n_collection module
         type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
-        #[doc = "BaseList from n_collection module"]
+        /// BaseList from n_collection module
         type NCollection_BaseList = crate::n_collection::ffi::BaseList;
-        #[doc = "BasePointerVector from n_collection module"]
+        /// BasePointerVector from n_collection module
         type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
-        #[doc = "Buffer from n_collection module"]
+        /// Buffer from n_collection module
         type NCollection_Buffer = crate::n_collection::ffi::Buffer;
-        #[doc = "IncAllocator from n_collection module"]
+        /// IncAllocator from n_collection module
         type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
-        #[doc = "MemInfo from osd module"]
+        /// MemInfo from osd module
         type OSD_MemInfo = crate::osd::ffi::MemInfo;
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
+        /// HArray1OfBoolean from t_col_std module
         type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
+        /// HArray1OfInteger from t_col_std module
         type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
+        /// HArray1OfReal from t_col_std module
         type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
+        /// HArray1OfTransient from t_col_std module
         type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
+        /// HArray2OfReal from t_col_std module
         type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        /// HSequenceOfHExtendedString from t_col_std module
         type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfInteger from t_col_std module"]
+        /// HSequenceOfInteger from t_col_std module
         type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
-        #[doc = "HSequenceOfReal from t_col_std module"]
+        /// HSequenceOfReal from t_col_std module
         type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
+        /// HSequenceOfTransient from t_col_std module
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
+        /// PackedMapOfInteger from t_col_std module
         type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "AsciiString from t_collection module"]
+        /// AsciiString from t_collection module
         type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
-        #[doc = "ExtendedString from t_collection module"]
+        /// ExtendedString from t_collection module
         type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
-        #[doc = "HAsciiString from t_collection module"]
+        /// HAsciiString from t_collection module
         type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
-        #[doc = "HExtendedString from t_collection module"]
+        /// HExtendedString from t_collection module
         type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
+
         // ========================
         // Referenced types (opaque)
         // ========================

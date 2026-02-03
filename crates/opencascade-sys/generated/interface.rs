@@ -12,17 +12,17 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::GeneralLib;
 impl GeneralLib {
-    #[doc = "Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources"]
+    /// Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources
     pub fn new_handleprotocol(aprotocol: &ffi::HandleInterfaceProtocol) -> cxx::UniquePtr<Self> {
         ffi::GeneralLib_ctor_handleprotocol(aprotocol)
     }
 
-    #[doc = "Creates an empty Library : it will later by filled by method AddProtocol"]
+    /// Creates an empty Library : it will later by filled by method AddProtocol
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::GeneralLib_ctor()
     }
 
-    #[doc = "Adds a couple (Module-Protocol) into the global definition set for this class of Library."]
+    /// Adds a couple (Module-Protocol) into the global definition set for this class of Library.
     pub fn set_global(
         amodule: &ffi::HandleInterfaceGeneralModule,
         aprotocol: &ffi::HandleInterfaceProtocol,
@@ -34,35 +34,36 @@ impl GeneralLib {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_interface.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== Interface_GeneralLib ========================"]
-        #[doc = "/// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib`"]
+        /// ======================== Interface_GeneralLib ========================
+        /// /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib`
         #[cxx_name = "Interface_GeneralLib"]
         type GeneralLib;
-        #[doc = "/// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib::Interface_GeneralLib()`"]
-        #[doc = ""]
-        #[doc = "Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources"]
+        /// /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib::Interface_GeneralLib()`
+        ///
+        /// Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources
         #[cxx_name = "Interface_GeneralLib_ctor_handleprotocol"]
         fn GeneralLib_ctor_handleprotocol(
             aprotocol: &HandleInterfaceProtocol,
         ) -> UniquePtr<GeneralLib>;
-        #[doc = "/// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib::Interface_GeneralLib()`"]
-        #[doc = ""]
-        #[doc = "Creates an empty Library : it will later by filled by method AddProtocol"]
+        /// /// **Source:** `Interface_GeneralLib.hxx` - `Interface_GeneralLib::Interface_GeneralLib()`
+        ///
+        /// Creates an empty Library : it will later by filled by method AddProtocol
         #[cxx_name = "Interface_GeneralLib_ctor"]
         fn GeneralLib_ctor() -> UniquePtr<GeneralLib>;
-        #[doc = "Adds a couple (Module-Protocol) to the Library, given the class of a Protocol. Takes Resources into account. (if <aprotocol> is not of type TheProtocol, it is not added)"]
+        /// Adds a couple (Module-Protocol) to the Library, given the class of a Protocol. Takes Resources into account. (if <aprotocol> is not of type TheProtocol, it is not added)
         #[cxx_name = "AddProtocol"]
         fn add_protocol(self: Pin<&mut GeneralLib>, aprotocol: &HandleStandardTransient);
-        #[doc = "Clears the list of Modules of a library (can be used to redefine the order of Modules before action : Clear then refill the Library by calls to AddProtocol)"]
+        /// Clears the list of Modules of a library (can be used to redefine the order of Modules before action : Clear then refill the Library by calls to AddProtocol)
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut GeneralLib>);
-        #[doc = "Sets a library to be defined with the complete Global list (all the couples Protocol/Modules recorded in it)"]
+        /// Sets a library to be defined with the complete Global list (all the couples Protocol/Modules recorded in it)
         #[cxx_name = "SetComplete"]
         fn set_complete(self: Pin<&mut GeneralLib>);
-        #[doc = "Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType)"]
+        /// Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType)
         #[cxx_name = "Select"]
         fn select(
             self: &GeneralLib,
@@ -70,72 +71,74 @@ pub(crate) mod ffi {
             module: Pin<&mut HandleInterfaceGeneralModule>,
             CN: &mut i32,
         ) -> bool;
-        #[doc = "Starts Iteration on the Modules (sets it on the first one)"]
+        /// Starts Iteration on the Modules (sets it on the first one)
         #[cxx_name = "Start"]
         fn start(self: Pin<&mut GeneralLib>);
-        #[doc = "Returns True if there are more Modules to iterate on"]
+        /// Returns True if there are more Modules to iterate on
         #[cxx_name = "More"]
         fn more(self: &GeneralLib) -> bool;
-        #[doc = "Iterates by getting the next Module in the list If there is none, the exception will be raised by Value"]
+        /// Iterates by getting the next Module in the list If there is none, the exception will be raised by Value
         #[cxx_name = "Next"]
         fn next(self: Pin<&mut GeneralLib>);
-        #[doc = "Returns the current Module in the Iteration"]
+        /// Returns the current Module in the Iteration
         #[cxx_name = "Module"]
         fn module(self: &GeneralLib) -> &HandleInterfaceGeneralModule;
-        #[doc = "Returns the current Protocol in the Iteration"]
+        /// Returns the current Protocol in the Iteration
         #[cxx_name = "Protocol"]
         fn protocol(self: &GeneralLib) -> &HandleInterfaceProtocol;
-        #[doc = "Adds a couple (Module-Protocol) into the global definition set for this class of Library."]
+        /// Adds a couple (Module-Protocol) into the global definition set for this class of Library.
         #[cxx_name = "Interface_GeneralLib_SetGlobal"]
         fn GeneralLib_set_global(
             amodule: &HandleInterfaceGeneralModule,
             aprotocol: &HandleInterfaceProtocol,
         );
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+
         // ========================
         // Referenced types (opaque)
         // ========================

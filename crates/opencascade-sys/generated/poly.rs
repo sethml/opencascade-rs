@@ -19,12 +19,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Triangulation;
 impl Triangulation {
-    #[doc = "Constructs an empty triangulation."]
+    /// Constructs an empty triangulation.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Triangulation_ctor()
     }
 
-    #[doc = "Constructs a triangulation from a set of triangles. The triangulation is initialized without a triangle or a node, but capable of containing specified number of nodes and triangles. @param[in] theNbNodes      number of nodes to allocate @param[in] theNbTriangles  number of triangles to allocate @param[in] theHasUVNodes   indicates whether 2D nodes will be associated with 3D ones, (i.e. to enable a 2D representation) @param[in] theHasNormals   indicates whether normals will be given and associated with nodes"]
+    /// Constructs a triangulation from a set of triangles. The triangulation is initialized without a triangle or a node, but capable of containing specified number of nodes and triangles. @param[in] theNbNodes      number of nodes to allocate @param[in] theNbTriangles  number of triangles to allocate @param[in] theHasUVNodes   indicates whether 2D nodes will be associated with 3D ones, (i.e. to enable a 2D representation) @param[in] theHasNormals   indicates whether normals will be given and associated with nodes
     pub fn new_int2_bool2(
         theNbNodes: i32,
         theNbTriangles: i32,
@@ -34,7 +34,7 @@ impl Triangulation {
         ffi::Triangulation_ctor_int2_bool2(theNbNodes, theNbTriangles, theHasUVNodes, theHasNormals)
     }
 
-    #[doc = "Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes and triangles from Triangles."]
+    /// Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes and triangles from Triangles.
     pub fn new_array1ofpnt_array1oftriangle(
         Nodes: &ffi::TColgp_Array1OfPnt,
         Triangles: &ffi::Poly_Array1OfTriangle,
@@ -42,7 +42,7 @@ impl Triangulation {
         ffi::Triangulation_ctor_array1ofpnt_array1oftriangle(Nodes, Triangles)
     }
 
-    #[doc = "Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes, 2D points from UVNodes and triangles from Triangles, where coordinates of a 2D point from UVNodes are the (u, v) parameters of the corresponding 3D point from Nodes on the surface approximated by the constructed triangulation."]
+    /// Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes, 2D points from UVNodes and triangles from Triangles, where coordinates of a 2D point from UVNodes are the (u, v) parameters of the corresponding 3D point from Nodes on the surface approximated by the constructed triangulation.
     pub fn new_array1ofpnt_array1ofpnt2d_array1oftriangle(
         Nodes: &ffi::TColgp_Array1OfPnt,
         UVNodes: &ffi::TColgp_Array1OfPnt2d,
@@ -53,59 +53,59 @@ impl Triangulation {
         )
     }
 
-    #[doc = "Copy constructor for triangulation."]
+    /// Copy constructor for triangulation.
     pub fn new_handletriangulation(
         theTriangulation: &ffi::HandlePolyTriangulation,
     ) -> cxx::UniquePtr<Self> {
         ffi::Triangulation_ctor_handletriangulation(theTriangulation)
     }
 
-    #[doc = "Wrap Poly_Triangulation in a Handle (reference-counted smart pointer)"]
+    /// Wrap Poly_Triangulation in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandlePolyTriangulation> {
         ffi::Triangulation_to_handle(obj)
     }
 
-    #[doc = "Creates full copy of current triangulation"]
+    /// Creates full copy of current triangulation
     pub fn copy(&self) -> cxx::UniquePtr<ffi::HandlePolyTriangulation> {
         ffi::Triangulation_copy(self)
     }
 
-    #[doc = "Returns a node at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return 3D point coordinates"]
+    /// Returns a node at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return 3D point coordinates
     pub fn node(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::Triangulation_node(self, theIndex)
     }
 
-    #[doc = "Returns UV-node at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return 2D point defining UV coordinates"]
+    /// Returns UV-node at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return 2D point defining UV coordinates
     pub fn uv_node(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
         ffi::Triangulation_uv_node(self, theIndex)
     }
 
-    #[doc = "Returns normal at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return normalized 3D vector defining a surface normal"]
+    /// Returns normal at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return normalized 3D vector defining a surface normal
     pub fn normal_int(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Dir> {
         ffi::Triangulation_normal_int(self, theIndex)
     }
 
-    #[doc = "Returns the table of 3D points for read-only access or NULL if nodes array is undefined. Poly_Triangulation::Node() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
+    /// Returns the table of 3D points for read-only access or NULL if nodes array is undefined. Poly_Triangulation::Node() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
     pub fn map_node_array(&self) -> cxx::UniquePtr<ffi::HandleTColgpHArray1OfPnt> {
         ffi::Triangulation_map_node_array(self)
     }
 
-    #[doc = "Returns the triangle array for read-only access or NULL if triangle array is undefined. Poly_Triangulation::Triangle() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
+    /// Returns the triangle array for read-only access or NULL if triangle array is undefined. Poly_Triangulation::Triangle() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
     pub fn map_triangle_array(&self) -> cxx::UniquePtr<ffi::HandlePolyHArray1OfTriangle> {
         ffi::Triangulation_map_triangle_array(self)
     }
 
-    #[doc = "Returns the table of 2D nodes for read-only access or NULL if UV nodes array is undefined. Poly_Triangulation::UVNode() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
+    /// Returns the table of 2D nodes for read-only access or NULL if UV nodes array is undefined. Poly_Triangulation::UVNode() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
     pub fn map_uv_node_array(&self) -> cxx::UniquePtr<ffi::HandleTColgpHArray1OfPnt2d> {
         ffi::Triangulation_map_uv_node_array(self)
     }
 
-    #[doc = "Returns the table of per-vertex normals for read-only access or NULL if normals array is undefined. Poly_Triangulation::Normal() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
+    /// Returns the table of per-vertex normals for read-only access or NULL if normals array is undefined. Poly_Triangulation::Normal() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
     pub fn map_normal_array(&self) -> cxx::UniquePtr<ffi::HandleTShortHArray1OfShortReal> {
         ffi::Triangulation_map_normal_array(self)
     }
 
-    #[doc = "Loads triangulation data into new Poly_Triangulation object from some deferred storage using specified shared input file system."]
+    /// Loads triangulation data into new Poly_Triangulation object from some deferred storage using specified shared input file system.
     pub fn detached_load_deferred_data(
         &self,
         theFileSystem: &ffi::HandleOSDFileSystem,
@@ -148,7 +148,7 @@ impl HArray1OfTriangle {
         ffi::HArray1OfTriangle_ctor_array1oftriangle(theOther)
     }
 
-    #[doc = "Wrap Poly_HArray1OfTriangle in a Handle (reference-counted smart pointer)"]
+    /// Wrap Poly_HArray1OfTriangle in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<ffi::HandlePolyHArray1OfTriangle> {
@@ -161,93 +161,93 @@ impl HArray1OfTriangle {
 }
 pub use ffi::ArrayOfNodes;
 impl ArrayOfNodes {
-    #[doc = "Empty constructor of double-precision array."]
+    /// Empty constructor of double-precision array.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ArrayOfNodes_ctor()
     }
 
-    #[doc = "Constructor of double-precision array."]
+    /// Constructor of double-precision array.
     pub fn new_int(theLength: i32) -> cxx::UniquePtr<Self> {
         ffi::ArrayOfNodes_ctor_int(theLength)
     }
 
-    #[doc = "Copy constructor"]
+    /// Copy constructor
     pub fn new_arrayofnodes(theOther: &ffi::ArrayOfNodes) -> cxx::UniquePtr<Self> {
         ffi::ArrayOfNodes_ctor_arrayofnodes(theOther)
     }
 
-    #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
+    /// Constructor wrapping pre-allocated C-array of values without copying them.
     pub fn new_pnt_int(theBegin: &ffi::gp_Pnt, theLength: i32) -> cxx::UniquePtr<Self> {
         ffi::ArrayOfNodes_ctor_pnt_int(theBegin, theLength)
     }
 
-    #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
+    /// Constructor wrapping pre-allocated C-array of values without copying them.
     pub fn new_vec3f_int(theBegin: &ffi::gp_Vec3f, theLength: i32) -> cxx::UniquePtr<Self> {
         ffi::ArrayOfNodes_ctor_vec3f_int(theBegin, theLength)
     }
 
-    #[doc = "A generalized accessor to point."]
+    /// A generalized accessor to point.
     pub fn value(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::ArrayOfNodes_value(self, theIndex)
     }
 }
 pub use ffi::ArrayOfUVNodes;
 impl ArrayOfUVNodes {
-    #[doc = "Empty constructor of double-precision array."]
+    /// Empty constructor of double-precision array.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ArrayOfUVNodes_ctor()
     }
 
-    #[doc = "Constructor of double-precision array."]
+    /// Constructor of double-precision array.
     pub fn new_int(theLength: i32) -> cxx::UniquePtr<Self> {
         ffi::ArrayOfUVNodes_ctor_int(theLength)
     }
 
-    #[doc = "Copy constructor"]
+    /// Copy constructor
     pub fn new_arrayofuvnodes(theOther: &ffi::ArrayOfUVNodes) -> cxx::UniquePtr<Self> {
         ffi::ArrayOfUVNodes_ctor_arrayofuvnodes(theOther)
     }
 
-    #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
+    /// Constructor wrapping pre-allocated C-array of values without copying them.
     pub fn new_pnt2d_int(theBegin: &ffi::gp_Pnt2d, theLength: i32) -> cxx::UniquePtr<Self> {
         ffi::ArrayOfUVNodes_ctor_pnt2d_int(theBegin, theLength)
     }
 
-    #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
+    /// Constructor wrapping pre-allocated C-array of values without copying them.
     pub fn new_vec2f_int(theBegin: &ffi::gp_Vec2f, theLength: i32) -> cxx::UniquePtr<Self> {
         ffi::ArrayOfUVNodes_ctor_vec2f_int(theBegin, theLength)
     }
 
-    #[doc = "A generalized accessor to point."]
+    /// A generalized accessor to point.
     pub fn value(&self, theIndex: i32) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
         ffi::ArrayOfUVNodes_value(self, theIndex)
     }
 }
 pub use ffi::Triangle;
 impl Triangle {
-    #[doc = "Constructs a triangle and sets all indices to zero."]
+    /// Constructs a triangle and sets all indices to zero.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Triangle_ctor()
     }
 
-    #[doc = "Constructs a triangle and sets its three indices, where these node values are indices in the table of nodes specific to an existing triangulation of a shape."]
+    /// Constructs a triangle and sets its three indices, where these node values are indices in the table of nodes specific to an existing triangulation of a shape.
     pub fn new_int3(theN1: i32, theN2: i32, theN3: i32) -> cxx::UniquePtr<Self> {
         ffi::Triangle_ctor_int3(theN1, theN2, theN3)
     }
 }
 pub use ffi::Polygon3D;
 impl Polygon3D {
-    #[doc = "Constructs a 3D polygon with specific number of nodes."]
+    /// Constructs a 3D polygon with specific number of nodes.
     pub fn new_int_bool(theNbNodes: i32, theHasParams: bool) -> cxx::UniquePtr<Self> {
         ffi::Polygon3D_ctor_int_bool(theNbNodes, theHasParams)
     }
 
-    #[doc = "Constructs a 3D polygon defined by the table of points, Nodes."]
+    /// Constructs a 3D polygon defined by the table of points, Nodes.
     pub fn new_array1ofpnt(Nodes: &ffi::TColgp_Array1OfPnt) -> cxx::UniquePtr<Self> {
         ffi::Polygon3D_ctor_array1ofpnt(Nodes)
     }
 
-    #[doc = "Constructs a 3D polygon defined by the table of points, Nodes, and the parallel table of parameters, Parameters, where each value of the table Parameters is the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning Both the Nodes and Parameters tables must have the same bounds. This property is not checked at construction time."]
+    /// Constructs a 3D polygon defined by the table of points, Nodes, and the parallel table of parameters, Parameters, where each value of the table Parameters is the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning Both the Nodes and Parameters tables must have the same bounds. This property is not checked at construction time.
     pub fn new_array1ofpnt_array1ofreal(
         Nodes: &ffi::TColgp_Array1OfPnt,
         Parameters: &ffi::TColStd_Array1OfReal,
@@ -255,12 +255,12 @@ impl Polygon3D {
         ffi::Polygon3D_ctor_array1ofpnt_array1ofreal(Nodes, Parameters)
     }
 
-    #[doc = "Wrap Poly_Polygon3D in a Handle (reference-counted smart pointer)"]
+    /// Wrap Poly_Polygon3D in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandlePolyPolygon3D> {
         ffi::Polygon3D_to_handle(obj)
     }
 
-    #[doc = "Creates a copy of current polygon"]
+    /// Creates a copy of current polygon
     pub fn copy(&self) -> cxx::UniquePtr<ffi::HandlePolyPolygon3D> {
         ffi::Polygon3D_copy(self)
     }
@@ -271,17 +271,17 @@ impl Polygon3D {
 }
 pub use ffi::Polygon2D;
 impl Polygon2D {
-    #[doc = "Constructs a 2D polygon with specified number of nodes."]
+    /// Constructs a 2D polygon with specified number of nodes.
     pub fn new_int(theNbNodes: i32) -> cxx::UniquePtr<Self> {
         ffi::Polygon2D_ctor_int(theNbNodes)
     }
 
-    #[doc = "Constructs a 2D polygon defined by the table of points, <Nodes>."]
+    /// Constructs a 2D polygon defined by the table of points, <Nodes>.
     pub fn new_array1ofpnt2d(Nodes: &ffi::TColgp_Array1OfPnt2d) -> cxx::UniquePtr<Self> {
         ffi::Polygon2D_ctor_array1ofpnt2d(Nodes)
     }
 
-    #[doc = "Wrap Poly_Polygon2D in a Handle (reference-counted smart pointer)"]
+    /// Wrap Poly_Polygon2D in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandlePolyPolygon2D> {
         ffi::Polygon2D_to_handle(obj)
     }
@@ -292,17 +292,17 @@ impl Polygon2D {
 }
 pub use ffi::PolygonOnTriangulation;
 impl PolygonOnTriangulation {
-    #[doc = "Constructs a 3D polygon on the triangulation of a shape with specified size of nodes."]
+    /// Constructs a 3D polygon on the triangulation of a shape with specified size of nodes.
     pub fn new_int_bool(theNbNodes: i32, theHasParams: bool) -> cxx::UniquePtr<Self> {
         ffi::PolygonOnTriangulation_ctor_int_bool(theNbNodes, theHasParams)
     }
 
-    #[doc = "Constructs a 3D polygon on the triangulation of a shape, defined by the table of nodes, <Nodes>."]
+    /// Constructs a 3D polygon on the triangulation of a shape, defined by the table of nodes, <Nodes>.
     pub fn new_array1ofinteger(Nodes: &ffi::TColStd_Array1OfInteger) -> cxx::UniquePtr<Self> {
         ffi::PolygonOnTriangulation_ctor_array1ofinteger(Nodes)
     }
 
-    #[doc = "Constructs a 3D polygon on the triangulation of a shape, defined by: -   the table of nodes, Nodes, and the table of parameters, <Parameters>. where: -   a node value is an index in the table of nodes specific to an existing triangulation of a shape -   and a parameter value is the value of the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning The tables Nodes and Parameters must be the same size. This property is not checked at construction time."]
+    /// Constructs a 3D polygon on the triangulation of a shape, defined by: -   the table of nodes, Nodes, and the table of parameters, <Parameters>. where: -   a node value is an index in the table of nodes specific to an existing triangulation of a shape -   and a parameter value is the value of the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning The tables Nodes and Parameters must be the same size. This property is not checked at construction time.
     pub fn new_array1ofinteger_array1ofreal(
         Nodes: &ffi::TColStd_Array1OfInteger,
         Parameters: &ffi::TColStd_Array1OfReal,
@@ -310,14 +310,14 @@ impl PolygonOnTriangulation {
         ffi::PolygonOnTriangulation_ctor_array1ofinteger_array1ofreal(Nodes, Parameters)
     }
 
-    #[doc = "Wrap Poly_PolygonOnTriangulation in a Handle (reference-counted smart pointer)"]
+    /// Wrap Poly_PolygonOnTriangulation in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<ffi::HandlePolyPolygonOnTriangulation> {
         ffi::PolygonOnTriangulation_to_handle(obj)
     }
 
-    #[doc = "Creates a copy of current polygon"]
+    /// Creates a copy of current polygon
     pub fn copy(&self) -> cxx::UniquePtr<ffi::HandlePolyPolygonOnTriangulation> {
         ffi::PolygonOnTriangulation_copy(self)
     }
@@ -330,23 +330,24 @@ impl PolygonOnTriangulation {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_poly.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== Poly_Triangulation ========================"]
-        #[doc = "/// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation`"]
-        #[doc = ""]
-        #[doc = "Provides a triangulation for a surface, a set of surfaces, or more generally a shape. A triangulation consists of an approximate representation of the actual shape, using a collection of points and triangles. The points are located on the surface. The edges of the triangles connect adjacent points with a straight line that approximates the true curve on the surface. A triangulation comprises: - A table of 3D nodes (3D points on the surface). - A table of triangles. Each triangle (Poly_Triangle object) comprises a triplet of indices in the table of 3D nodes specific to the triangulation. - An optional table of 2D nodes (2D points), parallel to the table of 3D nodes. 2D point are the (u, v) parameters of the corresponding 3D point on the surface approximated by the triangulation. - An optional table of 3D vectors, parallel to the table of 3D nodes, defining normals to the surface at specified 3D point. - An optional deflection, which maximizes the distance from a point on the surface to the corresponding point on its approximate triangulation. In many cases, algorithms do not need to work with the exact representation of a surface. A triangular representation induces simpler and more robust adjusting, faster performances, and the results are as good."]
+        /// ======================== Poly_Triangulation ========================
+        /// /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation`
+        ///
+        /// Provides a triangulation for a surface, a set of surfaces, or more generally a shape. A triangulation consists of an approximate representation of the actual shape, using a collection of points and triangles. The points are located on the surface. The edges of the triangles connect adjacent points with a straight line that approximates the true curve on the surface. A triangulation comprises: - A table of 3D nodes (3D points on the surface). - A table of triangles. Each triangle (Poly_Triangle object) comprises a triplet of indices in the table of 3D nodes specific to the triangulation. - An optional table of 2D nodes (2D points), parallel to the table of 3D nodes. 2D point are the (u, v) parameters of the corresponding 3D point on the surface approximated by the triangulation. - An optional table of 3D vectors, parallel to the table of 3D nodes, defining normals to the surface at specified 3D point. - An optional deflection, which maximizes the distance from a point on the surface to the corresponding point on its approximate triangulation. In many cases, algorithms do not need to work with the exact representation of a surface. A triangular representation induces simpler and more robust adjusting, faster performances, and the results are as good.
         #[cxx_name = "Poly_Triangulation"]
         type Triangulation;
-        #[doc = "/// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`"]
-        #[doc = ""]
-        #[doc = "Constructs an empty triangulation."]
+        /// /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        ///
+        /// Constructs an empty triangulation.
         #[cxx_name = "Poly_Triangulation_ctor"]
         fn Triangulation_ctor() -> UniquePtr<Triangulation>;
-        #[doc = "/// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`"]
-        #[doc = ""]
-        #[doc = "Constructs a triangulation from a set of triangles. The triangulation is initialized without a triangle or a node, but capable of containing specified number of nodes and triangles. @param[in] theNbNodes      number of nodes to allocate @param[in] theNbTriangles  number of triangles to allocate @param[in] theHasUVNodes   indicates whether 2D nodes will be associated with 3D ones, (i.e. to enable a 2D representation) @param[in] theHasNormals   indicates whether normals will be given and associated with nodes"]
+        /// /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        ///
+        /// Constructs a triangulation from a set of triangles. The triangulation is initialized without a triangle or a node, but capable of containing specified number of nodes and triangles. @param[in] theNbNodes      number of nodes to allocate @param[in] theNbTriangles  number of triangles to allocate @param[in] theHasUVNodes   indicates whether 2D nodes will be associated with 3D ones, (i.e. to enable a 2D representation) @param[in] theHasNormals   indicates whether normals will be given and associated with nodes
         #[cxx_name = "Poly_Triangulation_ctor_int2_bool2"]
         fn Triangulation_ctor_int2_bool2(
             theNbNodes: i32,
@@ -354,105 +355,105 @@ pub(crate) mod ffi {
             theHasUVNodes: bool,
             theHasNormals: bool,
         ) -> UniquePtr<Triangulation>;
-        #[doc = "/// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`"]
-        #[doc = ""]
-        #[doc = "Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes and triangles from Triangles."]
+        /// /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        ///
+        /// Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes and triangles from Triangles.
         #[cxx_name = "Poly_Triangulation_ctor_array1ofpnt_array1oftriangle"]
         fn Triangulation_ctor_array1ofpnt_array1oftriangle(
             Nodes: &TColgp_Array1OfPnt,
             Triangles: &Poly_Array1OfTriangle,
         ) -> UniquePtr<Triangulation>;
-        #[doc = "/// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`"]
-        #[doc = ""]
-        #[doc = "Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes, 2D points from UVNodes and triangles from Triangles, where coordinates of a 2D point from UVNodes are the (u, v) parameters of the corresponding 3D point from Nodes on the surface approximated by the constructed triangulation."]
+        /// /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        ///
+        /// Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes, 2D points from UVNodes and triangles from Triangles, where coordinates of a 2D point from UVNodes are the (u, v) parameters of the corresponding 3D point from Nodes on the surface approximated by the constructed triangulation.
         #[cxx_name = "Poly_Triangulation_ctor_array1ofpnt_array1ofpnt2d_array1oftriangle"]
         fn Triangulation_ctor_array1ofpnt_array1ofpnt2d_array1oftriangle(
             Nodes: &TColgp_Array1OfPnt,
             UVNodes: &TColgp_Array1OfPnt2d,
             Triangles: &Poly_Array1OfTriangle,
         ) -> UniquePtr<Triangulation>;
-        #[doc = "/// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`"]
-        #[doc = ""]
-        #[doc = "Copy constructor for triangulation."]
+        /// /// **Source:** `Poly_Triangulation.hxx` - `Poly_Triangulation::Poly_Triangulation()`
+        ///
+        /// Copy constructor for triangulation.
         #[cxx_name = "Poly_Triangulation_ctor_handletriangulation"]
         fn Triangulation_ctor_handletriangulation(
             theTriangulation: &HandlePolyTriangulation,
         ) -> UniquePtr<Triangulation>;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Triangulation) -> &HandleStandardType;
-        #[doc = "Returns the deflection of this triangulation."]
+        /// Returns the deflection of this triangulation.
         #[cxx_name = "Deflection"]
         fn deflection(self: &Triangulation) -> f64;
-        #[doc = "Sets the deflection of this triangulation to theDeflection. See more on deflection in Polygon2D"]
+        /// Sets the deflection of this triangulation to theDeflection. See more on deflection in Polygon2D
         #[cxx_name = "Deflection"]
         fn deflection_real(self: Pin<&mut Triangulation>, theDeflection: f64);
-        #[doc = "Returns initial set of parameters used to generate this triangulation."]
+        /// Returns initial set of parameters used to generate this triangulation.
         #[cxx_name = "Parameters"]
         fn parameters(self: &Triangulation) -> &HandlePolyTriangulationParameters;
-        #[doc = "Updates initial set of parameters used to generate this triangulation."]
+        /// Updates initial set of parameters used to generate this triangulation.
         #[cxx_name = "Parameters"]
         fn parameters_handletriangulationparameters(
             self: Pin<&mut Triangulation>,
             theParams: &HandlePolyTriangulationParameters,
         );
-        #[doc = "Clears internal arrays of nodes and all attributes."]
+        /// Clears internal arrays of nodes and all attributes.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Triangulation>);
-        #[doc = "Returns TRUE if triangulation has some geometry."]
+        /// Returns TRUE if triangulation has some geometry.
         #[cxx_name = "HasGeometry"]
         fn has_geometry(self: &Triangulation) -> bool;
-        #[doc = "Returns the number of nodes for this triangulation."]
+        /// Returns the number of nodes for this triangulation.
         #[cxx_name = "NbNodes"]
         fn nb_nodes(self: &Triangulation) -> i32;
-        #[doc = "Returns the number of triangles for this triangulation."]
+        /// Returns the number of triangles for this triangulation.
         #[cxx_name = "NbTriangles"]
         fn nb_triangles(self: &Triangulation) -> i32;
-        #[doc = "Returns Standard_True if 2D nodes are associated with 3D nodes for this triangulation."]
+        /// Returns Standard_True if 2D nodes are associated with 3D nodes for this triangulation.
         #[cxx_name = "HasUVNodes"]
         fn has_uv_nodes(self: &Triangulation) -> bool;
-        #[doc = "Returns Standard_True if nodal normals are defined."]
+        /// Returns Standard_True if nodal normals are defined.
         #[cxx_name = "HasNormals"]
         fn has_normals(self: &Triangulation) -> bool;
-        #[doc = "Sets a node coordinates. @param[in] theIndex node index within [1, NbNodes()] range @param[in] thePnt   3D point coordinates"]
+        /// Sets a node coordinates. @param[in] theIndex node index within [1, NbNodes()] range @param[in] thePnt   3D point coordinates
         #[cxx_name = "SetNode"]
         fn set_node(self: Pin<&mut Triangulation>, theIndex: i32, thePnt: &gp_Pnt);
-        #[doc = "Sets an UV-node coordinates. @param[in] theIndex node index within [1, NbNodes()] range @param[in] thePnt   UV coordinates"]
+        /// Sets an UV-node coordinates. @param[in] theIndex node index within [1, NbNodes()] range @param[in] thePnt   UV coordinates
         #[cxx_name = "SetUVNode"]
         fn set_uv_node(self: Pin<&mut Triangulation>, theIndex: i32, thePnt: &gp_Pnt2d);
-        #[doc = "Returns triangle at the given index. @param[in] theIndex triangle index within [1, NbTriangles()] range @return triangle node indices, with each node defined within [1, NbNodes()] range"]
+        /// Returns triangle at the given index. @param[in] theIndex triangle index within [1, NbTriangles()] range @return triangle node indices, with each node defined within [1, NbNodes()] range
         #[cxx_name = "Triangle"]
         fn triangle(self: &Triangulation, theIndex: i32) -> &Triangle;
-        #[doc = "Sets a triangle. @param[in] theIndex triangle index within [1, NbTriangles()] range @param[in] theTriangle triangle node indices, with each node defined within [1, NbNodes()] range"]
+        /// Sets a triangle. @param[in] theIndex triangle index within [1, NbTriangles()] range @param[in] theTriangle triangle node indices, with each node defined within [1, NbNodes()] range
         #[cxx_name = "SetTriangle"]
         fn set_triangle(self: Pin<&mut Triangulation>, theIndex: i32, theTriangle: &Triangle);
-        #[doc = "Returns normal at the given index. @param[in]  theIndex node index within [1, NbNodes()] range @param[out] theVec3  3D vector defining a surface normal"]
+        /// Returns normal at the given index. @param[in]  theIndex node index within [1, NbNodes()] range @param[out] theVec3  3D vector defining a surface normal
         #[cxx_name = "Normal"]
         fn normal_int_vec3f(self: &Triangulation, theIndex: i32, theVec3: Pin<&mut gp_Vec3f>);
-        #[doc = "Changes normal at the given index. @param[in] theIndex node index within [1, NbNodes()] range @param[in] theVec3  normalized 3D vector defining a surface normal"]
+        /// Changes normal at the given index. @param[in] theIndex node index within [1, NbNodes()] range @param[in] theVec3  normalized 3D vector defining a surface normal
         #[cxx_name = "SetNormal"]
         fn set_normal_int_vec3f(self: Pin<&mut Triangulation>, theIndex: i32, theNormal: &gp_Vec3f);
-        #[doc = "Changes normal at the given index. @param[in] theIndex  node index within [1, NbNodes()] range @param[in] theNormal normalized 3D vector defining a surface normal"]
+        /// Changes normal at the given index. @param[in] theIndex  node index within [1, NbNodes()] range @param[in] theNormal normalized 3D vector defining a surface normal
         #[cxx_name = "SetNormal"]
         fn set_normal_int_dir(self: Pin<&mut Triangulation>, theIndex: i32, theNormal: &gp_Dir);
-        #[doc = "Returns mesh purpose bits."]
+        /// Returns mesh purpose bits.
         #[cxx_name = "MeshPurpose"]
         fn mesh_purpose(self: &Triangulation) -> u32;
-        #[doc = "Sets mesh purpose bits."]
+        /// Sets mesh purpose bits.
         #[cxx_name = "SetMeshPurpose"]
         fn set_mesh_purpose(self: Pin<&mut Triangulation>, thePurpose: u32);
-        #[doc = "Returns cached min - max range of triangulation data, which is VOID by default (e.g, no cached information)."]
+        /// Returns cached min - max range of triangulation data, which is VOID by default (e.g, no cached information).
         #[cxx_name = "CachedMinMax"]
         fn cached_min_max(self: &Triangulation) -> &Bnd_Box;
-        #[doc = "Sets a cached min - max range of this triangulation. The bounding box should exactly match actual range of triangulation data without a gap or transformation, or otherwise undefined behavior will be observed. Passing a VOID range invalidates the cache."]
+        /// Sets a cached min - max range of this triangulation. The bounding box should exactly match actual range of triangulation data without a gap or transformation, or otherwise undefined behavior will be observed. Passing a VOID range invalidates the cache.
         #[cxx_name = "SetCachedMinMax"]
         fn set_cached_min_max(self: Pin<&mut Triangulation>, theBox: &Bnd_Box);
-        #[doc = "Returns TRUE if there is some cached min - max range of this triangulation."]
+        /// Returns TRUE if there is some cached min - max range of this triangulation.
         #[cxx_name = "HasCachedMinMax"]
         fn has_cached_min_max(self: &Triangulation) -> bool;
-        #[doc = "Updates cached min - max range of this triangulation with bounding box of nodal data."]
+        /// Updates cached min - max range of this triangulation with bounding box of nodal data.
         #[cxx_name = "UpdateCachedMinMax"]
         fn update_cached_min_max(self: Pin<&mut Triangulation>);
-        #[doc = "Extends the passed box with bounding box of this triangulation. Uses cached min - max range when available and: - input transformation theTrsf has no rotation part; - theIsAccurate is set to FALSE; - no triangulation data available (e.g. it is deferred and not loaded). @param[in][out] theBox   bounding box to extend by this triangulation @param[in] theTrsf  optional transformation @param[in] theIsAccurate  when FALSE, allows using a cached min - max range of this triangulation even for non-identity transformation. @return FALSE if there is no any data to extend the passed box (no both triangulation and cached min - max range)."]
+        /// Extends the passed box with bounding box of this triangulation. Uses cached min - max range when available and: - input transformation theTrsf has no rotation part; - theIsAccurate is set to FALSE; - no triangulation data available (e.g. it is deferred and not loaded). @param[in][out] theBox   bounding box to extend by this triangulation @param[in] theTrsf  optional transformation @param[in] theIsAccurate  when FALSE, allows using a cached min - max range of this triangulation even for non-identity transformation. @return FALSE if there is no any data to extend the passed box (no both triangulation and cached min - max range).
         #[cxx_name = "MinMax"]
         fn min_max(
             self: &Triangulation,
@@ -460,40 +461,40 @@ pub(crate) mod ffi {
             theTrsf: &gp_Trsf,
             theIsAccurate: bool,
         ) -> bool;
-        #[doc = "Returns TRUE if node positions are defined with double precision; TRUE by default."]
+        /// Returns TRUE if node positions are defined with double precision; TRUE by default.
         #[cxx_name = "IsDoublePrecision"]
         fn is_double_precision(self: &Triangulation) -> bool;
-        #[doc = "Set if node positions should be defined with double or single precision for 3D and UV nodes. Raises exception if data was already allocated."]
+        /// Set if node positions should be defined with double or single precision for 3D and UV nodes. Raises exception if data was already allocated.
         #[cxx_name = "SetDoublePrecision"]
         fn set_double_precision(self: Pin<&mut Triangulation>, theIsDouble: bool);
-        #[doc = "Method resizing internal arrays of nodes (synchronously for all attributes). @param[in] theNbNodes    new number of nodes @param[in] theToCopyOld  copy old nodes into the new array"]
+        /// Method resizing internal arrays of nodes (synchronously for all attributes). @param[in] theNbNodes    new number of nodes @param[in] theToCopyOld  copy old nodes into the new array
         #[cxx_name = "ResizeNodes"]
         fn resize_nodes(self: Pin<&mut Triangulation>, theNbNodes: i32, theToCopyOld: bool);
-        #[doc = "Method resizing an internal array of triangles. @param[in] theNbTriangles  new number of triangles @param[in] theToCopyOld    copy old triangles into the new array"]
+        /// Method resizing an internal array of triangles. @param[in] theNbTriangles  new number of triangles @param[in] theToCopyOld    copy old triangles into the new array
         #[cxx_name = "ResizeTriangles"]
         fn resize_triangles(self: Pin<&mut Triangulation>, theNbTriangles: i32, theToCopyOld: bool);
-        #[doc = "If an array for UV coordinates is not allocated yet, do it now."]
+        /// If an array for UV coordinates is not allocated yet, do it now.
         #[cxx_name = "AddUVNodes"]
         fn add_uv_nodes(self: Pin<&mut Triangulation>);
-        #[doc = "Deallocates the UV nodes array."]
+        /// Deallocates the UV nodes array.
         #[cxx_name = "RemoveUVNodes"]
         fn remove_uv_nodes(self: Pin<&mut Triangulation>);
-        #[doc = "If an array for normals is not allocated yet, do it now."]
+        /// If an array for normals is not allocated yet, do it now.
         #[cxx_name = "AddNormals"]
         fn add_normals(self: Pin<&mut Triangulation>);
-        #[doc = "Deallocates the normals array."]
+        /// Deallocates the normals array.
         #[cxx_name = "RemoveNormals"]
         fn remove_normals(self: Pin<&mut Triangulation>);
-        #[doc = "Compute smooth normals by averaging triangle normals."]
+        /// Compute smooth normals by averaging triangle normals.
         #[cxx_name = "ComputeNormals"]
         fn compute_normals(self: Pin<&mut Triangulation>);
-        #[doc = "Returns an internal array of triangles. Triangle()/SetTriangle() should be used instead in portable code."]
+        /// Returns an internal array of triangles. Triangle()/SetTriangle() should be used instead in portable code.
         #[cxx_name = "InternalTriangles"]
         fn internal_triangles(self: Pin<&mut Triangulation>) -> Pin<&mut Poly_Array1OfTriangle>;
-        #[doc = "Returns an internal array of nodes. Node()/SetNode() should be used instead in portable code."]
+        /// Returns an internal array of nodes. Node()/SetNode() should be used instead in portable code.
         #[cxx_name = "InternalNodes"]
         fn internal_nodes(self: Pin<&mut Triangulation>) -> Pin<&mut ArrayOfNodes>;
-        #[doc = "Returns an internal array of UV nodes. UBNode()/SetUVNode() should be used instead in portable code."]
+        /// Returns an internal array of UV nodes. UBNode()/SetUVNode() should be used instead in portable code.
         #[cxx_name = "InternalUVNodes"]
         fn internal_uv_nodes(self: Pin<&mut Triangulation>) -> Pin<&mut ArrayOfUVNodes>;
         #[cxx_name = "SetNormals"]
@@ -504,57 +505,57 @@ pub(crate) mod ffi {
         fn change_triangles(self: Pin<&mut Triangulation>) -> Pin<&mut Poly_Array1OfTriangle>;
         #[cxx_name = "ChangeTriangle"]
         fn change_triangle(self: Pin<&mut Triangulation>, theIndex: i32) -> Pin<&mut Triangle>;
-        #[doc = "@name late-load deferred data interface Returns number of deferred nodes that can be loaded using LoadDeferredData(). Note: this is estimated values, which might be different from actually loaded values. Always check triangulation size of actually loaded data in code to avoid out-of-range issues."]
+        /// @name late-load deferred data interface Returns number of deferred nodes that can be loaded using LoadDeferredData(). Note: this is estimated values, which might be different from actually loaded values. Always check triangulation size of actually loaded data in code to avoid out-of-range issues.
         #[cxx_name = "NbDeferredNodes"]
         fn nb_deferred_nodes(self: &Triangulation) -> i32;
-        #[doc = "Returns number of deferred triangles that can be loaded using LoadDeferredData(). Note: this is estimated values, which might be different from actually loaded values Always check triangulation size of actually loaded data in code to avoid out-of-range issues."]
+        /// Returns number of deferred triangles that can be loaded using LoadDeferredData(). Note: this is estimated values, which might be different from actually loaded values Always check triangulation size of actually loaded data in code to avoid out-of-range issues.
         #[cxx_name = "NbDeferredTriangles"]
         fn nb_deferred_triangles(self: &Triangulation) -> i32;
-        #[doc = "Returns TRUE if there is some triangulation data that can be loaded using LoadDeferredData()."]
+        /// Returns TRUE if there is some triangulation data that can be loaded using LoadDeferredData().
         #[cxx_name = "HasDeferredData"]
         fn has_deferred_data(self: &Triangulation) -> bool;
-        #[doc = "Loads triangulation data into itself from some deferred storage using specified shared input file system."]
+        /// Loads triangulation data into itself from some deferred storage using specified shared input file system.
         #[cxx_name = "LoadDeferredData"]
         fn load_deferred_data(
             self: Pin<&mut Triangulation>,
             theFileSystem: &HandleOSDFileSystem,
         ) -> bool;
-        #[doc = "Releases triangulation data if it has connected deferred storage."]
+        /// Releases triangulation data if it has connected deferred storage.
         #[cxx_name = "UnloadDeferredData"]
         fn unload_deferred_data(self: Pin<&mut Triangulation>) -> bool;
-        #[doc = "Creates full copy of current triangulation"]
+        /// Creates full copy of current triangulation
         #[cxx_name = "Poly_Triangulation_Copy"]
         fn Triangulation_copy(self_: &Triangulation) -> UniquePtr<HandlePolyTriangulation>;
-        #[doc = "Returns a node at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return 3D point coordinates"]
+        /// Returns a node at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return 3D point coordinates
         #[cxx_name = "Poly_Triangulation_Node"]
         fn Triangulation_node(self_: &Triangulation, theIndex: i32) -> UniquePtr<gp_Pnt>;
-        #[doc = "Returns UV-node at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return 2D point defining UV coordinates"]
+        /// Returns UV-node at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return 2D point defining UV coordinates
         #[cxx_name = "Poly_Triangulation_UVNode"]
         fn Triangulation_uv_node(self_: &Triangulation, theIndex: i32) -> UniquePtr<gp_Pnt2d>;
-        #[doc = "Returns normal at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return normalized 3D vector defining a surface normal"]
+        /// Returns normal at the given index. @param[in] theIndex node index within [1, NbNodes()] range @return normalized 3D vector defining a surface normal
         #[cxx_name = "Poly_Triangulation_Normal"]
         fn Triangulation_normal_int(self_: &Triangulation, theIndex: i32) -> UniquePtr<gp_Dir>;
-        #[doc = "Returns the table of 3D points for read-only access or NULL if nodes array is undefined. Poly_Triangulation::Node() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
+        /// Returns the table of 3D points for read-only access or NULL if nodes array is undefined. Poly_Triangulation::Node() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
         #[cxx_name = "Poly_Triangulation_MapNodeArray"]
         fn Triangulation_map_node_array(
             self_: &Triangulation,
         ) -> UniquePtr<HandleTColgpHArray1OfPnt>;
-        #[doc = "Returns the triangle array for read-only access or NULL if triangle array is undefined. Poly_Triangulation::Triangle() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
+        /// Returns the triangle array for read-only access or NULL if triangle array is undefined. Poly_Triangulation::Triangle() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
         #[cxx_name = "Poly_Triangulation_MapTriangleArray"]
         fn Triangulation_map_triangle_array(
             self_: &Triangulation,
         ) -> UniquePtr<HandlePolyHArray1OfTriangle>;
-        #[doc = "Returns the table of 2D nodes for read-only access or NULL if UV nodes array is undefined. Poly_Triangulation::UVNode() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
+        /// Returns the table of 2D nodes for read-only access or NULL if UV nodes array is undefined. Poly_Triangulation::UVNode() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
         #[cxx_name = "Poly_Triangulation_MapUVNodeArray"]
         fn Triangulation_map_uv_node_array(
             self_: &Triangulation,
         ) -> UniquePtr<HandleTColgpHArray1OfPnt2d>;
-        #[doc = "Returns the table of per-vertex normals for read-only access or NULL if normals array is undefined. Poly_Triangulation::Normal() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction."]
+        /// Returns the table of per-vertex normals for read-only access or NULL if normals array is undefined. Poly_Triangulation::Normal() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
         #[cxx_name = "Poly_Triangulation_MapNormalArray"]
         fn Triangulation_map_normal_array(
             self_: &Triangulation,
         ) -> UniquePtr<HandleTShortHArray1OfShortReal>;
-        #[doc = "Loads triangulation data into new Poly_Triangulation object from some deferred storage using specified shared input file system."]
+        /// Loads triangulation data into new Poly_Triangulation object from some deferred storage using specified shared input file system.
         #[cxx_name = "Poly_Triangulation_DetachedLoadDeferredData"]
         fn Triangulation_detached_load_deferred_data(
             self_: &Triangulation,
@@ -562,32 +563,32 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandlePolyTriangulation>;
         #[cxx_name = "Poly_Triangulation_get_type_name"]
         fn Triangulation_get_type_name() -> String;
-        #[doc = "Wrap Poly_Triangulation in a Handle (reference-counted smart pointer)"]
+        /// Wrap Poly_Triangulation in a Handle (reference-counted smart pointer)
         #[cxx_name = "Poly_Triangulation_to_handle"]
         fn Triangulation_to_handle(
             obj: UniquePtr<Triangulation>,
         ) -> UniquePtr<HandlePolyTriangulation>;
-        #[doc = " ======================== Poly_HArray1OfTriangle ========================"]
-        #[doc = "/// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle`"]
+        /// ======================== Poly_HArray1OfTriangle ========================
+        /// /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle`
         #[cxx_name = "Poly_HArray1OfTriangle"]
         type HArray1OfTriangle;
-        #[doc = "/// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`"]
+        /// /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor"]
         fn HArray1OfTriangle_ctor() -> UniquePtr<HArray1OfTriangle>;
-        #[doc = "/// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`"]
+        /// /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor_int2"]
         fn HArray1OfTriangle_ctor_int2(
             theLower: i32,
             theUpper: i32,
         ) -> UniquePtr<HArray1OfTriangle>;
-        #[doc = "/// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`"]
+        /// /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor_int2_triangle"]
         fn HArray1OfTriangle_ctor_int2_triangle(
             theLower: i32,
             theUpper: i32,
             theValue: &Triangle,
         ) -> UniquePtr<HArray1OfTriangle>;
-        #[doc = "/// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`"]
+        /// /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor_triangle_int2_bool"]
         fn HArray1OfTriangle_ctor_triangle_int2_bool(
             theBegin: &Triangle,
@@ -595,7 +596,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfTriangle>;
-        #[doc = "/// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`"]
+        /// /// **Source:** `Poly_HArray1OfTriangle.hxx` - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
         #[cxx_name = "Poly_HArray1OfTriangle_ctor_array1oftriangle"]
         fn HArray1OfTriangle_ctor_array1oftriangle(
             theOther: &Poly_Array1OfTriangle,
@@ -608,277 +609,277 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HArray1OfTriangle) -> &HandleStandardType;
         #[cxx_name = "Poly_HArray1OfTriangle_get_type_name"]
         fn HArray1OfTriangle_get_type_name() -> String;
-        #[doc = "Wrap Poly_HArray1OfTriangle in a Handle (reference-counted smart pointer)"]
+        /// Wrap Poly_HArray1OfTriangle in a Handle (reference-counted smart pointer)
         #[cxx_name = "Poly_HArray1OfTriangle_to_handle"]
         fn HArray1OfTriangle_to_handle(
             obj: UniquePtr<HArray1OfTriangle>,
         ) -> UniquePtr<HandlePolyHArray1OfTriangle>;
-        #[doc = " ======================== Poly_ArrayOfNodes ========================"]
-        #[doc = "/// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes`"]
-        #[doc = ""]
-        #[doc = "Defines an array of 3D nodes of single/double precision configurable at construction time."]
+        /// ======================== Poly_ArrayOfNodes ========================
+        /// /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes`
+        ///
+        /// Defines an array of 3D nodes of single/double precision configurable at construction time.
         #[cxx_name = "Poly_ArrayOfNodes"]
         type ArrayOfNodes;
-        #[doc = "/// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor of double-precision array."]
+        /// /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        ///
+        /// Empty constructor of double-precision array.
         #[cxx_name = "Poly_ArrayOfNodes_ctor"]
         fn ArrayOfNodes_ctor() -> UniquePtr<ArrayOfNodes>;
-        #[doc = "/// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`"]
-        #[doc = ""]
-        #[doc = "Constructor of double-precision array."]
+        /// /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        ///
+        /// Constructor of double-precision array.
         #[cxx_name = "Poly_ArrayOfNodes_ctor_int"]
         fn ArrayOfNodes_ctor_int(theLength: i32) -> UniquePtr<ArrayOfNodes>;
-        #[doc = "/// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`"]
-        #[doc = ""]
-        #[doc = "Copy constructor"]
+        /// /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        ///
+        /// Copy constructor
         #[cxx_name = "Poly_ArrayOfNodes_ctor_arrayofnodes"]
         fn ArrayOfNodes_ctor_arrayofnodes(theOther: &ArrayOfNodes) -> UniquePtr<ArrayOfNodes>;
-        #[doc = "/// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`"]
-        #[doc = ""]
-        #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
+        /// /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        ///
+        /// Constructor wrapping pre-allocated C-array of values without copying them.
         #[cxx_name = "Poly_ArrayOfNodes_ctor_pnt_int"]
         fn ArrayOfNodes_ctor_pnt_int(theBegin: &gp_Pnt, theLength: i32) -> UniquePtr<ArrayOfNodes>;
-        #[doc = "/// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`"]
-        #[doc = ""]
-        #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
+        /// /// **Source:** `Poly_ArrayOfNodes.hxx` - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
+        ///
+        /// Constructor wrapping pre-allocated C-array of values without copying them.
         #[cxx_name = "Poly_ArrayOfNodes_ctor_vec3f_int"]
         fn ArrayOfNodes_ctor_vec3f_int(
             theBegin: &gp_Vec3f,
             theLength: i32,
         ) -> UniquePtr<ArrayOfNodes>;
-        #[doc = "Returns TRUE if array defines nodes with double precision."]
+        /// Returns TRUE if array defines nodes with double precision.
         #[cxx_name = "IsDoublePrecision"]
         fn is_double_precision(self: &ArrayOfNodes) -> bool;
-        #[doc = "Sets if array should define nodes with double or single precision. Raises exception if array was already allocated."]
+        /// Sets if array should define nodes with double or single precision. Raises exception if array was already allocated.
         #[cxx_name = "SetDoublePrecision"]
         fn set_double_precision(self: Pin<&mut ArrayOfNodes>, theIsDouble: bool);
-        #[doc = "Copies data of theOther array to this. The arrays should have the same length, but may have different precision / number of components (data conversion will be applied in the latter case)."]
+        /// Copies data of theOther array to this. The arrays should have the same length, but may have different precision / number of components (data conversion will be applied in the latter case).
         #[cxx_name = "Assign"]
         fn assign(self: Pin<&mut ArrayOfNodes>, theOther: &ArrayOfNodes) -> Pin<&mut ArrayOfNodes>;
-        #[doc = "Move assignment."]
+        /// Move assignment.
         #[cxx_name = "Move"]
         fn move_(
             self: Pin<&mut ArrayOfNodes>,
             theOther: Pin<&mut ArrayOfNodes>,
         ) -> Pin<&mut ArrayOfNodes>;
-        #[doc = "A generalized setter for point."]
+        /// A generalized setter for point.
         #[cxx_name = "SetValue"]
         fn set_value(self: Pin<&mut ArrayOfNodes>, theIndex: i32, theValue: &gp_Pnt);
-        #[doc = "A generalized accessor to point."]
+        /// A generalized accessor to point.
         #[cxx_name = "Poly_ArrayOfNodes_Value"]
         fn ArrayOfNodes_value(self_: &ArrayOfNodes, theIndex: i32) -> UniquePtr<gp_Pnt>;
-        #[doc = " ======================== Poly_ArrayOfUVNodes ========================"]
-        #[doc = "/// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes`"]
-        #[doc = ""]
-        #[doc = "Defines an array of 2D nodes of single/double precision configurable at construction time."]
+        /// ======================== Poly_ArrayOfUVNodes ========================
+        /// /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes`
+        ///
+        /// Defines an array of 2D nodes of single/double precision configurable at construction time.
         #[cxx_name = "Poly_ArrayOfUVNodes"]
         type ArrayOfUVNodes;
-        #[doc = "/// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor of double-precision array."]
+        /// /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        ///
+        /// Empty constructor of double-precision array.
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor"]
         fn ArrayOfUVNodes_ctor() -> UniquePtr<ArrayOfUVNodes>;
-        #[doc = "/// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`"]
-        #[doc = ""]
-        #[doc = "Constructor of double-precision array."]
+        /// /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        ///
+        /// Constructor of double-precision array.
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor_int"]
         fn ArrayOfUVNodes_ctor_int(theLength: i32) -> UniquePtr<ArrayOfUVNodes>;
-        #[doc = "/// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`"]
-        #[doc = ""]
-        #[doc = "Copy constructor"]
+        /// /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        ///
+        /// Copy constructor
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor_arrayofuvnodes"]
         fn ArrayOfUVNodes_ctor_arrayofuvnodes(
             theOther: &ArrayOfUVNodes,
         ) -> UniquePtr<ArrayOfUVNodes>;
-        #[doc = "/// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`"]
-        #[doc = ""]
-        #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
+        /// /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        ///
+        /// Constructor wrapping pre-allocated C-array of values without copying them.
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor_pnt2d_int"]
         fn ArrayOfUVNodes_ctor_pnt2d_int(
             theBegin: &gp_Pnt2d,
             theLength: i32,
         ) -> UniquePtr<ArrayOfUVNodes>;
-        #[doc = "/// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`"]
-        #[doc = ""]
-        #[doc = "Constructor wrapping pre-allocated C-array of values without copying them."]
+        /// /// **Source:** `Poly_ArrayOfUVNodes.hxx` - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
+        ///
+        /// Constructor wrapping pre-allocated C-array of values without copying them.
         #[cxx_name = "Poly_ArrayOfUVNodes_ctor_vec2f_int"]
         fn ArrayOfUVNodes_ctor_vec2f_int(
             theBegin: &gp_Vec2f,
             theLength: i32,
         ) -> UniquePtr<ArrayOfUVNodes>;
-        #[doc = "Returns TRUE if array defines nodes with double precision."]
+        /// Returns TRUE if array defines nodes with double precision.
         #[cxx_name = "IsDoublePrecision"]
         fn is_double_precision(self: &ArrayOfUVNodes) -> bool;
-        #[doc = "Sets if array should define nodes with double or single precision. Raises exception if array was already allocated."]
+        /// Sets if array should define nodes with double or single precision. Raises exception if array was already allocated.
         #[cxx_name = "SetDoublePrecision"]
         fn set_double_precision(self: Pin<&mut ArrayOfUVNodes>, theIsDouble: bool);
-        #[doc = "Copies data of theOther array to this. The arrays should have the same length, but may have different precision / number of components (data conversion will be applied in the latter case)."]
+        /// Copies data of theOther array to this. The arrays should have the same length, but may have different precision / number of components (data conversion will be applied in the latter case).
         #[cxx_name = "Assign"]
         fn assign(
             self: Pin<&mut ArrayOfUVNodes>,
             theOther: &ArrayOfUVNodes,
         ) -> Pin<&mut ArrayOfUVNodes>;
-        #[doc = "Move assignment."]
+        /// Move assignment.
         #[cxx_name = "Move"]
         fn move_(
             self: Pin<&mut ArrayOfUVNodes>,
             theOther: Pin<&mut ArrayOfUVNodes>,
         ) -> Pin<&mut ArrayOfUVNodes>;
-        #[doc = "A generalized setter for point."]
+        /// A generalized setter for point.
         #[cxx_name = "SetValue"]
         fn set_value(self: Pin<&mut ArrayOfUVNodes>, theIndex: i32, theValue: &gp_Pnt2d);
-        #[doc = "A generalized accessor to point."]
+        /// A generalized accessor to point.
         #[cxx_name = "Poly_ArrayOfUVNodes_Value"]
         fn ArrayOfUVNodes_value(self_: &ArrayOfUVNodes, theIndex: i32) -> UniquePtr<gp_Pnt2d>;
-        #[doc = " ======================== Poly_Triangle ========================"]
-        #[doc = "/// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle`"]
-        #[doc = ""]
-        #[doc = "Describes a component triangle of a triangulation (Poly_Triangulation object). A Triangle is defined by a triplet of nodes within [1, Poly_Triangulation::NbNodes()] range. Each node is an index in the table of nodes specific to an existing triangulation of a shape, and represents a point on the surface."]
+        /// ======================== Poly_Triangle ========================
+        /// /// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle`
+        ///
+        /// Describes a component triangle of a triangulation (Poly_Triangulation object). A Triangle is defined by a triplet of nodes within [1, Poly_Triangulation::NbNodes()] range. Each node is an index in the table of nodes specific to an existing triangulation of a shape, and represents a point on the surface.
         #[cxx_name = "Poly_Triangle"]
         type Triangle;
-        #[doc = "/// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle::Poly_Triangle()`"]
-        #[doc = ""]
-        #[doc = "Constructs a triangle and sets all indices to zero."]
+        /// /// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle::Poly_Triangle()`
+        ///
+        /// Constructs a triangle and sets all indices to zero.
         #[cxx_name = "Poly_Triangle_ctor"]
         fn Triangle_ctor() -> UniquePtr<Triangle>;
-        #[doc = "/// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle::Poly_Triangle()`"]
-        #[doc = ""]
-        #[doc = "Constructs a triangle and sets its three indices, where these node values are indices in the table of nodes specific to an existing triangulation of a shape."]
+        /// /// **Source:** `Poly_Triangle.hxx` - `Poly_Triangle::Poly_Triangle()`
+        ///
+        /// Constructs a triangle and sets its three indices, where these node values are indices in the table of nodes specific to an existing triangulation of a shape.
         #[cxx_name = "Poly_Triangle_ctor_int3"]
         fn Triangle_ctor_int3(theN1: i32, theN2: i32, theN3: i32) -> UniquePtr<Triangle>;
-        #[doc = "Sets the value of the three nodes of this triangle."]
+        /// Sets the value of the three nodes of this triangle.
         #[cxx_name = "Set"]
         fn set_int3(self: Pin<&mut Triangle>, theN1: i32, theN2: i32, theN3: i32);
-        #[doc = "Sets the value of node with specified index of this triangle. Raises Standard_OutOfRange if index is not in 1,2,3"]
+        /// Sets the value of node with specified index of this triangle. Raises Standard_OutOfRange if index is not in 1,2,3
         #[cxx_name = "Set"]
         fn set_int2(self: Pin<&mut Triangle>, theIndex: i32, theNode: i32);
-        #[doc = "Returns the node indices of this triangle."]
+        /// Returns the node indices of this triangle.
         #[cxx_name = "Get"]
         fn get(self: &Triangle, theN1: &mut i32, theN2: &mut i32, theN3: &mut i32);
-        #[doc = "Get the node of given Index. Raises OutOfRange from Standard if Index is not in 1,2,3"]
+        /// Get the node of given Index. Raises OutOfRange from Standard if Index is not in 1,2,3
         #[cxx_name = "Value"]
         fn value(self: &Triangle, theIndex: i32) -> i32;
-        #[doc = "Get the node of given Index. Raises OutOfRange if Index is not in 1,2,3"]
+        /// Get the node of given Index. Raises OutOfRange if Index is not in 1,2,3
         #[cxx_name = "ChangeValue"]
         fn change_value(self: Pin<&mut Triangle>, theIndex: i32) -> &mut i32;
-        #[doc = " ======================== Poly_Polygon3D ========================"]
-        #[doc = "/// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D`"]
-        #[doc = ""]
-        #[doc = "This class Provides a polygon in 3D space. It is generally an approximate representation of a curve. A Polygon3D is defined by a table of nodes. Each node is a 3D point. If the polygon is closed, the point of closure is repeated at the end of the table of nodes. If the polygon is an approximate representation of a curve, you can associate with each of its nodes the value of the parameter of the corresponding point on the curve."]
+        /// ======================== Poly_Polygon3D ========================
+        /// /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D`
+        ///
+        /// This class Provides a polygon in 3D space. It is generally an approximate representation of a curve. A Polygon3D is defined by a table of nodes. Each node is a 3D point. If the polygon is closed, the point of closure is repeated at the end of the table of nodes. If the polygon is an approximate representation of a curve, you can associate with each of its nodes the value of the parameter of the corresponding point on the curve.
         #[cxx_name = "Poly_Polygon3D"]
         type Polygon3D;
-        #[doc = "/// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`"]
-        #[doc = ""]
-        #[doc = "Constructs a 3D polygon with specific number of nodes."]
+        /// /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`
+        ///
+        /// Constructs a 3D polygon with specific number of nodes.
         #[cxx_name = "Poly_Polygon3D_ctor_int_bool"]
         fn Polygon3D_ctor_int_bool(theNbNodes: i32, theHasParams: bool) -> UniquePtr<Polygon3D>;
-        #[doc = "/// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`"]
-        #[doc = ""]
-        #[doc = "Constructs a 3D polygon defined by the table of points, Nodes."]
+        /// /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`
+        ///
+        /// Constructs a 3D polygon defined by the table of points, Nodes.
         #[cxx_name = "Poly_Polygon3D_ctor_array1ofpnt"]
         fn Polygon3D_ctor_array1ofpnt(Nodes: &TColgp_Array1OfPnt) -> UniquePtr<Polygon3D>;
-        #[doc = "/// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`"]
-        #[doc = ""]
-        #[doc = "Constructs a 3D polygon defined by the table of points, Nodes, and the parallel table of parameters, Parameters, where each value of the table Parameters is the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning Both the Nodes and Parameters tables must have the same bounds. This property is not checked at construction time."]
+        /// /// **Source:** `Poly_Polygon3D.hxx` - `Poly_Polygon3D::Poly_Polygon3D()`
+        ///
+        /// Constructs a 3D polygon defined by the table of points, Nodes, and the parallel table of parameters, Parameters, where each value of the table Parameters is the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning Both the Nodes and Parameters tables must have the same bounds. This property is not checked at construction time.
         #[cxx_name = "Poly_Polygon3D_ctor_array1ofpnt_array1ofreal"]
         fn Polygon3D_ctor_array1ofpnt_array1ofreal(
             Nodes: &TColgp_Array1OfPnt,
             Parameters: &TColStd_Array1OfReal,
         ) -> UniquePtr<Polygon3D>;
-        #[doc = "Returns the deflection of this polygon"]
+        /// Returns the deflection of this polygon
         #[cxx_name = "Deflection"]
         fn deflection(self: &Polygon3D) -> f64;
-        #[doc = "Sets the deflection of this polygon. See more on deflection in Poly_Polygon2D"]
+        /// Sets the deflection of this polygon. See more on deflection in Poly_Polygon2D
         #[cxx_name = "Deflection"]
         fn deflection_real(self: Pin<&mut Polygon3D>, theDefl: f64);
-        #[doc = "Returns the number of nodes in this polygon. Note: If the polygon is closed, the point of closure is repeated at the end of its table of nodes. Thus, on a closed triangle the function NbNodes returns 4."]
+        /// Returns the number of nodes in this polygon. Note: If the polygon is closed, the point of closure is repeated at the end of its table of nodes. Thus, on a closed triangle the function NbNodes returns 4.
         #[cxx_name = "NbNodes"]
         fn nb_nodes(self: &Polygon3D) -> i32;
-        #[doc = "Returns the table of nodes for this polygon."]
+        /// Returns the table of nodes for this polygon.
         #[cxx_name = "Nodes"]
         fn nodes(self: &Polygon3D) -> &TColgp_Array1OfPnt;
-        #[doc = "Returns the table of nodes for this polygon."]
+        /// Returns the table of nodes for this polygon.
         #[cxx_name = "ChangeNodes"]
         fn change_nodes(self: Pin<&mut Polygon3D>) -> Pin<&mut TColgp_Array1OfPnt>;
-        #[doc = "Returns the table of the parameters associated with each node in this polygon. HasParameters function checks if   parameters are associated with the nodes of this polygon."]
+        /// Returns the table of the parameters associated with each node in this polygon. HasParameters function checks if   parameters are associated with the nodes of this polygon.
         #[cxx_name = "HasParameters"]
         fn has_parameters(self: &Polygon3D) -> bool;
-        #[doc = "Returns true if parameters are associated with the nodes in this polygon."]
+        /// Returns true if parameters are associated with the nodes in this polygon.
         #[cxx_name = "Parameters"]
         fn parameters(self: &Polygon3D) -> &TColStd_Array1OfReal;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Polygon3D) -> &HandleStandardType;
-        #[doc = "Creates a copy of current polygon"]
+        /// Creates a copy of current polygon
         #[cxx_name = "Poly_Polygon3D_Copy"]
         fn Polygon3D_copy(self_: &Polygon3D) -> UniquePtr<HandlePolyPolygon3D>;
         #[cxx_name = "Poly_Polygon3D_get_type_name"]
         fn Polygon3D_get_type_name() -> String;
-        #[doc = "Wrap Poly_Polygon3D in a Handle (reference-counted smart pointer)"]
+        /// Wrap Poly_Polygon3D in a Handle (reference-counted smart pointer)
         #[cxx_name = "Poly_Polygon3D_to_handle"]
         fn Polygon3D_to_handle(obj: UniquePtr<Polygon3D>) -> UniquePtr<HandlePolyPolygon3D>;
-        #[doc = " ======================== Poly_Polygon2D ========================"]
-        #[doc = "/// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D`"]
-        #[doc = ""]
-        #[doc = "Provides a polygon in 2D space (for example, in the parametric space of a surface). It is generally an approximate representation of a curve. A Polygon2D is defined by a table of nodes. Each node is a 2D point. If the polygon is closed, the point of closure is repeated at the end of the table of nodes."]
+        /// ======================== Poly_Polygon2D ========================
+        /// /// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D`
+        ///
+        /// Provides a polygon in 2D space (for example, in the parametric space of a surface). It is generally an approximate representation of a curve. A Polygon2D is defined by a table of nodes. Each node is a 2D point. If the polygon is closed, the point of closure is repeated at the end of the table of nodes.
         #[cxx_name = "Poly_Polygon2D"]
         type Polygon2D;
-        #[doc = "/// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D::Poly_Polygon2D()`"]
-        #[doc = ""]
-        #[doc = "Constructs a 2D polygon with specified number of nodes."]
+        /// /// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D::Poly_Polygon2D()`
+        ///
+        /// Constructs a 2D polygon with specified number of nodes.
         #[cxx_name = "Poly_Polygon2D_ctor_int"]
         fn Polygon2D_ctor_int(theNbNodes: i32) -> UniquePtr<Polygon2D>;
-        #[doc = "/// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D::Poly_Polygon2D()`"]
-        #[doc = ""]
-        #[doc = "Constructs a 2D polygon defined by the table of points, <Nodes>."]
+        /// /// **Source:** `Poly_Polygon2D.hxx` - `Poly_Polygon2D::Poly_Polygon2D()`
+        ///
+        /// Constructs a 2D polygon defined by the table of points, <Nodes>.
         #[cxx_name = "Poly_Polygon2D_ctor_array1ofpnt2d"]
         fn Polygon2D_ctor_array1ofpnt2d(Nodes: &TColgp_Array1OfPnt2d) -> UniquePtr<Polygon2D>;
-        #[doc = "Returns the deflection of this polygon. Deflection is used in cases where the polygon is an approximate representation of a curve. Deflection represents the maximum distance permitted between any point on the curve and the corresponding point on the polygon. By default the deflection value is equal to 0. An algorithm using this 2D polygon with a deflection value equal to 0 considers that it is working with a true polygon and not with an approximate representation of a curve. The Deflection function is used to modify the deflection value of this polygon. The deflection value can be used by any algorithm working  with 2D polygons. For example: -   An algorithm may use a unique deflection value for all its polygons. In this case it is not necessary to use the Deflection function. -   Or an algorithm may want to attach a different deflection to each polygon. In this case, the Deflection function is used to set a value on each polygon, and later to fetch the value."]
+        /// Returns the deflection of this polygon. Deflection is used in cases where the polygon is an approximate representation of a curve. Deflection represents the maximum distance permitted between any point on the curve and the corresponding point on the polygon. By default the deflection value is equal to 0. An algorithm using this 2D polygon with a deflection value equal to 0 considers that it is working with a true polygon and not with an approximate representation of a curve. The Deflection function is used to modify the deflection value of this polygon. The deflection value can be used by any algorithm working  with 2D polygons. For example: -   An algorithm may use a unique deflection value for all its polygons. In this case it is not necessary to use the Deflection function. -   Or an algorithm may want to attach a different deflection to each polygon. In this case, the Deflection function is used to set a value on each polygon, and later to fetch the value.
         #[cxx_name = "Deflection"]
         fn deflection(self: &Polygon2D) -> f64;
-        #[doc = "Sets the deflection of this polygon."]
+        /// Sets the deflection of this polygon.
         #[cxx_name = "Deflection"]
         fn deflection_real(self: Pin<&mut Polygon2D>, theDefl: f64);
-        #[doc = "Returns the number of nodes in this polygon. Note: If the polygon is closed, the point of closure is repeated at the end of its table of nodes. Thus, on a closed triangle, the function NbNodes returns 4."]
+        /// Returns the number of nodes in this polygon. Note: If the polygon is closed, the point of closure is repeated at the end of its table of nodes. Thus, on a closed triangle, the function NbNodes returns 4.
         #[cxx_name = "NbNodes"]
         fn nb_nodes(self: &Polygon2D) -> i32;
-        #[doc = "Returns the table of nodes for this polygon."]
+        /// Returns the table of nodes for this polygon.
         #[cxx_name = "Nodes"]
         fn nodes(self: &Polygon2D) -> &TColgp_Array1OfPnt2d;
-        #[doc = "Returns the table of nodes for this polygon."]
+        /// Returns the table of nodes for this polygon.
         #[cxx_name = "ChangeNodes"]
         fn change_nodes(self: Pin<&mut Polygon2D>) -> Pin<&mut TColgp_Array1OfPnt2d>;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Polygon2D) -> &HandleStandardType;
         #[cxx_name = "Poly_Polygon2D_get_type_name"]
         fn Polygon2D_get_type_name() -> String;
-        #[doc = "Wrap Poly_Polygon2D in a Handle (reference-counted smart pointer)"]
+        /// Wrap Poly_Polygon2D in a Handle (reference-counted smart pointer)
         #[cxx_name = "Poly_Polygon2D_to_handle"]
         fn Polygon2D_to_handle(obj: UniquePtr<Polygon2D>) -> UniquePtr<HandlePolyPolygon2D>;
-        #[doc = " ======================== Poly_PolygonOnTriangulation ========================"]
-        #[doc = "/// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation`"]
-        #[doc = ""]
-        #[doc = "This class provides a polygon in 3D space, based on the triangulation of a surface. It may be the approximate representation of a curve on the surface, or more generally the shape. A PolygonOnTriangulation is defined by a table of nodes. Each node is an index in the table of nodes specific to a triangulation, and represents a point on the surface. If the polygon is closed, the index of the point of closure is repeated at the end of the table of nodes. If the polygon is an approximate representation of a curve on a surface, you can associate with each of its nodes the value of the parameter of the corresponding point on the curve.represents a 3d Polygon"]
+        /// ======================== Poly_PolygonOnTriangulation ========================
+        /// /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation`
+        ///
+        /// This class provides a polygon in 3D space, based on the triangulation of a surface. It may be the approximate representation of a curve on the surface, or more generally the shape. A PolygonOnTriangulation is defined by a table of nodes. Each node is an index in the table of nodes specific to a triangulation, and represents a point on the surface. If the polygon is closed, the index of the point of closure is repeated at the end of the table of nodes. If the polygon is an approximate representation of a curve on a surface, you can associate with each of its nodes the value of the parameter of the corresponding point on the curve.represents a 3d Polygon
         #[cxx_name = "Poly_PolygonOnTriangulation"]
         type PolygonOnTriangulation;
-        #[doc = "/// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`"]
-        #[doc = ""]
-        #[doc = "Constructs a 3D polygon on the triangulation of a shape with specified size of nodes."]
+        /// /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
+        ///
+        /// Constructs a 3D polygon on the triangulation of a shape with specified size of nodes.
         #[cxx_name = "Poly_PolygonOnTriangulation_ctor_int_bool"]
         fn PolygonOnTriangulation_ctor_int_bool(
             theNbNodes: i32,
             theHasParams: bool,
         ) -> UniquePtr<PolygonOnTriangulation>;
-        #[doc = "/// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`"]
-        #[doc = ""]
-        #[doc = "Constructs a 3D polygon on the triangulation of a shape, defined by the table of nodes, <Nodes>."]
+        /// /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
+        ///
+        /// Constructs a 3D polygon on the triangulation of a shape, defined by the table of nodes, <Nodes>.
         #[cxx_name = "Poly_PolygonOnTriangulation_ctor_array1ofinteger"]
         fn PolygonOnTriangulation_ctor_array1ofinteger(
             Nodes: &TColStd_Array1OfInteger,
         ) -> UniquePtr<PolygonOnTriangulation>;
-        #[doc = "/// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`"]
-        #[doc = ""]
-        #[doc = "Constructs a 3D polygon on the triangulation of a shape, defined by: -   the table of nodes, Nodes, and the table of parameters, <Parameters>. where: -   a node value is an index in the table of nodes specific to an existing triangulation of a shape -   and a parameter value is the value of the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning The tables Nodes and Parameters must be the same size. This property is not checked at construction time."]
+        /// /// **Source:** `Poly_PolygonOnTriangulation.hxx` - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
+        ///
+        /// Constructs a 3D polygon on the triangulation of a shape, defined by: -   the table of nodes, Nodes, and the table of parameters, <Parameters>. where: -   a node value is an index in the table of nodes specific to an existing triangulation of a shape -   and a parameter value is the value of the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning The tables Nodes and Parameters must be the same size. This property is not checked at construction time.
         #[cxx_name = "Poly_PolygonOnTriangulation_ctor_array1ofinteger_array1ofreal"]
         fn PolygonOnTriangulation_ctor_array1ofinteger_array1ofreal(
             Nodes: &TColStd_Array1OfInteger,
@@ -886,40 +887,40 @@ pub(crate) mod ffi {
         ) -> UniquePtr<PolygonOnTriangulation>;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &PolygonOnTriangulation) -> &HandleStandardType;
-        #[doc = "Returns the deflection of this polygon"]
+        /// Returns the deflection of this polygon
         #[cxx_name = "Deflection"]
         fn deflection(self: &PolygonOnTriangulation) -> f64;
-        #[doc = "Sets the deflection of this polygon. See more on deflection in Poly_Polygones2D."]
+        /// Sets the deflection of this polygon. See more on deflection in Poly_Polygones2D.
         #[cxx_name = "Deflection"]
         fn deflection_real(self: Pin<&mut PolygonOnTriangulation>, theDefl: f64);
-        #[doc = "Returns the number of nodes for this polygon. Note: If the polygon is closed, the point of closure is repeated at the end of its table of nodes. Thus, on a closed triangle, the function NbNodes returns 4."]
+        /// Returns the number of nodes for this polygon. Note: If the polygon is closed, the point of closure is repeated at the end of its table of nodes. Thus, on a closed triangle, the function NbNodes returns 4.
         #[cxx_name = "NbNodes"]
         fn nb_nodes(self: &PolygonOnTriangulation) -> i32;
-        #[doc = "Returns node at the given index."]
+        /// Returns node at the given index.
         #[cxx_name = "Node"]
         fn node(self: &PolygonOnTriangulation, theIndex: i32) -> i32;
-        #[doc = "Sets node at the given index."]
+        /// Sets node at the given index.
         #[cxx_name = "SetNode"]
         fn set_node(self: Pin<&mut PolygonOnTriangulation>, theIndex: i32, theNode: i32);
-        #[doc = "Returns true if parameters are associated with the nodes in this polygon."]
+        /// Returns true if parameters are associated with the nodes in this polygon.
         #[cxx_name = "HasParameters"]
         fn has_parameters(self: &PolygonOnTriangulation) -> bool;
-        #[doc = "Returns parameter at the given index."]
+        /// Returns parameter at the given index.
         #[cxx_name = "Parameter"]
         fn parameter(self: &PolygonOnTriangulation, theIndex: i32) -> f64;
-        #[doc = "Sets parameter at the given index."]
+        /// Sets parameter at the given index.
         #[cxx_name = "SetParameter"]
         fn set_parameter(self: Pin<&mut PolygonOnTriangulation>, theIndex: i32, theValue: f64);
-        #[doc = "Sets the table of the parameters associated with each node in this polygon. Raises exception if array size doesn't much number of polygon nodes."]
+        /// Sets the table of the parameters associated with each node in this polygon. Raises exception if array size doesn't much number of polygon nodes.
         #[cxx_name = "SetParameters"]
         fn set_parameters(
             self: Pin<&mut PolygonOnTriangulation>,
             theParameters: &HandleTColStdHArray1OfReal,
         );
-        #[doc = "Returns the table of nodes for this polygon. A node value is an index in the table of nodes specific to an existing triangulation of a shape."]
+        /// Returns the table of nodes for this polygon. A node value is an index in the table of nodes specific to an existing triangulation of a shape.
         #[cxx_name = "Nodes"]
         fn nodes(self: &PolygonOnTriangulation) -> &TColStd_Array1OfInteger;
-        #[doc = "Returns the table of the parameters associated with each node in this polygon. Warning! Use the function HasParameters to check if parameters are associated with the nodes in this polygon."]
+        /// Returns the table of the parameters associated with each node in this polygon. Warning! Use the function HasParameters to check if parameters are associated with the nodes in this polygon.
         #[cxx_name = "Parameters"]
         fn parameters(self: &PolygonOnTriangulation) -> &HandleTColStdHArray1OfReal;
         #[cxx_name = "ChangeNodes"]
@@ -930,195 +931,197 @@ pub(crate) mod ffi {
         fn change_parameters(
             self: Pin<&mut PolygonOnTriangulation>,
         ) -> Pin<&mut TColStd_Array1OfReal>;
-        #[doc = "Creates a copy of current polygon"]
+        /// Creates a copy of current polygon
         #[cxx_name = "Poly_PolygonOnTriangulation_Copy"]
         fn PolygonOnTriangulation_copy(
             self_: &PolygonOnTriangulation,
         ) -> UniquePtr<HandlePolyPolygonOnTriangulation>;
         #[cxx_name = "Poly_PolygonOnTriangulation_get_type_name"]
         fn PolygonOnTriangulation_get_type_name() -> String;
-        #[doc = "Wrap Poly_PolygonOnTriangulation in a Handle (reference-counted smart pointer)"]
+        /// Wrap Poly_PolygonOnTriangulation in a Handle (reference-counted smart pointer)
         #[cxx_name = "Poly_PolygonOnTriangulation_to_handle"]
         fn PolygonOnTriangulation_to_handle(
             obj: UniquePtr<PolygonOnTriangulation>,
         ) -> UniquePtr<HandlePolyPolygonOnTriangulation>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "B2d from bnd module"]
+        /// B2d from bnd module
         type Bnd_B2d = crate::bnd::ffi::B2d;
-        #[doc = "Box from bnd module"]
+        /// Box from bnd module
         type Bnd_Box = crate::bnd::ffi::Box_;
-        #[doc = "Box2d from bnd module"]
+        /// Box2d from bnd module
         type Bnd_Box2d = crate::bnd::ffi::Box2d;
-        #[doc = "HArray1OfBox from bnd module"]
+        /// HArray1OfBox from bnd module
         type Bnd_HArray1OfBox = crate::bnd::ffi::HArray1OfBox;
-        #[doc = "HArray1OfSphere from bnd module"]
+        /// HArray1OfSphere from bnd module
         type Bnd_HArray1OfSphere = crate::bnd::ffi::HArray1OfSphere;
-        #[doc = "OBB from bnd module"]
+        /// OBB from bnd module
         type Bnd_OBB = crate::bnd::ffi::OBB;
-        #[doc = "Sphere from bnd module"]
+        /// Sphere from bnd module
         type Bnd_Sphere = crate::bnd::ffi::Sphere;
-        #[doc = "BaseAllocator from n_collection module"]
+        /// BaseAllocator from n_collection module
         type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
-        #[doc = "BaseList from n_collection module"]
+        /// BaseList from n_collection module
         type NCollection_BaseList = crate::n_collection::ffi::BaseList;
-        #[doc = "BasePointerVector from n_collection module"]
+        /// BasePointerVector from n_collection module
         type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
-        #[doc = "Buffer from n_collection module"]
+        /// Buffer from n_collection module
         type NCollection_Buffer = crate::n_collection::ffi::Buffer;
-        #[doc = "IncAllocator from n_collection module"]
+        /// IncAllocator from n_collection module
         type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
-        #[doc = "MemInfo from osd module"]
+        /// MemInfo from osd module
         type OSD_MemInfo = crate::osd::ffi::MemInfo;
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
+        /// HArray1OfBoolean from t_col_std module
         type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
+        /// HArray1OfInteger from t_col_std module
         type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
+        /// HArray1OfReal from t_col_std module
         type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
+        /// HArray1OfTransient from t_col_std module
         type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
+        /// HArray2OfReal from t_col_std module
         type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        /// HSequenceOfHExtendedString from t_col_std module
         type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfInteger from t_col_std module"]
+        /// HSequenceOfInteger from t_col_std module
         type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
-        #[doc = "HSequenceOfReal from t_col_std module"]
+        /// HSequenceOfReal from t_col_std module
         type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
+        /// HSequenceOfTransient from t_col_std module
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
+        /// PackedMapOfInteger from t_col_std module
         type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfPnt from t_colgp module"]
+        /// HArray1OfPnt from t_colgp module
         type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
-        #[doc = "HArray1OfPnt2d from t_colgp module"]
+        /// HArray1OfPnt2d from t_colgp module
         type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
-        #[doc = "HArray1OfVec from t_colgp module"]
+        /// HArray1OfVec from t_colgp module
         type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
-        #[doc = "HArray2OfPnt from t_colgp module"]
+        /// HArray2OfPnt from t_colgp module
         type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
-        #[doc = "HArray1OfShortReal from t_short module"]
+        /// HArray1OfShortReal from t_short module
         type TShort_HArray1OfShortReal = crate::t_short::ffi::HArray1OfShortReal;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
+
         // ========================
         // Referenced types (opaque)
         // ========================

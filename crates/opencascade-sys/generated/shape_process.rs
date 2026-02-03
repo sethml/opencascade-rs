@@ -12,12 +12,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::ShapeProcess;
 impl ShapeProcess {
-    #[doc = "Registers operator to make it visible for Performer"]
+    /// Registers operator to make it visible for Performer
     pub fn register_operator(name: &str, op: &ffi::HandleShapeProcessOperator) -> bool {
         ffi::ShapeProcess_register_operator(name, op)
     }
 
-    #[doc = "Finds operator by its name"]
+    /// Finds operator by its name
     pub fn find_operator(
         name: &str,
         op: std::pin::Pin<&mut ffi::HandleShapeProcessOperator>,
@@ -25,7 +25,7 @@ impl ShapeProcess {
         ffi::ShapeProcess_find_operator(name, op)
     }
 
-    #[doc = "Performs a specified sequence of operators on Context Resource file and other data should be already loaded to Context (including description of sequence seq)"]
+    /// Performs a specified sequence of operators on Context Resource file and other data should be already loaded to Context (including description of sequence seq)
     pub fn perform_handlecontext_charptr_progressrange(
         context: &ffi::HandleShapeProcessContext,
         seq: &str,
@@ -38,58 +38,61 @@ impl ShapeProcess {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_shape_process.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== ShapeProcess ========================"]
-        #[doc = "/// **Source:** `ShapeProcess.hxx` - `ShapeProcess`"]
-        #[doc = ""]
-        #[doc = "Shape Processing module allows to define and apply general Shape Processing as a customizable sequence of Shape Healing operators. The customization is implemented via user-editable resource file which defines sequence of operators to be executed and their parameters."]
+        /// ======================== ShapeProcess ========================
+        /// /// **Source:** `ShapeProcess.hxx` - `ShapeProcess`
+        ///
+        /// Shape Processing module allows to define and apply general Shape Processing as a customizable sequence of Shape Healing operators. The customization is implemented via user-editable resource file which defines sequence of operators to be executed and their parameters.
         #[cxx_name = "ShapeProcess"]
         type ShapeProcess;
-        #[doc = "Registers operator to make it visible for Performer"]
+        /// Registers operator to make it visible for Performer
         #[cxx_name = "ShapeProcess_RegisterOperator"]
         fn ShapeProcess_register_operator(name: &str, op: &HandleShapeProcessOperator) -> bool;
-        #[doc = "Finds operator by its name"]
+        /// Finds operator by its name
         #[cxx_name = "ShapeProcess_FindOperator"]
         fn ShapeProcess_find_operator(name: &str, op: Pin<&mut HandleShapeProcessOperator>)
             -> bool;
-        #[doc = "Performs a specified sequence of operators on Context Resource file and other data should be already loaded to Context (including description of sequence seq)"]
+        /// Performs a specified sequence of operators on Context Resource file and other data should be already loaded to Context (including description of sequence seq)
         #[cxx_name = "ShapeProcess_Perform_handlecontext_charptr_progressrange"]
         fn ShapeProcess_perform_handlecontext_charptr_progressrange(
             context: &HandleShapeProcessContext,
             seq: &str,
             theProgress: &Message_ProgressRange,
         ) -> bool;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Message from message module"]
+        /// Message from message module
         type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
+        /// Alert from message module
         type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
+        /// AlertExtended from message module
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
+        /// Algorithm from message module
         type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
+        /// ExecStatus from message module
         type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
+        /// Level from message module
         type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
+        /// Messenger from message module
         type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
+        /// Msg from message module
         type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
+        /// Printer from message module
         type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
+        /// ProgressIndicator from message module
         type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
+        /// ProgressRange from message module
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
+        /// ProgressScope from message module
         type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
+        /// Report from message module
         type Message_Report = crate::message::ffi::Report;
+
         // ========================
         // Referenced types (opaque)
         // ========================

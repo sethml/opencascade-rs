@@ -14,12 +14,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Reader;
 impl Reader {
-    #[doc = "Creates a reader object with an empty STEP model."]
+    /// Creates a reader object with an empty STEP model.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Reader_ctor()
     }
 
-    #[doc = "Creates a Reader for STEP from an already existing Session Clears the session if it was not yet set for STEP"]
+    /// Creates a Reader for STEP from an already existing Session Clears the session if it was not yet set for STEP
     pub fn new_handleworksession_bool(
         WS: &ffi::HandleXSControlWorkSession,
         scratch: bool,
@@ -27,31 +27,31 @@ impl Reader {
         ffi::Reader_ctor_handleworksession_bool(WS, scratch)
     }
 
-    #[doc = "Upcast to XSControl_Reader"]
+    /// Upcast to XSControl_Reader
     pub fn as_xs_control_reader(&self) -> &crate::xs_control::Reader {
         ffi::reader_as_xs_control_reader(self)
     }
 
-    #[doc = "Upcast to XSControl_Reader (mutable)"]
+    /// Upcast to XSControl_Reader (mutable)
     pub fn as_xs_control_reader_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::xs_control::Reader> {
         ffi::reader_as_xs_control_reader_mut(self)
     }
 
-    #[doc = "Returns the model as a StepModel. It can then be consulted (header, product)"]
+    /// Returns the model as a StepModel. It can then be consulted (header, product)
     pub fn step_model(&self) -> cxx::UniquePtr<ffi::HandleStepDataStepModel> {
         ffi::Reader_step_model(self)
     }
 }
 pub use ffi::Writer;
 impl Writer {
-    #[doc = "Creates a Writer from scratch"]
+    /// Creates a Writer from scratch
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Writer_ctor()
     }
 
-    #[doc = "Creates a Writer from an already existing Session If <scratch> is True (D), clears already recorded data"]
+    /// Creates a Writer from an already existing Session If <scratch> is True (D), clears already recorded data
     pub fn new_handleworksession_bool(
         WS: &ffi::HandleXSControlWorkSession,
         scratch: bool,
@@ -59,12 +59,12 @@ impl Writer {
         ffi::Writer_ctor_handleworksession_bool(WS, scratch)
     }
 
-    #[doc = "Returns the session used in <me>"]
+    /// Returns the session used in <me>
     pub fn ws(&self) -> cxx::UniquePtr<ffi::HandleXSControlWorkSession> {
         ffi::Writer_ws(self)
     }
 
-    #[doc = "Returns the produced model. Produces a new one if not yet done or if <newone> is True This method allows for instance to edit product or header data before writing."]
+    /// Returns the produced model. Produces a new one if not yet done or if <newone> is True This method allows for instance to edit product or header data before writing.
     pub fn model(
         self: std::pin::Pin<&mut Self>,
         newone: bool,
@@ -76,39 +76,40 @@ impl Writer {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_step_control.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== STEPControl_Reader ========================"]
-        #[doc = "/// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader`"]
-        #[doc = ""]
+        /// ======================== STEPControl_Reader ========================
+        /// /// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader`
+        ///
         #[doc = "Reads STEP files, checks them and translates their contents into Open CASCADE models. The STEP data can be that of a whole model or that of a specific list of entities in the model. As in XSControl_Reader, you specify the list using a selection. For the translation of iges files it is possible to use next sequence: To change translation parameters class Interface_Static should be used before beginning of translation  (see STEP Parameters and General Parameters) Creation of reader - STEPControl_Reader reader; To load s file in a model use method reader.ReadFile(\"filename.stp\") To print load results reader.PrintCheckLoad(failsonly,mode) where mode is equal to the value of enumeration IFSelect_PrintCount For definition number of candidates : Standard_Integer nbroots = reader. NbRootsForTransfer(); To transfer entities from a model the following methods can be used: for the whole model - reader.TransferRoots(); to transfer a list of entities: reader.TransferList(list); to transfer one entity Handle(Standard_Transient) ent = reader.RootForTransfer(num); reader.TransferEntity(ent), or reader.TransferOneRoot(num), or reader.TransferOne(num), or reader.TransferRoot(num) To obtain the result the following method can be used: reader.NbShapes() and reader.Shape(num); or reader.OneShape(); To print the results of transfer use method: reader.PrintCheckTransfer(failwarn,mode); where printfail is equal to the value of enumeration IFSelect_PrintFail, mode see above; or reader.PrintStatsTransfer(); Gets correspondence between a STEP entity and a result shape obtained from it. Handle(XSControl_WorkSession) WS = reader.WS(); if ( WS->TransferReader()->HasResult(ent) ) TopoDS_Shape shape = WS->TransferReader()->ShapeResult(ent);"]
         #[cxx_name = "STEPControl_Reader"]
         type Reader;
-        #[doc = "/// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader::STEPControl_Reader()`"]
-        #[doc = ""]
-        #[doc = "Creates a reader object with an empty STEP model."]
+        /// /// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader::STEPControl_Reader()`
+        ///
+        /// Creates a reader object with an empty STEP model.
         #[cxx_name = "STEPControl_Reader_ctor"]
         fn Reader_ctor() -> UniquePtr<Reader>;
-        #[doc = "/// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader::STEPControl_Reader()`"]
-        #[doc = ""]
-        #[doc = "Creates a Reader for STEP from an already existing Session Clears the session if it was not yet set for STEP"]
+        /// /// **Source:** `STEPControl_Reader.hxx` - `STEPControl_Reader::STEPControl_Reader()`
+        ///
+        /// Creates a Reader for STEP from an already existing Session Clears the session if it was not yet set for STEP
         #[cxx_name = "STEPControl_Reader_ctor_handleworksession_bool"]
         fn Reader_ctor_handleworksession_bool(
             WS: &HandleXSControlWorkSession,
             scratch: bool,
         ) -> UniquePtr<Reader>;
-        #[doc = "Transfers a root given its rank in the list of candidate roots Default is the first one Returns True if a shape has resulted, false else Same as inherited TransferOneRoot, kept for compatibility"]
+        /// Transfers a root given its rank in the list of candidate roots Default is the first one Returns True if a shape has resulted, false else Same as inherited TransferOneRoot, kept for compatibility
         #[cxx_name = "TransferRoot"]
         fn transfer_root(
             self: Pin<&mut Reader>,
             num: i32,
             theProgress: &Message_ProgressRange,
         ) -> bool;
-        #[doc = "Determines the list of root entities from Model which are candidate for a transfer to a Shape (type of entities is PRODUCT)"]
+        /// Determines the list of root entities from Model which are candidate for a transfer to a Shape (type of entities is PRODUCT)
         #[cxx_name = "NbRootsForTransfer"]
         fn nb_roots_for_transfer(self: Pin<&mut Reader>) -> i32;
-        #[doc = "Returns sequence of all unit names for shape representations found in file"]
+        /// Returns sequence of all unit names for shape representations found in file
         #[cxx_name = "FileUnits"]
         fn file_units(
             self: Pin<&mut Reader>,
@@ -116,140 +117,142 @@ pub(crate) mod ffi {
             theUnitAngleNames: Pin<&mut TColStd_SequenceOfAsciiString>,
             theUnitSolidAngleNames: Pin<&mut TColStd_SequenceOfAsciiString>,
         );
-        #[doc = "Sets system length unit used by transfer process. Performs only if a model is not NULL"]
+        /// Sets system length unit used by transfer process. Performs only if a model is not NULL
         #[cxx_name = "SetSystemLengthUnit"]
         fn set_system_length_unit(self: Pin<&mut Reader>, theLengthUnit: f64);
-        #[doc = "Returns system length unit used by transfer process. Performs only if a model is not NULL"]
+        /// Returns system length unit used by transfer process. Performs only if a model is not NULL
         #[cxx_name = "SystemLengthUnit"]
         fn system_length_unit(self: &Reader) -> f64;
-        #[doc = "Returns the model as a StepModel. It can then be consulted (header, product)"]
+        /// Returns the model as a StepModel. It can then be consulted (header, product)
         #[cxx_name = "STEPControl_Reader_StepModel"]
         fn Reader_step_model(self_: &Reader) -> UniquePtr<HandleStepDataStepModel>;
-        #[doc = "Upcast STEPControl_Reader to XSControl_Reader"]
+        /// Upcast STEPControl_Reader to XSControl_Reader
         #[cxx_name = "STEPControl_Reader_as_XSControl_Reader"]
         fn reader_as_xs_control_reader(self_: &Reader) -> &XSControl_Reader;
-        #[doc = "Upcast STEPControl_Reader to XSControl_Reader (mutable)"]
+        /// Upcast STEPControl_Reader to XSControl_Reader (mutable)
         #[cxx_name = "STEPControl_Reader_as_XSControl_Reader_mut"]
         fn reader_as_xs_control_reader_mut(self_: Pin<&mut Reader>) -> Pin<&mut XSControl_Reader>;
-        #[doc = " ======================== STEPControl_Writer ========================"]
-        #[doc = "/// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer`"]
-        #[doc = ""]
-        #[doc = "This class creates and writes STEP files from Open CASCADE models. A STEP file can be written to an existing STEP file or to a new one. Translation can be performed in one or several operations. Each translation operation outputs a distinct root entity in the STEP file."]
+        /// ======================== STEPControl_Writer ========================
+        /// /// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer`
+        ///
+        /// This class creates and writes STEP files from Open CASCADE models. A STEP file can be written to an existing STEP file or to a new one. Translation can be performed in one or several operations. Each translation operation outputs a distinct root entity in the STEP file.
         #[cxx_name = "STEPControl_Writer"]
         type Writer;
-        #[doc = "/// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer::STEPControl_Writer()`"]
-        #[doc = ""]
-        #[doc = "Creates a Writer from scratch"]
+        /// /// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer::STEPControl_Writer()`
+        ///
+        /// Creates a Writer from scratch
         #[cxx_name = "STEPControl_Writer_ctor"]
         fn Writer_ctor() -> UniquePtr<Writer>;
-        #[doc = "/// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer::STEPControl_Writer()`"]
-        #[doc = ""]
-        #[doc = "Creates a Writer from an already existing Session If <scratch> is True (D), clears already recorded data"]
+        /// /// **Source:** `STEPControl_Writer.hxx` - `STEPControl_Writer::STEPControl_Writer()`
+        ///
+        /// Creates a Writer from an already existing Session If <scratch> is True (D), clears already recorded data
         #[cxx_name = "STEPControl_Writer_ctor_handleworksession_bool"]
         fn Writer_ctor_handleworksession_bool(
             WS: &HandleXSControlWorkSession,
             scratch: bool,
         ) -> UniquePtr<Writer>;
-        #[doc = "Sets a length-measure value that will be written to uncertainty-measure-with-unit when the next shape is translated."]
+        /// Sets a length-measure value that will be written to uncertainty-measure-with-unit when the next shape is translated.
         #[cxx_name = "SetTolerance"]
         fn set_tolerance(self: Pin<&mut Writer>, Tol: f64);
-        #[doc = "Unsets the tolerance formerly forced by SetTolerance"]
+        /// Unsets the tolerance formerly forced by SetTolerance
         #[cxx_name = "UnsetTolerance"]
         fn unset_tolerance(self: Pin<&mut Writer>);
-        #[doc = "Sets a specific session to <me>"]
+        /// Sets a specific session to <me>
         #[cxx_name = "SetWS"]
         fn set_ws(self: Pin<&mut Writer>, WS: &HandleXSControlWorkSession, scratch: bool);
-        #[doc = "Displays the statistics for the last translation. what defines the kind of statistics that are displayed: - 0 gives general statistics   (number of translated roots, number of warnings, number of   fail messages), - 1 gives root results, - 2 gives statistics for all checked entities, - 3 gives the list of translated entities, - 4 gives warning and fail messages, - 5 gives fail messages only. mode is used according to the use of what. If what is 0, mode is ignored. If what is 1, 2 or 3, mode defines the following: - 0 lists the numbers of STEP entities in a STEP model, - 1 gives the number, identifier, type and result type for each STEP entity and/or its status (fail, warning, etc.), - 2 gives maximum information for each STEP entity (i.e. checks), - 3 gives the number of entities by the type of a STEP entity, - 4 gives the number of of STEP entities per result type and/or status, - 5 gives the number of pairs (STEP or result type and status), - 6 gives the number of pairs (STEP or result type and status) AND the list of entity numbers in the STEP model."]
+        /// Displays the statistics for the last translation. what defines the kind of statistics that are displayed: - 0 gives general statistics   (number of translated roots, number of warnings, number of   fail messages), - 1 gives root results, - 2 gives statistics for all checked entities, - 3 gives the list of translated entities, - 4 gives warning and fail messages, - 5 gives fail messages only. mode is used according to the use of what. If what is 0, mode is ignored. If what is 1, 2 or 3, mode defines the following: - 0 lists the numbers of STEP entities in a STEP model, - 1 gives the number, identifier, type and result type for each STEP entity and/or its status (fail, warning, etc.), - 2 gives maximum information for each STEP entity (i.e. checks), - 3 gives the number of entities by the type of a STEP entity, - 4 gives the number of of STEP entities per result type and/or status, - 5 gives the number of pairs (STEP or result type and status), - 6 gives the number of pairs (STEP or result type and status) AND the list of entity numbers in the STEP model.
         #[cxx_name = "PrintStatsTransfer"]
         fn print_stats_transfer(self: &Writer, what: i32, mode: i32);
-        #[doc = "Returns the session used in <me>"]
+        /// Returns the session used in <me>
         #[cxx_name = "STEPControl_Writer_WS"]
         fn Writer_ws(self_: &Writer) -> UniquePtr<HandleXSControlWorkSession>;
-        #[doc = "Returns the produced model. Produces a new one if not yet done or if <newone> is True This method allows for instance to edit product or header data before writing."]
+        /// Returns the produced model. Produces a new one if not yet done or if <newone> is True This method allows for instance to edit product or header data before writing.
         #[cxx_name = "STEPControl_Writer_Model"]
         fn Writer_model(
             self_: Pin<&mut Writer>,
             newone: bool,
         ) -> UniquePtr<HandleStepDataStepModel>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Parameters from destep module"]
+        /// Parameters from destep module
         type DESTEP_Parameters = crate::destep::ffi::Parameters;
-        #[doc = "Message from message module"]
+        /// Message from message module
         type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
+        /// Alert from message module
         type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
+        /// AlertExtended from message module
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
+        /// Algorithm from message module
         type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
+        /// ExecStatus from message module
         type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
+        /// Level from message module
         type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
+        /// Messenger from message module
         type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
+        /// Msg from message module
         type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
+        /// Printer from message module
         type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
+        /// ProgressIndicator from message module
         type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
+        /// ProgressRange from message module
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
+        /// ProgressScope from message module
         type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
+        /// Report from message module
         type Message_Report = crate::message::ffi::Report;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
+        /// HArray1OfBoolean from t_col_std module
         type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
+        /// HArray1OfInteger from t_col_std module
         type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
+        /// HArray1OfReal from t_col_std module
         type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
+        /// HArray1OfTransient from t_col_std module
         type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
+        /// HArray2OfReal from t_col_std module
         type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        /// HSequenceOfHExtendedString from t_col_std module
         type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfInteger from t_col_std module"]
+        /// HSequenceOfInteger from t_col_std module
         type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
-        #[doc = "HSequenceOfReal from t_col_std module"]
+        /// HSequenceOfReal from t_col_std module
         type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
+        /// HSequenceOfTransient from t_col_std module
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
+        /// PackedMapOfInteger from t_col_std module
         type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "ShapeProcessor from xs_algo module"]
+        /// ShapeProcessor from xs_algo module
         type XSAlgo_ShapeProcessor = crate::xs_algo::ffi::ShapeProcessor;
-        #[doc = "Reader from xs_control module"]
+        /// Reader from xs_control module
         type XSControl_Reader = crate::xs_control::ffi::Reader;
+
         // ========================
         // Referenced types (opaque)
         // ========================

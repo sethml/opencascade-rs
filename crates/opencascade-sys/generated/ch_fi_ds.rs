@@ -55,7 +55,7 @@ impl SecHArray1 {
         ffi::SecHArray1_ctor_secarray1(theOther)
     }
 
-    #[doc = "Wrap ChFiDS_SecHArray1 in a Handle (reference-counted smart pointer)"]
+    /// Wrap ChFiDS_SecHArray1 in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleChFiDSSecHArray1> {
         ffi::SecHArray1_to_handle(obj)
     }
@@ -76,24 +76,24 @@ impl ElSpine {
         ffi::ElSpine_ctor()
     }
 
-    #[doc = "Upcast to Adaptor3d_Curve"]
+    /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
         ffi::el_spine_as_adaptor3d_curve(self)
     }
 
-    #[doc = "Upcast to Adaptor3d_Curve (mutable)"]
+    /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_adaptor3d_curve_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::adaptor3d::Curve> {
         ffi::el_spine_as_adaptor3d_curve_mut(self)
     }
 
-    #[doc = "Shallow copy of adaptor"]
+    /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
         ffi::ElSpine_shallow_copy(self)
     }
 
-    #[doc = "Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion."]
+    /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion.
     pub fn trim(
         &self,
         First: f64,
@@ -145,7 +145,7 @@ impl SurfData {
         ffi::SurfData_ctor()
     }
 
-    #[doc = "Wrap ChFiDS_SurfData in a Handle (reference-counted smart pointer)"]
+    /// Wrap ChFiDS_SurfData in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleChFiDSSurfData> {
         ffi::SurfData_to_handle(obj)
     }
@@ -164,7 +164,7 @@ impl SurfData {
 }
 pub use ffi::CommonPoint;
 impl CommonPoint {
-    #[doc = "Empty constructor."]
+    /// Empty constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::CommonPoint_ctor()
     }
@@ -181,7 +181,7 @@ impl Stripe {
         ffi::Stripe_ctor()
     }
 
-    #[doc = "Wrap ChFiDS_Stripe in a Handle (reference-counted smart pointer)"]
+    /// Wrap ChFiDS_Stripe in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleChFiDSStripe> {
         ffi::Stripe_to_handle(obj)
     }
@@ -202,7 +202,7 @@ impl HData {
         ffi::HData_ctor_sequenceofsurfdata(theOther)
     }
 
-    #[doc = "Wrap ChFiDS_HData in a Handle (reference-counted smart pointer)"]
+    /// Wrap ChFiDS_HData in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleChFiDSHData> {
         ffi::HData_to_handle(obj)
     }
@@ -213,7 +213,7 @@ impl HData {
 }
 pub use ffi::Map;
 impl Map {
-    #[doc = "Create an empty Map"]
+    /// Create an empty Map
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Map_ctor()
     }
@@ -234,27 +234,28 @@ impl Regul {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_ch_fi_ds.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== ChFiDS_SecHArray1 ========================"]
-        #[doc = "/// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1`"]
+        /// ======================== ChFiDS_SecHArray1 ========================
+        /// /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1`
         #[cxx_name = "ChFiDS_SecHArray1"]
         type SecHArray1;
-        #[doc = "/// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`"]
+        /// /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor"]
         fn SecHArray1_ctor() -> UniquePtr<SecHArray1>;
-        #[doc = "/// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`"]
+        /// /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor_int2"]
         fn SecHArray1_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<SecHArray1>;
-        #[doc = "/// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`"]
+        /// /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor_int2_circsection"]
         fn SecHArray1_ctor_int2_circsection(
             theLower: i32,
             theUpper: i32,
             theValue: &CircSection,
         ) -> UniquePtr<SecHArray1>;
-        #[doc = "/// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`"]
+        /// /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor_circsection_int2_bool"]
         fn SecHArray1_ctor_circsection_int2_bool(
             theBegin: &CircSection,
@@ -262,7 +263,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<SecHArray1>;
-        #[doc = "/// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`"]
+        /// /// **Source:** `ChFiDS_SecHArray1.hxx` - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
         #[cxx_name = "ChFiDS_SecHArray1_ctor_secarray1"]
         fn SecHArray1_ctor_secarray1(theOther: &ChFiDS_SecArray1) -> UniquePtr<SecHArray1>;
         #[cxx_name = "Array1"]
@@ -273,16 +274,16 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &SecHArray1) -> &HandleStandardType;
         #[cxx_name = "ChFiDS_SecHArray1_get_type_name"]
         fn SecHArray1_get_type_name() -> String;
-        #[doc = "Wrap ChFiDS_SecHArray1 in a Handle (reference-counted smart pointer)"]
+        /// Wrap ChFiDS_SecHArray1 in a Handle (reference-counted smart pointer)
         #[cxx_name = "ChFiDS_SecHArray1_to_handle"]
         fn SecHArray1_to_handle(obj: UniquePtr<SecHArray1>) -> UniquePtr<HandleChFiDSSecHArray1>;
-        #[doc = " ======================== ChFiDS_CircSection ========================"]
-        #[doc = "/// **Source:** `ChFiDS_CircSection.hxx` - `ChFiDS_CircSection`"]
-        #[doc = ""]
-        #[doc = "A Section of fillet."]
+        /// ======================== ChFiDS_CircSection ========================
+        /// /// **Source:** `ChFiDS_CircSection.hxx` - `ChFiDS_CircSection`
+        ///
+        /// A Section of fillet.
         #[cxx_name = "ChFiDS_CircSection"]
         type CircSection;
-        #[doc = "/// **Source:** `ChFiDS_CircSection.hxx` - `ChFiDS_CircSection::ChFiDS_CircSection()`"]
+        /// /// **Source:** `ChFiDS_CircSection.hxx` - `ChFiDS_CircSection::ChFiDS_CircSection()`
         #[cxx_name = "ChFiDS_CircSection_ctor"]
         fn CircSection_ctor() -> UniquePtr<CircSection>;
         #[cxx_name = "Set"]
@@ -293,13 +294,13 @@ pub(crate) mod ffi {
         fn get_circ_real2(self: &CircSection, C: Pin<&mut gp_Circ>, F: &mut f64, L: &mut f64);
         #[cxx_name = "Get"]
         fn get_lin_real2(self: &CircSection, C: Pin<&mut gp_Lin>, F: &mut f64, L: &mut f64);
-        #[doc = " ======================== ChFiDS_ElSpine ========================"]
-        #[doc = "/// **Source:** `ChFiDS_ElSpine.hxx` - `ChFiDS_ElSpine`"]
-        #[doc = ""]
-        #[doc = "Elementary  Spine for cheminements and approximations."]
+        /// ======================== ChFiDS_ElSpine ========================
+        /// /// **Source:** `ChFiDS_ElSpine.hxx` - `ChFiDS_ElSpine`
+        ///
+        /// Elementary  Spine for cheminements and approximations.
         #[cxx_name = "ChFiDS_ElSpine"]
         type ElSpine;
-        #[doc = "/// **Source:** `ChFiDS_ElSpine.hxx` - `ChFiDS_ElSpine::ChFiDS_ElSpine()`"]
+        /// /// **Source:** `ChFiDS_ElSpine.hxx` - `ChFiDS_ElSpine::ChFiDS_ElSpine()`
         #[cxx_name = "ChFiDS_ElSpine_ctor"]
         fn ElSpine_ctor() -> UniquePtr<ElSpine>;
         #[cxx_name = "DynamicType"]
@@ -375,10 +376,10 @@ pub(crate) mod ffi {
         fn next(self: &ElSpine) -> &HandleChFiDSSurfData;
         #[cxx_name = "ChangeNext"]
         fn change_next(self: Pin<&mut ElSpine>) -> Pin<&mut HandleChFiDSSurfData>;
-        #[doc = "Shallow copy of adaptor"]
+        /// Shallow copy of adaptor
         #[cxx_name = "ChFiDS_ElSpine_ShallowCopy"]
         fn ElSpine_shallow_copy(self_: &ElSpine) -> UniquePtr<HandleAdaptor3dCurve>;
-        #[doc = "Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion."]
+        /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion.
         #[cxx_name = "ChFiDS_ElSpine_Trim"]
         fn ElSpine_trim(
             self_: &ElSpine,
@@ -404,19 +405,19 @@ pub(crate) mod ffi {
         fn ElSpine_b_spline(self_: &ElSpine) -> UniquePtr<HandleGeomBSplineCurve>;
         #[cxx_name = "ChFiDS_ElSpine_get_type_name"]
         fn ElSpine_get_type_name() -> String;
-        #[doc = "Upcast ChFiDS_ElSpine to Adaptor3d_Curve"]
+        /// Upcast ChFiDS_ElSpine to Adaptor3d_Curve
         #[cxx_name = "ChFiDS_ElSpine_as_Adaptor3d_Curve"]
         fn el_spine_as_adaptor3d_curve(self_: &ElSpine) -> &Adaptor3d_Curve;
-        #[doc = "Upcast ChFiDS_ElSpine to Adaptor3d_Curve (mutable)"]
+        /// Upcast ChFiDS_ElSpine to Adaptor3d_Curve (mutable)
         #[cxx_name = "ChFiDS_ElSpine_as_Adaptor3d_Curve_mut"]
         fn el_spine_as_adaptor3d_curve_mut(self_: Pin<&mut ElSpine>) -> Pin<&mut Adaptor3d_Curve>;
-        #[doc = " ======================== ChFiDS_SurfData ========================"]
-        #[doc = "/// **Source:** `ChFiDS_SurfData.hxx` - `ChFiDS_SurfData`"]
-        #[doc = ""]
-        #[doc = "data structure for all information related to  the fillet and to 2 faces vis a vis"]
+        /// ======================== ChFiDS_SurfData ========================
+        /// /// **Source:** `ChFiDS_SurfData.hxx` - `ChFiDS_SurfData`
+        ///
+        /// data structure for all information related to  the fillet and to 2 faces vis a vis
         #[cxx_name = "ChFiDS_SurfData"]
         type SurfData;
-        #[doc = "/// **Source:** `ChFiDS_SurfData.hxx` - `ChFiDS_SurfData::ChFiDS_SurfData()`"]
+        /// /// **Source:** `ChFiDS_SurfData.hxx` - `ChFiDS_SurfData::ChFiDS_SurfData()`
         #[cxx_name = "ChFiDS_SurfData_ctor"]
         fn SurfData_ctor() -> UniquePtr<SurfData>;
         #[cxx_name = "Copy"]
@@ -475,10 +476,10 @@ pub(crate) mod ffi {
         fn change_interference(self: Pin<&mut SurfData>, OnS: i32) -> Pin<&mut FaceInterference>;
         #[cxx_name = "Index"]
         fn index(self: &SurfData, OfS: i32) -> i32;
-        #[doc = "returns one of the four vertices  whether First is true or wrong and OnS equals 1 or 2."]
+        /// returns one of the four vertices  whether First is true or wrong and OnS equals 1 or 2.
         #[cxx_name = "Vertex"]
         fn vertex(self: &SurfData, First: bool, OnS: i32) -> &CommonPoint;
-        #[doc = "returns one of the four vertices  whether First is true or wrong and OnS equals 1 or 2."]
+        /// returns one of the four vertices  whether First is true or wrong and OnS equals 1 or 2.
         #[cxx_name = "ChangeVertex"]
         fn change_vertex(self: Pin<&mut SurfData>, First: bool, OnS: i32) -> Pin<&mut CommonPoint>;
         #[cxx_name = "IsOnCurve"]
@@ -541,75 +542,75 @@ pub(crate) mod ffi {
         ) -> UniquePtr<gp_Pnt2d>;
         #[cxx_name = "ChFiDS_SurfData_get_type_name"]
         fn SurfData_get_type_name() -> String;
-        #[doc = "Wrap ChFiDS_SurfData in a Handle (reference-counted smart pointer)"]
+        /// Wrap ChFiDS_SurfData in a Handle (reference-counted smart pointer)
         #[cxx_name = "ChFiDS_SurfData_to_handle"]
         fn SurfData_to_handle(obj: UniquePtr<SurfData>) -> UniquePtr<HandleChFiDSSurfData>;
-        #[doc = " ======================== ChFiDS_CommonPoint ========================"]
-        #[doc = "/// **Source:** `ChFiDS_CommonPoint.hxx` - `ChFiDS_CommonPoint`"]
-        #[doc = ""]
-        #[doc = "point    start/end of  fillet common  to  2 adjacent  filets and  to an edge on  one of 2 faces participating in  the construction of  the  fillet"]
+        /// ======================== ChFiDS_CommonPoint ========================
+        /// /// **Source:** `ChFiDS_CommonPoint.hxx` - `ChFiDS_CommonPoint`
+        ///
+        /// point    start/end of  fillet common  to  2 adjacent  filets and  to an edge on  one of 2 faces participating in  the construction of  the  fillet
         #[cxx_name = "ChFiDS_CommonPoint"]
         type CommonPoint;
-        #[doc = "/// **Source:** `ChFiDS_CommonPoint.hxx` - `ChFiDS_CommonPoint::ChFiDS_CommonPoint()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor."]
+        /// /// **Source:** `ChFiDS_CommonPoint.hxx` - `ChFiDS_CommonPoint::ChFiDS_CommonPoint()`
+        ///
+        /// Empty constructor.
         #[cxx_name = "ChFiDS_CommonPoint_ctor"]
         fn CommonPoint_ctor() -> UniquePtr<CommonPoint>;
-        #[doc = "default value for all fields"]
+        /// default value for all fields
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut CommonPoint>);
-        #[doc = "Sets the values of a point which is a vertex on the initial facet of restriction of one of the surface."]
+        /// Sets the values of a point which is a vertex on the initial facet of restriction of one of the surface.
         #[cxx_name = "SetVertex"]
         fn set_vertex(self: Pin<&mut CommonPoint>, theVertex: &TopoDS_Vertex);
-        #[doc = "Sets the value of the parameter on the spine"]
+        /// Sets the value of the parameter on the spine
         #[cxx_name = "SetParameter"]
         fn set_parameter(self: Pin<&mut CommonPoint>, Param: f64);
-        #[doc = "Set the 3d point for a commonpoint that is not a vertex or on an arc."]
+        /// Set the 3d point for a commonpoint that is not a vertex or on an arc.
         #[cxx_name = "SetPoint"]
         fn set_point(self: Pin<&mut CommonPoint>, thePoint: &gp_Pnt);
-        #[doc = "Set the output 3d  vector"]
+        /// Set the output 3d  vector
         #[cxx_name = "SetVector"]
         fn set_vector(self: Pin<&mut CommonPoint>, theVector: &gp_Vec);
-        #[doc = "This method set the fuzziness on the point."]
+        /// This method set the fuzziness on the point.
         #[cxx_name = "SetTolerance"]
         fn set_tolerance(self: Pin<&mut CommonPoint>, Tol: f64);
-        #[doc = "This method returns the fuzziness on the point."]
+        /// This method returns the fuzziness on the point.
         #[cxx_name = "Tolerance"]
         fn tolerance(self: &CommonPoint) -> f64;
-        #[doc = "Returns TRUE if the point is a vertex on the initial restriction facet of the surface."]
+        /// Returns TRUE if the point is a vertex on the initial restriction facet of the surface.
         #[cxx_name = "IsVertex"]
         fn is_vertex(self: &CommonPoint) -> bool;
-        #[doc = "Returns the information about the point when it is on the domain of the first patch, i-e when the function IsVertex returns True. Otherwise, an exception is raised."]
+        /// Returns the information about the point when it is on the domain of the first patch, i-e when the function IsVertex returns True. Otherwise, an exception is raised.
         #[cxx_name = "Vertex"]
         fn vertex(self: &CommonPoint) -> &TopoDS_Vertex;
-        #[doc = "Returns TRUE if the point is a on an edge of the initial restriction facet of the surface."]
+        /// Returns TRUE if the point is a on an edge of the initial restriction facet of the surface.
         #[cxx_name = "IsOnArc"]
         fn is_on_arc(self: &CommonPoint) -> bool;
-        #[doc = "Returns the arc of restriction containing the vertex."]
+        /// Returns the arc of restriction containing the vertex.
         #[cxx_name = "Arc"]
         fn arc(self: &CommonPoint) -> &TopoDS_Edge;
-        #[doc = "Returns the parameter of the point on the arc returned by the method Arc()."]
+        /// Returns the parameter of the point on the arc returned by the method Arc().
         #[cxx_name = "ParameterOnArc"]
         fn parameter_on_arc(self: &CommonPoint) -> f64;
-        #[doc = "Returns the parameter on the spine"]
+        /// Returns the parameter on the spine
         #[cxx_name = "Parameter"]
         fn parameter(self: &CommonPoint) -> f64;
-        #[doc = "Returns the 3d point"]
+        /// Returns the 3d point
         #[cxx_name = "Point"]
         fn point(self: &CommonPoint) -> &gp_Pnt;
-        #[doc = "Returns TRUE if the output vector is  stored."]
+        /// Returns TRUE if the output vector is  stored.
         #[cxx_name = "HasVector"]
         fn has_vector(self: &CommonPoint) -> bool;
-        #[doc = "Returns the output  3d vector"]
+        /// Returns the output  3d vector
         #[cxx_name = "Vector"]
         fn vector(self: &CommonPoint) -> &gp_Vec;
-        #[doc = " ======================== ChFiDS_FaceInterference ========================"]
-        #[doc = "/// **Source:** `ChFiDS_FaceInterference.hxx` - `ChFiDS_FaceInterference`"]
-        #[doc = ""]
-        #[doc = "interference face/fillet"]
+        /// ======================== ChFiDS_FaceInterference ========================
+        /// /// **Source:** `ChFiDS_FaceInterference.hxx` - `ChFiDS_FaceInterference`
+        ///
+        /// interference face/fillet
         #[cxx_name = "ChFiDS_FaceInterference"]
         type FaceInterference;
-        #[doc = "/// **Source:** `ChFiDS_FaceInterference.hxx` - `ChFiDS_FaceInterference::ChFiDS_FaceInterference()`"]
+        /// /// **Source:** `ChFiDS_FaceInterference.hxx` - `ChFiDS_FaceInterference::ChFiDS_FaceInterference()`
         #[cxx_name = "ChFiDS_FaceInterference_ctor"]
         fn FaceInterference_ctor() -> UniquePtr<FaceInterference>;
         #[cxx_name = "SetFirstParameter"]
@@ -636,16 +637,16 @@ pub(crate) mod ffi {
         fn last_parameter(self: &FaceInterference) -> f64;
         #[cxx_name = "Parameter"]
         fn parameter(self: &FaceInterference, IsFirst: bool) -> f64;
-        #[doc = " ======================== ChFiDS_Stripe ========================"]
-        #[doc = "/// **Source:** `ChFiDS_Stripe.hxx` - `ChFiDS_Stripe`"]
-        #[doc = ""]
-        #[doc = "Data characterising a band of fillet."]
+        /// ======================== ChFiDS_Stripe ========================
+        /// /// **Source:** `ChFiDS_Stripe.hxx` - `ChFiDS_Stripe`
+        ///
+        /// Data characterising a band of fillet.
         #[cxx_name = "ChFiDS_Stripe"]
         type Stripe;
-        #[doc = "/// **Source:** `ChFiDS_Stripe.hxx` - `ChFiDS_Stripe::ChFiDS_Stripe()`"]
+        /// /// **Source:** `ChFiDS_Stripe.hxx` - `ChFiDS_Stripe::ChFiDS_Stripe()`
         #[cxx_name = "ChFiDS_Stripe_ctor"]
         fn Stripe_ctor() -> UniquePtr<Stripe>;
-        #[doc = "Reset everything except Spine."]
+        /// Reset everything except Spine.
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut Stripe>);
         #[cxx_name = "SetOfSurfData"]
@@ -720,27 +721,27 @@ pub(crate) mod ffi {
         fn solid_index(self: &Stripe) -> i32;
         #[cxx_name = "SetSolidIndex"]
         fn set_solid_index(self: Pin<&mut Stripe>, Index: i32);
-        #[doc = "Set nb of SurfData's at end put in DS"]
+        /// Set nb of SurfData's at end put in DS
         #[cxx_name = "InDS"]
         fn in_ds(self: Pin<&mut Stripe>, First: bool, Nb: i32);
-        #[doc = "Returns nb of SurfData's at end being in DS"]
+        /// Returns nb of SurfData's at end being in DS
         #[cxx_name = "IsInDS"]
         fn is_in_ds(self: &Stripe, First: bool) -> i32;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Stripe) -> &HandleStandardType;
         #[cxx_name = "ChFiDS_Stripe_get_type_name"]
         fn Stripe_get_type_name() -> String;
-        #[doc = "Wrap ChFiDS_Stripe in a Handle (reference-counted smart pointer)"]
+        /// Wrap ChFiDS_Stripe in a Handle (reference-counted smart pointer)
         #[cxx_name = "ChFiDS_Stripe_to_handle"]
         fn Stripe_to_handle(obj: UniquePtr<Stripe>) -> UniquePtr<HandleChFiDSStripe>;
-        #[doc = " ======================== ChFiDS_HData ========================"]
-        #[doc = "/// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData`"]
+        /// ======================== ChFiDS_HData ========================
+        /// /// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData`
         #[cxx_name = "ChFiDS_HData"]
         type HData;
-        #[doc = "/// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData::ChFiDS_HData()`"]
+        /// /// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData::ChFiDS_HData()`
         #[cxx_name = "ChFiDS_HData_ctor"]
         fn HData_ctor() -> UniquePtr<HData>;
-        #[doc = "/// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData::ChFiDS_HData()`"]
+        /// /// **Source:** `ChFiDS_HData.hxx` - `ChFiDS_HData::ChFiDS_HData()`
         #[cxx_name = "ChFiDS_HData_ctor_sequenceofsurfdata"]
         fn HData_ctor_sequenceofsurfdata(theOther: &ChFiDS_SequenceOfSurfData) -> UniquePtr<HData>;
         #[cxx_name = "Sequence"]
@@ -756,18 +757,18 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HData) -> &HandleStandardType;
         #[cxx_name = "ChFiDS_HData_get_type_name"]
         fn HData_get_type_name() -> String;
-        #[doc = "Wrap ChFiDS_HData in a Handle (reference-counted smart pointer)"]
+        /// Wrap ChFiDS_HData in a Handle (reference-counted smart pointer)
         #[cxx_name = "ChFiDS_HData_to_handle"]
         fn HData_to_handle(obj: UniquePtr<HData>) -> UniquePtr<HandleChFiDSHData>;
-        #[doc = " ======================== ChFiDS_Map ========================"]
-        #[doc = "/// **Source:** `ChFiDS_Map.hxx` - `ChFiDS_Map`"]
-        #[doc = ""]
-        #[doc = "Encapsulation of IndexedDataMapOfShapeListOfShape."]
+        /// ======================== ChFiDS_Map ========================
+        /// /// **Source:** `ChFiDS_Map.hxx` - `ChFiDS_Map`
+        ///
+        /// Encapsulation of IndexedDataMapOfShapeListOfShape.
         #[cxx_name = "ChFiDS_Map"]
         type Map;
-        #[doc = "/// **Source:** `ChFiDS_Map.hxx` - `ChFiDS_Map::ChFiDS_Map()`"]
-        #[doc = ""]
-        #[doc = "Create an empty Map"]
+        /// /// **Source:** `ChFiDS_Map.hxx` - `ChFiDS_Map::ChFiDS_Map()`
+        ///
+        /// Create an empty Map
         #[cxx_name = "ChFiDS_Map_ctor"]
         fn Map_ctor() -> UniquePtr<Map>;
         #[cxx_name = "Contains"]
@@ -776,13 +777,13 @@ pub(crate) mod ffi {
         fn find_from_key(self: &Map, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
         #[cxx_name = "FindFromIndex"]
         fn find_from_index(self: &Map, I: i32) -> &TopTools_ListOfShape;
-        #[doc = " ======================== ChFiDS_StripeMap ========================"]
-        #[doc = "/// **Source:** `ChFiDS_StripeMap.hxx` - `ChFiDS_StripeMap`"]
-        #[doc = ""]
-        #[doc = "encapsulation of IndexedDataMapOfVertexListOfStripe"]
+        /// ======================== ChFiDS_StripeMap ========================
+        /// /// **Source:** `ChFiDS_StripeMap.hxx` - `ChFiDS_StripeMap`
+        ///
+        /// encapsulation of IndexedDataMapOfVertexListOfStripe
         #[cxx_name = "ChFiDS_StripeMap"]
         type StripeMap;
-        #[doc = "/// **Source:** `ChFiDS_StripeMap.hxx` - `ChFiDS_StripeMap::ChFiDS_StripeMap()`"]
+        /// /// **Source:** `ChFiDS_StripeMap.hxx` - `ChFiDS_StripeMap::ChFiDS_StripeMap()`
         #[cxx_name = "ChFiDS_StripeMap_ctor"]
         fn StripeMap_ctor() -> UniquePtr<StripeMap>;
         #[cxx_name = "Add"]
@@ -797,13 +798,13 @@ pub(crate) mod ffi {
         fn find_key(self: &StripeMap, I: i32) -> &TopoDS_Vertex;
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut StripeMap>);
-        #[doc = " ======================== ChFiDS_Regul ========================"]
-        #[doc = "/// **Source:** `ChFiDS_Regul.hxx` - `ChFiDS_Regul`"]
-        #[doc = ""]
-        #[doc = "Storage of  a curve  and its 2 faces or surfaces of  support."]
+        /// ======================== ChFiDS_Regul ========================
+        /// /// **Source:** `ChFiDS_Regul.hxx` - `ChFiDS_Regul`
+        ///
+        /// Storage of  a curve  and its 2 faces or surfaces of  support.
         #[cxx_name = "ChFiDS_Regul"]
         type Regul;
-        #[doc = "/// **Source:** `ChFiDS_Regul.hxx` - `ChFiDS_Regul::ChFiDS_Regul()`"]
+        /// /// **Source:** `ChFiDS_Regul.hxx` - `ChFiDS_Regul::ChFiDS_Regul()`
         #[cxx_name = "ChFiDS_Regul_ctor"]
         fn Regul_ctor() -> UniquePtr<Regul>;
         #[cxx_name = "SetCurve"]
@@ -822,231 +823,233 @@ pub(crate) mod ffi {
         fn s1(self: &Regul) -> i32;
         #[cxx_name = "S2"]
         fn s2(self: &Regul) -> i32;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Curve from adaptor3d module"]
+        /// Curve from adaptor3d module
         type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
-        #[doc = "CurveOnSurface from adaptor3d module"]
+        /// CurveOnSurface from adaptor3d module
         type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
-        #[doc = "Surface from adaptor3d module"]
+        /// Surface from adaptor3d module
         type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
-        #[doc = "BoundedCurve from geom2d module"]
+        /// BoundedCurve from geom2d module
         type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
+        /// Conic from geom2d module
         type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Curve from geom2d module"]
+        /// Curve from geom2d module
         type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "Ellipse from geom2d module"]
+        /// Ellipse from geom2d module
         type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "Geometry from geom2d module"]
+        /// Geometry from geom2d module
         type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "TrimmedCurve from geom2d module"]
+        /// TrimmedCurve from geom2d module
         type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
-        #[doc = "BSplineCurve from geom module"]
+        /// BSplineCurve from geom module
         type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
+        /// BSplineSurface from geom module
         type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
+        /// BezierCurve from geom module
         type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
+        /// BezierSurface from geom module
         type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
+        /// BoundedCurve from geom module
         type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
+        /// BoundedSurface from geom module
         type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
+        /// Curve from geom module
         type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
+        /// CylindricalSurface from geom module
         type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
+        /// ElementarySurface from geom module
         type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
+        /// Geometry from geom module
         type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
+        /// Plane from geom module
         type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
+        /// Surface from geom module
         type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
+        /// TrimmedCurve from geom module
         type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "BaseAllocator from n_collection module"]
+        /// BaseAllocator from n_collection module
         type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
-        #[doc = "BaseList from n_collection module"]
+        /// BaseList from n_collection module
         type NCollection_BaseList = crate::n_collection::ffi::BaseList;
-        #[doc = "BasePointerVector from n_collection module"]
+        /// BasePointerVector from n_collection module
         type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
-        #[doc = "Buffer from n_collection module"]
+        /// Buffer from n_collection module
         type NCollection_Buffer = crate::n_collection::ffi::Buffer;
-        #[doc = "IncAllocator from n_collection module"]
+        /// IncAllocator from n_collection module
         type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
+        /// HArray1OfBoolean from t_col_std module
         type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
+        /// HArray1OfInteger from t_col_std module
         type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
+        /// HArray1OfReal from t_col_std module
         type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
+        /// HArray1OfTransient from t_col_std module
         type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
+        /// HArray2OfReal from t_col_std module
         type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        /// HSequenceOfHExtendedString from t_col_std module
         type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfInteger from t_col_std module"]
+        /// HSequenceOfInteger from t_col_std module
         type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
-        #[doc = "HSequenceOfReal from t_col_std module"]
+        /// HSequenceOfReal from t_col_std module
         type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
+        /// HSequenceOfTransient from t_col_std module
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
+        /// PackedMapOfInteger from t_col_std module
         type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "TopAbs from top_abs module"]
+        /// TopAbs from top_abs module
         type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "HArray2OfShape from top_tools module"]
+        /// HArray2OfShape from top_tools module
         type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
+        /// HSequenceOfShape from top_tools module
         type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
+
         // ========================
         // Referenced types (opaque)
         // ========================

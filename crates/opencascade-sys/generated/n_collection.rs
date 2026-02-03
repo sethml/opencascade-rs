@@ -19,7 +19,7 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Buffer;
 impl Buffer {
-    #[doc = "Wrap NCollection_Buffer in a Handle (reference-counted smart pointer)"]
+    /// Wrap NCollection_Buffer in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleNCollectionBuffer> {
         ffi::Buffer_to_handle(obj)
     }
@@ -30,19 +30,19 @@ impl Buffer {
 }
 pub use ffi::BasePointerVector;
 impl BasePointerVector {
-    #[doc = "Default constructor"]
+    /// Default constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::BasePointerVector_ctor()
     }
 
-    #[doc = "Copy data from another vector"]
+    /// Copy data from another vector
     pub fn new_basepointervector(theOther: &ffi::BasePointerVector) -> cxx::UniquePtr<Self> {
         ffi::BasePointerVector_ctor_basepointervector(theOther)
     }
 }
 pub use ffi::BaseAllocator;
 impl BaseAllocator {
-    #[doc = "Wrap NCollection_BaseAllocator in a Handle (reference-counted smart pointer)"]
+    /// Wrap NCollection_BaseAllocator in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<ffi::HandleNCollectionBaseAllocator> {
@@ -57,7 +57,7 @@ pub use ffi::BaseList;
 impl BaseList {}
 pub use ffi::IncAllocator;
 impl IncAllocator {
-    #[doc = "Constructor. Note that this constructor does NOT setup mutex for using allocator concurrently from different threads, see SetThreadSafe() method. The default size of the memory blocks is 12KB. It is not recommended to use memory blocks larger than 16KB on Windows platform for the repeated operations (and thus multiple allocations) because Low Fragmentation Heap is not going to be used for these allocations, leading to memory fragmentation and eventual performance slow down."]
+    /// Constructor. Note that this constructor does NOT setup mutex for using allocator concurrently from different threads, see SetThreadSafe() method. The default size of the memory blocks is 12KB. It is not recommended to use memory blocks larger than 16KB on Windows platform for the repeated operations (and thus multiple allocations) because Low Fragmentation Heap is not going to be used for these allocations, leading to memory fragmentation and eventual performance slow down.
     pub fn new_ulong(theBlockSize: u64) -> cxx::UniquePtr<Self> {
         ffi::IncAllocator_ctor_ulong(theBlockSize)
     }
@@ -70,165 +70,168 @@ impl IncAllocator {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_n_collection.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== NCollection_Buffer ========================"]
-        #[doc = "/// **Source:** `NCollection_Buffer.hxx` - `NCollection_Buffer`"]
-        #[doc = ""]
-        #[doc = "Low-level buffer object."]
+        /// ======================== NCollection_Buffer ========================
+        /// /// **Source:** `NCollection_Buffer.hxx` - `NCollection_Buffer`
+        ///
+        /// Low-level buffer object.
         #[cxx_name = "NCollection_Buffer"]
         type Buffer;
-        #[doc = "@return true if buffer is not allocated"]
+        /// @return true if buffer is not allocated
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &Buffer) -> bool;
-        #[doc = "Return buffer length in bytes."]
+        /// Return buffer length in bytes.
         #[cxx_name = "Size"]
         fn size(self: &Buffer) -> usize;
-        #[doc = "@return buffer allocator"]
+        /// @return buffer allocator
         #[cxx_name = "Allocator"]
         fn allocator(self: &Buffer) -> &HandleNCollectionBaseAllocator;
-        #[doc = "Assign new buffer allocator with de-allocation of buffer."]
+        /// Assign new buffer allocator with de-allocation of buffer.
         #[cxx_name = "SetAllocator"]
         fn set_allocator(self: Pin<&mut Buffer>, theAlloc: &HandleNCollectionBaseAllocator);
-        #[doc = "Allocate the buffer. @param theSize buffer length in bytes"]
+        /// Allocate the buffer. @param theSize buffer length in bytes
         #[cxx_name = "Allocate"]
         fn allocate(self: Pin<&mut Buffer>, theSize: usize) -> bool;
-        #[doc = "De-allocate buffer."]
+        /// De-allocate buffer.
         #[cxx_name = "Free"]
         fn free(self: Pin<&mut Buffer>);
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Buffer) -> &HandleStandardType;
         #[cxx_name = "NCollection_Buffer_get_type_name"]
         fn Buffer_get_type_name() -> String;
-        #[doc = "Wrap NCollection_Buffer in a Handle (reference-counted smart pointer)"]
+        /// Wrap NCollection_Buffer in a Handle (reference-counted smart pointer)
         #[cxx_name = "NCollection_Buffer_to_handle"]
         fn Buffer_to_handle(obj: UniquePtr<Buffer>) -> UniquePtr<HandleNCollectionBuffer>;
-        #[doc = " ======================== NCollection_BasePointerVector ========================"]
-        #[doc = "/// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector`"]
-        #[doc = ""]
-        #[doc = "Simplified class for vector of pointers of void. Offers basic functionality to scalable inserts, resizes and erasing last. Control of processing values of pointers out-of-scope and should be controlled externally. Especially, copy operation should post-process elements of pointers to make deep copy."]
+        /// ======================== NCollection_BasePointerVector ========================
+        /// /// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector`
+        ///
+        /// Simplified class for vector of pointers of void. Offers basic functionality to scalable inserts, resizes and erasing last. Control of processing values of pointers out-of-scope and should be controlled externally. Especially, copy operation should post-process elements of pointers to make deep copy.
         #[cxx_name = "NCollection_BasePointerVector"]
         type BasePointerVector;
-        #[doc = "/// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector::NCollection_BasePointerVector()`"]
-        #[doc = ""]
-        #[doc = "Default constructor"]
+        /// /// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
+        ///
+        /// Default constructor
         #[cxx_name = "NCollection_BasePointerVector_ctor"]
         fn BasePointerVector_ctor() -> UniquePtr<BasePointerVector>;
-        #[doc = "/// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector::NCollection_BasePointerVector()`"]
-        #[doc = ""]
-        #[doc = "Copy data from another vector"]
+        /// /// **Source:** `NCollection_BasePointerVector.hxx` - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
+        ///
+        /// Copy data from another vector
         #[cxx_name = "NCollection_BasePointerVector_ctor_basepointervector"]
         fn BasePointerVector_ctor_basepointervector(
             theOther: &BasePointerVector,
         ) -> UniquePtr<BasePointerVector>;
-        #[doc = "Checks for an empty status"]
+        /// Checks for an empty status
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &BasePointerVector) -> bool;
-        #[doc = "Gets used size"]
+        /// Gets used size
         #[cxx_name = "Size"]
         fn size(self: &BasePointerVector) -> usize;
-        #[doc = "Gets available capacity"]
+        /// Gets available capacity
         #[cxx_name = "Capacity"]
         fn capacity(self: &BasePointerVector) -> usize;
-        #[doc = "Erases last element, decrements size."]
+        /// Erases last element, decrements size.
         #[cxx_name = "RemoveLast"]
         fn remove_last(self: Pin<&mut BasePointerVector>);
-        #[doc = "Resets the size"]
+        /// Resets the size
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut BasePointerVector>, theReleaseMemory: bool);
-        #[doc = " ======================== NCollection_BaseAllocator ========================"]
-        #[doc = "/// **Source:** `NCollection_BaseAllocator.hxx` - `NCollection_BaseAllocator`"]
-        #[doc = ""]
-        #[doc = "Purpose:     Basic class for memory allocation wizards. Defines  the  interface  for devising  different  allocators firstly to be used  by collections of NCollection, though it it is not  deferred. It allocates/frees  the memory  through Standard procedures, thus it is  unnecessary (and  sometimes injurious) to have  more than one such  allocator.  To avoid creation  of multiple  objects the  constructors  were  maid inaccessible.  To  create the  BaseAllocator use  the method CommonBaseAllocator. Note that this object is managed by Handle."]
+        /// ======================== NCollection_BaseAllocator ========================
+        /// /// **Source:** `NCollection_BaseAllocator.hxx` - `NCollection_BaseAllocator`
+        ///
+        /// Purpose:     Basic class for memory allocation wizards. Defines  the  interface  for devising  different  allocators firstly to be used  by collections of NCollection, though it it is not  deferred. It allocates/frees  the memory  through Standard procedures, thus it is  unnecessary (and  sometimes injurious) to have  more than one such  allocator.  To avoid creation  of multiple  objects the  constructors  were  maid inaccessible.  To  create the  BaseAllocator use  the method CommonBaseAllocator. Note that this object is managed by Handle.
         #[cxx_name = "NCollection_BaseAllocator"]
         type BaseAllocator;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &BaseAllocator) -> &HandleStandardType;
         #[cxx_name = "NCollection_BaseAllocator_get_type_name"]
         fn BaseAllocator_get_type_name() -> String;
-        #[doc = "Wrap NCollection_BaseAllocator in a Handle (reference-counted smart pointer)"]
+        /// Wrap NCollection_BaseAllocator in a Handle (reference-counted smart pointer)
         #[cxx_name = "NCollection_BaseAllocator_to_handle"]
         fn BaseAllocator_to_handle(
             obj: UniquePtr<BaseAllocator>,
         ) -> UniquePtr<HandleNCollectionBaseAllocator>;
-        #[doc = " ======================== NCollection_BaseList ========================"]
-        #[doc = "/// **Source:** `NCollection_BaseList.hxx` - `NCollection_BaseList`"]
+        /// ======================== NCollection_BaseList ========================
+        /// /// **Source:** `NCollection_BaseList.hxx` - `NCollection_BaseList`
         #[cxx_name = "NCollection_BaseList"]
         type BaseList;
         #[cxx_name = "Extent"]
         fn extent(self: &BaseList) -> i32;
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &BaseList) -> bool;
-        #[doc = "Returns attached allocator"]
+        /// Returns attached allocator
         #[cxx_name = "Allocator"]
         fn allocator(self: &BaseList) -> &HandleNCollectionBaseAllocator;
-        #[doc = " ======================== NCollection_IncAllocator ========================"]
-        #[doc = "/// **Source:** `NCollection_IncAllocator.hxx` - `NCollection_IncAllocator`"]
-        #[doc = ""]
+        /// ======================== NCollection_IncAllocator ========================
+        /// /// **Source:** `NCollection_IncAllocator.hxx` - `NCollection_IncAllocator`
+        ///
         #[doc = "Class NCollection_IncAllocator - incremental memory  allocator. This class allocates  memory  on  request  returning  the  pointer  to  an  allocated block. This memory is never returned  to the system until the allocator is destroyed. By comparison with  the standard new() and malloc()  calls, this method is faster and consumes very small additional memory to maintain the heap. All pointers  returned by Allocate() are  aligned to the size  of the data type \"aligned_t\". To  modify the size of memory  blocks requested from the OS,  use the parameter  of the  constructor (measured  in bytes);  if this parameter is  smaller than  25 bytes on  32bit or  49 bytes on  64bit, the block size will be the default 12 kbytes. It is not recommended  to use memory blocks  larger than 16KB  on  Windows platform  for the repeated operations  because  Low Fragmentation Heap  is not going to be  used  for  these  allocations  which  may lead  to memory fragmentation and the general performance slow down. Note that this allocator is most suitable for single-threaded algorithms (consider creating dedicated allocators per working thread), and thread-safety of allocations is DISABLED by default (see SetThreadSafe())."]
         #[cxx_name = "NCollection_IncAllocator"]
         type IncAllocator;
-        #[doc = "/// **Source:** `NCollection_IncAllocator.hxx` - `NCollection_IncAllocator::NCollection_IncAllocator()`"]
-        #[doc = ""]
-        #[doc = "Constructor. Note that this constructor does NOT setup mutex for using allocator concurrently from different threads, see SetThreadSafe() method. The default size of the memory blocks is 12KB. It is not recommended to use memory blocks larger than 16KB on Windows platform for the repeated operations (and thus multiple allocations) because Low Fragmentation Heap is not going to be used for these allocations, leading to memory fragmentation and eventual performance slow down."]
+        /// /// **Source:** `NCollection_IncAllocator.hxx` - `NCollection_IncAllocator::NCollection_IncAllocator()`
+        ///
+        /// Constructor. Note that this constructor does NOT setup mutex for using allocator concurrently from different threads, see SetThreadSafe() method. The default size of the memory blocks is 12KB. It is not recommended to use memory blocks larger than 16KB on Windows platform for the repeated operations (and thus multiple allocations) because Low Fragmentation Heap is not going to be used for these allocations, leading to memory fragmentation and eventual performance slow down.
         #[cxx_name = "NCollection_IncAllocator_ctor_ulong"]
         fn IncAllocator_ctor_ulong(theBlockSize: u64) -> UniquePtr<IncAllocator>;
-        #[doc = "Setup mutex for thread-safe allocations."]
+        /// Setup mutex for thread-safe allocations.
         #[cxx_name = "SetThreadSafe"]
         fn set_thread_safe(self: Pin<&mut IncAllocator>, theIsThreadSafe: bool);
-        #[doc = "Re-initialize the allocator so that the next Allocate call should start allocating in the very beginning as though the allocator is just constructed. Warning: make sure that all previously allocated data are no more used in your code! @param theReleaseMemory True - release all previously allocated memory, False - preserve it for future allocations."]
+        /// Re-initialize the allocator so that the next Allocate call should start allocating in the very beginning as though the allocator is just constructed. Warning: make sure that all previously allocated data are no more used in your code! @param theReleaseMemory True - release all previously allocated memory, False - preserve it for future allocations.
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut IncAllocator>, theReleaseMemory: bool);
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &IncAllocator) -> &HandleStandardType;
         #[cxx_name = "NCollection_IncAllocator_get_type_name"]
         fn IncAllocator_get_type_name() -> String;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+
         // ========================
         // Referenced types (opaque)
         // ========================

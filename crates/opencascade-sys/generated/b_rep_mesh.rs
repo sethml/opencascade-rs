@@ -20,12 +20,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::IncrementalMesh;
 impl IncrementalMesh {
-    #[doc = "@name mesher API Default constructor"]
+    /// @name mesher API Default constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::IncrementalMesh_ctor()
     }
 
-    #[doc = "Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theLinDeflection linear deflection. @param isRelative if TRUE deflection used for discretization of each edge will be <theLinDeflection> * <size of edge>. Deflection used for the faces will be the maximum deflection of their edges. @param theAngDeflection angular deflection. @param isInParallel if TRUE shape will be meshed in parallel."]
+    /// Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theLinDeflection linear deflection. @param isRelative if TRUE deflection used for discretization of each edge will be <theLinDeflection> * <size of edge>. Deflection used for the faces will be the maximum deflection of their edges. @param theAngDeflection angular deflection. @param isInParallel if TRUE shape will be meshed in parallel.
     pub fn new_shape_real_bool_real_bool(
         theShape: &ffi::TopoDS_Shape,
         theLinDeflection: f64,
@@ -42,7 +42,7 @@ impl IncrementalMesh {
         )
     }
 
-    #[doc = "Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theParameters - parameters of meshing"]
+    /// Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theParameters - parameters of meshing
     pub fn new_shape_parameters_progressrange(
         theShape: &ffi::TopoDS_Shape,
         theParameters: &ffi::IMeshTools_Parameters,
@@ -51,22 +51,22 @@ impl IncrementalMesh {
         ffi::IncrementalMesh_ctor_shape_parameters_progressrange(theShape, theParameters, theRange)
     }
 
-    #[doc = "Upcast to BRepMesh_DiscretRoot"]
+    /// Upcast to BRepMesh_DiscretRoot
     pub fn as_discret_root(&self) -> &DiscretRoot {
         ffi::incremental_mesh_as_discret_root(self)
     }
 
-    #[doc = "Upcast to BRepMesh_DiscretRoot (mutable)"]
+    /// Upcast to BRepMesh_DiscretRoot (mutable)
     pub fn as_discret_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut DiscretRoot> {
         ffi::incremental_mesh_as_discret_root_mut(self)
     }
 
-    #[doc = "Returns multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories)."]
+    /// Returns multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories).
     pub fn is_parallel_default() -> bool {
         ffi::IncrementalMesh_is_parallel_default()
     }
 
-    #[doc = "Setup multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories)."]
+    /// Setup multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories).
     pub fn set_parallel_default(isInParallel: bool) {
         ffi::IncrementalMesh_set_parallel_default(isInParallel)
     }
@@ -83,50 +83,50 @@ impl DiscretRoot {
 }
 pub use ffi::Vertex;
 impl Vertex {
-    #[doc = "Default constructor"]
+    /// Default constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Vertex_ctor()
     }
 }
 pub use ffi::Circle;
 impl Circle {
-    #[doc = "Default constructor."]
+    /// Default constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Circle_ctor()
     }
 
-    #[doc = "Constructor. @param theLocation location of a circle. @param theRadius radius of a circle."]
+    /// Constructor. @param theLocation location of a circle. @param theRadius radius of a circle.
     pub fn new_xy_real(theLocation: &ffi::gp_XY, theRadius: f64) -> cxx::UniquePtr<Self> {
         ffi::Circle_ctor_xy_real(theLocation, theRadius)
     }
 }
 pub use ffi::Triangle;
 impl Triangle {
-    #[doc = "Default constructor."]
+    /// Default constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Triangle_ctor()
     }
 }
 pub use ffi::PairOfIndex;
 impl PairOfIndex {
-    #[doc = "Default constructor"]
+    /// Default constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::PairOfIndex_ctor()
     }
 }
 pub use ffi::Edge;
 impl Edge {
-    #[doc = "Default constructor."]
+    /// Default constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Edge_ctor()
     }
 
-    #[doc = "Upcast to BRepMesh_OrientedEdge"]
+    /// Upcast to BRepMesh_OrientedEdge
     pub fn as_oriented_edge(&self) -> &OrientedEdge {
         ffi::edge_as_oriented_edge(self)
     }
 
-    #[doc = "Upcast to BRepMesh_OrientedEdge (mutable)"]
+    /// Upcast to BRepMesh_OrientedEdge (mutable)
     pub fn as_oriented_edge_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut OrientedEdge> {
@@ -135,12 +135,12 @@ impl Edge {
 }
 pub use ffi::OrientedEdge;
 impl OrientedEdge {
-    #[doc = "Default constructor."]
+    /// Default constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::OrientedEdge_ctor()
     }
 
-    #[doc = "Constructs a link between two vertices."]
+    /// Constructs a link between two vertices.
     pub fn new_int2(theFirstNode: i32, theLastNode: i32) -> cxx::UniquePtr<Self> {
         ffi::OrientedEdge_ctor_int2(theFirstNode, theLastNode)
     }
@@ -149,23 +149,24 @@ impl OrientedEdge {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_mesh.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== BRepMesh_IncrementalMesh ========================"]
-        #[doc = "/// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh`"]
-        #[doc = ""]
-        #[doc = "Builds the mesh of a shape with respect of their correctly triangulated parts"]
+        /// ======================== BRepMesh_IncrementalMesh ========================
+        /// /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh`
+        ///
+        /// Builds the mesh of a shape with respect of their correctly triangulated parts
         #[cxx_name = "BRepMesh_IncrementalMesh"]
         type IncrementalMesh;
-        #[doc = "/// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`"]
-        #[doc = ""]
-        #[doc = "@name mesher API Default constructor"]
+        /// /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
+        ///
+        /// @name mesher API Default constructor
         #[cxx_name = "BRepMesh_IncrementalMesh_ctor"]
         fn IncrementalMesh_ctor() -> UniquePtr<IncrementalMesh>;
-        #[doc = "/// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`"]
-        #[doc = ""]
-        #[doc = "Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theLinDeflection linear deflection. @param isRelative if TRUE deflection used for discretization of each edge will be <theLinDeflection> * <size of edge>. Deflection used for the faces will be the maximum deflection of their edges. @param theAngDeflection angular deflection. @param isInParallel if TRUE shape will be meshed in parallel."]
+        /// /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
+        ///
+        /// Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theLinDeflection linear deflection. @param isRelative if TRUE deflection used for discretization of each edge will be <theLinDeflection> * <size of edge>. Deflection used for the faces will be the maximum deflection of their edges. @param theAngDeflection angular deflection. @param isInParallel if TRUE shape will be meshed in parallel.
         #[cxx_name = "BRepMesh_IncrementalMesh_ctor_shape_real_bool_real_bool"]
         fn IncrementalMesh_ctor_shape_real_bool_real_bool(
             theShape: &TopoDS_Shape,
@@ -174,409 +175,411 @@ pub(crate) mod ffi {
             theAngDeflection: f64,
             isInParallel: bool,
         ) -> UniquePtr<IncrementalMesh>;
-        #[doc = "/// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`"]
-        #[doc = ""]
-        #[doc = "Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theParameters - parameters of meshing"]
+        /// /// **Source:** `BRepMesh_IncrementalMesh.hxx` - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
+        ///
+        /// Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theParameters - parameters of meshing
         #[cxx_name = "BRepMesh_IncrementalMesh_ctor_shape_parameters_progressrange"]
         fn IncrementalMesh_ctor_shape_parameters_progressrange(
             theShape: &TopoDS_Shape,
             theParameters: &IMeshTools_Parameters,
             theRange: &Message_ProgressRange,
         ) -> UniquePtr<IncrementalMesh>;
-        #[doc = "Performs meshing of the shape."]
+        /// Performs meshing of the shape.
         #[cxx_name = "Perform"]
         fn perform_progressrange(self: Pin<&mut IncrementalMesh>, theRange: &Message_ProgressRange);
-        #[doc = "Performs meshing using custom context;"]
+        /// Performs meshing using custom context;
         #[cxx_name = "Perform"]
         fn perform_handlecontext_progressrange(
             self: Pin<&mut IncrementalMesh>,
             theContext: &HandleIMeshToolsContext,
             theRange: &Message_ProgressRange,
         );
-        #[doc = "@name accessing to parameters. Returns meshing parameters"]
+        /// @name accessing to parameters. Returns meshing parameters
         #[cxx_name = "Parameters"]
         fn parameters(self: &IncrementalMesh) -> &IMeshTools_Parameters;
-        #[doc = "Returns modifiable meshing parameters"]
+        /// Returns modifiable meshing parameters
         #[cxx_name = "ChangeParameters"]
         fn change_parameters(self: Pin<&mut IncrementalMesh>) -> Pin<&mut IMeshTools_Parameters>;
-        #[doc = "Returns modified flag."]
+        /// Returns modified flag.
         #[cxx_name = "IsModified"]
         fn is_modified(self: &IncrementalMesh) -> bool;
-        #[doc = "Returns accumulated status flags faced during meshing."]
+        /// Returns accumulated status flags faced during meshing.
         #[cxx_name = "GetStatusFlags"]
         fn get_status_flags(self: &IncrementalMesh) -> i32;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &IncrementalMesh) -> &HandleStandardType;
-        #[doc = "Returns multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories)."]
+        /// Returns multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories).
         #[cxx_name = "BRepMesh_IncrementalMesh_IsParallelDefault"]
         fn IncrementalMesh_is_parallel_default() -> bool;
-        #[doc = "Setup multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories)."]
+        /// Setup multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories).
         #[cxx_name = "BRepMesh_IncrementalMesh_SetParallelDefault"]
         fn IncrementalMesh_set_parallel_default(isInParallel: bool);
         #[cxx_name = "BRepMesh_IncrementalMesh_get_type_name"]
         fn IncrementalMesh_get_type_name() -> String;
-        #[doc = "Upcast BRepMesh_IncrementalMesh to BRepMesh_DiscretRoot"]
+        /// Upcast BRepMesh_IncrementalMesh to BRepMesh_DiscretRoot
         #[cxx_name = "BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot"]
         fn incremental_mesh_as_discret_root(self_: &IncrementalMesh) -> &DiscretRoot;
-        #[doc = "Upcast BRepMesh_IncrementalMesh to BRepMesh_DiscretRoot (mutable)"]
+        /// Upcast BRepMesh_IncrementalMesh to BRepMesh_DiscretRoot (mutable)
         #[cxx_name = "BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot_mut"]
         fn incremental_mesh_as_discret_root_mut(
             self_: Pin<&mut IncrementalMesh>,
         ) -> Pin<&mut DiscretRoot>;
-        #[doc = " ======================== BRepMesh_DiscretRoot ========================"]
-        #[doc = "/// **Source:** `BRepMesh_DiscretRoot.hxx` - `BRepMesh_DiscretRoot`"]
-        #[doc = ""]
-        #[doc = "This is a common interface for meshing algorithms instantiated by Mesh Factory and implemented by plugins."]
+        /// ======================== BRepMesh_DiscretRoot ========================
+        /// /// **Source:** `BRepMesh_DiscretRoot.hxx` - `BRepMesh_DiscretRoot`
+        ///
+        /// This is a common interface for meshing algorithms instantiated by Mesh Factory and implemented by plugins.
         #[cxx_name = "BRepMesh_DiscretRoot"]
         type DiscretRoot;
-        #[doc = "Set the shape to triangulate."]
+        /// Set the shape to triangulate.
         #[cxx_name = "SetShape"]
         fn set_shape(self: Pin<&mut DiscretRoot>, theShape: &TopoDS_Shape);
         #[cxx_name = "Shape"]
         fn shape(self: &DiscretRoot) -> &TopoDS_Shape;
-        #[doc = "Returns true if triangualtion was performed and has success."]
+        /// Returns true if triangualtion was performed and has success.
         #[cxx_name = "IsDone"]
         fn is_done(self: &DiscretRoot) -> bool;
-        #[doc = "Compute triangulation for set shape."]
+        /// Compute triangulation for set shape.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut DiscretRoot>, theRange: &Message_ProgressRange);
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &DiscretRoot) -> &HandleStandardType;
         #[cxx_name = "BRepMesh_DiscretRoot_get_type_name"]
         fn DiscretRoot_get_type_name() -> String;
-        #[doc = " ======================== BRepMesh_Vertex ========================"]
-        #[doc = "/// **Source:** `BRepMesh_Vertex.hxx` - `BRepMesh_Vertex`"]
-        #[doc = ""]
-        #[doc = "Light weighted structure representing vertex of the mesh in parametric space. Vertex could be associated with 3d point stored in external map."]
+        /// ======================== BRepMesh_Vertex ========================
+        /// /// **Source:** `BRepMesh_Vertex.hxx` - `BRepMesh_Vertex`
+        ///
+        /// Light weighted structure representing vertex of the mesh in parametric space. Vertex could be associated with 3d point stored in external map.
         #[cxx_name = "BRepMesh_Vertex"]
         type Vertex;
-        #[doc = "/// **Source:** `BRepMesh_Vertex.hxx` - `BRepMesh_Vertex::BRepMesh_Vertex()`"]
-        #[doc = ""]
-        #[doc = "Default constructor"]
+        /// /// **Source:** `BRepMesh_Vertex.hxx` - `BRepMesh_Vertex::BRepMesh_Vertex()`
+        ///
+        /// Default constructor
         #[cxx_name = "BRepMesh_Vertex_ctor"]
         fn Vertex_ctor() -> UniquePtr<Vertex>;
-        #[doc = "Returns position of the vertex in parametric space."]
+        /// Returns position of the vertex in parametric space.
         #[cxx_name = "Coord"]
         fn coord(self: &Vertex) -> &gp_XY;
-        #[doc = "Returns position of the vertex in parametric space for modification."]
+        /// Returns position of the vertex in parametric space for modification.
         #[cxx_name = "ChangeCoord"]
         fn change_coord(self: Pin<&mut Vertex>) -> Pin<&mut gp_XY>;
-        #[doc = "Returns index of 3d point associated with the vertex."]
+        /// Returns index of 3d point associated with the vertex.
         #[cxx_name = "Location3d"]
         fn location3d(self: &Vertex) -> i32;
-        #[doc = "Checks for equality with another vertex. @param theOther vertex to be checked against this one. @return TRUE if equal, FALSE if not."]
+        /// Checks for equality with another vertex. @param theOther vertex to be checked against this one. @return TRUE if equal, FALSE if not.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &Vertex, theOther: &Vertex) -> bool;
-        #[doc = " ======================== BRepMesh_Circle ========================"]
-        #[doc = "/// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle`"]
-        #[doc = ""]
-        #[doc = "Describes a 2d circle with a size of only 3 Standard_Real numbers instead of gp who needs 7 Standard_Real numbers."]
+        /// ======================== BRepMesh_Circle ========================
+        /// /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle`
+        ///
+        /// Describes a 2d circle with a size of only 3 Standard_Real numbers instead of gp who needs 7 Standard_Real numbers.
         #[cxx_name = "BRepMesh_Circle"]
         type Circle;
-        #[doc = "/// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle::BRepMesh_Circle()`"]
-        #[doc = ""]
-        #[doc = "Default constructor."]
+        /// /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle::BRepMesh_Circle()`
+        ///
+        /// Default constructor.
         #[cxx_name = "BRepMesh_Circle_ctor"]
         fn Circle_ctor() -> UniquePtr<Circle>;
-        #[doc = "/// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle::BRepMesh_Circle()`"]
-        #[doc = ""]
-        #[doc = "Constructor. @param theLocation location of a circle. @param theRadius radius of a circle."]
+        /// /// **Source:** `BRepMesh_Circle.hxx` - `BRepMesh_Circle::BRepMesh_Circle()`
+        ///
+        /// Constructor. @param theLocation location of a circle. @param theRadius radius of a circle.
         #[cxx_name = "BRepMesh_Circle_ctor_xy_real"]
         fn Circle_ctor_xy_real(theLocation: &gp_XY, theRadius: f64) -> UniquePtr<Circle>;
-        #[doc = "Sets location of a circle. @param theLocation location of a circle."]
+        /// Sets location of a circle. @param theLocation location of a circle.
         #[cxx_name = "SetLocation"]
         fn set_location(self: Pin<&mut Circle>, theLocation: &gp_XY);
-        #[doc = "Sets radius of a circle. @param theRadius radius of a circle."]
+        /// Sets radius of a circle. @param theRadius radius of a circle.
         #[cxx_name = "SetRadius"]
         fn set_radius(self: Pin<&mut Circle>, theRadius: f64);
-        #[doc = "Returns location of a circle."]
+        /// Returns location of a circle.
         #[cxx_name = "Location"]
         fn location(self: &Circle) -> &gp_XY;
-        #[doc = "Returns radius of a circle."]
+        /// Returns radius of a circle.
         #[cxx_name = "Radius"]
         fn radius(self: &Circle) -> &f64;
-        #[doc = " ======================== BRepMesh_Triangle ========================"]
-        #[doc = "/// **Source:** `BRepMesh_Triangle.hxx` - `BRepMesh_Triangle`"]
-        #[doc = ""]
-        #[doc = "Light weighted structure representing triangle of mesh consisting of oriented links."]
+        /// ======================== BRepMesh_Triangle ========================
+        /// /// **Source:** `BRepMesh_Triangle.hxx` - `BRepMesh_Triangle`
+        ///
+        /// Light weighted structure representing triangle of mesh consisting of oriented links.
         #[cxx_name = "BRepMesh_Triangle"]
         type Triangle;
-        #[doc = "/// **Source:** `BRepMesh_Triangle.hxx` - `BRepMesh_Triangle::BRepMesh_Triangle()`"]
-        #[doc = ""]
-        #[doc = "Default constructor."]
+        /// /// **Source:** `BRepMesh_Triangle.hxx` - `BRepMesh_Triangle::BRepMesh_Triangle()`
+        ///
+        /// Default constructor.
         #[cxx_name = "BRepMesh_Triangle_ctor"]
         fn Triangle_ctor() -> UniquePtr<Triangle>;
-        #[doc = "Checks for equality with another triangle. @param theOther triangle to be checked against this one. @return TRUE if equal, FALSE if not."]
+        /// Checks for equality with another triangle. @param theOther triangle to be checked against this one. @return TRUE if equal, FALSE if not.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &Triangle, theOther: &Triangle) -> bool;
-        #[doc = " ======================== BRepMesh_PairOfIndex ========================"]
-        #[doc = "/// **Source:** `BRepMesh_PairOfIndex.hxx` - `BRepMesh_PairOfIndex`"]
-        #[doc = ""]
-        #[doc = "This class represents a pair of integer indices to store element indices connected to link. It is restricted to store more than two indices in it."]
+        /// ======================== BRepMesh_PairOfIndex ========================
+        /// /// **Source:** `BRepMesh_PairOfIndex.hxx` - `BRepMesh_PairOfIndex`
+        ///
+        /// This class represents a pair of integer indices to store element indices connected to link. It is restricted to store more than two indices in it.
         #[cxx_name = "BRepMesh_PairOfIndex"]
         type PairOfIndex;
-        #[doc = "/// **Source:** `BRepMesh_PairOfIndex.hxx` - `BRepMesh_PairOfIndex::BRepMesh_PairOfIndex()`"]
-        #[doc = ""]
-        #[doc = "Default constructor"]
+        /// /// **Source:** `BRepMesh_PairOfIndex.hxx` - `BRepMesh_PairOfIndex::BRepMesh_PairOfIndex()`
+        ///
+        /// Default constructor
         #[cxx_name = "BRepMesh_PairOfIndex_ctor"]
         fn PairOfIndex_ctor() -> UniquePtr<PairOfIndex>;
-        #[doc = "Clears indices."]
+        /// Clears indices.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut PairOfIndex>);
-        #[doc = "Appends index to the pair."]
+        /// Appends index to the pair.
         #[cxx_name = "Append"]
         fn append(self: Pin<&mut PairOfIndex>, theIndex: i32);
-        #[doc = "Prepends index to the pair."]
+        /// Prepends index to the pair.
         #[cxx_name = "Prepend"]
         fn prepend(self: Pin<&mut PairOfIndex>, theIndex: i32);
-        #[doc = "Returns is pair is empty."]
+        /// Returns is pair is empty.
         #[cxx_name = "IsEmpty"]
         fn is_empty(self: &PairOfIndex) -> bool;
-        #[doc = "Returns number of initialized indices."]
+        /// Returns number of initialized indices.
         #[cxx_name = "Extent"]
         fn extent(self: &PairOfIndex) -> i32;
-        #[doc = "Returns first index of pair."]
+        /// Returns first index of pair.
         #[cxx_name = "FirstIndex"]
         fn first_index(self: &PairOfIndex) -> i32;
-        #[doc = "Returns last index of pair"]
+        /// Returns last index of pair
         #[cxx_name = "LastIndex"]
         fn last_index(self: &PairOfIndex) -> i32;
-        #[doc = "Returns index corresponding to the given position in the pair. @param thePairPos position of index in the pair (1 or 2)."]
+        /// Returns index corresponding to the given position in the pair. @param thePairPos position of index in the pair (1 or 2).
         #[cxx_name = "Index"]
         fn index(self: &PairOfIndex, thePairPos: i32) -> i32;
-        #[doc = "Sets index corresponding to the given position in the pair. @param thePairPos position of index in the pair (1 or 2). @param theIndex index to be stored."]
+        /// Sets index corresponding to the given position in the pair. @param thePairPos position of index in the pair (1 or 2). @param theIndex index to be stored.
         #[cxx_name = "SetIndex"]
         fn set_index(self: Pin<&mut PairOfIndex>, thePairPos: i32, theIndex: i32);
-        #[doc = "Remove index from the given position. @param thePairPos position of index in the pair (1 or 2)."]
+        /// Remove index from the given position. @param thePairPos position of index in the pair (1 or 2).
         #[cxx_name = "RemoveIndex"]
         fn remove_index(self: Pin<&mut PairOfIndex>, thePairPos: i32);
-        #[doc = " ======================== BRepMesh_Edge ========================"]
-        #[doc = "/// **Source:** `BRepMesh_Edge.hxx` - `BRepMesh_Edge`"]
-        #[doc = ""]
-        #[doc = "Light weighted structure representing link of the mesh."]
+        /// ======================== BRepMesh_Edge ========================
+        /// /// **Source:** `BRepMesh_Edge.hxx` - `BRepMesh_Edge`
+        ///
+        /// Light weighted structure representing link of the mesh.
         #[cxx_name = "BRepMesh_Edge"]
         type Edge;
-        #[doc = "/// **Source:** `BRepMesh_Edge.hxx` - `BRepMesh_Edge::BRepMesh_Edge()`"]
-        #[doc = ""]
-        #[doc = "Default constructor."]
+        /// /// **Source:** `BRepMesh_Edge.hxx` - `BRepMesh_Edge::BRepMesh_Edge()`
+        ///
+        /// Default constructor.
         #[cxx_name = "BRepMesh_Edge_ctor"]
         fn Edge_ctor() -> UniquePtr<Edge>;
-        #[doc = "Checks if the given edge and this one have the same orientation. @param theOther edge to be checked against this one. \\return TRUE if edges have the same orientation, FALSE if not."]
+        /// Checks if the given edge and this one have the same orientation. @param theOther edge to be checked against this one. \\return TRUE if edges have the same orientation, FALSE if not.
         #[cxx_name = "IsSameOrientation"]
         fn is_same_orientation(self: &Edge, theOther: &Edge) -> bool;
-        #[doc = "Checks for equality with another edge. @param theOther edge to be checked against this one. @return TRUE if equal, FALSE if not."]
+        /// Checks for equality with another edge. @param theOther edge to be checked against this one. @return TRUE if equal, FALSE if not.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &Edge, theOther: &Edge) -> bool;
-        #[doc = "Upcast BRepMesh_Edge to BRepMesh_OrientedEdge"]
+        /// Upcast BRepMesh_Edge to BRepMesh_OrientedEdge
         #[cxx_name = "BRepMesh_Edge_as_BRepMesh_OrientedEdge"]
         fn edge_as_oriented_edge(self_: &Edge) -> &OrientedEdge;
-        #[doc = "Upcast BRepMesh_Edge to BRepMesh_OrientedEdge (mutable)"]
+        /// Upcast BRepMesh_Edge to BRepMesh_OrientedEdge (mutable)
         #[cxx_name = "BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut"]
         fn edge_as_oriented_edge_mut(self_: Pin<&mut Edge>) -> Pin<&mut OrientedEdge>;
-        #[doc = " ======================== BRepMesh_OrientedEdge ========================"]
-        #[doc = "/// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge`"]
-        #[doc = ""]
-        #[doc = "Light weighted structure representing simple link."]
+        /// ======================== BRepMesh_OrientedEdge ========================
+        /// /// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge`
+        ///
+        /// Light weighted structure representing simple link.
         #[cxx_name = "BRepMesh_OrientedEdge"]
         type OrientedEdge;
-        #[doc = "/// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`"]
-        #[doc = ""]
-        #[doc = "Default constructor."]
+        /// /// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
+        ///
+        /// Default constructor.
         #[cxx_name = "BRepMesh_OrientedEdge_ctor"]
         fn OrientedEdge_ctor() -> UniquePtr<OrientedEdge>;
-        #[doc = "/// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`"]
-        #[doc = ""]
-        #[doc = "Constructs a link between two vertices."]
+        /// /// **Source:** `BRepMesh_OrientedEdge.hxx` - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
+        ///
+        /// Constructs a link between two vertices.
         #[cxx_name = "BRepMesh_OrientedEdge_ctor_int2"]
         fn OrientedEdge_ctor_int2(theFirstNode: i32, theLastNode: i32) -> UniquePtr<OrientedEdge>;
-        #[doc = "Returns index of first node of the Link."]
+        /// Returns index of first node of the Link.
         #[cxx_name = "FirstNode"]
         fn first_node(self: &OrientedEdge) -> i32;
-        #[doc = "Returns index of last node of the Link."]
+        /// Returns index of last node of the Link.
         #[cxx_name = "LastNode"]
         fn last_node(self: &OrientedEdge) -> i32;
-        #[doc = "Checks this and other edge for equality. @param theOther edge to be checked against this one. @return TRUE if edges have the same orientation, FALSE if not."]
+        /// Checks this and other edge for equality. @param theOther edge to be checked against this one. @return TRUE if edges have the same orientation, FALSE if not.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &OrientedEdge, theOther: &OrientedEdge) -> bool;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Context from i_mesh_tools module"]
+        /// Context from i_mesh_tools module
         type IMeshTools_Context = crate::i_mesh_tools::ffi::Context;
-        #[doc = "ModelAlgo from i_mesh_tools module"]
+        /// ModelAlgo from i_mesh_tools module
         type IMeshTools_ModelAlgo = crate::i_mesh_tools::ffi::ModelAlgo;
-        #[doc = "ModelBuilder from i_mesh_tools module"]
+        /// ModelBuilder from i_mesh_tools module
         type IMeshTools_ModelBuilder = crate::i_mesh_tools::ffi::ModelBuilder;
-        #[doc = "Parameters from i_mesh_tools module"]
+        /// Parameters from i_mesh_tools module
         type IMeshTools_Parameters = crate::i_mesh_tools::ffi::Parameters;
-        #[doc = "Message from message module"]
+        /// Message from message module
         type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
+        /// Alert from message module
         type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
+        /// AlertExtended from message module
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
+        /// Algorithm from message module
         type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
+        /// ExecStatus from message module
         type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
+        /// Level from message module
         type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
+        /// Messenger from message module
         type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
+        /// Msg from message module
         type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
+        /// Printer from message module
         type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
+        /// ProgressIndicator from message module
         type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
+        /// ProgressRange from message module
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
+        /// ProgressScope from message module
         type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
+        /// Report from message module
         type Message_Report = crate::message::ffi::Report;
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
+
         // ========================
         // Referenced types (opaque)
         // ========================

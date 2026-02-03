@@ -16,17 +16,17 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Context;
 impl Context {
-    #[doc = "Constructor."]
+    /// Constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Context_ctor()
     }
 
-    #[doc = "Upcast to IMeshData_Shape"]
+    /// Upcast to IMeshData_Shape
     pub fn as_i_mesh_data_shape(&self) -> &crate::i_mesh_data::Shape {
         ffi::context_as_i_mesh_data_shape(self)
     }
 
-    #[doc = "Upcast to IMeshData_Shape (mutable)"]
+    /// Upcast to IMeshData_Shape (mutable)
     pub fn as_i_mesh_data_shape_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::i_mesh_data::Shape> {
@@ -39,19 +39,19 @@ impl Context {
 }
 pub use ffi::ModelBuilder;
 impl ModelBuilder {
-    #[doc = "Upcast to Message_Algorithm"]
+    /// Upcast to Message_Algorithm
     pub fn as_message_algorithm(&self) -> &crate::message::Algorithm {
         ffi::model_builder_as_message_algorithm(self)
     }
 
-    #[doc = "Upcast to Message_Algorithm (mutable)"]
+    /// Upcast to Message_Algorithm (mutable)
     pub fn as_message_algorithm_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::message::Algorithm> {
         ffi::model_builder_as_message_algorithm_mut(self)
     }
 
-    #[doc = "Exceptions protected method to create discrete model for the given shape. Returns nullptr in case of failure."]
+    /// Exceptions protected method to create discrete model for the given shape. Returns nullptr in case of failure.
     pub fn perform(
         self: std::pin::Pin<&mut Self>,
         theShape: &ffi::TopoDS_Shape,
@@ -66,12 +66,12 @@ impl ModelBuilder {
 }
 pub use ffi::Parameters;
 impl Parameters {
-    #[doc = "Default constructor"]
+    /// Default constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Parameters_ctor()
     }
 
-    #[doc = "Returns factor used to compute default value of MinSize (minimum mesh edge length) from deflection"]
+    /// Returns factor used to compute default value of MinSize (minimum mesh edge length) from deflection
     pub fn rel_min_size() -> f64 {
         ffi::Parameters_rel_min_size()
     }
@@ -86,108 +86,109 @@ impl ModelAlgo {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_i_mesh_tools.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== IMeshTools_Context ========================"]
-        #[doc = "/// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context`"]
-        #[doc = ""]
-        #[doc = "Interface class representing context of BRepMesh algorithm. Intended to cache discrete model and instances of tools for its processing."]
+        /// ======================== IMeshTools_Context ========================
+        /// /// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context`
+        ///
+        /// Interface class representing context of BRepMesh algorithm. Intended to cache discrete model and instances of tools for its processing.
         #[cxx_name = "IMeshTools_Context"]
         type Context;
-        #[doc = "/// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context::IMeshTools_Context()`"]
-        #[doc = ""]
-        #[doc = "Constructor."]
+        /// /// **Source:** `IMeshTools_Context.hxx` - `IMeshTools_Context::IMeshTools_Context()`
+        ///
+        /// Constructor.
         #[cxx_name = "IMeshTools_Context_ctor"]
         fn Context_ctor() -> UniquePtr<Context>;
-        #[doc = "Builds model using assigned model builder. @return True on success, False elsewhere."]
+        /// Builds model using assigned model builder. @return True on success, False elsewhere.
         #[cxx_name = "BuildModel"]
         fn build_model(self: Pin<&mut Context>) -> bool;
-        #[doc = "Performs discretization of model edges using assigned edge discret algorithm. @return True on success, False elsewhere."]
+        /// Performs discretization of model edges using assigned edge discret algorithm. @return True on success, False elsewhere.
         #[cxx_name = "DiscretizeEdges"]
         fn discretize_edges(self: Pin<&mut Context>) -> bool;
-        #[doc = "Performs healing of discrete model built by DiscretizeEdges() method using assigned healing algorithm. @return True on success, False elsewhere."]
+        /// Performs healing of discrete model built by DiscretizeEdges() method using assigned healing algorithm. @return True on success, False elsewhere.
         #[cxx_name = "HealModel"]
         fn heal_model(self: Pin<&mut Context>) -> bool;
-        #[doc = "Performs pre-processing of discrete model using assigned algorithm. Performs auxiliary actions such as cleaning shape from old triangulation. @return True on success, False elsewhere."]
+        /// Performs pre-processing of discrete model using assigned algorithm. Performs auxiliary actions such as cleaning shape from old triangulation. @return True on success, False elsewhere.
         #[cxx_name = "PreProcessModel"]
         fn pre_process_model(self: Pin<&mut Context>) -> bool;
-        #[doc = "Performs meshing of faces of discrete model using assigned meshing algorithm. @return True on success, False elsewhere."]
+        /// Performs meshing of faces of discrete model using assigned meshing algorithm. @return True on success, False elsewhere.
         #[cxx_name = "DiscretizeFaces"]
         fn discretize_faces(self: Pin<&mut Context>, theRange: &Message_ProgressRange) -> bool;
-        #[doc = "Performs post-processing of discrete model using assigned algorithm. @return True on success, False elsewhere."]
+        /// Performs post-processing of discrete model using assigned algorithm. @return True on success, False elsewhere.
         #[cxx_name = "PostProcessModel"]
         fn post_process_model(self: Pin<&mut Context>) -> bool;
-        #[doc = "Cleans temporary context data."]
+        /// Cleans temporary context data.
         #[cxx_name = "Clean"]
         fn clean(self: Pin<&mut Context>);
-        #[doc = "Gets instance of a tool to be used to build discrete model."]
+        /// Gets instance of a tool to be used to build discrete model.
         #[cxx_name = "GetModelBuilder"]
         fn get_model_builder(self: &Context) -> &HandleIMeshToolsModelBuilder;
-        #[doc = "Sets instance of a tool to be used to build discrete model."]
+        /// Sets instance of a tool to be used to build discrete model.
         #[cxx_name = "SetModelBuilder"]
         fn set_model_builder(self: Pin<&mut Context>, theBuilder: &HandleIMeshToolsModelBuilder);
-        #[doc = "Gets instance of a tool to be used to discretize edges of a model."]
+        /// Gets instance of a tool to be used to discretize edges of a model.
         #[cxx_name = "GetEdgeDiscret"]
         fn get_edge_discret(self: &Context) -> &HandleIMeshToolsModelAlgo;
-        #[doc = "Sets instance of a tool to be used to discretize edges of a model."]
+        /// Sets instance of a tool to be used to discretize edges of a model.
         #[cxx_name = "SetEdgeDiscret"]
         fn set_edge_discret(self: Pin<&mut Context>, theEdgeDiscret: &HandleIMeshToolsModelAlgo);
-        #[doc = "Gets instance of a tool to be used to heal discrete model."]
+        /// Gets instance of a tool to be used to heal discrete model.
         #[cxx_name = "GetModelHealer"]
         fn get_model_healer(self: &Context) -> &HandleIMeshToolsModelAlgo;
-        #[doc = "Sets instance of a tool to be used to heal discrete model."]
+        /// Sets instance of a tool to be used to heal discrete model.
         #[cxx_name = "SetModelHealer"]
         fn set_model_healer(self: Pin<&mut Context>, theModelHealer: &HandleIMeshToolsModelAlgo);
-        #[doc = "Gets instance of pre-processing algorithm."]
+        /// Gets instance of pre-processing algorithm.
         #[cxx_name = "GetPreProcessor"]
         fn get_pre_processor(self: &Context) -> &HandleIMeshToolsModelAlgo;
-        #[doc = "Sets instance of pre-processing algorithm."]
+        /// Sets instance of pre-processing algorithm.
         #[cxx_name = "SetPreProcessor"]
         fn set_pre_processor(self: Pin<&mut Context>, thePreProcessor: &HandleIMeshToolsModelAlgo);
-        #[doc = "Gets instance of meshing algorithm."]
+        /// Gets instance of meshing algorithm.
         #[cxx_name = "GetFaceDiscret"]
         fn get_face_discret(self: &Context) -> &HandleIMeshToolsModelAlgo;
-        #[doc = "Sets instance of meshing algorithm."]
+        /// Sets instance of meshing algorithm.
         #[cxx_name = "SetFaceDiscret"]
         fn set_face_discret(self: Pin<&mut Context>, theFaceDiscret: &HandleIMeshToolsModelAlgo);
-        #[doc = "Gets instance of post-processing algorithm."]
+        /// Gets instance of post-processing algorithm.
         #[cxx_name = "GetPostProcessor"]
         fn get_post_processor(self: &Context) -> &HandleIMeshToolsModelAlgo;
-        #[doc = "Sets instance of post-processing algorithm."]
+        /// Sets instance of post-processing algorithm.
         #[cxx_name = "SetPostProcessor"]
         fn set_post_processor(
             self: Pin<&mut Context>,
             thePostProcessor: &HandleIMeshToolsModelAlgo,
         );
-        #[doc = "Gets parameters to be used for meshing."]
+        /// Gets parameters to be used for meshing.
         #[cxx_name = "GetParameters"]
         fn get_parameters(self: &Context) -> &Parameters;
-        #[doc = "Gets reference to parameters to be used for meshing."]
+        /// Gets reference to parameters to be used for meshing.
         #[cxx_name = "ChangeParameters"]
         fn change_parameters(self: Pin<&mut Context>) -> Pin<&mut Parameters>;
-        #[doc = "Returns discrete model of a shape."]
+        /// Returns discrete model of a shape.
         #[cxx_name = "GetModel"]
         fn get_model(self: &Context) -> &HandleIMeshDataModel;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Context) -> &HandleStandardType;
         #[cxx_name = "IMeshTools_Context_get_type_name"]
         fn Context_get_type_name() -> String;
-        #[doc = "Upcast IMeshTools_Context to IMeshData_Shape"]
+        /// Upcast IMeshTools_Context to IMeshData_Shape
         #[cxx_name = "IMeshTools_Context_as_IMeshData_Shape"]
         fn context_as_i_mesh_data_shape(self_: &Context) -> &IMeshData_Shape;
-        #[doc = "Upcast IMeshTools_Context to IMeshData_Shape (mutable)"]
+        /// Upcast IMeshTools_Context to IMeshData_Shape (mutable)
         #[cxx_name = "IMeshTools_Context_as_IMeshData_Shape_mut"]
         fn context_as_i_mesh_data_shape_mut(self_: Pin<&mut Context>) -> Pin<&mut IMeshData_Shape>;
-        #[doc = " ======================== IMeshTools_ModelBuilder ========================"]
-        #[doc = "/// **Source:** `IMeshTools_ModelBuilder.hxx` - `IMeshTools_ModelBuilder`"]
-        #[doc = ""]
-        #[doc = "Interface class represents API for tool building discrete model. The following statuses should be used by default: Message_Done1 - model has been successfully built. Message_Fail1 - empty shape. Message_Fail2 - model has not been build due to unexpected reason."]
+        /// ======================== IMeshTools_ModelBuilder ========================
+        /// /// **Source:** `IMeshTools_ModelBuilder.hxx` - `IMeshTools_ModelBuilder`
+        ///
+        /// Interface class represents API for tool building discrete model. The following statuses should be used by default: Message_Done1 - model has been successfully built. Message_Fail1 - empty shape. Message_Fail2 - model has not been build due to unexpected reason.
         #[cxx_name = "IMeshTools_ModelBuilder"]
         type ModelBuilder;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ModelBuilder) -> &HandleStandardType;
-        #[doc = "Exceptions protected method to create discrete model for the given shape. Returns nullptr in case of failure."]
+        /// Exceptions protected method to create discrete model for the given shape. Returns nullptr in case of failure.
         #[cxx_name = "IMeshTools_ModelBuilder_Perform"]
         fn ModelBuilder_perform(
             self_: Pin<&mut ModelBuilder>,
@@ -196,35 +197,35 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleIMeshDataModel>;
         #[cxx_name = "IMeshTools_ModelBuilder_get_type_name"]
         fn ModelBuilder_get_type_name() -> String;
-        #[doc = "Upcast IMeshTools_ModelBuilder to Message_Algorithm"]
+        /// Upcast IMeshTools_ModelBuilder to Message_Algorithm
         #[cxx_name = "IMeshTools_ModelBuilder_as_Message_Algorithm"]
         fn model_builder_as_message_algorithm(self_: &ModelBuilder) -> &Message_Algorithm;
-        #[doc = "Upcast IMeshTools_ModelBuilder to Message_Algorithm (mutable)"]
+        /// Upcast IMeshTools_ModelBuilder to Message_Algorithm (mutable)
         #[cxx_name = "IMeshTools_ModelBuilder_as_Message_Algorithm_mut"]
         fn model_builder_as_message_algorithm_mut(
             self_: Pin<&mut ModelBuilder>,
         ) -> Pin<&mut Message_Algorithm>;
-        #[doc = " ======================== IMeshTools_Parameters ========================"]
-        #[doc = "/// **Source:** `IMeshTools_Parameters.hxx` - `IMeshTools_Parameters`"]
-        #[doc = ""]
-        #[doc = "Structure storing meshing parameters"]
+        /// ======================== IMeshTools_Parameters ========================
+        /// /// **Source:** `IMeshTools_Parameters.hxx` - `IMeshTools_Parameters`
+        ///
+        /// Structure storing meshing parameters
         #[cxx_name = "IMeshTools_Parameters"]
         type Parameters;
-        #[doc = "/// **Source:** `IMeshTools_Parameters.hxx` - `IMeshTools_Parameters::IMeshTools_Parameters()`"]
-        #[doc = ""]
-        #[doc = "Default constructor"]
+        /// /// **Source:** `IMeshTools_Parameters.hxx` - `IMeshTools_Parameters::IMeshTools_Parameters()`
+        ///
+        /// Default constructor
         #[cxx_name = "IMeshTools_Parameters_ctor"]
         fn Parameters_ctor() -> UniquePtr<Parameters>;
-        #[doc = "Returns factor used to compute default value of MinSize (minimum mesh edge length) from deflection"]
+        /// Returns factor used to compute default value of MinSize (minimum mesh edge length) from deflection
         #[cxx_name = "IMeshTools_Parameters_RelMinSize"]
         fn Parameters_rel_min_size() -> f64;
-        #[doc = " ======================== IMeshTools_ModelAlgo ========================"]
-        #[doc = "/// **Source:** `IMeshTools_ModelAlgo.hxx` - `IMeshTools_ModelAlgo`"]
-        #[doc = ""]
-        #[doc = "Interface class providing API for algorithms intended to update or modify discrete model."]
+        /// ======================== IMeshTools_ModelAlgo ========================
+        /// /// **Source:** `IMeshTools_ModelAlgo.hxx` - `IMeshTools_ModelAlgo`
+        ///
+        /// Interface class providing API for algorithms intended to update or modify discrete model.
         #[cxx_name = "IMeshTools_ModelAlgo"]
         type ModelAlgo;
-        #[doc = "Exceptions protected processing of the given model."]
+        /// Exceptions protected processing of the given model.
         #[cxx_name = "Perform"]
         fn perform(
             self: Pin<&mut ModelAlgo>,
@@ -236,105 +237,107 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &ModelAlgo) -> &HandleStandardType;
         #[cxx_name = "IMeshTools_ModelAlgo_get_type_name"]
         fn ModelAlgo_get_type_name() -> String;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Model from i_mesh_data module"]
+        /// Model from i_mesh_data module
         type IMeshData_Model = crate::i_mesh_data::ffi::Model;
-        #[doc = "Shape from i_mesh_data module"]
+        /// Shape from i_mesh_data module
         type IMeshData_Shape = crate::i_mesh_data::ffi::Shape;
-        #[doc = "Message from message module"]
+        /// Message from message module
         type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
+        /// Alert from message module
         type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
+        /// AlertExtended from message module
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
+        /// Algorithm from message module
         type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
+        /// ExecStatus from message module
         type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
+        /// Level from message module
         type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
+        /// Messenger from message module
         type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
+        /// Msg from message module
         type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
+        /// Printer from message module
         type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
+        /// ProgressIndicator from message module
         type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
+        /// ProgressRange from message module
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
+        /// ProgressScope from message module
         type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
+        /// Report from message module
         type Message_Report = crate::message::ffi::Report;
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+
         // ========================
         // Referenced types (opaque)
         // ========================

@@ -12,12 +12,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Inter;
 impl Inter {
-    #[doc = "Empty constructor;"]
+    /// Empty constructor;
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Inter_ctor()
     }
 
-    #[doc = "returns the current Intersection point."]
+    /// returns the current Intersection point.
     pub fn point(&self) -> cxx::UniquePtr<ffi::IntCurveSurface_IntersectionPoint> {
         ffi::Inter_point(self)
     }
@@ -26,23 +26,24 @@ impl Inter {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_int_curve_surface.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== BRepIntCurveSurface_Inter ========================"]
-        #[doc = "/// **Source:** `BRepIntCurveSurface_Inter.hxx` - `BRepIntCurveSurface_Inter`"]
-        #[doc = ""]
-        #[doc = "Computes the intersection between a face and a curve. To intersect one curve with shape method Init(Shape, curve, tTol) should be used. To intersect a few curves with specified shape it is necessary to load shape one time using method Load(shape, tol) and find intersection points for each curve using method Init(curve). For iteration by intersection points method More() and Next() should be used. Example: Inter.Load(shape, tol); for( i =1; i <= nbCurves;i++) { Inter.Init(curve); for(  ;Inter.More(); Inter.Next()) { .......
-    }
-}"]
+        /// ======================== BRepIntCurveSurface_Inter ========================
+        /// /// **Source:** `BRepIntCurveSurface_Inter.hxx` - `BRepIntCurveSurface_Inter`
+        ///
+        /// Computes the intersection between a face and a curve. To intersect one curve with shape method Init(Shape, curve, tTol) should be used. To intersect a few curves with specified shape it is necessary to load shape one time using method Load(shape, tol) and find intersection points for each curve using method Init(curve). For iteration by intersection points method More() and Next() should be used. Example: Inter.Load(shape, tol); for( i =1; i <= nbCurves;i++) { Inter.Init(curve); for(  ;Inter.More(); Inter.Next()) { .......
+/// }
+/// }
         #[cxx_name = "BRepIntCurveSurface_Inter"]
         type Inter;
-        #[doc = "/// **Source:** `BRepIntCurveSurface_Inter.hxx` - `BRepIntCurveSurface_Inter::BRepIntCurveSurface_Inter()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor;"]
+        /// /// **Source:** `BRepIntCurveSurface_Inter.hxx` - `BRepIntCurveSurface_Inter::BRepIntCurveSurface_Inter()`
+        ///
+        /// Empty constructor;
         #[cxx_name = "BRepIntCurveSurface_Inter_ctor"]
         fn Inter_ctor() -> UniquePtr<Inter>;
-        #[doc = "Load the Shape, the curve and initialize the tolerance used for the classification."]
+        /// Load the Shape, the curve and initialize the tolerance used for the classification.
         #[cxx_name = "Init"]
         fn init_shape_curve_real(
             self: Pin<&mut Inter>,
@@ -50,7 +51,7 @@ pub(crate) mod ffi {
             theCurve: &GeomAdaptor_Curve,
             theTol: f64,
         );
-        #[doc = "Load the Shape, the curve and initialize the tolerance used for the classification."]
+        /// Load the Shape, the curve and initialize the tolerance used for the classification.
         #[cxx_name = "Init"]
         fn init_shape_lin_real(
             self: Pin<&mut Inter>,
@@ -58,151 +59,152 @@ pub(crate) mod ffi {
             theLine: &gp_Lin,
             theTol: f64,
         );
-        #[doc = "Load the Shape, and initialize the tolerance used for the classification."]
+        /// Load the Shape, and initialize the tolerance used for the classification.
         #[cxx_name = "Load"]
         fn load(self: Pin<&mut Inter>, theShape: &TopoDS_Shape, theTol: f64);
-        #[doc = "Method to find intersections of specified curve with loaded shape."]
+        /// Method to find intersections of specified curve with loaded shape.
         #[cxx_name = "Init"]
         fn init_curve(self: Pin<&mut Inter>, theCurve: &GeomAdaptor_Curve);
-        #[doc = "returns True if there is a current face."]
+        /// returns True if there is a current face.
         #[cxx_name = "More"]
         fn more(self: &Inter) -> bool;
-        #[doc = "Sets the next intersection point to check."]
+        /// Sets the next intersection point to check.
         #[cxx_name = "Next"]
         fn next(self: Pin<&mut Inter>);
-        #[doc = "returns the current geometric Point"]
+        /// returns the current geometric Point
         #[cxx_name = "Pnt"]
         fn pnt(self: &Inter) -> &gp_Pnt;
-        #[doc = "returns the U parameter of the current point on the current face."]
+        /// returns the U parameter of the current point on the current face.
         #[cxx_name = "U"]
         fn u(self: &Inter) -> f64;
-        #[doc = "returns the V parameter of the current point on the current face."]
+        /// returns the V parameter of the current point on the current face.
         #[cxx_name = "V"]
         fn v(self: &Inter) -> f64;
-        #[doc = "returns the parameter of the current point on the curve."]
+        /// returns the parameter of the current point on the curve.
         #[cxx_name = "W"]
         fn w(self: &Inter) -> f64;
-        #[doc = "returns the current face."]
+        /// returns the current face.
         #[cxx_name = "Face"]
         fn face(self: &Inter) -> &TopoDS_Face;
-        #[doc = "returns the current Intersection point."]
+        /// returns the current Intersection point.
         #[cxx_name = "BRepIntCurveSurface_Inter_Point"]
         fn Inter_point(self_: &Inter) -> UniquePtr<IntCurveSurface_IntersectionPoint>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Curve from geom_adaptor module"]
+        /// Curve from geom_adaptor module
         type GeomAdaptor_Curve = crate::geom_adaptor::ffi::Curve;
-        #[doc = "Surface from geom_adaptor module"]
+        /// Surface from geom_adaptor module
         type GeomAdaptor_Surface = crate::geom_adaptor::ffi::Surface;
-        #[doc = "HInter from int_curve_surface module"]
+        /// HInter from int_curve_surface module
         type IntCurveSurface_HInter = crate::int_curve_surface::ffi::HInter;
-        #[doc = "IntersectionPoint from int_curve_surface module"]
+        /// IntersectionPoint from int_curve_surface module
         type IntCurveSurface_IntersectionPoint = crate::int_curve_surface::ffi::IntersectionPoint;
-        #[doc = "IntersectionSegment from int_curve_surface module"]
+        /// IntersectionSegment from int_curve_surface module
         type IntCurveSurface_IntersectionSegment =
             crate::int_curve_surface::ffi::IntersectionSegment;
-        #[doc = "TopAbs from top_abs module"]
+        /// TopAbs from top_abs module
         type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
     }
     impl UniquePtr<Inter> {}

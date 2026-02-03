@@ -12,12 +12,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Writer;
 impl Writer {
-    #[doc = "Creates a writer object with default parameters: ASCIIMode."]
+    /// Creates a writer object with default parameters: ASCIIMode.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Writer_ctor()
     }
 
-    #[doc = "Converts a given shape to STL format and writes it to file with a given filename. \\return the error state."]
+    /// Converts a given shape to STL format and writes it to file with a given filename. \\return the error state.
     pub fn write(
         self: std::pin::Pin<&mut Self>,
         theShape: &ffi::TopoDS_Shape,
@@ -31,24 +31,25 @@ impl Writer {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_stl_api.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== StlAPI_Writer ========================"]
-        #[doc = "/// **Source:** `StlAPI_Writer.hxx` - `StlAPI_Writer`"]
-        #[doc = ""]
-        #[doc = "This class creates and writes STL files from Open CASCADE shapes. An STL file can be written to an existing STL file or to a new one."]
+        /// ======================== StlAPI_Writer ========================
+        /// /// **Source:** `StlAPI_Writer.hxx` - `StlAPI_Writer`
+        ///
+        /// This class creates and writes STL files from Open CASCADE shapes. An STL file can be written to an existing STL file or to a new one.
         #[cxx_name = "StlAPI_Writer"]
         type Writer;
-        #[doc = "/// **Source:** `StlAPI_Writer.hxx` - `StlAPI_Writer::StlAPI_Writer()`"]
-        #[doc = ""]
-        #[doc = "Creates a writer object with default parameters: ASCIIMode."]
+        /// /// **Source:** `StlAPI_Writer.hxx` - `StlAPI_Writer::StlAPI_Writer()`
+        ///
+        /// Creates a writer object with default parameters: ASCIIMode.
         #[cxx_name = "StlAPI_Writer_ctor"]
         fn Writer_ctor() -> UniquePtr<Writer>;
-        #[doc = "Returns the address to the flag defining the mode for writing the file. This address may be used to either read or change the flag. If the mode returns True (default value) the generated file is an ASCII file. If the mode returns False, the generated file is a binary file."]
+        /// Returns the address to the flag defining the mode for writing the file. This address may be used to either read or change the flag. If the mode returns True (default value) the generated file is an ASCII file. If the mode returns False, the generated file is a binary file.
         #[cxx_name = "ASCIIMode"]
         fn ascii_mode(self: Pin<&mut Writer>) -> &mut bool;
-        #[doc = "Converts a given shape to STL format and writes it to file with a given filename. \\return the error state."]
+        /// Converts a given shape to STL format and writes it to file with a given filename. \\return the error state.
         #[cxx_name = "StlAPI_Writer_Write"]
         fn Writer_write(
             self_: Pin<&mut Writer>,
@@ -56,58 +57,59 @@ pub(crate) mod ffi {
             theFileName: &str,
             theProgress: &Message_ProgressRange,
         ) -> bool;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Message from message module"]
+        /// Message from message module
         type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
+        /// Alert from message module
         type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
+        /// AlertExtended from message module
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
+        /// Algorithm from message module
         type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
+        /// ExecStatus from message module
         type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
+        /// Level from message module
         type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
+        /// Messenger from message module
         type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
+        /// Msg from message module
         type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
+        /// Printer from message module
         type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
+        /// ProgressIndicator from message module
         type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
+        /// ProgressRange from message module
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
+        /// ProgressScope from message module
         type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
+        /// Report from message module
         type Message_Report = crate::message::ffi::Report;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
     }
     impl UniquePtr<Writer> {}

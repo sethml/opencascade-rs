@@ -12,17 +12,17 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::ReShape;
 impl ReShape {
-    #[doc = "Returns an empty Reshape"]
+    /// Returns an empty Reshape
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ReShape_ctor()
     }
 
-    #[doc = "Upcast to BRepTools_ReShape"]
+    /// Upcast to BRepTools_ReShape
     pub fn as_b_rep_tools_re_shape(&self) -> &crate::b_rep_tools::ReShape {
         ffi::re_shape_as_b_rep_tools_re_shape(self)
     }
 
-    #[doc = "Upcast to BRepTools_ReShape (mutable)"]
+    /// Upcast to BRepTools_ReShape (mutable)
     pub fn as_b_rep_tools_re_shape_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_tools::ReShape> {
@@ -37,21 +37,22 @@ impl ReShape {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_shape_build.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== ShapeBuild_ReShape ========================"]
-        #[doc = "/// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape`"]
-        #[doc = ""]
+        /// ======================== ShapeBuild_ReShape ========================
+        /// /// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape`
+        ///
         #[doc = "Rebuilds a Shape by making pre-defined substitutions on some of its components In a first phase, it records requests to replace or remove some individual shapes For each shape, the last given request is recorded Requests may be applied \"Oriented\" (i.e. only to an item with the SAME orientation) or not (the orientation of replacing shape is respectful of that of the original one) Then, these requests may be applied to any shape which may contain one or more of these individual shapes"]
         #[cxx_name = "ShapeBuild_ReShape"]
         type ReShape;
-        #[doc = "/// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape::ShapeBuild_ReShape()`"]
-        #[doc = ""]
-        #[doc = "Returns an empty Reshape"]
+        /// /// **Source:** `ShapeBuild_ReShape.hxx` - `ShapeBuild_ReShape::ShapeBuild_ReShape()`
+        ///
+        /// Returns an empty Reshape
         #[cxx_name = "ShapeBuild_ReShape_ctor"]
         fn ReShape_ctor() -> UniquePtr<ReShape>;
-        #[doc = "Returns a complete substitution status for a shape 0  : not recorded,   <newsh> = original <shape> < 0: to be removed,  <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape."]
+        /// Returns a complete substitution status for a shape 0  : not recorded,   <newsh> = original <shape> < 0: to be removed,  <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape.
         #[cxx_name = "Status"]
         fn status_shape2_bool(
             self: Pin<&mut ReShape>,
@@ -63,93 +64,95 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &ReShape) -> &HandleStandardType;
         #[cxx_name = "ShapeBuild_ReShape_get_type_name"]
         fn ReShape_get_type_name() -> String;
-        #[doc = "Upcast ShapeBuild_ReShape to BRepTools_ReShape"]
+        /// Upcast ShapeBuild_ReShape to BRepTools_ReShape
         #[cxx_name = "ShapeBuild_ReShape_as_BRepTools_ReShape"]
         fn re_shape_as_b_rep_tools_re_shape(self_: &ReShape) -> &BRepTools_ReShape;
-        #[doc = "Upcast ShapeBuild_ReShape to BRepTools_ReShape (mutable)"]
+        /// Upcast ShapeBuild_ReShape to BRepTools_ReShape (mutable)
         #[cxx_name = "ShapeBuild_ReShape_as_BRepTools_ReShape_mut"]
         fn re_shape_as_b_rep_tools_re_shape_mut(
             self_: Pin<&mut ReShape>,
         ) -> Pin<&mut BRepTools_ReShape>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "BRepTools from b_rep_tools module"]
+        /// BRepTools from b_rep_tools module
         type BRepTools = crate::b_rep_tools::ffi::BRepTools;
-        #[doc = "History from b_rep_tools module"]
+        /// History from b_rep_tools module
         type BRepTools_History = crate::b_rep_tools::ffi::History;
-        #[doc = "Modifier from b_rep_tools module"]
+        /// Modifier from b_rep_tools module
         type BRepTools_Modifier = crate::b_rep_tools::ffi::Modifier;
-        #[doc = "ReShape from b_rep_tools module"]
+        /// ReShape from b_rep_tools module
         type BRepTools_ReShape = crate::b_rep_tools::ffi::ReShape;
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "TopAbs from top_abs module"]
+        /// TopAbs from top_abs module
         type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+
         // ========================
         // Referenced types (opaque)
         // ========================

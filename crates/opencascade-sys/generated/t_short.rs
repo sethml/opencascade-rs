@@ -37,7 +37,7 @@ impl HArray1OfShortReal {
         ffi::HArray1OfShortReal_ctor_array1ofshortreal(theOther)
     }
 
-    #[doc = "Wrap TShort_HArray1OfShortReal in a Handle (reference-counted smart pointer)"]
+    /// Wrap TShort_HArray1OfShortReal in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<ffi::HandleTShortHArray1OfShortReal> {
@@ -52,30 +52,31 @@ impl HArray1OfShortReal {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_t_short.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== TShort_HArray1OfShortReal ========================"]
-        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal`"]
+        /// ======================== TShort_HArray1OfShortReal ========================
+        /// /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal`
         #[cxx_name = "TShort_HArray1OfShortReal"]
         type HArray1OfShortReal;
-        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
+        /// /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor"]
         fn HArray1OfShortReal_ctor() -> UniquePtr<HArray1OfShortReal>;
-        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
+        /// /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor_int2"]
         fn HArray1OfShortReal_ctor_int2(
             theLower: i32,
             theUpper: i32,
         ) -> UniquePtr<HArray1OfShortReal>;
-        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
+        /// /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor_int2_float"]
         fn HArray1OfShortReal_ctor_int2_float(
             theLower: i32,
             theUpper: i32,
             theValue: &f32,
         ) -> UniquePtr<HArray1OfShortReal>;
-        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
+        /// /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor_float_int2_bool"]
         fn HArray1OfShortReal_ctor_float_int2_bool(
             theBegin: &f32,
@@ -83,7 +84,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfShortReal>;
-        #[doc = "/// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`"]
+        /// /// **Source:** `TShort_HArray1OfShortReal.hxx` - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
         #[cxx_name = "TShort_HArray1OfShortReal_ctor_array1ofshortreal"]
         fn HArray1OfShortReal_ctor_array1ofshortreal(
             theOther: &TShort_Array1OfShortReal,
@@ -96,56 +97,58 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HArray1OfShortReal) -> &HandleStandardType;
         #[cxx_name = "TShort_HArray1OfShortReal_get_type_name"]
         fn HArray1OfShortReal_get_type_name() -> String;
-        #[doc = "Wrap TShort_HArray1OfShortReal in a Handle (reference-counted smart pointer)"]
+        /// Wrap TShort_HArray1OfShortReal in a Handle (reference-counted smart pointer)
         #[cxx_name = "TShort_HArray1OfShortReal_to_handle"]
         fn HArray1OfShortReal_to_handle(
             obj: UniquePtr<HArray1OfShortReal>,
         ) -> UniquePtr<HandleTShortHArray1OfShortReal>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+
         // ========================
         // Referenced types (opaque)
         // ========================

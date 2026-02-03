@@ -51,20 +51,21 @@ impl NotDone {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_std_fail.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== StdFail_NotDone ========================"]
-        #[doc = "/// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone`"]
+        /// ======================== StdFail_NotDone ========================
+        /// /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone`
         #[cxx_name = "StdFail_NotDone"]
         type NotDone;
-        #[doc = "/// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`"]
+        /// /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`
         #[cxx_name = "StdFail_NotDone_ctor"]
         fn NotDone_ctor() -> UniquePtr<NotDone>;
-        #[doc = "/// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`"]
+        /// /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`
         #[cxx_name = "StdFail_NotDone_ctor_charptr"]
         fn NotDone_ctor_charptr(theMessage: &str) -> UniquePtr<NotDone>;
-        #[doc = "/// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`"]
+        /// /// **Source:** `StdFail_NotDone.hxx` - `StdFail_NotDone::StdFail_NotDone()`
         #[cxx_name = "StdFail_NotDone_ctor_charptr2"]
         fn NotDone_ctor_charptr2(theMessage: &str, theStackTrace: &str) -> UniquePtr<NotDone>;
         #[cxx_name = "DynamicType"]
@@ -82,51 +83,53 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStdFailNotDone>;
         #[cxx_name = "StdFail_NotDone_get_type_name"]
         fn NotDone_get_type_name() -> String;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
+
         // ========================
         // Referenced types (opaque)
         // ========================

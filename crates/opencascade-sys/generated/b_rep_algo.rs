@@ -20,34 +20,35 @@ impl Image {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_algo.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== BRepAlgo_Image ========================"]
-        #[doc = "/// **Source:** `BRepAlgo_Image.hxx` - `BRepAlgo_Image`"]
-        #[doc = ""]
-        #[doc = "Stores link between a shape <S> and a shape <NewS> obtained from <S>. <NewS> is an image of <S>."]
+        /// ======================== BRepAlgo_Image ========================
+        /// /// **Source:** `BRepAlgo_Image.hxx` - `BRepAlgo_Image`
+        ///
+        /// Stores link between a shape <S> and a shape <NewS> obtained from <S>. <NewS> is an image of <S>.
         #[cxx_name = "BRepAlgo_Image"]
         type Image;
-        #[doc = "/// **Source:** `BRepAlgo_Image.hxx` - `BRepAlgo_Image::BRepAlgo_Image()`"]
+        /// /// **Source:** `BRepAlgo_Image.hxx` - `BRepAlgo_Image::BRepAlgo_Image()`
         #[cxx_name = "BRepAlgo_Image_ctor"]
         fn Image_ctor() -> UniquePtr<Image>;
         #[cxx_name = "SetRoot"]
         fn set_root(self: Pin<&mut Image>, S: &TopoDS_Shape);
-        #[doc = "Links <NewS> as image of <OldS>."]
+        /// Links <NewS> as image of <OldS>.
         #[cxx_name = "Bind"]
         fn bind_shape2(self: Pin<&mut Image>, OldS: &TopoDS_Shape, NewS: &TopoDS_Shape);
-        #[doc = "Links <NewS> as image of <OldS>."]
+        /// Links <NewS> as image of <OldS>.
         #[cxx_name = "Bind"]
         fn bind_shape_listofshape(
             self: Pin<&mut Image>,
             OldS: &TopoDS_Shape,
             NewS: &TopTools_ListOfShape,
         );
-        #[doc = "Add <NewS> to the image of <OldS>."]
+        /// Add <NewS> to the image of <OldS>.
         #[cxx_name = "Add"]
         fn add_shape2(self: Pin<&mut Image>, OldS: &TopoDS_Shape, NewS: &TopoDS_Shape);
-        #[doc = "Add <NewS> to the image of <OldS>."]
+        /// Add <NewS> to the image of <OldS>.
         #[cxx_name = "Add"]
         fn add_shape_listofshape(
             self: Pin<&mut Image>,
@@ -56,69 +57,71 @@ pub(crate) mod ffi {
         );
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Image>);
-        #[doc = "Remove <S> to set of images."]
+        /// Remove <S> to set of images.
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut Image>, S: &TopoDS_Shape);
-        #[doc = "Removes the root <theRoot> from the list of roots and up and down maps."]
+        /// Removes the root <theRoot> from the list of roots and up and down maps.
         #[cxx_name = "RemoveRoot"]
         fn remove_root(self: Pin<&mut Image>, Root: &TopoDS_Shape);
-        #[doc = "Replaces the <OldRoot> with the <NewRoot>, so all images of the <OldRoot> become the images of the <NewRoot>. The <OldRoot> is removed."]
+        /// Replaces the <OldRoot> with the <NewRoot>, so all images of the <OldRoot> become the images of the <NewRoot>. The <OldRoot> is removed.
         #[cxx_name = "ReplaceRoot"]
         fn replace_root(self: Pin<&mut Image>, OldRoot: &TopoDS_Shape, NewRoot: &TopoDS_Shape);
         #[cxx_name = "Roots"]
         fn roots(self: &Image) -> &TopTools_ListOfShape;
         #[cxx_name = "IsImage"]
         fn is_image(self: &Image, S: &TopoDS_Shape) -> bool;
-        #[doc = "Returns the generator of <S>"]
+        /// Returns the generator of <S>
         #[cxx_name = "ImageFrom"]
         fn image_from(self: &Image, S: &TopoDS_Shape) -> &TopoDS_Shape;
-        #[doc = "Returns the upper generator of <S>"]
+        /// Returns the upper generator of <S>
         #[cxx_name = "Root"]
         fn root(self: &Image, S: &TopoDS_Shape) -> &TopoDS_Shape;
         #[cxx_name = "HasImage"]
         fn has_image(self: &Image, S: &TopoDS_Shape) -> bool;
-        #[doc = "Returns the Image of <S>. Returns <S> in the list if HasImage(S) is false."]
+        /// Returns the Image of <S>. Returns <S> in the list if HasImage(S) is false.
         #[cxx_name = "Image"]
         fn image(self: &Image, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        #[doc = "Stores in <L> the images of images of...images of <S>. <L> contains only <S> if  HasImage(S) is false."]
+        /// Stores in <L> the images of images of...images of <S>. <L> contains only <S> if  HasImage(S) is false.
         #[cxx_name = "LastImage"]
         fn last_image(self: &Image, S: &TopoDS_Shape, L: Pin<&mut TopTools_ListOfShape>);
-        #[doc = "Keeps only the link between roots and lastimage."]
+        /// Keeps only the link between roots and lastimage.
         #[cxx_name = "Compact"]
         fn compact(self: Pin<&mut Image>);
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "TopAbs from top_abs module"]
+        /// TopAbs from top_abs module
         type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "HArray2OfShape from top_tools module"]
+        /// HArray2OfShape from top_tools module
         type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
+        /// HSequenceOfShape from top_tools module
         type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+
         // ========================
         // Referenced types (opaque)
         // ========================

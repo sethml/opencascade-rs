@@ -27,17 +27,17 @@ pub use ffi::{
     shell_mut, solid, solid_mut, vertex, vertex_mut, wire, wire_mut, Shape,
 };
 impl Shape {
-    #[doc = "Creates a NULL Shape referring to nothing."]
+    /// Creates a NULL Shape referring to nothing.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Shape_ctor()
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Shape_to_owned(self)
     }
 
-    #[doc = "Returns a  shape  similar to <me> with the local coordinate system set to <Loc>. @param theLoc the new local coordinate system. @param theRaiseExc flag to raise exception in case of transformation with scale or negative. @return the located shape."]
+    /// Returns a  shape  similar to <me> with the local coordinate system set to <Loc>. @param theLoc the new local coordinate system. @param theRaiseExc flag to raise exception in case of transformation with scale or negative. @return the located shape.
     pub fn located(
         &self,
         theLoc: &ffi::TopLoc_Location,
@@ -46,7 +46,7 @@ impl Shape {
         ffi::Shape_located(self, theLoc, theRaiseExc)
     }
 
-    #[doc = "Returns a shape similar to <me> with a location multiplied by thePosition. @param thePosition the transformation to apply. @param theRaiseExc flag to raise exception in case of transformation with scale or negative. @return the moved shape."]
+    /// Returns a shape similar to <me> with a location multiplied by thePosition. @param thePosition the transformation to apply. @param theRaiseExc flag to raise exception in case of transformation with scale or negative. @return the moved shape.
     pub fn moved(
         &self,
         thePosition: &ffi::TopLoc_Location,
@@ -55,224 +55,224 @@ impl Shape {
         ffi::Shape_moved(self, thePosition, theRaiseExc)
     }
 
-    #[doc = "Returns    a shape  similar    to  <me>  with  the orientation  reversed, using  the   Reverse method from the TopAbs package."]
+    /// Returns    a shape  similar    to  <me>  with  the orientation  reversed, using  the   Reverse method from the TopAbs package.
     pub fn reversed(&self) -> cxx::UniquePtr<ffi::Shape> {
         ffi::Shape_reversed(self)
     }
 
-    #[doc = "Returns  a   shape  similar  to   <me>   with  the orientation complemented,  using   the  Complement method from the TopAbs package."]
+    /// Returns  a   shape  similar  to   <me>   with  the orientation complemented,  using   the  Complement method from the TopAbs package.
     pub fn complemented(&self) -> cxx::UniquePtr<ffi::Shape> {
         ffi::Shape_complemented(self)
     }
 
-    #[doc = "Returns a new Shape with the  same Orientation and Location and  a new TShape  with the same geometry and no sub-shapes."]
+    /// Returns a new Shape with the  same Orientation and Location and  a new TShape  with the same geometry and no sub-shapes.
     pub fn empty_copied(&self) -> cxx::UniquePtr<ffi::Shape> {
         ffi::Shape_empty_copied(self)
     }
 }
 pub use ffi::Vertex;
 impl Vertex {
-    #[doc = "Undefined Vertex."]
+    /// Undefined Vertex.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Vertex_ctor()
     }
 
-    #[doc = "Upcast to TopoDS_Shape"]
+    /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
         ffi::vertex_as_shape(self)
     }
 
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
         ffi::vertex_as_shape_mut(self)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Vertex_to_owned(self)
     }
 }
 pub use ffi::Edge;
 impl Edge {
-    #[doc = "Undefined Edge."]
+    /// Undefined Edge.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Edge_ctor()
     }
 
-    #[doc = "Upcast to TopoDS_Shape"]
+    /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
         ffi::edge_as_shape(self)
     }
 
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
         ffi::edge_as_shape_mut(self)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Edge_to_owned(self)
     }
 }
 pub use ffi::Wire;
 impl Wire {
-    #[doc = "Undefined Wire."]
+    /// Undefined Wire.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Wire_ctor()
     }
 
-    #[doc = "Upcast to TopoDS_Shape"]
+    /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
         ffi::wire_as_shape(self)
     }
 
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
         ffi::wire_as_shape_mut(self)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Wire_to_owned(self)
     }
 }
 pub use ffi::Face;
 impl Face {
-    #[doc = "Undefined Face."]
+    /// Undefined Face.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Face_ctor()
     }
 
-    #[doc = "Upcast to TopoDS_Shape"]
+    /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
         ffi::face_as_shape(self)
     }
 
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
         ffi::face_as_shape_mut(self)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Face_to_owned(self)
     }
 }
 pub use ffi::Shell;
 impl Shell {
-    #[doc = "Constructs an Undefined Shell."]
+    /// Constructs an Undefined Shell.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Shell_ctor()
     }
 
-    #[doc = "Upcast to TopoDS_Shape"]
+    /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
         ffi::shell_as_shape(self)
     }
 
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
         ffi::shell_as_shape_mut(self)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Shell_to_owned(self)
     }
 }
 pub use ffi::Solid;
 impl Solid {
-    #[doc = "Constructs an Undefined Solid."]
+    /// Constructs an Undefined Solid.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Solid_ctor()
     }
 
-    #[doc = "Upcast to TopoDS_Shape"]
+    /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
         ffi::solid_as_shape(self)
     }
 
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
         ffi::solid_as_shape_mut(self)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Solid_to_owned(self)
     }
 }
 pub use ffi::Compound;
 impl Compound {
-    #[doc = "Constructs an Undefined Compound."]
+    /// Constructs an Undefined Compound.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Compound_ctor()
     }
 
-    #[doc = "Upcast to TopoDS_Shape"]
+    /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
         ffi::compound_as_shape(self)
     }
 
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
         ffi::compound_as_shape_mut(self)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Compound_to_owned(self)
     }
 }
 pub use ffi::CompSolid;
 impl CompSolid {
-    #[doc = "Constructs an Undefined CompSolid."]
+    /// Constructs an Undefined CompSolid.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::CompSolid_ctor()
     }
 
-    #[doc = "Upcast to TopoDS_Shape"]
+    /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
         ffi::comp_solid_as_shape(self)
     }
 
-    #[doc = "Upcast to TopoDS_Shape (mutable)"]
+    /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
         ffi::comp_solid_as_shape_mut(self)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::CompSolid_to_owned(self)
     }
 }
 pub use ffi::Builder;
 impl Builder {
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Builder_to_owned(self)
     }
 }
 pub use ffi::Iterator;
 impl Iterator {
-    #[doc = "Creates an empty Iterator."]
+    /// Creates an empty Iterator.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Iterator_ctor()
     }
 
-    #[doc = "Creates an Iterator on <S> sub-shapes. Note: - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S."]
+    /// Creates an Iterator on <S> sub-shapes. Note: - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
     pub fn new_shape_bool2(S: &ffi::Shape, cumOri: bool, cumLoc: bool) -> cxx::UniquePtr<Self> {
         ffi::Iterator_ctor_shape_bool2(S, cumOri, cumLoc)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Iterator_to_owned(self)
     }
 }
 pub use ffi::TShape;
 impl TShape {
-    #[doc = "Returns a copy  of the  TShape  with no sub-shapes."]
+    /// Returns a copy  of the  TShape  with no sub-shapes.
     pub fn empty_copy(&self) -> cxx::UniquePtr<ffi::HandleTopoDSTShape> {
         ffi::TShape_empty_copy(self)
     }
@@ -285,529 +285,533 @@ impl TShape {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_topo_ds.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== TopoDS_Shape ========================"]
-        #[doc = "/// **Source:** `TopoDS_Shape.hxx` - `TopoDS_Shape`"]
-        #[doc = ""]
-        #[doc = "Describes a shape which - references an underlying shape with the potential to be given a location and an orientation - has a location for the underlying shape, giving its placement in the local coordinate system - has an orientation for the underlying shape, in terms of its geometry (as opposed to orientation in relation to other shapes). Note: A Shape is empty if it references an underlying shape which has an empty list of shapes."]
+        /// ======================== TopoDS_Shape ========================
+        /// /// **Source:** `TopoDS_Shape.hxx` - `TopoDS_Shape`
+        ///
+        /// Describes a shape which - references an underlying shape with the potential to be given a location and an orientation - has a location for the underlying shape, giving its placement in the local coordinate system - has an orientation for the underlying shape, in terms of its geometry (as opposed to orientation in relation to other shapes). Note: A Shape is empty if it references an underlying shape which has an empty list of shapes.
         #[cxx_name = "TopoDS_Shape"]
         type Shape;
-        #[doc = "/// **Source:** `TopoDS_Shape.hxx` - `TopoDS_Shape::TopoDS_Shape()`"]
-        #[doc = ""]
-        #[doc = "Creates a NULL Shape referring to nothing."]
+        /// /// **Source:** `TopoDS_Shape.hxx` - `TopoDS_Shape::TopoDS_Shape()`
+        ///
+        /// Creates a NULL Shape referring to nothing.
         #[cxx_name = "TopoDS_Shape_ctor"]
         fn Shape_ctor() -> UniquePtr<Shape>;
-        #[doc = "Returns true if this shape is null. In other words, it references no underlying shape with the potential to be given a location and an orientation."]
+        /// Returns true if this shape is null. In other words, it references no underlying shape with the potential to be given a location and an orientation.
         #[cxx_name = "IsNull"]
         fn is_null(self: &Shape) -> bool;
-        #[doc = "Destroys the reference to the underlying shape stored in this shape. As a result, this shape becomes null."]
+        /// Destroys the reference to the underlying shape stored in this shape. As a result, this shape becomes null.
         #[cxx_name = "Nullify"]
         fn nullify(self: Pin<&mut Shape>);
-        #[doc = "Returns the shape local coordinate system."]
+        /// Returns the shape local coordinate system.
         #[cxx_name = "Location"]
         fn location(self: &Shape) -> &TopLoc_Location;
-        #[doc = "Sets the shape local coordinate system. @param theLoc the new local coordinate system. @param theRaiseExc flag to raise exception in case of transformation with scale or negative."]
+        /// Sets the shape local coordinate system. @param theLoc the new local coordinate system. @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
         #[cxx_name = "Location"]
         fn location_location_bool(
             self: Pin<&mut Shape>,
             theLoc: &TopLoc_Location,
             theRaiseExc: bool,
         );
-        #[doc = "Returns a handle to the actual shape implementation."]
+        /// Returns a handle to the actual shape implementation.
         #[cxx_name = "TShape"]
         fn t_shape(self: &Shape) -> &HandleTopoDSTShape;
-        #[doc = "Returns the free flag."]
+        /// Returns the free flag.
         #[cxx_name = "Free"]
         fn free(self: &Shape) -> bool;
-        #[doc = "Sets the free flag."]
+        /// Sets the free flag.
         #[cxx_name = "Free"]
         fn free_bool(self: Pin<&mut Shape>, theIsFree: bool);
-        #[doc = "Returns the locked flag."]
+        /// Returns the locked flag.
         #[cxx_name = "Locked"]
         fn locked(self: &Shape) -> bool;
-        #[doc = "Sets the locked flag."]
+        /// Sets the locked flag.
         #[cxx_name = "Locked"]
         fn locked_bool(self: Pin<&mut Shape>, theIsLocked: bool);
-        #[doc = "Returns the modification flag."]
+        /// Returns the modification flag.
         #[cxx_name = "Modified"]
         fn modified(self: &Shape) -> bool;
-        #[doc = "Sets the modification flag."]
+        /// Sets the modification flag.
         #[cxx_name = "Modified"]
         fn modified_bool(self: Pin<&mut Shape>, theIsModified: bool);
-        #[doc = "Returns the checked flag."]
+        /// Returns the checked flag.
         #[cxx_name = "Checked"]
         fn checked(self: &Shape) -> bool;
-        #[doc = "Sets the checked flag."]
+        /// Sets the checked flag.
         #[cxx_name = "Checked"]
         fn checked_bool(self: Pin<&mut Shape>, theIsChecked: bool);
-        #[doc = "Returns the orientability flag."]
+        /// Returns the orientability flag.
         #[cxx_name = "Orientable"]
         fn orientable(self: &Shape) -> bool;
-        #[doc = "Sets the orientability flag."]
+        /// Sets the orientability flag.
         #[cxx_name = "Orientable"]
         fn orientable_bool(self: Pin<&mut Shape>, theIsOrientable: bool);
-        #[doc = "Returns the closedness flag."]
+        /// Returns the closedness flag.
         #[cxx_name = "Closed"]
         fn closed(self: &Shape) -> bool;
-        #[doc = "Sets the closedness flag."]
+        /// Sets the closedness flag.
         #[cxx_name = "Closed"]
         fn closed_bool(self: Pin<&mut Shape>, theIsClosed: bool);
-        #[doc = "Returns the infinity flag."]
+        /// Returns the infinity flag.
         #[cxx_name = "Infinite"]
         fn infinite(self: &Shape) -> bool;
-        #[doc = "Sets the infinity flag."]
+        /// Sets the infinity flag.
         #[cxx_name = "Infinite"]
         fn infinite_bool(self: Pin<&mut Shape>, theIsInfinite: bool);
-        #[doc = "Returns the convexness flag."]
+        /// Returns the convexness flag.
         #[cxx_name = "Convex"]
         fn convex(self: &Shape) -> bool;
-        #[doc = "Sets the convexness flag."]
+        /// Sets the convexness flag.
         #[cxx_name = "Convex"]
         fn convex_bool(self: Pin<&mut Shape>, theIsConvex: bool);
-        #[doc = "Multiplies the Shape location by thePosition. @param thePosition the transformation to apply. @param theRaiseExc flag to raise exception in case of transformation with scale or negative."]
+        /// Multiplies the Shape location by thePosition. @param thePosition the transformation to apply. @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
         #[cxx_name = "Move"]
         fn move_(self: Pin<&mut Shape>, thePosition: &TopLoc_Location, theRaiseExc: bool);
-        #[doc = "Reverses the orientation, using the Reverse method from the TopAbs package."]
+        /// Reverses the orientation, using the Reverse method from the TopAbs package.
         #[cxx_name = "Reverse"]
         fn reverse(self: Pin<&mut Shape>);
-        #[doc = "Complements the orientation, using the  Complement method from the TopAbs package."]
+        /// Complements the orientation, using the  Complement method from the TopAbs package.
         #[cxx_name = "Complement"]
         fn complement(self: Pin<&mut Shape>);
-        #[doc = "Returns the number of direct sub-shapes (children). @sa TopoDS_Iterator for accessing sub-shapes"]
+        /// Returns the number of direct sub-shapes (children). @sa TopoDS_Iterator for accessing sub-shapes
         #[cxx_name = "NbChildren"]
         fn nb_children(self: &Shape) -> i32;
-        #[doc = "Returns True if two shapes  are partners, i.e.  if they   share   the   same  TShape.  Locations  and Orientations may differ."]
+        /// Returns True if two shapes  are partners, i.e.  if they   share   the   same  TShape.  Locations  and Orientations may differ.
         #[cxx_name = "IsPartner"]
         fn is_partner(self: &Shape, theOther: &Shape) -> bool;
-        #[doc = "Returns True if two shapes are same, i.e.  if they share  the  same TShape  with the same  Locations. Orientations may differ."]
+        /// Returns True if two shapes are same, i.e.  if they share  the  same TShape  with the same  Locations. Orientations may differ.
         #[cxx_name = "IsSame"]
         fn is_same(self: &Shape, theOther: &Shape) -> bool;
-        #[doc = "Returns True if two shapes are equal, i.e. if they share the same TShape with  the same Locations and Orientations."]
+        /// Returns True if two shapes are equal, i.e. if they share the same TShape with  the same Locations and Orientations.
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &Shape, theOther: &Shape) -> bool;
-        #[doc = "Negation of the IsEqual method."]
+        /// Negation of the IsEqual method.
         #[cxx_name = "IsNotEqual"]
         fn is_not_equal(self: &Shape, theOther: &Shape) -> bool;
-        #[doc = "Replace   <me> by  a  new   Shape with the    same Orientation and Location and a new TShape with the same geometry and no sub-shapes."]
+        /// Replace   <me> by  a  new   Shape with the    same Orientation and Location and a new TShape with the same geometry and no sub-shapes.
         #[cxx_name = "EmptyCopy"]
         fn empty_copy(self: Pin<&mut Shape>);
         #[cxx_name = "TShape"]
         fn t_shape_handletshape(self: Pin<&mut Shape>, theTShape: &HandleTopoDSTShape);
-        #[doc = "Returns a  shape  similar to <me> with the local coordinate system set to <Loc>. @param theLoc the new local coordinate system. @param theRaiseExc flag to raise exception in case of transformation with scale or negative. @return the located shape."]
+        /// Returns a  shape  similar to <me> with the local coordinate system set to <Loc>. @param theLoc the new local coordinate system. @param theRaiseExc flag to raise exception in case of transformation with scale or negative. @return the located shape.
         #[cxx_name = "TopoDS_Shape_Located"]
         fn Shape_located(
             self_: &Shape,
             theLoc: &TopLoc_Location,
             theRaiseExc: bool,
         ) -> UniquePtr<Shape>;
-        #[doc = "Returns a shape similar to <me> with a location multiplied by thePosition. @param thePosition the transformation to apply. @param theRaiseExc flag to raise exception in case of transformation with scale or negative. @return the moved shape."]
+        /// Returns a shape similar to <me> with a location multiplied by thePosition. @param thePosition the transformation to apply. @param theRaiseExc flag to raise exception in case of transformation with scale or negative. @return the moved shape.
         #[cxx_name = "TopoDS_Shape_Moved"]
         fn Shape_moved(
             self_: &Shape,
             thePosition: &TopLoc_Location,
             theRaiseExc: bool,
         ) -> UniquePtr<Shape>;
-        #[doc = "Returns    a shape  similar    to  <me>  with  the orientation  reversed, using  the   Reverse method from the TopAbs package."]
+        /// Returns    a shape  similar    to  <me>  with  the orientation  reversed, using  the   Reverse method from the TopAbs package.
         #[cxx_name = "TopoDS_Shape_Reversed"]
         fn Shape_reversed(self_: &Shape) -> UniquePtr<Shape>;
-        #[doc = "Returns  a   shape  similar  to   <me>   with  the orientation complemented,  using   the  Complement method from the TopAbs package."]
+        /// Returns  a   shape  similar  to   <me>   with  the orientation complemented,  using   the  Complement method from the TopAbs package.
         #[cxx_name = "TopoDS_Shape_Complemented"]
         fn Shape_complemented(self_: &Shape) -> UniquePtr<Shape>;
-        #[doc = "Returns a new Shape with the  same Orientation and Location and  a new TShape  with the same geometry and no sub-shapes."]
+        /// Returns a new Shape with the  same Orientation and Location and  a new TShape  with the same geometry and no sub-shapes.
         #[cxx_name = "TopoDS_Shape_EmptyCopied"]
         fn Shape_empty_copied(self_: &Shape) -> UniquePtr<Shape>;
-        #[doc = "Clone TopoDS_Shape into a new UniquePtr via copy constructor"]
+        /// Clone TopoDS_Shape into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Shape_to_owned(self_: &Shape) -> UniquePtr<Shape>;
-        #[doc = " ======================== TopoDS_Vertex ========================"]
-        #[doc = "/// **Source:** `TopoDS_Vertex.hxx` - `TopoDS_Vertex`"]
-        #[doc = ""]
-        #[doc = "Describes a vertex which - references an underlying vertex with the potential to be given a location and an orientation - has a location for the underlying vertex, giving its placement in the local coordinate system - has an orientation for the underlying vertex, in terms of its geometry (as opposed to orientation in relation to other shapes)."]
+        /// ======================== TopoDS_Vertex ========================
+        /// /// **Source:** `TopoDS_Vertex.hxx` - `TopoDS_Vertex`
+        ///
+        /// Describes a vertex which - references an underlying vertex with the potential to be given a location and an orientation - has a location for the underlying vertex, giving its placement in the local coordinate system - has an orientation for the underlying vertex, in terms of its geometry (as opposed to orientation in relation to other shapes).
         #[cxx_name = "TopoDS_Vertex"]
         type Vertex;
-        #[doc = "/// **Source:** `TopoDS_Vertex.hxx` - `TopoDS_Vertex::TopoDS_Vertex()`"]
-        #[doc = ""]
-        #[doc = "Undefined Vertex."]
+        /// /// **Source:** `TopoDS_Vertex.hxx` - `TopoDS_Vertex::TopoDS_Vertex()`
+        ///
+        /// Undefined Vertex.
         #[cxx_name = "TopoDS_Vertex_ctor"]
         fn Vertex_ctor() -> UniquePtr<Vertex>;
-        #[doc = "Upcast TopoDS_Vertex to TopoDS_Shape"]
+        /// Upcast TopoDS_Vertex to TopoDS_Shape
         #[cxx_name = "TopoDS_Vertex_as_TopoDS_Shape"]
         fn vertex_as_shape(self_: &Vertex) -> &Shape;
-        #[doc = "Upcast TopoDS_Vertex to TopoDS_Shape (mutable)"]
+        /// Upcast TopoDS_Vertex to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_Vertex_as_TopoDS_Shape_mut"]
         fn vertex_as_shape_mut(self_: Pin<&mut Vertex>) -> Pin<&mut Shape>;
-        #[doc = "Clone TopoDS_Vertex into a new UniquePtr via copy constructor"]
+        /// Clone TopoDS_Vertex into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Vertex_to_owned(self_: &Vertex) -> UniquePtr<Vertex>;
-        #[doc = " ======================== TopoDS_Edge ========================"]
-        #[doc = "/// **Source:** `TopoDS_Edge.hxx` - `TopoDS_Edge`"]
-        #[doc = ""]
-        #[doc = "Describes an edge which - references an underlying edge with the potential to be given a location and an orientation - has a location for the underlying edge, giving its placement in the local coordinate system - has an orientation for the underlying edge, in terms of its geometry (as opposed to orientation in relation to other shapes)."]
+        /// ======================== TopoDS_Edge ========================
+        /// /// **Source:** `TopoDS_Edge.hxx` - `TopoDS_Edge`
+        ///
+        /// Describes an edge which - references an underlying edge with the potential to be given a location and an orientation - has a location for the underlying edge, giving its placement in the local coordinate system - has an orientation for the underlying edge, in terms of its geometry (as opposed to orientation in relation to other shapes).
         #[cxx_name = "TopoDS_Edge"]
         type Edge;
-        #[doc = "/// **Source:** `TopoDS_Edge.hxx` - `TopoDS_Edge::TopoDS_Edge()`"]
-        #[doc = ""]
-        #[doc = "Undefined Edge."]
+        /// /// **Source:** `TopoDS_Edge.hxx` - `TopoDS_Edge::TopoDS_Edge()`
+        ///
+        /// Undefined Edge.
         #[cxx_name = "TopoDS_Edge_ctor"]
         fn Edge_ctor() -> UniquePtr<Edge>;
-        #[doc = "Upcast TopoDS_Edge to TopoDS_Shape"]
+        /// Upcast TopoDS_Edge to TopoDS_Shape
         #[cxx_name = "TopoDS_Edge_as_TopoDS_Shape"]
         fn edge_as_shape(self_: &Edge) -> &Shape;
-        #[doc = "Upcast TopoDS_Edge to TopoDS_Shape (mutable)"]
+        /// Upcast TopoDS_Edge to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_Edge_as_TopoDS_Shape_mut"]
         fn edge_as_shape_mut(self_: Pin<&mut Edge>) -> Pin<&mut Shape>;
-        #[doc = "Clone TopoDS_Edge into a new UniquePtr via copy constructor"]
+        /// Clone TopoDS_Edge into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Edge_to_owned(self_: &Edge) -> UniquePtr<Edge>;
-        #[doc = " ======================== TopoDS_Wire ========================"]
-        #[doc = "/// **Source:** `TopoDS_Wire.hxx` - `TopoDS_Wire`"]
-        #[doc = ""]
-        #[doc = "Describes a wire which - references an underlying wire with the potential to be given a location and an orientation - has a location for the underlying wire, giving its placement in the local coordinate system - has an orientation for the underlying wire, in terms of its geometry (as opposed to orientation in relation to other shapes)."]
+        /// ======================== TopoDS_Wire ========================
+        /// /// **Source:** `TopoDS_Wire.hxx` - `TopoDS_Wire`
+        ///
+        /// Describes a wire which - references an underlying wire with the potential to be given a location and an orientation - has a location for the underlying wire, giving its placement in the local coordinate system - has an orientation for the underlying wire, in terms of its geometry (as opposed to orientation in relation to other shapes).
         #[cxx_name = "TopoDS_Wire"]
         type Wire;
-        #[doc = "/// **Source:** `TopoDS_Wire.hxx` - `TopoDS_Wire::TopoDS_Wire()`"]
-        #[doc = ""]
-        #[doc = "Undefined Wire."]
+        /// /// **Source:** `TopoDS_Wire.hxx` - `TopoDS_Wire::TopoDS_Wire()`
+        ///
+        /// Undefined Wire.
         #[cxx_name = "TopoDS_Wire_ctor"]
         fn Wire_ctor() -> UniquePtr<Wire>;
-        #[doc = "Upcast TopoDS_Wire to TopoDS_Shape"]
+        /// Upcast TopoDS_Wire to TopoDS_Shape
         #[cxx_name = "TopoDS_Wire_as_TopoDS_Shape"]
         fn wire_as_shape(self_: &Wire) -> &Shape;
-        #[doc = "Upcast TopoDS_Wire to TopoDS_Shape (mutable)"]
+        /// Upcast TopoDS_Wire to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_Wire_as_TopoDS_Shape_mut"]
         fn wire_as_shape_mut(self_: Pin<&mut Wire>) -> Pin<&mut Shape>;
-        #[doc = "Clone TopoDS_Wire into a new UniquePtr via copy constructor"]
+        /// Clone TopoDS_Wire into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Wire_to_owned(self_: &Wire) -> UniquePtr<Wire>;
-        #[doc = " ======================== TopoDS_Face ========================"]
-        #[doc = "/// **Source:** `TopoDS_Face.hxx` - `TopoDS_Face`"]
-        #[doc = ""]
-        #[doc = "Describes a face which - references an underlying face with the potential to be given a location and an orientation - has a location for the underlying face, giving its placement in the local coordinate system - has an orientation for the underlying face, in terms of its geometry (as opposed to orientation in relation to other shapes)."]
+        /// ======================== TopoDS_Face ========================
+        /// /// **Source:** `TopoDS_Face.hxx` - `TopoDS_Face`
+        ///
+        /// Describes a face which - references an underlying face with the potential to be given a location and an orientation - has a location for the underlying face, giving its placement in the local coordinate system - has an orientation for the underlying face, in terms of its geometry (as opposed to orientation in relation to other shapes).
         #[cxx_name = "TopoDS_Face"]
         type Face;
-        #[doc = "/// **Source:** `TopoDS_Face.hxx` - `TopoDS_Face::TopoDS_Face()`"]
-        #[doc = ""]
-        #[doc = "Undefined Face."]
+        /// /// **Source:** `TopoDS_Face.hxx` - `TopoDS_Face::TopoDS_Face()`
+        ///
+        /// Undefined Face.
         #[cxx_name = "TopoDS_Face_ctor"]
         fn Face_ctor() -> UniquePtr<Face>;
-        #[doc = "Upcast TopoDS_Face to TopoDS_Shape"]
+        /// Upcast TopoDS_Face to TopoDS_Shape
         #[cxx_name = "TopoDS_Face_as_TopoDS_Shape"]
         fn face_as_shape(self_: &Face) -> &Shape;
-        #[doc = "Upcast TopoDS_Face to TopoDS_Shape (mutable)"]
+        /// Upcast TopoDS_Face to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_Face_as_TopoDS_Shape_mut"]
         fn face_as_shape_mut(self_: Pin<&mut Face>) -> Pin<&mut Shape>;
-        #[doc = "Clone TopoDS_Face into a new UniquePtr via copy constructor"]
+        /// Clone TopoDS_Face into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Face_to_owned(self_: &Face) -> UniquePtr<Face>;
-        #[doc = " ======================== TopoDS_Shell ========================"]
-        #[doc = "/// **Source:** `TopoDS_Shell.hxx` - `TopoDS_Shell`"]
-        #[doc = ""]
-        #[doc = "Describes a shell which - references an underlying shell with the potential to be given a location and an orientation - has a location for the underlying shell, giving its placement in the local coordinate system - has an orientation for the underlying shell, in terms of its geometry (as opposed to orientation in relation to other shapes)."]
+        /// ======================== TopoDS_Shell ========================
+        /// /// **Source:** `TopoDS_Shell.hxx` - `TopoDS_Shell`
+        ///
+        /// Describes a shell which - references an underlying shell with the potential to be given a location and an orientation - has a location for the underlying shell, giving its placement in the local coordinate system - has an orientation for the underlying shell, in terms of its geometry (as opposed to orientation in relation to other shapes).
         #[cxx_name = "TopoDS_Shell"]
         type Shell;
-        #[doc = "/// **Source:** `TopoDS_Shell.hxx` - `TopoDS_Shell::TopoDS_Shell()`"]
-        #[doc = ""]
-        #[doc = "Constructs an Undefined Shell."]
+        /// /// **Source:** `TopoDS_Shell.hxx` - `TopoDS_Shell::TopoDS_Shell()`
+        ///
+        /// Constructs an Undefined Shell.
         #[cxx_name = "TopoDS_Shell_ctor"]
         fn Shell_ctor() -> UniquePtr<Shell>;
-        #[doc = "Upcast TopoDS_Shell to TopoDS_Shape"]
+        /// Upcast TopoDS_Shell to TopoDS_Shape
         #[cxx_name = "TopoDS_Shell_as_TopoDS_Shape"]
         fn shell_as_shape(self_: &Shell) -> &Shape;
-        #[doc = "Upcast TopoDS_Shell to TopoDS_Shape (mutable)"]
+        /// Upcast TopoDS_Shell to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_Shell_as_TopoDS_Shape_mut"]
         fn shell_as_shape_mut(self_: Pin<&mut Shell>) -> Pin<&mut Shape>;
-        #[doc = "Clone TopoDS_Shell into a new UniquePtr via copy constructor"]
+        /// Clone TopoDS_Shell into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Shell_to_owned(self_: &Shell) -> UniquePtr<Shell>;
-        #[doc = " ======================== TopoDS_Solid ========================"]
-        #[doc = "/// **Source:** `TopoDS_Solid.hxx` - `TopoDS_Solid`"]
-        #[doc = ""]
-        #[doc = "Describes a solid shape which - references an underlying solid shape with the potential to be given a location and an orientation - has a location for the underlying shape, giving its placement in the local coordinate system - has an orientation for the underlying shape, in terms of its geometry (as opposed to orientation in relation to other shapes)."]
+        /// ======================== TopoDS_Solid ========================
+        /// /// **Source:** `TopoDS_Solid.hxx` - `TopoDS_Solid`
+        ///
+        /// Describes a solid shape which - references an underlying solid shape with the potential to be given a location and an orientation - has a location for the underlying shape, giving its placement in the local coordinate system - has an orientation for the underlying shape, in terms of its geometry (as opposed to orientation in relation to other shapes).
         #[cxx_name = "TopoDS_Solid"]
         type Solid;
-        #[doc = "/// **Source:** `TopoDS_Solid.hxx` - `TopoDS_Solid::TopoDS_Solid()`"]
-        #[doc = ""]
-        #[doc = "Constructs an Undefined Solid."]
+        /// /// **Source:** `TopoDS_Solid.hxx` - `TopoDS_Solid::TopoDS_Solid()`
+        ///
+        /// Constructs an Undefined Solid.
         #[cxx_name = "TopoDS_Solid_ctor"]
         fn Solid_ctor() -> UniquePtr<Solid>;
-        #[doc = "Upcast TopoDS_Solid to TopoDS_Shape"]
+        /// Upcast TopoDS_Solid to TopoDS_Shape
         #[cxx_name = "TopoDS_Solid_as_TopoDS_Shape"]
         fn solid_as_shape(self_: &Solid) -> &Shape;
-        #[doc = "Upcast TopoDS_Solid to TopoDS_Shape (mutable)"]
+        /// Upcast TopoDS_Solid to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_Solid_as_TopoDS_Shape_mut"]
         fn solid_as_shape_mut(self_: Pin<&mut Solid>) -> Pin<&mut Shape>;
-        #[doc = "Clone TopoDS_Solid into a new UniquePtr via copy constructor"]
+        /// Clone TopoDS_Solid into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Solid_to_owned(self_: &Solid) -> UniquePtr<Solid>;
-        #[doc = " ======================== TopoDS_Compound ========================"]
-        #[doc = "/// **Source:** `TopoDS_Compound.hxx` - `TopoDS_Compound`"]
-        #[doc = ""]
-        #[doc = "Describes a compound which - references an underlying compound with the potential to be given a location and an orientation - has a location for the underlying compound, giving its placement in the local coordinate system - has an orientation for the underlying compound, in terms of its geometry (as opposed to orientation in relation to other shapes). Casts shape S to the more specialized return type, Compound."]
+        /// ======================== TopoDS_Compound ========================
+        /// /// **Source:** `TopoDS_Compound.hxx` - `TopoDS_Compound`
+        ///
+        /// Describes a compound which - references an underlying compound with the potential to be given a location and an orientation - has a location for the underlying compound, giving its placement in the local coordinate system - has an orientation for the underlying compound, in terms of its geometry (as opposed to orientation in relation to other shapes). Casts shape S to the more specialized return type, Compound.
         #[cxx_name = "TopoDS_Compound"]
         type Compound;
-        #[doc = "/// **Source:** `TopoDS_Compound.hxx` - `TopoDS_Compound::TopoDS_Compound()`"]
-        #[doc = ""]
-        #[doc = "Constructs an Undefined Compound."]
+        /// /// **Source:** `TopoDS_Compound.hxx` - `TopoDS_Compound::TopoDS_Compound()`
+        ///
+        /// Constructs an Undefined Compound.
         #[cxx_name = "TopoDS_Compound_ctor"]
         fn Compound_ctor() -> UniquePtr<Compound>;
-        #[doc = "Upcast TopoDS_Compound to TopoDS_Shape"]
+        /// Upcast TopoDS_Compound to TopoDS_Shape
         #[cxx_name = "TopoDS_Compound_as_TopoDS_Shape"]
         fn compound_as_shape(self_: &Compound) -> &Shape;
-        #[doc = "Upcast TopoDS_Compound to TopoDS_Shape (mutable)"]
+        /// Upcast TopoDS_Compound to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_Compound_as_TopoDS_Shape_mut"]
         fn compound_as_shape_mut(self_: Pin<&mut Compound>) -> Pin<&mut Shape>;
-        #[doc = "Clone TopoDS_Compound into a new UniquePtr via copy constructor"]
+        /// Clone TopoDS_Compound into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Compound_to_owned(self_: &Compound) -> UniquePtr<Compound>;
-        #[doc = " ======================== TopoDS_CompSolid ========================"]
-        #[doc = "/// **Source:** `TopoDS_CompSolid.hxx` - `TopoDS_CompSolid`"]
-        #[doc = ""]
-        #[doc = "Describes a composite solid which - references an underlying composite solid with the potential to be given a location and an orientation - has a location for the underlying composite solid, giving its placement in the local coordinate system - has an orientation for the underlying composite solid, in terms of its geometry (as opposed to orientation in relation to other shapes). Casts shape S to the more specialized return type, CompSolid."]
+        /// ======================== TopoDS_CompSolid ========================
+        /// /// **Source:** `TopoDS_CompSolid.hxx` - `TopoDS_CompSolid`
+        ///
+        /// Describes a composite solid which - references an underlying composite solid with the potential to be given a location and an orientation - has a location for the underlying composite solid, giving its placement in the local coordinate system - has an orientation for the underlying composite solid, in terms of its geometry (as opposed to orientation in relation to other shapes). Casts shape S to the more specialized return type, CompSolid.
         #[cxx_name = "TopoDS_CompSolid"]
         type CompSolid;
-        #[doc = "/// **Source:** `TopoDS_CompSolid.hxx` - `TopoDS_CompSolid::TopoDS_CompSolid()`"]
-        #[doc = ""]
-        #[doc = "Constructs an Undefined CompSolid."]
+        /// /// **Source:** `TopoDS_CompSolid.hxx` - `TopoDS_CompSolid::TopoDS_CompSolid()`
+        ///
+        /// Constructs an Undefined CompSolid.
         #[cxx_name = "TopoDS_CompSolid_ctor"]
         fn CompSolid_ctor() -> UniquePtr<CompSolid>;
-        #[doc = "Upcast TopoDS_CompSolid to TopoDS_Shape"]
+        /// Upcast TopoDS_CompSolid to TopoDS_Shape
         #[cxx_name = "TopoDS_CompSolid_as_TopoDS_Shape"]
         fn comp_solid_as_shape(self_: &CompSolid) -> &Shape;
-        #[doc = "Upcast TopoDS_CompSolid to TopoDS_Shape (mutable)"]
+        /// Upcast TopoDS_CompSolid to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_CompSolid_as_TopoDS_Shape_mut"]
         fn comp_solid_as_shape_mut(self_: Pin<&mut CompSolid>) -> Pin<&mut Shape>;
-        #[doc = "Clone TopoDS_CompSolid into a new UniquePtr via copy constructor"]
+        /// Clone TopoDS_CompSolid into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn CompSolid_to_owned(self_: &CompSolid) -> UniquePtr<CompSolid>;
-        #[doc = " ======================== TopoDS_Builder ========================"]
-        #[doc = "/// **Source:** `TopoDS_Builder.hxx` - `TopoDS_Builder`"]
-        #[doc = ""]
-        #[doc = "A  Builder is used   to  create  Topological  Data Structures.It is the root of the Builder class hierarchy. There are three groups of methods in the Builder : The Make methods create Shapes. The Add method includes a Shape in another Shape. The Remove  method  removes a  Shape from an other Shape. The methods in Builder are not static. They can be redefined in inherited builders. This   Builder does not  provide   methods to Make Vertices,  Edges, Faces,  Shells  or Solids. These methods are  provided  in  the inherited  Builders as they must provide the geometry. The Add method check for the following rules : - Any SHAPE can be added in a COMPOUND. - Only SOLID can be added in a COMPSOLID. - Only SHELL, EDGE and VERTEX can be added in a SOLID. EDGE and VERTEX as to be INTERNAL or EXTERNAL. - Only FACE can be added in a SHELL. - Only WIRE and VERTEX can be added in a FACE. VERTEX as to be INTERNAL or EXTERNAL. - Only EDGE can be added in a WIRE. - Only VERTEX can be added in an EDGE. - Nothing can be added in a VERTEX."]
+        /// ======================== TopoDS_Builder ========================
+        /// /// **Source:** `TopoDS_Builder.hxx` - `TopoDS_Builder`
+        ///
+        /// A  Builder is used   to  create  Topological  Data Structures.It is the root of the Builder class hierarchy. There are three groups of methods in the Builder : The Make methods create Shapes. The Add method includes a Shape in another Shape. The Remove  method  removes a  Shape from an other Shape. The methods in Builder are not static. They can be redefined in inherited builders. This   Builder does not  provide   methods to Make Vertices,  Edges, Faces,  Shells  or Solids. These methods are  provided  in  the inherited  Builders as they must provide the geometry. The Add method check for the following rules : - Any SHAPE can be added in a COMPOUND. - Only SOLID can be added in a COMPSOLID. - Only SHELL, EDGE and VERTEX can be added in a SOLID. EDGE and VERTEX as to be INTERNAL or EXTERNAL. - Only FACE can be added in a SHELL. - Only WIRE and VERTEX can be added in a FACE. VERTEX as to be INTERNAL or EXTERNAL. - Only EDGE can be added in a WIRE. - Only VERTEX can be added in an EDGE. - Nothing can be added in a VERTEX.
         #[cxx_name = "TopoDS_Builder"]
         type Builder;
-        #[doc = "Make an empty Wire."]
+        /// Make an empty Wire.
         #[cxx_name = "MakeWire"]
         fn make_wire(self: &Builder, W: Pin<&mut Wire>);
-        #[doc = "Make an empty Shell."]
+        /// Make an empty Shell.
         #[cxx_name = "MakeShell"]
         fn make_shell(self: &Builder, S: Pin<&mut Shell>);
-        #[doc = "Make a Solid covering the whole 3D space."]
+        /// Make a Solid covering the whole 3D space.
         #[cxx_name = "MakeSolid"]
         fn make_solid(self: &Builder, S: Pin<&mut Solid>);
-        #[doc = "Make an empty Composite Solid."]
+        /// Make an empty Composite Solid.
         #[cxx_name = "MakeCompSolid"]
         fn make_comp_solid(self: &Builder, C: Pin<&mut CompSolid>);
-        #[doc = "Make an empty Compound."]
+        /// Make an empty Compound.
         #[cxx_name = "MakeCompound"]
         fn make_compound(self: &Builder, C: Pin<&mut Compound>);
-        #[doc = "Add the Shape C in the Shape S. Exceptions - TopoDS_FrozenShape if S is not free and cannot be modified. - TopoDS__UnCompatibleShapes if S and C are not compatible."]
+        /// Add the Shape C in the Shape S. Exceptions - TopoDS_FrozenShape if S is not free and cannot be modified. - TopoDS__UnCompatibleShapes if S and C are not compatible.
         #[cxx_name = "Add"]
         fn add(self: &Builder, S: Pin<&mut Shape>, C: &Shape);
-        #[doc = "Remove the Shape C from the Shape S. Exceptions TopoDS_FrozenShape if S is frozen and cannot be modified."]
+        /// Remove the Shape C from the Shape S. Exceptions TopoDS_FrozenShape if S is frozen and cannot be modified.
         #[cxx_name = "Remove"]
         fn remove(self: &Builder, S: Pin<&mut Shape>, C: &Shape);
-        #[doc = "Clone TopoDS_Builder into a new UniquePtr via copy constructor"]
+        /// Clone TopoDS_Builder into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Builder_to_owned(self_: &Builder) -> UniquePtr<Builder>;
-        #[doc = " ======================== TopoDS_Iterator ========================"]
-        #[doc = "/// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator`"]
-        #[doc = ""]
-        #[doc = "Iterates on the underlying shape underlying a given TopoDS_Shape object, providing access to its component sub-shapes. Each component shape is returned as a TopoDS_Shape with an orientation, and a compound of the original values and the relative values."]
+        /// ======================== TopoDS_Iterator ========================
+        /// /// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator`
+        ///
+        /// Iterates on the underlying shape underlying a given TopoDS_Shape object, providing access to its component sub-shapes. Each component shape is returned as a TopoDS_Shape with an orientation, and a compound of the original values and the relative values.
         #[cxx_name = "TopoDS_Iterator"]
         type Iterator;
-        #[doc = "/// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator::TopoDS_Iterator()`"]
-        #[doc = ""]
-        #[doc = "Creates an empty Iterator."]
+        /// /// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator::TopoDS_Iterator()`
+        ///
+        /// Creates an empty Iterator.
         #[cxx_name = "TopoDS_Iterator_ctor"]
         fn Iterator_ctor() -> UniquePtr<Iterator>;
-        #[doc = "/// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator::TopoDS_Iterator()`"]
-        #[doc = ""]
-        #[doc = "Creates an Iterator on <S> sub-shapes. Note: - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S."]
+        /// /// **Source:** `TopoDS_Iterator.hxx` - `TopoDS_Iterator::TopoDS_Iterator()`
+        ///
+        /// Creates an Iterator on <S> sub-shapes. Note: - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
         #[cxx_name = "TopoDS_Iterator_ctor_shape_bool2"]
         fn Iterator_ctor_shape_bool2(S: &Shape, cumOri: bool, cumLoc: bool) -> UniquePtr<Iterator>;
-        #[doc = "Initializes this iterator with shape S. Note: - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S."]
+        /// Initializes this iterator with shape S. Note: - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
         #[cxx_name = "Initialize"]
         fn initialize(self: Pin<&mut Iterator>, S: &Shape, cumOri: bool, cumLoc: bool);
-        #[doc = "Returns true if there is another sub-shape in the shape which this iterator is scanning."]
+        /// Returns true if there is another sub-shape in the shape which this iterator is scanning.
         #[cxx_name = "More"]
         fn more(self: &Iterator) -> bool;
-        #[doc = "Moves on to the next sub-shape in the shape which this iterator is scanning. Exceptions Standard_NoMoreObject if there are no more sub-shapes in the shape."]
+        /// Moves on to the next sub-shape in the shape which this iterator is scanning. Exceptions Standard_NoMoreObject if there are no more sub-shapes in the shape.
         #[cxx_name = "Next"]
         fn next(self: Pin<&mut Iterator>);
-        #[doc = "Returns the current sub-shape in the shape which this iterator is scanning. Exceptions Standard_NoSuchObject if there is no current sub-shape."]
+        /// Returns the current sub-shape in the shape which this iterator is scanning. Exceptions Standard_NoSuchObject if there is no current sub-shape.
         #[cxx_name = "Value"]
         fn value(self: &Iterator) -> &Shape;
-        #[doc = "Clone TopoDS_Iterator into a new UniquePtr via copy constructor"]
+        /// Clone TopoDS_Iterator into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Iterator_to_owned(self_: &Iterator) -> UniquePtr<Iterator>;
-        #[doc = " ======================== TopoDS_TShape ========================"]
-        #[doc = "/// **Source:** `TopoDS_TShape.hxx` - `TopoDS_TShape`"]
-        #[doc = ""]
-        #[doc = "A TShape  is a topological  structure describing a set of points in a 2D or 3D space. A topological shape is a structure made from other shapes.  This is a deferred class  used to support topological objects. TShapes are   defined   by  their  optional domain (geometry)  and  their  components  (other TShapes with  Locations and Orientations).  The components are stored in a List of Shapes. A   TShape contains  the   following boolean flags : - Free       : Free or Frozen. - Modified   : Has been modified. - Checked    : Has been checked. - Orientable : Can be oriented. - Closed     : Is closed (note that only Wires and Shells may be closed). - Infinite   : Is infinite. - Convex     : Is convex. Users have no direct access to the classes derived from TShape.  They  handle them with   the classes derived from Shape."]
+        /// ======================== TopoDS_TShape ========================
+        /// /// **Source:** `TopoDS_TShape.hxx` - `TopoDS_TShape`
+        ///
+        /// A TShape  is a topological  structure describing a set of points in a 2D or 3D space. A topological shape is a structure made from other shapes.  This is a deferred class  used to support topological objects. TShapes are   defined   by  their  optional domain (geometry)  and  their  components  (other TShapes with  Locations and Orientations).  The components are stored in a List of Shapes. A   TShape contains  the   following boolean flags : - Free       : Free or Frozen. - Modified   : Has been modified. - Checked    : Has been checked. - Orientable : Can be oriented. - Closed     : Is closed (note that only Wires and Shells may be closed). - Infinite   : Is infinite. - Convex     : Is convex. Users have no direct access to the classes derived from TShape.  They  handle them with   the classes derived from Shape.
         #[cxx_name = "TopoDS_TShape"]
         type TShape;
-        #[doc = "Returns the free flag."]
+        /// Returns the free flag.
         #[cxx_name = "Free"]
         fn free(self: &TShape) -> bool;
-        #[doc = "Sets the free flag."]
+        /// Sets the free flag.
         #[cxx_name = "Free"]
         fn free_bool(self: Pin<&mut TShape>, theIsFree: bool);
-        #[doc = "Returns the locked flag."]
+        /// Returns the locked flag.
         #[cxx_name = "Locked"]
         fn locked(self: &TShape) -> bool;
-        #[doc = "Sets the locked flag."]
+        /// Sets the locked flag.
         #[cxx_name = "Locked"]
         fn locked_bool(self: Pin<&mut TShape>, theIsLocked: bool);
-        #[doc = "Returns the modification flag."]
+        /// Returns the modification flag.
         #[cxx_name = "Modified"]
         fn modified(self: &TShape) -> bool;
-        #[doc = "Sets the modification flag."]
+        /// Sets the modification flag.
         #[cxx_name = "Modified"]
         fn modified_bool(self: Pin<&mut TShape>, theIsModified: bool);
-        #[doc = "Returns the checked flag."]
+        /// Returns the checked flag.
         #[cxx_name = "Checked"]
         fn checked(self: &TShape) -> bool;
-        #[doc = "Sets the checked flag."]
+        /// Sets the checked flag.
         #[cxx_name = "Checked"]
         fn checked_bool(self: Pin<&mut TShape>, theIsChecked: bool);
-        #[doc = "Returns the orientability flag."]
+        /// Returns the orientability flag.
         #[cxx_name = "Orientable"]
         fn orientable(self: &TShape) -> bool;
-        #[doc = "Sets the orientability flag."]
+        /// Sets the orientability flag.
         #[cxx_name = "Orientable"]
         fn orientable_bool(self: Pin<&mut TShape>, theIsOrientable: bool);
-        #[doc = "Returns the closedness flag."]
+        /// Returns the closedness flag.
         #[cxx_name = "Closed"]
         fn closed(self: &TShape) -> bool;
-        #[doc = "Sets the closedness flag."]
+        /// Sets the closedness flag.
         #[cxx_name = "Closed"]
         fn closed_bool(self: Pin<&mut TShape>, theIsClosed: bool);
-        #[doc = "Returns the infinity flag."]
+        /// Returns the infinity flag.
         #[cxx_name = "Infinite"]
         fn infinite(self: &TShape) -> bool;
-        #[doc = "Sets the infinity flag."]
+        /// Sets the infinity flag.
         #[cxx_name = "Infinite"]
         fn infinite_bool(self: Pin<&mut TShape>, theIsInfinite: bool);
-        #[doc = "Returns the convexness flag."]
+        /// Returns the convexness flag.
         #[cxx_name = "Convex"]
         fn convex(self: &TShape) -> bool;
-        #[doc = "Sets the convexness flag."]
+        /// Sets the convexness flag.
         #[cxx_name = "Convex"]
         fn convex_bool(self: Pin<&mut TShape>, theIsConvex: bool);
-        #[doc = "Returns the number of direct sub-shapes (children). @sa TopoDS_Iterator for accessing sub-shapes"]
+        /// Returns the number of direct sub-shapes (children). @sa TopoDS_Iterator for accessing sub-shapes
         #[cxx_name = "NbChildren"]
         fn nb_children(self: &TShape) -> i32;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &TShape) -> &HandleStandardType;
-        #[doc = "Returns a copy  of the  TShape  with no sub-shapes."]
+        /// Returns a copy  of the  TShape  with no sub-shapes.
         #[cxx_name = "TopoDS_TShape_EmptyCopy"]
         fn TShape_empty_copy(self_: &TShape) -> UniquePtr<HandleTopoDSTShape>;
         #[cxx_name = "TopoDS_TShape_get_type_name"]
         fn TShape_get_type_name() -> String;
+
         // ========================
         // Free functions
         // ========================
-        #[doc = "Casts shape theShape to the more specialized return type, Vertex. @param theShape the shape to be cast @return the casted shape as TopoDS_Vertex @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, Vertex. @param theShape the shape to be cast @return the casted shape as TopoDS_Vertex @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_Vertex"]
         fn vertex(theShape: &Shape) -> &Vertex;
-        #[doc = "Casts shape theShape to the more specialized return type, Vertex. @param theShape the shape to be cast @return the casted shape as TopoDS_Vertex @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, Vertex. @param theShape the shape to be cast @return the casted shape as TopoDS_Vertex @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_Vertex_mut"]
         fn vertex_mut(theShape: Pin<&mut Shape>) -> Pin<&mut Vertex>;
-        #[doc = "Casts shape theShape to the more specialized return type, Edge. @param theShape the shape to be cast @return the casted shape as TopoDS_Edge @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, Edge. @param theShape the shape to be cast @return the casted shape as TopoDS_Edge @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_Edge"]
         fn edge(theShape: &Shape) -> &Edge;
-        #[doc = "Casts shape theShape to the more specialized return type, Edge. @param theShape the shape to be cast @return the casted shape as TopoDS_Edge @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, Edge. @param theShape the shape to be cast @return the casted shape as TopoDS_Edge @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_Edge_mut"]
         fn edge_mut(theShape: Pin<&mut Shape>) -> Pin<&mut Edge>;
-        #[doc = "Casts shape theShape to the more specialized return type, Wire. @param theShape the shape to be cast @return the casted shape as TopoDS_Wire @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, Wire. @param theShape the shape to be cast @return the casted shape as TopoDS_Wire @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_Wire"]
         fn wire(theShape: &Shape) -> &Wire;
-        #[doc = "Casts shape theShape to the more specialized return type, Wire. @param theShape the shape to be cast @return the casted shape as TopoDS_Wire @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, Wire. @param theShape the shape to be cast @return the casted shape as TopoDS_Wire @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_Wire_mut"]
         fn wire_mut(theShape: Pin<&mut Shape>) -> Pin<&mut Wire>;
-        #[doc = "Casts shape theShape to the more specialized return type, Face. @param theShape the shape to be cast @return the casted shape as TopoDS_Face @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, Face. @param theShape the shape to be cast @return the casted shape as TopoDS_Face @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_Face"]
         fn face(theShape: &Shape) -> &Face;
-        #[doc = "Casts shape theShape to the more specialized return type, Face. @param theShape the shape to be cast @return the casted shape as TopoDS_Face @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, Face. @param theShape the shape to be cast @return the casted shape as TopoDS_Face @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_Face_mut"]
         fn face_mut(theShape: Pin<&mut Shape>) -> Pin<&mut Face>;
-        #[doc = "Casts shape theShape to the more specialized return type, Shell. @param theShape the shape to be cast @return the casted shape as TopoDS_Shell @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, Shell. @param theShape the shape to be cast @return the casted shape as TopoDS_Shell @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_Shell"]
         fn shell(theShape: &Shape) -> &Shell;
-        #[doc = "Casts shape theShape to the more specialized return type, Shell. @param theShape the shape to be cast @return the casted shape as TopoDS_Shell @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, Shell. @param theShape the shape to be cast @return the casted shape as TopoDS_Shell @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_Shell_mut"]
         fn shell_mut(theShape: Pin<&mut Shape>) -> Pin<&mut Shell>;
-        #[doc = "Casts shape theShape to the more specialized return type, Solid. @param theShape the shape to be cast @return the casted shape as TopoDS_Solid @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, Solid. @param theShape the shape to be cast @return the casted shape as TopoDS_Solid @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_Solid"]
         fn solid(theShape: &Shape) -> &Solid;
-        #[doc = "Casts shape theShape to the more specialized return type, Solid. @param theShape the shape to be cast @return the casted shape as TopoDS_Solid @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, Solid. @param theShape the shape to be cast @return the casted shape as TopoDS_Solid @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_Solid_mut"]
         fn solid_mut(theShape: Pin<&mut Shape>) -> Pin<&mut Solid>;
-        #[doc = "Casts shape theShape to the more specialized return type, CompSolid. @param theShape the shape to be cast @return the casted shape as TopoDS_CompSolid @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, CompSolid. @param theShape the shape to be cast @return the casted shape as TopoDS_CompSolid @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_CompSolid"]
         fn comp_solid(theShape: &Shape) -> &CompSolid;
-        #[doc = "Casts shape theShape to the more specialized return type, CompSolid. @param theShape the shape to be cast @return the casted shape as TopoDS_CompSolid @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, CompSolid. @param theShape the shape to be cast @return the casted shape as TopoDS_CompSolid @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_CompSolid_mut"]
         fn comp_solid_mut(theShape: Pin<&mut Shape>) -> Pin<&mut CompSolid>;
-        #[doc = "Casts shape theShape to the more specialized return type, Compound. @param theShape the shape to be cast @return the casted shape as TopoDS_Compound @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, Compound. @param theShape the shape to be cast @return the casted shape as TopoDS_Compound @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_Compound"]
         fn compound(theShape: &Shape) -> &Compound;
-        #[doc = "Casts shape theShape to the more specialized return type, Compound. @param theShape the shape to be cast @return the casted shape as TopoDS_Compound @throws Standard_TypeMismatch if theShape cannot be cast to this return type."]
+        /// Casts shape theShape to the more specialized return type, Compound. @param theShape the shape to be cast @return the casted shape as TopoDS_Compound @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
         #[cxx_name = "TopoDS_fn_Compound_mut"]
         fn compound_mut(theShape: Pin<&mut Shape>) -> Pin<&mut Compound>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "TopAbs from top_abs module"]
+        /// TopAbs from top_abs module
         type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "Location from top_loc module"]
+        /// Location from top_loc module
         type TopLoc_Location = crate::top_loc::ffi::Location;
-        #[doc = "SListOfItemLocation from top_loc module"]
+        /// SListOfItemLocation from top_loc module
         type TopLoc_SListOfItemLocation = crate::top_loc::ffi::SListOfItemLocation;
+
         // ========================
         // Referenced types (opaque)
         // ========================

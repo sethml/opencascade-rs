@@ -21,7 +21,7 @@ impl Curve {
         ffi::Curve_ctor_handlecurve(theCurve)
     }
 
-    #[doc = "Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion()"]
+    /// Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion()
     pub fn new_handlecurve_real2(
         theCurve: &ffi::HandleGeomCurve,
         theUFirst: f64,
@@ -30,24 +30,24 @@ impl Curve {
         ffi::Curve_ctor_handlecurve_real2(theCurve, theUFirst, theULast)
     }
 
-    #[doc = "Upcast to Adaptor3d_Curve"]
+    /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
         ffi::curve_as_adaptor3d_curve(self)
     }
 
-    #[doc = "Upcast to Adaptor3d_Curve (mutable)"]
+    /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_adaptor3d_curve_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::adaptor3d::Curve> {
         ffi::curve_as_adaptor3d_curve_mut(self)
     }
 
-    #[doc = "Shallow copy of adaptor"]
+    /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> cxx::UniquePtr<ffi::HandleAdaptor3dCurve> {
         ffi::Curve_shallow_copy(self)
     }
 
-    #[doc = "Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>"]
+    /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
     pub fn trim(
         &self,
         First: f64,
@@ -57,12 +57,12 @@ impl Curve {
         ffi::Curve_trim(self, First, Last, Tol)
     }
 
-    #[doc = "Computes the point of parameter U on the curve"]
+    /// Computes the point of parameter U on the curve
     pub fn value(&self, U: f64) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::Curve_value(self, U)
     }
 
-    #[doc = "The returned vector gives the value of the derivative for the order of derivation N. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve. Raised if N < 1."]
+    /// The returned vector gives the value of the derivative for the order of derivation N. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve. Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
         ffi::Curve_dn(self, U, N)
     }
@@ -87,12 +87,12 @@ impl Curve {
         ffi::Curve_parabola(self)
     }
 
-    #[doc = "this will NOT make a copy of the Bezier Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last."]
+    /// this will NOT make a copy of the Bezier Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
     pub fn bezier(&self) -> cxx::UniquePtr<ffi::HandleGeomBezierCurve> {
         ffi::Curve_bezier(self)
     }
 
-    #[doc = "this will NOT make a copy of the BSpline Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last."]
+    /// this will NOT make a copy of the BSpline Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
     pub fn b_spline(&self) -> cxx::UniquePtr<ffi::HandleGeomBSplineCurve> {
         ffi::Curve_b_spline(self)
     }
@@ -115,7 +115,7 @@ impl Surface {
         ffi::Surface_ctor_handlesurface(theSurf)
     }
 
-    #[doc = "Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast"]
+    /// Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast
     pub fn new_handlesurface_real6(
         theSurf: &ffi::HandleGeomSurface,
         theUFirst: f64,
@@ -130,24 +130,24 @@ impl Surface {
         )
     }
 
-    #[doc = "Upcast to Adaptor3d_Surface"]
+    /// Upcast to Adaptor3d_Surface
     pub fn as_adaptor3d_surface(&self) -> &crate::adaptor3d::Surface {
         ffi::surface_as_adaptor3d_surface(self)
     }
 
-    #[doc = "Upcast to Adaptor3d_Surface (mutable)"]
+    /// Upcast to Adaptor3d_Surface (mutable)
     pub fn as_adaptor3d_surface_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::adaptor3d::Surface> {
         ffi::surface_as_adaptor3d_surface_mut(self)
     }
 
-    #[doc = "Shallow copy of adaptor"]
+    /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> cxx::UniquePtr<ffi::HandleAdaptor3dSurface> {
         ffi::Surface_shallow_copy(self)
     }
 
-    #[doc = "Returns    a  surface trimmed in the U direction equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>"]
+    /// Returns    a  surface trimmed in the U direction equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
     pub fn u_trim(
         &self,
         First: f64,
@@ -157,7 +157,7 @@ impl Surface {
         ffi::Surface_u_trim(self, First, Last, Tol)
     }
 
-    #[doc = "Returns    a  surface trimmed in the V direction  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>"]
+    /// Returns    a  surface trimmed in the V direction  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
     pub fn v_trim(
         &self,
         First: f64,
@@ -167,12 +167,12 @@ impl Surface {
         ffi::Surface_v_trim(self, First, Last, Tol)
     }
 
-    #[doc = "Computes the point of parameters U,V on the surface."]
+    /// Computes the point of parameters U,V on the surface.
     pub fn value(&self, U: f64, V: f64) -> cxx::UniquePtr<ffi::gp_Pnt> {
         ffi::Surface_value(self, U, V)
     }
 
-    #[doc = "Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0."]
+    /// Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
     pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> cxx::UniquePtr<ffi::gp_Vec> {
         ffi::Surface_dn(self, U, V, Nu, Nv)
     }
@@ -197,12 +197,12 @@ impl Surface {
         ffi::Surface_torus(self)
     }
 
-    #[doc = "This will NOT make a copy of the Bezier Surface : If you want to modify the Surface please make a copy yourself Also it will NOT trim the surface to myU/VFirst/Last."]
+    /// This will NOT make a copy of the Bezier Surface : If you want to modify the Surface please make a copy yourself Also it will NOT trim the surface to myU/VFirst/Last.
     pub fn bezier(&self) -> cxx::UniquePtr<ffi::HandleGeomBezierSurface> {
         ffi::Surface_bezier(self)
     }
 
-    #[doc = "This will NOT make a copy of the BSpline Surface : If you want to modify the Surface please make a copy yourself Also it will NOT trim the surface to myU/VFirst/Last."]
+    /// This will NOT make a copy of the BSpline Surface : If you want to modify the Surface please make a copy yourself Also it will NOT trim the surface to myU/VFirst/Last.
     pub fn b_spline(&self) -> cxx::UniquePtr<ffi::HandleGeomBSplineSurface> {
         ffi::Surface_b_spline(self)
     }
@@ -231,24 +231,25 @@ impl Surface {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_geom_adaptor.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== GeomAdaptor_Curve ========================"]
-        #[doc = "/// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve`"]
-        #[doc = ""]
-        #[doc = "This class provides an interface between the services provided by any curve from the package Geom and those required of the curve by algorithms which use it. Creation of the loaded curve the curve is C1 by piece. Polynomial coefficients of BSpline curves used for their evaluation are cached for better performance. Therefore these evaluations are not thread-safe and parallel evaluations need to be prevented."]
+        /// ======================== GeomAdaptor_Curve ========================
+        /// /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve`
+        ///
+        /// This class provides an interface between the services provided by any curve from the package Geom and those required of the curve by algorithms which use it. Creation of the loaded curve the curve is C1 by piece. Polynomial coefficients of BSpline curves used for their evaluation are cached for better performance. Therefore these evaluations are not thread-safe and parallel evaluations need to be prevented.
         #[cxx_name = "GeomAdaptor_Curve"]
         type Curve;
-        #[doc = "/// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`"]
+        /// /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
         #[cxx_name = "GeomAdaptor_Curve_ctor"]
         fn Curve_ctor() -> UniquePtr<Curve>;
-        #[doc = "/// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`"]
+        /// /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
         #[cxx_name = "GeomAdaptor_Curve_ctor_handlecurve"]
         fn Curve_ctor_handlecurve(theCurve: &HandleGeomCurve) -> UniquePtr<Curve>;
-        #[doc = "/// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`"]
-        #[doc = ""]
-        #[doc = "Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion()"]
+        /// /// **Source:** `GeomAdaptor_Curve.hxx` - `GeomAdaptor_Curve::GeomAdaptor_Curve()`
+        ///
+        /// Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion()
         #[cxx_name = "GeomAdaptor_Curve_ctor_handlecurve_real2"]
         fn Curve_ctor_handlecurve_real2(
             theCurve: &HandleGeomCurve,
@@ -257,12 +258,12 @@ pub(crate) mod ffi {
         ) -> UniquePtr<Curve>;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Curve) -> &HandleStandardType;
-        #[doc = "Reset currently loaded curve (undone Load())."]
+        /// Reset currently loaded curve (undone Load()).
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut Curve>);
         #[cxx_name = "Load"]
         fn load_handlecurve(self: Pin<&mut Curve>, theCurve: &HandleGeomCurve);
-        #[doc = "Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion()"]
+        /// Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion()
         #[cxx_name = "Load"]
         fn load_handlecurve_real2(
             self: Pin<&mut Curve>,
@@ -270,7 +271,7 @@ pub(crate) mod ffi {
             theUFirst: f64,
             theULast: f64,
         );
-        #[doc = "Provides a curve inherited from Hcurve from Adaptor. This is inherited to provide easy to use constructors."]
+        /// Provides a curve inherited from Hcurve from Adaptor. This is inherited to provide easy to use constructors.
         #[cxx_name = "Curve"]
         fn curve(self: &Curve) -> &HandleGeomCurve;
         #[cxx_name = "FirstParameter"]
@@ -283,13 +284,13 @@ pub(crate) mod ffi {
         fn is_periodic(self: &Curve) -> bool;
         #[cxx_name = "Period"]
         fn period(self: &Curve) -> f64;
-        #[doc = "Computes the point of parameter U."]
+        /// Computes the point of parameter U.
         #[cxx_name = "D0"]
         fn d0(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>);
-        #[doc = "Computes the point of parameter U on the curve with its first derivative. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C1, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve."]
+        /// Computes the point of parameter U on the curve with its first derivative. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C1, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
         #[cxx_name = "D1"]
         fn d1(self: &Curve, U: f64, P: Pin<&mut gp_Pnt>, V: Pin<&mut gp_Vec>);
-        #[doc = "Returns the point P of parameter U, the first and second derivatives V1 and V2. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C2, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve."]
+        /// Returns the point P of parameter U, the first and second derivatives V1 and V2. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C2, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
         #[cxx_name = "D2"]
         fn d2(
             self: &Curve,
@@ -298,7 +299,7 @@ pub(crate) mod ffi {
             V1: Pin<&mut gp_Vec>,
             V2: Pin<&mut gp_Vec>,
         );
-        #[doc = "Returns the point P of parameter U, the first, the second and the third derivative. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C3, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve."]
+        /// Returns the point P of parameter U, the first, the second and the third derivative. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C3, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
         #[cxx_name = "D3"]
         fn d3(
             self: &Curve,
@@ -308,25 +309,25 @@ pub(crate) mod ffi {
             V2: Pin<&mut gp_Vec>,
             V3: Pin<&mut gp_Vec>,
         );
-        #[doc = "returns the parametric resolution"]
+        /// returns the parametric resolution
         #[cxx_name = "Resolution"]
         fn resolution(self: &Curve, R3d: f64) -> f64;
-        #[doc = "this should NEVER make a copy of the underlying curve to read the relevant information"]
+        /// this should NEVER make a copy of the underlying curve to read the relevant information
         #[cxx_name = "Degree"]
         fn degree(self: &Curve) -> i32;
-        #[doc = "this should NEVER make a copy of the underlying curve to read the relevant information"]
+        /// this should NEVER make a copy of the underlying curve to read the relevant information
         #[cxx_name = "IsRational"]
         fn is_rational(self: &Curve) -> bool;
-        #[doc = "this should NEVER make a copy of the underlying curve to read the relevant information"]
+        /// this should NEVER make a copy of the underlying curve to read the relevant information
         #[cxx_name = "NbPoles"]
         fn nb_poles(self: &Curve) -> i32;
-        #[doc = "this should NEVER make a copy of the underlying curve to read the relevant information"]
+        /// this should NEVER make a copy of the underlying curve to read the relevant information
         #[cxx_name = "NbKnots"]
         fn nb_knots(self: &Curve) -> i32;
-        #[doc = "Shallow copy of adaptor"]
+        /// Shallow copy of adaptor
         #[cxx_name = "GeomAdaptor_Curve_ShallowCopy"]
         fn Curve_shallow_copy(self_: &Curve) -> UniquePtr<HandleAdaptor3dCurve>;
-        #[doc = "Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>"]
+        /// Returns    a  curve equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
         #[cxx_name = "GeomAdaptor_Curve_Trim"]
         fn Curve_trim(
             self_: &Curve,
@@ -334,10 +335,10 @@ pub(crate) mod ffi {
             Last: f64,
             Tol: f64,
         ) -> UniquePtr<HandleAdaptor3dCurve>;
-        #[doc = "Computes the point of parameter U on the curve"]
+        /// Computes the point of parameter U on the curve
         #[cxx_name = "GeomAdaptor_Curve_Value"]
         fn Curve_value(self_: &Curve, U: f64) -> UniquePtr<gp_Pnt>;
-        #[doc = "The returned vector gives the value of the derivative for the order of derivation N. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve. Raised if N < 1."]
+        /// The returned vector gives the value of the derivative for the order of derivation N. Warning : On the specific case of BSplineCurve: if the curve is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve. Raised if N < 1.
         #[cxx_name = "GeomAdaptor_Curve_DN"]
         fn Curve_dn(self_: &Curve, U: f64, N: i32) -> UniquePtr<gp_Vec>;
         #[cxx_name = "GeomAdaptor_Curve_Line"]
@@ -350,37 +351,37 @@ pub(crate) mod ffi {
         fn Curve_hyperbola(self_: &Curve) -> UniquePtr<gp_Hypr>;
         #[cxx_name = "GeomAdaptor_Curve_Parabola"]
         fn Curve_parabola(self_: &Curve) -> UniquePtr<gp_Parab>;
-        #[doc = "this will NOT make a copy of the Bezier Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last."]
+        /// this will NOT make a copy of the Bezier Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
         #[cxx_name = "GeomAdaptor_Curve_Bezier"]
         fn Curve_bezier(self_: &Curve) -> UniquePtr<HandleGeomBezierCurve>;
-        #[doc = "this will NOT make a copy of the BSpline Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last."]
+        /// this will NOT make a copy of the BSpline Curve : If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
         #[cxx_name = "GeomAdaptor_Curve_BSpline"]
         fn Curve_b_spline(self_: &Curve) -> UniquePtr<HandleGeomBSplineCurve>;
         #[cxx_name = "GeomAdaptor_Curve_OffsetCurve"]
         fn Curve_offset_curve(self_: &Curve) -> UniquePtr<HandleGeomOffsetCurve>;
         #[cxx_name = "GeomAdaptor_Curve_get_type_name"]
         fn Curve_get_type_name() -> String;
-        #[doc = "Upcast GeomAdaptor_Curve to Adaptor3d_Curve"]
+        /// Upcast GeomAdaptor_Curve to Adaptor3d_Curve
         #[cxx_name = "GeomAdaptor_Curve_as_Adaptor3d_Curve"]
         fn curve_as_adaptor3d_curve(self_: &Curve) -> &Adaptor3d_Curve;
-        #[doc = "Upcast GeomAdaptor_Curve to Adaptor3d_Curve (mutable)"]
+        /// Upcast GeomAdaptor_Curve to Adaptor3d_Curve (mutable)
         #[cxx_name = "GeomAdaptor_Curve_as_Adaptor3d_Curve_mut"]
         fn curve_as_adaptor3d_curve_mut(self_: Pin<&mut Curve>) -> Pin<&mut Adaptor3d_Curve>;
-        #[doc = " ======================== GeomAdaptor_Surface ========================"]
-        #[doc = "/// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface`"]
-        #[doc = ""]
-        #[doc = "An interface between the services provided by any surface from the package Geom and those required of the surface by algorithms which use it. Creation of the loaded surface the surface is C1 by piece Polynomial coefficients of BSpline surfaces used for their evaluation are cached for better performance. Therefore these evaluations are not thread-safe and parallel evaluations need to be prevented."]
+        /// ======================== GeomAdaptor_Surface ========================
+        /// /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface`
+        ///
+        /// An interface between the services provided by any surface from the package Geom and those required of the surface by algorithms which use it. Creation of the loaded surface the surface is C1 by piece Polynomial coefficients of BSpline surfaces used for their evaluation are cached for better performance. Therefore these evaluations are not thread-safe and parallel evaluations need to be prevented.
         #[cxx_name = "GeomAdaptor_Surface"]
         type Surface;
-        #[doc = "/// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`"]
+        /// /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
         #[cxx_name = "GeomAdaptor_Surface_ctor"]
         fn Surface_ctor() -> UniquePtr<Surface>;
-        #[doc = "/// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`"]
+        /// /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
         #[cxx_name = "GeomAdaptor_Surface_ctor_handlesurface"]
         fn Surface_ctor_handlesurface(theSurf: &HandleGeomSurface) -> UniquePtr<Surface>;
-        #[doc = "/// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`"]
-        #[doc = ""]
-        #[doc = "Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast"]
+        /// /// **Source:** `GeomAdaptor_Surface.hxx` - `GeomAdaptor_Surface::GeomAdaptor_Surface()`
+        ///
+        /// Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast
         #[cxx_name = "GeomAdaptor_Surface_ctor_handlesurface_real6"]
         fn Surface_ctor_handlesurface_real6(
             theSurf: &HandleGeomSurface,
@@ -395,7 +396,7 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &Surface) -> &HandleStandardType;
         #[cxx_name = "Load"]
         fn load_handlesurface(self: Pin<&mut Surface>, theSurf: &HandleGeomSurface);
-        #[doc = "Standard_ConstructionError is raised if theUFirst>theULast or theVFirst>theVLast"]
+        /// Standard_ConstructionError is raised if theUFirst>theULast or theVFirst>theVLast
         #[cxx_name = "Load"]
         fn load_handlesurface_real6(
             self: Pin<&mut Surface>,
@@ -429,10 +430,10 @@ pub(crate) mod ffi {
         fn is_v_periodic(self: &Surface) -> bool;
         #[cxx_name = "VPeriod"]
         fn v_period(self: &Surface) -> f64;
-        #[doc = "Computes the point of parameters U,V on the surface."]
+        /// Computes the point of parameters U,V on the surface.
         #[cxx_name = "D0"]
         fn d0(self: &Surface, U: f64, V: f64, P: Pin<&mut gp_Pnt>);
-        #[doc = "Computes the point  and the first derivatives on the surface. Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C1, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface."]
+        /// Computes the point  and the first derivatives on the surface. Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C1, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
         #[cxx_name = "D1"]
         fn d1(
             self: &Surface,
@@ -442,7 +443,7 @@ pub(crate) mod ffi {
             D1U: Pin<&mut gp_Vec>,
             D1V: Pin<&mut gp_Vec>,
         );
-        #[doc = "Computes   the point,  the  first  and  second derivatives on the surface. Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C2, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface."]
+        /// Computes   the point,  the  first  and  second derivatives on the surface. Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C2, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
         #[cxx_name = "D2"]
         fn d2(
             self: &Surface,
@@ -455,7 +456,7 @@ pub(crate) mod ffi {
             D2V: Pin<&mut gp_Vec>,
             D2UV: Pin<&mut gp_Vec>,
         );
-        #[doc = "Computes the point,  the first, second and third derivatives on the surface. Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C3, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface."]
+        /// Computes the point,  the first, second and third derivatives on the surface. Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C3, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
         #[cxx_name = "D3"]
         fn d3(
             self: &Surface,
@@ -472,10 +473,10 @@ pub(crate) mod ffi {
             D3UUV: Pin<&mut gp_Vec>,
             D3UVV: Pin<&mut gp_Vec>,
         );
-        #[doc = "Returns the parametric U  resolution corresponding to the real space resolution <R3d>."]
+        /// Returns the parametric U  resolution corresponding to the real space resolution <R3d>.
         #[cxx_name = "UResolution"]
         fn u_resolution(self: &Surface, R3d: f64) -> f64;
-        #[doc = "Returns the parametric V  resolution corresponding to the real space resolution <R3d>."]
+        /// Returns the parametric V  resolution corresponding to the real space resolution <R3d>.
         #[cxx_name = "VResolution"]
         fn v_resolution(self: &Surface, R3d: f64) -> f64;
         #[cxx_name = "UDegree"]
@@ -496,10 +497,10 @@ pub(crate) mod ffi {
         fn is_v_rational(self: &Surface) -> bool;
         #[cxx_name = "OffsetValue"]
         fn offset_value(self: &Surface) -> f64;
-        #[doc = "Shallow copy of adaptor"]
+        /// Shallow copy of adaptor
         #[cxx_name = "GeomAdaptor_Surface_ShallowCopy"]
         fn Surface_shallow_copy(self_: &Surface) -> UniquePtr<HandleAdaptor3dSurface>;
-        #[doc = "Returns    a  surface trimmed in the U direction equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>"]
+        /// Returns    a  surface trimmed in the U direction equivalent   of  <me>  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
         #[cxx_name = "GeomAdaptor_Surface_UTrim"]
         fn Surface_u_trim(
             self_: &Surface,
@@ -507,7 +508,7 @@ pub(crate) mod ffi {
             Last: f64,
             Tol: f64,
         ) -> UniquePtr<HandleAdaptor3dSurface>;
-        #[doc = "Returns    a  surface trimmed in the V direction  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>"]
+        /// Returns    a  surface trimmed in the V direction  between parameters <First>  and <Last>. <Tol>  is used  to test for 3d points confusion. If <First> >= <Last>
         #[cxx_name = "GeomAdaptor_Surface_VTrim"]
         fn Surface_v_trim(
             self_: &Surface,
@@ -515,10 +516,10 @@ pub(crate) mod ffi {
             Last: f64,
             Tol: f64,
         ) -> UniquePtr<HandleAdaptor3dSurface>;
-        #[doc = "Computes the point of parameters U,V on the surface."]
+        /// Computes the point of parameters U,V on the surface.
         #[cxx_name = "GeomAdaptor_Surface_Value"]
         fn Surface_value(self_: &Surface, U: f64, V: f64) -> UniquePtr<gp_Pnt>;
-        #[doc = "Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0."]
+        /// Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Warning : On the specific case of BSplineSurface: if the surface is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
         #[cxx_name = "GeomAdaptor_Surface_DN"]
         fn Surface_dn(self_: &Surface, U: f64, V: f64, Nu: i32, Nv: i32) -> UniquePtr<gp_Vec>;
         #[cxx_name = "GeomAdaptor_Surface_Plane"]
@@ -531,10 +532,10 @@ pub(crate) mod ffi {
         fn Surface_sphere(self_: &Surface) -> UniquePtr<gp_Sphere>;
         #[cxx_name = "GeomAdaptor_Surface_Torus"]
         fn Surface_torus(self_: &Surface) -> UniquePtr<gp_Torus>;
-        #[doc = "This will NOT make a copy of the Bezier Surface : If you want to modify the Surface please make a copy yourself Also it will NOT trim the surface to myU/VFirst/Last."]
+        /// This will NOT make a copy of the Bezier Surface : If you want to modify the Surface please make a copy yourself Also it will NOT trim the surface to myU/VFirst/Last.
         #[cxx_name = "GeomAdaptor_Surface_Bezier"]
         fn Surface_bezier(self_: &Surface) -> UniquePtr<HandleGeomBezierSurface>;
-        #[doc = "This will NOT make a copy of the BSpline Surface : If you want to modify the Surface please make a copy yourself Also it will NOT trim the surface to myU/VFirst/Last."]
+        /// This will NOT make a copy of the BSpline Surface : If you want to modify the Surface please make a copy yourself Also it will NOT trim the surface to myU/VFirst/Last.
         #[cxx_name = "GeomAdaptor_Surface_BSpline"]
         fn Surface_b_spline(self_: &Surface) -> UniquePtr<HandleGeomBSplineSurface>;
         #[cxx_name = "GeomAdaptor_Surface_AxeOfRevolution"]
@@ -547,187 +548,189 @@ pub(crate) mod ffi {
         fn Surface_basis_surface(self_: &Surface) -> UniquePtr<HandleAdaptor3dSurface>;
         #[cxx_name = "GeomAdaptor_Surface_get_type_name"]
         fn Surface_get_type_name() -> String;
-        #[doc = "Upcast GeomAdaptor_Surface to Adaptor3d_Surface"]
+        /// Upcast GeomAdaptor_Surface to Adaptor3d_Surface
         #[cxx_name = "GeomAdaptor_Surface_as_Adaptor3d_Surface"]
         fn surface_as_adaptor3d_surface(self_: &Surface) -> &Adaptor3d_Surface;
-        #[doc = "Upcast GeomAdaptor_Surface to Adaptor3d_Surface (mutable)"]
+        /// Upcast GeomAdaptor_Surface to Adaptor3d_Surface (mutable)
         #[cxx_name = "GeomAdaptor_Surface_as_Adaptor3d_Surface_mut"]
         fn surface_as_adaptor3d_surface_mut(
             self_: Pin<&mut Surface>,
         ) -> Pin<&mut Adaptor3d_Surface>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Curve from adaptor3d module"]
+        /// Curve from adaptor3d module
         type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
-        #[doc = "CurveOnSurface from adaptor3d module"]
+        /// CurveOnSurface from adaptor3d module
         type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
-        #[doc = "Surface from adaptor3d module"]
+        /// Surface from adaptor3d module
         type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
-        #[doc = "BSplineCurve from geom module"]
+        /// BSplineCurve from geom module
         type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
+        /// BSplineSurface from geom module
         type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
+        /// BezierCurve from geom module
         type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
+        /// BezierSurface from geom module
         type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
+        /// BoundedCurve from geom module
         type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
+        /// BoundedSurface from geom module
         type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
+        /// Curve from geom module
         type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
+        /// CylindricalSurface from geom module
         type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
+        /// ElementarySurface from geom module
         type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
+        /// Geometry from geom module
         type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
+        /// Plane from geom module
         type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
+        /// Surface from geom module
         type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
+        /// TrimmedCurve from geom module
         type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
+        /// HArray1OfBoolean from t_col_std module
         type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
+        /// HArray1OfInteger from t_col_std module
         type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
+        /// HArray1OfReal from t_col_std module
         type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
+        /// HArray1OfTransient from t_col_std module
         type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
+        /// HArray2OfReal from t_col_std module
         type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        /// HSequenceOfHExtendedString from t_col_std module
         type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfInteger from t_col_std module"]
+        /// HSequenceOfInteger from t_col_std module
         type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
-        #[doc = "HSequenceOfReal from t_col_std module"]
+        /// HSequenceOfReal from t_col_std module
         type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
+        /// HSequenceOfTransient from t_col_std module
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
+        /// PackedMapOfInteger from t_col_std module
         type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
+
         // ========================
         // Referenced types (opaque)
         // ========================

@@ -15,17 +15,17 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::FilBuilder;
 impl FilBuilder {
-    #[doc = "Upcast to ChFi3d_Builder"]
+    /// Upcast to ChFi3d_Builder
     pub fn as_builder(&self) -> &Builder {
         ffi::fil_builder_as_builder(self)
     }
 
-    #[doc = "Upcast to ChFi3d_Builder (mutable)"]
+    /// Upcast to ChFi3d_Builder (mutable)
     pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
         ffi::fil_builder_as_builder_mut(self)
     }
 
-    #[doc = "Returns the rule of  elementary  evolution of  the part to  variable vector framing E, returns a rule zero if E is flagged as edge constant."]
+    /// Returns the rule of  elementary  evolution of  the part to  variable vector framing E, returns a rule zero if E is flagged as edge constant.
     pub fn get_law(
         self: std::pin::Pin<&mut Self>,
         IC: i32,
@@ -40,59 +40,59 @@ impl FilBuilder {
 }
 pub use ffi::Builder;
 impl Builder {
-    #[doc = "gives the n'th set  of edges (contour) if I >NbElements()"]
+    /// gives the n'th set  of edges (contour) if I >NbElements()
     pub fn value(&self, I: i32) -> cxx::UniquePtr<ffi::HandleChFiDSSpine> {
         ffi::Builder_value(self, I)
     }
 
-    #[doc = "returns the First vertex V of the contour of index IC."]
+    /// returns the First vertex V of the contour of index IC.
     pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
         ffi::Builder_first_vertex(self, IC)
     }
 
-    #[doc = "returns the Last vertex V of the contour of index IC."]
+    /// returns the Last vertex V of the contour of index IC.
     pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
         ffi::Builder_last_vertex(self, IC)
     }
 
-    #[doc = "if (Isdone()) makes the result. if (!Isdone())"]
+    /// if (Isdone()) makes the result. if (!Isdone())
     pub fn shape(&self) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::Builder_shape(self)
     }
 
-    #[doc = "Returns the IS'th surface calculated on  the contour IC."]
+    /// Returns the IS'th surface calculated on  the contour IC.
     pub fn computed_surface(&self, IC: i32, IS: i32) -> cxx::UniquePtr<ffi::HandleGeomSurface> {
         ffi::Builder_computed_surface(self, IC, IS)
     }
 
-    #[doc = "Returns the IV'th vertex on  which the calculation has failed."]
+    /// Returns the IV'th vertex on  which the calculation has failed.
     pub fn faulty_vertex(&self, IV: i32) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
         ffi::Builder_faulty_vertex(self, IV)
     }
 
-    #[doc = "if (HasResult()) returns partial result if (!HasResult())"]
+    /// if (HasResult()) returns partial result if (!HasResult())
     pub fn bad_shape(&self) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::Builder_bad_shape(self)
     }
 
-    #[doc = "Returns the Builder of  topologic operations."]
+    /// Returns the Builder of  topologic operations.
     pub fn builder(&self) -> cxx::UniquePtr<ffi::HandleTopOpeBRepBuildHBuilder> {
         ffi::Builder_builder(self)
     }
 }
 pub use ffi::ChBuilder;
 impl ChBuilder {
-    #[doc = "initializes the Builder with the Shape <S> for the computation of chamfers"]
+    /// initializes the Builder with the Shape <S> for the computation of chamfers
     pub fn new_shape_real(S: &ffi::TopoDS_Shape, Ta: f64) -> cxx::UniquePtr<Self> {
         ffi::ChBuilder_ctor_shape_real(S, Ta)
     }
 
-    #[doc = "Upcast to ChFi3d_Builder"]
+    /// Upcast to ChFi3d_Builder
     pub fn as_builder(&self) -> &Builder {
         ffi::ch_builder_as_builder(self)
     }
 
-    #[doc = "Upcast to ChFi3d_Builder (mutable)"]
+    /// Upcast to ChFi3d_Builder (mutable)
     pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
         ffi::ch_builder_as_builder_mut(self)
     }
@@ -105,22 +105,23 @@ impl ChBuilder {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_ch_fi3d.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== ChFi3d_FilBuilder ========================"]
-        #[doc = "/// **Source:** `ChFi3d_FilBuilder.hxx` - `ChFi3d_FilBuilder`"]
-        #[doc = ""]
-        #[doc = "Tool  of  construction of  fillets 3d on  edges (on a solid)."]
+        /// ======================== ChFi3d_FilBuilder ========================
+        /// /// **Source:** `ChFi3d_FilBuilder.hxx` - `ChFi3d_FilBuilder`
+        ///
+        /// Tool  of  construction of  fillets 3d on  edges (on a solid).
         #[cxx_name = "ChFi3d_FilBuilder"]
         type FilBuilder;
-        #[doc = "initialisation of  a contour with the first edge (the following are found  by propagation). Attention, you  need  to start  with  SetRadius."]
+        /// initialisation of  a contour with the first edge (the following are found  by propagation). Attention, you  need  to start  with  SetRadius.
         #[cxx_name = "Add"]
         fn add_edge(self: Pin<&mut FilBuilder>, E: &TopoDS_Edge);
-        #[doc = "initialisation of the constant vector the corresponding  1st  edge."]
+        /// initialisation of the constant vector the corresponding  1st  edge.
         #[cxx_name = "Add"]
         fn add_real_edge(self: Pin<&mut FilBuilder>, Radius: f64, E: &TopoDS_Edge);
-        #[doc = "Set the radius of the contour of index IC."]
+        /// Set the radius of the contour of index IC.
         #[cxx_name = "SetRadius"]
         fn set_radius_handlefunction_int2(
             self: Pin<&mut FilBuilder>,
@@ -128,16 +129,16 @@ pub(crate) mod ffi {
             IC: i32,
             IinC: i32,
         );
-        #[doc = "Returns true the contour is flagged as edge constant."]
+        /// Returns true the contour is flagged as edge constant.
         #[cxx_name = "IsConstant"]
         fn is_constant_int(self: Pin<&mut FilBuilder>, IC: i32) -> bool;
-        #[doc = "Returns the vector if the contour is flagged as edge constant."]
+        /// Returns the vector if the contour is flagged as edge constant.
         #[cxx_name = "Radius"]
         fn radius_int(self: Pin<&mut FilBuilder>, IC: i32) -> f64;
-        #[doc = "Reset all vectors of contour IC."]
+        /// Reset all vectors of contour IC.
         #[cxx_name = "ResetContour"]
         fn reset_contour(self: Pin<&mut FilBuilder>, IC: i32);
-        #[doc = "Set a constant on edge E of  the contour of index IC. Since  then  E is flagged as constant."]
+        /// Set a constant on edge E of  the contour of index IC. Since  then  E is flagged as constant.
         #[cxx_name = "SetRadius"]
         fn set_radius_real_int_edge(
             self: Pin<&mut FilBuilder>,
@@ -145,10 +146,10 @@ pub(crate) mod ffi {
             IC: i32,
             E: &TopoDS_Edge,
         );
-        #[doc = "Extracts the flag constant and the vector of edge E."]
+        /// Extracts the flag constant and the vector of edge E.
         #[cxx_name = "UnSet"]
         fn un_set_int_edge(self: Pin<&mut FilBuilder>, IC: i32, E: &TopoDS_Edge);
-        #[doc = "Set a vector on vertex  V of  the contour of index IC."]
+        /// Set a vector on vertex  V of  the contour of index IC.
         #[cxx_name = "SetRadius"]
         fn set_radius_real_int_vertex(
             self: Pin<&mut FilBuilder>,
@@ -156,19 +157,19 @@ pub(crate) mod ffi {
             IC: i32,
             V: &TopoDS_Vertex,
         );
-        #[doc = "Extracts the vector of  the vertex V."]
+        /// Extracts the vector of  the vertex V.
         #[cxx_name = "UnSet"]
         fn un_set_int_vertex(self: Pin<&mut FilBuilder>, IC: i32, V: &TopoDS_Vertex);
-        #[doc = "Set  a vertex on the point of parametre U in the edge IinC of  the contour of index IC"]
+        /// Set  a vertex on the point of parametre U in the edge IinC of  the contour of index IC
         #[cxx_name = "SetRadius"]
         fn set_radius_xy_int2(self: Pin<&mut FilBuilder>, UandR: &gp_XY, IC: i32, IinC: i32);
-        #[doc = "Returns true E is flagged as edge constant."]
+        /// Returns true E is flagged as edge constant.
         #[cxx_name = "IsConstant"]
         fn is_constant_int_edge(self: Pin<&mut FilBuilder>, IC: i32, E: &TopoDS_Edge) -> bool;
-        #[doc = "Returns the vector if E is flagged as edge constant."]
+        /// Returns the vector if E is flagged as edge constant.
         #[cxx_name = "Radius"]
         fn radius_int_edge(self: Pin<&mut FilBuilder>, IC: i32, E: &TopoDS_Edge) -> f64;
-        #[doc = "Returns in First and Last  les extremities of  the part of variable  vector framing E, returns False  if  E is flagged as edge constant."]
+        /// Returns in First and Last  les extremities of  the part of variable  vector framing E, returns False  if  E is flagged as edge constant.
         #[cxx_name = "GetBounds"]
         fn get_bounds(
             self: Pin<&mut FilBuilder>,
@@ -177,14 +178,14 @@ pub(crate) mod ffi {
             First: &mut f64,
             Last: &mut f64,
         ) -> bool;
-        #[doc = "Sets the rule of elementary evolution of  the part to variable  vector framing E."]
+        /// Sets the rule of elementary evolution of  the part to variable  vector framing E.
         #[cxx_name = "SetLaw"]
         fn set_law(self: Pin<&mut FilBuilder>, IC: i32, E: &TopoDS_Edge, L: &HandleLawFunction);
         #[cxx_name = "Simulate"]
         fn simulate(self: Pin<&mut FilBuilder>, IC: i32);
         #[cxx_name = "NbSurf"]
         fn nb_surf(self: &FilBuilder, IC: i32) -> i32;
-        #[doc = "Returns the rule of  elementary  evolution of  the part to  variable vector framing E, returns a rule zero if E is flagged as edge constant."]
+        /// Returns the rule of  elementary  evolution of  the part to  variable vector framing E, returns a rule zero if E is flagged as edge constant.
         #[cxx_name = "ChFi3d_FilBuilder_GetLaw"]
         fn FilBuilder_get_law(
             self_: Pin<&mut FilBuilder>,
@@ -197,16 +198,16 @@ pub(crate) mod ffi {
             IC: i32,
             IS: i32,
         ) -> UniquePtr<HandleChFiDSSecHArray1>;
-        #[doc = "Upcast ChFi3d_FilBuilder to ChFi3d_Builder"]
+        /// Upcast ChFi3d_FilBuilder to ChFi3d_Builder
         #[cxx_name = "ChFi3d_FilBuilder_as_ChFi3d_Builder"]
         fn fil_builder_as_builder(self_: &FilBuilder) -> &Builder;
-        #[doc = "Upcast ChFi3d_FilBuilder to ChFi3d_Builder (mutable)"]
+        /// Upcast ChFi3d_FilBuilder to ChFi3d_Builder (mutable)
         #[cxx_name = "ChFi3d_FilBuilder_as_ChFi3d_Builder_mut"]
         fn fil_builder_as_builder_mut(self_: Pin<&mut FilBuilder>) -> Pin<&mut Builder>;
-        #[doc = " ======================== ChFi3d_Builder ========================"]
-        #[doc = "/// **Source:** `ChFi3d_Builder.hxx` - `ChFi3d_Builder`"]
-        #[doc = ""]
-        #[doc = "Root  class  for calculation of  surfaces (fillets, chamfers)  destined  to smooth edges  of a gap on a Shape and the reconstruction of  the   Shape."]
+        /// ======================== ChFi3d_Builder ========================
+        /// /// **Source:** `ChFi3d_Builder.hxx` - `ChFi3d_Builder`
+        ///
+        /// Root  class  for calculation of  surfaces (fillets, chamfers)  destined  to smooth edges  of a gap on a Shape and the reconstruction of  the   Shape.
         #[cxx_name = "ChFi3d_Builder"]
         type Builder;
         #[cxx_name = "SetParams"]
@@ -219,61 +220,61 @@ pub(crate) mod ffi {
             TolApp2d: f64,
             Fleche: f64,
         );
-        #[doc = "extracts from  the list the contour containing edge E."]
+        /// extracts from  the list the contour containing edge E.
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut Builder>, E: &TopoDS_Edge);
-        #[doc = "gives the number of  the contour containing E or 0 if E does  not  belong to  any  contour."]
+        /// gives the number of  the contour containing E or 0 if E does  not  belong to  any  contour.
         #[cxx_name = "Contains"]
         fn contains_edge(self: &Builder, E: &TopoDS_Edge) -> i32;
-        #[doc = "gives  the number of  the contour containing E or 0 if E does  not  belong  to  any  contour. Sets in IndexInSpine the index of E in the contour if it's found"]
+        /// gives  the number of  the contour containing E or 0 if E does  not  belong  to  any  contour. Sets in IndexInSpine the index of E in the contour if it's found
         #[cxx_name = "Contains"]
         fn contains_edge_int(self: &Builder, E: &TopoDS_Edge, IndexInSpine: &mut i32) -> i32;
-        #[doc = "gives the number of  disjoint contours on  which the  fillets  are  calculated"]
+        /// gives the number of  disjoint contours on  which the  fillets  are  calculated
         #[cxx_name = "NbElements"]
         fn nb_elements(self: &Builder) -> i32;
-        #[doc = "returns the length of  the contour of index IC."]
+        /// returns the length of  the contour of index IC.
         #[cxx_name = "Length"]
         fn length(self: &Builder, IC: i32) -> f64;
-        #[doc = "returns the abscissa of the vertex V on the contour of index IC."]
+        /// returns the abscissa of the vertex V on the contour of index IC.
         #[cxx_name = "Abscissa"]
         fn abscissa(self: &Builder, IC: i32, V: &TopoDS_Vertex) -> f64;
-        #[doc = "returns the relative abscissa([0.,1.]) of the vertex V on the contour of index IC."]
+        /// returns the relative abscissa([0.,1.]) of the vertex V on the contour of index IC.
         #[cxx_name = "RelativeAbscissa"]
         fn relative_abscissa(self: &Builder, IC: i32, V: &TopoDS_Vertex) -> f64;
-        #[doc = "returns true if the contour of index IC is closed an tangent."]
+        /// returns true if the contour of index IC is closed an tangent.
         #[cxx_name = "ClosedAndTangent"]
         fn closed_and_tangent(self: &Builder, IC: i32) -> bool;
-        #[doc = "returns true if the contour of index IC is closed"]
+        /// returns true if the contour of index IC is closed
         #[cxx_name = "Closed"]
         fn closed(self: &Builder, IC: i32) -> bool;
-        #[doc = "general calculation of geometry on all edges, topologic reconstruction."]
+        /// general calculation of geometry on all edges, topologic reconstruction.
         #[cxx_name = "Compute"]
         fn compute(self: Pin<&mut Builder>);
-        #[doc = "returns True if the computation  is  success"]
+        /// returns True if the computation  is  success
         #[cxx_name = "IsDone"]
         fn is_done(self: &Builder) -> bool;
-        #[doc = "Advanced  function for the history"]
+        /// Advanced  function for the history
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut Builder>, EouV: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        #[doc = "Returns the number of contours on  which the calculation has failed."]
+        /// Returns the number of contours on  which the calculation has failed.
         #[cxx_name = "NbFaultyContours"]
         fn nb_faulty_contours(self: &Builder) -> i32;
-        #[doc = "Returns the number of  I'th contour on  which the calculation has failed."]
+        /// Returns the number of  I'th contour on  which the calculation has failed.
         #[cxx_name = "FaultyContour"]
         fn faulty_contour(self: &Builder, I: i32) -> i32;
-        #[doc = "Returns the number of  surfaces calculated  on  the contour IC."]
+        /// Returns the number of  surfaces calculated  on  the contour IC.
         #[cxx_name = "NbComputedSurfaces"]
         fn nb_computed_surfaces(self: &Builder, IC: i32) -> i32;
-        #[doc = "Returns the number of vertices on  which the calculation has failed."]
+        /// Returns the number of vertices on  which the calculation has failed.
         #[cxx_name = "NbFaultyVertices"]
         fn nb_faulty_vertices(self: &Builder) -> i32;
-        #[doc = "returns True if  a partial result has  been  calculated"]
+        /// returns True if  a partial result has  been  calculated
         #[cxx_name = "HasResult"]
         fn has_result(self: &Builder) -> bool;
-        #[doc = "Reset all results of compute and returns the algorithm in the state of the last acquisition to enable modification of contours or areas."]
+        /// Reset all results of compute and returns the algorithm in the state of the last acquisition to enable modification of contours or areas.
         #[cxx_name = "Reset"]
         fn reset(self: Pin<&mut Builder>);
-        #[doc = "Method, implemented in the inheritants, calculates the elements of construction of the surface (fillet or chamfer)."]
+        /// Method, implemented in the inheritants, calculates the elements of construction of the surface (fillet or chamfer).
         #[cxx_name = "SplitKPart"]
         fn split_k_part(
             self: Pin<&mut Builder>,
@@ -290,58 +291,58 @@ pub(crate) mod ffi {
         ) -> bool;
         #[cxx_name = "PerformTwoCornerbyInter"]
         fn perform_two_cornerby_inter(self: Pin<&mut Builder>, Index: i32) -> bool;
-        #[doc = "gives the n'th set  of edges (contour) if I >NbElements()"]
+        /// gives the n'th set  of edges (contour) if I >NbElements()
         #[cxx_name = "ChFi3d_Builder_Value"]
         fn Builder_value(self_: &Builder, I: i32) -> UniquePtr<HandleChFiDSSpine>;
-        #[doc = "returns the First vertex V of the contour of index IC."]
+        /// returns the First vertex V of the contour of index IC.
         #[cxx_name = "ChFi3d_Builder_FirstVertex"]
         fn Builder_first_vertex(self_: &Builder, IC: i32) -> UniquePtr<TopoDS_Vertex>;
-        #[doc = "returns the Last vertex V of the contour of index IC."]
+        /// returns the Last vertex V of the contour of index IC.
         #[cxx_name = "ChFi3d_Builder_LastVertex"]
         fn Builder_last_vertex(self_: &Builder, IC: i32) -> UniquePtr<TopoDS_Vertex>;
-        #[doc = "if (Isdone()) makes the result. if (!Isdone())"]
+        /// if (Isdone()) makes the result. if (!Isdone())
         #[cxx_name = "ChFi3d_Builder_Shape"]
         fn Builder_shape(self_: &Builder) -> UniquePtr<TopoDS_Shape>;
-        #[doc = "Returns the IS'th surface calculated on  the contour IC."]
+        /// Returns the IS'th surface calculated on  the contour IC.
         #[cxx_name = "ChFi3d_Builder_ComputedSurface"]
         fn Builder_computed_surface(
             self_: &Builder,
             IC: i32,
             IS: i32,
         ) -> UniquePtr<HandleGeomSurface>;
-        #[doc = "Returns the IV'th vertex on  which the calculation has failed."]
+        /// Returns the IV'th vertex on  which the calculation has failed.
         #[cxx_name = "ChFi3d_Builder_FaultyVertex"]
         fn Builder_faulty_vertex(self_: &Builder, IV: i32) -> UniquePtr<TopoDS_Vertex>;
-        #[doc = "if (HasResult()) returns partial result if (!HasResult())"]
+        /// if (HasResult()) returns partial result if (!HasResult())
         #[cxx_name = "ChFi3d_Builder_BadShape"]
         fn Builder_bad_shape(self_: &Builder) -> UniquePtr<TopoDS_Shape>;
-        #[doc = "Returns the Builder of  topologic operations."]
+        /// Returns the Builder of  topologic operations.
         #[cxx_name = "ChFi3d_Builder_Builder"]
         fn Builder_builder(self_: &Builder) -> UniquePtr<HandleTopOpeBRepBuildHBuilder>;
-        #[doc = " ======================== ChFi3d_ChBuilder ========================"]
-        #[doc = "/// **Source:** `ChFi3d_ChBuilder.hxx` - `ChFi3d_ChBuilder`"]
-        #[doc = ""]
-        #[doc = "construction tool for 3D chamfers on edges (on a solid)."]
+        /// ======================== ChFi3d_ChBuilder ========================
+        /// /// **Source:** `ChFi3d_ChBuilder.hxx` - `ChFi3d_ChBuilder`
+        ///
+        /// construction tool for 3D chamfers on edges (on a solid).
         #[cxx_name = "ChFi3d_ChBuilder"]
         type ChBuilder;
-        #[doc = "/// **Source:** `ChFi3d_ChBuilder.hxx` - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`"]
-        #[doc = ""]
-        #[doc = "initializes the Builder with the Shape <S> for the computation of chamfers"]
+        /// /// **Source:** `ChFi3d_ChBuilder.hxx` - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
+        ///
+        /// initializes the Builder with the Shape <S> for the computation of chamfers
         #[cxx_name = "ChFi3d_ChBuilder_ctor_shape_real"]
         fn ChBuilder_ctor_shape_real(S: &TopoDS_Shape, Ta: f64) -> UniquePtr<ChBuilder>;
-        #[doc = "initializes a contour with the edge <E> as first (the next are found by propagation ). The two distances (parameters of the chamfer) must be set after. if the edge <E> has more than 2 adjacent faces"]
+        /// initializes a contour with the edge <E> as first (the next are found by propagation ). The two distances (parameters of the chamfer) must be set after. if the edge <E> has more than 2 adjacent faces
         #[cxx_name = "Add"]
         fn add_edge(self: Pin<&mut ChBuilder>, E: &TopoDS_Edge);
-        #[doc = "initializes a new contour with the edge <E> as first (the next are found by propagation ), and  the distance <Dis> if the edge <E> has more than 2 adjacent faces"]
+        /// initializes a new contour with the edge <E> as first (the next are found by propagation ), and  the distance <Dis> if the edge <E> has more than 2 adjacent faces
         #[cxx_name = "Add"]
         fn add_real_edge(self: Pin<&mut ChBuilder>, Dis: f64, E: &TopoDS_Edge);
-        #[doc = "set the distance <Dis> of the fillet contour of index <IC> in the DS with <Dis> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>"]
+        /// set the distance <Dis> of the fillet contour of index <IC> in the DS with <Dis> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>
         #[cxx_name = "SetDist"]
         fn set_dist(self: Pin<&mut ChBuilder>, Dis: f64, IC: i32, F: &TopoDS_Face);
-        #[doc = "gives the distances <Dis> of the fillet contour of index <IC> in the DS"]
+        /// gives the distances <Dis> of the fillet contour of index <IC> in the DS
         #[cxx_name = "GetDist"]
         fn get_dist(self: &ChBuilder, IC: i32, Dis: &mut f64);
-        #[doc = "initializes a new contour with the edge <E> as first (the next are found by propagation ), and  the distance <Dis1> and <Dis2> if the edge <E> has more than 2 adjacent faces"]
+        /// initializes a new contour with the edge <E> as first (the next are found by propagation ), and  the distance <Dis1> and <Dis2> if the edge <E> has more than 2 adjacent faces
         #[cxx_name = "Add"]
         fn add_real2_edge_face(
             self: Pin<&mut ChBuilder>,
@@ -350,13 +351,13 @@ pub(crate) mod ffi {
             E: &TopoDS_Edge,
             F: &TopoDS_Face,
         );
-        #[doc = "set the distances <Dis1> and <Dis2> of the fillet contour of index <IC> in the DS with <Dis1> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>"]
+        /// set the distances <Dis1> and <Dis2> of the fillet contour of index <IC> in the DS with <Dis1> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>
         #[cxx_name = "SetDists"]
         fn set_dists(self: Pin<&mut ChBuilder>, Dis1: f64, Dis2: f64, IC: i32, F: &TopoDS_Face);
-        #[doc = "gives the distances <Dis1> and <Dis2> of the fillet contour of index <IC> in the DS"]
+        /// gives the distances <Dis1> and <Dis2> of the fillet contour of index <IC> in the DS
         #[cxx_name = "Dists"]
         fn dists(self: &ChBuilder, IC: i32, Dis1: &mut f64, Dis2: &mut f64);
-        #[doc = "initializes a new contour with the edge <E> as first (the next are found by propagation ), and  the distance <Dis1> and <Angle> if the edge <E> has more than 2 adjacent faces"]
+        /// initializes a new contour with the edge <E> as first (the next are found by propagation ), and  the distance <Dis1> and <Angle> if the edge <E> has more than 2 adjacent faces
         #[cxx_name = "AddDA"]
         fn add_da(
             self: Pin<&mut ChBuilder>,
@@ -365,7 +366,7 @@ pub(crate) mod ffi {
             E: &TopoDS_Edge,
             F: &TopoDS_Face,
         );
-        #[doc = "set the distance <Dis> and <Angle> of the fillet contour of index <IC> in the DS with <Dis> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>"]
+        /// set the distance <Dis> and <Angle> of the fillet contour of index <IC> in the DS with <Dis> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>
         #[cxx_name = "SetDistAngle"]
         fn set_dist_angle(
             self: Pin<&mut ChBuilder>,
@@ -374,17 +375,17 @@ pub(crate) mod ffi {
             IC: i32,
             F: &TopoDS_Face,
         );
-        #[doc = "gives the distances <Dis> and <Angle> of the fillet contour of index <IC> in the DS"]
+        /// gives the distances <Dis> and <Angle> of the fillet contour of index <IC> in the DS
         #[cxx_name = "GetDistAngle"]
         fn get_dist_angle(self: &ChBuilder, IC: i32, Dis: &mut f64, Angle: &mut f64);
-        #[doc = "Reset tous rayons du contour IC."]
+        /// Reset tous rayons du contour IC.
         #[cxx_name = "ResetContour"]
         fn reset_contour(self: Pin<&mut ChBuilder>, IC: i32);
         #[cxx_name = "Simulate"]
         fn simulate(self: Pin<&mut ChBuilder>, IC: i32);
         #[cxx_name = "NbSurf"]
         fn nb_surf(self: &ChBuilder, IC: i32) -> i32;
-        #[doc = "Methode, implemented in inheritants, calculates the elements of construction of  the surface (fillet or chamfer)."]
+        /// Methode, implemented in inheritants, calculates the elements of construction of  the surface (fillet or chamfer).
         #[cxx_name = "PerformSurf"]
         fn perform_surf_sequenceofsurfdata_handleelspine_handlespine_int_handlesurface_handletopoltool_handlesurface_handletopoltool_real5_bool5_vector_int2(
             self: Pin<&mut ChBuilder>,
@@ -413,203 +414,205 @@ pub(crate) mod ffi {
         #[cxx_name = "ChFi3d_ChBuilder_Sect"]
         fn ChBuilder_sect(self_: &ChBuilder, IC: i32, IS: i32)
             -> UniquePtr<HandleChFiDSSecHArray1>;
-        #[doc = "Upcast ChFi3d_ChBuilder to ChFi3d_Builder"]
+        /// Upcast ChFi3d_ChBuilder to ChFi3d_Builder
         #[cxx_name = "ChFi3d_ChBuilder_as_ChFi3d_Builder"]
         fn ch_builder_as_builder(self_: &ChBuilder) -> &Builder;
-        #[doc = "Upcast ChFi3d_ChBuilder to ChFi3d_Builder (mutable)"]
+        /// Upcast ChFi3d_ChBuilder to ChFi3d_Builder (mutable)
         #[cxx_name = "ChFi3d_ChBuilder_as_ChFi3d_Builder_mut"]
         fn ch_builder_as_builder_mut(self_: Pin<&mut ChBuilder>) -> Pin<&mut Builder>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Curve from adaptor3d module"]
+        /// Curve from adaptor3d module
         type Adaptor3d_Curve = crate::adaptor3d::ffi::Curve;
-        #[doc = "CurveOnSurface from adaptor3d module"]
+        /// CurveOnSurface from adaptor3d module
         type Adaptor3d_CurveOnSurface = crate::adaptor3d::ffi::CurveOnSurface;
-        #[doc = "Surface from adaptor3d module"]
+        /// Surface from adaptor3d module
         type Adaptor3d_Surface = crate::adaptor3d::ffi::Surface;
-        #[doc = "Curve from b_rep_adaptor module"]
+        /// Curve from b_rep_adaptor module
         type BRepAdaptor_Curve = crate::b_rep_adaptor::ffi::Curve;
-        #[doc = "Curve2d from b_rep_adaptor module"]
+        /// Curve2d from b_rep_adaptor module
         type BRepAdaptor_Curve2d = crate::b_rep_adaptor::ffi::Curve2d;
-        #[doc = "Surface from b_rep_adaptor module"]
+        /// Surface from b_rep_adaptor module
         type BRepAdaptor_Surface = crate::b_rep_adaptor::ffi::Surface;
-        #[doc = "CircSection from ch_fi_ds module"]
+        /// CircSection from ch_fi_ds module
         type ChFiDS_CircSection = crate::ch_fi_ds::ffi::CircSection;
-        #[doc = "CommonPoint from ch_fi_ds module"]
+        /// CommonPoint from ch_fi_ds module
         type ChFiDS_CommonPoint = crate::ch_fi_ds::ffi::CommonPoint;
-        #[doc = "ElSpine from ch_fi_ds module"]
+        /// ElSpine from ch_fi_ds module
         type ChFiDS_ElSpine = crate::ch_fi_ds::ffi::ElSpine;
-        #[doc = "FaceInterference from ch_fi_ds module"]
+        /// FaceInterference from ch_fi_ds module
         type ChFiDS_FaceInterference = crate::ch_fi_ds::ffi::FaceInterference;
-        #[doc = "HData from ch_fi_ds module"]
+        /// HData from ch_fi_ds module
         type ChFiDS_HData = crate::ch_fi_ds::ffi::HData;
-        #[doc = "Map from ch_fi_ds module"]
+        /// Map from ch_fi_ds module
         type ChFiDS_Map = crate::ch_fi_ds::ffi::Map;
-        #[doc = "Regul from ch_fi_ds module"]
+        /// Regul from ch_fi_ds module
         type ChFiDS_Regul = crate::ch_fi_ds::ffi::Regul;
-        #[doc = "SecHArray1 from ch_fi_ds module"]
+        /// SecHArray1 from ch_fi_ds module
         type ChFiDS_SecHArray1 = crate::ch_fi_ds::ffi::SecHArray1;
-        #[doc = "Stripe from ch_fi_ds module"]
+        /// Stripe from ch_fi_ds module
         type ChFiDS_Stripe = crate::ch_fi_ds::ffi::Stripe;
-        #[doc = "StripeMap from ch_fi_ds module"]
+        /// StripeMap from ch_fi_ds module
         type ChFiDS_StripeMap = crate::ch_fi_ds::ffi::StripeMap;
-        #[doc = "SurfData from ch_fi_ds module"]
+        /// SurfData from ch_fi_ds module
         type ChFiDS_SurfData = crate::ch_fi_ds::ffi::SurfData;
-        #[doc = "BSplineCurve from geom module"]
+        /// BSplineCurve from geom module
         type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
+        /// BSplineSurface from geom module
         type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
+        /// BezierCurve from geom module
         type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
+        /// BezierSurface from geom module
         type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
+        /// BoundedCurve from geom module
         type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
+        /// BoundedSurface from geom module
         type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
+        /// Curve from geom module
         type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
+        /// CylindricalSurface from geom module
         type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
+        /// ElementarySurface from geom module
         type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
+        /// Geometry from geom module
         type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
+        /// Plane from geom module
         type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
+        /// Surface from geom module
         type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
+        /// TrimmedCurve from geom module
         type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "BSpFunc from law module"]
+        /// BSpFunc from law module
         type Law_BSpFunc = crate::law::ffi::BSpFunc;
-        #[doc = "Function from law module"]
+        /// Function from law module
         type Law_Function = crate::law::ffi::Function;
-        #[doc = "Interpol from law module"]
+        /// Interpol from law module
         type Law_Interpol = crate::law::ffi::Interpol;
-        #[doc = "TopAbs from top_abs module"]
+        /// TopAbs from top_abs module
         type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "HArray2OfShape from top_tools module"]
+        /// HArray2OfShape from top_tools module
         type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
+        /// HSequenceOfShape from top_tools module
         type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = "BissecNewton from math module"]
+        /// BissecNewton from math module
         type math_BissecNewton = crate::math::ffi::BissecNewton;
-        #[doc = "BrentMinimum from math module"]
+        /// BrentMinimum from math module
         type math_BrentMinimum = crate::math::ffi::BrentMinimum;
-        #[doc = "DirectPolynomialRoots from math module"]
+        /// DirectPolynomialRoots from math module
         type math_DirectPolynomialRoots = crate::math::ffi::DirectPolynomialRoots;
-        #[doc = "EigenValuesSearcher from math module"]
+        /// EigenValuesSearcher from math module
         type math_EigenValuesSearcher = crate::math::ffi::EigenValuesSearcher;
-        #[doc = "Function from math module"]
+        /// Function from math module
         type math_Function = crate::math::ffi::Function;
-        #[doc = "FunctionWithDerivative from math module"]
+        /// FunctionWithDerivative from math module
         type math_FunctionWithDerivative = crate::math::ffi::FunctionWithDerivative;
-        #[doc = "GaussLeastSquare from math module"]
+        /// GaussLeastSquare from math module
         type math_GaussLeastSquare = crate::math::ffi::GaussLeastSquare;
-        #[doc = "Matrix from math module"]
+        /// Matrix from math module
         type math_Matrix = crate::math::ffi::Matrix;
+
         // ========================
         // Referenced types (opaque)
         // ========================

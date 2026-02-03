@@ -12,17 +12,17 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::MemInfo;
 impl MemInfo {
-    #[doc = "Create and initialize. By default all countes are active"]
+    /// Create and initialize. By default all countes are active
     pub fn new_bool(theImmediateUpdate: bool) -> cxx::UniquePtr<Self> {
         ffi::MemInfo_ctor_bool(theImmediateUpdate)
     }
 
-    #[doc = "Return the string representation for all available counter."]
+    /// Return the string representation for all available counter.
     pub fn to_string(&self) -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
         ffi::MemInfo_to_string(self)
     }
 
-    #[doc = "Return the string representation for all available counter."]
+    /// Return the string representation for all available counter.
     pub fn print_info() -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
         ffi::MemInfo_print_info()
     }
@@ -31,45 +31,47 @@ impl MemInfo {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_osd.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== OSD_MemInfo ========================"]
-        #[doc = "/// **Source:** `OSD_MemInfo.hxx` - `OSD_MemInfo`"]
-        #[doc = ""]
-        #[doc = "This class provide information about memory utilized by current process. This information includes: - Private Memory - synthetic value that tries to filter out the memory usage only by the process itself (allocated for data and stack), excluding dynamic libraries. These pages may be in RAM or in SWAP. - Virtual Memory - amount of reserved and committed memory in the user-mode portion of the virtual address space. Notice that this counter includes reserved memory (not yet in used) and shared between processes memory (libraries). - Working Set    - set of memory pages in the virtual address space of the process that are currently resident in physical memory (RAM). These pages are available for an application to use without triggering a page fault. - Pagefile Usage - space allocated for the pagefile, in bytes. Those pages may or may not be in memory (RAM) thus this counter couldn't be used to estimate how many active pages doesn't present in RAM. Notice that none of these counters can be used as absolute measure of application memory consumption! User should analyze all values in specific case to make correct decision about memory (over)usage. This is also preferred to use specialized tools to detect memory leaks. This also means that these values should not be used for intellectual memory management by application itself."]
+        /// ======================== OSD_MemInfo ========================
+        /// /// **Source:** `OSD_MemInfo.hxx` - `OSD_MemInfo`
+        ///
+        /// This class provide information about memory utilized by current process. This information includes: - Private Memory - synthetic value that tries to filter out the memory usage only by the process itself (allocated for data and stack), excluding dynamic libraries. These pages may be in RAM or in SWAP. - Virtual Memory - amount of reserved and committed memory in the user-mode portion of the virtual address space. Notice that this counter includes reserved memory (not yet in used) and shared between processes memory (libraries). - Working Set    - set of memory pages in the virtual address space of the process that are currently resident in physical memory (RAM). These pages are available for an application to use without triggering a page fault. - Pagefile Usage - space allocated for the pagefile, in bytes. Those pages may or may not be in memory (RAM) thus this counter couldn't be used to estimate how many active pages doesn't present in RAM. Notice that none of these counters can be used as absolute measure of application memory consumption! User should analyze all values in specific case to make correct decision about memory (over)usage. This is also preferred to use specialized tools to detect memory leaks. This also means that these values should not be used for intellectual memory management by application itself.
         #[cxx_name = "OSD_MemInfo"]
         type MemInfo;
-        #[doc = "/// **Source:** `OSD_MemInfo.hxx` - `OSD_MemInfo::OSD_MemInfo()`"]
-        #[doc = ""]
-        #[doc = "Create and initialize. By default all countes are active"]
+        /// /// **Source:** `OSD_MemInfo.hxx` - `OSD_MemInfo::OSD_MemInfo()`
+        ///
+        /// Create and initialize. By default all countes are active
         #[cxx_name = "OSD_MemInfo_ctor_bool"]
         fn MemInfo_ctor_bool(theImmediateUpdate: bool) -> UniquePtr<MemInfo>;
-        #[doc = "Set all counters active. The information is collected for active counters. @param theActive state for counters"]
+        /// Set all counters active. The information is collected for active counters. @param theActive state for counters
         #[cxx_name = "SetActive"]
         fn set_active_bool(self: Pin<&mut MemInfo>, theActive: bool);
-        #[doc = "Clear counters"]
+        /// Clear counters
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut MemInfo>);
-        #[doc = "Update counters"]
+        /// Update counters
         #[cxx_name = "Update"]
         fn update(self: Pin<&mut MemInfo>);
-        #[doc = "Return the string representation for all available counter."]
+        /// Return the string representation for all available counter.
         #[cxx_name = "OSD_MemInfo_ToString"]
         fn MemInfo_to_string(self_: &MemInfo) -> UniquePtr<TCollection_AsciiString>;
-        #[doc = "Return the string representation for all available counter."]
+        /// Return the string representation for all available counter.
         #[cxx_name = "OSD_MemInfo_PrintInfo"]
         fn MemInfo_print_info() -> UniquePtr<TCollection_AsciiString>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "AsciiString from t_collection module"]
+        /// AsciiString from t_collection module
         type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
-        #[doc = "ExtendedString from t_collection module"]
+        /// ExtendedString from t_collection module
         type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
-        #[doc = "HAsciiString from t_collection module"]
+        /// HAsciiString from t_collection module
         type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
-        #[doc = "HExtendedString from t_collection module"]
+        /// HExtendedString from t_collection module
         type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
     }
     impl UniquePtr<MemInfo> {}

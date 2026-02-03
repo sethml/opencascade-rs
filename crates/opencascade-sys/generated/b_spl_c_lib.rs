@@ -17,7 +17,7 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Cache;
 impl Cache {
-    #[doc = "Wrap BSplCLib_Cache in a Handle (reference-counted smart pointer)"]
+    /// Wrap BSplCLib_Cache in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBSplCLibCache> {
         ffi::Cache_to_handle(obj)
     }
@@ -28,7 +28,7 @@ impl Cache {
 }
 pub use ffi::CacheParams;
 impl CacheParams {
-    #[doc = "Constructor, prepares data structures for caching. \\param theDegree     degree of the B-spline (or Bezier) \\param thePeriodic   identify whether the B-spline is periodic \\param theFlatKnots  knots of Bezier / B-spline parameterization"]
+    /// Constructor, prepares data structures for caching. \\param theDegree     degree of the B-spline (or Bezier) \\param thePeriodic   identify whether the B-spline is periodic \\param theFlatKnots  knots of Bezier / B-spline parameterization
     pub fn new_int_bool_array1ofreal(
         theDegree: i32,
         thePeriodic: bool,
@@ -39,22 +39,22 @@ impl CacheParams {
 }
 pub use ffi::BSplCLib;
 impl BSplCLib {
-    #[doc = "This routine searches the position of the real value theX in the monotonically increasing set of real values theArray using bisection algorithm. If the given value is out of range or array values, algorithm returns either theArray.Lower()-1 or theArray.Upper()+1 depending on theX position in the ordered set. This routine is used to locate a knot value in a set of knots."]
+    /// This routine searches the position of the real value theX in the monotonically increasing set of real values theArray using bisection algorithm. If the given value is out of range or array values, algorithm returns either theArray.Lower()-1 or theArray.Upper()+1 depending on theX position in the ordered set. This routine is used to locate a knot value in a set of knots.
     pub fn hunt(theArray: &ffi::TColStd_Array1OfReal, theX: f64, theXPos: &mut i32) {
         ffi::BSplCLib_hunt(theArray, theX, theXPos)
     }
 
-    #[doc = "Computes the index of the knots value which gives the start point of the curve."]
+    /// Computes the index of the knots value which gives the start point of the curve.
     pub fn first_u_knot_index(Degree: i32, Mults: &ffi::TColStd_Array1OfInteger) -> i32 {
         ffi::BSplCLib_first_u_knot_index(Degree, Mults)
     }
 
-    #[doc = "Computes the index of the knots value which gives the end point of the curve."]
+    /// Computes the index of the knots value which gives the end point of the curve.
     pub fn last_u_knot_index(Degree: i32, Mults: &ffi::TColStd_Array1OfInteger) -> i32 {
         ffi::BSplCLib_last_u_knot_index(Degree, Mults)
     }
 
-    #[doc = "Computes the index  of  the  flats knots  sequence corresponding  to  <Index> in  the  knots sequence which multiplicities are <Mults>."]
+    /// Computes the index  of  the  flats knots  sequence corresponding  to  <Index> in  the  knots sequence which multiplicities are <Mults>.
     pub fn flat_index(
         Degree: i32,
         Index: i32,
@@ -97,22 +97,22 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "Finds the greatest multiplicity in a set of knots between  K1  and K2.   Mults  is  the  multiplicity associated with each knot value."]
+    /// Finds the greatest multiplicity in a set of knots between  K1  and K2.   Mults  is  the  multiplicity associated with each knot value.
     pub fn max_knot_mult(Mults: &ffi::TColStd_Array1OfInteger, K1: i32, K2: i32) -> i32 {
         ffi::BSplCLib_max_knot_mult(Mults, K1, K2)
     }
 
-    #[doc = "Finds the lowest multiplicity in  a  set of knots between   K1  and K2.   Mults is  the  multiplicity associated with each knot value."]
+    /// Finds the lowest multiplicity in  a  set of knots between   K1  and K2.   Mults is  the  multiplicity associated with each knot value.
     pub fn min_knot_mult(Mults: &ffi::TColStd_Array1OfInteger, K1: i32, K2: i32) -> i32 {
         ffi::BSplCLib_min_knot_mult(Mults, K1, K2)
     }
 
-    #[doc = "Returns the number of poles of the curve. Returns 0 if one of the multiplicities is incorrect. * Non positive. * Greater than Degree,  or  Degree+1  at the first and last knot of a non periodic curve. *  The  last periodicity  on  a periodic  curve is not equal to the first."]
+    /// Returns the number of poles of the curve. Returns 0 if one of the multiplicities is incorrect. * Non positive. * Greater than Degree,  or  Degree+1  at the first and last knot of a non periodic curve. *  The  last periodicity  on  a periodic  curve is not equal to the first.
     pub fn nb_poles(Degree: i32, Periodic: bool, Mults: &ffi::TColStd_Array1OfInteger) -> i32 {
         ffi::BSplCLib_nb_poles(Degree, Periodic, Mults)
     }
 
-    #[doc = "Returns the length  of the sequence  of knots with repetition. Periodic : Sum(Mults(i), i = Mults.Lower(); i <= Mults.Upper()); Non Periodic : Sum(Mults(i); i = Mults.Lower(); i < Mults.Upper()) + 2 * Degree"]
+    /// Returns the length  of the sequence  of knots with repetition. Periodic : Sum(Mults(i), i = Mults.Lower(); i <= Mults.Upper()); Non Periodic : Sum(Mults(i); i = Mults.Lower(); i < Mults.Upper()) + 2 * Degree
     pub fn knot_sequence_length(
         Mults: &ffi::TColStd_Array1OfInteger,
         Degree: i32,
@@ -132,7 +132,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "Computes  the  sequence   of knots KnotSeq  with repetition  of the  knots  of multiplicity  greater than 1. Length of KnotSeq must be KnotSequenceLength(Mults,Degree,Periodic)"]
+    /// Computes  the  sequence   of knots KnotSeq  with repetition  of the  knots  of multiplicity  greater than 1. Length of KnotSeq must be KnotSequenceLength(Mults,Degree,Periodic)
     pub fn knot_sequence_array1ofreal_array1ofinteger_int_bool_array1ofreal(
         Knots: &ffi::TColStd_Array1OfReal,
         Mults: &ffi::TColStd_Array1OfInteger,
@@ -145,12 +145,12 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "Returns the  length  of the   sequence of  knots  (and Mults)  without repetition."]
+    /// Returns the  length  of the   sequence of  knots  (and Mults)  without repetition.
     pub fn knots_length(KnotSeq: &ffi::TColStd_Array1OfReal, Periodic: bool) -> i32 {
         ffi::BSplCLib_knots_length(KnotSeq, Periodic)
     }
 
-    #[doc = "Computes  the  sequence   of knots Knots  without repetition  of the  knots  of multiplicity  greater than 1. Length  of <Knots> and  <Mults> must be KnotsLength(KnotSequence,Periodic)"]
+    /// Computes  the  sequence   of knots Knots  without repetition  of the  knots  of multiplicity  greater than 1. Length  of <Knots> and  <Mults> must be KnotsLength(KnotSequence,Periodic)
     pub fn knots(
         KnotSeq: &ffi::TColStd_Array1OfReal,
         Knots: std::pin::Pin<&mut ffi::TColStd_Array1OfReal>,
@@ -160,27 +160,27 @@ impl BSplCLib {
         ffi::BSplCLib_knots(KnotSeq, Knots, Mults, Periodic)
     }
 
-    #[doc = "Reparametrizes a B-spline curve to [U1, U2]. The knot values are recomputed such that Knots (Lower) = U1 and Knots (Upper) = U2   but the knot form is not modified. Warnings : In the array Knots the values must be in ascending order. U1 must not be equal to U2 to avoid division by zero."]
+    /// Reparametrizes a B-spline curve to [U1, U2]. The knot values are recomputed such that Knots (Lower) = U1 and Knots (Upper) = U2   but the knot form is not modified. Warnings : In the array Knots the values must be in ascending order. U1 must not be equal to U2 to avoid division by zero.
     pub fn reparametrize(U1: f64, U2: f64, Knots: std::pin::Pin<&mut ffi::TColStd_Array1OfReal>) {
         ffi::BSplCLib_reparametrize(U1, U2, Knots)
     }
 
-    #[doc = "Reverses  the  array   knots  to  become  the knots sequence of the reversed curve."]
+    /// Reverses  the  array   knots  to  become  the knots sequence of the reversed curve.
     pub fn reverse_array1ofreal(Knots: std::pin::Pin<&mut ffi::TColStd_Array1OfReal>) {
         ffi::BSplCLib_reverse_array1ofreal(Knots)
     }
 
-    #[doc = "Reverses  the  array of multiplicities."]
+    /// Reverses  the  array of multiplicities.
     pub fn reverse_array1ofinteger(Mults: std::pin::Pin<&mut ffi::TColStd_Array1OfInteger>) {
         ffi::BSplCLib_reverse_array1ofinteger(Mults)
     }
 
-    #[doc = "Reverses the array of poles. Last is the  index of the new first pole. On  a  non periodic curve last is Poles.Upper(). On a periodic curve last is (number of flat knots - degree - 1) or (sum of multiplicities(but  for the last) + degree - 1)"]
+    /// Reverses the array of poles. Last is the  index of the new first pole. On  a  non periodic curve last is Poles.Upper(). On a periodic curve last is (number of flat knots - degree - 1) or (sum of multiplicities(but  for the last) + degree - 1)
     pub fn reverse_array1ofpnt_int(Poles: std::pin::Pin<&mut ffi::TColgp_Array1OfPnt>, Last: i32) {
         ffi::BSplCLib_reverse_array1ofpnt_int(Poles, Last)
     }
 
-    #[doc = "Reverses the array of poles."]
+    /// Reverses the array of poles.
     pub fn reverse_array1ofpnt2d_int(
         Poles: std::pin::Pin<&mut ffi::TColgp_Array1OfPnt2d>,
         Last: i32,
@@ -188,7 +188,7 @@ impl BSplCLib {
         ffi::BSplCLib_reverse_array1ofpnt2d_int(Poles, Last)
     }
 
-    #[doc = "Reverses the array of poles."]
+    /// Reverses the array of poles.
     pub fn reverse_array1ofreal_int(
         Weights: std::pin::Pin<&mut ffi::TColStd_Array1OfReal>,
         Last: i32,
@@ -196,7 +196,7 @@ impl BSplCLib {
         ffi::BSplCLib_reverse_array1ofreal_int(Weights, Last)
     }
 
-    #[doc = "Returns False if all the weights  of the  array <Weights> between   I1 an I2   are  identic.   Epsilon  is used for comparing  weights. If Epsilon  is 0. the  Epsilon of the first weight is used."]
+    /// Returns False if all the weights  of the  array <Weights> between   I1 an I2   are  identic.   Epsilon  is used for comparing  weights. If Epsilon  is 0. the  Epsilon of the first weight is used.
     pub fn is_rational(
         Weights: &ffi::TColStd_Array1OfReal,
         I1: i32,
@@ -206,12 +206,12 @@ impl BSplCLib {
         ffi::BSplCLib_is_rational(Weights, I1, I2, Epsilon)
     }
 
-    #[doc = "returns the degree maxima for a BSplineCurve."]
+    /// returns the degree maxima for a BSplineCurve.
     pub fn max_degree() -> i32 {
         ffi::BSplCLib_max_degree()
     }
 
-    #[doc = "Perform the Boor  algorithm  to  evaluate a point at parameter <U>, with <Degree> and <Dimension>. Poles is  an array of  Reals of size <Dimension> *  <Degree>+1 Containing  the poles.  At  the end <Poles> contains the current point."]
+    /// Perform the Boor  algorithm  to  evaluate a point at parameter <U>, with <Degree> and <Dimension>. Poles is  an array of  Reals of size <Dimension> *  <Degree>+1 Containing  the poles.  At  the end <Poles> contains the current point.
     pub fn eval_real_int_real_int_real(
         U: f64,
         Degree: i32,
@@ -222,7 +222,7 @@ impl BSplCLib {
         ffi::BSplCLib_eval_real_int_real_int_real(U, Degree, Knots, Dimension, Poles)
     }
 
-    #[doc = "Performs the  Boor Algorithm  at  parameter <U> with the given <Degree> and the  array of <Knots> on  the poles <Poles> of dimension  <Dimension>.  The schema is  computed  until  level  <Depth>  on a   basis of <Length+1> poles. * Knots is an array of reals of length : <Length> + <Degree> * Poles is an array of reals of length : (2 * <Length> + 1) * <Dimension> The poles values  must be  set  in the array at the positions. 0..Dimension, 2 * Dimension .. 3 * Dimension 4  * Dimension .. 5  * Dimension ... The results are found in the array poles depending on the Depth. (See the method GetPole)."]
+    /// Performs the  Boor Algorithm  at  parameter <U> with the given <Degree> and the  array of <Knots> on  the poles <Poles> of dimension  <Dimension>.  The schema is  computed  until  level  <Depth>  on a   basis of <Length+1> poles. * Knots is an array of reals of length : <Length> + <Degree> * Poles is an array of reals of length : (2 * <Length> + 1) * <Dimension> The poles values  must be  set  in the array at the positions. 0..Dimension, 2 * Dimension .. 3 * Dimension 4  * Dimension .. 5  * Dimension ... The results are found in the array poles depending on the Depth. (See the method GetPole).
     pub fn boor_scheme(
         U: f64,
         Degree: i32,
@@ -235,7 +235,7 @@ impl BSplCLib {
         ffi::BSplCLib_boor_scheme(U, Degree, Knots, Dimension, Poles, Depth, Length)
     }
 
-    #[doc = "Compute  the content of  Pole before the BoorScheme. This method is used to remove poles. U is the poles to  remove, Knots should contains the knots of the curve after knot removal. The first  and last poles  do not  change, the other poles are computed by averaging two possible values. The distance between  the  two   possible  poles  is computed, if it  is higher than <Tolerance> False is returned."]
+    /// Compute  the content of  Pole before the BoorScheme. This method is used to remove poles. U is the poles to  remove, Knots should contains the knots of the curve after knot removal. The first  and last poles  do not  change, the other poles are computed by averaging two possible values. The distance between  the  two   possible  poles  is computed, if it  is higher than <Tolerance> False is returned.
     pub fn anti_boor_scheme(
         U: f64,
         Degree: i32,
@@ -249,7 +249,7 @@ impl BSplCLib {
         ffi::BSplCLib_anti_boor_scheme(U, Degree, Knots, Dimension, Poles, Depth, Length, Tolerance)
     }
 
-    #[doc = "Computes   the   poles of  the    BSpline  giving the derivatives of order <Order>. The formula for the first order is Pole(i) = Degree * (Pole(i+1) - Pole(i)) / (Knots(i+Degree+1) - Knots(i+1)) This formula  is repeated  (Degree  is decremented at each step)."]
+    /// Computes   the   poles of  the    BSpline  giving the derivatives of order <Order>. The formula for the first order is Pole(i) = Degree * (Pole(i+1) - Pole(i)) / (Knots(i+Degree+1) - Knots(i+1)) This formula  is repeated  (Degree  is decremented at each step).
     pub fn derivative(
         Degree: i32,
         Knots: &mut f64,
@@ -261,12 +261,12 @@ impl BSplCLib {
         ffi::BSplCLib_derivative(Degree, Knots, Dimension, Length, Order, Poles)
     }
 
-    #[doc = "Performs the Bohm  Algorithm at  parameter <U>. This algorithm computes the value and all the derivatives up to order N (N <= Degree). <Poles> is the original array of poles. The   result in  <Poles>  is    the value and    the derivatives.  Poles[0] is  the value,  Poles[Degree] is the last  derivative."]
+    /// Performs the Bohm  Algorithm at  parameter <U>. This algorithm computes the value and all the derivatives up to order N (N <= Degree). <Poles> is the original array of poles. The   result in  <Poles>  is    the value and    the derivatives.  Poles[0] is  the value,  Poles[Degree] is the last  derivative.
     pub fn bohm(U: f64, Degree: i32, N: i32, Knots: &mut f64, Dimension: i32, Poles: &mut f64) {
         ffi::BSplCLib_bohm(U, Degree, N, Knots, Dimension, Poles)
     }
 
-    #[doc = "Return the index of the  first Pole to  use on the span  Mults(Index)  - Mults(Index+1).  This  index must be added to Poles.Lower()."]
+    /// Return the index of the  first Pole to  use on the span  Mults(Index)  - Mults(Index+1).  This  index must be added to Poles.Lower().
     pub fn pole_index(
         Degree: i32,
         Index: i32,
@@ -276,7 +276,7 @@ impl BSplCLib {
         ffi::BSplCLib_pole_index(Degree, Index, Periodic, Mults)
     }
 
-    #[doc = "Copy in <LP>  poles for <Dimension>  Boor  scheme. Starting  from    <Index>     *  <Dimension>, copy <Length+1> poles."]
+    /// Copy in <LP>  poles for <Dimension>  Boor  scheme. Starting  from    <Index>     *  <Dimension>, copy <Length+1> poles.
     pub fn build_boor(
         Index: i32,
         Length: i32,
@@ -287,12 +287,12 @@ impl BSplCLib {
         ffi::BSplCLib_build_boor(Index, Length, Dimension, Poles, LP)
     }
 
-    #[doc = "Returns the index in  the Boor result array of the poles <Index>. If  the Boor  algorithm was perform with <Length> and <Depth>."]
+    /// Returns the index in  the Boor result array of the poles <Index>. If  the Boor  algorithm was perform with <Length> and <Depth>.
     pub fn boor_index(Index: i32, Length: i32, Depth: i32) -> i32 {
         ffi::BSplCLib_boor_index(Index, Length, Depth)
     }
 
-    #[doc = "Copy  the  pole at  position  <Index>  in  the Boor scheme of   dimension <Dimension> to  <Position> in the array <Pole>. <Position> is updated."]
+    /// Copy  the  pole at  position  <Index>  in  the Boor scheme of   dimension <Dimension> to  <Position> in the array <Pole>. <Position> is updated.
     pub fn get_pole(
         Index: i32,
         Length: i32,
@@ -322,7 +322,7 @@ impl BSplCLib {
         ffi :: BSplCLib_remove_knot_int3_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger_real (Index , Mult , Degree , Periodic , Dimension , Poles , Knots , Mults , NewPoles , NewKnots , NewMults , Tolerance)
     }
 
-    #[doc = "Returns the   number   of  knots   of  a  curve   with multiplicities <Mults> after elevating the degree from <Degree> to <NewDegree>. See the IncreaseDegree method for more comments."]
+    /// Returns the   number   of  knots   of  a  curve   with multiplicities <Mults> after elevating the degree from <Degree> to <NewDegree>. See the IncreaseDegree method for more comments.
     pub fn increase_degree_count_knots(
         Degree: i32,
         NewDegree: i32,
@@ -347,7 +347,7 @@ impl BSplCLib {
         ffi :: BSplCLib_increase_degree_int2_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger (Degree , NewDegree , Periodic , Dimension , Poles , Knots , Mults , NewPoles , NewKnots , NewMults)
     }
 
-    #[doc = "Set in <NbKnots> and <NbPolesToAdd> the number of Knots and Poles   of  the NotPeriodic  Curve   identical  at the periodic     curve with    a  degree    <Degree>  ,  a knots-distribution with Multiplicities <Mults>."]
+    /// Set in <NbKnots> and <NbPolesToAdd> the number of Knots and Poles   of  the NotPeriodic  Curve   identical  at the periodic     curve with    a  degree    <Degree>  ,  a knots-distribution with Multiplicities <Mults>.
     pub fn prepare_unperiodize(
         Degree: i32,
         Mults: &ffi::TColStd_Array1OfInteger,
@@ -372,7 +372,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "Set in <NbKnots> and <NbPoles> the number of Knots and Poles of the curve resulting from  the trimming of the BSplinecurve defined with <degree>, <knots>, <mults>"]
+    /// Set in <NbKnots> and <NbPoles> the number of Knots and Poles of the curve resulting from  the trimming of the BSplinecurve defined with <degree>, <knots>, <mults>
     pub fn prepare_trimming(
         Degree: i32,
         Periodic: bool,
@@ -427,7 +427,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "This  evaluates  the Bspline  Basis  at  a given  parameter  Parameter   up   to  the requested   DerivativeOrder  and store the result  in the  array BsplineBasis  in the following   fashion BSplineBasis(1,1)   = value of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex BsplineBasis(1,2)   = value of second non vanishing Bspline   function which  has   Index FirstNonZeroBsplineIndex + 1 BsplineBasis(1,n)   = value of second non vanishing non vanishing Bspline   function which  has   Index FirstNonZeroBsplineIndex + n (n <= Order) BSplineBasis(2,1)   = value of derivative of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex BSplineBasis(N,1)   = value of Nth derivative of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex if N <= DerivativeOrder + 1"]
+    /// This  evaluates  the Bspline  Basis  at  a given  parameter  Parameter   up   to  the requested   DerivativeOrder  and store the result  in the  array BsplineBasis  in the following   fashion BSplineBasis(1,1)   = value of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex BsplineBasis(1,2)   = value of second non vanishing Bspline   function which  has   Index FirstNonZeroBsplineIndex + 1 BsplineBasis(1,n)   = value of second non vanishing non vanishing Bspline   function which  has   Index FirstNonZeroBsplineIndex + n (n <= Order) BSplineBasis(2,1)   = value of derivative of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex BSplineBasis(N,1)   = value of Nth derivative of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex if N <= DerivativeOrder + 1
     pub fn eval_bspline_basis(
         DerivativeOrder: i32,
         Order: i32,
@@ -448,7 +448,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "This Builds   a fully  blown   Matrix of (ni) Bi    (tj) with i  and j within 1..Order + NumPoles The  integer ni is   the ith slot of the array OrderArray, tj is the jth slot of the array Parameters"]
+    /// This Builds   a fully  blown   Matrix of (ni) Bi    (tj) with i  and j within 1..Order + NumPoles The  integer ni is   the ith slot of the array OrderArray, tj is the jth slot of the array Parameters
     pub fn build_b_sp_matrix(
         Parameters: &ffi::TColStd_Array1OfReal,
         OrderArray: &ffi::TColStd_Array1OfInteger,
@@ -469,7 +469,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "this  factors  the Banded Matrix in the LU form with a Banded storage of components of the L matrix WARNING : do not use if the Matrix is totally positive (It is the case for Bspline matrices build as above with parameters being the Schoenberg points"]
+    /// this  factors  the Banded Matrix in the LU form with a Banded storage of components of the L matrix WARNING : do not use if the Matrix is totally positive (It is the case for Bspline matrices build as above with parameters being the Schoenberg points
     pub fn factor_banded_matrix(
         Matrix: std::pin::Pin<&mut ffi::math_Matrix>,
         UpperBandWidth: i32,
@@ -484,7 +484,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   is    an   seen   as    an Array[1..N][1..ArrayDimension] with N = the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension"]
+    /// This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   is    an   seen   as    an Array[1..N][1..ArrayDimension] with N = the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension
     pub fn solve_banded_system_matrix_int3_real(
         Matrix: &ffi::math_Matrix,
         UpperBandWidth: i32,
@@ -501,7 +501,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   has the length of the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension"]
+    /// This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   has the length of the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension
     pub fn solve_banded_system_matrix_int2_array1ofpnt2d(
         Matrix: &ffi::math_Matrix,
         UpperBandWidth: i32,
@@ -516,7 +516,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   has the length of the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension"]
+    /// This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   has the length of the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension
     pub fn solve_banded_system_matrix_int2_array1ofpnt(
         Matrix: &ffi::math_Matrix,
         UpperBandWidth: i32,
@@ -551,7 +551,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "This solves the  system Matrix.X =  B with when Matrix is factored in LU form The    Array   is    an   seen  as   an Array[1..N][1..ArrayDimension] with N = the  rank  of  the  matrix Matrix.  The result is  stored   in Array when  each coordinate is  solved that is B  is the array  whose   values     are   B[i]  = Array[i][p]       for     each  p    in 1..ArrayDimension. If  HomogeneousFlag == 0  the  Poles  are  multiplied by   the Weights   upon   Entry   and      once interpolation   is    carried  over the result of the  poles are divided by the result of   the   interpolation of  the weights. Otherwise if HomogenousFlag == 1 the Poles and Weights are treated homogeneously that is that those are interpolated as they are and result is returned without division by the interpolated weights."]
+    /// This solves the  system Matrix.X =  B with when Matrix is factored in LU form The    Array   is    an   seen  as   an Array[1..N][1..ArrayDimension] with N = the  rank  of  the  matrix Matrix.  The result is  stored   in Array when  each coordinate is  solved that is B  is the array  whose   values     are   B[i]  = Array[i][p]       for     each  p    in 1..ArrayDimension. If  HomogeneousFlag == 0  the  Poles  are  multiplied by   the Weights   upon   Entry   and      once interpolation   is    carried  over the result of the  poles are divided by the result of   the   interpolation of  the weights. Otherwise if HomogenousFlag == 1 the Poles and Weights are treated homogeneously that is that those are interpolated as they are and result is returned without division by the interpolated weights.
     pub fn solve_banded_system_matrix_int2_bool_array1ofpnt2d_array1ofreal(
         Matrix: &ffi::math_Matrix,
         UpperBandWidth: i32,
@@ -570,7 +570,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   is    an   seen   as    an Array[1..N][1..ArrayDimension] with N = the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension If  HomogeneousFlag == 0  the  Poles  are  multiplied by   the Weights   upon   Entry   and      once interpolation   is    carried  over the result of the  poles are divided by the result of   the   interpolation of  the weights. Otherwise if HomogenousFlag == 1 the Poles and Weights are treated homogeneously that is that those are interpolated as they are and result is returned without division by the interpolated weights."]
+    /// This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   is    an   seen   as    an Array[1..N][1..ArrayDimension] with N = the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension If  HomogeneousFlag == 0  the  Poles  are  multiplied by   the Weights   upon   Entry   and      once interpolation   is    carried  over the result of the  poles are divided by the result of   the   interpolation of  the weights. Otherwise if HomogenousFlag == 1 the Poles and Weights are treated homogeneously that is that those are interpolated as they are and result is returned without division by the interpolated weights.
     pub fn solve_banded_system_matrix_int2_bool_array1ofpnt_array1ofreal(
         Matrix: &ffi::math_Matrix,
         UpperBandWidth: i32,
@@ -589,7 +589,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "Merges  two knot vector by   setting the starting and ending values to StartValue and EndValue"]
+    /// Merges  two knot vector by   setting the starting and ending values to StartValue and EndValue
     pub fn merge_b_spline_knots(
         Tolerance: f64,
         StartValue: f64,
@@ -610,7 +610,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "This function will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following: 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))"]
+    /// This function will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following: 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))
     pub fn function_reparameterise_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int(
         Function: &ffi::EvaluatorFunction,
         BSplineDegree: i32,
@@ -625,7 +625,7 @@ impl BSplCLib {
         ffi :: BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int (Function , BSplineDegree , BSplineFlatKnots , PolesDimension , Poles , FlatKnots , NewDegree , NewPoles , theStatus)
     }
 
-    #[doc = "This function will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following: 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))"]
+    /// This function will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following: 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))
     pub fn function_reparameterise_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int(
         Function: &ffi::EvaluatorFunction,
         BSplineDegree: i32,
@@ -639,7 +639,7 @@ impl BSplCLib {
         ffi :: BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int (Function , BSplineDegree , BSplineFlatKnots , Poles , FlatKnots , NewDegree , NewPoles , theStatus)
     }
 
-    #[doc = "this will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following  : 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))"]
+    /// this will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following  : 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))
     pub fn function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int(
         Function: &ffi::EvaluatorFunction,
         BSplineDegree: i32,
@@ -653,7 +653,7 @@ impl BSplCLib {
         ffi :: BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int (Function , BSplineDegree , BSplineFlatKnots , Poles , FlatKnots , NewDegree , NewPoles , theStatus)
     }
 
-    #[doc = "this will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following  : 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))"]
+    /// this will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following  : 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))
     pub fn function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int(
         Function: &ffi::EvaluatorFunction,
         BSplineDegree: i32,
@@ -667,7 +667,7 @@ impl BSplCLib {
         ffi :: BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int (Function , BSplineDegree , BSplineFlatKnots , Poles , FlatKnots , NewDegree , NewPoles , theStatus)
     }
 
-    #[doc = "this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)"]
+    /// this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)
     pub fn function_multiply_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int(
         Function: &ffi::EvaluatorFunction,
         BSplineDegree: i32,
@@ -682,7 +682,7 @@ impl BSplCLib {
         ffi :: BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int (Function , BSplineDegree , BSplineFlatKnots , PolesDimension , Poles , FlatKnots , NewDegree , NewPoles , theStatus)
     }
 
-    #[doc = "this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)"]
+    /// this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)
     pub fn function_multiply_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int(
         Function: &ffi::EvaluatorFunction,
         BSplineDegree: i32,
@@ -705,7 +705,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)"]
+    /// this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)
     pub fn function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int(
         Function: &ffi::EvaluatorFunction,
         BSplineDegree: i32,
@@ -719,7 +719,7 @@ impl BSplCLib {
         ffi :: BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int (Function , BSplineDegree , BSplineFlatKnots , Poles , FlatKnots , NewDegree , NewPoles , theStatus)
     }
 
-    #[doc = "this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)"]
+    /// this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)
     pub fn function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int(
         Function: &ffi::EvaluatorFunction,
         BSplineDegree: i32,
@@ -733,7 +733,7 @@ impl BSplCLib {
         ffi :: BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int (Function , BSplineDegree , BSplineFlatKnots , Poles , FlatKnots , NewDegree , NewPoles , theStatus)
     }
 
-    #[doc = "Perform the De Boor   algorithm  to  evaluate a point at parameter <U>, with <Degree> and <Dimension>. Poles is  an array of  Reals of size <Dimension> *  <Degree>+1 Containing the  poles.  At  the end <Poles> contains the current point.   Poles Contain all  the poles of the BsplineCurve, Knots  also Contains all the knots of the BsplineCurve.  ExtrapMode has two slots [0] = Degree used to extrapolate before the first knot [1] = Degre used to  extrapolate after the last knot has to be between 1 and  Degree"]
+    /// Perform the De Boor   algorithm  to  evaluate a point at parameter <U>, with <Degree> and <Dimension>. Poles is  an array of  Reals of size <Dimension> *  <Degree>+1 Containing the  poles.  At  the end <Poles> contains the current point.   Poles Contain all  the poles of the BsplineCurve, Knots  also Contains all the knots of the BsplineCurve.  ExtrapMode has two slots [0] = Degree used to extrapolate before the first knot [1] = Degre used to  extrapolate after the last knot has to be between 1 and  Degree
     pub fn eval_real_bool_int3_array1ofreal_int_real2(
         U: f64,
         PeriodicFlag: bool,
@@ -758,7 +758,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "Perform the  De Boor algorithm  to evaluate a point at parameter   <U>,  with   <Degree>    and  <Dimension>. Evaluates by multiplying the  Poles by the Weights and gives  the homogeneous  result  in PolesResult that is the results of the evaluation of the numerator once it has     been  multiplied   by  the     weights and  in WeightsResult one has  the result of the evaluation of the denominator Warning:   <PolesResult> and <WeightsResult>  must be   dimensioned properly."]
+    /// Perform the  De Boor algorithm  to evaluate a point at parameter   <U>,  with   <Degree>    and  <Dimension>. Evaluates by multiplying the  Poles by the Weights and gives  the homogeneous  result  in PolesResult that is the results of the evaluation of the numerator once it has     been  multiplied   by  the     weights and  in WeightsResult one has  the result of the evaluation of the denominator Warning:   <PolesResult> and <WeightsResult>  must be   dimensioned properly.
     pub fn eval_real_bool_int3_array1ofreal_int_real4(
         U: f64,
         PeriodicFlag: bool,
@@ -787,7 +787,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "Perform the evaluation of the Bspline Basis and then multiplies by the weights this just evaluates the current point"]
+    /// Perform the evaluation of the Bspline Basis and then multiplies by the weights this just evaluates the current point
     pub fn eval_real_bool2_int2_array1ofreal_array1ofpnt_array1ofreal_pnt_real(
         U: f64,
         PeriodicFlag: bool,
@@ -814,7 +814,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "Perform the evaluation of the Bspline Basis and then multiplies by the weights this just evaluates the current point"]
+    /// Perform the evaluation of the Bspline Basis and then multiplies by the weights this just evaluates the current point
     pub fn eval_real_bool2_int2_array1ofreal_array1ofpnt2d_array1ofreal_pnt2d_real(
         U: f64,
         PeriodicFlag: bool,
@@ -841,7 +841,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "Extend a BSpline nD using the tangency map <C1Coefficient> is the coefficient of reparametrisation <Continuity> must be equal to 1, 2 or 3. <Degree> must be greater or equal than <Continuity> + 1. Warning:   <KnotsResult> and <PolesResult>  must be   dimensioned properly."]
+    /// Extend a BSpline nD using the tangency map <C1Coefficient> is the coefficient of reparametrisation <Continuity> must be equal to 1, 2 or 3. <Degree> must be greater or equal than <Continuity> + 1. Warning:   <KnotsResult> and <PolesResult>  must be   dimensioned properly.
     pub fn tang_extend_to_constraint(
         FlatKnots: &ffi::TColStd_Array1OfReal,
         C1Coefficient: f64,
@@ -888,7 +888,7 @@ impl BSplCLib {
         ffi::BSplCLib_poles_coefficients_array1ofpnt2(Poles, CachePoles)
     }
 
-    #[doc = "builds the Schoenberg points from the flat knot used to interpolate a BSpline since the BSpline matrix is invertible."]
+    /// builds the Schoenberg points from the flat knot used to interpolate a BSpline since the BSpline matrix is invertible.
     pub fn build_schoenberg_points(
         Degree: i32,
         FlatKnots: &ffi::TColStd_Array1OfReal,
@@ -897,7 +897,7 @@ impl BSplCLib {
         ffi::BSplCLib_build_schoenberg_points(Degree, FlatKnots, Parameters)
     }
 
-    #[doc = "Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation or interpolation at Scheonberg points the method will work The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot"]
+    /// Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation or interpolation at Scheonberg points the method will work The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot
     pub fn interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_int(
         Degree: i32,
         FlatKnots: &ffi::TColStd_Array1OfReal,
@@ -916,7 +916,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem w ll report 0 if there was no problem else it will give the index of the faulty pivot"]
+    /// Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem w ll report 0 if there was no problem else it will give the index of the faulty pivot
     pub fn interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_int(
         Degree: i32,
         FlatKnots: &ffi::TColStd_Array1OfReal,
@@ -935,7 +935,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot"]
+    /// Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot
     pub fn interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_array1ofreal_int(
         Degree: i32,
         FlatKnots: &ffi::TColStd_Array1OfReal,
@@ -956,7 +956,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem w ll report 0 if there was no problem else it will give the i"]
+    /// Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem w ll report 0 if there was no problem else it will give the i
     pub fn interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_array1ofreal_int(
         Degree: i32,
         FlatKnots: &ffi::TColStd_Array1OfReal,
@@ -977,7 +977,7 @@ impl BSplCLib {
         )
     }
 
-    #[doc = "Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray The length of FlatKnots is Degree + L + 1 The  PolesArray   is    an   seen   as    an Array[1..N][1..ArrayDimension] with N = tge length of the parameters array Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation or interpolation at Scheonberg points the method will work The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot"]
+    /// Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray The length of FlatKnots is Degree + L + 1 The  PolesArray   is    an   seen   as    an Array[1..N][1..ArrayDimension] with N = tge length of the parameters array Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation or interpolation at Scheonberg points the method will work The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot
     pub fn interpolate_int_array1ofreal2_array1ofinteger_int_real_int(
         Degree: i32,
         FlatKnots: &ffi::TColStd_Array1OfReal,
@@ -1026,24 +1026,25 @@ impl EvaluatorFunction {}
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_spl_c_lib.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== BSplCLib_Cache ========================"]
-        #[doc = "/// **Source:** `BSplCLib_Cache.hxx` - `BSplCLib_Cache`"]
-        #[doc = ""]
-        #[doc = "\\brief A cache class for Bezier and B-spline curves. Defines all data, that can be cached on a span of a curve. The data should be recalculated in going from span to span."]
+        /// ======================== BSplCLib_Cache ========================
+        /// /// **Source:** `BSplCLib_Cache.hxx` - `BSplCLib_Cache`
+        ///
+        /// \\brief A cache class for Bezier and B-spline curves. Defines all data, that can be cached on a span of a curve. The data should be recalculated in going from span to span.
         #[cxx_name = "BSplCLib_Cache"]
         type Cache;
-        #[doc = "Verifies validity of the cache using flat parameter of the point \\param theParameter parameter of the point placed in the span"]
+        /// Verifies validity of the cache using flat parameter of the point \\param theParameter parameter of the point placed in the span
         #[cxx_name = "IsCacheValid"]
         fn is_cache_valid(self: &Cache, theParameter: f64) -> bool;
-        #[doc = "Calculates the point on the curve in the specified parameter \\param[in]  theParameter parameter of calculation of the value \\param[out] thePoint     the result of calculation (the point on the curve)"]
+        /// Calculates the point on the curve in the specified parameter \\param[in]  theParameter parameter of calculation of the value \\param[out] thePoint     the result of calculation (the point on the curve)
         #[cxx_name = "D0"]
         fn d0_real_pnt2d(self: &Cache, theParameter: &f64, thePoint: Pin<&mut gp_Pnt2d>);
         #[cxx_name = "D0"]
         fn d0_real_pnt(self: &Cache, theParameter: &f64, thePoint: Pin<&mut gp_Pnt>);
-        #[doc = "Calculates the point on the curve and its first derivative in the specified parameter \\param[in]  theParameter parameter of calculation of the value \\param[out] thePoint     the result of calculation (the point on the curve) \\param[out] theTangent   tangent vector (first derivatives) for the curve in the calculated point"]
+        /// Calculates the point on the curve and its first derivative in the specified parameter \\param[in]  theParameter parameter of calculation of the value \\param[out] thePoint     the result of calculation (the point on the curve) \\param[out] theTangent   tangent vector (first derivatives) for the curve in the calculated point
         #[cxx_name = "D1"]
         fn d1_real_pnt2d_vec2d(
             self: &Cache,
@@ -1058,7 +1059,7 @@ pub(crate) mod ffi {
             thePoint: Pin<&mut gp_Pnt>,
             theTangent: Pin<&mut gp_Vec>,
         );
-        #[doc = "Calculates the point on the curve and two derivatives in the specified parameter \\param[in]  theParameter parameter of calculation of the value \\param[out] thePoint     the result of calculation (the point on the curve) \\param[out] theTangent   tangent vector (1st derivatives) for the curve in the calculated point \\param[out] theCurvature curvature vector (2nd derivatives) for the curve in the calculated point"]
+        /// Calculates the point on the curve and two derivatives in the specified parameter \\param[in]  theParameter parameter of calculation of the value \\param[out] thePoint     the result of calculation (the point on the curve) \\param[out] theTangent   tangent vector (1st derivatives) for the curve in the calculated point \\param[out] theCurvature curvature vector (2nd derivatives) for the curve in the calculated point
         #[cxx_name = "D2"]
         fn d2_real_pnt2d_vec2d2(
             self: &Cache,
@@ -1075,7 +1076,7 @@ pub(crate) mod ffi {
             theTangent: Pin<&mut gp_Vec>,
             theCurvature: Pin<&mut gp_Vec>,
         );
-        #[doc = "Calculates the point on the curve and three derivatives in the specified parameter \\param[in]  theParameter parameter of calculation of the value \\param[out] thePoint     the result of calculation (the point on the curve) \\param[out] theTangent   tangent vector (1st derivatives) for the curve in the calculated point \\param[out] theCurvature curvature vector (2nd derivatives) for the curve in the calculated point \\param[out] theTorsion   second curvature vector (3rd derivatives) for the curve in the calculated point"]
+        /// Calculates the point on the curve and three derivatives in the specified parameter \\param[in]  theParameter parameter of calculation of the value \\param[out] thePoint     the result of calculation (the point on the curve) \\param[out] theTangent   tangent vector (1st derivatives) for the curve in the calculated point \\param[out] theCurvature curvature vector (2nd derivatives) for the curve in the calculated point \\param[out] theTorsion   second curvature vector (3rd derivatives) for the curve in the calculated point
         #[cxx_name = "D3"]
         fn d3_real_pnt2d_vec2d3(
             self: &Cache,
@@ -1098,53 +1099,53 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &Cache) -> &HandleStandardType;
         #[cxx_name = "BSplCLib_Cache_get_type_name"]
         fn Cache_get_type_name() -> String;
-        #[doc = "Wrap BSplCLib_Cache in a Handle (reference-counted smart pointer)"]
+        /// Wrap BSplCLib_Cache in a Handle (reference-counted smart pointer)
         #[cxx_name = "BSplCLib_Cache_to_handle"]
         fn Cache_to_handle(obj: UniquePtr<Cache>) -> UniquePtr<HandleBSplCLibCache>;
-        #[doc = " ======================== BSplCLib_CacheParams ========================"]
-        #[doc = "/// **Source:** `BSplCLib_CacheParams.hxx` - `BSplCLib_CacheParams`"]
-        #[doc = ""]
-        #[doc = "Simple structure containing parameters describing parameterization of a B-spline curve or a surface in one direction (U or V), and data of the current span for its caching"]
+        /// ======================== BSplCLib_CacheParams ========================
+        /// /// **Source:** `BSplCLib_CacheParams.hxx` - `BSplCLib_CacheParams`
+        ///
+        /// Simple structure containing parameters describing parameterization of a B-spline curve or a surface in one direction (U or V), and data of the current span for its caching
         #[cxx_name = "BSplCLib_CacheParams"]
         type CacheParams;
-        #[doc = "/// **Source:** `BSplCLib_CacheParams.hxx` - `BSplCLib_CacheParams::BSplCLib_CacheParams()`"]
-        #[doc = ""]
-        #[doc = "Constructor, prepares data structures for caching. \\param theDegree     degree of the B-spline (or Bezier) \\param thePeriodic   identify whether the B-spline is periodic \\param theFlatKnots  knots of Bezier / B-spline parameterization"]
+        /// /// **Source:** `BSplCLib_CacheParams.hxx` - `BSplCLib_CacheParams::BSplCLib_CacheParams()`
+        ///
+        /// Constructor, prepares data structures for caching. \\param theDegree     degree of the B-spline (or Bezier) \\param thePeriodic   identify whether the B-spline is periodic \\param theFlatKnots  knots of Bezier / B-spline parameterization
         #[cxx_name = "BSplCLib_CacheParams_ctor_int_bool_array1ofreal"]
         fn CacheParams_ctor_int_bool_array1ofreal(
             theDegree: i32,
             thePeriodic: bool,
             theFlatKnots: &TColStd_Array1OfReal,
         ) -> UniquePtr<CacheParams>;
-        #[doc = "Normalizes the parameter for periodic B-splines \\param theParameter the value to be normalized into the knots array"]
+        /// Normalizes the parameter for periodic B-splines \\param theParameter the value to be normalized into the knots array
         #[cxx_name = "PeriodicNormalization"]
         fn periodic_normalization(self: &CacheParams, theParameter: f64) -> f64;
-        #[doc = "Verifies validity of the cache using flat parameter of the point \\param theParameter parameter of the point placed in the span"]
+        /// Verifies validity of the cache using flat parameter of the point \\param theParameter parameter of the point placed in the span
         #[cxx_name = "IsCacheValid"]
         fn is_cache_valid(self: &CacheParams, theParameter: f64) -> bool;
-        #[doc = "Computes span for the specified parameter \\param theParameter parameter of the point placed in the span \\param theFlatKnots  knots of Bezier / B-spline parameterization"]
+        /// Computes span for the specified parameter \\param theParameter parameter of the point placed in the span \\param theFlatKnots  knots of Bezier / B-spline parameterization
         #[cxx_name = "LocateParameter"]
         fn locate_parameter(
             self: Pin<&mut CacheParams>,
             theParameter: &mut f64,
             theFlatKnots: &TColStd_Array1OfReal,
         );
-        #[doc = " ======================== BSplCLib ========================"]
-        #[doc = "/// **Source:** `BSplCLib.hxx` - `BSplCLib`"]
-        #[doc = ""]
+        /// ======================== BSplCLib ========================
+        /// /// **Source:** `BSplCLib.hxx` - `BSplCLib`
+        ///
         #[doc = "BSplCLib   B-spline curve Library. The BSplCLib package is  a basic library  for BSplines. It provides three categories of functions. * Management methods to  process knots and multiplicities. * Multi-Dimensions  spline methods.  BSpline methods where poles have an arbitrary number of dimensions. They divides in two groups : - Global methods modifying the  whole set of  poles. The poles are    described   by an array   of   Reals and  a Dimension. Example : Inserting knots. - Local methods  computing  points and derivatives.  The poles  are described by a pointer  on  a local array  of Reals and a Dimension. The local array is modified. *  2D  and 3D spline   curves  methods. Methods  for 2d and 3d BSplines  curves  rational or not rational. Those methods have the following structure : - They extract the pole information in a working array. -  They      process the  working   array    with   the multi-dimension  methods. (for example  a  3d  rational curve is processed as a 4 dimension curve). - They get back the result in the original dimension. Note that the  bspline   surface methods found   in the package BSplSLib  uses  the same  structure and rely on BSplCLib. In the following list  of methods the  2d and 3d  curve methods   will be  described   with  the  corresponding multi-dimension method. The 3d or 2d B-spline curve is defined with : . its control points : TColgp_Array1OfPnt(2d)        Poles . its weights        : TColStd_Array1OfReal          Weights . its knots          : TColStd_Array1OfReal          Knots . its multiplicities : TColStd_Array1OfInteger       Mults . its degree         : Standard_Integer              Degree . its periodicity    : Standard_Boolean              Periodic Warnings : The bounds of Poles and Weights should be the same. The bounds of Knots and Mults   should be the same. Note: weight and multiplicity arrays can be passed by pointer for some functions so that NULL pointer is valid. That means no weights/no multiplicities passed. No weights (BSplCLib::NoWeights()) means the curve is non rational. No mults (BSplCLib::NoMults()) means the knots are \"flat\" knots. KeyWords : B-spline curve, Functions, Library References : . A survey of curves and surfaces methods in CADG Wolfgang BOHM CAGD 1 (1984) . On de Boor-like algorithms and blossoming Wolfgang BOEHM cagd 5 (1988) . Blossoming and knot insertion algorithms for B-spline curves Ronald N. GOLDMAN . Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA . Curves and Surfaces for Computer Aided Geometric Design, a practical guide Gerald Farin"]
         #[cxx_name = "BSplCLib"]
         type BSplCLib;
-        #[doc = "This routine searches the position of the real value theX in the monotonically increasing set of real values theArray using bisection algorithm. If the given value is out of range or array values, algorithm returns either theArray.Lower()-1 or theArray.Upper()+1 depending on theX position in the ordered set. This routine is used to locate a knot value in a set of knots."]
+        /// This routine searches the position of the real value theX in the monotonically increasing set of real values theArray using bisection algorithm. If the given value is out of range or array values, algorithm returns either theArray.Lower()-1 or theArray.Upper()+1 depending on theX position in the ordered set. This routine is used to locate a knot value in a set of knots.
         #[cxx_name = "BSplCLib_Hunt"]
         fn BSplCLib_hunt(theArray: &TColStd_Array1OfReal, theX: f64, theXPos: &mut i32);
-        #[doc = "Computes the index of the knots value which gives the start point of the curve."]
+        /// Computes the index of the knots value which gives the start point of the curve.
         #[cxx_name = "BSplCLib_FirstUKnotIndex"]
         fn BSplCLib_first_u_knot_index(Degree: i32, Mults: &TColStd_Array1OfInteger) -> i32;
-        #[doc = "Computes the index of the knots value which gives the end point of the curve."]
+        /// Computes the index of the knots value which gives the end point of the curve.
         #[cxx_name = "BSplCLib_LastUKnotIndex"]
         fn BSplCLib_last_u_knot_index(Degree: i32, Mults: &TColStd_Array1OfInteger) -> i32;
-        #[doc = "Computes the index  of  the  flats knots  sequence corresponding  to  <Index> in  the  knots sequence which multiplicities are <Mults>."]
+        /// Computes the index  of  the  flats knots  sequence corresponding  to  <Index> in  the  knots sequence which multiplicities are <Mults>.
         #[cxx_name = "BSplCLib_FlatIndex"]
         fn BSplCLib_flat_index(
             Degree: i32,
@@ -1177,16 +1178,16 @@ pub(crate) mod ffi {
             KnotIndex: &mut i32,
             NewU: &mut f64,
         );
-        #[doc = "Finds the greatest multiplicity in a set of knots between  K1  and K2.   Mults  is  the  multiplicity associated with each knot value."]
+        /// Finds the greatest multiplicity in a set of knots between  K1  and K2.   Mults  is  the  multiplicity associated with each knot value.
         #[cxx_name = "BSplCLib_MaxKnotMult"]
         fn BSplCLib_max_knot_mult(Mults: &TColStd_Array1OfInteger, K1: i32, K2: i32) -> i32;
-        #[doc = "Finds the lowest multiplicity in  a  set of knots between   K1  and K2.   Mults is  the  multiplicity associated with each knot value."]
+        /// Finds the lowest multiplicity in  a  set of knots between   K1  and K2.   Mults is  the  multiplicity associated with each knot value.
         #[cxx_name = "BSplCLib_MinKnotMult"]
         fn BSplCLib_min_knot_mult(Mults: &TColStd_Array1OfInteger, K1: i32, K2: i32) -> i32;
-        #[doc = "Returns the number of poles of the curve. Returns 0 if one of the multiplicities is incorrect. * Non positive. * Greater than Degree,  or  Degree+1  at the first and last knot of a non periodic curve. *  The  last periodicity  on  a periodic  curve is not equal to the first."]
+        /// Returns the number of poles of the curve. Returns 0 if one of the multiplicities is incorrect. * Non positive. * Greater than Degree,  or  Degree+1  at the first and last knot of a non periodic curve. *  The  last periodicity  on  a periodic  curve is not equal to the first.
         #[cxx_name = "BSplCLib_NbPoles"]
         fn BSplCLib_nb_poles(Degree: i32, Periodic: bool, Mults: &TColStd_Array1OfInteger) -> i32;
-        #[doc = "Returns the length  of the sequence  of knots with repetition. Periodic : Sum(Mults(i), i = Mults.Lower(); i <= Mults.Upper()); Non Periodic : Sum(Mults(i); i = Mults.Lower(); i < Mults.Upper()) + 2 * Degree"]
+        /// Returns the length  of the sequence  of knots with repetition. Periodic : Sum(Mults(i), i = Mults.Lower(); i <= Mults.Upper()); Non Periodic : Sum(Mults(i); i = Mults.Lower(); i < Mults.Upper()) + 2 * Degree
         #[cxx_name = "BSplCLib_KnotSequenceLength"]
         fn BSplCLib_knot_sequence_length(
             Mults: &TColStd_Array1OfInteger,
@@ -1200,7 +1201,7 @@ pub(crate) mod ffi {
             KnotSeq: Pin<&mut TColStd_Array1OfReal>,
             Periodic: bool,
         );
-        #[doc = "Computes  the  sequence   of knots KnotSeq  with repetition  of the  knots  of multiplicity  greater than 1. Length of KnotSeq must be KnotSequenceLength(Mults,Degree,Periodic)"]
+        /// Computes  the  sequence   of knots KnotSeq  with repetition  of the  knots  of multiplicity  greater than 1. Length of KnotSeq must be KnotSequenceLength(Mults,Degree,Periodic)
         #[cxx_name = "BSplCLib_KnotSequence_array1ofreal_array1ofinteger_int_bool_array1ofreal"]
         fn BSplCLib_knot_sequence_array1ofreal_array1ofinteger_int_bool_array1ofreal(
             Knots: &TColStd_Array1OfReal,
@@ -1209,10 +1210,10 @@ pub(crate) mod ffi {
             Periodic: bool,
             KnotSeq: Pin<&mut TColStd_Array1OfReal>,
         );
-        #[doc = "Returns the  length  of the   sequence of  knots  (and Mults)  without repetition."]
+        /// Returns the  length  of the   sequence of  knots  (and Mults)  without repetition.
         #[cxx_name = "BSplCLib_KnotsLength"]
         fn BSplCLib_knots_length(KnotSeq: &TColStd_Array1OfReal, Periodic: bool) -> i32;
-        #[doc = "Computes  the  sequence   of knots Knots  without repetition  of the  knots  of multiplicity  greater than 1. Length  of <Knots> and  <Mults> must be KnotsLength(KnotSequence,Periodic)"]
+        /// Computes  the  sequence   of knots Knots  without repetition  of the  knots  of multiplicity  greater than 1. Length  of <Knots> and  <Mults> must be KnotsLength(KnotSequence,Periodic)
         #[cxx_name = "BSplCLib_Knots"]
         fn BSplCLib_knots(
             KnotSeq: &TColStd_Array1OfReal,
@@ -1220,25 +1221,25 @@ pub(crate) mod ffi {
             Mults: Pin<&mut TColStd_Array1OfInteger>,
             Periodic: bool,
         );
-        #[doc = "Reparametrizes a B-spline curve to [U1, U2]. The knot values are recomputed such that Knots (Lower) = U1 and Knots (Upper) = U2   but the knot form is not modified. Warnings : In the array Knots the values must be in ascending order. U1 must not be equal to U2 to avoid division by zero."]
+        /// Reparametrizes a B-spline curve to [U1, U2]. The knot values are recomputed such that Knots (Lower) = U1 and Knots (Upper) = U2   but the knot form is not modified. Warnings : In the array Knots the values must be in ascending order. U1 must not be equal to U2 to avoid division by zero.
         #[cxx_name = "BSplCLib_Reparametrize"]
         fn BSplCLib_reparametrize(U1: f64, U2: f64, Knots: Pin<&mut TColStd_Array1OfReal>);
-        #[doc = "Reverses  the  array   knots  to  become  the knots sequence of the reversed curve."]
+        /// Reverses  the  array   knots  to  become  the knots sequence of the reversed curve.
         #[cxx_name = "BSplCLib_Reverse_array1ofreal"]
         fn BSplCLib_reverse_array1ofreal(Knots: Pin<&mut TColStd_Array1OfReal>);
-        #[doc = "Reverses  the  array of multiplicities."]
+        /// Reverses  the  array of multiplicities.
         #[cxx_name = "BSplCLib_Reverse_array1ofinteger"]
         fn BSplCLib_reverse_array1ofinteger(Mults: Pin<&mut TColStd_Array1OfInteger>);
-        #[doc = "Reverses the array of poles. Last is the  index of the new first pole. On  a  non periodic curve last is Poles.Upper(). On a periodic curve last is (number of flat knots - degree - 1) or (sum of multiplicities(but  for the last) + degree - 1)"]
+        /// Reverses the array of poles. Last is the  index of the new first pole. On  a  non periodic curve last is Poles.Upper(). On a periodic curve last is (number of flat knots - degree - 1) or (sum of multiplicities(but  for the last) + degree - 1)
         #[cxx_name = "BSplCLib_Reverse_array1ofpnt_int"]
         fn BSplCLib_reverse_array1ofpnt_int(Poles: Pin<&mut TColgp_Array1OfPnt>, Last: i32);
-        #[doc = "Reverses the array of poles."]
+        /// Reverses the array of poles.
         #[cxx_name = "BSplCLib_Reverse_array1ofpnt2d_int"]
         fn BSplCLib_reverse_array1ofpnt2d_int(Poles: Pin<&mut TColgp_Array1OfPnt2d>, Last: i32);
-        #[doc = "Reverses the array of poles."]
+        /// Reverses the array of poles.
         #[cxx_name = "BSplCLib_Reverse_array1ofreal_int"]
         fn BSplCLib_reverse_array1ofreal_int(Weights: Pin<&mut TColStd_Array1OfReal>, Last: i32);
-        #[doc = "Returns False if all the weights  of the  array <Weights> between   I1 an I2   are  identic.   Epsilon  is used for comparing  weights. If Epsilon  is 0. the  Epsilon of the first weight is used."]
+        /// Returns False if all the weights  of the  array <Weights> between   I1 an I2   are  identic.   Epsilon  is used for comparing  weights. If Epsilon  is 0. the  Epsilon of the first weight is used.
         #[cxx_name = "BSplCLib_IsRational"]
         fn BSplCLib_is_rational(
             Weights: &TColStd_Array1OfReal,
@@ -1246,10 +1247,10 @@ pub(crate) mod ffi {
             I2: i32,
             Epsilon: f64,
         ) -> bool;
-        #[doc = "returns the degree maxima for a BSplineCurve."]
+        /// returns the degree maxima for a BSplineCurve.
         #[cxx_name = "BSplCLib_MaxDegree"]
         fn BSplCLib_max_degree() -> i32;
-        #[doc = "Perform the Boor  algorithm  to  evaluate a point at parameter <U>, with <Degree> and <Dimension>. Poles is  an array of  Reals of size <Dimension> *  <Degree>+1 Containing  the poles.  At  the end <Poles> contains the current point."]
+        /// Perform the Boor  algorithm  to  evaluate a point at parameter <U>, with <Degree> and <Dimension>. Poles is  an array of  Reals of size <Dimension> *  <Degree>+1 Containing  the poles.  At  the end <Poles> contains the current point.
         #[cxx_name = "BSplCLib_Eval_real_int_real_int_real"]
         fn BSplCLib_eval_real_int_real_int_real(
             U: f64,
@@ -1258,7 +1259,7 @@ pub(crate) mod ffi {
             Dimension: i32,
             Poles: &mut f64,
         );
-        #[doc = "Performs the  Boor Algorithm  at  parameter <U> with the given <Degree> and the  array of <Knots> on  the poles <Poles> of dimension  <Dimension>.  The schema is  computed  until  level  <Depth>  on a   basis of <Length+1> poles. * Knots is an array of reals of length : <Length> + <Degree> * Poles is an array of reals of length : (2 * <Length> + 1) * <Dimension> The poles values  must be  set  in the array at the positions. 0..Dimension, 2 * Dimension .. 3 * Dimension 4  * Dimension .. 5  * Dimension ... The results are found in the array poles depending on the Depth. (See the method GetPole)."]
+        /// Performs the  Boor Algorithm  at  parameter <U> with the given <Degree> and the  array of <Knots> on  the poles <Poles> of dimension  <Dimension>.  The schema is  computed  until  level  <Depth>  on a   basis of <Length+1> poles. * Knots is an array of reals of length : <Length> + <Degree> * Poles is an array of reals of length : (2 * <Length> + 1) * <Dimension> The poles values  must be  set  in the array at the positions. 0..Dimension, 2 * Dimension .. 3 * Dimension 4  * Dimension .. 5  * Dimension ... The results are found in the array poles depending on the Depth. (See the method GetPole).
         #[cxx_name = "BSplCLib_BoorScheme"]
         fn BSplCLib_boor_scheme(
             U: f64,
@@ -1269,7 +1270,7 @@ pub(crate) mod ffi {
             Depth: i32,
             Length: i32,
         );
-        #[doc = "Compute  the content of  Pole before the BoorScheme. This method is used to remove poles. U is the poles to  remove, Knots should contains the knots of the curve after knot removal. The first  and last poles  do not  change, the other poles are computed by averaging two possible values. The distance between  the  two   possible  poles  is computed, if it  is higher than <Tolerance> False is returned."]
+        /// Compute  the content of  Pole before the BoorScheme. This method is used to remove poles. U is the poles to  remove, Knots should contains the knots of the curve after knot removal. The first  and last poles  do not  change, the other poles are computed by averaging two possible values. The distance between  the  two   possible  poles  is computed, if it  is higher than <Tolerance> False is returned.
         #[cxx_name = "BSplCLib_AntiBoorScheme"]
         fn BSplCLib_anti_boor_scheme(
             U: f64,
@@ -1281,7 +1282,7 @@ pub(crate) mod ffi {
             Length: i32,
             Tolerance: f64,
         ) -> bool;
-        #[doc = "Computes   the   poles of  the    BSpline  giving the derivatives of order <Order>. The formula for the first order is Pole(i) = Degree * (Pole(i+1) - Pole(i)) / (Knots(i+Degree+1) - Knots(i+1)) This formula  is repeated  (Degree  is decremented at each step)."]
+        /// Computes   the   poles of  the    BSpline  giving the derivatives of order <Order>. The formula for the first order is Pole(i) = Degree * (Pole(i+1) - Pole(i)) / (Knots(i+Degree+1) - Knots(i+1)) This formula  is repeated  (Degree  is decremented at each step).
         #[cxx_name = "BSplCLib_Derivative"]
         fn BSplCLib_derivative(
             Degree: i32,
@@ -1291,7 +1292,7 @@ pub(crate) mod ffi {
             Order: i32,
             Poles: &mut f64,
         );
-        #[doc = "Performs the Bohm  Algorithm at  parameter <U>. This algorithm computes the value and all the derivatives up to order N (N <= Degree). <Poles> is the original array of poles. The   result in  <Poles>  is    the value and    the derivatives.  Poles[0] is  the value,  Poles[Degree] is the last  derivative."]
+        /// Performs the Bohm  Algorithm at  parameter <U>. This algorithm computes the value and all the derivatives up to order N (N <= Degree). <Poles> is the original array of poles. The   result in  <Poles>  is    the value and    the derivatives.  Poles[0] is  the value,  Poles[Degree] is the last  derivative.
         #[cxx_name = "BSplCLib_Bohm"]
         fn BSplCLib_bohm(
             U: f64,
@@ -1301,7 +1302,7 @@ pub(crate) mod ffi {
             Dimension: i32,
             Poles: &mut f64,
         );
-        #[doc = "Return the index of the  first Pole to  use on the span  Mults(Index)  - Mults(Index+1).  This  index must be added to Poles.Lower()."]
+        /// Return the index of the  first Pole to  use on the span  Mults(Index)  - Mults(Index+1).  This  index must be added to Poles.Lower().
         #[cxx_name = "BSplCLib_PoleIndex"]
         fn BSplCLib_pole_index(
             Degree: i32,
@@ -1309,7 +1310,7 @@ pub(crate) mod ffi {
             Periodic: bool,
             Mults: &TColStd_Array1OfInteger,
         ) -> i32;
-        #[doc = "Copy in <LP>  poles for <Dimension>  Boor  scheme. Starting  from    <Index>     *  <Dimension>, copy <Length+1> poles."]
+        /// Copy in <LP>  poles for <Dimension>  Boor  scheme. Starting  from    <Index>     *  <Dimension>, copy <Length+1> poles.
         #[cxx_name = "BSplCLib_BuildBoor"]
         fn BSplCLib_build_boor(
             Index: i32,
@@ -1318,10 +1319,10 @@ pub(crate) mod ffi {
             Poles: &TColStd_Array1OfReal,
             LP: &mut f64,
         );
-        #[doc = "Returns the index in  the Boor result array of the poles <Index>. If  the Boor  algorithm was perform with <Length> and <Depth>."]
+        /// Returns the index in  the Boor result array of the poles <Index>. If  the Boor  algorithm was perform with <Length> and <Depth>.
         #[cxx_name = "BSplCLib_BoorIndex"]
         fn BSplCLib_boor_index(Index: i32, Length: i32, Depth: i32) -> i32;
-        #[doc = "Copy  the  pole at  position  <Index>  in  the Boor scheme of   dimension <Dimension> to  <Position> in the array <Pole>. <Position> is updated."]
+        /// Copy  the  pole at  position  <Index>  in  the Boor scheme of   dimension <Dimension> to  <Position> in the array <Pole>. <Position> is updated.
         #[cxx_name = "BSplCLib_GetPole"]
         fn BSplCLib_get_pole(
             Index: i32,
@@ -1347,7 +1348,7 @@ pub(crate) mod ffi {
             NewMults: Pin<&mut TColStd_Array1OfInteger>,
             Tolerance: f64,
         ) -> bool;
-        #[doc = "Returns the   number   of  knots   of  a  curve   with multiplicities <Mults> after elevating the degree from <Degree> to <NewDegree>. See the IncreaseDegree method for more comments."]
+        /// Returns the   number   of  knots   of  a  curve   with multiplicities <Mults> after elevating the degree from <Degree> to <NewDegree>. See the IncreaseDegree method for more comments.
         #[cxx_name = "BSplCLib_IncreaseDegreeCountKnots"]
         fn BSplCLib_increase_degree_count_knots(
             Degree: i32,
@@ -1368,7 +1369,7 @@ pub(crate) mod ffi {
             NewKnots: Pin<&mut TColStd_Array1OfReal>,
             NewMults: Pin<&mut TColStd_Array1OfInteger>,
         );
-        #[doc = "Set in <NbKnots> and <NbPolesToAdd> the number of Knots and Poles   of  the NotPeriodic  Curve   identical  at the periodic     curve with    a  degree    <Degree>  ,  a knots-distribution with Multiplicities <Mults>."]
+        /// Set in <NbKnots> and <NbPolesToAdd> the number of Knots and Poles   of  the NotPeriodic  Curve   identical  at the periodic     curve with    a  degree    <Degree>  ,  a knots-distribution with Multiplicities <Mults>.
         #[cxx_name = "BSplCLib_PrepareUnperiodize"]
         fn BSplCLib_prepare_unperiodize(
             Degree: i32,
@@ -1387,7 +1388,7 @@ pub(crate) mod ffi {
             NewKnots: Pin<&mut TColStd_Array1OfReal>,
             NewPoles: Pin<&mut TColStd_Array1OfReal>,
         );
-        #[doc = "Set in <NbKnots> and <NbPoles> the number of Knots and Poles of the curve resulting from  the trimming of the BSplinecurve defined with <degree>, <knots>, <mults>"]
+        /// Set in <NbKnots> and <NbPoles> the number of Knots and Poles of the curve resulting from  the trimming of the BSplinecurve defined with <degree>, <knots>, <mults>
         #[cxx_name = "BSplCLib_PrepareTrimming"]
         fn BSplCLib_prepare_trimming(
             Degree: i32,
@@ -1432,7 +1433,7 @@ pub(crate) mod ffi {
             P: Pin<&mut gp_Pnt2d>,
             VN: Pin<&mut gp_Vec2d>,
         );
-        #[doc = "This  evaluates  the Bspline  Basis  at  a given  parameter  Parameter   up   to  the requested   DerivativeOrder  and store the result  in the  array BsplineBasis  in the following   fashion BSplineBasis(1,1)   = value of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex BsplineBasis(1,2)   = value of second non vanishing Bspline   function which  has   Index FirstNonZeroBsplineIndex + 1 BsplineBasis(1,n)   = value of second non vanishing non vanishing Bspline   function which  has   Index FirstNonZeroBsplineIndex + n (n <= Order) BSplineBasis(2,1)   = value of derivative of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex BSplineBasis(N,1)   = value of Nth derivative of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex if N <= DerivativeOrder + 1"]
+        /// This  evaluates  the Bspline  Basis  at  a given  parameter  Parameter   up   to  the requested   DerivativeOrder  and store the result  in the  array BsplineBasis  in the following   fashion BSplineBasis(1,1)   = value of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex BsplineBasis(1,2)   = value of second non vanishing Bspline   function which  has   Index FirstNonZeroBsplineIndex + 1 BsplineBasis(1,n)   = value of second non vanishing non vanishing Bspline   function which  has   Index FirstNonZeroBsplineIndex + n (n <= Order) BSplineBasis(2,1)   = value of derivative of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex BSplineBasis(N,1)   = value of Nth derivative of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex if N <= DerivativeOrder + 1
         #[cxx_name = "BSplCLib_EvalBsplineBasis"]
         fn BSplCLib_eval_bspline_basis(
             DerivativeOrder: i32,
@@ -1443,7 +1444,7 @@ pub(crate) mod ffi {
             BsplineBasis: Pin<&mut math_Matrix>,
             isPeriodic: bool,
         ) -> i32;
-        #[doc = "This Builds   a fully  blown   Matrix of (ni) Bi    (tj) with i  and j within 1..Order + NumPoles The  integer ni is   the ith slot of the array OrderArray, tj is the jth slot of the array Parameters"]
+        /// This Builds   a fully  blown   Matrix of (ni) Bi    (tj) with i  and j within 1..Order + NumPoles The  integer ni is   the ith slot of the array OrderArray, tj is the jth slot of the array Parameters
         #[cxx_name = "BSplCLib_BuildBSpMatrix"]
         fn BSplCLib_build_b_sp_matrix(
             Parameters: &TColStd_Array1OfReal,
@@ -1454,7 +1455,7 @@ pub(crate) mod ffi {
             UpperBandWidth: &mut i32,
             LowerBandWidth: &mut i32,
         ) -> i32;
-        #[doc = "this  factors  the Banded Matrix in the LU form with a Banded storage of components of the L matrix WARNING : do not use if the Matrix is totally positive (It is the case for Bspline matrices build as above with parameters being the Schoenberg points"]
+        /// this  factors  the Banded Matrix in the LU form with a Banded storage of components of the L matrix WARNING : do not use if the Matrix is totally positive (It is the case for Bspline matrices build as above with parameters being the Schoenberg points
         #[cxx_name = "BSplCLib_FactorBandedMatrix"]
         fn BSplCLib_factor_banded_matrix(
             Matrix: Pin<&mut math_Matrix>,
@@ -1462,7 +1463,7 @@ pub(crate) mod ffi {
             LowerBandWidth: i32,
             PivotIndexProblem: &mut i32,
         ) -> i32;
-        #[doc = "This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   is    an   seen   as    an Array[1..N][1..ArrayDimension] with N = the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension"]
+        /// This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   is    an   seen   as    an Array[1..N][1..ArrayDimension] with N = the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension
         #[cxx_name = "BSplCLib_SolveBandedSystem_matrix_int3_real"]
         fn BSplCLib_solve_banded_system_matrix_int3_real(
             Matrix: &math_Matrix,
@@ -1471,7 +1472,7 @@ pub(crate) mod ffi {
             ArrayDimension: i32,
             Array: &mut f64,
         ) -> i32;
-        #[doc = "This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   has the length of the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension"]
+        /// This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   has the length of the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension
         #[cxx_name = "BSplCLib_SolveBandedSystem_matrix_int2_array1ofpnt2d"]
         fn BSplCLib_solve_banded_system_matrix_int2_array1ofpnt2d(
             Matrix: &math_Matrix,
@@ -1479,7 +1480,7 @@ pub(crate) mod ffi {
             LowerBandWidth: i32,
             Array: Pin<&mut TColgp_Array1OfPnt2d>,
         ) -> i32;
-        #[doc = "This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   has the length of the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension"]
+        /// This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   has the length of the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension
         #[cxx_name = "BSplCLib_SolveBandedSystem_matrix_int2_array1ofpnt"]
         fn BSplCLib_solve_banded_system_matrix_int2_array1ofpnt(
             Matrix: &math_Matrix,
@@ -1497,7 +1498,7 @@ pub(crate) mod ffi {
             Array: &mut f64,
             Weights: &mut f64,
         ) -> i32;
-        #[doc = "This solves the  system Matrix.X =  B with when Matrix is factored in LU form The    Array   is    an   seen  as   an Array[1..N][1..ArrayDimension] with N = the  rank  of  the  matrix Matrix.  The result is  stored   in Array when  each coordinate is  solved that is B  is the array  whose   values     are   B[i]  = Array[i][p]       for     each  p    in 1..ArrayDimension. If  HomogeneousFlag == 0  the  Poles  are  multiplied by   the Weights   upon   Entry   and      once interpolation   is    carried  over the result of the  poles are divided by the result of   the   interpolation of  the weights. Otherwise if HomogenousFlag == 1 the Poles and Weights are treated homogeneously that is that those are interpolated as they are and result is returned without division by the interpolated weights."]
+        /// This solves the  system Matrix.X =  B with when Matrix is factored in LU form The    Array   is    an   seen  as   an Array[1..N][1..ArrayDimension] with N = the  rank  of  the  matrix Matrix.  The result is  stored   in Array when  each coordinate is  solved that is B  is the array  whose   values     are   B[i]  = Array[i][p]       for     each  p    in 1..ArrayDimension. If  HomogeneousFlag == 0  the  Poles  are  multiplied by   the Weights   upon   Entry   and      once interpolation   is    carried  over the result of the  poles are divided by the result of   the   interpolation of  the weights. Otherwise if HomogenousFlag == 1 the Poles and Weights are treated homogeneously that is that those are interpolated as they are and result is returned without division by the interpolated weights.
         #[cxx_name = "BSplCLib_SolveBandedSystem_matrix_int2_bool_array1ofpnt2d_array1ofreal"]
         fn BSplCLib_solve_banded_system_matrix_int2_bool_array1ofpnt2d_array1ofreal(
             Matrix: &math_Matrix,
@@ -1507,7 +1508,7 @@ pub(crate) mod ffi {
             Array: Pin<&mut TColgp_Array1OfPnt2d>,
             Weights: Pin<&mut TColStd_Array1OfReal>,
         ) -> i32;
-        #[doc = "This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   is    an   seen   as    an Array[1..N][1..ArrayDimension] with N = the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension If  HomogeneousFlag == 0  the  Poles  are  multiplied by   the Weights   upon   Entry   and      once interpolation   is    carried  over the result of the  poles are divided by the result of   the   interpolation of  the weights. Otherwise if HomogenousFlag == 1 the Poles and Weights are treated homogeneously that is that those are interpolated as they are and result is returned without division by the interpolated weights."]
+        /// This solves  the system Matrix.X =  B with when Matrix is factored in LU form The  Array   is    an   seen   as    an Array[1..N][1..ArrayDimension] with N = the  rank  of the  matrix  Matrix.  The result is stored   in Array  when  each coordinate is  solved that is  B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension If  HomogeneousFlag == 0  the  Poles  are  multiplied by   the Weights   upon   Entry   and      once interpolation   is    carried  over the result of the  poles are divided by the result of   the   interpolation of  the weights. Otherwise if HomogenousFlag == 1 the Poles and Weights are treated homogeneously that is that those are interpolated as they are and result is returned without division by the interpolated weights.
         #[cxx_name = "BSplCLib_SolveBandedSystem_matrix_int2_bool_array1ofpnt_array1ofreal"]
         fn BSplCLib_solve_banded_system_matrix_int2_bool_array1ofpnt_array1ofreal(
             Matrix: &math_Matrix,
@@ -1517,7 +1518,7 @@ pub(crate) mod ffi {
             Array: Pin<&mut TColgp_Array1OfPnt>,
             Weights: Pin<&mut TColStd_Array1OfReal>,
         ) -> i32;
-        #[doc = "Merges  two knot vector by   setting the starting and ending values to StartValue and EndValue"]
+        /// Merges  two knot vector by   setting the starting and ending values to StartValue and EndValue
         #[cxx_name = "BSplCLib_MergeBSplineKnots"]
         fn BSplCLib_merge_b_spline_knots(
             Tolerance: f64,
@@ -1533,7 +1534,7 @@ pub(crate) mod ffi {
             NewKnots: Pin<&mut HandleTColStdHArray1OfReal>,
             NewMults: Pin<&mut HandleTColStdHArray1OfInteger>,
         );
-        #[doc = "This function will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following: 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))"]
+        /// This function will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following: 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))
         #[cxx_name = "BSplCLib_FunctionReparameterise_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int"]
         fn BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int(
             Function: &EvaluatorFunction,
@@ -1546,7 +1547,7 @@ pub(crate) mod ffi {
             NewPoles: &mut f64,
             theStatus: &mut i32,
         );
-        #[doc = "This function will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following: 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))"]
+        /// This function will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following: 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))
         #[cxx_name = "BSplCLib_FunctionReparameterise_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int"]
         fn BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int(
             Function: &EvaluatorFunction,
@@ -1558,7 +1559,7 @@ pub(crate) mod ffi {
             NewPoles: Pin<&mut TColStd_Array1OfReal>,
             theStatus: &mut i32,
         );
-        #[doc = "this will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following  : 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))"]
+        /// this will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following  : 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))
         #[cxx_name = "BSplCLib_FunctionReparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int"]
         fn BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int(
             Function: &EvaluatorFunction,
@@ -1570,7 +1571,7 @@ pub(crate) mod ffi {
             NewPoles: Pin<&mut TColgp_Array1OfPnt>,
             theStatus: &mut i32,
         );
-        #[doc = "this will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following  : 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))"]
+        /// this will compose  a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] with  a function     a(t) which is   assumed to   satisfy the following  : 1. F(a(t))  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))
         #[cxx_name = "BSplCLib_FunctionReparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int"]
         fn BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int(
             Function: &EvaluatorFunction,
@@ -1582,7 +1583,7 @@ pub(crate) mod ffi {
             NewPoles: Pin<&mut TColgp_Array1OfPnt2d>,
             theStatus: &mut i32,
         );
-        #[doc = "this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)"]
+        /// this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)
         #[cxx_name = "BSplCLib_FunctionMultiply_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int"]
         fn BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int(
             Function: &EvaluatorFunction,
@@ -1595,7 +1596,7 @@ pub(crate) mod ffi {
             NewPoles: &mut f64,
             theStatus: &mut i32,
         );
-        #[doc = "this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)"]
+        /// this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)
         #[cxx_name = "BSplCLib_FunctionMultiply_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int"]
         fn BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int(
             Function: &EvaluatorFunction,
@@ -1607,7 +1608,7 @@ pub(crate) mod ffi {
             NewPoles: Pin<&mut TColStd_Array1OfReal>,
             theStatus: &mut i32,
         );
-        #[doc = "this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)"]
+        /// this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)
         #[cxx_name = "BSplCLib_FunctionMultiply_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int"]
         fn BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int(
             Function: &EvaluatorFunction,
@@ -1619,7 +1620,7 @@ pub(crate) mod ffi {
             NewPoles: Pin<&mut TColgp_Array1OfPnt2d>,
             theStatus: &mut i32,
         );
-        #[doc = "this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)"]
+        /// this will  multiply a given Vectorial BSpline F(t) defined  by its  BSplineDegree and BSplineFlatKnotsl, its Poles  array which are coded as  an array of Real of  the  form  [1..NumPoles][1..PolesDimension] by  a function     a(t) which is   assumed to   satisfy the following  : 1. a(t)  * F(t)  is a polynomial BSpline that can be expressed  exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the  range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and  2. above are  satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)
         #[cxx_name = "BSplCLib_FunctionMultiply_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int"]
         fn BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int(
             Function: &EvaluatorFunction,
@@ -1631,7 +1632,7 @@ pub(crate) mod ffi {
             NewPoles: Pin<&mut TColgp_Array1OfPnt>,
             theStatus: &mut i32,
         );
-        #[doc = "Perform the De Boor   algorithm  to  evaluate a point at parameter <U>, with <Degree> and <Dimension>. Poles is  an array of  Reals of size <Dimension> *  <Degree>+1 Containing the  poles.  At  the end <Poles> contains the current point.   Poles Contain all  the poles of the BsplineCurve, Knots  also Contains all the knots of the BsplineCurve.  ExtrapMode has two slots [0] = Degree used to extrapolate before the first knot [1] = Degre used to  extrapolate after the last knot has to be between 1 and  Degree"]
+        /// Perform the De Boor   algorithm  to  evaluate a point at parameter <U>, with <Degree> and <Dimension>. Poles is  an array of  Reals of size <Dimension> *  <Degree>+1 Containing the  poles.  At  the end <Poles> contains the current point.   Poles Contain all  the poles of the BsplineCurve, Knots  also Contains all the knots of the BsplineCurve.  ExtrapMode has two slots [0] = Degree used to extrapolate before the first knot [1] = Degre used to  extrapolate after the last knot has to be between 1 and  Degree
         #[cxx_name = "BSplCLib_Eval_real_bool_int3_array1ofreal_int_real2"]
         fn BSplCLib_eval_real_bool_int3_array1ofreal_int_real2(
             U: f64,
@@ -1644,7 +1645,7 @@ pub(crate) mod ffi {
             Poles: &mut f64,
             Result: &mut f64,
         );
-        #[doc = "Perform the  De Boor algorithm  to evaluate a point at parameter   <U>,  with   <Degree>    and  <Dimension>. Evaluates by multiplying the  Poles by the Weights and gives  the homogeneous  result  in PolesResult that is the results of the evaluation of the numerator once it has     been  multiplied   by  the     weights and  in WeightsResult one has  the result of the evaluation of the denominator Warning:   <PolesResult> and <WeightsResult>  must be   dimensioned properly."]
+        /// Perform the  De Boor algorithm  to evaluate a point at parameter   <U>,  with   <Degree>    and  <Dimension>. Evaluates by multiplying the  Poles by the Weights and gives  the homogeneous  result  in PolesResult that is the results of the evaluation of the numerator once it has     been  multiplied   by  the     weights and  in WeightsResult one has  the result of the evaluation of the denominator Warning:   <PolesResult> and <WeightsResult>  must be   dimensioned properly.
         #[cxx_name = "BSplCLib_Eval_real_bool_int3_array1ofreal_int_real4"]
         fn BSplCLib_eval_real_bool_int3_array1ofreal_int_real4(
             U: f64,
@@ -1659,7 +1660,7 @@ pub(crate) mod ffi {
             PolesResult: &mut f64,
             WeightsResult: &mut f64,
         );
-        #[doc = "Perform the evaluation of the Bspline Basis and then multiplies by the weights this just evaluates the current point"]
+        /// Perform the evaluation of the Bspline Basis and then multiplies by the weights this just evaluates the current point
         #[cxx_name = "BSplCLib_Eval_real_bool2_int2_array1ofreal_array1ofpnt_array1ofreal_pnt_real"]
         fn BSplCLib_eval_real_bool2_int2_array1ofreal_array1ofpnt_array1ofreal_pnt_real(
             U: f64,
@@ -1673,7 +1674,7 @@ pub(crate) mod ffi {
             Point: Pin<&mut gp_Pnt>,
             Weight: &mut f64,
         );
-        #[doc = "Perform the evaluation of the Bspline Basis and then multiplies by the weights this just evaluates the current point"]
+        /// Perform the evaluation of the Bspline Basis and then multiplies by the weights this just evaluates the current point
         #[cxx_name = "BSplCLib_Eval_real_bool2_int2_array1ofreal_array1ofpnt2d_array1ofreal_pnt2d_real"]
         fn BSplCLib_eval_real_bool2_int2_array1ofreal_array1ofpnt2d_array1ofreal_pnt2d_real(
             U: f64,
@@ -1687,7 +1688,7 @@ pub(crate) mod ffi {
             Point: Pin<&mut gp_Pnt2d>,
             Weight: &mut f64,
         );
-        #[doc = "Extend a BSpline nD using the tangency map <C1Coefficient> is the coefficient of reparametrisation <Continuity> must be equal to 1, 2 or 3. <Degree> must be greater or equal than <Continuity> + 1. Warning:   <KnotsResult> and <PolesResult>  must be   dimensioned properly."]
+        /// Extend a BSpline nD using the tangency map <C1Coefficient> is the coefficient of reparametrisation <Continuity> must be equal to 1, 2 or 3. <Degree> must be greater or equal than <Continuity> + 1. Warning:   <KnotsResult> and <PolesResult>  must be   dimensioned properly.
         #[cxx_name = "BSplCLib_TangExtendToConstraint"]
         fn BSplCLib_tang_extend_to_constraint(
             FlatKnots: &TColStd_Array1OfReal,
@@ -1714,14 +1715,14 @@ pub(crate) mod ffi {
             Poles: &TColgp_Array1OfPnt,
             CachePoles: Pin<&mut TColgp_Array1OfPnt>,
         );
-        #[doc = "builds the Schoenberg points from the flat knot used to interpolate a BSpline since the BSpline matrix is invertible."]
+        /// builds the Schoenberg points from the flat knot used to interpolate a BSpline since the BSpline matrix is invertible.
         #[cxx_name = "BSplCLib_BuildSchoenbergPoints"]
         fn BSplCLib_build_schoenberg_points(
             Degree: i32,
             FlatKnots: &TColStd_Array1OfReal,
             Parameters: Pin<&mut TColStd_Array1OfReal>,
         );
-        #[doc = "Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation or interpolation at Scheonberg points the method will work The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot"]
+        /// Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation or interpolation at Scheonberg points the method will work The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot
         #[cxx_name = "BSplCLib_Interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_int"]
         fn BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_int(
             Degree: i32,
@@ -1731,7 +1732,7 @@ pub(crate) mod ffi {
             Poles: Pin<&mut TColgp_Array1OfPnt>,
             InversionProblem: &mut i32,
         );
-        #[doc = "Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem w ll report 0 if there was no problem else it will give the index of the faulty pivot"]
+        /// Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem w ll report 0 if there was no problem else it will give the index of the faulty pivot
         #[cxx_name = "BSplCLib_Interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_int"]
         fn BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_int(
             Degree: i32,
@@ -1741,7 +1742,7 @@ pub(crate) mod ffi {
             Poles: Pin<&mut TColgp_Array1OfPnt2d>,
             InversionProblem: &mut i32,
         );
-        #[doc = "Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot"]
+        /// Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot
         #[cxx_name = "BSplCLib_Interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_array1ofreal_int"]
         fn BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_array1ofreal_int(
             Degree: i32,
@@ -1752,7 +1753,7 @@ pub(crate) mod ffi {
             Weights: Pin<&mut TColStd_Array1OfReal>,
             InversionProblem: &mut i32,
         );
-        #[doc = "Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem w ll report 0 if there was no problem else it will give the i"]
+        /// Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem w ll report 0 if there was no problem else it will give the i
         #[cxx_name = "BSplCLib_Interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_array1ofreal_int"]
         fn BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_array1ofreal_int(
             Degree: i32,
@@ -1763,7 +1764,7 @@ pub(crate) mod ffi {
             Weights: Pin<&mut TColStd_Array1OfReal>,
             InversionProblem: &mut i32,
         );
-        #[doc = "Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray The length of FlatKnots is Degree + L + 1 The  PolesArray   is    an   seen   as    an Array[1..N][1..ArrayDimension] with N = tge length of the parameters array Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation or interpolation at Scheonberg points the method will work The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot"]
+        /// Performs the interpolation of  the data given in the Poles  array  according  to the  requests in ContactOrderArray    that is      :           if ContactOrderArray(i) has value  d it means  that Poles(i)   contains the dth  derivative of  the function to be interpolated. The length L of the following arrays must be the same : Parameters, ContactOrderArray The length of FlatKnots is Degree + L + 1 The  PolesArray   is    an   seen   as    an Array[1..N][1..ArrayDimension] with N = tge length of the parameters array Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation or interpolation at Scheonberg points the method will work The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot
         #[cxx_name = "BSplCLib_Interpolate_int_array1ofreal2_array1ofinteger_int_real_int"]
         fn BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_int_real_int(
             Degree: i32,
@@ -1785,175 +1786,177 @@ pub(crate) mod ffi {
             Weights: &mut f64,
             InversionProblem: &mut i32,
         );
-        #[doc = " ======================== BSplCLib_EvaluatorFunction ========================"]
-        #[doc = "/// **Source:** `BSplCLib_EvaluatorFunction.hxx` - `BSplCLib_EvaluatorFunction`"]
+        /// ======================== BSplCLib_EvaluatorFunction ========================
+        /// /// **Source:** `BSplCLib_EvaluatorFunction.hxx` - `BSplCLib_EvaluatorFunction`
         #[cxx_name = "BSplCLib_EvaluatorFunction"]
         type EvaluatorFunction;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
+        /// HArray1OfBoolean from t_col_std module
         type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
+        /// HArray1OfInteger from t_col_std module
         type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
+        /// HArray1OfReal from t_col_std module
         type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
+        /// HArray1OfTransient from t_col_std module
         type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
+        /// HArray2OfReal from t_col_std module
         type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        /// HSequenceOfHExtendedString from t_col_std module
         type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfInteger from t_col_std module"]
+        /// HSequenceOfInteger from t_col_std module
         type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
-        #[doc = "HSequenceOfReal from t_col_std module"]
+        /// HSequenceOfReal from t_col_std module
         type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
+        /// HSequenceOfTransient from t_col_std module
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
+        /// PackedMapOfInteger from t_col_std module
         type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfPnt from t_colgp module"]
+        /// HArray1OfPnt from t_colgp module
         type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
-        #[doc = "HArray1OfPnt2d from t_colgp module"]
+        /// HArray1OfPnt2d from t_colgp module
         type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
-        #[doc = "HArray1OfVec from t_colgp module"]
+        /// HArray1OfVec from t_colgp module
         type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
-        #[doc = "HArray2OfPnt from t_colgp module"]
+        /// HArray2OfPnt from t_colgp module
         type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
-        #[doc = "BissecNewton from math module"]
+        /// BissecNewton from math module
         type math_BissecNewton = crate::math::ffi::BissecNewton;
-        #[doc = "BrentMinimum from math module"]
+        /// BrentMinimum from math module
         type math_BrentMinimum = crate::math::ffi::BrentMinimum;
-        #[doc = "DirectPolynomialRoots from math module"]
+        /// DirectPolynomialRoots from math module
         type math_DirectPolynomialRoots = crate::math::ffi::DirectPolynomialRoots;
-        #[doc = "EigenValuesSearcher from math module"]
+        /// EigenValuesSearcher from math module
         type math_EigenValuesSearcher = crate::math::ffi::EigenValuesSearcher;
-        #[doc = "Function from math module"]
+        /// Function from math module
         type math_Function = crate::math::ffi::Function;
-        #[doc = "FunctionWithDerivative from math module"]
+        /// FunctionWithDerivative from math module
         type math_FunctionWithDerivative = crate::math::ffi::FunctionWithDerivative;
-        #[doc = "GaussLeastSquare from math module"]
+        /// GaussLeastSquare from math module
         type math_GaussLeastSquare = crate::math::ffi::GaussLeastSquare;
-        #[doc = "Matrix from math module"]
+        /// Matrix from math module
         type math_Matrix = crate::math::ffi::Matrix;
+
         // ========================
         // Referenced types (opaque)
         // ========================

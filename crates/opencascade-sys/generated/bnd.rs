@@ -18,17 +18,17 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Box_ as Box;
 impl Box {
-    #[doc = "Creates an empty Box. The constructed box is qualified Void. Its gap is null."]
+    /// Creates an empty Box. The constructed box is qualified Void. Its gap is null.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Box__ctor()
     }
 
-    #[doc = "Creates a bounding box, it contains: -   minimum/maximum point of bounding box, The constructed box is qualified Void. Its gap is null."]
+    /// Creates a bounding box, it contains: -   minimum/maximum point of bounding box, The constructed box is qualified Void. Its gap is null.
     pub fn new_pnt2(theMin: &ffi::gp_Pnt, theMax: &ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
         ffi::Box__ctor_pnt2(theMin, theMax)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Box__to_owned(self)
     }
@@ -43,24 +43,24 @@ impl Box {
         ffi::Box__corner_max(self)
     }
 
-    #[doc = "Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it."]
+    /// Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it.
     pub fn transformed(&self, T: &ffi::gp_Trsf) -> cxx::UniquePtr<ffi::Box_> {
         ffi::Box__transformed(self, T)
     }
 
-    #[doc = "Returns a finite part of an infinite bounding box (returns self if this is already finite box). This can be a Void box in case if its sides has been defined as infinite (Open) without adding any finite points. WARNING! This method relies on Open flags, the infinite points added using Add() method will be returned as is."]
+    /// Returns a finite part of an infinite bounding box (returns self if this is already finite box). This can be a Void box in case if its sides has been defined as infinite (Open) without adding any finite points. WARNING! This method relies on Open flags, the infinite points added using Add() method will be returned as is.
     pub fn finite_part(&self) -> cxx::UniquePtr<ffi::Box_> {
         ffi::Box__finite_part(self)
     }
 }
 pub use ffi::OBB;
 impl OBB {
-    #[doc = "Empty constructor"]
+    /// Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::OBB_ctor()
     }
 
-    #[doc = "Constructor taking all defining parameters"]
+    /// Constructor taking all defining parameters
     pub fn new_pnt_dir3_real3(
         theCenter: &ffi::gp_Pnt,
         theXDirection: &ffi::gp_Dir,
@@ -81,17 +81,17 @@ impl OBB {
         )
     }
 
-    #[doc = "Constructor to create OBB from AABB."]
+    /// Constructor to create OBB from AABB.
     pub fn new_box(theBox: &ffi::Box_) -> cxx::UniquePtr<Self> {
         ffi::OBB_ctor_box(theBox)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::OBB_to_owned(self)
     }
 
-    #[doc = "Returns the local coordinates system of this oriented box. So that applying it to axis-aligned box ((-XHSize, -YHSize, -ZHSize), (XHSize, YHSize, ZHSize)) will produce this oriented box. @code gp_Trsf aLoc; aLoc.SetTransformation (theOBB.Position(), gp::XOY()); @endcode"]
+    /// Returns the local coordinates system of this oriented box. So that applying it to axis-aligned box ((-XHSize, -YHSize, -ZHSize), (XHSize, YHSize, ZHSize)) will produce this oriented box. @code gp_Trsf aLoc; aLoc.SetTransformation (theOBB.Position(), gp::XOY()); @endcode
     pub fn position(&self) -> cxx::UniquePtr<ffi::gp_Ax3> {
         ffi::OBB_position(self)
     }
@@ -127,12 +127,12 @@ impl HArray1OfSphere {
         ffi::HArray1OfSphere_ctor_array1ofsphere(theOther)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::HArray1OfSphere_to_owned(self)
     }
 
-    #[doc = "Wrap Bnd_HArray1OfSphere in a Handle (reference-counted smart pointer)"]
+    /// Wrap Bnd_HArray1OfSphere in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBndHArray1OfSphere> {
         ffi::HArray1OfSphere_to_handle(obj)
     }
@@ -143,12 +143,12 @@ impl HArray1OfSphere {
 }
 pub use ffi::Sphere;
 impl Sphere {
-    #[doc = "Empty constructor"]
+    /// Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Sphere_ctor()
     }
 
-    #[doc = "Constructor of a definite sphere"]
+    /// Constructor of a definite sphere
     pub fn new_xyz_real_int2(
         theCntr: &ffi::gp_XYZ,
         theRad: f64,
@@ -158,56 +158,56 @@ impl Sphere {
         ffi::Sphere_ctor_xyz_real_int2(theCntr, theRad, theU, theV)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Sphere_to_owned(self)
     }
 }
 pub use ffi::Box2d;
 impl Box2d {
-    #[doc = "Creates an empty 2D bounding box. The constructed box is qualified Void. Its gap is null."]
+    /// Creates an empty 2D bounding box. The constructed box is qualified Void. Its gap is null.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Box2d_ctor()
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Box2d_to_owned(self)
     }
 
-    #[doc = "Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it."]
+    /// Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it.
     pub fn transformed(&self, T: &ffi::gp_Trsf2d) -> cxx::UniquePtr<ffi::Box2d> {
         ffi::Box2d_transformed(self, T)
     }
 }
 pub use ffi::B2d;
 impl B2d {
-    #[doc = "Empty constructor."]
+    /// Empty constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::B2d_ctor()
     }
 
-    #[doc = "Constructor."]
+    /// Constructor.
     pub fn new_xy2(theCenter: &ffi::gp_XY, theHSize: &ffi::gp_XY) -> cxx::UniquePtr<Self> {
         ffi::B2d_ctor_xy2(theCenter, theHSize)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::B2d_to_owned(self)
     }
 
-    #[doc = "Query a box corner: (Center - HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result."]
+    /// Query a box corner: (Center - HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
     pub fn corner_min(&self) -> cxx::UniquePtr<ffi::gp_XY> {
         ffi::B2d_corner_min(self)
     }
 
-    #[doc = "Query a box corner: (Center + HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result."]
+    /// Query a box corner: (Center + HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
     pub fn corner_max(&self) -> cxx::UniquePtr<ffi::gp_XY> {
         ffi::B2d_corner_max(self)
     }
 
-    #[doc = "Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation."]
+    /// Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation.
     pub fn transformed(&self, theTrsf: &ffi::gp_Trsf2d) -> cxx::UniquePtr<ffi::B2d> {
         ffi::B2d_transformed(self, theTrsf)
     }
@@ -243,12 +243,12 @@ impl HArray1OfBox {
         ffi::HArray1OfBox_ctor_array1ofbox(theOther)
     }
 
-    #[doc = "Clone into a new UniquePtr via copy constructor"]
+    /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::HArray1OfBox_to_owned(self)
     }
 
-    #[doc = "Wrap Bnd_HArray1OfBox in a Handle (reference-counted smart pointer)"]
+    /// Wrap Bnd_HArray1OfBox in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBndHArray1OfBox> {
         ffi::HArray1OfBox_to_handle(obj)
     }
@@ -261,35 +261,36 @@ impl HArray1OfBox {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_bnd.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== Bnd_Box ========================"]
-        #[doc = "/// **Source:** `Bnd_Box.hxx` - `Bnd_Box`"]
-        #[doc = ""]
+        /// ======================== Bnd_Box ========================
+        /// /// **Source:** `Bnd_Box.hxx` - `Bnd_Box`
+        ///
         #[doc = "Describes a bounding box in 3D space. A bounding box is parallel to the axes of the coordinates system. If it is finite, it is defined by the three intervals: -   [ Xmin,Xmax ], -   [ Ymin,Ymax ], -   [ Zmin,Zmax ]. A bounding box may be infinite (i.e. open) in one or more directions. It is said to be: -   OpenXmin if it is infinite on the negative side of the   \"X Direction\"; -   OpenXmax if it is infinite on the positive side of the \"X Direction\"; -   OpenYmin if it is infinite on the negative side of the   \"Y Direction\"; -   OpenYmax if it is infinite on the positive side of the \"Y Direction\"; -   OpenZmin if it is infinite on the negative side of the   \"Z Direction\"; -   OpenZmax if it is infinite on the positive side of the \"Z Direction\"; -   WholeSpace if it is infinite in all six directions. In this case, any point of the space is inside the box; -   Void if it is empty. In this case, there is no point included in the box. A bounding box is defined by: -   six bounds (Xmin, Xmax, Ymin, Ymax, Zmin and Zmax) which limit the bounding box if it is finite, -   eight flags (OpenXmin, OpenXmax, OpenYmin, OpenYmax, OpenZmin, OpenZmax, WholeSpace and Void) which describe the bounding box if it is infinite or empty, and -   a gap, which is included on both sides in any direction when consulting the finite bounds of the box."]
         #[cxx_name = "Bnd_Box"]
         type Box_;
-        #[doc = "/// **Source:** `Bnd_Box.hxx` - `Bnd_Box::Bnd_Box()`"]
-        #[doc = ""]
-        #[doc = "Creates an empty Box. The constructed box is qualified Void. Its gap is null."]
+        /// /// **Source:** `Bnd_Box.hxx` - `Bnd_Box::Bnd_Box()`
+        ///
+        /// Creates an empty Box. The constructed box is qualified Void. Its gap is null.
         #[cxx_name = "Bnd_Box_ctor"]
         fn Box__ctor() -> UniquePtr<Box_>;
-        #[doc = "/// **Source:** `Bnd_Box.hxx` - `Bnd_Box::Bnd_Box()`"]
-        #[doc = ""]
-        #[doc = "Creates a bounding box, it contains: -   minimum/maximum point of bounding box, The constructed box is qualified Void. Its gap is null."]
+        /// /// **Source:** `Bnd_Box.hxx` - `Bnd_Box::Bnd_Box()`
+        ///
+        /// Creates a bounding box, it contains: -   minimum/maximum point of bounding box, The constructed box is qualified Void. Its gap is null.
         #[cxx_name = "Bnd_Box_ctor_pnt2"]
         fn Box__ctor_pnt2(theMin: &gp_Pnt, theMax: &gp_Pnt) -> UniquePtr<Box_>;
-        #[doc = "Sets this bounding box so that it covers the whole of 3D space. It is infinitely long in all directions."]
+        /// Sets this bounding box so that it covers the whole of 3D space. It is infinitely long in all directions.
         #[cxx_name = "SetWhole"]
         fn set_whole(self: Pin<&mut Box_>);
-        #[doc = "Sets this bounding box so that it is empty. All points are outside a void box."]
+        /// Sets this bounding box so that it is empty. All points are outside a void box.
         #[cxx_name = "SetVoid"]
         fn set_void(self: Pin<&mut Box_>);
-        #[doc = "Sets this bounding box so that it bounds -   the point P. This involves first setting this bounding box to be void and then adding the point P."]
+        /// Sets this bounding box so that it bounds -   the point P. This involves first setting this bounding box to be void and then adding the point P.
         #[cxx_name = "Set"]
         fn set_pnt(self: Pin<&mut Box_>, P: &gp_Pnt);
-        #[doc = "Sets this bounding box so that it bounds the half-line defined by point P and direction D, i.e. all points M defined by M=P+u*D, where u is greater than or equal to 0, are inside the bounding volume. This involves first setting this box to be void and then adding   the half-line."]
+        /// Sets this bounding box so that it bounds the half-line defined by point P and direction D, i.e. all points M defined by M=P+u*D, where u is greater than or equal to 0, are inside the bounding volume. This involves first setting this box to be void and then adding   the half-line.
         #[cxx_name = "Set"]
         fn set_pnt_dir(self: Pin<&mut Box_>, P: &gp_Pnt, D: &gp_Dir);
         #[doc = "Enlarges this bounding box, if required, so that it contains at least: -   interval [ aXmin,aXmax ] in the \"X Direction\", -   interval [ aYmin,aYmax ] in the \"Y Direction\", -   interval [ aZmin,aZmax ] in the \"Z Direction\";"]
@@ -303,16 +304,16 @@ pub(crate) mod ffi {
             aYmax: f64,
             aZmax: f64,
         );
-        #[doc = "Adds a point of coordinates (X,Y,Z) to this bounding box."]
+        /// Adds a point of coordinates (X,Y,Z) to this bounding box.
         #[cxx_name = "Update"]
         fn update_real3(self: Pin<&mut Box_>, X: f64, Y: f64, Z: f64);
-        #[doc = "Returns the gap of this bounding box."]
+        /// Returns the gap of this bounding box.
         #[cxx_name = "GetGap"]
         fn get_gap(self: &Box_) -> f64;
-        #[doc = "Set the gap of this bounding box to abs(Tol)."]
+        /// Set the gap of this bounding box to abs(Tol).
         #[cxx_name = "SetGap"]
         fn set_gap(self: Pin<&mut Box_>, Tol: f64);
-        #[doc = "Enlarges the      box    with    a   tolerance   value. (minvalues-Abs(<tol>) and maxvalues+Abs(<tol>)) This means that the minimum values of its X, Y and Z intervals of definition, when they are finite, are reduced by the absolute value of Tol, while the maximum values are increased by the same amount."]
+        /// Enlarges the      box    with    a   tolerance   value. (minvalues-Abs(<tol>) and maxvalues+Abs(<tol>)) This means that the minimum values of its X, Y and Z intervals of definition, when they are finite, are reduced by the absolute value of Tol, while the maximum values are increased by the same amount.
         #[cxx_name = "Enlarge"]
         fn enlarge(self: Pin<&mut Box_>, Tol: f64);
         #[doc = "Returns the bounds of this bounding box. The gap is included. If this bounding box is infinite (i.e. \"open\"), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()"]
@@ -326,105 +327,105 @@ pub(crate) mod ffi {
             theYmax: &mut f64,
             theZmax: &mut f64,
         );
-        #[doc = "The   Box will be   infinitely   long  in the Xmin direction."]
+        /// The   Box will be   infinitely   long  in the Xmin direction.
         #[cxx_name = "OpenXmin"]
         fn open_xmin(self: Pin<&mut Box_>);
-        #[doc = "The   Box will be   infinitely   long  in the Xmax direction."]
+        /// The   Box will be   infinitely   long  in the Xmax direction.
         #[cxx_name = "OpenXmax"]
         fn open_xmax(self: Pin<&mut Box_>);
-        #[doc = "The   Box will be   infinitely   long  in the Ymin direction."]
+        /// The   Box will be   infinitely   long  in the Ymin direction.
         #[cxx_name = "OpenYmin"]
         fn open_ymin(self: Pin<&mut Box_>);
-        #[doc = "The   Box will be   infinitely   long  in the Ymax direction."]
+        /// The   Box will be   infinitely   long  in the Ymax direction.
         #[cxx_name = "OpenYmax"]
         fn open_ymax(self: Pin<&mut Box_>);
-        #[doc = "The   Box will be   infinitely   long  in the Zmin direction."]
+        /// The   Box will be   infinitely   long  in the Zmin direction.
         #[cxx_name = "OpenZmin"]
         fn open_zmin(self: Pin<&mut Box_>);
-        #[doc = "The   Box will be   infinitely   long  in the Zmax direction."]
+        /// The   Box will be   infinitely   long  in the Zmax direction.
         #[cxx_name = "OpenZmax"]
         fn open_zmax(self: Pin<&mut Box_>);
-        #[doc = "Returns true if this bounding box has at least one open direction."]
+        /// Returns true if this bounding box has at least one open direction.
         #[cxx_name = "IsOpen"]
         fn is_open(self: &Box_) -> bool;
-        #[doc = "Returns true if this bounding box is open in the  Xmin direction."]
+        /// Returns true if this bounding box is open in the  Xmin direction.
         #[cxx_name = "IsOpenXmin"]
         fn is_open_xmin(self: &Box_) -> bool;
-        #[doc = "Returns true if this bounding box is open in the  Xmax direction."]
+        /// Returns true if this bounding box is open in the  Xmax direction.
         #[cxx_name = "IsOpenXmax"]
         fn is_open_xmax(self: &Box_) -> bool;
-        #[doc = "Returns true if this bounding box is open in the  Ymix direction."]
+        /// Returns true if this bounding box is open in the  Ymix direction.
         #[cxx_name = "IsOpenYmin"]
         fn is_open_ymin(self: &Box_) -> bool;
-        #[doc = "Returns true if this bounding box is open in the  Ymax direction."]
+        /// Returns true if this bounding box is open in the  Ymax direction.
         #[cxx_name = "IsOpenYmax"]
         fn is_open_ymax(self: &Box_) -> bool;
-        #[doc = "Returns true if this bounding box is open in the  Zmin direction."]
+        /// Returns true if this bounding box is open in the  Zmin direction.
         #[cxx_name = "IsOpenZmin"]
         fn is_open_zmin(self: &Box_) -> bool;
-        #[doc = "Returns true if this bounding box is open in the  Zmax  direction."]
+        /// Returns true if this bounding box is open in the  Zmax  direction.
         #[cxx_name = "IsOpenZmax"]
         fn is_open_zmax(self: &Box_) -> bool;
-        #[doc = "Returns true if this bounding box is infinite in all 6 directions (WholeSpace flag)."]
+        /// Returns true if this bounding box is infinite in all 6 directions (WholeSpace flag).
         #[cxx_name = "IsWhole"]
         fn is_whole(self: &Box_) -> bool;
-        #[doc = "Returns true if this bounding box is empty (Void flag)."]
+        /// Returns true if this bounding box is empty (Void flag).
         #[cxx_name = "IsVoid"]
         fn is_void(self: &Box_) -> bool;
-        #[doc = "true if xmax-xmin < tol."]
+        /// true if xmax-xmin < tol.
         #[cxx_name = "IsXThin"]
         fn is_x_thin(self: &Box_, tol: f64) -> bool;
-        #[doc = "true if ymax-ymin < tol."]
+        /// true if ymax-ymin < tol.
         #[cxx_name = "IsYThin"]
         fn is_y_thin(self: &Box_, tol: f64) -> bool;
-        #[doc = "true if zmax-zmin < tol."]
+        /// true if zmax-zmin < tol.
         #[cxx_name = "IsZThin"]
         fn is_z_thin(self: &Box_, tol: f64) -> bool;
-        #[doc = "Returns true if IsXThin, IsYThin and IsZThin are all true, i.e. if the box is thin in all three dimensions."]
+        /// Returns true if IsXThin, IsYThin and IsZThin are all true, i.e. if the box is thin in all three dimensions.
         #[cxx_name = "IsThin"]
         fn is_thin(self: &Box_, tol: f64) -> bool;
-        #[doc = "Adds the box <Other> to <me>."]
+        /// Adds the box <Other> to <me>.
         #[cxx_name = "Add"]
         fn add_box(self: Pin<&mut Box_>, Other: &Box_);
-        #[doc = "Adds a Pnt to the box."]
+        /// Adds a Pnt to the box.
         #[cxx_name = "Add"]
         fn add_pnt(self: Pin<&mut Box_>, P: &gp_Pnt);
-        #[doc = "Extends  <me> from the Pnt <P> in the direction <D>."]
+        /// Extends  <me> from the Pnt <P> in the direction <D>.
         #[cxx_name = "Add"]
         fn add_pnt_dir(self: Pin<&mut Box_>, P: &gp_Pnt, D: &gp_Dir);
-        #[doc = "Extends the Box  in the given Direction, i.e. adds an  half-line. The   box  may become   infinite in 1,2 or 3 directions."]
+        /// Extends the Box  in the given Direction, i.e. adds an  half-line. The   box  may become   infinite in 1,2 or 3 directions.
         #[cxx_name = "Add"]
         fn add_dir(self: Pin<&mut Box_>, D: &gp_Dir);
-        #[doc = "Returns True if the Pnt is out the box."]
+        /// Returns True if the Pnt is out the box.
         #[cxx_name = "IsOut"]
         fn is_out_pnt(self: &Box_, P: &gp_Pnt) -> bool;
-        #[doc = "Returns False if the line intersects the box."]
+        /// Returns False if the line intersects the box.
         #[cxx_name = "IsOut"]
         fn is_out_lin(self: &Box_, L: &gp_Lin) -> bool;
-        #[doc = "Returns False if the plane intersects the box."]
+        /// Returns False if the plane intersects the box.
         #[cxx_name = "IsOut"]
         fn is_out_pln(self: &Box_, P: &gp_Pln) -> bool;
-        #[doc = "Returns False if the <Box> intersects or is inside <me>."]
+        /// Returns False if the <Box> intersects or is inside <me>.
         #[cxx_name = "IsOut"]
         fn is_out_box(self: &Box_, Other: &Box_) -> bool;
-        #[doc = "Returns False if  the transformed <Box> intersects or  is inside <me>."]
+        /// Returns False if  the transformed <Box> intersects or  is inside <me>.
         #[cxx_name = "IsOut"]
         fn is_out_box_trsf(self: &Box_, Other: &Box_, T: &gp_Trsf) -> bool;
-        #[doc = "Returns False  if the transformed <Box> intersects or  is inside the transformed box <me>."]
+        /// Returns False  if the transformed <Box> intersects or  is inside the transformed box <me>.
         #[cxx_name = "IsOut"]
         fn is_out_trsf_box_trsf(self: &Box_, T1: &gp_Trsf, Other: &Box_, T2: &gp_Trsf) -> bool;
-        #[doc = "Returns False  if the flat band lying between two parallel lines represented by their reference points <P1>, <P2> and direction <D> intersects the box."]
+        /// Returns False  if the flat band lying between two parallel lines represented by their reference points <P1>, <P2> and direction <D> intersects the box.
         #[cxx_name = "IsOut"]
         fn is_out_pnt2_dir(self: &Box_, P1: &gp_Pnt, P2: &gp_Pnt, D: &gp_Dir) -> bool;
-        #[doc = "Computes the minimum distance between two boxes."]
+        /// Computes the minimum distance between two boxes.
         #[cxx_name = "Distance"]
         fn distance(self: &Box_, Other: &Box_) -> f64;
         #[cxx_name = "Dump"]
         fn dump(self: &Box_);
-        #[doc = "Computes the squared diagonal of me."]
+        /// Computes the squared diagonal of me.
         #[cxx_name = "SquareExtent"]
         fn square_extent(self: &Box_) -> f64;
-        #[doc = "Returns TRUE if this box has finite part."]
+        /// Returns TRUE if this box has finite part.
         #[cxx_name = "HasFinitePart"]
         fn has_finite_part(self: &Box_) -> bool;
         #[doc = "Returns the lower corner of this bounding box. The gap is included. If this bounding box is infinite (i.e. \"open\"), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()"]
@@ -433,29 +434,29 @@ pub(crate) mod ffi {
         #[doc = "Returns the upper corner of this bounding box. The gap is included. If this bounding box is infinite (i.e. \"open\"), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()"]
         #[cxx_name = "Bnd_Box_CornerMax"]
         fn Box__corner_max(self_: &Box_) -> UniquePtr<gp_Pnt>;
-        #[doc = "Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it."]
+        /// Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it.
         #[cxx_name = "Bnd_Box_Transformed"]
         fn Box__transformed(self_: &Box_, T: &gp_Trsf) -> UniquePtr<Box_>;
-        #[doc = "Returns a finite part of an infinite bounding box (returns self if this is already finite box). This can be a Void box in case if its sides has been defined as infinite (Open) without adding any finite points. WARNING! This method relies on Open flags, the infinite points added using Add() method will be returned as is."]
+        /// Returns a finite part of an infinite bounding box (returns self if this is already finite box). This can be a Void box in case if its sides has been defined as infinite (Open) without adding any finite points. WARNING! This method relies on Open flags, the infinite points added using Add() method will be returned as is.
         #[cxx_name = "Bnd_Box_FinitePart"]
         fn Box__finite_part(self_: &Box_) -> UniquePtr<Box_>;
-        #[doc = "Clone Bnd_Box into a new UniquePtr via copy constructor"]
+        /// Clone Bnd_Box into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Box__to_owned(self_: &Box_) -> UniquePtr<Box_>;
-        #[doc = " ======================== Bnd_OBB ========================"]
-        #[doc = "/// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB`"]
-        #[doc = ""]
-        #[doc = "The class describes the Oriented Bounding Box (OBB), much tighter enclosing volume for the shape than the Axis Aligned Bounding Box (AABB). The OBB is defined by a center of the box, the axes and the halves of its three dimensions. The OBB can be used more effectively than AABB as a rejection mechanism for non-interfering objects."]
+        /// ======================== Bnd_OBB ========================
+        /// /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB`
+        ///
+        /// The class describes the Oriented Bounding Box (OBB), much tighter enclosing volume for the shape than the Axis Aligned Bounding Box (AABB). The OBB is defined by a center of the box, the axes and the halves of its three dimensions. The OBB can be used more effectively than AABB as a rejection mechanism for non-interfering objects.
         #[cxx_name = "Bnd_OBB"]
         type OBB;
-        #[doc = "/// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor"]
+        /// /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`
+        ///
+        /// Empty constructor
         #[cxx_name = "Bnd_OBB_ctor"]
         fn OBB_ctor() -> UniquePtr<OBB>;
-        #[doc = "/// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`"]
-        #[doc = ""]
-        #[doc = "Constructor taking all defining parameters"]
+        /// /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`
+        ///
+        /// Constructor taking all defining parameters
         #[cxx_name = "Bnd_OBB_ctor_pnt_dir3_real3"]
         fn OBB_ctor_pnt_dir3_real3(
             theCenter: &gp_Pnt,
@@ -466,101 +467,101 @@ pub(crate) mod ffi {
             theHYSize: f64,
             theHZSize: f64,
         ) -> UniquePtr<OBB>;
-        #[doc = "/// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`"]
-        #[doc = ""]
-        #[doc = "Constructor to create OBB from AABB."]
+        /// /// **Source:** `Bnd_OBB.hxx` - `Bnd_OBB::Bnd_OBB()`
+        ///
+        /// Constructor to create OBB from AABB.
         #[cxx_name = "Bnd_OBB_ctor_box"]
         fn OBB_ctor_box(theBox: &Box_) -> UniquePtr<OBB>;
-        #[doc = "Sets the center of OBB"]
+        /// Sets the center of OBB
         #[cxx_name = "SetCenter"]
         fn set_center(self: Pin<&mut OBB>, theCenter: &gp_Pnt);
-        #[doc = "Sets the X component of OBB - direction and size"]
+        /// Sets the X component of OBB - direction and size
         #[cxx_name = "SetXComponent"]
         fn set_x_component(self: Pin<&mut OBB>, theXDirection: &gp_Dir, theHXSize: f64);
-        #[doc = "Sets the Y component of OBB - direction and size"]
+        /// Sets the Y component of OBB - direction and size
         #[cxx_name = "SetYComponent"]
         fn set_y_component(self: Pin<&mut OBB>, theYDirection: &gp_Dir, theHYSize: f64);
-        #[doc = "Sets the Z component of OBB - direction and size"]
+        /// Sets the Z component of OBB - direction and size
         #[cxx_name = "SetZComponent"]
         fn set_z_component(self: Pin<&mut OBB>, theZDirection: &gp_Dir, theHZSize: f64);
-        #[doc = "Returns the center of OBB"]
+        /// Returns the center of OBB
         #[cxx_name = "Center"]
         fn center(self: &OBB) -> &gp_XYZ;
-        #[doc = "Returns the X Direction of OBB"]
+        /// Returns the X Direction of OBB
         #[cxx_name = "XDirection"]
         fn x_direction(self: &OBB) -> &gp_XYZ;
-        #[doc = "Returns the Y Direction of OBB"]
+        /// Returns the Y Direction of OBB
         #[cxx_name = "YDirection"]
         fn y_direction(self: &OBB) -> &gp_XYZ;
-        #[doc = "Returns the Z Direction of OBB"]
+        /// Returns the Z Direction of OBB
         #[cxx_name = "ZDirection"]
         fn z_direction(self: &OBB) -> &gp_XYZ;
-        #[doc = "Returns the X Dimension of OBB"]
+        /// Returns the X Dimension of OBB
         #[cxx_name = "XHSize"]
         fn xh_size(self: &OBB) -> f64;
-        #[doc = "Returns the Y Dimension of OBB"]
+        /// Returns the Y Dimension of OBB
         #[cxx_name = "YHSize"]
         fn yh_size(self: &OBB) -> f64;
-        #[doc = "Returns the Z Dimension of OBB"]
+        /// Returns the Z Dimension of OBB
         #[cxx_name = "ZHSize"]
         fn zh_size(self: &OBB) -> f64;
-        #[doc = "Checks if the box is empty."]
+        /// Checks if the box is empty.
         #[cxx_name = "IsVoid"]
         fn is_void(self: &OBB) -> bool;
-        #[doc = "Clears this box"]
+        /// Clears this box
         #[cxx_name = "SetVoid"]
         fn set_void(self: Pin<&mut OBB>);
-        #[doc = "Sets the flag for axes aligned box"]
+        /// Sets the flag for axes aligned box
         #[cxx_name = "SetAABox"]
         fn set_aa_box(self: Pin<&mut OBB>, theFlag: &bool);
-        #[doc = "Returns TRUE if the box is axes aligned"]
+        /// Returns TRUE if the box is axes aligned
         #[cxx_name = "IsAABox"]
         fn is_aa_box(self: &OBB) -> bool;
-        #[doc = "Enlarges the box with the given value"]
+        /// Enlarges the box with the given value
         #[cxx_name = "Enlarge"]
         fn enlarge(self: Pin<&mut OBB>, theGapAdd: f64);
-        #[doc = "Returns square diagonal of this box"]
+        /// Returns square diagonal of this box
         #[cxx_name = "SquareExtent"]
         fn square_extent(self: &OBB) -> f64;
-        #[doc = "Check if the box do not interfere the other box."]
+        /// Check if the box do not interfere the other box.
         #[cxx_name = "IsOut"]
         fn is_out_obb(self: &OBB, theOther: &OBB) -> bool;
-        #[doc = "Check if the point is inside of <this>."]
+        /// Check if the point is inside of <this>.
         #[cxx_name = "IsOut"]
         fn is_out_pnt(self: &OBB, theP: &gp_Pnt) -> bool;
-        #[doc = "Check if the theOther is completely inside *this."]
+        /// Check if the theOther is completely inside *this.
         #[cxx_name = "IsCompletelyInside"]
         fn is_completely_inside(self: &OBB, theOther: &OBB) -> bool;
-        #[doc = "Rebuilds this in order to include all previous objects (which it was created from) and theOther."]
+        /// Rebuilds this in order to include all previous objects (which it was created from) and theOther.
         #[cxx_name = "Add"]
         fn add_obb(self: Pin<&mut OBB>, theOther: &OBB);
-        #[doc = "Rebuilds this in order to include all previous objects (which it was created from) and theP."]
+        /// Rebuilds this in order to include all previous objects (which it was created from) and theP.
         #[cxx_name = "Add"]
         fn add_pnt(self: Pin<&mut OBB>, theP: &gp_Pnt);
-        #[doc = "Returns the local coordinates system of this oriented box. So that applying it to axis-aligned box ((-XHSize, -YHSize, -ZHSize), (XHSize, YHSize, ZHSize)) will produce this oriented box. @code gp_Trsf aLoc; aLoc.SetTransformation (theOBB.Position(), gp::XOY()); @endcode"]
+        /// Returns the local coordinates system of this oriented box. So that applying it to axis-aligned box ((-XHSize, -YHSize, -ZHSize), (XHSize, YHSize, ZHSize)) will produce this oriented box. @code gp_Trsf aLoc; aLoc.SetTransformation (theOBB.Position(), gp::XOY()); @endcode
         #[cxx_name = "Bnd_OBB_Position"]
         fn OBB_position(self_: &OBB) -> UniquePtr<gp_Ax3>;
-        #[doc = "Clone Bnd_OBB into a new UniquePtr via copy constructor"]
+        /// Clone Bnd_OBB into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn OBB_to_owned(self_: &OBB) -> UniquePtr<OBB>;
-        #[doc = " ======================== Bnd_HArray1OfSphere ========================"]
-        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere`"]
+        /// ======================== Bnd_HArray1OfSphere ========================
+        /// /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere`
         #[cxx_name = "Bnd_HArray1OfSphere"]
         type HArray1OfSphere;
-        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
+        /// /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor"]
         fn HArray1OfSphere_ctor() -> UniquePtr<HArray1OfSphere>;
-        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
+        /// /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor_int2"]
         fn HArray1OfSphere_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfSphere>;
-        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
+        /// /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor_int2_sphere"]
         fn HArray1OfSphere_ctor_int2_sphere(
             theLower: i32,
             theUpper: i32,
             theValue: &Sphere,
         ) -> UniquePtr<HArray1OfSphere>;
-        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
+        /// /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor_sphere_int2_bool"]
         fn HArray1OfSphere_ctor_sphere_int2_bool(
             theBegin: &Sphere,
@@ -568,7 +569,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfSphere>;
-        #[doc = "/// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`"]
+        /// /// **Source:** `Bnd_HArray1OfSphere.hxx` - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
         #[cxx_name = "Bnd_HArray1OfSphere_ctor_array1ofsphere"]
         fn HArray1OfSphere_ctor_array1ofsphere(
             theOther: &Bnd_Array1OfSphere,
@@ -581,28 +582,28 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HArray1OfSphere) -> &HandleStandardType;
         #[cxx_name = "Bnd_HArray1OfSphere_get_type_name"]
         fn HArray1OfSphere_get_type_name() -> String;
-        #[doc = "Clone Bnd_HArray1OfSphere into a new UniquePtr via copy constructor"]
+        /// Clone Bnd_HArray1OfSphere into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn HArray1OfSphere_to_owned(self_: &HArray1OfSphere) -> UniquePtr<HArray1OfSphere>;
-        #[doc = "Wrap Bnd_HArray1OfSphere in a Handle (reference-counted smart pointer)"]
+        /// Wrap Bnd_HArray1OfSphere in a Handle (reference-counted smart pointer)
         #[cxx_name = "Bnd_HArray1OfSphere_to_handle"]
         fn HArray1OfSphere_to_handle(
             obj: UniquePtr<HArray1OfSphere>,
         ) -> UniquePtr<HandleBndHArray1OfSphere>;
-        #[doc = " ======================== Bnd_Sphere ========================"]
-        #[doc = "/// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere`"]
-        #[doc = ""]
-        #[doc = "This class represents a bounding sphere of a geometric entity (triangle, segment of line or whatever else)."]
+        /// ======================== Bnd_Sphere ========================
+        /// /// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere`
+        ///
+        /// This class represents a bounding sphere of a geometric entity (triangle, segment of line or whatever else).
         #[cxx_name = "Bnd_Sphere"]
         type Sphere;
-        #[doc = "/// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor"]
+        /// /// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`
+        ///
+        /// Empty constructor
         #[cxx_name = "Bnd_Sphere_ctor"]
         fn Sphere_ctor() -> UniquePtr<Sphere>;
-        #[doc = "/// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`"]
-        #[doc = ""]
-        #[doc = "Constructor of a definite sphere"]
+        /// /// **Source:** `Bnd_Sphere.hxx` - `Bnd_Sphere::Bnd_Sphere()`
+        ///
+        /// Constructor of a definite sphere
         #[cxx_name = "Bnd_Sphere_ctor_xyz_real_int2"]
         fn Sphere_ctor_xyz_real_int2(
             theCntr: &gp_XYZ,
@@ -610,30 +611,30 @@ pub(crate) mod ffi {
             theU: i32,
             theV: i32,
         ) -> UniquePtr<Sphere>;
-        #[doc = "Returns the U parameter on shape"]
+        /// Returns the U parameter on shape
         #[cxx_name = "U"]
         fn u(self: &Sphere) -> i32;
-        #[doc = "Returns the V parameter on shape"]
+        /// Returns the V parameter on shape
         #[cxx_name = "V"]
         fn v(self: &Sphere) -> i32;
-        #[doc = "Returns validity status, indicating that this sphere corresponds to a real entity"]
+        /// Returns validity status, indicating that this sphere corresponds to a real entity
         #[cxx_name = "IsValid"]
         fn is_valid(self: &Sphere) -> bool;
         #[cxx_name = "SetValid"]
         fn set_valid(self: Pin<&mut Sphere>, isValid: bool);
-        #[doc = "Returns center of sphere object"]
+        /// Returns center of sphere object
         #[cxx_name = "Center"]
         fn center(self: &Sphere) -> &gp_XYZ;
-        #[doc = "Returns the radius value"]
+        /// Returns the radius value
         #[cxx_name = "Radius"]
         fn radius(self: &Sphere) -> f64;
-        #[doc = "Calculate and return minimal and maximal distance to sphere. NOTE: This function is tightly optimized; any modifications may affect performance!"]
+        /// Calculate and return minimal and maximal distance to sphere. NOTE: This function is tightly optimized; any modifications may affect performance!
         #[cxx_name = "Distances"]
         fn distances(self: &Sphere, theXYZ: &gp_XYZ, theMin: &mut f64, theMax: &mut f64);
-        #[doc = "Calculate and return minimal and maximal distance to sphere. NOTE: This function is tightly optimized; any modifications may affect performance!"]
+        /// Calculate and return minimal and maximal distance to sphere. NOTE: This function is tightly optimized; any modifications may affect performance!
         #[cxx_name = "SquareDistances"]
         fn square_distances(self: &Sphere, theXYZ: &gp_XYZ, theMin: &mut f64, theMax: &mut f64);
-        #[doc = "Projects a point on entity. Returns true if success"]
+        /// Projects a point on entity. Returns true if success
         #[cxx_name = "Project"]
         fn project(
             self: &Sphere,
@@ -654,108 +655,108 @@ pub(crate) mod ffi {
         fn is_out_xyz_real(self: &Sphere, thePnt: &gp_XYZ, theMaxDist: &mut f64) -> bool;
         #[cxx_name = "SquareExtent"]
         fn square_extent(self: &Sphere) -> f64;
-        #[doc = "Clone Bnd_Sphere into a new UniquePtr via copy constructor"]
+        /// Clone Bnd_Sphere into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Sphere_to_owned(self_: &Sphere) -> UniquePtr<Sphere>;
-        #[doc = " ======================== Bnd_Box2d ========================"]
-        #[doc = "/// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d`"]
-        #[doc = ""]
+        /// ======================== Bnd_Box2d ========================
+        /// /// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d`
+        ///
         #[doc = "Describes a bounding box in 2D space. A bounding box is parallel to the axes of the coordinates system. If it is finite, it is defined by the two intervals: -   [ Xmin,Xmax ], and -   [ Ymin,Ymax ]. A bounding box may be infinite (i.e. open) in one or more directions. It is said to be: -   OpenXmin if it is infinite on the negative side of the   \"X Direction\"; -   OpenXmax if it is infinite on the positive side of the   \"X Direction\"; -   OpenYmin if it is infinite on the negative side of the   \"Y Direction\"; -   OpenYmax if it is infinite on the positive side of the   \"Y Direction\"; -   WholeSpace if it is infinite in all four directions. In this case, any point of the space is inside the box; -   Void if it is empty. In this case, there is no point included in the box. A bounding box is defined by four bounds (Xmin, Xmax, Ymin and Ymax) which limit the bounding box if it is finite, six flags (OpenXmin, OpenXmax, OpenYmin, OpenYmax, WholeSpace and Void) which describe the bounding box if it is infinite or empty, and -   a gap, which is included on both sides in any direction when consulting the finite bounds of the box."]
         #[cxx_name = "Bnd_Box2d"]
         type Box2d;
-        #[doc = "/// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d::Bnd_Box2d()`"]
-        #[doc = ""]
-        #[doc = "Creates an empty 2D bounding box. The constructed box is qualified Void. Its gap is null."]
+        /// /// **Source:** `Bnd_Box2d.hxx` - `Bnd_Box2d::Bnd_Box2d()`
+        ///
+        /// Creates an empty 2D bounding box. The constructed box is qualified Void. Its gap is null.
         #[cxx_name = "Bnd_Box2d_ctor"]
         fn Box2d_ctor() -> UniquePtr<Box2d>;
-        #[doc = "Sets this bounding box so that it covers the whole 2D space, i.e. it is infinite in all directions."]
+        /// Sets this bounding box so that it covers the whole 2D space, i.e. it is infinite in all directions.
         #[cxx_name = "SetWhole"]
         fn set_whole(self: Pin<&mut Box2d>);
-        #[doc = "Sets this 2D bounding box so that it is empty. All points are outside a void box."]
+        /// Sets this 2D bounding box so that it is empty. All points are outside a void box.
         #[cxx_name = "SetVoid"]
         fn set_void(self: Pin<&mut Box2d>);
-        #[doc = "Sets this 2D bounding box so that it bounds the point P. This involves first setting this bounding box to be void and then adding the point PThe rectangle bounds   the  point <P>."]
+        /// Sets this 2D bounding box so that it bounds the point P. This involves first setting this bounding box to be void and then adding the point PThe rectangle bounds   the  point <P>.
         #[cxx_name = "Set"]
         fn set_pnt2d(self: Pin<&mut Box2d>, thePnt: &gp_Pnt2d);
-        #[doc = "Sets this 2D bounding box so that it bounds the half-line defined by point P and direction D, i.e. all points M defined by M=P+u*D, where u is greater than or equal to 0, are inside the bounding area. This involves first setting this 2D box to be void and then adding the   half-line."]
+        /// Sets this 2D bounding box so that it bounds the half-line defined by point P and direction D, i.e. all points M defined by M=P+u*D, where u is greater than or equal to 0, are inside the bounding area. This involves first setting this 2D box to be void and then adding the   half-line.
         #[cxx_name = "Set"]
         fn set_pnt2d_dir2d(self: Pin<&mut Box2d>, thePnt: &gp_Pnt2d, theDir: &gp_Dir2d);
         #[doc = "Enlarges this 2D bounding box, if required, so that it contains at least: -   interval [ aXmin,aXmax ] in the \"X Direction\", -   interval [ aYmin,aYmax ] in the \"Y Direction\""]
         #[cxx_name = "Update"]
         fn update_real4(self: Pin<&mut Box2d>, aXmin: f64, aYmin: f64, aXmax: f64, aYmax: f64);
-        #[doc = "Adds a point of coordinates (X,Y) to this bounding box."]
+        /// Adds a point of coordinates (X,Y) to this bounding box.
         #[cxx_name = "Update"]
         fn update_real2(self: Pin<&mut Box2d>, X: f64, Y: f64);
-        #[doc = "Returns the gap of this 2D bounding box."]
+        /// Returns the gap of this 2D bounding box.
         #[cxx_name = "GetGap"]
         fn get_gap(self: &Box2d) -> f64;
-        #[doc = "Set the gap of this 2D bounding box to abs(Tol)."]
+        /// Set the gap of this 2D bounding box to abs(Tol).
         #[cxx_name = "SetGap"]
         fn set_gap(self: Pin<&mut Box2d>, Tol: f64);
-        #[doc = "Enlarges     the  box  with    a  tolerance  value. This means that the minimum values of its X and Y intervals of definition, when they are finite, are reduced by the absolute value of Tol, while the maximum values are increased by the same amount."]
+        /// Enlarges     the  box  with    a  tolerance  value. This means that the minimum values of its X and Y intervals of definition, when they are finite, are reduced by the absolute value of Tol, while the maximum values are increased by the same amount.
         #[cxx_name = "Enlarge"]
         fn enlarge(self: Pin<&mut Box2d>, theTol: f64);
         #[doc = "Returns the bounds of this 2D bounding box. The gap is included. If this bounding box is infinite (i.e. \"open\"), returned values may be equal to +/- Precision::Infinite(). if IsVoid()"]
         #[cxx_name = "Get"]
         fn get(self: &Box2d, aXmin: &mut f64, aYmin: &mut f64, aXmax: &mut f64, aYmax: &mut f64);
-        #[doc = "The Box will be infinitely long in the Xmin direction."]
+        /// The Box will be infinitely long in the Xmin direction.
         #[cxx_name = "OpenXmin"]
         fn open_xmin(self: Pin<&mut Box2d>);
-        #[doc = "The Box will be infinitely long in the Xmax direction."]
+        /// The Box will be infinitely long in the Xmax direction.
         #[cxx_name = "OpenXmax"]
         fn open_xmax(self: Pin<&mut Box2d>);
-        #[doc = "The Box will be infinitely long in the Ymin direction."]
+        /// The Box will be infinitely long in the Ymin direction.
         #[cxx_name = "OpenYmin"]
         fn open_ymin(self: Pin<&mut Box2d>);
-        #[doc = "The Box will be infinitely long in the Ymax direction."]
+        /// The Box will be infinitely long in the Ymax direction.
         #[cxx_name = "OpenYmax"]
         fn open_ymax(self: Pin<&mut Box2d>);
-        #[doc = "Returns true if this bounding box is open in the Xmin direction."]
+        /// Returns true if this bounding box is open in the Xmin direction.
         #[cxx_name = "IsOpenXmin"]
         fn is_open_xmin(self: &Box2d) -> bool;
-        #[doc = "Returns true if this bounding box is open in the Xmax direction."]
+        /// Returns true if this bounding box is open in the Xmax direction.
         #[cxx_name = "IsOpenXmax"]
         fn is_open_xmax(self: &Box2d) -> bool;
-        #[doc = "Returns true if this bounding box is open in the Ymin direction."]
+        /// Returns true if this bounding box is open in the Ymin direction.
         #[cxx_name = "IsOpenYmin"]
         fn is_open_ymin(self: &Box2d) -> bool;
-        #[doc = "Returns true if this bounding box is open in the Ymax direction."]
+        /// Returns true if this bounding box is open in the Ymax direction.
         #[cxx_name = "IsOpenYmax"]
         fn is_open_ymax(self: &Box2d) -> bool;
-        #[doc = "Returns true if this bounding box is infinite in all 4 directions (Whole Space flag)."]
+        /// Returns true if this bounding box is infinite in all 4 directions (Whole Space flag).
         #[cxx_name = "IsWhole"]
         fn is_whole(self: &Box2d) -> bool;
-        #[doc = "Returns true if this 2D bounding box is empty (Void flag)."]
+        /// Returns true if this 2D bounding box is empty (Void flag).
         #[cxx_name = "IsVoid"]
         fn is_void(self: &Box2d) -> bool;
-        #[doc = "Adds the 2d box <Other> to <me>."]
+        /// Adds the 2d box <Other> to <me>.
         #[cxx_name = "Add"]
         fn add_box2d(self: Pin<&mut Box2d>, Other: &Box2d);
-        #[doc = "Adds the 2d point."]
+        /// Adds the 2d point.
         #[cxx_name = "Add"]
         fn add_pnt2d(self: Pin<&mut Box2d>, thePnt: &gp_Pnt2d);
-        #[doc = "Extends bounding box from thePnt in the direction theDir."]
+        /// Extends bounding box from thePnt in the direction theDir.
         #[cxx_name = "Add"]
         fn add_pnt2d_dir2d(self: Pin<&mut Box2d>, thePnt: &gp_Pnt2d, theDir: &gp_Dir2d);
-        #[doc = "Extends the Box  in the given Direction, i.e. adds a half-line. The box may become infinite in 1 or 2 directions."]
+        /// Extends the Box  in the given Direction, i.e. adds a half-line. The box may become infinite in 1 or 2 directions.
         #[cxx_name = "Add"]
         fn add_dir2d(self: Pin<&mut Box2d>, D: &gp_Dir2d);
-        #[doc = "Returns True if the 2d pnt <P> is out <me>."]
+        /// Returns True if the 2d pnt <P> is out <me>.
         #[cxx_name = "IsOut"]
         fn is_out_pnt2d(self: &Box2d, P: &gp_Pnt2d) -> bool;
-        #[doc = "Returns True if the line doesn't intersect the box."]
+        /// Returns True if the line doesn't intersect the box.
         #[cxx_name = "IsOut"]
         fn is_out_lin2d(self: &Box2d, theL: &gp_Lin2d) -> bool;
-        #[doc = "Returns True if the segment doesn't intersect the box."]
+        /// Returns True if the segment doesn't intersect the box.
         #[cxx_name = "IsOut"]
         fn is_out_pnt2d2(self: &Box2d, theP0: &gp_Pnt2d, theP1: &gp_Pnt2d) -> bool;
-        #[doc = "Returns True if <Box2d> is out <me>."]
+        /// Returns True if <Box2d> is out <me>.
         #[cxx_name = "IsOut"]
         fn is_out_box2d(self: &Box2d, Other: &Box2d) -> bool;
-        #[doc = "Returns True if transformed <Box2d> is out <me>."]
+        /// Returns True if transformed <Box2d> is out <me>.
         #[cxx_name = "IsOut"]
         fn is_out_box2d_trsf2d(self: &Box2d, theOther: &Box2d, theTrsf: &gp_Trsf2d) -> bool;
-        #[doc = "Compares  a transformed  bounding with  a    transformed bounding. The default implementation is  to make a copy of <me> and <Other>, to transform them and to test."]
+        /// Compares  a transformed  bounding with  a    transformed bounding. The default implementation is  to make a copy of <me> and <Other>, to transform them and to test.
         #[cxx_name = "IsOut"]
         fn is_out_trsf2d_box2d_trsf2d(
             self: &Box2d,
@@ -765,57 +766,57 @@ pub(crate) mod ffi {
         ) -> bool;
         #[cxx_name = "Dump"]
         fn dump(self: &Box2d);
-        #[doc = "Computes the squared diagonal of me."]
+        /// Computes the squared diagonal of me.
         #[cxx_name = "SquareExtent"]
         fn square_extent(self: &Box2d) -> f64;
-        #[doc = "Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it."]
+        /// Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it.
         #[cxx_name = "Bnd_Box2d_Transformed"]
         fn Box2d_transformed(self_: &Box2d, T: &gp_Trsf2d) -> UniquePtr<Box2d>;
-        #[doc = "Clone Bnd_Box2d into a new UniquePtr via copy constructor"]
+        /// Clone Bnd_Box2d into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Box2d_to_owned(self_: &Box2d) -> UniquePtr<Box2d>;
-        #[doc = " ======================== Bnd_B2d ========================"]
-        #[doc = "/// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d`"]
+        /// ======================== Bnd_B2d ========================
+        /// /// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d`
         #[cxx_name = "Bnd_B2d"]
         type B2d;
-        #[doc = "/// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d::Bnd_B2d()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor."]
+        /// /// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d::Bnd_B2d()`
+        ///
+        /// Empty constructor.
         #[cxx_name = "Bnd_B2d_ctor"]
         fn B2d_ctor() -> UniquePtr<B2d>;
-        #[doc = "/// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d::Bnd_B2d()`"]
-        #[doc = ""]
-        #[doc = "Constructor."]
+        /// /// **Source:** `Bnd_B2d.hxx` - `Bnd_B2d::Bnd_B2d()`
+        ///
+        /// Constructor.
         #[cxx_name = "Bnd_B2d_ctor_xy2"]
         fn B2d_ctor_xy2(theCenter: &gp_XY, theHSize: &gp_XY) -> UniquePtr<B2d>;
-        #[doc = "Returns True if the box is void (non-initialized)."]
+        /// Returns True if the box is void (non-initialized).
         #[cxx_name = "IsVoid"]
         fn is_void(self: &B2d) -> bool;
-        #[doc = "Reset the box data."]
+        /// Reset the box data.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut B2d>);
-        #[doc = "Update the box by a point."]
+        /// Update the box by a point.
         #[cxx_name = "Add"]
         fn add_xy(self: Pin<&mut B2d>, thePnt: &gp_XY);
-        #[doc = "Update the box by a point."]
+        /// Update the box by a point.
         #[cxx_name = "Add"]
         fn add_pnt2d(self: Pin<&mut B2d>, thePnt: &gp_Pnt2d);
-        #[doc = "Update the box by another box."]
+        /// Update the box by another box.
         #[cxx_name = "Add"]
         fn add_b2d(self: Pin<&mut B2d>, theBox: &B2d);
-        #[doc = "Query the square diagonal. If the box is VOID (see method IsVoid()) then a very big real value is returned."]
+        /// Query the square diagonal. If the box is VOID (see method IsVoid()) then a very big real value is returned.
         #[cxx_name = "SquareExtent"]
         fn square_extent(self: &B2d) -> f64;
-        #[doc = "Extend the Box by the absolute value of theDiff."]
+        /// Extend the Box by the absolute value of theDiff.
         #[cxx_name = "Enlarge"]
         fn enlarge(self: Pin<&mut B2d>, theDiff: f64);
-        #[doc = "Limit the Box by the internals of theOtherBox. Returns True if the limitation takes place, otherwise False indicating that the boxes do not intersect."]
+        /// Limit the Box by the internals of theOtherBox. Returns True if the limitation takes place, otherwise False indicating that the boxes do not intersect.
         #[cxx_name = "Limit"]
         fn limit(self: Pin<&mut B2d>, theOtherBox: &B2d) -> bool;
-        #[doc = "Check the given point for the inclusion in the Box. Returns True if the point is outside."]
+        /// Check the given point for the inclusion in the Box. Returns True if the point is outside.
         #[cxx_name = "IsOut"]
         fn is_out_xy(self: &B2d, thePnt: &gp_XY) -> bool;
-        #[doc = "Check a circle for the intersection with the current box. Returns True if there is no intersection between boxes."]
+        /// Check a circle for the intersection with the current box. Returns True if there is no intersection between boxes.
         #[cxx_name = "IsOut"]
         fn is_out_xy_real_bool(
             self: &B2d,
@@ -823,60 +824,60 @@ pub(crate) mod ffi {
             theRadius: f64,
             isCircleHollow: bool,
         ) -> bool;
-        #[doc = "Check the given box for the intersection with the current box. Returns True if there is no intersection between boxes."]
+        /// Check the given box for the intersection with the current box. Returns True if there is no intersection between boxes.
         #[cxx_name = "IsOut"]
         fn is_out_b2d(self: &B2d, theOtherBox: &B2d) -> bool;
-        #[doc = "Check the given box oriented by the given transformation for the intersection with the current box. Returns True if there is no intersection between boxes."]
+        /// Check the given box oriented by the given transformation for the intersection with the current box. Returns True if there is no intersection between boxes.
         #[cxx_name = "IsOut"]
         fn is_out_b2d_trsf2d(self: &B2d, theOtherBox: &B2d, theTrsf: &gp_Trsf2d) -> bool;
-        #[doc = "Check the given Line for the intersection with the current box. Returns True if there is no intersection."]
+        /// Check the given Line for the intersection with the current box. Returns True if there is no intersection.
         #[cxx_name = "IsOut"]
         fn is_out_ax2d(self: &B2d, theLine: &gp_Ax2d) -> bool;
-        #[doc = "Check the Segment defined by the couple of input points for the intersection with the current box. Returns True if there is no intersection."]
+        /// Check the Segment defined by the couple of input points for the intersection with the current box. Returns True if there is no intersection.
         #[cxx_name = "IsOut"]
         fn is_out_xy2(self: &B2d, theP0: &gp_XY, theP1: &gp_XY) -> bool;
-        #[doc = "Check that the box 'this' is inside the given box 'theBox'. Returns True if 'this' box is fully inside 'theBox'."]
+        /// Check that the box 'this' is inside the given box 'theBox'. Returns True if 'this' box is fully inside 'theBox'.
         #[cxx_name = "IsIn"]
         fn is_in_b2d(self: &B2d, theBox: &B2d) -> bool;
-        #[doc = "Check that the box 'this' is inside the given box 'theBox' transformed by 'theTrsf'. Returns True if 'this' box is fully inside the transformed 'theBox'."]
+        /// Check that the box 'this' is inside the given box 'theBox' transformed by 'theTrsf'. Returns True if 'this' box is fully inside the transformed 'theBox'.
         #[cxx_name = "IsIn"]
         fn is_in_b2d_trsf2d(self: &B2d, theBox: &B2d, theTrsf: &gp_Trsf2d) -> bool;
-        #[doc = "Set the Center coordinates"]
+        /// Set the Center coordinates
         #[cxx_name = "SetCenter"]
         fn set_center(self: Pin<&mut B2d>, theCenter: &gp_XY);
-        #[doc = "Set the HSize (half-diagonal) coordinates. All components of theHSize must be non-negative."]
+        /// Set the HSize (half-diagonal) coordinates. All components of theHSize must be non-negative.
         #[cxx_name = "SetHSize"]
         fn set_h_size(self: Pin<&mut B2d>, theHSize: &gp_XY);
-        #[doc = "Query a box corner: (Center - HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result."]
+        /// Query a box corner: (Center - HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
         #[cxx_name = "Bnd_B2d_CornerMin"]
         fn B2d_corner_min(self_: &B2d) -> UniquePtr<gp_XY>;
-        #[doc = "Query a box corner: (Center + HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result."]
+        /// Query a box corner: (Center + HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
         #[cxx_name = "Bnd_B2d_CornerMax"]
         fn B2d_corner_max(self_: &B2d) -> UniquePtr<gp_XY>;
-        #[doc = "Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation."]
+        /// Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation.
         #[cxx_name = "Bnd_B2d_Transformed"]
         fn B2d_transformed(self_: &B2d, theTrsf: &gp_Trsf2d) -> UniquePtr<B2d>;
-        #[doc = "Clone Bnd_B2d into a new UniquePtr via copy constructor"]
+        /// Clone Bnd_B2d into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn B2d_to_owned(self_: &B2d) -> UniquePtr<B2d>;
-        #[doc = " ======================== Bnd_HArray1OfBox ========================"]
-        #[doc = "/// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox`"]
+        /// ======================== Bnd_HArray1OfBox ========================
+        /// /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox`
         #[cxx_name = "Bnd_HArray1OfBox"]
         type HArray1OfBox;
-        #[doc = "/// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`"]
+        /// /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor"]
         fn HArray1OfBox_ctor() -> UniquePtr<HArray1OfBox>;
-        #[doc = "/// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`"]
+        /// /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor_int2"]
         fn HArray1OfBox_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfBox>;
-        #[doc = "/// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`"]
+        /// /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor_int2_box"]
         fn HArray1OfBox_ctor_int2_box(
             theLower: i32,
             theUpper: i32,
             theValue: &Box_,
         ) -> UniquePtr<HArray1OfBox>;
-        #[doc = "/// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`"]
+        /// /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor_box_int2_bool"]
         fn HArray1OfBox_ctor_box_int2_bool(
             theBegin: &Box_,
@@ -884,7 +885,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfBox>;
-        #[doc = "/// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`"]
+        /// /// **Source:** `Bnd_HArray1OfBox.hxx` - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
         #[cxx_name = "Bnd_HArray1OfBox_ctor_array1ofbox"]
         fn HArray1OfBox_ctor_array1ofbox(theOther: &Bnd_Array1OfBox) -> UniquePtr<HArray1OfBox>;
         #[cxx_name = "Array1"]
@@ -895,162 +896,164 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HArray1OfBox) -> &HandleStandardType;
         #[cxx_name = "Bnd_HArray1OfBox_get_type_name"]
         fn HArray1OfBox_get_type_name() -> String;
-        #[doc = "Clone Bnd_HArray1OfBox into a new UniquePtr via copy constructor"]
+        /// Clone Bnd_HArray1OfBox into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn HArray1OfBox_to_owned(self_: &HArray1OfBox) -> UniquePtr<HArray1OfBox>;
-        #[doc = "Wrap Bnd_HArray1OfBox in a Handle (reference-counted smart pointer)"]
+        /// Wrap Bnd_HArray1OfBox in a Handle (reference-counted smart pointer)
         #[cxx_name = "Bnd_HArray1OfBox_to_handle"]
         fn HArray1OfBox_to_handle(obj: UniquePtr<HArray1OfBox>)
             -> UniquePtr<HandleBndHArray1OfBox>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "HArray1OfBoolean from t_col_std module"]
+        /// HArray1OfBoolean from t_col_std module
         type TColStd_HArray1OfBoolean = crate::t_col_std::ffi::HArray1OfBoolean;
-        #[doc = "HArray1OfInteger from t_col_std module"]
+        /// HArray1OfInteger from t_col_std module
         type TColStd_HArray1OfInteger = crate::t_col_std::ffi::HArray1OfInteger;
-        #[doc = "HArray1OfReal from t_col_std module"]
+        /// HArray1OfReal from t_col_std module
         type TColStd_HArray1OfReal = crate::t_col_std::ffi::HArray1OfReal;
-        #[doc = "HArray1OfTransient from t_col_std module"]
+        /// HArray1OfTransient from t_col_std module
         type TColStd_HArray1OfTransient = crate::t_col_std::ffi::HArray1OfTransient;
-        #[doc = "HArray2OfReal from t_col_std module"]
+        /// HArray2OfReal from t_col_std module
         type TColStd_HArray2OfReal = crate::t_col_std::ffi::HArray2OfReal;
-        #[doc = "HSequenceOfHExtendedString from t_col_std module"]
+        /// HSequenceOfHExtendedString from t_col_std module
         type TColStd_HSequenceOfHExtendedString = crate::t_col_std::ffi::HSequenceOfHExtendedString;
-        #[doc = "HSequenceOfInteger from t_col_std module"]
+        /// HSequenceOfInteger from t_col_std module
         type TColStd_HSequenceOfInteger = crate::t_col_std::ffi::HSequenceOfInteger;
-        #[doc = "HSequenceOfReal from t_col_std module"]
+        /// HSequenceOfReal from t_col_std module
         type TColStd_HSequenceOfReal = crate::t_col_std::ffi::HSequenceOfReal;
-        #[doc = "HSequenceOfTransient from t_col_std module"]
+        /// HSequenceOfTransient from t_col_std module
         type TColStd_HSequenceOfTransient = crate::t_col_std::ffi::HSequenceOfTransient;
-        #[doc = "PackedMapOfInteger from t_col_std module"]
+        /// PackedMapOfInteger from t_col_std module
         type TColStd_PackedMapOfInteger = crate::t_col_std::ffi::PackedMapOfInteger;
-        #[doc = "HArray1OfPnt from t_colgp module"]
+        /// HArray1OfPnt from t_colgp module
         type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
-        #[doc = "HArray1OfPnt2d from t_colgp module"]
+        /// HArray1OfPnt2d from t_colgp module
         type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
-        #[doc = "HArray1OfVec from t_colgp module"]
+        /// HArray1OfVec from t_colgp module
         type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
-        #[doc = "HArray2OfPnt from t_colgp module"]
+        /// HArray2OfPnt from t_colgp module
         type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
+
         // ========================
         // Referenced types (opaque)
         // ========================

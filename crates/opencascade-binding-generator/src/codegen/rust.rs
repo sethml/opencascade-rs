@@ -71,7 +71,7 @@ fn generate_doc_comments(source_header: &Option<String>, cpp_identifier: &str, c
     result
 }
 
-/// Convert TokenStream to formatted string, converting section marker doc comments to regular comments
+/// Convert TokenStream to formatted string
 fn convert_doc_attributes_to_comments(tokens: &TokenStream) -> String {
     let code = tokens.to_string();
     
@@ -88,18 +88,49 @@ fn convert_doc_attributes_to_comments(tokens: &TokenStream) -> String {
     formatted
 }
 
-/// Convert section marker doc comments (starting with "// SECTION:") back to regular comments
-/// This is called after rustfmt formatting to preserve section headers in the output
+/// Convert doc attributes to /// comments and section markers to regular comments
+/// This is called after rustfmt formatting to:
+/// 1. Convert #[doc = "..."] attributes to /// ... comments for better readability
+/// 2. Convert SECTION: markers to regular // comments
+/// 3. Convert BLANK_LINE markers to actual blank lines
 pub fn convert_section_markers_to_comments(code: &str) -> String {
     use regex::Regex;
     
-    // Match doc comments that contain section markers
-    // Pattern: /// SECTION: ... or #[doc = " SECTION: ..."]
-    let doc_comment_re = Regex::new(r#"/// SECTION: ([^\n]*)"#).unwrap();
-    let attr_re = Regex::new(r#"#\[doc = " SECTION: ([^"]+)"\]"#).unwrap();
+    // First, convert all #[doc = "..."] to /// ... format
+    // This regex matches #[doc = "content"] and captures the content (including newlines)
+    // We use (?s) to make . match newlines
+    let doc_attr_re = Regex::new(r#"(?s)#\[doc = "([^"]*)"\]"#).unwrap();
+    let result = doc_attr_re.replace_all(code, |caps: &regex::Captures| {
+        let content = &caps[1];
+        // Handle empty doc comments
+        if content.is_empty() {
+            "///".to_string()
+        } else {
+            // Handle multi-line content: each line needs its own ///
+            content
+                .lines()
+                .map(|line| {
+                    let trimmed = line.trim();
+                    if trimmed.is_empty() {
+                        "///".to_string()
+                    } else {
+                        format!("/// {}", trimmed)
+                    }
+                })
+                .collect::<Vec<_>>()
+                .join("\n")
+        }
+    });
     
-    let result = doc_comment_re.replace_all(code, "// $1");
-    let result = attr_re.replace_all(&result, "// $1");
+    // Convert BLANK_LINE markers to actual blank lines
+    // Pattern: /// BLANK_LINE (possibly with trailing whitespace) -> empty line
+    let blank_re = Regex::new(r#"[ \t]*/// BLANK_LINE[ \t]*\n"#).unwrap();
+    let result = blank_re.replace_all(&result, "\n");
+    
+    // Now convert SECTION: markers to regular comments (not doc comments)
+    // Pattern: /// SECTION: ... -> // ...
+    let section_re = Regex::new(r#"/// SECTION: ([^\n]*)"#).unwrap();
+    let result = section_re.replace_all(&result, "// $1");
     
     result.into_owned()
 }
@@ -221,6 +252,7 @@ pub fn generate_module(
     // Doc attributes need an item to attach to, so we prepend them to the first item in the section
     let enum_section = if !enum_items.is_empty() {
         quote! {
+            #[doc = " BLANK_LINE"]
             #[doc = " SECTION: ========================"]
             #[doc = " SECTION: Shared enums"]
             #[doc = " SECTION: ========================"]
@@ -232,6 +264,7 @@ pub fn generate_module(
 
     let class_section = if !class_items.is_empty() {
         quote! {
+            #[doc = " BLANK_LINE"]
             #[doc = " SECTION: ========================"]
             #[doc = " SECTION: Module types and methods"]
             #[doc = " SECTION: ========================"]
@@ -243,6 +276,7 @@ pub fn generate_module(
 
     let function_section = if !function_items.is_empty() {
         quote! {
+            #[doc = " BLANK_LINE"]
             #[doc = " SECTION: ========================"]
             #[doc = " SECTION: Free functions"]
             #[doc = " SECTION: ========================"]
@@ -254,6 +288,7 @@ pub fn generate_module(
 
     let alias_section = if !type_aliases.is_empty() {
         quote! {
+            #[doc = " BLANK_LINE"]
             #[doc = " SECTION: ========================"]
             #[doc = " SECTION: Cross-module type aliases"]
             #[doc = " SECTION: ========================"]
@@ -265,6 +300,7 @@ pub fn generate_module(
 
     let opaque_section = if !opaque_type_decls.is_empty() {
         quote! {
+            #[doc = " BLANK_LINE"]
             #[doc = " SECTION: ========================"]
             #[doc = " SECTION: Referenced types (opaque)"]
             #[doc = " SECTION: ========================"]

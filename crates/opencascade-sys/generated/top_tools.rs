@@ -22,7 +22,7 @@ impl HSequenceOfShape {
         ffi::HSequenceOfShape_ctor_sequenceofshape(theOther)
     }
 
-    #[doc = "Wrap TopTools_HSequenceOfShape in a Handle (reference-counted smart pointer)"]
+    /// Wrap TopTools_HSequenceOfShape in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<ffi::HandleTopToolsHSequenceOfShape> {
@@ -58,7 +58,7 @@ impl HArray2OfShape {
         ffi::HArray2OfShape_ctor_array2ofshape(theOther)
     }
 
-    #[doc = "Wrap TopTools_HArray2OfShape in a Handle (reference-counted smart pointer)"]
+    /// Wrap TopTools_HArray2OfShape in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<ffi::HandleTopToolsHArray2OfShape> {
@@ -73,17 +73,18 @@ impl HArray2OfShape {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_top_tools.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== TopTools_HSequenceOfShape ========================"]
-        #[doc = "/// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape`"]
+        /// ======================== TopTools_HSequenceOfShape ========================
+        /// /// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape`
         #[cxx_name = "TopTools_HSequenceOfShape"]
         type HSequenceOfShape;
-        #[doc = "/// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`"]
+        /// /// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`
         #[cxx_name = "TopTools_HSequenceOfShape_ctor"]
         fn HSequenceOfShape_ctor() -> UniquePtr<HSequenceOfShape>;
-        #[doc = "/// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`"]
+        /// /// **Source:** `TopTools_HSequenceOfShape.hxx` - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`
         #[cxx_name = "TopTools_HSequenceOfShape_ctor_sequenceofshape"]
         fn HSequenceOfShape_ctor_sequenceofshape(
             theOther: &TopTools_SequenceOfShape,
@@ -103,16 +104,16 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HSequenceOfShape) -> &HandleStandardType;
         #[cxx_name = "TopTools_HSequenceOfShape_get_type_name"]
         fn HSequenceOfShape_get_type_name() -> String;
-        #[doc = "Wrap TopTools_HSequenceOfShape in a Handle (reference-counted smart pointer)"]
+        /// Wrap TopTools_HSequenceOfShape in a Handle (reference-counted smart pointer)
         #[cxx_name = "TopTools_HSequenceOfShape_to_handle"]
         fn HSequenceOfShape_to_handle(
             obj: UniquePtr<HSequenceOfShape>,
         ) -> UniquePtr<HandleTopToolsHSequenceOfShape>;
-        #[doc = " ======================== TopTools_HArray2OfShape ========================"]
-        #[doc = "/// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape`"]
+        /// ======================== TopTools_HArray2OfShape ========================
+        /// /// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape`
         #[cxx_name = "TopTools_HArray2OfShape"]
         type HArray2OfShape;
-        #[doc = "/// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`"]
+        /// /// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
         #[cxx_name = "TopTools_HArray2OfShape_ctor_int4"]
         fn HArray2OfShape_ctor_int4(
             theRowLow: i32,
@@ -120,7 +121,7 @@ pub(crate) mod ffi {
             theColLow: i32,
             theColUpp: i32,
         ) -> UniquePtr<HArray2OfShape>;
-        #[doc = "/// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`"]
+        /// /// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
         #[cxx_name = "TopTools_HArray2OfShape_ctor_int4_shape"]
         fn HArray2OfShape_ctor_int4_shape(
             theRowLow: i32,
@@ -129,7 +130,7 @@ pub(crate) mod ffi {
             theColUpp: i32,
             theValue: &TopoDS_Shape,
         ) -> UniquePtr<HArray2OfShape>;
-        #[doc = "/// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`"]
+        /// /// **Source:** `TopTools_HArray2OfShape.hxx` - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
         #[cxx_name = "TopTools_HArray2OfShape_ctor_array2ofshape"]
         fn HArray2OfShape_ctor_array2ofshape(
             theOther: &TopTools_Array2OfShape,
@@ -142,80 +143,82 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HArray2OfShape) -> &HandleStandardType;
         #[cxx_name = "TopTools_HArray2OfShape_get_type_name"]
         fn HArray2OfShape_get_type_name() -> String;
-        #[doc = "Wrap TopTools_HArray2OfShape in a Handle (reference-counted smart pointer)"]
+        /// Wrap TopTools_HArray2OfShape in a Handle (reference-counted smart pointer)
         #[cxx_name = "TopTools_HArray2OfShape_to_handle"]
         fn HArray2OfShape_to_handle(
             obj: UniquePtr<HArray2OfShape>,
         ) -> UniquePtr<HandleTopToolsHArray2OfShape>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+
         // ========================
         // Referenced types (opaque)
         // ========================

@@ -37,7 +37,7 @@ impl Failure {
         ffi::Failure_ctor()
     }
 
-    #[doc = "Copy constructor"]
+    /// Copy constructor
     pub fn new_failure(f: &ffi::Failure) -> cxx::UniquePtr<Self> {
         ffi::Failure_ctor_failure(f)
     }
@@ -52,27 +52,27 @@ impl Failure {
         ffi::Failure_ctor_charptr2(theDesc, theStackTrace)
     }
 
-    #[doc = "Wrap Standard_Failure in a Handle (reference-counted smart pointer)"]
+    /// Wrap Standard_Failure in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleStandardFailure> {
         ffi::Failure_to_handle(obj)
     }
 
-    #[doc = "Returns error message"]
+    /// Returns error message
     pub fn get_message_string(&self) -> String {
         ffi::Failure_get_message_string(self)
     }
 
-    #[doc = "Sets error message"]
+    /// Sets error message
     pub fn set_message_string(self: std::pin::Pin<&mut Self>, theMessage: &str) -> () {
         ffi::Failure_set_message_string(self, theMessage)
     }
 
-    #[doc = "Returns the stack trace string"]
+    /// Returns the stack trace string
     pub fn get_stack_string(&self) -> String {
         ffi::Failure_get_stack_string(self)
     }
 
-    #[doc = "Sets the stack trace string"]
+    /// Sets the stack trace string
     pub fn set_stack_string(self: std::pin::Pin<&mut Self>, theStack: &str) -> () {
         ffi::Failure_set_stack_string(self, theStack)
     }
@@ -91,12 +91,12 @@ impl Failure {
         ffi::Failure_raise_sstream(aReason)
     }
 
-    #[doc = "Used to construct an instance of the exception object as a handle. Shall be used to protect against possible construction of exception object in C stack, which is dangerous since some of methods require that object was allocated dynamically."]
+    /// Used to construct an instance of the exception object as a handle. Shall be used to protect against possible construction of exception object in C stack, which is dangerous since some of methods require that object was allocated dynamically.
     pub fn new_instance_charptr(theMessage: &str) -> cxx::UniquePtr<ffi::HandleStandardFailure> {
         ffi::Failure_new_instance_charptr(theMessage)
     }
 
-    #[doc = "Used to construct an instance of the exception object as a handle."]
+    /// Used to construct an instance of the exception object as a handle.
     pub fn new_instance_charptr2(
         theMessage: &str,
         theStackTrace: &str,
@@ -104,12 +104,12 @@ impl Failure {
         ffi::Failure_new_instance_charptr2(theMessage, theStackTrace)
     }
 
-    #[doc = "Returns the default length of stack trace to be captured by Standard_Failure constructor; 0 by default meaning no stack trace."]
+    /// Returns the default length of stack trace to be captured by Standard_Failure constructor; 0 by default meaning no stack trace.
     pub fn default_stack_trace_length() -> i32 {
         ffi::Failure_default_stack_trace_length()
     }
 
-    #[doc = "Sets default length of stack trace to be captured by Standard_Failure constructor."]
+    /// Sets default length of stack trace to be captured by Standard_Failure constructor.
     pub fn set_default_stack_trace_length(theNbStackTraces: i32) {
         ffi::Failure_set_default_stack_trace_length(theNbStackTraces)
     }
@@ -120,7 +120,7 @@ impl Failure {
 }
 pub use ffi::Mutex;
 impl Mutex {
-    #[doc = "Constructor: creates a mutex object and initializes it. It is strongly recommended that mutexes were created as static objects whenever possible."]
+    /// Constructor: creates a mutex object and initializes it. It is strongly recommended that mutexes were created as static objects whenever possible.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Mutex_ctor()
     }
@@ -140,12 +140,12 @@ impl DumpValue {
 }
 pub use ffi::Dump;
 impl Dump {
-    #[doc = "Converts stream value to string value. The result is original stream value. @param theStream source value @return text presentation"]
+    /// Converts stream value to string value. The result is original stream value. @param theStream source value @return text presentation
     pub fn text(theStream: &ffi::Standard_SStream) -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
         ffi::Dump_text(theStream)
     }
 
-    #[doc = "Converts stream value to string value. Improves the text presentation with the following cases: - for '{' append after '\\n' and indent to the next value, increment current indent value - for '}' append '\\n' and current indent before it, decrement indent value - for ',' append after '\\n' and indent to the next value. If the current symbol is in massive container [], do nothing Covers result with opened and closed brackets on the top level, if it has no symbols there. @param theStream source value @param theIndent count of ' ' symbols to apply hierarchical indent of the text values @return text presentation"]
+    /// Converts stream value to string value. Improves the text presentation with the following cases: - for '{' append after '\\n' and indent to the next value, increment current indent value - for '}' append '\\n' and current indent before it, decrement indent value - for ',' append after '\\n' and indent to the next value. If the current symbol is in massive container [], do nothing Covers result with opened and closed brackets on the top level, if it has no symbols there. @param theStream source value @param theIndent count of ' ' symbols to apply hierarchical indent of the text values @return text presentation
     pub fn format_json(
         theStream: &ffi::Standard_SStream,
         theIndent: i32,
@@ -153,17 +153,17 @@ impl Dump {
         ffi::Dump_format_json(theStream, theIndent)
     }
 
-    #[doc = "Returns true if the value has bracket key"]
+    /// Returns true if the value has bracket key
     pub fn has_child_key(theSourceValue: &ffi::TCollection_AsciiString) -> bool {
         ffi::Dump_has_child_key(theSourceValue)
     }
 
-    #[doc = "Returns default prefix added for each pointer info string if short presentation of pointer used"]
+    /// Returns default prefix added for each pointer info string if short presentation of pointer used
     pub fn get_pointer_prefix() -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
         ffi::Dump_get_pointer_prefix()
     }
 
-    #[doc = "Convert handle pointer to address of the pointer. If the handle is NULL, the result is an empty string. @param thePointer a pointer @param isShortInfo if true, all '0' symbols in the beginning of the pointer are skipped @return the string value"]
+    /// Convert handle pointer to address of the pointer. If the handle is NULL, the result is an empty string. @param thePointer a pointer @param isShortInfo if true, all '0' symbols in the beginning of the pointer are skipped @return the string value
     pub fn get_pointer_info_handletransient_bool(
         thePointer: &ffi::HandleStandardTransient,
         isShortInfo: bool,
@@ -171,7 +171,7 @@ impl Dump {
         ffi::Dump_get_pointer_info_handletransient_bool(thePointer, isShortInfo)
     }
 
-    #[doc = "Check whether the parameter name is equal to the name in the stream at position @param[in]  theStreamStr stream with values @param[in]  theName      stream key value @param[out] theStreamPos current position in the stream"]
+    /// Check whether the parameter name is equal to the name in the stream at position @param[in]  theStreamStr stream with values @param[in]  theName      stream key value @param[out] theStreamPos current position in the stream
     pub fn process_stream_name(
         theStreamStr: &ffi::TCollection_AsciiString,
         theName: &ffi::TCollection_AsciiString,
@@ -180,7 +180,7 @@ impl Dump {
         ffi::Dump_process_stream_name(theStreamStr, theName, theStreamPos)
     }
 
-    #[doc = "Check whether the field name is equal to the name in the stream at position @param[in]  theStreamStr stream with values @param[in]  theName      stream key field value @param[out] theStreamPos current position in the stream"]
+    /// Check whether the field name is equal to the name in the stream at position @param[in]  theStreamStr stream with values @param[in]  theName      stream key field value @param[out] theStreamPos current position in the stream
     pub fn process_field_name(
         theStreamStr: &ffi::TCollection_AsciiString,
         theName: &ffi::TCollection_AsciiString,
@@ -189,7 +189,7 @@ impl Dump {
         ffi::Dump_process_field_name(theStreamStr, theName, theStreamPos)
     }
 
-    #[doc = "Unite values in one value using template: value_1, value_2, ..., value_n @param[in]  theStreamStr stream with values @param[out] theStreamPos current position in the stream @param[in]  theCount     number of values"]
+    /// Unite values in one value using template: value_1, value_2, ..., value_n @param[in]  theStreamStr stream with values @param[out] theStreamPos current position in the stream @param[in]  theCount     number of values
     pub fn init_real_values(
         theStreamStr: &ffi::TCollection_AsciiString,
         theStreamPos: &mut i32,
@@ -198,7 +198,7 @@ impl Dump {
         ffi::Dump_init_real_values(theStreamStr, theStreamPos, theCount)
     }
 
-    #[doc = "Returns real value @param[in]  theStreamStr stream with values @param[out] theStreamPos current position in the stream @param[out] theValue     stream value"]
+    /// Returns real value @param[in]  theStreamStr stream with values @param[out] theStreamPos current position in the stream @param[out] theValue     stream value
     pub fn init_value(
         theStreamStr: &ffi::TCollection_AsciiString,
         theStreamPos: &mut i32,
@@ -216,22 +216,22 @@ impl Dump {
 }
 pub use ffi::Transient;
 impl Transient {
-    #[doc = "Empty constructor"]
+    /// Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Transient_ctor()
     }
 
-    #[doc = "Copy constructor -- does nothing"]
+    /// Copy constructor -- does nothing
     pub fn new_transient(arg0: &ffi::Transient) -> cxx::UniquePtr<Self> {
         ffi::Transient_ctor_transient(arg0)
     }
 
-    #[doc = "Returns a true value if this is an instance of TypeName."]
+    /// Returns a true value if this is an instance of TypeName.
     pub fn is_instance_charptr(&self, theTypeName: &str) -> bool {
         ffi::Transient_is_instance_charptr(self, theTypeName)
     }
 
-    #[doc = "Returns true if this is an instance of TypeName or an instance of any class that inherits from TypeName. Note that multiple inheritance is not supported by OCCT RTTI mechanism."]
+    /// Returns true if this is an instance of TypeName or an instance of any class that inherits from TypeName. Note that multiple inheritance is not supported by OCCT RTTI mechanism.
     pub fn is_kind_charptr(&self, theTypeName: &str) -> bool {
         ffi::Transient_is_kind_charptr(self, theTypeName)
     }
@@ -242,7 +242,7 @@ impl Transient {
 }
 pub use ffi::Standard;
 impl Standard {
-    #[doc = "Deallocates the storage retained on the free list and clears the list. Returns non-zero if some memory has been actually freed."]
+    /// Deallocates the storage retained on the free list and clears the list. Returns non-zero if some memory has been actually freed.
     pub fn purge() -> i32 {
         ffi::Standard_purge()
     }
@@ -288,39 +288,39 @@ impl DimensionMismatch {
 }
 pub use ffi::OutOfMemory;
 impl OutOfMemory {
-    #[doc = "Constructor is kept public for backward compatibility"]
+    /// Constructor is kept public for backward compatibility
     pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
         ffi::OutOfMemory_ctor_charptr(theMessage)
     }
 
-    #[doc = "Returns error message"]
+    /// Returns error message
     pub fn get_message_string(&self) -> String {
         ffi::OutOfMemory_get_message_string(self)
     }
 
-    #[doc = "Sets error message"]
+    /// Sets error message
     pub fn set_message_string(self: std::pin::Pin<&mut Self>, aMessage: &str) -> () {
         ffi::OutOfMemory_set_message_string(self, aMessage)
     }
 
-    #[doc = "Raises exception with specified message string"]
+    /// Raises exception with specified message string
     pub fn raise_charptr(theMessage: &str) {
         ffi::OutOfMemory_raise_charptr(theMessage)
     }
 
-    #[doc = "Raises exception with specified message string"]
+    /// Raises exception with specified message string
     pub fn raise_sstream(theMessage: std::pin::Pin<&mut ffi::Standard_SStream>) {
         ffi::OutOfMemory_raise_sstream(theMessage)
     }
 
-    #[doc = "Returns global instance of exception"]
+    /// Returns global instance of exception
     pub fn new_instance_charptr(
         theMessage: &str,
     ) -> cxx::UniquePtr<ffi::HandleStandardOutOfMemory> {
         ffi::OutOfMemory_new_instance_charptr(theMessage)
     }
 
-    #[doc = "Returns global instance of exception"]
+    /// Returns global instance of exception
     pub fn new_instance_charptr2(
         theMessage: &str,
         theStackTrace: &str,
@@ -449,22 +449,22 @@ impl ProgramError {
 }
 pub use ffi::Type;
 impl Type {
-    #[doc = "Wrap Standard_Type in a Handle (reference-counted smart pointer)"]
+    /// Wrap Standard_Type in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleStandardType> {
         ffi::Type_to_handle(obj)
     }
 
-    #[doc = "Returns the system type name of the class (typeinfo.name)"]
+    /// Returns the system type name of the class (typeinfo.name)
     pub fn system_name(&self) -> String {
         ffi::Type_system_name(self)
     }
 
-    #[doc = "Returns the given name of the class type (get_type_name)"]
+    /// Returns the given name of the class type (get_type_name)
     pub fn name(&self) -> String {
         ffi::Type_name(self)
     }
 
-    #[doc = "Returns True if this type is the same as theOther, or inherits from theOther. Note that multiple inheritance is not supported."]
+    /// Returns True if this type is the same as theOther, or inherits from theOther. Note that multiple inheritance is not supported.
     pub fn sub_type_charptr(&self, theOther: &str) -> bool {
         ffi::Type_sub_type_charptr(self, theOther)
     }
@@ -673,17 +673,17 @@ impl ErrorHandler {
         ffi::ErrorHandler_ctor()
     }
 
-    #[doc = "Returns the current Error."]
+    /// Returns the current Error.
     pub fn error(&self) -> cxx::UniquePtr<ffi::HandleStandardFailure> {
         ffi::ErrorHandler_error(self)
     }
 
-    #[doc = "Returns the caught exception."]
+    /// Returns the caught exception.
     pub fn last_caught_error() -> cxx::UniquePtr<ffi::HandleStandardFailure> {
         ffi::ErrorHandler_last_caught_error()
     }
 
-    #[doc = "Test if the code is currently running in a try block"]
+    /// Test if the code is currently running in a try block
     pub fn is_in_try_block() -> bool {
         ffi::ErrorHandler_is_in_try_block()
     }
@@ -807,55 +807,56 @@ impl ConstructionError {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_standard.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== Standard_Failure ========================"]
-        #[doc = "/// **Source:** `Standard_Failure.hxx` - `Standard_Failure`"]
-        #[doc = ""]
-        #[doc = "Forms the root of the entire exception hierarchy."]
+        /// ======================== Standard_Failure ========================
+        /// /// **Source:** `Standard_Failure.hxx` - `Standard_Failure`
+        ///
+        /// Forms the root of the entire exception hierarchy.
         #[cxx_name = "Standard_Failure"]
         type Failure;
-        #[doc = "/// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`"]
-        #[doc = ""]
+        /// /// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`
+        ///
         #[doc = "Creates a status object of type \"Failure\"."]
         #[cxx_name = "Standard_Failure_ctor"]
         fn Failure_ctor() -> UniquePtr<Failure>;
-        #[doc = "/// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`"]
-        #[doc = ""]
-        #[doc = "Copy constructor"]
+        /// /// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`
+        ///
+        /// Copy constructor
         #[cxx_name = "Standard_Failure_ctor_failure"]
         fn Failure_ctor_failure(f: &Failure) -> UniquePtr<Failure>;
-        #[doc = "/// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`"]
-        #[doc = ""]
+        /// /// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`
+        ///
         #[doc = "Creates a status object of type \"Failure\". @param[in] theDesc  exception description"]
         #[cxx_name = "Standard_Failure_ctor_charptr"]
         fn Failure_ctor_charptr(theDesc: &str) -> UniquePtr<Failure>;
-        #[doc = "/// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`"]
-        #[doc = ""]
+        /// /// **Source:** `Standard_Failure.hxx` - `Standard_Failure::Standard_Failure()`
+        ///
         #[doc = "Creates a status object of type \"Failure\" with stack trace. @param[in] theDesc  exception description @param[in] theStackTrace  associated stack trace"]
         #[cxx_name = "Standard_Failure_ctor_charptr2"]
         fn Failure_ctor_charptr2(theDesc: &str, theStackTrace: &str) -> UniquePtr<Failure>;
         #[cxx_name = "Reraise"]
         fn reraise(self: Pin<&mut Failure>);
-        #[doc = "Reraises a caught exception and changes its error message."]
+        /// Reraises a caught exception and changes its error message.
         #[cxx_name = "Reraise"]
         fn reraise_sstream(self: Pin<&mut Failure>, aReason: &Standard_SStream);
-        #[doc = "Used to throw CASCADE exception from C signal handler. On platforms that do not allow throwing C++ exceptions from this handler (e.g. Linux), uses longjump to get to the current active signal handler, and only then is converted to C++ exception."]
+        /// Used to throw CASCADE exception from C signal handler. On platforms that do not allow throwing C++ exceptions from this handler (e.g. Linux), uses longjump to get to the current active signal handler, and only then is converted to C++ exception.
         #[cxx_name = "Jump"]
         fn jump(self: Pin<&mut Failure>);
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Failure) -> &HandleStandardType;
-        #[doc = "Returns error message"]
+        /// Returns error message
         #[cxx_name = "Standard_Failure_GetMessageString"]
         fn Failure_get_message_string(self_: &Failure) -> String;
-        #[doc = "Sets error message"]
+        /// Sets error message
         #[cxx_name = "Standard_Failure_SetMessageString"]
         fn Failure_set_message_string(self_: Pin<&mut Failure>, theMessage: &str);
-        #[doc = "Returns the stack trace string"]
+        /// Returns the stack trace string
         #[cxx_name = "Standard_Failure_GetStackString"]
         fn Failure_get_stack_string(self_: &Failure) -> String;
-        #[doc = "Sets the stack trace string"]
+        /// Sets the stack trace string
         #[cxx_name = "Standard_Failure_SetStackString"]
         fn Failure_set_stack_string(self_: Pin<&mut Failure>, theStack: &str);
         #[cxx_name = "Standard_Failure_Reraise"]
@@ -866,110 +867,110 @@ pub(crate) mod ffi {
         #[doc = "Raises an exception of type \"Failure\" and associates an error message to it. The message can be constructed at run-time."]
         #[cxx_name = "Standard_Failure_Raise_sstream"]
         fn Failure_raise_sstream(aReason: &Standard_SStream);
-        #[doc = "Used to construct an instance of the exception object as a handle. Shall be used to protect against possible construction of exception object in C stack, which is dangerous since some of methods require that object was allocated dynamically."]
+        /// Used to construct an instance of the exception object as a handle. Shall be used to protect against possible construction of exception object in C stack, which is dangerous since some of methods require that object was allocated dynamically.
         #[cxx_name = "Standard_Failure_NewInstance_charptr"]
         fn Failure_new_instance_charptr(theMessage: &str) -> UniquePtr<HandleStandardFailure>;
-        #[doc = "Used to construct an instance of the exception object as a handle."]
+        /// Used to construct an instance of the exception object as a handle.
         #[cxx_name = "Standard_Failure_NewInstance_charptr2"]
         fn Failure_new_instance_charptr2(
             theMessage: &str,
             theStackTrace: &str,
         ) -> UniquePtr<HandleStandardFailure>;
-        #[doc = "Returns the default length of stack trace to be captured by Standard_Failure constructor; 0 by default meaning no stack trace."]
+        /// Returns the default length of stack trace to be captured by Standard_Failure constructor; 0 by default meaning no stack trace.
         #[cxx_name = "Standard_Failure_DefaultStackTraceLength"]
         fn Failure_default_stack_trace_length() -> i32;
-        #[doc = "Sets default length of stack trace to be captured by Standard_Failure constructor."]
+        /// Sets default length of stack trace to be captured by Standard_Failure constructor.
         #[cxx_name = "Standard_Failure_SetDefaultStackTraceLength"]
         fn Failure_set_default_stack_trace_length(theNbStackTraces: i32);
         #[cxx_name = "Standard_Failure_get_type_name"]
         fn Failure_get_type_name() -> String;
-        #[doc = "Wrap Standard_Failure in a Handle (reference-counted smart pointer)"]
+        /// Wrap Standard_Failure in a Handle (reference-counted smart pointer)
         #[cxx_name = "Standard_Failure_to_handle"]
         fn Failure_to_handle(obj: UniquePtr<Failure>) -> UniquePtr<HandleStandardFailure>;
-        #[doc = " ======================== Standard_Mutex ========================"]
-        #[doc = "/// **Source:** `Standard_Mutex.hxx` - `Standard_Mutex`"]
-        #[doc = ""]
-        #[doc = "@brief Mutex: a class to synchronize access to shared data. This is simple encapsulation of tools provided by the operating system to synchronize access to shared data from threads within one process. Current implementation is very simple and straightforward; it is just a wrapper around POSIX pthread library on UNIX/Linux, and CRITICAL_SECTIONs on Windows NT. It does not provide any advanced functionality such as recursive calls to the same mutex from within one thread (such call will freeze the execution). Note that all the methods of that class are made inline, in order to keep maximal performance. This means that a library using the mutex might need to be linked to threads library directly. The typical use of this class should be as follows: - create instance of the class Standard_Mutex in the global scope (whenever possible, or as a field of your class) - create instance of class Standard_Mutex::Sentry using that Mutex when entering critical section Note that this class provides one feature specific to Open CASCADE: safe unlocking the mutex when signal is raised and converted to OCC exceptions (Note that with current implementation of this functionality on UNIX and Linux, C longjumps are used for that, thus destructors of classes are not called automatically). To use this feature, call RegisterCallback() after Lock() or successful TryLock(), and UnregisterCallback() before Unlock() (or use Sentry classes)."]
+        /// ======================== Standard_Mutex ========================
+        /// /// **Source:** `Standard_Mutex.hxx` - `Standard_Mutex`
+        ///
+        /// @brief Mutex: a class to synchronize access to shared data. This is simple encapsulation of tools provided by the operating system to synchronize access to shared data from threads within one process. Current implementation is very simple and straightforward; it is just a wrapper around POSIX pthread library on UNIX/Linux, and CRITICAL_SECTIONs on Windows NT. It does not provide any advanced functionality such as recursive calls to the same mutex from within one thread (such call will freeze the execution). Note that all the methods of that class are made inline, in order to keep maximal performance. This means that a library using the mutex might need to be linked to threads library directly. The typical use of this class should be as follows: - create instance of the class Standard_Mutex in the global scope (whenever possible, or as a field of your class) - create instance of class Standard_Mutex::Sentry using that Mutex when entering critical section Note that this class provides one feature specific to Open CASCADE: safe unlocking the mutex when signal is raised and converted to OCC exceptions (Note that with current implementation of this functionality on UNIX and Linux, C longjumps are used for that, thus destructors of classes are not called automatically). To use this feature, call RegisterCallback() after Lock() or successful TryLock(), and UnregisterCallback() before Unlock() (or use Sentry classes).
         #[cxx_name = "Standard_Mutex"]
         type Mutex;
-        #[doc = "/// **Source:** `Standard_Mutex.hxx` - `Standard_Mutex::Standard_Mutex()`"]
-        #[doc = ""]
-        #[doc = "Constructor: creates a mutex object and initializes it. It is strongly recommended that mutexes were created as static objects whenever possible."]
+        /// /// **Source:** `Standard_Mutex.hxx` - `Standard_Mutex::Standard_Mutex()`
+        ///
+        /// Constructor: creates a mutex object and initializes it. It is strongly recommended that mutexes were created as static objects whenever possible.
         #[cxx_name = "Standard_Mutex_ctor"]
         fn Mutex_ctor() -> UniquePtr<Mutex>;
-        #[doc = "Method to lock the mutex; waits until the mutex is released by other threads, locks it and then returns"]
+        /// Method to lock the mutex; waits until the mutex is released by other threads, locks it and then returns
         #[cxx_name = "Lock"]
         fn lock(self: Pin<&mut Mutex>);
-        #[doc = "Method to test the mutex; if the mutex is not hold by other thread, locks it and returns True; otherwise returns False without waiting mutex to be released."]
+        /// Method to test the mutex; if the mutex is not hold by other thread, locks it and returns True; otherwise returns False without waiting mutex to be released.
         #[cxx_name = "TryLock"]
         fn try_lock(self: Pin<&mut Mutex>) -> bool;
-        #[doc = "Method to unlock the mutex; releases it to other users"]
+        /// Method to unlock the mutex; releases it to other users
         #[cxx_name = "Unlock"]
         fn unlock(self: Pin<&mut Mutex>);
-        #[doc = " ======================== Standard_DumpValue ========================"]
-        #[doc = "/// **Source:** `Standard_Dump.hxx` - `Standard_DumpValue`"]
-        #[doc = ""]
-        #[doc = "Type for storing a dump value with the stream position"]
+        /// ======================== Standard_DumpValue ========================
+        /// /// **Source:** `Standard_Dump.hxx` - `Standard_DumpValue`
+        ///
+        /// Type for storing a dump value with the stream position
         #[cxx_name = "Standard_DumpValue"]
         type DumpValue;
-        #[doc = "/// **Source:** `Standard_Dump.hxx` - `Standard_DumpValue::Standard_DumpValue()`"]
+        /// /// **Source:** `Standard_Dump.hxx` - `Standard_DumpValue::Standard_DumpValue()`
         #[cxx_name = "Standard_DumpValue_ctor"]
         fn DumpValue_ctor() -> UniquePtr<DumpValue>;
-        #[doc = "/// **Source:** `Standard_Dump.hxx` - `Standard_DumpValue::Standard_DumpValue()`"]
+        /// /// **Source:** `Standard_Dump.hxx` - `Standard_DumpValue::Standard_DumpValue()`
         #[cxx_name = "Standard_DumpValue_ctor_asciistring_int"]
         fn DumpValue_ctor_asciistring_int(
             theValue: &TCollection_AsciiString,
             theStartPos: i32,
         ) -> UniquePtr<DumpValue>;
-        #[doc = " ======================== Standard_Dump ========================"]
-        #[doc = "/// **Source:** `Standard_Dump.hxx` - `Standard_Dump`"]
-        #[doc = ""]
-        #[doc = "This interface has some tool methods for stream (in JSON format) processing."]
+        /// ======================== Standard_Dump ========================
+        /// /// **Source:** `Standard_Dump.hxx` - `Standard_Dump`
+        ///
+        /// This interface has some tool methods for stream (in JSON format) processing.
         #[cxx_name = "Standard_Dump"]
         type Dump;
-        #[doc = "Converts stream value to string value. The result is original stream value. @param theStream source value @return text presentation"]
+        /// Converts stream value to string value. The result is original stream value. @param theStream source value @return text presentation
         #[cxx_name = "Standard_Dump_Text"]
         fn Dump_text(theStream: &Standard_SStream) -> UniquePtr<TCollection_AsciiString>;
-        #[doc = "Converts stream value to string value. Improves the text presentation with the following cases: - for '{' append after '\\n' and indent to the next value, increment current indent value - for '}' append '\\n' and current indent before it, decrement indent value - for ',' append after '\\n' and indent to the next value. If the current symbol is in massive container [], do nothing Covers result with opened and closed brackets on the top level, if it has no symbols there. @param theStream source value @param theIndent count of ' ' symbols to apply hierarchical indent of the text values @return text presentation"]
+        /// Converts stream value to string value. Improves the text presentation with the following cases: - for '{' append after '\\n' and indent to the next value, increment current indent value - for '}' append '\\n' and current indent before it, decrement indent value - for ',' append after '\\n' and indent to the next value. If the current symbol is in massive container [], do nothing Covers result with opened and closed brackets on the top level, if it has no symbols there. @param theStream source value @param theIndent count of ' ' symbols to apply hierarchical indent of the text values @return text presentation
         #[cxx_name = "Standard_Dump_FormatJson"]
         fn Dump_format_json(
             theStream: &Standard_SStream,
             theIndent: i32,
         ) -> UniquePtr<TCollection_AsciiString>;
-        #[doc = "Returns true if the value has bracket key"]
+        /// Returns true if the value has bracket key
         #[cxx_name = "Standard_Dump_HasChildKey"]
         fn Dump_has_child_key(theSourceValue: &TCollection_AsciiString) -> bool;
-        #[doc = "Returns default prefix added for each pointer info string if short presentation of pointer used"]
+        /// Returns default prefix added for each pointer info string if short presentation of pointer used
         #[cxx_name = "Standard_Dump_GetPointerPrefix"]
         fn Dump_get_pointer_prefix() -> UniquePtr<TCollection_AsciiString>;
-        #[doc = "Convert handle pointer to address of the pointer. If the handle is NULL, the result is an empty string. @param thePointer a pointer @param isShortInfo if true, all '0' symbols in the beginning of the pointer are skipped @return the string value"]
+        /// Convert handle pointer to address of the pointer. If the handle is NULL, the result is an empty string. @param thePointer a pointer @param isShortInfo if true, all '0' symbols in the beginning of the pointer are skipped @return the string value
         #[cxx_name = "Standard_Dump_GetPointerInfo_handletransient_bool"]
         fn Dump_get_pointer_info_handletransient_bool(
             thePointer: &HandleStandardTransient,
             isShortInfo: bool,
         ) -> UniquePtr<TCollection_AsciiString>;
-        #[doc = "Check whether the parameter name is equal to the name in the stream at position @param[in]  theStreamStr stream with values @param[in]  theName      stream key value @param[out] theStreamPos current position in the stream"]
+        /// Check whether the parameter name is equal to the name in the stream at position @param[in]  theStreamStr stream with values @param[in]  theName      stream key value @param[out] theStreamPos current position in the stream
         #[cxx_name = "Standard_Dump_ProcessStreamName"]
         fn Dump_process_stream_name(
             theStreamStr: &TCollection_AsciiString,
             theName: &TCollection_AsciiString,
             theStreamPos: &mut i32,
         ) -> bool;
-        #[doc = "Check whether the field name is equal to the name in the stream at position @param[in]  theStreamStr stream with values @param[in]  theName      stream key field value @param[out] theStreamPos current position in the stream"]
+        /// Check whether the field name is equal to the name in the stream at position @param[in]  theStreamStr stream with values @param[in]  theName      stream key field value @param[out] theStreamPos current position in the stream
         #[cxx_name = "Standard_Dump_ProcessFieldName"]
         fn Dump_process_field_name(
             theStreamStr: &TCollection_AsciiString,
             theName: &TCollection_AsciiString,
             theStreamPos: &mut i32,
         ) -> bool;
-        #[doc = "Unite values in one value using template: value_1, value_2, ..., value_n @param[in]  theStreamStr stream with values @param[out] theStreamPos current position in the stream @param[in]  theCount     number of values"]
+        /// Unite values in one value using template: value_1, value_2, ..., value_n @param[in]  theStreamStr stream with values @param[out] theStreamPos current position in the stream @param[in]  theCount     number of values
         #[cxx_name = "Standard_Dump_InitRealValues"]
         fn Dump_init_real_values(
             theStreamStr: &TCollection_AsciiString,
             theStreamPos: &mut i32,
             theCount: i32,
         ) -> bool;
-        #[doc = "Returns real value @param[in]  theStreamStr stream with values @param[out] theStreamPos current position in the stream @param[out] theValue     stream value"]
+        /// Returns real value @param[in]  theStreamStr stream with values @param[out] theStreamPos current position in the stream @param[out] theValue     stream value
         #[cxx_name = "Standard_Dump_InitValue"]
         fn Dump_init_value(
             theStreamStr: &TCollection_AsciiString,
@@ -981,71 +982,71 @@ pub(crate) mod ffi {
         fn Dump_dump_field_to_name(
             theField: &TCollection_AsciiString,
         ) -> UniquePtr<TCollection_AsciiString>;
-        #[doc = " ======================== Standard_Transient ========================"]
-        #[doc = "/// **Source:** `Standard_Transient.hxx` - `Standard_Transient`"]
-        #[doc = ""]
-        #[doc = "Abstract class which forms the root of the entire Transient class hierarchy."]
+        /// ======================== Standard_Transient ========================
+        /// /// **Source:** `Standard_Transient.hxx` - `Standard_Transient`
+        ///
+        /// Abstract class which forms the root of the entire Transient class hierarchy.
         #[cxx_name = "Standard_Transient"]
         type Transient;
-        #[doc = "/// **Source:** `Standard_Transient.hxx` - `Standard_Transient::Standard_Transient()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor"]
+        /// /// **Source:** `Standard_Transient.hxx` - `Standard_Transient::Standard_Transient()`
+        ///
+        /// Empty constructor
         #[cxx_name = "Standard_Transient_ctor"]
         fn Transient_ctor() -> UniquePtr<Transient>;
-        #[doc = "/// **Source:** `Standard_Transient.hxx` - `Standard_Transient::Standard_Transient()`"]
-        #[doc = ""]
-        #[doc = "Copy constructor -- does nothing"]
+        /// /// **Source:** `Standard_Transient.hxx` - `Standard_Transient::Standard_Transient()`
+        ///
+        /// Copy constructor -- does nothing
         #[cxx_name = "Standard_Transient_ctor_transient"]
         fn Transient_ctor_transient(arg0: &Transient) -> UniquePtr<Transient>;
-        #[doc = "Returns a type descriptor about this object."]
+        /// Returns a type descriptor about this object.
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Transient) -> &HandleStandardType;
-        #[doc = "Returns a true value if this is an instance of Type."]
+        /// Returns a true value if this is an instance of Type.
         #[cxx_name = "IsInstance"]
         fn is_instance_handletype(self: &Transient, theType: &HandleStandardType) -> bool;
-        #[doc = "Returns true if this is an instance of Type or an instance of any class that inherits from Type. Note that multiple inheritance is not supported by OCCT RTTI mechanism."]
+        /// Returns true if this is an instance of Type or an instance of any class that inherits from Type. Note that multiple inheritance is not supported by OCCT RTTI mechanism.
         #[cxx_name = "IsKind"]
         fn is_kind_handletype(self: &Transient, theType: &HandleStandardType) -> bool;
-        #[doc = "Get the reference counter of this object"]
+        /// Get the reference counter of this object
         #[cxx_name = "GetRefCount"]
         fn get_ref_count(self: &Transient) -> i32;
-        #[doc = "Increments the reference counter of this object"]
+        /// Increments the reference counter of this object
         #[cxx_name = "IncrementRefCounter"]
         fn increment_ref_counter(self: Pin<&mut Transient>);
-        #[doc = "Decrements the reference counter of this object; returns the decremented value"]
+        /// Decrements the reference counter of this object; returns the decremented value
         #[cxx_name = "DecrementRefCounter"]
         fn decrement_ref_counter(self: Pin<&mut Transient>) -> i32;
-        #[doc = "Memory deallocator for transient classes"]
+        /// Memory deallocator for transient classes
         #[cxx_name = "Delete"]
         fn delete(self: &Transient);
-        #[doc = "Returns a true value if this is an instance of TypeName."]
+        /// Returns a true value if this is an instance of TypeName.
         #[cxx_name = "Standard_Transient_IsInstance"]
         fn Transient_is_instance_charptr(self_: &Transient, theTypeName: &str) -> bool;
-        #[doc = "Returns true if this is an instance of TypeName or an instance of any class that inherits from TypeName. Note that multiple inheritance is not supported by OCCT RTTI mechanism."]
+        /// Returns true if this is an instance of TypeName or an instance of any class that inherits from TypeName. Note that multiple inheritance is not supported by OCCT RTTI mechanism.
         #[cxx_name = "Standard_Transient_IsKind"]
         fn Transient_is_kind_charptr(self_: &Transient, theTypeName: &str) -> bool;
         #[cxx_name = "Standard_Transient_get_type_name"]
         fn Transient_get_type_name() -> String;
-        #[doc = " ======================== Standard ========================"]
-        #[doc = "/// **Source:** `Standard.hxx` - `Standard`"]
-        #[doc = ""]
-        #[doc = "The package Standard provides global memory allocator and other basic services used by other OCCT components."]
+        /// ======================== Standard ========================
+        /// /// **Source:** `Standard.hxx` - `Standard`
+        ///
+        /// The package Standard provides global memory allocator and other basic services used by other OCCT components.
         #[cxx_name = "Standard"]
         type Standard;
-        #[doc = "Deallocates the storage retained on the free list and clears the list. Returns non-zero if some memory has been actually freed."]
+        /// Deallocates the storage retained on the free list and clears the list. Returns non-zero if some memory has been actually freed.
         #[cxx_name = "Standard_Purge"]
         fn Standard_purge() -> i32;
-        #[doc = " ======================== Standard_DimensionMismatch ========================"]
-        #[doc = "/// **Source:** `Standard_DimensionMismatch.hxx` - `Standard_DimensionMismatch`"]
+        /// ======================== Standard_DimensionMismatch ========================
+        /// /// **Source:** `Standard_DimensionMismatch.hxx` - `Standard_DimensionMismatch`
         #[cxx_name = "Standard_DimensionMismatch"]
         type DimensionMismatch;
-        #[doc = "/// **Source:** `Standard_DimensionMismatch.hxx` - `Standard_DimensionMismatch::Standard_DimensionMismatch()`"]
+        /// /// **Source:** `Standard_DimensionMismatch.hxx` - `Standard_DimensionMismatch::Standard_DimensionMismatch()`
         #[cxx_name = "Standard_DimensionMismatch_ctor"]
         fn DimensionMismatch_ctor() -> UniquePtr<DimensionMismatch>;
-        #[doc = "/// **Source:** `Standard_DimensionMismatch.hxx` - `Standard_DimensionMismatch::Standard_DimensionMismatch()`"]
+        /// /// **Source:** `Standard_DimensionMismatch.hxx` - `Standard_DimensionMismatch::Standard_DimensionMismatch()`
         #[cxx_name = "Standard_DimensionMismatch_ctor_charptr"]
         fn DimensionMismatch_ctor_charptr(theMessage: &str) -> UniquePtr<DimensionMismatch>;
-        #[doc = "/// **Source:** `Standard_DimensionMismatch.hxx` - `Standard_DimensionMismatch::Standard_DimensionMismatch()`"]
+        /// /// **Source:** `Standard_DimensionMismatch.hxx` - `Standard_DimensionMismatch::Standard_DimensionMismatch()`
         #[cxx_name = "Standard_DimensionMismatch_ctor_charptr2"]
         fn DimensionMismatch_ctor_charptr2(
             theMessage: &str,
@@ -1068,37 +1069,37 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStandardDimensionMismatch>;
         #[cxx_name = "Standard_DimensionMismatch_get_type_name"]
         fn DimensionMismatch_get_type_name() -> String;
-        #[doc = " ======================== Standard_OutOfMemory ========================"]
-        #[doc = "/// **Source:** `Standard_OutOfMemory.hxx` - `Standard_OutOfMemory`"]
-        #[doc = ""]
-        #[doc = "Standard_OutOfMemory exception is defined explicitly and not by macro DEFINE_STANDARD_EXCEPTION, to avoid necessity of dynamic memory allocations during throwing and stack unwinding: - method NewInstance() returns static instance (singleton) - method Raise() raises copy of that singleton, resetting its message string - message string is stored as field, not allocated dynamically (storable message length is limited by buffer size) The reason is that in out-of-memory condition any memory allocation can fail, thus use of operator new for allocation of new exception instance is dangerous (can cause recursion until stack overflow, see #24836)."]
+        /// ======================== Standard_OutOfMemory ========================
+        /// /// **Source:** `Standard_OutOfMemory.hxx` - `Standard_OutOfMemory`
+        ///
+        /// Standard_OutOfMemory exception is defined explicitly and not by macro DEFINE_STANDARD_EXCEPTION, to avoid necessity of dynamic memory allocations during throwing and stack unwinding: - method NewInstance() returns static instance (singleton) - method Raise() raises copy of that singleton, resetting its message string - message string is stored as field, not allocated dynamically (storable message length is limited by buffer size) The reason is that in out-of-memory condition any memory allocation can fail, thus use of operator new for allocation of new exception instance is dangerous (can cause recursion until stack overflow, see #24836).
         #[cxx_name = "Standard_OutOfMemory"]
         type OutOfMemory;
-        #[doc = "/// **Source:** `Standard_OutOfMemory.hxx` - `Standard_OutOfMemory::Standard_OutOfMemory()`"]
-        #[doc = ""]
-        #[doc = "Constructor is kept public for backward compatibility"]
+        /// /// **Source:** `Standard_OutOfMemory.hxx` - `Standard_OutOfMemory::Standard_OutOfMemory()`
+        ///
+        /// Constructor is kept public for backward compatibility
         #[cxx_name = "Standard_OutOfMemory_ctor_charptr"]
         fn OutOfMemory_ctor_charptr(theMessage: &str) -> UniquePtr<OutOfMemory>;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &OutOfMemory) -> &HandleStandardType;
-        #[doc = "Returns error message"]
+        /// Returns error message
         #[cxx_name = "Standard_OutOfMemory_GetMessageString"]
         fn OutOfMemory_get_message_string(self_: &OutOfMemory) -> String;
-        #[doc = "Sets error message"]
+        /// Sets error message
         #[cxx_name = "Standard_OutOfMemory_SetMessageString"]
         fn OutOfMemory_set_message_string(self_: Pin<&mut OutOfMemory>, aMessage: &str);
-        #[doc = "Raises exception with specified message string"]
+        /// Raises exception with specified message string
         #[cxx_name = "Standard_OutOfMemory_Raise_charptr"]
         fn OutOfMemory_raise_charptr(theMessage: &str);
-        #[doc = "Raises exception with specified message string"]
+        /// Raises exception with specified message string
         #[cxx_name = "Standard_OutOfMemory_Raise_sstream"]
         fn OutOfMemory_raise_sstream(theMessage: Pin<&mut Standard_SStream>);
-        #[doc = "Returns global instance of exception"]
+        /// Returns global instance of exception
         #[cxx_name = "Standard_OutOfMemory_NewInstance_charptr"]
         fn OutOfMemory_new_instance_charptr(
             theMessage: &str,
         ) -> UniquePtr<HandleStandardOutOfMemory>;
-        #[doc = "Returns global instance of exception"]
+        /// Returns global instance of exception
         #[cxx_name = "Standard_OutOfMemory_NewInstance_charptr2"]
         fn OutOfMemory_new_instance_charptr2(
             theMessage: &str,
@@ -1106,17 +1107,17 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStandardOutOfMemory>;
         #[cxx_name = "Standard_OutOfMemory_get_type_name"]
         fn OutOfMemory_get_type_name() -> String;
-        #[doc = " ======================== Standard_NotImplemented ========================"]
-        #[doc = "/// **Source:** `Standard_NotImplemented.hxx` - `Standard_NotImplemented`"]
+        /// ======================== Standard_NotImplemented ========================
+        /// /// **Source:** `Standard_NotImplemented.hxx` - `Standard_NotImplemented`
         #[cxx_name = "Standard_NotImplemented"]
         type NotImplemented;
-        #[doc = "/// **Source:** `Standard_NotImplemented.hxx` - `Standard_NotImplemented::Standard_NotImplemented()`"]
+        /// /// **Source:** `Standard_NotImplemented.hxx` - `Standard_NotImplemented::Standard_NotImplemented()`
         #[cxx_name = "Standard_NotImplemented_ctor"]
         fn NotImplemented_ctor() -> UniquePtr<NotImplemented>;
-        #[doc = "/// **Source:** `Standard_NotImplemented.hxx` - `Standard_NotImplemented::Standard_NotImplemented()`"]
+        /// /// **Source:** `Standard_NotImplemented.hxx` - `Standard_NotImplemented::Standard_NotImplemented()`
         #[cxx_name = "Standard_NotImplemented_ctor_charptr"]
         fn NotImplemented_ctor_charptr(theMessage: &str) -> UniquePtr<NotImplemented>;
-        #[doc = "/// **Source:** `Standard_NotImplemented.hxx` - `Standard_NotImplemented::Standard_NotImplemented()`"]
+        /// /// **Source:** `Standard_NotImplemented.hxx` - `Standard_NotImplemented::Standard_NotImplemented()`
         #[cxx_name = "Standard_NotImplemented_ctor_charptr2"]
         fn NotImplemented_ctor_charptr2(
             theMessage: &str,
@@ -1139,17 +1140,17 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStandardNotImplemented>;
         #[cxx_name = "Standard_NotImplemented_get_type_name"]
         fn NotImplemented_get_type_name() -> String;
-        #[doc = " ======================== Standard_OutOfRange ========================"]
-        #[doc = "/// **Source:** `Standard_OutOfRange.hxx` - `Standard_OutOfRange`"]
+        /// ======================== Standard_OutOfRange ========================
+        /// /// **Source:** `Standard_OutOfRange.hxx` - `Standard_OutOfRange`
         #[cxx_name = "Standard_OutOfRange"]
         type OutOfRange;
-        #[doc = "/// **Source:** `Standard_OutOfRange.hxx` - `Standard_OutOfRange::Standard_OutOfRange()`"]
+        /// /// **Source:** `Standard_OutOfRange.hxx` - `Standard_OutOfRange::Standard_OutOfRange()`
         #[cxx_name = "Standard_OutOfRange_ctor"]
         fn OutOfRange_ctor() -> UniquePtr<OutOfRange>;
-        #[doc = "/// **Source:** `Standard_OutOfRange.hxx` - `Standard_OutOfRange::Standard_OutOfRange()`"]
+        /// /// **Source:** `Standard_OutOfRange.hxx` - `Standard_OutOfRange::Standard_OutOfRange()`
         #[cxx_name = "Standard_OutOfRange_ctor_charptr"]
         fn OutOfRange_ctor_charptr(theMessage: &str) -> UniquePtr<OutOfRange>;
-        #[doc = "/// **Source:** `Standard_OutOfRange.hxx` - `Standard_OutOfRange::Standard_OutOfRange()`"]
+        /// /// **Source:** `Standard_OutOfRange.hxx` - `Standard_OutOfRange::Standard_OutOfRange()`
         #[cxx_name = "Standard_OutOfRange_ctor_charptr2"]
         fn OutOfRange_ctor_charptr2(theMessage: &str, theStackTrace: &str)
             -> UniquePtr<OutOfRange>;
@@ -1169,17 +1170,17 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStandardOutOfRange>;
         #[cxx_name = "Standard_OutOfRange_get_type_name"]
         fn OutOfRange_get_type_name() -> String;
-        #[doc = " ======================== Standard_ProgramError ========================"]
-        #[doc = "/// **Source:** `Standard_ProgramError.hxx` - `Standard_ProgramError`"]
+        /// ======================== Standard_ProgramError ========================
+        /// /// **Source:** `Standard_ProgramError.hxx` - `Standard_ProgramError`
         #[cxx_name = "Standard_ProgramError"]
         type ProgramError;
-        #[doc = "/// **Source:** `Standard_ProgramError.hxx` - `Standard_ProgramError::Standard_ProgramError()`"]
+        /// /// **Source:** `Standard_ProgramError.hxx` - `Standard_ProgramError::Standard_ProgramError()`
         #[cxx_name = "Standard_ProgramError_ctor"]
         fn ProgramError_ctor() -> UniquePtr<ProgramError>;
-        #[doc = "/// **Source:** `Standard_ProgramError.hxx` - `Standard_ProgramError::Standard_ProgramError()`"]
+        /// /// **Source:** `Standard_ProgramError.hxx` - `Standard_ProgramError::Standard_ProgramError()`
         #[cxx_name = "Standard_ProgramError_ctor_charptr"]
         fn ProgramError_ctor_charptr(theMessage: &str) -> UniquePtr<ProgramError>;
-        #[doc = "/// **Source:** `Standard_ProgramError.hxx` - `Standard_ProgramError::Standard_ProgramError()`"]
+        /// /// **Source:** `Standard_ProgramError.hxx` - `Standard_ProgramError::Standard_ProgramError()`
         #[cxx_name = "Standard_ProgramError_ctor_charptr2"]
         fn ProgramError_ctor_charptr2(
             theMessage: &str,
@@ -1202,48 +1203,48 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStandardProgramError>;
         #[cxx_name = "Standard_ProgramError_get_type_name"]
         fn ProgramError_get_type_name() -> String;
-        #[doc = " ======================== Standard_Type ========================"]
-        #[doc = "/// **Source:** `Standard_Type.hxx` - `Standard_Type`"]
-        #[doc = ""]
-        #[doc = "This class provides legacy interface (type descriptor) to run-time type information (RTTI) for OCCT classes inheriting from Standard_Transient. In addition to features provided by standard C++ RTTI (type_info), Standard_Type allows passing descriptor as an object and using it for analysis of the type: - get descriptor of a parent class - get user-defined name of the class - get size of the object Use static template method Instance() to get descriptor for a given type. Objects supporting OCCT RTTI return their type descriptor by method DynamicType(). To be usable with OCCT type system, the class should provide: - typedef base_type to its base class in the hierarchy - method get_type_name() returning programmer-defined name of the class (as a statically allocated constant C string or string literal) Note that user-defined name is used since typeid.name() is usually mangled in compiler-dependent way. Only single chain of inheritance is supported, with a root base class Standard_Transient."]
+        /// ======================== Standard_Type ========================
+        /// /// **Source:** `Standard_Type.hxx` - `Standard_Type`
+        ///
+        /// This class provides legacy interface (type descriptor) to run-time type information (RTTI) for OCCT classes inheriting from Standard_Transient. In addition to features provided by standard C++ RTTI (type_info), Standard_Type allows passing descriptor as an object and using it for analysis of the type: - get descriptor of a parent class - get user-defined name of the class - get size of the object Use static template method Instance() to get descriptor for a given type. Objects supporting OCCT RTTI return their type descriptor by method DynamicType(). To be usable with OCCT type system, the class should provide: - typedef base_type to its base class in the hierarchy - method get_type_name() returning programmer-defined name of the class (as a statically allocated constant C string or string literal) Note that user-defined name is used since typeid.name() is usually mangled in compiler-dependent way. Only single chain of inheritance is supported, with a root base class Standard_Transient.
         #[cxx_name = "Standard_Type"]
         type Type;
-        #[doc = "Returns the size of the class instance in bytes"]
+        /// Returns the size of the class instance in bytes
         #[cxx_name = "Size"]
         fn size(self: &Type) -> usize;
-        #[doc = "Returns descriptor of the base class in the hierarchy"]
+        /// Returns descriptor of the base class in the hierarchy
         #[cxx_name = "Parent"]
         fn parent(self: &Type) -> &HandleStandardType;
-        #[doc = "Returns True if this type is the same as theOther, or inherits from theOther. Note that multiple inheritance is not supported."]
+        /// Returns True if this type is the same as theOther, or inherits from theOther. Note that multiple inheritance is not supported.
         #[cxx_name = "SubType"]
         fn sub_type_handletype(self: &Type, theOther: &HandleStandardType) -> bool;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Type) -> &HandleStandardType;
-        #[doc = "Returns the system type name of the class (typeinfo.name)"]
+        /// Returns the system type name of the class (typeinfo.name)
         #[cxx_name = "Standard_Type_SystemName"]
         fn Type_system_name(self_: &Type) -> String;
-        #[doc = "Returns the given name of the class type (get_type_name)"]
+        /// Returns the given name of the class type (get_type_name)
         #[cxx_name = "Standard_Type_Name"]
         fn Type_name(self_: &Type) -> String;
-        #[doc = "Returns True if this type is the same as theOther, or inherits from theOther. Note that multiple inheritance is not supported."]
+        /// Returns True if this type is the same as theOther, or inherits from theOther. Note that multiple inheritance is not supported.
         #[cxx_name = "Standard_Type_SubType"]
         fn Type_sub_type_charptr(self_: &Type, theOther: &str) -> bool;
         #[cxx_name = "Standard_Type_get_type_name"]
         fn Type_get_type_name() -> String;
-        #[doc = "Wrap Standard_Type in a Handle (reference-counted smart pointer)"]
+        /// Wrap Standard_Type in a Handle (reference-counted smart pointer)
         #[cxx_name = "Standard_Type_to_handle"]
         fn Type_to_handle(obj: UniquePtr<Type>) -> UniquePtr<HandleStandardType>;
-        #[doc = " ======================== Standard_RangeError ========================"]
-        #[doc = "/// **Source:** `Standard_RangeError.hxx` - `Standard_RangeError`"]
+        /// ======================== Standard_RangeError ========================
+        /// /// **Source:** `Standard_RangeError.hxx` - `Standard_RangeError`
         #[cxx_name = "Standard_RangeError"]
         type RangeError;
-        #[doc = "/// **Source:** `Standard_RangeError.hxx` - `Standard_RangeError::Standard_RangeError()`"]
+        /// /// **Source:** `Standard_RangeError.hxx` - `Standard_RangeError::Standard_RangeError()`
         #[cxx_name = "Standard_RangeError_ctor"]
         fn RangeError_ctor() -> UniquePtr<RangeError>;
-        #[doc = "/// **Source:** `Standard_RangeError.hxx` - `Standard_RangeError::Standard_RangeError()`"]
+        /// /// **Source:** `Standard_RangeError.hxx` - `Standard_RangeError::Standard_RangeError()`
         #[cxx_name = "Standard_RangeError_ctor_charptr"]
         fn RangeError_ctor_charptr(theMessage: &str) -> UniquePtr<RangeError>;
-        #[doc = "/// **Source:** `Standard_RangeError.hxx` - `Standard_RangeError::Standard_RangeError()`"]
+        /// /// **Source:** `Standard_RangeError.hxx` - `Standard_RangeError::Standard_RangeError()`
         #[cxx_name = "Standard_RangeError_ctor_charptr2"]
         fn RangeError_ctor_charptr2(theMessage: &str, theStackTrace: &str)
             -> UniquePtr<RangeError>;
@@ -1263,17 +1264,17 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStandardRangeError>;
         #[cxx_name = "Standard_RangeError_get_type_name"]
         fn RangeError_get_type_name() -> String;
-        #[doc = " ======================== Standard_DomainError ========================"]
-        #[doc = "/// **Source:** `Standard_DomainError.hxx` - `Standard_DomainError`"]
+        /// ======================== Standard_DomainError ========================
+        /// /// **Source:** `Standard_DomainError.hxx` - `Standard_DomainError`
         #[cxx_name = "Standard_DomainError"]
         type DomainError;
-        #[doc = "/// **Source:** `Standard_DomainError.hxx` - `Standard_DomainError::Standard_DomainError()`"]
+        /// /// **Source:** `Standard_DomainError.hxx` - `Standard_DomainError::Standard_DomainError()`
         #[cxx_name = "Standard_DomainError_ctor"]
         fn DomainError_ctor() -> UniquePtr<DomainError>;
-        #[doc = "/// **Source:** `Standard_DomainError.hxx` - `Standard_DomainError::Standard_DomainError()`"]
+        /// /// **Source:** `Standard_DomainError.hxx` - `Standard_DomainError::Standard_DomainError()`
         #[cxx_name = "Standard_DomainError_ctor_charptr"]
         fn DomainError_ctor_charptr(theMessage: &str) -> UniquePtr<DomainError>;
-        #[doc = "/// **Source:** `Standard_DomainError.hxx` - `Standard_DomainError::Standard_DomainError()`"]
+        /// /// **Source:** `Standard_DomainError.hxx` - `Standard_DomainError::Standard_DomainError()`
         #[cxx_name = "Standard_DomainError_ctor_charptr2"]
         fn DomainError_ctor_charptr2(
             theMessage: &str,
@@ -1296,17 +1297,17 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStandardDomainError>;
         #[cxx_name = "Standard_DomainError_get_type_name"]
         fn DomainError_get_type_name() -> String;
-        #[doc = " ======================== Standard_DimensionError ========================"]
-        #[doc = "/// **Source:** `Standard_DimensionError.hxx` - `Standard_DimensionError`"]
+        /// ======================== Standard_DimensionError ========================
+        /// /// **Source:** `Standard_DimensionError.hxx` - `Standard_DimensionError`
         #[cxx_name = "Standard_DimensionError"]
         type DimensionError;
-        #[doc = "/// **Source:** `Standard_DimensionError.hxx` - `Standard_DimensionError::Standard_DimensionError()`"]
+        /// /// **Source:** `Standard_DimensionError.hxx` - `Standard_DimensionError::Standard_DimensionError()`
         #[cxx_name = "Standard_DimensionError_ctor"]
         fn DimensionError_ctor() -> UniquePtr<DimensionError>;
-        #[doc = "/// **Source:** `Standard_DimensionError.hxx` - `Standard_DimensionError::Standard_DimensionError()`"]
+        /// /// **Source:** `Standard_DimensionError.hxx` - `Standard_DimensionError::Standard_DimensionError()`
         #[cxx_name = "Standard_DimensionError_ctor_charptr"]
         fn DimensionError_ctor_charptr(theMessage: &str) -> UniquePtr<DimensionError>;
-        #[doc = "/// **Source:** `Standard_DimensionError.hxx` - `Standard_DimensionError::Standard_DimensionError()`"]
+        /// /// **Source:** `Standard_DimensionError.hxx` - `Standard_DimensionError::Standard_DimensionError()`
         #[cxx_name = "Standard_DimensionError_ctor_charptr2"]
         fn DimensionError_ctor_charptr2(
             theMessage: &str,
@@ -1329,17 +1330,17 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStandardDimensionError>;
         #[cxx_name = "Standard_DimensionError_get_type_name"]
         fn DimensionError_get_type_name() -> String;
-        #[doc = " ======================== Standard_TypeMismatch ========================"]
-        #[doc = "/// **Source:** `Standard_TypeMismatch.hxx` - `Standard_TypeMismatch`"]
+        /// ======================== Standard_TypeMismatch ========================
+        /// /// **Source:** `Standard_TypeMismatch.hxx` - `Standard_TypeMismatch`
         #[cxx_name = "Standard_TypeMismatch"]
         type TypeMismatch;
-        #[doc = "/// **Source:** `Standard_TypeMismatch.hxx` - `Standard_TypeMismatch::Standard_TypeMismatch()`"]
+        /// /// **Source:** `Standard_TypeMismatch.hxx` - `Standard_TypeMismatch::Standard_TypeMismatch()`
         #[cxx_name = "Standard_TypeMismatch_ctor"]
         fn TypeMismatch_ctor() -> UniquePtr<TypeMismatch>;
-        #[doc = "/// **Source:** `Standard_TypeMismatch.hxx` - `Standard_TypeMismatch::Standard_TypeMismatch()`"]
+        /// /// **Source:** `Standard_TypeMismatch.hxx` - `Standard_TypeMismatch::Standard_TypeMismatch()`
         #[cxx_name = "Standard_TypeMismatch_ctor_charptr"]
         fn TypeMismatch_ctor_charptr(theMessage: &str) -> UniquePtr<TypeMismatch>;
-        #[doc = "/// **Source:** `Standard_TypeMismatch.hxx` - `Standard_TypeMismatch::Standard_TypeMismatch()`"]
+        /// /// **Source:** `Standard_TypeMismatch.hxx` - `Standard_TypeMismatch::Standard_TypeMismatch()`
         #[cxx_name = "Standard_TypeMismatch_ctor_charptr2"]
         fn TypeMismatch_ctor_charptr2(
             theMessage: &str,
@@ -1362,17 +1363,17 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStandardTypeMismatch>;
         #[cxx_name = "Standard_TypeMismatch_get_type_name"]
         fn TypeMismatch_get_type_name() -> String;
-        #[doc = " ======================== Standard_NoSuchObject ========================"]
-        #[doc = "/// **Source:** `Standard_NoSuchObject.hxx` - `Standard_NoSuchObject`"]
+        /// ======================== Standard_NoSuchObject ========================
+        /// /// **Source:** `Standard_NoSuchObject.hxx` - `Standard_NoSuchObject`
         #[cxx_name = "Standard_NoSuchObject"]
         type NoSuchObject;
-        #[doc = "/// **Source:** `Standard_NoSuchObject.hxx` - `Standard_NoSuchObject::Standard_NoSuchObject()`"]
+        /// /// **Source:** `Standard_NoSuchObject.hxx` - `Standard_NoSuchObject::Standard_NoSuchObject()`
         #[cxx_name = "Standard_NoSuchObject_ctor"]
         fn NoSuchObject_ctor() -> UniquePtr<NoSuchObject>;
-        #[doc = "/// **Source:** `Standard_NoSuchObject.hxx` - `Standard_NoSuchObject::Standard_NoSuchObject()`"]
+        /// /// **Source:** `Standard_NoSuchObject.hxx` - `Standard_NoSuchObject::Standard_NoSuchObject()`
         #[cxx_name = "Standard_NoSuchObject_ctor_charptr"]
         fn NoSuchObject_ctor_charptr(theMessage: &str) -> UniquePtr<NoSuchObject>;
-        #[doc = "/// **Source:** `Standard_NoSuchObject.hxx` - `Standard_NoSuchObject::Standard_NoSuchObject()`"]
+        /// /// **Source:** `Standard_NoSuchObject.hxx` - `Standard_NoSuchObject::Standard_NoSuchObject()`
         #[cxx_name = "Standard_NoSuchObject_ctor_charptr2"]
         fn NoSuchObject_ctor_charptr2(
             theMessage: &str,
@@ -1395,49 +1396,49 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStandardNoSuchObject>;
         #[cxx_name = "Standard_NoSuchObject_get_type_name"]
         fn NoSuchObject_get_type_name() -> String;
-        #[doc = " ======================== Standard_ErrorHandler ========================"]
-        #[doc = "/// **Source:** `Standard_ErrorHandler.hxx` - `Standard_ErrorHandler`"]
-        #[doc = ""]
-        #[doc = "Class implementing mechanics of conversion of signals to exceptions. Each instance of it stores data for jump placement, thread id, and callbacks to be called during jump (for proper resource release). The active handlers are stored in the global stack, which is used to find appropriate handler when signal is raised."]
+        /// ======================== Standard_ErrorHandler ========================
+        /// /// **Source:** `Standard_ErrorHandler.hxx` - `Standard_ErrorHandler`
+        ///
+        /// Class implementing mechanics of conversion of signals to exceptions. Each instance of it stores data for jump placement, thread id, and callbacks to be called during jump (for proper resource release). The active handlers are stored in the global stack, which is used to find appropriate handler when signal is raised.
         #[cxx_name = "Standard_ErrorHandler"]
         type ErrorHandler;
-        #[doc = "/// **Source:** `Standard_ErrorHandler.hxx` - `Standard_ErrorHandler::Standard_ErrorHandler()`"]
-        #[doc = ""]
+        /// /// **Source:** `Standard_ErrorHandler.hxx` - `Standard_ErrorHandler::Standard_ErrorHandler()`
+        ///
         #[doc = "Create a ErrorHandler (to be used with try{}catch(){}). It uses the \"setjmp\" and \"longjmp\" routines."]
         #[cxx_name = "Standard_ErrorHandler_ctor"]
         fn ErrorHandler_ctor() -> UniquePtr<ErrorHandler>;
-        #[doc = "Unlinks and checks if there is a raised exception."]
+        /// Unlinks and checks if there is a raised exception.
         #[cxx_name = "Destroy"]
         fn destroy(self: Pin<&mut ErrorHandler>);
-        #[doc = "Removes handler from the handlers list"]
+        /// Removes handler from the handlers list
         #[cxx_name = "Unlink"]
         fn unlink(self: Pin<&mut ErrorHandler>);
         #[doc = "Returns \"True\" if the caught exception has the same type or inherits from \"aType\""]
         #[cxx_name = "Catches"]
         fn catches(self: Pin<&mut ErrorHandler>, aType: &HandleStandardType) -> bool;
-        #[doc = "Returns label for jump"]
+        /// Returns label for jump
         #[cxx_name = "Label"]
         fn label(self: Pin<&mut ErrorHandler>) -> Pin<&mut Standard_JmpBuf>;
-        #[doc = "Returns the current Error."]
+        /// Returns the current Error.
         #[cxx_name = "Standard_ErrorHandler_Error"]
         fn ErrorHandler_error(self_: &ErrorHandler) -> UniquePtr<HandleStandardFailure>;
-        #[doc = "Returns the caught exception."]
+        /// Returns the caught exception.
         #[cxx_name = "Standard_ErrorHandler_LastCaughtError"]
         fn ErrorHandler_last_caught_error() -> UniquePtr<HandleStandardFailure>;
-        #[doc = "Test if the code is currently running in a try block"]
+        /// Test if the code is currently running in a try block
         #[cxx_name = "Standard_ErrorHandler_IsInTryBlock"]
         fn ErrorHandler_is_in_try_block() -> bool;
-        #[doc = " ======================== Standard_NumericError ========================"]
-        #[doc = "/// **Source:** `Standard_NumericError.hxx` - `Standard_NumericError`"]
+        /// ======================== Standard_NumericError ========================
+        /// /// **Source:** `Standard_NumericError.hxx` - `Standard_NumericError`
         #[cxx_name = "Standard_NumericError"]
         type NumericError;
-        #[doc = "/// **Source:** `Standard_NumericError.hxx` - `Standard_NumericError::Standard_NumericError()`"]
+        /// /// **Source:** `Standard_NumericError.hxx` - `Standard_NumericError::Standard_NumericError()`
         #[cxx_name = "Standard_NumericError_ctor"]
         fn NumericError_ctor() -> UniquePtr<NumericError>;
-        #[doc = "/// **Source:** `Standard_NumericError.hxx` - `Standard_NumericError::Standard_NumericError()`"]
+        /// /// **Source:** `Standard_NumericError.hxx` - `Standard_NumericError::Standard_NumericError()`
         #[cxx_name = "Standard_NumericError_ctor_charptr"]
         fn NumericError_ctor_charptr(theMessage: &str) -> UniquePtr<NumericError>;
-        #[doc = "/// **Source:** `Standard_NumericError.hxx` - `Standard_NumericError::Standard_NumericError()`"]
+        /// /// **Source:** `Standard_NumericError.hxx` - `Standard_NumericError::Standard_NumericError()`
         #[cxx_name = "Standard_NumericError_ctor_charptr2"]
         fn NumericError_ctor_charptr2(
             theMessage: &str,
@@ -1460,17 +1461,17 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStandardNumericError>;
         #[cxx_name = "Standard_NumericError_get_type_name"]
         fn NumericError_get_type_name() -> String;
-        #[doc = " ======================== Standard_NullObject ========================"]
-        #[doc = "/// **Source:** `Standard_NullObject.hxx` - `Standard_NullObject`"]
+        /// ======================== Standard_NullObject ========================
+        /// /// **Source:** `Standard_NullObject.hxx` - `Standard_NullObject`
         #[cxx_name = "Standard_NullObject"]
         type NullObject;
-        #[doc = "/// **Source:** `Standard_NullObject.hxx` - `Standard_NullObject::Standard_NullObject()`"]
+        /// /// **Source:** `Standard_NullObject.hxx` - `Standard_NullObject::Standard_NullObject()`
         #[cxx_name = "Standard_NullObject_ctor"]
         fn NullObject_ctor() -> UniquePtr<NullObject>;
-        #[doc = "/// **Source:** `Standard_NullObject.hxx` - `Standard_NullObject::Standard_NullObject()`"]
+        /// /// **Source:** `Standard_NullObject.hxx` - `Standard_NullObject::Standard_NullObject()`
         #[cxx_name = "Standard_NullObject_ctor_charptr"]
         fn NullObject_ctor_charptr(theMessage: &str) -> UniquePtr<NullObject>;
-        #[doc = "/// **Source:** `Standard_NullObject.hxx` - `Standard_NullObject::Standard_NullObject()`"]
+        /// /// **Source:** `Standard_NullObject.hxx` - `Standard_NullObject::Standard_NullObject()`
         #[cxx_name = "Standard_NullObject_ctor_charptr2"]
         fn NullObject_ctor_charptr2(theMessage: &str, theStackTrace: &str)
             -> UniquePtr<NullObject>;
@@ -1490,17 +1491,17 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStandardNullObject>;
         #[cxx_name = "Standard_NullObject_get_type_name"]
         fn NullObject_get_type_name() -> String;
-        #[doc = " ======================== Standard_ConstructionError ========================"]
-        #[doc = "/// **Source:** `Standard_ConstructionError.hxx` - `Standard_ConstructionError`"]
+        /// ======================== Standard_ConstructionError ========================
+        /// /// **Source:** `Standard_ConstructionError.hxx` - `Standard_ConstructionError`
         #[cxx_name = "Standard_ConstructionError"]
         type ConstructionError;
-        #[doc = "/// **Source:** `Standard_ConstructionError.hxx` - `Standard_ConstructionError::Standard_ConstructionError()`"]
+        /// /// **Source:** `Standard_ConstructionError.hxx` - `Standard_ConstructionError::Standard_ConstructionError()`
         #[cxx_name = "Standard_ConstructionError_ctor"]
         fn ConstructionError_ctor() -> UniquePtr<ConstructionError>;
-        #[doc = "/// **Source:** `Standard_ConstructionError.hxx` - `Standard_ConstructionError::Standard_ConstructionError()`"]
+        /// /// **Source:** `Standard_ConstructionError.hxx` - `Standard_ConstructionError::Standard_ConstructionError()`
         #[cxx_name = "Standard_ConstructionError_ctor_charptr"]
         fn ConstructionError_ctor_charptr(theMessage: &str) -> UniquePtr<ConstructionError>;
-        #[doc = "/// **Source:** `Standard_ConstructionError.hxx` - `Standard_ConstructionError::Standard_ConstructionError()`"]
+        /// /// **Source:** `Standard_ConstructionError.hxx` - `Standard_ConstructionError::Standard_ConstructionError()`
         #[cxx_name = "Standard_ConstructionError_ctor_charptr2"]
         fn ConstructionError_ctor_charptr2(
             theMessage: &str,
@@ -1523,27 +1524,29 @@ pub(crate) mod ffi {
         ) -> UniquePtr<HandleStandardConstructionError>;
         #[cxx_name = "Standard_ConstructionError_get_type_name"]
         fn ConstructionError_get_type_name() -> String;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "BaseAllocator from n_collection module"]
+        /// BaseAllocator from n_collection module
         type NCollection_BaseAllocator = crate::n_collection::ffi::BaseAllocator;
-        #[doc = "BaseList from n_collection module"]
+        /// BaseList from n_collection module
         type NCollection_BaseList = crate::n_collection::ffi::BaseList;
-        #[doc = "BasePointerVector from n_collection module"]
+        /// BasePointerVector from n_collection module
         type NCollection_BasePointerVector = crate::n_collection::ffi::BasePointerVector;
-        #[doc = "Buffer from n_collection module"]
+        /// Buffer from n_collection module
         type NCollection_Buffer = crate::n_collection::ffi::Buffer;
-        #[doc = "IncAllocator from n_collection module"]
+        /// IncAllocator from n_collection module
         type NCollection_IncAllocator = crate::n_collection::ffi::IncAllocator;
-        #[doc = "AsciiString from t_collection module"]
+        /// AsciiString from t_collection module
         type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
-        #[doc = "ExtendedString from t_collection module"]
+        /// ExtendedString from t_collection module
         type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
-        #[doc = "HAsciiString from t_collection module"]
+        /// HAsciiString from t_collection module
         type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
-        #[doc = "HExtendedString from t_collection module"]
+        /// HExtendedString from t_collection module
         type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
+
         // ========================
         // Referenced types (opaque)
         // ========================

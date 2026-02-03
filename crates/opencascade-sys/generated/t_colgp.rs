@@ -44,7 +44,7 @@ impl HArray1OfPnt {
         ffi::HArray1OfPnt_ctor_array1ofpnt(theOther)
     }
 
-    #[doc = "Wrap TColgp_HArray1OfPnt in a Handle (reference-counted smart pointer)"]
+    /// Wrap TColgp_HArray1OfPnt in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleTColgpHArray1OfPnt> {
         ffi::HArray1OfPnt_to_handle(obj)
     }
@@ -84,7 +84,7 @@ impl HArray1OfPnt2d {
         ffi::HArray1OfPnt2d_ctor_array1ofpnt2d(theOther)
     }
 
-    #[doc = "Wrap TColgp_HArray1OfPnt2d in a Handle (reference-counted smart pointer)"]
+    /// Wrap TColgp_HArray1OfPnt2d in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleTColgpHArray1OfPnt2d> {
         ffi::HArray1OfPnt2d_to_handle(obj)
     }
@@ -124,7 +124,7 @@ impl HArray1OfVec {
         ffi::HArray1OfVec_ctor_array1ofvec(theOther)
     }
 
-    #[doc = "Wrap TColgp_HArray1OfVec in a Handle (reference-counted smart pointer)"]
+    /// Wrap TColgp_HArray1OfVec in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleTColgpHArray1OfVec> {
         ffi::HArray1OfVec_to_handle(obj)
     }
@@ -158,7 +158,7 @@ impl HArray2OfPnt {
         ffi::HArray2OfPnt_ctor_array2ofpnt(theOther)
     }
 
-    #[doc = "Wrap TColgp_HArray2OfPnt in a Handle (reference-counted smart pointer)"]
+    /// Wrap TColgp_HArray2OfPnt in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleTColgpHArray2OfPnt> {
         ffi::HArray2OfPnt_to_handle(obj)
     }
@@ -171,27 +171,28 @@ impl HArray2OfPnt {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_t_colgp.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== TColgp_HArray1OfPnt ========================"]
-        #[doc = "/// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt`"]
+        /// ======================== TColgp_HArray1OfPnt ========================
+        /// /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt`
         #[cxx_name = "TColgp_HArray1OfPnt"]
         type HArray1OfPnt;
-        #[doc = "/// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`"]
+        /// /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
         #[cxx_name = "TColgp_HArray1OfPnt_ctor"]
         fn HArray1OfPnt_ctor() -> UniquePtr<HArray1OfPnt>;
-        #[doc = "/// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`"]
+        /// /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
         #[cxx_name = "TColgp_HArray1OfPnt_ctor_int2"]
         fn HArray1OfPnt_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfPnt>;
-        #[doc = "/// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`"]
+        /// /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
         #[cxx_name = "TColgp_HArray1OfPnt_ctor_int2_pnt"]
         fn HArray1OfPnt_ctor_int2_pnt(
             theLower: i32,
             theUpper: i32,
             theValue: &gp_Pnt,
         ) -> UniquePtr<HArray1OfPnt>;
-        #[doc = "/// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`"]
+        /// /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
         #[cxx_name = "TColgp_HArray1OfPnt_ctor_pnt_int2_bool"]
         fn HArray1OfPnt_ctor_pnt_int2_bool(
             theBegin: &gp_Pnt,
@@ -199,7 +200,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfPnt>;
-        #[doc = "/// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`"]
+        /// /// **Source:** `TColgp_HArray1OfPnt.hxx` - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
         #[cxx_name = "TColgp_HArray1OfPnt_ctor_array1ofpnt"]
         fn HArray1OfPnt_ctor_array1ofpnt(theOther: &TColgp_Array1OfPnt) -> UniquePtr<HArray1OfPnt>;
         #[cxx_name = "Array1"]
@@ -210,29 +211,29 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HArray1OfPnt) -> &HandleStandardType;
         #[cxx_name = "TColgp_HArray1OfPnt_get_type_name"]
         fn HArray1OfPnt_get_type_name() -> String;
-        #[doc = "Wrap TColgp_HArray1OfPnt in a Handle (reference-counted smart pointer)"]
+        /// Wrap TColgp_HArray1OfPnt in a Handle (reference-counted smart pointer)
         #[cxx_name = "TColgp_HArray1OfPnt_to_handle"]
         fn HArray1OfPnt_to_handle(
             obj: UniquePtr<HArray1OfPnt>,
         ) -> UniquePtr<HandleTColgpHArray1OfPnt>;
-        #[doc = " ======================== TColgp_HArray1OfPnt2d ========================"]
-        #[doc = "/// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d`"]
+        /// ======================== TColgp_HArray1OfPnt2d ========================
+        /// /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d`
         #[cxx_name = "TColgp_HArray1OfPnt2d"]
         type HArray1OfPnt2d;
-        #[doc = "/// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`"]
+        /// /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
         #[cxx_name = "TColgp_HArray1OfPnt2d_ctor"]
         fn HArray1OfPnt2d_ctor() -> UniquePtr<HArray1OfPnt2d>;
-        #[doc = "/// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`"]
+        /// /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
         #[cxx_name = "TColgp_HArray1OfPnt2d_ctor_int2"]
         fn HArray1OfPnt2d_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfPnt2d>;
-        #[doc = "/// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`"]
+        /// /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
         #[cxx_name = "TColgp_HArray1OfPnt2d_ctor_int2_pnt2d"]
         fn HArray1OfPnt2d_ctor_int2_pnt2d(
             theLower: i32,
             theUpper: i32,
             theValue: &gp_Pnt2d,
         ) -> UniquePtr<HArray1OfPnt2d>;
-        #[doc = "/// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`"]
+        /// /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
         #[cxx_name = "TColgp_HArray1OfPnt2d_ctor_pnt2d_int2_bool"]
         fn HArray1OfPnt2d_ctor_pnt2d_int2_bool(
             theBegin: &gp_Pnt2d,
@@ -240,7 +241,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfPnt2d>;
-        #[doc = "/// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`"]
+        /// /// **Source:** `TColgp_HArray1OfPnt2d.hxx` - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
         #[cxx_name = "TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d"]
         fn HArray1OfPnt2d_ctor_array1ofpnt2d(
             theOther: &TColgp_Array1OfPnt2d,
@@ -253,29 +254,29 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HArray1OfPnt2d) -> &HandleStandardType;
         #[cxx_name = "TColgp_HArray1OfPnt2d_get_type_name"]
         fn HArray1OfPnt2d_get_type_name() -> String;
-        #[doc = "Wrap TColgp_HArray1OfPnt2d in a Handle (reference-counted smart pointer)"]
+        /// Wrap TColgp_HArray1OfPnt2d in a Handle (reference-counted smart pointer)
         #[cxx_name = "TColgp_HArray1OfPnt2d_to_handle"]
         fn HArray1OfPnt2d_to_handle(
             obj: UniquePtr<HArray1OfPnt2d>,
         ) -> UniquePtr<HandleTColgpHArray1OfPnt2d>;
-        #[doc = " ======================== TColgp_HArray1OfVec ========================"]
-        #[doc = "/// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec`"]
+        /// ======================== TColgp_HArray1OfVec ========================
+        /// /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec`
         #[cxx_name = "TColgp_HArray1OfVec"]
         type HArray1OfVec;
-        #[doc = "/// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`"]
+        /// /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
         #[cxx_name = "TColgp_HArray1OfVec_ctor"]
         fn HArray1OfVec_ctor() -> UniquePtr<HArray1OfVec>;
-        #[doc = "/// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`"]
+        /// /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
         #[cxx_name = "TColgp_HArray1OfVec_ctor_int2"]
         fn HArray1OfVec_ctor_int2(theLower: i32, theUpper: i32) -> UniquePtr<HArray1OfVec>;
-        #[doc = "/// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`"]
+        /// /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
         #[cxx_name = "TColgp_HArray1OfVec_ctor_int2_vec"]
         fn HArray1OfVec_ctor_int2_vec(
             theLower: i32,
             theUpper: i32,
             theValue: &gp_Vec,
         ) -> UniquePtr<HArray1OfVec>;
-        #[doc = "/// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`"]
+        /// /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
         #[cxx_name = "TColgp_HArray1OfVec_ctor_vec_int2_bool"]
         fn HArray1OfVec_ctor_vec_int2_bool(
             theBegin: &gp_Vec,
@@ -283,7 +284,7 @@ pub(crate) mod ffi {
             theUpper: i32,
             arg3: bool,
         ) -> UniquePtr<HArray1OfVec>;
-        #[doc = "/// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`"]
+        /// /// **Source:** `TColgp_HArray1OfVec.hxx` - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
         #[cxx_name = "TColgp_HArray1OfVec_ctor_array1ofvec"]
         fn HArray1OfVec_ctor_array1ofvec(theOther: &TColgp_Array1OfVec) -> UniquePtr<HArray1OfVec>;
         #[cxx_name = "Array1"]
@@ -294,16 +295,16 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HArray1OfVec) -> &HandleStandardType;
         #[cxx_name = "TColgp_HArray1OfVec_get_type_name"]
         fn HArray1OfVec_get_type_name() -> String;
-        #[doc = "Wrap TColgp_HArray1OfVec in a Handle (reference-counted smart pointer)"]
+        /// Wrap TColgp_HArray1OfVec in a Handle (reference-counted smart pointer)
         #[cxx_name = "TColgp_HArray1OfVec_to_handle"]
         fn HArray1OfVec_to_handle(
             obj: UniquePtr<HArray1OfVec>,
         ) -> UniquePtr<HandleTColgpHArray1OfVec>;
-        #[doc = " ======================== TColgp_HArray2OfPnt ========================"]
-        #[doc = "/// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt`"]
+        /// ======================== TColgp_HArray2OfPnt ========================
+        /// /// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt`
         #[cxx_name = "TColgp_HArray2OfPnt"]
         type HArray2OfPnt;
-        #[doc = "/// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt::TColgp_HArray2OfPnt()`"]
+        /// /// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt::TColgp_HArray2OfPnt()`
         #[cxx_name = "TColgp_HArray2OfPnt_ctor_int4"]
         fn HArray2OfPnt_ctor_int4(
             theRowLow: i32,
@@ -311,7 +312,7 @@ pub(crate) mod ffi {
             theColLow: i32,
             theColUpp: i32,
         ) -> UniquePtr<HArray2OfPnt>;
-        #[doc = "/// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt::TColgp_HArray2OfPnt()`"]
+        /// /// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt::TColgp_HArray2OfPnt()`
         #[cxx_name = "TColgp_HArray2OfPnt_ctor_int4_pnt"]
         fn HArray2OfPnt_ctor_int4_pnt(
             theRowLow: i32,
@@ -320,7 +321,7 @@ pub(crate) mod ffi {
             theColUpp: i32,
             theValue: &gp_Pnt,
         ) -> UniquePtr<HArray2OfPnt>;
-        #[doc = "/// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt::TColgp_HArray2OfPnt()`"]
+        /// /// **Source:** `TColgp_HArray2OfPnt.hxx` - `TColgp_HArray2OfPnt::TColgp_HArray2OfPnt()`
         #[cxx_name = "TColgp_HArray2OfPnt_ctor_array2ofpnt"]
         fn HArray2OfPnt_ctor_array2ofpnt(theOther: &TColgp_Array2OfPnt) -> UniquePtr<HArray2OfPnt>;
         #[cxx_name = "Array2"]
@@ -331,132 +332,134 @@ pub(crate) mod ffi {
         fn dynamic_type(self: &HArray2OfPnt) -> &HandleStandardType;
         #[cxx_name = "TColgp_HArray2OfPnt_get_type_name"]
         fn HArray2OfPnt_get_type_name() -> String;
-        #[doc = "Wrap TColgp_HArray2OfPnt in a Handle (reference-counted smart pointer)"]
+        /// Wrap TColgp_HArray2OfPnt in a Handle (reference-counted smart pointer)
         #[cxx_name = "TColgp_HArray2OfPnt_to_handle"]
         fn HArray2OfPnt_to_handle(
             obj: UniquePtr<HArray2OfPnt>,
         ) -> UniquePtr<HandleTColgpHArray2OfPnt>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
+
         // ========================
         // Referenced types (opaque)
         // ========================

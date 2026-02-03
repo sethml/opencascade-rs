@@ -13,12 +13,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Model;
 impl Model {
-    #[doc = "Upcast to IMeshData_Shape"]
+    /// Upcast to IMeshData_Shape
     pub fn as_shape(&self) -> &Shape {
         ffi::model_as_shape(self)
     }
 
-    #[doc = "Upcast to IMeshData_Shape (mutable)"]
+    /// Upcast to IMeshData_Shape (mutable)
     pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
         ffi::model_as_shape_mut(self)
     }
@@ -29,7 +29,7 @@ impl Model {
 }
 pub use ffi::Shape;
 impl Shape {
-    #[doc = "Wrap IMeshData_Shape in a Handle (reference-counted smart pointer)"]
+    /// Wrap IMeshData_Shape in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleIMeshDataShape> {
         ffi::Shape_to_handle(obj)
     }
@@ -42,122 +42,125 @@ impl Shape {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_i_mesh_data.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== IMeshData_Model ========================"]
-        #[doc = "/// **Source:** `IMeshData_Model.hxx` - `IMeshData_Model`"]
-        #[doc = ""]
-        #[doc = "Interface class representing discrete model of a shape."]
+        /// ======================== IMeshData_Model ========================
+        /// /// **Source:** `IMeshData_Model.hxx` - `IMeshData_Model`
+        ///
+        /// Interface class representing discrete model of a shape.
         #[cxx_name = "IMeshData_Model"]
         type Model;
-        #[doc = "Returns maximum size of shape model."]
+        /// Returns maximum size of shape model.
         #[cxx_name = "GetMaxSize"]
         fn get_max_size(self: &Model) -> f64;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Model) -> &HandleStandardType;
-        #[doc = "@name discrete faces Returns number of faces in discrete model."]
+        /// @name discrete faces Returns number of faces in discrete model.
         #[cxx_name = "FacesNb"]
         fn faces_nb(self: &Model) -> i32;
-        #[doc = "@name discrete edges Returns number of edges in discrete model."]
+        /// @name discrete edges Returns number of edges in discrete model.
         #[cxx_name = "EdgesNb"]
         fn edges_nb(self: &Model) -> i32;
         #[cxx_name = "IMeshData_Model_get_type_name"]
         fn Model_get_type_name() -> String;
-        #[doc = "Upcast IMeshData_Model to IMeshData_Shape"]
+        /// Upcast IMeshData_Model to IMeshData_Shape
         #[cxx_name = "IMeshData_Model_as_IMeshData_Shape"]
         fn model_as_shape(self_: &Model) -> &Shape;
-        #[doc = "Upcast IMeshData_Model to IMeshData_Shape (mutable)"]
+        /// Upcast IMeshData_Model to IMeshData_Shape (mutable)
         #[cxx_name = "IMeshData_Model_as_IMeshData_Shape_mut"]
         fn model_as_shape_mut(self_: Pin<&mut Model>) -> Pin<&mut Shape>;
-        #[doc = " ======================== IMeshData_Shape ========================"]
-        #[doc = "/// **Source:** `IMeshData_Shape.hxx` - `IMeshData_Shape`"]
-        #[doc = ""]
-        #[doc = "Interface class representing model with associated TopoDS_Shape. Intended for inheritance by structures and algorithms keeping reference TopoDS_Shape."]
+        /// ======================== IMeshData_Shape ========================
+        /// /// **Source:** `IMeshData_Shape.hxx` - `IMeshData_Shape`
+        ///
+        /// Interface class representing model with associated TopoDS_Shape. Intended for inheritance by structures and algorithms keeping reference TopoDS_Shape.
         #[cxx_name = "IMeshData_Shape"]
         type Shape;
-        #[doc = "Assigns shape to discrete shape."]
+        /// Assigns shape to discrete shape.
         #[cxx_name = "SetShape"]
         fn set_shape(self: Pin<&mut Shape>, theShape: &TopoDS_Shape);
-        #[doc = "Returns shape assigned to discrete shape."]
+        /// Returns shape assigned to discrete shape.
         #[cxx_name = "GetShape"]
         fn get_shape(self: &Shape) -> &TopoDS_Shape;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Shape) -> &HandleStandardType;
         #[cxx_name = "IMeshData_Shape_get_type_name"]
         fn Shape_get_type_name() -> String;
-        #[doc = "Wrap IMeshData_Shape in a Handle (reference-counted smart pointer)"]
+        /// Wrap IMeshData_Shape in a Handle (reference-counted smart pointer)
         #[cxx_name = "IMeshData_Shape_to_handle"]
         fn Shape_to_handle(obj: UniquePtr<Shape>) -> UniquePtr<HandleIMeshDataShape>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+
         // ========================
         // Referenced types (opaque)
         // ========================

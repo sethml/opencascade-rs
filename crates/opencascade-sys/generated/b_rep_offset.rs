@@ -26,12 +26,12 @@ impl MakeOffset {
 }
 pub use ffi::MakeSimpleOffset;
 impl MakeSimpleOffset {
-    #[doc = "Constructor. Does nothing."]
+    /// Constructor. Does nothing.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::MakeSimpleOffset_ctor()
     }
 
-    #[doc = "Constructor."]
+    /// Constructor.
     pub fn new_shape_real(
         theInputShape: &ffi::TopoDS_Shape,
         theOffsetValue: f64,
@@ -39,34 +39,34 @@ impl MakeSimpleOffset {
         ffi::MakeSimpleOffset_ctor_shape_real(theInputShape, theOffsetValue)
     }
 
-    #[doc = "Gets error message."]
+    /// Gets error message.
     pub fn get_error_message(&self) -> cxx::UniquePtr<ffi::TCollection_AsciiString> {
         ffi::MakeSimpleOffset_get_error_message(self)
     }
 
-    #[doc = "Returns result shape for the given one (if exists)."]
+    /// Returns result shape for the given one (if exists).
     pub fn generated(&self, theShape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::MakeSimpleOffset_generated(self, theShape)
     }
 
-    #[doc = "Returns modified shape for the given one (if exists)."]
+    /// Returns modified shape for the given one (if exists).
     pub fn modified(&self, theShape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::MakeSimpleOffset_modified(self, theShape)
     }
 }
 pub use ffi::Analyse;
 impl Analyse {
-    #[doc = "@name Constructors Empty c-tor"]
+    /// @name Constructors Empty c-tor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Analyse_ctor()
     }
 
-    #[doc = "C-tor performing the job inside"]
+    /// C-tor performing the job inside
     pub fn new_shape_real(theS: &ffi::TopoDS_Shape, theAngle: f64) -> cxx::UniquePtr<Self> {
         ffi::Analyse_ctor_shape_real(theS, theAngle)
     }
 
-    #[doc = "Returns the new face constructed for the edge connecting the two tangent faces having different offset values"]
+    /// Returns the new face constructed for the edge connecting the two tangent faces having different offset values
     pub fn generated(&self, theS: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::Analyse_generated(self, theS)
     }
@@ -97,25 +97,26 @@ impl Interval {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_offset.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== BRepOffset_MakeOffset ========================"]
-        #[doc = "/// **Source:** `BRepOffset_MakeOffset.hxx` - `BRepOffset_MakeOffset`"]
+        /// ======================== BRepOffset_MakeOffset ========================
+        /// /// **Source:** `BRepOffset_MakeOffset.hxx` - `BRepOffset_MakeOffset`
         #[cxx_name = "BRepOffset_MakeOffset"]
         type MakeOffset;
-        #[doc = "/// **Source:** `BRepOffset_MakeOffset.hxx` - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`"]
+        /// /// **Source:** `BRepOffset_MakeOffset.hxx` - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
         #[cxx_name = "BRepOffset_MakeOffset_ctor"]
         fn MakeOffset_ctor() -> UniquePtr<MakeOffset>;
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut MakeOffset>);
-        #[doc = "Changes the flag allowing the linearization"]
+        /// Changes the flag allowing the linearization
         #[cxx_name = "AllowLinearization"]
         fn allow_linearization(self: Pin<&mut MakeOffset>, theIsAllowed: bool);
-        #[doc = "Add Closing Faces,  <F>  has to be  in  the initial shape S."]
+        /// Add Closing Faces,  <F>  has to be  in  the initial shape S.
         #[cxx_name = "AddFace"]
         fn add_face(self: Pin<&mut MakeOffset>, F: &TopoDS_Face);
-        #[doc = "set the offset <Off> on the Face <F>"]
+        /// set the offset <Off> on the Face <F>
         #[cxx_name = "SetOffsetOnFace"]
         fn set_offset_on_face(self: Pin<&mut MakeOffset>, F: &TopoDS_Face, Off: f64);
         #[cxx_name = "MakeOffsetShape"]
@@ -130,120 +131,120 @@ pub(crate) mod ffi {
         fn shape(self: &MakeOffset) -> &TopoDS_Shape;
         #[cxx_name = "InitShape"]
         fn init_shape(self: &MakeOffset) -> &TopoDS_Shape;
-        #[doc = "Returns <Image> containing links between initials shapes and offset faces."]
+        /// Returns <Image> containing links between initials shapes and offset faces.
         #[cxx_name = "OffsetFacesFromShapes"]
         fn offset_faces_from_shapes(self: &MakeOffset) -> &BRepAlgo_Image;
-        #[doc = "Returns <Image> containing links between initials shapes and offset edges."]
+        /// Returns <Image> containing links between initials shapes and offset edges.
         #[cxx_name = "OffsetEdgesFromShapes"]
         fn offset_edges_from_shapes(self: &MakeOffset) -> &BRepAlgo_Image;
-        #[doc = "Returns the list of closing faces stores by AddFace"]
+        /// Returns the list of closing faces stores by AddFace
         #[cxx_name = "ClosingFaces"]
         fn closing_faces(self: &MakeOffset) -> &TopTools_IndexedMapOfShape;
-        #[doc = "Makes pre analysis of possibility offset perform. Use method Error() to get more information. Finds first error. List of checks: 1) Check for existence object with non-null offset. 2) Check for connectivity in offset shell. 3) Check continuity of input surfaces. 4) Check for normals existence on grid. @return True if possible make computations and false otherwise."]
+        /// Makes pre analysis of possibility offset perform. Use method Error() to get more information. Finds first error. List of checks: 1) Check for existence object with non-null offset. 2) Check for connectivity in offset shell. 3) Check continuity of input surfaces. 4) Check for normals existence on grid. @return True if possible make computations and false otherwise.
         #[cxx_name = "CheckInputData"]
         fn check_input_data(self: Pin<&mut MakeOffset>, theRange: &Message_ProgressRange) -> bool;
-        #[doc = "Return bad shape, which obtained in CheckInputData."]
+        /// Return bad shape, which obtained in CheckInputData.
         #[cxx_name = "GetBadShape"]
         fn get_bad_shape(self: &MakeOffset) -> &TopoDS_Shape;
-        #[doc = "@name History methods Returns the  list of shapes generated from the shape <S>."]
+        /// @name History methods Returns the  list of shapes generated from the shape <S>.
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut MakeOffset>, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        #[doc = "Returns the list of shapes modified from the shape <S>."]
+        /// Returns the list of shapes modified from the shape <S>.
         #[cxx_name = "Modified"]
         fn modified(self: Pin<&mut MakeOffset>, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        #[doc = "Returns true if the shape S has been deleted."]
+        /// Returns true if the shape S has been deleted.
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut MakeOffset>, S: &TopoDS_Shape) -> bool;
-        #[doc = " ======================== BRepOffset_MakeSimpleOffset ========================"]
-        #[doc = "/// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset`"]
-        #[doc = ""]
-        #[doc = "Limitations: According to the algorithm nature result depends on the smoothness of input data. Smooth (G1-continuity) input shape will lead to the good result. The possible drawback of the simple algorithm is that it leads, in general case, to tolerance increasing. The tolerances have to grow in order to cover the gaps between the neighbor faces in the output. It should be noted that the actual tolerance growth depends on the offset distance and the quality of joints between the input faces. Anyway the good input shell (smooth connections between adjacent faces) will lead to good result."]
+        /// ======================== BRepOffset_MakeSimpleOffset ========================
+        /// /// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset`
+        ///
+        /// Limitations: According to the algorithm nature result depends on the smoothness of input data. Smooth (G1-continuity) input shape will lead to the good result. The possible drawback of the simple algorithm is that it leads, in general case, to tolerance increasing. The tolerances have to grow in order to cover the gaps between the neighbor faces in the output. It should be noted that the actual tolerance growth depends on the offset distance and the quality of joints between the input faces. Anyway the good input shell (smooth connections between adjacent faces) will lead to good result.
         #[cxx_name = "BRepOffset_MakeSimpleOffset"]
         type MakeSimpleOffset;
-        #[doc = "/// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset::BRepOffset_MakeSimpleOffset()`"]
-        #[doc = ""]
-        #[doc = "Constructor. Does nothing."]
+        /// /// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset::BRepOffset_MakeSimpleOffset()`
+        ///
+        /// Constructor. Does nothing.
         #[cxx_name = "BRepOffset_MakeSimpleOffset_ctor"]
         fn MakeSimpleOffset_ctor() -> UniquePtr<MakeSimpleOffset>;
-        #[doc = "/// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset::BRepOffset_MakeSimpleOffset()`"]
-        #[doc = ""]
-        #[doc = "Constructor."]
+        /// /// **Source:** `BRepOffset_MakeSimpleOffset.hxx` - `BRepOffset_MakeSimpleOffset::BRepOffset_MakeSimpleOffset()`
+        ///
+        /// Constructor.
         #[cxx_name = "BRepOffset_MakeSimpleOffset_ctor_shape_real"]
         fn MakeSimpleOffset_ctor_shape_real(
             theInputShape: &TopoDS_Shape,
             theOffsetValue: f64,
         ) -> UniquePtr<MakeSimpleOffset>;
-        #[doc = "Initialise shape for modifications."]
+        /// Initialise shape for modifications.
         #[cxx_name = "Initialize"]
         fn initialize(
             self: Pin<&mut MakeSimpleOffset>,
             theInputShape: &TopoDS_Shape,
             theOffsetValue: f64,
         );
-        #[doc = "Computes offset shape."]
+        /// Computes offset shape.
         #[cxx_name = "Perform"]
         fn perform(self: Pin<&mut MakeSimpleOffset>);
-        #[doc = "Gets solid building flag."]
+        /// Gets solid building flag.
         #[cxx_name = "GetBuildSolidFlag"]
         fn get_build_solid_flag(self: &MakeSimpleOffset) -> bool;
-        #[doc = "Sets solid building flag."]
+        /// Sets solid building flag.
         #[cxx_name = "SetBuildSolidFlag"]
         fn set_build_solid_flag(self: Pin<&mut MakeSimpleOffset>, theBuildFlag: bool);
-        #[doc = "Gets offset value."]
+        /// Gets offset value.
         #[cxx_name = "GetOffsetValue"]
         fn get_offset_value(self: &MakeSimpleOffset) -> f64;
-        #[doc = "Sets offset value."]
+        /// Sets offset value.
         #[cxx_name = "SetOffsetValue"]
         fn set_offset_value(self: Pin<&mut MakeSimpleOffset>, theOffsetValue: f64);
-        #[doc = "Gets tolerance (used for handling singularities)."]
+        /// Gets tolerance (used for handling singularities).
         #[cxx_name = "GetTolerance"]
         fn get_tolerance(self: &MakeSimpleOffset) -> f64;
-        #[doc = "Sets tolerance (used for handling singularities)."]
+        /// Sets tolerance (used for handling singularities).
         #[cxx_name = "SetTolerance"]
         fn set_tolerance(self: Pin<&mut MakeSimpleOffset>, theValue: f64);
-        #[doc = "Gets done state."]
+        /// Gets done state.
         #[cxx_name = "IsDone"]
         fn is_done(self: &MakeSimpleOffset) -> bool;
-        #[doc = "Returns result shape."]
+        /// Returns result shape.
         #[cxx_name = "GetResultShape"]
         fn get_result_shape(self: &MakeSimpleOffset) -> &TopoDS_Shape;
-        #[doc = "Computes max safe offset value for the given tolerance."]
+        /// Computes max safe offset value for the given tolerance.
         #[cxx_name = "GetSafeOffset"]
         fn get_safe_offset(self: Pin<&mut MakeSimpleOffset>, theExpectedToler: f64) -> f64;
-        #[doc = "Gets error message."]
+        /// Gets error message.
         #[cxx_name = "BRepOffset_MakeSimpleOffset_GetErrorMessage"]
         fn MakeSimpleOffset_get_error_message(
             self_: &MakeSimpleOffset,
         ) -> UniquePtr<TCollection_AsciiString>;
-        #[doc = "Returns result shape for the given one (if exists)."]
+        /// Returns result shape for the given one (if exists).
         #[cxx_name = "BRepOffset_MakeSimpleOffset_Generated"]
         fn MakeSimpleOffset_generated(
             self_: &MakeSimpleOffset,
             theShape: &TopoDS_Shape,
         ) -> UniquePtr<TopoDS_Shape>;
-        #[doc = "Returns modified shape for the given one (if exists)."]
+        /// Returns modified shape for the given one (if exists).
         #[cxx_name = "BRepOffset_MakeSimpleOffset_Modified"]
         fn MakeSimpleOffset_modified(
             self_: &MakeSimpleOffset,
             theShape: &TopoDS_Shape,
         ) -> UniquePtr<TopoDS_Shape>;
-        #[doc = " ======================== BRepOffset_Analyse ========================"]
-        #[doc = "/// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse`"]
-        #[doc = ""]
-        #[doc = "Analyses the shape to find the parts of edges connecting the convex, concave or tangent faces."]
+        /// ======================== BRepOffset_Analyse ========================
+        /// /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse`
+        ///
+        /// Analyses the shape to find the parts of edges connecting the convex, concave or tangent faces.
         #[cxx_name = "BRepOffset_Analyse"]
         type Analyse;
-        #[doc = "/// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse::BRepOffset_Analyse()`"]
-        #[doc = ""]
-        #[doc = "@name Constructors Empty c-tor"]
+        /// /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse::BRepOffset_Analyse()`
+        ///
+        /// @name Constructors Empty c-tor
         #[cxx_name = "BRepOffset_Analyse_ctor"]
         fn Analyse_ctor() -> UniquePtr<Analyse>;
-        #[doc = "/// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse::BRepOffset_Analyse()`"]
-        #[doc = ""]
-        #[doc = "C-tor performing the job inside"]
+        /// /// **Source:** `BRepOffset_Analyse.hxx` - `BRepOffset_Analyse::BRepOffset_Analyse()`
+        ///
+        /// C-tor performing the job inside
         #[cxx_name = "BRepOffset_Analyse_ctor_shape_real"]
         fn Analyse_ctor_shape_real(theS: &TopoDS_Shape, theAngle: f64) -> UniquePtr<Analyse>;
-        #[doc = "@name Performing analysis Performs the analysis"]
+        /// @name Performing analysis Performs the analysis
         #[cxx_name = "Perform"]
         fn perform(
             self: Pin<&mut Analyse>,
@@ -251,13 +252,13 @@ pub(crate) mod ffi {
             theAngle: f64,
             theRange: &Message_ProgressRange,
         );
-        #[doc = "@name Results Returns status of the algorithm"]
+        /// @name Results Returns status of the algorithm
         #[cxx_name = "IsDone"]
         fn is_done(self: &Analyse) -> bool;
-        #[doc = "Returns the connectivity type of the edge"]
+        /// Returns the connectivity type of the edge
         #[cxx_name = "Type"]
         fn type_(self: &Analyse, theE: &TopoDS_Edge) -> &BRepOffset_ListOfInterval;
-        #[doc = "set in <Edges> all  the Edges of <Shape> which are tangent to <Edge> at the vertex <Vertex>."]
+        /// set in <Edges> all  the Edges of <Shape> which are tangent to <Edge> at the vertex <Vertex>.
         #[cxx_name = "TangentEdges"]
         fn tangent_edges(
             self: &Analyse,
@@ -265,41 +266,41 @@ pub(crate) mod ffi {
             theVertex: &TopoDS_Vertex,
             theEdges: Pin<&mut TopTools_ListOfShape>,
         );
-        #[doc = "Checks if the given shape has ancestors"]
+        /// Checks if the given shape has ancestors
         #[cxx_name = "HasAncestor"]
         fn has_ancestor(self: &Analyse, theS: &TopoDS_Shape) -> bool;
-        #[doc = "Returns ancestors for the shape"]
+        /// Returns ancestors for the shape
         #[cxx_name = "Ancestors"]
         fn ancestors(self: &Analyse, theS: &TopoDS_Shape) -> &TopTools_ListOfShape;
         #[cxx_name = "SetOffsetValue"]
         fn set_offset_value(self: Pin<&mut Analyse>, theOffset: f64);
-        #[doc = "Sets the face-offset data map to analyze tangential cases"]
+        /// Sets the face-offset data map to analyze tangential cases
         #[cxx_name = "SetFaceOffsetMap"]
         fn set_face_offset_map(self: Pin<&mut Analyse>, theMap: &TopTools_DataMapOfShapeReal);
-        #[doc = "Returns the new faces constructed between tangent faces having different offset values on the shape"]
+        /// Returns the new faces constructed between tangent faces having different offset values on the shape
         #[cxx_name = "NewFaces"]
         fn new_faces(self: &Analyse) -> &TopTools_ListOfShape;
-        #[doc = "Checks if the edge has generated a new face."]
+        /// Checks if the edge has generated a new face.
         #[cxx_name = "HasGenerated"]
         fn has_generated(self: &Analyse, theS: &TopoDS_Shape) -> bool;
-        #[doc = "Returns the replacement of the edge in the face. If no replacement exists, returns the edge"]
+        /// Returns the replacement of the edge in the face. If no replacement exists, returns the edge
         #[cxx_name = "EdgeReplacement"]
         fn edge_replacement(
             self: &Analyse,
             theFace: &TopoDS_Face,
             theEdge: &TopoDS_Edge,
         ) -> &TopoDS_Edge;
-        #[doc = "@name Clearing the content Clears the content of the algorithm"]
+        /// @name Clearing the content Clears the content of the algorithm
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Analyse>);
-        #[doc = "Returns the new face constructed for the edge connecting the two tangent faces having different offset values"]
+        /// Returns the new face constructed for the edge connecting the two tangent faces having different offset values
         #[cxx_name = "BRepOffset_Analyse_Generated"]
         fn Analyse_generated(self_: &Analyse, theS: &TopoDS_Shape) -> UniquePtr<TopoDS_Shape>;
-        #[doc = " ======================== BRepOffset_MakeLoops ========================"]
-        #[doc = "/// **Source:** `BRepOffset_MakeLoops.hxx` - `BRepOffset_MakeLoops`"]
+        /// ======================== BRepOffset_MakeLoops ========================
+        /// /// **Source:** `BRepOffset_MakeLoops.hxx` - `BRepOffset_MakeLoops`
         #[cxx_name = "BRepOffset_MakeLoops"]
         type MakeLoops;
-        #[doc = "/// **Source:** `BRepOffset_MakeLoops.hxx` - `BRepOffset_MakeLoops::BRepOffset_MakeLoops()`"]
+        /// /// **Source:** `BRepOffset_MakeLoops.hxx` - `BRepOffset_MakeLoops::BRepOffset_MakeLoops()`
         #[cxx_name = "BRepOffset_MakeLoops_ctor"]
         fn MakeLoops_ctor() -> UniquePtr<MakeLoops>;
         #[cxx_name = "Build"]
@@ -329,16 +330,16 @@ pub(crate) mod ffi {
             Image: Pin<&mut BRepAlgo_Image>,
             theRange: &Message_ProgressRange,
         );
-        #[doc = " ======================== BRepOffset_Offset ========================"]
-        #[doc = "/// **Source:** `BRepOffset_Offset.hxx` - `BRepOffset_Offset`"]
-        #[doc = ""]
-        #[doc = "This class compute elemenary offset surface. Evaluate the offset generated : 1 - from a face. 2 - from an edge. 3 - from a vertex."]
+        /// ======================== BRepOffset_Offset ========================
+        /// /// **Source:** `BRepOffset_Offset.hxx` - `BRepOffset_Offset`
+        ///
+        /// This class compute elemenary offset surface. Evaluate the offset generated : 1 - from a face. 2 - from an edge. 3 - from a vertex.
         #[cxx_name = "BRepOffset_Offset"]
         type Offset;
-        #[doc = "/// **Source:** `BRepOffset_Offset.hxx` - `BRepOffset_Offset::BRepOffset_Offset()`"]
+        /// /// **Source:** `BRepOffset_Offset.hxx` - `BRepOffset_Offset::BRepOffset_Offset()`
         #[cxx_name = "BRepOffset_Offset_ctor"]
         fn Offset_ctor() -> UniquePtr<Offset>;
-        #[doc = "Only used in Rolling Ball. Pipe on Free Boundary"]
+        /// Only used in Rolling Ball. Pipe on Free Boundary
         #[cxx_name = "Init"]
         fn init_edge_real(self: Pin<&mut Offset>, Edge: &TopoDS_Edge, Offset: f64);
         #[cxx_name = "InitialShape"]
@@ -347,11 +348,11 @@ pub(crate) mod ffi {
         fn face(self: &Offset) -> &TopoDS_Face;
         #[cxx_name = "BRepOffset_Offset_Generated"]
         fn Offset_generated(self_: &Offset, Shape: &TopoDS_Shape) -> UniquePtr<TopoDS_Shape>;
-        #[doc = " ======================== BRepOffset_Interval ========================"]
-        #[doc = "/// **Source:** `BRepOffset_Interval.hxx` - `BRepOffset_Interval`"]
+        /// ======================== BRepOffset_Interval ========================
+        /// /// **Source:** `BRepOffset_Interval.hxx` - `BRepOffset_Interval`
         #[cxx_name = "BRepOffset_Interval"]
         type Interval;
-        #[doc = "/// **Source:** `BRepOffset_Interval.hxx` - `BRepOffset_Interval::BRepOffset_Interval()`"]
+        /// /// **Source:** `BRepOffset_Interval.hxx` - `BRepOffset_Interval::BRepOffset_Interval()`
         #[cxx_name = "BRepOffset_Interval_ctor"]
         fn Interval_ctor() -> UniquePtr<Interval>;
         #[cxx_name = "First"]
@@ -362,95 +363,97 @@ pub(crate) mod ffi {
         fn first(self: &Interval) -> f64;
         #[cxx_name = "Last"]
         fn last(self: &Interval) -> f64;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Image from b_rep_algo module"]
+        /// Image from b_rep_algo module
         type BRepAlgo_Image = crate::b_rep_algo::ffi::Image;
-        #[doc = "CircSection from ch_fi_ds module"]
+        /// CircSection from ch_fi_ds module
         type ChFiDS_CircSection = crate::ch_fi_ds::ffi::CircSection;
-        #[doc = "CommonPoint from ch_fi_ds module"]
+        /// CommonPoint from ch_fi_ds module
         type ChFiDS_CommonPoint = crate::ch_fi_ds::ffi::CommonPoint;
-        #[doc = "ElSpine from ch_fi_ds module"]
+        /// ElSpine from ch_fi_ds module
         type ChFiDS_ElSpine = crate::ch_fi_ds::ffi::ElSpine;
-        #[doc = "FaceInterference from ch_fi_ds module"]
+        /// FaceInterference from ch_fi_ds module
         type ChFiDS_FaceInterference = crate::ch_fi_ds::ffi::FaceInterference;
-        #[doc = "HData from ch_fi_ds module"]
+        /// HData from ch_fi_ds module
         type ChFiDS_HData = crate::ch_fi_ds::ffi::HData;
-        #[doc = "Map from ch_fi_ds module"]
+        /// Map from ch_fi_ds module
         type ChFiDS_Map = crate::ch_fi_ds::ffi::Map;
-        #[doc = "Regul from ch_fi_ds module"]
+        /// Regul from ch_fi_ds module
         type ChFiDS_Regul = crate::ch_fi_ds::ffi::Regul;
-        #[doc = "SecHArray1 from ch_fi_ds module"]
+        /// SecHArray1 from ch_fi_ds module
         type ChFiDS_SecHArray1 = crate::ch_fi_ds::ffi::SecHArray1;
-        #[doc = "Stripe from ch_fi_ds module"]
+        /// Stripe from ch_fi_ds module
         type ChFiDS_Stripe = crate::ch_fi_ds::ffi::Stripe;
-        #[doc = "StripeMap from ch_fi_ds module"]
+        /// StripeMap from ch_fi_ds module
         type ChFiDS_StripeMap = crate::ch_fi_ds::ffi::StripeMap;
-        #[doc = "SurfData from ch_fi_ds module"]
+        /// SurfData from ch_fi_ds module
         type ChFiDS_SurfData = crate::ch_fi_ds::ffi::SurfData;
-        #[doc = "Message from message module"]
+        /// Message from message module
         type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
+        /// Alert from message module
         type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
+        /// AlertExtended from message module
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
+        /// Algorithm from message module
         type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
+        /// ExecStatus from message module
         type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
+        /// Level from message module
         type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
+        /// Messenger from message module
         type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
+        /// Msg from message module
         type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
+        /// Printer from message module
         type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
+        /// ProgressIndicator from message module
         type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
+        /// ProgressRange from message module
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
+        /// ProgressScope from message module
         type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
+        /// Report from message module
         type Message_Report = crate::message::ffi::Report;
-        #[doc = "AsciiString from t_collection module"]
+        /// AsciiString from t_collection module
         type TCollection_AsciiString = crate::t_collection::ffi::AsciiString;
-        #[doc = "ExtendedString from t_collection module"]
+        /// ExtendedString from t_collection module
         type TCollection_ExtendedString = crate::t_collection::ffi::ExtendedString;
-        #[doc = "HAsciiString from t_collection module"]
+        /// HAsciiString from t_collection module
         type TCollection_HAsciiString = crate::t_collection::ffi::HAsciiString;
-        #[doc = "HExtendedString from t_collection module"]
+        /// HExtendedString from t_collection module
         type TCollection_HExtendedString = crate::t_collection::ffi::HExtendedString;
-        #[doc = "HArray2OfShape from top_tools module"]
+        /// HArray2OfShape from top_tools module
         type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
+        /// HSequenceOfShape from top_tools module
         type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+
         // ========================
         // Referenced types (opaque)
         // ========================

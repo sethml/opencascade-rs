@@ -13,12 +13,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Tool2d;
 impl Tool2d {
-    #[doc = "Empty Constructor."]
+    /// Empty Constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Tool2d_ctor()
     }
 
-    #[doc = "Returns the Geometry of index <Index> in <theGeomElts>."]
+    /// Returns the Geometry of index <Index> in <theGeomElts>.
     pub fn geom_elt(&self, Index: i32) -> cxx::UniquePtr<ffi::HandleGeom2dGeometry> {
         ffi::Tool2d_geom_elt(self, Index)
     }
@@ -37,58 +37,59 @@ impl BiInt {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_mat2d.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== MAT2d_Tool2d ========================"]
-        #[doc = "/// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d`"]
-        #[doc = ""]
-        #[doc = "Set of the methods useful for the MAT's computation. Tool2d contains the geometry of the bisecting locus."]
+        /// ======================== MAT2d_Tool2d ========================
+        /// /// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d`
+        ///
+        /// Set of the methods useful for the MAT's computation. Tool2d contains the geometry of the bisecting locus.
         #[cxx_name = "MAT2d_Tool2d"]
         type Tool2d;
-        #[doc = "/// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d::MAT2d_Tool2d()`"]
-        #[doc = ""]
-        #[doc = "Empty Constructor."]
+        /// /// **Source:** `MAT2d_Tool2d.hxx` - `MAT2d_Tool2d::MAT2d_Tool2d()`
+        ///
+        /// Empty Constructor.
         #[cxx_name = "MAT2d_Tool2d_ctor"]
         fn Tool2d_ctor() -> UniquePtr<Tool2d>;
-        #[doc = "InitItems cuts the line in Items. this Items are the geometrics representations of the BasicElts from MAT."]
+        /// InitItems cuts the line in Items. this Items are the geometrics representations of the BasicElts from MAT.
         #[cxx_name = "InitItems"]
         fn init_items(self: Pin<&mut Tool2d>, aCircuit: &HandleMAT2dCircuit);
-        #[doc = "Returns the Number of Items ."]
+        /// Returns the Number of Items .
         #[cxx_name = "NumberOfItems"]
         fn number_of_items(self: &Tool2d) -> i32;
-        #[doc = "Returns tolerance to test the confusion of two points."]
+        /// Returns tolerance to test the confusion of two points.
         #[cxx_name = "ToleranceOfConfusion"]
         fn tolerance_of_confusion(self: &Tool2d) -> f64;
-        #[doc = "Creates the point at the origin of the bisector between anitem and the previous  item. dist is the distance from the FirstPoint to <anitem>. Returns the index of this point in <theGeomPnts>."]
+        /// Creates the point at the origin of the bisector between anitem and the previous  item. dist is the distance from the FirstPoint to <anitem>. Returns the index of this point in <theGeomPnts>.
         #[cxx_name = "FirstPoint"]
         fn first_point(self: Pin<&mut Tool2d>, anitem: i32, dist: &mut f64) -> i32;
-        #[doc = "Creates the Tangent at the end of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>"]
+        /// Creates the Tangent at the end of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>
         #[cxx_name = "TangentBefore"]
         fn tangent_before(self: Pin<&mut Tool2d>, anitem: i32, IsOpenResult: bool) -> i32;
-        #[doc = "Creates the Reversed Tangent at the origin of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>"]
+        /// Creates the Reversed Tangent at the origin of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>
         #[cxx_name = "TangentAfter"]
         fn tangent_after(self: Pin<&mut Tool2d>, anitem: i32, IsOpenResult: bool) -> i32;
-        #[doc = "Creates the Tangent at the end of the bisector defined by <bisector>. Returns the index of this vector in <theGeomVecs>"]
+        /// Creates the Tangent at the end of the bisector defined by <bisector>. Returns the index of this vector in <theGeomVecs>
         #[cxx_name = "Tangent"]
         fn tangent(self: Pin<&mut Tool2d>, bisector: i32) -> i32;
-        #[doc = "Creates the geometric bisector defined by <abisector>."]
+        /// Creates the geometric bisector defined by <abisector>.
         #[cxx_name = "CreateBisector"]
         fn create_bisector(self: Pin<&mut Tool2d>, abisector: &HandleMATBisector);
-        #[doc = "Trims the geometric bisector by the <firstparameter> of <abisector>. If the parameter is out of the bisector, Return FALSE. else Return True."]
+        /// Trims the geometric bisector by the <firstparameter> of <abisector>. If the parameter is out of the bisector, Return FALSE. else Return True.
         #[cxx_name = "TrimBisector"]
         fn trim_bisector_handlebisector(
             self: Pin<&mut Tool2d>,
             abisector: &HandleMATBisector,
         ) -> bool;
-        #[doc = "Trims the geometric bisector by the point of index <apoint> in <theGeomPnts>. If the point is out of the bisector, Return FALSE. else Return True."]
+        /// Trims the geometric bisector by the point of index <apoint> in <theGeomPnts>. If the point is out of the bisector, Return FALSE. else Return True.
         #[cxx_name = "TrimBisector"]
         fn trim_bisector_handlebisector_int(
             self: Pin<&mut Tool2d>,
             abisector: &HandleMATBisector,
             apoint: i32,
         ) -> bool;
-        #[doc = "Computes  the point  of  intersection between  the bisectors defined  by  <bisectorone>  and <bisectortwo> . If this point exists,  <intpnt> is its  index in <theGeomPnts> and Return the distance of the point from the bisector else Return <RealLast>."]
+        /// Computes  the point  of  intersection between  the bisectors defined  by  <bisectorone>  and <bisectortwo> . If this point exists,  <intpnt> is its  index in <theGeomPnts> and Return the distance of the point from the bisector else Return <RealLast>.
         #[cxx_name = "IntersectBisector"]
         fn intersect_bisector(
             self: Pin<&mut Tool2d>,
@@ -96,38 +97,38 @@ pub(crate) mod ffi {
             bisectortwo: &HandleMATBisector,
             intpnt: &mut i32,
         ) -> f64;
-        #[doc = "Returns the distance between the two points designed by their parameters on <abisector>."]
+        /// Returns the distance between the two points designed by their parameters on <abisector>.
         #[cxx_name = "Distance"]
         fn distance(self: &Tool2d, abisector: &HandleMATBisector, param1: f64, param2: f64) -> f64;
-        #[doc = "displays information about the bisector defined by <bisector>."]
+        /// displays information about the bisector defined by <bisector>.
         #[cxx_name = "Dump"]
         fn dump(self: &Tool2d, bisector: i32, erease: i32);
-        #[doc = "Returns the <Bisec> of index <Index> in <theGeomBisectors>."]
+        /// Returns the <Bisec> of index <Index> in <theGeomBisectors>.
         #[cxx_name = "GeomBis"]
         fn geom_bis(self: &Tool2d, Index: i32) -> &Bisector_Bisec;
-        #[doc = "Returns the point of index <Index> in the <theGeomPnts>."]
+        /// Returns the point of index <Index> in the <theGeomPnts>.
         #[cxx_name = "GeomPnt"]
         fn geom_pnt(self: &Tool2d, Index: i32) -> &gp_Pnt2d;
-        #[doc = "Returns the  vector  of index <Index> in the <theGeomVecs>."]
+        /// Returns the  vector  of index <Index> in the <theGeomVecs>.
         #[cxx_name = "GeomVec"]
         fn geom_vec(self: &Tool2d, Index: i32) -> &gp_Vec2d;
         #[cxx_name = "BisecFusion"]
         fn bisec_fusion(self: Pin<&mut Tool2d>, Index1: i32, Index2: i32);
-        #[doc = "Returns the <Bisec> of index <Index> in <theGeomBisectors>."]
+        /// Returns the <Bisec> of index <Index> in <theGeomBisectors>.
         #[cxx_name = "ChangeGeomBis"]
         fn change_geom_bis(self: Pin<&mut Tool2d>, Index: i32) -> Pin<&mut Bisector_Bisec>;
-        #[doc = "Returns the Geometry of index <Index> in <theGeomElts>."]
+        /// Returns the Geometry of index <Index> in <theGeomElts>.
         #[cxx_name = "MAT2d_Tool2d_GeomElt"]
         fn Tool2d_geom_elt(self_: &Tool2d, Index: i32) -> UniquePtr<HandleGeom2dGeometry>;
         #[cxx_name = "MAT2d_Tool2d_Circuit"]
         fn Tool2d_circuit(self_: &Tool2d) -> UniquePtr<HandleMAT2dCircuit>;
-        #[doc = " ======================== MAT2d_BiInt ========================"]
-        #[doc = "/// **Source:** `MAT2d_BiInt.hxx` - `MAT2d_BiInt`"]
-        #[doc = ""]
-        #[doc = "BiInt is a set of two integers."]
+        /// ======================== MAT2d_BiInt ========================
+        /// /// **Source:** `MAT2d_BiInt.hxx` - `MAT2d_BiInt`
+        ///
+        /// BiInt is a set of two integers.
         #[cxx_name = "MAT2d_BiInt"]
         type BiInt;
-        #[doc = "/// **Source:** `MAT2d_BiInt.hxx` - `MAT2d_BiInt::MAT2d_BiInt()`"]
+        /// /// **Source:** `MAT2d_BiInt.hxx` - `MAT2d_BiInt::MAT2d_BiInt()`
         #[cxx_name = "MAT2d_BiInt_ctor_int2"]
         fn BiInt_ctor_int2(I1: i32, I2: i32) -> UniquePtr<BiInt>;
         #[cxx_name = "FirstIndex"]
@@ -140,101 +141,103 @@ pub(crate) mod ffi {
         fn second_index_int(self: Pin<&mut BiInt>, I2: i32);
         #[cxx_name = "IsEqual"]
         fn is_equal(self: &BiInt, B: &BiInt) -> bool;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Bisec from bisector module"]
+        /// Bisec from bisector module
         type Bisector_Bisec = crate::bisector::ffi::Bisec;
-        #[doc = "BoundedCurve from geom2d module"]
+        /// BoundedCurve from geom2d module
         type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
+        /// Conic from geom2d module
         type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Curve from geom2d module"]
+        /// Curve from geom2d module
         type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "Ellipse from geom2d module"]
+        /// Ellipse from geom2d module
         type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "Geometry from geom2d module"]
+        /// Geometry from geom2d module
         type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "TrimmedCurve from geom2d module"]
+        /// TrimmedCurve from geom2d module
         type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
-        #[doc = "BasicElt from mat module"]
+        /// BasicElt from mat module
         type MAT_BasicElt = crate::mat::ffi::BasicElt;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
+
         // ========================
         // Referenced types (opaque)
         // ========================

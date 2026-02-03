@@ -15,7 +15,7 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::BRepTools;
 impl BRepTools {
-    #[doc = "Returns in UMin,  UMax, VMin,  VMax  the  bounding values in the parametric space of F."]
+    /// Returns in UMin,  UMax, VMin,  VMax  the  bounding values in the parametric space of F.
     pub fn uv_bounds_face_real4(
         F: &ffi::TopoDS_Face,
         UMin: &mut f64,
@@ -26,7 +26,7 @@ impl BRepTools {
         ffi::BRepTools_uv_bounds_face_real4(F, UMin, UMax, VMin, VMax)
     }
 
-    #[doc = "Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the wire in the parametric space of F."]
+    /// Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the wire in the parametric space of F.
     pub fn uv_bounds_face_wire_real4(
         F: &ffi::TopoDS_Face,
         W: &ffi::TopoDS_Wire,
@@ -38,7 +38,7 @@ impl BRepTools {
         ffi::BRepTools_uv_bounds_face_wire_real4(F, W, UMin, UMax, VMin, VMax)
     }
 
-    #[doc = "Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the edge in the parametric space of F."]
+    /// Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the edge in the parametric space of F.
     pub fn uv_bounds_face_edge_real4(
         F: &ffi::TopoDS_Face,
         E: &ffi::TopoDS_Edge,
@@ -50,12 +50,12 @@ impl BRepTools {
         ffi::BRepTools_uv_bounds_face_edge_real4(F, E, UMin, UMax, VMin, VMax)
     }
 
-    #[doc = "Adds  to  the box <B>  the bounding values in  the parametric space of F."]
+    /// Adds  to  the box <B>  the bounding values in  the parametric space of F.
     pub fn add_uv_bounds_face_box2d(F: &ffi::TopoDS_Face, B: std::pin::Pin<&mut ffi::Bnd_Box2d>) {
         ffi::BRepTools_add_uv_bounds_face_box2d(F, B)
     }
 
-    #[doc = "Adds  to the box  <B>  the bounding  values of the wire in the parametric space of F."]
+    /// Adds  to the box  <B>  the bounding  values of the wire in the parametric space of F.
     pub fn add_uv_bounds_face_wire_box2d(
         F: &ffi::TopoDS_Face,
         W: &ffi::TopoDS_Wire,
@@ -64,7 +64,7 @@ impl BRepTools {
         ffi::BRepTools_add_uv_bounds_face_wire_box2d(F, W, B)
     }
 
-    #[doc = "Adds to  the box <B>  the  bounding values  of the edge in the parametric space of F."]
+    /// Adds to  the box <B>  the  bounding values  of the edge in the parametric space of F.
     pub fn add_uv_bounds_face_edge_box2d(
         F: &ffi::TopoDS_Face,
         E: &ffi::TopoDS_Edge,
@@ -73,72 +73,72 @@ impl BRepTools {
         ffi::BRepTools_add_uv_bounds_face_edge_box2d(F, E, B)
     }
 
-    #[doc = "Update a vertex (nothing is done)"]
+    /// Update a vertex (nothing is done)
     pub fn update_vertex(V: &ffi::TopoDS_Vertex) {
         ffi::BRepTools_update_vertex(V)
     }
 
-    #[doc = "Update an edge, compute 2d bounding boxes."]
+    /// Update an edge, compute 2d bounding boxes.
     pub fn update_edge(E: &ffi::TopoDS_Edge) {
         ffi::BRepTools_update_edge(E)
     }
 
-    #[doc = "Update a wire (nothing is done)"]
+    /// Update a wire (nothing is done)
     pub fn update_wire(W: &ffi::TopoDS_Wire) {
         ffi::BRepTools_update_wire(W)
     }
 
-    #[doc = "Update a Face, update UV points."]
+    /// Update a Face, update UV points.
     pub fn update_face(F: &ffi::TopoDS_Face) {
         ffi::BRepTools_update_face(F)
     }
 
-    #[doc = "Update a shell (nothing is done)"]
+    /// Update a shell (nothing is done)
     pub fn update_shell(S: &ffi::TopoDS_Shell) {
         ffi::BRepTools_update_shell(S)
     }
 
-    #[doc = "Update a solid (nothing is done)"]
+    /// Update a solid (nothing is done)
     pub fn update_solid(S: &ffi::TopoDS_Solid) {
         ffi::BRepTools_update_solid(S)
     }
 
-    #[doc = "Update a composite solid (nothing is done)"]
+    /// Update a composite solid (nothing is done)
     pub fn update_compsolid(C: &ffi::TopoDS_CompSolid) {
         ffi::BRepTools_update_compsolid(C)
     }
 
-    #[doc = "Update a compound (nothing is done)"]
+    /// Update a compound (nothing is done)
     pub fn update_compound(C: &ffi::TopoDS_Compound) {
         ffi::BRepTools_update_compound(C)
     }
 
-    #[doc = "Update a shape, call the correct update."]
+    /// Update a shape, call the correct update.
     pub fn update_shape(S: &ffi::TopoDS_Shape) {
         ffi::BRepTools_update_shape(S)
     }
 
-    #[doc = "For each edge of the face <F> reset the UV points to the bounding points of the parametric curve of the edge on the face."]
+    /// For each edge of the face <F> reset the UV points to the bounding points of the parametric curve of the edge on the face.
     pub fn update_face_uv_points(theF: &ffi::TopoDS_Face) {
         ffi::BRepTools_update_face_uv_points(theF)
     }
 
-    #[doc = "Removes all cached polygonal representation of the shape, i.e. the triangulations of the faces of <S> and polygons on triangulations and polygons 3d of the edges. In case polygonal representation is the only available representation for the shape (shape does not have geometry) it is not removed. @param[in] theShape   the shape to clean @param[in] theForce   allows removing all polygonal representations from the shape, including polygons on triangulations irrelevant for the faces of the given shape."]
+    /// Removes all cached polygonal representation of the shape, i.e. the triangulations of the faces of <S> and polygons on triangulations and polygons 3d of the edges. In case polygonal representation is the only available representation for the shape (shape does not have geometry) it is not removed. @param[in] theShape   the shape to clean @param[in] theForce   allows removing all polygonal representations from the shape, including polygons on triangulations irrelevant for the faces of the given shape.
     pub fn clean(theShape: &ffi::TopoDS_Shape, theForce: bool) {
         ffi::BRepTools_clean(theShape, theForce)
     }
 
-    #[doc = "Removes geometry (curves and surfaces) from all edges and faces of the shape"]
+    /// Removes geometry (curves and surfaces) from all edges and faces of the shape
     pub fn clean_geometry(theShape: &ffi::TopoDS_Shape) {
         ffi::BRepTools_clean_geometry(theShape)
     }
 
-    #[doc = "Removes all the pcurves of the edges of <S> that refer to surfaces not belonging to any face of <S>"]
+    /// Removes all the pcurves of the edges of <S> that refer to surfaces not belonging to any face of <S>
     pub fn remove_unused_p_curves(S: &ffi::TopoDS_Shape) {
         ffi::BRepTools_remove_unused_p_curves(S)
     }
 
-    #[doc = "Verifies that each Face from the shape has got a triangulation with a deflection smaller or equal to specified one and the Edges a discretization on this triangulation. @param[in] theShape    shape to verify @param[in] theLinDefl  maximum allowed linear deflection @param[in] theToCheckFreeEdges  if TRUE, then free Edges are required to have 3D polygon @return FALSE if input Shape contains Faces without triangulation, or that triangulation has worse (greater) deflection than specified one, or Edges in Shape lack polygons on triangulation or free Edges in Shape lack 3D polygons"]
+    /// Verifies that each Face from the shape has got a triangulation with a deflection smaller or equal to specified one and the Edges a discretization on this triangulation. @param[in] theShape    shape to verify @param[in] theLinDefl  maximum allowed linear deflection @param[in] theToCheckFreeEdges  if TRUE, then free Edges are required to have 3D polygon @return FALSE if input Shape contains Faces without triangulation, or that triangulation has worse (greater) deflection than specified one, or Edges in Shape lack polygons on triangulation or free Edges in Shape lack 3D polygons
     pub fn triangulation(
         theShape: &ffi::TopoDS_Shape,
         theLinDefl: f64,
@@ -147,7 +147,7 @@ impl BRepTools {
         ffi::BRepTools_triangulation(theShape, theLinDefl, theToCheckFreeEdges)
     }
 
-    #[doc = "Loads triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape             shape to load triangulations @param[in] theTriangulationIdx  index defining what triangulation should be loaded. Starts from 0. -1 is used in specific case to load currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be loaded for it. Exception will be thrown in case of invalid negative index @param[in] theToSetAsActive     flag to activate triangulation after its loading @param[in] theFileSystem        shared file system @return TRUE if at least one triangulation is loaded."]
+    /// Loads triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape             shape to load triangulations @param[in] theTriangulationIdx  index defining what triangulation should be loaded. Starts from 0. -1 is used in specific case to load currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be loaded for it. Exception will be thrown in case of invalid negative index @param[in] theToSetAsActive     flag to activate triangulation after its loading @param[in] theFileSystem        shared file system @return TRUE if at least one triangulation is loaded.
     pub fn load_triangulation(
         theShape: &ffi::TopoDS_Shape,
         theTriangulationIdx: i32,
@@ -162,12 +162,12 @@ impl BRepTools {
         )
     }
 
-    #[doc = "Releases triangulation data for each face of the shape if there is deferred storage to load it later @param[in] theShape             shape to unload triangulations @param[in] theTriangulationIdx  index defining what triangulation should be unloaded. Starts from 0. -1 is used in specific case to unload currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be unloaded for it. Exception will be thrown in case of invalid negative index @return TRUE if at least one triangulation is unloaded."]
+    /// Releases triangulation data for each face of the shape if there is deferred storage to load it later @param[in] theShape             shape to unload triangulations @param[in] theTriangulationIdx  index defining what triangulation should be unloaded. Starts from 0. -1 is used in specific case to unload currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be unloaded for it. Exception will be thrown in case of invalid negative index @return TRUE if at least one triangulation is unloaded.
     pub fn unload_triangulation(theShape: &ffi::TopoDS_Shape, theTriangulationIdx: i32) -> bool {
         ffi::BRepTools_unload_triangulation(theShape, theTriangulationIdx)
     }
 
-    #[doc = "Activates triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape               shape to activate triangulations @param[in] theTriangulationIdx    index defining what triangulation should be activated. Starts from 0. Exception will be thrown in case of invalid negative index @param[in] theToActivateStrictly  flag to activate exactly triangulation with defined theTriangulationIdx index. In TRUE case if some face doesn't contain triangulation with this index, active triangulation will not be changed for it. Else the last available triangulation will be activated. @return TRUE if at least one active triangulation was changed."]
+    /// Activates triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape               shape to activate triangulations @param[in] theTriangulationIdx    index defining what triangulation should be activated. Starts from 0. Exception will be thrown in case of invalid negative index @param[in] theToActivateStrictly  flag to activate exactly triangulation with defined theTriangulationIdx index. In TRUE case if some face doesn't contain triangulation with this index, active triangulation will not be changed for it. Else the last available triangulation will be activated. @return TRUE if at least one active triangulation was changed.
     pub fn activate_triangulation(
         theShape: &ffi::TopoDS_Shape,
         theTriangulationIdx: i32,
@@ -176,7 +176,7 @@ impl BRepTools {
         ffi::BRepTools_activate_triangulation(theShape, theTriangulationIdx, theToActivateStrictly)
     }
 
-    #[doc = "Loads all available triangulations for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape       shape to load triangulations @param[in] theFileSystem  shared file system @return TRUE if at least one triangulation is loaded."]
+    /// Loads all available triangulations for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape       shape to load triangulations @param[in] theFileSystem  shared file system @return TRUE if at least one triangulation is loaded.
     pub fn load_all_triangulations(
         theShape: &ffi::TopoDS_Shape,
         theFileSystem: &ffi::HandleOSDFileSystem,
@@ -184,27 +184,27 @@ impl BRepTools {
         ffi::BRepTools_load_all_triangulations(theShape, theFileSystem)
     }
 
-    #[doc = "Releases all available triangulations for each face of the shape if there is deferred storage to load them later @param[in] theShape       shape to unload triangulations @return TRUE if at least one triangulation is unloaded."]
+    /// Releases all available triangulations for each face of the shape if there is deferred storage to load them later @param[in] theShape       shape to unload triangulations @return TRUE if at least one triangulation is unloaded.
     pub fn unload_all_triangulations(theShape: &ffi::TopoDS_Shape) -> bool {
         ffi::BRepTools_unload_all_triangulations(theShape)
     }
 
-    #[doc = "Returns  True if  the    distance between the  two vertices is lower than their tolerance."]
+    /// Returns  True if  the    distance between the  two vertices is lower than their tolerance.
     pub fn compare_vertex2(V1: &ffi::TopoDS_Vertex, V2: &ffi::TopoDS_Vertex) -> bool {
         ffi::BRepTools_compare_vertex2(V1, V2)
     }
 
-    #[doc = "Returns  True if  the    distance between the  two edges is lower than their tolerance."]
+    /// Returns  True if  the    distance between the  two edges is lower than their tolerance.
     pub fn compare_edge2(E1: &ffi::TopoDS_Edge, E2: &ffi::TopoDS_Edge) -> bool {
         ffi::BRepTools_compare_edge2(E1, E2)
     }
 
-    #[doc = "Returns the outer most wire of <F>. Returns a Null wire if <F> has no wires."]
+    /// Returns the outer most wire of <F>. Returns a Null wire if <F> has no wires.
     pub fn outer_wire(F: &ffi::TopoDS_Face) -> cxx::UniquePtr<ffi::TopoDS_Wire> {
         ffi::BRepTools_outer_wire(F)
     }
 
-    #[doc = "Stores in the map  <M> all the 3D topology edges of <S>."]
+    /// Stores in the map  <M> all the 3D topology edges of <S>.
     pub fn map3_d_edges(
         S: &ffi::TopoDS_Shape,
         M: std::pin::Pin<&mut ffi::TopTools_IndexedMapOfShape>,
@@ -212,12 +212,12 @@ impl BRepTools {
         ffi::BRepTools_map3_d_edges(S, M)
     }
 
-    #[doc = "Verifies that the edge  <E> is found two  times on the face <F> before calling BRep_Tool::IsClosed."]
+    /// Verifies that the edge  <E> is found two  times on the face <F> before calling BRep_Tool::IsClosed.
     pub fn is_really_closed(E: &ffi::TopoDS_Edge, F: &ffi::TopoDS_Face) -> bool {
         ffi::BRepTools_is_really_closed(E, F)
     }
 
-    #[doc = "Detect closedness of face in U and V directions"]
+    /// Detect closedness of face in U and V directions
     pub fn detect_closedness(
         theFace: &ffi::TopoDS_Face,
         theUclosed: &mut bool,
@@ -226,7 +226,7 @@ impl BRepTools {
         ffi::BRepTools_detect_closedness(theFace, theUclosed, theVclosed)
     }
 
-    #[doc = "Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1. This alias writes shape with triangulation data. @param[in] theShape  the shape to write @param[in] theFile   the path to file to output shape into @param theProgress the range of progress indicator to fill in"]
+    /// Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1. This alias writes shape with triangulation data. @param[in] theShape  the shape to write @param[in] theFile   the path to file to output shape into @param theProgress the range of progress indicator to fill in
     pub fn write_shape_charptr_progressrange(
         theShape: &ffi::TopoDS_Shape,
         theFile: &str,
@@ -235,7 +235,7 @@ impl BRepTools {
         ffi::BRepTools_write_shape_charptr_progressrange(theShape, theFile, theProgress)
     }
 
-    #[doc = "Reads a Shape  from <File>,  returns it in  <Sh>. <B> is used to build the shape."]
+    /// Reads a Shape  from <File>,  returns it in  <Sh>. <B> is used to build the shape.
     pub fn read_shape_charptr_builder_progressrange(
         Sh: std::pin::Pin<&mut ffi::TopoDS_Shape>,
         File: &str,
@@ -245,7 +245,7 @@ impl BRepTools {
         ffi::BRepTools_read_shape_charptr_builder_progressrange(Sh, File, B, theProgress)
     }
 
-    #[doc = "Evals real tolerance of edge  <theE>. <theC3d>, <theC2d>, <theS>, <theF>, <theL> are correspondently 3d curve of edge, 2d curve on surface <theS> and rang of edge If calculated tolerance is more then current edge tolerance, edge is updated. Method returns actual tolerance of edge"]
+    /// Evals real tolerance of edge  <theE>. <theC3d>, <theC2d>, <theS>, <theF>, <theL> are correspondently 3d curve of edge, 2d curve on surface <theS> and rang of edge If calculated tolerance is more then current edge tolerance, edge is updated. Method returns actual tolerance of edge
     pub fn eval_and_update_tol(
         theE: &ffi::TopoDS_Edge,
         theC3d: &ffi::HandleGeomCurve,
@@ -257,12 +257,12 @@ impl BRepTools {
         ffi::BRepTools_eval_and_update_tol(theE, theC3d, theC2d, theS, theF, theL)
     }
 
-    #[doc = "Removes internal sub-shapes from the shape. The check on internal status is based on orientation of sub-shapes, classification is not performed. Before removal of internal sub-shapes the algorithm checks if such removal is not going to break topological connectivity between sub-shapes. The flag <theForce> if set to true disables the connectivity check and clears the given shape from all sub-shapes with internal orientation."]
+    /// Removes internal sub-shapes from the shape. The check on internal status is based on orientation of sub-shapes, classification is not performed. Before removal of internal sub-shapes the algorithm checks if such removal is not going to break topological connectivity between sub-shapes. The flag <theForce> if set to true disables the connectivity check and clears the given shape from all sub-shapes with internal orientation.
     pub fn remove_internals(theS: std::pin::Pin<&mut ffi::TopoDS_Shape>, theForce: bool) {
         ffi::BRepTools_remove_internals(theS, theForce)
     }
 
-    #[doc = "Check all locations of shape according criterium: aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec()) All sub-shapes having such locations are put in list theProblemShapes"]
+    /// Check all locations of shape according criterium: aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec()) All sub-shapes having such locations are put in list theProblemShapes
     pub fn check_locations(
         theS: &ffi::TopoDS_Shape,
         theProblemShapes: std::pin::Pin<&mut ffi::TopTools_ListOfShape>,
@@ -272,39 +272,39 @@ impl BRepTools {
 }
 pub use ffi::History;
 impl History {
-    #[doc = "@name Constructors for History creation Empty constructor"]
+    /// @name Constructors for History creation Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::History_ctor()
     }
 
-    #[doc = "Wrap BRepTools_History in a Handle (reference-counted smart pointer)"]
+    /// Wrap BRepTools_History in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBRepToolsHistory> {
         ffi::History_to_handle(obj)
     }
 
-    #[doc = "Returns 'true' if the type of the shape is supported by the history."]
+    /// Returns 'true' if the type of the shape is supported by the history.
     pub fn is_supported_type(theShape: &ffi::TopoDS_Shape) -> bool {
         ffi::History_is_supported_type(theShape)
     }
 
-    #[doc = "Define the OCCT RTTI for the type."]
+    /// Define the OCCT RTTI for the type.
     pub fn get_type_name() -> String {
         ffi::History_get_type_name()
     }
 }
 pub use ffi::Modifier;
 impl Modifier {
-    #[doc = "Creates an empty Modifier."]
+    /// Creates an empty Modifier.
     pub fn new_bool(theMutableInput: bool) -> cxx::UniquePtr<Self> {
         ffi::Modifier_ctor_bool(theMutableInput)
     }
 
-    #[doc = "Creates a modifier on the shape <S>."]
+    /// Creates a modifier on the shape <S>.
     pub fn new_shape(S: &ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
         ffi::Modifier_ctor_shape(S)
     }
 
-    #[doc = "Creates a modifier on  the shape <S>, and performs the modifications described by <M>."]
+    /// Creates a modifier on  the shape <S>, and performs the modifications described by <M>.
     pub fn new_shape_handlemodification(
         S: &ffi::TopoDS_Shape,
         M: &ffi::HandleBRepToolsModification,
@@ -314,17 +314,17 @@ impl Modifier {
 }
 pub use ffi::ReShape;
 impl ReShape {
-    #[doc = "Returns an empty Reshape"]
+    /// Returns an empty Reshape
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::ReShape_ctor()
     }
 
-    #[doc = "Wrap BRepTools_ReShape in a Handle (reference-counted smart pointer)"]
+    /// Wrap BRepTools_ReShape in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<ffi::HandleBRepToolsReShape> {
         ffi::ReShape_to_handle(obj)
     }
 
-    #[doc = "Returns the new value for an individual shape If not recorded, returns the original shape itself If to be Removed, returns a Null Shape Else, returns the replacing item"]
+    /// Returns the new value for an individual shape If not recorded, returns the original shape itself If to be Removed, returns a Null Shape Else, returns the replacing item
     pub fn value(&self, shape: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::ReShape_value(self, shape)
     }
@@ -346,7 +346,7 @@ impl ReShape {
         ffi::ReShape_copy_vertex_vertex_pnt_real(self, theV, theNewPos, aTol)
     }
 
-    #[doc = "Returns the history of the substituted shapes."]
+    /// Returns the history of the substituted shapes.
     pub fn history(&self) -> cxx::UniquePtr<ffi::HandleBRepToolsHistory> {
         ffi::ReShape_history(self)
     }
@@ -359,16 +359,17 @@ impl ReShape {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_tools.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== BRepTools ========================"]
-        #[doc = "/// **Source:** `BRepTools.hxx` - `BRepTools`"]
-        #[doc = ""]
-        #[doc = "The BRepTools package provides  utilities for BRep data structures. * WireExplorer : A tool to explore the topology of a wire in the order of the edges. * ShapeSet :  Tools used for  dumping, writing and reading. * UVBounds : Methods to compute the  limits of the boundary  of a  face,  a wire or   an edge in  the parametric space of a face. *  Update : Methods  to call when   a topology has been created to compute all missing data. * UpdateFaceUVPoints: Method to update the UV points stored with the edges on a face. * Compare : Method to compare two vertices. * Compare : Method to compare two edges. * OuterWire : A method to find the outer wire of a face. * Map3DEdges : A method to map all the 3D Edges of a Shape. * Dump : A method to dump a BRep object."]
+        /// ======================== BRepTools ========================
+        /// /// **Source:** `BRepTools.hxx` - `BRepTools`
+        ///
+        /// The BRepTools package provides  utilities for BRep data structures. * WireExplorer : A tool to explore the topology of a wire in the order of the edges. * ShapeSet :  Tools used for  dumping, writing and reading. * UVBounds : Methods to compute the  limits of the boundary  of a  face,  a wire or   an edge in  the parametric space of a face. *  Update : Methods  to call when   a topology has been created to compute all missing data. * UpdateFaceUVPoints: Method to update the UV points stored with the edges on a face. * Compare : Method to compare two vertices. * Compare : Method to compare two edges. * OuterWire : A method to find the outer wire of a face. * Map3DEdges : A method to map all the 3D Edges of a Shape. * Dump : A method to dump a BRep object.
         #[cxx_name = "BRepTools"]
         type BRepTools;
-        #[doc = "Returns in UMin,  UMax, VMin,  VMax  the  bounding values in the parametric space of F."]
+        /// Returns in UMin,  UMax, VMin,  VMax  the  bounding values in the parametric space of F.
         #[cxx_name = "BRepTools_UVBounds_face_real4"]
         fn BRepTools_uv_bounds_face_real4(
             F: &TopoDS_Face,
@@ -377,7 +378,7 @@ pub(crate) mod ffi {
             VMin: &mut f64,
             VMax: &mut f64,
         );
-        #[doc = "Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the wire in the parametric space of F."]
+        /// Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the wire in the parametric space of F.
         #[cxx_name = "BRepTools_UVBounds_face_wire_real4"]
         fn BRepTools_uv_bounds_face_wire_real4(
             F: &TopoDS_Face,
@@ -387,7 +388,7 @@ pub(crate) mod ffi {
             VMin: &mut f64,
             VMax: &mut f64,
         );
-        #[doc = "Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the edge in the parametric space of F."]
+        /// Returns in UMin,  UMax, VMin,  VMax  the  bounding values of the edge in the parametric space of F.
         #[cxx_name = "BRepTools_UVBounds_face_edge_real4"]
         fn BRepTools_uv_bounds_face_edge_real4(
             F: &TopoDS_Face,
@@ -397,70 +398,70 @@ pub(crate) mod ffi {
             VMin: &mut f64,
             VMax: &mut f64,
         );
-        #[doc = "Adds  to  the box <B>  the bounding values in  the parametric space of F."]
+        /// Adds  to  the box <B>  the bounding values in  the parametric space of F.
         #[cxx_name = "BRepTools_AddUVBounds_face_box2d"]
         fn BRepTools_add_uv_bounds_face_box2d(F: &TopoDS_Face, B: Pin<&mut Bnd_Box2d>);
-        #[doc = "Adds  to the box  <B>  the bounding  values of the wire in the parametric space of F."]
+        /// Adds  to the box  <B>  the bounding  values of the wire in the parametric space of F.
         #[cxx_name = "BRepTools_AddUVBounds_face_wire_box2d"]
         fn BRepTools_add_uv_bounds_face_wire_box2d(
             F: &TopoDS_Face,
             W: &TopoDS_Wire,
             B: Pin<&mut Bnd_Box2d>,
         );
-        #[doc = "Adds to  the box <B>  the  bounding values  of the edge in the parametric space of F."]
+        /// Adds to  the box <B>  the  bounding values  of the edge in the parametric space of F.
         #[cxx_name = "BRepTools_AddUVBounds_face_edge_box2d"]
         fn BRepTools_add_uv_bounds_face_edge_box2d(
             F: &TopoDS_Face,
             E: &TopoDS_Edge,
             B: Pin<&mut Bnd_Box2d>,
         );
-        #[doc = "Update a vertex (nothing is done)"]
+        /// Update a vertex (nothing is done)
         #[cxx_name = "BRepTools_Update_vertex"]
         fn BRepTools_update_vertex(V: &TopoDS_Vertex);
-        #[doc = "Update an edge, compute 2d bounding boxes."]
+        /// Update an edge, compute 2d bounding boxes.
         #[cxx_name = "BRepTools_Update_edge"]
         fn BRepTools_update_edge(E: &TopoDS_Edge);
-        #[doc = "Update a wire (nothing is done)"]
+        /// Update a wire (nothing is done)
         #[cxx_name = "BRepTools_Update_wire"]
         fn BRepTools_update_wire(W: &TopoDS_Wire);
-        #[doc = "Update a Face, update UV points."]
+        /// Update a Face, update UV points.
         #[cxx_name = "BRepTools_Update_face"]
         fn BRepTools_update_face(F: &TopoDS_Face);
-        #[doc = "Update a shell (nothing is done)"]
+        /// Update a shell (nothing is done)
         #[cxx_name = "BRepTools_Update_shell"]
         fn BRepTools_update_shell(S: &TopoDS_Shell);
-        #[doc = "Update a solid (nothing is done)"]
+        /// Update a solid (nothing is done)
         #[cxx_name = "BRepTools_Update_solid"]
         fn BRepTools_update_solid(S: &TopoDS_Solid);
-        #[doc = "Update a composite solid (nothing is done)"]
+        /// Update a composite solid (nothing is done)
         #[cxx_name = "BRepTools_Update_compsolid"]
         fn BRepTools_update_compsolid(C: &TopoDS_CompSolid);
-        #[doc = "Update a compound (nothing is done)"]
+        /// Update a compound (nothing is done)
         #[cxx_name = "BRepTools_Update_compound"]
         fn BRepTools_update_compound(C: &TopoDS_Compound);
-        #[doc = "Update a shape, call the correct update."]
+        /// Update a shape, call the correct update.
         #[cxx_name = "BRepTools_Update_shape"]
         fn BRepTools_update_shape(S: &TopoDS_Shape);
-        #[doc = "For each edge of the face <F> reset the UV points to the bounding points of the parametric curve of the edge on the face."]
+        /// For each edge of the face <F> reset the UV points to the bounding points of the parametric curve of the edge on the face.
         #[cxx_name = "BRepTools_UpdateFaceUVPoints"]
         fn BRepTools_update_face_uv_points(theF: &TopoDS_Face);
-        #[doc = "Removes all cached polygonal representation of the shape, i.e. the triangulations of the faces of <S> and polygons on triangulations and polygons 3d of the edges. In case polygonal representation is the only available representation for the shape (shape does not have geometry) it is not removed. @param[in] theShape   the shape to clean @param[in] theForce   allows removing all polygonal representations from the shape, including polygons on triangulations irrelevant for the faces of the given shape."]
+        /// Removes all cached polygonal representation of the shape, i.e. the triangulations of the faces of <S> and polygons on triangulations and polygons 3d of the edges. In case polygonal representation is the only available representation for the shape (shape does not have geometry) it is not removed. @param[in] theShape   the shape to clean @param[in] theForce   allows removing all polygonal representations from the shape, including polygons on triangulations irrelevant for the faces of the given shape.
         #[cxx_name = "BRepTools_Clean"]
         fn BRepTools_clean(theShape: &TopoDS_Shape, theForce: bool);
-        #[doc = "Removes geometry (curves and surfaces) from all edges and faces of the shape"]
+        /// Removes geometry (curves and surfaces) from all edges and faces of the shape
         #[cxx_name = "BRepTools_CleanGeometry"]
         fn BRepTools_clean_geometry(theShape: &TopoDS_Shape);
-        #[doc = "Removes all the pcurves of the edges of <S> that refer to surfaces not belonging to any face of <S>"]
+        /// Removes all the pcurves of the edges of <S> that refer to surfaces not belonging to any face of <S>
         #[cxx_name = "BRepTools_RemoveUnusedPCurves"]
         fn BRepTools_remove_unused_p_curves(S: &TopoDS_Shape);
-        #[doc = "Verifies that each Face from the shape has got a triangulation with a deflection smaller or equal to specified one and the Edges a discretization on this triangulation. @param[in] theShape    shape to verify @param[in] theLinDefl  maximum allowed linear deflection @param[in] theToCheckFreeEdges  if TRUE, then free Edges are required to have 3D polygon @return FALSE if input Shape contains Faces without triangulation, or that triangulation has worse (greater) deflection than specified one, or Edges in Shape lack polygons on triangulation or free Edges in Shape lack 3D polygons"]
+        /// Verifies that each Face from the shape has got a triangulation with a deflection smaller or equal to specified one and the Edges a discretization on this triangulation. @param[in] theShape    shape to verify @param[in] theLinDefl  maximum allowed linear deflection @param[in] theToCheckFreeEdges  if TRUE, then free Edges are required to have 3D polygon @return FALSE if input Shape contains Faces without triangulation, or that triangulation has worse (greater) deflection than specified one, or Edges in Shape lack polygons on triangulation or free Edges in Shape lack 3D polygons
         #[cxx_name = "BRepTools_Triangulation"]
         fn BRepTools_triangulation(
             theShape: &TopoDS_Shape,
             theLinDefl: f64,
             theToCheckFreeEdges: bool,
         ) -> bool;
-        #[doc = "Loads triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape             shape to load triangulations @param[in] theTriangulationIdx  index defining what triangulation should be loaded. Starts from 0. -1 is used in specific case to load currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be loaded for it. Exception will be thrown in case of invalid negative index @param[in] theToSetAsActive     flag to activate triangulation after its loading @param[in] theFileSystem        shared file system @return TRUE if at least one triangulation is loaded."]
+        /// Loads triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape             shape to load triangulations @param[in] theTriangulationIdx  index defining what triangulation should be loaded. Starts from 0. -1 is used in specific case to load currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be loaded for it. Exception will be thrown in case of invalid negative index @param[in] theToSetAsActive     flag to activate triangulation after its loading @param[in] theFileSystem        shared file system @return TRUE if at least one triangulation is loaded.
         #[cxx_name = "BRepTools_LoadTriangulation"]
         fn BRepTools_load_triangulation(
             theShape: &TopoDS_Shape,
@@ -468,58 +469,58 @@ pub(crate) mod ffi {
             theToSetAsActive: bool,
             theFileSystem: &HandleOSDFileSystem,
         ) -> bool;
-        #[doc = "Releases triangulation data for each face of the shape if there is deferred storage to load it later @param[in] theShape             shape to unload triangulations @param[in] theTriangulationIdx  index defining what triangulation should be unloaded. Starts from 0. -1 is used in specific case to unload currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be unloaded for it. Exception will be thrown in case of invalid negative index @return TRUE if at least one triangulation is unloaded."]
+        /// Releases triangulation data for each face of the shape if there is deferred storage to load it later @param[in] theShape             shape to unload triangulations @param[in] theTriangulationIdx  index defining what triangulation should be unloaded. Starts from 0. -1 is used in specific case to unload currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be unloaded for it. Exception will be thrown in case of invalid negative index @return TRUE if at least one triangulation is unloaded.
         #[cxx_name = "BRepTools_UnloadTriangulation"]
         fn BRepTools_unload_triangulation(
             theShape: &TopoDS_Shape,
             theTriangulationIdx: i32,
         ) -> bool;
-        #[doc = "Activates triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape               shape to activate triangulations @param[in] theTriangulationIdx    index defining what triangulation should be activated. Starts from 0. Exception will be thrown in case of invalid negative index @param[in] theToActivateStrictly  flag to activate exactly triangulation with defined theTriangulationIdx index. In TRUE case if some face doesn't contain triangulation with this index, active triangulation will not be changed for it. Else the last available triangulation will be activated. @return TRUE if at least one active triangulation was changed."]
+        /// Activates triangulation data for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape               shape to activate triangulations @param[in] theTriangulationIdx    index defining what triangulation should be activated. Starts from 0. Exception will be thrown in case of invalid negative index @param[in] theToActivateStrictly  flag to activate exactly triangulation with defined theTriangulationIdx index. In TRUE case if some face doesn't contain triangulation with this index, active triangulation will not be changed for it. Else the last available triangulation will be activated. @return TRUE if at least one active triangulation was changed.
         #[cxx_name = "BRepTools_ActivateTriangulation"]
         fn BRepTools_activate_triangulation(
             theShape: &TopoDS_Shape,
             theTriangulationIdx: i32,
             theToActivateStrictly: bool,
         ) -> bool;
-        #[doc = "Loads all available triangulations for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape       shape to load triangulations @param[in] theFileSystem  shared file system @return TRUE if at least one triangulation is loaded."]
+        /// Loads all available triangulations for each face of the shape from some deferred storage using specified shared input file system @param[in] theShape       shape to load triangulations @param[in] theFileSystem  shared file system @return TRUE if at least one triangulation is loaded.
         #[cxx_name = "BRepTools_LoadAllTriangulations"]
         fn BRepTools_load_all_triangulations(
             theShape: &TopoDS_Shape,
             theFileSystem: &HandleOSDFileSystem,
         ) -> bool;
-        #[doc = "Releases all available triangulations for each face of the shape if there is deferred storage to load them later @param[in] theShape       shape to unload triangulations @return TRUE if at least one triangulation is unloaded."]
+        /// Releases all available triangulations for each face of the shape if there is deferred storage to load them later @param[in] theShape       shape to unload triangulations @return TRUE if at least one triangulation is unloaded.
         #[cxx_name = "BRepTools_UnloadAllTriangulations"]
         fn BRepTools_unload_all_triangulations(theShape: &TopoDS_Shape) -> bool;
-        #[doc = "Returns  True if  the    distance between the  two vertices is lower than their tolerance."]
+        /// Returns  True if  the    distance between the  two vertices is lower than their tolerance.
         #[cxx_name = "BRepTools_Compare_vertex2"]
         fn BRepTools_compare_vertex2(V1: &TopoDS_Vertex, V2: &TopoDS_Vertex) -> bool;
-        #[doc = "Returns  True if  the    distance between the  two edges is lower than their tolerance."]
+        /// Returns  True if  the    distance between the  two edges is lower than their tolerance.
         #[cxx_name = "BRepTools_Compare_edge2"]
         fn BRepTools_compare_edge2(E1: &TopoDS_Edge, E2: &TopoDS_Edge) -> bool;
-        #[doc = "Returns the outer most wire of <F>. Returns a Null wire if <F> has no wires."]
+        /// Returns the outer most wire of <F>. Returns a Null wire if <F> has no wires.
         #[cxx_name = "BRepTools_OuterWire"]
         fn BRepTools_outer_wire(F: &TopoDS_Face) -> UniquePtr<TopoDS_Wire>;
-        #[doc = "Stores in the map  <M> all the 3D topology edges of <S>."]
+        /// Stores in the map  <M> all the 3D topology edges of <S>.
         #[cxx_name = "BRepTools_Map3DEdges"]
         fn BRepTools_map3_d_edges(S: &TopoDS_Shape, M: Pin<&mut TopTools_IndexedMapOfShape>);
-        #[doc = "Verifies that the edge  <E> is found two  times on the face <F> before calling BRep_Tool::IsClosed."]
+        /// Verifies that the edge  <E> is found two  times on the face <F> before calling BRep_Tool::IsClosed.
         #[cxx_name = "BRepTools_IsReallyClosed"]
         fn BRepTools_is_really_closed(E: &TopoDS_Edge, F: &TopoDS_Face) -> bool;
-        #[doc = "Detect closedness of face in U and V directions"]
+        /// Detect closedness of face in U and V directions
         #[cxx_name = "BRepTools_DetectClosedness"]
         fn BRepTools_detect_closedness(
             theFace: &TopoDS_Face,
             theUclosed: &mut bool,
             theVclosed: &mut bool,
         );
-        #[doc = "Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1. This alias writes shape with triangulation data. @param[in] theShape  the shape to write @param[in] theFile   the path to file to output shape into @param theProgress the range of progress indicator to fill in"]
+        /// Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1. This alias writes shape with triangulation data. @param[in] theShape  the shape to write @param[in] theFile   the path to file to output shape into @param theProgress the range of progress indicator to fill in
         #[cxx_name = "BRepTools_Write_shape_charptr_progressrange"]
         fn BRepTools_write_shape_charptr_progressrange(
             theShape: &TopoDS_Shape,
             theFile: &str,
             theProgress: &Message_ProgressRange,
         ) -> bool;
-        #[doc = "Reads a Shape  from <File>,  returns it in  <Sh>. <B> is used to build the shape."]
+        /// Reads a Shape  from <File>,  returns it in  <Sh>. <B> is used to build the shape.
         #[cxx_name = "BRepTools_Read_shape_charptr_builder_progressrange"]
         fn BRepTools_read_shape_charptr_builder_progressrange(
             Sh: Pin<&mut TopoDS_Shape>,
@@ -527,7 +528,7 @@ pub(crate) mod ffi {
             B: &BRep_Builder,
             theProgress: &Message_ProgressRange,
         ) -> bool;
-        #[doc = "Evals real tolerance of edge  <theE>. <theC3d>, <theC2d>, <theS>, <theF>, <theL> are correspondently 3d curve of edge, 2d curve on surface <theS> and rang of edge If calculated tolerance is more then current edge tolerance, edge is updated. Method returns actual tolerance of edge"]
+        /// Evals real tolerance of edge  <theE>. <theC3d>, <theC2d>, <theS>, <theF>, <theL> are correspondently 3d curve of edge, 2d curve on surface <theS> and rang of edge If calculated tolerance is more then current edge tolerance, edge is updated. Method returns actual tolerance of edge
         #[cxx_name = "BRepTools_EvalAndUpdateTol"]
         fn BRepTools_eval_and_update_tol(
             theE: &TopoDS_Edge,
@@ -537,166 +538,166 @@ pub(crate) mod ffi {
             theF: f64,
             theL: f64,
         ) -> f64;
-        #[doc = "Removes internal sub-shapes from the shape. The check on internal status is based on orientation of sub-shapes, classification is not performed. Before removal of internal sub-shapes the algorithm checks if such removal is not going to break topological connectivity between sub-shapes. The flag <theForce> if set to true disables the connectivity check and clears the given shape from all sub-shapes with internal orientation."]
+        /// Removes internal sub-shapes from the shape. The check on internal status is based on orientation of sub-shapes, classification is not performed. Before removal of internal sub-shapes the algorithm checks if such removal is not going to break topological connectivity between sub-shapes. The flag <theForce> if set to true disables the connectivity check and clears the given shape from all sub-shapes with internal orientation.
         #[cxx_name = "BRepTools_RemoveInternals"]
         fn BRepTools_remove_internals(theS: Pin<&mut TopoDS_Shape>, theForce: bool);
-        #[doc = "Check all locations of shape according criterium: aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec()) All sub-shapes having such locations are put in list theProblemShapes"]
+        /// Check all locations of shape according criterium: aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec()) All sub-shapes having such locations are put in list theProblemShapes
         #[cxx_name = "BRepTools_CheckLocations"]
         fn BRepTools_check_locations(
             theS: &TopoDS_Shape,
             theProblemShapes: Pin<&mut TopTools_ListOfShape>,
         );
-        #[doc = " ======================== BRepTools_History ========================"]
-        #[doc = "/// **Source:** `BRepTools_History.hxx` - `BRepTools_History`"]
-        #[doc = ""]
-        #[doc = "The history keeps the following relations between the input shapes (S1, ..., Sm) and output shapes (T1, ..., Tn): 1) an output shape Tj is generated from an input shape Si: Tj <= G(Si); 2) a output shape Tj is modified from an input shape Si: Tj <= M(Si); 3) an input shape (Si) is removed: R(Si) == 1. The relations are kept only for shapes of types vertex, edge, face, and solid. The last relation means that: 1) shape Si is not an output shape and 2) no any shape is modified (produced) from shape Si: R(Si) == 1 ==> Si != Tj, M(Si) == 0. It means that the input shape cannot be removed and modified simultaneously. However, the shapes may be generated from the removed shape. For instance, in Fillet operation the edges generate faces and then are removed. No any shape could be generated and modified from the same shape simultaneously: sets G(Si) and M(Si) are not intersected (G(Si) ^ M(Si) == 0). Each output shape should be: 1) an input shape or 2) generated or modified from an input shape (even generated from the implicit null shape if necessary): Tj == Si V (exists Si that Tj <= G(Si) U M(Si)). Recommendations to choose between relations 'generated' and 'modified': 1) a shape is generated from input shapes if it dimension is greater or smaller than the dimensions of the input shapes; 2) a shape is generated from input shapes if these shapes are also output shapes; 3) a shape is generated from input shapes of the same dimension if it is produced by joining shapes generated from these shapes; 4) a shape is modified from an input shape if it replaces the input shape by changes of the location, the tolerance, the bounds of the parametric space (the faces for a solid), the parametrization and/or by applying of an approximation; 5) a shape is modified from input shapes of the same dimension if it is produced by joining shapes modified from these shapes. Two sequential histories: - one history (H12) of shapes S1, ..., Sm to shapes T1, ..., Tn and - another history (H23) of shapes T1, ..., Tn to shapes Q1, ..., Ql could be merged to the single history (H13) of shapes S1, ..., Sm to shapes Q1, ..., Ql. During the merge: 1) if shape Tj is generated from shape Si then each shape generated or modified from shape Tj is considered as a shape generated from shape Si among shapes Q1, ..., Ql: Tj <= G12(Si), Qk <= G23(Tj) U M23(Tj) ==> Qk <= G13(Si). 2) if shape Tj is modified from shape Si, shape Qk is generated from shape Tj then shape Qk is considered as a shape generated from shape Si among shapes Q1, ..., Ql: Tj <= M12(Si), Qk <= G23(Tj) ==> Qk <= G13(Si); 3) if shape Tj is modified from shape Si, shape Qk is modified from shape Tj then shape Qk is considered as a shape modified from shape Si among shapes Q1, ..., Ql: Tj <= M12(Si), Qk <= M23(Tj) ==> Qk <= M13(Si);"]
+        /// ======================== BRepTools_History ========================
+        /// /// **Source:** `BRepTools_History.hxx` - `BRepTools_History`
+        ///
+        /// The history keeps the following relations between the input shapes (S1, ..., Sm) and output shapes (T1, ..., Tn): 1) an output shape Tj is generated from an input shape Si: Tj <= G(Si); 2) a output shape Tj is modified from an input shape Si: Tj <= M(Si); 3) an input shape (Si) is removed: R(Si) == 1. The relations are kept only for shapes of types vertex, edge, face, and solid. The last relation means that: 1) shape Si is not an output shape and 2) no any shape is modified (produced) from shape Si: R(Si) == 1 ==> Si != Tj, M(Si) == 0. It means that the input shape cannot be removed and modified simultaneously. However, the shapes may be generated from the removed shape. For instance, in Fillet operation the edges generate faces and then are removed. No any shape could be generated and modified from the same shape simultaneously: sets G(Si) and M(Si) are not intersected (G(Si) ^ M(Si) == 0). Each output shape should be: 1) an input shape or 2) generated or modified from an input shape (even generated from the implicit null shape if necessary): Tj == Si V (exists Si that Tj <= G(Si) U M(Si)). Recommendations to choose between relations 'generated' and 'modified': 1) a shape is generated from input shapes if it dimension is greater or smaller than the dimensions of the input shapes; 2) a shape is generated from input shapes if these shapes are also output shapes; 3) a shape is generated from input shapes of the same dimension if it is produced by joining shapes generated from these shapes; 4) a shape is modified from an input shape if it replaces the input shape by changes of the location, the tolerance, the bounds of the parametric space (the faces for a solid), the parametrization and/or by applying of an approximation; 5) a shape is modified from input shapes of the same dimension if it is produced by joining shapes modified from these shapes. Two sequential histories: - one history (H12) of shapes S1, ..., Sm to shapes T1, ..., Tn and - another history (H23) of shapes T1, ..., Tn to shapes Q1, ..., Ql could be merged to the single history (H13) of shapes S1, ..., Sm to shapes Q1, ..., Ql. During the merge: 1) if shape Tj is generated from shape Si then each shape generated or modified from shape Tj is considered as a shape generated from shape Si among shapes Q1, ..., Ql: Tj <= G12(Si), Qk <= G23(Tj) U M23(Tj) ==> Qk <= G13(Si). 2) if shape Tj is modified from shape Si, shape Qk is generated from shape Tj then shape Qk is considered as a shape generated from shape Si among shapes Q1, ..., Ql: Tj <= M12(Si), Qk <= G23(Tj) ==> Qk <= G13(Si); 3) if shape Tj is modified from shape Si, shape Qk is modified from shape Tj then shape Qk is considered as a shape modified from shape Si among shapes Q1, ..., Ql: Tj <= M12(Si), Qk <= M23(Tj) ==> Qk <= M13(Si);
         #[cxx_name = "BRepTools_History"]
         type History;
-        #[doc = "/// **Source:** `BRepTools_History.hxx` - `BRepTools_History::BRepTools_History()`"]
-        #[doc = ""]
-        #[doc = "@name Constructors for History creation Empty constructor"]
+        /// /// **Source:** `BRepTools_History.hxx` - `BRepTools_History::BRepTools_History()`
+        ///
+        /// @name Constructors for History creation Empty constructor
         #[cxx_name = "BRepTools_History_ctor"]
         fn History_ctor() -> UniquePtr<History>;
-        #[doc = "Methods to set the history. Set the second shape as generated one from the first shape."]
+        /// Methods to set the history. Set the second shape as generated one from the first shape.
         #[cxx_name = "AddGenerated"]
         fn add_generated(
             self: Pin<&mut History>,
             theInitial: &TopoDS_Shape,
             theGenerated: &TopoDS_Shape,
         );
-        #[doc = "Set the second shape as modified one from the first shape."]
+        /// Set the second shape as modified one from the first shape.
         #[cxx_name = "AddModified"]
         fn add_modified(
             self: Pin<&mut History>,
             theInitial: &TopoDS_Shape,
             theModified: &TopoDS_Shape,
         );
-        #[doc = "Set the shape as removed one."]
+        /// Set the shape as removed one.
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut History>, theRemoved: &TopoDS_Shape);
-        #[doc = "Set the second shape as the only generated one from the first one."]
+        /// Set the second shape as the only generated one from the first one.
         #[cxx_name = "ReplaceGenerated"]
         fn replace_generated(
             self: Pin<&mut History>,
             theInitial: &TopoDS_Shape,
             theGenerated: &TopoDS_Shape,
         );
-        #[doc = "Set the second shape as the only modified one from the first one."]
+        /// Set the second shape as the only modified one from the first one.
         #[cxx_name = "ReplaceModified"]
         fn replace_modified(
             self: Pin<&mut History>,
             theInitial: &TopoDS_Shape,
             theModified: &TopoDS_Shape,
         );
-        #[doc = "Clears the history."]
+        /// Clears the history.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut History>);
-        #[doc = "Methods to read the history. Returns all shapes generated from the shape."]
+        /// Methods to read the history. Returns all shapes generated from the shape.
         #[cxx_name = "Generated"]
         fn generated(self: &History, theInitial: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        #[doc = "Returns all shapes modified from the shape."]
+        /// Returns all shapes modified from the shape.
         #[cxx_name = "Modified"]
         fn modified(self: &History, theInitial: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        #[doc = "Returns 'true' if the shape is removed."]
+        /// Returns 'true' if the shape is removed.
         #[cxx_name = "IsRemoved"]
         fn is_removed(self: &History, theInitial: &TopoDS_Shape) -> bool;
-        #[doc = "Returns 'true' if there any shapes with Generated elements present"]
+        /// Returns 'true' if there any shapes with Generated elements present
         #[cxx_name = "HasGenerated"]
         fn has_generated(self: &History) -> bool;
-        #[doc = "Returns 'true' if there any Modified shapes present"]
+        /// Returns 'true' if there any Modified shapes present
         #[cxx_name = "HasModified"]
         fn has_modified(self: &History) -> bool;
-        #[doc = "Returns 'true' if there any removed shapes present"]
+        /// Returns 'true' if there any removed shapes present
         #[cxx_name = "HasRemoved"]
         fn has_removed(self: &History) -> bool;
-        #[doc = "A method to merge a next history to this history. Merges the next history to this history."]
+        /// A method to merge a next history to this history. Merges the next history to this history.
         #[cxx_name = "Merge"]
         fn merge_handlehistory(self: Pin<&mut History>, theHistory23: &HandleBRepToolsHistory);
-        #[doc = "Merges the next history to this history."]
+        /// Merges the next history to this history.
         #[cxx_name = "Merge"]
         fn merge_history(self: Pin<&mut History>, theHistory23: &History);
-        #[doc = "Define the OCCT RTTI for the type."]
+        /// Define the OCCT RTTI for the type.
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &History) -> &HandleStandardType;
-        #[doc = "Returns 'true' if the type of the shape is supported by the history."]
+        /// Returns 'true' if the type of the shape is supported by the history.
         #[cxx_name = "BRepTools_History_IsSupportedType"]
         fn History_is_supported_type(theShape: &TopoDS_Shape) -> bool;
-        #[doc = "Define the OCCT RTTI for the type."]
+        /// Define the OCCT RTTI for the type.
         #[cxx_name = "BRepTools_History_get_type_name"]
         fn History_get_type_name() -> String;
-        #[doc = "Wrap BRepTools_History in a Handle (reference-counted smart pointer)"]
+        /// Wrap BRepTools_History in a Handle (reference-counted smart pointer)
         #[cxx_name = "BRepTools_History_to_handle"]
         fn History_to_handle(obj: UniquePtr<History>) -> UniquePtr<HandleBRepToolsHistory>;
-        #[doc = " ======================== BRepTools_Modifier ========================"]
-        #[doc = "/// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier`"]
-        #[doc = ""]
-        #[doc = "Performs geometric modifications on a shape."]
+        /// ======================== BRepTools_Modifier ========================
+        /// /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier`
+        ///
+        /// Performs geometric modifications on a shape.
         #[cxx_name = "BRepTools_Modifier"]
         type Modifier;
-        #[doc = "/// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`"]
-        #[doc = ""]
-        #[doc = "Creates an empty Modifier."]
+        /// /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`
+        ///
+        /// Creates an empty Modifier.
         #[cxx_name = "BRepTools_Modifier_ctor_bool"]
         fn Modifier_ctor_bool(theMutableInput: bool) -> UniquePtr<Modifier>;
-        #[doc = "/// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`"]
-        #[doc = ""]
-        #[doc = "Creates a modifier on the shape <S>."]
+        /// /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`
+        ///
+        /// Creates a modifier on the shape <S>.
         #[cxx_name = "BRepTools_Modifier_ctor_shape"]
         fn Modifier_ctor_shape(S: &TopoDS_Shape) -> UniquePtr<Modifier>;
-        #[doc = "/// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`"]
-        #[doc = ""]
-        #[doc = "Creates a modifier on  the shape <S>, and performs the modifications described by <M>."]
+        /// /// **Source:** `BRepTools_Modifier.hxx` - `BRepTools_Modifier::BRepTools_Modifier()`
+        ///
+        /// Creates a modifier on  the shape <S>, and performs the modifications described by <M>.
         #[cxx_name = "BRepTools_Modifier_ctor_shape_handlemodification"]
         fn Modifier_ctor_shape_handlemodification(
             S: &TopoDS_Shape,
             M: &HandleBRepToolsModification,
         ) -> UniquePtr<Modifier>;
-        #[doc = "Initializes the modifier with the shape <S>."]
+        /// Initializes the modifier with the shape <S>.
         #[cxx_name = "Init"]
         fn init(self: Pin<&mut Modifier>, S: &TopoDS_Shape);
-        #[doc = "Performs the modifications described by <M>."]
+        /// Performs the modifications described by <M>.
         #[cxx_name = "Perform"]
         fn perform(
             self: Pin<&mut Modifier>,
             M: &HandleBRepToolsModification,
             theProgress: &Message_ProgressRange,
         );
-        #[doc = "Returns Standard_True if the modification has been computed successfully."]
+        /// Returns Standard_True if the modification has been computed successfully.
         #[cxx_name = "IsDone"]
         fn is_done(self: &Modifier) -> bool;
-        #[doc = "Returns the current mutable input state"]
+        /// Returns the current mutable input state
         #[cxx_name = "IsMutableInput"]
         fn is_mutable_input(self: &Modifier) -> bool;
-        #[doc = "Sets the mutable input state If true then the input (original) shape can be modified during modification process"]
+        /// Sets the mutable input state If true then the input (original) shape can be modified during modification process
         #[cxx_name = "SetMutableInput"]
         fn set_mutable_input(self: Pin<&mut Modifier>, theMutableInput: bool);
-        #[doc = "Returns the modified shape corresponding to <S>."]
+        /// Returns the modified shape corresponding to <S>.
         #[cxx_name = "ModifiedShape"]
         fn modified_shape(self: &Modifier, S: &TopoDS_Shape) -> &TopoDS_Shape;
-        #[doc = " ======================== BRepTools_ReShape ========================"]
-        #[doc = "/// **Source:** `BRepTools_ReShape.hxx` - `BRepTools_ReShape`"]
-        #[doc = ""]
+        /// ======================== BRepTools_ReShape ========================
+        /// /// **Source:** `BRepTools_ReShape.hxx` - `BRepTools_ReShape`
+        ///
         #[doc = "Rebuilds a Shape by making pre-defined substitutions on some of its components In a first phase, it records requests to replace or remove some individual shapes For each shape, the last given request is recorded Requests may be applied \"Oriented\" (i.e. only to an item with the SAME orientation) or not (the orientation of replacing shape is respectful of that of the original one) Then, these requests may be applied to any shape which may contain one or more of these individual shapes Supports the 'BRepTools_History' history by method 'History'."]
         #[cxx_name = "BRepTools_ReShape"]
         type ReShape;
-        #[doc = "/// **Source:** `BRepTools_ReShape.hxx` - `BRepTools_ReShape::BRepTools_ReShape()`"]
-        #[doc = ""]
-        #[doc = "Returns an empty Reshape"]
+        /// /// **Source:** `BRepTools_ReShape.hxx` - `BRepTools_ReShape::BRepTools_ReShape()`
+        ///
+        /// Returns an empty Reshape
         #[cxx_name = "BRepTools_ReShape_ctor"]
         fn ReShape_ctor() -> UniquePtr<ReShape>;
-        #[doc = "Clears all substitutions requests"]
+        /// Clears all substitutions requests
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut ReShape>);
-        #[doc = "Sets a request to Remove a Shape whatever the orientation"]
+        /// Sets a request to Remove a Shape whatever the orientation
         #[cxx_name = "Remove"]
         fn remove(self: Pin<&mut ReShape>, shape: &TopoDS_Shape);
-        #[doc = "Sets a request to Replace a Shape by a new one."]
+        /// Sets a request to Replace a Shape by a new one.
         #[cxx_name = "Replace"]
         fn replace(self: Pin<&mut ReShape>, shape: &TopoDS_Shape, newshape: &TopoDS_Shape);
-        #[doc = "Tells if a shape is recorded for Replace/Remove"]
+        /// Tells if a shape is recorded for Replace/Remove
         #[cxx_name = "IsRecorded"]
         fn is_recorded(self: &ReShape, shape: &TopoDS_Shape) -> bool;
-        #[doc = "Returns a complete substitution status for a shape 0  : not recorded,   <newsh> = original <shape> < 0: to be removed,  <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape."]
+        /// Returns a complete substitution status for a shape 0  : not recorded,   <newsh> = original <shape> < 0: to be removed,  <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape.
         #[cxx_name = "Status"]
         fn status(
             self: Pin<&mut ReShape>,
@@ -704,14 +705,14 @@ pub(crate) mod ffi {
             newsh: Pin<&mut TopoDS_Shape>,
             last: bool,
         ) -> i32;
-        #[doc = "Returns (modifiable) the flag which defines whether Location of shape take into account during replacing shapes."]
+        /// Returns (modifiable) the flag which defines whether Location of shape take into account during replacing shapes.
         #[cxx_name = "ModeConsiderLocation"]
         fn mode_consider_location(self: Pin<&mut ReShape>) -> &mut bool;
         #[cxx_name = "IsNewShape"]
         fn is_new_shape(self: &ReShape, theShape: &TopoDS_Shape) -> bool;
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &ReShape) -> &HandleStandardType;
-        #[doc = "Returns the new value for an individual shape If not recorded, returns the original shape itself If to be Removed, returns a Null Shape Else, returns the replacing item"]
+        /// Returns the new value for an individual shape If not recorded, returns the original shape itself If to be Removed, returns a Null Shape Else, returns the replacing item
         #[cxx_name = "BRepTools_ReShape_Value"]
         fn ReShape_value(self_: &ReShape, shape: &TopoDS_Shape) -> UniquePtr<TopoDS_Shape>;
         #[cxx_name = "BRepTools_ReShape_CopyVertex"]
@@ -727,249 +728,251 @@ pub(crate) mod ffi {
             theNewPos: &gp_Pnt,
             aTol: f64,
         ) -> UniquePtr<TopoDS_Vertex>;
-        #[doc = "Returns the history of the substituted shapes."]
+        /// Returns the history of the substituted shapes.
         #[cxx_name = "BRepTools_ReShape_History"]
         fn ReShape_history(self_: &ReShape) -> UniquePtr<HandleBRepToolsHistory>;
         #[cxx_name = "BRepTools_ReShape_get_type_name"]
         fn ReShape_get_type_name() -> String;
-        #[doc = "Wrap BRepTools_ReShape in a Handle (reference-counted smart pointer)"]
+        /// Wrap BRepTools_ReShape in a Handle (reference-counted smart pointer)
         #[cxx_name = "BRepTools_ReShape_to_handle"]
         fn ReShape_to_handle(obj: UniquePtr<ReShape>) -> UniquePtr<HandleBRepToolsReShape>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "Builder from b_rep module"]
+        /// Builder from b_rep module
         type BRep_Builder = crate::b_rep::ffi::Builder;
-        #[doc = "Tool from b_rep module"]
+        /// Tool from b_rep module
         type BRep_Tool = crate::b_rep::ffi::Tool;
-        #[doc = "B2d from bnd module"]
+        /// B2d from bnd module
         type Bnd_B2d = crate::bnd::ffi::B2d;
-        #[doc = "Box from bnd module"]
+        /// Box from bnd module
         type Bnd_Box = crate::bnd::ffi::Box_;
-        #[doc = "Box2d from bnd module"]
+        /// Box2d from bnd module
         type Bnd_Box2d = crate::bnd::ffi::Box2d;
-        #[doc = "HArray1OfBox from bnd module"]
+        /// HArray1OfBox from bnd module
         type Bnd_HArray1OfBox = crate::bnd::ffi::HArray1OfBox;
-        #[doc = "HArray1OfSphere from bnd module"]
+        /// HArray1OfSphere from bnd module
         type Bnd_HArray1OfSphere = crate::bnd::ffi::HArray1OfSphere;
-        #[doc = "OBB from bnd module"]
+        /// OBB from bnd module
         type Bnd_OBB = crate::bnd::ffi::OBB;
-        #[doc = "Sphere from bnd module"]
+        /// Sphere from bnd module
         type Bnd_Sphere = crate::bnd::ffi::Sphere;
-        #[doc = "BoundedCurve from geom2d module"]
+        /// BoundedCurve from geom2d module
         type Geom2d_BoundedCurve = crate::geom2d::ffi::BoundedCurve;
-        #[doc = "Conic from geom2d module"]
+        /// Conic from geom2d module
         type Geom2d_Conic = crate::geom2d::ffi::Conic;
-        #[doc = "Curve from geom2d module"]
+        /// Curve from geom2d module
         type Geom2d_Curve = crate::geom2d::ffi::Curve;
-        #[doc = "Ellipse from geom2d module"]
+        /// Ellipse from geom2d module
         type Geom2d_Ellipse = crate::geom2d::ffi::Ellipse;
-        #[doc = "Geometry from geom2d module"]
+        /// Geometry from geom2d module
         type Geom2d_Geometry = crate::geom2d::ffi::Geometry;
-        #[doc = "TrimmedCurve from geom2d module"]
+        /// TrimmedCurve from geom2d module
         type Geom2d_TrimmedCurve = crate::geom2d::ffi::TrimmedCurve;
-        #[doc = "BSplineCurve from geom module"]
+        /// BSplineCurve from geom module
         type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
+        /// BSplineSurface from geom module
         type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
+        /// BezierCurve from geom module
         type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
+        /// BezierSurface from geom module
         type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
+        /// BoundedCurve from geom module
         type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
+        /// BoundedSurface from geom module
         type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
+        /// Curve from geom module
         type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
+        /// CylindricalSurface from geom module
         type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
+        /// ElementarySurface from geom module
         type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
+        /// Geometry from geom module
         type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
+        /// Plane from geom module
         type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
+        /// Surface from geom module
         type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
+        /// TrimmedCurve from geom module
         type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "Message from message module"]
+        /// Message from message module
         type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
+        /// Alert from message module
         type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
+        /// AlertExtended from message module
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
+        /// Algorithm from message module
         type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
+        /// ExecStatus from message module
         type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
+        /// Level from message module
         type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
+        /// Messenger from message module
         type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
+        /// Msg from message module
         type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
+        /// Printer from message module
         type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
+        /// ProgressIndicator from message module
         type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
+        /// ProgressRange from message module
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
+        /// ProgressScope from message module
         type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
+        /// Report from message module
         type Message_Report = crate::message::ffi::Report;
-        #[doc = "MemInfo from osd module"]
+        /// MemInfo from osd module
         type OSD_MemInfo = crate::osd::ffi::MemInfo;
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "TopAbs from top_abs module"]
+        /// TopAbs from top_abs module
         type TopAbs = crate::top_abs::ffi::TopAbs;
-        #[doc = "HArray2OfShape from top_tools module"]
+        /// HArray2OfShape from top_tools module
         type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
+        /// HSequenceOfShape from top_tools module
         type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
+
         // ========================
         // Referenced types (opaque)
         // ========================

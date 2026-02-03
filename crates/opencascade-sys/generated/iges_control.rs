@@ -13,12 +13,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::Reader;
 impl Reader {
-    #[doc = "Creates a Reader from scratch"]
+    /// Creates a Reader from scratch
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Reader_ctor()
     }
 
-    #[doc = "Creates a Reader from an already existing Session"]
+    /// Creates a Reader from an already existing Session
     pub fn new_handleworksession_bool(
         WS: &ffi::HandleXSControlWorkSession,
         scratch: bool,
@@ -26,36 +26,36 @@ impl Reader {
         ffi::Reader_ctor_handleworksession_bool(WS, scratch)
     }
 
-    #[doc = "Upcast to XSControl_Reader"]
+    /// Upcast to XSControl_Reader
     pub fn as_xs_control_reader(&self) -> &crate::xs_control::Reader {
         ffi::reader_as_xs_control_reader(self)
     }
 
-    #[doc = "Upcast to XSControl_Reader (mutable)"]
+    /// Upcast to XSControl_Reader (mutable)
     pub fn as_xs_control_reader_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::xs_control::Reader> {
         ffi::reader_as_xs_control_reader_mut(self)
     }
 
-    #[doc = "Returns the model as a IGESModel. It can then be consulted (header, product)"]
+    /// Returns the model as a IGESModel. It can then be consulted (header, product)
     pub fn iges_model(&self) -> cxx::UniquePtr<ffi::HandleIGESDataIGESModel> {
         ffi::Reader_iges_model(self)
     }
 }
 pub use ffi::Writer;
 impl Writer {
-    #[doc = "Creates a writer object with the default unit (millimeters) and write mode (Face). IGESControl_Writer (const Standard_CString unit, const Standard_Integer modecr = 0);"]
+    /// Creates a writer object with the default unit (millimeters) and write mode (Face). IGESControl_Writer (const Standard_CString unit, const Standard_Integer modecr = 0);
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::Writer_ctor()
     }
 
-    #[doc = "Creates a writer with given values for units and for write mode. theUnit may be any unit that is accepted by the IGES standard. By default, it is the millimeter. theModecr defines the write mode and may be: - 0: Faces (default) - 1: BRep."]
+    /// Creates a writer with given values for units and for write mode. theUnit may be any unit that is accepted by the IGES standard. By default, it is the millimeter. theModecr defines the write mode and may be: - 0: Faces (default) - 1: BRep.
     pub fn new_charptr_int(theUnit: &str, theModecr: i32) -> cxx::UniquePtr<Self> {
         ffi::Writer_ctor_charptr_int(theUnit, theModecr)
     }
 
-    #[doc = "Creates a writer object with the prepared IGES model theModel in write mode. theModecr defines the write mode and may be: - 0: Faces (default) - 1: BRep."]
+    /// Creates a writer object with the prepared IGES model theModel in write mode. theModecr defines the write mode and may be: - 0: Faces (default) - 1: BRep.
     pub fn new_handleigesmodel_int(
         theModel: &ffi::HandleIGESDataIGESModel,
         theModecr: i32,
@@ -63,7 +63,7 @@ impl Writer {
         ffi::Writer_ctor_handleigesmodel_int(theModel, theModecr)
     }
 
-    #[doc = "Prepares and writes an IGES model either to an OStream, S or to a file name,CString. Returns True if the operation was performed correctly and False if an error occurred (for instance, if the processor could not create the file)."]
+    /// Prepares and writes an IGES model either to an OStream, S or to a file name,CString. Returns True if the operation was performed correctly and False if an error occurred (for instance, if the processor could not create the file).
     pub fn write(self: std::pin::Pin<&mut Self>, file: &str, fnes: bool) -> bool {
         ffi::Writer_write(self, file, fnes)
     }
@@ -72,199 +72,202 @@ impl Writer {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_iges_control.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== IGESControl_Reader ========================"]
-        #[doc = "/// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader`"]
-        #[doc = ""]
+        /// ======================== IGESControl_Reader ========================
+        /// /// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader`
+        ///
         #[doc = "Reads IGES files, checks them and translates their contents into Open CASCADE models. The IGES data can be that of a whole model or that of a specific list of entities in the model. As in XSControl_Reader, you specify the list using a selection. For translation of iges files it is possible to use the following sequence: To change parameters of translation class Interface_Static should be used before the beginning of translation (see IGES Parameters and General Parameters) Creation of reader IGESControl_Reader reader; To load a file in a model use method: reader.ReadFile(\"filename.igs\") To check a loading file use method Check: reader.Check(failsonly); where failsonly is equal to Standard_True or Standard_False; To print the results of load: reader.PrintCheckLoad(failsonly,mode) where mode is equal to the value of enumeration IFSelect_PrintCount To transfer entities from a model the following methods can be used: for the whole model reader.TransferRoots(onlyvisible); where onlyvisible is equal to Standard_True or Standard_False; To transfer a list of entities: reader.TransferList(list); To transfer one entity reader.TransferEntity(ent) or reader.Transfer(num); To obtain a result the following method can be used: reader.IsDone() reader.NbShapes() and reader.Shape(num); or reader.OneShape(); To print the results of transfer use method: reader.PrintTransferInfo(failwarn,mode); where printfail is equal to the value of enumeration IFSelect_PrintFail, mode see above. Gets correspondence between an IGES entity and a result shape obtained therefrom. reader.TransientProcess(); TopoDS_Shape shape = TransferBRep::ShapeResult(reader.TransientProcess(),ent);"]
         #[cxx_name = "IGESControl_Reader"]
         type Reader;
-        #[doc = "/// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader::IGESControl_Reader()`"]
-        #[doc = ""]
-        #[doc = "Creates a Reader from scratch"]
+        /// /// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader::IGESControl_Reader()`
+        ///
+        /// Creates a Reader from scratch
         #[cxx_name = "IGESControl_Reader_ctor"]
         fn Reader_ctor() -> UniquePtr<Reader>;
-        #[doc = "/// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader::IGESControl_Reader()`"]
-        #[doc = ""]
-        #[doc = "Creates a Reader from an already existing Session"]
+        /// /// **Source:** `IGESControl_Reader.hxx` - `IGESControl_Reader::IGESControl_Reader()`
+        ///
+        /// Creates a Reader from an already existing Session
         #[cxx_name = "IGESControl_Reader_ctor_handleworksession_bool"]
         fn Reader_ctor_handleworksession_bool(
             WS: &HandleXSControlWorkSession,
             scratch: bool,
         ) -> UniquePtr<Reader>;
-        #[doc = "Set the transion of ALL Roots (if theReadOnlyVisible is False) or of Visible Roots (if theReadOnlyVisible is True)"]
+        /// Set the transion of ALL Roots (if theReadOnlyVisible is False) or of Visible Roots (if theReadOnlyVisible is True)
         #[cxx_name = "SetReadVisible"]
         fn set_read_visible(self: Pin<&mut Reader>, ReadRoot: bool);
         #[cxx_name = "GetReadVisible"]
         fn get_read_visible(self: &Reader) -> bool;
-        #[doc = "Determines the list of root entities from Model which are candidate for a transfer to a Shape (type of entities is PRODUCT) <theReadOnlyVisible> is taken into account to define roots"]
+        /// Determines the list of root entities from Model which are candidate for a transfer to a Shape (type of entities is PRODUCT) <theReadOnlyVisible> is taken into account to define roots
         #[cxx_name = "NbRootsForTransfer"]
         fn nb_roots_for_transfer(self: Pin<&mut Reader>) -> i32;
-        #[doc = "Returns the model as a IGESModel. It can then be consulted (header, product)"]
+        /// Returns the model as a IGESModel. It can then be consulted (header, product)
         #[cxx_name = "IGESControl_Reader_IGESModel"]
         fn Reader_iges_model(self_: &Reader) -> UniquePtr<HandleIGESDataIGESModel>;
-        #[doc = "Upcast IGESControl_Reader to XSControl_Reader"]
+        /// Upcast IGESControl_Reader to XSControl_Reader
         #[cxx_name = "IGESControl_Reader_as_XSControl_Reader"]
         fn reader_as_xs_control_reader(self_: &Reader) -> &XSControl_Reader;
-        #[doc = "Upcast IGESControl_Reader to XSControl_Reader (mutable)"]
+        /// Upcast IGESControl_Reader to XSControl_Reader (mutable)
         #[cxx_name = "IGESControl_Reader_as_XSControl_Reader_mut"]
         fn reader_as_xs_control_reader_mut(self_: Pin<&mut Reader>) -> Pin<&mut XSControl_Reader>;
-        #[doc = " ======================== IGESControl_Writer ========================"]
-        #[doc = "/// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer`"]
-        #[doc = ""]
-        #[doc = "This class creates and writes IGES files from CAS.CADE models. An IGES file can be written to an existing IGES file or to a new one. The translation can be performed in one or several operations. Each translation operation outputs a distinct root entity in the IGES file. To write an IGES file it is possible to use the following sequence: To modify the IGES file header or to change translation parameters it is necessary to use class Interface_Static (see IGESParameters and GeneralParameters)."]
+        /// ======================== IGESControl_Writer ========================
+        /// /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer`
+        ///
+        /// This class creates and writes IGES files from CAS.CADE models. An IGES file can be written to an existing IGES file or to a new one. The translation can be performed in one or several operations. Each translation operation outputs a distinct root entity in the IGES file. To write an IGES file it is possible to use the following sequence: To modify the IGES file header or to change translation parameters it is necessary to use class Interface_Static (see IGESParameters and GeneralParameters).
         #[cxx_name = "IGESControl_Writer"]
         type Writer;
-        #[doc = "/// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`"]
-        #[doc = ""]
-        #[doc = "Creates a writer object with the default unit (millimeters) and write mode (Face). IGESControl_Writer (const Standard_CString unit, const Standard_Integer modecr = 0);"]
+        /// /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`
+        ///
+        /// Creates a writer object with the default unit (millimeters) and write mode (Face). IGESControl_Writer (const Standard_CString unit, const Standard_Integer modecr = 0);
         #[cxx_name = "IGESControl_Writer_ctor"]
         fn Writer_ctor() -> UniquePtr<Writer>;
-        #[doc = "/// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`"]
-        #[doc = ""]
-        #[doc = "Creates a writer with given values for units and for write mode. theUnit may be any unit that is accepted by the IGES standard. By default, it is the millimeter. theModecr defines the write mode and may be: - 0: Faces (default) - 1: BRep."]
+        /// /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`
+        ///
+        /// Creates a writer with given values for units and for write mode. theUnit may be any unit that is accepted by the IGES standard. By default, it is the millimeter. theModecr defines the write mode and may be: - 0: Faces (default) - 1: BRep.
         #[cxx_name = "IGESControl_Writer_ctor_charptr_int"]
         fn Writer_ctor_charptr_int(theUnit: &str, theModecr: i32) -> UniquePtr<Writer>;
-        #[doc = "/// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`"]
-        #[doc = ""]
-        #[doc = "Creates a writer object with the prepared IGES model theModel in write mode. theModecr defines the write mode and may be: - 0: Faces (default) - 1: BRep."]
+        /// /// **Source:** `IGESControl_Writer.hxx` - `IGESControl_Writer::IGESControl_Writer()`
+        ///
+        /// Creates a writer object with the prepared IGES model theModel in write mode. theModecr defines the write mode and may be: - 0: Faces (default) - 1: BRep.
         #[cxx_name = "IGESControl_Writer_ctor_handleigesmodel_int"]
         fn Writer_ctor_handleigesmodel_int(
             theModel: &HandleIGESDataIGESModel,
             theModecr: i32,
         ) -> UniquePtr<Writer>;
-        #[doc = "Returns the IGES model to be written in output."]
+        /// Returns the IGES model to be written in output.
         #[cxx_name = "Model"]
         fn model(self: &Writer) -> &HandleIGESDataIGESModel;
         #[cxx_name = "TransferProcess"]
         fn transfer_process(self: &Writer) -> &HandleTransferFinderProcess;
-        #[doc = "Returns/Sets the TransferProcess : it contains final results and if some, check messages"]
+        /// Returns/Sets the TransferProcess : it contains final results and if some, check messages
         #[cxx_name = "SetTransferProcess"]
         fn set_transfer_process(self: Pin<&mut Writer>, TP: &HandleTransferFinderProcess);
-        #[doc = "Translates a Shape to IGES Entities and adds them to the model Returns True if done, False if Shape not suitable for IGES or null"]
+        /// Translates a Shape to IGES Entities and adds them to the model Returns True if done, False if Shape not suitable for IGES or null
         #[cxx_name = "AddShape"]
         fn add_shape(
             self: Pin<&mut Writer>,
             sh: &TopoDS_Shape,
             theProgress: &Message_ProgressRange,
         ) -> bool;
-        #[doc = "Translates a Geometry (Surface or Curve) to IGES Entities and adds them to the model Returns True if done, False if geom is neither a Surface or a Curve suitable for IGES or is null"]
+        /// Translates a Geometry (Surface or Curve) to IGES Entities and adds them to the model Returns True if done, False if geom is neither a Surface or a Curve suitable for IGES or is null
         #[cxx_name = "AddGeom"]
         fn add_geom(self: Pin<&mut Writer>, geom: &HandleStandardTransient) -> bool;
-        #[doc = "Adds an IGES entity (and the ones it references) to the model"]
+        /// Adds an IGES entity (and the ones it references) to the model
         #[cxx_name = "AddEntity"]
         fn add_entity(self: Pin<&mut Writer>, ent: &HandleIGESDataIGESEntity) -> bool;
-        #[doc = "Computes the entities found in the model, which is ready to be written. This contrasts with the default computation of headers only."]
+        /// Computes the entities found in the model, which is ready to be written. This contrasts with the default computation of headers only.
         #[cxx_name = "ComputeModel"]
         fn compute_model(self: Pin<&mut Writer>);
-        #[doc = "Prepares and writes an IGES model either to an OStream, S or to a file name,CString. Returns True if the operation was performed correctly and False if an error occurred (for instance, if the processor could not create the file)."]
+        /// Prepares and writes an IGES model either to an OStream, S or to a file name,CString. Returns True if the operation was performed correctly and False if an error occurred (for instance, if the processor could not create the file).
         #[cxx_name = "IGESControl_Writer_Write"]
         fn Writer_write(self_: Pin<&mut Writer>, file: &str, fnes: bool) -> bool;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "BasicEditor from iges_data module"]
+        /// BasicEditor from iges_data module
         type IGESData_BasicEditor = crate::iges_data::ffi::BasicEditor;
-        #[doc = "SpecificLib from iges_data module"]
+        /// SpecificLib from iges_data module
         type IGESData_SpecificLib = crate::iges_data::ffi::SpecificLib;
-        #[doc = "Message from message module"]
+        /// Message from message module
         type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
+        /// Alert from message module
         type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
+        /// AlertExtended from message module
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
+        /// Algorithm from message module
         type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
+        /// ExecStatus from message module
         type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
+        /// Level from message module
         type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
+        /// Messenger from message module
         type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
+        /// Msg from message module
         type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
+        /// Printer from message module
         type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
+        /// ProgressIndicator from message module
         type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
+        /// ProgressRange from message module
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
+        /// ProgressScope from message module
         type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
+        /// Report from message module
         type Message_Report = crate::message::ffi::Report;
-        #[doc = "Standard from standard module"]
+        /// Standard from standard module
         type Standard = crate::standard::ffi::Standard;
-        #[doc = "ConstructionError from standard module"]
+        /// ConstructionError from standard module
         type Standard_ConstructionError = crate::standard::ffi::ConstructionError;
-        #[doc = "DimensionError from standard module"]
+        /// DimensionError from standard module
         type Standard_DimensionError = crate::standard::ffi::DimensionError;
-        #[doc = "DimensionMismatch from standard module"]
+        /// DimensionMismatch from standard module
         type Standard_DimensionMismatch = crate::standard::ffi::DimensionMismatch;
-        #[doc = "DomainError from standard module"]
+        /// DomainError from standard module
         type Standard_DomainError = crate::standard::ffi::DomainError;
-        #[doc = "Dump from standard module"]
+        /// Dump from standard module
         type Standard_Dump = crate::standard::ffi::Dump;
-        #[doc = "DumpValue from standard module"]
+        /// DumpValue from standard module
         type Standard_DumpValue = crate::standard::ffi::DumpValue;
-        #[doc = "ErrorHandler from standard module"]
+        /// ErrorHandler from standard module
         type Standard_ErrorHandler = crate::standard::ffi::ErrorHandler;
-        #[doc = "Failure from standard module"]
+        /// Failure from standard module
         type Standard_Failure = crate::standard::ffi::Failure;
-        #[doc = "Mutex from standard module"]
+        /// Mutex from standard module
         type Standard_Mutex = crate::standard::ffi::Mutex;
-        #[doc = "NoSuchObject from standard module"]
+        /// NoSuchObject from standard module
         type Standard_NoSuchObject = crate::standard::ffi::NoSuchObject;
-        #[doc = "NotImplemented from standard module"]
+        /// NotImplemented from standard module
         type Standard_NotImplemented = crate::standard::ffi::NotImplemented;
-        #[doc = "NullObject from standard module"]
+        /// NullObject from standard module
         type Standard_NullObject = crate::standard::ffi::NullObject;
-        #[doc = "NumericError from standard module"]
+        /// NumericError from standard module
         type Standard_NumericError = crate::standard::ffi::NumericError;
-        #[doc = "OutOfMemory from standard module"]
+        /// OutOfMemory from standard module
         type Standard_OutOfMemory = crate::standard::ffi::OutOfMemory;
-        #[doc = "OutOfRange from standard module"]
+        /// OutOfRange from standard module
         type Standard_OutOfRange = crate::standard::ffi::OutOfRange;
-        #[doc = "ProgramError from standard module"]
+        /// ProgramError from standard module
         type Standard_ProgramError = crate::standard::ffi::ProgramError;
-        #[doc = "RangeError from standard module"]
+        /// RangeError from standard module
         type Standard_RangeError = crate::standard::ffi::RangeError;
-        #[doc = "Transient from standard module"]
+        /// Transient from standard module
         type Standard_Transient = crate::standard::ffi::Transient;
-        #[doc = "Type from standard module"]
+        /// Type from standard module
         type Standard_Type = crate::standard::ffi::Type;
-        #[doc = "TypeMismatch from standard module"]
+        /// TypeMismatch from standard module
         type Standard_TypeMismatch = crate::standard::ffi::TypeMismatch;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "ShapeProcessor from xs_algo module"]
+        /// ShapeProcessor from xs_algo module
         type XSAlgo_ShapeProcessor = crate::xs_algo::ffi::ShapeProcessor;
-        #[doc = "Reader from xs_control module"]
+        /// Reader from xs_control module
         type XSControl_Reader = crate::xs_control::ffi::Reader;
+
         // ========================
         // Referenced types (opaque)
         // ========================

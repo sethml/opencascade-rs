@@ -12,12 +12,12 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::FreeBounds;
 impl FreeBounds {
-    #[doc = "Empty constructor"]
+    /// Empty constructor
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::FreeBounds_ctor()
     }
 
-    #[doc = "Builds forecasting free bounds of the <shape>. <shape> should be a compound of faces. This constructor is to be used for forecasting free edges with help of sewing analyzer BRepAlgo_Sewing which is called with tolerance <toler>. Free edges are connected into wires only when their ends are at distance less than <toler>. If <splitclosed> is True extracts closed sub-wires out of built closed wires. If <splitopen> is True extracts closed sub-wires out of built open wires."]
+    /// Builds forecasting free bounds of the <shape>. <shape> should be a compound of faces. This constructor is to be used for forecasting free edges with help of sewing analyzer BRepAlgo_Sewing which is called with tolerance <toler>. Free edges are connected into wires only when their ends are at distance less than <toler>. If <splitclosed> is True extracts closed sub-wires out of built closed wires. If <splitopen> is True extracts closed sub-wires out of built open wires.
     pub fn new_shape_real_bool2(
         shape: &ffi::TopoDS_Shape,
         toler: f64,
@@ -27,7 +27,7 @@ impl FreeBounds {
         ffi::FreeBounds_ctor_shape_real_bool2(shape, toler, splitclosed, splitopen)
     }
 
-    #[doc = "Builds actual free bounds of the <shape>. <shape> should be a compound of shells. This constructor is to be used for getting free edges (ones referenced by the only face) with help of analyzer ShapeAnalysis_Shell. Free edges are connected into wires only when they share the same vertex. If <splitclosed> is True extracts closed sub-wires out of built closed wires. If <splitopen> is True extracts closed sub-wires out of built open wires."]
+    /// Builds actual free bounds of the <shape>. <shape> should be a compound of shells. This constructor is to be used for getting free edges (ones referenced by the only face) with help of analyzer ShapeAnalysis_Shell. Free edges are connected into wires only when they share the same vertex. If <splitclosed> is True extracts closed sub-wires out of built closed wires. If <splitopen> is True extracts closed sub-wires out of built open wires.
     pub fn new_shape_bool3(
         shape: &ffi::TopoDS_Shape,
         splitclosed: bool,
@@ -37,7 +37,7 @@ impl FreeBounds {
         ffi::FreeBounds_ctor_shape_bool3(shape, splitclosed, splitopen, checkinternaledges)
     }
 
-    #[doc = "Builds sequence of <wires> out of sequence of not sorted <edges>. Tries to build wires of maximum length. Building a wire is stopped when no edges can be connected to it at its head or at its tail. Orientation of the edge can change when connecting. If <shared> is True connection is performed only when adjacent edges share the same vertex. If <shared> is False connection is performed only when ends of adjacent edges are at distance less than <toler>."]
+    /// Builds sequence of <wires> out of sequence of not sorted <edges>. Tries to build wires of maximum length. Building a wire is stopped when no edges can be connected to it at its head or at its tail. Orientation of the edge can change when connecting. If <shared> is True connection is performed only when adjacent edges share the same vertex. If <shared> is False connection is performed only when ends of adjacent edges are at distance less than <toler>.
     pub fn connect_edges_to_wires(
         edges: std::pin::Pin<&mut ffi::HandleTopToolsHSequenceOfShape>,
         toler: f64,
@@ -56,7 +56,7 @@ impl FreeBounds {
         ffi :: FreeBounds_connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape (iwires , toler , shared , owires)
     }
 
-    #[doc = "Builds sequence of <owires> out of sequence of not sorted <iwires>. Tries to build wires of maximum length. Building a wire is stopped when no wires can be connected to it at its head or at its tail. Orientation of the wire can change when connecting. If <shared> is True connection is performed only when adjacent wires share the same vertex. If <shared> is False connection is performed only when ends of adjacent wires are at distance less than <toler>. Map <vertices> stores the correspondence between original end vertices of the wires and new connecting vertices."]
+    /// Builds sequence of <owires> out of sequence of not sorted <iwires>. Tries to build wires of maximum length. Building a wire is stopped when no wires can be connected to it at its head or at its tail. Orientation of the wire can change when connecting. If <shared> is True connection is performed only when adjacent wires share the same vertex. If <shared> is False connection is performed only when ends of adjacent wires are at distance less than <toler>. Map <vertices> stores the correspondence between original end vertices of the wires and new connecting vertices.
     pub fn connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape_datamapofshapeshape(
         iwires: std::pin::Pin<&mut ffi::HandleTopToolsHSequenceOfShape>,
         toler: f64,
@@ -67,7 +67,7 @@ impl FreeBounds {
         ffi :: FreeBounds_connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape_datamapofshapeshape (iwires , toler , shared , owires , vertices)
     }
 
-    #[doc = "Extracts closed sub-wires out of <wires> and adds them to <closed>, open wires remained after extraction are put into <open>. If <shared> is True extraction is performed only when edges share the same vertex. If <shared> is False connection is performed only when ends of the edges are at distance less than <toler>."]
+    /// Extracts closed sub-wires out of <wires> and adds them to <closed>, open wires remained after extraction are put into <open>. If <shared> is True extraction is performed only when edges share the same vertex. If <shared> is False connection is performed only when ends of the edges are at distance less than <toler>.
     pub fn split_wires(
         wires: &ffi::HandleTopToolsHSequenceOfShape,
         toler: f64,
@@ -78,7 +78,7 @@ impl FreeBounds {
         ffi::FreeBounds_split_wires(wires, toler, shared, closed, open)
     }
 
-    #[doc = "Dispatches sequence of <wires> into two compounds <closed> for closed wires and <open> for open wires. If a compound is not empty wires are added into it."]
+    /// Dispatches sequence of <wires> into two compounds <closed> for closed wires and <open> for open wires. If a compound is not empty wires are added into it.
     pub fn dispatch_wires(
         wires: &ffi::HandleTopToolsHSequenceOfShape,
         closed: std::pin::Pin<&mut ffi::TopoDS_Compound>,
@@ -91,23 +91,24 @@ impl FreeBounds {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_shape_analysis.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== ShapeAnalysis_FreeBounds ========================"]
-        #[doc = "/// **Source:** `ShapeAnalysis_FreeBounds.hxx` - `ShapeAnalysis_FreeBounds`"]
-        #[doc = ""]
-        #[doc = "This class is intended to output free bounds of the shape. Free bounds are the wires consisting of edges referenced by the faces of the shape only once; these are the edges composing the outer boundary of the face or shell (as opposed to internal edges between the faces in the shell or seam edges on closed faces). This class works on two distinct types of shapes when analyzing their free bounds: 1. compound of faces. Analyzer of sewing algorithm (BRepAlgo_Sewing) is used for for forecasting free bounds that would be obtained after performing sewing 2. compound of shells. Actual free bounds (edges shared by the only face in the shell) are output in this case. ShapeAnalysis_Shell is used for that. When connecting edges into the wires algorithm tries to build wires of maximum length. Two options are provided for a user to extract closed sub-contours out of closed and/or open contours. Free bounds are returned as two compounds, one for closed and one for open wires. This class also provides some static methods for advanced use: connecting edges/wires to wires, extracting closed sub-wires out of wires, dispatching wires into compounds for closed and open wires. NOTE. Ends of the edge or wire mean hereafter their end vertices."]
+        /// ======================== ShapeAnalysis_FreeBounds ========================
+        /// /// **Source:** `ShapeAnalysis_FreeBounds.hxx` - `ShapeAnalysis_FreeBounds`
+        ///
+        /// This class is intended to output free bounds of the shape. Free bounds are the wires consisting of edges referenced by the faces of the shape only once; these are the edges composing the outer boundary of the face or shell (as opposed to internal edges between the faces in the shell or seam edges on closed faces). This class works on two distinct types of shapes when analyzing their free bounds: 1. compound of faces. Analyzer of sewing algorithm (BRepAlgo_Sewing) is used for for forecasting free bounds that would be obtained after performing sewing 2. compound of shells. Actual free bounds (edges shared by the only face in the shell) are output in this case. ShapeAnalysis_Shell is used for that. When connecting edges into the wires algorithm tries to build wires of maximum length. Two options are provided for a user to extract closed sub-contours out of closed and/or open contours. Free bounds are returned as two compounds, one for closed and one for open wires. This class also provides some static methods for advanced use: connecting edges/wires to wires, extracting closed sub-wires out of wires, dispatching wires into compounds for closed and open wires. NOTE. Ends of the edge or wire mean hereafter their end vertices.
         #[cxx_name = "ShapeAnalysis_FreeBounds"]
         type FreeBounds;
-        #[doc = "/// **Source:** `ShapeAnalysis_FreeBounds.hxx` - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor"]
+        /// /// **Source:** `ShapeAnalysis_FreeBounds.hxx` - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
+        ///
+        /// Empty constructor
         #[cxx_name = "ShapeAnalysis_FreeBounds_ctor"]
         fn FreeBounds_ctor() -> UniquePtr<FreeBounds>;
-        #[doc = "/// **Source:** `ShapeAnalysis_FreeBounds.hxx` - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`"]
-        #[doc = ""]
-        #[doc = "Builds forecasting free bounds of the <shape>. <shape> should be a compound of faces. This constructor is to be used for forecasting free edges with help of sewing analyzer BRepAlgo_Sewing which is called with tolerance <toler>. Free edges are connected into wires only when their ends are at distance less than <toler>. If <splitclosed> is True extracts closed sub-wires out of built closed wires. If <splitopen> is True extracts closed sub-wires out of built open wires."]
+        /// /// **Source:** `ShapeAnalysis_FreeBounds.hxx` - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
+        ///
+        /// Builds forecasting free bounds of the <shape>. <shape> should be a compound of faces. This constructor is to be used for forecasting free edges with help of sewing analyzer BRepAlgo_Sewing which is called with tolerance <toler>. Free edges are connected into wires only when their ends are at distance less than <toler>. If <splitclosed> is True extracts closed sub-wires out of built closed wires. If <splitopen> is True extracts closed sub-wires out of built open wires.
         #[cxx_name = "ShapeAnalysis_FreeBounds_ctor_shape_real_bool2"]
         fn FreeBounds_ctor_shape_real_bool2(
             shape: &TopoDS_Shape,
@@ -115,9 +116,9 @@ pub(crate) mod ffi {
             splitclosed: bool,
             splitopen: bool,
         ) -> UniquePtr<FreeBounds>;
-        #[doc = "/// **Source:** `ShapeAnalysis_FreeBounds.hxx` - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`"]
-        #[doc = ""]
-        #[doc = "Builds actual free bounds of the <shape>. <shape> should be a compound of shells. This constructor is to be used for getting free edges (ones referenced by the only face) with help of analyzer ShapeAnalysis_Shell. Free edges are connected into wires only when they share the same vertex. If <splitclosed> is True extracts closed sub-wires out of built closed wires. If <splitopen> is True extracts closed sub-wires out of built open wires."]
+        /// /// **Source:** `ShapeAnalysis_FreeBounds.hxx` - `ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds()`
+        ///
+        /// Builds actual free bounds of the <shape>. <shape> should be a compound of shells. This constructor is to be used for getting free edges (ones referenced by the only face) with help of analyzer ShapeAnalysis_Shell. Free edges are connected into wires only when they share the same vertex. If <splitclosed> is True extracts closed sub-wires out of built closed wires. If <splitopen> is True extracts closed sub-wires out of built open wires.
         #[cxx_name = "ShapeAnalysis_FreeBounds_ctor_shape_bool3"]
         fn FreeBounds_ctor_shape_bool3(
             shape: &TopoDS_Shape,
@@ -125,13 +126,13 @@ pub(crate) mod ffi {
             splitopen: bool,
             checkinternaledges: bool,
         ) -> UniquePtr<FreeBounds>;
-        #[doc = "Returns compound of closed wires out of free edges."]
+        /// Returns compound of closed wires out of free edges.
         #[cxx_name = "GetClosedWires"]
         fn get_closed_wires(self: &FreeBounds) -> &TopoDS_Compound;
-        #[doc = "Returns compound of open wires out of free edges."]
+        /// Returns compound of open wires out of free edges.
         #[cxx_name = "GetOpenWires"]
         fn get_open_wires(self: &FreeBounds) -> &TopoDS_Compound;
-        #[doc = "Builds sequence of <wires> out of sequence of not sorted <edges>. Tries to build wires of maximum length. Building a wire is stopped when no edges can be connected to it at its head or at its tail. Orientation of the edge can change when connecting. If <shared> is True connection is performed only when adjacent edges share the same vertex. If <shared> is False connection is performed only when ends of adjacent edges are at distance less than <toler>."]
+        /// Builds sequence of <wires> out of sequence of not sorted <edges>. Tries to build wires of maximum length. Building a wire is stopped when no edges can be connected to it at its head or at its tail. Orientation of the edge can change when connecting. If <shared> is True connection is performed only when adjacent edges share the same vertex. If <shared> is False connection is performed only when ends of adjacent edges are at distance less than <toler>.
         #[cxx_name = "ShapeAnalysis_FreeBounds_ConnectEdgesToWires"]
         fn FreeBounds_connect_edges_to_wires(
             edges: Pin<&mut HandleTopToolsHSequenceOfShape>,
@@ -146,7 +147,7 @@ pub(crate) mod ffi {
             shared: bool,
             owires: Pin<&mut HandleTopToolsHSequenceOfShape>,
         );
-        #[doc = "Builds sequence of <owires> out of sequence of not sorted <iwires>. Tries to build wires of maximum length. Building a wire is stopped when no wires can be connected to it at its head or at its tail. Orientation of the wire can change when connecting. If <shared> is True connection is performed only when adjacent wires share the same vertex. If <shared> is False connection is performed only when ends of adjacent wires are at distance less than <toler>. Map <vertices> stores the correspondence between original end vertices of the wires and new connecting vertices."]
+        /// Builds sequence of <owires> out of sequence of not sorted <iwires>. Tries to build wires of maximum length. Building a wire is stopped when no wires can be connected to it at its head or at its tail. Orientation of the wire can change when connecting. If <shared> is True connection is performed only when adjacent wires share the same vertex. If <shared> is False connection is performed only when ends of adjacent wires are at distance less than <toler>. Map <vertices> stores the correspondence between original end vertices of the wires and new connecting vertices.
         #[cxx_name = "ShapeAnalysis_FreeBounds_ConnectWiresToWires_handlehsequenceofshape_real_bool_handlehsequenceofshape_datamapofshapeshape"]
         fn FreeBounds_connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape_datamapofshapeshape(
             iwires: Pin<&mut HandleTopToolsHSequenceOfShape>,
@@ -155,7 +156,7 @@ pub(crate) mod ffi {
             owires: Pin<&mut HandleTopToolsHSequenceOfShape>,
             vertices: Pin<&mut TopTools_DataMapOfShapeShape>,
         );
-        #[doc = "Extracts closed sub-wires out of <wires> and adds them to <closed>, open wires remained after extraction are put into <open>. If <shared> is True extraction is performed only when edges share the same vertex. If <shared> is False connection is performed only when ends of the edges are at distance less than <toler>."]
+        /// Extracts closed sub-wires out of <wires> and adds them to <closed>, open wires remained after extraction are put into <open>. If <shared> is True extraction is performed only when edges share the same vertex. If <shared> is False connection is performed only when ends of the edges are at distance less than <toler>.
         #[cxx_name = "ShapeAnalysis_FreeBounds_SplitWires"]
         fn FreeBounds_split_wires(
             wires: &HandleTopToolsHSequenceOfShape,
@@ -164,44 +165,46 @@ pub(crate) mod ffi {
             closed: Pin<&mut HandleTopToolsHSequenceOfShape>,
             open: Pin<&mut HandleTopToolsHSequenceOfShape>,
         );
-        #[doc = "Dispatches sequence of <wires> into two compounds <closed> for closed wires and <open> for open wires. If a compound is not empty wires are added into it."]
+        /// Dispatches sequence of <wires> into two compounds <closed> for closed wires and <open> for open wires. If a compound is not empty wires are added into it.
         #[cxx_name = "ShapeAnalysis_FreeBounds_DispatchWires"]
         fn FreeBounds_dispatch_wires(
             wires: &HandleTopToolsHSequenceOfShape,
             closed: Pin<&mut TopoDS_Compound>,
             open: Pin<&mut TopoDS_Compound>,
         );
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "HArray2OfShape from top_tools module"]
+        /// HArray2OfShape from top_tools module
         type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
+        /// HSequenceOfShape from top_tools module
         type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
+
         // ========================
         // Referenced types (opaque)
         // ========================

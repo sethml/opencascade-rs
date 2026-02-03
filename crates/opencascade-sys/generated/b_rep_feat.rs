@@ -18,84 +18,84 @@
 #![allow(clippy::missing_safety_doc)]
 pub use ffi::MakeCylindricalHole;
 impl MakeCylindricalHole {
-    #[doc = "Empty constructor."]
+    /// Empty constructor.
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::MakeCylindricalHole_ctor()
     }
 
-    #[doc = "Upcast to BOPAlgo_BOP"]
+    /// Upcast to BOPAlgo_BOP
     pub fn as_bop_algo_bop(&self) -> &crate::bop_algo::BOP {
         ffi::make_cylindrical_hole_as_bop_algo_bop(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_BOP (mutable)"]
+    /// Upcast to BOPAlgo_BOP (mutable)
     pub fn as_bop_algo_bop_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::bop_algo::BOP> {
         ffi::make_cylindrical_hole_as_bop_algo_bop_mut(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_Builder"]
+    /// Upcast to BOPAlgo_Builder
     pub fn as_bop_algo_builder(&self) -> &crate::bop_algo::Builder {
         ffi::make_cylindrical_hole_as_bop_algo_builder(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_Builder (mutable)"]
+    /// Upcast to BOPAlgo_Builder (mutable)
     pub fn as_bop_algo_builder_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::bop_algo::Builder> {
         ffi::make_cylindrical_hole_as_bop_algo_builder_mut(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_BuilderShape"]
+    /// Upcast to BOPAlgo_BuilderShape
     pub fn as_bop_algo_builder_shape(&self) -> &crate::bop_algo::BuilderShape {
         ffi::make_cylindrical_hole_as_bop_algo_builder_shape(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_BuilderShape (mutable)"]
+    /// Upcast to BOPAlgo_BuilderShape (mutable)
     pub fn as_bop_algo_builder_shape_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::bop_algo::BuilderShape> {
         ffi::make_cylindrical_hole_as_bop_algo_builder_shape_mut(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_Options"]
+    /// Upcast to BOPAlgo_Options
     pub fn as_bop_algo_options(&self) -> &crate::bop_algo::Options {
         ffi::make_cylindrical_hole_as_bop_algo_options(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_Options (mutable)"]
+    /// Upcast to BOPAlgo_Options (mutable)
     pub fn as_bop_algo_options_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::bop_algo::Options> {
         ffi::make_cylindrical_hole_as_bop_algo_options_mut(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_ToolsProvider"]
+    /// Upcast to BOPAlgo_ToolsProvider
     pub fn as_bop_algo_tools_provider(&self) -> &crate::bop_algo::ToolsProvider {
         ffi::make_cylindrical_hole_as_bop_algo_tools_provider(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_ToolsProvider (mutable)"]
+    /// Upcast to BOPAlgo_ToolsProvider (mutable)
     pub fn as_bop_algo_tools_provider_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::bop_algo::ToolsProvider> {
         ffi::make_cylindrical_hole_as_bop_algo_tools_provider_mut(self)
     }
 
-    #[doc = "Upcast to BRepFeat_Builder"]
+    /// Upcast to BRepFeat_Builder
     pub fn as_builder(&self) -> &Builder {
         ffi::make_cylindrical_hole_as_builder(self)
     }
 
-    #[doc = "Upcast to BRepFeat_Builder (mutable)"]
+    /// Upcast to BRepFeat_Builder (mutable)
     pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
         ffi::make_cylindrical_hole_as_builder_mut(self)
     }
 }
 pub use ffi::MakeDPrism;
 impl MakeDPrism {
-    #[doc = "A face Pbase is selected in the shape Sbase to serve as the basis for the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed. Initializes the draft prism class"]
+    /// A face Pbase is selected in the shape Sbase to serve as the basis for the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed. Initializes the draft prism class
     pub fn new_shape_face2_real_int_bool(
         Sbase: &ffi::TopoDS_Shape,
         Pbase: &ffi::TopoDS_Face,
@@ -111,36 +111,36 @@ impl MakeDPrism {
         ffi::MakeDPrism_ctor()
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         ffi::make_d_prism_as_b_rep_builder_api_command(self)
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
         ffi::make_d_prism_as_b_rep_builder_api_command_mut(self)
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         ffi::make_d_prism_as_b_rep_builder_api_make_shape(self)
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         ffi::make_d_prism_as_b_rep_builder_api_make_shape_mut(self)
     }
 
-    #[doc = "Upcast to BRepFeat_Form"]
+    /// Upcast to BRepFeat_Form
     pub fn as_form(&self) -> &Form {
         ffi::make_d_prism_as_form(self)
     }
 
-    #[doc = "Upcast to BRepFeat_Form (mutable)"]
+    /// Upcast to BRepFeat_Form (mutable)
     pub fn as_form_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Form> {
         ffi::make_d_prism_as_form_mut(self)
     }
@@ -151,24 +151,24 @@ impl MakeDPrism {
 }
 pub use ffi::Form;
 impl Form {
-    #[doc = "Upcast to BRepBuilderAPI_Command"]
+    /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         ffi::form_as_b_rep_builder_api_command(self)
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_Command (mutable)"]
+    /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
         ffi::form_as_b_rep_builder_api_command_mut(self)
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape"]
+    /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         ffi::form_as_b_rep_builder_api_make_shape(self)
     }
 
-    #[doc = "Upcast to BRepBuilderAPI_MakeShape (mutable)"]
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
@@ -185,60 +185,60 @@ impl Builder {
         ffi::Builder_ctor()
     }
 
-    #[doc = "Upcast to BOPAlgo_BOP"]
+    /// Upcast to BOPAlgo_BOP
     pub fn as_bop_algo_bop(&self) -> &crate::bop_algo::BOP {
         ffi::builder_as_bop_algo_bop(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_BOP (mutable)"]
+    /// Upcast to BOPAlgo_BOP (mutable)
     pub fn as_bop_algo_bop_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::bop_algo::BOP> {
         ffi::builder_as_bop_algo_bop_mut(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_Builder"]
+    /// Upcast to BOPAlgo_Builder
     pub fn as_bop_algo_builder(&self) -> &crate::bop_algo::Builder {
         ffi::builder_as_bop_algo_builder(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_Builder (mutable)"]
+    /// Upcast to BOPAlgo_Builder (mutable)
     pub fn as_bop_algo_builder_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::bop_algo::Builder> {
         ffi::builder_as_bop_algo_builder_mut(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_BuilderShape"]
+    /// Upcast to BOPAlgo_BuilderShape
     pub fn as_bop_algo_builder_shape(&self) -> &crate::bop_algo::BuilderShape {
         ffi::builder_as_bop_algo_builder_shape(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_BuilderShape (mutable)"]
+    /// Upcast to BOPAlgo_BuilderShape (mutable)
     pub fn as_bop_algo_builder_shape_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::bop_algo::BuilderShape> {
         ffi::builder_as_bop_algo_builder_shape_mut(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_Options"]
+    /// Upcast to BOPAlgo_Options
     pub fn as_bop_algo_options(&self) -> &crate::bop_algo::Options {
         ffi::builder_as_bop_algo_options(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_Options (mutable)"]
+    /// Upcast to BOPAlgo_Options (mutable)
     pub fn as_bop_algo_options_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::bop_algo::Options> {
         ffi::builder_as_bop_algo_options_mut(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_ToolsProvider"]
+    /// Upcast to BOPAlgo_ToolsProvider
     pub fn as_bop_algo_tools_provider(&self) -> &crate::bop_algo::ToolsProvider {
         ffi::builder_as_bop_algo_tools_provider(self)
     }
 
-    #[doc = "Upcast to BOPAlgo_ToolsProvider (mutable)"]
+    /// Upcast to BOPAlgo_ToolsProvider (mutable)
     pub fn as_bop_algo_tools_provider_mut(
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::bop_algo::ToolsProvider> {
@@ -249,30 +249,31 @@ impl Builder {
 pub(crate) mod ffi {
     unsafe extern "C++" {
         include!("wrapper_b_rep_feat.hxx");
+
         // ========================
         // Module types and methods
         // ========================
-        #[doc = " ======================== BRepFeat_MakeCylindricalHole ========================"]
-        #[doc = "/// **Source:** `BRepFeat_MakeCylindricalHole.hxx` - `BRepFeat_MakeCylindricalHole`"]
-        #[doc = ""]
-        #[doc = "Provides a tool to make cylindrical holes on a shape."]
+        /// ======================== BRepFeat_MakeCylindricalHole ========================
+        /// /// **Source:** `BRepFeat_MakeCylindricalHole.hxx` - `BRepFeat_MakeCylindricalHole`
+        ///
+        /// Provides a tool to make cylindrical holes on a shape.
         #[cxx_name = "BRepFeat_MakeCylindricalHole"]
         type MakeCylindricalHole;
-        #[doc = "/// **Source:** `BRepFeat_MakeCylindricalHole.hxx` - `BRepFeat_MakeCylindricalHole::BRepFeat_MakeCylindricalHole()`"]
-        #[doc = ""]
-        #[doc = "Empty constructor."]
+        /// /// **Source:** `BRepFeat_MakeCylindricalHole.hxx` - `BRepFeat_MakeCylindricalHole::BRepFeat_MakeCylindricalHole()`
+        ///
+        /// Empty constructor.
         #[cxx_name = "BRepFeat_MakeCylindricalHole_ctor"]
         fn MakeCylindricalHole_ctor() -> UniquePtr<MakeCylindricalHole>;
-        #[doc = "Sets the axis of the hole(s)."]
+        /// Sets the axis of the hole(s).
         #[cxx_name = "Init"]
         fn init_ax1(self: Pin<&mut MakeCylindricalHole>, Axis: &gp_Ax1);
-        #[doc = "Sets the shape and  axis on which hole(s)  will be performed."]
+        /// Sets the shape and  axis on which hole(s)  will be performed.
         #[cxx_name = "Init"]
         fn init_shape_ax1(self: Pin<&mut MakeCylindricalHole>, S: &TopoDS_Shape, Axis: &gp_Ax1);
-        #[doc = "Performs every  hole of    radius  <Radius>.  This command  has the  same effect as   a cut operation with an  infinite cylinder   defined by the  given axis and <Radius>."]
+        /// Performs every  hole of    radius  <Radius>.  This command  has the  same effect as   a cut operation with an  infinite cylinder   defined by the  given axis and <Radius>.
         #[cxx_name = "Perform"]
         fn perform_real(self: Pin<&mut MakeCylindricalHole>, Radius: f64);
-        #[doc = "Performs every  hole  of  radius  <Radius> located between PFrom  and  PTo  on the  given  axis.   If <WithControl> is set  to Standard_False no control are  done  on   the  resulting  shape   after  the operation is performed."]
+        /// Performs every  hole  of  radius  <Radius> located between PFrom  and  PTo  on the  given  axis.   If <WithControl> is set  to Standard_False no control are  done  on   the  resulting  shape   after  the operation is performed.
         #[cxx_name = "Perform"]
         fn perform_real3_bool(
             self: Pin<&mut MakeCylindricalHole>,
@@ -281,13 +282,13 @@ pub(crate) mod ffi {
             PTo: f64,
             WithControl: bool,
         );
-        #[doc = "Performs the first hole of radius <Radius>, in the direction of  the defined axis. First hole signify first encountered after the origin of the axis. If <WithControl> is set  to Standard_False no control are  done  on   the  resulting  shape   after  the operation is performed."]
+        /// Performs the first hole of radius <Radius>, in the direction of  the defined axis. First hole signify first encountered after the origin of the axis. If <WithControl> is set  to Standard_False no control are  done  on   the  resulting  shape   after  the operation is performed.
         #[cxx_name = "PerformThruNext"]
         fn perform_thru_next(self: Pin<&mut MakeCylindricalHole>, Radius: f64, WithControl: bool);
-        #[doc = "Performs every  hole of   radius  <Radius> located after  the   origin  of   the given    axis.    If <WithControl> is  set to Standard_False no control are done   on   the  resulting  shape   after  the operation is performed."]
+        /// Performs every  hole of   radius  <Radius> located after  the   origin  of   the given    axis.    If <WithControl> is  set to Standard_False no control are done   on   the  resulting  shape   after  the operation is performed.
         #[cxx_name = "PerformUntilEnd"]
         fn perform_until_end(self: Pin<&mut MakeCylindricalHole>, Radius: f64, WithControl: bool);
-        #[doc = "Performs a  blind   hole of radius    <Radius> and length <Length>.  The length is  measured from the origin of the given  axis. If <WithControl> is set to  Standard_False no  control  are done after the operation is performed."]
+        /// Performs a  blind   hole of radius    <Radius> and length <Length>.  The length is  measured from the origin of the given  axis. If <WithControl> is set to  Standard_False no  control  are done after the operation is performed.
         #[cxx_name = "PerformBlind"]
         fn perform_blind(
             self: Pin<&mut MakeCylindricalHole>,
@@ -295,74 +296,74 @@ pub(crate) mod ffi {
             Length: f64,
             WithControl: bool,
         );
-        #[doc = "Builds the    resulting shape  (redefined     from MakeShape). Invalidates the  given parts  of tools if  any,   and performs the  result   of the local operation."]
+        /// Builds the    resulting shape  (redefined     from MakeShape). Invalidates the  given parts  of tools if  any,   and performs the  result   of the local operation.
         #[cxx_name = "Build"]
         fn build(self: Pin<&mut MakeCylindricalHole>);
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BOP"]
+        /// Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BOP
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP"]
         fn make_cylindrical_hole_as_bop_algo_bop(self_: &MakeCylindricalHole) -> &BOPAlgo_BOP;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BOP (mutable)"]
+        /// Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BOP (mutable)
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP_mut"]
         fn make_cylindrical_hole_as_bop_algo_bop_mut(
             self_: Pin<&mut MakeCylindricalHole>,
         ) -> Pin<&mut BOPAlgo_BOP>;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_Builder"]
+        /// Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_Builder
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_Builder"]
         fn make_cylindrical_hole_as_bop_algo_builder(
             self_: &MakeCylindricalHole,
         ) -> &BOPAlgo_Builder;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_Builder (mutable)"]
+        /// Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_Builder (mutable)
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_Builder_mut"]
         fn make_cylindrical_hole_as_bop_algo_builder_mut(
             self_: Pin<&mut MakeCylindricalHole>,
         ) -> Pin<&mut BOPAlgo_Builder>;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BuilderShape"]
+        /// Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BuilderShape
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_BuilderShape"]
         fn make_cylindrical_hole_as_bop_algo_builder_shape(
             self_: &MakeCylindricalHole,
         ) -> &BOPAlgo_BuilderShape;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BuilderShape (mutable)"]
+        /// Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_BuilderShape (mutable)
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_BuilderShape_mut"]
         fn make_cylindrical_hole_as_bop_algo_builder_shape_mut(
             self_: Pin<&mut MakeCylindricalHole>,
         ) -> Pin<&mut BOPAlgo_BuilderShape>;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_Options"]
+        /// Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_Options
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_Options"]
         fn make_cylindrical_hole_as_bop_algo_options(
             self_: &MakeCylindricalHole,
         ) -> &BOPAlgo_Options;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_Options (mutable)"]
+        /// Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_Options (mutable)
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_Options_mut"]
         fn make_cylindrical_hole_as_bop_algo_options_mut(
             self_: Pin<&mut MakeCylindricalHole>,
         ) -> Pin<&mut BOPAlgo_Options>;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_ToolsProvider"]
+        /// Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_ToolsProvider
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_ToolsProvider"]
         fn make_cylindrical_hole_as_bop_algo_tools_provider(
             self_: &MakeCylindricalHole,
         ) -> &BOPAlgo_ToolsProvider;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_ToolsProvider (mutable)"]
+        /// Upcast BRepFeat_MakeCylindricalHole to BOPAlgo_ToolsProvider (mutable)
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BOPAlgo_ToolsProvider_mut"]
         fn make_cylindrical_hole_as_bop_algo_tools_provider_mut(
             self_: Pin<&mut MakeCylindricalHole>,
         ) -> Pin<&mut BOPAlgo_ToolsProvider>;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BRepFeat_Builder"]
+        /// Upcast BRepFeat_MakeCylindricalHole to BRepFeat_Builder
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder"]
         fn make_cylindrical_hole_as_builder(self_: &MakeCylindricalHole) -> &Builder;
-        #[doc = "Upcast BRepFeat_MakeCylindricalHole to BRepFeat_Builder (mutable)"]
+        /// Upcast BRepFeat_MakeCylindricalHole to BRepFeat_Builder (mutable)
         #[cxx_name = "BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder_mut"]
         fn make_cylindrical_hole_as_builder_mut(
             self_: Pin<&mut MakeCylindricalHole>,
         ) -> Pin<&mut Builder>;
-        #[doc = " ======================== BRepFeat_MakeDPrism ========================"]
-        #[doc = "/// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism`"]
-        #[doc = ""]
-        #[doc = "Describes functions to build draft prism topologies from basis shape surfaces. These can be depressions or protrusions. The semantics of draft prism feature creation is based on the construction of shapes: -          along a length -          up to a limiting face -          from a limiting face to a height. The shape defining construction of the draft prism feature can be either the supporting edge or the concerned area of a face. In case of the supporting edge, this contour can be attached to a face of the basis shape by binding. When the contour is bound to this face, the information that the contour will slide on the face becomes available to the relevant class methods. In case of the concerned area of a face, you could, for example, cut it out and move it to a different height which will define the limiting face of a protrusion or depression."]
+        /// ======================== BRepFeat_MakeDPrism ========================
+        /// /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism`
+        ///
+        /// Describes functions to build draft prism topologies from basis shape surfaces. These can be depressions or protrusions. The semantics of draft prism feature creation is based on the construction of shapes: -          along a length -          up to a limiting face -          from a limiting face to a height. The shape defining construction of the draft prism feature can be either the supporting edge or the concerned area of a face. In case of the supporting edge, this contour can be attached to a face of the basis shape by binding. When the contour is bound to this face, the information that the contour will slide on the face becomes available to the relevant class methods. In case of the concerned area of a face, you could, for example, cut it out and move it to a different height which will define the limiting face of a protrusion or depression.
         #[cxx_name = "BRepFeat_MakeDPrism"]
         type MakeDPrism;
-        #[doc = "/// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`"]
-        #[doc = ""]
-        #[doc = "A face Pbase is selected in the shape Sbase to serve as the basis for the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed. Initializes the draft prism class"]
+        /// /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
+        ///
+        /// A face Pbase is selected in the shape Sbase to serve as the basis for the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed. Initializes the draft prism class
         #[cxx_name = "BRepFeat_MakeDPrism_ctor_shape_face2_real_int_bool"]
         fn MakeDPrism_ctor_shape_face2_real_int_bool(
             Sbase: &TopoDS_Shape,
@@ -372,10 +373,10 @@ pub(crate) mod ffi {
             Fuse: i32,
             Modify: bool,
         ) -> UniquePtr<MakeDPrism>;
-        #[doc = "/// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`"]
+        /// /// **Source:** `BRepFeat_MakeDPrism.hxx` - `BRepFeat_MakeDPrism::BRepFeat_MakeDPrism()`
         #[cxx_name = "BRepFeat_MakeDPrism_ctor"]
         fn MakeDPrism_ctor() -> UniquePtr<MakeDPrism>;
-        #[doc = "Initializes this algorithm for building draft prisms along surfaces. A face Pbase is selected in the basis shape Sbase to serve as the basis from the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: -   removing matter with a Boolean cut using the setting 0 -   adding matter with Boolean fusion using the setting  1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed."]
+        /// Initializes this algorithm for building draft prisms along surfaces. A face Pbase is selected in the basis shape Sbase to serve as the basis from the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: -   removing matter with a Boolean cut using the setting 0 -   adding matter with Boolean fusion using the setting  1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
         #[cxx_name = "Init"]
         fn init(
             self: Pin<&mut MakeDPrism>,
@@ -386,173 +387,173 @@ pub(crate) mod ffi {
             Fuse: i32,
             Modify: bool,
         );
-        #[doc = "Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the  face does not belong to the basis shape, or the edge to the prismed shape."]
+        /// Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the  face does not belong to the basis shape, or the edge to the prismed shape.
         #[cxx_name = "Add"]
         fn add(self: Pin<&mut MakeDPrism>, E: &TopoDS_Edge, OnFace: &TopoDS_Face);
         #[cxx_name = "Perform"]
         fn perform_real(self: Pin<&mut MakeDPrism>, Height: f64);
         #[cxx_name = "Perform"]
         fn perform_shape(self: Pin<&mut MakeDPrism>, Until: &TopoDS_Shape);
-        #[doc = "Assigns one of the following semantics -   to a height Height -   to a face Until -   from a face From to a height Until. Reconstructs the feature topologically according to the semantic option chosen."]
+        /// Assigns one of the following semantics -   to a height Height -   to a face Until -   from a face From to a height Until. Reconstructs the feature topologically according to the semantic option chosen.
         #[cxx_name = "Perform"]
         fn perform_shape2(self: Pin<&mut MakeDPrism>, From: &TopoDS_Shape, Until: &TopoDS_Shape);
-        #[doc = "Realizes a semi-infinite prism, limited by the position of the prism base."]
+        /// Realizes a semi-infinite prism, limited by the position of the prism base.
         #[cxx_name = "PerformUntilEnd"]
         fn perform_until_end(self: Pin<&mut MakeDPrism>);
-        #[doc = "Realizes a semi-infinite prism, limited by the face Funtil."]
+        /// Realizes a semi-infinite prism, limited by the face Funtil.
         #[cxx_name = "PerformFromEnd"]
         fn perform_from_end(self: Pin<&mut MakeDPrism>, FUntil: &TopoDS_Shape);
-        #[doc = "Builds an infinite prism. The infinite descendants will not be kept in the result."]
+        /// Builds an infinite prism. The infinite descendants will not be kept in the result.
         #[cxx_name = "PerformThruAll"]
         fn perform_thru_all(self: Pin<&mut MakeDPrism>);
-        #[doc = "Assigns both a limiting shape, Until from TopoDS_Shape, and a height, Height at which to stop generation of the prism feature."]
+        /// Assigns both a limiting shape, Until from TopoDS_Shape, and a height, Height at which to stop generation of the prism feature.
         #[cxx_name = "PerformUntilHeight"]
         fn perform_until_height(self: Pin<&mut MakeDPrism>, Until: &TopoDS_Shape, Height: f64);
         #[cxx_name = "Curves"]
         fn curves(self: Pin<&mut MakeDPrism>, S: Pin<&mut TColGeom_SequenceOfCurve>);
-        #[doc = "Determination of TopEdges and LatEdges. sig = 1 -> TopEdges = FirstShape of the DPrism sig = 2 -> TOpEdges = LastShape of the DPrism"]
+        /// Determination of TopEdges and LatEdges. sig = 1 -> TopEdges = FirstShape of the DPrism sig = 2 -> TOpEdges = LastShape of the DPrism
         #[cxx_name = "BossEdges"]
         fn boss_edges(self: Pin<&mut MakeDPrism>, sig: i32);
-        #[doc = "Returns the list of TopoDS Edges of the top of the boss."]
+        /// Returns the list of TopoDS Edges of the top of the boss.
         #[cxx_name = "TopEdges"]
         fn top_edges(self: Pin<&mut MakeDPrism>) -> &TopTools_ListOfShape;
-        #[doc = "Returns the list of TopoDS Edges of the bottom of the boss."]
+        /// Returns the list of TopoDS Edges of the bottom of the boss.
         #[cxx_name = "LatEdges"]
         fn lat_edges(self: Pin<&mut MakeDPrism>) -> &TopTools_ListOfShape;
         #[cxx_name = "BRepFeat_MakeDPrism_BarycCurve"]
         fn MakeDPrism_baryc_curve(self_: Pin<&mut MakeDPrism>) -> UniquePtr<HandleGeomCurve>;
-        #[doc = "Upcast BRepFeat_MakeDPrism to BRepBuilderAPI_Command"]
+        /// Upcast BRepFeat_MakeDPrism to BRepBuilderAPI_Command
         #[cxx_name = "BRepFeat_MakeDPrism_as_BRepBuilderAPI_Command"]
         fn make_d_prism_as_b_rep_builder_api_command(self_: &MakeDPrism)
             -> &BRepBuilderAPI_Command;
-        #[doc = "Upcast BRepFeat_MakeDPrism to BRepBuilderAPI_Command (mutable)"]
+        /// Upcast BRepFeat_MakeDPrism to BRepBuilderAPI_Command (mutable)
         #[cxx_name = "BRepFeat_MakeDPrism_as_BRepBuilderAPI_Command_mut"]
         fn make_d_prism_as_b_rep_builder_api_command_mut(
             self_: Pin<&mut MakeDPrism>,
         ) -> Pin<&mut BRepBuilderAPI_Command>;
-        #[doc = "Upcast BRepFeat_MakeDPrism to BRepBuilderAPI_MakeShape"]
+        /// Upcast BRepFeat_MakeDPrism to BRepBuilderAPI_MakeShape
         #[cxx_name = "BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape"]
         fn make_d_prism_as_b_rep_builder_api_make_shape(
             self_: &MakeDPrism,
         ) -> &BRepBuilderAPI_MakeShape;
-        #[doc = "Upcast BRepFeat_MakeDPrism to BRepBuilderAPI_MakeShape (mutable)"]
+        /// Upcast BRepFeat_MakeDPrism to BRepBuilderAPI_MakeShape (mutable)
         #[cxx_name = "BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape_mut"]
         fn make_d_prism_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut MakeDPrism>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
-        #[doc = "Upcast BRepFeat_MakeDPrism to BRepFeat_Form"]
+        /// Upcast BRepFeat_MakeDPrism to BRepFeat_Form
         #[cxx_name = "BRepFeat_MakeDPrism_as_BRepFeat_Form"]
         fn make_d_prism_as_form(self_: &MakeDPrism) -> &Form;
-        #[doc = "Upcast BRepFeat_MakeDPrism to BRepFeat_Form (mutable)"]
+        /// Upcast BRepFeat_MakeDPrism to BRepFeat_Form (mutable)
         #[cxx_name = "BRepFeat_MakeDPrism_as_BRepFeat_Form_mut"]
         fn make_d_prism_as_form_mut(self_: Pin<&mut MakeDPrism>) -> Pin<&mut Form>;
-        #[doc = " ======================== BRepFeat_Form ========================"]
-        #[doc = "/// **Source:** `BRepFeat_Form.hxx` - `BRepFeat_Form`"]
-        #[doc = ""]
-        #[doc = "Provides general functions to build form features. Form features can be depressions or protrusions and include the following types: -          Cylinder -          Draft Prism -          Prism -          Revolved feature -          Pipe In each case, you have a choice of operation type between the following: -          removing matter (a Boolean cut: Fuse setting 0) -          adding matter (Boolean fusion: Fuse setting 1) The semantics of form feature creation is based on the construction of shapes: -      along a length -      up to a limiting face -      from a limiting face to a  height -      above and/or below a plane The shape defining construction of the feature can be either the supporting edge or the concerned area of a face. In case of the supporting edge, this contour can be attached to a face of the basis shape by binding. When the contour is bound to this face, the information that the contour will slide on the face becomes available to the relevant class methods. In case of the concerned area of a face, you could, for example, cut it out and move it to a different height which will define the limiting face of a protrusion or depression. Topological definition with local operations of this sort makes calculations simpler and faster than a global operation. The latter would entail a second phase of removing unwanted matter to get the same result."]
+        /// ======================== BRepFeat_Form ========================
+        /// /// **Source:** `BRepFeat_Form.hxx` - `BRepFeat_Form`
+        ///
+        /// Provides general functions to build form features. Form features can be depressions or protrusions and include the following types: -          Cylinder -          Draft Prism -          Prism -          Revolved feature -          Pipe In each case, you have a choice of operation type between the following: -          removing matter (a Boolean cut: Fuse setting 0) -          adding matter (Boolean fusion: Fuse setting 1) The semantics of form feature creation is based on the construction of shapes: -      along a length -      up to a limiting face -      from a limiting face to a  height -      above and/or below a plane The shape defining construction of the feature can be either the supporting edge or the concerned area of a face. In case of the supporting edge, this contour can be attached to a face of the basis shape by binding. When the contour is bound to this face, the information that the contour will slide on the face becomes available to the relevant class methods. In case of the concerned area of a face, you could, for example, cut it out and move it to a different height which will define the limiting face of a protrusion or depression. Topological definition with local operations of this sort makes calculations simpler and faster than a global operation. The latter would entail a second phase of removing unwanted matter to get the same result.
         #[cxx_name = "BRepFeat_Form"]
         type Form;
-        #[doc = "returns the list of generated Faces."]
+        /// returns the list of generated Faces.
         #[cxx_name = "Modified"]
         fn modified(self: Pin<&mut Form>, F: &TopoDS_Shape) -> &TopTools_ListOfShape;
-        #[doc = "returns a list of the created faces from the shape <S>."]
+        /// returns a list of the created faces from the shape <S>.
         #[cxx_name = "Generated"]
         fn generated(self: Pin<&mut Form>, S: &TopoDS_Shape) -> &TopTools_ListOfShape;
         #[cxx_name = "IsDeleted"]
         fn is_deleted(self: Pin<&mut Form>, S: &TopoDS_Shape) -> bool;
-        #[doc = "Returns the list  of shapes created  at the bottom  of the created form.  It may be an empty list."]
+        /// Returns the list  of shapes created  at the bottom  of the created form.  It may be an empty list.
         #[cxx_name = "FirstShape"]
         fn first_shape(self: &Form) -> &TopTools_ListOfShape;
-        #[doc = "Returns  the list of shapes  created at the top of the created form.  It may be an empty list."]
+        /// Returns  the list of shapes  created at the top of the created form.  It may be an empty list.
         #[cxx_name = "LastShape"]
         fn last_shape(self: &Form) -> &TopTools_ListOfShape;
-        #[doc = "Returns a list of the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape. The list provides the information necessary for subsequent addition of fillets. It may be an empty list."]
+        /// Returns a list of the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape. The list provides the information necessary for subsequent addition of fillets. It may be an empty list.
         #[cxx_name = "NewEdges"]
         fn new_edges(self: &Form) -> &TopTools_ListOfShape;
-        #[doc = "Returns a list of the tangent edges among the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape and are tangent to the face against which the feature is built. The list provides the information necessary for subsequent addition of fillets. It may be an empty list. If an edge is tangent, no fillet is possible, and the edge must subsequently be removed if you want to add a fillet."]
+        /// Returns a list of the tangent edges among the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape and are tangent to the face against which the feature is built. The list provides the information necessary for subsequent addition of fillets. It may be an empty list. If an edge is tangent, no fillet is possible, and the edge must subsequently be removed if you want to add a fillet.
         #[cxx_name = "TgtEdges"]
         fn tgt_edges(self: &Form) -> &TopTools_ListOfShape;
-        #[doc = "Initializes the topological construction if the basis shape is present."]
+        /// Initializes the topological construction if the basis shape is present.
         #[cxx_name = "BasisShapeValid"]
         fn basis_shape_valid(self: Pin<&mut Form>);
-        #[doc = "Initializes the topological construction if the generated shape S is present."]
+        /// Initializes the topological construction if the generated shape S is present.
         #[cxx_name = "GeneratedShapeValid"]
         fn generated_shape_valid(self: Pin<&mut Form>);
-        #[doc = "Initializes the topological construction if the shape is present from the specified integer on."]
+        /// Initializes the topological construction if the shape is present from the specified integer on.
         #[cxx_name = "ShapeFromValid"]
         fn shape_from_valid(self: Pin<&mut Form>);
-        #[doc = "Initializes the topological construction if the shape is present until the specified integer."]
+        /// Initializes the topological construction if the shape is present until the specified integer.
         #[cxx_name = "ShapeUntilValid"]
         fn shape_until_valid(self: Pin<&mut Form>);
-        #[doc = "Initializes the topological construction if the glued face is present."]
+        /// Initializes the topological construction if the glued face is present.
         #[cxx_name = "GluedFacesValid"]
         fn glued_faces_valid(self: Pin<&mut Form>);
-        #[doc = "Initializes the topological construction if the sketch face is present. If the sketch face is inside the basis shape, local operations such as glueing can be performed."]
+        /// Initializes the topological construction if the sketch face is present. If the sketch face is inside the basis shape, local operations such as glueing can be performed.
         #[cxx_name = "SketchFaceValid"]
         fn sketch_face_valid(self: Pin<&mut Form>);
-        #[doc = "Initializes the topological construction if the selected face is present."]
+        /// Initializes the topological construction if the selected face is present.
         #[cxx_name = "PerfSelectionValid"]
         fn perf_selection_valid(self: Pin<&mut Form>);
         #[cxx_name = "Curves"]
         fn curves(self: Pin<&mut Form>, S: Pin<&mut TColGeom_SequenceOfCurve>);
         #[cxx_name = "BRepFeat_Form_BarycCurve"]
         fn Form_baryc_curve(self_: Pin<&mut Form>) -> UniquePtr<HandleGeomCurve>;
-        #[doc = "Upcast BRepFeat_Form to BRepBuilderAPI_Command"]
+        /// Upcast BRepFeat_Form to BRepBuilderAPI_Command
         #[cxx_name = "BRepFeat_Form_as_BRepBuilderAPI_Command"]
         fn form_as_b_rep_builder_api_command(self_: &Form) -> &BRepBuilderAPI_Command;
-        #[doc = "Upcast BRepFeat_Form to BRepBuilderAPI_Command (mutable)"]
+        /// Upcast BRepFeat_Form to BRepBuilderAPI_Command (mutable)
         #[cxx_name = "BRepFeat_Form_as_BRepBuilderAPI_Command_mut"]
         fn form_as_b_rep_builder_api_command_mut(
             self_: Pin<&mut Form>,
         ) -> Pin<&mut BRepBuilderAPI_Command>;
-        #[doc = "Upcast BRepFeat_Form to BRepBuilderAPI_MakeShape"]
+        /// Upcast BRepFeat_Form to BRepBuilderAPI_MakeShape
         #[cxx_name = "BRepFeat_Form_as_BRepBuilderAPI_MakeShape"]
         fn form_as_b_rep_builder_api_make_shape(self_: &Form) -> &BRepBuilderAPI_MakeShape;
-        #[doc = "Upcast BRepFeat_Form to BRepBuilderAPI_MakeShape (mutable)"]
+        /// Upcast BRepFeat_Form to BRepBuilderAPI_MakeShape (mutable)
         #[cxx_name = "BRepFeat_Form_as_BRepBuilderAPI_MakeShape_mut"]
         fn form_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut Form>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
-        #[doc = " ======================== BRepFeat_Builder ========================"]
-        #[doc = "/// **Source:** `BRepFeat_Builder.hxx` - `BRepFeat_Builder`"]
-        #[doc = ""]
-        #[doc = "Provides a basic tool to implement features topological operations. The main goal of the algorithm is to perform the result of the operation according to the kept parts of the tool. Input data: a) DS; b) The kept parts of the tool; If the map of the kept parts of the tool is not filled boolean operation of the given type will be performed; c) Operation required. Steps: a) Fill myShapes, myRemoved maps; b) Rebuild edges and faces; c) Build images of the object; d) Build the result of the operation. Result: Result shape of the operation required."]
+        /// ======================== BRepFeat_Builder ========================
+        /// /// **Source:** `BRepFeat_Builder.hxx` - `BRepFeat_Builder`
+        ///
+        /// Provides a basic tool to implement features topological operations. The main goal of the algorithm is to perform the result of the operation according to the kept parts of the tool. Input data: a) DS; b) The kept parts of the tool; If the map of the kept parts of the tool is not filled boolean operation of the given type will be performed; c) Operation required. Steps: a) Fill myShapes, myRemoved maps; b) Rebuild edges and faces; c) Build images of the object; d) Build the result of the operation. Result: Result shape of the operation required.
         #[cxx_name = "BRepFeat_Builder"]
         type Builder;
-        #[doc = "/// **Source:** `BRepFeat_Builder.hxx` - `BRepFeat_Builder::BRepFeat_Builder()`"]
+        /// /// **Source:** `BRepFeat_Builder.hxx` - `BRepFeat_Builder::BRepFeat_Builder()`
         #[cxx_name = "BRepFeat_Builder_ctor"]
         fn Builder_ctor() -> UniquePtr<Builder>;
-        #[doc = "Clears internal fields and arguments."]
+        /// Clears internal fields and arguments.
         #[cxx_name = "Clear"]
         fn clear(self: Pin<&mut Builder>);
-        #[doc = "Initializes the object of local boolean operation."]
+        /// Initializes the object of local boolean operation.
         #[cxx_name = "Init"]
         fn init_shape(self: Pin<&mut Builder>, theShape: &TopoDS_Shape);
-        #[doc = "Initializes the arguments of local boolean operation."]
+        /// Initializes the arguments of local boolean operation.
         #[cxx_name = "Init"]
         fn init_shape2(self: Pin<&mut Builder>, theShape: &TopoDS_Shape, theTool: &TopoDS_Shape);
-        #[doc = "Sets the operation of local boolean operation. If theFuse = 0 than the operation is CUT, otherwise FUSE."]
+        /// Sets the operation of local boolean operation. If theFuse = 0 than the operation is CUT, otherwise FUSE.
         #[cxx_name = "SetOperation"]
         fn set_operation_int(self: Pin<&mut Builder>, theFuse: i32);
-        #[doc = "Sets the operation of local boolean operation. If theFlag = TRUE it means that no selection of parts of the tool is needed, t.e. no second part. In that case if theFuse = 0 than operation is COMMON, otherwise CUT21. If theFlag = FALSE SetOperation(theFuse) function  is called."]
+        /// Sets the operation of local boolean operation. If theFlag = TRUE it means that no selection of parts of the tool is needed, t.e. no second part. In that case if theFuse = 0 than operation is COMMON, otherwise CUT21. If theFlag = FALSE SetOperation(theFuse) function  is called.
         #[cxx_name = "SetOperation"]
         fn set_operation_int_bool(self: Pin<&mut Builder>, theFuse: i32, theFlag: bool);
-        #[doc = "Collects parts of the tool."]
+        /// Collects parts of the tool.
         #[cxx_name = "PartsOfTool"]
         fn parts_of_tool(self: Pin<&mut Builder>, theLT: Pin<&mut TopTools_ListOfShape>);
-        #[doc = "Initializes parts of the tool for second step of algorithm. Collects shapes and all sub-shapes into myShapes map."]
+        /// Initializes parts of the tool for second step of algorithm. Collects shapes and all sub-shapes into myShapes map.
         #[cxx_name = "KeepParts"]
         fn keep_parts(self: Pin<&mut Builder>, theIm: &TopTools_ListOfShape);
-        #[doc = "Adds shape theS and all its sub-shapes into myShapes map."]
+        /// Adds shape theS and all its sub-shapes into myShapes map.
         #[cxx_name = "KeepPart"]
         fn keep_part(self: Pin<&mut Builder>, theS: &TopoDS_Shape);
-        #[doc = "Main function to build the result of the local operation required."]
+        /// Main function to build the result of the local operation required.
         #[cxx_name = "PerformResult"]
         fn perform_result(self: Pin<&mut Builder>, theRange: &Message_ProgressRange);
-        #[doc = "Rebuilds faces in accordance with the kept parts of the tool."]
+        /// Rebuilds faces in accordance with the kept parts of the tool.
         #[cxx_name = "RebuildFaces"]
         fn rebuild_faces(self: Pin<&mut Builder>);
-        #[doc = "Rebuilds edges in accordance with the kept parts of the tool."]
+        /// Rebuilds edges in accordance with the kept parts of the tool.
         #[cxx_name = "RebuildEdge"]
         fn rebuild_edge(
             self: Pin<&mut Builder>,
@@ -561,246 +562,248 @@ pub(crate) mod ffi {
             theME: &TopTools_MapOfShape,
             aLEIm: Pin<&mut TopTools_ListOfShape>,
         );
-        #[doc = "Collects the images of the object, that contains in the images of the tool."]
+        /// Collects the images of the object, that contains in the images of the tool.
         #[cxx_name = "CheckSolidImages"]
         fn check_solid_images(self: Pin<&mut Builder>);
-        #[doc = "Collects the removed parts of the tool into myRemoved map."]
+        /// Collects the removed parts of the tool into myRemoved map.
         #[cxx_name = "FillRemoved"]
         fn fill_removed(self: Pin<&mut Builder>);
-        #[doc = "Adds the shape S and its sub-shapes into myRemoved map."]
+        /// Adds the shape S and its sub-shapes into myRemoved map.
         #[cxx_name = "FillRemoved"]
         fn fill_removed_shape_mapofshape(
             self: Pin<&mut Builder>,
             theS: &TopoDS_Shape,
             theM: Pin<&mut TopTools_MapOfShape>,
         );
-        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_BOP"]
+        /// Upcast BRepFeat_Builder to BOPAlgo_BOP
         #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_BOP"]
         fn builder_as_bop_algo_bop(self_: &Builder) -> &BOPAlgo_BOP;
-        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_BOP (mutable)"]
+        /// Upcast BRepFeat_Builder to BOPAlgo_BOP (mutable)
         #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_BOP_mut"]
         fn builder_as_bop_algo_bop_mut(self_: Pin<&mut Builder>) -> Pin<&mut BOPAlgo_BOP>;
-        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_Builder"]
+        /// Upcast BRepFeat_Builder to BOPAlgo_Builder
         #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_Builder"]
         fn builder_as_bop_algo_builder(self_: &Builder) -> &BOPAlgo_Builder;
-        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_Builder (mutable)"]
+        /// Upcast BRepFeat_Builder to BOPAlgo_Builder (mutable)
         #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_Builder_mut"]
         fn builder_as_bop_algo_builder_mut(self_: Pin<&mut Builder>) -> Pin<&mut BOPAlgo_Builder>;
-        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_BuilderShape"]
+        /// Upcast BRepFeat_Builder to BOPAlgo_BuilderShape
         #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_BuilderShape"]
         fn builder_as_bop_algo_builder_shape(self_: &Builder) -> &BOPAlgo_BuilderShape;
-        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_BuilderShape (mutable)"]
+        /// Upcast BRepFeat_Builder to BOPAlgo_BuilderShape (mutable)
         #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_BuilderShape_mut"]
         fn builder_as_bop_algo_builder_shape_mut(
             self_: Pin<&mut Builder>,
         ) -> Pin<&mut BOPAlgo_BuilderShape>;
-        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_Options"]
+        /// Upcast BRepFeat_Builder to BOPAlgo_Options
         #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_Options"]
         fn builder_as_bop_algo_options(self_: &Builder) -> &BOPAlgo_Options;
-        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_Options (mutable)"]
+        /// Upcast BRepFeat_Builder to BOPAlgo_Options (mutable)
         #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_Options_mut"]
         fn builder_as_bop_algo_options_mut(self_: Pin<&mut Builder>) -> Pin<&mut BOPAlgo_Options>;
-        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_ToolsProvider"]
+        /// Upcast BRepFeat_Builder to BOPAlgo_ToolsProvider
         #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_ToolsProvider"]
         fn builder_as_bop_algo_tools_provider(self_: &Builder) -> &BOPAlgo_ToolsProvider;
-        #[doc = "Upcast BRepFeat_Builder to BOPAlgo_ToolsProvider (mutable)"]
+        /// Upcast BRepFeat_Builder to BOPAlgo_ToolsProvider (mutable)
         #[cxx_name = "BRepFeat_Builder_as_BOPAlgo_ToolsProvider_mut"]
         fn builder_as_bop_algo_tools_provider_mut(
             self_: Pin<&mut Builder>,
         ) -> Pin<&mut BOPAlgo_ToolsProvider>;
+
         // ========================
         // Cross-module type aliases
         // ========================
-        #[doc = "BOP from bop_algo module"]
+        /// BOP from bop_algo module
         type BOPAlgo_BOP = crate::bop_algo::ffi::BOP;
-        #[doc = "Builder from bop_algo module"]
+        /// Builder from bop_algo module
         type BOPAlgo_Builder = crate::bop_algo::ffi::Builder;
-        #[doc = "BuilderShape from bop_algo module"]
+        /// BuilderShape from bop_algo module
         type BOPAlgo_BuilderShape = crate::bop_algo::ffi::BuilderShape;
-        #[doc = "Options from bop_algo module"]
+        /// Options from bop_algo module
         type BOPAlgo_Options = crate::bop_algo::ffi::Options;
-        #[doc = "PISteps from bop_algo module"]
+        /// PISteps from bop_algo module
         type BOPAlgo_PISteps = crate::bop_algo::ffi::PISteps;
-        #[doc = "ParallelAlgo from bop_algo module"]
+        /// ParallelAlgo from bop_algo module
         type BOPAlgo_ParallelAlgo = crate::bop_algo::ffi::ParallelAlgo;
-        #[doc = "ToolsProvider from bop_algo module"]
+        /// ToolsProvider from bop_algo module
         type BOPAlgo_ToolsProvider = crate::bop_algo::ffi::ToolsProvider;
-        #[doc = "Command from b_rep_builder_api module"]
+        /// Command from b_rep_builder_api module
         type BRepBuilderAPI_Command = crate::b_rep_builder_api::ffi::Command;
-        #[doc = "MakeEdge from b_rep_builder_api module"]
+        /// MakeEdge from b_rep_builder_api module
         type BRepBuilderAPI_MakeEdge = crate::b_rep_builder_api::ffi::MakeEdge;
-        #[doc = "MakeFace from b_rep_builder_api module"]
+        /// MakeFace from b_rep_builder_api module
         type BRepBuilderAPI_MakeFace = crate::b_rep_builder_api::ffi::MakeFace;
-        #[doc = "MakeShape from b_rep_builder_api module"]
+        /// MakeShape from b_rep_builder_api module
         type BRepBuilderAPI_MakeShape = crate::b_rep_builder_api::ffi::MakeShape;
-        #[doc = "MakeSolid from b_rep_builder_api module"]
+        /// MakeSolid from b_rep_builder_api module
         type BRepBuilderAPI_MakeSolid = crate::b_rep_builder_api::ffi::MakeSolid;
-        #[doc = "MakeVertex from b_rep_builder_api module"]
+        /// MakeVertex from b_rep_builder_api module
         type BRepBuilderAPI_MakeVertex = crate::b_rep_builder_api::ffi::MakeVertex;
-        #[doc = "MakeWire from b_rep_builder_api module"]
+        /// MakeWire from b_rep_builder_api module
         type BRepBuilderAPI_MakeWire = crate::b_rep_builder_api::ffi::MakeWire;
-        #[doc = "ModifyShape from b_rep_builder_api module"]
+        /// ModifyShape from b_rep_builder_api module
         type BRepBuilderAPI_ModifyShape = crate::b_rep_builder_api::ffi::ModifyShape;
-        #[doc = "Sewing from b_rep_builder_api module"]
+        /// Sewing from b_rep_builder_api module
         type BRepBuilderAPI_Sewing = crate::b_rep_builder_api::ffi::Sewing;
-        #[doc = "Transform from b_rep_builder_api module"]
+        /// Transform from b_rep_builder_api module
         type BRepBuilderAPI_Transform = crate::b_rep_builder_api::ffi::Transform;
-        #[doc = "BSplineCurve from geom module"]
+        /// BSplineCurve from geom module
         type Geom_BSplineCurve = crate::geom::ffi::BSplineCurve;
-        #[doc = "BSplineSurface from geom module"]
+        /// BSplineSurface from geom module
         type Geom_BSplineSurface = crate::geom::ffi::BSplineSurface;
-        #[doc = "BezierCurve from geom module"]
+        /// BezierCurve from geom module
         type Geom_BezierCurve = crate::geom::ffi::BezierCurve;
-        #[doc = "BezierSurface from geom module"]
+        /// BezierSurface from geom module
         type Geom_BezierSurface = crate::geom::ffi::BezierSurface;
-        #[doc = "BoundedCurve from geom module"]
+        /// BoundedCurve from geom module
         type Geom_BoundedCurve = crate::geom::ffi::BoundedCurve;
-        #[doc = "BoundedSurface from geom module"]
+        /// BoundedSurface from geom module
         type Geom_BoundedSurface = crate::geom::ffi::BoundedSurface;
-        #[doc = "Curve from geom module"]
+        /// Curve from geom module
         type Geom_Curve = crate::geom::ffi::Curve;
-        #[doc = "CylindricalSurface from geom module"]
+        /// CylindricalSurface from geom module
         type Geom_CylindricalSurface = crate::geom::ffi::CylindricalSurface;
-        #[doc = "ElementarySurface from geom module"]
+        /// ElementarySurface from geom module
         type Geom_ElementarySurface = crate::geom::ffi::ElementarySurface;
-        #[doc = "Geometry from geom module"]
+        /// Geometry from geom module
         type Geom_Geometry = crate::geom::ffi::Geometry;
-        #[doc = "Plane from geom module"]
+        /// Plane from geom module
         type Geom_Plane = crate::geom::ffi::Plane;
-        #[doc = "Surface from geom module"]
+        /// Surface from geom module
         type Geom_Surface = crate::geom::ffi::Surface;
-        #[doc = "TrimmedCurve from geom module"]
+        /// TrimmedCurve from geom module
         type Geom_TrimmedCurve = crate::geom::ffi::TrimmedCurve;
-        #[doc = "Message from message module"]
+        /// Message from message module
         type Message = crate::message::ffi::Message;
-        #[doc = "Alert from message module"]
+        /// Alert from message module
         type Message_Alert = crate::message::ffi::Alert;
-        #[doc = "AlertExtended from message module"]
+        /// AlertExtended from message module
         type Message_AlertExtended = crate::message::ffi::AlertExtended;
-        #[doc = "Algorithm from message module"]
+        /// Algorithm from message module
         type Message_Algorithm = crate::message::ffi::Algorithm;
-        #[doc = "ExecStatus from message module"]
+        /// ExecStatus from message module
         type Message_ExecStatus = crate::message::ffi::ExecStatus;
-        #[doc = "Level from message module"]
+        /// Level from message module
         type Message_Level = crate::message::ffi::Level;
-        #[doc = "Messenger from message module"]
+        /// Messenger from message module
         type Message_Messenger = crate::message::ffi::Messenger;
-        #[doc = "Msg from message module"]
+        /// Msg from message module
         type Message_Msg = crate::message::ffi::Msg;
-        #[doc = "Printer from message module"]
+        /// Printer from message module
         type Message_Printer = crate::message::ffi::Printer;
-        #[doc = "ProgressIndicator from message module"]
+        /// ProgressIndicator from message module
         type Message_ProgressIndicator = crate::message::ffi::ProgressIndicator;
-        #[doc = "ProgressRange from message module"]
+        /// ProgressRange from message module
         type Message_ProgressRange = crate::message::ffi::ProgressRange;
-        #[doc = "ProgressScope from message module"]
+        /// ProgressScope from message module
         type Message_ProgressScope = crate::message::ffi::ProgressScope;
-        #[doc = "Report from message module"]
+        /// Report from message module
         type Message_Report = crate::message::ffi::Report;
-        #[doc = "HArray2OfShape from top_tools module"]
+        /// HArray2OfShape from top_tools module
         type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
-        #[doc = "HSequenceOfShape from top_tools module"]
+        /// HSequenceOfShape from top_tools module
         type TopTools_HSequenceOfShape = crate::top_tools::ffi::HSequenceOfShape;
-        #[doc = "Builder from topo_ds module"]
+        /// Builder from topo_ds module
         type TopoDS_Builder = crate::topo_ds::ffi::Builder;
-        #[doc = "CompSolid from topo_ds module"]
+        /// CompSolid from topo_ds module
         type TopoDS_CompSolid = crate::topo_ds::ffi::CompSolid;
-        #[doc = "Compound from topo_ds module"]
+        /// Compound from topo_ds module
         type TopoDS_Compound = crate::topo_ds::ffi::Compound;
-        #[doc = "Edge from topo_ds module"]
+        /// Edge from topo_ds module
         type TopoDS_Edge = crate::topo_ds::ffi::Edge;
-        #[doc = "Face from topo_ds module"]
+        /// Face from topo_ds module
         type TopoDS_Face = crate::topo_ds::ffi::Face;
-        #[doc = "Iterator from topo_ds module"]
+        /// Iterator from topo_ds module
         type TopoDS_Iterator = crate::topo_ds::ffi::Iterator;
-        #[doc = "Shape from topo_ds module"]
+        /// Shape from topo_ds module
         type TopoDS_Shape = crate::topo_ds::ffi::Shape;
-        #[doc = "Shell from topo_ds module"]
+        /// Shell from topo_ds module
         type TopoDS_Shell = crate::topo_ds::ffi::Shell;
-        #[doc = "Solid from topo_ds module"]
+        /// Solid from topo_ds module
         type TopoDS_Solid = crate::topo_ds::ffi::Solid;
-        #[doc = "TShape from topo_ds module"]
+        /// TShape from topo_ds module
         type TopoDS_TShape = crate::topo_ds::ffi::TShape;
-        #[doc = "Vertex from topo_ds module"]
+        /// Vertex from topo_ds module
         type TopoDS_Vertex = crate::topo_ds::ffi::Vertex;
-        #[doc = "Wire from topo_ds module"]
+        /// Wire from topo_ds module
         type TopoDS_Wire = crate::topo_ds::ffi::Wire;
-        #[doc = "Ax1 from gp module"]
+        /// Ax1 from gp module
         type gp_Ax1 = crate::gp::ffi::Ax1;
-        #[doc = "Ax2 from gp module"]
+        /// Ax2 from gp module
         type gp_Ax2 = crate::gp::ffi::Ax2;
-        #[doc = "Ax22d from gp module"]
+        /// Ax22d from gp module
         type gp_Ax22d = crate::gp::ffi::Ax22d;
-        #[doc = "Ax2d from gp module"]
+        /// Ax2d from gp module
         type gp_Ax2d = crate::gp::ffi::Ax2d;
-        #[doc = "Ax3 from gp module"]
+        /// Ax3 from gp module
         type gp_Ax3 = crate::gp::ffi::Ax3;
-        #[doc = "Circ from gp module"]
+        /// Circ from gp module
         type gp_Circ = crate::gp::ffi::Circ;
-        #[doc = "Circ2d from gp module"]
+        /// Circ2d from gp module
         type gp_Circ2d = crate::gp::ffi::Circ2d;
-        #[doc = "Cone from gp module"]
+        /// Cone from gp module
         type gp_Cone = crate::gp::ffi::Cone;
-        #[doc = "Cylinder from gp module"]
+        /// Cylinder from gp module
         type gp_Cylinder = crate::gp::ffi::Cylinder;
-        #[doc = "Dir from gp module"]
+        /// Dir from gp module
         type gp_Dir = crate::gp::ffi::Dir;
-        #[doc = "Dir2d from gp module"]
+        /// Dir2d from gp module
         type gp_Dir2d = crate::gp::ffi::Dir2d;
-        #[doc = "Elips from gp module"]
+        /// Elips from gp module
         type gp_Elips = crate::gp::ffi::Elips;
-        #[doc = "Elips2d from gp module"]
+        /// Elips2d from gp module
         type gp_Elips2d = crate::gp::ffi::Elips2d;
-        #[doc = "GTrsf from gp module"]
+        /// GTrsf from gp module
         type gp_GTrsf = crate::gp::ffi::GTrsf;
-        #[doc = "GTrsf2d from gp module"]
+        /// GTrsf2d from gp module
         type gp_GTrsf2d = crate::gp::ffi::GTrsf2d;
-        #[doc = "Hypr from gp module"]
+        /// Hypr from gp module
         type gp_Hypr = crate::gp::ffi::Hypr;
-        #[doc = "Hypr2d from gp module"]
+        /// Hypr2d from gp module
         type gp_Hypr2d = crate::gp::ffi::Hypr2d;
-        #[doc = "Lin from gp module"]
+        /// Lin from gp module
         type gp_Lin = crate::gp::ffi::Lin;
-        #[doc = "Lin2d from gp module"]
+        /// Lin2d from gp module
         type gp_Lin2d = crate::gp::ffi::Lin2d;
-        #[doc = "Mat from gp module"]
+        /// Mat from gp module
         type gp_Mat = crate::gp::ffi::Mat;
-        #[doc = "Mat2d from gp module"]
+        /// Mat2d from gp module
         type gp_Mat2d = crate::gp::ffi::Mat2d;
-        #[doc = "Parab from gp module"]
+        /// Parab from gp module
         type gp_Parab = crate::gp::ffi::Parab;
-        #[doc = "Parab2d from gp module"]
+        /// Parab2d from gp module
         type gp_Parab2d = crate::gp::ffi::Parab2d;
-        #[doc = "Pln from gp module"]
+        /// Pln from gp module
         type gp_Pln = crate::gp::ffi::Pln;
-        #[doc = "Pnt from gp module"]
+        /// Pnt from gp module
         type gp_Pnt = crate::gp::ffi::Pnt;
-        #[doc = "Pnt2d from gp module"]
+        /// Pnt2d from gp module
         type gp_Pnt2d = crate::gp::ffi::Pnt2d;
-        #[doc = "Quaternion from gp module"]
+        /// Quaternion from gp module
         type gp_Quaternion = crate::gp::ffi::Quaternion;
-        #[doc = "QuaternionNLerp from gp module"]
+        /// QuaternionNLerp from gp module
         type gp_QuaternionNLerp = crate::gp::ffi::QuaternionNLerp;
-        #[doc = "QuaternionSLerp from gp module"]
+        /// QuaternionSLerp from gp module
         type gp_QuaternionSLerp = crate::gp::ffi::QuaternionSLerp;
-        #[doc = "Sphere from gp module"]
+        /// Sphere from gp module
         type gp_Sphere = crate::gp::ffi::Sphere;
-        #[doc = "Torus from gp module"]
+        /// Torus from gp module
         type gp_Torus = crate::gp::ffi::Torus;
-        #[doc = "Trsf from gp module"]
+        /// Trsf from gp module
         type gp_Trsf = crate::gp::ffi::Trsf;
-        #[doc = "Trsf2d from gp module"]
+        /// Trsf2d from gp module
         type gp_Trsf2d = crate::gp::ffi::Trsf2d;
-        #[doc = "Vec from gp module"]
+        /// Vec from gp module
         type gp_Vec = crate::gp::ffi::Vec_;
-        #[doc = "Vec2d from gp module"]
+        /// Vec2d from gp module
         type gp_Vec2d = crate::gp::ffi::Vec2d;
-        #[doc = "VectorWithNullMagnitude from gp module"]
+        /// VectorWithNullMagnitude from gp module
         type gp_VectorWithNullMagnitude = crate::gp::ffi::VectorWithNullMagnitude;
-        #[doc = "XY from gp module"]
+        /// XY from gp module
         type gp_XY = crate::gp::ffi::XY;
-        #[doc = "XYZ from gp module"]
+        /// XYZ from gp module
         type gp_XYZ = crate::gp::ffi::XYZ;
+
         // ========================
         // Referenced types (opaque)
         // ========================
