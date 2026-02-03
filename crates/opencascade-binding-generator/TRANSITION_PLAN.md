@@ -661,7 +661,7 @@ This would ensure both FFI and impl generation iterate over the exact same metho
 
 ### 🔄 Step 4h: Two-Pass Architecture Refactor (IN PROGRESS)
 
-**Status:** ✅ Phase 1 Complete - Symbol table infrastructure created
+**Status:** ✅ Phase 2 Complete - Filter functions consolidated
 
 **Current Progress:**
 
@@ -681,11 +681,17 @@ This would ensure both FFI and impl generation iterate over the exact same metho
    - `regenerate-bindings.sh` succeeds
    - `opencascade-sys` compiles successfully
 
+4. ✅ Consolidated filter functions (Phase 2):
+   - Made filter functions public in resolver.rs: `type_uses_enum`, `params_use_enum`, `method_needs_explicit_lifetimes`, `method_has_unsupported_by_value_params`, `static_method_has_unsupported_by_value_params`
+   - Added convenience wrappers: `method_uses_enum`, `constructor_uses_enum`, `static_method_uses_enum`, `function_uses_enum`
+   - Updated rust.rs and cpp.rs to delegate to resolver implementations
+   - Eliminated ~45 lines of duplicate filter logic
+
 **Remaining Work:**
 
-4. 🔲 Refactor `codegen/rust.rs` to consume SymbolTable instead of raw ParsedClass/Method data
-5. 🔲 Refactor `codegen/cpp.rs` similarly
-6. 🔲 Remove duplicate filter functions from rust.rs and cpp.rs
+5. 🔲 Refactor `codegen/rust.rs` to consume SymbolTable instead of raw ParsedClass/Method data
+6. 🔲 Refactor `codegen/cpp.rs` similarly
+7. 🔲 Full migration to resolved types (using `ResolvedClass`, `ResolvedMethod`, etc.)
 
 **Original Motivation:**
 
