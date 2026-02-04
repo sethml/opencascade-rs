@@ -1067,26 +1067,61 @@ inline std::unique_ptr<gp_Pnt> gp_Pnt_ctor(double X, double Y, double Z) {
 // ... etc
 ```
 
-**3. `generated/gp.rs`** - Module re-exports:
+**3. `generated/gp.rs`** - Module re-exports with impl blocks:
+
+Re-exports are grouped with their corresponding impl blocks and sorted by source header,
+then by order of declaration within each header. This makes the generated code self-documenting
+- readers can see which header each type comes from and find related functionality together.
+
 ```rust
 //! gp module - Geometric primitives
 
-// Re-export types with short names
-pub use crate::ffi::gp_Pnt as Pnt;
-pub use crate::ffi::gp_Vec as Vec;
-pub use crate::ffi::gp_Dir as Dir;
-// ... etc
+// ========================
+// From gp_Pnt.hxx
+// ========================
 
-// Impl blocks for constructors and wrapper methods
+/// A 3D Cartesian point.
+pub use crate::ffi::gp_Pnt as Pnt;
+
 impl Pnt {
-    /// Create a new point from X, Y, Z coordinates
+    /// Create a new point from X, Y, Z coordinates.
     pub fn new(x: f64, y: f64, z: f64) -> cxx::UniquePtr<Self> {
         crate::ffi::gp_Pnt_ctor(x, y, z)
     }
+
+    /// Returns the X coordinate.
+    pub fn x(&self) -> f64 {
+        crate::ffi::gp_Pnt_X(self)
+    }
+
+    // ... other methods from gp_Pnt.hxx
 }
 
+// ========================
+// From gp_Vec.hxx
+// ========================
+
+/// A 3D vector.
+pub use crate::ffi::gp_Vec as Vec;
+
 impl Vec {
-    // ... etc
+    /// Create a new vector from X, Y, Z components.
+    pub fn new(x: f64, y: f64, z: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::gp_Vec_ctor(x, y, z)
+    }
+
+    // ... other methods from gp_Vec.hxx
+}
+
+// ========================
+// From gp_Dir.hxx
+// ========================
+
+/// A unit vector (direction).
+pub use crate::ffi::gp_Dir as Dir;
+
+impl Dir {
+    // ...
 }
 ```
 
