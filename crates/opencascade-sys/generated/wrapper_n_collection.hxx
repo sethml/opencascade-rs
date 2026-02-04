@@ -75,7 +75,7 @@ inline std::unique_ptr<HandleNCollectionBaseAllocator> NCollection_BaseAllocator
 // NCollection_IncAllocator wrappers
 // ========================
 
-inline std::unique_ptr<NCollection_IncAllocator> NCollection_IncAllocator_ctor_ulong(unsigned long long theBlockSize) {
+inline std::unique_ptr<NCollection_IncAllocator> NCollection_IncAllocator_ctor_ulong(uint64_t theBlockSize) {
     return std::make_unique<NCollection_IncAllocator>(theBlockSize);
 }
 
