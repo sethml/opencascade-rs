@@ -47,6 +47,10 @@ struct Args {
     /// Dump the symbol table for debugging (shows all resolved symbols and their binding status)
     #[arg(long)]
     dump_symbols: bool,
+
+    /// Use unified FFI architecture (single ffi.rs with all types, module re-exports)
+    #[arg(long)]
+    unified: bool,
 }
 
 fn main() -> Result<()> {
@@ -241,6 +245,11 @@ fn main() -> Result<()> {
     
     if args.verbose {
         println!("  Found {} known OCCT headers", known_headers.len());
+    }
+
+    // Use unified or per-module generation based on flag
+    if args.unified {
+        return generate_unified(&args, &all_classes, &all_functions, &graph, &symbol_table, &known_headers);
     }
 
     // Track generated Rust files for formatting
@@ -491,4 +500,162 @@ fn dump_symbol_table(table: &resolver::SymbolTable) {
     }
     
     println!("===== END SYMBOL TABLE DUMP =====");
+}
+
+/// Generate unified FFI module architecture (Step 4i)
+///
+/// This generates:
+/// - ffi.rs: Single CXX bridge with ALL types using full C++ names
+/// - wrappers.hxx: Single C++ header with all wrappers
+/// - MODULE.rs: Per-module re-exports with impl blocks
+/// - lib.rs: Module declarations
+fn generate_unified(
+    args: &Args,
+    all_classes: &[&opencascade_binding_generator::model::ParsedClass],
+    all_functions: &[&opencascade_binding_generator::model::ParsedFunction],
+    graph: &module_graph::ModuleGraph,
+    symbol_table: &resolver::SymbolTable,
+    known_headers: &HashSet<String>,
+) -> Result<()> {
+    use opencascade_binding_generator::model::ParsedClass;
+    
+    println!("\n=== Generating UNIFIED FFI architecture ===\n");
+    
+    // Collect all headers
+    let mut all_headers: HashSet<String> = HashSet::new();
+    for class in all_classes {
+        all_headers.insert(class.source_header.clone());
+    }
+    for func in all_functions {
+        all_headers.insert(func.source_header.clone());
+    }
+    let all_headers_list: Vec<String> = all_headers.into_iter().collect();
+    
+    // Get all collections
+    let all_collections = codegen::collections::all_known_collections();
+    
+    // Track generated files for formatting
+    let mut generated_rs_files: Vec<PathBuf> = Vec::new();
+    
+    // 1. Generate unified ffi.rs
+    println!("Generating unified ffi.rs...");
+    let ffi_code = codegen::rust::generate_unified_ffi(
+        all_classes,
+        all_functions,
+        &all_headers_list,
+        &all_collections,
+        symbol_table,
+    );
+    let ffi_path = args.output.join("ffi.rs");
+    std::fs::write(&ffi_path, ffi_code)?;
+    generated_rs_files.push(ffi_path.clone());
+    println!("  Wrote: {} ({} classes, {} functions)", 
+        ffi_path.display(), all_classes.len(), all_functions.len());
+    
+    // 2. Generate unified wrappers.hxx
+    println!("Generating unified wrappers.hxx...");
+    let cpp_code = codegen::cpp::generate_unified_wrappers(
+        all_classes,
+        all_functions,
+        &all_collections,
+        known_headers,
+        symbol_table,
+    );
+    let cpp_path = args.output.join("wrappers.hxx");
+    std::fs::write(&cpp_path, &cpp_code)?;
+    println!("  Wrote: {}", cpp_path.display());
+    
+    // 3. Generate per-module re-export files
+    println!("Generating module re-exports...");
+    let ordered = graph.modules_in_order();
+    let mut generated_modules: Vec<&module_graph::Module> = Vec::new();
+    
+    for module in &ordered {
+        // Get classes for this module
+        let module_classes: Vec<&ParsedClass> = all_classes
+            .iter()
+            .filter(|c| c.module == module.name)
+            .copied()
+            .collect();
+        
+        // Get functions for this module
+        let module_functions: Vec<_> = all_functions
+            .iter()
+            .filter(|f| f.module == module.name)
+            .copied()
+            .collect();
+        
+        if module_classes.is_empty() && module_functions.is_empty() {
+            continue;
+        }
+        
+        generated_modules.push(module);
+        
+        let reexport_code = codegen::rust::generate_module_reexports(
+            &module.name,
+            &module.rust_name,
+            &module_classes,
+            &module_functions,
+            symbol_table,
+        );
+        
+        let module_path = args.output.join(format!("{}.rs", module.rust_name));
+        std::fs::write(&module_path, reexport_code)?;
+        generated_rs_files.push(module_path.clone());
+        println!("  Wrote: {} ({} types, {} functions)", 
+            module_path.display(), module_classes.len(), module_functions.len());
+    }
+    
+    // 4. Generate lib.rs with module declarations
+    let lib_rs = generate_unified_lib_rs(&generated_modules);
+    let lib_rs_path = args.output.join("lib.rs");
+    std::fs::write(&lib_rs_path, &lib_rs)?;
+    generated_rs_files.push(lib_rs_path.clone());
+    println!("  Wrote: {}", lib_rs_path.display());
+    
+    // Format generated Rust files
+    if !generated_rs_files.is_empty() {
+        println!("\nFormatting generated Rust code with rustfmt...");
+        let status = Command::new("rustfmt")
+            .arg("+nightly")
+            .args(&generated_rs_files)
+            .status();
+
+        match status {
+            Ok(s) if s.success() => println!("  Formatting complete."),
+            Ok(s) => eprintln!("  Warning: rustfmt exited with status: {}", s),
+            Err(e) => eprintln!("  Warning: Failed to run rustfmt: {}", e),
+        }
+        
+        // Post-process
+        println!("  Converting section markers to comments...");
+        for rs_file in &generated_rs_files {
+            if let Ok(content) = std::fs::read_to_string(rs_file) {
+                let processed = codegen::rust::postprocess_generated_code(&content);
+                if processed != content {
+                    let _ = std::fs::write(rs_file, &processed);
+                }
+            }
+        }
+    }
+    
+    println!("\nUnified code generation complete!");
+    println!("  {} modules generated", generated_modules.len());
+    
+    Ok(())
+}
+
+/// Generate lib.rs for unified architecture
+fn generate_unified_lib_rs(modules: &[&module_graph::Module]) -> String {
+    let mut output = String::new();
+    output.push_str("// Generated OCCT bindings (unified architecture)\n\n");
+    output.push_str("// Core FFI module with all types\n");
+    output.push_str("pub mod ffi;\n\n");
+    output.push_str("// Per-module re-exports\n");
+    
+    for module in modules {
+        output.push_str(&format!("pub mod {};\n", module.rust_name));
+    }
+    
+    output
 }

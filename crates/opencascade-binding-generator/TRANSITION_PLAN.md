@@ -113,7 +113,7 @@ Created new `opencascade-sys` with generated bindings:
 ### ✅ Step 4a: Headers Required for `opencascade` Crate (COMPLETE)
 
 All headers required by `crates/opencascade/src/**` are now in `headers.txt`. The generator
-automatically resolves header dependencies, expanding 134 explicit headers to 532 total headers.
+automatically resolves header dependencies, expanding 262 explicit headers to 624 total headers.
 Bindings are generated for 88 modules.
 
 **Automatic Header Dependency Resolution:**
@@ -238,9 +238,9 @@ This eliminates manual header management and ensures complete type coverage.
 **ShapeAnalysis module (shape analysis tools):**
 - ShapeAnalysis_FreeBounds.hxx
 
-**Summary:** 134 explicit headers in `headers.txt`, which expand to 532 headers via automatic dependency resolution. The generator produces 88 modules covering all required OCCT functionality.
+**Summary:** 262 explicit headers in `headers.txt`, which expand to 624 headers via automatic dependency resolution. The generator produces 88 modules covering all required OCCT functionality.
 
-**Automatic dependency resolution:** The generator now recursively parses `#include` directives to automatically include dependent headers, eliminating manual header management.
+**Automatic dependency resolution:** The generator recursively parses `#include` directives to automatically include dependent headers. This is enabled via the `--resolve-deps` flag in `regenerate-bindings.sh`.
 
 **Remaining work:**
 1. ~~Fix Handle type naming convention (Step 4g)~~ ✅ DONE
@@ -424,7 +424,7 @@ Added headers to match all types from `opencascade-sys-old`. Now generating 131 
 **Added Geom types:**
 - Geom2d_Ellipse.hxx, Geom_CylindricalSurface.hxx
 
-**Build status:** ✅ Binding generation and compilation both succeed (88 modules from 532 headers)
+**Build status:** ✅ Binding generation and compilation both succeed (88 modules from 624 headers)
 
 **Headers status for `opencascade/src/primitives/*.rs`:**
 
@@ -991,9 +991,9 @@ pub fn generate_cpp_module(table: &SymbolTable, module: &str) -> String {
 
 ---
 
-### � Step 4i: Unified FFI Module Architecture
+### 🔄 Step 4i: Unified FFI Module Architecture
 
-**Status:** Not started
+**Status:** In progress - initial filters implemented, builds successfully
 
 **Motivation:**
 
@@ -1188,9 +1188,19 @@ to C++ obvious. The short names are provided via re-exports in per-module files.
 
 **Estimated Effort:** 3-4 days
 
+**Progress (Feb 2026):**
+
+1. ✅ Added `--resolve-deps` flag to `regenerate-bindings.sh` to enable automatic header dependency resolution
+2. 🔲 TODO: Support `const char*` parameters and return types (currently filtered out):
+   - Added `type_is_cstring()` helper to both cpp.rs and rust.rs
+   - Static methods returning `const char*` are currently filtered out
+   - Should add shim to convert `const char*` ↔ `&str` or `String`
+3. ✅ Both `opencascade-sys` and `opencascade` crates build successfully
+4. 🔲 Unified FFI module generation not yet started (still using per-module architecture)
+
 ---
 
-### �🔄 Step 5: Update opencascade Crate (IN PROGRESS - COMPILES)
+### 🔄 Step 5: Update opencascade Crate (IN PROGRESS - COMPILES)
 
 Update imports in `crates/opencascade/src/*.rs` to use the new generated bindings.
 
@@ -1508,10 +1518,10 @@ Delete `opencascade-sys-old` once everything works.
 
 ### ✅ Step 8: Expand Header Coverage (COMPLETE via Automatic Resolution)
 
-The generator now automatically resolves header dependencies. From 134 explicit headers in `headers.txt`,
-it expands to 532 total headers and generates 88 modules.
+The generator now automatically resolves header dependencies. From 262 explicit headers in `headers.txt`,
+it expands to 624 total headers and generates 88 modules.
 
-**Explicit headers in `headers.txt` (134 headers):**
+**Explicit headers in `headers.txt` (262 headers):**
 
 **gp module** (18 headers):
 - gp_Pnt, gp_Pnt2d, gp_Vec, gp_Vec2d, gp_Dir, gp_Dir2d, gp_XYZ

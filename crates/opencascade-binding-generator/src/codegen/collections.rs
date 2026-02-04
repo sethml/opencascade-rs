@@ -1559,6 +1559,7 @@ pub fn generate_collections_rust_module(collections: &[CollectionInfo]) -> Strin
     let mut element_types: std::collections::HashSet<(&str, &str)> = std::collections::HashSet::new();
     for info in collections {
         element_types.insert((&info.element_type, &info.element_module));
+        element_types.insert((&info.element_type, &info.element_module));
     }
     
     for (element_type, element_module) in &element_types {
@@ -1600,6 +1601,255 @@ pub fn generate_collections_rust_module(collections: &[CollectionInfo]) -> Strin
     for info in collections {
         output.push_str(&generate_rust_impl_collection(info));
         output.push_str("\n");
+    }
+    
+    output
+}
+
+// =============================================================================
+// UNIFIED FFI GENERATION (Step 4i)
+// =============================================================================
+
+/// Generate Rust FFI declarations for collections in the unified ffi module
+/// 
+/// Returns a tuple of:
+/// - Empty string (no type aliases needed - all types in same module)
+/// - FFI function declarations
+pub fn generate_unified_rust_ffi_collections(collections: &[CollectionInfo]) -> (String, String) {
+    if collections.is_empty() {
+        return (String::new(), String::new());
+    }
+    
+    let mut ffi_decls = String::new();
+    
+    ffi_decls.push_str("                // ========================\n");
+    ffi_decls.push_str("                // Collection type wrappers\n");
+    ffi_decls.push_str("                // ========================\n\n");
+    
+    for info in collections {
+        ffi_decls.push_str(&generate_unified_rust_ffi_collection(info));
+    }
+    
+    (String::new(), ffi_decls)
+}
+
+/// Generate Rust FFI declarations for a single collection in unified mode
+/// Uses full C++ type names (e.g., TopoDS_Shape, TopTools_ListOfShape)
+fn generate_unified_rust_ffi_collection(info: &CollectionInfo) -> String {
+    let mut output = String::new();
+    let coll_name = &info.typedef_name;
+    let iter_name = format!("{}Iterator", info.short_name);
+    
+    // Type declaration for collection
+    output.push_str(&format!("                /// {}\n", info.kind.description()));
+    output.push_str(&format!("                type {};\n\n", coll_name));
+    
+    // Iterator type
+    output.push_str(&format!("                /// Iterator for {}\n", coll_name));
+    output.push_str(&format!("                type {};\n\n", iter_name));
+    
+    // Constructor
+    output.push_str(&format!("                /// Create a new empty {}\n", coll_name));
+    output.push_str(&format!("                fn {}_new() -> UniquePtr<{}>;\n\n", coll_name, coll_name));
+    
+    // Size method
+    output.push_str(&format!("                /// Get number of elements in {}\n", coll_name));
+    output.push_str(&format!("                fn {}_size(coll: &{}) -> i32;\n\n", coll_name, coll_name));
+    
+    // Clear method (for mutable collections)
+    output.push_str(&format!("                /// Remove all elements from {}\n", coll_name));
+    output.push_str(&format!("                fn {}_clear(coll: Pin<&mut {}>);\n\n", coll_name, coll_name));
+    
+    // Add/append method based on collection kind
+    match info.kind {
+        CollectionKind::List => {
+            output.push_str(&format!("                /// Append an element to the list\n"));
+            output.push_str(&format!("                fn {}_append(coll: Pin<&mut {}>, item: &{});\n\n", coll_name, coll_name, info.element_type));
+            output.push_str(&format!("                /// Prepend an element to the list\n"));
+            output.push_str(&format!("                fn {}_prepend(coll: Pin<&mut {}>, item: &{});\n\n", coll_name, coll_name, info.element_type));
+        }
+        CollectionKind::Sequence => {
+            output.push_str(&format!("                /// Append an element to the sequence\n"));
+            output.push_str(&format!("                fn {}_append(coll: Pin<&mut {}>, item: &{});\n\n", coll_name, coll_name, info.element_type));
+            output.push_str(&format!("                /// Get element at 1-based index\n"));
+            output.push_str(&format!("                fn {}_value(coll: &{}, index: i32) -> &{};\n\n", coll_name, coll_name, info.element_type));
+        }
+        CollectionKind::IndexedMap | CollectionKind::Map => {
+            output.push_str(&format!("                /// Add an element to the map/set\n"));
+            output.push_str(&format!("                fn {}_add(coll: Pin<&mut {}>, item: &{}) -> i32;\n\n", coll_name, coll_name, info.element_type));
+            if info.kind == CollectionKind::IndexedMap {
+                output.push_str(&format!("                /// Get element at 1-based index\n"));
+                output.push_str(&format!("                fn {}_find_key(coll: &{}, index: i32) -> &{};\n\n", coll_name, coll_name, info.element_type));
+            }
+        }
+        CollectionKind::DataMap | CollectionKind::IndexedDataMap => {
+            if let Some(ref value_type) = info.value_type {
+                output.push_str(&format!("                /// Bind a key to a value\n"));
+                output.push_str(&format!("                fn {}_bind(coll: Pin<&mut {}>, key: &{}, value: &{}) -> bool;\n\n", coll_name, coll_name, info.element_type, value_type));
+                output.push_str(&format!("                /// Find a value by key\n"));
+                output.push_str(&format!("                fn {}_find(coll: &{}, key: &{}) -> &{};\n\n", coll_name, coll_name, info.element_type, value_type));
+            }
+        }
+    }
+    
+    // Iterator creation
+    output.push_str(&format!("                /// Create an iterator over the collection\n"));
+    output.push_str(&format!("                fn {}_iter(coll: &{}) -> UniquePtr<{}>;\n\n", coll_name, coll_name, iter_name));
+    
+    // Iterator next
+    output.push_str(&format!("                /// Advance iterator and get next element (nullptr when done)\n"));
+    output.push_str(&format!("                fn {}_next(iter: Pin<&mut {}>) -> UniquePtr<{}>;\n\n", iter_name, iter_name, info.element_type));
+    
+    output
+}
+
+/// Generate Rust impl blocks for collections in unified mode
+pub fn generate_unified_rust_impl_collections(collections: &[CollectionInfo]) -> String {
+    if collections.is_empty() {
+        return String::new();
+    }
+    
+    let mut output = String::new();
+    
+    for info in collections {
+        output.push_str(&generate_unified_rust_impl_collection(info));
+        output.push_str("\n");
+    }
+    
+    output
+}
+
+/// Generate Rust impl block for a single collection in unified mode
+fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
+    let mut output = String::new();
+    let coll_name = &info.typedef_name;
+    let iter_name = format!("{}Iterator", info.short_name);
+    
+    // Collection impl block
+    output.push_str(&format!("impl ffi::{} {{\n", coll_name));
+    
+    output.push_str(&format!("    /// Create a new empty collection\n"));
+    output.push_str(&format!("    pub fn new() -> cxx::UniquePtr<Self> {{\n"));
+    output.push_str(&format!("        ffi::{}_new()\n", coll_name));
+    output.push_str(&format!("    }}\n\n"));
+    
+    output.push_str(&format!("    /// Get number of elements\n"));
+    output.push_str(&format!("    pub fn len(&self) -> i32 {{\n"));
+    output.push_str(&format!("        ffi::{}_size(self)\n", coll_name));
+    output.push_str(&format!("    }}\n\n"));
+    
+    output.push_str(&format!("    /// Check if empty\n"));
+    output.push_str(&format!("    pub fn is_empty(&self) -> bool {{\n"));
+    output.push_str(&format!("        self.len() == 0\n"));
+    output.push_str(&format!("    }}\n\n"));
+    
+    output.push_str(&format!("    /// Remove all elements\n"));
+    output.push_str(&format!("    pub fn clear(self: std::pin::Pin<&mut Self>) {{\n"));
+    output.push_str(&format!("        ffi::{}_clear(self)\n", coll_name));
+    output.push_str(&format!("    }}\n\n"));
+    
+    // Kind-specific methods
+    match info.kind {
+        CollectionKind::List => {
+            output.push_str(&format!("    /// Append an element to the list\n"));
+            output.push_str(&format!("    pub fn append(self: std::pin::Pin<&mut Self>, item: &ffi::{}) {{\n", info.element_type));
+            output.push_str(&format!("        ffi::{}_append(self, item)\n", coll_name));
+            output.push_str(&format!("    }}\n\n"));
+            
+            output.push_str(&format!("    /// Prepend an element to the list\n"));
+            output.push_str(&format!("    pub fn prepend(self: std::pin::Pin<&mut Self>, item: &ffi::{}) {{\n", info.element_type));
+            output.push_str(&format!("        ffi::{}_prepend(self, item)\n", coll_name));
+            output.push_str(&format!("    }}\n\n"));
+        }
+        CollectionKind::Sequence => {
+            output.push_str(&format!("    /// Append an element to the sequence\n"));
+            output.push_str(&format!("    pub fn append(self: std::pin::Pin<&mut Self>, item: &ffi::{}) {{\n", info.element_type));
+            output.push_str(&format!("        ffi::{}_append(self, item)\n", coll_name));
+            output.push_str(&format!("    }}\n\n"));
+            
+            output.push_str(&format!("    /// Get element at 1-based index\n"));
+            output.push_str(&format!("    pub fn value(&self, index: i32) -> &ffi::{} {{\n", info.element_type));
+            output.push_str(&format!("        ffi::{}_value(self, index)\n", coll_name));
+            output.push_str(&format!("    }}\n\n"));
+        }
+        CollectionKind::IndexedMap | CollectionKind::Map => {
+            output.push_str(&format!("    /// Add an element to the map/set\n"));
+            output.push_str(&format!("    pub fn add(self: std::pin::Pin<&mut Self>, item: &ffi::{}) -> i32 {{\n", info.element_type));
+            output.push_str(&format!("        ffi::{}_add(self, item)\n", coll_name));
+            output.push_str(&format!("    }}\n\n"));
+            
+            if info.kind == CollectionKind::IndexedMap {
+                output.push_str(&format!("    /// Get element at 1-based index\n"));
+                output.push_str(&format!("    pub fn find_key(&self, index: i32) -> &ffi::{} {{\n", info.element_type));
+                output.push_str(&format!("        ffi::{}_find_key(self, index)\n", coll_name));
+                output.push_str(&format!("    }}\n\n"));
+            }
+        }
+        CollectionKind::DataMap | CollectionKind::IndexedDataMap => {
+            if let Some(ref value_type) = info.value_type {
+                output.push_str(&format!("    /// Bind a key to a value\n"));
+                output.push_str(&format!("    pub fn bind(self: std::pin::Pin<&mut Self>, key: &ffi::{}, value: &ffi::{}) -> bool {{\n", info.element_type, value_type));
+                output.push_str(&format!("        ffi::{}_bind(self, key, value)\n", coll_name));
+                output.push_str(&format!("    }}\n\n"));
+                
+                output.push_str(&format!("    /// Find a value by key\n"));
+                output.push_str(&format!("    pub fn find(&self, key: &ffi::{}) -> &ffi::{} {{\n", info.element_type, value_type));
+                output.push_str(&format!("        ffi::{}_find(self, key)\n", coll_name));
+                output.push_str(&format!("    }}\n\n"));
+            }
+        }
+    }
+    
+    // Iterator
+    output.push_str(&format!("    /// Create an iterator over the collection\n"));
+    output.push_str(&format!("    pub fn iter(&self) -> cxx::UniquePtr<ffi::{}> {{\n", iter_name));
+    output.push_str(&format!("        ffi::{}_iter(self)\n", coll_name));
+    output.push_str(&format!("    }}\n"));
+    
+    output.push_str("}\n\n");
+    
+    // Iterator impl block
+    output.push_str(&format!("impl ffi::{} {{\n", iter_name));
+    output.push_str(&format!("    /// Get next element (nullptr when done)\n"));
+    output.push_str(&format!("    pub fn next(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::{}> {{\n", info.element_type));
+    output.push_str(&format!("        ffi::{}_next(self)\n", iter_name));
+    output.push_str(&format!("    }}\n"));
+    output.push_str("}\n");
+    
+    output
+}
+
+/// Generate unified C++ wrappers header for all collections
+pub fn generate_unified_cpp_collections(collections: &[CollectionInfo]) -> String {
+    if collections.is_empty() {
+        return String::new();
+    }
+    
+    let mut output = String::new();
+    
+    output.push_str("\n// ========================\n");
+    output.push_str("// Collection type wrappers\n");
+    output.push_str("// ========================\n\n");
+    
+    // Collect unique headers needed
+    let mut headers: std::collections::HashSet<String> = std::collections::HashSet::new();
+    for info in collections {
+        headers.insert(format!("{}.hxx", info.element_type));
+        headers.insert(format!("{}.hxx", info.typedef_name));
+        if let Some(ref value_type) = info.value_type {
+            headers.insert(format!("{}.hxx", value_type));
+        }
+    }
+    
+    // Include headers
+    for header in headers {
+        output.push_str(&format!("#include <{}>\n", header));
+    }
+    output.push_str("\n");
+    
+    // Generate wrappers for each collection
+    for info in collections {
+        output.push_str(&generate_cpp_collection(info));
     }
     
     output

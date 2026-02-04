@@ -72,9 +72,13 @@ if [[ "$(uname)" == "Darwin" ]]; then
 fi
 
 # Run the generator
+# --resolve-deps: automatically include headers that our explicit headers depend on
+#                 so that all required base classes and types are parsed
 "$REPO_ROOT/target/release/occt-bindgen" \
+    --resolve-deps \
     -I "$OCCT_INCLUDE" \
     -o "$OUTPUT_DIR" \
+    "$@" \
     "${HEADERS[@]}"
 
 echo ""

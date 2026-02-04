@@ -67,18 +67,26 @@ fn main() {
     }
 
     // Find all generated .rs files in generated/ directory
-    let rust_files: Vec<PathBuf> = std::fs::read_dir(&gen_dir)
-        .expect("Failed to read generated directory")
-        .filter_map(|entry| {
-            let entry = entry.ok()?;
-            let path = entry.path();
-            if path.extension()? == "rs" && path.file_name()? != "lib.rs" {
-                Some(path)
-            } else {
-                None
-            }
-        })
-        .collect();
+    // In unified mode, only ffi.rs contains the CXX bridge
+    let ffi_rs_path = gen_dir.join("ffi.rs");
+    let rust_files: Vec<PathBuf> = if ffi_rs_path.exists() {
+        // Unified mode: only ffi.rs has the CXX bridge
+        vec![ffi_rs_path]
+    } else {
+        // Legacy per-module mode: all .rs files have CXX bridges
+        std::fs::read_dir(&gen_dir)
+            .expect("Failed to read generated directory")
+            .filter_map(|entry| {
+                let entry = entry.ok()?;
+                let path = entry.path();
+                if path.extension()? == "rs" && path.file_name()? != "lib.rs" {
+                    Some(path)
+                } else {
+                    None
+                }
+            })
+            .collect()
+    };
 
     if rust_files.is_empty() {
         panic!("No generated .rs files found in {}. Run the binding generator first.", gen_dir.display());
