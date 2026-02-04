@@ -991,7 +991,171 @@ pub fn generate_cpp_module(table: &SymbolTable, module: &str) -> String {
 
 ---
 
-### 🔄 Step 5: Update opencascade Crate (IN PROGRESS - COMPILES)
+### � Step 4i: Unified FFI Module Architecture
+
+**Status:** Not started
+
+**Motivation:**
+
+The current per-module architecture generates separate CXX bridges for each OCCT module
+(e.g., `gp::ffi`, `topo_ds::ffi`, `bop_algo::ffi`). This causes limitations:
+
+1. **Inherited method filtering** - Methods using types from other modules are skipped because
+   CXX requires all types in a bridge to be declared within that bridge. For example,
+   `BOPAlgo_BOP` can't expose inherited methods that use `TopoDS_Shape`.
+
+2. **Cross-module type aliases** - Every module that references types from another module needs
+   type alias declarations like `type TopoDS_Shape = crate::topo_ds::ffi::Shape;`
+
+3. **Compilation overhead** - 70+ separate C++ compilation units instead of one.
+
+**Proposed Solution:**
+
+Generate a single unified FFI module containing all types, then provide per-module re-exports
+for ergonomic API organization:
+
+```
+generated/
+├── ffi.rs           # Single CXX bridge with ALL types
+├── wrappers.hxx     # Single C++ wrapper header
+├── gp.rs            # Re-exports for gp module + impl blocks
+├── topo_ds.rs       # Re-exports for topo_ds module + impl blocks
+├── bop_algo.rs      # Re-exports for bop_algo module + impl blocks
+└── lib.rs           # Crate root, declares modules
+```
+
+**Architecture Details:**
+
+**1. `generated/ffi.rs`** - Single CXX bridge:
+```rust
+#[cxx::bridge]
+pub mod ffi {
+    unsafe extern "C++" {
+        include!("wrappers.hxx");
+
+        // All types use full C++ names as Rust identifiers
+        type gp_Pnt;
+        type gp_Vec;
+        type TopoDS_Shape;
+        type TopoDS_Face;
+        type BOPAlgo_BOP;
+        // ... all ~300 types
+
+        // All methods, constructors, wrappers
+        fn gp_Pnt_ctor(X: f64, Y: f64, Z: f64) -> UniquePtr<gp_Pnt>;
+        fn TopoDS_Shape_to_owned(self_: &TopoDS_Shape) -> UniquePtr<TopoDS_Shape>;
+        // ... all functions
+    }
+}
+```
+
+**2. `generated/wrappers.hxx`** - Single C++ header:
+```cpp
+#pragma once
+#include "common.hxx"
+
+// All OCCT includes
+#include <gp_Pnt.hxx>
+#include <gp_Vec.hxx>
+#include <TopoDS_Shape.hxx>
+// ... etc
+
+// All wrapper functions
+inline std::unique_ptr<gp_Pnt> gp_Pnt_ctor(double X, double Y, double Z) {
+    return std::make_unique<gp_Pnt>(X, Y, Z);
+}
+// ... etc
+```
+
+**3. `generated/gp.rs`** - Module re-exports:
+```rust
+//! gp module - Geometric primitives
+
+// Re-export types with short names
+pub use crate::ffi::gp_Pnt as Pnt;
+pub use crate::ffi::gp_Vec as Vec;
+pub use crate::ffi::gp_Dir as Dir;
+// ... etc
+
+// Impl blocks for constructors and wrapper methods
+impl Pnt {
+    /// Create a new point from X, Y, Z coordinates
+    pub fn new(x: f64, y: f64, z: f64) -> cxx::UniquePtr<Self> {
+        crate::ffi::gp_Pnt_ctor(x, y, z)
+    }
+}
+
+impl Vec {
+    // ... etc
+}
+```
+
+**Benefits:**
+
+1. **All inherited methods work** - No cross-module type filtering needed. `BOPAlgo_BOP` can
+   expose `Shape()` inherited from `BRepBuilderAPI_MakeShape` because both `BOPAlgo_BOP` and
+   `TopoDS_Shape` are in the same `ffi` module.
+
+2. **Simpler codegen** - No need for:
+   - Cross-module type alias generation
+   - `source_module` tracking on types
+   - Cross-module type filtering logic
+
+3. **Faster builds** - Single C++ compilation unit instead of 70+.
+
+4. **Same user API** - Users still write `use opencascade_sys::gp::Pnt;` - the module
+   organization is preserved through re-exports.
+
+**Implementation Phases:**
+
+**Phase 1: Refactor C++ generation**
+- Create `generate_unified_wrappers()` in cpp.rs
+- Emit single `wrappers.hxx` with all includes and wrapper functions
+- Keep per-module generation working in parallel for comparison
+
+**Phase 2: Refactor Rust FFI generation**
+- Create `generate_unified_ffi()` in rust.rs
+- Emit single `ffi.rs` with all types using full C++ names
+- Types declared once, no cross-module aliases needed
+- All inherited methods included (remove cross-module filtering)
+
+**Phase 3: Generate module re-exports**
+- Create `generate_module_reexports()` in rust.rs
+- For each module, emit `MODULE.rs` with:
+  - `pub use crate::ffi::FullName as ShortName;` for types
+  - `impl ShortName { ... }` blocks for methods
+- Preserve current public API surface
+
+**Phase 4: Update build.rs and lib.rs**
+- `build.rs`: Compile single `ffi.rs` instead of per-module files
+- `lib.rs`: Declare `pub mod ffi;` plus re-export modules
+
+**Phase 5: Cleanup**
+- Remove per-module FFI generation code
+- Remove cross-module type alias infrastructure
+- Remove `source_module` tracking from resolver
+- Simplify inherited method generation (no type filtering)
+
+**Naming Strategy:**
+
+In the unified `ffi` module, use full C++ names as Rust identifiers:
+- `gp_Pnt` (not `Pnt`)
+- `TopoDS_Shape` (not `Shape`)
+- `BRepBuilderAPI_MakeBox` (not `MakeBox`)
+
+This avoids collisions (multiple modules have `Builder` classes) and makes the mapping
+to C++ obvious. The short names are provided via re-exports in per-module files.
+
+**Risk Assessment:**
+- Low-medium risk: Architecture change but behavior should be identical
+- Large generated file sizes: `ffi.rs` will be ~50k+ lines (acceptable for generated code)
+- Testing: Compare API surface before/after, ensure all public types remain accessible
+
+**Estimated Effort:** 3-4 days
+
+---
+
+### �🔄 Step 5: Update opencascade Crate (IN PROGRESS - COMPILES)
 
 Update imports in `crates/opencascade/src/*.rs` to use the new generated bindings.
 
