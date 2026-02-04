@@ -1845,14 +1845,62 @@ pub(crate) mod ffi {
         type Message_ProgressScope = crate::message::ffi::ProgressScope;
         /// Report from message module
         type Message_Report = crate::message::ffi::Report;
+        /// HArray1OfCirc2d from t_colgp module
+        type TColgp_HArray1OfCirc2d = crate::t_colgp::ffi::HArray1OfCirc2d;
+        /// HArray1OfDir from t_colgp module
+        type TColgp_HArray1OfDir = crate::t_colgp::ffi::HArray1OfDir;
+        /// HArray1OfDir2d from t_colgp module
+        type TColgp_HArray1OfDir2d = crate::t_colgp::ffi::HArray1OfDir2d;
+        /// HArray1OfLin2d from t_colgp module
+        type TColgp_HArray1OfLin2d = crate::t_colgp::ffi::HArray1OfLin2d;
         /// HArray1OfPnt from t_colgp module
         type TColgp_HArray1OfPnt = crate::t_colgp::ffi::HArray1OfPnt;
         /// HArray1OfPnt2d from t_colgp module
         type TColgp_HArray1OfPnt2d = crate::t_colgp::ffi::HArray1OfPnt2d;
         /// HArray1OfVec from t_colgp module
         type TColgp_HArray1OfVec = crate::t_colgp::ffi::HArray1OfVec;
+        /// HArray1OfVec2d from t_colgp module
+        type TColgp_HArray1OfVec2d = crate::t_colgp::ffi::HArray1OfVec2d;
+        /// HArray1OfXY from t_colgp module
+        type TColgp_HArray1OfXY = crate::t_colgp::ffi::HArray1OfXY;
+        /// HArray1OfXYZ from t_colgp module
+        type TColgp_HArray1OfXYZ = crate::t_colgp::ffi::HArray1OfXYZ;
+        /// HArray2OfCirc2d from t_colgp module
+        type TColgp_HArray2OfCirc2d = crate::t_colgp::ffi::HArray2OfCirc2d;
+        /// HArray2OfDir from t_colgp module
+        type TColgp_HArray2OfDir = crate::t_colgp::ffi::HArray2OfDir;
+        /// HArray2OfDir2d from t_colgp module
+        type TColgp_HArray2OfDir2d = crate::t_colgp::ffi::HArray2OfDir2d;
+        /// HArray2OfLin2d from t_colgp module
+        type TColgp_HArray2OfLin2d = crate::t_colgp::ffi::HArray2OfLin2d;
         /// HArray2OfPnt from t_colgp module
         type TColgp_HArray2OfPnt = crate::t_colgp::ffi::HArray2OfPnt;
+        /// HArray2OfPnt2d from t_colgp module
+        type TColgp_HArray2OfPnt2d = crate::t_colgp::ffi::HArray2OfPnt2d;
+        /// HArray2OfVec from t_colgp module
+        type TColgp_HArray2OfVec = crate::t_colgp::ffi::HArray2OfVec;
+        /// HArray2OfVec2d from t_colgp module
+        type TColgp_HArray2OfVec2d = crate::t_colgp::ffi::HArray2OfVec2d;
+        /// HArray2OfXY from t_colgp module
+        type TColgp_HArray2OfXY = crate::t_colgp::ffi::HArray2OfXY;
+        /// HArray2OfXYZ from t_colgp module
+        type TColgp_HArray2OfXYZ = crate::t_colgp::ffi::HArray2OfXYZ;
+        /// HSequenceOfDir from t_colgp module
+        type TColgp_HSequenceOfDir = crate::t_colgp::ffi::HSequenceOfDir;
+        /// HSequenceOfDir2d from t_colgp module
+        type TColgp_HSequenceOfDir2d = crate::t_colgp::ffi::HSequenceOfDir2d;
+        /// HSequenceOfPnt from t_colgp module
+        type TColgp_HSequenceOfPnt = crate::t_colgp::ffi::HSequenceOfPnt;
+        /// HSequenceOfPnt2d from t_colgp module
+        type TColgp_HSequenceOfPnt2d = crate::t_colgp::ffi::HSequenceOfPnt2d;
+        /// HSequenceOfVec from t_colgp module
+        type TColgp_HSequenceOfVec = crate::t_colgp::ffi::HSequenceOfVec;
+        /// HSequenceOfVec2d from t_colgp module
+        type TColgp_HSequenceOfVec2d = crate::t_colgp::ffi::HSequenceOfVec2d;
+        /// HSequenceOfXY from t_colgp module
+        type TColgp_HSequenceOfXY = crate::t_colgp::ffi::HSequenceOfXY;
+        /// HSequenceOfXYZ from t_colgp module
+        type TColgp_HSequenceOfXYZ = crate::t_colgp::ffi::HSequenceOfXYZ;
         /// HArray2OfShape from top_tools module
         type TopTools_HArray2OfShape = crate::top_tools::ffi::HArray2OfShape;
         /// HSequenceOfShape from top_tools module
