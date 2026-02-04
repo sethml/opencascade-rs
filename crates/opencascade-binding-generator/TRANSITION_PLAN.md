@@ -1196,7 +1196,14 @@ to C++ obvious. The short names are provided via re-exports in per-module files.
    - Static methods returning `const char*` are currently filtered out
    - Should add shim to convert `const char*` ↔ `&str` or `String`
 3. ✅ Both `opencascade-sys` and `opencascade` crates build successfully
-4. 🔲 Unified FFI module generation not yet started (still using per-module architecture)
+4. 🔄 Unified FFI module generation in progress:
+   - ✅ `generate_unified_ffi()` - generates single ffi.rs with all types
+   - ✅ `generate_unified_wrappers()` - generates single wrappers.hxx
+   - ✅ `generate_module_reexports()` - generates per-module re-export files
+   - ✅ Re-exports now grouped by source header and sorted alphabetically
+   - 🔲 TODO: Test unified generation with `--unified` flag
+   - 🔲 TODO: Update build.rs to compile unified architecture
+   - 🔲 TODO: Migrate from per-module to unified as default
 
 ---
 
