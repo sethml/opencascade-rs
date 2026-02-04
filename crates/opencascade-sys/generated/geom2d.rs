@@ -225,6 +225,46 @@ impl BoundedCurve {
     pub fn get_type_name() -> String {
         ffi::BoundedCurve_get_type_name()
     }
+
+    /// Inherited from Geom2d_Curve: Reverse
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::bounded_curve_inherited_reverse(self)
+    }
+
+    /// Inherited from Geom2d_Curve: ReversedParameter
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        ffi::bounded_curve_inherited_reversed_parameter(self, U)
+    }
+
+    /// Inherited from Geom2d_Curve: FirstParameter
+    pub fn first_parameter(&self) -> f64 {
+        ffi::bounded_curve_inherited_first_parameter(self)
+    }
+
+    /// Inherited from Geom2d_Curve: LastParameter
+    pub fn last_parameter(&self) -> f64 {
+        ffi::bounded_curve_inherited_last_parameter(self)
+    }
+
+    /// Inherited from Geom2d_Curve: IsClosed
+    pub fn is_closed(&self) -> bool {
+        ffi::bounded_curve_inherited_is_closed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: IsPeriodic
+    pub fn is_periodic(&self) -> bool {
+        ffi::bounded_curve_inherited_is_periodic(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Period
+    pub fn period(&self) -> f64 {
+        ffi::bounded_curve_inherited_period(self)
+    }
+
+    /// Inherited from Geom2d_Curve: IsCN
+    pub fn is_cn(&self, N: i32) -> bool {
+        ffi::bounded_curve_inherited_is_cn(self, N)
+    }
 }
 
 /// The abstract class Conic describes the common
@@ -281,6 +321,31 @@ impl Conic {
 
     pub fn get_type_name() -> String {
         ffi::Conic_get_type_name()
+    }
+
+    /// Inherited from Geom2d_Curve: FirstParameter
+    pub fn first_parameter(&self) -> f64 {
+        ffi::conic_inherited_first_parameter(self)
+    }
+
+    /// Inherited from Geom2d_Curve: LastParameter
+    pub fn last_parameter(&self) -> f64 {
+        ffi::conic_inherited_last_parameter(self)
+    }
+
+    /// Inherited from Geom2d_Curve: IsClosed
+    pub fn is_closed(&self) -> bool {
+        ffi::conic_inherited_is_closed(self)
+    }
+
+    /// Inherited from Geom2d_Curve: IsPeriodic
+    pub fn is_periodic(&self) -> bool {
+        ffi::conic_inherited_is_periodic(self)
+    }
+
+    /// Inherited from Geom2d_Curve: Period
+    pub fn period(&self) -> f64 {
+        ffi::conic_inherited_period(self)
     }
 }
 
@@ -459,6 +524,21 @@ impl Ellipse {
 
     pub fn get_type_name() -> String {
         ffi::Ellipse_get_type_name()
+    }
+
+    /// Inherited from Geom2d_Conic: Reverse
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::ellipse_inherited_reverse(self)
+    }
+
+    /// Inherited from Geom2d_Conic: IsCN
+    pub fn is_cn(&self, N: i32) -> bool {
+        ffi::ellipse_inherited_is_cn(self, N)
+    }
+
+    /// Inherited from Geom2d_Curve: Period
+    pub fn period(&self) -> f64 {
+        ffi::ellipse_inherited_period(self)
     }
 }
 
@@ -1059,6 +1139,30 @@ pub(crate) mod ffi {
         /// Upcast Geom2d_BoundedCurve to Geom2d_Geometry (mutable)
         #[cxx_name = "Geom2d_BoundedCurve_as_Geom2d_Geometry_mut"]
         fn bounded_curve_as_geometry_mut(self_: Pin<&mut BoundedCurve>) -> Pin<&mut Geometry>;
+        /// Inherited from Geom2d_Curve: Reverse
+        #[cxx_name = "Geom2d_BoundedCurve_inherited_Reverse"]
+        fn bounded_curve_inherited_reverse(self_: Pin<&mut BoundedCurve>);
+        /// Inherited from Geom2d_Curve: ReversedParameter
+        #[cxx_name = "Geom2d_BoundedCurve_inherited_ReversedParameter"]
+        fn bounded_curve_inherited_reversed_parameter(self_: &BoundedCurve, U: f64) -> f64;
+        /// Inherited from Geom2d_Curve: FirstParameter
+        #[cxx_name = "Geom2d_BoundedCurve_inherited_FirstParameter"]
+        fn bounded_curve_inherited_first_parameter(self_: &BoundedCurve) -> f64;
+        /// Inherited from Geom2d_Curve: LastParameter
+        #[cxx_name = "Geom2d_BoundedCurve_inherited_LastParameter"]
+        fn bounded_curve_inherited_last_parameter(self_: &BoundedCurve) -> f64;
+        /// Inherited from Geom2d_Curve: IsClosed
+        #[cxx_name = "Geom2d_BoundedCurve_inherited_IsClosed"]
+        fn bounded_curve_inherited_is_closed(self_: &BoundedCurve) -> bool;
+        /// Inherited from Geom2d_Curve: IsPeriodic
+        #[cxx_name = "Geom2d_BoundedCurve_inherited_IsPeriodic"]
+        fn bounded_curve_inherited_is_periodic(self_: &BoundedCurve) -> bool;
+        /// Inherited from Geom2d_Curve: Period
+        #[cxx_name = "Geom2d_BoundedCurve_inherited_Period"]
+        fn bounded_curve_inherited_period(self_: &BoundedCurve) -> f64;
+        /// Inherited from Geom2d_Curve: IsCN
+        #[cxx_name = "Geom2d_BoundedCurve_inherited_IsCN"]
+        fn bounded_curve_inherited_is_cn(self_: &BoundedCurve, N: i32) -> bool;
         /// Upcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_Curve>
         #[cxx_name = "HandleGeom2dBoundedCurve_to_HandleGeom2dCurve"]
         fn bounded_curve_to_handle_curve(
@@ -1188,6 +1292,21 @@ pub(crate) mod ffi {
         /// Upcast Geom2d_Conic to Geom2d_Geometry (mutable)
         #[cxx_name = "Geom2d_Conic_as_Geom2d_Geometry_mut"]
         fn conic_as_geometry_mut(self_: Pin<&mut Conic>) -> Pin<&mut Geometry>;
+        /// Inherited from Geom2d_Curve: FirstParameter
+        #[cxx_name = "Geom2d_Conic_inherited_FirstParameter"]
+        fn conic_inherited_first_parameter(self_: &Conic) -> f64;
+        /// Inherited from Geom2d_Curve: LastParameter
+        #[cxx_name = "Geom2d_Conic_inherited_LastParameter"]
+        fn conic_inherited_last_parameter(self_: &Conic) -> f64;
+        /// Inherited from Geom2d_Curve: IsClosed
+        #[cxx_name = "Geom2d_Conic_inherited_IsClosed"]
+        fn conic_inherited_is_closed(self_: &Conic) -> bool;
+        /// Inherited from Geom2d_Curve: IsPeriodic
+        #[cxx_name = "Geom2d_Conic_inherited_IsPeriodic"]
+        fn conic_inherited_is_periodic(self_: &Conic) -> bool;
+        /// Inherited from Geom2d_Curve: Period
+        #[cxx_name = "Geom2d_Conic_inherited_Period"]
+        fn conic_inherited_period(self_: &Conic) -> f64;
         /// Upcast Handle<Geom2d_Conic> to Handle<Geom2d_Curve>
         #[cxx_name = "HandleGeom2dConic_to_HandleGeom2dCurve"]
         fn conic_to_handle_curve(handle: &HandleGeom2dConic) -> UniquePtr<HandleGeom2dCurve>;
@@ -1474,6 +1593,15 @@ pub(crate) mod ffi {
         /// Upcast Geom2d_Ellipse to Geom2d_Geometry (mutable)
         #[cxx_name = "Geom2d_Ellipse_as_Geom2d_Geometry_mut"]
         fn ellipse_as_geometry_mut(self_: Pin<&mut Ellipse>) -> Pin<&mut Geometry>;
+        /// Inherited from Geom2d_Conic: Reverse
+        #[cxx_name = "Geom2d_Ellipse_inherited_Reverse"]
+        fn ellipse_inherited_reverse(self_: Pin<&mut Ellipse>);
+        /// Inherited from Geom2d_Conic: IsCN
+        #[cxx_name = "Geom2d_Ellipse_inherited_IsCN"]
+        fn ellipse_inherited_is_cn(self_: &Ellipse, N: i32) -> bool;
+        /// Inherited from Geom2d_Curve: Period
+        #[cxx_name = "Geom2d_Ellipse_inherited_Period"]
+        fn ellipse_inherited_period(self_: &Ellipse) -> f64;
         /// Wrap Geom2d_Ellipse in a Handle (reference-counted smart pointer)
         #[cxx_name = "Geom2d_Ellipse_to_handle"]
         fn Ellipse_to_handle(obj: UniquePtr<Ellipse>) -> UniquePtr<HandleGeom2dEllipse>;

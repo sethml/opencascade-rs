@@ -21,6 +21,31 @@ impl HInter {
     pub fn new() -> cxx::UniquePtr<Self> {
         ffi::HInter_ctor()
     }
+
+    /// Inherited from IntCurveSurface_Intersection: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::h_inter_inherited_is_done(self)
+    }
+
+    /// Inherited from IntCurveSurface_Intersection: NbPoints
+    pub fn nb_points(&self) -> i32 {
+        ffi::h_inter_inherited_nb_points(self)
+    }
+
+    /// Inherited from IntCurveSurface_Intersection: NbSegments
+    pub fn nb_segments(&self) -> i32 {
+        ffi::h_inter_inherited_nb_segments(self)
+    }
+
+    /// Inherited from IntCurveSurface_Intersection: IsParallel
+    pub fn is_parallel(&self) -> bool {
+        ffi::h_inter_inherited_is_parallel(self)
+    }
+
+    /// Inherited from IntCurveSurface_Intersection: Dump
+    pub fn dump(&self) {
+        ffi::h_inter_inherited_dump(self)
+    }
 }
 
 /// A IntersectionSegment describes a segment of curve
@@ -130,6 +155,21 @@ pub(crate) mod ffi {
             Surface: &HandleAdaptor3dSurface,
             Polyhedron: &IntCurveSurface_ThePolyhedronOfHInter,
         );
+        /// Inherited from IntCurveSurface_Intersection: IsDone
+        #[cxx_name = "IntCurveSurface_HInter_inherited_IsDone"]
+        fn h_inter_inherited_is_done(self_: &HInter) -> bool;
+        /// Inherited from IntCurveSurface_Intersection: NbPoints
+        #[cxx_name = "IntCurveSurface_HInter_inherited_NbPoints"]
+        fn h_inter_inherited_nb_points(self_: &HInter) -> i32;
+        /// Inherited from IntCurveSurface_Intersection: NbSegments
+        #[cxx_name = "IntCurveSurface_HInter_inherited_NbSegments"]
+        fn h_inter_inherited_nb_segments(self_: &HInter) -> i32;
+        /// Inherited from IntCurveSurface_Intersection: IsParallel
+        #[cxx_name = "IntCurveSurface_HInter_inherited_IsParallel"]
+        fn h_inter_inherited_is_parallel(self_: &HInter) -> bool;
+        /// Inherited from IntCurveSurface_Intersection: Dump
+        #[cxx_name = "IntCurveSurface_HInter_inherited_Dump"]
+        fn h_inter_inherited_dump(self_: &HInter);
         /// ======================== IntCurveSurface_IntersectionSegment ========================
         /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:29 - `IntCurveSurface_IntersectionSegment`
         ///

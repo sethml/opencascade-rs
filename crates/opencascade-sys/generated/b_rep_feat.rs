@@ -94,6 +94,121 @@ impl MakeCylindricalHole {
     pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
         ffi::make_cylindrical_hole_as_builder_mut(self)
     }
+
+    /// Inherited from BOPAlgo_BOP: Clear
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        ffi::make_cylindrical_hole_inherited_clear(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetNonDestructive
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::make_cylindrical_hole_inherited_set_non_destructive(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Builder: NonDestructive
+    pub fn non_destructive(&self) -> bool {
+        ffi::make_cylindrical_hole_inherited_non_destructive(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetCheckInverted
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        ffi::make_cylindrical_hole_inherited_set_check_inverted(self, theCheck)
+    }
+
+    /// Inherited from BOPAlgo_Builder: CheckInverted
+    pub fn check_inverted(&self) -> bool {
+        ffi::make_cylindrical_hole_inherited_check_inverted(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasModified
+    pub fn has_modified(&self) -> bool {
+        ffi::make_cylindrical_hole_inherited_has_modified(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasGenerated
+    pub fn has_generated(&self) -> bool {
+        ffi::make_cylindrical_hole_inherited_has_generated(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasDeleted
+    pub fn has_deleted(&self) -> bool {
+        ffi::make_cylindrical_hole_inherited_has_deleted(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        ffi::make_cylindrical_hole_inherited_set_to_fill_history(self, theHistFlag)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasHistory
+    pub fn has_history(&self) -> bool {
+        ffi::make_cylindrical_hole_inherited_has_history(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasErrors
+    pub fn has_errors(&self) -> bool {
+        ffi::make_cylindrical_hole_inherited_has_errors(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarnings
+    pub fn has_warnings(&self) -> bool {
+        ffi::make_cylindrical_hole_inherited_has_warnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: ClearWarnings
+    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
+        ffi::make_cylindrical_hole_inherited_clear_warnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetRunParallel
+    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::make_cylindrical_hole_inherited_set_run_parallel(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Options: RunParallel
+    pub fn run_parallel(&self) -> bool {
+        ffi::make_cylindrical_hole_inherited_run_parallel(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetFuzzyValue
+    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
+        ffi::make_cylindrical_hole_inherited_set_fuzzy_value(self, theFuzz)
+    }
+
+    /// Inherited from BOPAlgo_Options: FuzzyValue
+    pub fn fuzzy_value(&self) -> f64 {
+        ffi::make_cylindrical_hole_inherited_fuzzy_value(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetUseOBB
+    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
+        ffi::make_cylindrical_hole_inherited_set_use_obb(self, theUseOBB)
+    }
+
+    /// Inherited from BOPAlgo_Options: UseOBB
+    pub fn use_obb(&self) -> bool {
+        ffi::make_cylindrical_hole_inherited_use_obb(self)
+    }
+
+    /// Inherited from BRepFeat_Builder: SetOperation
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theFuse: i32) {
+        ffi::make_cylindrical_hole_inherited_set_operation(self, theFuse)
+    }
+
+    /// Inherited from BRepFeat_Builder: RebuildFaces
+    pub fn rebuild_faces(self: std::pin::Pin<&mut Self>) {
+        ffi::make_cylindrical_hole_inherited_rebuild_faces(self)
+    }
+
+    /// Inherited from BRepFeat_Builder: CheckSolidImages
+    pub fn check_solid_images(self: std::pin::Pin<&mut Self>) {
+        ffi::make_cylindrical_hole_inherited_check_solid_images(self)
+    }
+
+    /// Inherited from BRepFeat_Builder: FillRemoved
+    pub fn fill_removed(self: std::pin::Pin<&mut Self>) {
+        ffi::make_cylindrical_hole_inherited_fill_removed(self)
+    }
 }
 
 /// Describes functions to build draft
@@ -175,6 +290,51 @@ impl MakeDPrism {
     pub fn baryc_curve(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
         ffi::MakeDPrism_baryc_curve(self)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_d_prism_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_d_prism_inherited_check(self)
+    }
+
+    /// Inherited from BRepFeat_Form: BasisShapeValid
+    pub fn basis_shape_valid(self: std::pin::Pin<&mut Self>) {
+        ffi::make_d_prism_inherited_basis_shape_valid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: GeneratedShapeValid
+    pub fn generated_shape_valid(self: std::pin::Pin<&mut Self>) {
+        ffi::make_d_prism_inherited_generated_shape_valid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: ShapeFromValid
+    pub fn shape_from_valid(self: std::pin::Pin<&mut Self>) {
+        ffi::make_d_prism_inherited_shape_from_valid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: ShapeUntilValid
+    pub fn shape_until_valid(self: std::pin::Pin<&mut Self>) {
+        ffi::make_d_prism_inherited_shape_until_valid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: GluedFacesValid
+    pub fn glued_faces_valid(self: std::pin::Pin<&mut Self>) {
+        ffi::make_d_prism_inherited_glued_faces_valid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: SketchFaceValid
+    pub fn sketch_face_valid(self: std::pin::Pin<&mut Self>) {
+        ffi::make_d_prism_inherited_sketch_face_valid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: PerfSelectionValid
+    pub fn perf_selection_valid(self: std::pin::Pin<&mut Self>) {
+        ffi::make_d_prism_inherited_perf_selection_valid(self)
+    }
 }
 
 /// Provides general functions to build form features.
@@ -232,6 +392,16 @@ impl Form {
 
     pub fn baryc_curve(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::HandleGeomCurve> {
         ffi::Form_baryc_curve(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::form_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::form_inherited_check(self)
     }
 }
 
@@ -314,6 +484,96 @@ impl Builder {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::bop_algo::ToolsProvider> {
         ffi::builder_as_bop_algo_tools_provider_mut(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetNonDestructive
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::builder_inherited_set_non_destructive(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Builder: NonDestructive
+    pub fn non_destructive(&self) -> bool {
+        ffi::builder_inherited_non_destructive(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetCheckInverted
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        ffi::builder_inherited_set_check_inverted(self, theCheck)
+    }
+
+    /// Inherited from BOPAlgo_Builder: CheckInverted
+    pub fn check_inverted(&self) -> bool {
+        ffi::builder_inherited_check_inverted(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasModified
+    pub fn has_modified(&self) -> bool {
+        ffi::builder_inherited_has_modified(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasGenerated
+    pub fn has_generated(&self) -> bool {
+        ffi::builder_inherited_has_generated(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasDeleted
+    pub fn has_deleted(&self) -> bool {
+        ffi::builder_inherited_has_deleted(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        ffi::builder_inherited_set_to_fill_history(self, theHistFlag)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasHistory
+    pub fn has_history(&self) -> bool {
+        ffi::builder_inherited_has_history(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasErrors
+    pub fn has_errors(&self) -> bool {
+        ffi::builder_inherited_has_errors(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarnings
+    pub fn has_warnings(&self) -> bool {
+        ffi::builder_inherited_has_warnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: ClearWarnings
+    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
+        ffi::builder_inherited_clear_warnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetRunParallel
+    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::builder_inherited_set_run_parallel(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Options: RunParallel
+    pub fn run_parallel(&self) -> bool {
+        ffi::builder_inherited_run_parallel(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetFuzzyValue
+    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
+        ffi::builder_inherited_set_fuzzy_value(self, theFuzz)
+    }
+
+    /// Inherited from BOPAlgo_Options: FuzzyValue
+    pub fn fuzzy_value(&self) -> f64 {
+        ffi::builder_inherited_fuzzy_value(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetUseOBB
+    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
+        ffi::builder_inherited_set_use_obb(self, theUseOBB)
+    }
+
+    /// Inherited from BOPAlgo_Options: UseOBB
+    pub fn use_obb(&self) -> bool {
+        ffi::builder_inherited_use_obb(self)
     }
 }
 #[cxx::bridge]
@@ -467,6 +727,96 @@ pub(crate) mod ffi {
         fn make_cylindrical_hole_as_builder_mut(
             self_: Pin<&mut MakeCylindricalHole>,
         ) -> Pin<&mut Builder>;
+        /// Inherited from BOPAlgo_BOP: Clear
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_Clear"]
+        fn make_cylindrical_hole_inherited_clear(self_: Pin<&mut MakeCylindricalHole>);
+        /// Inherited from BOPAlgo_Builder: SetNonDestructive
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_SetNonDestructive"]
+        fn make_cylindrical_hole_inherited_set_non_destructive(
+            self_: Pin<&mut MakeCylindricalHole>,
+            theFlag: bool,
+        );
+        /// Inherited from BOPAlgo_Builder: NonDestructive
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_NonDestructive"]
+        fn make_cylindrical_hole_inherited_non_destructive(self_: &MakeCylindricalHole) -> bool;
+        /// Inherited from BOPAlgo_Builder: SetCheckInverted
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_SetCheckInverted"]
+        fn make_cylindrical_hole_inherited_set_check_inverted(
+            self_: Pin<&mut MakeCylindricalHole>,
+            theCheck: bool,
+        );
+        /// Inherited from BOPAlgo_Builder: CheckInverted
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_CheckInverted"]
+        fn make_cylindrical_hole_inherited_check_inverted(self_: &MakeCylindricalHole) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasModified
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_HasModified"]
+        fn make_cylindrical_hole_inherited_has_modified(self_: &MakeCylindricalHole) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasGenerated
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_HasGenerated"]
+        fn make_cylindrical_hole_inherited_has_generated(self_: &MakeCylindricalHole) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasDeleted
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_HasDeleted"]
+        fn make_cylindrical_hole_inherited_has_deleted(self_: &MakeCylindricalHole) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_SetToFillHistory"]
+        fn make_cylindrical_hole_inherited_set_to_fill_history(
+            self_: Pin<&mut MakeCylindricalHole>,
+            theHistFlag: bool,
+        );
+        /// Inherited from BOPAlgo_BuilderShape: HasHistory
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_HasHistory"]
+        fn make_cylindrical_hole_inherited_has_history(self_: &MakeCylindricalHole) -> bool;
+        /// Inherited from BOPAlgo_Options: HasErrors
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_HasErrors"]
+        fn make_cylindrical_hole_inherited_has_errors(self_: &MakeCylindricalHole) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarnings
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_HasWarnings"]
+        fn make_cylindrical_hole_inherited_has_warnings(self_: &MakeCylindricalHole) -> bool;
+        /// Inherited from BOPAlgo_Options: ClearWarnings
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_ClearWarnings"]
+        fn make_cylindrical_hole_inherited_clear_warnings(self_: Pin<&mut MakeCylindricalHole>);
+        /// Inherited from BOPAlgo_Options: SetRunParallel
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_SetRunParallel"]
+        fn make_cylindrical_hole_inherited_set_run_parallel(
+            self_: Pin<&mut MakeCylindricalHole>,
+            theFlag: bool,
+        );
+        /// Inherited from BOPAlgo_Options: RunParallel
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_RunParallel"]
+        fn make_cylindrical_hole_inherited_run_parallel(self_: &MakeCylindricalHole) -> bool;
+        /// Inherited from BOPAlgo_Options: SetFuzzyValue
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_SetFuzzyValue"]
+        fn make_cylindrical_hole_inherited_set_fuzzy_value(
+            self_: Pin<&mut MakeCylindricalHole>,
+            theFuzz: f64,
+        );
+        /// Inherited from BOPAlgo_Options: FuzzyValue
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_FuzzyValue"]
+        fn make_cylindrical_hole_inherited_fuzzy_value(self_: &MakeCylindricalHole) -> f64;
+        /// Inherited from BOPAlgo_Options: SetUseOBB
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_SetUseOBB"]
+        fn make_cylindrical_hole_inherited_set_use_obb(
+            self_: Pin<&mut MakeCylindricalHole>,
+            theUseOBB: bool,
+        );
+        /// Inherited from BOPAlgo_Options: UseOBB
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_UseOBB"]
+        fn make_cylindrical_hole_inherited_use_obb(self_: &MakeCylindricalHole) -> bool;
+        /// Inherited from BRepFeat_Builder: SetOperation
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_SetOperation"]
+        fn make_cylindrical_hole_inherited_set_operation(
+            self_: Pin<&mut MakeCylindricalHole>,
+            theFuse: i32,
+        );
+        /// Inherited from BRepFeat_Builder: RebuildFaces
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_RebuildFaces"]
+        fn make_cylindrical_hole_inherited_rebuild_faces(self_: Pin<&mut MakeCylindricalHole>);
+        /// Inherited from BRepFeat_Builder: CheckSolidImages
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_CheckSolidImages"]
+        fn make_cylindrical_hole_inherited_check_solid_images(self_: Pin<&mut MakeCylindricalHole>);
+        /// Inherited from BRepFeat_Builder: FillRemoved
+        #[cxx_name = "BRepFeat_MakeCylindricalHole_inherited_FillRemoved"]
+        fn make_cylindrical_hole_inherited_fill_removed(self_: Pin<&mut MakeCylindricalHole>);
         /// ======================== BRepFeat_MakeDPrism ========================
         /// **Source:** `BRepFeat_MakeDPrism.hxx`:50 - `BRepFeat_MakeDPrism`
         ///
@@ -624,6 +974,33 @@ pub(crate) mod ffi {
         /// Upcast BRepFeat_MakeDPrism to BRepFeat_Form (mutable)
         #[cxx_name = "BRepFeat_MakeDPrism_as_BRepFeat_Form_mut"]
         fn make_d_prism_as_form_mut(self_: Pin<&mut MakeDPrism>) -> Pin<&mut Form>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepFeat_MakeDPrism_inherited_IsDone"]
+        fn make_d_prism_inherited_is_done(self_: &MakeDPrism) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepFeat_MakeDPrism_inherited_Check"]
+        fn make_d_prism_inherited_check(self_: &MakeDPrism);
+        /// Inherited from BRepFeat_Form: BasisShapeValid
+        #[cxx_name = "BRepFeat_MakeDPrism_inherited_BasisShapeValid"]
+        fn make_d_prism_inherited_basis_shape_valid(self_: Pin<&mut MakeDPrism>);
+        /// Inherited from BRepFeat_Form: GeneratedShapeValid
+        #[cxx_name = "BRepFeat_MakeDPrism_inherited_GeneratedShapeValid"]
+        fn make_d_prism_inherited_generated_shape_valid(self_: Pin<&mut MakeDPrism>);
+        /// Inherited from BRepFeat_Form: ShapeFromValid
+        #[cxx_name = "BRepFeat_MakeDPrism_inherited_ShapeFromValid"]
+        fn make_d_prism_inherited_shape_from_valid(self_: Pin<&mut MakeDPrism>);
+        /// Inherited from BRepFeat_Form: ShapeUntilValid
+        #[cxx_name = "BRepFeat_MakeDPrism_inherited_ShapeUntilValid"]
+        fn make_d_prism_inherited_shape_until_valid(self_: Pin<&mut MakeDPrism>);
+        /// Inherited from BRepFeat_Form: GluedFacesValid
+        #[cxx_name = "BRepFeat_MakeDPrism_inherited_GluedFacesValid"]
+        fn make_d_prism_inherited_glued_faces_valid(self_: Pin<&mut MakeDPrism>);
+        /// Inherited from BRepFeat_Form: SketchFaceValid
+        #[cxx_name = "BRepFeat_MakeDPrism_inherited_SketchFaceValid"]
+        fn make_d_prism_inherited_sketch_face_valid(self_: Pin<&mut MakeDPrism>);
+        /// Inherited from BRepFeat_Form: PerfSelectionValid
+        #[cxx_name = "BRepFeat_MakeDPrism_inherited_PerfSelectionValid"]
+        fn make_d_prism_inherited_perf_selection_valid(self_: Pin<&mut MakeDPrism>);
         /// ======================== BRepFeat_Form ========================
         /// **Source:** `BRepFeat_Form.hxx`:65 - `BRepFeat_Form`
         ///
@@ -763,6 +1140,12 @@ pub(crate) mod ffi {
         fn form_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut Form>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepFeat_Form_inherited_IsDone"]
+        fn form_inherited_is_done(self_: &Form) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepFeat_Form_inherited_Check"]
+        fn form_inherited_check(self_: &Form);
         /// ======================== BRepFeat_Builder ========================
         /// **Source:** `BRepFeat_Builder.hxx`:45 - `BRepFeat_Builder`
         ///
@@ -908,6 +1291,60 @@ pub(crate) mod ffi {
         fn builder_as_bop_algo_tools_provider_mut(
             self_: Pin<&mut Builder>,
         ) -> Pin<&mut BOPAlgo_ToolsProvider>;
+        /// Inherited from BOPAlgo_Builder: SetNonDestructive
+        #[cxx_name = "BRepFeat_Builder_inherited_SetNonDestructive"]
+        fn builder_inherited_set_non_destructive(self_: Pin<&mut Builder>, theFlag: bool);
+        /// Inherited from BOPAlgo_Builder: NonDestructive
+        #[cxx_name = "BRepFeat_Builder_inherited_NonDestructive"]
+        fn builder_inherited_non_destructive(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_Builder: SetCheckInverted
+        #[cxx_name = "BRepFeat_Builder_inherited_SetCheckInverted"]
+        fn builder_inherited_set_check_inverted(self_: Pin<&mut Builder>, theCheck: bool);
+        /// Inherited from BOPAlgo_Builder: CheckInverted
+        #[cxx_name = "BRepFeat_Builder_inherited_CheckInverted"]
+        fn builder_inherited_check_inverted(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasModified
+        #[cxx_name = "BRepFeat_Builder_inherited_HasModified"]
+        fn builder_inherited_has_modified(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasGenerated
+        #[cxx_name = "BRepFeat_Builder_inherited_HasGenerated"]
+        fn builder_inherited_has_generated(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasDeleted
+        #[cxx_name = "BRepFeat_Builder_inherited_HasDeleted"]
+        fn builder_inherited_has_deleted(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory
+        #[cxx_name = "BRepFeat_Builder_inherited_SetToFillHistory"]
+        fn builder_inherited_set_to_fill_history(self_: Pin<&mut Builder>, theHistFlag: bool);
+        /// Inherited from BOPAlgo_BuilderShape: HasHistory
+        #[cxx_name = "BRepFeat_Builder_inherited_HasHistory"]
+        fn builder_inherited_has_history(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: HasErrors
+        #[cxx_name = "BRepFeat_Builder_inherited_HasErrors"]
+        fn builder_inherited_has_errors(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarnings
+        #[cxx_name = "BRepFeat_Builder_inherited_HasWarnings"]
+        fn builder_inherited_has_warnings(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: ClearWarnings
+        #[cxx_name = "BRepFeat_Builder_inherited_ClearWarnings"]
+        fn builder_inherited_clear_warnings(self_: Pin<&mut Builder>);
+        /// Inherited from BOPAlgo_Options: SetRunParallel
+        #[cxx_name = "BRepFeat_Builder_inherited_SetRunParallel"]
+        fn builder_inherited_set_run_parallel(self_: Pin<&mut Builder>, theFlag: bool);
+        /// Inherited from BOPAlgo_Options: RunParallel
+        #[cxx_name = "BRepFeat_Builder_inherited_RunParallel"]
+        fn builder_inherited_run_parallel(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: SetFuzzyValue
+        #[cxx_name = "BRepFeat_Builder_inherited_SetFuzzyValue"]
+        fn builder_inherited_set_fuzzy_value(self_: Pin<&mut Builder>, theFuzz: f64);
+        /// Inherited from BOPAlgo_Options: FuzzyValue
+        #[cxx_name = "BRepFeat_Builder_inherited_FuzzyValue"]
+        fn builder_inherited_fuzzy_value(self_: &Builder) -> f64;
+        /// Inherited from BOPAlgo_Options: SetUseOBB
+        #[cxx_name = "BRepFeat_Builder_inherited_SetUseOBB"]
+        fn builder_inherited_set_use_obb(self_: Pin<&mut Builder>, theUseOBB: bool);
+        /// Inherited from BOPAlgo_Options: UseOBB
+        #[cxx_name = "BRepFeat_Builder_inherited_UseOBB"]
+        fn builder_inherited_use_obb(self_: &Builder) -> bool;
 
         // ========================
         // Cross-module type aliases

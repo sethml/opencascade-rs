@@ -100,6 +100,11 @@ impl MakeArcOfCircle {
     pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
         ffi::make_arc_of_circle_as_root_mut(self)
     }
+
+    /// Inherited from GC_Root: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_arc_of_circle_inherited_is_done(self)
+    }
 }
 
 /// Implements construction algorithms for a line
@@ -156,6 +161,11 @@ impl MakeSegment {
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
         ffi::make_segment_as_root_mut(self)
+    }
+
+    /// Inherited from GC_Root: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_segment_inherited_is_done(self)
     }
 }
 
@@ -277,6 +287,9 @@ pub(crate) mod ffi {
         /// Upcast GC_MakeArcOfCircle to GC_Root (mutable)
         #[cxx_name = "GC_MakeArcOfCircle_as_GC_Root_mut"]
         fn make_arc_of_circle_as_root_mut(self_: Pin<&mut MakeArcOfCircle>) -> Pin<&mut Root>;
+        /// Inherited from GC_Root: IsDone
+        #[cxx_name = "GC_MakeArcOfCircle_inherited_IsDone"]
+        fn make_arc_of_circle_inherited_is_done(self_: &MakeArcOfCircle) -> bool;
         /// ======================== GC_MakeSegment ========================
         /// **Source:** `GC_MakeSegment.hxx`:39 - `GC_MakeSegment`
         ///
@@ -337,6 +350,9 @@ pub(crate) mod ffi {
         /// Upcast GC_MakeSegment to GC_Root (mutable)
         #[cxx_name = "GC_MakeSegment_as_GC_Root_mut"]
         fn make_segment_as_root_mut(self_: Pin<&mut MakeSegment>) -> Pin<&mut Root>;
+        /// Inherited from GC_Root: IsDone
+        #[cxx_name = "GC_MakeSegment_inherited_IsDone"]
+        fn make_segment_inherited_is_done(self_: &MakeSegment) -> bool;
         /// ======================== GC_Root ========================
         /// **Source:** `GC_Root.hxx`:32 - `GC_Root`
         ///

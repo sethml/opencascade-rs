@@ -102,6 +102,9 @@ inline std::unique_ptr<Extrema_POnSurfParams> Extrema_POnSurfParams_ctor_real2_p
 
 inline const Extrema_POnSurf& Extrema_POnSurfParams_as_Extrema_POnSurf(const Extrema_POnSurfParams& self) { return self; }
 inline Extrema_POnSurf& Extrema_POnSurfParams_as_Extrema_POnSurf_mut(Extrema_POnSurfParams& self) { return self; }
+inline void Extrema_POnSurfParams_inherited_Parameter(const Extrema_POnSurfParams& self, Standard_Real& U, Standard_Real& V) {
+    self.Parameter(U, V);
+}
 
 // ========================
 // Extrema_FuncPSNorm wrappers

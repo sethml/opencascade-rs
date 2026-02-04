@@ -44,6 +44,9 @@ inline std::unique_ptr<GC_MakeArcOfCircle> GC_MakeArcOfCircle_ctor_pnt_vec_pnt(c
 
 inline const GC_Root& GC_MakeArcOfCircle_as_GC_Root(const GC_MakeArcOfCircle& self) { return self; }
 inline GC_Root& GC_MakeArcOfCircle_as_GC_Root_mut(GC_MakeArcOfCircle& self) { return self; }
+inline bool GC_MakeArcOfCircle_inherited_IsDone(const GC_MakeArcOfCircle& self) {
+    return self.IsDone();
+}
 
 // ========================
 // GC_MakeSegment wrappers
@@ -67,6 +70,9 @@ inline std::unique_ptr<GC_MakeSegment> GC_MakeSegment_ctor_lin_pnt2(const gp_Lin
 
 inline const GC_Root& GC_MakeSegment_as_GC_Root(const GC_MakeSegment& self) { return self; }
 inline GC_Root& GC_MakeSegment_as_GC_Root_mut(GC_MakeSegment& self) { return self; }
+inline bool GC_MakeSegment_inherited_IsDone(const GC_MakeSegment& self) {
+    return self.IsDone();
+}
 
 // ========================
 // GC_Root wrappers

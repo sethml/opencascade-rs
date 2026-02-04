@@ -187,6 +187,16 @@ impl Rotation {
     pub fn axe(&self) -> cxx::UniquePtr<ffi::gp_Ax1> {
         ffi::Rotation_axe(self)
     }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: Closed
+    pub fn closed(&self) -> bool {
+        ffi::rotation_inherited_closed(self)
+    }
+
+    /// Inherited from BRepSweep_Trsf: Init
+    pub fn init(self: std::pin::Pin<&mut Self>) {
+        ffi::rotation_inherited_init(self)
+    }
 }
 
 /// This class is inherited from NumLinearRegularSweep
@@ -257,6 +267,11 @@ impl Trsf {
         aDirS: &ffi::Sweep_NumShape,
     ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::Trsf_make_empty_face(self, aGenS, aDirS)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: Closed
+    pub fn closed(&self) -> bool {
+        ffi::trsf_inherited_closed(self)
     }
 }
 
@@ -603,6 +618,16 @@ impl Translation {
     pub fn vec(&self) -> cxx::UniquePtr<ffi::gp_Vec> {
         ffi::Translation_vec(self)
     }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: Closed
+    pub fn closed(&self) -> bool {
+        ffi::translation_inherited_closed(self)
+    }
+
+    /// Inherited from BRepSweep_Trsf: Init
+    pub fn init(self: std::pin::Pin<&mut Self>) {
+        ffi::translation_inherited_init(self)
+    }
 }
 #[cxx::bridge]
 pub(crate) mod ffi {
@@ -868,6 +893,12 @@ pub(crate) mod ffi {
         /// Upcast BRepSweep_Rotation to BRepSweep_Trsf (mutable)
         #[cxx_name = "BRepSweep_Rotation_as_BRepSweep_Trsf_mut"]
         fn rotation_as_trsf_mut(self_: Pin<&mut Rotation>) -> Pin<&mut Trsf>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: Closed
+        #[cxx_name = "BRepSweep_Rotation_inherited_Closed"]
+        fn rotation_inherited_closed(self_: &Rotation) -> bool;
+        /// Inherited from BRepSweep_Trsf: Init
+        #[cxx_name = "BRepSweep_Rotation_inherited_Init"]
+        fn rotation_inherited_init(self_: Pin<&mut Rotation>);
         /// ======================== BRepSweep_Trsf ========================
         /// **Source:** `BRepSweep_Trsf.hxx`:43 - `BRepSweep_Trsf`
         ///
@@ -1048,6 +1079,9 @@ pub(crate) mod ffi {
         fn trsf_as_num_linear_regular_sweep_mut(
             self_: Pin<&mut Trsf>,
         ) -> Pin<&mut NumLinearRegularSweep>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: Closed
+        #[cxx_name = "BRepSweep_Trsf_inherited_Closed"]
+        fn trsf_inherited_closed(self_: &Trsf) -> bool;
         /// ======================== BRepSweep_NumLinearRegularSweep ========================
         /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:68 - `BRepSweep_NumLinearRegularSweep`
         ///
@@ -1637,6 +1671,12 @@ pub(crate) mod ffi {
         /// Upcast BRepSweep_Translation to BRepSweep_Trsf (mutable)
         #[cxx_name = "BRepSweep_Translation_as_BRepSweep_Trsf_mut"]
         fn translation_as_trsf_mut(self_: Pin<&mut Translation>) -> Pin<&mut Trsf>;
+        /// Inherited from BRepSweep_NumLinearRegularSweep: Closed
+        #[cxx_name = "BRepSweep_Translation_inherited_Closed"]
+        fn translation_inherited_closed(self_: &Translation) -> bool;
+        /// Inherited from BRepSweep_Trsf: Init
+        #[cxx_name = "BRepSweep_Translation_inherited_Init"]
+        fn translation_inherited_init(self_: Pin<&mut Translation>);
 
         // ========================
         // Cross-module type aliases

@@ -231,4 +231,40 @@ inline const Adaptor2d_Curve2d& BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d(const B
 inline Adaptor2d_Curve2d& BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(BRepAdaptor_Curve2d& self) { return self; }
 inline const Geom2dAdaptor_Curve& BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve(const BRepAdaptor_Curve2d& self) { return self; }
 inline Geom2dAdaptor_Curve& BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(BRepAdaptor_Curve2d& self) { return self; }
+inline Standard_Real BRepAdaptor_Curve2d_inherited_FirstParameter(const BRepAdaptor_Curve2d& self) {
+    return self.FirstParameter();
+}
+inline Standard_Real BRepAdaptor_Curve2d_inherited_LastParameter(const BRepAdaptor_Curve2d& self) {
+    return self.LastParameter();
+}
+inline bool BRepAdaptor_Curve2d_inherited_IsClosed(const BRepAdaptor_Curve2d& self) {
+    return self.IsClosed();
+}
+inline bool BRepAdaptor_Curve2d_inherited_IsPeriodic(const BRepAdaptor_Curve2d& self) {
+    return self.IsPeriodic();
+}
+inline Standard_Real BRepAdaptor_Curve2d_inherited_Period(const BRepAdaptor_Curve2d& self) {
+    return self.Period();
+}
+inline Standard_Real BRepAdaptor_Curve2d_inherited_Resolution(const BRepAdaptor_Curve2d& self, Standard_Real R3d) {
+    return self.Resolution(R3d);
+}
+inline Standard_Integer BRepAdaptor_Curve2d_inherited_Degree(const BRepAdaptor_Curve2d& self) {
+    return self.Degree();
+}
+inline bool BRepAdaptor_Curve2d_inherited_IsRational(const BRepAdaptor_Curve2d& self) {
+    return self.IsRational();
+}
+inline Standard_Integer BRepAdaptor_Curve2d_inherited_NbPoles(const BRepAdaptor_Curve2d& self) {
+    return self.NbPoles();
+}
+inline Standard_Integer BRepAdaptor_Curve2d_inherited_NbKnots(const BRepAdaptor_Curve2d& self) {
+    return self.NbKnots();
+}
+inline Standard_Integer BRepAdaptor_Curve2d_inherited_NbSamples(const BRepAdaptor_Curve2d& self) {
+    return self.NbSamples();
+}
+inline void BRepAdaptor_Curve2d_inherited_Reset(BRepAdaptor_Curve2d& self) {
+    self.Reset();
+}
 

@@ -61,6 +61,48 @@ inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> ChFi3d_FilBuilder
 
 inline const ChFi3d_Builder& ChFi3d_FilBuilder_as_ChFi3d_Builder(const ChFi3d_FilBuilder& self) { return self; }
 inline ChFi3d_Builder& ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(ChFi3d_FilBuilder& self) { return self; }
+inline void ChFi3d_FilBuilder_inherited_SetParams(ChFi3d_FilBuilder& self, Standard_Real Tang, Standard_Real Tesp, Standard_Real T2d, Standard_Real TApp3d, Standard_Real TolApp2d, Standard_Real Fleche) {
+    self.SetParams(Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche);
+}
+inline Standard_Integer ChFi3d_FilBuilder_inherited_NbElements(const ChFi3d_FilBuilder& self) {
+    return self.NbElements();
+}
+inline Standard_Real ChFi3d_FilBuilder_inherited_Length(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
+    return self.Length(IC);
+}
+inline bool ChFi3d_FilBuilder_inherited_ClosedAndTangent(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
+    return self.ClosedAndTangent(IC);
+}
+inline bool ChFi3d_FilBuilder_inherited_Closed(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
+    return self.Closed(IC);
+}
+inline void ChFi3d_FilBuilder_inherited_Compute(ChFi3d_FilBuilder& self) {
+    self.Compute();
+}
+inline bool ChFi3d_FilBuilder_inherited_IsDone(const ChFi3d_FilBuilder& self) {
+    return self.IsDone();
+}
+inline Standard_Integer ChFi3d_FilBuilder_inherited_NbFaultyContours(const ChFi3d_FilBuilder& self) {
+    return self.NbFaultyContours();
+}
+inline Standard_Integer ChFi3d_FilBuilder_inherited_FaultyContour(const ChFi3d_FilBuilder& self, Standard_Integer I) {
+    return self.FaultyContour(I);
+}
+inline Standard_Integer ChFi3d_FilBuilder_inherited_NbComputedSurfaces(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
+    return self.NbComputedSurfaces(IC);
+}
+inline Standard_Integer ChFi3d_FilBuilder_inherited_NbFaultyVertices(const ChFi3d_FilBuilder& self) {
+    return self.NbFaultyVertices();
+}
+inline bool ChFi3d_FilBuilder_inherited_HasResult(const ChFi3d_FilBuilder& self) {
+    return self.HasResult();
+}
+inline void ChFi3d_FilBuilder_inherited_Reset(ChFi3d_FilBuilder& self) {
+    self.Reset();
+}
+inline bool ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(ChFi3d_FilBuilder& self, Standard_Integer Index) {
+    return self.PerformTwoCornerbyInter(Index);
+}
 
 // ========================
 // ChFi3d_Builder wrappers
@@ -113,4 +155,46 @@ inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> ChFi3d_ChBuilder_
 
 inline const ChFi3d_Builder& ChFi3d_ChBuilder_as_ChFi3d_Builder(const ChFi3d_ChBuilder& self) { return self; }
 inline ChFi3d_Builder& ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(ChFi3d_ChBuilder& self) { return self; }
+inline void ChFi3d_ChBuilder_inherited_SetParams(ChFi3d_ChBuilder& self, Standard_Real Tang, Standard_Real Tesp, Standard_Real T2d, Standard_Real TApp3d, Standard_Real TolApp2d, Standard_Real Fleche) {
+    self.SetParams(Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche);
+}
+inline Standard_Integer ChFi3d_ChBuilder_inherited_NbElements(const ChFi3d_ChBuilder& self) {
+    return self.NbElements();
+}
+inline Standard_Real ChFi3d_ChBuilder_inherited_Length(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
+    return self.Length(IC);
+}
+inline bool ChFi3d_ChBuilder_inherited_ClosedAndTangent(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
+    return self.ClosedAndTangent(IC);
+}
+inline bool ChFi3d_ChBuilder_inherited_Closed(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
+    return self.Closed(IC);
+}
+inline void ChFi3d_ChBuilder_inherited_Compute(ChFi3d_ChBuilder& self) {
+    self.Compute();
+}
+inline bool ChFi3d_ChBuilder_inherited_IsDone(const ChFi3d_ChBuilder& self) {
+    return self.IsDone();
+}
+inline Standard_Integer ChFi3d_ChBuilder_inherited_NbFaultyContours(const ChFi3d_ChBuilder& self) {
+    return self.NbFaultyContours();
+}
+inline Standard_Integer ChFi3d_ChBuilder_inherited_FaultyContour(const ChFi3d_ChBuilder& self, Standard_Integer I) {
+    return self.FaultyContour(I);
+}
+inline Standard_Integer ChFi3d_ChBuilder_inherited_NbComputedSurfaces(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
+    return self.NbComputedSurfaces(IC);
+}
+inline Standard_Integer ChFi3d_ChBuilder_inherited_NbFaultyVertices(const ChFi3d_ChBuilder& self) {
+    return self.NbFaultyVertices();
+}
+inline bool ChFi3d_ChBuilder_inherited_HasResult(const ChFi3d_ChBuilder& self) {
+    return self.HasResult();
+}
+inline void ChFi3d_ChBuilder_inherited_Reset(ChFi3d_ChBuilder& self) {
+    self.Reset();
+}
+inline bool ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(ChFi3d_ChBuilder& self, Standard_Integer Index) {
+    return self.PerformTwoCornerbyInter(Index);
+}
 

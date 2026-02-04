@@ -331,6 +331,66 @@ impl Curve2d {
     pub fn get_type_name() -> String {
         ffi::Curve2d_get_type_name()
     }
+
+    /// Inherited from Adaptor2d_Curve2d: FirstParameter
+    pub fn first_parameter(&self) -> f64 {
+        ffi::curve2d_inherited_first_parameter(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: LastParameter
+    pub fn last_parameter(&self) -> f64 {
+        ffi::curve2d_inherited_last_parameter(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: IsClosed
+    pub fn is_closed(&self) -> bool {
+        ffi::curve2d_inherited_is_closed(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: IsPeriodic
+    pub fn is_periodic(&self) -> bool {
+        ffi::curve2d_inherited_is_periodic(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: Period
+    pub fn period(&self) -> f64 {
+        ffi::curve2d_inherited_period(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: Resolution
+    pub fn resolution(&self, R3d: f64) -> f64 {
+        ffi::curve2d_inherited_resolution(self, R3d)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: Degree
+    pub fn degree(&self) -> i32 {
+        ffi::curve2d_inherited_degree(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: IsRational
+    pub fn is_rational(&self) -> bool {
+        ffi::curve2d_inherited_is_rational(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: NbPoles
+    pub fn nb_poles(&self) -> i32 {
+        ffi::curve2d_inherited_nb_poles(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: NbKnots
+    pub fn nb_knots(&self) -> i32 {
+        ffi::curve2d_inherited_nb_knots(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: NbSamples
+    pub fn nb_samples(&self) -> i32 {
+        ffi::curve2d_inherited_nb_samples(self)
+    }
+
+    /// Inherited from Geom2dAdaptor_Curve: Reset
+    pub fn reset(self: std::pin::Pin<&mut Self>) {
+        ffi::curve2d_inherited_reset(self)
+    }
 }
 #[cxx::bridge]
 pub(crate) mod ffi {
@@ -902,6 +962,42 @@ pub(crate) mod ffi {
         fn curve2d_as_geom2d_adaptor_curve_mut(
             self_: Pin<&mut Curve2d>,
         ) -> Pin<&mut Geom2dAdaptor_Curve>;
+        /// Inherited from Adaptor2d_Curve2d: FirstParameter
+        #[cxx_name = "BRepAdaptor_Curve2d_inherited_FirstParameter"]
+        fn curve2d_inherited_first_parameter(self_: &Curve2d) -> f64;
+        /// Inherited from Adaptor2d_Curve2d: LastParameter
+        #[cxx_name = "BRepAdaptor_Curve2d_inherited_LastParameter"]
+        fn curve2d_inherited_last_parameter(self_: &Curve2d) -> f64;
+        /// Inherited from Adaptor2d_Curve2d: IsClosed
+        #[cxx_name = "BRepAdaptor_Curve2d_inherited_IsClosed"]
+        fn curve2d_inherited_is_closed(self_: &Curve2d) -> bool;
+        /// Inherited from Adaptor2d_Curve2d: IsPeriodic
+        #[cxx_name = "BRepAdaptor_Curve2d_inherited_IsPeriodic"]
+        fn curve2d_inherited_is_periodic(self_: &Curve2d) -> bool;
+        /// Inherited from Adaptor2d_Curve2d: Period
+        #[cxx_name = "BRepAdaptor_Curve2d_inherited_Period"]
+        fn curve2d_inherited_period(self_: &Curve2d) -> f64;
+        /// Inherited from Adaptor2d_Curve2d: Resolution
+        #[cxx_name = "BRepAdaptor_Curve2d_inherited_Resolution"]
+        fn curve2d_inherited_resolution(self_: &Curve2d, R3d: f64) -> f64;
+        /// Inherited from Adaptor2d_Curve2d: Degree
+        #[cxx_name = "BRepAdaptor_Curve2d_inherited_Degree"]
+        fn curve2d_inherited_degree(self_: &Curve2d) -> i32;
+        /// Inherited from Adaptor2d_Curve2d: IsRational
+        #[cxx_name = "BRepAdaptor_Curve2d_inherited_IsRational"]
+        fn curve2d_inherited_is_rational(self_: &Curve2d) -> bool;
+        /// Inherited from Adaptor2d_Curve2d: NbPoles
+        #[cxx_name = "BRepAdaptor_Curve2d_inherited_NbPoles"]
+        fn curve2d_inherited_nb_poles(self_: &Curve2d) -> i32;
+        /// Inherited from Adaptor2d_Curve2d: NbKnots
+        #[cxx_name = "BRepAdaptor_Curve2d_inherited_NbKnots"]
+        fn curve2d_inherited_nb_knots(self_: &Curve2d) -> i32;
+        /// Inherited from Adaptor2d_Curve2d: NbSamples
+        #[cxx_name = "BRepAdaptor_Curve2d_inherited_NbSamples"]
+        fn curve2d_inherited_nb_samples(self_: &Curve2d) -> i32;
+        /// Inherited from Geom2dAdaptor_Curve: Reset
+        #[cxx_name = "BRepAdaptor_Curve2d_inherited_Reset"]
+        fn curve2d_inherited_reset(self_: Pin<&mut Curve2d>);
 
         // ========================
         // Cross-module type aliases

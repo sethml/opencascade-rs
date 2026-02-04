@@ -53,6 +53,16 @@ impl MakeShape {
     pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
         ffi::make_shape_as_command_mut(self)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_shape_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_shape_inherited_check(self)
+    }
 }
 
 /// Provides methods to build edges.
@@ -407,6 +417,11 @@ impl MakeEdge {
     pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
         ffi::make_edge_as_make_shape_mut(self)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_edge_inherited_check(self)
+    }
 }
 
 /// Provides methods to build faces.
@@ -679,6 +694,11 @@ impl MakeFace {
     pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
         ffi::make_face_as_make_shape_mut(self)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_face_inherited_check(self)
+    }
 }
 
 /// Describes functions to build a solid from shells.
@@ -779,6 +799,11 @@ impl MakeSolid {
     pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
         ffi::make_solid_as_make_shape_mut(self)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_solid_inherited_check(self)
+    }
 }
 
 /// Describes functions to build BRepBuilder vertices directly
@@ -818,6 +843,16 @@ impl MakeVertex {
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
         ffi::make_vertex_as_make_shape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_vertex_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_vertex_inherited_check(self)
     }
 }
 
@@ -943,6 +978,11 @@ impl MakeWire {
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
         ffi::make_wire_as_make_shape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_wire_inherited_check(self)
     }
 }
 
@@ -1085,6 +1125,16 @@ impl Transform {
     pub fn modified_shape(&self, S: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::Transform_modified_shape(self, S)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::transform_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::transform_inherited_check(self)
+    }
 }
 
 /// Implements   the  methods   of MakeShape for   the
@@ -1134,6 +1184,16 @@ impl ModifyShape {
     /// of the initial shape.
     pub fn modified_shape(&self, S: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::ModifyShape_modified_shape(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::modify_shape_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::modify_shape_inherited_check(self)
     }
 }
 #[cxx::bridge]
@@ -1212,6 +1272,12 @@ pub(crate) mod ffi {
         /// Upcast BRepBuilderAPI_MakeShape to BRepBuilderAPI_Command (mutable)
         #[cxx_name = "BRepBuilderAPI_MakeShape_as_BRepBuilderAPI_Command_mut"]
         fn make_shape_as_command_mut(self_: Pin<&mut MakeShape>) -> Pin<&mut Command>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepBuilderAPI_MakeShape_inherited_IsDone"]
+        fn make_shape_inherited_is_done(self_: &MakeShape) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepBuilderAPI_MakeShape_inherited_Check"]
+        fn make_shape_inherited_check(self_: &MakeShape);
         /// ======================== BRepBuilderAPI_MakeEdge ========================
         /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:71 - `BRepBuilderAPI_MakeEdge`
         ///
@@ -1637,6 +1703,9 @@ pub(crate) mod ffi {
         /// Upcast BRepBuilderAPI_MakeEdge to BRepBuilderAPI_MakeShape (mutable)
         #[cxx_name = "BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_MakeShape_mut"]
         fn make_edge_as_make_shape_mut(self_: Pin<&mut MakeEdge>) -> Pin<&mut MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepBuilderAPI_MakeEdge_inherited_Check"]
+        fn make_edge_inherited_check(self_: &MakeEdge);
         /// ======================== BRepBuilderAPI_MakeFace ========================
         /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:62 - `BRepBuilderAPI_MakeFace`
         ///
@@ -1981,6 +2050,9 @@ pub(crate) mod ffi {
         /// Upcast BRepBuilderAPI_MakeFace to BRepBuilderAPI_MakeShape (mutable)
         #[cxx_name = "BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_MakeShape_mut"]
         fn make_face_as_make_shape_mut(self_: Pin<&mut MakeFace>) -> Pin<&mut MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepBuilderAPI_MakeFace_inherited_Check"]
+        fn make_face_inherited_check(self_: &MakeFace);
         /// ======================== BRepBuilderAPI_MakeSolid ========================
         /// **Source:** `BRepBuilderAPI_MakeSolid.hxx`:41 - `BRepBuilderAPI_MakeSolid`
         ///
@@ -2106,6 +2178,9 @@ pub(crate) mod ffi {
         /// Upcast BRepBuilderAPI_MakeSolid to BRepBuilderAPI_MakeShape (mutable)
         #[cxx_name = "BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_MakeShape_mut"]
         fn make_solid_as_make_shape_mut(self_: Pin<&mut MakeSolid>) -> Pin<&mut MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepBuilderAPI_MakeSolid_inherited_Check"]
+        fn make_solid_inherited_check(self_: &MakeSolid);
         /// ======================== BRepBuilderAPI_MakeVertex ========================
         /// **Source:** `BRepBuilderAPI_MakeVertex.hxx`:38 - `BRepBuilderAPI_MakeVertex`
         ///
@@ -2145,6 +2220,12 @@ pub(crate) mod ffi {
         /// Upcast BRepBuilderAPI_MakeVertex to BRepBuilderAPI_MakeShape (mutable)
         #[cxx_name = "BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI_MakeShape_mut"]
         fn make_vertex_as_make_shape_mut(self_: Pin<&mut MakeVertex>) -> Pin<&mut MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepBuilderAPI_MakeVertex_inherited_IsDone"]
+        fn make_vertex_inherited_is_done(self_: &MakeVertex) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepBuilderAPI_MakeVertex_inherited_Check"]
+        fn make_vertex_inherited_check(self_: &MakeVertex);
         /// ======================== BRepBuilderAPI_MakeWire ========================
         /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:63 - `BRepBuilderAPI_MakeWire`
         ///
@@ -2333,6 +2414,9 @@ pub(crate) mod ffi {
         /// Upcast BRepBuilderAPI_MakeWire to BRepBuilderAPI_MakeShape (mutable)
         #[cxx_name = "BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_MakeShape_mut"]
         fn make_wire_as_make_shape_mut(self_: Pin<&mut MakeWire>) -> Pin<&mut MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepBuilderAPI_MakeWire_inherited_Check"]
+        fn make_wire_inherited_check(self_: &MakeWire);
         /// ======================== BRepBuilderAPI_Sewing ========================
         /// **Source:** `BRepBuilderAPI_Sewing.hxx`:77 - `BRepBuilderAPI_Sewing`
         ///
@@ -2717,6 +2801,12 @@ pub(crate) mod ffi {
         /// Upcast BRepBuilderAPI_Transform to BRepBuilderAPI_ModifyShape (mutable)
         #[cxx_name = "BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape_mut"]
         fn transform_as_modify_shape_mut(self_: Pin<&mut Transform>) -> Pin<&mut ModifyShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepBuilderAPI_Transform_inherited_IsDone"]
+        fn transform_inherited_is_done(self_: &Transform) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepBuilderAPI_Transform_inherited_Check"]
+        fn transform_inherited_check(self_: &Transform);
         /// ======================== BRepBuilderAPI_ModifyShape ========================
         /// **Source:** `BRepBuilderAPI_ModifyShape.hxx`:45 - `BRepBuilderAPI_ModifyShape`
         ///
@@ -2768,6 +2858,12 @@ pub(crate) mod ffi {
         /// Upcast BRepBuilderAPI_ModifyShape to BRepBuilderAPI_MakeShape (mutable)
         #[cxx_name = "BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_MakeShape_mut"]
         fn modify_shape_as_make_shape_mut(self_: Pin<&mut ModifyShape>) -> Pin<&mut MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepBuilderAPI_ModifyShape_inherited_IsDone"]
+        fn modify_shape_inherited_is_done(self_: &ModifyShape) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepBuilderAPI_ModifyShape_inherited_Check"]
+        fn modify_shape_inherited_check(self_: &ModifyShape);
 
         // ========================
         // Cross-module type aliases

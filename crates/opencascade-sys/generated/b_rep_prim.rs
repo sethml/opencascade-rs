@@ -68,6 +68,61 @@ impl Torus {
     pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
         ffi::Torus_make_empty_lateral_face(self)
     }
+
+    /// Inherited from BRepPrim_OneAxis: SetMeridianOffset
+    pub fn set_meridian_offset(self: std::pin::Pin<&mut Self>, MeridianOffset: f64) {
+        ffi::torus_inherited_set_meridian_offset(self, MeridianOffset)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Angle
+    pub fn angle(&self) -> f64 {
+        ffi::torus_inherited_angle(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMin
+    pub fn v_min(&self) -> f64 {
+        ffi::torus_inherited_v_min(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMax
+    pub fn v_max(&self) -> f64 {
+        ffi::torus_inherited_v_max(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianOnAxis
+    pub fn meridian_on_axis(&self, V: f64) -> bool {
+        ffi::torus_inherited_meridian_on_axis(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianClosed
+    pub fn meridian_closed(&self) -> bool {
+        ffi::torus_inherited_meridian_closed(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMaxInfinite
+    pub fn v_max_infinite(&self) -> bool {
+        ffi::torus_inherited_v_max_infinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMinInfinite
+    pub fn v_min_infinite(&self) -> bool {
+        ffi::torus_inherited_v_min_infinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasTop
+    pub fn has_top(&self) -> bool {
+        ffi::torus_inherited_has_top(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasBottom
+    pub fn has_bottom(&self) -> bool {
+        ffi::torus_inherited_has_bottom(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasSides
+    pub fn has_sides(&self) -> bool {
+        ffi::torus_inherited_has_sides(self)
+    }
 }
 
 /// Implement  the OneAxis algorithm   for a revolution
@@ -114,6 +169,61 @@ impl Revolution {
     /// plane XZ.
     pub fn meridian_value(&self, V: f64) -> cxx::UniquePtr<ffi::gp_Pnt2d> {
         ffi::Revolution_meridian_value(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: SetMeridianOffset
+    pub fn set_meridian_offset(self: std::pin::Pin<&mut Self>, MeridianOffset: f64) {
+        ffi::revolution_inherited_set_meridian_offset(self, MeridianOffset)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Angle
+    pub fn angle(&self) -> f64 {
+        ffi::revolution_inherited_angle(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMin
+    pub fn v_min(&self) -> f64 {
+        ffi::revolution_inherited_v_min(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMax
+    pub fn v_max(&self) -> f64 {
+        ffi::revolution_inherited_v_max(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianOnAxis
+    pub fn meridian_on_axis(&self, V: f64) -> bool {
+        ffi::revolution_inherited_meridian_on_axis(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianClosed
+    pub fn meridian_closed(&self) -> bool {
+        ffi::revolution_inherited_meridian_closed(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMaxInfinite
+    pub fn v_max_infinite(&self) -> bool {
+        ffi::revolution_inherited_v_max_infinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMinInfinite
+    pub fn v_min_infinite(&self) -> bool {
+        ffi::revolution_inherited_v_min_infinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasTop
+    pub fn has_top(&self) -> bool {
+        ffi::revolution_inherited_has_top(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasBottom
+    pub fn has_bottom(&self) -> bool {
+        ffi::revolution_inherited_has_bottom(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasSides
+    pub fn has_sides(&self) -> bool {
+        ffi::revolution_inherited_has_sides(self)
     }
 }
 
@@ -235,6 +345,61 @@ impl Sphere {
     pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
         ffi::Sphere_make_empty_lateral_face(self)
     }
+
+    /// Inherited from BRepPrim_OneAxis: SetMeridianOffset
+    pub fn set_meridian_offset(self: std::pin::Pin<&mut Self>, MeridianOffset: f64) {
+        ffi::sphere_inherited_set_meridian_offset(self, MeridianOffset)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Angle
+    pub fn angle(&self) -> f64 {
+        ffi::sphere_inherited_angle(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMin
+    pub fn v_min(&self) -> f64 {
+        ffi::sphere_inherited_v_min(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMax
+    pub fn v_max(&self) -> f64 {
+        ffi::sphere_inherited_v_max(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianOnAxis
+    pub fn meridian_on_axis(&self, V: f64) -> bool {
+        ffi::sphere_inherited_meridian_on_axis(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianClosed
+    pub fn meridian_closed(&self) -> bool {
+        ffi::sphere_inherited_meridian_closed(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMaxInfinite
+    pub fn v_max_infinite(&self) -> bool {
+        ffi::sphere_inherited_v_max_infinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMinInfinite
+    pub fn v_min_infinite(&self) -> bool {
+        ffi::sphere_inherited_v_min_infinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasTop
+    pub fn has_top(&self) -> bool {
+        ffi::sphere_inherited_has_top(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasBottom
+    pub fn has_bottom(&self) -> bool {
+        ffi::sphere_inherited_has_bottom(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasSides
+    pub fn has_sides(&self) -> bool {
+        ffi::sphere_inherited_has_sides(self)
+    }
 }
 
 /// Cylinder primitive.
@@ -305,6 +470,61 @@ impl Cylinder {
     /// outside.
     pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
         ffi::Cylinder_make_empty_lateral_face(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: SetMeridianOffset
+    pub fn set_meridian_offset(self: std::pin::Pin<&mut Self>, MeridianOffset: f64) {
+        ffi::cylinder_inherited_set_meridian_offset(self, MeridianOffset)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Angle
+    pub fn angle(&self) -> f64 {
+        ffi::cylinder_inherited_angle(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMin
+    pub fn v_min(&self) -> f64 {
+        ffi::cylinder_inherited_v_min(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMax
+    pub fn v_max(&self) -> f64 {
+        ffi::cylinder_inherited_v_max(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianOnAxis
+    pub fn meridian_on_axis(&self, V: f64) -> bool {
+        ffi::cylinder_inherited_meridian_on_axis(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianClosed
+    pub fn meridian_closed(&self) -> bool {
+        ffi::cylinder_inherited_meridian_closed(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMaxInfinite
+    pub fn v_max_infinite(&self) -> bool {
+        ffi::cylinder_inherited_v_max_infinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMinInfinite
+    pub fn v_min_infinite(&self) -> bool {
+        ffi::cylinder_inherited_v_min_infinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasTop
+    pub fn has_top(&self) -> bool {
+        ffi::cylinder_inherited_has_top(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasBottom
+    pub fn has_bottom(&self) -> bool {
+        ffi::cylinder_inherited_has_bottom(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasSides
+    pub fn has_sides(&self) -> bool {
+        ffi::cylinder_inherited_has_sides(self)
     }
 }
 
@@ -395,6 +615,61 @@ impl Cone {
     pub fn make_empty_lateral_face(&self) -> cxx::UniquePtr<ffi::TopoDS_Face> {
         ffi::Cone_make_empty_lateral_face(self)
     }
+
+    /// Inherited from BRepPrim_OneAxis: SetMeridianOffset
+    pub fn set_meridian_offset(self: std::pin::Pin<&mut Self>, MeridianOffset: f64) {
+        ffi::cone_inherited_set_meridian_offset(self, MeridianOffset)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: Angle
+    pub fn angle(&self) -> f64 {
+        ffi::cone_inherited_angle(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMin
+    pub fn v_min(&self) -> f64 {
+        ffi::cone_inherited_v_min(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMax
+    pub fn v_max(&self) -> f64 {
+        ffi::cone_inherited_v_max(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianOnAxis
+    pub fn meridian_on_axis(&self, V: f64) -> bool {
+        ffi::cone_inherited_meridian_on_axis(self, V)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: MeridianClosed
+    pub fn meridian_closed(&self) -> bool {
+        ffi::cone_inherited_meridian_closed(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMaxInfinite
+    pub fn v_max_infinite(&self) -> bool {
+        ffi::cone_inherited_v_max_infinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: VMinInfinite
+    pub fn v_min_infinite(&self) -> bool {
+        ffi::cone_inherited_v_min_infinite(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasTop
+    pub fn has_top(&self) -> bool {
+        ffi::cone_inherited_has_top(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasBottom
+    pub fn has_bottom(&self) -> bool {
+        ffi::cone_inherited_has_bottom(self)
+    }
+
+    /// Inherited from BRepPrim_OneAxis: HasSides
+    pub fn has_sides(&self) -> bool {
+        ffi::cone_inherited_has_sides(self)
+    }
 }
 
 /// Provides constructors without Builders.
@@ -474,6 +749,61 @@ impl Wedge {
     /// Upcast to BRepPrim_GWedge (mutable)
     pub fn as_g_wedge_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut GWedge> {
         ffi::wedge_as_g_wedge_mut(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetXMin
+    pub fn get_x_min(&self) -> f64 {
+        ffi::wedge_inherited_get_x_min(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetYMin
+    pub fn get_y_min(&self) -> f64 {
+        ffi::wedge_inherited_get_y_min(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetZMin
+    pub fn get_z_min(&self) -> f64 {
+        ffi::wedge_inherited_get_z_min(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetZ2Min
+    pub fn get_z2_min(&self) -> f64 {
+        ffi::wedge_inherited_get_z2_min(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetX2Min
+    pub fn get_x2_min(&self) -> f64 {
+        ffi::wedge_inherited_get_x2_min(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetXMax
+    pub fn get_x_max(&self) -> f64 {
+        ffi::wedge_inherited_get_x_max(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetYMax
+    pub fn get_y_max(&self) -> f64 {
+        ffi::wedge_inherited_get_y_max(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetZMax
+    pub fn get_z_max(&self) -> f64 {
+        ffi::wedge_inherited_get_z_max(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetZ2Max
+    pub fn get_z2_max(&self) -> f64 {
+        ffi::wedge_inherited_get_z2_max(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: GetX2Max
+    pub fn get_x2_max(&self) -> f64 {
+        ffi::wedge_inherited_get_x2_max(self)
+    }
+
+    /// Inherited from BRepPrim_GWedge: IsDegeneratedShape
+    pub fn is_degenerated_shape(self: std::pin::Pin<&mut Self>) -> bool {
+        ffi::wedge_inherited_is_degenerated_shape(self)
     }
 }
 
@@ -628,6 +958,39 @@ pub(crate) mod ffi {
         /// Upcast BRepPrim_Torus to BRepPrim_Revolution (mutable)
         #[cxx_name = "BRepPrim_Torus_as_BRepPrim_Revolution_mut"]
         fn torus_as_revolution_mut(self_: Pin<&mut Torus>) -> Pin<&mut Revolution>;
+        /// Inherited from BRepPrim_OneAxis: SetMeridianOffset
+        #[cxx_name = "BRepPrim_Torus_inherited_SetMeridianOffset"]
+        fn torus_inherited_set_meridian_offset(self_: Pin<&mut Torus>, MeridianOffset: f64);
+        /// Inherited from BRepPrim_OneAxis: Angle
+        #[cxx_name = "BRepPrim_Torus_inherited_Angle"]
+        fn torus_inherited_angle(self_: &Torus) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMin
+        #[cxx_name = "BRepPrim_Torus_inherited_VMin"]
+        fn torus_inherited_v_min(self_: &Torus) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMax
+        #[cxx_name = "BRepPrim_Torus_inherited_VMax"]
+        fn torus_inherited_v_max(self_: &Torus) -> f64;
+        /// Inherited from BRepPrim_OneAxis: MeridianOnAxis
+        #[cxx_name = "BRepPrim_Torus_inherited_MeridianOnAxis"]
+        fn torus_inherited_meridian_on_axis(self_: &Torus, V: f64) -> bool;
+        /// Inherited from BRepPrim_OneAxis: MeridianClosed
+        #[cxx_name = "BRepPrim_Torus_inherited_MeridianClosed"]
+        fn torus_inherited_meridian_closed(self_: &Torus) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMaxInfinite
+        #[cxx_name = "BRepPrim_Torus_inherited_VMaxInfinite"]
+        fn torus_inherited_v_max_infinite(self_: &Torus) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMinInfinite
+        #[cxx_name = "BRepPrim_Torus_inherited_VMinInfinite"]
+        fn torus_inherited_v_min_infinite(self_: &Torus) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasTop
+        #[cxx_name = "BRepPrim_Torus_inherited_HasTop"]
+        fn torus_inherited_has_top(self_: &Torus) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasBottom
+        #[cxx_name = "BRepPrim_Torus_inherited_HasBottom"]
+        fn torus_inherited_has_bottom(self_: &Torus) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasSides
+        #[cxx_name = "BRepPrim_Torus_inherited_HasSides"]
+        fn torus_inherited_has_sides(self_: &Torus) -> bool;
         /// ======================== BRepPrim_Revolution ========================
         /// **Source:** `BRepPrim_Revolution.hxx`:35 - `BRepPrim_Revolution`
         ///
@@ -677,6 +1040,42 @@ pub(crate) mod ffi {
         /// Upcast BRepPrim_Revolution to BRepPrim_OneAxis (mutable)
         #[cxx_name = "BRepPrim_Revolution_as_BRepPrim_OneAxis_mut"]
         fn revolution_as_one_axis_mut(self_: Pin<&mut Revolution>) -> Pin<&mut OneAxis>;
+        /// Inherited from BRepPrim_OneAxis: SetMeridianOffset
+        #[cxx_name = "BRepPrim_Revolution_inherited_SetMeridianOffset"]
+        fn revolution_inherited_set_meridian_offset(
+            self_: Pin<&mut Revolution>,
+            MeridianOffset: f64,
+        );
+        /// Inherited from BRepPrim_OneAxis: Angle
+        #[cxx_name = "BRepPrim_Revolution_inherited_Angle"]
+        fn revolution_inherited_angle(self_: &Revolution) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMin
+        #[cxx_name = "BRepPrim_Revolution_inherited_VMin"]
+        fn revolution_inherited_v_min(self_: &Revolution) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMax
+        #[cxx_name = "BRepPrim_Revolution_inherited_VMax"]
+        fn revolution_inherited_v_max(self_: &Revolution) -> f64;
+        /// Inherited from BRepPrim_OneAxis: MeridianOnAxis
+        #[cxx_name = "BRepPrim_Revolution_inherited_MeridianOnAxis"]
+        fn revolution_inherited_meridian_on_axis(self_: &Revolution, V: f64) -> bool;
+        /// Inherited from BRepPrim_OneAxis: MeridianClosed
+        #[cxx_name = "BRepPrim_Revolution_inherited_MeridianClosed"]
+        fn revolution_inherited_meridian_closed(self_: &Revolution) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMaxInfinite
+        #[cxx_name = "BRepPrim_Revolution_inherited_VMaxInfinite"]
+        fn revolution_inherited_v_max_infinite(self_: &Revolution) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMinInfinite
+        #[cxx_name = "BRepPrim_Revolution_inherited_VMinInfinite"]
+        fn revolution_inherited_v_min_infinite(self_: &Revolution) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasTop
+        #[cxx_name = "BRepPrim_Revolution_inherited_HasTop"]
+        fn revolution_inherited_has_top(self_: &Revolution) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasBottom
+        #[cxx_name = "BRepPrim_Revolution_inherited_HasBottom"]
+        fn revolution_inherited_has_bottom(self_: &Revolution) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasSides
+        #[cxx_name = "BRepPrim_Revolution_inherited_HasSides"]
+        fn revolution_inherited_has_sides(self_: &Revolution) -> bool;
         /// ======================== BRepPrim_OneAxis ========================
         /// **Source:** `BRepPrim_OneAxis.hxx`:63 - `BRepPrim_OneAxis`
         ///
@@ -1211,6 +1610,39 @@ pub(crate) mod ffi {
         /// Upcast BRepPrim_Sphere to BRepPrim_Revolution (mutable)
         #[cxx_name = "BRepPrim_Sphere_as_BRepPrim_Revolution_mut"]
         fn sphere_as_revolution_mut(self_: Pin<&mut Sphere>) -> Pin<&mut Revolution>;
+        /// Inherited from BRepPrim_OneAxis: SetMeridianOffset
+        #[cxx_name = "BRepPrim_Sphere_inherited_SetMeridianOffset"]
+        fn sphere_inherited_set_meridian_offset(self_: Pin<&mut Sphere>, MeridianOffset: f64);
+        /// Inherited from BRepPrim_OneAxis: Angle
+        #[cxx_name = "BRepPrim_Sphere_inherited_Angle"]
+        fn sphere_inherited_angle(self_: &Sphere) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMin
+        #[cxx_name = "BRepPrim_Sphere_inherited_VMin"]
+        fn sphere_inherited_v_min(self_: &Sphere) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMax
+        #[cxx_name = "BRepPrim_Sphere_inherited_VMax"]
+        fn sphere_inherited_v_max(self_: &Sphere) -> f64;
+        /// Inherited from BRepPrim_OneAxis: MeridianOnAxis
+        #[cxx_name = "BRepPrim_Sphere_inherited_MeridianOnAxis"]
+        fn sphere_inherited_meridian_on_axis(self_: &Sphere, V: f64) -> bool;
+        /// Inherited from BRepPrim_OneAxis: MeridianClosed
+        #[cxx_name = "BRepPrim_Sphere_inherited_MeridianClosed"]
+        fn sphere_inherited_meridian_closed(self_: &Sphere) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMaxInfinite
+        #[cxx_name = "BRepPrim_Sphere_inherited_VMaxInfinite"]
+        fn sphere_inherited_v_max_infinite(self_: &Sphere) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMinInfinite
+        #[cxx_name = "BRepPrim_Sphere_inherited_VMinInfinite"]
+        fn sphere_inherited_v_min_infinite(self_: &Sphere) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasTop
+        #[cxx_name = "BRepPrim_Sphere_inherited_HasTop"]
+        fn sphere_inherited_has_top(self_: &Sphere) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasBottom
+        #[cxx_name = "BRepPrim_Sphere_inherited_HasBottom"]
+        fn sphere_inherited_has_bottom(self_: &Sphere) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasSides
+        #[cxx_name = "BRepPrim_Sphere_inherited_HasSides"]
+        fn sphere_inherited_has_sides(self_: &Sphere) -> bool;
         /// ======================== BRepPrim_Cylinder ========================
         /// **Source:** `BRepPrim_Cylinder.hxx`:30 - `BRepPrim_Cylinder`
         ///
@@ -1278,6 +1710,39 @@ pub(crate) mod ffi {
         /// Upcast BRepPrim_Cylinder to BRepPrim_Revolution (mutable)
         #[cxx_name = "BRepPrim_Cylinder_as_BRepPrim_Revolution_mut"]
         fn cylinder_as_revolution_mut(self_: Pin<&mut Cylinder>) -> Pin<&mut Revolution>;
+        /// Inherited from BRepPrim_OneAxis: SetMeridianOffset
+        #[cxx_name = "BRepPrim_Cylinder_inherited_SetMeridianOffset"]
+        fn cylinder_inherited_set_meridian_offset(self_: Pin<&mut Cylinder>, MeridianOffset: f64);
+        /// Inherited from BRepPrim_OneAxis: Angle
+        #[cxx_name = "BRepPrim_Cylinder_inherited_Angle"]
+        fn cylinder_inherited_angle(self_: &Cylinder) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMin
+        #[cxx_name = "BRepPrim_Cylinder_inherited_VMin"]
+        fn cylinder_inherited_v_min(self_: &Cylinder) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMax
+        #[cxx_name = "BRepPrim_Cylinder_inherited_VMax"]
+        fn cylinder_inherited_v_max(self_: &Cylinder) -> f64;
+        /// Inherited from BRepPrim_OneAxis: MeridianOnAxis
+        #[cxx_name = "BRepPrim_Cylinder_inherited_MeridianOnAxis"]
+        fn cylinder_inherited_meridian_on_axis(self_: &Cylinder, V: f64) -> bool;
+        /// Inherited from BRepPrim_OneAxis: MeridianClosed
+        #[cxx_name = "BRepPrim_Cylinder_inherited_MeridianClosed"]
+        fn cylinder_inherited_meridian_closed(self_: &Cylinder) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMaxInfinite
+        #[cxx_name = "BRepPrim_Cylinder_inherited_VMaxInfinite"]
+        fn cylinder_inherited_v_max_infinite(self_: &Cylinder) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMinInfinite
+        #[cxx_name = "BRepPrim_Cylinder_inherited_VMinInfinite"]
+        fn cylinder_inherited_v_min_infinite(self_: &Cylinder) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasTop
+        #[cxx_name = "BRepPrim_Cylinder_inherited_HasTop"]
+        fn cylinder_inherited_has_top(self_: &Cylinder) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasBottom
+        #[cxx_name = "BRepPrim_Cylinder_inherited_HasBottom"]
+        fn cylinder_inherited_has_bottom(self_: &Cylinder) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasSides
+        #[cxx_name = "BRepPrim_Cylinder_inherited_HasSides"]
+        fn cylinder_inherited_has_sides(self_: &Cylinder) -> bool;
         /// ======================== BRepPrim_Cone ========================
         /// **Source:** `BRepPrim_Cone.hxx`:30 - `BRepPrim_Cone`
         ///
@@ -1359,6 +1824,39 @@ pub(crate) mod ffi {
         /// Upcast BRepPrim_Cone to BRepPrim_Revolution (mutable)
         #[cxx_name = "BRepPrim_Cone_as_BRepPrim_Revolution_mut"]
         fn cone_as_revolution_mut(self_: Pin<&mut Cone>) -> Pin<&mut Revolution>;
+        /// Inherited from BRepPrim_OneAxis: SetMeridianOffset
+        #[cxx_name = "BRepPrim_Cone_inherited_SetMeridianOffset"]
+        fn cone_inherited_set_meridian_offset(self_: Pin<&mut Cone>, MeridianOffset: f64);
+        /// Inherited from BRepPrim_OneAxis: Angle
+        #[cxx_name = "BRepPrim_Cone_inherited_Angle"]
+        fn cone_inherited_angle(self_: &Cone) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMin
+        #[cxx_name = "BRepPrim_Cone_inherited_VMin"]
+        fn cone_inherited_v_min(self_: &Cone) -> f64;
+        /// Inherited from BRepPrim_OneAxis: VMax
+        #[cxx_name = "BRepPrim_Cone_inherited_VMax"]
+        fn cone_inherited_v_max(self_: &Cone) -> f64;
+        /// Inherited from BRepPrim_OneAxis: MeridianOnAxis
+        #[cxx_name = "BRepPrim_Cone_inherited_MeridianOnAxis"]
+        fn cone_inherited_meridian_on_axis(self_: &Cone, V: f64) -> bool;
+        /// Inherited from BRepPrim_OneAxis: MeridianClosed
+        #[cxx_name = "BRepPrim_Cone_inherited_MeridianClosed"]
+        fn cone_inherited_meridian_closed(self_: &Cone) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMaxInfinite
+        #[cxx_name = "BRepPrim_Cone_inherited_VMaxInfinite"]
+        fn cone_inherited_v_max_infinite(self_: &Cone) -> bool;
+        /// Inherited from BRepPrim_OneAxis: VMinInfinite
+        #[cxx_name = "BRepPrim_Cone_inherited_VMinInfinite"]
+        fn cone_inherited_v_min_infinite(self_: &Cone) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasTop
+        #[cxx_name = "BRepPrim_Cone_inherited_HasTop"]
+        fn cone_inherited_has_top(self_: &Cone) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasBottom
+        #[cxx_name = "BRepPrim_Cone_inherited_HasBottom"]
+        fn cone_inherited_has_bottom(self_: &Cone) -> bool;
+        /// Inherited from BRepPrim_OneAxis: HasSides
+        #[cxx_name = "BRepPrim_Cone_inherited_HasSides"]
+        fn cone_inherited_has_sides(self_: &Cone) -> bool;
         /// ======================== BRepPrim_Wedge ========================
         /// **Source:** `BRepPrim_Wedge.hxx`:28 - `BRepPrim_Wedge`
         ///
@@ -1435,6 +1933,39 @@ pub(crate) mod ffi {
         /// Upcast BRepPrim_Wedge to BRepPrim_GWedge (mutable)
         #[cxx_name = "BRepPrim_Wedge_as_BRepPrim_GWedge_mut"]
         fn wedge_as_g_wedge_mut(self_: Pin<&mut Wedge>) -> Pin<&mut GWedge>;
+        /// Inherited from BRepPrim_GWedge: GetXMin
+        #[cxx_name = "BRepPrim_Wedge_inherited_GetXMin"]
+        fn wedge_inherited_get_x_min(self_: &Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetYMin
+        #[cxx_name = "BRepPrim_Wedge_inherited_GetYMin"]
+        fn wedge_inherited_get_y_min(self_: &Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetZMin
+        #[cxx_name = "BRepPrim_Wedge_inherited_GetZMin"]
+        fn wedge_inherited_get_z_min(self_: &Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetZ2Min
+        #[cxx_name = "BRepPrim_Wedge_inherited_GetZ2Min"]
+        fn wedge_inherited_get_z2_min(self_: &Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetX2Min
+        #[cxx_name = "BRepPrim_Wedge_inherited_GetX2Min"]
+        fn wedge_inherited_get_x2_min(self_: &Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetXMax
+        #[cxx_name = "BRepPrim_Wedge_inherited_GetXMax"]
+        fn wedge_inherited_get_x_max(self_: &Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetYMax
+        #[cxx_name = "BRepPrim_Wedge_inherited_GetYMax"]
+        fn wedge_inherited_get_y_max(self_: &Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetZMax
+        #[cxx_name = "BRepPrim_Wedge_inherited_GetZMax"]
+        fn wedge_inherited_get_z_max(self_: &Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetZ2Max
+        #[cxx_name = "BRepPrim_Wedge_inherited_GetZ2Max"]
+        fn wedge_inherited_get_z2_max(self_: &Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: GetX2Max
+        #[cxx_name = "BRepPrim_Wedge_inherited_GetX2Max"]
+        fn wedge_inherited_get_x2_max(self_: &Wedge) -> f64;
+        /// Inherited from BRepPrim_GWedge: IsDegeneratedShape
+        #[cxx_name = "BRepPrim_Wedge_inherited_IsDegeneratedShape"]
+        fn wedge_inherited_is_degenerated_shape(self_: Pin<&mut Wedge>) -> bool;
         /// ======================== BRepPrim_GWedge ========================
         /// **Source:** `BRepPrim_GWedge.hxx`:56 - `BRepPrim_GWedge`
         ///

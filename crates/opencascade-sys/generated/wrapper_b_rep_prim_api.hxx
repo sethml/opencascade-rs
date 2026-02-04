@@ -60,6 +60,12 @@ inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeBox_as_BRepBuilderAPI_Comma
 inline BRepBuilderAPI_Command& BRepPrimAPI_MakeBox_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeBox& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeBox_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeBox& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeBox_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeBox& self) { return self; }
+inline bool BRepPrimAPI_MakeBox_inherited_IsDone(const BRepPrimAPI_MakeBox& self) {
+    return self.IsDone();
+}
+inline void BRepPrimAPI_MakeBox_inherited_Check(const BRepPrimAPI_MakeBox& self) {
+    self.Check();
+}
 
 // ========================
 // BRepPrimAPI_MakeCone wrappers
@@ -87,6 +93,12 @@ inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Ma
 inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeCone_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeCone& self) { return self; }
 inline const BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis(const BRepPrimAPI_MakeCone& self) { return self; }
 inline BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis_mut(BRepPrimAPI_MakeCone& self) { return self; }
+inline bool BRepPrimAPI_MakeCone_inherited_IsDone(const BRepPrimAPI_MakeCone& self) {
+    return self.IsDone();
+}
+inline void BRepPrimAPI_MakeCone_inherited_Check(const BRepPrimAPI_MakeCone& self) {
+    self.Check();
+}
 
 // ========================
 // BRepPrimAPI_MakeCylinder wrappers
@@ -114,6 +126,12 @@ inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeCylinder_as_BRepBuilderAP
 inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeCylinder& self) { return self; }
 inline const BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis(const BRepPrimAPI_MakeCylinder& self) { return self; }
 inline BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis_mut(BRepPrimAPI_MakeCylinder& self) { return self; }
+inline bool BRepPrimAPI_MakeCylinder_inherited_IsDone(const BRepPrimAPI_MakeCylinder& self) {
+    return self.IsDone();
+}
+inline void BRepPrimAPI_MakeCylinder_inherited_Check(const BRepPrimAPI_MakeCylinder& self) {
+    self.Check();
+}
 
 // ========================
 // BRepPrimAPI_MakePrism wrappers
@@ -149,6 +167,12 @@ inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakePrism_as_BRepBuilderAPI_M
 inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakePrism_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakePrism& self) { return self; }
 inline const BRepPrimAPI_MakeSweep& BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep(const BRepPrimAPI_MakePrism& self) { return self; }
 inline BRepPrimAPI_MakeSweep& BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep_mut(BRepPrimAPI_MakePrism& self) { return self; }
+inline bool BRepPrimAPI_MakePrism_inherited_IsDone(const BRepPrimAPI_MakePrism& self) {
+    return self.IsDone();
+}
+inline void BRepPrimAPI_MakePrism_inherited_Check(const BRepPrimAPI_MakePrism& self) {
+    self.Check();
+}
 
 // ========================
 // BRepPrimAPI_MakeRevol wrappers
@@ -184,6 +208,12 @@ inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_M
 inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeRevol& self) { return self; }
 inline const BRepPrimAPI_MakeSweep& BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep(const BRepPrimAPI_MakeRevol& self) { return self; }
 inline BRepPrimAPI_MakeSweep& BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep_mut(BRepPrimAPI_MakeRevol& self) { return self; }
+inline bool BRepPrimAPI_MakeRevol_inherited_IsDone(const BRepPrimAPI_MakeRevol& self) {
+    return self.IsDone();
+}
+inline void BRepPrimAPI_MakeRevol_inherited_Check(const BRepPrimAPI_MakeRevol& self) {
+    self.Check();
+}
 
 // ========================
 // BRepPrimAPI_MakeSphere wrappers
@@ -243,6 +273,12 @@ inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_
 inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeSphere& self) { return self; }
 inline const BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis(const BRepPrimAPI_MakeSphere& self) { return self; }
 inline BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis_mut(BRepPrimAPI_MakeSphere& self) { return self; }
+inline bool BRepPrimAPI_MakeSphere_inherited_IsDone(const BRepPrimAPI_MakeSphere& self) {
+    return self.IsDone();
+}
+inline void BRepPrimAPI_MakeSphere_inherited_Check(const BRepPrimAPI_MakeSphere& self) {
+    self.Check();
+}
 
 // ========================
 // BRepPrimAPI_MakeTorus wrappers
@@ -286,6 +322,12 @@ inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_M
 inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeTorus& self) { return self; }
 inline const BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis(const BRepPrimAPI_MakeTorus& self) { return self; }
 inline BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis_mut(BRepPrimAPI_MakeTorus& self) { return self; }
+inline bool BRepPrimAPI_MakeTorus_inherited_IsDone(const BRepPrimAPI_MakeTorus& self) {
+    return self.IsDone();
+}
+inline void BRepPrimAPI_MakeTorus_inherited_Check(const BRepPrimAPI_MakeTorus& self) {
+    self.Check();
+}
 
 // ========================
 // BRepPrimAPI_MakeSweep wrappers
@@ -303,6 +345,12 @@ inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_Com
 inline BRepBuilderAPI_Command& BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeSweep& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeSweep& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeSweep& self) { return self; }
+inline bool BRepPrimAPI_MakeSweep_inherited_IsDone(const BRepPrimAPI_MakeSweep& self) {
+    return self.IsDone();
+}
+inline void BRepPrimAPI_MakeSweep_inherited_Check(const BRepPrimAPI_MakeSweep& self) {
+    self.Check();
+}
 
 // ========================
 // BRepPrimAPI_MakeOneAxis wrappers
@@ -312,4 +360,10 @@ inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_C
 inline BRepBuilderAPI_Command& BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeOneAxis& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeOneAxis& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeOneAxis& self) { return self; }
+inline bool BRepPrimAPI_MakeOneAxis_inherited_IsDone(const BRepPrimAPI_MakeOneAxis& self) {
+    return self.IsDone();
+}
+inline void BRepPrimAPI_MakeOneAxis_inherited_Check(const BRepPrimAPI_MakeOneAxis& self) {
+    self.Check();
+}
 

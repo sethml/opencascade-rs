@@ -41,6 +41,84 @@ impl FilBuilder {
     pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<ffi::HandleChFiDSSecHArray1> {
         ffi::FilBuilder_sect(self, IC, IS)
     }
+
+    /// Inherited from ChFi3d_Builder: SetParams
+    pub fn set_params(
+        self: std::pin::Pin<&mut Self>,
+        Tang: f64,
+        Tesp: f64,
+        T2d: f64,
+        TApp3d: f64,
+        TolApp2d: f64,
+        Fleche: f64,
+    ) {
+        ffi::fil_builder_inherited_set_params(self, Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbElements
+    pub fn nb_elements(&self) -> i32 {
+        ffi::fil_builder_inherited_nb_elements(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: Length
+    pub fn length(&self, IC: i32) -> f64 {
+        ffi::fil_builder_inherited_length(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: ClosedAndTangent
+    pub fn closed_and_tangent(&self, IC: i32) -> bool {
+        ffi::fil_builder_inherited_closed_and_tangent(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: Closed
+    pub fn closed(&self, IC: i32) -> bool {
+        ffi::fil_builder_inherited_closed(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: Compute
+    pub fn compute(self: std::pin::Pin<&mut Self>) {
+        ffi::fil_builder_inherited_compute(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::fil_builder_inherited_is_done(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbFaultyContours
+    pub fn nb_faulty_contours(&self) -> i32 {
+        ffi::fil_builder_inherited_nb_faulty_contours(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: FaultyContour
+    pub fn faulty_contour(&self, I: i32) -> i32 {
+        ffi::fil_builder_inherited_faulty_contour(self, I)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbComputedSurfaces
+    pub fn nb_computed_surfaces(&self, IC: i32) -> i32 {
+        ffi::fil_builder_inherited_nb_computed_surfaces(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbFaultyVertices
+    pub fn nb_faulty_vertices(&self) -> i32 {
+        ffi::fil_builder_inherited_nb_faulty_vertices(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: HasResult
+    pub fn has_result(&self) -> bool {
+        ffi::fil_builder_inherited_has_result(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: Reset
+    pub fn reset(self: std::pin::Pin<&mut Self>) {
+        ffi::fil_builder_inherited_reset(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter
+    pub fn perform_two_cornerby_inter(self: std::pin::Pin<&mut Self>, Index: i32) -> bool {
+        ffi::fil_builder_inherited_perform_two_cornerby_inter(self, Index)
+    }
 }
 
 /// Root  class  for calculation of  surfaces (fillets,
@@ -115,6 +193,84 @@ impl ChBuilder {
 
     pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<ffi::HandleChFiDSSecHArray1> {
         ffi::ChBuilder_sect(self, IC, IS)
+    }
+
+    /// Inherited from ChFi3d_Builder: SetParams
+    pub fn set_params(
+        self: std::pin::Pin<&mut Self>,
+        Tang: f64,
+        Tesp: f64,
+        T2d: f64,
+        TApp3d: f64,
+        TolApp2d: f64,
+        Fleche: f64,
+    ) {
+        ffi::ch_builder_inherited_set_params(self, Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbElements
+    pub fn nb_elements(&self) -> i32 {
+        ffi::ch_builder_inherited_nb_elements(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: Length
+    pub fn length(&self, IC: i32) -> f64 {
+        ffi::ch_builder_inherited_length(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: ClosedAndTangent
+    pub fn closed_and_tangent(&self, IC: i32) -> bool {
+        ffi::ch_builder_inherited_closed_and_tangent(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: Closed
+    pub fn closed(&self, IC: i32) -> bool {
+        ffi::ch_builder_inherited_closed(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: Compute
+    pub fn compute(self: std::pin::Pin<&mut Self>) {
+        ffi::ch_builder_inherited_compute(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::ch_builder_inherited_is_done(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbFaultyContours
+    pub fn nb_faulty_contours(&self) -> i32 {
+        ffi::ch_builder_inherited_nb_faulty_contours(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: FaultyContour
+    pub fn faulty_contour(&self, I: i32) -> i32 {
+        ffi::ch_builder_inherited_faulty_contour(self, I)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbComputedSurfaces
+    pub fn nb_computed_surfaces(&self, IC: i32) -> i32 {
+        ffi::ch_builder_inherited_nb_computed_surfaces(self, IC)
+    }
+
+    /// Inherited from ChFi3d_Builder: NbFaultyVertices
+    pub fn nb_faulty_vertices(&self) -> i32 {
+        ffi::ch_builder_inherited_nb_faulty_vertices(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: HasResult
+    pub fn has_result(&self) -> bool {
+        ffi::ch_builder_inherited_has_result(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: Reset
+    pub fn reset(self: std::pin::Pin<&mut Self>) {
+        ffi::ch_builder_inherited_reset(self)
+    }
+
+    /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter
+    pub fn perform_two_cornerby_inter(self: std::pin::Pin<&mut Self>, Index: i32) -> bool {
+        ffi::ch_builder_inherited_perform_two_cornerby_inter(self, Index)
     }
 }
 #[cxx::bridge]
@@ -263,6 +419,59 @@ pub(crate) mod ffi {
         /// Upcast ChFi3d_FilBuilder to ChFi3d_Builder (mutable)
         #[cxx_name = "ChFi3d_FilBuilder_as_ChFi3d_Builder_mut"]
         fn fil_builder_as_builder_mut(self_: Pin<&mut FilBuilder>) -> Pin<&mut Builder>;
+        /// Inherited from ChFi3d_Builder: SetParams
+        #[cxx_name = "ChFi3d_FilBuilder_inherited_SetParams"]
+        fn fil_builder_inherited_set_params(
+            self_: Pin<&mut FilBuilder>,
+            Tang: f64,
+            Tesp: f64,
+            T2d: f64,
+            TApp3d: f64,
+            TolApp2d: f64,
+            Fleche: f64,
+        );
+        /// Inherited from ChFi3d_Builder: NbElements
+        #[cxx_name = "ChFi3d_FilBuilder_inherited_NbElements"]
+        fn fil_builder_inherited_nb_elements(self_: &FilBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: Length
+        #[cxx_name = "ChFi3d_FilBuilder_inherited_Length"]
+        fn fil_builder_inherited_length(self_: &FilBuilder, IC: i32) -> f64;
+        /// Inherited from ChFi3d_Builder: ClosedAndTangent
+        #[cxx_name = "ChFi3d_FilBuilder_inherited_ClosedAndTangent"]
+        fn fil_builder_inherited_closed_and_tangent(self_: &FilBuilder, IC: i32) -> bool;
+        /// Inherited from ChFi3d_Builder: Closed
+        #[cxx_name = "ChFi3d_FilBuilder_inherited_Closed"]
+        fn fil_builder_inherited_closed(self_: &FilBuilder, IC: i32) -> bool;
+        /// Inherited from ChFi3d_Builder: Compute
+        #[cxx_name = "ChFi3d_FilBuilder_inherited_Compute"]
+        fn fil_builder_inherited_compute(self_: Pin<&mut FilBuilder>);
+        /// Inherited from ChFi3d_Builder: IsDone
+        #[cxx_name = "ChFi3d_FilBuilder_inherited_IsDone"]
+        fn fil_builder_inherited_is_done(self_: &FilBuilder) -> bool;
+        /// Inherited from ChFi3d_Builder: NbFaultyContours
+        #[cxx_name = "ChFi3d_FilBuilder_inherited_NbFaultyContours"]
+        fn fil_builder_inherited_nb_faulty_contours(self_: &FilBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: FaultyContour
+        #[cxx_name = "ChFi3d_FilBuilder_inherited_FaultyContour"]
+        fn fil_builder_inherited_faulty_contour(self_: &FilBuilder, I: i32) -> i32;
+        /// Inherited from ChFi3d_Builder: NbComputedSurfaces
+        #[cxx_name = "ChFi3d_FilBuilder_inherited_NbComputedSurfaces"]
+        fn fil_builder_inherited_nb_computed_surfaces(self_: &FilBuilder, IC: i32) -> i32;
+        /// Inherited from ChFi3d_Builder: NbFaultyVertices
+        #[cxx_name = "ChFi3d_FilBuilder_inherited_NbFaultyVertices"]
+        fn fil_builder_inherited_nb_faulty_vertices(self_: &FilBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: HasResult
+        #[cxx_name = "ChFi3d_FilBuilder_inherited_HasResult"]
+        fn fil_builder_inherited_has_result(self_: &FilBuilder) -> bool;
+        /// Inherited from ChFi3d_Builder: Reset
+        #[cxx_name = "ChFi3d_FilBuilder_inherited_Reset"]
+        fn fil_builder_inherited_reset(self_: Pin<&mut FilBuilder>);
+        /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter
+        #[cxx_name = "ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter"]
+        fn fil_builder_inherited_perform_two_cornerby_inter(
+            self_: Pin<&mut FilBuilder>,
+            Index: i32,
+        ) -> bool;
         /// ======================== ChFi3d_Builder ========================
         /// **Source:** `ChFi3d_Builder.hxx`:64 - `ChFi3d_Builder`
         ///
@@ -594,6 +803,59 @@ pub(crate) mod ffi {
         /// Upcast ChFi3d_ChBuilder to ChFi3d_Builder (mutable)
         #[cxx_name = "ChFi3d_ChBuilder_as_ChFi3d_Builder_mut"]
         fn ch_builder_as_builder_mut(self_: Pin<&mut ChBuilder>) -> Pin<&mut Builder>;
+        /// Inherited from ChFi3d_Builder: SetParams
+        #[cxx_name = "ChFi3d_ChBuilder_inherited_SetParams"]
+        fn ch_builder_inherited_set_params(
+            self_: Pin<&mut ChBuilder>,
+            Tang: f64,
+            Tesp: f64,
+            T2d: f64,
+            TApp3d: f64,
+            TolApp2d: f64,
+            Fleche: f64,
+        );
+        /// Inherited from ChFi3d_Builder: NbElements
+        #[cxx_name = "ChFi3d_ChBuilder_inherited_NbElements"]
+        fn ch_builder_inherited_nb_elements(self_: &ChBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: Length
+        #[cxx_name = "ChFi3d_ChBuilder_inherited_Length"]
+        fn ch_builder_inherited_length(self_: &ChBuilder, IC: i32) -> f64;
+        /// Inherited from ChFi3d_Builder: ClosedAndTangent
+        #[cxx_name = "ChFi3d_ChBuilder_inherited_ClosedAndTangent"]
+        fn ch_builder_inherited_closed_and_tangent(self_: &ChBuilder, IC: i32) -> bool;
+        /// Inherited from ChFi3d_Builder: Closed
+        #[cxx_name = "ChFi3d_ChBuilder_inherited_Closed"]
+        fn ch_builder_inherited_closed(self_: &ChBuilder, IC: i32) -> bool;
+        /// Inherited from ChFi3d_Builder: Compute
+        #[cxx_name = "ChFi3d_ChBuilder_inherited_Compute"]
+        fn ch_builder_inherited_compute(self_: Pin<&mut ChBuilder>);
+        /// Inherited from ChFi3d_Builder: IsDone
+        #[cxx_name = "ChFi3d_ChBuilder_inherited_IsDone"]
+        fn ch_builder_inherited_is_done(self_: &ChBuilder) -> bool;
+        /// Inherited from ChFi3d_Builder: NbFaultyContours
+        #[cxx_name = "ChFi3d_ChBuilder_inherited_NbFaultyContours"]
+        fn ch_builder_inherited_nb_faulty_contours(self_: &ChBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: FaultyContour
+        #[cxx_name = "ChFi3d_ChBuilder_inherited_FaultyContour"]
+        fn ch_builder_inherited_faulty_contour(self_: &ChBuilder, I: i32) -> i32;
+        /// Inherited from ChFi3d_Builder: NbComputedSurfaces
+        #[cxx_name = "ChFi3d_ChBuilder_inherited_NbComputedSurfaces"]
+        fn ch_builder_inherited_nb_computed_surfaces(self_: &ChBuilder, IC: i32) -> i32;
+        /// Inherited from ChFi3d_Builder: NbFaultyVertices
+        #[cxx_name = "ChFi3d_ChBuilder_inherited_NbFaultyVertices"]
+        fn ch_builder_inherited_nb_faulty_vertices(self_: &ChBuilder) -> i32;
+        /// Inherited from ChFi3d_Builder: HasResult
+        #[cxx_name = "ChFi3d_ChBuilder_inherited_HasResult"]
+        fn ch_builder_inherited_has_result(self_: &ChBuilder) -> bool;
+        /// Inherited from ChFi3d_Builder: Reset
+        #[cxx_name = "ChFi3d_ChBuilder_inherited_Reset"]
+        fn ch_builder_inherited_reset(self_: Pin<&mut ChBuilder>);
+        /// Inherited from ChFi3d_Builder: PerformTwoCornerbyInter
+        #[cxx_name = "ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter"]
+        fn ch_builder_inherited_perform_two_cornerby_inter(
+            self_: Pin<&mut ChBuilder>,
+            Index: i32,
+        ) -> bool;
 
         // ========================
         // Cross-module type aliases

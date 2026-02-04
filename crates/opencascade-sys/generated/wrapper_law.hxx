@@ -92,4 +92,16 @@ inline std::unique_ptr<HandleLawBSpFunc> HandleLawInterpol_to_HandleLawBSpFunc(c
 inline std::unique_ptr<HandleLawFunction> HandleLawInterpol_to_HandleLawFunction(const HandleLawInterpol& handle) {
     return std::make_unique<HandleLawFunction>(handle);
 }
+inline Standard_Real Law_Interpol_inherited_Value(Law_Interpol& self, Standard_Real X) {
+    return self.Value(X);
+}
+inline void Law_Interpol_inherited_D1(Law_Interpol& self, Standard_Real X, Standard_Real& F, Standard_Real& D) {
+    self.D1(X, F, D);
+}
+inline void Law_Interpol_inherited_D2(Law_Interpol& self, Standard_Real X, Standard_Real& F, Standard_Real& D, Standard_Real& D2) {
+    self.D2(X, F, D, D2);
+}
+inline void Law_Interpol_inherited_Bounds(Law_Interpol& self, Standard_Real& PFirst, Standard_Real& PLast) {
+    self.Bounds(PFirst, PLast);
+}
 

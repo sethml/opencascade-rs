@@ -49,6 +49,9 @@ inline rust::String IMeshTools_ModelBuilder_get_type_name() {
 
 inline const Message_Algorithm& IMeshTools_ModelBuilder_as_Message_Algorithm(const IMeshTools_ModelBuilder& self) { return self; }
 inline Message_Algorithm& IMeshTools_ModelBuilder_as_Message_Algorithm_mut(IMeshTools_ModelBuilder& self) { return self; }
+inline void IMeshTools_ModelBuilder_inherited_ClearStatus(IMeshTools_ModelBuilder& self) {
+    self.ClearStatus();
+}
 
 // ========================
 // IMeshTools_Parameters wrappers

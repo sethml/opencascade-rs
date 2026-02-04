@@ -56,6 +56,9 @@ inline rust::String BRepMesh_IncrementalMesh_get_type_name() {
 
 inline const BRepMesh_DiscretRoot& BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot(const BRepMesh_IncrementalMesh& self) { return self; }
 inline BRepMesh_DiscretRoot& BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot_mut(BRepMesh_IncrementalMesh& self) { return self; }
+inline bool BRepMesh_IncrementalMesh_inherited_IsDone(const BRepMesh_IncrementalMesh& self) {
+    return self.IsDone();
+}
 
 // ========================
 // BRepMesh_DiscretRoot wrappers
@@ -116,6 +119,12 @@ inline std::unique_ptr<BRepMesh_Edge> BRepMesh_Edge_ctor() {
 
 inline const BRepMesh_OrientedEdge& BRepMesh_Edge_as_BRepMesh_OrientedEdge(const BRepMesh_Edge& self) { return self; }
 inline BRepMesh_OrientedEdge& BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut(BRepMesh_Edge& self) { return self; }
+inline Standard_Integer BRepMesh_Edge_inherited_FirstNode(const BRepMesh_Edge& self) {
+    return self.FirstNode();
+}
+inline Standard_Integer BRepMesh_Edge_inherited_LastNode(const BRepMesh_Edge& self) {
+    return self.LastNode();
+}
 
 // ========================
 // BRepMesh_OrientedEdge wrappers

@@ -46,6 +46,75 @@ inline const BOPAlgo_ToolsProvider& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Tool
 inline BOPAlgo_ToolsProvider& BRepFeat_MakeCylindricalHole_as_BOPAlgo_ToolsProvider_mut(BRepFeat_MakeCylindricalHole& self) { return self; }
 inline const BRepFeat_Builder& BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder(const BRepFeat_MakeCylindricalHole& self) { return self; }
 inline BRepFeat_Builder& BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder_mut(BRepFeat_MakeCylindricalHole& self) { return self; }
+inline void BRepFeat_MakeCylindricalHole_inherited_Clear(BRepFeat_MakeCylindricalHole& self) {
+    self.Clear();
+}
+inline void BRepFeat_MakeCylindricalHole_inherited_SetNonDestructive(BRepFeat_MakeCylindricalHole& self, bool theFlag) {
+    self.SetNonDestructive(theFlag);
+}
+inline bool BRepFeat_MakeCylindricalHole_inherited_NonDestructive(const BRepFeat_MakeCylindricalHole& self) {
+    return self.NonDestructive();
+}
+inline void BRepFeat_MakeCylindricalHole_inherited_SetCheckInverted(BRepFeat_MakeCylindricalHole& self, bool theCheck) {
+    self.SetCheckInverted(theCheck);
+}
+inline bool BRepFeat_MakeCylindricalHole_inherited_CheckInverted(const BRepFeat_MakeCylindricalHole& self) {
+    return self.CheckInverted();
+}
+inline bool BRepFeat_MakeCylindricalHole_inherited_HasModified(const BRepFeat_MakeCylindricalHole& self) {
+    return self.HasModified();
+}
+inline bool BRepFeat_MakeCylindricalHole_inherited_HasGenerated(const BRepFeat_MakeCylindricalHole& self) {
+    return self.HasGenerated();
+}
+inline bool BRepFeat_MakeCylindricalHole_inherited_HasDeleted(const BRepFeat_MakeCylindricalHole& self) {
+    return self.HasDeleted();
+}
+inline void BRepFeat_MakeCylindricalHole_inherited_SetToFillHistory(BRepFeat_MakeCylindricalHole& self, bool theHistFlag) {
+    self.SetToFillHistory(theHistFlag);
+}
+inline bool BRepFeat_MakeCylindricalHole_inherited_HasHistory(const BRepFeat_MakeCylindricalHole& self) {
+    return self.HasHistory();
+}
+inline bool BRepFeat_MakeCylindricalHole_inherited_HasErrors(const BRepFeat_MakeCylindricalHole& self) {
+    return self.HasErrors();
+}
+inline bool BRepFeat_MakeCylindricalHole_inherited_HasWarnings(const BRepFeat_MakeCylindricalHole& self) {
+    return self.HasWarnings();
+}
+inline void BRepFeat_MakeCylindricalHole_inherited_ClearWarnings(BRepFeat_MakeCylindricalHole& self) {
+    self.ClearWarnings();
+}
+inline void BRepFeat_MakeCylindricalHole_inherited_SetRunParallel(BRepFeat_MakeCylindricalHole& self, bool theFlag) {
+    self.SetRunParallel(theFlag);
+}
+inline bool BRepFeat_MakeCylindricalHole_inherited_RunParallel(const BRepFeat_MakeCylindricalHole& self) {
+    return self.RunParallel();
+}
+inline void BRepFeat_MakeCylindricalHole_inherited_SetFuzzyValue(BRepFeat_MakeCylindricalHole& self, Standard_Real theFuzz) {
+    self.SetFuzzyValue(theFuzz);
+}
+inline Standard_Real BRepFeat_MakeCylindricalHole_inherited_FuzzyValue(const BRepFeat_MakeCylindricalHole& self) {
+    return self.FuzzyValue();
+}
+inline void BRepFeat_MakeCylindricalHole_inherited_SetUseOBB(BRepFeat_MakeCylindricalHole& self, bool theUseOBB) {
+    self.SetUseOBB(theUseOBB);
+}
+inline bool BRepFeat_MakeCylindricalHole_inherited_UseOBB(const BRepFeat_MakeCylindricalHole& self) {
+    return self.UseOBB();
+}
+inline void BRepFeat_MakeCylindricalHole_inherited_SetOperation(BRepFeat_MakeCylindricalHole& self, Standard_Integer theFuse) {
+    self.SetOperation(theFuse);
+}
+inline void BRepFeat_MakeCylindricalHole_inherited_RebuildFaces(BRepFeat_MakeCylindricalHole& self) {
+    self.RebuildFaces();
+}
+inline void BRepFeat_MakeCylindricalHole_inherited_CheckSolidImages(BRepFeat_MakeCylindricalHole& self) {
+    self.CheckSolidImages();
+}
+inline void BRepFeat_MakeCylindricalHole_inherited_FillRemoved(BRepFeat_MakeCylindricalHole& self) {
+    self.FillRemoved();
+}
 
 // ========================
 // BRepFeat_MakeDPrism wrappers
@@ -69,6 +138,33 @@ inline const BRepBuilderAPI_MakeShape& BRepFeat_MakeDPrism_as_BRepBuilderAPI_Mak
 inline BRepBuilderAPI_MakeShape& BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape_mut(BRepFeat_MakeDPrism& self) { return self; }
 inline const BRepFeat_Form& BRepFeat_MakeDPrism_as_BRepFeat_Form(const BRepFeat_MakeDPrism& self) { return self; }
 inline BRepFeat_Form& BRepFeat_MakeDPrism_as_BRepFeat_Form_mut(BRepFeat_MakeDPrism& self) { return self; }
+inline bool BRepFeat_MakeDPrism_inherited_IsDone(const BRepFeat_MakeDPrism& self) {
+    return self.IsDone();
+}
+inline void BRepFeat_MakeDPrism_inherited_Check(const BRepFeat_MakeDPrism& self) {
+    self.Check();
+}
+inline void BRepFeat_MakeDPrism_inherited_BasisShapeValid(BRepFeat_MakeDPrism& self) {
+    self.BasisShapeValid();
+}
+inline void BRepFeat_MakeDPrism_inherited_GeneratedShapeValid(BRepFeat_MakeDPrism& self) {
+    self.GeneratedShapeValid();
+}
+inline void BRepFeat_MakeDPrism_inherited_ShapeFromValid(BRepFeat_MakeDPrism& self) {
+    self.ShapeFromValid();
+}
+inline void BRepFeat_MakeDPrism_inherited_ShapeUntilValid(BRepFeat_MakeDPrism& self) {
+    self.ShapeUntilValid();
+}
+inline void BRepFeat_MakeDPrism_inherited_GluedFacesValid(BRepFeat_MakeDPrism& self) {
+    self.GluedFacesValid();
+}
+inline void BRepFeat_MakeDPrism_inherited_SketchFaceValid(BRepFeat_MakeDPrism& self) {
+    self.SketchFaceValid();
+}
+inline void BRepFeat_MakeDPrism_inherited_PerfSelectionValid(BRepFeat_MakeDPrism& self) {
+    self.PerfSelectionValid();
+}
 
 // ========================
 // BRepFeat_Form wrappers
@@ -82,6 +178,12 @@ inline const BRepBuilderAPI_Command& BRepFeat_Form_as_BRepBuilderAPI_Command(con
 inline BRepBuilderAPI_Command& BRepFeat_Form_as_BRepBuilderAPI_Command_mut(BRepFeat_Form& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepFeat_Form_as_BRepBuilderAPI_MakeShape(const BRepFeat_Form& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepFeat_Form_as_BRepBuilderAPI_MakeShape_mut(BRepFeat_Form& self) { return self; }
+inline bool BRepFeat_Form_inherited_IsDone(const BRepFeat_Form& self) {
+    return self.IsDone();
+}
+inline void BRepFeat_Form_inherited_Check(const BRepFeat_Form& self) {
+    self.Check();
+}
 
 // ========================
 // BRepFeat_Builder wrappers
@@ -103,4 +205,58 @@ inline const BOPAlgo_Options& BRepFeat_Builder_as_BOPAlgo_Options(const BRepFeat
 inline BOPAlgo_Options& BRepFeat_Builder_as_BOPAlgo_Options_mut(BRepFeat_Builder& self) { return self; }
 inline const BOPAlgo_ToolsProvider& BRepFeat_Builder_as_BOPAlgo_ToolsProvider(const BRepFeat_Builder& self) { return self; }
 inline BOPAlgo_ToolsProvider& BRepFeat_Builder_as_BOPAlgo_ToolsProvider_mut(BRepFeat_Builder& self) { return self; }
+inline void BRepFeat_Builder_inherited_SetNonDestructive(BRepFeat_Builder& self, bool theFlag) {
+    self.SetNonDestructive(theFlag);
+}
+inline bool BRepFeat_Builder_inherited_NonDestructive(const BRepFeat_Builder& self) {
+    return self.NonDestructive();
+}
+inline void BRepFeat_Builder_inherited_SetCheckInverted(BRepFeat_Builder& self, bool theCheck) {
+    self.SetCheckInverted(theCheck);
+}
+inline bool BRepFeat_Builder_inherited_CheckInverted(const BRepFeat_Builder& self) {
+    return self.CheckInverted();
+}
+inline bool BRepFeat_Builder_inherited_HasModified(const BRepFeat_Builder& self) {
+    return self.HasModified();
+}
+inline bool BRepFeat_Builder_inherited_HasGenerated(const BRepFeat_Builder& self) {
+    return self.HasGenerated();
+}
+inline bool BRepFeat_Builder_inherited_HasDeleted(const BRepFeat_Builder& self) {
+    return self.HasDeleted();
+}
+inline void BRepFeat_Builder_inherited_SetToFillHistory(BRepFeat_Builder& self, bool theHistFlag) {
+    self.SetToFillHistory(theHistFlag);
+}
+inline bool BRepFeat_Builder_inherited_HasHistory(const BRepFeat_Builder& self) {
+    return self.HasHistory();
+}
+inline bool BRepFeat_Builder_inherited_HasErrors(const BRepFeat_Builder& self) {
+    return self.HasErrors();
+}
+inline bool BRepFeat_Builder_inherited_HasWarnings(const BRepFeat_Builder& self) {
+    return self.HasWarnings();
+}
+inline void BRepFeat_Builder_inherited_ClearWarnings(BRepFeat_Builder& self) {
+    self.ClearWarnings();
+}
+inline void BRepFeat_Builder_inherited_SetRunParallel(BRepFeat_Builder& self, bool theFlag) {
+    self.SetRunParallel(theFlag);
+}
+inline bool BRepFeat_Builder_inherited_RunParallel(const BRepFeat_Builder& self) {
+    return self.RunParallel();
+}
+inline void BRepFeat_Builder_inherited_SetFuzzyValue(BRepFeat_Builder& self, Standard_Real theFuzz) {
+    self.SetFuzzyValue(theFuzz);
+}
+inline Standard_Real BRepFeat_Builder_inherited_FuzzyValue(const BRepFeat_Builder& self) {
+    return self.FuzzyValue();
+}
+inline void BRepFeat_Builder_inherited_SetUseOBB(BRepFeat_Builder& self, bool theUseOBB) {
+    self.SetUseOBB(theUseOBB);
+}
+inline bool BRepFeat_Builder_inherited_UseOBB(const BRepFeat_Builder& self) {
+    return self.UseOBB();
+}
 

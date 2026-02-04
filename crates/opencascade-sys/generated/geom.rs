@@ -313,6 +313,46 @@ impl BoundedCurve {
     pub fn get_type_name() -> String {
         ffi::BoundedCurve_get_type_name()
     }
+
+    /// Inherited from Geom_Curve: Reverse
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::bounded_curve_inherited_reverse(self)
+    }
+
+    /// Inherited from Geom_Curve: ReversedParameter
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        ffi::bounded_curve_inherited_reversed_parameter(self, U)
+    }
+
+    /// Inherited from Geom_Curve: FirstParameter
+    pub fn first_parameter(&self) -> f64 {
+        ffi::bounded_curve_inherited_first_parameter(self)
+    }
+
+    /// Inherited from Geom_Curve: LastParameter
+    pub fn last_parameter(&self) -> f64 {
+        ffi::bounded_curve_inherited_last_parameter(self)
+    }
+
+    /// Inherited from Geom_Curve: IsClosed
+    pub fn is_closed(&self) -> bool {
+        ffi::bounded_curve_inherited_is_closed(self)
+    }
+
+    /// Inherited from Geom_Curve: IsPeriodic
+    pub fn is_periodic(&self) -> bool {
+        ffi::bounded_curve_inherited_is_periodic(self)
+    }
+
+    /// Inherited from Geom_Curve: Period
+    pub fn period(&self) -> f64 {
+        ffi::bounded_curve_inherited_period(self)
+    }
+
+    /// Inherited from Geom_Curve: IsCN
+    pub fn is_cn(&self, N: i32) -> bool {
+        ffi::bounded_curve_inherited_is_cn(self, N)
+    }
 }
 
 /// The root class for bounded surfaces in 3D space. A
@@ -369,6 +409,71 @@ impl BoundedSurface {
 
     pub fn get_type_name() -> String {
         ffi::BoundedSurface_get_type_name()
+    }
+
+    /// Inherited from Geom_Surface: UReverse
+    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::bounded_surface_inherited_u_reverse(self)
+    }
+
+    /// Inherited from Geom_Surface: UReversedParameter
+    pub fn u_reversed_parameter(&self, U: f64) -> f64 {
+        ffi::bounded_surface_inherited_u_reversed_parameter(self, U)
+    }
+
+    /// Inherited from Geom_Surface: VReverse
+    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::bounded_surface_inherited_v_reverse(self)
+    }
+
+    /// Inherited from Geom_Surface: VReversedParameter
+    pub fn v_reversed_parameter(&self, V: f64) -> f64 {
+        ffi::bounded_surface_inherited_v_reversed_parameter(self, V)
+    }
+
+    /// Inherited from Geom_Surface: Bounds
+    pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
+        ffi::bounded_surface_inherited_bounds(self, U1, U2, V1, V2)
+    }
+
+    /// Inherited from Geom_Surface: IsUClosed
+    pub fn is_u_closed(&self) -> bool {
+        ffi::bounded_surface_inherited_is_u_closed(self)
+    }
+
+    /// Inherited from Geom_Surface: IsVClosed
+    pub fn is_v_closed(&self) -> bool {
+        ffi::bounded_surface_inherited_is_v_closed(self)
+    }
+
+    /// Inherited from Geom_Surface: IsUPeriodic
+    pub fn is_u_periodic(&self) -> bool {
+        ffi::bounded_surface_inherited_is_u_periodic(self)
+    }
+
+    /// Inherited from Geom_Surface: UPeriod
+    pub fn u_period(&self) -> f64 {
+        ffi::bounded_surface_inherited_u_period(self)
+    }
+
+    /// Inherited from Geom_Surface: IsVPeriodic
+    pub fn is_v_periodic(&self) -> bool {
+        ffi::bounded_surface_inherited_is_v_periodic(self)
+    }
+
+    /// Inherited from Geom_Surface: VPeriod
+    pub fn v_period(&self) -> f64 {
+        ffi::bounded_surface_inherited_v_period(self)
+    }
+
+    /// Inherited from Geom_Surface: IsCNu
+    pub fn is_c_nu(&self, N: i32) -> bool {
+        ffi::bounded_surface_inherited_is_c_nu(self, N)
+    }
+
+    /// Inherited from Geom_Surface: IsCNv
+    pub fn is_c_nv(&self, N: i32) -> bool {
+        ffi::bounded_surface_inherited_is_c_nv(self, N)
     }
 }
 
@@ -433,6 +538,41 @@ impl ElementarySurface {
 
     pub fn get_type_name() -> String {
         ffi::ElementarySurface_get_type_name()
+    }
+
+    /// Inherited from Geom_Surface: Bounds
+    pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
+        ffi::elementary_surface_inherited_bounds(self, U1, U2, V1, V2)
+    }
+
+    /// Inherited from Geom_Surface: IsUClosed
+    pub fn is_u_closed(&self) -> bool {
+        ffi::elementary_surface_inherited_is_u_closed(self)
+    }
+
+    /// Inherited from Geom_Surface: IsVClosed
+    pub fn is_v_closed(&self) -> bool {
+        ffi::elementary_surface_inherited_is_v_closed(self)
+    }
+
+    /// Inherited from Geom_Surface: IsUPeriodic
+    pub fn is_u_periodic(&self) -> bool {
+        ffi::elementary_surface_inherited_is_u_periodic(self)
+    }
+
+    /// Inherited from Geom_Surface: UPeriod
+    pub fn u_period(&self) -> f64 {
+        ffi::elementary_surface_inherited_u_period(self)
+    }
+
+    /// Inherited from Geom_Surface: IsVPeriodic
+    pub fn is_v_periodic(&self) -> bool {
+        ffi::elementary_surface_inherited_is_v_periodic(self)
+    }
+
+    /// Inherited from Geom_Surface: VPeriod
+    pub fn v_period(&self) -> f64 {
+        ffi::elementary_surface_inherited_v_period(self)
     }
 }
 
@@ -577,6 +717,11 @@ impl BezierCurve {
 
     pub fn get_type_name() -> String {
         ffi::BezierCurve_get_type_name()
+    }
+
+    /// Inherited from Geom_Curve: Period
+    pub fn period(&self) -> f64 {
+        ffi::bezier_curve_inherited_period(self)
     }
 }
 
@@ -762,6 +907,16 @@ impl BezierSurface {
 
     pub fn get_type_name() -> String {
         ffi::BezierSurface_get_type_name()
+    }
+
+    /// Inherited from Geom_Surface: UPeriod
+    pub fn u_period(&self) -> f64 {
+        ffi::bezier_surface_inherited_u_period(self)
+    }
+
+    /// Inherited from Geom_Surface: VPeriod
+    pub fn v_period(&self) -> f64 {
+        ffi::bezier_surface_inherited_v_period(self)
     }
 }
 
@@ -1024,6 +1179,11 @@ impl BSplineCurve {
 
     pub fn get_type_name() -> String {
         ffi::BSplineCurve_get_type_name()
+    }
+
+    /// Inherited from Geom_Curve: Period
+    pub fn period(&self) -> f64 {
+        ffi::b_spline_curve_inherited_period(self)
     }
 }
 
@@ -1369,6 +1529,16 @@ impl BSplineSurface {
     pub fn get_type_name() -> String {
         ffi::BSplineSurface_get_type_name()
     }
+
+    /// Inherited from Geom_Surface: UPeriod
+    pub fn u_period(&self) -> f64 {
+        ffi::b_spline_surface_inherited_u_period(self)
+    }
+
+    /// Inherited from Geom_Surface: VPeriod
+    pub fn v_period(&self) -> f64 {
+        ffi::b_spline_surface_inherited_v_period(self)
+    }
 }
 
 /// This class defines the infinite cylindrical surface.
@@ -1512,6 +1682,36 @@ impl CylindricalSurface {
 
     pub fn get_type_name() -> String {
         ffi::CylindricalSurface_get_type_name()
+    }
+
+    /// Inherited from Geom_ElementarySurface: UReverse
+    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::cylindrical_surface_inherited_u_reverse(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: VReverse
+    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::cylindrical_surface_inherited_v_reverse(self)
+    }
+
+    /// Inherited from Geom_ElementarySurface: IsCNu
+    pub fn is_c_nu(&self, N: i32) -> bool {
+        ffi::cylindrical_surface_inherited_is_c_nu(self, N)
+    }
+
+    /// Inherited from Geom_ElementarySurface: IsCNv
+    pub fn is_c_nv(&self, N: i32) -> bool {
+        ffi::cylindrical_surface_inherited_is_c_nv(self, N)
+    }
+
+    /// Inherited from Geom_Surface: UPeriod
+    pub fn u_period(&self) -> f64 {
+        ffi::cylindrical_surface_inherited_u_period(self)
+    }
+
+    /// Inherited from Geom_Surface: VPeriod
+    pub fn v_period(&self) -> f64 {
+        ffi::cylindrical_surface_inherited_v_period(self)
     }
 }
 
@@ -1658,6 +1858,26 @@ impl Plane {
 
     pub fn get_type_name() -> String {
         ffi::Plane_get_type_name()
+    }
+
+    /// Inherited from Geom_ElementarySurface: IsCNu
+    pub fn is_c_nu(&self, N: i32) -> bool {
+        ffi::plane_inherited_is_c_nu(self, N)
+    }
+
+    /// Inherited from Geom_ElementarySurface: IsCNv
+    pub fn is_c_nv(&self, N: i32) -> bool {
+        ffi::plane_inherited_is_c_nv(self, N)
+    }
+
+    /// Inherited from Geom_Surface: UPeriod
+    pub fn u_period(&self) -> f64 {
+        ffi::plane_inherited_u_period(self)
+    }
+
+    /// Inherited from Geom_Surface: VPeriod
+    pub fn v_period(&self) -> f64 {
+        ffi::plane_inherited_v_period(self)
     }
 }
 
@@ -2629,6 +2849,30 @@ pub(crate) mod ffi {
         /// Upcast Geom_BoundedCurve to Geom_Geometry (mutable)
         #[cxx_name = "Geom_BoundedCurve_as_Geom_Geometry_mut"]
         fn bounded_curve_as_geometry_mut(self_: Pin<&mut BoundedCurve>) -> Pin<&mut Geometry>;
+        /// Inherited from Geom_Curve: Reverse
+        #[cxx_name = "Geom_BoundedCurve_inherited_Reverse"]
+        fn bounded_curve_inherited_reverse(self_: Pin<&mut BoundedCurve>);
+        /// Inherited from Geom_Curve: ReversedParameter
+        #[cxx_name = "Geom_BoundedCurve_inherited_ReversedParameter"]
+        fn bounded_curve_inherited_reversed_parameter(self_: &BoundedCurve, U: f64) -> f64;
+        /// Inherited from Geom_Curve: FirstParameter
+        #[cxx_name = "Geom_BoundedCurve_inherited_FirstParameter"]
+        fn bounded_curve_inherited_first_parameter(self_: &BoundedCurve) -> f64;
+        /// Inherited from Geom_Curve: LastParameter
+        #[cxx_name = "Geom_BoundedCurve_inherited_LastParameter"]
+        fn bounded_curve_inherited_last_parameter(self_: &BoundedCurve) -> f64;
+        /// Inherited from Geom_Curve: IsClosed
+        #[cxx_name = "Geom_BoundedCurve_inherited_IsClosed"]
+        fn bounded_curve_inherited_is_closed(self_: &BoundedCurve) -> bool;
+        /// Inherited from Geom_Curve: IsPeriodic
+        #[cxx_name = "Geom_BoundedCurve_inherited_IsPeriodic"]
+        fn bounded_curve_inherited_is_periodic(self_: &BoundedCurve) -> bool;
+        /// Inherited from Geom_Curve: Period
+        #[cxx_name = "Geom_BoundedCurve_inherited_Period"]
+        fn bounded_curve_inherited_period(self_: &BoundedCurve) -> f64;
+        /// Inherited from Geom_Curve: IsCN
+        #[cxx_name = "Geom_BoundedCurve_inherited_IsCN"]
+        fn bounded_curve_inherited_is_cn(self_: &BoundedCurve, N: i32) -> bool;
         /// Upcast Handle<Geom_BoundedCurve> to Handle<Geom_Curve>
         #[cxx_name = "HandleGeomBoundedCurve_to_HandleGeomCurve"]
         fn bounded_curve_to_handle_curve(
@@ -2687,6 +2931,51 @@ pub(crate) mod ffi {
         /// Upcast Geom_BoundedSurface to Geom_Surface (mutable)
         #[cxx_name = "Geom_BoundedSurface_as_Geom_Surface_mut"]
         fn bounded_surface_as_surface_mut(self_: Pin<&mut BoundedSurface>) -> Pin<&mut Surface>;
+        /// Inherited from Geom_Surface: UReverse
+        #[cxx_name = "Geom_BoundedSurface_inherited_UReverse"]
+        fn bounded_surface_inherited_u_reverse(self_: Pin<&mut BoundedSurface>);
+        /// Inherited from Geom_Surface: UReversedParameter
+        #[cxx_name = "Geom_BoundedSurface_inherited_UReversedParameter"]
+        fn bounded_surface_inherited_u_reversed_parameter(self_: &BoundedSurface, U: f64) -> f64;
+        /// Inherited from Geom_Surface: VReverse
+        #[cxx_name = "Geom_BoundedSurface_inherited_VReverse"]
+        fn bounded_surface_inherited_v_reverse(self_: Pin<&mut BoundedSurface>);
+        /// Inherited from Geom_Surface: VReversedParameter
+        #[cxx_name = "Geom_BoundedSurface_inherited_VReversedParameter"]
+        fn bounded_surface_inherited_v_reversed_parameter(self_: &BoundedSurface, V: f64) -> f64;
+        /// Inherited from Geom_Surface: Bounds
+        #[cxx_name = "Geom_BoundedSurface_inherited_Bounds"]
+        fn bounded_surface_inherited_bounds(
+            self_: &BoundedSurface,
+            U1: &mut f64,
+            U2: &mut f64,
+            V1: &mut f64,
+            V2: &mut f64,
+        );
+        /// Inherited from Geom_Surface: IsUClosed
+        #[cxx_name = "Geom_BoundedSurface_inherited_IsUClosed"]
+        fn bounded_surface_inherited_is_u_closed(self_: &BoundedSurface) -> bool;
+        /// Inherited from Geom_Surface: IsVClosed
+        #[cxx_name = "Geom_BoundedSurface_inherited_IsVClosed"]
+        fn bounded_surface_inherited_is_v_closed(self_: &BoundedSurface) -> bool;
+        /// Inherited from Geom_Surface: IsUPeriodic
+        #[cxx_name = "Geom_BoundedSurface_inherited_IsUPeriodic"]
+        fn bounded_surface_inherited_is_u_periodic(self_: &BoundedSurface) -> bool;
+        /// Inherited from Geom_Surface: UPeriod
+        #[cxx_name = "Geom_BoundedSurface_inherited_UPeriod"]
+        fn bounded_surface_inherited_u_period(self_: &BoundedSurface) -> f64;
+        /// Inherited from Geom_Surface: IsVPeriodic
+        #[cxx_name = "Geom_BoundedSurface_inherited_IsVPeriodic"]
+        fn bounded_surface_inherited_is_v_periodic(self_: &BoundedSurface) -> bool;
+        /// Inherited from Geom_Surface: VPeriod
+        #[cxx_name = "Geom_BoundedSurface_inherited_VPeriod"]
+        fn bounded_surface_inherited_v_period(self_: &BoundedSurface) -> f64;
+        /// Inherited from Geom_Surface: IsCNu
+        #[cxx_name = "Geom_BoundedSurface_inherited_IsCNu"]
+        fn bounded_surface_inherited_is_c_nu(self_: &BoundedSurface, N: i32) -> bool;
+        /// Inherited from Geom_Surface: IsCNv
+        #[cxx_name = "Geom_BoundedSurface_inherited_IsCNv"]
+        fn bounded_surface_inherited_is_c_nv(self_: &BoundedSurface, N: i32) -> bool;
         /// Wrap Geom_BoundedSurface in a Handle (reference-counted smart pointer)
         #[cxx_name = "Geom_BoundedSurface_to_handle"]
         fn BoundedSurface_to_handle(
@@ -2841,6 +3130,33 @@ pub(crate) mod ffi {
         fn elementary_surface_as_surface_mut(
             self_: Pin<&mut ElementarySurface>,
         ) -> Pin<&mut Surface>;
+        /// Inherited from Geom_Surface: Bounds
+        #[cxx_name = "Geom_ElementarySurface_inherited_Bounds"]
+        fn elementary_surface_inherited_bounds(
+            self_: &ElementarySurface,
+            U1: &mut f64,
+            U2: &mut f64,
+            V1: &mut f64,
+            V2: &mut f64,
+        );
+        /// Inherited from Geom_Surface: IsUClosed
+        #[cxx_name = "Geom_ElementarySurface_inherited_IsUClosed"]
+        fn elementary_surface_inherited_is_u_closed(self_: &ElementarySurface) -> bool;
+        /// Inherited from Geom_Surface: IsVClosed
+        #[cxx_name = "Geom_ElementarySurface_inherited_IsVClosed"]
+        fn elementary_surface_inherited_is_v_closed(self_: &ElementarySurface) -> bool;
+        /// Inherited from Geom_Surface: IsUPeriodic
+        #[cxx_name = "Geom_ElementarySurface_inherited_IsUPeriodic"]
+        fn elementary_surface_inherited_is_u_periodic(self_: &ElementarySurface) -> bool;
+        /// Inherited from Geom_Surface: UPeriod
+        #[cxx_name = "Geom_ElementarySurface_inherited_UPeriod"]
+        fn elementary_surface_inherited_u_period(self_: &ElementarySurface) -> f64;
+        /// Inherited from Geom_Surface: IsVPeriodic
+        #[cxx_name = "Geom_ElementarySurface_inherited_IsVPeriodic"]
+        fn elementary_surface_inherited_is_v_periodic(self_: &ElementarySurface) -> bool;
+        /// Inherited from Geom_Surface: VPeriod
+        #[cxx_name = "Geom_ElementarySurface_inherited_VPeriod"]
+        fn elementary_surface_inherited_v_period(self_: &ElementarySurface) -> f64;
         /// Upcast Handle<Geom_ElementarySurface> to Handle<Geom_Geometry>
         #[cxx_name = "HandleGeomElementarySurface_to_HandleGeomGeometry"]
         fn elementary_surface_to_handle_geometry(
@@ -3234,6 +3550,9 @@ pub(crate) mod ffi {
         /// Upcast Geom_BezierCurve to Geom_Geometry (mutable)
         #[cxx_name = "Geom_BezierCurve_as_Geom_Geometry_mut"]
         fn bezier_curve_as_geometry_mut(self_: Pin<&mut BezierCurve>) -> Pin<&mut Geometry>;
+        /// Inherited from Geom_Curve: Period
+        #[cxx_name = "Geom_BezierCurve_inherited_Period"]
+        fn bezier_curve_inherited_period(self_: &BezierCurve) -> f64;
         /// Wrap Geom_BezierCurve in a Handle (reference-counted smart pointer)
         #[cxx_name = "Geom_BezierCurve_to_handle"]
         fn BezierCurve_to_handle(obj: UniquePtr<BezierCurve>) -> UniquePtr<HandleGeomBezierCurve>;
@@ -3997,6 +4316,12 @@ pub(crate) mod ffi {
         /// Upcast Geom_BezierSurface to Geom_Surface (mutable)
         #[cxx_name = "Geom_BezierSurface_as_Geom_Surface_mut"]
         fn bezier_surface_as_surface_mut(self_: Pin<&mut BezierSurface>) -> Pin<&mut Surface>;
+        /// Inherited from Geom_Surface: UPeriod
+        #[cxx_name = "Geom_BezierSurface_inherited_UPeriod"]
+        fn bezier_surface_inherited_u_period(self_: &BezierSurface) -> f64;
+        /// Inherited from Geom_Surface: VPeriod
+        #[cxx_name = "Geom_BezierSurface_inherited_VPeriod"]
+        fn bezier_surface_inherited_v_period(self_: &BezierSurface) -> f64;
         /// Wrap Geom_BezierSurface in a Handle (reference-counted smart pointer)
         #[cxx_name = "Geom_BezierSurface_to_handle"]
         fn BezierSurface_to_handle(
@@ -4951,6 +5276,9 @@ pub(crate) mod ffi {
         /// Upcast Geom_BSplineCurve to Geom_Geometry (mutable)
         #[cxx_name = "Geom_BSplineCurve_as_Geom_Geometry_mut"]
         fn b_spline_curve_as_geometry_mut(self_: Pin<&mut BSplineCurve>) -> Pin<&mut Geometry>;
+        /// Inherited from Geom_Curve: Period
+        #[cxx_name = "Geom_BSplineCurve_inherited_Period"]
+        fn b_spline_curve_inherited_period(self_: &BSplineCurve) -> f64;
         /// Wrap Geom_BSplineCurve in a Handle (reference-counted smart pointer)
         #[cxx_name = "Geom_BSplineCurve_to_handle"]
         fn BSplineCurve_to_handle(
@@ -6492,6 +6820,12 @@ pub(crate) mod ffi {
         /// Upcast Geom_BSplineSurface to Geom_Surface (mutable)
         #[cxx_name = "Geom_BSplineSurface_as_Geom_Surface_mut"]
         fn b_spline_surface_as_surface_mut(self_: Pin<&mut BSplineSurface>) -> Pin<&mut Surface>;
+        /// Inherited from Geom_Surface: UPeriod
+        #[cxx_name = "Geom_BSplineSurface_inherited_UPeriod"]
+        fn b_spline_surface_inherited_u_period(self_: &BSplineSurface) -> f64;
+        /// Inherited from Geom_Surface: VPeriod
+        #[cxx_name = "Geom_BSplineSurface_inherited_VPeriod"]
+        fn b_spline_surface_inherited_v_period(self_: &BSplineSurface) -> f64;
         /// Wrap Geom_BSplineSurface in a Handle (reference-counted smart pointer)
         #[cxx_name = "Geom_BSplineSurface_to_handle"]
         fn BSplineSurface_to_handle(
@@ -6820,6 +7154,24 @@ pub(crate) mod ffi {
         fn cylindrical_surface_as_surface_mut(
             self_: Pin<&mut CylindricalSurface>,
         ) -> Pin<&mut Surface>;
+        /// Inherited from Geom_ElementarySurface: UReverse
+        #[cxx_name = "Geom_CylindricalSurface_inherited_UReverse"]
+        fn cylindrical_surface_inherited_u_reverse(self_: Pin<&mut CylindricalSurface>);
+        /// Inherited from Geom_ElementarySurface: VReverse
+        #[cxx_name = "Geom_CylindricalSurface_inherited_VReverse"]
+        fn cylindrical_surface_inherited_v_reverse(self_: Pin<&mut CylindricalSurface>);
+        /// Inherited from Geom_ElementarySurface: IsCNu
+        #[cxx_name = "Geom_CylindricalSurface_inherited_IsCNu"]
+        fn cylindrical_surface_inherited_is_c_nu(self_: &CylindricalSurface, N: i32) -> bool;
+        /// Inherited from Geom_ElementarySurface: IsCNv
+        #[cxx_name = "Geom_CylindricalSurface_inherited_IsCNv"]
+        fn cylindrical_surface_inherited_is_c_nv(self_: &CylindricalSurface, N: i32) -> bool;
+        /// Inherited from Geom_Surface: UPeriod
+        #[cxx_name = "Geom_CylindricalSurface_inherited_UPeriod"]
+        fn cylindrical_surface_inherited_u_period(self_: &CylindricalSurface) -> f64;
+        /// Inherited from Geom_Surface: VPeriod
+        #[cxx_name = "Geom_CylindricalSurface_inherited_VPeriod"]
+        fn cylindrical_surface_inherited_v_period(self_: &CylindricalSurface) -> f64;
         /// Wrap Geom_CylindricalSurface in a Handle (reference-counted smart pointer)
         #[cxx_name = "Geom_CylindricalSurface_to_handle"]
         fn CylindricalSurface_to_handle(
@@ -7111,6 +7463,18 @@ pub(crate) mod ffi {
         /// Upcast Geom_Plane to Geom_Surface (mutable)
         #[cxx_name = "Geom_Plane_as_Geom_Surface_mut"]
         fn plane_as_surface_mut(self_: Pin<&mut Plane>) -> Pin<&mut Surface>;
+        /// Inherited from Geom_ElementarySurface: IsCNu
+        #[cxx_name = "Geom_Plane_inherited_IsCNu"]
+        fn plane_inherited_is_c_nu(self_: &Plane, N: i32) -> bool;
+        /// Inherited from Geom_ElementarySurface: IsCNv
+        #[cxx_name = "Geom_Plane_inherited_IsCNv"]
+        fn plane_inherited_is_c_nv(self_: &Plane, N: i32) -> bool;
+        /// Inherited from Geom_Surface: UPeriod
+        #[cxx_name = "Geom_Plane_inherited_UPeriod"]
+        fn plane_inherited_u_period(self_: &Plane) -> f64;
+        /// Inherited from Geom_Surface: VPeriod
+        #[cxx_name = "Geom_Plane_inherited_VPeriod"]
+        fn plane_inherited_v_period(self_: &Plane) -> f64;
         /// Wrap Geom_Plane in a Handle (reference-counted smart pointer)
         #[cxx_name = "Geom_Plane_to_handle"]
         fn Plane_to_handle(obj: UniquePtr<Plane>) -> UniquePtr<HandleGeomPlane>;

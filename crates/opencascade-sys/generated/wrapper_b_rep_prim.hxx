@@ -60,6 +60,39 @@ inline const BRepPrim_OneAxis& BRepPrim_Torus_as_BRepPrim_OneAxis(const BRepPrim
 inline BRepPrim_OneAxis& BRepPrim_Torus_as_BRepPrim_OneAxis_mut(BRepPrim_Torus& self) { return self; }
 inline const BRepPrim_Revolution& BRepPrim_Torus_as_BRepPrim_Revolution(const BRepPrim_Torus& self) { return self; }
 inline BRepPrim_Revolution& BRepPrim_Torus_as_BRepPrim_Revolution_mut(BRepPrim_Torus& self) { return self; }
+inline void BRepPrim_Torus_inherited_SetMeridianOffset(BRepPrim_Torus& self, Standard_Real MeridianOffset) {
+    self.SetMeridianOffset(MeridianOffset);
+}
+inline Standard_Real BRepPrim_Torus_inherited_Angle(const BRepPrim_Torus& self) {
+    return self.Angle();
+}
+inline Standard_Real BRepPrim_Torus_inherited_VMin(const BRepPrim_Torus& self) {
+    return self.VMin();
+}
+inline Standard_Real BRepPrim_Torus_inherited_VMax(const BRepPrim_Torus& self) {
+    return self.VMax();
+}
+inline bool BRepPrim_Torus_inherited_MeridianOnAxis(const BRepPrim_Torus& self, Standard_Real V) {
+    return self.MeridianOnAxis(V);
+}
+inline bool BRepPrim_Torus_inherited_MeridianClosed(const BRepPrim_Torus& self) {
+    return self.MeridianClosed();
+}
+inline bool BRepPrim_Torus_inherited_VMaxInfinite(const BRepPrim_Torus& self) {
+    return self.VMaxInfinite();
+}
+inline bool BRepPrim_Torus_inherited_VMinInfinite(const BRepPrim_Torus& self) {
+    return self.VMinInfinite();
+}
+inline bool BRepPrim_Torus_inherited_HasTop(const BRepPrim_Torus& self) {
+    return self.HasTop();
+}
+inline bool BRepPrim_Torus_inherited_HasBottom(const BRepPrim_Torus& self) {
+    return self.HasBottom();
+}
+inline bool BRepPrim_Torus_inherited_HasSides(const BRepPrim_Torus& self) {
+    return self.HasSides();
+}
 
 // ========================
 // BRepPrim_Revolution wrappers
@@ -83,6 +116,39 @@ inline std::unique_ptr<gp_Pnt2d> BRepPrim_Revolution_MeridianValue(const BRepPri
 
 inline const BRepPrim_OneAxis& BRepPrim_Revolution_as_BRepPrim_OneAxis(const BRepPrim_Revolution& self) { return self; }
 inline BRepPrim_OneAxis& BRepPrim_Revolution_as_BRepPrim_OneAxis_mut(BRepPrim_Revolution& self) { return self; }
+inline void BRepPrim_Revolution_inherited_SetMeridianOffset(BRepPrim_Revolution& self, Standard_Real MeridianOffset) {
+    self.SetMeridianOffset(MeridianOffset);
+}
+inline Standard_Real BRepPrim_Revolution_inherited_Angle(const BRepPrim_Revolution& self) {
+    return self.Angle();
+}
+inline Standard_Real BRepPrim_Revolution_inherited_VMin(const BRepPrim_Revolution& self) {
+    return self.VMin();
+}
+inline Standard_Real BRepPrim_Revolution_inherited_VMax(const BRepPrim_Revolution& self) {
+    return self.VMax();
+}
+inline bool BRepPrim_Revolution_inherited_MeridianOnAxis(const BRepPrim_Revolution& self, Standard_Real V) {
+    return self.MeridianOnAxis(V);
+}
+inline bool BRepPrim_Revolution_inherited_MeridianClosed(const BRepPrim_Revolution& self) {
+    return self.MeridianClosed();
+}
+inline bool BRepPrim_Revolution_inherited_VMaxInfinite(const BRepPrim_Revolution& self) {
+    return self.VMaxInfinite();
+}
+inline bool BRepPrim_Revolution_inherited_VMinInfinite(const BRepPrim_Revolution& self) {
+    return self.VMinInfinite();
+}
+inline bool BRepPrim_Revolution_inherited_HasTop(const BRepPrim_Revolution& self) {
+    return self.HasTop();
+}
+inline bool BRepPrim_Revolution_inherited_HasBottom(const BRepPrim_Revolution& self) {
+    return self.HasBottom();
+}
+inline bool BRepPrim_Revolution_inherited_HasSides(const BRepPrim_Revolution& self) {
+    return self.HasSides();
+}
 
 // ========================
 // BRepPrim_OneAxis wrappers
@@ -138,6 +204,39 @@ inline const BRepPrim_OneAxis& BRepPrim_Sphere_as_BRepPrim_OneAxis(const BRepPri
 inline BRepPrim_OneAxis& BRepPrim_Sphere_as_BRepPrim_OneAxis_mut(BRepPrim_Sphere& self) { return self; }
 inline const BRepPrim_Revolution& BRepPrim_Sphere_as_BRepPrim_Revolution(const BRepPrim_Sphere& self) { return self; }
 inline BRepPrim_Revolution& BRepPrim_Sphere_as_BRepPrim_Revolution_mut(BRepPrim_Sphere& self) { return self; }
+inline void BRepPrim_Sphere_inherited_SetMeridianOffset(BRepPrim_Sphere& self, Standard_Real MeridianOffset) {
+    self.SetMeridianOffset(MeridianOffset);
+}
+inline Standard_Real BRepPrim_Sphere_inherited_Angle(const BRepPrim_Sphere& self) {
+    return self.Angle();
+}
+inline Standard_Real BRepPrim_Sphere_inherited_VMin(const BRepPrim_Sphere& self) {
+    return self.VMin();
+}
+inline Standard_Real BRepPrim_Sphere_inherited_VMax(const BRepPrim_Sphere& self) {
+    return self.VMax();
+}
+inline bool BRepPrim_Sphere_inherited_MeridianOnAxis(const BRepPrim_Sphere& self, Standard_Real V) {
+    return self.MeridianOnAxis(V);
+}
+inline bool BRepPrim_Sphere_inherited_MeridianClosed(const BRepPrim_Sphere& self) {
+    return self.MeridianClosed();
+}
+inline bool BRepPrim_Sphere_inherited_VMaxInfinite(const BRepPrim_Sphere& self) {
+    return self.VMaxInfinite();
+}
+inline bool BRepPrim_Sphere_inherited_VMinInfinite(const BRepPrim_Sphere& self) {
+    return self.VMinInfinite();
+}
+inline bool BRepPrim_Sphere_inherited_HasTop(const BRepPrim_Sphere& self) {
+    return self.HasTop();
+}
+inline bool BRepPrim_Sphere_inherited_HasBottom(const BRepPrim_Sphere& self) {
+    return self.HasBottom();
+}
+inline bool BRepPrim_Sphere_inherited_HasSides(const BRepPrim_Sphere& self) {
+    return self.HasSides();
+}
 
 // ========================
 // BRepPrim_Cylinder wrappers
@@ -175,6 +274,39 @@ inline const BRepPrim_OneAxis& BRepPrim_Cylinder_as_BRepPrim_OneAxis(const BRepP
 inline BRepPrim_OneAxis& BRepPrim_Cylinder_as_BRepPrim_OneAxis_mut(BRepPrim_Cylinder& self) { return self; }
 inline const BRepPrim_Revolution& BRepPrim_Cylinder_as_BRepPrim_Revolution(const BRepPrim_Cylinder& self) { return self; }
 inline BRepPrim_Revolution& BRepPrim_Cylinder_as_BRepPrim_Revolution_mut(BRepPrim_Cylinder& self) { return self; }
+inline void BRepPrim_Cylinder_inherited_SetMeridianOffset(BRepPrim_Cylinder& self, Standard_Real MeridianOffset) {
+    self.SetMeridianOffset(MeridianOffset);
+}
+inline Standard_Real BRepPrim_Cylinder_inherited_Angle(const BRepPrim_Cylinder& self) {
+    return self.Angle();
+}
+inline Standard_Real BRepPrim_Cylinder_inherited_VMin(const BRepPrim_Cylinder& self) {
+    return self.VMin();
+}
+inline Standard_Real BRepPrim_Cylinder_inherited_VMax(const BRepPrim_Cylinder& self) {
+    return self.VMax();
+}
+inline bool BRepPrim_Cylinder_inherited_MeridianOnAxis(const BRepPrim_Cylinder& self, Standard_Real V) {
+    return self.MeridianOnAxis(V);
+}
+inline bool BRepPrim_Cylinder_inherited_MeridianClosed(const BRepPrim_Cylinder& self) {
+    return self.MeridianClosed();
+}
+inline bool BRepPrim_Cylinder_inherited_VMaxInfinite(const BRepPrim_Cylinder& self) {
+    return self.VMaxInfinite();
+}
+inline bool BRepPrim_Cylinder_inherited_VMinInfinite(const BRepPrim_Cylinder& self) {
+    return self.VMinInfinite();
+}
+inline bool BRepPrim_Cylinder_inherited_HasTop(const BRepPrim_Cylinder& self) {
+    return self.HasTop();
+}
+inline bool BRepPrim_Cylinder_inherited_HasBottom(const BRepPrim_Cylinder& self) {
+    return self.HasBottom();
+}
+inline bool BRepPrim_Cylinder_inherited_HasSides(const BRepPrim_Cylinder& self) {
+    return self.HasSides();
+}
 
 // ========================
 // BRepPrim_Cone wrappers
@@ -216,6 +348,39 @@ inline const BRepPrim_OneAxis& BRepPrim_Cone_as_BRepPrim_OneAxis(const BRepPrim_
 inline BRepPrim_OneAxis& BRepPrim_Cone_as_BRepPrim_OneAxis_mut(BRepPrim_Cone& self) { return self; }
 inline const BRepPrim_Revolution& BRepPrim_Cone_as_BRepPrim_Revolution(const BRepPrim_Cone& self) { return self; }
 inline BRepPrim_Revolution& BRepPrim_Cone_as_BRepPrim_Revolution_mut(BRepPrim_Cone& self) { return self; }
+inline void BRepPrim_Cone_inherited_SetMeridianOffset(BRepPrim_Cone& self, Standard_Real MeridianOffset) {
+    self.SetMeridianOffset(MeridianOffset);
+}
+inline Standard_Real BRepPrim_Cone_inherited_Angle(const BRepPrim_Cone& self) {
+    return self.Angle();
+}
+inline Standard_Real BRepPrim_Cone_inherited_VMin(const BRepPrim_Cone& self) {
+    return self.VMin();
+}
+inline Standard_Real BRepPrim_Cone_inherited_VMax(const BRepPrim_Cone& self) {
+    return self.VMax();
+}
+inline bool BRepPrim_Cone_inherited_MeridianOnAxis(const BRepPrim_Cone& self, Standard_Real V) {
+    return self.MeridianOnAxis(V);
+}
+inline bool BRepPrim_Cone_inherited_MeridianClosed(const BRepPrim_Cone& self) {
+    return self.MeridianClosed();
+}
+inline bool BRepPrim_Cone_inherited_VMaxInfinite(const BRepPrim_Cone& self) {
+    return self.VMaxInfinite();
+}
+inline bool BRepPrim_Cone_inherited_VMinInfinite(const BRepPrim_Cone& self) {
+    return self.VMinInfinite();
+}
+inline bool BRepPrim_Cone_inherited_HasTop(const BRepPrim_Cone& self) {
+    return self.HasTop();
+}
+inline bool BRepPrim_Cone_inherited_HasBottom(const BRepPrim_Cone& self) {
+    return self.HasBottom();
+}
+inline bool BRepPrim_Cone_inherited_HasSides(const BRepPrim_Cone& self) {
+    return self.HasSides();
+}
 
 // ========================
 // BRepPrim_Wedge wrappers
@@ -239,6 +404,39 @@ inline std::unique_ptr<BRepPrim_Wedge> BRepPrim_Wedge_ctor_ax2_real10(const gp_A
 
 inline const BRepPrim_GWedge& BRepPrim_Wedge_as_BRepPrim_GWedge(const BRepPrim_Wedge& self) { return self; }
 inline BRepPrim_GWedge& BRepPrim_Wedge_as_BRepPrim_GWedge_mut(BRepPrim_Wedge& self) { return self; }
+inline Standard_Real BRepPrim_Wedge_inherited_GetXMin(const BRepPrim_Wedge& self) {
+    return self.GetXMin();
+}
+inline Standard_Real BRepPrim_Wedge_inherited_GetYMin(const BRepPrim_Wedge& self) {
+    return self.GetYMin();
+}
+inline Standard_Real BRepPrim_Wedge_inherited_GetZMin(const BRepPrim_Wedge& self) {
+    return self.GetZMin();
+}
+inline Standard_Real BRepPrim_Wedge_inherited_GetZ2Min(const BRepPrim_Wedge& self) {
+    return self.GetZ2Min();
+}
+inline Standard_Real BRepPrim_Wedge_inherited_GetX2Min(const BRepPrim_Wedge& self) {
+    return self.GetX2Min();
+}
+inline Standard_Real BRepPrim_Wedge_inherited_GetXMax(const BRepPrim_Wedge& self) {
+    return self.GetXMax();
+}
+inline Standard_Real BRepPrim_Wedge_inherited_GetYMax(const BRepPrim_Wedge& self) {
+    return self.GetYMax();
+}
+inline Standard_Real BRepPrim_Wedge_inherited_GetZMax(const BRepPrim_Wedge& self) {
+    return self.GetZMax();
+}
+inline Standard_Real BRepPrim_Wedge_inherited_GetZ2Max(const BRepPrim_Wedge& self) {
+    return self.GetZ2Max();
+}
+inline Standard_Real BRepPrim_Wedge_inherited_GetX2Max(const BRepPrim_Wedge& self) {
+    return self.GetX2Max();
+}
+inline bool BRepPrim_Wedge_inherited_IsDegeneratedShape(BRepPrim_Wedge& self) {
+    return self.IsDegeneratedShape();
+}
 
 // ========================
 // BRepPrim_GWedge wrappers

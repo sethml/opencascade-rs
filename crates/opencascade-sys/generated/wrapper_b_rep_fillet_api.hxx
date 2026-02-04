@@ -53,6 +53,12 @@ inline const BRepBuilderAPI_Command& BRepFilletAPI_LocalOperation_as_BRepBuilder
 inline BRepBuilderAPI_Command& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_LocalOperation& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_LocalOperation& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_LocalOperation& self) { return self; }
+inline bool BRepFilletAPI_LocalOperation_inherited_IsDone(const BRepFilletAPI_LocalOperation& self) {
+    return self.IsDone();
+}
+inline void BRepFilletAPI_LocalOperation_inherited_Check(const BRepFilletAPI_LocalOperation& self) {
+    self.Check();
+}
 
 // ========================
 // BRepFilletAPI_MakeChamfer wrappers
@@ -84,6 +90,12 @@ inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeChamfer_as_BRepBuilderA
 inline BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_MakeChamfer& self) { return self; }
 inline const BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation(const BRepFilletAPI_MakeChamfer& self) { return self; }
 inline BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut(BRepFilletAPI_MakeChamfer& self) { return self; }
+inline bool BRepFilletAPI_MakeChamfer_inherited_IsDone(const BRepFilletAPI_MakeChamfer& self) {
+    return self.IsDone();
+}
+inline void BRepFilletAPI_MakeChamfer_inherited_Check(const BRepFilletAPI_MakeChamfer& self) {
+    self.Check();
+}
 
 // ========================
 // BRepFilletAPI_MakeFillet wrappers
@@ -127,6 +139,12 @@ inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet_as_BRepBuilderAP
 inline BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_MakeFillet& self) { return self; }
 inline const BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation(const BRepFilletAPI_MakeFillet& self) { return self; }
 inline BRepFilletAPI_LocalOperation& BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation_mut(BRepFilletAPI_MakeFillet& self) { return self; }
+inline bool BRepFilletAPI_MakeFillet_inherited_IsDone(const BRepFilletAPI_MakeFillet& self) {
+    return self.IsDone();
+}
+inline void BRepFilletAPI_MakeFillet_inherited_Check(const BRepFilletAPI_MakeFillet& self) {
+    self.Check();
+}
 
 // ========================
 // BRepFilletAPI_MakeFillet2d wrappers
@@ -176,4 +194,10 @@ inline const BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAP
 inline BRepBuilderAPI_Command& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_MakeFillet2d& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_MakeFillet2d& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape_mut(BRepFilletAPI_MakeFillet2d& self) { return self; }
+inline bool BRepFilletAPI_MakeFillet2d_inherited_IsDone(const BRepFilletAPI_MakeFillet2d& self) {
+    return self.IsDone();
+}
+inline void BRepFilletAPI_MakeFillet2d_inherited_Check(const BRepFilletAPI_MakeFillet2d& self) {
+    self.Check();
+}
 

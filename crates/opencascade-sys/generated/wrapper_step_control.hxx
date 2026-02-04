@@ -39,6 +39,15 @@ inline std::unique_ptr<opencascade::handle<StepData_StepModel>> STEPControl_Read
 
 inline const XSControl_Reader& STEPControl_Reader_as_XSControl_Reader(const STEPControl_Reader& self) { return self; }
 inline XSControl_Reader& STEPControl_Reader_as_XSControl_Reader_mut(STEPControl_Reader& self) { return self; }
+inline void STEPControl_Reader_inherited_ClearShapes(STEPControl_Reader& self) {
+    self.ClearShapes();
+}
+inline Standard_Integer STEPControl_Reader_inherited_NbShapes(const STEPControl_Reader& self) {
+    return self.NbShapes();
+}
+inline void STEPControl_Reader_inherited_PrintStatsTransfer(const STEPControl_Reader& self, Standard_Integer what, Standard_Integer mode) {
+    self.PrintStatsTransfer(what, mode);
+}
 
 // ========================
 // STEPControl_Writer wrappers

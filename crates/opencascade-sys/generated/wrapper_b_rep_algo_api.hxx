@@ -59,6 +59,12 @@ inline const BRepBuilderAPI_Command& BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_C
 inline BRepBuilderAPI_Command& BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_BuilderAlgo& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_BuilderAlgo& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_BuilderAlgo& self) { return self; }
+inline bool BRepAlgoAPI_BuilderAlgo_inherited_IsDone(const BRepAlgoAPI_BuilderAlgo& self) {
+    return self.IsDone();
+}
+inline void BRepAlgoAPI_BuilderAlgo_inherited_Check(const BRepAlgoAPI_BuilderAlgo& self) {
+    self.Check();
+}
 
 // ========================
 // BRepAlgoAPI_BooleanOperation wrappers
@@ -80,6 +86,42 @@ inline const BRepBuilderAPI_Command& BRepAlgoAPI_BooleanOperation_as_BRepBuilder
 inline BRepBuilderAPI_Command& BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_BooleanOperation& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_BooleanOperation& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_BooleanOperation& self) { return self; }
+inline void BRepAlgoAPI_BooleanOperation_inherited_SetNonDestructive(BRepAlgoAPI_BooleanOperation& self, bool theFlag) {
+    self.SetNonDestructive(theFlag);
+}
+inline bool BRepAlgoAPI_BooleanOperation_inherited_NonDestructive(const BRepAlgoAPI_BooleanOperation& self) {
+    return self.NonDestructive();
+}
+inline void BRepAlgoAPI_BooleanOperation_inherited_SetCheckInverted(BRepAlgoAPI_BooleanOperation& self, bool theCheck) {
+    self.SetCheckInverted(theCheck);
+}
+inline bool BRepAlgoAPI_BooleanOperation_inherited_CheckInverted(const BRepAlgoAPI_BooleanOperation& self) {
+    return self.CheckInverted();
+}
+inline void BRepAlgoAPI_BooleanOperation_inherited_SimplifyResult(BRepAlgoAPI_BooleanOperation& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
+    self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
+}
+inline bool BRepAlgoAPI_BooleanOperation_inherited_HasModified(const BRepAlgoAPI_BooleanOperation& self) {
+    return self.HasModified();
+}
+inline bool BRepAlgoAPI_BooleanOperation_inherited_HasGenerated(const BRepAlgoAPI_BooleanOperation& self) {
+    return self.HasGenerated();
+}
+inline bool BRepAlgoAPI_BooleanOperation_inherited_HasDeleted(const BRepAlgoAPI_BooleanOperation& self) {
+    return self.HasDeleted();
+}
+inline void BRepAlgoAPI_BooleanOperation_inherited_SetToFillHistory(BRepAlgoAPI_BooleanOperation& self, bool theHistFlag) {
+    self.SetToFillHistory(theHistFlag);
+}
+inline bool BRepAlgoAPI_BooleanOperation_inherited_HasHistory(const BRepAlgoAPI_BooleanOperation& self) {
+    return self.HasHistory();
+}
+inline bool BRepAlgoAPI_BooleanOperation_inherited_IsDone(const BRepAlgoAPI_BooleanOperation& self) {
+    return self.IsDone();
+}
+inline void BRepAlgoAPI_BooleanOperation_inherited_Check(const BRepAlgoAPI_BooleanOperation& self) {
+    self.Check();
+}
 
 // ========================
 // BRepAlgoAPI_Common wrappers
@@ -111,6 +153,42 @@ inline const BRepBuilderAPI_Command& BRepAlgoAPI_Common_as_BRepBuilderAPI_Comman
 inline BRepBuilderAPI_Command& BRepAlgoAPI_Common_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_Common& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_Common_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_Common& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepAlgoAPI_Common_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_Common& self) { return self; }
+inline void BRepAlgoAPI_Common_inherited_SetNonDestructive(BRepAlgoAPI_Common& self, bool theFlag) {
+    self.SetNonDestructive(theFlag);
+}
+inline bool BRepAlgoAPI_Common_inherited_NonDestructive(const BRepAlgoAPI_Common& self) {
+    return self.NonDestructive();
+}
+inline void BRepAlgoAPI_Common_inherited_SetCheckInverted(BRepAlgoAPI_Common& self, bool theCheck) {
+    self.SetCheckInverted(theCheck);
+}
+inline bool BRepAlgoAPI_Common_inherited_CheckInverted(const BRepAlgoAPI_Common& self) {
+    return self.CheckInverted();
+}
+inline void BRepAlgoAPI_Common_inherited_SimplifyResult(BRepAlgoAPI_Common& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
+    self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
+}
+inline bool BRepAlgoAPI_Common_inherited_HasModified(const BRepAlgoAPI_Common& self) {
+    return self.HasModified();
+}
+inline bool BRepAlgoAPI_Common_inherited_HasGenerated(const BRepAlgoAPI_Common& self) {
+    return self.HasGenerated();
+}
+inline bool BRepAlgoAPI_Common_inherited_HasDeleted(const BRepAlgoAPI_Common& self) {
+    return self.HasDeleted();
+}
+inline void BRepAlgoAPI_Common_inherited_SetToFillHistory(BRepAlgoAPI_Common& self, bool theHistFlag) {
+    self.SetToFillHistory(theHistFlag);
+}
+inline bool BRepAlgoAPI_Common_inherited_HasHistory(const BRepAlgoAPI_Common& self) {
+    return self.HasHistory();
+}
+inline bool BRepAlgoAPI_Common_inherited_IsDone(const BRepAlgoAPI_Common& self) {
+    return self.IsDone();
+}
+inline void BRepAlgoAPI_Common_inherited_Check(const BRepAlgoAPI_Common& self) {
+    self.Check();
+}
 
 // ========================
 // BRepAlgoAPI_Cut wrappers
@@ -142,6 +220,42 @@ inline const BRepBuilderAPI_Command& BRepAlgoAPI_Cut_as_BRepBuilderAPI_Command(c
 inline BRepBuilderAPI_Command& BRepAlgoAPI_Cut_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_Cut& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_Cut_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_Cut& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepAlgoAPI_Cut_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_Cut& self) { return self; }
+inline void BRepAlgoAPI_Cut_inherited_SetNonDestructive(BRepAlgoAPI_Cut& self, bool theFlag) {
+    self.SetNonDestructive(theFlag);
+}
+inline bool BRepAlgoAPI_Cut_inherited_NonDestructive(const BRepAlgoAPI_Cut& self) {
+    return self.NonDestructive();
+}
+inline void BRepAlgoAPI_Cut_inherited_SetCheckInverted(BRepAlgoAPI_Cut& self, bool theCheck) {
+    self.SetCheckInverted(theCheck);
+}
+inline bool BRepAlgoAPI_Cut_inherited_CheckInverted(const BRepAlgoAPI_Cut& self) {
+    return self.CheckInverted();
+}
+inline void BRepAlgoAPI_Cut_inherited_SimplifyResult(BRepAlgoAPI_Cut& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
+    self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
+}
+inline bool BRepAlgoAPI_Cut_inherited_HasModified(const BRepAlgoAPI_Cut& self) {
+    return self.HasModified();
+}
+inline bool BRepAlgoAPI_Cut_inherited_HasGenerated(const BRepAlgoAPI_Cut& self) {
+    return self.HasGenerated();
+}
+inline bool BRepAlgoAPI_Cut_inherited_HasDeleted(const BRepAlgoAPI_Cut& self) {
+    return self.HasDeleted();
+}
+inline void BRepAlgoAPI_Cut_inherited_SetToFillHistory(BRepAlgoAPI_Cut& self, bool theHistFlag) {
+    self.SetToFillHistory(theHistFlag);
+}
+inline bool BRepAlgoAPI_Cut_inherited_HasHistory(const BRepAlgoAPI_Cut& self) {
+    return self.HasHistory();
+}
+inline bool BRepAlgoAPI_Cut_inherited_IsDone(const BRepAlgoAPI_Cut& self) {
+    return self.IsDone();
+}
+inline void BRepAlgoAPI_Cut_inherited_Check(const BRepAlgoAPI_Cut& self) {
+    self.Check();
+}
 
 // ========================
 // BRepAlgoAPI_Fuse wrappers
@@ -173,6 +287,42 @@ inline const BRepBuilderAPI_Command& BRepAlgoAPI_Fuse_as_BRepBuilderAPI_Command(
 inline BRepBuilderAPI_Command& BRepAlgoAPI_Fuse_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_Fuse& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_Fuse_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_Fuse& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepAlgoAPI_Fuse_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_Fuse& self) { return self; }
+inline void BRepAlgoAPI_Fuse_inherited_SetNonDestructive(BRepAlgoAPI_Fuse& self, bool theFlag) {
+    self.SetNonDestructive(theFlag);
+}
+inline bool BRepAlgoAPI_Fuse_inherited_NonDestructive(const BRepAlgoAPI_Fuse& self) {
+    return self.NonDestructive();
+}
+inline void BRepAlgoAPI_Fuse_inherited_SetCheckInverted(BRepAlgoAPI_Fuse& self, bool theCheck) {
+    self.SetCheckInverted(theCheck);
+}
+inline bool BRepAlgoAPI_Fuse_inherited_CheckInverted(const BRepAlgoAPI_Fuse& self) {
+    return self.CheckInverted();
+}
+inline void BRepAlgoAPI_Fuse_inherited_SimplifyResult(BRepAlgoAPI_Fuse& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
+    self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
+}
+inline bool BRepAlgoAPI_Fuse_inherited_HasModified(const BRepAlgoAPI_Fuse& self) {
+    return self.HasModified();
+}
+inline bool BRepAlgoAPI_Fuse_inherited_HasGenerated(const BRepAlgoAPI_Fuse& self) {
+    return self.HasGenerated();
+}
+inline bool BRepAlgoAPI_Fuse_inherited_HasDeleted(const BRepAlgoAPI_Fuse& self) {
+    return self.HasDeleted();
+}
+inline void BRepAlgoAPI_Fuse_inherited_SetToFillHistory(BRepAlgoAPI_Fuse& self, bool theHistFlag) {
+    self.SetToFillHistory(theHistFlag);
+}
+inline bool BRepAlgoAPI_Fuse_inherited_HasHistory(const BRepAlgoAPI_Fuse& self) {
+    return self.HasHistory();
+}
+inline bool BRepAlgoAPI_Fuse_inherited_IsDone(const BRepAlgoAPI_Fuse& self) {
+    return self.IsDone();
+}
+inline void BRepAlgoAPI_Fuse_inherited_Check(const BRepAlgoAPI_Fuse& self) {
+    self.Check();
+}
 
 // ========================
 // BRepAlgoAPI_Section wrappers
@@ -220,4 +370,40 @@ inline const BRepBuilderAPI_Command& BRepAlgoAPI_Section_as_BRepBuilderAPI_Comma
 inline BRepBuilderAPI_Command& BRepAlgoAPI_Section_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_Section& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_Section_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_Section& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepAlgoAPI_Section_as_BRepBuilderAPI_MakeShape_mut(BRepAlgoAPI_Section& self) { return self; }
+inline void BRepAlgoAPI_Section_inherited_SetNonDestructive(BRepAlgoAPI_Section& self, bool theFlag) {
+    self.SetNonDestructive(theFlag);
+}
+inline bool BRepAlgoAPI_Section_inherited_NonDestructive(const BRepAlgoAPI_Section& self) {
+    return self.NonDestructive();
+}
+inline void BRepAlgoAPI_Section_inherited_SetCheckInverted(BRepAlgoAPI_Section& self, bool theCheck) {
+    self.SetCheckInverted(theCheck);
+}
+inline bool BRepAlgoAPI_Section_inherited_CheckInverted(const BRepAlgoAPI_Section& self) {
+    return self.CheckInverted();
+}
+inline void BRepAlgoAPI_Section_inherited_SimplifyResult(BRepAlgoAPI_Section& self, bool theUnifyEdges, bool theUnifyFaces, Standard_Real theAngularTol) {
+    self.SimplifyResult(theUnifyEdges, theUnifyFaces, theAngularTol);
+}
+inline bool BRepAlgoAPI_Section_inherited_HasModified(const BRepAlgoAPI_Section& self) {
+    return self.HasModified();
+}
+inline bool BRepAlgoAPI_Section_inherited_HasGenerated(const BRepAlgoAPI_Section& self) {
+    return self.HasGenerated();
+}
+inline bool BRepAlgoAPI_Section_inherited_HasDeleted(const BRepAlgoAPI_Section& self) {
+    return self.HasDeleted();
+}
+inline void BRepAlgoAPI_Section_inherited_SetToFillHistory(BRepAlgoAPI_Section& self, bool theHistFlag) {
+    self.SetToFillHistory(theHistFlag);
+}
+inline bool BRepAlgoAPI_Section_inherited_HasHistory(const BRepAlgoAPI_Section& self) {
+    return self.HasHistory();
+}
+inline bool BRepAlgoAPI_Section_inherited_IsDone(const BRepAlgoAPI_Section& self) {
+    return self.IsDone();
+}
+inline void BRepAlgoAPI_Section_inherited_Check(const BRepAlgoAPI_Section& self) {
+    self.Check();
+}
 

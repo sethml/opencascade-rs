@@ -43,6 +43,15 @@ inline std::unique_ptr<opencascade::handle<IGESData_IGESModel>> IGESControl_Read
 
 inline const XSControl_Reader& IGESControl_Reader_as_XSControl_Reader(const IGESControl_Reader& self) { return self; }
 inline XSControl_Reader& IGESControl_Reader_as_XSControl_Reader_mut(IGESControl_Reader& self) { return self; }
+inline void IGESControl_Reader_inherited_ClearShapes(IGESControl_Reader& self) {
+    self.ClearShapes();
+}
+inline Standard_Integer IGESControl_Reader_inherited_NbShapes(const IGESControl_Reader& self) {
+    return self.NbShapes();
+}
+inline void IGESControl_Reader_inherited_PrintStatsTransfer(const IGESControl_Reader& self, Standard_Integer what, Standard_Integer mode) {
+    self.PrintStatsTransfer(what, mode);
+}
 
 // ========================
 // IGESControl_Writer wrappers

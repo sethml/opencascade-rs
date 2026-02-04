@@ -122,6 +122,30 @@ inline std::unique_ptr<HandleGeom2dCurve> HandleGeom2dBoundedCurve_to_HandleGeom
 inline std::unique_ptr<HandleGeom2dGeometry> HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(const HandleGeom2dBoundedCurve& handle) {
     return std::make_unique<HandleGeom2dGeometry>(handle);
 }
+inline void Geom2d_BoundedCurve_inherited_Reverse(Geom2d_BoundedCurve& self) {
+    self.Reverse();
+}
+inline Standard_Real Geom2d_BoundedCurve_inherited_ReversedParameter(const Geom2d_BoundedCurve& self, Standard_Real U) {
+    return self.ReversedParameter(U);
+}
+inline Standard_Real Geom2d_BoundedCurve_inherited_FirstParameter(const Geom2d_BoundedCurve& self) {
+    return self.FirstParameter();
+}
+inline Standard_Real Geom2d_BoundedCurve_inherited_LastParameter(const Geom2d_BoundedCurve& self) {
+    return self.LastParameter();
+}
+inline bool Geom2d_BoundedCurve_inherited_IsClosed(const Geom2d_BoundedCurve& self) {
+    return self.IsClosed();
+}
+inline bool Geom2d_BoundedCurve_inherited_IsPeriodic(const Geom2d_BoundedCurve& self) {
+    return self.IsPeriodic();
+}
+inline Standard_Real Geom2d_BoundedCurve_inherited_Period(const Geom2d_BoundedCurve& self) {
+    return self.Period();
+}
+inline bool Geom2d_BoundedCurve_inherited_IsCN(const Geom2d_BoundedCurve& self, Standard_Integer N) {
+    return self.IsCN(N);
+}
 
 // ========================
 // Geom2d_Conic wrappers
@@ -148,6 +172,21 @@ inline std::unique_ptr<HandleGeom2dCurve> HandleGeom2dConic_to_HandleGeom2dCurve
 }
 inline std::unique_ptr<HandleGeom2dGeometry> HandleGeom2dConic_to_HandleGeom2dGeometry(const HandleGeom2dConic& handle) {
     return std::make_unique<HandleGeom2dGeometry>(handle);
+}
+inline Standard_Real Geom2d_Conic_inherited_FirstParameter(const Geom2d_Conic& self) {
+    return self.FirstParameter();
+}
+inline Standard_Real Geom2d_Conic_inherited_LastParameter(const Geom2d_Conic& self) {
+    return self.LastParameter();
+}
+inline bool Geom2d_Conic_inherited_IsClosed(const Geom2d_Conic& self) {
+    return self.IsClosed();
+}
+inline bool Geom2d_Conic_inherited_IsPeriodic(const Geom2d_Conic& self) {
+    return self.IsPeriodic();
+}
+inline Standard_Real Geom2d_Conic_inherited_Period(const Geom2d_Conic& self) {
+    return self.Period();
 }
 
 // ========================
@@ -215,6 +254,15 @@ inline std::unique_ptr<HandleGeom2dCurve> HandleGeom2dEllipse_to_HandleGeom2dCur
 }
 inline std::unique_ptr<HandleGeom2dGeometry> HandleGeom2dEllipse_to_HandleGeom2dGeometry(const HandleGeom2dEllipse& handle) {
     return std::make_unique<HandleGeom2dGeometry>(handle);
+}
+inline void Geom2d_Ellipse_inherited_Reverse(Geom2d_Ellipse& self) {
+    self.Reverse();
+}
+inline bool Geom2d_Ellipse_inherited_IsCN(const Geom2d_Ellipse& self, Standard_Integer N) {
+    return self.IsCN(N);
+}
+inline Standard_Real Geom2d_Ellipse_inherited_Period(const Geom2d_Ellipse& self) {
+    return self.Period();
 }
 
 // ========================

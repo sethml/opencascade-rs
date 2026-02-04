@@ -61,6 +61,16 @@ impl MakeOffset {
     ) -> cxx::UniquePtr<ffi::TopoDS_Face> {
         ffi::MakeOffset_convert_face(theFace, theAngleTolerance)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_offset_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_offset_inherited_check(self)
+    }
 }
 
 /// Describes functions to build pipes.
@@ -147,6 +157,16 @@ impl MakePipe {
     ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::MakePipe_generated_shape2(self, SSpine, SProfile)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_pipe_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_pipe_inherited_check(self)
+    }
 }
 
 /// This class provides for a framework to construct a shell
@@ -221,6 +241,16 @@ impl MakePipeShell {
     pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::MakePipeShell_last_shape(self)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_pipe_shell_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_pipe_shell_inherited_check(self)
+    }
 }
 
 /// Describes functions to build hollowed solids.
@@ -280,6 +310,16 @@ impl MakeThickSolid {
     ) -> std::pin::Pin<&mut MakeOffsetShape> {
         ffi::make_thick_solid_as_make_offset_shape_mut(self)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_thick_solid_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_thick_solid_inherited_check(self)
+    }
 }
 
 /// Describes functions to build a loft. This is a shell or a
@@ -336,6 +376,16 @@ impl ThruSections {
     pub fn generated_face(&self, Edge: &ffi::TopoDS_Shape) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::ThruSections_generated_face(self, Edge)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::thru_sections_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::thru_sections_inherited_check(self)
+    }
 }
 
 /// Describes functions to build a shell out of a shape. The
@@ -373,6 +423,16 @@ impl MakeOffsetShape {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         ffi::make_offset_shape_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_offset_shape_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_offset_shape_inherited_check(self)
     }
 }
 #[cxx::bridge]
@@ -458,6 +518,12 @@ pub(crate) mod ffi {
         fn make_offset_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut MakeOffset>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepOffsetAPI_MakeOffset_inherited_IsDone"]
+        fn make_offset_inherited_is_done(self_: &MakeOffset) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepOffsetAPI_MakeOffset_inherited_Check"]
+        fn make_offset_inherited_check(self_: &MakeOffset);
         /// ======================== BRepOffsetAPI_MakePipe ========================
         /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:41 - `BRepOffsetAPI_MakePipe`
         ///
@@ -543,6 +609,12 @@ pub(crate) mod ffi {
         fn make_pipe_as_b_rep_prim_api_make_sweep_mut(
             self_: Pin<&mut MakePipe>,
         ) -> Pin<&mut BRepPrimAPI_MakeSweep>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepOffsetAPI_MakePipe_inherited_IsDone"]
+        fn make_pipe_inherited_is_done(self_: &MakePipe) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepOffsetAPI_MakePipe_inherited_Check"]
+        fn make_pipe_inherited_check(self_: &MakePipe);
         /// ======================== BRepOffsetAPI_MakePipeShell ========================
         /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:56 - `BRepOffsetAPI_MakePipeShell`
         ///
@@ -795,6 +867,12 @@ pub(crate) mod ffi {
         fn make_pipe_shell_as_b_rep_prim_api_make_sweep_mut(
             self_: Pin<&mut MakePipeShell>,
         ) -> Pin<&mut BRepPrimAPI_MakeSweep>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepOffsetAPI_MakePipeShell_inherited_IsDone"]
+        fn make_pipe_shell_inherited_is_done(self_: &MakePipeShell) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepOffsetAPI_MakePipeShell_inherited_Check"]
+        fn make_pipe_shell_inherited_check(self_: &MakePipeShell);
         /// ======================== BRepOffsetAPI_MakeThickSolid ========================
         /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:46 - `BRepOffsetAPI_MakeThickSolid`
         ///
@@ -870,6 +948,12 @@ pub(crate) mod ffi {
         fn make_thick_solid_as_make_offset_shape_mut(
             self_: Pin<&mut MakeThickSolid>,
         ) -> Pin<&mut MakeOffsetShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepOffsetAPI_MakeThickSolid_inherited_IsDone"]
+        fn make_thick_solid_inherited_is_done(self_: &MakeThickSolid) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepOffsetAPI_MakeThickSolid_inherited_Check"]
+        fn make_thick_solid_inherited_check(self_: &MakeThickSolid);
         /// ======================== BRepOffsetAPI_ThruSections ========================
         /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:47 - `BRepOffsetAPI_ThruSections`
         ///
@@ -1040,6 +1124,12 @@ pub(crate) mod ffi {
         fn thru_sections_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut ThruSections>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepOffsetAPI_ThruSections_inherited_IsDone"]
+        fn thru_sections_inherited_is_done(self_: &ThruSections) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepOffsetAPI_ThruSections_inherited_Check"]
+        fn thru_sections_inherited_check(self_: &ThruSections);
         /// ======================== BRepOffsetAPI_MakeOffsetShape ========================
         /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:38 - `BRepOffsetAPI_MakeOffsetShape`
         ///
@@ -1111,6 +1201,12 @@ pub(crate) mod ffi {
         fn make_offset_shape_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut MakeOffsetShape>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepOffsetAPI_MakeOffsetShape_inherited_IsDone"]
+        fn make_offset_shape_inherited_is_done(self_: &MakeOffsetShape) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepOffsetAPI_MakeOffsetShape_inherited_Check"]
+        fn make_offset_shape_inherited_check(self_: &MakeOffsetShape);
 
         // ========================
         // Cross-module type aliases

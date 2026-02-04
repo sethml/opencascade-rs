@@ -86,6 +86,16 @@ impl BuilderAlgo {
     pub fn history(&self) -> cxx::UniquePtr<ffi::HandleBRepToolsHistory> {
         ffi::BuilderAlgo_history(self)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::builder_algo_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::builder_algo_inherited_check(self)
+    }
 }
 
 /// The root API class for performing Boolean Operations on arbitrary shapes.
@@ -155,6 +165,76 @@ impl BooleanOperation {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         ffi::boolean_operation_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::boolean_operation_inherited_set_non_destructive(self, theFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive
+    pub fn non_destructive(&self) -> bool {
+        ffi::boolean_operation_inherited_non_destructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        ffi::boolean_operation_inherited_set_check_inverted(self, theCheck)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted
+    pub fn check_inverted(&self) -> bool {
+        ffi::boolean_operation_inherited_check_inverted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult
+    pub fn simplify_result(
+        self: std::pin::Pin<&mut Self>,
+        theUnifyEdges: bool,
+        theUnifyFaces: bool,
+        theAngularTol: f64,
+    ) {
+        ffi::boolean_operation_inherited_simplify_result(
+            self,
+            theUnifyEdges,
+            theUnifyFaces,
+            theAngularTol,
+        )
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified
+    pub fn has_modified(&self) -> bool {
+        ffi::boolean_operation_inherited_has_modified(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated
+    pub fn has_generated(&self) -> bool {
+        ffi::boolean_operation_inherited_has_generated(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted
+    pub fn has_deleted(&self) -> bool {
+        ffi::boolean_operation_inherited_has_deleted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        ffi::boolean_operation_inherited_set_to_fill_history(self, theHistFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory
+    pub fn has_history(&self) -> bool {
+        ffi::boolean_operation_inherited_has_history(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::boolean_operation_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::boolean_operation_inherited_check(self)
     }
 }
 
@@ -245,6 +325,71 @@ impl Common {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         ffi::common_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::common_inherited_set_non_destructive(self, theFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive
+    pub fn non_destructive(&self) -> bool {
+        ffi::common_inherited_non_destructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        ffi::common_inherited_set_check_inverted(self, theCheck)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted
+    pub fn check_inverted(&self) -> bool {
+        ffi::common_inherited_check_inverted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult
+    pub fn simplify_result(
+        self: std::pin::Pin<&mut Self>,
+        theUnifyEdges: bool,
+        theUnifyFaces: bool,
+        theAngularTol: f64,
+    ) {
+        ffi::common_inherited_simplify_result(self, theUnifyEdges, theUnifyFaces, theAngularTol)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified
+    pub fn has_modified(&self) -> bool {
+        ffi::common_inherited_has_modified(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated
+    pub fn has_generated(&self) -> bool {
+        ffi::common_inherited_has_generated(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted
+    pub fn has_deleted(&self) -> bool {
+        ffi::common_inherited_has_deleted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        ffi::common_inherited_set_to_fill_history(self, theHistFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory
+    pub fn has_history(&self) -> bool {
+        ffi::common_inherited_has_history(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::common_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::common_inherited_check(self)
     }
 }
 
@@ -337,6 +482,71 @@ impl Cut {
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         ffi::cut_as_b_rep_builder_api_make_shape_mut(self)
     }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::cut_inherited_set_non_destructive(self, theFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive
+    pub fn non_destructive(&self) -> bool {
+        ffi::cut_inherited_non_destructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        ffi::cut_inherited_set_check_inverted(self, theCheck)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted
+    pub fn check_inverted(&self) -> bool {
+        ffi::cut_inherited_check_inverted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult
+    pub fn simplify_result(
+        self: std::pin::Pin<&mut Self>,
+        theUnifyEdges: bool,
+        theUnifyFaces: bool,
+        theAngularTol: f64,
+    ) {
+        ffi::cut_inherited_simplify_result(self, theUnifyEdges, theUnifyFaces, theAngularTol)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified
+    pub fn has_modified(&self) -> bool {
+        ffi::cut_inherited_has_modified(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated
+    pub fn has_generated(&self) -> bool {
+        ffi::cut_inherited_has_generated(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted
+    pub fn has_deleted(&self) -> bool {
+        ffi::cut_inherited_has_deleted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        ffi::cut_inherited_set_to_fill_history(self, theHistFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory
+    pub fn has_history(&self) -> bool {
+        ffi::cut_inherited_has_history(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::cut_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::cut_inherited_check(self)
+    }
 }
 
 /// The class provides Boolean fusion operation
@@ -426,6 +636,71 @@ impl Fuse {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         ffi::fuse_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::fuse_inherited_set_non_destructive(self, theFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive
+    pub fn non_destructive(&self) -> bool {
+        ffi::fuse_inherited_non_destructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        ffi::fuse_inherited_set_check_inverted(self, theCheck)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted
+    pub fn check_inverted(&self) -> bool {
+        ffi::fuse_inherited_check_inverted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult
+    pub fn simplify_result(
+        self: std::pin::Pin<&mut Self>,
+        theUnifyEdges: bool,
+        theUnifyFaces: bool,
+        theAngularTol: f64,
+    ) {
+        ffi::fuse_inherited_simplify_result(self, theUnifyEdges, theUnifyFaces, theAngularTol)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified
+    pub fn has_modified(&self) -> bool {
+        ffi::fuse_inherited_has_modified(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated
+    pub fn has_generated(&self) -> bool {
+        ffi::fuse_inherited_has_generated(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted
+    pub fn has_deleted(&self) -> bool {
+        ffi::fuse_inherited_has_deleted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        ffi::fuse_inherited_set_to_fill_history(self, theHistFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory
+    pub fn has_history(&self) -> bool {
+        ffi::fuse_inherited_has_history(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::fuse_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::fuse_inherited_check(self)
     }
 }
 
@@ -579,6 +854,71 @@ impl Section {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         ffi::section_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::section_inherited_set_non_destructive(self, theFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive
+    pub fn non_destructive(&self) -> bool {
+        ffi::section_inherited_non_destructive(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        ffi::section_inherited_set_check_inverted(self, theCheck)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted
+    pub fn check_inverted(&self) -> bool {
+        ffi::section_inherited_check_inverted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult
+    pub fn simplify_result(
+        self: std::pin::Pin<&mut Self>,
+        theUnifyEdges: bool,
+        theUnifyFaces: bool,
+        theAngularTol: f64,
+    ) {
+        ffi::section_inherited_simplify_result(self, theUnifyEdges, theUnifyFaces, theAngularTol)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified
+    pub fn has_modified(&self) -> bool {
+        ffi::section_inherited_has_modified(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated
+    pub fn has_generated(&self) -> bool {
+        ffi::section_inherited_has_generated(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted
+    pub fn has_deleted(&self) -> bool {
+        ffi::section_inherited_has_deleted(self)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        ffi::section_inherited_set_to_fill_history(self, theHistFlag)
+    }
+
+    /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory
+    pub fn has_history(&self) -> bool {
+        ffi::section_inherited_has_history(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::section_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::section_inherited_check(self)
     }
 }
 #[cxx::bridge]
@@ -804,6 +1144,12 @@ pub(crate) mod ffi {
         fn builder_algo_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut BuilderAlgo>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepAlgoAPI_BuilderAlgo_inherited_IsDone"]
+        fn builder_algo_inherited_is_done(self_: &BuilderAlgo) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepAlgoAPI_BuilderAlgo_inherited_Check"]
+        fn builder_algo_inherited_check(self_: &BuilderAlgo);
         /// ======================== BRepAlgoAPI_BooleanOperation ========================
         /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:51 - `BRepAlgoAPI_BooleanOperation`
         ///
@@ -901,6 +1247,56 @@ pub(crate) mod ffi {
         fn boolean_operation_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut BooleanOperation>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive
+        #[cxx_name = "BRepAlgoAPI_BooleanOperation_inherited_SetNonDestructive"]
+        fn boolean_operation_inherited_set_non_destructive(
+            self_: Pin<&mut BooleanOperation>,
+            theFlag: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive
+        #[cxx_name = "BRepAlgoAPI_BooleanOperation_inherited_NonDestructive"]
+        fn boolean_operation_inherited_non_destructive(self_: &BooleanOperation) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted
+        #[cxx_name = "BRepAlgoAPI_BooleanOperation_inherited_SetCheckInverted"]
+        fn boolean_operation_inherited_set_check_inverted(
+            self_: Pin<&mut BooleanOperation>,
+            theCheck: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted
+        #[cxx_name = "BRepAlgoAPI_BooleanOperation_inherited_CheckInverted"]
+        fn boolean_operation_inherited_check_inverted(self_: &BooleanOperation) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult
+        #[cxx_name = "BRepAlgoAPI_BooleanOperation_inherited_SimplifyResult"]
+        fn boolean_operation_inherited_simplify_result(
+            self_: Pin<&mut BooleanOperation>,
+            theUnifyEdges: bool,
+            theUnifyFaces: bool,
+            theAngularTol: f64,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified
+        #[cxx_name = "BRepAlgoAPI_BooleanOperation_inherited_HasModified"]
+        fn boolean_operation_inherited_has_modified(self_: &BooleanOperation) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated
+        #[cxx_name = "BRepAlgoAPI_BooleanOperation_inherited_HasGenerated"]
+        fn boolean_operation_inherited_has_generated(self_: &BooleanOperation) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted
+        #[cxx_name = "BRepAlgoAPI_BooleanOperation_inherited_HasDeleted"]
+        fn boolean_operation_inherited_has_deleted(self_: &BooleanOperation) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory
+        #[cxx_name = "BRepAlgoAPI_BooleanOperation_inherited_SetToFillHistory"]
+        fn boolean_operation_inherited_set_to_fill_history(
+            self_: Pin<&mut BooleanOperation>,
+            theHistFlag: bool,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory
+        #[cxx_name = "BRepAlgoAPI_BooleanOperation_inherited_HasHistory"]
+        fn boolean_operation_inherited_has_history(self_: &BooleanOperation) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepAlgoAPI_BooleanOperation_inherited_IsDone"]
+        fn boolean_operation_inherited_is_done(self_: &BooleanOperation) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepAlgoAPI_BooleanOperation_inherited_Check"]
+        fn boolean_operation_inherited_check(self_: &BooleanOperation);
         /// ======================== BRepAlgoAPI_Common ========================
         /// **Source:** `BRepAlgoAPI_Common.hxx`:29 - `BRepAlgoAPI_Common`
         ///
@@ -975,6 +1371,47 @@ pub(crate) mod ffi {
         fn common_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut Common>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive
+        #[cxx_name = "BRepAlgoAPI_Common_inherited_SetNonDestructive"]
+        fn common_inherited_set_non_destructive(self_: Pin<&mut Common>, theFlag: bool);
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive
+        #[cxx_name = "BRepAlgoAPI_Common_inherited_NonDestructive"]
+        fn common_inherited_non_destructive(self_: &Common) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted
+        #[cxx_name = "BRepAlgoAPI_Common_inherited_SetCheckInverted"]
+        fn common_inherited_set_check_inverted(self_: Pin<&mut Common>, theCheck: bool);
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted
+        #[cxx_name = "BRepAlgoAPI_Common_inherited_CheckInverted"]
+        fn common_inherited_check_inverted(self_: &Common) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult
+        #[cxx_name = "BRepAlgoAPI_Common_inherited_SimplifyResult"]
+        fn common_inherited_simplify_result(
+            self_: Pin<&mut Common>,
+            theUnifyEdges: bool,
+            theUnifyFaces: bool,
+            theAngularTol: f64,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified
+        #[cxx_name = "BRepAlgoAPI_Common_inherited_HasModified"]
+        fn common_inherited_has_modified(self_: &Common) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated
+        #[cxx_name = "BRepAlgoAPI_Common_inherited_HasGenerated"]
+        fn common_inherited_has_generated(self_: &Common) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted
+        #[cxx_name = "BRepAlgoAPI_Common_inherited_HasDeleted"]
+        fn common_inherited_has_deleted(self_: &Common) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory
+        #[cxx_name = "BRepAlgoAPI_Common_inherited_SetToFillHistory"]
+        fn common_inherited_set_to_fill_history(self_: Pin<&mut Common>, theHistFlag: bool);
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory
+        #[cxx_name = "BRepAlgoAPI_Common_inherited_HasHistory"]
+        fn common_inherited_has_history(self_: &Common) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepAlgoAPI_Common_inherited_IsDone"]
+        fn common_inherited_is_done(self_: &Common) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepAlgoAPI_Common_inherited_Check"]
+        fn common_inherited_check(self_: &Common);
         /// ======================== BRepAlgoAPI_Cut ========================
         /// **Source:** `BRepAlgoAPI_Cut.hxx`:29 - `BRepAlgoAPI_Cut`
         ///
@@ -1050,6 +1487,47 @@ pub(crate) mod ffi {
         fn cut_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut Cut>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive
+        #[cxx_name = "BRepAlgoAPI_Cut_inherited_SetNonDestructive"]
+        fn cut_inherited_set_non_destructive(self_: Pin<&mut Cut>, theFlag: bool);
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive
+        #[cxx_name = "BRepAlgoAPI_Cut_inherited_NonDestructive"]
+        fn cut_inherited_non_destructive(self_: &Cut) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted
+        #[cxx_name = "BRepAlgoAPI_Cut_inherited_SetCheckInverted"]
+        fn cut_inherited_set_check_inverted(self_: Pin<&mut Cut>, theCheck: bool);
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted
+        #[cxx_name = "BRepAlgoAPI_Cut_inherited_CheckInverted"]
+        fn cut_inherited_check_inverted(self_: &Cut) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult
+        #[cxx_name = "BRepAlgoAPI_Cut_inherited_SimplifyResult"]
+        fn cut_inherited_simplify_result(
+            self_: Pin<&mut Cut>,
+            theUnifyEdges: bool,
+            theUnifyFaces: bool,
+            theAngularTol: f64,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified
+        #[cxx_name = "BRepAlgoAPI_Cut_inherited_HasModified"]
+        fn cut_inherited_has_modified(self_: &Cut) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated
+        #[cxx_name = "BRepAlgoAPI_Cut_inherited_HasGenerated"]
+        fn cut_inherited_has_generated(self_: &Cut) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted
+        #[cxx_name = "BRepAlgoAPI_Cut_inherited_HasDeleted"]
+        fn cut_inherited_has_deleted(self_: &Cut) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory
+        #[cxx_name = "BRepAlgoAPI_Cut_inherited_SetToFillHistory"]
+        fn cut_inherited_set_to_fill_history(self_: Pin<&mut Cut>, theHistFlag: bool);
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory
+        #[cxx_name = "BRepAlgoAPI_Cut_inherited_HasHistory"]
+        fn cut_inherited_has_history(self_: &Cut) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepAlgoAPI_Cut_inherited_IsDone"]
+        fn cut_inherited_is_done(self_: &Cut) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepAlgoAPI_Cut_inherited_Check"]
+        fn cut_inherited_check(self_: &Cut);
         /// ======================== BRepAlgoAPI_Fuse ========================
         /// **Source:** `BRepAlgoAPI_Fuse.hxx`:29 - `BRepAlgoAPI_Fuse`
         ///
@@ -1124,6 +1602,47 @@ pub(crate) mod ffi {
         fn fuse_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut Fuse>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive
+        #[cxx_name = "BRepAlgoAPI_Fuse_inherited_SetNonDestructive"]
+        fn fuse_inherited_set_non_destructive(self_: Pin<&mut Fuse>, theFlag: bool);
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive
+        #[cxx_name = "BRepAlgoAPI_Fuse_inherited_NonDestructive"]
+        fn fuse_inherited_non_destructive(self_: &Fuse) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted
+        #[cxx_name = "BRepAlgoAPI_Fuse_inherited_SetCheckInverted"]
+        fn fuse_inherited_set_check_inverted(self_: Pin<&mut Fuse>, theCheck: bool);
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted
+        #[cxx_name = "BRepAlgoAPI_Fuse_inherited_CheckInverted"]
+        fn fuse_inherited_check_inverted(self_: &Fuse) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult
+        #[cxx_name = "BRepAlgoAPI_Fuse_inherited_SimplifyResult"]
+        fn fuse_inherited_simplify_result(
+            self_: Pin<&mut Fuse>,
+            theUnifyEdges: bool,
+            theUnifyFaces: bool,
+            theAngularTol: f64,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified
+        #[cxx_name = "BRepAlgoAPI_Fuse_inherited_HasModified"]
+        fn fuse_inherited_has_modified(self_: &Fuse) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated
+        #[cxx_name = "BRepAlgoAPI_Fuse_inherited_HasGenerated"]
+        fn fuse_inherited_has_generated(self_: &Fuse) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted
+        #[cxx_name = "BRepAlgoAPI_Fuse_inherited_HasDeleted"]
+        fn fuse_inherited_has_deleted(self_: &Fuse) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory
+        #[cxx_name = "BRepAlgoAPI_Fuse_inherited_SetToFillHistory"]
+        fn fuse_inherited_set_to_fill_history(self_: Pin<&mut Fuse>, theHistFlag: bool);
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory
+        #[cxx_name = "BRepAlgoAPI_Fuse_inherited_HasHistory"]
+        fn fuse_inherited_has_history(self_: &Fuse) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepAlgoAPI_Fuse_inherited_IsDone"]
+        fn fuse_inherited_is_done(self_: &Fuse) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepAlgoAPI_Fuse_inherited_Check"]
+        fn fuse_inherited_check(self_: &Fuse);
         /// ======================== BRepAlgoAPI_Section ========================
         /// **Source:** `BRepAlgoAPI_Section.hxx`:38 - `BRepAlgoAPI_Section`
         ///
@@ -1381,6 +1900,47 @@ pub(crate) mod ffi {
         fn section_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut Section>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetNonDestructive
+        #[cxx_name = "BRepAlgoAPI_Section_inherited_SetNonDestructive"]
+        fn section_inherited_set_non_destructive(self_: Pin<&mut Section>, theFlag: bool);
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: NonDestructive
+        #[cxx_name = "BRepAlgoAPI_Section_inherited_NonDestructive"]
+        fn section_inherited_non_destructive(self_: &Section) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetCheckInverted
+        #[cxx_name = "BRepAlgoAPI_Section_inherited_SetCheckInverted"]
+        fn section_inherited_set_check_inverted(self_: Pin<&mut Section>, theCheck: bool);
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: CheckInverted
+        #[cxx_name = "BRepAlgoAPI_Section_inherited_CheckInverted"]
+        fn section_inherited_check_inverted(self_: &Section) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SimplifyResult
+        #[cxx_name = "BRepAlgoAPI_Section_inherited_SimplifyResult"]
+        fn section_inherited_simplify_result(
+            self_: Pin<&mut Section>,
+            theUnifyEdges: bool,
+            theUnifyFaces: bool,
+            theAngularTol: f64,
+        );
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasModified
+        #[cxx_name = "BRepAlgoAPI_Section_inherited_HasModified"]
+        fn section_inherited_has_modified(self_: &Section) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasGenerated
+        #[cxx_name = "BRepAlgoAPI_Section_inherited_HasGenerated"]
+        fn section_inherited_has_generated(self_: &Section) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasDeleted
+        #[cxx_name = "BRepAlgoAPI_Section_inherited_HasDeleted"]
+        fn section_inherited_has_deleted(self_: &Section) -> bool;
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: SetToFillHistory
+        #[cxx_name = "BRepAlgoAPI_Section_inherited_SetToFillHistory"]
+        fn section_inherited_set_to_fill_history(self_: Pin<&mut Section>, theHistFlag: bool);
+        /// Inherited from BRepAlgoAPI_BuilderAlgo: HasHistory
+        #[cxx_name = "BRepAlgoAPI_Section_inherited_HasHistory"]
+        fn section_inherited_has_history(self_: &Section) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepAlgoAPI_Section_inherited_IsDone"]
+        fn section_inherited_is_done(self_: &Section) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepAlgoAPI_Section_inherited_Check"]
+        fn section_inherited_check(self_: &Section);
 
         // ========================
         // Cross-module type aliases

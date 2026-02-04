@@ -91,6 +91,11 @@ impl IncrementalMesh {
     pub fn get_type_name() -> String {
         ffi::IncrementalMesh_get_type_name()
     }
+
+    /// Inherited from BRepMesh_DiscretRoot: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::incremental_mesh_inherited_is_done(self)
+    }
 }
 
 /// This is a common interface for meshing algorithms
@@ -169,6 +174,16 @@ impl Edge {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut OrientedEdge> {
         ffi::edge_as_oriented_edge_mut(self)
+    }
+
+    /// Inherited from BRepMesh_OrientedEdge: FirstNode
+    pub fn first_node(&self) -> i32 {
+        ffi::edge_inherited_first_node(self)
+    }
+
+    /// Inherited from BRepMesh_OrientedEdge: LastNode
+    pub fn last_node(&self) -> i32 {
+        ffi::edge_inherited_last_node(self)
     }
 }
 
@@ -299,6 +314,9 @@ pub(crate) mod ffi {
         fn incremental_mesh_as_discret_root_mut(
             self_: Pin<&mut IncrementalMesh>,
         ) -> Pin<&mut DiscretRoot>;
+        /// Inherited from BRepMesh_DiscretRoot: IsDone
+        #[cxx_name = "BRepMesh_IncrementalMesh_inherited_IsDone"]
+        fn incremental_mesh_inherited_is_done(self_: &IncrementalMesh) -> bool;
         /// ======================== BRepMesh_DiscretRoot ========================
         /// **Source:** `BRepMesh_DiscretRoot.hxx`:24 - `BRepMesh_DiscretRoot`
         ///
@@ -523,6 +541,12 @@ pub(crate) mod ffi {
         /// Upcast BRepMesh_Edge to BRepMesh_OrientedEdge (mutable)
         #[cxx_name = "BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut"]
         fn edge_as_oriented_edge_mut(self_: Pin<&mut Edge>) -> Pin<&mut OrientedEdge>;
+        /// Inherited from BRepMesh_OrientedEdge: FirstNode
+        #[cxx_name = "BRepMesh_Edge_inherited_FirstNode"]
+        fn edge_inherited_first_node(self_: &Edge) -> i32;
+        /// Inherited from BRepMesh_OrientedEdge: LastNode
+        #[cxx_name = "BRepMesh_Edge_inherited_LastNode"]
+        fn edge_inherited_last_node(self_: &Edge) -> i32;
         /// ======================== BRepMesh_OrientedEdge ========================
         /// **Source:** `BRepMesh_OrientedEdge.hxx`:22 - `BRepMesh_OrientedEdge`
         ///

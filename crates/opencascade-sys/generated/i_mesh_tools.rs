@@ -75,6 +75,11 @@ impl ModelBuilder {
     pub fn get_type_name() -> String {
         ffi::ModelBuilder_get_type_name()
     }
+
+    /// Inherited from Message_Algorithm: ClearStatus
+    pub fn clear_status(self: std::pin::Pin<&mut Self>) {
+        ffi::model_builder_inherited_clear_status(self)
+    }
 }
 
 /// Structure storing meshing parameters
@@ -287,6 +292,9 @@ pub(crate) mod ffi {
         fn model_builder_as_message_algorithm_mut(
             self_: Pin<&mut ModelBuilder>,
         ) -> Pin<&mut Message_Algorithm>;
+        /// Inherited from Message_Algorithm: ClearStatus
+        #[cxx_name = "IMeshTools_ModelBuilder_inherited_ClearStatus"]
+        fn model_builder_inherited_clear_status(self_: Pin<&mut ModelBuilder>);
         /// ======================== IMeshTools_Parameters ========================
         /// **Source:** `IMeshTools_Parameters.hxx`:23 - `IMeshTools_Parameters`
         ///

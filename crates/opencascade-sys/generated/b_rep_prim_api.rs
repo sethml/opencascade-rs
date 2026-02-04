@@ -87,6 +87,16 @@ impl MakeBox {
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         ffi::make_box_as_b_rep_builder_api_make_shape_mut(self)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_box_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_box_inherited_check(self)
+    }
 }
 
 /// Describes functions to build cones or portions of cones.
@@ -196,6 +206,16 @@ impl MakeCone {
     pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
         ffi::make_cone_as_make_one_axis_mut(self)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_cone_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_cone_inherited_check(self)
+    }
 }
 
 /// Describes functions to build cylinders or portions of  cylinders.
@@ -290,6 +310,16 @@ impl MakeCylinder {
     /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
     pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
         ffi::make_cylinder_as_make_one_axis_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_cylinder_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_cylinder_inherited_check(self)
     }
 }
 
@@ -405,6 +435,16 @@ impl MakePrism {
         theShape: &ffi::TopoDS_Shape,
     ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::MakePrism_last_shape_shape(self, theShape)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_prism_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_prism_inherited_check(self)
     }
 }
 
@@ -523,6 +563,16 @@ impl MakeRevol {
         theShape: &ffi::TopoDS_Shape,
     ) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::MakeRevol_last_shape_shape(self, theShape)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_revol_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_revol_inherited_check(self)
     }
 }
 
@@ -690,6 +740,16 @@ impl MakeSphere {
     pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
         ffi::make_sphere_as_make_one_axis_mut(self)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_sphere_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_sphere_inherited_check(self)
+    }
 }
 
 /// Describes functions to build tori or portions of tori.
@@ -836,6 +896,16 @@ impl MakeTorus {
     pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
         ffi::make_torus_as_make_one_axis_mut(self)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_torus_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_torus_inherited_check(self)
+    }
 }
 
 /// The abstract class MakeSweep is
@@ -889,6 +959,16 @@ impl MakeSweep {
     pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::MakeSweep_last_shape(self)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_sweep_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_sweep_inherited_check(self)
+    }
 }
 
 /// The abstract class MakeOneAxis is the root class of
@@ -917,6 +997,16 @@ impl MakeOneAxis {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         ffi::make_one_axis_as_b_rep_builder_api_make_shape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_one_axis_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_one_axis_inherited_check(self)
     }
 }
 #[cxx::bridge]
@@ -1074,6 +1164,12 @@ pub(crate) mod ffi {
         fn make_box_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut MakeBox>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepPrimAPI_MakeBox_inherited_IsDone"]
+        fn make_box_inherited_is_done(self_: &MakeBox) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepPrimAPI_MakeBox_inherited_Check"]
+        fn make_box_inherited_check(self_: &MakeBox);
         /// ======================== BRepPrimAPI_MakeCone ========================
         /// **Source:** `BRepPrimAPI_MakeCone.hxx`:33 - `BRepPrimAPI_MakeCone`
         ///
@@ -1179,6 +1275,12 @@ pub(crate) mod ffi {
         /// Upcast BRepPrimAPI_MakeCone to BRepPrimAPI_MakeOneAxis (mutable)
         #[cxx_name = "BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis_mut"]
         fn make_cone_as_make_one_axis_mut(self_: Pin<&mut MakeCone>) -> Pin<&mut MakeOneAxis>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepPrimAPI_MakeCone_inherited_IsDone"]
+        fn make_cone_inherited_is_done(self_: &MakeCone) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepPrimAPI_MakeCone_inherited_Check"]
+        fn make_cone_inherited_check(self_: &MakeCone);
         /// ======================== BRepPrimAPI_MakeCylinder ========================
         /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:33 - `BRepPrimAPI_MakeCylinder`
         ///
@@ -1280,6 +1382,12 @@ pub(crate) mod ffi {
         fn make_cylinder_as_make_one_axis_mut(
             self_: Pin<&mut MakeCylinder>,
         ) -> Pin<&mut MakeOneAxis>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepPrimAPI_MakeCylinder_inherited_IsDone"]
+        fn make_cylinder_inherited_is_done(self_: &MakeCylinder) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepPrimAPI_MakeCylinder_inherited_Check"]
+        fn make_cylinder_inherited_check(self_: &MakeCylinder);
         /// ======================== BRepPrimAPI_MakePrism ========================
         /// **Source:** `BRepPrimAPI_MakePrism.hxx`:47 - `BRepPrimAPI_MakePrism`
         ///
@@ -1399,6 +1507,12 @@ pub(crate) mod ffi {
         /// Upcast BRepPrimAPI_MakePrism to BRepPrimAPI_MakeSweep (mutable)
         #[cxx_name = "BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep_mut"]
         fn make_prism_as_make_sweep_mut(self_: Pin<&mut MakePrism>) -> Pin<&mut MakeSweep>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepPrimAPI_MakePrism_inherited_IsDone"]
+        fn make_prism_inherited_is_done(self_: &MakePrism) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepPrimAPI_MakePrism_inherited_Check"]
+        fn make_prism_inherited_check(self_: &MakePrism);
         /// ======================== BRepPrimAPI_MakeRevol ========================
         /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:62 - `BRepPrimAPI_MakeRevol`
         ///
@@ -1533,6 +1647,12 @@ pub(crate) mod ffi {
         /// Upcast BRepPrimAPI_MakeRevol to BRepPrimAPI_MakeSweep (mutable)
         #[cxx_name = "BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep_mut"]
         fn make_revol_as_make_sweep_mut(self_: Pin<&mut MakeRevol>) -> Pin<&mut MakeSweep>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepPrimAPI_MakeRevol_inherited_IsDone"]
+        fn make_revol_inherited_is_done(self_: &MakeRevol) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepPrimAPI_MakeRevol_inherited_Check"]
+        fn make_revol_inherited_check(self_: &MakeRevol);
         /// ======================== BRepPrimAPI_MakeSphere ========================
         /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:33 - `BRepPrimAPI_MakeSphere`
         ///
@@ -1701,6 +1821,12 @@ pub(crate) mod ffi {
         /// Upcast BRepPrimAPI_MakeSphere to BRepPrimAPI_MakeOneAxis (mutable)
         #[cxx_name = "BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis_mut"]
         fn make_sphere_as_make_one_axis_mut(self_: Pin<&mut MakeSphere>) -> Pin<&mut MakeOneAxis>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepPrimAPI_MakeSphere_inherited_IsDone"]
+        fn make_sphere_inherited_is_done(self_: &MakeSphere) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepPrimAPI_MakeSphere_inherited_Check"]
+        fn make_sphere_inherited_check(self_: &MakeSphere);
         /// ======================== BRepPrimAPI_MakeTorus ========================
         /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:33 - `BRepPrimAPI_MakeTorus`
         ///
@@ -1850,6 +1976,12 @@ pub(crate) mod ffi {
         /// Upcast BRepPrimAPI_MakeTorus to BRepPrimAPI_MakeOneAxis (mutable)
         #[cxx_name = "BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis_mut"]
         fn make_torus_as_make_one_axis_mut(self_: Pin<&mut MakeTorus>) -> Pin<&mut MakeOneAxis>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepPrimAPI_MakeTorus_inherited_IsDone"]
+        fn make_torus_inherited_is_done(self_: &MakeTorus) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepPrimAPI_MakeTorus_inherited_Check"]
+        fn make_torus_inherited_check(self_: &MakeTorus);
         /// ======================== BRepPrimAPI_MakeSweep ========================
         /// **Source:** `BRepPrimAPI_MakeSweep.hxx`:42 - `BRepPrimAPI_MakeSweep`
         ///
@@ -1895,6 +2027,12 @@ pub(crate) mod ffi {
         fn make_sweep_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut MakeSweep>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepPrimAPI_MakeSweep_inherited_IsDone"]
+        fn make_sweep_inherited_is_done(self_: &MakeSweep) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepPrimAPI_MakeSweep_inherited_Check"]
+        fn make_sweep_inherited_check(self_: &MakeSweep);
         /// ======================== BRepPrimAPI_MakeOneAxis ========================
         /// **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:30 - `BRepPrimAPI_MakeOneAxis`
         ///
@@ -1942,6 +2080,12 @@ pub(crate) mod ffi {
         fn make_one_axis_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut MakeOneAxis>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepPrimAPI_MakeOneAxis_inherited_IsDone"]
+        fn make_one_axis_inherited_is_done(self_: &MakeOneAxis) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepPrimAPI_MakeOneAxis_inherited_Check"]
+        fn make_one_axis_inherited_check(self_: &MakeOneAxis);
 
         // ========================
         // Cross-module type aliases

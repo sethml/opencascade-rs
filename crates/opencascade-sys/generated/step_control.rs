@@ -81,6 +81,21 @@ impl Reader {
     pub fn step_model(&self) -> cxx::UniquePtr<ffi::HandleStepDataStepModel> {
         ffi::Reader_step_model(self)
     }
+
+    /// Inherited from XSControl_Reader: ClearShapes
+    pub fn clear_shapes(self: std::pin::Pin<&mut Self>) {
+        ffi::reader_inherited_clear_shapes(self)
+    }
+
+    /// Inherited from XSControl_Reader: NbShapes
+    pub fn nb_shapes(&self) -> i32 {
+        ffi::reader_inherited_nb_shapes(self)
+    }
+
+    /// Inherited from XSControl_Reader: PrintStatsTransfer
+    pub fn print_stats_transfer(&self, what: i32, mode: i32) {
+        ffi::reader_inherited_print_stats_transfer(self, what, mode)
+    }
 }
 
 /// This class creates and writes
@@ -234,6 +249,15 @@ pub(crate) mod ffi {
         /// Upcast STEPControl_Reader to XSControl_Reader (mutable)
         #[cxx_name = "STEPControl_Reader_as_XSControl_Reader_mut"]
         fn reader_as_xs_control_reader_mut(self_: Pin<&mut Reader>) -> Pin<&mut XSControl_Reader>;
+        /// Inherited from XSControl_Reader: ClearShapes
+        #[cxx_name = "STEPControl_Reader_inherited_ClearShapes"]
+        fn reader_inherited_clear_shapes(self_: Pin<&mut Reader>);
+        /// Inherited from XSControl_Reader: NbShapes
+        #[cxx_name = "STEPControl_Reader_inherited_NbShapes"]
+        fn reader_inherited_nb_shapes(self_: &Reader) -> i32;
+        /// Inherited from XSControl_Reader: PrintStatsTransfer
+        #[cxx_name = "STEPControl_Reader_inherited_PrintStatsTransfer"]
+        fn reader_inherited_print_stats_transfer(self_: &Reader, what: i32, mode: i32);
         /// ======================== STEPControl_Writer ========================
         /// **Source:** `STEPControl_Writer.hxx`:45 - `STEPControl_Writer`
         ///

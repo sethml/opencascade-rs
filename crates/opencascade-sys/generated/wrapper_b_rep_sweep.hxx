@@ -99,6 +99,12 @@ inline const BRepSweep_NumLinearRegularSweep& BRepSweep_Rotation_as_BRepSweep_Nu
 inline BRepSweep_NumLinearRegularSweep& BRepSweep_Rotation_as_BRepSweep_NumLinearRegularSweep_mut(BRepSweep_Rotation& self) { return self; }
 inline const BRepSweep_Trsf& BRepSweep_Rotation_as_BRepSweep_Trsf(const BRepSweep_Rotation& self) { return self; }
 inline BRepSweep_Trsf& BRepSweep_Rotation_as_BRepSweep_Trsf_mut(BRepSweep_Rotation& self) { return self; }
+inline bool BRepSweep_Rotation_inherited_Closed(const BRepSweep_Rotation& self) {
+    return self.Closed();
+}
+inline void BRepSweep_Rotation_inherited_Init(BRepSweep_Rotation& self) {
+    self.Init();
+}
 
 // ========================
 // BRepSweep_Trsf wrappers
@@ -122,6 +128,9 @@ inline std::unique_ptr<TopoDS_Shape> BRepSweep_Trsf_MakeEmptyFace(BRepSweep_Trsf
 
 inline const BRepSweep_NumLinearRegularSweep& BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep(const BRepSweep_Trsf& self) { return self; }
 inline BRepSweep_NumLinearRegularSweep& BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep_mut(BRepSweep_Trsf& self) { return self; }
+inline bool BRepSweep_Trsf_inherited_Closed(const BRepSweep_Trsf& self) {
+    return self.Closed();
+}
 
 // ========================
 // BRepSweep_NumLinearRegularSweep wrappers
@@ -271,4 +280,10 @@ inline const BRepSweep_NumLinearRegularSweep& BRepSweep_Translation_as_BRepSweep
 inline BRepSweep_NumLinearRegularSweep& BRepSweep_Translation_as_BRepSweep_NumLinearRegularSweep_mut(BRepSweep_Translation& self) { return self; }
 inline const BRepSweep_Trsf& BRepSweep_Translation_as_BRepSweep_Trsf(const BRepSweep_Translation& self) { return self; }
 inline BRepSweep_Trsf& BRepSweep_Translation_as_BRepSweep_Trsf_mut(BRepSweep_Translation& self) { return self; }
+inline bool BRepSweep_Translation_inherited_Closed(const BRepSweep_Translation& self) {
+    return self.Closed();
+}
+inline void BRepSweep_Translation_inherited_Init(BRepSweep_Translation& self) {
+    self.Init();
+}
 

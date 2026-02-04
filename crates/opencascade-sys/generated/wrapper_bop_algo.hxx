@@ -60,6 +60,60 @@ inline const BOPAlgo_Options& BOPAlgo_BOP_as_BOPAlgo_Options(const BOPAlgo_BOP& 
 inline BOPAlgo_Options& BOPAlgo_BOP_as_BOPAlgo_Options_mut(BOPAlgo_BOP& self) { return self; }
 inline const BOPAlgo_ToolsProvider& BOPAlgo_BOP_as_BOPAlgo_ToolsProvider(const BOPAlgo_BOP& self) { return self; }
 inline BOPAlgo_ToolsProvider& BOPAlgo_BOP_as_BOPAlgo_ToolsProvider_mut(BOPAlgo_BOP& self) { return self; }
+inline void BOPAlgo_BOP_inherited_SetNonDestructive(BOPAlgo_BOP& self, bool theFlag) {
+    self.SetNonDestructive(theFlag);
+}
+inline bool BOPAlgo_BOP_inherited_NonDestructive(const BOPAlgo_BOP& self) {
+    return self.NonDestructive();
+}
+inline void BOPAlgo_BOP_inherited_SetCheckInverted(BOPAlgo_BOP& self, bool theCheck) {
+    self.SetCheckInverted(theCheck);
+}
+inline bool BOPAlgo_BOP_inherited_CheckInverted(const BOPAlgo_BOP& self) {
+    return self.CheckInverted();
+}
+inline bool BOPAlgo_BOP_inherited_HasModified(const BOPAlgo_BOP& self) {
+    return self.HasModified();
+}
+inline bool BOPAlgo_BOP_inherited_HasGenerated(const BOPAlgo_BOP& self) {
+    return self.HasGenerated();
+}
+inline bool BOPAlgo_BOP_inherited_HasDeleted(const BOPAlgo_BOP& self) {
+    return self.HasDeleted();
+}
+inline void BOPAlgo_BOP_inherited_SetToFillHistory(BOPAlgo_BOP& self, bool theHistFlag) {
+    self.SetToFillHistory(theHistFlag);
+}
+inline bool BOPAlgo_BOP_inherited_HasHistory(const BOPAlgo_BOP& self) {
+    return self.HasHistory();
+}
+inline bool BOPAlgo_BOP_inherited_HasErrors(const BOPAlgo_BOP& self) {
+    return self.HasErrors();
+}
+inline bool BOPAlgo_BOP_inherited_HasWarnings(const BOPAlgo_BOP& self) {
+    return self.HasWarnings();
+}
+inline void BOPAlgo_BOP_inherited_ClearWarnings(BOPAlgo_BOP& self) {
+    self.ClearWarnings();
+}
+inline void BOPAlgo_BOP_inherited_SetRunParallel(BOPAlgo_BOP& self, bool theFlag) {
+    self.SetRunParallel(theFlag);
+}
+inline bool BOPAlgo_BOP_inherited_RunParallel(const BOPAlgo_BOP& self) {
+    return self.RunParallel();
+}
+inline void BOPAlgo_BOP_inherited_SetFuzzyValue(BOPAlgo_BOP& self, Standard_Real theFuzz) {
+    self.SetFuzzyValue(theFuzz);
+}
+inline Standard_Real BOPAlgo_BOP_inherited_FuzzyValue(const BOPAlgo_BOP& self) {
+    return self.FuzzyValue();
+}
+inline void BOPAlgo_BOP_inherited_SetUseOBB(BOPAlgo_BOP& self, bool theUseOBB) {
+    self.SetUseOBB(theUseOBB);
+}
+inline bool BOPAlgo_BOP_inherited_UseOBB(const BOPAlgo_BOP& self) {
+    return self.UseOBB();
+}
 
 // ========================
 // BOPAlgo_ToolsProvider wrappers
@@ -81,6 +135,60 @@ inline const BOPAlgo_BuilderShape& BOPAlgo_ToolsProvider_as_BOPAlgo_BuilderShape
 inline BOPAlgo_BuilderShape& BOPAlgo_ToolsProvider_as_BOPAlgo_BuilderShape_mut(BOPAlgo_ToolsProvider& self) { return self; }
 inline const BOPAlgo_Options& BOPAlgo_ToolsProvider_as_BOPAlgo_Options(const BOPAlgo_ToolsProvider& self) { return self; }
 inline BOPAlgo_Options& BOPAlgo_ToolsProvider_as_BOPAlgo_Options_mut(BOPAlgo_ToolsProvider& self) { return self; }
+inline void BOPAlgo_ToolsProvider_inherited_SetNonDestructive(BOPAlgo_ToolsProvider& self, bool theFlag) {
+    self.SetNonDestructive(theFlag);
+}
+inline bool BOPAlgo_ToolsProvider_inherited_NonDestructive(const BOPAlgo_ToolsProvider& self) {
+    return self.NonDestructive();
+}
+inline void BOPAlgo_ToolsProvider_inherited_SetCheckInverted(BOPAlgo_ToolsProvider& self, bool theCheck) {
+    self.SetCheckInverted(theCheck);
+}
+inline bool BOPAlgo_ToolsProvider_inherited_CheckInverted(const BOPAlgo_ToolsProvider& self) {
+    return self.CheckInverted();
+}
+inline bool BOPAlgo_ToolsProvider_inherited_HasModified(const BOPAlgo_ToolsProvider& self) {
+    return self.HasModified();
+}
+inline bool BOPAlgo_ToolsProvider_inherited_HasGenerated(const BOPAlgo_ToolsProvider& self) {
+    return self.HasGenerated();
+}
+inline bool BOPAlgo_ToolsProvider_inherited_HasDeleted(const BOPAlgo_ToolsProvider& self) {
+    return self.HasDeleted();
+}
+inline void BOPAlgo_ToolsProvider_inherited_SetToFillHistory(BOPAlgo_ToolsProvider& self, bool theHistFlag) {
+    self.SetToFillHistory(theHistFlag);
+}
+inline bool BOPAlgo_ToolsProvider_inherited_HasHistory(const BOPAlgo_ToolsProvider& self) {
+    return self.HasHistory();
+}
+inline bool BOPAlgo_ToolsProvider_inherited_HasErrors(const BOPAlgo_ToolsProvider& self) {
+    return self.HasErrors();
+}
+inline bool BOPAlgo_ToolsProvider_inherited_HasWarnings(const BOPAlgo_ToolsProvider& self) {
+    return self.HasWarnings();
+}
+inline void BOPAlgo_ToolsProvider_inherited_ClearWarnings(BOPAlgo_ToolsProvider& self) {
+    self.ClearWarnings();
+}
+inline void BOPAlgo_ToolsProvider_inherited_SetRunParallel(BOPAlgo_ToolsProvider& self, bool theFlag) {
+    self.SetRunParallel(theFlag);
+}
+inline bool BOPAlgo_ToolsProvider_inherited_RunParallel(const BOPAlgo_ToolsProvider& self) {
+    return self.RunParallel();
+}
+inline void BOPAlgo_ToolsProvider_inherited_SetFuzzyValue(BOPAlgo_ToolsProvider& self, Standard_Real theFuzz) {
+    self.SetFuzzyValue(theFuzz);
+}
+inline Standard_Real BOPAlgo_ToolsProvider_inherited_FuzzyValue(const BOPAlgo_ToolsProvider& self) {
+    return self.FuzzyValue();
+}
+inline void BOPAlgo_ToolsProvider_inherited_SetUseOBB(BOPAlgo_ToolsProvider& self, bool theUseOBB) {
+    self.SetUseOBB(theUseOBB);
+}
+inline bool BOPAlgo_ToolsProvider_inherited_UseOBB(const BOPAlgo_ToolsProvider& self) {
+    return self.UseOBB();
+}
 
 // ========================
 // BOPAlgo_Builder wrappers
@@ -112,6 +220,48 @@ inline const BOPAlgo_BuilderShape& BOPAlgo_Builder_as_BOPAlgo_BuilderShape(const
 inline BOPAlgo_BuilderShape& BOPAlgo_Builder_as_BOPAlgo_BuilderShape_mut(BOPAlgo_Builder& self) { return self; }
 inline const BOPAlgo_Options& BOPAlgo_Builder_as_BOPAlgo_Options(const BOPAlgo_Builder& self) { return self; }
 inline BOPAlgo_Options& BOPAlgo_Builder_as_BOPAlgo_Options_mut(BOPAlgo_Builder& self) { return self; }
+inline bool BOPAlgo_Builder_inherited_HasModified(const BOPAlgo_Builder& self) {
+    return self.HasModified();
+}
+inline bool BOPAlgo_Builder_inherited_HasGenerated(const BOPAlgo_Builder& self) {
+    return self.HasGenerated();
+}
+inline bool BOPAlgo_Builder_inherited_HasDeleted(const BOPAlgo_Builder& self) {
+    return self.HasDeleted();
+}
+inline void BOPAlgo_Builder_inherited_SetToFillHistory(BOPAlgo_Builder& self, bool theHistFlag) {
+    self.SetToFillHistory(theHistFlag);
+}
+inline bool BOPAlgo_Builder_inherited_HasHistory(const BOPAlgo_Builder& self) {
+    return self.HasHistory();
+}
+inline bool BOPAlgo_Builder_inherited_HasErrors(const BOPAlgo_Builder& self) {
+    return self.HasErrors();
+}
+inline bool BOPAlgo_Builder_inherited_HasWarnings(const BOPAlgo_Builder& self) {
+    return self.HasWarnings();
+}
+inline void BOPAlgo_Builder_inherited_ClearWarnings(BOPAlgo_Builder& self) {
+    self.ClearWarnings();
+}
+inline void BOPAlgo_Builder_inherited_SetRunParallel(BOPAlgo_Builder& self, bool theFlag) {
+    self.SetRunParallel(theFlag);
+}
+inline bool BOPAlgo_Builder_inherited_RunParallel(const BOPAlgo_Builder& self) {
+    return self.RunParallel();
+}
+inline void BOPAlgo_Builder_inherited_SetFuzzyValue(BOPAlgo_Builder& self, Standard_Real theFuzz) {
+    self.SetFuzzyValue(theFuzz);
+}
+inline Standard_Real BOPAlgo_Builder_inherited_FuzzyValue(const BOPAlgo_Builder& self) {
+    return self.FuzzyValue();
+}
+inline void BOPAlgo_Builder_inherited_SetUseOBB(BOPAlgo_Builder& self, bool theUseOBB) {
+    self.SetUseOBB(theUseOBB);
+}
+inline bool BOPAlgo_Builder_inherited_UseOBB(const BOPAlgo_Builder& self) {
+    return self.UseOBB();
+}
 
 // ========================
 // BOPAlgo_BuilderShape wrappers
@@ -125,6 +275,33 @@ inline const BOPAlgo_Algo& BOPAlgo_BuilderShape_as_BOPAlgo_Algo(const BOPAlgo_Bu
 inline BOPAlgo_Algo& BOPAlgo_BuilderShape_as_BOPAlgo_Algo_mut(BOPAlgo_BuilderShape& self) { return self; }
 inline const BOPAlgo_Options& BOPAlgo_BuilderShape_as_BOPAlgo_Options(const BOPAlgo_BuilderShape& self) { return self; }
 inline BOPAlgo_Options& BOPAlgo_BuilderShape_as_BOPAlgo_Options_mut(BOPAlgo_BuilderShape& self) { return self; }
+inline bool BOPAlgo_BuilderShape_inherited_HasErrors(const BOPAlgo_BuilderShape& self) {
+    return self.HasErrors();
+}
+inline bool BOPAlgo_BuilderShape_inherited_HasWarnings(const BOPAlgo_BuilderShape& self) {
+    return self.HasWarnings();
+}
+inline void BOPAlgo_BuilderShape_inherited_ClearWarnings(BOPAlgo_BuilderShape& self) {
+    self.ClearWarnings();
+}
+inline void BOPAlgo_BuilderShape_inherited_SetRunParallel(BOPAlgo_BuilderShape& self, bool theFlag) {
+    self.SetRunParallel(theFlag);
+}
+inline bool BOPAlgo_BuilderShape_inherited_RunParallel(const BOPAlgo_BuilderShape& self) {
+    return self.RunParallel();
+}
+inline void BOPAlgo_BuilderShape_inherited_SetFuzzyValue(BOPAlgo_BuilderShape& self, Standard_Real theFuzz) {
+    self.SetFuzzyValue(theFuzz);
+}
+inline Standard_Real BOPAlgo_BuilderShape_inherited_FuzzyValue(const BOPAlgo_BuilderShape& self) {
+    return self.FuzzyValue();
+}
+inline void BOPAlgo_BuilderShape_inherited_SetUseOBB(BOPAlgo_BuilderShape& self, bool theUseOBB) {
+    self.SetUseOBB(theUseOBB);
+}
+inline bool BOPAlgo_BuilderShape_inherited_UseOBB(const BOPAlgo_BuilderShape& self) {
+    return self.UseOBB();
+}
 
 // ========================
 // BOPAlgo_Algo wrappers
@@ -141,6 +318,36 @@ inline const BOPAlgo_Algo& BOPAlgo_ParallelAlgo_as_BOPAlgo_Algo(const BOPAlgo_Pa
 inline BOPAlgo_Algo& BOPAlgo_ParallelAlgo_as_BOPAlgo_Algo_mut(BOPAlgo_ParallelAlgo& self) { return self; }
 inline const BOPAlgo_Options& BOPAlgo_ParallelAlgo_as_BOPAlgo_Options(const BOPAlgo_ParallelAlgo& self) { return self; }
 inline BOPAlgo_Options& BOPAlgo_ParallelAlgo_as_BOPAlgo_Options_mut(BOPAlgo_ParallelAlgo& self) { return self; }
+inline void BOPAlgo_ParallelAlgo_inherited_Clear(BOPAlgo_ParallelAlgo& self) {
+    self.Clear();
+}
+inline bool BOPAlgo_ParallelAlgo_inherited_HasErrors(const BOPAlgo_ParallelAlgo& self) {
+    return self.HasErrors();
+}
+inline bool BOPAlgo_ParallelAlgo_inherited_HasWarnings(const BOPAlgo_ParallelAlgo& self) {
+    return self.HasWarnings();
+}
+inline void BOPAlgo_ParallelAlgo_inherited_ClearWarnings(BOPAlgo_ParallelAlgo& self) {
+    self.ClearWarnings();
+}
+inline void BOPAlgo_ParallelAlgo_inherited_SetRunParallel(BOPAlgo_ParallelAlgo& self, bool theFlag) {
+    self.SetRunParallel(theFlag);
+}
+inline bool BOPAlgo_ParallelAlgo_inherited_RunParallel(const BOPAlgo_ParallelAlgo& self) {
+    return self.RunParallel();
+}
+inline void BOPAlgo_ParallelAlgo_inherited_SetFuzzyValue(BOPAlgo_ParallelAlgo& self, Standard_Real theFuzz) {
+    self.SetFuzzyValue(theFuzz);
+}
+inline Standard_Real BOPAlgo_ParallelAlgo_inherited_FuzzyValue(const BOPAlgo_ParallelAlgo& self) {
+    return self.FuzzyValue();
+}
+inline void BOPAlgo_ParallelAlgo_inherited_SetUseOBB(BOPAlgo_ParallelAlgo& self, bool theUseOBB) {
+    self.SetUseOBB(theUseOBB);
+}
+inline bool BOPAlgo_ParallelAlgo_inherited_UseOBB(const BOPAlgo_ParallelAlgo& self) {
+    return self.UseOBB();
+}
 
 // ========================
 // BOPAlgo_PISteps wrappers

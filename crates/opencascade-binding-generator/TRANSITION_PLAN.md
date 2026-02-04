@@ -480,27 +480,74 @@ so they appear as opaque types in modules that use them rather than as classes i
 ### ✅ Step 4d: Inherited Method Support
 
 Many OCCT classes inherit methods from base classes that are essential for use.
-The generator now emits inherited methods for known base class hierarchies.
+The generator now emits inherited methods via C++ wrapper functions.
 
 **Problem (SOLVED):**
 - `BRepOffsetAPI_ThruSections` inherits `Shape()` from `BRepBuilderAPI_MakeShape`
 - `BRepBuilderAPI_MakeFace` inherits `Shape()`, `IsDone()` from `BRepBuilderAPI_MakeShape`
+- `STEPControl_Reader` inherits `ClearShapes()`, `NbShapes()` from `XSControl_Reader`
 - Without these methods, builder classes can't return their results
 
-**Classes affected:**
-Any class inheriting from:
-- `BRepBuilderAPI_MakeShape` - now gets `Shape()`, `IsDone()` inherited
-- `BRepBuilderAPI_Command` - now gets `IsDone()` inherited
+**CXX Limitation:**
+CXX generates method pointer verification code like:
+```cpp
+void (DerivedClass::*method_ptr)(args) = &DerivedClass::InheritedMethod;
+```
+This fails for inherited methods because the actual pointer type is `BaseClass::*`, not `DerivedClass::*`.
 
-**Solution implemented:**
-- Added `InheritedMethod` and `BaseClassMethods` structs to define inherited methods
-- Added `INHERITED_METHOD_DEFINITIONS` constant mapping base classes to methods
-- Added `inherits_from()` function to recursively check inheritance hierarchy
-- Added `generate_inherited_methods()` function to emit methods for subclasses
-- Modified `generate_class()` to call `generate_inherited_methods()`
-- Skips methods that are already declared directly on the class (overrides)
+**Solution implemented (C++ wrapper approach):**
+Rather than declaring inherited methods directly on derived types (which CXX can't verify),
+we generate C++ wrapper functions that call the methods directly:
 
-**Status:** ✅ Complete - inherited methods now generated for builder classes
+1. **C++ wrapper functions** in `wrapper_*.hxx`:
+   ```cpp
+   inline Standard_Integer STEPControl_Reader_inherited_NbShapes(
+       const STEPControl_Reader& self) {
+       return self.NbShapes();  // Calls inherited method directly
+   }
+   ```
+
+2. **Rust FFI declarations** with `#[cxx_name]`:
+   ```rust
+   #[cxx_name = "STEPControl_Reader_inherited_NbShapes"]
+   fn reader_inherited_nb_shapes(self_: &Reader) -> i32;
+   ```
+
+3. **Rust impl block methods** for user-friendly API:
+   ```rust
+   impl Reader {
+       pub fn nb_shapes(&self) -> i32 {
+           ffi::reader_inherited_nb_shapes(self)
+       }
+   }
+   ```
+
+**Limitations of inherited method generation:**
+
+Inherited methods are filtered out if they use:
+
+1. **Cross-module types** - Methods using types from other modules are skipped because CXX 
+   requires all types to be declared in the same bridge module. For example, `BOPAlgo_BOP`
+   can't expose inherited methods that use `TopoDS_Shape` because that type is in `topo_ds`,
+   not `bop_algo`.
+
+2. **Raw pointers** - Methods with `*const` or `*mut` parameters/returns are skipped because
+   CXX requires `unsafe` for raw pointers. Example: `SetNorm(const char*)` is filtered out.
+
+3. **Already overridden methods** - If the derived class declares any method with the same
+   name (even protected/private), the inherited version is skipped to respect visibility.
+
+**Example: What gets generated for STEPControl_Reader:**
+
+From base class `XSControl_Reader`, only simple methods pass the filters:
+- `ClearShapes()` - void params/return ✅
+- `NbShapes()` - returns primitive `i32` ✅  
+- `PrintStatsTransfer(i32, i32)` - primitive params, void return ✅
+
+Methods like `OneShape()` (returns `TopoDS_Shape`) are filtered because `TopoDS_Shape`
+is a cross-module type not declared in the `step_control` module.
+
+**Status:** ✅ Complete - inherited methods generated via C++ wrappers with filtering
 
 ### ✅ Step 4e: Handle Wrapping and Upcasting Support (COMPLETE)
 

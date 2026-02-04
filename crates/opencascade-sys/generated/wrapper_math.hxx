@@ -83,6 +83,9 @@ inline std::unique_ptr<math_Matrix> math_Matrix_Opposite(math_Matrix& self) {
 
 inline const math_Function& math_FunctionWithDerivative_as_math_Function(const math_FunctionWithDerivative& self) { return self; }
 inline math_Function& math_FunctionWithDerivative_as_math_Function_mut(math_FunctionWithDerivative& self) { return self; }
+inline Standard_Integer math_FunctionWithDerivative_inherited_GetStateNumber(math_FunctionWithDerivative& self) {
+    return self.GetStateNumber();
+}
 
 // ========================
 // math_DirectPolynomialRoots wrappers

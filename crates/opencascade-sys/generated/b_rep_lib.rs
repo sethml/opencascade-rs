@@ -128,6 +128,26 @@ impl MakeWire {
     pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
         ffi::make_wire_as_make_shape_mut(self)
     }
+
+    /// Inherited from BRepLib_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_wire_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepLib_Command: Check
+    pub fn check(&self) {
+        ffi::make_wire_inherited_check(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: Build
+    pub fn build(self: std::pin::Pin<&mut Self>) {
+        ffi::make_wire_inherited_build(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: NbSurfaces
+    pub fn nb_surfaces(&self) -> i32 {
+        ffi::make_wire_inherited_nb_surfaces(self)
+    }
 }
 
 /// This    is  the  root     class for     all  shape
@@ -145,6 +165,16 @@ impl MakeShape {
     /// Upcast to BRepLib_Command (mutable)
     pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
         ffi::make_shape_as_command_mut(self)
+    }
+
+    /// Inherited from BRepLib_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_shape_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepLib_Command: Check
+    pub fn check(&self) {
+        ffi::make_shape_inherited_check(self)
     }
 }
 
@@ -185,6 +215,26 @@ impl MakeVertex {
     /// Upcast to BRepLib_MakeShape (mutable)
     pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
         ffi::make_vertex_as_make_shape_mut(self)
+    }
+
+    /// Inherited from BRepLib_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_vertex_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepLib_Command: Check
+    pub fn check(&self) {
+        ffi::make_vertex_inherited_check(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: Build
+    pub fn build(self: std::pin::Pin<&mut Self>) {
+        ffi::make_vertex_inherited_build(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: NbSurfaces
+    pub fn nb_surfaces(&self) -> i32 {
+        ffi::make_vertex_inherited_nb_surfaces(self)
     }
 }
 
@@ -248,6 +298,26 @@ impl MakeSolid {
     /// Upcast to BRepLib_MakeShape (mutable)
     pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
         ffi::make_solid_as_make_shape_mut(self)
+    }
+
+    /// Inherited from BRepLib_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_solid_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepLib_Command: Check
+    pub fn check(&self) {
+        ffi::make_solid_inherited_check(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: Build
+    pub fn build(self: std::pin::Pin<&mut Self>) {
+        ffi::make_solid_inherited_build(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: NbSurfaces
+    pub fn nb_surfaces(&self) -> i32 {
+        ffi::make_solid_inherited_nb_surfaces(self)
     }
 }
 
@@ -489,6 +559,26 @@ impl MakeFace {
         theActTol: &mut f64,
     ) -> bool {
         ffi::MakeFace_is_degenerated(theCurve, theMaxTol, theActTol)
+    }
+
+    /// Inherited from BRepLib_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_face_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepLib_Command: Check
+    pub fn check(&self) {
+        ffi::make_face_inherited_check(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: Build
+    pub fn build(self: std::pin::Pin<&mut Self>) {
+        ffi::make_face_inherited_build(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: NbSurfaces
+    pub fn nb_surfaces(&self) -> i32 {
+        ffi::make_face_inherited_nb_surfaces(self)
     }
 }
 
@@ -780,6 +870,26 @@ impl MakeEdge {
     pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
         ffi::make_edge_as_make_shape_mut(self)
     }
+
+    /// Inherited from BRepLib_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_edge_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepLib_Command: Check
+    pub fn check(&self) {
+        ffi::make_edge_inherited_check(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: Build
+    pub fn build(self: std::pin::Pin<&mut Self>) {
+        ffi::make_edge_inherited_build(self)
+    }
+
+    /// Inherited from BRepLib_MakeShape: NbSurfaces
+    pub fn nb_surfaces(&self) -> i32 {
+        ffi::make_edge_inherited_nb_surfaces(self)
+    }
 }
 #[cxx::bridge]
 pub(crate) mod ffi {
@@ -925,6 +1035,18 @@ pub(crate) mod ffi {
         /// Upcast BRepLib_MakeWire to BRepLib_MakeShape (mutable)
         #[cxx_name = "BRepLib_MakeWire_as_BRepLib_MakeShape_mut"]
         fn make_wire_as_make_shape_mut(self_: Pin<&mut MakeWire>) -> Pin<&mut MakeShape>;
+        /// Inherited from BRepLib_Command: IsDone
+        #[cxx_name = "BRepLib_MakeWire_inherited_IsDone"]
+        fn make_wire_inherited_is_done(self_: &MakeWire) -> bool;
+        /// Inherited from BRepLib_Command: Check
+        #[cxx_name = "BRepLib_MakeWire_inherited_Check"]
+        fn make_wire_inherited_check(self_: &MakeWire);
+        /// Inherited from BRepLib_MakeShape: Build
+        #[cxx_name = "BRepLib_MakeWire_inherited_Build"]
+        fn make_wire_inherited_build(self_: Pin<&mut MakeWire>);
+        /// Inherited from BRepLib_MakeShape: NbSurfaces
+        #[cxx_name = "BRepLib_MakeWire_inherited_NbSurfaces"]
+        fn make_wire_inherited_nb_surfaces(self_: &MakeWire) -> i32;
         /// ======================== BRepLib_MakeShape ========================
         /// **Source:** `BRepLib_MakeShape.hxx`:36 - `BRepLib_MakeShape`
         ///
@@ -977,6 +1099,12 @@ pub(crate) mod ffi {
         /// Upcast BRepLib_MakeShape to BRepLib_Command (mutable)
         #[cxx_name = "BRepLib_MakeShape_as_BRepLib_Command_mut"]
         fn make_shape_as_command_mut(self_: Pin<&mut MakeShape>) -> Pin<&mut Command>;
+        /// Inherited from BRepLib_Command: IsDone
+        #[cxx_name = "BRepLib_MakeShape_inherited_IsDone"]
+        fn make_shape_inherited_is_done(self_: &MakeShape) -> bool;
+        /// Inherited from BRepLib_Command: Check
+        #[cxx_name = "BRepLib_MakeShape_inherited_Check"]
+        fn make_shape_inherited_check(self_: &MakeShape);
         /// ======================== BRepLib_Command ========================
         /// **Source:** `BRepLib_Command.hxx`:35 - `BRepLib_Command`
         ///
@@ -1023,6 +1151,18 @@ pub(crate) mod ffi {
         /// Upcast BRepLib_MakeVertex to BRepLib_MakeShape (mutable)
         #[cxx_name = "BRepLib_MakeVertex_as_BRepLib_MakeShape_mut"]
         fn make_vertex_as_make_shape_mut(self_: Pin<&mut MakeVertex>) -> Pin<&mut MakeShape>;
+        /// Inherited from BRepLib_Command: IsDone
+        #[cxx_name = "BRepLib_MakeVertex_inherited_IsDone"]
+        fn make_vertex_inherited_is_done(self_: &MakeVertex) -> bool;
+        /// Inherited from BRepLib_Command: Check
+        #[cxx_name = "BRepLib_MakeVertex_inherited_Check"]
+        fn make_vertex_inherited_check(self_: &MakeVertex);
+        /// Inherited from BRepLib_MakeShape: Build
+        #[cxx_name = "BRepLib_MakeVertex_inherited_Build"]
+        fn make_vertex_inherited_build(self_: Pin<&mut MakeVertex>);
+        /// Inherited from BRepLib_MakeShape: NbSurfaces
+        #[cxx_name = "BRepLib_MakeVertex_inherited_NbSurfaces"]
+        fn make_vertex_inherited_nb_surfaces(self_: &MakeVertex) -> i32;
         /// ======================== BRepLib_MakeSolid ========================
         /// **Source:** `BRepLib_MakeSolid.hxx`:31 - `BRepLib_MakeSolid`
         ///
@@ -1090,6 +1230,18 @@ pub(crate) mod ffi {
         /// Upcast BRepLib_MakeSolid to BRepLib_MakeShape (mutable)
         #[cxx_name = "BRepLib_MakeSolid_as_BRepLib_MakeShape_mut"]
         fn make_solid_as_make_shape_mut(self_: Pin<&mut MakeSolid>) -> Pin<&mut MakeShape>;
+        /// Inherited from BRepLib_Command: IsDone
+        #[cxx_name = "BRepLib_MakeSolid_inherited_IsDone"]
+        fn make_solid_inherited_is_done(self_: &MakeSolid) -> bool;
+        /// Inherited from BRepLib_Command: Check
+        #[cxx_name = "BRepLib_MakeSolid_inherited_Check"]
+        fn make_solid_inherited_check(self_: &MakeSolid);
+        /// Inherited from BRepLib_MakeShape: Build
+        #[cxx_name = "BRepLib_MakeSolid_inherited_Build"]
+        fn make_solid_inherited_build(self_: Pin<&mut MakeSolid>);
+        /// Inherited from BRepLib_MakeShape: NbSurfaces
+        #[cxx_name = "BRepLib_MakeSolid_inherited_NbSurfaces"]
+        fn make_solid_inherited_nb_surfaces(self_: &MakeSolid) -> i32;
         /// ======================== BRepLib_MakeFace ========================
         /// **Source:** `BRepLib_MakeFace.hxx`:61 - `BRepLib_MakeFace`
         ///
@@ -1368,6 +1520,18 @@ pub(crate) mod ffi {
         /// Upcast BRepLib_MakeFace to BRepLib_MakeShape (mutable)
         #[cxx_name = "BRepLib_MakeFace_as_BRepLib_MakeShape_mut"]
         fn make_face_as_make_shape_mut(self_: Pin<&mut MakeFace>) -> Pin<&mut MakeShape>;
+        /// Inherited from BRepLib_Command: IsDone
+        #[cxx_name = "BRepLib_MakeFace_inherited_IsDone"]
+        fn make_face_inherited_is_done(self_: &MakeFace) -> bool;
+        /// Inherited from BRepLib_Command: Check
+        #[cxx_name = "BRepLib_MakeFace_inherited_Check"]
+        fn make_face_inherited_check(self_: &MakeFace);
+        /// Inherited from BRepLib_MakeShape: Build
+        #[cxx_name = "BRepLib_MakeFace_inherited_Build"]
+        fn make_face_inherited_build(self_: Pin<&mut MakeFace>);
+        /// Inherited from BRepLib_MakeShape: NbSurfaces
+        #[cxx_name = "BRepLib_MakeFace_inherited_NbSurfaces"]
+        fn make_face_inherited_nb_surfaces(self_: &MakeFace) -> i32;
         /// ======================== BRepLib_MakeEdge ========================
         /// **Source:** `BRepLib_MakeEdge.hxx`:69 - `BRepLib_MakeEdge`
         ///
@@ -1708,6 +1872,18 @@ pub(crate) mod ffi {
         /// Upcast BRepLib_MakeEdge to BRepLib_MakeShape (mutable)
         #[cxx_name = "BRepLib_MakeEdge_as_BRepLib_MakeShape_mut"]
         fn make_edge_as_make_shape_mut(self_: Pin<&mut MakeEdge>) -> Pin<&mut MakeShape>;
+        /// Inherited from BRepLib_Command: IsDone
+        #[cxx_name = "BRepLib_MakeEdge_inherited_IsDone"]
+        fn make_edge_inherited_is_done(self_: &MakeEdge) -> bool;
+        /// Inherited from BRepLib_Command: Check
+        #[cxx_name = "BRepLib_MakeEdge_inherited_Check"]
+        fn make_edge_inherited_check(self_: &MakeEdge);
+        /// Inherited from BRepLib_MakeShape: Build
+        #[cxx_name = "BRepLib_MakeEdge_inherited_Build"]
+        fn make_edge_inherited_build(self_: Pin<&mut MakeEdge>);
+        /// Inherited from BRepLib_MakeShape: NbSurfaces
+        #[cxx_name = "BRepLib_MakeEdge_inherited_NbSurfaces"]
+        fn make_edge_inherited_nb_surfaces(self_: &MakeEdge) -> i32;
 
         // ========================
         // Cross-module type aliases

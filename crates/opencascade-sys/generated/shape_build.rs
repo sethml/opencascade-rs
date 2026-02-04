@@ -45,6 +45,16 @@ impl ReShape {
     pub fn get_type_name() -> String {
         ffi::ReShape_get_type_name()
     }
+
+    /// Inherited from BRepTools_ReShape: Clear
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        ffi::re_shape_inherited_clear(self)
+    }
+
+    /// Inherited from BRepTools_ReShape: ModeConsiderLocation
+    pub fn mode_consider_location(self: std::pin::Pin<&mut Self>) -> &mut bool {
+        ffi::re_shape_inherited_mode_consider_location(self)
+    }
 }
 #[cxx::bridge]
 pub(crate) mod ffi {
@@ -107,6 +117,12 @@ pub(crate) mod ffi {
         fn re_shape_as_b_rep_tools_re_shape_mut(
             self_: Pin<&mut ReShape>,
         ) -> Pin<&mut BRepTools_ReShape>;
+        /// Inherited from BRepTools_ReShape: Clear
+        #[cxx_name = "ShapeBuild_ReShape_inherited_Clear"]
+        fn re_shape_inherited_clear(self_: Pin<&mut ReShape>);
+        /// Inherited from BRepTools_ReShape: ModeConsiderLocation
+        #[cxx_name = "ShapeBuild_ReShape_inherited_ModeConsiderLocation"]
+        fn re_shape_inherited_mode_consider_location(self_: Pin<&mut ReShape>) -> &mut bool;
 
         // ========================
         // Cross-module type aliases

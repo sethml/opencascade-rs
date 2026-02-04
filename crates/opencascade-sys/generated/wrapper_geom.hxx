@@ -192,6 +192,30 @@ inline std::unique_ptr<HandleGeomCurve> HandleGeomBoundedCurve_to_HandleGeomCurv
 inline std::unique_ptr<HandleGeomGeometry> HandleGeomBoundedCurve_to_HandleGeomGeometry(const HandleGeomBoundedCurve& handle) {
     return std::make_unique<HandleGeomGeometry>(handle);
 }
+inline void Geom_BoundedCurve_inherited_Reverse(Geom_BoundedCurve& self) {
+    self.Reverse();
+}
+inline Standard_Real Geom_BoundedCurve_inherited_ReversedParameter(const Geom_BoundedCurve& self, Standard_Real U) {
+    return self.ReversedParameter(U);
+}
+inline Standard_Real Geom_BoundedCurve_inherited_FirstParameter(const Geom_BoundedCurve& self) {
+    return self.FirstParameter();
+}
+inline Standard_Real Geom_BoundedCurve_inherited_LastParameter(const Geom_BoundedCurve& self) {
+    return self.LastParameter();
+}
+inline bool Geom_BoundedCurve_inherited_IsClosed(const Geom_BoundedCurve& self) {
+    return self.IsClosed();
+}
+inline bool Geom_BoundedCurve_inherited_IsPeriodic(const Geom_BoundedCurve& self) {
+    return self.IsPeriodic();
+}
+inline Standard_Real Geom_BoundedCurve_inherited_Period(const Geom_BoundedCurve& self) {
+    return self.Period();
+}
+inline bool Geom_BoundedCurve_inherited_IsCN(const Geom_BoundedCurve& self, Standard_Integer N) {
+    return self.IsCN(N);
+}
 
 // ========================
 // Geom_BoundedSurface wrappers
@@ -214,6 +238,45 @@ inline std::unique_ptr<HandleGeomGeometry> HandleGeomBoundedSurface_to_HandleGeo
 inline std::unique_ptr<HandleGeomSurface> HandleGeomBoundedSurface_to_HandleGeomSurface(const HandleGeomBoundedSurface& handle) {
     return std::make_unique<HandleGeomSurface>(handle);
 }
+inline void Geom_BoundedSurface_inherited_UReverse(Geom_BoundedSurface& self) {
+    self.UReverse();
+}
+inline Standard_Real Geom_BoundedSurface_inherited_UReversedParameter(const Geom_BoundedSurface& self, Standard_Real U) {
+    return self.UReversedParameter(U);
+}
+inline void Geom_BoundedSurface_inherited_VReverse(Geom_BoundedSurface& self) {
+    self.VReverse();
+}
+inline Standard_Real Geom_BoundedSurface_inherited_VReversedParameter(const Geom_BoundedSurface& self, Standard_Real V) {
+    return self.VReversedParameter(V);
+}
+inline void Geom_BoundedSurface_inherited_Bounds(const Geom_BoundedSurface& self, Standard_Real& U1, Standard_Real& U2, Standard_Real& V1, Standard_Real& V2) {
+    self.Bounds(U1, U2, V1, V2);
+}
+inline bool Geom_BoundedSurface_inherited_IsUClosed(const Geom_BoundedSurface& self) {
+    return self.IsUClosed();
+}
+inline bool Geom_BoundedSurface_inherited_IsVClosed(const Geom_BoundedSurface& self) {
+    return self.IsVClosed();
+}
+inline bool Geom_BoundedSurface_inherited_IsUPeriodic(const Geom_BoundedSurface& self) {
+    return self.IsUPeriodic();
+}
+inline Standard_Real Geom_BoundedSurface_inherited_UPeriod(const Geom_BoundedSurface& self) {
+    return self.UPeriod();
+}
+inline bool Geom_BoundedSurface_inherited_IsVPeriodic(const Geom_BoundedSurface& self) {
+    return self.IsVPeriodic();
+}
+inline Standard_Real Geom_BoundedSurface_inherited_VPeriod(const Geom_BoundedSurface& self) {
+    return self.VPeriod();
+}
+inline bool Geom_BoundedSurface_inherited_IsCNu(const Geom_BoundedSurface& self, Standard_Integer N) {
+    return self.IsCNu(N);
+}
+inline bool Geom_BoundedSurface_inherited_IsCNv(const Geom_BoundedSurface& self, Standard_Integer N) {
+    return self.IsCNv(N);
+}
 
 // ========================
 // Geom_ElementarySurface wrappers
@@ -232,6 +295,27 @@ inline std::unique_ptr<HandleGeomGeometry> HandleGeomElementarySurface_to_Handle
 }
 inline std::unique_ptr<HandleGeomSurface> HandleGeomElementarySurface_to_HandleGeomSurface(const HandleGeomElementarySurface& handle) {
     return std::make_unique<HandleGeomSurface>(handle);
+}
+inline void Geom_ElementarySurface_inherited_Bounds(const Geom_ElementarySurface& self, Standard_Real& U1, Standard_Real& U2, Standard_Real& V1, Standard_Real& V2) {
+    self.Bounds(U1, U2, V1, V2);
+}
+inline bool Geom_ElementarySurface_inherited_IsUClosed(const Geom_ElementarySurface& self) {
+    return self.IsUClosed();
+}
+inline bool Geom_ElementarySurface_inherited_IsVClosed(const Geom_ElementarySurface& self) {
+    return self.IsVClosed();
+}
+inline bool Geom_ElementarySurface_inherited_IsUPeriodic(const Geom_ElementarySurface& self) {
+    return self.IsUPeriodic();
+}
+inline Standard_Real Geom_ElementarySurface_inherited_UPeriod(const Geom_ElementarySurface& self) {
+    return self.UPeriod();
+}
+inline bool Geom_ElementarySurface_inherited_IsVPeriodic(const Geom_ElementarySurface& self) {
+    return self.IsVPeriodic();
+}
+inline Standard_Real Geom_ElementarySurface_inherited_VPeriod(const Geom_ElementarySurface& self) {
+    return self.VPeriod();
 }
 
 // ========================
@@ -288,6 +372,9 @@ inline std::unique_ptr<HandleGeomCurve> HandleGeomBezierCurve_to_HandleGeomCurve
 inline std::unique_ptr<HandleGeomGeometry> HandleGeomBezierCurve_to_HandleGeomGeometry(const HandleGeomBezierCurve& handle) {
     return std::make_unique<HandleGeomGeometry>(handle);
 }
+inline Standard_Real Geom_BezierCurve_inherited_Period(const Geom_BezierCurve& self) {
+    return self.Period();
+}
 
 // ========================
 // Geom_BezierSurface wrappers
@@ -342,6 +429,12 @@ inline std::unique_ptr<HandleGeomGeometry> HandleGeomBezierSurface_to_HandleGeom
 }
 inline std::unique_ptr<HandleGeomSurface> HandleGeomBezierSurface_to_HandleGeomSurface(const HandleGeomBezierSurface& handle) {
     return std::make_unique<HandleGeomSurface>(handle);
+}
+inline Standard_Real Geom_BezierSurface_inherited_UPeriod(const Geom_BezierSurface& self) {
+    return self.UPeriod();
+}
+inline Standard_Real Geom_BezierSurface_inherited_VPeriod(const Geom_BezierSurface& self) {
+    return self.VPeriod();
 }
 
 // ========================
@@ -405,6 +498,9 @@ inline std::unique_ptr<HandleGeomCurve> HandleGeomBSplineCurve_to_HandleGeomCurv
 }
 inline std::unique_ptr<HandleGeomGeometry> HandleGeomBSplineCurve_to_HandleGeomGeometry(const HandleGeomBSplineCurve& handle) {
     return std::make_unique<HandleGeomGeometry>(handle);
+}
+inline Standard_Real Geom_BSplineCurve_inherited_Period(const Geom_BSplineCurve& self) {
+    return self.Period();
 }
 
 // ========================
@@ -477,6 +573,12 @@ inline std::unique_ptr<HandleGeomGeometry> HandleGeomBSplineSurface_to_HandleGeo
 inline std::unique_ptr<HandleGeomSurface> HandleGeomBSplineSurface_to_HandleGeomSurface(const HandleGeomBSplineSurface& handle) {
     return std::make_unique<HandleGeomSurface>(handle);
 }
+inline Standard_Real Geom_BSplineSurface_inherited_UPeriod(const Geom_BSplineSurface& self) {
+    return self.UPeriod();
+}
+inline Standard_Real Geom_BSplineSurface_inherited_VPeriod(const Geom_BSplineSurface& self) {
+    return self.VPeriod();
+}
 
 // ========================
 // Geom_CylindricalSurface wrappers
@@ -535,6 +637,24 @@ inline std::unique_ptr<HandleGeomGeometry> HandleGeomCylindricalSurface_to_Handl
 }
 inline std::unique_ptr<HandleGeomSurface> HandleGeomCylindricalSurface_to_HandleGeomSurface(const HandleGeomCylindricalSurface& handle) {
     return std::make_unique<HandleGeomSurface>(handle);
+}
+inline void Geom_CylindricalSurface_inherited_UReverse(Geom_CylindricalSurface& self) {
+    self.UReverse();
+}
+inline void Geom_CylindricalSurface_inherited_VReverse(Geom_CylindricalSurface& self) {
+    self.VReverse();
+}
+inline bool Geom_CylindricalSurface_inherited_IsCNu(const Geom_CylindricalSurface& self, Standard_Integer N) {
+    return self.IsCNu(N);
+}
+inline bool Geom_CylindricalSurface_inherited_IsCNv(const Geom_CylindricalSurface& self, Standard_Integer N) {
+    return self.IsCNv(N);
+}
+inline Standard_Real Geom_CylindricalSurface_inherited_UPeriod(const Geom_CylindricalSurface& self) {
+    return self.UPeriod();
+}
+inline Standard_Real Geom_CylindricalSurface_inherited_VPeriod(const Geom_CylindricalSurface& self) {
+    return self.VPeriod();
 }
 
 // ========================
@@ -602,6 +722,18 @@ inline std::unique_ptr<HandleGeomGeometry> HandleGeomPlane_to_HandleGeomGeometry
 }
 inline std::unique_ptr<HandleGeomSurface> HandleGeomPlane_to_HandleGeomSurface(const HandleGeomPlane& handle) {
     return std::make_unique<HandleGeomSurface>(handle);
+}
+inline bool Geom_Plane_inherited_IsCNu(const Geom_Plane& self, Standard_Integer N) {
+    return self.IsCNu(N);
+}
+inline bool Geom_Plane_inherited_IsCNv(const Geom_Plane& self, Standard_Integer N) {
+    return self.IsCNv(N);
+}
+inline Standard_Real Geom_Plane_inherited_UPeriod(const Geom_Plane& self) {
+    return self.UPeriod();
+}
+inline Standard_Real Geom_Plane_inherited_VPeriod(const Geom_Plane& self) {
+    return self.VPeriod();
 }
 
 // ========================

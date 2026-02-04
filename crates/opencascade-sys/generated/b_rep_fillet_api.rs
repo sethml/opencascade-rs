@@ -54,6 +54,16 @@ impl LocalOperation {
     pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<ffi::HandleChFiDSSecHArray1> {
         ffi::LocalOperation_sect(self, IC, IS)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::local_operation_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::local_operation_inherited_check(self)
+    }
 }
 
 /// Describes functions to build chamfers on edges of a shell or solid.
@@ -130,6 +140,16 @@ impl MakeChamfer {
 
     pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<ffi::HandleChFiDSSecHArray1> {
         ffi::MakeChamfer_sect(self, IC, IS)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_chamfer_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_chamfer_inherited_check(self)
     }
 }
 
@@ -223,6 +243,16 @@ impl MakeFillet {
     /// if (HasResult()) returns the partial result
     pub fn bad_shape(&self) -> cxx::UniquePtr<ffi::TopoDS_Shape> {
         ffi::MakeFillet_bad_shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_fillet_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_fillet_inherited_check(self)
     }
 }
 
@@ -482,6 +512,16 @@ impl MakeFillet2d {
     ) -> cxx::UniquePtr<ffi::TopoDS_Vertex> {
         ffi::MakeFillet2d_remove_chamfer(self, Chamfer)
     }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone
+    pub fn is_done(&self) -> bool {
+        ffi::make_fillet2d_inherited_is_done(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check
+    pub fn check(&self) {
+        ffi::make_fillet2d_inherited_check(self)
+    }
 }
 #[cxx::bridge]
 pub(crate) mod ffi {
@@ -611,6 +651,12 @@ pub(crate) mod ffi {
         fn local_operation_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut LocalOperation>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepFilletAPI_LocalOperation_inherited_IsDone"]
+        fn local_operation_inherited_is_done(self_: &LocalOperation) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepFilletAPI_LocalOperation_inherited_Check"]
+        fn local_operation_inherited_check(self_: &LocalOperation);
         /// ======================== BRepFilletAPI_MakeChamfer ========================
         /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:44 - `BRepFilletAPI_MakeChamfer`
         ///
@@ -955,6 +1001,12 @@ pub(crate) mod ffi {
         fn make_chamfer_as_local_operation_mut(
             self_: Pin<&mut MakeChamfer>,
         ) -> Pin<&mut LocalOperation>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepFilletAPI_MakeChamfer_inherited_IsDone"]
+        fn make_chamfer_inherited_is_done(self_: &MakeChamfer) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepFilletAPI_MakeChamfer_inherited_Check"]
+        fn make_chamfer_inherited_check(self_: &MakeChamfer);
         /// ======================== BRepFilletAPI_MakeFillet ========================
         /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:48 - `BRepFilletAPI_MakeFillet`
         ///
@@ -1401,6 +1453,12 @@ pub(crate) mod ffi {
         fn make_fillet_as_local_operation_mut(
             self_: Pin<&mut MakeFillet>,
         ) -> Pin<&mut LocalOperation>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepFilletAPI_MakeFillet_inherited_IsDone"]
+        fn make_fillet_inherited_is_done(self_: &MakeFillet) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepFilletAPI_MakeFillet_inherited_Check"]
+        fn make_fillet_inherited_check(self_: &MakeFillet);
         /// ======================== BRepFilletAPI_MakeFillet2d ========================
         /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:51 - `BRepFilletAPI_MakeFillet2d`
         ///
@@ -1732,6 +1790,12 @@ pub(crate) mod ffi {
         fn make_fillet2d_as_b_rep_builder_api_make_shape_mut(
             self_: Pin<&mut MakeFillet2d>,
         ) -> Pin<&mut BRepBuilderAPI_MakeShape>;
+        /// Inherited from BRepBuilderAPI_Command: IsDone
+        #[cxx_name = "BRepFilletAPI_MakeFillet2d_inherited_IsDone"]
+        fn make_fillet2d_inherited_is_done(self_: &MakeFillet2d) -> bool;
+        /// Inherited from BRepBuilderAPI_Command: Check
+        #[cxx_name = "BRepFilletAPI_MakeFillet2d_inherited_Check"]
+        fn make_fillet2d_inherited_check(self_: &MakeFillet2d);
 
         // ========================
         // Cross-module type aliases

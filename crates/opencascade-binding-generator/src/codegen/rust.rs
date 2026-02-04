@@ -831,14 +831,9 @@ fn generate_class(
     // Upcast functions (for inheritance)
     let upcast_methods = generate_upcast_methods(class, ctx, symbol_table);
 
-    // Inherited methods from base classes
-    // NOTE: Disabled due to CXX method pointer verification issue.
-    // CXX generates: `bool (DerivedClass::*)(args) = &DerivedClass::Method`
-    // but inherited methods have method pointers like `bool (BaseClass::*)(args)`.
-    // This causes C++ compilation errors for any inherited method.
-    // Users can upcast to base type to access these methods.
-    let inherited_methods: Vec<TokenStream> = Vec::new();
-    // let inherited_methods = generate_inherited_methods(class, all_classes_map, ctx);
+    // Inherited method wrappers (FFI declarations for C++ wrapper functions)
+    // These call base class methods via C++ wrappers to avoid CXX method pointer issues
+    let inherited_method_ffi = generate_inherited_method_ffi(class, ctx, symbol_table);
 
     // to_owned function (copy constructor via CXX's construct_unique)
     let to_owned = generate_to_owned(class);
@@ -861,7 +856,7 @@ fn generate_class(
         #(#wrapper_methods)*
         #(#static_methods)*
         #(#upcast_methods)*
-        #(#inherited_methods)*
+        #(#inherited_method_ffi)*
         #to_owned
         #to_handle
         #(#handle_upcasts)*
@@ -1711,8 +1706,132 @@ fn generate_handle_upcast_ffi(
         .collect()
 }
 
+/// Generate FFI function declarations for inherited method wrappers
+/// These are free functions that call C++ wrapper functions, which in turn call base class methods
+fn generate_inherited_method_ffi(
+    class: &ParsedClass,
+    ctx: &TypeContext,
+    symbol_table: &crate::resolver::SymbolTable,
+) -> Vec<TokenStream> {
+    use std::collections::HashSet;
+    
+    // Skip classes with protected destructors (not bindable)
+    if class.has_protected_destructor {
+        return Vec::new();
+    }
+    
+    let short_name = class.safe_short_name();
+    let rust_type = format_ident!("{}", short_name);
+    
+    // Build a set of method names already declared directly on this class
+    let existing_method_names: HashSet<String> = class.methods.iter()
+        .map(|m| m.name.clone())
+        .collect();
+    
+    // Track methods we've already processed
+    let mut seen_methods: HashSet<String> = HashSet::new();
+    let mut result = Vec::new();
+    
+    // Get all ancestors
+    let ancestors = symbol_table.get_all_ancestors_by_name(&class.name);
+    
+    for ancestor_name in &ancestors {
+        // Skip ancestors not in our symbol table
+        if let Some(ancestor_class) = symbol_table.class_by_name(ancestor_name) {
+            // Get the included methods for this ancestor
+            let ancestor_methods = symbol_table.included_methods(ancestor_class);
+            
+            for resolved_method in ancestor_methods {
+                // Skip if this class already has a method with this name
+                if existing_method_names.contains(&resolved_method.cpp_name) {
+                    continue;
+                }
+                
+                // Skip if the class has any method with this name (including protected/private overrides)
+                if class.all_method_names.contains(&resolved_method.cpp_name) {
+                    continue;
+                }
+                
+                // Skip if we've already seen this method from another ancestor
+                if seen_methods.contains(&resolved_method.cpp_name) {
+                    continue;
+                }
+                
+                seen_methods.insert(resolved_method.cpp_name.clone());
+                
+                // Skip methods that use types from other modules (cross-module types)
+                // These types won't be declared in this module and CXX will fail
+                let uses_cross_module_types = resolved_method.params.iter()
+                    .any(|p| p.ty.source_module.is_some())
+                    || resolved_method.return_type.as_ref()
+                        .map(|rt| rt.source_module.is_some())
+                        .unwrap_or(false);
+                
+                if uses_cross_module_types {
+                    continue;
+                }
+                
+                // Skip methods that use raw pointers (requires unsafe in CXX)
+                // Check for *const or *mut in the FFI type string
+                let uses_raw_pointers = resolved_method.params.iter()
+                    .any(|p| p.ty.rust_ffi_type.contains("*const") || p.ty.rust_ffi_type.contains("*mut"))
+                    || resolved_method.return_type.as_ref()
+                        .map(|rt| rt.rust_ffi_type.contains("*const") || rt.rust_ffi_type.contains("*mut"))
+                        .unwrap_or(false);
+                
+                if uses_raw_pointers {
+                    continue;
+                }
+                
+                // Generate the FFI function declaration
+                // C++ wrapper name: DerivedClass_inherited_MethodName
+                let cpp_wrapper_name = format!("{}_inherited_{}", class.name, resolved_method.cpp_name);
+                
+                // Rust function name: derived_class_inherited_method_name
+                let rust_fn_name = format_ident!(
+                    "{}_inherited_{}",
+                    short_name.to_snake_case(),
+                    resolved_method.cpp_name.to_snake_case()
+                );
+                
+                // Self parameter
+                let self_param = if resolved_method.is_const {
+                    quote! { self_: &#rust_type }
+                } else {
+                    quote! { self_: Pin<&mut #rust_type> }
+                };
+                
+                // Other parameters
+                let params: Vec<TokenStream> = resolved_method.params.iter().map(|p| {
+                    let name = safe_param_ident(&p.name);
+                    let ty_tokens: TokenStream = p.ty.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
+                    quote! { #name: #ty_tokens }
+                }).collect();
+                
+                // Return type
+                let return_type = resolved_method.return_type.as_ref().map(|rt| {
+                    let ty_tokens: TokenStream = rt.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
+                    quote! { -> #ty_tokens }
+                });
+                
+                // Doc comment
+                let doc = format!("Inherited from {}: {}", ancestor_name, resolved_method.cpp_name);
+                
+                result.push(quote! {
+                    #[doc = #doc]
+                    #[cxx_name = #cpp_wrapper_name]
+                    fn #rust_fn_name(#self_param, #(#params),*) #return_type;
+                });
+            }
+        }
+    }
+    
+    result
+}
+
 /// Collect all methods from ancestor classes (direct and indirect parents)
 /// Also returns a set of method names that are overridden in the inheritance chain
+#[allow(dead_code)]
 fn collect_ancestor_methods<'a>(
     class: &ParsedClass,
     all_classes: &'a HashMap<String, &'a ParsedClass>,
@@ -1757,6 +1876,7 @@ fn collect_ancestor_methods<'a>(
 
 /// Generate inherited method declarations for a class
 /// These are methods from base classes that CXX can call directly on the derived type
+#[allow(dead_code)]
 fn generate_inherited_methods(
     class: &ParsedClass,
     all_classes: &HashMap<String, &ParsedClass>,
@@ -2255,6 +2375,11 @@ fn generate_re_exports(
             let static_method_impls = generate_static_method_impls(class, &owned_classes, all_enums);
             methods.extend(static_method_impls);
             
+            // Generate inherited method wrappers
+            // These call ffi free functions that wrap base class methods
+            let inherited_method_impls = generate_inherited_method_impls(class, &owned_classes, all_enums, symbol_table);
+            methods.extend(inherited_method_impls);
+            
             exports.push(quote! {
                 impl #rust_type {
                     #(#methods)*
@@ -2675,6 +2800,144 @@ fn type_to_ffi_string(ty: &Type, owned_classes: &HashSet<String>, all_enums: &Ha
             }
         }
     }
+}
+
+/// Generate impl block methods for inherited methods
+/// These call ffi free functions that wrap base class methods
+fn generate_inherited_method_impls(
+    class: &ParsedClass,
+    _owned_classes: &HashSet<String>,
+    _all_enums: &HashSet<String>,
+    symbol_table: &crate::resolver::SymbolTable,
+) -> Vec<TokenStream> {
+    use std::collections::HashSet;
+    
+    // Skip classes with protected destructors (not bindable)
+    if class.has_protected_destructor {
+        return Vec::new();
+    }
+    
+    let short_name = class.short_name();
+    let safe_name = class.safe_short_name();
+    
+    // Build a set of method names already declared directly on this class
+    let existing_method_names: HashSet<String> = class.methods.iter()
+        .map(|m| m.name.clone())
+        .collect();
+    
+    // Track methods we've already processed
+    let mut seen_methods: HashSet<String> = HashSet::new();
+    let mut result = Vec::new();
+    
+    // Get all ancestors
+    let ancestors = symbol_table.get_all_ancestors_by_name(&class.name);
+    
+    for ancestor_name in &ancestors {
+        // Skip ancestors not in our symbol table
+        if let Some(ancestor_class) = symbol_table.class_by_name(ancestor_name) {
+            // Get the included methods for this ancestor
+            let ancestor_methods = symbol_table.included_methods(ancestor_class);
+            
+            for resolved_method in ancestor_methods {
+                // Skip if this class already has a method with this name
+                if existing_method_names.contains(&resolved_method.cpp_name) {
+                    continue;
+                }
+                
+                // Skip if the class has any method with this name (including protected/private overrides)
+                if class.all_method_names.contains(&resolved_method.cpp_name) {
+                    continue;
+                }
+                
+                // Skip if we've already seen this method from another ancestor
+                if seen_methods.contains(&resolved_method.cpp_name) {
+                    continue;
+                }
+                
+                seen_methods.insert(resolved_method.cpp_name.clone());
+                
+                // Skip methods that use types from other modules (cross-module types)
+                // These types won't be declared in this module and CXX will fail
+                // This must match the filtering in generate_inherited_method_ffi
+                let uses_cross_module_types = resolved_method.params.iter()
+                    .any(|p| p.ty.source_module.is_some())
+                    || resolved_method.return_type.as_ref()
+                        .map(|rt| rt.source_module.is_some())
+                        .unwrap_or(false);
+                
+                if uses_cross_module_types {
+                    continue;
+                }
+                
+                // Skip methods that use raw pointers (requires unsafe in CXX)
+                // This must match the filtering in generate_inherited_method_ffi
+                let uses_raw_pointers = resolved_method.params.iter()
+                    .any(|p| p.ty.rust_ffi_type.contains("*const") || p.ty.rust_ffi_type.contains("*mut"))
+                    || resolved_method.return_type.as_ref()
+                        .map(|rt| rt.rust_ffi_type.contains("*const") || rt.rust_ffi_type.contains("*mut"))
+                        .unwrap_or(false);
+                
+                if uses_raw_pointers {
+                    continue;
+                }
+                
+                // ffi function name: derived_class_inherited_method_name (must match generate_inherited_method_ffi)
+                let ffi_fn_name = format_ident!(
+                    "{}_inherited_{}",
+                    safe_name.to_snake_case(),
+                    resolved_method.cpp_name.to_snake_case()
+                );
+                
+                // Public method name: just method_name (snake_case) with keyword escaping
+                let method_name = format_ident!("{}", safe_method_name(&resolved_method.cpp_name));
+                
+                // Parameters (not including self)
+                let params: Vec<TokenStream> = resolved_method.params.iter().map(|p| {
+                    let name = safe_param_ident(&p.name);
+                    let ty_tokens: TokenStream = p.ty.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
+                    quote! { #name: #ty_tokens }
+                }).collect();
+                
+                // Argument list for calling ffi function
+                let args: Vec<TokenStream> = resolved_method.params.iter().map(|p| {
+                    let name = safe_param_ident(&p.name);
+                    quote! { #name }
+                }).collect();
+                
+                // Return type
+                let return_type = resolved_method.return_type.as_ref().map(|rt| {
+                    let ty_tokens: TokenStream = rt.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
+                    if rt.needs_unique_ptr {
+                        quote! { -> cxx::UniquePtr<#ty_tokens> }
+                    } else {
+                        quote! { -> #ty_tokens }
+                    }
+                });
+                
+                // Doc comment
+                let doc = format!("Inherited from {}: {}", ancestor_name, resolved_method.cpp_name);
+                
+                // Generate method with self
+                if resolved_method.is_const {
+                    result.push(quote! {
+                        #[doc = #doc]
+                        pub fn #method_name(&self, #(#params),*) #return_type {
+                            ffi::#ffi_fn_name(self, #(#args),*)
+                        }
+                    });
+                } else {
+                    result.push(quote! {
+                        #[doc = #doc]
+                        pub fn #method_name(self: std::pin::Pin<&mut Self>, #(#params),*) #return_type {
+                            ffi::#ffi_fn_name(self, #(#args),*)
+                        }
+                    });
+                }
+            }
+        }
+    }
+    
+    result
 }
 
 /// Generate impl blocks for Handle types with upcast methods

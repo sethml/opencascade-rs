@@ -131,6 +131,26 @@ impl Interpol {
     pub fn get_type_name() -> String {
         ffi::Interpol_get_type_name()
     }
+
+    /// Inherited from Law_BSpFunc: Value
+    pub fn value(self: std::pin::Pin<&mut Self>, X: f64) -> f64 {
+        ffi::interpol_inherited_value(self, X)
+    }
+
+    /// Inherited from Law_BSpFunc: D1
+    pub fn d1(self: std::pin::Pin<&mut Self>, X: f64, F: &mut f64, D: &mut f64) {
+        ffi::interpol_inherited_d1(self, X, F, D)
+    }
+
+    /// Inherited from Law_BSpFunc: D2
+    pub fn d2(self: std::pin::Pin<&mut Self>, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
+        ffi::interpol_inherited_d2(self, X, F, D, D2)
+    }
+
+    /// Inherited from Law_BSpFunc: Bounds
+    pub fn bounds(self: std::pin::Pin<&mut Self>, PFirst: &mut f64, PLast: &mut f64) {
+        ffi::interpol_inherited_bounds(self, PFirst, PLast)
+    }
 }
 impl ffi::HandleLawBSpFunc {
     /// Upcast to Handle<Law_Function>
@@ -369,6 +389,24 @@ pub(crate) mod ffi {
         /// Upcast Law_Interpol to Law_Function (mutable)
         #[cxx_name = "Law_Interpol_as_Law_Function_mut"]
         fn interpol_as_function_mut(self_: Pin<&mut Interpol>) -> Pin<&mut Function>;
+        /// Inherited from Law_BSpFunc: Value
+        #[cxx_name = "Law_Interpol_inherited_Value"]
+        fn interpol_inherited_value(self_: Pin<&mut Interpol>, X: f64) -> f64;
+        /// Inherited from Law_BSpFunc: D1
+        #[cxx_name = "Law_Interpol_inherited_D1"]
+        fn interpol_inherited_d1(self_: Pin<&mut Interpol>, X: f64, F: &mut f64, D: &mut f64);
+        /// Inherited from Law_BSpFunc: D2
+        #[cxx_name = "Law_Interpol_inherited_D2"]
+        fn interpol_inherited_d2(
+            self_: Pin<&mut Interpol>,
+            X: f64,
+            F: &mut f64,
+            D: &mut f64,
+            D2: &mut f64,
+        );
+        /// Inherited from Law_BSpFunc: Bounds
+        #[cxx_name = "Law_Interpol_inherited_Bounds"]
+        fn interpol_inherited_bounds(self_: Pin<&mut Interpol>, PFirst: &mut f64, PLast: &mut f64);
         /// Wrap Law_Interpol in a Handle (reference-counted smart pointer)
         #[cxx_name = "Law_Interpol_to_handle"]
         fn Interpol_to_handle(obj: UniquePtr<Interpol>) -> UniquePtr<HandleLawInterpol>;

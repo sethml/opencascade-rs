@@ -125,6 +125,76 @@ impl Vertex {
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Vertex_to_owned(self)
     }
+
+    /// Inherited from TopoDS_Shape: IsNull
+    pub fn is_null(&self) -> bool {
+        ffi::vertex_inherited_is_null(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        ffi::vertex_inherited_nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free
+    pub fn free(&self) -> bool {
+        ffi::vertex_inherited_free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked
+    pub fn locked(&self) -> bool {
+        ffi::vertex_inherited_locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified
+    pub fn modified(&self) -> bool {
+        ffi::vertex_inherited_modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked
+    pub fn checked(&self) -> bool {
+        ffi::vertex_inherited_checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable
+    pub fn orientable(&self) -> bool {
+        ffi::vertex_inherited_orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed
+    pub fn closed(&self) -> bool {
+        ffi::vertex_inherited_closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite
+    pub fn infinite(&self) -> bool {
+        ffi::vertex_inherited_infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex
+    pub fn convex(&self) -> bool {
+        ffi::vertex_inherited_convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::vertex_inherited_reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        ffi::vertex_inherited_complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren
+    pub fn nb_children(&self) -> i32 {
+        ffi::vertex_inherited_nb_children(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        ffi::vertex_inherited_empty_copy(self)
+    }
 }
 
 /// Describes an edge which
@@ -156,6 +226,76 @@ impl Edge {
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Edge_to_owned(self)
     }
+
+    /// Inherited from TopoDS_Shape: IsNull
+    pub fn is_null(&self) -> bool {
+        ffi::edge_inherited_is_null(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        ffi::edge_inherited_nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free
+    pub fn free(&self) -> bool {
+        ffi::edge_inherited_free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked
+    pub fn locked(&self) -> bool {
+        ffi::edge_inherited_locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified
+    pub fn modified(&self) -> bool {
+        ffi::edge_inherited_modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked
+    pub fn checked(&self) -> bool {
+        ffi::edge_inherited_checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable
+    pub fn orientable(&self) -> bool {
+        ffi::edge_inherited_orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed
+    pub fn closed(&self) -> bool {
+        ffi::edge_inherited_closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite
+    pub fn infinite(&self) -> bool {
+        ffi::edge_inherited_infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex
+    pub fn convex(&self) -> bool {
+        ffi::edge_inherited_convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::edge_inherited_reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        ffi::edge_inherited_complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren
+    pub fn nb_children(&self) -> i32 {
+        ffi::edge_inherited_nb_children(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        ffi::edge_inherited_empty_copy(self)
+    }
 }
 
 /// Describes a wire which
@@ -185,6 +325,76 @@ impl Wire {
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Wire_to_owned(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNull
+    pub fn is_null(&self) -> bool {
+        ffi::wire_inherited_is_null(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        ffi::wire_inherited_nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free
+    pub fn free(&self) -> bool {
+        ffi::wire_inherited_free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked
+    pub fn locked(&self) -> bool {
+        ffi::wire_inherited_locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified
+    pub fn modified(&self) -> bool {
+        ffi::wire_inherited_modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked
+    pub fn checked(&self) -> bool {
+        ffi::wire_inherited_checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable
+    pub fn orientable(&self) -> bool {
+        ffi::wire_inherited_orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed
+    pub fn closed(&self) -> bool {
+        ffi::wire_inherited_closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite
+    pub fn infinite(&self) -> bool {
+        ffi::wire_inherited_infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex
+    pub fn convex(&self) -> bool {
+        ffi::wire_inherited_convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::wire_inherited_reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        ffi::wire_inherited_complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren
+    pub fn nb_children(&self) -> i32 {
+        ffi::wire_inherited_nb_children(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        ffi::wire_inherited_empty_copy(self)
     }
 }
 
@@ -216,6 +426,76 @@ impl Face {
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Face_to_owned(self)
     }
+
+    /// Inherited from TopoDS_Shape: IsNull
+    pub fn is_null(&self) -> bool {
+        ffi::face_inherited_is_null(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        ffi::face_inherited_nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free
+    pub fn free(&self) -> bool {
+        ffi::face_inherited_free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked
+    pub fn locked(&self) -> bool {
+        ffi::face_inherited_locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified
+    pub fn modified(&self) -> bool {
+        ffi::face_inherited_modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked
+    pub fn checked(&self) -> bool {
+        ffi::face_inherited_checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable
+    pub fn orientable(&self) -> bool {
+        ffi::face_inherited_orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed
+    pub fn closed(&self) -> bool {
+        ffi::face_inherited_closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite
+    pub fn infinite(&self) -> bool {
+        ffi::face_inherited_infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex
+    pub fn convex(&self) -> bool {
+        ffi::face_inherited_convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::face_inherited_reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        ffi::face_inherited_complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren
+    pub fn nb_children(&self) -> i32 {
+        ffi::face_inherited_nb_children(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        ffi::face_inherited_empty_copy(self)
+    }
 }
 
 /// Describes a shell which
@@ -245,6 +525,76 @@ impl Shell {
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Shell_to_owned(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNull
+    pub fn is_null(&self) -> bool {
+        ffi::shell_inherited_is_null(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        ffi::shell_inherited_nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free
+    pub fn free(&self) -> bool {
+        ffi::shell_inherited_free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked
+    pub fn locked(&self) -> bool {
+        ffi::shell_inherited_locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified
+    pub fn modified(&self) -> bool {
+        ffi::shell_inherited_modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked
+    pub fn checked(&self) -> bool {
+        ffi::shell_inherited_checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable
+    pub fn orientable(&self) -> bool {
+        ffi::shell_inherited_orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed
+    pub fn closed(&self) -> bool {
+        ffi::shell_inherited_closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite
+    pub fn infinite(&self) -> bool {
+        ffi::shell_inherited_infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex
+    pub fn convex(&self) -> bool {
+        ffi::shell_inherited_convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::shell_inherited_reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        ffi::shell_inherited_complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren
+    pub fn nb_children(&self) -> i32 {
+        ffi::shell_inherited_nb_children(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        ffi::shell_inherited_empty_copy(self)
     }
 }
 
@@ -276,6 +626,76 @@ impl Solid {
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Solid_to_owned(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNull
+    pub fn is_null(&self) -> bool {
+        ffi::solid_inherited_is_null(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        ffi::solid_inherited_nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free
+    pub fn free(&self) -> bool {
+        ffi::solid_inherited_free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked
+    pub fn locked(&self) -> bool {
+        ffi::solid_inherited_locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified
+    pub fn modified(&self) -> bool {
+        ffi::solid_inherited_modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked
+    pub fn checked(&self) -> bool {
+        ffi::solid_inherited_checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable
+    pub fn orientable(&self) -> bool {
+        ffi::solid_inherited_orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed
+    pub fn closed(&self) -> bool {
+        ffi::solid_inherited_closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite
+    pub fn infinite(&self) -> bool {
+        ffi::solid_inherited_infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex
+    pub fn convex(&self) -> bool {
+        ffi::solid_inherited_convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::solid_inherited_reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        ffi::solid_inherited_complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren
+    pub fn nb_children(&self) -> i32 {
+        ffi::solid_inherited_nb_children(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        ffi::solid_inherited_empty_copy(self)
     }
 }
 
@@ -309,6 +729,76 @@ impl Compound {
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::Compound_to_owned(self)
     }
+
+    /// Inherited from TopoDS_Shape: IsNull
+    pub fn is_null(&self) -> bool {
+        ffi::compound_inherited_is_null(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        ffi::compound_inherited_nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free
+    pub fn free(&self) -> bool {
+        ffi::compound_inherited_free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked
+    pub fn locked(&self) -> bool {
+        ffi::compound_inherited_locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified
+    pub fn modified(&self) -> bool {
+        ffi::compound_inherited_modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked
+    pub fn checked(&self) -> bool {
+        ffi::compound_inherited_checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable
+    pub fn orientable(&self) -> bool {
+        ffi::compound_inherited_orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed
+    pub fn closed(&self) -> bool {
+        ffi::compound_inherited_closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite
+    pub fn infinite(&self) -> bool {
+        ffi::compound_inherited_infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex
+    pub fn convex(&self) -> bool {
+        ffi::compound_inherited_convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::compound_inherited_reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        ffi::compound_inherited_complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren
+    pub fn nb_children(&self) -> i32 {
+        ffi::compound_inherited_nb_children(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        ffi::compound_inherited_empty_copy(self)
+    }
 }
 
 /// Describes a composite solid which
@@ -340,6 +830,76 @@ impl CompSolid {
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         ffi::CompSolid_to_owned(self)
+    }
+
+    /// Inherited from TopoDS_Shape: IsNull
+    pub fn is_null(&self) -> bool {
+        ffi::comp_solid_inherited_is_null(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Nullify
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        ffi::comp_solid_inherited_nullify(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Free
+    pub fn free(&self) -> bool {
+        ffi::comp_solid_inherited_free(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Locked
+    pub fn locked(&self) -> bool {
+        ffi::comp_solid_inherited_locked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Modified
+    pub fn modified(&self) -> bool {
+        ffi::comp_solid_inherited_modified(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Checked
+    pub fn checked(&self) -> bool {
+        ffi::comp_solid_inherited_checked(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Orientable
+    pub fn orientable(&self) -> bool {
+        ffi::comp_solid_inherited_orientable(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Closed
+    pub fn closed(&self) -> bool {
+        ffi::comp_solid_inherited_closed(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Infinite
+    pub fn infinite(&self) -> bool {
+        ffi::comp_solid_inherited_infinite(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Convex
+    pub fn convex(&self) -> bool {
+        ffi::comp_solid_inherited_convex(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Reverse
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        ffi::comp_solid_inherited_reverse(self)
+    }
+
+    /// Inherited from TopoDS_Shape: Complement
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        ffi::comp_solid_inherited_complement(self)
+    }
+
+    /// Inherited from TopoDS_Shape: NbChildren
+    pub fn nb_children(&self) -> i32 {
+        ffi::comp_solid_inherited_nb_children(self)
+    }
+
+    /// Inherited from TopoDS_Shape: EmptyCopy
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        ffi::comp_solid_inherited_empty_copy(self)
     }
 }
 
@@ -722,6 +1282,48 @@ pub(crate) mod ffi {
         /// Upcast TopoDS_Vertex to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_Vertex_as_TopoDS_Shape_mut"]
         fn vertex_as_shape_mut(self_: Pin<&mut Vertex>) -> Pin<&mut Shape>;
+        /// Inherited from TopoDS_Shape: IsNull
+        #[cxx_name = "TopoDS_Vertex_inherited_IsNull"]
+        fn vertex_inherited_is_null(self_: &Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify
+        #[cxx_name = "TopoDS_Vertex_inherited_Nullify"]
+        fn vertex_inherited_nullify(self_: Pin<&mut Vertex>);
+        /// Inherited from TopoDS_Shape: Free
+        #[cxx_name = "TopoDS_Vertex_inherited_Free"]
+        fn vertex_inherited_free(self_: &Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Locked
+        #[cxx_name = "TopoDS_Vertex_inherited_Locked"]
+        fn vertex_inherited_locked(self_: &Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Modified
+        #[cxx_name = "TopoDS_Vertex_inherited_Modified"]
+        fn vertex_inherited_modified(self_: &Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Checked
+        #[cxx_name = "TopoDS_Vertex_inherited_Checked"]
+        fn vertex_inherited_checked(self_: &Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable
+        #[cxx_name = "TopoDS_Vertex_inherited_Orientable"]
+        fn vertex_inherited_orientable(self_: &Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Closed
+        #[cxx_name = "TopoDS_Vertex_inherited_Closed"]
+        fn vertex_inherited_closed(self_: &Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite
+        #[cxx_name = "TopoDS_Vertex_inherited_Infinite"]
+        fn vertex_inherited_infinite(self_: &Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Convex
+        #[cxx_name = "TopoDS_Vertex_inherited_Convex"]
+        fn vertex_inherited_convex(self_: &Vertex) -> bool;
+        /// Inherited from TopoDS_Shape: Reverse
+        #[cxx_name = "TopoDS_Vertex_inherited_Reverse"]
+        fn vertex_inherited_reverse(self_: Pin<&mut Vertex>);
+        /// Inherited from TopoDS_Shape: Complement
+        #[cxx_name = "TopoDS_Vertex_inherited_Complement"]
+        fn vertex_inherited_complement(self_: Pin<&mut Vertex>);
+        /// Inherited from TopoDS_Shape: NbChildren
+        #[cxx_name = "TopoDS_Vertex_inherited_NbChildren"]
+        fn vertex_inherited_nb_children(self_: &Vertex) -> i32;
+        /// Inherited from TopoDS_Shape: EmptyCopy
+        #[cxx_name = "TopoDS_Vertex_inherited_EmptyCopy"]
+        fn vertex_inherited_empty_copy(self_: Pin<&mut Vertex>);
         /// Clone TopoDS_Vertex into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Vertex_to_owned(self_: &Vertex) -> UniquePtr<Vertex>;
@@ -749,6 +1351,48 @@ pub(crate) mod ffi {
         /// Upcast TopoDS_Edge to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_Edge_as_TopoDS_Shape_mut"]
         fn edge_as_shape_mut(self_: Pin<&mut Edge>) -> Pin<&mut Shape>;
+        /// Inherited from TopoDS_Shape: IsNull
+        #[cxx_name = "TopoDS_Edge_inherited_IsNull"]
+        fn edge_inherited_is_null(self_: &Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify
+        #[cxx_name = "TopoDS_Edge_inherited_Nullify"]
+        fn edge_inherited_nullify(self_: Pin<&mut Edge>);
+        /// Inherited from TopoDS_Shape: Free
+        #[cxx_name = "TopoDS_Edge_inherited_Free"]
+        fn edge_inherited_free(self_: &Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Locked
+        #[cxx_name = "TopoDS_Edge_inherited_Locked"]
+        fn edge_inherited_locked(self_: &Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Modified
+        #[cxx_name = "TopoDS_Edge_inherited_Modified"]
+        fn edge_inherited_modified(self_: &Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Checked
+        #[cxx_name = "TopoDS_Edge_inherited_Checked"]
+        fn edge_inherited_checked(self_: &Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable
+        #[cxx_name = "TopoDS_Edge_inherited_Orientable"]
+        fn edge_inherited_orientable(self_: &Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Closed
+        #[cxx_name = "TopoDS_Edge_inherited_Closed"]
+        fn edge_inherited_closed(self_: &Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite
+        #[cxx_name = "TopoDS_Edge_inherited_Infinite"]
+        fn edge_inherited_infinite(self_: &Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Convex
+        #[cxx_name = "TopoDS_Edge_inherited_Convex"]
+        fn edge_inherited_convex(self_: &Edge) -> bool;
+        /// Inherited from TopoDS_Shape: Reverse
+        #[cxx_name = "TopoDS_Edge_inherited_Reverse"]
+        fn edge_inherited_reverse(self_: Pin<&mut Edge>);
+        /// Inherited from TopoDS_Shape: Complement
+        #[cxx_name = "TopoDS_Edge_inherited_Complement"]
+        fn edge_inherited_complement(self_: Pin<&mut Edge>);
+        /// Inherited from TopoDS_Shape: NbChildren
+        #[cxx_name = "TopoDS_Edge_inherited_NbChildren"]
+        fn edge_inherited_nb_children(self_: &Edge) -> i32;
+        /// Inherited from TopoDS_Shape: EmptyCopy
+        #[cxx_name = "TopoDS_Edge_inherited_EmptyCopy"]
+        fn edge_inherited_empty_copy(self_: Pin<&mut Edge>);
         /// Clone TopoDS_Edge into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Edge_to_owned(self_: &Edge) -> UniquePtr<Edge>;
@@ -775,6 +1419,48 @@ pub(crate) mod ffi {
         /// Upcast TopoDS_Wire to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_Wire_as_TopoDS_Shape_mut"]
         fn wire_as_shape_mut(self_: Pin<&mut Wire>) -> Pin<&mut Shape>;
+        /// Inherited from TopoDS_Shape: IsNull
+        #[cxx_name = "TopoDS_Wire_inherited_IsNull"]
+        fn wire_inherited_is_null(self_: &Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify
+        #[cxx_name = "TopoDS_Wire_inherited_Nullify"]
+        fn wire_inherited_nullify(self_: Pin<&mut Wire>);
+        /// Inherited from TopoDS_Shape: Free
+        #[cxx_name = "TopoDS_Wire_inherited_Free"]
+        fn wire_inherited_free(self_: &Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Locked
+        #[cxx_name = "TopoDS_Wire_inherited_Locked"]
+        fn wire_inherited_locked(self_: &Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Modified
+        #[cxx_name = "TopoDS_Wire_inherited_Modified"]
+        fn wire_inherited_modified(self_: &Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Checked
+        #[cxx_name = "TopoDS_Wire_inherited_Checked"]
+        fn wire_inherited_checked(self_: &Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable
+        #[cxx_name = "TopoDS_Wire_inherited_Orientable"]
+        fn wire_inherited_orientable(self_: &Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Closed
+        #[cxx_name = "TopoDS_Wire_inherited_Closed"]
+        fn wire_inherited_closed(self_: &Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite
+        #[cxx_name = "TopoDS_Wire_inherited_Infinite"]
+        fn wire_inherited_infinite(self_: &Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Convex
+        #[cxx_name = "TopoDS_Wire_inherited_Convex"]
+        fn wire_inherited_convex(self_: &Wire) -> bool;
+        /// Inherited from TopoDS_Shape: Reverse
+        #[cxx_name = "TopoDS_Wire_inherited_Reverse"]
+        fn wire_inherited_reverse(self_: Pin<&mut Wire>);
+        /// Inherited from TopoDS_Shape: Complement
+        #[cxx_name = "TopoDS_Wire_inherited_Complement"]
+        fn wire_inherited_complement(self_: Pin<&mut Wire>);
+        /// Inherited from TopoDS_Shape: NbChildren
+        #[cxx_name = "TopoDS_Wire_inherited_NbChildren"]
+        fn wire_inherited_nb_children(self_: &Wire) -> i32;
+        /// Inherited from TopoDS_Shape: EmptyCopy
+        #[cxx_name = "TopoDS_Wire_inherited_EmptyCopy"]
+        fn wire_inherited_empty_copy(self_: Pin<&mut Wire>);
         /// Clone TopoDS_Wire into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Wire_to_owned(self_: &Wire) -> UniquePtr<Wire>;
@@ -801,6 +1487,48 @@ pub(crate) mod ffi {
         /// Upcast TopoDS_Face to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_Face_as_TopoDS_Shape_mut"]
         fn face_as_shape_mut(self_: Pin<&mut Face>) -> Pin<&mut Shape>;
+        /// Inherited from TopoDS_Shape: IsNull
+        #[cxx_name = "TopoDS_Face_inherited_IsNull"]
+        fn face_inherited_is_null(self_: &Face) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify
+        #[cxx_name = "TopoDS_Face_inherited_Nullify"]
+        fn face_inherited_nullify(self_: Pin<&mut Face>);
+        /// Inherited from TopoDS_Shape: Free
+        #[cxx_name = "TopoDS_Face_inherited_Free"]
+        fn face_inherited_free(self_: &Face) -> bool;
+        /// Inherited from TopoDS_Shape: Locked
+        #[cxx_name = "TopoDS_Face_inherited_Locked"]
+        fn face_inherited_locked(self_: &Face) -> bool;
+        /// Inherited from TopoDS_Shape: Modified
+        #[cxx_name = "TopoDS_Face_inherited_Modified"]
+        fn face_inherited_modified(self_: &Face) -> bool;
+        /// Inherited from TopoDS_Shape: Checked
+        #[cxx_name = "TopoDS_Face_inherited_Checked"]
+        fn face_inherited_checked(self_: &Face) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable
+        #[cxx_name = "TopoDS_Face_inherited_Orientable"]
+        fn face_inherited_orientable(self_: &Face) -> bool;
+        /// Inherited from TopoDS_Shape: Closed
+        #[cxx_name = "TopoDS_Face_inherited_Closed"]
+        fn face_inherited_closed(self_: &Face) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite
+        #[cxx_name = "TopoDS_Face_inherited_Infinite"]
+        fn face_inherited_infinite(self_: &Face) -> bool;
+        /// Inherited from TopoDS_Shape: Convex
+        #[cxx_name = "TopoDS_Face_inherited_Convex"]
+        fn face_inherited_convex(self_: &Face) -> bool;
+        /// Inherited from TopoDS_Shape: Reverse
+        #[cxx_name = "TopoDS_Face_inherited_Reverse"]
+        fn face_inherited_reverse(self_: Pin<&mut Face>);
+        /// Inherited from TopoDS_Shape: Complement
+        #[cxx_name = "TopoDS_Face_inherited_Complement"]
+        fn face_inherited_complement(self_: Pin<&mut Face>);
+        /// Inherited from TopoDS_Shape: NbChildren
+        #[cxx_name = "TopoDS_Face_inherited_NbChildren"]
+        fn face_inherited_nb_children(self_: &Face) -> i32;
+        /// Inherited from TopoDS_Shape: EmptyCopy
+        #[cxx_name = "TopoDS_Face_inherited_EmptyCopy"]
+        fn face_inherited_empty_copy(self_: Pin<&mut Face>);
         /// Clone TopoDS_Face into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Face_to_owned(self_: &Face) -> UniquePtr<Face>;
@@ -827,6 +1555,48 @@ pub(crate) mod ffi {
         /// Upcast TopoDS_Shell to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_Shell_as_TopoDS_Shape_mut"]
         fn shell_as_shape_mut(self_: Pin<&mut Shell>) -> Pin<&mut Shape>;
+        /// Inherited from TopoDS_Shape: IsNull
+        #[cxx_name = "TopoDS_Shell_inherited_IsNull"]
+        fn shell_inherited_is_null(self_: &Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify
+        #[cxx_name = "TopoDS_Shell_inherited_Nullify"]
+        fn shell_inherited_nullify(self_: Pin<&mut Shell>);
+        /// Inherited from TopoDS_Shape: Free
+        #[cxx_name = "TopoDS_Shell_inherited_Free"]
+        fn shell_inherited_free(self_: &Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Locked
+        #[cxx_name = "TopoDS_Shell_inherited_Locked"]
+        fn shell_inherited_locked(self_: &Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Modified
+        #[cxx_name = "TopoDS_Shell_inherited_Modified"]
+        fn shell_inherited_modified(self_: &Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Checked
+        #[cxx_name = "TopoDS_Shell_inherited_Checked"]
+        fn shell_inherited_checked(self_: &Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable
+        #[cxx_name = "TopoDS_Shell_inherited_Orientable"]
+        fn shell_inherited_orientable(self_: &Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Closed
+        #[cxx_name = "TopoDS_Shell_inherited_Closed"]
+        fn shell_inherited_closed(self_: &Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite
+        #[cxx_name = "TopoDS_Shell_inherited_Infinite"]
+        fn shell_inherited_infinite(self_: &Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Convex
+        #[cxx_name = "TopoDS_Shell_inherited_Convex"]
+        fn shell_inherited_convex(self_: &Shell) -> bool;
+        /// Inherited from TopoDS_Shape: Reverse
+        #[cxx_name = "TopoDS_Shell_inherited_Reverse"]
+        fn shell_inherited_reverse(self_: Pin<&mut Shell>);
+        /// Inherited from TopoDS_Shape: Complement
+        #[cxx_name = "TopoDS_Shell_inherited_Complement"]
+        fn shell_inherited_complement(self_: Pin<&mut Shell>);
+        /// Inherited from TopoDS_Shape: NbChildren
+        #[cxx_name = "TopoDS_Shell_inherited_NbChildren"]
+        fn shell_inherited_nb_children(self_: &Shell) -> i32;
+        /// Inherited from TopoDS_Shape: EmptyCopy
+        #[cxx_name = "TopoDS_Shell_inherited_EmptyCopy"]
+        fn shell_inherited_empty_copy(self_: Pin<&mut Shell>);
         /// Clone TopoDS_Shell into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Shell_to_owned(self_: &Shell) -> UniquePtr<Shell>;
@@ -854,6 +1624,48 @@ pub(crate) mod ffi {
         /// Upcast TopoDS_Solid to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_Solid_as_TopoDS_Shape_mut"]
         fn solid_as_shape_mut(self_: Pin<&mut Solid>) -> Pin<&mut Shape>;
+        /// Inherited from TopoDS_Shape: IsNull
+        #[cxx_name = "TopoDS_Solid_inherited_IsNull"]
+        fn solid_inherited_is_null(self_: &Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify
+        #[cxx_name = "TopoDS_Solid_inherited_Nullify"]
+        fn solid_inherited_nullify(self_: Pin<&mut Solid>);
+        /// Inherited from TopoDS_Shape: Free
+        #[cxx_name = "TopoDS_Solid_inherited_Free"]
+        fn solid_inherited_free(self_: &Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Locked
+        #[cxx_name = "TopoDS_Solid_inherited_Locked"]
+        fn solid_inherited_locked(self_: &Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Modified
+        #[cxx_name = "TopoDS_Solid_inherited_Modified"]
+        fn solid_inherited_modified(self_: &Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Checked
+        #[cxx_name = "TopoDS_Solid_inherited_Checked"]
+        fn solid_inherited_checked(self_: &Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable
+        #[cxx_name = "TopoDS_Solid_inherited_Orientable"]
+        fn solid_inherited_orientable(self_: &Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Closed
+        #[cxx_name = "TopoDS_Solid_inherited_Closed"]
+        fn solid_inherited_closed(self_: &Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite
+        #[cxx_name = "TopoDS_Solid_inherited_Infinite"]
+        fn solid_inherited_infinite(self_: &Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Convex
+        #[cxx_name = "TopoDS_Solid_inherited_Convex"]
+        fn solid_inherited_convex(self_: &Solid) -> bool;
+        /// Inherited from TopoDS_Shape: Reverse
+        #[cxx_name = "TopoDS_Solid_inherited_Reverse"]
+        fn solid_inherited_reverse(self_: Pin<&mut Solid>);
+        /// Inherited from TopoDS_Shape: Complement
+        #[cxx_name = "TopoDS_Solid_inherited_Complement"]
+        fn solid_inherited_complement(self_: Pin<&mut Solid>);
+        /// Inherited from TopoDS_Shape: NbChildren
+        #[cxx_name = "TopoDS_Solid_inherited_NbChildren"]
+        fn solid_inherited_nb_children(self_: &Solid) -> i32;
+        /// Inherited from TopoDS_Shape: EmptyCopy
+        #[cxx_name = "TopoDS_Solid_inherited_EmptyCopy"]
+        fn solid_inherited_empty_copy(self_: Pin<&mut Solid>);
         /// Clone TopoDS_Solid into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Solid_to_owned(self_: &Solid) -> UniquePtr<Solid>;
@@ -882,6 +1694,48 @@ pub(crate) mod ffi {
         /// Upcast TopoDS_Compound to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_Compound_as_TopoDS_Shape_mut"]
         fn compound_as_shape_mut(self_: Pin<&mut Compound>) -> Pin<&mut Shape>;
+        /// Inherited from TopoDS_Shape: IsNull
+        #[cxx_name = "TopoDS_Compound_inherited_IsNull"]
+        fn compound_inherited_is_null(self_: &Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify
+        #[cxx_name = "TopoDS_Compound_inherited_Nullify"]
+        fn compound_inherited_nullify(self_: Pin<&mut Compound>);
+        /// Inherited from TopoDS_Shape: Free
+        #[cxx_name = "TopoDS_Compound_inherited_Free"]
+        fn compound_inherited_free(self_: &Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Locked
+        #[cxx_name = "TopoDS_Compound_inherited_Locked"]
+        fn compound_inherited_locked(self_: &Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Modified
+        #[cxx_name = "TopoDS_Compound_inherited_Modified"]
+        fn compound_inherited_modified(self_: &Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Checked
+        #[cxx_name = "TopoDS_Compound_inherited_Checked"]
+        fn compound_inherited_checked(self_: &Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable
+        #[cxx_name = "TopoDS_Compound_inherited_Orientable"]
+        fn compound_inherited_orientable(self_: &Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Closed
+        #[cxx_name = "TopoDS_Compound_inherited_Closed"]
+        fn compound_inherited_closed(self_: &Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite
+        #[cxx_name = "TopoDS_Compound_inherited_Infinite"]
+        fn compound_inherited_infinite(self_: &Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Convex
+        #[cxx_name = "TopoDS_Compound_inherited_Convex"]
+        fn compound_inherited_convex(self_: &Compound) -> bool;
+        /// Inherited from TopoDS_Shape: Reverse
+        #[cxx_name = "TopoDS_Compound_inherited_Reverse"]
+        fn compound_inherited_reverse(self_: Pin<&mut Compound>);
+        /// Inherited from TopoDS_Shape: Complement
+        #[cxx_name = "TopoDS_Compound_inherited_Complement"]
+        fn compound_inherited_complement(self_: Pin<&mut Compound>);
+        /// Inherited from TopoDS_Shape: NbChildren
+        #[cxx_name = "TopoDS_Compound_inherited_NbChildren"]
+        fn compound_inherited_nb_children(self_: &Compound) -> i32;
+        /// Inherited from TopoDS_Shape: EmptyCopy
+        #[cxx_name = "TopoDS_Compound_inherited_EmptyCopy"]
+        fn compound_inherited_empty_copy(self_: Pin<&mut Compound>);
         /// Clone TopoDS_Compound into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn Compound_to_owned(self_: &Compound) -> UniquePtr<Compound>;
@@ -910,6 +1764,48 @@ pub(crate) mod ffi {
         /// Upcast TopoDS_CompSolid to TopoDS_Shape (mutable)
         #[cxx_name = "TopoDS_CompSolid_as_TopoDS_Shape_mut"]
         fn comp_solid_as_shape_mut(self_: Pin<&mut CompSolid>) -> Pin<&mut Shape>;
+        /// Inherited from TopoDS_Shape: IsNull
+        #[cxx_name = "TopoDS_CompSolid_inherited_IsNull"]
+        fn comp_solid_inherited_is_null(self_: &CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Nullify
+        #[cxx_name = "TopoDS_CompSolid_inherited_Nullify"]
+        fn comp_solid_inherited_nullify(self_: Pin<&mut CompSolid>);
+        /// Inherited from TopoDS_Shape: Free
+        #[cxx_name = "TopoDS_CompSolid_inherited_Free"]
+        fn comp_solid_inherited_free(self_: &CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Locked
+        #[cxx_name = "TopoDS_CompSolid_inherited_Locked"]
+        fn comp_solid_inherited_locked(self_: &CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Modified
+        #[cxx_name = "TopoDS_CompSolid_inherited_Modified"]
+        fn comp_solid_inherited_modified(self_: &CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Checked
+        #[cxx_name = "TopoDS_CompSolid_inherited_Checked"]
+        fn comp_solid_inherited_checked(self_: &CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Orientable
+        #[cxx_name = "TopoDS_CompSolid_inherited_Orientable"]
+        fn comp_solid_inherited_orientable(self_: &CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Closed
+        #[cxx_name = "TopoDS_CompSolid_inherited_Closed"]
+        fn comp_solid_inherited_closed(self_: &CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Infinite
+        #[cxx_name = "TopoDS_CompSolid_inherited_Infinite"]
+        fn comp_solid_inherited_infinite(self_: &CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Convex
+        #[cxx_name = "TopoDS_CompSolid_inherited_Convex"]
+        fn comp_solid_inherited_convex(self_: &CompSolid) -> bool;
+        /// Inherited from TopoDS_Shape: Reverse
+        #[cxx_name = "TopoDS_CompSolid_inherited_Reverse"]
+        fn comp_solid_inherited_reverse(self_: Pin<&mut CompSolid>);
+        /// Inherited from TopoDS_Shape: Complement
+        #[cxx_name = "TopoDS_CompSolid_inherited_Complement"]
+        fn comp_solid_inherited_complement(self_: Pin<&mut CompSolid>);
+        /// Inherited from TopoDS_Shape: NbChildren
+        #[cxx_name = "TopoDS_CompSolid_inherited_NbChildren"]
+        fn comp_solid_inherited_nb_children(self_: &CompSolid) -> i32;
+        /// Inherited from TopoDS_Shape: EmptyCopy
+        #[cxx_name = "TopoDS_CompSolid_inherited_EmptyCopy"]
+        fn comp_solid_inherited_empty_copy(self_: Pin<&mut CompSolid>);
         /// Clone TopoDS_CompSolid into a new UniquePtr via copy constructor
         #[cxx_name = "construct_unique"]
         fn CompSolid_to_owned(self_: &CompSolid) -> UniquePtr<CompSolid>;

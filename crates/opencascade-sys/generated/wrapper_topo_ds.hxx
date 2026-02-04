@@ -65,6 +65,48 @@ inline std::unique_ptr<TopoDS_Vertex> TopoDS_Vertex_ctor() {
 
 inline const TopoDS_Shape& TopoDS_Vertex_as_TopoDS_Shape(const TopoDS_Vertex& self) { return self; }
 inline TopoDS_Shape& TopoDS_Vertex_as_TopoDS_Shape_mut(TopoDS_Vertex& self) { return self; }
+inline bool TopoDS_Vertex_inherited_IsNull(const TopoDS_Vertex& self) {
+    return self.IsNull();
+}
+inline void TopoDS_Vertex_inherited_Nullify(TopoDS_Vertex& self) {
+    self.Nullify();
+}
+inline bool TopoDS_Vertex_inherited_Free(const TopoDS_Vertex& self) {
+    return self.Free();
+}
+inline bool TopoDS_Vertex_inherited_Locked(const TopoDS_Vertex& self) {
+    return self.Locked();
+}
+inline bool TopoDS_Vertex_inherited_Modified(const TopoDS_Vertex& self) {
+    return self.Modified();
+}
+inline bool TopoDS_Vertex_inherited_Checked(const TopoDS_Vertex& self) {
+    return self.Checked();
+}
+inline bool TopoDS_Vertex_inherited_Orientable(const TopoDS_Vertex& self) {
+    return self.Orientable();
+}
+inline bool TopoDS_Vertex_inherited_Closed(const TopoDS_Vertex& self) {
+    return self.Closed();
+}
+inline bool TopoDS_Vertex_inherited_Infinite(const TopoDS_Vertex& self) {
+    return self.Infinite();
+}
+inline bool TopoDS_Vertex_inherited_Convex(const TopoDS_Vertex& self) {
+    return self.Convex();
+}
+inline void TopoDS_Vertex_inherited_Reverse(TopoDS_Vertex& self) {
+    self.Reverse();
+}
+inline void TopoDS_Vertex_inherited_Complement(TopoDS_Vertex& self) {
+    self.Complement();
+}
+inline Standard_Integer TopoDS_Vertex_inherited_NbChildren(const TopoDS_Vertex& self) {
+    return self.NbChildren();
+}
+inline void TopoDS_Vertex_inherited_EmptyCopy(TopoDS_Vertex& self) {
+    self.EmptyCopy();
+}
 
 // ========================
 // TopoDS_Edge wrappers
@@ -76,6 +118,48 @@ inline std::unique_ptr<TopoDS_Edge> TopoDS_Edge_ctor() {
 
 inline const TopoDS_Shape& TopoDS_Edge_as_TopoDS_Shape(const TopoDS_Edge& self) { return self; }
 inline TopoDS_Shape& TopoDS_Edge_as_TopoDS_Shape_mut(TopoDS_Edge& self) { return self; }
+inline bool TopoDS_Edge_inherited_IsNull(const TopoDS_Edge& self) {
+    return self.IsNull();
+}
+inline void TopoDS_Edge_inherited_Nullify(TopoDS_Edge& self) {
+    self.Nullify();
+}
+inline bool TopoDS_Edge_inherited_Free(const TopoDS_Edge& self) {
+    return self.Free();
+}
+inline bool TopoDS_Edge_inherited_Locked(const TopoDS_Edge& self) {
+    return self.Locked();
+}
+inline bool TopoDS_Edge_inherited_Modified(const TopoDS_Edge& self) {
+    return self.Modified();
+}
+inline bool TopoDS_Edge_inherited_Checked(const TopoDS_Edge& self) {
+    return self.Checked();
+}
+inline bool TopoDS_Edge_inherited_Orientable(const TopoDS_Edge& self) {
+    return self.Orientable();
+}
+inline bool TopoDS_Edge_inherited_Closed(const TopoDS_Edge& self) {
+    return self.Closed();
+}
+inline bool TopoDS_Edge_inherited_Infinite(const TopoDS_Edge& self) {
+    return self.Infinite();
+}
+inline bool TopoDS_Edge_inherited_Convex(const TopoDS_Edge& self) {
+    return self.Convex();
+}
+inline void TopoDS_Edge_inherited_Reverse(TopoDS_Edge& self) {
+    self.Reverse();
+}
+inline void TopoDS_Edge_inherited_Complement(TopoDS_Edge& self) {
+    self.Complement();
+}
+inline Standard_Integer TopoDS_Edge_inherited_NbChildren(const TopoDS_Edge& self) {
+    return self.NbChildren();
+}
+inline void TopoDS_Edge_inherited_EmptyCopy(TopoDS_Edge& self) {
+    self.EmptyCopy();
+}
 
 // ========================
 // TopoDS_Wire wrappers
@@ -87,6 +171,48 @@ inline std::unique_ptr<TopoDS_Wire> TopoDS_Wire_ctor() {
 
 inline const TopoDS_Shape& TopoDS_Wire_as_TopoDS_Shape(const TopoDS_Wire& self) { return self; }
 inline TopoDS_Shape& TopoDS_Wire_as_TopoDS_Shape_mut(TopoDS_Wire& self) { return self; }
+inline bool TopoDS_Wire_inherited_IsNull(const TopoDS_Wire& self) {
+    return self.IsNull();
+}
+inline void TopoDS_Wire_inherited_Nullify(TopoDS_Wire& self) {
+    self.Nullify();
+}
+inline bool TopoDS_Wire_inherited_Free(const TopoDS_Wire& self) {
+    return self.Free();
+}
+inline bool TopoDS_Wire_inherited_Locked(const TopoDS_Wire& self) {
+    return self.Locked();
+}
+inline bool TopoDS_Wire_inherited_Modified(const TopoDS_Wire& self) {
+    return self.Modified();
+}
+inline bool TopoDS_Wire_inherited_Checked(const TopoDS_Wire& self) {
+    return self.Checked();
+}
+inline bool TopoDS_Wire_inherited_Orientable(const TopoDS_Wire& self) {
+    return self.Orientable();
+}
+inline bool TopoDS_Wire_inherited_Closed(const TopoDS_Wire& self) {
+    return self.Closed();
+}
+inline bool TopoDS_Wire_inherited_Infinite(const TopoDS_Wire& self) {
+    return self.Infinite();
+}
+inline bool TopoDS_Wire_inherited_Convex(const TopoDS_Wire& self) {
+    return self.Convex();
+}
+inline void TopoDS_Wire_inherited_Reverse(TopoDS_Wire& self) {
+    self.Reverse();
+}
+inline void TopoDS_Wire_inherited_Complement(TopoDS_Wire& self) {
+    self.Complement();
+}
+inline Standard_Integer TopoDS_Wire_inherited_NbChildren(const TopoDS_Wire& self) {
+    return self.NbChildren();
+}
+inline void TopoDS_Wire_inherited_EmptyCopy(TopoDS_Wire& self) {
+    self.EmptyCopy();
+}
 
 // ========================
 // TopoDS_Face wrappers
@@ -98,6 +224,48 @@ inline std::unique_ptr<TopoDS_Face> TopoDS_Face_ctor() {
 
 inline const TopoDS_Shape& TopoDS_Face_as_TopoDS_Shape(const TopoDS_Face& self) { return self; }
 inline TopoDS_Shape& TopoDS_Face_as_TopoDS_Shape_mut(TopoDS_Face& self) { return self; }
+inline bool TopoDS_Face_inherited_IsNull(const TopoDS_Face& self) {
+    return self.IsNull();
+}
+inline void TopoDS_Face_inherited_Nullify(TopoDS_Face& self) {
+    self.Nullify();
+}
+inline bool TopoDS_Face_inherited_Free(const TopoDS_Face& self) {
+    return self.Free();
+}
+inline bool TopoDS_Face_inherited_Locked(const TopoDS_Face& self) {
+    return self.Locked();
+}
+inline bool TopoDS_Face_inherited_Modified(const TopoDS_Face& self) {
+    return self.Modified();
+}
+inline bool TopoDS_Face_inherited_Checked(const TopoDS_Face& self) {
+    return self.Checked();
+}
+inline bool TopoDS_Face_inherited_Orientable(const TopoDS_Face& self) {
+    return self.Orientable();
+}
+inline bool TopoDS_Face_inherited_Closed(const TopoDS_Face& self) {
+    return self.Closed();
+}
+inline bool TopoDS_Face_inherited_Infinite(const TopoDS_Face& self) {
+    return self.Infinite();
+}
+inline bool TopoDS_Face_inherited_Convex(const TopoDS_Face& self) {
+    return self.Convex();
+}
+inline void TopoDS_Face_inherited_Reverse(TopoDS_Face& self) {
+    self.Reverse();
+}
+inline void TopoDS_Face_inherited_Complement(TopoDS_Face& self) {
+    self.Complement();
+}
+inline Standard_Integer TopoDS_Face_inherited_NbChildren(const TopoDS_Face& self) {
+    return self.NbChildren();
+}
+inline void TopoDS_Face_inherited_EmptyCopy(TopoDS_Face& self) {
+    self.EmptyCopy();
+}
 
 // ========================
 // TopoDS_Shell wrappers
@@ -109,6 +277,48 @@ inline std::unique_ptr<TopoDS_Shell> TopoDS_Shell_ctor() {
 
 inline const TopoDS_Shape& TopoDS_Shell_as_TopoDS_Shape(const TopoDS_Shell& self) { return self; }
 inline TopoDS_Shape& TopoDS_Shell_as_TopoDS_Shape_mut(TopoDS_Shell& self) { return self; }
+inline bool TopoDS_Shell_inherited_IsNull(const TopoDS_Shell& self) {
+    return self.IsNull();
+}
+inline void TopoDS_Shell_inherited_Nullify(TopoDS_Shell& self) {
+    self.Nullify();
+}
+inline bool TopoDS_Shell_inherited_Free(const TopoDS_Shell& self) {
+    return self.Free();
+}
+inline bool TopoDS_Shell_inherited_Locked(const TopoDS_Shell& self) {
+    return self.Locked();
+}
+inline bool TopoDS_Shell_inherited_Modified(const TopoDS_Shell& self) {
+    return self.Modified();
+}
+inline bool TopoDS_Shell_inherited_Checked(const TopoDS_Shell& self) {
+    return self.Checked();
+}
+inline bool TopoDS_Shell_inherited_Orientable(const TopoDS_Shell& self) {
+    return self.Orientable();
+}
+inline bool TopoDS_Shell_inherited_Closed(const TopoDS_Shell& self) {
+    return self.Closed();
+}
+inline bool TopoDS_Shell_inherited_Infinite(const TopoDS_Shell& self) {
+    return self.Infinite();
+}
+inline bool TopoDS_Shell_inherited_Convex(const TopoDS_Shell& self) {
+    return self.Convex();
+}
+inline void TopoDS_Shell_inherited_Reverse(TopoDS_Shell& self) {
+    self.Reverse();
+}
+inline void TopoDS_Shell_inherited_Complement(TopoDS_Shell& self) {
+    self.Complement();
+}
+inline Standard_Integer TopoDS_Shell_inherited_NbChildren(const TopoDS_Shell& self) {
+    return self.NbChildren();
+}
+inline void TopoDS_Shell_inherited_EmptyCopy(TopoDS_Shell& self) {
+    self.EmptyCopy();
+}
 
 // ========================
 // TopoDS_Solid wrappers
@@ -120,6 +330,48 @@ inline std::unique_ptr<TopoDS_Solid> TopoDS_Solid_ctor() {
 
 inline const TopoDS_Shape& TopoDS_Solid_as_TopoDS_Shape(const TopoDS_Solid& self) { return self; }
 inline TopoDS_Shape& TopoDS_Solid_as_TopoDS_Shape_mut(TopoDS_Solid& self) { return self; }
+inline bool TopoDS_Solid_inherited_IsNull(const TopoDS_Solid& self) {
+    return self.IsNull();
+}
+inline void TopoDS_Solid_inherited_Nullify(TopoDS_Solid& self) {
+    self.Nullify();
+}
+inline bool TopoDS_Solid_inherited_Free(const TopoDS_Solid& self) {
+    return self.Free();
+}
+inline bool TopoDS_Solid_inherited_Locked(const TopoDS_Solid& self) {
+    return self.Locked();
+}
+inline bool TopoDS_Solid_inherited_Modified(const TopoDS_Solid& self) {
+    return self.Modified();
+}
+inline bool TopoDS_Solid_inherited_Checked(const TopoDS_Solid& self) {
+    return self.Checked();
+}
+inline bool TopoDS_Solid_inherited_Orientable(const TopoDS_Solid& self) {
+    return self.Orientable();
+}
+inline bool TopoDS_Solid_inherited_Closed(const TopoDS_Solid& self) {
+    return self.Closed();
+}
+inline bool TopoDS_Solid_inherited_Infinite(const TopoDS_Solid& self) {
+    return self.Infinite();
+}
+inline bool TopoDS_Solid_inherited_Convex(const TopoDS_Solid& self) {
+    return self.Convex();
+}
+inline void TopoDS_Solid_inherited_Reverse(TopoDS_Solid& self) {
+    self.Reverse();
+}
+inline void TopoDS_Solid_inherited_Complement(TopoDS_Solid& self) {
+    self.Complement();
+}
+inline Standard_Integer TopoDS_Solid_inherited_NbChildren(const TopoDS_Solid& self) {
+    return self.NbChildren();
+}
+inline void TopoDS_Solid_inherited_EmptyCopy(TopoDS_Solid& self) {
+    self.EmptyCopy();
+}
 
 // ========================
 // TopoDS_Compound wrappers
@@ -131,6 +383,48 @@ inline std::unique_ptr<TopoDS_Compound> TopoDS_Compound_ctor() {
 
 inline const TopoDS_Shape& TopoDS_Compound_as_TopoDS_Shape(const TopoDS_Compound& self) { return self; }
 inline TopoDS_Shape& TopoDS_Compound_as_TopoDS_Shape_mut(TopoDS_Compound& self) { return self; }
+inline bool TopoDS_Compound_inherited_IsNull(const TopoDS_Compound& self) {
+    return self.IsNull();
+}
+inline void TopoDS_Compound_inherited_Nullify(TopoDS_Compound& self) {
+    self.Nullify();
+}
+inline bool TopoDS_Compound_inherited_Free(const TopoDS_Compound& self) {
+    return self.Free();
+}
+inline bool TopoDS_Compound_inherited_Locked(const TopoDS_Compound& self) {
+    return self.Locked();
+}
+inline bool TopoDS_Compound_inherited_Modified(const TopoDS_Compound& self) {
+    return self.Modified();
+}
+inline bool TopoDS_Compound_inherited_Checked(const TopoDS_Compound& self) {
+    return self.Checked();
+}
+inline bool TopoDS_Compound_inherited_Orientable(const TopoDS_Compound& self) {
+    return self.Orientable();
+}
+inline bool TopoDS_Compound_inherited_Closed(const TopoDS_Compound& self) {
+    return self.Closed();
+}
+inline bool TopoDS_Compound_inherited_Infinite(const TopoDS_Compound& self) {
+    return self.Infinite();
+}
+inline bool TopoDS_Compound_inherited_Convex(const TopoDS_Compound& self) {
+    return self.Convex();
+}
+inline void TopoDS_Compound_inherited_Reverse(TopoDS_Compound& self) {
+    self.Reverse();
+}
+inline void TopoDS_Compound_inherited_Complement(TopoDS_Compound& self) {
+    self.Complement();
+}
+inline Standard_Integer TopoDS_Compound_inherited_NbChildren(const TopoDS_Compound& self) {
+    return self.NbChildren();
+}
+inline void TopoDS_Compound_inherited_EmptyCopy(TopoDS_Compound& self) {
+    self.EmptyCopy();
+}
 
 // ========================
 // TopoDS_CompSolid wrappers
@@ -142,6 +436,48 @@ inline std::unique_ptr<TopoDS_CompSolid> TopoDS_CompSolid_ctor() {
 
 inline const TopoDS_Shape& TopoDS_CompSolid_as_TopoDS_Shape(const TopoDS_CompSolid& self) { return self; }
 inline TopoDS_Shape& TopoDS_CompSolid_as_TopoDS_Shape_mut(TopoDS_CompSolid& self) { return self; }
+inline bool TopoDS_CompSolid_inherited_IsNull(const TopoDS_CompSolid& self) {
+    return self.IsNull();
+}
+inline void TopoDS_CompSolid_inherited_Nullify(TopoDS_CompSolid& self) {
+    self.Nullify();
+}
+inline bool TopoDS_CompSolid_inherited_Free(const TopoDS_CompSolid& self) {
+    return self.Free();
+}
+inline bool TopoDS_CompSolid_inherited_Locked(const TopoDS_CompSolid& self) {
+    return self.Locked();
+}
+inline bool TopoDS_CompSolid_inherited_Modified(const TopoDS_CompSolid& self) {
+    return self.Modified();
+}
+inline bool TopoDS_CompSolid_inherited_Checked(const TopoDS_CompSolid& self) {
+    return self.Checked();
+}
+inline bool TopoDS_CompSolid_inherited_Orientable(const TopoDS_CompSolid& self) {
+    return self.Orientable();
+}
+inline bool TopoDS_CompSolid_inherited_Closed(const TopoDS_CompSolid& self) {
+    return self.Closed();
+}
+inline bool TopoDS_CompSolid_inherited_Infinite(const TopoDS_CompSolid& self) {
+    return self.Infinite();
+}
+inline bool TopoDS_CompSolid_inherited_Convex(const TopoDS_CompSolid& self) {
+    return self.Convex();
+}
+inline void TopoDS_CompSolid_inherited_Reverse(TopoDS_CompSolid& self) {
+    self.Reverse();
+}
+inline void TopoDS_CompSolid_inherited_Complement(TopoDS_CompSolid& self) {
+    self.Complement();
+}
+inline Standard_Integer TopoDS_CompSolid_inherited_NbChildren(const TopoDS_CompSolid& self) {
+    return self.NbChildren();
+}
+inline void TopoDS_CompSolid_inherited_EmptyCopy(TopoDS_CompSolid& self) {
+    self.EmptyCopy();
+}
 
 // ========================
 // TopoDS_Builder wrappers
@@ -174,16 +510,16 @@ inline rust::String TopoDS_TShape_get_type_name() {
 }
 
 
+#include <TopoDS_CompSolid.hxx>
+#include <TopoDS_Shape.hxx>
+#include <TopoDS_Compound.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Shell.hxx>
-#include <TopoDS_Wire.hxx>
 #include <TopoDS_Solid.hxx>
-#include <TopoDS_CompSolid.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Compound.hxx>
 #include <TopoDS_Vertex.hxx>
-#include <TopoDS_Shape.hxx>
+#include <TopoDS_Edge.hxx>
+#include <TopoDS_Wire.hxx>
 
 // Namespace function wrappers for TopoDS
 inline const TopoDS_Vertex& TopoDS_fn_Vertex(const TopoDS_Shape& theShape) { return TopoDS::Vertex(theShape); }

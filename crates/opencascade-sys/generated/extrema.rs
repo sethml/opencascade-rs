@@ -147,6 +147,11 @@ impl POnSurfParams {
     pub fn as_p_on_surf_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut POnSurf> {
         ffi::p_on_surf_params_as_p_on_surf_mut(self)
     }
+
+    /// Inherited from Extrema_POnSurf: Parameter
+    pub fn parameter(&self, U: &mut f64, V: &mut f64) {
+        ffi::p_on_surf_params_inherited_parameter(self, U, V)
+    }
 }
 
 /// Functional for search of extremum of the distance between point P and
@@ -912,6 +917,9 @@ pub(crate) mod ffi {
         /// Upcast Extrema_POnSurfParams to Extrema_POnSurf (mutable)
         #[cxx_name = "Extrema_POnSurfParams_as_Extrema_POnSurf_mut"]
         fn p_on_surf_params_as_p_on_surf_mut(self_: Pin<&mut POnSurfParams>) -> Pin<&mut POnSurf>;
+        /// Inherited from Extrema_POnSurf: Parameter
+        #[cxx_name = "Extrema_POnSurfParams_inherited_Parameter"]
+        fn p_on_surf_params_inherited_parameter(self_: &POnSurfParams, U: &mut f64, V: &mut f64);
         /// ======================== Extrema_FuncPSNorm ========================
         /// **Source:** `Extrema_FuncPSNorm.hxx`:54 - `Extrema_FuncPSNorm`
         ///

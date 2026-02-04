@@ -155,6 +155,21 @@ inline rust::String ChFiDS_ElSpine_get_type_name() {
 
 inline const Adaptor3d_Curve& ChFiDS_ElSpine_as_Adaptor3d_Curve(const ChFiDS_ElSpine& self) { return self; }
 inline Adaptor3d_Curve& ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(ChFiDS_ElSpine& self) { return self; }
+inline bool ChFiDS_ElSpine_inherited_IsClosed(const ChFiDS_ElSpine& self) {
+    return self.IsClosed();
+}
+inline Standard_Integer ChFiDS_ElSpine_inherited_Degree(const ChFiDS_ElSpine& self) {
+    return self.Degree();
+}
+inline bool ChFiDS_ElSpine_inherited_IsRational(const ChFiDS_ElSpine& self) {
+    return self.IsRational();
+}
+inline Standard_Integer ChFiDS_ElSpine_inherited_NbPoles(const ChFiDS_ElSpine& self) {
+    return self.NbPoles();
+}
+inline Standard_Integer ChFiDS_ElSpine_inherited_NbKnots(const ChFiDS_ElSpine& self) {
+    return self.NbKnots();
+}
 
 // ========================
 // ChFiDS_SurfData wrappers

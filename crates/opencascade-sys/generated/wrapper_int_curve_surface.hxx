@@ -31,6 +31,21 @@ inline std::unique_ptr<IntCurveSurface_HInter> IntCurveSurface_HInter_ctor() {
 
 inline const IntCurveSurface_Intersection& IntCurveSurface_HInter_as_IntCurveSurface_Intersection(const IntCurveSurface_HInter& self) { return self; }
 inline IntCurveSurface_Intersection& IntCurveSurface_HInter_as_IntCurveSurface_Intersection_mut(IntCurveSurface_HInter& self) { return self; }
+inline bool IntCurveSurface_HInter_inherited_IsDone(const IntCurveSurface_HInter& self) {
+    return self.IsDone();
+}
+inline Standard_Integer IntCurveSurface_HInter_inherited_NbPoints(const IntCurveSurface_HInter& self) {
+    return self.NbPoints();
+}
+inline Standard_Integer IntCurveSurface_HInter_inherited_NbSegments(const IntCurveSurface_HInter& self) {
+    return self.NbSegments();
+}
+inline bool IntCurveSurface_HInter_inherited_IsParallel(const IntCurveSurface_HInter& self) {
+    return self.IsParallel();
+}
+inline void IntCurveSurface_HInter_inherited_Dump(const IntCurveSurface_HInter& self) {
+    self.Dump();
+}
 
 // ========================
 // IntCurveSurface_Intersection wrappers

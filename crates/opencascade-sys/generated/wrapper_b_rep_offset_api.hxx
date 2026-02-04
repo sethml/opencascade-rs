@@ -51,6 +51,12 @@ inline const BRepBuilderAPI_Command& BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_
 inline BRepBuilderAPI_Command& BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_MakeOffset& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape(const BRepOffsetAPI_MakeOffset& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape_mut(BRepOffsetAPI_MakeOffset& self) { return self; }
+inline bool BRepOffsetAPI_MakeOffset_inherited_IsDone(const BRepOffsetAPI_MakeOffset& self) {
+    return self.IsDone();
+}
+inline void BRepOffsetAPI_MakeOffset_inherited_Check(const BRepOffsetAPI_MakeOffset& self) {
+    self.Check();
+}
 
 // ========================
 // BRepOffsetAPI_MakePipe wrappers
@@ -78,6 +84,12 @@ inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_
 inline BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_MakeShape_mut(BRepOffsetAPI_MakePipe& self) { return self; }
 inline const BRepPrimAPI_MakeSweep& BRepOffsetAPI_MakePipe_as_BRepPrimAPI_MakeSweep(const BRepOffsetAPI_MakePipe& self) { return self; }
 inline BRepPrimAPI_MakeSweep& BRepOffsetAPI_MakePipe_as_BRepPrimAPI_MakeSweep_mut(BRepOffsetAPI_MakePipe& self) { return self; }
+inline bool BRepOffsetAPI_MakePipe_inherited_IsDone(const BRepOffsetAPI_MakePipe& self) {
+    return self.IsDone();
+}
+inline void BRepOffsetAPI_MakePipe_inherited_Check(const BRepOffsetAPI_MakePipe& self) {
+    self.Check();
+}
 
 // ========================
 // BRepOffsetAPI_MakePipeShell wrappers
@@ -101,6 +113,12 @@ inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakePipeShell_as_BRepBuilde
 inline BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape_mut(BRepOffsetAPI_MakePipeShell& self) { return self; }
 inline const BRepPrimAPI_MakeSweep& BRepOffsetAPI_MakePipeShell_as_BRepPrimAPI_MakeSweep(const BRepOffsetAPI_MakePipeShell& self) { return self; }
 inline BRepPrimAPI_MakeSweep& BRepOffsetAPI_MakePipeShell_as_BRepPrimAPI_MakeSweep_mut(BRepOffsetAPI_MakePipeShell& self) { return self; }
+inline bool BRepOffsetAPI_MakePipeShell_inherited_IsDone(const BRepOffsetAPI_MakePipeShell& self) {
+    return self.IsDone();
+}
+inline void BRepOffsetAPI_MakePipeShell_inherited_Check(const BRepOffsetAPI_MakePipeShell& self) {
+    self.Check();
+}
 
 // ========================
 // BRepOffsetAPI_MakeThickSolid wrappers
@@ -116,6 +134,12 @@ inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeThickSolid_as_BRepBuild
 inline BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape_mut(BRepOffsetAPI_MakeThickSolid& self) { return self; }
 inline const BRepOffsetAPI_MakeOffsetShape& BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape(const BRepOffsetAPI_MakeThickSolid& self) { return self; }
 inline BRepOffsetAPI_MakeOffsetShape& BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape_mut(BRepOffsetAPI_MakeThickSolid& self) { return self; }
+inline bool BRepOffsetAPI_MakeThickSolid_inherited_IsDone(const BRepOffsetAPI_MakeThickSolid& self) {
+    return self.IsDone();
+}
+inline void BRepOffsetAPI_MakeThickSolid_inherited_Check(const BRepOffsetAPI_MakeThickSolid& self) {
+    self.Check();
+}
 
 // ========================
 // BRepOffsetAPI_ThruSections wrappers
@@ -133,6 +157,12 @@ inline const BRepBuilderAPI_Command& BRepOffsetAPI_ThruSections_as_BRepBuilderAP
 inline BRepBuilderAPI_Command& BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_ThruSections& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_MakeShape(const BRepOffsetAPI_ThruSections& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_MakeShape_mut(BRepOffsetAPI_ThruSections& self) { return self; }
+inline bool BRepOffsetAPI_ThruSections_inherited_IsDone(const BRepOffsetAPI_ThruSections& self) {
+    return self.IsDone();
+}
+inline void BRepOffsetAPI_ThruSections_inherited_Check(const BRepOffsetAPI_ThruSections& self) {
+    self.Check();
+}
 
 // ========================
 // BRepOffsetAPI_MakeOffsetShape wrappers
@@ -146,4 +176,10 @@ inline const BRepBuilderAPI_Command& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilde
 inline BRepBuilderAPI_Command& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_MakeOffsetShape& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape(const BRepOffsetAPI_MakeOffsetShape& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape_mut(BRepOffsetAPI_MakeOffsetShape& self) { return self; }
+inline bool BRepOffsetAPI_MakeOffsetShape_inherited_IsDone(const BRepOffsetAPI_MakeOffsetShape& self) {
+    return self.IsDone();
+}
+inline void BRepOffsetAPI_MakeOffsetShape_inherited_Check(const BRepOffsetAPI_MakeOffsetShape& self) {
+    self.Check();
+}
 

@@ -65,6 +65,12 @@ typedef opencascade::handle<Standard_Type> HandleStandardType;
 
 inline const BRepBuilderAPI_Command& BRepBuilderAPI_MakeShape_as_BRepBuilderAPI_Command(const BRepBuilderAPI_MakeShape& self) { return self; }
 inline BRepBuilderAPI_Command& BRepBuilderAPI_MakeShape_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_MakeShape& self) { return self; }
+inline bool BRepBuilderAPI_MakeShape_inherited_IsDone(const BRepBuilderAPI_MakeShape& self) {
+    return self.IsDone();
+}
+inline void BRepBuilderAPI_MakeShape_inherited_Check(const BRepBuilderAPI_MakeShape& self) {
+    self.Check();
+}
 
 // ========================
 // BRepBuilderAPI_MakeEdge wrappers
@@ -214,6 +220,9 @@ inline const BRepBuilderAPI_Command& BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_C
 inline BRepBuilderAPI_Command& BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_MakeEdge& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_MakeEdge& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_MakeEdge& self) { return self; }
+inline void BRepBuilderAPI_MakeEdge_inherited_Check(const BRepBuilderAPI_MakeEdge& self) {
+    self.Check();
+}
 
 // ========================
 // BRepBuilderAPI_MakeFace wrappers
@@ -311,6 +320,9 @@ inline const BRepBuilderAPI_Command& BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_C
 inline BRepBuilderAPI_Command& BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_MakeFace& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_MakeFace& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_MakeFace& self) { return self; }
+inline void BRepBuilderAPI_MakeFace_inherited_Check(const BRepBuilderAPI_MakeFace& self) {
+    self.Check();
+}
 
 // ========================
 // BRepBuilderAPI_MakeSolid wrappers
@@ -348,6 +360,9 @@ inline const BRepBuilderAPI_Command& BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_
 inline BRepBuilderAPI_Command& BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_MakeSolid& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_MakeSolid& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_MakeSolid& self) { return self; }
+inline void BRepBuilderAPI_MakeSolid_inherited_Check(const BRepBuilderAPI_MakeSolid& self) {
+    self.Check();
+}
 
 // ========================
 // BRepBuilderAPI_MakeVertex wrappers
@@ -361,6 +376,12 @@ inline const BRepBuilderAPI_Command& BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI
 inline BRepBuilderAPI_Command& BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_MakeVertex& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_MakeVertex& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_MakeVertex& self) { return self; }
+inline bool BRepBuilderAPI_MakeVertex_inherited_IsDone(const BRepBuilderAPI_MakeVertex& self) {
+    return self.IsDone();
+}
+inline void BRepBuilderAPI_MakeVertex_inherited_Check(const BRepBuilderAPI_MakeVertex& self) {
+    self.Check();
+}
 
 // ========================
 // BRepBuilderAPI_MakeWire wrappers
@@ -398,6 +419,9 @@ inline const BRepBuilderAPI_Command& BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_C
 inline BRepBuilderAPI_Command& BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_MakeWire& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_MakeWire& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_MakeWire& self) { return self; }
+inline void BRepBuilderAPI_MakeWire_inherited_Check(const BRepBuilderAPI_MakeWire& self) {
+    self.Check();
+}
 
 // ========================
 // BRepBuilderAPI_Sewing wrappers
@@ -445,6 +469,12 @@ inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_Transform_as_BRepBuilderAP
 inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_Transform& self) { return self; }
 inline const BRepBuilderAPI_ModifyShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape(const BRepBuilderAPI_Transform& self) { return self; }
 inline BRepBuilderAPI_ModifyShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape_mut(BRepBuilderAPI_Transform& self) { return self; }
+inline bool BRepBuilderAPI_Transform_inherited_IsDone(const BRepBuilderAPI_Transform& self) {
+    return self.IsDone();
+}
+inline void BRepBuilderAPI_Transform_inherited_Check(const BRepBuilderAPI_Transform& self) {
+    self.Check();
+}
 
 // ========================
 // BRepBuilderAPI_ModifyShape wrappers
@@ -458,4 +488,10 @@ inline const BRepBuilderAPI_Command& BRepBuilderAPI_ModifyShape_as_BRepBuilderAP
 inline BRepBuilderAPI_Command& BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_ModifyShape& self) { return self; }
 inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_ModifyShape& self) { return self; }
 inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_ModifyShape& self) { return self; }
+inline bool BRepBuilderAPI_ModifyShape_inherited_IsDone(const BRepBuilderAPI_ModifyShape& self) {
+    return self.IsDone();
+}
+inline void BRepBuilderAPI_ModifyShape_inherited_Check(const BRepBuilderAPI_ModifyShape& self) {
+    self.Check();
+}
 

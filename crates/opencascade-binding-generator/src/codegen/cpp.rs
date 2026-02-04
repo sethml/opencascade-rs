@@ -271,6 +271,9 @@ fn generate_class_wrappers(class: &ParsedClass, output: &mut String, symbol_tabl
     // Generate Handle upcast wrappers for Handle types where inner class has base classes
     generate_handle_upcast_wrappers(class, output, symbol_table);
 
+    // Generate wrappers for inherited methods (methods from base classes)
+    generate_inherited_method_wrappers(class, output, symbol_table);
+
     writeln!(output).unwrap();
 }
 
@@ -1006,6 +1009,174 @@ fn generate_handle_upcast_wrappers(class: &ParsedClass, output: &mut String, sym
         .unwrap();
         writeln!(output, "}}").unwrap();
     }
+}
+
+/// Generate C++ wrapper functions for inherited methods
+/// These wrappers call base class methods on derived class objects, allowing CXX to bind them
+/// without the method pointer verification issue.
+fn generate_inherited_method_wrappers(class: &ParsedClass, output: &mut String, symbol_table: &SymbolTable) {
+    use std::collections::HashSet;
+    
+    // Skip classes with protected destructors (not bindable)
+    if class.has_protected_destructor {
+        return;
+    }
+    
+    // Build a set of method names already declared directly on this class (including overrides)
+    let existing_method_names: HashSet<String> = class.methods.iter()
+        .map(|m| m.name.clone())
+        .collect();
+    
+    // Track methods we've already added to avoid duplicates
+    let mut seen_methods: HashSet<String> = HashSet::new();
+    
+    // Get all ancestors
+    let ancestors = symbol_table.get_all_ancestors_by_name(&class.name);
+    
+    // For each ancestor, we need to find its methods
+    // Since SymbolTable stores methods keyed by SymbolId, we can look them up
+    for ancestor_name in &ancestors {
+        // Skip ancestors not in our symbol table
+        if let Some(ancestor_class) = symbol_table.class_by_name(ancestor_name) {
+            // Get the included methods for this ancestor
+            let ancestor_methods = symbol_table.included_methods(ancestor_class);
+            
+            for resolved_method in ancestor_methods {
+                // Skip if this class already has a method with this name
+                if existing_method_names.contains(&resolved_method.cpp_name) {
+                    continue;
+                }
+                
+                // Skip if the class has any method with this name (including in all_method_names)
+                // which indicates protected/private overrides
+                if class.all_method_names.contains(&resolved_method.cpp_name) {
+                    continue;
+                }
+                
+                // Skip if we've already seen this method from another ancestor
+                if seen_methods.contains(&resolved_method.cpp_name) {
+                    continue;
+                }
+                
+                seen_methods.insert(resolved_method.cpp_name.clone());
+                
+                // Skip methods that use types from other modules (cross-module types)
+                // These types won't be declared in the Rust module and CXX will fail
+                // This must match the filtering in rust.rs generate_inherited_method_ffi
+                let uses_cross_module_types = resolved_method.params.iter()
+                    .any(|p| p.ty.source_module.is_some())
+                    || resolved_method.return_type.as_ref()
+                        .map(|rt| rt.source_module.is_some())
+                        .unwrap_or(false);
+                
+                if uses_cross_module_types {
+                    continue;
+                }
+                
+                // Skip methods that use raw pointers (requires unsafe in CXX)
+                // This must match the filtering in rust.rs generate_inherited_method_ffi
+                let uses_raw_pointers = resolved_method.params.iter()
+                    .any(|p| p.ty.rust_ffi_type.contains("*const") || p.ty.rust_ffi_type.contains("*mut"))
+                    || resolved_method.return_type.as_ref()
+                        .map(|rt| rt.rust_ffi_type.contains("*const") || rt.rust_ffi_type.contains("*mut"))
+                        .unwrap_or(false);
+                
+                if uses_raw_pointers {
+                    continue;
+                }
+                
+                // Generate the wrapper function
+                // Name pattern: DerivedClass_inherited_MethodName
+                let wrapper_name = format!("{}_inherited_{}", class.name, resolved_method.cpp_name);
+                
+                // Self parameter
+                let self_param = if resolved_method.is_const {
+                    format!("const {}& self", class.name)
+                } else {
+                    format!("{}& self", class.name)
+                };
+                
+                // Other parameters
+                let other_params: Vec<String> = resolved_method.params.iter()
+                    .map(|p| format!("{} {}", resolved_type_to_cpp_param(&p.ty), p.name))
+                    .collect();
+                
+                let params = if other_params.is_empty() {
+                    self_param
+                } else {
+                    format!("{}, {}", self_param, other_params.join(", "))
+                };
+                
+                // Arguments for calling the method
+                let args: Vec<String> = resolved_method.params.iter()
+                    .map(|p| resolved_param_to_cpp_arg(p))
+                    .collect();
+                let args_str = args.join(", ");
+                
+                // Return type
+                let return_type_cpp = match &resolved_method.return_type {
+                    Some(rt) => {
+                        if rt.needs_unique_ptr {
+                            format!("std::unique_ptr<{}>", rt.cpp_type)
+                        } else {
+                            rt.cpp_type.clone()
+                        }
+                    }
+                    None => "void".to_string(),
+                };
+                
+                // Generate the wrapper
+                let needs_unique_ptr = resolved_method.return_type.as_ref()
+                    .map(|rt| rt.needs_unique_ptr)
+                    .unwrap_or(false);
+                
+                writeln!(output, "inline {} {}({}) {{", return_type_cpp, wrapper_name, params).unwrap();
+                
+                if needs_unique_ptr {
+                    let inner_type = resolved_method.return_type.as_ref()
+                        .map(|rt| rt.cpp_type.clone())
+                        .unwrap_or_else(|| "void".to_string());
+                    writeln!(
+                        output,
+                        "    return std::make_unique<{}>(self.{}({}));",
+                        inner_type, resolved_method.cpp_name, args_str
+                    ).unwrap();
+                } else if resolved_method.return_type.is_some() {
+                    writeln!(
+                        output,
+                        "    return self.{}({});",
+                        resolved_method.cpp_name, args_str
+                    ).unwrap();
+                } else {
+                    writeln!(
+                        output,
+                        "    self.{}({});",
+                        resolved_method.cpp_name, args_str
+                    ).unwrap();
+                }
+                
+                writeln!(output, "}}").unwrap();
+            }
+        }
+    }
+}
+
+/// Convert a resolved type to C++ parameter type (using CXX types like rust::Str)
+fn resolved_type_to_cpp_param(ty: &resolver::ResolvedType) -> String {
+    // Check if this is a const char* type (needs rust::Str)
+    if ty.cpp_type == "const char*" {
+        return "rust::Str".to_string();
+    }
+    ty.cpp_type.clone()
+}
+
+/// Convert a resolved parameter to the argument form needed when calling OCCT functions
+fn resolved_param_to_cpp_arg(param: &resolver::ResolvedParam) -> String {
+    // Check if this is a const char* type (needs conversion from rust::Str)
+    if param.ty.cpp_type == "const char*" {
+        return format!("std::string({}).c_str()", param.name);
+    }
+    param.name.clone()
 }
 
 /// Generate C++ wrappers for namespace-level free functions

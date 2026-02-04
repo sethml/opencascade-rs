@@ -193,6 +193,11 @@ impl FunctionWithDerivative {
     pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
         ffi::function_with_derivative_as_function_mut(self)
     }
+
+    /// Inherited from math_Function: GetStateNumber
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        ffi::function_with_derivative_inherited_get_state_number(self)
+    }
 }
 
 /// This class implements the calculation of all the real roots of a real
@@ -704,6 +709,11 @@ pub(crate) mod ffi {
         fn function_with_derivative_as_function_mut(
             self_: Pin<&mut FunctionWithDerivative>,
         ) -> Pin<&mut Function>;
+        /// Inherited from math_Function: GetStateNumber
+        #[cxx_name = "math_FunctionWithDerivative_inherited_GetStateNumber"]
+        fn function_with_derivative_inherited_get_state_number(
+            self_: Pin<&mut FunctionWithDerivative>,
+        ) -> i32;
         /// ======================== math_DirectPolynomialRoots ========================
         /// **Source:** `math_DirectPolynomialRoots.hxx`:30 - `math_DirectPolynomialRoots`
         ///

@@ -145,6 +145,31 @@ impl ElSpine {
     pub fn get_type_name() -> String {
         ffi::ElSpine_get_type_name()
     }
+
+    /// Inherited from Adaptor3d_Curve: IsClosed
+    pub fn is_closed(&self) -> bool {
+        ffi::el_spine_inherited_is_closed(self)
+    }
+
+    /// Inherited from Adaptor3d_Curve: Degree
+    pub fn degree(&self) -> i32 {
+        ffi::el_spine_inherited_degree(self)
+    }
+
+    /// Inherited from Adaptor3d_Curve: IsRational
+    pub fn is_rational(&self) -> bool {
+        ffi::el_spine_inherited_is_rational(self)
+    }
+
+    /// Inherited from Adaptor3d_Curve: NbPoles
+    pub fn nb_poles(&self) -> i32 {
+        ffi::el_spine_inherited_nb_poles(self)
+    }
+
+    /// Inherited from Adaptor3d_Curve: NbKnots
+    pub fn nb_knots(&self) -> i32 {
+        ffi::el_spine_inherited_nb_knots(self)
+    }
 }
 
 /// data structure for all information related to  the
@@ -478,6 +503,21 @@ pub(crate) mod ffi {
         /// Upcast ChFiDS_ElSpine to Adaptor3d_Curve (mutable)
         #[cxx_name = "ChFiDS_ElSpine_as_Adaptor3d_Curve_mut"]
         fn el_spine_as_adaptor3d_curve_mut(self_: Pin<&mut ElSpine>) -> Pin<&mut Adaptor3d_Curve>;
+        /// Inherited from Adaptor3d_Curve: IsClosed
+        #[cxx_name = "ChFiDS_ElSpine_inherited_IsClosed"]
+        fn el_spine_inherited_is_closed(self_: &ElSpine) -> bool;
+        /// Inherited from Adaptor3d_Curve: Degree
+        #[cxx_name = "ChFiDS_ElSpine_inherited_Degree"]
+        fn el_spine_inherited_degree(self_: &ElSpine) -> i32;
+        /// Inherited from Adaptor3d_Curve: IsRational
+        #[cxx_name = "ChFiDS_ElSpine_inherited_IsRational"]
+        fn el_spine_inherited_is_rational(self_: &ElSpine) -> bool;
+        /// Inherited from Adaptor3d_Curve: NbPoles
+        #[cxx_name = "ChFiDS_ElSpine_inherited_NbPoles"]
+        fn el_spine_inherited_nb_poles(self_: &ElSpine) -> i32;
+        /// Inherited from Adaptor3d_Curve: NbKnots
+        #[cxx_name = "ChFiDS_ElSpine_inherited_NbKnots"]
+        fn el_spine_inherited_nb_knots(self_: &ElSpine) -> i32;
         /// ======================== ChFiDS_SurfData ========================
         /// **Source:** `ChFiDS_SurfData.hxx`:35 - `ChFiDS_SurfData`
         ///

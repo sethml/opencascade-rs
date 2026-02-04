@@ -107,6 +107,96 @@ impl BOP {
     ) -> std::pin::Pin<&mut ToolsProvider> {
         ffi::bop_as_tools_provider_mut(self)
     }
+
+    /// Inherited from BOPAlgo_Builder: SetNonDestructive
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::bop_inherited_set_non_destructive(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Builder: NonDestructive
+    pub fn non_destructive(&self) -> bool {
+        ffi::bop_inherited_non_destructive(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetCheckInverted
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        ffi::bop_inherited_set_check_inverted(self, theCheck)
+    }
+
+    /// Inherited from BOPAlgo_Builder: CheckInverted
+    pub fn check_inverted(&self) -> bool {
+        ffi::bop_inherited_check_inverted(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasModified
+    pub fn has_modified(&self) -> bool {
+        ffi::bop_inherited_has_modified(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasGenerated
+    pub fn has_generated(&self) -> bool {
+        ffi::bop_inherited_has_generated(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasDeleted
+    pub fn has_deleted(&self) -> bool {
+        ffi::bop_inherited_has_deleted(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        ffi::bop_inherited_set_to_fill_history(self, theHistFlag)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasHistory
+    pub fn has_history(&self) -> bool {
+        ffi::bop_inherited_has_history(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasErrors
+    pub fn has_errors(&self) -> bool {
+        ffi::bop_inherited_has_errors(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarnings
+    pub fn has_warnings(&self) -> bool {
+        ffi::bop_inherited_has_warnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: ClearWarnings
+    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
+        ffi::bop_inherited_clear_warnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetRunParallel
+    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::bop_inherited_set_run_parallel(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Options: RunParallel
+    pub fn run_parallel(&self) -> bool {
+        ffi::bop_inherited_run_parallel(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetFuzzyValue
+    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
+        ffi::bop_inherited_set_fuzzy_value(self, theFuzz)
+    }
+
+    /// Inherited from BOPAlgo_Options: FuzzyValue
+    pub fn fuzzy_value(&self) -> f64 {
+        ffi::bop_inherited_fuzzy_value(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetUseOBB
+    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
+        ffi::bop_inherited_set_use_obb(self, theUseOBB)
+    }
+
+    /// Inherited from BOPAlgo_Options: UseOBB
+    pub fn use_obb(&self) -> bool {
+        ffi::bop_inherited_use_obb(self)
+    }
 }
 
 /// Auxiliary class providing API to operate tool arguments.
@@ -153,6 +243,96 @@ impl ToolsProvider {
     /// Upcast to BOPAlgo_Options (mutable)
     pub fn as_options_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Options> {
         ffi::tools_provider_as_options_mut(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetNonDestructive
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::tools_provider_inherited_set_non_destructive(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Builder: NonDestructive
+    pub fn non_destructive(&self) -> bool {
+        ffi::tools_provider_inherited_non_destructive(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetCheckInverted
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        ffi::tools_provider_inherited_set_check_inverted(self, theCheck)
+    }
+
+    /// Inherited from BOPAlgo_Builder: CheckInverted
+    pub fn check_inverted(&self) -> bool {
+        ffi::tools_provider_inherited_check_inverted(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasModified
+    pub fn has_modified(&self) -> bool {
+        ffi::tools_provider_inherited_has_modified(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasGenerated
+    pub fn has_generated(&self) -> bool {
+        ffi::tools_provider_inherited_has_generated(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasDeleted
+    pub fn has_deleted(&self) -> bool {
+        ffi::tools_provider_inherited_has_deleted(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        ffi::tools_provider_inherited_set_to_fill_history(self, theHistFlag)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasHistory
+    pub fn has_history(&self) -> bool {
+        ffi::tools_provider_inherited_has_history(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasErrors
+    pub fn has_errors(&self) -> bool {
+        ffi::tools_provider_inherited_has_errors(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarnings
+    pub fn has_warnings(&self) -> bool {
+        ffi::tools_provider_inherited_has_warnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: ClearWarnings
+    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
+        ffi::tools_provider_inherited_clear_warnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetRunParallel
+    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::tools_provider_inherited_set_run_parallel(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Options: RunParallel
+    pub fn run_parallel(&self) -> bool {
+        ffi::tools_provider_inherited_run_parallel(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetFuzzyValue
+    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
+        ffi::tools_provider_inherited_set_fuzzy_value(self, theFuzz)
+    }
+
+    /// Inherited from BOPAlgo_Options: FuzzyValue
+    pub fn fuzzy_value(&self) -> f64 {
+        ffi::tools_provider_inherited_fuzzy_value(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetUseOBB
+    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
+        ffi::tools_provider_inherited_set_use_obb(self, theUseOBB)
+    }
+
+    /// Inherited from BOPAlgo_Options: UseOBB
+    pub fn use_obb(&self) -> bool {
+        ffi::tools_provider_inherited_use_obb(self)
     }
 }
 
@@ -239,6 +419,76 @@ impl Builder {
     pub fn context(&self) -> cxx::UniquePtr<ffi::HandleIntToolsContext> {
         ffi::Builder_context(self)
     }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasModified
+    pub fn has_modified(&self) -> bool {
+        ffi::builder_inherited_has_modified(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasGenerated
+    pub fn has_generated(&self) -> bool {
+        ffi::builder_inherited_has_generated(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasDeleted
+    pub fn has_deleted(&self) -> bool {
+        ffi::builder_inherited_has_deleted(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        ffi::builder_inherited_set_to_fill_history(self, theHistFlag)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasHistory
+    pub fn has_history(&self) -> bool {
+        ffi::builder_inherited_has_history(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasErrors
+    pub fn has_errors(&self) -> bool {
+        ffi::builder_inherited_has_errors(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarnings
+    pub fn has_warnings(&self) -> bool {
+        ffi::builder_inherited_has_warnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: ClearWarnings
+    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
+        ffi::builder_inherited_clear_warnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetRunParallel
+    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::builder_inherited_set_run_parallel(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Options: RunParallel
+    pub fn run_parallel(&self) -> bool {
+        ffi::builder_inherited_run_parallel(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetFuzzyValue
+    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
+        ffi::builder_inherited_set_fuzzy_value(self, theFuzz)
+    }
+
+    /// Inherited from BOPAlgo_Options: FuzzyValue
+    pub fn fuzzy_value(&self) -> f64 {
+        ffi::builder_inherited_fuzzy_value(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetUseOBB
+    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
+        ffi::builder_inherited_set_use_obb(self, theUseOBB)
+    }
+
+    /// Inherited from BOPAlgo_Options: UseOBB
+    pub fn use_obb(&self) -> bool {
+        ffi::builder_inherited_use_obb(self)
+    }
 }
 
 /// Root class for algorithms that has shape as result.
@@ -263,6 +513,51 @@ impl BuilderShape {
     pub fn history(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::HandleBRepToolsHistory> {
         ffi::BuilderShape_history(self)
     }
+
+    /// Inherited from BOPAlgo_Options: HasErrors
+    pub fn has_errors(&self) -> bool {
+        ffi::builder_shape_inherited_has_errors(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarnings
+    pub fn has_warnings(&self) -> bool {
+        ffi::builder_shape_inherited_has_warnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: ClearWarnings
+    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
+        ffi::builder_shape_inherited_clear_warnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetRunParallel
+    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::builder_shape_inherited_set_run_parallel(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Options: RunParallel
+    pub fn run_parallel(&self) -> bool {
+        ffi::builder_shape_inherited_run_parallel(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetFuzzyValue
+    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
+        ffi::builder_shape_inherited_set_fuzzy_value(self, theFuzz)
+    }
+
+    /// Inherited from BOPAlgo_Options: FuzzyValue
+    pub fn fuzzy_value(&self) -> f64 {
+        ffi::builder_shape_inherited_fuzzy_value(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetUseOBB
+    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
+        ffi::builder_shape_inherited_set_use_obb(self, theUseOBB)
+    }
+
+    /// Inherited from BOPAlgo_Options: UseOBB
+    pub fn use_obb(&self) -> bool {
+        ffi::builder_shape_inherited_use_obb(self)
+    }
 }
 
 /// Additional root class to provide interface to be launched from parallel vector.
@@ -278,6 +573,56 @@ impl ParallelAlgo {
     /// Upcast to BOPAlgo_Options (mutable)
     pub fn as_options_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Options> {
         ffi::parallel_algo_as_options_mut(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: Clear
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        ffi::parallel_algo_inherited_clear(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasErrors
+    pub fn has_errors(&self) -> bool {
+        ffi::parallel_algo_inherited_has_errors(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarnings
+    pub fn has_warnings(&self) -> bool {
+        ffi::parallel_algo_inherited_has_warnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: ClearWarnings
+    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
+        ffi::parallel_algo_inherited_clear_warnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetRunParallel
+    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        ffi::parallel_algo_inherited_set_run_parallel(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Options: RunParallel
+    pub fn run_parallel(&self) -> bool {
+        ffi::parallel_algo_inherited_run_parallel(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetFuzzyValue
+    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
+        ffi::parallel_algo_inherited_set_fuzzy_value(self, theFuzz)
+    }
+
+    /// Inherited from BOPAlgo_Options: FuzzyValue
+    pub fn fuzzy_value(&self) -> f64 {
+        ffi::parallel_algo_inherited_fuzzy_value(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetUseOBB
+    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
+        ffi::parallel_algo_inherited_set_use_obb(self, theUseOBB)
+    }
+
+    /// Inherited from BOPAlgo_Options: UseOBB
+    pub fn use_obb(&self) -> bool {
+        ffi::parallel_algo_inherited_use_obb(self)
     }
 }
 
@@ -414,6 +759,60 @@ pub(crate) mod ffi {
         /// Upcast BOPAlgo_BOP to BOPAlgo_ToolsProvider (mutable)
         #[cxx_name = "BOPAlgo_BOP_as_BOPAlgo_ToolsProvider_mut"]
         fn bop_as_tools_provider_mut(self_: Pin<&mut BOP>) -> Pin<&mut ToolsProvider>;
+        /// Inherited from BOPAlgo_Builder: SetNonDestructive
+        #[cxx_name = "BOPAlgo_BOP_inherited_SetNonDestructive"]
+        fn bop_inherited_set_non_destructive(self_: Pin<&mut BOP>, theFlag: bool);
+        /// Inherited from BOPAlgo_Builder: NonDestructive
+        #[cxx_name = "BOPAlgo_BOP_inherited_NonDestructive"]
+        fn bop_inherited_non_destructive(self_: &BOP) -> bool;
+        /// Inherited from BOPAlgo_Builder: SetCheckInverted
+        #[cxx_name = "BOPAlgo_BOP_inherited_SetCheckInverted"]
+        fn bop_inherited_set_check_inverted(self_: Pin<&mut BOP>, theCheck: bool);
+        /// Inherited from BOPAlgo_Builder: CheckInverted
+        #[cxx_name = "BOPAlgo_BOP_inherited_CheckInverted"]
+        fn bop_inherited_check_inverted(self_: &BOP) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasModified
+        #[cxx_name = "BOPAlgo_BOP_inherited_HasModified"]
+        fn bop_inherited_has_modified(self_: &BOP) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasGenerated
+        #[cxx_name = "BOPAlgo_BOP_inherited_HasGenerated"]
+        fn bop_inherited_has_generated(self_: &BOP) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasDeleted
+        #[cxx_name = "BOPAlgo_BOP_inherited_HasDeleted"]
+        fn bop_inherited_has_deleted(self_: &BOP) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory
+        #[cxx_name = "BOPAlgo_BOP_inherited_SetToFillHistory"]
+        fn bop_inherited_set_to_fill_history(self_: Pin<&mut BOP>, theHistFlag: bool);
+        /// Inherited from BOPAlgo_BuilderShape: HasHistory
+        #[cxx_name = "BOPAlgo_BOP_inherited_HasHistory"]
+        fn bop_inherited_has_history(self_: &BOP) -> bool;
+        /// Inherited from BOPAlgo_Options: HasErrors
+        #[cxx_name = "BOPAlgo_BOP_inherited_HasErrors"]
+        fn bop_inherited_has_errors(self_: &BOP) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarnings
+        #[cxx_name = "BOPAlgo_BOP_inherited_HasWarnings"]
+        fn bop_inherited_has_warnings(self_: &BOP) -> bool;
+        /// Inherited from BOPAlgo_Options: ClearWarnings
+        #[cxx_name = "BOPAlgo_BOP_inherited_ClearWarnings"]
+        fn bop_inherited_clear_warnings(self_: Pin<&mut BOP>);
+        /// Inherited from BOPAlgo_Options: SetRunParallel
+        #[cxx_name = "BOPAlgo_BOP_inherited_SetRunParallel"]
+        fn bop_inherited_set_run_parallel(self_: Pin<&mut BOP>, theFlag: bool);
+        /// Inherited from BOPAlgo_Options: RunParallel
+        #[cxx_name = "BOPAlgo_BOP_inherited_RunParallel"]
+        fn bop_inherited_run_parallel(self_: &BOP) -> bool;
+        /// Inherited from BOPAlgo_Options: SetFuzzyValue
+        #[cxx_name = "BOPAlgo_BOP_inherited_SetFuzzyValue"]
+        fn bop_inherited_set_fuzzy_value(self_: Pin<&mut BOP>, theFuzz: f64);
+        /// Inherited from BOPAlgo_Options: FuzzyValue
+        #[cxx_name = "BOPAlgo_BOP_inherited_FuzzyValue"]
+        fn bop_inherited_fuzzy_value(self_: &BOP) -> f64;
+        /// Inherited from BOPAlgo_Options: SetUseOBB
+        #[cxx_name = "BOPAlgo_BOP_inherited_SetUseOBB"]
+        fn bop_inherited_set_use_obb(self_: Pin<&mut BOP>, theUseOBB: bool);
+        /// Inherited from BOPAlgo_Options: UseOBB
+        #[cxx_name = "BOPAlgo_BOP_inherited_UseOBB"]
+        fn bop_inherited_use_obb(self_: &BOP) -> bool;
         /// ======================== BOPAlgo_ToolsProvider ========================
         /// **Source:** `BOPAlgo_ToolsProvider.hxx`:25 - `BOPAlgo_ToolsProvider`
         ///
@@ -470,6 +869,69 @@ pub(crate) mod ffi {
         /// Upcast BOPAlgo_ToolsProvider to BOPAlgo_Options (mutable)
         #[cxx_name = "BOPAlgo_ToolsProvider_as_BOPAlgo_Options_mut"]
         fn tools_provider_as_options_mut(self_: Pin<&mut ToolsProvider>) -> Pin<&mut Options>;
+        /// Inherited from BOPAlgo_Builder: SetNonDestructive
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_SetNonDestructive"]
+        fn tools_provider_inherited_set_non_destructive(
+            self_: Pin<&mut ToolsProvider>,
+            theFlag: bool,
+        );
+        /// Inherited from BOPAlgo_Builder: NonDestructive
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_NonDestructive"]
+        fn tools_provider_inherited_non_destructive(self_: &ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_Builder: SetCheckInverted
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_SetCheckInverted"]
+        fn tools_provider_inherited_set_check_inverted(
+            self_: Pin<&mut ToolsProvider>,
+            theCheck: bool,
+        );
+        /// Inherited from BOPAlgo_Builder: CheckInverted
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_CheckInverted"]
+        fn tools_provider_inherited_check_inverted(self_: &ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasModified
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_HasModified"]
+        fn tools_provider_inherited_has_modified(self_: &ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasGenerated
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_HasGenerated"]
+        fn tools_provider_inherited_has_generated(self_: &ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasDeleted
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_HasDeleted"]
+        fn tools_provider_inherited_has_deleted(self_: &ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_SetToFillHistory"]
+        fn tools_provider_inherited_set_to_fill_history(
+            self_: Pin<&mut ToolsProvider>,
+            theHistFlag: bool,
+        );
+        /// Inherited from BOPAlgo_BuilderShape: HasHistory
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_HasHistory"]
+        fn tools_provider_inherited_has_history(self_: &ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_Options: HasErrors
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_HasErrors"]
+        fn tools_provider_inherited_has_errors(self_: &ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarnings
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_HasWarnings"]
+        fn tools_provider_inherited_has_warnings(self_: &ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_Options: ClearWarnings
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_ClearWarnings"]
+        fn tools_provider_inherited_clear_warnings(self_: Pin<&mut ToolsProvider>);
+        /// Inherited from BOPAlgo_Options: SetRunParallel
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_SetRunParallel"]
+        fn tools_provider_inherited_set_run_parallel(self_: Pin<&mut ToolsProvider>, theFlag: bool);
+        /// Inherited from BOPAlgo_Options: RunParallel
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_RunParallel"]
+        fn tools_provider_inherited_run_parallel(self_: &ToolsProvider) -> bool;
+        /// Inherited from BOPAlgo_Options: SetFuzzyValue
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_SetFuzzyValue"]
+        fn tools_provider_inherited_set_fuzzy_value(self_: Pin<&mut ToolsProvider>, theFuzz: f64);
+        /// Inherited from BOPAlgo_Options: FuzzyValue
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_FuzzyValue"]
+        fn tools_provider_inherited_fuzzy_value(self_: &ToolsProvider) -> f64;
+        /// Inherited from BOPAlgo_Options: SetUseOBB
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_SetUseOBB"]
+        fn tools_provider_inherited_set_use_obb(self_: Pin<&mut ToolsProvider>, theUseOBB: bool);
+        /// Inherited from BOPAlgo_Options: UseOBB
+        #[cxx_name = "BOPAlgo_ToolsProvider_inherited_UseOBB"]
+        fn tools_provider_inherited_use_obb(self_: &ToolsProvider) -> bool;
         /// ======================== BOPAlgo_Builder ========================
         /// **Source:** `BOPAlgo_Builder.hxx`:74 - `BOPAlgo_Builder`
         ///
@@ -622,6 +1084,48 @@ pub(crate) mod ffi {
         /// Upcast BOPAlgo_Builder to BOPAlgo_Options (mutable)
         #[cxx_name = "BOPAlgo_Builder_as_BOPAlgo_Options_mut"]
         fn builder_as_options_mut(self_: Pin<&mut Builder>) -> Pin<&mut Options>;
+        /// Inherited from BOPAlgo_BuilderShape: HasModified
+        #[cxx_name = "BOPAlgo_Builder_inherited_HasModified"]
+        fn builder_inherited_has_modified(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasGenerated
+        #[cxx_name = "BOPAlgo_Builder_inherited_HasGenerated"]
+        fn builder_inherited_has_generated(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: HasDeleted
+        #[cxx_name = "BOPAlgo_Builder_inherited_HasDeleted"]
+        fn builder_inherited_has_deleted(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory
+        #[cxx_name = "BOPAlgo_Builder_inherited_SetToFillHistory"]
+        fn builder_inherited_set_to_fill_history(self_: Pin<&mut Builder>, theHistFlag: bool);
+        /// Inherited from BOPAlgo_BuilderShape: HasHistory
+        #[cxx_name = "BOPAlgo_Builder_inherited_HasHistory"]
+        fn builder_inherited_has_history(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: HasErrors
+        #[cxx_name = "BOPAlgo_Builder_inherited_HasErrors"]
+        fn builder_inherited_has_errors(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarnings
+        #[cxx_name = "BOPAlgo_Builder_inherited_HasWarnings"]
+        fn builder_inherited_has_warnings(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: ClearWarnings
+        #[cxx_name = "BOPAlgo_Builder_inherited_ClearWarnings"]
+        fn builder_inherited_clear_warnings(self_: Pin<&mut Builder>);
+        /// Inherited from BOPAlgo_Options: SetRunParallel
+        #[cxx_name = "BOPAlgo_Builder_inherited_SetRunParallel"]
+        fn builder_inherited_set_run_parallel(self_: Pin<&mut Builder>, theFlag: bool);
+        /// Inherited from BOPAlgo_Options: RunParallel
+        #[cxx_name = "BOPAlgo_Builder_inherited_RunParallel"]
+        fn builder_inherited_run_parallel(self_: &Builder) -> bool;
+        /// Inherited from BOPAlgo_Options: SetFuzzyValue
+        #[cxx_name = "BOPAlgo_Builder_inherited_SetFuzzyValue"]
+        fn builder_inherited_set_fuzzy_value(self_: Pin<&mut Builder>, theFuzz: f64);
+        /// Inherited from BOPAlgo_Options: FuzzyValue
+        #[cxx_name = "BOPAlgo_Builder_inherited_FuzzyValue"]
+        fn builder_inherited_fuzzy_value(self_: &Builder) -> f64;
+        /// Inherited from BOPAlgo_Options: SetUseOBB
+        #[cxx_name = "BOPAlgo_Builder_inherited_SetUseOBB"]
+        fn builder_inherited_set_use_obb(self_: Pin<&mut Builder>, theUseOBB: bool);
+        /// Inherited from BOPAlgo_Options: UseOBB
+        #[cxx_name = "BOPAlgo_Builder_inherited_UseOBB"]
+        fn builder_inherited_use_obb(self_: &Builder) -> bool;
         /// ======================== BOPAlgo_BuilderShape ========================
         /// **Source:** `BOPAlgo_BuilderShape.hxx`:40 - `BOPAlgo_BuilderShape`
         ///
@@ -693,6 +1197,33 @@ pub(crate) mod ffi {
         /// Upcast BOPAlgo_BuilderShape to BOPAlgo_Options (mutable)
         #[cxx_name = "BOPAlgo_BuilderShape_as_BOPAlgo_Options_mut"]
         fn builder_shape_as_options_mut(self_: Pin<&mut BuilderShape>) -> Pin<&mut Options>;
+        /// Inherited from BOPAlgo_Options: HasErrors
+        #[cxx_name = "BOPAlgo_BuilderShape_inherited_HasErrors"]
+        fn builder_shape_inherited_has_errors(self_: &BuilderShape) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarnings
+        #[cxx_name = "BOPAlgo_BuilderShape_inherited_HasWarnings"]
+        fn builder_shape_inherited_has_warnings(self_: &BuilderShape) -> bool;
+        /// Inherited from BOPAlgo_Options: ClearWarnings
+        #[cxx_name = "BOPAlgo_BuilderShape_inherited_ClearWarnings"]
+        fn builder_shape_inherited_clear_warnings(self_: Pin<&mut BuilderShape>);
+        /// Inherited from BOPAlgo_Options: SetRunParallel
+        #[cxx_name = "BOPAlgo_BuilderShape_inherited_SetRunParallel"]
+        fn builder_shape_inherited_set_run_parallel(self_: Pin<&mut BuilderShape>, theFlag: bool);
+        /// Inherited from BOPAlgo_Options: RunParallel
+        #[cxx_name = "BOPAlgo_BuilderShape_inherited_RunParallel"]
+        fn builder_shape_inherited_run_parallel(self_: &BuilderShape) -> bool;
+        /// Inherited from BOPAlgo_Options: SetFuzzyValue
+        #[cxx_name = "BOPAlgo_BuilderShape_inherited_SetFuzzyValue"]
+        fn builder_shape_inherited_set_fuzzy_value(self_: Pin<&mut BuilderShape>, theFuzz: f64);
+        /// Inherited from BOPAlgo_Options: FuzzyValue
+        #[cxx_name = "BOPAlgo_BuilderShape_inherited_FuzzyValue"]
+        fn builder_shape_inherited_fuzzy_value(self_: &BuilderShape) -> f64;
+        /// Inherited from BOPAlgo_Options: SetUseOBB
+        #[cxx_name = "BOPAlgo_BuilderShape_inherited_SetUseOBB"]
+        fn builder_shape_inherited_set_use_obb(self_: Pin<&mut BuilderShape>, theUseOBB: bool);
+        /// Inherited from BOPAlgo_Options: UseOBB
+        #[cxx_name = "BOPAlgo_BuilderShape_inherited_UseOBB"]
+        fn builder_shape_inherited_use_obb(self_: &BuilderShape) -> bool;
         /// ======================== BOPAlgo_ParallelAlgo ========================
         /// **Source:** `BOPAlgo_Algo.hxx`:88 - `BOPAlgo_ParallelAlgo`
         ///
@@ -717,6 +1248,36 @@ pub(crate) mod ffi {
         /// Upcast BOPAlgo_ParallelAlgo to BOPAlgo_Options (mutable)
         #[cxx_name = "BOPAlgo_ParallelAlgo_as_BOPAlgo_Options_mut"]
         fn parallel_algo_as_options_mut(self_: Pin<&mut ParallelAlgo>) -> Pin<&mut Options>;
+        /// Inherited from BOPAlgo_Options: Clear
+        #[cxx_name = "BOPAlgo_ParallelAlgo_inherited_Clear"]
+        fn parallel_algo_inherited_clear(self_: Pin<&mut ParallelAlgo>);
+        /// Inherited from BOPAlgo_Options: HasErrors
+        #[cxx_name = "BOPAlgo_ParallelAlgo_inherited_HasErrors"]
+        fn parallel_algo_inherited_has_errors(self_: &ParallelAlgo) -> bool;
+        /// Inherited from BOPAlgo_Options: HasWarnings
+        #[cxx_name = "BOPAlgo_ParallelAlgo_inherited_HasWarnings"]
+        fn parallel_algo_inherited_has_warnings(self_: &ParallelAlgo) -> bool;
+        /// Inherited from BOPAlgo_Options: ClearWarnings
+        #[cxx_name = "BOPAlgo_ParallelAlgo_inherited_ClearWarnings"]
+        fn parallel_algo_inherited_clear_warnings(self_: Pin<&mut ParallelAlgo>);
+        /// Inherited from BOPAlgo_Options: SetRunParallel
+        #[cxx_name = "BOPAlgo_ParallelAlgo_inherited_SetRunParallel"]
+        fn parallel_algo_inherited_set_run_parallel(self_: Pin<&mut ParallelAlgo>, theFlag: bool);
+        /// Inherited from BOPAlgo_Options: RunParallel
+        #[cxx_name = "BOPAlgo_ParallelAlgo_inherited_RunParallel"]
+        fn parallel_algo_inherited_run_parallel(self_: &ParallelAlgo) -> bool;
+        /// Inherited from BOPAlgo_Options: SetFuzzyValue
+        #[cxx_name = "BOPAlgo_ParallelAlgo_inherited_SetFuzzyValue"]
+        fn parallel_algo_inherited_set_fuzzy_value(self_: Pin<&mut ParallelAlgo>, theFuzz: f64);
+        /// Inherited from BOPAlgo_Options: FuzzyValue
+        #[cxx_name = "BOPAlgo_ParallelAlgo_inherited_FuzzyValue"]
+        fn parallel_algo_inherited_fuzzy_value(self_: &ParallelAlgo) -> f64;
+        /// Inherited from BOPAlgo_Options: SetUseOBB
+        #[cxx_name = "BOPAlgo_ParallelAlgo_inherited_SetUseOBB"]
+        fn parallel_algo_inherited_set_use_obb(self_: Pin<&mut ParallelAlgo>, theUseOBB: bool);
+        /// Inherited from BOPAlgo_Options: UseOBB
+        #[cxx_name = "BOPAlgo_ParallelAlgo_inherited_UseOBB"]
+        fn parallel_algo_inherited_use_obb(self_: &ParallelAlgo) -> bool;
         /// ======================== BOPAlgo_PISteps ========================
         /// **Source:** `BOPAlgo_Algo.hxx`:110 - `BOPAlgo_PISteps`
         ///

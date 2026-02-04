@@ -28,4 +28,10 @@ inline rust::String ShapeBuild_ReShape_get_type_name() {
 
 inline const BRepTools_ReShape& ShapeBuild_ReShape_as_BRepTools_ReShape(const ShapeBuild_ReShape& self) { return self; }
 inline BRepTools_ReShape& ShapeBuild_ReShape_as_BRepTools_ReShape_mut(ShapeBuild_ReShape& self) { return self; }
+inline void ShapeBuild_ReShape_inherited_Clear(ShapeBuild_ReShape& self) {
+    self.Clear();
+}
+inline bool& ShapeBuild_ReShape_inherited_ModeConsiderLocation(ShapeBuild_ReShape& self) {
+    return self.ModeConsiderLocation();
+}
 

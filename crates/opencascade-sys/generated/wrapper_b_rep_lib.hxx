@@ -81,6 +81,18 @@ inline const BRepLib_Command& BRepLib_MakeWire_as_BRepLib_Command(const BRepLib_
 inline BRepLib_Command& BRepLib_MakeWire_as_BRepLib_Command_mut(BRepLib_MakeWire& self) { return self; }
 inline const BRepLib_MakeShape& BRepLib_MakeWire_as_BRepLib_MakeShape(const BRepLib_MakeWire& self) { return self; }
 inline BRepLib_MakeShape& BRepLib_MakeWire_as_BRepLib_MakeShape_mut(BRepLib_MakeWire& self) { return self; }
+inline bool BRepLib_MakeWire_inherited_IsDone(const BRepLib_MakeWire& self) {
+    return self.IsDone();
+}
+inline void BRepLib_MakeWire_inherited_Check(const BRepLib_MakeWire& self) {
+    self.Check();
+}
+inline void BRepLib_MakeWire_inherited_Build(BRepLib_MakeWire& self) {
+    self.Build();
+}
+inline Standard_Integer BRepLib_MakeWire_inherited_NbSurfaces(const BRepLib_MakeWire& self) {
+    return self.NbSurfaces();
+}
 
 // ========================
 // BRepLib_MakeShape wrappers
@@ -88,6 +100,12 @@ inline BRepLib_MakeShape& BRepLib_MakeWire_as_BRepLib_MakeShape_mut(BRepLib_Make
 
 inline const BRepLib_Command& BRepLib_MakeShape_as_BRepLib_Command(const BRepLib_MakeShape& self) { return self; }
 inline BRepLib_Command& BRepLib_MakeShape_as_BRepLib_Command_mut(BRepLib_MakeShape& self) { return self; }
+inline bool BRepLib_MakeShape_inherited_IsDone(const BRepLib_MakeShape& self) {
+    return self.IsDone();
+}
+inline void BRepLib_MakeShape_inherited_Check(const BRepLib_MakeShape& self) {
+    self.Check();
+}
 
 // ========================
 // BRepLib_Command wrappers
@@ -106,6 +124,18 @@ inline const BRepLib_Command& BRepLib_MakeVertex_as_BRepLib_Command(const BRepLi
 inline BRepLib_Command& BRepLib_MakeVertex_as_BRepLib_Command_mut(BRepLib_MakeVertex& self) { return self; }
 inline const BRepLib_MakeShape& BRepLib_MakeVertex_as_BRepLib_MakeShape(const BRepLib_MakeVertex& self) { return self; }
 inline BRepLib_MakeShape& BRepLib_MakeVertex_as_BRepLib_MakeShape_mut(BRepLib_MakeVertex& self) { return self; }
+inline bool BRepLib_MakeVertex_inherited_IsDone(const BRepLib_MakeVertex& self) {
+    return self.IsDone();
+}
+inline void BRepLib_MakeVertex_inherited_Check(const BRepLib_MakeVertex& self) {
+    self.Check();
+}
+inline void BRepLib_MakeVertex_inherited_Build(BRepLib_MakeVertex& self) {
+    self.Build();
+}
+inline Standard_Integer BRepLib_MakeVertex_inherited_NbSurfaces(const BRepLib_MakeVertex& self) {
+    return self.NbSurfaces();
+}
 
 // ========================
 // BRepLib_MakeSolid wrappers
@@ -143,6 +173,18 @@ inline const BRepLib_Command& BRepLib_MakeSolid_as_BRepLib_Command(const BRepLib
 inline BRepLib_Command& BRepLib_MakeSolid_as_BRepLib_Command_mut(BRepLib_MakeSolid& self) { return self; }
 inline const BRepLib_MakeShape& BRepLib_MakeSolid_as_BRepLib_MakeShape(const BRepLib_MakeSolid& self) { return self; }
 inline BRepLib_MakeShape& BRepLib_MakeSolid_as_BRepLib_MakeShape_mut(BRepLib_MakeSolid& self) { return self; }
+inline bool BRepLib_MakeSolid_inherited_IsDone(const BRepLib_MakeSolid& self) {
+    return self.IsDone();
+}
+inline void BRepLib_MakeSolid_inherited_Check(const BRepLib_MakeSolid& self) {
+    self.Check();
+}
+inline void BRepLib_MakeSolid_inherited_Build(BRepLib_MakeSolid& self) {
+    self.Build();
+}
+inline Standard_Integer BRepLib_MakeSolid_inherited_NbSurfaces(const BRepLib_MakeSolid& self) {
+    return self.NbSurfaces();
+}
 
 // ========================
 // BRepLib_MakeFace wrappers
@@ -244,6 +286,18 @@ inline const BRepLib_Command& BRepLib_MakeFace_as_BRepLib_Command(const BRepLib_
 inline BRepLib_Command& BRepLib_MakeFace_as_BRepLib_Command_mut(BRepLib_MakeFace& self) { return self; }
 inline const BRepLib_MakeShape& BRepLib_MakeFace_as_BRepLib_MakeShape(const BRepLib_MakeFace& self) { return self; }
 inline BRepLib_MakeShape& BRepLib_MakeFace_as_BRepLib_MakeShape_mut(BRepLib_MakeFace& self) { return self; }
+inline bool BRepLib_MakeFace_inherited_IsDone(const BRepLib_MakeFace& self) {
+    return self.IsDone();
+}
+inline void BRepLib_MakeFace_inherited_Check(const BRepLib_MakeFace& self) {
+    self.Check();
+}
+inline void BRepLib_MakeFace_inherited_Build(BRepLib_MakeFace& self) {
+    self.Build();
+}
+inline Standard_Integer BRepLib_MakeFace_inherited_NbSurfaces(const BRepLib_MakeFace& self) {
+    return self.NbSurfaces();
+}
 
 // ========================
 // BRepLib_MakeEdge wrappers
@@ -393,4 +447,16 @@ inline const BRepLib_Command& BRepLib_MakeEdge_as_BRepLib_Command(const BRepLib_
 inline BRepLib_Command& BRepLib_MakeEdge_as_BRepLib_Command_mut(BRepLib_MakeEdge& self) { return self; }
 inline const BRepLib_MakeShape& BRepLib_MakeEdge_as_BRepLib_MakeShape(const BRepLib_MakeEdge& self) { return self; }
 inline BRepLib_MakeShape& BRepLib_MakeEdge_as_BRepLib_MakeShape_mut(BRepLib_MakeEdge& self) { return self; }
+inline bool BRepLib_MakeEdge_inherited_IsDone(const BRepLib_MakeEdge& self) {
+    return self.IsDone();
+}
+inline void BRepLib_MakeEdge_inherited_Check(const BRepLib_MakeEdge& self) {
+    self.Check();
+}
+inline void BRepLib_MakeEdge_inherited_Build(BRepLib_MakeEdge& self) {
+    self.Build();
+}
+inline Standard_Integer BRepLib_MakeEdge_inherited_NbSurfaces(const BRepLib_MakeEdge& self) {
+    return self.NbSurfaces();
+}
 
