@@ -4171,14 +4171,29 @@ pub fn generate_module_reexports(
     if !functions.is_empty() {
         output.push('\n');
     }
-    
-    // Generate re-exports and impl blocks for classes
+
+    // Group classes by source header for organized output
+    use std::collections::BTreeMap;
+    let mut classes_by_header: BTreeMap<String, Vec<&ParsedClass>> = BTreeMap::new();
     for class in classes {
         if class.has_protected_destructor {
             continue;
         }
-        
-        let cpp_name = &class.name;
+        classes_by_header
+            .entry(class.source_header.clone())
+            .or_insert_with(Vec::new)
+            .push(class);
+    }
+
+    // Generate re-exports and impl blocks for classes, grouped by header
+    for (header, header_classes) in classes_by_header {
+        // Output section header
+        output.push_str("// ========================\n");
+        output.push_str(&format!("// From {}\n", header));
+        output.push_str("// ========================\n\n");
+
+        for class in header_classes {
+            let cpp_name = &class.name;
         let short_name = class.short_name();
         let safe_name = class.safe_short_name();
         
@@ -4357,8 +4372,9 @@ pub fn generate_module_reexports(
             }
             output.push_str("}\n\n");
         }
+        }
     }
-    
+
     output
 }
 
