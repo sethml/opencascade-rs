@@ -16,6 +16,7 @@ cxx-build = "1"
 occt-sys = { path = "../occt-sys", optional = true }
 
 [features]
+default = ["builtin"]
 builtin = ["occt-sys"]
 
 [[example]]
