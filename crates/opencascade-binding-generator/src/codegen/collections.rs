@@ -308,7 +308,21 @@ fn generate_cpp_const_iterator_collection(
     output.push_str("    ++iter.current;\n");
     output.push_str("    return result;\n");
     output.push_str("}\n\n");
-    
+
+    // Size function
+    output.push_str(&format!(
+        "inline int {typedef_name}_size(const {typedef_name}& coll) {{\n"
+    ));
+    output.push_str("    return coll.Size();\n");
+    output.push_str("}\n\n");
+
+    // Clear function
+    output.push_str(&format!(
+        "inline void {typedef_name}_clear({typedef_name}& coll) {{\n"
+    ));
+    output.push_str("    coll.Clear();\n");
+    output.push_str("}\n\n");
+
     // Add element function
     match kind {
         CollectionKind::List => {
@@ -317,14 +331,20 @@ fn generate_cpp_const_iterator_collection(
             ));
             output.push_str("    coll.Append(item);\n");
             output.push_str("}\n\n");
+
+            output.push_str(&format!(
+                "inline void {typedef_name}_prepend({typedef_name}& coll, const {element_type}& item) {{\n"
+            ));
+            output.push_str("    coll.Prepend(item);\n");
+            output.push_str("}\n\n");
         }
         CollectionKind::Map => {
             output.push_str(&format!(
-                "inline bool {typedef_name}_add({typedef_name}& coll, const {element_type}& item) {{\n"
+                "inline int {typedef_name}_add({typedef_name}& coll, const {element_type}& item) {{\n"
             ));
             output.push_str("    return coll.Add(item);\n");
             output.push_str("}\n\n");
-            
+
             output.push_str(&format!(
                 "inline bool {typedef_name}_contains(const {typedef_name}& coll, const {element_type}& item) {{\n"
             ));
@@ -396,7 +416,29 @@ fn generate_cpp_indexed_collection(
     output.push_str("    ++iter.index;\n");
     output.push_str("    return result;\n");
     output.push_str("}\n\n");
-    
+
+    // Size function
+    let size_method = match kind {
+        CollectionKind::Sequence => "Length",
+        CollectionKind::IndexedMap => "Extent",
+        _ => "Size",
+    };
+
+    output.push_str(&format!(
+        "inline int {typedef_name}_size(const {typedef_name}& coll) {{\n"
+    ));
+    output.push_str(&format!(
+        "    return coll.{size_method}();\n"
+    ));
+    output.push_str("}\n\n");
+
+    // Clear function
+    output.push_str(&format!(
+        "inline void {typedef_name}_clear({typedef_name}& coll) {{\n"
+    ));
+    output.push_str("    coll.Clear();\n");
+    output.push_str("}\n\n");
+
     // Add element function
     match kind {
         CollectionKind::Sequence => {
@@ -405,6 +447,12 @@ fn generate_cpp_indexed_collection(
             ));
             output.push_str("    coll.Append(item);\n");
             output.push_str("}\n\n");
+
+            output.push_str(&format!(
+                "inline const {element_type}& {typedef_name}_value(const {typedef_name}& coll, int index) {{\n"
+            ));
+            output.push_str("    return coll.Value(index);\n");
+            output.push_str("}\n\n");
         }
         CollectionKind::IndexedMap => {
             output.push_str(&format!(
@@ -412,7 +460,13 @@ fn generate_cpp_indexed_collection(
             ));
             output.push_str("    return coll.Add(item);\n");
             output.push_str("}\n\n");
-            
+
+            output.push_str(&format!(
+                "inline const {element_type}& {typedef_name}_find_key(const {typedef_name}& coll, int index) {{\n"
+            ));
+            output.push_str("    return coll.FindKey(index);\n");
+            output.push_str("}\n\n");
+
             output.push_str(&format!(
                 "inline int {typedef_name}_find_index(const {typedef_name}& coll, const {element_type}& item) {{\n"
             ));
@@ -493,12 +547,19 @@ fn generate_cpp_data_map_collection(
     ));
     output.push_str("    return coll.Bind(key, value);\n");
     output.push_str("}\n\n");
-    
+
     // Size function
     output.push_str(&format!(
         "inline int {typedef_name}_size(const {typedef_name}& coll) {{\n"
     ));
     output.push_str("    return coll.Extent();\n");
+    output.push_str("}\n\n");
+
+    // Clear function
+    output.push_str(&format!(
+        "inline void {typedef_name}_clear({typedef_name}& coll) {{\n"
+    ));
+    output.push_str("    coll.Clear();\n");
     output.push_str("}\n\n");
 }
 
@@ -593,12 +654,19 @@ fn generate_cpp_indexed_data_map_collection(
     ));
     output.push_str("    return coll.Add(key, value);\n");
     output.push_str("}\n\n");
-    
+
     // Size function
     output.push_str(&format!(
         "inline int {typedef_name}_size(const {typedef_name}& coll) {{\n"
     ));
     output.push_str("    return coll.Extent();\n");
+    output.push_str("}\n\n");
+
+    // Clear function
+    output.push_str(&format!(
+        "inline void {typedef_name}_clear({typedef_name}& coll) {{\n"
+    ));
+    output.push_str("    coll.Clear();\n");
     output.push_str("}\n\n");
 }
 
@@ -1682,12 +1750,39 @@ fn generate_unified_rust_ffi_collection(info: &CollectionInfo) -> String {
                 output.push_str(&format!("                fn {}_find_key(coll: &{}, index: i32) -> &{};\n\n", coll_name, coll_name, info.element_type));
             }
         }
-        CollectionKind::DataMap | CollectionKind::IndexedDataMap => {
+        CollectionKind::DataMap => {
             if let Some(ref value_type) = info.value_type {
                 output.push_str(&format!("                /// Bind a key to a value\n"));
+                output.push_str(&format!("                #[cxx_name = \"{}_bind\"]\n", coll_name));
                 output.push_str(&format!("                fn {}_bind(coll: Pin<&mut {}>, key: &{}, value: &{}) -> bool;\n\n", coll_name, coll_name, info.element_type, value_type));
-                output.push_str(&format!("                /// Find a value by key\n"));
-                output.push_str(&format!("                fn {}_find(coll: &{}, key: &{}) -> &{};\n\n", coll_name, coll_name, info.element_type, value_type));
+                output.push_str(&format!("                /// Find a value by key (returns nullptr if not found)\n"));
+                output.push_str(&format!("                #[cxx_name = \"{}_find\"]\n", coll_name));
+                output.push_str(&format!("                fn {}_find(coll: &{}, key: &{}) -> UniquePtr<{}>;\n\n", coll_name, coll_name, info.element_type, value_type));
+                output.push_str(&format!("                /// Check if key exists\n"));
+                output.push_str(&format!("                #[cxx_name = \"{}_contains\"]\n", coll_name));
+                output.push_str(&format!("                fn {}_contains(coll: &{}, key: &{}) -> bool;\n\n", coll_name, coll_name, info.element_type));
+            }
+        }
+        CollectionKind::IndexedDataMap => {
+            if let Some(ref value_type) = info.value_type {
+                output.push_str(&format!("                /// Add a key-value pair, returns index (existing or new)\n"));
+                output.push_str(&format!("                #[cxx_name = \"{}_add\"]\n", coll_name));
+                output.push_str(&format!("                fn {}_add(coll: Pin<&mut {}>, key: &{}, value: &{}) -> i32;\n\n", coll_name, coll_name, info.element_type, value_type));
+                output.push_str(&format!("                /// Find value by key (returns reference)\n"));
+                output.push_str(&format!("                #[cxx_name = \"{}_find_from_key\"]\n", coll_name));
+                output.push_str(&format!("                fn {}_find_from_key<'a>(coll: &'a {}, key: &{}) -> &'a {};\n\n", coll_name, coll_name, info.element_type, value_type));
+                output.push_str(&format!("                /// Find value by 1-based index (returns reference)\n"));
+                output.push_str(&format!("                #[cxx_name = \"{}_find_from_index\"]\n", coll_name));
+                output.push_str(&format!("                fn {}_find_from_index<'a>(coll: &'a {}, index: i32) -> &'a {};\n\n", coll_name, coll_name, value_type));
+                output.push_str(&format!("                /// Find key by 1-based index\n"));
+                output.push_str(&format!("                #[cxx_name = \"{}_find_key\"]\n", coll_name));
+                output.push_str(&format!("                fn {}_find_key(coll: &{}, index: i32) -> UniquePtr<{}>;\n\n", coll_name, coll_name, info.element_type));
+                output.push_str(&format!("                /// Find index by key (returns 0 if not found)\n"));
+                output.push_str(&format!("                #[cxx_name = \"{}_find_index\"]\n", coll_name));
+                output.push_str(&format!("                fn {}_find_index(coll: &{}, key: &{}) -> i32;\n\n", coll_name, coll_name, info.element_type));
+                output.push_str(&format!("                /// Check if key exists\n"));
+                output.push_str(&format!("                #[cxx_name = \"{}_contains\"]\n", coll_name));
+                output.push_str(&format!("                fn {}_contains(coll: &{}, key: &{}) -> bool;\n\n", coll_name, coll_name, info.element_type));
             }
         }
     }
@@ -1695,10 +1790,16 @@ fn generate_unified_rust_ffi_collection(info: &CollectionInfo) -> String {
     // Iterator creation
     output.push_str(&format!("                /// Create an iterator over the collection\n"));
     output.push_str(&format!("                fn {}_iter(coll: &{}) -> UniquePtr<{}>;\n\n", coll_name, coll_name, iter_name));
-    
-    // Iterator next
+
+    // Iterator next - DataMaps iterate over keys, others iterate over elements
+    let next_suffix = match info.kind {
+        CollectionKind::DataMap | CollectionKind::IndexedDataMap => "_next_key",
+        _ => "_next",
+    };
+    let next_fn_name = format!("{}{}", iter_name, next_suffix);
     output.push_str(&format!("                /// Advance iterator and get next element (nullptr when done)\n"));
-    output.push_str(&format!("                fn {}_next(iter: Pin<&mut {}>) -> UniquePtr<{}>;\n\n", iter_name, iter_name, info.element_type));
+    output.push_str(&format!("                #[cxx_name = \"{}\"]\n", next_fn_name));
+    output.push_str(&format!("                fn {}(iter: Pin<&mut {}>) -> UniquePtr<{}>;\n\n", next_fn_name, iter_name, info.element_type));
     
     output
 }
@@ -1785,16 +1886,54 @@ fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
                 output.push_str(&format!("    }}\n\n"));
             }
         }
-        CollectionKind::DataMap | CollectionKind::IndexedDataMap => {
+        CollectionKind::DataMap => {
             if let Some(ref value_type) = info.value_type {
                 output.push_str(&format!("    /// Bind a key to a value\n"));
                 output.push_str(&format!("    pub fn bind(self: std::pin::Pin<&mut Self>, key: &ffi::{}, value: &ffi::{}) -> bool {{\n", info.element_type, value_type));
                 output.push_str(&format!("        ffi::{}_bind(self, key, value)\n", coll_name));
                 output.push_str(&format!("    }}\n\n"));
-                
-                output.push_str(&format!("    /// Find a value by key\n"));
-                output.push_str(&format!("    pub fn find(&self, key: &ffi::{}) -> &ffi::{} {{\n", info.element_type, value_type));
+
+                output.push_str(&format!("    /// Find a value by key (returns nullptr if not found)\n"));
+                output.push_str(&format!("    pub fn find(&self, key: &ffi::{}) -> cxx::UniquePtr<ffi::{}> {{\n", info.element_type, value_type));
                 output.push_str(&format!("        ffi::{}_find(self, key)\n", coll_name));
+                output.push_str(&format!("    }}\n\n"));
+
+                output.push_str(&format!("    /// Check if key exists\n"));
+                output.push_str(&format!("    pub fn contains(&self, key: &ffi::{}) -> bool {{\n", info.element_type));
+                output.push_str(&format!("        ffi::{}_contains(self, key)\n", coll_name));
+                output.push_str(&format!("    }}\n\n"));
+            }
+        }
+        CollectionKind::IndexedDataMap => {
+            if let Some(ref value_type) = info.value_type {
+                output.push_str(&format!("    /// Add a key-value pair, returns index (existing or new)\n"));
+                output.push_str(&format!("    pub fn add(self: std::pin::Pin<&mut Self>, key: &ffi::{}, value: &ffi::{}) -> i32 {{\n", info.element_type, value_type));
+                output.push_str(&format!("        ffi::{}_add(self, key, value)\n", coll_name));
+                output.push_str(&format!("    }}\n\n"));
+
+                output.push_str(&format!("    /// Find value by key\n"));
+                output.push_str(&format!("    pub fn find_from_key(&self, key: &ffi::{}) -> &ffi::{} {{\n", info.element_type, value_type));
+                output.push_str(&format!("        ffi::{}_find_from_key(self, key)\n", coll_name));
+                output.push_str(&format!("    }}\n\n"));
+
+                output.push_str(&format!("    /// Find value by 1-based index\n"));
+                output.push_str(&format!("    pub fn find_from_index(&self, index: i32) -> &ffi::{} {{\n", value_type));
+                output.push_str(&format!("        ffi::{}_find_from_index(self, index)\n", coll_name));
+                output.push_str(&format!("    }}\n\n"));
+
+                output.push_str(&format!("    /// Find key by 1-based index\n"));
+                output.push_str(&format!("    pub fn find_key(&self, index: i32) -> cxx::UniquePtr<ffi::{}> {{\n", info.element_type));
+                output.push_str(&format!("        ffi::{}_find_key(self, index)\n", coll_name));
+                output.push_str(&format!("    }}\n\n"));
+
+                output.push_str(&format!("    /// Find index by key (returns 0 if not found)\n"));
+                output.push_str(&format!("    pub fn find_index(&self, key: &ffi::{}) -> i32 {{\n", info.element_type));
+                output.push_str(&format!("        ffi::{}_find_index(self, key)\n", coll_name));
+                output.push_str(&format!("    }}\n\n"));
+
+                output.push_str(&format!("    /// Check if key exists\n"));
+                output.push_str(&format!("    pub fn contains(&self, key: &ffi::{}) -> bool {{\n", info.element_type));
+                output.push_str(&format!("        ffi::{}_contains(self, key)\n", coll_name));
                 output.push_str(&format!("    }}\n\n"));
             }
         }
@@ -1809,10 +1948,15 @@ fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
     output.push_str("}\n\n");
     
     // Iterator impl block
+    let next_suffix = match info.kind {
+        CollectionKind::DataMap | CollectionKind::IndexedDataMap => "_next_key",
+        _ => "_next",
+    };
+    let next_fn_name = format!("{}{}", iter_name, next_suffix);
     output.push_str(&format!("impl ffi::{} {{\n", iter_name));
     output.push_str(&format!("    /// Get next element (nullptr when done)\n"));
     output.push_str(&format!("    pub fn next(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::{}> {{\n", info.element_type));
-    output.push_str(&format!("        ffi::{}_next(self)\n", iter_name));
+    output.push_str(&format!("        ffi::{}(self)\n", next_fn_name));
     output.push_str(&format!("    }}\n"));
     output.push_str("}\n");
     

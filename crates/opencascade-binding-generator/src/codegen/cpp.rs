@@ -13,6 +13,7 @@ use crate::model::{Param, ParsedClass, ParsedFunction, Type};
 use crate::module_graph::Module;
 use crate::resolver::{self, SymbolTable};
 use crate::type_mapping;
+use heck::ToSnakeCase;
 use std::collections::HashSet;
 use std::fmt::Write;
 
@@ -21,6 +22,16 @@ fn type_is_cstring(ty: &Type) -> bool {
     match ty {
         Type::ConstPtr(inner) => matches!(inner.as_ref(), Type::Class(name) if name == "char"),
         Type::ConstRef(inner) | Type::MutRef(inner) => type_is_cstring(inner),
+        _ => false,
+    }
+}
+
+/// Check if a parameter type uses an unknown Handle (but allow opaque Class types).
+/// This matches the filter used in Rust FFI generation for constructors.
+fn param_uses_unknown_handle(ty: &Type, handle_able_classes: &HashSet<String>) -> bool {
+    match ty {
+        Type::Handle(class_name) => !handle_able_classes.contains(class_name),
+        Type::ConstRef(inner) | Type::MutRef(inner) => param_uses_unknown_handle(inner, handle_able_classes),
         _ => false,
     }
 }
@@ -1444,6 +1455,12 @@ fn generate_unified_class_wrappers(
     // Returns the set of used function names
     let wrapper_fn_names = generate_unified_return_by_value_wrappers(class, output, &symbol_table.all_enum_names, &symbol_table.all_class_names, handle_able_classes);
 
+    // Generate wrappers for methods with const char* parameters
+    generate_unified_c_string_param_wrappers(class, output, &symbol_table.all_enum_names, &symbol_table.all_class_names, handle_able_classes);
+
+    // Generate wrappers for methods that return const char*
+    generate_unified_c_string_return_wrappers(class, output, &symbol_table.all_enum_names, &symbol_table.all_class_names, handle_able_classes);
+
     // Generate static method wrappers (takes reserved names to avoid conflicts)
     generate_unified_static_method_wrappers(class, output, &symbol_table.all_enum_names, &wrapper_fn_names, &symbol_table.all_class_names, handle_able_classes);
 
@@ -1458,6 +1475,9 @@ fn generate_unified_class_wrappers(
 
     // Generate Handle upcast wrappers
     generate_unified_handle_upcast_wrappers(class, output, symbol_table);
+
+    // Generate wrappers for inherited methods
+    generate_unified_inherited_method_wrappers(class, output, symbol_table, &symbol_table.all_class_names, handle_able_classes);
 
     writeln!(output).unwrap();
 }
@@ -1486,8 +1506,8 @@ fn generate_unified_constructor_wrappers(
         if method_uses_enum(&ctor.params, &None, all_enum_names) {
             continue;
         }
-        // Filter constructors using unknown classes/handles
-        if ctor.params.iter().any(|p| type_mapping::type_uses_unknown_handle(&p.ty, all_class_names, handle_able_classes)) {
+        // Filter constructors using unknown Handle types (but allow opaque Class types)
+        if ctor.params.iter().any(|p| param_uses_unknown_handle(&p.ty, handle_able_classes)) {
             continue;
         }
 
@@ -1914,6 +1934,383 @@ fn generate_unified_handle_upcast_wrappers(
         )
         .unwrap();
         writeln!(output, "}}").unwrap();
+    }
+}
+
+/// Generate wrapper functions for instance methods with C string parameters (unified mode)
+/// These need wrappers to convert rust::Str to const char*
+fn generate_unified_c_string_param_wrappers(
+    class: &ParsedClass,
+    output: &mut String,
+    all_enum_names: &HashSet<String>,
+    all_class_names: &HashSet<String>,
+    handle_able_classes: &HashSet<String>,
+) {
+    for method in &class.methods {
+        // Only wrap methods that have C string parameters
+        let has_c_string_param = method.params.iter().any(|p| p.ty.is_c_string());
+        if !has_c_string_param {
+            continue;
+        }
+
+        // Skip methods with enum types
+        if method_uses_enum(&method.params, &method.return_type, all_enum_names) {
+            continue;
+        }
+
+        // Check if method is already wrapped by generate_unified_return_by_value_wrappers
+        let return_type = method.return_type.as_ref();
+        let is_already_wrapped = if method.returns_by_value() {
+            let return_type_name = match return_type {
+                Some(Type::Class(name)) => Some(name.as_str()),
+                _ => None,
+            };
+            let is_enum = return_type_name.map(|n| all_enum_names.contains(n)).unwrap_or(false);
+            !is_enum
+        } else {
+            false
+        };
+
+        if is_already_wrapped {
+            continue;
+        }
+
+        // Skip methods with unbindable types
+        if method.has_unbindable_types() {
+            continue;
+        }
+
+        // Filter methods using unknown classes/handles
+        if method.params.iter().any(|p| type_mapping::type_uses_unknown_handle(&p.ty, all_class_names, handle_able_classes)) {
+            continue;
+        }
+        if let Some(ref ret_type) = method.return_type {
+            if type_mapping::type_uses_unknown_handle(ret_type, all_class_names, handle_able_classes) {
+                continue;
+            }
+        }
+
+        // Convert method name to snake_case to match Rust FFI naming
+        let method_name_snake = method.name.to_snake_case();
+        let wrapper_name = format!("{}_{}", class.name, method_name_snake);
+
+        // Self parameter
+        let self_param = if method.is_const {
+            format!("const {}& self", class.name)
+        } else {
+            format!("{}& self", class.name)
+        };
+
+        // Other parameters - use type_to_cpp_param for CXX-compatible types (e.g., rust::Str)
+        let other_params = method
+            .params
+            .iter()
+            .map(|p| format!("{} {}", type_to_cpp_param(&p.ty), p.name))
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        let params = if other_params.is_empty() {
+            self_param
+        } else {
+            format!("{}, {}", self_param, other_params)
+        };
+
+        // Argument list for method call - convert from CXX types to native C++ types
+        let args = method
+            .params
+            .iter()
+            .map(|p| param_to_cpp_arg(p))
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        // Determine return type - check if const char* needs rust::String conversion
+        let returns_c_string = method.return_type.as_ref().map(|t| t.is_c_string()).unwrap_or(false);
+        let return_type_str = if returns_c_string {
+            "rust::String".to_string()
+        } else {
+            match &method.return_type {
+                Some(rt) => type_to_cpp(rt),
+                None => "void".to_string(),
+            }
+        };
+
+        // Check if return type is a reference
+        let returns_reference = method.return_type.as_ref().map(|t| t.is_reference()).unwrap_or(false);
+
+        if returns_c_string {
+            // const char* -> rust::String conversion
+            writeln!(
+                output,
+                "inline rust::String {wrapper_name}({params}) {{"
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return rust::String(self.{method_name}({args}));",
+                method_name = method.name,
+            )
+            .unwrap();
+        } else if returns_reference {
+            writeln!(
+                output,
+                "inline {return_type_str} {wrapper_name}({params}) {{"
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return self.{method_name}({args});",
+                method_name = method.name,
+            )
+            .unwrap();
+        } else if return_type_str == "void" {
+            writeln!(
+                output,
+                "inline void {wrapper_name}({params}) {{"
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    self.{method_name}({args});",
+                method_name = method.name,
+            )
+            .unwrap();
+        } else {
+            writeln!(
+                output,
+                "inline {return_type_str} {wrapper_name}({params}) {{"
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return self.{method_name}({args});",
+                method_name = method.name,
+            )
+            .unwrap();
+        }
+        writeln!(output, "}}").unwrap();
+    }
+}
+
+/// Generate wrapper functions for instance methods that return const char* (unified mode)
+/// These need wrappers to convert const char* to rust::String
+fn generate_unified_c_string_return_wrappers(
+    class: &ParsedClass,
+    output: &mut String,
+    all_enum_names: &HashSet<String>,
+    all_class_names: &HashSet<String>,
+    handle_able_classes: &HashSet<String>,
+) {
+    for method in &class.methods {
+        // Only wrap methods that return const char*
+        let returns_c_string = method.return_type.as_ref().map(|t| t.is_c_string()).unwrap_or(false);
+        if !returns_c_string {
+            continue;
+        }
+
+        // Skip methods with enum types
+        if method_uses_enum(&method.params, &method.return_type, all_enum_names) {
+            continue;
+        }
+
+        // Skip if already wrapped by c_string_param_wrappers
+        let has_c_string_param = method.params.iter().any(|p| p.ty.is_c_string());
+        if has_c_string_param {
+            continue;
+        }
+
+        // Skip methods with unbindable types
+        if method.has_unbindable_types() {
+            continue;
+        }
+
+        // Filter methods using unknown classes/handles
+        if method.params.iter().any(|p| type_mapping::type_uses_unknown_handle(&p.ty, all_class_names, handle_able_classes)) {
+            continue;
+        }
+
+        // Convert method name to snake_case to match Rust FFI naming
+        let method_name_snake = method.name.to_snake_case();
+        let wrapper_name = format!("{}_{}", class.name, method_name_snake);
+
+        // Self parameter
+        let self_param = if method.is_const {
+            format!("const {}& self", class.name)
+        } else {
+            format!("{}& self", class.name)
+        };
+
+        // Other parameters
+        let other_params = method
+            .params
+            .iter()
+            .map(|p| format!("{} {}", type_to_cpp_param(&p.ty), p.name))
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        let params = if other_params.is_empty() {
+            self_param
+        } else {
+            format!("{}, {}", self_param, other_params)
+        };
+
+        // Argument list for method call
+        let args = method
+            .params
+            .iter()
+            .map(|p| param_to_cpp_arg(p))
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        // Return rust::String by converting from const char*
+        writeln!(
+            output,
+            "inline rust::String {wrapper_name}({params}) {{"
+        )
+        .unwrap();
+        writeln!(
+            output,
+            "    return rust::String(self.{method_name}({args}));",
+            method_name = method.name,
+        )
+        .unwrap();
+        writeln!(output, "}}").unwrap();
+    }
+}
+
+/// Generate wrapper functions for inherited methods (unified mode)
+fn generate_unified_inherited_method_wrappers(
+    class: &ParsedClass,
+    output: &mut String,
+    symbol_table: &SymbolTable,
+    all_class_names: &HashSet<String>,
+    handle_able_classes: &HashSet<String>,
+) {
+    use std::collections::HashSet;
+
+    // Skip classes with protected destructors
+    if class.has_protected_destructor {
+        return;
+    }
+
+    // Build a set of method names already declared directly on this class
+    let existing_method_names: HashSet<String> = class.methods.iter()
+        .map(|m| m.name.clone())
+        .collect();
+
+    // Track methods we've already added
+    let mut seen_methods: HashSet<String> = HashSet::new();
+
+    // Get all ancestors
+    let ancestors = symbol_table.get_all_ancestors_by_name(&class.name);
+
+    for ancestor_name in &ancestors {
+        if let Some(ancestor_class) = symbol_table.class_by_name(ancestor_name) {
+            let ancestor_methods = symbol_table.included_methods(ancestor_class);
+
+            for resolved_method in ancestor_methods {
+                // Skip if this class already has a method with this name
+                if existing_method_names.contains(&resolved_method.cpp_name) {
+                    continue;
+                }
+
+                if class.all_method_names.contains(&resolved_method.cpp_name) {
+                    continue;
+                }
+
+                if seen_methods.contains(&resolved_method.cpp_name) {
+                    continue;
+                }
+
+                seen_methods.insert(resolved_method.cpp_name.clone());
+
+                // In unified mode, we DON'T skip cross-module types since all types are in one module
+                // But we still skip raw pointers
+                let uses_raw_pointers = resolved_method.params.iter()
+                    .any(|p| p.ty.rust_ffi_type.contains("*const") || p.ty.rust_ffi_type.contains("*mut"))
+                    || resolved_method.return_type.as_ref()
+                        .map(|rt| rt.rust_ffi_type.contains("*const") || rt.rust_ffi_type.contains("*mut"))
+                        .unwrap_or(false);
+
+                if uses_raw_pointers {
+                    continue;
+                }
+
+                // In unified mode, all classes should be known, so we don't need to filter
+                // for unknown types like per-module mode does for cross-module types.
+                // The resolver already handles type resolution.
+
+                // Generate the wrapper function
+                let wrapper_name = format!("{}_inherited_{}", class.name, resolved_method.cpp_name);
+
+                // Self parameter
+                let self_param = if resolved_method.is_const {
+                    format!("const {}& self", class.name)
+                } else {
+                    format!("{}& self", class.name)
+                };
+
+                // Other parameters
+                let other_params: Vec<String> = resolved_method.params.iter()
+                    .map(|p| format!("{} {}", resolved_type_to_cpp_param(&p.ty), p.name))
+                    .collect();
+
+                let params = if other_params.is_empty() {
+                    self_param
+                } else {
+                    format!("{}, {}", self_param, other_params.join(", "))
+                };
+
+                // Arguments for calling the method
+                let args: Vec<String> = resolved_method.params.iter()
+                    .map(|p| resolved_param_to_cpp_arg(p))
+                    .collect();
+                let args_str = args.join(", ");
+
+                // Return type
+                let return_type_cpp = match &resolved_method.return_type {
+                    Some(rt) => {
+                        if rt.needs_unique_ptr {
+                            format!("std::unique_ptr<{}>", rt.cpp_type)
+                        } else {
+                            rt.cpp_type.clone()
+                        }
+                    }
+                    None => "void".to_string(),
+                };
+
+                // Generate the wrapper
+                let needs_unique_ptr = resolved_method.return_type.as_ref()
+                    .map(|rt| rt.needs_unique_ptr)
+                    .unwrap_or(false);
+
+                writeln!(output, "inline {} {}({}) {{", return_type_cpp, wrapper_name, params).unwrap();
+
+                if needs_unique_ptr {
+                    let inner_type = resolved_method.return_type.as_ref()
+                        .map(|rt| rt.cpp_type.clone())
+                        .unwrap_or_else(|| "void".to_string());
+                    writeln!(
+                        output,
+                        "    return std::make_unique<{}>(self.{}({}));",
+                        inner_type, resolved_method.cpp_name, args_str
+                    ).unwrap();
+                } else if resolved_method.return_type.is_some() {
+                    writeln!(
+                        output,
+                        "    return self.{}({});",
+                        resolved_method.cpp_name, args_str
+                    ).unwrap();
+                } else {
+                    writeln!(
+                        output,
+                        "    self.{}({});",
+                        resolved_method.cpp_name, args_str
+                    ).unwrap();
+                }
+
+                writeln!(output, "}}").unwrap();
+            }
+        }
     }
 }
 

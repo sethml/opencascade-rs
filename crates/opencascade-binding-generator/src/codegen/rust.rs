@@ -32,6 +32,17 @@ fn type_uses_unknown_type(ty: &Type, ctx: &TypeContext) -> bool {
     }
 }
 
+/// Check if a parameter type uses an unknown Handle (but allow opaque Class types).
+/// This is used for constructor filtering where opaque classes are acceptable
+/// (they'll be declared as opaque types in the FFI), but undeclared Handles are not.
+fn param_uses_unknown_handle(ty: &Type, handle_able_classes: &HashSet<String>) -> bool {
+    match ty {
+        Type::Handle(class_name) => !handle_able_classes.contains(class_name),
+        Type::ConstRef(inner) | Type::MutRef(inner) => param_uses_unknown_handle(inner, handle_able_classes),
+        _ => false,
+    }
+}
+
 /// Check if a type is or contains `const char*` which requires special wrapper handling
 /// and can't be directly bound in CXX static methods
 fn type_is_cstring(ty: &Type) -> bool {
@@ -2217,6 +2228,10 @@ fn generate_re_exports(
                         if ctor.has_unbindable_types() {
                             return false;
                         }
+                        // Skip constructors with enum types (enums not supported - CXX uses enum class but OCCT uses unscoped enums)
+                        if constructor_uses_enum(ctor, all_enums) {
+                            return false;
+                        }
                         true
                     })
                     .map(|ctor| {
@@ -2776,6 +2791,11 @@ fn type_to_ffi_string(ty: &Type, owned_classes: &HashSet<String>, all_enums: &Ha
             format!("ffi::Handle{}", name.replace("_", ""))
         }
         Type::Class(name) => {
+            // Special case for char - map to Rust's c_char
+            if name == "char" {
+                return "std::os::raw::c_char".to_string();
+            }
+
             // Check if this is actually an enum
             if all_enums.contains(name) {
                 // For enums, extract module and short name
@@ -3208,7 +3228,7 @@ pub fn generate_unified_ffi(
         #![allow(clippy::missing_safety_doc)]
 
         #[cxx::bridge]
-        pub mod ffi {
+        mod ffi {
             unsafe extern "C++" {
                 include!("wrappers.hxx");
 
@@ -3243,6 +3263,10 @@ pub fn generate_unified_ffi(
         tokens_string.push_str("\n");
         tokens_string.push_str(&coll_impls);
     }
+
+    // Add re-export of all FFI types
+    tokens_string.push_str("\n// Re-export all FFI types to crate::ffi namespace\n");
+    tokens_string.push_str("pub use ffi::*;\n");
 
     format!("{}\n\n{}", file_header, tokens_string)
 }
@@ -3348,9 +3372,11 @@ fn generate_unified_constructors(class: &ParsedClass, ctx: &TypeContext) -> Vec<
             if constructor_uses_enum(ctor, ctx.all_enums) {
                 return false;
             }
-            // Filter constructors using unknown classes/handles
-            if ctor.params.iter().any(|p| type_uses_unknown_type(&p.ty, ctx)) {
-                return false;
+            // Filter constructors using unknown Handle types (but allow opaque Class types)
+            if let Some(handle_classes) = ctx.handle_able_classes {
+                if ctor.params.iter().any(|p| param_uses_unknown_handle(&p.ty, handle_classes)) {
+                    return false;
+                }
             }
             true
         })
@@ -3775,7 +3801,12 @@ fn generate_unified_static_method(
     let ret_type = method.return_type.as_ref().map(|ty| {
         let mapped = map_return_type_in_context(ty, ctx);
         // map_return_type_in_context already wraps class/handle types in UniquePtr
-        let ty_tokens: TokenStream = mapped.rust_type.parse().unwrap_or_else(|_| quote! { () });
+        let mut ty_str = mapped.rust_type;
+        // Static methods returning references need 'static lifetime
+        if ty.is_reference() && ty_str.starts_with('&') {
+            ty_str = ty_str.replace("&", "&'static ");
+        }
+        let ty_tokens: TokenStream = ty_str.parse().unwrap_or_else(|_| quote! { () });
         quote! { -> #ty_tokens }
     });
 
@@ -4127,7 +4158,13 @@ pub fn generate_module_reexports(
     let all_enum_names = &symbol_table.all_enum_names;
     let protected_destructor_classes = symbol_table.protected_destructor_class_names();
     let all_class_names = &symbol_table.all_class_names;
-    
+
+    // Build set of classes that can have Handle<T> declarations
+    let handle_able_classes: HashSet<String> = classes.iter()
+        .filter(|c| c.is_handle_type && !c.has_protected_destructor)
+        .map(|c| c.name.clone())
+        .collect();
+
     // Build set of class names owned by this module
     let owned_classes: HashSet<String> = classes.iter().map(|c| c.name.clone()).collect();
     
@@ -4231,7 +4268,11 @@ pub fn generate_module_reexports(
                 if constructor_uses_enum(ctor, all_enum_names) {
                     continue;
                 }
-                
+                // Filter constructors using unknown Handle types (but allow opaque Class types)
+                if ctor.params.iter().any(|p| param_uses_unknown_handle(&p.ty, &handle_able_classes)) {
+                    continue;
+                }
+
                 let base_suffix = ctor.overload_suffix();
                 let method_name = if base_suffix.is_empty() {
                     "new".to_string()
@@ -4390,12 +4431,26 @@ fn unified_type_to_string(ty: &Type, _owned_classes: &HashSet<String>, _all_enum
         Type::Usize => "usize".to_string(),
         Type::F32 => "f32".to_string(),
         Type::F64 => "f64".to_string(),
-        Type::Class(name) => format!("crate::ffi::{}", name),
+        Type::Class(name) => {
+            // Special case for char - map to Rust's c_char
+            if name == "char" {
+                "std::os::raw::c_char".to_string()
+            } else {
+                format!("crate::ffi::{}", name)
+            }
+        }
         Type::Handle(name) => format!("crate::ffi::Handle{}", name.replace("_", "")),
         Type::ConstRef(inner) => format!("&{}", unified_type_to_string(inner, _owned_classes, _all_enums)),
         Type::MutRef(inner) => format!("std::pin::Pin<&mut {}>", unified_type_to_string(inner, _owned_classes, _all_enums)),
         Type::RValueRef(_inner) => "()".to_string(), // RValue refs are unbindable
-        Type::ConstPtr(inner) => format!("*const {}", unified_type_to_string(inner, _owned_classes, _all_enums)),
+        Type::ConstPtr(inner) => {
+            // Special case for const char* - map to &str for C strings
+            if matches!(inner.as_ref(), Type::Class(name) if name == "char") {
+                "&str".to_string()
+            } else {
+                format!("*const {}", unified_type_to_string(inner, _owned_classes, _all_enums))
+            }
+        }
         Type::MutPtr(inner) => format!("*mut {}", unified_type_to_string(inner, _owned_classes, _all_enums)),
     }
 }

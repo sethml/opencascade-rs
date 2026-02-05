@@ -129,61 +129,87 @@ impl OcctConfig {
     /// Find OpenCASCADE library using cmake
     fn detect() -> Self {
         println!("cargo:rerun-if-env-changed=DEP_OCCT_ROOT");
+        println!("cargo:warning=OcctConfig::detect() called");
 
         // Add path to builtin OCCT
         #[cfg(feature = "builtin")]
         {
+            println!("cargo:warning=Builtin feature is enabled");
+
             occt_sys::build_occt();
-            std::env::set_var("DEP_OCCT_ROOT", occt_sys::occt_path().as_os_str());
+            let builtin_occt_path = occt_sys::occt_path();
+            std::env::set_var("DEP_OCCT_ROOT", builtin_occt_path.as_os_str());
+
+            // With builtin feature, skip cmake detection and use built OCCT directly
+            // Headers can be in either build/include (during build) or include (after install)
+            let include_dir = if builtin_occt_path.join("build").join("include").exists() {
+                builtin_occt_path.join("build").join("include")
+            } else if builtin_occt_path.join("include").exists() {
+                builtin_occt_path.join("include")
+            } else {
+                panic!("Builtin OCCT include directory not found at {:?}", builtin_occt_path);
+            };
+
+            let library_dir = if builtin_occt_path.join("lib").exists() {
+                builtin_occt_path.join("lib")
+            } else if builtin_occt_path.join("build").join("lib").exists() {
+                builtin_occt_path.join("build").join("lib")
+            } else {
+                panic!("Builtin OCCT library directory not found at {:?}", builtin_occt_path);
+            };
+
+            println!("cargo:warning=Using builtin OCCT from {}", builtin_occt_path.display());
+            println!("cargo:warning=  Include: {}", include_dir.display());
+            println!("cargo:warning=  Library: {}", library_dir.display());
+
+            return Self {
+                include_dir,
+                library_dir,
+                is_dynamic: false  // Built OCCT is static
+            };
         }
 
-        let dst =
-            std::panic::catch_unwind(|| cmake::Config::new("OCCT").register_dep("occt").build());
-
-        #[cfg(feature = "builtin")]
-        let dst = dst.expect("Builtin OpenCASCADE library not found.");
-
+        // Non-builtin: use cmake detection
         #[cfg(not(feature = "builtin"))]
-        let dst = dst.expect("Pre-installed OpenCASCADE library not found. You can use `builtin` feature if you do not want to install OCCT libraries system-wide.");
+        {
+            let dst =
+                std::panic::catch_unwind(|| cmake::Config::new("OCCT").register_dep("occt").build());
+            let dst = dst.expect("Pre-installed OpenCASCADE library not found. You can use `builtin` feature if you do not want to install OCCT libraries system-wide.");
 
-        let cfg = std::fs::read_to_string(dst.join("share").join("occ_info.txt"))
-            .expect("Something went wrong when detecting OpenCASCADE library.");
+            let cfg = std::fs::read_to_string(dst.join("share").join("occ_info.txt"))
+                .expect("Something went wrong when detecting OpenCASCADE library.");
 
-        let mut version_major: Option<u8> = None;
-        let mut version_minor: Option<u8> = None;
-        let mut include_dir: Option<PathBuf> = None;
-        let mut library_dir: Option<PathBuf> = None;
-        let mut is_dynamic: bool = false;
+            let mut version_major: Option<u8> = None;
+            let mut version_minor: Option<u8> = None;
+            let mut include_dir: Option<PathBuf> = None;
+            let mut library_dir: Option<PathBuf> = None;
+            let mut is_dynamic: bool = false;
 
-        for line in cfg.lines() {
-            if let Some((var, val)) = line.split_once('=') {
-                match var {
-                    "VERSION_MAJOR" => version_major = val.parse().ok(),
-                    "VERSION_MINOR" => version_minor = val.parse().ok(),
-                    "INCLUDE_DIR" => include_dir = val.parse().ok(),
-                    "LIBRARY_DIR" => library_dir = val.parse().ok(),
-                    "BUILD_SHARED_LIBS" => is_dynamic = val == "ON",
-                    _ => (),
+            for line in cfg.lines() {
+                if let Some((var, val)) = line.split_once('=') {
+                    match var {
+                        "VERSION_MAJOR" => version_major = val.parse().ok(),
+                        "VERSION_MINOR" => version_minor = val.parse().ok(),
+                        "INCLUDE_DIR" => include_dir = val.parse().ok(),
+                        "LIBRARY_DIR" => library_dir = val.parse().ok(),
+                        "BUILD_SHARED_LIBS" => is_dynamic = val == "ON",
+                        _ => (),
+                    }
                 }
             }
-        }
 
-        if let (Some(version_major), Some(version_minor), Some(include_dir), Some(library_dir)) =
-            (version_major, version_minor, include_dir, library_dir)
-        {
-            if version_major != OCCT_VERSION.0 || version_minor < OCCT_VERSION.1 {
-                #[cfg(feature = "builtin")]
-                panic!("Builtin OpenCASCADE library found but version is not met (found {}.{} but {}.{} required). Please fix OCCT_VERSION in build script of `opencascade-sys` crate or submodule OCCT in `occt-sys` crate.",
-                       version_major, version_minor, OCCT_VERSION.0, OCCT_VERSION.1);
+            if let (Some(version_major), Some(version_minor), Some(include_dir), Some(library_dir)) =
+                (version_major, version_minor, include_dir, library_dir)
+            {
+                if version_major != OCCT_VERSION.0 || version_minor < OCCT_VERSION.1 {
+                    panic!("Pre-installed OpenCASCADE library found but version is not met (found {}.{} but {}.{} required). Please provide required version or use `builtin` feature.",
+                           version_major, version_minor, OCCT_VERSION.0, OCCT_VERSION.1);
+                }
 
-                #[cfg(not(feature = "builtin"))]
-                panic!("Pre-installed OpenCASCADE library found but version is not met (found {}.{} but {}.{} required). Please provide required version or use `builtin` feature.",
-                       version_major, version_minor, OCCT_VERSION.0, OCCT_VERSION.1);
+                Self { include_dir, library_dir, is_dynamic }
+            } else {
+                panic!("OpenCASCADE library found but something wrong with config.");
             }
-
-            Self { include_dir, library_dir, is_dynamic }
-        } else {
-            panic!("OpenCASCADE library found but something wrong with config.");
         }
     }
 }

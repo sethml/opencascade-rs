@@ -749,6 +749,16 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         return Type::Usize;
     }
 
+    // Check if this is a typedef to size_t by examining the declaration
+    // This catches cases where get_display_name() returns the canonical type
+    if let Some(decl) = clang_type.get_declaration() {
+        if let Some(decl_name) = decl.get_name() {
+            if decl_name == "size_t" || decl_name.ends_with("_Size") {
+                return Type::Usize;
+            }
+        }
+    }
+
     // Get canonical type for resolving typedefs
     let canonical = clang_type.get_canonical_type();
     let canonical_spelling = canonical.get_display_name();
