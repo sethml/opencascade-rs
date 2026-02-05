@@ -136,8 +136,17 @@ impl OcctConfig {
         {
             println!("cargo:warning=Builtin feature is enabled");
 
-            occt_sys::build_occt();
             let builtin_occt_path = occt_sys::occt_path();
+
+            // Skip building if OCCT appears to be already installed
+            // Check for a key library file to determine if build is needed
+            let marker_lib = builtin_occt_path.join("lib").join("libTKernel.a");
+            if !marker_lib.exists() {
+                println!("cargo:warning=Building OCCT (marker not found: {:?})", marker_lib);
+                occt_sys::build_occt();
+            } else {
+                println!("cargo:warning=OCCT already built, skipping rebuild");
+            }
             std::env::set_var("DEP_OCCT_ROOT", builtin_occt_path.as_os_str());
 
             // With builtin feature, skip cmake detection and use built OCCT directly
