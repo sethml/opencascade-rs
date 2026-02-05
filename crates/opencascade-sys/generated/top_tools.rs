@@ -7,48 +7,6 @@
 #![allow(non_snake_case)]
 
 // ========================
-// From TopTools_HArray2OfShape.hxx
-// ========================
-
-pub use crate::ffi::TopTools_HArray2OfShape as HArray2OfShape;
-
-impl HArray2OfShape {
-    pub fn new_int4(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopTools_HArray2OfShape_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
-    }
-
-    pub fn new_int4_shape(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: &crate::ffi::TopoDS_Shape,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopTools_HArray2OfShape_ctor_int4_shape(
-            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-        )
-    }
-
-    pub fn new_array2ofshape(
-        theOther: &crate::ffi::TopTools_Array2OfShape,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopTools_HArray2OfShape_ctor_array2ofshape(theOther)
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTopToolsHArray2OfShape> {
-        crate::ffi::TopTools_HArray2OfShape_to_handle(obj)
-    }
-}
-
-// ========================
 // From TopTools_HSequenceOfShape.hxx
 // ========================
 
@@ -63,6 +21,27 @@ impl HSequenceOfShape {
         theOther: &crate::ffi::TopTools_SequenceOfShape,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TopTools_HSequenceOfShape_ctor_sequenceofshape(theOther)
+    }
+
+    pub fn sequence(&self) -> &crate::ffi::TopTools_SequenceOfShape {
+        crate::ffi::TopTools_HSequenceOfShape::sequence(self)
+    }
+
+    pub fn append(self: std::pin::Pin<&mut Self>, theItem: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::TopTools_HSequenceOfShape::append(self, theItem)
+    }
+
+    pub fn append_sequenceofshape(
+        self: std::pin::Pin<&mut Self>,
+        theSequence: std::pin::Pin<&mut crate::ffi::TopTools_SequenceOfShape>,
+    ) {
+        crate::ffi::TopTools_HSequenceOfShape::append(self, theSequence)
+    }
+
+    pub fn change_sequence(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TopTools_SequenceOfShape> {
+        crate::ffi::TopTools_HSequenceOfShape::change_sequence(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)

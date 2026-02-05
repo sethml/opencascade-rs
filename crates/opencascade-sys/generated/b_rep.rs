@@ -29,6 +29,143 @@
 pub use crate::ffi::BRep_Builder as Builder;
 
 impl Builder {
+    /// Makes an undefined Face.
+    pub fn make_face(&self, F: std::pin::Pin<&mut crate::ffi::TopoDS_Face>) {
+        crate::ffi::BRep_Builder::make_face(self, F)
+    }
+
+    /// Updates the face Tolerance.
+    pub fn update_face(&self, F: &crate::ffi::TopoDS_Face, Tol: f64) {
+        crate::ffi::BRep_Builder::update_face(self, F, Tol)
+    }
+
+    /// Sets the  NaturalRestriction flag of  the face.
+    pub fn natural_restriction(&self, F: &crate::ffi::TopoDS_Face, N: bool) {
+        crate::ffi::BRep_Builder::natural_restriction(self, F, N)
+    }
+
+    /// Makes an undefined Edge (no geometry).
+    pub fn make_edge(&self, E: std::pin::Pin<&mut crate::ffi::TopoDS_Edge>) {
+        crate::ffi::BRep_Builder::make_edge(self, E)
+    }
+
+    /// Updates the edge tolerance.
+    pub fn update_edge(&self, E: &crate::ffi::TopoDS_Edge, Tol: f64) {
+        crate::ffi::BRep_Builder::update_edge(self, E, Tol)
+    }
+
+    /// Sets the same parameter flag for the edge <E>.
+    pub fn same_parameter(&self, E: &crate::ffi::TopoDS_Edge, S: bool) {
+        crate::ffi::BRep_Builder::same_parameter(self, E, S)
+    }
+
+    /// Sets the same range flag for the edge <E>.
+    pub fn same_range(&self, E: &crate::ffi::TopoDS_Edge, S: bool) {
+        crate::ffi::BRep_Builder::same_range(self, E, S)
+    }
+
+    /// Sets the degenerated flag for the edge <E>.
+    pub fn degenerated(&self, E: &crate::ffi::TopoDS_Edge, D: bool) {
+        crate::ffi::BRep_Builder::degenerated(self, E, D)
+    }
+
+    /// Sets the range of the 3d curve if Only3d=TRUE,
+    /// otherwise sets the range to all the representations
+    pub fn range(&self, E: &crate::ffi::TopoDS_Edge, First: f64, Last: f64, Only3d: bool) {
+        crate::ffi::BRep_Builder::range(self, E, First, Last, Only3d)
+    }
+
+    /// Sets the range of the edge on the pcurve on the face.
+    pub fn range_edge_face_real2(
+        &self,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        First: f64,
+        Last: f64,
+    ) {
+        crate::ffi::BRep_Builder::range(self, E, F, First, Last)
+    }
+
+    /// Add  to <Eout>  the  geometric representations  of
+    /// <Ein>.
+    pub fn transfert(&self, Ein: &crate::ffi::TopoDS_Edge, Eout: &crate::ffi::TopoDS_Edge) {
+        crate::ffi::BRep_Builder::transfert(self, Ein, Eout)
+    }
+
+    /// Makes an udefined vertex without geometry.
+    pub fn make_vertex(&self, V: std::pin::Pin<&mut crate::ffi::TopoDS_Vertex>) {
+        crate::ffi::BRep_Builder::make_vertex(self, V)
+    }
+
+    /// Makes a vertex from a 3D point.
+    pub fn make_vertex_vertex_pnt_real(
+        &self,
+        V: std::pin::Pin<&mut crate::ffi::TopoDS_Vertex>,
+        P: &crate::ffi::gp_Pnt,
+        Tol: f64,
+    ) {
+        crate::ffi::BRep_Builder::make_vertex(self, V, P, Tol)
+    }
+
+    /// Sets a 3D point on the vertex.
+    pub fn update_vertex(&self, V: &crate::ffi::TopoDS_Vertex, P: &crate::ffi::gp_Pnt, Tol: f64) {
+        crate::ffi::BRep_Builder::update_vertex(self, V, P, Tol)
+    }
+
+    /// Sets  the parameter  for the   vertex on the  edge
+    /// curves.
+    pub fn update_vertex_vertex_real_edge_real(
+        &self,
+        V: &crate::ffi::TopoDS_Vertex,
+        P: f64,
+        E: &crate::ffi::TopoDS_Edge,
+        Tol: f64,
+    ) {
+        crate::ffi::BRep_Builder::update_vertex(self, V, P, E, Tol)
+    }
+
+    /// Sets  the parameter  for the  vertex  on the  edge
+    /// pcurve  on the face.
+    pub fn update_vertex_vertex_real_edge_face_real(
+        &self,
+        V: &crate::ffi::TopoDS_Vertex,
+        P: f64,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        Tol: f64,
+    ) {
+        crate::ffi::BRep_Builder::update_vertex(self, V, P, E, F, Tol)
+    }
+
+    /// Sets the parameters for the vertex on the face.
+    pub fn update_vertex_vertex_real2_face_real(
+        &self,
+        Ve: &crate::ffi::TopoDS_Vertex,
+        U: f64,
+        V: f64,
+        F: &crate::ffi::TopoDS_Face,
+        Tol: f64,
+    ) {
+        crate::ffi::BRep_Builder::update_vertex(self, Ve, U, V, F, Tol)
+    }
+
+    /// Updates the vertex tolerance.
+    pub fn update_vertex_vertex_real(&self, V: &crate::ffi::TopoDS_Vertex, Tol: f64) {
+        crate::ffi::BRep_Builder::update_vertex(self, V, Tol)
+    }
+
+    /// Transfert the parameters  of   Vin on  Ein as  the
+    /// parameter of Vout on Eout.
+    pub fn transfert_edge2_vertex2(
+        &self,
+        Ein: &crate::ffi::TopoDS_Edge,
+        Eout: &crate::ffi::TopoDS_Edge,
+        Vin: &crate::ffi::TopoDS_Vertex,
+        Vout: &crate::ffi::TopoDS_Vertex,
+    ) {
+        crate::ffi::BRep_Builder::transfert(self, Ein, Eout, Vin, Vout)
+    }
+
     /// Upcast to TopoDS_Builder
     pub fn as_topo_ds_builder(&self) -> &crate::topo_ds::Builder {
         crate::ffi::BRep_Builder_as_TopoDS_Builder(self)
@@ -49,3 +186,178 @@ impl Builder {
 /// Provides class methods  to  access to the geometry
 /// of BRep shapes.
 pub use crate::ffi::BRep_Tool as Tool;
+
+impl Tool {
+    /// If S is Shell, returns True if it has no free boundaries (edges).
+    /// If S is Wire, returns True if it has no free ends (vertices).
+    /// (Internal and External sub-shepes are ignored in these checks)
+    /// If S is Edge, returns True if its vertices are the same.
+    /// For other shape types returns S.Closed().
+    pub fn is_closed(S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRep_Tool::is_closed(S)
+    }
+
+    /// Returns all triangulations of the face.
+    /// @param[in] theFace  the input face.
+    /// @param[out] theLocation  the face location.
+    /// @return list of all available face triangulations.
+    pub fn triangulations(
+        theFace: &crate::ffi::TopoDS_Face,
+        theLocation: std::pin::Pin<&mut crate::ffi::TopLoc_Location>,
+    ) -> &'static crate::ffi::Poly_ListOfTriangulation {
+        crate::ffi::BRep_Tool::triangulations(theFace, theLocation)
+    }
+
+    /// Returns the tolerance of the face.
+    pub fn tolerance(F: &crate::ffi::TopoDS_Face) -> f64 {
+        crate::ffi::BRep_Tool::tolerance(F)
+    }
+
+    /// Returns the  NaturalRestriction  flag of the  face.
+    pub fn natural_restriction(F: &crate::ffi::TopoDS_Face) -> bool {
+        crate::ffi::BRep_Tool::natural_restriction(F)
+    }
+
+    /// Returns True if <F> has a surface, false otherwise.
+    pub fn is_geometric(F: &crate::ffi::TopoDS_Face) -> bool {
+        crate::ffi::BRep_Tool::is_geometric(F)
+    }
+
+    /// Returns True if <E> is a 3d curve or a curve on
+    /// surface.
+    pub fn is_geometric_edge(E: &crate::ffi::TopoDS_Edge) -> bool {
+        crate::ffi::BRep_Tool::is_geometric(E)
+    }
+
+    /// Returns  True  if  <E>  has  two  PCurves  in  the
+    /// parametric space of <F>. i.e.  <F>  is on a closed
+    /// surface and <E> is on the closing curve.
+    pub fn is_closed_edge_face(E: &crate::ffi::TopoDS_Edge, F: &crate::ffi::TopoDS_Face) -> bool {
+        crate::ffi::BRep_Tool::is_closed(E, F)
+    }
+
+    /// Returns the tolerance for <E>.
+    pub fn tolerance_edge(E: &crate::ffi::TopoDS_Edge) -> f64 {
+        crate::ffi::BRep_Tool::tolerance(E)
+    }
+
+    /// Returns the SameParameter flag for the edge.
+    pub fn same_parameter(E: &crate::ffi::TopoDS_Edge) -> bool {
+        crate::ffi::BRep_Tool::same_parameter(E)
+    }
+
+    /// Returns the SameRange flag for the edge.
+    pub fn same_range(E: &crate::ffi::TopoDS_Edge) -> bool {
+        crate::ffi::BRep_Tool::same_range(E)
+    }
+
+    /// Returns True  if the edge is degenerated.
+    pub fn degenerated(E: &crate::ffi::TopoDS_Edge) -> bool {
+        crate::ffi::BRep_Tool::degenerated(E)
+    }
+
+    /// Gets the range of the 3d curve.
+    pub fn range(
+        E: &crate::ffi::TopoDS_Edge,
+        First: std::pin::Pin<&mut f64>,
+        Last: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::BRep_Tool::range(E, First, Last)
+    }
+
+    /// Gets the range of the edge on the pcurve on the face.
+    pub fn range_edge_face_real2(
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        First: std::pin::Pin<&mut f64>,
+        Last: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::BRep_Tool::range(E, F, First, Last)
+    }
+
+    /// Gets the UV locations of the extremities of the edge.
+    pub fn uv_points(
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        PFirst: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        PLast: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+    ) {
+        crate::ffi::BRep_Tool::uv_points(E, F, PFirst, PLast)
+    }
+
+    /// Sets the UV locations of the extremities of the edge.
+    pub fn set_uv_points(
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        PFirst: &crate::ffi::gp_Pnt2d,
+        PLast: &crate::ffi::gp_Pnt2d,
+    ) {
+        crate::ffi::BRep_Tool::set_uv_points(E, F, PFirst, PLast)
+    }
+
+    /// Returns True if the edge is on the surfaces of the
+    /// two faces.
+    pub fn has_continuity(
+        E: &crate::ffi::TopoDS_Edge,
+        F1: &crate::ffi::TopoDS_Face,
+        F2: &crate::ffi::TopoDS_Face,
+    ) -> bool {
+        crate::ffi::BRep_Tool::has_continuity(E, F1, F2)
+    }
+
+    /// Returns True if the edge has regularity on some
+    /// two surfaces
+    pub fn has_continuity_edge(E: &crate::ffi::TopoDS_Edge) -> bool {
+        crate::ffi::BRep_Tool::has_continuity(E)
+    }
+
+    /// Returns the 3d point.
+    pub fn pnt(V: &crate::ffi::TopoDS_Vertex) -> crate::ffi::gp_Pnt {
+        crate::ffi::BRep_Tool::pnt(V)
+    }
+
+    /// Returns the tolerance.
+    pub fn tolerance_vertex(V: &crate::ffi::TopoDS_Vertex) -> f64 {
+        crate::ffi::BRep_Tool::tolerance(V)
+    }
+
+    /// Finds the parameter of <theV> on <theE>.
+    /// @param[in] theV  input vertex
+    /// @param[in] theE  input edge
+    /// @param[out] theParam   calculated parameter on the curve
+    /// @return TRUE if done
+    pub fn parameter(
+        theV: &crate::ffi::TopoDS_Vertex,
+        theE: &crate::ffi::TopoDS_Edge,
+        theParam: std::pin::Pin<&mut f64>,
+    ) -> bool {
+        crate::ffi::BRep_Tool::parameter(theV, theE, theParam)
+    }
+
+    /// Returns the parameter of <V> on <E>.
+    /// Throws Standard_NoSuchObject if no parameter on edge
+    pub fn parameter_vertex_edge(
+        V: &crate::ffi::TopoDS_Vertex,
+        E: &crate::ffi::TopoDS_Edge,
+    ) -> f64 {
+        crate::ffi::BRep_Tool::parameter(V, E)
+    }
+
+    /// Returns the  parameters  of   the  vertex   on the
+    /// pcurve of the edge on the face.
+    pub fn parameter_vertex_edge_face(
+        V: &crate::ffi::TopoDS_Vertex,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+    ) -> f64 {
+        crate::ffi::BRep_Tool::parameter(V, E, F)
+    }
+
+    /// Returns the parameters of the vertex on the face.
+    pub fn parameters(
+        V: &crate::ffi::TopoDS_Vertex,
+        F: &crate::ffi::TopoDS_Face,
+    ) -> crate::ffi::gp_Pnt2d {
+        crate::ffi::BRep_Tool::parameters(V, F)
+    }
+}

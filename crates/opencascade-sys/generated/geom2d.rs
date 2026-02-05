@@ -29,6 +29,20 @@
 pub use crate::ffi::Geom2d_BoundedCurve as BoundedCurve;
 
 impl BoundedCurve {
+    /// Returns the end point of the curve.
+    /// The end point is the value of the curve for the
+    /// "LastParameter" of the curve.
+    pub fn end_point(&self) -> crate::ffi::gp_Pnt2d {
+        crate::ffi::Geom2d_BoundedCurve::end_point(self)
+    }
+
+    /// Returns the start point of the curve.
+    /// The start point is the value of the curve for the
+    /// "FirstParameter" of the curve.
+    pub fn start_point(&self) -> crate::ffi::gp_Pnt2d {
+        crate::ffi::Geom2d_BoundedCurve::start_point(self)
+    }
+
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
         crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Curve(self)
@@ -72,6 +86,91 @@ impl BoundedCurve {
 pub use crate::ffi::Geom2d_Conic as Conic;
 
 impl Conic {
+    /// Modifies this conic, redefining its local coordinate system
+    /// partially, by assigning theA as its axis
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax22d) {
+        crate::ffi::Geom2d_Conic::set_axis(self, theA)
+    }
+
+    /// Assigns the origin and unit vector of axis theA to the
+    /// origin of the local coordinate system of this conic and X Direction.
+    /// The other unit vector of the local coordinate system
+    /// of this conic is recomputed normal to theA, without
+    /// changing the orientation of the local coordinate
+    /// system (right-handed or left-handed).
+    pub fn set_x_axis(self: std::pin::Pin<&mut Self>, theAX: &crate::ffi::gp_Ax2d) {
+        crate::ffi::Geom2d_Conic::set_x_axis(self, theAX)
+    }
+
+    /// Assigns the origin and unit vector of axis theA to the
+    /// origin of the local coordinate system of this conic and Y Direction.
+    /// The other unit vector of the local coordinate system
+    /// of this conic is recomputed normal to theA, without
+    /// changing the orientation of the local coordinate
+    /// system (right-handed or left-handed).
+    pub fn set_y_axis(self: std::pin::Pin<&mut Self>, theAY: &crate::ffi::gp_Ax2d) {
+        crate::ffi::Geom2d_Conic::set_y_axis(self, theAY)
+    }
+
+    /// Modifies this conic, redefining its local coordinate
+    /// system partially, by assigning theP as its origin.
+    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Conic::set_location(self, theP)
+    }
+
+    /// Returns the "XAxis" of the conic.
+    /// This axis defines the origin of parametrization of the conic.
+    /// This axis and the "Yaxis" define the local coordinate system
+    /// of the conic.
+    /// -C++: return const&
+    pub fn x_axis(&self) -> crate::ffi::gp_Ax2d {
+        crate::ffi::Geom2d_Conic::x_axis(self)
+    }
+
+    /// Returns the "YAxis" of the conic.
+    /// The "YAxis" is perpendicular to the "Xaxis".
+    pub fn y_axis(&self) -> crate::ffi::gp_Ax2d {
+        crate::ffi::Geom2d_Conic::y_axis(self)
+    }
+
+    /// returns the eccentricity value of the conic e.
+    /// e = 0 for a circle
+    /// 0 < e < 1 for an ellipse  (e = 0 if MajorRadius = MinorRadius)
+    /// e > 1 for a hyperbola
+    /// e = 1 for a parabola
+    pub fn eccentricity(&self) -> f64 {
+        crate::ffi::Geom2d_Conic::eccentricity(self)
+    }
+
+    /// Returns the location point of the conic.
+    /// For the circle, the ellipse and the hyperbola it is the center of
+    /// the conic. For the parabola it is the vertex of the parabola.
+    pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
+        crate::ffi::Geom2d_Conic::location(self)
+    }
+
+    /// Returns the local coordinates system of the conic.
+    pub fn position(&self) -> &crate::ffi::gp_Ax22d {
+        crate::ffi::Geom2d_Conic::position(self)
+    }
+
+    /// Reverses the direction of parameterization of <me>.
+    /// The local coordinate system of the conic is modified.
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom2d_Conic::reverse(self)
+    }
+
+    /// Returns the  parameter on the  reversed  curve for
+    /// the point of parameter U on <me>.
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom2d_Conic::reversed_parameter(self, U)
+    }
+
+    /// Returns True, the order of continuity of a conic is infinite.
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom2d_Conic::is_cn(self, N)
+    }
+
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
         crate::ffi::Geom2d_Conic_as_Geom2d_Curve(self)
@@ -126,6 +225,197 @@ impl Conic {
 pub use crate::ffi::Geom2d_Curve as Curve;
 
 impl Curve {
+    /// Changes the direction of parametrization of <me>.
+    /// The "FirstParameter" and the "LastParameter" are not changed
+    /// but the orientation  of the curve is modified. If the curve
+    /// is bounded the StartPoint of the initial curve becomes the
+    /// EndPoint of the reversed curve  and the EndPoint of the initial
+    /// curve becomes the StartPoint of the reversed curve.
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom2d_Curve::reverse(self)
+    }
+
+    /// Computes the parameter on the reversed curve for
+    /// the point of parameter U on this curve.
+    /// Note: The point of parameter U on this curve is
+    /// identical to the point of parameter
+    /// ReversedParameter(U) on the reversed curve.
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom2d_Curve::reversed_parameter(self, U)
+    }
+
+    /// Computes the parameter on the curve transformed by
+    /// T for the point of parameter U on this curve.
+    /// Note: this function generally returns U but it can be
+    /// redefined (for example, on a line).
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_Curve::transformed_parameter(self, U, T)
+    }
+
+    /// Returns the coefficient required to compute the
+    /// parametric transformation of this curve when
+    /// transformation T is applied. This coefficient is the
+    /// ratio between the parameter of a point on this curve
+    /// and the parameter of the transformed point on the
+    /// new curve transformed by T.
+    /// Note: this function generally returns 1. but it can be
+    /// redefined (for example, on a line).
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_Curve::parametric_transformation(self, T)
+    }
+
+    /// Creates a reversed duplicate Changes the orientation of this curve. The first and
+    /// last parameters are not changed, but the parametric
+    /// direction of the curve is reversed.
+    /// If the curve is bounded:
+    /// - the start point of the initial curve becomes the end
+    /// point of the reversed curve, and
+    /// - the end point of the initial curve becomes the start
+    /// point of the reversed curve.
+    /// - Reversed creates a new curve.
+    pub fn reversed(&self) -> crate::ffi::HandleGeom2dCurve {
+        crate::ffi::Geom2d_Curve::reversed(self)
+    }
+
+    /// Returns the value of the first parameter.
+    /// Warnings :
+    /// It can be RealFirst or RealLast from package Standard
+    /// if the curve is infinite
+    pub fn first_parameter(&self) -> f64 {
+        crate::ffi::Geom2d_Curve::first_parameter(self)
+    }
+
+    /// Value of the last parameter.
+    /// Warnings :
+    /// It can be RealFirst or RealLast from package Standard
+    /// if the curve is infinite
+    pub fn last_parameter(&self) -> f64 {
+        crate::ffi::Geom2d_Curve::last_parameter(self)
+    }
+
+    /// Returns true if the curve is closed.
+    /// Examples :
+    /// Some curves such as circle are always closed, others such as line
+    /// are never closed (by definition).
+    /// Some Curves such as OffsetCurve can be closed or not. These curves
+    /// are considered as closed if the distance between the first point
+    /// and the last point of the curve is lower or equal to the Resolution
+    /// from package gp which is a fixed criterion independent of the
+    /// application.
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::Geom2d_Curve::is_closed(self)
+    }
+
+    /// Returns true if the parameter of the curve is periodic.
+    /// It is possible only if the curve is closed and if the
+    /// following relation is satisfied :
+    /// for each parametric value U the distance between the point
+    /// P(u) and the point P (u + T) is lower or equal to Resolution
+    /// from package gp, T is the period and must be a constant.
+    /// There are three possibilities :
+    /// . the curve is never periodic by definition (SegmentLine)
+    /// . the curve is always periodic by definition (Circle)
+    /// . the curve can be defined as periodic (BSpline). In this case
+    /// a function SetPeriodic allows you to give the shape of the
+    /// curve.  The general rule for this case is : if a curve can be
+    /// periodic or not the default periodicity set is non periodic
+    /// and you have to turn (explicitly) the curve into a periodic
+    /// curve  if you want the curve to be periodic.
+    pub fn is_periodic(&self) -> bool {
+        crate::ffi::Geom2d_Curve::is_periodic(self)
+    }
+
+    /// Returns the period of this curve.
+    /// raises if the curve is not periodic
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom2d_Curve::period(self)
+    }
+
+    /// Returns true if the degree of continuity of this curve is at least N.
+    /// Exceptions Standard_RangeError if N is less than 0.
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom2d_Curve::is_cn(self, N)
+    }
+
+    /// Returns in P the point of parameter U.
+    /// If the curve is periodic  then the returned point is P(U) with
+    /// U = Ustart + (U - Uend)  where Ustart and Uend are the
+    /// parametric bounds of the curve.
+    ///
+    /// Raised only for the "OffsetCurve" if it is not possible to
+    /// compute the current point. For example when the first
+    /// derivative on the basis curve and the offset direction
+    /// are parallel.
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>) {
+        crate::ffi::Geom2d_Curve::d0(self, U, P)
+    }
+
+    /// Returns the point P of parameter U and the first derivative V1.
+    /// Raised if the continuity of the curve is not C1.
+    pub fn d1(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_Curve::d1(self, U, P, V1)
+    }
+
+    /// Returns the point P of parameter U, the first and second
+    /// derivatives V1 and V2.
+    /// Raised if the continuity of the curve is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_Curve::d2(self, U, P, V1, V2)
+    }
+
+    /// Returns the point P of parameter U, the first, the second
+    /// and the third derivative.
+    /// Raised if the continuity of the curve is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_Curve::d3(self, U, P, V1, V2, V3)
+    }
+
+    /// For the point of parameter U of this curve, computes
+    /// the vector corresponding to the Nth derivative.
+    /// Exceptions
+    /// StdFail_UndefinedDerivative if:
+    /// - the continuity of the curve is not "CN", or
+    /// - the derivative vector cannot be computed easily;
+    /// this is the case with specific types of curve (for
+    /// example, a rational BSpline curve where N is greater than 3).
+    /// Standard_RangeError if N is less than 1.
+    pub fn dn(&self, U: f64, N: i32) -> crate::ffi::gp_Vec2d {
+        crate::ffi::Geom2d_Curve::dn(self, U, N)
+    }
+
+    /// Computes the point of parameter U on <me>.
+    /// If the curve is periodic  then the returned point is P(U) with
+    /// U = Ustart + (U - Uend)  where Ustart and Uend are the
+    /// parametric bounds of the curve.
+    ///
+    /// it is implemented with D0.
+    ///
+    /// Raised only for the "OffsetCurve" if it is not possible to
+    /// compute the current point. For example when the first
+    /// derivative on the basis curve and the offset direction
+    /// are parallel.
+    pub fn value(&self, U: f64) -> crate::ffi::gp_Pnt2d {
+        crate::ffi::Geom2d_Curve::value(self, U)
+    }
+
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
         crate::ffi::Geom2d_Curve_as_Geom2d_Geometry(self)
@@ -228,6 +518,193 @@ impl Ellipse {
         crate::ffi::Geom2d_Ellipse_ctor_ax22d_real2(Axis, MajorRadius, MinorRadius)
     }
 
+    /// Converts the gp_Elips2d ellipse E into this ellipse.
+    pub fn set_elips2d(self: std::pin::Pin<&mut Self>, E: &crate::ffi::gp_Elips2d) {
+        crate::ffi::Geom2d_Ellipse::set_elips2d(self, E)
+    }
+
+    /// Assigns a value to the major radius of this ellipse.
+    /// Exceptions
+    /// Standard_ConstructionError if:
+    /// - the major radius of this ellipse becomes less than
+    /// the minor radius, or
+    /// - MinorRadius is less than 0.
+    pub fn set_major_radius(self: std::pin::Pin<&mut Self>, MajorRadius: f64) {
+        crate::ffi::Geom2d_Ellipse::set_major_radius(self, MajorRadius)
+    }
+
+    /// Assigns a value to the minor radius of this ellipse.
+    /// Exceptions
+    /// Standard_ConstructionError if:
+    /// - the major radius of this ellipse becomes less than
+    /// the minor radius, or
+    /// - MinorRadius is less than 0.
+    pub fn set_minor_radius(self: std::pin::Pin<&mut Self>, MinorRadius: f64) {
+        crate::ffi::Geom2d_Ellipse::set_minor_radius(self, MinorRadius)
+    }
+
+    /// Converts this ellipse into a gp_Elips2d ellipse.
+    pub fn elips2d(&self) -> crate::ffi::gp_Elips2d {
+        crate::ffi::Geom2d_Ellipse::elips2d(self)
+    }
+
+    /// Computes the parameter on the reversed ellipse for
+    /// the point of parameter U on this ellipse.
+    /// For an ellipse, the returned value is: 2.*Pi - U.
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom2d_Ellipse::reversed_parameter(self, U)
+    }
+
+    /// Computes the directrices of this ellipse.
+    /// This directrix is the line normal to the XAxis of the ellipse
+    /// in the local plane (Z = 0) at a distance d = MajorRadius / e
+    /// from the center of the ellipse, where e is the eccentricity of
+    /// the ellipse.
+    /// This line is parallel to the "YAxis". The intersection point
+    /// between directrix1 and the "XAxis" is the "Location" point
+    /// of the directrix1. This point is on the positive side of
+    /// the "XAxis".
+    /// Raises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates
+    /// into a circle)
+    pub fn directrix1(&self) -> crate::ffi::gp_Ax2d {
+        crate::ffi::Geom2d_Ellipse::directrix1(self)
+    }
+
+    /// This line is obtained by the symmetrical transformation
+    /// of "Directrix1" with respect to the "YAxis" of the ellipse.
+    /// Raises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates into a
+    /// circle).
+    pub fn directrix2(&self) -> crate::ffi::gp_Ax2d {
+        crate::ffi::Geom2d_Ellipse::directrix2(self)
+    }
+
+    /// Returns the eccentricity of the ellipse  between 0.0 and 1.0
+    /// If f is the distance between the center of the ellipse and
+    /// the Focus1 then the eccentricity e = f / MajorRadius.
+    /// Returns 0 if MajorRadius = 0
+    pub fn eccentricity(&self) -> f64 {
+        crate::ffi::Geom2d_Ellipse::eccentricity(self)
+    }
+
+    /// Computes the focal distance. The focal distance is the distance between the center
+    /// and a focus of the ellipse.
+    pub fn focal(&self) -> f64 {
+        crate::ffi::Geom2d_Ellipse::focal(self)
+    }
+
+    /// Returns the first focus of the ellipse. This focus is on the
+    /// positive side of the "XAxis" of the ellipse.
+    pub fn focus1(&self) -> crate::ffi::gp_Pnt2d {
+        crate::ffi::Geom2d_Ellipse::focus1(self)
+    }
+
+    /// Returns the second focus of the ellipse. This focus is on
+    /// the negative side of the "XAxis" of the ellipse.
+    pub fn focus2(&self) -> crate::ffi::gp_Pnt2d {
+        crate::ffi::Geom2d_Ellipse::focus2(self)
+    }
+
+    /// Returns the major radius of this ellipse.
+    pub fn major_radius(&self) -> f64 {
+        crate::ffi::Geom2d_Ellipse::major_radius(self)
+    }
+
+    /// Returns the minor radius of this ellipse.
+    pub fn minor_radius(&self) -> f64 {
+        crate::ffi::Geom2d_Ellipse::minor_radius(self)
+    }
+
+    /// Computes the parameter of this ellipse. This value is
+    /// given by the formula p = (1 - e * e) * MajorRadius where e is the eccentricity
+    /// of the ellipse.
+    /// Returns 0 if MajorRadius = 0
+    pub fn parameter(&self) -> f64 {
+        crate::ffi::Geom2d_Ellipse::parameter(self)
+    }
+
+    /// Returns the value of the first parameter of this
+    /// ellipse. This is  0.0, which gives the start point of this ellipse.
+    /// The start point and end point of an ellipse are coincident.
+    pub fn first_parameter(&self) -> f64 {
+        crate::ffi::Geom2d_Ellipse::first_parameter(self)
+    }
+
+    /// Returns the value of the  last parameter of this
+    /// ellipse. This is  2.*Pi, which gives the end point of this ellipse.
+    /// The start point and end point of an ellipse are coincident.
+    pub fn last_parameter(&self) -> f64 {
+        crate::ffi::Geom2d_Ellipse::last_parameter(self)
+    }
+
+    /// return True.
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::Geom2d_Ellipse::is_closed(self)
+    }
+
+    /// return True.
+    pub fn is_periodic(&self) -> bool {
+        crate::ffi::Geom2d_Ellipse::is_periodic(self)
+    }
+
+    /// Returns in P the point of parameter U.
+    /// P = C + MajorRadius * Cos (U) * XDir + MinorRadius * Sin (U) * YDir
+    /// where C is the center of the ellipse , XDir the direction of
+    /// the "XAxis" and "YDir" the "YAxis" of the ellipse.
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>) {
+        crate::ffi::Geom2d_Ellipse::d0(self, U, P)
+    }
+
+    pub fn d1(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_Ellipse::d1(self, U, P, V1)
+    }
+
+    /// Returns the point P of parameter U. The vectors V1 and V2
+    /// are the first and second derivatives at this point.
+    pub fn d2(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_Ellipse::d2(self, U, P, V1, V2)
+    }
+
+    /// Returns the point P of parameter U, the first second and
+    /// third derivatives V1 V2 and V3.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_Ellipse::d3(self, U, P, V1, V2, V3)
+    }
+
+    /// For the point of parameter U of this ellipse,
+    /// computes the vector corresponding to the Nth derivative.
+    /// Exceptions Standard_RangeError if N is less than 1.
+    pub fn dn(&self, U: f64, N: i32) -> crate::ffi::gp_Vec2d {
+        crate::ffi::Geom2d_Ellipse::dn(self, U, N)
+    }
+
+    /// Applies the transformation T to this ellipse.
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf2d) {
+        crate::ffi::Geom2d_Ellipse::transform(self, T)
+    }
+
+    /// Creates a new object which is a copy of this ellipse.
+    pub fn copy(&self) -> crate::ffi::HandleGeom2dGeometry {
+        crate::ffi::Geom2d_Ellipse::copy(self)
+    }
+
     /// Upcast to Geom2d_Conic
     pub fn as_conic(&self) -> &Conic {
         crate::ffi::Geom2d_Ellipse_as_Geom2d_Conic(self)
@@ -293,6 +770,94 @@ impl Ellipse {
 /// transformations are implemented using the Transform method.
 pub use crate::ffi::Geom2d_Geometry as Geometry;
 
+impl Geometry {
+    /// Performs the symmetrical transformation of a Geometry
+    /// with respect to the point P which is the center of the
+    /// symmetry and assigns the result to this geometric object.
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::Geom2d_Geometry::mirror(self, P)
+    }
+
+    /// Performs the symmetrical transformation of a Geometry
+    /// with respect to an axis placement which is the axis of the symmetry.
+    pub fn mirror_ax2d(self: std::pin::Pin<&mut Self>, A: &crate::ffi::gp_Ax2d) {
+        crate::ffi::Geom2d_Geometry::mirror(self, A)
+    }
+
+    /// Rotates a Geometry. P is the center of the rotation.
+    /// Ang is the angular value of the rotation in radians.
+    pub fn rotate(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
+        crate::ffi::Geom2d_Geometry::rotate(self, P, Ang)
+    }
+
+    /// Scales a Geometry. S is the scaling value.
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
+        crate::ffi::Geom2d_Geometry::scale(self, P, S)
+    }
+
+    /// Translates a Geometry.  V is the vector of the translation.
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec2d) {
+        crate::ffi::Geom2d_Geometry::translate(self, V)
+    }
+
+    /// Translates a Geometry from the point P1 to the point P2.
+    pub fn translate_pnt2d2(
+        self: std::pin::Pin<&mut Self>,
+        P1: &crate::ffi::gp_Pnt2d,
+        P2: &crate::ffi::gp_Pnt2d,
+    ) {
+        crate::ffi::Geom2d_Geometry::translate(self, P1, P2)
+    }
+
+    /// Transformation of a geometric object. This transformation
+    /// can be a translation, a rotation, a symmetry, a scaling
+    /// or a complex transformation obtained by combination of
+    /// the previous elementaries transformations.
+    /// (see class Transformation of the package Geom2d).
+    /// The following transformations have the same properties
+    /// as the previous ones but they don't modified the object
+    /// itself. A copy of the object is returned.
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf2d) {
+        crate::ffi::Geom2d_Geometry::transform(self, T)
+    }
+
+    pub fn mirrored(&self, P: &crate::ffi::gp_Pnt2d) -> crate::ffi::HandleGeom2dGeometry {
+        crate::ffi::Geom2d_Geometry::mirrored(self, P)
+    }
+
+    pub fn mirrored_ax2d(&self, A: &crate::ffi::gp_Ax2d) -> crate::ffi::HandleGeom2dGeometry {
+        crate::ffi::Geom2d_Geometry::mirrored(self, A)
+    }
+
+    pub fn rotated(&self, P: &crate::ffi::gp_Pnt2d, Ang: f64) -> crate::ffi::HandleGeom2dGeometry {
+        crate::ffi::Geom2d_Geometry::rotated(self, P, Ang)
+    }
+
+    pub fn scaled(&self, P: &crate::ffi::gp_Pnt2d, S: f64) -> crate::ffi::HandleGeom2dGeometry {
+        crate::ffi::Geom2d_Geometry::scaled(self, P, S)
+    }
+
+    pub fn transformed(&self, T: &crate::ffi::gp_Trsf2d) -> crate::ffi::HandleGeom2dGeometry {
+        crate::ffi::Geom2d_Geometry::transformed(self, T)
+    }
+
+    pub fn translated(&self, V: &crate::ffi::gp_Vec2d) -> crate::ffi::HandleGeom2dGeometry {
+        crate::ffi::Geom2d_Geometry::translated(self, V)
+    }
+
+    pub fn translated_pnt2d2(
+        &self,
+        P1: &crate::ffi::gp_Pnt2d,
+        P2: &crate::ffi::gp_Pnt2d,
+    ) -> crate::ffi::HandleGeom2dGeometry {
+        crate::ffi::Geom2d_Geometry::translated(self, P1, P2)
+    }
+
+    pub fn copy(&self) -> crate::ffi::HandleGeom2dGeometry {
+        crate::ffi::Geom2d_Geometry::copy(self)
+    }
+}
+
 // ========================
 // From Geom2d_TrimmedCurve.hxx
 // ========================
@@ -353,6 +918,222 @@ impl TrimmedCurve {
             Sense,
             theAdjustPeriodic,
         )
+    }
+
+    /// Changes the direction of parametrization of <me>. The first and
+    /// the last parametric values are modified. The "StartPoint"
+    /// of the initial curve becomes the "EndPoint" of the reversed
+    /// curve and the "EndPoint" of the initial curve becomes the
+    /// "StartPoint" of the reversed curve.
+    /// Example  -   If the trimmed curve is defined by:
+    /// - a basis curve whose parameter range is [ 0.,1. ], and
+    /// - the two trim values U1 (first parameter) and U2 (last parameter),
+    /// the reversed trimmed curve is defined by:
+    /// - the reversed basis curve, whose parameter range is still [ 0.,1. ], and
+    /// - the two trim values 1. - U2 (first parameter)
+    /// and 1. - U1 (last parameter).
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom2d_TrimmedCurve::reverse(self)
+    }
+
+    /// Returns the  parameter on the  reversed  curve for
+    /// the point of parameter U on <me>.
+    ///
+    /// returns UFirst + ULast - U
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom2d_TrimmedCurve::reversed_parameter(self, U)
+    }
+
+    /// Changes this trimmed curve, by redefining the
+    /// parameter values U1 and U2, which limit its basis curve.
+    /// Note: If the basis curve is periodic, the trimmed curve
+    /// has the same orientation as the basis curve if Sense
+    /// is true (default value) or the opposite orientation if Sense is false.
+    /// Warning
+    /// If the basis curve is periodic and theAdjustPeriodic is True,
+    /// the bounds of the trimmed curve may be different from U1 and U2 if the
+    /// parametric origin of the basis curve is within the arc
+    /// of the trimmed curve. In this case, the modified
+    /// parameter will be equal to U1 or U2 plus or minus the period.
+    /// If theAdjustPeriodic is False, parameters U1 and U2 will stay unchanged.
+    /// Exceptions
+    /// Standard_ConstructionError if:
+    /// - the basis curve is not periodic, and either U1 or U2
+    /// are outside the bounds of the basis curve, or
+    /// - U1 is equal to U2.
+    pub fn set_trim(
+        self: std::pin::Pin<&mut Self>,
+        U1: f64,
+        U2: f64,
+        Sense: bool,
+        theAdjustPeriodic: bool,
+    ) {
+        crate::ffi::Geom2d_TrimmedCurve::set_trim(self, U1, U2, Sense, theAdjustPeriodic)
+    }
+
+    /// Returns the basis curve.
+    /// Warning
+    /// This function does not return a constant reference.
+    /// Consequently, any modification of the returned value
+    /// directly modifies the trimmed curve.
+    pub fn basis_curve(&self) -> crate::ffi::HandleGeom2dCurve {
+        crate::ffi::Geom2d_TrimmedCurve::basis_curve(self)
+    }
+
+    /// --- Purpose
+    /// Returns True if the order of continuity of the
+    /// trimmed curve is N. A trimmed curve is at least "C0" continuous.
+    /// Warnings :
+    /// The continuity of the trimmed curve can be greater than
+    /// the continuity of the basis curve because you consider
+    /// only a part of the basis curve.
+    /// Raised if N < 0.
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom2d_TrimmedCurve::is_cn(self, N)
+    }
+
+    /// Returns the end point of <me>. This point is the
+    /// evaluation of the curve for the "LastParameter".
+    pub fn end_point(&self) -> crate::ffi::gp_Pnt2d {
+        crate::ffi::Geom2d_TrimmedCurve::end_point(self)
+    }
+
+    /// Returns the value of the first parameter of <me>.
+    /// The first parameter is the parameter of the "StartPoint"
+    /// of the trimmed curve.
+    pub fn first_parameter(&self) -> f64 {
+        crate::ffi::Geom2d_TrimmedCurve::first_parameter(self)
+    }
+
+    /// Returns True if the distance between the StartPoint and
+    /// the EndPoint is lower or equal to Resolution from package
+    /// gp.
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::Geom2d_TrimmedCurve::is_closed(self)
+    }
+
+    /// Always returns FALSE (independently of the type of basis curve).
+    pub fn is_periodic(&self) -> bool {
+        crate::ffi::Geom2d_TrimmedCurve::is_periodic(self)
+    }
+
+    /// Returns the period of the basis curve of this trimmed curve.
+    /// Exceptions
+    /// Standard_NoSuchObject if the basis curve is not periodic.
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom2d_TrimmedCurve::period(self)
+    }
+
+    /// Returns the value of the last parameter of <me>.
+    /// The last parameter is the parameter of the "EndPoint" of the
+    /// trimmed curve.
+    pub fn last_parameter(&self) -> f64 {
+        crate::ffi::Geom2d_TrimmedCurve::last_parameter(self)
+    }
+
+    /// Returns the start point of <me>.
+    /// This point is the evaluation of the curve from the
+    /// "FirstParameter".
+    /// value and derivatives
+    /// Warnings :
+    /// The returned derivatives have the same orientation as the
+    /// derivatives of the basis curve.
+    pub fn start_point(&self) -> crate::ffi::gp_Pnt2d {
+        crate::ffi::Geom2d_TrimmedCurve::start_point(self)
+    }
+
+    /// If the basis curve is an OffsetCurve sometimes it is not
+    /// possible to do the evaluation of the curve at the parameter
+    /// U (see class OffsetCurve).
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>) {
+        crate::ffi::Geom2d_TrimmedCurve::d0(self, U, P)
+    }
+
+    /// Raised if the continuity of the curve is not C1.
+    pub fn d1(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_TrimmedCurve::d1(self, U, P, V1)
+    }
+
+    /// Raised if the continuity of the curve is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_TrimmedCurve::d2(self, U, P, V1, V2)
+    }
+
+    /// Raised if the continuity of the curve is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Geom2d_TrimmedCurve::d3(self, U, P, V1, V2, V3)
+    }
+
+    /// For the point of parameter U of this trimmed curve,
+    /// computes the vector corresponding to the Nth derivative.
+    /// Warning
+    /// The returned derivative vector has the same
+    /// orientation as the derivative vector of the basis curve,
+    /// even if the trimmed curve does not have the same
+    /// orientation as the basis curve.
+    /// Exceptions
+    /// Standard_RangeError if N is less than 1.
+    /// geometric transformations
+    pub fn dn(&self, U: f64, N: i32) -> crate::ffi::gp_Vec2d {
+        crate::ffi::Geom2d_TrimmedCurve::dn(self, U, N)
+    }
+
+    /// Applies the transformation T to this trimmed curve.
+    /// Warning The basis curve is also modified.
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf2d) {
+        crate::ffi::Geom2d_TrimmedCurve::transform(self, T)
+    }
+
+    /// Returns the  parameter on the  transformed  curve for
+    /// the transform of the point of parameter U on <me>.
+    ///
+    /// me->Transformed(T)->Value(me->TransformedParameter(U,T))
+    ///
+    /// is the same point as
+    ///
+    /// me->Value(U).Transformed(T)
+    ///
+    /// This methods calls the basis curve method.
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_TrimmedCurve::transformed_parameter(self, U, T)
+    }
+
+    /// Returns a  coefficient to compute the parameter on
+    /// the transformed  curve  for  the transform  of the
+    /// point on <me>.
+    ///
+    /// Transformed(T)->Value(U * ParametricTransformation(T))
+    ///
+    /// is the same point as
+    ///
+    /// Value(U).Transformed(T)
+    ///
+    /// This methods calls the basis curve method.
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf2d) -> f64 {
+        crate::ffi::Geom2d_TrimmedCurve::parametric_transformation(self, T)
+    }
+
+    /// Creates a new object, which is a copy of this trimmed curve.
+    pub fn copy(&self) -> crate::ffi::HandleGeom2dGeometry {
+        crate::ffi::Geom2d_TrimmedCurve::copy(self)
     }
 
     /// Upcast to Geom2d_BoundedCurve

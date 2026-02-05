@@ -111,6 +111,144 @@ impl GProps {
         crate::ffi::GProp_GProps_ctor_pnt(SystemLocation)
     }
 
+    /// Either
+    /// - initializes the global properties retained by this
+    /// framework from those retained by the framework Item, or
+    /// - brings together the global properties still retained by
+    /// this framework with those retained by the framework Item.
+    /// The value Density, which is 1.0 by default, is used as
+    /// the density of the system analysed by Item.
+    /// Sometimes the density will have already been given at
+    /// the time of construction of the framework Item. This
+    /// may be the case for example, if Item is a
+    /// GProp_PGProps framework built to compute the
+    /// global properties of a set of points ; or another
+    /// GProp_GProps object which already retains
+    /// composite global properties. In these cases the real
+    /// density was perhaps already taken into account at the
+    /// time of construction of Item. Note that this is not
+    /// checked: if the density of parts of the system is taken
+    /// into account two or more times, results of the
+    /// computation will be false.
+    /// Notes :
+    /// - The point relative to which the inertia of Item is
+    /// computed (i.e. the reference point of Item) may be
+    /// different from the reference point in this
+    /// framework. Huygens' theorem is applied
+    /// automatically to transfer inertia values to the
+    /// reference point in this framework.
+    /// - The function Add is used once per component of
+    /// the system. After that, you use the interrogation
+    /// functions available to access values computed for the system.
+    /// - The system whose global properties are already
+    /// brought together by this framework is referred to
+    /// as the current system. However, the current system
+    /// is not retained by this framework, which maintains
+    /// only its global properties.
+    /// Exceptions
+    /// Standard_DomainError if Density is less than or
+    /// equal to gp::Resolution().
+    pub fn add(self: std::pin::Pin<&mut Self>, Item: &crate::ffi::GProp_GProps, Density: f64) {
+        crate::ffi::GProp_GProps::add(self, Item, Density)
+    }
+
+    /// Returns the mass of the current system.
+    /// If no density is attached to the components of the
+    /// current system the returned value corresponds to :
+    /// - the total length of the edges of the current
+    /// system if this framework retains only linear
+    /// properties, as is the case for example, when
+    /// using only the LinearProperties function to
+    /// combine properties of lines from shapes, or
+    /// - the total area of the faces of the current system if
+    /// this framework retains only surface properties,
+    /// as is the case for example, when using only the
+    /// SurfaceProperties function to combine
+    /// properties of surfaces from shapes, or
+    /// - the total volume of the solids of the current
+    /// system if this framework retains only volume
+    /// properties, as is the case for example, when
+    /// using only the VolumeProperties function to
+    /// combine properties of volumes from solids.
+    /// Warning
+    /// A length, an area, or a volume is computed in the
+    /// current data unit system. The mass of a single
+    /// object is obtained by multiplying its length, its area
+    /// or its volume by the given density. You must be
+    /// consistent with respect to the units used.
+    pub fn mass(&self) -> f64 {
+        crate::ffi::GProp_GProps::mass(self)
+    }
+
+    /// Returns the center of mass of the current system. If
+    /// the gravitational field is uniform, it is the center of gravity.
+    /// The coordinates returned for the center of mass are
+    /// expressed in the absolute Cartesian coordinate system.
+    pub fn centre_of_mass(&self) -> crate::ffi::gp_Pnt {
+        crate::ffi::GProp_GProps::centre_of_mass(self)
+    }
+
+    /// returns the matrix of inertia. It is a symmetrical matrix.
+    /// The coefficients of the matrix are the quadratic moments of
+    /// inertia.
+    ///
+    /// | Ixx  Ixy  Ixz |
+    /// matrix =    | Ixy  Iyy  Iyz |
+    /// | Ixz  Iyz  Izz |
+    ///
+    /// The moments of inertia are denoted by Ixx, Iyy, Izz.
+    /// The products of inertia are denoted by Ixy, Ixz, Iyz.
+    /// The matrix of inertia is returned in the central coordinate
+    /// system (G, Gx, Gy, Gz) where G is the centre of mass of the
+    /// system and Gx, Gy, Gz the directions parallel to the X(1,0,0)
+    /// Y(0,1,0) Z(0,0,1) directions of the absolute cartesian
+    /// coordinate system. It is possible to compute the matrix of
+    /// inertia at another location point using the Huyghens theorem
+    /// (you can use the method of package GProp : HOperator).
+    pub fn matrix_of_inertia(&self) -> crate::ffi::gp_Mat {
+        crate::ffi::GProp_GProps::matrix_of_inertia(self)
+    }
+
+    /// Returns Ix, Iy, Iz, the static moments of inertia of the
+    /// current system; i.e. the moments of inertia about the
+    /// three axes of the Cartesian coordinate system.
+    pub fn static_moments(
+        &self,
+        Ix: std::pin::Pin<&mut f64>,
+        Iy: std::pin::Pin<&mut f64>,
+        Iz: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::GProp_GProps::static_moments(self, Ix, Iy, Iz)
+    }
+
+    /// computes the moment of inertia of the material system about the
+    /// axis A.
+    pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::GProp_GProps::moment_of_inertia(self, A)
+    }
+
+    /// Computes the principal properties of inertia of the current system.
+    /// There is always a set of axes for which the products
+    /// of inertia of a geometric system are equal to 0; i.e. the
+    /// matrix of inertia of the system is diagonal. These axes
+    /// are the principal axes of inertia. Their origin is
+    /// coincident with the center of mass of the system. The
+    /// associated moments are called the principal moments of inertia.
+    /// This function computes the eigen values and the
+    /// eigen vectors of the matrix of inertia of the system.
+    /// Results are stored by using a presentation framework
+    /// of principal properties of inertia
+    /// (GProp_PrincipalProps object) which may be
+    /// queried to access the value sought.
+    pub fn principal_properties(&self) -> crate::ffi::GProp_PrincipalProps {
+        crate::ffi::GProp_GProps::principal_properties(self)
+    }
+
+    /// Returns the radius of gyration of the current system about the axis A.
+    pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
+        crate::ffi::GProp_GProps::radius_of_gyration(self, A)
+    }
+
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::GProp_GProps_to_owned(self)

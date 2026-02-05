@@ -62,6 +62,83 @@ impl UnifySameDomain {
         )
     }
 
+    /// Initializes with a shape and necessary flags.
+    /// It does not perform unification.
+    /// If you intend to nullify the History place holder do it after
+    /// initialization.
+    pub fn initialize(
+        self: std::pin::Pin<&mut Self>,
+        aShape: &crate::ffi::TopoDS_Shape,
+        UnifyEdges: bool,
+        UnifyFaces: bool,
+        ConcatBSplines: bool,
+    ) {
+        crate::ffi::ShapeUpgrade_UnifySameDomain::initialize(
+            self,
+            aShape,
+            UnifyEdges,
+            UnifyFaces,
+            ConcatBSplines,
+        )
+    }
+
+    /// Sets the flag defining whether it is allowed to create
+    /// internal edges inside merged faces in the case of non-manifold
+    /// topology. Without this flag merging through multi connected edge
+    /// is forbidden. Default value is false.
+    pub fn allow_internal_edges(self: std::pin::Pin<&mut Self>, theValue: bool) {
+        crate::ffi::ShapeUpgrade_UnifySameDomain::allow_internal_edges(self, theValue)
+    }
+
+    /// Sets the shape for avoid merging of the faces/edges.
+    /// This shape can be vertex or edge.
+    /// If the shape is a vertex it forbids merging of connected edges.
+    /// If the shape is a edge it forbids merging of connected faces.
+    /// This method can be called several times to keep several shapes.
+    pub fn keep_shape(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::ShapeUpgrade_UnifySameDomain::keep_shape(self, theShape)
+    }
+
+    /// Sets the map of shapes for avoid merging of the faces/edges.
+    /// It allows passing a ready to use map instead of calling many times
+    /// the method KeepShape.
+    pub fn keep_shapes(
+        self: std::pin::Pin<&mut Self>,
+        theShapes: &crate::ffi::TopTools_MapOfShape,
+    ) {
+        crate::ffi::ShapeUpgrade_UnifySameDomain::keep_shapes(self, theShapes)
+    }
+
+    /// Sets the flag defining the behavior of the algorithm regarding
+    /// modification of input shape.
+    /// If this flag is equal to True then the input (original) shape can't be
+    /// modified during modification process. Default value is true.
+    pub fn set_safe_input_mode(self: std::pin::Pin<&mut Self>, theValue: bool) {
+        crate::ffi::ShapeUpgrade_UnifySameDomain::set_safe_input_mode(self, theValue)
+    }
+
+    /// Sets the linear tolerance. It plays the role of chord error when
+    /// taking decision about merging of shapes. Default value is Precision::Confusion().
+    pub fn set_linear_tolerance(self: std::pin::Pin<&mut Self>, theValue: f64) {
+        crate::ffi::ShapeUpgrade_UnifySameDomain::set_linear_tolerance(self, theValue)
+    }
+
+    /// Sets the angular tolerance. If two shapes form a connection angle greater than
+    /// this value they will not be merged. Default value is Precision::Angular().
+    pub fn set_angular_tolerance(self: std::pin::Pin<&mut Self>, theValue: f64) {
+        crate::ffi::ShapeUpgrade_UnifySameDomain::set_angular_tolerance(self, theValue)
+    }
+
+    /// Performs unification and builds the resulting shape.
+    pub fn build(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::ShapeUpgrade_UnifySameDomain::build(self)
+    }
+
+    /// Gives the resulting shape
+    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::ShapeUpgrade_UnifySameDomain::shape(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,

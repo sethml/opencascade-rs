@@ -95,4 +95,14 @@ impl FreeBounds {
             checkinternaledges,
         )
     }
+
+    /// Returns compound of closed wires out of free edges.
+    pub fn get_closed_wires(&self) -> &crate::ffi::TopoDS_Compound {
+        crate::ffi::ShapeAnalysis_FreeBounds::get_closed_wires(self)
+    }
+
+    /// Returns compound of open wires out of free edges.
+    pub fn get_open_wires(&self) -> &crate::ffi::TopoDS_Compound {
+        crate::ffi::ShapeAnalysis_FreeBounds::get_open_wires(self)
+    }
 }

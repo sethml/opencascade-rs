@@ -4335,6 +4335,214 @@ pub fn generate_module_reexports(
                 ));
             }
         }
+
+        // Instance methods
+        let mut method_names: HashMap<String, usize> = HashMap::new();
+        for method in &class.methods {
+            if method.has_unbindable_types() {
+                continue;
+            }
+            if method_uses_enum(method, all_enum_names) {
+                continue;
+            }
+            if method.params.iter().any(|p| param_uses_unknown_handle(&p.ty, &handle_able_classes)) {
+                continue;
+            }
+            if let Some(ref ret) = method.return_type {
+                if param_uses_unknown_handle(ret, &handle_able_classes) {
+                    continue;
+                }
+            }
+            if method.params.iter().any(|p| p.ty.is_c_string()) {
+                continue;
+            }
+            if method.return_type.as_ref().map(|t| t.is_c_string()).unwrap_or(false) {
+                continue;
+            }
+
+            let base_method_name = method.name.to_snake_case();
+            let count = method_names.entry(method.name.clone()).or_insert(0);
+            *count += 1;
+
+            let suffix = if *count > 1 {
+                method.overload_suffix()
+            } else {
+                String::new()
+            };
+
+            let method_name = if suffix.is_empty() {
+                base_method_name.clone()
+            } else {
+                format!("{}{}", base_method_name, suffix)
+            };
+
+            let method_name = if RUST_KEYWORDS.contains(&method_name.as_str()) {
+                format!("r#{}", method_name)
+            } else {
+                method_name
+            };
+
+            let receiver = if method.is_const {
+                "&self".to_string()
+            } else {
+                "self: std::pin::Pin<&mut Self>".to_string()
+            };
+
+            let params: Vec<String> = std::iter::once(receiver)
+                .chain(method.params.iter().map(|p| {
+                    let name = if RUST_KEYWORDS.contains(&p.name.as_str()) {
+                        format!("{}_", p.name)
+                    } else {
+                        p.name.clone()
+                    };
+                    let ty_str = unified_type_to_string(&p.ty, &owned_classes, all_enum_names);
+                    format!("{}: {}", name, ty_str)
+                }))
+                .collect();
+
+            let args: Vec<String> = std::iter::once("self".to_string())
+                .chain(method.params.iter().map(|p| {
+                    if RUST_KEYWORDS.contains(&p.name.as_str()) {
+                        format!("{}_", p.name)
+                    } else {
+                        p.name.clone()
+                    }
+                }))
+                .collect();
+
+            let return_type = if let Some(ref ret) = method.return_type {
+                let type_str = unified_type_to_string(ret, &owned_classes, all_enum_names);
+                format!(" -> {}", type_str)
+            } else {
+                String::new()
+            };
+
+            let doc = if let Some(comment) = &method.comment {
+                comment.lines()
+                    .map(|line| format!("    /// {}", line.trim()))
+                    .collect::<Vec<_>>()
+                    .join("\n")
+            } else {
+                String::new()
+            };
+
+            let doc_prefix = if doc.is_empty() { String::new() } else { format!("{}\n", doc) };
+            let all_params = params.join(", ");
+            let all_args = args.join(", ");
+
+            let ffi_method_base = method.name.to_snake_case();
+            let ffi_method = if RUST_KEYWORDS.contains(&ffi_method_base.as_str()) {
+                format!("r#{}", ffi_method_base)
+            } else {
+                ffi_method_base
+            };
+
+            impl_methods.push(format!(
+                "{}    pub fn {}({}){} {{\n        crate::ffi::{}::{}({})\n    }}\n",
+                doc_prefix, method_name, all_params, return_type, cpp_name, ffi_method, all_args
+            ));
+        }
+
+        // Static methods
+        let mut static_method_names: HashMap<String, usize> = HashMap::new();
+        for method in &class.static_methods {
+            if method.has_unbindable_types() {
+                continue;
+            }
+            if static_method_uses_enum(method, all_enum_names) {
+                continue;
+            }
+            if method.params.iter().any(|p| param_uses_unknown_handle(&p.ty, &handle_able_classes)) {
+                continue;
+            }
+            if let Some(ref ret) = method.return_type {
+                if param_uses_unknown_handle(ret, &handle_able_classes) {
+                    continue;
+                }
+                if ret.is_c_string() {
+                    continue;
+                }
+            }
+            if method.params.iter().any(|p| p.ty.is_c_string()) {
+                continue;
+            }
+
+            let base_method_name = method.name.to_snake_case();
+            let count = static_method_names.entry(method.name.clone()).or_insert(0);
+            *count += 1;
+
+            let suffix = if *count > 1 {
+                method.overload_suffix()
+            } else {
+                String::new()
+            };
+
+            let method_name = if suffix.is_empty() {
+                base_method_name.clone()
+            } else {
+                format!("{}{}", base_method_name, suffix)
+            };
+
+            let method_name = if RUST_KEYWORDS.contains(&method_name.as_str()) {
+                format!("r#{}", method_name)
+            } else {
+                method_name
+            };
+
+            let params: Vec<String> = method.params.iter().map(|p| {
+                let name = if RUST_KEYWORDS.contains(&p.name.as_str()) {
+                    format!("{}_", p.name)
+                } else {
+                    p.name.clone()
+                };
+                let ty_str = unified_type_to_string(&p.ty, &owned_classes, all_enum_names);
+                format!("{}: {}", name, ty_str)
+            }).collect();
+
+            let args: Vec<String> = method.params.iter().map(|p| {
+                if RUST_KEYWORDS.contains(&p.name.as_str()) {
+                    format!("{}_", p.name)
+                } else {
+                    p.name.clone()
+                }
+            }).collect();
+
+            let return_type = if let Some(ref ret) = method.return_type {
+                let mut type_str = unified_type_to_string(ret, &owned_classes, all_enum_names);
+                if ret.is_reference() && type_str.starts_with('&') {
+                    type_str = format!("&'static {}", &type_str[1..]);
+                }
+                format!(" -> {}", type_str)
+            } else {
+                String::new()
+            };
+
+            let doc = if let Some(comment) = &method.comment {
+                comment.lines()
+                    .map(|line| format!("    /// {}", line.trim()))
+                    .collect::<Vec<_>>()
+                    .join("\n")
+            } else {
+                String::new()
+            };
+
+            let doc_prefix = if doc.is_empty() { String::new() } else { format!("{}\n", doc) };
+            let all_params = params.join(", ");
+            let all_args = args.join(", ");
+
+            let ffi_method_base = method.name.to_snake_case();
+            let ffi_method = if RUST_KEYWORDS.contains(&ffi_method_base.as_str()) {
+                format!("r#{}", ffi_method_base)
+            } else {
+                ffi_method_base
+            };
+
+            impl_methods.push(format!(
+                "{}    pub fn {}({}){} {{\n        crate::ffi::{}::{}({})\n    }}\n",
+                doc_prefix, method_name, all_params, return_type, cpp_name, ffi_method, all_args
+            ));
+        }
+
         
         // Upcast methods
         let all_ancestors = symbol_table.get_all_ancestors_by_name(&class.name);

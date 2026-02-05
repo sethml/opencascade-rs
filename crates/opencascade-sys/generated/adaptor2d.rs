@@ -24,6 +24,146 @@
 pub use crate::ffi::Adaptor2d_Curve2d as Curve2d;
 
 impl Curve2d {
+    /// Shallow copy of adaptor
+    pub fn shallow_copy(&self) -> crate::ffi::HandleAdaptor2dCurve2d {
+        crate::ffi::Adaptor2d_Curve2d::shallow_copy(self)
+    }
+
+    pub fn first_parameter(&self) -> f64 {
+        crate::ffi::Adaptor2d_Curve2d::first_parameter(self)
+    }
+
+    pub fn last_parameter(&self) -> f64 {
+        crate::ffi::Adaptor2d_Curve2d::last_parameter(self)
+    }
+
+    /// Returns    a  curve equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
+    pub fn trim(&self, First: f64, Last: f64, Tol: f64) -> crate::ffi::HandleAdaptor2dCurve2d {
+        crate::ffi::Adaptor2d_Curve2d::trim(self, First, Last, Tol)
+    }
+
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::Adaptor2d_Curve2d::is_closed(self)
+    }
+
+    pub fn is_periodic(&self) -> bool {
+        crate::ffi::Adaptor2d_Curve2d::is_periodic(self)
+    }
+
+    pub fn period(&self) -> f64 {
+        crate::ffi::Adaptor2d_Curve2d::period(self)
+    }
+
+    /// Computes the point of parameter U on the curve.
+    pub fn value(&self, U: f64) -> crate::ffi::gp_Pnt2d {
+        crate::ffi::Adaptor2d_Curve2d::value(self, U)
+    }
+
+    /// Computes the point of parameter U on the curve.
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>) {
+        crate::ffi::Adaptor2d_Curve2d::d0(self, U, P)
+    }
+
+    /// Computes the point of parameter U on the curve with its
+    /// first derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C1.
+    pub fn d1(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Adaptor2d_Curve2d::d1(self, U, P, V)
+    }
+
+    /// Returns the point P of parameter U, the first and second
+    /// derivatives V1 and V2.
+    /// Raised if the continuity of the current interval
+    /// is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Adaptor2d_Curve2d::d2(self, U, P, V1, V2)
+    }
+
+    /// Returns the point P of parameter U, the first, the second
+    /// and the third derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::Adaptor2d_Curve2d::d3(self, U, P, V1, V2, V3)
+    }
+
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
+    pub fn dn(&self, U: f64, N: i32) -> crate::ffi::gp_Vec2d {
+        crate::ffi::Adaptor2d_Curve2d::dn(self, U, N)
+    }
+
+    /// Returns the parametric  resolution corresponding
+    /// to the real space resolution <R3d>.
+    pub fn resolution(&self, R3d: f64) -> f64 {
+        crate::ffi::Adaptor2d_Curve2d::resolution(self, R3d)
+    }
+
+    pub fn line(&self) -> crate::ffi::gp_Lin2d {
+        crate::ffi::Adaptor2d_Curve2d::line(self)
+    }
+
+    pub fn circle(&self) -> crate::ffi::gp_Circ2d {
+        crate::ffi::Adaptor2d_Curve2d::circle(self)
+    }
+
+    pub fn ellipse(&self) -> crate::ffi::gp_Elips2d {
+        crate::ffi::Adaptor2d_Curve2d::ellipse(self)
+    }
+
+    pub fn hyperbola(&self) -> crate::ffi::gp_Hypr2d {
+        crate::ffi::Adaptor2d_Curve2d::hyperbola(self)
+    }
+
+    pub fn parabola(&self) -> crate::ffi::gp_Parab2d {
+        crate::ffi::Adaptor2d_Curve2d::parabola(self)
+    }
+
+    pub fn degree(&self) -> i32 {
+        crate::ffi::Adaptor2d_Curve2d::degree(self)
+    }
+
+    pub fn is_rational(&self) -> bool {
+        crate::ffi::Adaptor2d_Curve2d::is_rational(self)
+    }
+
+    pub fn nb_poles(&self) -> i32 {
+        crate::ffi::Adaptor2d_Curve2d::nb_poles(self)
+    }
+
+    pub fn nb_knots(&self) -> i32 {
+        crate::ffi::Adaptor2d_Curve2d::nb_knots(self)
+    }
+
+    pub fn nb_samples(&self) -> i32 {
+        crate::ffi::Adaptor2d_Curve2d::nb_samples(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,

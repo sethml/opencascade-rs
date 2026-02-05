@@ -21,6 +21,17 @@
 /// * Logging (not implemented).
 pub use crate::ffi::BRepBuilderAPI_Command as Command;
 
+impl Command {
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepBuilderAPI_Command::is_done(self)
+    }
+
+    /// Raises NotDone if done is false.
+    pub fn check(&self) {
+        crate::ffi::BRepBuilderAPI_Command::check(self)
+    }
+}
+
 // ========================
 // From BRepBuilderAPI_MakeEdge.hxx
 // ========================
@@ -192,6 +203,44 @@ impl MakeEdge {
         V2: &crate::ffi::TopoDS_Vertex,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepBuilderAPI_MakeEdge_ctor_parab_vertex2(L, V1, V2)
+    }
+
+    /// Returns true if the edge is built.
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepBuilderAPI_MakeEdge::is_done(self)
+    }
+
+    /// Returns the construction status
+    /// -   BRepBuilderAPI_EdgeDone if the edge is built, or
+    /// -   another value of the BRepBuilderAPI_EdgeError
+    /// enumeration indicating the reason of construction failure.
+    pub fn error(&self) -> crate::ffi::BRepBuilderAPI_EdgeError {
+        crate::ffi::BRepBuilderAPI_MakeEdge::error(self)
+    }
+
+    /// Returns the constructed edge.
+    /// Exceptions StdFail_NotDone if the edge is not built.
+    pub fn edge(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepBuilderAPI_MakeEdge::edge(self)
+    }
+
+    /// Returns the first vertex of the edge. May be Null.
+    pub fn vertex1(&self) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepBuilderAPI_MakeEdge::vertex1(self)
+    }
+
+    /// Returns the second vertex of the edge. May be Null.
+    ///
+    /// Warning
+    /// The returned vertex in each function corresponds respectively to
+    /// -   the lowest, or
+    /// -   the highest parameter on the curve along which the edge is built.
+    /// It does not correspond to the first or second vertex
+    /// given at the time of the construction, if the edge is oriented reversed.
+    /// Exceptions
+    /// StdFail_NotDone if the edge is not built.
+    pub fn vertex2(&self) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepBuilderAPI_MakeEdge::vertex2(self)
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -440,6 +489,54 @@ impl MakeFace {
         crate::ffi::BRepBuilderAPI_MakeFace_ctor_face_wire(F, W)
     }
 
+    /// Initializes (or reinitializes) the
+    /// construction of a face by creating a new object which is a copy of
+    /// the face F, in order to add wires to it, using the function Add.
+    /// Note: this complete copy of the geometry is only required if you
+    /// want to work on the geometries of the two faces independently.
+    pub fn init(self: std::pin::Pin<&mut Self>, F: &crate::ffi::TopoDS_Face) {
+        crate::ffi::BRepBuilderAPI_MakeFace::init(self, F)
+    }
+
+    /// Adds the wire W to the constructed face as a hole.
+    /// Warning
+    /// W must not cross the other bounds of the face, and all
+    /// the bounds must define only one area on the surface.
+    /// (Be careful, however, as this is not checked.)
+    /// Example
+    /// // a cylinder
+    /// gp_Cylinder C = ..;
+    /// // a wire
+    /// TopoDS_Wire W = ...;
+    /// BRepBuilderAPI_MakeFace MF(C);
+    /// MF.Add(W);
+    /// TopoDS_Face F = MF;
+    pub fn add(self: std::pin::Pin<&mut Self>, W: &crate::ffi::TopoDS_Wire) {
+        crate::ffi::BRepBuilderAPI_MakeFace::add(self, W)
+    }
+
+    /// Returns true if this algorithm has a valid face.
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepBuilderAPI_MakeFace::is_done(self)
+    }
+
+    /// Returns the construction status
+    /// BRepBuilderAPI_FaceDone if the face is built, or
+    /// -   another value of the BRepBuilderAPI_FaceError
+    /// enumeration indicating why the construction failed, in
+    /// particular when the given parameters are outside the
+    /// bounds of the surface.
+    pub fn error(&self) -> crate::ffi::BRepBuilderAPI_FaceError {
+        crate::ffi::BRepBuilderAPI_MakeFace::error(self)
+    }
+
+    /// Returns the constructed face.
+    /// Exceptions
+    /// StdFail_NotDone if no face is built.
+    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepBuilderAPI_MakeFace::face(self)
+    }
+
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         crate::ffi::BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_Command(self)
@@ -473,6 +570,41 @@ impl MakeFace {
 pub use crate::ffi::BRepBuilderAPI_MakeShape as MakeShape;
 
 impl MakeShape {
+    /// This is  called by  Shape().  It does  nothing but
+    /// may be redefined.
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepBuilderAPI_MakeShape::build(self, theRange)
+    }
+
+    /// Returns a shape built by the shape construction algorithm.
+    /// Raises exception StdFail_NotDone if the shape was not built.
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepBuilderAPI_MakeShape::shape(self)
+    }
+
+    /// Returns the  list   of shapes generated   from the
+    /// shape <S>.
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_MakeShape::generated(self, S)
+    }
+
+    /// Returns the list  of shapes modified from the shape
+    /// <S>.
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_MakeShape::modified(self, S)
+    }
+
+    /// Returns true if the shape S has been deleted.
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepBuilderAPI_MakeShape::is_deleted(self, S)
+    }
+
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         crate::ffi::BRepBuilderAPI_MakeShape_as_BRepBuilderAPI_Command(self)
@@ -574,6 +706,38 @@ impl MakeSolid {
         crate::ffi::BRepBuilderAPI_MakeSolid_ctor_solid_shell(So, S)
     }
 
+    /// Adds the shell to the current solid.
+    /// Warning
+    /// No check is done to verify the conditions of coherence
+    /// of the resulting solid. In particular, S must not intersect
+    /// other shells of the solid under construction.
+    /// Besides, after all shells have been added, one of
+    /// these shells should constitute the outside skin of the
+    /// solid. It may be closed (a finite solid) or open (an
+    /// infinite solid). Other shells form hollows (cavities) in
+    /// these previous ones. Each must bound a closed volume.
+    pub fn add(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shell) {
+        crate::ffi::BRepBuilderAPI_MakeSolid::add(self, S)
+    }
+
+    /// Returns true if the solid is built.
+    /// For this class, a solid under construction is always valid.
+    /// If no shell has been added, it could be a whole-space
+    /// solid. However, no check was done to verify the
+    /// conditions of coherence of the resulting solid.
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepBuilderAPI_MakeSolid::is_done(self)
+    }
+
+    /// Returns the new Solid.
+    pub fn solid(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Solid {
+        crate::ffi::BRepBuilderAPI_MakeSolid::solid(self)
+    }
+
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepBuilderAPI_MakeSolid::is_deleted(self, S)
+    }
+
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         crate::ffi::BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_Command(self)
@@ -617,6 +781,11 @@ impl MakeVertex {
     /// TopoDS_Vertex V = BRepBuilderAPI_MakeVertex(P);
     pub fn new_pnt(P: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
         crate::ffi::BRepBuilderAPI_MakeVertex_ctor_pnt(P)
+    }
+
+    /// Returns the constructed vertex.
+    pub fn vertex(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepBuilderAPI_MakeVertex::vertex(self)
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -755,6 +924,83 @@ impl MakeWire {
         crate::ffi::BRepBuilderAPI_MakeWire_ctor_wire_edge(W, E)
     }
 
+    /// Adds the edge E to the wire under construction.
+    /// E must be connectable to the wire under construction, and, unless it
+    /// is the first edge of the wire, must satisfy the following
+    /// condition: one of its vertices must be geometrically coincident
+    /// with one of the vertices of the wire (provided that the highest
+    /// tolerance factor is assigned to the two vertices). It could also
+    /// be the same vertex.
+    /// Warning
+    /// If E is not connectable to the wire under construction it is not
+    /// added. The function Error will return
+    /// BRepBuilderAPI_DisconnectedWire, the function IsDone will return
+    /// false and the function Wire will raise an error, until a new
+    /// connectable edge is added.
+    pub fn add(self: std::pin::Pin<&mut Self>, E: &crate::ffi::TopoDS_Edge) {
+        crate::ffi::BRepBuilderAPI_MakeWire::add(self, E)
+    }
+
+    /// Add the edges of <W> to the current wire.
+    pub fn add_wire(self: std::pin::Pin<&mut Self>, W: &crate::ffi::TopoDS_Wire) {
+        crate::ffi::BRepBuilderAPI_MakeWire::add(self, W)
+    }
+
+    /// Adds  the edges of <L>   to the current  wire.  The
+    /// edges are not to be consecutive.   But they are to
+    /// be  all  connected geometrically or topologically.
+    /// If some of them are  not connected the Status give
+    /// DisconnectedWire but the "Maker" is Done() and you
+    /// can get the  partial result. (ie connected to  the
+    /// first edgeof the list <L>)
+    pub fn add_listofshape(self: std::pin::Pin<&mut Self>, L: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepBuilderAPI_MakeWire::add(self, L)
+    }
+
+    /// Returns true if this algorithm contains a valid wire.
+    /// IsDone returns false if:
+    /// -   there are no edges in the wire, or
+    /// -   the last edge which you tried to add was not connectable.
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepBuilderAPI_MakeWire::is_done(self)
+    }
+
+    /// Returns the construction status
+    /// -   BRepBuilderAPI_WireDone if the wire is built, or
+    /// -   another value of the BRepBuilderAPI_WireError
+    /// enumeration indicating why the construction failed.
+    pub fn error(&self) -> crate::ffi::BRepBuilderAPI_WireError {
+        crate::ffi::BRepBuilderAPI_MakeWire::error(self)
+    }
+
+    /// Returns the constructed wire; or the part of the wire
+    /// under construction already built.
+    /// Exceptions StdFail_NotDone if a wire is not built.
+    pub fn wire(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepBuilderAPI_MakeWire::wire(self)
+    }
+
+    /// Returns the last edge added to the wire under construction.
+    /// Warning
+    /// -   This edge can be different from the original one (the
+    /// argument of the function Add, for instance,)
+    /// -   A null edge is returned if there are no edges in the
+    /// wire under construction, or if the last edge which you
+    /// tried to add was not connectable..
+    pub fn edge(&self) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepBuilderAPI_MakeWire::edge(self)
+    }
+
+    /// Returns the last vertex of the last edge added to the
+    /// wire under construction.
+    /// Warning
+    /// A null vertex is returned if there are no edges in the wire
+    /// under construction, or if the last edge which you tried to
+    /// add was not connectableR
+    pub fn vertex(&self) -> &crate::ffi::TopoDS_Vertex {
+        crate::ffi::BRepBuilderAPI_MakeWire::vertex(self)
+    }
+
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         crate::ffi::BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_Command(self)
@@ -773,49 +1019,6 @@ impl MakeWire {
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
         crate::ffi::BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_MakeShape_mut(self)
-    }
-}
-
-// ========================
-// From BRepBuilderAPI_ModifyShape.hxx
-// ========================
-
-/// Implements   the  methods   of MakeShape for   the
-/// constant  topology modifications.  The methods are
-/// implemented  when the modification uses a Modifier
-/// from BRepTools. Some of  them have to be redefined
-/// if  the  modification is  implemented with another
-/// tool (see Transform from BRepBuilderAPI for example).
-/// The BRepBuilderAPI package provides the following
-/// frameworks to perform modifications of this sort:
-/// -   BRepBuilderAPI_Copy to produce the copy of a shape,
-/// -   BRepBuilderAPI_Transform and
-/// BRepBuilderAPI_GTransform to apply a geometric
-/// transformation to a shape,
-/// -   BRepBuilderAPI_NurbsConvert to convert the
-/// whole geometry of a shape into NURBS geometry,
-/// -   BRepOffsetAPI_DraftAngle to build a tapered shape.
-pub use crate::ffi::BRepBuilderAPI_ModifyShape as ModifyShape;
-
-impl ModifyShape {
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_command(&self) -> &Command {
-        crate::ffi::BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_Command(self)
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
-        crate::ffi::BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_Command_mut(self)
-    }
-
-    /// Upcast to BRepBuilderAPI_MakeShape
-    pub fn as_make_shape(&self) -> &MakeShape {
-        crate::ffi::BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_MakeShape(self)
-    }
-
-    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
-    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
-        crate::ffi::BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_MakeShape_mut(self)
     }
 }
 
@@ -864,6 +1067,243 @@ impl Sewing {
         crate::ffi::BRepBuilderAPI_Sewing_ctor_real_bool4(
             tolerance, option1, option2, option3, option4,
         )
+    }
+
+    /// initialize the parameters if necessary
+    pub fn init(
+        self: std::pin::Pin<&mut Self>,
+        tolerance: f64,
+        option1: bool,
+        option2: bool,
+        option3: bool,
+        option4: bool,
+    ) {
+        crate::ffi::BRepBuilderAPI_Sewing::init(self, tolerance, option1, option2, option3, option4)
+    }
+
+    /// Loads the context shape.
+    pub fn load(self: std::pin::Pin<&mut Self>, shape: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::BRepBuilderAPI_Sewing::load(self, shape)
+    }
+
+    /// Defines the shapes to be sewed or controlled
+    pub fn add(self: std::pin::Pin<&mut Self>, shape: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::BRepBuilderAPI_Sewing::add(self, shape)
+    }
+
+    /// Computing
+    /// theProgress - progress indicator of algorithm
+    pub fn perform(
+        self: std::pin::Pin<&mut Self>,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) {
+        crate::ffi::BRepBuilderAPI_Sewing::perform(self, theProgress)
+    }
+
+    /// Gives the sewed shape
+    /// a null shape if nothing constructed
+    /// may be a face, a shell, a solid or a compound
+    pub fn sewed_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepBuilderAPI_Sewing::sewed_shape(self)
+    }
+
+    /// Gives the number of free edges (edge shared by one face)
+    pub fn nb_free_edges(&self) -> i32 {
+        crate::ffi::BRepBuilderAPI_Sewing::nb_free_edges(self)
+    }
+
+    /// Gives each free edge
+    pub fn free_edge(&self, index: i32) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepBuilderAPI_Sewing::free_edge(self, index)
+    }
+
+    /// Gives the number of multiple edges
+    /// (edge shared by more than two faces)
+    pub fn nb_multiple_edges(&self) -> i32 {
+        crate::ffi::BRepBuilderAPI_Sewing::nb_multiple_edges(self)
+    }
+
+    /// Gives each multiple edge
+    pub fn multiple_edge(&self, index: i32) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepBuilderAPI_Sewing::multiple_edge(self, index)
+    }
+
+    /// Gives the number of contiguous edges (edge shared by two faces)
+    pub fn nb_contigous_edges(&self) -> i32 {
+        crate::ffi::BRepBuilderAPI_Sewing::nb_contigous_edges(self)
+    }
+
+    /// Gives each contiguous edge
+    pub fn contigous_edge(&self, index: i32) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepBuilderAPI_Sewing::contigous_edge(self, index)
+    }
+
+    /// Gives the sections (edge) belonging to a contiguous edge
+    pub fn contigous_edge_couple(&self, index: i32) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_Sewing::contigous_edge_couple(self, index)
+    }
+
+    /// Indicates if a section is bound (before use SectionToBoundary)
+    pub fn is_section_bound(&self, section: &crate::ffi::TopoDS_Edge) -> bool {
+        crate::ffi::BRepBuilderAPI_Sewing::is_section_bound(self, section)
+    }
+
+    /// Gives the original edge (free boundary) which becomes the
+    /// the section. Remember that sections constitute  common edges.
+    /// This information is important for control because with
+    /// original edge we can find the surface to which the section
+    /// is attached.
+    pub fn section_to_boundary(
+        &self,
+        section: &crate::ffi::TopoDS_Edge,
+    ) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepBuilderAPI_Sewing::section_to_boundary(self, section)
+    }
+
+    /// Gives the number of degenerated shapes
+    pub fn nb_degenerated_shapes(&self) -> i32 {
+        crate::ffi::BRepBuilderAPI_Sewing::nb_degenerated_shapes(self)
+    }
+
+    /// Gives each degenerated shape
+    pub fn degenerated_shape(&self, index: i32) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepBuilderAPI_Sewing::degenerated_shape(self, index)
+    }
+
+    /// Indicates if a input shape is degenerated
+    pub fn is_degenerated(&self, shape: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepBuilderAPI_Sewing::is_degenerated(self, shape)
+    }
+
+    /// Indicates if a input shape has been modified
+    pub fn is_modified(&self, shape: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepBuilderAPI_Sewing::is_modified(self, shape)
+    }
+
+    /// Gives a modifieded shape
+    pub fn modified(&self, shape: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepBuilderAPI_Sewing::modified(self, shape)
+    }
+
+    /// Indicates if a input subshape has been modified
+    pub fn is_modified_sub_shape(&self, shape: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepBuilderAPI_Sewing::is_modified_sub_shape(self, shape)
+    }
+
+    /// Gives a modifieded subshape
+    pub fn modified_sub_shape(&self, shape: &crate::ffi::TopoDS_Shape) -> crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepBuilderAPI_Sewing::modified_sub_shape(self, shape)
+    }
+
+    /// print the information
+    pub fn dump(&self) {
+        crate::ffi::BRepBuilderAPI_Sewing::dump(self)
+    }
+
+    /// Gives the number of deleted faces (faces smallest than tolerance)
+    pub fn nb_deleted_faces(&self) -> i32 {
+        crate::ffi::BRepBuilderAPI_Sewing::nb_deleted_faces(self)
+    }
+
+    /// Gives each deleted face
+    pub fn deleted_face(&self, index: i32) -> &crate::ffi::TopoDS_Face {
+        crate::ffi::BRepBuilderAPI_Sewing::deleted_face(self, index)
+    }
+
+    /// Gives a modified shape
+    pub fn which_face(
+        &self,
+        theEdg: &crate::ffi::TopoDS_Edge,
+        index: i32,
+    ) -> crate::ffi::TopoDS_Face {
+        crate::ffi::BRepBuilderAPI_Sewing::which_face(self, theEdg, index)
+    }
+
+    /// Gets same parameter mode.
+    pub fn same_parameter_mode(&self) -> bool {
+        crate::ffi::BRepBuilderAPI_Sewing::same_parameter_mode(self)
+    }
+
+    /// Sets same parameter mode.
+    pub fn set_same_parameter_mode(self: std::pin::Pin<&mut Self>, SameParameterMode: bool) {
+        crate::ffi::BRepBuilderAPI_Sewing::set_same_parameter_mode(self, SameParameterMode)
+    }
+
+    /// Gives set tolerance.
+    pub fn tolerance(&self) -> f64 {
+        crate::ffi::BRepBuilderAPI_Sewing::tolerance(self)
+    }
+
+    /// Sets tolerance
+    pub fn set_tolerance(self: std::pin::Pin<&mut Self>, theToler: f64) {
+        crate::ffi::BRepBuilderAPI_Sewing::set_tolerance(self, theToler)
+    }
+
+    /// Gives set min tolerance.
+    pub fn min_tolerance(&self) -> f64 {
+        crate::ffi::BRepBuilderAPI_Sewing::min_tolerance(self)
+    }
+
+    /// Sets min tolerance
+    pub fn set_min_tolerance(self: std::pin::Pin<&mut Self>, theMinToler: f64) {
+        crate::ffi::BRepBuilderAPI_Sewing::set_min_tolerance(self, theMinToler)
+    }
+
+    /// Gives set max tolerance
+    pub fn max_tolerance(&self) -> f64 {
+        crate::ffi::BRepBuilderAPI_Sewing::max_tolerance(self)
+    }
+
+    /// Sets max tolerance.
+    pub fn set_max_tolerance(self: std::pin::Pin<&mut Self>, theMaxToler: f64) {
+        crate::ffi::BRepBuilderAPI_Sewing::set_max_tolerance(self, theMaxToler)
+    }
+
+    /// Returns mode for sewing faces By default - true.
+    pub fn face_mode(&self) -> bool {
+        crate::ffi::BRepBuilderAPI_Sewing::face_mode(self)
+    }
+
+    /// Sets mode for sewing faces By default - true.
+    pub fn set_face_mode(self: std::pin::Pin<&mut Self>, theFaceMode: bool) {
+        crate::ffi::BRepBuilderAPI_Sewing::set_face_mode(self, theFaceMode)
+    }
+
+    /// Returns mode for sewing floating edges By default - false.
+    pub fn floating_edges_mode(&self) -> bool {
+        crate::ffi::BRepBuilderAPI_Sewing::floating_edges_mode(self)
+    }
+
+    /// Sets mode for sewing floating edges By default - false.
+    /// Returns mode for cutting floating edges By default - false.
+    /// Sets mode for cutting floating edges By default - false.
+    pub fn set_floating_edges_mode(self: std::pin::Pin<&mut Self>, theFloatingEdgesMode: bool) {
+        crate::ffi::BRepBuilderAPI_Sewing::set_floating_edges_mode(self, theFloatingEdgesMode)
+    }
+
+    /// Returns mode for accounting of local tolerances
+    /// of edges and vertices during of merging.
+    pub fn local_tolerances_mode(&self) -> bool {
+        crate::ffi::BRepBuilderAPI_Sewing::local_tolerances_mode(self)
+    }
+
+    /// Sets mode for accounting of local tolerances
+    /// of edges and vertices during of merging
+    /// in this case WorkTolerance = myTolerance + tolEdge1+ tolEdg2;
+    pub fn set_local_tolerances_mode(self: std::pin::Pin<&mut Self>, theLocalTolerancesMode: bool) {
+        crate::ffi::BRepBuilderAPI_Sewing::set_local_tolerances_mode(self, theLocalTolerancesMode)
+    }
+
+    /// Sets mode for non-manifold sewing.
+    pub fn set_non_manifold_mode(self: std::pin::Pin<&mut Self>, theNonManifoldMode: bool) {
+        crate::ffi::BRepBuilderAPI_Sewing::set_non_manifold_mode(self, theNonManifoldMode)
+    }
+
+    /// Gets mode for non-manifold sewing.
+    ///
+    /// INTERNAL FUNCTIONS ---
+    pub fn non_manifold_mode(&self) -> bool {
+        crate::ffi::BRepBuilderAPI_Sewing::non_manifold_mode(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -922,33 +1362,40 @@ impl Transform {
         )
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_command(&self) -> &Command {
-        crate::ffi::BRepBuilderAPI_Transform_as_BRepBuilderAPI_Command(self)
+    /// Applies the geometric transformation defined at the
+    /// time of construction of this framework to the shape S.
+    /// - If the transformation T is direct and isometric, in
+    /// other words, if the determinant of the vectorial part
+    /// of T is equal to 1., and if theCopyGeom equals false (the
+    /// default value), the resulting shape is the same as
+    /// the original but with a new location assigned to it.
+    /// - In all other cases, the transformation is applied to a duplicate of theShape.
+    /// - If theCopyMesh is true, the triangulation will be copied,
+    /// and the copy will be assigned to the result shape.
+    /// Use the function Shape to access the result.
+    /// Note: this framework can be reused to apply the same
+    /// geometric transformation to other shapes. You only
+    /// need to specify them by calling the function Perform again.
+    pub fn perform(
+        self: std::pin::Pin<&mut Self>,
+        theShape: &crate::ffi::TopoDS_Shape,
+        theCopyGeom: bool,
+        theCopyMesh: bool,
+    ) {
+        crate::ffi::BRepBuilderAPI_Transform::perform(self, theShape, theCopyGeom, theCopyMesh)
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_command_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Command> {
-        crate::ffi::BRepBuilderAPI_Transform_as_BRepBuilderAPI_Command_mut(self)
+    /// Returns the modified shape corresponding to <S>.
+    pub fn modified_shape(&self, S: &crate::ffi::TopoDS_Shape) -> crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepBuilderAPI_Transform::modified_shape(self, S)
     }
 
-    /// Upcast to BRepBuilderAPI_MakeShape
-    pub fn as_make_shape(&self) -> &MakeShape {
-        crate::ffi::BRepBuilderAPI_Transform_as_BRepBuilderAPI_MakeShape(self)
-    }
-
-    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
-    pub fn as_make_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeShape> {
-        crate::ffi::BRepBuilderAPI_Transform_as_BRepBuilderAPI_MakeShape_mut(self)
-    }
-
-    /// Upcast to BRepBuilderAPI_ModifyShape
-    pub fn as_modify_shape(&self) -> &ModifyShape {
-        crate::ffi::BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape(self)
-    }
-
-    /// Upcast to BRepBuilderAPI_ModifyShape (mutable)
-    pub fn as_modify_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut ModifyShape> {
-        crate::ffi::BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape_mut(self)
+    /// Returns the list  of shapes modified from the shape
+    /// <S>.
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepBuilderAPI_Transform::modified(self, S)
     }
 }

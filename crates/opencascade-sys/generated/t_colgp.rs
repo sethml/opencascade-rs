@@ -44,6 +44,16 @@ impl HArray1OfCirc2d {
         crate::ffi::TColgp_HArray1OfCirc2d_ctor_array1ofcirc2d(theOther)
     }
 
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfCirc2d {
+        crate::ffi::TColgp_HArray1OfCirc2d::array1(self)
+    }
+
+    pub fn change_array1(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array1OfCirc2d> {
+        crate::ffi::TColgp_HArray1OfCirc2d::change_array1(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -86,6 +96,16 @@ impl HArray1OfDir {
 
     pub fn new_array1ofdir(theOther: &crate::ffi::TColgp_Array1OfDir) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray1OfDir_ctor_array1ofdir(theOther)
+    }
+
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfDir {
+        crate::ffi::TColgp_HArray1OfDir::array1(self)
+    }
+
+    pub fn change_array1(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array1OfDir> {
+        crate::ffi::TColgp_HArray1OfDir::change_array1(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -132,6 +152,16 @@ impl HArray1OfDir2d {
         crate::ffi::TColgp_HArray1OfDir2d_ctor_array1ofdir2d(theOther)
     }
 
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfDir2d {
+        crate::ffi::TColgp_HArray1OfDir2d::array1(self)
+    }
+
+    pub fn change_array1(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array1OfDir2d> {
+        crate::ffi::TColgp_HArray1OfDir2d::change_array1(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -174,6 +204,16 @@ impl HArray1OfLin2d {
 
     pub fn new_array1oflin2d(theOther: &crate::ffi::TColgp_Array1OfLin2d) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray1OfLin2d_ctor_array1oflin2d(theOther)
+    }
+
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfLin2d {
+        crate::ffi::TColgp_HArray1OfLin2d::array1(self)
+    }
+
+    pub fn change_array1(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array1OfLin2d> {
+        crate::ffi::TColgp_HArray1OfLin2d::change_array1(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -220,6 +260,16 @@ impl HArray1OfPnt {
         crate::ffi::TColgp_HArray1OfPnt_ctor_array1ofpnt(theOther)
     }
 
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfPnt {
+        crate::ffi::TColgp_HArray1OfPnt::array1(self)
+    }
+
+    pub fn change_array1(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt> {
+        crate::ffi::TColgp_HArray1OfPnt::change_array1(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -262,6 +312,16 @@ impl HArray1OfPnt2d {
 
     pub fn new_array1ofpnt2d(theOther: &crate::ffi::TColgp_Array1OfPnt2d) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d(theOther)
+    }
+
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfPnt2d {
+        crate::ffi::TColgp_HArray1OfPnt2d::array1(self)
+    }
+
+    pub fn change_array1(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt2d> {
+        crate::ffi::TColgp_HArray1OfPnt2d::change_array1(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -308,6 +368,16 @@ impl HArray1OfVec {
         crate::ffi::TColgp_HArray1OfVec_ctor_array1ofvec(theOther)
     }
 
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfVec {
+        crate::ffi::TColgp_HArray1OfVec::array1(self)
+    }
+
+    pub fn change_array1(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array1OfVec> {
+        crate::ffi::TColgp_HArray1OfVec::change_array1(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -350,6 +420,16 @@ impl HArray1OfVec2d {
 
     pub fn new_array1ofvec2d(theOther: &crate::ffi::TColgp_Array1OfVec2d) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray1OfVec2d_ctor_array1ofvec2d(theOther)
+    }
+
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfVec2d {
+        crate::ffi::TColgp_HArray1OfVec2d::array1(self)
+    }
+
+    pub fn change_array1(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array1OfVec2d> {
+        crate::ffi::TColgp_HArray1OfVec2d::change_array1(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -396,6 +476,16 @@ impl HArray1OfXY {
         crate::ffi::TColgp_HArray1OfXY_ctor_array1ofxy(theOther)
     }
 
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfXY {
+        crate::ffi::TColgp_HArray1OfXY::array1(self)
+    }
+
+    pub fn change_array1(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array1OfXY> {
+        crate::ffi::TColgp_HArray1OfXY::change_array1(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -440,6 +530,16 @@ impl HArray1OfXYZ {
         crate::ffi::TColgp_HArray1OfXYZ_ctor_array1ofxyz(theOther)
     }
 
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfXYZ {
+        crate::ffi::TColgp_HArray1OfXYZ::array1(self)
+    }
+
+    pub fn change_array1(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array1OfXYZ> {
+        crate::ffi::TColgp_HArray1OfXYZ::change_array1(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -482,6 +582,16 @@ impl HArray2OfCirc2d {
         crate::ffi::TColgp_HArray2OfCirc2d_ctor_array2ofcirc2d(theOther)
     }
 
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfCirc2d {
+        crate::ffi::TColgp_HArray2OfCirc2d::array2(self)
+    }
+
+    pub fn change_array2(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array2OfCirc2d> {
+        crate::ffi::TColgp_HArray2OfCirc2d::change_array2(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -520,6 +630,16 @@ impl HArray2OfDir {
 
     pub fn new_array2ofdir(theOther: &crate::ffi::TColgp_Array2OfDir) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray2OfDir_ctor_array2ofdir(theOther)
+    }
+
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfDir {
+        crate::ffi::TColgp_HArray2OfDir::array2(self)
+    }
+
+    pub fn change_array2(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array2OfDir> {
+        crate::ffi::TColgp_HArray2OfDir::change_array2(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -562,6 +682,16 @@ impl HArray2OfDir2d {
         crate::ffi::TColgp_HArray2OfDir2d_ctor_array2ofdir2d(theOther)
     }
 
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfDir2d {
+        crate::ffi::TColgp_HArray2OfDir2d::array2(self)
+    }
+
+    pub fn change_array2(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array2OfDir2d> {
+        crate::ffi::TColgp_HArray2OfDir2d::change_array2(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -600,6 +730,16 @@ impl HArray2OfLin2d {
 
     pub fn new_array2oflin2d(theOther: &crate::ffi::TColgp_Array2OfLin2d) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray2OfLin2d_ctor_array2oflin2d(theOther)
+    }
+
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfLin2d {
+        crate::ffi::TColgp_HArray2OfLin2d::array2(self)
+    }
+
+    pub fn change_array2(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array2OfLin2d> {
+        crate::ffi::TColgp_HArray2OfLin2d::change_array2(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -642,6 +782,16 @@ impl HArray2OfPnt {
         crate::ffi::TColgp_HArray2OfPnt_ctor_array2ofpnt(theOther)
     }
 
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfPnt {
+        crate::ffi::TColgp_HArray2OfPnt::array2(self)
+    }
+
+    pub fn change_array2(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array2OfPnt> {
+        crate::ffi::TColgp_HArray2OfPnt::change_array2(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -680,6 +830,16 @@ impl HArray2OfPnt2d {
 
     pub fn new_array2ofpnt2d(theOther: &crate::ffi::TColgp_Array2OfPnt2d) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray2OfPnt2d_ctor_array2ofpnt2d(theOther)
+    }
+
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfPnt2d {
+        crate::ffi::TColgp_HArray2OfPnt2d::array2(self)
+    }
+
+    pub fn change_array2(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array2OfPnt2d> {
+        crate::ffi::TColgp_HArray2OfPnt2d::change_array2(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -722,6 +882,16 @@ impl HArray2OfVec {
         crate::ffi::TColgp_HArray2OfVec_ctor_array2ofvec(theOther)
     }
 
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfVec {
+        crate::ffi::TColgp_HArray2OfVec::array2(self)
+    }
+
+    pub fn change_array2(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array2OfVec> {
+        crate::ffi::TColgp_HArray2OfVec::change_array2(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -760,6 +930,16 @@ impl HArray2OfVec2d {
 
     pub fn new_array2ofvec2d(theOther: &crate::ffi::TColgp_Array2OfVec2d) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HArray2OfVec2d_ctor_array2ofvec2d(theOther)
+    }
+
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfVec2d {
+        crate::ffi::TColgp_HArray2OfVec2d::array2(self)
+    }
+
+    pub fn change_array2(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array2OfVec2d> {
+        crate::ffi::TColgp_HArray2OfVec2d::change_array2(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -802,6 +982,16 @@ impl HArray2OfXY {
         crate::ffi::TColgp_HArray2OfXY_ctor_array2ofxy(theOther)
     }
 
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfXY {
+        crate::ffi::TColgp_HArray2OfXY::array2(self)
+    }
+
+    pub fn change_array2(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array2OfXY> {
+        crate::ffi::TColgp_HArray2OfXY::change_array2(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -842,6 +1032,16 @@ impl HArray2OfXYZ {
         crate::ffi::TColgp_HArray2OfXYZ_ctor_array2ofxyz(theOther)
     }
 
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfXYZ {
+        crate::ffi::TColgp_HArray2OfXYZ::array2(self)
+    }
+
+    pub fn change_array2(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_Array2OfXYZ> {
+        crate::ffi::TColgp_HArray2OfXYZ::change_array2(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -863,6 +1063,27 @@ impl HSequenceOfDir {
 
     pub fn new_sequenceofdir(theOther: &crate::ffi::TColgp_SequenceOfDir) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HSequenceOfDir_ctor_sequenceofdir(theOther)
+    }
+
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfDir {
+        crate::ffi::TColgp_HSequenceOfDir::sequence(self)
+    }
+
+    pub fn append(self: std::pin::Pin<&mut Self>, theItem: &crate::ffi::gp_Dir) {
+        crate::ffi::TColgp_HSequenceOfDir::append(self, theItem)
+    }
+
+    pub fn append_sequenceofdir(
+        self: std::pin::Pin<&mut Self>,
+        theSequence: std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfDir>,
+    ) {
+        crate::ffi::TColgp_HSequenceOfDir::append(self, theSequence)
+    }
+
+    pub fn change_sequence(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfDir> {
+        crate::ffi::TColgp_HSequenceOfDir::change_sequence(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -890,6 +1111,27 @@ impl HSequenceOfDir2d {
         crate::ffi::TColgp_HSequenceOfDir2d_ctor_sequenceofdir2d(theOther)
     }
 
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfDir2d {
+        crate::ffi::TColgp_HSequenceOfDir2d::sequence(self)
+    }
+
+    pub fn append(self: std::pin::Pin<&mut Self>, theItem: &crate::ffi::gp_Dir2d) {
+        crate::ffi::TColgp_HSequenceOfDir2d::append(self, theItem)
+    }
+
+    pub fn append_sequenceofdir2d(
+        self: std::pin::Pin<&mut Self>,
+        theSequence: std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfDir2d>,
+    ) {
+        crate::ffi::TColgp_HSequenceOfDir2d::append(self, theSequence)
+    }
+
+    pub fn change_sequence(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfDir2d> {
+        crate::ffi::TColgp_HSequenceOfDir2d::change_sequence(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -911,6 +1153,27 @@ impl HSequenceOfPnt {
 
     pub fn new_sequenceofpnt(theOther: &crate::ffi::TColgp_SequenceOfPnt) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HSequenceOfPnt_ctor_sequenceofpnt(theOther)
+    }
+
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfPnt {
+        crate::ffi::TColgp_HSequenceOfPnt::sequence(self)
+    }
+
+    pub fn append(self: std::pin::Pin<&mut Self>, theItem: &crate::ffi::gp_Pnt) {
+        crate::ffi::TColgp_HSequenceOfPnt::append(self, theItem)
+    }
+
+    pub fn append_sequenceofpnt(
+        self: std::pin::Pin<&mut Self>,
+        theSequence: std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfPnt>,
+    ) {
+        crate::ffi::TColgp_HSequenceOfPnt::append(self, theSequence)
+    }
+
+    pub fn change_sequence(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfPnt> {
+        crate::ffi::TColgp_HSequenceOfPnt::change_sequence(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -938,6 +1201,27 @@ impl HSequenceOfPnt2d {
         crate::ffi::TColgp_HSequenceOfPnt2d_ctor_sequenceofpnt2d(theOther)
     }
 
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfPnt2d {
+        crate::ffi::TColgp_HSequenceOfPnt2d::sequence(self)
+    }
+
+    pub fn append(self: std::pin::Pin<&mut Self>, theItem: &crate::ffi::gp_Pnt2d) {
+        crate::ffi::TColgp_HSequenceOfPnt2d::append(self, theItem)
+    }
+
+    pub fn append_sequenceofpnt2d(
+        self: std::pin::Pin<&mut Self>,
+        theSequence: std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfPnt2d>,
+    ) {
+        crate::ffi::TColgp_HSequenceOfPnt2d::append(self, theSequence)
+    }
+
+    pub fn change_sequence(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfPnt2d> {
+        crate::ffi::TColgp_HSequenceOfPnt2d::change_sequence(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -959,6 +1243,27 @@ impl HSequenceOfVec {
 
     pub fn new_sequenceofvec(theOther: &crate::ffi::TColgp_SequenceOfVec) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HSequenceOfVec_ctor_sequenceofvec(theOther)
+    }
+
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfVec {
+        crate::ffi::TColgp_HSequenceOfVec::sequence(self)
+    }
+
+    pub fn append(self: std::pin::Pin<&mut Self>, theItem: &crate::ffi::gp_Vec) {
+        crate::ffi::TColgp_HSequenceOfVec::append(self, theItem)
+    }
+
+    pub fn append_sequenceofvec(
+        self: std::pin::Pin<&mut Self>,
+        theSequence: std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfVec>,
+    ) {
+        crate::ffi::TColgp_HSequenceOfVec::append(self, theSequence)
+    }
+
+    pub fn change_sequence(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfVec> {
+        crate::ffi::TColgp_HSequenceOfVec::change_sequence(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -986,6 +1291,27 @@ impl HSequenceOfVec2d {
         crate::ffi::TColgp_HSequenceOfVec2d_ctor_sequenceofvec2d(theOther)
     }
 
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfVec2d {
+        crate::ffi::TColgp_HSequenceOfVec2d::sequence(self)
+    }
+
+    pub fn append(self: std::pin::Pin<&mut Self>, theItem: &crate::ffi::gp_Vec2d) {
+        crate::ffi::TColgp_HSequenceOfVec2d::append(self, theItem)
+    }
+
+    pub fn append_sequenceofvec2d(
+        self: std::pin::Pin<&mut Self>,
+        theSequence: std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfVec2d>,
+    ) {
+        crate::ffi::TColgp_HSequenceOfVec2d::append(self, theSequence)
+    }
+
+    pub fn change_sequence(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfVec2d> {
+        crate::ffi::TColgp_HSequenceOfVec2d::change_sequence(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -1009,6 +1335,27 @@ impl HSequenceOfXY {
         crate::ffi::TColgp_HSequenceOfXY_ctor_sequenceofxy(theOther)
     }
 
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfXY {
+        crate::ffi::TColgp_HSequenceOfXY::sequence(self)
+    }
+
+    pub fn append(self: std::pin::Pin<&mut Self>, theItem: &crate::ffi::gp_XY) {
+        crate::ffi::TColgp_HSequenceOfXY::append(self, theItem)
+    }
+
+    pub fn append_sequenceofxy(
+        self: std::pin::Pin<&mut Self>,
+        theSequence: std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfXY>,
+    ) {
+        crate::ffi::TColgp_HSequenceOfXY::append(self, theSequence)
+    }
+
+    pub fn change_sequence(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfXY> {
+        crate::ffi::TColgp_HSequenceOfXY::change_sequence(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
@@ -1030,6 +1377,27 @@ impl HSequenceOfXYZ {
 
     pub fn new_sequenceofxyz(theOther: &crate::ffi::TColgp_SequenceOfXYZ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColgp_HSequenceOfXYZ_ctor_sequenceofxyz(theOther)
+    }
+
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfXYZ {
+        crate::ffi::TColgp_HSequenceOfXYZ::sequence(self)
+    }
+
+    pub fn append(self: std::pin::Pin<&mut Self>, theItem: &crate::ffi::gp_XYZ) {
+        crate::ffi::TColgp_HSequenceOfXYZ::append(self, theItem)
+    }
+
+    pub fn append_sequenceofxyz(
+        self: std::pin::Pin<&mut Self>,
+        theSequence: std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfXYZ>,
+    ) {
+        crate::ffi::TColgp_HSequenceOfXYZ::append(self, theSequence)
+    }
+
+    pub fn change_sequence(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColgp_SequenceOfXYZ> {
+        crate::ffi::TColgp_HSequenceOfXYZ::change_sequence(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)

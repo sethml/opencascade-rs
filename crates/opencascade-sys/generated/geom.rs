@@ -164,6 +164,829 @@ impl BSplineCurve {
         )
     }
 
+    /// Increases the degree of this BSpline curve to
+    /// Degree. As a result, the poles, weights and
+    /// multiplicities tables are modified; the knots table is
+    /// not changed. Nothing is done if Degree is less than
+    /// or equal to the current degree.
+    /// Exceptions
+    /// Standard_ConstructionError if Degree is greater than
+    /// Geom_BSplineCurve::MaxDegree().
+    pub fn increase_degree(self: std::pin::Pin<&mut Self>, Degree: i32) {
+        crate::ffi::Geom_BSplineCurve::increase_degree(self, Degree)
+    }
+
+    /// Increases the multiplicity  of the knot <Index> to
+    /// <M>.
+    ///
+    /// If   <M>   is   lower   or  equal   to  the current
+    /// multiplicity nothing is done. If <M> is higher than
+    /// the degree the degree is used.
+    /// If <Index> is not in [FirstUKnotIndex, LastUKnotIndex]
+    pub fn increase_multiplicity(self: std::pin::Pin<&mut Self>, Index: i32, M: i32) {
+        crate::ffi::Geom_BSplineCurve::increase_multiplicity(self, Index, M)
+    }
+
+    /// Increases  the  multiplicities   of  the knots  in
+    /// [I1,I2] to <M>.
+    ///
+    /// For each knot if  <M>  is  lower  or equal  to  the
+    /// current multiplicity  nothing  is  done. If <M>  is
+    /// higher than the degree the degree is used.
+    /// If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex]
+    pub fn increase_multiplicity_int3(self: std::pin::Pin<&mut Self>, I1: i32, I2: i32, M: i32) {
+        crate::ffi::Geom_BSplineCurve::increase_multiplicity(self, I1, I2, M)
+    }
+
+    /// Increment  the  multiplicities   of  the knots  in
+    /// [I1,I2] by <M>.
+    ///
+    /// If <M> is not positive nithing is done.
+    ///
+    /// For   each  knot   the resulting   multiplicity  is
+    /// limited to the Degree.
+    /// If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex]
+    pub fn increment_multiplicity(self: std::pin::Pin<&mut Self>, I1: i32, I2: i32, M: i32) {
+        crate::ffi::Geom_BSplineCurve::increment_multiplicity(self, I1, I2, M)
+    }
+
+    /// Inserts a knot value in the sequence of knots.  If
+    /// <U>  is an  existing knot     the multiplicity  is
+    /// increased by <M>.
+    ///
+    /// If U  is  not  on the parameter  range  nothing is
+    /// done.
+    ///
+    /// If the multiplicity is negative or null nothing is
+    /// done. The  new   multiplicity  is limited  to  the
+    /// degree.
+    ///
+    /// The  tolerance criterion  for  knots  equality  is
+    /// the max of Epsilon(U) and ParametricTolerance.
+    pub fn insert_knot(
+        self: std::pin::Pin<&mut Self>,
+        U: f64,
+        M: i32,
+        ParametricTolerance: f64,
+        Add: bool,
+    ) {
+        crate::ffi::Geom_BSplineCurve::insert_knot(self, U, M, ParametricTolerance, Add)
+    }
+
+    /// Inserts a set of knots  values in  the sequence of
+    /// knots.
+    ///
+    /// For each U = Knots(i), M = Mults(i)
+    ///
+    /// If <U>  is an existing  knot  the  multiplicity is
+    /// increased by  <M> if  <Add>  is True, increased to
+    /// <M> if <Add> is False.
+    ///
+    /// If U  is  not  on the parameter  range  nothing is
+    /// done.
+    ///
+    /// If the multiplicity is negative or null nothing is
+    /// done. The  new   multiplicity  is limited  to  the
+    /// degree.
+    ///
+    /// The  tolerance criterion  for  knots  equality  is
+    /// the max of Epsilon(U) and ParametricTolerance.
+    pub fn insert_knots(
+        self: std::pin::Pin<&mut Self>,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        ParametricTolerance: f64,
+        Add: bool,
+    ) {
+        crate::ffi::Geom_BSplineCurve::insert_knots(self, Knots, Mults, ParametricTolerance, Add)
+    }
+
+    /// Reduces the multiplicity of the knot of index Index
+    /// to M. If M is equal to 0, the knot is removed.
+    /// With a modification of this type, the array of poles is also modified.
+    /// Two different algorithms are systematically used to
+    /// compute the new poles of the curve. If, for each
+    /// pole, the distance between the pole calculated
+    /// using the first algorithm and the same pole
+    /// calculated using the second algorithm, is less than
+    /// Tolerance, this ensures that the curve is not
+    /// modified by more than Tolerance. Under these
+    /// conditions, true is returned; otherwise, false is returned.
+    /// A low tolerance is used to prevent modification of
+    /// the curve. A high tolerance is used to "smooth" the curve.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is outside the
+    /// bounds of the knots table.
+    /// pole insertion and pole removing
+    /// this operation is limited to the Uniform or QuasiUniform
+    /// BSplineCurve. The knot values are modified . If the BSpline is
+    /// NonUniform or Piecewise Bezier an exception Construction error
+    /// is raised.
+    pub fn remove_knot(self: std::pin::Pin<&mut Self>, Index: i32, M: i32, Tolerance: f64) -> bool {
+        crate::ffi::Geom_BSplineCurve::remove_knot(self, Index, M, Tolerance)
+    }
+
+    /// Changes the direction of parametrization of <me>. The Knot
+    /// sequence is modified, the FirstParameter and the
+    /// LastParameter are not modified. The StartPoint of the
+    /// initial curve becomes the EndPoint of the reversed curve
+    /// and the EndPoint of the initial curve becomes the StartPoint
+    /// of the reversed curve.
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_BSplineCurve::reverse(self)
+    }
+
+    /// Returns the  parameter on the  reversed  curve for
+    /// the point of parameter U on <me>.
+    ///
+    /// returns UFirst + ULast - U
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom_BSplineCurve::reversed_parameter(self, U)
+    }
+
+    /// Modifies this BSpline curve by segmenting it between
+    /// U1 and U2. Either of these values can be outside the
+    /// bounds of the curve, but U2 must be greater than U1.
+    /// All data structure tables of this BSpline curve are
+    /// modified, but the knots located between U1 and U2
+    /// are retained. The degree of the curve is not modified.
+    ///
+    /// Parameter theTolerance defines the possible proximity of the segment
+    /// boundaries and B-spline knots to treat them as equal.
+    ///
+    /// Warnings :
+    /// Even if <me> is not closed it can become closed after the
+    /// segmentation for example if U1 or U2 are out of the bounds
+    /// of the curve <me> or if the curve makes loop.
+    /// After the segmentation the length of a curve can be null.
+    /// raises if U2 < U1.
+    /// Standard_DomainError if U2 - U1 exceeds the period for periodic curves.
+    /// i.e. ((U2 - U1) - Period) > Precision::PConfusion().
+    pub fn segment(self: std::pin::Pin<&mut Self>, U1: f64, U2: f64, theTolerance: f64) {
+        crate::ffi::Geom_BSplineCurve::segment(self, U1, U2, theTolerance)
+    }
+
+    /// Modifies this BSpline curve by assigning the value K
+    /// to the knot of index Index in the knots table. This is a
+    /// relatively local modification because K must be such that:
+    /// Knots(Index - 1) < K < Knots(Index + 1)
+    /// The second syntax allows you also to increase the
+    /// multiplicity of the knot to M (but it is not possible to
+    /// decrease the multiplicity of the knot with this function).
+    /// Standard_ConstructionError if:
+    /// - K is not such that:
+    /// Knots(Index - 1) < K < Knots(Index + 1)
+    /// - M is greater than the degree of this BSpline curve
+    /// or lower than the previous multiplicity of knot of
+    /// index Index in the knots table.
+    /// Standard_OutOfRange if Index is outside the bounds of the knots table.
+    pub fn set_knot(self: std::pin::Pin<&mut Self>, Index: i32, K: f64) {
+        crate::ffi::Geom_BSplineCurve::set_knot(self, Index, K)
+    }
+
+    /// Modifies this BSpline curve by assigning the array
+    /// K to its knots table. The multiplicity of the knots is not modified.
+    /// Exceptions
+    /// Standard_ConstructionError if the values in the
+    /// array K are not in ascending order.
+    /// Standard_OutOfRange if the bounds of the array
+    /// K are not respectively 1 and the number of knots of this BSpline curve.
+    pub fn set_knots(self: std::pin::Pin<&mut Self>, K: &crate::ffi::TColStd_Array1OfReal) {
+        crate::ffi::Geom_BSplineCurve::set_knots(self, K)
+    }
+
+    /// Changes the knot of range Index with its multiplicity.
+    /// You can increase the multiplicity of a knot but it is
+    /// not allowed to decrease the multiplicity of an existing knot.
+    ///
+    /// Raised if K >= Knots(Index+1) or K <= Knots(Index-1).
+    /// Raised if M is greater than Degree or lower than the previous
+    /// multiplicity of knot of range Index.
+    /// Raised if Index < 1 || Index > NbKnots
+    pub fn set_knot_int_real_int(self: std::pin::Pin<&mut Self>, Index: i32, K: f64, M: i32) {
+        crate::ffi::Geom_BSplineCurve::set_knot(self, Index, K, M)
+    }
+
+    /// returns the parameter normalized within
+    /// the period if the curve is periodic : otherwise
+    /// does not do anything
+    pub fn periodic_normalization(&self, U: std::pin::Pin<&mut f64>) {
+        crate::ffi::Geom_BSplineCurve::periodic_normalization(self, U)
+    }
+
+    /// Changes this BSpline curve into a periodic curve.
+    /// To become periodic, the curve must first be closed.
+    /// Next, the knot sequence must be periodic. For this,
+    /// FirstUKnotIndex and LastUKnotIndex are used
+    /// to compute I1 and I2, the indexes in the knots
+    /// array of the knots corresponding to the first and
+    /// last parameters of this BSpline curve.
+    /// The period is therefore: Knots(I2) - Knots(I1).
+    /// Consequently, the knots and poles tables are modified.
+    /// Exceptions
+    /// Standard_ConstructionError if this BSpline curve is not closed.
+    pub fn set_periodic(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_BSplineCurve::set_periodic(self)
+    }
+
+    /// Assigns the knot of index Index in the knots table as
+    /// the origin of this periodic BSpline curve. As a
+    /// consequence, the knots and poles tables are modified.
+    /// Exceptions
+    /// Standard_NoSuchObject if this curve is not periodic.
+    /// Standard_DomainError if Index is outside the bounds of the knots table.
+    pub fn set_origin(self: std::pin::Pin<&mut Self>, Index: i32) {
+        crate::ffi::Geom_BSplineCurve::set_origin(self, Index)
+    }
+
+    /// Set the origin of a periodic curve at Knot U. If U
+    /// is  not a  knot  of  the  BSpline  a  new knot  is
+    /// inserted. KnotVector and poles are modified.
+    /// Raised if the curve is not periodic
+    pub fn set_origin_real2(self: std::pin::Pin<&mut Self>, U: f64, Tol: f64) {
+        crate::ffi::Geom_BSplineCurve::set_origin(self, U, Tol)
+    }
+
+    /// Changes this BSpline curve into a non-periodic
+    /// curve. If this curve is already non-periodic, it is not modified.
+    /// Note: the poles and knots tables are modified.
+    /// Warning
+    /// If this curve is periodic, as the multiplicity of the first
+    /// and last knots is not modified, and is not equal to
+    /// Degree + 1, where Degree is the degree of
+    /// this BSpline curve, the start and end points of the
+    /// curve are not its first and last poles.
+    pub fn set_not_periodic(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_BSplineCurve::set_not_periodic(self)
+    }
+
+    /// Modifies this BSpline curve by assigning P to the pole
+    /// of index Index in the poles table.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is outside the
+    /// bounds of the poles table.
+    /// Standard_ConstructionError if Weight is negative or null.
+    pub fn set_pole(self: std::pin::Pin<&mut Self>, Index: i32, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_BSplineCurve::set_pole(self, Index, P)
+    }
+
+    /// Modifies this BSpline curve by assigning P to the pole
+    /// of index Index in the poles table.
+    /// This syntax also allows you to modify the
+    /// weight of the modified pole, which becomes Weight.
+    /// In this case, if this BSpline curve is non-rational, it
+    /// can become rational and vice versa.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is outside the
+    /// bounds of the poles table.
+    /// Standard_ConstructionError if Weight is negative or null.
+    pub fn set_pole_int_pnt_real(
+        self: std::pin::Pin<&mut Self>,
+        Index: i32,
+        P: &crate::ffi::gp_Pnt,
+        Weight: f64,
+    ) {
+        crate::ffi::Geom_BSplineCurve::set_pole(self, Index, P, Weight)
+    }
+
+    /// Changes the weight for the pole of range Index.
+    /// If the curve was non rational it can become rational.
+    /// If the curve was rational it can become non rational.
+    ///
+    /// Raised if Index < 1 || Index > NbPoles
+    /// Raised if Weight <= 0.0
+    pub fn set_weight(self: std::pin::Pin<&mut Self>, Index: i32, Weight: f64) {
+        crate::ffi::Geom_BSplineCurve::set_weight(self, Index, Weight)
+    }
+
+    /// Moves the point of parameter U of this BSpline curve
+    /// to P. Index1 and Index2 are the indexes in the table
+    /// of poles of this BSpline curve of the first and last
+    /// poles designated to be moved.
+    /// FirstModifiedPole and LastModifiedPole are the
+    /// indexes of the first and last poles which are effectively modified.
+    /// In the event of incompatibility between Index1, Index2 and the value U:
+    /// - no change is made to this BSpline curve, and
+    /// - the FirstModifiedPole and LastModifiedPole are returned null.
+    /// Exceptions
+    /// Standard_OutOfRange if:
+    /// - Index1 is greater than or equal to Index2, or
+    /// - Index1 or Index2 is less than 1 or greater than the
+    /// number of poles of this BSpline curve.
+    pub fn move_point(
+        self: std::pin::Pin<&mut Self>,
+        U: f64,
+        P: &crate::ffi::gp_Pnt,
+        Index1: i32,
+        Index2: i32,
+        FirstModifiedPole: std::pin::Pin<&mut i32>,
+        LastModifiedPole: std::pin::Pin<&mut i32>,
+    ) {
+        crate::ffi::Geom_BSplineCurve::move_point(
+            self,
+            U,
+            P,
+            Index1,
+            Index2,
+            FirstModifiedPole,
+            LastModifiedPole,
+        )
+    }
+
+    /// Move a point with parameter U to P.
+    /// and makes it tangent at U be Tangent.
+    /// StartingCondition = -1 means first can move
+    /// EndingCondition   = -1 means last point can move
+    /// StartingCondition = 0 means the first point cannot move
+    /// EndingCondition   = 0 means the last point cannot move
+    /// StartingCondition = 1 means the first point and tangent cannot move
+    /// EndingCondition   = 1 means the last point and tangent cannot move
+    /// and so forth
+    /// ErrorStatus != 0 means that there are not enough degree of freedom
+    /// with the constrain to deform the curve accordingly
+    pub fn move_point_and_tangent(
+        self: std::pin::Pin<&mut Self>,
+        U: f64,
+        P: &crate::ffi::gp_Pnt,
+        Tangent: &crate::ffi::gp_Vec,
+        Tolerance: f64,
+        StartingCondition: i32,
+        EndingCondition: i32,
+        ErrorStatus: std::pin::Pin<&mut i32>,
+    ) {
+        crate::ffi::Geom_BSplineCurve::move_point_and_tangent(
+            self,
+            U,
+            P,
+            Tangent,
+            Tolerance,
+            StartingCondition,
+            EndingCondition,
+            ErrorStatus,
+        )
+    }
+
+    /// Returns the continuity of the curve, the curve is at least C0.
+    /// Raised if N < 0.
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom_BSplineCurve::is_cn(self, N)
+    }
+
+    /// Check if curve has at least G1 continuity in interval [theTf, theTl]
+    /// Returns true if IsCN(1)
+    /// or
+    /// angle between "left" and "right" first derivatives at
+    /// knots with C0 continuity is less then theAngTol
+    /// only knots in interval [theTf, theTl] is checked
+    pub fn is_g1(&self, theTf: f64, theTl: f64, theAngTol: f64) -> bool {
+        crate::ffi::Geom_BSplineCurve::is_g1(self, theTf, theTl, theAngTol)
+    }
+
+    /// Returns true if the distance between the first point and the
+    /// last point of the curve is lower or equal to Resolution
+    /// from package gp.
+    /// Warnings :
+    /// The first and the last point can be different from the first
+    /// pole and the last pole of the curve.
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::Geom_BSplineCurve::is_closed(self)
+    }
+
+    /// Returns True if the curve is periodic.
+    pub fn is_periodic(&self) -> bool {
+        crate::ffi::Geom_BSplineCurve::is_periodic(self)
+    }
+
+    /// Returns True if the weights are not identical.
+    /// The tolerance criterion is Epsilon of the class Real.
+    pub fn is_rational(&self) -> bool {
+        crate::ffi::Geom_BSplineCurve::is_rational(self)
+    }
+
+    /// Returns the degree of this BSpline curve.
+    /// The degree of a Geom_BSplineCurve curve cannot
+    /// be greater than Geom_BSplineCurve::MaxDegree().
+    /// Computation of value and derivatives
+    pub fn degree(&self) -> i32 {
+        crate::ffi::Geom_BSplineCurve::degree(self)
+    }
+
+    /// Returns in P the point of parameter U.
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::Geom_BSplineCurve::d0(self, U, P)
+    }
+
+    /// Raised if the continuity of the curve is not C1.
+    pub fn d1(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BSplineCurve::d1(self, U, P, V1)
+    }
+
+    /// Raised if the continuity of the curve is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BSplineCurve::d2(self, U, P, V1, V2)
+    }
+
+    /// Raised if the continuity of the curve is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BSplineCurve::d3(self, U, P, V1, V2, V3)
+    }
+
+    /// For the point of parameter U of this BSpline curve,
+    /// computes the vector corresponding to the Nth derivative.
+    /// Warning
+    /// On a point where the continuity of the curve is not the
+    /// one requested, this function impacts the part defined
+    /// by the parameter with a value greater than U, i.e. the
+    /// part of the curve to the "right" of the singularity.
+    /// Exceptions
+    /// Standard_RangeError if N is less than 1.
+    ///
+    /// The following functions compute the point of parameter U
+    /// and the derivatives at this point on the B-spline curve
+    /// arc defined between the knot FromK1 and the knot ToK2.
+    /// U can be out of bounds [Knot (FromK1),  Knot (ToK2)] but
+    /// for the computation we only use the definition of the curve
+    /// between these two knots. This method is useful to compute
+    /// local derivative, if the order of continuity of the whole
+    /// curve is not greater enough.    Inside the parametric
+    /// domain Knot (FromK1), Knot (ToK2) the evaluations are
+    /// the same as if we consider the whole definition of the
+    /// curve. Of course the evaluations are different outside
+    /// this parametric domain.
+    pub fn dn(&self, U: f64, N: i32) -> crate::ffi::gp_Vec {
+        crate::ffi::Geom_BSplineCurve::dn(self, U, N)
+    }
+
+    /// Raised if FromK1 = ToK2.
+    pub fn local_value(&self, U: f64, FromK1: i32, ToK2: i32) -> crate::ffi::gp_Pnt {
+        crate::ffi::Geom_BSplineCurve::local_value(self, U, FromK1, ToK2)
+    }
+
+    /// Raised if FromK1 = ToK2.
+    pub fn local_d0(
+        &self,
+        U: f64,
+        FromK1: i32,
+        ToK2: i32,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+    ) {
+        crate::ffi::Geom_BSplineCurve::local_d0(self, U, FromK1, ToK2, P)
+    }
+
+    /// Raised if the local continuity of the curve is not C1
+    /// between the knot K1 and the knot K2.
+    /// Raised if FromK1 = ToK2.
+    pub fn local_d1(
+        &self,
+        U: f64,
+        FromK1: i32,
+        ToK2: i32,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BSplineCurve::local_d1(self, U, FromK1, ToK2, P, V1)
+    }
+
+    /// Raised if the local continuity of the curve is not C2
+    /// between the knot K1 and the knot K2.
+    /// Raised if FromK1 = ToK2.
+    pub fn local_d2(
+        &self,
+        U: f64,
+        FromK1: i32,
+        ToK2: i32,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BSplineCurve::local_d2(self, U, FromK1, ToK2, P, V1, V2)
+    }
+
+    /// Raised if the local continuity of the curve is not C3
+    /// between the knot K1 and the knot K2.
+    /// Raised if FromK1 = ToK2.
+    pub fn local_d3(
+        &self,
+        U: f64,
+        FromK1: i32,
+        ToK2: i32,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BSplineCurve::local_d3(self, U, FromK1, ToK2, P, V1, V2, V3)
+    }
+
+    /// Raised if the local continuity of the curve is not CN
+    /// between the knot K1 and the knot K2.
+    /// Raised if FromK1 = ToK2.
+    /// Raised if N < 1.
+    pub fn local_dn(&self, U: f64, FromK1: i32, ToK2: i32, N: i32) -> crate::ffi::gp_Vec {
+        crate::ffi::Geom_BSplineCurve::local_dn(self, U, FromK1, ToK2, N)
+    }
+
+    /// Returns the last point of the curve.
+    /// Warnings :
+    /// The last point of the curve is different from the last
+    /// pole of the curve if the multiplicity of the last knot
+    /// is lower than Degree.
+    pub fn end_point(&self) -> crate::ffi::gp_Pnt {
+        crate::ffi::Geom_BSplineCurve::end_point(self)
+    }
+
+    /// Returns the index in the knot array of the knot
+    /// corresponding to the first or last parameter of this BSpline curve.
+    /// For a BSpline curve, the first (or last) parameter
+    /// (which gives the start (or end) point of the curve) is a
+    /// knot value. However, if the multiplicity of the first (or
+    /// last) knot is less than Degree + 1, where
+    /// Degree is the degree of the curve, it is not the first
+    /// (or last) knot of the curve.
+    pub fn first_u_knot_index(&self) -> i32 {
+        crate::ffi::Geom_BSplineCurve::first_u_knot_index(self)
+    }
+
+    /// Returns the value of the first parameter of this
+    /// BSpline curve. This is a knot value.
+    /// The first parameter is the one of the start point of the BSpline curve.
+    pub fn first_parameter(&self) -> f64 {
+        crate::ffi::Geom_BSplineCurve::first_parameter(self)
+    }
+
+    /// Returns the knot of range Index. When there is a knot
+    /// with a multiplicity greater than 1 the knot is not repeated.
+    /// The method Multiplicity can be used to get the multiplicity
+    /// of the Knot.
+    /// Raised if Index < 1 or Index > NbKnots
+    pub fn knot(&self, Index: i32) -> f64 {
+        crate::ffi::Geom_BSplineCurve::knot(self, Index)
+    }
+
+    /// returns the knot values of the B-spline curve;
+    /// Warning
+    /// A knot with a multiplicity greater than 1 is not
+    /// repeated in the knot table. The Multiplicity function
+    /// can be used to obtain the multiplicity of each knot.
+    ///
+    /// Raised K.Lower() is less than number of first knot or
+    /// K.Upper() is more than number of last knot.
+    pub fn knots(&self, K: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfReal>) {
+        crate::ffi::Geom_BSplineCurve::knots(self, K)
+    }
+
+    /// returns the knot values of the B-spline curve;
+    /// Warning
+    /// A knot with a multiplicity greater than 1 is not
+    /// repeated in the knot table. The Multiplicity function
+    /// can be used to obtain the multiplicity of each knot.
+    pub fn knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        crate::ffi::Geom_BSplineCurve::knots(self)
+    }
+
+    /// Returns K, the knots sequence of this BSpline curve.
+    /// In this sequence, knots with a multiplicity greater than 1 are repeated.
+    /// In the case of a non-periodic curve the length of the
+    /// sequence must be equal to the sum of the NbKnots
+    /// multiplicities of the knots of the curve (where
+    /// NbKnots is the number of knots of this BSpline
+    /// curve). This sum is also equal to : NbPoles + Degree + 1
+    /// where NbPoles is the number of poles and
+    /// Degree the degree of this BSpline curve.
+    /// In the case of a periodic curve, if there are k periodic
+    /// knots, the period is Knot(k+1) - Knot(1).
+    /// The initial sequence is built by writing knots 1 to k+1,
+    /// which are repeated according to their corresponding multiplicities.
+    /// If Degree is the degree of the curve, the degree of
+    /// continuity of the curve at the knot of index 1 (or k+1)
+    /// is equal to c = Degree + 1 - Mult(1). c
+    /// knots are then inserted at the beginning and end of
+    /// the initial sequence:
+    /// - the c values of knots preceding the first item
+    /// Knot(k+1) in the initial sequence are inserted
+    /// at the beginning; the period is subtracted from these c values;
+    /// - the c values of knots following the last item
+    /// Knot(1) in the initial sequence are inserted at
+    /// the end; the period is added to these c values.
+    /// The length of the sequence must therefore be equal to:
+    /// NbPoles + 2*Degree - Mult(1) + 2.
+    /// Example
+    /// For a non-periodic BSpline curve of degree 2 where:
+    /// - the array of knots is: { k1 k2 k3 k4 },
+    /// - with associated multiplicities: { 3 1 2 3 },
+    /// the knot sequence is:
+    /// K = { k1 k1 k1 k2 k3 k3 k4 k4 k4 }
+    /// For a periodic BSpline curve of degree 4 , which is
+    /// "C1" continuous at the first knot, and where :
+    /// - the periodic knots are: { k1 k2 k3 (k4) }
+    /// (3 periodic knots: the points of parameter k1 and k4
+    /// are identical, the period is p = k4 - k1),
+    /// - with associated multiplicities: { 3 1 2 (3) },
+    /// the degree of continuity at knots k1 and k4 is:
+    /// Degree + 1 - Mult(i) = 2.
+    /// 2 supplementary knots are added at the beginning
+    /// and end of the sequence:
+    /// - at the beginning: the 2 knots preceding k4 minus
+    /// the period; in this example, this is k3 - p both times;
+    /// - at the end: the 2 knots following k1 plus the period;
+    /// in this example, this is k2 + p and k3 + p.
+    /// The knot sequence is therefore:
+    /// K = { k3-p k3-p k1 k1 k1 k2 k3 k3
+    /// k4 k4 k4 k2+p k3+p }
+    /// Exceptions
+    /// Raised if K.Lower() is less than number of first knot
+    /// in knot sequence with repetitions or K.Upper() is more
+    /// than number of last knot in knot sequence with repetitions.
+    pub fn knot_sequence(&self, K: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfReal>) {
+        crate::ffi::Geom_BSplineCurve::knot_sequence(self, K)
+    }
+
+    /// returns the knots of the B-spline curve.
+    /// Knots with multiplicit greater than 1 are repeated
+    pub fn knot_sequence(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        crate::ffi::Geom_BSplineCurve::knot_sequence(self)
+    }
+
+    /// Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
+    /// If all the knots differ by a positive constant from the
+    /// preceding knot the BSpline Curve can be :
+    /// - Uniform if all the knots are of multiplicity 1,
+    /// - QuasiUniform if all the knots are of multiplicity 1 except for
+    /// the first and last knot which are of multiplicity Degree + 1,
+    /// - PiecewiseBezier if the first and last knots have multiplicity
+    /// Degree + 1 and if interior knots have multiplicity Degree
+    /// A piecewise Bezier with only two knots is a BezierCurve.
+    /// else the curve is non uniform.
+    /// The tolerance criterion is Epsilon from class Real.
+    pub fn knot_distribution(&self) -> crate::ffi::GeomAbs_BSplKnotDistribution {
+        crate::ffi::Geom_BSplineCurve::knot_distribution(self)
+    }
+
+    /// For a BSpline curve the last parameter (which gives the
+    /// end point of the curve) is a knot value but if the
+    /// multiplicity of the last knot index is lower than
+    /// Degree + 1 it is not the last knot of the curve. This
+    /// method computes the index of the knot corresponding to
+    /// the last parameter.
+    pub fn last_u_knot_index(&self) -> i32 {
+        crate::ffi::Geom_BSplineCurve::last_u_knot_index(self)
+    }
+
+    /// Computes the parametric value of the end point of the curve.
+    /// It is a knot value.
+    pub fn last_parameter(&self) -> f64 {
+        crate::ffi::Geom_BSplineCurve::last_parameter(self)
+    }
+
+    /// Locates the parametric value U in the sequence of knots.
+    /// If "WithKnotRepetition" is True we consider the knot's
+    /// representation with repetition of multiple knot value,
+    /// otherwise  we consider the knot's representation with
+    /// no repetition of multiple knot values.
+    /// Knots (I1) <= U <= Knots (I2)
+    /// . if I1 = I2  U is a knot value (the tolerance criterion
+    /// ParametricTolerance is used).
+    /// . if I1 < 1  => U < Knots (1) - Abs(ParametricTolerance)
+    /// . if I2 > NbKnots => U > Knots (NbKnots) + Abs(ParametricTolerance)
+    pub fn locate_u(
+        &self,
+        U: f64,
+        ParametricTolerance: f64,
+        I1: std::pin::Pin<&mut i32>,
+        I2: std::pin::Pin<&mut i32>,
+        WithKnotRepetition: bool,
+    ) {
+        crate::ffi::Geom_BSplineCurve::locate_u(
+            self,
+            U,
+            ParametricTolerance,
+            I1,
+            I2,
+            WithKnotRepetition,
+        )
+    }
+
+    /// Returns the multiplicity of the knots of range Index.
+    /// Raised if Index < 1 or Index > NbKnots
+    pub fn multiplicity(&self, Index: i32) -> i32 {
+        crate::ffi::Geom_BSplineCurve::multiplicity(self, Index)
+    }
+
+    /// Returns the multiplicity of the knots of the curve.
+    ///
+    /// Raised if the length of M is not equal to NbKnots.
+    pub fn multiplicities(&self, M: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfInteger>) {
+        crate::ffi::Geom_BSplineCurve::multiplicities(self, M)
+    }
+
+    /// returns the multiplicity of the knots of the curve.
+    pub fn multiplicities(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        crate::ffi::Geom_BSplineCurve::multiplicities(self)
+    }
+
+    /// Returns the number of knots. This method returns the number of
+    /// knot without repetition of multiple knots.
+    pub fn nb_knots(&self) -> i32 {
+        crate::ffi::Geom_BSplineCurve::nb_knots(self)
+    }
+
+    /// Returns the number of poles
+    pub fn nb_poles(&self) -> i32 {
+        crate::ffi::Geom_BSplineCurve::nb_poles(self)
+    }
+
+    /// Returns the pole of range Index.
+    /// Raised if Index < 1 or Index > NbPoles.
+    pub fn pole(&self, Index: i32) -> &crate::ffi::gp_Pnt {
+        crate::ffi::Geom_BSplineCurve::pole(self, Index)
+    }
+
+    /// Returns the poles of the B-spline curve;
+    ///
+    /// Raised if the length of P is not equal to the number of poles.
+    pub fn poles(&self, P: std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt>) {
+        crate::ffi::Geom_BSplineCurve::poles(self, P)
+    }
+
+    /// Returns the poles of the B-spline curve;
+    pub fn poles(&self) -> &crate::ffi::TColgp_Array1OfPnt {
+        crate::ffi::Geom_BSplineCurve::poles(self)
+    }
+
+    /// Returns the start point of the curve.
+    /// Warnings :
+    /// This point is different from the first pole of the curve if the
+    /// multiplicity of the first knot is lower than Degree.
+    pub fn start_point(&self) -> crate::ffi::gp_Pnt {
+        crate::ffi::Geom_BSplineCurve::start_point(self)
+    }
+
+    /// Returns the weight of the pole of range Index .
+    /// Raised if Index < 1 or Index > NbPoles.
+    pub fn weight(&self, Index: i32) -> f64 {
+        crate::ffi::Geom_BSplineCurve::weight(self, Index)
+    }
+
+    /// Returns the weights of the B-spline curve;
+    ///
+    /// Raised if the length of W is not equal to NbPoles.
+    pub fn weights(&self, W: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfReal>) {
+        crate::ffi::Geom_BSplineCurve::weights(self, W)
+    }
+
+    /// Applies the transformation T to this BSpline curve.
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_BSplineCurve::transform(self, T)
+    }
+
+    /// Computes for this BSpline curve the parametric
+    /// tolerance UTolerance for a given 3D tolerance Tolerance3D.
+    /// If f(t) is the equation of this BSpline curve,
+    /// UTolerance ensures that:
+    /// | t1 - t0| < Utolerance ===>
+    /// |f(t1) - f(t0)| < Tolerance3D
+    pub fn resolution(
+        self: std::pin::Pin<&mut Self>,
+        Tolerance3D: f64,
+        UTolerance: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Geom_BSplineCurve::resolution(self, Tolerance3D, UTolerance)
+    }
+
+    /// Creates a new object which is a copy of this BSpline curve.
+    pub fn copy(&self) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_BSplineCurve::copy(self)
+    }
+
+    /// Compare two Bspline curve on identity;
+    pub fn is_equal(&self, theOther: &crate::ffi::HandleGeomBSplineCurve, thePreci: f64) -> bool {
+        crate::ffi::Geom_BSplineCurve::is_equal(self, theOther, thePreci)
+    }
+
+    /// Returns the value of the maximum degree of the normalized
+    /// B-spline basis functions in this package.
+    pub fn max_degree() -> i32 {
+        crate::ffi::Geom_BSplineCurve::max_degree()
+    }
+
     /// Upcast to Geom_BoundedCurve
     pub fn as_bounded_curve(&self) -> &BoundedCurve {
         crate::ffi::Geom_BSplineCurve_as_Geom_BoundedCurve(self)
@@ -402,6 +1225,1407 @@ impl BSplineSurface {
         crate::ffi::Geom_BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, VPeriodic)
     }
 
+    /// Exchanges the u and v parametric directions on
+    /// this BSpline surface.
+    /// As a consequence:
+    /// - the poles and weights tables are transposed,
+    /// - the knots and multiplicities tables are exchanged,
+    /// - degrees of continuity, and rational, periodic and
+    /// uniform characteristics are exchanged, and
+    /// - the orientation of the surface is inverted.
+    pub fn exchange_uv(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_BSplineSurface::exchange_uv(self)
+    }
+
+    /// Sets the surface U periodic.
+    /// Modifies this surface to be periodic in the U
+    /// parametric direction.
+    /// To become periodic in a given parametric direction a
+    /// surface must be closed in that parametric direction,
+    /// and the knot sequence relative to that direction must be periodic.
+    /// To generate this periodic sequence of knots, the
+    /// functions FirstUKnotIndex and LastUKnotIndex  are used to
+    /// compute I1 and I2. These are the indexes, in the
+    /// knot array associated with the given parametric
+    /// direction, of the knots that correspond to the first and
+    /// last parameters of this BSpline surface in the given
+    /// parametric direction. Hence the period is:
+    /// Knots(I1) - Knots(I2)
+    /// As a result, the knots and poles tables are modified.
+    /// Exceptions
+    /// Standard_ConstructionError if the surface is not
+    /// closed in the given parametric direction.
+    pub fn set_u_periodic(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_BSplineSurface::set_u_periodic(self)
+    }
+
+    /// Sets the surface V periodic.
+    /// Modifies this surface to be periodic in the V
+    /// parametric direction.
+    /// To become periodic in a given parametric direction a
+    /// surface must be closed in that parametric direction,
+    /// and the knot sequence relative to that direction must be periodic.
+    /// To generate this periodic sequence of knots, the
+    /// functions FirstVKnotIndex and LastVKnotIndex are used to
+    /// compute I1 and I2. These are the indexes, in the
+    /// knot array associated with the given parametric
+    /// direction, of the knots that correspond to the first and
+    /// last parameters of this BSpline surface in the given
+    /// parametric direction. Hence the period is:
+    /// Knots(I1) - Knots(I2)
+    /// As a result, the knots and poles tables are modified.
+    /// Exceptions
+    /// Standard_ConstructionError if the surface is not
+    /// closed in the given parametric direction.
+    pub fn set_v_periodic(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_BSplineSurface::set_v_periodic(self)
+    }
+
+    /// returns the parameter normalized within
+    /// the period if the surface is periodic : otherwise
+    /// does not do anything
+    pub fn periodic_normalization(&self, U: std::pin::Pin<&mut f64>, V: std::pin::Pin<&mut f64>) {
+        crate::ffi::Geom_BSplineSurface::periodic_normalization(self, U, V)
+    }
+
+    /// Assigns the knot of index Index in the knots table in
+    /// the corresponding parametric direction to be the
+    /// origin of this periodic BSpline surface. As a
+    /// consequence, the knots and poles tables are modified.
+    /// Exceptions
+    /// Standard_NoSuchObject if this BSpline surface is
+    /// not periodic in the given parametric direction.
+    /// Standard_DomainError if Index is outside the
+    /// bounds of the knots table in the given parametric direction.
+    pub fn set_u_origin(self: std::pin::Pin<&mut Self>, Index: i32) {
+        crate::ffi::Geom_BSplineSurface::set_u_origin(self, Index)
+    }
+
+    /// Assigns the knot of index Index in the knots table in
+    /// the corresponding parametric direction to be the
+    /// origin of this periodic BSpline surface. As a
+    /// consequence, the knots and poles tables are modified.
+    /// Exceptions
+    /// Standard_NoSuchObject if this BSpline surface is
+    /// not periodic in the given parametric direction.
+    /// Standard_DomainError if Index is outside the
+    /// bounds of the knots table in the given parametric direction.
+    pub fn set_v_origin(self: std::pin::Pin<&mut Self>, Index: i32) {
+        crate::ffi::Geom_BSplineSurface::set_v_origin(self, Index)
+    }
+
+    /// Sets the surface U not periodic.
+    /// Changes this BSpline surface into a non-periodic
+    /// surface along U direction.
+    /// If this surface is already non-periodic, it is not modified.
+    /// Note: the poles and knots tables are modified.
+    pub fn set_u_not_periodic(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_BSplineSurface::set_u_not_periodic(self)
+    }
+
+    /// Sets the surface V not periodic.
+    /// Changes this BSpline surface into a non-periodic
+    /// surface along V direction.
+    /// If this surface is already non-periodic, it is not modified.
+    /// Note: the poles and knots tables are modified.
+    pub fn set_v_not_periodic(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_BSplineSurface::set_v_not_periodic(self)
+    }
+
+    /// Changes the orientation of this BSpline surface in the
+    /// U parametric direction. The bounds of the
+    /// surface are not changed but the given parametric
+    /// direction is reversed. Hence the orientation of the
+    /// surface is reversed.
+    /// The knots and poles tables are modified.
+    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_BSplineSurface::u_reverse(self)
+    }
+
+    /// Changes the orientation of this BSpline surface in the
+    /// V parametric direction. The bounds of the
+    /// surface are not changed but the given parametric
+    /// direction is reversed. Hence the orientation of the
+    /// surface is reversed.
+    /// The knots and poles tables are modified.
+    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_BSplineSurface::v_reverse(self)
+    }
+
+    /// Computes the u parameter on the modified
+    /// surface, produced by reversing its U parametric
+    /// direction, for the point of u parameter U,  on this BSpline surface.
+    /// For a BSpline surface, these functions return respectively:
+    /// - UFirst + ULast - U,
+    /// where UFirst, ULast are
+    /// the values of the first and last parameters of this
+    /// BSpline surface, in the u parametric directions.
+    pub fn u_reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom_BSplineSurface::u_reversed_parameter(self, U)
+    }
+
+    /// Computes the v parameter on the modified
+    /// surface, produced by reversing its V parametric
+    /// direction, for the point of v parameter V on this BSpline surface.
+    /// For a BSpline surface, these functions return respectively:
+    /// - VFirst + VLast - V,
+    /// VFirst and VLast are
+    /// the values of the first and last parameters of this
+    /// BSpline surface, in the v pametric directions.
+    pub fn v_reversed_parameter(&self, V: f64) -> f64 {
+        crate::ffi::Geom_BSplineSurface::v_reversed_parameter(self, V)
+    }
+
+    /// Increases the degrees of this BSpline surface to
+    /// UDegree and VDegree in the u and v parametric
+    /// directions respectively. As a result, the tables of poles,
+    /// weights and multiplicities are modified. The tables of
+    /// knots is not changed.
+    /// Note: Nothing is done if the given degree is less than
+    /// or equal to the current degree in the corresponding
+    /// parametric direction.
+    /// Exceptions
+    /// Standard_ConstructionError if UDegree or
+    /// VDegree is greater than
+    /// Geom_BSplineSurface::MaxDegree().
+    pub fn increase_degree(self: std::pin::Pin<&mut Self>, UDegree: i32, VDegree: i32) {
+        crate::ffi::Geom_BSplineSurface::increase_degree(self, UDegree, VDegree)
+    }
+
+    /// Inserts into the knots table for the U
+    /// parametric direction of this BSpline surface:
+    /// - the values of the array Knots, with their respective
+    /// multiplicities, Mults.
+    /// If the knot value to insert already exists in the table, its multiplicity is:
+    /// - increased by M, if Add is true (the default), or
+    /// - increased to M, if Add is false.
+    /// The tolerance criterion used to check the equality of
+    /// the knots is the larger of the values ParametricTolerance and
+    /// Standard_Real::Epsilon(val), where val is the knot value to be inserted.
+    /// Warning
+    /// - If a given multiplicity coefficient is null, or negative, nothing is done.
+    /// - The new multiplicity of a knot is limited to the degree of this BSpline surface in the
+    /// corresponding parametric direction.
+    /// Exceptions
+    /// Standard_ConstructionError if a knot value to
+    /// insert is outside the bounds of this BSpline surface in
+    /// the specified parametric direction. The comparison
+    /// uses the precision criterion ParametricTolerance.
+    pub fn insert_u_knots(
+        self: std::pin::Pin<&mut Self>,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        ParametricTolerance: f64,
+        Add: bool,
+    ) {
+        crate::ffi::Geom_BSplineSurface::insert_u_knots(
+            self,
+            Knots,
+            Mults,
+            ParametricTolerance,
+            Add,
+        )
+    }
+
+    /// Inserts into the knots table for the V
+    /// parametric direction of this BSpline surface:
+    /// - the values of the array Knots, with their respective
+    /// multiplicities, Mults.
+    /// If the knot value to insert already exists in the table, its multiplicity is:
+    /// - increased by M, if Add is true (the default), or
+    /// - increased to M, if Add is false.
+    /// The tolerance criterion used to check the equality of
+    /// the knots is the larger of the values ParametricTolerance and
+    /// Standard_Real::Epsilon(val), where val is the knot value to be inserted.
+    /// Warning
+    /// - If a given multiplicity coefficient is null, or negative, nothing is done.
+    /// - The new multiplicity of a knot is limited to the degree of this BSpline surface in the
+    /// corresponding parametric direction.
+    /// Exceptions
+    /// Standard_ConstructionError if a knot value to
+    /// insert is outside the bounds of this BSpline surface in
+    /// the specified parametric direction. The comparison
+    /// uses the precision criterion ParametricTolerance.
+    pub fn insert_v_knots(
+        self: std::pin::Pin<&mut Self>,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        ParametricTolerance: f64,
+        Add: bool,
+    ) {
+        crate::ffi::Geom_BSplineSurface::insert_v_knots(
+            self,
+            Knots,
+            Mults,
+            ParametricTolerance,
+            Add,
+        )
+    }
+
+    /// Reduces to M the multiplicity of the knot of index
+    /// Index in the U parametric direction. If M is 0, the knot is removed.
+    /// With a modification of this type, the table of poles is also modified.
+    /// Two different algorithms are used systematically to
+    /// compute the new poles of the surface. For each
+    /// pole, the distance between the pole calculated
+    /// using the first algorithm and the same pole
+    /// calculated using the second algorithm, is checked. If
+    /// this distance is less than Tolerance it ensures that
+    /// the surface is not modified by more than Tolerance.
+    /// Under these conditions, the function returns true;
+    /// otherwise, it returns false.
+    /// A low tolerance prevents modification of the
+    /// surface. A high tolerance "smoothes" the surface.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is outside the
+    /// bounds of the knots table of this BSpline surface.
+    pub fn remove_u_knot(
+        self: std::pin::Pin<&mut Self>,
+        Index: i32,
+        M: i32,
+        Tolerance: f64,
+    ) -> bool {
+        crate::ffi::Geom_BSplineSurface::remove_u_knot(self, Index, M, Tolerance)
+    }
+
+    /// Reduces to M the multiplicity of the knot of index
+    /// Index in the V parametric direction. If M is 0, the knot is removed.
+    /// With a modification of this type, the table of poles is also modified.
+    /// Two different algorithms are used systematically to
+    /// compute the new poles of the surface. For each
+    /// pole, the distance between the pole calculated
+    /// using the first algorithm and the same pole
+    /// calculated using the second algorithm, is checked. If
+    /// this distance is less than Tolerance it ensures that
+    /// the surface is not modified by more than Tolerance.
+    /// Under these conditions, the function returns true;
+    /// otherwise, it returns false.
+    /// A low tolerance prevents modification of the
+    /// surface. A high tolerance "smoothes" the surface.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is outside the
+    /// bounds of the knots table of this BSpline surface.
+    pub fn remove_v_knot(
+        self: std::pin::Pin<&mut Self>,
+        Index: i32,
+        M: i32,
+        Tolerance: f64,
+    ) -> bool {
+        crate::ffi::Geom_BSplineSurface::remove_v_knot(self, Index, M, Tolerance)
+    }
+
+    /// Increases the multiplicity of the knot of range UIndex
+    /// in the UKnots sequence.
+    /// M is the new multiplicity. M must be greater than the
+    /// previous multiplicity and lower or equal to the degree
+    /// of the surface in the U parametric direction.
+    /// Raised if M is not in the range [1, UDegree]
+    ///
+    /// Raised if UIndex is not in the range [FirstUKnotIndex,
+    /// LastUKnotIndex] given by the methods with the same name.
+    pub fn increase_u_multiplicity(self: std::pin::Pin<&mut Self>, UIndex: i32, M: i32) {
+        crate::ffi::Geom_BSplineSurface::increase_u_multiplicity(self, UIndex, M)
+    }
+
+    /// Increases until order M the multiplicity of the set of knots
+    /// FromI1,...., ToI2 in the U direction. This method can be used
+    /// to make a B_spline surface into a PiecewiseBezier B_spline
+    /// surface.
+    /// If <me> was uniform, it can become non uniform.
+    ///
+    /// Raised if FromI1 or ToI2 is out of the range [FirstUKnotIndex,
+    /// LastUKnotIndex].
+    ///
+    /// M should be greater than the previous multiplicity of the
+    /// all the knots FromI1,..., ToI2 and lower or equal to the
+    /// Degree of the surface in the U parametric direction.
+    pub fn increase_u_multiplicity_int3(
+        self: std::pin::Pin<&mut Self>,
+        FromI1: i32,
+        ToI2: i32,
+        M: i32,
+    ) {
+        crate::ffi::Geom_BSplineSurface::increase_u_multiplicity(self, FromI1, ToI2, M)
+    }
+
+    /// Increments the multiplicity of the consecutives uknots FromI1..ToI2
+    /// by step.   The multiplicity of each knot FromI1,.....,ToI2 must be
+    /// lower or equal to the UDegree of the B_spline.
+    ///
+    /// Raised if FromI1 or ToI2 is not in the range
+    /// [FirstUKnotIndex, LastUKnotIndex]
+    ///
+    /// Raised if one knot has a multiplicity greater than UDegree.
+    pub fn increment_u_multiplicity(
+        self: std::pin::Pin<&mut Self>,
+        FromI1: i32,
+        ToI2: i32,
+        Step: i32,
+    ) {
+        crate::ffi::Geom_BSplineSurface::increment_u_multiplicity(self, FromI1, ToI2, Step)
+    }
+
+    /// Increases the multiplicity of a knot in the V direction.
+    /// M is the new multiplicity.
+    ///
+    /// M should be greater than the previous multiplicity and lower
+    /// than the degree of the surface in the V parametric direction.
+    ///
+    /// Raised if VIndex is not in the range [FirstVKnotIndex,
+    /// LastVKnotIndex] given by the methods with the same name.
+    pub fn increase_v_multiplicity(self: std::pin::Pin<&mut Self>, VIndex: i32, M: i32) {
+        crate::ffi::Geom_BSplineSurface::increase_v_multiplicity(self, VIndex, M)
+    }
+
+    /// Increases until order M the multiplicity of the set of knots
+    /// FromI1,...., ToI2 in the V direction. This method can be used to
+    /// make a BSplineSurface into a PiecewiseBezier B_spline
+    /// surface. If <me> was uniform, it can become non-uniform.
+    ///
+    /// Raised if FromI1 or ToI2 is out of the range [FirstVKnotIndex,
+    /// LastVKnotIndex] given by the methods with the same name.
+    ///
+    /// M should be greater than the previous multiplicity of the
+    /// all the knots FromI1,..., ToI2 and lower or equal to the
+    /// Degree of the surface in the V parametric direction.
+    pub fn increase_v_multiplicity_int3(
+        self: std::pin::Pin<&mut Self>,
+        FromI1: i32,
+        ToI2: i32,
+        M: i32,
+    ) {
+        crate::ffi::Geom_BSplineSurface::increase_v_multiplicity(self, FromI1, ToI2, M)
+    }
+
+    /// Increments the multiplicity of the consecutives vknots FromI1..ToI2
+    /// by step.  The multiplicity of each knot FromI1,.....,ToI2 must be
+    /// lower or equal to the VDegree of the B_spline.
+    ///
+    /// Raised if FromI1 or ToI2 is not in the range
+    /// [FirstVKnotIndex, LastVKnotIndex]
+    ///
+    /// Raised if one knot has a multiplicity greater than VDegree.
+    pub fn increment_v_multiplicity(
+        self: std::pin::Pin<&mut Self>,
+        FromI1: i32,
+        ToI2: i32,
+        Step: i32,
+    ) {
+        crate::ffi::Geom_BSplineSurface::increment_v_multiplicity(self, FromI1, ToI2, Step)
+    }
+
+    /// Inserts a knot value in the sequence of UKnots. If U is a knot
+    /// value this method increases the multiplicity of the knot if the
+    /// previous multiplicity was lower than M else it does nothing. The
+    /// tolerance criterion is ParametricTolerance. ParametricTolerance
+    /// should be greater or equal than Resolution from package gp.
+    ///
+    /// Raised if U is out of the bounds [U1, U2] given by the methods
+    /// Bounds, the criterion ParametricTolerance is used.
+    /// Raised if M is not in the range [1, UDegree].
+    pub fn insert_u_knot(
+        self: std::pin::Pin<&mut Self>,
+        U: f64,
+        M: i32,
+        ParametricTolerance: f64,
+        Add: bool,
+    ) {
+        crate::ffi::Geom_BSplineSurface::insert_u_knot(self, U, M, ParametricTolerance, Add)
+    }
+
+    /// Inserts a knot value in the sequence of VKnots. If V is a knot
+    /// value this method increases the multiplicity of the knot if the
+    /// previous multiplicity was lower than M otherwise it does nothing.
+    /// The tolerance criterion is ParametricTolerance.
+    /// ParametricTolerance should be greater or equal than Resolution
+    /// from package gp.
+    ///
+    /// raises if V is out of the Bounds [V1, V2] given by the methods
+    /// Bounds, the criterion ParametricTolerance is used.
+    /// raises if M is not in the range [1, VDegree].
+    pub fn insert_v_knot(
+        self: std::pin::Pin<&mut Self>,
+        V: f64,
+        M: i32,
+        ParametricTolerance: f64,
+        Add: bool,
+    ) {
+        crate::ffi::Geom_BSplineSurface::insert_v_knot(self, V, M, ParametricTolerance, Add)
+    }
+
+    /// Segments the surface between U1 and U2 in the U-Direction.
+    /// between V1 and V2 in the V-Direction.
+    /// The control points are modified, the first and the last point
+    /// are not the same.
+    ///
+    /// Parameters theUTolerance, theVTolerance define the possible proximity along the corresponding
+    /// direction of the segment boundaries and B-spline knots to treat them as equal.
+    ///
+    /// Warnings :
+    /// Even if <me> is not closed it can become closed after the
+    /// segmentation for example if U1 or U2 are out of the bounds
+    /// of the surface <me> or if the surface makes loop.
+    /// raises if U2 < U1 or V2 < V1.
+    /// Standard_DomainError if U2 - U1 exceeds the uperiod for uperiodic surfaces.
+    /// i.e. ((U2 - U1) - UPeriod) > Precision::PConfusion().
+    /// Standard_DomainError if V2 - V1 exceeds the vperiod for vperiodic surfaces.
+    /// i.e. ((V2 - V1) - VPeriod) > Precision::PConfusion()).
+    pub fn segment(
+        self: std::pin::Pin<&mut Self>,
+        U1: f64,
+        U2: f64,
+        V1: f64,
+        V2: f64,
+        theUTolerance: f64,
+        theVTolerance: f64,
+    ) {
+        crate::ffi::Geom_BSplineSurface::segment(self, U1, U2, V1, V2, theUTolerance, theVTolerance)
+    }
+
+    /// Segments the surface between U1 and U2 in the U-Direction.
+    /// between V1 and V2 in the V-Direction.
+    ///
+    /// same as Segment but do nothing if U1 and U2 (resp. V1 and V2) are
+    /// equal to the bounds in U (resp. in V) of <me>.
+    /// For example, if <me> is periodic in V, it will be always periodic
+    /// in V after the segmentation if the bounds in V are unchanged
+    ///
+    /// Parameters theUTolerance, theVTolerance define the possible proximity along the corresponding
+    /// direction of the segment boundaries and B-spline knots to treat them as equal.
+    ///
+    /// Warnings :
+    /// Even if <me> is not closed it can become closed after the
+    /// segmentation for example if U1 or U2 are out of the bounds
+    /// of the surface <me> or if the surface makes loop.
+    /// raises if U2 < U1 or V2 < V1.
+    /// Standard_DomainError if U2 - U1 exceeds the uperiod for uperiodic surfaces.
+    /// i.e. ((U2 - U1) - UPeriod) > Precision::PConfusion().
+    /// Standard_DomainError if V2 - V1 exceeds the vperiod for vperiodic surfaces.
+    /// i.e. ((V2 - V1) - VPeriod) > Precision::PConfusion()).
+    pub fn check_and_segment(
+        self: std::pin::Pin<&mut Self>,
+        U1: f64,
+        U2: f64,
+        V1: f64,
+        V2: f64,
+        theUTolerance: f64,
+        theVTolerance: f64,
+    ) {
+        crate::ffi::Geom_BSplineSurface::check_and_segment(
+            self,
+            U1,
+            U2,
+            V1,
+            V2,
+            theUTolerance,
+            theVTolerance,
+        )
+    }
+
+    /// Substitutes the UKnots of range UIndex with K.
+    ///
+    /// Raised if UIndex < 1 or UIndex > NbUKnots
+    ///
+    /// Raised if K >= UKnots(UIndex+1) or K <= UKnots(UIndex-1)
+    pub fn set_u_knot(self: std::pin::Pin<&mut Self>, UIndex: i32, K: f64) {
+        crate::ffi::Geom_BSplineSurface::set_u_knot(self, UIndex, K)
+    }
+
+    /// Changes all the U-knots of the surface.
+    /// The multiplicity of the knots are not modified.
+    ///
+    /// Raised if there is an index such that UK (Index+1) <= UK (Index).
+    ///
+    /// Raised if  UK.Lower() < 1 or UK.Upper() > NbUKnots
+    pub fn set_u_knots(self: std::pin::Pin<&mut Self>, UK: &crate::ffi::TColStd_Array1OfReal) {
+        crate::ffi::Geom_BSplineSurface::set_u_knots(self, UK)
+    }
+
+    /// Changes the value of the UKnots of range UIndex and
+    /// increases its multiplicity.
+    ///
+    /// Raised if UIndex is not in the range [FirstUKnotIndex,
+    /// LastUKnotIndex] given by the methods with the same name.
+    ///
+    /// Raised if K >= UKnots(UIndex+1) or K <= UKnots(UIndex-1)
+    /// M must be lower than UDegree and greater than the previous
+    /// multiplicity of the knot of range UIndex.
+    pub fn set_u_knot_int_real_int(self: std::pin::Pin<&mut Self>, UIndex: i32, K: f64, M: i32) {
+        crate::ffi::Geom_BSplineSurface::set_u_knot(self, UIndex, K, M)
+    }
+
+    /// Substitutes the VKnots of range VIndex with K.
+    ///
+    /// Raised if VIndex < 1 or VIndex > NbVKnots
+    ///
+    /// Raised if K >= VKnots(VIndex+1) or K <= VKnots(VIndex-1)
+    pub fn set_v_knot(self: std::pin::Pin<&mut Self>, VIndex: i32, K: f64) {
+        crate::ffi::Geom_BSplineSurface::set_v_knot(self, VIndex, K)
+    }
+
+    /// Changes all the V-knots of the surface.
+    /// The multiplicity of the knots are not modified.
+    ///
+    /// Raised if there is an index such that VK (Index+1) <= VK (Index).
+    ///
+    /// Raised if  VK.Lower() < 1 or VK.Upper() > NbVKnots
+    pub fn set_v_knots(self: std::pin::Pin<&mut Self>, VK: &crate::ffi::TColStd_Array1OfReal) {
+        crate::ffi::Geom_BSplineSurface::set_v_knots(self, VK)
+    }
+
+    /// Changes the value of the VKnots of range VIndex and increases
+    /// its multiplicity.
+    ///
+    /// Raised if VIndex is not in the range [FirstVKnotIndex,
+    /// LastVKnotIndex] given by the methods with the same name.
+    ///
+    /// Raised if K >= VKnots(VIndex+1) or K <= VKnots(VIndex-1)
+    /// M must be lower than VDegree and greater than the previous
+    /// multiplicity of the knot of range VIndex.
+    pub fn set_v_knot_int_real_int(self: std::pin::Pin<&mut Self>, VIndex: i32, K: f64, M: i32) {
+        crate::ffi::Geom_BSplineSurface::set_v_knot(self, VIndex, K, M)
+    }
+
+    /// Locates the parametric value U in the sequence of UKnots.
+    /// If "WithKnotRepetition" is True we consider the knot's
+    /// representation with repetition of multiple knot value,
+    /// otherwise  we consider the knot's representation with
+    /// no repetition of multiple knot values.
+    /// UKnots (I1) <= U <= UKnots (I2)
+    /// . if I1 = I2  U is a knot value (the tolerance criterion
+    /// ParametricTolerance is used).
+    /// . if I1 < 1  => U < UKnots(1) - Abs(ParametricTolerance)
+    /// . if I2 > NbUKnots => U > UKnots(NbUKnots)+Abs(ParametricTolerance)
+    pub fn locate_u(
+        &self,
+        U: f64,
+        ParametricTolerance: f64,
+        I1: std::pin::Pin<&mut i32>,
+        I2: std::pin::Pin<&mut i32>,
+        WithKnotRepetition: bool,
+    ) {
+        crate::ffi::Geom_BSplineSurface::locate_u(
+            self,
+            U,
+            ParametricTolerance,
+            I1,
+            I2,
+            WithKnotRepetition,
+        )
+    }
+
+    /// Locates the parametric value V in the sequence of knots.
+    /// If "WithKnotRepetition" is True we consider the knot's
+    /// representation with repetition of multiple knot value,
+    /// otherwise  we consider the knot's representation with
+    /// no repetition of multiple knot values.
+    /// VKnots (I1) <= V <= VKnots (I2)
+    /// . if I1 = I2  V is a knot value (the tolerance criterion
+    /// ParametricTolerance is used).
+    /// . if I1 < 1  => V < VKnots(1) - Abs(ParametricTolerance)
+    /// . if I2 > NbVKnots => V > VKnots(NbVKnots)+Abs(ParametricTolerance)
+    /// poles insertion and removing
+    /// The following methods are available only if the surface
+    /// is Uniform or QuasiUniform in the considered direction
+    /// The knot repartition is modified.
+    pub fn locate_v(
+        &self,
+        V: f64,
+        ParametricTolerance: f64,
+        I1: std::pin::Pin<&mut i32>,
+        I2: std::pin::Pin<&mut i32>,
+        WithKnotRepetition: bool,
+    ) {
+        crate::ffi::Geom_BSplineSurface::locate_v(
+            self,
+            V,
+            ParametricTolerance,
+            I1,
+            I2,
+            WithKnotRepetition,
+        )
+    }
+
+    /// Substitutes the pole of range (UIndex, VIndex) with P.
+    /// If the surface is rational the weight of range (UIndex, VIndex)
+    /// is not modified.
+    ///
+    /// Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or
+    /// VIndex > NbVPoles.
+    pub fn set_pole(
+        self: std::pin::Pin<&mut Self>,
+        UIndex: i32,
+        VIndex: i32,
+        P: &crate::ffi::gp_Pnt,
+    ) {
+        crate::ffi::Geom_BSplineSurface::set_pole(self, UIndex, VIndex, P)
+    }
+
+    /// Substitutes the pole and the weight of range (UIndex, VIndex)
+    /// with P and W.
+    ///
+    /// Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or
+    /// VIndex > NbVPoles.
+    /// Raised if Weight <= Resolution from package gp.
+    pub fn set_pole_int2_pnt_real(
+        self: std::pin::Pin<&mut Self>,
+        UIndex: i32,
+        VIndex: i32,
+        P: &crate::ffi::gp_Pnt,
+        Weight: f64,
+    ) {
+        crate::ffi::Geom_BSplineSurface::set_pole(self, UIndex, VIndex, P, Weight)
+    }
+
+    /// Changes a column of poles or a part of this column.
+    /// Raised if Vindex < 1 or VIndex > NbVPoles.
+    ///
+    /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles.
+    pub fn set_pole_col(
+        self: std::pin::Pin<&mut Self>,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
+        crate::ffi::Geom_BSplineSurface::set_pole_col(self, VIndex, CPoles)
+    }
+
+    /// Changes a column of poles or a part of this column with the
+    /// corresponding weights. If the surface was rational it can
+    /// become non rational. If the surface was non rational it can
+    /// become rational.
+    /// Raised if Vindex < 1 or VIndex > NbVPoles.
+    ///
+    /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles
+    /// Raised if the bounds of CPoleWeights are not the same as the
+    /// bounds of CPoles.
+    /// Raised if one of the weight value of CPoleWeights is lower or
+    /// equal to Resolution from package gp.
+    pub fn set_pole_col_int_array1ofpnt_array1ofreal(
+        self: std::pin::Pin<&mut Self>,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        crate::ffi::Geom_BSplineSurface::set_pole_col(self, VIndex, CPoles, CPoleWeights)
+    }
+
+    /// Changes a row of poles or a part of this row with the
+    /// corresponding weights. If the surface was rational it can
+    /// become non rational. If the surface was non rational it can
+    /// become rational.
+    /// Raised if Uindex < 1 or UIndex > NbUPoles.
+    ///
+    /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles
+    /// raises if the bounds of CPoleWeights are not the same as the
+    /// bounds of CPoles.
+    /// Raised if one of the weight value of CPoleWeights is lower or
+    /// equal to Resolution from package gp.
+    pub fn set_pole_row(
+        self: std::pin::Pin<&mut Self>,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        crate::ffi::Geom_BSplineSurface::set_pole_row(self, UIndex, CPoles, CPoleWeights)
+    }
+
+    /// Changes a row of poles or a part of this row.
+    /// Raised if Uindex < 1 or UIndex > NbUPoles.
+    ///
+    /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles.
+    pub fn set_pole_row_int_array1ofpnt(
+        self: std::pin::Pin<&mut Self>,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
+        crate::ffi::Geom_BSplineSurface::set_pole_row(self, UIndex, CPoles)
+    }
+
+    /// Changes the weight of the pole of range UIndex, VIndex.
+    /// If the surface was non rational it can become rational.
+    /// If the surface was rational it can become non rational.
+    ///
+    /// Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or
+    /// VIndex > NbVPoles
+    ///
+    /// Raised if weight is lower or equal to Resolution from
+    /// package gp
+    pub fn set_weight(self: std::pin::Pin<&mut Self>, UIndex: i32, VIndex: i32, Weight: f64) {
+        crate::ffi::Geom_BSplineSurface::set_weight(self, UIndex, VIndex, Weight)
+    }
+
+    /// Changes a column of weights of a part of this column.
+    ///
+    /// Raised if VIndex < 1 or VIndex > NbVPoles
+    ///
+    /// Raised if CPoleWeights.Lower() < 1 or
+    /// CPoleWeights.Upper() > NbUPoles.
+    /// Raised if a weight value is lower or equal to Resolution
+    /// from package gp.
+    pub fn set_weight_col(
+        self: std::pin::Pin<&mut Self>,
+        VIndex: i32,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        crate::ffi::Geom_BSplineSurface::set_weight_col(self, VIndex, CPoleWeights)
+    }
+
+    /// Changes a row of weights or a part of this row.
+    ///
+    /// Raised if UIndex < 1 or UIndex > NbUPoles
+    ///
+    /// Raised if CPoleWeights.Lower() < 1 or
+    /// CPoleWeights.Upper() > NbVPoles.
+    /// Raised  if a weight value is lower or equal to Resolution
+    /// from package gp.
+    pub fn set_weight_row(
+        self: std::pin::Pin<&mut Self>,
+        UIndex: i32,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        crate::ffi::Geom_BSplineSurface::set_weight_row(self, UIndex, CPoleWeights)
+    }
+
+    /// Move a point with parameter U and V to P.
+    /// given u,v  as parameters)  to  reach a  new position
+    /// UIndex1, UIndex2, VIndex1, VIndex2:
+    /// indicates the poles which can be moved
+    /// if Problem in BSplineBasis calculation, no change
+    /// for the curve and
+    /// UFirstIndex, VLastIndex = 0
+    /// VFirstIndex, VLastIndex = 0
+    ///
+    /// Raised if UIndex1 < UIndex2 or VIndex1 < VIndex2 or
+    /// UIndex1 < 1 || UIndex1 > NbUPoles or
+    /// UIndex2 < 1 || UIndex2 > NbUPoles
+    /// VIndex1 < 1 || VIndex1 > NbVPoles or
+    /// VIndex2 < 1 || VIndex2 > NbVPoles
+    /// characteristics of the surface
+    pub fn move_point(
+        self: std::pin::Pin<&mut Self>,
+        U: f64,
+        V: f64,
+        P: &crate::ffi::gp_Pnt,
+        UIndex1: i32,
+        UIndex2: i32,
+        VIndex1: i32,
+        VIndex2: i32,
+        UFirstIndex: std::pin::Pin<&mut i32>,
+        ULastIndex: std::pin::Pin<&mut i32>,
+        VFirstIndex: std::pin::Pin<&mut i32>,
+        VLastIndex: std::pin::Pin<&mut i32>,
+    ) {
+        crate::ffi::Geom_BSplineSurface::move_point(
+            self,
+            U,
+            V,
+            P,
+            UIndex1,
+            UIndex2,
+            VIndex1,
+            VIndex2,
+            UFirstIndex,
+            ULastIndex,
+            VFirstIndex,
+            VLastIndex,
+        )
+    }
+
+    /// Returns true if the first control points row and the last
+    /// control points row are identical. The tolerance criterion
+    /// is Resolution from package gp.
+    pub fn is_u_closed(&self) -> bool {
+        crate::ffi::Geom_BSplineSurface::is_u_closed(self)
+    }
+
+    /// Returns true if the first control points column and the
+    /// last last control points column are identical.
+    /// The tolerance criterion is Resolution from package gp.
+    pub fn is_v_closed(&self) -> bool {
+        crate::ffi::Geom_BSplineSurface::is_v_closed(self)
+    }
+
+    /// Returns True if the order of continuity of the surface in the
+    /// U direction  is N.
+    /// Raised if N < 0.
+    pub fn is_c_nu(&self, N: i32) -> bool {
+        crate::ffi::Geom_BSplineSurface::is_c_nu(self, N)
+    }
+
+    /// Returns True if the order of continuity of the surface
+    /// in the V direction  is N.
+    /// Raised if N < 0.
+    pub fn is_c_nv(&self, N: i32) -> bool {
+        crate::ffi::Geom_BSplineSurface::is_c_nv(self, N)
+    }
+
+    /// Returns True if the surface is closed in the U direction
+    /// and if the B-spline has been turned into a periodic surface
+    /// using the function SetUPeriodic.
+    pub fn is_u_periodic(&self) -> bool {
+        crate::ffi::Geom_BSplineSurface::is_u_periodic(self)
+    }
+
+    /// Returns False if for each row of weights all the weights
+    /// are identical.
+    /// The tolerance criterion is resolution from package gp.
+    /// Example :
+    /// |1.0, 1.0, 1.0|
+    /// if Weights =  |0.5, 0.5, 0.5|   returns False
+    /// |2.0, 2.0, 2.0|
+    pub fn is_u_rational(&self) -> bool {
+        crate::ffi::Geom_BSplineSurface::is_u_rational(self)
+    }
+
+    /// Returns True if the surface is closed in the V direction
+    /// and if the B-spline has been turned into a periodic
+    /// surface using the function SetVPeriodic.
+    pub fn is_v_periodic(&self) -> bool {
+        crate::ffi::Geom_BSplineSurface::is_v_periodic(self)
+    }
+
+    /// Returns False if for each column of weights all the weights
+    /// are identical.
+    /// The tolerance criterion is resolution from package gp.
+    /// Examples :
+    /// |1.0, 2.0, 0.5|
+    /// if Weights =  |1.0, 2.0, 0.5|   returns False
+    /// |1.0, 2.0, 0.5|
+    pub fn is_v_rational(&self) -> bool {
+        crate::ffi::Geom_BSplineSurface::is_v_rational(self)
+    }
+
+    /// Returns the parametric bounds of the surface.
+    /// Warnings :
+    /// These parametric values are the bounds of the array of
+    /// knots UKnots and VKnots only if the first knots and the
+    /// last knots have a multiplicity equal to UDegree + 1 or
+    /// VDegree + 1
+    pub fn bounds(
+        &self,
+        U1: std::pin::Pin<&mut f64>,
+        U2: std::pin::Pin<&mut f64>,
+        V1: std::pin::Pin<&mut f64>,
+        V2: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Geom_BSplineSurface::bounds(self, U1, U2, V1, V2)
+    }
+
+    /// Computes the Index of the UKnots which gives the first
+    /// parametric value of the surface in the U direction.
+    /// The UIso curve corresponding to this value is a
+    /// boundary curve of the surface.
+    pub fn first_u_knot_index(&self) -> i32 {
+        crate::ffi::Geom_BSplineSurface::first_u_knot_index(self)
+    }
+
+    /// Computes the Index of the VKnots which gives the
+    /// first parametric value of the surface in the V direction.
+    /// The VIso curve corresponding to this knot is a boundary
+    /// curve of the surface.
+    pub fn first_v_knot_index(&self) -> i32 {
+        crate::ffi::Geom_BSplineSurface::first_v_knot_index(self)
+    }
+
+    /// Computes the Index of the UKnots which gives the
+    /// last parametric value of the surface in the U direction.
+    /// The UIso curve corresponding to this knot is a boundary
+    /// curve of the surface.
+    pub fn last_u_knot_index(&self) -> i32 {
+        crate::ffi::Geom_BSplineSurface::last_u_knot_index(self)
+    }
+
+    /// Computes the Index of the VKnots which gives the
+    /// last parametric value of the surface in the V direction.
+    /// The VIso curve corresponding to this knot is a
+    /// boundary curve of the surface.
+    pub fn last_v_knot_index(&self) -> i32 {
+        crate::ffi::Geom_BSplineSurface::last_v_knot_index(self)
+    }
+
+    /// Returns the number of knots in the U direction.
+    pub fn nb_u_knots(&self) -> i32 {
+        crate::ffi::Geom_BSplineSurface::nb_u_knots(self)
+    }
+
+    /// Returns number of poles in the U direction.
+    pub fn nb_u_poles(&self) -> i32 {
+        crate::ffi::Geom_BSplineSurface::nb_u_poles(self)
+    }
+
+    /// Returns the number of knots in the V direction.
+    pub fn nb_v_knots(&self) -> i32 {
+        crate::ffi::Geom_BSplineSurface::nb_v_knots(self)
+    }
+
+    /// Returns the number of poles in the V direction.
+    pub fn nb_v_poles(&self) -> i32 {
+        crate::ffi::Geom_BSplineSurface::nb_v_poles(self)
+    }
+
+    /// Returns the pole of range (UIndex, VIndex).
+    ///
+    /// Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or
+    /// VIndex > NbVPoles.
+    pub fn pole(&self, UIndex: i32, VIndex: i32) -> &crate::ffi::gp_Pnt {
+        crate::ffi::Geom_BSplineSurface::pole(self, UIndex, VIndex)
+    }
+
+    /// Returns the poles of the B-spline surface.
+    ///
+    /// Raised if the length of P in the U and V direction
+    /// is not equal to NbUpoles and NbVPoles.
+    pub fn poles(&self, P: std::pin::Pin<&mut crate::ffi::TColgp_Array2OfPnt>) {
+        crate::ffi::Geom_BSplineSurface::poles(self, P)
+    }
+
+    /// Returns the poles of the B-spline surface.
+    pub fn poles(&self) -> &crate::ffi::TColgp_Array2OfPnt {
+        crate::ffi::Geom_BSplineSurface::poles(self)
+    }
+
+    /// Returns the degree of the normalized B-splines Ni,n in the U
+    /// direction.
+    pub fn u_degree(&self) -> i32 {
+        crate::ffi::Geom_BSplineSurface::u_degree(self)
+    }
+
+    /// Returns the Knot value of range UIndex.
+    /// Raised if UIndex < 1 or UIndex > NbUKnots
+    pub fn u_knot(&self, UIndex: i32) -> f64 {
+        crate::ffi::Geom_BSplineSurface::u_knot(self, UIndex)
+    }
+
+    /// Returns NonUniform or Uniform or QuasiUniform or
+    /// PiecewiseBezier.  If all the knots differ by a
+    /// positive constant from the preceding knot in the U
+    /// direction the B-spline surface can be :
+    /// - Uniform if all the knots are of multiplicity 1,
+    /// - QuasiUniform if all the knots are of multiplicity 1
+    /// except for the first and last knot which are of
+    /// multiplicity Degree + 1,
+    /// - PiecewiseBezier if the first and last knots have
+    /// multiplicity Degree + 1 and if interior knots have
+    /// multiplicity Degree
+    /// otherwise the surface is non uniform in the U direction
+    /// The tolerance criterion is Resolution from package gp.
+    pub fn u_knot_distribution(&self) -> crate::ffi::GeomAbs_BSplKnotDistribution {
+        crate::ffi::Geom_BSplineSurface::u_knot_distribution(self)
+    }
+
+    /// Returns the knots in the U direction.
+    ///
+    /// Raised if the length of Ku is not equal to the number of knots
+    /// in the U direction.
+    pub fn u_knots(&self, Ku: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfReal>) {
+        crate::ffi::Geom_BSplineSurface::u_knots(self, Ku)
+    }
+
+    /// Returns the knots in the U direction.
+    pub fn u_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        crate::ffi::Geom_BSplineSurface::u_knots(self)
+    }
+
+    /// Returns the uknots sequence.
+    /// In this sequence the knots with a multiplicity greater than 1
+    /// are repeated.
+    /// Example :
+    /// Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
+    ///
+    /// Raised if the length of Ku is not equal to NbUPoles + UDegree + 1
+    pub fn u_knot_sequence(&self, Ku: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfReal>) {
+        crate::ffi::Geom_BSplineSurface::u_knot_sequence(self, Ku)
+    }
+
+    /// Returns the uknots sequence.
+    /// In this sequence the knots with a multiplicity greater than 1
+    /// are repeated.
+    /// Example :
+    /// Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
+    pub fn u_knot_sequence(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        crate::ffi::Geom_BSplineSurface::u_knot_sequence(self)
+    }
+
+    /// Returns the multiplicity value of knot of range UIndex in
+    /// the u direction.
+    /// Raised if UIndex < 1 or UIndex > NbUKnots.
+    pub fn u_multiplicity(&self, UIndex: i32) -> i32 {
+        crate::ffi::Geom_BSplineSurface::u_multiplicity(self, UIndex)
+    }
+
+    /// Returns the multiplicities of the knots in the U direction.
+    ///
+    /// Raised if the length of Mu is not equal to the number of
+    /// knots in the U direction.
+    pub fn u_multiplicities(&self, Mu: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfInteger>) {
+        crate::ffi::Geom_BSplineSurface::u_multiplicities(self, Mu)
+    }
+
+    /// Returns the multiplicities of the knots in the U direction.
+    pub fn u_multiplicities(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        crate::ffi::Geom_BSplineSurface::u_multiplicities(self)
+    }
+
+    /// Returns the degree of the normalized B-splines Ni,d in the
+    /// V direction.
+    pub fn v_degree(&self) -> i32 {
+        crate::ffi::Geom_BSplineSurface::v_degree(self)
+    }
+
+    /// Returns the Knot value of range VIndex.
+    /// Raised if VIndex < 1 or VIndex > NbVKnots
+    pub fn v_knot(&self, VIndex: i32) -> f64 {
+        crate::ffi::Geom_BSplineSurface::v_knot(self, VIndex)
+    }
+
+    /// Returns NonUniform or Uniform or QuasiUniform or
+    /// PiecewiseBezier. If all the knots differ by a positive
+    /// constant from the preceding knot in the V direction the
+    /// B-spline surface can be :
+    /// - Uniform if all the knots are of multiplicity 1,
+    /// - QuasiUniform if all the knots are of multiplicity 1
+    /// except for the first and last knot which are of
+    /// multiplicity Degree + 1,
+    /// - PiecewiseBezier if the first and last knots have
+    /// multiplicity  Degree + 1 and if interior knots have
+    /// multiplicity Degree
+    /// otherwise the surface is non uniform in the V direction.
+    /// The tolerance criterion is Resolution from package gp.
+    pub fn v_knot_distribution(&self) -> crate::ffi::GeomAbs_BSplKnotDistribution {
+        crate::ffi::Geom_BSplineSurface::v_knot_distribution(self)
+    }
+
+    /// Returns the knots in the V direction.
+    ///
+    /// Raised if the length of Kv is not equal to the number of
+    /// knots in the V direction.
+    pub fn v_knots(&self, Kv: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfReal>) {
+        crate::ffi::Geom_BSplineSurface::v_knots(self, Kv)
+    }
+
+    /// Returns the knots in the V direction.
+    pub fn v_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        crate::ffi::Geom_BSplineSurface::v_knots(self)
+    }
+
+    /// Returns the vknots sequence.
+    /// In this sequence the knots with a multiplicity greater than 1
+    /// are repeated.
+    /// Example :
+    /// Kv = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
+    ///
+    /// Raised if the length of Kv is not equal to NbVPoles + VDegree + 1
+    pub fn v_knot_sequence(&self, Kv: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfReal>) {
+        crate::ffi::Geom_BSplineSurface::v_knot_sequence(self, Kv)
+    }
+
+    /// Returns the vknots sequence.
+    /// In this sequence the knots with a multiplicity greater than 1
+    /// are repeated.
+    /// Example :
+    /// Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
+    pub fn v_knot_sequence(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        crate::ffi::Geom_BSplineSurface::v_knot_sequence(self)
+    }
+
+    /// Returns the multiplicity value of knot of range VIndex in
+    /// the v direction.
+    /// Raised if VIndex < 1 or VIndex > NbVKnots
+    pub fn v_multiplicity(&self, VIndex: i32) -> i32 {
+        crate::ffi::Geom_BSplineSurface::v_multiplicity(self, VIndex)
+    }
+
+    /// Returns the multiplicities of the knots in the V direction.
+    ///
+    /// Raised if the length of Mv is not equal to the number of
+    /// knots in the V direction.
+    pub fn v_multiplicities(&self, Mv: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfInteger>) {
+        crate::ffi::Geom_BSplineSurface::v_multiplicities(self, Mv)
+    }
+
+    /// Returns the multiplicities of the knots in the V direction.
+    pub fn v_multiplicities(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        crate::ffi::Geom_BSplineSurface::v_multiplicities(self)
+    }
+
+    /// Returns the weight value of range UIndex, VIndex.
+    ///
+    /// Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1
+    /// or VIndex > NbVPoles.
+    pub fn weight(&self, UIndex: i32, VIndex: i32) -> f64 {
+        crate::ffi::Geom_BSplineSurface::weight(self, UIndex, VIndex)
+    }
+
+    /// Returns the weights of the B-spline surface.
+    ///
+    /// Raised if the length of W in the U and V direction is
+    /// not equal to NbUPoles and NbVPoles.
+    pub fn weights(&self, W: std::pin::Pin<&mut crate::ffi::TColStd_Array2OfReal>) {
+        crate::ffi::Geom_BSplineSurface::weights(self, W)
+    }
+
+    pub fn d0(&self, U: f64, V: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::Geom_BSplineSurface::d0(self, U, V, P)
+    }
+
+    /// Raised if the continuity of the surface is not C1.
+    pub fn d1(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BSplineSurface::d1(self, U, V, P, D1U, D1V)
+    }
+
+    /// Raised if the continuity of the surface is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BSplineSurface::d2(self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
+    }
+
+    /// Raised if the continuity of the surface is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UUV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UVV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BSplineSurface::d3(
+            self, U, V, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
+        )
+    }
+
+    /// Nu is the order of derivation in the U parametric direction and
+    /// Nv is the order of derivation in the V parametric direction.
+    ///
+    /// Raised if the continuity of the surface is not CNu in the U
+    /// direction and CNv in the V direction.
+    ///
+    /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    ///
+    /// The following functions computes the point for the
+    /// parametric values (U, V) and the derivatives at
+    /// this point on the B-spline surface patch delimited
+    /// with the knots FromUK1, FromVK1 and the knots ToUK2,
+    /// ToVK2.  (U, V) can be out of these parametric bounds
+    /// but for the computation we only use the definition
+    /// of the surface between these knots. This method is
+    /// useful to compute local derivative, if the order of
+    /// continuity of the whole surface is not greater enough.
+    /// Inside the parametric knot's domain previously defined
+    /// the evaluations are the same as if we consider the whole
+    /// definition of the surface. Of course the evaluations are
+    /// different outside this parametric domain.
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::ffi::gp_Vec {
+        crate::ffi::Geom_BSplineSurface::dn(self, U, V, Nu, Nv)
+    }
+
+    /// Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
+    pub fn local_d0(
+        &self,
+        U: f64,
+        V: f64,
+        FromUK1: i32,
+        ToUK2: i32,
+        FromVK1: i32,
+        ToVK2: i32,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+    ) {
+        crate::ffi::Geom_BSplineSurface::local_d0(self, U, V, FromUK1, ToUK2, FromVK1, ToVK2, P)
+    }
+
+    /// Raised if the local continuity of the surface is not C1
+    /// between the knots FromUK1, ToUK2 and FromVK1, ToVK2.
+    /// Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
+    pub fn local_d1(
+        &self,
+        U: f64,
+        V: f64,
+        FromUK1: i32,
+        ToUK2: i32,
+        FromVK1: i32,
+        ToVK2: i32,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BSplineSurface::local_d1(
+            self, U, V, FromUK1, ToUK2, FromVK1, ToVK2, P, D1U, D1V,
+        )
+    }
+
+    /// Raised if the local continuity of the surface is not C2
+    /// between the knots FromUK1, ToUK2 and FromVK1, ToVK2.
+    /// Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
+    pub fn local_d2(
+        &self,
+        U: f64,
+        V: f64,
+        FromUK1: i32,
+        ToUK2: i32,
+        FromVK1: i32,
+        ToVK2: i32,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BSplineSurface::local_d2(
+            self, U, V, FromUK1, ToUK2, FromVK1, ToVK2, P, D1U, D1V, D2U, D2V, D2UV,
+        )
+    }
+
+    /// Raised if the local continuity of the surface is not C3
+    /// between the knots FromUK1, ToUK2 and FromVK1, ToVK2.
+    /// Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
+    pub fn local_d3(
+        &self,
+        U: f64,
+        V: f64,
+        FromUK1: i32,
+        ToUK2: i32,
+        FromVK1: i32,
+        ToVK2: i32,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UUV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UVV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BSplineSurface::local_d3(
+            self, U, V, FromUK1, ToUK2, FromVK1, ToVK2, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V,
+            D3UUV, D3UVV,
+        )
+    }
+
+    /// Raised if the local continuity of the surface is not CNu
+    /// between the knots FromUK1, ToUK2 and CNv between the knots
+    /// FromVK1, ToVK2.
+    /// Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
+    pub fn local_dn(
+        &self,
+        U: f64,
+        V: f64,
+        FromUK1: i32,
+        ToUK2: i32,
+        FromVK1: i32,
+        ToVK2: i32,
+        Nu: i32,
+        Nv: i32,
+    ) -> crate::ffi::gp_Vec {
+        crate::ffi::Geom_BSplineSurface::local_dn(
+            self, U, V, FromUK1, ToUK2, FromVK1, ToVK2, Nu, Nv,
+        )
+    }
+
+    /// Computes the point of parameter U, V on the BSpline surface patch
+    /// defines between the knots UK1 UK2, VK1, VK2. U can be out of the
+    /// bounds [Knot UK1, Knot UK2] and V can be outof the bounds
+    /// [Knot VK1, Knot VK2]  but for the computation we only use the
+    /// definition of the surface between these knot values.
+    /// Raises if FromUK1 = ToUK2 or FromVK1 = ToVK2.
+    pub fn local_value(
+        &self,
+        U: f64,
+        V: f64,
+        FromUK1: i32,
+        ToUK2: i32,
+        FromVK1: i32,
+        ToVK2: i32,
+    ) -> crate::ffi::gp_Pnt {
+        crate::ffi::Geom_BSplineSurface::local_value(self, U, V, FromUK1, ToUK2, FromVK1, ToVK2)
+    }
+
+    /// Computes the U isoparametric curve.
+    /// A B-spline curve is returned.
+    pub fn u_iso(&self, U: f64) -> crate::ffi::HandleGeomCurve {
+        crate::ffi::Geom_BSplineSurface::u_iso(self, U)
+    }
+
+    /// Computes the V isoparametric curve.
+    /// A B-spline curve is returned.
+    pub fn v_iso(&self, V: f64) -> crate::ffi::HandleGeomCurve {
+        crate::ffi::Geom_BSplineSurface::v_iso(self, V)
+    }
+
+    /// Computes the U isoparametric curve.
+    /// If CheckRational=False, no try to make it non-rational.
+    /// A B-spline curve is returned.
+    pub fn u_iso_real_bool(&self, U: f64, CheckRational: bool) -> crate::ffi::HandleGeomCurve {
+        crate::ffi::Geom_BSplineSurface::u_iso(self, U, CheckRational)
+    }
+
+    /// Computes the V isoparametric curve.
+    /// If CheckRational=False, no try to make it non-rational.
+    /// A B-spline curve is returned.
+    /// transformations
+    pub fn v_iso_real_bool(&self, V: f64, CheckRational: bool) -> crate::ffi::HandleGeomCurve {
+        crate::ffi::Geom_BSplineSurface::v_iso(self, V, CheckRational)
+    }
+
+    /// Applies the transformation T to this BSpline surface.
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_BSplineSurface::transform(self, T)
+    }
+
+    /// Computes two tolerance values for this BSpline
+    /// surface, based on the given tolerance in 3D space
+    /// Tolerance3D. The tolerances computed are:
+    /// - UTolerance in the u parametric direction, and
+    /// - VTolerance in the v parametric direction.
+    /// If f(u,v) is the equation of this BSpline surface,
+    /// UTolerance and VTolerance guarantee that :
+    /// | u1 - u0 | < UTolerance and
+    /// | v1 - v0 | < VTolerance
+    /// ====> |f (u1,v1) - f (u0,v0)| < Tolerance3D
+    pub fn resolution(
+        self: std::pin::Pin<&mut Self>,
+        Tolerance3D: f64,
+        UTolerance: std::pin::Pin<&mut f64>,
+        VTolerance: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Geom_BSplineSurface::resolution(self, Tolerance3D, UTolerance, VTolerance)
+    }
+
+    /// Creates a new object which is a copy of this BSpline surface.
+    pub fn copy(&self) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_BSplineSurface::copy(self)
+    }
+
+    /// Returns the value of the maximum degree of the normalized
+    /// B-spline basis functions in the u and v directions.
+    pub fn max_degree() -> i32 {
+        crate::ffi::Geom_BSplineSurface::max_degree()
+    }
+
     /// Upcast to Geom_BoundedSurface
     pub fn as_bounded_surface(&self) -> &BoundedSurface {
         crate::ffi::Geom_BSplineSurface_as_Geom_BoundedSurface(self)
@@ -518,6 +2742,312 @@ impl BezierCurve {
         PoleWeights: &crate::ffi::TColStd_Array1OfReal,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Geom_BezierCurve_ctor_array1ofpnt_array1ofreal(CurvePoles, PoleWeights)
+    }
+
+    /// Increases the degree of a bezier curve. Degree is the new
+    /// degree of <me>. Raises ConstructionError
+    /// if Degree is greater than MaxDegree or lower than 2
+    /// or lower than the initial degree of <me>.
+    pub fn increase(self: std::pin::Pin<&mut Self>, Degree: i32) {
+        crate::ffi::Geom_BezierCurve::increase(self, Degree)
+    }
+
+    /// Inserts a pole P after the pole of range Index.
+    /// If the curve <me> is rational the weight value for the new
+    /// pole of range Index is 1.0.
+    /// raised if Index is not in the range [1, NbPoles]
+    ///
+    /// raised if the resulting number of poles is greater than
+    /// MaxDegree + 1.
+    pub fn insert_pole_after(self: std::pin::Pin<&mut Self>, Index: i32, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_BezierCurve::insert_pole_after(self, Index, P)
+    }
+
+    /// Inserts a pole with its weight in the set of poles after the
+    /// pole of range Index. If the curve was non rational it can
+    /// become rational if all the weights are not identical.
+    /// Raised if Index is not in the range [1, NbPoles]
+    ///
+    /// Raised if the resulting number of poles is greater than
+    /// MaxDegree + 1.
+    /// Raised if Weight is lower or equal to Resolution from package gp.
+    pub fn insert_pole_after_int_pnt_real(
+        self: std::pin::Pin<&mut Self>,
+        Index: i32,
+        P: &crate::ffi::gp_Pnt,
+        Weight: f64,
+    ) {
+        crate::ffi::Geom_BezierCurve::insert_pole_after(self, Index, P, Weight)
+    }
+
+    /// Inserts a pole P before the pole of range Index.
+    /// If the curve <me> is rational the weight value for the new
+    /// pole of range Index is 1.0.
+    /// Raised if Index is not in the range [1, NbPoles]
+    ///
+    /// Raised if the resulting number of poles is greater than
+    /// MaxDegree + 1.
+    pub fn insert_pole_before(self: std::pin::Pin<&mut Self>, Index: i32, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_BezierCurve::insert_pole_before(self, Index, P)
+    }
+
+    /// Inserts a pole with its weight in the set of poles after
+    /// the pole of range Index. If the curve was non rational it
+    /// can become rational if all the weights are not identical.
+    /// Raised if Index is not in the range [1, NbPoles]
+    ///
+    /// Raised if the resulting number of poles is greater than
+    /// MaxDegree + 1.
+    /// Raised if Weight is lower or equal to Resolution from
+    /// package gp.
+    pub fn insert_pole_before_int_pnt_real(
+        self: std::pin::Pin<&mut Self>,
+        Index: i32,
+        P: &crate::ffi::gp_Pnt,
+        Weight: f64,
+    ) {
+        crate::ffi::Geom_BezierCurve::insert_pole_before(self, Index, P, Weight)
+    }
+
+    /// Removes the pole of range Index.
+    /// If the curve was rational it can become non rational.
+    /// Raised if Index is not in the range [1, NbPoles]
+    /// Raised if Degree is lower than 2.
+    pub fn remove_pole(self: std::pin::Pin<&mut Self>, Index: i32) {
+        crate::ffi::Geom_BezierCurve::remove_pole(self, Index)
+    }
+
+    /// Reverses the direction of parametrization of <me>
+    /// Value (NewU) =  Value (1 - OldU)
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_BezierCurve::reverse(self)
+    }
+
+    /// Returns the  parameter on the  reversed  curve for
+    /// the point of parameter U on <me>.
+    ///
+    /// returns 1-U
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom_BezierCurve::reversed_parameter(self, U)
+    }
+
+    /// Segments the curve between U1 and U2 which can be out
+    /// of the bounds of the curve. The curve is oriented from U1
+    /// to U2.
+    /// The control points are modified, the first and the last point
+    /// are not the same but the parametrization range is [0, 1]
+    /// else it could not be a Bezier curve.
+    /// Warnings :
+    /// Even if <me> is not closed it can become closed after the
+    /// segmentation for example if U1 or U2 are out of the bounds
+    /// of the curve <me> or if the curve makes loop.
+    /// After the segmentation the length of a curve can be null.
+    pub fn segment(self: std::pin::Pin<&mut Self>, U1: f64, U2: f64) {
+        crate::ffi::Geom_BezierCurve::segment(self, U1, U2)
+    }
+
+    /// Substitutes the pole of range index with P.
+    /// If the curve <me> is rational the weight of range Index
+    /// is not modified.
+    /// raiseD if Index is not in the range [1, NbPoles]
+    pub fn set_pole(self: std::pin::Pin<&mut Self>, Index: i32, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_BezierCurve::set_pole(self, Index, P)
+    }
+
+    /// Substitutes the pole and the weights of range Index.
+    /// If the curve <me> is not rational it can become rational
+    /// if all the weights are not identical.
+    /// If the curve was rational it can become non rational if
+    /// all the weights are identical.
+    /// Raised if Index is not in the range [1, NbPoles]
+    /// Raised if Weight <= Resolution from package gp
+    pub fn set_pole_int_pnt_real(
+        self: std::pin::Pin<&mut Self>,
+        Index: i32,
+        P: &crate::ffi::gp_Pnt,
+        Weight: f64,
+    ) {
+        crate::ffi::Geom_BezierCurve::set_pole(self, Index, P, Weight)
+    }
+
+    /// Changes the weight of the pole of range Index.
+    /// If the curve <me> is not rational it can become rational
+    /// if all the weights are not identical.
+    /// If the curve was rational it can become non rational if
+    /// all the weights are identical.
+    /// Raised if Index is not in the range [1, NbPoles]
+    /// Raised if Weight <= Resolution from package gp
+    pub fn set_weight(self: std::pin::Pin<&mut Self>, Index: i32, Weight: f64) {
+        crate::ffi::Geom_BezierCurve::set_weight(self, Index, Weight)
+    }
+
+    /// Returns True if the distance between the first point
+    /// and the last point of the curve is lower or equal to
+    /// the Resolution from package gp.
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::Geom_BezierCurve::is_closed(self)
+    }
+
+    /// Continuity of the curve, returns True.
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom_BezierCurve::is_cn(self, N)
+    }
+
+    /// Returns True if the parametrization of a curve is periodic.
+    /// (P(u) = P(u + T) T = constante)
+    pub fn is_periodic(&self) -> bool {
+        crate::ffi::Geom_BezierCurve::is_periodic(self)
+    }
+
+    /// Returns false if all the weights are identical. The tolerance
+    /// criterion is Resolution from package gp.
+    pub fn is_rational(&self) -> bool {
+        crate::ffi::Geom_BezierCurve::is_rational(self)
+    }
+
+    /// Returns the polynomial degree of the curve.
+    /// it is the number of poles - 1
+    /// point P and derivatives (V1, V2, V3) computation
+    /// The Bezier Curve has a Polynomial representation so the
+    /// parameter U can be out of the bounds of the curve.
+    pub fn degree(&self) -> i32 {
+        crate::ffi::Geom_BezierCurve::degree(self)
+    }
+
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::Geom_BezierCurve::d0(self, U, P)
+    }
+
+    pub fn d1(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BezierCurve::d1(self, U, P, V1)
+    }
+
+    pub fn d2(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BezierCurve::d2(self, U, P, V1, V2)
+    }
+
+    /// For this Bezier curve, computes
+    /// - the point P of parameter U, or
+    /// - the point P and one or more of the following values:
+    /// - V1, the first derivative vector,
+    /// - V2, the second derivative vector,
+    /// - V3, the third derivative vector.
+    /// Note: the parameter U can be outside the bounds of the curve.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BezierCurve::d3(self, U, P, V1, V2, V3)
+    }
+
+    /// For the point of parameter U of this Bezier curve,
+    /// computes the vector corresponding to the Nth derivative.
+    /// Note: the parameter U can be outside the bounds of the curve.
+    /// Exceptions Standard_RangeError if N is less than 1.
+    pub fn dn(&self, U: f64, N: i32) -> crate::ffi::gp_Vec {
+        crate::ffi::Geom_BezierCurve::dn(self, U, N)
+    }
+
+    /// Returns Value (U=0.), it is the first control point of the curve.
+    pub fn start_point(&self) -> crate::ffi::gp_Pnt {
+        crate::ffi::Geom_BezierCurve::start_point(self)
+    }
+
+    /// Returns Value (U=1.), it is the last control point of the Bezier curve.
+    pub fn end_point(&self) -> crate::ffi::gp_Pnt {
+        crate::ffi::Geom_BezierCurve::end_point(self)
+    }
+
+    /// Returns the value of the first  parameter of this
+    /// Bezier curve. This is 0.0, which gives the start point of this Bezier curve
+    pub fn first_parameter(&self) -> f64 {
+        crate::ffi::Geom_BezierCurve::first_parameter(self)
+    }
+
+    /// Returns the value of the last parameter of this
+    /// Bezier curve. This is  1.0, which gives the end point of this Bezier curve.
+    pub fn last_parameter(&self) -> f64 {
+        crate::ffi::Geom_BezierCurve::last_parameter(self)
+    }
+
+    /// Returns the number of poles of this Bezier curve.
+    pub fn nb_poles(&self) -> i32 {
+        crate::ffi::Geom_BezierCurve::nb_poles(self)
+    }
+
+    /// Returns the pole of range Index.
+    /// Raised if Index is not in the range [1, NbPoles]
+    pub fn pole(&self, Index: i32) -> &crate::ffi::gp_Pnt {
+        crate::ffi::Geom_BezierCurve::pole(self, Index)
+    }
+
+    /// Returns all the poles of the curve.
+    ///
+    /// Raised if the length of P is not equal to the number of poles.
+    pub fn poles(&self, P: std::pin::Pin<&mut crate::ffi::TColgp_Array1OfPnt>) {
+        crate::ffi::Geom_BezierCurve::poles(self, P)
+    }
+
+    /// Returns all the poles of the curve.
+    pub fn poles(&self) -> &crate::ffi::TColgp_Array1OfPnt {
+        crate::ffi::Geom_BezierCurve::poles(self)
+    }
+
+    /// Returns the weight of range Index.
+    /// Raised if Index is not in the range [1, NbPoles]
+    pub fn weight(&self, Index: i32) -> f64 {
+        crate::ffi::Geom_BezierCurve::weight(self, Index)
+    }
+
+    /// Returns all the weights of the curve.
+    ///
+    /// Raised if the length of W is not equal to the number of poles.
+    pub fn weights(&self, W: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfReal>) {
+        crate::ffi::Geom_BezierCurve::weights(self, W)
+    }
+
+    /// Applies the transformation T to this Bezier curve.
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_BezierCurve::transform(self, T)
+    }
+
+    /// Computes for this Bezier curve the parametric
+    /// tolerance UTolerance for a given 3D tolerance Tolerance3D.
+    /// If f(t) is the equation of this Bezier curve,
+    /// UTolerance ensures that:
+    /// |t1-t0| < UTolerance ===> |f(t1)-f(t0)| < Tolerance3D
+    pub fn resolution(
+        self: std::pin::Pin<&mut Self>,
+        Tolerance3D: f64,
+        UTolerance: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Geom_BezierCurve::resolution(self, Tolerance3D, UTolerance)
+    }
+
+    /// Creates a new object which is a copy of this Bezier curve.
+    pub fn copy(&self) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_BezierCurve::copy(self)
+    }
+
+    /// Returns the value of the maximum polynomial degree
+    /// of any Geom_BezierCurve curve. This value is 25.
+    pub fn max_degree() -> i32 {
+        crate::ffi::Geom_BezierCurve::max_degree()
     }
 
     /// Upcast to Geom_BoundedCurve
@@ -674,6 +3204,629 @@ impl BezierSurface {
         crate::ffi::Geom_BezierSurface_ctor_array2ofpnt_array2ofreal(SurfacePoles, PoleWeights)
     }
 
+    /// Exchanges the direction U and V on a Bezier surface
+    /// As a consequence:
+    /// - the poles and weights tables are transposed,
+    /// - degrees, rational characteristics and so on are
+    /// exchanged between the two parametric directions, and
+    /// - the orientation of the surface is reversed.
+    pub fn exchange_uv(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_BezierSurface::exchange_uv(self)
+    }
+
+    /// Increases the degree of this Bezier surface in the two parametric directions.
+    ///
+    /// Raised if UDegree < UDegree <me>  or VDegree < VDegree <me>
+    /// Raised if the degree of the surface is greater than MaxDegree
+    /// in one of the two directions U or V.
+    pub fn increase(self: std::pin::Pin<&mut Self>, UDeg: i32, VDeg: i32) {
+        crate::ffi::Geom_BezierSurface::increase(self, UDeg, VDeg)
+    }
+
+    /// Inserts a column of poles. If the surface is rational the weights
+    /// values associated with CPoles are equal defaulted to 1.
+    ///
+    /// Raised if Vindex < 1 or VIndex > NbVPoles.
+    ///
+    /// raises if VDegree is greater than MaxDegree.
+    /// raises if the Length of CPoles is not equal to NbUPoles
+    pub fn insert_pole_col_after(
+        self: std::pin::Pin<&mut Self>,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
+        crate::ffi::Geom_BezierSurface::insert_pole_col_after(self, VIndex, CPoles)
+    }
+
+    /// Inserts a column of poles and weights.
+    /// If the surface was non-rational it can become rational.
+    ///
+    /// Raised if Vindex < 1 or VIndex > NbVPoles.
+    /// Raised if
+    /// . VDegree is greater than MaxDegree.
+    /// . the Length of CPoles is not equal to NbUPoles
+    /// . a weight value is lower or equal to Resolution from
+    /// package gp
+    pub fn insert_pole_col_after_int_array1ofpnt_array1ofreal(
+        self: std::pin::Pin<&mut Self>,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        crate::ffi::Geom_BezierSurface::insert_pole_col_after(self, VIndex, CPoles, CPoleWeights)
+    }
+
+    /// Inserts a column of poles. If the surface is rational the weights
+    /// values associated with CPoles are equal defaulted to 1.
+    ///
+    /// Raised if Vindex < 1 or VIndex > NbVPoles.
+    ///
+    /// Raised if VDegree is greater than MaxDegree.
+    /// Raised if the Length of CPoles is not equal to NbUPoles
+    pub fn insert_pole_col_before(
+        self: std::pin::Pin<&mut Self>,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
+        crate::ffi::Geom_BezierSurface::insert_pole_col_before(self, VIndex, CPoles)
+    }
+
+    /// Inserts a column of poles and weights.
+    /// If the surface was non-rational it can become rational.
+    ///
+    /// Raised if Vindex < 1 or VIndex > NbVPoles.
+    /// Raised if :
+    /// . VDegree is greater than MaxDegree.
+    /// . the Length of CPoles is not equal to NbUPoles
+    /// . a weight value is lower or equal to Resolution from
+    /// package gp
+    pub fn insert_pole_col_before_int_array1ofpnt_array1ofreal(
+        self: std::pin::Pin<&mut Self>,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        crate::ffi::Geom_BezierSurface::insert_pole_col_before(self, VIndex, CPoles, CPoleWeights)
+    }
+
+    /// Inserts a row of poles. If the surface is rational the weights
+    /// values associated with CPoles are equal defaulted to 1.
+    ///
+    /// Raised if Uindex < 1 or UIndex > NbUPoles.
+    ///
+    /// Raised if UDegree is greater than MaxDegree.
+    /// Raised if the Length of CPoles is not equal to NbVPoles
+    pub fn insert_pole_row_after(
+        self: std::pin::Pin<&mut Self>,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
+        crate::ffi::Geom_BezierSurface::insert_pole_row_after(self, UIndex, CPoles)
+    }
+
+    /// Inserts a row of poles and weights.
+    /// If the surface was non-rational it can become rational.
+    ///
+    /// Raised if Uindex < 1 or UIndex > NbUPoles.
+    /// Raised if :
+    /// . UDegree is greater than MaxDegree.
+    /// . the Length of CPoles is not equal to NbVPoles
+    /// . a weight value is lower or equal to Resolution from
+    /// package gp
+    pub fn insert_pole_row_after_int_array1ofpnt_array1ofreal(
+        self: std::pin::Pin<&mut Self>,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        crate::ffi::Geom_BezierSurface::insert_pole_row_after(self, UIndex, CPoles, CPoleWeights)
+    }
+
+    /// Inserts a row of poles. If the surface is rational the weights
+    /// values associated with CPoles are equal defaulted to 1.
+    ///
+    /// Raised if Uindex < 1 or UIndex > NbUPoles.
+    ///
+    /// Raised if UDegree is greater than MaxDegree.
+    /// Raised if the Length of CPoles is not equal to NbVPoles
+    pub fn insert_pole_row_before(
+        self: std::pin::Pin<&mut Self>,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
+        crate::ffi::Geom_BezierSurface::insert_pole_row_before(self, UIndex, CPoles)
+    }
+
+    /// Inserts a row of poles and weights.
+    /// If the surface was non-rational it can become rational.
+    ///
+    /// Raised if Uindex < 1 or UIndex > NbUPoles.
+    /// Raised if :
+    /// . UDegree is greater than MaxDegree.
+    /// . the Length of CPoles is not equal to NbVPoles
+    /// . a weight value is lower or equal to Resolution from
+    /// package gp
+    pub fn insert_pole_row_before_int_array1ofpnt_array1ofreal(
+        self: std::pin::Pin<&mut Self>,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        crate::ffi::Geom_BezierSurface::insert_pole_row_before(self, UIndex, CPoles, CPoleWeights)
+    }
+
+    /// Removes a column of poles.
+    /// If the surface was rational it can become non-rational.
+    ///
+    /// Raised if NbVPoles <= 2 after removing, a Bezier surface
+    /// must have at least two columns of poles.
+    /// Raised if Vindex < 1 or VIndex > NbVPoles
+    pub fn remove_pole_col(self: std::pin::Pin<&mut Self>, VIndex: i32) {
+        crate::ffi::Geom_BezierSurface::remove_pole_col(self, VIndex)
+    }
+
+    /// Removes a row of poles.
+    /// If the surface was rational it can become non-rational.
+    ///
+    /// Raised if NbUPoles <= 2 after removing, a Bezier surface
+    /// must have at least two rows of poles.
+    /// Raised if Uindex < 1 or UIndex > NbUPoles
+    pub fn remove_pole_row(self: std::pin::Pin<&mut Self>, UIndex: i32) {
+        crate::ffi::Geom_BezierSurface::remove_pole_row(self, UIndex)
+    }
+
+    /// Modifies this Bezier surface by segmenting it
+    /// between U1 and U2 in the u parametric direction,
+    /// and between V1 and V2 in the v parametric
+    /// direction. U1, U2, V1, and V2 can be outside the
+    /// bounds of this surface.
+    /// - U1 and U2 isoparametric Bezier curves,
+    /// segmented between V1 and V2, become the two
+    /// bounds of the surface in the v parametric
+    /// direction (0. and 1. u isoparametric curves).
+    /// - V1 and V2 isoparametric Bezier curves,
+    /// segmented between U1 and U2, become the two
+    /// bounds of the surface in the u parametric
+    /// direction (0. and 1. v isoparametric curves).
+    /// The poles and weights tables are modified, but the
+    /// degree of this surface in the u and v parametric
+    /// directions does not change.
+    /// U1 can be greater than U2, and V1 can be greater
+    /// than V2. In these cases, the corresponding
+    /// parametric direction is inverted. The orientation of
+    /// the surface is inverted if one (and only one)
+    /// parametric direction is inverted.
+    pub fn segment(self: std::pin::Pin<&mut Self>, U1: f64, U2: f64, V1: f64, V2: f64) {
+        crate::ffi::Geom_BezierSurface::segment(self, U1, U2, V1, V2)
+    }
+
+    /// Modifies a pole value.
+    /// If the surface is rational the weight of range (UIndex, VIndex)
+    /// is not modified.
+    ///
+    /// Raised if  UIndex < 1 or UIndex > NbUPoles  or  VIndex < 1
+    /// or VIndex > NbVPoles.
+    pub fn set_pole(
+        self: std::pin::Pin<&mut Self>,
+        UIndex: i32,
+        VIndex: i32,
+        P: &crate::ffi::gp_Pnt,
+    ) {
+        crate::ffi::Geom_BezierSurface::set_pole(self, UIndex, VIndex, P)
+    }
+
+    /// Substitutes the pole and the weight of range UIndex, VIndex.
+    /// If the surface <me> is not rational it can become rational.
+    /// if the surface was rational it can become non-rational.
+    ///
+    /// raises if  UIndex < 1 or UIndex > NbUPoles  or  VIndex < 1
+    /// or VIndex > NbVPoles.
+    /// Raised if Weight <= Resolution from package gp.
+    pub fn set_pole_int2_pnt_real(
+        self: std::pin::Pin<&mut Self>,
+        UIndex: i32,
+        VIndex: i32,
+        P: &crate::ffi::gp_Pnt,
+        Weight: f64,
+    ) {
+        crate::ffi::Geom_BezierSurface::set_pole(self, UIndex, VIndex, P, Weight)
+    }
+
+    /// Modifies a column of poles.
+    /// The length of CPoles can be lower but not greater than NbUPoles
+    /// so you can modify just a part of the column.
+    /// Raised if VIndex < 1 or  VIndex > NbVPoles
+    ///
+    /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles
+    pub fn set_pole_col(
+        self: std::pin::Pin<&mut Self>,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
+        crate::ffi::Geom_BezierSurface::set_pole_col(self, VIndex, CPoles)
+    }
+
+    /// Modifies a column of poles.
+    /// If the surface was rational it can become non-rational
+    /// If the surface was non-rational it can become rational.
+    /// The length of CPoles can be lower but not greater than NbUPoles
+    /// so you can modify just a part of the column.
+    /// Raised if VIndex < 1 or  VIndex > NbVPoles
+    ///
+    /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles
+    /// Raised if CPoleWeights and CPoles have not the same bounds.
+    /// Raised if one of the weight value CPoleWeights (i) is lower
+    /// or equal to Resolution from package gp.
+    pub fn set_pole_col_int_array1ofpnt_array1ofreal(
+        self: std::pin::Pin<&mut Self>,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        crate::ffi::Geom_BezierSurface::set_pole_col(self, VIndex, CPoles, CPoleWeights)
+    }
+
+    /// Modifies a row of poles.
+    /// The length of CPoles can be lower but not greater than NbVPoles
+    /// so you can modify just a part of the row.
+    /// Raised if UIndex < 1 or  UIndex > NbUPoles
+    ///
+    /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles
+    pub fn set_pole_row(
+        self: std::pin::Pin<&mut Self>,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
+        crate::ffi::Geom_BezierSurface::set_pole_row(self, UIndex, CPoles)
+    }
+
+    /// Modifies a row of poles and weights.
+    /// If the surface was rational it can become non-rational.
+    /// If the surface was non-rational it can become rational.
+    /// The length of CPoles can be lower but not greater than NbVPoles
+    /// so you can modify just a part of the row.
+    /// Raised if UIndex < 1 or  UIndex > NbUPoles
+    ///
+    /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles
+    /// Raised if CPoleWeights and CPoles have not the same bounds.
+    /// Raised if one of the weight value CPoleWeights (i) is lower
+    /// or equal to Resolution from gp.
+    pub fn set_pole_row_int_array1ofpnt_array1ofreal(
+        self: std::pin::Pin<&mut Self>,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        crate::ffi::Geom_BezierSurface::set_pole_row(self, UIndex, CPoles, CPoleWeights)
+    }
+
+    /// Modifies the weight of the pole of range UIndex, VIndex.
+    /// If the surface was non-rational it can become rational.
+    /// If the surface was rational it can become non-rational.
+    ///
+    /// Raised if UIndex < 1  or  UIndex > NbUPoles or VIndex < 1 or
+    /// VIndex > NbVPoles.
+    /// Raised if Weight <= Resolution from package gp.
+    pub fn set_weight(self: std::pin::Pin<&mut Self>, UIndex: i32, VIndex: i32, Weight: f64) {
+        crate::ffi::Geom_BezierSurface::set_weight(self, UIndex, VIndex, Weight)
+    }
+
+    /// Modifies a column of weights.
+    /// If the surface was rational it can become non-rational.
+    /// If the surface was non-rational it can become rational.
+    /// The length of CPoleWeights can be lower but not greater than
+    /// NbUPoles.
+    /// Raised if VIndex < 1 or  VIndex > NbVPoles
+    ///
+    /// Raised if CPoleWeights.Lower() < 1 or CPoleWeights.Upper() >
+    /// NbUPoles
+    /// Raised if one of the weight value CPoleWeights (i) is lower
+    /// or equal to Resolution from package gp.
+    pub fn set_weight_col(
+        self: std::pin::Pin<&mut Self>,
+        VIndex: i32,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        crate::ffi::Geom_BezierSurface::set_weight_col(self, VIndex, CPoleWeights)
+    }
+
+    /// Modifies a row of weights.
+    /// If the surface was rational it can become non-rational.
+    /// If the surface was non-rational it can become rational.
+    /// The length of CPoleWeights can be lower but not greater than
+    /// NbVPoles.
+    /// Raised if UIndex < 1 or  UIndex > NbUPoles
+    ///
+    /// Raised if CPoleWeights.Lower() < 1 or CPoleWeights.Upper() >
+    /// NbVPoles
+    /// Raised if one of the weight value CPoleWeights (i) is lower
+    /// or equal to Resolution from package gp.
+    pub fn set_weight_row(
+        self: std::pin::Pin<&mut Self>,
+        UIndex: i32,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        crate::ffi::Geom_BezierSurface::set_weight_row(self, UIndex, CPoleWeights)
+    }
+
+    /// Changes the orientation of this Bezier surface in the
+    /// u  parametric direction. The bounds of the
+    /// surface are not changed, but the given parametric
+    /// direction is reversed. Hence, the orientation of the surface is reversed.
+    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_BezierSurface::u_reverse(self)
+    }
+
+    /// Computes the u (or v) parameter on the modified
+    /// surface, produced by reversing its u (or v) parametric
+    /// direction, for any point of u parameter U (or of v
+    /// parameter V) on this Bezier surface.
+    /// In the case of a Bezier surface, these functions return respectively:
+    /// - 1.-U, or 1.-V.
+    pub fn u_reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom_BezierSurface::u_reversed_parameter(self, U)
+    }
+
+    /// Changes the orientation of this Bezier surface in the
+    /// v parametric direction. The bounds of the
+    /// surface are not changed, but the given parametric
+    /// direction is reversed. Hence, the orientation of the
+    /// surface is reversed.
+    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_BezierSurface::v_reverse(self)
+    }
+
+    /// Computes the u (or v) parameter on the modified
+    /// surface, produced by reversing its u (or v) parametric
+    /// direction, for any point of u parameter U (or of v
+    /// parameter V) on this Bezier surface.
+    /// In the case of a Bezier surface, these functions return respectively:
+    /// - 1.-U, or 1.-V.
+    pub fn v_reversed_parameter(&self, V: f64) -> f64 {
+        crate::ffi::Geom_BezierSurface::v_reversed_parameter(self, V)
+    }
+
+    /// Returns the parametric bounds U1, U2, V1 and V2 of
+    /// this Bezier surface.
+    /// In the case of a Bezier surface, this function returns
+    /// U1 = 0, V1 = 0, U2 = 1, V2 = 1.
+    pub fn bounds(
+        &self,
+        U1: std::pin::Pin<&mut f64>,
+        U2: std::pin::Pin<&mut f64>,
+        V1: std::pin::Pin<&mut f64>,
+        V2: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Geom_BezierSurface::bounds(self, U1, U2, V1, V2)
+    }
+
+    pub fn d0(&self, U: f64, V: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::Geom_BezierSurface::d0(self, U, V, P)
+    }
+
+    pub fn d1(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BezierSurface::d1(self, U, V, P, D1U, D1V)
+    }
+
+    pub fn d2(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BezierSurface::d2(self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
+    }
+
+    /// Computes P, the point of parameters (U, V) of this Bezier surface, and
+    /// - one or more of the following sets of vectors:
+    /// - D1U and D1V, the first derivative vectors at this point,
+    /// - D2U, D2V and D2UV, the second derivative
+    /// vectors at this point,
+    /// - D3U, D3V, D3UUV and D3UVV, the third
+    /// derivative vectors at this point.
+    /// Note: The parameters U and V can be outside the bounds of the surface.
+    pub fn d3(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UUV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UVV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_BezierSurface::d3(
+            self, U, V, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
+        )
+    }
+
+    /// Computes the derivative of order Nu in the u
+    /// parametric direction, and Nv in the v parametric
+    /// direction, at the point of parameters (U, V) of this Bezier surface.
+    /// Note: The parameters U and V can be outside the bounds of the surface.
+    /// Exceptions
+    /// Standard_RangeError if:
+    /// - Nu + Nv is less than 1, or Nu or Nv is negative.
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::ffi::gp_Vec {
+        crate::ffi::Geom_BezierSurface::dn(self, U, V, Nu, Nv)
+    }
+
+    /// Returns the number of poles in the U direction.
+    pub fn nb_u_poles(&self) -> i32 {
+        crate::ffi::Geom_BezierSurface::nb_u_poles(self)
+    }
+
+    /// Returns the number of poles in the V direction.
+    pub fn nb_v_poles(&self) -> i32 {
+        crate::ffi::Geom_BezierSurface::nb_v_poles(self)
+    }
+
+    /// Returns the pole of range UIndex, VIndex
+    /// Raised if UIndex < 1 or UIndex > NbUPoles, or
+    /// VIndex < 1 or VIndex > NbVPoles.
+    pub fn pole(&self, UIndex: i32, VIndex: i32) -> &crate::ffi::gp_Pnt {
+        crate::ffi::Geom_BezierSurface::pole(self, UIndex, VIndex)
+    }
+
+    /// Returns the poles of the Bezier surface.
+    ///
+    /// Raised if the length of P in the U an V direction is not equal to
+    /// NbUPoles and NbVPoles.
+    pub fn poles(&self, P: std::pin::Pin<&mut crate::ffi::TColgp_Array2OfPnt>) {
+        crate::ffi::Geom_BezierSurface::poles(self, P)
+    }
+
+    /// Returns the poles of the Bezier surface.
+    pub fn poles(&self) -> &crate::ffi::TColgp_Array2OfPnt {
+        crate::ffi::Geom_BezierSurface::poles(self)
+    }
+
+    /// Returns the degree of the surface in the U direction it is
+    /// NbUPoles - 1
+    pub fn u_degree(&self) -> i32 {
+        crate::ffi::Geom_BezierSurface::u_degree(self)
+    }
+
+    /// Computes the U isoparametric curve. For a Bezier surface the
+    /// UIso curve is a Bezier curve.
+    pub fn u_iso(&self, U: f64) -> crate::ffi::HandleGeomCurve {
+        crate::ffi::Geom_BezierSurface::u_iso(self, U)
+    }
+
+    /// Returns the degree of the surface in the V direction it is
+    /// NbVPoles - 1
+    pub fn v_degree(&self) -> i32 {
+        crate::ffi::Geom_BezierSurface::v_degree(self)
+    }
+
+    /// Computes the V isoparametric curve. For a Bezier surface the
+    /// VIso  curve is a Bezier curve.
+    pub fn v_iso(&self, V: f64) -> crate::ffi::HandleGeomCurve {
+        crate::ffi::Geom_BezierSurface::v_iso(self, V)
+    }
+
+    /// Returns the weight of range UIndex, VIndex
+    ///
+    /// Raised if UIndex < 1 or UIndex > NbUPoles, or
+    /// VIndex < 1 or VIndex > NbVPoles.
+    pub fn weight(&self, UIndex: i32, VIndex: i32) -> f64 {
+        crate::ffi::Geom_BezierSurface::weight(self, UIndex, VIndex)
+    }
+
+    /// Returns the weights of the Bezier surface.
+    ///
+    /// Raised if the length of W in the U an V direction is not
+    /// equal to NbUPoles and NbVPoles.
+    pub fn weights(&self, W: std::pin::Pin<&mut crate::ffi::TColStd_Array2OfReal>) {
+        crate::ffi::Geom_BezierSurface::weights(self, W)
+    }
+
+    /// Returns True if the first control points row and the
+    /// last control points row are identical. The tolerance
+    /// criterion is Resolution from package gp.
+    pub fn is_u_closed(&self) -> bool {
+        crate::ffi::Geom_BezierSurface::is_u_closed(self)
+    }
+
+    /// Returns True if the first control points column
+    /// and the last control points column are identical.
+    /// The tolerance criterion is Resolution from package gp.
+    pub fn is_v_closed(&self) -> bool {
+        crate::ffi::Geom_BezierSurface::is_v_closed(self)
+    }
+
+    /// Returns True, a Bezier surface is always  CN
+    pub fn is_c_nu(&self, N: i32) -> bool {
+        crate::ffi::Geom_BezierSurface::is_c_nu(self, N)
+    }
+
+    /// Returns True, a BezierSurface is always  CN
+    pub fn is_c_nv(&self, N: i32) -> bool {
+        crate::ffi::Geom_BezierSurface::is_c_nv(self, N)
+    }
+
+    /// Returns False.
+    pub fn is_u_periodic(&self) -> bool {
+        crate::ffi::Geom_BezierSurface::is_u_periodic(self)
+    }
+
+    /// Returns False.
+    pub fn is_v_periodic(&self) -> bool {
+        crate::ffi::Geom_BezierSurface::is_v_periodic(self)
+    }
+
+    /// Returns False if the weights are identical in the U direction,
+    /// The tolerance criterion is Resolution from package gp.
+    /// Example :
+    /// |1.0, 1.0, 1.0|
+    /// if Weights =  |0.5, 0.5, 0.5|   returns False
+    /// |2.0, 2.0, 2.0|
+    pub fn is_u_rational(&self) -> bool {
+        crate::ffi::Geom_BezierSurface::is_u_rational(self)
+    }
+
+    /// Returns False if the weights are identical in the V direction,
+    /// The tolerance criterion is Resolution from package gp.
+    /// Example :
+    /// |1.0, 2.0, 0.5|
+    /// if Weights =  |1.0, 2.0, 0.5|   returns False
+    /// |1.0, 2.0, 0.5|
+    pub fn is_v_rational(&self) -> bool {
+        crate::ffi::Geom_BezierSurface::is_v_rational(self)
+    }
+
+    /// Applies the transformation T to this Bezier surface.
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_BezierSurface::transform(self, T)
+    }
+
+    /// Computes two tolerance values for this Bezier
+    /// surface, based on the given tolerance in 3D space
+    /// Tolerance3D. The tolerances computed are:
+    /// - UTolerance in the u parametric direction, and
+    /// - VTolerance in the v parametric direction.
+    /// If f(u,v) is the equation of this Bezier surface,
+    /// UTolerance and VTolerance guarantee that:
+    /// | u1 - u0 | < UTolerance and
+    /// | v1 - v0 | < VTolerance
+    /// ====> |f (u1,v1) - f (u0,v0)| < Tolerance3D
+    pub fn resolution(
+        self: std::pin::Pin<&mut Self>,
+        Tolerance3D: f64,
+        UTolerance: std::pin::Pin<&mut f64>,
+        VTolerance: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Geom_BezierSurface::resolution(self, Tolerance3D, UTolerance, VTolerance)
+    }
+
+    /// Creates a new object which is a copy of this Bezier surface.
+    pub fn copy(&self) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_BezierSurface::copy(self)
+    }
+
+    /// Returns the value of the maximum polynomial degree of a
+    /// Bezier surface. This value is 25.
+    pub fn max_degree() -> i32 {
+        crate::ffi::Geom_BezierSurface::max_degree()
+    }
+
     /// Upcast to Geom_BoundedSurface
     pub fn as_bounded_surface(&self) -> &BoundedSurface {
         crate::ffi::Geom_BezierSurface_as_Geom_BoundedSurface(self)
@@ -736,6 +3889,16 @@ impl BezierSurface {
 pub use crate::ffi::Geom_BoundedCurve as BoundedCurve;
 
 impl BoundedCurve {
+    /// Returns the end point of the curve.
+    pub fn end_point(&self) -> crate::ffi::gp_Pnt {
+        crate::ffi::Geom_BoundedCurve::end_point(self)
+    }
+
+    /// Returns the start point of the curve.
+    pub fn start_point(&self) -> crate::ffi::gp_Pnt {
+        crate::ffi::Geom_BoundedCurve::start_point(self)
+    }
+
     /// Upcast to Geom_Curve
     pub fn as_curve(&self) -> &Curve {
         crate::ffi::Geom_BoundedCurve_as_Geom_Curve(self)
@@ -849,6 +4012,200 @@ impl BoundedSurface {
 pub use crate::ffi::Geom_Curve as Curve;
 
 impl Curve {
+    /// Changes the direction of parametrization of <me>.
+    /// The "FirstParameter" and the "LastParameter" are not changed
+    /// but the orientation  of the curve is modified. If the curve
+    /// is bounded the StartPoint of the initial curve becomes the
+    /// EndPoint of the reversed curve  and the EndPoint of the initial
+    /// curve becomes the StartPoint of the reversed curve.
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_Curve::reverse(self)
+    }
+
+    /// Returns the  parameter on the  reversed  curve for
+    /// the point of parameter U on <me>.
+    ///
+    /// me->Reversed()->Value(me->ReversedParameter(U))
+    ///
+    /// is the same point as
+    ///
+    /// me->Value(U)
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom_Curve::reversed_parameter(self, U)
+    }
+
+    /// Returns the  parameter on the  transformed  curve for
+    /// the transform of the point of parameter U on <me>.
+    ///
+    /// me->Transformed(T)->Value(me->TransformedParameter(U,T))
+    ///
+    /// is the same point as
+    ///
+    /// me->Value(U).Transformed(T)
+    ///
+    /// This methods returns <U>
+    ///
+    /// It can be redefined. For example on the Line.
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf) -> f64 {
+        crate::ffi::Geom_Curve::transformed_parameter(self, U, T)
+    }
+
+    /// Returns a  coefficient to compute the parameter on
+    /// the transformed  curve  for  the transform  of the
+    /// point on <me>.
+    ///
+    /// Transformed(T)->Value(U * ParametricTransformation(T))
+    ///
+    /// is the same point as
+    ///
+    /// Value(U).Transformed(T)
+    ///
+    /// This methods returns 1.
+    ///
+    /// It can be redefined. For example on the Line.
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf) -> f64 {
+        crate::ffi::Geom_Curve::parametric_transformation(self, T)
+    }
+
+    /// Returns a copy of <me> reversed.
+    pub fn reversed(&self) -> crate::ffi::HandleGeomCurve {
+        crate::ffi::Geom_Curve::reversed(self)
+    }
+
+    /// Returns the value of the first parameter.
+    /// Warnings :
+    /// It can be RealFirst from package Standard
+    /// if the curve is infinite
+    pub fn first_parameter(&self) -> f64 {
+        crate::ffi::Geom_Curve::first_parameter(self)
+    }
+
+    /// Returns the value of the last parameter.
+    /// Warnings :
+    /// It can be RealLast from package Standard
+    /// if the curve is infinite
+    pub fn last_parameter(&self) -> f64 {
+        crate::ffi::Geom_Curve::last_parameter(self)
+    }
+
+    /// Returns true if the curve is closed.
+    /// Some curves such as circle are always closed, others such as line
+    /// are never closed (by definition).
+    /// Some Curves such as OffsetCurve can be closed or not. These curves
+    /// are considered as closed if the distance between the first point
+    /// and the last point of the curve is lower or equal to the Resolution
+    /// from package gp which is a fixed criterion independent of the
+    /// application.
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::Geom_Curve::is_closed(self)
+    }
+
+    /// Is the parametrization of the curve periodic ?
+    /// It is possible only if the curve is closed and if the
+    /// following relation is satisfied :
+    /// for each parametric value U the distance between the point
+    /// P(u) and the point P (u + T) is lower or equal to Resolution
+    /// from package gp, T is the period and must be a constant.
+    /// There are three possibilities :
+    /// . the curve is never periodic by definition (SegmentLine)
+    /// . the curve is always periodic by definition (Circle)
+    /// . the curve can be defined as periodic (BSpline). In this case
+    /// a function SetPeriodic allows you to give the shape of the
+    /// curve.  The general rule for this case is : if a curve can be
+    /// periodic or not the default periodicity set is non periodic
+    /// and you have to turn (explicitly) the curve into a periodic
+    /// curve  if you want the curve to be periodic.
+    pub fn is_periodic(&self) -> bool {
+        crate::ffi::Geom_Curve::is_periodic(self)
+    }
+
+    /// Returns the period of this curve.
+    /// Exceptions Standard_NoSuchObject if this curve is not periodic.
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom_Curve::period(self)
+    }
+
+    /// Returns true if the degree of continuity of this curve is at least N.
+    /// Exceptions -  Standard_RangeError if N is less than 0.
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom_Curve::is_cn(self, N)
+    }
+
+    /// Returns in P the point of parameter U.
+    /// If the curve is periodic  then the returned point is P(U) with
+    /// U = Ustart + (U - Uend)  where Ustart and Uend are the
+    /// parametric bounds of the curve.
+    ///
+    /// Raised only for the "OffsetCurve" if it is not possible to
+    /// compute the current point. For example when the first
+    /// derivative on the basis curve and the offset direction
+    /// are parallel.
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::Geom_Curve::d0(self, U, P)
+    }
+
+    /// Returns the point P of parameter U and the first derivative V1.
+    /// Raised if the continuity of the curve is not C1.
+    pub fn d1(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_Curve::d1(self, U, P, V1)
+    }
+
+    /// Returns the point P of parameter U, the first and second
+    /// derivatives V1 and V2.
+    /// Raised if the continuity of the curve is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_Curve::d2(self, U, P, V1, V2)
+    }
+
+    /// Returns the point P of parameter U, the first, the second
+    /// and the third derivative.
+    /// Raised if the continuity of the curve is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_Curve::d3(self, U, P, V1, V2, V3)
+    }
+
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the curve is not CN.
+    ///
+    /// Raised if the   derivative  cannot  be  computed
+    /// easily. e.g. rational bspline and n > 3.
+    /// Raised if N < 1.
+    pub fn dn(&self, U: f64, N: i32) -> crate::ffi::gp_Vec {
+        crate::ffi::Geom_Curve::dn(self, U, N)
+    }
+
+    /// Computes the point of parameter U on <me>.
+    /// If the curve is periodic  then the returned point is P(U) with
+    /// U = Ustart + (U - Uend)  where Ustart and Uend are the
+    /// parametric bounds of the curve.
+    /// it is implemented with D0.
+    ///
+    /// Raised only for the "OffsetCurve" if it is not possible to
+    /// compute the current point. For example when the first
+    /// derivative on the basis curve and the offset direction are parallel.
+    pub fn value(&self, U: f64) -> crate::ffi::gp_Pnt {
+        crate::ffi::Geom_Curve::value(self, U)
+    }
+
     /// Upcast to Geom_Geometry
     pub fn as_geometry(&self) -> &Geometry {
         crate::ffi::Geom_Curve_as_Geom_Geometry(self)
@@ -914,6 +4271,231 @@ impl CylindricalSurface {
     /// Creates a CylindricalSurface from a non transient gp_Cylinder.
     pub fn new_cylinder(C: &crate::ffi::gp_Cylinder) -> cxx::UniquePtr<Self> {
         crate::ffi::Geom_CylindricalSurface_ctor_cylinder(C)
+    }
+
+    /// Set <me> so that <me> has the same geometric properties as C.
+    pub fn set_cylinder(self: std::pin::Pin<&mut Self>, C: &crate::ffi::gp_Cylinder) {
+        crate::ffi::Geom_CylindricalSurface::set_cylinder(self, C)
+    }
+
+    /// Changes the radius of the cylinder.
+    /// Raised if R < 0.0
+    pub fn set_radius(self: std::pin::Pin<&mut Self>, R: f64) {
+        crate::ffi::Geom_CylindricalSurface::set_radius(self, R)
+    }
+
+    /// returns a non transient cylinder with the same geometric properties as <me>.
+    pub fn cylinder(&self) -> crate::ffi::gp_Cylinder {
+        crate::ffi::Geom_CylindricalSurface::cylinder(self)
+    }
+
+    /// Return the  parameter on the  Ureversed surface for
+    /// the point of parameter U on <me>.
+    /// Return 2.PI - U.
+    pub fn u_reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom_CylindricalSurface::u_reversed_parameter(self, U)
+    }
+
+    /// Return the  parameter on the  Vreversed surface for
+    /// the point of parameter V on <me>.
+    /// Return -V
+    pub fn v_reversed_parameter(&self, V: f64) -> f64 {
+        crate::ffi::Geom_CylindricalSurface::v_reversed_parameter(self, V)
+    }
+
+    /// Computes the  parameters on the  transformed  surface for
+    /// the transform of the point of parameters U,V on <me>.
+    /// @code
+    /// me->Transformed(T)->Value(U',V')
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V).Transformed(T)
+    /// @endcode
+    /// Where U',V' are the new values of U,V after calling
+    /// @code
+    /// me->TransformParameters(U,V,T)
+    /// @endcode
+    /// This method multiplies V by T.ScaleFactor()
+    pub fn transform_parameters(
+        &self,
+        U: std::pin::Pin<&mut f64>,
+        V: std::pin::Pin<&mut f64>,
+        T: &crate::ffi::gp_Trsf,
+    ) {
+        crate::ffi::Geom_CylindricalSurface::transform_parameters(self, U, V, T)
+    }
+
+    /// Returns a 2d transformation used to find the new
+    /// parameters of a point on the transformed surface.
+    /// @code
+    /// me->Transformed(T)->Value(U',V')
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V).Transformed(T)
+    /// @endcode
+    /// Where U',V' are obtained by transforming U,V with the 2d transformation returned by
+    /// @code
+    /// me->ParametricTransformation(T)
+    /// @endcode
+    /// This method returns a scale centered on the U axis with T.ScaleFactor
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf) -> crate::ffi::gp_GTrsf2d {
+        crate::ffi::Geom_CylindricalSurface::parametric_transformation(self, T)
+    }
+
+    /// The CylindricalSurface is infinite in the V direction so
+    /// V1 = Realfirst, V2 = RealLast from package Standard.
+    /// U1 = 0 and U2 = 2*PI.
+    pub fn bounds(
+        &self,
+        U1: std::pin::Pin<&mut f64>,
+        U2: std::pin::Pin<&mut f64>,
+        V1: std::pin::Pin<&mut f64>,
+        V2: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Geom_CylindricalSurface::bounds(self, U1, U2, V1, V2)
+    }
+
+    /// Returns the coefficients of the implicit equation of the quadric
+    /// in the absolute cartesian coordinate system :
+    /// These coefficients are normalized.
+    /// @code
+    /// A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) + 2.(C1.X + C2.Y + C3.Z) + D = 0.0
+    /// @endcode
+    pub fn coefficients(
+        &self,
+        A1: std::pin::Pin<&mut f64>,
+        A2: std::pin::Pin<&mut f64>,
+        A3: std::pin::Pin<&mut f64>,
+        B1: std::pin::Pin<&mut f64>,
+        B2: std::pin::Pin<&mut f64>,
+        B3: std::pin::Pin<&mut f64>,
+        C1: std::pin::Pin<&mut f64>,
+        C2: std::pin::Pin<&mut f64>,
+        C3: std::pin::Pin<&mut f64>,
+        D: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Geom_CylindricalSurface::coefficients(
+            self, A1, A2, A3, B1, B2, B3, C1, C2, C3, D,
+        )
+    }
+
+    /// Returns the radius of this cylinder.
+    pub fn radius(&self) -> f64 {
+        crate::ffi::Geom_CylindricalSurface::radius(self)
+    }
+
+    /// Returns True.
+    pub fn is_u_closed(&self) -> bool {
+        crate::ffi::Geom_CylindricalSurface::is_u_closed(self)
+    }
+
+    /// Returns False.
+    pub fn is_v_closed(&self) -> bool {
+        crate::ffi::Geom_CylindricalSurface::is_v_closed(self)
+    }
+
+    /// Returns True.
+    pub fn is_u_periodic(&self) -> bool {
+        crate::ffi::Geom_CylindricalSurface::is_u_periodic(self)
+    }
+
+    /// Returns False.
+    pub fn is_v_periodic(&self) -> bool {
+        crate::ffi::Geom_CylindricalSurface::is_v_periodic(self)
+    }
+
+    /// The UIso curve is a Line. The location point of this line is
+    /// on the placement plane (XAxis, YAxis) of the surface.
+    /// This line is parallel to the axis of symmetry of the surface.
+    pub fn u_iso(&self, U: f64) -> crate::ffi::HandleGeomCurve {
+        crate::ffi::Geom_CylindricalSurface::u_iso(self, U)
+    }
+
+    /// The VIso curve is a circle. The start point of this circle
+    /// (U = 0) is defined with the "XAxis" of the surface.
+    /// The center of the circle is on the symmetry axis.
+    pub fn v_iso(&self, V: f64) -> crate::ffi::HandleGeomCurve {
+        crate::ffi::Geom_CylindricalSurface::v_iso(self, V)
+    }
+
+    /// Computes the  point P (U, V) on the surface.
+    /// P (U, V) = Loc + Radius * (cos (U) * XDir + sin (U) * YDir) +
+    /// V * ZDir
+    /// where Loc is the origin of the placement plane (XAxis, YAxis)
+    /// XDir is the direction of the XAxis and YDir the direction of
+    /// the YAxis.
+    pub fn d0(&self, U: f64, V: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::Geom_CylindricalSurface::d0(self, U, V, P)
+    }
+
+    /// Computes the current point and the first derivatives in the
+    /// directions U and V.
+    pub fn d1(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_CylindricalSurface::d1(self, U, V, P, D1U, D1V)
+    }
+
+    /// Computes the current point, the first and the second derivatives
+    /// in the directions U and V.
+    pub fn d2(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_CylindricalSurface::d2(self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
+    }
+
+    /// Computes the current point, the first, the second and the
+    /// third   derivatives in the directions U and V.
+    pub fn d3(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UUV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UVV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_CylindricalSurface::d3(
+            self, U, V, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
+        )
+    }
+
+    /// Computes the derivative of order Nu in the direction u and Nv
+    /// in the direction v.
+    /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::ffi::gp_Vec {
+        crate::ffi::Geom_CylindricalSurface::dn(self, U, V, Nu, Nv)
+    }
+
+    /// Applies the transformation T to this cylinder.
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_CylindricalSurface::transform(self, T)
+    }
+
+    /// Creates a new object which is a copy of this cylinder.
+    pub fn copy(&self) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_CylindricalSurface::copy(self)
     }
 
     /// Upcast to Geom_ElementarySurface
@@ -1000,6 +4582,81 @@ impl CylindricalSurface {
 pub use crate::ffi::Geom_ElementarySurface as ElementarySurface;
 
 impl ElementarySurface {
+    /// Changes the main axis (ZAxis) of the elementary surface.
+    ///
+    /// Raised if the direction of A1 is parallel to the XAxis of the
+    /// coordinate system of the surface.
+    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
+        crate::ffi::Geom_ElementarySurface::set_axis(self, theA1)
+    }
+
+    /// Changes the location of the local coordinates system of the
+    /// surface.
+    pub fn set_location(self: std::pin::Pin<&mut Self>, theLoc: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_ElementarySurface::set_location(self, theLoc)
+    }
+
+    /// Changes the local coordinates system of the surface.
+    pub fn set_position(self: std::pin::Pin<&mut Self>, theAx3: &crate::ffi::gp_Ax3) {
+        crate::ffi::Geom_ElementarySurface::set_position(self, theAx3)
+    }
+
+    /// Returns the main axis of the surface (ZAxis).
+    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
+        crate::ffi::Geom_ElementarySurface::axis(self)
+    }
+
+    /// Returns the location point of the local coordinate system of the
+    /// surface.
+    pub fn location(&self) -> &crate::ffi::gp_Pnt {
+        crate::ffi::Geom_ElementarySurface::location(self)
+    }
+
+    /// Returns the local coordinates system of the surface.
+    pub fn position(&self) -> &crate::ffi::gp_Ax3 {
+        crate::ffi::Geom_ElementarySurface::position(self)
+    }
+
+    /// Reverses the U parametric direction of the surface.
+    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_ElementarySurface::u_reverse(self)
+    }
+
+    /// Return the  parameter on the  Ureversed surface for
+    /// the point of parameter U on <me>.
+    ///
+    /// me->UReversed()->Value(me->UReversedParameter(U),V)
+    /// is the same point as
+    /// me->Value(U,V)
+    pub fn u_reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom_ElementarySurface::u_reversed_parameter(self, U)
+    }
+
+    /// Reverses the V parametric direction of the surface.
+    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_ElementarySurface::v_reverse(self)
+    }
+
+    /// Return the  parameter on the  Vreversed surface for
+    /// the point of parameter V on <me>.
+    ///
+    /// me->VReversed()->Value(U,me->VReversedParameter(V))
+    /// is the same point as
+    /// me->Value(U,V)
+    pub fn v_reversed_parameter(&self, V: f64) -> f64 {
+        crate::ffi::Geom_ElementarySurface::v_reversed_parameter(self, V)
+    }
+
+    /// Returns True.
+    pub fn is_c_nu(&self, N: i32) -> bool {
+        crate::ffi::Geom_ElementarySurface::is_c_nu(self, N)
+    }
+
+    /// Returns True.
+    pub fn is_c_nv(&self, N: i32) -> bool {
+        crate::ffi::Geom_ElementarySurface::is_c_nv(self, N)
+    }
+
     /// Upcast to Geom_Geometry
     pub fn as_geometry(&self) -> &Geometry {
         crate::ffi::Geom_ElementarySurface_as_Geom_Geometry(self)
@@ -1043,6 +4700,104 @@ impl ElementarySurface {
 /// concrete type of derived object. All other
 /// transformations are implemented using the Transform method.
 pub use crate::ffi::Geom_Geometry as Geometry;
+
+impl Geometry {
+    /// Performs the symmetrical transformation of a Geometry
+    /// with respect to the point P which is the center of the
+    /// symmetry.
+    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Geom_Geometry::mirror(self, P)
+    }
+
+    /// Performs the symmetrical transformation of a Geometry
+    /// with respect to an axis placement which is the axis of the
+    /// symmetry.
+    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1) {
+        crate::ffi::Geom_Geometry::mirror(self, A1)
+    }
+
+    /// Performs the symmetrical transformation of a Geometry
+    /// with respect to a plane. The axis placement A2 locates
+    /// the plane of the symmetry : (Location, XDirection, YDirection).
+    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, A2: &crate::ffi::gp_Ax2) {
+        crate::ffi::Geom_Geometry::mirror(self, A2)
+    }
+
+    /// Rotates a Geometry. A1 is the axis of the rotation.
+    /// Ang is the angular value of the rotation in radians.
+    pub fn rotate(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        crate::ffi::Geom_Geometry::rotate(self, A1, Ang)
+    }
+
+    /// Scales a Geometry. S is the scaling value.
+    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt, S: f64) {
+        crate::ffi::Geom_Geometry::scale(self, P, S)
+    }
+
+    /// Translates a Geometry.  V is the vector of the translation.
+    pub fn translate(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Vec) {
+        crate::ffi::Geom_Geometry::translate(self, V)
+    }
+
+    /// Translates a Geometry from the point P1 to the point P2.
+    pub fn translate_pnt2(
+        self: std::pin::Pin<&mut Self>,
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+    ) {
+        crate::ffi::Geom_Geometry::translate(self, P1, P2)
+    }
+
+    /// Transformation of a geometric object. This transformation
+    /// can be a translation, a rotation, a symmetry, a scaling
+    /// or a complex transformation obtained by combination of
+    /// the previous elementaries transformations.
+    /// (see class Transformation of the package Geom).
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_Geometry::transform(self, T)
+    }
+
+    pub fn mirrored(&self, P: &crate::ffi::gp_Pnt) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_Geometry::mirrored(self, P)
+    }
+
+    pub fn mirrored_ax1(&self, A1: &crate::ffi::gp_Ax1) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_Geometry::mirrored(self, A1)
+    }
+
+    pub fn mirrored_ax2(&self, A2: &crate::ffi::gp_Ax2) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_Geometry::mirrored(self, A2)
+    }
+
+    pub fn rotated(&self, A1: &crate::ffi::gp_Ax1, Ang: f64) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_Geometry::rotated(self, A1, Ang)
+    }
+
+    pub fn scaled(&self, P: &crate::ffi::gp_Pnt, S: f64) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_Geometry::scaled(self, P, S)
+    }
+
+    pub fn transformed(&self, T: &crate::ffi::gp_Trsf) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_Geometry::transformed(self, T)
+    }
+
+    pub fn translated(&self, V: &crate::ffi::gp_Vec) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_Geometry::translated(self, V)
+    }
+
+    pub fn translated_pnt2(
+        &self,
+        P1: &crate::ffi::gp_Pnt,
+        P2: &crate::ffi::gp_Pnt,
+    ) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_Geometry::translated(self, P1, P2)
+    }
+
+    /// Creates a new object which is a copy of this geometric object.
+    pub fn copy(&self) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_Geometry::copy(self)
+    }
+}
 
 // ========================
 // From Geom_Plane.hxx
@@ -1104,6 +4859,222 @@ impl Plane {
     /// Raised if Sqrt (A*A + B*B + C*C) <= Resolution from gp
     pub fn new_real4(A: f64, B: f64, C: f64, D: f64) -> cxx::UniquePtr<Self> {
         crate::ffi::Geom_Plane_ctor_real4(A, B, C, D)
+    }
+
+    /// Set <me> so that <me> has the same geometric properties as Pl.
+    pub fn set_pln(self: std::pin::Pin<&mut Self>, Pl: &crate::ffi::gp_Pln) {
+        crate::ffi::Geom_Plane::set_pln(self, Pl)
+    }
+
+    /// Converts this plane into a gp_Pln plane.
+    pub fn pln(&self) -> crate::ffi::gp_Pln {
+        crate::ffi::Geom_Plane::pln(self)
+    }
+
+    /// Changes the orientation of this plane in the u (or v) parametric direction.
+    /// The bounds of the plane are not changed but the given parametric direction is reversed.
+    /// Hence the orientation of the surface is reversed.
+    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_Plane::u_reverse(self)
+    }
+
+    /// Computes the u  parameter on the modified plane,
+    /// produced when reversing the u parametric of this plane,
+    /// for any point of u parameter U on this plane.
+    /// In the case of a plane, these methods return - -U.
+    pub fn u_reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom_Plane::u_reversed_parameter(self, U)
+    }
+
+    /// Changes the orientation of this plane in the u (or v) parametric direction.
+    /// The bounds of the plane are not changed but the given parametric direction is reversed.
+    /// Hence the orientation of the surface is reversed.
+    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_Plane::v_reverse(self)
+    }
+
+    /// Computes the v parameter on the modified plane,
+    /// produced when reversing the v parametric of this plane,
+    /// for any point of v parameter V on this plane.
+    /// In the case of a plane, these methods return -V.
+    pub fn v_reversed_parameter(&self, V: f64) -> f64 {
+        crate::ffi::Geom_Plane::v_reversed_parameter(self, V)
+    }
+
+    /// Computes the parameters on the transformed surface for
+    /// the transform of the point of parameters U,V on <me>.
+    /// @code
+    /// me->Transformed(T)->Value(U',V')
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V).Transformed(T)
+    /// @endcode
+    /// Where U',V' are the new values of U,V after calling
+    /// @code
+    /// me->TransformParameters(U,V,T)
+    /// @endcode
+    /// This method multiplies U and V by T.ScaleFactor()
+    pub fn transform_parameters(
+        &self,
+        U: std::pin::Pin<&mut f64>,
+        V: std::pin::Pin<&mut f64>,
+        T: &crate::ffi::gp_Trsf,
+    ) {
+        crate::ffi::Geom_Plane::transform_parameters(self, U, V, T)
+    }
+
+    /// Returns a 2d transformation used to find the new
+    /// parameters of a point on the transformed surface.
+    /// @code
+    /// me->Transformed(T)->Value(U',V')
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V).Transformed(T)
+    /// @endcode
+    /// Where U',V' are  obtained by transforming U,V with the 2d transformation returned by
+    /// @code
+    /// me->ParametricTransformation(T)
+    /// @endcode
+    /// This method returns a scale centered on the origin with T.ScaleFactor
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf) -> crate::ffi::gp_GTrsf2d {
+        crate::ffi::Geom_Plane::parametric_transformation(self, T)
+    }
+
+    /// Returns the parametric bounds U1, U2, V1 and V2 of this plane.
+    /// Because a plane is an infinite surface, the following is always true:
+    /// - U1 = V1 =   Standard_Real::RealFirst()
+    /// - U2 = V2 =   Standard_Real::RealLast().
+    pub fn bounds(
+        &self,
+        U1: std::pin::Pin<&mut f64>,
+        U2: std::pin::Pin<&mut f64>,
+        V1: std::pin::Pin<&mut f64>,
+        V2: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Geom_Plane::bounds(self, U1, U2, V1, V2)
+    }
+
+    /// Computes the normalized coefficients of the plane's cartesian equation:
+    /// @code
+    /// Ax + By + Cz + D = 0.0
+    /// @endcode
+    pub fn coefficients(
+        &self,
+        A: std::pin::Pin<&mut f64>,
+        B: std::pin::Pin<&mut f64>,
+        C: std::pin::Pin<&mut f64>,
+        D: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Geom_Plane::coefficients(self, A, B, C, D)
+    }
+
+    /// return False
+    pub fn is_u_closed(&self) -> bool {
+        crate::ffi::Geom_Plane::is_u_closed(self)
+    }
+
+    /// return False
+    pub fn is_v_closed(&self) -> bool {
+        crate::ffi::Geom_Plane::is_v_closed(self)
+    }
+
+    /// return False.
+    pub fn is_u_periodic(&self) -> bool {
+        crate::ffi::Geom_Plane::is_u_periodic(self)
+    }
+
+    /// return False.
+    pub fn is_v_periodic(&self) -> bool {
+        crate::ffi::Geom_Plane::is_v_periodic(self)
+    }
+
+    /// Computes the U isoparametric curve.
+    /// This is a Line parallel to the YAxis of the plane.
+    pub fn u_iso(&self, U: f64) -> crate::ffi::HandleGeomCurve {
+        crate::ffi::Geom_Plane::u_iso(self, U)
+    }
+
+    /// Computes the V isoparametric curve.
+    /// This is a Line parallel to the XAxis of the plane.
+    pub fn v_iso(&self, V: f64) -> crate::ffi::HandleGeomCurve {
+        crate::ffi::Geom_Plane::v_iso(self, V)
+    }
+
+    /// Computes the point P (U, V) on <me>.
+    /// @code
+    /// P = O + U * XDir + V * YDir.
+    /// @endcode
+    /// where O is the "Location" point of the plane, XDir the
+    /// "XDirection" and YDir the "YDirection" of the plane's local coordinate system.
+    pub fn d0(&self, U: f64, V: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::Geom_Plane::d0(self, U, V, P)
+    }
+
+    /// Computes the current point and the first derivatives in the directions U and V.
+    pub fn d1(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_Plane::d1(self, U, V, P, D1U, D1V)
+    }
+
+    /// Computes the current point, the first and the second
+    /// derivatives in the directions U and V.
+    pub fn d2(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_Plane::d2(self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
+    }
+
+    /// Computes the current point, the first,the second and the
+    /// third derivatives in the directions U and V.
+    pub fn d3(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UUV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UVV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_Plane::d3(self, U, V, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV)
+    }
+
+    /// Computes the derivative of order Nu in the direction u
+    /// and Nv in the direction v.
+    /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::ffi::gp_Vec {
+        crate::ffi::Geom_Plane::dn(self, U, V, Nu, Nv)
+    }
+
+    /// Applies the transformation T to this plane.
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_Plane::transform(self, T)
+    }
+
+    /// Creates a new object which is a copy of this plane.
+    pub fn copy(&self) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_Plane::copy(self)
     }
 
     /// Upcast to Geom_ElementarySurface
@@ -1173,6 +5144,278 @@ impl Plane {
 pub use crate::ffi::Geom_Surface as Surface;
 
 impl Surface {
+    /// Reverses the U direction of parametrization of <me>.
+    /// The bounds of the surface are not modified.
+    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_Surface::u_reverse(self)
+    }
+
+    /// Reverses the U direction of parametrization of <me>.
+    /// The bounds of the surface are not modified.
+    /// A copy of <me> is returned.
+    pub fn u_reversed(&self) -> crate::ffi::HandleGeomSurface {
+        crate::ffi::Geom_Surface::u_reversed(self)
+    }
+
+    /// Returns the  parameter on the  Ureversed surface for
+    /// the point of parameter U on <me>.
+    /// @code
+    /// me->UReversed()->Value(me->UReversedParameter(U),V)
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V)
+    /// @endcode
+    pub fn u_reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom_Surface::u_reversed_parameter(self, U)
+    }
+
+    /// Reverses the V direction of parametrization of <me>.
+    /// The bounds of the surface are not modified.
+    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_Surface::v_reverse(self)
+    }
+
+    /// Reverses the V direction of parametrization of <me>.
+    /// The bounds of the surface are not modified.
+    /// A copy of <me> is returned.
+    pub fn v_reversed(&self) -> crate::ffi::HandleGeomSurface {
+        crate::ffi::Geom_Surface::v_reversed(self)
+    }
+
+    /// Returns the  parameter on the  Vreversed surface for
+    /// the point of parameter V on <me>.
+    /// @code
+    /// me->VReversed()->Value(U,me->VReversedParameter(V))
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V)
+    /// @endcode
+    pub fn v_reversed_parameter(&self, V: f64) -> f64 {
+        crate::ffi::Geom_Surface::v_reversed_parameter(self, V)
+    }
+
+    /// Computes the  parameters on the  transformed  surface for
+    /// the transform of the point of parameters U,V on <me>.
+    /// @code
+    /// me->Transformed(T)->Value(U',V')
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V).Transformed(T)
+    /// @endcode
+    /// Where U',V' are the new values of U,V after calling
+    /// @code
+    /// me->TransformParameters(U,V,T)
+    /// @endcode
+    /// This method does not change <U> and <V>
+    ///
+    /// It  can be redefined.  For  example on  the Plane,
+    /// Cylinder, Cone, Revolved and Extruded surfaces.
+    pub fn transform_parameters(
+        &self,
+        U: std::pin::Pin<&mut f64>,
+        V: std::pin::Pin<&mut f64>,
+        T: &crate::ffi::gp_Trsf,
+    ) {
+        crate::ffi::Geom_Surface::transform_parameters(self, U, V, T)
+    }
+
+    /// Returns a 2d transformation  used to find the  new
+    /// parameters of a point on the transformed surface.
+    /// @code
+    /// me->Transformed(T)->Value(U',V')
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V).Transformed(T)
+    /// @endcode
+    /// Where U',V' are  obtained by transforming U,V with
+    /// the 2d transformation returned by
+    /// @code
+    /// me->ParametricTransformation(T)
+    /// @endcode
+    /// This method returns an identity transformation
+    ///
+    /// It  can be redefined.  For  example on  the Plane,
+    /// Cylinder, Cone, Revolved and Extruded surfaces.
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf) -> crate::ffi::gp_GTrsf2d {
+        crate::ffi::Geom_Surface::parametric_transformation(self, T)
+    }
+
+    /// Returns the parametric bounds U1, U2, V1 and V2 of this surface.
+    /// If the surface is infinite, this function can return a value
+    /// equal to Precision::Infinite: instead of Standard_Real::LastReal.
+    pub fn bounds(
+        &self,
+        U1: std::pin::Pin<&mut f64>,
+        U2: std::pin::Pin<&mut f64>,
+        V1: std::pin::Pin<&mut f64>,
+        V2: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Geom_Surface::bounds(self, U1, U2, V1, V2)
+    }
+
+    /// Checks whether this surface is closed in the u parametric direction.
+    /// Returns true if, in the u parametric direction:
+    /// taking uFirst and uLast as the parametric bounds in
+    /// the u parametric direction, for each parameter v,
+    /// the distance between the points P(uFirst, v) and
+    /// P(uLast, v) is less than or equal to gp::Resolution().
+    pub fn is_u_closed(&self) -> bool {
+        crate::ffi::Geom_Surface::is_u_closed(self)
+    }
+
+    /// Checks whether this surface is closed in the u parametric direction.
+    /// Returns true if, in the v parametric direction:
+    /// taking vFirst and vLast as the parametric bounds in the v parametric direction,
+    /// for each parameter u, the distance between the points
+    /// P(u, vFirst) and P(u, vLast) is less than or equal to gp::Resolution().
+    pub fn is_v_closed(&self) -> bool {
+        crate::ffi::Geom_Surface::is_v_closed(self)
+    }
+
+    /// Checks if this surface is periodic in the u parametric direction.
+    /// Returns true if:
+    /// - this surface is closed in the u parametric direction, and
+    /// - there is a constant T such that the distance
+    /// between the points P (u, v) and P (u + T, v)
+    /// (or the points P (u, v) and P (u, v + T)) is less than or equal to gp::Resolution().
+    ///
+    /// Note: T is the parametric period in the u parametric direction.
+    pub fn is_u_periodic(&self) -> bool {
+        crate::ffi::Geom_Surface::is_u_periodic(self)
+    }
+
+    /// Returns the period of this surface in the u parametric direction.
+    /// Raises if the surface is not uperiodic.
+    pub fn u_period(&self) -> f64 {
+        crate::ffi::Geom_Surface::u_period(self)
+    }
+
+    /// Checks if this surface is periodic in the v parametric direction.
+    /// Returns true if:
+    /// - this surface is closed in the v parametric direction, and
+    /// - there is a constant T such that the distance
+    /// between the points P (u, v) and P (u + T, v)
+    /// (or the points P (u, v) and P (u, v + T)) is less than or equal to gp::Resolution().
+    ///
+    /// Note: T is the parametric period in the v parametric direction.
+    pub fn is_v_periodic(&self) -> bool {
+        crate::ffi::Geom_Surface::is_v_periodic(self)
+    }
+
+    /// Returns the period of this surface in the v parametric direction.
+    /// raises if the surface is not vperiodic.
+    pub fn v_period(&self) -> f64 {
+        crate::ffi::Geom_Surface::v_period(self)
+    }
+
+    /// Computes the U isoparametric curve.
+    pub fn u_iso(&self, U: f64) -> crate::ffi::HandleGeomCurve {
+        crate::ffi::Geom_Surface::u_iso(self, U)
+    }
+
+    /// Computes the V isoparametric curve.
+    pub fn v_iso(&self, V: f64) -> crate::ffi::HandleGeomCurve {
+        crate::ffi::Geom_Surface::v_iso(self, V)
+    }
+
+    /// Returns the order of continuity of the surface in the U parametric direction.
+    /// Raised if N < 0.
+    pub fn is_c_nu(&self, N: i32) -> bool {
+        crate::ffi::Geom_Surface::is_c_nu(self, N)
+    }
+
+    /// Returns the order of continuity of the surface in the V parametric direction.
+    /// Raised if N < 0.
+    pub fn is_c_nv(&self, N: i32) -> bool {
+        crate::ffi::Geom_Surface::is_c_nv(self, N)
+    }
+
+    /// Computes the point of parameter U,V on the surface.
+    ///
+    /// Raised only for an "OffsetSurface" if it is not possible to
+    /// compute the current point.
+    pub fn d0(&self, U: f64, V: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::Geom_Surface::d0(self, U, V, P)
+    }
+
+    /// Computes the point P and the first derivatives in the directions U and V at this point.
+    /// Raised if the continuity of the surface is not C1.
+    ///
+    /// Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
+    pub fn d1(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_Surface::d1(self, U, V, P, D1U, D1V)
+    }
+
+    /// Computes the point P, the first and the second derivatives in
+    /// the directions U and V at this point.
+    /// Raised if the continuity of the surface is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_Surface::d2(self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
+    }
+
+    /// Computes the point P, the first,the second and the third
+    /// derivatives in the directions U and V at this point.
+    /// Raised if the continuity of the surface is not C2.
+    pub fn d3(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UUV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UVV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_Surface::d3(
+            self, U, V, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
+        )
+    }
+
+    /// Computes the derivative of order Nu in the direction U and Nv in the direction V at the point
+    /// P(U, V).
+    ///
+    /// Raised if the continuity of the surface is not CNu in the U direction or not CNv in the V
+    /// direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::ffi::gp_Vec {
+        crate::ffi::Geom_Surface::dn(self, U, V, Nu, Nv)
+    }
+
+    /// Computes the point of parameter (U, V) on the surface.
+    ///
+    /// It is implemented with D0.
+    /// Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
+    ///
+    /// Raised only for an "OffsetSurface" if it is not possible to compute the current point.
+    pub fn value(&self, U: f64, V: f64) -> crate::ffi::gp_Pnt {
+        crate::ffi::Geom_Surface::value(self, U, V)
+    }
+
     /// Upcast to Geom_Geometry
     pub fn as_geometry(&self) -> &Geometry {
         crate::ffi::Geom_Surface_as_Geom_Geometry(self)
@@ -1248,6 +5491,219 @@ impl TrimmedCurve {
             Sense,
             theAdjustPeriodic,
         )
+    }
+
+    /// Changes the orientation of this trimmed curve.
+    /// As a result:
+    /// - the basis curve is reversed,
+    /// - the start point of the initial curve becomes the
+    /// end point of the reversed curve,
+    /// - the end point of the initial curve becomes the
+    /// start point of the reversed curve,
+    /// - the first and last parameters are recomputed.
+    /// If the trimmed curve was defined by:
+    /// - a basis curve whose parameter range is [ 0., 1. ],
+    /// - the two trim values U1 (first parameter) and U2 (last parameter),
+    /// the reversed trimmed curve is defined by:
+    /// - the reversed basis curve, whose parameter range is still [ 0., 1. ],
+    /// - the two trim values 1. - U2 (first parameter) and 1. - U1 (last parameter).
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Geom_TrimmedCurve::reverse(self)
+    }
+
+    /// Computes the parameter on the reversed curve for
+    /// the point of parameter U on this trimmed curve.
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        crate::ffi::Geom_TrimmedCurve::reversed_parameter(self, U)
+    }
+
+    /// Changes this trimmed curve, by redefining the
+    /// parameter values U1 and U2 which limit its basis curve.
+    /// Note: If the basis curve is periodic, the trimmed curve
+    /// has the same orientation as the basis curve if Sense
+    /// is true (default value) or the opposite orientation if Sense is false.
+    /// Warning
+    /// If the basis curve is periodic and theAdjustPeriodic is True,
+    /// the bounds of the trimmed curve may be different from U1 and U2 if the
+    /// parametric origin of the basis curve is within the arc of
+    /// the trimmed curve. In this case, the modified
+    /// parameter will be equal to U1 or U2 plus or minus the period.
+    /// When theAdjustPeriodic is False, parameters U1 and U2 will be
+    /// the same, without adjustment into the first period.
+    /// Exceptions
+    /// Standard_ConstructionError if:
+    /// - the basis curve is not periodic, and either U1 or U2
+    /// are outside the bounds of the basis curve, or
+    /// - U1 is equal to U2.
+    pub fn set_trim(
+        self: std::pin::Pin<&mut Self>,
+        U1: f64,
+        U2: f64,
+        Sense: bool,
+        theAdjustPeriodic: bool,
+    ) {
+        crate::ffi::Geom_TrimmedCurve::set_trim(self, U1, U2, Sense, theAdjustPeriodic)
+    }
+
+    /// Returns the basis curve.
+    /// Warning
+    /// This function does not return a constant reference.
+    /// Consequently, any modification of the returned value
+    /// directly modifies the trimmed curve.
+    pub fn basis_curve(&self) -> crate::ffi::HandleGeomCurve {
+        crate::ffi::Geom_TrimmedCurve::basis_curve(self)
+    }
+
+    /// Returns true if the degree of continuity of the basis
+    /// curve of this trimmed curve is at least N. A trimmed
+    /// curve is at least "C0" continuous.
+    /// Warnings :
+    /// The continuity of the trimmed curve can be greater than
+    /// the continuity of the basis curve because you consider
+    /// only a part of the basis curve.
+    /// Raised if N < 0.
+    pub fn is_cn(&self, N: i32) -> bool {
+        crate::ffi::Geom_TrimmedCurve::is_cn(self, N)
+    }
+
+    /// Returns the end point of <me>. This point is the
+    /// evaluation of the curve for the "LastParameter".
+    pub fn end_point(&self) -> crate::ffi::gp_Pnt {
+        crate::ffi::Geom_TrimmedCurve::end_point(self)
+    }
+
+    /// Returns the value of the first parameter of <me>.
+    /// The first parameter is the parameter of the "StartPoint"
+    /// of the trimmed curve.
+    pub fn first_parameter(&self) -> f64 {
+        crate::ffi::Geom_TrimmedCurve::first_parameter(self)
+    }
+
+    /// Returns True if the distance between the StartPoint and
+    /// the EndPoint is lower or equal to Resolution from package gp.
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::Geom_TrimmedCurve::is_closed(self)
+    }
+
+    /// Always returns FALSE (independently of the type of basis curve).
+    pub fn is_periodic(&self) -> bool {
+        crate::ffi::Geom_TrimmedCurve::is_periodic(self)
+    }
+
+    /// Returns the period of the basis curve of this trimmed curve.
+    /// Exceptions
+    /// Standard_NoSuchObject if the basis curve is not periodic.
+    pub fn period(&self) -> f64 {
+        crate::ffi::Geom_TrimmedCurve::period(self)
+    }
+
+    /// Returns the value of the last parameter of <me>.
+    /// The last parameter is the parameter of the "EndPoint" of the
+    /// trimmed curve.
+    pub fn last_parameter(&self) -> f64 {
+        crate::ffi::Geom_TrimmedCurve::last_parameter(self)
+    }
+
+    /// Returns the start point of <me>.
+    /// This point is the evaluation of the curve from the
+    /// "FirstParameter".
+    /// value and derivatives
+    /// Warnings :
+    /// The returned derivatives have the same orientation as the
+    /// derivatives of the basis curve even if the trimmed curve
+    /// has not the same orientation as the basis curve.
+    pub fn start_point(&self) -> crate::ffi::gp_Pnt {
+        crate::ffi::Geom_TrimmedCurve::start_point(self)
+    }
+
+    /// Returns in P the point of parameter U.
+    ///
+    /// If the basis curve is an OffsetCurve sometimes it is not
+    /// possible to do the evaluation of the curve at the parameter
+    /// U (see class OffsetCurve).
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::Geom_TrimmedCurve::d0(self, U, P)
+    }
+
+    /// Raised if the continuity of the curve is not C1.
+    pub fn d1(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_TrimmedCurve::d1(self, U, P, V1)
+    }
+
+    /// Raised if the continuity of the curve is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_TrimmedCurve::d2(self, U, P, V1, V2)
+    }
+
+    /// Raised if the continuity of the curve is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Geom_TrimmedCurve::d3(self, U, P, V1, V2, V3)
+    }
+
+    /// N is the order of derivation.
+    /// Raised if the continuity of the curve is not CN.
+    /// Raised if N < 1.
+    /// geometric transformations
+    pub fn dn(&self, U: f64, N: i32) -> crate::ffi::gp_Vec {
+        crate::ffi::Geom_TrimmedCurve::dn(self, U, N)
+    }
+
+    /// Applies the transformation T to this trimmed curve.
+    /// Warning The basis curve is also modified.
+    pub fn transform(self: std::pin::Pin<&mut Self>, T: &crate::ffi::gp_Trsf) {
+        crate::ffi::Geom_TrimmedCurve::transform(self, T)
+    }
+
+    /// Returns the  parameter on the  transformed  curve for
+    /// the transform of the point of parameter U on <me>.
+    ///
+    /// me->Transformed(T)->Value(me->TransformedParameter(U,T))
+    ///
+    /// is the same point as
+    ///
+    /// me->Value(U).Transformed(T)
+    ///
+    /// This methods calls the basis curve method.
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf) -> f64 {
+        crate::ffi::Geom_TrimmedCurve::transformed_parameter(self, U, T)
+    }
+
+    /// Returns a  coefficient to compute the parameter on
+    /// the transformed  curve  for  the transform  of the
+    /// point on <me>.
+    ///
+    /// Transformed(T)->Value(U * ParametricTransformation(T))
+    ///
+    /// is the same point as
+    ///
+    /// Value(U).Transformed(T)
+    ///
+    /// This methods calls the basis curve method.
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf) -> f64 {
+        crate::ffi::Geom_TrimmedCurve::parametric_transformation(self, T)
+    }
+
+    /// Creates a new object which is a copy of this trimmed curve.
+    pub fn copy(&self) -> crate::ffi::HandleGeomGeometry {
+        crate::ffi::Geom_TrimmedCurve::copy(self)
     }
 
     /// Upcast to Geom_BoundedCurve

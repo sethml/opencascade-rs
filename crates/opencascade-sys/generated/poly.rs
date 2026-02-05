@@ -7,276 +7,6 @@
 #![allow(non_snake_case)]
 
 // ========================
-// From Poly_ArrayOfNodes.hxx
-// ========================
-
-/// Defines an array of 3D nodes of single/double precision configurable at construction time.
-pub use crate::ffi::Poly_ArrayOfNodes as ArrayOfNodes;
-
-impl ArrayOfNodes {
-    /// Empty constructor of double-precision array.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_ArrayOfNodes_ctor()
-    }
-
-    /// Constructor of double-precision array.
-    pub fn new_int(theLength: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_ArrayOfNodes_ctor_int(theLength)
-    }
-
-    /// Copy constructor
-    pub fn new_arrayofnodes(theOther: &crate::ffi::Poly_ArrayOfNodes) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_ArrayOfNodes_ctor_arrayofnodes(theOther)
-    }
-
-    /// Constructor wrapping pre-allocated C-array of values without copying them.
-    pub fn new_pnt_int(theBegin: &crate::ffi::gp_Pnt, theLength: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_ArrayOfNodes_ctor_pnt_int(theBegin, theLength)
-    }
-
-    /// Constructor wrapping pre-allocated C-array of values without copying them.
-    pub fn new_vec3f_int(theBegin: &crate::ffi::gp_Vec3f, theLength: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_ArrayOfNodes_ctor_vec3f_int(theBegin, theLength)
-    }
-}
-
-// ========================
-// From Poly_ArrayOfUVNodes.hxx
-// ========================
-
-/// Defines an array of 2D nodes of single/double precision configurable at construction time.
-pub use crate::ffi::Poly_ArrayOfUVNodes as ArrayOfUVNodes;
-
-impl ArrayOfUVNodes {
-    /// Empty constructor of double-precision array.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_ArrayOfUVNodes_ctor()
-    }
-
-    /// Constructor of double-precision array.
-    pub fn new_int(theLength: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_ArrayOfUVNodes_ctor_int(theLength)
-    }
-
-    /// Copy constructor
-    pub fn new_arrayofuvnodes(theOther: &crate::ffi::Poly_ArrayOfUVNodes) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_ArrayOfUVNodes_ctor_arrayofuvnodes(theOther)
-    }
-
-    /// Constructor wrapping pre-allocated C-array of values without copying them.
-    pub fn new_pnt2d_int(theBegin: &crate::ffi::gp_Pnt2d, theLength: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_ArrayOfUVNodes_ctor_pnt2d_int(theBegin, theLength)
-    }
-
-    /// Constructor wrapping pre-allocated C-array of values without copying them.
-    pub fn new_vec2f_int(theBegin: &crate::ffi::gp_Vec2f, theLength: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_ArrayOfUVNodes_ctor_vec2f_int(theBegin, theLength)
-    }
-}
-
-// ========================
-// From Poly_HArray1OfTriangle.hxx
-// ========================
-
-pub use crate::ffi::Poly_HArray1OfTriangle as HArray1OfTriangle;
-
-impl HArray1OfTriangle {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_HArray1OfTriangle_ctor()
-    }
-
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_HArray1OfTriangle_ctor_int2(theLower, theUpper)
-    }
-
-    pub fn new_int2_triangle(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi::Poly_Triangle,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_HArray1OfTriangle_ctor_int2_triangle(theLower, theUpper, theValue)
-    }
-
-    pub fn new_triangle_int2_bool(
-        theBegin: &crate::ffi::Poly_Triangle,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_HArray1OfTriangle_ctor_triangle_int2_bool(
-            theBegin, theLower, theUpper, arg3,
-        )
-    }
-
-    pub fn new_array1oftriangle(
-        theOther: &crate::ffi::Poly_Array1OfTriangle,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_HArray1OfTriangle_ctor_array1oftriangle(theOther)
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandlePolyHArray1OfTriangle> {
-        crate::ffi::Poly_HArray1OfTriangle_to_handle(obj)
-    }
-}
-
-// ========================
-// From Poly_Polygon2D.hxx
-// ========================
-
-/// Provides a polygon in 2D space (for example, in the
-/// parametric space of a surface). It is generally an
-/// approximate representation of a curve.
-/// A Polygon2D is defined by a table of nodes. Each node is
-/// a 2D point. If the polygon is closed, the point of closure is
-/// repeated at the end of the table of nodes.
-pub use crate::ffi::Poly_Polygon2D as Polygon2D;
-
-impl Polygon2D {
-    /// Constructs a 2D polygon with specified number of nodes.
-    pub fn new_int(theNbNodes: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_Polygon2D_ctor_int(theNbNodes)
-    }
-
-    /// Constructs a 2D polygon defined by the table of points, <Nodes>.
-    pub fn new_array1ofpnt2d(Nodes: &crate::ffi::TColgp_Array1OfPnt2d) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_Polygon2D_ctor_array1ofpnt2d(Nodes)
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandlePolyPolygon2D> {
-        crate::ffi::Poly_Polygon2D_to_handle(obj)
-    }
-}
-
-// ========================
-// From Poly_Polygon3D.hxx
-// ========================
-
-/// This class Provides a polygon in 3D space. It is generally an approximate representation of a
-/// curve. A Polygon3D is defined by a table of nodes. Each node is a 3D point. If the polygon is
-/// closed, the point of closure is repeated at the end of the table of nodes. If the polygon is an
-/// approximate representation of a curve, you can associate with each of its nodes the value of the
-/// parameter of the corresponding point on the curve.
-pub use crate::ffi::Poly_Polygon3D as Polygon3D;
-
-impl Polygon3D {
-    /// Constructs a 3D polygon with specific number of nodes.
-    pub fn new_int_bool(theNbNodes: i32, theHasParams: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_Polygon3D_ctor_int_bool(theNbNodes, theHasParams)
-    }
-
-    /// Constructs a 3D polygon defined by the table of points, Nodes.
-    pub fn new_array1ofpnt(Nodes: &crate::ffi::TColgp_Array1OfPnt) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_Polygon3D_ctor_array1ofpnt(Nodes)
-    }
-
-    /// Constructs a 3D polygon defined by
-    /// the table of points, Nodes, and the parallel table of
-    /// parameters, Parameters, where each value of the table
-    /// Parameters is the parameter of the corresponding point
-    /// on the curve approximated by the constructed polygon.
-    /// Warning
-    /// Both the Nodes and Parameters tables must have the
-    /// same bounds. This property is not checked at construction time.
-    pub fn new_array1ofpnt_array1ofreal(
-        Nodes: &crate::ffi::TColgp_Array1OfPnt,
-        Parameters: &crate::ffi::TColStd_Array1OfReal,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_Polygon3D_ctor_array1ofpnt_array1ofreal(Nodes, Parameters)
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandlePolyPolygon3D> {
-        crate::ffi::Poly_Polygon3D_to_handle(obj)
-    }
-}
-
-// ========================
-// From Poly_PolygonOnTriangulation.hxx
-// ========================
-
-/// This class provides a polygon in 3D space, based on the triangulation
-/// of a surface. It may be the approximate representation of a
-/// curve on the surface, or more generally the shape.
-/// A PolygonOnTriangulation is defined by a table of
-/// nodes. Each node is an index in the table of nodes specific
-/// to a triangulation, and represents a point on the surface. If
-/// the polygon is closed, the index of the point of closure is
-/// repeated at the end of the table of nodes.
-/// If the polygon is an approximate representation of a curve
-/// on a surface, you can associate with each of its nodes the
-/// value of the parameter of the corresponding point on the
-/// curve.represents a 3d Polygon
-pub use crate::ffi::Poly_PolygonOnTriangulation as PolygonOnTriangulation;
-
-impl PolygonOnTriangulation {
-    /// Constructs a 3D polygon on the triangulation of a shape with specified size of nodes.
-    pub fn new_int_bool(theNbNodes: i32, theHasParams: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_PolygonOnTriangulation_ctor_int_bool(theNbNodes, theHasParams)
-    }
-
-    /// Constructs a 3D polygon on the triangulation of a shape,
-    /// defined by the table of nodes, <Nodes>.
-    pub fn new_array1ofinteger(
-        Nodes: &crate::ffi::TColStd_Array1OfInteger,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_PolygonOnTriangulation_ctor_array1ofinteger(Nodes)
-    }
-
-    /// Constructs a 3D polygon on the triangulation of a shape, defined by:
-    /// -   the table of nodes, Nodes, and the table of parameters, <Parameters>.
-    /// where:
-    /// -   a node value is an index in the table of nodes specific
-    /// to an existing triangulation of a shape
-    /// -   and a parameter value is the value of the parameter of
-    /// the corresponding point on the curve approximated by
-    /// the constructed polygon.
-    /// Warning
-    /// The tables Nodes and Parameters must be the same size.
-    /// This property is not checked at construction time.
-    pub fn new_array1ofinteger_array1ofreal(
-        Nodes: &crate::ffi::TColStd_Array1OfInteger,
-        Parameters: &crate::ffi::TColStd_Array1OfReal,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_PolygonOnTriangulation_ctor_array1ofinteger_array1ofreal(Nodes, Parameters)
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandlePolyPolygonOnTriangulation> {
-        crate::ffi::Poly_PolygonOnTriangulation_to_handle(obj)
-    }
-}
-
-// ========================
-// From Poly_Triangle.hxx
-// ========================
-
-/// Describes a component triangle of a triangulation (Poly_Triangulation object).
-/// A Triangle is defined by a triplet of nodes within [1, Poly_Triangulation::NbNodes()] range.
-/// Each node is an index in the table of nodes specific to an existing
-/// triangulation of a shape, and represents a point on the surface.
-pub use crate::ffi::Poly_Triangle as Triangle;
-
-impl Triangle {
-    /// Constructs a triangle and sets all indices to zero.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_Triangle_ctor()
-    }
-
-    /// Constructs a triangle and sets its three indices,
-    /// where these node values are indices in the table of nodes specific to an existing
-    /// triangulation of a shape.
-    pub fn new_int3(theN1: i32, theN2: i32, theN3: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::Poly_Triangle_ctor_int3(theN1, theN2, theN3)
-    }
-}
-
-// ========================
 // From Poly_Triangulation.hxx
 // ========================
 
@@ -366,6 +96,318 @@ impl Triangulation {
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Poly_Triangulation_ctor_handletriangulation(theTriangulation)
+    }
+
+    /// Creates full copy of current triangulation
+    pub fn copy(&self) -> crate::ffi::HandlePolyTriangulation {
+        crate::ffi::Poly_Triangulation::copy(self)
+    }
+
+    /// Returns the deflection of this triangulation.
+    pub fn deflection(&self) -> f64 {
+        crate::ffi::Poly_Triangulation::deflection(self)
+    }
+
+    /// Sets the deflection of this triangulation to theDeflection.
+    /// See more on deflection in Polygon2D
+    pub fn deflection_real(self: std::pin::Pin<&mut Self>, theDeflection: f64) {
+        crate::ffi::Poly_Triangulation::deflection(self, theDeflection)
+    }
+
+    /// Clears internal arrays of nodes and all attributes.
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Poly_Triangulation::clear(self)
+    }
+
+    /// Returns TRUE if triangulation has some geometry.
+    pub fn has_geometry(&self) -> bool {
+        crate::ffi::Poly_Triangulation::has_geometry(self)
+    }
+
+    /// Returns the number of nodes for this triangulation.
+    pub fn nb_nodes(&self) -> i32 {
+        crate::ffi::Poly_Triangulation::nb_nodes(self)
+    }
+
+    /// Returns the number of triangles for this triangulation.
+    pub fn nb_triangles(&self) -> i32 {
+        crate::ffi::Poly_Triangulation::nb_triangles(self)
+    }
+
+    /// Returns Standard_True if 2D nodes are associated with 3D nodes for this triangulation.
+    pub fn has_uv_nodes(&self) -> bool {
+        crate::ffi::Poly_Triangulation::has_uv_nodes(self)
+    }
+
+    /// Returns Standard_True if nodal normals are defined.
+    pub fn has_normals(&self) -> bool {
+        crate::ffi::Poly_Triangulation::has_normals(self)
+    }
+
+    /// Returns a node at the given index.
+    /// @param[in] theIndex node index within [1, NbNodes()] range
+    /// @return 3D point coordinates
+    pub fn node(&self, theIndex: i32) -> crate::ffi::gp_Pnt {
+        crate::ffi::Poly_Triangulation::node(self, theIndex)
+    }
+
+    /// Sets a node coordinates.
+    /// @param[in] theIndex node index within [1, NbNodes()] range
+    /// @param[in] thePnt   3D point coordinates
+    pub fn set_node(self: std::pin::Pin<&mut Self>, theIndex: i32, thePnt: &crate::ffi::gp_Pnt) {
+        crate::ffi::Poly_Triangulation::set_node(self, theIndex, thePnt)
+    }
+
+    /// Returns UV-node at the given index.
+    /// @param[in] theIndex node index within [1, NbNodes()] range
+    /// @return 2D point defining UV coordinates
+    pub fn uv_node(&self, theIndex: i32) -> crate::ffi::gp_Pnt2d {
+        crate::ffi::Poly_Triangulation::uv_node(self, theIndex)
+    }
+
+    /// Sets an UV-node coordinates.
+    /// @param[in] theIndex node index within [1, NbNodes()] range
+    /// @param[in] thePnt   UV coordinates
+    pub fn set_uv_node(
+        self: std::pin::Pin<&mut Self>,
+        theIndex: i32,
+        thePnt: &crate::ffi::gp_Pnt2d,
+    ) {
+        crate::ffi::Poly_Triangulation::set_uv_node(self, theIndex, thePnt)
+    }
+
+    /// Returns triangle at the given index.
+    /// @param[in] theIndex triangle index within [1, NbTriangles()] range
+    /// @return triangle node indices, with each node defined within [1, NbNodes()] range
+    pub fn triangle(&self, theIndex: i32) -> &crate::ffi::Poly_Triangle {
+        crate::ffi::Poly_Triangulation::triangle(self, theIndex)
+    }
+
+    /// Sets a triangle.
+    /// @param[in] theIndex triangle index within [1, NbTriangles()] range
+    /// @param[in] theTriangle triangle node indices, with each node defined within [1, NbNodes()]
+    /// range
+    pub fn set_triangle(
+        self: std::pin::Pin<&mut Self>,
+        theIndex: i32,
+        theTriangle: &crate::ffi::Poly_Triangle,
+    ) {
+        crate::ffi::Poly_Triangulation::set_triangle(self, theIndex, theTriangle)
+    }
+
+    /// Returns normal at the given index.
+    /// @param[in] theIndex node index within [1, NbNodes()] range
+    /// @return normalized 3D vector defining a surface normal
+    pub fn normal(&self, theIndex: i32) -> crate::ffi::gp_Dir {
+        crate::ffi::Poly_Triangulation::normal(self, theIndex)
+    }
+
+    /// Returns normal at the given index.
+    /// @param[in]  theIndex node index within [1, NbNodes()] range
+    /// @param[out] theVec3  3D vector defining a surface normal
+    pub fn normal_int_vec3f(
+        &self,
+        theIndex: i32,
+        theVec3: std::pin::Pin<&mut crate::ffi::gp_Vec3f>,
+    ) {
+        crate::ffi::Poly_Triangulation::normal(self, theIndex, theVec3)
+    }
+
+    /// Changes normal at the given index.
+    /// @param[in] theIndex node index within [1, NbNodes()] range
+    /// @param[in] theVec3  normalized 3D vector defining a surface normal
+    pub fn set_normal(
+        self: std::pin::Pin<&mut Self>,
+        theIndex: i32,
+        theNormal: &crate::ffi::gp_Vec3f,
+    ) {
+        crate::ffi::Poly_Triangulation::set_normal(self, theIndex, theNormal)
+    }
+
+    /// Changes normal at the given index.
+    /// @param[in] theIndex  node index within [1, NbNodes()] range
+    /// @param[in] theNormal normalized 3D vector defining a surface normal
+    pub fn set_normal_int_dir(
+        self: std::pin::Pin<&mut Self>,
+        theIndex: i32,
+        theNormal: &crate::ffi::gp_Dir,
+    ) {
+        crate::ffi::Poly_Triangulation::set_normal(self, theIndex, theNormal)
+    }
+
+    /// Returns mesh purpose bits.
+    pub fn mesh_purpose(&self) -> u32 {
+        crate::ffi::Poly_Triangulation::mesh_purpose(self)
+    }
+
+    /// Sets mesh purpose bits.
+    pub fn set_mesh_purpose(self: std::pin::Pin<&mut Self>, thePurpose: u32) {
+        crate::ffi::Poly_Triangulation::set_mesh_purpose(self, thePurpose)
+    }
+
+    /// Returns cached min - max range of triangulation data,
+    /// which is VOID by default (e.g, no cached information).
+    pub fn cached_min_max(&self) -> &crate::ffi::Bnd_Box {
+        crate::ffi::Poly_Triangulation::cached_min_max(self)
+    }
+
+    /// Sets a cached min - max range of this triangulation.
+    /// The bounding box should exactly match actual range of triangulation data
+    /// without a gap or transformation, or otherwise undefined behavior will be observed.
+    /// Passing a VOID range invalidates the cache.
+    pub fn set_cached_min_max(self: std::pin::Pin<&mut Self>, theBox: &crate::ffi::Bnd_Box) {
+        crate::ffi::Poly_Triangulation::set_cached_min_max(self, theBox)
+    }
+
+    /// Returns TRUE if there is some cached min - max range of this triangulation.
+    pub fn has_cached_min_max(&self) -> bool {
+        crate::ffi::Poly_Triangulation::has_cached_min_max(self)
+    }
+
+    /// Updates cached min - max range of this triangulation with bounding box of nodal data.
+    pub fn update_cached_min_max(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Poly_Triangulation::update_cached_min_max(self)
+    }
+
+    /// Extends the passed box with bounding box of this triangulation.
+    /// Uses cached min - max range when available and:
+    /// - input transformation theTrsf has no rotation part;
+    /// - theIsAccurate is set to FALSE;
+    /// - no triangulation data available (e.g. it is deferred and not loaded).
+    /// @param[in][out] theBox   bounding box to extend by this triangulation
+    /// @param[in] theTrsf  optional transformation
+    /// @param[in] theIsAccurate  when FALSE, allows using a cached min - max range of this
+    /// triangulation
+    /// even for non-identity transformation.
+    /// @return FALSE if there is no any data to extend the passed box (no both triangulation and
+    /// cached min - max range).
+    pub fn min_max(
+        &self,
+        theBox: std::pin::Pin<&mut crate::ffi::Bnd_Box>,
+        theTrsf: &crate::ffi::gp_Trsf,
+        theIsAccurate: bool,
+    ) -> bool {
+        crate::ffi::Poly_Triangulation::min_max(self, theBox, theTrsf, theIsAccurate)
+    }
+
+    /// Returns TRUE if node positions are defined with double precision; TRUE by default.
+    pub fn is_double_precision(&self) -> bool {
+        crate::ffi::Poly_Triangulation::is_double_precision(self)
+    }
+
+    /// Set if node positions should be defined with double or single precision for 3D and UV nodes.
+    /// Raises exception if data was already allocated.
+    pub fn set_double_precision(self: std::pin::Pin<&mut Self>, theIsDouble: bool) {
+        crate::ffi::Poly_Triangulation::set_double_precision(self, theIsDouble)
+    }
+
+    /// Method resizing internal arrays of nodes (synchronously for all attributes).
+    /// @param[in] theNbNodes    new number of nodes
+    /// @param[in] theToCopyOld  copy old nodes into the new array
+    pub fn resize_nodes(self: std::pin::Pin<&mut Self>, theNbNodes: i32, theToCopyOld: bool) {
+        crate::ffi::Poly_Triangulation::resize_nodes(self, theNbNodes, theToCopyOld)
+    }
+
+    /// Method resizing an internal array of triangles.
+    /// @param[in] theNbTriangles  new number of triangles
+    /// @param[in] theToCopyOld    copy old triangles into the new array
+    pub fn resize_triangles(
+        self: std::pin::Pin<&mut Self>,
+        theNbTriangles: i32,
+        theToCopyOld: bool,
+    ) {
+        crate::ffi::Poly_Triangulation::resize_triangles(self, theNbTriangles, theToCopyOld)
+    }
+
+    /// If an array for UV coordinates is not allocated yet, do it now.
+    pub fn add_uv_nodes(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Poly_Triangulation::add_uv_nodes(self)
+    }
+
+    /// Deallocates the UV nodes array.
+    pub fn remove_uv_nodes(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Poly_Triangulation::remove_uv_nodes(self)
+    }
+
+    /// If an array for normals is not allocated yet, do it now.
+    pub fn add_normals(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Poly_Triangulation::add_normals(self)
+    }
+
+    /// Deallocates the normals array.
+    pub fn remove_normals(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Poly_Triangulation::remove_normals(self)
+    }
+
+    /// Compute smooth normals by averaging triangle normals.
+    pub fn compute_normals(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Poly_Triangulation::compute_normals(self)
+    }
+
+    /// Returns an internal array of triangles.
+    /// Triangle()/SetTriangle() should be used instead in portable code.
+    pub fn internal_triangles(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Poly_Array1OfTriangle> {
+        crate::ffi::Poly_Triangulation::internal_triangles(self)
+    }
+
+    /// Returns an internal array of nodes.
+    /// Node()/SetNode() should be used instead in portable code.
+    pub fn internal_nodes(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Poly_ArrayOfNodes> {
+        crate::ffi::Poly_Triangulation::internal_nodes(self)
+    }
+
+    /// Returns an internal array of UV nodes.
+    /// UBNode()/SetUVNode() should be used instead in portable code.
+    pub fn internal_uv_nodes(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Poly_ArrayOfUVNodes> {
+        crate::ffi::Poly_Triangulation::internal_uv_nodes(self)
+    }
+
+    pub fn triangles(&self) -> &crate::ffi::Poly_Array1OfTriangle {
+        crate::ffi::Poly_Triangulation::triangles(self)
+    }
+
+    pub fn change_triangles(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Poly_Array1OfTriangle> {
+        crate::ffi::Poly_Triangulation::change_triangles(self)
+    }
+
+    pub fn change_triangle(
+        self: std::pin::Pin<&mut Self>,
+        theIndex: i32,
+    ) -> std::pin::Pin<&mut crate::ffi::Poly_Triangle> {
+        crate::ffi::Poly_Triangulation::change_triangle(self, theIndex)
+    }
+
+    /// @name late-load deferred data interface
+    /// Returns number of deferred nodes that can be loaded using LoadDeferredData().
+    /// Note: this is estimated values, which might be different from actually loaded values.
+    /// Always check triangulation size of actually loaded data in code to avoid out-of-range issues.
+    pub fn nb_deferred_nodes(&self) -> i32 {
+        crate::ffi::Poly_Triangulation::nb_deferred_nodes(self)
+    }
+
+    /// Returns number of deferred triangles that can be loaded using LoadDeferredData().
+    /// Note: this is estimated values, which might be different from actually loaded values
+    /// Always check triangulation size of actually loaded data in code to avoid out-of-range issues.
+    pub fn nb_deferred_triangles(&self) -> i32 {
+        crate::ffi::Poly_Triangulation::nb_deferred_triangles(self)
+    }
+
+    /// Returns TRUE if there is some triangulation data that can be loaded using LoadDeferredData().
+    pub fn has_deferred_data(&self) -> bool {
+        crate::ffi::Poly_Triangulation::has_deferred_data(self)
+    }
+
+    /// Releases triangulation data if it has connected deferred storage.
+    pub fn unload_deferred_data(self: std::pin::Pin<&mut Self>) -> bool {
+        crate::ffi::Poly_Triangulation::unload_deferred_data(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)

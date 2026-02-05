@@ -92,16 +92,6 @@ impl MakeArcOfCircle {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GC_MakeArcOfCircle_ctor_pnt_vec_pnt(P1, V, P2)
     }
-
-    /// Upcast to GC_Root
-    pub fn as_root(&self) -> &Root {
-        crate::ffi::GC_MakeArcOfCircle_as_GC_Root(self)
-    }
-
-    /// Upcast to GC_Root (mutable)
-    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
-        crate::ffi::GC_MakeArcOfCircle_as_GC_Root_mut(self)
-    }
 }
 
 // ========================
@@ -154,22 +144,4 @@ impl MakeSegment {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::GC_MakeSegment_ctor_lin_pnt2(Line, P1, P2)
     }
-
-    /// Upcast to GC_Root
-    pub fn as_root(&self) -> &Root {
-        crate::ffi::GC_MakeSegment_as_GC_Root(self)
-    }
-
-    /// Upcast to GC_Root (mutable)
-    pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
-        crate::ffi::GC_MakeSegment_as_GC_Root_mut(self)
-    }
 }
-
-// ========================
-// From GC_Root.hxx
-// ========================
-
-/// This class implements the common services for
-/// all classes of gce which report error.
-pub use crate::ffi::GC_Root as Root;

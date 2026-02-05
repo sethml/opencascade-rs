@@ -164,4 +164,163 @@ impl TangentialDeflection {
             theMinLen,
         )
     }
+
+    /// Initialize algorithm for 3D curve.
+    /// @param[in] theC  3d curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param[in] theUTol    tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn initialize(
+        self: std::pin::Pin<&mut Self>,
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+        theMinimumOfPoints: i32,
+        theUTol: f64,
+        theMinLen: f64,
+    ) {
+        crate::ffi::GCPnts_TangentialDeflection::initialize(
+            self,
+            theC,
+            theAngularDeflection,
+            theCurvatureDeflection,
+            theMinimumOfPoints,
+            theUTol,
+            theMinLen,
+        )
+    }
+
+    /// Initialize algorithm for 3D curve with restricted range.
+    /// @param[in] theC  3d curve
+    /// @param[in] theFirstParameter  first parameter on curve
+    /// @param[in] theLastParameter   last  parameter on curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param[in] theUTol    tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn initialize_curve_real4_int_real2(
+        self: std::pin::Pin<&mut Self>,
+        theC: &crate::ffi::Adaptor3d_Curve,
+        theFirstParameter: f64,
+        theLastParameter: f64,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+        theMinimumOfPoints: i32,
+        theUTol: f64,
+        theMinLen: f64,
+    ) {
+        crate::ffi::GCPnts_TangentialDeflection::initialize(
+            self,
+            theC,
+            theFirstParameter,
+            theLastParameter,
+            theAngularDeflection,
+            theCurvatureDeflection,
+            theMinimumOfPoints,
+            theUTol,
+            theMinLen,
+        )
+    }
+
+    /// Initialize algorithm for 2D curve.
+    /// @param[in] theC  2d curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param[in] theUTol    tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn initialize_curve2d_real2_int_real2(
+        self: std::pin::Pin<&mut Self>,
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+        theMinimumOfPoints: i32,
+        theUTol: f64,
+        theMinLen: f64,
+    ) {
+        crate::ffi::GCPnts_TangentialDeflection::initialize(
+            self,
+            theC,
+            theAngularDeflection,
+            theCurvatureDeflection,
+            theMinimumOfPoints,
+            theUTol,
+            theMinLen,
+        )
+    }
+
+    /// Initialize algorithm for 2D curve with restricted range.
+    /// @param[in] theC  2d curve
+    /// @param[in] theFirstParameter  first parameter on curve
+    /// @param[in] theLastParameter   last  parameter on curve
+    /// @param[in] theAngularDeflection    angular deflection in radians
+    /// @param[in] theCurvatureDeflection  linear deflection
+    /// @param[in] theMinimumOfPoints  minimum number of points
+    /// @param[in] theUTol    tolerance in curve parametric scope
+    /// @param[in] theMinLen  minimal length
+    pub fn initialize_curve2d_real4_int_real2(
+        self: std::pin::Pin<&mut Self>,
+        theC: &crate::ffi::Adaptor2d_Curve2d,
+        theFirstParameter: f64,
+        theLastParameter: f64,
+        theAngularDeflection: f64,
+        theCurvatureDeflection: f64,
+        theMinimumOfPoints: i32,
+        theUTol: f64,
+        theMinLen: f64,
+    ) {
+        crate::ffi::GCPnts_TangentialDeflection::initialize(
+            self,
+            theC,
+            theFirstParameter,
+            theLastParameter,
+            theAngularDeflection,
+            theCurvatureDeflection,
+            theMinimumOfPoints,
+            theUTol,
+            theMinLen,
+        )
+    }
+
+    /// Add point to already calculated points (or replace existing)
+    /// Returns index of new added point
+    /// or founded with parametric tolerance (replaced if theIsReplace is true)
+    pub fn add_point(
+        self: std::pin::Pin<&mut Self>,
+        thePnt: &crate::ffi::gp_Pnt,
+        theParam: f64,
+        theIsReplace: bool,
+    ) -> i32 {
+        crate::ffi::GCPnts_TangentialDeflection::add_point(self, thePnt, theParam, theIsReplace)
+    }
+
+    pub fn nb_points(&self) -> i32 {
+        crate::ffi::GCPnts_TangentialDeflection::nb_points(self)
+    }
+
+    pub fn parameter(&self, I: i32) -> f64 {
+        crate::ffi::GCPnts_TangentialDeflection::parameter(self, I)
+    }
+
+    pub fn value(&self, I: i32) -> crate::ffi::gp_Pnt {
+        crate::ffi::GCPnts_TangentialDeflection::value(self, I)
+    }
+
+    /// Computes angular step for the arc using the given parameters.
+    pub fn arc_angular_step(
+        theRadius: f64,
+        theLinearDeflection: f64,
+        theAngularDeflection: f64,
+        theMinLength: f64,
+    ) -> f64 {
+        crate::ffi::GCPnts_TangentialDeflection::arc_angular_step(
+            theRadius,
+            theLinearDeflection,
+            theAngularDeflection,
+            theMinLength,
+        )
+    }
 }

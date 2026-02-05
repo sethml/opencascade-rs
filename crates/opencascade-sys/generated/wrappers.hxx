@@ -8,23 +8,13 @@
 #include <Adaptor3d_Curve.hxx>
 #include <Adaptor3d_CurveOnSurface.hxx>
 #include <Adaptor3d_Surface.hxx>
-#include <Adaptor3d_TopolTool.hxx>
 #include <Approx_ParametrizationType.hxx>
-#include <BOPAlgo_Algo.hxx>
-#include <BOPAlgo_BOP.hxx>
-#include <BOPAlgo_Builder.hxx>
-#include <BOPAlgo_BuilderShape.hxx>
 #include <BOPAlgo_GlueEnum.hxx>
 #include <BOPAlgo_Operation.hxx>
-#include <BOPAlgo_Options.hxx>
 #include <BOPAlgo_PBuilder.hxx>
 #include <BOPAlgo_PPaveFiller.hxx>
 #include <BOPAlgo_PaveFiller.hxx>
-#include <BOPAlgo_ToolsProvider.hxx>
-#include <BOPDS_PDS.hxx>
 #include <BRepAdaptor_Curve.hxx>
-#include <BRepAdaptor_Curve2d.hxx>
-#include <BRepAdaptor_Surface.hxx>
 #include <BRepAlgoAPI_Algo.hxx>
 #include <BRepAlgoAPI_BooleanOperation.hxx>
 #include <BRepAlgoAPI_BuilderAlgo.hxx>
@@ -32,8 +22,6 @@
 #include <BRepAlgoAPI_Cut.hxx>
 #include <BRepAlgoAPI_Fuse.hxx>
 #include <BRepAlgoAPI_Section.hxx>
-#include <BRepAlgo_AsDes.hxx>
-#include <BRepAlgo_Image.hxx>
 #include <BRepBndLib.hxx>
 #include <BRepBuilderAPI_Command.hxx>
 #include <BRepBuilderAPI_EdgeError.hxx>
@@ -44,24 +32,16 @@
 #include <BRepBuilderAPI_MakeSolid.hxx>
 #include <BRepBuilderAPI_MakeVertex.hxx>
 #include <BRepBuilderAPI_MakeWire.hxx>
-#include <BRepBuilderAPI_ModifyShape.hxx>
 #include <BRepBuilderAPI_PipeError.hxx>
 #include <BRepBuilderAPI_Sewing.hxx>
 #include <BRepBuilderAPI_Transform.hxx>
 #include <BRepBuilderAPI_TransitionMode.hxx>
 #include <BRepBuilderAPI_WireError.hxx>
-#include <BRepFeat_Builder.hxx>
-#include <BRepFeat_Form.hxx>
 #include <BRepFeat_MakeCylindricalHole.hxx>
 #include <BRepFeat_MakeDPrism.hxx>
 #include <BRepFeat_Status.hxx>
-#include <BRepFeat_StatusError.hxx>
-#include <BRepFill_OffsetWire.hxx>
 #include <BRepFill_Pipe.hxx>
-#include <BRepFill_PipeShell.hxx>
-#include <BRepFill_Section.hxx>
 #include <BRepFill_ThruSectionErrorStatus.hxx>
-#include <BRepFill_TransitionStyle.hxx>
 #include <BRepFill_TypeOfContact.hxx>
 #include <BRepFilletAPI_LocalOperation.hxx>
 #include <BRepFilletAPI_MakeChamfer.hxx>
@@ -70,150 +50,56 @@
 #include <BRepGProp.hxx>
 #include <BRepGProp_Face.hxx>
 #include <BRepIntCurveSurface_Inter.hxx>
-#include <BRepLib_Command.hxx>
-#include <BRepLib_EdgeError.hxx>
-#include <BRepLib_FaceError.hxx>
-#include <BRepLib_MakeEdge.hxx>
-#include <BRepLib_MakeFace.hxx>
-#include <BRepLib_MakeShape.hxx>
-#include <BRepLib_MakeSolid.hxx>
-#include <BRepLib_MakeVertex.hxx>
-#include <BRepLib_MakeWire.hxx>
-#include <BRepLib_ShapeModification.hxx>
-#include <BRepLib_WireError.hxx>
-#include <BRepMAT2d_BisectingLocus.hxx>
-#include <BRepMAT2d_Explorer.hxx>
-#include <BRepMAT2d_LinkTopoBilo.hxx>
-#include <BRepMesh_Circle.hxx>
-#include <BRepMesh_DegreeOfFreedom.hxx>
-#include <BRepMesh_DiscretRoot.hxx>
-#include <BRepMesh_Edge.hxx>
 #include <BRepMesh_IncrementalMesh.hxx>
-#include <BRepMesh_OrientedEdge.hxx>
-#include <BRepMesh_PairOfIndex.hxx>
-#include <BRepMesh_Triangle.hxx>
-#include <BRepMesh_Vertex.hxx>
 #include <BRepOffsetAPI_MakeOffset.hxx>
-#include <BRepOffsetAPI_MakeOffsetShape.hxx>
 #include <BRepOffsetAPI_MakePipe.hxx>
 #include <BRepOffsetAPI_MakePipeShell.hxx>
 #include <BRepOffsetAPI_MakeThickSolid.hxx>
 #include <BRepOffsetAPI_ThruSections.hxx>
-#include <BRepOffset_Analyse.hxx>
-#include <BRepOffset_Error.hxx>
-#include <BRepOffset_Interval.hxx>
-#include <BRepOffset_ListOfInterval.hxx>
-#include <BRepOffset_MakeLoops.hxx>
-#include <BRepOffset_MakeOffset.hxx>
-#include <BRepOffset_MakeSimpleOffset.hxx>
 #include <BRepOffset_Mode.hxx>
-#include <BRepOffset_Offset.hxx>
-#include <BRepOffset_Status.hxx>
 #include <BRepPrimAPI_MakeBox.hxx>
 #include <BRepPrimAPI_MakeCone.hxx>
 #include <BRepPrimAPI_MakeCylinder.hxx>
-#include <BRepPrimAPI_MakeOneAxis.hxx>
 #include <BRepPrimAPI_MakePrism.hxx>
 #include <BRepPrimAPI_MakeRevol.hxx>
 #include <BRepPrimAPI_MakeSphere.hxx>
 #include <BRepPrimAPI_MakeSweep.hxx>
 #include <BRepPrimAPI_MakeTorus.hxx>
-#include <BRepPrim_Builder.hxx>
 #include <BRepPrim_Cone.hxx>
 #include <BRepPrim_Cylinder.hxx>
-#include <BRepPrim_Direction.hxx>
-#include <BRepPrim_GWedge.hxx>
-#include <BRepPrim_OneAxis.hxx>
-#include <BRepPrim_Revolution.hxx>
 #include <BRepPrim_Sphere.hxx>
 #include <BRepPrim_Torus.hxx>
 #include <BRepPrim_Wedge.hxx>
-#include <BRepSweep_Builder.hxx>
-#include <BRepSweep_NumLinearRegularSweep.hxx>
 #include <BRepSweep_Prism.hxx>
 #include <BRepSweep_Revol.hxx>
-#include <BRepSweep_Rotation.hxx>
-#include <BRepSweep_Tool.hxx>
-#include <BRepSweep_Translation.hxx>
-#include <BRepSweep_Trsf.hxx>
 #include <BRepTools.hxx>
 #include <BRepTools_History.hxx>
-#include <BRepTools_Modification.hxx>
-#include <BRepTools_Modifier.hxx>
 #include <BRepTools_ReShape.hxx>
 #include <BRep_Builder.hxx>
 #include <BRep_Tool.hxx>
-#include <BSplCLib.hxx>
-#include <BSplCLib_Cache.hxx>
-#include <BSplCLib_CacheParams.hxx>
-#include <BSplCLib_EvaluatorFunction.hxx>
-#include <BSplCLib_KnotDistribution.hxx>
-#include <BSplCLib_MultDistribution.hxx>
-#include <BSplSLib.hxx>
-#include <BSplSLib_Cache.hxx>
-#include <BSplSLib_EvaluatorFunction.hxx>
-#include <Bisector_Bisec.hxx>
-#include <Bnd_Array1OfBox.hxx>
-#include <Bnd_Array1OfSphere.hxx>
-#include <Bnd_B2d.hxx>
-#include <Bnd_BoundSortBox.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
-#include <Bnd_HArray1OfBox.hxx>
-#include <Bnd_HArray1OfSphere.hxx>
 #include <Bnd_OBB.hxx>
-#include <Bnd_Sphere.hxx>
-#include <ChFi2d_Builder.hxx>
 #include <ChFi2d_ConstructionError.hxx>
-#include <ChFi3d_Builder.hxx>
-#include <ChFi3d_ChBuilder.hxx>
-#include <ChFi3d_FilBuilder.hxx>
 #include <ChFi3d_FilletShape.hxx>
-#include <ChFiDS_ChamfMethod.hxx>
 #include <ChFiDS_ChamfMode.hxx>
-#include <ChFiDS_CircSection.hxx>
-#include <ChFiDS_CommonPoint.hxx>
-#include <ChFiDS_ElSpine.hxx>
 #include <ChFiDS_ErrorStatus.hxx>
-#include <ChFiDS_FaceInterference.hxx>
-#include <ChFiDS_HData.hxx>
-#include <ChFiDS_ListOfStripe.hxx>
-#include <ChFiDS_Map.hxx>
-#include <ChFiDS_Regul.hxx>
-#include <ChFiDS_SecArray1.hxx>
 #include <ChFiDS_SecHArray1.hxx>
-#include <ChFiDS_SequenceOfSurfData.hxx>
-#include <ChFiDS_Spine.hxx>
-#include <ChFiDS_Stripe.hxx>
-#include <ChFiDS_StripeMap.hxx>
-#include <ChFiDS_SurfData.hxx>
-#include <ChFiDS_TypeOfConcavity.hxx>
 #include <DESTEP_Parameters.hxx>
 #include <DE_ShapeFixParameters.hxx>
-#include <Extrema_ECC.hxx>
-#include <Extrema_EPCOfExtPC.hxx>
-#include <Extrema_ElementType.hxx>
 #include <Extrema_ExtAlgo.hxx>
 #include <Extrema_ExtCC.hxx>
 #include <Extrema_ExtFlag.hxx>
 #include <Extrema_ExtPC.hxx>
-#include <Extrema_ExtPElC.hxx>
-#include <Extrema_ExtPElS.hxx>
 #include <Extrema_ExtPS.hxx>
-#include <Extrema_FuncPSNorm.hxx>
 #include <Extrema_GenExtPS.hxx>
-#include <Extrema_PCFOfEPCOfExtPC.hxx>
 #include <Extrema_POnCurv.hxx>
 #include <Extrema_POnSurf.hxx>
-#include <Extrema_POnSurfParams.hxx>
 #include <GCPnts_TangentialDeflection.hxx>
 #include <GC_MakeArcOfCircle.hxx>
 #include <GC_MakeSegment.hxx>
-#include <GC_Root.hxx>
 #include <GProp_GProps.hxx>
 #include <GProp_PrincipalProps.hxx>
-#include <Geom2dAdaptor_Curve.hxx>
-#include <Geom2dEvaluator_Curve.hxx>
 #include <Geom2d_BSplineCurve.hxx>
 #include <Geom2d_BezierCurve.hxx>
 #include <Geom2d_BoundedCurve.hxx>
@@ -221,7 +107,6 @@
 #include <Geom2d_Curve.hxx>
 #include <Geom2d_Ellipse.hxx>
 #include <Geom2d_Geometry.hxx>
-#include <Geom2d_Point.hxx>
 #include <Geom2d_TrimmedCurve.hxx>
 #include <GeomAPI_Interpolate.hxx>
 #include <GeomAPI_PointsToBSpline.hxx>
@@ -234,10 +119,6 @@
 #include <GeomAbs_Shape.hxx>
 #include <GeomAbs_SurfaceType.hxx>
 #include <GeomAdaptor_Curve.hxx>
-#include <GeomAdaptor_Surface.hxx>
-#include <GeomEvaluator_Curve.hxx>
-#include <GeomEvaluator_Surface.hxx>
-#include <GeomFill_PipeError.hxx>
 #include <GeomFill_Trihedron.hxx>
 #include <Geom_BSplineCurve.hxx>
 #include <Geom_BSplineSurface.hxx>
@@ -258,73 +139,20 @@
 #include <IFSelect_ReturnStatus.hxx>
 #include <IGESControl_Reader.hxx>
 #include <IGESControl_Writer.hxx>
-#include <IGESData_BasicEditor.hxx>
 #include <IGESData_IGESEntity.hxx>
 #include <IGESData_IGESModel.hxx>
-#include <IGESData_Protocol.hxx>
-#include <IGESData_SpecificLib.hxx>
-#include <IGESData_SpecificModule.hxx>
-#include <IMeshData_Model.hxx>
-#include <IMeshData_Shape.hxx>
 #include <IMeshTools_Context.hxx>
-#include <IMeshTools_ModelAlgo.hxx>
-#include <IMeshTools_ModelBuilder.hxx>
 #include <IMeshTools_Parameters.hxx>
-#include <IntCurveSurface_HInter.hxx>
-#include <IntCurveSurface_Intersection.hxx>
 #include <IntCurveSurface_IntersectionPoint.hxx>
-#include <IntCurveSurface_IntersectionSegment.hxx>
-#include <IntCurveSurface_ThePolygonOfHInter.hxx>
-#include <IntCurveSurface_ThePolyhedronOfHInter.hxx>
 #include <IntCurveSurface_TransitionOnCurve.hxx>
-#include <IntTools_Context.hxx>
-#include <Interface_GeneralLib.hxx>
-#include <Interface_GeneralModule.hxx>
-#include <Interface_InterfaceModel.hxx>
-#include <Interface_Protocol.hxx>
 #include <Law_BSpFunc.hxx>
 #include <Law_BSpline.hxx>
 #include <Law_Function.hxx>
 #include <Law_Interpol.hxx>
-#include <MAT2d_BiInt.hxx>
-#include <MAT2d_Circuit.hxx>
-#include <MAT2d_Tool2d.hxx>
-#include <MAT_Arc.hxx>
-#include <MAT_BasicElt.hxx>
-#include <MAT_Bisector.hxx>
-#include <MAT_Graph.hxx>
-#include <MAT_Node.hxx>
-#include <MAT_Side.hxx>
-#include <Message.hxx>
-#include <Message_Alert.hxx>
-#include <Message_AlertExtended.hxx>
-#include <Message_Algorithm.hxx>
-#include <Message_Attribute.hxx>
-#include <Message_CompositeAlerts.hxx>
-#include <Message_ExecStatus.hxx>
-#include <Message_Gravity.hxx>
-#include <Message_Level.hxx>
-#include <Message_ListOfAlert.hxx>
-#include <Message_Messenger.hxx>
-#include <Message_MetricType.hxx>
-#include <Message_Msg.hxx>
-#include <Message_Printer.hxx>
-#include <Message_ProgressIndicator.hxx>
 #include <Message_ProgressRange.hxx>
-#include <Message_ProgressScope.hxx>
-#include <Message_Report.hxx>
-#include <Message_SequenceOfPrinters.hxx>
-#include <Message_Status.hxx>
-#include <Message_StatusType.hxx>
 #include <NCollection_BaseAllocator.hxx>
-#include <NCollection_BaseList.hxx>
-#include <NCollection_BaseMap.hxx>
-#include <NCollection_BasePointerVector.hxx>
-#include <NCollection_BaseSequence.hxx>
 #include <NCollection_Buffer.hxx>
-#include <NCollection_IncAllocator.hxx>
 #include <OSD_FileSystem.hxx>
-#include <OSD_MemInfo.hxx>
 #include <Poly_Array1OfTriangle.hxx>
 #include <Poly_ArrayOfNodes.hxx>
 #include <Poly_ArrayOfUVNodes.hxx>
@@ -341,67 +169,30 @@
 #include <STEPControl_StepModelType.hxx>
 #include <STEPControl_Writer.hxx>
 #include <ShapeAnalysis_FreeBounds.hxx>
-#include <ShapeBuild_ReShape.hxx>
-#include <ShapeExtend_MsgRegistrator.hxx>
-#include <ShapeExtend_Status.hxx>
-#include <ShapeProcess.hxx>
-#include <ShapeProcess_Context.hxx>
-#include <ShapeProcess_Operator.hxx>
-#include <ShapeProcess_ShapeContext.hxx>
 #include <ShapeUpgrade_UnifySameDomain.hxx>
-#include <Standard.hxx>
 #include <Standard_Character.hxx>
-#include <Standard_ConstructionError.hxx>
-#include <Standard_DimensionError.hxx>
-#include <Standard_DimensionMismatch.hxx>
-#include <Standard_DomainError.hxx>
-#include <Standard_Dump.hxx>
-#include <Standard_ErrorHandler.hxx>
 #include <Standard_ExtCharacter.hxx>
 #include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_JmpBuf.hxx>
 #include <Standard_Mutex.hxx>
-#include <Standard_NoSuchObject.hxx>
-#include <Standard_NotImplemented.hxx>
-#include <Standard_NullObject.hxx>
-#include <Standard_NumericError.hxx>
-#include <Standard_OutOfMemory.hxx>
-#include <Standard_OutOfRange.hxx>
 #include <Standard_PCharacter.hxx>
-#include <Standard_ProgramError.hxx>
-#include <Standard_RangeError.hxx>
 #include <Standard_SStream.hxx>
 #include <Standard_Transient.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeMismatch.hxx>
-#include <StdFail_NotDone.hxx>
 #include <StepData_StepModel.hxx>
 #include <StlAPI_Writer.hxx>
-#include <Sweep_NumShape.hxx>
-#include <Sweep_NumShapeTool.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
-#include <TColStd_Array1OfBoolean.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
-#include <TColStd_Array1OfTransient.hxx>
 #include <TColStd_Array2OfReal.hxx>
 #include <TColStd_HArray1OfBoolean.hxx>
 #include <TColStd_HArray1OfInteger.hxx>
 #include <TColStd_HArray1OfReal.hxx>
-#include <TColStd_HArray1OfTransient.hxx>
-#include <TColStd_HArray2OfReal.hxx>
-#include <TColStd_HPackedMapOfInteger.hxx>
-#include <TColStd_HSequenceOfHExtendedString.hxx>
 #include <TColStd_HSequenceOfInteger.hxx>
 #include <TColStd_HSequenceOfReal.hxx>
-#include <TColStd_HSequenceOfTransient.hxx>
-#include <TColStd_PackedMapOfInteger.hxx>
 #include <TColStd_SequenceOfAsciiString.hxx>
-#include <TColStd_SequenceOfHExtendedString.hxx>
 #include <TColStd_SequenceOfInteger.hxx>
 #include <TColStd_SequenceOfReal.hxx>
-#include <TColStd_SequenceOfTransient.hxx>
 #include <TColgp_Array1OfCirc2d.hxx>
 #include <TColgp_Array1OfDir.hxx>
 #include <TColgp_Array1OfDir2d.hxx>
@@ -462,25 +253,17 @@
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HAsciiString.hxx>
 #include <TCollection_HExtendedString.hxx>
-#include <TShort_Array1OfShortReal.hxx>
 #include <TShort_HArray1OfShortReal.hxx>
-#include <TopAbs.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopAbs_State.hxx>
 #include <TopExp.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopLoc_Datum3D.hxx>
-#include <TopLoc_ItemLocation.hxx>
 #include <TopLoc_Location.hxx>
-#include <TopLoc_SListOfItemLocation.hxx>
 #include <TopOpeBRepBuild_HBuilder.hxx>
-#include <TopTools_Array2OfShape.hxx>
-#include <TopTools_DataMapOfShapeListOfShape.hxx>
-#include <TopTools_DataMapOfShapeReal.hxx>
 #include <TopTools_DataMapOfShapeShape.hxx>
 #include <TopTools_FormatVersion.hxx>
-#include <TopTools_HArray2OfShape.hxx>
 #include <TopTools_HSequenceOfShape.hxx>
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
@@ -492,7 +275,6 @@
 #include <TopoDS_Compound.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
-#include <TopoDS_Iterator.hxx>
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Shell.hxx>
 #include <TopoDS_Solid.hxx>
@@ -500,11 +282,7 @@
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
 #include <Transfer_FinderProcess.hxx>
-#include <Transfer_TransientProcess.hxx>
-#include <XSAlgo_ShapeProcessor.hxx>
-#include <XSControl_Reader.hxx>
 #include <XSControl_WorkSession.hxx>
-#include <gce_ErrorType.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Ax22d.hxx>
@@ -542,7 +320,6 @@
 #include <gp_TrsfForm.hxx>
 #include <gp_Vec.hxx>
 #include <gp_Vec2d.hxx>
-#include <gp_Vec2f.hxx>
 #include <gp_Vec3f.hxx>
 #include <gp_VectorWithNullMagnitude.hxx>
 #include <gp_XY.hxx>
@@ -561,27 +338,10 @@
 typedef opencascade::handle<Adaptor2d_Curve2d> HandleAdaptor2dCurve2d;
 typedef opencascade::handle<Adaptor3d_Curve> HandleAdaptor3dCurve;
 typedef opencascade::handle<Adaptor3d_Surface> HandleAdaptor3dSurface;
-typedef opencascade::handle<Adaptor3d_TopolTool> HandleAdaptor3dTopolTool;
-typedef opencascade::handle<BRepAdaptor_Curve2d> HandleBRepAdaptorCurve2d;
-typedef opencascade::handle<BRepAdaptor_Surface> HandleBRepAdaptorSurface;
-typedef opencascade::handle<BRepAlgo_AsDes> HandleBRepAlgoAsDes;
 typedef opencascade::handle<BRepBuilderAPI_Sewing> HandleBRepBuilderAPISewing;
-typedef opencascade::handle<BRepFill_PipeShell> HandleBRepFillPipeShell;
-typedef opencascade::handle<BRepMesh_DiscretRoot> HandleBRepMeshDiscretRoot;
 typedef opencascade::handle<BRepTools_History> HandleBRepToolsHistory;
-typedef opencascade::handle<BRepTools_Modification> HandleBRepToolsModification;
 typedef opencascade::handle<BRepTools_ReShape> HandleBRepToolsReShape;
-typedef opencascade::handle<BSplCLib_Cache> HandleBSplCLibCache;
-typedef opencascade::handle<BSplSLib_Cache> HandleBSplSLibCache;
-typedef opencascade::handle<Bnd_HArray1OfBox> HandleBndHArray1OfBox;
-typedef opencascade::handle<Bnd_HArray1OfSphere> HandleBndHArray1OfSphere;
-typedef opencascade::handle<ChFiDS_ElSpine> HandleChFiDSElSpine;
-typedef opencascade::handle<ChFiDS_HData> HandleChFiDSHData;
 typedef opencascade::handle<ChFiDS_SecHArray1> HandleChFiDSSecHArray1;
-typedef opencascade::handle<ChFiDS_Spine> HandleChFiDSSpine;
-typedef opencascade::handle<ChFiDS_Stripe> HandleChFiDSStripe;
-typedef opencascade::handle<ChFiDS_SurfData> HandleChFiDSSurfData;
-typedef opencascade::handle<Geom2dEvaluator_Curve> HandleGeom2dEvaluatorCurve;
 typedef opencascade::handle<Geom2d_BSplineCurve> HandleGeom2dBSplineCurve;
 typedef opencascade::handle<Geom2d_BezierCurve> HandleGeom2dBezierCurve;
 typedef opencascade::handle<Geom2d_BoundedCurve> HandleGeom2dBoundedCurve;
@@ -589,10 +349,7 @@ typedef opencascade::handle<Geom2d_Conic> HandleGeom2dConic;
 typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
 typedef opencascade::handle<Geom2d_Ellipse> HandleGeom2dEllipse;
 typedef opencascade::handle<Geom2d_Geometry> HandleGeom2dGeometry;
-typedef opencascade::handle<Geom2d_Point> HandleGeom2dPoint;
 typedef opencascade::handle<Geom2d_TrimmedCurve> HandleGeom2dTrimmedCurve;
-typedef opencascade::handle<GeomEvaluator_Curve> HandleGeomEvaluatorCurve;
-typedef opencascade::handle<GeomEvaluator_Surface> HandleGeomEvaluatorSurface;
 typedef opencascade::handle<Geom_BSplineCurve> HandleGeomBSplineCurve;
 typedef opencascade::handle<Geom_BSplineSurface> HandleGeomBSplineSurface;
 typedef opencascade::handle<Geom_BezierCurve> HandleGeomBezierCurve;
@@ -609,36 +366,11 @@ typedef opencascade::handle<Geom_Surface> HandleGeomSurface;
 typedef opencascade::handle<Geom_TrimmedCurve> HandleGeomTrimmedCurve;
 typedef opencascade::handle<IGESData_IGESEntity> HandleIGESDataIGESEntity;
 typedef opencascade::handle<IGESData_IGESModel> HandleIGESDataIGESModel;
-typedef opencascade::handle<IGESData_Protocol> HandleIGESDataProtocol;
-typedef opencascade::handle<IGESData_SpecificModule> HandleIGESDataSpecificModule;
-typedef opencascade::handle<IMeshData_Model> HandleIMeshDataModel;
-typedef opencascade::handle<IMeshData_Shape> HandleIMeshDataShape;
 typedef opencascade::handle<IMeshTools_Context> HandleIMeshToolsContext;
-typedef opencascade::handle<IMeshTools_ModelAlgo> HandleIMeshToolsModelAlgo;
-typedef opencascade::handle<IMeshTools_ModelBuilder> HandleIMeshToolsModelBuilder;
-typedef opencascade::handle<IntTools_Context> HandleIntToolsContext;
-typedef opencascade::handle<Interface_GeneralModule> HandleInterfaceGeneralModule;
-typedef opencascade::handle<Interface_InterfaceModel> HandleInterfaceInterfaceModel;
-typedef opencascade::handle<Interface_Protocol> HandleInterfaceProtocol;
 typedef opencascade::handle<Law_BSpFunc> HandleLawBSpFunc;
 typedef opencascade::handle<Law_BSpline> HandleLawBSpline;
 typedef opencascade::handle<Law_Function> HandleLawFunction;
 typedef opencascade::handle<Law_Interpol> HandleLawInterpol;
-typedef opencascade::handle<MAT2d_Circuit> HandleMAT2dCircuit;
-typedef opencascade::handle<MAT_Arc> HandleMATArc;
-typedef opencascade::handle<MAT_BasicElt> HandleMATBasicElt;
-typedef opencascade::handle<MAT_Bisector> HandleMATBisector;
-typedef opencascade::handle<MAT_Graph> HandleMATGraph;
-typedef opencascade::handle<MAT_Node> HandleMATNode;
-typedef opencascade::handle<Message_Alert> HandleMessageAlert;
-typedef opencascade::handle<Message_AlertExtended> HandleMessageAlertExtended;
-typedef opencascade::handle<Message_Algorithm> HandleMessageAlgorithm;
-typedef opencascade::handle<Message_Attribute> HandleMessageAttribute;
-typedef opencascade::handle<Message_CompositeAlerts> HandleMessageCompositeAlerts;
-typedef opencascade::handle<Message_Messenger> HandleMessageMessenger;
-typedef opencascade::handle<Message_Printer> HandleMessagePrinter;
-typedef opencascade::handle<Message_ProgressIndicator> HandleMessageProgressIndicator;
-typedef opencascade::handle<Message_Report> HandleMessageReport;
 typedef opencascade::handle<NCollection_BaseAllocator> HandleNCollectionBaseAllocator;
 typedef opencascade::handle<NCollection_Buffer> HandleNCollectionBuffer;
 typedef opencascade::handle<OSD_FileSystem> HandleOSDFileSystem;
@@ -648,39 +380,16 @@ typedef opencascade::handle<Poly_Polygon3D> HandlePolyPolygon3D;
 typedef opencascade::handle<Poly_PolygonOnTriangulation> HandlePolyPolygonOnTriangulation;
 typedef opencascade::handle<Poly_Triangulation> HandlePolyTriangulation;
 typedef opencascade::handle<Poly_TriangulationParameters> HandlePolyTriangulationParameters;
-typedef opencascade::handle<ShapeExtend_MsgRegistrator> HandleShapeExtendMsgRegistrator;
-typedef opencascade::handle<ShapeProcess_Context> HandleShapeProcessContext;
-typedef opencascade::handle<ShapeProcess_Operator> HandleShapeProcessOperator;
-typedef opencascade::handle<ShapeProcess_ShapeContext> HandleShapeProcessShapeContext;
 typedef opencascade::handle<ShapeUpgrade_UnifySameDomain> HandleShapeUpgradeUnifySameDomain;
-typedef opencascade::handle<Standard_ConstructionError> HandleStandardConstructionError;
-typedef opencascade::handle<Standard_DimensionError> HandleStandardDimensionError;
-typedef opencascade::handle<Standard_DimensionMismatch> HandleStandardDimensionMismatch;
-typedef opencascade::handle<Standard_DomainError> HandleStandardDomainError;
 typedef opencascade::handle<Standard_Failure> HandleStandardFailure;
-typedef opencascade::handle<Standard_NoSuchObject> HandleStandardNoSuchObject;
-typedef opencascade::handle<Standard_NotImplemented> HandleStandardNotImplemented;
-typedef opencascade::handle<Standard_NullObject> HandleStandardNullObject;
-typedef opencascade::handle<Standard_NumericError> HandleStandardNumericError;
-typedef opencascade::handle<Standard_OutOfMemory> HandleStandardOutOfMemory;
-typedef opencascade::handle<Standard_OutOfRange> HandleStandardOutOfRange;
-typedef opencascade::handle<Standard_ProgramError> HandleStandardProgramError;
-typedef opencascade::handle<Standard_RangeError> HandleStandardRangeError;
 typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<Standard_TypeMismatch> HandleStandardTypeMismatch;
-typedef opencascade::handle<StdFail_NotDone> HandleStdFailNotDone;
 typedef opencascade::handle<StepData_StepModel> HandleStepDataStepModel;
 typedef opencascade::handle<TColStd_HArray1OfBoolean> HandleTColStdHArray1OfBoolean;
 typedef opencascade::handle<TColStd_HArray1OfInteger> HandleTColStdHArray1OfInteger;
 typedef opencascade::handle<TColStd_HArray1OfReal> HandleTColStdHArray1OfReal;
-typedef opencascade::handle<TColStd_HArray1OfTransient> HandleTColStdHArray1OfTransient;
-typedef opencascade::handle<TColStd_HArray2OfReal> HandleTColStdHArray2OfReal;
-typedef opencascade::handle<TColStd_HPackedMapOfInteger> HandleTColStdHPackedMapOfInteger;
-typedef opencascade::handle<TColStd_HSequenceOfHExtendedString> HandleTColStdHSequenceOfHExtendedString;
 typedef opencascade::handle<TColStd_HSequenceOfInteger> HandleTColStdHSequenceOfInteger;
 typedef opencascade::handle<TColStd_HSequenceOfReal> HandleTColStdHSequenceOfReal;
-typedef opencascade::handle<TColStd_HSequenceOfTransient> HandleTColStdHSequenceOfTransient;
 typedef opencascade::handle<TColgp_HArray1OfCirc2d> HandleTColgpHArray1OfCirc2d;
 typedef opencascade::handle<TColgp_HArray1OfDir> HandleTColgpHArray1OfDir;
 typedef opencascade::handle<TColgp_HArray1OfDir2d> HandleTColgpHArray1OfDir2d;
@@ -714,11 +423,9 @@ typedef opencascade::handle<TCollection_HExtendedString> HandleTCollectionHExten
 typedef opencascade::handle<TShort_HArray1OfShortReal> HandleTShortHArray1OfShortReal;
 typedef opencascade::handle<TopLoc_Datum3D> HandleTopLocDatum3D;
 typedef opencascade::handle<TopOpeBRepBuild_HBuilder> HandleTopOpeBRepBuildHBuilder;
-typedef opencascade::handle<TopTools_HArray2OfShape> HandleTopToolsHArray2OfShape;
 typedef opencascade::handle<TopTools_HSequenceOfShape> HandleTopToolsHSequenceOfShape;
 typedef opencascade::handle<TopoDS_TShape> HandleTopoDSTShape;
 typedef opencascade::handle<Transfer_FinderProcess> HandleTransferFinderProcess;
-typedef opencascade::handle<Transfer_TransientProcess> HandleTransferTransientProcess;
 typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 typedef opencascade::handle<gp_VectorWithNullMagnitude> HandlegpVectorWithNullMagnitude;
 
@@ -2253,9 +1960,6 @@ inline std::unique_ptr<gp_VectorWithNullMagnitude> gp_VectorWithNullMagnitude_ct
 inline void gp_VectorWithNullMagnitude_raise(rust::Str theMessage) {
     return gp_VectorWithNullMagnitude::Raise(std::string(theMessage).c_str());
 }
-inline const opencascade::handle<Standard_Type>& gp_VectorWithNullMagnitude_get_type_descriptor() {
-    return gp_VectorWithNullMagnitude::get_type_descriptor();
-}
 inline std::unique_ptr<gp_VectorWithNullMagnitude> gp_VectorWithNullMagnitude_to_owned(const gp_VectorWithNullMagnitude& self_) { return std::make_unique<gp_VectorWithNullMagnitude>(self_); }
 
 // ========================
@@ -3518,9 +3222,6 @@ inline std::unique_ptr<TopoDS_Shape> BRepBuilderAPI_Sewing_modified_sub_shape(co
 inline std::unique_ptr<TopoDS_Face> BRepBuilderAPI_Sewing_which_face(const BRepBuilderAPI_Sewing& self_, const TopoDS_Edge& theEdg, Standard_Integer index) {
     return std::make_unique<TopoDS_Face>(self_.WhichFace(theEdg, index));
 }
-inline const opencascade::handle<Standard_Type>& BRepBuilderAPI_Sewing_get_type_descriptor() {
-    return BRepBuilderAPI_Sewing::get_type_descriptor();
-}
 inline std::unique_ptr<HandleBRepBuilderAPISewing> BRepBuilderAPI_Sewing_to_handle(std::unique_ptr<BRepBuilderAPI_Sewing> obj) {
     return std::make_unique<HandleBRepBuilderAPISewing>(obj.release());
 }
@@ -3537,30 +3238,6 @@ inline std::unique_ptr<BRepBuilderAPI_Transform> BRepBuilderAPI_Transform_ctor_s
 }
 inline std::unique_ptr<TopoDS_Shape> BRepBuilderAPI_Transform_modified_shape(const BRepBuilderAPI_Transform& self_, const TopoDS_Shape& S) {
     return std::make_unique<TopoDS_Shape>(self_.ModifiedShape(S));
-}
-inline const BRepBuilderAPI_Command& BRepBuilderAPI_Transform_as_BRepBuilderAPI_Command(const BRepBuilderAPI_Transform& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepBuilderAPI_Transform_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_Transform& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_Transform& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_Transform& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline const BRepBuilderAPI_ModifyShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape(const BRepBuilderAPI_Transform& self_) { return static_cast<const BRepBuilderAPI_ModifyShape&>(self_); }
-inline BRepBuilderAPI_ModifyShape& BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape_mut(BRepBuilderAPI_Transform& self_) { return static_cast<BRepBuilderAPI_ModifyShape&>(self_); }
-inline bool BRepBuilderAPI_Transform_inherited_IsDone(const BRepBuilderAPI_Transform& self) {
-    return self.IsDone();
-}
-inline void BRepBuilderAPI_Transform_inherited_Check(const BRepBuilderAPI_Transform& self) {
-    self.Check();
-}
-inline void BRepBuilderAPI_Transform_inherited_Build(BRepBuilderAPI_Transform& self, const Message_ProgressRange& theRange) {
-    self.Build(theRange);
-}
-inline const TopoDS_Shape& BRepBuilderAPI_Transform_inherited_Shape(BRepBuilderAPI_Transform& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepBuilderAPI_Transform_inherited_Generated(BRepBuilderAPI_Transform& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline bool BRepBuilderAPI_Transform_inherited_IsDeleted(BRepBuilderAPI_Transform& self, const TopoDS_Shape& S) {
-    return self.IsDeleted(S);
 }
 
 // ========================
@@ -3621,42 +3298,6 @@ inline std::unique_ptr<BRepPrimAPI_MakeCone> BRepPrimAPI_MakeCone_ctor_ax2_real3
 inline std::unique_ptr<BRepPrimAPI_MakeCone> BRepPrimAPI_MakeCone_ctor_ax2_real4(const gp_Ax2& Axes, Standard_Real R1, Standard_Real R2, Standard_Real H, Standard_Real angle) {
     return std::make_unique<BRepPrimAPI_MakeCone>(Axes, R1, R2, H, angle);
 }
-inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Command(const BRepPrimAPI_MakeCone& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeCone& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeCone_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeCone& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeCone_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeCone& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline const BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis(const BRepPrimAPI_MakeCone& self_) { return static_cast<const BRepPrimAPI_MakeOneAxis&>(self_); }
-inline BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis_mut(BRepPrimAPI_MakeCone& self_) { return static_cast<BRepPrimAPI_MakeOneAxis&>(self_); }
-inline bool BRepPrimAPI_MakeCone_inherited_IsDone(const BRepPrimAPI_MakeCone& self) {
-    return self.IsDone();
-}
-inline void BRepPrimAPI_MakeCone_inherited_Check(const BRepPrimAPI_MakeCone& self) {
-    self.Check();
-}
-inline void BRepPrimAPI_MakeCone_inherited_Build(BRepPrimAPI_MakeCone& self, const Message_ProgressRange& theRange) {
-    self.Build(theRange);
-}
-inline const TopoDS_Shape& BRepPrimAPI_MakeCone_inherited_Shape(BRepPrimAPI_MakeCone& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeCone_inherited_Generated(BRepPrimAPI_MakeCone& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeCone_inherited_Modified(BRepPrimAPI_MakeCone& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
-inline bool BRepPrimAPI_MakeCone_inherited_IsDeleted(BRepPrimAPI_MakeCone& self, const TopoDS_Shape& S) {
-    return self.IsDeleted(S);
-}
-inline const TopoDS_Face& BRepPrimAPI_MakeCone_inherited_Face(BRepPrimAPI_MakeCone& self) {
-    return self.Face();
-}
-inline const TopoDS_Shell& BRepPrimAPI_MakeCone_inherited_Shell(BRepPrimAPI_MakeCone& self) {
-    return self.Shell();
-}
-inline const TopoDS_Solid& BRepPrimAPI_MakeCone_inherited_Solid(BRepPrimAPI_MakeCone& self) {
-    return self.Solid();
-}
 
 // ========================
 // BRepPrimAPI_MakeCylinder wrappers
@@ -3673,42 +3314,6 @@ inline std::unique_ptr<BRepPrimAPI_MakeCylinder> BRepPrimAPI_MakeCylinder_ctor_a
 }
 inline std::unique_ptr<BRepPrimAPI_MakeCylinder> BRepPrimAPI_MakeCylinder_ctor_ax2_real3(const gp_Ax2& Axes, Standard_Real R, Standard_Real H, Standard_Real Angle) {
     return std::make_unique<BRepPrimAPI_MakeCylinder>(Axes, R, H, Angle);
-}
-inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_Command(const BRepPrimAPI_MakeCylinder& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeCylinder& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeCylinder& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeCylinder& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline const BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis(const BRepPrimAPI_MakeCylinder& self_) { return static_cast<const BRepPrimAPI_MakeOneAxis&>(self_); }
-inline BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis_mut(BRepPrimAPI_MakeCylinder& self_) { return static_cast<BRepPrimAPI_MakeOneAxis&>(self_); }
-inline bool BRepPrimAPI_MakeCylinder_inherited_IsDone(const BRepPrimAPI_MakeCylinder& self) {
-    return self.IsDone();
-}
-inline void BRepPrimAPI_MakeCylinder_inherited_Check(const BRepPrimAPI_MakeCylinder& self) {
-    self.Check();
-}
-inline void BRepPrimAPI_MakeCylinder_inherited_Build(BRepPrimAPI_MakeCylinder& self, const Message_ProgressRange& theRange) {
-    self.Build(theRange);
-}
-inline const TopoDS_Shape& BRepPrimAPI_MakeCylinder_inherited_Shape(BRepPrimAPI_MakeCylinder& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeCylinder_inherited_Generated(BRepPrimAPI_MakeCylinder& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeCylinder_inherited_Modified(BRepPrimAPI_MakeCylinder& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
-inline bool BRepPrimAPI_MakeCylinder_inherited_IsDeleted(BRepPrimAPI_MakeCylinder& self, const TopoDS_Shape& S) {
-    return self.IsDeleted(S);
-}
-inline const TopoDS_Face& BRepPrimAPI_MakeCylinder_inherited_Face(BRepPrimAPI_MakeCylinder& self) {
-    return self.Face();
-}
-inline const TopoDS_Shell& BRepPrimAPI_MakeCylinder_inherited_Shell(BRepPrimAPI_MakeCylinder& self) {
-    return self.Shell();
-}
-inline const TopoDS_Solid& BRepPrimAPI_MakeCylinder_inherited_Solid(BRepPrimAPI_MakeCylinder& self) {
-    return self.Solid();
 }
 
 // ========================
@@ -3833,42 +3438,6 @@ inline std::unique_ptr<BRepPrimAPI_MakeSphere> BRepPrimAPI_MakeSphere_ctor_ax2_r
 inline std::unique_ptr<BRepPrimAPI_MakeSphere> BRepPrimAPI_MakeSphere_ctor_ax2_real4(const gp_Ax2& Axis, Standard_Real R, Standard_Real angle1, Standard_Real angle2, Standard_Real angle3) {
     return std::make_unique<BRepPrimAPI_MakeSphere>(Axis, R, angle1, angle2, angle3);
 }
-inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_Command(const BRepPrimAPI_MakeSphere& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeSphere& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeSphere& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeSphere& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline const BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis(const BRepPrimAPI_MakeSphere& self_) { return static_cast<const BRepPrimAPI_MakeOneAxis&>(self_); }
-inline BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis_mut(BRepPrimAPI_MakeSphere& self_) { return static_cast<BRepPrimAPI_MakeOneAxis&>(self_); }
-inline bool BRepPrimAPI_MakeSphere_inherited_IsDone(const BRepPrimAPI_MakeSphere& self) {
-    return self.IsDone();
-}
-inline void BRepPrimAPI_MakeSphere_inherited_Check(const BRepPrimAPI_MakeSphere& self) {
-    self.Check();
-}
-inline void BRepPrimAPI_MakeSphere_inherited_Build(BRepPrimAPI_MakeSphere& self, const Message_ProgressRange& theRange) {
-    self.Build(theRange);
-}
-inline const TopoDS_Shape& BRepPrimAPI_MakeSphere_inherited_Shape(BRepPrimAPI_MakeSphere& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeSphere_inherited_Generated(BRepPrimAPI_MakeSphere& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeSphere_inherited_Modified(BRepPrimAPI_MakeSphere& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
-inline bool BRepPrimAPI_MakeSphere_inherited_IsDeleted(BRepPrimAPI_MakeSphere& self, const TopoDS_Shape& S) {
-    return self.IsDeleted(S);
-}
-inline const TopoDS_Face& BRepPrimAPI_MakeSphere_inherited_Face(BRepPrimAPI_MakeSphere& self) {
-    return self.Face();
-}
-inline const TopoDS_Shell& BRepPrimAPI_MakeSphere_inherited_Shell(BRepPrimAPI_MakeSphere& self) {
-    return self.Shell();
-}
-inline const TopoDS_Solid& BRepPrimAPI_MakeSphere_inherited_Solid(BRepPrimAPI_MakeSphere& self) {
-    return self.Solid();
-}
 
 // ========================
 // BRepPrimAPI_MakeTorus wrappers
@@ -3897,42 +3466,6 @@ inline std::unique_ptr<BRepPrimAPI_MakeTorus> BRepPrimAPI_MakeTorus_ctor_ax2_rea
 }
 inline std::unique_ptr<BRepPrimAPI_MakeTorus> BRepPrimAPI_MakeTorus_ctor_ax2_real5(const gp_Ax2& Axes, Standard_Real R1, Standard_Real R2, Standard_Real angle1, Standard_Real angle2, Standard_Real angle) {
     return std::make_unique<BRepPrimAPI_MakeTorus>(Axes, R1, R2, angle1, angle2, angle);
-}
-inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_Command(const BRepPrimAPI_MakeTorus& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeTorus& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeTorus& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeTorus& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline const BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis(const BRepPrimAPI_MakeTorus& self_) { return static_cast<const BRepPrimAPI_MakeOneAxis&>(self_); }
-inline BRepPrimAPI_MakeOneAxis& BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis_mut(BRepPrimAPI_MakeTorus& self_) { return static_cast<BRepPrimAPI_MakeOneAxis&>(self_); }
-inline bool BRepPrimAPI_MakeTorus_inherited_IsDone(const BRepPrimAPI_MakeTorus& self) {
-    return self.IsDone();
-}
-inline void BRepPrimAPI_MakeTorus_inherited_Check(const BRepPrimAPI_MakeTorus& self) {
-    self.Check();
-}
-inline void BRepPrimAPI_MakeTorus_inherited_Build(BRepPrimAPI_MakeTorus& self, const Message_ProgressRange& theRange) {
-    self.Build(theRange);
-}
-inline const TopoDS_Shape& BRepPrimAPI_MakeTorus_inherited_Shape(BRepPrimAPI_MakeTorus& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeTorus_inherited_Generated(BRepPrimAPI_MakeTorus& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeTorus_inherited_Modified(BRepPrimAPI_MakeTorus& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
-inline bool BRepPrimAPI_MakeTorus_inherited_IsDeleted(BRepPrimAPI_MakeTorus& self, const TopoDS_Shape& S) {
-    return self.IsDeleted(S);
-}
-inline const TopoDS_Face& BRepPrimAPI_MakeTorus_inherited_Face(BRepPrimAPI_MakeTorus& self) {
-    return self.Face();
-}
-inline const TopoDS_Shell& BRepPrimAPI_MakeTorus_inherited_Shell(BRepPrimAPI_MakeTorus& self) {
-    return self.Shell();
-}
-inline const TopoDS_Solid& BRepPrimAPI_MakeTorus_inherited_Solid(BRepPrimAPI_MakeTorus& self) {
-    return self.Solid();
 }
 
 // ========================
@@ -3981,9 +3514,6 @@ inline std::unique_ptr<BRepAlgoAPI_BuilderAlgo> BRepAlgoAPI_BuilderAlgo_ctor() {
 inline std::unique_ptr<BRepAlgoAPI_BuilderAlgo> BRepAlgoAPI_BuilderAlgo_ctor_pavefiller(const BOPAlgo_PaveFiller& thePF) {
     return std::make_unique<BRepAlgoAPI_BuilderAlgo>(thePF);
 }
-inline std::unique_ptr<opencascade::handle<BRepTools_History>> BRepAlgoAPI_BuilderAlgo_history(const BRepAlgoAPI_BuilderAlgo& self_) {
-    return std::make_unique<opencascade::handle<BRepTools_History>>(self_.History());
-}
 inline const BRepBuilderAPI_Command& BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_Command(const BRepAlgoAPI_BuilderAlgo& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_Command_mut(BRepAlgoAPI_BuilderAlgo& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
 inline const BRepBuilderAPI_MakeShape& BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_MakeShape(const BRepAlgoAPI_BuilderAlgo& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
@@ -4028,6 +3558,9 @@ inline void BRepAlgoAPI_BooleanOperation_inherited_SetNonDestructive(BRepAlgoAPI
 }
 inline bool BRepAlgoAPI_BooleanOperation_inherited_NonDestructive(const BRepAlgoAPI_BooleanOperation& self) {
     return self.NonDestructive();
+}
+inline std::unique_ptr<BOPAlgo_GlueEnum> BRepAlgoAPI_BooleanOperation_inherited_Glue(const BRepAlgoAPI_BooleanOperation& self) {
+    return std::make_unique<BOPAlgo_GlueEnum>(self.Glue());
 }
 inline void BRepAlgoAPI_BooleanOperation_inherited_SetCheckInverted(BRepAlgoAPI_BooleanOperation& self, bool theCheck) {
     self.SetCheckInverted(theCheck);
@@ -4120,6 +3653,9 @@ inline void BRepAlgoAPI_Common_inherited_SetTools(BRepAlgoAPI_Common& self, cons
 inline const TopTools_ListOfShape& BRepAlgoAPI_Common_inherited_Tools(const BRepAlgoAPI_Common& self) {
     return self.Tools();
 }
+inline std::unique_ptr<BOPAlgo_Operation> BRepAlgoAPI_Common_inherited_Operation(const BRepAlgoAPI_Common& self) {
+    return std::make_unique<BOPAlgo_Operation>(self.Operation());
+}
 inline void BRepAlgoAPI_Common_inherited_Build(BRepAlgoAPI_Common& self, const Message_ProgressRange& theRange) {
     self.Build(theRange);
 }
@@ -4134,6 +3670,9 @@ inline void BRepAlgoAPI_Common_inherited_SetNonDestructive(BRepAlgoAPI_Common& s
 }
 inline bool BRepAlgoAPI_Common_inherited_NonDestructive(const BRepAlgoAPI_Common& self) {
     return self.NonDestructive();
+}
+inline std::unique_ptr<BOPAlgo_GlueEnum> BRepAlgoAPI_Common_inherited_Glue(const BRepAlgoAPI_Common& self) {
+    return std::make_unique<BOPAlgo_GlueEnum>(self.Glue());
 }
 inline void BRepAlgoAPI_Common_inherited_SetCheckInverted(BRepAlgoAPI_Common& self, bool theCheck) {
     self.SetCheckInverted(theCheck);
@@ -4226,6 +3765,9 @@ inline void BRepAlgoAPI_Cut_inherited_SetTools(BRepAlgoAPI_Cut& self, const TopT
 inline const TopTools_ListOfShape& BRepAlgoAPI_Cut_inherited_Tools(const BRepAlgoAPI_Cut& self) {
     return self.Tools();
 }
+inline std::unique_ptr<BOPAlgo_Operation> BRepAlgoAPI_Cut_inherited_Operation(const BRepAlgoAPI_Cut& self) {
+    return std::make_unique<BOPAlgo_Operation>(self.Operation());
+}
 inline void BRepAlgoAPI_Cut_inherited_Build(BRepAlgoAPI_Cut& self, const Message_ProgressRange& theRange) {
     self.Build(theRange);
 }
@@ -4240,6 +3782,9 @@ inline void BRepAlgoAPI_Cut_inherited_SetNonDestructive(BRepAlgoAPI_Cut& self, b
 }
 inline bool BRepAlgoAPI_Cut_inherited_NonDestructive(const BRepAlgoAPI_Cut& self) {
     return self.NonDestructive();
+}
+inline std::unique_ptr<BOPAlgo_GlueEnum> BRepAlgoAPI_Cut_inherited_Glue(const BRepAlgoAPI_Cut& self) {
+    return std::make_unique<BOPAlgo_GlueEnum>(self.Glue());
 }
 inline void BRepAlgoAPI_Cut_inherited_SetCheckInverted(BRepAlgoAPI_Cut& self, bool theCheck) {
     self.SetCheckInverted(theCheck);
@@ -4332,6 +3877,9 @@ inline void BRepAlgoAPI_Fuse_inherited_SetTools(BRepAlgoAPI_Fuse& self, const To
 inline const TopTools_ListOfShape& BRepAlgoAPI_Fuse_inherited_Tools(const BRepAlgoAPI_Fuse& self) {
     return self.Tools();
 }
+inline std::unique_ptr<BOPAlgo_Operation> BRepAlgoAPI_Fuse_inherited_Operation(const BRepAlgoAPI_Fuse& self) {
+    return std::make_unique<BOPAlgo_Operation>(self.Operation());
+}
 inline void BRepAlgoAPI_Fuse_inherited_Build(BRepAlgoAPI_Fuse& self, const Message_ProgressRange& theRange) {
     self.Build(theRange);
 }
@@ -4346,6 +3894,9 @@ inline void BRepAlgoAPI_Fuse_inherited_SetNonDestructive(BRepAlgoAPI_Fuse& self,
 }
 inline bool BRepAlgoAPI_Fuse_inherited_NonDestructive(const BRepAlgoAPI_Fuse& self) {
     return self.NonDestructive();
+}
+inline std::unique_ptr<BOPAlgo_GlueEnum> BRepAlgoAPI_Fuse_inherited_Glue(const BRepAlgoAPI_Fuse& self) {
+    return std::make_unique<BOPAlgo_GlueEnum>(self.Glue());
 }
 inline void BRepAlgoAPI_Fuse_inherited_SetCheckInverted(BRepAlgoAPI_Fuse& self, bool theCheck) {
     self.SetCheckInverted(theCheck);
@@ -4450,6 +4001,9 @@ inline void BRepAlgoAPI_Section_inherited_SetTools(BRepAlgoAPI_Section& self, co
 inline const TopTools_ListOfShape& BRepAlgoAPI_Section_inherited_Tools(const BRepAlgoAPI_Section& self) {
     return self.Tools();
 }
+inline std::unique_ptr<BOPAlgo_Operation> BRepAlgoAPI_Section_inherited_Operation(const BRepAlgoAPI_Section& self) {
+    return std::make_unique<BOPAlgo_Operation>(self.Operation());
+}
 inline void BRepAlgoAPI_Section_inherited_SetArguments(BRepAlgoAPI_Section& self, const TopTools_ListOfShape& theLS) {
     self.SetArguments(theLS);
 }
@@ -4461,6 +4015,9 @@ inline void BRepAlgoAPI_Section_inherited_SetNonDestructive(BRepAlgoAPI_Section&
 }
 inline bool BRepAlgoAPI_Section_inherited_NonDestructive(const BRepAlgoAPI_Section& self) {
     return self.NonDestructive();
+}
+inline std::unique_ptr<BOPAlgo_GlueEnum> BRepAlgoAPI_Section_inherited_Glue(const BRepAlgoAPI_Section& self) {
+    return std::make_unique<BOPAlgo_GlueEnum>(self.Glue());
 }
 inline void BRepAlgoAPI_Section_inherited_SetCheckInverted(BRepAlgoAPI_Section& self, bool theCheck) {
     self.SetCheckInverted(theCheck);
@@ -4524,9 +4081,6 @@ inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_LocalOperation_first_vertex(
 inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_LocalOperation_last_vertex(const BRepFilletAPI_LocalOperation& self_, Standard_Integer IC) {
     return std::make_unique<TopoDS_Vertex>(self_.LastVertex(IC));
 }
-inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> BRepFilletAPI_LocalOperation_sect(const BRepFilletAPI_LocalOperation& self_, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
-}
 inline const BRepBuilderAPI_Command& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command(const BRepFilletAPI_LocalOperation& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_LocalOperation& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
 inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_LocalOperation& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
@@ -4566,9 +4120,6 @@ inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeChamfer_first_vertex(con
 inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeChamfer_last_vertex(const BRepFilletAPI_MakeChamfer& self_, Standard_Integer IC) {
     return std::make_unique<TopoDS_Vertex>(self_.LastVertex(IC));
 }
-inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> BRepFilletAPI_MakeChamfer_sect(const BRepFilletAPI_MakeChamfer& self_, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
-}
 inline const BRepBuilderAPI_Command& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command(const BRepFilletAPI_MakeChamfer& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
 inline BRepBuilderAPI_Command& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command_mut(BRepFilletAPI_MakeChamfer& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
 inline const BRepBuilderAPI_MakeShape& BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape(const BRepFilletAPI_MakeChamfer& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
@@ -4597,9 +4148,6 @@ inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeFillet_first_vertex(cons
 }
 inline std::unique_ptr<TopoDS_Vertex> BRepFilletAPI_MakeFillet_last_vertex(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IC) {
     return std::make_unique<TopoDS_Vertex>(self_.LastVertex(IC));
-}
-inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> BRepFilletAPI_MakeFillet_sect(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
 }
 inline std::unique_ptr<opencascade::handle<Geom_Surface>> BRepFilletAPI_MakeFillet_computed_surface(const BRepFilletAPI_MakeFillet& self_, Standard_Integer IC, Standard_Integer IS) {
     return std::make_unique<opencascade::handle<Geom_Surface>>(self_.ComputedSurface(IC, IS));
@@ -4790,33 +4338,6 @@ inline bool BRepOffsetAPI_MakePipeShell_inherited_IsDeleted(BRepOffsetAPI_MakePi
 inline std::unique_ptr<BRepOffsetAPI_MakeThickSolid> BRepOffsetAPI_MakeThickSolid_ctor() {
     return std::make_unique<BRepOffsetAPI_MakeThickSolid>();
 }
-inline const BRepBuilderAPI_Command& BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command(const BRepOffsetAPI_MakeThickSolid& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_MakeThickSolid& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape(const BRepOffsetAPI_MakeThickSolid& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape_mut(BRepOffsetAPI_MakeThickSolid& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline const BRepOffsetAPI_MakeOffsetShape& BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape(const BRepOffsetAPI_MakeThickSolid& self_) { return static_cast<const BRepOffsetAPI_MakeOffsetShape&>(self_); }
-inline BRepOffsetAPI_MakeOffsetShape& BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape_mut(BRepOffsetAPI_MakeThickSolid& self_) { return static_cast<BRepOffsetAPI_MakeOffsetShape&>(self_); }
-inline bool BRepOffsetAPI_MakeThickSolid_inherited_IsDone(const BRepOffsetAPI_MakeThickSolid& self) {
-    return self.IsDone();
-}
-inline void BRepOffsetAPI_MakeThickSolid_inherited_Check(const BRepOffsetAPI_MakeThickSolid& self) {
-    self.Check();
-}
-inline const TopoDS_Shape& BRepOffsetAPI_MakeThickSolid_inherited_Shape(BRepOffsetAPI_MakeThickSolid& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepOffsetAPI_MakeThickSolid_inherited_Generated(BRepOffsetAPI_MakeThickSolid& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline bool BRepOffsetAPI_MakeThickSolid_inherited_IsDeleted(BRepOffsetAPI_MakeThickSolid& self, const TopoDS_Shape& S) {
-    return self.IsDeleted(S);
-}
-inline void BRepOffsetAPI_MakeThickSolid_inherited_PerformBySimple(BRepOffsetAPI_MakeThickSolid& self, const TopoDS_Shape& theS, Standard_Real theOffsetValue) {
-    self.PerformBySimple(theS, theOffsetValue);
-}
-inline const BRepOffset_MakeOffset& BRepOffsetAPI_MakeThickSolid_inherited_MakeOffset(const BRepOffsetAPI_MakeThickSolid& self) {
-    return self.MakeOffset();
-}
 
 // ========================
 // BRepOffsetAPI_ThruSections wrappers
@@ -4855,174 +4376,6 @@ inline bool BRepOffsetAPI_ThruSections_inherited_IsDeleted(BRepOffsetAPI_ThruSec
 inline std::unique_ptr<BRepFeat_MakeCylindricalHole> BRepFeat_MakeCylindricalHole_ctor() {
     return std::make_unique<BRepFeat_MakeCylindricalHole>();
 }
-inline const BOPAlgo_BOP& BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP(const BRepFeat_MakeCylindricalHole& self_) { return static_cast<const BOPAlgo_BOP&>(self_); }
-inline BOPAlgo_BOP& BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP_mut(BRepFeat_MakeCylindricalHole& self_) { return static_cast<BOPAlgo_BOP&>(self_); }
-inline const BOPAlgo_Builder& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Builder(const BRepFeat_MakeCylindricalHole& self_) { return static_cast<const BOPAlgo_Builder&>(self_); }
-inline BOPAlgo_Builder& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Builder_mut(BRepFeat_MakeCylindricalHole& self_) { return static_cast<BOPAlgo_Builder&>(self_); }
-inline const BOPAlgo_BuilderShape& BRepFeat_MakeCylindricalHole_as_BOPAlgo_BuilderShape(const BRepFeat_MakeCylindricalHole& self_) { return static_cast<const BOPAlgo_BuilderShape&>(self_); }
-inline BOPAlgo_BuilderShape& BRepFeat_MakeCylindricalHole_as_BOPAlgo_BuilderShape_mut(BRepFeat_MakeCylindricalHole& self_) { return static_cast<BOPAlgo_BuilderShape&>(self_); }
-inline const BOPAlgo_Options& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Options(const BRepFeat_MakeCylindricalHole& self_) { return static_cast<const BOPAlgo_Options&>(self_); }
-inline BOPAlgo_Options& BRepFeat_MakeCylindricalHole_as_BOPAlgo_Options_mut(BRepFeat_MakeCylindricalHole& self_) { return static_cast<BOPAlgo_Options&>(self_); }
-inline const BOPAlgo_ToolsProvider& BRepFeat_MakeCylindricalHole_as_BOPAlgo_ToolsProvider(const BRepFeat_MakeCylindricalHole& self_) { return static_cast<const BOPAlgo_ToolsProvider&>(self_); }
-inline BOPAlgo_ToolsProvider& BRepFeat_MakeCylindricalHole_as_BOPAlgo_ToolsProvider_mut(BRepFeat_MakeCylindricalHole& self_) { return static_cast<BOPAlgo_ToolsProvider&>(self_); }
-inline const BRepFeat_Builder& BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder(const BRepFeat_MakeCylindricalHole& self_) { return static_cast<const BRepFeat_Builder&>(self_); }
-inline BRepFeat_Builder& BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder_mut(BRepFeat_MakeCylindricalHole& self_) { return static_cast<BRepFeat_Builder&>(self_); }
-inline void BRepFeat_MakeCylindricalHole_inherited_Clear(BRepFeat_MakeCylindricalHole& self) {
-    self.Clear();
-}
-inline std::unique_ptr<BOPAlgo_PPaveFiller> BRepFeat_MakeCylindricalHole_inherited_PPaveFiller(BRepFeat_MakeCylindricalHole& self) {
-    return std::make_unique<BOPAlgo_PPaveFiller>(self.PPaveFiller());
-}
-inline std::unique_ptr<BOPDS_PDS> BRepFeat_MakeCylindricalHole_inherited_PDS(BRepFeat_MakeCylindricalHole& self) {
-    return std::make_unique<BOPDS_PDS>(self.PDS());
-}
-inline std::unique_ptr<Handle(IntTools_Context)> BRepFeat_MakeCylindricalHole_inherited_Context(const BRepFeat_MakeCylindricalHole& self) {
-    return std::make_unique<Handle(IntTools_Context)>(self.Context());
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_AddArgument(BRepFeat_MakeCylindricalHole& self, const TopoDS_Shape& theShape) {
-    self.AddArgument(theShape);
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_SetArguments(BRepFeat_MakeCylindricalHole& self, const TopTools_ListOfShape& theLS) {
-    self.SetArguments(theLS);
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeCylindricalHole_inherited_Arguments(const BRepFeat_MakeCylindricalHole& self) {
-    return self.Arguments();
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_SetNonDestructive(BRepFeat_MakeCylindricalHole& self, bool theFlag) {
-    self.SetNonDestructive(theFlag);
-}
-inline bool BRepFeat_MakeCylindricalHole_inherited_NonDestructive(const BRepFeat_MakeCylindricalHole& self) {
-    return self.NonDestructive();
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_SetCheckInverted(BRepFeat_MakeCylindricalHole& self, bool theCheck) {
-    self.SetCheckInverted(theCheck);
-}
-inline bool BRepFeat_MakeCylindricalHole_inherited_CheckInverted(const BRepFeat_MakeCylindricalHole& self) {
-    return self.CheckInverted();
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_PerformWithFiller(BRepFeat_MakeCylindricalHole& self, const BOPAlgo_PaveFiller& theFiller, const Message_ProgressRange& theRange) {
-    self.PerformWithFiller(theFiller, theRange);
-}
-inline const TopTools_DataMapOfShapeListOfShape& BRepFeat_MakeCylindricalHole_inherited_Images(const BRepFeat_MakeCylindricalHole& self) {
-    return self.Images();
-}
-inline const TopTools_DataMapOfShapeListOfShape& BRepFeat_MakeCylindricalHole_inherited_Origins(const BRepFeat_MakeCylindricalHole& self) {
-    return self.Origins();
-}
-inline const TopTools_DataMapOfShapeShape& BRepFeat_MakeCylindricalHole_inherited_ShapesSD(const BRepFeat_MakeCylindricalHole& self) {
-    return self.ShapesSD();
-}
-inline const TopoDS_Shape& BRepFeat_MakeCylindricalHole_inherited_Shape(const BRepFeat_MakeCylindricalHole& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeCylindricalHole_inherited_Modified(BRepFeat_MakeCylindricalHole& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeCylindricalHole_inherited_Generated(BRepFeat_MakeCylindricalHole& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
-}
-inline bool BRepFeat_MakeCylindricalHole_inherited_IsDeleted(BRepFeat_MakeCylindricalHole& self, const TopoDS_Shape& theS) {
-    return self.IsDeleted(theS);
-}
-inline bool BRepFeat_MakeCylindricalHole_inherited_HasModified(const BRepFeat_MakeCylindricalHole& self) {
-    return self.HasModified();
-}
-inline bool BRepFeat_MakeCylindricalHole_inherited_HasGenerated(const BRepFeat_MakeCylindricalHole& self) {
-    return self.HasGenerated();
-}
-inline bool BRepFeat_MakeCylindricalHole_inherited_HasDeleted(const BRepFeat_MakeCylindricalHole& self) {
-    return self.HasDeleted();
-}
-inline std::unique_ptr<Handle(BRepTools_History)> BRepFeat_MakeCylindricalHole_inherited_History(BRepFeat_MakeCylindricalHole& self) {
-    return std::make_unique<Handle(BRepTools_History)>(self.History());
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_SetToFillHistory(BRepFeat_MakeCylindricalHole& self, bool theHistFlag) {
-    self.SetToFillHistory(theHistFlag);
-}
-inline bool BRepFeat_MakeCylindricalHole_inherited_HasHistory(const BRepFeat_MakeCylindricalHole& self) {
-    return self.HasHistory();
-}
-inline const Handle(NCollection_BaseAllocator)& BRepFeat_MakeCylindricalHole_inherited_Allocator(const BRepFeat_MakeCylindricalHole& self) {
-    return self.Allocator();
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_AddError(BRepFeat_MakeCylindricalHole& self, const Handle(Message_Alert)& theAlert) {
-    self.AddError(theAlert);
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_AddWarning(BRepFeat_MakeCylindricalHole& self, const Handle(Message_Alert)& theAlert) {
-    self.AddWarning(theAlert);
-}
-inline bool BRepFeat_MakeCylindricalHole_inherited_HasErrors(const BRepFeat_MakeCylindricalHole& self) {
-    return self.HasErrors();
-}
-inline bool BRepFeat_MakeCylindricalHole_inherited_HasError(const BRepFeat_MakeCylindricalHole& self, const Handle(Standard_Type)& theType) {
-    return self.HasError(theType);
-}
-inline bool BRepFeat_MakeCylindricalHole_inherited_HasWarnings(const BRepFeat_MakeCylindricalHole& self) {
-    return self.HasWarnings();
-}
-inline bool BRepFeat_MakeCylindricalHole_inherited_HasWarning(const BRepFeat_MakeCylindricalHole& self, const Handle(Standard_Type)& theType) {
-    return self.HasWarning(theType);
-}
-inline const Handle(Message_Report)& BRepFeat_MakeCylindricalHole_inherited_GetReport(const BRepFeat_MakeCylindricalHole& self) {
-    return self.GetReport();
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_ClearWarnings(BRepFeat_MakeCylindricalHole& self) {
-    self.ClearWarnings();
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_SetRunParallel(BRepFeat_MakeCylindricalHole& self, bool theFlag) {
-    self.SetRunParallel(theFlag);
-}
-inline bool BRepFeat_MakeCylindricalHole_inherited_RunParallel(const BRepFeat_MakeCylindricalHole& self) {
-    return self.RunParallel();
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_SetFuzzyValue(BRepFeat_MakeCylindricalHole& self, Standard_Real theFuzz) {
-    self.SetFuzzyValue(theFuzz);
-}
-inline Standard_Real BRepFeat_MakeCylindricalHole_inherited_FuzzyValue(const BRepFeat_MakeCylindricalHole& self) {
-    return self.FuzzyValue();
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_SetUseOBB(BRepFeat_MakeCylindricalHole& self, bool theUseOBB) {
-    self.SetUseOBB(theUseOBB);
-}
-inline bool BRepFeat_MakeCylindricalHole_inherited_UseOBB(const BRepFeat_MakeCylindricalHole& self) {
-    return self.UseOBB();
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_AddTool(BRepFeat_MakeCylindricalHole& self, const TopoDS_Shape& theShape) {
-    self.AddTool(theShape);
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_SetTools(BRepFeat_MakeCylindricalHole& self, const TopTools_ListOfShape& theShapes) {
-    self.SetTools(theShapes);
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeCylindricalHole_inherited_Tools(const BRepFeat_MakeCylindricalHole& self) {
-    return self.Tools();
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_SetOperation(BRepFeat_MakeCylindricalHole& self, Standard_Integer theFuse) {
-    self.SetOperation(theFuse);
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_PartsOfTool(BRepFeat_MakeCylindricalHole& self, TopTools_ListOfShape& theLT) {
-    self.PartsOfTool(theLT);
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_KeepParts(BRepFeat_MakeCylindricalHole& self, const TopTools_ListOfShape& theIm) {
-    self.KeepParts(theIm);
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_KeepPart(BRepFeat_MakeCylindricalHole& self, const TopoDS_Shape& theS) {
-    self.KeepPart(theS);
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_PerformResult(BRepFeat_MakeCylindricalHole& self, const Message_ProgressRange& theRange) {
-    self.PerformResult(theRange);
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_RebuildFaces(BRepFeat_MakeCylindricalHole& self) {
-    self.RebuildFaces();
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_RebuildEdge(BRepFeat_MakeCylindricalHole& self, const TopoDS_Shape& theE, const TopoDS_Face& theF, const TopTools_MapOfShape& theME, TopTools_ListOfShape& aLEIm) {
-    self.RebuildEdge(theE, theF, theME, aLEIm);
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_CheckSolidImages(BRepFeat_MakeCylindricalHole& self) {
-    self.CheckSolidImages();
-}
-inline void BRepFeat_MakeCylindricalHole_inherited_FillRemoved(BRepFeat_MakeCylindricalHole& self) {
-    self.FillRemoved();
-}
 
 // ========================
 // BRepFeat_MakeDPrism wrappers
@@ -5037,66 +4390,6 @@ inline std::unique_ptr<BRepFeat_MakeDPrism> BRepFeat_MakeDPrism_ctor() {
 inline std::unique_ptr<opencascade::handle<Geom_Curve>> BRepFeat_MakeDPrism_baryc_curve(BRepFeat_MakeDPrism& self_) {
     return std::make_unique<opencascade::handle<Geom_Curve>>(self_.BarycCurve());
 }
-inline const BRepBuilderAPI_Command& BRepFeat_MakeDPrism_as_BRepBuilderAPI_Command(const BRepFeat_MakeDPrism& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepFeat_MakeDPrism_as_BRepBuilderAPI_Command_mut(BRepFeat_MakeDPrism& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape(const BRepFeat_MakeDPrism& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape_mut(BRepFeat_MakeDPrism& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline const BRepFeat_Form& BRepFeat_MakeDPrism_as_BRepFeat_Form(const BRepFeat_MakeDPrism& self_) { return static_cast<const BRepFeat_Form&>(self_); }
-inline BRepFeat_Form& BRepFeat_MakeDPrism_as_BRepFeat_Form_mut(BRepFeat_MakeDPrism& self_) { return static_cast<BRepFeat_Form&>(self_); }
-inline bool BRepFeat_MakeDPrism_inherited_IsDone(const BRepFeat_MakeDPrism& self) {
-    return self.IsDone();
-}
-inline void BRepFeat_MakeDPrism_inherited_Check(const BRepFeat_MakeDPrism& self) {
-    self.Check();
-}
-inline void BRepFeat_MakeDPrism_inherited_Build(BRepFeat_MakeDPrism& self, const Message_ProgressRange& theRange) {
-    self.Build(theRange);
-}
-inline const TopoDS_Shape& BRepFeat_MakeDPrism_inherited_Shape(BRepFeat_MakeDPrism& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeDPrism_inherited_Generated(BRepFeat_MakeDPrism& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeDPrism_inherited_Modified(BRepFeat_MakeDPrism& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
-inline bool BRepFeat_MakeDPrism_inherited_IsDeleted(BRepFeat_MakeDPrism& self, const TopoDS_Shape& S) {
-    return self.IsDeleted(S);
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeDPrism_inherited_FirstShape(const BRepFeat_MakeDPrism& self) {
-    return self.FirstShape();
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeDPrism_inherited_LastShape(const BRepFeat_MakeDPrism& self) {
-    return self.LastShape();
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeDPrism_inherited_NewEdges(const BRepFeat_MakeDPrism& self) {
-    return self.NewEdges();
-}
-inline const TopTools_ListOfShape& BRepFeat_MakeDPrism_inherited_TgtEdges(const BRepFeat_MakeDPrism& self) {
-    return self.TgtEdges();
-}
-inline void BRepFeat_MakeDPrism_inherited_BasisShapeValid(BRepFeat_MakeDPrism& self) {
-    self.BasisShapeValid();
-}
-inline void BRepFeat_MakeDPrism_inherited_GeneratedShapeValid(BRepFeat_MakeDPrism& self) {
-    self.GeneratedShapeValid();
-}
-inline void BRepFeat_MakeDPrism_inherited_ShapeFromValid(BRepFeat_MakeDPrism& self) {
-    self.ShapeFromValid();
-}
-inline void BRepFeat_MakeDPrism_inherited_ShapeUntilValid(BRepFeat_MakeDPrism& self) {
-    self.ShapeUntilValid();
-}
-inline void BRepFeat_MakeDPrism_inherited_GluedFacesValid(BRepFeat_MakeDPrism& self) {
-    self.GluedFacesValid();
-}
-inline void BRepFeat_MakeDPrism_inherited_SketchFaceValid(BRepFeat_MakeDPrism& self) {
-    self.SketchFaceValid();
-}
-inline void BRepFeat_MakeDPrism_inherited_PerfSelectionValid(BRepFeat_MakeDPrism& self) {
-    self.PerfSelectionValid();
-}
 
 // ========================
 // BRepTools wrappers
@@ -5110,15 +4403,6 @@ inline void BRepTools_uv_bounds_face_wire_real4(const TopoDS_Face& F, const Topo
 }
 inline void BRepTools_uv_bounds_face_edge_real4(const TopoDS_Face& F, const TopoDS_Edge& E, Standard_Real& UMin, Standard_Real& UMax, Standard_Real& VMin, Standard_Real& VMax) {
     return BRepTools::UVBounds(F, E, UMin, UMax, VMin, VMax);
-}
-inline void BRepTools_add_uv_bounds_face_box2d(const TopoDS_Face& F, Bnd_Box2d& B) {
-    return BRepTools::AddUVBounds(F, B);
-}
-inline void BRepTools_add_uv_bounds_face_wire_box2d(const TopoDS_Face& F, const TopoDS_Wire& W, Bnd_Box2d& B) {
-    return BRepTools::AddUVBounds(F, W, B);
-}
-inline void BRepTools_add_uv_bounds_face_edge_box2d(const TopoDS_Face& F, const TopoDS_Edge& E, Bnd_Box2d& B) {
-    return BRepTools::AddUVBounds(F, E, B);
 }
 inline void BRepTools_update_vertex(const TopoDS_Vertex& V) {
     return BRepTools::Update(V);
@@ -5209,9 +4493,6 @@ inline std::unique_ptr<TopTools_HSequenceOfShape> TopTools_HSequenceOfShape_ctor
 inline std::unique_ptr<TopTools_HSequenceOfShape> TopTools_HSequenceOfShape_ctor_sequenceofshape(const TopTools_SequenceOfShape& theOther) {
     return std::make_unique<TopTools_HSequenceOfShape>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TopTools_HSequenceOfShape_get_type_descriptor() {
-    return TopTools_HSequenceOfShape::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTopToolsHSequenceOfShape> TopTools_HSequenceOfShape_to_handle(std::unique_ptr<TopTools_HSequenceOfShape> obj) {
     return std::make_unique<HandleTopToolsHSequenceOfShape>(obj.release());
 }
@@ -5247,9 +4528,6 @@ inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Geometry_transla
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Geometry_copy(const Geom_Geometry& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
-inline const opencascade::handle<Standard_Type>& Geom_Geometry_get_type_descriptor() {
-    return Geom_Geometry::get_type_descriptor();
-}
 
 // ========================
 // Geom_Curve wrappers
@@ -5263,9 +4541,6 @@ inline std::unique_ptr<gp_Vec> Geom_Curve_dn(const Geom_Curve& self_, Standard_R
 }
 inline std::unique_ptr<gp_Pnt> Geom_Curve_value(const Geom_Curve& self_, Standard_Real U) {
     return std::make_unique<gp_Pnt>(self_.Value(U));
-}
-inline const opencascade::handle<Standard_Type>& Geom_Curve_get_type_descriptor() {
-    return Geom_Curve::get_type_descriptor();
 }
 inline const Geom_Geometry& Geom_Curve_as_Geom_Geometry(const Geom_Curve& self_) { return static_cast<const Geom_Geometry&>(self_); }
 inline Geom_Geometry& Geom_Curve_as_Geom_Geometry_mut(Geom_Curve& self_) { return static_cast<Geom_Geometry&>(self_); }
@@ -5328,9 +4603,6 @@ inline std::unique_ptr<gp_Vec> Geom_Surface_dn(const Geom_Surface& self_, Standa
 inline std::unique_ptr<gp_Pnt> Geom_Surface_value(const Geom_Surface& self_, Standard_Real U, Standard_Real V) {
     return std::make_unique<gp_Pnt>(self_.Value(U, V));
 }
-inline const opencascade::handle<Standard_Type>& Geom_Surface_get_type_descriptor() {
-    return Geom_Surface::get_type_descriptor();
-}
 inline const Geom_Geometry& Geom_Surface_as_Geom_Geometry(const Geom_Surface& self_) { return static_cast<const Geom_Geometry&>(self_); }
 inline Geom_Geometry& Geom_Surface_as_Geom_Geometry_mut(Geom_Surface& self_) { return static_cast<Geom_Geometry&>(self_); }
 inline void Geom_Surface_inherited_Mirror(Geom_Surface& self, const gp_Pnt& P) {
@@ -5376,9 +4648,6 @@ inline std::unique_ptr<gp_Pnt> Geom_BoundedCurve_end_point(const Geom_BoundedCur
 }
 inline std::unique_ptr<gp_Pnt> Geom_BoundedCurve_start_point(const Geom_BoundedCurve& self_) {
     return std::make_unique<gp_Pnt>(self_.StartPoint());
-}
-inline const opencascade::handle<Standard_Type>& Geom_BoundedCurve_get_type_descriptor() {
-    return Geom_BoundedCurve::get_type_descriptor();
 }
 inline const Geom_Curve& Geom_BoundedCurve_as_Geom_Curve(const Geom_BoundedCurve& self_) { return static_cast<const Geom_Curve&>(self_); }
 inline Geom_Curve& Geom_BoundedCurve_as_Geom_Curve_mut(Geom_BoundedCurve& self_) { return static_cast<Geom_Curve&>(self_); }
@@ -5473,9 +4742,6 @@ inline std::unique_ptr<Handle(Geom_Geometry)> Geom_BoundedCurve_inherited_Copy(c
 // Geom_BoundedSurface wrappers
 // ========================
 
-inline const opencascade::handle<Standard_Type>& Geom_BoundedSurface_get_type_descriptor() {
-    return Geom_BoundedSurface::get_type_descriptor();
-}
 inline const Geom_Geometry& Geom_BoundedSurface_as_Geom_Geometry(const Geom_BoundedSurface& self_) { return static_cast<const Geom_Geometry&>(self_); }
 inline Geom_Geometry& Geom_BoundedSurface_as_Geom_Geometry_mut(Geom_BoundedSurface& self_) { return static_cast<Geom_Geometry&>(self_); }
 inline const Geom_Surface& Geom_BoundedSurface_as_Geom_Surface(const Geom_BoundedSurface& self_) { return static_cast<const Geom_Surface&>(self_); }
@@ -5602,9 +4868,6 @@ inline std::unique_ptr<gp_Pnt> Geom_BoundedSurface_inherited_Value(const Geom_Bo
 // Geom_ElementarySurface wrappers
 // ========================
 
-inline const opencascade::handle<Standard_Type>& Geom_ElementarySurface_get_type_descriptor() {
-    return Geom_ElementarySurface::get_type_descriptor();
-}
 inline const Geom_Geometry& Geom_ElementarySurface_as_Geom_Geometry(const Geom_ElementarySurface& self_) { return static_cast<const Geom_Geometry&>(self_); }
 inline Geom_Geometry& Geom_ElementarySurface_as_Geom_Geometry_mut(Geom_ElementarySurface& self_) { return static_cast<Geom_Geometry&>(self_); }
 inline const Geom_Surface& Geom_ElementarySurface_as_Geom_Surface(const Geom_ElementarySurface& self_) { return static_cast<const Geom_Surface&>(self_); }
@@ -5725,9 +4988,6 @@ inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_BezierCurve_copy
 inline Standard_Integer Geom_BezierCurve_max_degree() {
     return Geom_BezierCurve::MaxDegree();
 }
-inline const opencascade::handle<Standard_Type>& Geom_BezierCurve_get_type_descriptor() {
-    return Geom_BezierCurve::get_type_descriptor();
-}
 inline const Geom_BoundedCurve& Geom_BezierCurve_as_Geom_BoundedCurve(const Geom_BezierCurve& self_) { return static_cast<const Geom_BoundedCurve&>(self_); }
 inline Geom_BoundedCurve& Geom_BezierCurve_as_Geom_BoundedCurve_mut(Geom_BezierCurve& self_) { return static_cast<Geom_BoundedCurve&>(self_); }
 inline const Geom_Curve& Geom_BezierCurve_as_Geom_Curve(const Geom_BezierCurve& self_) { return static_cast<const Geom_Curve&>(self_); }
@@ -5813,9 +5073,6 @@ inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_BezierSurface_co
 }
 inline Standard_Integer Geom_BezierSurface_max_degree() {
     return Geom_BezierSurface::MaxDegree();
-}
-inline const opencascade::handle<Standard_Type>& Geom_BezierSurface_get_type_descriptor() {
-    return Geom_BezierSurface::get_type_descriptor();
 }
 inline const Geom_BoundedSurface& Geom_BezierSurface_as_Geom_BoundedSurface(const Geom_BezierSurface& self_) { return static_cast<const Geom_BoundedSurface&>(self_); }
 inline Geom_BoundedSurface& Geom_BezierSurface_as_Geom_BoundedSurface_mut(Geom_BezierSurface& self_) { return static_cast<Geom_BoundedSurface&>(self_); }
@@ -5915,9 +5172,6 @@ inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_BSplineCurve_cop
 inline Standard_Integer Geom_BSplineCurve_max_degree() {
     return Geom_BSplineCurve::MaxDegree();
 }
-inline const opencascade::handle<Standard_Type>& Geom_BSplineCurve_get_type_descriptor() {
-    return Geom_BSplineCurve::get_type_descriptor();
-}
 inline const Geom_BoundedCurve& Geom_BSplineCurve_as_Geom_BoundedCurve(const Geom_BSplineCurve& self_) { return static_cast<const Geom_BoundedCurve&>(self_); }
 inline Geom_BoundedCurve& Geom_BSplineCurve_as_Geom_BoundedCurve_mut(Geom_BSplineCurve& self_) { return static_cast<Geom_BoundedCurve&>(self_); }
 inline const Geom_Curve& Geom_BSplineCurve_as_Geom_Curve(const Geom_BSplineCurve& self_) { return static_cast<const Geom_Curve&>(self_); }
@@ -6016,9 +5270,6 @@ inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_BSplineSurface_c
 inline Standard_Integer Geom_BSplineSurface_max_degree() {
     return Geom_BSplineSurface::MaxDegree();
 }
-inline const opencascade::handle<Standard_Type>& Geom_BSplineSurface_get_type_descriptor() {
-    return Geom_BSplineSurface::get_type_descriptor();
-}
 inline const Geom_BoundedSurface& Geom_BSplineSurface_as_Geom_BoundedSurface(const Geom_BSplineSurface& self_) { return static_cast<const Geom_BoundedSurface&>(self_); }
 inline Geom_BoundedSurface& Geom_BSplineSurface_as_Geom_BoundedSurface_mut(Geom_BSplineSurface& self_) { return static_cast<Geom_BoundedSurface&>(self_); }
 inline const Geom_Geometry& Geom_BSplineSurface_as_Geom_Geometry(const Geom_BSplineSurface& self_) { return static_cast<const Geom_Geometry&>(self_); }
@@ -6113,9 +5364,6 @@ inline std::unique_ptr<gp_Vec> Geom_CylindricalSurface_dn(const Geom_Cylindrical
 }
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_CylindricalSurface_copy(const Geom_CylindricalSurface& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
-}
-inline const opencascade::handle<Standard_Type>& Geom_CylindricalSurface_get_type_descriptor() {
-    return Geom_CylindricalSurface::get_type_descriptor();
 }
 inline const Geom_ElementarySurface& Geom_CylindricalSurface_as_Geom_ElementarySurface(const Geom_CylindricalSurface& self_) { return static_cast<const Geom_ElementarySurface&>(self_); }
 inline Geom_ElementarySurface& Geom_CylindricalSurface_as_Geom_ElementarySurface_mut(Geom_CylindricalSurface& self_) { return static_cast<Geom_ElementarySurface&>(self_); }
@@ -6242,9 +5490,6 @@ inline std::unique_ptr<gp_Vec> Geom_Plane_dn(const Geom_Plane& self_, Standard_R
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_Plane_copy(const Geom_Plane& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
-inline const opencascade::handle<Standard_Type>& Geom_Plane_get_type_descriptor() {
-    return Geom_Plane::get_type_descriptor();
-}
 inline const Geom_ElementarySurface& Geom_Plane_as_Geom_ElementarySurface(const Geom_Plane& self_) { return static_cast<const Geom_ElementarySurface&>(self_); }
 inline Geom_ElementarySurface& Geom_Plane_as_Geom_ElementarySurface_mut(Geom_Plane& self_) { return static_cast<Geom_ElementarySurface&>(self_); }
 inline const Geom_Geometry& Geom_Plane_as_Geom_Geometry(const Geom_Plane& self_) { return static_cast<const Geom_Geometry&>(self_); }
@@ -6352,9 +5597,6 @@ inline std::unique_ptr<gp_Vec> Geom_TrimmedCurve_dn(const Geom_TrimmedCurve& sel
 inline std::unique_ptr<opencascade::handle<Geom_Geometry>> Geom_TrimmedCurve_copy(const Geom_TrimmedCurve& self_) {
     return std::make_unique<opencascade::handle<Geom_Geometry>>(self_.Copy());
 }
-inline const opencascade::handle<Standard_Type>& Geom_TrimmedCurve_get_type_descriptor() {
-    return Geom_TrimmedCurve::get_type_descriptor();
-}
 inline const Geom_BoundedCurve& Geom_TrimmedCurve_as_Geom_BoundedCurve(const Geom_TrimmedCurve& self_) { return static_cast<const Geom_BoundedCurve&>(self_); }
 inline Geom_BoundedCurve& Geom_TrimmedCurve_as_Geom_BoundedCurve_mut(Geom_TrimmedCurve& self_) { return static_cast<Geom_BoundedCurve&>(self_); }
 inline const Geom_Curve& Geom_TrimmedCurve_as_Geom_Curve(const Geom_TrimmedCurve& self_) { return static_cast<const Geom_Curve&>(self_); }
@@ -6435,9 +5677,6 @@ inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_Geometry_tra
 inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_Geometry_copy(const Geom2d_Geometry& self_) {
     return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.Copy());
 }
-inline const opencascade::handle<Standard_Type>& Geom2d_Geometry_get_type_descriptor() {
-    return Geom2d_Geometry::get_type_descriptor();
-}
 
 // ========================
 // Geom2d_Curve wrappers
@@ -6451,9 +5690,6 @@ inline std::unique_ptr<gp_Vec2d> Geom2d_Curve_dn(const Geom2d_Curve& self_, Stan
 }
 inline std::unique_ptr<gp_Pnt2d> Geom2d_Curve_value(const Geom2d_Curve& self_, Standard_Real U) {
     return std::make_unique<gp_Pnt2d>(self_.Value(U));
-}
-inline const opencascade::handle<Standard_Type>& Geom2d_Curve_get_type_descriptor() {
-    return Geom2d_Curve::get_type_descriptor();
 }
 inline const Geom2d_Geometry& Geom2d_Curve_as_Geom2d_Geometry(const Geom2d_Curve& self_) { return static_cast<const Geom2d_Geometry&>(self_); }
 inline Geom2d_Geometry& Geom2d_Curve_as_Geom2d_Geometry_mut(Geom2d_Curve& self_) { return static_cast<Geom2d_Geometry&>(self_); }
@@ -6500,9 +5736,6 @@ inline std::unique_ptr<gp_Pnt2d> Geom2d_BoundedCurve_end_point(const Geom2d_Boun
 }
 inline std::unique_ptr<gp_Pnt2d> Geom2d_BoundedCurve_start_point(const Geom2d_BoundedCurve& self_) {
     return std::make_unique<gp_Pnt2d>(self_.StartPoint());
-}
-inline const opencascade::handle<Standard_Type>& Geom2d_BoundedCurve_get_type_descriptor() {
-    return Geom2d_BoundedCurve::get_type_descriptor();
 }
 inline const Geom2d_Curve& Geom2d_BoundedCurve_as_Geom2d_Curve(const Geom2d_BoundedCurve& self_) { return static_cast<const Geom2d_Curve&>(self_); }
 inline Geom2d_Curve& Geom2d_BoundedCurve_as_Geom2d_Curve_mut(Geom2d_BoundedCurve& self_) { return static_cast<Geom2d_Curve&>(self_); }
@@ -6602,9 +5835,6 @@ inline std::unique_ptr<gp_Ax2d> Geom2d_Conic_x_axis(const Geom2d_Conic& self_) {
 }
 inline std::unique_ptr<gp_Ax2d> Geom2d_Conic_y_axis(const Geom2d_Conic& self_) {
     return std::make_unique<gp_Ax2d>(self_.YAxis());
-}
-inline const opencascade::handle<Standard_Type>& Geom2d_Conic_get_type_descriptor() {
-    return Geom2d_Conic::get_type_descriptor();
 }
 inline const Geom2d_Curve& Geom2d_Conic_as_Geom2d_Curve(const Geom2d_Conic& self_) { return static_cast<const Geom2d_Curve&>(self_); }
 inline Geom2d_Curve& Geom2d_Conic_as_Geom2d_Curve_mut(Geom2d_Conic& self_) { return static_cast<Geom2d_Curve&>(self_); }
@@ -6720,9 +5950,6 @@ inline std::unique_ptr<gp_Vec2d> Geom2d_Ellipse_dn(const Geom2d_Ellipse& self_, 
 inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_Ellipse_copy(const Geom2d_Ellipse& self_) {
     return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.Copy());
 }
-inline const opencascade::handle<Standard_Type>& Geom2d_Ellipse_get_type_descriptor() {
-    return Geom2d_Ellipse::get_type_descriptor();
-}
 inline const Geom2d_Conic& Geom2d_Ellipse_as_Geom2d_Conic(const Geom2d_Ellipse& self_) { return static_cast<const Geom2d_Conic&>(self_); }
 inline Geom2d_Conic& Geom2d_Ellipse_as_Geom2d_Conic_mut(Geom2d_Ellipse& self_) { return static_cast<Geom2d_Conic&>(self_); }
 inline const Geom2d_Curve& Geom2d_Ellipse_as_Geom2d_Curve(const Geom2d_Ellipse& self_) { return static_cast<const Geom2d_Curve&>(self_); }
@@ -6835,9 +6062,6 @@ inline std::unique_ptr<gp_Vec2d> Geom2d_TrimmedCurve_dn(const Geom2d_TrimmedCurv
 }
 inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> Geom2d_TrimmedCurve_copy(const Geom2d_TrimmedCurve& self_) {
     return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.Copy());
-}
-inline const opencascade::handle<Standard_Type>& Geom2d_TrimmedCurve_get_type_descriptor() {
-    return Geom2d_TrimmedCurve::get_type_descriptor();
 }
 inline const Geom2d_BoundedCurve& Geom2d_TrimmedCurve_as_Geom2d_BoundedCurve(const Geom2d_TrimmedCurve& self_) { return static_cast<const Geom2d_BoundedCurve&>(self_); }
 inline Geom2d_BoundedCurve& Geom2d_TrimmedCurve_as_Geom2d_BoundedCurve_mut(Geom2d_TrimmedCurve& self_) { return static_cast<Geom2d_BoundedCurve&>(self_); }
@@ -6963,14 +6187,6 @@ inline std::unique_ptr<GC_MakeArcOfCircle> GC_MakeArcOfCircle_ctor_pnt3(const gp
 inline std::unique_ptr<GC_MakeArcOfCircle> GC_MakeArcOfCircle_ctor_pnt_vec_pnt(const gp_Pnt& P1, const gp_Vec& V, const gp_Pnt& P2) {
     return std::make_unique<GC_MakeArcOfCircle>(P1, V, P2);
 }
-inline const GC_Root& GC_MakeArcOfCircle_as_GC_Root(const GC_MakeArcOfCircle& self_) { return static_cast<const GC_Root&>(self_); }
-inline GC_Root& GC_MakeArcOfCircle_as_GC_Root_mut(GC_MakeArcOfCircle& self_) { return static_cast<GC_Root&>(self_); }
-inline bool GC_MakeArcOfCircle_inherited_IsDone(const GC_MakeArcOfCircle& self) {
-    return self.IsDone();
-}
-inline std::unique_ptr<gce_ErrorType> GC_MakeArcOfCircle_inherited_Status(const GC_MakeArcOfCircle& self) {
-    return std::make_unique<gce_ErrorType>(self.Status());
-}
 
 // ========================
 // GC_MakeSegment wrappers
@@ -6987,14 +6203,6 @@ inline std::unique_ptr<GC_MakeSegment> GC_MakeSegment_ctor_lin_pnt_real(const gp
 }
 inline std::unique_ptr<GC_MakeSegment> GC_MakeSegment_ctor_lin_pnt2(const gp_Lin& Line, const gp_Pnt& P1, const gp_Pnt& P2) {
     return std::make_unique<GC_MakeSegment>(Line, P1, P2);
-}
-inline const GC_Root& GC_MakeSegment_as_GC_Root(const GC_MakeSegment& self_) { return static_cast<const GC_Root&>(self_); }
-inline GC_Root& GC_MakeSegment_as_GC_Root_mut(GC_MakeSegment& self_) { return static_cast<GC_Root&>(self_); }
-inline bool GC_MakeSegment_inherited_IsDone(const GC_MakeSegment& self) {
-    return self.IsDone();
-}
-inline std::unique_ptr<gce_ErrorType> GC_MakeSegment_inherited_Status(const GC_MakeSegment& self) {
-    return std::make_unique<gce_ErrorType>(self.Status());
 }
 
 // ========================
@@ -7127,9 +6335,6 @@ inline const opencascade::handle<Geom_Curve>& BRep_Tool_curve_edge_location_real
 inline std::unique_ptr<opencascade::handle<Geom_Curve>> BRep_Tool_curve_edge_real2(const TopoDS_Edge& E, Standard_Real& First, Standard_Real& Last) {
     return std::make_unique<opencascade::handle<Geom_Curve>>(BRep_Tool::Curve(E, First, Last));
 }
-inline const opencascade::handle<Poly_Polygon3D>& BRep_Tool_polygon3_d(const TopoDS_Edge& E, TopLoc_Location& L) {
-    return BRep_Tool::Polygon3D(E, L);
-}
 inline std::unique_ptr<opencascade::handle<Geom2d_Curve>> BRep_Tool_curve_on_plane(const TopoDS_Edge& E, const opencascade::handle<Geom_Surface>& S, const TopLoc_Location& L, Standard_Real& First, Standard_Real& Last) {
     return std::make_unique<opencascade::handle<Geom2d_Curve>>(BRep_Tool::CurveOnPlane(E, S, L, First, Last));
 }
@@ -7138,27 +6343,6 @@ inline void BRep_Tool_curve_on_surface_edge_handlecurve_handlesurface_location_r
 }
 inline void BRep_Tool_curve_on_surface_edge_handlecurve_handlesurface_location_real2_int(const TopoDS_Edge& E, opencascade::handle<Geom2d_Curve>& C, opencascade::handle<Geom_Surface>& S, TopLoc_Location& L, Standard_Real& First, Standard_Real& Last, Standard_Integer Index) {
     return BRep_Tool::CurveOnSurface(E, C, S, L, First, Last, Index);
-}
-inline std::unique_ptr<opencascade::handle<Poly_Polygon2D>> BRep_Tool_polygon_on_surface_edge_face(const TopoDS_Edge& E, const TopoDS_Face& F) {
-    return std::make_unique<opencascade::handle<Poly_Polygon2D>>(BRep_Tool::PolygonOnSurface(E, F));
-}
-inline std::unique_ptr<opencascade::handle<Poly_Polygon2D>> BRep_Tool_polygon_on_surface_edge_handlesurface_location(const TopoDS_Edge& E, const opencascade::handle<Geom_Surface>& S, const TopLoc_Location& L) {
-    return std::make_unique<opencascade::handle<Poly_Polygon2D>>(BRep_Tool::PolygonOnSurface(E, S, L));
-}
-inline void BRep_Tool_polygon_on_surface_edge_handlepolygon2d_handlesurface_location(const TopoDS_Edge& E, opencascade::handle<Poly_Polygon2D>& C, opencascade::handle<Geom_Surface>& S, TopLoc_Location& L) {
-    return BRep_Tool::PolygonOnSurface(E, C, S, L);
-}
-inline void BRep_Tool_polygon_on_surface_edge_handlepolygon2d_handlesurface_location_int(const TopoDS_Edge& E, opencascade::handle<Poly_Polygon2D>& C, opencascade::handle<Geom_Surface>& S, TopLoc_Location& L, Standard_Integer Index) {
-    return BRep_Tool::PolygonOnSurface(E, C, S, L, Index);
-}
-inline const opencascade::handle<Poly_PolygonOnTriangulation>& BRep_Tool_polygon_on_triangulation_edge_handletriangulation_location(const TopoDS_Edge& E, const opencascade::handle<Poly_Triangulation>& T, const TopLoc_Location& L) {
-    return BRep_Tool::PolygonOnTriangulation(E, T, L);
-}
-inline void BRep_Tool_polygon_on_triangulation_edge_handlepolygonontriangulation_handletriangulation_location(const TopoDS_Edge& E, opencascade::handle<Poly_PolygonOnTriangulation>& P, opencascade::handle<Poly_Triangulation>& T, TopLoc_Location& L) {
-    return BRep_Tool::PolygonOnTriangulation(E, P, T, L);
-}
-inline void BRep_Tool_polygon_on_triangulation_edge_handlepolygonontriangulation_handletriangulation_location_int(const TopoDS_Edge& E, opencascade::handle<Poly_PolygonOnTriangulation>& P, opencascade::handle<Poly_Triangulation>& T, TopLoc_Location& L, Standard_Integer Index) {
-    return BRep_Tool::PolygonOnTriangulation(E, P, T, L, Index);
 }
 inline Standard_Boolean BRep_Tool_is_closed_edge_face(const TopoDS_Edge& E, const TopoDS_Face& F) {
     return BRep_Tool::IsClosed(E, F);
@@ -7296,9 +6480,6 @@ inline std::unique_ptr<opencascade::handle<Geom_BezierCurve>> BRepAdaptor_Curve_
 inline std::unique_ptr<opencascade::handle<Geom_BSplineCurve>> BRepAdaptor_Curve_b_spline(const BRepAdaptor_Curve& self_) {
     return std::make_unique<opencascade::handle<Geom_BSplineCurve>>(self_.BSpline());
 }
-inline const opencascade::handle<Standard_Type>& BRepAdaptor_Curve_get_type_descriptor() {
-    return BRepAdaptor_Curve::get_type_descriptor();
-}
 inline const Adaptor3d_Curve& BRepAdaptor_Curve_as_Adaptor3d_Curve(const BRepAdaptor_Curve& self_) { return static_cast<const Adaptor3d_Curve&>(self_); }
 inline Adaptor3d_Curve& BRepAdaptor_Curve_as_Adaptor3d_Curve_mut(BRepAdaptor_Curve& self_) { return static_cast<Adaptor3d_Curve&>(self_); }
 
@@ -7349,9 +6530,6 @@ inline std::unique_ptr<gp_Pnt2d> BRepGProp_Face_value2d(const BRepGProp_Face& se
 inline std::unique_ptr<BRepIntCurveSurface_Inter> BRepIntCurveSurface_Inter_ctor() {
     return std::make_unique<BRepIntCurveSurface_Inter>();
 }
-inline std::unique_ptr<IntCurveSurface_IntersectionPoint> BRepIntCurveSurface_Inter_point(const BRepIntCurveSurface_Inter& self_) {
-    return std::make_unique<IntCurveSurface_IntersectionPoint>(self_.Point());
-}
 
 // ========================
 // BRepMesh_IncrementalMesh wrappers
@@ -7371,20 +6549,6 @@ inline Standard_Boolean BRepMesh_IncrementalMesh_is_parallel_default() {
 }
 inline void BRepMesh_IncrementalMesh_set_parallel_default(Standard_Boolean isInParallel) {
     return BRepMesh_IncrementalMesh::SetParallelDefault(isInParallel);
-}
-inline const opencascade::handle<Standard_Type>& BRepMesh_IncrementalMesh_get_type_descriptor() {
-    return BRepMesh_IncrementalMesh::get_type_descriptor();
-}
-inline const BRepMesh_DiscretRoot& BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot(const BRepMesh_IncrementalMesh& self_) { return static_cast<const BRepMesh_DiscretRoot&>(self_); }
-inline BRepMesh_DiscretRoot& BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot_mut(BRepMesh_IncrementalMesh& self_) { return static_cast<BRepMesh_DiscretRoot&>(self_); }
-inline void BRepMesh_IncrementalMesh_inherited_SetShape(BRepMesh_IncrementalMesh& self, const TopoDS_Shape& theShape) {
-    self.SetShape(theShape);
-}
-inline const TopoDS_Shape& BRepMesh_IncrementalMesh_inherited_Shape(const BRepMesh_IncrementalMesh& self) {
-    return self.Shape();
-}
-inline bool BRepMesh_IncrementalMesh_inherited_IsDone(const BRepMesh_IncrementalMesh& self) {
-    return self.IsDone();
 }
 
 // ========================
@@ -7412,9 +6576,6 @@ inline std::unique_ptr<GProp_GProps> GProp_GProps_to_owned(const GProp_GProps& s
 inline std::unique_ptr<opencascade::handle<Law_Function>> Law_Function_trim(const Law_Function& self_, Standard_Real PFirst, Standard_Real PLast, Standard_Real Tol) {
     return std::make_unique<opencascade::handle<Law_Function>>(self_.Trim(PFirst, PLast, Tol));
 }
-inline const opencascade::handle<Standard_Type>& Law_Function_get_type_descriptor() {
-    return Law_Function::get_type_descriptor();
-}
 
 // ========================
 // Law_BSpFunc wrappers
@@ -7425,9 +6586,6 @@ inline std::unique_ptr<Law_BSpFunc> Law_BSpFunc_ctor() {
 }
 inline std::unique_ptr<opencascade::handle<Law_Function>> Law_BSpFunc_trim(const Law_BSpFunc& self_, Standard_Real PFirst, Standard_Real PLast, Standard_Real Tol) {
     return std::make_unique<opencascade::handle<Law_Function>>(self_.Trim(PFirst, PLast, Tol));
-}
-inline const opencascade::handle<Standard_Type>& Law_BSpFunc_get_type_descriptor() {
-    return Law_BSpFunc::get_type_descriptor();
 }
 inline const Law_Function& Law_BSpFunc_as_Law_Function(const Law_BSpFunc& self_) { return static_cast<const Law_Function&>(self_); }
 inline Law_Function& Law_BSpFunc_as_Law_Function_mut(Law_BSpFunc& self_) { return static_cast<Law_Function&>(self_); }
@@ -7444,9 +6602,6 @@ inline std::unique_ptr<HandleLawFunction> HandleLawBSpFunc_to_HandleLawFunction(
 
 inline std::unique_ptr<Law_Interpol> Law_Interpol_ctor() {
     return std::make_unique<Law_Interpol>();
-}
-inline const opencascade::handle<Standard_Type>& Law_Interpol_get_type_descriptor() {
-    return Law_Interpol::get_type_descriptor();
 }
 inline const Law_BSpFunc& Law_Interpol_as_Law_BSpFunc(const Law_Interpol& self_) { return static_cast<const Law_BSpFunc&>(self_); }
 inline Law_BSpFunc& Law_Interpol_as_Law_BSpFunc_mut(Law_Interpol& self_) { return static_cast<Law_BSpFunc&>(self_); }
@@ -7517,17 +6672,8 @@ inline std::unique_ptr<gp_Dir> Poly_Triangulation_normal(const Poly_Triangulatio
 inline std::unique_ptr<opencascade::handle<TColgp_HArray1OfPnt>> Poly_Triangulation_map_node_array(const Poly_Triangulation& self_) {
     return std::make_unique<opencascade::handle<TColgp_HArray1OfPnt>>(self_.MapNodeArray());
 }
-inline std::unique_ptr<opencascade::handle<Poly_HArray1OfTriangle>> Poly_Triangulation_map_triangle_array(const Poly_Triangulation& self_) {
-    return std::make_unique<opencascade::handle<Poly_HArray1OfTriangle>>(self_.MapTriangleArray());
-}
 inline std::unique_ptr<opencascade::handle<TColgp_HArray1OfPnt2d>> Poly_Triangulation_map_uv_node_array(const Poly_Triangulation& self_) {
     return std::make_unique<opencascade::handle<TColgp_HArray1OfPnt2d>>(self_.MapUVNodeArray());
-}
-inline std::unique_ptr<opencascade::handle<TShort_HArray1OfShortReal>> Poly_Triangulation_map_normal_array(const Poly_Triangulation& self_) {
-    return std::make_unique<opencascade::handle<TShort_HArray1OfShortReal>>(self_.MapNormalArray());
-}
-inline const opencascade::handle<Standard_Type>& Poly_Triangulation_get_type_descriptor() {
-    return Poly_Triangulation::get_type_descriptor();
 }
 inline std::unique_ptr<HandlePolyTriangulation> Poly_Triangulation_to_handle(std::unique_ptr<Poly_Triangulation> obj) {
     return std::make_unique<HandlePolyTriangulation>(obj.release());
@@ -7542,9 +6688,6 @@ inline std::unique_ptr<ShapeUpgrade_UnifySameDomain> ShapeUpgrade_UnifySameDomai
 }
 inline std::unique_ptr<ShapeUpgrade_UnifySameDomain> ShapeUpgrade_UnifySameDomain_ctor_shape_bool3(const TopoDS_Shape& aShape, Standard_Boolean UnifyEdges, Standard_Boolean UnifyFaces, Standard_Boolean ConcatBSplines) {
     return std::make_unique<ShapeUpgrade_UnifySameDomain>(aShape, UnifyEdges, UnifyFaces, ConcatBSplines);
-}
-inline const opencascade::handle<Standard_Type>& ShapeUpgrade_UnifySameDomain_get_type_descriptor() {
-    return ShapeUpgrade_UnifySameDomain::get_type_descriptor();
 }
 inline std::unique_ptr<HandleShapeUpgradeUnifySameDomain> ShapeUpgrade_UnifySameDomain_to_handle(std::unique_ptr<ShapeUpgrade_UnifySameDomain> obj) {
     return std::make_unique<HandleShapeUpgradeUnifySameDomain>(obj.release());
@@ -7595,9 +6738,6 @@ inline std::unique_ptr<TColgp_HArray1OfCirc2d> TColgp_HArray1OfCirc2d_ctor_circ2
 inline std::unique_ptr<TColgp_HArray1OfCirc2d> TColgp_HArray1OfCirc2d_ctor_array1ofcirc2d(const TColgp_Array1OfCirc2d& theOther) {
     return std::make_unique<TColgp_HArray1OfCirc2d>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfCirc2d_get_type_descriptor() {
-    return TColgp_HArray1OfCirc2d::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHArray1OfCirc2d> TColgp_HArray1OfCirc2d_to_handle(std::unique_ptr<TColgp_HArray1OfCirc2d> obj) {
     return std::make_unique<HandleTColgpHArray1OfCirc2d>(obj.release());
 }
@@ -7620,9 +6760,6 @@ inline std::unique_ptr<TColgp_HArray1OfDir> TColgp_HArray1OfDir_ctor_dir_int2_bo
 }
 inline std::unique_ptr<TColgp_HArray1OfDir> TColgp_HArray1OfDir_ctor_array1ofdir(const TColgp_Array1OfDir& theOther) {
     return std::make_unique<TColgp_HArray1OfDir>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfDir_get_type_descriptor() {
-    return TColgp_HArray1OfDir::get_type_descriptor();
 }
 inline std::unique_ptr<HandleTColgpHArray1OfDir> TColgp_HArray1OfDir_to_handle(std::unique_ptr<TColgp_HArray1OfDir> obj) {
     return std::make_unique<HandleTColgpHArray1OfDir>(obj.release());
@@ -7647,9 +6784,6 @@ inline std::unique_ptr<TColgp_HArray1OfDir2d> TColgp_HArray1OfDir2d_ctor_dir2d_i
 inline std::unique_ptr<TColgp_HArray1OfDir2d> TColgp_HArray1OfDir2d_ctor_array1ofdir2d(const TColgp_Array1OfDir2d& theOther) {
     return std::make_unique<TColgp_HArray1OfDir2d>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfDir2d_get_type_descriptor() {
-    return TColgp_HArray1OfDir2d::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHArray1OfDir2d> TColgp_HArray1OfDir2d_to_handle(std::unique_ptr<TColgp_HArray1OfDir2d> obj) {
     return std::make_unique<HandleTColgpHArray1OfDir2d>(obj.release());
 }
@@ -7672,9 +6806,6 @@ inline std::unique_ptr<TColgp_HArray1OfLin2d> TColgp_HArray1OfLin2d_ctor_lin2d_i
 }
 inline std::unique_ptr<TColgp_HArray1OfLin2d> TColgp_HArray1OfLin2d_ctor_array1oflin2d(const TColgp_Array1OfLin2d& theOther) {
     return std::make_unique<TColgp_HArray1OfLin2d>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfLin2d_get_type_descriptor() {
-    return TColgp_HArray1OfLin2d::get_type_descriptor();
 }
 inline std::unique_ptr<HandleTColgpHArray1OfLin2d> TColgp_HArray1OfLin2d_to_handle(std::unique_ptr<TColgp_HArray1OfLin2d> obj) {
     return std::make_unique<HandleTColgpHArray1OfLin2d>(obj.release());
@@ -7699,9 +6830,6 @@ inline std::unique_ptr<TColgp_HArray1OfPnt> TColgp_HArray1OfPnt_ctor_pnt_int2_bo
 inline std::unique_ptr<TColgp_HArray1OfPnt> TColgp_HArray1OfPnt_ctor_array1ofpnt(const TColgp_Array1OfPnt& theOther) {
     return std::make_unique<TColgp_HArray1OfPnt>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfPnt_get_type_descriptor() {
-    return TColgp_HArray1OfPnt::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHArray1OfPnt> TColgp_HArray1OfPnt_to_handle(std::unique_ptr<TColgp_HArray1OfPnt> obj) {
     return std::make_unique<HandleTColgpHArray1OfPnt>(obj.release());
 }
@@ -7724,9 +6852,6 @@ inline std::unique_ptr<TColgp_HArray1OfPnt2d> TColgp_HArray1OfPnt2d_ctor_pnt2d_i
 }
 inline std::unique_ptr<TColgp_HArray1OfPnt2d> TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d(const TColgp_Array1OfPnt2d& theOther) {
     return std::make_unique<TColgp_HArray1OfPnt2d>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfPnt2d_get_type_descriptor() {
-    return TColgp_HArray1OfPnt2d::get_type_descriptor();
 }
 inline std::unique_ptr<HandleTColgpHArray1OfPnt2d> TColgp_HArray1OfPnt2d_to_handle(std::unique_ptr<TColgp_HArray1OfPnt2d> obj) {
     return std::make_unique<HandleTColgpHArray1OfPnt2d>(obj.release());
@@ -7751,9 +6876,6 @@ inline std::unique_ptr<TColgp_HArray1OfVec> TColgp_HArray1OfVec_ctor_vec_int2_bo
 inline std::unique_ptr<TColgp_HArray1OfVec> TColgp_HArray1OfVec_ctor_array1ofvec(const TColgp_Array1OfVec& theOther) {
     return std::make_unique<TColgp_HArray1OfVec>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfVec_get_type_descriptor() {
-    return TColgp_HArray1OfVec::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHArray1OfVec> TColgp_HArray1OfVec_to_handle(std::unique_ptr<TColgp_HArray1OfVec> obj) {
     return std::make_unique<HandleTColgpHArray1OfVec>(obj.release());
 }
@@ -7776,9 +6898,6 @@ inline std::unique_ptr<TColgp_HArray1OfVec2d> TColgp_HArray1OfVec2d_ctor_vec2d_i
 }
 inline std::unique_ptr<TColgp_HArray1OfVec2d> TColgp_HArray1OfVec2d_ctor_array1ofvec2d(const TColgp_Array1OfVec2d& theOther) {
     return std::make_unique<TColgp_HArray1OfVec2d>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfVec2d_get_type_descriptor() {
-    return TColgp_HArray1OfVec2d::get_type_descriptor();
 }
 inline std::unique_ptr<HandleTColgpHArray1OfVec2d> TColgp_HArray1OfVec2d_to_handle(std::unique_ptr<TColgp_HArray1OfVec2d> obj) {
     return std::make_unique<HandleTColgpHArray1OfVec2d>(obj.release());
@@ -7803,9 +6922,6 @@ inline std::unique_ptr<TColgp_HArray1OfXY> TColgp_HArray1OfXY_ctor_xy_int2_bool(
 inline std::unique_ptr<TColgp_HArray1OfXY> TColgp_HArray1OfXY_ctor_array1ofxy(const TColgp_Array1OfXY& theOther) {
     return std::make_unique<TColgp_HArray1OfXY>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfXY_get_type_descriptor() {
-    return TColgp_HArray1OfXY::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHArray1OfXY> TColgp_HArray1OfXY_to_handle(std::unique_ptr<TColgp_HArray1OfXY> obj) {
     return std::make_unique<HandleTColgpHArray1OfXY>(obj.release());
 }
@@ -7829,9 +6945,6 @@ inline std::unique_ptr<TColgp_HArray1OfXYZ> TColgp_HArray1OfXYZ_ctor_xyz_int2_bo
 inline std::unique_ptr<TColgp_HArray1OfXYZ> TColgp_HArray1OfXYZ_ctor_array1ofxyz(const TColgp_Array1OfXYZ& theOther) {
     return std::make_unique<TColgp_HArray1OfXYZ>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HArray1OfXYZ_get_type_descriptor() {
-    return TColgp_HArray1OfXYZ::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHArray1OfXYZ> TColgp_HArray1OfXYZ_to_handle(std::unique_ptr<TColgp_HArray1OfXYZ> obj) {
     return std::make_unique<HandleTColgpHArray1OfXYZ>(obj.release());
 }
@@ -7848,9 +6961,6 @@ inline std::unique_ptr<TColgp_HArray2OfCirc2d> TColgp_HArray2OfCirc2d_ctor_int4_
 }
 inline std::unique_ptr<TColgp_HArray2OfCirc2d> TColgp_HArray2OfCirc2d_ctor_array2ofcirc2d(const TColgp_Array2OfCirc2d& theOther) {
     return std::make_unique<TColgp_HArray2OfCirc2d>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfCirc2d_get_type_descriptor() {
-    return TColgp_HArray2OfCirc2d::get_type_descriptor();
 }
 inline std::unique_ptr<HandleTColgpHArray2OfCirc2d> TColgp_HArray2OfCirc2d_to_handle(std::unique_ptr<TColgp_HArray2OfCirc2d> obj) {
     return std::make_unique<HandleTColgpHArray2OfCirc2d>(obj.release());
@@ -7869,9 +6979,6 @@ inline std::unique_ptr<TColgp_HArray2OfDir> TColgp_HArray2OfDir_ctor_int4_dir(St
 inline std::unique_ptr<TColgp_HArray2OfDir> TColgp_HArray2OfDir_ctor_array2ofdir(const TColgp_Array2OfDir& theOther) {
     return std::make_unique<TColgp_HArray2OfDir>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfDir_get_type_descriptor() {
-    return TColgp_HArray2OfDir::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHArray2OfDir> TColgp_HArray2OfDir_to_handle(std::unique_ptr<TColgp_HArray2OfDir> obj) {
     return std::make_unique<HandleTColgpHArray2OfDir>(obj.release());
 }
@@ -7888,9 +6995,6 @@ inline std::unique_ptr<TColgp_HArray2OfDir2d> TColgp_HArray2OfDir2d_ctor_int4_di
 }
 inline std::unique_ptr<TColgp_HArray2OfDir2d> TColgp_HArray2OfDir2d_ctor_array2ofdir2d(const TColgp_Array2OfDir2d& theOther) {
     return std::make_unique<TColgp_HArray2OfDir2d>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfDir2d_get_type_descriptor() {
-    return TColgp_HArray2OfDir2d::get_type_descriptor();
 }
 inline std::unique_ptr<HandleTColgpHArray2OfDir2d> TColgp_HArray2OfDir2d_to_handle(std::unique_ptr<TColgp_HArray2OfDir2d> obj) {
     return std::make_unique<HandleTColgpHArray2OfDir2d>(obj.release());
@@ -7909,9 +7013,6 @@ inline std::unique_ptr<TColgp_HArray2OfLin2d> TColgp_HArray2OfLin2d_ctor_int4_li
 inline std::unique_ptr<TColgp_HArray2OfLin2d> TColgp_HArray2OfLin2d_ctor_array2oflin2d(const TColgp_Array2OfLin2d& theOther) {
     return std::make_unique<TColgp_HArray2OfLin2d>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfLin2d_get_type_descriptor() {
-    return TColgp_HArray2OfLin2d::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHArray2OfLin2d> TColgp_HArray2OfLin2d_to_handle(std::unique_ptr<TColgp_HArray2OfLin2d> obj) {
     return std::make_unique<HandleTColgpHArray2OfLin2d>(obj.release());
 }
@@ -7928,9 +7029,6 @@ inline std::unique_ptr<TColgp_HArray2OfPnt> TColgp_HArray2OfPnt_ctor_int4_pnt(St
 }
 inline std::unique_ptr<TColgp_HArray2OfPnt> TColgp_HArray2OfPnt_ctor_array2ofpnt(const TColgp_Array2OfPnt& theOther) {
     return std::make_unique<TColgp_HArray2OfPnt>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfPnt_get_type_descriptor() {
-    return TColgp_HArray2OfPnt::get_type_descriptor();
 }
 inline std::unique_ptr<HandleTColgpHArray2OfPnt> TColgp_HArray2OfPnt_to_handle(std::unique_ptr<TColgp_HArray2OfPnt> obj) {
     return std::make_unique<HandleTColgpHArray2OfPnt>(obj.release());
@@ -7949,9 +7047,6 @@ inline std::unique_ptr<TColgp_HArray2OfPnt2d> TColgp_HArray2OfPnt2d_ctor_int4_pn
 inline std::unique_ptr<TColgp_HArray2OfPnt2d> TColgp_HArray2OfPnt2d_ctor_array2ofpnt2d(const TColgp_Array2OfPnt2d& theOther) {
     return std::make_unique<TColgp_HArray2OfPnt2d>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfPnt2d_get_type_descriptor() {
-    return TColgp_HArray2OfPnt2d::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHArray2OfPnt2d> TColgp_HArray2OfPnt2d_to_handle(std::unique_ptr<TColgp_HArray2OfPnt2d> obj) {
     return std::make_unique<HandleTColgpHArray2OfPnt2d>(obj.release());
 }
@@ -7968,9 +7063,6 @@ inline std::unique_ptr<TColgp_HArray2OfVec> TColgp_HArray2OfVec_ctor_int4_vec(St
 }
 inline std::unique_ptr<TColgp_HArray2OfVec> TColgp_HArray2OfVec_ctor_array2ofvec(const TColgp_Array2OfVec& theOther) {
     return std::make_unique<TColgp_HArray2OfVec>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfVec_get_type_descriptor() {
-    return TColgp_HArray2OfVec::get_type_descriptor();
 }
 inline std::unique_ptr<HandleTColgpHArray2OfVec> TColgp_HArray2OfVec_to_handle(std::unique_ptr<TColgp_HArray2OfVec> obj) {
     return std::make_unique<HandleTColgpHArray2OfVec>(obj.release());
@@ -7989,9 +7081,6 @@ inline std::unique_ptr<TColgp_HArray2OfVec2d> TColgp_HArray2OfVec2d_ctor_int4_ve
 inline std::unique_ptr<TColgp_HArray2OfVec2d> TColgp_HArray2OfVec2d_ctor_array2ofvec2d(const TColgp_Array2OfVec2d& theOther) {
     return std::make_unique<TColgp_HArray2OfVec2d>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfVec2d_get_type_descriptor() {
-    return TColgp_HArray2OfVec2d::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHArray2OfVec2d> TColgp_HArray2OfVec2d_to_handle(std::unique_ptr<TColgp_HArray2OfVec2d> obj) {
     return std::make_unique<HandleTColgpHArray2OfVec2d>(obj.release());
 }
@@ -8008,9 +7097,6 @@ inline std::unique_ptr<TColgp_HArray2OfXY> TColgp_HArray2OfXY_ctor_int4_xy(Stand
 }
 inline std::unique_ptr<TColgp_HArray2OfXY> TColgp_HArray2OfXY_ctor_array2ofxy(const TColgp_Array2OfXY& theOther) {
     return std::make_unique<TColgp_HArray2OfXY>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfXY_get_type_descriptor() {
-    return TColgp_HArray2OfXY::get_type_descriptor();
 }
 inline std::unique_ptr<HandleTColgpHArray2OfXY> TColgp_HArray2OfXY_to_handle(std::unique_ptr<TColgp_HArray2OfXY> obj) {
     return std::make_unique<HandleTColgpHArray2OfXY>(obj.release());
@@ -8029,9 +7115,6 @@ inline std::unique_ptr<TColgp_HArray2OfXYZ> TColgp_HArray2OfXYZ_ctor_int4_xyz(St
 inline std::unique_ptr<TColgp_HArray2OfXYZ> TColgp_HArray2OfXYZ_ctor_array2ofxyz(const TColgp_Array2OfXYZ& theOther) {
     return std::make_unique<TColgp_HArray2OfXYZ>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HArray2OfXYZ_get_type_descriptor() {
-    return TColgp_HArray2OfXYZ::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHArray2OfXYZ> TColgp_HArray2OfXYZ_to_handle(std::unique_ptr<TColgp_HArray2OfXYZ> obj) {
     return std::make_unique<HandleTColgpHArray2OfXYZ>(obj.release());
 }
@@ -8045,9 +7128,6 @@ inline std::unique_ptr<TColgp_HSequenceOfPnt> TColgp_HSequenceOfPnt_ctor() {
 }
 inline std::unique_ptr<TColgp_HSequenceOfPnt> TColgp_HSequenceOfPnt_ctor_sequenceofpnt(const TColgp_SequenceOfPnt& theOther) {
     return std::make_unique<TColgp_HSequenceOfPnt>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfPnt_get_type_descriptor() {
-    return TColgp_HSequenceOfPnt::get_type_descriptor();
 }
 inline std::unique_ptr<HandleTColgpHSequenceOfPnt> TColgp_HSequenceOfPnt_to_handle(std::unique_ptr<TColgp_HSequenceOfPnt> obj) {
     return std::make_unique<HandleTColgpHSequenceOfPnt>(obj.release());
@@ -8063,9 +7143,6 @@ inline std::unique_ptr<TColgp_HSequenceOfPnt2d> TColgp_HSequenceOfPnt2d_ctor() {
 inline std::unique_ptr<TColgp_HSequenceOfPnt2d> TColgp_HSequenceOfPnt2d_ctor_sequenceofpnt2d(const TColgp_SequenceOfPnt2d& theOther) {
     return std::make_unique<TColgp_HSequenceOfPnt2d>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfPnt2d_get_type_descriptor() {
-    return TColgp_HSequenceOfPnt2d::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHSequenceOfPnt2d> TColgp_HSequenceOfPnt2d_to_handle(std::unique_ptr<TColgp_HSequenceOfPnt2d> obj) {
     return std::make_unique<HandleTColgpHSequenceOfPnt2d>(obj.release());
 }
@@ -8079,9 +7156,6 @@ inline std::unique_ptr<TColgp_HSequenceOfDir> TColgp_HSequenceOfDir_ctor() {
 }
 inline std::unique_ptr<TColgp_HSequenceOfDir> TColgp_HSequenceOfDir_ctor_sequenceofdir(const TColgp_SequenceOfDir& theOther) {
     return std::make_unique<TColgp_HSequenceOfDir>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfDir_get_type_descriptor() {
-    return TColgp_HSequenceOfDir::get_type_descriptor();
 }
 inline std::unique_ptr<HandleTColgpHSequenceOfDir> TColgp_HSequenceOfDir_to_handle(std::unique_ptr<TColgp_HSequenceOfDir> obj) {
     return std::make_unique<HandleTColgpHSequenceOfDir>(obj.release());
@@ -8097,9 +7171,6 @@ inline std::unique_ptr<TColgp_HSequenceOfDir2d> TColgp_HSequenceOfDir2d_ctor() {
 inline std::unique_ptr<TColgp_HSequenceOfDir2d> TColgp_HSequenceOfDir2d_ctor_sequenceofdir2d(const TColgp_SequenceOfDir2d& theOther) {
     return std::make_unique<TColgp_HSequenceOfDir2d>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfDir2d_get_type_descriptor() {
-    return TColgp_HSequenceOfDir2d::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHSequenceOfDir2d> TColgp_HSequenceOfDir2d_to_handle(std::unique_ptr<TColgp_HSequenceOfDir2d> obj) {
     return std::make_unique<HandleTColgpHSequenceOfDir2d>(obj.release());
 }
@@ -8113,9 +7184,6 @@ inline std::unique_ptr<TColgp_HSequenceOfVec> TColgp_HSequenceOfVec_ctor() {
 }
 inline std::unique_ptr<TColgp_HSequenceOfVec> TColgp_HSequenceOfVec_ctor_sequenceofvec(const TColgp_SequenceOfVec& theOther) {
     return std::make_unique<TColgp_HSequenceOfVec>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfVec_get_type_descriptor() {
-    return TColgp_HSequenceOfVec::get_type_descriptor();
 }
 inline std::unique_ptr<HandleTColgpHSequenceOfVec> TColgp_HSequenceOfVec_to_handle(std::unique_ptr<TColgp_HSequenceOfVec> obj) {
     return std::make_unique<HandleTColgpHSequenceOfVec>(obj.release());
@@ -8131,9 +7199,6 @@ inline std::unique_ptr<TColgp_HSequenceOfVec2d> TColgp_HSequenceOfVec2d_ctor() {
 inline std::unique_ptr<TColgp_HSequenceOfVec2d> TColgp_HSequenceOfVec2d_ctor_sequenceofvec2d(const TColgp_SequenceOfVec2d& theOther) {
     return std::make_unique<TColgp_HSequenceOfVec2d>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfVec2d_get_type_descriptor() {
-    return TColgp_HSequenceOfVec2d::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHSequenceOfVec2d> TColgp_HSequenceOfVec2d_to_handle(std::unique_ptr<TColgp_HSequenceOfVec2d> obj) {
     return std::make_unique<HandleTColgpHSequenceOfVec2d>(obj.release());
 }
@@ -8148,9 +7213,6 @@ inline std::unique_ptr<TColgp_HSequenceOfXY> TColgp_HSequenceOfXY_ctor() {
 inline std::unique_ptr<TColgp_HSequenceOfXY> TColgp_HSequenceOfXY_ctor_sequenceofxy(const TColgp_SequenceOfXY& theOther) {
     return std::make_unique<TColgp_HSequenceOfXY>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfXY_get_type_descriptor() {
-    return TColgp_HSequenceOfXY::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColgpHSequenceOfXY> TColgp_HSequenceOfXY_to_handle(std::unique_ptr<TColgp_HSequenceOfXY> obj) {
     return std::make_unique<HandleTColgpHSequenceOfXY>(obj.release());
 }
@@ -8164,9 +7226,6 @@ inline std::unique_ptr<TColgp_HSequenceOfXYZ> TColgp_HSequenceOfXYZ_ctor() {
 }
 inline std::unique_ptr<TColgp_HSequenceOfXYZ> TColgp_HSequenceOfXYZ_ctor_sequenceofxyz(const TColgp_SequenceOfXYZ& theOther) {
     return std::make_unique<TColgp_HSequenceOfXYZ>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColgp_HSequenceOfXYZ_get_type_descriptor() {
-    return TColgp_HSequenceOfXYZ::get_type_descriptor();
 }
 inline std::unique_ptr<HandleTColgpHSequenceOfXYZ> TColgp_HSequenceOfXYZ_to_handle(std::unique_ptr<TColgp_HSequenceOfXYZ> obj) {
     return std::make_unique<HandleTColgpHSequenceOfXYZ>(obj.release());
@@ -8190,53 +7249,6 @@ inline std::unique_ptr<Message_ProgressRange> Message_ProgressRange_ctor_progres
 inline std::unique_ptr<STEPControl_Reader> STEPControl_Reader_ctor() {
     return std::make_unique<STEPControl_Reader>();
 }
-inline const XSControl_Reader& STEPControl_Reader_as_XSControl_Reader(const STEPControl_Reader& self_) { return static_cast<const XSControl_Reader&>(self_); }
-inline XSControl_Reader& STEPControl_Reader_as_XSControl_Reader_mut(STEPControl_Reader& self_) { return static_cast<XSControl_Reader&>(self_); }
-inline void STEPControl_Reader_inherited_SetWS(STEPControl_Reader& self, const Handle(XSControl_WorkSession)& WS, bool scratch) {
-    self.SetWS(WS, scratch);
-}
-inline std::unique_ptr<Handle(XSControl_WorkSession)> STEPControl_Reader_inherited_WS(const STEPControl_Reader& self) {
-    return std::make_unique<Handle(XSControl_WorkSession)>(self.WS());
-}
-inline std::unique_ptr<Handle(Interface_InterfaceModel)> STEPControl_Reader_inherited_Model(const STEPControl_Reader& self) {
-    return std::make_unique<Handle(Interface_InterfaceModel)>(self.Model());
-}
-inline std::unique_ptr<Handle(Standard_Transient)> STEPControl_Reader_inherited_RootForTransfer(STEPControl_Reader& self, Standard_Integer num) {
-    return std::make_unique<Handle(Standard_Transient)>(self.RootForTransfer(num));
-}
-inline bool STEPControl_Reader_inherited_TransferOneRoot(STEPControl_Reader& self, Standard_Integer num, const Message_ProgressRange& theProgress) {
-    return self.TransferOneRoot(num, theProgress);
-}
-inline bool STEPControl_Reader_inherited_TransferOne(STEPControl_Reader& self, Standard_Integer num, const Message_ProgressRange& theProgress) {
-    return self.TransferOne(num, theProgress);
-}
-inline bool STEPControl_Reader_inherited_TransferEntity(STEPControl_Reader& self, const Handle(Standard_Transient)& start, const Message_ProgressRange& theProgress) {
-    return self.TransferEntity(start, theProgress);
-}
-inline Standard_Integer STEPControl_Reader_inherited_TransferList(STEPControl_Reader& self, const Handle(TColStd_HSequenceOfTransient)& list, const Message_ProgressRange& theProgress) {
-    return self.TransferList(list, theProgress);
-}
-inline Standard_Integer STEPControl_Reader_inherited_TransferRoots(STEPControl_Reader& self, const Message_ProgressRange& theProgress) {
-    return self.TransferRoots(theProgress);
-}
-inline void STEPControl_Reader_inherited_ClearShapes(STEPControl_Reader& self) {
-    self.ClearShapes();
-}
-inline Standard_Integer STEPControl_Reader_inherited_NbShapes(const STEPControl_Reader& self) {
-    return self.NbShapes();
-}
-inline std::unique_ptr<TopoDS_Shape> STEPControl_Reader_inherited_Shape(const STEPControl_Reader& self, Standard_Integer num) {
-    return std::make_unique<TopoDS_Shape>(self.Shape(num));
-}
-inline std::unique_ptr<TopoDS_Shape> STEPControl_Reader_inherited_OneShape(const STEPControl_Reader& self) {
-    return std::make_unique<TopoDS_Shape>(self.OneShape());
-}
-inline void STEPControl_Reader_inherited_PrintStatsTransfer(const STEPControl_Reader& self, Standard_Integer what, Standard_Integer mode) {
-    self.PrintStatsTransfer(what, mode);
-}
-inline void STEPControl_Reader_inherited_GetStatsTransfer(const STEPControl_Reader& self, const Handle(TColStd_HSequenceOfTransient)& list, Standard_Integer& nbMapped, Standard_Integer& nbWithResult, Standard_Integer& nbWithFail) {
-    self.GetStatsTransfer(list, nbMapped, nbWithResult, nbWithFail);
-}
 
 // ========================
 // STEPControl_Writer wrappers
@@ -8252,53 +7264,6 @@ inline std::unique_ptr<STEPControl_Writer> STEPControl_Writer_ctor() {
 
 inline std::unique_ptr<IGESControl_Reader> IGESControl_Reader_ctor() {
     return std::make_unique<IGESControl_Reader>();
-}
-inline const XSControl_Reader& IGESControl_Reader_as_XSControl_Reader(const IGESControl_Reader& self_) { return static_cast<const XSControl_Reader&>(self_); }
-inline XSControl_Reader& IGESControl_Reader_as_XSControl_Reader_mut(IGESControl_Reader& self_) { return static_cast<XSControl_Reader&>(self_); }
-inline void IGESControl_Reader_inherited_SetWS(IGESControl_Reader& self, const Handle(XSControl_WorkSession)& WS, bool scratch) {
-    self.SetWS(WS, scratch);
-}
-inline std::unique_ptr<Handle(XSControl_WorkSession)> IGESControl_Reader_inherited_WS(const IGESControl_Reader& self) {
-    return std::make_unique<Handle(XSControl_WorkSession)>(self.WS());
-}
-inline std::unique_ptr<Handle(Interface_InterfaceModel)> IGESControl_Reader_inherited_Model(const IGESControl_Reader& self) {
-    return std::make_unique<Handle(Interface_InterfaceModel)>(self.Model());
-}
-inline std::unique_ptr<Handle(Standard_Transient)> IGESControl_Reader_inherited_RootForTransfer(IGESControl_Reader& self, Standard_Integer num) {
-    return std::make_unique<Handle(Standard_Transient)>(self.RootForTransfer(num));
-}
-inline bool IGESControl_Reader_inherited_TransferOneRoot(IGESControl_Reader& self, Standard_Integer num, const Message_ProgressRange& theProgress) {
-    return self.TransferOneRoot(num, theProgress);
-}
-inline bool IGESControl_Reader_inherited_TransferOne(IGESControl_Reader& self, Standard_Integer num, const Message_ProgressRange& theProgress) {
-    return self.TransferOne(num, theProgress);
-}
-inline bool IGESControl_Reader_inherited_TransferEntity(IGESControl_Reader& self, const Handle(Standard_Transient)& start, const Message_ProgressRange& theProgress) {
-    return self.TransferEntity(start, theProgress);
-}
-inline Standard_Integer IGESControl_Reader_inherited_TransferList(IGESControl_Reader& self, const Handle(TColStd_HSequenceOfTransient)& list, const Message_ProgressRange& theProgress) {
-    return self.TransferList(list, theProgress);
-}
-inline Standard_Integer IGESControl_Reader_inherited_TransferRoots(IGESControl_Reader& self, const Message_ProgressRange& theProgress) {
-    return self.TransferRoots(theProgress);
-}
-inline void IGESControl_Reader_inherited_ClearShapes(IGESControl_Reader& self) {
-    self.ClearShapes();
-}
-inline Standard_Integer IGESControl_Reader_inherited_NbShapes(const IGESControl_Reader& self) {
-    return self.NbShapes();
-}
-inline std::unique_ptr<TopoDS_Shape> IGESControl_Reader_inherited_Shape(const IGESControl_Reader& self, Standard_Integer num) {
-    return std::make_unique<TopoDS_Shape>(self.Shape(num));
-}
-inline std::unique_ptr<TopoDS_Shape> IGESControl_Reader_inherited_OneShape(const IGESControl_Reader& self) {
-    return std::make_unique<TopoDS_Shape>(self.OneShape());
-}
-inline void IGESControl_Reader_inherited_PrintStatsTransfer(const IGESControl_Reader& self, Standard_Integer what, Standard_Integer mode) {
-    self.PrintStatsTransfer(what, mode);
-}
-inline void IGESControl_Reader_inherited_GetStatsTransfer(const IGESControl_Reader& self, const Handle(TColStd_HSequenceOfTransient)& list, Standard_Integer& nbMapped, Standard_Integer& nbWithResult, Standard_Integer& nbWithFail) {
-    self.GetStatsTransfer(list, nbMapped, nbWithResult, nbWithFail);
 }
 
 // ========================
@@ -8525,9 +7490,6 @@ inline std::unique_ptr<opencascade::handle<Geom_BezierCurve>> Adaptor3d_Curve_be
 inline std::unique_ptr<opencascade::handle<Geom_BSplineCurve>> Adaptor3d_Curve_b_spline(const Adaptor3d_Curve& self_) {
     return std::make_unique<opencascade::handle<Geom_BSplineCurve>>(self_.BSpline());
 }
-inline const opencascade::handle<Standard_Type>& Adaptor3d_Curve_get_type_descriptor() {
-    return Adaptor3d_Curve::get_type_descriptor();
-}
 inline std::unique_ptr<HandleAdaptor3dCurve> Adaptor3d_Curve_to_handle(std::unique_ptr<Adaptor3d_Curve> obj) {
     return std::make_unique<HandleAdaptor3dCurve>(obj.release());
 }
@@ -8584,9 +7546,6 @@ inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> Adaptor3d_Surface_b
 inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> Adaptor3d_Surface_basis_surface(const Adaptor3d_Surface& self_) {
     return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.BasisSurface());
 }
-inline const opencascade::handle<Standard_Type>& Adaptor3d_Surface_get_type_descriptor() {
-    return Adaptor3d_Surface::get_type_descriptor();
-}
 inline std::unique_ptr<HandleAdaptor3dSurface> Adaptor3d_Surface_to_handle(std::unique_ptr<Adaptor3d_Surface> obj) {
     return std::make_unique<HandleAdaptor3dSurface>(obj.release());
 }
@@ -8621,9 +7580,6 @@ inline std::unique_ptr<gp_Hypr2d> Adaptor2d_Curve2d_hyperbola(const Adaptor2d_Cu
 }
 inline std::unique_ptr<gp_Parab2d> Adaptor2d_Curve2d_parabola(const Adaptor2d_Curve2d& self_) {
     return std::make_unique<gp_Parab2d>(self_.Parabola());
-}
-inline const opencascade::handle<Standard_Type>& Adaptor2d_Curve2d_get_type_descriptor() {
-    return Adaptor2d_Curve2d::get_type_descriptor();
 }
 inline std::unique_ptr<HandleAdaptor2dCurve2d> Adaptor2d_Curve2d_to_handle(std::unique_ptr<Adaptor2d_Curve2d> obj) {
     return std::make_unique<HandleAdaptor2dCurve2d>(obj.release());
@@ -8700,9 +7656,6 @@ inline std::unique_ptr<TColStd_HArray1OfInteger> TColStd_HArray1OfInteger_ctor_i
 inline std::unique_ptr<TColStd_HArray1OfInteger> TColStd_HArray1OfInteger_ctor_array1ofinteger(const TColStd_Array1OfInteger& theOther) {
     return std::make_unique<TColStd_HArray1OfInteger>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfInteger_get_type_descriptor() {
-    return TColStd_HArray1OfInteger::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColStdHArray1OfInteger> TColStd_HArray1OfInteger_to_handle(std::unique_ptr<TColStd_HArray1OfInteger> obj) {
     return std::make_unique<HandleTColStdHArray1OfInteger>(obj.release());
 }
@@ -8726,9 +7679,6 @@ inline std::unique_ptr<TColStd_HArray1OfReal> TColStd_HArray1OfReal_ctor_real_in
 inline std::unique_ptr<TColStd_HArray1OfReal> TColStd_HArray1OfReal_ctor_array1ofreal(const TColStd_Array1OfReal& theOther) {
     return std::make_unique<TColStd_HArray1OfReal>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfReal_get_type_descriptor() {
-    return TColStd_HArray1OfReal::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColStdHArray1OfReal> TColStd_HArray1OfReal_to_handle(std::unique_ptr<TColStd_HArray1OfReal> obj) {
     return std::make_unique<HandleTColStdHArray1OfReal>(obj.release());
 }
@@ -8743,9 +7693,6 @@ inline std::unique_ptr<TColStd_HSequenceOfInteger> TColStd_HSequenceOfInteger_ct
 inline std::unique_ptr<TColStd_HSequenceOfInteger> TColStd_HSequenceOfInteger_ctor_sequenceofinteger(const TColStd_SequenceOfInteger& theOther) {
     return std::make_unique<TColStd_HSequenceOfInteger>(theOther);
 }
-inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfInteger_get_type_descriptor() {
-    return TColStd_HSequenceOfInteger::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTColStdHSequenceOfInteger> TColStd_HSequenceOfInteger_to_handle(std::unique_ptr<TColStd_HSequenceOfInteger> obj) {
     return std::make_unique<HandleTColStdHSequenceOfInteger>(obj.release());
 }
@@ -8759,9 +7706,6 @@ inline std::unique_ptr<TColStd_HSequenceOfReal> TColStd_HSequenceOfReal_ctor() {
 }
 inline std::unique_ptr<TColStd_HSequenceOfReal> TColStd_HSequenceOfReal_ctor_sequenceofreal(const TColStd_SequenceOfReal& theOther) {
     return std::make_unique<TColStd_HSequenceOfReal>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfReal_get_type_descriptor() {
-    return TColStd_HSequenceOfReal::get_type_descriptor();
 }
 inline std::unique_ptr<HandleTColStdHSequenceOfReal> TColStd_HSequenceOfReal_to_handle(std::unique_ptr<TColStd_HSequenceOfReal> obj) {
     return std::make_unique<HandleTColStdHSequenceOfReal>(obj.release());
@@ -8812,9 +7756,6 @@ inline Standard_Integer Standard_Failure_default_stack_trace_length() {
 }
 inline void Standard_Failure_set_default_stack_trace_length(Standard_Integer theNbStackTraces) {
     return Standard_Failure::SetDefaultStackTraceLength(theNbStackTraces);
-}
-inline const opencascade::handle<Standard_Type>& Standard_Failure_get_type_descriptor() {
-    return Standard_Failure::get_type_descriptor();
 }
 inline std::unique_ptr<HandleStandardFailure> Standard_Failure_to_handle(std::unique_ptr<Standard_Failure> obj) {
     return std::make_unique<HandleStandardFailure>(obj.release());
@@ -9007,9 +7948,6 @@ inline void TCollection_HAsciiString_set_value(TCollection_HAsciiString& self, S
 inline rust::String TCollection_HAsciiString_to_c_string(const TCollection_HAsciiString& self) {
     return rust::String(self.ToCString());
 }
-inline const opencascade::handle<Standard_Type>& TCollection_HAsciiString_get_type_descriptor() {
-    return TCollection_HAsciiString::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTCollectionHAsciiString> TCollection_HAsciiString_to_handle(std::unique_ptr<TCollection_HAsciiString> obj) {
     return std::make_unique<HandleTCollectionHAsciiString>(obj.release());
 }
@@ -9039,9 +7977,6 @@ inline std::unique_ptr<opencascade::handle<TCollection_HExtendedString>> TCollec
 inline std::unique_ptr<opencascade::handle<TCollection_HExtendedString>> TCollection_HExtendedString_split(TCollection_HExtendedString& self_, Standard_Integer where) {
     return std::make_unique<opencascade::handle<TCollection_HExtendedString>>(self_.Split(where));
 }
-inline const opencascade::handle<Standard_Type>& TCollection_HExtendedString_get_type_descriptor() {
-    return TCollection_HExtendedString::get_type_descriptor();
-}
 inline std::unique_ptr<HandleTCollectionHExtendedString> TCollection_HExtendedString_to_handle(std::unique_ptr<TCollection_HExtendedString> obj) {
     return std::make_unique<HandleTCollectionHExtendedString>(obj.release());
 }
@@ -9050,5160 +7985,9 @@ inline std::unique_ptr<HandleTCollectionHExtendedString> TCollection_HExtendedSt
 // NCollection_Buffer wrappers
 // ========================
 
-inline const opencascade::handle<Standard_Type>& NCollection_Buffer_get_type_descriptor() {
-    return NCollection_Buffer::get_type_descriptor();
-}
 inline std::unique_ptr<HandleNCollectionBuffer> NCollection_Buffer_to_handle(std::unique_ptr<NCollection_Buffer> obj) {
     return std::make_unique<HandleNCollectionBuffer>(obj.release());
 }
-
-// ========================
-// Standard_DumpValue wrappers
-// ========================
-
-inline std::unique_ptr<Standard_DumpValue> Standard_DumpValue_ctor() {
-    return std::make_unique<Standard_DumpValue>();
-}
-inline std::unique_ptr<Standard_DumpValue> Standard_DumpValue_ctor_asciistring_int(const TCollection_AsciiString& theValue, Standard_Integer theStartPos) {
-    return std::make_unique<Standard_DumpValue>(theValue, theStartPos);
-}
-
-// ========================
-// Standard_Dump wrappers
-// ========================
-
-inline Standard_Boolean Standard_Dump_has_child_key(const TCollection_AsciiString& theSourceValue) {
-    return Standard_Dump::HasChildKey(theSourceValue);
-}
-inline std::unique_ptr<TCollection_AsciiString> Standard_Dump_get_pointer_prefix() {
-    return std::make_unique<TCollection_AsciiString>(Standard_Dump::GetPointerPrefix());
-}
-inline Standard_Boolean Standard_Dump_process_stream_name(const TCollection_AsciiString& theStreamStr, const TCollection_AsciiString& theName, Standard_Integer& theStreamPos) {
-    return Standard_Dump::ProcessStreamName(theStreamStr, theName, theStreamPos);
-}
-inline Standard_Boolean Standard_Dump_process_field_name(const TCollection_AsciiString& theStreamStr, const TCollection_AsciiString& theName, Standard_Integer& theStreamPos) {
-    return Standard_Dump::ProcessFieldName(theStreamStr, theName, theStreamPos);
-}
-inline Standard_Boolean Standard_Dump_init_real_values(const TCollection_AsciiString& theStreamStr, Standard_Integer& theStreamPos, Standard_Integer theCount) {
-    return Standard_Dump::InitRealValues(theStreamStr, theStreamPos, theCount);
-}
-inline Standard_Boolean Standard_Dump_init_value(const TCollection_AsciiString& theStreamStr, Standard_Integer& theStreamPos, TCollection_AsciiString& theValue) {
-    return Standard_Dump::InitValue(theStreamStr, theStreamPos, theValue);
-}
-inline std::unique_ptr<TCollection_AsciiString> Standard_Dump_dump_field_to_name(const TCollection_AsciiString& theField) {
-    return std::make_unique<TCollection_AsciiString>(Standard_Dump::DumpFieldToName(theField));
-}
-
-// ========================
-// Standard_Transient wrappers
-// ========================
-
-inline std::unique_ptr<Standard_Transient> Standard_Transient_ctor() {
-    return std::make_unique<Standard_Transient>();
-}
-inline std::unique_ptr<Standard_Transient> Standard_Transient_ctor_transient(const Standard_Transient& arg0) {
-    return std::make_unique<Standard_Transient>(arg0);
-}
-inline Standard_Boolean Standard_Transient_is_instance(const Standard_Transient& self, rust::Str theTypeName) {
-    return self.IsInstance(std::string(theTypeName).c_str());
-}
-inline Standard_Boolean Standard_Transient_is_kind(const Standard_Transient& self, rust::Str theTypeName) {
-    return self.IsKind(std::string(theTypeName).c_str());
-}
-inline const opencascade::handle<Standard_Type>& Standard_Transient_get_type_descriptor() {
-    return Standard_Transient::get_type_descriptor();
-}
-
-// ========================
-// Standard wrappers
-// ========================
-
-inline Standard_Integer Standard_purge() {
-    return Standard::Purge();
-}
-
-// ========================
-// NCollection_BasePointerVector wrappers
-// ========================
-
-inline std::unique_ptr<NCollection_BasePointerVector> NCollection_BasePointerVector_ctor() {
-    return std::make_unique<NCollection_BasePointerVector>();
-}
-inline std::unique_ptr<NCollection_BasePointerVector> NCollection_BasePointerVector_ctor_basepointervector(const NCollection_BasePointerVector& theOther) {
-    return std::make_unique<NCollection_BasePointerVector>(theOther);
-}
-
-// ========================
-// Standard_DimensionMismatch wrappers
-// ========================
-
-inline std::unique_ptr<Standard_DimensionMismatch> Standard_DimensionMismatch_ctor() {
-    return std::make_unique<Standard_DimensionMismatch>();
-}
-inline std::unique_ptr<Standard_DimensionMismatch> Standard_DimensionMismatch_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_DimensionMismatch>(std::string(theMessage).c_str());
-}
-inline std::unique_ptr<Standard_DimensionMismatch> Standard_DimensionMismatch_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_DimensionMismatch>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-inline void Standard_DimensionMismatch_raise(rust::Str theMessage) {
-    return Standard_DimensionMismatch::Raise(std::string(theMessage).c_str());
-}
-inline const opencascade::handle<Standard_Type>& Standard_DimensionMismatch_get_type_descriptor() {
-    return Standard_DimensionMismatch::get_type_descriptor();
-}
-
-// ========================
-// Standard_OutOfMemory wrappers
-// ========================
-
-inline std::unique_ptr<Standard_OutOfMemory> Standard_OutOfMemory_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_OutOfMemory>(std::string(theMessage).c_str());
-}
-inline void Standard_OutOfMemory_set_message_string(Standard_OutOfMemory& self, rust::Str aMessage) {
-    self.SetMessageString(std::string(aMessage).c_str());
-}
-inline rust::String Standard_OutOfMemory_get_message_string(const Standard_OutOfMemory& self) {
-    return rust::String(self.GetMessageString());
-}
-inline void Standard_OutOfMemory_raise(rust::Str theMessage) {
-    return Standard_OutOfMemory::Raise(std::string(theMessage).c_str());
-}
-inline const opencascade::handle<Standard_Type>& Standard_OutOfMemory_get_type_descriptor() {
-    return Standard_OutOfMemory::get_type_descriptor();
-}
-
-// ========================
-// Standard_NotImplemented wrappers
-// ========================
-
-inline std::unique_ptr<Standard_NotImplemented> Standard_NotImplemented_ctor() {
-    return std::make_unique<Standard_NotImplemented>();
-}
-inline std::unique_ptr<Standard_NotImplemented> Standard_NotImplemented_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_NotImplemented>(std::string(theMessage).c_str());
-}
-inline std::unique_ptr<Standard_NotImplemented> Standard_NotImplemented_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_NotImplemented>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-inline void Standard_NotImplemented_raise(rust::Str theMessage) {
-    return Standard_NotImplemented::Raise(std::string(theMessage).c_str());
-}
-inline const opencascade::handle<Standard_Type>& Standard_NotImplemented_get_type_descriptor() {
-    return Standard_NotImplemented::get_type_descriptor();
-}
-
-// ========================
-// Standard_OutOfRange wrappers
-// ========================
-
-inline std::unique_ptr<Standard_OutOfRange> Standard_OutOfRange_ctor() {
-    return std::make_unique<Standard_OutOfRange>();
-}
-inline std::unique_ptr<Standard_OutOfRange> Standard_OutOfRange_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_OutOfRange>(std::string(theMessage).c_str());
-}
-inline std::unique_ptr<Standard_OutOfRange> Standard_OutOfRange_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_OutOfRange>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-inline void Standard_OutOfRange_raise(rust::Str theMessage) {
-    return Standard_OutOfRange::Raise(std::string(theMessage).c_str());
-}
-inline const opencascade::handle<Standard_Type>& Standard_OutOfRange_get_type_descriptor() {
-    return Standard_OutOfRange::get_type_descriptor();
-}
-
-// ========================
-// StdFail_NotDone wrappers
-// ========================
-
-inline std::unique_ptr<StdFail_NotDone> StdFail_NotDone_ctor() {
-    return std::make_unique<StdFail_NotDone>();
-}
-inline std::unique_ptr<StdFail_NotDone> StdFail_NotDone_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<StdFail_NotDone>(std::string(theMessage).c_str());
-}
-inline std::unique_ptr<StdFail_NotDone> StdFail_NotDone_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<StdFail_NotDone>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-inline void StdFail_NotDone_raise(rust::Str theMessage) {
-    return StdFail_NotDone::Raise(std::string(theMessage).c_str());
-}
-inline const opencascade::handle<Standard_Type>& StdFail_NotDone_get_type_descriptor() {
-    return StdFail_NotDone::get_type_descriptor();
-}
-
-// ========================
-// Standard_ProgramError wrappers
-// ========================
-
-inline std::unique_ptr<Standard_ProgramError> Standard_ProgramError_ctor() {
-    return std::make_unique<Standard_ProgramError>();
-}
-inline std::unique_ptr<Standard_ProgramError> Standard_ProgramError_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_ProgramError>(std::string(theMessage).c_str());
-}
-inline std::unique_ptr<Standard_ProgramError> Standard_ProgramError_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_ProgramError>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-inline void Standard_ProgramError_raise(rust::Str theMessage) {
-    return Standard_ProgramError::Raise(std::string(theMessage).c_str());
-}
-inline const opencascade::handle<Standard_Type>& Standard_ProgramError_get_type_descriptor() {
-    return Standard_ProgramError::get_type_descriptor();
-}
-
-// ========================
-// Standard_Type wrappers
-// ========================
-
-inline Standard_Boolean Standard_Type_sub_type(const Standard_Type& self, rust::Str theOther) {
-    return self.SubType(std::string(theOther).c_str());
-}
-inline rust::String Standard_Type_system_name(const Standard_Type& self) {
-    return rust::String(self.SystemName());
-}
-inline rust::String Standard_Type_name(const Standard_Type& self) {
-    return rust::String(self.Name());
-}
-inline const opencascade::handle<Standard_Type>& Standard_Type_get_type_descriptor() {
-    return Standard_Type::get_type_descriptor();
-}
-inline std::unique_ptr<HandleStandardType> Standard_Type_to_handle(std::unique_ptr<Standard_Type> obj) {
-    return std::make_unique<HandleStandardType>(obj.release());
-}
-
-// ========================
-// NCollection_BaseAllocator wrappers
-// ========================
-
-inline const opencascade::handle<NCollection_BaseAllocator>& NCollection_BaseAllocator_common_base_allocator() {
-    return NCollection_BaseAllocator::CommonBaseAllocator();
-}
-inline const opencascade::handle<Standard_Type>& NCollection_BaseAllocator_get_type_descriptor() {
-    return NCollection_BaseAllocator::get_type_descriptor();
-}
-inline std::unique_ptr<HandleNCollectionBaseAllocator> NCollection_BaseAllocator_to_handle(std::unique_ptr<NCollection_BaseAllocator> obj) {
-    return std::make_unique<HandleNCollectionBaseAllocator>(obj.release());
-}
-
-// ========================
-// Standard_RangeError wrappers
-// ========================
-
-inline std::unique_ptr<Standard_RangeError> Standard_RangeError_ctor() {
-    return std::make_unique<Standard_RangeError>();
-}
-inline std::unique_ptr<Standard_RangeError> Standard_RangeError_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_RangeError>(std::string(theMessage).c_str());
-}
-inline std::unique_ptr<Standard_RangeError> Standard_RangeError_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_RangeError>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-inline void Standard_RangeError_raise(rust::Str theMessage) {
-    return Standard_RangeError::Raise(std::string(theMessage).c_str());
-}
-inline const opencascade::handle<Standard_Type>& Standard_RangeError_get_type_descriptor() {
-    return Standard_RangeError::get_type_descriptor();
-}
-
-// ========================
-// Standard_DomainError wrappers
-// ========================
-
-inline std::unique_ptr<Standard_DomainError> Standard_DomainError_ctor() {
-    return std::make_unique<Standard_DomainError>();
-}
-inline std::unique_ptr<Standard_DomainError> Standard_DomainError_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_DomainError>(std::string(theMessage).c_str());
-}
-inline std::unique_ptr<Standard_DomainError> Standard_DomainError_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_DomainError>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-inline void Standard_DomainError_raise(rust::Str theMessage) {
-    return Standard_DomainError::Raise(std::string(theMessage).c_str());
-}
-inline const opencascade::handle<Standard_Type>& Standard_DomainError_get_type_descriptor() {
-    return Standard_DomainError::get_type_descriptor();
-}
-
-// ========================
-// Standard_DimensionError wrappers
-// ========================
-
-inline std::unique_ptr<Standard_DimensionError> Standard_DimensionError_ctor() {
-    return std::make_unique<Standard_DimensionError>();
-}
-inline std::unique_ptr<Standard_DimensionError> Standard_DimensionError_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_DimensionError>(std::string(theMessage).c_str());
-}
-inline std::unique_ptr<Standard_DimensionError> Standard_DimensionError_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_DimensionError>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-inline void Standard_DimensionError_raise(rust::Str theMessage) {
-    return Standard_DimensionError::Raise(std::string(theMessage).c_str());
-}
-inline const opencascade::handle<Standard_Type>& Standard_DimensionError_get_type_descriptor() {
-    return Standard_DimensionError::get_type_descriptor();
-}
-
-// ========================
-// Standard_TypeMismatch wrappers
-// ========================
-
-inline std::unique_ptr<Standard_TypeMismatch> Standard_TypeMismatch_ctor() {
-    return std::make_unique<Standard_TypeMismatch>();
-}
-inline std::unique_ptr<Standard_TypeMismatch> Standard_TypeMismatch_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_TypeMismatch>(std::string(theMessage).c_str());
-}
-inline std::unique_ptr<Standard_TypeMismatch> Standard_TypeMismatch_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_TypeMismatch>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-inline void Standard_TypeMismatch_raise(rust::Str theMessage) {
-    return Standard_TypeMismatch::Raise(std::string(theMessage).c_str());
-}
-inline const opencascade::handle<Standard_Type>& Standard_TypeMismatch_get_type_descriptor() {
-    return Standard_TypeMismatch::get_type_descriptor();
-}
-
-// ========================
-// Standard_NoSuchObject wrappers
-// ========================
-
-inline std::unique_ptr<Standard_NoSuchObject> Standard_NoSuchObject_ctor() {
-    return std::make_unique<Standard_NoSuchObject>();
-}
-inline std::unique_ptr<Standard_NoSuchObject> Standard_NoSuchObject_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_NoSuchObject>(std::string(theMessage).c_str());
-}
-inline std::unique_ptr<Standard_NoSuchObject> Standard_NoSuchObject_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_NoSuchObject>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-inline void Standard_NoSuchObject_raise(rust::Str theMessage) {
-    return Standard_NoSuchObject::Raise(std::string(theMessage).c_str());
-}
-inline const opencascade::handle<Standard_Type>& Standard_NoSuchObject_get_type_descriptor() {
-    return Standard_NoSuchObject::get_type_descriptor();
-}
-
-// ========================
-// Message wrappers
-// ========================
-
-inline const opencascade::handle<Message_Messenger>& Message_default_messenger() {
-    return Message::DefaultMessenger();
-}
-inline void Message_send_fail(const TCollection_AsciiString& theMessage) {
-    return Message::SendFail(theMessage);
-}
-inline void Message_send_alarm(const TCollection_AsciiString& theMessage) {
-    return Message::SendAlarm(theMessage);
-}
-inline void Message_send_warning(const TCollection_AsciiString& theMessage) {
-    return Message::SendWarning(theMessage);
-}
-inline void Message_send_info(const TCollection_AsciiString& theMessage) {
-    return Message::SendInfo(theMessage);
-}
-inline void Message_send_trace(const TCollection_AsciiString& theMessage) {
-    return Message::SendTrace(theMessage);
-}
-inline std::unique_ptr<TCollection_AsciiString> Message_fill_time(Standard_Integer Hour, Standard_Integer Minute, Standard_Real Second) {
-    return std::make_unique<TCollection_AsciiString>(Message::FillTime(Hour, Minute, Second));
-}
-inline const opencascade::handle<Message_Report>& Message_default_report(Standard_Boolean theToCreate) {
-    return Message::DefaultReport(theToCreate);
-}
-
-// ========================
-// Message_Messenger wrappers
-// ========================
-
-inline std::unique_ptr<Message_Messenger> Message_Messenger_ctor() {
-    return std::make_unique<Message_Messenger>();
-}
-inline std::unique_ptr<Message_Messenger> Message_Messenger_ctor_handleprinter(const opencascade::handle<Message_Printer>& thePrinter) {
-    return std::make_unique<Message_Messenger>(thePrinter);
-}
-inline const opencascade::handle<Standard_Type>& Message_Messenger_get_type_descriptor() {
-    return Message_Messenger::get_type_descriptor();
-}
-inline std::unique_ptr<HandleMessageMessenger> Message_Messenger_to_handle(std::unique_ptr<Message_Messenger> obj) {
-    return std::make_unique<HandleMessageMessenger>(obj.release());
-}
-
-// ========================
-// OSD_MemInfo wrappers
-// ========================
-
-inline std::unique_ptr<OSD_MemInfo> OSD_MemInfo_ctor_bool(Standard_Boolean theImmediateUpdate) {
-    return std::make_unique<OSD_MemInfo>(theImmediateUpdate);
-}
-inline std::unique_ptr<TCollection_AsciiString> OSD_MemInfo_to_string(const OSD_MemInfo& self_) {
-    return std::make_unique<TCollection_AsciiString>(self_.ToString());
-}
-inline std::unique_ptr<TCollection_AsciiString> OSD_MemInfo_print_info() {
-    return std::make_unique<TCollection_AsciiString>(OSD_MemInfo::PrintInfo());
-}
-
-// ========================
-// Message_Printer wrappers
-// ========================
-
-inline const opencascade::handle<Standard_Type>& Message_Printer_get_type_descriptor() {
-    return Message_Printer::get_type_descriptor();
-}
-
-// ========================
-// NCollection_BaseList wrappers
-// ========================
-
-
-// ========================
-// Standard_ErrorHandler wrappers
-// ========================
-
-inline std::unique_ptr<Standard_ErrorHandler> Standard_ErrorHandler_ctor() {
-    return std::make_unique<Standard_ErrorHandler>();
-}
-inline std::unique_ptr<opencascade::handle<Standard_Failure>> Standard_ErrorHandler_error(const Standard_ErrorHandler& self_) {
-    return std::make_unique<opencascade::handle<Standard_Failure>>(self_.Error());
-}
-inline std::unique_ptr<opencascade::handle<Standard_Failure>> Standard_ErrorHandler_last_caught_error() {
-    return std::make_unique<opencascade::handle<Standard_Failure>>(Standard_ErrorHandler::LastCaughtError());
-}
-inline Standard_Boolean Standard_ErrorHandler_is_in_try_block() {
-    return Standard_ErrorHandler::IsInTryBlock();
-}
-
-// ========================
-// TColStd_HArray2OfReal wrappers
-// ========================
-
-inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_int4(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp) {
-    return std::make_unique<TColStd_HArray2OfReal>(theRowLow, theRowUpp, theColLow, theColUpp);
-}
-inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_int4_real(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp, const Standard_Real& theValue) {
-    return std::make_unique<TColStd_HArray2OfReal>(theRowLow, theRowUpp, theColLow, theColUpp, theValue);
-}
-inline std::unique_ptr<TColStd_HArray2OfReal> TColStd_HArray2OfReal_ctor_array2ofreal(const TColStd_Array2OfReal& theOther) {
-    return std::make_unique<TColStd_HArray2OfReal>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColStd_HArray2OfReal_get_type_descriptor() {
-    return TColStd_HArray2OfReal::get_type_descriptor();
-}
-inline std::unique_ptr<HandleTColStdHArray2OfReal> TColStd_HArray2OfReal_to_handle(std::unique_ptr<TColStd_HArray2OfReal> obj) {
-    return std::make_unique<HandleTColStdHArray2OfReal>(obj.release());
-}
-
-// ========================
-// Bnd_HArray1OfSphere wrappers
-// ========================
-
-inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor() {
-    return std::make_unique<Bnd_HArray1OfSphere>();
-}
-inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return std::make_unique<Bnd_HArray1OfSphere>(theLower, theUpper);
-}
-inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor_int2_sphere(Standard_Integer theLower, Standard_Integer theUpper, const Bnd_Sphere& theValue) {
-    return std::make_unique<Bnd_HArray1OfSphere>(theLower, theUpper, theValue);
-}
-inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor_sphere_int2_bool(const Bnd_Sphere& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
-    return std::make_unique<Bnd_HArray1OfSphere>(theBegin, theLower, theUpper, arg3);
-}
-inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_ctor_array1ofsphere(const Bnd_Array1OfSphere& theOther) {
-    return std::make_unique<Bnd_HArray1OfSphere>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& Bnd_HArray1OfSphere_get_type_descriptor() {
-    return Bnd_HArray1OfSphere::get_type_descriptor();
-}
-inline std::unique_ptr<Bnd_HArray1OfSphere> Bnd_HArray1OfSphere_to_owned(const Bnd_HArray1OfSphere& self_) { return std::make_unique<Bnd_HArray1OfSphere>(self_); }
-inline std::unique_ptr<HandleBndHArray1OfSphere> Bnd_HArray1OfSphere_to_handle(std::unique_ptr<Bnd_HArray1OfSphere> obj) {
-    return std::make_unique<HandleBndHArray1OfSphere>(obj.release());
-}
-
-// ========================
-// Extrema_POnSurfParams wrappers
-// ========================
-
-inline std::unique_ptr<Extrema_POnSurfParams> Extrema_POnSurfParams_ctor() {
-    return std::make_unique<Extrema_POnSurfParams>();
-}
-inline std::unique_ptr<Extrema_POnSurfParams> Extrema_POnSurfParams_ctor_real2_pnt(Standard_Real theU, Standard_Real theV, const gp_Pnt& thePnt) {
-    return std::make_unique<Extrema_POnSurfParams>(theU, theV, thePnt);
-}
-inline const Extrema_POnSurf& Extrema_POnSurfParams_as_Extrema_POnSurf(const Extrema_POnSurfParams& self_) { return static_cast<const Extrema_POnSurf&>(self_); }
-inline Extrema_POnSurf& Extrema_POnSurfParams_as_Extrema_POnSurf_mut(Extrema_POnSurfParams& self_) { return static_cast<Extrema_POnSurf&>(self_); }
-inline const gp_Pnt& Extrema_POnSurfParams_inherited_Value(const Extrema_POnSurfParams& self) {
-    return self.Value();
-}
-inline void Extrema_POnSurfParams_inherited_SetParameters(Extrema_POnSurfParams& self, Standard_Real theU, Standard_Real theV, const gp_Pnt& thePnt) {
-    self.SetParameters(theU, theV, thePnt);
-}
-inline void Extrema_POnSurfParams_inherited_Parameter(const Extrema_POnSurfParams& self, Standard_Real& U, Standard_Real& V) {
-    self.Parameter(U, V);
-}
-
-// ========================
-// Extrema_FuncPSNorm wrappers
-// ========================
-
-inline std::unique_ptr<Extrema_FuncPSNorm> Extrema_FuncPSNorm_ctor() {
-    return std::make_unique<Extrema_FuncPSNorm>();
-}
-inline std::unique_ptr<Extrema_FuncPSNorm> Extrema_FuncPSNorm_ctor_pnt_surface(const gp_Pnt& P, const Adaptor3d_Surface& S) {
-    return std::make_unique<Extrema_FuncPSNorm>(P, S);
-}
-
-// ========================
-// Extrema_POnSurf wrappers
-// ========================
-
-inline std::unique_ptr<Extrema_POnSurf> Extrema_POnSurf_ctor() {
-    return std::make_unique<Extrema_POnSurf>();
-}
-inline std::unique_ptr<Extrema_POnSurf> Extrema_POnSurf_ctor_real2_pnt(Standard_Real U, Standard_Real V, const gp_Pnt& P) {
-    return std::make_unique<Extrema_POnSurf>(U, V, P);
-}
-
-// ========================
-// Bnd_Sphere wrappers
-// ========================
-
-inline std::unique_ptr<Bnd_Sphere> Bnd_Sphere_ctor() {
-    return std::make_unique<Bnd_Sphere>();
-}
-inline std::unique_ptr<Bnd_Sphere> Bnd_Sphere_ctor_xyz_real_int2(const gp_XYZ& theCntr, Standard_Real theRad, Standard_Integer theU, Standard_Integer theV) {
-    return std::make_unique<Bnd_Sphere>(theCntr, theRad, theU, theV);
-}
-inline std::unique_ptr<Bnd_Sphere> Bnd_Sphere_to_owned(const Bnd_Sphere& self_) { return std::make_unique<Bnd_Sphere>(self_); }
-
-// ========================
-// Extrema_ExtPElS wrappers
-// ========================
-
-inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor() {
-    return std::make_unique<Extrema_ExtPElS>();
-}
-inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_cylinder_real(const gp_Pnt& P, const gp_Cylinder& S, Standard_Real Tol) {
-    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
-}
-inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_pln_real(const gp_Pnt& P, const gp_Pln& S, Standard_Real Tol) {
-    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
-}
-inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_cone_real(const gp_Pnt& P, const gp_Cone& S, Standard_Real Tol) {
-    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
-}
-inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_torus_real(const gp_Pnt& P, const gp_Torus& S, Standard_Real Tol) {
-    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
-}
-inline std::unique_ptr<Extrema_ExtPElS> Extrema_ExtPElS_ctor_pnt_sphere_real(const gp_Pnt& P, const gp_Sphere& S, Standard_Real Tol) {
-    return std::make_unique<Extrema_ExtPElS>(P, S, Tol);
-}
-
-// ========================
-// Extrema_ExtPElC wrappers
-// ========================
-
-inline std::unique_ptr<Extrema_ExtPElC> Extrema_ExtPElC_ctor() {
-    return std::make_unique<Extrema_ExtPElC>();
-}
-inline std::unique_ptr<Extrema_ExtPElC> Extrema_ExtPElC_ctor_pnt_lin_real3(const gp_Pnt& P, const gp_Lin& C, Standard_Real Tol, Standard_Real Uinf, Standard_Real Usup) {
-    return std::make_unique<Extrema_ExtPElC>(P, C, Tol, Uinf, Usup);
-}
-inline std::unique_ptr<Extrema_ExtPElC> Extrema_ExtPElC_ctor_pnt_circ_real3(const gp_Pnt& P, const gp_Circ& C, Standard_Real Tol, Standard_Real Uinf, Standard_Real Usup) {
-    return std::make_unique<Extrema_ExtPElC>(P, C, Tol, Uinf, Usup);
-}
-inline std::unique_ptr<Extrema_ExtPElC> Extrema_ExtPElC_ctor_pnt_elips_real3(const gp_Pnt& P, const gp_Elips& C, Standard_Real Tol, Standard_Real Uinf, Standard_Real Usup) {
-    return std::make_unique<Extrema_ExtPElC>(P, C, Tol, Uinf, Usup);
-}
-inline std::unique_ptr<Extrema_ExtPElC> Extrema_ExtPElC_ctor_pnt_hypr_real3(const gp_Pnt& P, const gp_Hypr& C, Standard_Real Tol, Standard_Real Uinf, Standard_Real Usup) {
-    return std::make_unique<Extrema_ExtPElC>(P, C, Tol, Uinf, Usup);
-}
-inline std::unique_ptr<Extrema_ExtPElC> Extrema_ExtPElC_ctor_pnt_parab_real3(const gp_Pnt& P, const gp_Parab& C, Standard_Real Tol, Standard_Real Uinf, Standard_Real Usup) {
-    return std::make_unique<Extrema_ExtPElC>(P, C, Tol, Uinf, Usup);
-}
-
-// ========================
-// Extrema_EPCOfExtPC wrappers
-// ========================
-
-inline std::unique_ptr<Extrema_EPCOfExtPC> Extrema_EPCOfExtPC_ctor() {
-    return std::make_unique<Extrema_EPCOfExtPC>();
-}
-inline std::unique_ptr<Extrema_EPCOfExtPC> Extrema_EPCOfExtPC_ctor_pnt_curve_int_real2(const gp_Pnt& P, const Adaptor3d_Curve& C, Standard_Integer NbU, Standard_Real TolU, Standard_Real TolF) {
-    return std::make_unique<Extrema_EPCOfExtPC>(P, C, NbU, TolU, TolF);
-}
-inline std::unique_ptr<Extrema_EPCOfExtPC> Extrema_EPCOfExtPC_ctor_pnt_curve_int_real4(const gp_Pnt& P, const Adaptor3d_Curve& C, Standard_Integer NbU, Standard_Real Umin, Standard_Real Usup, Standard_Real TolU, Standard_Real TolF) {
-    return std::make_unique<Extrema_EPCOfExtPC>(P, C, NbU, Umin, Usup, TolU, TolF);
-}
-
-// ========================
-// Extrema_PCFOfEPCOfExtPC wrappers
-// ========================
-
-inline std::unique_ptr<Extrema_PCFOfEPCOfExtPC> Extrema_PCFOfEPCOfExtPC_ctor() {
-    return std::make_unique<Extrema_PCFOfEPCOfExtPC>();
-}
-inline std::unique_ptr<Extrema_PCFOfEPCOfExtPC> Extrema_PCFOfEPCOfExtPC_ctor_pnt_curve(const gp_Pnt& P, const Adaptor3d_Curve& C) {
-    return std::make_unique<Extrema_PCFOfEPCOfExtPC>(P, C);
-}
-inline const math_Function& Extrema_PCFOfEPCOfExtPC_as_math_Function(const Extrema_PCFOfEPCOfExtPC& self_) { return static_cast<const math_Function&>(self_); }
-inline math_Function& Extrema_PCFOfEPCOfExtPC_as_math_Function_mut(Extrema_PCFOfEPCOfExtPC& self_) { return static_cast<math_Function&>(self_); }
-inline const math_FunctionWithDerivative& Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative(const Extrema_PCFOfEPCOfExtPC& self_) { return static_cast<const math_FunctionWithDerivative&>(self_); }
-inline math_FunctionWithDerivative& Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative_mut(Extrema_PCFOfEPCOfExtPC& self_) { return static_cast<math_FunctionWithDerivative&>(self_); }
-
-// ========================
-// Extrema_POnCurv wrappers
-// ========================
-
-inline std::unique_ptr<Extrema_POnCurv> Extrema_POnCurv_ctor() {
-    return std::make_unique<Extrema_POnCurv>();
-}
-inline std::unique_ptr<Extrema_POnCurv> Extrema_POnCurv_ctor_real_pnt(Standard_Real U, const gp_Pnt& P) {
-    return std::make_unique<Extrema_POnCurv>(U, P);
-}
-
-// ========================
-// Extrema_ECC wrappers
-// ========================
-
-inline std::unique_ptr<Extrema_ECC> Extrema_ECC_ctor() {
-    return std::make_unique<Extrema_ECC>();
-}
-inline std::unique_ptr<Extrema_ECC> Extrema_ECC_ctor_curve2(const Adaptor3d_Curve& C1, const Adaptor3d_Curve& C2) {
-    return std::make_unique<Extrema_ECC>(C1, C2);
-}
-inline std::unique_ptr<Extrema_ECC> Extrema_ECC_ctor_curve2_real4(const Adaptor3d_Curve& C1, const Adaptor3d_Curve& C2, Standard_Real Uinf, Standard_Real Usup, Standard_Real Vinf, Standard_Real Vsup) {
-    return std::make_unique<Extrema_ECC>(C1, C2, Uinf, Usup, Vinf, Vsup);
-}
-
-// ========================
-// Message_ProgressScope wrappers
-// ========================
-
-inline std::unique_ptr<Message_ProgressScope> Message_ProgressScope_ctor() {
-    return std::make_unique<Message_ProgressScope>();
-}
-inline std::unique_ptr<Message_ProgressScope> Message_ProgressScope_ctor_progressrange_asciistring_real_bool(const Message_ProgressRange& theRange, const TCollection_AsciiString& theName, Standard_Real theMax, Standard_Boolean isInfinite) {
-    return std::make_unique<Message_ProgressScope>(theRange, theName, theMax, isInfinite);
-}
-inline std::unique_ptr<Message_ProgressRange> Message_ProgressScope_next(Message_ProgressScope& self_, Standard_Real theStep) {
-    return std::make_unique<Message_ProgressRange>(self_.Next(theStep));
-}
-inline rust::String Message_ProgressScope_name(const Message_ProgressScope& self) {
-    return rust::String(self.Name());
-}
-
-// ========================
-// Message_ProgressIndicator wrappers
-// ========================
-
-inline std::unique_ptr<Message_ProgressRange> Message_ProgressIndicator_start(Message_ProgressIndicator& self_) {
-    return std::make_unique<Message_ProgressRange>(self_.Start());
-}
-inline const opencascade::handle<Standard_Type>& Message_ProgressIndicator_get_type_descriptor() {
-    return Message_ProgressIndicator::get_type_descriptor();
-}
-inline std::unique_ptr<Message_ProgressRange> Message_ProgressIndicator_start_handleprogressindicator(const opencascade::handle<Message_ProgressIndicator>& theProgress) {
-    return std::make_unique<Message_ProgressRange>(Message_ProgressIndicator::Start(theProgress));
-}
-
-// ========================
-// ShapeProcess wrappers
-// ========================
-
-
-// ========================
-// IGESData_BasicEditor wrappers
-// ========================
-
-inline std::unique_ptr<IGESData_BasicEditor> IGESData_BasicEditor_ctor() {
-    return std::make_unique<IGESData_BasicEditor>();
-}
-inline Standard_Boolean IGESData_BasicEditor_set_unit_name(IGESData_BasicEditor& self, rust::Str name) {
-    return self.SetUnitName(std::string(name).c_str());
-}
-inline Standard_Integer IGESData_BasicEditor_unit_name_flag(rust::Str name) {
-    return IGESData_BasicEditor::UnitNameFlag(std::string(name).c_str());
-}
-inline Standard_Real IGESData_BasicEditor_unit_flag_value(Standard_Integer flag) {
-    return IGESData_BasicEditor::UnitFlagValue(flag);
-}
-inline Standard_Integer IGESData_BasicEditor_iges_version_max() {
-    return IGESData_BasicEditor::IGESVersionMax();
-}
-inline Standard_Integer IGESData_BasicEditor_drafting_max() {
-    return IGESData_BasicEditor::DraftingMax();
-}
-inline Standard_Integer IGESData_BasicEditor_get_flag_by_value(Standard_Real theValue) {
-    return IGESData_BasicEditor::GetFlagByValue(theValue);
-}
-
-// ========================
-// XSAlgo_ShapeProcessor wrappers
-// ========================
-
-inline std::unique_ptr<XSAlgo_ShapeProcessor> XSAlgo_ShapeProcessor_ctor_shapefixparameters(const DE_ShapeFixParameters& theParameters) {
-    return std::make_unique<XSAlgo_ShapeProcessor>(theParameters);
-}
-inline Standard_Boolean XSAlgo_ShapeProcessor_check_p_curve(const TopoDS_Edge& theEdge, const TopoDS_Face& theFace, Standard_Real thePrecision, Standard_Boolean theIsSeam) {
-    return XSAlgo_ShapeProcessor::CheckPCurve(theEdge, theFace, thePrecision, theIsSeam);
-}
-inline void XSAlgo_ShapeProcessor_prepare_for_transfer() {
-    return XSAlgo_ShapeProcessor::PrepareForTransfer();
-}
-
-// ========================
-// Interface_GeneralLib wrappers
-// ========================
-
-inline std::unique_ptr<Interface_GeneralLib> Interface_GeneralLib_ctor() {
-    return std::make_unique<Interface_GeneralLib>();
-}
-
-// ========================
-// IGESData_SpecificLib wrappers
-// ========================
-
-inline std::unique_ptr<IGESData_SpecificLib> IGESData_SpecificLib_ctor() {
-    return std::make_unique<IGESData_SpecificLib>();
-}
-
-// ========================
-// XSControl_Reader wrappers
-// ========================
-
-inline std::unique_ptr<XSControl_Reader> XSControl_Reader_ctor() {
-    return std::make_unique<XSControl_Reader>();
-}
-inline std::unique_ptr<XSControl_Reader> XSControl_Reader_ctor_charptr(rust::Str norm) {
-    return std::make_unique<XSControl_Reader>(std::string(norm).c_str());
-}
-inline std::unique_ptr<opencascade::handle<TColStd_HSequenceOfTransient>> XSControl_Reader_give_list(XSControl_Reader& self_, rust::Str first, rust::Str second) {
-    return std::make_unique<opencascade::handle<TColStd_HSequenceOfTransient>>(self_.GiveList(std::string(first).c_str(), std::string(second).c_str()));
-}
-inline std::unique_ptr<TopoDS_Shape> XSControl_Reader_shape(const XSControl_Reader& self_, Standard_Integer num) {
-    return std::make_unique<TopoDS_Shape>(self_.Shape(num));
-}
-inline std::unique_ptr<TopoDS_Shape> XSControl_Reader_one_shape(const XSControl_Reader& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.OneShape());
-}
-inline Standard_Boolean XSControl_Reader_set_norm(XSControl_Reader& self, rust::Str norm) {
-    return self.SetNorm(std::string(norm).c_str());
-}
-
-// ========================
-// TColStd_HSequenceOfTransient wrappers
-// ========================
-
-inline std::unique_ptr<TColStd_HSequenceOfTransient> TColStd_HSequenceOfTransient_ctor() {
-    return std::make_unique<TColStd_HSequenceOfTransient>();
-}
-inline std::unique_ptr<TColStd_HSequenceOfTransient> TColStd_HSequenceOfTransient_ctor_sequenceoftransient(const TColStd_SequenceOfTransient& theOther) {
-    return std::make_unique<TColStd_HSequenceOfTransient>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfTransient_get_type_descriptor() {
-    return TColStd_HSequenceOfTransient::get_type_descriptor();
-}
-inline std::unique_ptr<HandleTColStdHSequenceOfTransient> TColStd_HSequenceOfTransient_to_handle(std::unique_ptr<TColStd_HSequenceOfTransient> obj) {
-    return std::make_unique<HandleTColStdHSequenceOfTransient>(obj.release());
-}
-
-// ========================
-// DESTEP_Parameters wrappers
-// ========================
-
-inline std::unique_ptr<DESTEP_Parameters> DESTEP_Parameters_ctor() {
-    return std::make_unique<DESTEP_Parameters>();
-}
-
-// ========================
-// BRepTools_History wrappers
-// ========================
-
-inline std::unique_ptr<BRepTools_History> BRepTools_History_ctor() {
-    return std::make_unique<BRepTools_History>();
-}
-inline Standard_Boolean BRepTools_History_is_supported_type(const TopoDS_Shape& theShape) {
-    return BRepTools_History::IsSupportedType(theShape);
-}
-inline const opencascade::handle<Standard_Type>& BRepTools_History_get_type_descriptor() {
-    return BRepTools_History::get_type_descriptor();
-}
-inline std::unique_ptr<HandleBRepToolsHistory> BRepTools_History_to_handle(std::unique_ptr<BRepTools_History> obj) {
-    return std::make_unique<HandleBRepToolsHistory>(obj.release());
-}
-
-// ========================
-// Poly_HArray1OfTriangle wrappers
-// ========================
-
-inline std::unique_ptr<Poly_HArray1OfTriangle> Poly_HArray1OfTriangle_ctor() {
-    return std::make_unique<Poly_HArray1OfTriangle>();
-}
-inline std::unique_ptr<Poly_HArray1OfTriangle> Poly_HArray1OfTriangle_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return std::make_unique<Poly_HArray1OfTriangle>(theLower, theUpper);
-}
-inline std::unique_ptr<Poly_HArray1OfTriangle> Poly_HArray1OfTriangle_ctor_int2_triangle(Standard_Integer theLower, Standard_Integer theUpper, const Poly_Triangle& theValue) {
-    return std::make_unique<Poly_HArray1OfTriangle>(theLower, theUpper, theValue);
-}
-inline std::unique_ptr<Poly_HArray1OfTriangle> Poly_HArray1OfTriangle_ctor_triangle_int2_bool(const Poly_Triangle& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
-    return std::make_unique<Poly_HArray1OfTriangle>(theBegin, theLower, theUpper, arg3);
-}
-inline std::unique_ptr<Poly_HArray1OfTriangle> Poly_HArray1OfTriangle_ctor_array1oftriangle(const Poly_Array1OfTriangle& theOther) {
-    return std::make_unique<Poly_HArray1OfTriangle>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& Poly_HArray1OfTriangle_get_type_descriptor() {
-    return Poly_HArray1OfTriangle::get_type_descriptor();
-}
-inline std::unique_ptr<HandlePolyHArray1OfTriangle> Poly_HArray1OfTriangle_to_handle(std::unique_ptr<Poly_HArray1OfTriangle> obj) {
-    return std::make_unique<HandlePolyHArray1OfTriangle>(obj.release());
-}
-
-// ========================
-// Poly_ArrayOfNodes wrappers
-// ========================
-
-inline std::unique_ptr<Poly_ArrayOfNodes> Poly_ArrayOfNodes_ctor() {
-    return std::make_unique<Poly_ArrayOfNodes>();
-}
-inline std::unique_ptr<Poly_ArrayOfNodes> Poly_ArrayOfNodes_ctor_int(Standard_Integer theLength) {
-    return std::make_unique<Poly_ArrayOfNodes>(theLength);
-}
-inline std::unique_ptr<Poly_ArrayOfNodes> Poly_ArrayOfNodes_ctor_arrayofnodes(const Poly_ArrayOfNodes& theOther) {
-    return std::make_unique<Poly_ArrayOfNodes>(theOther);
-}
-inline std::unique_ptr<Poly_ArrayOfNodes> Poly_ArrayOfNodes_ctor_pnt_int(const gp_Pnt& theBegin, Standard_Integer theLength) {
-    return std::make_unique<Poly_ArrayOfNodes>(theBegin, theLength);
-}
-inline std::unique_ptr<Poly_ArrayOfNodes> Poly_ArrayOfNodes_ctor_vec3f_int(const gp_Vec3f& theBegin, Standard_Integer theLength) {
-    return std::make_unique<Poly_ArrayOfNodes>(theBegin, theLength);
-}
-inline std::unique_ptr<gp_Pnt> Poly_ArrayOfNodes_value(const Poly_ArrayOfNodes& self_, Standard_Integer theIndex) {
-    return std::make_unique<gp_Pnt>(self_.Value(theIndex));
-}
-
-// ========================
-// Poly_ArrayOfUVNodes wrappers
-// ========================
-
-inline std::unique_ptr<Poly_ArrayOfUVNodes> Poly_ArrayOfUVNodes_ctor() {
-    return std::make_unique<Poly_ArrayOfUVNodes>();
-}
-inline std::unique_ptr<Poly_ArrayOfUVNodes> Poly_ArrayOfUVNodes_ctor_int(Standard_Integer theLength) {
-    return std::make_unique<Poly_ArrayOfUVNodes>(theLength);
-}
-inline std::unique_ptr<Poly_ArrayOfUVNodes> Poly_ArrayOfUVNodes_ctor_arrayofuvnodes(const Poly_ArrayOfUVNodes& theOther) {
-    return std::make_unique<Poly_ArrayOfUVNodes>(theOther);
-}
-inline std::unique_ptr<Poly_ArrayOfUVNodes> Poly_ArrayOfUVNodes_ctor_pnt2d_int(const gp_Pnt2d& theBegin, Standard_Integer theLength) {
-    return std::make_unique<Poly_ArrayOfUVNodes>(theBegin, theLength);
-}
-inline std::unique_ptr<Poly_ArrayOfUVNodes> Poly_ArrayOfUVNodes_ctor_vec2f_int(const gp_Vec2f& theBegin, Standard_Integer theLength) {
-    return std::make_unique<Poly_ArrayOfUVNodes>(theBegin, theLength);
-}
-inline std::unique_ptr<gp_Pnt2d> Poly_ArrayOfUVNodes_value(const Poly_ArrayOfUVNodes& self_, Standard_Integer theIndex) {
-    return std::make_unique<gp_Pnt2d>(self_.Value(theIndex));
-}
-
-// ========================
-// TShort_HArray1OfShortReal wrappers
-// ========================
-
-inline std::unique_ptr<TShort_HArray1OfShortReal> TShort_HArray1OfShortReal_ctor() {
-    return std::make_unique<TShort_HArray1OfShortReal>();
-}
-inline std::unique_ptr<TShort_HArray1OfShortReal> TShort_HArray1OfShortReal_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return std::make_unique<TShort_HArray1OfShortReal>(theLower, theUpper);
-}
-inline std::unique_ptr<TShort_HArray1OfShortReal> TShort_HArray1OfShortReal_ctor_int2_float(Standard_Integer theLower, Standard_Integer theUpper, const float& theValue) {
-    return std::make_unique<TShort_HArray1OfShortReal>(theLower, theUpper, theValue);
-}
-inline std::unique_ptr<TShort_HArray1OfShortReal> TShort_HArray1OfShortReal_ctor_float_int2_bool(const float& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
-    return std::make_unique<TShort_HArray1OfShortReal>(theBegin, theLower, theUpper, arg3);
-}
-inline std::unique_ptr<TShort_HArray1OfShortReal> TShort_HArray1OfShortReal_ctor_array1ofshortreal(const TShort_Array1OfShortReal& theOther) {
-    return std::make_unique<TShort_HArray1OfShortReal>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TShort_HArray1OfShortReal_get_type_descriptor() {
-    return TShort_HArray1OfShortReal::get_type_descriptor();
-}
-inline std::unique_ptr<HandleTShortHArray1OfShortReal> TShort_HArray1OfShortReal_to_handle(std::unique_ptr<TShort_HArray1OfShortReal> obj) {
-    return std::make_unique<HandleTShortHArray1OfShortReal>(obj.release());
-}
-
-// ========================
-// Poly_Triangle wrappers
-// ========================
-
-inline std::unique_ptr<Poly_Triangle> Poly_Triangle_ctor() {
-    return std::make_unique<Poly_Triangle>();
-}
-inline std::unique_ptr<Poly_Triangle> Poly_Triangle_ctor_int3(Standard_Integer theN1, Standard_Integer theN2, Standard_Integer theN3) {
-    return std::make_unique<Poly_Triangle>(theN1, theN2, theN3);
-}
-
-// ========================
-// BRepMesh_DiscretRoot wrappers
-// ========================
-
-inline const opencascade::handle<Standard_Type>& BRepMesh_DiscretRoot_get_type_descriptor() {
-    return BRepMesh_DiscretRoot::get_type_descriptor();
-}
-
-// ========================
-// IMeshTools_Context wrappers
-// ========================
-
-inline std::unique_ptr<IMeshTools_Context> IMeshTools_Context_ctor() {
-    return std::make_unique<IMeshTools_Context>();
-}
-inline const opencascade::handle<Standard_Type>& IMeshTools_Context_get_type_descriptor() {
-    return IMeshTools_Context::get_type_descriptor();
-}
-inline const IMeshData_Shape& IMeshTools_Context_as_IMeshData_Shape(const IMeshTools_Context& self_) { return static_cast<const IMeshData_Shape&>(self_); }
-inline IMeshData_Shape& IMeshTools_Context_as_IMeshData_Shape_mut(IMeshTools_Context& self_) { return static_cast<IMeshData_Shape&>(self_); }
-inline void IMeshTools_Context_inherited_SetShape(IMeshTools_Context& self, const TopoDS_Shape& theShape) {
-    self.SetShape(theShape);
-}
-inline const TopoDS_Shape& IMeshTools_Context_inherited_GetShape(const IMeshTools_Context& self) {
-    return self.GetShape();
-}
-
-// ========================
-// Standard_NumericError wrappers
-// ========================
-
-inline std::unique_ptr<Standard_NumericError> Standard_NumericError_ctor() {
-    return std::make_unique<Standard_NumericError>();
-}
-inline std::unique_ptr<Standard_NumericError> Standard_NumericError_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_NumericError>(std::string(theMessage).c_str());
-}
-inline std::unique_ptr<Standard_NumericError> Standard_NumericError_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_NumericError>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-inline void Standard_NumericError_raise(rust::Str theMessage) {
-    return Standard_NumericError::Raise(std::string(theMessage).c_str());
-}
-inline const opencascade::handle<Standard_Type>& Standard_NumericError_get_type_descriptor() {
-    return Standard_NumericError::get_type_descriptor();
-}
-
-// ========================
-// IMeshTools_ModelBuilder wrappers
-// ========================
-
-inline const opencascade::handle<Standard_Type>& IMeshTools_ModelBuilder_get_type_descriptor() {
-    return IMeshTools_ModelBuilder::get_type_descriptor();
-}
-inline const Message_Algorithm& IMeshTools_ModelBuilder_as_Message_Algorithm(const IMeshTools_ModelBuilder& self_) { return static_cast<const Message_Algorithm&>(self_); }
-inline Message_Algorithm& IMeshTools_ModelBuilder_as_Message_Algorithm_mut(IMeshTools_ModelBuilder& self_) { return static_cast<Message_Algorithm&>(self_); }
-inline const Message_ExecStatus& IMeshTools_ModelBuilder_inherited_GetStatus(const IMeshTools_ModelBuilder& self) {
-    return self.GetStatus();
-}
-inline Message_ExecStatus& IMeshTools_ModelBuilder_inherited_ChangeStatus(IMeshTools_ModelBuilder& self) {
-    return self.ChangeStatus();
-}
-inline void IMeshTools_ModelBuilder_inherited_ClearStatus(IMeshTools_ModelBuilder& self) {
-    self.ClearStatus();
-}
-inline void IMeshTools_ModelBuilder_inherited_SetMessenger(IMeshTools_ModelBuilder& self, const Handle(Message_Messenger)& theMsgr) {
-    self.SetMessenger(theMsgr);
-}
-inline std::unique_ptr<Handle(Message_Messenger)> IMeshTools_ModelBuilder_inherited_GetMessenger(const IMeshTools_ModelBuilder& self) {
-    return std::make_unique<Handle(Message_Messenger)>(self.GetMessenger());
-}
-inline void IMeshTools_ModelBuilder_inherited_AddStatus(IMeshTools_ModelBuilder& self, const Handle(Message_Algorithm)& theOther) {
-    self.AddStatus(theOther);
-}
-
-// ========================
-// IMeshData_Model wrappers
-// ========================
-
-inline const opencascade::handle<Standard_Type>& IMeshData_Model_get_type_descriptor() {
-    return IMeshData_Model::get_type_descriptor();
-}
-inline const IMeshData_Shape& IMeshData_Model_as_IMeshData_Shape(const IMeshData_Model& self_) { return static_cast<const IMeshData_Shape&>(self_); }
-inline IMeshData_Shape& IMeshData_Model_as_IMeshData_Shape_mut(IMeshData_Model& self_) { return static_cast<IMeshData_Shape&>(self_); }
-inline void IMeshData_Model_inherited_SetShape(IMeshData_Model& self, const TopoDS_Shape& theShape) {
-    self.SetShape(theShape);
-}
-inline const TopoDS_Shape& IMeshData_Model_inherited_GetShape(const IMeshData_Model& self) {
-    return self.GetShape();
-}
-
-// ========================
-// IMeshTools_Parameters wrappers
-// ========================
-
-inline std::unique_ptr<IMeshTools_Parameters> IMeshTools_Parameters_ctor() {
-    return std::make_unique<IMeshTools_Parameters>();
-}
-inline Standard_Real IMeshTools_Parameters_rel_min_size() {
-    return IMeshTools_Parameters::RelMinSize();
-}
-
-// ========================
-// IMeshTools_ModelAlgo wrappers
-// ========================
-
-inline const opencascade::handle<Standard_Type>& IMeshTools_ModelAlgo_get_type_descriptor() {
-    return IMeshTools_ModelAlgo::get_type_descriptor();
-}
-
-// ========================
-// IMeshData_Shape wrappers
-// ========================
-
-inline const opencascade::handle<Standard_Type>& IMeshData_Shape_get_type_descriptor() {
-    return IMeshData_Shape::get_type_descriptor();
-}
-inline std::unique_ptr<HandleIMeshDataShape> IMeshData_Shape_to_handle(std::unique_ptr<IMeshData_Shape> obj) {
-    return std::make_unique<HandleIMeshDataShape>(obj.release());
-}
-
-// ========================
-// Bnd_Box2d wrappers
-// ========================
-
-inline std::unique_ptr<Bnd_Box2d> Bnd_Box2d_ctor() {
-    return std::make_unique<Bnd_Box2d>();
-}
-inline std::unique_ptr<Bnd_Box2d> Bnd_Box2d_transformed(const Bnd_Box2d& self_, const gp_Trsf2d& T) {
-    return std::make_unique<Bnd_Box2d>(self_.Transformed(T));
-}
-inline std::unique_ptr<Bnd_Box2d> Bnd_Box2d_to_owned(const Bnd_Box2d& self_) { return std::make_unique<Bnd_Box2d>(self_); }
-
-// ========================
-// BRepMesh_Vertex wrappers
-// ========================
-
-inline std::unique_ptr<BRepMesh_Vertex> BRepMesh_Vertex_ctor() {
-    return std::make_unique<BRepMesh_Vertex>();
-}
-
-// ========================
-// Bnd_B2d wrappers
-// ========================
-
-inline std::unique_ptr<Bnd_B2d> Bnd_B2d_ctor() {
-    return std::make_unique<Bnd_B2d>();
-}
-inline std::unique_ptr<Bnd_B2d> Bnd_B2d_ctor_xy2(const gp_XY& theCenter, const gp_XY& theHSize) {
-    return std::make_unique<Bnd_B2d>(theCenter, theHSize);
-}
-inline std::unique_ptr<gp_XY> Bnd_B2d_corner_min(const Bnd_B2d& self_) {
-    return std::make_unique<gp_XY>(self_.CornerMin());
-}
-inline std::unique_ptr<gp_XY> Bnd_B2d_corner_max(const Bnd_B2d& self_) {
-    return std::make_unique<gp_XY>(self_.CornerMax());
-}
-inline std::unique_ptr<Bnd_B2d> Bnd_B2d_transformed(const Bnd_B2d& self_, const gp_Trsf2d& theTrsf) {
-    return std::make_unique<Bnd_B2d>(self_.Transformed(theTrsf));
-}
-inline std::unique_ptr<Bnd_B2d> Bnd_B2d_to_owned(const Bnd_B2d& self_) { return std::make_unique<Bnd_B2d>(self_); }
-
-// ========================
-// BRepMesh_Circle wrappers
-// ========================
-
-inline std::unique_ptr<BRepMesh_Circle> BRepMesh_Circle_ctor() {
-    return std::make_unique<BRepMesh_Circle>();
-}
-inline std::unique_ptr<BRepMesh_Circle> BRepMesh_Circle_ctor_xy_real(const gp_XY& theLocation, Standard_Real theRadius) {
-    return std::make_unique<BRepMesh_Circle>(theLocation, theRadius);
-}
-
-// ========================
-// BRepMesh_Triangle wrappers
-// ========================
-
-inline std::unique_ptr<BRepMesh_Triangle> BRepMesh_Triangle_ctor() {
-    return std::make_unique<BRepMesh_Triangle>();
-}
-
-// ========================
-// BRepMesh_PairOfIndex wrappers
-// ========================
-
-inline std::unique_ptr<BRepMesh_PairOfIndex> BRepMesh_PairOfIndex_ctor() {
-    return std::make_unique<BRepMesh_PairOfIndex>();
-}
-
-// ========================
-// BRepMesh_Edge wrappers
-// ========================
-
-inline std::unique_ptr<BRepMesh_Edge> BRepMesh_Edge_ctor() {
-    return std::make_unique<BRepMesh_Edge>();
-}
-inline const BRepMesh_OrientedEdge& BRepMesh_Edge_as_BRepMesh_OrientedEdge(const BRepMesh_Edge& self_) { return static_cast<const BRepMesh_OrientedEdge&>(self_); }
-inline BRepMesh_OrientedEdge& BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut(BRepMesh_Edge& self_) { return static_cast<BRepMesh_OrientedEdge&>(self_); }
-inline Standard_Integer BRepMesh_Edge_inherited_FirstNode(const BRepMesh_Edge& self) {
-    return self.FirstNode();
-}
-inline Standard_Integer BRepMesh_Edge_inherited_LastNode(const BRepMesh_Edge& self) {
-    return self.LastNode();
-}
-
-// ========================
-// BRepMesh_OrientedEdge wrappers
-// ========================
-
-inline std::unique_ptr<BRepMesh_OrientedEdge> BRepMesh_OrientedEdge_ctor() {
-    return std::make_unique<BRepMesh_OrientedEdge>();
-}
-inline std::unique_ptr<BRepMesh_OrientedEdge> BRepMesh_OrientedEdge_ctor_int2(Standard_Integer theFirstNode, Standard_Integer theLastNode) {
-    return std::make_unique<BRepMesh_OrientedEdge>(theFirstNode, theLastNode);
-}
-
-// ========================
-// NCollection_IncAllocator wrappers
-// ========================
-
-inline std::unique_ptr<NCollection_IncAllocator> NCollection_IncAllocator_ctor_size(size_t theBlockSize) {
-    return std::make_unique<NCollection_IncAllocator>(theBlockSize);
-}
-inline const opencascade::handle<Standard_Type>& NCollection_IncAllocator_get_type_descriptor() {
-    return NCollection_IncAllocator::get_type_descriptor();
-}
-
-// ========================
-// TColStd_PackedMapOfInteger wrappers
-// ========================
-
-inline std::unique_ptr<TColStd_PackedMapOfInteger> TColStd_PackedMapOfInteger_ctor_int(Standard_Integer theNbBuckets) {
-    return std::make_unique<TColStd_PackedMapOfInteger>(theNbBuckets);
-}
-inline std::unique_ptr<TColStd_PackedMapOfInteger> TColStd_PackedMapOfInteger_ctor_packedmapofinteger(const TColStd_PackedMapOfInteger& theOther) {
-    return std::make_unique<TColStd_PackedMapOfInteger>(theOther);
-}
-
-// ========================
-// Message_Algorithm wrappers
-// ========================
-
-inline std::unique_ptr<Message_Algorithm> Message_Algorithm_ctor() {
-    return std::make_unique<Message_Algorithm>();
-}
-inline std::unique_ptr<opencascade::handle<Message_Messenger>> Message_Algorithm_get_messenger(const Message_Algorithm& self_) {
-    return std::make_unique<opencascade::handle<Message_Messenger>>(self_.GetMessenger());
-}
-inline const opencascade::handle<Standard_Type>& Message_Algorithm_get_type_descriptor() {
-    return Message_Algorithm::get_type_descriptor();
-}
-inline std::unique_ptr<HandleMessageAlgorithm> Message_Algorithm_to_handle(std::unique_ptr<Message_Algorithm> obj) {
-    return std::make_unique<HandleMessageAlgorithm>(obj.release());
-}
-
-// ========================
-// Message_ExecStatus wrappers
-// ========================
-
-inline std::unique_ptr<Message_ExecStatus> Message_ExecStatus_ctor() {
-    return std::make_unique<Message_ExecStatus>();
-}
-
-// ========================
-// TColStd_HArray1OfTransient wrappers
-// ========================
-
-inline std::unique_ptr<TColStd_HArray1OfTransient> TColStd_HArray1OfTransient_ctor() {
-    return std::make_unique<TColStd_HArray1OfTransient>();
-}
-inline std::unique_ptr<TColStd_HArray1OfTransient> TColStd_HArray1OfTransient_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return std::make_unique<TColStd_HArray1OfTransient>(theLower, theUpper);
-}
-inline std::unique_ptr<TColStd_HArray1OfTransient> TColStd_HArray1OfTransient_ctor_array1oftransient(const TColStd_Array1OfTransient& theOther) {
-    return std::make_unique<TColStd_HArray1OfTransient>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfTransient_get_type_descriptor() {
-    return TColStd_HArray1OfTransient::get_type_descriptor();
-}
-inline std::unique_ptr<HandleTColStdHArray1OfTransient> TColStd_HArray1OfTransient_to_handle(std::unique_ptr<TColStd_HArray1OfTransient> obj) {
-    return std::make_unique<HandleTColStdHArray1OfTransient>(obj.release());
-}
-
-// ========================
-// TColStd_HSequenceOfHExtendedString wrappers
-// ========================
-
-inline std::unique_ptr<TColStd_HSequenceOfHExtendedString> TColStd_HSequenceOfHExtendedString_ctor() {
-    return std::make_unique<TColStd_HSequenceOfHExtendedString>();
-}
-inline std::unique_ptr<TColStd_HSequenceOfHExtendedString> TColStd_HSequenceOfHExtendedString_ctor_sequenceofhextendedstring(const TColStd_SequenceOfHExtendedString& theOther) {
-    return std::make_unique<TColStd_HSequenceOfHExtendedString>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColStd_HSequenceOfHExtendedString_get_type_descriptor() {
-    return TColStd_HSequenceOfHExtendedString::get_type_descriptor();
-}
-inline std::unique_ptr<HandleTColStdHSequenceOfHExtendedString> TColStd_HSequenceOfHExtendedString_to_handle(std::unique_ptr<TColStd_HSequenceOfHExtendedString> obj) {
-    return std::make_unique<HandleTColStdHSequenceOfHExtendedString>(obj.release());
-}
-
-// ========================
-// Message_Msg wrappers
-// ========================
-
-inline std::unique_ptr<Message_Msg> Message_Msg_ctor() {
-    return std::make_unique<Message_Msg>();
-}
-inline std::unique_ptr<Message_Msg> Message_Msg_ctor_msg(const Message_Msg& theMsg) {
-    return std::make_unique<Message_Msg>(theMsg);
-}
-inline std::unique_ptr<Message_Msg> Message_Msg_ctor_charptr(rust::Str theKey) {
-    return std::make_unique<Message_Msg>(std::string(theKey).c_str());
-}
-inline std::unique_ptr<Message_Msg> Message_Msg_ctor_extendedstring(const TCollection_ExtendedString& theKey) {
-    return std::make_unique<Message_Msg>(theKey);
-}
-inline void Message_Msg_set(Message_Msg& self, rust::Str theMsg) {
-    self.Set(std::string(theMsg).c_str());
-}
-inline Message_Msg& Message_Msg_arg(Message_Msg& self, rust::Str theString) {
-    return self.Arg(std::string(theString).c_str());
-}
-
-// ========================
-// GeomAdaptor_Curve wrappers
-// ========================
-
-inline std::unique_ptr<GeomAdaptor_Curve> GeomAdaptor_Curve_ctor() {
-    return std::make_unique<GeomAdaptor_Curve>();
-}
-inline std::unique_ptr<GeomAdaptor_Curve> GeomAdaptor_Curve_ctor_handlecurve(const opencascade::handle<Geom_Curve>& theCurve) {
-    return std::make_unique<GeomAdaptor_Curve>(theCurve);
-}
-inline std::unique_ptr<GeomAdaptor_Curve> GeomAdaptor_Curve_ctor_handlecurve_real2(const opencascade::handle<Geom_Curve>& theCurve, Standard_Real theUFirst, Standard_Real theULast) {
-    return std::make_unique<GeomAdaptor_Curve>(theCurve, theUFirst, theULast);
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> GeomAdaptor_Curve_shallow_copy(const GeomAdaptor_Curve& self_) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Curve>>(self_.ShallowCopy());
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> GeomAdaptor_Curve_trim(const GeomAdaptor_Curve& self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Curve>>(self_.Trim(First, Last, Tol));
-}
-inline std::unique_ptr<gp_Pnt> GeomAdaptor_Curve_value(const GeomAdaptor_Curve& self_, Standard_Real U) {
-    return std::make_unique<gp_Pnt>(self_.Value(U));
-}
-inline std::unique_ptr<gp_Vec> GeomAdaptor_Curve_dn(const GeomAdaptor_Curve& self_, Standard_Real U, Standard_Integer N) {
-    return std::make_unique<gp_Vec>(self_.DN(U, N));
-}
-inline std::unique_ptr<gp_Lin> GeomAdaptor_Curve_line(const GeomAdaptor_Curve& self_) {
-    return std::make_unique<gp_Lin>(self_.Line());
-}
-inline std::unique_ptr<gp_Circ> GeomAdaptor_Curve_circle(const GeomAdaptor_Curve& self_) {
-    return std::make_unique<gp_Circ>(self_.Circle());
-}
-inline std::unique_ptr<gp_Elips> GeomAdaptor_Curve_ellipse(const GeomAdaptor_Curve& self_) {
-    return std::make_unique<gp_Elips>(self_.Ellipse());
-}
-inline std::unique_ptr<gp_Hypr> GeomAdaptor_Curve_hyperbola(const GeomAdaptor_Curve& self_) {
-    return std::make_unique<gp_Hypr>(self_.Hyperbola());
-}
-inline std::unique_ptr<gp_Parab> GeomAdaptor_Curve_parabola(const GeomAdaptor_Curve& self_) {
-    return std::make_unique<gp_Parab>(self_.Parabola());
-}
-inline std::unique_ptr<opencascade::handle<Geom_BezierCurve>> GeomAdaptor_Curve_bezier(const GeomAdaptor_Curve& self_) {
-    return std::make_unique<opencascade::handle<Geom_BezierCurve>>(self_.Bezier());
-}
-inline std::unique_ptr<opencascade::handle<Geom_BSplineCurve>> GeomAdaptor_Curve_b_spline(const GeomAdaptor_Curve& self_) {
-    return std::make_unique<opencascade::handle<Geom_BSplineCurve>>(self_.BSpline());
-}
-inline const opencascade::handle<Standard_Type>& GeomAdaptor_Curve_get_type_descriptor() {
-    return GeomAdaptor_Curve::get_type_descriptor();
-}
-inline const Adaptor3d_Curve& GeomAdaptor_Curve_as_Adaptor3d_Curve(const GeomAdaptor_Curve& self_) { return static_cast<const Adaptor3d_Curve&>(self_); }
-inline Adaptor3d_Curve& GeomAdaptor_Curve_as_Adaptor3d_Curve_mut(GeomAdaptor_Curve& self_) { return static_cast<Adaptor3d_Curve&>(self_); }
-
-// ========================
-// IntCurveSurface_HInter wrappers
-// ========================
-
-inline std::unique_ptr<IntCurveSurface_HInter> IntCurveSurface_HInter_ctor() {
-    return std::make_unique<IntCurveSurface_HInter>();
-}
-inline bool IntCurveSurface_HInter_inherited_IsDone(const IntCurveSurface_HInter& self) {
-    return self.IsDone();
-}
-inline Standard_Integer IntCurveSurface_HInter_inherited_NbPoints(const IntCurveSurface_HInter& self) {
-    return self.NbPoints();
-}
-inline const IntCurveSurface_IntersectionPoint& IntCurveSurface_HInter_inherited_Point(const IntCurveSurface_HInter& self, Standard_Integer Index) {
-    return self.Point(Index);
-}
-inline Standard_Integer IntCurveSurface_HInter_inherited_NbSegments(const IntCurveSurface_HInter& self) {
-    return self.NbSegments();
-}
-inline const IntCurveSurface_IntersectionSegment& IntCurveSurface_HInter_inherited_Segment(const IntCurveSurface_HInter& self, Standard_Integer Index) {
-    return self.Segment(Index);
-}
-inline bool IntCurveSurface_HInter_inherited_IsParallel(const IntCurveSurface_HInter& self) {
-    return self.IsParallel();
-}
-inline void IntCurveSurface_HInter_inherited_Dump(const IntCurveSurface_HInter& self) {
-    self.Dump();
-}
-
-// ========================
-// Bnd_HArray1OfBox wrappers
-// ========================
-
-inline std::unique_ptr<Bnd_HArray1OfBox> Bnd_HArray1OfBox_ctor() {
-    return std::make_unique<Bnd_HArray1OfBox>();
-}
-inline std::unique_ptr<Bnd_HArray1OfBox> Bnd_HArray1OfBox_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return std::make_unique<Bnd_HArray1OfBox>(theLower, theUpper);
-}
-inline std::unique_ptr<Bnd_HArray1OfBox> Bnd_HArray1OfBox_ctor_int2_box(Standard_Integer theLower, Standard_Integer theUpper, const Bnd_Box& theValue) {
-    return std::make_unique<Bnd_HArray1OfBox>(theLower, theUpper, theValue);
-}
-inline std::unique_ptr<Bnd_HArray1OfBox> Bnd_HArray1OfBox_ctor_box_int2_bool(const Bnd_Box& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
-    return std::make_unique<Bnd_HArray1OfBox>(theBegin, theLower, theUpper, arg3);
-}
-inline std::unique_ptr<Bnd_HArray1OfBox> Bnd_HArray1OfBox_ctor_array1ofbox(const Bnd_Array1OfBox& theOther) {
-    return std::make_unique<Bnd_HArray1OfBox>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& Bnd_HArray1OfBox_get_type_descriptor() {
-    return Bnd_HArray1OfBox::get_type_descriptor();
-}
-inline std::unique_ptr<Bnd_HArray1OfBox> Bnd_HArray1OfBox_to_owned(const Bnd_HArray1OfBox& self_) { return std::make_unique<Bnd_HArray1OfBox>(self_); }
-inline std::unique_ptr<HandleBndHArray1OfBox> Bnd_HArray1OfBox_to_handle(std::unique_ptr<Bnd_HArray1OfBox> obj) {
-    return std::make_unique<HandleBndHArray1OfBox>(obj.release());
-}
-
-// ========================
-// IntCurveSurface_IntersectionSegment wrappers
-// ========================
-
-inline std::unique_ptr<IntCurveSurface_IntersectionSegment> IntCurveSurface_IntersectionSegment_ctor() {
-    return std::make_unique<IntCurveSurface_IntersectionSegment>();
-}
-inline std::unique_ptr<IntCurveSurface_IntersectionSegment> IntCurveSurface_IntersectionSegment_ctor_intersectionpoint2(const IntCurveSurface_IntersectionPoint& P1, const IntCurveSurface_IntersectionPoint& P2) {
-    return std::make_unique<IntCurveSurface_IntersectionSegment>(P1, P2);
-}
-
-// ========================
-// IntCurveSurface_IntersectionPoint wrappers
-// ========================
-
-inline std::unique_ptr<IntCurveSurface_IntersectionPoint> IntCurveSurface_IntersectionPoint_ctor() {
-    return std::make_unique<IntCurveSurface_IntersectionPoint>();
-}
-
-// ========================
-// BSplCLib_Cache wrappers
-// ========================
-
-inline const opencascade::handle<Standard_Type>& BSplCLib_Cache_get_type_descriptor() {
-    return BSplCLib_Cache::get_type_descriptor();
-}
-inline std::unique_ptr<HandleBSplCLibCache> BSplCLib_Cache_to_handle(std::unique_ptr<BSplCLib_Cache> obj) {
-    return std::make_unique<HandleBSplCLibCache>(obj.release());
-}
-
-// ========================
-// GeomEvaluator_Curve wrappers
-// ========================
-
-inline std::unique_ptr<gp_Vec> GeomEvaluator_Curve_dn(const GeomEvaluator_Curve& self_, Standard_Real theU, Standard_Integer theDerU) {
-    return std::make_unique<gp_Vec>(self_.DN(theU, theDerU));
-}
-inline std::unique_ptr<opencascade::handle<GeomEvaluator_Curve>> GeomEvaluator_Curve_shallow_copy(const GeomEvaluator_Curve& self_) {
-    return std::make_unique<opencascade::handle<GeomEvaluator_Curve>>(self_.ShallowCopy());
-}
-inline const opencascade::handle<Standard_Type>& GeomEvaluator_Curve_get_type_descriptor() {
-    return GeomEvaluator_Curve::get_type_descriptor();
-}
-
-// ========================
-// Standard_NullObject wrappers
-// ========================
-
-inline std::unique_ptr<Standard_NullObject> Standard_NullObject_ctor() {
-    return std::make_unique<Standard_NullObject>();
-}
-inline std::unique_ptr<Standard_NullObject> Standard_NullObject_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_NullObject>(std::string(theMessage).c_str());
-}
-inline std::unique_ptr<Standard_NullObject> Standard_NullObject_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_NullObject>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-inline void Standard_NullObject_raise(rust::Str theMessage) {
-    return Standard_NullObject::Raise(std::string(theMessage).c_str());
-}
-inline const opencascade::handle<Standard_Type>& Standard_NullObject_get_type_descriptor() {
-    return Standard_NullObject::get_type_descriptor();
-}
-
-// ========================
-// Standard_ConstructionError wrappers
-// ========================
-
-inline std::unique_ptr<Standard_ConstructionError> Standard_ConstructionError_ctor() {
-    return std::make_unique<Standard_ConstructionError>();
-}
-inline std::unique_ptr<Standard_ConstructionError> Standard_ConstructionError_ctor_charptr(rust::Str theMessage) {
-    return std::make_unique<Standard_ConstructionError>(std::string(theMessage).c_str());
-}
-inline std::unique_ptr<Standard_ConstructionError> Standard_ConstructionError_ctor_charptr2(rust::Str theMessage, rust::Str theStackTrace) {
-    return std::make_unique<Standard_ConstructionError>(std::string(theMessage).c_str(), std::string(theStackTrace).c_str());
-}
-inline void Standard_ConstructionError_raise(rust::Str theMessage) {
-    return Standard_ConstructionError::Raise(std::string(theMessage).c_str());
-}
-inline const opencascade::handle<Standard_Type>& Standard_ConstructionError_get_type_descriptor() {
-    return Standard_ConstructionError::get_type_descriptor();
-}
-
-// ========================
-// BSplCLib_CacheParams wrappers
-// ========================
-
-inline std::unique_ptr<BSplCLib_CacheParams> BSplCLib_CacheParams_ctor_int_bool_array1ofreal(Standard_Integer theDegree, Standard_Boolean thePeriodic, const TColStd_Array1OfReal& theFlatKnots) {
-    return std::make_unique<BSplCLib_CacheParams>(theDegree, thePeriodic, theFlatKnots);
-}
-
-// ========================
-// BSplCLib wrappers
-// ========================
-
-inline Standard_Integer BSplCLib_max_degree() {
-    return BSplCLib::MaxDegree();
-}
-inline void BSplCLib_eval(Standard_Real U, Standard_Integer Degree, Standard_Real& Knots, Standard_Integer Dimension, Standard_Real& Poles) {
-    return BSplCLib::Eval(U, Degree, Knots, Dimension, Poles);
-}
-inline void BSplCLib_boor_scheme(Standard_Real U, Standard_Integer Degree, Standard_Real& Knots, Standard_Integer Dimension, Standard_Real& Poles, Standard_Integer Depth, Standard_Integer Length) {
-    return BSplCLib::BoorScheme(U, Degree, Knots, Dimension, Poles, Depth, Length);
-}
-inline Standard_Boolean BSplCLib_anti_boor_scheme(Standard_Real U, Standard_Integer Degree, Standard_Real& Knots, Standard_Integer Dimension, Standard_Real& Poles, Standard_Integer Depth, Standard_Integer Length, Standard_Real Tolerance) {
-    return BSplCLib::AntiBoorScheme(U, Degree, Knots, Dimension, Poles, Depth, Length, Tolerance);
-}
-inline void BSplCLib_derivative(Standard_Integer Degree, Standard_Real& Knots, Standard_Integer Dimension, Standard_Integer Length, Standard_Integer Order, Standard_Real& Poles) {
-    return BSplCLib::Derivative(Degree, Knots, Dimension, Length, Order, Poles);
-}
-inline void BSplCLib_bohm(Standard_Real U, Standard_Integer Degree, Standard_Integer N, Standard_Real& Knots, Standard_Integer Dimension, Standard_Real& Poles) {
-    return BSplCLib::Bohm(U, Degree, N, Knots, Dimension, Poles);
-}
-inline Standard_Integer BSplCLib_boor_index(Standard_Integer Index, Standard_Integer Length, Standard_Integer Depth) {
-    return BSplCLib::BoorIndex(Index, Length, Depth);
-}
-inline Standard_Integer BSplCLib_factor_banded_matrix(math_Matrix& Matrix, Standard_Integer UpperBandWidth, Standard_Integer LowerBandWidth, Standard_Integer& PivotIndexProblem) {
-    return BSplCLib::FactorBandedMatrix(Matrix, UpperBandWidth, LowerBandWidth, PivotIndexProblem);
-}
-inline Standard_Integer BSplCLib_solve_banded_system_matrix_int3_real(const math_Matrix& Matrix, Standard_Integer UpperBandWidth, Standard_Integer LowerBandWidth, Standard_Integer ArrayDimension, Standard_Real& Array) {
-    return BSplCLib::SolveBandedSystem(Matrix, UpperBandWidth, LowerBandWidth, ArrayDimension, Array);
-}
-inline Standard_Integer BSplCLib_solve_banded_system_matrix_int2_bool_int_real2(const math_Matrix& Matrix, Standard_Integer UpperBandWidth, Standard_Integer LowerBandWidth, Standard_Boolean HomogenousFlag, Standard_Integer ArrayDimension, Standard_Real& Array, Standard_Real& Weights) {
-    return BSplCLib::SolveBandedSystem(Matrix, UpperBandWidth, LowerBandWidth, HomogenousFlag, ArrayDimension, Array, Weights);
-}
-inline const Standard_Real& BSplCLib_flat_bezier_knots(Standard_Integer Degree) {
-    return BSplCLib::FlatBezierKnots(Degree);
-}
-
-// ========================
-// BSplCLib_EvaluatorFunction wrappers
-// ========================
-
-
-// ========================
-// BRepAdaptor_Surface wrappers
-// ========================
-
-inline std::unique_ptr<BRepAdaptor_Surface> BRepAdaptor_Surface_ctor() {
-    return std::make_unique<BRepAdaptor_Surface>();
-}
-inline std::unique_ptr<BRepAdaptor_Surface> BRepAdaptor_Surface_ctor_face_bool(const TopoDS_Face& F, Standard_Boolean R) {
-    return std::make_unique<BRepAdaptor_Surface>(F, R);
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> BRepAdaptor_Surface_shallow_copy(const BRepAdaptor_Surface& self_) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.ShallowCopy());
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> BRepAdaptor_Surface_u_trim(const BRepAdaptor_Surface& self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.UTrim(First, Last, Tol));
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> BRepAdaptor_Surface_v_trim(const BRepAdaptor_Surface& self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.VTrim(First, Last, Tol));
-}
-inline std::unique_ptr<gp_Pnt> BRepAdaptor_Surface_value(const BRepAdaptor_Surface& self_, Standard_Real U, Standard_Real V) {
-    return std::make_unique<gp_Pnt>(self_.Value(U, V));
-}
-inline std::unique_ptr<gp_Vec> BRepAdaptor_Surface_dn(const BRepAdaptor_Surface& self_, Standard_Real U, Standard_Real V, Standard_Integer Nu, Standard_Integer Nv) {
-    return std::make_unique<gp_Vec>(self_.DN(U, V, Nu, Nv));
-}
-inline std::unique_ptr<gp_Pln> BRepAdaptor_Surface_plane(const BRepAdaptor_Surface& self_) {
-    return std::make_unique<gp_Pln>(self_.Plane());
-}
-inline std::unique_ptr<gp_Cylinder> BRepAdaptor_Surface_cylinder(const BRepAdaptor_Surface& self_) {
-    return std::make_unique<gp_Cylinder>(self_.Cylinder());
-}
-inline std::unique_ptr<gp_Cone> BRepAdaptor_Surface_cone(const BRepAdaptor_Surface& self_) {
-    return std::make_unique<gp_Cone>(self_.Cone());
-}
-inline std::unique_ptr<gp_Sphere> BRepAdaptor_Surface_sphere(const BRepAdaptor_Surface& self_) {
-    return std::make_unique<gp_Sphere>(self_.Sphere());
-}
-inline std::unique_ptr<gp_Torus> BRepAdaptor_Surface_torus(const BRepAdaptor_Surface& self_) {
-    return std::make_unique<gp_Torus>(self_.Torus());
-}
-inline std::unique_ptr<opencascade::handle<Geom_BezierSurface>> BRepAdaptor_Surface_bezier(const BRepAdaptor_Surface& self_) {
-    return std::make_unique<opencascade::handle<Geom_BezierSurface>>(self_.Bezier());
-}
-inline std::unique_ptr<opencascade::handle<Geom_BSplineSurface>> BRepAdaptor_Surface_b_spline(const BRepAdaptor_Surface& self_) {
-    return std::make_unique<opencascade::handle<Geom_BSplineSurface>>(self_.BSpline());
-}
-inline std::unique_ptr<gp_Ax1> BRepAdaptor_Surface_axe_of_revolution(const BRepAdaptor_Surface& self_) {
-    return std::make_unique<gp_Ax1>(self_.AxeOfRevolution());
-}
-inline std::unique_ptr<gp_Dir> BRepAdaptor_Surface_direction(const BRepAdaptor_Surface& self_) {
-    return std::make_unique<gp_Dir>(self_.Direction());
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> BRepAdaptor_Surface_basis_curve(const BRepAdaptor_Surface& self_) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Curve>>(self_.BasisCurve());
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> BRepAdaptor_Surface_basis_surface(const BRepAdaptor_Surface& self_) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.BasisSurface());
-}
-inline const opencascade::handle<Standard_Type>& BRepAdaptor_Surface_get_type_descriptor() {
-    return BRepAdaptor_Surface::get_type_descriptor();
-}
-inline const Adaptor3d_Surface& BRepAdaptor_Surface_as_Adaptor3d_Surface(const BRepAdaptor_Surface& self_) { return static_cast<const Adaptor3d_Surface&>(self_); }
-inline Adaptor3d_Surface& BRepAdaptor_Surface_as_Adaptor3d_Surface_mut(BRepAdaptor_Surface& self_) { return static_cast<Adaptor3d_Surface&>(self_); }
-
-// ========================
-// Geom2dAdaptor_Curve wrappers
-// ========================
-
-inline std::unique_ptr<Geom2dAdaptor_Curve> Geom2dAdaptor_Curve_ctor() {
-    return std::make_unique<Geom2dAdaptor_Curve>();
-}
-inline std::unique_ptr<Geom2dAdaptor_Curve> Geom2dAdaptor_Curve_ctor_handlecurve(const opencascade::handle<Geom2d_Curve>& C) {
-    return std::make_unique<Geom2dAdaptor_Curve>(C);
-}
-inline std::unique_ptr<Geom2dAdaptor_Curve> Geom2dAdaptor_Curve_ctor_handlecurve_real2(const opencascade::handle<Geom2d_Curve>& C, Standard_Real UFirst, Standard_Real ULast) {
-    return std::make_unique<Geom2dAdaptor_Curve>(C, UFirst, ULast);
-}
-inline std::unique_ptr<opencascade::handle<Adaptor2d_Curve2d>> Geom2dAdaptor_Curve_shallow_copy(const Geom2dAdaptor_Curve& self_) {
-    return std::make_unique<opencascade::handle<Adaptor2d_Curve2d>>(self_.ShallowCopy());
-}
-inline std::unique_ptr<opencascade::handle<Adaptor2d_Curve2d>> Geom2dAdaptor_Curve_trim(const Geom2dAdaptor_Curve& self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
-    return std::make_unique<opencascade::handle<Adaptor2d_Curve2d>>(self_.Trim(First, Last, Tol));
-}
-inline std::unique_ptr<gp_Pnt2d> Geom2dAdaptor_Curve_value(const Geom2dAdaptor_Curve& self_, Standard_Real U) {
-    return std::make_unique<gp_Pnt2d>(self_.Value(U));
-}
-inline std::unique_ptr<gp_Vec2d> Geom2dAdaptor_Curve_dn(const Geom2dAdaptor_Curve& self_, Standard_Real U, Standard_Integer N) {
-    return std::make_unique<gp_Vec2d>(self_.DN(U, N));
-}
-inline std::unique_ptr<gp_Lin2d> Geom2dAdaptor_Curve_line(const Geom2dAdaptor_Curve& self_) {
-    return std::make_unique<gp_Lin2d>(self_.Line());
-}
-inline std::unique_ptr<gp_Circ2d> Geom2dAdaptor_Curve_circle(const Geom2dAdaptor_Curve& self_) {
-    return std::make_unique<gp_Circ2d>(self_.Circle());
-}
-inline std::unique_ptr<gp_Elips2d> Geom2dAdaptor_Curve_ellipse(const Geom2dAdaptor_Curve& self_) {
-    return std::make_unique<gp_Elips2d>(self_.Ellipse());
-}
-inline std::unique_ptr<gp_Hypr2d> Geom2dAdaptor_Curve_hyperbola(const Geom2dAdaptor_Curve& self_) {
-    return std::make_unique<gp_Hypr2d>(self_.Hyperbola());
-}
-inline std::unique_ptr<gp_Parab2d> Geom2dAdaptor_Curve_parabola(const Geom2dAdaptor_Curve& self_) {
-    return std::make_unique<gp_Parab2d>(self_.Parabola());
-}
-inline const opencascade::handle<Standard_Type>& Geom2dAdaptor_Curve_get_type_descriptor() {
-    return Geom2dAdaptor_Curve::get_type_descriptor();
-}
-inline const Adaptor2d_Curve2d& Geom2dAdaptor_Curve_as_Adaptor2d_Curve2d(const Geom2dAdaptor_Curve& self_) { return static_cast<const Adaptor2d_Curve2d&>(self_); }
-inline Adaptor2d_Curve2d& Geom2dAdaptor_Curve_as_Adaptor2d_Curve2d_mut(Geom2dAdaptor_Curve& self_) { return static_cast<Adaptor2d_Curve2d&>(self_); }
-
-// ========================
-// Geom2dEvaluator_Curve wrappers
-// ========================
-
-inline std::unique_ptr<gp_Vec2d> Geom2dEvaluator_Curve_dn(const Geom2dEvaluator_Curve& self_, Standard_Real theU, Standard_Integer theDerU) {
-    return std::make_unique<gp_Vec2d>(self_.DN(theU, theDerU));
-}
-inline std::unique_ptr<opencascade::handle<Geom2dEvaluator_Curve>> Geom2dEvaluator_Curve_shallow_copy(const Geom2dEvaluator_Curve& self_) {
-    return std::make_unique<opencascade::handle<Geom2dEvaluator_Curve>>(self_.ShallowCopy());
-}
-inline const opencascade::handle<Standard_Type>& Geom2dEvaluator_Curve_get_type_descriptor() {
-    return Geom2dEvaluator_Curve::get_type_descriptor();
-}
-
-// ========================
-// GeomAdaptor_Surface wrappers
-// ========================
-
-inline std::unique_ptr<GeomAdaptor_Surface> GeomAdaptor_Surface_ctor() {
-    return std::make_unique<GeomAdaptor_Surface>();
-}
-inline std::unique_ptr<GeomAdaptor_Surface> GeomAdaptor_Surface_ctor_handlesurface(const opencascade::handle<Geom_Surface>& theSurf) {
-    return std::make_unique<GeomAdaptor_Surface>(theSurf);
-}
-inline std::unique_ptr<GeomAdaptor_Surface> GeomAdaptor_Surface_ctor_handlesurface_real6(const opencascade::handle<Geom_Surface>& theSurf, Standard_Real theUFirst, Standard_Real theULast, Standard_Real theVFirst, Standard_Real theVLast, Standard_Real theTolU, Standard_Real theTolV) {
-    return std::make_unique<GeomAdaptor_Surface>(theSurf, theUFirst, theULast, theVFirst, theVLast, theTolU, theTolV);
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> GeomAdaptor_Surface_shallow_copy(const GeomAdaptor_Surface& self_) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.ShallowCopy());
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> GeomAdaptor_Surface_u_trim(const GeomAdaptor_Surface& self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.UTrim(First, Last, Tol));
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> GeomAdaptor_Surface_v_trim(const GeomAdaptor_Surface& self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.VTrim(First, Last, Tol));
-}
-inline std::unique_ptr<gp_Pnt> GeomAdaptor_Surface_value(const GeomAdaptor_Surface& self_, Standard_Real U, Standard_Real V) {
-    return std::make_unique<gp_Pnt>(self_.Value(U, V));
-}
-inline std::unique_ptr<gp_Vec> GeomAdaptor_Surface_dn(const GeomAdaptor_Surface& self_, Standard_Real U, Standard_Real V, Standard_Integer Nu, Standard_Integer Nv) {
-    return std::make_unique<gp_Vec>(self_.DN(U, V, Nu, Nv));
-}
-inline std::unique_ptr<gp_Pln> GeomAdaptor_Surface_plane(const GeomAdaptor_Surface& self_) {
-    return std::make_unique<gp_Pln>(self_.Plane());
-}
-inline std::unique_ptr<gp_Cylinder> GeomAdaptor_Surface_cylinder(const GeomAdaptor_Surface& self_) {
-    return std::make_unique<gp_Cylinder>(self_.Cylinder());
-}
-inline std::unique_ptr<gp_Cone> GeomAdaptor_Surface_cone(const GeomAdaptor_Surface& self_) {
-    return std::make_unique<gp_Cone>(self_.Cone());
-}
-inline std::unique_ptr<gp_Sphere> GeomAdaptor_Surface_sphere(const GeomAdaptor_Surface& self_) {
-    return std::make_unique<gp_Sphere>(self_.Sphere());
-}
-inline std::unique_ptr<gp_Torus> GeomAdaptor_Surface_torus(const GeomAdaptor_Surface& self_) {
-    return std::make_unique<gp_Torus>(self_.Torus());
-}
-inline std::unique_ptr<opencascade::handle<Geom_BezierSurface>> GeomAdaptor_Surface_bezier(const GeomAdaptor_Surface& self_) {
-    return std::make_unique<opencascade::handle<Geom_BezierSurface>>(self_.Bezier());
-}
-inline std::unique_ptr<opencascade::handle<Geom_BSplineSurface>> GeomAdaptor_Surface_b_spline(const GeomAdaptor_Surface& self_) {
-    return std::make_unique<opencascade::handle<Geom_BSplineSurface>>(self_.BSpline());
-}
-inline std::unique_ptr<gp_Ax1> GeomAdaptor_Surface_axe_of_revolution(const GeomAdaptor_Surface& self_) {
-    return std::make_unique<gp_Ax1>(self_.AxeOfRevolution());
-}
-inline std::unique_ptr<gp_Dir> GeomAdaptor_Surface_direction(const GeomAdaptor_Surface& self_) {
-    return std::make_unique<gp_Dir>(self_.Direction());
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> GeomAdaptor_Surface_basis_curve(const GeomAdaptor_Surface& self_) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Curve>>(self_.BasisCurve());
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> GeomAdaptor_Surface_basis_surface(const GeomAdaptor_Surface& self_) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.BasisSurface());
-}
-inline const opencascade::handle<Standard_Type>& GeomAdaptor_Surface_get_type_descriptor() {
-    return GeomAdaptor_Surface::get_type_descriptor();
-}
-inline const Adaptor3d_Surface& GeomAdaptor_Surface_as_Adaptor3d_Surface(const GeomAdaptor_Surface& self_) { return static_cast<const Adaptor3d_Surface&>(self_); }
-inline Adaptor3d_Surface& GeomAdaptor_Surface_as_Adaptor3d_Surface_mut(GeomAdaptor_Surface& self_) { return static_cast<Adaptor3d_Surface&>(self_); }
-
-// ========================
-// BSplSLib_Cache wrappers
-// ========================
-
-inline const opencascade::handle<Standard_Type>& BSplSLib_Cache_get_type_descriptor() {
-    return BSplSLib_Cache::get_type_descriptor();
-}
-inline std::unique_ptr<HandleBSplSLibCache> BSplSLib_Cache_to_handle(std::unique_ptr<BSplSLib_Cache> obj) {
-    return std::make_unique<HandleBSplSLibCache>(obj.release());
-}
-
-// ========================
-// GeomEvaluator_Surface wrappers
-// ========================
-
-inline std::unique_ptr<gp_Vec> GeomEvaluator_Surface_dn(const GeomEvaluator_Surface& self_, Standard_Real theU, Standard_Real theV, Standard_Integer theDerU, Standard_Integer theDerV) {
-    return std::make_unique<gp_Vec>(self_.DN(theU, theV, theDerU, theDerV));
-}
-inline std::unique_ptr<opencascade::handle<GeomEvaluator_Surface>> GeomEvaluator_Surface_shallow_copy(const GeomEvaluator_Surface& self_) {
-    return std::make_unique<opencascade::handle<GeomEvaluator_Surface>>(self_.ShallowCopy());
-}
-inline const opencascade::handle<Standard_Type>& GeomEvaluator_Surface_get_type_descriptor() {
-    return GeomEvaluator_Surface::get_type_descriptor();
-}
-
-// ========================
-// Adaptor3d_CurveOnSurface wrappers
-// ========================
-
-inline std::unique_ptr<Adaptor3d_CurveOnSurface> Adaptor3d_CurveOnSurface_ctor() {
-    return std::make_unique<Adaptor3d_CurveOnSurface>();
-}
-inline std::unique_ptr<Adaptor3d_CurveOnSurface> Adaptor3d_CurveOnSurface_ctor_handlesurface(const opencascade::handle<Adaptor3d_Surface>& S) {
-    return std::make_unique<Adaptor3d_CurveOnSurface>(S);
-}
-inline std::unique_ptr<Adaptor3d_CurveOnSurface> Adaptor3d_CurveOnSurface_ctor_handlecurve2d_handlesurface(const opencascade::handle<Adaptor2d_Curve2d>& C, const opencascade::handle<Adaptor3d_Surface>& S) {
-    return std::make_unique<Adaptor3d_CurveOnSurface>(C, S);
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> Adaptor3d_CurveOnSurface_shallow_copy(const Adaptor3d_CurveOnSurface& self_) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Curve>>(self_.ShallowCopy());
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> Adaptor3d_CurveOnSurface_trim(const Adaptor3d_CurveOnSurface& self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Curve>>(self_.Trim(First, Last, Tol));
-}
-inline std::unique_ptr<gp_Pnt> Adaptor3d_CurveOnSurface_value(const Adaptor3d_CurveOnSurface& self_, Standard_Real U) {
-    return std::make_unique<gp_Pnt>(self_.Value(U));
-}
-inline std::unique_ptr<gp_Vec> Adaptor3d_CurveOnSurface_dn(const Adaptor3d_CurveOnSurface& self_, Standard_Real U, Standard_Integer N) {
-    return std::make_unique<gp_Vec>(self_.DN(U, N));
-}
-inline std::unique_ptr<gp_Lin> Adaptor3d_CurveOnSurface_line(const Adaptor3d_CurveOnSurface& self_) {
-    return std::make_unique<gp_Lin>(self_.Line());
-}
-inline std::unique_ptr<gp_Circ> Adaptor3d_CurveOnSurface_circle(const Adaptor3d_CurveOnSurface& self_) {
-    return std::make_unique<gp_Circ>(self_.Circle());
-}
-inline std::unique_ptr<gp_Elips> Adaptor3d_CurveOnSurface_ellipse(const Adaptor3d_CurveOnSurface& self_) {
-    return std::make_unique<gp_Elips>(self_.Ellipse());
-}
-inline std::unique_ptr<gp_Hypr> Adaptor3d_CurveOnSurface_hyperbola(const Adaptor3d_CurveOnSurface& self_) {
-    return std::make_unique<gp_Hypr>(self_.Hyperbola());
-}
-inline std::unique_ptr<gp_Parab> Adaptor3d_CurveOnSurface_parabola(const Adaptor3d_CurveOnSurface& self_) {
-    return std::make_unique<gp_Parab>(self_.Parabola());
-}
-inline std::unique_ptr<opencascade::handle<Geom_BezierCurve>> Adaptor3d_CurveOnSurface_bezier(const Adaptor3d_CurveOnSurface& self_) {
-    return std::make_unique<opencascade::handle<Geom_BezierCurve>>(self_.Bezier());
-}
-inline std::unique_ptr<opencascade::handle<Geom_BSplineCurve>> Adaptor3d_CurveOnSurface_b_spline(const Adaptor3d_CurveOnSurface& self_) {
-    return std::make_unique<opencascade::handle<Geom_BSplineCurve>>(self_.BSpline());
-}
-inline const opencascade::handle<Standard_Type>& Adaptor3d_CurveOnSurface_get_type_descriptor() {
-    return Adaptor3d_CurveOnSurface::get_type_descriptor();
-}
-inline const Adaptor3d_Curve& Adaptor3d_CurveOnSurface_as_Adaptor3d_Curve(const Adaptor3d_CurveOnSurface& self_) { return static_cast<const Adaptor3d_Curve&>(self_); }
-inline Adaptor3d_Curve& Adaptor3d_CurveOnSurface_as_Adaptor3d_Curve_mut(Adaptor3d_CurveOnSurface& self_) { return static_cast<Adaptor3d_Curve&>(self_); }
-inline std::unique_ptr<Handle(Geom_OffsetCurve)> Adaptor3d_CurveOnSurface_inherited_OffsetCurve(const Adaptor3d_CurveOnSurface& self) {
-    return std::make_unique<Handle(Geom_OffsetCurve)>(self.OffsetCurve());
-}
-
-// ========================
-// Poly_Polygon3D wrappers
-// ========================
-
-inline std::unique_ptr<Poly_Polygon3D> Poly_Polygon3D_ctor_int_bool(Standard_Integer theNbNodes, Standard_Boolean theHasParams) {
-    return std::make_unique<Poly_Polygon3D>(theNbNodes, theHasParams);
-}
-inline std::unique_ptr<Poly_Polygon3D> Poly_Polygon3D_ctor_array1ofpnt(const TColgp_Array1OfPnt& Nodes) {
-    return std::make_unique<Poly_Polygon3D>(Nodes);
-}
-inline std::unique_ptr<Poly_Polygon3D> Poly_Polygon3D_ctor_array1ofpnt_array1ofreal(const TColgp_Array1OfPnt& Nodes, const TColStd_Array1OfReal& Parameters) {
-    return std::make_unique<Poly_Polygon3D>(Nodes, Parameters);
-}
-inline std::unique_ptr<opencascade::handle<Poly_Polygon3D>> Poly_Polygon3D_copy(const Poly_Polygon3D& self_) {
-    return std::make_unique<opencascade::handle<Poly_Polygon3D>>(self_.Copy());
-}
-inline const opencascade::handle<Standard_Type>& Poly_Polygon3D_get_type_descriptor() {
-    return Poly_Polygon3D::get_type_descriptor();
-}
-inline std::unique_ptr<HandlePolyPolygon3D> Poly_Polygon3D_to_handle(std::unique_ptr<Poly_Polygon3D> obj) {
-    return std::make_unique<HandlePolyPolygon3D>(obj.release());
-}
-
-// ========================
-// Poly_Polygon2D wrappers
-// ========================
-
-inline std::unique_ptr<Poly_Polygon2D> Poly_Polygon2D_ctor_int(Standard_Integer theNbNodes) {
-    return std::make_unique<Poly_Polygon2D>(theNbNodes);
-}
-inline std::unique_ptr<Poly_Polygon2D> Poly_Polygon2D_ctor_array1ofpnt2d(const TColgp_Array1OfPnt2d& Nodes) {
-    return std::make_unique<Poly_Polygon2D>(Nodes);
-}
-inline const opencascade::handle<Standard_Type>& Poly_Polygon2D_get_type_descriptor() {
-    return Poly_Polygon2D::get_type_descriptor();
-}
-inline std::unique_ptr<HandlePolyPolygon2D> Poly_Polygon2D_to_handle(std::unique_ptr<Poly_Polygon2D> obj) {
-    return std::make_unique<HandlePolyPolygon2D>(obj.release());
-}
-
-// ========================
-// Poly_PolygonOnTriangulation wrappers
-// ========================
-
-inline std::unique_ptr<Poly_PolygonOnTriangulation> Poly_PolygonOnTriangulation_ctor_int_bool(Standard_Integer theNbNodes, Standard_Boolean theHasParams) {
-    return std::make_unique<Poly_PolygonOnTriangulation>(theNbNodes, theHasParams);
-}
-inline std::unique_ptr<Poly_PolygonOnTriangulation> Poly_PolygonOnTriangulation_ctor_array1ofinteger(const TColStd_Array1OfInteger& Nodes) {
-    return std::make_unique<Poly_PolygonOnTriangulation>(Nodes);
-}
-inline std::unique_ptr<Poly_PolygonOnTriangulation> Poly_PolygonOnTriangulation_ctor_array1ofinteger_array1ofreal(const TColStd_Array1OfInteger& Nodes, const TColStd_Array1OfReal& Parameters) {
-    return std::make_unique<Poly_PolygonOnTriangulation>(Nodes, Parameters);
-}
-inline std::unique_ptr<opencascade::handle<Poly_PolygonOnTriangulation>> Poly_PolygonOnTriangulation_copy(const Poly_PolygonOnTriangulation& self_) {
-    return std::make_unique<opencascade::handle<Poly_PolygonOnTriangulation>>(self_.Copy());
-}
-inline const opencascade::handle<Standard_Type>& Poly_PolygonOnTriangulation_get_type_descriptor() {
-    return Poly_PolygonOnTriangulation::get_type_descriptor();
-}
-inline std::unique_ptr<HandlePolyPolygonOnTriangulation> Poly_PolygonOnTriangulation_to_handle(std::unique_ptr<Poly_PolygonOnTriangulation> obj) {
-    return std::make_unique<HandlePolyPolygonOnTriangulation>(obj.release());
-}
-
-// ========================
-// GC_Root wrappers
-// ========================
-
-
-// ========================
-// TColStd_HArray1OfBoolean wrappers
-// ========================
-
-inline std::unique_ptr<TColStd_HArray1OfBoolean> TColStd_HArray1OfBoolean_ctor() {
-    return std::make_unique<TColStd_HArray1OfBoolean>();
-}
-inline std::unique_ptr<TColStd_HArray1OfBoolean> TColStd_HArray1OfBoolean_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return std::make_unique<TColStd_HArray1OfBoolean>(theLower, theUpper);
-}
-inline std::unique_ptr<TColStd_HArray1OfBoolean> TColStd_HArray1OfBoolean_ctor_int2_bool(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Boolean& theValue) {
-    return std::make_unique<TColStd_HArray1OfBoolean>(theLower, theUpper, theValue);
-}
-inline std::unique_ptr<TColStd_HArray1OfBoolean> TColStd_HArray1OfBoolean_ctor_bool_int2_bool(const Standard_Boolean& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
-    return std::make_unique<TColStd_HArray1OfBoolean>(theBegin, theLower, theUpper, arg3);
-}
-inline std::unique_ptr<TColStd_HArray1OfBoolean> TColStd_HArray1OfBoolean_ctor_array1ofboolean(const TColStd_Array1OfBoolean& theOther) {
-    return std::make_unique<TColStd_HArray1OfBoolean>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TColStd_HArray1OfBoolean_get_type_descriptor() {
-    return TColStd_HArray1OfBoolean::get_type_descriptor();
-}
-inline std::unique_ptr<HandleTColStdHArray1OfBoolean> TColStd_HArray1OfBoolean_to_handle(std::unique_ptr<TColStd_HArray1OfBoolean> obj) {
-    return std::make_unique<HandleTColStdHArray1OfBoolean>(obj.release());
-}
-
-// ========================
-// BSplSLib wrappers
-// ========================
-
-inline void BSplSLib_rational_derivative(Standard_Integer UDeg, Standard_Integer VDeg, Standard_Integer N, Standard_Integer M, Standard_Real& Ders, Standard_Real& RDers, Standard_Boolean All) {
-    return BSplSLib::RationalDerivative(UDeg, VDeg, N, M, Ders, RDers, All);
-}
-
-// ========================
-// BSplSLib_EvaluatorFunction wrappers
-// ========================
-
-
-// ========================
-// BRepFeat_Form wrappers
-// ========================
-
-inline std::unique_ptr<opencascade::handle<Geom_Curve>> BRepFeat_Form_baryc_curve(BRepFeat_Form& self_) {
-    return std::make_unique<opencascade::handle<Geom_Curve>>(self_.BarycCurve());
-}
-inline const BRepBuilderAPI_Command& BRepFeat_Form_as_BRepBuilderAPI_Command(const BRepFeat_Form& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepFeat_Form_as_BRepBuilderAPI_Command_mut(BRepFeat_Form& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepFeat_Form_as_BRepBuilderAPI_MakeShape(const BRepFeat_Form& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepFeat_Form_as_BRepBuilderAPI_MakeShape_mut(BRepFeat_Form& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline bool BRepFeat_Form_inherited_IsDone(const BRepFeat_Form& self) {
-    return self.IsDone();
-}
-inline void BRepFeat_Form_inherited_Check(const BRepFeat_Form& self) {
-    self.Check();
-}
-inline void BRepFeat_Form_inherited_Build(BRepFeat_Form& self, const Message_ProgressRange& theRange) {
-    self.Build(theRange);
-}
-inline const TopoDS_Shape& BRepFeat_Form_inherited_Shape(BRepFeat_Form& self) {
-    return self.Shape();
-}
-
-// ========================
-// BRepFeat_Builder wrappers
-// ========================
-
-inline std::unique_ptr<BRepFeat_Builder> BRepFeat_Builder_ctor() {
-    return std::make_unique<BRepFeat_Builder>();
-}
-inline const BOPAlgo_BOP& BRepFeat_Builder_as_BOPAlgo_BOP(const BRepFeat_Builder& self_) { return static_cast<const BOPAlgo_BOP&>(self_); }
-inline BOPAlgo_BOP& BRepFeat_Builder_as_BOPAlgo_BOP_mut(BRepFeat_Builder& self_) { return static_cast<BOPAlgo_BOP&>(self_); }
-inline const BOPAlgo_Builder& BRepFeat_Builder_as_BOPAlgo_Builder(const BRepFeat_Builder& self_) { return static_cast<const BOPAlgo_Builder&>(self_); }
-inline BOPAlgo_Builder& BRepFeat_Builder_as_BOPAlgo_Builder_mut(BRepFeat_Builder& self_) { return static_cast<BOPAlgo_Builder&>(self_); }
-inline const BOPAlgo_BuilderShape& BRepFeat_Builder_as_BOPAlgo_BuilderShape(const BRepFeat_Builder& self_) { return static_cast<const BOPAlgo_BuilderShape&>(self_); }
-inline BOPAlgo_BuilderShape& BRepFeat_Builder_as_BOPAlgo_BuilderShape_mut(BRepFeat_Builder& self_) { return static_cast<BOPAlgo_BuilderShape&>(self_); }
-inline const BOPAlgo_Options& BRepFeat_Builder_as_BOPAlgo_Options(const BRepFeat_Builder& self_) { return static_cast<const BOPAlgo_Options&>(self_); }
-inline BOPAlgo_Options& BRepFeat_Builder_as_BOPAlgo_Options_mut(BRepFeat_Builder& self_) { return static_cast<BOPAlgo_Options&>(self_); }
-inline const BOPAlgo_ToolsProvider& BRepFeat_Builder_as_BOPAlgo_ToolsProvider(const BRepFeat_Builder& self_) { return static_cast<const BOPAlgo_ToolsProvider&>(self_); }
-inline BOPAlgo_ToolsProvider& BRepFeat_Builder_as_BOPAlgo_ToolsProvider_mut(BRepFeat_Builder& self_) { return static_cast<BOPAlgo_ToolsProvider&>(self_); }
-inline void BRepFeat_Builder_inherited_Perform(BRepFeat_Builder& self, const Message_ProgressRange& theRange) {
-    self.Perform(theRange);
-}
-inline std::unique_ptr<BOPAlgo_PPaveFiller> BRepFeat_Builder_inherited_PPaveFiller(BRepFeat_Builder& self) {
-    return std::make_unique<BOPAlgo_PPaveFiller>(self.PPaveFiller());
-}
-inline std::unique_ptr<BOPDS_PDS> BRepFeat_Builder_inherited_PDS(BRepFeat_Builder& self) {
-    return std::make_unique<BOPDS_PDS>(self.PDS());
-}
-inline std::unique_ptr<Handle(IntTools_Context)> BRepFeat_Builder_inherited_Context(const BRepFeat_Builder& self) {
-    return std::make_unique<Handle(IntTools_Context)>(self.Context());
-}
-inline void BRepFeat_Builder_inherited_AddArgument(BRepFeat_Builder& self, const TopoDS_Shape& theShape) {
-    self.AddArgument(theShape);
-}
-inline void BRepFeat_Builder_inherited_SetArguments(BRepFeat_Builder& self, const TopTools_ListOfShape& theLS) {
-    self.SetArguments(theLS);
-}
-inline const TopTools_ListOfShape& BRepFeat_Builder_inherited_Arguments(const BRepFeat_Builder& self) {
-    return self.Arguments();
-}
-inline void BRepFeat_Builder_inherited_SetNonDestructive(BRepFeat_Builder& self, bool theFlag) {
-    self.SetNonDestructive(theFlag);
-}
-inline bool BRepFeat_Builder_inherited_NonDestructive(const BRepFeat_Builder& self) {
-    return self.NonDestructive();
-}
-inline void BRepFeat_Builder_inherited_SetCheckInverted(BRepFeat_Builder& self, bool theCheck) {
-    self.SetCheckInverted(theCheck);
-}
-inline bool BRepFeat_Builder_inherited_CheckInverted(const BRepFeat_Builder& self) {
-    return self.CheckInverted();
-}
-inline void BRepFeat_Builder_inherited_PerformWithFiller(BRepFeat_Builder& self, const BOPAlgo_PaveFiller& theFiller, const Message_ProgressRange& theRange) {
-    self.PerformWithFiller(theFiller, theRange);
-}
-inline const TopTools_DataMapOfShapeListOfShape& BRepFeat_Builder_inherited_Images(const BRepFeat_Builder& self) {
-    return self.Images();
-}
-inline const TopTools_DataMapOfShapeListOfShape& BRepFeat_Builder_inherited_Origins(const BRepFeat_Builder& self) {
-    return self.Origins();
-}
-inline const TopTools_DataMapOfShapeShape& BRepFeat_Builder_inherited_ShapesSD(const BRepFeat_Builder& self) {
-    return self.ShapesSD();
-}
-inline const TopoDS_Shape& BRepFeat_Builder_inherited_Shape(const BRepFeat_Builder& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepFeat_Builder_inherited_Modified(BRepFeat_Builder& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BRepFeat_Builder_inherited_Generated(BRepFeat_Builder& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
-}
-inline bool BRepFeat_Builder_inherited_IsDeleted(BRepFeat_Builder& self, const TopoDS_Shape& theS) {
-    return self.IsDeleted(theS);
-}
-inline bool BRepFeat_Builder_inherited_HasModified(const BRepFeat_Builder& self) {
-    return self.HasModified();
-}
-inline bool BRepFeat_Builder_inherited_HasGenerated(const BRepFeat_Builder& self) {
-    return self.HasGenerated();
-}
-inline bool BRepFeat_Builder_inherited_HasDeleted(const BRepFeat_Builder& self) {
-    return self.HasDeleted();
-}
-inline std::unique_ptr<Handle(BRepTools_History)> BRepFeat_Builder_inherited_History(BRepFeat_Builder& self) {
-    return std::make_unique<Handle(BRepTools_History)>(self.History());
-}
-inline void BRepFeat_Builder_inherited_SetToFillHistory(BRepFeat_Builder& self, bool theHistFlag) {
-    self.SetToFillHistory(theHistFlag);
-}
-inline bool BRepFeat_Builder_inherited_HasHistory(const BRepFeat_Builder& self) {
-    return self.HasHistory();
-}
-inline const Handle(NCollection_BaseAllocator)& BRepFeat_Builder_inherited_Allocator(const BRepFeat_Builder& self) {
-    return self.Allocator();
-}
-inline void BRepFeat_Builder_inherited_AddError(BRepFeat_Builder& self, const Handle(Message_Alert)& theAlert) {
-    self.AddError(theAlert);
-}
-inline void BRepFeat_Builder_inherited_AddWarning(BRepFeat_Builder& self, const Handle(Message_Alert)& theAlert) {
-    self.AddWarning(theAlert);
-}
-inline bool BRepFeat_Builder_inherited_HasErrors(const BRepFeat_Builder& self) {
-    return self.HasErrors();
-}
-inline bool BRepFeat_Builder_inherited_HasError(const BRepFeat_Builder& self, const Handle(Standard_Type)& theType) {
-    return self.HasError(theType);
-}
-inline bool BRepFeat_Builder_inherited_HasWarnings(const BRepFeat_Builder& self) {
-    return self.HasWarnings();
-}
-inline bool BRepFeat_Builder_inherited_HasWarning(const BRepFeat_Builder& self, const Handle(Standard_Type)& theType) {
-    return self.HasWarning(theType);
-}
-inline const Handle(Message_Report)& BRepFeat_Builder_inherited_GetReport(const BRepFeat_Builder& self) {
-    return self.GetReport();
-}
-inline void BRepFeat_Builder_inherited_ClearWarnings(BRepFeat_Builder& self) {
-    self.ClearWarnings();
-}
-inline void BRepFeat_Builder_inherited_SetRunParallel(BRepFeat_Builder& self, bool theFlag) {
-    self.SetRunParallel(theFlag);
-}
-inline bool BRepFeat_Builder_inherited_RunParallel(const BRepFeat_Builder& self) {
-    return self.RunParallel();
-}
-inline void BRepFeat_Builder_inherited_SetFuzzyValue(BRepFeat_Builder& self, Standard_Real theFuzz) {
-    self.SetFuzzyValue(theFuzz);
-}
-inline Standard_Real BRepFeat_Builder_inherited_FuzzyValue(const BRepFeat_Builder& self) {
-    return self.FuzzyValue();
-}
-inline void BRepFeat_Builder_inherited_SetUseOBB(BRepFeat_Builder& self, bool theUseOBB) {
-    self.SetUseOBB(theUseOBB);
-}
-inline bool BRepFeat_Builder_inherited_UseOBB(const BRepFeat_Builder& self) {
-    return self.UseOBB();
-}
-inline void BRepFeat_Builder_inherited_AddTool(BRepFeat_Builder& self, const TopoDS_Shape& theShape) {
-    self.AddTool(theShape);
-}
-inline void BRepFeat_Builder_inherited_SetTools(BRepFeat_Builder& self, const TopTools_ListOfShape& theShapes) {
-    self.SetTools(theShapes);
-}
-inline const TopTools_ListOfShape& BRepFeat_Builder_inherited_Tools(const BRepFeat_Builder& self) {
-    return self.Tools();
-}
-
-// ========================
-// BOPAlgo_BOP wrappers
-// ========================
-
-inline std::unique_ptr<BOPAlgo_BOP> BOPAlgo_BOP_ctor() {
-    return std::make_unique<BOPAlgo_BOP>();
-}
-inline std::unique_ptr<BOPAlgo_BOP> BOPAlgo_BOP_ctor_handlebaseallocator(const opencascade::handle<NCollection_BaseAllocator>& theAllocator) {
-    return std::make_unique<BOPAlgo_BOP>(theAllocator);
-}
-inline const BOPAlgo_Builder& BOPAlgo_BOP_as_BOPAlgo_Builder(const BOPAlgo_BOP& self_) { return static_cast<const BOPAlgo_Builder&>(self_); }
-inline BOPAlgo_Builder& BOPAlgo_BOP_as_BOPAlgo_Builder_mut(BOPAlgo_BOP& self_) { return static_cast<BOPAlgo_Builder&>(self_); }
-inline const BOPAlgo_BuilderShape& BOPAlgo_BOP_as_BOPAlgo_BuilderShape(const BOPAlgo_BOP& self_) { return static_cast<const BOPAlgo_BuilderShape&>(self_); }
-inline BOPAlgo_BuilderShape& BOPAlgo_BOP_as_BOPAlgo_BuilderShape_mut(BOPAlgo_BOP& self_) { return static_cast<BOPAlgo_BuilderShape&>(self_); }
-inline const BOPAlgo_Options& BOPAlgo_BOP_as_BOPAlgo_Options(const BOPAlgo_BOP& self_) { return static_cast<const BOPAlgo_Options&>(self_); }
-inline BOPAlgo_Options& BOPAlgo_BOP_as_BOPAlgo_Options_mut(BOPAlgo_BOP& self_) { return static_cast<BOPAlgo_Options&>(self_); }
-inline const BOPAlgo_ToolsProvider& BOPAlgo_BOP_as_BOPAlgo_ToolsProvider(const BOPAlgo_BOP& self_) { return static_cast<const BOPAlgo_ToolsProvider&>(self_); }
-inline BOPAlgo_ToolsProvider& BOPAlgo_BOP_as_BOPAlgo_ToolsProvider_mut(BOPAlgo_BOP& self_) { return static_cast<BOPAlgo_ToolsProvider&>(self_); }
-inline std::unique_ptr<BOPAlgo_PPaveFiller> BOPAlgo_BOP_inherited_PPaveFiller(BOPAlgo_BOP& self) {
-    return std::make_unique<BOPAlgo_PPaveFiller>(self.PPaveFiller());
-}
-inline std::unique_ptr<BOPDS_PDS> BOPAlgo_BOP_inherited_PDS(BOPAlgo_BOP& self) {
-    return std::make_unique<BOPDS_PDS>(self.PDS());
-}
-inline std::unique_ptr<Handle(IntTools_Context)> BOPAlgo_BOP_inherited_Context(const BOPAlgo_BOP& self) {
-    return std::make_unique<Handle(IntTools_Context)>(self.Context());
-}
-inline void BOPAlgo_BOP_inherited_AddArgument(BOPAlgo_BOP& self, const TopoDS_Shape& theShape) {
-    self.AddArgument(theShape);
-}
-inline void BOPAlgo_BOP_inherited_SetArguments(BOPAlgo_BOP& self, const TopTools_ListOfShape& theLS) {
-    self.SetArguments(theLS);
-}
-inline const TopTools_ListOfShape& BOPAlgo_BOP_inherited_Arguments(const BOPAlgo_BOP& self) {
-    return self.Arguments();
-}
-inline void BOPAlgo_BOP_inherited_SetNonDestructive(BOPAlgo_BOP& self, bool theFlag) {
-    self.SetNonDestructive(theFlag);
-}
-inline bool BOPAlgo_BOP_inherited_NonDestructive(const BOPAlgo_BOP& self) {
-    return self.NonDestructive();
-}
-inline void BOPAlgo_BOP_inherited_SetCheckInverted(BOPAlgo_BOP& self, bool theCheck) {
-    self.SetCheckInverted(theCheck);
-}
-inline bool BOPAlgo_BOP_inherited_CheckInverted(const BOPAlgo_BOP& self) {
-    return self.CheckInverted();
-}
-inline void BOPAlgo_BOP_inherited_PerformWithFiller(BOPAlgo_BOP& self, const BOPAlgo_PaveFiller& theFiller, const Message_ProgressRange& theRange) {
-    self.PerformWithFiller(theFiller, theRange);
-}
-inline const TopTools_DataMapOfShapeListOfShape& BOPAlgo_BOP_inherited_Images(const BOPAlgo_BOP& self) {
-    return self.Images();
-}
-inline const TopTools_DataMapOfShapeListOfShape& BOPAlgo_BOP_inherited_Origins(const BOPAlgo_BOP& self) {
-    return self.Origins();
-}
-inline const TopTools_DataMapOfShapeShape& BOPAlgo_BOP_inherited_ShapesSD(const BOPAlgo_BOP& self) {
-    return self.ShapesSD();
-}
-inline const TopoDS_Shape& BOPAlgo_BOP_inherited_Shape(const BOPAlgo_BOP& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BOPAlgo_BOP_inherited_Modified(BOPAlgo_BOP& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BOPAlgo_BOP_inherited_Generated(BOPAlgo_BOP& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
-}
-inline bool BOPAlgo_BOP_inherited_IsDeleted(BOPAlgo_BOP& self, const TopoDS_Shape& theS) {
-    return self.IsDeleted(theS);
-}
-inline bool BOPAlgo_BOP_inherited_HasModified(const BOPAlgo_BOP& self) {
-    return self.HasModified();
-}
-inline bool BOPAlgo_BOP_inherited_HasGenerated(const BOPAlgo_BOP& self) {
-    return self.HasGenerated();
-}
-inline bool BOPAlgo_BOP_inherited_HasDeleted(const BOPAlgo_BOP& self) {
-    return self.HasDeleted();
-}
-inline std::unique_ptr<Handle(BRepTools_History)> BOPAlgo_BOP_inherited_History(BOPAlgo_BOP& self) {
-    return std::make_unique<Handle(BRepTools_History)>(self.History());
-}
-inline void BOPAlgo_BOP_inherited_SetToFillHistory(BOPAlgo_BOP& self, bool theHistFlag) {
-    self.SetToFillHistory(theHistFlag);
-}
-inline bool BOPAlgo_BOP_inherited_HasHistory(const BOPAlgo_BOP& self) {
-    return self.HasHistory();
-}
-inline const Handle(NCollection_BaseAllocator)& BOPAlgo_BOP_inherited_Allocator(const BOPAlgo_BOP& self) {
-    return self.Allocator();
-}
-inline void BOPAlgo_BOP_inherited_AddError(BOPAlgo_BOP& self, const Handle(Message_Alert)& theAlert) {
-    self.AddError(theAlert);
-}
-inline void BOPAlgo_BOP_inherited_AddWarning(BOPAlgo_BOP& self, const Handle(Message_Alert)& theAlert) {
-    self.AddWarning(theAlert);
-}
-inline bool BOPAlgo_BOP_inherited_HasErrors(const BOPAlgo_BOP& self) {
-    return self.HasErrors();
-}
-inline bool BOPAlgo_BOP_inherited_HasError(const BOPAlgo_BOP& self, const Handle(Standard_Type)& theType) {
-    return self.HasError(theType);
-}
-inline bool BOPAlgo_BOP_inherited_HasWarnings(const BOPAlgo_BOP& self) {
-    return self.HasWarnings();
-}
-inline bool BOPAlgo_BOP_inherited_HasWarning(const BOPAlgo_BOP& self, const Handle(Standard_Type)& theType) {
-    return self.HasWarning(theType);
-}
-inline const Handle(Message_Report)& BOPAlgo_BOP_inherited_GetReport(const BOPAlgo_BOP& self) {
-    return self.GetReport();
-}
-inline void BOPAlgo_BOP_inherited_ClearWarnings(BOPAlgo_BOP& self) {
-    self.ClearWarnings();
-}
-inline void BOPAlgo_BOP_inherited_SetRunParallel(BOPAlgo_BOP& self, bool theFlag) {
-    self.SetRunParallel(theFlag);
-}
-inline bool BOPAlgo_BOP_inherited_RunParallel(const BOPAlgo_BOP& self) {
-    return self.RunParallel();
-}
-inline void BOPAlgo_BOP_inherited_SetFuzzyValue(BOPAlgo_BOP& self, Standard_Real theFuzz) {
-    self.SetFuzzyValue(theFuzz);
-}
-inline Standard_Real BOPAlgo_BOP_inherited_FuzzyValue(const BOPAlgo_BOP& self) {
-    return self.FuzzyValue();
-}
-inline void BOPAlgo_BOP_inherited_SetUseOBB(BOPAlgo_BOP& self, bool theUseOBB) {
-    self.SetUseOBB(theUseOBB);
-}
-inline bool BOPAlgo_BOP_inherited_UseOBB(const BOPAlgo_BOP& self) {
-    return self.UseOBB();
-}
-inline void BOPAlgo_BOP_inherited_AddTool(BOPAlgo_BOP& self, const TopoDS_Shape& theShape) {
-    self.AddTool(theShape);
-}
-inline void BOPAlgo_BOP_inherited_SetTools(BOPAlgo_BOP& self, const TopTools_ListOfShape& theShapes) {
-    self.SetTools(theShapes);
-}
-inline const TopTools_ListOfShape& BOPAlgo_BOP_inherited_Tools(const BOPAlgo_BOP& self) {
-    return self.Tools();
-}
-
-// ========================
-// BOPAlgo_ToolsProvider wrappers
-// ========================
-
-inline std::unique_ptr<BOPAlgo_ToolsProvider> BOPAlgo_ToolsProvider_ctor() {
-    return std::make_unique<BOPAlgo_ToolsProvider>();
-}
-inline std::unique_ptr<BOPAlgo_ToolsProvider> BOPAlgo_ToolsProvider_ctor_handlebaseallocator(const opencascade::handle<NCollection_BaseAllocator>& theAllocator) {
-    return std::make_unique<BOPAlgo_ToolsProvider>(theAllocator);
-}
-inline const BOPAlgo_Builder& BOPAlgo_ToolsProvider_as_BOPAlgo_Builder(const BOPAlgo_ToolsProvider& self_) { return static_cast<const BOPAlgo_Builder&>(self_); }
-inline BOPAlgo_Builder& BOPAlgo_ToolsProvider_as_BOPAlgo_Builder_mut(BOPAlgo_ToolsProvider& self_) { return static_cast<BOPAlgo_Builder&>(self_); }
-inline const BOPAlgo_BuilderShape& BOPAlgo_ToolsProvider_as_BOPAlgo_BuilderShape(const BOPAlgo_ToolsProvider& self_) { return static_cast<const BOPAlgo_BuilderShape&>(self_); }
-inline BOPAlgo_BuilderShape& BOPAlgo_ToolsProvider_as_BOPAlgo_BuilderShape_mut(BOPAlgo_ToolsProvider& self_) { return static_cast<BOPAlgo_BuilderShape&>(self_); }
-inline const BOPAlgo_Options& BOPAlgo_ToolsProvider_as_BOPAlgo_Options(const BOPAlgo_ToolsProvider& self_) { return static_cast<const BOPAlgo_Options&>(self_); }
-inline BOPAlgo_Options& BOPAlgo_ToolsProvider_as_BOPAlgo_Options_mut(BOPAlgo_ToolsProvider& self_) { return static_cast<BOPAlgo_Options&>(self_); }
-inline void BOPAlgo_ToolsProvider_inherited_Perform(BOPAlgo_ToolsProvider& self, const Message_ProgressRange& theRange) {
-    self.Perform(theRange);
-}
-inline std::unique_ptr<BOPAlgo_PPaveFiller> BOPAlgo_ToolsProvider_inherited_PPaveFiller(BOPAlgo_ToolsProvider& self) {
-    return std::make_unique<BOPAlgo_PPaveFiller>(self.PPaveFiller());
-}
-inline std::unique_ptr<BOPDS_PDS> BOPAlgo_ToolsProvider_inherited_PDS(BOPAlgo_ToolsProvider& self) {
-    return std::make_unique<BOPDS_PDS>(self.PDS());
-}
-inline std::unique_ptr<Handle(IntTools_Context)> BOPAlgo_ToolsProvider_inherited_Context(const BOPAlgo_ToolsProvider& self) {
-    return std::make_unique<Handle(IntTools_Context)>(self.Context());
-}
-inline void BOPAlgo_ToolsProvider_inherited_AddArgument(BOPAlgo_ToolsProvider& self, const TopoDS_Shape& theShape) {
-    self.AddArgument(theShape);
-}
-inline void BOPAlgo_ToolsProvider_inherited_SetArguments(BOPAlgo_ToolsProvider& self, const TopTools_ListOfShape& theLS) {
-    self.SetArguments(theLS);
-}
-inline const TopTools_ListOfShape& BOPAlgo_ToolsProvider_inherited_Arguments(const BOPAlgo_ToolsProvider& self) {
-    return self.Arguments();
-}
-inline void BOPAlgo_ToolsProvider_inherited_SetNonDestructive(BOPAlgo_ToolsProvider& self, bool theFlag) {
-    self.SetNonDestructive(theFlag);
-}
-inline bool BOPAlgo_ToolsProvider_inherited_NonDestructive(const BOPAlgo_ToolsProvider& self) {
-    return self.NonDestructive();
-}
-inline void BOPAlgo_ToolsProvider_inherited_SetCheckInverted(BOPAlgo_ToolsProvider& self, bool theCheck) {
-    self.SetCheckInverted(theCheck);
-}
-inline bool BOPAlgo_ToolsProvider_inherited_CheckInverted(const BOPAlgo_ToolsProvider& self) {
-    return self.CheckInverted();
-}
-inline void BOPAlgo_ToolsProvider_inherited_PerformWithFiller(BOPAlgo_ToolsProvider& self, const BOPAlgo_PaveFiller& theFiller, const Message_ProgressRange& theRange) {
-    self.PerformWithFiller(theFiller, theRange);
-}
-inline const TopTools_DataMapOfShapeListOfShape& BOPAlgo_ToolsProvider_inherited_Images(const BOPAlgo_ToolsProvider& self) {
-    return self.Images();
-}
-inline const TopTools_DataMapOfShapeListOfShape& BOPAlgo_ToolsProvider_inherited_Origins(const BOPAlgo_ToolsProvider& self) {
-    return self.Origins();
-}
-inline const TopTools_DataMapOfShapeShape& BOPAlgo_ToolsProvider_inherited_ShapesSD(const BOPAlgo_ToolsProvider& self) {
-    return self.ShapesSD();
-}
-inline const TopoDS_Shape& BOPAlgo_ToolsProvider_inherited_Shape(const BOPAlgo_ToolsProvider& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BOPAlgo_ToolsProvider_inherited_Modified(BOPAlgo_ToolsProvider& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BOPAlgo_ToolsProvider_inherited_Generated(BOPAlgo_ToolsProvider& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
-}
-inline bool BOPAlgo_ToolsProvider_inherited_IsDeleted(BOPAlgo_ToolsProvider& self, const TopoDS_Shape& theS) {
-    return self.IsDeleted(theS);
-}
-inline bool BOPAlgo_ToolsProvider_inherited_HasModified(const BOPAlgo_ToolsProvider& self) {
-    return self.HasModified();
-}
-inline bool BOPAlgo_ToolsProvider_inherited_HasGenerated(const BOPAlgo_ToolsProvider& self) {
-    return self.HasGenerated();
-}
-inline bool BOPAlgo_ToolsProvider_inherited_HasDeleted(const BOPAlgo_ToolsProvider& self) {
-    return self.HasDeleted();
-}
-inline std::unique_ptr<Handle(BRepTools_History)> BOPAlgo_ToolsProvider_inherited_History(BOPAlgo_ToolsProvider& self) {
-    return std::make_unique<Handle(BRepTools_History)>(self.History());
-}
-inline void BOPAlgo_ToolsProvider_inherited_SetToFillHistory(BOPAlgo_ToolsProvider& self, bool theHistFlag) {
-    self.SetToFillHistory(theHistFlag);
-}
-inline bool BOPAlgo_ToolsProvider_inherited_HasHistory(const BOPAlgo_ToolsProvider& self) {
-    return self.HasHistory();
-}
-inline const Handle(NCollection_BaseAllocator)& BOPAlgo_ToolsProvider_inherited_Allocator(const BOPAlgo_ToolsProvider& self) {
-    return self.Allocator();
-}
-inline void BOPAlgo_ToolsProvider_inherited_AddError(BOPAlgo_ToolsProvider& self, const Handle(Message_Alert)& theAlert) {
-    self.AddError(theAlert);
-}
-inline void BOPAlgo_ToolsProvider_inherited_AddWarning(BOPAlgo_ToolsProvider& self, const Handle(Message_Alert)& theAlert) {
-    self.AddWarning(theAlert);
-}
-inline bool BOPAlgo_ToolsProvider_inherited_HasErrors(const BOPAlgo_ToolsProvider& self) {
-    return self.HasErrors();
-}
-inline bool BOPAlgo_ToolsProvider_inherited_HasError(const BOPAlgo_ToolsProvider& self, const Handle(Standard_Type)& theType) {
-    return self.HasError(theType);
-}
-inline bool BOPAlgo_ToolsProvider_inherited_HasWarnings(const BOPAlgo_ToolsProvider& self) {
-    return self.HasWarnings();
-}
-inline bool BOPAlgo_ToolsProvider_inherited_HasWarning(const BOPAlgo_ToolsProvider& self, const Handle(Standard_Type)& theType) {
-    return self.HasWarning(theType);
-}
-inline const Handle(Message_Report)& BOPAlgo_ToolsProvider_inherited_GetReport(const BOPAlgo_ToolsProvider& self) {
-    return self.GetReport();
-}
-inline void BOPAlgo_ToolsProvider_inherited_ClearWarnings(BOPAlgo_ToolsProvider& self) {
-    self.ClearWarnings();
-}
-inline void BOPAlgo_ToolsProvider_inherited_SetRunParallel(BOPAlgo_ToolsProvider& self, bool theFlag) {
-    self.SetRunParallel(theFlag);
-}
-inline bool BOPAlgo_ToolsProvider_inherited_RunParallel(const BOPAlgo_ToolsProvider& self) {
-    return self.RunParallel();
-}
-inline void BOPAlgo_ToolsProvider_inherited_SetFuzzyValue(BOPAlgo_ToolsProvider& self, Standard_Real theFuzz) {
-    self.SetFuzzyValue(theFuzz);
-}
-inline Standard_Real BOPAlgo_ToolsProvider_inherited_FuzzyValue(const BOPAlgo_ToolsProvider& self) {
-    return self.FuzzyValue();
-}
-inline void BOPAlgo_ToolsProvider_inherited_SetUseOBB(BOPAlgo_ToolsProvider& self, bool theUseOBB) {
-    self.SetUseOBB(theUseOBB);
-}
-inline bool BOPAlgo_ToolsProvider_inherited_UseOBB(const BOPAlgo_ToolsProvider& self) {
-    return self.UseOBB();
-}
-
-// ========================
-// BOPAlgo_Builder wrappers
-// ========================
-
-inline std::unique_ptr<BOPAlgo_Builder> BOPAlgo_Builder_ctor() {
-    return std::make_unique<BOPAlgo_Builder>();
-}
-inline std::unique_ptr<BOPAlgo_Builder> BOPAlgo_Builder_ctor_handlebaseallocator(const opencascade::handle<NCollection_BaseAllocator>& theAllocator) {
-    return std::make_unique<BOPAlgo_Builder>(theAllocator);
-}
-inline const BOPAlgo_BuilderShape& BOPAlgo_Builder_as_BOPAlgo_BuilderShape(const BOPAlgo_Builder& self_) { return static_cast<const BOPAlgo_BuilderShape&>(self_); }
-inline BOPAlgo_BuilderShape& BOPAlgo_Builder_as_BOPAlgo_BuilderShape_mut(BOPAlgo_Builder& self_) { return static_cast<BOPAlgo_BuilderShape&>(self_); }
-inline const BOPAlgo_Options& BOPAlgo_Builder_as_BOPAlgo_Options(const BOPAlgo_Builder& self_) { return static_cast<const BOPAlgo_Options&>(self_); }
-inline BOPAlgo_Options& BOPAlgo_Builder_as_BOPAlgo_Options_mut(BOPAlgo_Builder& self_) { return static_cast<BOPAlgo_Options&>(self_); }
-inline const TopoDS_Shape& BOPAlgo_Builder_inherited_Shape(const BOPAlgo_Builder& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BOPAlgo_Builder_inherited_Modified(BOPAlgo_Builder& self, const TopoDS_Shape& theS) {
-    return self.Modified(theS);
-}
-inline const TopTools_ListOfShape& BOPAlgo_Builder_inherited_Generated(BOPAlgo_Builder& self, const TopoDS_Shape& theS) {
-    return self.Generated(theS);
-}
-inline bool BOPAlgo_Builder_inherited_IsDeleted(BOPAlgo_Builder& self, const TopoDS_Shape& theS) {
-    return self.IsDeleted(theS);
-}
-inline bool BOPAlgo_Builder_inherited_HasModified(const BOPAlgo_Builder& self) {
-    return self.HasModified();
-}
-inline bool BOPAlgo_Builder_inherited_HasGenerated(const BOPAlgo_Builder& self) {
-    return self.HasGenerated();
-}
-inline bool BOPAlgo_Builder_inherited_HasDeleted(const BOPAlgo_Builder& self) {
-    return self.HasDeleted();
-}
-inline std::unique_ptr<Handle(BRepTools_History)> BOPAlgo_Builder_inherited_History(BOPAlgo_Builder& self) {
-    return std::make_unique<Handle(BRepTools_History)>(self.History());
-}
-inline void BOPAlgo_Builder_inherited_SetToFillHistory(BOPAlgo_Builder& self, bool theHistFlag) {
-    self.SetToFillHistory(theHistFlag);
-}
-inline bool BOPAlgo_Builder_inherited_HasHistory(const BOPAlgo_Builder& self) {
-    return self.HasHistory();
-}
-inline const Handle(NCollection_BaseAllocator)& BOPAlgo_Builder_inherited_Allocator(const BOPAlgo_Builder& self) {
-    return self.Allocator();
-}
-inline void BOPAlgo_Builder_inherited_AddError(BOPAlgo_Builder& self, const Handle(Message_Alert)& theAlert) {
-    self.AddError(theAlert);
-}
-inline void BOPAlgo_Builder_inherited_AddWarning(BOPAlgo_Builder& self, const Handle(Message_Alert)& theAlert) {
-    self.AddWarning(theAlert);
-}
-inline bool BOPAlgo_Builder_inherited_HasErrors(const BOPAlgo_Builder& self) {
-    return self.HasErrors();
-}
-inline bool BOPAlgo_Builder_inherited_HasError(const BOPAlgo_Builder& self, const Handle(Standard_Type)& theType) {
-    return self.HasError(theType);
-}
-inline bool BOPAlgo_Builder_inherited_HasWarnings(const BOPAlgo_Builder& self) {
-    return self.HasWarnings();
-}
-inline bool BOPAlgo_Builder_inherited_HasWarning(const BOPAlgo_Builder& self, const Handle(Standard_Type)& theType) {
-    return self.HasWarning(theType);
-}
-inline const Handle(Message_Report)& BOPAlgo_Builder_inherited_GetReport(const BOPAlgo_Builder& self) {
-    return self.GetReport();
-}
-inline void BOPAlgo_Builder_inherited_ClearWarnings(BOPAlgo_Builder& self) {
-    self.ClearWarnings();
-}
-inline void BOPAlgo_Builder_inherited_SetRunParallel(BOPAlgo_Builder& self, bool theFlag) {
-    self.SetRunParallel(theFlag);
-}
-inline bool BOPAlgo_Builder_inherited_RunParallel(const BOPAlgo_Builder& self) {
-    return self.RunParallel();
-}
-inline void BOPAlgo_Builder_inherited_SetFuzzyValue(BOPAlgo_Builder& self, Standard_Real theFuzz) {
-    self.SetFuzzyValue(theFuzz);
-}
-inline Standard_Real BOPAlgo_Builder_inherited_FuzzyValue(const BOPAlgo_Builder& self) {
-    return self.FuzzyValue();
-}
-inline void BOPAlgo_Builder_inherited_SetUseOBB(BOPAlgo_Builder& self, bool theUseOBB) {
-    self.SetUseOBB(theUseOBB);
-}
-inline bool BOPAlgo_Builder_inherited_UseOBB(const BOPAlgo_Builder& self) {
-    return self.UseOBB();
-}
-
-// ========================
-// BOPAlgo_BuilderShape wrappers
-// ========================
-
-inline std::unique_ptr<opencascade::handle<BRepTools_History>> BOPAlgo_BuilderShape_history(BOPAlgo_BuilderShape& self_) {
-    return std::make_unique<opencascade::handle<BRepTools_History>>(self_.History());
-}
-inline const BOPAlgo_Options& BOPAlgo_BuilderShape_as_BOPAlgo_Options(const BOPAlgo_BuilderShape& self_) { return static_cast<const BOPAlgo_Options&>(self_); }
-inline BOPAlgo_Options& BOPAlgo_BuilderShape_as_BOPAlgo_Options_mut(BOPAlgo_BuilderShape& self_) { return static_cast<BOPAlgo_Options&>(self_); }
-inline void BOPAlgo_BuilderShape_inherited_Perform(BOPAlgo_BuilderShape& self, const Message_ProgressRange& theRange) {
-    self.Perform(theRange);
-}
-inline const Handle(NCollection_BaseAllocator)& BOPAlgo_BuilderShape_inherited_Allocator(const BOPAlgo_BuilderShape& self) {
-    return self.Allocator();
-}
-inline void BOPAlgo_BuilderShape_inherited_AddError(BOPAlgo_BuilderShape& self, const Handle(Message_Alert)& theAlert) {
-    self.AddError(theAlert);
-}
-inline void BOPAlgo_BuilderShape_inherited_AddWarning(BOPAlgo_BuilderShape& self, const Handle(Message_Alert)& theAlert) {
-    self.AddWarning(theAlert);
-}
-inline bool BOPAlgo_BuilderShape_inherited_HasErrors(const BOPAlgo_BuilderShape& self) {
-    return self.HasErrors();
-}
-inline bool BOPAlgo_BuilderShape_inherited_HasError(const BOPAlgo_BuilderShape& self, const Handle(Standard_Type)& theType) {
-    return self.HasError(theType);
-}
-inline bool BOPAlgo_BuilderShape_inherited_HasWarnings(const BOPAlgo_BuilderShape& self) {
-    return self.HasWarnings();
-}
-inline bool BOPAlgo_BuilderShape_inherited_HasWarning(const BOPAlgo_BuilderShape& self, const Handle(Standard_Type)& theType) {
-    return self.HasWarning(theType);
-}
-inline const Handle(Message_Report)& BOPAlgo_BuilderShape_inherited_GetReport(const BOPAlgo_BuilderShape& self) {
-    return self.GetReport();
-}
-inline void BOPAlgo_BuilderShape_inherited_ClearWarnings(BOPAlgo_BuilderShape& self) {
-    self.ClearWarnings();
-}
-inline void BOPAlgo_BuilderShape_inherited_SetRunParallel(BOPAlgo_BuilderShape& self, bool theFlag) {
-    self.SetRunParallel(theFlag);
-}
-inline bool BOPAlgo_BuilderShape_inherited_RunParallel(const BOPAlgo_BuilderShape& self) {
-    return self.RunParallel();
-}
-inline void BOPAlgo_BuilderShape_inherited_SetFuzzyValue(BOPAlgo_BuilderShape& self, Standard_Real theFuzz) {
-    self.SetFuzzyValue(theFuzz);
-}
-inline Standard_Real BOPAlgo_BuilderShape_inherited_FuzzyValue(const BOPAlgo_BuilderShape& self) {
-    return self.FuzzyValue();
-}
-inline void BOPAlgo_BuilderShape_inherited_SetUseOBB(BOPAlgo_BuilderShape& self, bool theUseOBB) {
-    self.SetUseOBB(theUseOBB);
-}
-inline bool BOPAlgo_BuilderShape_inherited_UseOBB(const BOPAlgo_BuilderShape& self) {
-    return self.UseOBB();
-}
-
-// ========================
-// BOPAlgo_ParallelAlgo wrappers
-// ========================
-
-inline const BOPAlgo_Options& BOPAlgo_ParallelAlgo_as_BOPAlgo_Options(const BOPAlgo_ParallelAlgo& self_) { return static_cast<const BOPAlgo_Options&>(self_); }
-inline BOPAlgo_Options& BOPAlgo_ParallelAlgo_as_BOPAlgo_Options_mut(BOPAlgo_ParallelAlgo& self_) { return static_cast<BOPAlgo_Options&>(self_); }
-inline const Handle(NCollection_BaseAllocator)& BOPAlgo_ParallelAlgo_inherited_Allocator(const BOPAlgo_ParallelAlgo& self) {
-    return self.Allocator();
-}
-inline void BOPAlgo_ParallelAlgo_inherited_Clear(BOPAlgo_ParallelAlgo& self) {
-    self.Clear();
-}
-inline void BOPAlgo_ParallelAlgo_inherited_AddError(BOPAlgo_ParallelAlgo& self, const Handle(Message_Alert)& theAlert) {
-    self.AddError(theAlert);
-}
-inline void BOPAlgo_ParallelAlgo_inherited_AddWarning(BOPAlgo_ParallelAlgo& self, const Handle(Message_Alert)& theAlert) {
-    self.AddWarning(theAlert);
-}
-inline bool BOPAlgo_ParallelAlgo_inherited_HasErrors(const BOPAlgo_ParallelAlgo& self) {
-    return self.HasErrors();
-}
-inline bool BOPAlgo_ParallelAlgo_inherited_HasError(const BOPAlgo_ParallelAlgo& self, const Handle(Standard_Type)& theType) {
-    return self.HasError(theType);
-}
-inline bool BOPAlgo_ParallelAlgo_inherited_HasWarnings(const BOPAlgo_ParallelAlgo& self) {
-    return self.HasWarnings();
-}
-inline bool BOPAlgo_ParallelAlgo_inherited_HasWarning(const BOPAlgo_ParallelAlgo& self, const Handle(Standard_Type)& theType) {
-    return self.HasWarning(theType);
-}
-inline const Handle(Message_Report)& BOPAlgo_ParallelAlgo_inherited_GetReport(const BOPAlgo_ParallelAlgo& self) {
-    return self.GetReport();
-}
-inline void BOPAlgo_ParallelAlgo_inherited_ClearWarnings(BOPAlgo_ParallelAlgo& self) {
-    self.ClearWarnings();
-}
-inline void BOPAlgo_ParallelAlgo_inherited_SetRunParallel(BOPAlgo_ParallelAlgo& self, bool theFlag) {
-    self.SetRunParallel(theFlag);
-}
-inline bool BOPAlgo_ParallelAlgo_inherited_RunParallel(const BOPAlgo_ParallelAlgo& self) {
-    return self.RunParallel();
-}
-inline void BOPAlgo_ParallelAlgo_inherited_SetFuzzyValue(BOPAlgo_ParallelAlgo& self, Standard_Real theFuzz) {
-    self.SetFuzzyValue(theFuzz);
-}
-inline Standard_Real BOPAlgo_ParallelAlgo_inherited_FuzzyValue(const BOPAlgo_ParallelAlgo& self) {
-    return self.FuzzyValue();
-}
-inline void BOPAlgo_ParallelAlgo_inherited_SetUseOBB(BOPAlgo_ParallelAlgo& self, bool theUseOBB) {
-    self.SetUseOBB(theUseOBB);
-}
-inline bool BOPAlgo_ParallelAlgo_inherited_UseOBB(const BOPAlgo_ParallelAlgo& self) {
-    return self.UseOBB();
-}
-
-// ========================
-// BOPAlgo_PISteps wrappers
-// ========================
-
-inline std::unique_ptr<BOPAlgo_PISteps> BOPAlgo_PISteps_ctor_int(Standard_Integer theNbOp) {
-    return std::make_unique<BOPAlgo_PISteps>(theNbOp);
-}
-
-// ========================
-// BOPAlgo_Options wrappers
-// ========================
-
-inline std::unique_ptr<BOPAlgo_Options> BOPAlgo_Options_ctor() {
-    return std::make_unique<BOPAlgo_Options>();
-}
-inline std::unique_ptr<BOPAlgo_Options> BOPAlgo_Options_ctor_handlebaseallocator(const opencascade::handle<NCollection_BaseAllocator>& theAllocator) {
-    return std::make_unique<BOPAlgo_Options>(theAllocator);
-}
-inline Standard_Boolean BOPAlgo_Options_get_parallel_mode() {
-    return BOPAlgo_Options::GetParallelMode();
-}
-inline void BOPAlgo_Options_set_parallel_mode(Standard_Boolean theNewMode) {
-    return BOPAlgo_Options::SetParallelMode(theNewMode);
-}
-
-// ========================
-// Message_Report wrappers
-// ========================
-
-inline std::unique_ptr<Message_Report> Message_Report_ctor() {
-    return std::make_unique<Message_Report>();
-}
-inline const opencascade::handle<Standard_Type>& Message_Report_get_type_descriptor() {
-    return Message_Report::get_type_descriptor();
-}
-inline std::unique_ptr<HandleMessageReport> Message_Report_to_handle(std::unique_ptr<Message_Report> obj) {
-    return std::make_unique<HandleMessageReport>(obj.release());
-}
-
-// ========================
-// Message_Level wrappers
-// ========================
-
-inline std::unique_ptr<Message_Level> Message_Level_ctor_asciistring(const TCollection_AsciiString& theName) {
-    return std::make_unique<Message_Level>(theName);
-}
-
-// ========================
-// Message_Alert wrappers
-// ========================
-
-inline rust::String Message_Alert_get_message_key(const Message_Alert& self) {
-    return rust::String(self.GetMessageKey());
-}
-inline const opencascade::handle<Standard_Type>& Message_Alert_get_type_descriptor() {
-    return Message_Alert::get_type_descriptor();
-}
-inline std::unique_ptr<HandleMessageAlert> Message_Alert_to_handle(std::unique_ptr<Message_Alert> obj) {
-    return std::make_unique<HandleMessageAlert>(obj.release());
-}
-
-// ========================
-// Message_AlertExtended wrappers
-// ========================
-
-inline std::unique_ptr<Message_AlertExtended> Message_AlertExtended_ctor() {
-    return std::make_unique<Message_AlertExtended>();
-}
-inline rust::String Message_AlertExtended_get_message_key(const Message_AlertExtended& self) {
-    return rust::String(self.GetMessageKey());
-}
-inline const opencascade::handle<Standard_Type>& Message_AlertExtended_get_type_descriptor() {
-    return Message_AlertExtended::get_type_descriptor();
-}
-inline const Message_Alert& Message_AlertExtended_as_Message_Alert(const Message_AlertExtended& self_) { return static_cast<const Message_Alert&>(self_); }
-inline Message_Alert& Message_AlertExtended_as_Message_Alert_mut(Message_AlertExtended& self_) { return static_cast<Message_Alert&>(self_); }
-
-// ========================
-// BRepOffsetAPI_MakeOffsetShape wrappers
-// ========================
-
-inline std::unique_ptr<BRepOffsetAPI_MakeOffsetShape> BRepOffsetAPI_MakeOffsetShape_ctor() {
-    return std::make_unique<BRepOffsetAPI_MakeOffsetShape>();
-}
-inline const BRepBuilderAPI_Command& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command(const BRepOffsetAPI_MakeOffsetShape& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command_mut(BRepOffsetAPI_MakeOffsetShape& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape(const BRepOffsetAPI_MakeOffsetShape& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape_mut(BRepOffsetAPI_MakeOffsetShape& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline bool BRepOffsetAPI_MakeOffsetShape_inherited_IsDone(const BRepOffsetAPI_MakeOffsetShape& self) {
-    return self.IsDone();
-}
-inline void BRepOffsetAPI_MakeOffsetShape_inherited_Check(const BRepOffsetAPI_MakeOffsetShape& self) {
-    self.Check();
-}
-inline const TopoDS_Shape& BRepOffsetAPI_MakeOffsetShape_inherited_Shape(BRepOffsetAPI_MakeOffsetShape& self) {
-    return self.Shape();
-}
-
-// ========================
-// BRepOffset_MakeOffset wrappers
-// ========================
-
-inline std::unique_ptr<BRepOffset_MakeOffset> BRepOffset_MakeOffset_ctor() {
-    return std::make_unique<BRepOffset_MakeOffset>();
-}
-
-// ========================
-// BRepOffset_MakeSimpleOffset wrappers
-// ========================
-
-inline std::unique_ptr<BRepOffset_MakeSimpleOffset> BRepOffset_MakeSimpleOffset_ctor() {
-    return std::make_unique<BRepOffset_MakeSimpleOffset>();
-}
-inline std::unique_ptr<BRepOffset_MakeSimpleOffset> BRepOffset_MakeSimpleOffset_ctor_shape_real(const TopoDS_Shape& theInputShape, Standard_Real theOffsetValue) {
-    return std::make_unique<BRepOffset_MakeSimpleOffset>(theInputShape, theOffsetValue);
-}
-inline std::unique_ptr<TCollection_AsciiString> BRepOffset_MakeSimpleOffset_get_error_message(const BRepOffset_MakeSimpleOffset& self_) {
-    return std::make_unique<TCollection_AsciiString>(self_.GetErrorMessage());
-}
-inline std::unique_ptr<TopoDS_Shape> BRepOffset_MakeSimpleOffset_generated(const BRepOffset_MakeSimpleOffset& self_, const TopoDS_Shape& theShape) {
-    return std::make_unique<TopoDS_Shape>(self_.Generated(theShape));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepOffset_MakeSimpleOffset_modified(const BRepOffset_MakeSimpleOffset& self_, const TopoDS_Shape& theShape) {
-    return std::make_unique<TopoDS_Shape>(self_.Modified(theShape));
-}
-
-// ========================
-// BRepTools_Modifier wrappers
-// ========================
-
-inline std::unique_ptr<BRepTools_Modifier> BRepTools_Modifier_ctor_bool(Standard_Boolean theMutableInput) {
-    return std::make_unique<BRepTools_Modifier>(theMutableInput);
-}
-inline std::unique_ptr<BRepTools_Modifier> BRepTools_Modifier_ctor_shape(const TopoDS_Shape& S) {
-    return std::make_unique<BRepTools_Modifier>(S);
-}
-
-// ========================
-// ShapeBuild_ReShape wrappers
-// ========================
-
-inline std::unique_ptr<ShapeBuild_ReShape> ShapeBuild_ReShape_ctor() {
-    return std::make_unique<ShapeBuild_ReShape>();
-}
-inline const opencascade::handle<Standard_Type>& ShapeBuild_ReShape_get_type_descriptor() {
-    return ShapeBuild_ReShape::get_type_descriptor();
-}
-inline const BRepTools_ReShape& ShapeBuild_ReShape_as_BRepTools_ReShape(const ShapeBuild_ReShape& self_) { return static_cast<const BRepTools_ReShape&>(self_); }
-inline BRepTools_ReShape& ShapeBuild_ReShape_as_BRepTools_ReShape_mut(ShapeBuild_ReShape& self_) { return static_cast<BRepTools_ReShape&>(self_); }
-inline void ShapeBuild_ReShape_inherited_Clear(ShapeBuild_ReShape& self) {
-    self.Clear();
-}
-inline void ShapeBuild_ReShape_inherited_Remove(ShapeBuild_ReShape& self, const TopoDS_Shape& shape) {
-    self.Remove(shape);
-}
-inline void ShapeBuild_ReShape_inherited_Replace(ShapeBuild_ReShape& self, const TopoDS_Shape& shape, const TopoDS_Shape& newshape) {
-    self.Replace(shape, newshape);
-}
-inline bool ShapeBuild_ReShape_inherited_IsRecorded(const ShapeBuild_ReShape& self, const TopoDS_Shape& shape) {
-    return self.IsRecorded(shape);
-}
-inline std::unique_ptr<TopoDS_Shape> ShapeBuild_ReShape_inherited_Value(const ShapeBuild_ReShape& self, const TopoDS_Shape& shape) {
-    return std::make_unique<TopoDS_Shape>(self.Value(shape));
-}
-inline bool& ShapeBuild_ReShape_inherited_ModeConsiderLocation(ShapeBuild_ReShape& self) {
-    return self.ModeConsiderLocation();
-}
-inline std::unique_ptr<TopoDS_Vertex> ShapeBuild_ReShape_inherited_CopyVertex(ShapeBuild_ReShape& self, const TopoDS_Vertex& theV, Standard_Real theTol) {
-    return std::make_unique<TopoDS_Vertex>(self.CopyVertex(theV, theTol));
-}
-inline bool ShapeBuild_ReShape_inherited_IsNewShape(const ShapeBuild_ReShape& self, const TopoDS_Shape& theShape) {
-    return self.IsNewShape(theShape);
-}
-inline std::unique_ptr<Handle(BRepTools_History)> ShapeBuild_ReShape_inherited_History(const ShapeBuild_ReShape& self) {
-    return std::make_unique<Handle(BRepTools_History)>(self.History());
-}
-
-// ========================
-// BRepTools_ReShape wrappers
-// ========================
-
-inline std::unique_ptr<BRepTools_ReShape> BRepTools_ReShape_ctor() {
-    return std::make_unique<BRepTools_ReShape>();
-}
-inline std::unique_ptr<TopoDS_Shape> BRepTools_ReShape_value(const BRepTools_ReShape& self_, const TopoDS_Shape& shape) {
-    return std::make_unique<TopoDS_Shape>(self_.Value(shape));
-}
-inline std::unique_ptr<TopoDS_Vertex> BRepTools_ReShape_copy_vertex_vertex_real(BRepTools_ReShape& self_, const TopoDS_Vertex& theV, Standard_Real theTol) {
-    return std::make_unique<TopoDS_Vertex>(self_.CopyVertex(theV, theTol));
-}
-inline std::unique_ptr<TopoDS_Vertex> BRepTools_ReShape_copy_vertex_vertex_pnt_real(BRepTools_ReShape& self_, const TopoDS_Vertex& theV, const gp_Pnt& theNewPos, Standard_Real aTol) {
-    return std::make_unique<TopoDS_Vertex>(self_.CopyVertex(theV, theNewPos, aTol));
-}
-inline std::unique_ptr<opencascade::handle<BRepTools_History>> BRepTools_ReShape_history(const BRepTools_ReShape& self_) {
-    return std::make_unique<opencascade::handle<BRepTools_History>>(self_.History());
-}
-inline const opencascade::handle<Standard_Type>& BRepTools_ReShape_get_type_descriptor() {
-    return BRepTools_ReShape::get_type_descriptor();
-}
-inline std::unique_ptr<HandleBRepToolsReShape> BRepTools_ReShape_to_handle(std::unique_ptr<BRepTools_ReShape> obj) {
-    return std::make_unique<HandleBRepToolsReShape>(obj.release());
-}
-
-// ========================
-// BRepOffset_Analyse wrappers
-// ========================
-
-inline std::unique_ptr<BRepOffset_Analyse> BRepOffset_Analyse_ctor() {
-    return std::make_unique<BRepOffset_Analyse>();
-}
-inline std::unique_ptr<BRepOffset_Analyse> BRepOffset_Analyse_ctor_shape_real(const TopoDS_Shape& theS, Standard_Real theAngle) {
-    return std::make_unique<BRepOffset_Analyse>(theS, theAngle);
-}
-inline std::unique_ptr<TopoDS_Shape> BRepOffset_Analyse_generated(const BRepOffset_Analyse& self_, const TopoDS_Shape& theS) {
-    return std::make_unique<TopoDS_Shape>(self_.Generated(theS));
-}
-
-// ========================
-// BRepAlgo_Image wrappers
-// ========================
-
-inline std::unique_ptr<BRepAlgo_Image> BRepAlgo_Image_ctor() {
-    return std::make_unique<BRepAlgo_Image>();
-}
-
-// ========================
-// BRepOffset_MakeLoops wrappers
-// ========================
-
-inline std::unique_ptr<BRepOffset_MakeLoops> BRepOffset_MakeLoops_ctor() {
-    return std::make_unique<BRepOffset_MakeLoops>();
-}
-
-// ========================
-// BRepOffset_Offset wrappers
-// ========================
-
-inline std::unique_ptr<BRepOffset_Offset> BRepOffset_Offset_ctor() {
-    return std::make_unique<BRepOffset_Offset>();
-}
-inline std::unique_ptr<TopoDS_Shape> BRepOffset_Offset_generated(const BRepOffset_Offset& self_, const TopoDS_Shape& Shape) {
-    return std::make_unique<TopoDS_Shape>(self_.Generated(Shape));
-}
-
-// ========================
-// BRepOffset_Interval wrappers
-// ========================
-
-inline std::unique_ptr<BRepOffset_Interval> BRepOffset_Interval_ctor() {
-    return std::make_unique<BRepOffset_Interval>();
-}
-
-// ========================
-// BRepFill_PipeShell wrappers
-// ========================
-
-inline std::unique_ptr<BRepFill_PipeShell> BRepFill_PipeShell_ctor_wire(const TopoDS_Wire& Spine) {
-    return std::make_unique<BRepFill_PipeShell>(Spine);
-}
-inline const opencascade::handle<Standard_Type>& BRepFill_PipeShell_get_type_descriptor() {
-    return BRepFill_PipeShell::get_type_descriptor();
-}
-inline std::unique_ptr<HandleBRepFillPipeShell> BRepFill_PipeShell_to_handle(std::unique_ptr<BRepFill_PipeShell> obj) {
-    return std::make_unique<HandleBRepFillPipeShell>(obj.release());
-}
-
-// ========================
-// TopTools_HArray2OfShape wrappers
-// ========================
-
-inline std::unique_ptr<TopTools_HArray2OfShape> TopTools_HArray2OfShape_ctor_int4(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp) {
-    return std::make_unique<TopTools_HArray2OfShape>(theRowLow, theRowUpp, theColLow, theColUpp);
-}
-inline std::unique_ptr<TopTools_HArray2OfShape> TopTools_HArray2OfShape_ctor_int4_shape(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp, const TopoDS_Shape& theValue) {
-    return std::make_unique<TopTools_HArray2OfShape>(theRowLow, theRowUpp, theColLow, theColUpp, theValue);
-}
-inline std::unique_ptr<TopTools_HArray2OfShape> TopTools_HArray2OfShape_ctor_array2ofshape(const TopTools_Array2OfShape& theOther) {
-    return std::make_unique<TopTools_HArray2OfShape>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& TopTools_HArray2OfShape_get_type_descriptor() {
-    return TopTools_HArray2OfShape::get_type_descriptor();
-}
-inline std::unique_ptr<HandleTopToolsHArray2OfShape> TopTools_HArray2OfShape_to_handle(std::unique_ptr<TopTools_HArray2OfShape> obj) {
-    return std::make_unique<HandleTopToolsHArray2OfShape>(obj.release());
-}
-
-// ========================
-// BRepFill_Section wrappers
-// ========================
-
-inline std::unique_ptr<BRepFill_Section> BRepFill_Section_ctor() {
-    return std::make_unique<BRepFill_Section>();
-}
-inline std::unique_ptr<BRepFill_Section> BRepFill_Section_ctor_shape_vertex_bool2(const TopoDS_Shape& Profile, const TopoDS_Vertex& V, Standard_Boolean WithContact, Standard_Boolean WithCorrection) {
-    return std::make_unique<BRepFill_Section>(Profile, V, WithContact, WithCorrection);
-}
-inline std::unique_ptr<TopoDS_Shape> BRepFill_Section_modified_shape(const BRepFill_Section& self_, const TopoDS_Shape& theShape) {
-    return std::make_unique<TopoDS_Shape>(self_.ModifiedShape(theShape));
-}
-
-// ========================
-// BRepFill_Pipe wrappers
-// ========================
-
-inline std::unique_ptr<BRepFill_Pipe> BRepFill_Pipe_ctor() {
-    return std::make_unique<BRepFill_Pipe>();
-}
-inline std::unique_ptr<TopoDS_Face> BRepFill_Pipe_face(BRepFill_Pipe& self_, const TopoDS_Edge& ESpine, const TopoDS_Edge& EProfile) {
-    return std::make_unique<TopoDS_Face>(self_.Face(ESpine, EProfile));
-}
-inline std::unique_ptr<TopoDS_Edge> BRepFill_Pipe_edge(BRepFill_Pipe& self_, const TopoDS_Edge& ESpine, const TopoDS_Vertex& VProfile) {
-    return std::make_unique<TopoDS_Edge>(self_.Edge(ESpine, VProfile));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepFill_Pipe_section(const BRepFill_Pipe& self_, const TopoDS_Vertex& VSpine) {
-    return std::make_unique<TopoDS_Shape>(self_.Section(VSpine));
-}
-inline std::unique_ptr<TopoDS_Wire> BRepFill_Pipe_pipe_line(BRepFill_Pipe& self_, const gp_Pnt& Point) {
-    return std::make_unique<TopoDS_Wire>(self_.PipeLine(Point));
-}
-
-// ========================
-// BRepFill_OffsetWire wrappers
-// ========================
-
-inline std::unique_ptr<BRepFill_OffsetWire> BRepFill_OffsetWire_ctor() {
-    return std::make_unique<BRepFill_OffsetWire>();
-}
-
-// ========================
-// BRepMAT2d_BisectingLocus wrappers
-// ========================
-
-inline std::unique_ptr<BRepMAT2d_BisectingLocus> BRepMAT2d_BisectingLocus_ctor() {
-    return std::make_unique<BRepMAT2d_BisectingLocus>();
-}
-inline std::unique_ptr<opencascade::handle<MAT_BasicElt>> BRepMAT2d_BisectingLocus_basic_elt(const BRepMAT2d_BisectingLocus& self_, Standard_Integer IndLine, Standard_Integer Index) {
-    return std::make_unique<opencascade::handle<MAT_BasicElt>>(self_.BasicElt(IndLine, Index));
-}
-inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> BRepMAT2d_BisectingLocus_geom_elt(const BRepMAT2d_BisectingLocus& self_, const opencascade::handle<MAT_BasicElt>& aBasicElt) {
-    return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.GeomElt(aBasicElt));
-}
-
-// ========================
-// BRepMAT2d_LinkTopoBilo wrappers
-// ========================
-
-inline std::unique_ptr<BRepMAT2d_LinkTopoBilo> BRepMAT2d_LinkTopoBilo_ctor() {
-    return std::make_unique<BRepMAT2d_LinkTopoBilo>();
-}
-inline std::unique_ptr<BRepMAT2d_LinkTopoBilo> BRepMAT2d_LinkTopoBilo_ctor_explorer_bisectinglocus(const BRepMAT2d_Explorer& Explo, const BRepMAT2d_BisectingLocus& BiLo) {
-    return std::make_unique<BRepMAT2d_LinkTopoBilo>(Explo, BiLo);
-}
-inline std::unique_ptr<opencascade::handle<MAT_BasicElt>> BRepMAT2d_LinkTopoBilo_value(const BRepMAT2d_LinkTopoBilo& self_) {
-    return std::make_unique<opencascade::handle<MAT_BasicElt>>(self_.Value());
-}
-inline std::unique_ptr<TopoDS_Shape> BRepMAT2d_LinkTopoBilo_generating_shape(const BRepMAT2d_LinkTopoBilo& self_, const opencascade::handle<MAT_BasicElt>& aBE) {
-    return std::make_unique<TopoDS_Shape>(self_.GeneratingShape(aBE));
-}
-
-// ========================
-// MAT_BasicElt wrappers
-// ========================
-
-inline std::unique_ptr<MAT_BasicElt> MAT_BasicElt_ctor_int(Standard_Integer anInteger) {
-    return std::make_unique<MAT_BasicElt>(anInteger);
-}
-inline const opencascade::handle<Standard_Type>& MAT_BasicElt_get_type_descriptor() {
-    return MAT_BasicElt::get_type_descriptor();
-}
-inline std::unique_ptr<HandleMATBasicElt> MAT_BasicElt_to_handle(std::unique_ptr<MAT_BasicElt> obj) {
-    return std::make_unique<HandleMATBasicElt>(obj.release());
-}
-
-// ========================
-// MAT2d_Tool2d wrappers
-// ========================
-
-inline std::unique_ptr<MAT2d_Tool2d> MAT2d_Tool2d_ctor() {
-    return std::make_unique<MAT2d_Tool2d>();
-}
-inline std::unique_ptr<opencascade::handle<Geom2d_Geometry>> MAT2d_Tool2d_geom_elt(const MAT2d_Tool2d& self_, Standard_Integer Index) {
-    return std::make_unique<opencascade::handle<Geom2d_Geometry>>(self_.GeomElt(Index));
-}
-
-// ========================
-// MAT2d_BiInt wrappers
-// ========================
-
-inline std::unique_ptr<MAT2d_BiInt> MAT2d_BiInt_ctor_int2(Standard_Integer I1, Standard_Integer I2) {
-    return std::make_unique<MAT2d_BiInt>(I1, I2);
-}
-
-// ========================
-// Bisector_Bisec wrappers
-// ========================
-
-inline std::unique_ptr<Bisector_Bisec> Bisector_Bisec_ctor() {
-    return std::make_unique<Bisector_Bisec>();
-}
-
-// ========================
-// ChFi2d_Builder wrappers
-// ========================
-
-inline std::unique_ptr<ChFi2d_Builder> ChFi2d_Builder_ctor() {
-    return std::make_unique<ChFi2d_Builder>();
-}
-inline std::unique_ptr<ChFi2d_Builder> ChFi2d_Builder_ctor_face(const TopoDS_Face& F) {
-    return std::make_unique<ChFi2d_Builder>(F);
-}
-inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_add_fillet(ChFi2d_Builder& self_, const TopoDS_Vertex& V, Standard_Real Radius) {
-    return std::make_unique<TopoDS_Edge>(self_.AddFillet(V, Radius));
-}
-inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_modify_fillet(ChFi2d_Builder& self_, const TopoDS_Edge& Fillet, Standard_Real Radius) {
-    return std::make_unique<TopoDS_Edge>(self_.ModifyFillet(Fillet, Radius));
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi2d_Builder_remove_fillet(ChFi2d_Builder& self_, const TopoDS_Edge& Fillet) {
-    return std::make_unique<TopoDS_Vertex>(self_.RemoveFillet(Fillet));
-}
-inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_add_chamfer_edge2_real2(ChFi2d_Builder& self_, const TopoDS_Edge& E1, const TopoDS_Edge& E2, Standard_Real D1, Standard_Real D2) {
-    return std::make_unique<TopoDS_Edge>(self_.AddChamfer(E1, E2, D1, D2));
-}
-inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_add_chamfer_edge_vertex_real2(ChFi2d_Builder& self_, const TopoDS_Edge& E, const TopoDS_Vertex& V, Standard_Real D, Standard_Real Ang) {
-    return std::make_unique<TopoDS_Edge>(self_.AddChamfer(E, V, D, Ang));
-}
-inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_modify_chamfer_edge3_real2(ChFi2d_Builder& self_, const TopoDS_Edge& Chamfer, const TopoDS_Edge& E1, const TopoDS_Edge& E2, Standard_Real D1, Standard_Real D2) {
-    return std::make_unique<TopoDS_Edge>(self_.ModifyChamfer(Chamfer, E1, E2, D1, D2));
-}
-inline std::unique_ptr<TopoDS_Edge> ChFi2d_Builder_modify_chamfer_edge2_real2(ChFi2d_Builder& self_, const TopoDS_Edge& Chamfer, const TopoDS_Edge& E, Standard_Real D, Standard_Real Ang) {
-    return std::make_unique<TopoDS_Edge>(self_.ModifyChamfer(Chamfer, E, D, Ang));
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi2d_Builder_remove_chamfer(ChFi2d_Builder& self_, const TopoDS_Edge& Chamfer) {
-    return std::make_unique<TopoDS_Vertex>(self_.RemoveChamfer(Chamfer));
-}
-inline std::unique_ptr<TopoDS_Face> ChFi2d_Builder_result(const ChFi2d_Builder& self_) {
-    return std::make_unique<TopoDS_Face>(self_.Result());
-}
-
-// ========================
-// ChFi3d_FilBuilder wrappers
-// ========================
-
-inline std::unique_ptr<opencascade::handle<Law_Function>> ChFi3d_FilBuilder_get_law(ChFi3d_FilBuilder& self_, Standard_Integer IC, const TopoDS_Edge& E) {
-    return std::make_unique<opencascade::handle<Law_Function>>(self_.GetLaw(IC, E));
-}
-inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> ChFi3d_FilBuilder_sect(const ChFi3d_FilBuilder& self_, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
-}
-inline const ChFi3d_Builder& ChFi3d_FilBuilder_as_ChFi3d_Builder(const ChFi3d_FilBuilder& self_) { return static_cast<const ChFi3d_Builder&>(self_); }
-inline ChFi3d_Builder& ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(ChFi3d_FilBuilder& self_) { return static_cast<ChFi3d_Builder&>(self_); }
-inline void ChFi3d_FilBuilder_inherited_SetParams(ChFi3d_FilBuilder& self, Standard_Real Tang, Standard_Real Tesp, Standard_Real T2d, Standard_Real TApp3d, Standard_Real TolApp2d, Standard_Real Fleche) {
-    self.SetParams(Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche);
-}
-inline void ChFi3d_FilBuilder_inherited_Remove(ChFi3d_FilBuilder& self, const TopoDS_Edge& E) {
-    self.Remove(E);
-}
-inline Standard_Integer ChFi3d_FilBuilder_inherited_Contains(const ChFi3d_FilBuilder& self, const TopoDS_Edge& E) {
-    return self.Contains(E);
-}
-inline Standard_Integer ChFi3d_FilBuilder_inherited_NbElements(const ChFi3d_FilBuilder& self) {
-    return self.NbElements();
-}
-inline std::unique_ptr<Handle(ChFiDS_Spine)> ChFi3d_FilBuilder_inherited_Value(const ChFi3d_FilBuilder& self, Standard_Integer I) {
-    return std::make_unique<Handle(ChFiDS_Spine)>(self.Value(I));
-}
-inline Standard_Real ChFi3d_FilBuilder_inherited_Length(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
-    return self.Length(IC);
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_FilBuilder_inherited_FirstVertex(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self.FirstVertex(IC));
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_FilBuilder_inherited_LastVertex(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self.LastVertex(IC));
-}
-inline Standard_Real ChFi3d_FilBuilder_inherited_Abscissa(const ChFi3d_FilBuilder& self, Standard_Integer IC, const TopoDS_Vertex& V) {
-    return self.Abscissa(IC, V);
-}
-inline Standard_Real ChFi3d_FilBuilder_inherited_RelativeAbscissa(const ChFi3d_FilBuilder& self, Standard_Integer IC, const TopoDS_Vertex& V) {
-    return self.RelativeAbscissa(IC, V);
-}
-inline bool ChFi3d_FilBuilder_inherited_ClosedAndTangent(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
-    return self.ClosedAndTangent(IC);
-}
-inline bool ChFi3d_FilBuilder_inherited_Closed(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
-    return self.Closed(IC);
-}
-inline void ChFi3d_FilBuilder_inherited_Compute(ChFi3d_FilBuilder& self) {
-    self.Compute();
-}
-inline bool ChFi3d_FilBuilder_inherited_IsDone(const ChFi3d_FilBuilder& self) {
-    return self.IsDone();
-}
-inline std::unique_ptr<TopoDS_Shape> ChFi3d_FilBuilder_inherited_Shape(const ChFi3d_FilBuilder& self) {
-    return std::make_unique<TopoDS_Shape>(self.Shape());
-}
-inline const TopTools_ListOfShape& ChFi3d_FilBuilder_inherited_Generated(ChFi3d_FilBuilder& self, const TopoDS_Shape& EouV) {
-    return self.Generated(EouV);
-}
-inline Standard_Integer ChFi3d_FilBuilder_inherited_NbFaultyContours(const ChFi3d_FilBuilder& self) {
-    return self.NbFaultyContours();
-}
-inline Standard_Integer ChFi3d_FilBuilder_inherited_FaultyContour(const ChFi3d_FilBuilder& self, Standard_Integer I) {
-    return self.FaultyContour(I);
-}
-inline Standard_Integer ChFi3d_FilBuilder_inherited_NbComputedSurfaces(const ChFi3d_FilBuilder& self, Standard_Integer IC) {
-    return self.NbComputedSurfaces(IC);
-}
-inline std::unique_ptr<Handle(Geom_Surface)> ChFi3d_FilBuilder_inherited_ComputedSurface(const ChFi3d_FilBuilder& self, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<Handle(Geom_Surface)>(self.ComputedSurface(IC, IS));
-}
-inline Standard_Integer ChFi3d_FilBuilder_inherited_NbFaultyVertices(const ChFi3d_FilBuilder& self) {
-    return self.NbFaultyVertices();
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_FilBuilder_inherited_FaultyVertex(const ChFi3d_FilBuilder& self, Standard_Integer IV) {
-    return std::make_unique<TopoDS_Vertex>(self.FaultyVertex(IV));
-}
-inline bool ChFi3d_FilBuilder_inherited_HasResult(const ChFi3d_FilBuilder& self) {
-    return self.HasResult();
-}
-inline std::unique_ptr<TopoDS_Shape> ChFi3d_FilBuilder_inherited_BadShape(const ChFi3d_FilBuilder& self) {
-    return std::make_unique<TopoDS_Shape>(self.BadShape());
-}
-inline void ChFi3d_FilBuilder_inherited_Reset(ChFi3d_FilBuilder& self) {
-    self.Reset();
-}
-inline std::unique_ptr<Handle(TopOpeBRepBuild_HBuilder)> ChFi3d_FilBuilder_inherited_Builder(const ChFi3d_FilBuilder& self) {
-    return std::make_unique<Handle(TopOpeBRepBuild_HBuilder)>(self.Builder());
-}
-inline bool ChFi3d_FilBuilder_inherited_SplitKPart(ChFi3d_FilBuilder& self, const Handle(ChFiDS_SurfData)& Data, ChFiDS_SequenceOfSurfData& SetData, const Handle(ChFiDS_Spine)& Spine, Standard_Integer Iedge, const Handle(Adaptor3d_Surface)& S1, const Handle(Adaptor3d_TopolTool)& I1, const Handle(Adaptor3d_Surface)& S2, const Handle(Adaptor3d_TopolTool)& I2, bool& Intf, bool& Intl) {
-    return self.SplitKPart(Data, SetData, Spine, Iedge, S1, I1, S2, I2, Intf, Intl);
-}
-inline bool ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(ChFi3d_FilBuilder& self, Standard_Integer Index) {
-    return self.PerformTwoCornerbyInter(Index);
-}
-
-// ========================
-// ChFiDS_SecHArray1 wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor() {
-    return std::make_unique<ChFiDS_SecHArray1>();
-}
-inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return std::make_unique<ChFiDS_SecHArray1>(theLower, theUpper);
-}
-inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor_int2_circsection(Standard_Integer theLower, Standard_Integer theUpper, const ChFiDS_CircSection& theValue) {
-    return std::make_unique<ChFiDS_SecHArray1>(theLower, theUpper, theValue);
-}
-inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor_circsection_int2_bool(const ChFiDS_CircSection& theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
-    return std::make_unique<ChFiDS_SecHArray1>(theBegin, theLower, theUpper, arg3);
-}
-inline std::unique_ptr<ChFiDS_SecHArray1> ChFiDS_SecHArray1_ctor_secarray1(const ChFiDS_SecArray1& theOther) {
-    return std::make_unique<ChFiDS_SecHArray1>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& ChFiDS_SecHArray1_get_type_descriptor() {
-    return ChFiDS_SecHArray1::get_type_descriptor();
-}
-inline std::unique_ptr<HandleChFiDSSecHArray1> ChFiDS_SecHArray1_to_handle(std::unique_ptr<ChFiDS_SecHArray1> obj) {
-    return std::make_unique<HandleChFiDSSecHArray1>(obj.release());
-}
-
-// ========================
-// ChFiDS_CircSection wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_CircSection> ChFiDS_CircSection_ctor() {
-    return std::make_unique<ChFiDS_CircSection>();
-}
-
-// ========================
-// ChFi3d_Builder wrappers
-// ========================
-
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_Builder_first_vertex(const ChFi3d_Builder& self_, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self_.FirstVertex(IC));
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_Builder_last_vertex(const ChFi3d_Builder& self_, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self_.LastVertex(IC));
-}
-inline std::unique_ptr<TopoDS_Shape> ChFi3d_Builder_shape(const ChFi3d_Builder& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.Shape());
-}
-inline std::unique_ptr<opencascade::handle<Geom_Surface>> ChFi3d_Builder_computed_surface(const ChFi3d_Builder& self_, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<opencascade::handle<Geom_Surface>>(self_.ComputedSurface(IC, IS));
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_Builder_faulty_vertex(const ChFi3d_Builder& self_, Standard_Integer IV) {
-    return std::make_unique<TopoDS_Vertex>(self_.FaultyVertex(IV));
-}
-inline std::unique_ptr<TopoDS_Shape> ChFi3d_Builder_bad_shape(const ChFi3d_Builder& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.BadShape());
-}
-
-// ========================
-// ChFiDS_ElSpine wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_ElSpine> ChFiDS_ElSpine_ctor() {
-    return std::make_unique<ChFiDS_ElSpine>();
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> ChFiDS_ElSpine_shallow_copy(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Curve>>(self_.ShallowCopy());
-}
-inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> ChFiDS_ElSpine_trim(const ChFiDS_ElSpine& self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
-    return std::make_unique<opencascade::handle<Adaptor3d_Curve>>(self_.Trim(First, Last, Tol));
-}
-inline std::unique_ptr<gp_Pnt> ChFiDS_ElSpine_value(const ChFiDS_ElSpine& self_, Standard_Real AbsC) {
-    return std::make_unique<gp_Pnt>(self_.Value(AbsC));
-}
-inline std::unique_ptr<gp_Lin> ChFiDS_ElSpine_line(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<gp_Lin>(self_.Line());
-}
-inline std::unique_ptr<gp_Circ> ChFiDS_ElSpine_circle(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<gp_Circ>(self_.Circle());
-}
-inline std::unique_ptr<gp_Elips> ChFiDS_ElSpine_ellipse(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<gp_Elips>(self_.Ellipse());
-}
-inline std::unique_ptr<gp_Hypr> ChFiDS_ElSpine_hyperbola(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<gp_Hypr>(self_.Hyperbola());
-}
-inline std::unique_ptr<gp_Parab> ChFiDS_ElSpine_parabola(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<gp_Parab>(self_.Parabola());
-}
-inline std::unique_ptr<opencascade::handle<Geom_BezierCurve>> ChFiDS_ElSpine_bezier(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<opencascade::handle<Geom_BezierCurve>>(self_.Bezier());
-}
-inline std::unique_ptr<opencascade::handle<Geom_BSplineCurve>> ChFiDS_ElSpine_b_spline(const ChFiDS_ElSpine& self_) {
-    return std::make_unique<opencascade::handle<Geom_BSplineCurve>>(self_.BSpline());
-}
-inline const opencascade::handle<Standard_Type>& ChFiDS_ElSpine_get_type_descriptor() {
-    return ChFiDS_ElSpine::get_type_descriptor();
-}
-inline const Adaptor3d_Curve& ChFiDS_ElSpine_as_Adaptor3d_Curve(const ChFiDS_ElSpine& self_) { return static_cast<const Adaptor3d_Curve&>(self_); }
-inline Adaptor3d_Curve& ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(ChFiDS_ElSpine& self_) { return static_cast<Adaptor3d_Curve&>(self_); }
-inline bool ChFiDS_ElSpine_inherited_IsClosed(const ChFiDS_ElSpine& self) {
-    return self.IsClosed();
-}
-inline std::unique_ptr<gp_Vec> ChFiDS_ElSpine_inherited_DN(const ChFiDS_ElSpine& self, Standard_Real U, Standard_Integer N) {
-    return std::make_unique<gp_Vec>(self.DN(U, N));
-}
-inline Standard_Integer ChFiDS_ElSpine_inherited_Degree(const ChFiDS_ElSpine& self) {
-    return self.Degree();
-}
-inline bool ChFiDS_ElSpine_inherited_IsRational(const ChFiDS_ElSpine& self) {
-    return self.IsRational();
-}
-inline Standard_Integer ChFiDS_ElSpine_inherited_NbPoles(const ChFiDS_ElSpine& self) {
-    return self.NbPoles();
-}
-inline Standard_Integer ChFiDS_ElSpine_inherited_NbKnots(const ChFiDS_ElSpine& self) {
-    return self.NbKnots();
-}
-inline std::unique_ptr<Handle(Geom_OffsetCurve)> ChFiDS_ElSpine_inherited_OffsetCurve(const ChFiDS_ElSpine& self) {
-    return std::make_unique<Handle(Geom_OffsetCurve)>(self.OffsetCurve());
-}
-
-// ========================
-// ChFiDS_SurfData wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_SurfData> ChFiDS_SurfData_ctor() {
-    return std::make_unique<ChFiDS_SurfData>();
-}
-inline std::unique_ptr<gp_Pnt2d> ChFiDS_SurfData_get2d_points(const ChFiDS_SurfData& self_, Standard_Boolean First, Standard_Integer OnS) {
-    return std::make_unique<gp_Pnt2d>(self_.Get2dPoints(First, OnS));
-}
-inline const opencascade::handle<Standard_Type>& ChFiDS_SurfData_get_type_descriptor() {
-    return ChFiDS_SurfData::get_type_descriptor();
-}
-inline std::unique_ptr<HandleChFiDSSurfData> ChFiDS_SurfData_to_handle(std::unique_ptr<ChFiDS_SurfData> obj) {
-    return std::make_unique<HandleChFiDSSurfData>(obj.release());
-}
-
-// ========================
-// ChFiDS_CommonPoint wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_CommonPoint> ChFiDS_CommonPoint_ctor() {
-    return std::make_unique<ChFiDS_CommonPoint>();
-}
-
-// ========================
-// ChFiDS_FaceInterference wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_FaceInterference> ChFiDS_FaceInterference_ctor() {
-    return std::make_unique<ChFiDS_FaceInterference>();
-}
-
-// ========================
-// ChFiDS_Stripe wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_Stripe> ChFiDS_Stripe_ctor() {
-    return std::make_unique<ChFiDS_Stripe>();
-}
-inline const opencascade::handle<Standard_Type>& ChFiDS_Stripe_get_type_descriptor() {
-    return ChFiDS_Stripe::get_type_descriptor();
-}
-inline std::unique_ptr<HandleChFiDSStripe> ChFiDS_Stripe_to_handle(std::unique_ptr<ChFiDS_Stripe> obj) {
-    return std::make_unique<HandleChFiDSStripe>(obj.release());
-}
-
-// ========================
-// ChFiDS_HData wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_HData> ChFiDS_HData_ctor() {
-    return std::make_unique<ChFiDS_HData>();
-}
-inline std::unique_ptr<ChFiDS_HData> ChFiDS_HData_ctor_sequenceofsurfdata(const ChFiDS_SequenceOfSurfData& theOther) {
-    return std::make_unique<ChFiDS_HData>(theOther);
-}
-inline const opencascade::handle<Standard_Type>& ChFiDS_HData_get_type_descriptor() {
-    return ChFiDS_HData::get_type_descriptor();
-}
-inline std::unique_ptr<HandleChFiDSHData> ChFiDS_HData_to_handle(std::unique_ptr<ChFiDS_HData> obj) {
-    return std::make_unique<HandleChFiDSHData>(obj.release());
-}
-
-// ========================
-// BRepAdaptor_Curve2d wrappers
-// ========================
-
-inline std::unique_ptr<BRepAdaptor_Curve2d> BRepAdaptor_Curve2d_ctor() {
-    return std::make_unique<BRepAdaptor_Curve2d>();
-}
-inline std::unique_ptr<BRepAdaptor_Curve2d> BRepAdaptor_Curve2d_ctor_edge_face(const TopoDS_Edge& E, const TopoDS_Face& F) {
-    return std::make_unique<BRepAdaptor_Curve2d>(E, F);
-}
-inline std::unique_ptr<opencascade::handle<Adaptor2d_Curve2d>> BRepAdaptor_Curve2d_shallow_copy(const BRepAdaptor_Curve2d& self_) {
-    return std::make_unique<opencascade::handle<Adaptor2d_Curve2d>>(self_.ShallowCopy());
-}
-inline const opencascade::handle<Standard_Type>& BRepAdaptor_Curve2d_get_type_descriptor() {
-    return BRepAdaptor_Curve2d::get_type_descriptor();
-}
-inline const Adaptor2d_Curve2d& BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d(const BRepAdaptor_Curve2d& self_) { return static_cast<const Adaptor2d_Curve2d&>(self_); }
-inline Adaptor2d_Curve2d& BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(BRepAdaptor_Curve2d& self_) { return static_cast<Adaptor2d_Curve2d&>(self_); }
-inline const Geom2dAdaptor_Curve& BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve(const BRepAdaptor_Curve2d& self_) { return static_cast<const Geom2dAdaptor_Curve&>(self_); }
-inline Geom2dAdaptor_Curve& BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(BRepAdaptor_Curve2d& self_) { return static_cast<Geom2dAdaptor_Curve&>(self_); }
-inline Standard_Real BRepAdaptor_Curve2d_inherited_FirstParameter(const BRepAdaptor_Curve2d& self) {
-    return self.FirstParameter();
-}
-inline Standard_Real BRepAdaptor_Curve2d_inherited_LastParameter(const BRepAdaptor_Curve2d& self) {
-    return self.LastParameter();
-}
-inline std::unique_ptr<Handle(Adaptor2d_Curve2d)> BRepAdaptor_Curve2d_inherited_Trim(const BRepAdaptor_Curve2d& self, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
-    return std::make_unique<Handle(Adaptor2d_Curve2d)>(self.Trim(First, Last, Tol));
-}
-inline bool BRepAdaptor_Curve2d_inherited_IsClosed(const BRepAdaptor_Curve2d& self) {
-    return self.IsClosed();
-}
-inline bool BRepAdaptor_Curve2d_inherited_IsPeriodic(const BRepAdaptor_Curve2d& self) {
-    return self.IsPeriodic();
-}
-inline Standard_Real BRepAdaptor_Curve2d_inherited_Period(const BRepAdaptor_Curve2d& self) {
-    return self.Period();
-}
-inline std::unique_ptr<gp_Pnt2d> BRepAdaptor_Curve2d_inherited_Value(const BRepAdaptor_Curve2d& self, Standard_Real U) {
-    return std::make_unique<gp_Pnt2d>(self.Value(U));
-}
-inline void BRepAdaptor_Curve2d_inherited_D0(const BRepAdaptor_Curve2d& self, Standard_Real U, gp_Pnt2d& P) {
-    self.D0(U, P);
-}
-inline void BRepAdaptor_Curve2d_inherited_D1(const BRepAdaptor_Curve2d& self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V) {
-    self.D1(U, P, V);
-}
-inline void BRepAdaptor_Curve2d_inherited_D2(const BRepAdaptor_Curve2d& self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
-    self.D2(U, P, V1, V2);
-}
-inline void BRepAdaptor_Curve2d_inherited_D3(const BRepAdaptor_Curve2d& self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
-    self.D3(U, P, V1, V2, V3);
-}
-inline std::unique_ptr<gp_Vec2d> BRepAdaptor_Curve2d_inherited_DN(const BRepAdaptor_Curve2d& self, Standard_Real U, Standard_Integer N) {
-    return std::make_unique<gp_Vec2d>(self.DN(U, N));
-}
-inline Standard_Real BRepAdaptor_Curve2d_inherited_Resolution(const BRepAdaptor_Curve2d& self, Standard_Real R3d) {
-    return self.Resolution(R3d);
-}
-inline std::unique_ptr<gp_Lin2d> BRepAdaptor_Curve2d_inherited_Line(const BRepAdaptor_Curve2d& self) {
-    return std::make_unique<gp_Lin2d>(self.Line());
-}
-inline std::unique_ptr<gp_Circ2d> BRepAdaptor_Curve2d_inherited_Circle(const BRepAdaptor_Curve2d& self) {
-    return std::make_unique<gp_Circ2d>(self.Circle());
-}
-inline std::unique_ptr<gp_Elips2d> BRepAdaptor_Curve2d_inherited_Ellipse(const BRepAdaptor_Curve2d& self) {
-    return std::make_unique<gp_Elips2d>(self.Ellipse());
-}
-inline std::unique_ptr<gp_Hypr2d> BRepAdaptor_Curve2d_inherited_Hyperbola(const BRepAdaptor_Curve2d& self) {
-    return std::make_unique<gp_Hypr2d>(self.Hyperbola());
-}
-inline std::unique_ptr<gp_Parab2d> BRepAdaptor_Curve2d_inherited_Parabola(const BRepAdaptor_Curve2d& self) {
-    return std::make_unique<gp_Parab2d>(self.Parabola());
-}
-inline Standard_Integer BRepAdaptor_Curve2d_inherited_Degree(const BRepAdaptor_Curve2d& self) {
-    return self.Degree();
-}
-inline bool BRepAdaptor_Curve2d_inherited_IsRational(const BRepAdaptor_Curve2d& self) {
-    return self.IsRational();
-}
-inline Standard_Integer BRepAdaptor_Curve2d_inherited_NbPoles(const BRepAdaptor_Curve2d& self) {
-    return self.NbPoles();
-}
-inline Standard_Integer BRepAdaptor_Curve2d_inherited_NbKnots(const BRepAdaptor_Curve2d& self) {
-    return self.NbKnots();
-}
-inline Standard_Integer BRepAdaptor_Curve2d_inherited_NbSamples(const BRepAdaptor_Curve2d& self) {
-    return self.NbSamples();
-}
-inline std::unique_ptr<Handle(Geom2d_BezierCurve)> BRepAdaptor_Curve2d_inherited_Bezier(const BRepAdaptor_Curve2d& self) {
-    return std::make_unique<Handle(Geom2d_BezierCurve)>(self.Bezier());
-}
-inline std::unique_ptr<Handle(Geom2d_BSplineCurve)> BRepAdaptor_Curve2d_inherited_BSpline(const BRepAdaptor_Curve2d& self) {
-    return std::make_unique<Handle(Geom2d_BSplineCurve)>(self.BSpline());
-}
-inline void BRepAdaptor_Curve2d_inherited_Reset(BRepAdaptor_Curve2d& self) {
-    self.Reset();
-}
-inline void BRepAdaptor_Curve2d_inherited_Load(BRepAdaptor_Curve2d& self, const Handle(Geom2d_Curve)& theCurve) {
-    self.Load(theCurve);
-}
-inline const Handle(Geom2d_Curve)& BRepAdaptor_Curve2d_inherited_Curve(const BRepAdaptor_Curve2d& self) {
-    return self.Curve();
-}
-
-// ========================
-// ChFiDS_Map wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_Map> ChFiDS_Map_ctor() {
-    return std::make_unique<ChFiDS_Map>();
-}
-
-// ========================
-// ChFiDS_StripeMap wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_StripeMap> ChFiDS_StripeMap_ctor() {
-    return std::make_unique<ChFiDS_StripeMap>();
-}
-
-// ========================
-// ChFiDS_Regul wrappers
-// ========================
-
-inline std::unique_ptr<ChFiDS_Regul> ChFiDS_Regul_ctor() {
-    return std::make_unique<ChFiDS_Regul>();
-}
-
-// ========================
-// ChFi3d_ChBuilder wrappers
-// ========================
-
-inline std::unique_ptr<ChFi3d_ChBuilder> ChFi3d_ChBuilder_ctor_shape_real(const TopoDS_Shape& S, Standard_Real Ta) {
-    return std::make_unique<ChFi3d_ChBuilder>(S, Ta);
-}
-inline std::unique_ptr<opencascade::handle<ChFiDS_SecHArray1>> ChFi3d_ChBuilder_sect(const ChFi3d_ChBuilder& self_, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<opencascade::handle<ChFiDS_SecHArray1>>(self_.Sect(IC, IS));
-}
-inline const ChFi3d_Builder& ChFi3d_ChBuilder_as_ChFi3d_Builder(const ChFi3d_ChBuilder& self_) { return static_cast<const ChFi3d_Builder&>(self_); }
-inline ChFi3d_Builder& ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(ChFi3d_ChBuilder& self_) { return static_cast<ChFi3d_Builder&>(self_); }
-inline void ChFi3d_ChBuilder_inherited_SetParams(ChFi3d_ChBuilder& self, Standard_Real Tang, Standard_Real Tesp, Standard_Real T2d, Standard_Real TApp3d, Standard_Real TolApp2d, Standard_Real Fleche) {
-    self.SetParams(Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche);
-}
-inline void ChFi3d_ChBuilder_inherited_Remove(ChFi3d_ChBuilder& self, const TopoDS_Edge& E) {
-    self.Remove(E);
-}
-inline Standard_Integer ChFi3d_ChBuilder_inherited_Contains(const ChFi3d_ChBuilder& self, const TopoDS_Edge& E) {
-    return self.Contains(E);
-}
-inline Standard_Integer ChFi3d_ChBuilder_inherited_NbElements(const ChFi3d_ChBuilder& self) {
-    return self.NbElements();
-}
-inline std::unique_ptr<Handle(ChFiDS_Spine)> ChFi3d_ChBuilder_inherited_Value(const ChFi3d_ChBuilder& self, Standard_Integer I) {
-    return std::make_unique<Handle(ChFiDS_Spine)>(self.Value(I));
-}
-inline Standard_Real ChFi3d_ChBuilder_inherited_Length(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
-    return self.Length(IC);
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_ChBuilder_inherited_FirstVertex(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self.FirstVertex(IC));
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_ChBuilder_inherited_LastVertex(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
-    return std::make_unique<TopoDS_Vertex>(self.LastVertex(IC));
-}
-inline Standard_Real ChFi3d_ChBuilder_inherited_Abscissa(const ChFi3d_ChBuilder& self, Standard_Integer IC, const TopoDS_Vertex& V) {
-    return self.Abscissa(IC, V);
-}
-inline Standard_Real ChFi3d_ChBuilder_inherited_RelativeAbscissa(const ChFi3d_ChBuilder& self, Standard_Integer IC, const TopoDS_Vertex& V) {
-    return self.RelativeAbscissa(IC, V);
-}
-inline bool ChFi3d_ChBuilder_inherited_ClosedAndTangent(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
-    return self.ClosedAndTangent(IC);
-}
-inline bool ChFi3d_ChBuilder_inherited_Closed(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
-    return self.Closed(IC);
-}
-inline void ChFi3d_ChBuilder_inherited_Compute(ChFi3d_ChBuilder& self) {
-    self.Compute();
-}
-inline bool ChFi3d_ChBuilder_inherited_IsDone(const ChFi3d_ChBuilder& self) {
-    return self.IsDone();
-}
-inline std::unique_ptr<TopoDS_Shape> ChFi3d_ChBuilder_inherited_Shape(const ChFi3d_ChBuilder& self) {
-    return std::make_unique<TopoDS_Shape>(self.Shape());
-}
-inline const TopTools_ListOfShape& ChFi3d_ChBuilder_inherited_Generated(ChFi3d_ChBuilder& self, const TopoDS_Shape& EouV) {
-    return self.Generated(EouV);
-}
-inline Standard_Integer ChFi3d_ChBuilder_inherited_NbFaultyContours(const ChFi3d_ChBuilder& self) {
-    return self.NbFaultyContours();
-}
-inline Standard_Integer ChFi3d_ChBuilder_inherited_FaultyContour(const ChFi3d_ChBuilder& self, Standard_Integer I) {
-    return self.FaultyContour(I);
-}
-inline Standard_Integer ChFi3d_ChBuilder_inherited_NbComputedSurfaces(const ChFi3d_ChBuilder& self, Standard_Integer IC) {
-    return self.NbComputedSurfaces(IC);
-}
-inline std::unique_ptr<Handle(Geom_Surface)> ChFi3d_ChBuilder_inherited_ComputedSurface(const ChFi3d_ChBuilder& self, Standard_Integer IC, Standard_Integer IS) {
-    return std::make_unique<Handle(Geom_Surface)>(self.ComputedSurface(IC, IS));
-}
-inline Standard_Integer ChFi3d_ChBuilder_inherited_NbFaultyVertices(const ChFi3d_ChBuilder& self) {
-    return self.NbFaultyVertices();
-}
-inline std::unique_ptr<TopoDS_Vertex> ChFi3d_ChBuilder_inherited_FaultyVertex(const ChFi3d_ChBuilder& self, Standard_Integer IV) {
-    return std::make_unique<TopoDS_Vertex>(self.FaultyVertex(IV));
-}
-inline bool ChFi3d_ChBuilder_inherited_HasResult(const ChFi3d_ChBuilder& self) {
-    return self.HasResult();
-}
-inline std::unique_ptr<TopoDS_Shape> ChFi3d_ChBuilder_inherited_BadShape(const ChFi3d_ChBuilder& self) {
-    return std::make_unique<TopoDS_Shape>(self.BadShape());
-}
-inline void ChFi3d_ChBuilder_inherited_Reset(ChFi3d_ChBuilder& self) {
-    self.Reset();
-}
-inline std::unique_ptr<Handle(TopOpeBRepBuild_HBuilder)> ChFi3d_ChBuilder_inherited_Builder(const ChFi3d_ChBuilder& self) {
-    return std::make_unique<Handle(TopOpeBRepBuild_HBuilder)>(self.Builder());
-}
-inline bool ChFi3d_ChBuilder_inherited_SplitKPart(ChFi3d_ChBuilder& self, const Handle(ChFiDS_SurfData)& Data, ChFiDS_SequenceOfSurfData& SetData, const Handle(ChFiDS_Spine)& Spine, Standard_Integer Iedge, const Handle(Adaptor3d_Surface)& S1, const Handle(Adaptor3d_TopolTool)& I1, const Handle(Adaptor3d_Surface)& S2, const Handle(Adaptor3d_TopolTool)& I2, bool& Intf, bool& Intl) {
-    return self.SplitKPart(Data, SetData, Spine, Iedge, S1, I1, S2, I2, Intf, Intl);
-}
-inline bool ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(ChFi3d_ChBuilder& self, Standard_Integer Index) {
-    return self.PerformTwoCornerbyInter(Index);
-}
-
-// ========================
-// BRepPrim_Torus wrappers
-// ========================
-
-inline std::unique_ptr<BRepPrim_Torus> BRepPrim_Torus_ctor_ax2_real2(const gp_Ax2& Position, Standard_Real Major, Standard_Real Minor) {
-    return std::make_unique<BRepPrim_Torus>(Position, Major, Minor);
-}
-inline std::unique_ptr<BRepPrim_Torus> BRepPrim_Torus_ctor_real2(Standard_Real Major, Standard_Real Minor) {
-    return std::make_unique<BRepPrim_Torus>(Major, Minor);
-}
-inline std::unique_ptr<BRepPrim_Torus> BRepPrim_Torus_ctor_pnt_real2(const gp_Pnt& Center, Standard_Real Major, Standard_Real Minor) {
-    return std::make_unique<BRepPrim_Torus>(Center, Major, Minor);
-}
-inline std::unique_ptr<TopoDS_Face> BRepPrim_Torus_make_empty_lateral_face(const BRepPrim_Torus& self_) {
-    return std::make_unique<TopoDS_Face>(self_.MakeEmptyLateralFace());
-}
-inline const BRepPrim_OneAxis& BRepPrim_Torus_as_BRepPrim_OneAxis(const BRepPrim_Torus& self_) { return static_cast<const BRepPrim_OneAxis&>(self_); }
-inline BRepPrim_OneAxis& BRepPrim_Torus_as_BRepPrim_OneAxis_mut(BRepPrim_Torus& self_) { return static_cast<BRepPrim_OneAxis&>(self_); }
-inline const BRepPrim_Revolution& BRepPrim_Torus_as_BRepPrim_Revolution(const BRepPrim_Torus& self_) { return static_cast<const BRepPrim_Revolution&>(self_); }
-inline BRepPrim_Revolution& BRepPrim_Torus_as_BRepPrim_Revolution_mut(BRepPrim_Torus& self_) { return static_cast<BRepPrim_Revolution&>(self_); }
-inline void BRepPrim_Torus_inherited_SetMeridianOffset(BRepPrim_Torus& self, Standard_Real MeridianOffset) {
-    self.SetMeridianOffset(MeridianOffset);
-}
-inline const gp_Ax2& BRepPrim_Torus_inherited_Axes(const BRepPrim_Torus& self) {
-    return self.Axes();
-}
-inline Standard_Real BRepPrim_Torus_inherited_Angle(const BRepPrim_Torus& self) {
-    return self.Angle();
-}
-inline Standard_Real BRepPrim_Torus_inherited_VMin(const BRepPrim_Torus& self) {
-    return self.VMin();
-}
-inline Standard_Real BRepPrim_Torus_inherited_VMax(const BRepPrim_Torus& self) {
-    return self.VMax();
-}
-inline std::unique_ptr<TopoDS_Edge> BRepPrim_Torus_inherited_MakeEmptyMeridianEdge(const BRepPrim_Torus& self, Standard_Real Ang) {
-    return std::make_unique<TopoDS_Edge>(self.MakeEmptyMeridianEdge(Ang));
-}
-inline void BRepPrim_Torus_inherited_SetMeridianPCurve(const BRepPrim_Torus& self, TopoDS_Edge& E, const TopoDS_Face& F) {
-    self.SetMeridianPCurve(E, F);
-}
-inline std::unique_ptr<gp_Pnt2d> BRepPrim_Torus_inherited_MeridianValue(const BRepPrim_Torus& self, Standard_Real V) {
-    return std::make_unique<gp_Pnt2d>(self.MeridianValue(V));
-}
-inline bool BRepPrim_Torus_inherited_MeridianOnAxis(const BRepPrim_Torus& self, Standard_Real V) {
-    return self.MeridianOnAxis(V);
-}
-inline bool BRepPrim_Torus_inherited_MeridianClosed(const BRepPrim_Torus& self) {
-    return self.MeridianClosed();
-}
-inline bool BRepPrim_Torus_inherited_VMaxInfinite(const BRepPrim_Torus& self) {
-    return self.VMaxInfinite();
-}
-inline bool BRepPrim_Torus_inherited_VMinInfinite(const BRepPrim_Torus& self) {
-    return self.VMinInfinite();
-}
-inline bool BRepPrim_Torus_inherited_HasTop(const BRepPrim_Torus& self) {
-    return self.HasTop();
-}
-inline bool BRepPrim_Torus_inherited_HasBottom(const BRepPrim_Torus& self) {
-    return self.HasBottom();
-}
-inline bool BRepPrim_Torus_inherited_HasSides(const BRepPrim_Torus& self) {
-    return self.HasSides();
-}
-inline const TopoDS_Shell& BRepPrim_Torus_inherited_Shell(BRepPrim_Torus& self) {
-    return self.Shell();
-}
-inline const TopoDS_Face& BRepPrim_Torus_inherited_LateralFace(BRepPrim_Torus& self) {
-    return self.LateralFace();
-}
-inline const TopoDS_Face& BRepPrim_Torus_inherited_TopFace(BRepPrim_Torus& self) {
-    return self.TopFace();
-}
-inline const TopoDS_Face& BRepPrim_Torus_inherited_BottomFace(BRepPrim_Torus& self) {
-    return self.BottomFace();
-}
-inline const TopoDS_Face& BRepPrim_Torus_inherited_StartFace(BRepPrim_Torus& self) {
-    return self.StartFace();
-}
-inline const TopoDS_Face& BRepPrim_Torus_inherited_EndFace(BRepPrim_Torus& self) {
-    return self.EndFace();
-}
-inline const TopoDS_Wire& BRepPrim_Torus_inherited_LateralWire(BRepPrim_Torus& self) {
-    return self.LateralWire();
-}
-inline const TopoDS_Wire& BRepPrim_Torus_inherited_LateralStartWire(BRepPrim_Torus& self) {
-    return self.LateralStartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Torus_inherited_LateralEndWire(BRepPrim_Torus& self) {
-    return self.LateralEndWire();
-}
-inline const TopoDS_Wire& BRepPrim_Torus_inherited_TopWire(BRepPrim_Torus& self) {
-    return self.TopWire();
-}
-inline const TopoDS_Wire& BRepPrim_Torus_inherited_BottomWire(BRepPrim_Torus& self) {
-    return self.BottomWire();
-}
-inline const TopoDS_Wire& BRepPrim_Torus_inherited_StartWire(BRepPrim_Torus& self) {
-    return self.StartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Torus_inherited_AxisStartWire(BRepPrim_Torus& self) {
-    return self.AxisStartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Torus_inherited_EndWire(BRepPrim_Torus& self) {
-    return self.EndWire();
-}
-inline const TopoDS_Wire& BRepPrim_Torus_inherited_AxisEndWire(BRepPrim_Torus& self) {
-    return self.AxisEndWire();
-}
-inline const TopoDS_Edge& BRepPrim_Torus_inherited_AxisEdge(BRepPrim_Torus& self) {
-    return self.AxisEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Torus_inherited_StartEdge(BRepPrim_Torus& self) {
-    return self.StartEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Torus_inherited_EndEdge(BRepPrim_Torus& self) {
-    return self.EndEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Torus_inherited_StartTopEdge(BRepPrim_Torus& self) {
-    return self.StartTopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Torus_inherited_StartBottomEdge(BRepPrim_Torus& self) {
-    return self.StartBottomEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Torus_inherited_EndTopEdge(BRepPrim_Torus& self) {
-    return self.EndTopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Torus_inherited_EndBottomEdge(BRepPrim_Torus& self) {
-    return self.EndBottomEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Torus_inherited_TopEdge(BRepPrim_Torus& self) {
-    return self.TopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Torus_inherited_BottomEdge(BRepPrim_Torus& self) {
-    return self.BottomEdge();
-}
-inline const TopoDS_Vertex& BRepPrim_Torus_inherited_AxisTopVertex(BRepPrim_Torus& self) {
-    return self.AxisTopVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Torus_inherited_AxisBottomVertex(BRepPrim_Torus& self) {
-    return self.AxisBottomVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Torus_inherited_TopStartVertex(BRepPrim_Torus& self) {
-    return self.TopStartVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Torus_inherited_TopEndVertex(BRepPrim_Torus& self) {
-    return self.TopEndVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Torus_inherited_BottomStartVertex(BRepPrim_Torus& self) {
-    return self.BottomStartVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Torus_inherited_BottomEndVertex(BRepPrim_Torus& self) {
-    return self.BottomEndVertex();
-}
-
-// ========================
-// BRepPrimAPI_MakeOneAxis wrappers
-// ========================
-
-inline const BRepBuilderAPI_Command& BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command(const BRepPrimAPI_MakeOneAxis& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command_mut(BRepPrimAPI_MakeOneAxis& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_MakeShape(const BRepPrimAPI_MakeOneAxis& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_MakeShape_mut(BRepPrimAPI_MakeOneAxis& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline bool BRepPrimAPI_MakeOneAxis_inherited_IsDone(const BRepPrimAPI_MakeOneAxis& self) {
-    return self.IsDone();
-}
-inline void BRepPrimAPI_MakeOneAxis_inherited_Check(const BRepPrimAPI_MakeOneAxis& self) {
-    self.Check();
-}
-inline const TopoDS_Shape& BRepPrimAPI_MakeOneAxis_inherited_Shape(BRepPrimAPI_MakeOneAxis& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeOneAxis_inherited_Generated(BRepPrimAPI_MakeOneAxis& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline const TopTools_ListOfShape& BRepPrimAPI_MakeOneAxis_inherited_Modified(BRepPrimAPI_MakeOneAxis& self, const TopoDS_Shape& S) {
-    return self.Modified(S);
-}
-inline bool BRepPrimAPI_MakeOneAxis_inherited_IsDeleted(BRepPrimAPI_MakeOneAxis& self, const TopoDS_Shape& S) {
-    return self.IsDeleted(S);
-}
-
-// ========================
-// BRepPrim_Revolution wrappers
-// ========================
-
-inline std::unique_ptr<BRepPrim_Revolution> BRepPrim_Revolution_ctor_ax2_real2_handlecurve2(const gp_Ax2& A, Standard_Real VMin, Standard_Real VMax, const opencascade::handle<Geom_Curve>& M, const opencascade::handle<Geom2d_Curve>& PM) {
-    return std::make_unique<BRepPrim_Revolution>(A, VMin, VMax, M, PM);
-}
-inline std::unique_ptr<TopoDS_Face> BRepPrim_Revolution_make_empty_lateral_face(const BRepPrim_Revolution& self_) {
-    return std::make_unique<TopoDS_Face>(self_.MakeEmptyLateralFace());
-}
-inline std::unique_ptr<TopoDS_Edge> BRepPrim_Revolution_make_empty_meridian_edge(const BRepPrim_Revolution& self_, Standard_Real Ang) {
-    return std::make_unique<TopoDS_Edge>(self_.MakeEmptyMeridianEdge(Ang));
-}
-inline std::unique_ptr<gp_Pnt2d> BRepPrim_Revolution_meridian_value(const BRepPrim_Revolution& self_, Standard_Real V) {
-    return std::make_unique<gp_Pnt2d>(self_.MeridianValue(V));
-}
-inline const BRepPrim_OneAxis& BRepPrim_Revolution_as_BRepPrim_OneAxis(const BRepPrim_Revolution& self_) { return static_cast<const BRepPrim_OneAxis&>(self_); }
-inline BRepPrim_OneAxis& BRepPrim_Revolution_as_BRepPrim_OneAxis_mut(BRepPrim_Revolution& self_) { return static_cast<BRepPrim_OneAxis&>(self_); }
-inline void BRepPrim_Revolution_inherited_SetMeridianOffset(BRepPrim_Revolution& self, Standard_Real MeridianOffset) {
-    self.SetMeridianOffset(MeridianOffset);
-}
-inline const gp_Ax2& BRepPrim_Revolution_inherited_Axes(const BRepPrim_Revolution& self) {
-    return self.Axes();
-}
-inline Standard_Real BRepPrim_Revolution_inherited_Angle(const BRepPrim_Revolution& self) {
-    return self.Angle();
-}
-inline Standard_Real BRepPrim_Revolution_inherited_VMin(const BRepPrim_Revolution& self) {
-    return self.VMin();
-}
-inline Standard_Real BRepPrim_Revolution_inherited_VMax(const BRepPrim_Revolution& self) {
-    return self.VMax();
-}
-inline bool BRepPrim_Revolution_inherited_MeridianOnAxis(const BRepPrim_Revolution& self, Standard_Real V) {
-    return self.MeridianOnAxis(V);
-}
-inline bool BRepPrim_Revolution_inherited_MeridianClosed(const BRepPrim_Revolution& self) {
-    return self.MeridianClosed();
-}
-inline bool BRepPrim_Revolution_inherited_VMaxInfinite(const BRepPrim_Revolution& self) {
-    return self.VMaxInfinite();
-}
-inline bool BRepPrim_Revolution_inherited_VMinInfinite(const BRepPrim_Revolution& self) {
-    return self.VMinInfinite();
-}
-inline bool BRepPrim_Revolution_inherited_HasTop(const BRepPrim_Revolution& self) {
-    return self.HasTop();
-}
-inline bool BRepPrim_Revolution_inherited_HasBottom(const BRepPrim_Revolution& self) {
-    return self.HasBottom();
-}
-inline bool BRepPrim_Revolution_inherited_HasSides(const BRepPrim_Revolution& self) {
-    return self.HasSides();
-}
-inline const TopoDS_Shell& BRepPrim_Revolution_inherited_Shell(BRepPrim_Revolution& self) {
-    return self.Shell();
-}
-inline const TopoDS_Face& BRepPrim_Revolution_inherited_LateralFace(BRepPrim_Revolution& self) {
-    return self.LateralFace();
-}
-inline const TopoDS_Face& BRepPrim_Revolution_inherited_TopFace(BRepPrim_Revolution& self) {
-    return self.TopFace();
-}
-inline const TopoDS_Face& BRepPrim_Revolution_inherited_BottomFace(BRepPrim_Revolution& self) {
-    return self.BottomFace();
-}
-inline const TopoDS_Face& BRepPrim_Revolution_inherited_StartFace(BRepPrim_Revolution& self) {
-    return self.StartFace();
-}
-inline const TopoDS_Face& BRepPrim_Revolution_inherited_EndFace(BRepPrim_Revolution& self) {
-    return self.EndFace();
-}
-inline const TopoDS_Wire& BRepPrim_Revolution_inherited_LateralWire(BRepPrim_Revolution& self) {
-    return self.LateralWire();
-}
-inline const TopoDS_Wire& BRepPrim_Revolution_inherited_LateralStartWire(BRepPrim_Revolution& self) {
-    return self.LateralStartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Revolution_inherited_LateralEndWire(BRepPrim_Revolution& self) {
-    return self.LateralEndWire();
-}
-inline const TopoDS_Wire& BRepPrim_Revolution_inherited_TopWire(BRepPrim_Revolution& self) {
-    return self.TopWire();
-}
-inline const TopoDS_Wire& BRepPrim_Revolution_inherited_BottomWire(BRepPrim_Revolution& self) {
-    return self.BottomWire();
-}
-inline const TopoDS_Wire& BRepPrim_Revolution_inherited_StartWire(BRepPrim_Revolution& self) {
-    return self.StartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Revolution_inherited_AxisStartWire(BRepPrim_Revolution& self) {
-    return self.AxisStartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Revolution_inherited_EndWire(BRepPrim_Revolution& self) {
-    return self.EndWire();
-}
-inline const TopoDS_Wire& BRepPrim_Revolution_inherited_AxisEndWire(BRepPrim_Revolution& self) {
-    return self.AxisEndWire();
-}
-inline const TopoDS_Edge& BRepPrim_Revolution_inherited_AxisEdge(BRepPrim_Revolution& self) {
-    return self.AxisEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Revolution_inherited_StartEdge(BRepPrim_Revolution& self) {
-    return self.StartEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Revolution_inherited_EndEdge(BRepPrim_Revolution& self) {
-    return self.EndEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Revolution_inherited_StartTopEdge(BRepPrim_Revolution& self) {
-    return self.StartTopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Revolution_inherited_StartBottomEdge(BRepPrim_Revolution& self) {
-    return self.StartBottomEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Revolution_inherited_EndTopEdge(BRepPrim_Revolution& self) {
-    return self.EndTopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Revolution_inherited_EndBottomEdge(BRepPrim_Revolution& self) {
-    return self.EndBottomEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Revolution_inherited_TopEdge(BRepPrim_Revolution& self) {
-    return self.TopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Revolution_inherited_BottomEdge(BRepPrim_Revolution& self) {
-    return self.BottomEdge();
-}
-inline const TopoDS_Vertex& BRepPrim_Revolution_inherited_AxisTopVertex(BRepPrim_Revolution& self) {
-    return self.AxisTopVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Revolution_inherited_AxisBottomVertex(BRepPrim_Revolution& self) {
-    return self.AxisBottomVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Revolution_inherited_TopStartVertex(BRepPrim_Revolution& self) {
-    return self.TopStartVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Revolution_inherited_TopEndVertex(BRepPrim_Revolution& self) {
-    return self.TopEndVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Revolution_inherited_BottomStartVertex(BRepPrim_Revolution& self) {
-    return self.BottomStartVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Revolution_inherited_BottomEndVertex(BRepPrim_Revolution& self) {
-    return self.BottomEndVertex();
-}
-
-// ========================
-// BRepPrim_OneAxis wrappers
-// ========================
-
-inline std::unique_ptr<TopoDS_Face> BRepPrim_OneAxis_make_empty_lateral_face(const BRepPrim_OneAxis& self_) {
-    return std::make_unique<TopoDS_Face>(self_.MakeEmptyLateralFace());
-}
-inline std::unique_ptr<TopoDS_Edge> BRepPrim_OneAxis_make_empty_meridian_edge(const BRepPrim_OneAxis& self_, Standard_Real Ang) {
-    return std::make_unique<TopoDS_Edge>(self_.MakeEmptyMeridianEdge(Ang));
-}
-inline std::unique_ptr<gp_Pnt2d> BRepPrim_OneAxis_meridian_value(const BRepPrim_OneAxis& self_, Standard_Real V) {
-    return std::make_unique<gp_Pnt2d>(self_.MeridianValue(V));
-}
-
-// ========================
-// BRepPrim_Builder wrappers
-// ========================
-
-inline std::unique_ptr<BRepPrim_Builder> BRepPrim_Builder_ctor() {
-    return std::make_unique<BRepPrim_Builder>();
-}
-inline std::unique_ptr<BRepPrim_Builder> BRepPrim_Builder_ctor_builder(const BRep_Builder& B) {
-    return std::make_unique<BRepPrim_Builder>(B);
-}
-
-// ========================
-// BRepPrim_Sphere wrappers
-// ========================
-
-inline std::unique_ptr<BRepPrim_Sphere> BRepPrim_Sphere_ctor_real(Standard_Real Radius) {
-    return std::make_unique<BRepPrim_Sphere>(Radius);
-}
-inline std::unique_ptr<BRepPrim_Sphere> BRepPrim_Sphere_ctor_pnt_real(const gp_Pnt& Center, Standard_Real Radius) {
-    return std::make_unique<BRepPrim_Sphere>(Center, Radius);
-}
-inline std::unique_ptr<BRepPrim_Sphere> BRepPrim_Sphere_ctor_ax2_real(const gp_Ax2& Axes, Standard_Real Radius) {
-    return std::make_unique<BRepPrim_Sphere>(Axes, Radius);
-}
-inline std::unique_ptr<TopoDS_Face> BRepPrim_Sphere_make_empty_lateral_face(const BRepPrim_Sphere& self_) {
-    return std::make_unique<TopoDS_Face>(self_.MakeEmptyLateralFace());
-}
-inline const BRepPrim_OneAxis& BRepPrim_Sphere_as_BRepPrim_OneAxis(const BRepPrim_Sphere& self_) { return static_cast<const BRepPrim_OneAxis&>(self_); }
-inline BRepPrim_OneAxis& BRepPrim_Sphere_as_BRepPrim_OneAxis_mut(BRepPrim_Sphere& self_) { return static_cast<BRepPrim_OneAxis&>(self_); }
-inline const BRepPrim_Revolution& BRepPrim_Sphere_as_BRepPrim_Revolution(const BRepPrim_Sphere& self_) { return static_cast<const BRepPrim_Revolution&>(self_); }
-inline BRepPrim_Revolution& BRepPrim_Sphere_as_BRepPrim_Revolution_mut(BRepPrim_Sphere& self_) { return static_cast<BRepPrim_Revolution&>(self_); }
-inline void BRepPrim_Sphere_inherited_SetMeridianOffset(BRepPrim_Sphere& self, Standard_Real MeridianOffset) {
-    self.SetMeridianOffset(MeridianOffset);
-}
-inline const gp_Ax2& BRepPrim_Sphere_inherited_Axes(const BRepPrim_Sphere& self) {
-    return self.Axes();
-}
-inline Standard_Real BRepPrim_Sphere_inherited_Angle(const BRepPrim_Sphere& self) {
-    return self.Angle();
-}
-inline Standard_Real BRepPrim_Sphere_inherited_VMin(const BRepPrim_Sphere& self) {
-    return self.VMin();
-}
-inline Standard_Real BRepPrim_Sphere_inherited_VMax(const BRepPrim_Sphere& self) {
-    return self.VMax();
-}
-inline std::unique_ptr<TopoDS_Edge> BRepPrim_Sphere_inherited_MakeEmptyMeridianEdge(const BRepPrim_Sphere& self, Standard_Real Ang) {
-    return std::make_unique<TopoDS_Edge>(self.MakeEmptyMeridianEdge(Ang));
-}
-inline void BRepPrim_Sphere_inherited_SetMeridianPCurve(const BRepPrim_Sphere& self, TopoDS_Edge& E, const TopoDS_Face& F) {
-    self.SetMeridianPCurve(E, F);
-}
-inline std::unique_ptr<gp_Pnt2d> BRepPrim_Sphere_inherited_MeridianValue(const BRepPrim_Sphere& self, Standard_Real V) {
-    return std::make_unique<gp_Pnt2d>(self.MeridianValue(V));
-}
-inline bool BRepPrim_Sphere_inherited_MeridianOnAxis(const BRepPrim_Sphere& self, Standard_Real V) {
-    return self.MeridianOnAxis(V);
-}
-inline bool BRepPrim_Sphere_inherited_MeridianClosed(const BRepPrim_Sphere& self) {
-    return self.MeridianClosed();
-}
-inline bool BRepPrim_Sphere_inherited_VMaxInfinite(const BRepPrim_Sphere& self) {
-    return self.VMaxInfinite();
-}
-inline bool BRepPrim_Sphere_inherited_VMinInfinite(const BRepPrim_Sphere& self) {
-    return self.VMinInfinite();
-}
-inline bool BRepPrim_Sphere_inherited_HasTop(const BRepPrim_Sphere& self) {
-    return self.HasTop();
-}
-inline bool BRepPrim_Sphere_inherited_HasBottom(const BRepPrim_Sphere& self) {
-    return self.HasBottom();
-}
-inline bool BRepPrim_Sphere_inherited_HasSides(const BRepPrim_Sphere& self) {
-    return self.HasSides();
-}
-inline const TopoDS_Shell& BRepPrim_Sphere_inherited_Shell(BRepPrim_Sphere& self) {
-    return self.Shell();
-}
-inline const TopoDS_Face& BRepPrim_Sphere_inherited_LateralFace(BRepPrim_Sphere& self) {
-    return self.LateralFace();
-}
-inline const TopoDS_Face& BRepPrim_Sphere_inherited_TopFace(BRepPrim_Sphere& self) {
-    return self.TopFace();
-}
-inline const TopoDS_Face& BRepPrim_Sphere_inherited_BottomFace(BRepPrim_Sphere& self) {
-    return self.BottomFace();
-}
-inline const TopoDS_Face& BRepPrim_Sphere_inherited_StartFace(BRepPrim_Sphere& self) {
-    return self.StartFace();
-}
-inline const TopoDS_Face& BRepPrim_Sphere_inherited_EndFace(BRepPrim_Sphere& self) {
-    return self.EndFace();
-}
-inline const TopoDS_Wire& BRepPrim_Sphere_inherited_LateralWire(BRepPrim_Sphere& self) {
-    return self.LateralWire();
-}
-inline const TopoDS_Wire& BRepPrim_Sphere_inherited_LateralStartWire(BRepPrim_Sphere& self) {
-    return self.LateralStartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Sphere_inherited_LateralEndWire(BRepPrim_Sphere& self) {
-    return self.LateralEndWire();
-}
-inline const TopoDS_Wire& BRepPrim_Sphere_inherited_TopWire(BRepPrim_Sphere& self) {
-    return self.TopWire();
-}
-inline const TopoDS_Wire& BRepPrim_Sphere_inherited_BottomWire(BRepPrim_Sphere& self) {
-    return self.BottomWire();
-}
-inline const TopoDS_Wire& BRepPrim_Sphere_inherited_StartWire(BRepPrim_Sphere& self) {
-    return self.StartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Sphere_inherited_AxisStartWire(BRepPrim_Sphere& self) {
-    return self.AxisStartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Sphere_inherited_EndWire(BRepPrim_Sphere& self) {
-    return self.EndWire();
-}
-inline const TopoDS_Wire& BRepPrim_Sphere_inherited_AxisEndWire(BRepPrim_Sphere& self) {
-    return self.AxisEndWire();
-}
-inline const TopoDS_Edge& BRepPrim_Sphere_inherited_AxisEdge(BRepPrim_Sphere& self) {
-    return self.AxisEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Sphere_inherited_StartEdge(BRepPrim_Sphere& self) {
-    return self.StartEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Sphere_inherited_EndEdge(BRepPrim_Sphere& self) {
-    return self.EndEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Sphere_inherited_StartTopEdge(BRepPrim_Sphere& self) {
-    return self.StartTopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Sphere_inherited_StartBottomEdge(BRepPrim_Sphere& self) {
-    return self.StartBottomEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Sphere_inherited_EndTopEdge(BRepPrim_Sphere& self) {
-    return self.EndTopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Sphere_inherited_EndBottomEdge(BRepPrim_Sphere& self) {
-    return self.EndBottomEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Sphere_inherited_TopEdge(BRepPrim_Sphere& self) {
-    return self.TopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Sphere_inherited_BottomEdge(BRepPrim_Sphere& self) {
-    return self.BottomEdge();
-}
-inline const TopoDS_Vertex& BRepPrim_Sphere_inherited_AxisTopVertex(BRepPrim_Sphere& self) {
-    return self.AxisTopVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Sphere_inherited_AxisBottomVertex(BRepPrim_Sphere& self) {
-    return self.AxisBottomVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Sphere_inherited_TopStartVertex(BRepPrim_Sphere& self) {
-    return self.TopStartVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Sphere_inherited_TopEndVertex(BRepPrim_Sphere& self) {
-    return self.TopEndVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Sphere_inherited_BottomStartVertex(BRepPrim_Sphere& self) {
-    return self.BottomStartVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Sphere_inherited_BottomEndVertex(BRepPrim_Sphere& self) {
-    return self.BottomEndVertex();
-}
-
-// ========================
-// BRepSweep_Revol wrappers
-// ========================
-
-inline std::unique_ptr<BRepSweep_Revol> BRepSweep_Revol_ctor_shape_ax1_real_bool(const TopoDS_Shape& S, const gp_Ax1& A, Standard_Real D, Standard_Boolean C) {
-    return std::make_unique<BRepSweep_Revol>(S, A, D, C);
-}
-inline std::unique_ptr<BRepSweep_Revol> BRepSweep_Revol_ctor_shape_ax1_bool(const TopoDS_Shape& S, const gp_Ax1& A, Standard_Boolean C) {
-    return std::make_unique<BRepSweep_Revol>(S, A, C);
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Revol_shape(BRepSweep_Revol& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.Shape());
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Revol_shape_shape(BRepSweep_Revol& self_, const TopoDS_Shape& aGenS) {
-    return std::make_unique<TopoDS_Shape>(self_.Shape(aGenS));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Revol_first_shape(BRepSweep_Revol& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.FirstShape());
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Revol_first_shape_shape(BRepSweep_Revol& self_, const TopoDS_Shape& aGenS) {
-    return std::make_unique<TopoDS_Shape>(self_.FirstShape(aGenS));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Revol_last_shape(BRepSweep_Revol& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.LastShape());
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Revol_last_shape_shape(BRepSweep_Revol& self_, const TopoDS_Shape& aGenS) {
-    return std::make_unique<TopoDS_Shape>(self_.LastShape(aGenS));
-}
-inline std::unique_ptr<gp_Ax1> BRepSweep_Revol_axe(const BRepSweep_Revol& self_) {
-    return std::make_unique<gp_Ax1>(self_.Axe());
-}
-
-// ========================
-// BRepSweep_Rotation wrappers
-// ========================
-
-inline std::unique_ptr<BRepSweep_Rotation> BRepSweep_Rotation_ctor_shape_numshape_location_ax1_real_bool(const TopoDS_Shape& S, const Sweep_NumShape& N, const TopLoc_Location& L, const gp_Ax1& A, Standard_Real D, Standard_Boolean C) {
-    return std::make_unique<BRepSweep_Rotation>(S, N, L, A, D, C);
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Rotation_make_empty_vertex(BRepSweep_Rotation& self_, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirV) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyVertex(aGenV, aDirV));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Rotation_make_empty_directing_edge(BRepSweep_Rotation& self_, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirE) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyDirectingEdge(aGenV, aDirE));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Rotation_make_empty_generating_edge(BRepSweep_Rotation& self_, const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirV) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyGeneratingEdge(aGenE, aDirV));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Rotation_make_empty_face(BRepSweep_Rotation& self_, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyFace(aGenS, aDirS));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Rotation_split_shell(const BRepSweep_Rotation& self_, const TopoDS_Shape& aNewShape) {
-    return std::make_unique<TopoDS_Shape>(self_.SplitShell(aNewShape));
-}
-inline std::unique_ptr<gp_Ax1> BRepSweep_Rotation_axe(const BRepSweep_Rotation& self_) {
-    return std::make_unique<gp_Ax1>(self_.Axe());
-}
-inline const BRepSweep_NumLinearRegularSweep& BRepSweep_Rotation_as_BRepSweep_NumLinearRegularSweep(const BRepSweep_Rotation& self_) { return static_cast<const BRepSweep_NumLinearRegularSweep&>(self_); }
-inline BRepSweep_NumLinearRegularSweep& BRepSweep_Rotation_as_BRepSweep_NumLinearRegularSweep_mut(BRepSweep_Rotation& self_) { return static_cast<BRepSweep_NumLinearRegularSweep&>(self_); }
-inline const BRepSweep_Trsf& BRepSweep_Rotation_as_BRepSweep_Trsf(const BRepSweep_Rotation& self_) { return static_cast<const BRepSweep_Trsf&>(self_); }
-inline BRepSweep_Trsf& BRepSweep_Rotation_as_BRepSweep_Trsf_mut(BRepSweep_Rotation& self_) { return static_cast<BRepSweep_Trsf&>(self_); }
-inline void BRepSweep_Rotation_inherited_SetContinuity(BRepSweep_Rotation& self, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
-    self.SetContinuity(aGenS, aDirS);
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Rotation_inherited_Shape(BRepSweep_Rotation& self, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
-    return std::make_unique<TopoDS_Shape>(self.Shape(aGenS, aDirS));
-}
-inline bool BRepSweep_Rotation_inherited_IsUsed(const BRepSweep_Rotation& self, const TopoDS_Shape& aGenS) {
-    return self.IsUsed(aGenS);
-}
-inline bool BRepSweep_Rotation_inherited_GenIsUsed(const BRepSweep_Rotation& self, const TopoDS_Shape& theS) {
-    return self.GenIsUsed(theS);
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Rotation_inherited_FirstShape(BRepSweep_Rotation& self) {
-    return std::make_unique<TopoDS_Shape>(self.FirstShape());
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Rotation_inherited_LastShape(BRepSweep_Rotation& self) {
-    return std::make_unique<TopoDS_Shape>(self.LastShape());
-}
-inline bool BRepSweep_Rotation_inherited_Closed(const BRepSweep_Rotation& self) {
-    return self.Closed();
-}
-inline void BRepSweep_Rotation_inherited_Init(BRepSweep_Rotation& self) {
-    self.Init();
-}
-inline bool BRepSweep_Rotation_inherited_Process(BRepSweep_Rotation& self, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirV) {
-    return self.Process(aGenS, aDirV);
-}
-
-// ========================
-// BRepSweep_Trsf wrappers
-// ========================
-
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Trsf_make_empty_vertex(BRepSweep_Trsf& self_, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirV) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyVertex(aGenV, aDirV));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Trsf_make_empty_directing_edge(BRepSweep_Trsf& self_, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirE) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyDirectingEdge(aGenV, aDirE));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Trsf_make_empty_generating_edge(BRepSweep_Trsf& self_, const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirV) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyGeneratingEdge(aGenE, aDirV));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Trsf_make_empty_face(BRepSweep_Trsf& self_, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyFace(aGenS, aDirS));
-}
-inline const BRepSweep_NumLinearRegularSweep& BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep(const BRepSweep_Trsf& self_) { return static_cast<const BRepSweep_NumLinearRegularSweep&>(self_); }
-inline BRepSweep_NumLinearRegularSweep& BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep_mut(BRepSweep_Trsf& self_) { return static_cast<BRepSweep_NumLinearRegularSweep&>(self_); }
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Trsf_inherited_SplitShell(const BRepSweep_Trsf& self, const TopoDS_Shape& aNewShape) {
-    return std::make_unique<TopoDS_Shape>(self.SplitShell(aNewShape));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Trsf_inherited_Shape(BRepSweep_Trsf& self, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
-    return std::make_unique<TopoDS_Shape>(self.Shape(aGenS, aDirS));
-}
-inline bool BRepSweep_Trsf_inherited_IsUsed(const BRepSweep_Trsf& self, const TopoDS_Shape& aGenS) {
-    return self.IsUsed(aGenS);
-}
-inline bool BRepSweep_Trsf_inherited_GenIsUsed(const BRepSweep_Trsf& self, const TopoDS_Shape& theS) {
-    return self.GenIsUsed(theS);
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Trsf_inherited_FirstShape(BRepSweep_Trsf& self) {
-    return std::make_unique<TopoDS_Shape>(self.FirstShape());
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Trsf_inherited_LastShape(BRepSweep_Trsf& self) {
-    return std::make_unique<TopoDS_Shape>(self.LastShape());
-}
-inline bool BRepSweep_Trsf_inherited_Closed(const BRepSweep_Trsf& self) {
-    return self.Closed();
-}
-
-// ========================
-// BRepSweep_NumLinearRegularSweep wrappers
-// ========================
-
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_make_empty_vertex(BRepSweep_NumLinearRegularSweep& self_, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirV) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyVertex(aGenV, aDirV));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_make_empty_directing_edge(BRepSweep_NumLinearRegularSweep& self_, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirE) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyDirectingEdge(aGenV, aDirE));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_make_empty_generating_edge(BRepSweep_NumLinearRegularSweep& self_, const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirV) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyGeneratingEdge(aGenE, aDirV));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_make_empty_face(BRepSweep_NumLinearRegularSweep& self_, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyFace(aGenS, aDirS));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_split_shell(const BRepSweep_NumLinearRegularSweep& self_, const TopoDS_Shape& aNewShape) {
-    return std::make_unique<TopoDS_Shape>(self_.SplitShell(aNewShape));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_shape_shape_numshape(BRepSweep_NumLinearRegularSweep& self_, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
-    return std::make_unique<TopoDS_Shape>(self_.Shape(aGenS, aDirS));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_shape_shape(BRepSweep_NumLinearRegularSweep& self_, const TopoDS_Shape& aGenS) {
-    return std::make_unique<TopoDS_Shape>(self_.Shape(aGenS));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_shape(BRepSweep_NumLinearRegularSweep& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.Shape());
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_first_shape(BRepSweep_NumLinearRegularSweep& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.FirstShape());
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_last_shape(BRepSweep_NumLinearRegularSweep& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.LastShape());
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_first_shape_shape(BRepSweep_NumLinearRegularSweep& self_, const TopoDS_Shape& aGenS) {
-    return std::make_unique<TopoDS_Shape>(self_.FirstShape(aGenS));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_NumLinearRegularSweep_last_shape_shape(BRepSweep_NumLinearRegularSweep& self_, const TopoDS_Shape& aGenS) {
-    return std::make_unique<TopoDS_Shape>(self_.LastShape(aGenS));
-}
-
-// ========================
-// BRepSweep_Builder wrappers
-// ========================
-
-inline std::unique_ptr<BRepSweep_Builder> BRepSweep_Builder_ctor_builder(const BRep_Builder& aBuilder) {
-    return std::make_unique<BRepSweep_Builder>(aBuilder);
-}
-
-// ========================
-// BRepSweep_Tool wrappers
-// ========================
-
-inline std::unique_ptr<BRepSweep_Tool> BRepSweep_Tool_ctor_shape(const TopoDS_Shape& aShape) {
-    return std::make_unique<BRepSweep_Tool>(aShape);
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Tool_shape(const BRepSweep_Tool& self_, Standard_Integer anIndex) {
-    return std::make_unique<TopoDS_Shape>(self_.Shape(anIndex));
-}
-
-// ========================
-// Sweep_NumShapeTool wrappers
-// ========================
-
-inline std::unique_ptr<Sweep_NumShapeTool> Sweep_NumShapeTool_ctor_numshape(const Sweep_NumShape& aShape) {
-    return std::make_unique<Sweep_NumShapeTool>(aShape);
-}
-inline std::unique_ptr<Sweep_NumShape> Sweep_NumShapeTool_shape(const Sweep_NumShapeTool& self_, Standard_Integer anIndex) {
-    return std::make_unique<Sweep_NumShape>(self_.Shape(anIndex));
-}
-inline std::unique_ptr<Sweep_NumShape> Sweep_NumShapeTool_first_vertex(const Sweep_NumShapeTool& self_) {
-    return std::make_unique<Sweep_NumShape>(self_.FirstVertex());
-}
-inline std::unique_ptr<Sweep_NumShape> Sweep_NumShapeTool_last_vertex(const Sweep_NumShapeTool& self_) {
-    return std::make_unique<Sweep_NumShape>(self_.LastVertex());
-}
-
-// ========================
-// Sweep_NumShape wrappers
-// ========================
-
-inline std::unique_ptr<Sweep_NumShape> Sweep_NumShape_ctor() {
-    return std::make_unique<Sweep_NumShape>();
-}
-
-// ========================
-// BRepSweep_Prism wrappers
-// ========================
-
-inline std::unique_ptr<BRepSweep_Prism> BRepSweep_Prism_ctor_shape_vec_bool2(const TopoDS_Shape& S, const gp_Vec& V, Standard_Boolean Copy, Standard_Boolean Canonize) {
-    return std::make_unique<BRepSweep_Prism>(S, V, Copy, Canonize);
-}
-inline std::unique_ptr<BRepSweep_Prism> BRepSweep_Prism_ctor_shape_dir_bool3(const TopoDS_Shape& S, const gp_Dir& D, Standard_Boolean Inf, Standard_Boolean Copy, Standard_Boolean Canonize) {
-    return std::make_unique<BRepSweep_Prism>(S, D, Inf, Copy, Canonize);
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Prism_shape(BRepSweep_Prism& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.Shape());
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Prism_shape_shape(BRepSweep_Prism& self_, const TopoDS_Shape& aGenS) {
-    return std::make_unique<TopoDS_Shape>(self_.Shape(aGenS));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Prism_first_shape(BRepSweep_Prism& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.FirstShape());
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Prism_first_shape_shape(BRepSweep_Prism& self_, const TopoDS_Shape& aGenS) {
-    return std::make_unique<TopoDS_Shape>(self_.FirstShape(aGenS));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Prism_last_shape(BRepSweep_Prism& self_) {
-    return std::make_unique<TopoDS_Shape>(self_.LastShape());
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Prism_last_shape_shape(BRepSweep_Prism& self_, const TopoDS_Shape& aGenS) {
-    return std::make_unique<TopoDS_Shape>(self_.LastShape(aGenS));
-}
-inline std::unique_ptr<gp_Vec> BRepSweep_Prism_vec(const BRepSweep_Prism& self_) {
-    return std::make_unique<gp_Vec>(self_.Vec());
-}
-
-// ========================
-// BRepSweep_Translation wrappers
-// ========================
-
-inline std::unique_ptr<BRepSweep_Translation> BRepSweep_Translation_ctor_shape_numshape_location_vec_bool2(const TopoDS_Shape& S, const Sweep_NumShape& N, const TopLoc_Location& L, const gp_Vec& V, Standard_Boolean C, Standard_Boolean Canonize) {
-    return std::make_unique<BRepSweep_Translation>(S, N, L, V, C, Canonize);
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Translation_make_empty_vertex(BRepSweep_Translation& self_, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirV) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyVertex(aGenV, aDirV));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Translation_make_empty_directing_edge(BRepSweep_Translation& self_, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirE) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyDirectingEdge(aGenV, aDirE));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Translation_make_empty_generating_edge(BRepSweep_Translation& self_, const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirV) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyGeneratingEdge(aGenE, aDirV));
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Translation_make_empty_face(BRepSweep_Translation& self_, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
-    return std::make_unique<TopoDS_Shape>(self_.MakeEmptyFace(aGenS, aDirS));
-}
-inline std::unique_ptr<gp_Vec> BRepSweep_Translation_vec(const BRepSweep_Translation& self_) {
-    return std::make_unique<gp_Vec>(self_.Vec());
-}
-inline const BRepSweep_NumLinearRegularSweep& BRepSweep_Translation_as_BRepSweep_NumLinearRegularSweep(const BRepSweep_Translation& self_) { return static_cast<const BRepSweep_NumLinearRegularSweep&>(self_); }
-inline BRepSweep_NumLinearRegularSweep& BRepSweep_Translation_as_BRepSweep_NumLinearRegularSweep_mut(BRepSweep_Translation& self_) { return static_cast<BRepSweep_NumLinearRegularSweep&>(self_); }
-inline const BRepSweep_Trsf& BRepSweep_Translation_as_BRepSweep_Trsf(const BRepSweep_Translation& self_) { return static_cast<const BRepSweep_Trsf&>(self_); }
-inline BRepSweep_Trsf& BRepSweep_Translation_as_BRepSweep_Trsf_mut(BRepSweep_Translation& self_) { return static_cast<BRepSweep_Trsf&>(self_); }
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Translation_inherited_SplitShell(const BRepSweep_Translation& self, const TopoDS_Shape& aNewShape) {
-    return std::make_unique<TopoDS_Shape>(self.SplitShell(aNewShape));
-}
-inline void BRepSweep_Translation_inherited_SetContinuity(BRepSweep_Translation& self, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
-    self.SetContinuity(aGenS, aDirS);
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Translation_inherited_Shape(BRepSweep_Translation& self, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) {
-    return std::make_unique<TopoDS_Shape>(self.Shape(aGenS, aDirS));
-}
-inline bool BRepSweep_Translation_inherited_IsUsed(const BRepSweep_Translation& self, const TopoDS_Shape& aGenS) {
-    return self.IsUsed(aGenS);
-}
-inline bool BRepSweep_Translation_inherited_GenIsUsed(const BRepSweep_Translation& self, const TopoDS_Shape& theS) {
-    return self.GenIsUsed(theS);
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Translation_inherited_FirstShape(BRepSweep_Translation& self) {
-    return std::make_unique<TopoDS_Shape>(self.FirstShape());
-}
-inline std::unique_ptr<TopoDS_Shape> BRepSweep_Translation_inherited_LastShape(BRepSweep_Translation& self) {
-    return std::make_unique<TopoDS_Shape>(self.LastShape());
-}
-inline bool BRepSweep_Translation_inherited_Closed(const BRepSweep_Translation& self) {
-    return self.Closed();
-}
-inline void BRepSweep_Translation_inherited_Init(BRepSweep_Translation& self) {
-    self.Init();
-}
-inline bool BRepSweep_Translation_inherited_Process(BRepSweep_Translation& self, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirV) {
-    return self.Process(aGenS, aDirV);
-}
-
-// ========================
-// BRepPrim_Cylinder wrappers
-// ========================
-
-inline std::unique_ptr<BRepPrim_Cylinder> BRepPrim_Cylinder_ctor_ax2_real2(const gp_Ax2& Position, Standard_Real Radius, Standard_Real Height) {
-    return std::make_unique<BRepPrim_Cylinder>(Position, Radius, Height);
-}
-inline std::unique_ptr<BRepPrim_Cylinder> BRepPrim_Cylinder_ctor_real(Standard_Real Radius) {
-    return std::make_unique<BRepPrim_Cylinder>(Radius);
-}
-inline std::unique_ptr<BRepPrim_Cylinder> BRepPrim_Cylinder_ctor_pnt_real(const gp_Pnt& Center, Standard_Real Radius) {
-    return std::make_unique<BRepPrim_Cylinder>(Center, Radius);
-}
-inline std::unique_ptr<BRepPrim_Cylinder> BRepPrim_Cylinder_ctor_ax2_real(const gp_Ax2& Axes, Standard_Real Radius) {
-    return std::make_unique<BRepPrim_Cylinder>(Axes, Radius);
-}
-inline std::unique_ptr<BRepPrim_Cylinder> BRepPrim_Cylinder_ctor_real2(Standard_Real R, Standard_Real H) {
-    return std::make_unique<BRepPrim_Cylinder>(R, H);
-}
-inline std::unique_ptr<BRepPrim_Cylinder> BRepPrim_Cylinder_ctor_pnt_real2(const gp_Pnt& Center, Standard_Real R, Standard_Real H) {
-    return std::make_unique<BRepPrim_Cylinder>(Center, R, H);
-}
-inline std::unique_ptr<TopoDS_Face> BRepPrim_Cylinder_make_empty_lateral_face(const BRepPrim_Cylinder& self_) {
-    return std::make_unique<TopoDS_Face>(self_.MakeEmptyLateralFace());
-}
-inline const BRepPrim_OneAxis& BRepPrim_Cylinder_as_BRepPrim_OneAxis(const BRepPrim_Cylinder& self_) { return static_cast<const BRepPrim_OneAxis&>(self_); }
-inline BRepPrim_OneAxis& BRepPrim_Cylinder_as_BRepPrim_OneAxis_mut(BRepPrim_Cylinder& self_) { return static_cast<BRepPrim_OneAxis&>(self_); }
-inline const BRepPrim_Revolution& BRepPrim_Cylinder_as_BRepPrim_Revolution(const BRepPrim_Cylinder& self_) { return static_cast<const BRepPrim_Revolution&>(self_); }
-inline BRepPrim_Revolution& BRepPrim_Cylinder_as_BRepPrim_Revolution_mut(BRepPrim_Cylinder& self_) { return static_cast<BRepPrim_Revolution&>(self_); }
-inline void BRepPrim_Cylinder_inherited_SetMeridianOffset(BRepPrim_Cylinder& self, Standard_Real MeridianOffset) {
-    self.SetMeridianOffset(MeridianOffset);
-}
-inline const gp_Ax2& BRepPrim_Cylinder_inherited_Axes(const BRepPrim_Cylinder& self) {
-    return self.Axes();
-}
-inline Standard_Real BRepPrim_Cylinder_inherited_Angle(const BRepPrim_Cylinder& self) {
-    return self.Angle();
-}
-inline Standard_Real BRepPrim_Cylinder_inherited_VMin(const BRepPrim_Cylinder& self) {
-    return self.VMin();
-}
-inline Standard_Real BRepPrim_Cylinder_inherited_VMax(const BRepPrim_Cylinder& self) {
-    return self.VMax();
-}
-inline std::unique_ptr<TopoDS_Edge> BRepPrim_Cylinder_inherited_MakeEmptyMeridianEdge(const BRepPrim_Cylinder& self, Standard_Real Ang) {
-    return std::make_unique<TopoDS_Edge>(self.MakeEmptyMeridianEdge(Ang));
-}
-inline void BRepPrim_Cylinder_inherited_SetMeridianPCurve(const BRepPrim_Cylinder& self, TopoDS_Edge& E, const TopoDS_Face& F) {
-    self.SetMeridianPCurve(E, F);
-}
-inline std::unique_ptr<gp_Pnt2d> BRepPrim_Cylinder_inherited_MeridianValue(const BRepPrim_Cylinder& self, Standard_Real V) {
-    return std::make_unique<gp_Pnt2d>(self.MeridianValue(V));
-}
-inline bool BRepPrim_Cylinder_inherited_MeridianOnAxis(const BRepPrim_Cylinder& self, Standard_Real V) {
-    return self.MeridianOnAxis(V);
-}
-inline bool BRepPrim_Cylinder_inherited_MeridianClosed(const BRepPrim_Cylinder& self) {
-    return self.MeridianClosed();
-}
-inline bool BRepPrim_Cylinder_inherited_VMaxInfinite(const BRepPrim_Cylinder& self) {
-    return self.VMaxInfinite();
-}
-inline bool BRepPrim_Cylinder_inherited_VMinInfinite(const BRepPrim_Cylinder& self) {
-    return self.VMinInfinite();
-}
-inline bool BRepPrim_Cylinder_inherited_HasTop(const BRepPrim_Cylinder& self) {
-    return self.HasTop();
-}
-inline bool BRepPrim_Cylinder_inherited_HasBottom(const BRepPrim_Cylinder& self) {
-    return self.HasBottom();
-}
-inline bool BRepPrim_Cylinder_inherited_HasSides(const BRepPrim_Cylinder& self) {
-    return self.HasSides();
-}
-inline const TopoDS_Shell& BRepPrim_Cylinder_inherited_Shell(BRepPrim_Cylinder& self) {
-    return self.Shell();
-}
-inline const TopoDS_Face& BRepPrim_Cylinder_inherited_LateralFace(BRepPrim_Cylinder& self) {
-    return self.LateralFace();
-}
-inline const TopoDS_Face& BRepPrim_Cylinder_inherited_TopFace(BRepPrim_Cylinder& self) {
-    return self.TopFace();
-}
-inline const TopoDS_Face& BRepPrim_Cylinder_inherited_BottomFace(BRepPrim_Cylinder& self) {
-    return self.BottomFace();
-}
-inline const TopoDS_Face& BRepPrim_Cylinder_inherited_StartFace(BRepPrim_Cylinder& self) {
-    return self.StartFace();
-}
-inline const TopoDS_Face& BRepPrim_Cylinder_inherited_EndFace(BRepPrim_Cylinder& self) {
-    return self.EndFace();
-}
-inline const TopoDS_Wire& BRepPrim_Cylinder_inherited_LateralWire(BRepPrim_Cylinder& self) {
-    return self.LateralWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cylinder_inherited_LateralStartWire(BRepPrim_Cylinder& self) {
-    return self.LateralStartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cylinder_inherited_LateralEndWire(BRepPrim_Cylinder& self) {
-    return self.LateralEndWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cylinder_inherited_TopWire(BRepPrim_Cylinder& self) {
-    return self.TopWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cylinder_inherited_BottomWire(BRepPrim_Cylinder& self) {
-    return self.BottomWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cylinder_inherited_StartWire(BRepPrim_Cylinder& self) {
-    return self.StartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cylinder_inherited_AxisStartWire(BRepPrim_Cylinder& self) {
-    return self.AxisStartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cylinder_inherited_EndWire(BRepPrim_Cylinder& self) {
-    return self.EndWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cylinder_inherited_AxisEndWire(BRepPrim_Cylinder& self) {
-    return self.AxisEndWire();
-}
-inline const TopoDS_Edge& BRepPrim_Cylinder_inherited_AxisEdge(BRepPrim_Cylinder& self) {
-    return self.AxisEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cylinder_inherited_StartEdge(BRepPrim_Cylinder& self) {
-    return self.StartEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cylinder_inherited_EndEdge(BRepPrim_Cylinder& self) {
-    return self.EndEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cylinder_inherited_StartTopEdge(BRepPrim_Cylinder& self) {
-    return self.StartTopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cylinder_inherited_StartBottomEdge(BRepPrim_Cylinder& self) {
-    return self.StartBottomEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cylinder_inherited_EndTopEdge(BRepPrim_Cylinder& self) {
-    return self.EndTopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cylinder_inherited_EndBottomEdge(BRepPrim_Cylinder& self) {
-    return self.EndBottomEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cylinder_inherited_TopEdge(BRepPrim_Cylinder& self) {
-    return self.TopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cylinder_inherited_BottomEdge(BRepPrim_Cylinder& self) {
-    return self.BottomEdge();
-}
-inline const TopoDS_Vertex& BRepPrim_Cylinder_inherited_AxisTopVertex(BRepPrim_Cylinder& self) {
-    return self.AxisTopVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Cylinder_inherited_AxisBottomVertex(BRepPrim_Cylinder& self) {
-    return self.AxisBottomVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Cylinder_inherited_TopStartVertex(BRepPrim_Cylinder& self) {
-    return self.TopStartVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Cylinder_inherited_TopEndVertex(BRepPrim_Cylinder& self) {
-    return self.TopEndVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Cylinder_inherited_BottomStartVertex(BRepPrim_Cylinder& self) {
-    return self.BottomStartVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Cylinder_inherited_BottomEndVertex(BRepPrim_Cylinder& self) {
-    return self.BottomEndVertex();
-}
-
-// ========================
-// BRepPrim_Cone wrappers
-// ========================
-
-inline std::unique_ptr<BRepPrim_Cone> BRepPrim_Cone_ctor_real_ax2_real2(Standard_Real Angle, const gp_Ax2& Position, Standard_Real Height, Standard_Real Radius) {
-    return std::make_unique<BRepPrim_Cone>(Angle, Position, Height, Radius);
-}
-inline std::unique_ptr<BRepPrim_Cone> BRepPrim_Cone_ctor_real(Standard_Real Angle) {
-    return std::make_unique<BRepPrim_Cone>(Angle);
-}
-inline std::unique_ptr<BRepPrim_Cone> BRepPrim_Cone_ctor_real_pnt(Standard_Real Angle, const gp_Pnt& Apex) {
-    return std::make_unique<BRepPrim_Cone>(Angle, Apex);
-}
-inline std::unique_ptr<BRepPrim_Cone> BRepPrim_Cone_ctor_real_ax2(Standard_Real Angle, const gp_Ax2& Axes) {
-    return std::make_unique<BRepPrim_Cone>(Angle, Axes);
-}
-inline std::unique_ptr<BRepPrim_Cone> BRepPrim_Cone_ctor_real3(Standard_Real R1, Standard_Real R2, Standard_Real H) {
-    return std::make_unique<BRepPrim_Cone>(R1, R2, H);
-}
-inline std::unique_ptr<BRepPrim_Cone> BRepPrim_Cone_ctor_pnt_real3(const gp_Pnt& Center, Standard_Real R1, Standard_Real R2, Standard_Real H) {
-    return std::make_unique<BRepPrim_Cone>(Center, R1, R2, H);
-}
-inline std::unique_ptr<BRepPrim_Cone> BRepPrim_Cone_ctor_ax2_real3(const gp_Ax2& Axes, Standard_Real R1, Standard_Real R2, Standard_Real H) {
-    return std::make_unique<BRepPrim_Cone>(Axes, R1, R2, H);
-}
-inline std::unique_ptr<TopoDS_Face> BRepPrim_Cone_make_empty_lateral_face(const BRepPrim_Cone& self_) {
-    return std::make_unique<TopoDS_Face>(self_.MakeEmptyLateralFace());
-}
-inline const BRepPrim_OneAxis& BRepPrim_Cone_as_BRepPrim_OneAxis(const BRepPrim_Cone& self_) { return static_cast<const BRepPrim_OneAxis&>(self_); }
-inline BRepPrim_OneAxis& BRepPrim_Cone_as_BRepPrim_OneAxis_mut(BRepPrim_Cone& self_) { return static_cast<BRepPrim_OneAxis&>(self_); }
-inline const BRepPrim_Revolution& BRepPrim_Cone_as_BRepPrim_Revolution(const BRepPrim_Cone& self_) { return static_cast<const BRepPrim_Revolution&>(self_); }
-inline BRepPrim_Revolution& BRepPrim_Cone_as_BRepPrim_Revolution_mut(BRepPrim_Cone& self_) { return static_cast<BRepPrim_Revolution&>(self_); }
-inline void BRepPrim_Cone_inherited_SetMeridianOffset(BRepPrim_Cone& self, Standard_Real MeridianOffset) {
-    self.SetMeridianOffset(MeridianOffset);
-}
-inline const gp_Ax2& BRepPrim_Cone_inherited_Axes(const BRepPrim_Cone& self) {
-    return self.Axes();
-}
-inline Standard_Real BRepPrim_Cone_inherited_Angle(const BRepPrim_Cone& self) {
-    return self.Angle();
-}
-inline Standard_Real BRepPrim_Cone_inherited_VMin(const BRepPrim_Cone& self) {
-    return self.VMin();
-}
-inline Standard_Real BRepPrim_Cone_inherited_VMax(const BRepPrim_Cone& self) {
-    return self.VMax();
-}
-inline std::unique_ptr<TopoDS_Edge> BRepPrim_Cone_inherited_MakeEmptyMeridianEdge(const BRepPrim_Cone& self, Standard_Real Ang) {
-    return std::make_unique<TopoDS_Edge>(self.MakeEmptyMeridianEdge(Ang));
-}
-inline void BRepPrim_Cone_inherited_SetMeridianPCurve(const BRepPrim_Cone& self, TopoDS_Edge& E, const TopoDS_Face& F) {
-    self.SetMeridianPCurve(E, F);
-}
-inline std::unique_ptr<gp_Pnt2d> BRepPrim_Cone_inherited_MeridianValue(const BRepPrim_Cone& self, Standard_Real V) {
-    return std::make_unique<gp_Pnt2d>(self.MeridianValue(V));
-}
-inline bool BRepPrim_Cone_inherited_MeridianOnAxis(const BRepPrim_Cone& self, Standard_Real V) {
-    return self.MeridianOnAxis(V);
-}
-inline bool BRepPrim_Cone_inherited_MeridianClosed(const BRepPrim_Cone& self) {
-    return self.MeridianClosed();
-}
-inline bool BRepPrim_Cone_inherited_VMaxInfinite(const BRepPrim_Cone& self) {
-    return self.VMaxInfinite();
-}
-inline bool BRepPrim_Cone_inherited_VMinInfinite(const BRepPrim_Cone& self) {
-    return self.VMinInfinite();
-}
-inline bool BRepPrim_Cone_inherited_HasTop(const BRepPrim_Cone& self) {
-    return self.HasTop();
-}
-inline bool BRepPrim_Cone_inherited_HasBottom(const BRepPrim_Cone& self) {
-    return self.HasBottom();
-}
-inline bool BRepPrim_Cone_inherited_HasSides(const BRepPrim_Cone& self) {
-    return self.HasSides();
-}
-inline const TopoDS_Shell& BRepPrim_Cone_inherited_Shell(BRepPrim_Cone& self) {
-    return self.Shell();
-}
-inline const TopoDS_Face& BRepPrim_Cone_inherited_LateralFace(BRepPrim_Cone& self) {
-    return self.LateralFace();
-}
-inline const TopoDS_Face& BRepPrim_Cone_inherited_TopFace(BRepPrim_Cone& self) {
-    return self.TopFace();
-}
-inline const TopoDS_Face& BRepPrim_Cone_inherited_BottomFace(BRepPrim_Cone& self) {
-    return self.BottomFace();
-}
-inline const TopoDS_Face& BRepPrim_Cone_inherited_StartFace(BRepPrim_Cone& self) {
-    return self.StartFace();
-}
-inline const TopoDS_Face& BRepPrim_Cone_inherited_EndFace(BRepPrim_Cone& self) {
-    return self.EndFace();
-}
-inline const TopoDS_Wire& BRepPrim_Cone_inherited_LateralWire(BRepPrim_Cone& self) {
-    return self.LateralWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cone_inherited_LateralStartWire(BRepPrim_Cone& self) {
-    return self.LateralStartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cone_inherited_LateralEndWire(BRepPrim_Cone& self) {
-    return self.LateralEndWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cone_inherited_TopWire(BRepPrim_Cone& self) {
-    return self.TopWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cone_inherited_BottomWire(BRepPrim_Cone& self) {
-    return self.BottomWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cone_inherited_StartWire(BRepPrim_Cone& self) {
-    return self.StartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cone_inherited_AxisStartWire(BRepPrim_Cone& self) {
-    return self.AxisStartWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cone_inherited_EndWire(BRepPrim_Cone& self) {
-    return self.EndWire();
-}
-inline const TopoDS_Wire& BRepPrim_Cone_inherited_AxisEndWire(BRepPrim_Cone& self) {
-    return self.AxisEndWire();
-}
-inline const TopoDS_Edge& BRepPrim_Cone_inherited_AxisEdge(BRepPrim_Cone& self) {
-    return self.AxisEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cone_inherited_StartEdge(BRepPrim_Cone& self) {
-    return self.StartEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cone_inherited_EndEdge(BRepPrim_Cone& self) {
-    return self.EndEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cone_inherited_StartTopEdge(BRepPrim_Cone& self) {
-    return self.StartTopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cone_inherited_StartBottomEdge(BRepPrim_Cone& self) {
-    return self.StartBottomEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cone_inherited_EndTopEdge(BRepPrim_Cone& self) {
-    return self.EndTopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cone_inherited_EndBottomEdge(BRepPrim_Cone& self) {
-    return self.EndBottomEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cone_inherited_TopEdge(BRepPrim_Cone& self) {
-    return self.TopEdge();
-}
-inline const TopoDS_Edge& BRepPrim_Cone_inherited_BottomEdge(BRepPrim_Cone& self) {
-    return self.BottomEdge();
-}
-inline const TopoDS_Vertex& BRepPrim_Cone_inherited_AxisTopVertex(BRepPrim_Cone& self) {
-    return self.AxisTopVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Cone_inherited_AxisBottomVertex(BRepPrim_Cone& self) {
-    return self.AxisBottomVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Cone_inherited_TopStartVertex(BRepPrim_Cone& self) {
-    return self.TopStartVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Cone_inherited_TopEndVertex(BRepPrim_Cone& self) {
-    return self.TopEndVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Cone_inherited_BottomStartVertex(BRepPrim_Cone& self) {
-    return self.BottomStartVertex();
-}
-inline const TopoDS_Vertex& BRepPrim_Cone_inherited_BottomEndVertex(BRepPrim_Cone& self) {
-    return self.BottomEndVertex();
-}
-
-// ========================
-// BRepPrim_Wedge wrappers
-// ========================
-
-inline std::unique_ptr<BRepPrim_Wedge> BRepPrim_Wedge_ctor() {
-    return std::make_unique<BRepPrim_Wedge>();
-}
-inline std::unique_ptr<BRepPrim_Wedge> BRepPrim_Wedge_ctor_ax2_real3(const gp_Ax2& Axes, Standard_Real dx, Standard_Real dy, Standard_Real dz) {
-    return std::make_unique<BRepPrim_Wedge>(Axes, dx, dy, dz);
-}
-inline std::unique_ptr<BRepPrim_Wedge> BRepPrim_Wedge_ctor_ax2_real4(const gp_Ax2& Axes, Standard_Real dx, Standard_Real dy, Standard_Real dz, Standard_Real ltx) {
-    return std::make_unique<BRepPrim_Wedge>(Axes, dx, dy, dz, ltx);
-}
-inline std::unique_ptr<BRepPrim_Wedge> BRepPrim_Wedge_ctor_ax2_real10(const gp_Ax2& Axes, Standard_Real xmin, Standard_Real ymin, Standard_Real zmin, Standard_Real z2min, Standard_Real x2min, Standard_Real xmax, Standard_Real ymax, Standard_Real zmax, Standard_Real z2max, Standard_Real x2max) {
-    return std::make_unique<BRepPrim_Wedge>(Axes, xmin, ymin, zmin, z2min, x2min, xmax, ymax, zmax, z2max, x2max);
-}
-inline const BRepPrim_GWedge& BRepPrim_Wedge_as_BRepPrim_GWedge(const BRepPrim_Wedge& self_) { return static_cast<const BRepPrim_GWedge&>(self_); }
-inline BRepPrim_GWedge& BRepPrim_Wedge_as_BRepPrim_GWedge_mut(BRepPrim_Wedge& self_) { return static_cast<BRepPrim_GWedge&>(self_); }
-inline std::unique_ptr<gp_Ax2> BRepPrim_Wedge_inherited_Axes(const BRepPrim_Wedge& self) {
-    return std::make_unique<gp_Ax2>(self.Axes());
-}
-inline Standard_Real BRepPrim_Wedge_inherited_GetXMin(const BRepPrim_Wedge& self) {
-    return self.GetXMin();
-}
-inline Standard_Real BRepPrim_Wedge_inherited_GetYMin(const BRepPrim_Wedge& self) {
-    return self.GetYMin();
-}
-inline Standard_Real BRepPrim_Wedge_inherited_GetZMin(const BRepPrim_Wedge& self) {
-    return self.GetZMin();
-}
-inline Standard_Real BRepPrim_Wedge_inherited_GetZ2Min(const BRepPrim_Wedge& self) {
-    return self.GetZ2Min();
-}
-inline Standard_Real BRepPrim_Wedge_inherited_GetX2Min(const BRepPrim_Wedge& self) {
-    return self.GetX2Min();
-}
-inline Standard_Real BRepPrim_Wedge_inherited_GetXMax(const BRepPrim_Wedge& self) {
-    return self.GetXMax();
-}
-inline Standard_Real BRepPrim_Wedge_inherited_GetYMax(const BRepPrim_Wedge& self) {
-    return self.GetYMax();
-}
-inline Standard_Real BRepPrim_Wedge_inherited_GetZMax(const BRepPrim_Wedge& self) {
-    return self.GetZMax();
-}
-inline Standard_Real BRepPrim_Wedge_inherited_GetZ2Max(const BRepPrim_Wedge& self) {
-    return self.GetZ2Max();
-}
-inline Standard_Real BRepPrim_Wedge_inherited_GetX2Max(const BRepPrim_Wedge& self) {
-    return self.GetX2Max();
-}
-inline const TopoDS_Shell& BRepPrim_Wedge_inherited_Shell(BRepPrim_Wedge& self) {
-    return self.Shell();
-}
-inline bool BRepPrim_Wedge_inherited_IsDegeneratedShape(BRepPrim_Wedge& self) {
-    return self.IsDegeneratedShape();
-}
-
-// ========================
-// BRepPrim_GWedge wrappers
-// ========================
-
-inline std::unique_ptr<BRepPrim_GWedge> BRepPrim_GWedge_ctor() {
-    return std::make_unique<BRepPrim_GWedge>();
-}
-inline std::unique_ptr<BRepPrim_GWedge> BRepPrim_GWedge_ctor_builder_ax2_real3(const BRepPrim_Builder& B, const gp_Ax2& Axes, Standard_Real dx, Standard_Real dy, Standard_Real dz) {
-    return std::make_unique<BRepPrim_GWedge>(B, Axes, dx, dy, dz);
-}
-inline std::unique_ptr<BRepPrim_GWedge> BRepPrim_GWedge_ctor_builder_ax2_real4(const BRepPrim_Builder& B, const gp_Ax2& Axes, Standard_Real dx, Standard_Real dy, Standard_Real dz, Standard_Real ltx) {
-    return std::make_unique<BRepPrim_GWedge>(B, Axes, dx, dy, dz, ltx);
-}
-inline std::unique_ptr<BRepPrim_GWedge> BRepPrim_GWedge_ctor_builder_ax2_real10(const BRepPrim_Builder& B, const gp_Ax2& Axes, Standard_Real xmin, Standard_Real ymin, Standard_Real zmin, Standard_Real z2min, Standard_Real x2min, Standard_Real xmax, Standard_Real ymax, Standard_Real zmax, Standard_Real z2max, Standard_Real x2max) {
-    return std::make_unique<BRepPrim_GWedge>(B, Axes, xmin, ymin, zmin, z2min, x2min, xmax, ymax, zmax, z2max, x2max);
-}
-inline std::unique_ptr<gp_Ax2> BRepPrim_GWedge_axes(const BRepPrim_GWedge& self_) {
-    return std::make_unique<gp_Ax2>(self_.Axes());
-}
-
-// ========================
-// BRepBuilderAPI_ModifyShape wrappers
-// ========================
-
-inline std::unique_ptr<TopoDS_Shape> BRepBuilderAPI_ModifyShape_modified_shape(const BRepBuilderAPI_ModifyShape& self_, const TopoDS_Shape& S) {
-    return std::make_unique<TopoDS_Shape>(self_.ModifiedShape(S));
-}
-inline const BRepBuilderAPI_Command& BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_Command(const BRepBuilderAPI_ModifyShape& self_) { return static_cast<const BRepBuilderAPI_Command&>(self_); }
-inline BRepBuilderAPI_Command& BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_Command_mut(BRepBuilderAPI_ModifyShape& self_) { return static_cast<BRepBuilderAPI_Command&>(self_); }
-inline const BRepBuilderAPI_MakeShape& BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_MakeShape(const BRepBuilderAPI_ModifyShape& self_) { return static_cast<const BRepBuilderAPI_MakeShape&>(self_); }
-inline BRepBuilderAPI_MakeShape& BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_MakeShape_mut(BRepBuilderAPI_ModifyShape& self_) { return static_cast<BRepBuilderAPI_MakeShape&>(self_); }
-inline bool BRepBuilderAPI_ModifyShape_inherited_IsDone(const BRepBuilderAPI_ModifyShape& self) {
-    return self.IsDone();
-}
-inline void BRepBuilderAPI_ModifyShape_inherited_Check(const BRepBuilderAPI_ModifyShape& self) {
-    self.Check();
-}
-inline void BRepBuilderAPI_ModifyShape_inherited_Build(BRepBuilderAPI_ModifyShape& self, const Message_ProgressRange& theRange) {
-    self.Build(theRange);
-}
-inline const TopoDS_Shape& BRepBuilderAPI_ModifyShape_inherited_Shape(BRepBuilderAPI_ModifyShape& self) {
-    return self.Shape();
-}
-inline const TopTools_ListOfShape& BRepBuilderAPI_ModifyShape_inherited_Generated(BRepBuilderAPI_ModifyShape& self, const TopoDS_Shape& S) {
-    return self.Generated(S);
-}
-inline bool BRepBuilderAPI_ModifyShape_inherited_IsDeleted(BRepBuilderAPI_ModifyShape& self, const TopoDS_Shape& S) {
-    return self.IsDeleted(S);
-}
-
-// ========================
-// BRepLib_MakeWire wrappers
-// ========================
-
-inline std::unique_ptr<BRepLib_MakeWire> BRepLib_MakeWire_ctor() {
-    return std::make_unique<BRepLib_MakeWire>();
-}
-inline std::unique_ptr<BRepLib_MakeWire> BRepLib_MakeWire_ctor_edge(const TopoDS_Edge& E) {
-    return std::make_unique<BRepLib_MakeWire>(E);
-}
-inline std::unique_ptr<BRepLib_MakeWire> BRepLib_MakeWire_ctor_edge2(const TopoDS_Edge& E1, const TopoDS_Edge& E2) {
-    return std::make_unique<BRepLib_MakeWire>(E1, E2);
-}
-inline std::unique_ptr<BRepLib_MakeWire> BRepLib_MakeWire_ctor_edge3(const TopoDS_Edge& E1, const TopoDS_Edge& E2, const TopoDS_Edge& E3) {
-    return std::make_unique<BRepLib_MakeWire>(E1, E2, E3);
-}
-inline std::unique_ptr<BRepLib_MakeWire> BRepLib_MakeWire_ctor_edge4(const TopoDS_Edge& E1, const TopoDS_Edge& E2, const TopoDS_Edge& E3, const TopoDS_Edge& E4) {
-    return std::make_unique<BRepLib_MakeWire>(E1, E2, E3, E4);
-}
-inline std::unique_ptr<BRepLib_MakeWire> BRepLib_MakeWire_ctor_wire(const TopoDS_Wire& W) {
-    return std::make_unique<BRepLib_MakeWire>(W);
-}
-inline std::unique_ptr<BRepLib_MakeWire> BRepLib_MakeWire_ctor_wire_edge(const TopoDS_Wire& W, const TopoDS_Edge& E) {
-    return std::make_unique<BRepLib_MakeWire>(W, E);
-}
-inline const BRepLib_Command& BRepLib_MakeWire_as_BRepLib_Command(const BRepLib_MakeWire& self_) { return static_cast<const BRepLib_Command&>(self_); }
-inline BRepLib_Command& BRepLib_MakeWire_as_BRepLib_Command_mut(BRepLib_MakeWire& self_) { return static_cast<BRepLib_Command&>(self_); }
-inline const BRepLib_MakeShape& BRepLib_MakeWire_as_BRepLib_MakeShape(const BRepLib_MakeWire& self_) { return static_cast<const BRepLib_MakeShape&>(self_); }
-inline BRepLib_MakeShape& BRepLib_MakeWire_as_BRepLib_MakeShape_mut(BRepLib_MakeWire& self_) { return static_cast<BRepLib_MakeShape&>(self_); }
-inline bool BRepLib_MakeWire_inherited_IsDone(const BRepLib_MakeWire& self) {
-    return self.IsDone();
-}
-inline void BRepLib_MakeWire_inherited_Check(const BRepLib_MakeWire& self) {
-    self.Check();
-}
-inline void BRepLib_MakeWire_inherited_Build(BRepLib_MakeWire& self) {
-    self.Build();
-}
-inline const TopoDS_Shape& BRepLib_MakeWire_inherited_Shape(BRepLib_MakeWire& self) {
-    return self.Shape();
-}
-inline bool BRepLib_MakeWire_inherited_HasDescendants(const BRepLib_MakeWire& self, const TopoDS_Face& F) {
-    return self.HasDescendants(F);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeWire_inherited_DescendantFaces(BRepLib_MakeWire& self, const TopoDS_Face& F) {
-    return self.DescendantFaces(F);
-}
-inline Standard_Integer BRepLib_MakeWire_inherited_NbSurfaces(const BRepLib_MakeWire& self) {
-    return self.NbSurfaces();
-}
-inline const TopTools_ListOfShape& BRepLib_MakeWire_inherited_NewFaces(BRepLib_MakeWire& self, Standard_Integer I) {
-    return self.NewFaces(I);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeWire_inherited_FacesFromEdges(BRepLib_MakeWire& self, const TopoDS_Edge& E) {
-    return self.FacesFromEdges(E);
-}
-
-// ========================
-// BRepLib_MakeShape wrappers
-// ========================
-
-inline const BRepLib_Command& BRepLib_MakeShape_as_BRepLib_Command(const BRepLib_MakeShape& self_) { return static_cast<const BRepLib_Command&>(self_); }
-inline BRepLib_Command& BRepLib_MakeShape_as_BRepLib_Command_mut(BRepLib_MakeShape& self_) { return static_cast<BRepLib_Command&>(self_); }
-inline bool BRepLib_MakeShape_inherited_IsDone(const BRepLib_MakeShape& self) {
-    return self.IsDone();
-}
-inline void BRepLib_MakeShape_inherited_Check(const BRepLib_MakeShape& self) {
-    self.Check();
-}
-
-// ========================
-// BRepLib_Command wrappers
-// ========================
-
-
-// ========================
-// BRepLib_MakeVertex wrappers
-// ========================
-
-inline std::unique_ptr<BRepLib_MakeVertex> BRepLib_MakeVertex_ctor_pnt(const gp_Pnt& P) {
-    return std::make_unique<BRepLib_MakeVertex>(P);
-}
-inline const BRepLib_Command& BRepLib_MakeVertex_as_BRepLib_Command(const BRepLib_MakeVertex& self_) { return static_cast<const BRepLib_Command&>(self_); }
-inline BRepLib_Command& BRepLib_MakeVertex_as_BRepLib_Command_mut(BRepLib_MakeVertex& self_) { return static_cast<BRepLib_Command&>(self_); }
-inline const BRepLib_MakeShape& BRepLib_MakeVertex_as_BRepLib_MakeShape(const BRepLib_MakeVertex& self_) { return static_cast<const BRepLib_MakeShape&>(self_); }
-inline BRepLib_MakeShape& BRepLib_MakeVertex_as_BRepLib_MakeShape_mut(BRepLib_MakeVertex& self_) { return static_cast<BRepLib_MakeShape&>(self_); }
-inline bool BRepLib_MakeVertex_inherited_IsDone(const BRepLib_MakeVertex& self) {
-    return self.IsDone();
-}
-inline void BRepLib_MakeVertex_inherited_Check(const BRepLib_MakeVertex& self) {
-    self.Check();
-}
-inline void BRepLib_MakeVertex_inherited_Build(BRepLib_MakeVertex& self) {
-    self.Build();
-}
-inline const TopoDS_Shape& BRepLib_MakeVertex_inherited_Shape(BRepLib_MakeVertex& self) {
-    return self.Shape();
-}
-inline bool BRepLib_MakeVertex_inherited_HasDescendants(const BRepLib_MakeVertex& self, const TopoDS_Face& F) {
-    return self.HasDescendants(F);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeVertex_inherited_DescendantFaces(BRepLib_MakeVertex& self, const TopoDS_Face& F) {
-    return self.DescendantFaces(F);
-}
-inline Standard_Integer BRepLib_MakeVertex_inherited_NbSurfaces(const BRepLib_MakeVertex& self) {
-    return self.NbSurfaces();
-}
-inline const TopTools_ListOfShape& BRepLib_MakeVertex_inherited_NewFaces(BRepLib_MakeVertex& self, Standard_Integer I) {
-    return self.NewFaces(I);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeVertex_inherited_FacesFromEdges(BRepLib_MakeVertex& self, const TopoDS_Edge& E) {
-    return self.FacesFromEdges(E);
-}
-
-// ========================
-// BRepLib_MakeSolid wrappers
-// ========================
-
-inline std::unique_ptr<BRepLib_MakeSolid> BRepLib_MakeSolid_ctor() {
-    return std::make_unique<BRepLib_MakeSolid>();
-}
-inline std::unique_ptr<BRepLib_MakeSolid> BRepLib_MakeSolid_ctor_compsolid(const TopoDS_CompSolid& S) {
-    return std::make_unique<BRepLib_MakeSolid>(S);
-}
-inline std::unique_ptr<BRepLib_MakeSolid> BRepLib_MakeSolid_ctor_shell(const TopoDS_Shell& S) {
-    return std::make_unique<BRepLib_MakeSolid>(S);
-}
-inline std::unique_ptr<BRepLib_MakeSolid> BRepLib_MakeSolid_ctor_shell2(const TopoDS_Shell& S1, const TopoDS_Shell& S2) {
-    return std::make_unique<BRepLib_MakeSolid>(S1, S2);
-}
-inline std::unique_ptr<BRepLib_MakeSolid> BRepLib_MakeSolid_ctor_shell3(const TopoDS_Shell& S1, const TopoDS_Shell& S2, const TopoDS_Shell& S3) {
-    return std::make_unique<BRepLib_MakeSolid>(S1, S2, S3);
-}
-inline std::unique_ptr<BRepLib_MakeSolid> BRepLib_MakeSolid_ctor_solid(const TopoDS_Solid& So) {
-    return std::make_unique<BRepLib_MakeSolid>(So);
-}
-inline std::unique_ptr<BRepLib_MakeSolid> BRepLib_MakeSolid_ctor_solid_shell(const TopoDS_Solid& So, const TopoDS_Shell& S) {
-    return std::make_unique<BRepLib_MakeSolid>(So, S);
-}
-inline const BRepLib_Command& BRepLib_MakeSolid_as_BRepLib_Command(const BRepLib_MakeSolid& self_) { return static_cast<const BRepLib_Command&>(self_); }
-inline BRepLib_Command& BRepLib_MakeSolid_as_BRepLib_Command_mut(BRepLib_MakeSolid& self_) { return static_cast<BRepLib_Command&>(self_); }
-inline const BRepLib_MakeShape& BRepLib_MakeSolid_as_BRepLib_MakeShape(const BRepLib_MakeSolid& self_) { return static_cast<const BRepLib_MakeShape&>(self_); }
-inline BRepLib_MakeShape& BRepLib_MakeSolid_as_BRepLib_MakeShape_mut(BRepLib_MakeSolid& self_) { return static_cast<BRepLib_MakeShape&>(self_); }
-inline bool BRepLib_MakeSolid_inherited_IsDone(const BRepLib_MakeSolid& self) {
-    return self.IsDone();
-}
-inline void BRepLib_MakeSolid_inherited_Check(const BRepLib_MakeSolid& self) {
-    self.Check();
-}
-inline void BRepLib_MakeSolid_inherited_Build(BRepLib_MakeSolid& self) {
-    self.Build();
-}
-inline const TopoDS_Shape& BRepLib_MakeSolid_inherited_Shape(BRepLib_MakeSolid& self) {
-    return self.Shape();
-}
-inline bool BRepLib_MakeSolid_inherited_HasDescendants(const BRepLib_MakeSolid& self, const TopoDS_Face& F) {
-    return self.HasDescendants(F);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeSolid_inherited_DescendantFaces(BRepLib_MakeSolid& self, const TopoDS_Face& F) {
-    return self.DescendantFaces(F);
-}
-inline Standard_Integer BRepLib_MakeSolid_inherited_NbSurfaces(const BRepLib_MakeSolid& self) {
-    return self.NbSurfaces();
-}
-inline const TopTools_ListOfShape& BRepLib_MakeSolid_inherited_NewFaces(BRepLib_MakeSolid& self, Standard_Integer I) {
-    return self.NewFaces(I);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeSolid_inherited_FacesFromEdges(BRepLib_MakeSolid& self, const TopoDS_Edge& E) {
-    return self.FacesFromEdges(E);
-}
-
-// ========================
-// BRepLib_MakeFace wrappers
-// ========================
-
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor() {
-    return std::make_unique<BRepLib_MakeFace>();
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_face(const TopoDS_Face& F) {
-    return std::make_unique<BRepLib_MakeFace>(F);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_pln(const gp_Pln& P) {
-    return std::make_unique<BRepLib_MakeFace>(P);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_cylinder(const gp_Cylinder& C) {
-    return std::make_unique<BRepLib_MakeFace>(C);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_cone(const gp_Cone& C) {
-    return std::make_unique<BRepLib_MakeFace>(C);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_sphere(const gp_Sphere& S) {
-    return std::make_unique<BRepLib_MakeFace>(S);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_torus(const gp_Torus& C) {
-    return std::make_unique<BRepLib_MakeFace>(C);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_handlesurface_real(const opencascade::handle<Geom_Surface>& S, Standard_Real TolDegen) {
-    return std::make_unique<BRepLib_MakeFace>(S, TolDegen);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_pln_real4(const gp_Pln& P, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
-    return std::make_unique<BRepLib_MakeFace>(P, UMin, UMax, VMin, VMax);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_cylinder_real4(const gp_Cylinder& C, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
-    return std::make_unique<BRepLib_MakeFace>(C, UMin, UMax, VMin, VMax);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_cone_real4(const gp_Cone& C, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
-    return std::make_unique<BRepLib_MakeFace>(C, UMin, UMax, VMin, VMax);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_sphere_real4(const gp_Sphere& S, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
-    return std::make_unique<BRepLib_MakeFace>(S, UMin, UMax, VMin, VMax);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_torus_real4(const gp_Torus& C, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
-    return std::make_unique<BRepLib_MakeFace>(C, UMin, UMax, VMin, VMax);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_handlesurface_real5(const opencascade::handle<Geom_Surface>& S, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax, Standard_Real TolDegen) {
-    return std::make_unique<BRepLib_MakeFace>(S, UMin, UMax, VMin, VMax, TolDegen);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_wire_bool(const TopoDS_Wire& W, Standard_Boolean OnlyPlane) {
-    return std::make_unique<BRepLib_MakeFace>(W, OnlyPlane);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_pln_wire_bool(const gp_Pln& P, const TopoDS_Wire& W, Standard_Boolean Inside) {
-    return std::make_unique<BRepLib_MakeFace>(P, W, Inside);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_cylinder_wire_bool(const gp_Cylinder& C, const TopoDS_Wire& W, Standard_Boolean Inside) {
-    return std::make_unique<BRepLib_MakeFace>(C, W, Inside);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_cone_wire_bool(const gp_Cone& C, const TopoDS_Wire& W, Standard_Boolean Inside) {
-    return std::make_unique<BRepLib_MakeFace>(C, W, Inside);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_sphere_wire_bool(const gp_Sphere& S, const TopoDS_Wire& W, Standard_Boolean Inside) {
-    return std::make_unique<BRepLib_MakeFace>(S, W, Inside);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_torus_wire_bool(const gp_Torus& C, const TopoDS_Wire& W, Standard_Boolean Inside) {
-    return std::make_unique<BRepLib_MakeFace>(C, W, Inside);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_handlesurface_wire_bool(const opencascade::handle<Geom_Surface>& S, const TopoDS_Wire& W, Standard_Boolean Inside) {
-    return std::make_unique<BRepLib_MakeFace>(S, W, Inside);
-}
-inline std::unique_ptr<BRepLib_MakeFace> BRepLib_MakeFace_ctor_face_wire(const TopoDS_Face& F, const TopoDS_Wire& W) {
-    return std::make_unique<BRepLib_MakeFace>(F, W);
-}
-inline Standard_Boolean BRepLib_MakeFace_is_degenerated(const opencascade::handle<Geom_Curve>& theCurve, Standard_Real theMaxTol, Standard_Real& theActTol) {
-    return BRepLib_MakeFace::IsDegenerated(theCurve, theMaxTol, theActTol);
-}
-inline const BRepLib_Command& BRepLib_MakeFace_as_BRepLib_Command(const BRepLib_MakeFace& self_) { return static_cast<const BRepLib_Command&>(self_); }
-inline BRepLib_Command& BRepLib_MakeFace_as_BRepLib_Command_mut(BRepLib_MakeFace& self_) { return static_cast<BRepLib_Command&>(self_); }
-inline const BRepLib_MakeShape& BRepLib_MakeFace_as_BRepLib_MakeShape(const BRepLib_MakeFace& self_) { return static_cast<const BRepLib_MakeShape&>(self_); }
-inline BRepLib_MakeShape& BRepLib_MakeFace_as_BRepLib_MakeShape_mut(BRepLib_MakeFace& self_) { return static_cast<BRepLib_MakeShape&>(self_); }
-inline bool BRepLib_MakeFace_inherited_IsDone(const BRepLib_MakeFace& self) {
-    return self.IsDone();
-}
-inline void BRepLib_MakeFace_inherited_Check(const BRepLib_MakeFace& self) {
-    self.Check();
-}
-inline void BRepLib_MakeFace_inherited_Build(BRepLib_MakeFace& self) {
-    self.Build();
-}
-inline const TopoDS_Shape& BRepLib_MakeFace_inherited_Shape(BRepLib_MakeFace& self) {
-    return self.Shape();
-}
-inline bool BRepLib_MakeFace_inherited_HasDescendants(const BRepLib_MakeFace& self, const TopoDS_Face& F) {
-    return self.HasDescendants(F);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeFace_inherited_DescendantFaces(BRepLib_MakeFace& self, const TopoDS_Face& F) {
-    return self.DescendantFaces(F);
-}
-inline Standard_Integer BRepLib_MakeFace_inherited_NbSurfaces(const BRepLib_MakeFace& self) {
-    return self.NbSurfaces();
-}
-inline const TopTools_ListOfShape& BRepLib_MakeFace_inherited_NewFaces(BRepLib_MakeFace& self, Standard_Integer I) {
-    return self.NewFaces(I);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeFace_inherited_FacesFromEdges(BRepLib_MakeFace& self, const TopoDS_Edge& E) {
-    return self.FacesFromEdges(E);
-}
-
-// ========================
-// BRepLib_MakeEdge wrappers
-// ========================
-
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor() {
-    return std::make_unique<BRepLib_MakeEdge>();
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_vertex2(const TopoDS_Vertex& V1, const TopoDS_Vertex& V2) {
-    return std::make_unique<BRepLib_MakeEdge>(V1, V2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_pnt2(const gp_Pnt& P1, const gp_Pnt& P2) {
-    return std::make_unique<BRepLib_MakeEdge>(P1, P2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_lin(const gp_Lin& L) {
-    return std::make_unique<BRepLib_MakeEdge>(L);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_lin_real2(const gp_Lin& L, Standard_Real p1, Standard_Real p2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, p1, p2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_lin_pnt2(const gp_Lin& L, const gp_Pnt& P1, const gp_Pnt& P2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, P1, P2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_lin_vertex2(const gp_Lin& L, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, V1, V2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_circ(const gp_Circ& L) {
-    return std::make_unique<BRepLib_MakeEdge>(L);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_circ_real2(const gp_Circ& L, Standard_Real p1, Standard_Real p2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, p1, p2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_circ_pnt2(const gp_Circ& L, const gp_Pnt& P1, const gp_Pnt& P2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, P1, P2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_circ_vertex2(const gp_Circ& L, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, V1, V2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_elips(const gp_Elips& L) {
-    return std::make_unique<BRepLib_MakeEdge>(L);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_elips_real2(const gp_Elips& L, Standard_Real p1, Standard_Real p2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, p1, p2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_elips_pnt2(const gp_Elips& L, const gp_Pnt& P1, const gp_Pnt& P2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, P1, P2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_elips_vertex2(const gp_Elips& L, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, V1, V2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_hypr(const gp_Hypr& L) {
-    return std::make_unique<BRepLib_MakeEdge>(L);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_hypr_real2(const gp_Hypr& L, Standard_Real p1, Standard_Real p2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, p1, p2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_hypr_pnt2(const gp_Hypr& L, const gp_Pnt& P1, const gp_Pnt& P2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, P1, P2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_hypr_vertex2(const gp_Hypr& L, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, V1, V2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_parab(const gp_Parab& L) {
-    return std::make_unique<BRepLib_MakeEdge>(L);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_parab_real2(const gp_Parab& L, Standard_Real p1, Standard_Real p2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, p1, p2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_parab_pnt2(const gp_Parab& L, const gp_Pnt& P1, const gp_Pnt& P2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, P1, P2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_parab_vertex2(const gp_Parab& L, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, V1, V2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve(const opencascade::handle<Geom_Curve>& L) {
-    return std::make_unique<BRepLib_MakeEdge>(L);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve_real2(const opencascade::handle<Geom_Curve>& L, Standard_Real p1, Standard_Real p2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, p1, p2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve_pnt2(const opencascade::handle<Geom_Curve>& L, const gp_Pnt& P1, const gp_Pnt& P2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, P1, P2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve_vertex2(const opencascade::handle<Geom_Curve>& L, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, V1, V2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve_pnt2_real2(const opencascade::handle<Geom_Curve>& L, const gp_Pnt& P1, const gp_Pnt& P2, Standard_Real p1, Standard_Real p2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, P1, P2, p1, p2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve_vertex2_real2(const opencascade::handle<Geom_Curve>& L, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2, Standard_Real p1, Standard_Real p2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, V1, V2, p1, p2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve_handlesurface(const opencascade::handle<Geom2d_Curve>& L, const opencascade::handle<Geom_Surface>& S) {
-    return std::make_unique<BRepLib_MakeEdge>(L, S);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve_handlesurface_real2(const opencascade::handle<Geom2d_Curve>& L, const opencascade::handle<Geom_Surface>& S, Standard_Real p1, Standard_Real p2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, S, p1, p2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve_handlesurface_pnt2(const opencascade::handle<Geom2d_Curve>& L, const opencascade::handle<Geom_Surface>& S, const gp_Pnt& P1, const gp_Pnt& P2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, S, P1, P2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve_handlesurface_vertex2(const opencascade::handle<Geom2d_Curve>& L, const opencascade::handle<Geom_Surface>& S, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, S, V1, V2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve_handlesurface_pnt2_real2(const opencascade::handle<Geom2d_Curve>& L, const opencascade::handle<Geom_Surface>& S, const gp_Pnt& P1, const gp_Pnt& P2, Standard_Real p1, Standard_Real p2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, S, P1, P2, p1, p2);
-}
-inline std::unique_ptr<BRepLib_MakeEdge> BRepLib_MakeEdge_ctor_handlecurve_handlesurface_vertex2_real2(const opencascade::handle<Geom2d_Curve>& L, const opencascade::handle<Geom_Surface>& S, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2, Standard_Real p1, Standard_Real p2) {
-    return std::make_unique<BRepLib_MakeEdge>(L, S, V1, V2, p1, p2);
-}
-inline const BRepLib_Command& BRepLib_MakeEdge_as_BRepLib_Command(const BRepLib_MakeEdge& self_) { return static_cast<const BRepLib_Command&>(self_); }
-inline BRepLib_Command& BRepLib_MakeEdge_as_BRepLib_Command_mut(BRepLib_MakeEdge& self_) { return static_cast<BRepLib_Command&>(self_); }
-inline const BRepLib_MakeShape& BRepLib_MakeEdge_as_BRepLib_MakeShape(const BRepLib_MakeEdge& self_) { return static_cast<const BRepLib_MakeShape&>(self_); }
-inline BRepLib_MakeShape& BRepLib_MakeEdge_as_BRepLib_MakeShape_mut(BRepLib_MakeEdge& self_) { return static_cast<BRepLib_MakeShape&>(self_); }
-inline bool BRepLib_MakeEdge_inherited_IsDone(const BRepLib_MakeEdge& self) {
-    return self.IsDone();
-}
-inline void BRepLib_MakeEdge_inherited_Check(const BRepLib_MakeEdge& self) {
-    self.Check();
-}
-inline void BRepLib_MakeEdge_inherited_Build(BRepLib_MakeEdge& self) {
-    self.Build();
-}
-inline const TopoDS_Shape& BRepLib_MakeEdge_inherited_Shape(BRepLib_MakeEdge& self) {
-    return self.Shape();
-}
-inline bool BRepLib_MakeEdge_inherited_HasDescendants(const BRepLib_MakeEdge& self, const TopoDS_Face& F) {
-    return self.HasDescendants(F);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeEdge_inherited_DescendantFaces(BRepLib_MakeEdge& self, const TopoDS_Face& F) {
-    return self.DescendantFaces(F);
-}
-inline Standard_Integer BRepLib_MakeEdge_inherited_NbSurfaces(const BRepLib_MakeEdge& self) {
-    return self.NbSurfaces();
-}
-inline const TopTools_ListOfShape& BRepLib_MakeEdge_inherited_NewFaces(BRepLib_MakeEdge& self, Standard_Integer I) {
-    return self.NewFaces(I);
-}
-inline const TopTools_ListOfShape& BRepLib_MakeEdge_inherited_FacesFromEdges(BRepLib_MakeEdge& self, const TopoDS_Edge& E) {
-    return self.FacesFromEdges(E);
-}
-
-// ========================
-// TopLoc_SListOfItemLocation wrappers
-// ========================
-
-inline std::unique_ptr<TopLoc_SListOfItemLocation> TopLoc_SListOfItemLocation_ctor() {
-    return std::make_unique<TopLoc_SListOfItemLocation>();
-}
-inline std::unique_ptr<TopLoc_SListOfItemLocation> TopLoc_SListOfItemLocation_ctor_itemlocation_slistofitemlocation(const TopLoc_ItemLocation& anItem, const TopLoc_SListOfItemLocation& aTail) {
-    return std::make_unique<TopLoc_SListOfItemLocation>(anItem, aTail);
-}
-inline std::unique_ptr<TopLoc_SListOfItemLocation> TopLoc_SListOfItemLocation_ctor_slistofitemlocation(const TopLoc_SListOfItemLocation& Other) {
-    return std::make_unique<TopLoc_SListOfItemLocation>(Other);
-}
-inline std::unique_ptr<TopLoc_SListOfItemLocation> TopLoc_SListOfItemLocation_to_owned(const TopLoc_SListOfItemLocation& self_) { return std::make_unique<TopLoc_SListOfItemLocation>(self_); }
-
-// ========================
-// TopoDS_Iterator wrappers
-// ========================
-
-inline std::unique_ptr<TopoDS_Iterator> TopoDS_Iterator_ctor() {
-    return std::make_unique<TopoDS_Iterator>();
-}
-inline std::unique_ptr<TopoDS_Iterator> TopoDS_Iterator_ctor_shape_bool2(const TopoDS_Shape& S, Standard_Boolean cumOri, Standard_Boolean cumLoc) {
-    return std::make_unique<TopoDS_Iterator>(S, cumOri, cumLoc);
-}
-inline std::unique_ptr<TopoDS_Iterator> TopoDS_Iterator_to_owned(const TopoDS_Iterator& self_) { return std::make_unique<TopoDS_Iterator>(self_); }
-
-// ========================
-// TopoDS_TShape wrappers
-// ========================
-
-inline std::unique_ptr<opencascade::handle<TopoDS_TShape>> TopoDS_TShape_empty_copy(const TopoDS_TShape& self_) {
-    return std::make_unique<opencascade::handle<TopoDS_TShape>>(self_.EmptyCopy());
-}
-inline const opencascade::handle<Standard_Type>& TopoDS_TShape_get_type_descriptor() {
-    return TopoDS_TShape::get_type_descriptor();
-}
-
-// ========================
-// TopAbs wrappers
-// ========================
-
 
 // ========================
 // TopoDS namespace functions
@@ -14230,13 +8014,13 @@ inline TopoDS_Compound& TopoDS_compound_mut(TopoDS_Shape& theShape) { return Top
 // Collection type wrappers
 // ========================
 
-#include <TopTools_SequenceOfShape.hxx>
+#include <TopTools_ListOfShape.hxx>
+#include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
+#include <TopTools_IndexedMapOfShape.hxx>
+#include <TopTools_DataMapOfShapeShape.hxx>
 #include <TopoDS_Shape.hxx>
 #include <TopTools_MapOfShape.hxx>
-#include <TopTools_DataMapOfShapeShape.hxx>
-#include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
+#include <TopTools_SequenceOfShape.hxx>
 
 // ========================
 // TopTools_DataMapOfShapeShape - Key-value map

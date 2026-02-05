@@ -42,138 +42,275 @@
 /// * Dump : A method to dump a BRep object.
 pub use crate::ffi::BRepTools;
 
-// ========================
-// From BRepTools_History.hxx
-// ========================
-
-/// The history keeps the following relations between the input shapes
-/// (S1, ..., Sm) and output shapes (T1, ..., Tn):
-/// 1) an output shape Tj is generated from an input shape Si: Tj <= G(Si);
-/// 2) a output shape Tj is modified from an input shape Si: Tj <= M(Si);
-/// 3) an input shape (Si) is removed: R(Si) == 1.
-///
-/// The relations are kept only for shapes of types vertex, edge, face, and
-/// solid.
-///
-/// The last relation means that:
-/// 1) shape Si is not an output shape and
-/// 2) no any shape is modified (produced) from shape Si:
-/// R(Si) == 1 ==> Si != Tj, M(Si) == 0.
-///
-/// It means that the input shape cannot be removed and modified
-/// simultaneously. However, the shapes may be generated from the
-/// removed shape. For instance, in Fillet operation the edges
-/// generate faces and then are removed.
-///
-/// No any shape could be generated and modified from the same shape
-/// simultaneously: sets G(Si) and M(Si) are not intersected
-/// (G(Si) ^ M(Si) == 0).
-///
-/// Each output shape should be:
-/// 1) an input shape or
-/// 2) generated or modified from an input shape (even generated from the
-/// implicit null shape if necessary):
-/// Tj == Si V (exists Si that Tj <= G(Si) U M(Si)).
-///
-/// Recommendations to choose between relations 'generated' and 'modified':
-/// 1) a shape is generated from input shapes if it dimension is greater or
-/// smaller than the dimensions of the input shapes;
-/// 2) a shape is generated from input shapes if these shapes are also output
-/// shapes;
-/// 3) a shape is generated from input shapes of the same dimension if it is
-/// produced by joining shapes generated from these shapes;
-/// 4) a shape is modified from an input shape if it replaces the input shape by
-/// changes of the location, the tolerance, the bounds of the parametric
-/// space (the faces for a solid), the parametrization and/or by applying of
-/// an approximation;
-/// 5) a shape is modified from input shapes of the same dimension if it is
-/// produced by joining shapes modified from these shapes.
-///
-/// Two sequential histories:
-/// - one history (H12) of shapes S1, ..., Sm to shapes T1, ..., Tn and
-/// - another history (H23) of shapes T1, ..., Tn to shapes Q1, ..., Ql
-/// could be merged to the single history (H13) of shapes S1, ..., Sm to shapes
-/// Q1, ..., Ql.
-///
-/// During the merge:
-/// 1) if shape Tj is generated from shape Si then each shape generated or
-/// modified from shape Tj is considered as a shape generated from shape Si
-/// among shapes Q1, ..., Ql:
-/// Tj <= G12(Si), Qk <= G23(Tj) U M23(Tj) ==> Qk <= G13(Si).
-/// 2) if shape Tj is modified from shape Si, shape Qk is generated from shape
-/// Tj then shape Qk is considered as a shape generated from shape Si among
-/// shapes Q1, ..., Ql:
-/// Tj <= M12(Si), Qk <= G23(Tj) ==> Qk <= G13(Si);
-/// 3) if shape Tj is modified from shape Si, shape Qk is modified from shape
-/// Tj then shape Qk is considered as a shape modified from shape Si among
-/// shapes Q1, ..., Ql:
-/// Tj <= M12(Si), Qk <= M23(Tj) ==> Qk <= M13(Si);
-pub use crate::ffi::BRepTools_History as History;
-
-impl History {
-    /// @name Constructors for History creation
-    /// Empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_History_ctor()
+impl BRepTools {
+    /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
+    /// values in the parametric space of F.
+    pub fn uv_bounds(
+        F: &crate::ffi::TopoDS_Face,
+        UMin: std::pin::Pin<&mut f64>,
+        UMax: std::pin::Pin<&mut f64>,
+        VMin: std::pin::Pin<&mut f64>,
+        VMax: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::BRepTools::uv_bounds(F, UMin, UMax, VMin, VMax)
     }
 
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
-        crate::ffi::BRepTools_History_to_handle(obj)
-    }
-}
-
-// ========================
-// From BRepTools_Modifier.hxx
-// ========================
-
-/// Performs geometric modifications on a shape.
-pub use crate::ffi::BRepTools_Modifier as Modifier;
-
-impl Modifier {
-    /// Creates an empty Modifier.
-    pub fn new_bool(theMutableInput: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_Modifier_ctor_bool(theMutableInput)
+    /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
+    /// values of the wire in the parametric space of F.
+    pub fn uv_bounds_face_wire_real4(
+        F: &crate::ffi::TopoDS_Face,
+        W: &crate::ffi::TopoDS_Wire,
+        UMin: std::pin::Pin<&mut f64>,
+        UMax: std::pin::Pin<&mut f64>,
+        VMin: std::pin::Pin<&mut f64>,
+        VMax: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::BRepTools::uv_bounds(F, W, UMin, UMax, VMin, VMax)
     }
 
-    /// Creates a modifier on the shape <S>.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_Modifier_ctor_shape(S)
-    }
-}
-
-// ========================
-// From BRepTools_ReShape.hxx
-// ========================
-
-/// Rebuilds a Shape by making pre-defined substitutions on some
-/// of its components
-///
-/// In a first phase, it records requests to replace or remove
-/// some individual shapes
-/// For each shape, the last given request is recorded
-/// Requests may be applied "Oriented" (i.e. only to an item with
-/// the SAME orientation) or not (the orientation of replacing
-/// shape is respectful of that of the original one)
-///
-/// Then, these requests may be applied to any shape which may
-/// contain one or more of these individual shapes
-///
-/// Supports the 'BRepTools_History' history by method 'History'.
-pub use crate::ffi::BRepTools_ReShape as ReShape;
-
-impl ReShape {
-    /// Returns an empty Reshape
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepTools_ReShape_ctor()
+    /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
+    /// values of the edge in the parametric space of F.
+    pub fn uv_bounds_face_edge_real4(
+        F: &crate::ffi::TopoDS_Face,
+        E: &crate::ffi::TopoDS_Edge,
+        UMin: std::pin::Pin<&mut f64>,
+        UMax: std::pin::Pin<&mut f64>,
+        VMin: std::pin::Pin<&mut f64>,
+        VMax: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::BRepTools::uv_bounds(F, E, UMin, UMax, VMin, VMax)
     }
 
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsReShape> {
-        crate::ffi::BRepTools_ReShape_to_handle(obj)
+    /// Adds  to  the box <B>  the bounding values in  the
+    /// parametric space of F.
+    pub fn add_uv_bounds(
+        F: &crate::ffi::TopoDS_Face,
+        B: std::pin::Pin<&mut crate::ffi::Bnd_Box2d>,
+    ) {
+        crate::ffi::BRepTools::add_uv_bounds(F, B)
+    }
+
+    /// Adds  to the box  <B>  the bounding  values of the
+    /// wire in the parametric space of F.
+    pub fn add_uv_bounds_face_wire_box2d(
+        F: &crate::ffi::TopoDS_Face,
+        W: &crate::ffi::TopoDS_Wire,
+        B: std::pin::Pin<&mut crate::ffi::Bnd_Box2d>,
+    ) {
+        crate::ffi::BRepTools::add_uv_bounds(F, W, B)
+    }
+
+    /// Adds to  the box <B>  the  bounding values  of the
+    /// edge in the parametric space of F.
+    pub fn add_uv_bounds_face_edge_box2d(
+        F: &crate::ffi::TopoDS_Face,
+        E: &crate::ffi::TopoDS_Edge,
+        B: std::pin::Pin<&mut crate::ffi::Bnd_Box2d>,
+    ) {
+        crate::ffi::BRepTools::add_uv_bounds(F, E, B)
+    }
+
+    /// Update a vertex (nothing is done)
+    pub fn update(V: &crate::ffi::TopoDS_Vertex) {
+        crate::ffi::BRepTools::update(V)
+    }
+
+    /// Update an edge, compute 2d bounding boxes.
+    pub fn update_edge(E: &crate::ffi::TopoDS_Edge) {
+        crate::ffi::BRepTools::update(E)
+    }
+
+    /// Update a wire (nothing is done)
+    pub fn update_wire(W: &crate::ffi::TopoDS_Wire) {
+        crate::ffi::BRepTools::update(W)
+    }
+
+    /// Update a Face, update UV points.
+    pub fn update_face(F: &crate::ffi::TopoDS_Face) {
+        crate::ffi::BRepTools::update(F)
+    }
+
+    /// Update a shell (nothing is done)
+    pub fn update_shell(S: &crate::ffi::TopoDS_Shell) {
+        crate::ffi::BRepTools::update(S)
+    }
+
+    /// Update a solid (nothing is done)
+    pub fn update_solid(S: &crate::ffi::TopoDS_Solid) {
+        crate::ffi::BRepTools::update(S)
+    }
+
+    /// Update a composite solid (nothing is done)
+    pub fn update_compsolid(C: &crate::ffi::TopoDS_CompSolid) {
+        crate::ffi::BRepTools::update(C)
+    }
+
+    /// Update a compound (nothing is done)
+    pub fn update_compound(C: &crate::ffi::TopoDS_Compound) {
+        crate::ffi::BRepTools::update(C)
+    }
+
+    /// Update a shape, call the correct update.
+    pub fn update_shape(S: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::BRepTools::update(S)
+    }
+
+    /// For each edge of the face <F> reset the UV points
+    /// to the bounding points of the parametric curve of the
+    /// edge on the face.
+    pub fn update_face_uv_points(theF: &crate::ffi::TopoDS_Face) {
+        crate::ffi::BRepTools::update_face_uv_points(theF)
+    }
+
+    /// Removes all cached polygonal representation of the shape,
+    /// i.e. the triangulations of the faces of <S> and polygons on
+    /// triangulations and polygons 3d of the edges.
+    /// In case polygonal representation is the only available representation
+    /// for the shape (shape does not have geometry) it is not removed.
+    /// @param[in] theShape   the shape to clean
+    /// @param[in] theForce   allows removing all polygonal representations from the shape,
+    /// including polygons on triangulations irrelevant for the faces of the
+    /// given shape.
+    pub fn clean(theShape: &crate::ffi::TopoDS_Shape, theForce: bool) {
+        crate::ffi::BRepTools::clean(theShape, theForce)
+    }
+
+    /// Removes geometry (curves and surfaces) from all edges and faces of the shape
+    pub fn clean_geometry(theShape: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::BRepTools::clean_geometry(theShape)
+    }
+
+    /// Removes all the pcurves of the edges of <S> that
+    /// refer to surfaces not belonging to any face of <S>
+    pub fn remove_unused_p_curves(S: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::BRepTools::remove_unused_p_curves(S)
+    }
+
+    /// Verifies that each Face from the shape has got a triangulation with a deflection smaller or
+    /// equal to specified one and the Edges a discretization on this triangulation.
+    /// @param[in] theShape    shape to verify
+    /// @param[in] theLinDefl  maximum allowed linear deflection
+    /// @param[in] theToCheckFreeEdges  if TRUE, then free Edges are required to have 3D polygon
+    /// @return FALSE if input Shape contains Faces without triangulation,
+    /// or that triangulation has worse (greater) deflection than specified one,
+    /// or Edges in Shape lack polygons on triangulation
+    /// or free Edges in Shape lack 3D polygons
+    pub fn triangulation(
+        theShape: &crate::ffi::TopoDS_Shape,
+        theLinDefl: f64,
+        theToCheckFreeEdges: bool,
+    ) -> bool {
+        crate::ffi::BRepTools::triangulation(theShape, theLinDefl, theToCheckFreeEdges)
+    }
+
+    /// Releases triangulation data for each face of the shape if there is deferred storage to load it
+    /// later
+    /// @param[in] theShape             shape to unload triangulations
+    /// @param[in] theTriangulationIdx  index defining what triangulation should be unloaded. Starts
+    /// from 0.
+    /// -1 is used in specific case to unload currently already active triangulation.
+    /// If some face doesn't contain triangulation with this index, nothing will be unloaded
+    /// for it. Exception will be thrown in case of invalid negative index
+    /// @return TRUE if at least one triangulation is unloaded.
+    pub fn unload_triangulation(
+        theShape: &crate::ffi::TopoDS_Shape,
+        theTriangulationIdx: i32,
+    ) -> bool {
+        crate::ffi::BRepTools::unload_triangulation(theShape, theTriangulationIdx)
+    }
+
+    /// Activates triangulation data for each face of the shape
+    /// from some deferred storage using specified shared input file system
+    /// @param[in] theShape               shape to activate triangulations
+    /// @param[in] theTriangulationIdx    index defining what triangulation should be activated.
+    /// Starts from 0.
+    /// Exception will be thrown in case of invalid negative index
+    /// @param[in] theToActivateStrictly  flag to activate exactly triangulation with defined
+    /// theTriangulationIdx index.
+    /// In TRUE case if some face doesn't contain triangulation with this index, active
+    /// triangulation will not be changed for it. Else the last available triangulation will be
+    /// activated.
+    /// @return TRUE if at least one active triangulation was changed.
+    pub fn activate_triangulation(
+        theShape: &crate::ffi::TopoDS_Shape,
+        theTriangulationIdx: i32,
+        theToActivateStrictly: bool,
+    ) -> bool {
+        crate::ffi::BRepTools::activate_triangulation(
+            theShape,
+            theTriangulationIdx,
+            theToActivateStrictly,
+        )
+    }
+
+    /// Releases all available triangulations for each face of the shape if there is deferred storage
+    /// to load them later
+    /// @param[in] theShape       shape to unload triangulations
+    /// @return TRUE if at least one triangulation is unloaded.
+    pub fn unload_all_triangulations(theShape: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepTools::unload_all_triangulations(theShape)
+    }
+
+    /// Returns  True if  the    distance between the  two
+    /// vertices is lower than their tolerance.
+    pub fn compare(V1: &crate::ffi::TopoDS_Vertex, V2: &crate::ffi::TopoDS_Vertex) -> bool {
+        crate::ffi::BRepTools::compare(V1, V2)
+    }
+
+    /// Returns  True if  the    distance between the  two
+    /// edges is lower than their tolerance.
+    pub fn compare_edge2(E1: &crate::ffi::TopoDS_Edge, E2: &crate::ffi::TopoDS_Edge) -> bool {
+        crate::ffi::BRepTools::compare(E1, E2)
+    }
+
+    /// Returns the outer most wire of <F>. Returns a Null
+    /// wire if <F> has no wires.
+    pub fn outer_wire(F: &crate::ffi::TopoDS_Face) -> crate::ffi::TopoDS_Wire {
+        crate::ffi::BRepTools::outer_wire(F)
+    }
+
+    /// Stores in the map  <M> all the 3D topology edges
+    /// of <S>.
+    pub fn map3_d_edges(
+        S: &crate::ffi::TopoDS_Shape,
+        M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedMapOfShape>,
+    ) {
+        crate::ffi::BRepTools::map3_d_edges(S, M)
+    }
+
+    /// Verifies that the edge  <E> is found two  times on
+    /// the face <F> before calling BRep_Tool::IsClosed.
+    pub fn is_really_closed(E: &crate::ffi::TopoDS_Edge, F: &crate::ffi::TopoDS_Face) -> bool {
+        crate::ffi::BRepTools::is_really_closed(E, F)
+    }
+
+    /// Detect closedness of face in U and V directions
+    pub fn detect_closedness(
+        theFace: &crate::ffi::TopoDS_Face,
+        theUclosed: std::pin::Pin<&mut bool>,
+        theVclosed: std::pin::Pin<&mut bool>,
+    ) {
+        crate::ffi::BRepTools::detect_closedness(theFace, theUclosed, theVclosed)
+    }
+
+    /// Removes internal sub-shapes from the shape.
+    /// The check on internal status is based on orientation of sub-shapes,
+    /// classification is not performed.
+    /// Before removal of internal sub-shapes the algorithm checks if such
+    /// removal is not going to break topological connectivity between sub-shapes.
+    /// The flag <theForce> if set to true disables the connectivity check and clears
+    /// the given shape from all sub-shapes with internal orientation.
+    pub fn remove_internals(theS: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>, theForce: bool) {
+        crate::ffi::BRepTools::remove_internals(theS, theForce)
+    }
+
+    /// Check all locations of shape according criterium:
+    /// aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec())
+    /// All sub-shapes having such locations are put in list theProblemShapes
+    pub fn check_locations(
+        theS: &crate::ffi::TopoDS_Shape,
+        theProblemShapes: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
+    ) {
+        crate::ffi::BRepTools::check_locations(theS, theProblemShapes)
     }
 }

@@ -7,152 +7,6 @@
 #![allow(non_snake_case)]
 
 // ========================
-// From BRepFeat_Builder.hxx
-// ========================
-
-/// Provides a basic tool to implement features topological
-/// operations. The main goal of the algorithm is to perform
-/// the result of the operation according to the
-/// kept parts of the tool.
-/// Input data: a) DS;
-/// b) The kept parts of the tool;
-/// If the map of the kept parts of the tool
-/// is not filled boolean operation of the
-/// given type will be performed;
-/// c) Operation required.
-/// Steps: a) Fill myShapes, myRemoved maps;
-/// b) Rebuild edges and faces;
-/// c) Build images of the object;
-/// d) Build the result of the operation.
-/// Result: Result shape of the operation required.
-pub use crate::ffi::BRepFeat_Builder as Builder;
-
-impl Builder {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepFeat_Builder_ctor()
-    }
-
-    /// Upcast to BOPAlgo_BOP
-    pub fn as_bop_algo_bop(&self) -> &crate::bop_algo::BOP {
-        crate::ffi::BRepFeat_Builder_as_BOPAlgo_BOP(self)
-    }
-
-    /// Upcast to BOPAlgo_BOP (mutable)
-    pub fn as_bop_algo_bop_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::BOP> {
-        crate::ffi::BRepFeat_Builder_as_BOPAlgo_BOP_mut(self)
-    }
-
-    /// Upcast to BOPAlgo_Builder
-    pub fn as_bop_algo_builder(&self) -> &crate::bop_algo::Builder {
-        crate::ffi::BRepFeat_Builder_as_BOPAlgo_Builder(self)
-    }
-
-    /// Upcast to BOPAlgo_Builder (mutable)
-    pub fn as_bop_algo_builder_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::Builder> {
-        crate::ffi::BRepFeat_Builder_as_BOPAlgo_Builder_mut(self)
-    }
-
-    /// Upcast to BOPAlgo_BuilderShape
-    pub fn as_bop_algo_builder_shape(&self) -> &crate::bop_algo::BuilderShape {
-        crate::ffi::BRepFeat_Builder_as_BOPAlgo_BuilderShape(self)
-    }
-
-    /// Upcast to BOPAlgo_BuilderShape (mutable)
-    pub fn as_bop_algo_builder_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::BuilderShape> {
-        crate::ffi::BRepFeat_Builder_as_BOPAlgo_BuilderShape_mut(self)
-    }
-
-    /// Upcast to BOPAlgo_Options
-    pub fn as_bop_algo_options(&self) -> &crate::bop_algo::Options {
-        crate::ffi::BRepFeat_Builder_as_BOPAlgo_Options(self)
-    }
-
-    /// Upcast to BOPAlgo_Options (mutable)
-    pub fn as_bop_algo_options_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::Options> {
-        crate::ffi::BRepFeat_Builder_as_BOPAlgo_Options_mut(self)
-    }
-
-    /// Upcast to BOPAlgo_ToolsProvider
-    pub fn as_bop_algo_tools_provider(&self) -> &crate::bop_algo::ToolsProvider {
-        crate::ffi::BRepFeat_Builder_as_BOPAlgo_ToolsProvider(self)
-    }
-
-    /// Upcast to BOPAlgo_ToolsProvider (mutable)
-    pub fn as_bop_algo_tools_provider_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::ToolsProvider> {
-        crate::ffi::BRepFeat_Builder_as_BOPAlgo_ToolsProvider_mut(self)
-    }
-}
-
-// ========================
-// From BRepFeat_Form.hxx
-// ========================
-
-/// Provides general functions to build form features.
-/// Form features can be depressions or protrusions and include the following types:
-/// -          Cylinder
-/// -          Draft Prism
-/// -          Prism
-/// -          Revolved feature
-/// -          Pipe
-/// In each case, you have a choice of operation type between the following:
-/// -          removing matter (a Boolean cut: Fuse setting 0)
-/// -          adding matter (Boolean fusion: Fuse setting 1)
-/// The semantics of form feature creation is based on the construction of shapes:
-/// -      along a length
-/// -      up to a limiting face
-/// -      from a limiting face to a  height
-/// -      above and/or below a plane
-/// The shape defining construction of the feature can be either the
-/// supporting edge or the concerned area of a face.
-/// In case of the supporting edge, this contour can be attached to a
-/// face of the basis shape by binding. When the contour is bound to this
-/// face, the information that the contour will slide on the face
-/// becomes available to the relevant class methods. In case of the
-/// concerned area of a face, you could, for example, cut it out and
-/// move it to a different height which will define the limiting face of a
-/// protrusion or depression.
-/// Topological definition with local operations of this sort makes
-/// calculations simpler and faster than a global operation. The latter
-/// would entail a second phase of removing unwanted matter to get the same result.
-pub use crate::ffi::BRepFeat_Form as Form;
-
-impl Form {
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        crate::ffi::BRepFeat_Form_as_BRepBuilderAPI_Command(self)
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        crate::ffi::BRepFeat_Form_as_BRepBuilderAPI_Command_mut(self)
-    }
-
-    /// Upcast to BRepBuilderAPI_MakeShape
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        crate::ffi::BRepFeat_Form_as_BRepBuilderAPI_MakeShape(self)
-    }
-
-    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
-    pub fn as_b_rep_builder_api_make_shape_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        crate::ffi::BRepFeat_Form_as_BRepBuilderAPI_MakeShape_mut(self)
-    }
-}
-
-// ========================
 // From BRepFeat_MakeCylindricalHole.hxx
 // ========================
 
@@ -165,74 +19,88 @@ impl MakeCylindricalHole {
         crate::ffi::BRepFeat_MakeCylindricalHole_ctor()
     }
 
-    /// Upcast to BOPAlgo_BOP
-    pub fn as_bop_algo_bop(&self) -> &crate::bop_algo::BOP {
-        crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP(self)
+    /// Sets the axis of the hole(s).
+    pub fn init(self: std::pin::Pin<&mut Self>, Axis: &crate::ffi::gp_Ax1) {
+        crate::ffi::BRepFeat_MakeCylindricalHole::init(self, Axis)
     }
 
-    /// Upcast to BOPAlgo_BOP (mutable)
-    pub fn as_bop_algo_bop_mut(
+    /// Sets the shape and  axis on which hole(s)  will be
+    /// performed.
+    pub fn init_shape_ax1(
         self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::BOP> {
-        crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP_mut(self)
+        S: &crate::ffi::TopoDS_Shape,
+        Axis: &crate::ffi::gp_Ax1,
+    ) {
+        crate::ffi::BRepFeat_MakeCylindricalHole::init(self, S, Axis)
     }
 
-    /// Upcast to BOPAlgo_Builder
-    pub fn as_bop_algo_builder(&self) -> &crate::bop_algo::Builder {
-        crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_Builder(self)
+    /// Performs every  hole of    radius  <Radius>.  This
+    /// command  has the  same effect as   a cut operation
+    /// with an  infinite cylinder   defined by the  given
+    /// axis and <Radius>.
+    pub fn perform(self: std::pin::Pin<&mut Self>, Radius: f64) {
+        crate::ffi::BRepFeat_MakeCylindricalHole::perform(self, Radius)
     }
 
-    /// Upcast to BOPAlgo_Builder (mutable)
-    pub fn as_bop_algo_builder_mut(
+    /// Performs every  hole  of  radius  <Radius> located
+    /// between PFrom  and  PTo  on the  given  axis.   If
+    /// <WithControl> is set  to Standard_False no control
+    /// are  done  on   the  resulting  shape   after  the
+    /// operation is performed.
+    pub fn perform_real3_bool(
         self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::Builder> {
-        crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_Builder_mut(self)
+        Radius: f64,
+        PFrom: f64,
+        PTo: f64,
+        WithControl: bool,
+    ) {
+        crate::ffi::BRepFeat_MakeCylindricalHole::perform(self, Radius, PFrom, PTo, WithControl)
     }
 
-    /// Upcast to BOPAlgo_BuilderShape
-    pub fn as_bop_algo_builder_shape(&self) -> &crate::bop_algo::BuilderShape {
-        crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_BuilderShape(self)
+    /// Performs the first hole of radius <Radius>, in the
+    /// direction of  the defined axis. First hole signify
+    /// first encountered after the origin of the axis. If
+    /// <WithControl> is set  to Standard_False no control
+    /// are  done  on   the  resulting  shape   after  the
+    /// operation is performed.
+    pub fn perform_thru_next(self: std::pin::Pin<&mut Self>, Radius: f64, WithControl: bool) {
+        crate::ffi::BRepFeat_MakeCylindricalHole::perform_thru_next(self, Radius, WithControl)
     }
 
-    /// Upcast to BOPAlgo_BuilderShape (mutable)
-    pub fn as_bop_algo_builder_shape_mut(
+    /// Performs every  hole of   radius  <Radius> located
+    /// after  the   origin  of   the given    axis.    If
+    /// <WithControl> is  set to Standard_False no control
+    /// are done   on   the  resulting  shape   after  the
+    /// operation is performed.
+    pub fn perform_until_end(self: std::pin::Pin<&mut Self>, Radius: f64, WithControl: bool) {
+        crate::ffi::BRepFeat_MakeCylindricalHole::perform_until_end(self, Radius, WithControl)
+    }
+
+    /// Performs a  blind   hole of radius    <Radius> and
+    /// length <Length>.  The length is  measured from the
+    /// origin of the given  axis. If <WithControl> is set
+    /// to  Standard_False no  control  are done after the
+    /// operation is performed.
+    pub fn perform_blind(
         self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::BuilderShape> {
-        crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_BuilderShape_mut(self)
+        Radius: f64,
+        Length: f64,
+        WithControl: bool,
+    ) {
+        crate::ffi::BRepFeat_MakeCylindricalHole::perform_blind(self, Radius, Length, WithControl)
     }
 
-    /// Upcast to BOPAlgo_Options
-    pub fn as_bop_algo_options(&self) -> &crate::bop_algo::Options {
-        crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_Options(self)
+    /// Returns the status after a hole is performed.
+    pub fn status(&self) -> crate::ffi::BRepFeat_Status {
+        crate::ffi::BRepFeat_MakeCylindricalHole::status(self)
     }
 
-    /// Upcast to BOPAlgo_Options (mutable)
-    pub fn as_bop_algo_options_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::Options> {
-        crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_Options_mut(self)
-    }
-
-    /// Upcast to BOPAlgo_ToolsProvider
-    pub fn as_bop_algo_tools_provider(&self) -> &crate::bop_algo::ToolsProvider {
-        crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_ToolsProvider(self)
-    }
-
-    /// Upcast to BOPAlgo_ToolsProvider (mutable)
-    pub fn as_bop_algo_tools_provider_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::bop_algo::ToolsProvider> {
-        crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_ToolsProvider_mut(self)
-    }
-
-    /// Upcast to BRepFeat_Builder
-    pub fn as_builder(&self) -> &Builder {
-        crate::ffi::BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder(self)
-    }
-
-    /// Upcast to BRepFeat_Builder (mutable)
-    pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
-        crate::ffi::BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder_mut(self)
+    /// Builds the    resulting shape  (redefined     from
+    /// MakeShape). Invalidates the  given parts  of tools
+    /// if  any,   and performs the  result   of the local
+    /// operation.
+    pub fn build(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeCylindricalHole::build(self)
     }
 }
 
@@ -285,37 +153,107 @@ impl MakeDPrism {
         crate::ffi::BRepFeat_MakeDPrism_ctor()
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        crate::ffi::BRepFeat_MakeDPrism_as_BRepBuilderAPI_Command(self)
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(
+    /// Initializes this algorithm for building draft prisms along surfaces.
+    /// A face Pbase is selected in the basis shape Sbase to
+    /// serve as the basis from the draft prism. The draft will be
+    /// defined by the angle Angle and Fuse offers a choice between:
+    /// -   removing matter with a Boolean cut using the setting 0
+    /// -   adding matter with Boolean fusion using the setting  1.
+    /// The sketch face Skface serves to determine the type of
+    /// operation. If it is inside the basis shape, a local
+    /// operation such as glueing can be performed.
+    pub fn init(
         self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
-        crate::ffi::BRepFeat_MakeDPrism_as_BRepBuilderAPI_Command_mut(self)
+        Sbase: &crate::ffi::TopoDS_Shape,
+        Pbase: &crate::ffi::TopoDS_Face,
+        Skface: &crate::ffi::TopoDS_Face,
+        Angle: f64,
+        Fuse: i32,
+        Modify: bool,
+    ) {
+        crate::ffi::BRepFeat_MakeDPrism::init(self, Sbase, Pbase, Skface, Angle, Fuse, Modify)
     }
 
-    /// Upcast to BRepBuilderAPI_MakeShape
-    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        crate::ffi::BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape(self)
-    }
-
-    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
-    pub fn as_b_rep_builder_api_make_shape_mut(
+    /// Indicates that the edge <E> will slide on the face
+    /// <OnFace>.
+    /// Raises ConstructionError if the  face does not belong to the
+    /// basis shape, or the edge to the prismed shape.
+    pub fn add(
         self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
-        crate::ffi::BRepFeat_MakeDPrism_as_BRepBuilderAPI_MakeShape_mut(self)
+        E: &crate::ffi::TopoDS_Edge,
+        OnFace: &crate::ffi::TopoDS_Face,
+    ) {
+        crate::ffi::BRepFeat_MakeDPrism::add(self, E, OnFace)
     }
 
-    /// Upcast to BRepFeat_Form
-    pub fn as_form(&self) -> &Form {
-        crate::ffi::BRepFeat_MakeDPrism_as_BRepFeat_Form(self)
+    pub fn perform(self: std::pin::Pin<&mut Self>, Height: f64) {
+        crate::ffi::BRepFeat_MakeDPrism::perform(self, Height)
     }
 
-    /// Upcast to BRepFeat_Form (mutable)
-    pub fn as_form_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Form> {
-        crate::ffi::BRepFeat_MakeDPrism_as_BRepFeat_Form_mut(self)
+    pub fn perform_shape(self: std::pin::Pin<&mut Self>, Until: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::BRepFeat_MakeDPrism::perform(self, Until)
+    }
+
+    /// Assigns one of the following semantics
+    /// -   to a height Height
+    /// -   to a face Until
+    /// -   from a face From to a height Until.
+    /// Reconstructs the feature topologically according to the semantic option chosen.
+    pub fn perform_shape2(
+        self: std::pin::Pin<&mut Self>,
+        From: &crate::ffi::TopoDS_Shape,
+        Until: &crate::ffi::TopoDS_Shape,
+    ) {
+        crate::ffi::BRepFeat_MakeDPrism::perform(self, From, Until)
+    }
+
+    /// Realizes a semi-infinite prism, limited by the position of the prism base.
+    pub fn perform_until_end(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeDPrism::perform_until_end(self)
+    }
+
+    /// Realizes a semi-infinite prism, limited by the face Funtil.
+    pub fn perform_from_end(self: std::pin::Pin<&mut Self>, FUntil: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::BRepFeat_MakeDPrism::perform_from_end(self, FUntil)
+    }
+
+    /// Builds an infinite prism. The infinite descendants will not be kept in the result.
+    pub fn perform_thru_all(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeDPrism::perform_thru_all(self)
+    }
+
+    /// Assigns both a limiting shape, Until from
+    /// TopoDS_Shape, and a height, Height at which to stop
+    /// generation of the prism feature.
+    pub fn perform_until_height(
+        self: std::pin::Pin<&mut Self>,
+        Until: &crate::ffi::TopoDS_Shape,
+        Height: f64,
+    ) {
+        crate::ffi::BRepFeat_MakeDPrism::perform_until_height(self, Until, Height)
+    }
+
+    pub fn curves(
+        self: std::pin::Pin<&mut Self>,
+        S: std::pin::Pin<&mut crate::ffi::TColGeom_SequenceOfCurve>,
+    ) {
+        crate::ffi::BRepFeat_MakeDPrism::curves(self, S)
+    }
+
+    /// Determination of TopEdges and LatEdges.
+    /// sig = 1 -> TopEdges = FirstShape of the DPrism
+    /// sig = 2 -> TOpEdges = LastShape of the DPrism
+    pub fn boss_edges(self: std::pin::Pin<&mut Self>, sig: i32) {
+        crate::ffi::BRepFeat_MakeDPrism::boss_edges(self, sig)
+    }
+
+    /// Returns the list of TopoDS Edges of the top of the boss.
+    pub fn top_edges(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeDPrism::top_edges(self)
+    }
+
+    /// Returns the list of TopoDS Edges of the bottom of the boss.
+    pub fn lat_edges(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeDPrism::lat_edges(self)
     }
 }

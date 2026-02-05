@@ -7,101 +7,6 @@
 #![allow(non_snake_case)]
 
 // ========================
-// From Extrema_ECC.hxx
-// ========================
-
-pub use crate::ffi::Extrema_ECC as ECC;
-
-impl ECC {
-    /// Calculates all the distances as above
-    /// between Uinf and Usup for C1 and  between Vinf and Vsup
-    /// for C2.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ECC_ctor()
-    }
-
-    /// It calculates all the distances.
-    /// The function F(u,v)=distance(C1(u),C2(v)) has an
-    /// extremum when gradient(f)=0. The algorithm uses
-    /// Evtushenko's global optimization solver.
-    pub fn new_curve2(
-        C1: &crate::ffi::Adaptor3d_Curve,
-        C2: &crate::ffi::Adaptor3d_Curve,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ECC_ctor_curve2(C1, C2)
-    }
-
-    /// Calculates all the distances as above
-    /// between Uinf and Usup for C1 and  between Vinf and Vsup
-    /// for C2.
-    pub fn new_curve2_real4(
-        C1: &crate::ffi::Adaptor3d_Curve,
-        C2: &crate::ffi::Adaptor3d_Curve,
-        Uinf: f64,
-        Usup: f64,
-        Vinf: f64,
-        Vsup: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ECC_ctor_curve2_real4(C1, C2, Uinf, Usup, Vinf, Vsup)
-    }
-}
-
-// ========================
-// From Extrema_EPCOfExtPC.hxx
-// ========================
-
-pub use crate::ffi::Extrema_EPCOfExtPC as EPCOfExtPC;
-
-impl EPCOfExtPC {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_EPCOfExtPC_ctor()
-    }
-
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// NbU is used to locate the close points to
-    /// find the zeros.
-    /// Tol and TolU are used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt_curve_int_real2(
-        P: &crate::ffi::gp_Pnt,
-        C: &crate::ffi::Adaptor3d_Curve,
-        NbU: i32,
-        TolU: f64,
-        TolF: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_EPCOfExtPC_ctor_pnt_curve_int_real2(P, C, NbU, TolU, TolF)
-    }
-
-    /// It calculates all the distances.
-    /// The function F(u)=distance(P,C(u)) has an extremum
-    /// when g(u)=dF/du=0. The algorithm searches all the
-    /// zeros inside the definition range of the curve.
-    /// NbU is used to locate the close points to
-    /// find the zeros.
-    /// Zeros are searched between umin and usup.
-    /// Tol and TolU are used to decide to stop the
-    /// iterations according to the following condition:
-    /// if n is the number of iterations,
-    /// abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-    pub fn new_pnt_curve_int_real4(
-        P: &crate::ffi::gp_Pnt,
-        C: &crate::ffi::Adaptor3d_Curve,
-        NbU: i32,
-        Umin: f64,
-        Usup: f64,
-        TolU: f64,
-        TolF: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_EPCOfExtPC_ctor_pnt_curve_int_real4(P, C, NbU, Umin, Usup, TolU, TolF)
-    }
-}
-
-// ========================
 // From Extrema_ExtCC.hxx
 // ========================
 
@@ -136,6 +41,123 @@ impl ExtCC {
         TolC2: f64,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_ExtCC_ctor_curve2_real6(C1, C2, U1, U2, V1, V2, TolC1, TolC2)
+    }
+
+    /// Initializes but does not perform algorithm.
+    pub fn initialize(
+        self: std::pin::Pin<&mut Self>,
+        C1: &crate::ffi::Adaptor3d_Curve,
+        C2: &crate::ffi::Adaptor3d_Curve,
+        TolC1: f64,
+        TolC2: f64,
+    ) {
+        crate::ffi::Extrema_ExtCC::initialize(self, C1, C2, TolC1, TolC2)
+    }
+
+    /// Initializes but does not perform algorithm.
+    pub fn initialize_curve2_real6(
+        self: std::pin::Pin<&mut Self>,
+        C1: &crate::ffi::Adaptor3d_Curve,
+        C2: &crate::ffi::Adaptor3d_Curve,
+        U1: f64,
+        U2: f64,
+        V1: f64,
+        V2: f64,
+        TolC1: f64,
+        TolC2: f64,
+    ) {
+        crate::ffi::Extrema_ExtCC::initialize(self, C1, C2, U1, U2, V1, V2, TolC1, TolC2)
+    }
+
+    pub fn set_curve(
+        self: std::pin::Pin<&mut Self>,
+        theRank: i32,
+        C: &crate::ffi::Adaptor3d_Curve,
+    ) {
+        crate::ffi::Extrema_ExtCC::set_curve(self, theRank, C)
+    }
+
+    pub fn set_curve_int_curve_real2(
+        self: std::pin::Pin<&mut Self>,
+        theRank: i32,
+        C: &crate::ffi::Adaptor3d_Curve,
+        Uinf: f64,
+        Usup: f64,
+    ) {
+        crate::ffi::Extrema_ExtCC::set_curve(self, theRank, C, Uinf, Usup)
+    }
+
+    pub fn set_range(self: std::pin::Pin<&mut Self>, theRank: i32, Uinf: f64, Usup: f64) {
+        crate::ffi::Extrema_ExtCC::set_range(self, theRank, Uinf, Usup)
+    }
+
+    pub fn set_tolerance(self: std::pin::Pin<&mut Self>, theRank: i32, Tol: f64) {
+        crate::ffi::Extrema_ExtCC::set_tolerance(self, theRank, Tol)
+    }
+
+    pub fn perform(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::Extrema_ExtCC::perform(self)
+    }
+
+    /// Returns True if the distances are found.
+    pub fn is_done(&self) -> bool {
+        crate::ffi::Extrema_ExtCC::is_done(self)
+    }
+
+    /// Returns the number of extremum distances.
+    pub fn nb_ext(&self) -> i32 {
+        crate::ffi::Extrema_ExtCC::nb_ext(self)
+    }
+
+    /// Returns True if the two curves are parallel.
+    pub fn is_parallel(&self) -> bool {
+        crate::ffi::Extrema_ExtCC::is_parallel(self)
+    }
+
+    /// Returns the value of the Nth extremum square distance.
+    pub fn square_distance(&self, N: i32) -> f64 {
+        crate::ffi::Extrema_ExtCC::square_distance(self, N)
+    }
+
+    /// Returns the points of the Nth extremum distance.
+    /// P1 is on the first curve, P2 on the second one.
+    pub fn points(
+        &self,
+        N: i32,
+        P1: std::pin::Pin<&mut crate::ffi::Extrema_POnCurv>,
+        P2: std::pin::Pin<&mut crate::ffi::Extrema_POnCurv>,
+    ) {
+        crate::ffi::Extrema_ExtCC::points(self, N, P1, P2)
+    }
+
+    /// if the curve is a trimmed curve,
+    /// dist11 is a square distance between the point on C1
+    /// of parameter FirstParameter and the point of
+    /// parameter FirstParameter on C2.
+    pub fn trimmed_square_distances(
+        &self,
+        dist11: std::pin::Pin<&mut f64>,
+        distP12: std::pin::Pin<&mut f64>,
+        distP21: std::pin::Pin<&mut f64>,
+        distP22: std::pin::Pin<&mut f64>,
+        P11: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        P12: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        P21: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        P22: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+    ) {
+        crate::ffi::Extrema_ExtCC::trimmed_square_distances(
+            self, dist11, distP12, distP21, distP22, P11, P12, P21, P22,
+        )
+    }
+
+    /// Set flag for single extrema computation. Works on parametric solver only.
+    pub fn set_single_solution_flag(self: std::pin::Pin<&mut Self>, theSingleSolutionFlag: bool) {
+        crate::ffi::Extrema_ExtCC::set_single_solution_flag(self, theSingleSolutionFlag)
+    }
+
+    /// Get flag for single extrema computation. Works on parametric solver only.
+    pub fn get_single_solution_flag(&self) -> bool {
+        crate::ffi::Extrema_ExtCC::get_single_solution_flag(self)
     }
 }
 
@@ -184,178 +206,63 @@ impl ExtPC {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_ExtPC_ctor_pnt_curve_real(P, C, TolF)
     }
-}
 
-// ========================
-// From Extrema_ExtPElC.hxx
-// ========================
-
-/// It calculates all the distances between a point
-/// and an elementary curve.
-/// These distances can be minimum or maximum.
-pub use crate::ffi::Extrema_ExtPElC as ExtPElC;
-
-impl ExtPElC {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPElC_ctor()
-    }
-
-    /// Calculates the extremum distance between the
-    /// point P and the segment [Uinf,Usup] of the line C.
-    pub fn new_pnt_lin_real3(
-        P: &crate::ffi::gp_Pnt,
-        C: &crate::ffi::gp_Lin,
-        Tol: f64,
+    /// initializes the fields of the algorithm.
+    pub fn initialize(
+        self: std::pin::Pin<&mut Self>,
+        C: &crate::ffi::Adaptor3d_Curve,
         Uinf: f64,
         Usup: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPElC_ctor_pnt_lin_real3(P, C, Tol, Uinf, Usup)
+        TolF: f64,
+    ) {
+        crate::ffi::Extrema_ExtPC::initialize(self, C, Uinf, Usup, TolF)
     }
 
-    /// Calculates the 2 extremum distances between the
-    /// point P and the segment [Uinf,Usup] of the circle C.
-    /// Tol is used to determine
-    /// if P is on the axis of the circle or
-    /// if an extremum is on an endpoint of the segment.
-    /// If P is on the axis of the circle,
-    /// there are infinite solution then IsDone(me)=False.
-    /// The conditions on the Uinf and Usup are:
-    /// 0. <= Uinf <= 2.*PI and Usup > Uinf.
-    /// If Usup > Uinf + 2.*PI, then only the solutions in
-    /// the range [Uinf,Uinf+2.*PI[ are computed.
-    pub fn new_pnt_circ_real3(
-        P: &crate::ffi::gp_Pnt,
-        C: &crate::ffi::gp_Circ,
-        Tol: f64,
-        Uinf: f64,
-        Usup: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPElC_ctor_pnt_circ_real3(P, C, Tol, Uinf, Usup)
+    /// An exception is raised if the fields have not been
+    /// initialized.
+    pub fn perform(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Extrema_ExtPC::perform(self, P)
     }
 
-    /// Calculates the 4 extremum distances between the
-    /// point P and the segment [Uinf,Usup] of the ellipse C.
-    /// Tol is used to determine
-    /// if the point is on the axis of the ellipse and
-    /// if the major radius is equal to the minor radius or
-    /// if an extremum is on an endpoint of the segment.
-    /// If P is on the axis of the ellipse,
-    /// there are infinite solution then IsDone(me)=False.
-    /// The conditions on the Uinf and Usup are:
-    /// 0. <= Uinf <= 2.*PI and Usup > Uinf.
-    /// If Usup > Uinf + 2.*PI, then only the solutions in
-    /// the range [Uinf,Uinf+2.*PI[ are computed.
-    pub fn new_pnt_elips_real3(
-        P: &crate::ffi::gp_Pnt,
-        C: &crate::ffi::gp_Elips,
-        Tol: f64,
-        Uinf: f64,
-        Usup: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPElC_ctor_pnt_elips_real3(P, C, Tol, Uinf, Usup)
+    /// True if the distances are found.
+    pub fn is_done(&self) -> bool {
+        crate::ffi::Extrema_ExtPC::is_done(self)
     }
 
-    /// Calculates the extremum distances between the
-    /// point P and the segment [Uinf,Usup] of the hyperbola
-    /// C.
-    /// Tol is used to determine if two solutions u and v
-    /// are identical; the condition is:
-    /// dist(C(u),C(v)) < Tol.
-    pub fn new_pnt_hypr_real3(
-        P: &crate::ffi::gp_Pnt,
-        C: &crate::ffi::gp_Hypr,
-        Tol: f64,
-        Uinf: f64,
-        Usup: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPElC_ctor_pnt_hypr_real3(P, C, Tol, Uinf, Usup)
+    /// Returns the value of the <N>th extremum square distance.
+    pub fn square_distance(&self, N: i32) -> f64 {
+        crate::ffi::Extrema_ExtPC::square_distance(self, N)
     }
 
-    /// Calculates the 4 extremum distances between the
-    /// point P and the segment [Uinf,Usup] of the parabola
-    /// C.
-    /// Tol is used to determine if two solutions u and v
-    /// are identical; the condition is:
-    /// dist(C(u),C(v)) < Tol.
-    pub fn new_pnt_parab_real3(
-        P: &crate::ffi::gp_Pnt,
-        C: &crate::ffi::gp_Parab,
-        Tol: f64,
-        Uinf: f64,
-        Usup: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPElC_ctor_pnt_parab_real3(P, C, Tol, Uinf, Usup)
-    }
-}
-
-// ========================
-// From Extrema_ExtPElS.hxx
-// ========================
-
-/// It calculates all the extremum distances
-/// between a point and a surface.
-/// These distances can be minimum or maximum.
-pub use crate::ffi::Extrema_ExtPElS as ExtPElS;
-
-impl ExtPElS {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPElS_ctor()
+    /// Returns the number of extremum distances.
+    pub fn nb_ext(&self) -> i32 {
+        crate::ffi::Extrema_ExtPC::nb_ext(self)
     }
 
-    /// It calculates all the distances between a point
-    /// and a cylinder from gp.
-    /// Tol is used to test if the point is on the axis.
-    pub fn new_pnt_cylinder_real(
-        P: &crate::ffi::gp_Pnt,
-        S: &crate::ffi::gp_Cylinder,
-        Tol: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPElS_ctor_pnt_cylinder_real(P, S, Tol)
+    /// Returns True if the <N>th extremum distance is a
+    /// minimum.
+    pub fn is_min(&self, N: i32) -> bool {
+        crate::ffi::Extrema_ExtPC::is_min(self, N)
     }
 
-    /// It calculates all the distances between a point
-    /// and a plane from gp.
-    /// Tol is used to test if the point is on the plane.
-    pub fn new_pnt_pln_real(
-        P: &crate::ffi::gp_Pnt,
-        S: &crate::ffi::gp_Pln,
-        Tol: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPElS_ctor_pnt_pln_real(P, S, Tol)
+    /// Returns the point of the <N>th extremum distance.
+    pub fn point(&self, N: i32) -> &crate::ffi::Extrema_POnCurv {
+        crate::ffi::Extrema_ExtPC::point(self, N)
     }
 
-    /// It calculates all the distances between a point
-    /// and a cone from gp.
-    /// Tol is used to test if the point is at the apex or
-    /// on the axis.
-    pub fn new_pnt_cone_real(
-        P: &crate::ffi::gp_Pnt,
-        S: &crate::ffi::gp_Cone,
-        Tol: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPElS_ctor_pnt_cone_real(P, S, Tol)
-    }
-
-    /// It calculates all the distances between a point
-    /// and a torus from gp.
-    /// Tol is used to test if the point is on the axis.
-    pub fn new_pnt_torus_real(
-        P: &crate::ffi::gp_Pnt,
-        S: &crate::ffi::gp_Torus,
-        Tol: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPElS_ctor_pnt_torus_real(P, S, Tol)
-    }
-
-    /// It calculates all the distances between a point
-    /// and a sphere from gp.
-    /// Tol is used to test if the point is at the center.
-    pub fn new_pnt_sphere_real(
-        P: &crate::ffi::gp_Pnt,
-        S: &crate::ffi::gp_Sphere,
-        Tol: f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_ExtPElS_ctor_pnt_sphere_real(P, S, Tol)
+    /// if the curve is a trimmed curve,
+    /// dist1 is a square distance between <P> and the point
+    /// of parameter FirstParameter <P1> and
+    /// dist2 is a square distance between <P> and the point
+    /// of parameter LastParameter <P2>.
+    pub fn trimmed_square_distances(
+        &self,
+        dist1: std::pin::Pin<&mut f64>,
+        dist2: std::pin::Pin<&mut f64>,
+        P1: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        P2: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+    ) {
+        crate::ffi::Extrema_ExtPC::trimmed_square_distances(self, dist1, dist2, P1, P2)
     }
 }
 
@@ -372,44 +279,79 @@ impl ExtPS {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_ExtPS_ctor()
     }
-}
 
-// ========================
-// From Extrema_FuncPSNorm.hxx
-// ========================
-
-/// Functional for search of extremum of the distance between point P and
-/// surface S, starting from approximate solution (u0, v0).
-///
-/// The class inherits math_FunctionSetWithDerivatives and thus is intended
-/// for use in math_FunctionSetRoot algorithm .
-///
-/// Denoting derivatives of the surface S(u,v) by u and v, respectively, as
-/// Su and Sv, the two functions to be nullified are:
-///
-/// F1(u,v) = (S - P) * Su
-/// F2(u,v) = (S - P) * Sv
-///
-/// The derivatives of the functional are:
-///
-/// Duf1(u,v) = Su^2    + (S-P) * Suu;
-/// Dvf1(u,v) = Su * Sv + (S-P) * Suv
-/// Duf2(u,v) = Sv * Su + (S-P) * Suv = Dvf1
-/// Dvf2(u,v) = Sv^2    + (S-P) * Svv
-///
-/// Here * denotes scalar product, and ^2 is square power.
-pub use crate::ffi::Extrema_FuncPSNorm as FuncPSNorm;
-
-impl FuncPSNorm {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_FuncPSNorm_ctor()
+    /// Initializes the fields of the algorithm.
+    pub fn initialize(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::Adaptor3d_Surface,
+        Uinf: f64,
+        Usup: f64,
+        Vinf: f64,
+        Vsup: f64,
+        TolU: f64,
+        TolV: f64,
+    ) {
+        crate::ffi::Extrema_ExtPS::initialize(self, S, Uinf, Usup, Vinf, Vsup, TolU, TolV)
     }
 
-    pub fn new_pnt_surface(
-        P: &crate::ffi::gp_Pnt,
-        S: &crate::ffi::Adaptor3d_Surface,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_FuncPSNorm_ctor_pnt_surface(P, S)
+    /// Computes the distances.
+    /// An exception is raised if the fields have not been
+    /// initialized.
+    pub fn perform(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Extrema_ExtPS::perform(self, P)
+    }
+
+    /// Returns True if the distances are found.
+    pub fn is_done(&self) -> bool {
+        crate::ffi::Extrema_ExtPS::is_done(self)
+    }
+
+    /// Returns the number of extremum distances.
+    pub fn nb_ext(&self) -> i32 {
+        crate::ffi::Extrema_ExtPS::nb_ext(self)
+    }
+
+    /// Returns the value of the Nth resulting square distance.
+    pub fn square_distance(&self, N: i32) -> f64 {
+        crate::ffi::Extrema_ExtPS::square_distance(self, N)
+    }
+
+    /// Returns the point of the Nth resulting distance.
+    pub fn point(&self, N: i32) -> &crate::ffi::Extrema_POnSurf {
+        crate::ffi::Extrema_ExtPS::point(self, N)
+    }
+
+    /// if the surface is a trimmed surface,
+    /// dUfVf is a square distance between <P> and the point
+    /// of parameter FirstUParameter and FirstVParameter <PUfVf>.
+    /// dUfVl is a square distance between <P> and the point
+    /// of parameter FirstUParameter and LastVParameter <PUfVl>.
+    /// dUlVf is a square distance between <P> and the point
+    /// of parameter LastUParameter and FirstVParameter <PUlVf>.
+    /// dUlVl is a square distance between <P> and the point
+    /// of parameter LastUParameter and LastVParameter <PUlVl>.
+    pub fn trimmed_square_distances(
+        &self,
+        dUfVf: std::pin::Pin<&mut f64>,
+        dUfVl: std::pin::Pin<&mut f64>,
+        dUlVf: std::pin::Pin<&mut f64>,
+        dUlVl: std::pin::Pin<&mut f64>,
+        PUfVf: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        PUfVl: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        PUlVf: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        PUlVl: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+    ) {
+        crate::ffi::Extrema_ExtPS::trimmed_square_distances(
+            self, dUfVf, dUfVl, dUlVf, dUlVl, PUfVf, PUfVl, PUlVf, PUlVl,
+        )
+    }
+
+    pub fn set_flag(self: std::pin::Pin<&mut Self>, F: crate::ffi::Extrema_ExtFlag) {
+        crate::ffi::Extrema_ExtPS::set_flag(self, F)
+    }
+
+    pub fn set_algo(self: std::pin::Pin<&mut Self>, A: crate::ffi::Extrema_ExtAlgo) {
+        crate::ffi::Extrema_ExtPS::set_algo(self, A)
     }
 }
 
@@ -427,122 +369,67 @@ impl GenExtPS {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Extrema_GenExtPS_ctor()
     }
-}
 
-// ========================
-// From Extrema_PCFOfEPCOfExtPC.hxx
-// ========================
-
-pub use crate::ffi::Extrema_PCFOfEPCOfExtPC as PCFOfEPCOfExtPC;
-
-impl PCFOfEPCOfExtPC {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_PCFOfEPCOfExtPC_ctor()
-    }
-
-    pub fn new_pnt_curve(
-        P: &crate::ffi::gp_Pnt,
-        C: &crate::ffi::Adaptor3d_Curve,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_PCFOfEPCOfExtPC_ctor_pnt_curve(P, C)
-    }
-
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_Function(self)
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(
+    pub fn initialize(
         self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::Function> {
-        crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_Function_mut(self)
+        S: &crate::ffi::Adaptor3d_Surface,
+        NbU: i32,
+        NbV: i32,
+        TolU: f64,
+        TolV: f64,
+    ) {
+        crate::ffi::Extrema_GenExtPS::initialize(self, S, NbU, NbV, TolU, TolV)
     }
 
-    /// Upcast to math_FunctionWithDerivative
-    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative(self)
-    }
-
-    /// Upcast to math_FunctionWithDerivative (mutable)
-    pub fn as_math_function_with_derivative_mut(
+    pub fn initialize_surface_int2_real6(
         self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::math::FunctionWithDerivative> {
-        crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative_mut(self)
-    }
-}
-
-// ========================
-// From Extrema_POnCurv.hxx
-// ========================
-
-pub use crate::ffi::Extrema_POnCurv as POnCurv;
-
-impl POnCurv {
-    /// Creation of an indefinite point on curve.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_POnCurv_ctor()
+        S: &crate::ffi::Adaptor3d_Surface,
+        NbU: i32,
+        NbV: i32,
+        Umin: f64,
+        Usup: f64,
+        Vmin: f64,
+        Vsup: f64,
+        TolU: f64,
+        TolV: f64,
+    ) {
+        crate::ffi::Extrema_GenExtPS::initialize(
+            self, S, NbU, NbV, Umin, Usup, Vmin, Vsup, TolU, TolV,
+        )
     }
 
-    /// Creation of a point on curve with a parameter
-    /// value on the curve and a Pnt from gp.
-    pub fn new_real_pnt(U: f64, P: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_POnCurv_ctor_real_pnt(U, P)
-    }
-}
-
-// ========================
-// From Extrema_POnSurf.hxx
-// ========================
-
-/// Definition of a point on surface.
-pub use crate::ffi::Extrema_POnSurf as POnSurf;
-
-impl POnSurf {
-    /// Creation of an indefinite point on surface.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_POnSurf_ctor()
+    /// the algorithm is done with the point P.
+    /// An exception is raised if the fields have not
+    /// been initialized.
+    pub fn perform(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::Extrema_GenExtPS::perform(self, P)
     }
 
-    /// Creation of a point on surface with parameter
-    /// values on the surface and a Pnt from gp.
-    pub fn new_real2_pnt(U: f64, V: f64, P: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_POnSurf_ctor_real2_pnt(U, V, P)
-    }
-}
-
-// ========================
-// From Extrema_POnSurfParams.hxx
-// ========================
-
-/// Data container for point on surface parameters. These parameters
-/// are required to compute an initial approximation for extrema
-/// computation.
-pub use crate::ffi::Extrema_POnSurfParams as POnSurfParams;
-
-impl POnSurfParams {
-    /// empty constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_POnSurfParams_ctor()
+    pub fn set_flag(self: std::pin::Pin<&mut Self>, F: crate::ffi::Extrema_ExtFlag) {
+        crate::ffi::Extrema_GenExtPS::set_flag(self, F)
     }
 
-    /// Creation of a point on surface with parameter
-    /// values on the surface and a Pnt from gp.
-    pub fn new_real2_pnt(
-        theU: f64,
-        theV: f64,
-        thePnt: &crate::ffi::gp_Pnt,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::Extrema_POnSurfParams_ctor_real2_pnt(theU, theV, thePnt)
+    pub fn set_algo(self: std::pin::Pin<&mut Self>, A: crate::ffi::Extrema_ExtAlgo) {
+        crate::ffi::Extrema_GenExtPS::set_algo(self, A)
     }
 
-    /// Upcast to Extrema_POnSurf
-    pub fn as_p_on_surf(&self) -> &POnSurf {
-        crate::ffi::Extrema_POnSurfParams_as_Extrema_POnSurf(self)
+    /// Returns True if the distances are found.
+    pub fn is_done(&self) -> bool {
+        crate::ffi::Extrema_GenExtPS::is_done(self)
     }
 
-    /// Upcast to Extrema_POnSurf (mutable)
-    pub fn as_p_on_surf_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut POnSurf> {
-        crate::ffi::Extrema_POnSurfParams_as_Extrema_POnSurf_mut(self)
+    /// Returns the number of extremum distances.
+    pub fn nb_ext(&self) -> i32 {
+        crate::ffi::Extrema_GenExtPS::nb_ext(self)
+    }
+
+    /// Returns the value of the Nth resulting square distance.
+    pub fn square_distance(&self, N: i32) -> f64 {
+        crate::ffi::Extrema_GenExtPS::square_distance(self, N)
+    }
+
+    /// Returns the point of the Nth resulting distance.
+    pub fn point(&self, N: i32) -> &crate::ffi::Extrema_POnSurf {
+        crate::ffi::Extrema_GenExtPS::point(self, N)
     }
 }

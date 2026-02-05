@@ -26,42 +26,147 @@
 pub use crate::ffi::Adaptor3d_Curve as Curve;
 
 impl Curve {
+    /// Shallow copy of adaptor
+    pub fn shallow_copy(&self) -> crate::ffi::HandleAdaptor3dCurve {
+        crate::ffi::Adaptor3d_Curve::shallow_copy(self)
+    }
+
+    pub fn first_parameter(&self) -> f64 {
+        crate::ffi::Adaptor3d_Curve::first_parameter(self)
+    }
+
+    pub fn last_parameter(&self) -> f64 {
+        crate::ffi::Adaptor3d_Curve::last_parameter(self)
+    }
+
+    /// Returns    a  curve equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
+    pub fn trim(&self, First: f64, Last: f64, Tol: f64) -> crate::ffi::HandleAdaptor3dCurve {
+        crate::ffi::Adaptor3d_Curve::trim(self, First, Last, Tol)
+    }
+
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::Adaptor3d_Curve::is_closed(self)
+    }
+
+    pub fn is_periodic(&self) -> bool {
+        crate::ffi::Adaptor3d_Curve::is_periodic(self)
+    }
+
+    pub fn period(&self) -> f64 {
+        crate::ffi::Adaptor3d_Curve::period(self)
+    }
+
+    /// Computes the point of parameter U on the curve.
+    pub fn value(&self, U: f64) -> crate::ffi::gp_Pnt {
+        crate::ffi::Adaptor3d_Curve::value(self, U)
+    }
+
+    /// Computes the point of parameter U on the curve.
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::Adaptor3d_Curve::d0(self, U, P)
+    }
+
+    /// Computes the point of parameter U on the curve with its
+    /// first derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C1.
+    pub fn d1(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Adaptor3d_Curve::d1(self, U, P, V)
+    }
+
+    /// Returns the point P of parameter U, the first and second
+    /// derivatives V1 and V2.
+    /// Raised if the continuity of the current interval
+    /// is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Adaptor3d_Curve::d2(self, U, P, V1, V2)
+    }
+
+    /// Returns the point P of parameter U, the first, the second
+    /// and the third derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Adaptor3d_Curve::d3(self, U, P, V1, V2, V3)
+    }
+
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
+    pub fn dn(&self, U: f64, N: i32) -> crate::ffi::gp_Vec {
+        crate::ffi::Adaptor3d_Curve::dn(self, U, N)
+    }
+
+    /// Returns the parametric  resolution corresponding
+    /// to the real space resolution <R3d>.
+    pub fn resolution(&self, R3d: f64) -> f64 {
+        crate::ffi::Adaptor3d_Curve::resolution(self, R3d)
+    }
+
+    pub fn line(&self) -> crate::ffi::gp_Lin {
+        crate::ffi::Adaptor3d_Curve::line(self)
+    }
+
+    pub fn circle(&self) -> crate::ffi::gp_Circ {
+        crate::ffi::Adaptor3d_Curve::circle(self)
+    }
+
+    pub fn ellipse(&self) -> crate::ffi::gp_Elips {
+        crate::ffi::Adaptor3d_Curve::ellipse(self)
+    }
+
+    pub fn hyperbola(&self) -> crate::ffi::gp_Hypr {
+        crate::ffi::Adaptor3d_Curve::hyperbola(self)
+    }
+
+    pub fn parabola(&self) -> crate::ffi::gp_Parab {
+        crate::ffi::Adaptor3d_Curve::parabola(self)
+    }
+
+    pub fn degree(&self) -> i32 {
+        crate::ffi::Adaptor3d_Curve::degree(self)
+    }
+
+    pub fn is_rational(&self) -> bool {
+        crate::ffi::Adaptor3d_Curve::is_rational(self)
+    }
+
+    pub fn nb_poles(&self) -> i32 {
+        crate::ffi::Adaptor3d_Curve::nb_poles(self)
+    }
+
+    pub fn nb_knots(&self) -> i32 {
+        crate::ffi::Adaptor3d_Curve::nb_knots(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
         crate::ffi::Adaptor3d_Curve_to_handle(obj)
-    }
-}
-
-// ========================
-// From Adaptor3d_CurveOnSurface.hxx
-// ========================
-
-/// An interface between the services provided by a curve
-/// lying on a surface from the package Geom and those
-/// required of the curve by algorithms which use it. The
-/// curve is defined as a 2D curve from the Geom2d
-/// package, in the parametric space of the surface.
-pub use crate::ffi::Adaptor3d_CurveOnSurface as CurveOnSurface;
-
-impl CurveOnSurface {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::Adaptor3d_CurveOnSurface_ctor()
-    }
-
-    pub fn new_handlesurface(S: &crate::ffi::HandleAdaptor3dSurface) -> cxx::UniquePtr<Self> {
-        crate::ffi::Adaptor3d_CurveOnSurface_ctor_handlesurface(S)
-    }
-
-    /// Upcast to Adaptor3d_Curve
-    pub fn as_curve(&self) -> &Curve {
-        crate::ffi::Adaptor3d_CurveOnSurface_as_Adaptor3d_Curve(self)
-    }
-
-    /// Upcast to Adaptor3d_Curve (mutable)
-    pub fn as_curve_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Curve> {
-        crate::ffi::Adaptor3d_CurveOnSurface_as_Adaptor3d_Curve_mut(self)
     }
 }
 
@@ -91,6 +196,229 @@ impl CurveOnSurface {
 pub use crate::ffi::Adaptor3d_Surface as Surface;
 
 impl Surface {
+    /// Shallow copy of adaptor
+    pub fn shallow_copy(&self) -> crate::ffi::HandleAdaptor3dSurface {
+        crate::ffi::Adaptor3d_Surface::shallow_copy(self)
+    }
+
+    pub fn first_u_parameter(&self) -> f64 {
+        crate::ffi::Adaptor3d_Surface::first_u_parameter(self)
+    }
+
+    pub fn last_u_parameter(&self) -> f64 {
+        crate::ffi::Adaptor3d_Surface::last_u_parameter(self)
+    }
+
+    pub fn first_v_parameter(&self) -> f64 {
+        crate::ffi::Adaptor3d_Surface::first_v_parameter(self)
+    }
+
+    pub fn last_v_parameter(&self) -> f64 {
+        crate::ffi::Adaptor3d_Surface::last_v_parameter(self)
+    }
+
+    /// Returns    a  surface trimmed in the U direction
+    /// equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
+    pub fn u_trim(&self, First: f64, Last: f64, Tol: f64) -> crate::ffi::HandleAdaptor3dSurface {
+        crate::ffi::Adaptor3d_Surface::u_trim(self, First, Last, Tol)
+    }
+
+    /// Returns    a  surface trimmed in the V direction  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
+    pub fn v_trim(&self, First: f64, Last: f64, Tol: f64) -> crate::ffi::HandleAdaptor3dSurface {
+        crate::ffi::Adaptor3d_Surface::v_trim(self, First, Last, Tol)
+    }
+
+    pub fn is_u_closed(&self) -> bool {
+        crate::ffi::Adaptor3d_Surface::is_u_closed(self)
+    }
+
+    pub fn is_v_closed(&self) -> bool {
+        crate::ffi::Adaptor3d_Surface::is_v_closed(self)
+    }
+
+    pub fn is_u_periodic(&self) -> bool {
+        crate::ffi::Adaptor3d_Surface::is_u_periodic(self)
+    }
+
+    pub fn u_period(&self) -> f64 {
+        crate::ffi::Adaptor3d_Surface::u_period(self)
+    }
+
+    pub fn is_v_periodic(&self) -> bool {
+        crate::ffi::Adaptor3d_Surface::is_v_periodic(self)
+    }
+
+    pub fn v_period(&self) -> f64 {
+        crate::ffi::Adaptor3d_Surface::v_period(self)
+    }
+
+    /// Computes the point of parameters U,V on the surface.
+    /// Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
+    pub fn value(&self, U: f64, V: f64) -> crate::ffi::gp_Pnt {
+        crate::ffi::Adaptor3d_Surface::value(self, U, V)
+    }
+
+    /// Computes the point of parameters U,V on the surface.
+    pub fn d0(&self, U: f64, V: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::Adaptor3d_Surface::d0(self, U, V, P)
+    }
+
+    /// Computes the point  and the first derivatives on the surface.
+    /// Raised if the continuity of the current intervals is not C1.
+    ///
+    /// Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
+    pub fn d1(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Adaptor3d_Surface::d1(self, U, V, P, D1U, D1V)
+    }
+
+    /// Computes   the point,  the  first  and  second
+    /// derivatives on the surface.
+    /// Raised  if   the   continuity   of the current
+    /// intervals is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Adaptor3d_Surface::d2(self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
+    }
+
+    /// Computes the point,  the first, second and third
+    /// derivatives on the surface.
+    /// Raised  if   the   continuity   of the current
+    /// intervals is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        V: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        D1U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D1V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D2UV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3U: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UUV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        D3UVV: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::Adaptor3d_Surface::d3(
+            self, U, V, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
+        )
+    }
+
+    /// Computes the derivative of order Nu in the direction U and Nv
+    /// in the direction V at the point P(U, V).
+    /// Raised if the current U  interval is not not CNu
+    /// and the current V interval is not CNv.
+    /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::ffi::gp_Vec {
+        crate::ffi::Adaptor3d_Surface::dn(self, U, V, Nu, Nv)
+    }
+
+    /// Returns the parametric U  resolution corresponding
+    /// to the real space resolution <R3d>.
+    pub fn u_resolution(&self, R3d: f64) -> f64 {
+        crate::ffi::Adaptor3d_Surface::u_resolution(self, R3d)
+    }
+
+    /// Returns the parametric V  resolution corresponding
+    /// to the real space resolution <R3d>.
+    pub fn v_resolution(&self, R3d: f64) -> f64 {
+        crate::ffi::Adaptor3d_Surface::v_resolution(self, R3d)
+    }
+
+    pub fn plane(&self) -> crate::ffi::gp_Pln {
+        crate::ffi::Adaptor3d_Surface::plane(self)
+    }
+
+    pub fn cylinder(&self) -> crate::ffi::gp_Cylinder {
+        crate::ffi::Adaptor3d_Surface::cylinder(self)
+    }
+
+    pub fn cone(&self) -> crate::ffi::gp_Cone {
+        crate::ffi::Adaptor3d_Surface::cone(self)
+    }
+
+    pub fn sphere(&self) -> crate::ffi::gp_Sphere {
+        crate::ffi::Adaptor3d_Surface::sphere(self)
+    }
+
+    pub fn torus(&self) -> crate::ffi::gp_Torus {
+        crate::ffi::Adaptor3d_Surface::torus(self)
+    }
+
+    pub fn u_degree(&self) -> i32 {
+        crate::ffi::Adaptor3d_Surface::u_degree(self)
+    }
+
+    pub fn nb_u_poles(&self) -> i32 {
+        crate::ffi::Adaptor3d_Surface::nb_u_poles(self)
+    }
+
+    pub fn v_degree(&self) -> i32 {
+        crate::ffi::Adaptor3d_Surface::v_degree(self)
+    }
+
+    pub fn nb_v_poles(&self) -> i32 {
+        crate::ffi::Adaptor3d_Surface::nb_v_poles(self)
+    }
+
+    pub fn nb_u_knots(&self) -> i32 {
+        crate::ffi::Adaptor3d_Surface::nb_u_knots(self)
+    }
+
+    pub fn nb_v_knots(&self) -> i32 {
+        crate::ffi::Adaptor3d_Surface::nb_v_knots(self)
+    }
+
+    pub fn is_u_rational(&self) -> bool {
+        crate::ffi::Adaptor3d_Surface::is_u_rational(self)
+    }
+
+    pub fn is_v_rational(&self) -> bool {
+        crate::ffi::Adaptor3d_Surface::is_v_rational(self)
+    }
+
+    pub fn axe_of_revolution(&self) -> crate::ffi::gp_Ax1 {
+        crate::ffi::Adaptor3d_Surface::axe_of_revolution(self)
+    }
+
+    pub fn direction(&self) -> crate::ffi::gp_Dir {
+        crate::ffi::Adaptor3d_Surface::direction(self)
+    }
+
+    pub fn basis_curve(&self) -> crate::ffi::HandleAdaptor3dCurve {
+        crate::ffi::Adaptor3d_Surface::basis_curve(self)
+    }
+
+    pub fn basis_surface(&self) -> crate::ffi::HandleAdaptor3dSurface {
+        crate::ffi::Adaptor3d_Surface::basis_surface(self)
+    }
+
+    pub fn offset_value(&self) -> f64 {
+        crate::ffi::Adaptor3d_Surface::offset_value(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,

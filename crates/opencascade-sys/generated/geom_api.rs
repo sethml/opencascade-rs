@@ -30,6 +30,42 @@
 /// -   consulting the results.
 pub use crate::ffi::GeomAPI_Interpolate as Interpolate;
 
+impl Interpolate {
+    /// Assigns this constrained BSpline curve to be
+    /// tangential to vectors InitialTangent and FinalTangent
+    /// at its first and last points respectively (i.e.
+    /// the first and last points of the table of
+    /// points through which the curve passes, as
+    /// defined at the time of initialization).
+    pub fn load(
+        self: std::pin::Pin<&mut Self>,
+        InitialTangent: &crate::ffi::gp_Vec,
+        FinalTangent: &crate::ffi::gp_Vec,
+        Scale: bool,
+    ) {
+        crate::ffi::GeomAPI_Interpolate::load(self, InitialTangent, FinalTangent, Scale)
+    }
+
+    /// Clears all tangency constraints on this
+    /// constrained BSpline curve (as initialized by the function Load).
+    pub fn clear_tangents(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::GeomAPI_Interpolate::clear_tangents(self)
+    }
+
+    /// Computes the constrained BSpline curve.
+    /// Use the function IsDone to verify that the
+    /// computation is successful, and then the function Curve to obtain the result.
+    pub fn perform(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::GeomAPI_Interpolate::perform(self)
+    }
+
+    /// Returns true if the constrained BSpline curve is successfully constructed.
+    /// Note: in this case, the result is given by the function Curve.
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GeomAPI_Interpolate::is_done(self)
+    }
+}
+
 // ========================
 // From GeomAPI_PointsToBSpline.hxx
 // ========================
@@ -49,6 +85,10 @@ impl PointsToBSpline {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_PointsToBSpline_ctor()
     }
+
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GeomAPI_PointsToBSpline::is_done(self)
+    }
 }
 
 // ========================
@@ -65,6 +105,82 @@ impl ProjectPointOnCurve {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_ProjectPointOnCurve_ctor()
     }
+
+    /// Performs the projection of a point on the current curve.
+    pub fn perform(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::GeomAPI_ProjectPointOnCurve::perform(self, P)
+    }
+
+    /// Returns the number of computed
+    /// orthogonal projection points.
+    /// Note: if this algorithm fails, NbPoints returns 0.
+    pub fn nb_points(&self) -> i32 {
+        crate::ffi::GeomAPI_ProjectPointOnCurve::nb_points(self)
+    }
+
+    /// Returns the orthogonal projection
+    /// on the curve. Index is a number of a computed point.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+    /// NbPoints is the number of solution points.
+    pub fn point(&self, Index: i32) -> crate::ffi::gp_Pnt {
+        crate::ffi::GeomAPI_ProjectPointOnCurve::point(self, Index)
+    }
+
+    /// Returns the parameter on the curve
+    /// of the point, which is the orthogonal projection. Index is a
+    /// number of a computed point.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+    /// NbPoints is the number of solution points.
+    pub fn parameter(&self, Index: i32) -> f64 {
+        crate::ffi::GeomAPI_ProjectPointOnCurve::parameter(self, Index)
+    }
+
+    /// Returns the parameter on the curve
+    /// of the point, which is the orthogonal projection. Index is a
+    /// number of a computed point.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+    /// NbPoints is the number of solution points.-
+    pub fn parameter_int_real(&self, Index: i32, U: std::pin::Pin<&mut f64>) {
+        crate::ffi::GeomAPI_ProjectPointOnCurve::parameter(self, Index, U)
+    }
+
+    /// Computes the distance between the
+    /// point and its orthogonal projection on the curve. Index is a number of a computed point.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+    /// NbPoints is the number of solution points.
+    pub fn distance(&self, Index: i32) -> f64 {
+        crate::ffi::GeomAPI_ProjectPointOnCurve::distance(self, Index)
+    }
+
+    /// Returns the nearest orthogonal
+    /// projection of the point on the curve.
+    /// Exceptions: StdFail_NotDone if this algorithm fails.
+    pub fn nearest_point(&self) -> crate::ffi::gp_Pnt {
+        crate::ffi::GeomAPI_ProjectPointOnCurve::nearest_point(self)
+    }
+
+    /// Returns the parameter on the curve
+    /// of the nearest orthogonal projection of the point.
+    /// Exceptions: StdFail_NotDone if this algorithm fails.
+    pub fn lower_distance_parameter(&self) -> f64 {
+        crate::ffi::GeomAPI_ProjectPointOnCurve::lower_distance_parameter(self)
+    }
+
+    /// Computes the distance between the
+    /// point and its nearest orthogonal projection on the curve.
+    /// Exceptions: StdFail_NotDone if this algorithm fails.
+    pub fn lower_distance(&self) -> f64 {
+        crate::ffi::GeomAPI_ProjectPointOnCurve::lower_distance(self)
+    }
+
+    /// return the algorithmic object from Extrema
+    pub fn extrema(&self) -> &crate::ffi::Extrema_ExtPC {
+        crate::ffi::GeomAPI_ProjectPointOnCurve::extrema(self)
+    }
 }
 
 // ========================
@@ -80,5 +196,97 @@ impl ProjectPointOnSurf {
     /// Init function for further initialization.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::GeomAPI_ProjectPointOnSurf_ctor()
+    }
+
+    /// Sets the Extrema search algorithm - Grad or Tree. <br>
+    /// By default the Extrema is initialized with Grad algorithm.
+    pub fn set_extrema_algo(self: std::pin::Pin<&mut Self>, theAlgo: crate::ffi::Extrema_ExtAlgo) {
+        crate::ffi::GeomAPI_ProjectPointOnSurf::set_extrema_algo(self, theAlgo)
+    }
+
+    /// Sets the Extrema search flag - MIN or MAX or MINMAX.<br>
+    /// By default the Extrema is set to search the MinMax solutions.
+    pub fn set_extrema_flag(
+        self: std::pin::Pin<&mut Self>,
+        theExtFlag: crate::ffi::Extrema_ExtFlag,
+    ) {
+        crate::ffi::GeomAPI_ProjectPointOnSurf::set_extrema_flag(self, theExtFlag)
+    }
+
+    /// Performs the projection of a point on the current surface.
+    pub fn perform(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
+        crate::ffi::GeomAPI_ProjectPointOnSurf::perform(self, P)
+    }
+
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GeomAPI_ProjectPointOnSurf::is_done(self)
+    }
+
+    /// Returns the number of computed orthogonal projection points.
+    /// Note: if projection fails, NbPoints returns 0.
+    pub fn nb_points(&self) -> i32 {
+        crate::ffi::GeomAPI_ProjectPointOnSurf::nb_points(self)
+    }
+
+    /// Returns the orthogonal projection
+    /// on the surface. Index is a number of a computed point.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+    /// NbPoints is the number of solution points.
+    pub fn point(&self, Index: i32) -> crate::ffi::gp_Pnt {
+        crate::ffi::GeomAPI_ProjectPointOnSurf::point(self, Index)
+    }
+
+    /// Returns the parameters (U,V) on the
+    /// surface of the orthogonal projection. Index is a number of a
+    /// computed point.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+    /// NbPoints is the number of solution points.
+    pub fn parameters(&self, Index: i32, U: std::pin::Pin<&mut f64>, V: std::pin::Pin<&mut f64>) {
+        crate::ffi::GeomAPI_ProjectPointOnSurf::parameters(self, Index, U, V)
+    }
+
+    /// Computes the distance between the
+    /// point and its orthogonal projection on the surface. Index is a number
+    /// of a computed point.
+    /// Exceptions
+    /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+    /// NbPoints is the number of solution points.
+    pub fn distance(&self, Index: i32) -> f64 {
+        crate::ffi::GeomAPI_ProjectPointOnSurf::distance(self, Index)
+    }
+
+    /// Returns the nearest orthogonal projection of the point
+    /// on the surface.
+    /// Exceptions
+    /// StdFail_NotDone if projection fails.
+    pub fn nearest_point(&self) -> crate::ffi::gp_Pnt {
+        crate::ffi::GeomAPI_ProjectPointOnSurf::nearest_point(self)
+    }
+
+    /// Returns the parameters (U,V) on the
+    /// surface of the nearest computed orthogonal projection of the point.
+    /// Exceptions
+    /// StdFail_NotDone if projection fails.
+    pub fn lower_distance_parameters(
+        &self,
+        U: std::pin::Pin<&mut f64>,
+        V: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::GeomAPI_ProjectPointOnSurf::lower_distance_parameters(self, U, V)
+    }
+
+    /// Computes the distance between the
+    /// point and its nearest orthogonal projection on the surface.
+    /// Exceptions
+    /// StdFail_NotDone if projection fails.
+    pub fn lower_distance(&self) -> f64 {
+        crate::ffi::GeomAPI_ProjectPointOnSurf::lower_distance(self)
+    }
+
+    /// return the algorithmic object from Extrema
+    pub fn extrema(&self) -> &crate::ffi::Extrema_ExtPS {
+        crate::ffi::GeomAPI_ProjectPointOnSurf::extrema(self)
     }
 }

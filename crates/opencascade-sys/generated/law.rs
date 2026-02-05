@@ -21,6 +21,47 @@ impl BSpFunc {
         crate::ffi::Law_BSpFunc_ctor()
     }
 
+    pub fn value(self: std::pin::Pin<&mut Self>, X: f64) -> f64 {
+        crate::ffi::Law_BSpFunc::value(self, X)
+    }
+
+    pub fn d1(
+        self: std::pin::Pin<&mut Self>,
+        X: f64,
+        F: std::pin::Pin<&mut f64>,
+        D: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Law_BSpFunc::d1(self, X, F, D)
+    }
+
+    pub fn d2(
+        self: std::pin::Pin<&mut Self>,
+        X: f64,
+        F: std::pin::Pin<&mut f64>,
+        D: std::pin::Pin<&mut f64>,
+        D2: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Law_BSpFunc::d2(self, X, F, D, D2)
+    }
+
+    /// Returns a  law equivalent of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// It is usfule to determines the derivatives
+    /// in these values <First> and <Last> if
+    /// the Law is not Cn.
+    pub fn trim(&self, PFirst: f64, PLast: f64, Tol: f64) -> crate::ffi::HandleLawFunction {
+        crate::ffi::Law_BSpFunc::trim(self, PFirst, PLast, Tol)
+    }
+
+    pub fn bounds(
+        self: std::pin::Pin<&mut Self>,
+        PFirst: std::pin::Pin<&mut f64>,
+        PLast: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Law_BSpFunc::bounds(self, PFirst, PLast)
+    }
+
     /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
         crate::ffi::Law_BSpFunc_as_Law_Function(self)
@@ -44,6 +85,55 @@ impl BSpFunc {
 /// Root class for evolution laws.
 pub use crate::ffi::Law_Function as Function;
 
+impl Function {
+    /// Returns the value of the function at the point of parameter X.
+    pub fn value(self: std::pin::Pin<&mut Self>, X: f64) -> f64 {
+        crate::ffi::Law_Function::value(self, X)
+    }
+
+    /// Returns the value F and the first derivative D of the
+    /// function at the point of parameter X.
+    pub fn d1(
+        self: std::pin::Pin<&mut Self>,
+        X: f64,
+        F: std::pin::Pin<&mut f64>,
+        D: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Law_Function::d1(self, X, F, D)
+    }
+
+    /// Returns the value, first and seconde derivatives
+    /// at parameter X.
+    pub fn d2(
+        self: std::pin::Pin<&mut Self>,
+        X: f64,
+        F: std::pin::Pin<&mut f64>,
+        D: std::pin::Pin<&mut f64>,
+        D2: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Law_Function::d2(self, X, F, D, D2)
+    }
+
+    /// Returns a  law equivalent of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// It is usfule to determines the derivatives
+    /// in these values <First> and <Last> if
+    /// the Law is not Cn.
+    pub fn trim(&self, PFirst: f64, PLast: f64, Tol: f64) -> crate::ffi::HandleLawFunction {
+        crate::ffi::Law_Function::trim(self, PFirst, PLast, Tol)
+    }
+
+    /// Returns the parametric bounds of the function.
+    pub fn bounds(
+        self: std::pin::Pin<&mut Self>,
+        PFirst: std::pin::Pin<&mut f64>,
+        PLast: std::pin::Pin<&mut f64>,
+    ) {
+        crate::ffi::Law_Function::bounds(self, PFirst, PLast)
+    }
+}
+
 // ========================
 // From Law_Interpol.hxx
 // ========================
@@ -57,6 +147,74 @@ impl Interpol {
     /// The function Set is used to define the law.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Law_Interpol_ctor()
+    }
+
+    /// Defines this evolution law by interpolating the set of 2D
+    /// points ParAndRad. The Y coordinate of a point of
+    /// ParAndRad is the value of the function at the parameter
+    /// point given by its X coordinate.
+    /// If Periodic is true, this function is assumed to be periodic.
+    /// Warning
+    /// -   The X coordinates of points in the table ParAndRad
+    /// must be given in ascendant order.
+    /// -   If Periodic is true, the first and last Y coordinates of
+    /// points in the table ParAndRad are assumed to be
+    /// equal. In addition, with the second syntax, Dd and Df
+    /// are also assumed to be equal. If this is not the case,
+    /// Set uses the first value(s) as last value(s).
+    pub fn set(
+        self: std::pin::Pin<&mut Self>,
+        ParAndRad: &crate::ffi::TColgp_Array1OfPnt2d,
+        Periodic: bool,
+    ) {
+        crate::ffi::Law_Interpol::set(self, ParAndRad, Periodic)
+    }
+
+    pub fn set_in_relative(
+        self: std::pin::Pin<&mut Self>,
+        ParAndRad: &crate::ffi::TColgp_Array1OfPnt2d,
+        Ud: f64,
+        Uf: f64,
+        Periodic: bool,
+    ) {
+        crate::ffi::Law_Interpol::set_in_relative(self, ParAndRad, Ud, Uf, Periodic)
+    }
+
+    /// Defines this evolution law by interpolating the set of 2D
+    /// points ParAndRad. The Y coordinate of a point of
+    /// ParAndRad is the value of the function at the parameter
+    /// point given by its X coordinate.
+    /// If Periodic is true, this function is assumed to be periodic.
+    /// In the second syntax, Dd and Df define the values of
+    /// the first derivative of the function at its first and last points.
+    /// Warning
+    /// -   The X coordinates of points in the table ParAndRad
+    /// must be given in ascendant order.
+    /// -   If Periodic is true, the first and last Y coordinates of
+    /// points in the table ParAndRad are assumed to be
+    /// equal. In addition, with the second syntax, Dd and Df
+    /// are also assumed to be equal. If this is not the case,
+    /// Set uses the first value(s) as last value(s).
+    pub fn set_array1ofpnt2d_real2_bool(
+        self: std::pin::Pin<&mut Self>,
+        ParAndRad: &crate::ffi::TColgp_Array1OfPnt2d,
+        Dd: f64,
+        Df: f64,
+        Periodic: bool,
+    ) {
+        crate::ffi::Law_Interpol::set(self, ParAndRad, Dd, Df, Periodic)
+    }
+
+    pub fn set_in_relative_array1ofpnt2d_real4_bool(
+        self: std::pin::Pin<&mut Self>,
+        ParAndRad: &crate::ffi::TColgp_Array1OfPnt2d,
+        Ud: f64,
+        Uf: f64,
+        Dd: f64,
+        Df: f64,
+        Periodic: bool,
+    ) {
+        crate::ffi::Law_Interpol::set_in_relative(self, ParAndRad, Ud, Uf, Dd, Df, Periodic)
     }
 
     /// Upcast to Law_BSpFunc

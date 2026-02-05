@@ -48,6 +48,189 @@ impl Curve {
         crate::ffi::BRepAdaptor_Curve_ctor_edge_face(E, F)
     }
 
+    /// Reset currently loaded curve (undone Load()).
+    pub fn reset(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepAdaptor_Curve::reset(self)
+    }
+
+    /// Sets  the Curve <me>  to access the  geometry of
+    /// edge <E>.
+    pub fn initialize(self: std::pin::Pin<&mut Self>, E: &crate::ffi::TopoDS_Edge) {
+        crate::ffi::BRepAdaptor_Curve::initialize(self, E)
+    }
+
+    /// Sets the Curve <me>  to access  the  geometry of
+    /// edge <E>.  The geometry will be computed using the
+    /// parametric curve of <E>  on the face <F>. An Error
+    /// is raised if the edge  does not  have a pcurve  on
+    /// the face.
+    pub fn initialize_edge_face(
+        self: std::pin::Pin<&mut Self>,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+    ) {
+        crate::ffi::BRepAdaptor_Curve::initialize(self, E, F)
+    }
+
+    /// Returns the coordinate system of the curve.
+    pub fn trsf(&self) -> &crate::ffi::gp_Trsf {
+        crate::ffi::BRepAdaptor_Curve::trsf(self)
+    }
+
+    /// Returns True if the edge geometry is computed from
+    /// a 3D curve.
+    pub fn is3_d_curve(&self) -> bool {
+        crate::ffi::BRepAdaptor_Curve::is3_d_curve(self)
+    }
+
+    /// Returns True if the edge geometry is computed from
+    /// a pcurve on a surface.
+    pub fn is_curve_on_surface(&self) -> bool {
+        crate::ffi::BRepAdaptor_Curve::is_curve_on_surface(self)
+    }
+
+    /// Returns the Curve of  the  edge.
+    pub fn curve(&self) -> &crate::ffi::GeomAdaptor_Curve {
+        crate::ffi::BRepAdaptor_Curve::curve(self)
+    }
+
+    /// Returns the CurveOnSurface of the edge.
+    pub fn curve_on_surface(&self) -> &crate::ffi::Adaptor3d_CurveOnSurface {
+        crate::ffi::BRepAdaptor_Curve::curve_on_surface(self)
+    }
+
+    /// Returns the edge.
+    pub fn edge(&self) -> &crate::ffi::TopoDS_Edge {
+        crate::ffi::BRepAdaptor_Curve::edge(self)
+    }
+
+    /// Returns the edge tolerance.
+    pub fn tolerance(&self) -> f64 {
+        crate::ffi::BRepAdaptor_Curve::tolerance(self)
+    }
+
+    pub fn first_parameter(&self) -> f64 {
+        crate::ffi::BRepAdaptor_Curve::first_parameter(self)
+    }
+
+    pub fn last_parameter(&self) -> f64 {
+        crate::ffi::BRepAdaptor_Curve::last_parameter(self)
+    }
+
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::BRepAdaptor_Curve::is_closed(self)
+    }
+
+    pub fn is_periodic(&self) -> bool {
+        crate::ffi::BRepAdaptor_Curve::is_periodic(self)
+    }
+
+    pub fn period(&self) -> f64 {
+        crate::ffi::BRepAdaptor_Curve::period(self)
+    }
+
+    /// Computes the point of parameter U on the curve
+    pub fn value(&self, U: f64) -> crate::ffi::gp_Pnt {
+        crate::ffi::BRepAdaptor_Curve::value(self, U)
+    }
+
+    /// Computes the point of parameter U.
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt>) {
+        crate::ffi::BRepAdaptor_Curve::d0(self, U, P)
+    }
+
+    /// Computes the point of parameter U on the curve
+    /// with its first derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C1.
+    pub fn d1(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::BRepAdaptor_Curve::d1(self, U, P, V)
+    }
+
+    /// Returns the point P of parameter U, the first and second
+    /// derivatives V1 and V2.
+    /// Raised if the continuity of the current interval
+    /// is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::BRepAdaptor_Curve::d2(self, U, P, V1, V2)
+    }
+
+    /// Returns the point P of parameter U, the first, the second
+    /// and the third derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec>,
+    ) {
+        crate::ffi::BRepAdaptor_Curve::d3(self, U, P, V1, V2, V3)
+    }
+
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
+    pub fn dn(&self, U: f64, N: i32) -> crate::ffi::gp_Vec {
+        crate::ffi::BRepAdaptor_Curve::dn(self, U, N)
+    }
+
+    /// returns the parametric resolution
+    pub fn resolution(&self, R3d: f64) -> f64 {
+        crate::ffi::BRepAdaptor_Curve::resolution(self, R3d)
+    }
+
+    pub fn line(&self) -> crate::ffi::gp_Lin {
+        crate::ffi::BRepAdaptor_Curve::line(self)
+    }
+
+    pub fn circle(&self) -> crate::ffi::gp_Circ {
+        crate::ffi::BRepAdaptor_Curve::circle(self)
+    }
+
+    pub fn ellipse(&self) -> crate::ffi::gp_Elips {
+        crate::ffi::BRepAdaptor_Curve::ellipse(self)
+    }
+
+    pub fn hyperbola(&self) -> crate::ffi::gp_Hypr {
+        crate::ffi::BRepAdaptor_Curve::hyperbola(self)
+    }
+
+    pub fn parabola(&self) -> crate::ffi::gp_Parab {
+        crate::ffi::BRepAdaptor_Curve::parabola(self)
+    }
+
+    pub fn degree(&self) -> i32 {
+        crate::ffi::BRepAdaptor_Curve::degree(self)
+    }
+
+    pub fn is_rational(&self) -> bool {
+        crate::ffi::BRepAdaptor_Curve::is_rational(self)
+    }
+
+    pub fn nb_poles(&self) -> i32 {
+        crate::ffi::BRepAdaptor_Curve::nb_poles(self)
+    }
+
+    pub fn nb_knots(&self) -> i32 {
+        crate::ffi::BRepAdaptor_Curve::nb_knots(self)
+    }
+
     /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
         crate::ffi::BRepAdaptor_Curve_as_Adaptor3d_Curve(self)
@@ -58,105 +241,5 @@ impl Curve {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::adaptor3d::Curve> {
         crate::ffi::BRepAdaptor_Curve_as_Adaptor3d_Curve_mut(self)
-    }
-}
-
-// ========================
-// From BRepAdaptor_Curve2d.hxx
-// ========================
-
-/// The Curve2d from BRepAdaptor allows to use an Edge
-/// on   a Face like   a  2d   curve. (curve  in   the
-/// parametric space).
-///
-/// It  has  the methods    of the class Curve2d  from
-/// Adpator.
-///
-/// It  is created or  initialized with a  Face and an
-/// Edge.  The methods are  inherited from  Curve from
-/// Geom2dAdaptor.
-pub use crate::ffi::BRepAdaptor_Curve2d as Curve2d;
-
-impl Curve2d {
-    /// Creates an uninitialized curve2d.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_Curve2d_ctor()
-    }
-
-    /// Creates with the pcurve of <E> on <F>.
-    pub fn new_edge_face(
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_Curve2d_ctor_edge_face(E, F)
-    }
-
-    /// Upcast to Adaptor2d_Curve2d
-    pub fn as_adaptor2d_curve2d(&self) -> &crate::adaptor2d::Curve2d {
-        crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d(self)
-    }
-
-    /// Upcast to Adaptor2d_Curve2d (mutable)
-    pub fn as_adaptor2d_curve2d_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::adaptor2d::Curve2d> {
-        crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(self)
-    }
-
-    /// Upcast to Geom2dAdaptor_Curve
-    pub fn as_geom2d_adaptor_curve(&self) -> &crate::geom2d_adaptor::Curve {
-        crate::ffi::BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve(self)
-    }
-
-    /// Upcast to Geom2dAdaptor_Curve (mutable)
-    pub fn as_geom2d_adaptor_curve_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::geom2d_adaptor::Curve> {
-        crate::ffi::BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(self)
-    }
-}
-
-// ========================
-// From BRepAdaptor_Surface.hxx
-// ========================
-
-/// The Surface from BRepAdaptor allows to  use a Face
-/// of the BRep topology look like a 3D surface.
-///
-/// It  has  the methods  of  the class   Surface from
-/// Adaptor3d.
-///
-/// It is created or initialized with a Face. It takes
-/// into account the local coordinates system.
-///
-/// The  u,v parameter range is   the minmax value for
-/// the  restriction,  unless  the flag restriction is
-/// set to false.
-pub use crate::ffi::BRepAdaptor_Surface as Surface;
-
-impl Surface {
-    /// Creates an undefined surface with no face loaded.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_Surface_ctor()
-    }
-
-    /// Creates a surface to  access the geometry  of <F>.
-    /// If  <Restriction> is  true  the parameter range is
-    /// the  parameter  range  in   the  UV space  of  the
-    /// restriction.
-    pub fn new_face_bool(F: &crate::ffi::TopoDS_Face, R: bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepAdaptor_Surface_ctor_face_bool(F, R)
-    }
-
-    /// Upcast to Adaptor3d_Surface
-    pub fn as_adaptor3d_surface(&self) -> &crate::adaptor3d::Surface {
-        crate::ffi::BRepAdaptor_Surface_as_Adaptor3d_Surface(self)
-    }
-
-    /// Upcast to Adaptor3d_Surface (mutable)
-    pub fn as_adaptor3d_surface_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::adaptor3d::Surface> {
-        crate::ffi::BRepAdaptor_Surface_as_Adaptor3d_Surface_mut(self)
     }
 }

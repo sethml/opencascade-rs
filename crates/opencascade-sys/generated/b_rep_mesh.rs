@@ -7,62 +7,6 @@
 #![allow(non_snake_case)]
 
 // ========================
-// From BRepMesh_Circle.hxx
-// ========================
-
-/// Describes a 2d circle with a size of only 3 Standard_Real
-/// numbers instead of gp who needs 7 Standard_Real numbers.
-pub use crate::ffi::BRepMesh_Circle as Circle;
-
-impl Circle {
-    /// Default constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Circle_ctor()
-    }
-
-    /// Constructor.
-    /// @param theLocation location of a circle.
-    /// @param theRadius radius of a circle.
-    pub fn new_xy_real(theLocation: &crate::ffi::gp_XY, theRadius: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Circle_ctor_xy_real(theLocation, theRadius)
-    }
-}
-
-// ========================
-// From BRepMesh_DiscretRoot.hxx
-// ========================
-
-/// This is a common interface for meshing algorithms
-/// instantiated by Mesh Factory and implemented by plugins.
-pub use crate::ffi::BRepMesh_DiscretRoot as DiscretRoot;
-
-// ========================
-// From BRepMesh_Edge.hxx
-// ========================
-
-/// Light weighted structure representing link of the mesh.
-pub use crate::ffi::BRepMesh_Edge as Edge;
-
-impl Edge {
-    /// Default constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Edge_ctor()
-    }
-
-    /// Upcast to BRepMesh_OrientedEdge
-    pub fn as_oriented_edge(&self) -> &OrientedEdge {
-        crate::ffi::BRepMesh_Edge_as_BRepMesh_OrientedEdge(self)
-    }
-
-    /// Upcast to BRepMesh_OrientedEdge (mutable)
-    pub fn as_oriented_edge_mut(
-        self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut OrientedEdge> {
-        crate::ffi::BRepMesh_Edge_as_BRepMesh_OrientedEdge_mut(self)
-    }
-}
-
-// ========================
 // From BRepMesh_IncrementalMesh.hxx
 // ========================
 
@@ -118,79 +62,43 @@ impl IncrementalMesh {
         )
     }
 
-    /// Upcast to BRepMesh_DiscretRoot
-    pub fn as_discret_root(&self) -> &DiscretRoot {
-        crate::ffi::BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot(self)
+    /// Performs meshing of the shape.
+    pub fn perform(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepMesh_IncrementalMesh::perform(self, theRange)
     }
 
-    /// Upcast to BRepMesh_DiscretRoot (mutable)
-    pub fn as_discret_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut DiscretRoot> {
-        crate::ffi::BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot_mut(self)
-    }
-}
-
-// ========================
-// From BRepMesh_OrientedEdge.hxx
-// ========================
-
-/// Light weighted structure representing simple link.
-pub use crate::ffi::BRepMesh_OrientedEdge as OrientedEdge;
-
-impl OrientedEdge {
-    /// Default constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_OrientedEdge_ctor()
+    /// @name accessing to parameters.
+    /// Returns meshing parameters
+    pub fn parameters(&self) -> &crate::ffi::IMeshTools_Parameters {
+        crate::ffi::BRepMesh_IncrementalMesh::parameters(self)
     }
 
-    /// Constructs a link between two vertices.
-    pub fn new_int2(theFirstNode: i32, theLastNode: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_OrientedEdge_ctor_int2(theFirstNode, theLastNode)
+    /// Returns modifiable meshing parameters
+    pub fn change_parameters(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::IMeshTools_Parameters> {
+        crate::ffi::BRepMesh_IncrementalMesh::change_parameters(self)
     }
-}
 
-// ========================
-// From BRepMesh_PairOfIndex.hxx
-// ========================
-
-/// This class represents a pair of integer indices to store
-/// element indices connected to link. It is restricted to
-/// store more than two indices in it.
-pub use crate::ffi::BRepMesh_PairOfIndex as PairOfIndex;
-
-impl PairOfIndex {
-    /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_PairOfIndex_ctor()
+    /// Returns modified flag.
+    pub fn is_modified(&self) -> bool {
+        crate::ffi::BRepMesh_IncrementalMesh::is_modified(self)
     }
-}
 
-// ========================
-// From BRepMesh_Triangle.hxx
-// ========================
-
-/// Light weighted structure representing triangle
-/// of mesh consisting of oriented links.
-pub use crate::ffi::BRepMesh_Triangle as Triangle;
-
-impl Triangle {
-    /// Default constructor.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Triangle_ctor()
+    /// Returns accumulated status flags faced during meshing.
+    pub fn get_status_flags(&self) -> i32 {
+        crate::ffi::BRepMesh_IncrementalMesh::get_status_flags(self)
     }
-}
 
-// ========================
-// From BRepMesh_Vertex.hxx
-// ========================
+    /// Returns multi-threading usage flag set by default in
+    /// Discret() static method (thus applied only to Mesh Factories).
+    pub fn is_parallel_default() -> bool {
+        crate::ffi::BRepMesh_IncrementalMesh::is_parallel_default()
+    }
 
-/// Light weighted structure representing vertex
-/// of the mesh in parametric space. Vertex could be
-/// associated with 3d point stored in external map.
-pub use crate::ffi::BRepMesh_Vertex as Vertex;
-
-impl Vertex {
-    /// Default constructor
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::BRepMesh_Vertex_ctor()
+    /// Setup multi-threading usage flag set by default in
+    /// Discret() static method (thus applied only to Mesh Factories).
+    pub fn set_parallel_default(isInParallel: bool) {
+        crate::ffi::BRepMesh_IncrementalMesh::set_parallel_default(isInParallel)
     }
 }

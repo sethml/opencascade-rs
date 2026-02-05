@@ -29,7 +29,20 @@ pub fn parse_headers(
     // Build canonical path set for target headers
     let header_paths: Vec<std::path::PathBuf> = headers
         .iter()
-        .map(|h| h.as_ref().canonicalize().unwrap_or_else(|_| h.as_ref().to_path_buf()))
+        .map(|h| {
+            let path = h.as_ref();
+            // Try to resolve relative paths using include directories
+            if path.is_relative() {
+                for inc_dir in include_dirs {
+                    let full_path = inc_dir.as_ref().join(path);
+                    if let Ok(canonical) = full_path.canonicalize() {
+                        return canonical;
+                    }
+                }
+            }
+            // Fall back to canonicalizing the path as-is
+            path.canonicalize().unwrap_or_else(|_| path.to_path_buf())
+        })
         .collect();
     let header_set: std::collections::HashSet<&std::path::Path> = 
         header_paths.iter().map(|p| p.as_path()).collect();
@@ -90,11 +103,16 @@ pub fn parse_headers(
         })
         .collect();
 
-    // Build a map from canonical path to index for fast lookup
-    let path_to_index: std::collections::HashMap<&std::path::Path, usize> = header_paths
+    // Build a map from filename to index for fast lookup
+    // Use filename matching because wrapper headers include real source files
+    let filename_to_index: std::collections::HashMap<&str, usize> = header_paths
         .iter()
         .enumerate()
-        .map(|(i, p)| (p.as_path(), i))
+        .filter_map(|(i, p)| {
+            p.file_name()
+                .and_then(|n| n.to_str())
+                .map(|name| (name, i))
+        })
         .collect();
 
     // Walk the AST once, distributing entities to the appropriate header
@@ -102,7 +120,7 @@ pub fn parse_headers(
     let root = tu.get_entity();
     
     root.visit_children(|entity, _parent| {
-        visit_top_level_batch(&entity, &header_set, &path_to_index, &mut results, verbose)
+        visit_top_level_batch(&entity, &header_set, &filename_to_index, &mut results, verbose)
     });
     let visit_time = visit_start.elapsed();
 
@@ -131,8 +149,8 @@ fn get_entity_line(entity: &Entity) -> Option<u32> {
 /// Distributes entities to the appropriate ParsedHeader based on source file
 fn visit_top_level_batch(
     entity: &Entity,
-    header_set: &std::collections::HashSet<&Path>,
-    path_to_index: &std::collections::HashMap<&Path, usize>,
+    _header_set: &std::collections::HashSet<&Path>,
+    filename_to_index: &std::collections::HashMap<&str, usize>,
     results: &mut [ParsedHeader],
     verbose: bool,
 ) -> EntityVisitResult {
@@ -141,9 +159,15 @@ fn visit_top_level_batch(
         Some(f) => f,
         None => return EntityVisitResult::Continue,
     };
-    
+
+    // Match by filename since wrapper headers include real source files
+    let filename = match entity_file.file_name().and_then(|n| n.to_str()) {
+        Some(name) => name,
+        None => return EntityVisitResult::Continue,
+    };
+
     // Check if this is one of our target headers
-    let index = match path_to_index.get(entity_file.as_path()) {
+    let index = match filename_to_index.get(filename) {
         Some(&i) => i,
         None => {
             // Not from our target headers - but might need to recurse into namespaces
@@ -151,7 +175,7 @@ fn visit_top_level_batch(
             if entity.get_kind() == EntityKind::Namespace && entity.get_name().as_deref() != Some("std") {
                 let namespace_name = entity.get_name().unwrap_or_default();
                 entity.visit_children(|child, _| {
-                    visit_namespace_member_batch(&child, header_set, path_to_index, &namespace_name, results, verbose)
+                    visit_namespace_member_batch(&child, filename_to_index, &namespace_name, results, verbose)
                 });
             }
             return EntityVisitResult::Continue;
@@ -174,7 +198,7 @@ fn visit_top_level_batch(
             if entity.get_name().as_deref() != Some("std") {
                 let namespace_name = entity.get_name().unwrap_or_default();
                 entity.visit_children(|child, _| {
-                    visit_namespace_member_batch(&child, header_set, path_to_index, &namespace_name, results, verbose)
+                    visit_namespace_member_batch(&child, filename_to_index, &namespace_name, results, verbose)
                 });
             }
         }
@@ -187,8 +211,7 @@ fn visit_top_level_batch(
 /// Visit members of a namespace for batch parsing
 fn visit_namespace_member_batch(
     entity: &Entity,
-    _header_set: &std::collections::HashSet<&Path>,
-    path_to_index: &std::collections::HashMap<&Path, usize>,
+    filename_to_index: &std::collections::HashMap<&str, usize>,
     namespace: &str,
     results: &mut [ParsedHeader],
     verbose: bool,
@@ -198,9 +221,15 @@ fn visit_namespace_member_batch(
         Some(f) => f,
         None => return EntityVisitResult::Continue,
     };
-    
+
+    // Match by filename since wrapper headers include real source files
+    let filename = match entity_file.file_name().and_then(|n| n.to_str()) {
+        Some(name) => name,
+        None => return EntityVisitResult::Continue,
+    };
+
     // Check if this is one of our target headers
-    let index = match path_to_index.get(entity_file.as_path()) {
+    let index = match filename_to_index.get(filename) {
         Some(&i) => i,
         None => return EntityVisitResult::Continue,
     };

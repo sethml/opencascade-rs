@@ -57,6 +57,54 @@ pub use crate::ffi::{
 pub use crate::ffi::TopoDS_Builder as Builder;
 
 impl Builder {
+    /// Make an empty Wire.
+    pub fn make_wire(&self, W: std::pin::Pin<&mut crate::ffi::TopoDS_Wire>) {
+        crate::ffi::TopoDS_Builder::make_wire(self, W)
+    }
+
+    /// Make an empty Shell.
+    pub fn make_shell(&self, S: std::pin::Pin<&mut crate::ffi::TopoDS_Shell>) {
+        crate::ffi::TopoDS_Builder::make_shell(self, S)
+    }
+
+    /// Make a Solid covering the whole 3D space.
+    pub fn make_solid(&self, S: std::pin::Pin<&mut crate::ffi::TopoDS_Solid>) {
+        crate::ffi::TopoDS_Builder::make_solid(self, S)
+    }
+
+    /// Make an empty Composite Solid.
+    pub fn make_comp_solid(&self, C: std::pin::Pin<&mut crate::ffi::TopoDS_CompSolid>) {
+        crate::ffi::TopoDS_Builder::make_comp_solid(self, C)
+    }
+
+    /// Make an empty Compound.
+    pub fn make_compound(&self, C: std::pin::Pin<&mut crate::ffi::TopoDS_Compound>) {
+        crate::ffi::TopoDS_Builder::make_compound(self, C)
+    }
+
+    /// Add the Shape C in the Shape S.
+    /// Exceptions
+    /// - TopoDS_FrozenShape if S is not free and cannot be modified.
+    /// - TopoDS__UnCompatibleShapes if S and C are not compatible.
+    pub fn add(
+        &self,
+        S: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
+        C: &crate::ffi::TopoDS_Shape,
+    ) {
+        crate::ffi::TopoDS_Builder::add(self, S, C)
+    }
+
+    /// Remove the Shape C from the Shape S.
+    /// Exceptions
+    /// TopoDS_FrozenShape if S is frozen and cannot be modified.
+    pub fn remove(
+        &self,
+        S: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
+        C: &crate::ffi::TopoDS_Shape,
+    ) {
+        crate::ffi::TopoDS_Builder::remove(self, S, C)
+    }
+
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::TopoDS_Builder_to_owned(self)
@@ -209,44 +257,6 @@ impl Face {
 }
 
 // ========================
-// From TopoDS_Iterator.hxx
-// ========================
-
-/// Iterates on the underlying shape underlying a given
-/// TopoDS_Shape object, providing access to its
-/// component sub-shapes. Each component shape is
-/// returned as a TopoDS_Shape with an orientation,
-/// and a compound of the original values and the relative values.
-pub use crate::ffi::TopoDS_Iterator as Iterator;
-
-impl Iterator {
-    /// Creates an empty Iterator.
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TopoDS_Iterator_ctor()
-    }
-
-    /// Creates an Iterator on <S> sub-shapes.
-    /// Note:
-    /// - If cumOri is true, the function composes all
-    /// sub-shapes with the orientation of S.
-    /// - If cumLoc is true, the function multiplies all
-    /// sub-shapes by the location of S, i.e. it applies to
-    /// each sub-shape the transformation that is associated with S.
-    pub fn new_shape_bool2(
-        S: &crate::ffi::TopoDS_Shape,
-        cumOri: bool,
-        cumLoc: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopoDS_Iterator_ctor_shape_bool2(S, cumOri, cumLoc)
-    }
-
-    /// Clone into a new UniquePtr via copy constructor
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        crate::ffi::TopoDS_Iterator_to_owned(self)
-    }
-}
-
-// ========================
 // From TopoDS_Shape.hxx
 // ========================
 
@@ -266,6 +276,223 @@ impl Shape {
     /// Creates a NULL Shape referring to nothing.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::TopoDS_Shape_ctor()
+    }
+
+    /// Returns true if this shape is null. In other words, it
+    /// references no underlying shape with the potential to
+    /// be given a location and an orientation.
+    pub fn is_null(&self) -> bool {
+        crate::ffi::TopoDS_Shape::is_null(self)
+    }
+
+    /// Destroys the reference to the underlying shape
+    /// stored in this shape. As a result, this shape becomes null.
+    pub fn nullify(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Shape::nullify(self)
+    }
+
+    /// Returns the shape local coordinate system.
+    pub fn location(&self) -> &crate::ffi::TopLoc_Location {
+        crate::ffi::TopoDS_Shape::location(self)
+    }
+
+    /// Sets the shape local coordinate system.
+    /// @param theLoc the new local coordinate system.
+    /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
+    pub fn location_location_bool(
+        self: std::pin::Pin<&mut Self>,
+        theLoc: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) {
+        crate::ffi::TopoDS_Shape::location(self, theLoc, theRaiseExc)
+    }
+
+    /// Returns a  shape  similar to <me> with the local
+    /// coordinate system set to <Loc>.
+    /// @param theLoc the new local coordinate system.
+    /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
+    /// @return the located shape.
+    pub fn located(
+        &self,
+        theLoc: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> crate::ffi::TopoDS_Shape {
+        crate::ffi::TopoDS_Shape::located(self, theLoc, theRaiseExc)
+    }
+
+    /// Returns the free flag.
+    pub fn free(&self) -> bool {
+        crate::ffi::TopoDS_Shape::free(self)
+    }
+
+    /// Sets the free flag.
+    pub fn free_bool(self: std::pin::Pin<&mut Self>, theIsFree: bool) {
+        crate::ffi::TopoDS_Shape::free(self, theIsFree)
+    }
+
+    /// Returns the locked flag.
+    pub fn locked(&self) -> bool {
+        crate::ffi::TopoDS_Shape::locked(self)
+    }
+
+    /// Sets the locked flag.
+    pub fn locked_bool(self: std::pin::Pin<&mut Self>, theIsLocked: bool) {
+        crate::ffi::TopoDS_Shape::locked(self, theIsLocked)
+    }
+
+    /// Returns the modification flag.
+    pub fn modified(&self) -> bool {
+        crate::ffi::TopoDS_Shape::modified(self)
+    }
+
+    /// Sets the modification flag.
+    pub fn modified_bool(self: std::pin::Pin<&mut Self>, theIsModified: bool) {
+        crate::ffi::TopoDS_Shape::modified(self, theIsModified)
+    }
+
+    /// Returns the checked flag.
+    pub fn checked(&self) -> bool {
+        crate::ffi::TopoDS_Shape::checked(self)
+    }
+
+    /// Sets the checked flag.
+    pub fn checked_bool(self: std::pin::Pin<&mut Self>, theIsChecked: bool) {
+        crate::ffi::TopoDS_Shape::checked(self, theIsChecked)
+    }
+
+    /// Returns the orientability flag.
+    pub fn orientable(&self) -> bool {
+        crate::ffi::TopoDS_Shape::orientable(self)
+    }
+
+    /// Sets the orientability flag.
+    pub fn orientable_bool(self: std::pin::Pin<&mut Self>, theIsOrientable: bool) {
+        crate::ffi::TopoDS_Shape::orientable(self, theIsOrientable)
+    }
+
+    /// Returns the closedness flag.
+    pub fn closed(&self) -> bool {
+        crate::ffi::TopoDS_Shape::closed(self)
+    }
+
+    /// Sets the closedness flag.
+    pub fn closed_bool(self: std::pin::Pin<&mut Self>, theIsClosed: bool) {
+        crate::ffi::TopoDS_Shape::closed(self, theIsClosed)
+    }
+
+    /// Returns the infinity flag.
+    pub fn infinite(&self) -> bool {
+        crate::ffi::TopoDS_Shape::infinite(self)
+    }
+
+    /// Sets the infinity flag.
+    pub fn infinite_bool(self: std::pin::Pin<&mut Self>, theIsInfinite: bool) {
+        crate::ffi::TopoDS_Shape::infinite(self, theIsInfinite)
+    }
+
+    /// Returns the convexness flag.
+    pub fn convex(&self) -> bool {
+        crate::ffi::TopoDS_Shape::convex(self)
+    }
+
+    /// Sets the convexness flag.
+    pub fn convex_bool(self: std::pin::Pin<&mut Self>, theIsConvex: bool) {
+        crate::ffi::TopoDS_Shape::convex(self, theIsConvex)
+    }
+
+    /// Multiplies the Shape location by thePosition.
+    /// @param thePosition the transformation to apply.
+    /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
+    pub fn r#move(
+        self: std::pin::Pin<&mut Self>,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) {
+        crate::ffi::TopoDS_Shape::r#move(self, thePosition, theRaiseExc)
+    }
+
+    /// Returns a shape similar to <me> with a location multiplied by thePosition.
+    /// @param thePosition the transformation to apply.
+    /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
+    /// @return the moved shape.
+    pub fn moved(
+        &self,
+        thePosition: &crate::ffi::TopLoc_Location,
+        theRaiseExc: bool,
+    ) -> crate::ffi::TopoDS_Shape {
+        crate::ffi::TopoDS_Shape::moved(self, thePosition, theRaiseExc)
+    }
+
+    /// Reverses the orientation, using the Reverse method
+    /// from the TopAbs package.
+    pub fn reverse(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Shape::reverse(self)
+    }
+
+    /// Returns    a shape  similar    to  <me>  with  the
+    /// orientation  reversed, using  the   Reverse method
+    /// from the TopAbs package.
+    pub fn reversed(&self) -> crate::ffi::TopoDS_Shape {
+        crate::ffi::TopoDS_Shape::reversed(self)
+    }
+
+    /// Complements the orientation, using the  Complement
+    /// method from the TopAbs package.
+    pub fn complement(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Shape::complement(self)
+    }
+
+    /// Returns  a   shape  similar  to   <me>   with  the
+    /// orientation complemented,  using   the  Complement
+    /// method from the TopAbs package.
+    pub fn complemented(&self) -> crate::ffi::TopoDS_Shape {
+        crate::ffi::TopoDS_Shape::complemented(self)
+    }
+
+    /// Returns the number of direct sub-shapes (children).
+    /// @sa TopoDS_Iterator for accessing sub-shapes
+    pub fn nb_children(&self) -> i32 {
+        crate::ffi::TopoDS_Shape::nb_children(self)
+    }
+
+    /// Returns True if two shapes  are partners, i.e.  if
+    /// they   share   the   same  TShape.  Locations  and
+    /// Orientations may differ.
+    pub fn is_partner(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Shape::is_partner(self, theOther)
+    }
+
+    /// Returns True if two shapes are same, i.e.  if they
+    /// share  the  same TShape  with the same  Locations.
+    /// Orientations may differ.
+    pub fn is_same(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Shape::is_same(self, theOther)
+    }
+
+    /// Returns True if two shapes are equal, i.e. if they
+    /// share the same TShape with  the same Locations and
+    /// Orientations.
+    pub fn is_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Shape::is_equal(self, theOther)
+    }
+
+    /// Negation of the IsEqual method.
+    pub fn is_not_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::TopoDS_Shape::is_not_equal(self, theOther)
+    }
+
+    /// Replace   <me> by  a  new   Shape with the    same
+    /// Orientation and Location and a new TShape with the
+    /// same geometry and no sub-shapes.
+    pub fn empty_copy(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::TopoDS_Shape::empty_copy(self)
+    }
+
+    /// Returns a new Shape with the  same Orientation and
+    /// Location and  a new TShape  with the same geometry
+    /// and no sub-shapes.
+    pub fn empty_copied(&self) -> crate::ffi::TopoDS_Shape {
+        crate::ffi::TopoDS_Shape::empty_copied(self)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -344,37 +571,6 @@ impl Solid {
         crate::ffi::TopoDS_Solid_to_owned(self)
     }
 }
-
-// ========================
-// From TopoDS_TShape.hxx
-// ========================
-
-/// A TShape  is a topological  structure describing a
-/// set of points in a 2D or 3D space.
-///
-/// A topological shape is a structure made from other
-/// shapes.  This is a deferred class  used to support
-/// topological objects.
-///
-/// TShapes are   defined   by  their  optional domain
-/// (geometry)  and  their  components  (other TShapes
-/// with  Locations and Orientations).  The components
-/// are stored in a List of Shapes.
-///
-/// A   TShape contains  the   following boolean flags :
-///
-/// - Free       : Free or Frozen.
-/// - Modified   : Has been modified.
-/// - Checked    : Has been checked.
-/// - Orientable : Can be oriented.
-/// - Closed     : Is closed (note that only Wires and Shells may be closed).
-/// - Infinite   : Is infinite.
-/// - Convex     : Is convex.
-///
-/// Users have no direct access to the classes derived
-/// from TShape.  They  handle them with   the classes
-/// derived from Shape.
-pub use crate::ffi::TopoDS_TShape as TShape;
 
 // ========================
 // From TopoDS_Vertex.hxx

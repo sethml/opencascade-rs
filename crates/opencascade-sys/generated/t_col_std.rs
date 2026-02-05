@@ -7,48 +7,6 @@
 #![allow(non_snake_case)]
 
 // ========================
-// From TColStd_HArray1OfBoolean.hxx
-// ========================
-
-pub use crate::ffi::TColStd_HArray1OfBoolean as HArray1OfBoolean;
-
-impl HArray1OfBoolean {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfBoolean_ctor()
-    }
-
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfBoolean_ctor_int2(theLower, theUpper)
-    }
-
-    pub fn new_int2_bool(theLower: i32, theUpper: i32, theValue: &bool) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfBoolean_ctor_int2_bool(theLower, theUpper, theValue)
-    }
-
-    pub fn new_bool_int2_bool(
-        theBegin: &bool,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfBoolean_ctor_bool_int2_bool(theBegin, theLower, theUpper, arg3)
-    }
-
-    pub fn new_array1ofboolean(
-        theOther: &crate::ffi::TColStd_Array1OfBoolean,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfBoolean_ctor_array1ofboolean(theOther)
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfBoolean> {
-        crate::ffi::TColStd_HArray1OfBoolean_to_handle(obj)
-    }
-}
-
-// ========================
 // From TColStd_HArray1OfInteger.hxx
 // ========================
 
@@ -80,6 +38,16 @@ impl HArray1OfInteger {
         theOther: &crate::ffi::TColStd_Array1OfInteger,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColStd_HArray1OfInteger_ctor_array1ofinteger(theOther)
+    }
+
+    pub fn array1(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        crate::ffi::TColStd_HArray1OfInteger::array1(self)
+    }
+
+    pub fn change_array1(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_Array1OfInteger> {
+        crate::ffi::TColStd_HArray1OfInteger::change_array1(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -122,105 +90,21 @@ impl HArray1OfReal {
         crate::ffi::TColStd_HArray1OfReal_ctor_array1ofreal(theOther)
     }
 
+    pub fn array1(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        crate::ffi::TColStd_HArray1OfReal::array1(self)
+    }
+
+    pub fn change_array1(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_Array1OfReal> {
+        crate::ffi::TColStd_HArray1OfReal::change_array1(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfReal> {
         crate::ffi::TColStd_HArray1OfReal_to_handle(obj)
-    }
-}
-
-// ========================
-// From TColStd_HArray1OfTransient.hxx
-// ========================
-
-pub use crate::ffi::TColStd_HArray1OfTransient as HArray1OfTransient;
-
-impl HArray1OfTransient {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfTransient_ctor()
-    }
-
-    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfTransient_ctor_int2(theLower, theUpper)
-    }
-
-    pub fn new_array1oftransient(
-        theOther: &crate::ffi::TColStd_Array1OfTransient,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray1OfTransient_ctor_array1oftransient(theOther)
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray1OfTransient> {
-        crate::ffi::TColStd_HArray1OfTransient_to_handle(obj)
-    }
-}
-
-// ========================
-// From TColStd_HArray2OfReal.hxx
-// ========================
-
-pub use crate::ffi::TColStd_HArray2OfReal as HArray2OfReal;
-
-impl HArray2OfReal {
-    pub fn new_int4(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray2OfReal_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)
-    }
-
-    pub fn new_int4_real(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: &f64,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray2OfReal_ctor_int4_real(
-            theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-        )
-    }
-
-    pub fn new_array2ofreal(theOther: &crate::ffi::TColStd_Array2OfReal) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HArray2OfReal_ctor_array2ofreal(theOther)
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHArray2OfReal> {
-        crate::ffi::TColStd_HArray2OfReal_to_handle(obj)
-    }
-}
-
-// ========================
-// From TColStd_HSequenceOfHExtendedString.hxx
-// ========================
-
-pub use crate::ffi::TColStd_HSequenceOfHExtendedString as HSequenceOfHExtendedString;
-
-impl HSequenceOfHExtendedString {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfHExtendedString_ctor()
-    }
-
-    pub fn new_sequenceofhextendedstring(
-        theOther: &crate::ffi::TColStd_SequenceOfHExtendedString,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfHExtendedString_ctor_sequenceofhextendedstring(theOther)
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
-        crate::ffi::TColStd_HSequenceOfHExtendedString_to_handle(obj)
     }
 }
 
@@ -239,6 +123,27 @@ impl HSequenceOfInteger {
         theOther: &crate::ffi::TColStd_SequenceOfInteger,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::TColStd_HSequenceOfInteger_ctor_sequenceofinteger(theOther)
+    }
+
+    pub fn sequence(&self) -> &crate::ffi::TColStd_SequenceOfInteger {
+        crate::ffi::TColStd_HSequenceOfInteger::sequence(self)
+    }
+
+    pub fn append(self: std::pin::Pin<&mut Self>, theItem: &i32) {
+        crate::ffi::TColStd_HSequenceOfInteger::append(self, theItem)
+    }
+
+    pub fn append_sequenceofinteger(
+        self: std::pin::Pin<&mut Self>,
+        theSequence: std::pin::Pin<&mut crate::ffi::TColStd_SequenceOfInteger>,
+    ) {
+        crate::ffi::TColStd_HSequenceOfInteger::append(self, theSequence)
+    }
+
+    pub fn change_sequence(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_SequenceOfInteger> {
+        crate::ffi::TColStd_HSequenceOfInteger::change_sequence(self)
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -266,57 +171,31 @@ impl HSequenceOfReal {
         crate::ffi::TColStd_HSequenceOfReal_ctor_sequenceofreal(theOther)
     }
 
+    pub fn sequence(&self) -> &crate::ffi::TColStd_SequenceOfReal {
+        crate::ffi::TColStd_HSequenceOfReal::sequence(self)
+    }
+
+    pub fn append(self: std::pin::Pin<&mut Self>, theItem: &f64) {
+        crate::ffi::TColStd_HSequenceOfReal::append(self, theItem)
+    }
+
+    pub fn append_sequenceofreal(
+        self: std::pin::Pin<&mut Self>,
+        theSequence: std::pin::Pin<&mut crate::ffi::TColStd_SequenceOfReal>,
+    ) {
+        crate::ffi::TColStd_HSequenceOfReal::append(self, theSequence)
+    }
+
+    pub fn change_sequence(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::TColStd_SequenceOfReal> {
+        crate::ffi::TColStd_HSequenceOfReal::change_sequence(self)
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfReal> {
         crate::ffi::TColStd_HSequenceOfReal_to_handle(obj)
-    }
-}
-
-// ========================
-// From TColStd_HSequenceOfTransient.hxx
-// ========================
-
-pub use crate::ffi::TColStd_HSequenceOfTransient as HSequenceOfTransient;
-
-impl HSequenceOfTransient {
-    pub fn new() -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfTransient_ctor()
-    }
-
-    pub fn new_sequenceoftransient(
-        theOther: &crate::ffi::TColStd_SequenceOfTransient,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_HSequenceOfTransient_ctor_sequenceoftransient(theOther)
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
-        crate::ffi::TColStd_HSequenceOfTransient_to_handle(obj)
-    }
-}
-
-// ========================
-// From TColStd_PackedMapOfInteger.hxx
-// ========================
-
-///
-/// Optimized Map of integer values. Each block of 32 integers is stored in 8 bytes in memory.
-pub use crate::ffi::TColStd_PackedMapOfInteger as PackedMapOfInteger;
-
-impl PackedMapOfInteger {
-    /// Constructor
-    pub fn new_int(theNbBuckets: i32) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_PackedMapOfInteger_ctor_int(theNbBuckets)
-    }
-
-    /// Copy constructor
-    pub fn new_packedmapofinteger(
-        theOther: &crate::ffi::TColStd_PackedMapOfInteger,
-    ) -> cxx::UniquePtr<Self> {
-        crate::ffi::TColStd_PackedMapOfInteger_ctor_packedmapofinteger(theOther)
     }
 }
