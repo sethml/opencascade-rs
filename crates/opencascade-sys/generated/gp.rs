@@ -39,182 +39,66 @@ impl Ax1 {
         crate::ffi::gp_Ax1_ctor_pnt_dir(theP, theV)
     }
 
-    /// Assigns V as the "Direction"  of this axis.
-    pub fn set_direction(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Dir) {
-        crate::ffi::gp_Ax1::set_direction(self, theV)
-    }
-
-    /// Assigns  P as the origin of this axis.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Ax1::set_location(self, theP)
-    }
-
-    /// Returns the direction of <me>.
-    pub fn direction(&self) -> &crate::ffi::gp_Dir {
-        crate::ffi::gp_Ax1::direction(self)
-    }
-
-    /// Returns the location point of <me>.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt {
-        crate::ffi::gp_Ax1::location(self)
-    }
-
-    /// Returns True if  :
-    /// . the angle between <me> and <Other> is lower or equal
-    /// to <AngularTolerance> and
-    /// . the distance between <me>.Location() and <Other> is lower
-    /// or equal to <LinearTolerance> and
-    /// . the distance between <Other>.Location() and <me> is lower
-    /// or equal to LinearTolerance.
-    pub fn is_coaxial(
-        &self,
-        Other: &crate::ffi::gp_Ax1,
-        AngularTolerance: f64,
-        LinearTolerance: f64,
-    ) -> bool {
-        crate::ffi::gp_Ax1::is_coaxial(self, Other, AngularTolerance, LinearTolerance)
-    }
-
-    /// Returns True if the direction of this and another axis are normal to each other.
-    /// That is, if the angle between the two axes is equal to Pi/2.
-    /// Note: the tolerance criterion is given by theAngularTolerance.
-    pub fn is_normal(&self, theOther: &crate::ffi::gp_Ax1, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Ax1::is_normal(self, theOther, theAngularTolerance)
-    }
-
-    /// Returns True if the direction of this and another axis are parallel with opposite orientation.
-    /// That is, if the angle between the two axes is equal to Pi.
-    /// Note: the tolerance criterion is given by theAngularTolerance.
-    pub fn is_opposite(&self, theOther: &crate::ffi::gp_Ax1, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Ax1::is_opposite(self, theOther, theAngularTolerance)
-    }
-
-    /// Returns True if the direction of this and another axis are parallel with same orientation or
-    /// opposite orientation. That is, if the angle between the two axes is equal to 0 or Pi. Note:
-    /// the tolerance criterion is given by theAngularTolerance.
-    pub fn is_parallel(&self, theOther: &crate::ffi::gp_Ax1, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Ax1::is_parallel(self, theOther, theAngularTolerance)
-    }
-
-    /// Computes the angular value, in radians, between this.Direction() and theOther.Direction().
-    /// Returns the angle between 0 and 2*PI radians.
-    pub fn angle(&self, theOther: &crate::ffi::gp_Ax1) -> f64 {
-        crate::ffi::gp_Ax1::angle(self, theOther)
-    }
-
-    /// Reverses the unit vector of this axis and assigns the result to this axis.
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Ax1::reverse(self)
-    }
-
     /// Reverses the unit vector of this axis and creates a new one.
-    pub fn reversed(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Ax1::reversed(self)
-    }
-
-    /// Performs the symmetrical transformation of an axis
-    /// placement with respect to the point P which is the
-    /// center of the symmetry and assigns the result to this axis.
-    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Ax1::mirror(self, P)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Ax1_reversed(self)
     }
 
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to the point P which is the
     /// center of the symmetry and creates a new axis.
-    pub fn mirrored(&self, P: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Ax1::mirrored(self, P)
-    }
-
-    /// Performs the symmetrical transformation of an axis
-    /// placement with respect to an axis placement which
-    /// is the axis of the symmetry and assigns the result to this axis.
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Ax1::mirror(self, A1)
+    pub fn mirrored_pnt(&self, P: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Ax1_mirrored_pnt(self, P)
     }
 
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to an axis placement which
     /// is the axis of the symmetry and creates a new axis.
-    pub fn mirrored_ax1(&self, A1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Ax1::mirrored(self, A1)
-    }
-
-    /// Performs the symmetrical transformation of an axis
-    /// placement with respect to a plane. The axis placement
-    /// <A2> locates the plane of the symmetry :
-    /// (Location, XDirection, YDirection) and assigns the result to this axis.
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, A2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Ax1::mirror(self, A2)
+    pub fn mirrored_ax1(&self, A1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Ax1_mirrored_ax1(self, A1)
     }
 
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to a plane. The axis placement
     /// <A2> locates the plane of the symmetry :
     /// (Location, XDirection, YDirection) and creates a new axis.
-    pub fn mirrored_ax2(&self, A2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Ax1::mirrored(self, A2)
-    }
-
-    /// Rotates this axis at an angle theAngRad (in radians) about the axis theA1
-    /// and assigns the result to this axis.
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAngRad: f64) {
-        crate::ffi::gp_Ax1::rotate(self, theA1, theAngRad)
+    pub fn mirrored_ax2(&self, A2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Ax1_mirrored_ax2(self, A2)
     }
 
     /// Rotates this axis at an angle theAngRad (in radians) about the axis theA1
     /// and creates a new one.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAngRad: f64) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Ax1::rotated(self, theA1, theAngRad)
-    }
-
-    /// Applies a scaling transformation to this axis with:
-    /// - scale factor theS, and
-    /// - center theP and assigns the result to this axis.
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Ax1::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAngRad: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Ax1_rotated(self, theA1, theAngRad)
     }
 
     /// Applies a scaling transformation to this axis with:
     /// - scale factor theS, and
     /// - center theP and creates a new axis.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt, theS: f64) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Ax1::scaled(self, theP, theS)
-    }
-
-    /// Applies the transformation theT to this axis and assigns the result to this axis.
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Ax1::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Ax1_scaled(self, theP, theS)
     }
 
     /// Applies the transformation theT to this axis and creates a new one.
     ///
     /// Translates an axis plaxement in the direction of the vector <V>.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Ax1::transformed(self, theT)
-    }
-
-    /// Translates this axis by the vector theV, and assigns the result to this axis.
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Ax1::translate(self, theV)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Ax1_transformed(self, theT)
     }
 
     /// Translates this axis by the vector theV,
     /// and creates a new one.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Ax1::translated(self, theV)
-    }
-
-    /// Translates this axis by:
-    /// the vector (theP1, theP2) defined from point theP1 to point theP2.
-    /// and assigns the result to this axis.
-    pub fn translate_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Ax1::translate(self, theP1, theP2)
+    pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Ax1_translated_vec(self, theV)
     }
 
     /// Translates this axis by:
@@ -224,8 +108,8 @@ impl Ax1 {
         &self,
         theP1: &crate::ffi::gp_Pnt,
         theP2: &crate::ffi::gp_Pnt,
-    ) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Ax1::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Ax1_translated_pnt2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -296,132 +180,6 @@ impl Ax2 {
         crate::ffi::gp_Ax2_ctor_pnt_dir(P, V)
     }
 
-    /// Assigns the origin and "main Direction" of the axis A1 to
-    /// this coordinate system, then recomputes its "X Direction" and "Y Direction".
-    /// Note: The new "X Direction" is computed as follows:
-    /// new "X Direction" = V1 ^(previous "X Direction" ^ V)
-    /// where V is the "Direction" of A1.
-    /// Exceptions
-    /// Standard_ConstructionError if A1 is parallel to the "X
-    /// Direction" of this coordinate system.
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Ax2::set_axis(self, A1)
-    }
-
-    /// Changes the "main Direction" of this coordinate system,
-    /// then recomputes its "X Direction" and "Y Direction".
-    /// Note: the new "X Direction" is computed as follows:
-    /// new "X Direction" = V ^ (previous "X Direction" ^ V)
-    /// Exceptions
-    /// Standard_ConstructionError if V is parallel to the "X
-    /// Direction" of this coordinate system.
-    pub fn set_direction(self: std::pin::Pin<&mut Self>, V: &crate::ffi::gp_Dir) {
-        crate::ffi::gp_Ax2::set_direction(self, V)
-    }
-
-    /// Changes the "Location" point (origin) of <me>.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Ax2::set_location(self, theP)
-    }
-
-    /// Changes the "Xdirection" of <me>. The main direction
-    /// "Direction" is not modified, the "Ydirection" is modified.
-    /// If <Vx> is not normal to the main direction then <XDirection>
-    /// is computed as follows XDirection = Direction ^ (Vx ^ Direction).
-    /// Exceptions
-    /// Standard_ConstructionError if Vx or Vy is parallel to
-    /// the "main Direction" of this coordinate system.
-    pub fn set_x_direction(self: std::pin::Pin<&mut Self>, theVx: &crate::ffi::gp_Dir) {
-        crate::ffi::gp_Ax2::set_x_direction(self, theVx)
-    }
-
-    /// Changes the "Ydirection" of <me>. The main direction is not
-    /// modified but the "Xdirection" is changed.
-    /// If <Vy> is not normal to the main direction then "YDirection"
-    /// is computed as  follows
-    /// YDirection = Direction ^ (<Vy> ^ Direction).
-    /// Exceptions
-    /// Standard_ConstructionError if Vx or Vy is parallel to
-    /// the "main Direction" of this coordinate system.
-    pub fn set_y_direction(self: std::pin::Pin<&mut Self>, theVy: &crate::ffi::gp_Dir) {
-        crate::ffi::gp_Ax2::set_y_direction(self, theVy)
-    }
-
-    /// Computes the angular value, in radians, between the main direction of
-    /// <me> and the main direction of <theOther>. Returns the angle
-    /// between 0 and PI in radians.
-    pub fn angle(&self, theOther: &crate::ffi::gp_Ax2) -> f64 {
-        crate::ffi::gp_Ax2::angle(self, theOther)
-    }
-
-    /// Returns the main axis of <me>. It is the "Location" point
-    /// and the main "Direction".
-    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Ax2::axis(self)
-    }
-
-    /// Returns the main direction of <me>.
-    pub fn direction(&self) -> &crate::ffi::gp_Dir {
-        crate::ffi::gp_Ax2::direction(self)
-    }
-
-    /// Returns the "Location" point (origin) of <me>.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt {
-        crate::ffi::gp_Ax2::location(self)
-    }
-
-    /// Returns the "XDirection" of <me>.
-    pub fn x_direction(&self) -> &crate::ffi::gp_Dir {
-        crate::ffi::gp_Ax2::x_direction(self)
-    }
-
-    /// Returns the "YDirection" of <me>.
-    pub fn y_direction(&self) -> &crate::ffi::gp_Dir {
-        crate::ffi::gp_Ax2::y_direction(self)
-    }
-
-    pub fn is_coplanar(
-        &self,
-        Other: &crate::ffi::gp_Ax2,
-        LinearTolerance: f64,
-        AngularTolerance: f64,
-    ) -> bool {
-        crate::ffi::gp_Ax2::is_coplanar(self, Other, LinearTolerance, AngularTolerance)
-    }
-
-    /// Returns True if
-    /// . the distance between <me> and the "Location" point of A1
-    /// is lower of equal to LinearTolerance and
-    /// . the main direction of <me> and the direction of A1 are normal.
-    /// Note: the tolerance criterion for angular equality is given by AngularTolerance.
-    pub fn is_coplanar_ax1_real2(
-        &self,
-        A1: &crate::ffi::gp_Ax1,
-        LinearTolerance: f64,
-        AngularTolerance: f64,
-    ) -> bool {
-        crate::ffi::gp_Ax2::is_coplanar(self, A1, LinearTolerance, AngularTolerance)
-    }
-
-    /// Performs a symmetrical transformation of this coordinate
-    /// system with respect to:
-    /// -   the point P, and assigns the result to this coordinate system.
-    /// Warning
-    /// This transformation is always performed on the origin.
-    /// In case of a reflection with respect to a point:
-    /// - the main direction of the coordinate system is not changed, and
-    /// - the "X Direction" and the "Y Direction" are simply reversed
-    /// In case of a reflection with respect to an axis or a plane:
-    /// -   the transformation is applied to the "X Direction"
-    /// and the "Y Direction", then
-    /// -   the "main Direction" is recomputed as the cross
-    /// product "X Direction" ^ "Y   Direction".
-    /// This maintains the right-handed property of the
-    /// coordinate system.
-    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Ax2::mirror(self, P)
-    }
-
     /// Performs a symmetrical transformation of this coordinate
     /// system with respect to:
     /// -   the point P, and creates a new one.
@@ -437,27 +195,8 @@ impl Ax2 {
     /// product "X Direction" ^ "Y   Direction".
     /// This maintains the right-handed property of the
     /// coordinate system.
-    pub fn mirrored(&self, P: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Ax2 {
-        crate::ffi::gp_Ax2::mirrored(self, P)
-    }
-
-    /// Performs a symmetrical transformation of this coordinate
-    /// system with respect to:
-    /// -   the axis A1, and assigns the result to this coordinate systeme.
-    /// Warning
-    /// This transformation is always performed on the origin.
-    /// In case of a reflection with respect to a point:
-    /// - the main direction of the coordinate system is not changed, and
-    /// - the "X Direction" and the "Y Direction" are simply reversed
-    /// In case of a reflection with respect to an axis or a plane:
-    /// -   the transformation is applied to the "X Direction"
-    /// and the "Y Direction", then
-    /// -   the "main Direction" is recomputed as the cross
-    /// product "X Direction" ^ "Y   Direction".
-    /// This maintains the right-handed property of the
-    /// coordinate system.
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, A1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Ax2::mirror(self, A1)
+    pub fn mirrored_pnt(&self, P: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Ax2> {
+        crate::ffi::gp_Ax2_mirrored_pnt(self, P)
     }
 
     /// Performs a symmetrical transformation of this coordinate
@@ -475,28 +214,8 @@ impl Ax2 {
     /// product "X Direction" ^ "Y   Direction".
     /// This maintains the right-handed property of the
     /// coordinate system.
-    pub fn mirrored_ax1(&self, A1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Ax2 {
-        crate::ffi::gp_Ax2::mirrored(self, A1)
-    }
-
-    /// Performs a symmetrical transformation of this coordinate
-    /// system with respect to:
-    /// -   the plane defined by the origin, "X Direction" and "Y
-    /// Direction" of coordinate system A2 and  assigns the result to this coordinate systeme.
-    /// Warning
-    /// This transformation is always performed on the origin.
-    /// In case of a reflection with respect to a point:
-    /// - the main direction of the coordinate system is not changed, and
-    /// - the "X Direction" and the "Y Direction" are simply reversed
-    /// In case of a reflection with respect to an axis or a plane:
-    /// -   the transformation is applied to the "X Direction"
-    /// and the "Y Direction", then
-    /// -   the "main Direction" is recomputed as the cross
-    /// product "X Direction" ^ "Y   Direction".
-    /// This maintains the right-handed property of the
-    /// coordinate system.
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, A2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Ax2::mirror(self, A2)
+    pub fn mirrored_ax1(&self, A1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<crate::ffi::gp_Ax2> {
+        crate::ffi::gp_Ax2_mirrored_ax1(self, A1)
     }
 
     /// Performs a symmetrical transformation of this coordinate
@@ -515,22 +234,18 @@ impl Ax2 {
     /// product "X Direction" ^ "Y   Direction".
     /// This maintains the right-handed property of the
     /// coordinate system.
-    pub fn mirrored_ax2(&self, A2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Ax2 {
-        crate::ffi::gp_Ax2::mirrored(self, A2)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Ax2::rotate(self, theA1, theAng)
+    pub fn mirrored_ax2(&self, A2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<crate::ffi::gp_Ax2> {
+        crate::ffi::gp_Ax2_mirrored_ax2(self, A2)
     }
 
     /// Rotates an axis placement. <theA1> is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Ax2 {
-        crate::ffi::gp_Ax2::rotated(self, theA1, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Ax2::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax2> {
+        crate::ffi::gp_Ax2_rotated(self, theA1, theAng)
     }
 
     /// Applies a scaling transformation on the axis placement.
@@ -540,38 +255,26 @@ impl Ax2 {
     /// . the main direction of the axis placement is not changed.
     /// . The "XDirection" and the "YDirection" are reversed.
     /// So the axis placement stay right handed.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt, theS: f64) -> crate::ffi::gp_Ax2 {
-        crate::ffi::gp_Ax2::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Ax2::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax2> {
+        crate::ffi::gp_Ax2_scaled(self, theP, theS)
     }
 
     /// Transforms an axis placement with a Trsf.
     /// The "Location" point, the "XDirection" and the "YDirection" are transformed with theT.
     /// The resulting main "Direction" of <me> is the cross product between
     /// the "XDirection" and the "YDirection" after transformation.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Ax2 {
-        crate::ffi::gp_Ax2::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Ax2::translate(self, theV)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Ax2> {
+        crate::ffi::gp_Ax2_transformed(self, theT)
     }
 
     /// Translates an axis plaxement in the direction of the vector <theV>.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Ax2 {
-        crate::ffi::gp_Ax2::translated(self, theV)
-    }
-
-    pub fn translate_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Ax2::translate(self, theP1, theP2)
+    pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> cxx::UniquePtr<crate::ffi::gp_Ax2> {
+        crate::ffi::gp_Ax2_translated_vec(self, theV)
     }
 
     /// Translates an axis placement from the point <theP1> to the point <theP2>.
@@ -579,8 +282,8 @@ impl Ax2 {
         &self,
         theP1: &crate::ffi::gp_Pnt,
         theP2: &crate::ffi::gp_Pnt,
-    ) -> crate::ffi::gp_Ax2 {
-        crate::ffi::gp_Ax2::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax2> {
+        crate::ffi::gp_Ax2_translated_pnt2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -653,81 +356,20 @@ impl Ax22d {
         crate::ffi::gp_Ax22d_ctor_ax2d_bool(theA, theIsSense)
     }
 
-    /// Assigns the origin and the two unit vectors of the
-    /// coordinate system theA1 to this coordinate system.
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax22d) {
-        crate::ffi::gp_Ax22d::set_axis(self, theA1)
-    }
-
-    /// Changes the XAxis and YAxis ("Location" point and "Direction")
-    /// of <me>.
-    /// The "YDirection" is recomputed in the same sense as before.
-    pub fn set_x_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Ax22d::set_x_axis(self, theA1)
-    }
-
-    /// Changes the XAxis and YAxis ("Location" point and "Direction") of <me>.
-    /// The "XDirection" is recomputed in the same sense as before.
-    pub fn set_y_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Ax22d::set_y_axis(self, theA1)
-    }
-
-    /// Changes the "Location" point (origin) of <me>.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Ax22d::set_location(self, theP)
-    }
-
-    /// Assigns theVx to the "X Direction"  of
-    /// this coordinate system. The other unit vector of this
-    /// coordinate system is recomputed, normal to theVx ,
-    /// without modifying the orientation (right-handed or
-    /// left-handed) of this coordinate system.
-    pub fn set_x_direction(self: std::pin::Pin<&mut Self>, theVx: &crate::ffi::gp_Dir2d) {
-        crate::ffi::gp_Ax22d::set_x_direction(self, theVx)
-    }
-
-    /// Assignsr theVy to the  "Y Direction" of
-    /// this coordinate system. The other unit vector of this
-    /// coordinate system is recomputed, normal to theVy,
-    /// without modifying the orientation (right-handed or
-    /// left-handed) of this coordinate system.
-    pub fn set_y_direction(self: std::pin::Pin<&mut Self>, theVy: &crate::ffi::gp_Dir2d) {
-        crate::ffi::gp_Ax22d::set_y_direction(self, theVy)
-    }
-
     /// Returns an axis, for which
     /// -   the origin is that of this coordinate system, and
     /// -   the unit vector is either the "X Direction"  of this coordinate system.
     /// Note: the result is the "X Axis" of this coordinate system.
-    pub fn x_axis(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Ax22d::x_axis(self)
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Ax22d_x_axis(self)
     }
 
     /// Returns an axis, for which
     /// -   the origin is that of this coordinate system, and
     /// - the unit vector is either the  "Y Direction" of this coordinate system.
     /// Note: the result is the "Y Axis" of this coordinate system.
-    pub fn y_axis(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Ax22d::y_axis(self)
-    }
-
-    /// Returns the "Location" point (origin) of <me>.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Ax22d::location(self)
-    }
-
-    /// Returns the "XDirection" of <me>.
-    pub fn x_direction(&self) -> &crate::ffi::gp_Dir2d {
-        crate::ffi::gp_Ax22d::x_direction(self)
-    }
-
-    /// Returns the "YDirection" of <me>.
-    pub fn y_direction(&self) -> &crate::ffi::gp_Dir2d {
-        crate::ffi::gp_Ax22d::y_direction(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Ax22d::mirror(self, theP)
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Ax22d_y_axis(self)
     }
 
     /// Performs the symmetrical transformation of an axis
@@ -737,12 +379,11 @@ impl Ax22d {
     /// The main direction of the axis placement is not changed.
     /// The "XDirection" and the "YDirection" are reversed.
     /// So the axis placement stay right handed.
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt2d) -> crate::ffi::gp_Ax22d {
-        crate::ffi::gp_Ax22d::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax2d(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Ax22d::mirror(self, theA)
+    pub fn mirrored_pnt2d(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax22d> {
+        crate::ffi::gp_Ax22d_mirrored_pnt2d(self, theP)
     }
 
     /// Performs the symmetrical transformation of an axis
@@ -752,23 +393,22 @@ impl Ax22d {
     /// point, on the "XDirection" and "YDirection".
     /// The resulting main "Direction" is the cross product between
     /// the "XDirection" and the "YDirection" after transformation.
-    pub fn mirrored_ax2d(&self, theA: &crate::ffi::gp_Ax2d) -> crate::ffi::gp_Ax22d {
-        crate::ffi::gp_Ax22d::mirrored(self, theA)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
-        crate::ffi::gp_Ax22d::rotate(self, theP, theAng)
+    pub fn mirrored_ax2d(
+        &self,
+        theA: &crate::ffi::gp_Ax2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax22d> {
+        crate::ffi::gp_Ax22d_mirrored_ax2d(self, theA)
     }
 
     /// Rotates an axis placement. <theA1> is the axis of the
     /// rotation . theAng is the angular value of the rotation
     /// in radians.
-    pub fn rotated(&self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) -> crate::ffi::gp_Ax22d {
-        crate::ffi::gp_Ax22d::rotated(self, theP, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
-        crate::ffi::gp_Ax22d::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax22d> {
+        crate::ffi::gp_Ax22d_rotated(self, theP, theAng)
     }
 
     /// Applies a scaling transformation on the axis placement.
@@ -778,12 +418,12 @@ impl Ax22d {
     /// . the main direction of the axis placement is not changed.
     /// . The "XDirection" and the "YDirection" are reversed.
     /// So the axis placement stay right handed.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt2d, theS: f64) -> crate::ffi::gp_Ax22d {
-        crate::ffi::gp_Ax22d::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::gp_Ax22d::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax22d> {
+        crate::ffi::gp_Ax22d_scaled(self, theP, theS)
     }
 
     /// Transforms an axis placement with a Trsf.
@@ -791,26 +431,20 @@ impl Ax22d {
     /// "YDirection" are transformed with theT.  The resulting
     /// main "Direction" of <me> is the cross product between
     /// the "XDirection" and the "YDirection" after transformation.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf2d) -> crate::ffi::gp_Ax22d {
-        crate::ffi::gp_Ax22d::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec2d) {
-        crate::ffi::gp_Ax22d::translate(self, theV)
+    pub fn transformed(
+        &self,
+        theT: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax22d> {
+        crate::ffi::gp_Ax22d_transformed(self, theT)
     }
 
     /// Translates an axis plaxement in the direction of the vector
     /// <theV>. The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec2d) -> crate::ffi::gp_Ax22d {
-        crate::ffi::gp_Ax22d::translated(self, theV)
-    }
-
-    pub fn translate_pnt2d2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt2d,
-        theP2: &crate::ffi::gp_Pnt2d,
-    ) {
-        crate::ffi::gp_Ax22d::translate(self, theP1, theP2)
+    pub fn translated_vec2d(
+        &self,
+        theV: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax22d> {
+        crate::ffi::gp_Ax22d_translated_vec2d(self, theV)
     }
 
     /// Translates an axis placement from the point <theP1> to the
@@ -819,8 +453,8 @@ impl Ax22d {
         &self,
         theP1: &crate::ffi::gp_Pnt2d,
         theP2: &crate::ffi::gp_Pnt2d,
-    ) -> crate::ffi::gp_Ax22d {
-        crate::ffi::gp_Ax22d::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax22d> {
+        crate::ffi::gp_Ax22d_translated_pnt2d2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -869,148 +503,58 @@ impl Ax2d {
         crate::ffi::gp_Ax2d_ctor_pnt2d_dir2d(theP, theV)
     }
 
-    /// Changes the "Location" point (origin) of <me>.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Ax2d::set_location(self, theP)
-    }
-
-    /// Changes the direction of <me>.
-    pub fn set_direction(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Dir2d) {
-        crate::ffi::gp_Ax2d::set_direction(self, theV)
-    }
-
-    /// Returns the origin of <me>.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Ax2d::location(self)
-    }
-
-    /// Returns the direction of <me>.
-    pub fn direction(&self) -> &crate::ffi::gp_Dir2d {
-        crate::ffi::gp_Ax2d::direction(self)
-    }
-
-    /// Returns True if  :
-    /// . the angle between <me> and <Other> is lower or equal
-    /// to <AngularTolerance> and
-    /// . the distance between <me>.Location() and <Other> is lower
-    /// or equal to <LinearTolerance> and
-    /// . the distance between <Other>.Location() and <me> is lower
-    /// or equal to LinearTolerance.
-    pub fn is_coaxial(
-        &self,
-        Other: &crate::ffi::gp_Ax2d,
-        AngularTolerance: f64,
-        LinearTolerance: f64,
-    ) -> bool {
-        crate::ffi::gp_Ax2d::is_coaxial(self, Other, AngularTolerance, LinearTolerance)
-    }
-
-    /// Returns true if this axis and the axis theOther are normal to each other.
-    /// That is, if the angle between the two axes is equal to Pi/2 or -Pi/2.
-    /// Note: the tolerance criterion is given by theAngularTolerance.
-    pub fn is_normal(&self, theOther: &crate::ffi::gp_Ax2d, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Ax2d::is_normal(self, theOther, theAngularTolerance)
-    }
-
-    /// Returns true if this axis and the axis theOther are parallel, and have opposite orientations.
-    /// That is, if the angle between the two axes is equal to Pi or -Pi.
-    /// Note: the tolerance criterion is given by theAngularTolerance.
-    pub fn is_opposite(&self, theOther: &crate::ffi::gp_Ax2d, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Ax2d::is_opposite(self, theOther, theAngularTolerance)
-    }
-
-    /// Returns true if this axis and the axis theOther are parallel,
-    /// and have either the same or opposite orientations.
-    /// That is, if the angle between the two axes is equal to 0, Pi or -Pi.
-    /// Note: the tolerance criterion is given by theAngularTolerance.
-    pub fn is_parallel(&self, theOther: &crate::ffi::gp_Ax2d, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Ax2d::is_parallel(self, theOther, theAngularTolerance)
-    }
-
-    /// Computes the angle, in radians, between this axis and the axis theOther.
-    /// The value of the angle is between -Pi and Pi.
-    pub fn angle(&self, theOther: &crate::ffi::gp_Ax2d) -> f64 {
-        crate::ffi::gp_Ax2d::angle(self, theOther)
-    }
-
-    /// Reverses the direction of <me> and assigns the result to this axis.
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Ax2d::reverse(self)
-    }
-
     /// Computes a new axis placement with a direction opposite to the direction of <me>.
-    pub fn reversed(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Ax2d::reversed(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Ax2d::mirror(self, P)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Ax2d_reversed(self)
     }
 
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to the point P which is the
     /// center of the symmetry.
-    pub fn mirrored(&self, P: &crate::ffi::gp_Pnt2d) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Ax2d::mirrored(self, P)
-    }
-
-    pub fn mirror_ax2d(self: std::pin::Pin<&mut Self>, A: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Ax2d::mirror(self, A)
+    pub fn mirrored_pnt2d(&self, P: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Ax2d_mirrored_pnt2d(self, P)
     }
 
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to an axis placement which
     /// is the axis of the symmetry.
-    pub fn mirrored_ax2d(&self, A: &crate::ffi::gp_Ax2d) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Ax2d::mirrored(self, A)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
-        crate::ffi::gp_Ax2d::rotate(self, theP, theAng)
+    pub fn mirrored_ax2d(&self, A: &crate::ffi::gp_Ax2d) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Ax2d_mirrored_ax2d(self, A)
     }
 
     /// Rotates an axis placement. <theP> is the center of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Ax2d::rotated(self, theP, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt2d, S: f64) {
-        crate::ffi::gp_Ax2d::scale(self, P, S)
+    pub fn rotated(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Ax2d_rotated(self, theP, theAng)
     }
 
     /// Applies a scaling transformation on the axis placement.
     /// The "Location" point of the axisplacement is modified.
     /// The "Direction" is reversed if the scale is negative.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt2d, theS: f64) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Ax2d::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::gp_Ax2d::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Ax2d_scaled(self, theP, theS)
     }
 
     /// Transforms an axis placement with a Trsf.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf2d) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Ax2d::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec2d) {
-        crate::ffi::gp_Ax2d::translate(self, theV)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf2d) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Ax2d_transformed(self, theT)
     }
 
     /// Translates an axis placement in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec2d) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Ax2d::translated(self, theV)
-    }
-
-    pub fn translate_pnt2d2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt2d,
-        theP2: &crate::ffi::gp_Pnt2d,
-    ) {
-        crate::ffi::gp_Ax2d::translate(self, theP1, theP2)
+    pub fn translated_vec2d(
+        &self,
+        theV: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Ax2d_translated_vec2d(self, theV)
     }
 
     /// Translates an axis placement from the point theP1 to the point theP2.
@@ -1018,8 +562,8 @@ impl Ax2d {
         &self,
         theP1: &crate::ffi::gp_Pnt2d,
         theP2: &crate::ffi::gp_Pnt2d,
-    ) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Ax2d::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Ax2d_translated_pnt2d2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -1102,157 +646,14 @@ impl Ax3 {
         crate::ffi::gp_Ax3_ctor_pnt_dir(theP, theV)
     }
 
-    /// Reverses the X direction of <me>.
-    pub fn x_reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Ax3::x_reverse(self)
-    }
-
-    /// Reverses the Y direction of <me>.
-    pub fn y_reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Ax3::y_reverse(self)
-    }
-
-    /// Reverses the Z direction of <me>.
-    pub fn z_reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Ax3::z_reverse(self)
-    }
-
-    /// Assigns the origin and "main Direction" of the axis theA1 to
-    /// this coordinate system, then recomputes its "X Direction" and "Y Direction".
-    /// Note:
-    /// -   The new "X Direction" is computed as follows:
-    /// new "X Direction" = V1 ^(previous "X Direction" ^ V)
-    /// where V is the "Direction" of theA1.
-    /// -   The orientation of this coordinate system
-    /// (right-handed or left-handed) is not modified.
-    /// Raises ConstructionError  if the "Direction" of <theA1> and the "XDirection" of <me>
-    /// are parallel (same or opposite orientation) because it is
-    /// impossible to calculate the new "XDirection" and the new
-    /// "YDirection".
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Ax3::set_axis(self, theA1)
-    }
-
-    /// Changes the main direction of this coordinate system,
-    /// then recomputes its "X Direction" and "Y Direction".
-    /// Note:
-    /// -   The new "X Direction" is computed as follows:
-    /// new "X Direction" = theV ^ (previous "X Direction" ^ theV).
-    /// -   The orientation of this coordinate system (left- or right-handed) is not modified.
-    /// Raises ConstructionError if <theV> and the previous "XDirection" are parallel
-    /// because it is impossible to calculate the new "XDirection"
-    /// and the new "YDirection".
-    pub fn set_direction(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Dir) {
-        crate::ffi::gp_Ax3::set_direction(self, theV)
-    }
-
-    /// Changes the "Location" point (origin) of <me>.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Ax3::set_location(self, theP)
-    }
-
-    /// Changes the "Xdirection" of <me>. The main direction
-    /// "Direction" is not modified, the "Ydirection" is modified.
-    /// If <theVx> is not normal to the main direction then <XDirection>
-    /// is computed as follows XDirection = Direction ^ (theVx ^ Direction).
-    /// Raises ConstructionError if <theVx> is parallel (same or opposite
-    /// orientation) to the main direction of <me>
-    pub fn set_x_direction(self: std::pin::Pin<&mut Self>, theVx: &crate::ffi::gp_Dir) {
-        crate::ffi::gp_Ax3::set_x_direction(self, theVx)
-    }
-
-    /// Changes the "Ydirection" of <me>. The main direction is not
-    /// modified but the "Xdirection" is changed.
-    /// If <theVy> is not normal to the main direction then "YDirection"
-    /// is computed as  follows
-    /// YDirection = Direction ^ (<theVy> ^ Direction).
-    /// Raises ConstructionError if <theVy> is parallel to the main direction of <me>
-    pub fn set_y_direction(self: std::pin::Pin<&mut Self>, theVy: &crate::ffi::gp_Dir) {
-        crate::ffi::gp_Ax3::set_y_direction(self, theVy)
-    }
-
-    /// Computes the angular value between the main direction of
-    /// <me> and the main direction of <theOther>. Returns the angle
-    /// between 0 and PI in radians.
-    pub fn angle(&self, theOther: &crate::ffi::gp_Ax3) -> f64 {
-        crate::ffi::gp_Ax3::angle(self, theOther)
-    }
-
-    /// Returns the main axis of <me>. It is the "Location" point
-    /// and the main "Direction".
-    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Ax3::axis(self)
-    }
-
     /// Computes a right-handed coordinate system with the
     /// same "X Direction" and "Y Direction" as those of this
     /// coordinate system, then recomputes the "main Direction".
     /// If this coordinate system is right-handed, the result
     /// returned is the same coordinate system. If this
     /// coordinate system is left-handed, the result is reversed.
-    pub fn ax2(&self) -> crate::ffi::gp_Ax2 {
-        crate::ffi::gp_Ax3::ax2(self)
-    }
-
-    /// Returns the main direction of <me>.
-    pub fn direction(&self) -> &crate::ffi::gp_Dir {
-        crate::ffi::gp_Ax3::direction(self)
-    }
-
-    /// Returns the "Location" point (origin) of <me>.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt {
-        crate::ffi::gp_Ax3::location(self)
-    }
-
-    /// Returns the "XDirection" of <me>.
-    pub fn x_direction(&self) -> &crate::ffi::gp_Dir {
-        crate::ffi::gp_Ax3::x_direction(self)
-    }
-
-    /// Returns the "YDirection" of <me>.
-    pub fn y_direction(&self) -> &crate::ffi::gp_Dir {
-        crate::ffi::gp_Ax3::y_direction(self)
-    }
-
-    /// Returns  True if  the  coordinate  system is right-handed. i.e.
-    /// XDirection().Crossed(YDirection()).Dot(Direction()) > 0
-    pub fn direct(&self) -> bool {
-        crate::ffi::gp_Ax3::direct(self)
-    }
-
-    /// Returns True if
-    /// . the distance between the "Location" point of <me> and
-    /// <theOther> is lower or equal to theLinearTolerance and
-    /// . the distance between the "Location" point of <theOther> and
-    /// <me> is lower or equal to theLinearTolerance and
-    /// . the main direction of <me> and the main direction of
-    /// <theOther> are parallel (same or opposite orientation).
-    pub fn is_coplanar(
-        &self,
-        theOther: &crate::ffi::gp_Ax3,
-        theLinearTolerance: f64,
-        theAngularTolerance: f64,
-    ) -> bool {
-        crate::ffi::gp_Ax3::is_coplanar(self, theOther, theLinearTolerance, theAngularTolerance)
-    }
-
-    /// Returns True if
-    /// . the distance between <me> and the "Location" point of theA1
-    /// is lower of equal to theLinearTolerance and
-    /// . the distance between theA1 and the "Location" point of <me>
-    /// is lower or equal to theLinearTolerance and
-    /// . the main direction of <me> and the direction of theA1 are normal.
-    pub fn is_coplanar_ax1_real2(
-        &self,
-        theA1: &crate::ffi::gp_Ax1,
-        theLinearTolerance: f64,
-        theAngularTolerance: f64,
-    ) -> bool {
-        crate::ffi::gp_Ax3::is_coplanar(self, theA1, theLinearTolerance, theAngularTolerance)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Ax3::mirror(self, theP)
+    pub fn ax2(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2> {
+        crate::ffi::gp_Ax3_ax2(self)
     }
 
     /// Performs the symmetrical transformation of an axis
@@ -1262,12 +663,8 @@ impl Ax3 {
     /// The main direction of the axis placement is not changed.
     /// The "XDirection" and the "YDirection" are reversed.
     /// So the axis placement stay right handed.
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Ax3 {
-        crate::ffi::gp_Ax3::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Ax3::mirror(self, theA1)
+    pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Ax3> {
+        crate::ffi::gp_Ax3_mirrored_pnt(self, theP)
     }
 
     /// Performs the symmetrical transformation of an axis
@@ -1277,12 +674,8 @@ impl Ax3 {
     /// point, on the "XDirection" and "YDirection".
     /// The resulting main "Direction" is the cross product between
     /// the "XDirection" and the "YDirection" after transformation.
-    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Ax3 {
-        crate::ffi::gp_Ax3::mirrored(self, theA1)
-    }
-
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Ax3::mirror(self, theA2)
+    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<crate::ffi::gp_Ax3> {
+        crate::ffi::gp_Ax3_mirrored_ax1(self, theA1)
     }
 
     /// Performs the symmetrical transformation of an axis
@@ -1293,23 +686,19 @@ impl Ax3 {
     /// point, on the "XDirection" and "YDirection".
     /// The resulting main "Direction" is the cross product between
     /// the "XDirection" and the "YDirection" after transformation.
-    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Ax3 {
-        crate::ffi::gp_Ax3::mirrored(self, theA2)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Ax3::rotate(self, theA1, theAng)
+    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<crate::ffi::gp_Ax3> {
+        crate::ffi::gp_Ax3_mirrored_ax2(self, theA2)
     }
 
     /// Rotates an axis placement. <theA1> is the axis of the
     /// rotation . theAng is the angular value of the rotation
     /// in radians.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Ax3 {
-        crate::ffi::gp_Ax3::rotated(self, theA1, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Ax3::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax3> {
+        crate::ffi::gp_Ax3_rotated(self, theA1, theAng)
     }
 
     /// Applies a scaling transformation on the axis placement.
@@ -1319,12 +708,12 @@ impl Ax3 {
     /// . the main direction of the axis placement is not changed.
     /// . The "XDirection" and the "YDirection" are reversed.
     /// So the axis placement stay right handed.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt, theS: f64) -> crate::ffi::gp_Ax3 {
-        crate::ffi::gp_Ax3::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Ax3::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax3> {
+        crate::ffi::gp_Ax3_scaled(self, theP, theS)
     }
 
     /// Transforms an axis placement with a Trsf.
@@ -1332,26 +721,14 @@ impl Ax3 {
     /// "YDirection" are transformed with theT.  The resulting
     /// main "Direction" of <me> is the cross product between
     /// the "XDirection" and the "YDirection" after transformation.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Ax3 {
-        crate::ffi::gp_Ax3::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Ax3::translate(self, theV)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Ax3> {
+        crate::ffi::gp_Ax3_transformed(self, theT)
     }
 
     /// Translates an axis plaxement in the direction of the vector
     /// <theV>. The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Ax3 {
-        crate::ffi::gp_Ax3::translated(self, theV)
-    }
-
-    pub fn translate_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Ax3::translate(self, theP1, theP2)
+    pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> cxx::UniquePtr<crate::ffi::gp_Ax3> {
+        crate::ffi::gp_Ax3_translated_vec(self, theV)
     }
 
     /// Translates an axis placement from the point <theP1> to the
@@ -1360,8 +737,8 @@ impl Ax3 {
         &self,
         theP1: &crate::ffi::gp_Pnt,
         theP2: &crate::ffi::gp_Pnt,
-    ) -> crate::ffi::gp_Ax3 {
-        crate::ffi::gp_Ax3::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Ax3> {
+        crate::ffi::gp_Ax3_translated_pnt2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -1416,144 +793,49 @@ impl Circ {
         crate::ffi::gp_Circ_ctor_ax2_real(theA2, theRadius)
     }
 
-    /// Changes the main axis of the circle. It is the axis
-    /// perpendicular to the plane of the circle.
-    /// Raises ConstructionError if the direction of theA1
-    /// is parallel to the "XAxis" of the circle.
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Circ::set_axis(self, theA1)
-    }
-
-    /// Changes the "Location" point (center) of the circle.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Circ::set_location(self, theP)
-    }
-
-    /// Changes the position of the circle.
-    pub fn set_position(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Circ::set_position(self, theA2)
-    }
-
-    /// Modifies the radius of this circle.
-    /// Warning. This class does not prevent the creation of a circle where theRadius is null.
-    /// Exceptions
-    /// Standard_ConstructionError if theRadius is negative.
-    pub fn set_radius(self: std::pin::Pin<&mut Self>, theRadius: f64) {
-        crate::ffi::gp_Circ::set_radius(self, theRadius)
-    }
-
-    /// Computes the area of the circle.
-    pub fn area(&self) -> f64 {
-        crate::ffi::gp_Circ::area(self)
-    }
-
-    /// Returns the main axis of the circle.
-    /// It is the axis perpendicular to the plane of the circle,
-    /// passing through the "Location" point (center) of the circle.
-    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Circ::axis(self)
-    }
-
-    /// Computes the circumference of the circle.
-    pub fn length(&self) -> f64 {
-        crate::ffi::gp_Circ::length(self)
-    }
-
-    /// Returns the center of the circle. It is the
-    /// "Location" point of the local coordinate system
-    /// of the circle
-    pub fn location(&self) -> &crate::ffi::gp_Pnt {
-        crate::ffi::gp_Circ::location(self)
-    }
-
-    /// Returns the position of the circle.
-    /// It is the local coordinate system of the circle.
-    pub fn position(&self) -> &crate::ffi::gp_Ax2 {
-        crate::ffi::gp_Circ::position(self)
-    }
-
-    /// Returns the radius of this circle.
-    pub fn radius(&self) -> f64 {
-        crate::ffi::gp_Circ::radius(self)
-    }
-
     /// Returns the "XAxis" of the circle.
     /// This axis is perpendicular to the axis of the conic.
     /// This axis and the "Yaxis" define the plane of the conic.
-    pub fn x_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Circ::x_axis(self)
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Circ_x_axis(self)
     }
 
     /// Returns the "YAxis" of the circle.
     /// This axis and the "Xaxis" define the plane of the conic.
     /// The "YAxis" is perpendicular to the "Xaxis".
-    pub fn y_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Circ::y_axis(self)
-    }
-
-    /// Computes the minimum of distance between the point theP and
-    /// any point on the circumference of the circle.
-    pub fn distance(&self, theP: &crate::ffi::gp_Pnt) -> f64 {
-        crate::ffi::gp_Circ::distance(self, theP)
-    }
-
-    /// Computes the square distance between <me> and the point theP.
-    pub fn square_distance(&self, theP: &crate::ffi::gp_Pnt) -> f64 {
-        crate::ffi::gp_Circ::square_distance(self, theP)
-    }
-
-    /// Returns True if the point theP is on the circumference.
-    /// The distance between <me> and <theP> must be lower or
-    /// equal to theLinearTolerance.
-    pub fn contains(&self, theP: &crate::ffi::gp_Pnt, theLinearTolerance: f64) -> bool {
-        crate::ffi::gp_Circ::contains(self, theP, theLinearTolerance)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Circ::mirror(self, theP)
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Circ_y_axis(self)
     }
 
     /// Performs the symmetrical transformation of a circle
     /// with respect to the point theP which is the center of the
     /// symmetry.
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Circ {
-        crate::ffi::gp_Circ::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Circ::mirror(self, theA1)
+    pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Circ> {
+        crate::ffi::gp_Circ_mirrored_pnt(self, theP)
     }
 
     /// Performs the symmetrical transformation of a circle with
     /// respect to an axis placement which is the axis of the
     /// symmetry.
-    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Circ {
-        crate::ffi::gp_Circ::mirrored(self, theA1)
-    }
-
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Circ::mirror(self, theA2)
+    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<crate::ffi::gp_Circ> {
+        crate::ffi::gp_Circ_mirrored_ax1(self, theA1)
     }
 
     /// Performs the symmetrical transformation of a circle with respect
     /// to a plane. The axis placement theA2 locates the plane of the
     /// of the symmetry : (Location, XDirection, YDirection).
-    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Circ {
-        crate::ffi::gp_Circ::mirrored(self, theA2)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Circ::rotate(self, theA1, theAng)
+    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<crate::ffi::gp_Circ> {
+        crate::ffi::gp_Circ_mirrored_ax2(self, theA2)
     }
 
     /// Rotates a circle. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Circ {
-        crate::ffi::gp_Circ::rotated(self, theA1, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Circ::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Circ> {
+        crate::ffi::gp_Circ_rotated(self, theA1, theAng)
     }
 
     /// Scales a circle. theS is the scaling value.
@@ -1561,35 +843,23 @@ impl Circ {
     /// If theS is negative the radius stay positive but
     /// the "XAxis" and the "YAxis" are  reversed as for
     /// an ellipse.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt, theS: f64) -> crate::ffi::gp_Circ {
-        crate::ffi::gp_Circ::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Circ::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Circ> {
+        crate::ffi::gp_Circ_scaled(self, theP, theS)
     }
 
     /// Transforms a circle with the transformation theT from class Trsf.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Circ {
-        crate::ffi::gp_Circ::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Circ::translate(self, theV)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Circ> {
+        crate::ffi::gp_Circ_transformed(self, theT)
     }
 
     /// Translates a circle in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Circ {
-        crate::ffi::gp_Circ::translated(self, theV)
-    }
-
-    pub fn translate_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Circ::translate(self, theP1, theP2)
+    pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> cxx::UniquePtr<crate::ffi::gp_Circ> {
+        crate::ffi::gp_Circ_translated_vec(self, theV)
     }
 
     /// Translates a circle from the point theP1 to the point theP2.
@@ -1597,8 +867,8 @@ impl Circ {
         &self,
         theP1: &crate::ffi::gp_Pnt,
         theP2: &crate::ffi::gp_Pnt,
-    ) -> crate::ffi::gp_Circ {
-        crate::ffi::gp_Circ::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Circ> {
+        crate::ffi::gp_Circ_translated_pnt2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -1665,164 +935,51 @@ impl Circ2d {
         crate::ffi::gp_Circ2d_ctor_ax22d_real(theAxis, theRadius)
     }
 
-    /// Changes the location point (center) of the circle.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Circ2d::set_location(self, theP)
-    }
-
-    /// Changes the X axis of the circle.
-    pub fn set_x_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Circ2d::set_x_axis(self, theA)
-    }
-
-    /// Changes the X axis of the circle.
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax22d) {
-        crate::ffi::gp_Circ2d::set_axis(self, theA)
-    }
-
-    /// Changes the Y axis of the circle.
-    pub fn set_y_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Circ2d::set_y_axis(self, theA)
-    }
-
-    /// Modifies the radius of this circle.
-    /// This class does not prevent the creation of a circle where
-    /// theRadius is null.
-    /// Exceptions
-    /// Standard_ConstructionError if theRadius is negative.
-    pub fn set_radius(self: std::pin::Pin<&mut Self>, theRadius: f64) {
-        crate::ffi::gp_Circ2d::set_radius(self, theRadius)
-    }
-
-    /// Computes the area of the circle.
-    pub fn area(&self) -> f64 {
-        crate::ffi::gp_Circ2d::area(self)
-    }
-
-    /// Returns the normalized coefficients from the implicit equation
-    /// of the circle :
-    /// theA * (X**2) + theB * (Y**2) + 2*theC*(X*Y) + 2*theD*X + 2*theE*Y + theF = 0.0
-    pub fn coefficients(
-        &self,
-        theA: std::pin::Pin<&mut f64>,
-        theB: std::pin::Pin<&mut f64>,
-        theC: std::pin::Pin<&mut f64>,
-        theD: std::pin::Pin<&mut f64>,
-        theE: std::pin::Pin<&mut f64>,
-        theF: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_Circ2d::coefficients(self, theA, theB, theC, theD, theE, theF)
-    }
-
-    /// Does <me> contain theP ?
-    /// Returns True if the distance between theP and any point on
-    /// the circumference of the circle is lower of equal to
-    /// <theLinearTolerance>.
-    pub fn contains(&self, theP: &crate::ffi::gp_Pnt2d, theLinearTolerance: f64) -> bool {
-        crate::ffi::gp_Circ2d::contains(self, theP, theLinearTolerance)
-    }
-
-    /// Computes the minimum of distance between the point theP and any
-    /// point on the circumference of the circle.
-    pub fn distance(&self, theP: &crate::ffi::gp_Pnt2d) -> f64 {
-        crate::ffi::gp_Circ2d::distance(self, theP)
-    }
-
-    /// Computes the square distance between <me> and the point theP.
-    pub fn square_distance(&self, theP: &crate::ffi::gp_Pnt2d) -> f64 {
-        crate::ffi::gp_Circ2d::square_distance(self, theP)
-    }
-
-    /// computes the circumference of the circle.
-    pub fn length(&self) -> f64 {
-        crate::ffi::gp_Circ2d::length(self)
-    }
-
-    /// Returns the location point (center) of the circle.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Circ2d::location(self)
-    }
-
-    /// Returns the radius value of the circle.
-    pub fn radius(&self) -> f64 {
-        crate::ffi::gp_Circ2d::radius(self)
-    }
-
-    /// returns the position of the circle.
-    pub fn axis(&self) -> &crate::ffi::gp_Ax22d {
-        crate::ffi::gp_Circ2d::axis(self)
-    }
-
-    /// returns the position of the circle. Idem Axis(me).
-    pub fn position(&self) -> &crate::ffi::gp_Ax22d {
-        crate::ffi::gp_Circ2d::position(self)
-    }
-
     /// returns the X axis of the circle.
-    pub fn x_axis(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Circ2d::x_axis(self)
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Circ2d_x_axis(self)
     }
 
     /// Returns the Y axis of the circle.
     /// Reverses the direction of the circle.
-    pub fn y_axis(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Circ2d::y_axis(self)
-    }
-
-    /// Reverses the orientation of the local coordinate system
-    /// of this circle (the "Y Direction" is reversed) and therefore
-    /// changes the implicit orientation of this circle.
-    /// Reverse assigns the result to this circle,
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Circ2d::reverse(self)
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Circ2d_y_axis(self)
     }
 
     /// Reverses the orientation of the local coordinate system
     /// of this circle (the "Y Direction" is reversed) and therefore
     /// changes the implicit orientation of this circle.
     /// Reversed creates a new circle.
-    pub fn reversed(&self) -> crate::ffi::gp_Circ2d {
-        crate::ffi::gp_Circ2d::reversed(self)
-    }
-
-    /// Returns true if the local coordinate system is direct
-    /// and false in the other case.
-    pub fn is_direct(&self) -> bool {
-        crate::ffi::gp_Circ2d::is_direct(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Circ2d::mirror(self, theP)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_Circ2d> {
+        crate::ffi::gp_Circ2d_reversed(self)
     }
 
     /// Performs the symmetrical transformation of a circle with respect
     /// to the point theP which is the center of the symmetry
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt2d) -> crate::ffi::gp_Circ2d {
-        crate::ffi::gp_Circ2d::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax2d(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Circ2d::mirror(self, theA)
+    pub fn mirrored_pnt2d(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Circ2d> {
+        crate::ffi::gp_Circ2d_mirrored_pnt2d(self, theP)
     }
 
     /// Performs the symmetrical transformation of a circle with respect
     /// to an axis placement which is the axis of the symmetry.
-    pub fn mirrored_ax2d(&self, theA: &crate::ffi::gp_Ax2d) -> crate::ffi::gp_Circ2d {
-        crate::ffi::gp_Circ2d::mirrored(self, theA)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
-        crate::ffi::gp_Circ2d::rotate(self, theP, theAng)
+    pub fn mirrored_ax2d(
+        &self,
+        theA: &crate::ffi::gp_Ax2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Circ2d> {
+        crate::ffi::gp_Circ2d_mirrored_ax2d(self, theA)
     }
 
     /// Rotates a circle. theP is the center of the rotation.
     /// Ang is the angular value of the rotation in radians.
-    pub fn rotated(&self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) -> crate::ffi::gp_Circ2d {
-        crate::ffi::gp_Circ2d::rotated(self, theP, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
-        crate::ffi::gp_Circ2d::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Circ2d> {
+        crate::ffi::gp_Circ2d_rotated(self, theP, theAng)
     }
 
     /// Scales a circle. theS is the scaling value.
@@ -1830,35 +987,29 @@ impl Circ2d {
     /// If theS is negative the radius stay positive but
     /// the "XAxis" and the "YAxis" are  reversed as for
     /// an ellipse.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt2d, theS: f64) -> crate::ffi::gp_Circ2d {
-        crate::ffi::gp_Circ2d::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::gp_Circ2d::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Circ2d> {
+        crate::ffi::gp_Circ2d_scaled(self, theP, theS)
     }
 
     /// Transforms a circle with the transformation theT from class Trsf2d.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf2d) -> crate::ffi::gp_Circ2d {
-        crate::ffi::gp_Circ2d::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec2d) {
-        crate::ffi::gp_Circ2d::translate(self, theV)
+    pub fn transformed(
+        &self,
+        theT: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Circ2d> {
+        crate::ffi::gp_Circ2d_transformed(self, theT)
     }
 
     /// Translates a circle in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec2d) -> crate::ffi::gp_Circ2d {
-        crate::ffi::gp_Circ2d::translated(self, theV)
-    }
-
-    pub fn translate_pnt2d2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt2d,
-        theP2: &crate::ffi::gp_Pnt2d,
-    ) {
-        crate::ffi::gp_Circ2d::translate(self, theP1, theP2)
+    pub fn translated_vec2d(
+        &self,
+        theV: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Circ2d> {
+        crate::ffi::gp_Circ2d_translated_vec2d(self, theV)
     }
 
     /// Translates a circle from the point theP1 to the point theP2.
@@ -1866,8 +1017,8 @@ impl Circ2d {
         &self,
         theP1: &crate::ffi::gp_Pnt2d,
         theP2: &crate::ffi::gp_Pnt2d,
-    ) -> crate::ffi::gp_Circ2d {
-        crate::ffi::gp_Circ2d::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Circ2d> {
+        crate::ffi::gp_Circ2d_translated_pnt2d2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -1934,198 +1085,72 @@ impl Cone {
         crate::ffi::gp_Cone_ctor_ax3_real2(theA3, theAng, theRadius)
     }
 
-    /// Changes the symmetry axis of the cone.  Raises ConstructionError
-    /// the direction of theA1 is parallel to the "XDirection"
-    /// of the coordinate system of the cone.
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Cone::set_axis(self, theA1)
-    }
-
-    /// Changes the location of the cone.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theLoc: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Cone::set_location(self, theLoc)
-    }
-
-    /// Changes the local coordinate system of the cone.
-    /// This coordinate system defines the reference plane of the cone.
-    pub fn set_position(self: std::pin::Pin<&mut Self>, theA3: &crate::ffi::gp_Ax3) {
-        crate::ffi::gp_Cone::set_position(self, theA3)
-    }
-
-    /// Changes the radius of the cone in the reference plane of
-    /// the cone.
-    /// Raised if theR < 0.0
-    pub fn set_radius(self: std::pin::Pin<&mut Self>, theR: f64) {
-        crate::ffi::gp_Cone::set_radius(self, theR)
-    }
-
-    /// Changes the semi-angle of the cone.
-    /// Semi-angle can be negative. Its absolute value
-    /// Abs(theAng) is in range ]0,PI/2[.
-    /// Raises ConstructionError if Abs(theAng) < Resolution from gp or Abs(theAng) >= PI/2 -
-    /// Resolution
-    pub fn set_semi_angle(self: std::pin::Pin<&mut Self>, theAng: f64) {
-        crate::ffi::gp_Cone::set_semi_angle(self, theAng)
-    }
-
     /// Computes the cone's top. The Apex of the cone is on the
     /// negative side of the symmetry axis of the cone.
-    pub fn apex(&self) -> crate::ffi::gp_Pnt {
-        crate::ffi::gp_Cone::apex(self)
-    }
-
-    /// Reverses the   U   parametrization of   the  cone
-    /// reversing the YAxis.
-    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Cone::u_reverse(self)
-    }
-
-    /// Reverses the   V   parametrization of   the  cone  reversing the ZAxis.
-    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Cone::v_reverse(self)
-    }
-
-    /// Returns true if the local coordinate system of this cone is right-handed.
-    pub fn direct(&self) -> bool {
-        crate::ffi::gp_Cone::direct(self)
-    }
-
-    /// returns the symmetry axis of the cone.
-    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Cone::axis(self)
-    }
-
-    /// Computes the coefficients of the implicit equation of the quadric
-    /// in the absolute cartesian coordinates system :
-    /// theA1.X**2 + theA2.Y**2 + theA3.Z**2 + 2.(theB1.X.Y + theB2.X.Z + theB3.Y.Z) +
-    /// 2.(theC1.X + theC2.Y + theC3.Z) + theD = 0.0
-    pub fn coefficients(
-        &self,
-        theA1: std::pin::Pin<&mut f64>,
-        theA2: std::pin::Pin<&mut f64>,
-        theA3: std::pin::Pin<&mut f64>,
-        theB1: std::pin::Pin<&mut f64>,
-        theB2: std::pin::Pin<&mut f64>,
-        theB3: std::pin::Pin<&mut f64>,
-        theC1: std::pin::Pin<&mut f64>,
-        theC2: std::pin::Pin<&mut f64>,
-        theC3: std::pin::Pin<&mut f64>,
-        theD: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_Cone::coefficients(
-            self, theA1, theA2, theA3, theB1, theB2, theB3, theC1, theC2, theC3, theD,
-        )
-    }
-
-    /// returns the "Location" point of the cone.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt {
-        crate::ffi::gp_Cone::location(self)
-    }
-
-    /// Returns the local coordinates system of the cone.
-    pub fn position(&self) -> &crate::ffi::gp_Ax3 {
-        crate::ffi::gp_Cone::position(self)
-    }
-
-    /// Returns the radius of the cone in the reference plane.
-    pub fn ref_radius(&self) -> f64 {
-        crate::ffi::gp_Cone::ref_radius(self)
-    }
-
-    /// Returns the half-angle at the apex of this cone.
-    /// Attention! Semi-angle can be negative.
-    pub fn semi_angle(&self) -> f64 {
-        crate::ffi::gp_Cone::semi_angle(self)
+    pub fn apex(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::gp_Cone_apex(self)
     }
 
     /// Returns the XAxis of the reference plane.
-    pub fn x_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Cone::x_axis(self)
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Cone_x_axis(self)
     }
 
     /// Returns the YAxis of the reference plane.
-    pub fn y_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Cone::y_axis(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Cone::mirror(self, theP)
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Cone_y_axis(self)
     }
 
     /// Performs the symmetrical transformation of a cone
     /// with respect to the point theP which is the center of the
     /// symmetry.
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Cone {
-        crate::ffi::gp_Cone::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Cone::mirror(self, theA1)
+    pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Cone> {
+        crate::ffi::gp_Cone_mirrored_pnt(self, theP)
     }
 
     /// Performs the symmetrical transformation of a cone with
     /// respect to an axis placement which is the axis of the
     /// symmetry.
-    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Cone {
-        crate::ffi::gp_Cone::mirrored(self, theA1)
-    }
-
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Cone::mirror(self, theA2)
+    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<crate::ffi::gp_Cone> {
+        crate::ffi::gp_Cone_mirrored_ax1(self, theA1)
     }
 
     /// Performs the symmetrical transformation of a cone with respect
     /// to a plane. The axis placement theA2 locates the plane of the
     /// of the symmetry : (Location, XDirection, YDirection).
-    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Cone {
-        crate::ffi::gp_Cone::mirrored(self, theA2)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Cone::rotate(self, theA1, theAng)
+    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<crate::ffi::gp_Cone> {
+        crate::ffi::gp_Cone_mirrored_ax2(self, theA2)
     }
 
     /// Rotates a cone. theA1 is the axis of the rotation.
     /// Ang is the angular value of the rotation in radians.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Cone {
-        crate::ffi::gp_Cone::rotated(self, theA1, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Cone::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Cone> {
+        crate::ffi::gp_Cone_rotated(self, theA1, theAng)
     }
 
     /// Scales a cone. theS is the scaling value.
     /// The absolute value of theS is used to scale the cone
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt, theS: f64) -> crate::ffi::gp_Cone {
-        crate::ffi::gp_Cone::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Cone::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Cone> {
+        crate::ffi::gp_Cone_scaled(self, theP, theS)
     }
 
     /// Transforms a cone with the transformation theT from class Trsf.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Cone {
-        crate::ffi::gp_Cone::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Cone::translate(self, theV)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Cone> {
+        crate::ffi::gp_Cone_transformed(self, theT)
     }
 
     /// Translates a cone in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Cone {
-        crate::ffi::gp_Cone::translated(self, theV)
-    }
-
-    pub fn translate_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Cone::translate(self, theP1, theP2)
+    pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> cxx::UniquePtr<crate::ffi::gp_Cone> {
+        crate::ffi::gp_Cone_translated_vec(self, theV)
     }
 
     /// Translates a cone from the point P1 to the point P2.
@@ -2133,8 +1158,8 @@ impl Cone {
         &self,
         theP1: &crate::ffi::gp_Pnt,
         theP2: &crate::ffi::gp_Pnt,
-    ) -> crate::ffi::gp_Cone {
-        crate::ffi::gp_Cone::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Cone> {
+        crate::ffi::gp_Cone_translated_pnt2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -2182,176 +1207,81 @@ impl Cylinder {
         crate::ffi::gp_Cylinder_ctor_ax3_real(theA3, theRadius)
     }
 
-    /// Changes the symmetry axis of the cylinder. Raises ConstructionError if the direction of theA1
-    /// is parallel to the "XDirection" of the coordinate system of the cylinder.
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Cylinder::set_axis(self, theA1)
-    }
-
-    /// Changes the location of the surface.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theLoc: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Cylinder::set_location(self, theLoc)
-    }
-
-    /// Change the local coordinate system of the surface.
-    pub fn set_position(self: std::pin::Pin<&mut Self>, theA3: &crate::ffi::gp_Ax3) {
-        crate::ffi::gp_Cylinder::set_position(self, theA3)
-    }
-
-    /// Modifies the radius of this cylinder.
-    /// Exceptions
-    /// Standard_ConstructionError if theR is negative.
-    pub fn set_radius(self: std::pin::Pin<&mut Self>, theR: f64) {
-        crate::ffi::gp_Cylinder::set_radius(self, theR)
-    }
-
-    /// Reverses the   U   parametrization of   the cylinder
-    /// reversing the YAxis.
-    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Cylinder::u_reverse(self)
-    }
-
-    /// Reverses the   V   parametrization of   the  plane
-    /// reversing the Axis.
-    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Cylinder::v_reverse(self)
-    }
-
-    /// Returns true if the local coordinate system of this cylinder is right-handed.
-    pub fn direct(&self) -> bool {
-        crate::ffi::gp_Cylinder::direct(self)
-    }
-
-    /// Returns the symmetry axis of the cylinder.
-    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Cylinder::axis(self)
-    }
-
-    /// Computes the coefficients of the implicit equation of the quadric
-    /// in the absolute cartesian coordinate system :
-    /// theA1.X**2 + theA2.Y**2 + theA3.Z**2 + 2.(theB1.X.Y + theB2.X.Z + theB3.Y.Z) +
-    /// 2.(theC1.X + theC2.Y + theC3.Z) + theD = 0.0
-    pub fn coefficients(
-        &self,
-        theA1: std::pin::Pin<&mut f64>,
-        theA2: std::pin::Pin<&mut f64>,
-        theA3: std::pin::Pin<&mut f64>,
-        theB1: std::pin::Pin<&mut f64>,
-        theB2: std::pin::Pin<&mut f64>,
-        theB3: std::pin::Pin<&mut f64>,
-        theC1: std::pin::Pin<&mut f64>,
-        theC2: std::pin::Pin<&mut f64>,
-        theC3: std::pin::Pin<&mut f64>,
-        theD: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_Cylinder::coefficients(
-            self, theA1, theA2, theA3, theB1, theB2, theB3, theC1, theC2, theC3, theD,
-        )
-    }
-
-    /// Returns the "Location" point of the cylinder.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt {
-        crate::ffi::gp_Cylinder::location(self)
-    }
-
-    /// Returns the local coordinate system of the cylinder.
-    pub fn position(&self) -> &crate::ffi::gp_Ax3 {
-        crate::ffi::gp_Cylinder::position(self)
-    }
-
-    /// Returns the radius of the cylinder.
-    pub fn radius(&self) -> f64 {
-        crate::ffi::gp_Cylinder::radius(self)
-    }
-
     /// Returns the axis X of the cylinder.
-    pub fn x_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Cylinder::x_axis(self)
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Cylinder_x_axis(self)
     }
 
     /// Returns the axis Y of the cylinder.
-    pub fn y_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Cylinder::y_axis(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Cylinder::mirror(self, theP)
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Cylinder_y_axis(self)
     }
 
     /// Performs the symmetrical transformation of a cylinder
     /// with respect to the point theP which is the center of the
     /// symmetry.
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Cylinder {
-        crate::ffi::gp_Cylinder::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Cylinder::mirror(self, theA1)
+    pub fn mirrored_pnt(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Cylinder> {
+        crate::ffi::gp_Cylinder_mirrored_pnt(self, theP)
     }
 
     /// Performs the symmetrical transformation of a cylinder with
     /// respect to an axis placement which is the axis of the
     /// symmetry.
-    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Cylinder {
-        crate::ffi::gp_Cylinder::mirrored(self, theA1)
-    }
-
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Cylinder::mirror(self, theA2)
+    pub fn mirrored_ax1(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Cylinder> {
+        crate::ffi::gp_Cylinder_mirrored_ax1(self, theA1)
     }
 
     /// Performs the symmetrical transformation of a cylinder with respect
     /// to a plane. The axis placement theA2 locates the plane of the
     /// of the symmetry : (Location, XDirection, YDirection).
-    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Cylinder {
-        crate::ffi::gp_Cylinder::mirrored(self, theA2)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Cylinder::rotate(self, theA1, theAng)
+    pub fn mirrored_ax2(
+        &self,
+        theA2: &crate::ffi::gp_Ax2,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Cylinder> {
+        crate::ffi::gp_Cylinder_mirrored_ax2(self, theA2)
     }
 
     /// Rotates a cylinder. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Cylinder {
-        crate::ffi::gp_Cylinder::rotated(self, theA1, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Cylinder::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Cylinder> {
+        crate::ffi::gp_Cylinder_rotated(self, theA1, theAng)
     }
 
     /// Scales a cylinder. theS is the scaling value.
     /// The absolute value of theS is used to scale the cylinder
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt, theS: f64) -> crate::ffi::gp_Cylinder {
-        crate::ffi::gp_Cylinder::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Cylinder::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Cylinder> {
+        crate::ffi::gp_Cylinder_scaled(self, theP, theS)
     }
 
     /// Transforms a cylinder with the transformation theT from class Trsf.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Cylinder {
-        crate::ffi::gp_Cylinder::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Cylinder::translate(self, theV)
+    pub fn transformed(
+        &self,
+        theT: &crate::ffi::gp_Trsf,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Cylinder> {
+        crate::ffi::gp_Cylinder_transformed(self, theT)
     }
 
     /// Translates a cylinder in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Cylinder {
-        crate::ffi::gp_Cylinder::translated(self, theV)
-    }
-
-    pub fn translate_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Cylinder::translate(self, theP1, theP2)
+    pub fn translated_vec(
+        &self,
+        theV: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Cylinder> {
+        crate::ffi::gp_Cylinder_translated_vec(self, theV)
     }
 
     /// Translates a cylinder from the point theP1 to the point theP2.
@@ -2359,8 +1289,8 @@ impl Cylinder {
         &self,
         theP1: &crate::ffi::gp_Pnt,
         theP2: &crate::ffi::gp_Pnt,
-    ) -> crate::ffi::gp_Cylinder {
-        crate::ffi::gp_Cylinder::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Cylinder> {
+        crate::ffi::gp_Cylinder_translated_pnt2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -2410,164 +1340,13 @@ impl Dir {
         crate::ffi::gp_Dir_ctor_real3(theXv, theYv, theZv)
     }
 
-    /// For this unit vector,  assigns the value Xi to:
-    /// -   the X coordinate if theIndex is 1, or
-    /// -   the Y coordinate if theIndex is 2, or
-    /// -   the Z coordinate if theIndex is 3,
-    /// and then normalizes it.
-    /// Warning
-    /// Remember that all the coordinates of a unit vector are
-    /// implicitly modified when any single one is changed directly.
-    /// Exceptions
-    /// Standard_OutOfRange if theIndex is not 1, 2, or 3.
-    /// Standard_ConstructionError if either of the following
-    /// is less than or equal to gp::Resolution():
-    /// -   Sqrt(Xv*Xv + Yv*Yv + Zv*Zv), or
-    /// -   the modulus of the number triple formed by the new
-    /// value theXi and the two other coordinates of this vector
-    /// that were not directly modified.
-    pub fn set_coord(self: std::pin::Pin<&mut Self>, theIndex: i32, theXi: f64) {
-        crate::ffi::gp_Dir::set_coord(self, theIndex, theXi)
-    }
-
-    /// For this unit vector,  assigns the values theXv, theYv and theZv to its three coordinates.
-    /// Remember that all the coordinates of a unit vector are
-    /// implicitly modified when any single one is changed directly.
-    pub fn set_coord_real3(self: std::pin::Pin<&mut Self>, theXv: f64, theYv: f64, theZv: f64) {
-        crate::ffi::gp_Dir::set_coord(self, theXv, theYv, theZv)
-    }
-
-    /// Assigns the given value to the X coordinate of this   unit vector.
-    pub fn set_x(self: std::pin::Pin<&mut Self>, theX: f64) {
-        crate::ffi::gp_Dir::set_x(self, theX)
-    }
-
-    /// Assigns the given value to the Y coordinate of this   unit vector.
-    pub fn set_y(self: std::pin::Pin<&mut Self>, theY: f64) {
-        crate::ffi::gp_Dir::set_y(self, theY)
-    }
-
-    /// Assigns the given value to the Z  coordinate of this   unit vector.
-    pub fn set_z(self: std::pin::Pin<&mut Self>, theZ: f64) {
-        crate::ffi::gp_Dir::set_z(self, theZ)
-    }
-
-    /// Assigns the three coordinates of theCoord to this unit vector.
-    pub fn set_xyz(self: std::pin::Pin<&mut Self>, theCoord: &crate::ffi::gp_XYZ) {
-        crate::ffi::gp_Dir::set_xyz(self, theCoord)
-    }
-
-    /// Returns the coordinate of range theIndex :
-    /// theIndex = 1 => X is returned
-    /// Ithendex = 2 => Y is returned
-    /// theIndex = 3 => Z is returned
-    /// Exceptions
-    /// Standard_OutOfRange if theIndex is not 1, 2, or 3.
-    pub fn coord(&self, theIndex: i32) -> f64 {
-        crate::ffi::gp_Dir::coord(self, theIndex)
-    }
-
-    /// Returns for the  unit vector  its three coordinates theXv, theYv, and theZv.
-    pub fn coord_real3(
-        &self,
-        theXv: std::pin::Pin<&mut f64>,
-        theYv: std::pin::Pin<&mut f64>,
-        theZv: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_Dir::coord(self, theXv, theYv, theZv)
-    }
-
-    /// Returns the X coordinate for a  unit vector.
-    pub fn x(&self) -> f64 {
-        crate::ffi::gp_Dir::x(self)
-    }
-
-    /// Returns the Y coordinate for a  unit vector.
-    pub fn y(&self) -> f64 {
-        crate::ffi::gp_Dir::y(self)
-    }
-
-    /// Returns the Z coordinate for a  unit vector.
-    pub fn z(&self) -> f64 {
-        crate::ffi::gp_Dir::z(self)
-    }
-
-    /// for this unit vector, returns  its three coordinates as a number triplea.
-    pub fn xyz(&self) -> &crate::ffi::gp_XYZ {
-        crate::ffi::gp_Dir::xyz(self)
-    }
-
-    /// Returns True if the angle between the two directions is
-    /// lower or equal to theAngularTolerance.
-    pub fn is_equal(&self, theOther: &crate::ffi::gp_Dir, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Dir::is_equal(self, theOther, theAngularTolerance)
-    }
-
-    /// Returns True if  the angle between this unit vector and the unit vector theOther is equal to
-    /// Pi/2 (normal).
-    pub fn is_normal(&self, theOther: &crate::ffi::gp_Dir, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Dir::is_normal(self, theOther, theAngularTolerance)
-    }
-
-    /// Returns True if  the angle between this unit vector and the unit vector theOther is equal to
-    /// Pi (opposite).
-    pub fn is_opposite(&self, theOther: &crate::ffi::gp_Dir, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Dir::is_opposite(self, theOther, theAngularTolerance)
-    }
-
-    /// Returns true if the angle between this unit vector and the
-    /// unit vector theOther is equal to 0 or to Pi.
-    /// Note: the tolerance criterion is given by theAngularTolerance.
-    pub fn is_parallel(&self, theOther: &crate::ffi::gp_Dir, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Dir::is_parallel(self, theOther, theAngularTolerance)
-    }
-
-    /// Computes the angular value in radians between <me> and
-    /// <theOther>. This value is always positive in 3D space.
-    /// Returns the angle in the range [0, PI]
-    pub fn angle(&self, theOther: &crate::ffi::gp_Dir) -> f64 {
-        crate::ffi::gp_Dir::angle(self, theOther)
-    }
-
-    /// Computes the angular value between <me> and <theOther>.
-    /// <theVRef> is the direction of reference normal to <me> and <theOther>
-    /// and its orientation gives the positive sense of rotation.
-    /// If the cross product <me> ^ <theOther> has the same orientation
-    /// as <theVRef> the angular value is positive else negative.
-    /// Returns the angular value in the range -PI and PI (in radians). Raises  DomainError if <me>
-    /// and <theOther> are not parallel this exception is raised when <theVRef> is in the same plane
-    /// as <me> and <theOther> The tolerance criterion is Resolution from package gp.
-    pub fn angle_with_ref(
-        &self,
-        theOther: &crate::ffi::gp_Dir,
-        theVRef: &crate::ffi::gp_Dir,
-    ) -> f64 {
-        crate::ffi::gp_Dir::angle_with_ref(self, theOther, theVRef)
-    }
-
-    /// Computes the cross product between two directions
-    /// Raises the exception ConstructionError if the two directions
-    /// are parallel because the computed vector cannot be normalized
-    /// to create a direction.
-    pub fn cross(self: std::pin::Pin<&mut Self>, theRight: &crate::ffi::gp_Dir) {
-        crate::ffi::gp_Dir::cross(self, theRight)
-    }
-
     /// Computes the triple vector product.
     /// <me> ^ (V1 ^ V2)
     /// Raises the exception ConstructionError if V1 and V2 are parallel
     /// or <me> and (V1^V2) are parallel because the computed vector
     /// can't be normalized to create a direction.
-    pub fn crossed(&self, theRight: &crate::ffi::gp_Dir) -> crate::ffi::gp_Dir {
-        crate::ffi::gp_Dir::crossed(self, theRight)
-    }
-
-    pub fn cross_cross(
-        self: std::pin::Pin<&mut Self>,
-        theV1: &crate::ffi::gp_Dir,
-        theV2: &crate::ffi::gp_Dir,
-    ) {
-        crate::ffi::gp_Dir::cross_cross(self, theV1, theV2)
+    pub fn crossed(&self, theRight: &crate::ffi::gp_Dir) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::gp_Dir_crossed(self, theRight)
     }
 
     /// Computes the double vector product this ^ (theV1 ^ theV2).
@@ -2582,26 +1361,8 @@ impl Dir {
         &self,
         theV1: &crate::ffi::gp_Dir,
         theV2: &crate::ffi::gp_Dir,
-    ) -> crate::ffi::gp_Dir {
-        crate::ffi::gp_Dir::cross_crossed(self, theV1, theV2)
-    }
-
-    /// Computes the scalar product
-    pub fn dot(&self, theOther: &crate::ffi::gp_Dir) -> f64 {
-        crate::ffi::gp_Dir::dot(self, theOther)
-    }
-
-    /// Computes the triple scalar product <me> * (theV1 ^ theV2).
-    /// Warnings :
-    /// The computed vector theV1' = theV1 ^ theV2 is not normalized
-    /// to create a unitary vector. So this method never
-    /// raises an exception even if theV1 and theV2 are parallel.
-    pub fn dot_cross(&self, theV1: &crate::ffi::gp_Dir, theV2: &crate::ffi::gp_Dir) -> f64 {
-        crate::ffi::gp_Dir::dot_cross(self, theV1, theV2)
-    }
-
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Dir::reverse(self)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::gp_Dir_cross_crossed(self, theV1, theV2)
     }
 
     /// Reverses the orientation of a direction
@@ -2609,63 +1370,47 @@ impl Dir {
     /// Performs the symmetrical transformation of a direction
     /// with respect to the direction V which is the center of
     /// the  symmetry.]
-    pub fn reversed(&self) -> crate::ffi::gp_Dir {
-        crate::ffi::gp_Dir::reversed(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Dir) {
-        crate::ffi::gp_Dir::mirror(self, theV)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::gp_Dir_reversed(self)
     }
 
     /// Performs the symmetrical transformation of a direction
     /// with respect to the direction theV which is the center of
     /// the  symmetry.
-    pub fn mirrored(&self, theV: &crate::ffi::gp_Dir) -> crate::ffi::gp_Dir {
-        crate::ffi::gp_Dir::mirrored(self, theV)
-    }
-
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Dir::mirror(self, theA1)
+    pub fn mirrored_dir(&self, theV: &crate::ffi::gp_Dir) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::gp_Dir_mirrored_dir(self, theV)
     }
 
     /// Performs the symmetrical transformation of a direction
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
-    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Dir {
-        crate::ffi::gp_Dir::mirrored(self, theA1)
-    }
-
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Dir::mirror(self, theA2)
+    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::gp_Dir_mirrored_ax1(self, theA1)
     }
 
     /// Performs the symmetrical transformation of a direction
     /// with respect to a plane. The axis placement theA2 locates
     /// the plane of the symmetry : (Location, XDirection, YDirection).
-    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Dir {
-        crate::ffi::gp_Dir::mirrored(self, theA2)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Dir::rotate(self, theA1, theAng)
+    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::gp_Dir_mirrored_ax2(self, theA2)
     }
 
     /// Rotates a direction. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Dir {
-        crate::ffi::gp_Dir::rotated(self, theA1, theAng)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Dir::transform(self, theT)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::gp_Dir_rotated(self, theA1, theAng)
     }
 
     /// Transforms a direction with a "Trsf" from gp.
     /// Warnings :
     /// If the scale factor of the "Trsf" theT is negative then the
     /// direction <me> is reversed.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Dir {
-        crate::ffi::gp_Dir::transformed(self, theT)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+        crate::ffi::gp_Dir_transformed(self, theT)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -2712,220 +1457,46 @@ impl Dir2d {
         crate::ffi::gp_Dir2d_ctor_real2(theXv, theYv)
     }
 
-    /// For this unit vector, assigns:
-    /// the value theXi to:
-    /// -   the X coordinate if theIndex is 1, or
-    /// -   the Y coordinate if theIndex is 2, and then normalizes it.
-    /// Warning
-    /// Remember that all the coordinates of a unit vector are
-    /// implicitly modified when any single one is changed directly.
-    /// Exceptions
-    /// Standard_OutOfRange if theIndex is not 1 or 2.
-    /// Standard_ConstructionError if either of the following
-    /// is less than or equal to gp::Resolution():
-    /// -   Sqrt(theXv*theXv + theYv*theYv), or
-    /// -   the modulus of the number pair formed by the new
-    /// value theXi and the other coordinate of this vector that
-    /// was not directly modified.
-    /// Raises OutOfRange if theIndex != {1, 2}.
-    pub fn set_coord(self: std::pin::Pin<&mut Self>, theIndex: i32, theXi: f64) {
-        crate::ffi::gp_Dir2d::set_coord(self, theIndex, theXi)
-    }
-
-    /// For this unit vector, assigns:
-    /// -   the values theXv and theYv to its two coordinates,
-    /// Warning
-    /// Remember that all the coordinates of a unit vector are
-    /// implicitly modified when any single one is changed directly.
-    /// Exceptions
-    /// Standard_OutOfRange if theIndex is not 1 or 2.
-    /// Standard_ConstructionError if either of the following
-    /// is less than or equal to gp::Resolution():
-    /// -   Sqrt(theXv*theXv + theYv*theYv), or
-    /// -   the modulus of the number pair formed by the new
-    /// value Xi and the other coordinate of this vector that
-    /// was not directly modified.
-    /// Raises OutOfRange if theIndex != {1, 2}.
-    pub fn set_coord_real2(self: std::pin::Pin<&mut Self>, theXv: f64, theYv: f64) {
-        crate::ffi::gp_Dir2d::set_coord(self, theXv, theYv)
-    }
-
-    /// Assigns the given value to the X coordinate of this unit   vector,
-    /// and then normalizes it.
-    /// Warning
-    /// Remember that all the coordinates of a unit vector are
-    /// implicitly modified when any single one is changed directly.
-    /// Exceptions
-    /// Standard_ConstructionError if either of the following
-    /// is less than or equal to gp::Resolution():
-    /// -   the modulus of Coord, or
-    /// -   the modulus of the number pair formed from the new
-    /// X or Y coordinate and the other coordinate of this
-    /// vector that was not directly modified.
-    pub fn set_x(self: std::pin::Pin<&mut Self>, theX: f64) {
-        crate::ffi::gp_Dir2d::set_x(self, theX)
-    }
-
-    /// Assigns  the given value to the Y coordinate of this unit   vector,
-    /// and then normalizes it.
-    /// Warning
-    /// Remember that all the coordinates of a unit vector are
-    /// implicitly modified when any single one is changed directly.
-    /// Exceptions
-    /// Standard_ConstructionError if either of the following
-    /// is less than or equal to gp::Resolution():
-    /// -   the modulus of Coord, or
-    /// -   the modulus of the number pair formed from the new
-    /// X or Y coordinate and the other coordinate of this
-    /// vector that was not directly modified.
-    pub fn set_y(self: std::pin::Pin<&mut Self>, theY: f64) {
-        crate::ffi::gp_Dir2d::set_y(self, theY)
-    }
-
-    /// Assigns:
-    /// -   the two coordinates of theCoord to this unit vector,
-    /// and then normalizes it.
-    /// Warning
-    /// Remember that all the coordinates of a unit vector are
-    /// implicitly modified when any single one is changed directly.
-    /// Exceptions
-    /// Standard_ConstructionError if either of the following
-    /// is less than or equal to gp::Resolution():
-    /// -   the modulus of theCoord, or
-    /// -   the modulus of the number pair formed from the new
-    /// X or Y coordinate and the other coordinate of this
-    /// vector that was not directly modified.
-    pub fn set_xy(self: std::pin::Pin<&mut Self>, theCoord: &crate::ffi::gp_XY) {
-        crate::ffi::gp_Dir2d::set_xy(self, theCoord)
-    }
-
-    /// For this unit vector returns the coordinate of range theIndex :
-    /// theIndex = 1 => X is returned
-    /// theIndex = 2 => Y is returned
-    /// Raises OutOfRange if theIndex != {1, 2}.
-    pub fn coord(&self, theIndex: i32) -> f64 {
-        crate::ffi::gp_Dir2d::coord(self, theIndex)
-    }
-
-    /// For this unit vector returns its two coordinates theXv and theYv.
-    /// Raises OutOfRange if theIndex != {1, 2}.
-    pub fn coord_real2(&self, theXv: std::pin::Pin<&mut f64>, theYv: std::pin::Pin<&mut f64>) {
-        crate::ffi::gp_Dir2d::coord(self, theXv, theYv)
-    }
-
-    /// For this unit vector, returns its X coordinate.
-    pub fn x(&self) -> f64 {
-        crate::ffi::gp_Dir2d::x(self)
-    }
-
-    /// For this unit vector, returns its Y coordinate.
-    pub fn y(&self) -> f64 {
-        crate::ffi::gp_Dir2d::y(self)
-    }
-
-    /// For this unit vector, returns its two coordinates as a number pair.
-    /// Comparison between Directions
-    /// The precision value is an input data.
-    pub fn xy(&self) -> &crate::ffi::gp_XY {
-        crate::ffi::gp_Dir2d::xy(self)
-    }
-
-    /// Returns True if the two vectors have the same direction
-    /// i.e. the angle between this unit vector and the
-    /// unit vector theOther is less than or equal to theAngularTolerance.
-    pub fn is_equal(&self, theOther: &crate::ffi::gp_Dir2d, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Dir2d::is_equal(self, theOther, theAngularTolerance)
-    }
-
-    /// Returns True if the angle between this unit vector and the
-    /// unit vector theOther is equal to Pi/2 or -Pi/2 (normal)
-    /// i.e. Abs(Abs(<me>.Angle(theOther)) - PI/2.) <= theAngularTolerance
-    pub fn is_normal(&self, theOther: &crate::ffi::gp_Dir2d, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Dir2d::is_normal(self, theOther, theAngularTolerance)
-    }
-
-    /// Returns True if the angle between this unit vector and the
-    /// unit vector theOther is equal to Pi or -Pi (opposite).
-    /// i.e.  PI - Abs(<me>.Angle(theOther)) <= theAngularTolerance
-    pub fn is_opposite(&self, theOther: &crate::ffi::gp_Dir2d, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Dir2d::is_opposite(self, theOther, theAngularTolerance)
-    }
-
-    /// returns true if the angle between this unit vector and unit
-    /// vector theOther is equal to 0, Pi or -Pi.
-    /// i.e.  Abs(Angle(<me>, theOther)) <= theAngularTolerance or
-    /// PI - Abs(Angle(<me>, theOther)) <= theAngularTolerance
-    pub fn is_parallel(&self, theOther: &crate::ffi::gp_Dir2d, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Dir2d::is_parallel(self, theOther, theAngularTolerance)
-    }
-
-    /// Computes the angular value in radians between <me> and
-    /// <theOther>. Returns the angle in the range [-PI, PI].
-    pub fn angle(&self, theOther: &crate::ffi::gp_Dir2d) -> f64 {
-        crate::ffi::gp_Dir2d::angle(self, theOther)
-    }
-
-    /// Computes the cross product between two directions.
-    pub fn crossed(&self, theRight: &crate::ffi::gp_Dir2d) -> f64 {
-        crate::ffi::gp_Dir2d::crossed(self, theRight)
-    }
-
-    /// Computes the scalar product
-    pub fn dot(&self, theOther: &crate::ffi::gp_Dir2d) -> f64 {
-        crate::ffi::gp_Dir2d::dot(self, theOther)
-    }
-
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Dir2d::reverse(self)
-    }
-
     /// Reverses the orientation of a direction
-    pub fn reversed(&self) -> crate::ffi::gp_Dir2d {
-        crate::ffi::gp_Dir2d::reversed(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Dir2d) {
-        crate::ffi::gp_Dir2d::mirror(self, theV)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_Dir2d> {
+        crate::ffi::gp_Dir2d_reversed(self)
     }
 
     /// Performs the symmetrical transformation of a direction
     /// with respect to the direction theV which is the center of
     /// the  symmetry.
-    pub fn mirrored(&self, theV: &crate::ffi::gp_Dir2d) -> crate::ffi::gp_Dir2d {
-        crate::ffi::gp_Dir2d::mirrored(self, theV)
-    }
-
-    pub fn mirror_ax2d(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Dir2d::mirror(self, theA)
+    pub fn mirrored_dir2d(
+        &self,
+        theV: &crate::ffi::gp_Dir2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Dir2d> {
+        crate::ffi::gp_Dir2d_mirrored_dir2d(self, theV)
     }
 
     /// Performs the symmetrical transformation of a direction
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
-    pub fn mirrored_ax2d(&self, theA: &crate::ffi::gp_Ax2d) -> crate::ffi::gp_Dir2d {
-        crate::ffi::gp_Dir2d::mirrored(self, theA)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, Ang: f64) {
-        crate::ffi::gp_Dir2d::rotate(self, Ang)
+    pub fn mirrored_ax2d(
+        &self,
+        theA: &crate::ffi::gp_Ax2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Dir2d> {
+        crate::ffi::gp_Dir2d_mirrored_ax2d(self, theA)
     }
 
     /// Rotates a direction.  theAng is the angular value of
     /// the rotation in radians.
-    pub fn rotated(&self, theAng: f64) -> crate::ffi::gp_Dir2d {
-        crate::ffi::gp_Dir2d::rotated(self, theAng)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::gp_Dir2d::transform(self, theT)
+    pub fn rotated(&self, theAng: f64) -> cxx::UniquePtr<crate::ffi::gp_Dir2d> {
+        crate::ffi::gp_Dir2d_rotated(self, theAng)
     }
 
     /// Transforms a direction with the "Trsf" theT.
     /// Warnings :
     /// If the scale factor of the "Trsf" theT is negative then the
     /// direction <me> is reversed.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf2d) -> crate::ffi::gp_Dir2d {
-        crate::ffi::gp_Dir2d::transformed(self, theT)
+    pub fn transformed(
+        &self,
+        theT: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Dir2d> {
+        crate::ffi::gp_Dir2d_transformed(self, theT)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -2987,55 +1558,6 @@ impl Elips {
         crate::ffi::gp_Elips_ctor_ax2_real2(theA2, theMajorRadius, theMinorRadius)
     }
 
-    /// Changes the axis normal to the plane of the ellipse.
-    /// It modifies the definition of this plane.
-    /// The "XAxis" and the "YAxis" are recomputed.
-    /// The local coordinate system is redefined so that:
-    /// -   its origin and "main Direction" become those of the
-    /// axis theA1 (the "X Direction" and "Y Direction" are then
-    /// recomputed in the same way as for any gp_Ax2), or
-    /// Raises ConstructionError if the direction of theA1
-    /// is parallel to the direction of the "XAxis" of the ellipse.
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Elips::set_axis(self, theA1)
-    }
-
-    /// Modifies this ellipse, by redefining its local coordinate
-    /// so that its origin becomes theP.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Elips::set_location(self, theP)
-    }
-
-    /// The major radius of the ellipse is on the "XAxis" (major axis)
-    /// of the ellipse.
-    /// Raises ConstructionError if theMajorRadius < MinorRadius.
-    pub fn set_major_radius(self: std::pin::Pin<&mut Self>, theMajorRadius: f64) {
-        crate::ffi::gp_Elips::set_major_radius(self, theMajorRadius)
-    }
-
-    /// The minor radius of the ellipse is on the "YAxis" (minor axis)
-    /// of the ellipse.
-    /// Raises ConstructionError if theMinorRadius > MajorRadius or MinorRadius < 0.
-    pub fn set_minor_radius(self: std::pin::Pin<&mut Self>, theMinorRadius: f64) {
-        crate::ffi::gp_Elips::set_minor_radius(self, theMinorRadius)
-    }
-
-    /// Modifies this ellipse, by redefining its local coordinate
-    /// so that it becomes theA2.
-    pub fn set_position(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Elips::set_position(self, theA2)
-    }
-
-    /// Computes the area of the Ellipse.
-    pub fn area(&self) -> f64 {
-        crate::ffi::gp_Elips::area(self)
-    }
-
-    /// Computes the axis normal to the plane of the ellipse.
-    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Elips::axis(self)
-    }
-
     /// Computes the first or second directrix of this ellipse.
     /// These are the lines, in the plane of the ellipse, normal to
     /// the major axis, at a distance equal to
@@ -3050,8 +1572,8 @@ impl Elips {
     /// Exceptions
     /// Standard_ConstructionError if the eccentricity is null
     /// (the ellipse has degenerated into a circle).
-    pub fn directrix1(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Elips::directrix1(self)
+    pub fn directrix1(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Elips_directrix1(self)
     }
 
     /// This line is obtained by the symmetrical transformation
@@ -3059,153 +1581,86 @@ impl Elips {
     /// Exceptions
     /// Standard_ConstructionError if the eccentricity is null
     /// (the ellipse has degenerated into a circle).
-    pub fn directrix2(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Elips::directrix2(self)
-    }
-
-    /// Returns the eccentricity of the ellipse  between 0.0 and 1.0
-    /// If f is the distance between the center of the ellipse and
-    /// the Focus1 then the eccentricity e = f / MajorRadius.
-    /// Raises ConstructionError if MajorRadius = 0.0
-    pub fn eccentricity(&self) -> f64 {
-        crate::ffi::gp_Elips::eccentricity(self)
-    }
-
-    /// Computes the focal distance. It is the distance between the
-    /// two focus focus1 and focus2 of the ellipse.
-    pub fn focal(&self) -> f64 {
-        crate::ffi::gp_Elips::focal(self)
+    pub fn directrix2(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Elips_directrix2(self)
     }
 
     /// Returns the first focus of the ellipse. This focus is on the
     /// positive side of the "XAxis" of the ellipse.
-    pub fn focus1(&self) -> crate::ffi::gp_Pnt {
-        crate::ffi::gp_Elips::focus1(self)
+    pub fn focus1(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::gp_Elips_focus1(self)
     }
 
     /// Returns the second focus of the ellipse. This focus is on the
     /// negative side of the "XAxis" of the ellipse.
-    pub fn focus2(&self) -> crate::ffi::gp_Pnt {
-        crate::ffi::gp_Elips::focus2(self)
-    }
-
-    /// Returns the center of the ellipse. It is the "Location"
-    /// point of the coordinate system of the ellipse.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt {
-        crate::ffi::gp_Elips::location(self)
-    }
-
-    /// Returns the major radius of the ellipse.
-    pub fn major_radius(&self) -> f64 {
-        crate::ffi::gp_Elips::major_radius(self)
-    }
-
-    /// Returns the minor radius of the ellipse.
-    pub fn minor_radius(&self) -> f64 {
-        crate::ffi::gp_Elips::minor_radius(self)
-    }
-
-    /// Returns p = (1 - e * e) * MajorRadius where e is the eccentricity
-    /// of the ellipse.
-    /// Returns 0 if MajorRadius = 0
-    pub fn parameter(&self) -> f64 {
-        crate::ffi::gp_Elips::parameter(self)
-    }
-
-    /// Returns the coordinate system of the ellipse.
-    pub fn position(&self) -> &crate::ffi::gp_Ax2 {
-        crate::ffi::gp_Elips::position(self)
+    pub fn focus2(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::gp_Elips_focus2(self)
     }
 
     /// Returns the "XAxis" of the ellipse whose origin
     /// is the center of this ellipse. It is the major axis of the
     /// ellipse.
-    pub fn x_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Elips::x_axis(self)
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Elips_x_axis(self)
     }
 
     /// Returns the "YAxis" of the ellipse whose unit vector is the "X Direction" or the "Y Direction"
     /// of the local coordinate system of this ellipse.
     /// This is the minor axis of the ellipse.
-    pub fn y_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Elips::y_axis(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Elips::mirror(self, theP)
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Elips_y_axis(self)
     }
 
     /// Performs the symmetrical transformation of an ellipse with
     /// respect to the point theP which is the center of the symmetry.
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Elips {
-        crate::ffi::gp_Elips::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Elips::mirror(self, theA1)
+    pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Elips> {
+        crate::ffi::gp_Elips_mirrored_pnt(self, theP)
     }
 
     /// Performs the symmetrical transformation of an ellipse with
     /// respect to an axis placement which is the axis of the symmetry.
-    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Elips {
-        crate::ffi::gp_Elips::mirrored(self, theA1)
-    }
-
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Elips::mirror(self, theA2)
+    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<crate::ffi::gp_Elips> {
+        crate::ffi::gp_Elips_mirrored_ax1(self, theA1)
     }
 
     /// Performs the symmetrical transformation of an ellipse with
     /// respect to a plane. The axis placement theA2 locates the plane
     /// of the symmetry (Location, XDirection, YDirection).
-    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Elips {
-        crate::ffi::gp_Elips::mirrored(self, theA2)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Elips::rotate(self, theA1, theAng)
+    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<crate::ffi::gp_Elips> {
+        crate::ffi::gp_Elips_mirrored_ax2(self, theA2)
     }
 
     /// Rotates an ellipse. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Elips {
-        crate::ffi::gp_Elips::rotated(self, theA1, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Elips::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Elips> {
+        crate::ffi::gp_Elips_rotated(self, theA1, theAng)
     }
 
     /// Scales an ellipse. theS is the scaling value.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt, theS: f64) -> crate::ffi::gp_Elips {
-        crate::ffi::gp_Elips::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Elips::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Elips> {
+        crate::ffi::gp_Elips_scaled(self, theP, theS)
     }
 
     /// Transforms an ellipse with the transformation theT from class Trsf.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Elips {
-        crate::ffi::gp_Elips::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Elips::translate(self, theV)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Elips> {
+        crate::ffi::gp_Elips_transformed(self, theT)
     }
 
     /// Translates an ellipse in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Elips {
-        crate::ffi::gp_Elips::translated(self, theV)
-    }
-
-    pub fn translate_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Elips::translate(self, theP1, theP2)
+    pub fn translated_vec(
+        &self,
+        theV: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Elips> {
+        crate::ffi::gp_Elips_translated_vec(self, theV)
     }
 
     /// Translates an ellipse from the point theP1 to the point theP2.
@@ -3213,8 +1668,8 @@ impl Elips {
         &self,
         theP1: &crate::ffi::gp_Pnt,
         theP2: &crate::ffi::gp_Pnt,
-    ) -> crate::ffi::gp_Elips {
-        crate::ffi::gp_Elips::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Elips> {
+        crate::ffi::gp_Elips_translated_pnt2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -3300,67 +1755,6 @@ impl Elips2d {
         crate::ffi::gp_Elips2d_ctor_ax22d_real2(theA, theMajorRadius, theMinorRadius)
     }
 
-    /// Modifies this ellipse, by redefining its local coordinate system so that
-    /// -   its origin becomes theP.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Elips2d::set_location(self, theP)
-    }
-
-    /// Changes the value of the major radius.
-    /// Raises ConstructionError if theMajorRadius < MinorRadius.
-    pub fn set_major_radius(self: std::pin::Pin<&mut Self>, theMajorRadius: f64) {
-        crate::ffi::gp_Elips2d::set_major_radius(self, theMajorRadius)
-    }
-
-    /// Changes the value of the minor radius.
-    /// Raises ConstructionError if MajorRadius < theMinorRadius or MinorRadius < 0.0
-    pub fn set_minor_radius(self: std::pin::Pin<&mut Self>, theMinorRadius: f64) {
-        crate::ffi::gp_Elips2d::set_minor_radius(self, theMinorRadius)
-    }
-
-    /// Modifies this ellipse, by redefining its local coordinate system so that
-    /// it becomes theA.
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax22d) {
-        crate::ffi::gp_Elips2d::set_axis(self, theA)
-    }
-
-    /// Modifies this ellipse, by redefining its local coordinate system so that
-    /// its origin and its "X Direction"  become those
-    /// of the axis theA. The "Y  Direction"  is then
-    /// recomputed. The orientation of the local coordinate
-    /// system is not modified.
-    pub fn set_x_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Elips2d::set_x_axis(self, theA)
-    }
-
-    /// Modifies this ellipse, by redefining its local coordinate system so that
-    /// its origin and its "Y Direction"  become those
-    /// of the axis theA. The "X  Direction"  is then
-    /// recomputed. The orientation of the local coordinate
-    /// system is not modified.
-    pub fn set_y_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Elips2d::set_y_axis(self, theA)
-    }
-
-    /// Computes the area of the ellipse.
-    pub fn area(&self) -> f64 {
-        crate::ffi::gp_Elips2d::area(self)
-    }
-
-    /// Returns the coefficients of the implicit equation of the ellipse.
-    /// theA * (X**2) + theB * (Y**2) + 2*theC*(X*Y) + 2*theD*X + 2*theE*Y + theF = 0.
-    pub fn coefficients(
-        &self,
-        theA: std::pin::Pin<&mut f64>,
-        theB: std::pin::Pin<&mut f64>,
-        theC: std::pin::Pin<&mut f64>,
-        theD: std::pin::Pin<&mut f64>,
-        theE: std::pin::Pin<&mut f64>,
-        theF: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_Elips2d::coefficients(self, theA, theB, theC, theD, theE, theF)
-    }
-
     /// This directrix is the line normal to the XAxis of the ellipse
     /// in the local plane (Z = 0) at a distance d = MajorRadius / e
     /// from the center of the ellipse, where e is the eccentricity of
@@ -3371,8 +1765,8 @@ impl Elips2d {
     ///
     /// Raised if Eccentricity = 0.0. (The ellipse degenerates into a
     /// circle)
-    pub fn directrix1(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Elips2d::directrix1(self)
+    pub fn directrix1(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Elips2d_directrix1(self)
     }
 
     /// This line is obtained by the symmetrical transformation
@@ -3380,150 +1774,87 @@ impl Elips2d {
     ///
     /// Raised if Eccentricity = 0.0. (The ellipse degenerates into a
     /// circle).
-    pub fn directrix2(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Elips2d::directrix2(self)
-    }
-
-    /// Returns the eccentricity of the ellipse  between 0.0 and 1.0
-    /// If f is the distance between the center of the ellipse and
-    /// the Focus1 then the eccentricity e = f / MajorRadius.
-    /// Returns 0 if MajorRadius = 0.
-    pub fn eccentricity(&self) -> f64 {
-        crate::ffi::gp_Elips2d::eccentricity(self)
-    }
-
-    /// Returns the distance between the center of the ellipse
-    /// and focus1 or focus2.
-    pub fn focal(&self) -> f64 {
-        crate::ffi::gp_Elips2d::focal(self)
+    pub fn directrix2(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Elips2d_directrix2(self)
     }
 
     /// Returns the first focus of the ellipse. This focus is on the
     /// positive side of the major axis of the ellipse.
-    pub fn focus1(&self) -> crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Elips2d::focus1(self)
+    pub fn focus1(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::gp_Elips2d_focus1(self)
     }
 
     /// Returns the second focus of the ellipse. This focus is on the
     /// negative side of the major axis of the ellipse.
-    pub fn focus2(&self) -> crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Elips2d::focus2(self)
-    }
-
-    /// Returns the center of the ellipse.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Elips2d::location(self)
-    }
-
-    /// Returns the major radius of the Ellipse.
-    pub fn major_radius(&self) -> f64 {
-        crate::ffi::gp_Elips2d::major_radius(self)
-    }
-
-    /// Returns the minor radius of the Ellipse.
-    pub fn minor_radius(&self) -> f64 {
-        crate::ffi::gp_Elips2d::minor_radius(self)
-    }
-
-    /// Returns p = (1 - e * e) * MajorRadius where e is the eccentricity
-    /// of the ellipse.
-    /// Returns 0 if MajorRadius = 0
-    pub fn parameter(&self) -> f64 {
-        crate::ffi::gp_Elips2d::parameter(self)
+    pub fn focus2(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::gp_Elips2d_focus2(self)
     }
 
     /// Returns the major axis of the ellipse.
-    pub fn axis(&self) -> &crate::ffi::gp_Ax22d {
-        crate::ffi::gp_Elips2d::axis(self)
-    }
-
-    /// Returns the major axis of the ellipse.
-    pub fn x_axis(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Elips2d::x_axis(self)
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Elips2d_x_axis(self)
     }
 
     /// Returns the minor axis of the ellipse.
     /// Reverses the direction of the circle.
-    pub fn y_axis(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Elips2d::y_axis(self)
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Elips2d_y_axis(self)
     }
 
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Elips2d::reverse(self)
-    }
-
-    pub fn reversed(&self) -> crate::ffi::gp_Elips2d {
-        crate::ffi::gp_Elips2d::reversed(self)
-    }
-
-    /// Returns true if the local coordinate system is direct
-    /// and false in the other case.
-    pub fn is_direct(&self) -> bool {
-        crate::ffi::gp_Elips2d::is_direct(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Elips2d::mirror(self, theP)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_Elips2d> {
+        crate::ffi::gp_Elips2d_reversed(self)
     }
 
     /// Performs the symmetrical transformation of a ellipse with respect
     /// to the point theP which is the center of the symmetry
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt2d) -> crate::ffi::gp_Elips2d {
-        crate::ffi::gp_Elips2d::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax2d(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Elips2d::mirror(self, theA)
+    pub fn mirrored_pnt2d(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Elips2d> {
+        crate::ffi::gp_Elips2d_mirrored_pnt2d(self, theP)
     }
 
     /// Performs the symmetrical transformation of a ellipse with respect
     /// to an axis placement which is the axis of the symmetry.
-    pub fn mirrored_ax2d(&self, theA: &crate::ffi::gp_Ax2d) -> crate::ffi::gp_Elips2d {
-        crate::ffi::gp_Elips2d::mirrored(self, theA)
+    pub fn mirrored_ax2d(
+        &self,
+        theA: &crate::ffi::gp_Ax2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Elips2d> {
+        crate::ffi::gp_Elips2d_mirrored_ax2d(self, theA)
     }
 
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
-        crate::ffi::gp_Elips2d::rotate(self, theP, theAng)
-    }
-
-    pub fn rotated(&self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) -> crate::ffi::gp_Elips2d {
-        crate::ffi::gp_Elips2d::rotated(self, theP, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
-        crate::ffi::gp_Elips2d::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Elips2d> {
+        crate::ffi::gp_Elips2d_rotated(self, theP, theAng)
     }
 
     /// Scales a ellipse. theS is the scaling value.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt2d, theS: f64) -> crate::ffi::gp_Elips2d {
-        crate::ffi::gp_Elips2d::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::gp_Elips2d::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Elips2d> {
+        crate::ffi::gp_Elips2d_scaled(self, theP, theS)
     }
 
     /// Transforms an ellipse with the transformation theT from class Trsf2d.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf2d) -> crate::ffi::gp_Elips2d {
-        crate::ffi::gp_Elips2d::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec2d) {
-        crate::ffi::gp_Elips2d::translate(self, theV)
+    pub fn transformed(
+        &self,
+        theT: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Elips2d> {
+        crate::ffi::gp_Elips2d_transformed(self, theT)
     }
 
     /// Translates a ellipse in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec2d) -> crate::ffi::gp_Elips2d {
-        crate::ffi::gp_Elips2d::translated(self, theV)
-    }
-
-    pub fn translate_pnt2d2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt2d,
-        theP2: &crate::ffi::gp_Pnt2d,
-    ) {
-        crate::ffi::gp_Elips2d::translate(self, theP1, theP2)
+    pub fn translated_vec2d(
+        &self,
+        theV: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Elips2d> {
+        crate::ffi::gp_Elips2d_translated_vec2d(self, theV)
     }
 
     /// Translates a ellipse from the point theP1 to the point theP2.
@@ -3531,8 +1862,8 @@ impl Elips2d {
         &self,
         theP1: &crate::ffi::gp_Pnt2d,
         theP2: &crate::ffi::gp_Pnt2d,
-    ) -> crate::ffi::gp_Elips2d {
-        crate::ffi::gp_Elips2d::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Elips2d> {
+        crate::ffi::gp_Elips2d_translated_pnt2d2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -3595,112 +1926,11 @@ impl GTrsf {
         crate::ffi::gp_GTrsf_ctor_mat_xyz(theM, theV)
     }
 
-    /// Changes this transformation into an affinity of ratio theRatio
-    /// with respect to the axis theA1.
-    /// Note: an affinity is a point-by-point transformation that
-    /// transforms any point P into a point P' such that if H is
-    /// the orthogonal projection of P on the axis theA1 or the
-    /// plane A2, the vectors HP and HP' satisfy:
-    /// HP' = theRatio * HP.
-    pub fn set_affinity(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theRatio: f64) {
-        crate::ffi::gp_GTrsf::set_affinity(self, theA1, theRatio)
-    }
-
-    /// Changes this transformation into an affinity of ratio theRatio
-    /// with respect to  the plane defined by the origin, the "X Direction" and
-    /// the "Y Direction" of coordinate system theA2.
-    /// Note: an affinity is a point-by-point transformation that
-    /// transforms any point P into a point P' such that if H is
-    /// the orthogonal projection of P on the axis A1 or the
-    /// plane theA2, the vectors HP and HP' satisfy:
-    /// HP' = theRatio * HP.
-    pub fn set_affinity_ax2_real(
-        self: std::pin::Pin<&mut Self>,
-        theA2: &crate::ffi::gp_Ax2,
-        theRatio: f64,
-    ) {
-        crate::ffi::gp_GTrsf::set_affinity(self, theA2, theRatio)
-    }
-
-    /// Replaces  the coefficient (theRow, theCol) of the matrix representing
-    /// this transformation by theValue.  Raises OutOfRange
-    /// if  theRow < 1 or theRow > 3 or theCol < 1 or theCol > 4
-    pub fn set_value(self: std::pin::Pin<&mut Self>, theRow: i32, theCol: i32, theValue: f64) {
-        crate::ffi::gp_GTrsf::set_value(self, theRow, theCol, theValue)
-    }
-
-    /// Replaces the vectorial part of this transformation by theMatrix.
-    pub fn set_vectorial_part(self: std::pin::Pin<&mut Self>, theMatrix: &crate::ffi::gp_Mat) {
-        crate::ffi::gp_GTrsf::set_vectorial_part(self, theMatrix)
-    }
-
-    /// Replaces the translation part of
-    /// this transformation by the coordinates of the number triple theCoord.
-    pub fn set_translation_part(self: std::pin::Pin<&mut Self>, theCoord: &crate::ffi::gp_XYZ) {
-        crate::ffi::gp_GTrsf::set_translation_part(self, theCoord)
-    }
-
-    /// Assigns the vectorial and translation parts of theT to this transformation.
-    pub fn set_trsf(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_GTrsf::set_trsf(self, theT)
-    }
-
-    /// Returns true if the determinant of the vectorial part of
-    /// this transformation is negative.
-    pub fn is_negative(&self) -> bool {
-        crate::ffi::gp_GTrsf::is_negative(self)
-    }
-
-    /// Returns true if this transformation is singular (and
-    /// therefore, cannot be inverted).
-    /// Note: The Gauss LU decomposition is used to invert the
-    /// transformation matrix. Consequently, the transformation
-    /// is considered as singular if the largest pivot found is less
-    /// than or equal to gp::Resolution().
-    /// Warning
-    /// If this transformation is singular, it cannot be inverted.
-    pub fn is_singular(&self) -> bool {
-        crate::ffi::gp_GTrsf::is_singular(self)
-    }
-
-    /// verify and set the shape of the GTrsf Other or CompoundTrsf
-    /// Ex :
-    /// @code
-    /// myGTrsf.SetValue(row1,col1,val1);
-    /// myGTrsf.SetValue(row2,col2,val2);
-    /// ...
-    /// myGTrsf.SetForm();
-    /// @endcode
-    pub fn set_form(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_GTrsf::set_form(self)
-    }
-
-    /// Returns the translation part of the GTrsf.
-    pub fn translation_part(&self) -> &crate::ffi::gp_XYZ {
-        crate::ffi::gp_GTrsf::translation_part(self)
-    }
-
-    /// Computes the vectorial part of the GTrsf. The returned Matrix
-    /// is a  3*3 matrix.
-    pub fn vectorial_part(&self) -> &crate::ffi::gp_Mat {
-        crate::ffi::gp_GTrsf::vectorial_part(self)
-    }
-
-    /// Returns the coefficients of the global matrix of transformation.
-    /// Raises OutOfRange if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 4
-    pub fn value(&self, theRow: i32, theCol: i32) -> f64 {
-        crate::ffi::gp_GTrsf::value(self, theRow, theCol)
-    }
-
-    pub fn invert(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_GTrsf::invert(self)
-    }
-
     /// Computes the reverse transformation.
     /// Raises an exception if the matrix of the transformation
     /// is not inversible.
-    pub fn inverted(&self) -> crate::ffi::gp_GTrsf {
-        crate::ffi::gp_GTrsf::inverted(self)
+    pub fn inverted(&self) -> cxx::UniquePtr<crate::ffi::gp_GTrsf> {
+        crate::ffi::gp_GTrsf_inverted(self)
     }
 
     /// Computes the transformation composed from theT and <me>.
@@ -3718,25 +1948,8 @@ impl GTrsf {
     /// T1.Transforms(P2);                  //using T1 then T2
     /// T2.Transforms(P2);                  // P1 = P2 !!!
     /// @endcode
-    pub fn multiplied(&self, theT: &crate::ffi::gp_GTrsf) -> crate::ffi::gp_GTrsf {
-        crate::ffi::gp_GTrsf::multiplied(self, theT)
-    }
-
-    /// Computes the transformation composed with <me> and theT.
-    /// <me> = <me> * theT
-    pub fn multiply(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_GTrsf) {
-        crate::ffi::gp_GTrsf::multiply(self, theT)
-    }
-
-    /// Computes the product of the transformation theT and this
-    /// transformation and assigns the result to this transformation.
-    /// this = theT * this
-    pub fn pre_multiply(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_GTrsf) {
-        crate::ffi::gp_GTrsf::pre_multiply(self, theT)
-    }
-
-    pub fn power(self: std::pin::Pin<&mut Self>, theN: i32) {
-        crate::ffi::gp_GTrsf::power(self, theN)
+    pub fn multiplied(&self, theT: &crate::ffi::gp_GTrsf) -> cxx::UniquePtr<crate::ffi::gp_GTrsf> {
+        crate::ffi::gp_GTrsf_multiplied(self, theT)
     }
 
     /// Computes:
@@ -3752,26 +1965,12 @@ impl GTrsf {
     ///
     /// Raises an exception if N < 0 and if the matrix of the
     /// transformation not inversible.
-    pub fn powered(&self, theN: i32) -> crate::ffi::gp_GTrsf {
-        crate::ffi::gp_GTrsf::powered(self, theN)
+    pub fn powered(&self, theN: i32) -> cxx::UniquePtr<crate::ffi::gp_GTrsf> {
+        crate::ffi::gp_GTrsf_powered(self, theN)
     }
 
-    pub fn transforms(&self, theCoord: std::pin::Pin<&mut crate::ffi::gp_XYZ>) {
-        crate::ffi::gp_GTrsf::transforms(self, theCoord)
-    }
-
-    /// Transforms a triplet XYZ with a GTrsf.
-    pub fn transforms_real3(
-        &self,
-        theX: std::pin::Pin<&mut f64>,
-        theY: std::pin::Pin<&mut f64>,
-        theZ: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_GTrsf::transforms(self, theX, theY, theZ)
-    }
-
-    pub fn trsf(&self) -> crate::ffi::gp_Trsf {
-        crate::ffi::gp_GTrsf::trsf(self)
+    pub fn trsf(&self) -> cxx::UniquePtr<crate::ffi::gp_Trsf> {
+        crate::ffi::gp_GTrsf_trsf(self)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -3832,83 +2031,11 @@ impl GTrsf2d {
         crate::ffi::gp_GTrsf2d_ctor_mat2d_xy(theM, theV)
     }
 
-    /// Changes this transformation into an affinity of ratio theRatio
-    /// with respect to the axis theA.
-    /// Note: An affinity is a point-by-point transformation that
-    /// transforms any point P into a point P' such that if H is
-    /// the orthogonal projection of P on the axis theA, the vectors
-    /// HP and HP' satisfy: HP' = theRatio * HP.
-    pub fn set_affinity(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d, theRatio: f64) {
-        crate::ffi::gp_GTrsf2d::set_affinity(self, theA, theRatio)
-    }
-
-    /// Replaces   the coefficient (theRow, theCol) of the matrix representing
-    /// this transformation by theValue,
-    /// Raises OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 3
-    pub fn set_value(self: std::pin::Pin<&mut Self>, theRow: i32, theCol: i32, theValue: f64) {
-        crate::ffi::gp_GTrsf2d::set_value(self, theRow, theCol, theValue)
-    }
-
-    /// Replaces the translation part of this
-    /// transformation by the coordinates of the number pair theCoord.
-    pub fn set_translation_part(self: std::pin::Pin<&mut Self>, theCoord: &crate::ffi::gp_XY) {
-        crate::ffi::gp_GTrsf2d::set_translation_part(self, theCoord)
-    }
-
-    /// Assigns the vectorial and translation parts of theT to this transformation.
-    pub fn set_trsf2d(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::gp_GTrsf2d::set_trsf2d(self, theT)
-    }
-
-    /// Replaces the vectorial part of this transformation by theMatrix.
-    pub fn set_vectorial_part(self: std::pin::Pin<&mut Self>, theMatrix: &crate::ffi::gp_Mat2d) {
-        crate::ffi::gp_GTrsf2d::set_vectorial_part(self, theMatrix)
-    }
-
-    /// Returns true if the determinant of the vectorial part of
-    /// this transformation is negative.
-    pub fn is_negative(&self) -> bool {
-        crate::ffi::gp_GTrsf2d::is_negative(self)
-    }
-
-    /// Returns true if this transformation is singular (and
-    /// therefore, cannot be inverted).
-    /// Note: The Gauss LU decomposition is used to invert the
-    /// transformation matrix. Consequently, the transformation
-    /// is considered as singular if the largest pivot found is less
-    /// than or equal to gp::Resolution().
-    /// Warning
-    /// If this transformation is singular, it cannot be inverted.
-    pub fn is_singular(&self) -> bool {
-        crate::ffi::gp_GTrsf2d::is_singular(self)
-    }
-
-    /// Returns the translation part of the GTrsf2d.
-    pub fn translation_part(&self) -> &crate::ffi::gp_XY {
-        crate::ffi::gp_GTrsf2d::translation_part(self)
-    }
-
-    /// Computes the vectorial part of the GTrsf2d. The returned
-    /// Matrix is a 2*2 matrix.
-    pub fn vectorial_part(&self) -> &crate::ffi::gp_Mat2d {
-        crate::ffi::gp_GTrsf2d::vectorial_part(self)
-    }
-
-    /// Returns the coefficients of the global matrix of transformation.
-    /// Raised OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 3
-    pub fn value(&self, theRow: i32, theCol: i32) -> f64 {
-        crate::ffi::gp_GTrsf2d::value(self, theRow, theCol)
-    }
-
-    pub fn invert(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_GTrsf2d::invert(self)
-    }
-
     /// Computes the reverse transformation.
     /// Raised an exception if the matrix of the transformation
     /// is not inversible.
-    pub fn inverted(&self) -> crate::ffi::gp_GTrsf2d {
-        crate::ffi::gp_GTrsf2d::inverted(self)
+    pub fn inverted(&self) -> cxx::UniquePtr<crate::ffi::gp_GTrsf2d> {
+        crate::ffi::gp_GTrsf2d_inverted(self)
     }
 
     /// Computes the transformation composed with theT and <me>.
@@ -3926,23 +2053,11 @@ impl GTrsf2d {
     /// T1.Transforms(P2);                  //using T1 then T2
     /// T2.Transforms(P2);                  // P1 = P2 !!!
     /// @endcode
-    pub fn multiplied(&self, theT: &crate::ffi::gp_GTrsf2d) -> crate::ffi::gp_GTrsf2d {
-        crate::ffi::gp_GTrsf2d::multiplied(self, theT)
-    }
-
-    pub fn multiply(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_GTrsf2d) {
-        crate::ffi::gp_GTrsf2d::multiply(self, theT)
-    }
-
-    /// Computes the product of the transformation theT and this
-    /// transformation, and assigns the result to this transformation:
-    /// this = theT * this
-    pub fn pre_multiply(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_GTrsf2d) {
-        crate::ffi::gp_GTrsf2d::pre_multiply(self, theT)
-    }
-
-    pub fn power(self: std::pin::Pin<&mut Self>, theN: i32) {
-        crate::ffi::gp_GTrsf2d::power(self, theN)
+    pub fn multiplied(
+        &self,
+        theT: &crate::ffi::gp_GTrsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_GTrsf2d> {
+        crate::ffi::gp_GTrsf2d_multiplied(self, theT)
     }
 
     /// Computes the following composition of transformations
@@ -3952,35 +2067,20 @@ impl GTrsf2d {
     ///
     /// Raises an exception if theN < 0 and if the matrix of the
     /// transformation is not inversible.
-    pub fn powered(&self, theN: i32) -> crate::ffi::gp_GTrsf2d {
-        crate::ffi::gp_GTrsf2d::powered(self, theN)
+    pub fn powered(&self, theN: i32) -> cxx::UniquePtr<crate::ffi::gp_GTrsf2d> {
+        crate::ffi::gp_GTrsf2d_powered(self, theN)
     }
 
-    pub fn transforms(&self, theCoord: std::pin::Pin<&mut crate::ffi::gp_XY>) {
-        crate::ffi::gp_GTrsf2d::transforms(self, theCoord)
-    }
-
-    pub fn transformed(&self, theCoord: &crate::ffi::gp_XY) -> crate::ffi::gp_XY {
-        crate::ffi::gp_GTrsf2d::transformed(self, theCoord)
-    }
-
-    /// Applies this transformation to the coordinates:
-    /// -   of the number pair Coord, or
-    /// -   X and Y.
-    ///
-    /// Note:
-    /// -   Transforms modifies theX, theY, or the coordinate pair Coord, while
-    /// -   Transformed creates a new coordinate pair.
-    pub fn transforms_real2(&self, theX: std::pin::Pin<&mut f64>, theY: std::pin::Pin<&mut f64>) {
-        crate::ffi::gp_GTrsf2d::transforms(self, theX, theY)
+    pub fn transformed(&self, theCoord: &crate::ffi::gp_XY) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::gp_GTrsf2d_transformed(self, theCoord)
     }
 
     /// Converts this transformation into a gp_Trsf2d transformation.
     /// Exceptions
     /// Standard_ConstructionError if this transformation
     /// cannot be converted, i.e. if its form is gp_Other.
-    pub fn trsf2d(&self) -> crate::ffi::gp_Trsf2d {
-        crate::ffi::gp_GTrsf2d::trsf2d(self)
+    pub fn trsf2d(&self) -> cxx::UniquePtr<crate::ffi::gp_Trsf2d> {
+        crate::ffi::gp_GTrsf2d_trsf2d(self)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -4073,50 +2173,13 @@ impl Hypr {
         crate::ffi::gp_Hypr_ctor_ax2_real2(theA2, theMajorRadius, theMinorRadius)
     }
 
-    /// Modifies this hyperbola, by redefining its local coordinate
-    /// system so that:
-    /// -   its origin and "main Direction" become those of the
-    /// axis theA1 (the "X Direction" and "Y Direction" are then
-    /// recomputed in the same way as for any gp_Ax2).
-    /// Raises ConstructionError if the direction of theA1 is parallel to the direction of
-    /// the "XAxis" of the hyperbola.
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Hypr::set_axis(self, theA1)
-    }
-
-    /// Modifies this hyperbola, by redefining its local coordinate
-    /// system so that its origin becomes theP.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Hypr::set_location(self, theP)
-    }
-
-    /// Modifies the major  radius of this hyperbola.
-    /// Exceptions
-    /// Standard_ConstructionError if theMajorRadius is negative.
-    pub fn set_major_radius(self: std::pin::Pin<&mut Self>, theMajorRadius: f64) {
-        crate::ffi::gp_Hypr::set_major_radius(self, theMajorRadius)
-    }
-
-    /// Modifies the minor  radius of this hyperbola.
-    /// Exceptions
-    /// Standard_ConstructionError if theMinorRadius is negative.
-    pub fn set_minor_radius(self: std::pin::Pin<&mut Self>, theMinorRadius: f64) {
-        crate::ffi::gp_Hypr::set_minor_radius(self, theMinorRadius)
-    }
-
-    /// Modifies this hyperbola, by redefining its local coordinate
-    /// system so that it becomes A2.
-    pub fn set_position(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Hypr::set_position(self, theA2)
-    }
-
     /// In the local coordinate system of the hyperbola the equation of
     /// the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the
     /// equation of the first asymptote is Y = (B/A)*X
     /// where A is the major radius and B is the minor radius. Raises ConstructionError if MajorRadius
     /// = 0.0
-    pub fn asymptote1(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Hypr::asymptote1(self)
+    pub fn asymptote1(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Hypr_asymptote1(self)
     }
 
     /// In the local coordinate system of the hyperbola the equation of
@@ -4124,26 +2187,20 @@ impl Hypr {
     /// equation of the first asymptote is Y = -(B/A)*X.
     /// where A is the major radius and B is the minor radius. Raises ConstructionError if MajorRadius
     /// = 0.0
-    pub fn asymptote2(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Hypr::asymptote2(self)
-    }
-
-    /// Returns the axis passing through the center,
-    /// and normal to the plane of this hyperbola.
-    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Hypr::axis(self)
+    pub fn asymptote2(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Hypr_asymptote2(self)
     }
 
     /// Computes the branch of hyperbola which is on the positive side of the
     /// "YAxis" of <me>.
-    pub fn conjugate_branch1(&self) -> crate::ffi::gp_Hypr {
-        crate::ffi::gp_Hypr::conjugate_branch1(self)
+    pub fn conjugate_branch1(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::gp_Hypr_conjugate_branch1(self)
     }
 
     /// Computes the branch of hyperbola which is on the negative side of the
     /// "YAxis" of <me>.
-    pub fn conjugate_branch2(&self) -> crate::ffi::gp_Hypr {
-        crate::ffi::gp_Hypr::conjugate_branch2(self)
+    pub fn conjugate_branch2(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::gp_Hypr_conjugate_branch2(self)
     }
 
     /// This directrix is the line normal to the XAxis of the hyperbola
@@ -4154,77 +2211,33 @@ impl Hypr {
     /// between the directrix1 and the "XAxis" is the "Location" point
     /// of the directrix1. This point is on the positive side of the
     /// "XAxis".
-    pub fn directrix1(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Hypr::directrix1(self)
+    pub fn directrix1(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Hypr_directrix1(self)
     }
 
     /// This line is obtained by the symmetrical transformation
     /// of "Directrix1" with respect to the "YAxis" of the hyperbola.
-    pub fn directrix2(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Hypr::directrix2(self)
-    }
-
-    /// Returns the eccentricity of the hyperbola (e > 1).
-    /// If f is the distance between the location of the hyperbola
-    /// and the Focus1 then the eccentricity e = f / MajorRadius. Raises DomainError if MajorRadius =
-    /// 0.0
-    pub fn eccentricity(&self) -> f64 {
-        crate::ffi::gp_Hypr::eccentricity(self)
-    }
-
-    /// Computes the focal distance. It is the distance between the
-    /// the two focus of the hyperbola.
-    pub fn focal(&self) -> f64 {
-        crate::ffi::gp_Hypr::focal(self)
+    pub fn directrix2(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Hypr_directrix2(self)
     }
 
     /// Returns the first focus of the hyperbola. This focus is on the
     /// positive side of the "XAxis" of the hyperbola.
-    pub fn focus1(&self) -> crate::ffi::gp_Pnt {
-        crate::ffi::gp_Hypr::focus1(self)
+    pub fn focus1(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::gp_Hypr_focus1(self)
     }
 
     /// Returns the second focus of the hyperbola. This focus is on the
     /// negative side of the "XAxis" of the hyperbola.
-    pub fn focus2(&self) -> crate::ffi::gp_Pnt {
-        crate::ffi::gp_Hypr::focus2(self)
-    }
-
-    /// Returns  the location point of the hyperbola. It is the
-    /// intersection point between the "XAxis" and the "YAxis".
-    pub fn location(&self) -> &crate::ffi::gp_Pnt {
-        crate::ffi::gp_Hypr::location(self)
-    }
-
-    /// Returns the major radius of the hyperbola. It is the radius
-    /// on the "XAxis" of the hyperbola.
-    pub fn major_radius(&self) -> f64 {
-        crate::ffi::gp_Hypr::major_radius(self)
-    }
-
-    /// Returns the minor radius of the hyperbola. It is the radius
-    /// on the "YAxis" of the hyperbola.
-    pub fn minor_radius(&self) -> f64 {
-        crate::ffi::gp_Hypr::minor_radius(self)
+    pub fn focus2(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::gp_Hypr_focus2(self)
     }
 
     /// Returns the branch of hyperbola obtained by doing the
     /// symmetrical transformation of <me> with respect to the
     /// "YAxis"  of <me>.
-    pub fn other_branch(&self) -> crate::ffi::gp_Hypr {
-        crate::ffi::gp_Hypr::other_branch(self)
-    }
-
-    /// Returns p = (e * e - 1) * MajorRadius where e is the
-    /// eccentricity of the hyperbola.
-    /// Raises DomainError if MajorRadius = 0.0
-    pub fn parameter(&self) -> f64 {
-        crate::ffi::gp_Hypr::parameter(self)
-    }
-
-    /// Returns the coordinate system of the hyperbola.
-    pub fn position(&self) -> &crate::ffi::gp_Ax2 {
-        crate::ffi::gp_Hypr::position(self)
+    pub fn other_branch(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::gp_Hypr_other_branch(self)
     }
 
     /// Computes an axis, whose
@@ -4233,8 +2246,8 @@ impl Hypr {
     /// of the local coordinate system of this hyperbola.
     /// These axes are, the major axis (the "X
     /// Axis") and  of this hyperboReturns the "XAxis" of the hyperbola.
-    pub fn x_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Hypr::x_axis(self)
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Hypr_x_axis(self)
     }
 
     /// Computes an axis, whose
@@ -4242,86 +2255,58 @@ impl Hypr {
     /// -   the unit vector is the "Y Direction"
     /// of the local coordinate system of this hyperbola.
     /// These axes are the minor axis (the "Y Axis") of this hyperbola
-    pub fn y_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Hypr::y_axis(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Hypr::mirror(self, theP)
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Hypr_y_axis(self)
     }
 
     /// Performs the symmetrical transformation of an hyperbola with
     /// respect  to the point theP which is the center of the symmetry.
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Hypr {
-        crate::ffi::gp_Hypr::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Hypr::mirror(self, theA1)
+    pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::gp_Hypr_mirrored_pnt(self, theP)
     }
 
     /// Performs the symmetrical transformation of an hyperbola with
     /// respect to an axis placement which is the axis of the symmetry.
-    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Hypr {
-        crate::ffi::gp_Hypr::mirrored(self, theA1)
-    }
-
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Hypr::mirror(self, theA2)
+    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::gp_Hypr_mirrored_ax1(self, theA1)
     }
 
     /// Performs the symmetrical transformation of an hyperbola with
     /// respect to a plane. The axis placement theA2 locates the plane
     /// of the symmetry (Location, XDirection, YDirection).
-    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Hypr {
-        crate::ffi::gp_Hypr::mirrored(self, theA2)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Hypr::rotate(self, theA1, theAng)
+    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::gp_Hypr_mirrored_ax2(self, theA2)
     }
 
     /// Rotates an hyperbola. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Hypr {
-        crate::ffi::gp_Hypr::rotated(self, theA1, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Hypr::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::gp_Hypr_rotated(self, theA1, theAng)
     }
 
     /// Scales an hyperbola. theS is the scaling value.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt, theS: f64) -> crate::ffi::gp_Hypr {
-        crate::ffi::gp_Hypr::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Hypr::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::gp_Hypr_scaled(self, theP, theS)
     }
 
     /// Transforms an hyperbola with the transformation theT from
     /// class Trsf.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Hypr {
-        crate::ffi::gp_Hypr::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Hypr::translate(self, theV)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::gp_Hypr_transformed(self, theT)
     }
 
     /// Translates an hyperbola in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Hypr {
-        crate::ffi::gp_Hypr::translated(self, theV)
-    }
-
-    pub fn translate_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Hypr::translate(self, theP1, theP2)
+    pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::gp_Hypr_translated_vec(self, theV)
     }
 
     /// Translates an hyperbola from the point theP1 to the point theP2.
@@ -4329,8 +2314,8 @@ impl Hypr {
         &self,
         theP1: &crate::ffi::gp_Pnt,
         theP2: &crate::ffi::gp_Pnt,
-    ) -> crate::ffi::gp_Hypr {
-        crate::ffi::gp_Hypr::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Hypr> {
+        crate::ffi::gp_Hypr_translated_pnt2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -4438,54 +2423,14 @@ impl Hypr2d {
         crate::ffi::gp_Hypr2d_ctor_ax22d_real2(theA, theMajorRadius, theMinorRadius)
     }
 
-    /// Modifies this hyperbola, by redefining its local
-    /// coordinate system so that its origin becomes theP.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Hypr2d::set_location(self, theP)
-    }
-
-    /// Modifies the major or minor radius of this hyperbola.
-    /// Exceptions
-    /// Standard_ConstructionError if theMajorRadius or
-    /// MinorRadius is negative.
-    pub fn set_major_radius(self: std::pin::Pin<&mut Self>, theMajorRadius: f64) {
-        crate::ffi::gp_Hypr2d::set_major_radius(self, theMajorRadius)
-    }
-
-    /// Modifies the major or minor radius of this hyperbola.
-    /// Exceptions
-    /// Standard_ConstructionError if MajorRadius or
-    /// theMinorRadius is negative.
-    pub fn set_minor_radius(self: std::pin::Pin<&mut Self>, theMinorRadius: f64) {
-        crate::ffi::gp_Hypr2d::set_minor_radius(self, theMinorRadius)
-    }
-
-    /// Modifies this hyperbola, by redefining its local
-    /// coordinate system so that it becomes theA.
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax22d) {
-        crate::ffi::gp_Hypr2d::set_axis(self, theA)
-    }
-
-    /// Changes the major axis of the hyperbola. The minor axis is
-    /// recomputed and the location of the hyperbola too.
-    pub fn set_x_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Hypr2d::set_x_axis(self, theA)
-    }
-
-    /// Changes the minor axis of the hyperbola.The minor axis is
-    /// recomputed and the location of the hyperbola too.
-    pub fn set_y_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Hypr2d::set_y_axis(self, theA)
-    }
-
     /// In the local coordinate system of the hyperbola the equation of
     /// the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the
     /// equation of the first asymptote is Y = (B/A)*X
     /// where A is the major radius of the hyperbola and B the minor
     /// radius of the hyperbola.
     /// Raises ConstructionError if MajorRadius = 0.0
-    pub fn asymptote1(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Hypr2d::asymptote1(self)
+    pub fn asymptote1(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Hypr2d_asymptote1(self)
     }
 
     /// In the local coordinate system of the hyperbola the equation of
@@ -4494,35 +2439,20 @@ impl Hypr2d {
     /// where A is the major radius of the hyperbola and B the minor
     /// radius of the hyperbola.
     /// Raises ConstructionError if MajorRadius = 0.0
-    pub fn asymptote2(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Hypr2d::asymptote2(self)
-    }
-
-    /// Computes the coefficients of the implicit equation of
-    /// the hyperbola :
-    /// theA * (X**2) + theB * (Y**2) + 2*theC*(X*Y) + 2*theD*X + 2*theE*Y + theF = 0.
-    pub fn coefficients(
-        &self,
-        theA: std::pin::Pin<&mut f64>,
-        theB: std::pin::Pin<&mut f64>,
-        theC: std::pin::Pin<&mut f64>,
-        theD: std::pin::Pin<&mut f64>,
-        theE: std::pin::Pin<&mut f64>,
-        theF: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_Hypr2d::coefficients(self, theA, theB, theC, theD, theE, theF)
+    pub fn asymptote2(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Hypr2d_asymptote2(self)
     }
 
     /// Computes the branch of hyperbola which is on the positive side of the
     /// "YAxis" of <me>.
-    pub fn conjugate_branch1(&self) -> crate::ffi::gp_Hypr2d {
-        crate::ffi::gp_Hypr2d::conjugate_branch1(self)
+    pub fn conjugate_branch1(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::gp_Hypr2d_conjugate_branch1(self)
     }
 
     /// Computes the branch of hyperbola which is on the negative side of the
     /// "YAxis" of <me>.
-    pub fn conjugate_branch2(&self) -> crate::ffi::gp_Hypr2d {
-        crate::ffi::gp_Hypr2d::conjugate_branch2(self)
+    pub fn conjugate_branch2(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::gp_Hypr2d_conjugate_branch2(self)
     }
 
     /// Computes the directrix which is the line normal to the XAxis of the hyperbola
@@ -4533,78 +2463,33 @@ impl Hypr2d {
     /// between the "Directrix1" and the "XAxis" is the "Location" point
     /// of the "Directrix1".
     /// This point is on the positive side of the "XAxis".
-    pub fn directrix1(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Hypr2d::directrix1(self)
+    pub fn directrix1(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Hypr2d_directrix1(self)
     }
 
     /// This line is obtained by the symmetrical transformation
     /// of "Directrix1" with respect to the "YAxis" of the hyperbola.
-    pub fn directrix2(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Hypr2d::directrix2(self)
-    }
-
-    /// Returns the eccentricity of the hyperbola (e > 1).
-    /// If f is the distance between the location of the hyperbola
-    /// and the Focus1 then the eccentricity e = f / MajorRadius. Raises DomainError if MajorRadius =
-    /// 0.0.
-    pub fn eccentricity(&self) -> f64 {
-        crate::ffi::gp_Hypr2d::eccentricity(self)
-    }
-
-    /// Computes the focal distance. It is the distance between the
-    /// "Location" of the hyperbola and "Focus1" or "Focus2".
-    pub fn focal(&self) -> f64 {
-        crate::ffi::gp_Hypr2d::focal(self)
+    pub fn directrix2(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Hypr2d_directrix2(self)
     }
 
     /// Returns the first focus of the hyperbola. This focus is on the
     /// positive side of the "XAxis" of the hyperbola.
-    pub fn focus1(&self) -> crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Hypr2d::focus1(self)
+    pub fn focus1(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::gp_Hypr2d_focus1(self)
     }
 
     /// Returns the second focus of the hyperbola. This focus is on the
     /// negative side of the "XAxis" of the hyperbola.
-    pub fn focus2(&self) -> crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Hypr2d::focus2(self)
-    }
-
-    /// Returns  the location point of the hyperbola.
-    /// It is the intersection point between the "XAxis" and
-    /// the "YAxis".
-    pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Hypr2d::location(self)
-    }
-
-    /// Returns the major radius of the hyperbola (it is the radius
-    /// corresponding to the "XAxis" of the hyperbola).
-    pub fn major_radius(&self) -> f64 {
-        crate::ffi::gp_Hypr2d::major_radius(self)
-    }
-
-    /// Returns the minor radius of the hyperbola (it is the radius
-    /// corresponding to the "YAxis" of the hyperbola).
-    pub fn minor_radius(&self) -> f64 {
-        crate::ffi::gp_Hypr2d::minor_radius(self)
+    pub fn focus2(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::gp_Hypr2d_focus2(self)
     }
 
     /// Returns the branch of hyperbola obtained by doing the
     /// symmetrical transformation of <me> with respect to the
     /// "YAxis" of <me>.
-    pub fn other_branch(&self) -> crate::ffi::gp_Hypr2d {
-        crate::ffi::gp_Hypr2d::other_branch(self)
-    }
-
-    /// Returns p = (e * e - 1) * MajorRadius where e is the
-    /// eccentricity of the hyperbola.
-    /// Raises DomainError if MajorRadius = 0.0
-    pub fn parameter(&self) -> f64 {
-        crate::ffi::gp_Hypr2d::parameter(self)
-    }
-
-    /// Returns the axisplacement of the hyperbola.
-    pub fn axis(&self) -> &crate::ffi::gp_Ax22d {
-        crate::ffi::gp_Hypr2d::axis(self)
+    pub fn other_branch(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::gp_Hypr2d_other_branch(self)
     }
 
     /// Computes an axis whose
@@ -4612,8 +2497,8 @@ impl Hypr2d {
     /// -   the unit vector is the "X Direction" or "Y Direction"
     /// respectively of the local coordinate system of this hyperbola
     /// Returns the major axis of the hyperbola.
-    pub fn x_axis(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Hypr2d::x_axis(self)
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Hypr2d_x_axis(self)
     }
 
     /// Computes an axis whose
@@ -4621,12 +2506,8 @@ impl Hypr2d {
     /// -   the unit vector is the "X Direction" or "Y Direction"
     /// respectively of the local coordinate system of this hyperbola
     /// Returns the minor axis of the hyperbola.
-    pub fn y_axis(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Hypr2d::y_axis(self)
-    }
-
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Hypr2d::reverse(self)
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Hypr2d_y_axis(self)
     }
 
     /// Reverses the orientation of the local coordinate system
@@ -4635,84 +2516,66 @@ impl Hypr2d {
     /// Note:
     /// -   Reverse assigns the result to this hyperbola, while
     /// -   Reversed creates a new one.
-    pub fn reversed(&self) -> crate::ffi::gp_Hypr2d {
-        crate::ffi::gp_Hypr2d::reversed(self)
-    }
-
-    /// Returns true if the local coordinate system is direct
-    /// and false in the other case.
-    pub fn is_direct(&self) -> bool {
-        crate::ffi::gp_Hypr2d::is_direct(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Hypr2d::mirror(self, theP)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::gp_Hypr2d_reversed(self)
     }
 
     /// Performs the symmetrical transformation of an hyperbola with
     /// respect  to the point theP which is the center of the symmetry.
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt2d) -> crate::ffi::gp_Hypr2d {
-        crate::ffi::gp_Hypr2d::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax2d(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Hypr2d::mirror(self, theA)
+    pub fn mirrored_pnt2d(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::gp_Hypr2d_mirrored_pnt2d(self, theP)
     }
 
     /// Performs the symmetrical transformation of an hyperbola with
     /// respect to an axis placement which is the axis of the symmetry.
-    pub fn mirrored_ax2d(&self, theA: &crate::ffi::gp_Ax2d) -> crate::ffi::gp_Hypr2d {
-        crate::ffi::gp_Hypr2d::mirrored(self, theA)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
-        crate::ffi::gp_Hypr2d::rotate(self, theP, theAng)
+    pub fn mirrored_ax2d(
+        &self,
+        theA: &crate::ffi::gp_Ax2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::gp_Hypr2d_mirrored_ax2d(self, theA)
     }
 
     /// Rotates an hyperbola. theP is the center of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) -> crate::ffi::gp_Hypr2d {
-        crate::ffi::gp_Hypr2d::rotated(self, theP, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
-        crate::ffi::gp_Hypr2d::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::gp_Hypr2d_rotated(self, theP, theAng)
     }
 
     /// Scales an hyperbola. <theS> is the scaling value.
     /// If <theS> is positive only the location point is
     /// modified. But if <theS> is negative the "XAxis" is
     /// reversed and the "YAxis" too.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt2d, theS: f64) -> crate::ffi::gp_Hypr2d {
-        crate::ffi::gp_Hypr2d::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::gp_Hypr2d::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::gp_Hypr2d_scaled(self, theP, theS)
     }
 
     /// Transforms an hyperbola with the transformation theT from
     /// class Trsf2d.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf2d) -> crate::ffi::gp_Hypr2d {
-        crate::ffi::gp_Hypr2d::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec2d) {
-        crate::ffi::gp_Hypr2d::translate(self, theV)
+    pub fn transformed(
+        &self,
+        theT: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::gp_Hypr2d_transformed(self, theT)
     }
 
     /// Translates an hyperbola in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec2d) -> crate::ffi::gp_Hypr2d {
-        crate::ffi::gp_Hypr2d::translated(self, theV)
-    }
-
-    pub fn translate_pnt2d2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt2d,
-        theP2: &crate::ffi::gp_Pnt2d,
-    ) {
-        crate::ffi::gp_Hypr2d::translate(self, theP1, theP2)
+    pub fn translated_vec2d(
+        &self,
+        theV: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::gp_Hypr2d_translated_vec2d(self, theV)
     }
 
     /// Translates an hyperbola from the point theP1 to the point theP2.
@@ -4720,8 +2583,8 @@ impl Hypr2d {
         &self,
         theP1: &crate::ffi::gp_Pnt2d,
         theP2: &crate::ffi::gp_Pnt2d,
-    ) -> crate::ffi::gp_Hypr2d {
-        crate::ffi::gp_Hypr2d::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::gp_Hypr2d_translated_pnt2d2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -4772,81 +2635,12 @@ impl Lin {
         crate::ffi::gp_Lin_ctor_pnt_dir(theP, theV)
     }
 
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Lin::reverse(self)
-    }
-
     /// Reverses the direction of the line.
     /// Note:
     /// -   Reverse assigns the result to this line, while
     /// -   Reversed creates a new one.
-    pub fn reversed(&self) -> crate::ffi::gp_Lin {
-        crate::ffi::gp_Lin::reversed(self)
-    }
-
-    /// Changes the direction of the line.
-    pub fn set_direction(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Dir) {
-        crate::ffi::gp_Lin::set_direction(self, theV)
-    }
-
-    /// Changes the location point (origin) of the line.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Lin::set_location(self, theP)
-    }
-
-    /// Complete redefinition of the line.
-    /// The "Location" point of <theA1> is the origin of the line.
-    /// The "Direction" of <theA1> is  the direction of the line.
-    pub fn set_position(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Lin::set_position(self, theA1)
-    }
-
-    /// Returns the direction of the line.
-    pub fn direction(&self) -> &crate::ffi::gp_Dir {
-        crate::ffi::gp_Lin::direction(self)
-    }
-
-    /// Returns the location point (origin) of the line.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt {
-        crate::ffi::gp_Lin::location(self)
-    }
-
-    /// Returns the axis placement one axis with the same
-    /// location and direction as <me>.
-    pub fn position(&self) -> &crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Lin::position(self)
-    }
-
-    /// Computes the angle between two lines in radians.
-    pub fn angle(&self, theOther: &crate::ffi::gp_Lin) -> f64 {
-        crate::ffi::gp_Lin::angle(self, theOther)
-    }
-
-    /// Returns true if this line contains the point theP, that is, if the
-    /// distance between point theP and this line is less than or
-    /// equal to theLinearTolerance..
-    pub fn contains(&self, theP: &crate::ffi::gp_Pnt, theLinearTolerance: f64) -> bool {
-        crate::ffi::gp_Lin::contains(self, theP, theLinearTolerance)
-    }
-
-    /// Computes the distance between <me> and the point theP.
-    pub fn distance(&self, theP: &crate::ffi::gp_Pnt) -> f64 {
-        crate::ffi::gp_Lin::distance(self, theP)
-    }
-
-    /// Computes the distance between two lines.
-    pub fn distance_lin(&self, theOther: &crate::ffi::gp_Lin) -> f64 {
-        crate::ffi::gp_Lin::distance(self, theOther)
-    }
-
-    /// Computes the square distance between <me> and the point theP.
-    pub fn square_distance(&self, theP: &crate::ffi::gp_Pnt) -> f64 {
-        crate::ffi::gp_Lin::square_distance(self, theP)
-    }
-
-    /// Computes the square distance between two lines.
-    pub fn square_distance_lin(&self, theOther: &crate::ffi::gp_Lin) -> f64 {
-        crate::ffi::gp_Lin::square_distance(self, theOther)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::gp_Lin_reversed(self)
     }
 
     /// Computes the line normal to the direction of <me>, passing
@@ -4854,90 +2648,62 @@ impl Lin {
     /// if the distance between <me> and the point theP is lower
     /// or equal to Resolution from gp because there is an infinity of
     /// solutions in 3D space.
-    pub fn normal(&self, theP: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Lin {
-        crate::ffi::gp_Lin::normal(self, theP)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Lin::mirror(self, theP)
+    pub fn normal(&self, theP: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::gp_Lin_normal(self, theP)
     }
 
     /// Performs the symmetrical transformation of a line
     /// with respect to the point theP which is the center of
     /// the symmetry.
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Lin {
-        crate::ffi::gp_Lin::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Lin::mirror(self, theA1)
+    pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::gp_Lin_mirrored_pnt(self, theP)
     }
 
     /// Performs the symmetrical transformation of a line
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
-    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Lin {
-        crate::ffi::gp_Lin::mirrored(self, theA1)
-    }
-
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Lin::mirror(self, theA2)
+    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::gp_Lin_mirrored_ax1(self, theA1)
     }
 
     /// Performs the symmetrical transformation of a line
     /// with respect to a plane. The axis placement  <theA2>
     /// locates the plane of the symmetry :
     /// (Location, XDirection, YDirection).
-    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Lin {
-        crate::ffi::gp_Lin::mirrored(self, theA2)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Lin::rotate(self, theA1, theAng)
+    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::gp_Lin_mirrored_ax2(self, theA2)
     }
 
     /// Rotates a line. A1 is the axis of the rotation.
     /// Ang is the angular value of the rotation in radians.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Lin {
-        crate::ffi::gp_Lin::rotated(self, theA1, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Lin::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::gp_Lin_rotated(self, theA1, theAng)
     }
 
     /// Scales a line. theS is the scaling value.
     /// The "Location" point (origin) of the line is modified.
     /// The "Direction" is reversed if the scale is negative.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt, theS: f64) -> crate::ffi::gp_Lin {
-        crate::ffi::gp_Lin::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Lin::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::gp_Lin_scaled(self, theP, theS)
     }
 
     /// Transforms a line with the transformation theT from class Trsf.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Lin {
-        crate::ffi::gp_Lin::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Lin::translate(self, theV)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::gp_Lin_transformed(self, theT)
     }
 
     /// Translates a line in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Lin {
-        crate::ffi::gp_Lin::translated(self, theV)
-    }
-
-    pub fn translate_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Lin::translate(self, theP1, theP2)
+    pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::gp_Lin_translated_vec(self, theV)
     }
 
     /// Translates a line from the point theP1 to the point theP2.
@@ -4945,8 +2711,8 @@ impl Lin {
         &self,
         theP1: &crate::ffi::gp_Pnt,
         theP2: &crate::ffi::gp_Pnt,
-    ) -> crate::ffi::gp_Lin {
-        crate::ffi::gp_Lin::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Lin> {
+        crate::ffi::gp_Lin_translated_pnt2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -5007,168 +2773,75 @@ impl Lin2d {
         crate::ffi::gp_Lin2d_ctor_real3(theA, theB, theC)
     }
 
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Lin2d::reverse(self)
-    }
-
     /// Reverses the positioning axis of this line.
     /// Note:
     /// -   Reverse assigns the result to this line, while
     /// -   Reversed creates a new one.
-    pub fn reversed(&self) -> crate::ffi::gp_Lin2d {
-        crate::ffi::gp_Lin2d::reversed(self)
-    }
-
-    /// Changes the direction of the line.
-    pub fn set_direction(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Dir2d) {
-        crate::ffi::gp_Lin2d::set_direction(self, theV)
-    }
-
-    /// Changes the origin of the line.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Lin2d::set_location(self, theP)
-    }
-
-    /// Complete redefinition of the line.
-    /// The "Location" point of <theA> is the origin of the line.
-    /// The "Direction" of <theA> is  the direction of the line.
-    pub fn set_position(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Lin2d::set_position(self, theA)
-    }
-
-    /// Returns the normalized coefficients of the line :
-    /// theA * X + theB * Y + theC = 0.
-    pub fn coefficients(
-        &self,
-        theA: std::pin::Pin<&mut f64>,
-        theB: std::pin::Pin<&mut f64>,
-        theC: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_Lin2d::coefficients(self, theA, theB, theC)
-    }
-
-    /// Returns the direction of the line.
-    pub fn direction(&self) -> &crate::ffi::gp_Dir2d {
-        crate::ffi::gp_Lin2d::direction(self)
-    }
-
-    /// Returns the location point (origin) of the line.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Lin2d::location(self)
-    }
-
-    /// Returns the axis placement one axis with the same
-    /// location and direction as <me>.
-    pub fn position(&self) -> &crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Lin2d::position(self)
-    }
-
-    /// Computes the angle between two lines in radians.
-    pub fn angle(&self, theOther: &crate::ffi::gp_Lin2d) -> f64 {
-        crate::ffi::gp_Lin2d::angle(self, theOther)
-    }
-
-    /// Returns true if this line contains the point theP, that is, if the
-    /// distance between point theP and this line is less than or
-    /// equal to theLinearTolerance.
-    pub fn contains(&self, theP: &crate::ffi::gp_Pnt2d, theLinearTolerance: f64) -> bool {
-        crate::ffi::gp_Lin2d::contains(self, theP, theLinearTolerance)
-    }
-
-    /// Computes the distance between <me> and the point <theP>.
-    pub fn distance(&self, theP: &crate::ffi::gp_Pnt2d) -> f64 {
-        crate::ffi::gp_Lin2d::distance(self, theP)
-    }
-
-    /// Computes the distance between two lines.
-    pub fn distance_lin2d(&self, theOther: &crate::ffi::gp_Lin2d) -> f64 {
-        crate::ffi::gp_Lin2d::distance(self, theOther)
-    }
-
-    /// Computes the square distance between <me> and the point
-    /// <theP>.
-    pub fn square_distance(&self, theP: &crate::ffi::gp_Pnt2d) -> f64 {
-        crate::ffi::gp_Lin2d::square_distance(self, theP)
-    }
-
-    /// Computes the square distance between two lines.
-    pub fn square_distance_lin2d(&self, theOther: &crate::ffi::gp_Lin2d) -> f64 {
-        crate::ffi::gp_Lin2d::square_distance(self, theOther)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
+        crate::ffi::gp_Lin2d_reversed(self)
     }
 
     /// Computes the line normal to the direction of <me>,
     /// passing through the point <theP>.
-    pub fn normal(&self, theP: &crate::ffi::gp_Pnt2d) -> crate::ffi::gp_Lin2d {
-        crate::ffi::gp_Lin2d::normal(self, theP)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Lin2d::mirror(self, theP)
+    pub fn normal(&self, theP: &crate::ffi::gp_Pnt2d) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
+        crate::ffi::gp_Lin2d_normal(self, theP)
     }
 
     /// Performs the symmetrical transformation of a line
     /// with respect to the point <theP> which is the center
     /// of the symmetry
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt2d) -> crate::ffi::gp_Lin2d {
-        crate::ffi::gp_Lin2d::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax2d(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Lin2d::mirror(self, theA)
+    pub fn mirrored_pnt2d(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
+        crate::ffi::gp_Lin2d_mirrored_pnt2d(self, theP)
     }
 
     /// Performs the symmetrical transformation of a line
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
-    pub fn mirrored_ax2d(&self, theA: &crate::ffi::gp_Ax2d) -> crate::ffi::gp_Lin2d {
-        crate::ffi::gp_Lin2d::mirrored(self, theA)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
-        crate::ffi::gp_Lin2d::rotate(self, theP, theAng)
+    pub fn mirrored_ax2d(
+        &self,
+        theA: &crate::ffi::gp_Ax2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
+        crate::ffi::gp_Lin2d_mirrored_ax2d(self, theA)
     }
 
     /// Rotates a line. theP is the center of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) -> crate::ffi::gp_Lin2d {
-        crate::ffi::gp_Lin2d::rotated(self, theP, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
-        crate::ffi::gp_Lin2d::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
+        crate::ffi::gp_Lin2d_rotated(self, theP, theAng)
     }
 
     /// Scales a line. theS is the scaling value. Only the
     /// origin of the line is modified.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt2d, theS: f64) -> crate::ffi::gp_Lin2d {
-        crate::ffi::gp_Lin2d::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::gp_Lin2d::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
+        crate::ffi::gp_Lin2d_scaled(self, theP, theS)
     }
 
     /// Transforms a line with the transformation theT from class Trsf2d.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf2d) -> crate::ffi::gp_Lin2d {
-        crate::ffi::gp_Lin2d::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec2d) {
-        crate::ffi::gp_Lin2d::translate(self, theV)
+    pub fn transformed(
+        &self,
+        theT: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
+        crate::ffi::gp_Lin2d_transformed(self, theT)
     }
 
     /// Translates a line in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec2d) -> crate::ffi::gp_Lin2d {
-        crate::ffi::gp_Lin2d::translated(self, theV)
-    }
-
-    pub fn translate_pnt2d2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt2d,
-        theP2: &crate::ffi::gp_Pnt2d,
-    ) {
-        crate::ffi::gp_Lin2d::translate(self, theP1, theP2)
+    pub fn translated_vec2d(
+        &self,
+        theV: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
+        crate::ffi::gp_Lin2d_translated_vec2d(self, theV)
     }
 
     /// Translates a line from the point theP1 to the point theP2.
@@ -5176,8 +2849,8 @@ impl Lin2d {
         &self,
         theP1: &crate::ffi::gp_Pnt2d,
         theP2: &crate::ffi::gp_Pnt2d,
-    ) -> crate::ffi::gp_Lin2d {
-        crate::ffi::gp_Lin2d::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
+        crate::ffi::gp_Lin2d_translated_pnt2d2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -5226,170 +2899,33 @@ impl Mat {
         crate::ffi::gp_Mat_ctor_xyz3(theCol1, theCol2, theCol3)
     }
 
-    /// Assigns the three coordinates of theValue to the column of index
-    /// theCol of this matrix.
-    /// Raises OutOfRange if theCol < 1 or theCol > 3.
-    pub fn set_col(self: std::pin::Pin<&mut Self>, theCol: i32, theValue: &crate::ffi::gp_XYZ) {
-        crate::ffi::gp_Mat::set_col(self, theCol, theValue)
-    }
-
-    /// Assigns the number triples theCol1, theCol2, theCol3 to the three
-    /// columns of this matrix.
-    pub fn set_cols(
-        self: std::pin::Pin<&mut Self>,
-        theCol1: &crate::ffi::gp_XYZ,
-        theCol2: &crate::ffi::gp_XYZ,
-        theCol3: &crate::ffi::gp_XYZ,
-    ) {
-        crate::ffi::gp_Mat::set_cols(self, theCol1, theCol2, theCol3)
-    }
-
-    /// Modifies the matrix  M so that applying it to any number
-    /// triple (X, Y, Z) produces the same result as the cross
-    /// product of theRef and the number triple (X, Y, Z):
-    /// i.e.: M * {X,Y,Z}t = theRef.Cross({X, Y ,Z})
-    /// this matrix is anti symmetric. To apply this matrix to the
-    /// triplet  {XYZ} is the same as to do the cross product between the
-    /// triplet theRef and the triplet {XYZ}.
-    /// Note: this matrix is anti-symmetric.
-    pub fn set_cross(self: std::pin::Pin<&mut Self>, theRef: &crate::ffi::gp_XYZ) {
-        crate::ffi::gp_Mat::set_cross(self, theRef)
-    }
-
-    /// Modifies the main diagonal of the matrix.
-    /// @code
-    /// <me>.Value (1, 1) = theX1
-    /// <me>.Value (2, 2) = theX2
-    /// <me>.Value (3, 3) = theX3
-    /// @endcode
-    /// The other coefficients of the matrix are not modified.
-    pub fn set_diagonal(self: std::pin::Pin<&mut Self>, theX1: f64, theX2: f64, theX3: f64) {
-        crate::ffi::gp_Mat::set_diagonal(self, theX1, theX2, theX3)
-    }
-
-    /// Modifies this matrix so that applying it to any number
-    /// triple (X, Y, Z) produces the same result as the scalar
-    /// product of theRef and the number triple (X, Y, Z):
-    /// this * (X,Y,Z) = theRef.(X,Y,Z)
-    /// Note: this matrix is symmetric.
-    pub fn set_dot(self: std::pin::Pin<&mut Self>, theRef: &crate::ffi::gp_XYZ) {
-        crate::ffi::gp_Mat::set_dot(self, theRef)
-    }
-
-    /// Modifies this matrix so that it represents the Identity matrix.
-    pub fn set_identity(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Mat::set_identity(self)
-    }
-
-    /// Modifies this matrix so that it represents a rotation. theAng is the angular value in
-    /// radians and the XYZ axis gives the direction of the
-    /// rotation.
-    /// Raises ConstructionError if XYZ.Modulus() <= Resolution()
-    pub fn set_rotation(self: std::pin::Pin<&mut Self>, theAxis: &crate::ffi::gp_XYZ, theAng: f64) {
-        crate::ffi::gp_Mat::set_rotation(self, theAxis, theAng)
-    }
-
-    /// Assigns the three coordinates of Value to the row of index
-    /// theRow of this matrix. Raises OutOfRange if theRow < 1 or theRow > 3.
-    pub fn set_row(self: std::pin::Pin<&mut Self>, theRow: i32, theValue: &crate::ffi::gp_XYZ) {
-        crate::ffi::gp_Mat::set_row(self, theRow, theValue)
-    }
-
-    /// Assigns the number triples theRow1, theRow2, theRow3 to the three
-    /// rows of this matrix.
-    pub fn set_rows(
-        self: std::pin::Pin<&mut Self>,
-        theRow1: &crate::ffi::gp_XYZ,
-        theRow2: &crate::ffi::gp_XYZ,
-        theRow3: &crate::ffi::gp_XYZ,
-    ) {
-        crate::ffi::gp_Mat::set_rows(self, theRow1, theRow2, theRow3)
-    }
-
-    /// Modifies the matrix so that it represents
-    /// a scaling transformation, where theS is the scale factor. :
-    /// @code
-    /// | theS    0.0  0.0 |
-    /// <me> =  | 0.0   theS   0.0 |
-    /// | 0.0  0.0   theS  |
-    /// @endcode
-    pub fn set_scale(self: std::pin::Pin<&mut Self>, theS: f64) {
-        crate::ffi::gp_Mat::set_scale(self, theS)
-    }
-
-    /// Assigns <theValue> to the coefficient of row theRow, column theCol of   this matrix.
-    /// Raises OutOfRange if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 3
-    pub fn set_value(self: std::pin::Pin<&mut Self>, theRow: i32, theCol: i32, theValue: f64) {
-        crate::ffi::gp_Mat::set_value(self, theRow, theCol, theValue)
-    }
-
     /// Returns the column of theCol index.
     /// Raises OutOfRange if theCol < 1 or theCol > 3
-    pub fn column(&self, theCol: i32) -> crate::ffi::gp_XYZ {
-        crate::ffi::gp_Mat::column(self, theCol)
-    }
-
-    /// Computes the determinant of the matrix.
-    pub fn determinant(&self) -> f64 {
-        crate::ffi::gp_Mat::determinant(self)
+    pub fn column(&self, theCol: i32) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::gp_Mat_column(self, theCol)
     }
 
     /// Returns the main diagonal of the matrix.
-    pub fn diagonal(&self) -> crate::ffi::gp_XYZ {
-        crate::ffi::gp_Mat::diagonal(self)
+    pub fn diagonal(&self) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::gp_Mat_diagonal(self)
     }
 
     /// returns the row of theRow index.
     /// Raises OutOfRange if theRow < 1 or theRow > 3
-    pub fn row(&self, theRow: i32) -> crate::ffi::gp_XYZ {
-        crate::ffi::gp_Mat::row(self, theRow)
-    }
-
-    /// Returns the coefficient of range (theRow, theCol)
-    /// Raises OutOfRange if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 3
-    pub fn value(&self, theRow: i32, theCol: i32) -> &f64 {
-        crate::ffi::gp_Mat::value(self, theRow, theCol)
-    }
-
-    /// Returns the coefficient of range (theRow, theCol)
-    /// Raises OutOfRange if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 3
-    pub fn change_value(
-        self: std::pin::Pin<&mut Self>,
-        theRow: i32,
-        theCol: i32,
-    ) -> std::pin::Pin<&mut f64> {
-        crate::ffi::gp_Mat::change_value(self, theRow, theCol)
-    }
-
-    /// The Gauss LU decomposition is used to invert the matrix
-    /// (see Math package) so the matrix is considered as singular if
-    /// the largest pivot found is lower or equal to Resolution from gp.
-    pub fn is_singular(&self) -> bool {
-        crate::ffi::gp_Mat::is_singular(self)
-    }
-
-    pub fn add(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_Mat) {
-        crate::ffi::gp_Mat::add(self, theOther)
+    pub fn row(&self, theRow: i32) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::gp_Mat_row(self, theRow)
     }
 
     /// Computes the sum of this matrix and
     /// the matrix theOther for each coefficient of the matrix :
     /// <me>.Coef(i,j) + <theOther>.Coef(i,j)
-    pub fn added(&self, theOther: &crate::ffi::gp_Mat) -> crate::ffi::gp_Mat {
-        crate::ffi::gp_Mat::added(self, theOther)
-    }
-
-    pub fn divide(self: std::pin::Pin<&mut Self>, theScalar: f64) {
-        crate::ffi::gp_Mat::divide(self, theScalar)
+    pub fn added(&self, theOther: &crate::ffi::gp_Mat) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::gp_Mat_added(self, theOther)
     }
 
     /// Divides all the coefficients of the matrix by Scalar
-    pub fn divided(&self, theScalar: f64) -> crate::ffi::gp_Mat {
-        crate::ffi::gp_Mat::divided(self, theScalar)
-    }
-
-    pub fn invert(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Mat::invert(self)
+    pub fn divided(&self, theScalar: f64) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::gp_Mat_divided(self, theScalar)
     }
 
     /// Inverses the matrix and raises if the matrix is singular.
@@ -5402,35 +2938,20 @@ impl Mat {
     /// Exceptions
     /// Standard_ConstructionError if this matrix is singular,
     /// and therefore cannot be inverted.
-    pub fn inverted(&self) -> crate::ffi::gp_Mat {
-        crate::ffi::gp_Mat::inverted(self)
+    pub fn inverted(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::gp_Mat_inverted(self)
     }
 
     /// Computes  the product of two matrices <me> * <Other>
-    pub fn multiplied(&self, theOther: &crate::ffi::gp_Mat) -> crate::ffi::gp_Mat {
-        crate::ffi::gp_Mat::multiplied(self, theOther)
+    pub fn multiplied_mat(
+        &self,
+        theOther: &crate::ffi::gp_Mat,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::gp_Mat_multiplied_mat(self, theOther)
     }
 
-    /// Computes the product of two matrices <me> = <Other> * <me>.
-    pub fn multiply(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_Mat) {
-        crate::ffi::gp_Mat::multiply(self, theOther)
-    }
-
-    pub fn pre_multiply(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_Mat) {
-        crate::ffi::gp_Mat::pre_multiply(self, theOther)
-    }
-
-    pub fn multiplied_real(&self, theScalar: f64) -> crate::ffi::gp_Mat {
-        crate::ffi::gp_Mat::multiplied(self, theScalar)
-    }
-
-    /// Multiplies all the coefficients of the matrix by Scalar
-    pub fn multiply_real(self: std::pin::Pin<&mut Self>, theScalar: f64) {
-        crate::ffi::gp_Mat::multiply(self, theScalar)
-    }
-
-    pub fn power(self: std::pin::Pin<&mut Self>, N: i32) {
-        crate::ffi::gp_Mat::power(self, N)
+    pub fn multiplied_real(&self, theScalar: f64) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::gp_Mat_multiplied_real(self, theScalar)
     }
 
     /// Computes <me> = <me> * <me> * .......* <me>,   theN time.
@@ -5438,27 +2959,19 @@ impl Mat {
     /// if theN < 0 <me> = <me>.Invert() *...........* <me>.Invert().
     /// If theN < 0 an exception will be raised if the matrix is not
     /// inversible
-    pub fn powered(&self, theN: i32) -> crate::ffi::gp_Mat {
-        crate::ffi::gp_Mat::powered(self, theN)
-    }
-
-    pub fn subtract(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_Mat) {
-        crate::ffi::gp_Mat::subtract(self, theOther)
+    pub fn powered(&self, theN: i32) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::gp_Mat_powered(self, theN)
     }
 
     /// cOmputes for each coefficient of the matrix :
     /// <me>.Coef(i,j) - <theOther>.Coef(i,j)
-    pub fn subtracted(&self, theOther: &crate::ffi::gp_Mat) -> crate::ffi::gp_Mat {
-        crate::ffi::gp_Mat::subtracted(self, theOther)
-    }
-
-    pub fn transpose(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Mat::transpose(self)
+    pub fn subtracted(&self, theOther: &crate::ffi::gp_Mat) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::gp_Mat_subtracted(self, theOther)
     }
 
     /// Transposes the matrix. A(j, i) -> A (i, j)
-    pub fn transposed(&self) -> crate::ffi::gp_Mat {
-        crate::ffi::gp_Mat::transposed(self)
+    pub fn transposed(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::gp_Mat_transposed(self)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -5489,124 +3002,21 @@ impl Mat2d {
         crate::ffi::gp_Mat2d_ctor_xy2(theCol1, theCol2)
     }
 
-    /// Assigns the two coordinates of theValue to the column of range
-    /// theCol of this matrix
-    /// Raises OutOfRange if theCol < 1 or theCol > 2.
-    pub fn set_col(self: std::pin::Pin<&mut Self>, theCol: i32, theValue: &crate::ffi::gp_XY) {
-        crate::ffi::gp_Mat2d::set_col(self, theCol, theValue)
-    }
-
-    /// Assigns the number pairs theCol1, theCol2 to the two columns of   this matrix
-    pub fn set_cols(
-        self: std::pin::Pin<&mut Self>,
-        theCol1: &crate::ffi::gp_XY,
-        theCol2: &crate::ffi::gp_XY,
-    ) {
-        crate::ffi::gp_Mat2d::set_cols(self, theCol1, theCol2)
-    }
-
-    /// Modifies the main diagonal of the matrix.
-    /// @code
-    /// <me>.Value (1, 1) = theX1
-    /// <me>.Value (2, 2) = theX2
-    /// @endcode
-    /// The other coefficients of the matrix are not modified.
-    pub fn set_diagonal(self: std::pin::Pin<&mut Self>, theX1: f64, theX2: f64) {
-        crate::ffi::gp_Mat2d::set_diagonal(self, theX1, theX2)
-    }
-
-    /// Modifies this matrix, so that it represents the Identity matrix.
-    pub fn set_identity(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Mat2d::set_identity(self)
-    }
-
-    /// Modifies this matrix, so that it represents a rotation. theAng is the angular
-    /// value in radian of the rotation.
-    pub fn set_rotation(self: std::pin::Pin<&mut Self>, theAng: f64) {
-        crate::ffi::gp_Mat2d::set_rotation(self, theAng)
-    }
-
-    /// Assigns the two coordinates of theValue to the row of index theRow of this matrix.
-    /// Raises OutOfRange if theRow < 1 or theRow > 2.
-    pub fn set_row(self: std::pin::Pin<&mut Self>, theRow: i32, theValue: &crate::ffi::gp_XY) {
-        crate::ffi::gp_Mat2d::set_row(self, theRow, theValue)
-    }
-
-    /// Assigns the number pairs theRow1, theRow2 to the two rows of this matrix.
-    pub fn set_rows(
-        self: std::pin::Pin<&mut Self>,
-        theRow1: &crate::ffi::gp_XY,
-        theRow2: &crate::ffi::gp_XY,
-    ) {
-        crate::ffi::gp_Mat2d::set_rows(self, theRow1, theRow2)
-    }
-
-    /// Modifies the matrix such that it
-    /// represents a scaling transformation, where theS is the scale   factor :
-    /// @code
-    /// | theS    0.0 |
-    /// <me> =  | 0.0   theS  |
-    /// @endcode
-    pub fn set_scale(self: std::pin::Pin<&mut Self>, theS: f64) {
-        crate::ffi::gp_Mat2d::set_scale(self, theS)
-    }
-
-    /// Assigns <theValue> to the coefficient of row theRow, column theCol of this matrix.
-    /// Raises OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 2
-    pub fn set_value(self: std::pin::Pin<&mut Self>, theRow: i32, theCol: i32, theValue: f64) {
-        crate::ffi::gp_Mat2d::set_value(self, theRow, theCol, theValue)
-    }
-
     /// Returns the column of theCol index.
     /// Raises OutOfRange if theCol < 1 or theCol > 2
-    pub fn column(&self, theCol: i32) -> crate::ffi::gp_XY {
-        crate::ffi::gp_Mat2d::column(self, theCol)
-    }
-
-    /// Computes the determinant of the matrix.
-    pub fn determinant(&self) -> f64 {
-        crate::ffi::gp_Mat2d::determinant(self)
+    pub fn column(&self, theCol: i32) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::gp_Mat2d_column(self, theCol)
     }
 
     /// Returns the main diagonal of the matrix.
-    pub fn diagonal(&self) -> crate::ffi::gp_XY {
-        crate::ffi::gp_Mat2d::diagonal(self)
+    pub fn diagonal(&self) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::gp_Mat2d_diagonal(self)
     }
 
     /// Returns the row of index theRow.
     /// Raised if theRow < 1 or theRow > 2
-    pub fn row(&self, theRow: i32) -> crate::ffi::gp_XY {
-        crate::ffi::gp_Mat2d::row(self, theRow)
-    }
-
-    /// Returns the coefficient of range (ttheheRow, theCol)
-    /// Raises OutOfRange
-    /// if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 2
-    pub fn value(&self, theRow: i32, theCol: i32) -> &f64 {
-        crate::ffi::gp_Mat2d::value(self, theRow, theCol)
-    }
-
-    /// Returns the coefficient of range (theRow, theCol)
-    /// Raises OutOfRange
-    /// if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 2
-    pub fn change_value(
-        self: std::pin::Pin<&mut Self>,
-        theRow: i32,
-        theCol: i32,
-    ) -> std::pin::Pin<&mut f64> {
-        crate::ffi::gp_Mat2d::change_value(self, theRow, theCol)
-    }
-
-    /// Returns true if this matrix is singular (and therefore, cannot be inverted).
-    /// The Gauss LU decomposition is used to invert the matrix
-    /// so the matrix is considered as singular if the largest
-    /// pivot found is lower or equal to Resolution from gp.
-    pub fn is_singular(&self) -> bool {
-        crate::ffi::gp_Mat2d::is_singular(self)
-    }
-
-    pub fn add(self: std::pin::Pin<&mut Self>, Other: &crate::ffi::gp_Mat2d) {
-        crate::ffi::gp_Mat2d::add(self, Other)
+    pub fn row(&self, theRow: i32) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::gp_Mat2d_row(self, theRow)
     }
 
     /// Computes the sum of this matrix and the matrix
@@ -5617,55 +3027,30 @@ impl Mat2d {
     /// Note:
     /// -   operator += assigns the result to this matrix, while
     /// -   operator + creates a new one.
-    pub fn added(&self, theOther: &crate::ffi::gp_Mat2d) -> crate::ffi::gp_Mat2d {
-        crate::ffi::gp_Mat2d::added(self, theOther)
-    }
-
-    pub fn divide(self: std::pin::Pin<&mut Self>, theScalar: f64) {
-        crate::ffi::gp_Mat2d::divide(self, theScalar)
+    pub fn added(&self, theOther: &crate::ffi::gp_Mat2d) -> cxx::UniquePtr<crate::ffi::gp_Mat2d> {
+        crate::ffi::gp_Mat2d_added(self, theOther)
     }
 
     /// Divides all the coefficients of the matrix by a scalar.
-    pub fn divided(&self, theScalar: f64) -> crate::ffi::gp_Mat2d {
-        crate::ffi::gp_Mat2d::divided(self, theScalar)
-    }
-
-    pub fn invert(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Mat2d::invert(self)
+    pub fn divided(&self, theScalar: f64) -> cxx::UniquePtr<crate::ffi::gp_Mat2d> {
+        crate::ffi::gp_Mat2d_divided(self, theScalar)
     }
 
     /// Inverses the matrix and raises exception if the matrix
     /// is singular.
-    pub fn inverted(&self) -> crate::ffi::gp_Mat2d {
-        crate::ffi::gp_Mat2d::inverted(self)
+    pub fn inverted(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat2d> {
+        crate::ffi::gp_Mat2d_inverted(self)
     }
 
-    pub fn multiplied(&self, theOther: &crate::ffi::gp_Mat2d) -> crate::ffi::gp_Mat2d {
-        crate::ffi::gp_Mat2d::multiplied(self, theOther)
+    pub fn multiplied_mat2d(
+        &self,
+        theOther: &crate::ffi::gp_Mat2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Mat2d> {
+        crate::ffi::gp_Mat2d_multiplied_mat2d(self, theOther)
     }
 
-    /// Computes the product of two matrices <me> * <theOther>
-    pub fn multiply(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_Mat2d) {
-        crate::ffi::gp_Mat2d::multiply(self, theOther)
-    }
-
-    /// Modifies this matrix by premultiplying it by the matrix Other
-    /// <me> = theOther * <me>.
-    pub fn pre_multiply(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_Mat2d) {
-        crate::ffi::gp_Mat2d::pre_multiply(self, theOther)
-    }
-
-    pub fn multiplied_real(&self, theScalar: f64) -> crate::ffi::gp_Mat2d {
-        crate::ffi::gp_Mat2d::multiplied(self, theScalar)
-    }
-
-    /// Multiplies all the coefficients of the matrix by a scalar.
-    pub fn multiply_real(self: std::pin::Pin<&mut Self>, theScalar: f64) {
-        crate::ffi::gp_Mat2d::multiply(self, theScalar)
-    }
-
-    pub fn power(self: std::pin::Pin<&mut Self>, theN: i32) {
-        crate::ffi::gp_Mat2d::power(self, theN)
+    pub fn multiplied_real(&self, theScalar: f64) -> cxx::UniquePtr<crate::ffi::gp_Mat2d> {
+        crate::ffi::gp_Mat2d_multiplied_real(self, theScalar)
     }
 
     /// computes <me> = <me> * <me> * .......* <me>, theN time.
@@ -5673,29 +3058,24 @@ impl Mat2d {
     /// if theN < 0 <me> = <me>.Invert() *...........* <me>.Invert().
     /// If theN < 0 an exception can be raised if the matrix is not
     /// inversible
-    pub fn powered(&self, theN: i32) -> crate::ffi::gp_Mat2d {
-        crate::ffi::gp_Mat2d::powered(self, theN)
-    }
-
-    pub fn subtract(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_Mat2d) {
-        crate::ffi::gp_Mat2d::subtract(self, theOther)
+    pub fn powered(&self, theN: i32) -> cxx::UniquePtr<crate::ffi::gp_Mat2d> {
+        crate::ffi::gp_Mat2d_powered(self, theN)
     }
 
     /// Computes for each coefficient of the matrix :
     /// @code
     /// <me>.Coef(i,j) - <theOther>.Coef(i,j)
     /// @endcode
-    pub fn subtracted(&self, theOther: &crate::ffi::gp_Mat2d) -> crate::ffi::gp_Mat2d {
-        crate::ffi::gp_Mat2d::subtracted(self, theOther)
-    }
-
-    pub fn transpose(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Mat2d::transpose(self)
+    pub fn subtracted(
+        &self,
+        theOther: &crate::ffi::gp_Mat2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Mat2d> {
+        crate::ffi::gp_Mat2d_subtracted(self, theOther)
     }
 
     /// Transposes the matrix. A(j, i) -> A (i, j)
-    pub fn transposed(&self) -> crate::ffi::gp_Mat2d {
-        crate::ffi::gp_Mat2d::transposed(self)
+    pub fn transposed(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat2d> {
+        crate::ffi::gp_Mat2d_transposed(self)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -5770,40 +3150,6 @@ impl Parab {
         crate::ffi::gp_Parab_ctor_ax1_pnt(theD, theF)
     }
 
-    /// Modifies this parabola by redefining its local coordinate system so that
-    /// -   its origin and "main Direction" become those of the
-    /// axis theA1 (the "X Direction" and "Y Direction" are then
-    /// recomputed in the same way as for any gp_Ax2)
-    /// Raises ConstructionError if the direction of theA1 is parallel to the previous
-    /// XAxis of the parabola.
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Parab::set_axis(self, theA1)
-    }
-
-    /// Changes the focal distance of the parabola.
-    /// Raises ConstructionError if theFocal < 0.0
-    pub fn set_focal(self: std::pin::Pin<&mut Self>, theFocal: f64) {
-        crate::ffi::gp_Parab::set_focal(self, theFocal)
-    }
-
-    /// Changes the location of the parabola. It is the vertex of
-    /// the parabola.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Parab::set_location(self, theP)
-    }
-
-    /// Changes the local coordinate system of the parabola.
-    pub fn set_position(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Parab::set_position(self, theA2)
-    }
-
-    /// Returns the main axis of the parabola.
-    /// It is the axis normal to the plane of the parabola passing
-    /// through the vertex of the parabola.
-    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Parab::axis(self)
-    }
-
     /// Computes the directrix of this parabola.
     /// The directrix is:
     /// -   a line parallel to the "Y Direction" of the local
@@ -5813,130 +3159,81 @@ impl Parab {
     /// length of this parabola.
     /// The directrix is returned as an axis (a gp_Ax1 object),
     /// the origin of which is situated on the "X Axis" of this parabola.
-    pub fn directrix(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Parab::directrix(self)
-    }
-
-    /// Returns the distance between the vertex and the focus
-    /// of the parabola.
-    pub fn focal(&self) -> f64 {
-        crate::ffi::gp_Parab::focal(self)
+    pub fn directrix(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Parab_directrix(self)
     }
 
     /// -   Computes the focus of the parabola.
-    pub fn focus(&self) -> crate::ffi::gp_Pnt {
-        crate::ffi::gp_Parab::focus(self)
-    }
-
-    /// Returns the vertex of the parabola. It is the "Location"
-    /// point of the coordinate system of the parabola.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt {
-        crate::ffi::gp_Parab::location(self)
-    }
-
-    /// Computes the parameter of the parabola.
-    /// It is the distance between the focus and the directrix of
-    /// the parabola. This distance is twice the focal length.
-    pub fn parameter(&self) -> f64 {
-        crate::ffi::gp_Parab::parameter(self)
-    }
-
-    /// Returns the local coordinate system of the parabola.
-    pub fn position(&self) -> &crate::ffi::gp_Ax2 {
-        crate::ffi::gp_Parab::position(self)
+    pub fn focus(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::gp_Parab_focus(self)
     }
 
     /// Returns the symmetry axis of the parabola. The location point
     /// of the axis is the vertex of the parabola.
-    pub fn x_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Parab::x_axis(self)
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Parab_x_axis(self)
     }
 
     /// It is an axis parallel to the directrix of the parabola.
     /// The location point of this axis is the vertex of the parabola.
-    pub fn y_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Parab::y_axis(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Parab::mirror(self, theP)
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Parab_y_axis(self)
     }
 
     /// Performs the symmetrical transformation of a parabola
     /// with respect to the point theP which is the center of the
     /// symmetry.
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Parab {
-        crate::ffi::gp_Parab::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Parab::mirror(self, theA1)
+    pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Parab> {
+        crate::ffi::gp_Parab_mirrored_pnt(self, theP)
     }
 
     /// Performs the symmetrical transformation of a parabola
     /// with respect to an axis placement which is the axis of
     /// the symmetry.
-    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Parab {
-        crate::ffi::gp_Parab::mirrored(self, theA1)
-    }
-
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Parab::mirror(self, theA2)
+    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<crate::ffi::gp_Parab> {
+        crate::ffi::gp_Parab_mirrored_ax1(self, theA1)
     }
 
     /// Performs the symmetrical transformation of a parabola
     /// with respect to a plane. The axis placement theA2 locates
     /// the plane of the symmetry (Location, XDirection, YDirection).
-    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Parab {
-        crate::ffi::gp_Parab::mirrored(self, theA2)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Parab::rotate(self, theA1, theAng)
+    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<crate::ffi::gp_Parab> {
+        crate::ffi::gp_Parab_mirrored_ax2(self, theA2)
     }
 
     /// Rotates a parabola. theA1 is the axis of the rotation.
     /// Ang is the angular value of the rotation in radians.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Parab {
-        crate::ffi::gp_Parab::rotated(self, theA1, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Parab::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Parab> {
+        crate::ffi::gp_Parab_rotated(self, theA1, theAng)
     }
 
     /// Scales a parabola. theS is the scaling value.
     /// If theS is negative the direction of the symmetry axis
     /// XAxis is reversed and the direction of the YAxis too.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt, theS: f64) -> crate::ffi::gp_Parab {
-        crate::ffi::gp_Parab::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Parab::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Parab> {
+        crate::ffi::gp_Parab_scaled(self, theP, theS)
     }
 
     /// Transforms a parabola with the transformation theT from class Trsf.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Parab {
-        crate::ffi::gp_Parab::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Parab::translate(self, theV)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Parab> {
+        crate::ffi::gp_Parab_transformed(self, theT)
     }
 
     /// Translates a parabola in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Parab {
-        crate::ffi::gp_Parab::translated(self, theV)
-    }
-
-    pub fn translate_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Parab::translate(self, theP1, theP2)
+    pub fn translated_vec(
+        &self,
+        theV: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Parab> {
+        crate::ffi::gp_Parab_translated_vec(self, theV)
     }
 
     /// Translates a parabola from the point theP1 to the point theP2.
@@ -5944,8 +3241,8 @@ impl Parab {
         &self,
         theP1: &crate::ffi::gp_Pnt,
         theP2: &crate::ffi::gp_Pnt,
-    ) -> crate::ffi::gp_Parab {
-        crate::ffi::gp_Parab::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Parab> {
+        crate::ffi::gp_Parab_translated_pnt2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -6037,51 +3334,6 @@ impl Parab2d {
         crate::ffi::gp_Parab2d_ctor_ax2d_pnt2d_bool(theDirectrix, theFocus, theSense)
     }
 
-    /// Changes the focal distance of the parabola
-    /// Warnings : It is possible to have theFocal = 0.
-    /// Raises ConstructionError if theFocal < 0.0
-    pub fn set_focal(self: std::pin::Pin<&mut Self>, theFocal: f64) {
-        crate::ffi::gp_Parab2d::set_focal(self, theFocal)
-    }
-
-    /// Changes the "Location" point of the parabola. It is the
-    /// vertex of the parabola.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Parab2d::set_location(self, theP)
-    }
-
-    /// Modifies this parabola, by redefining its local coordinate system so that
-    /// its origin and "X Direction" become those of the axis
-    /// MA. The "Y Direction" of the local coordinate system is
-    /// then recomputed. The orientation of the local
-    /// coordinate system is not modified.
-    pub fn set_mirror_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Parab2d::set_mirror_axis(self, theA)
-    }
-
-    /// Changes the local coordinate system of the parabola.
-    /// The "Location" point of A becomes the vertex of the parabola.
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax22d) {
-        crate::ffi::gp_Parab2d::set_axis(self, theA)
-    }
-
-    /// Computes the coefficients of the implicit equation of the parabola
-    /// (in WCS - World Coordinate System).
-    /// @code
-    /// theA * (X**2) + theB * (Y**2) + 2*theC*(X*Y) + 2*theD*X + 2*theE*Y + theF = 0.
-    /// @endcode
-    pub fn coefficients(
-        &self,
-        theA: std::pin::Pin<&mut f64>,
-        theB: std::pin::Pin<&mut f64>,
-        theC: std::pin::Pin<&mut f64>,
-        theD: std::pin::Pin<&mut f64>,
-        theE: std::pin::Pin<&mut f64>,
-        theF: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_Parab2d::coefficients(self, theA, theB, theC, theD, theE, theF)
-    }
-
     /// Computes the directrix of the parabola.
     /// The directrix is:
     /// -   a line parallel to the "Y Direction" of the local
@@ -6090,46 +3342,30 @@ impl Parab2d {
     /// at a distance from the apex which is equal to the focal  length of this parabola.
     /// The directrix is returned as an axis (a gp_Ax2d object),
     /// the origin of which is situated on the "X Axis" of this parabola.
-    pub fn directrix(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Parab2d::directrix(self)
-    }
-
-    /// Returns the distance between the vertex and the focus
-    /// of the parabola.
-    pub fn focal(&self) -> f64 {
-        crate::ffi::gp_Parab2d::focal(self)
+    pub fn directrix(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Parab2d_directrix(self)
     }
 
     /// Returns the focus of the parabola.
-    pub fn focus(&self) -> crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Parab2d::focus(self)
+    pub fn focus(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::gp_Parab2d_focus(self)
     }
 
     /// Returns the vertex of the parabola.
-    pub fn location(&self) -> crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Parab2d::location(self)
+    pub fn location(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::gp_Parab2d_location(self)
     }
 
     /// Returns the symmetry axis of the parabola.
     /// The "Location" point of this axis is the vertex of the parabola.
-    pub fn mirror_axis(&self) -> crate::ffi::gp_Ax2d {
-        crate::ffi::gp_Parab2d::mirror_axis(self)
+    pub fn mirror_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax2d> {
+        crate::ffi::gp_Parab2d_mirror_axis(self)
     }
 
     /// Returns the local coordinate system of the parabola.
     /// The "Location" point of this axis is the vertex of the parabola.
-    pub fn axis(&self) -> crate::ffi::gp_Ax22d {
-        crate::ffi::gp_Parab2d::axis(self)
-    }
-
-    /// Returns the distance between the focus and the
-    /// directrix of the parabola.
-    pub fn parameter(&self) -> f64 {
-        crate::ffi::gp_Parab2d::parameter(self)
-    }
-
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Parab2d::reverse(self)
+    pub fn axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax22d> {
+        crate::ffi::gp_Parab2d_axis(self)
     }
 
     /// Reverses the orientation of the local coordinate system
@@ -6138,82 +3374,64 @@ impl Parab2d {
     /// Note:
     /// -   Reverse assigns the result to this parabola, while
     /// -   Reversed creates a new one.
-    pub fn reversed(&self) -> crate::ffi::gp_Parab2d {
-        crate::ffi::gp_Parab2d::reversed(self)
-    }
-
-    /// Returns true if the local coordinate system is direct
-    /// and false in the other case.
-    pub fn is_direct(&self) -> bool {
-        crate::ffi::gp_Parab2d::is_direct(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Parab2d::mirror(self, theP)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
+        crate::ffi::gp_Parab2d_reversed(self)
     }
 
     /// Performs the symmetrical transformation of a parabola with respect
     /// to the point theP which is the center of the symmetry
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt2d) -> crate::ffi::gp_Parab2d {
-        crate::ffi::gp_Parab2d::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax2d(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Parab2d::mirror(self, theA)
+    pub fn mirrored_pnt2d(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
+        crate::ffi::gp_Parab2d_mirrored_pnt2d(self, theP)
     }
 
     /// Performs the symmetrical transformation of a parabola with respect
     /// to an axis placement which is the axis of the symmetry.
-    pub fn mirrored_ax2d(&self, theA: &crate::ffi::gp_Ax2d) -> crate::ffi::gp_Parab2d {
-        crate::ffi::gp_Parab2d::mirrored(self, theA)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
-        crate::ffi::gp_Parab2d::rotate(self, theP, theAng)
+    pub fn mirrored_ax2d(
+        &self,
+        theA: &crate::ffi::gp_Ax2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
+        crate::ffi::gp_Parab2d_mirrored_ax2d(self, theA)
     }
 
     /// Rotates a parabola. theP is the center of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) -> crate::ffi::gp_Parab2d {
-        crate::ffi::gp_Parab2d::rotated(self, theP, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
-        crate::ffi::gp_Parab2d::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
+        crate::ffi::gp_Parab2d_rotated(self, theP, theAng)
     }
 
     /// Scales a parabola. theS is the scaling value.
     /// If theS is negative the direction of the symmetry axis
     /// "XAxis" is reversed and the direction of the "YAxis" too.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt2d, theS: f64) -> crate::ffi::gp_Parab2d {
-        crate::ffi::gp_Parab2d::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::gp_Parab2d::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
+        crate::ffi::gp_Parab2d_scaled(self, theP, theS)
     }
 
     /// Transforms an parabola with the transformation theT from class Trsf2d.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf2d) -> crate::ffi::gp_Parab2d {
-        crate::ffi::gp_Parab2d::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec2d) {
-        crate::ffi::gp_Parab2d::translate(self, theV)
+    pub fn transformed(
+        &self,
+        theT: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
+        crate::ffi::gp_Parab2d_transformed(self, theT)
     }
 
     /// Translates a parabola in the direction of the vectorthe theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec2d) -> crate::ffi::gp_Parab2d {
-        crate::ffi::gp_Parab2d::translated(self, theV)
-    }
-
-    pub fn translate_pnt2d2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt2d,
-        theP2: &crate::ffi::gp_Pnt2d,
-    ) {
-        crate::ffi::gp_Parab2d::translate(self, theP1, theP2)
+    pub fn translated_vec2d(
+        &self,
+        theV: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
+        crate::ffi::gp_Parab2d_translated_vec2d(self, theV)
     }
 
     /// Translates a parabola from the point theP1 to the point theP2.
@@ -6221,8 +3439,8 @@ impl Parab2d {
         &self,
         theP1: &crate::ffi::gp_Pnt2d,
         theP2: &crate::ffi::gp_Pnt2d,
-    ) -> crate::ffi::gp_Parab2d {
-        crate::ffi::gp_Parab2d::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
+        crate::ffi::gp_Parab2d_translated_pnt2d2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -6293,141 +3511,14 @@ impl Pln {
         crate::ffi::gp_Pln_ctor_real4(theA, theB, theC, theD)
     }
 
-    /// Returns the coefficients of the plane's cartesian equation :
-    /// @code
-    /// theA * X + theB * Y + theC * Z + theD = 0.
-    /// @endcode
-    pub fn coefficients(
-        &self,
-        theA: std::pin::Pin<&mut f64>,
-        theB: std::pin::Pin<&mut f64>,
-        theC: std::pin::Pin<&mut f64>,
-        theD: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_Pln::coefficients(self, theA, theB, theC, theD)
-    }
-
-    /// Modifies this plane, by redefining its local coordinate system so that
-    /// -   its origin and "main Direction" become those of the
-    /// axis theA1 (the "X Direction" and "Y Direction" are then recomputed).
-    /// Raises ConstructionError if the theA1 is parallel to the "XAxis" of the plane.
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Pln::set_axis(self, theA1)
-    }
-
-    /// Changes the origin of the plane.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theLoc: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Pln::set_location(self, theLoc)
-    }
-
-    /// Changes the local coordinate system of the plane.
-    pub fn set_position(self: std::pin::Pin<&mut Self>, theA3: &crate::ffi::gp_Ax3) {
-        crate::ffi::gp_Pln::set_position(self, theA3)
-    }
-
-    /// Reverses the   U   parametrization of   the  plane
-    /// reversing the XAxis.
-    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Pln::u_reverse(self)
-    }
-
-    /// Reverses the   V   parametrization of   the  plane
-    /// reversing the YAxis.
-    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Pln::v_reverse(self)
-    }
-
-    /// returns true if the Ax3 is right handed.
-    pub fn direct(&self) -> bool {
-        crate::ffi::gp_Pln::direct(self)
-    }
-
-    /// Returns the plane's normal Axis.
-    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Pln::axis(self)
-    }
-
-    /// Returns the plane's location (origin).
-    pub fn location(&self) -> &crate::ffi::gp_Pnt {
-        crate::ffi::gp_Pln::location(self)
-    }
-
-    /// Returns the local coordinate system of the plane .
-    pub fn position(&self) -> &crate::ffi::gp_Ax3 {
-        crate::ffi::gp_Pln::position(self)
-    }
-
-    /// Computes the distance between <me> and the point <theP>.
-    pub fn distance(&self, theP: &crate::ffi::gp_Pnt) -> f64 {
-        crate::ffi::gp_Pln::distance(self, theP)
-    }
-
-    /// Computes the distance between <me> and the line <theL>.
-    pub fn distance_lin(&self, theL: &crate::ffi::gp_Lin) -> f64 {
-        crate::ffi::gp_Pln::distance(self, theL)
-    }
-
-    /// Computes the distance between two planes.
-    pub fn distance_pln(&self, theOther: &crate::ffi::gp_Pln) -> f64 {
-        crate::ffi::gp_Pln::distance(self, theOther)
-    }
-
-    /// Computes the square distance between <me> and the point <theP>.
-    pub fn square_distance(&self, theP: &crate::ffi::gp_Pnt) -> f64 {
-        crate::ffi::gp_Pln::square_distance(self, theP)
-    }
-
-    /// Computes the square distance between <me> and the line <theL>.
-    pub fn square_distance_lin(&self, theL: &crate::ffi::gp_Lin) -> f64 {
-        crate::ffi::gp_Pln::square_distance(self, theL)
-    }
-
-    /// Computes the square distance between two planes.
-    pub fn square_distance_pln(&self, theOther: &crate::ffi::gp_Pln) -> f64 {
-        crate::ffi::gp_Pln::square_distance(self, theOther)
-    }
-
     /// Returns the X axis of the plane.
-    pub fn x_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Pln::x_axis(self)
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Pln_x_axis(self)
     }
 
     /// Returns the Y axis  of the plane.
-    pub fn y_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Pln::y_axis(self)
-    }
-
-    /// Returns true if this plane contains the point theP. This means that
-    /// -   the distance between point theP and this plane is less
-    /// than or equal to theLinearTolerance, or
-    /// -   line L is normal to the "main Axis" of the local
-    /// coordinate system of this plane, within the tolerance
-    /// AngularTolerance, and the distance between the origin
-    /// of line L and this plane is less than or equal to
-    /// theLinearTolerance.
-    pub fn contains(&self, theP: &crate::ffi::gp_Pnt, theLinearTolerance: f64) -> bool {
-        crate::ffi::gp_Pln::contains(self, theP, theLinearTolerance)
-    }
-
-    /// Returns true if this plane contains the line theL. This means that
-    /// -   the distance between point P and this plane is less
-    /// than or equal to LinearTolerance, or
-    /// -   line theL is normal to the "main Axis" of the local
-    /// coordinate system of this plane, within the tolerance
-    /// theAngularTolerance, and the distance between the origin
-    /// of line theL and this plane is less than or equal to
-    /// theLinearTolerance.
-    pub fn contains_lin_real2(
-        &self,
-        theL: &crate::ffi::gp_Lin,
-        theLinearTolerance: f64,
-        theAngularTolerance: f64,
-    ) -> bool {
-        crate::ffi::gp_Pln::contains(self, theL, theLinearTolerance, theAngularTolerance)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Pln::mirror(self, theP)
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Pln_y_axis(self)
     }
 
     /// Performs the symmetrical transformation of a plane with respect
@@ -6435,12 +3526,8 @@ impl Pln {
     /// Warnings :
     /// The normal direction to the plane is not changed.
     /// The "XAxis" and the "YAxis" are reversed.
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Pln {
-        crate::ffi::gp_Pln::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Pln::mirror(self, theA1)
+    pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
+        crate::ffi::gp_Pln_mirrored_pnt(self, theP)
     }
 
     /// Performs   the symmetrical transformation  of a
@@ -6451,12 +3538,8 @@ impl Pln {
     /// the "XDirection" and the "YDirection" after transformation
     /// if  the  initial plane was right  handed,  else  it is the
     /// opposite.
-    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Pln {
-        crate::ffi::gp_Pln::mirrored(self, theA1)
-    }
-
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Pln::mirror(self, theA2)
+    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
+        crate::ffi::gp_Pln_mirrored_ax1(self, theA1)
     }
 
     /// Performs the  symmetrical transformation  of  a
@@ -6467,31 +3550,27 @@ impl Pln {
     /// direction is the cross  product between   the "XDirection"
     /// and the "YDirection"  after  transformation if the initial
     /// plane was right handed, else it is the opposite.
-    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Pln {
-        crate::ffi::gp_Pln::mirrored(self, theA2)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Pln::rotate(self, theA1, theAng)
+    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
+        crate::ffi::gp_Pln_mirrored_ax2(self, theA2)
     }
 
     /// rotates a plane. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Pln {
-        crate::ffi::gp_Pln::rotated(self, theA1, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Pln::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
+        crate::ffi::gp_Pln_rotated(self, theA1, theAng)
     }
 
     /// Scales a plane. theS is the scaling value.
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt, theS: f64) -> crate::ffi::gp_Pln {
-        crate::ffi::gp_Pln::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Pln::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
+        crate::ffi::gp_Pln_scaled(self, theP, theS)
     }
 
     /// Transforms a plane with the transformation theT from class Trsf.
@@ -6499,26 +3578,14 @@ impl Pln {
     /// point, on the "XAxis" and the "YAxis".
     /// The resulting normal direction is the cross product between
     /// the "XDirection" and the "YDirection" after transformation.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Pln {
-        crate::ffi::gp_Pln::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Pln::translate(self, theV)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
+        crate::ffi::gp_Pln_transformed(self, theT)
     }
 
     /// Translates a plane in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Pln {
-        crate::ffi::gp_Pln::translated(self, theV)
-    }
-
-    pub fn translate_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Pln::translate(self, theP1, theP2)
+    pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
+        crate::ffi::gp_Pln_translated_vec(self, theV)
     }
 
     /// Translates a plane from the point theP1 to the point theP2.
@@ -6526,8 +3593,8 @@ impl Pln {
         &self,
         theP1: &crate::ffi::gp_Pnt,
         theP2: &crate::ffi::gp_Pnt,
-    ) -> crate::ffi::gp_Pln {
-        crate::ffi::gp_Pln::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pln> {
+        crate::ffi::gp_Pln_translated_pnt2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -6559,205 +3626,56 @@ impl Pnt {
         crate::ffi::gp_Pnt_ctor_real3(theXp, theYp, theZp)
     }
 
-    /// Changes the coordinate of range theIndex :
-    /// theIndex = 1 => X is modified
-    /// theIndex = 2 => Y is modified
-    /// theIndex = 3 => Z is modified
-    /// Raised if theIndex != {1, 2, 3}.
-    pub fn set_coord(self: std::pin::Pin<&mut Self>, theIndex: i32, theXi: f64) {
-        crate::ffi::gp_Pnt::set_coord(self, theIndex, theXi)
-    }
-
-    /// For this point, assigns  the values theXp, theYp and theZp to its three coordinates.
-    pub fn set_coord_real3(self: std::pin::Pin<&mut Self>, theXp: f64, theYp: f64, theZp: f64) {
-        crate::ffi::gp_Pnt::set_coord(self, theXp, theYp, theZp)
-    }
-
-    /// Assigns the given value to the X coordinate of this point.
-    pub fn set_x(self: std::pin::Pin<&mut Self>, theX: f64) {
-        crate::ffi::gp_Pnt::set_x(self, theX)
-    }
-
-    /// Assigns the given value to the Y coordinate of this point.
-    pub fn set_y(self: std::pin::Pin<&mut Self>, theY: f64) {
-        crate::ffi::gp_Pnt::set_y(self, theY)
-    }
-
-    /// Assigns the given value to the Z coordinate of this point.
-    pub fn set_z(self: std::pin::Pin<&mut Self>, theZ: f64) {
-        crate::ffi::gp_Pnt::set_z(self, theZ)
-    }
-
-    /// Assigns the three coordinates of theCoord to this point.
-    pub fn set_xyz(self: std::pin::Pin<&mut Self>, theCoord: &crate::ffi::gp_XYZ) {
-        crate::ffi::gp_Pnt::set_xyz(self, theCoord)
-    }
-
-    /// Returns the coordinate of corresponding to the value of theIndex :
-    /// theIndex = 1 => X is returned
-    /// theIndex = 2 => Y is returned
-    /// theIndex = 3 => Z is returned
-    /// Raises OutOfRange if theIndex != {1, 2, 3}.
-    /// Raised if theIndex != {1, 2, 3}.
-    pub fn coord(&self, theIndex: i32) -> f64 {
-        crate::ffi::gp_Pnt::coord(self, theIndex)
-    }
-
-    /// For this point gives its three coordinates theXp, theYp and theZp.
-    pub fn coord_real3(
-        &self,
-        theXp: std::pin::Pin<&mut f64>,
-        theYp: std::pin::Pin<&mut f64>,
-        theZp: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_Pnt::coord(self, theXp, theYp, theZp)
-    }
-
-    /// For this point, returns its X coordinate.
-    pub fn x(&self) -> f64 {
-        crate::ffi::gp_Pnt::x(self)
-    }
-
-    /// For this point, returns its Y coordinate.
-    pub fn y(&self) -> f64 {
-        crate::ffi::gp_Pnt::y(self)
-    }
-
-    /// For this point, returns its Z coordinate.
-    pub fn z(&self) -> f64 {
-        crate::ffi::gp_Pnt::z(self)
-    }
-
-    /// For this point, returns its three coordinates as a XYZ object.
-    pub fn xyz(&self) -> &crate::ffi::gp_XYZ {
-        crate::ffi::gp_Pnt::xyz(self)
-    }
-
-    /// For this point, returns its three coordinates as a XYZ object.
-    pub fn coord(&self) -> &crate::ffi::gp_XYZ {
-        crate::ffi::gp_Pnt::coord(self)
-    }
-
-    /// Returns the coordinates of this point.
-    /// Note: This syntax allows direct modification of the returned value.
-    pub fn change_coord(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::gp_XYZ> {
-        crate::ffi::gp_Pnt::change_coord(self)
-    }
-
-    /// Assigns the result of the following expression to this point
-    /// (theAlpha*this + theBeta*theP) / (theAlpha + theBeta)
-    pub fn bary_center(
-        self: std::pin::Pin<&mut Self>,
-        theAlpha: f64,
-        theP: &crate::ffi::gp_Pnt,
-        theBeta: f64,
-    ) {
-        crate::ffi::gp_Pnt::bary_center(self, theAlpha, theP, theBeta)
-    }
-
-    /// Comparison
-    /// Returns True if the distance between the two points is
-    /// lower or equal to theLinearTolerance.
-    pub fn is_equal(&self, theOther: &crate::ffi::gp_Pnt, theLinearTolerance: f64) -> bool {
-        crate::ffi::gp_Pnt::is_equal(self, theOther, theLinearTolerance)
-    }
-
-    /// Computes the distance between two points.
-    pub fn distance(&self, theOther: &crate::ffi::gp_Pnt) -> f64 {
-        crate::ffi::gp_Pnt::distance(self, theOther)
-    }
-
-    /// Computes the square distance between two points.
-    pub fn square_distance(&self, theOther: &crate::ffi::gp_Pnt) -> f64 {
-        crate::ffi::gp_Pnt::square_distance(self, theOther)
-    }
-
-    /// Performs the symmetrical transformation of a point
-    /// with respect to the point theP which is the center of
-    /// the  symmetry.
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Pnt::mirror(self, theP)
-    }
-
     /// Performs the symmetrical transformation of a point
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Pnt {
-        crate::ffi::gp_Pnt::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Pnt::mirror(self, theA1)
+    pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::gp_Pnt_mirrored_pnt(self, theP)
     }
 
     /// Performs the symmetrical transformation of a point
     /// with respect to a plane. The axis placement theA2 locates
     /// the plane of the symmetry : (Location, XDirection, YDirection).
-    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Pnt {
-        crate::ffi::gp_Pnt::mirrored(self, theA1)
-    }
-
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Pnt::mirror(self, theA2)
+    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::gp_Pnt_mirrored_ax1(self, theA1)
     }
 
     /// Rotates a point. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Pnt {
-        crate::ffi::gp_Pnt::mirrored(self, theA2)
+    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::gp_Pnt_mirrored_ax2(self, theA2)
     }
 
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Pnt::rotate(self, theA1, theAng)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::gp_Pnt_rotated(self, theA1, theAng)
     }
 
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Pnt {
-        crate::ffi::gp_Pnt::rotated(self, theA1, theAng)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::gp_Pnt_scaled(self, theP, theS)
     }
 
-    /// Scales a point. theS is the scaling value.
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Pnt::scale(self, theP, theS)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::gp_Pnt_transformed(self, theT)
     }
 
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt, theS: f64) -> crate::ffi::gp_Pnt {
-        crate::ffi::gp_Pnt::scaled(self, theP, theS)
-    }
-
-    /// Transforms a point with the transformation T.
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Pnt::transform(self, theT)
-    }
-
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Pnt {
-        crate::ffi::gp_Pnt::transformed(self, theT)
-    }
-
-    /// Translates a point in the direction of the vector theV.
-    /// The magnitude of the translation is the vector's magnitude.
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Pnt::translate(self, theV)
-    }
-
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Pnt {
-        crate::ffi::gp_Pnt::translated(self, theV)
-    }
-
-    /// Translates a point from the point theP1 to the point theP2.
-    pub fn translate_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Pnt::translate(self, theP1, theP2)
+    pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::gp_Pnt_translated_vec(self, theV)
     }
 
     pub fn translated_pnt2(
         &self,
         theP1: &crate::ffi::gp_Pnt,
         theP2: &crate::ffi::gp_Pnt,
-    ) -> crate::ffi::gp_Pnt {
-        crate::ffi::gp_Pnt::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::gp_Pnt_translated_pnt2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -6789,164 +3707,58 @@ impl Pnt2d {
         crate::ffi::gp_Pnt2d_ctor_real2(theXp, theYp)
     }
 
-    /// Assigns the value Xi to the coordinate that corresponds to theIndex:
-    /// theIndex = 1 => X is modified
-    /// theIndex = 2 => Y is modified
-    /// Raises OutOfRange if theIndex != {1, 2}.
-    pub fn set_coord(self: std::pin::Pin<&mut Self>, theIndex: i32, theXi: f64) {
-        crate::ffi::gp_Pnt2d::set_coord(self, theIndex, theXi)
-    }
-
-    /// For this point, assigns the values theXp and theYp to its two coordinates
-    pub fn set_coord_real2(self: std::pin::Pin<&mut Self>, theXp: f64, theYp: f64) {
-        crate::ffi::gp_Pnt2d::set_coord(self, theXp, theYp)
-    }
-
-    /// Assigns the given value to the X  coordinate of this point.
-    pub fn set_x(self: std::pin::Pin<&mut Self>, theX: f64) {
-        crate::ffi::gp_Pnt2d::set_x(self, theX)
-    }
-
-    /// Assigns the given value to the Y  coordinate of this point.
-    pub fn set_y(self: std::pin::Pin<&mut Self>, theY: f64) {
-        crate::ffi::gp_Pnt2d::set_y(self, theY)
-    }
-
-    /// Assigns the two coordinates of Coord to this point.
-    pub fn set_xy(self: std::pin::Pin<&mut Self>, theCoord: &crate::ffi::gp_XY) {
-        crate::ffi::gp_Pnt2d::set_xy(self, theCoord)
-    }
-
-    /// Returns the coordinate of range theIndex :
-    /// theIndex = 1 => X is returned
-    /// theIndex = 2 => Y is returned
-    /// Raises OutOfRange if theIndex != {1, 2}.
-    pub fn coord(&self, theIndex: i32) -> f64 {
-        crate::ffi::gp_Pnt2d::coord(self, theIndex)
-    }
-
-    /// For this point returns its two coordinates as a number pair.
-    pub fn coord_real2(&self, theXp: std::pin::Pin<&mut f64>, theYp: std::pin::Pin<&mut f64>) {
-        crate::ffi::gp_Pnt2d::coord(self, theXp, theYp)
-    }
-
-    /// For this point, returns its X  coordinate.
-    pub fn x(&self) -> f64 {
-        crate::ffi::gp_Pnt2d::x(self)
-    }
-
-    /// For this point, returns its Y coordinate.
-    pub fn y(&self) -> f64 {
-        crate::ffi::gp_Pnt2d::y(self)
-    }
-
-    /// For this point, returns its two coordinates as a number pair.
-    pub fn xy(&self) -> &crate::ffi::gp_XY {
-        crate::ffi::gp_Pnt2d::xy(self)
-    }
-
-    /// For this point, returns its two coordinates as a number pair.
-    pub fn coord(&self) -> &crate::ffi::gp_XY {
-        crate::ffi::gp_Pnt2d::coord(self)
-    }
-
-    /// Returns the coordinates of this point.
-    /// Note: This syntax allows direct modification of the returned value.
-    pub fn change_coord(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::gp_XY> {
-        crate::ffi::gp_Pnt2d::change_coord(self)
-    }
-
-    /// Comparison
-    /// Returns True if the distance between the two
-    /// points is lower or equal to theLinearTolerance.
-    pub fn is_equal(&self, theOther: &crate::ffi::gp_Pnt2d, theLinearTolerance: f64) -> bool {
-        crate::ffi::gp_Pnt2d::is_equal(self, theOther, theLinearTolerance)
-    }
-
-    /// Computes the distance between two points.
-    pub fn distance(&self, theOther: &crate::ffi::gp_Pnt2d) -> f64 {
-        crate::ffi::gp_Pnt2d::distance(self, theOther)
-    }
-
-    /// Computes the square distance between two points.
-    pub fn square_distance(&self, theOther: &crate::ffi::gp_Pnt2d) -> f64 {
-        crate::ffi::gp_Pnt2d::square_distance(self, theOther)
-    }
-
-    /// Performs the symmetrical transformation of a point
-    /// with respect to the point theP which is the center of
-    /// the  symmetry.
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Pnt2d::mirror(self, theP)
-    }
-
     /// Performs the symmetrical transformation of a point
     /// with respect to an axis placement which is the axis
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt2d) -> crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Pnt2d::mirrored(self, theP)
+    pub fn mirrored_pnt2d(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::gp_Pnt2d_mirrored_pnt2d(self, theP)
     }
 
-    pub fn mirror_ax2d(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Pnt2d::mirror(self, theA)
+    pub fn mirrored_ax2d(
+        &self,
+        theA: &crate::ffi::gp_Ax2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::gp_Pnt2d_mirrored_ax2d(self, theA)
     }
 
-    pub fn mirrored_ax2d(&self, theA: &crate::ffi::gp_Ax2d) -> crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Pnt2d::mirrored(self, theA)
+    pub fn rotated(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::gp_Pnt2d_rotated(self, theP, theAng)
     }
 
-    /// Rotates a point. theA1 is the axis of the rotation.
-    /// Ang is the angular value of the rotation in radians.
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
-        crate::ffi::gp_Pnt2d::rotate(self, theP, theAng)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt2d,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::gp_Pnt2d_scaled(self, theP, theS)
     }
 
-    pub fn rotated(&self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) -> crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Pnt2d::rotated(self, theP, theAng)
+    pub fn transformed(
+        &self,
+        theT: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::gp_Pnt2d_transformed(self, theT)
     }
 
-    /// Scales a point. theS is the scaling value.
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
-        crate::ffi::gp_Pnt2d::scale(self, theP, theS)
-    }
-
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt2d, theS: f64) -> crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Pnt2d::scaled(self, theP, theS)
-    }
-
-    /// Transforms a point with the transformation theT.
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::gp_Pnt2d::transform(self, theT)
-    }
-
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf2d) -> crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Pnt2d::transformed(self, theT)
-    }
-
-    /// Translates a point in the direction of the vector theV.
-    /// The magnitude of the translation is the vector's magnitude.
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec2d) {
-        crate::ffi::gp_Pnt2d::translate(self, theV)
-    }
-
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec2d) -> crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Pnt2d::translated(self, theV)
-    }
-
-    /// Translates a point from the point theP1 to the point theP2.
-    pub fn translate_pnt2d2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt2d,
-        theP2: &crate::ffi::gp_Pnt2d,
-    ) {
-        crate::ffi::gp_Pnt2d::translate(self, theP1, theP2)
+    pub fn translated_vec2d(
+        &self,
+        theV: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::gp_Pnt2d_translated_vec2d(self, theV)
     }
 
     pub fn translated_pnt2d2(
         &self,
         theP1: &crate::ffi::gp_Pnt2d,
         theP2: &crate::ffi::gp_Pnt2d,
-    ) -> crate::ffi::gp_Pnt2d {
-        crate::ffi::gp_Pnt2d::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::gp_Pnt2d_translated_pnt2d2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -7013,176 +3825,52 @@ impl Quaternion {
         crate::ffi::gp_Quaternion_ctor_mat(theMat)
     }
 
-    /// Simple equal test without precision
-    pub fn is_equal(&self, theOther: &crate::ffi::gp_Quaternion) -> bool {
-        crate::ffi::gp_Quaternion::is_equal(self, theOther)
-    }
-
-    /// Sets quaternion to shortest-arc rotation producing
-    /// vector theVecTo from vector theVecFrom.
-    /// If vectors theVecFrom and theVecTo are opposite then rotation
-    /// axis is computed as theVecFrom ^ (1,0,0) or theVecFrom ^ (0,0,1).
-    pub fn set_rotation(
-        self: std::pin::Pin<&mut Self>,
-        theVecFrom: &crate::ffi::gp_Vec,
-        theVecTo: &crate::ffi::gp_Vec,
-    ) {
-        crate::ffi::gp_Quaternion::set_rotation(self, theVecFrom, theVecTo)
-    }
-
-    /// Sets quaternion to shortest-arc rotation producing
-    /// vector theVecTo from vector theVecFrom.
-    /// If vectors theVecFrom and theVecTo are opposite then rotation
-    /// axis is computed as theVecFrom ^ theHelpCrossVec.
-    pub fn set_rotation_vec3(
-        self: std::pin::Pin<&mut Self>,
-        theVecFrom: &crate::ffi::gp_Vec,
-        theVecTo: &crate::ffi::gp_Vec,
-        theHelpCrossVec: &crate::ffi::gp_Vec,
-    ) {
-        crate::ffi::gp_Quaternion::set_rotation(self, theVecFrom, theVecTo, theHelpCrossVec)
-    }
-
-    /// Create a unit quaternion from Axis+Angle representation
-    pub fn set_vector_and_angle(
-        self: std::pin::Pin<&mut Self>,
-        theAxis: &crate::ffi::gp_Vec,
-        theAngle: f64,
-    ) {
-        crate::ffi::gp_Quaternion::set_vector_and_angle(self, theAxis, theAngle)
-    }
-
-    /// Convert a quaternion to Axis+Angle representation,
-    /// preserve the axis direction and angle from -PI to +PI
-    pub fn get_vector_and_angle(
-        &self,
-        theAxis: std::pin::Pin<&mut crate::ffi::gp_Vec>,
-        theAngle: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_Quaternion::get_vector_and_angle(self, theAxis, theAngle)
-    }
-
-    /// Create a unit quaternion by rotation matrix
-    /// matrix must contain only rotation (not scale or shear)
-    ///
-    /// For numerical stability we find first the greatest component of quaternion
-    /// and than search others from this one
-    pub fn set_matrix(self: std::pin::Pin<&mut Self>, theMat: &crate::ffi::gp_Mat) {
-        crate::ffi::gp_Quaternion::set_matrix(self, theMat)
-    }
-
     /// Returns rotation operation as 3*3 matrix
-    pub fn get_matrix(&self) -> crate::ffi::gp_Mat {
-        crate::ffi::gp_Quaternion::get_matrix(self)
-    }
-
-    pub fn set(self: std::pin::Pin<&mut Self>, theX: f64, theY: f64, theZ: f64, theW: f64) {
-        crate::ffi::gp_Quaternion::set(self, theX, theY, theZ, theW)
-    }
-
-    pub fn set_quaternion(
-        self: std::pin::Pin<&mut Self>,
-        theQuaternion: &crate::ffi::gp_Quaternion,
-    ) {
-        crate::ffi::gp_Quaternion::set(self, theQuaternion)
-    }
-
-    pub fn x(&self) -> f64 {
-        crate::ffi::gp_Quaternion::x(self)
-    }
-
-    pub fn y(&self) -> f64 {
-        crate::ffi::gp_Quaternion::y(self)
-    }
-
-    pub fn z(&self) -> f64 {
-        crate::ffi::gp_Quaternion::z(self)
-    }
-
-    pub fn w(&self) -> f64 {
-        crate::ffi::gp_Quaternion::w(self)
-    }
-
-    /// Make identity quaternion (zero-rotation)
-    pub fn set_ident(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Quaternion::set_ident(self)
-    }
-
-    /// Reverse direction of rotation (conjugate quaternion)
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Quaternion::reverse(self)
+    pub fn get_matrix(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::gp_Quaternion_get_matrix(self)
     }
 
     /// Return rotation with reversed direction (conjugated quaternion)
-    pub fn reversed(&self) -> crate::ffi::gp_Quaternion {
-        crate::ffi::gp_Quaternion::reversed(self)
-    }
-
-    /// Inverts quaternion (both rotation direction and norm)
-    pub fn invert(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Quaternion::invert(self)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_Quaternion> {
+        crate::ffi::gp_Quaternion_reversed(self)
     }
 
     /// Return inversed quaternion q^-1
-    pub fn inverted(&self) -> crate::ffi::gp_Quaternion {
-        crate::ffi::gp_Quaternion::inverted(self)
-    }
-
-    /// Returns square norm of quaternion
-    pub fn square_norm(&self) -> f64 {
-        crate::ffi::gp_Quaternion::square_norm(self)
-    }
-
-    /// Returns norm of quaternion
-    pub fn norm(&self) -> f64 {
-        crate::ffi::gp_Quaternion::norm(self)
-    }
-
-    /// Scale all components by quaternion by theScale; note that
-    /// rotation is not changed by this operation (except 0-scaling)
-    pub fn scale(self: std::pin::Pin<&mut Self>, theScale: f64) {
-        crate::ffi::gp_Quaternion::scale(self, theScale)
+    pub fn inverted(&self) -> cxx::UniquePtr<crate::ffi::gp_Quaternion> {
+        crate::ffi::gp_Quaternion_inverted(self)
     }
 
     /// Returns scaled quaternion
-    pub fn scaled(&self, theScale: f64) -> crate::ffi::gp_Quaternion {
-        crate::ffi::gp_Quaternion::scaled(self, theScale)
-    }
-
-    /// Stabilize quaternion length within 1 - 1/4.
-    /// This operation is a lot faster than normalization
-    /// and preserve length goes to 0 or infinity
-    pub fn stabilize_length(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Quaternion::stabilize_length(self)
-    }
-
-    /// Scale quaternion that its norm goes to 1.
-    /// The appearing of 0 magnitude or near is a error,
-    /// so we can be sure that can divide by magnitude
-    pub fn normalize(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Quaternion::normalize(self)
+    pub fn scaled(&self, theScale: f64) -> cxx::UniquePtr<crate::ffi::gp_Quaternion> {
+        crate::ffi::gp_Quaternion_scaled(self, theScale)
     }
 
     /// Returns quaternion scaled so that its norm goes to 1.
-    pub fn normalized(&self) -> crate::ffi::gp_Quaternion {
-        crate::ffi::gp_Quaternion::normalized(self)
+    pub fn normalized(&self) -> cxx::UniquePtr<crate::ffi::gp_Quaternion> {
+        crate::ffi::gp_Quaternion_normalized(self)
     }
 
     /// Returns quaternion with all components negated.
     /// Note that this operation does not affect neither
     /// rotation operator defined by quaternion nor its norm.
-    pub fn negated(&self) -> crate::ffi::gp_Quaternion {
-        crate::ffi::gp_Quaternion::negated(self)
+    pub fn negated(&self) -> cxx::UniquePtr<crate::ffi::gp_Quaternion> {
+        crate::ffi::gp_Quaternion_negated(self)
     }
 
     /// Makes sum of quaternion components; result is "rotations mix"
-    pub fn added(&self, theOther: &crate::ffi::gp_Quaternion) -> crate::ffi::gp_Quaternion {
-        crate::ffi::gp_Quaternion::added(self, theOther)
+    pub fn added(
+        &self,
+        theOther: &crate::ffi::gp_Quaternion,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Quaternion> {
+        crate::ffi::gp_Quaternion_added(self, theOther)
     }
 
     /// Makes difference of quaternion components; result is "rotations mix"
-    pub fn subtracted(&self, theOther: &crate::ffi::gp_Quaternion) -> crate::ffi::gp_Quaternion {
-        crate::ffi::gp_Quaternion::subtracted(self, theOther)
+    pub fn subtracted(
+        &self,
+        theOther: &crate::ffi::gp_Quaternion,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Quaternion> {
+        crate::ffi::gp_Quaternion_subtracted(self, theOther)
     }
 
     /// Multiply function - work the same as Matrices multiplying.
@@ -7195,38 +3883,16 @@ impl Quaternion {
     /// qq' != q'q;
     /// qq^-1 = q;
     /// @endcode
-    pub fn multiplied(&self, theOther: &crate::ffi::gp_Quaternion) -> crate::ffi::gp_Quaternion {
-        crate::ffi::gp_Quaternion::multiplied(self, theOther)
-    }
-
-    /// Adds components of other quaternion; result is "rotations mix"
-    pub fn add(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_Quaternion) {
-        crate::ffi::gp_Quaternion::add(self, theOther)
-    }
-
-    /// Subtracts components of other quaternion; result is "rotations mix"
-    pub fn subtract(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_Quaternion) {
-        crate::ffi::gp_Quaternion::subtract(self, theOther)
-    }
-
-    /// Adds rotation by multiplication
-    pub fn multiply(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_Quaternion) {
-        crate::ffi::gp_Quaternion::multiply(self, theOther)
-    }
-
-    /// Computes inner product / scalar product / Dot
-    pub fn dot(&self, theOther: &crate::ffi::gp_Quaternion) -> f64 {
-        crate::ffi::gp_Quaternion::dot(self, theOther)
-    }
-
-    /// Return rotation angle from -PI to PI
-    pub fn get_rotation_angle(&self) -> f64 {
-        crate::ffi::gp_Quaternion::get_rotation_angle(self)
+    pub fn multiplied(
+        &self,
+        theOther: &crate::ffi::gp_Quaternion,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Quaternion> {
+        crate::ffi::gp_Quaternion_multiplied(self, theOther)
     }
 
     /// Rotates vector by quaternion as rotation operator
-    pub fn multiply_vec(&self, theVec: &crate::ffi::gp_Vec) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Quaternion::multiply(self, theVec)
+    pub fn multiply_vec(&self, theVec: &crate::ffi::gp_Vec) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Quaternion_multiply(self, theVec)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -7257,44 +3923,17 @@ impl QuaternionNLerp {
         crate::ffi::gp_QuaternionNLerp_ctor_quaternion2(theQStart, theQEnd)
     }
 
-    /// Initialize the tool with Start and End values.
-    pub fn init(
-        self: std::pin::Pin<&mut Self>,
-        theQStart: &crate::ffi::gp_Quaternion,
-        theQEnd: &crate::ffi::gp_Quaternion,
-    ) {
-        crate::ffi::gp_QuaternionNLerp::init(self, theQStart, theQEnd)
-    }
-
-    /// Initialize the tool with Start and End unit quaternions.
-    pub fn init_from_unit(
-        self: std::pin::Pin<&mut Self>,
-        theQStart: &crate::ffi::gp_Quaternion,
-        theQEnd: &crate::ffi::gp_Quaternion,
-    ) {
-        crate::ffi::gp_QuaternionNLerp::init_from_unit(self, theQStart, theQEnd)
-    }
-
-    /// Set interpolated quaternion for theT position (from 0.0 to 1.0)
-    pub fn interpolate(
-        &self,
-        theT: f64,
-        theResultQ: std::pin::Pin<&mut crate::ffi::gp_Quaternion>,
-    ) {
-        crate::ffi::gp_QuaternionNLerp::interpolate(self, theT, theResultQ)
-    }
-
     /// Compute interpolated quaternion between two quaternions.
     /// @param theStart first  quaternion
     /// @param theEnd   second quaternion
     /// @param theT normalized interpolation coefficient within 0..1 range,
     /// with 0 pointing to theStart and 1 to theEnd.
-    pub fn interpolate(
+    pub fn interpolate_quaternion2_real(
         theQStart: &crate::ffi::gp_Quaternion,
         theQEnd: &crate::ffi::gp_Quaternion,
         theT: f64,
-    ) -> crate::ffi::gp_Quaternion {
-        crate::ffi::gp_QuaternionNLerp::interpolate(theQStart, theQEnd, theT)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Quaternion> {
+        crate::ffi::gp_QuaternionNLerp_interpolate(theQStart, theQEnd, theT)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -7325,44 +3964,17 @@ impl QuaternionSLerp {
         crate::ffi::gp_QuaternionSLerp_ctor_quaternion2(theQStart, theQEnd)
     }
 
-    /// Initialize the tool with Start and End values.
-    pub fn init(
-        self: std::pin::Pin<&mut Self>,
-        theQStart: &crate::ffi::gp_Quaternion,
-        theQEnd: &crate::ffi::gp_Quaternion,
-    ) {
-        crate::ffi::gp_QuaternionSLerp::init(self, theQStart, theQEnd)
-    }
-
-    /// Initialize the tool with Start and End unit quaternions.
-    pub fn init_from_unit(
-        self: std::pin::Pin<&mut Self>,
-        theQStart: &crate::ffi::gp_Quaternion,
-        theQEnd: &crate::ffi::gp_Quaternion,
-    ) {
-        crate::ffi::gp_QuaternionSLerp::init_from_unit(self, theQStart, theQEnd)
-    }
-
-    /// Set interpolated quaternion for theT position (from 0.0 to 1.0)
-    pub fn interpolate(
-        &self,
-        theT: f64,
-        theResultQ: std::pin::Pin<&mut crate::ffi::gp_Quaternion>,
-    ) {
-        crate::ffi::gp_QuaternionSLerp::interpolate(self, theT, theResultQ)
-    }
-
     /// Compute interpolated quaternion between two quaternions.
     /// @param theStart first  quaternion
     /// @param theEnd   second quaternion
     /// @param theT normalized interpolation coefficient within 0..1 range,
     /// with 0 pointing to theStart and 1 to theEnd.
-    pub fn interpolate(
+    pub fn interpolate_quaternion2_real(
         theQStart: &crate::ffi::gp_Quaternion,
         theQEnd: &crate::ffi::gp_Quaternion,
         theT: f64,
-    ) -> crate::ffi::gp_Quaternion {
-        crate::ffi::gp_QuaternionSLerp::interpolate(theQStart, theQEnd, theT)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Quaternion> {
+        crate::ffi::gp_QuaternionSLerp_interpolate(theQStart, theQEnd, theT)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -7412,180 +4024,75 @@ impl Sphere {
         crate::ffi::gp_Sphere_ctor_ax3_real(theA3, theRadius)
     }
 
-    /// Changes the center of the sphere.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theLoc: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Sphere::set_location(self, theLoc)
-    }
-
-    /// Changes the local coordinate system of the sphere.
-    pub fn set_position(self: std::pin::Pin<&mut Self>, theA3: &crate::ffi::gp_Ax3) {
-        crate::ffi::gp_Sphere::set_position(self, theA3)
-    }
-
-    /// Assigns theR the radius of the Sphere.
-    /// Warnings :
-    /// It is not forbidden to create a sphere with null radius.
-    /// Raises ConstructionError if theR < 0.0
-    pub fn set_radius(self: std::pin::Pin<&mut Self>, theR: f64) {
-        crate::ffi::gp_Sphere::set_radius(self, theR)
-    }
-
-    /// Computes the area of the sphere.
-    pub fn area(&self) -> f64 {
-        crate::ffi::gp_Sphere::area(self)
-    }
-
-    /// Computes the coefficients of the implicit equation of the quadric
-    /// in the absolute cartesian coordinates system :
-    /// @code
-    /// theA1.X**2 + theA2.Y**2 + theA3.Z**2 + 2.(theB1.X.Y + theB2.X.Z + theB3.Y.Z) +
-    /// 2.(theC1.X + theC2.Y + theC3.Z) + theD = 0.0
-    /// @endcode
-    pub fn coefficients(
-        &self,
-        theA1: std::pin::Pin<&mut f64>,
-        theA2: std::pin::Pin<&mut f64>,
-        theA3: std::pin::Pin<&mut f64>,
-        theB1: std::pin::Pin<&mut f64>,
-        theB2: std::pin::Pin<&mut f64>,
-        theB3: std::pin::Pin<&mut f64>,
-        theC1: std::pin::Pin<&mut f64>,
-        theC2: std::pin::Pin<&mut f64>,
-        theC3: std::pin::Pin<&mut f64>,
-        theD: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_Sphere::coefficients(
-            self, theA1, theA2, theA3, theB1, theB2, theB3, theC1, theC2, theC3, theD,
-        )
-    }
-
-    /// Reverses the   U   parametrization of   the sphere
-    /// reversing the YAxis.
-    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Sphere::u_reverse(self)
-    }
-
-    /// Reverses the   V   parametrization of   the  sphere
-    /// reversing the ZAxis.
-    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Sphere::v_reverse(self)
-    }
-
-    /// Returns true if the local coordinate system of this sphere
-    /// is right-handed.
-    pub fn direct(&self) -> bool {
-        crate::ffi::gp_Sphere::direct(self)
-    }
-
-    /// --- Purpose ;
-    /// Returns the center of the sphere.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt {
-        crate::ffi::gp_Sphere::location(self)
-    }
-
-    /// Returns the local coordinates system of the sphere.
-    pub fn position(&self) -> &crate::ffi::gp_Ax3 {
-        crate::ffi::gp_Sphere::position(self)
-    }
-
-    /// Returns the radius of the sphere.
-    pub fn radius(&self) -> f64 {
-        crate::ffi::gp_Sphere::radius(self)
-    }
-
-    /// Computes the volume of the sphere
-    pub fn volume(&self) -> f64 {
-        crate::ffi::gp_Sphere::volume(self)
-    }
-
     /// Returns the axis X of the sphere.
-    pub fn x_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Sphere::x_axis(self)
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Sphere_x_axis(self)
     }
 
     /// Returns the axis Y of the sphere.
-    pub fn y_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Sphere::y_axis(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Sphere::mirror(self, theP)
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Sphere_y_axis(self)
     }
 
     /// Performs the symmetrical transformation of a sphere
     /// with respect to the point theP which is the center of the
     /// symmetry.
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Sphere {
-        crate::ffi::gp_Sphere::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Sphere::mirror(self, theA1)
+    pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Sphere> {
+        crate::ffi::gp_Sphere_mirrored_pnt(self, theP)
     }
 
     /// Performs the symmetrical transformation of a sphere with
     /// respect to an axis placement which is the axis of the
     /// symmetry.
-    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Sphere {
-        crate::ffi::gp_Sphere::mirrored(self, theA1)
-    }
-
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Sphere::mirror(self, theA2)
+    pub fn mirrored_ax1(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Sphere> {
+        crate::ffi::gp_Sphere_mirrored_ax1(self, theA1)
     }
 
     /// Performs the symmetrical transformation of a sphere with respect
     /// to a plane. The axis placement theA2 locates the plane of the
     /// of the symmetry : (Location, XDirection, YDirection).
-    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Sphere {
-        crate::ffi::gp_Sphere::mirrored(self, theA2)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Sphere::rotate(self, theA1, theAng)
+    pub fn mirrored_ax2(
+        &self,
+        theA2: &crate::ffi::gp_Ax2,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Sphere> {
+        crate::ffi::gp_Sphere_mirrored_ax2(self, theA2)
     }
 
     /// Rotates a sphere. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Sphere {
-        crate::ffi::gp_Sphere::rotated(self, theA1, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Sphere::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Sphere> {
+        crate::ffi::gp_Sphere_rotated(self, theA1, theAng)
     }
 
     /// Scales a sphere. theS is the scaling value.
     /// The absolute value of S is used to scale the sphere
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt, theS: f64) -> crate::ffi::gp_Sphere {
-        crate::ffi::gp_Sphere::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Sphere::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Sphere> {
+        crate::ffi::gp_Sphere_scaled(self, theP, theS)
     }
 
     /// Transforms a sphere with the transformation theT from class Trsf.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Sphere {
-        crate::ffi::gp_Sphere::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Sphere::translate(self, theV)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Sphere> {
+        crate::ffi::gp_Sphere_transformed(self, theT)
     }
 
     /// Translates a sphere in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Sphere {
-        crate::ffi::gp_Sphere::translated(self, theV)
-    }
-
-    pub fn translate_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Sphere::translate(self, theP1, theP2)
+    pub fn translated_vec(
+        &self,
+        theV: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Sphere> {
+        crate::ffi::gp_Sphere_translated_vec(self, theV)
     }
 
     /// Translates a sphere from the point theP1 to the point theP2.
@@ -7593,8 +4100,8 @@ impl Sphere {
         &self,
         theP1: &crate::ffi::gp_Pnt,
         theP2: &crate::ffi::gp_Pnt,
-    ) -> crate::ffi::gp_Sphere {
-        crate::ffi::gp_Sphere::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Sphere> {
+        crate::ffi::gp_Sphere_translated_pnt2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -7663,202 +4170,69 @@ impl Torus {
         crate::ffi::gp_Torus_ctor_ax3_real2(theA3, theMajorRadius, theMinorRadius)
     }
 
-    /// Modifies this torus, by redefining its local coordinate
-    /// system so that:
-    /// -   its origin and "main Direction" become those of the
-    /// axis theA1 (the "X Direction" and "Y Direction" are then recomputed).
-    /// Raises ConstructionError if the direction of theA1 is parallel to the "XDirection"
-    /// of the coordinate system of the toroidal surface.
-    pub fn set_axis(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Torus::set_axis(self, theA1)
-    }
-
-    /// Changes the location of the torus.
-    pub fn set_location(self: std::pin::Pin<&mut Self>, theLoc: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Torus::set_location(self, theLoc)
-    }
-
-    /// Assigns value to the major radius  of this torus.
-    /// Raises ConstructionError if theMajorRadius - MinorRadius <= Resolution()
-    pub fn set_major_radius(self: std::pin::Pin<&mut Self>, theMajorRadius: f64) {
-        crate::ffi::gp_Torus::set_major_radius(self, theMajorRadius)
-    }
-
-    /// Assigns value to the  minor radius of this torus.
-    /// Raises ConstructionError if theMinorRadius < 0.0 or if
-    /// MajorRadius - theMinorRadius <= Resolution from gp.
-    pub fn set_minor_radius(self: std::pin::Pin<&mut Self>, theMinorRadius: f64) {
-        crate::ffi::gp_Torus::set_minor_radius(self, theMinorRadius)
-    }
-
-    /// Changes the local coordinate system of the surface.
-    pub fn set_position(self: std::pin::Pin<&mut Self>, theA3: &crate::ffi::gp_Ax3) {
-        crate::ffi::gp_Torus::set_position(self, theA3)
-    }
-
-    /// Computes the area of the torus.
-    pub fn area(&self) -> f64 {
-        crate::ffi::gp_Torus::area(self)
-    }
-
-    /// Reverses the   U   parametrization of   the  torus
-    /// reversing the YAxis.
-    pub fn u_reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Torus::u_reverse(self)
-    }
-
-    /// Reverses the   V   parametrization of   the  torus
-    /// reversing the ZAxis.
-    pub fn v_reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Torus::v_reverse(self)
-    }
-
-    /// returns true if the Ax3, the local coordinate system of this torus, is right handed.
-    pub fn direct(&self) -> bool {
-        crate::ffi::gp_Torus::direct(self)
-    }
-
-    /// returns the symmetry axis of the torus.
-    pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Torus::axis(self)
-    }
-
-    /// Computes the coefficients of the implicit equation of the surface
-    /// in the absolute Cartesian coordinate system:
-    /// @code
-    /// Coef(1) * X^4 + Coef(2) * Y^4 + Coef(3) * Z^4 +
-    /// Coef(4) * X^3 * Y + Coef(5) * X^3 * Z + Coef(6) * Y^3 * X +
-    /// Coef(7) * Y^3 * Z + Coef(8) * Z^3 * X + Coef(9) * Z^3 * Y +
-    /// Coef(10) * X^2 * Y^2 + Coef(11) * X^2 * Z^2 +
-    /// Coef(12) * Y^2 * Z^2 + Coef(13) * X^2 * Y * Z +
-    /// Coef(14) * X * Y^2 * Z + Coef(15) * X * Y * Z^2 +
-    /// Coef(16) * X^3 + Coef(17) * Y^3 + Coef(18) * Z^3 +
-    /// Coef(19) * X^2 * Y + Coef(20) * X^2 * Z + Coef(21) * Y^2 * X +
-    /// Coef(22) * Y^2 * Z + Coef(23) * Z^2 * X + Coef(24) * Z^2 * Y +
-    /// Coef(25) * X * Y * Z +
-    /// Coef(26) * X^2 + Coef(27) * Y^2 + Coef(28) * Z^2 +
-    /// Coef(29) * X * Y + Coef(30) * X * Z + Coef(31) * Y * Z +
-    /// Coef(32) * X + Coef(33) * Y + Coef(34) *  Z +
-    /// Coef(35) = 0.0
-    /// @endcode
-    /// Raises DimensionError if the length of theCoef is lower than 35.
-    pub fn coefficients(&self, theCoef: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfReal>) {
-        crate::ffi::gp_Torus::coefficients(self, theCoef)
-    }
-
-    /// Returns the Torus's location.
-    pub fn location(&self) -> &crate::ffi::gp_Pnt {
-        crate::ffi::gp_Torus::location(self)
-    }
-
-    /// Returns the local coordinates system of the torus.
-    pub fn position(&self) -> &crate::ffi::gp_Ax3 {
-        crate::ffi::gp_Torus::position(self)
-    }
-
-    /// returns the major radius of the torus.
-    pub fn major_radius(&self) -> f64 {
-        crate::ffi::gp_Torus::major_radius(self)
-    }
-
-    /// returns the minor radius of the torus.
-    pub fn minor_radius(&self) -> f64 {
-        crate::ffi::gp_Torus::minor_radius(self)
-    }
-
-    /// Computes the volume of the torus.
-    pub fn volume(&self) -> f64 {
-        crate::ffi::gp_Torus::volume(self)
-    }
-
     /// returns the axis X of the torus.
-    pub fn x_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Torus::x_axis(self)
+    pub fn x_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Torus_x_axis(self)
     }
 
     /// returns the axis Y of the torus.
-    pub fn y_axis(&self) -> crate::ffi::gp_Ax1 {
-        crate::ffi::gp_Torus::y_axis(self)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Torus::mirror(self, theP)
+    pub fn y_axis(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax1> {
+        crate::ffi::gp_Torus_y_axis(self)
     }
 
     /// Performs the symmetrical transformation of a torus
     /// with respect to the point theP which is the center of the
     /// symmetry.
-    pub fn mirrored(&self, theP: &crate::ffi::gp_Pnt) -> crate::ffi::gp_Torus {
-        crate::ffi::gp_Torus::mirrored(self, theP)
-    }
-
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Torus::mirror(self, theA1)
+    pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Torus> {
+        crate::ffi::gp_Torus_mirrored_pnt(self, theP)
     }
 
     /// Performs the symmetrical transformation of a torus with
     /// respect to an axis placement which is the axis of the
     /// symmetry.
-    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Torus {
-        crate::ffi::gp_Torus::mirrored(self, theA1)
-    }
-
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Torus::mirror(self, theA2)
+    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<crate::ffi::gp_Torus> {
+        crate::ffi::gp_Torus_mirrored_ax1(self, theA1)
     }
 
     /// Performs the symmetrical transformation of a torus with respect
     /// to a plane. The axis placement theA2 locates the plane of the
     /// of the symmetry : (Location, XDirection, YDirection).
-    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Torus {
-        crate::ffi::gp_Torus::mirrored(self, theA2)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Torus::rotate(self, theA1, theAng)
+    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<crate::ffi::gp_Torus> {
+        crate::ffi::gp_Torus_mirrored_ax2(self, theA2)
     }
 
     /// Rotates a torus. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Torus {
-        crate::ffi::gp_Torus::rotated(self, theA1, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Torus::scale(self, theP, theS)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Torus> {
+        crate::ffi::gp_Torus_rotated(self, theA1, theAng)
     }
 
     /// Scales a torus. S is the scaling value.
     /// The absolute value of S is used to scale the torus
-    pub fn scaled(&self, theP: &crate::ffi::gp_Pnt, theS: f64) -> crate::ffi::gp_Torus {
-        crate::ffi::gp_Torus::scaled(self, theP, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Torus::transform(self, theT)
+    pub fn scaled(
+        &self,
+        theP: &crate::ffi::gp_Pnt,
+        theS: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Torus> {
+        crate::ffi::gp_Torus_scaled(self, theP, theS)
     }
 
     /// Transforms a torus with the transformation theT from class Trsf.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Torus {
-        crate::ffi::gp_Torus::transformed(self, theT)
-    }
-
-    pub fn translate(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Torus::translate(self, theV)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Torus> {
+        crate::ffi::gp_Torus_transformed(self, theT)
     }
 
     /// Translates a torus in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Torus {
-        crate::ffi::gp_Torus::translated(self, theV)
-    }
-
-    pub fn translate_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Torus::translate(self, theP1, theP2)
+    pub fn translated_vec(
+        &self,
+        theV: &crate::ffi::gp_Vec,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Torus> {
+        crate::ffi::gp_Torus_translated_vec(self, theV)
     }
 
     /// Translates a torus from the point theP1 to the point theP2.
@@ -7866,8 +4240,8 @@ impl Torus {
         &self,
         theP1: &crate::ffi::gp_Pnt,
         theP2: &crate::ffi::gp_Pnt,
-    ) -> crate::ffi::gp_Torus {
-        crate::ffi::gp_Torus::translated(self, theP1, theP2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Torus> {
+        crate::ffi::gp_Torus_translated_pnt2(self, theP1, theP2)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -7927,257 +4301,15 @@ impl Trsf {
         crate::ffi::gp_Trsf_ctor_trsf2d(theT)
     }
 
-    /// Makes the transformation into a symmetrical transformation.
-    /// theP is the center of the symmetry.
-    pub fn set_mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::gp_Trsf::set_mirror(self, theP)
-    }
-
-    /// Makes the transformation into a symmetrical transformation.
-    /// theA1 is the center of the axial symmetry.
-    pub fn set_mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Trsf::set_mirror(self, theA1)
-    }
-
-    /// Makes the transformation into a symmetrical transformation.
-    /// theA2 is the center of the planar symmetry
-    /// and defines the plane of symmetry by its origin, "X
-    /// Direction" and "Y Direction".
-    pub fn set_mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Trsf::set_mirror(self, theA2)
-    }
-
-    /// Changes the transformation into a rotation.
-    /// theA1 is the rotation axis and theAng is the angular value of the
-    /// rotation in radians.
-    pub fn set_rotation(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Trsf::set_rotation(self, theA1, theAng)
-    }
-
-    /// Changes the transformation into a rotation defined by quaternion.
-    /// Note that rotation is performed around origin, i.e.
-    /// no translation is involved.
-    pub fn set_rotation_quaternion(
-        self: std::pin::Pin<&mut Self>,
-        theR: &crate::ffi::gp_Quaternion,
-    ) {
-        crate::ffi::gp_Trsf::set_rotation(self, theR)
-    }
-
-    /// Replaces the rotation part with specified quaternion.
-    pub fn set_rotation_part(self: std::pin::Pin<&mut Self>, theR: &crate::ffi::gp_Quaternion) {
-        crate::ffi::gp_Trsf::set_rotation_part(self, theR)
-    }
-
-    /// Changes the transformation into a scale.
-    /// theP is the center of the scale and theS is the scaling value.
-    /// Raises ConstructionError  If <theS> is null.
-    pub fn set_scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt, theS: f64) {
-        crate::ffi::gp_Trsf::set_scale(self, theP, theS)
-    }
-
-    /// Modifies this transformation so that it transforms the
-    /// coordinate system defined by theFromSystem1 into the
-    /// one defined by theToSystem2. After this modification, this
-    /// transformation transforms:
-    /// -   the origin of theFromSystem1 into the origin of theToSystem2,
-    /// -   the "X Direction" of theFromSystem1 into the "X
-    /// Direction" of theToSystem2,
-    /// -   the "Y Direction" of theFromSystem1 into the "Y
-    /// Direction" of theToSystem2, and
-    /// -   the "main Direction" of theFromSystem1 into the "main
-    /// Direction" of theToSystem2.
-    /// Warning
-    /// When you know the coordinates of a point in one
-    /// coordinate system and you want to express these
-    /// coordinates in another one, do not use the
-    /// transformation resulting from this function. Use the
-    /// transformation that results from SetTransformation instead.
-    /// SetDisplacement and SetTransformation create
-    /// related transformations: the vectorial part of one is the
-    /// inverse of the vectorial part of the other.
-    pub fn set_displacement(
-        self: std::pin::Pin<&mut Self>,
-        theFromSystem1: &crate::ffi::gp_Ax3,
-        theToSystem2: &crate::ffi::gp_Ax3,
-    ) {
-        crate::ffi::gp_Trsf::set_displacement(self, theFromSystem1, theToSystem2)
-    }
-
-    /// Modifies this transformation so that it transforms the
-    /// coordinates of any point, (x, y, z), relative to a source
-    /// coordinate system into the coordinates (x', y', z') which
-    /// are relative to a target coordinate system, but which
-    /// represent the same point
-    /// The transformation is from the coordinate
-    /// system "theFromSystem1" to the coordinate system "theToSystem2".
-    /// Example :
-    /// @code
-    /// gp_Ax3 theFromSystem1, theToSystem2;
-    /// double x1, y1, z1;  // are the coordinates of a point in the local system theFromSystem1
-    /// double x2, y2, z2;  // are the coordinates of a point in the local system theToSystem2
-    /// gp_Pnt P1 (x1, y1, z1)
-    /// gp_Trsf T;
-    /// T.SetTransformation (theFromSystem1, theToSystem2);
-    /// gp_Pnt P2 = P1.Transformed (T);
-    /// P2.Coord (x2, y2, z2);
-    /// @endcode
-    pub fn set_transformation(
-        self: std::pin::Pin<&mut Self>,
-        theFromSystem1: &crate::ffi::gp_Ax3,
-        theToSystem2: &crate::ffi::gp_Ax3,
-    ) {
-        crate::ffi::gp_Trsf::set_transformation(self, theFromSystem1, theToSystem2)
-    }
-
-    /// Modifies this transformation so that it transforms the
-    /// coordinates of any point, (x, y, z), relative to a source
-    /// coordinate system into the coordinates (x', y', z') which
-    /// are relative to a target coordinate system, but which
-    /// represent the same point
-    /// The transformation is from the default coordinate system
-    /// @code
-    /// {P(0.,0.,0.), VX (1.,0.,0.), VY (0.,1.,0.), VZ (0., 0. ,1.) }
-    /// @endcode
-    /// to the local coordinate system defined with the Ax3 theToSystem.
-    /// Use in the same way  as the previous method. FromSystem1 is
-    /// defaulted to the absolute coordinate system.
-    pub fn set_transformation_ax3(
-        self: std::pin::Pin<&mut Self>,
-        theToSystem: &crate::ffi::gp_Ax3,
-    ) {
-        crate::ffi::gp_Trsf::set_transformation(self, theToSystem)
-    }
-
-    /// Sets transformation by directly specified rotation and translation.
-    pub fn set_transformation_quaternion_vec(
-        self: std::pin::Pin<&mut Self>,
-        R: &crate::ffi::gp_Quaternion,
-        theT: &crate::ffi::gp_Vec,
-    ) {
-        crate::ffi::gp_Trsf::set_transformation(self, R, theT)
-    }
-
-    /// Changes the transformation into a translation.
-    /// theV is the vector of the translation.
-    pub fn set_translation(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Trsf::set_translation(self, theV)
-    }
-
-    /// Makes the transformation into a translation where the translation vector
-    /// is the vector (theP1, theP2) defined from point theP1 to point theP2.
-    pub fn set_translation_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt,
-        theP2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::gp_Trsf::set_translation(self, theP1, theP2)
-    }
-
-    /// Replaces the translation vector with the vector theV.
-    pub fn set_translation_part(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Trsf::set_translation_part(self, theV)
-    }
-
-    /// Modifies the scale factor.
-    /// Raises ConstructionError  If theS is null.
-    pub fn set_scale_factor(self: std::pin::Pin<&mut Self>, theS: f64) {
-        crate::ffi::gp_Trsf::set_scale_factor(self, theS)
-    }
-
-    /// Sets the coefficients  of the transformation.  The
-    /// transformation  of the  point  x,y,z is  the point
-    /// x',y',z' with :
-    /// @code
-    /// x' = a11 x + a12 y + a13 z + a14
-    /// y' = a21 x + a22 y + a23 z + a24
-    /// z' = a31 x + a32 y + a33 z + a34
-    /// @endcode
-    /// The method Value(i,j) will return aij.
-    /// Raises ConstructionError if the determinant of  the aij is null.
-    /// The matrix is orthogonalized before future using.
-    pub fn set_values(
-        self: std::pin::Pin<&mut Self>,
-        a11: f64,
-        a12: f64,
-        a13: f64,
-        a14: f64,
-        a21: f64,
-        a22: f64,
-        a23: f64,
-        a24: f64,
-        a31: f64,
-        a32: f64,
-        a33: f64,
-        a34: f64,
-    ) {
-        crate::ffi::gp_Trsf::set_values(
-            self, a11, a12, a13, a14, a21, a22, a23, a24, a31, a32, a33, a34,
-        )
-    }
-
-    /// Returns true if the determinant of the vectorial part of
-    /// this transformation is negative.
-    pub fn is_negative(&self) -> bool {
-        crate::ffi::gp_Trsf::is_negative(self)
-    }
-
-    /// Returns the scale factor.
-    pub fn scale_factor(&self) -> f64 {
-        crate::ffi::gp_Trsf::scale_factor(self)
-    }
-
-    /// Returns the translation part of the transformation's matrix
-    pub fn translation_part(&self) -> &crate::ffi::gp_XYZ {
-        crate::ffi::gp_Trsf::translation_part(self)
-    }
-
-    /// Returns the boolean True if there is non-zero rotation.
-    /// In the presence of rotation, the output parameters store the axis
-    /// and the angle of rotation. The method always returns positive
-    /// value "theAngle", i.e., 0. < theAngle <= PI.
-    /// Note that this rotation is defined only by the vectorial part of
-    /// the transformation; generally you would need to check also the
-    /// translational part to obtain the axis (gp_Ax1) of rotation.
-    pub fn get_rotation(
-        &self,
-        theAxis: std::pin::Pin<&mut crate::ffi::gp_XYZ>,
-        theAngle: std::pin::Pin<&mut f64>,
-    ) -> bool {
-        crate::ffi::gp_Trsf::get_rotation(self, theAxis, theAngle)
-    }
-
     /// Returns quaternion representing rotational part of the transformation.
-    pub fn get_rotation(&self) -> crate::ffi::gp_Quaternion {
-        crate::ffi::gp_Trsf::get_rotation(self)
+    pub fn get_rotation_wrapper(&self) -> cxx::UniquePtr<crate::ffi::gp_Quaternion> {
+        crate::ffi::gp_Trsf_get_rotation(self)
     }
 
     /// Returns the vectorial part of the transformation. It is
     /// a 3*3 matrix which includes the scale factor.
-    pub fn vectorial_part(&self) -> crate::ffi::gp_Mat {
-        crate::ffi::gp_Trsf::vectorial_part(self)
-    }
-
-    /// Computes the homogeneous vectorial part of the transformation.
-    /// It is a 3*3 matrix which doesn't include the scale factor.
-    /// In other words, the vectorial part of this transformation is equal
-    /// to its homogeneous vectorial part, multiplied by the scale factor.
-    /// The coefficients of this matrix must be multiplied by the
-    /// scale factor to obtain the coefficients of the transformation.
-    pub fn h_vectorial_part(&self) -> &crate::ffi::gp_Mat {
-        crate::ffi::gp_Trsf::h_vectorial_part(self)
-    }
-
-    /// Returns the coefficients of the transformation's matrix.
-    /// It is a 3 rows * 4 columns matrix.
-    /// This coefficient includes the scale factor.
-    /// Raises OutOfRanged if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 4
-    pub fn value(&self, theRow: i32, theCol: i32) -> f64 {
-        crate::ffi::gp_Trsf::value(self, theRow, theCol)
-    }
-
-    pub fn invert(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Trsf::invert(self)
+    pub fn vectorial_part(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat> {
+        crate::ffi::gp_Trsf_vectorial_part(self)
     }
 
     /// Computes the reverse transformation
@@ -8195,28 +4327,12 @@ impl Trsf {
     /// gp_Pnt P3 = P1.Transformed(T1);    // using T1 then T2
     /// P3.Transform(T2);                  // P3 = P2 !!!
     /// @endcode
-    pub fn inverted(&self) -> crate::ffi::gp_Trsf {
-        crate::ffi::gp_Trsf::inverted(self)
+    pub fn inverted(&self) -> cxx::UniquePtr<crate::ffi::gp_Trsf> {
+        crate::ffi::gp_Trsf_inverted(self)
     }
 
-    pub fn multiplied(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Trsf {
-        crate::ffi::gp_Trsf::multiplied(self, theT)
-    }
-
-    /// Computes the transformation composed with <me> and theT.
-    /// <me> = <me> * theT
-    pub fn multiply(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Trsf::multiply(self, theT)
-    }
-
-    /// Computes the transformation composed with <me> and T.
-    /// <me> = theT * <me>
-    pub fn pre_multiply(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Trsf::pre_multiply(self, theT)
-    }
-
-    pub fn power(self: std::pin::Pin<&mut Self>, theN: i32) {
-        crate::ffi::gp_Trsf::power(self, theN)
+    pub fn multiplied(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Trsf> {
+        crate::ffi::gp_Trsf_multiplied(self, theT)
     }
 
     /// Computes the following composition of transformations
@@ -8226,22 +4342,8 @@ impl Trsf {
     ///
     /// Raises if theN < 0 and if the matrix of the transformation not
     /// inversible.
-    pub fn powered(&self, theN: i32) -> crate::ffi::gp_Trsf {
-        crate::ffi::gp_Trsf::powered(self, theN)
-    }
-
-    pub fn transforms(
-        &self,
-        theX: std::pin::Pin<&mut f64>,
-        theY: std::pin::Pin<&mut f64>,
-        theZ: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_Trsf::transforms(self, theX, theY, theZ)
-    }
-
-    /// Transformation of a triplet XYZ with a Trsf
-    pub fn transforms_xyz(&self, theCoord: std::pin::Pin<&mut crate::ffi::gp_XYZ>) {
-        crate::ffi::gp_Trsf::transforms(self, theCoord)
+    pub fn powered(&self, theN: i32) -> cxx::UniquePtr<crate::ffi::gp_Trsf> {
+        crate::ffi::gp_Trsf_powered(self, theN)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -8284,151 +4386,25 @@ impl Trsf2d {
         crate::ffi::gp_Trsf2d_ctor_trsf(theT)
     }
 
-    /// Changes the transformation into a symmetrical transformation.
-    /// theP is the center of the symmetry.
-    pub fn set_mirror(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d) {
-        crate::ffi::gp_Trsf2d::set_mirror(self, theP)
-    }
-
-    /// Changes the transformation into a symmetrical transformation.
-    /// theA is the center of the axial symmetry.
-    pub fn set_mirror_ax2d(self: std::pin::Pin<&mut Self>, theA: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Trsf2d::set_mirror(self, theA)
-    }
-
-    /// Changes the transformation into a rotation.
-    /// theP is the rotation's center and theAng is the angular value of the
-    /// rotation in radian.
-    pub fn set_rotation(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
-        crate::ffi::gp_Trsf2d::set_rotation(self, theP, theAng)
-    }
-
-    /// Changes the transformation into a scale.
-    /// theP is the center of the scale and theS is the scaling value.
-    pub fn set_scale(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
-        crate::ffi::gp_Trsf2d::set_scale(self, theP, theS)
-    }
-
-    /// Changes a transformation allowing passage from the coordinate
-    /// system "theFromSystem1" to the coordinate system "theToSystem2".
-    pub fn set_transformation(
-        self: std::pin::Pin<&mut Self>,
-        theFromSystem1: &crate::ffi::gp_Ax2d,
-        theToSystem2: &crate::ffi::gp_Ax2d,
-    ) {
-        crate::ffi::gp_Trsf2d::set_transformation(self, theFromSystem1, theToSystem2)
-    }
-
-    /// Changes the transformation allowing passage from the basic
-    /// coordinate system
-    /// {P(0.,0.,0.), VX (1.,0.,0.), VY (0.,1.,0.)}
-    /// to the local coordinate system defined with the Ax2d theToSystem.
-    pub fn set_transformation_ax2d(
-        self: std::pin::Pin<&mut Self>,
-        theToSystem: &crate::ffi::gp_Ax2d,
-    ) {
-        crate::ffi::gp_Trsf2d::set_transformation(self, theToSystem)
-    }
-
-    /// Changes the transformation into a translation.
-    /// theV is the vector of the translation.
-    pub fn set_translation(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec2d) {
-        crate::ffi::gp_Trsf2d::set_translation(self, theV)
-    }
-
-    /// Makes the transformation into a translation from
-    /// the point theP1 to the point theP2.
-    pub fn set_translation_pnt2d2(
-        self: std::pin::Pin<&mut Self>,
-        theP1: &crate::ffi::gp_Pnt2d,
-        theP2: &crate::ffi::gp_Pnt2d,
-    ) {
-        crate::ffi::gp_Trsf2d::set_translation(self, theP1, theP2)
-    }
-
-    /// Replaces the translation vector with theV.
-    pub fn set_translation_part(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec2d) {
-        crate::ffi::gp_Trsf2d::set_translation_part(self, theV)
-    }
-
-    /// Modifies the scale factor.
-    pub fn set_scale_factor(self: std::pin::Pin<&mut Self>, theS: f64) {
-        crate::ffi::gp_Trsf2d::set_scale_factor(self, theS)
-    }
-
-    /// Returns true if the determinant of the vectorial part of
-    /// this transformation is negative..
-    pub fn is_negative(&self) -> bool {
-        crate::ffi::gp_Trsf2d::is_negative(self)
-    }
-
-    /// Returns the scale factor.
-    pub fn scale_factor(&self) -> f64 {
-        crate::ffi::gp_Trsf2d::scale_factor(self)
-    }
-
-    /// Returns the translation part of the transformation's matrix
-    pub fn translation_part(&self) -> &crate::ffi::gp_XY {
-        crate::ffi::gp_Trsf2d::translation_part(self)
-    }
-
     /// Returns the vectorial part of the transformation. It is a
     /// 2*2 matrix which includes the scale factor.
-    pub fn vectorial_part(&self) -> crate::ffi::gp_Mat2d {
-        crate::ffi::gp_Trsf2d::vectorial_part(self)
-    }
-
-    /// Returns the homogeneous vectorial part of the transformation.
-    /// It is a 2*2 matrix which doesn't include the scale factor.
-    /// The coefficients of this matrix must be multiplied by the
-    /// scale factor to obtain the coefficients of the transformation.
-    pub fn h_vectorial_part(&self) -> &crate::ffi::gp_Mat2d {
-        crate::ffi::gp_Trsf2d::h_vectorial_part(self)
-    }
-
-    /// Returns the angle corresponding to the rotational component
-    /// of the transformation matrix (operation opposite to SetRotation()).
-    pub fn rotation_part(&self) -> f64 {
-        crate::ffi::gp_Trsf2d::rotation_part(self)
-    }
-
-    /// Returns the coefficients of the transformation's matrix.
-    /// It is a 2 rows * 3 columns matrix.
-    /// Raises OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 3
-    pub fn value(&self, theRow: i32, theCol: i32) -> f64 {
-        crate::ffi::gp_Trsf2d::value(self, theRow, theCol)
-    }
-
-    pub fn invert(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Trsf2d::invert(self)
+    pub fn vectorial_part(&self) -> cxx::UniquePtr<crate::ffi::gp_Mat2d> {
+        crate::ffi::gp_Trsf2d_vectorial_part(self)
     }
 
     /// Computes the reverse transformation.
     /// Raises an exception if the matrix of the transformation
     /// is not inversible, it means that the scale factor is lower
     /// or equal to Resolution from package gp.
-    pub fn inverted(&self) -> crate::ffi::gp_Trsf2d {
-        crate::ffi::gp_Trsf2d::inverted(self)
+    pub fn inverted(&self) -> cxx::UniquePtr<crate::ffi::gp_Trsf2d> {
+        crate::ffi::gp_Trsf2d_inverted(self)
     }
 
-    pub fn multiplied(&self, theT: &crate::ffi::gp_Trsf2d) -> crate::ffi::gp_Trsf2d {
-        crate::ffi::gp_Trsf2d::multiplied(self, theT)
-    }
-
-    /// Computes the transformation composed from <me> and theT.
-    /// <me> = <me> * theT
-    pub fn multiply(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::gp_Trsf2d::multiply(self, theT)
-    }
-
-    /// Computes the transformation composed from <me> and theT.
-    /// <me> = theT * <me>
-    pub fn pre_multiply(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::gp_Trsf2d::pre_multiply(self, theT)
-    }
-
-    pub fn power(self: std::pin::Pin<&mut Self>, theN: i32) {
-        crate::ffi::gp_Trsf2d::power(self, theN)
+    pub fn multiplied(
+        &self,
+        theT: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Trsf2d> {
+        crate::ffi::gp_Trsf2d_multiplied(self, theT)
     }
 
     /// Computes the following composition of transformations
@@ -8438,39 +4414,11 @@ impl Trsf2d {
     ///
     /// Raises if theN < 0 and if the matrix of the transformation not
     /// inversible.
-    pub fn powered(self: std::pin::Pin<&mut Self>, theN: i32) -> crate::ffi::gp_Trsf2d {
-        crate::ffi::gp_Trsf2d::powered(self, theN)
-    }
-
-    pub fn transforms(&self, theX: std::pin::Pin<&mut f64>, theY: std::pin::Pin<&mut f64>) {
-        crate::ffi::gp_Trsf2d::transforms(self, theX, theY)
-    }
-
-    /// Transforms  a doublet XY with a Trsf2d
-    pub fn transforms_xy(&self, theCoord: std::pin::Pin<&mut crate::ffi::gp_XY>) {
-        crate::ffi::gp_Trsf2d::transforms(self, theCoord)
-    }
-
-    /// Sets the coefficients  of the transformation. The
-    /// transformation  of the  point  x,y is  the point
-    /// x',y' with :
-    /// @code
-    /// x' = a11 x + a12 y + a13
-    /// y' = a21 x + a22 y + a23
-    /// @endcode
-    /// The method Value(i,j) will return aij.
-    /// Raises ConstructionError if the determinant of the aij is null.
-    /// If the matrix as not a uniform scale it will be orthogonalized before future using.
-    pub fn set_values(
+    pub fn powered(
         self: std::pin::Pin<&mut Self>,
-        a11: f64,
-        a12: f64,
-        a13: f64,
-        a21: f64,
-        a22: f64,
-        a23: f64,
-    ) {
-        crate::ffi::gp_Trsf2d::set_values(self, a11, a12, a13, a21, a22, a23)
+        theN: i32,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Trsf2d> {
+        crate::ffi::gp_Trsf2d_powered(self, theN)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -8516,230 +4464,29 @@ impl Vec {
         crate::ffi::gp_Vec_ctor_pnt2(theP1, theP2)
     }
 
-    /// Changes the coordinate of range theIndex
-    /// theIndex = 1 => X is modified
-    /// theIndex = 2 => Y is modified
-    /// theIndex = 3 => Z is modified
-    /// Raised if theIndex != {1, 2, 3}.
-    pub fn set_coord(self: std::pin::Pin<&mut Self>, theIndex: i32, theXi: f64) {
-        crate::ffi::gp_Vec::set_coord(self, theIndex, theXi)
-    }
-
-    /// For this vector, assigns
-    /// -   the values theXv, theYv and theZv to its three coordinates.
-    pub fn set_coord_real3(self: std::pin::Pin<&mut Self>, theXv: f64, theYv: f64, theZv: f64) {
-        crate::ffi::gp_Vec::set_coord(self, theXv, theYv, theZv)
-    }
-
-    /// Assigns the given value to the X coordinate of this vector.
-    pub fn set_x(self: std::pin::Pin<&mut Self>, theX: f64) {
-        crate::ffi::gp_Vec::set_x(self, theX)
-    }
-
-    /// Assigns the given value to the X coordinate of this vector.
-    pub fn set_y(self: std::pin::Pin<&mut Self>, theY: f64) {
-        crate::ffi::gp_Vec::set_y(self, theY)
-    }
-
-    /// Assigns the given value to the X coordinate of this vector.
-    pub fn set_z(self: std::pin::Pin<&mut Self>, theZ: f64) {
-        crate::ffi::gp_Vec::set_z(self, theZ)
-    }
-
-    /// Assigns the three coordinates of theCoord to this vector.
-    pub fn set_xyz(self: std::pin::Pin<&mut Self>, theCoord: &crate::ffi::gp_XYZ) {
-        crate::ffi::gp_Vec::set_xyz(self, theCoord)
-    }
-
-    /// Returns the coordinate of range theIndex :
-    /// theIndex = 1 => X is returned
-    /// theIndex = 2 => Y is returned
-    /// theIndex = 3 => Z is returned
-    /// Raised if theIndex != {1, 2, 3}.
-    pub fn coord(&self, theIndex: i32) -> f64 {
-        crate::ffi::gp_Vec::coord(self, theIndex)
-    }
-
-    /// For this vector returns its three coordinates theXv, theYv, and theZv inline
-    pub fn coord_real3(
-        &self,
-        theXv: std::pin::Pin<&mut f64>,
-        theYv: std::pin::Pin<&mut f64>,
-        theZv: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_Vec::coord(self, theXv, theYv, theZv)
-    }
-
-    /// For this vector, returns its X coordinate.
-    pub fn x(&self) -> f64 {
-        crate::ffi::gp_Vec::x(self)
-    }
-
-    /// For this vector, returns its Y coordinate.
-    pub fn y(&self) -> f64 {
-        crate::ffi::gp_Vec::y(self)
-    }
-
-    /// For this vector, returns its Z  coordinate.
-    pub fn z(&self) -> f64 {
-        crate::ffi::gp_Vec::z(self)
-    }
-
-    /// For this vector, returns
-    /// -   its three coordinates as a number triple
-    pub fn xyz(&self) -> &crate::ffi::gp_XYZ {
-        crate::ffi::gp_Vec::xyz(self)
-    }
-
-    /// Returns True if the two vectors have the same magnitude value
-    /// and the same direction. The precision values are theLinearTolerance
-    /// for the magnitude and theAngularTolerance for the direction.
-    pub fn is_equal(
-        &self,
-        theOther: &crate::ffi::gp_Vec,
-        theLinearTolerance: f64,
-        theAngularTolerance: f64,
-    ) -> bool {
-        crate::ffi::gp_Vec::is_equal(self, theOther, theLinearTolerance, theAngularTolerance)
-    }
-
-    /// Returns True if abs(<me>.Angle(theOther) - PI/2.) <= theAngularTolerance
-    /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution or
-    /// theOther.Magnitude() <= Resolution from gp
-    pub fn is_normal(&self, theOther: &crate::ffi::gp_Vec, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Vec::is_normal(self, theOther, theAngularTolerance)
-    }
-
-    /// Returns True if PI - <me>.Angle(theOther) <= theAngularTolerance
-    /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution or
-    /// Other.Magnitude() <= Resolution from gp
-    pub fn is_opposite(&self, theOther: &crate::ffi::gp_Vec, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Vec::is_opposite(self, theOther, theAngularTolerance)
-    }
-
-    /// Returns True if Angle(<me>, theOther) <= theAngularTolerance or
-    /// PI - Angle(<me>, theOther) <= theAngularTolerance
-    /// This definition means that two parallel vectors cannot define
-    /// a plane but two vectors with opposite directions are considered
-    /// as parallel. Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution or
-    /// Other.Magnitude() <= Resolution from gp
-    pub fn is_parallel(&self, theOther: &crate::ffi::gp_Vec, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Vec::is_parallel(self, theOther, theAngularTolerance)
-    }
-
-    /// Computes the angular value between <me> and <theOther>
-    /// Returns the angle value between 0 and PI in radian.
-    /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution from gp or
-    /// theOther.Magnitude() <= Resolution because the angular value is
-    /// indefinite if one of the vectors has a null magnitude.
-    pub fn angle(&self, theOther: &crate::ffi::gp_Vec) -> f64 {
-        crate::ffi::gp_Vec::angle(self, theOther)
-    }
-
-    /// Computes the angle, in radians, between this vector and
-    /// vector theOther. The result is a value between -Pi and Pi.
-    /// For this, theVRef defines the positive sense of rotation: the
-    /// angular value is positive, if the cross product this ^ theOther
-    /// has the same orientation as theVRef relative to the plane
-    /// defined by the vectors this and theOther. Otherwise, the
-    /// angular value is negative.
-    /// Exceptions
-    /// gp_VectorWithNullMagnitude if the magnitude of this
-    /// vector, the vector theOther, or the vector theVRef is less than or
-    /// equal to gp::Resolution().
-    /// Standard_DomainError if this vector, the vector theOther,
-    /// and the vector theVRef are coplanar, unless this vector and
-    /// the vector theOther are parallel.
-    pub fn angle_with_ref(
-        &self,
-        theOther: &crate::ffi::gp_Vec,
-        theVRef: &crate::ffi::gp_Vec,
-    ) -> f64 {
-        crate::ffi::gp_Vec::angle_with_ref(self, theOther, theVRef)
-    }
-
-    /// Computes the magnitude of this vector.
-    pub fn magnitude(&self) -> f64 {
-        crate::ffi::gp_Vec::magnitude(self)
-    }
-
-    /// Computes the square magnitude of this vector.
-    pub fn square_magnitude(&self) -> f64 {
-        crate::ffi::gp_Vec::square_magnitude(self)
-    }
-
     /// Adds two vectors
-    pub fn add(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Vec::add(self, theOther)
-    }
-
-    /// Adds two vectors
-    pub fn added(&self, theOther: &crate::ffi::gp_Vec) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Vec::added(self, theOther)
+    pub fn added(&self, theOther: &crate::ffi::gp_Vec) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Vec_added(self, theOther)
     }
 
     /// Subtracts two vectors
-    pub fn subtract(self: std::pin::Pin<&mut Self>, theRight: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Vec::subtract(self, theRight)
-    }
-
-    /// Subtracts two vectors
-    pub fn subtracted(&self, theRight: &crate::ffi::gp_Vec) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Vec::subtracted(self, theRight)
+    pub fn subtracted(&self, theRight: &crate::ffi::gp_Vec) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Vec_subtracted(self, theRight)
     }
 
     /// Multiplies a vector by a scalar
-    pub fn multiply(self: std::pin::Pin<&mut Self>, theScalar: f64) {
-        crate::ffi::gp_Vec::multiply(self, theScalar)
-    }
-
-    /// Multiplies a vector by a scalar
-    pub fn multiplied(&self, theScalar: f64) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Vec::multiplied(self, theScalar)
+    pub fn multiplied(&self, theScalar: f64) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Vec_multiplied(self, theScalar)
     }
 
     /// Divides a vector by a scalar
-    pub fn divide(self: std::pin::Pin<&mut Self>, theScalar: f64) {
-        crate::ffi::gp_Vec::divide(self, theScalar)
-    }
-
-    /// Divides a vector by a scalar
-    pub fn divided(&self, theScalar: f64) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Vec::divided(self, theScalar)
+    pub fn divided(&self, theScalar: f64) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Vec_divided(self, theScalar)
     }
 
     /// computes the cross product between two vectors
-    pub fn cross(self: std::pin::Pin<&mut Self>, theRight: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Vec::cross(self, theRight)
-    }
-
-    /// computes the cross product between two vectors
-    pub fn crossed(&self, theRight: &crate::ffi::gp_Vec) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Vec::crossed(self, theRight)
-    }
-
-    /// Computes the magnitude of the cross
-    /// product between <me> and theRight.
-    /// Returns || <me> ^ theRight ||
-    pub fn cross_magnitude(&self, theRight: &crate::ffi::gp_Vec) -> f64 {
-        crate::ffi::gp_Vec::cross_magnitude(self, theRight)
-    }
-
-    /// Computes the square magnitude of
-    /// the cross product between <me> and theRight.
-    /// Returns || <me> ^ theRight ||**2
-    pub fn cross_square_magnitude(&self, theRight: &crate::ffi::gp_Vec) -> f64 {
-        crate::ffi::gp_Vec::cross_square_magnitude(self, theRight)
-    }
-
-    /// Computes the triple vector product.
-    /// <me> ^= (theV1 ^ theV2)
-    pub fn cross_cross(
-        self: std::pin::Pin<&mut Self>,
-        theV1: &crate::ffi::gp_Vec,
-        theV2: &crate::ffi::gp_Vec,
-    ) {
-        crate::ffi::gp_Vec::cross_cross(self, theV1, theV2)
+    pub fn crossed(&self, theRight: &crate::ffi::gp_Vec) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Vec_crossed(self, theRight)
     }
 
     /// Computes the triple vector product.
@@ -8748,177 +4495,61 @@ impl Vec {
         &self,
         theV1: &crate::ffi::gp_Vec,
         theV2: &crate::ffi::gp_Vec,
-    ) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Vec::cross_crossed(self, theV1, theV2)
-    }
-
-    /// computes the scalar product
-    pub fn dot(&self, theOther: &crate::ffi::gp_Vec) -> f64 {
-        crate::ffi::gp_Vec::dot(self, theOther)
-    }
-
-    /// Computes the triple scalar product <me> * (theV1 ^ theV2).
-    pub fn dot_cross(&self, theV1: &crate::ffi::gp_Vec, theV2: &crate::ffi::gp_Vec) -> f64 {
-        crate::ffi::gp_Vec::dot_cross(self, theV1, theV2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Vec_cross_crossed(self, theV1, theV2)
     }
 
     /// normalizes a vector
     /// Raises an exception if the magnitude of the vector is
     /// lower or equal to Resolution from gp.
-    pub fn normalize(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Vec::normalize(self)
-    }
-
-    /// normalizes a vector
-    /// Raises an exception if the magnitude of the vector is
-    /// lower or equal to Resolution from gp.
-    pub fn normalized(&self) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Vec::normalized(self)
+    pub fn normalized(&self) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Vec_normalized(self)
     }
 
     /// Reverses the direction of a vector
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Vec::reverse(self)
-    }
-
-    /// Reverses the direction of a vector
-    pub fn reversed(&self) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Vec::reversed(self)
-    }
-
-    /// <me> is set to the following linear form :
-    /// theA1 * theV1 + theA2 * theV2 + theA3 * theV3 + theV4
-    pub fn set_linear_form(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theV1: &crate::ffi::gp_Vec,
-        theA2: f64,
-        theV2: &crate::ffi::gp_Vec,
-        theA3: f64,
-        theV3: &crate::ffi::gp_Vec,
-        theV4: &crate::ffi::gp_Vec,
-    ) {
-        crate::ffi::gp_Vec::set_linear_form(self, theA1, theV1, theA2, theV2, theA3, theV3, theV4)
-    }
-
-    /// <me> is set to the following linear form :
-    /// theA1 * theV1 + theA2 * theV2 + theA3 * theV3
-    pub fn set_linear_form_real_vec_real_vec_real_vec(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theV1: &crate::ffi::gp_Vec,
-        theA2: f64,
-        theV2: &crate::ffi::gp_Vec,
-        theA3: f64,
-        theV3: &crate::ffi::gp_Vec,
-    ) {
-        crate::ffi::gp_Vec::set_linear_form(self, theA1, theV1, theA2, theV2, theA3, theV3)
-    }
-
-    /// <me> is set to the following linear form :
-    /// theA1 * theV1 + theA2 * theV2 + theV3
-    pub fn set_linear_form_real_vec_real_vec2(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theV1: &crate::ffi::gp_Vec,
-        theA2: f64,
-        theV2: &crate::ffi::gp_Vec,
-        theV3: &crate::ffi::gp_Vec,
-    ) {
-        crate::ffi::gp_Vec::set_linear_form(self, theA1, theV1, theA2, theV2, theV3)
-    }
-
-    /// <me> is set to the following linear form :
-    /// theA1 * theV1 + theA2 * theV2
-    pub fn set_linear_form_real_vec_real_vec(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theV1: &crate::ffi::gp_Vec,
-        theA2: f64,
-        theV2: &crate::ffi::gp_Vec,
-    ) {
-        crate::ffi::gp_Vec::set_linear_form(self, theA1, theV1, theA2, theV2)
-    }
-
-    /// <me> is set to the following linear form : theA1 * theV1 + theV2
-    pub fn set_linear_form_real_vec2(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theV1: &crate::ffi::gp_Vec,
-        theV2: &crate::ffi::gp_Vec,
-    ) {
-        crate::ffi::gp_Vec::set_linear_form(self, theA1, theV1, theV2)
-    }
-
-    /// <me> is set to the following linear form : theV1 + theV2
-    pub fn set_linear_form_vec2(
-        self: std::pin::Pin<&mut Self>,
-        theV1: &crate::ffi::gp_Vec,
-        theV2: &crate::ffi::gp_Vec,
-    ) {
-        crate::ffi::gp_Vec::set_linear_form(self, theV1, theV2)
-    }
-
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec) {
-        crate::ffi::gp_Vec::mirror(self, theV)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Vec_reversed(self)
     }
 
     /// Performs the symmetrical transformation of a vector
     /// with respect to the vector theV which is the center of
     /// the  symmetry.
-    pub fn mirrored(&self, theV: &crate::ffi::gp_Vec) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Vec::mirrored(self, theV)
-    }
-
-    pub fn mirror_ax1(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1) {
-        crate::ffi::gp_Vec::mirror(self, theA1)
+    pub fn mirrored_vec(&self, theV: &crate::ffi::gp_Vec) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Vec_mirrored_vec(self, theV)
     }
 
     /// Performs the symmetrical transformation of a vector
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
-    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Vec::mirrored(self, theA1)
-    }
-
-    pub fn mirror_ax2(self: std::pin::Pin<&mut Self>, theA2: &crate::ffi::gp_Ax2) {
-        crate::ffi::gp_Vec::mirror(self, theA2)
+    pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Vec_mirrored_ax1(self, theA1)
     }
 
     /// Performs the symmetrical transformation of a vector
     /// with respect to a plane. The axis placement theA2 locates
     /// the plane of the symmetry : (Location, XDirection, YDirection).
-    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Vec::mirrored(self, theA2)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
-        crate::ffi::gp_Vec::rotate(self, theA1, theAng)
+    pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Vec_mirrored_ax2(self, theA2)
     }
 
     /// Rotates a vector. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theA1: &crate::ffi::gp_Ax1, theAng: f64) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Vec::rotated(self, theA1, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theS: f64) {
-        crate::ffi::gp_Vec::scale(self, theS)
+    pub fn rotated(
+        &self,
+        theA1: &crate::ffi::gp_Ax1,
+        theAng: f64,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Vec_rotated(self, theA1, theAng)
     }
 
     /// Scales a vector. theS is the scaling value.
-    pub fn scaled(&self, theS: f64) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Vec::scaled(self, theS)
+    pub fn scaled(&self, theS: f64) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Vec_scaled(self, theS)
     }
 
     /// Transforms a vector with the transformation theT.
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf) {
-        crate::ffi::gp_Vec::transform(self, theT)
-    }
-
-    /// Transforms a vector with the transformation theT.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::ffi::gp_Vec {
-        crate::ffi::gp_Vec::transformed(self, theT)
+    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::gp_Vec_transformed(self, theT)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -8964,303 +4595,85 @@ impl Vec2d {
         crate::ffi::gp_Vec2d_ctor_pnt2d2(theP1, theP2)
     }
 
-    /// Changes the coordinate of range theIndex
-    /// theIndex = 1 => X is modified
-    /// theIndex = 2 => Y is modified
-    /// Raises OutOfRange if theIndex != {1, 2}.
-    pub fn set_coord(self: std::pin::Pin<&mut Self>, theIndex: i32, theXi: f64) {
-        crate::ffi::gp_Vec2d::set_coord(self, theIndex, theXi)
-    }
-
-    /// For this vector, assigns
-    /// the values theXv and theYv to its two coordinates
-    pub fn set_coord_real2(self: std::pin::Pin<&mut Self>, theXv: f64, theYv: f64) {
-        crate::ffi::gp_Vec2d::set_coord(self, theXv, theYv)
-    }
-
-    /// Assigns the given value to the X coordinate of this vector.
-    pub fn set_x(self: std::pin::Pin<&mut Self>, theX: f64) {
-        crate::ffi::gp_Vec2d::set_x(self, theX)
-    }
-
-    /// Assigns the given value to the Y coordinate of this vector.
-    pub fn set_y(self: std::pin::Pin<&mut Self>, theY: f64) {
-        crate::ffi::gp_Vec2d::set_y(self, theY)
-    }
-
-    /// Assigns the two coordinates of theCoord to this vector.
-    pub fn set_xy(self: std::pin::Pin<&mut Self>, theCoord: &crate::ffi::gp_XY) {
-        crate::ffi::gp_Vec2d::set_xy(self, theCoord)
-    }
-
-    /// Returns the coordinate of range theIndex :
-    /// theIndex = 1 => X is returned
-    /// theIndex = 2 => Y is returned
-    /// Raised if theIndex != {1, 2}.
-    pub fn coord(&self, theIndex: i32) -> f64 {
-        crate::ffi::gp_Vec2d::coord(self, theIndex)
-    }
-
-    /// For this vector, returns  its two coordinates theXv and theYv
-    pub fn coord_real2(&self, theXv: std::pin::Pin<&mut f64>, theYv: std::pin::Pin<&mut f64>) {
-        crate::ffi::gp_Vec2d::coord(self, theXv, theYv)
-    }
-
-    /// For this vector, returns its X  coordinate.
-    pub fn x(&self) -> f64 {
-        crate::ffi::gp_Vec2d::x(self)
-    }
-
-    /// For this vector, returns its Y  coordinate.
-    pub fn y(&self) -> f64 {
-        crate::ffi::gp_Vec2d::y(self)
-    }
-
-    /// For this vector, returns its two coordinates as a number pair
-    pub fn xy(&self) -> &crate::ffi::gp_XY {
-        crate::ffi::gp_Vec2d::xy(self)
-    }
-
-    /// Returns True if the two vectors have the same magnitude value
-    /// and the same direction. The precision values are theLinearTolerance
-    /// for the magnitude and theAngularTolerance for the direction.
-    pub fn is_equal(
-        &self,
-        theOther: &crate::ffi::gp_Vec2d,
-        theLinearTolerance: f64,
-        theAngularTolerance: f64,
-    ) -> bool {
-        crate::ffi::gp_Vec2d::is_equal(self, theOther, theLinearTolerance, theAngularTolerance)
-    }
-
-    /// Returns True if abs(Abs(<me>.Angle(theOther)) - PI/2.)
-    /// <= theAngularTolerance
-    /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution or
-    /// theOther.Magnitude() <= Resolution from gp.
-    pub fn is_normal(&self, theOther: &crate::ffi::gp_Vec2d, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Vec2d::is_normal(self, theOther, theAngularTolerance)
-    }
-
-    /// Returns True if PI - Abs(<me>.Angle(theOther)) <= theAngularTolerance
-    /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution or
-    /// theOther.Magnitude() <= Resolution from gp.
-    pub fn is_opposite(&self, theOther: &crate::ffi::gp_Vec2d, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Vec2d::is_opposite(self, theOther, theAngularTolerance)
-    }
-
-    /// Returns true if Abs(Angle(<me>, theOther)) <= theAngularTolerance or
-    /// PI - Abs(Angle(<me>, theOther)) <= theAngularTolerance
-    /// Two vectors with opposite directions are considered as parallel.
-    /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution or
-    /// theOther.Magnitude() <= Resolution from gp
-    pub fn is_parallel(&self, theOther: &crate::ffi::gp_Vec2d, theAngularTolerance: f64) -> bool {
-        crate::ffi::gp_Vec2d::is_parallel(self, theOther, theAngularTolerance)
-    }
-
-    /// Computes the angular value between <me> and <theOther>
-    /// returns the angle value between -PI and PI in radian.
-    /// The orientation is from <me> to theOther. The positive sense is the
-    /// trigonometric sense.
-    /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution from gp or
-    /// theOther.Magnitude() <= Resolution because the angular value is
-    /// indefinite if one of the vectors has a null magnitude.
-    pub fn angle(&self, theOther: &crate::ffi::gp_Vec2d) -> f64 {
-        crate::ffi::gp_Vec2d::angle(self, theOther)
-    }
-
-    /// Computes the magnitude of this vector.
-    pub fn magnitude(&self) -> f64 {
-        crate::ffi::gp_Vec2d::magnitude(self)
-    }
-
-    /// Computes the square magnitude of this vector.
-    pub fn square_magnitude(&self) -> f64 {
-        crate::ffi::gp_Vec2d::square_magnitude(self)
-    }
-
-    pub fn add(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_Vec2d) {
-        crate::ffi::gp_Vec2d::add(self, theOther)
-    }
-
     /// Adds two vectors
-    pub fn added(&self, theOther: &crate::ffi::gp_Vec2d) -> crate::ffi::gp_Vec2d {
-        crate::ffi::gp_Vec2d::added(self, theOther)
-    }
-
-    /// Computes the crossing product between two vectors
-    pub fn crossed(&self, theRight: &crate::ffi::gp_Vec2d) -> f64 {
-        crate::ffi::gp_Vec2d::crossed(self, theRight)
-    }
-
-    /// Computes the magnitude of the cross product between <me> and
-    /// theRight. Returns || <me> ^ theRight ||
-    pub fn cross_magnitude(&self, theRight: &crate::ffi::gp_Vec2d) -> f64 {
-        crate::ffi::gp_Vec2d::cross_magnitude(self, theRight)
-    }
-
-    /// Computes the square magnitude of the cross product between <me> and
-    /// theRight. Returns || <me> ^ theRight ||**2
-    pub fn cross_square_magnitude(&self, theRight: &crate::ffi::gp_Vec2d) -> f64 {
-        crate::ffi::gp_Vec2d::cross_square_magnitude(self, theRight)
-    }
-
-    pub fn divide(self: std::pin::Pin<&mut Self>, theScalar: f64) {
-        crate::ffi::gp_Vec2d::divide(self, theScalar)
+    pub fn added(&self, theOther: &crate::ffi::gp_Vec2d) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::gp_Vec2d_added(self, theOther)
     }
 
     /// divides a vector by a scalar
-    pub fn divided(&self, theScalar: f64) -> crate::ffi::gp_Vec2d {
-        crate::ffi::gp_Vec2d::divided(self, theScalar)
+    pub fn divided(&self, theScalar: f64) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::gp_Vec2d_divided(self, theScalar)
     }
 
-    /// Computes the scalar product
-    pub fn dot(&self, theOther: &crate::ffi::gp_Vec2d) -> f64 {
-        crate::ffi::gp_Vec2d::dot(self, theOther)
-    }
-
-    pub fn get_normal(&self) -> crate::ffi::gp_Vec2d {
-        crate::ffi::gp_Vec2d::get_normal(self)
-    }
-
-    pub fn multiply(self: std::pin::Pin<&mut Self>, theScalar: f64) {
-        crate::ffi::gp_Vec2d::multiply(self, theScalar)
+    pub fn get_normal(&self) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::gp_Vec2d_get_normal(self)
     }
 
     /// Normalizes a vector
     /// Raises an exception if the magnitude of the vector is
     /// lower or equal to Resolution from package gp.
-    pub fn multiplied(&self, theScalar: f64) -> crate::ffi::gp_Vec2d {
-        crate::ffi::gp_Vec2d::multiplied(self, theScalar)
-    }
-
-    pub fn normalize(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Vec2d::normalize(self)
+    pub fn multiplied(&self, theScalar: f64) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::gp_Vec2d_multiplied(self, theScalar)
     }
 
     /// Normalizes a vector
     /// Raises an exception if the magnitude of the vector is
     /// lower or equal to Resolution from package gp.
     /// Reverses the direction of a vector
-    pub fn normalized(&self) -> crate::ffi::gp_Vec2d {
-        crate::ffi::gp_Vec2d::normalized(self)
-    }
-
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_Vec2d::reverse(self)
+    pub fn normalized(&self) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::gp_Vec2d_normalized(self)
     }
 
     /// Reverses the direction of a vector
-    pub fn reversed(&self) -> crate::ffi::gp_Vec2d {
-        crate::ffi::gp_Vec2d::reversed(self)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::gp_Vec2d_reversed(self)
     }
 
     /// Subtracts two vectors
-    pub fn subtract(self: std::pin::Pin<&mut Self>, theRight: &crate::ffi::gp_Vec2d) {
-        crate::ffi::gp_Vec2d::subtract(self, theRight)
-    }
-
-    /// Subtracts two vectors
-    pub fn subtracted(&self, theRight: &crate::ffi::gp_Vec2d) -> crate::ffi::gp_Vec2d {
-        crate::ffi::gp_Vec2d::subtracted(self, theRight)
-    }
-
-    /// <me> is set to the following linear form :
-    /// theA1 * theV1 + theA2 * theV2 + theV3
-    pub fn set_linear_form(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theV1: &crate::ffi::gp_Vec2d,
-        theA2: f64,
-        theV2: &crate::ffi::gp_Vec2d,
-        theV3: &crate::ffi::gp_Vec2d,
-    ) {
-        crate::ffi::gp_Vec2d::set_linear_form(self, theA1, theV1, theA2, theV2, theV3)
-    }
-
-    /// <me> is set to the following linear form : theA1 * theV1 + theA2 * theV2
-    pub fn set_linear_form_real_vec2d_real_vec2d(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theV1: &crate::ffi::gp_Vec2d,
-        theA2: f64,
-        theV2: &crate::ffi::gp_Vec2d,
-    ) {
-        crate::ffi::gp_Vec2d::set_linear_form(self, theA1, theV1, theA2, theV2)
-    }
-
-    /// <me> is set to the following linear form : theA1 * theV1 + theV2
-    pub fn set_linear_form_real_vec2d2(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theV1: &crate::ffi::gp_Vec2d,
-        theV2: &crate::ffi::gp_Vec2d,
-    ) {
-        crate::ffi::gp_Vec2d::set_linear_form(self, theA1, theV1, theV2)
-    }
-
-    /// <me> is set to the following linear form : theV1 + theV2
-    pub fn set_linear_form_vec2d2(
-        self: std::pin::Pin<&mut Self>,
-        theV1: &crate::ffi::gp_Vec2d,
-        theV2: &crate::ffi::gp_Vec2d,
-    ) {
-        crate::ffi::gp_Vec2d::set_linear_form(self, theV1, theV2)
+    pub fn subtracted(
+        &self,
+        theRight: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::gp_Vec2d_subtracted(self, theRight)
     }
 
     /// Performs the symmetrical transformation of a vector
     /// with respect to the vector theV which is the center of
     /// the  symmetry.
-    pub fn mirror(self: std::pin::Pin<&mut Self>, theV: &crate::ffi::gp_Vec2d) {
-        crate::ffi::gp_Vec2d::mirror(self, theV)
-    }
-
-    /// Performs the symmetrical transformation of a vector
-    /// with respect to the vector theV which is the center of
-    /// the  symmetry.
-    pub fn mirrored(&self, theV: &crate::ffi::gp_Vec2d) -> crate::ffi::gp_Vec2d {
-        crate::ffi::gp_Vec2d::mirrored(self, theV)
+    pub fn mirrored_vec2d(
+        &self,
+        theV: &crate::ffi::gp_Vec2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::gp_Vec2d_mirrored_vec2d(self, theV)
     }
 
     /// Performs the symmetrical transformation of a vector
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
-    pub fn mirror_ax2d(self: std::pin::Pin<&mut Self>, theA1: &crate::ffi::gp_Ax2d) {
-        crate::ffi::gp_Vec2d::mirror(self, theA1)
-    }
-
-    /// Performs the symmetrical transformation of a vector
-    /// with respect to an axis placement which is the axis
-    /// of the symmetry.
-    pub fn mirrored_ax2d(&self, theA1: &crate::ffi::gp_Ax2d) -> crate::ffi::gp_Vec2d {
-        crate::ffi::gp_Vec2d::mirrored(self, theA1)
-    }
-
-    pub fn rotate(self: std::pin::Pin<&mut Self>, theAng: f64) {
-        crate::ffi::gp_Vec2d::rotate(self, theAng)
+    pub fn mirrored_ax2d(
+        &self,
+        theA1: &crate::ffi::gp_Ax2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::gp_Vec2d_mirrored_ax2d(self, theA1)
     }
 
     /// Rotates a vector. theAng is the angular value of the
     /// rotation in radians.
-    pub fn rotated(&self, theAng: f64) -> crate::ffi::gp_Vec2d {
-        crate::ffi::gp_Vec2d::rotated(self, theAng)
-    }
-
-    pub fn scale(self: std::pin::Pin<&mut Self>, theS: f64) {
-        crate::ffi::gp_Vec2d::scale(self, theS)
+    pub fn rotated(&self, theAng: f64) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::gp_Vec2d_rotated(self, theAng)
     }
 
     /// Scales a vector. theS is the scaling value.
-    pub fn scaled(&self, theS: f64) -> crate::ffi::gp_Vec2d {
-        crate::ffi::gp_Vec2d::scaled(self, theS)
-    }
-
-    pub fn transform(self: std::pin::Pin<&mut Self>, theT: &crate::ffi::gp_Trsf2d) {
-        crate::ffi::gp_Vec2d::transform(self, theT)
+    pub fn scaled(&self, theS: f64) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::gp_Vec2d_scaled(self, theS)
     }
 
     /// Transforms a vector with a Trsf from gp.
-    pub fn transformed(&self, theT: &crate::ffi::gp_Trsf2d) -> crate::ffi::gp_Vec2d {
-        crate::ffi::gp_Vec2d::transformed(self, theT)
+    pub fn transformed(
+        &self,
+        theT: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::gp_Vec2d_transformed(self, theT)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -9288,8 +4701,12 @@ impl VectorWithNullMagnitude {
         crate::ffi::gp_VectorWithNullMagnitude_ctor_charptr2(theMessage, theStackTrace)
     }
 
-    pub fn raise(theMessage: std::pin::Pin<&mut crate::ffi::Standard_SStream>) {
-        crate::ffi::gp_VectorWithNullMagnitude::raise(theMessage)
+    pub fn raise(theMessage: &str) {
+        crate::ffi::gp_VectorWithNullMagnitude_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::gp_VectorWithNullMagnitude_get_type_descriptor()
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -9321,178 +4738,42 @@ impl XY {
         crate::ffi::gp_XY_ctor_real2(theX, theY)
     }
 
-    /// modifies the coordinate of range theIndex
-    /// theIndex = 1 => X is modified
-    /// theIndex = 2 => Y is modified
-    /// Raises OutOfRange if theIndex != {1, 2}.
-    pub fn set_coord(self: std::pin::Pin<&mut Self>, theIndex: i32, theXi: f64) {
-        crate::ffi::gp_XY::set_coord(self, theIndex, theXi)
-    }
-
-    /// For this number pair, assigns
-    /// the values theX and theY to its coordinates
-    pub fn set_coord_real2(self: std::pin::Pin<&mut Self>, theX: f64, theY: f64) {
-        crate::ffi::gp_XY::set_coord(self, theX, theY)
-    }
-
-    /// Assigns the given value to the X coordinate of this number pair.
-    pub fn set_x(self: std::pin::Pin<&mut Self>, theX: f64) {
-        crate::ffi::gp_XY::set_x(self, theX)
-    }
-
-    /// Assigns the given value to the Y  coordinate of this number pair.
-    pub fn set_y(self: std::pin::Pin<&mut Self>, theY: f64) {
-        crate::ffi::gp_XY::set_y(self, theY)
-    }
-
-    /// returns the coordinate of range theIndex :
-    /// theIndex = 1 => X is returned
-    /// theIndex = 2 => Y is returned
-    /// Raises OutOfRange if theIndex != {1, 2}.
-    pub fn coord(&self, theIndex: i32) -> f64 {
-        crate::ffi::gp_XY::coord(self, theIndex)
-    }
-
-    pub fn change_coord(self: std::pin::Pin<&mut Self>, theIndex: i32) -> std::pin::Pin<&mut f64> {
-        crate::ffi::gp_XY::change_coord(self, theIndex)
-    }
-
-    /// For this number pair, returns its coordinates X and Y.
-    pub fn coord_real2(&self, theX: std::pin::Pin<&mut f64>, theY: std::pin::Pin<&mut f64>) {
-        crate::ffi::gp_XY::coord(self, theX, theY)
-    }
-
-    /// Returns the X coordinate of this number pair.
-    pub fn x(&self) -> f64 {
-        crate::ffi::gp_XY::x(self)
-    }
-
-    /// Returns the Y coordinate of this number pair.
-    pub fn y(&self) -> f64 {
-        crate::ffi::gp_XY::y(self)
-    }
-
-    /// Computes Sqrt (X*X + Y*Y) where X and Y are the two coordinates of this number pair.
-    pub fn modulus(&self) -> f64 {
-        crate::ffi::gp_XY::modulus(self)
-    }
-
-    /// Computes X*X + Y*Y where X and Y are the two coordinates of this number pair.
-    pub fn square_modulus(&self) -> f64 {
-        crate::ffi::gp_XY::square_modulus(self)
-    }
-
-    /// Returns true if the coordinates of this number pair are
-    /// equal to the respective coordinates of the number pair
-    /// theOther, within the specified tolerance theTolerance. I.e.:
-    /// abs(<me>.X() - theOther.X()) <= theTolerance and
-    /// abs(<me>.Y() - theOther.Y()) <= theTolerance and
-    /// computations
-    pub fn is_equal(&self, theOther: &crate::ffi::gp_XY, theTolerance: f64) -> bool {
-        crate::ffi::gp_XY::is_equal(self, theOther, theTolerance)
-    }
-
-    /// Computes the sum of this number pair and number pair theOther
-    /// @code
-    /// <me>.X() = <me>.X() + theOther.X()
-    /// <me>.Y() = <me>.Y() + theOther.Y()
-    /// @endcode
-    pub fn add(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_XY) {
-        crate::ffi::gp_XY::add(self, theOther)
-    }
-
     /// Computes the sum of this number pair and number pair theOther
     /// @code
     /// new.X() = <me>.X() + theOther.X()
     /// new.Y() = <me>.Y() + theOther.Y()
     /// @endcode
-    pub fn added(&self, theOther: &crate::ffi::gp_XY) -> crate::ffi::gp_XY {
-        crate::ffi::gp_XY::added(self, theOther)
-    }
-
-    /// @code
-    /// double D = <me>.X() * theOther.Y() - <me>.Y() * theOther.X()
-    /// @endcode
-    pub fn crossed(&self, theOther: &crate::ffi::gp_XY) -> f64 {
-        crate::ffi::gp_XY::crossed(self, theOther)
-    }
-
-    /// computes the magnitude of the cross product between <me> and
-    /// theRight. Returns || <me> ^ theRight ||
-    pub fn cross_magnitude(&self, theRight: &crate::ffi::gp_XY) -> f64 {
-        crate::ffi::gp_XY::cross_magnitude(self, theRight)
-    }
-
-    /// computes the square magnitude of the cross product between <me> and
-    /// theRight. Returns || <me> ^ theRight ||**2
-    pub fn cross_square_magnitude(&self, theRight: &crate::ffi::gp_XY) -> f64 {
-        crate::ffi::gp_XY::cross_square_magnitude(self, theRight)
-    }
-
-    /// divides <me> by a real.
-    pub fn divide(self: std::pin::Pin<&mut Self>, theScalar: f64) {
-        crate::ffi::gp_XY::divide(self, theScalar)
+    pub fn added(&self, theOther: &crate::ffi::gp_XY) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::gp_XY_added(self, theOther)
     }
 
     /// Divides <me> by a real.
-    pub fn divided(&self, theScalar: f64) -> crate::ffi::gp_XY {
-        crate::ffi::gp_XY::divided(self, theScalar)
-    }
-
-    /// Computes the scalar product between <me> and theOther
-    pub fn dot(&self, theOther: &crate::ffi::gp_XY) -> f64 {
-        crate::ffi::gp_XY::dot(self, theOther)
-    }
-
-    /// @code
-    /// <me>.X() = <me>.X() * theScalar;
-    /// <me>.Y() = <me>.Y() * theScalar;
-    /// @endcode
-    pub fn multiply(self: std::pin::Pin<&mut Self>, theScalar: f64) {
-        crate::ffi::gp_XY::multiply(self, theScalar)
-    }
-
-    /// @code
-    /// <me>.X() = <me>.X() * theOther.X();
-    /// <me>.Y() = <me>.Y() * theOther.Y();
-    /// @endcode
-    pub fn multiply_xy(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_XY) {
-        crate::ffi::gp_XY::multiply(self, theOther)
-    }
-
-    /// <me> = theMatrix * <me>
-    pub fn multiply_mat2d(self: std::pin::Pin<&mut Self>, theMatrix: &crate::ffi::gp_Mat2d) {
-        crate::ffi::gp_XY::multiply(self, theMatrix)
+    pub fn divided(&self, theScalar: f64) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::gp_XY_divided(self, theScalar)
     }
 
     /// @code
     /// New.X() = <me>.X() * theScalar;
     /// New.Y() = <me>.Y() * theScalar;
     /// @endcode
-    pub fn multiplied(&self, theScalar: f64) -> crate::ffi::gp_XY {
-        crate::ffi::gp_XY::multiplied(self, theScalar)
+    pub fn multiplied_real(&self, theScalar: f64) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::gp_XY_multiplied_real(self, theScalar)
     }
 
     /// @code
     /// new.X() = <me>.X() * theOther.X();
     /// new.Y() = <me>.Y() * theOther.Y();
     /// @endcode
-    pub fn multiplied_xy(&self, theOther: &crate::ffi::gp_XY) -> crate::ffi::gp_XY {
-        crate::ffi::gp_XY::multiplied(self, theOther)
+    pub fn multiplied_xy(&self, theOther: &crate::ffi::gp_XY) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::gp_XY_multiplied_xy(self, theOther)
     }
 
     /// New = theMatrix * <me>
-    pub fn multiplied_mat2d(&self, theMatrix: &crate::ffi::gp_Mat2d) -> crate::ffi::gp_XY {
-        crate::ffi::gp_XY::multiplied(self, theMatrix)
-    }
-
-    /// @code
-    /// <me>.X() = <me>.X()/ <me>.Modulus()
-    /// <me>.Y() = <me>.Y()/ <me>.Modulus()
-    /// @endcode
-    /// Raises ConstructionError if <me>.Modulus() <= Resolution from gp
-    pub fn normalize(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_XY::normalize(self)
+    pub fn multiplied_mat2d(
+        &self,
+        theMatrix: &crate::ffi::gp_Mat2d,
+    ) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::gp_XY_multiplied_mat2d(self, theMatrix)
     }
 
     /// @code
@@ -9500,97 +4781,24 @@ impl XY {
     /// New.Y() = <me>.Y()/ <me>.Modulus()
     /// @endcode
     /// Raises ConstructionError if <me>.Modulus() <= Resolution from gp
-    pub fn normalized(&self) -> crate::ffi::gp_XY {
-        crate::ffi::gp_XY::normalized(self)
-    }
-
-    /// @code
-    /// <me>.X() = -<me>.X()
-    /// <me>.Y() = -<me>.Y()
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_XY::reverse(self)
+    pub fn normalized(&self) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::gp_XY_normalized(self)
     }
 
     /// @code
     /// New.X() = -<me>.X()
     /// New.Y() = -<me>.Y()
     /// @endcode
-    pub fn reversed(&self) -> crate::ffi::gp_XY {
-        crate::ffi::gp_XY::reversed(self)
-    }
-
-    /// Computes  the following linear combination and
-    /// assigns the result to this number pair:
-    /// @code
-    /// theA1 * theXY1 + theA2 * theXY2
-    /// @endcode
-    pub fn set_linear_form(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theXY1: &crate::ffi::gp_XY,
-        theA2: f64,
-        theXY2: &crate::ffi::gp_XY,
-    ) {
-        crate::ffi::gp_XY::set_linear_form(self, theA1, theXY1, theA2, theXY2)
-    }
-
-    /// --  Computes  the following linear combination and
-    /// assigns the result to this number pair:
-    /// @code
-    /// theA1 * theXY1 + theA2 * theXY2 + theXY3
-    /// @endcode
-    pub fn set_linear_form_real_xy_real_xy2(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theXY1: &crate::ffi::gp_XY,
-        theA2: f64,
-        theXY2: &crate::ffi::gp_XY,
-        theXY3: &crate::ffi::gp_XY,
-    ) {
-        crate::ffi::gp_XY::set_linear_form(self, theA1, theXY1, theA2, theXY2, theXY3)
-    }
-
-    /// Computes  the following linear combination and
-    /// assigns the result to this number pair:
-    /// @code
-    /// theA1 * theXY1 + theXY2
-    /// @endcode
-    pub fn set_linear_form_real_xy2(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theXY1: &crate::ffi::gp_XY,
-        theXY2: &crate::ffi::gp_XY,
-    ) {
-        crate::ffi::gp_XY::set_linear_form(self, theA1, theXY1, theXY2)
-    }
-
-    /// Computes  the following linear combination and
-    /// assigns the result to this number pair:
-    /// @code
-    /// theXY1 + theXY2
-    /// @endcode
-    pub fn set_linear_form_xy2(
-        self: std::pin::Pin<&mut Self>,
-        theXY1: &crate::ffi::gp_XY,
-        theXY2: &crate::ffi::gp_XY,
-    ) {
-        crate::ffi::gp_XY::set_linear_form(self, theXY1, theXY2)
-    }
-
-    /// @code
-    /// <me>.X() = <me>.X() - theOther.X()
-    /// <me>.Y() = <me>.Y() - theOther.Y()
-    /// @endcode
-    pub fn subtract(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_XY) {
-        crate::ffi::gp_XY::subtract(self, theOther)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::gp_XY_reversed(self)
     }
 
     /// @code
     /// new.X() = <me>.X() - theOther.X()
     /// new.Y() = <me>.Y() - theOther.Y()
     /// @endcode
-    pub fn subtracted(&self, theOther: &crate::ffi::gp_XY) -> crate::ffi::gp_XY {
-        crate::ffi::gp_XY::subtracted(self, theOther)
+    pub fn subtracted(&self, theOther: &crate::ffi::gp_XY) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::gp_XY_subtracted(self, theOther)
     }
 
     /// Clone into a new UniquePtr via copy constructor
@@ -9622,119 +4830,13 @@ impl XYZ {
         crate::ffi::gp_XYZ_ctor_real3(theX, theY, theZ)
     }
 
-    /// For this XYZ object, assigns
-    /// the values theX, theY and theZ to its three coordinates
-    pub fn set_coord(self: std::pin::Pin<&mut Self>, theX: f64, theY: f64, theZ: f64) {
-        crate::ffi::gp_XYZ::set_coord(self, theX, theY, theZ)
-    }
-
-    /// modifies the coordinate of range theIndex
-    /// theIndex = 1 => X is modified
-    /// theIndex = 2 => Y is modified
-    /// theIndex = 3 => Z is modified
-    /// Raises OutOfRange if theIndex != {1, 2, 3}.
-    pub fn set_coord_int_real(self: std::pin::Pin<&mut Self>, theIndex: i32, theXi: f64) {
-        crate::ffi::gp_XYZ::set_coord(self, theIndex, theXi)
-    }
-
-    /// Assigns the given value to the X coordinate
-    pub fn set_x(self: std::pin::Pin<&mut Self>, theX: f64) {
-        crate::ffi::gp_XYZ::set_x(self, theX)
-    }
-
-    /// Assigns the given value to the Y coordinate
-    pub fn set_y(self: std::pin::Pin<&mut Self>, theY: f64) {
-        crate::ffi::gp_XYZ::set_y(self, theY)
-    }
-
-    /// Assigns the given value to the Z coordinate
-    pub fn set_z(self: std::pin::Pin<&mut Self>, theZ: f64) {
-        crate::ffi::gp_XYZ::set_z(self, theZ)
-    }
-
-    /// returns the coordinate of range theIndex :
-    /// theIndex = 1 => X is returned
-    /// theIndex = 2 => Y is returned
-    /// theIndex = 3 => Z is returned
-    ///
-    /// Raises OutOfRange if theIndex != {1, 2, 3}.
-    pub fn coord(&self, theIndex: i32) -> f64 {
-        crate::ffi::gp_XYZ::coord(self, theIndex)
-    }
-
-    pub fn change_coord(self: std::pin::Pin<&mut Self>, theIndex: i32) -> std::pin::Pin<&mut f64> {
-        crate::ffi::gp_XYZ::change_coord(self, theIndex)
-    }
-
-    pub fn coord_real3(
-        &self,
-        theX: std::pin::Pin<&mut f64>,
-        theY: std::pin::Pin<&mut f64>,
-        theZ: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::gp_XYZ::coord(self, theX, theY, theZ)
-    }
-
-    /// Returns the X coordinate
-    pub fn x(&self) -> f64 {
-        crate::ffi::gp_XYZ::x(self)
-    }
-
-    /// Returns the Y coordinate
-    pub fn y(&self) -> f64 {
-        crate::ffi::gp_XYZ::y(self)
-    }
-
-    /// Returns the Z coordinate
-    pub fn z(&self) -> f64 {
-        crate::ffi::gp_XYZ::z(self)
-    }
-
-    /// computes Sqrt (X*X + Y*Y + Z*Z) where X, Y and Z are the three coordinates of this XYZ object.
-    pub fn modulus(&self) -> f64 {
-        crate::ffi::gp_XYZ::modulus(self)
-    }
-
-    /// Computes X*X + Y*Y + Z*Z where X, Y and Z are the three coordinates of this XYZ object.
-    pub fn square_modulus(&self) -> f64 {
-        crate::ffi::gp_XYZ::square_modulus(self)
-    }
-
-    /// Returns True if he coordinates of this XYZ object are
-    /// equal to the respective coordinates Other,
-    /// within the specified tolerance theTolerance. I.e.:
-    /// abs(<me>.X() - theOther.X()) <= theTolerance and
-    /// abs(<me>.Y() - theOther.Y()) <= theTolerance and
-    /// abs(<me>.Z() - theOther.Z()) <= theTolerance.
-    pub fn is_equal(&self, theOther: &crate::ffi::gp_XYZ, theTolerance: f64) -> bool {
-        crate::ffi::gp_XYZ::is_equal(self, theOther, theTolerance)
-    }
-
-    /// @code
-    /// <me>.X() = <me>.X() + theOther.X()
-    /// <me>.Y() = <me>.Y() + theOther.Y()
-    /// <me>.Z() = <me>.Z() + theOther.Z()
-    /// @endcode
-    pub fn add(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_XYZ) {
-        crate::ffi::gp_XYZ::add(self, theOther)
-    }
-
     /// @code
     /// new.X() = <me>.X() + theOther.X()
     /// new.Y() = <me>.Y() + theOther.Y()
     /// new.Z() = <me>.Z() + theOther.Z()
     /// @endcode
-    pub fn added(&self, theOther: &crate::ffi::gp_XYZ) -> crate::ffi::gp_XYZ {
-        crate::ffi::gp_XYZ::added(self, theOther)
-    }
-
-    /// @code
-    /// <me>.X() = <me>.Y() * theOther.Z() - <me>.Z() * theOther.Y()
-    /// <me>.Y() = <me>.Z() * theOther.X() - <me>.X() * theOther.Z()
-    /// <me>.Z() = <me>.X() * theOther.Y() - <me>.Y() * theOther.X()
-    /// @endcode
-    pub fn cross(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_XYZ) {
-        crate::ffi::gp_XYZ::cross(self, theOther)
+    pub fn added(&self, theOther: &crate::ffi::gp_XYZ) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::gp_XYZ_added(self, theOther)
     }
 
     /// @code
@@ -9742,30 +4844,8 @@ impl XYZ {
     /// new.Y() = <me>.Z() * theOther.X() - <me>.X() * theOther.Z()
     /// new.Z() = <me>.X() * theOther.Y() - <me>.Y() * theOther.X()
     /// @endcode
-    pub fn crossed(&self, theOther: &crate::ffi::gp_XYZ) -> crate::ffi::gp_XYZ {
-        crate::ffi::gp_XYZ::crossed(self, theOther)
-    }
-
-    /// Computes the magnitude of the cross product between <me> and
-    /// theRight. Returns || <me> ^ theRight ||
-    pub fn cross_magnitude(&self, theRight: &crate::ffi::gp_XYZ) -> f64 {
-        crate::ffi::gp_XYZ::cross_magnitude(self, theRight)
-    }
-
-    /// Computes the square magnitude of the cross product between <me> and
-    /// theRight. Returns || <me> ^ theRight ||**2
-    pub fn cross_square_magnitude(&self, theRight: &crate::ffi::gp_XYZ) -> f64 {
-        crate::ffi::gp_XYZ::cross_square_magnitude(self, theRight)
-    }
-
-    /// Triple vector product
-    /// Computes <me> = <me>.Cross(theCoord1.Cross(theCoord2))
-    pub fn cross_cross(
-        self: std::pin::Pin<&mut Self>,
-        theCoord1: &crate::ffi::gp_XYZ,
-        theCoord2: &crate::ffi::gp_XYZ,
-    ) {
-        crate::ffi::gp_XYZ::cross_cross(self, theCoord1, theCoord2)
+    pub fn crossed(&self, theOther: &crate::ffi::gp_XYZ) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::gp_XYZ_crossed(self, theOther)
     }
 
     /// Triple vector product
@@ -9774,51 +4854,13 @@ impl XYZ {
         &self,
         theCoord1: &crate::ffi::gp_XYZ,
         theCoord2: &crate::ffi::gp_XYZ,
-    ) -> crate::ffi::gp_XYZ {
-        crate::ffi::gp_XYZ::cross_crossed(self, theCoord1, theCoord2)
+    ) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::gp_XYZ_cross_crossed(self, theCoord1, theCoord2)
     }
 
     /// divides <me> by a real.
-    pub fn divide(self: std::pin::Pin<&mut Self>, theScalar: f64) {
-        crate::ffi::gp_XYZ::divide(self, theScalar)
-    }
-
-    /// divides <me> by a real.
-    pub fn divided(&self, theScalar: f64) -> crate::ffi::gp_XYZ {
-        crate::ffi::gp_XYZ::divided(self, theScalar)
-    }
-
-    /// computes the scalar product between <me> and theOther
-    pub fn dot(&self, theOther: &crate::ffi::gp_XYZ) -> f64 {
-        crate::ffi::gp_XYZ::dot(self, theOther)
-    }
-
-    /// computes the triple scalar product
-    pub fn dot_cross(&self, theCoord1: &crate::ffi::gp_XYZ, theCoord2: &crate::ffi::gp_XYZ) -> f64 {
-        crate::ffi::gp_XYZ::dot_cross(self, theCoord1, theCoord2)
-    }
-
-    /// @code
-    /// <me>.X() = <me>.X() * theScalar;
-    /// <me>.Y() = <me>.Y() * theScalar;
-    /// <me>.Z() = <me>.Z() * theScalar;
-    /// @endcode
-    pub fn multiply(self: std::pin::Pin<&mut Self>, theScalar: f64) {
-        crate::ffi::gp_XYZ::multiply(self, theScalar)
-    }
-
-    /// @code
-    /// <me>.X() = <me>.X() * theOther.X();
-    /// <me>.Y() = <me>.Y() * theOther.Y();
-    /// <me>.Z() = <me>.Z() * theOther.Z();
-    /// @endcode
-    pub fn multiply_xyz(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_XYZ) {
-        crate::ffi::gp_XYZ::multiply(self, theOther)
-    }
-
-    /// <me> = theMatrix * <me>
-    pub fn multiply_mat(self: std::pin::Pin<&mut Self>, theMatrix: &crate::ffi::gp_Mat) {
-        crate::ffi::gp_XYZ::multiply(self, theMatrix)
+    pub fn divided(&self, theScalar: f64) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::gp_XYZ_divided(self, theScalar)
     }
 
     /// @code
@@ -9826,8 +4868,8 @@ impl XYZ {
     /// New.Y() = <me>.Y() * theScalar;
     /// New.Z() = <me>.Z() * theScalar;
     /// @endcode
-    pub fn multiplied(&self, theScalar: f64) -> crate::ffi::gp_XYZ {
-        crate::ffi::gp_XYZ::multiplied(self, theScalar)
+    pub fn multiplied_real(&self, theScalar: f64) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::gp_XYZ_multiplied_real(self, theScalar)
     }
 
     /// @code
@@ -9835,23 +4877,19 @@ impl XYZ {
     /// new.Y() = <me>.Y() * theOther.Y();
     /// new.Z() = <me>.Z() * theOther.Z();
     /// @endcode
-    pub fn multiplied_xyz(&self, theOther: &crate::ffi::gp_XYZ) -> crate::ffi::gp_XYZ {
-        crate::ffi::gp_XYZ::multiplied(self, theOther)
+    pub fn multiplied_xyz(
+        &self,
+        theOther: &crate::ffi::gp_XYZ,
+    ) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::gp_XYZ_multiplied_xyz(self, theOther)
     }
 
     /// New = theMatrix * <me>
-    pub fn multiplied_mat(&self, theMatrix: &crate::ffi::gp_Mat) -> crate::ffi::gp_XYZ {
-        crate::ffi::gp_XYZ::multiplied(self, theMatrix)
-    }
-
-    /// @code
-    /// <me>.X() = <me>.X()/ <me>.Modulus()
-    /// <me>.Y() = <me>.Y()/ <me>.Modulus()
-    /// <me>.Z() = <me>.Z()/ <me>.Modulus()
-    /// @endcode
-    /// Raised if <me>.Modulus() <= Resolution from gp
-    pub fn normalize(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_XYZ::normalize(self)
+    pub fn multiplied_mat(
+        &self,
+        theMatrix: &crate::ffi::gp_Mat,
+    ) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::gp_XYZ_multiplied_mat(self, theMatrix)
     }
 
     /// @code
@@ -9860,17 +4898,8 @@ impl XYZ {
     /// New.Z() = <me>.Z()/ <me>.Modulus()
     /// @endcode
     /// Raised if <me>.Modulus() <= Resolution from gp
-    pub fn normalized(&self) -> crate::ffi::gp_XYZ {
-        crate::ffi::gp_XYZ::normalized(self)
-    }
-
-    /// @code
-    /// <me>.X() = -<me>.X()
-    /// <me>.Y() = -<me>.Y()
-    /// <me>.Z() = -<me>.Z()
-    /// @endcode
-    pub fn reverse(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::gp_XYZ::reverse(self)
+    pub fn normalized(&self) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::gp_XYZ_normalized(self)
     }
 
     /// @code
@@ -9878,17 +4907,8 @@ impl XYZ {
     /// New.Y() = -<me>.Y()
     /// New.Z() = -<me>.Z()
     /// @endcode
-    pub fn reversed(&self) -> crate::ffi::gp_XYZ {
-        crate::ffi::gp_XYZ::reversed(self)
-    }
-
-    /// @code
-    /// <me>.X() = <me>.X() - theOther.X()
-    /// <me>.Y() = <me>.Y() - theOther.Y()
-    /// <me>.Z() = <me>.Z() - theOther.Z()
-    /// @endcode
-    pub fn subtract(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::gp_XYZ) {
-        crate::ffi::gp_XYZ::subtract(self, theOther)
+    pub fn reversed(&self) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::gp_XYZ_reversed(self)
     }
 
     /// @code
@@ -9896,97 +4916,8 @@ impl XYZ {
     /// new.Y() = <me>.Y() - theOther.Y()
     /// new.Z() = <me>.Z() - theOther.Z()
     /// @endcode
-    pub fn subtracted(&self, theOther: &crate::ffi::gp_XYZ) -> crate::ffi::gp_XYZ {
-        crate::ffi::gp_XYZ::subtracted(self, theOther)
-    }
-
-    /// <me> is set to the following linear form :
-    /// @code
-    /// theA1 * theXYZ1 + theA2 * theXYZ2 + theA3 * theXYZ3 + theXYZ4
-    /// @endcode
-    pub fn set_linear_form(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theXYZ1: &crate::ffi::gp_XYZ,
-        theA2: f64,
-        theXYZ2: &crate::ffi::gp_XYZ,
-        theA3: f64,
-        theXYZ3: &crate::ffi::gp_XYZ,
-        theXYZ4: &crate::ffi::gp_XYZ,
-    ) {
-        crate::ffi::gp_XYZ::set_linear_form(
-            self, theA1, theXYZ1, theA2, theXYZ2, theA3, theXYZ3, theXYZ4,
-        )
-    }
-
-    /// <me> is set to the following linear form :
-    /// @code
-    /// theA1 * theXYZ1 + theA2 * theXYZ2 + theA3 * theXYZ3
-    /// @endcode
-    pub fn set_linear_form_real_xyz_real_xyz_real_xyz(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theXYZ1: &crate::ffi::gp_XYZ,
-        theA2: f64,
-        theXYZ2: &crate::ffi::gp_XYZ,
-        theA3: f64,
-        theXYZ3: &crate::ffi::gp_XYZ,
-    ) {
-        crate::ffi::gp_XYZ::set_linear_form(self, theA1, theXYZ1, theA2, theXYZ2, theA3, theXYZ3)
-    }
-
-    /// <me> is set to the following linear form :
-    /// @code
-    /// theA1 * theXYZ1 + theA2 * theXYZ2 + theXYZ3
-    /// @endcode
-    pub fn set_linear_form_real_xyz_real_xyz2(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theXYZ1: &crate::ffi::gp_XYZ,
-        theA2: f64,
-        theXYZ2: &crate::ffi::gp_XYZ,
-        theXYZ3: &crate::ffi::gp_XYZ,
-    ) {
-        crate::ffi::gp_XYZ::set_linear_form(self, theA1, theXYZ1, theA2, theXYZ2, theXYZ3)
-    }
-
-    /// <me> is set to the following linear form :
-    /// @code
-    /// theA1 * theXYZ1 + theA2 * theXYZ2
-    /// @endcode
-    pub fn set_linear_form_real_xyz_real_xyz(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theXYZ1: &crate::ffi::gp_XYZ,
-        theA2: f64,
-        theXYZ2: &crate::ffi::gp_XYZ,
-    ) {
-        crate::ffi::gp_XYZ::set_linear_form(self, theA1, theXYZ1, theA2, theXYZ2)
-    }
-
-    /// <me> is set to the following linear form :
-    /// @code
-    /// theA1 * theXYZ1 + theXYZ2
-    /// @endcode
-    pub fn set_linear_form_real_xyz2(
-        self: std::pin::Pin<&mut Self>,
-        theA1: f64,
-        theXYZ1: &crate::ffi::gp_XYZ,
-        theXYZ2: &crate::ffi::gp_XYZ,
-    ) {
-        crate::ffi::gp_XYZ::set_linear_form(self, theA1, theXYZ1, theXYZ2)
-    }
-
-    /// <me> is set to the following linear form :
-    /// @code
-    /// theXYZ1 + theXYZ2
-    /// @endcode
-    pub fn set_linear_form_xyz2(
-        self: std::pin::Pin<&mut Self>,
-        theXYZ1: &crate::ffi::gp_XYZ,
-        theXYZ2: &crate::ffi::gp_XYZ,
-    ) {
-        crate::ffi::gp_XYZ::set_linear_form(self, theXYZ1, theXYZ2)
+    pub fn subtracted(&self, theOther: &crate::ffi::gp_XYZ) -> cxx::UniquePtr<crate::ffi::gp_XYZ> {
+        crate::ffi::gp_XYZ_subtracted(self, theOther)
     }
 
     /// Clone into a new UniquePtr via copy constructor

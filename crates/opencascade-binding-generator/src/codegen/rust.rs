@@ -109,17 +109,17 @@ fn generate_doc_comments(source_header: &Option<String>, cpp_identifier: &str, c
 /// Convert TokenStream to formatted string with basic newlines
 fn format_tokenstream(tokens: &TokenStream) -> String {
     let code = tokens.to_string();
-    
-    // Add basic formatting by inserting newlines in key places to make it more readable  
+
+    // Add basic formatting by inserting newlines in key places to make it more readable
+    // Note: Don't add newlines before "impl " - it would break impl blocks inside extern "C++"
     let formatted = code
         .replace(" # ! [", "\n#![")
         .replace(" # [cxx :: bridge]", "\n#[cxx::bridge]")
         .replace(" pub (crate) mod ffi {", "\npub(crate) mod ffi {")
         .replace(" unsafe extern \"C++\" {", "\n    unsafe extern \"C++\" {")
         .replace(" } }", "\n    }\n}")
-        .replace(" pub use ffi ::", "\npub use ffi::")
-        .replace(" impl ", "\nimpl ");
-    
+        .replace(" pub use ffi ::", "\npub use ffi::");
+
     formatted
 }
 
@@ -3311,11 +3311,11 @@ fn generate_unified_class(
     // Constructor functions
     let ctors = generate_unified_constructors(class, ctx);
 
-    // Instance methods
+    // Instance methods (CXX method declarations - no function name tracking needed)
     let methods = generate_unified_methods(class, ctx);
 
     // Wrapper methods (free functions for methods returning by value)
-    // Also returns the set of function names used, to avoid conflicts with static methods
+    // Returns the set of function names used, to avoid conflicts with static methods
     let (wrapper_methods, wrapper_fn_names) = generate_unified_wrapper_methods(class, ctx);
 
     // Static methods (takes reserved names to avoid conflicts)
@@ -3336,6 +3336,8 @@ fn generate_unified_class(
     // Section header
     let section_line = format!(" ======================== {} ========================", cpp_name);
 
+    // Methods are declared as flat functions with self receiver (CXX method syntax)
+    // CXX doesn't support impl blocks inside extern "C++"
     quote! {
         #[doc = #section_line]
         #type_decl
@@ -3443,30 +3445,37 @@ fn generate_unified_constructor(
 
 /// Generate instance method declarations for unified mode
 fn generate_unified_methods(class: &ParsedClass, ctx: &TypeContext) -> Vec<TokenStream> {
-    // Filter bindable methods
+    // Filter bindable methods - only include methods that CXX can bind directly
+    // Methods that need wrappers (return by value, c_string params) are handled separately
     let bindable_methods: Vec<&Method> = class
         .methods
         .iter()
         .filter(|method| {
+            // Skip methods with types that can't be bound at all
             if method.has_unbindable_types() {
                 return false;
             }
+            // Skip methods that need C++ wrapper functions (return by value, c_string params)
             if needs_wrapper_function(method, ctx.all_enums) {
-                return false;  // Handled by wrapper methods
+                return false;
             }
+            // Skip methods with by-value class/handle parameters (not supported by CXX)
             if has_unsupported_by_value_params(method) {
                 return false;
             }
+            // Skip const methods returning mutable references (CXX can't represent this)
             if has_const_mut_return_mismatch(method) {
                 return false;
             }
+            // Skip methods using enums (enums need special handling)
             if method_uses_enum(method, ctx.all_enums) {
                 return false;
             }
+            // Skip methods that need explicit lifetime annotations
             if resolver::method_needs_explicit_lifetimes(method) {
                 return false;
             }
-            // Filter methods using unknown classes/handles
+            // Filter methods using unknown classes/handles (not declared in FFI)
             if method.params.iter().any(|p| type_uses_unknown_type(&p.ty, ctx)) {
                 return false;
             }
@@ -3485,16 +3494,14 @@ fn generate_unified_methods(class: &ParsedClass, ctx: &TypeContext) -> Vec<Token
         *name_counts.entry(method.name.clone()).or_insert(0) += 1;
     }
 
-    // Track seen names for generating unique suffixes
+    // Track seen method names to ensure uniqueness
     let mut seen_names: HashMap<String, usize> = HashMap::new();
 
     bindable_methods
         .iter()
         .map(|method| {
             let needs_suffix = name_counts.get(&method.name).copied().unwrap_or(0) > 1;
-            let suffix = if needs_suffix {
-                let count = seen_names.entry(method.name.clone()).or_insert(0);
-                *count += 1;
+            let base_suffix = if needs_suffix {
                 // Use overload_suffix based on parameter types, with const suffix if needed
                 let base_suffix = method.overload_suffix();
                 // Check if there's another method with same base suffix but different constness
@@ -3508,16 +3515,35 @@ fn generate_unified_methods(class: &ParsedClass, ctx: &TypeContext) -> Vec<Token
             } else {
                 String::new()
             };
+
+            // Build method name and ensure uniqueness
+            let base_rust_name = safe_method_name(&method.name);
+            let candidate_name = if base_suffix.is_empty() {
+                base_rust_name.clone()
+            } else {
+                format!("{}{}", base_rust_name, base_suffix)
+            };
+
+            let count = seen_names.entry(candidate_name.clone()).or_insert(0);
+            *count += 1;
+            let suffix = if *count > 1 {
+                format!("{}_{}", base_suffix, count)
+            } else {
+                base_suffix
+            };
+
             generate_unified_method_with_suffix(class, method, &suffix, ctx)
         })
         .collect()
 }
 
 /// Generate a single method for unified mode with an overload suffix
+/// Methods are generated as CXX method declarations with self receiver.
+/// CXX will bind these directly to the C++ class methods.
 fn generate_unified_method_with_suffix(class: &ParsedClass, method: &Method, suffix: &str, ctx: &TypeContext) -> TokenStream {
     let cpp_name = &class.name;
     let rust_type = format_ident!("{}", cpp_name);
-    
+
     // Build the Rust method name with suffix
     let base_rust_name = safe_method_name(&method.name);
     let rust_method_name_str = if suffix.is_empty() {
@@ -3527,6 +3553,8 @@ fn generate_unified_method_with_suffix(class: &ParsedClass, method: &Method, suf
     };
     let rust_method_name = format_ident!("{}", rust_method_name_str);
 
+    // CXX method syntax: use self: &Type for methods
+    // CXX will bind these as methods on the C++ class
     let receiver = if method.is_const {
         quote! { self: &#rust_type }
     } else {
@@ -4153,16 +4181,18 @@ pub fn generate_module_reexports(
     rust_module_name: &str,
     classes: &[&ParsedClass],
     functions: &[&ParsedFunction],
+    collections: &[&super::collections::CollectionInfo],
     symbol_table: &crate::resolver::SymbolTable,
 ) -> String {
     let all_enum_names = &symbol_table.all_enum_names;
     let protected_destructor_classes = symbol_table.protected_destructor_class_names();
     let all_class_names = &symbol_table.all_class_names;
 
-    // Build set of classes that can have Handle<T> declarations
-    let handle_able_classes: HashSet<String> = classes.iter()
+    // Build set of ALL classes that can have Handle<T> declarations (across all modules)
+    // This must match generate_unified_ffi's handle_able_classes to ensure consistent filtering
+    let handle_able_classes: HashSet<String> = symbol_table.classes.values()
         .filter(|c| c.is_handle_type && !c.has_protected_destructor)
-        .map(|c| c.name.clone())
+        .map(|c| c.cpp_name.clone())
         .collect();
 
     // Build set of class names owned by this module
@@ -4206,6 +4236,17 @@ pub fn generate_module_reexports(
     }
     
     if !functions.is_empty() {
+        output.push('\n');
+    }
+
+    // Re-export collection types belonging to this module
+    for coll in collections {
+        output.push_str(&format!(
+            "pub use crate::ffi::{} as {};\n",
+            coll.typedef_name, coll.short_name
+        ));
+    }
+    if !collections.is_empty() {
         output.push('\n');
     }
 
@@ -4336,60 +4377,219 @@ pub fn generate_module_reexports(
             }
         }
 
-        // Instance methods
-        let mut method_names: HashMap<String, usize> = HashMap::new();
-        for method in &class.methods {
-            if method.has_unbindable_types() {
-                continue;
-            }
-            if method_uses_enum(method, all_enum_names) {
-                continue;
-            }
-            if method.params.iter().any(|p| param_uses_unknown_handle(&p.ty, &handle_able_classes)) {
-                continue;
-            }
-            if let Some(ref ret) = method.return_type {
-                if param_uses_unknown_handle(ret, &handle_able_classes) {
-                    continue;
+        // Collect CXX method names (non-wrapper methods bound directly by CXX)
+        // Used to detect naming conflicts between wrappers/statics and CXX methods
+        let cxx_method_names: HashSet<String> = class.methods.iter()
+            .filter(|m| !m.has_unbindable_types() && !needs_wrapper_function(m, all_enum_names))
+            .map(|m| safe_method_name(&m.name))
+            .collect();
+
+        // Track all instance method names (CXX + wrapper) for static method conflict detection
+        let mut all_instance_method_names: HashSet<String> = cxx_method_names.clone();
+        // Track full FFI function names (ClassName_method) reserved by wrapper methods
+        // This must match the reserved_names set used in generate_unified_static_methods
+        let mut wrapper_reserved_names: HashSet<String> = HashSet::new();
+
+        // Instance method wrappers - ONLY for methods that are generated as free functions
+        // in ffi.rs (i.e., needs_wrapper_function returns true). CXX methods (with self
+        // receiver) are automatically available on the type via the type alias.
+        {
+            let type_ctx = TypeContext {
+                current_module: module_name,
+                module_classes: all_class_names,
+                all_enums: all_enum_names,
+                all_classes: all_class_names,
+                handle_able_classes: Some(&handle_able_classes),
+            };
+
+            // First pass: collect all bindable wrapper methods (same filter as generate_unified_wrapper_methods)
+            let wrapper_methods: Vec<&Method> = class.methods.iter().filter(|method| {
+                if method.has_unbindable_types() { return false; }
+                if !needs_wrapper_function(method, all_enum_names) { return false; }
+                if method_uses_enum(method, all_enum_names) { return false; }
+                if has_unsupported_by_value_params(method) { return false; }
+                if has_const_mut_return_mismatch(method) { return false; }
+                if method.params.iter().any(|p| type_uses_unknown_type(&p.ty, &type_ctx)) { return false; }
+                if let Some(ref ret) = method.return_type {
+                    if type_uses_unknown_type(ret, &type_ctx) { return false; }
                 }
+                if resolver::method_needs_explicit_lifetimes(method) { return false; }
+                true
+            }).collect();
+
+            // Count wrapper methods by name - must match generate_unified_wrapper_methods logic
+            let mut name_counts: HashMap<String, usize> = HashMap::new();
+            for method in &wrapper_methods {
+                *name_counts.entry(method.name.clone()).or_insert(0) += 1;
             }
-            if method.params.iter().any(|p| p.ty.is_c_string()) {
-                continue;
+
+            for method in &wrapper_methods {
+                // Determine method name - must match generate_unified_wrapper_methods exactly
+                let base_name = safe_method_name(&method.name);
+                let needs_suffix = name_counts.get(&method.name).copied().unwrap_or(0) > 1;
+                let ffi_method_ident = if needs_suffix {
+                    let base_suffix = method.overload_suffix();
+                    let same_suffix_diff_const = wrapper_methods.iter()
+                        .any(|m| m.name == method.name && m.overload_suffix() == base_suffix && m.is_const != method.is_const);
+                    let suffix = if same_suffix_diff_const && !method.is_const {
+                        format!("{}_mut", base_suffix)
+                    } else {
+                        base_suffix
+                    };
+                    format!("{}{}", base_name, suffix)
+                } else {
+                    base_name.clone()
+                };
+
+                // For the impl method name in the re-export, add overload suffix if it
+                // would conflict with a CXX method of the same name
+                let method_ident = if cxx_method_names.contains(&ffi_method_ident) {
+                    let suffix = method.overload_suffix();
+                    if suffix.is_empty() {
+                        format!("{}_wrapper", ffi_method_ident)
+                    } else {
+                        format!("{}{}", base_name, suffix)
+                    }
+                } else {
+                    ffi_method_ident.clone()
+                };
+
+                // Track this wrapper method name for static method conflict detection
+                all_instance_method_names.insert(method_ident.clone());
+
+                // FFI function name matches generate_unified_wrapper_method: ClassName_ffi_method_ident
+                let ffi_fn_name = format!("{}_{}", cpp_name, ffi_method_ident);
+                wrapper_reserved_names.insert(ffi_fn_name.clone());
+
+                // Build parameter list for the wrapper
+                let self_param = if method.is_const {
+                    "&self".to_string()
+                } else {
+                    "self: std::pin::Pin<&mut Self>".to_string()
+                };
+
+                let params: Vec<String> = std::iter::once(self_param)
+                    .chain(method.params.iter().map(|p| {
+                        let name = if RUST_KEYWORDS.contains(&p.name.as_str()) {
+                            format!("{}_", p.name)
+                        } else {
+                            p.name.clone()
+                        };
+                        let ty_str = unified_type_to_string(&p.ty, &owned_classes, all_enum_names);
+                        format!("{}: {}", name, ty_str)
+                    }))
+                    .collect();
+
+                let args: Vec<String> = std::iter::once("self".to_string())
+                    .chain(method.params.iter().map(|p| {
+                        if RUST_KEYWORDS.contains(&p.name.as_str()) {
+                            format!("{}_", p.name)
+                        } else {
+                            p.name.clone()
+                        }
+                    }))
+                    .collect();
+
+                let return_type = if let Some(ref ret) = method.return_type {
+                    let ty_str = unified_return_type_to_string(ret, &owned_classes, all_enum_names);
+                    format!(" -> {}", ty_str)
+                } else {
+                    String::new()
+                };
+
+                let doc = if let Some(comment) = &method.comment {
+                    comment.lines()
+                        .map(|line| format!("    /// {}", line.trim()))
+                        .collect::<Vec<_>>()
+                        .join("\n")
+                } else {
+                    String::new()
+                };
+
+                let doc_prefix = if doc.is_empty() { String::new() } else { format!("{}\n", doc) };
+                impl_methods.push(format!(
+                    "{}    pub fn {}({}){} {{\n        crate::ffi::{}({})\n    }}\n",
+                    doc_prefix,
+                    method_ident,
+                    params.join(", "),
+                    return_type,
+                    ffi_fn_name,
+                    args.join(", ")
+                ));
             }
-            if method.return_type.as_ref().map(|t| t.is_c_string()).unwrap_or(false) {
-                continue;
+        }
+
+        // Static method wrappers
+        {
+            let type_ctx = TypeContext {
+                current_module: module_name,
+                module_classes: all_class_names,
+                all_enums: all_enum_names,
+                all_classes: all_class_names,
+                handle_able_classes: Some(&handle_able_classes),
+            };
+
+            // First pass: collect all bindable static methods (same filter as generate_unified_static_methods)
+            let static_methods: Vec<&StaticMethod> = class.static_methods.iter().filter(|method| {
+                if method.has_unbindable_types() { return false; }
+                if static_method_uses_enum(method, all_enum_names) { return false; }
+                if method.params.iter().any(|p| type_uses_unknown_type(&p.ty, &type_ctx)) { return false; }
+                if let Some(ref ret) = method.return_type {
+                    if type_uses_unknown_type(ret, &type_ctx) { return false; }
+                    if type_is_cstring(ret) { return false; }
+                }
+                true
+            }).collect();
+
+            // Count by name - must match generate_unified_static_methods
+            let mut name_counts: HashMap<String, usize> = HashMap::new();
+            for method in &static_methods {
+                *name_counts.entry(method.name.clone()).or_insert(0) += 1;
             }
 
-            let base_method_name = method.name.to_snake_case();
-            let count = method_names.entry(method.name.clone()).or_insert(0);
-            *count += 1;
+            for method in &static_methods {
+                // Determine method name - must match generate_unified_static_methods exactly
+                let base_name = safe_method_name(&method.name);
+                let has_internal_conflict = name_counts.get(&method.name).copied().unwrap_or(0) > 1;
+                let candidate_fn_name = if has_internal_conflict {
+                    let suffix = method.overload_suffix();
+                    format!("{}{}", base_name, suffix)
+                } else {
+                    base_name.clone()
+                };
 
-            let suffix = if *count > 1 {
-                method.overload_suffix()
-            } else {
-                String::new()
-            };
+                // Check if candidate conflicts with wrapper method reserved names
+                // (matches generate_unified_static_methods reserved_names logic)
+                let candidate_full = format!("{}_{}", cpp_name, candidate_fn_name);
+                let ffi_method_ident = if wrapper_reserved_names.contains(&candidate_full) {
+                    let suffix = method.overload_suffix();
+                    if suffix.is_empty() {
+                        format!("{}_static", base_name)
+                    } else {
+                        format!("{}{}", base_name, suffix)
+                    }
+                } else {
+                    candidate_fn_name
+                };
 
-            let method_name = if suffix.is_empty() {
-                base_method_name.clone()
-            } else {
-                format!("{}{}", base_method_name, suffix)
-            };
+                // For the impl method name, add suffix if it conflicts with any instance method
+                // (CXX methods or wrapper methods)
+                let method_ident = if all_instance_method_names.contains(&ffi_method_ident) {
+                    let suffix = method.overload_suffix();
+                    if suffix.is_empty() {
+                        format!("{}_static", ffi_method_ident)
+                    } else {
+                        format!("{}{}", base_name, suffix)
+                    }
+                } else {
+                    ffi_method_ident.clone()
+                };
 
-            let method_name = if RUST_KEYWORDS.contains(&method_name.as_str()) {
-                format!("r#{}", method_name)
-            } else {
-                method_name
-            };
+                // FFI function name matches generate_unified_static_method: ClassName_ffi_method_ident
+                let ffi_fn_name = format!("{}_{}", cpp_name, ffi_method_ident);
 
-            let receiver = if method.is_const {
-                "&self".to_string()
-            } else {
-                "self: std::pin::Pin<&mut Self>".to_string()
-            };
-
-            let params: Vec<String> = std::iter::once(receiver)
-                .chain(method.params.iter().map(|p| {
+                // Build parameter list (no self for static methods)
+                let params: Vec<String> = method.params.iter().map(|p| {
                     let name = if RUST_KEYWORDS.contains(&p.name.as_str()) {
                         format!("{}_", p.name)
                     } else {
@@ -4397,153 +4597,49 @@ pub fn generate_module_reexports(
                     };
                     let ty_str = unified_type_to_string(&p.ty, &owned_classes, all_enum_names);
                     format!("{}: {}", name, ty_str)
-                }))
-                .collect();
+                }).collect();
 
-            let args: Vec<String> = std::iter::once("self".to_string())
-                .chain(method.params.iter().map(|p| {
+                let args: Vec<String> = method.params.iter().map(|p| {
                     if RUST_KEYWORDS.contains(&p.name.as_str()) {
                         format!("{}_", p.name)
                     } else {
                         p.name.clone()
                     }
-                }))
-                .collect();
+                }).collect();
 
-            let return_type = if let Some(ref ret) = method.return_type {
-                let type_str = unified_type_to_string(ret, &owned_classes, all_enum_names);
-                format!(" -> {}", type_str)
-            } else {
-                String::new()
-            };
-
-            let doc = if let Some(comment) = &method.comment {
-                comment.lines()
-                    .map(|line| format!("    /// {}", line.trim()))
-                    .collect::<Vec<_>>()
-                    .join("\n")
-            } else {
-                String::new()
-            };
-
-            let doc_prefix = if doc.is_empty() { String::new() } else { format!("{}\n", doc) };
-            let all_params = params.join(", ");
-            let all_args = args.join(", ");
-
-            let ffi_method_base = method.name.to_snake_case();
-            let ffi_method = if RUST_KEYWORDS.contains(&ffi_method_base.as_str()) {
-                format!("r#{}", ffi_method_base)
-            } else {
-                ffi_method_base
-            };
-
-            impl_methods.push(format!(
-                "{}    pub fn {}({}){} {{\n        crate::ffi::{}::{}({})\n    }}\n",
-                doc_prefix, method_name, all_params, return_type, cpp_name, ffi_method, all_args
-            ));
-        }
-
-        // Static methods
-        let mut static_method_names: HashMap<String, usize> = HashMap::new();
-        for method in &class.static_methods {
-            if method.has_unbindable_types() {
-                continue;
-            }
-            if static_method_uses_enum(method, all_enum_names) {
-                continue;
-            }
-            if method.params.iter().any(|p| param_uses_unknown_handle(&p.ty, &handle_able_classes)) {
-                continue;
-            }
-            if let Some(ref ret) = method.return_type {
-                if param_uses_unknown_handle(ret, &handle_able_classes) {
-                    continue;
-                }
-                if ret.is_c_string() {
-                    continue;
-                }
-            }
-            if method.params.iter().any(|p| p.ty.is_c_string()) {
-                continue;
-            }
-
-            let base_method_name = method.name.to_snake_case();
-            let count = static_method_names.entry(method.name.clone()).or_insert(0);
-            *count += 1;
-
-            let suffix = if *count > 1 {
-                method.overload_suffix()
-            } else {
-                String::new()
-            };
-
-            let method_name = if suffix.is_empty() {
-                base_method_name.clone()
-            } else {
-                format!("{}{}", base_method_name, suffix)
-            };
-
-            let method_name = if RUST_KEYWORDS.contains(&method_name.as_str()) {
-                format!("r#{}", method_name)
-            } else {
-                method_name
-            };
-
-            let params: Vec<String> = method.params.iter().map(|p| {
-                let name = if RUST_KEYWORDS.contains(&p.name.as_str()) {
-                    format!("{}_", p.name)
+                let return_type = if let Some(ref ret) = method.return_type {
+                    let mut ty_str = unified_return_type_to_string(ret, &owned_classes, all_enum_names);
+                    // Static methods returning references/pointers need 'static lifetime
+                    if ty_str.starts_with('&') && !ty_str.contains("'static") {
+                        ty_str = ty_str.replacen("&", "&'static ", 1);
+                    }
+                    format!(" -> {}", ty_str)
                 } else {
-                    p.name.clone()
+                    String::new()
                 };
-                let ty_str = unified_type_to_string(&p.ty, &owned_classes, all_enum_names);
-                format!("{}: {}", name, ty_str)
-            }).collect();
 
-            let args: Vec<String> = method.params.iter().map(|p| {
-                if RUST_KEYWORDS.contains(&p.name.as_str()) {
-                    format!("{}_", p.name)
+                let doc = if let Some(comment) = &method.comment {
+                    comment.lines()
+                        .map(|line| format!("    /// {}", line.trim()))
+                        .collect::<Vec<_>>()
+                        .join("\n")
                 } else {
-                    p.name.clone()
-                }
-            }).collect();
+                    String::new()
+                };
 
-            let return_type = if let Some(ref ret) = method.return_type {
-                let mut type_str = unified_type_to_string(ret, &owned_classes, all_enum_names);
-                if ret.is_reference() && type_str.starts_with('&') {
-                    type_str = format!("&'static {}", &type_str[1..]);
-                }
-                format!(" -> {}", type_str)
-            } else {
-                String::new()
-            };
-
-            let doc = if let Some(comment) = &method.comment {
-                comment.lines()
-                    .map(|line| format!("    /// {}", line.trim()))
-                    .collect::<Vec<_>>()
-                    .join("\n")
-            } else {
-                String::new()
-            };
-
-            let doc_prefix = if doc.is_empty() { String::new() } else { format!("{}\n", doc) };
-            let all_params = params.join(", ");
-            let all_args = args.join(", ");
-
-            let ffi_method_base = method.name.to_snake_case();
-            let ffi_method = if RUST_KEYWORDS.contains(&ffi_method_base.as_str()) {
-                format!("r#{}", ffi_method_base)
-            } else {
-                ffi_method_base
-            };
-
-            impl_methods.push(format!(
-                "{}    pub fn {}({}){} {{\n        crate::ffi::{}::{}({})\n    }}\n",
-                doc_prefix, method_name, all_params, return_type, cpp_name, ffi_method, all_args
-            ));
+                let doc_prefix = if doc.is_empty() { String::new() } else { format!("{}\n", doc) };
+                impl_methods.push(format!(
+                    "{}    pub fn {}({}){} {{\n        crate::ffi::{}({})\n    }}\n",
+                    doc_prefix,
+                    method_ident,
+                    params.join(", "),
+                    return_type,
+                    ffi_fn_name,
+                    args.join(", ")
+                ));
+            }
         }
 
-        
         // Upcast methods
         let all_ancestors = symbol_table.get_all_ancestors_by_name(&class.name);
         for base_class in &all_ancestors {
@@ -4628,6 +4724,28 @@ pub fn generate_module_reexports(
 }
 
 /// Convert a Type to a string for unified FFI
+/// Like `unified_type_to_string` but for return types from wrapper functions.
+/// Classes and Handles returned by value are wrapped in UniquePtr by CXX.
+fn unified_return_type_to_string(ty: &Type, owned_classes: &HashSet<String>, all_enums: &HashSet<String>) -> String {
+    match ty {
+        // Classes returned by value are wrapped in UniquePtr
+        Type::Class(name) if name != "char" => {
+            format!("cxx::UniquePtr<crate::ffi::{}>", name)
+        }
+        // Handles returned by value are wrapped in UniquePtr
+        Type::Handle(name) => {
+            format!("cxx::UniquePtr<crate::ffi::Handle{}>", name.replace("_", ""))
+        }
+        // const char* return -> String (CXX wrapper converts to rust::String)
+        Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
+            "String".to_string()
+        }
+        // For references, static methods returning refs need 'static lifetime
+        // Everything else delegates to the normal type_to_string
+        _ => unified_type_to_string(ty, owned_classes, all_enums),
+    }
+}
+
 fn unified_type_to_string(ty: &Type, _owned_classes: &HashSet<String>, _all_enums: &HashSet<String>) -> String {
     match ty {
         Type::Void => "()".to_string(),
@@ -4649,7 +4767,13 @@ fn unified_type_to_string(ty: &Type, _owned_classes: &HashSet<String>, _all_enum
         }
         Type::Handle(name) => format!("crate::ffi::Handle{}", name.replace("_", "")),
         Type::ConstRef(inner) => format!("&{}", unified_type_to_string(inner, _owned_classes, _all_enums)),
-        Type::MutRef(inner) => format!("std::pin::Pin<&mut {}>", unified_type_to_string(inner, _owned_classes, _all_enums)),
+        Type::MutRef(inner) => {
+            if inner.is_primitive() {
+                format!("&mut {}", unified_type_to_string(inner, _owned_classes, _all_enums))
+            } else {
+                format!("std::pin::Pin<&mut {}>", unified_type_to_string(inner, _owned_classes, _all_enums))
+            }
+        }
         Type::RValueRef(_inner) => "()".to_string(), // RValue refs are unbindable
         Type::ConstPtr(inner) => {
             // Special case for const char* - map to &str for C strings
@@ -4677,6 +4801,7 @@ mod tests {
             constructors: vec![Constructor {
                 comment: Some("Default constructor".to_string()),
                 params: vec![],
+                source_line: None,
             }],
             methods: vec![Method {
                 name: "X".to_string(),
@@ -4684,6 +4809,7 @@ mod tests {
                 is_const: true,
                 params: vec![],
                 return_type: Some(Type::F64),
+                source_line: None,
             }],
             static_methods: vec![],
             all_method_names: std::collections::HashSet::new(),
@@ -4692,12 +4818,27 @@ mod tests {
             has_protected_destructor: false,
             is_abstract: false,
             source_header: "gp_Pnt.hxx".to_string(),
+            source_line: None,
         };
 
         let module = Module::new("gp");
-        let all_enums = HashSet::new();
-        let all_classes = HashSet::new();
-        let output = generate_module(&module, &[&class], &[], &[], &all_enums, &all_classes);
+        let all_enums: HashSet<String> = HashSet::new();
+        let all_classes: HashSet<String> = HashSet::new();
+        let symbol_table = crate::resolver::SymbolTable {
+            classes: std::collections::HashMap::new(),
+            constructors: std::collections::HashMap::new(),
+            methods: std::collections::HashMap::new(),
+            static_methods: std::collections::HashMap::new(),
+            functions: std::collections::HashMap::new(),
+            enums: std::collections::HashMap::new(),
+            classes_by_module: std::collections::HashMap::new(),
+            functions_by_module: std::collections::HashMap::new(),
+            enums_by_module: std::collections::HashMap::new(),
+            all_enum_names: HashSet::new(),
+            all_class_names: HashSet::new(),
+            cross_module_types: std::collections::HashMap::new(),
+        };
+        let output = generate_module(&module, &[&class], &[], &[], &[], &[], &symbol_table);
         assert!(output.contains("gp_Pnt"));
         assert!(output.contains("Pnt"));
     }

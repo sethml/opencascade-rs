@@ -66,92 +66,6 @@ impl MakeBox {
         crate::ffi::BRepPrimAPI_MakeBox_ctor_ax2_real3(Axes, dx, dy, dz)
     }
 
-    /// Init a box with a corner at 0,0,0 and the other theDX, theDY, theDZ
-    pub fn init(self: std::pin::Pin<&mut Self>, theDX: f64, theDY: f64, theDZ: f64) {
-        crate::ffi::BRepPrimAPI_MakeBox::init(self, theDX, theDY, theDZ)
-    }
-
-    /// Init a box with a corner at thePnt and size theDX, theDY, theDZ.
-    pub fn init_pnt_real3(
-        self: std::pin::Pin<&mut Self>,
-        thePnt: &crate::ffi::gp_Pnt,
-        theDX: f64,
-        theDY: f64,
-        theDZ: f64,
-    ) {
-        crate::ffi::BRepPrimAPI_MakeBox::init(self, thePnt, theDX, theDY, theDZ)
-    }
-
-    /// Init a box with corners thePnt1, thePnt2.
-    pub fn init_pnt2(
-        self: std::pin::Pin<&mut Self>,
-        thePnt1: &crate::ffi::gp_Pnt,
-        thePnt2: &crate::ffi::gp_Pnt,
-    ) {
-        crate::ffi::BRepPrimAPI_MakeBox::init(self, thePnt1, thePnt2)
-    }
-
-    /// Init a box with Ax2 (the left corner and the theAxes) and size theDX, theDY, theDZ.
-    pub fn init_ax2_real3(
-        self: std::pin::Pin<&mut Self>,
-        theAxes: &crate::ffi::gp_Ax2,
-        theDX: f64,
-        theDY: f64,
-        theDZ: f64,
-    ) {
-        crate::ffi::BRepPrimAPI_MakeBox::init(self, theAxes, theDX, theDY, theDZ)
-    }
-
-    /// Returns the internal algorithm.
-    pub fn wedge(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::BRepPrim_Wedge> {
-        crate::ffi::BRepPrimAPI_MakeBox::wedge(self)
-    }
-
-    /// Stores the solid in myShape.
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepPrimAPI_MakeBox::build(self, theRange)
-    }
-
-    /// Returns the constructed box as a shell.
-    pub fn shell(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shell {
-        crate::ffi::BRepPrimAPI_MakeBox::shell(self)
-    }
-
-    /// Returns the constructed box as a solid.
-    pub fn solid(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Solid {
-        crate::ffi::BRepPrimAPI_MakeBox::solid(self)
-    }
-
-    /// Returns ZMin face
-    pub fn bottom_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
-        crate::ffi::BRepPrimAPI_MakeBox::bottom_face(self)
-    }
-
-    /// Returns XMin face
-    pub fn back_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
-        crate::ffi::BRepPrimAPI_MakeBox::back_face(self)
-    }
-
-    /// Returns XMax face
-    pub fn front_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
-        crate::ffi::BRepPrimAPI_MakeBox::front_face(self)
-    }
-
-    /// Returns YMin face
-    pub fn left_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
-        crate::ffi::BRepPrimAPI_MakeBox::left_face(self)
-    }
-
-    /// Returns YMax face
-    pub fn right_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
-        crate::ffi::BRepPrimAPI_MakeBox::right_face(self)
-    }
-
-    /// Returns ZMax face
-    pub fn top_face(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Face {
-        crate::ffi::BRepPrimAPI_MakeBox::top_face(self)
-    }
-
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         crate::ffi::BRepPrimAPI_MakeBox_as_BRepBuilderAPI_Command(self)
@@ -261,9 +175,38 @@ impl MakeCone {
         crate::ffi::BRepPrimAPI_MakeCone_ctor_ax2_real4(Axes, R1, R2, H, angle)
     }
 
-    /// Returns the algorithm.
-    pub fn cone(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::BRepPrim_Cone> {
-        crate::ffi::BRepPrimAPI_MakeCone::cone(self)
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepPrimAPI_MakeOneAxis
+    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
+        crate::ffi::BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis(self)
+    }
+
+    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
+    pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
+        crate::ffi::BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis_mut(self)
     }
 }
 
@@ -337,11 +280,72 @@ impl MakeCylinder {
         crate::ffi::BRepPrimAPI_MakeCylinder_ctor_ax2_real3(Axes, R, H, Angle)
     }
 
-    /// Returns the algorithm.
-    pub fn cylinder(
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
         self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepPrim_Cylinder> {
-        crate::ffi::BRepPrimAPI_MakeCylinder::cylinder(self)
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepPrimAPI_MakeOneAxis
+    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
+        crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis(self)
+    }
+
+    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
+    pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
+        crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis_mut(self)
+    }
+}
+
+// ========================
+// From BRepPrimAPI_MakeOneAxis.hxx
+// ========================
+
+/// The abstract class MakeOneAxis is the root class of
+/// algorithms used to construct rotational primitives.
+pub use crate::ffi::BRepPrimAPI_MakeOneAxis as MakeOneAxis;
+
+impl MakeOneAxis {
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_MakeShape_mut(self)
     }
 }
 
@@ -397,19 +401,9 @@ impl MakePrism {
         crate::ffi::BRepPrimAPI_MakePrism_ctor_shape_dir_bool3(S, D, Inf, Copy, Canonize)
     }
 
-    /// Returns the internal sweeping algorithm.
-    pub fn prism(&self) -> &crate::ffi::BRepSweep_Prism {
-        crate::ffi::BRepPrimAPI_MakePrism::prism(self)
-    }
-
-    /// Builds the resulting shape (redefined from MakeShape).
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepPrimAPI_MakePrism::build(self, theRange)
-    }
-
     /// Returns the  TopoDS  Shape of the bottom of the prism.
-    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepPrimAPI_MakePrism::first_shape(self)
+    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepPrimAPI_MakePrism_first_shape(self)
     }
 
     /// Returns the TopoDS Shape of the top of the prism.
@@ -418,21 +412,8 @@ impl MakePrism {
     /// otherwise, the copy of S belonging to the prism.
     /// LastShape returns the copy of S translated by V at the
     /// time of construction.
-    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepPrimAPI_MakePrism::last_shape(self)
-    }
-
-    /// Returns ListOfShape from TopTools.
-    pub fn generated(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepPrimAPI_MakePrism::generated(self, S)
-    }
-
-    /// Returns true if the shape S has been deleted.
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepPrimAPI_MakePrism::is_deleted(self, S)
+    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepPrimAPI_MakePrism_last_shape(self)
     }
 
     /// Returns the TopoDS Shape of the bottom  of the  prism.
@@ -440,8 +421,8 @@ impl MakePrism {
     pub fn first_shape_shape(
         self: std::pin::Pin<&mut Self>,
         theShape: &crate::ffi::TopoDS_Shape,
-    ) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepPrimAPI_MakePrism::first_shape(self, theShape)
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepPrimAPI_MakePrism_first_shape_shape(self, theShape)
     }
 
     /// Returns the  TopoDS  Shape of the top  of  the  prism.
@@ -449,8 +430,8 @@ impl MakePrism {
     pub fn last_shape_shape(
         self: std::pin::Pin<&mut Self>,
         theShape: &crate::ffi::TopoDS_Shape,
-    ) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepPrimAPI_MakePrism::last_shape(self, theShape)
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepPrimAPI_MakePrism_last_shape_shape(self, theShape)
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -547,40 +528,15 @@ impl MakeRevol {
         crate::ffi::BRepPrimAPI_MakeRevol_ctor_shape_ax1_bool(S, A, Copy)
     }
 
-    /// Returns the internal sweeping algorithm.
-    pub fn revol(&self) -> &crate::ffi::BRepSweep_Revol {
-        crate::ffi::BRepPrimAPI_MakeRevol::revol(self)
-    }
-
-    /// Builds the resulting shape (redefined from MakeShape).
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepPrimAPI_MakeRevol::build(self, theRange)
-    }
-
     /// Returns the first shape of the revol  (coinciding with
     /// the generating shape).
-    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepPrimAPI_MakeRevol::first_shape(self)
+    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepPrimAPI_MakeRevol_first_shape(self)
     }
 
     /// Returns the TopoDS Shape of the end of the revol.
-    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepPrimAPI_MakeRevol::last_shape(self)
-    }
-
-    /// Returns list of shape generated from shape S
-    /// Warning: shape S must be shape of type VERTEX, EDGE, FACE, SOLID.
-    /// For shapes of other types method always returns empty list
-    pub fn generated(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepPrimAPI_MakeRevol::generated(self, S)
-    }
-
-    /// Returns true if the shape S has been deleted.
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepPrimAPI_MakeRevol::is_deleted(self, S)
+    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepPrimAPI_MakeRevol_last_shape(self)
     }
 
     /// Returns the TopoDS Shape of the beginning of the revolution,
@@ -588,8 +544,8 @@ impl MakeRevol {
     pub fn first_shape_shape(
         self: std::pin::Pin<&mut Self>,
         theShape: &crate::ffi::TopoDS_Shape,
-    ) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepPrimAPI_MakeRevol::first_shape(self, theShape)
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepPrimAPI_MakeRevol_first_shape_shape(self, theShape)
     }
 
     /// Returns the TopoDS Shape of the end of the revolution,
@@ -597,18 +553,8 @@ impl MakeRevol {
     pub fn last_shape_shape(
         self: std::pin::Pin<&mut Self>,
         theShape: &crate::ffi::TopoDS_Shape,
-    ) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepPrimAPI_MakeRevol::last_shape(self, theShape)
-    }
-
-    /// Check if there are degenerated edges in the result.
-    pub fn has_degenerated(&self) -> bool {
-        crate::ffi::BRepPrimAPI_MakeRevol::has_degenerated(self)
-    }
-
-    /// Returns the list of degenerated edges
-    pub fn degenerated(&self) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepPrimAPI_MakeRevol::degenerated(self)
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepPrimAPI_MakeRevol_last_shape_shape(self, theShape)
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -782,11 +728,38 @@ impl MakeSphere {
         crate::ffi::BRepPrimAPI_MakeSphere_ctor_ax2_real4(Axis, R, angle1, angle2, angle3)
     }
 
-    /// Returns the algorithm.
-    pub fn sphere(
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
         self: std::pin::Pin<&mut Self>,
-    ) -> std::pin::Pin<&mut crate::ffi::BRepPrim_Sphere> {
-        crate::ffi::BRepPrimAPI_MakeSphere::sphere(self)
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepPrimAPI_MakeOneAxis
+    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
+        crate::ffi::BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis(self)
+    }
+
+    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
+    pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
+        crate::ffi::BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis_mut(self)
     }
 }
 
@@ -814,13 +787,13 @@ pub use crate::ffi::BRepPrimAPI_MakeSweep as MakeSweep;
 
 impl MakeSweep {
     /// Returns the  TopoDS  Shape of the bottom of the sweep.
-    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepPrimAPI_MakeSweep::first_shape(self)
+    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepPrimAPI_MakeSweep_first_shape(self)
     }
 
     /// Returns the TopoDS Shape of the top of the sweep.
-    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepPrimAPI_MakeSweep::last_shape(self)
+    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepPrimAPI_MakeSweep_last_shape(self)
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -969,8 +942,37 @@ impl MakeTorus {
         crate::ffi::BRepPrimAPI_MakeTorus_ctor_ax2_real5(Axes, R1, R2, angle1, angle2, angle)
     }
 
-    /// Returns the algorithm.
-    pub fn torus(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut crate::ffi::BRepPrim_Torus> {
-        crate::ffi::BRepPrimAPI_MakeTorus::torus(self)
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepPrimAPI_MakeOneAxis
+    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
+        crate::ffi::BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis(self)
+    }
+
+    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
+    pub fn as_make_one_axis_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut MakeOneAxis> {
+        crate::ffi::BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis_mut(self)
     }
 }

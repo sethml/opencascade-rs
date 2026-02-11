@@ -53,50 +53,16 @@ impl Reader {
         crate::ffi::STEPControl_Reader_ctor()
     }
 
-    /// Transfers a root given its rank in the list of candidate roots
-    /// Default is the first one
-    /// Returns True if a shape has resulted, false else
-    /// Same as inherited TransferOneRoot, kept for compatibility
-    pub fn transfer_root(
+    /// Upcast to XSControl_Reader
+    pub fn as_xs_control_reader(&self) -> &crate::xs_control::Reader {
+        crate::ffi::STEPControl_Reader_as_XSControl_Reader(self)
+    }
+
+    /// Upcast to XSControl_Reader (mutable)
+    pub fn as_xs_control_reader_mut(
         self: std::pin::Pin<&mut Self>,
-        num: i32,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> bool {
-        crate::ffi::STEPControl_Reader::transfer_root(self, num, theProgress)
-    }
-
-    /// Determines the list of root entities from Model which are candidate for
-    /// a transfer to a Shape (type of entities is PRODUCT)
-    pub fn nb_roots_for_transfer(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::STEPControl_Reader::nb_roots_for_transfer(self)
-    }
-
-    /// Returns sequence of all unit names for shape representations
-    /// found in file
-    pub fn file_units(
-        self: std::pin::Pin<&mut Self>,
-        theUnitLengthNames: std::pin::Pin<&mut crate::ffi::TColStd_SequenceOfAsciiString>,
-        theUnitAngleNames: std::pin::Pin<&mut crate::ffi::TColStd_SequenceOfAsciiString>,
-        theUnitSolidAngleNames: std::pin::Pin<&mut crate::ffi::TColStd_SequenceOfAsciiString>,
-    ) {
-        crate::ffi::STEPControl_Reader::file_units(
-            self,
-            theUnitLengthNames,
-            theUnitAngleNames,
-            theUnitSolidAngleNames,
-        )
-    }
-
-    /// Sets system length unit used by transfer process.
-    /// Performs only if a model is not NULL
-    pub fn set_system_length_unit(self: std::pin::Pin<&mut Self>, theLengthUnit: f64) {
-        crate::ffi::STEPControl_Reader::set_system_length_unit(self, theLengthUnit)
-    }
-
-    /// Returns system length unit used by transfer process.
-    /// Performs only if a model is not NULL
-    pub fn system_length_unit(&self) -> f64 {
-        crate::ffi::STEPControl_Reader::system_length_unit(self)
+    ) -> std::pin::Pin<&mut crate::xs_control::Reader> {
+        crate::ffi::STEPControl_Reader_as_XSControl_Reader_mut(self)
     }
 }
 
@@ -115,41 +81,5 @@ impl Writer {
     /// Creates a Writer from scratch
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::STEPControl_Writer_ctor()
-    }
-
-    /// Sets a length-measure value that
-    /// will be written to uncertainty-measure-with-unit
-    /// when the next shape is translated.
-    pub fn set_tolerance(self: std::pin::Pin<&mut Self>, Tol: f64) {
-        crate::ffi::STEPControl_Writer::set_tolerance(self, Tol)
-    }
-
-    /// Unsets the tolerance formerly forced by SetTolerance
-    pub fn unset_tolerance(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::STEPControl_Writer::unset_tolerance(self)
-    }
-
-    /// Displays the statistics for the
-    /// last translation. what defines the kind of statistics that are displayed:
-    /// - 0 gives general statistics   (number of translated roots,
-    /// number of warnings, number of   fail messages),
-    /// - 1 gives root results,
-    /// - 2 gives statistics for all checked entities,
-    /// - 3 gives the list of translated entities,
-    /// - 4 gives warning and fail messages,
-    /// - 5 gives fail messages only.
-    /// mode is used according to the use of what. If what is 0, mode is
-    /// ignored. If what is 1, 2 or 3, mode defines the following:
-    /// - 0 lists the numbers of STEP entities in a STEP model,
-    /// - 1 gives the number, identifier, type and result type for each
-    /// STEP entity and/or its status (fail, warning, etc.),
-    /// - 2 gives maximum information for each STEP entity (i.e. checks),
-    /// - 3 gives the number of entities by the type of a STEP entity,
-    /// - 4 gives the number of of STEP entities per result type and/or status,
-    /// - 5 gives the number of pairs (STEP or result type and status),
-    /// - 6 gives the number of pairs (STEP or result type and status)
-    /// AND the list of entity numbers in the STEP model.
-    pub fn print_stats_transfer(&self, what: i32, mode: i32) {
-        crate::ffi::STEPControl_Writer::print_stats_transfer(self, what, mode)
     }
 }

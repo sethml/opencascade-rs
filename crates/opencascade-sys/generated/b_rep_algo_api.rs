@@ -46,46 +46,6 @@ impl BooleanOperation {
         crate::ffi::BRepAlgoAPI_BooleanOperation_ctor_pavefiller(thePF)
     }
 
-    /// @name Setting/getting arguments
-    /// Returns the first argument involved in this Boolean operation.
-    /// Obsolete
-    pub fn shape1(&self) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepAlgoAPI_BooleanOperation::shape1(self)
-    }
-
-    /// Returns the second argument involved in this Boolean operation.
-    /// Obsolete
-    pub fn shape2(&self) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepAlgoAPI_BooleanOperation::shape2(self)
-    }
-
-    /// Sets the Tool arguments
-    pub fn set_tools(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
-        crate::ffi::BRepAlgoAPI_BooleanOperation::set_tools(self, theLS)
-    }
-
-    /// Returns the Tools arguments
-    pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepAlgoAPI_BooleanOperation::tools(self)
-    }
-
-    /// @name Setting/Getting the type of Boolean operation
-    /// Sets the type of Boolean operation
-    pub fn set_operation(self: std::pin::Pin<&mut Self>, theBOP: crate::ffi::BOPAlgo_Operation) {
-        crate::ffi::BRepAlgoAPI_BooleanOperation::set_operation(self, theBOP)
-    }
-
-    /// Returns the type of Boolean Operation
-    pub fn operation(&self) -> crate::ffi::BOPAlgo_Operation {
-        crate::ffi::BRepAlgoAPI_BooleanOperation::operation(self)
-    }
-
-    /// @name Performing the operation
-    /// Performs the Boolean operation.
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepAlgoAPI_BooleanOperation::build(self, theRange)
-    }
-
     /// Upcast to BRepAlgoAPI_BuilderAlgo
     pub fn as_builder_algo(&self) -> &BuilderAlgo {
         crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_BuilderAlgo(self)
@@ -167,174 +127,9 @@ impl BuilderAlgo {
         crate::ffi::BRepAlgoAPI_BuilderAlgo_ctor_pavefiller(thePF)
     }
 
-    /// @name Setting/Getting data for the algorithm
-    /// Sets the arguments
-    pub fn set_arguments(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::set_arguments(self, theLS)
-    }
-
-    /// Gets the arguments
-    pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::arguments(self)
-    }
-
-    /// @name Setting options
-    /// Sets the flag that defines the mode of treatment.
-    /// In non-destructive mode the argument shapes are not modified. Instead
-    /// a copy of a sub-shape is created in the result if it is needed to be updated.
-    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::set_non_destructive(self, theFlag)
-    }
-
-    /// Returns the flag that defines the mode of treatment.
-    /// In non-destructive mode the argument shapes are not modified. Instead
-    /// a copy of a sub-shape is created in the result if it is needed to be updated.
-    pub fn non_destructive(&self) -> bool {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::non_destructive(self)
-    }
-
-    /// Sets the glue option for the algorithm,
-    /// which allows increasing performance of the intersection
-    /// of the input shapes.
-    pub fn set_glue(self: std::pin::Pin<&mut Self>, theGlue: crate::ffi::BOPAlgo_GlueEnum) {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::set_glue(self, theGlue)
-    }
-
-    /// Returns the glue option of the algorithm
-    pub fn glue(&self) -> crate::ffi::BOPAlgo_GlueEnum {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::glue(self)
-    }
-
-    /// Enables/Disables the check of the input solids for inverted status
-    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::set_check_inverted(self, theCheck)
-    }
-
-    /// Returns the flag defining whether the check for input solids on inverted status
-    /// should be performed or not.
-    pub fn check_inverted(&self) -> bool {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::check_inverted(self)
-    }
-
-    /// @name Performing the operation
-    /// Performs the algorithm
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::build(self, theRange)
-    }
-
-    /// @name Result simplification
-    /// Simplification of the result shape is performed by the means of
-    /// *ShapeUpgrade_UnifySameDomain* algorithm. The result of the operation will
-    /// be overwritten with the simplified result.
-    ///
-    /// The simplification is performed without creation of the Internal shapes,
-    /// i.e. shapes connections will never be broken.
-    ///
-    /// Simplification is performed on the whole result shape. Thus, if the input
-    /// shapes contained connected tangent edges or faces unmodified during the operation
-    /// they will also be unified.
-    ///
-    /// After simplification, the History of result simplification is merged into the main
-    /// history of operation. So, it is taken into account when asking for Modified,
-    /// Generated and Deleted shapes.
-    ///
-    /// Some options of the main operation are passed into the Unifier:
-    /// - Fuzzy tolerance of the operation is given to the Unifier as the linear tolerance.
-    /// - Non destructive mode here controls the safe input mode in Unifier.
-    ///
-    /// @param theUnifyEdges Controls the edges unification. TRUE by default.
-    /// @param theUnifyFaces Controls the faces unification. TRUE by default.
-    /// @param theAngularTol Angular criteria for tangency of edges and faces.
-    /// Precision::Angular() by default.
-    pub fn simplify_result(
-        self: std::pin::Pin<&mut Self>,
-        theUnifyEdges: bool,
-        theUnifyFaces: bool,
-        theAngularTol: f64,
-    ) {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::simplify_result(
-            self,
-            theUnifyEdges,
-            theUnifyFaces,
-            theAngularTol,
-        )
-    }
-
-    /// @name History support
-    /// Returns the shapes modified from the shape <theS>.
-    /// If any, the list will contain only those splits of the
-    /// given shape, contained in the result.
-    pub fn modified(
-        self: std::pin::Pin<&mut Self>,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::modified(self, theS)
-    }
-
-    /// Returns the list  of shapes generated from the shape <theS>.
-    /// In frames of Boolean Operations algorithms only Edges and Faces
-    /// could have Generated elements, as only they produce new elements
-    /// during intersection:
-    /// - Edges can generate new vertices;
-    /// - Faces can generate new edges and vertices.
-    pub fn generated(
-        self: std::pin::Pin<&mut Self>,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::generated(self, theS)
-    }
-
-    /// Checks if the shape <theS> has been completely removed from the result,
-    /// i.e. the result does not contain the shape itself and any of its splits.
-    /// Returns TRUE if the shape has been deleted.
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, aS: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::is_deleted(self, aS)
-    }
-
-    /// Returns true if any of the input shapes has been modified during operation.
-    pub fn has_modified(&self) -> bool {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::has_modified(self)
-    }
-
-    /// Returns true if any of the input shapes has generated shapes during operation.
-    pub fn has_generated(&self) -> bool {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::has_generated(self)
-    }
-
-    /// Returns true if any of the input shapes has been deleted during operation.
-    /// Normally, General Fuse operation should not have Deleted elements,
-    /// but all derived operation can have.
-    pub fn has_deleted(&self) -> bool {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::has_deleted(self)
-    }
-
-    /// @name Enabling/Disabling the history collection.
-    /// Allows disabling the history collection
-    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::set_to_fill_history(self, theHistFlag)
-    }
-
-    /// Returns flag of history availability
-    pub fn has_history(&self) -> bool {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::has_history(self)
-    }
-
-    /// @name Getting the section edges
-    /// Returns a list of section edges.
-    /// The edges represent the result of intersection between arguments of operation.
-    pub fn section_edges(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::section_edges(self)
-    }
-
-    /// @name Getting tools performing the job
-    /// Returns the Intersection tool
-    pub fn ds_filler(&self) -> &crate::ffi::BOPAlgo_PPaveFiller {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::ds_filler(self)
-    }
-
-    /// Returns the Building tool
-    pub fn builder(&self) -> &crate::ffi::BOPAlgo_PBuilder {
-        crate::ffi::BRepAlgoAPI_BuilderAlgo::builder(self)
+    /// History tool
+    pub fn history(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
+        crate::ffi::BRepAlgoAPI_BuilderAlgo_history(self)
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -719,110 +514,46 @@ impl Section {
         crate::ffi::BRepAlgoAPI_Section_ctor_shape_pln_bool(S1, Pl, PerformNow)
     }
 
-    /// initialize the argument
+    /// Constructor with two shapes
     /// <S1>  - argument
+    /// <Sf>  - tool
+    /// <PerformNow> - the flag:
+    /// if <PerformNow>=True - the algorithm is performed immediately
     /// Obsolete
-    pub fn init1(self: std::pin::Pin<&mut Self>, S1: &crate::ffi::TopoDS_Shape) {
-        crate::ffi::BRepAlgoAPI_Section::init1(self, S1)
+    pub fn new_shape_handlesurface_bool(
+        S1: &crate::ffi::TopoDS_Shape,
+        Sf: &crate::ffi::HandleGeomSurface,
+        PerformNow: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAlgoAPI_Section_ctor_shape_handlesurface_bool(S1, Sf, PerformNow)
     }
 
-    /// initialize the argument
-    /// <Pl>  - argument
-    /// Obsolete
-    pub fn init1_pln(self: std::pin::Pin<&mut Self>, Pl: &crate::ffi::gp_Pln) {
-        crate::ffi::BRepAlgoAPI_Section::init1(self, Pl)
-    }
-
-    /// initialize the tool
+    /// Constructor with two shapes
+    /// <Sf>  - argument
     /// <S2>  - tool
+    /// <PerformNow> - the flag:
+    /// if <PerformNow>=True - the algorithm is performed immediately
     /// Obsolete
-    pub fn init2(self: std::pin::Pin<&mut Self>, S2: &crate::ffi::TopoDS_Shape) {
-        crate::ffi::BRepAlgoAPI_Section::init2(self, S2)
+    pub fn new_handlesurface_shape_bool(
+        Sf: &crate::ffi::HandleGeomSurface,
+        S2: &crate::ffi::TopoDS_Shape,
+        PerformNow: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAlgoAPI_Section_ctor_handlesurface_shape_bool(Sf, S2, PerformNow)
     }
 
-    /// initialize the tool
-    /// <Pl>  - tool
+    /// Constructor with two shapes
+    /// <Sf1>  - argument
+    /// <Sf2>  - tool
+    /// <PerformNow> - the flag:
+    /// if <PerformNow>=True - the algorithm is performed immediately
     /// Obsolete
-    pub fn init2_pln(self: std::pin::Pin<&mut Self>, Pl: &crate::ffi::gp_Pln) {
-        crate::ffi::BRepAlgoAPI_Section::init2(self, Pl)
-    }
-
-    pub fn approximation(self: std::pin::Pin<&mut Self>, B: bool) {
-        crate::ffi::BRepAlgoAPI_Section::approximation(self, B)
-    }
-
-    /// Indicates whether the P-Curve should be (or not)
-    /// performed on the argument.
-    /// By default, no parametric 2D curve (pcurve) is defined for the
-    /// edges of the result.
-    /// If ComputePCurve1 equals true, further computations performed
-    /// to attach an P-Curve in the parametric space of the argument
-    /// to the constructed edges.
-    /// Obsolete
-    pub fn compute_p_curve_on1(self: std::pin::Pin<&mut Self>, B: bool) {
-        crate::ffi::BRepAlgoAPI_Section::compute_p_curve_on1(self, B)
-    }
-
-    /// Indicates whether the P-Curve should be (or not)
-    /// performed on the tool.
-    /// By default, no parametric 2D curve (pcurve) is defined for the
-    /// edges of the result.
-    /// If ComputePCurve1 equals true, further computations performed
-    /// to attach an P-Curve in the parametric space of the tool
-    /// to the constructed edges.
-    /// Obsolete
-    pub fn compute_p_curve_on2(self: std::pin::Pin<&mut Self>, B: bool) {
-        crate::ffi::BRepAlgoAPI_Section::compute_p_curve_on2(self, B)
-    }
-
-    /// Performs the algorithm
-    /// Filling interference Data Structure (if it is necessary)
-    /// Building the result of the operation.
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepAlgoAPI_Section::build(self, theRange)
-    }
-
-    /// get the face of the first part giving section edge <E>.
-    /// Returns True on the 3 following conditions :
-    /// 1/ <E> is an edge returned by the Shape() metwod.
-    /// 2/ First part of section performed is a shape.
-    /// 3/ <E> is built on a intersection curve (i.e <E>
-    /// is not the result of common edges)
-    /// When False, F remains untouched.
-    /// Obsolete
-    pub fn has_ancestor_face_on1(
-        &self,
-        E: &crate::ffi::TopoDS_Shape,
-        F: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
-    ) -> bool {
-        crate::ffi::BRepAlgoAPI_Section::has_ancestor_face_on1(self, E, F)
-    }
-
-    /// Identifies the ancestor faces of
-    /// the intersection edge E resulting from the last
-    /// computation performed in this framework, that is, the faces of
-    /// the two original shapes on which the edge E lies:
-    /// -      HasAncestorFaceOn1 gives the ancestor face in the first shape, and
-    /// -      HasAncestorFaceOn2 gives the ancestor face in the second shape.
-    /// These functions return true if an ancestor face F is found, or false if not.
-    /// An ancestor face is identifiable for the edge E if the following
-    /// conditions are satisfied:
-    /// -  the first part on which this algorithm performed its
-    /// last computation is a shape, that is, it was not given as
-    /// a surface or a plane at the time of construction of this
-    /// algorithm or at a later time by the Init1 function,
-    /// - E is one of the elementary edges built by the
-    /// last computation of this section algorithm.
-    /// To use these functions properly, you have to test the returned
-    /// Boolean value before using the ancestor face: F is significant
-    /// only if the returned Boolean value equals true.
-    /// Obsolete
-    pub fn has_ancestor_face_on2(
-        &self,
-        E: &crate::ffi::TopoDS_Shape,
-        F: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
-    ) -> bool {
-        crate::ffi::BRepAlgoAPI_Section::has_ancestor_face_on2(self, E, F)
+    pub fn new_handlesurface2_bool(
+        Sf1: &crate::ffi::HandleGeomSurface,
+        Sf2: &crate::ffi::HandleGeomSurface,
+        PerformNow: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepAlgoAPI_Section_ctor_handlesurface2_bool(Sf1, Sf2, PerformNow)
     }
 
     /// Upcast to BRepAlgoAPI_BooleanOperation

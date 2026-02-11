@@ -108,7 +108,7 @@ impl Precision {
     /// If ( Abs( D1.D2 ) < Precision::Angular() ) ...
     /// (although the function IsNormal does exist).
     pub fn angular() -> f64 {
-        crate::ffi::Precision::angular()
+        crate::ffi::Precision_angular()
     }
 
     /// Returns the recommended precision value when
@@ -152,13 +152,13 @@ impl Precision {
     /// becomes easily measurable, but only within a restricted
     /// space which contains some small objects of the complete scene.
     pub fn confusion() -> f64 {
-        crate::ffi::Precision::confusion()
+        crate::ffi::Precision_confusion()
     }
 
     /// Returns square of Confusion.
     /// Created for speed and convenience.
     pub fn square_confusion() -> f64 {
-        crate::ffi::Precision::square_confusion()
+        crate::ffi::Precision_square_confusion()
     }
 
     /// Returns the precision value in real space, frequently
@@ -184,7 +184,7 @@ impl Precision {
     /// Precision::Confusion() / 100.
     /// (that is, 1.e-9).
     pub fn intersection() -> f64 {
-        crate::ffi::Precision::intersection()
+        crate::ffi::Precision_intersection()
     }
 
     /// Returns the precision value in real space, frequently used
@@ -201,7 +201,7 @@ impl Precision {
     /// You may use a smaller tolerance in an approximation
     /// algorithm, but this option might be costly.
     pub fn approximation() -> f64 {
-        crate::ffi::Precision::approximation()
+        crate::ffi::Precision_approximation()
     }
 
     /// Convert a real  space precision  to  a  parametric
@@ -209,8 +209,8 @@ impl Precision {
     /// length of the tangent of the curve or the surface.
     ///
     /// Value is P / T
-    pub fn parametric(P: f64, T: f64) -> f64 {
-        crate::ffi::Precision::parametric(P, T)
+    pub fn parametric_real2(P: f64, T: f64) -> f64 {
+        crate::ffi::Precision_parametric_real2(P, T)
     }
 
     /// Returns a precision value in parametric space, which may be used :
@@ -257,14 +257,14 @@ impl Precision {
     /// 2.Pi without impacting on the resulting point.
     /// Therefore, take great care when adjusting a parametric
     /// tolerance to your own algorithm.
-    pub fn p_confusion(T: f64) -> f64 {
-        crate::ffi::Precision::p_confusion(T)
+    pub fn p_confusion_real(T: f64) -> f64 {
+        crate::ffi::Precision_p_confusion_real(T)
     }
 
     /// Returns square of PConfusion.
     /// Created for speed and convenience.
     pub fn square_p_confusion() -> f64 {
-        crate::ffi::Precision::square_p_confusion()
+        crate::ffi::Precision_square_p_confusion()
     }
 
     /// Returns a precision value in parametric space, which
@@ -280,8 +280,8 @@ impl Precision {
     /// segment whose length is equal to 100. (default value), or T.
     /// The parametric tolerance of intersection is equal to :
     /// -   Precision::Intersection() / 100., or Precision::Intersection() / T.
-    pub fn p_intersection(T: f64) -> f64 {
-        crate::ffi::Precision::p_intersection(T)
+    pub fn p_intersection_real(T: f64) -> f64 {
+        crate::ffi::Precision_p_intersection_real(T)
     }
 
     /// Returns a precision value in parametric space, which may
@@ -297,8 +297,8 @@ impl Precision {
     /// segment whose length is equal to 100. (default value), or T.
     /// The parametric tolerance of intersection is equal to :
     /// -   Precision::Approximation() / 100., or Precision::Approximation() / T.
-    pub fn p_approximation(T: f64) -> f64 {
-        crate::ffi::Precision::p_approximation(T)
+    pub fn p_approximation_real(T: f64) -> f64 {
+        crate::ffi::Precision_p_approximation_real(T)
     }
 
     /// Convert a real  space precision  to  a  parametric
@@ -306,7 +306,7 @@ impl Precision {
     ///
     /// Value is Parametric(P,1.e+2)
     pub fn parametric_real(P: f64) -> f64 {
-        crate::ffi::Precision::parametric(P)
+        crate::ffi::Precision_parametric_real(P)
     }
 
     /// Used  to test distances  in parametric  space on a
@@ -314,7 +314,7 @@ impl Precision {
     ///
     /// This is Precision::Parametric(Precision::Confusion())
     pub fn p_confusion() -> f64 {
-        crate::ffi::Precision::p_confusion()
+        crate::ffi::Precision_p_confusion()
     }
 
     /// Used for Intersections  in parametric  space  on a
@@ -322,7 +322,7 @@ impl Precision {
     ///
     /// This is Precision::Parametric(Precision::Intersection())
     pub fn p_intersection() -> f64 {
-        crate::ffi::Precision::p_intersection()
+        crate::ffi::Precision_p_intersection()
     }
 
     /// Used for  Approximations  in parametric space on a
@@ -330,30 +330,30 @@ impl Precision {
     ///
     /// This is Precision::Parametric(Precision::Approximation())
     pub fn p_approximation() -> f64 {
-        crate::ffi::Precision::p_approximation()
+        crate::ffi::Precision_p_approximation()
     }
 
     /// Returns True if R may be considered as an infinite
     /// number. Currently Abs(R) > 1e100
     pub fn is_infinite(R: f64) -> bool {
-        crate::ffi::Precision::is_infinite(R)
+        crate::ffi::Precision_is_infinite(R)
     }
 
     /// Returns True if R may be considered as  a positive
     /// infinite number. Currently R > 1e100
     pub fn is_positive_infinite(R: f64) -> bool {
-        crate::ffi::Precision::is_positive_infinite(R)
+        crate::ffi::Precision_is_positive_infinite(R)
     }
 
     /// Returns True if R may  be considered as a negative
     /// infinite number. Currently R < -1e100
     pub fn is_negative_infinite(R: f64) -> bool {
-        crate::ffi::Precision::is_negative_infinite(R)
+        crate::ffi::Precision_is_negative_infinite(R)
     }
 
     /// Returns a  big number that  can  be  considered as
     /// infinite. Use -Infinite() for a negative big number.
     pub fn infinite() -> f64 {
-        crate::ffi::Precision::infinite()
+        crate::ffi::Precision_infinite()
     }
 }

@@ -7,6 +7,264 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From Standard.hxx
+// ========================
+
+/// The package Standard provides global memory allocator and other basic
+/// services used by other OCCT components.
+pub use crate::ffi::Standard;
+
+impl Standard {
+    /// Deallocates the storage retained on the free list
+    /// and clears the list.
+    /// Returns non-zero if some memory has been actually freed.
+    pub fn purge() -> i32 {
+        crate::ffi::Standard_purge()
+    }
+}
+
+// ========================
+// From Standard_ConstructionError.hxx
+// ========================
+
+pub use crate::ffi::Standard_ConstructionError as ConstructionError;
+
+impl ConstructionError {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_ConstructionError_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_ConstructionError_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_ConstructionError_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_ConstructionError_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_ConstructionError_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_DimensionError.hxx
+// ========================
+
+pub use crate::ffi::Standard_DimensionError as DimensionError;
+
+impl DimensionError {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_DimensionError_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_DimensionError_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_DimensionError_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_DimensionError_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_DimensionError_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_DimensionMismatch.hxx
+// ========================
+
+pub use crate::ffi::Standard_DimensionMismatch as DimensionMismatch;
+
+impl DimensionMismatch {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_DimensionMismatch_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_DimensionMismatch_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_DimensionMismatch_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_DimensionMismatch_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_DimensionMismatch_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_DomainError.hxx
+// ========================
+
+pub use crate::ffi::Standard_DomainError as DomainError;
+
+impl DomainError {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_DomainError_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_DomainError_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_DomainError_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_DomainError_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_DomainError_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_Dump.hxx
+// ========================
+
+/// Type for storing a dump value with the stream position
+pub use crate::ffi::Standard_DumpValue as DumpValue;
+
+impl DumpValue {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_DumpValue_ctor()
+    }
+
+    pub fn new_asciistring_int(
+        theValue: &crate::ffi::TCollection_AsciiString,
+        theStartPos: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_DumpValue_ctor_asciistring_int(theValue, theStartPos)
+    }
+}
+
+/// This interface has some tool methods for stream (in JSON format) processing.
+pub use crate::ffi::Standard_Dump as Dump;
+
+impl Dump {
+    /// Returns true if the value has bracket key
+    pub fn has_child_key(theSourceValue: &crate::ffi::TCollection_AsciiString) -> bool {
+        crate::ffi::Standard_Dump_has_child_key(theSourceValue)
+    }
+
+    /// Returns default prefix added for each pointer info string if short presentation of pointer
+    /// used
+    pub fn get_pointer_prefix() -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::Standard_Dump_get_pointer_prefix()
+    }
+
+    /// Check whether the parameter name is equal to the name in the stream at position
+    /// @param[in]  theStreamStr stream with values
+    /// @param[in]  theName      stream key value
+    /// @param[out] theStreamPos current position in the stream
+    pub fn process_stream_name(
+        theStreamStr: &crate::ffi::TCollection_AsciiString,
+        theName: &crate::ffi::TCollection_AsciiString,
+        theStreamPos: &mut i32,
+    ) -> bool {
+        crate::ffi::Standard_Dump_process_stream_name(theStreamStr, theName, theStreamPos)
+    }
+
+    /// Check whether the field name is equal to the name in the stream at position
+    /// @param[in]  theStreamStr stream with values
+    /// @param[in]  theName      stream key field value
+    /// @param[out] theStreamPos current position in the stream
+    pub fn process_field_name(
+        theStreamStr: &crate::ffi::TCollection_AsciiString,
+        theName: &crate::ffi::TCollection_AsciiString,
+        theStreamPos: &mut i32,
+    ) -> bool {
+        crate::ffi::Standard_Dump_process_field_name(theStreamStr, theName, theStreamPos)
+    }
+
+    /// Unite values in one value using template: value_1, value_2, ..., value_n
+    /// @param[in]  theStreamStr stream with values
+    /// @param[out] theStreamPos current position in the stream
+    /// @param[in]  theCount     number of values
+    pub fn init_real_values(
+        theStreamStr: &crate::ffi::TCollection_AsciiString,
+        theStreamPos: &mut i32,
+        theCount: i32,
+    ) -> bool {
+        crate::ffi::Standard_Dump_init_real_values(theStreamStr, theStreamPos, theCount)
+    }
+
+    /// Returns real value
+    /// @param[in]  theStreamStr stream with values
+    /// @param[out] theStreamPos current position in the stream
+    /// @param[out] theValue     stream value
+    pub fn init_value(
+        theStreamStr: &crate::ffi::TCollection_AsciiString,
+        theStreamPos: &mut i32,
+        theValue: std::pin::Pin<&mut crate::ffi::TCollection_AsciiString>,
+    ) -> bool {
+        crate::ffi::Standard_Dump_init_value(theStreamStr, theStreamPos, theValue)
+    }
+
+    /// Convert field name into dump text value, removes "&" and "my" prefixes
+    /// An example, for field myValue, theName is Value, for &myCLass, the name is Class
+    /// @param theField a source value
+    pub fn dump_field_to_name(
+        theField: &crate::ffi::TCollection_AsciiString,
+    ) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::Standard_Dump_dump_field_to_name(theField)
+    }
+}
+
+// ========================
+// From Standard_ErrorHandler.hxx
+// ========================
+
+/// Class implementing mechanics of conversion of signals to exceptions.
+///
+/// Each instance of it stores data for jump placement, thread id,
+/// and callbacks to be called during jump (for proper resource release).
+///
+/// The active handlers are stored in the global stack, which is used
+/// to find appropriate handler when signal is raised.
+pub use crate::ffi::Standard_ErrorHandler as ErrorHandler;
+
+impl ErrorHandler {
+    /// Create a ErrorHandler (to be used with try{}catch(){}).
+    /// It uses the "setjmp" and "longjmp" routines.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_ErrorHandler_ctor()
+    }
+
+    /// Returns the current Error.
+    pub fn error(&self) -> cxx::UniquePtr<crate::ffi::HandleStandardFailure> {
+        crate::ffi::Standard_ErrorHandler_error(self)
+    }
+
+    /// Returns the caught exception.
+    pub fn last_caught_error() -> cxx::UniquePtr<crate::ffi::HandleStandardFailure> {
+        crate::ffi::Standard_ErrorHandler_last_caught_error()
+    }
+
+    /// Test if the code is currently running in a try block
+    pub fn is_in_try_block() -> bool {
+        crate::ffi::Standard_ErrorHandler_is_in_try_block()
+    }
+}
+
+// ========================
 // From Standard_Failure.hxx
 // ========================
 
@@ -37,40 +295,67 @@ impl Failure {
         crate::ffi::Standard_Failure_ctor_charptr2(theDesc, theStackTrace)
     }
 
-    pub fn reraise(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::Standard_Failure::reraise(self)
+    /// Returns error message
+    pub fn get_message_string(&self) -> String {
+        crate::ffi::Standard_Failure_get_message_string(self)
     }
 
-    /// Reraises a caught exception and changes its error message.
-    pub fn reraise_sstream(self: std::pin::Pin<&mut Self>, aReason: &crate::ffi::Standard_SStream) {
-        crate::ffi::Standard_Failure::reraise(self, aReason)
+    /// Sets error message
+    pub fn set_message_string(self: std::pin::Pin<&mut Self>, theMessage: &str) {
+        crate::ffi::Standard_Failure_set_message_string(self, theMessage)
     }
 
-    /// Used to throw CASCADE exception from C signal handler.
-    /// On platforms that do not allow throwing C++ exceptions
-    /// from this handler (e.g. Linux), uses longjump to get to
-    /// the current active signal handler, and only then is
-    /// converted to C++ exception.
-    pub fn jump(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::Standard_Failure::jump(self)
+    /// Returns the stack trace string
+    pub fn get_stack_string(&self) -> String {
+        crate::ffi::Standard_Failure_get_stack_string(self)
+    }
+
+    /// Sets the stack trace string
+    pub fn set_stack_string(self: std::pin::Pin<&mut Self>, theStack: &str) {
+        crate::ffi::Standard_Failure_set_stack_string(self, theStack)
+    }
+
+    pub fn reraise_charptr(self: std::pin::Pin<&mut Self>, aMessage: &str) {
+        crate::ffi::Standard_Failure_reraise(self, aMessage)
     }
 
     /// Raises an exception of type "Failure" and associates
-    /// an error message to it. The message can be constructed
-    /// at run-time.
-    pub fn raise(aReason: &crate::ffi::Standard_SStream) {
-        crate::ffi::Standard_Failure::raise(aReason)
+    /// an error message to it. The message can be printed
+    /// in an exception handler.
+    pub fn raise(aMessage: &str) {
+        crate::ffi::Standard_Failure_raise(aMessage)
+    }
+
+    /// Used to construct an instance of the exception object as a handle.
+    /// Shall be used to protect against possible construction of exception object in C stack,
+    /// which is dangerous since some of methods require that object was allocated dynamically.
+    pub fn new_instance_charptr(
+        theMessage: &str,
+    ) -> cxx::UniquePtr<crate::ffi::HandleStandardFailure> {
+        crate::ffi::Standard_Failure_new_instance_charptr(theMessage)
+    }
+
+    /// Used to construct an instance of the exception object as a handle.
+    pub fn new_instance_charptr2(
+        theMessage: &str,
+        theStackTrace: &str,
+    ) -> cxx::UniquePtr<crate::ffi::HandleStandardFailure> {
+        crate::ffi::Standard_Failure_new_instance_charptr2(theMessage, theStackTrace)
     }
 
     /// Returns the default length of stack trace to be captured by Standard_Failure constructor;
     /// 0 by default meaning no stack trace.
     pub fn default_stack_trace_length() -> i32 {
-        crate::ffi::Standard_Failure::default_stack_trace_length()
+        crate::ffi::Standard_Failure_default_stack_trace_length()
     }
 
     /// Sets default length of stack trace to be captured by Standard_Failure constructor.
     pub fn set_default_stack_trace_length(theNbStackTraces: i32) {
-        crate::ffi::Standard_Failure::set_default_stack_trace_length(theNbStackTraces)
+        crate::ffi::Standard_Failure_set_default_stack_trace_length(theNbStackTraces)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_Failure_get_type_descriptor()
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -125,22 +410,365 @@ impl Mutex {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::Standard_Mutex_ctor()
     }
+}
 
-    /// Method to lock the mutex; waits until the mutex is released
-    /// by other threads, locks it and then returns
-    pub fn lock(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::Standard_Mutex::lock(self)
+// ========================
+// From Standard_NoSuchObject.hxx
+// ========================
+
+pub use crate::ffi::Standard_NoSuchObject as NoSuchObject;
+
+impl NoSuchObject {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NoSuchObject_ctor()
     }
 
-    /// Method to test the mutex; if the mutex is not hold by other thread,
-    /// locks it and returns True; otherwise returns False without waiting
-    /// mutex to be released.
-    pub fn try_lock(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::Standard_Mutex::try_lock(self)
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NoSuchObject_ctor_charptr(theMessage)
     }
 
-    /// Method to unlock the mutex; releases it to other users
-    pub fn unlock(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::Standard_Mutex::unlock(self)
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NoSuchObject_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_NoSuchObject_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_NoSuchObject_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_NotImplemented.hxx
+// ========================
+
+pub use crate::ffi::Standard_NotImplemented as NotImplemented;
+
+impl NotImplemented {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NotImplemented_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NotImplemented_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NotImplemented_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_NotImplemented_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_NotImplemented_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_NullObject.hxx
+// ========================
+
+pub use crate::ffi::Standard_NullObject as NullObject;
+
+impl NullObject {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NullObject_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NullObject_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NullObject_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_NullObject_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_NullObject_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_NumericError.hxx
+// ========================
+
+pub use crate::ffi::Standard_NumericError as NumericError;
+
+impl NumericError {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NumericError_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NumericError_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_NumericError_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_NumericError_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_NumericError_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_OutOfMemory.hxx
+// ========================
+
+/// Standard_OutOfMemory exception is defined explicitly and not by
+/// macro DEFINE_STANDARD_EXCEPTION, to avoid necessity of dynamic
+/// memory allocations during throwing and stack unwinding:
+///
+/// - method NewInstance() returns static instance (singleton)
+/// - method Raise() raises copy of that singleton, resetting
+/// its message string
+/// - message string is stored as field, not allocated dynamically
+/// (storable message length is limited by buffer size)
+///
+/// The reason is that in out-of-memory condition any memory allocation can
+/// fail, thus use of operator new for allocation of new exception instance
+/// is dangerous (can cause recursion until stack overflow, see #24836).
+pub use crate::ffi::Standard_OutOfMemory as OutOfMemory;
+
+impl OutOfMemory {
+    /// Constructor is kept public for backward compatibility
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_OutOfMemory_ctor_charptr(theMessage)
+    }
+
+    /// Returns error message
+    pub fn get_message_string(&self) -> String {
+        crate::ffi::Standard_OutOfMemory_get_message_string(self)
+    }
+
+    /// Sets error message
+    pub fn set_message_string(self: std::pin::Pin<&mut Self>, aMessage: &str) {
+        crate::ffi::Standard_OutOfMemory_set_message_string(self, aMessage)
+    }
+
+    /// Raises exception with specified message string
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_OutOfMemory_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_OutOfMemory_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_OutOfRange.hxx
+// ========================
+
+pub use crate::ffi::Standard_OutOfRange as OutOfRange;
+
+impl OutOfRange {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_OutOfRange_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_OutOfRange_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_OutOfRange_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_OutOfRange_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_OutOfRange_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_ProgramError.hxx
+// ========================
+
+pub use crate::ffi::Standard_ProgramError as ProgramError;
+
+impl ProgramError {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_ProgramError_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_ProgramError_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_ProgramError_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_ProgramError_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_ProgramError_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_RangeError.hxx
+// ========================
+
+pub use crate::ffi::Standard_RangeError as RangeError;
+
+impl RangeError {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_RangeError_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_RangeError_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_RangeError_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_RangeError_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_RangeError_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_Transient.hxx
+// ========================
+
+/// Abstract class which forms the root of the entire
+/// Transient class hierarchy.
+pub use crate::ffi::Standard_Transient as Transient;
+
+impl Transient {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_Transient_ctor()
+    }
+
+    /// Copy constructor -- does nothing
+    pub fn new_transient(arg0: &crate::ffi::Standard_Transient) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_Transient_ctor_transient(arg0)
+    }
+
+    /// Returns a true value if this is an instance of TypeName.
+    pub fn is_instance_charptr(&self, theTypeName: &str) -> bool {
+        crate::ffi::Standard_Transient_is_instance(self, theTypeName)
+    }
+
+    /// Returns true if this is an instance of TypeName or an
+    /// instance of any class that inherits from TypeName.
+    /// Note that multiple inheritance is not supported by OCCT RTTI mechanism.
+    pub fn is_kind_charptr(&self, theTypeName: &str) -> bool {
+        crate::ffi::Standard_Transient_is_kind(self, theTypeName)
+    }
+
+    /// Returns type descriptor of Standard_Transient class
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_Transient_get_type_descriptor()
+    }
+}
+
+// ========================
+// From Standard_Type.hxx
+// ========================
+
+/// This class provides legacy interface (type descriptor) to run-time type
+/// information (RTTI) for OCCT classes inheriting from Standard_Transient.
+///
+/// In addition to features provided by standard C++ RTTI (type_info),
+/// Standard_Type allows passing descriptor as an object and using it for
+/// analysis of the type:
+/// - get descriptor of a parent class
+/// - get user-defined name of the class
+/// - get size of the object
+///
+/// Use static template method Instance() to get descriptor for a given type.
+/// Objects supporting OCCT RTTI return their type descriptor by method DynamicType().
+///
+/// To be usable with OCCT type system, the class should provide:
+/// - typedef base_type to its base class in the hierarchy
+/// - method get_type_name() returning programmer-defined name of the class
+/// (as a statically allocated constant C string or string literal)
+///
+/// Note that user-defined name is used since typeid.name() is usually mangled in
+/// compiler-dependent way.
+///
+/// Only single chain of inheritance is supported, with a root base class Standard_Transient.
+pub use crate::ffi::Standard_Type as Type;
+
+impl Type {
+    /// Returns the system type name of the class (typeinfo.name)
+    pub fn system_name(&self) -> String {
+        crate::ffi::Standard_Type_system_name(self)
+    }
+
+    /// Returns the given name of the class type (get_type_name)
+    pub fn name(&self) -> String {
+        crate::ffi::Standard_Type_name(self)
+    }
+
+    /// Returns True if this type is the same as theOther, or inherits from theOther.
+    /// Note that multiple inheritance is not supported.
+    pub fn sub_type_charptr(&self, theOther: &str) -> bool {
+        crate::ffi::Standard_Type_sub_type(self, theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_Type_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleStandardType> {
+        crate::ffi::Standard_Type_to_handle(obj)
+    }
+}
+
+// ========================
+// From Standard_TypeMismatch.hxx
+// ========================
+
+pub use crate::ffi::Standard_TypeMismatch as TypeMismatch;
+
+impl TypeMismatch {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_TypeMismatch_ctor()
+    }
+
+    pub fn new_charptr(theMessage: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_TypeMismatch_ctor_charptr(theMessage)
+    }
+
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_TypeMismatch_ctor_charptr2(theMessage, theStackTrace)
+    }
+
+    pub fn raise(theMessage: &str) {
+        crate::ffi::Standard_TypeMismatch_raise(theMessage)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Standard_TypeMismatch_get_type_descriptor()
     }
 }

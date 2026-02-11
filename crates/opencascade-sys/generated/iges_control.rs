@@ -53,30 +53,16 @@ impl Reader {
         crate::ffi::IGESControl_Reader_ctor()
     }
 
-    /// Set the transion of ALL Roots (if theReadOnlyVisible is False)
-    /// or of Visible Roots (if theReadOnlyVisible is True)
-    pub fn set_read_visible(self: std::pin::Pin<&mut Self>, ReadRoot: bool) {
-        crate::ffi::IGESControl_Reader::set_read_visible(self, ReadRoot)
+    /// Upcast to XSControl_Reader
+    pub fn as_xs_control_reader(&self) -> &crate::xs_control::Reader {
+        crate::ffi::IGESControl_Reader_as_XSControl_Reader(self)
     }
 
-    pub fn get_read_visible(&self) -> bool {
-        crate::ffi::IGESControl_Reader::get_read_visible(self)
-    }
-
-    /// Determines the list of root entities from Model which are candidate for
-    /// a transfer to a Shape (type of entities is PRODUCT)
-    /// <theReadOnlyVisible> is taken into account to define roots
-    pub fn nb_roots_for_transfer(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::IGESControl_Reader::nb_roots_for_transfer(self)
-    }
-
-    /// Prints Statistics and check list for Transfer
-    pub fn print_transfer_info(
-        &self,
-        failwarn: crate::ffi::IFSelect_PrintFail,
-        mode: crate::ffi::IFSelect_PrintCount,
-    ) {
-        crate::ffi::IGESControl_Reader::print_transfer_info(self, failwarn, mode)
+    /// Upcast to XSControl_Reader (mutable)
+    pub fn as_xs_control_reader_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::xs_control::Reader> {
+        crate::ffi::IGESControl_Reader_as_XSControl_Reader_mut(self)
     }
 }
 
@@ -116,20 +102,12 @@ impl Writer {
         crate::ffi::IGESControl_Writer_ctor_charptr_int(theUnit, theModecr)
     }
 
-    /// Translates a Shape to IGES Entities and adds them to the model
-    /// Returns True if done, False if Shape not suitable for IGES or null
-    pub fn add_shape(
-        self: std::pin::Pin<&mut Self>,
-        sh: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> bool {
-        crate::ffi::IGESControl_Writer::add_shape(self, sh, theProgress)
-    }
-
-    /// Computes the entities found in
-    /// the model, which is ready to be written.
-    /// This contrasts with the default computation of headers only.
-    pub fn compute_model(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::IGESControl_Writer::compute_model(self)
+    /// Prepares and writes an IGES model
+    /// either to an OStream, S or to a file name,CString.
+    /// Returns True if the operation was performed correctly and
+    /// False if an error occurred (for instance,
+    /// if the processor could not create the file).
+    pub fn write(self: std::pin::Pin<&mut Self>, file: &str, fnes: bool) -> bool {
+        crate::ffi::IGESControl_Writer_write(self, file, fnes)
     }
 }

@@ -70,7 +70,7 @@ impl BRepGProp {
         SkipShared: bool,
         UseTriangulation: bool,
     ) {
-        crate::ffi::BRepGProp::linear_properties(S, LProps, SkipShared, UseTriangulation)
+        crate::ffi::BRepGProp_linear_properties(S, LProps, SkipShared, UseTriangulation)
     }
 
     /// Computes the surface global properties of the
@@ -113,13 +113,18 @@ impl BRepGProp {
     /// source of geometry data. If UseTriangulation = Standard_False,
     /// exact geometry objects (surfaces) are used,
     /// otherwise face triangulations are used first.
-    pub fn surface_properties(
+    pub fn surface_properties_shape_gprops_bool2(
         S: &crate::ffi::TopoDS_Shape,
         SProps: std::pin::Pin<&mut crate::ffi::GProp_GProps>,
         SkipShared: bool,
         UseTriangulation: bool,
     ) {
-        crate::ffi::BRepGProp::surface_properties(S, SProps, SkipShared, UseTriangulation)
+        crate::ffi::BRepGProp_surface_properties_shape_gprops_bool2(
+            S,
+            SProps,
+            SkipShared,
+            UseTriangulation,
+        )
     }
 
     /// Updates <SProps> with the shape <S>, that contains its principal properties.
@@ -140,7 +145,7 @@ impl BRepGProp {
         Eps: f64,
         SkipShared: bool,
     ) -> f64 {
-        crate::ffi::BRepGProp::surface_properties(S, SProps, Eps, SkipShared)
+        crate::ffi::BRepGProp_surface_properties_shape_gprops_real_bool(S, SProps, Eps, SkipShared)
     }
 
     ///
@@ -185,14 +190,14 @@ impl BRepGProp {
     /// source of geometry data. If UseTriangulation = Standard_False,
     /// exact geometry objects (surfaces) are used,
     /// otherwise face triangulations are used first.
-    pub fn volume_properties(
+    pub fn volume_properties_shape_gprops_bool3(
         S: &crate::ffi::TopoDS_Shape,
         VProps: std::pin::Pin<&mut crate::ffi::GProp_GProps>,
         OnlyClosed: bool,
         SkipShared: bool,
         UseTriangulation: bool,
     ) {
-        crate::ffi::BRepGProp::volume_properties(
+        crate::ffi::BRepGProp_volume_properties_shape_gprops_bool3(
             S,
             VProps,
             OnlyClosed,
@@ -222,7 +227,9 @@ impl BRepGProp {
         OnlyClosed: bool,
         SkipShared: bool,
     ) -> f64 {
-        crate::ffi::BRepGProp::volume_properties(S, VProps, Eps, OnlyClosed, SkipShared)
+        crate::ffi::BRepGProp_volume_properties_shape_gprops_real_bool2(
+            S, VProps, Eps, OnlyClosed, SkipShared,
+        )
     }
 
     /// Updates <VProps> with the shape <S>, that contains its principal properties.
@@ -240,7 +247,7 @@ impl BRepGProp {
     /// shared topological entities or not.
     /// For ex., if SkipShared = True, the volumes formed by the equal
     /// (the same TShape, location and orientation) faces are taken into calculation only once.
-    pub fn volume_properties_gk(
+    pub fn volume_properties_gk_shape_gprops_real_bool5(
         S: &crate::ffi::TopoDS_Shape,
         VProps: std::pin::Pin<&mut crate::ffi::GProp_GProps>,
         Eps: f64,
@@ -250,7 +257,7 @@ impl BRepGProp {
         IFlag: bool,
         SkipShared: bool,
     ) -> f64 {
-        crate::ffi::BRepGProp::volume_properties_gk(
+        crate::ffi::BRepGProp_volume_properties_gk_shape_gprops_real_bool5(
             S, VProps, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared,
         )
     }
@@ -266,7 +273,7 @@ impl BRepGProp {
         IFlag: bool,
         SkipShared: bool,
     ) -> f64 {
-        crate::ffi::BRepGProp::volume_properties_gk(
+        crate::ffi::BRepGProp_volume_properties_gk_shape_gprops_pln_real_bool5(
             S, VProps, thePln, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared,
         )
     }
@@ -296,140 +303,8 @@ impl Face {
         crate::ffi::BRepGProp_Face_ctor_face_bool(F, IsUseSpan)
     }
 
-    pub fn load(self: std::pin::Pin<&mut Self>, F: &crate::ffi::TopoDS_Face) {
-        crate::ffi::BRepGProp_Face::load(self, F)
-    }
-
-    pub fn v_integration_order(&self) -> i32 {
-        crate::ffi::BRepGProp_Face::v_integration_order(self)
-    }
-
-    /// Returns Standard_True if the face is not trimmed.
-    pub fn natural_restriction(&self) -> bool {
-        crate::ffi::BRepGProp_Face::natural_restriction(self)
-    }
-
-    /// Returns the TopoDS face.
-    pub fn get_face(&self) -> &crate::ffi::TopoDS_Face {
-        crate::ffi::BRepGProp_Face::get_face(self)
-    }
-
     /// Returns the value of the boundary curve of the face.
-    pub fn value2d(&self, U: f64) -> crate::ffi::gp_Pnt2d {
-        crate::ffi::BRepGProp_Face::value2d(self, U)
-    }
-
-    pub fn s_int_order(&self, Eps: f64) -> i32 {
-        crate::ffi::BRepGProp_Face::s_int_order(self, Eps)
-    }
-
-    pub fn sv_int_subs(&self) -> i32 {
-        crate::ffi::BRepGProp_Face::sv_int_subs(self)
-    }
-
-    pub fn su_int_subs(&self) -> i32 {
-        crate::ffi::BRepGProp_Face::su_int_subs(self)
-    }
-
-    pub fn u_knots(&self, Knots: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfReal>) {
-        crate::ffi::BRepGProp_Face::u_knots(self, Knots)
-    }
-
-    pub fn v_knots(&self, Knots: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfReal>) {
-        crate::ffi::BRepGProp_Face::v_knots(self, Knots)
-    }
-
-    pub fn l_int_order(&self, Eps: f64) -> i32 {
-        crate::ffi::BRepGProp_Face::l_int_order(self, Eps)
-    }
-
-    pub fn l_int_subs(&self) -> i32 {
-        crate::ffi::BRepGProp_Face::l_int_subs(self)
-    }
-
-    pub fn l_knots(&self, Knots: std::pin::Pin<&mut crate::ffi::TColStd_Array1OfReal>) {
-        crate::ffi::BRepGProp_Face::l_knots(self, Knots)
-    }
-
-    /// Returns the number of points required to do the
-    /// integration in the U parametric direction with
-    /// a good accuracy.
-    pub fn u_integration_order(&self) -> i32 {
-        crate::ffi::BRepGProp_Face::u_integration_order(self)
-    }
-
-    /// Returns the parametric bounds of the Face.
-    pub fn bounds(
-        &self,
-        U1: std::pin::Pin<&mut f64>,
-        U2: std::pin::Pin<&mut f64>,
-        V1: std::pin::Pin<&mut f64>,
-        V2: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::BRepGProp_Face::bounds(self, U1, U2, V1, V2)
-    }
-
-    /// Computes the point of parameter U, V on the Face <S> and
-    /// the normal to the face at this point.
-    pub fn normal(
-        &self,
-        U: f64,
-        V: f64,
-        P: std::pin::Pin<&mut crate::ffi::gp_Pnt>,
-        VNor: std::pin::Pin<&mut crate::ffi::gp_Vec>,
-    ) {
-        crate::ffi::BRepGProp_Face::normal(self, U, V, P, VNor)
-    }
-
-    /// Loading the boundary arc.
-    /// Returns FALSE if edge has no P-Curve.
-    pub fn load_edge(self: std::pin::Pin<&mut Self>, E: &crate::ffi::TopoDS_Edge) -> bool {
-        crate::ffi::BRepGProp_Face::load(self, E)
-    }
-
-    /// Returns the parametric value of the start point of
-    /// the current arc of curve.
-    pub fn first_parameter(&self) -> f64 {
-        crate::ffi::BRepGProp_Face::first_parameter(self)
-    }
-
-    /// Returns the parametric value of the end point of
-    /// the current arc of curve.
-    pub fn last_parameter(&self) -> f64 {
-        crate::ffi::BRepGProp_Face::last_parameter(self)
-    }
-
-    /// Returns the number of points required to do the
-    /// integration along the parameter of curve.
-    pub fn integration_order(&self) -> i32 {
-        crate::ffi::BRepGProp_Face::integration_order(self)
-    }
-
-    /// Returns the point of parameter U and the first derivative
-    /// at this point of a boundary curve.
-    pub fn d12d(
-        &self,
-        U: f64,
-        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
-        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
-    ) {
-        crate::ffi::BRepGProp_Face::d12d(self, U, P, V1)
-    }
-
-    /// Loading the boundary arc. This arc is either a top, bottom,
-    /// left or right bound of a UV rectangle in which the
-    /// parameters of surface are defined.
-    /// If IsFirstParam is equal to Standard_True, the face is
-    /// initialized by either left of bottom bound. Otherwise it is
-    /// initialized by the top or right one.
-    /// If theIsoType is equal to GeomAbs_IsoU, the face is
-    /// initialized with either left or right bound. Otherwise -
-    /// with either top or bottom one.
-    pub fn load_bool_isotype(
-        self: std::pin::Pin<&mut Self>,
-        IsFirstParam: bool,
-        theIsoType: crate::ffi::GeomAbs_IsoType,
-    ) {
-        crate::ffi::BRepGProp_Face::load(self, IsFirstParam, theIsoType)
+    pub fn value2d(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepGProp_Face_value2d(self, U)
     }
 }

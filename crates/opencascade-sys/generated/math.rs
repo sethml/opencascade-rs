@@ -21,57 +21,6 @@ impl BissecNewton {
     pub fn new_real(theXTolerance: f64) -> cxx::UniquePtr<Self> {
         crate::ffi::math_BissecNewton_ctor_real(theXTolerance)
     }
-
-    /// A combination of Newton-Raphson and bissection methods is done to find
-    /// the root of the function F between the bounds Bound1 and Bound2
-    /// on the function F.
-    /// The tolerance required on the root is given by TolX.
-    /// The solution is found when:
-    /// abs(Xi - Xi-1) <= TolX and F(Xi) * F(Xi-1) <= 0
-    /// The maximum number of iterations allowed is given by NbIterations.
-    pub fn perform(
-        self: std::pin::Pin<&mut Self>,
-        F: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
-        Bound1: f64,
-        Bound2: f64,
-        NbIterations: i32,
-    ) {
-        crate::ffi::math_BissecNewton::perform(self, F, Bound1, Bound2, NbIterations)
-    }
-
-    /// This method is called at the end of each iteration to check if the
-    /// solution has been found.
-    /// It can be redefined in a sub-class to implement a specific test to
-    /// stop the iterations.
-    pub fn is_solution_reached(
-        self: std::pin::Pin<&mut Self>,
-        theFunction: std::pin::Pin<&mut crate::ffi::math_FunctionWithDerivative>,
-    ) -> bool {
-        crate::ffi::math_BissecNewton::is_solution_reached(self, theFunction)
-    }
-
-    /// Tests is the root has been successfully found.
-    pub fn is_done(&self) -> bool {
-        crate::ffi::math_BissecNewton::is_done(self)
-    }
-
-    /// returns the value of the root.
-    /// Exception NotDone is raised if the minimum was not found.
-    pub fn root(&self) -> f64 {
-        crate::ffi::math_BissecNewton::root(self)
-    }
-
-    /// returns the value of the derivative at the root.
-    /// Exception NotDone is raised if the minimum was not found.
-    pub fn derivative(&self) -> f64 {
-        crate::ffi::math_BissecNewton::derivative(self)
-    }
-
-    /// returns the value of the function at the root.
-    /// Exception NotDone is raised if the minimum was not found.
-    pub fn value(&self) -> f64 {
-        crate::ffi::math_BissecNewton::value(self)
-    }
 }
 
 // ========================
@@ -100,55 +49,6 @@ impl BrentMinimum {
         ZEPS: f64,
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::math_BrentMinimum_ctor_real2_int_real(TolX, Fbx, NbIterations, ZEPS)
-    }
-
-    /// Brent minimization is performed on function F from a given
-    /// bracketing triplet of abscissas Ax, Bx, Cx (such that Bx is
-    /// between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx))
-    /// The solution is found when: abs(Xi - Xi-1) <= TolX * abs(Xi) + ZEPS;
-    pub fn perform(
-        self: std::pin::Pin<&mut Self>,
-        F: std::pin::Pin<&mut crate::ffi::math_Function>,
-        Ax: f64,
-        Bx: f64,
-        Cx: f64,
-    ) {
-        crate::ffi::math_BrentMinimum::perform(self, F, Ax, Bx, Cx)
-    }
-
-    /// This method is called at the end of each iteration to check if the
-    /// solution is found.
-    /// It can be redefined in a sub-class to implement a specific test to
-    /// stop the iterations.
-    pub fn is_solution_reached(
-        self: std::pin::Pin<&mut Self>,
-        theFunction: std::pin::Pin<&mut crate::ffi::math_Function>,
-    ) -> bool {
-        crate::ffi::math_BrentMinimum::is_solution_reached(self, theFunction)
-    }
-
-    /// Returns true if the computations are successful, otherwise returns false.
-    pub fn is_done(&self) -> bool {
-        crate::ffi::math_BrentMinimum::is_done(self)
-    }
-
-    /// returns the location value of the minimum.
-    /// Exception NotDone is raised if the minimum was not found.
-    pub fn location(&self) -> f64 {
-        crate::ffi::math_BrentMinimum::location(self)
-    }
-
-    /// returns the value of the minimum.
-    /// Exception NotDone is raised if the minimum was not found.
-    pub fn minimum(&self) -> f64 {
-        crate::ffi::math_BrentMinimum::minimum(self)
-    }
-
-    /// returns the number of iterations really done during the
-    /// computation of the minimum.
-    /// Exception NotDone is raised if the minimum was not found.
-    pub fn nb_iterations(&self) -> i32 {
-        crate::ffi::math_BrentMinimum::nb_iterations(self)
     }
 }
 
@@ -184,30 +84,6 @@ impl DirectPolynomialRoots {
     pub fn new_real2(A: f64, B: f64) -> cxx::UniquePtr<Self> {
         crate::ffi::math_DirectPolynomialRoots_ctor_real2(A, B)
     }
-
-    /// Returns true if the computations are successful, otherwise returns false.
-    pub fn is_done(&self) -> bool {
-        crate::ffi::math_DirectPolynomialRoots::is_done(self)
-    }
-
-    /// Returns true if there is an infinity of roots, otherwise returns false.
-    pub fn infinite_roots(&self) -> bool {
-        crate::ffi::math_DirectPolynomialRoots::infinite_roots(self)
-    }
-
-    /// returns the number of solutions.
-    /// An exception is raised if there are an infinity of roots.
-    pub fn nb_solutions(&self) -> i32 {
-        crate::ffi::math_DirectPolynomialRoots::nb_solutions(self)
-    }
-
-    /// returns the value of the Nieme root.
-    /// An exception is raised if there are an infinity of roots.
-    /// Exception RangeError is raised if Nieme is < 1
-    /// or Nieme > NbSolutions.
-    pub fn value(&self, Nieme: i32) -> f64 {
-        crate::ffi::math_DirectPolynomialRoots::value(self, Nieme)
-    }
 }
 
 // ========================
@@ -225,29 +101,6 @@ impl EigenValuesSearcher {
     ) -> cxx::UniquePtr<Self> {
         crate::ffi::math_EigenValuesSearcher_ctor_array1ofreal2(Diagonal, Subdiagonal)
     }
-
-    /// Returns Standard_True if computation is performed
-    /// successfully.
-    pub fn is_done(&self) -> bool {
-        crate::ffi::math_EigenValuesSearcher::is_done(self)
-    }
-
-    /// Returns the dimension of matrix
-    pub fn dimension(&self) -> i32 {
-        crate::ffi::math_EigenValuesSearcher::dimension(self)
-    }
-
-    /// Returns the Index_th eigen value of matrix
-    /// Index must be in [1, Dimension()]
-    pub fn eigen_value(&self, Index: i32) -> f64 {
-        crate::ffi::math_EigenValuesSearcher::eigen_value(self, Index)
-    }
-
-    /// Returns the Index_th eigen vector of matrix
-    /// Index must be in [1, Dimension()]
-    pub fn eigen_vector(&self, Index: i32) -> crate::ffi::math_Vector {
-        crate::ffi::math_EigenValuesSearcher::eigen_vector(self, Index)
-    }
 }
 
 // ========================
@@ -257,34 +110,6 @@ impl EigenValuesSearcher {
 /// This abstract class describes the virtual functions
 /// associated with a Function of a single variable.
 pub use crate::ffi::math_Function as Function;
-
-impl Function {
-    /// Computes the value of the function <F> for a given value of
-    /// variable <X>.
-    /// returns True if the computation was done successfully,
-    /// False otherwise.
-    pub fn value(self: std::pin::Pin<&mut Self>, X: f64, F: std::pin::Pin<&mut f64>) -> bool {
-        crate::ffi::math_Function::value(self, X, F)
-    }
-
-    /// returns the state of the function corresponding to the
-    /// latest call of any methods associated with the function.
-    /// This function is called by each of the algorithms
-    /// described later which defined the function Integer
-    /// Algorithm::StateNumber(). The algorithm has the
-    /// responsibility to call this function when it has found
-    /// a solution (i.e. a root or a minimum) and has to maintain
-    /// the association between the solution found and this
-    /// StateNumber.
-    /// Byu default, this method returns 0 (which means for the
-    /// algorithm: no state has been saved). It is the
-    /// responsibility of the programmer to decide if he needs
-    /// to save the current state of the function and to return
-    /// an Integer that allows retrieval of the state.
-    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
-        crate::ffi::math_Function::get_state_number(self)
-    }
-}
 
 // ========================
 // From math_FunctionWithDerivative.hxx
@@ -296,34 +121,6 @@ impl Function {
 pub use crate::ffi::math_FunctionWithDerivative as FunctionWithDerivative;
 
 impl FunctionWithDerivative {
-    /// Computes the value <F>of the function for the variable <X>.
-    /// Returns True if the calculation were successfully done,
-    /// False otherwise.
-    pub fn value(self: std::pin::Pin<&mut Self>, X: f64, F: std::pin::Pin<&mut f64>) -> bool {
-        crate::ffi::math_FunctionWithDerivative::value(self, X, F)
-    }
-
-    /// Computes the derivative <D> of the function
-    /// for the variable <X>.
-    /// Returns True if the calculation were successfully done,
-    /// False otherwise.
-    pub fn derivative(self: std::pin::Pin<&mut Self>, X: f64, D: std::pin::Pin<&mut f64>) -> bool {
-        crate::ffi::math_FunctionWithDerivative::derivative(self, X, D)
-    }
-
-    /// Computes the value <F> and the derivative <D> of the
-    /// function for the variable <X>.
-    /// Returns True if the calculation were successfully done,
-    /// False otherwise.
-    pub fn values(
-        self: std::pin::Pin<&mut Self>,
-        X: f64,
-        F: std::pin::Pin<&mut f64>,
-        D: std::pin::Pin<&mut f64>,
-    ) -> bool {
-        crate::ffi::math_FunctionWithDerivative::values(self, X, F, D)
-    }
-
     /// Upcast to math_Function
     pub fn as_function(&self) -> &Function {
         crate::ffi::math_FunctionWithDerivative_as_math_Function(self)
@@ -356,27 +153,6 @@ impl GaussLeastSquare {
     /// is considered as singular.
     pub fn new_matrix_real(A: &crate::ffi::math_Matrix, MinPivot: f64) -> cxx::UniquePtr<Self> {
         crate::ffi::math_GaussLeastSquare_ctor_matrix_real(A, MinPivot)
-    }
-
-    /// Returns true if the computations are successful, otherwise returns false.e
-    pub fn is_done(&self) -> bool {
-        crate::ffi::math_GaussLeastSquare::is_done(self)
-    }
-
-    /// Given the input Vector <B> this routine solves the set
-    /// of linear equations A . X = B.
-    /// Exception NotDone is raised if the decomposition of A was
-    /// not done successfully.
-    /// Exception DimensionError is raised if the range of B Inv is
-    /// not equal to the rowrange of A.
-    /// Exception DimensionError is raised if the range of X Inv is
-    /// not equal to the colrange of A.
-    pub fn solve(
-        &self,
-        B: &crate::ffi::math_Vector,
-        X: std::pin::Pin<&mut crate::ffi::math_Vector>,
-    ) {
-        crate::ffi::math_GaussLeastSquare::solve(self, B, X)
     }
 }
 
@@ -461,101 +237,10 @@ impl Matrix {
         crate::ffi::math_Matrix_ctor_matrix(Other)
     }
 
-    /// Initialize all the elements of a matrix to InitialValue.
-    pub fn init(self: std::pin::Pin<&mut Self>, InitialValue: f64) {
-        crate::ffi::math_Matrix::init(self, InitialValue)
-    }
-
-    /// Returns the number of rows  of this matrix.
-    /// Note that for a matrix A you always have the following relations:
-    /// - A.RowNumber() = A.UpperRow() -   A.LowerRow() + 1
-    /// - A.ColNumber() = A.UpperCol() -   A.LowerCol() + 1
-    /// - the length of a row of A is equal to the number of columns of A,
-    /// - the length of a column of A is equal to the number of
-    /// rows of A.returns the row range of a matrix.
-    pub fn row_number(&self) -> i32 {
-        crate::ffi::math_Matrix::row_number(self)
-    }
-
-    /// Returns the number of rows  of this matrix.
-    /// Note that for a matrix A you always have the following relations:
-    /// - A.RowNumber() = A.UpperRow() -   A.LowerRow() + 1
-    /// - A.ColNumber() = A.UpperCol() -   A.LowerCol() + 1
-    /// - the length of a row of A is equal to the number of columns of A,
-    /// - the length of a column of A is equal to the number of
-    /// rows of A.returns the row range of a matrix.
-    pub fn col_number(&self) -> i32 {
-        crate::ffi::math_Matrix::col_number(self)
-    }
-
-    /// Returns the value of the Lower index of the row
-    /// range of a matrix.
-    pub fn lower_row(&self) -> i32 {
-        crate::ffi::math_Matrix::lower_row(self)
-    }
-
-    /// Returns the Upper index of the row range
-    /// of a matrix.
-    pub fn upper_row(&self) -> i32 {
-        crate::ffi::math_Matrix::upper_row(self)
-    }
-
-    /// Returns the value of the Lower index of the
-    /// column range of a matrix.
-    pub fn lower_col(&self) -> i32 {
-        crate::ffi::math_Matrix::lower_col(self)
-    }
-
-    /// Returns the value of the upper index of the
-    /// column range of a matrix.
-    pub fn upper_col(&self) -> i32 {
-        crate::ffi::math_Matrix::upper_col(self)
-    }
-
-    /// Computes the determinant of a matrix.
-    /// An exception is raised if the matrix is not a square matrix.
-    pub fn determinant(&self) -> f64 {
-        crate::ffi::math_Matrix::determinant(self)
-    }
-
-    /// Transposes a given matrix.
-    /// An exception is raised if the matrix is not a square matrix.
-    pub fn transpose(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::math_Matrix::transpose(self)
-    }
-
-    /// Inverts a matrix using Gauss algorithm.
-    /// Exception NotSquare is raised if the matrix is not square.
-    /// Exception SingularMatrix is raised if the matrix is singular.
-    pub fn invert(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::math_Matrix::invert(self)
-    }
-
-    /// Sets this matrix to the product of the matrix Left, and the matrix Right.
-    /// Example
-    /// math_Matrix A (1, 3, 1, 3);
-    /// math_Matrix B (1, 3, 1, 3);
-    /// // A = ... , B = ...
-    /// math_Matrix C (1, 3, 1, 3);
-    /// C.Multiply(A, B);
-    /// Exceptions
-    /// Standard_DimensionError if matrices are of incompatible dimensions, i.e. if:
-    /// -   the number of columns of matrix Left, or the number of
-    /// rows of matrix TLeft is not equal to the number of rows
-    /// of matrix Right, or
-    /// -   the number of rows of matrix Left, or the number of
-    /// columns of matrix TLeft is not equal to the number of
-    /// rows of this matrix, or
-    /// -   the number of columns of matrix Right is not equal to
-    /// the number of columns of this matrix.
-    pub fn multiply(self: std::pin::Pin<&mut Self>, Right: f64) {
-        crate::ffi::math_Matrix::multiply(self, Right)
-    }
-
     /// multiplies all the elements of a matrix by the
     /// value <Right>.
-    pub fn multiplied(&self, Right: f64) -> crate::ffi::math_Matrix {
-        crate::ffi::math_Matrix::multiplied(self, Right)
+    pub fn multiplied_real(&self, Right: f64) -> cxx::UniquePtr<crate::ffi::math_Matrix> {
+        crate::ffi::math_Matrix_multiplied_real(self, Right)
     }
 
     /// Sets this matrix to the product of the
@@ -576,189 +261,69 @@ impl Matrix {
     /// rows of this matrix, or
     /// -   the number of columns of matrix Right is not equal to
     /// the number of columns of this matrix.
-    pub fn t_multiplied(&self, Right: f64) -> crate::ffi::math_Matrix {
-        crate::ffi::math_Matrix::t_multiplied(self, Right)
+    pub fn t_multiplied(&self, Right: f64) -> cxx::UniquePtr<crate::ffi::math_Matrix> {
+        crate::ffi::math_Matrix_t_multiplied(self, Right)
     }
 
     /// divides all the elements of a matrix by the value <Right>.
     /// An exception is raised if <Right> = 0.
-    pub fn divide(self: std::pin::Pin<&mut Self>, Right: f64) {
-        crate::ffi::math_Matrix::divide(self, Right)
-    }
-
-    /// divides all the elements of a matrix by the value <Right>.
-    /// An exception is raised if <Right> = 0.
-    pub fn divided(&self, Right: f64) -> crate::ffi::math_Matrix {
-        crate::ffi::math_Matrix::divided(self, Right)
+    pub fn divided(&self, Right: f64) -> cxx::UniquePtr<crate::ffi::math_Matrix> {
+        crate::ffi::math_Matrix_divided(self, Right)
     }
 
     /// adds the matrix <Right> to a matrix.
     /// An exception is raised if the dimensions are different.
-    /// Warning
-    /// In order to save time when copying matrices, it is
-    /// preferable to use operator += or the function Add
-    /// whenever possible.
-    pub fn add(self: std::pin::Pin<&mut Self>, Right: &crate::ffi::math_Matrix) {
-        crate::ffi::math_Matrix::add(self, Right)
-    }
-
-    /// adds the matrix <Right> to a matrix.
-    /// An exception is raised if the dimensions are different.
-    pub fn added(&self, Right: &crate::ffi::math_Matrix) -> crate::ffi::math_Matrix {
-        crate::ffi::math_Matrix::added(self, Right)
-    }
-
-    /// sets a  matrix to the addition of <Left> and <Right>.
-    /// An exception is raised if the dimensions are different.
-    pub fn add_matrix2(
-        self: std::pin::Pin<&mut Self>,
-        Left: &crate::ffi::math_Matrix,
+    pub fn added(
+        &self,
         Right: &crate::ffi::math_Matrix,
-    ) {
-        crate::ffi::math_Matrix::add(self, Left, Right)
-    }
-
-    /// Subtracts the matrix <Right> from <me>.
-    /// An exception is raised if the dimensions are different.
-    /// Warning
-    /// In order to avoid time-consuming copying of matrices, it
-    /// is preferable to use operator -= or the function
-    /// Subtract whenever possible.
-    pub fn subtract(self: std::pin::Pin<&mut Self>, Right: &crate::ffi::math_Matrix) {
-        crate::ffi::math_Matrix::subtract(self, Right)
+    ) -> cxx::UniquePtr<crate::ffi::math_Matrix> {
+        crate::ffi::math_Matrix_added(self, Right)
     }
 
     /// Returns the result of the subtraction of <Right> from <me>.
     /// An exception is raised if the dimensions are different.
-    pub fn subtracted(&self, Right: &crate::ffi::math_Matrix) -> crate::ffi::math_Matrix {
-        crate::ffi::math_Matrix::subtracted(self, Right)
-    }
-
-    /// Sets the values of this matrix,
-    /// -   from index I1 to index I2 on the row dimension, and
-    /// -   from index J1 to index J2 on the column dimension,
-    /// to those of matrix M.
-    /// Exceptions
-    /// Standard_DimensionError if:
-    /// -   I1 is less than the index of the lower row bound of this matrix, or
-    /// -   I2 is greater than the index of the upper row bound of this matrix, or
-    /// -   J1 is less than the index of the lower column bound of this matrix, or
-    /// -   J2 is greater than the index of the upper column bound of this matrix, or
-    /// -   I2 - I1 + 1 is not equal to the number of rows of matrix M, or
-    /// -   J2 - J1 + 1 is not equal to the number of columns of matrix M.
-    pub fn set(
-        self: std::pin::Pin<&mut Self>,
-        I1: i32,
-        I2: i32,
-        J1: i32,
-        J2: i32,
-        M: &crate::ffi::math_Matrix,
-    ) {
-        crate::ffi::math_Matrix::set(self, I1, I2, J1, J2, M)
-    }
-
-    /// Sets the diagonal of a matrix to the value <Value>.
-    /// An exception is raised if the matrix is not square.
-    pub fn set_diag(self: std::pin::Pin<&mut Self>, Value: f64) {
-        crate::ffi::math_Matrix::set_diag(self, Value)
-    }
-
-    /// Swaps the rows of index Row1 and Row2.
-    /// An exception is raised if <Row1> or <Row2> is out of range.
-    pub fn swap_row(self: std::pin::Pin<&mut Self>, Row1: i32, Row2: i32) {
-        crate::ffi::math_Matrix::swap_row(self, Row1, Row2)
-    }
-
-    /// Swaps the columns of index <Col1> and <Col2>.
-    /// An exception is raised if <Col1> or <Col2> is out of range.
-    pub fn swap_col(self: std::pin::Pin<&mut Self>, Col1: i32, Col2: i32) {
-        crate::ffi::math_Matrix::swap_col(self, Col1, Col2)
+    pub fn subtracted(
+        &self,
+        Right: &crate::ffi::math_Matrix,
+    ) -> cxx::UniquePtr<crate::ffi::math_Matrix> {
+        crate::ffi::math_Matrix_subtracted(self, Right)
     }
 
     /// Teturns the transposed of a matrix.
     /// An exception is raised if the matrix is not a square matrix.
-    pub fn transposed(&self) -> crate::ffi::math_Matrix {
-        crate::ffi::math_Matrix::transposed(self)
+    pub fn transposed(&self) -> cxx::UniquePtr<crate::ffi::math_Matrix> {
+        crate::ffi::math_Matrix_transposed(self)
     }
 
     /// Returns the inverse of a matrix.
     /// Exception NotSquare is raised if the matrix is not square.
     /// Exception SingularMatrix is raised if the matrix is singular.
-    pub fn inverse(&self) -> crate::ffi::math_Matrix {
-        crate::ffi::math_Matrix::inverse(self)
+    pub fn inverse(&self) -> cxx::UniquePtr<crate::ffi::math_Matrix> {
+        crate::ffi::math_Matrix_inverse(self)
     }
 
     /// Returns the product of the transpose of a matrix with
     /// the matrix <Right>.
     /// An exception is raised if the dimensions are different.
-    pub fn t_multiply(&self, Right: &crate::ffi::math_Matrix) -> crate::ffi::math_Matrix {
-        crate::ffi::math_Matrix::t_multiply(self, Right)
-    }
-
-    /// Computes a matrix as the product of 2 matrixes.
-    /// An exception is raised if the dimensions are different.
-    pub fn multiply_matrix2(
-        self: std::pin::Pin<&mut Self>,
-        Left: &crate::ffi::math_Matrix,
+    pub fn t_multiply_matrix(
+        &self,
         Right: &crate::ffi::math_Matrix,
-    ) {
-        crate::ffi::math_Matrix::multiply(self, Left, Right)
-    }
-
-    /// Computes a matrix to the product of the transpose of
-    /// the matrix <TLeft> with the matrix <Right>.
-    /// An exception is raised if the dimensions are different.
-    pub fn t_multiply_matrix2(
-        self: std::pin::Pin<&mut Self>,
-        TLeft: &crate::ffi::math_Matrix,
-        Right: &crate::ffi::math_Matrix,
-    ) {
-        crate::ffi::math_Matrix::t_multiply(self, TLeft, Right)
-    }
-
-    /// Sets a matrix to the Subtraction of the matrix <Right>
-    /// from the matrix <Left>.
-    /// An exception is raised if the dimensions are different.
-    pub fn subtract_matrix2(
-        self: std::pin::Pin<&mut Self>,
-        Left: &crate::ffi::math_Matrix,
-        Right: &crate::ffi::math_Matrix,
-    ) {
-        crate::ffi::math_Matrix::subtract(self, Left, Right)
-    }
-
-    /// Accesses (in read or write mode) the value of index <Row>
-    /// and <Col> of a matrix.
-    /// An exception is raised if <Row> and <Col> are not
-    /// in the correct range.
-    pub fn value(&self, Row: i32, Col: i32) -> std::pin::Pin<&mut f64> {
-        crate::ffi::math_Matrix::value(self, Row, Col)
-    }
-
-    /// Matrixes are copied through assignment.
-    /// An exception is raised if the dimensions are different.
-    pub fn initialized(
-        self: std::pin::Pin<&mut Self>,
-        Other: &crate::ffi::math_Matrix,
-    ) -> std::pin::Pin<&mut crate::ffi::math_Matrix> {
-        crate::ffi::math_Matrix::initialized(self, Other)
+    ) -> cxx::UniquePtr<crate::ffi::math_Matrix> {
+        crate::ffi::math_Matrix_t_multiply(self, Right)
     }
 
     /// Returns the product of 2 matrices.
     /// An exception is raised if the dimensions are different.
-    pub fn multiply_matrix(self: std::pin::Pin<&mut Self>, Right: &crate::ffi::math_Matrix) {
-        crate::ffi::math_Matrix::multiply(self, Right)
-    }
-
-    /// Returns the product of 2 matrices.
-    /// An exception is raised if the dimensions are different.
-    pub fn multiplied_matrix(&self, Right: &crate::ffi::math_Matrix) -> crate::ffi::math_Matrix {
-        crate::ffi::math_Matrix::multiplied(self, Right)
+    pub fn multiplied_matrix(
+        &self,
+        Right: &crate::ffi::math_Matrix,
+    ) -> cxx::UniquePtr<crate::ffi::math_Matrix> {
+        crate::ffi::math_Matrix_multiplied_matrix(self, Right)
     }
 
     /// Returns the opposite of a matrix.
     /// An exception is raised if the dimensions are different.
-    pub fn opposite(self: std::pin::Pin<&mut Self>) -> crate::ffi::math_Matrix {
-        crate::ffi::math_Matrix::opposite(self)
+    pub fn opposite(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::math_Matrix> {
+        crate::ffi::math_Matrix_opposite(self)
     }
 }

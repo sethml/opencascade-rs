@@ -590,7 +590,7 @@ impl Shape {
             angle_deflection,
             in_parallel,
         );
-        mesher.pin_mut().perform_progressrange(&progress);
+        mesher.pin_mut().perform(&progress);
 
         // Write to STL
         let mut writer = stl_api::Writer::new();

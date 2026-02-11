@@ -591,11 +591,18 @@ fn generate_unified(
         
         generated_modules.push(module);
         
+        // Get collections for this module
+        let module_collections: Vec<_> = all_collections
+            .iter()
+            .filter(|c| c.module == module.rust_name)
+            .collect();
+
         let reexport_code = codegen::rust::generate_module_reexports(
             &module.name,
             &module.rust_name,
             &module_classes,
             &module_functions,
+            &module_collections,
             symbol_table,
         );
         
@@ -649,13 +656,13 @@ fn generate_unified(
 fn generate_unified_lib_rs(modules: &[&module_graph::Module]) -> String {
     let mut output = String::new();
     output.push_str("// Generated OCCT bindings (unified architecture)\n\n");
-    output.push_str("// Core FFI module with all types\n");
-    output.push_str("pub mod ffi;\n\n");
+    output.push_str("// Core FFI module with all types (pub(crate) to prevent direct access, use module re-exports instead)\n");
+    output.push_str("pub(crate) mod ffi;\n\n");
     output.push_str("// Per-module re-exports\n");
-    
+
     for module in modules {
         output.push_str(&format!("pub mod {};\n", module.rust_name));
     }
-    
+
     output
 }

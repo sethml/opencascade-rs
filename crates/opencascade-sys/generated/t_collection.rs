@@ -77,37 +77,39 @@ impl AsciiString {
     }
 
     /// Appends <other>  to me. This is an unary operator.
-    pub fn assign_cat(self: std::pin::Pin<&mut Self>, other: crate::ffi::Standard_Character) {
-        crate::ffi::TCollection_AsciiString::assign_cat(self, other)
+    /// ex: aString += "Dummy"
+    /// To catenate more than one CString, you must put a
+    /// AsciiString before.
+    /// Example: aString += "Hello " + "Dolly"  IS NOT VALID !
+    /// But astring += anotherString + "Hello " + "Dolly" is valid.
+    pub fn assign_cat_charptr(self: std::pin::Pin<&mut Self>, other: &str) {
+        crate::ffi::TCollection_AsciiString_assign_cat(self, other)
     }
 
-    /// Appends <other>  to me. This is an unary operator.
-    pub fn assign_cat_int(self: std::pin::Pin<&mut Self>, other: i32) {
-        crate::ffi::TCollection_AsciiString::assign_cat(self, other)
+    /// Appends <other>  to me.
+    /// Syntax:
+    /// aString = aString + 15;
+    /// Example: aString contains "I say "
+    /// gives "I say 15"
+    /// To catenate more than one CString, you must put a String before.
+    /// So the following example is WRONG !
+    /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
+    /// This rule is applicable to AssignCat (operator +=) too.
+    pub fn cat_int(&self, other: i32) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::TCollection_AsciiString_cat_int(self, other)
     }
 
-    /// Appends <other>  to me. This is an unary operator.
-    pub fn assign_cat_real(self: std::pin::Pin<&mut Self>, other: f64) {
-        crate::ffi::TCollection_AsciiString::assign_cat(self, other)
-    }
-
-    /// Appends <other> to me. This is an unary operator.
-    /// Example: aString += anotherString
-    pub fn assign_cat_asciistring(
-        self: std::pin::Pin<&mut Self>,
-        other: &crate::ffi::TCollection_AsciiString,
-    ) {
-        crate::ffi::TCollection_AsciiString::assign_cat(self, other)
-    }
-
-    /// Converts the first character into its corresponding
-    /// upper-case character and the other characters into lowercase
-    /// Example: before
-    /// me = "hellO "
-    /// after
-    /// me = "Hello "
-    pub fn capitalize(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TCollection_AsciiString::capitalize(self)
+    /// Appends <other>  to me.
+    /// Syntax:
+    /// aString = aString + 15.15;
+    /// Example: aString contains "I say "
+    /// gives "I say 15.15"
+    /// To catenate more than one CString, you must put a String before.
+    /// So the following example is WRONG !
+    /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
+    /// This rule is applicable to AssignCat (operator +=) too.
+    pub fn cat_real(&self, other: f64) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::TCollection_AsciiString_cat_real(self, other)
     }
 
     /// Appends <other>  to me.
@@ -120,37 +122,8 @@ impl AsciiString {
     /// So the following example is WRONG !
     /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
     /// This rule is applicable to AssignCat (operator +=) too.
-    pub fn cat(
-        &self,
-        other: crate::ffi::Standard_Character,
-    ) -> crate::ffi::TCollection_AsciiString {
-        crate::ffi::TCollection_AsciiString::cat(self, other)
-    }
-
-    /// Appends <other>  to me.
-    /// Syntax:
-    /// aString = aString + 15;
-    /// Example: aString contains "I say "
-    /// gives "I say 15"
-    /// To catenate more than one CString, you must put a String before.
-    /// So the following example is WRONG !
-    /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
-    /// This rule is applicable to AssignCat (operator +=) too.
-    pub fn cat_int(&self, other: i32) -> crate::ffi::TCollection_AsciiString {
-        crate::ffi::TCollection_AsciiString::cat(self, other)
-    }
-
-    /// Appends <other>  to me.
-    /// Syntax:
-    /// aString = aString + 15.15;
-    /// Example: aString contains "I say "
-    /// gives "I say 15.15"
-    /// To catenate more than one CString, you must put a String before.
-    /// So the following example is WRONG !
-    /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
-    /// This rule is applicable to AssignCat (operator +=) too.
-    pub fn cat_real(&self, other: f64) -> crate::ffi::TCollection_AsciiString {
-        crate::ffi::TCollection_AsciiString::cat(self, other)
+    pub fn cat_charptr(&self, other: &str) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::TCollection_AsciiString_cat_charptr(self, other)
     }
 
     /// Appends <other> to me.
@@ -158,437 +131,77 @@ impl AsciiString {
     pub fn cat_asciistring(
         &self,
         other: &crate::ffi::TCollection_AsciiString,
-    ) -> crate::ffi::TCollection_AsciiString {
-        crate::ffi::TCollection_AsciiString::cat(self, other)
-    }
-
-    /// Modifies this ASCII string so that its length
-    /// becomes equal to Width and the new characters
-    /// are equal to Filler. New characters are added
-    /// both at the beginning and at the end of this string.
-    /// If Width is less than the length of this ASCII string, nothing happens.
-    /// Example
-    /// TCollection_AsciiString
-    /// myAlphabet("abcdef");
-    /// myAlphabet.Center(9,' ');
-    /// assert ( myAlphabet == "
-    /// abcdef " );
-    pub fn center(
-        self: std::pin::Pin<&mut Self>,
-        Width: i32,
-        Filler: crate::ffi::Standard_Character,
-    ) {
-        crate::ffi::TCollection_AsciiString::center(self, Width, Filler)
-    }
-
-    /// Substitutes all the characters equal to aChar by NewChar
-    /// in the AsciiString <me>.
-    /// The substitution can be case sensitive.
-    /// If you don't use default case sensitive, no matter whether aChar
-    /// is uppercase or not.
-    /// Example: me = "Histake" -> ChangeAll('H','M',Standard_True)
-    /// gives me = "Mistake"
-    pub fn change_all(
-        self: std::pin::Pin<&mut Self>,
-        aChar: crate::ffi::Standard_Character,
-        NewChar: crate::ffi::Standard_Character,
-        CaseSensitive: bool,
-    ) {
-        crate::ffi::TCollection_AsciiString::change_all(self, aChar, NewChar, CaseSensitive)
-    }
-
-    /// Removes all characters contained in <me>.
-    /// This produces an empty AsciiString.
-    pub fn clear(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TCollection_AsciiString::clear(self)
+    ) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::TCollection_AsciiString_cat_asciistring(self, other)
     }
 
     /// Copy <fromwhere> to <me>.
     /// Used as operator =
-    /// Example: aString = anotherString;
-    pub fn copy(self: std::pin::Pin<&mut Self>, fromwhere: &crate::ffi::TCollection_AsciiString) {
-        crate::ffi::TCollection_AsciiString::copy(self, fromwhere)
+    /// Example: aString = anotherCString;
+    pub fn copy_charptr(self: std::pin::Pin<&mut Self>, fromwhere: &str) {
+        crate::ffi::TCollection_AsciiString_copy(self, fromwhere)
     }
 
-    /// Exchange the data of two strings (without reallocating memory).
-    pub fn swap(
-        self: std::pin::Pin<&mut Self>,
-        theOther: std::pin::Pin<&mut crate::ffi::TCollection_AsciiString>,
-    ) {
-        crate::ffi::TCollection_AsciiString::swap(self, theOther)
-    }
-
-    /// Returns the index of the first character of <me> that is
-    /// present in <Set>.
-    /// The search begins to the index FromIndex and ends to the
-    /// the index ToIndex.
-    /// Returns zero if failure.
-    /// Raises an exception if FromIndex or ToIndex is out of range.
-    /// Example: before
-    /// me = "aabAcAa", S = "Aa", FromIndex = 1, Toindex = 7
-    /// after
-    /// me = "aabAcAa"
-    /// returns
-    /// 1
-    pub fn first_location_in_set(
-        &self,
-        Set: &crate::ffi::TCollection_AsciiString,
-        FromIndex: i32,
-        ToIndex: i32,
-    ) -> i32 {
-        crate::ffi::TCollection_AsciiString::first_location_in_set(self, Set, FromIndex, ToIndex)
-    }
-
-    /// Returns the index of the first character of <me>
-    /// that is not present in the set <Set>.
-    /// The search begins to the index FromIndex and ends to the
-    /// the index ToIndex in <me>.
-    /// Returns zero if failure.
-    /// Raises an exception if FromIndex or ToIndex is out of range.
-    /// Example: before
-    /// me = "aabAcAa", S = "Aa", FromIndex = 1, Toindex = 7
-    /// after
-    /// me = "aabAcAa"
-    /// returns
-    /// 3
-    pub fn first_location_not_in_set(
-        &self,
-        Set: &crate::ffi::TCollection_AsciiString,
-        FromIndex: i32,
-        ToIndex: i32,
-    ) -> i32 {
-        crate::ffi::TCollection_AsciiString::first_location_not_in_set(
-            self, Set, FromIndex, ToIndex,
-        )
-    }
-
-    /// Inserts a Character at position <where>.
+    /// Inserts a CString at position <where>.
     /// Example:
-    /// aString contains "hy not ?"
-    /// aString.Insert(1,'W'); gives "Why not ?"
-    /// aString contains "Wh"
-    /// aString.Insert(3,'y'); gives "Why"
-    /// aString contains "Way"
-    /// aString.Insert(2,'h'); gives "Why"
-    pub fn insert(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: crate::ffi::Standard_Character,
-    ) {
-        crate::ffi::TCollection_AsciiString::insert(self, where_, what)
-    }
-
-    /// Inserts a AsciiString at position <where>.
-    pub fn insert_int_asciistring(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: &crate::ffi::TCollection_AsciiString,
-    ) {
-        crate::ffi::TCollection_AsciiString::insert(self, where_, what)
-    }
-
-    /// Pushing a string after a specific index in the string <me>.
-    /// Raises an exception if Index is out of bounds.
-    /// -   less than 0 (InsertAfter), or less than 1 (InsertBefore), or
-    /// -   greater than the number of characters in this ASCII string.
-    /// Example:
-    /// before
-    /// me = "cde" , Index = 0 , other = "ab"
-    /// after
-    /// me = "abcde" , other = "ab"
-    pub fn insert_after(
-        self: std::pin::Pin<&mut Self>,
-        Index: i32,
-        other: &crate::ffi::TCollection_AsciiString,
-    ) {
-        crate::ffi::TCollection_AsciiString::insert_after(self, Index, other)
-    }
-
-    /// Pushing a string before a specific index in the string <me>.
-    /// Raises an exception if Index is out of bounds.
-    /// -   less than 0 (InsertAfter), or less than 1 (InsertBefore), or
-    /// -   greater than the number of characters in this ASCII string.
-    /// Example:
-    /// before
-    /// me = "cde" , Index = 1 , other = "ab"
-    /// after
-    /// me = "abcde" , other = "ab"
-    pub fn insert_before(
-        self: std::pin::Pin<&mut Self>,
-        Index: i32,
-        other: &crate::ffi::TCollection_AsciiString,
-    ) {
-        crate::ffi::TCollection_AsciiString::insert_before(self, Index, other)
-    }
-
-    /// Returns True if the string <me> contains zero character.
-    pub fn is_empty(&self) -> bool {
-        crate::ffi::TCollection_AsciiString::is_empty(self)
+    /// aString contains "O more"
+    /// aString.Insert(2,"nce");  gives "Once more"
+    pub fn insert_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) {
+        crate::ffi::TCollection_AsciiString_insert(self, where_, what)
     }
 
     /// Returns true if the characters in this ASCII string
     /// are identical to the characters in ASCII string other.
     /// Note that this method is an alias of operator ==.
-    pub fn is_equal(&self, other: &crate::ffi::TCollection_AsciiString) -> bool {
-        crate::ffi::TCollection_AsciiString::is_equal(self, other)
+    pub fn is_equal_charptr(&self, other: &str) -> bool {
+        crate::ffi::TCollection_AsciiString_is_equal(self, other)
     }
 
     /// Returns true if there are differences between the
     /// characters in this ASCII string and ASCII string other.
     /// Note that this method is an alias of operator !=
-    pub fn is_different(&self, other: &crate::ffi::TCollection_AsciiString) -> bool {
-        crate::ffi::TCollection_AsciiString::is_different(self, other)
+    pub fn is_different_charptr(&self, other: &str) -> bool {
+        crate::ffi::TCollection_AsciiString_is_different(self, other)
     }
 
     /// Returns TRUE if <me> is 'ASCII' less than <other>.
-    pub fn is_less(&self, other: &crate::ffi::TCollection_AsciiString) -> bool {
-        crate::ffi::TCollection_AsciiString::is_less(self, other)
+    pub fn is_less_charptr(&self, other: &str) -> bool {
+        crate::ffi::TCollection_AsciiString_is_less(self, other)
     }
 
     /// Returns TRUE if <me> is 'ASCII' greater than <other>.
-    pub fn is_greater(&self, other: &crate::ffi::TCollection_AsciiString) -> bool {
-        crate::ffi::TCollection_AsciiString::is_greater(self, other)
+    pub fn is_greater_charptr(&self, other: &str) -> bool {
+        crate::ffi::TCollection_AsciiString_is_greater(self, other)
     }
 
-    /// Determines whether the beginning of this string instance matches the specified string.
-    pub fn starts_with(&self, theStartString: &crate::ffi::TCollection_AsciiString) -> bool {
-        crate::ffi::TCollection_AsciiString::starts_with(self, theStartString)
-    }
-
-    /// Determines whether the end of this string instance matches the specified string.
-    pub fn ends_with(&self, theEndString: &crate::ffi::TCollection_AsciiString) -> bool {
-        crate::ffi::TCollection_AsciiString::ends_with(self, theEndString)
-    }
-
-    /// Converts a AsciiString containing a numeric expression to
-    /// an Integer.
-    /// Example: "215" returns 215.
-    pub fn integer_value(&self) -> i32 {
-        crate::ffi::TCollection_AsciiString::integer_value(self)
-    }
-
-    /// Returns True if the AsciiString contains an integer value.
-    /// Note: an integer value is considered to be a real value as well.
-    pub fn is_integer_value(&self) -> bool {
-        crate::ffi::TCollection_AsciiString::is_integer_value(self)
-    }
-
-    /// Returns True if the AsciiString starts with some characters that can be interpreted as integer
-    /// or real value.
-    /// @param[in] theToCheckFull  when TRUE, checks if entire string defines a real value;
-    /// otherwise checks if string starts with a real value
-    /// Note: an integer value is considered to be a real value as well.
-    pub fn is_real_value(&self, theToCheckFull: bool) -> bool {
-        crate::ffi::TCollection_AsciiString::is_real_value(self, theToCheckFull)
-    }
-
-    /// Returns True if the AsciiString contains only ASCII characters
-    /// between ' ' and '~'.
-    /// This means no control character and no extended ASCII code.
-    pub fn is_ascii(&self) -> bool {
-        crate::ffi::TCollection_AsciiString::is_ascii(self)
-    }
-
-    /// Removes all space characters in the beginning of the string.
-    pub fn left_adjust(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TCollection_AsciiString::left_adjust(self)
-    }
-
-    /// left justify
-    /// Length becomes equal to Width and the new characters are
-    /// equal to Filler.
-    /// If Width < Length nothing happens.
-    /// Raises an exception if Width is less than zero.
+    /// Searches a CString in <me> from the beginning
+    /// and returns position of first item <what> matching.
+    /// it returns -1 if not found.
     /// Example:
-    /// before
-    /// me = "abcdef" , Width = 9 , Filler = ' '
-    /// after
-    /// me = "abcdef   "
-    pub fn left_justify(
-        self: std::pin::Pin<&mut Self>,
-        Width: i32,
-        Filler: crate::ffi::Standard_Character,
-    ) {
-        crate::ffi::TCollection_AsciiString::left_justify(self, Width, Filler)
+    /// aString contains "Sample single test"
+    /// aString.Search("le") returns 5
+    pub fn search_charptr(&self, what: &str) -> i32 {
+        crate::ffi::TCollection_AsciiString_search(self, what)
     }
 
-    /// Returns number of characters in <me>.
-    /// This is the same functionality as 'strlen' in C.
-    /// Example
-    /// TCollection_AsciiString myAlphabet("abcdef");
-    /// assert ( myAlphabet.Length() == 6 );
-    /// -   1 is the position of the first character in this string.
-    /// -   The length of this string gives the position of its last character.
-    /// -   Positions less than or equal to zero, or
-    /// greater than the length of this string are
-    /// invalid in functions which identify a character
-    /// of this string by its position.
-    pub fn length(&self) -> i32 {
-        crate::ffi::TCollection_AsciiString::length(self)
-    }
-
-    /// Returns an index in the string <me> of the first occurrence
-    /// of the string S in the string <me> from the starting index
-    /// FromIndex to the ending index ToIndex
-    /// returns zero if failure
-    /// Raises an exception if FromIndex or ToIndex is out of range.
-    /// Example:
-    /// before
-    /// me = "aabAaAa", S = "Aa", FromIndex = 1, ToIndex = 7
-    /// after
-    /// me = "aabAaAa"
-    /// returns
-    /// 4
-    pub fn location(
-        &self,
-        other: &crate::ffi::TCollection_AsciiString,
-        FromIndex: i32,
-        ToIndex: i32,
-    ) -> i32 {
-        crate::ffi::TCollection_AsciiString::location(self, other, FromIndex, ToIndex)
-    }
-
-    /// Returns the index of the nth occurrence of the character C
-    /// in the string <me> from the starting index FromIndex to the
-    /// ending index ToIndex.
-    /// Returns zero if failure.
-    /// Raises an exception if FromIndex or ToIndex is out of range.
-    /// Example:
-    /// before
-    /// me = "aabAa", N = 3, C = 'a', FromIndex = 1, ToIndex = 5
-    /// after
-    /// me = "aabAa"
-    /// returns
-    /// 5
-    pub fn location_int_character_int2(
-        &self,
-        N: i32,
-        C: crate::ffi::Standard_Character,
-        FromIndex: i32,
-        ToIndex: i32,
-    ) -> i32 {
-        crate::ffi::TCollection_AsciiString::location(self, N, C, FromIndex, ToIndex)
-    }
-
-    /// Converts <me> to its lower-case equivalent.
-    /// Example
-    /// TCollection_AsciiString myString("Hello Dolly");
-    /// myString.UpperCase();
-    /// assert ( myString == "HELLO DOLLY" );
-    /// myString.LowerCase();
-    /// assert ( myString == "hello dolly" );
-    pub fn lower_case(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TCollection_AsciiString::lower_case(self)
-    }
-
-    /// Inserts the string other at the beginning of this ASCII string.
-    /// Example
-    /// TCollection_AsciiString myAlphabet("cde");
-    /// TCollection_AsciiString myBegin("ab");
-    /// myAlphabet.Prepend(myBegin);
-    /// assert ( myAlphabet == "abcde" );
-    pub fn prepend(self: std::pin::Pin<&mut Self>, other: &crate::ffi::TCollection_AsciiString) {
-        crate::ffi::TCollection_AsciiString::prepend(self, other)
-    }
-
-    /// Converts an AsciiString containing a numeric expression.
-    /// to a Real.
-    /// Example: ex: "215" returns 215.0.
-    /// ex: "3.14159267" returns 3.14159267.
-    pub fn real_value(&self) -> f64 {
-        crate::ffi::TCollection_AsciiString::real_value(self)
-    }
-
-    /// Remove all the occurrences of the character C in the string.
-    /// Example:
-    /// before
-    /// me = "HellLLo", C = 'L' , CaseSensitive = True
-    /// after
-    /// me = "Hello"
-    pub fn remove_all(
-        self: std::pin::Pin<&mut Self>,
-        C: crate::ffi::Standard_Character,
-        CaseSensitive: bool,
-    ) {
-        crate::ffi::TCollection_AsciiString::remove_all(self, C, CaseSensitive)
-    }
-
-    /// Removes every <what> characters from <me>.
-    pub fn remove_all_character(
-        self: std::pin::Pin<&mut Self>,
-        what: crate::ffi::Standard_Character,
-    ) {
-        crate::ffi::TCollection_AsciiString::remove_all(self, what)
-    }
-
-    /// Erases <ahowmany> characters from position <where>,
-    /// <where> included.
-    /// Example:
-    /// aString contains "Hello"
-    /// aString.Remove(2,2) erases 2 characters from position 2
-    /// This gives "Hlo".
-    pub fn remove(self: std::pin::Pin<&mut Self>, where_: i32, ahowmany: i32) {
-        crate::ffi::TCollection_AsciiString::remove(self, where_, ahowmany)
-    }
-
-    /// Removes all space characters at the end of the string.
-    pub fn right_adjust(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TCollection_AsciiString::right_adjust(self)
-    }
-
-    /// Right justify.
-    /// Length becomes equal to Width and the new characters are
-    /// equal to Filler.
-    /// if Width < Length nothing happens.
-    /// Raises an exception if Width is less than zero.
-    /// Example:
-    /// before
-    /// me = "abcdef" , Width = 9 , Filler = ' '
-    /// after
-    /// me = "   abcdef"
-    pub fn right_justify(
-        self: std::pin::Pin<&mut Self>,
-        Width: i32,
-        Filler: crate::ffi::Standard_Character,
-    ) {
-        crate::ffi::TCollection_AsciiString::right_justify(self, Width, Filler)
-    }
-
-    /// Searches an AsciiString in <me> from the beginning
+    /// Searches a CString in a AsciiString from the end
     /// and returns position of first item <what> matching.
     /// It returns -1 if not found.
-    pub fn search(&self, what: &crate::ffi::TCollection_AsciiString) -> i32 {
-        crate::ffi::TCollection_AsciiString::search(self, what)
+    /// Example:
+    /// aString contains "Sample single test"
+    /// aString.SearchFromEnd("le") returns 12
+    pub fn search_from_end_charptr(&self, what: &str) -> i32 {
+        crate::ffi::TCollection_AsciiString_search_from_end(self, what)
     }
 
-    /// Searches a AsciiString in another AsciiString from the end
-    /// and returns position of first item <what> matching.
-    /// It returns -1 if not found.
-    pub fn search_from_end(&self, what: &crate::ffi::TCollection_AsciiString) -> i32 {
-        crate::ffi::TCollection_AsciiString::search_from_end(self, what)
-    }
-
-    /// Replaces one character in the AsciiString at position <where>.
+    /// Replaces a part of <me> by a CString.
     /// If <where> is less than zero or greater than the length of <me>
     /// an exception is raised.
     /// Example:
-    /// aString contains "Garbake"
-    /// astring.Replace(6,'g')  gives <me> = "Garbage"
-    pub fn set_value(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: crate::ffi::Standard_Character,
-    ) {
-        crate::ffi::TCollection_AsciiString::set_value(self, where_, what)
-    }
-
-    /// Replaces a part of <me> by another AsciiString.
-    pub fn set_value_int_asciistring(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: &crate::ffi::TCollection_AsciiString,
-    ) {
-        crate::ffi::TCollection_AsciiString::set_value(self, where_, what)
+    /// aString contains "abcde"
+    /// aString.SetValue(4,"1234567") gives <me> = "abc1234567"
+    pub fn set_value_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) {
+        crate::ffi::TCollection_AsciiString_set_value(self, where_, what)
     }
 
     /// Splits a AsciiString into two sub-strings.
@@ -598,8 +211,8 @@ impl AsciiString {
     pub fn split(
         self: std::pin::Pin<&mut Self>,
         where_: i32,
-    ) -> crate::ffi::TCollection_AsciiString {
-        crate::ffi::TCollection_AsciiString::split(self, where_)
+    ) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::TCollection_AsciiString_split(self, where_)
     }
 
     /// Creation of a sub-string of the string <me>.
@@ -613,51 +226,60 @@ impl AsciiString {
     /// me = "abcdefg"
     /// returns
     /// "cdef"
-    pub fn sub_string(&self, FromIndex: i32, ToIndex: i32) -> crate::ffi::TCollection_AsciiString {
-        crate::ffi::TCollection_AsciiString::sub_string(self, FromIndex, ToIndex)
+    pub fn sub_string(
+        &self,
+        FromIndex: i32,
+        ToIndex: i32,
+    ) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::TCollection_AsciiString_sub_string(self, FromIndex, ToIndex)
     }
 
-    /// Truncates <me> to <ahowmany> characters.
-    /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
-    pub fn trunc(self: std::pin::Pin<&mut Self>, ahowmany: i32) {
-        crate::ffi::TCollection_AsciiString::trunc(self, ahowmany)
+    /// Returns pointer to AsciiString (char *).
+    /// This is useful for some casual manipulations.
+    /// Warning: Because this "char *" is 'const', you can't modify its contents.
+    pub fn to_c_string(&self) -> String {
+        crate::ffi::TCollection_AsciiString_to_c_string(self)
     }
 
-    /// Converts <me> to its upper-case equivalent.
-    pub fn upper_case(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TCollection_AsciiString::upper_case(self)
-    }
-
-    /// Length of the string ignoring all spaces (' ') and the
-    /// control character at the end.
-    pub fn usefull_length(&self) -> i32 {
-        crate::ffi::TCollection_AsciiString::usefull_length(self)
-    }
-
-    /// Returns character at position <where> in <me>.
-    /// If <where> is less than zero or greater than the length of <me>,
-    /// an exception is raised.
+    /// Extracts <whichone> token from <me>.
+    /// By default, the <separators> is set to space and tabulation.
+    /// By default, the token extracted is the first one (whichone = 1).
+    /// <separators> contains all separators you need.
+    /// If no token indexed by <whichone> is found, it returns empty AsciiString.
     /// Example:
-    /// aString contains "Hello"
-    /// aString.Value(2) returns 'e'
-    pub fn value(&self, where_: i32) -> crate::ffi::Standard_Character {
-        crate::ffi::TCollection_AsciiString::value(self, where_)
-    }
-
-    /// Computes a hash code for the given ASCII string
-    /// Returns the same integer value as the hash function for TCollection_ExtendedString
-    /// @return a computed hash code
-    pub fn hash_code(&self) -> usize {
-        crate::ffi::TCollection_AsciiString::hash_code(self)
+    /// aString contains "This is a     message"
+    /// aString.Token()  returns "This"
+    /// aString.Token(" ",4) returns "message"
+    /// aString.Token(" ",2) returns "is"
+    /// aString.Token(" ",9) returns ""
+    /// Other separators than space character and tabulation are allowed :
+    /// aString contains "1234; test:message   , value"
+    /// aString.Token("; :,",4) returns "value"
+    /// aString.Token("; :,",2) returns "test"
+    pub fn token(
+        &self,
+        separators: &str,
+        whichone: i32,
+    ) -> cxx::UniquePtr<crate::ffi::TCollection_AsciiString> {
+        crate::ffi::TCollection_AsciiString_token(self, separators, whichone)
     }
 
     /// Returns True  when the two  strings are the same.
     /// (Just for HashCode for AsciiString)
-    pub fn is_equal(
+    pub fn is_equal_asciistring2(
         string1: &crate::ffi::TCollection_AsciiString,
         string2: &crate::ffi::TCollection_AsciiString,
     ) -> bool {
-        crate::ffi::TCollection_AsciiString::is_equal(string1, string2)
+        crate::ffi::TCollection_AsciiString_is_equal_asciistring2(string1, string2)
+    }
+
+    /// Returns True  when the two  strings are the same.
+    /// (Just for HashCode for AsciiString)
+    pub fn is_equal_asciistring_charptr(
+        string1: &crate::ffi::TCollection_AsciiString,
+        string2: &str,
+    ) -> bool {
+        crate::ffi::TCollection_AsciiString_is_equal_asciistring_charptr(string1, string2)
     }
 
     /// Returns True if the strings contain same characters.
@@ -666,7 +288,7 @@ impl AsciiString {
         theString2: &crate::ffi::TCollection_AsciiString,
         theIsCaseSensitive: bool,
     ) -> bool {
-        crate::ffi::TCollection_AsciiString::is_same_string(
+        crate::ffi::TCollection_AsciiString_is_same_string(
             theString1,
             theString2,
             theIsCaseSensitive,
@@ -738,208 +360,12 @@ impl ExtendedString {
         crate::ffi::TCollection_ExtendedString_ctor_asciistring_bool(astring, isMultiByte)
     }
 
-    /// Appends the other extended string to this extended string.
-    /// Note that this method is an alias of operator +=.
-    /// Example: aString += anotherString
-    pub fn assign_cat(
-        self: std::pin::Pin<&mut Self>,
-        other: &crate::ffi::TCollection_ExtendedString,
-    ) {
-        crate::ffi::TCollection_ExtendedString::assign_cat(self, other)
-    }
-
-    /// Appends the utf16 char to this extended string.
-    pub fn assign_cat_utf16char(
-        self: std::pin::Pin<&mut Self>,
-        theChar: crate::ffi::Standard_Utf16Char,
-    ) {
-        crate::ffi::TCollection_ExtendedString::assign_cat(self, theChar)
-    }
-
     /// Appends <other> to me.
     pub fn cat(
         &self,
         other: &crate::ffi::TCollection_ExtendedString,
-    ) -> crate::ffi::TCollection_ExtendedString {
-        crate::ffi::TCollection_ExtendedString::cat(self, other)
-    }
-
-    /// Substitutes all the characters equal to aChar by NewChar
-    /// in the ExtendedString <me>.
-    /// The substitution can be case sensitive.
-    /// If you don't use default case sensitive, no matter whether aChar is uppercase or not.
-    pub fn change_all(
-        self: std::pin::Pin<&mut Self>,
-        aChar: crate::ffi::Standard_ExtCharacter,
-        NewChar: crate::ffi::Standard_ExtCharacter,
-    ) {
-        crate::ffi::TCollection_ExtendedString::change_all(self, aChar, NewChar)
-    }
-
-    /// Removes all characters contained in <me>.
-    /// This produces an empty ExtendedString.
-    pub fn clear(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TCollection_ExtendedString::clear(self)
-    }
-
-    /// Copy <fromwhere> to <me>.
-    /// Used as operator =
-    pub fn copy(
-        self: std::pin::Pin<&mut Self>,
-        fromwhere: &crate::ffi::TCollection_ExtendedString,
-    ) {
-        crate::ffi::TCollection_ExtendedString::copy(self, fromwhere)
-    }
-
-    /// Exchange the data of two strings (without reallocating memory).
-    pub fn swap(
-        self: std::pin::Pin<&mut Self>,
-        theOther: std::pin::Pin<&mut crate::ffi::TCollection_ExtendedString>,
-    ) {
-        crate::ffi::TCollection_ExtendedString::swap(self, theOther)
-    }
-
-    /// Insert a Character at position <where>.
-    pub fn insert(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: crate::ffi::Standard_ExtCharacter,
-    ) {
-        crate::ffi::TCollection_ExtendedString::insert(self, where_, what)
-    }
-
-    /// Insert a ExtendedString at position <where>.
-    pub fn insert_int_extendedstring(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: &crate::ffi::TCollection_ExtendedString,
-    ) {
-        crate::ffi::TCollection_ExtendedString::insert(self, where_, what)
-    }
-
-    /// Returns True if this string contains no characters.
-    pub fn is_empty(&self) -> bool {
-        crate::ffi::TCollection_ExtendedString::is_empty(self)
-    }
-
-    /// Returns true if the characters in this extended
-    /// string are identical to the characters in the other extended string.
-    /// Note that this method is an alias of operator ==
-    pub fn is_equal(&self, other: crate::ffi::Standard_ExtString) -> bool {
-        crate::ffi::TCollection_ExtendedString::is_equal(self, other)
-    }
-
-    /// Returns true if the characters in this extended
-    /// string are identical to the characters in the other extended string.
-    /// Note that this method is an alias of operator ==
-    pub fn is_equal_extendedstring(&self, other: &crate::ffi::TCollection_ExtendedString) -> bool {
-        crate::ffi::TCollection_ExtendedString::is_equal(self, other)
-    }
-
-    /// Returns true if there are differences between the
-    /// characters in this extended string and the other extended string.
-    /// Note that this method is an alias of operator !=.
-    pub fn is_different(&self, other: crate::ffi::Standard_ExtString) -> bool {
-        crate::ffi::TCollection_ExtendedString::is_different(self, other)
-    }
-
-    /// Returns true if there are differences between the
-    /// characters in this extended string and the other extended string.
-    /// Note that this method is an alias of operator !=.
-    pub fn is_different_extendedstring(
-        &self,
-        other: &crate::ffi::TCollection_ExtendedString,
-    ) -> bool {
-        crate::ffi::TCollection_ExtendedString::is_different(self, other)
-    }
-
-    /// Returns TRUE if <me> is less than <other>.
-    pub fn is_less(&self, other: crate::ffi::Standard_ExtString) -> bool {
-        crate::ffi::TCollection_ExtendedString::is_less(self, other)
-    }
-
-    /// Returns TRUE if <me> is less than <other>.
-    pub fn is_less_extendedstring(&self, other: &crate::ffi::TCollection_ExtendedString) -> bool {
-        crate::ffi::TCollection_ExtendedString::is_less(self, other)
-    }
-
-    /// Returns TRUE if <me> is greater than <other>.
-    pub fn is_greater(&self, other: crate::ffi::Standard_ExtString) -> bool {
-        crate::ffi::TCollection_ExtendedString::is_greater(self, other)
-    }
-
-    /// Returns TRUE if <me> is greater than <other>.
-    pub fn is_greater_extendedstring(
-        &self,
-        other: &crate::ffi::TCollection_ExtendedString,
-    ) -> bool {
-        crate::ffi::TCollection_ExtendedString::is_greater(self, other)
-    }
-
-    /// Determines whether the beginning of this string instance matches the specified string.
-    pub fn starts_with(&self, theStartString: &crate::ffi::TCollection_ExtendedString) -> bool {
-        crate::ffi::TCollection_ExtendedString::starts_with(self, theStartString)
-    }
-
-    /// Determines whether the end of this string instance matches the specified string.
-    pub fn ends_with(&self, theEndString: &crate::ffi::TCollection_ExtendedString) -> bool {
-        crate::ffi::TCollection_ExtendedString::ends_with(self, theEndString)
-    }
-
-    /// Returns True if the ExtendedString contains only
-    /// "Ascii Range" characters .
-    pub fn is_ascii(&self) -> bool {
-        crate::ffi::TCollection_ExtendedString::is_ascii(self)
-    }
-
-    /// Returns the number of 16-bit code units
-    /// (might be greater than number of Unicode symbols if string contains surrogate pairs).
-    pub fn length(&self) -> i32 {
-        crate::ffi::TCollection_ExtendedString::length(self)
-    }
-
-    /// Removes every <what> characters from <me>.
-    pub fn remove_all(self: std::pin::Pin<&mut Self>, what: crate::ffi::Standard_ExtCharacter) {
-        crate::ffi::TCollection_ExtendedString::remove_all(self, what)
-    }
-
-    /// Erases <ahowmany> characters from position <where>,<where> included.
-    pub fn remove(self: std::pin::Pin<&mut Self>, where_: i32, ahowmany: i32) {
-        crate::ffi::TCollection_ExtendedString::remove(self, where_, ahowmany)
-    }
-
-    /// Searches a ExtendedString in <me> from the beginning
-    /// and returns position of first item <what> matching.
-    /// it returns -1 if not found.
-    pub fn search(&self, what: &crate::ffi::TCollection_ExtendedString) -> i32 {
-        crate::ffi::TCollection_ExtendedString::search(self, what)
-    }
-
-    /// Searches a ExtendedString in another ExtendedString from the
-    /// end and returns position of first item <what> matching.
-    /// it returns -1 if not found.
-    pub fn search_from_end(&self, what: &crate::ffi::TCollection_ExtendedString) -> i32 {
-        crate::ffi::TCollection_ExtendedString::search_from_end(self, what)
-    }
-
-    /// Replaces one character in the ExtendedString at position <where>.
-    /// If <where> is less than zero or greater than the length of <me>
-    /// an exception is raised.
-    pub fn set_value(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: crate::ffi::Standard_ExtCharacter,
-    ) {
-        crate::ffi::TCollection_ExtendedString::set_value(self, where_, what)
-    }
-
-    /// Replaces a part of <me> by another ExtendedString see above.
-    pub fn set_value_int_extendedstring(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: &crate::ffi::TCollection_ExtendedString,
-    ) {
-        crate::ffi::TCollection_ExtendedString::set_value(self, where_, what)
+    ) -> cxx::UniquePtr<crate::ffi::TCollection_ExtendedString> {
+        crate::ffi::TCollection_ExtendedString_cat(self, other)
     }
 
     /// Splits this extended string into two sub-strings at position where.
@@ -955,94 +381,18 @@ impl ExtendedString {
     pub fn split(
         self: std::pin::Pin<&mut Self>,
         where_: i32,
-    ) -> crate::ffi::TCollection_ExtendedString {
-        crate::ffi::TCollection_ExtendedString::split(self, where_)
-    }
-
-    /// Extracts <whichone> token from <me>.
-    /// By default, the <separators> is set to space and tabulation.
-    /// By default, the token extracted is the first one (whichone = 1).
-    /// <separators> contains all separators you need.
-    /// If no token indexed by <whichone> is found, it returns an empty AsciiString.
-    /// Example:
-    /// aString contains "This is a     message"
-    /// aString.Token()  returns "This"
-    /// aString.Token(" ",4) returns "message"
-    /// aString.Token(" ",2) returns "is"
-    /// aString.Token(" ",9) returns ""
-    /// Other separators than space character and tabulation are allowed :
-    /// aString contains "1234; test:message   , value"
-    /// aString.Token("; :,",4) returns "value"
-    /// aString.Token("; :,",2) returns "test"
-    pub fn token(
-        &self,
-        separators: crate::ffi::Standard_ExtString,
-        whichone: i32,
-    ) -> crate::ffi::TCollection_ExtendedString {
-        crate::ffi::TCollection_ExtendedString::token(self, separators, whichone)
-    }
-
-    /// Returns pointer to ExtString
-    pub fn to_ext_string(&self) -> crate::ffi::Standard_ExtString {
-        crate::ffi::TCollection_ExtendedString::to_ext_string(self)
-    }
-
-    /// Truncates <me> to <ahowmany> characters.
-    /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
-    /// Exceptions
-    /// Standard_OutOfRange if ahowmany is greater
-    /// than the length of this string.
-    pub fn trunc(self: std::pin::Pin<&mut Self>, ahowmany: i32) {
-        crate::ffi::TCollection_ExtendedString::trunc(self, ahowmany)
-    }
-
-    /// Returns character at position <where> in <me>.
-    /// If <where> is less than zero or greater than the length of
-    /// <me>, an exception is raised.
-    /// Example:
-    /// aString contains "Hello"
-    /// aString.Value(2) returns 'e'
-    /// Exceptions
-    /// Standard_OutOfRange if where lies outside
-    /// the bounds of this extended string.
-    pub fn value(&self, where_: i32) -> crate::ffi::Standard_ExtCharacter {
-        crate::ffi::TCollection_ExtendedString::value(self, where_)
-    }
-
-    /// Returns a hashed value for the extended string.
-    /// Note: if string is ASCII, the computed value is the same as the value computed with the
-    /// HashCode function on a TCollection_AsciiString string composed with equivalent ASCII
-    /// characters.
-    /// @return a computed hash code
-    pub fn hash_code(&self) -> usize {
-        crate::ffi::TCollection_ExtendedString::hash_code(self)
-    }
-
-    /// Converts the internal <mystring> to UTF8 coding and
-    /// returns length of the out CString. A memory for the
-    /// <theCString> should be allocated before call!
-    pub fn to_utf8c_string(
-        &self,
-        theCString: std::pin::Pin<&mut crate::ffi::Standard_PCharacter>,
-    ) -> i32 {
-        crate::ffi::TCollection_ExtendedString::to_utf8c_string(self, theCString)
-    }
-
-    /// Returns expected CString length in UTF8 coding.
-    /// It can be used for  memory  calculation  before converting
-    /// to CString containing symbols in UTF8 coding.
-    pub fn length_of_c_string(&self) -> i32 {
-        crate::ffi::TCollection_ExtendedString::length_of_c_string(self)
+    ) -> cxx::UniquePtr<crate::ffi::TCollection_ExtendedString> {
+        crate::ffi::TCollection_ExtendedString_split(self, where_)
     }
 
     /// Returns true if the characters in this extended
     /// string are identical to the characters in the other extended string.
     /// Note that this method is an alias of operator ==.
-    pub fn is_equal(
+    pub fn is_equal_extendedstring2(
         theString1: &crate::ffi::TCollection_ExtendedString,
         theString2: &crate::ffi::TCollection_ExtendedString,
     ) -> bool {
-        crate::ffi::TCollection_ExtendedString::is_equal(theString1, theString2)
+        crate::ffi::TCollection_ExtendedString_is_equal(theString1, theString2)
     }
 }
 
@@ -1094,435 +444,72 @@ impl HAsciiString {
     }
 
     /// Appends <other>  to me.
-    /// Example:  aString = aString + anotherString
-    pub fn assign_cat(
-        self: std::pin::Pin<&mut Self>,
-        other: &crate::ffi::HandleTCollectionHAsciiString,
-    ) {
-        crate::ffi::TCollection_HAsciiString::assign_cat(self, other)
+    pub fn assign_cat_charptr(self: std::pin::Pin<&mut Self>, other: &str) {
+        crate::ffi::TCollection_HAsciiString_assign_cat(self, other)
     }
 
-    /// Converts the first character into its corresponding
-    /// upper-case character and the other characters into lowercase.
+    /// Creates a new string by concatenation of this
+    /// ASCII string and the other ASCII string.
     /// Example:
-    /// before
-    /// me = "hellO "
-    /// after
-    /// me = "Hello "
-    pub fn capitalize(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TCollection_HAsciiString::capitalize(self)
+    /// aString = aString + anotherString
+    /// aString = aString + "Dummy"
+    /// aString contains "I say "
+    /// aString = aString + "Hello " + "Dolly"
+    /// gives "I say Hello Dolly"
+    /// Warning: To catenate more than one CString, you must put a String before.
+    /// So the following example is WRONG !
+    /// aString = "Hello " + "Dolly"  THIS IS NOT ALLOWED
+    /// This rule is applicable to AssignCat (operator +=) too.
+    pub fn cat_charptr(
+        &self,
+        other: &str,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::TCollection_HAsciiString_cat_charptr(self, other)
     }
 
     /// Creates a new string by concatenation of this
     /// ASCII string and the other ASCII string.
     /// Example:  aString = aString + anotherString
-    pub fn cat(
+    pub fn cat_handlehasciistring(
         &self,
         other: &crate::ffi::HandleTCollectionHAsciiString,
-    ) -> crate::ffi::HandleTCollectionHAsciiString {
-        crate::ffi::TCollection_HAsciiString::cat(self, other)
-    }
-
-    /// Modifies this ASCII string so that its length
-    /// becomes equal to Width and the new characters
-    /// are equal to Filler. New characters are added
-    /// both at the beginning and at the end of this string.
-    /// If Width is less than the length of this ASCII string, nothing happens.
-    /// Example
-    /// Handle(TCollection_HAsciiString)
-    /// myAlphabet
-    /// = new
-    /// TCollection_HAsciiString
-    /// ("abcdef");
-    /// myAlphabet->Center(9,' ');
-    /// assert ( !strcmp(
-    /// myAlphabet->ToCString(),
-    /// " abcdef ") );
-    pub fn center(
-        self: std::pin::Pin<&mut Self>,
-        Width: i32,
-        Filler: crate::ffi::Standard_Character,
-    ) {
-        crate::ffi::TCollection_HAsciiString::center(self, Width, Filler)
-    }
-
-    /// Replaces all characters equal to aChar by
-    /// NewChar in this ASCII string. The substitution is
-    /// case sensitive if CaseSensitive is true (default value).
-    /// If you do not use the default case sensitive
-    /// option, it does not matter whether aChar is upper-case or not.
-    /// Example
-    /// Handle(TCollection_HAsciiString)
-    /// myMistake = new
-    /// TCollection_HAsciiString
-    /// ("Hather");
-    /// myMistake->ChangeAll('H','F');
-    /// assert ( !strcmp(
-    /// myMistake->ToCString(),
-    /// "Father") );
-    pub fn change_all(
-        self: std::pin::Pin<&mut Self>,
-        aChar: crate::ffi::Standard_Character,
-        NewChar: crate::ffi::Standard_Character,
-        CaseSensitive: bool,
-    ) {
-        crate::ffi::TCollection_HAsciiString::change_all(self, aChar, NewChar, CaseSensitive)
-    }
-
-    /// Removes all characters contained in <me>.
-    /// This produces an empty HAsciiString.
-    pub fn clear(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TCollection_HAsciiString::clear(self)
-    }
-
-    /// Returns the index of the first character of <me> that is
-    /// present in <Set>.
-    /// The search begins to the index FromIndex and ends to the
-    /// the index ToIndex.
-    /// Returns zero if failure.
-    /// Raises an exception if FromIndex or ToIndex is out of range
-    /// Example:
-    /// before
-    /// me = "aabAcAa", S = "Aa", FromIndex = 1, Toindex = 7
-    /// after
-    /// me = "aabAcAa"
-    /// returns
-    /// 1
-    pub fn first_location_in_set(
-        &self,
-        Set: &crate::ffi::HandleTCollectionHAsciiString,
-        FromIndex: i32,
-        ToIndex: i32,
-    ) -> i32 {
-        crate::ffi::TCollection_HAsciiString::first_location_in_set(self, Set, FromIndex, ToIndex)
-    }
-
-    /// Returns the index of the first character of <me>
-    /// that is not present in the set <Set>.
-    /// The search begins to the index FromIndex and ends to the
-    /// the index ToIndex in <me>.
-    /// Returns zero if failure.
-    /// Raises an exception if FromIndex or ToIndex is out of range.
-    /// Example:
-    /// before
-    /// me = "aabAcAa", S = "Aa", FromIndex = 1, Toindex = 7
-    /// after
-    /// me = "aabAcAa"
-    /// returns
-    /// 3
-    pub fn first_location_not_in_set(
-        &self,
-        Set: &crate::ffi::HandleTCollectionHAsciiString,
-        FromIndex: i32,
-        ToIndex: i32,
-    ) -> i32 {
-        crate::ffi::TCollection_HAsciiString::first_location_not_in_set(
-            self, Set, FromIndex, ToIndex,
-        )
-    }
-
-    /// Insert a Character at position <where>.
-    /// Example:
-    /// aString contains "hy not ?"
-    /// aString.Insert(1,'W'); gives "Why not ?"
-    /// aString contains "Wh"
-    /// aString.Insert(3,'y'); gives "Why"
-    /// aString contains "Way"
-    /// aString.Insert(2,'h'); gives "Why"
-    pub fn insert(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: crate::ffi::Standard_Character,
-    ) {
-        crate::ffi::TCollection_HAsciiString::insert(self, where_, what)
+    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::TCollection_HAsciiString_cat_handlehasciistring(self, other)
     }
 
     /// Insert a HAsciiString at position <where>.
-    pub fn insert_int_handlehasciistring(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: &crate::ffi::HandleTCollectionHAsciiString,
-    ) {
-        crate::ffi::TCollection_HAsciiString::insert(self, where_, what)
+    pub fn insert_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) {
+        crate::ffi::TCollection_HAsciiString_insert(self, where_, what)
     }
 
-    /// Inserts the other ASCII string a after a specific index in the string <me>
-    /// Example:
-    /// before
-    /// me = "cde" , Index = 0 , other = "ab"
-    /// after
-    /// me = "abcde" , other = "ab"
-    pub fn insert_after(
-        self: std::pin::Pin<&mut Self>,
-        Index: i32,
-        other: &crate::ffi::HandleTCollectionHAsciiString,
-    ) {
-        crate::ffi::TCollection_HAsciiString::insert_after(self, Index, other)
-    }
-
-    /// Inserts the other ASCII string a before a specific index in the string <me>
-    /// Raises an exception if Index is out of bounds
-    /// Example:
-    /// before
-    /// me = "cde" , Index = 1 , other = "ab"
-    /// after
-    /// me = "abcde" , other = "ab"
-    pub fn insert_before(
-        self: std::pin::Pin<&mut Self>,
-        Index: i32,
-        other: &crate::ffi::HandleTCollectionHAsciiString,
-    ) {
-        crate::ffi::TCollection_HAsciiString::insert_before(self, Index, other)
-    }
-
-    /// Returns True if the string <me> contains zero character
-    pub fn is_empty(&self) -> bool {
-        crate::ffi::TCollection_HAsciiString::is_empty(self)
-    }
-
-    /// Returns TRUE if <me> is 'ASCII' less than <other>.
-    pub fn is_less(&self, other: &crate::ffi::HandleTCollectionHAsciiString) -> bool {
-        crate::ffi::TCollection_HAsciiString::is_less(self, other)
-    }
-
-    /// Returns TRUE if <me> is 'ASCII' greater than <other>.
-    pub fn is_greater(&self, other: &crate::ffi::HandleTCollectionHAsciiString) -> bool {
-        crate::ffi::TCollection_HAsciiString::is_greater(self, other)
-    }
-
-    /// Converts a HAsciiString containing a numeric expression to
-    /// an Integer.
-    /// Example: "215" returns 215.
-    pub fn integer_value(&self) -> i32 {
-        crate::ffi::TCollection_HAsciiString::integer_value(self)
-    }
-
-    /// Returns True if the string contains an integer value.
-    pub fn is_integer_value(&self) -> bool {
-        crate::ffi::TCollection_HAsciiString::is_integer_value(self)
-    }
-
-    /// Returns True if the string contains a real value.
-    pub fn is_real_value(&self) -> bool {
-        crate::ffi::TCollection_HAsciiString::is_real_value(self)
-    }
-
-    /// Returns True if the string contains only ASCII characters
-    /// between ' ' and '~'.
-    /// This means no control character and no extended ASCII code.
-    pub fn is_ascii(&self) -> bool {
-        crate::ffi::TCollection_HAsciiString::is_ascii(self)
-    }
-
-    /// Returns True if the string S not contains same characters than
-    /// the string <me>.
-    pub fn is_different(&self, S: &crate::ffi::HandleTCollectionHAsciiString) -> bool {
-        crate::ffi::TCollection_HAsciiString::is_different(self, S)
-    }
-
-    /// Returns True if the string S contains same characters than the
-    /// string <me>.
-    pub fn is_same_string(&self, S: &crate::ffi::HandleTCollectionHAsciiString) -> bool {
-        crate::ffi::TCollection_HAsciiString::is_same_string(self, S)
-    }
-
-    /// Returns True if the string S contains same characters than the
-    /// string <me>.
-    pub fn is_same_string_handlehasciistring_bool(
-        &self,
-        S: &crate::ffi::HandleTCollectionHAsciiString,
-        CaseSensitive: bool,
-    ) -> bool {
-        crate::ffi::TCollection_HAsciiString::is_same_string(self, S, CaseSensitive)
-    }
-
-    /// Removes all space characters in the beginning of the string
-    pub fn left_adjust(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TCollection_HAsciiString::left_adjust(self)
-    }
-
-    /// Left justify.
-    /// Length becomes equal to Width and the new characters are
-    /// equal to Filler
-    /// if Width < Length nothing happens
-    /// Raises an exception if Width is less than zero
-    /// Example:
-    /// before
-    /// me = "abcdef" , Width = 9 , Filler = ' '
-    /// after
-    /// me = "abcdef   "
-    pub fn left_justify(
-        self: std::pin::Pin<&mut Self>,
-        Width: i32,
-        Filler: crate::ffi::Standard_Character,
-    ) {
-        crate::ffi::TCollection_HAsciiString::left_justify(self, Width, Filler)
-    }
-
-    /// Returns number of characters in <me>.
-    /// This is the same functionality as 'strlen' in C.
-    pub fn length(&self) -> i32 {
-        crate::ffi::TCollection_HAsciiString::length(self)
-    }
-
-    /// returns an index in the string <me> of the first occurrence
-    /// of the string S in the string <me> from the starting index
-    /// FromIndex to the ending index ToIndex
-    /// returns zero if failure
-    /// Raises an exception if FromIndex or ToIndex is out of range.
-    /// Example:
-    /// before
-    /// me = "aabAaAa", S = "Aa", FromIndex = 1, ToIndex = 7
-    /// after
-    /// me = "aabAaAa"
-    /// returns
-    /// 4
-    pub fn location(
-        &self,
-        other: &crate::ffi::HandleTCollectionHAsciiString,
-        FromIndex: i32,
-        ToIndex: i32,
-    ) -> i32 {
-        crate::ffi::TCollection_HAsciiString::location(self, other, FromIndex, ToIndex)
-    }
-
-    /// Returns the index of the nth occurrence of the character C
-    /// in the string <me> from the starting index FromIndex to the
-    /// ending index ToIndex.
-    /// Returns zero if failure.
-    /// Raises an exception if FromIndex or ToIndex is out of range
-    /// Example:
-    /// before
-    /// me = "aabAa", N = 3, C = 'a', FromIndex = 1, ToIndex = 5
-    /// after
-    /// me = "aabAa"
-    /// returns 5
-    pub fn location_int_character_int2(
-        &self,
-        N: i32,
-        C: crate::ffi::Standard_Character,
-        FromIndex: i32,
-        ToIndex: i32,
-    ) -> i32 {
-        crate::ffi::TCollection_HAsciiString::location(self, N, C, FromIndex, ToIndex)
-    }
-
-    /// Converts <me> to its lower-case equivalent.
-    pub fn lower_case(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TCollection_HAsciiString::lower_case(self)
-    }
-
-    /// Inserts the other string at the beginning of the string <me>
-    /// Example:
-    /// before
-    /// me = "cde" , S = "ab"
-    /// after
-    /// me = "abcde" , S = "ab"
-    pub fn prepend(
-        self: std::pin::Pin<&mut Self>,
-        other: &crate::ffi::HandleTCollectionHAsciiString,
-    ) {
-        crate::ffi::TCollection_HAsciiString::prepend(self, other)
-    }
-
-    /// Converts a string containing a numeric expression to a Real.
-    /// Example:
-    /// "215" returns 215.0.
-    /// "3.14159267" returns 3.14159267.
-    pub fn real_value(&self) -> f64 {
-        crate::ffi::TCollection_HAsciiString::real_value(self)
-    }
-
-    /// Remove all the occurrences of the character C in the string
-    /// Example:
-    /// before
-    /// me = "HellLLo", C = 'L' , CaseSensitive = True
-    /// after
-    /// me = "Hello"
-    pub fn remove_all(
-        self: std::pin::Pin<&mut Self>,
-        C: crate::ffi::Standard_Character,
-        CaseSensitive: bool,
-    ) {
-        crate::ffi::TCollection_HAsciiString::remove_all(self, C, CaseSensitive)
-    }
-
-    /// Removes every <what> characters from <me>
-    pub fn remove_all_character(
-        self: std::pin::Pin<&mut Self>,
-        what: crate::ffi::Standard_Character,
-    ) {
-        crate::ffi::TCollection_HAsciiString::remove_all(self, what)
-    }
-
-    /// Erases <ahowmany> characters from position <where>,
-    /// <where> included.
-    /// Example:
-    /// aString contains "Hello"
-    /// aString.Erase(2,2) erases 2 characters from position 1
-    /// This gives "Hlo".
-    pub fn remove(self: std::pin::Pin<&mut Self>, where_: i32, ahowmany: i32) {
-        crate::ffi::TCollection_HAsciiString::remove(self, where_, ahowmany)
-    }
-
-    /// Removes all space characters at the end of the string.
-    pub fn right_adjust(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TCollection_HAsciiString::right_adjust(self)
-    }
-
-    /// Right justify.
-    /// Length becomes equal to Width and the new characters are
-    /// equal to Filler
-    /// if Width < Length nothing happens
-    /// Raises an exception if Width is less than zero
-    /// Example:
-    /// before
-    /// me = "abcdef" , Width = 9 , Filler = ' '
-    /// after
-    /// me = "   abcdef"
-    pub fn right_justify(
-        self: std::pin::Pin<&mut Self>,
-        Width: i32,
-        Filler: crate::ffi::Standard_Character,
-    ) {
-        crate::ffi::TCollection_HAsciiString::right_justify(self, Width, Filler)
-    }
-
-    /// Searches a String in <me> from the beginning
-    /// and returns position of first item <what> matching.
-    /// it returns -1 if not found.
-    pub fn search(&self, what: &crate::ffi::HandleTCollectionHAsciiString) -> i32 {
-        crate::ffi::TCollection_HAsciiString::search(self, what)
-    }
-
-    /// Searches a HAsciiString in another HAsciiString from the end
+    /// Searches a CString in <me> from the beginning
     /// and returns position of first item <what> matching.
     /// It returns -1 if not found.
-    pub fn search_from_end(&self, what: &crate::ffi::HandleTCollectionHAsciiString) -> i32 {
-        crate::ffi::TCollection_HAsciiString::search_from_end(self, what)
+    /// Example:
+    /// aString contains "Sample single test"
+    /// aString.Search("le") returns 5
+    pub fn search_charptr(&self, what: &str) -> i32 {
+        crate::ffi::TCollection_HAsciiString_search(self, what)
     }
 
-    /// Replaces one character in the string at position <where>.
+    /// Searches a CString in a String from the end
+    /// and returns position of first item <what> matching.
+    /// It returns -1 if not found.
+    /// Example:
+    /// aString contains "Sample single test"
+    /// aString.SearchFromEnd("le") returns 12
+    pub fn search_from_end_charptr(&self, what: &str) -> i32 {
+        crate::ffi::TCollection_HAsciiString_search_from_end(self, what)
+    }
+
+    /// Replaces a part of <me> in the string at position <where>.
     /// If <where> is less than zero or greater than the length of <me>
     /// an exception is raised.
     /// Example:
     /// aString contains "Garbake"
     /// astring.Replace(6,'g')  gives <me> = "Garbage"
-    pub fn set_value(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: crate::ffi::Standard_Character,
-    ) {
-        crate::ffi::TCollection_HAsciiString::set_value(self, where_, what)
-    }
-
-    /// Replaces a part of <me> by another string.
-    pub fn set_value_int_handlehasciistring(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: &crate::ffi::HandleTCollectionHAsciiString,
-    ) {
-        crate::ffi::TCollection_HAsciiString::set_value(self, where_, what)
+    pub fn set_value_int_charptr(self: std::pin::Pin<&mut Self>, where_: i32, what: &str) {
+        crate::ffi::TCollection_HAsciiString_set_value(self, where_, what)
     }
 
     /// Splits a HAsciiString into two sub-strings.
@@ -1532,8 +519,8 @@ impl HAsciiString {
     pub fn split(
         self: std::pin::Pin<&mut Self>,
         where_: i32,
-    ) -> crate::ffi::HandleTCollectionHAsciiString {
-        crate::ffi::TCollection_HAsciiString::split(self, where_)
+    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::TCollection_HAsciiString_split(self, where_)
     }
 
     /// Creation of a sub-string of the string <me>.
@@ -1552,44 +539,42 @@ impl HAsciiString {
         &self,
         FromIndex: i32,
         ToIndex: i32,
-    ) -> crate::ffi::HandleTCollectionHAsciiString {
-        crate::ffi::TCollection_HAsciiString::sub_string(self, FromIndex, ToIndex)
+    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::TCollection_HAsciiString_sub_string(self, FromIndex, ToIndex)
     }
 
-    /// Truncates <me> to <ahowmany> characters.
-    /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
-    pub fn trunc(self: std::pin::Pin<&mut Self>, ahowmany: i32) {
-        crate::ffi::TCollection_HAsciiString::trunc(self, ahowmany)
+    /// Returns pointer to string (char *)
+    /// This is useful for some casual manipulations
+    /// Because this "char *" is 'const', you can't modify its contents.
+    pub fn to_c_string(&self) -> String {
+        crate::ffi::TCollection_HAsciiString_to_c_string(self)
     }
 
-    /// Converts <me> to its upper-case equivalent.
-    pub fn upper_case(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TCollection_HAsciiString::upper_case(self)
-    }
-
-    /// Length of the string ignoring all spaces (' ') and the
-    /// control character at the end.
-    pub fn usefull_length(&self) -> i32 {
-        crate::ffi::TCollection_HAsciiString::usefull_length(self)
-    }
-
-    /// Returns character at position <where> in <me>.
-    /// If <where> is less than zero or greater than the length of
-    /// <me>, an exception is raised.
+    /// Extracts <whichone> token from <me>.
+    /// By default, the <separators> is set to space and tabulation.
+    /// By default, the token extracted is the first one (whichone = 1).
+    /// <separators> contains all separators you need.
+    /// If no token indexed by <whichone> is found, it returns an empty String.
     /// Example:
-    /// aString contains "Hello"
-    /// aString.Value(2) returns 'e'
-    pub fn value(&self, where_: i32) -> crate::ffi::Standard_Character {
-        crate::ffi::TCollection_HAsciiString::value(self, where_)
+    /// aString contains "This is a     message"
+    /// aString.Token()  returns "This"
+    /// aString.Token(" ",4) returns "message"
+    /// aString.Token(" ",2) returns "is"
+    /// aString.Token(" ",9) returns ""
+    /// Other separators than space character and tabulation are allowed
+    /// aString contains "1234; test:message   , value"
+    /// aString.Token("; :,",4) returns "value"
+    /// aString.Token("; :,",2) returns "test"
+    pub fn token(
+        &self,
+        separators: &str,
+        whichone: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHAsciiString> {
+        crate::ffi::TCollection_HAsciiString_token(self, separators, whichone)
     }
 
-    /// Returns the field myString.
-    pub fn string(&self) -> &crate::ffi::TCollection_AsciiString {
-        crate::ffi::TCollection_HAsciiString::string(self)
-    }
-
-    pub fn is_same_state(&self, other: &crate::ffi::HandleTCollectionHAsciiString) -> bool {
-        crate::ffi::TCollection_HAsciiString::is_same_state(self, other)
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TCollection_HAsciiString_get_type_descriptor()
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -1649,125 +634,12 @@ impl HExtendedString {
         crate::ffi::TCollection_HExtendedString_ctor_handlehextendedstring(aString)
     }
 
-    /// Appends <other>  to me.
-    pub fn assign_cat(
-        self: std::pin::Pin<&mut Self>,
-        other: &crate::ffi::HandleTCollectionHExtendedString,
-    ) {
-        crate::ffi::TCollection_HExtendedString::assign_cat(self, other)
-    }
-
     /// Returns a string appending <other>  to me.
     pub fn cat(
         &self,
         other: &crate::ffi::HandleTCollectionHExtendedString,
-    ) -> crate::ffi::HandleTCollectionHExtendedString {
-        crate::ffi::TCollection_HExtendedString::cat(self, other)
-    }
-
-    /// Substitutes all the characters equal to aChar by NewChar
-    /// in the string <me>.
-    pub fn change_all(
-        self: std::pin::Pin<&mut Self>,
-        aChar: crate::ffi::Standard_ExtCharacter,
-        NewChar: crate::ffi::Standard_ExtCharacter,
-    ) {
-        crate::ffi::TCollection_HExtendedString::change_all(self, aChar, NewChar)
-    }
-
-    /// Removes all characters contained in <me>.
-    /// This produces an empty ExtendedString.
-    pub fn clear(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TCollection_HExtendedString::clear(self)
-    }
-
-    /// Returns True if the string <me> contains zero character
-    pub fn is_empty(&self) -> bool {
-        crate::ffi::TCollection_HExtendedString::is_empty(self)
-    }
-
-    /// Insert a ExtCharacter at position <where>.
-    /// Example:
-    /// aString contains "hy not ?"
-    /// aString.Insert(1,'W'); gives "Why not ?"
-    /// aString contains "Wh"
-    /// aString.Insert(3,'y'); gives "Why"
-    /// aString contains "Way"
-    /// aString.Insert(2,'h'); gives "Why"
-    pub fn insert(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: crate::ffi::Standard_ExtCharacter,
-    ) {
-        crate::ffi::TCollection_HExtendedString::insert(self, where_, what)
-    }
-
-    /// Insert a HExtendedString at position <where>.
-    pub fn insert_int_handlehextendedstring(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: &crate::ffi::HandleTCollectionHExtendedString,
-    ) {
-        crate::ffi::TCollection_HExtendedString::insert(self, where_, what)
-    }
-
-    /// Returns TRUE if <me> is less than <other>.
-    pub fn is_less(&self, other: &crate::ffi::HandleTCollectionHExtendedString) -> bool {
-        crate::ffi::TCollection_HExtendedString::is_less(self, other)
-    }
-
-    /// Returns TRUE if <me> is greater than <other>.
-    pub fn is_greater(&self, other: &crate::ffi::HandleTCollectionHExtendedString) -> bool {
-        crate::ffi::TCollection_HExtendedString::is_greater(self, other)
-    }
-
-    /// Returns True if the string contains only "Ascii Range"  characters
-    pub fn is_ascii(&self) -> bool {
-        crate::ffi::TCollection_HExtendedString::is_ascii(self)
-    }
-
-    /// Returns number of characters in <me>.
-    /// This is the same functionality as 'strlen' in C.
-    pub fn length(&self) -> i32 {
-        crate::ffi::TCollection_HExtendedString::length(self)
-    }
-
-    /// Erases <ahowmany> characters from position <where>,
-    /// <where> included.
-    /// Example:
-    /// aString contains "Hello"
-    /// aString.Erase(2,2) erases 2 characters from position 1
-    /// This gives "Hlo".
-    pub fn remove(self: std::pin::Pin<&mut Self>, where_: i32, ahowmany: i32) {
-        crate::ffi::TCollection_HExtendedString::remove(self, where_, ahowmany)
-    }
-
-    /// Removes every <what> characters from <me>.
-    pub fn remove_all(self: std::pin::Pin<&mut Self>, what: crate::ffi::Standard_ExtCharacter) {
-        crate::ffi::TCollection_HExtendedString::remove_all(self, what)
-    }
-
-    /// Replaces one character in the string at position <where>.
-    /// If <where> is less than zero or greater than the length of <me>
-    /// an exception is raised.
-    /// Example:
-    /// aString contains "Garbake"
-    /// astring.Replace(6,'g')  gives <me> = "Garbage"
-    pub fn set_value(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: crate::ffi::Standard_ExtCharacter,
-    ) {
-        crate::ffi::TCollection_HExtendedString::set_value(self, where_, what)
-    }
-
-    /// Replaces a part of <me> by another string.
-    pub fn set_value_int_handlehextendedstring(
-        self: std::pin::Pin<&mut Self>,
-        where_: i32,
-        what: &crate::ffi::HandleTCollectionHExtendedString,
-    ) {
-        crate::ffi::TCollection_HExtendedString::set_value(self, where_, what)
+    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHExtendedString> {
+        crate::ffi::TCollection_HExtendedString_cat(self, other)
     }
 
     /// Splits a ExtendedString into two sub-strings.
@@ -1777,75 +649,12 @@ impl HExtendedString {
     pub fn split(
         self: std::pin::Pin<&mut Self>,
         where_: i32,
-    ) -> crate::ffi::HandleTCollectionHExtendedString {
-        crate::ffi::TCollection_HExtendedString::split(self, where_)
+    ) -> cxx::UniquePtr<crate::ffi::HandleTCollectionHExtendedString> {
+        crate::ffi::TCollection_HExtendedString_split(self, where_)
     }
 
-    /// Searches a String in <me> from the beginning
-    /// and returns position of first item <what> matching.
-    /// It returns -1 if not found.
-    pub fn search(&self, what: &crate::ffi::HandleTCollectionHExtendedString) -> i32 {
-        crate::ffi::TCollection_HExtendedString::search(self, what)
-    }
-
-    /// Searches a ExtendedString in another ExtendedString from the end
-    /// and returns position of first item <what> matching.
-    /// It returns -1 if not found.
-    pub fn search_from_end(&self, what: &crate::ffi::HandleTCollectionHExtendedString) -> i32 {
-        crate::ffi::TCollection_HExtendedString::search_from_end(self, what)
-    }
-
-    /// Returns pointer to ExtString
-    pub fn to_ext_string(&self) -> crate::ffi::Standard_ExtString {
-        crate::ffi::TCollection_HExtendedString::to_ext_string(self)
-    }
-
-    /// Extracts <whichone> token from <me>.
-    /// By default, the <separators> is set to space and tabulation.
-    /// By default, the token extracted is the first one (whichone = 1).
-    /// <separators> contains all separators you need.
-    /// If no token indexed by <whichone> is found, it returns an empty String.
-    /// Example:
-    /// aString contains "This is a     message"
-    /// aString.Token()  returns "This"
-    /// aString.Token(" ",4) returns "message"
-    /// aString.Token(" ",2) returns "is"
-    /// aString.Token(" ",9) returns ""
-    /// Other separators than space character and tabulation are allowed
-    /// aString contains "1234; test:message   , value"
-    /// aString.Token("; :,",4) returns "value"
-    /// aString.Token("; :,",2) returns "test"
-    pub fn token(
-        &self,
-        separators: crate::ffi::Standard_ExtString,
-        whichone: i32,
-    ) -> crate::ffi::HandleTCollectionHExtendedString {
-        crate::ffi::TCollection_HExtendedString::token(self, separators, whichone)
-    }
-
-    /// Truncates <me> to <ahowmany> characters.
-    /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
-    pub fn trunc(self: std::pin::Pin<&mut Self>, ahowmany: i32) {
-        crate::ffi::TCollection_HExtendedString::trunc(self, ahowmany)
-    }
-
-    /// Returns ExtCharacter at position <where> in <me>.
-    /// If <where> is less than zero or greater than the length of
-    /// <me>, an exception is raised.
-    /// Example:
-    /// aString contains "Hello"
-    /// aString.Value(2) returns 'e'
-    pub fn value(&self, where_: i32) -> crate::ffi::Standard_ExtCharacter {
-        crate::ffi::TCollection_HExtendedString::value(self, where_)
-    }
-
-    /// Returns the field myString
-    pub fn string(&self) -> &crate::ffi::TCollection_ExtendedString {
-        crate::ffi::TCollection_HExtendedString::string(self)
-    }
-
-    pub fn is_same_state(&self, other: &crate::ffi::HandleTCollectionHExtendedString) -> bool {
-        crate::ffi::TCollection_HExtendedString::is_same_state(self, other)
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::TCollection_HExtendedString_get_type_descriptor()
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)

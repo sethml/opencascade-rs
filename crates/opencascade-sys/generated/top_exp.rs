@@ -23,60 +23,36 @@
 pub use crate::ffi::TopExp;
 
 impl TopExp {
-    /// Stores in the map <M> all  the sub-shapes of <S>.
-    /// - If cumOri is true, the function composes all
-    /// sub-shapes with the orientation of S.
-    /// - If cumLoc is true, the function multiplies all
-    /// sub-shapes by the location of S, i.e. it applies to
-    /// each sub-shape the transformation that is associated with S.
-    pub fn map_shapes(
-        S: &crate::ffi::TopoDS_Shape,
-        M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedMapOfShape>,
-        cumOri: bool,
-        cumLoc: bool,
-    ) {
-        crate::ffi::TopExp::map_shapes(S, M, cumOri, cumLoc)
-    }
-
-    /// Stores in the map <M> all  the sub-shapes of <S>.
-    /// - If cumOri is true, the function composes all
-    /// sub-shapes with the orientation of S.
-    /// - If cumLoc is true, the function multiplies all
-    /// sub-shapes by the location of S, i.e. it applies to
-    /// each sub-shape the transformation that is associated with S.
-    pub fn map_shapes_shape_mapofshape_bool2(
-        S: &crate::ffi::TopoDS_Shape,
-        M: std::pin::Pin<&mut crate::ffi::TopTools_MapOfShape>,
-        cumOri: bool,
-        cumLoc: bool,
-    ) {
-        crate::ffi::TopExp::map_shapes(S, M, cumOri, cumLoc)
-    }
-
     /// Returns the Vertex of orientation FORWARD in E. If
     /// there is none returns a Null Shape.
     /// CumOri = True : taking account the edge orientation
-    pub fn first_vertex(E: &crate::ffi::TopoDS_Edge, CumOri: bool) -> crate::ffi::TopoDS_Vertex {
-        crate::ffi::TopExp::first_vertex(E, CumOri)
+    pub fn first_vertex(
+        E: &crate::ffi::TopoDS_Edge,
+        CumOri: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::TopExp_first_vertex(E, CumOri)
     }
 
     /// Returns the Vertex of orientation REVERSED in E. If
     /// there is none returns a Null Shape.
     /// CumOri = True : taking account the edge orientation
-    pub fn last_vertex(E: &crate::ffi::TopoDS_Edge, CumOri: bool) -> crate::ffi::TopoDS_Vertex {
-        crate::ffi::TopExp::last_vertex(E, CumOri)
+    pub fn last_vertex(
+        E: &crate::ffi::TopoDS_Edge,
+        CumOri: bool,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::TopExp_last_vertex(E, CumOri)
     }
 
     /// Returns in Vfirst, Vlast the  FORWARD and REVERSED
     /// vertices of the edge <E>. May be null shapes.
     /// CumOri = True : taking account the edge orientation
-    pub fn vertices(
+    pub fn vertices_edge_vertex2_bool(
         E: &crate::ffi::TopoDS_Edge,
         Vfirst: std::pin::Pin<&mut crate::ffi::TopoDS_Vertex>,
         Vlast: std::pin::Pin<&mut crate::ffi::TopoDS_Vertex>,
         CumOri: bool,
     ) {
-        crate::ffi::TopExp::vertices(E, Vfirst, Vlast, CumOri)
+        crate::ffi::TopExp_vertices_edge_vertex2_bool(E, Vfirst, Vlast, CumOri)
     }
 
     /// Returns  in  Vfirst,  Vlast   the first   and last
@@ -90,7 +66,7 @@ impl TopExp {
         Vfirst: std::pin::Pin<&mut crate::ffi::TopoDS_Vertex>,
         Vlast: std::pin::Pin<&mut crate::ffi::TopoDS_Vertex>,
     ) {
-        crate::ffi::TopExp::vertices(W, Vfirst, Vlast)
+        crate::ffi::TopExp_vertices_wire_vertex2(W, Vfirst, Vlast)
     }
 
     /// Finds   the  vertex <V> common   to  the two edges
@@ -102,7 +78,7 @@ impl TopExp {
         E2: &crate::ffi::TopoDS_Edge,
         V: std::pin::Pin<&mut crate::ffi::TopoDS_Vertex>,
     ) -> bool {
-        crate::ffi::TopExp::common_vertex(E1, E2, V)
+        crate::ffi::TopExp_common_vertex(E1, E2, V)
     }
 }
 
@@ -173,53 +149,5 @@ impl Explorer {
     /// Creates an empty explorer, becomes useful after Init.
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::TopExp_Explorer_ctor()
-    }
-
-    /// Returns True if there are more shapes in the exploration.
-    pub fn more(&self) -> bool {
-        crate::ffi::TopExp_Explorer::more(self)
-    }
-
-    /// Moves to the next Shape in the exploration.
-    /// Exceptions
-    /// Standard_NoMoreObject if there are no more shapes to explore.
-    pub fn next(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TopExp_Explorer::next(self)
-    }
-
-    /// Returns the current shape in the exploration.
-    /// Exceptions
-    /// Standard_NoSuchObject if this explorer has no more shapes to explore.
-    pub fn value(&self) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::TopExp_Explorer::value(self)
-    }
-
-    /// Returns the current shape in the exploration.
-    /// Exceptions
-    /// Standard_NoSuchObject if this explorer has no more shapes to explore.
-    pub fn current(&self) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::TopExp_Explorer::current(self)
-    }
-
-    /// Reinitialize the exploration with the original arguments.
-    pub fn re_init(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TopExp_Explorer::re_init(self)
-    }
-
-    /// Return explored shape.
-    pub fn explored_shape(&self) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::TopExp_Explorer::explored_shape(self)
-    }
-
-    /// Returns the current depth of the exploration. 0 is
-    /// the shape to explore itself.
-    pub fn depth(&self) -> i32 {
-        crate::ffi::TopExp_Explorer::depth(self)
-    }
-
-    /// Clears the content of the explorer. It will return
-    /// False on More().
-    pub fn clear(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TopExp_Explorer::clear(self)
     }
 }

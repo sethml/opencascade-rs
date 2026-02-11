@@ -1,6 +1,6 @@
 use crate::primitives::Shape;
 use cxx::UniquePtr;
-use opencascade_sys::{b_rep_algo_api, top_tools};
+use opencascade_sys::b_rep_algo_api;
 
 /// A wrapper around the `BRepAlgoAPI_Section` class.
 pub struct Section {
@@ -16,28 +16,19 @@ impl Section {
     }
 
     /// Get the edges of the resulting intersection.
-    pub fn section_edges(mut self) -> Vec<Shape> {
-        let builder_algo = self.inner.pin_mut().as_builder_algo_mut();
-        let edges = builder_algo.section_edges();
-        // Convert cross-module type reference to the actual list type
-        let list_of_shape: &top_tools::ListOfShape = unsafe { std::mem::transmute(edges) };
-        list_of_shape_to_vec(list_of_shape)
+    ///
+    /// NOTE: Currently unimplemented - requires SectionEdges() binding which returns
+    /// TopTools_ListOfShape (a collection type not yet supported in unified FFI).
+    pub fn section_edges(self) -> Vec<Shape> {
+        // TODO: Bind BRepAlgoAPI_BooleanOperation::SectionEdges() and implement
+        // collection iteration for TopTools_ListOfShape
+        unimplemented!("section_edges requires SectionEdges() binding for TopTools_ListOfShape")
     }
 }
 
 /// Creates a `Section` from two shapes, performs the intersection, and returns the resulting edges.
 pub fn edges(target: &Shape, tool: &Shape) -> Vec<Shape> {
     Section::new(target, tool).section_edges()
-}
-
-fn list_of_shape_to_vec(list: &top_tools::ListOfShape) -> Vec<Shape> {
-    let mut shapes = Vec::new();
-    for shape in list.iter() {
-        if let Some(shape_ref) = shape.as_ref() {
-            shapes.push(Shape::from_shape(shape_ref));
-        }
-    }
-    shapes
 }
 
 // NOTE: Tests are disabled because section_edges() is blocked

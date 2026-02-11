@@ -7,6 +7,77 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From NCollection_BaseAllocator.hxx
+// ========================
+
+///
+/// Purpose:     Basic class for memory allocation wizards.
+/// Defines  the  interface  for devising  different  allocators
+/// firstly to be used  by collections of NCollection, though it
+/// it is not  deferred. It allocates/frees  the memory  through
+/// Standard procedures, thus it is  unnecessary (and  sometimes
+/// injurious) to have  more than one such  allocator.  To avoid
+/// creation  of multiple  objects the  constructors  were  maid
+/// inaccessible.  To  create the  BaseAllocator use  the method
+/// CommonBaseAllocator.
+/// Note that this object is managed by Handle.
+pub use crate::ffi::NCollection_BaseAllocator as BaseAllocator;
+
+impl BaseAllocator {
+    /// CommonBaseAllocator
+    /// This method is designed to have the only one BaseAllocator (to avoid
+    /// useless copying of collections). However one can use operator new to
+    /// create more BaseAllocators, but it is injurious.
+    pub fn common_base_allocator() -> &'static crate::ffi::HandleNCollectionBaseAllocator {
+        crate::ffi::NCollection_BaseAllocator_common_base_allocator()
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::NCollection_BaseAllocator_get_type_descriptor()
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleNCollectionBaseAllocator> {
+        crate::ffi::NCollection_BaseAllocator_to_handle(obj)
+    }
+}
+
+// ========================
+// From NCollection_BaseList.hxx
+// ========================
+
+pub use crate::ffi::NCollection_BaseList as BaseList;
+
+// ========================
+// From NCollection_BasePointerVector.hxx
+// ========================
+
+/// Simplified class for vector of pointers of void.
+/// Offers basic functionality to scalable inserts,
+/// resizes and erasing last.
+///
+/// Control of processing values of pointers out-of-scope
+/// and should be controlled externally.
+/// Especially, copy operation should post-process elements of pointers to make deep copy.
+pub use crate::ffi::NCollection_BasePointerVector as BasePointerVector;
+
+impl BasePointerVector {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::NCollection_BasePointerVector_ctor()
+    }
+
+    /// Copy data from another vector
+    pub fn new_basepointervector(
+        theOther: &crate::ffi::NCollection_BasePointerVector,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::NCollection_BasePointerVector_ctor_basepointervector(theOther)
+    }
+}
+
+// ========================
 // From NCollection_Buffer.hxx
 // ========================
 
@@ -14,25 +85,8 @@
 pub use crate::ffi::NCollection_Buffer as Buffer;
 
 impl Buffer {
-    /// @return true if buffer is not allocated
-    pub fn is_empty(&self) -> bool {
-        crate::ffi::NCollection_Buffer::is_empty(self)
-    }
-
-    /// Return buffer length in bytes.
-    pub fn size(&self) -> usize {
-        crate::ffi::NCollection_Buffer::size(self)
-    }
-
-    /// Allocate the buffer.
-    /// @param theSize buffer length in bytes
-    pub fn allocate(self: std::pin::Pin<&mut Self>, theSize: usize) -> bool {
-        crate::ffi::NCollection_Buffer::allocate(self, theSize)
-    }
-
-    /// De-allocate buffer.
-    pub fn free(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::NCollection_Buffer::free(self)
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::NCollection_Buffer_get_type_descriptor()
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -40,5 +94,53 @@ impl Buffer {
         obj: cxx::UniquePtr<Self>,
     ) -> cxx::UniquePtr<crate::ffi::HandleNCollectionBuffer> {
         crate::ffi::NCollection_Buffer_to_handle(obj)
+    }
+}
+
+// ========================
+// From NCollection_IncAllocator.hxx
+// ========================
+
+///
+/// Class NCollection_IncAllocator - incremental memory  allocator. This class
+/// allocates  memory  on  request  returning  the  pointer  to  an  allocated
+/// block. This memory is never returned  to the system until the allocator is
+/// destroyed.
+///
+/// By comparison with  the standard new() and malloc()  calls, this method is
+/// faster and consumes very small additional memory to maintain the heap.
+///
+/// All pointers  returned by Allocate() are  aligned to the size  of the data
+/// type "aligned_t". To  modify the size of memory  blocks requested from the
+/// OS,  use the parameter  of the  constructor (measured  in bytes);  if this
+/// parameter is  smaller than  25 bytes on  32bit or  49 bytes on  64bit, the
+/// block size will be the default 12 kbytes.
+///
+/// It is not recommended  to use memory blocks  larger than 16KB  on  Windows
+/// platform  for the repeated operations  because  Low Fragmentation Heap  is
+/// not going to be  used  for  these  allocations  which  may lead  to memory
+/// fragmentation and the general performance slow down.
+///
+/// Note that this allocator is most suitable for single-threaded algorithms
+/// (consider creating dedicated allocators per working thread),
+/// and thread-safety of allocations is DISABLED by default (see SetThreadSafe()).
+pub use crate::ffi::NCollection_IncAllocator as IncAllocator;
+
+impl IncAllocator {
+    /// Constructor.
+    /// Note that this constructor does NOT setup mutex for using allocator concurrently from
+    /// different threads, see SetThreadSafe() method.
+    ///
+    /// The default size of the memory blocks is 12KB.
+    /// It is not recommended to use memory blocks larger than 16KB on Windows
+    /// platform for the repeated operations (and thus multiple allocations)
+    /// because Low Fragmentation Heap is not going to be used for these allocations,
+    /// leading to memory fragmentation and eventual performance slow down.
+    pub fn new_size(theBlockSize: usize) -> cxx::UniquePtr<Self> {
+        crate::ffi::NCollection_IncAllocator_ctor_size(theBlockSize)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::NCollection_IncAllocator_get_type_descriptor()
     }
 }

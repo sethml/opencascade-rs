@@ -96,13 +96,60 @@ impl FreeBounds {
         )
     }
 
-    /// Returns compound of closed wires out of free edges.
-    pub fn get_closed_wires(&self) -> &crate::ffi::TopoDS_Compound {
-        crate::ffi::ShapeAnalysis_FreeBounds::get_closed_wires(self)
+    /// Builds sequence of <wires> out of sequence of not sorted
+    /// <edges>.
+    /// Tries to build wires of maximum length. Building a wire is
+    /// stopped when no edges can be connected to it at its head or
+    /// at its tail.
+    ///
+    /// Orientation of the edge can change when connecting.
+    /// If <shared> is True connection is performed only when
+    /// adjacent edges share the same vertex.
+    /// If <shared> is False connection is performed only when
+    /// ends of adjacent edges are at distance less than <toler>.
+    pub fn connect_edges_to_wires(
+        edges: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
+        toler: f64,
+        shared: bool,
+        wires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
+    ) {
+        crate::ffi::ShapeAnalysis_FreeBounds_connect_edges_to_wires(edges, toler, shared, wires)
     }
 
-    /// Returns compound of open wires out of free edges.
-    pub fn get_open_wires(&self) -> &crate::ffi::TopoDS_Compound {
-        crate::ffi::ShapeAnalysis_FreeBounds::get_open_wires(self)
+    pub fn connect_wires_to_wires(
+        iwires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
+        toler: f64,
+        shared: bool,
+        owires: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
+    ) {
+        crate::ffi::ShapeAnalysis_FreeBounds_connect_wires_to_wires(iwires, toler, shared, owires)
+    }
+
+    /// Extracts closed sub-wires out of <wires> and adds them
+    /// to <closed>, open wires remained after extraction are put
+    /// into <open>.
+    /// If <shared> is True extraction is performed only when
+    /// edges share the same vertex.
+    /// If <shared> is False connection is performed only when
+    /// ends of the edges are at distance less than <toler>.
+    pub fn split_wires(
+        wires: &crate::ffi::HandleTopToolsHSequenceOfShape,
+        toler: f64,
+        shared: bool,
+        closed: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
+        open: std::pin::Pin<&mut crate::ffi::HandleTopToolsHSequenceOfShape>,
+    ) {
+        crate::ffi::ShapeAnalysis_FreeBounds_split_wires(wires, toler, shared, closed, open)
+    }
+
+    /// Dispatches sequence of <wires> into two compounds
+    /// <closed> for closed wires and <open> for open wires.
+    /// If a compound is not empty wires are added into it.
+    pub fn dispatch_wires(
+        wires: &crate::ffi::HandleTopToolsHSequenceOfShape,
+        closed: std::pin::Pin<&mut crate::ffi::TopoDS_Compound>,
+        open: std::pin::Pin<&mut crate::ffi::TopoDS_Compound>,
+    ) {
+        crate::ffi::ShapeAnalysis_FreeBounds_dispatch_wires(wires, closed, open)
     }
 }

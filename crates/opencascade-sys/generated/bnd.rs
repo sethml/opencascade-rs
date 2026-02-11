@@ -7,6 +7,55 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From Bnd_B2d.hxx
+// ========================
+
+pub use crate::ffi::Bnd_B2d as B2d;
+
+impl B2d {
+    /// Empty constructor.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_B2d_ctor()
+    }
+
+    /// Constructor.
+    pub fn new_xy2(
+        theCenter: &crate::ffi::gp_XY,
+        theHSize: &crate::ffi::gp_XY,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_B2d_ctor_xy2(theCenter, theHSize)
+    }
+
+    /// Query a box corner: (Center - HSize). You must make sure that
+    /// the box is NOT VOID (see IsVoid()), otherwise the method returns
+    /// irrelevant result.
+    pub fn corner_min(&self) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::Bnd_B2d_corner_min(self)
+    }
+
+    /// Query a box corner: (Center + HSize). You must make sure that
+    /// the box is NOT VOID (see IsVoid()), otherwise the method returns
+    /// irrelevant result.
+    pub fn corner_max(&self) -> cxx::UniquePtr<crate::ffi::gp_XY> {
+        crate::ffi::Bnd_B2d_corner_max(self)
+    }
+
+    /// Transform the bounding box with the given transformation.
+    /// The resulting box will be larger if theTrsf contains rotation.
+    pub fn transformed(
+        &self,
+        theTrsf: &crate::ffi::gp_Trsf2d,
+    ) -> cxx::UniquePtr<crate::ffi::Bnd_B2d> {
+        crate::ffi::Bnd_B2d_transformed(self, theTrsf)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_B2d_to_owned(self)
+    }
+}
+
+// ========================
 // From Bnd_Box.hxx
 // ========================
 
@@ -55,103 +104,13 @@ impl Box {
         crate::ffi::Bnd_Box_ctor_pnt2(theMin, theMax)
     }
 
-    /// Sets this bounding box so that it covers the whole of 3D space.
-    /// It is infinitely long in all directions.
-    pub fn set_whole(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::Bnd_Box::set_whole(self)
-    }
-
-    /// Sets this bounding box so that it is empty. All points are outside a void box.
-    pub fn set_void(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::Bnd_Box::set_void(self)
-    }
-
-    /// Sets this bounding box so that it bounds
-    /// -   the point P. This involves first setting this bounding box
-    /// to be void and then adding the point P.
-    pub fn set(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
-        crate::ffi::Bnd_Box::set(self, P)
-    }
-
-    /// Sets this bounding box so that it bounds
-    /// the half-line defined by point P and direction D, i.e. all
-    /// points M defined by M=P+u*D, where u is greater than
-    /// or equal to 0, are inside the bounding volume. This
-    /// involves first setting this box to be void and then adding   the half-line.
-    pub fn set_pnt_dir(
-        self: std::pin::Pin<&mut Self>,
-        P: &crate::ffi::gp_Pnt,
-        D: &crate::ffi::gp_Dir,
-    ) {
-        crate::ffi::Bnd_Box::set(self, P, D)
-    }
-
-    /// Enlarges this bounding box, if required, so that it
-    /// contains at least:
-    /// -   interval [ aXmin,aXmax ] in the "X Direction",
-    /// -   interval [ aYmin,aYmax ] in the "Y Direction",
-    /// -   interval [ aZmin,aZmax ] in the "Z Direction";
-    pub fn update(
-        self: std::pin::Pin<&mut Self>,
-        aXmin: f64,
-        aYmin: f64,
-        aZmin: f64,
-        aXmax: f64,
-        aYmax: f64,
-        aZmax: f64,
-    ) {
-        crate::ffi::Bnd_Box::update(self, aXmin, aYmin, aZmin, aXmax, aYmax, aZmax)
-    }
-
-    /// Adds a point of coordinates (X,Y,Z) to this bounding box.
-    pub fn update_real3(self: std::pin::Pin<&mut Self>, X: f64, Y: f64, Z: f64) {
-        crate::ffi::Bnd_Box::update(self, X, Y, Z)
-    }
-
-    /// Returns the gap of this bounding box.
-    pub fn get_gap(&self) -> f64 {
-        crate::ffi::Bnd_Box::get_gap(self)
-    }
-
-    /// Set the gap of this bounding box to abs(Tol).
-    pub fn set_gap(self: std::pin::Pin<&mut Self>, Tol: f64) {
-        crate::ffi::Bnd_Box::set_gap(self, Tol)
-    }
-
-    /// Enlarges the      box    with    a   tolerance   value.
-    /// (minvalues-Abs(<tol>) and maxvalues+Abs(<tol>))
-    /// This means that the minimum values of its X, Y and Z
-    /// intervals of definition, when they are finite, are reduced by
-    /// the absolute value of Tol, while the maximum values are
-    /// increased by the same amount.
-    pub fn enlarge(self: std::pin::Pin<&mut Self>, Tol: f64) {
-        crate::ffi::Bnd_Box::enlarge(self, Tol)
-    }
-
-    /// Returns the bounds of this bounding box. The gap is included.
-    /// If this bounding box is infinite (i.e. "open"), returned values
-    /// may be equal to +/- Precision::Infinite().
-    /// Standard_ConstructionError exception will be thrown if the box is void.
-    /// if IsVoid()
-    pub fn get(
-        &self,
-        theXmin: std::pin::Pin<&mut f64>,
-        theYmin: std::pin::Pin<&mut f64>,
-        theZmin: std::pin::Pin<&mut f64>,
-        theXmax: std::pin::Pin<&mut f64>,
-        theYmax: std::pin::Pin<&mut f64>,
-        theZmax: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::Bnd_Box::get(self, theXmin, theYmin, theZmin, theXmax, theYmax, theZmax)
-    }
-
     /// Returns the lower corner of this bounding box. The gap is included.
     /// If this bounding box is infinite (i.e. "open"), returned values
     /// may be equal to +/- Precision::Infinite().
     /// Standard_ConstructionError exception will be thrown if the box is void.
     /// if IsVoid()
-    pub fn corner_min(&self) -> crate::ffi::gp_Pnt {
-        crate::ffi::Bnd_Box::corner_min(self)
+    pub fn corner_min(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Bnd_Box_corner_min(self)
     }
 
     /// Returns the upper corner of this bounding box. The gap is included.
@@ -159,110 +118,8 @@ impl Box {
     /// may be equal to +/- Precision::Infinite().
     /// Standard_ConstructionError exception will be thrown if the box is void.
     /// if IsVoid()
-    pub fn corner_max(&self) -> crate::ffi::gp_Pnt {
-        crate::ffi::Bnd_Box::corner_max(self)
-    }
-
-    /// The   Box will be   infinitely   long  in the Xmin
-    /// direction.
-    pub fn open_xmin(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::Bnd_Box::open_xmin(self)
-    }
-
-    /// The   Box will be   infinitely   long  in the Xmax
-    /// direction.
-    pub fn open_xmax(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::Bnd_Box::open_xmax(self)
-    }
-
-    /// The   Box will be   infinitely   long  in the Ymin
-    /// direction.
-    pub fn open_ymin(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::Bnd_Box::open_ymin(self)
-    }
-
-    /// The   Box will be   infinitely   long  in the Ymax
-    /// direction.
-    pub fn open_ymax(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::Bnd_Box::open_ymax(self)
-    }
-
-    /// The   Box will be   infinitely   long  in the Zmin
-    /// direction.
-    pub fn open_zmin(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::Bnd_Box::open_zmin(self)
-    }
-
-    /// The   Box will be   infinitely   long  in the Zmax
-    /// direction.
-    pub fn open_zmax(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::Bnd_Box::open_zmax(self)
-    }
-
-    /// Returns true if this bounding box has at least one open direction.
-    pub fn is_open(&self) -> bool {
-        crate::ffi::Bnd_Box::is_open(self)
-    }
-
-    /// Returns true if this bounding box is open in the  Xmin direction.
-    pub fn is_open_xmin(&self) -> bool {
-        crate::ffi::Bnd_Box::is_open_xmin(self)
-    }
-
-    /// Returns true if this bounding box is open in the  Xmax direction.
-    pub fn is_open_xmax(&self) -> bool {
-        crate::ffi::Bnd_Box::is_open_xmax(self)
-    }
-
-    /// Returns true if this bounding box is open in the  Ymix direction.
-    pub fn is_open_ymin(&self) -> bool {
-        crate::ffi::Bnd_Box::is_open_ymin(self)
-    }
-
-    /// Returns true if this bounding box is open in the  Ymax direction.
-    pub fn is_open_ymax(&self) -> bool {
-        crate::ffi::Bnd_Box::is_open_ymax(self)
-    }
-
-    /// Returns true if this bounding box is open in the  Zmin direction.
-    pub fn is_open_zmin(&self) -> bool {
-        crate::ffi::Bnd_Box::is_open_zmin(self)
-    }
-
-    /// Returns true if this bounding box is open in the  Zmax  direction.
-    pub fn is_open_zmax(&self) -> bool {
-        crate::ffi::Bnd_Box::is_open_zmax(self)
-    }
-
-    /// Returns true if this bounding box is infinite in all 6 directions (WholeSpace flag).
-    pub fn is_whole(&self) -> bool {
-        crate::ffi::Bnd_Box::is_whole(self)
-    }
-
-    /// Returns true if this bounding box is empty (Void flag).
-    pub fn is_void(&self) -> bool {
-        crate::ffi::Bnd_Box::is_void(self)
-    }
-
-    /// true if xmax-xmin < tol.
-    pub fn is_x_thin(&self, tol: f64) -> bool {
-        crate::ffi::Bnd_Box::is_x_thin(self, tol)
-    }
-
-    /// true if ymax-ymin < tol.
-    pub fn is_y_thin(&self, tol: f64) -> bool {
-        crate::ffi::Bnd_Box::is_y_thin(self, tol)
-    }
-
-    /// true if zmax-zmin < tol.
-    pub fn is_z_thin(&self, tol: f64) -> bool {
-        crate::ffi::Bnd_Box::is_z_thin(self, tol)
-    }
-
-    /// Returns true if IsXThin, IsYThin and IsZThin are all true,
-    /// i.e. if the box is thin in all three dimensions.
-    pub fn is_thin(&self, tol: f64) -> bool {
-        crate::ffi::Bnd_Box::is_thin(self, tol)
+    pub fn corner_max(&self) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
+        crate::ffi::Bnd_Box_corner_max(self)
     }
 
     /// Returns a bounding box which is the result of applying the
@@ -271,115 +128,175 @@ impl Box {
     /// Applying a geometric transformation (for example, a
     /// rotation) to a bounding box generally increases its
     /// dimensions. This is not optimal for algorithms which use it.
-    pub fn transformed(&self, T: &crate::ffi::gp_Trsf) -> crate::ffi::Bnd_Box {
-        crate::ffi::Bnd_Box::transformed(self, T)
-    }
-
-    /// Adds the box <Other> to <me>.
-    pub fn add(self: std::pin::Pin<&mut Self>, Other: &crate::ffi::Bnd_Box) {
-        crate::ffi::Bnd_Box::add(self, Other)
-    }
-
-    /// Adds a Pnt to the box.
-    pub fn add_pnt(self: std::pin::Pin<&mut Self>, P: &crate::ffi::gp_Pnt) {
-        crate::ffi::Bnd_Box::add(self, P)
-    }
-
-    /// Extends  <me> from the Pnt <P> in the direction <D>.
-    pub fn add_pnt_dir(
-        self: std::pin::Pin<&mut Self>,
-        P: &crate::ffi::gp_Pnt,
-        D: &crate::ffi::gp_Dir,
-    ) {
-        crate::ffi::Bnd_Box::add(self, P, D)
-    }
-
-    /// Extends the Box  in the given Direction, i.e. adds
-    /// an  half-line. The   box  may become   infinite in
-    /// 1,2 or 3 directions.
-    pub fn add_dir(self: std::pin::Pin<&mut Self>, D: &crate::ffi::gp_Dir) {
-        crate::ffi::Bnd_Box::add(self, D)
-    }
-
-    /// Returns True if the Pnt is out the box.
-    pub fn is_out(&self, P: &crate::ffi::gp_Pnt) -> bool {
-        crate::ffi::Bnd_Box::is_out(self, P)
-    }
-
-    /// Returns False if the line intersects the box.
-    pub fn is_out_lin(&self, L: &crate::ffi::gp_Lin) -> bool {
-        crate::ffi::Bnd_Box::is_out(self, L)
-    }
-
-    /// Returns False if the plane intersects the box.
-    pub fn is_out_pln(&self, P: &crate::ffi::gp_Pln) -> bool {
-        crate::ffi::Bnd_Box::is_out(self, P)
-    }
-
-    /// Returns False if the <Box> intersects or is inside <me>.
-    pub fn is_out_box(&self, Other: &crate::ffi::Bnd_Box) -> bool {
-        crate::ffi::Bnd_Box::is_out(self, Other)
-    }
-
-    /// Returns False if  the transformed <Box> intersects
-    /// or  is inside <me>.
-    pub fn is_out_box_trsf(&self, Other: &crate::ffi::Bnd_Box, T: &crate::ffi::gp_Trsf) -> bool {
-        crate::ffi::Bnd_Box::is_out(self, Other, T)
-    }
-
-    /// Returns False  if the transformed <Box> intersects
-    /// or  is inside the transformed box <me>.
-    pub fn is_out_trsf_box_trsf(
-        &self,
-        T1: &crate::ffi::gp_Trsf,
-        Other: &crate::ffi::Bnd_Box,
-        T2: &crate::ffi::gp_Trsf,
-    ) -> bool {
-        crate::ffi::Bnd_Box::is_out(self, T1, Other, T2)
-    }
-
-    /// Returns False  if the flat band lying between two parallel
-    /// lines represented by their reference points <P1>, <P2> and
-    /// direction <D> intersects the box.
-    pub fn is_out_pnt2_dir(
-        &self,
-        P1: &crate::ffi::gp_Pnt,
-        P2: &crate::ffi::gp_Pnt,
-        D: &crate::ffi::gp_Dir,
-    ) -> bool {
-        crate::ffi::Bnd_Box::is_out(self, P1, P2, D)
-    }
-
-    /// Computes the minimum distance between two boxes.
-    pub fn distance(&self, Other: &crate::ffi::Bnd_Box) -> f64 {
-        crate::ffi::Bnd_Box::distance(self, Other)
-    }
-
-    pub fn dump(&self) {
-        crate::ffi::Bnd_Box::dump(self)
-    }
-
-    /// Computes the squared diagonal of me.
-    pub fn square_extent(&self) -> f64 {
-        crate::ffi::Bnd_Box::square_extent(self)
+    pub fn transformed(&self, T: &crate::ffi::gp_Trsf) -> cxx::UniquePtr<crate::ffi::Bnd_Box> {
+        crate::ffi::Bnd_Box_transformed(self, T)
     }
 
     /// Returns a finite part of an infinite bounding box (returns self if this is already finite
     /// box). This can be a Void box in case if its sides has been defined as infinite (Open) without
     /// adding any finite points. WARNING! This method relies on Open flags, the infinite points added
     /// using Add() method will be returned as is.
-    pub fn finite_part(&self) -> crate::ffi::Bnd_Box {
-        crate::ffi::Bnd_Box::finite_part(self)
-    }
-
-    /// Returns TRUE if this box has finite part.
-    pub fn has_finite_part(&self) -> bool {
-        crate::ffi::Bnd_Box::has_finite_part(self)
+    pub fn finite_part(&self) -> cxx::UniquePtr<crate::ffi::Bnd_Box> {
+        crate::ffi::Bnd_Box_finite_part(self)
     }
 
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::Bnd_Box_to_owned(self)
+    }
+}
+
+// ========================
+// From Bnd_Box2d.hxx
+// ========================
+
+/// Describes a bounding box in 2D space.
+/// A bounding box is parallel to the axes of the coordinates
+/// system. If it is finite, it is defined by the two intervals:
+/// -   [ Xmin,Xmax ], and
+/// -   [ Ymin,Ymax ].
+/// A bounding box may be infinite (i.e. open) in one or more
+/// directions. It is said to be:
+/// -   OpenXmin if it is infinite on the negative side of the   "X Direction";
+/// -   OpenXmax if it is infinite on the positive side of the   "X Direction";
+/// -   OpenYmin if it is infinite on the negative side of the   "Y Direction";
+/// -   OpenYmax if it is infinite on the positive side of the   "Y Direction";
+/// -   WholeSpace if it is infinite in all four directions. In
+/// this case, any point of the space is inside the box;
+/// -   Void if it is empty. In this case, there is no point included in the box.
+/// A bounding box is defined by four bounds (Xmin, Xmax, Ymin and Ymax) which
+/// limit the bounding box if it is finite, six flags (OpenXmin, OpenXmax, OpenYmin,
+/// OpenYmax, WholeSpace and Void) which describe the bounding box if it is infinite or empty, and
+/// -   a gap, which is included on both sides in any direction when consulting the finite bounds of
+/// the box.
+pub use crate::ffi::Bnd_Box2d as Box2d;
+
+impl Box2d {
+    /// Creates an empty 2D bounding box.
+    /// The constructed box is qualified Void. Its gap is null.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_Box2d_ctor()
+    }
+
+    /// Returns a bounding box which is the result of applying the
+    /// transformation T to this bounding box.
+    /// Warning
+    /// Applying a geometric transformation (for example, a
+    /// rotation) to a bounding box generally increases its
+    /// dimensions. This is not optimal for algorithms which use it.
+    pub fn transformed(&self, T: &crate::ffi::gp_Trsf2d) -> cxx::UniquePtr<crate::ffi::Bnd_Box2d> {
+        crate::ffi::Bnd_Box2d_transformed(self, T)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_Box2d_to_owned(self)
+    }
+}
+
+// ========================
+// From Bnd_HArray1OfBox.hxx
+// ========================
+
+pub use crate::ffi::Bnd_HArray1OfBox as HArray1OfBox;
+
+impl HArray1OfBox {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfBox_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfBox_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_box(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::Bnd_Box,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfBox_ctor_int2_box(theLower, theUpper, theValue)
+    }
+
+    pub fn new_box_int2_bool(
+        theBegin: &crate::ffi::Bnd_Box,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfBox_ctor_box_int2_bool(theBegin, theLower, theUpper, arg3)
+    }
+
+    pub fn new_array1ofbox(theOther: &crate::ffi::Bnd_Array1OfBox) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfBox_ctor_array1ofbox(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Bnd_HArray1OfBox_get_type_descriptor()
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfBox_to_owned(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBndHArray1OfBox> {
+        crate::ffi::Bnd_HArray1OfBox_to_handle(obj)
+    }
+}
+
+// ========================
+// From Bnd_HArray1OfSphere.hxx
+// ========================
+
+pub use crate::ffi::Bnd_HArray1OfSphere as HArray1OfSphere;
+
+impl HArray1OfSphere {
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfSphere_ctor()
+    }
+
+    pub fn new_int2(theLower: i32, theUpper: i32) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfSphere_ctor_int2(theLower, theUpper)
+    }
+
+    pub fn new_int2_sphere(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::Bnd_Sphere,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfSphere_ctor_int2_sphere(theLower, theUpper, theValue)
+    }
+
+    pub fn new_sphere_int2_bool(
+        theBegin: &crate::ffi::Bnd_Sphere,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfSphere_ctor_sphere_int2_bool(theBegin, theLower, theUpper, arg3)
+    }
+
+    pub fn new_array1ofsphere(theOther: &crate::ffi::Bnd_Array1OfSphere) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfSphere_ctor_array1ofsphere(theOther)
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        crate::ffi::Bnd_HArray1OfSphere_get_type_descriptor()
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_HArray1OfSphere_to_owned(self)
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: cxx::UniquePtr<Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBndHArray1OfSphere> {
+        crate::ffi::Bnd_HArray1OfSphere_to_handle(obj)
     }
 }
 
@@ -428,38 +345,6 @@ impl OBB {
         crate::ffi::Bnd_OBB_ctor_box(theBox)
     }
 
-    /// Sets the center of OBB
-    pub fn set_center(self: std::pin::Pin<&mut Self>, theCenter: &crate::ffi::gp_Pnt) {
-        crate::ffi::Bnd_OBB::set_center(self, theCenter)
-    }
-
-    /// Sets the X component of OBB - direction and size
-    pub fn set_x_component(
-        self: std::pin::Pin<&mut Self>,
-        theXDirection: &crate::ffi::gp_Dir,
-        theHXSize: f64,
-    ) {
-        crate::ffi::Bnd_OBB::set_x_component(self, theXDirection, theHXSize)
-    }
-
-    /// Sets the Y component of OBB - direction and size
-    pub fn set_y_component(
-        self: std::pin::Pin<&mut Self>,
-        theYDirection: &crate::ffi::gp_Dir,
-        theHYSize: f64,
-    ) {
-        crate::ffi::Bnd_OBB::set_y_component(self, theYDirection, theHYSize)
-    }
-
-    /// Sets the Z component of OBB - direction and size
-    pub fn set_z_component(
-        self: std::pin::Pin<&mut Self>,
-        theZDirection: &crate::ffi::gp_Dir,
-        theHZSize: f64,
-    ) {
-        crate::ffi::Bnd_OBB::set_z_component(self, theZDirection, theHZSize)
-    }
-
     /// Returns the local coordinates system of this oriented box.
     /// So that applying it to axis-aligned box ((-XHSize, -YHSize, -ZHSize), (XHSize, YHSize,
     /// ZHSize)) will produce this oriented box.
@@ -467,104 +352,42 @@ impl OBB {
     /// gp_Trsf aLoc;
     /// aLoc.SetTransformation (theOBB.Position(), gp::XOY());
     /// @endcode
-    pub fn position(&self) -> crate::ffi::gp_Ax3 {
-        crate::ffi::Bnd_OBB::position(self)
-    }
-
-    /// Returns the center of OBB
-    pub fn center(&self) -> &crate::ffi::gp_XYZ {
-        crate::ffi::Bnd_OBB::center(self)
-    }
-
-    /// Returns the X Direction of OBB
-    pub fn x_direction(&self) -> &crate::ffi::gp_XYZ {
-        crate::ffi::Bnd_OBB::x_direction(self)
-    }
-
-    /// Returns the Y Direction of OBB
-    pub fn y_direction(&self) -> &crate::ffi::gp_XYZ {
-        crate::ffi::Bnd_OBB::y_direction(self)
-    }
-
-    /// Returns the Z Direction of OBB
-    pub fn z_direction(&self) -> &crate::ffi::gp_XYZ {
-        crate::ffi::Bnd_OBB::z_direction(self)
-    }
-
-    /// Returns the X Dimension of OBB
-    pub fn xh_size(&self) -> f64 {
-        crate::ffi::Bnd_OBB::xh_size(self)
-    }
-
-    /// Returns the Y Dimension of OBB
-    pub fn yh_size(&self) -> f64 {
-        crate::ffi::Bnd_OBB::yh_size(self)
-    }
-
-    /// Returns the Z Dimension of OBB
-    pub fn zh_size(&self) -> f64 {
-        crate::ffi::Bnd_OBB::zh_size(self)
-    }
-
-    /// Checks if the box is empty.
-    pub fn is_void(&self) -> bool {
-        crate::ffi::Bnd_OBB::is_void(self)
-    }
-
-    /// Clears this box
-    pub fn set_void(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::Bnd_OBB::set_void(self)
-    }
-
-    /// Sets the flag for axes aligned box
-    pub fn set_aa_box(self: std::pin::Pin<&mut Self>, theFlag: &bool) {
-        crate::ffi::Bnd_OBB::set_aa_box(self, theFlag)
-    }
-
-    /// Returns TRUE if the box is axes aligned
-    pub fn is_aa_box(&self) -> bool {
-        crate::ffi::Bnd_OBB::is_aa_box(self)
-    }
-
-    /// Enlarges the box with the given value
-    pub fn enlarge(self: std::pin::Pin<&mut Self>, theGapAdd: f64) {
-        crate::ffi::Bnd_OBB::enlarge(self, theGapAdd)
-    }
-
-    /// Returns square diagonal of this box
-    pub fn square_extent(&self) -> f64 {
-        crate::ffi::Bnd_OBB::square_extent(self)
-    }
-
-    /// Check if the box do not interfere the other box.
-    pub fn is_out(&self, theOther: &crate::ffi::Bnd_OBB) -> bool {
-        crate::ffi::Bnd_OBB::is_out(self, theOther)
-    }
-
-    /// Check if the point is inside of <this>.
-    pub fn is_out_pnt(&self, theP: &crate::ffi::gp_Pnt) -> bool {
-        crate::ffi::Bnd_OBB::is_out(self, theP)
-    }
-
-    /// Check if the theOther is completely inside *this.
-    pub fn is_completely_inside(&self, theOther: &crate::ffi::Bnd_OBB) -> bool {
-        crate::ffi::Bnd_OBB::is_completely_inside(self, theOther)
-    }
-
-    /// Rebuilds this in order to include all previous objects
-    /// (which it was created from) and theOther.
-    pub fn add(self: std::pin::Pin<&mut Self>, theOther: &crate::ffi::Bnd_OBB) {
-        crate::ffi::Bnd_OBB::add(self, theOther)
-    }
-
-    /// Rebuilds this in order to include all previous objects
-    /// (which it was created from) and theP.
-    pub fn add_pnt(self: std::pin::Pin<&mut Self>, theP: &crate::ffi::gp_Pnt) {
-        crate::ffi::Bnd_OBB::add(self, theP)
+    pub fn position(&self) -> cxx::UniquePtr<crate::ffi::gp_Ax3> {
+        crate::ffi::Bnd_OBB_position(self)
     }
 
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::Bnd_OBB_to_owned(self)
+    }
+}
+
+// ========================
+// From Bnd_Sphere.hxx
+// ========================
+
+/// This class represents a bounding sphere of a geometric entity
+/// (triangle, segment of line or whatever else).
+pub use crate::ffi::Bnd_Sphere as Sphere;
+
+impl Sphere {
+    /// Empty constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_Sphere_ctor()
+    }
+
+    /// Constructor of a definite sphere
+    pub fn new_xyz_real_int2(
+        theCntr: &crate::ffi::gp_XYZ,
+        theRad: f64,
+        theU: i32,
+        theV: i32,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_Sphere_ctor_xyz_real_int2(theCntr, theRad, theU, theV)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::Bnd_Sphere_to_owned(self)
     }
 }

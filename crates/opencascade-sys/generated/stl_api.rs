@@ -21,11 +21,14 @@ impl Writer {
         crate::ffi::StlAPI_Writer_ctor()
     }
 
-    /// Returns the address to the flag defining the mode for writing the file.
-    /// This address may be used to either read or change the flag.
-    /// If the mode returns True (default value) the generated file is an ASCII file.
-    /// If the mode returns False, the generated file is a binary file.
-    pub fn ascii_mode(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut bool> {
-        crate::ffi::StlAPI_Writer::ascii_mode(self)
+    /// Converts a given shape to STL format and writes it to file with a given filename.
+    /// \return the error state.
+    pub fn write(
+        self: std::pin::Pin<&mut Self>,
+        theShape: &crate::ffi::TopoDS_Shape,
+        theFileName: &str,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        crate::ffi::StlAPI_Writer_write(self, theShape, theFileName, theProgress)
     }
 }

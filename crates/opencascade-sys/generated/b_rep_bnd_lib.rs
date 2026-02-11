@@ -38,7 +38,7 @@ impl BRepBndLib {
         B: std::pin::Pin<&mut crate::ffi::Bnd_Box>,
         useTriangulation: bool,
     ) {
-        crate::ffi::BRepBndLib::add(S, B, useTriangulation)
+        crate::ffi::BRepBndLib_add(S, B, useTriangulation)
     }
 
     /// Adds the shape S to the bounding box B.
@@ -53,7 +53,7 @@ impl BRepBndLib {
     /// Add function. So the added part of the resulting bounding
     /// box is closer to the shape S.
     pub fn add_close(S: &crate::ffi::TopoDS_Shape, B: std::pin::Pin<&mut crate::ffi::Bnd_Box>) {
-        crate::ffi::BRepBndLib::add_close(S, B)
+        crate::ffi::BRepBndLib_add_close(S, B)
     }
 
     /// Adds the shape S to the bounding box B.
@@ -71,7 +71,7 @@ impl BRepBndLib {
         useTriangulation: bool,
         useShapeTolerance: bool,
     ) {
-        crate::ffi::BRepBndLib::add_optimal(S, B, useTriangulation, useShapeTolerance)
+        crate::ffi::BRepBndLib_add_optimal(S, B, useTriangulation, useShapeTolerance)
     }
 
     /// Computes the Oriented Bounding box for the shape <theS>.
@@ -93,7 +93,7 @@ impl BRepBndLib {
         theIsOptimal: bool,
         theIsShapeToleranceUsed: bool,
     ) {
-        crate::ffi::BRepBndLib::add_obb(
+        crate::ffi::BRepBndLib_add_obb(
             theS,
             theOBB,
             theIsTriangulationUsed,

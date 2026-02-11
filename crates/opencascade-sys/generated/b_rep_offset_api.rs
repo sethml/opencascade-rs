@@ -24,47 +24,13 @@ impl MakeOffset {
         crate::ffi::BRepOffsetAPI_MakeOffset_ctor()
     }
 
-    /// Set approximation flag
-    /// for conversion input contours into ones consisting of
-    /// 2D circular arcs and 2D linear segments only.
-    pub fn set_approx(self: std::pin::Pin<&mut Self>, ToApprox: bool) {
-        crate::ffi::BRepOffsetAPI_MakeOffset::set_approx(self, ToApprox)
-    }
-
-    /// Initializes the algorithm to construct parallels to the wire Spine.
-    pub fn add_wire(self: std::pin::Pin<&mut Self>, Spine: &crate::ffi::TopoDS_Wire) {
-        crate::ffi::BRepOffsetAPI_MakeOffset::add_wire(self, Spine)
-    }
-
-    /// Computes a parallel to the spine at distance Offset and
-    /// at an altitude Alt from the plane of the spine in relation
-    /// to the normal to the spine.
-    /// Exceptions: StdFail_NotDone if the offset is not built.
-    pub fn perform(self: std::pin::Pin<&mut Self>, Offset: f64, Alt: f64) {
-        crate::ffi::BRepOffsetAPI_MakeOffset::perform(self, Offset, Alt)
-    }
-
-    /// Builds the resulting shape (redefined from MakeShape).
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepOffsetAPI_MakeOffset::build(self, theRange)
-    }
-
-    /// returns a list of the created shapes
-    /// from the shape <S>.
-    pub fn generated(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_MakeOffset::generated(self, S)
-    }
-
     /// Converts each wire of the face into contour consisting only of
     /// arcs and segments. New 3D curves are built too.
     pub fn convert_face(
         theFace: &crate::ffi::TopoDS_Face,
         theAngleTolerance: f64,
-    ) -> crate::ffi::TopoDS_Face {
-        crate::ffi::BRepOffsetAPI_MakeOffset::convert_face(theFace, theAngleTolerance)
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Face> {
+        crate::ffi::BRepOffsetAPI_MakeOffset_convert_face(theFace, theAngleTolerance)
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -89,6 +55,49 @@ impl MakeOffset {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         crate::ffi::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+}
+
+// ========================
+// From BRepOffsetAPI_MakeOffsetShape.hxx
+// ========================
+
+/// Describes functions to build a shell out of a shape. The
+/// result is an unlooped shape parallel to the source shape.
+/// A MakeOffsetShape object provides a framework for:
+/// - defining the construction of a shell
+/// - implementing the construction algorithm
+/// - consulting the result.
+pub use crate::ffi::BRepOffsetAPI_MakeOffsetShape as MakeOffsetShape;
+
+impl MakeOffsetShape {
+    /// Constructor does nothing.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepOffsetAPI_MakeOffsetShape_ctor()
+    }
+
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command_mut(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape_mut(self)
     }
 }
 
@@ -128,42 +137,22 @@ impl MakePipe {
         crate::ffi::BRepOffsetAPI_MakePipe_ctor_wire_shape(Spine, Profile)
     }
 
-    pub fn pipe(&self) -> &crate::ffi::BRepFill_Pipe {
-        crate::ffi::BRepOffsetAPI_MakePipe::pipe(self)
-    }
-
-    /// Builds the resulting shape (redefined from MakeShape).
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepOffsetAPI_MakePipe::build(self, theRange)
-    }
-
     /// Returns the  TopoDS  Shape of the bottom of the prism.
-    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_MakePipe::first_shape(self)
+    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepOffsetAPI_MakePipe_first_shape(self)
     }
 
     /// Returns the TopoDS Shape of the top of the prism.
-    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_MakePipe::last_shape(self)
-    }
-
-    pub fn generated(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_MakePipe::generated(self, S)
+    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepOffsetAPI_MakePipe_last_shape(self)
     }
 
     pub fn generated_shape2(
         self: std::pin::Pin<&mut Self>,
         SSpine: &crate::ffi::TopoDS_Shape,
         SProfile: &crate::ffi::TopoDS_Shape,
-    ) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_MakePipe::generated(self, SSpine, SProfile)
-    }
-
-    pub fn error_on_surface(&self) -> f64 {
-        crate::ffi::BRepOffsetAPI_MakePipe::error_on_surface(self)
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepOffsetAPI_MakePipe_generated(self, SSpine, SProfile)
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -235,283 +224,14 @@ impl MakePipeShell {
         crate::ffi::BRepOffsetAPI_MakePipeShell_ctor_wire(Spine)
     }
 
-    /// Sets a Frenet or a CorrectedFrenet trihedron
-    /// to  perform  the  sweeping
-    /// If IsFrenet is false, a corrected Frenet trihedron is used.
-    pub fn set_mode(self: std::pin::Pin<&mut Self>, IsFrenet: bool) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::set_mode(self, IsFrenet)
-    }
-
-    /// Sets a Discrete trihedron
-    /// to  perform  the  sweeping
-    pub fn set_discrete_mode(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::set_discrete_mode(self)
-    }
-
-    /// Sets  a  fixed  trihedron  to  perform  the  sweeping
-    /// all sections will be parallel.
-    pub fn set_mode_ax2(self: std::pin::Pin<&mut Self>, Axe: &crate::ffi::gp_Ax2) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::set_mode(self, Axe)
-    }
-
-    /// Sets a fixed BiNormal  direction to perform the --
-    /// sweeping.   Angular   relations   between  the
-    /// section(s) and <BiNormal> will be constant
-    pub fn set_mode_dir(self: std::pin::Pin<&mut Self>, BiNormal: &crate::ffi::gp_Dir) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::set_mode(self, BiNormal)
-    }
-
-    /// Sets support to the spine to define the BiNormal of
-    /// the trihedron, like the normal  to the surfaces.
-    /// Warning:  To be effective, Each  edge of the <spine> must
-    /// have a representation on one face of<SpineSupport>
-    pub fn set_mode_shape(
-        self: std::pin::Pin<&mut Self>,
-        SpineSupport: &crate::ffi::TopoDS_Shape,
-    ) -> bool {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::set_mode(self, SpineSupport)
-    }
-
-    /// Sets  an  auxiliary  spine  to  define  the Normal
-    /// For  each  Point  of  the  Spine  P,  an  Point  Q  is  evalued
-    /// on  <AuxiliarySpine>
-    /// If <CurvilinearEquivalence>
-    /// Q split <AuxiliarySpine> with  the  same  length ratio
-    /// than P split  <Spline>.
-    /// Else  the  plan  define  by  P  and  the  tangent  to  the  <Spine>
-    /// intersect <AuxiliarySpine> in Q.
-    /// If <KeepContact> equals BRepFill_NoContact: The Normal is defined
-    /// by the vector PQ.
-    /// If <KeepContact> equals BRepFill_Contact: The Normal is defined to
-    /// achieve that the sweeped section is in contact to the
-    /// auxiliarySpine. The width of section is constant all along the path.
-    /// In other words, the auxiliary spine lies on the swept surface,
-    /// but not necessarily is a boundary of this surface. However,
-    /// the auxiliary spine has to be close enough to the main spine
-    /// to provide intersection with any section all along the path.
-    /// If <KeepContact> equals BRepFill_ContactOnBorder: The auxiliary spine
-    /// becomes a boundary of the swept surface and the width of section varies
-    /// along the path.
-    /// Give section to sweep.
-    /// Possibilities are :
-    /// - Give one or several section
-    /// - Give one profile and an homotetic law.
-    /// - Automatic compute of correspondence between spine, and section
-    /// on the sweeped shape
-    /// - correspondence between spine, and section on the sweeped shape
-    /// defined by a vertex of the spine
-    pub fn set_mode_wire_bool_typeofcontact(
-        self: std::pin::Pin<&mut Self>,
-        AuxiliarySpine: &crate::ffi::TopoDS_Wire,
-        CurvilinearEquivalence: bool,
-        KeepContact: crate::ffi::BRepFill_TypeOfContact,
-    ) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::set_mode(
-            self,
-            AuxiliarySpine,
-            CurvilinearEquivalence,
-            KeepContact,
-        )
-    }
-
-    /// Adds the section Profile to this framework. First and last
-    /// sections may be punctual, so the shape Profile may be
-    /// both wire and vertex. Correspondent point on spine is
-    /// computed automatically.
-    /// If WithContact is true, the section is translated to be in
-    /// contact with the spine.
-    /// If WithCorrection is true, the section is rotated to be
-    /// orthogonal to the spine?s tangent in the correspondent
-    /// point. This option has no sense if the section is punctual
-    /// (Profile is of type TopoDS_Vertex).
-    pub fn add(
-        self: std::pin::Pin<&mut Self>,
-        Profile: &crate::ffi::TopoDS_Shape,
-        WithContact: bool,
-        WithCorrection: bool,
-    ) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::add(self, Profile, WithContact, WithCorrection)
-    }
-
-    /// Adds the section Profile to this framework.
-    /// Correspondent point on the spine is given by Location.
-    /// Warning:
-    /// To be effective, it is not recommended to combine methods Add and SetLaw.
-    pub fn add_shape_vertex_bool2(
-        self: std::pin::Pin<&mut Self>,
-        Profile: &crate::ffi::TopoDS_Shape,
-        Location: &crate::ffi::TopoDS_Vertex,
-        WithContact: bool,
-        WithCorrection: bool,
-    ) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::add(
-            self,
-            Profile,
-            Location,
-            WithContact,
-            WithCorrection,
-        )
-    }
-
-    /// Removes the section Profile from this framework.
-    pub fn delete(self: std::pin::Pin<&mut Self>, Profile: &crate::ffi::TopoDS_Shape) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::delete(self, Profile)
-    }
-
-    /// Returns true if this tool object is ready to build the
-    /// shape, i.e. has a definition for the wire section Profile.
-    pub fn is_ready(&self) -> bool {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::is_ready(self)
-    }
-
-    /// Get a status, when Simulate or Build failed.       It can be
-    /// BRepBuilderAPI_PipeDone,
-    /// BRepBuilderAPI_PipeNotDone,
-    /// BRepBuilderAPI_PlaneNotIntersectGuide,
-    /// BRepBuilderAPI_ImpossibleContact.
-    pub fn get_status(&self) -> crate::ffi::BRepBuilderAPI_PipeError {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::get_status(self)
-    }
-
-    /// Sets the following tolerance values
-    /// - 3D tolerance Tol3d
-    /// - boundary tolerance BoundTol
-    /// - angular tolerance TolAngular.
-    pub fn set_tolerance(
-        self: std::pin::Pin<&mut Self>,
-        Tol3d: f64,
-        BoundTol: f64,
-        TolAngular: f64,
-    ) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::set_tolerance(self, Tol3d, BoundTol, TolAngular)
-    }
-
-    /// Define the maximum V degree of resulting surface
-    pub fn set_max_degree(self: std::pin::Pin<&mut Self>, NewMaxDegree: i32) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::set_max_degree(self, NewMaxDegree)
-    }
-
-    /// Define the maximum number of spans in V-direction
-    /// on resulting surface
-    pub fn set_max_segments(self: std::pin::Pin<&mut Self>, NewMaxSegments: i32) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::set_max_segments(self, NewMaxSegments)
-    }
-
-    /// Set the flag that indicates attempt to approximate
-    /// a C1-continuous surface if a swept surface proved
-    /// to be C0.
-    pub fn set_force_approx_c1(self: std::pin::Pin<&mut Self>, ForceApproxC1: bool) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::set_force_approx_c1(self, ForceApproxC1)
-    }
-
-    /// Sets the transition mode to manage discontinuities on
-    /// the swept shape caused by fractures on the spine. The
-    /// transition mode can be BRepBuilderAPI_Transformed
-    /// (default value), BRepBuilderAPI_RightCorner,
-    /// BRepBuilderAPI_RoundCorner:
-    /// -              RepBuilderAPI_Transformed:
-    /// discontinuities are treated by
-    /// modification of the sweeping mode. The
-    /// pipe is "transformed" at the fractures of
-    /// the spine. This mode assumes building a
-    /// self-intersected shell.
-    /// -              BRepBuilderAPI_RightCorner:
-    /// discontinuities are treated like right
-    /// corner. Two pieces of the pipe
-    /// corresponding to two adjacent
-    /// segments of the spine are extended
-    /// and intersected at a fracture of the spine.
-    /// -              BRepBuilderAPI_RoundCorner:
-    /// discontinuities are treated like round
-    /// corner. The corner is treated as rotation
-    /// of the profile around an axis which
-    /// passes through the point of the spine's
-    /// fracture. This axis is based on cross
-    /// product of directions tangent to the
-    /// adjacent segments of the spine at their common point.
-    /// Warnings
-    /// The mode BRepBuilderAPI_RightCorner provides a
-    /// valid result if intersection of two pieces of the pipe
-    /// (corresponding to two adjacent segments of the spine)
-    /// in the neighborhood of the spine?s fracture is
-    /// connected and planar. This condition can be violated if
-    /// the spine is non-linear in some neighborhood of the
-    /// fracture or if the profile was set with a scaling law.
-    /// The last mode, BRepBuilderAPI_RoundCorner, will
-    /// assuredly provide a good result only if a profile was set
-    /// with option WithCorrection = True, i.e. it is strictly
-    /// orthogonal to the spine.
-    pub fn set_transition_mode(
-        self: std::pin::Pin<&mut Self>,
-        Mode: crate::ffi::BRepBuilderAPI_TransitionMode,
-    ) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::set_transition_mode(self, Mode)
-    }
-
-    /// Simulates the resulting shape by calculating its
-    /// cross-sections. The spine is divided by this
-    /// cross-sections into (NumberOfSection - 1) equal
-    /// parts, the number of cross-sections is
-    /// NumberOfSection. The cross-sections are wires and
-    /// they are returned in the list Result.
-    /// This gives a rapid preview of the resulting shape,
-    /// which will be obtained using the settings you have provided.
-    /// Raises  NotDone if  <me> it is not Ready
-    pub fn simulate(
-        self: std::pin::Pin<&mut Self>,
-        NumberOfSection: i32,
-        Result: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
-    ) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::simulate(self, NumberOfSection, Result)
-    }
-
-    /// Builds the resulting shape (redefined from MakeShape).
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::build(self, theRange)
-    }
-
-    /// Transforms the sweeping Shell in Solid.
-    /// If a propfile is not closed returns False
-    pub fn make_solid(self: std::pin::Pin<&mut Self>) -> bool {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::make_solid(self)
-    }
-
     /// Returns the  TopoDS  Shape of the bottom of the sweep.
-    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::first_shape(self)
+    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepOffsetAPI_MakePipeShell_first_shape(self)
     }
 
     /// Returns the TopoDS Shape of the top of the sweep.
-    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::last_shape(self)
-    }
-
-    /// Returns a list of new shapes generated from the shape
-    /// S by the shell-generating algorithm.
-    /// This function is redefined from BRepOffsetAPI_MakeShape::Generated.
-    /// S can be an edge or a vertex of a given Profile (see methods Add).
-    pub fn generated(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::generated(self, S)
-    }
-
-    pub fn error_on_surface(&self) -> f64 {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::error_on_surface(self)
-    }
-
-    /// Returns the list of original profiles
-    pub fn profiles(
-        self: std::pin::Pin<&mut Self>,
-        theProfiles: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
-    ) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::profiles(self, theProfiles)
-    }
-
-    /// Returns the spine
-    pub fn spine(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Wire {
-        crate::ffi::BRepOffsetAPI_MakePipeShell::spine(self)
+    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepOffsetAPI_MakePipeShell_last_shape(self)
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -578,34 +298,40 @@ impl MakeThickSolid {
         crate::ffi::BRepOffsetAPI_MakeThickSolid_ctor()
     }
 
-    /// Constructs solid using simple algorithm.
-    /// According to its nature it is not possible to set list of the closing faces.
-    /// This algorithm does not support faces removing. It is caused by fact that
-    /// intersections are not computed during offset creation.
-    /// Non-closed shell or face is expected as input.
-    pub fn make_thick_solid_by_simple(
-        self: std::pin::Pin<&mut Self>,
-        theS: &crate::ffi::TopoDS_Shape,
-        theOffsetValue: f64,
-    ) {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid::make_thick_solid_by_simple(
-            self,
-            theS,
-            theOffsetValue,
-        )
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command(self)
     }
 
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid::build(self, theRange)
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::Command> {
+        crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command_mut(self)
     }
 
-    /// Returns the list  of shapes modified from the shape
-    /// <S>.
-    pub fn modified(
+    /// Upcast to BRepBuilderAPI_MakeShape
+    pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
+        crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape(self)
+    }
+
+    /// Upcast to BRepBuilderAPI_MakeShape (mutable)
+    pub fn as_b_rep_builder_api_make_shape_mut(
         self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid::modified(self, S)
+    ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
+        crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Upcast to BRepOffsetAPI_MakeOffsetShape
+    pub fn as_make_offset_shape(&self) -> &MakeOffsetShape {
+        crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape(self)
+    }
+
+    /// Upcast to BRepOffsetAPI_MakeOffsetShape (mutable)
+    pub fn as_make_offset_shape_mut(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut MakeOffsetShape> {
+        crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape_mut(self)
     }
 }
 
@@ -636,151 +362,16 @@ impl ThruSections {
         crate::ffi::BRepOffsetAPI_ThruSections_ctor_bool2_real(isSolid, ruled, pres3d)
     }
 
-    /// Initializes this algorithm for building a shell or a solid
-    /// passing through a set of sections, where:
-    /// - isSolid is set to true if this construction algorithm is
-    /// required to build a solid or to false if it is required to
-    /// build a shell. false is the default value;
-    /// - ruled is set to true if the faces generated between the
-    /// edges of two consecutive wires are ruled surfaces or
-    /// to false (the default value) if they are smoothed out by approximation,
-    /// - pres3d defines the precision criterion used by the
-    /// approximation algorithm; the default value is 1.0e-6.
-    /// Use AddWire and AddVertex to define the successive
-    /// sections of the shell or solid to be built.
-    pub fn init(self: std::pin::Pin<&mut Self>, isSolid: bool, ruled: bool, pres3d: f64) {
-        crate::ffi::BRepOffsetAPI_ThruSections::init(self, isSolid, ruled, pres3d)
-    }
-
-    /// Adds the wire wire to the set of
-    /// sections through which the shell or solid is built.
-    /// Use the Build function to construct the shape.
-    pub fn add_wire(self: std::pin::Pin<&mut Self>, wire: &crate::ffi::TopoDS_Wire) {
-        crate::ffi::BRepOffsetAPI_ThruSections::add_wire(self, wire)
-    }
-
-    /// Adds the vertex Vertex (punctual section) to the set of sections
-    /// through which the shell or solid is built. A vertex may be added to the
-    /// set of sections only as first or last section. At least one wire
-    /// must be added to the set of sections by the method AddWire.
-    /// Use the Build function to construct the shape.
-    pub fn add_vertex(self: std::pin::Pin<&mut Self>, aVertex: &crate::ffi::TopoDS_Vertex) {
-        crate::ffi::BRepOffsetAPI_ThruSections::add_vertex(self, aVertex)
-    }
-
-    /// Sets/unsets the option to
-    /// compute origin and orientation on wires to avoid twisted results
-    /// and update wires to have same number of edges.
-    pub fn check_compatibility(self: std::pin::Pin<&mut Self>, check: bool) {
-        crate::ffi::BRepOffsetAPI_ThruSections::check_compatibility(self, check)
-    }
-
-    /// Define the approximation algorithm
-    pub fn set_smoothing(self: std::pin::Pin<&mut Self>, UseSmoothing: bool) {
-        crate::ffi::BRepOffsetAPI_ThruSections::set_smoothing(self, UseSmoothing)
-    }
-
-    /// Define the type of parametrization   used in the approximation
-    pub fn set_par_type(
-        self: std::pin::Pin<&mut Self>,
-        ParType: crate::ffi::Approx_ParametrizationType,
-    ) {
-        crate::ffi::BRepOffsetAPI_ThruSections::set_par_type(self, ParType)
-    }
-
-    /// define the Weights  associed to the criterium used in
-    /// the  optimization.
-    ///
-    /// if Wi <= 0
-    pub fn set_criterium_weight(self: std::pin::Pin<&mut Self>, W1: f64, W2: f64, W3: f64) {
-        crate::ffi::BRepOffsetAPI_ThruSections::set_criterium_weight(self, W1, W2, W3)
-    }
-
-    /// Define the maximal U degree of result surface
-    pub fn set_max_degree(self: std::pin::Pin<&mut Self>, MaxDeg: i32) {
-        crate::ffi::BRepOffsetAPI_ThruSections::set_max_degree(self, MaxDeg)
-    }
-
-    /// returns the type of parametrization used in the approximation
-    pub fn par_type(&self) -> crate::ffi::Approx_ParametrizationType {
-        crate::ffi::BRepOffsetAPI_ThruSections::par_type(self)
-    }
-
-    /// returns the maximal U degree of result surface
-    pub fn max_degree(&self) -> i32 {
-        crate::ffi::BRepOffsetAPI_ThruSections::max_degree(self)
-    }
-
-    /// Define the approximation algorithm
-    pub fn use_smoothing(&self) -> bool {
-        crate::ffi::BRepOffsetAPI_ThruSections::use_smoothing(self)
-    }
-
-    /// returns the Weights associed  to the criterium used in
-    /// the  optimization.
-    pub fn criterium_weight(
-        &self,
-        W1: std::pin::Pin<&mut f64>,
-        W2: std::pin::Pin<&mut f64>,
-        W3: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::BRepOffsetAPI_ThruSections::criterium_weight(self, W1, W2, W3)
-    }
-
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepOffsetAPI_ThruSections::build(self, theRange)
-    }
-
-    /// Returns the TopoDS Shape of the bottom of the loft if solid
-    pub fn first_shape(&self) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_ThruSections::first_shape(self)
-    }
-
-    /// Returns the TopoDS Shape of the top of the loft if solid
-    pub fn last_shape(&self) -> &crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_ThruSections::last_shape(self)
-    }
-
     /// if Ruled
     /// Returns the Face generated by each edge
     /// except the last wire
     /// if smoothed
     /// Returns the Face generated by each edge of the first wire
-    pub fn generated_face(&self, Edge: &crate::ffi::TopoDS_Shape) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepOffsetAPI_ThruSections::generated_face(self, Edge)
-    }
-
-    /// Sets the mutable input state.
-    /// If true then the input profile can be modified inside
-    /// the thrusection operation. Default value is true.
-    pub fn set_mutable_input(self: std::pin::Pin<&mut Self>, theIsMutableInput: bool) {
-        crate::ffi::BRepOffsetAPI_ThruSections::set_mutable_input(self, theIsMutableInput)
-    }
-
-    /// Returns a list of new shapes generated from the shape
-    /// S by the shell-generating algorithm.
-    /// This function is redefined from BRepBuilderAPI_MakeShape::Generated.
-    /// S can be an edge or a vertex of a given Profile (see methods AddWire and AddVertex).
-    pub fn generated(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_ThruSections::generated(self, S)
-    }
-
-    /// Returns the list of original wires
-    pub fn wires(&self) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepOffsetAPI_ThruSections::wires(self)
-    }
-
-    /// Returns the current mutable input state
-    pub fn is_mutable_input(&self) -> bool {
-        crate::ffi::BRepOffsetAPI_ThruSections::is_mutable_input(self)
-    }
-
-    /// Returns the status of thrusection operation
-    pub fn get_status(&self) -> crate::ffi::BRepFill_ThruSectionErrorStatus {
-        crate::ffi::BRepOffsetAPI_ThruSections::get_status(self)
+    pub fn generated_face(
+        &self,
+        Edge: &crate::ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepOffsetAPI_ThruSections_generated_face(self, Edge)
     }
 
     /// Upcast to BRepBuilderAPI_Command

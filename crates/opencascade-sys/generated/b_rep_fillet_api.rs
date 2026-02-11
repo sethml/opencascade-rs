@@ -14,96 +14,18 @@
 pub use crate::ffi::BRepFilletAPI_LocalOperation as LocalOperation;
 
 impl LocalOperation {
-    /// Adds a  contour in  the  builder  (builds a
-    /// contour  of tangent edges).
-    pub fn add(self: std::pin::Pin<&mut Self>, E: &crate::ffi::TopoDS_Edge) {
-        crate::ffi::BRepFilletAPI_LocalOperation::add(self, E)
-    }
-
-    /// Reset the contour of index IC, there is nomore
-    /// information in the contour.
-    pub fn reset_contour(self: std::pin::Pin<&mut Self>, IC: i32) {
-        crate::ffi::BRepFilletAPI_LocalOperation::reset_contour(self, IC)
-    }
-
-    /// Number of contours.
-    pub fn nb_contours(&self) -> i32 {
-        crate::ffi::BRepFilletAPI_LocalOperation::nb_contours(self)
-    }
-
-    /// Returns the index of  the  contour containing the edge
-    /// E, returns 0 if E doesn't belong to any contour.
-    pub fn contour(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
-        crate::ffi::BRepFilletAPI_LocalOperation::contour(self, E)
-    }
-
-    /// Number of Edges in the contour I.
-    pub fn nb_edges(&self, I: i32) -> i32 {
-        crate::ffi::BRepFilletAPI_LocalOperation::nb_edges(self, I)
-    }
-
-    /// Returns the Edge J in the contour I.
-    pub fn edge(&self, I: i32, J: i32) -> &crate::ffi::TopoDS_Edge {
-        crate::ffi::BRepFilletAPI_LocalOperation::edge(self, I, J)
-    }
-
-    /// remove the contour containing the Edge E.
-    pub fn remove(self: std::pin::Pin<&mut Self>, E: &crate::ffi::TopoDS_Edge) {
-        crate::ffi::BRepFilletAPI_LocalOperation::remove(self, E)
-    }
-
-    /// returns the length the contour of index IC.
-    pub fn length(&self, IC: i32) -> f64 {
-        crate::ffi::BRepFilletAPI_LocalOperation::length(self, IC)
-    }
-
     /// Returns the first Vertex of the contour of index IC.
-    pub fn first_vertex(&self, IC: i32) -> crate::ffi::TopoDS_Vertex {
-        crate::ffi::BRepFilletAPI_LocalOperation::first_vertex(self, IC)
+    pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::BRepFilletAPI_LocalOperation_first_vertex(self, IC)
     }
 
     /// Returns the last Vertex of the contour of index IC.
-    pub fn last_vertex(&self, IC: i32) -> crate::ffi::TopoDS_Vertex {
-        crate::ffi::BRepFilletAPI_LocalOperation::last_vertex(self, IC)
+    pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::BRepFilletAPI_LocalOperation_last_vertex(self, IC)
     }
 
-    /// returns the abscissa of the vertex V on
-    /// the contour of index IC.
-    pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
-        crate::ffi::BRepFilletAPI_LocalOperation::abscissa(self, IC, V)
-    }
-
-    /// returns the relative abscissa([0.,1.]) of the
-    /// vertex V on the contour of index IC.
-    pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
-        crate::ffi::BRepFilletAPI_LocalOperation::relative_abscissa(self, IC, V)
-    }
-
-    /// returns true if the contour of index IC is closed
-    /// an tangent.
-    pub fn closed_and_tangent(&self, IC: i32) -> bool {
-        crate::ffi::BRepFilletAPI_LocalOperation::closed_and_tangent(self, IC)
-    }
-
-    /// returns true if the contour of index IC is closed
-    pub fn closed(&self, IC: i32) -> bool {
-        crate::ffi::BRepFilletAPI_LocalOperation::closed(self, IC)
-    }
-
-    /// Reset all the fields updated   by Build operation  and
-    /// leave the  algorithm in  the  same state  than  before
-    /// build    call.  It   allows   contours    and   radius
-    /// modifications  to build the result another time.
-    pub fn reset(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepFilletAPI_LocalOperation::reset(self)
-    }
-
-    pub fn simulate(self: std::pin::Pin<&mut Self>, IC: i32) {
-        crate::ffi::BRepFilletAPI_LocalOperation::simulate(self, IC)
-    }
-
-    pub fn nb_surf(&self, IC: i32) -> i32 {
-        crate::ffi::BRepFilletAPI_LocalOperation::nb_surf(self, IC)
+    pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<crate::ffi::HandleChFiDSSecHArray1> {
+        crate::ffi::BRepFilletAPI_LocalOperation_sect(self, IC, IS)
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -151,328 +73,24 @@ impl MakeChamfer {
         crate::ffi::BRepFilletAPI_MakeChamfer_ctor_shape(S)
     }
 
-    /// Adds edge E to the table of edges used by this
-    /// algorithm to build chamfers, where the parameters
-    /// of the chamfer must be set after the
-    pub fn add(self: std::pin::Pin<&mut Self>, E: &crate::ffi::TopoDS_Edge) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::add(self, E)
-    }
-
-    /// Adds edge E to the table of edges used by this
-    /// algorithm to build chamfers, where
-    /// the parameters of the chamfer are given by
-    /// the distance Dis (symmetric chamfer).
-    /// The Add function results in a contour being built by
-    /// propagation from the edge E (i.e. the contour contains at
-    /// least this edge). This contour is composed of edges of
-    /// the shape which are tangential to one another and
-    /// which delimit two series of tangential faces, with one
-    /// series of faces being located on either side of the contour.
-    /// Warning
-    /// Nothing is done if edge E or the face F does not belong to the initial shape.
-    pub fn add_real_edge(self: std::pin::Pin<&mut Self>, Dis: f64, E: &crate::ffi::TopoDS_Edge) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::add(self, Dis, E)
-    }
-
-    /// Sets the distances Dis1 and Dis2 which give the
-    /// parameters of the chamfer along the contour of index
-    /// IC generated using the Add function in the internal
-    /// data structure of this algorithm. The face F identifies
-    /// the side where Dis1 is measured.
-    /// Warning
-    /// Nothing is done if either the edge E or the face F
-    /// does not belong to the initial shape.
-    pub fn set_dist(
-        self: std::pin::Pin<&mut Self>,
-        Dis: f64,
-        IC: i32,
-        F: &crate::ffi::TopoDS_Face,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::set_dist(self, Dis, IC, F)
-    }
-
-    pub fn get_dist(&self, IC: i32, Dis: std::pin::Pin<&mut f64>) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::get_dist(self, IC, Dis)
-    }
-
-    /// Adds edge E to the table of edges used by this
-    /// algorithm to build chamfers, where
-    /// the parameters of the chamfer are given by the two
-    /// distances Dis1 and Dis2; the face F identifies the side
-    /// where Dis1 is measured.
-    /// The Add function results in a contour being built by
-    /// propagation from the edge E (i.e. the contour contains at
-    /// least this edge). This contour is composed of edges of
-    /// the shape which are tangential to one another and
-    /// which delimit two series of tangential faces, with one
-    /// series of faces being located on either side of the contour.
-    /// Warning
-    /// Nothing is done if edge E or the face F does not belong to the initial shape.
-    pub fn add_real2_edge_face(
-        self: std::pin::Pin<&mut Self>,
-        Dis1: f64,
-        Dis2: f64,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::add(self, Dis1, Dis2, E, F)
-    }
-
-    /// Sets the distances Dis1 and Dis2 which give the
-    /// parameters of the chamfer along the contour of index
-    /// IC generated using the Add function in the internal
-    /// data structure of this algorithm. The face F identifies
-    /// the side where Dis1 is measured.
-    /// Warning
-    /// Nothing is done if either the edge E or the face F
-    /// does not belong to the initial shape.
-    pub fn set_dists(
-        self: std::pin::Pin<&mut Self>,
-        Dis1: f64,
-        Dis2: f64,
-        IC: i32,
-        F: &crate::ffi::TopoDS_Face,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::set_dists(self, Dis1, Dis2, IC, F)
-    }
-
-    /// Returns the distances Dis1 and Dis2 which give the
-    /// parameters of the chamfer along the contour of index IC
-    /// in the internal data structure of this algorithm.
-    /// Warning
-    /// -1. is returned if IC is outside the bounds of the table of contours.
-    pub fn dists(&self, IC: i32, Dis1: std::pin::Pin<&mut f64>, Dis2: std::pin::Pin<&mut f64>) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::dists(self, IC, Dis1, Dis2)
-    }
-
-    /// Adds a  fillet contour in  the  builder  (builds a
-    /// contour  of tangent edges to <E> and sets the
-    /// distance <Dis1> and angle <Angle> ( parameters of the chamfer ) ).
-    pub fn add_da(
-        self: std::pin::Pin<&mut Self>,
-        Dis: f64,
-        Angle: f64,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::add_da(self, Dis, Angle, E, F)
-    }
-
-    /// set the distance <Dis> and <Angle> of the fillet
-    /// contour of index <IC> in the DS with <Dis> on <F>.
-    /// if the face <F> is not one of common faces
-    /// of an edge of the contour <IC>
-    pub fn set_dist_angle(
-        self: std::pin::Pin<&mut Self>,
-        Dis: f64,
-        Angle: f64,
-        IC: i32,
-        F: &crate::ffi::TopoDS_Face,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::set_dist_angle(self, Dis, Angle, IC, F)
-    }
-
-    /// gives the distances <Dis> and <Angle> of the fillet
-    /// contour of index <IC> in the DS
-    pub fn get_dist_angle(
-        &self,
-        IC: i32,
-        Dis: std::pin::Pin<&mut f64>,
-        Angle: std::pin::Pin<&mut f64>,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::get_dist_angle(self, IC, Dis, Angle)
-    }
-
-    /// Sets the mode of chamfer
-    pub fn set_mode(self: std::pin::Pin<&mut Self>, theMode: crate::ffi::ChFiDS_ChamfMode) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::set_mode(self, theMode)
-    }
-
-    /// return True if chamfer symmetric false else.
-    pub fn is_symetric(&self, IC: i32) -> bool {
-        crate::ffi::BRepFilletAPI_MakeChamfer::is_symetric(self, IC)
-    }
-
-    /// return True if chamfer is made with two distances false else.
-    pub fn is_two_distances(&self, IC: i32) -> bool {
-        crate::ffi::BRepFilletAPI_MakeChamfer::is_two_distances(self, IC)
-    }
-
-    /// return True if chamfer is made with distance and angle false else.
-    pub fn is_distance_angle(&self, IC: i32) -> bool {
-        crate::ffi::BRepFilletAPI_MakeChamfer::is_distance_angle(self, IC)
-    }
-
-    /// Erases the chamfer parameters on the contour of
-    /// index IC in the internal data structure of this algorithm.
-    /// Use the SetDists function to reset this data.
-    /// Warning
-    /// Nothing is done if IC is outside the bounds of the table of contours.
-    pub fn reset_contour(self: std::pin::Pin<&mut Self>, IC: i32) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::reset_contour(self, IC)
-    }
-
-    /// Returns the number of contours generated using the
-    /// Add function in the internal data structure of this algorithm.
-    pub fn nb_contours(&self) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeChamfer::nb_contours(self)
-    }
-
-    /// Returns the index of the contour in the internal data
-    /// structure of this algorithm, which contains the edge E of the shape.
-    /// This function returns 0 if the edge E does not belong to any contour.
-    /// Warning
-    /// This index can change if a contour is removed from the
-    /// internal data structure of this algorithm using the function Remove.
-    pub fn contour(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeChamfer::contour(self, E)
-    }
-
-    /// Returns the number of edges in the contour of index I in
-    /// the internal data structure of this algorithm.
-    /// Warning
-    /// Returns 0 if I is outside the bounds of the table of contours.
-    pub fn nb_edges(&self, I: i32) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeChamfer::nb_edges(self, I)
-    }
-
-    /// Returns the edge of index J in the contour of index I in
-    /// the internal data structure of this algorithm.
-    /// Warning
-    /// Returns a null shape if:
-    /// -   I is outside the bounds of the table of contours, or
-    /// -   J is outside the bounds of the table of edges of the contour of index I.
-    pub fn edge(&self, I: i32, J: i32) -> &crate::ffi::TopoDS_Edge {
-        crate::ffi::BRepFilletAPI_MakeChamfer::edge(self, I, J)
-    }
-
-    /// Removes the contour in the internal data structure of
-    /// this algorithm which contains the edge E of the shape.
-    /// Warning
-    /// Nothing is done if the edge E does not belong to the
-    /// contour in the internal data structure of this algorithm.
-    pub fn remove(self: std::pin::Pin<&mut Self>, E: &crate::ffi::TopoDS_Edge) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::remove(self, E)
-    }
-
-    /// Returns the length of the contour of index IC in the
-    /// internal data structure of this algorithm.
-    /// Warning
-    /// Returns -1. if IC is outside the bounds of the table of contours.
-    pub fn length(&self, IC: i32) -> f64 {
-        crate::ffi::BRepFilletAPI_MakeChamfer::length(self, IC)
-    }
-
     /// Returns the first vertex of the contour of index IC
     /// in the internal data structure of this algorithm.
     /// Warning
     /// Returns a null shape if IC is outside the bounds of the table of contours.
-    pub fn first_vertex(&self, IC: i32) -> crate::ffi::TopoDS_Vertex {
-        crate::ffi::BRepFilletAPI_MakeChamfer::first_vertex(self, IC)
+    pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::BRepFilletAPI_MakeChamfer_first_vertex(self, IC)
     }
 
     /// Returns the last vertex of the contour of index IC
     /// in the internal data structure of this algorithm.
     /// Warning
     /// Returns a null shape if IC is outside the bounds of the table of contours.
-    pub fn last_vertex(&self, IC: i32) -> crate::ffi::TopoDS_Vertex {
-        crate::ffi::BRepFilletAPI_MakeChamfer::last_vertex(self, IC)
+    pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::BRepFilletAPI_MakeChamfer_last_vertex(self, IC)
     }
 
-    /// Returns the curvilinear abscissa of the vertex V on the
-    /// contour of index IC in the internal data structure of this algorithm.
-    /// Warning
-    /// Returns -1. if:
-    /// -   IC is outside the bounds of the table of contours, or
-    /// -   V is not on the contour of index IC.
-    pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
-        crate::ffi::BRepFilletAPI_MakeChamfer::abscissa(self, IC, V)
-    }
-
-    /// Returns the relative curvilinear abscissa (i.e. between 0
-    /// and 1) of the vertex V on the contour of index IC in the
-    /// internal data structure of this algorithm.
-    /// Warning
-    /// Returns -1. if:
-    /// -   IC is outside the bounds of the table of contours, or
-    /// -   V is not on the contour of index IC.
-    pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
-        crate::ffi::BRepFilletAPI_MakeChamfer::relative_abscissa(self, IC, V)
-    }
-
-    /// eturns true if the contour of index IC in the internal
-    /// data structure of this algorithm is closed and tangential at the point of closure.
-    /// Warning
-    /// Returns false if IC is outside the bounds of the table of contours.
-    pub fn closed_and_tangent(&self, IC: i32) -> bool {
-        crate::ffi::BRepFilletAPI_MakeChamfer::closed_and_tangent(self, IC)
-    }
-
-    /// Returns true if the contour of index IC in the internal
-    /// data structure of this algorithm is closed.
-    /// Warning
-    /// Returns false if IC is outside the bounds of the table of contours.
-    pub fn closed(&self, IC: i32) -> bool {
-        crate::ffi::BRepFilletAPI_MakeChamfer::closed(self, IC)
-    }
-
-    /// Builds the chamfers on all the contours in the internal
-    /// data structure of this algorithm and constructs the resulting shape.
-    /// Use the function IsDone to verify that the chamfered
-    /// shape is built. Use the function Shape to retrieve the chamfered shape.
-    /// Warning
-    /// The construction of chamfers implements highly complex
-    /// construction algorithms. Consequently, there may be
-    /// instances where the algorithm fails, for example if the
-    /// data defining the parameters of the chamfer is not
-    /// compatible with the geometry of the initial shape. There
-    /// is no initial analysis of errors and these only become
-    /// evident at the construction stage.
-    /// Additionally, in the current software release, the following
-    /// cases are not handled:
-    /// -   the end point of the contour is the point of
-    /// intersection of 4 or more edges of the shape, or
-    /// -   the intersection of the chamfer with a face which
-    /// limits the contour is not fully contained in this face.
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::build(self, theRange)
-    }
-
-    /// Reinitializes this algorithm, thus canceling the effects of the Build function.
-    /// This function allows modifications to be made to the
-    /// contours and chamfer parameters in order to rebuild the shape.
-    pub fn reset(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::reset(self)
-    }
-
-    /// Returns the  list   of shapes generated   from the
-    /// shape <EorV>.
-    pub fn generated(
-        self: std::pin::Pin<&mut Self>,
-        EorV: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepFilletAPI_MakeChamfer::generated(self, EorV)
-    }
-
-    /// Returns the list  of shapes modified from the shape
-    /// <F>.
-    pub fn modified(
-        self: std::pin::Pin<&mut Self>,
-        F: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepFilletAPI_MakeChamfer::modified(self, F)
-    }
-
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, F: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepFilletAPI_MakeChamfer::is_deleted(self, F)
-    }
-
-    pub fn simulate(self: std::pin::Pin<&mut Self>, IC: i32) {
-        crate::ffi::BRepFilletAPI_MakeChamfer::simulate(self, IC)
-    }
-
-    pub fn nb_surf(&self, IC: i32) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeChamfer::nb_surf(self, IC)
+    pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<crate::ffi::HandleChFiDSSecHArray1> {
+        crate::ffi::BRepFilletAPI_MakeChamfer_sect(self, IC, IS)
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -525,429 +143,51 @@ impl MakeChamfer {
 pub use crate::ffi::BRepFilletAPI_MakeFillet as MakeFillet;
 
 impl MakeFillet {
-    pub fn set_params(
-        self: std::pin::Pin<&mut Self>,
-        Tang: f64,
-        Tesp: f64,
-        T2d: f64,
-        TApp3d: f64,
-        TolApp2d: f64,
-        Fleche: f64,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeFillet::set_params(
-            self, Tang, Tesp, T2d, TApp3d, TolApp2d, Fleche,
-        )
-    }
-
-    /// Adds a  fillet contour in  the  builder  (builds a
-    /// contour  of tangent edges).
-    /// The Radius must be set after.
-    pub fn add(self: std::pin::Pin<&mut Self>, E: &crate::ffi::TopoDS_Edge) {
-        crate::ffi::BRepFilletAPI_MakeFillet::add(self, E)
-    }
-
-    /// Adds a  fillet description in  the  builder
-    /// - builds a contour  of tangent edges,
-    /// - sets the radius.
-    pub fn add_real_edge(self: std::pin::Pin<&mut Self>, Radius: f64, E: &crate::ffi::TopoDS_Edge) {
-        crate::ffi::BRepFilletAPI_MakeFillet::add(self, Radius, E)
-    }
-
-    /// Adds a  fillet description in  the  builder
-    /// - builds a contour  of tangent edges,
-    /// - sets a linear radius evolution law between
-    /// the first and last vertex of the spine.
-    pub fn add_real2_edge(
-        self: std::pin::Pin<&mut Self>,
-        R1: f64,
-        R2: f64,
-        E: &crate::ffi::TopoDS_Edge,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeFillet::add(self, R1, R2, E)
-    }
-
-    /// Adds a  fillet description in  the  builder
-    /// - builds a contour  of tangent edges,
-    /// - sets the radius evolution law interpolating the values
-    /// given in the array UandR :
-    ///
-    /// p2d.X() = relative parameter on the spine [0,1]
-    /// p2d.Y() = value of the radius.
-    pub fn add_array1ofpnt2d_edge(
-        self: std::pin::Pin<&mut Self>,
-        UandR: &crate::ffi::TColgp_Array1OfPnt2d,
-        E: &crate::ffi::TopoDS_Edge,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeFillet::add(self, UandR, E)
-    }
-
-    /// Sets the parameters of the fillet
-    /// along the contour of index IC generated using the Add function
-    /// in the internal data structure of
-    /// this algorithm, where Radius is the radius of the fillet.
-    pub fn set_radius(self: std::pin::Pin<&mut Self>, Radius: f64, IC: i32, IinC: i32) {
-        crate::ffi::BRepFilletAPI_MakeFillet::set_radius(self, Radius, IC, IinC)
-    }
-
-    /// Sets the parameters of the fillet
-    /// along the contour of index IC generated using the Add function
-    /// in the internal data structure of this algorithm, where the radius of the
-    /// fillet evolves according to a linear evolution law defined
-    /// from R1 to R2, between the first and last vertices of the contour of index IC.
-    pub fn set_radius_real2_int2(
-        self: std::pin::Pin<&mut Self>,
-        R1: f64,
-        R2: f64,
-        IC: i32,
-        IinC: i32,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeFillet::set_radius(self, R1, R2, IC, IinC)
-    }
-
-    /// Sets the parameters of the fillet
-    /// along the contour of index IC generated using the Add function
-    /// in the internal data structure of this algorithm,
-    /// where the radius of the fillet evolves according to the evolution law
-    /// which interpolates the set of parameter and radius pairs given
-    /// in the array UandR as follows:
-    /// -   the X coordinate of a point in UandR defines a
-    /// relative parameter on the contour (i.e. a parameter between 0 and 1),
-    /// -          the Y coordinate of a point in UandR gives the
-    /// corresponding value of the radius, and the radius evolves
-    /// between the first and last vertices of the contour of index IC.
-    pub fn set_radius_array1ofpnt2d_int2(
-        self: std::pin::Pin<&mut Self>,
-        UandR: &crate::ffi::TColgp_Array1OfPnt2d,
-        IC: i32,
-        IinC: i32,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeFillet::set_radius(self, UandR, IC, IinC)
-    }
-
-    /// Erases the radius information on the contour of index
-    /// IC in the internal data structure of this algorithm.
-    /// Use the SetRadius function to reset this data.
-    /// Warning
-    /// Nothing is done if IC is outside the bounds of the table of contours.
-    pub fn reset_contour(self: std::pin::Pin<&mut Self>, IC: i32) {
-        crate::ffi::BRepFilletAPI_MakeFillet::reset_contour(self, IC)
-    }
-
-    /// Returns true if the radius of the fillet along the contour of index IC
-    /// in the internal data structure of this algorithm is constant,
-    /// Warning
-    /// False is returned if IC is outside the bounds of the table
-    /// of contours or if E does not belong to the contour of index IC.
-    pub fn is_constant(self: std::pin::Pin<&mut Self>, IC: i32) -> bool {
-        crate::ffi::BRepFilletAPI_MakeFillet::is_constant(self, IC)
-    }
-
-    /// Returns the radius of the fillet along the contour of index IC in the
-    /// internal data structure of this algorithm
-    /// Warning
-    /// -   Use this function only if the radius is constant.
-    /// -   -1. is returned if IC is outside the bounds of the
-    /// table of contours or if E does not belong to the contour of index IC.
-    pub fn radius(self: std::pin::Pin<&mut Self>, IC: i32) -> f64 {
-        crate::ffi::BRepFilletAPI_MakeFillet::radius(self, IC)
-    }
-
-    /// Returns true if the radius of the fillet along the edge E of the
-    /// contour of index IC in the internal data structure of
-    /// this algorithm is constant.
-    /// Warning
-    /// False is returned if IC is outside the bounds of the table
-    /// of contours or if E does not belong to the contour of index IC.
-    pub fn is_constant_int_edge(
+    pub fn get_law(
         self: std::pin::Pin<&mut Self>,
         IC: i32,
         E: &crate::ffi::TopoDS_Edge,
-    ) -> bool {
-        crate::ffi::BRepFilletAPI_MakeFillet::is_constant(self, IC, E)
-    }
-
-    /// Returns the radius of the fillet along the edge E of the contour of index
-    /// IC in the internal data structure of this algorithm.
-    /// Warning
-    /// -   Use this function only if the radius is constant.
-    /// -   -1 is returned if IC is outside the bounds of the
-    /// table of contours or if E does not belong to the contour of index IC.
-    pub fn radius_int_edge(
-        self: std::pin::Pin<&mut Self>,
-        IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
-    ) -> f64 {
-        crate::ffi::BRepFilletAPI_MakeFillet::radius(self, IC, E)
-    }
-
-    /// Assigns Radius as the radius of the fillet on the edge E
-    pub fn set_radius_real_int_edge(
-        self: std::pin::Pin<&mut Self>,
-        Radius: f64,
-        IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeFillet::set_radius(self, Radius, IC, E)
-    }
-
-    pub fn set_radius_real_int_vertex(
-        self: std::pin::Pin<&mut Self>,
-        Radius: f64,
-        IC: i32,
-        V: &crate::ffi::TopoDS_Vertex,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeFillet::set_radius(self, Radius, IC, V)
-    }
-
-    pub fn get_bounds(
-        self: std::pin::Pin<&mut Self>,
-        IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
-        F: std::pin::Pin<&mut f64>,
-        L: std::pin::Pin<&mut f64>,
-    ) -> bool {
-        crate::ffi::BRepFilletAPI_MakeFillet::get_bounds(self, IC, E, F, L)
-    }
-
-    /// Assigns FShape as the type of fillet shape built by this algorithm.
-    pub fn set_fillet_shape(
-        self: std::pin::Pin<&mut Self>,
-        FShape: crate::ffi::ChFi3d_FilletShape,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeFillet::set_fillet_shape(self, FShape)
-    }
-
-    /// Returns the type of fillet shape built by this algorithm.
-    pub fn get_fillet_shape(&self) -> crate::ffi::ChFi3d_FilletShape {
-        crate::ffi::BRepFilletAPI_MakeFillet::get_fillet_shape(self)
-    }
-
-    /// Returns the number of contours generated using the
-    /// Add function in the internal data structure of this algorithm.
-    pub fn nb_contours(&self) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeFillet::nb_contours(self)
-    }
-
-    /// Returns the index of the contour in the internal data
-    /// structure of this algorithm which contains the edge E of the shape.
-    /// This function returns 0 if the edge E does not belong to any contour.
-    /// Warning
-    /// This index can change if a contour is removed from the
-    /// internal data structure of this algorithm using the function Remove.
-    pub fn contour(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeFillet::contour(self, E)
-    }
-
-    /// Returns the number of edges in the contour of index I in
-    /// the internal data structure of this algorithm.
-    /// Warning
-    /// Returns 0 if I is outside the bounds of the table of contours.
-    pub fn nb_edges(&self, I: i32) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeFillet::nb_edges(self, I)
-    }
-
-    /// Returns the edge of index J in the contour of index I in
-    /// the internal data structure of this algorithm.
-    /// Warning
-    /// Returns a null shape if:
-    /// -   I is outside the bounds of the table of contours, or
-    /// -   J is outside the bounds of the table of edges of the index I contour.
-    pub fn edge(&self, I: i32, J: i32) -> &crate::ffi::TopoDS_Edge {
-        crate::ffi::BRepFilletAPI_MakeFillet::edge(self, I, J)
-    }
-
-    /// Removes the contour in the internal data structure of
-    /// this algorithm which contains the edge E of the shape.
-    /// Warning
-    /// Nothing is done if the edge E does not belong to the
-    /// contour in the internal data structure of this algorithm.
-    pub fn remove(self: std::pin::Pin<&mut Self>, E: &crate::ffi::TopoDS_Edge) {
-        crate::ffi::BRepFilletAPI_MakeFillet::remove(self, E)
-    }
-
-    /// Returns the length of the contour of index IC in the
-    /// internal data structure of this algorithm.
-    /// Warning
-    /// Returns -1. if IC is outside the bounds of the table of contours.
-    pub fn length(&self, IC: i32) -> f64 {
-        crate::ffi::BRepFilletAPI_MakeFillet::length(self, IC)
+    ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
+        crate::ffi::BRepFilletAPI_MakeFillet_get_law(self, IC, E)
     }
 
     /// Returns the first vertex of the contour of index IC
     /// in the internal data structure of this algorithm.
     /// Warning
     /// Returns a null shape if IC is outside the bounds of the table of contours.
-    pub fn first_vertex(&self, IC: i32) -> crate::ffi::TopoDS_Vertex {
-        crate::ffi::BRepFilletAPI_MakeFillet::first_vertex(self, IC)
+    pub fn first_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::BRepFilletAPI_MakeFillet_first_vertex(self, IC)
     }
 
     /// Returns the  last vertex of the contour of index IC
     /// in the internal data structure of this algorithm.
     /// Warning
     /// Returns a null shape if IC is outside the bounds of the table of contours.
-    pub fn last_vertex(&self, IC: i32) -> crate::ffi::TopoDS_Vertex {
-        crate::ffi::BRepFilletAPI_MakeFillet::last_vertex(self, IC)
+    pub fn last_vertex(&self, IC: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::BRepFilletAPI_MakeFillet_last_vertex(self, IC)
     }
 
-    /// Returns the curvilinear abscissa of the vertex V on the
-    /// contour of index IC in the internal data structure of this algorithm.
-    /// Warning
-    /// Returns -1. if:
-    /// -   IC is outside the bounds of the table of contours, or
-    /// -   V is not on the contour of index IC.
-    pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
-        crate::ffi::BRepFilletAPI_MakeFillet::abscissa(self, IC, V)
+    pub fn sect(&self, IC: i32, IS: i32) -> cxx::UniquePtr<crate::ffi::HandleChFiDSSecHArray1> {
+        crate::ffi::BRepFilletAPI_MakeFillet_sect(self, IC, IS)
     }
 
-    /// Returns the relative curvilinear abscissa (i.e. between 0
-    /// and 1) of the vertex V on the contour of index IC in the
-    /// internal data structure of this algorithm.
-    /// Warning
-    /// Returns -1. if:
-    /// -   IC is outside the bounds of the table of contours, or
-    /// -   V is not on the contour of index IC.
-    pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
-        crate::ffi::BRepFilletAPI_MakeFillet::relative_abscissa(self, IC, V)
-    }
-
-    /// Returns true if the contour of index IC in the internal
-    /// data structure of this algorithm is closed and tangential
-    /// at the point of closure.
-    /// Warning
-    /// Returns false if IC is outside the bounds of the table of contours.
-    pub fn closed_and_tangent(&self, IC: i32) -> bool {
-        crate::ffi::BRepFilletAPI_MakeFillet::closed_and_tangent(self, IC)
-    }
-
-    /// Returns true if the contour of index IC in the internal
-    /// data structure of this algorithm is closed.
-    /// Warning
-    /// Returns false if IC is outside the bounds of the table of contours.
-    pub fn closed(&self, IC: i32) -> bool {
-        crate::ffi::BRepFilletAPI_MakeFillet::closed(self, IC)
-    }
-
-    /// Builds the fillets on all the contours in the internal data
-    /// structure of this algorithm and constructs the resulting shape.
-    /// Use the function IsDone to verify that the filleted shape
-    /// is built. Use the function Shape to retrieve the filleted shape.
-    /// Warning
-    /// The construction of fillets implements highly complex
-    /// construction algorithms. Consequently, there may be
-    /// instances where the algorithm fails, for example if the
-    /// data defining the radius of the fillet is not compatible
-    /// with the geometry of the initial shape. There is no initial
-    /// analysis of errors and they only become evident at the
-    /// construction stage.
-    /// Additionally, in the current software release, the
-    /// following cases are not handled:
-    /// -   the end point of the contour is the point of
-    /// intersection of 4 or more edges of the shape, or
-    /// -   the intersection of the fillet with a face which limits
-    /// the contour is not fully contained in this face.
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepFilletAPI_MakeFillet::build(self, theRange)
-    }
-
-    /// Reinitializes this algorithm, thus canceling the effects of the Build function.
-    /// This function allows modifications to be made to the
-    /// contours and fillet parameters in order to rebuild the shape.
-    pub fn reset(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::BRepFilletAPI_MakeFillet::reset(self)
-    }
-
-    /// Returns the  list   of shapes generated   from the
-    /// shape <EorV>.
-    pub fn generated(
-        self: std::pin::Pin<&mut Self>,
-        EorV: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepFilletAPI_MakeFillet::generated(self, EorV)
-    }
-
-    /// Returns the list  of shapes modified from the shape
-    /// <F>.
-    pub fn modified(
-        self: std::pin::Pin<&mut Self>,
-        F: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepFilletAPI_MakeFillet::modified(self, F)
-    }
-
-    pub fn is_deleted(self: std::pin::Pin<&mut Self>, F: &crate::ffi::TopoDS_Shape) -> bool {
-        crate::ffi::BRepFilletAPI_MakeFillet::is_deleted(self, F)
-    }
-
-    /// returns the number of surfaces
-    /// after the shape creation.
-    pub fn nb_surfaces(&self) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeFillet::nb_surfaces(self)
-    }
-
-    /// Return the faces created for surface <I>.
-    pub fn new_faces(self: std::pin::Pin<&mut Self>, I: i32) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepFilletAPI_MakeFillet::new_faces(self, I)
-    }
-
-    pub fn simulate(self: std::pin::Pin<&mut Self>, IC: i32) {
-        crate::ffi::BRepFilletAPI_MakeFillet::simulate(self, IC)
-    }
-
-    pub fn nb_surf(&self, IC: i32) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeFillet::nb_surf(self, IC)
-    }
-
-    /// Returns the number of contours where the computation
-    /// of the fillet failed
-    pub fn nb_faulty_contours(&self) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeFillet::nb_faulty_contours(self)
-    }
-
-    /// for each I in [1.. NbFaultyContours] returns the index IC of
-    /// the contour where the computation of the fillet failed.
-    /// the method NbEdges(IC) gives the number of edges in the contour IC
-    /// the method Edge(IC,ie) gives the edge number ie of the contour IC
-    pub fn faulty_contour(&self, I: i32) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeFillet::faulty_contour(self, I)
-    }
-
-    /// returns the number of surfaces which have been
-    /// computed on the contour IC
-    pub fn nb_computed_surfaces(&self, IC: i32) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeFillet::nb_computed_surfaces(self, IC)
-    }
-
-    /// returns the number of vertices where the computation failed
-    pub fn nb_faulty_vertices(&self) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeFillet::nb_faulty_vertices(self)
+    /// returns the surface number IS concerning the contour IC
+    pub fn computed_surface(
+        &self,
+        IC: i32,
+        IS: i32,
+    ) -> cxx::UniquePtr<crate::ffi::HandleGeomSurface> {
+        crate::ffi::BRepFilletAPI_MakeFillet_computed_surface(self, IC, IS)
     }
 
     /// returns the vertex where the computation failed
-    pub fn faulty_vertex(&self, IV: i32) -> crate::ffi::TopoDS_Vertex {
-        crate::ffi::BRepFilletAPI_MakeFillet::faulty_vertex(self, IV)
-    }
-
-    /// returns true if a part of the result has been computed
-    /// if the filling in a corner failed a shape with a hole is returned
-    pub fn has_result(&self) -> bool {
-        crate::ffi::BRepFilletAPI_MakeFillet::has_result(self)
+    pub fn faulty_vertex(&self, IV: i32) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::BRepFilletAPI_MakeFillet_faulty_vertex(self, IV)
     }
 
     /// if (HasResult()) returns the partial result
-    pub fn bad_shape(&self) -> crate::ffi::TopoDS_Shape {
-        crate::ffi::BRepFilletAPI_MakeFillet::bad_shape(self)
-    }
-
-    /// returns the status concerning the contour IC in case of error
-    /// ChFiDS_Ok : the computation is Ok
-    /// ChFiDS_StartsolFailure : the computation can't start, perhaps the
-    /// the radius is too big
-    /// ChFiDS_TwistedSurface : the computation failed because of a twisted
-    /// surface
-    /// ChFiDS_WalkingFailure : there is a problem in the walking
-    /// ChFiDS_Error:  other error different from above
-    pub fn stripe_status(&self, IC: i32) -> crate::ffi::ChFiDS_ErrorStatus {
-        crate::ffi::BRepFilletAPI_MakeFillet::stripe_status(self, IC)
+    pub fn bad_shape(&self) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepFilletAPI_MakeFillet_bad_shape(self)
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -1034,29 +274,6 @@ impl MakeFillet2d {
         crate::ffi::BRepFilletAPI_MakeFillet2d_ctor_face(F)
     }
 
-    /// Initializes this algorithm for constructing fillets or
-    /// chamfers with the face F.
-    /// Warning
-    /// The status of the initialization, as given by the Status
-    /// function, can be one of the following:
-    /// -   ChFi2d_Ready if the initialization is correct,
-    /// -   ChFi2d_NotPlanar if F is not planar,
-    /// -   ChFi2d_NoFace if F is a null face.
-    pub fn init(self: std::pin::Pin<&mut Self>, F: &crate::ffi::TopoDS_Face) {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::init(self, F)
-    }
-
-    /// This initialize method allow to init the builder
-    /// from a face RefFace and another face ModFace which derive from RefFace.
-    /// This  is useful to modify a fillet or a chamfer already created on ModFace.
-    pub fn init_face2(
-        self: std::pin::Pin<&mut Self>,
-        RefFace: &crate::ffi::TopoDS_Face,
-        ModFace: &crate::ffi::TopoDS_Face,
-    ) {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::init(self, RefFace, ModFace)
-    }
-
     /// Adds a fillet of radius Radius between the two edges
     /// adjacent to the vertex V on the face modified by this
     /// algorithm. The two edges do not need to be rectilinear.
@@ -1079,8 +296,8 @@ impl MakeFillet2d {
         self: std::pin::Pin<&mut Self>,
         V: &crate::ffi::TopoDS_Vertex,
         Radius: f64,
-    ) -> crate::ffi::TopoDS_Edge {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::add_fillet(self, V, Radius)
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
+        crate::ffi::BRepFilletAPI_MakeFillet2d_add_fillet(self, V, Radius)
     }
 
     /// Assigns the radius Radius to the fillet Fillet already
@@ -1102,8 +319,8 @@ impl MakeFillet2d {
         self: std::pin::Pin<&mut Self>,
         Fillet: &crate::ffi::TopoDS_Edge,
         Radius: f64,
-    ) -> crate::ffi::TopoDS_Edge {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::modify_fillet(self, Fillet, Radius)
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
+        crate::ffi::BRepFilletAPI_MakeFillet2d_modify_fillet(self, Fillet, Radius)
     }
 
     /// Removes the fillet Fillet already built on the face
@@ -1118,8 +335,8 @@ impl MakeFillet2d {
     pub fn remove_fillet(
         self: std::pin::Pin<&mut Self>,
         Fillet: &crate::ffi::TopoDS_Edge,
-    ) -> crate::ffi::TopoDS_Vertex {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::remove_fillet(self, Fillet)
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::BRepFilletAPI_MakeFillet2d_remove_fillet(self, Fillet)
     }
 
     /// Adds a chamfer on the face modified by this algorithm
@@ -1132,14 +349,14 @@ impl MakeFillet2d {
     /// tangent at the corresponding point.
     /// The angle Ang is given in radians.
     /// This function returns the chamfer and builds the resulting face.
-    pub fn add_chamfer(
+    pub fn add_chamfer_edge2_real2(
         self: std::pin::Pin<&mut Self>,
         E1: &crate::ffi::TopoDS_Edge,
         E2: &crate::ffi::TopoDS_Edge,
         D1: f64,
         D2: f64,
-    ) -> crate::ffi::TopoDS_Edge {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::add_chamfer(self, E1, E2, D1, D2)
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
+        crate::ffi::BRepFilletAPI_MakeFillet2d_add_chamfer_edge2_real2(self, E1, E2, D1, D2)
     }
 
     /// Adds a chamfer on the face modified by this algorithm
@@ -1175,8 +392,8 @@ impl MakeFillet2d {
         V: &crate::ffi::TopoDS_Vertex,
         D: f64,
         Ang: f64,
-    ) -> crate::ffi::TopoDS_Edge {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::add_chamfer(self, E, V, D, Ang)
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
+        crate::ffi::BRepFilletAPI_MakeFillet2d_add_chamfer_edge_vertex_real2(self, E, V, D, Ang)
     }
 
     /// Modifies the chamfer Chamfer on the face modified
@@ -1184,15 +401,17 @@ impl MakeFillet2d {
     /// E1 and E2 are the two adjacent edges on which
     /// Chamfer is already built; the extremities of the new
     /// chamfer are on E1 and E2 at distances D1 and D2 respectively.
-    pub fn modify_chamfer(
+    pub fn modify_chamfer_edge3_real2(
         self: std::pin::Pin<&mut Self>,
         Chamfer: &crate::ffi::TopoDS_Edge,
         E1: &crate::ffi::TopoDS_Edge,
         E2: &crate::ffi::TopoDS_Edge,
         D1: f64,
         D2: f64,
-    ) -> crate::ffi::TopoDS_Edge {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::modify_chamfer(self, Chamfer, E1, E2, D1, D2)
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
+        crate::ffi::BRepFilletAPI_MakeFillet2d_modify_chamfer_edge3_real2(
+            self, Chamfer, E1, E2, D1, D2,
+        )
     }
 
     /// Modifies the chamfer Chamfer on the face modified
@@ -1228,8 +447,8 @@ impl MakeFillet2d {
         E: &crate::ffi::TopoDS_Edge,
         D: f64,
         Ang: f64,
-    ) -> crate::ffi::TopoDS_Edge {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::modify_chamfer(self, Chamfer, E, D, Ang)
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Edge> {
+        crate::ffi::BRepFilletAPI_MakeFillet2d_modify_chamfer_edge2_real2(self, Chamfer, E, D, Ang)
     }
 
     /// Removes the chamfer Chamfer already built on the face
@@ -1244,88 +463,8 @@ impl MakeFillet2d {
     pub fn remove_chamfer(
         self: std::pin::Pin<&mut Self>,
         Chamfer: &crate::ffi::TopoDS_Edge,
-    ) -> crate::ffi::TopoDS_Vertex {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::remove_chamfer(self, Chamfer)
-    }
-
-    /// Returns true if the edge E on the face modified by this
-    /// algorithm is chamfered or filleted.
-    /// Warning
-    /// Returns false if E does not belong to the face modified by this algorithm.
-    pub fn is_modified(&self, E: &crate::ffi::TopoDS_Edge) -> bool {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::is_modified(self, E)
-    }
-
-    /// Returns the table of fillets on the face modified by this algorithm.
-    pub fn fillet_edges(&self) -> &crate::ffi::TopTools_SequenceOfShape {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::fillet_edges(self)
-    }
-
-    /// Returns the number of fillets on the face modified by this algorithm.
-    pub fn nb_fillet(&self) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::nb_fillet(self)
-    }
-
-    /// Returns the table of chamfers on the face modified by this algorithm.
-    pub fn chamfer_edges(&self) -> &crate::ffi::TopTools_SequenceOfShape {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::chamfer_edges(self)
-    }
-
-    /// Returns the number of chamfers on the face modified by this algorithm.
-    pub fn nb_chamfer(&self) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::nb_chamfer(self)
-    }
-
-    /// Returns the list  of shapes modified from the shape
-    /// <S>.
-    pub fn modified(
-        self: std::pin::Pin<&mut Self>,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::modified(self, S)
-    }
-
-    /// returns the number of new curves
-    /// after the shape creation.
-    pub fn nb_curves(&self) -> i32 {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::nb_curves(self)
-    }
-
-    /// Return the Edges created for curve I.
-    pub fn new_edges(self: std::pin::Pin<&mut Self>, I: i32) -> &crate::ffi::TopTools_ListOfShape {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::new_edges(self, I)
-    }
-
-    pub fn has_descendant(&self, E: &crate::ffi::TopoDS_Edge) -> bool {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::has_descendant(self, E)
-    }
-
-    /// Returns the chamfered or filleted edge built from the
-    /// edge E on the face modified by this algorithm. If E has
-    /// not been modified, this function returns E.
-    /// Exceptions
-    /// Standard_NoSuchObject if the edge E does not
-    /// belong to the initial face.
-    pub fn descendant_edge(&self, E: &crate::ffi::TopoDS_Edge) -> &crate::ffi::TopoDS_Edge {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::descendant_edge(self, E)
-    }
-
-    /// Returns the basis edge on the face modified by this
-    /// algorithm from which the chamfered or filleted edge E is
-    /// built. If E has not been modified, this function returns E.
-    /// Warning
-    /// E is returned if it does not belong to the initial face.
-    pub fn basis_edge(&self, E: &crate::ffi::TopoDS_Edge) -> &crate::ffi::TopoDS_Edge {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::basis_edge(self, E)
-    }
-
-    pub fn status(&self) -> crate::ffi::ChFi2d_ConstructionError {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::status(self)
-    }
-
-    /// Update the result and set the Done flag
-    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
-        crate::ffi::BRepFilletAPI_MakeFillet2d::build(self, theRange)
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::BRepFilletAPI_MakeFillet2d_remove_chamfer(self, Chamfer)
     }
 
     /// Upcast to BRepBuilderAPI_Command

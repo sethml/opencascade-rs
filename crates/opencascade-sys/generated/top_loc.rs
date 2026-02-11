@@ -29,104 +29,99 @@ impl Location {
         crate::ffi::TopLoc_Location_ctor_trsf(T)
     }
 
-    /// Returns true if this location is equal to the Identity transformation.
-    pub fn is_identity(&self) -> bool {
-        crate::ffi::TopLoc_Location::is_identity(self)
-    }
-
-    /// Resets this location to the Identity transformation.
-    pub fn identity(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TopLoc_Location::identity(self)
-    }
-
-    /// Returns   the  power  elevation  of    the   first
-    /// elementary datum.
-    /// Exceptions
-    /// Standard_NoSuchObject if this location is empty.
-    pub fn first_power(&self) -> i32 {
-        crate::ffi::TopLoc_Location::first_power(self)
-    }
-
-    /// Returns  a Location representing  <me> without the
-    /// first datum. We have the relation :
-    ///
-    /// <me> = NextLocation() * FirstDatum() ^ FirstPower()
-    /// Exceptions
-    /// Standard_NoSuchObject if this location is empty.
-    pub fn next_location(&self) -> &crate::ffi::TopLoc_Location {
-        crate::ffi::TopLoc_Location::next_location(self)
-    }
-
-    /// Returns  the transformation    associated  to  the
-    /// coordinate system.
-    pub fn transformation(&self) -> &crate::ffi::gp_Trsf {
-        crate::ffi::TopLoc_Location::transformation(self)
-    }
-
     /// Returns the inverse of <me>.
     ///
     /// <me> * Inverted() is an Identity.
-    pub fn inverted(&self) -> crate::ffi::TopLoc_Location {
-        crate::ffi::TopLoc_Location::inverted(self)
+    pub fn inverted(&self) -> cxx::UniquePtr<crate::ffi::TopLoc_Location> {
+        crate::ffi::TopLoc_Location_inverted(self)
     }
 
     /// Returns <me> * <Other>, the  elementary datums are
     /// concatenated.
-    pub fn multiplied(&self, Other: &crate::ffi::TopLoc_Location) -> crate::ffi::TopLoc_Location {
-        crate::ffi::TopLoc_Location::multiplied(self, Other)
+    pub fn multiplied(
+        &self,
+        Other: &crate::ffi::TopLoc_Location,
+    ) -> cxx::UniquePtr<crate::ffi::TopLoc_Location> {
+        crate::ffi::TopLoc_Location_multiplied(self, Other)
     }
 
     /// Returns  <me> / <Other>.
-    pub fn divided(&self, Other: &crate::ffi::TopLoc_Location) -> crate::ffi::TopLoc_Location {
-        crate::ffi::TopLoc_Location::divided(self, Other)
+    pub fn divided(
+        &self,
+        Other: &crate::ffi::TopLoc_Location,
+    ) -> cxx::UniquePtr<crate::ffi::TopLoc_Location> {
+        crate::ffi::TopLoc_Location_divided(self, Other)
     }
 
     /// Returns <Other>.Inverted() * <me>.
-    pub fn predivided(&self, Other: &crate::ffi::TopLoc_Location) -> crate::ffi::TopLoc_Location {
-        crate::ffi::TopLoc_Location::predivided(self, Other)
+    pub fn predivided(
+        &self,
+        Other: &crate::ffi::TopLoc_Location,
+    ) -> cxx::UniquePtr<crate::ffi::TopLoc_Location> {
+        crate::ffi::TopLoc_Location_predivided(self, Other)
     }
 
     /// Returns me at the power <pwr>.   If <pwr>  is zero
     /// returns  Identity.  <pwr> can  be lower  than zero
     /// (usual meaning for powers).
-    pub fn powered(&self, pwr: i32) -> crate::ffi::TopLoc_Location {
-        crate::ffi::TopLoc_Location::powered(self, pwr)
-    }
-
-    /// Returns a hashed value for this local coordinate system. This value is used, with map tables,
-    /// to store and retrieve the object easily
-    /// @return a computed hash code
-    pub fn hash_code(&self) -> usize {
-        crate::ffi::TopLoc_Location::hash_code(self)
-    }
-
-    /// Returns true if this location and the location Other
-    /// have the same elementary data, i.e. contain the same
-    /// series of TopLoc_Datum3D and respective powers.
-    /// This method is an alias for operator ==.
-    pub fn is_equal(&self, Other: &crate::ffi::TopLoc_Location) -> bool {
-        crate::ffi::TopLoc_Location::is_equal(self, Other)
-    }
-
-    /// Returns true if this location and the location Other do
-    /// not have the same elementary data, i.e. do not
-    /// contain the same series of TopLoc_Datum3D and respective powers.
-    /// This method is an alias for operator !=.
-    pub fn is_different(&self, Other: &crate::ffi::TopLoc_Location) -> bool {
-        crate::ffi::TopLoc_Location::is_different(self, Other)
-    }
-
-    /// Clear myItems
-    pub fn clear(self: std::pin::Pin<&mut Self>) {
-        crate::ffi::TopLoc_Location::clear(self)
+    pub fn powered(&self, pwr: i32) -> cxx::UniquePtr<crate::ffi::TopLoc_Location> {
+        crate::ffi::TopLoc_Location_powered(self, pwr)
     }
 
     pub fn scale_prec() -> f64 {
-        crate::ffi::TopLoc_Location::scale_prec()
+        crate::ffi::TopLoc_Location_scale_prec()
     }
 
     /// Clone into a new UniquePtr via copy constructor
     pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
         crate::ffi::TopLoc_Location_to_owned(self)
+    }
+}
+
+// ========================
+// From TopLoc_SListOfItemLocation.hxx
+// ========================
+
+/// An SListOfItemLocation is a LISP like list of Items.
+/// An SListOfItemLocation is :
+/// . Empty.
+/// . Or it has a Value and a  Tail  which is an other SListOfItemLocation.
+///
+/// The Tail of an empty list is an empty list.
+/// SListOfItemLocation are  shared.  It  means   that they  can  be
+/// modified through other lists.
+/// SListOfItemLocation may  be used  as Iterators. They  have Next,
+/// More, and value methods. To iterate on the content
+/// of the list S just do.
+///
+/// SListOfItemLocation Iterator;
+/// for (Iterator = S; Iterator.More(); Iterator.Next())
+/// X = Iterator.Value();
+pub use crate::ffi::TopLoc_SListOfItemLocation as SListOfItemLocation;
+
+impl SListOfItemLocation {
+    /// Creates an empty List.
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopLoc_SListOfItemLocation_ctor()
+    }
+
+    /// Creates a List with <anItem> as value  and <aTail> as tail.
+    pub fn new_itemlocation_slistofitemlocation(
+        anItem: &crate::ffi::TopLoc_ItemLocation,
+        aTail: &crate::ffi::TopLoc_SListOfItemLocation,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopLoc_SListOfItemLocation_ctor_itemlocation_slistofitemlocation(anItem, aTail)
+    }
+
+    /// Creates a list from an other one. The lists  are shared.
+    pub fn new_slistofitemlocation(
+        Other: &crate::ffi::TopLoc_SListOfItemLocation,
+    ) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopLoc_SListOfItemLocation_ctor_slistofitemlocation(Other)
+    }
+
+    /// Clone into a new UniquePtr via copy constructor
+    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
+        crate::ffi::TopLoc_SListOfItemLocation_to_owned(self)
     }
 }
