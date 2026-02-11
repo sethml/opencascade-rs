@@ -5,3 +5,5 @@ In order to do that, there's a work-in-progress tool crates/opencascade-binding-
 Avoid using head or tail when doing test builds of opencascade-sys to avoid missing compile errors.
 
 Do not use /tmp/ for temporary files. Use tmp/ in the project directory instead.
+
+Run builds and tests with `time`. When they take more than 5 minutes, stop and ask the user if they want to speed them up.
