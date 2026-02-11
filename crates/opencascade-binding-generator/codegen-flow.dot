@@ -1,0 +1,242 @@
+// Control flow graph for opencascade-binding-generator code generation
+// Render: dot -Tsvg codegen-flow.dot -o codegen-flow.svg
+
+digraph codegen_flow {
+    rankdir=TB;
+    compound=true;
+    fontname="Helvetica";
+    node [fontname="Helvetica", fontsize=11, shape=box, style="rounded,filled", margin="0.15,0.07"];
+    edge [fontname="Helvetica", fontsize=9];
+    nodesep=0.25;
+    ranksep=0.4;
+
+    // ═════════════════════════════════════════════════
+    //  PIPELINE TOP
+    // ═════════════════════════════════════════════════
+    subgraph cluster_pipeline {
+        label="main.rs";
+        style="filled,bold"; fillcolor="#f8f8f0";
+        labeljust="l"; fontsize=12;
+
+        main [label="main()", fillcolor="#ffd700"];
+        resolve_deps [label="header_deps::resolve_header_dependencies()\n262 explicit → 378 headers", fillcolor="#fff8dc"];
+        parse_headers [label="parser::parse_headers()  →  Vec<ParsedHeader>", fillcolor="#ffe4b5"];
+        build_graph [label="ModuleGraph::from_headers()  →  79 modules", fillcolor="#ffe4b5"];
+
+        main -> resolve_deps -> parse_headers -> build_graph;
+    }
+
+    // ═════════════════════════════════════════════════
+    //  PASS 1: SYMBOL TABLE
+    // ═════════════════════════════════════════════════
+    subgraph cluster_resolver {
+        label="resolver.rs — Pass 1";
+        style="filled,bold"; fillcolor="#f5e6f5";
+        labeljust="l"; fontsize=12;
+
+        build_symtab [label="build_symbol_table()  →  SymbolTable\n(single source of truth for all binding decisions)", fillcolor="#dda0dd", penwidth=2];
+
+        resolve_items [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2">
+            <TR><TD ALIGN="LEFT"><B>For each class:</B>  resolve_class(), resolve_constructor(),</TD></TR>
+            <TR><TD ALIGN="LEFT">  resolve_method(), resolve_static_method()</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>For each enum:</B>  resolve_enum() (all EXCLUDED — CXX limitation)</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>For each function:</B>  resolve_function()</TD></TR>
+        </TABLE>>, fillcolor="#e6cce6", shape=box];
+
+        filters [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="1">
+            <TR><TD ALIGN="LEFT"><B>Exclusion Filters:</B> method_uses_enum · needs_explicit_lifetimes</TD></TR>
+            <TR><TD ALIGN="LEFT">const_mut_return_mismatch · unsupported_by_value_params</TD></TR>
+            <TR><TD ALIGN="LEFT">is_abstract · protected destructor · has_unbindable_types</TD></TR>
+        </TABLE>>, shape=note, fillcolor="#ffe4e1"];
+
+        build_symtab -> resolve_items -> filters [style=dashed, color=gray];
+    }
+
+    build_graph -> build_symtab;
+
+    // ═════════════════════════════════════════════════
+    //  DISPATCH
+    // ═════════════════════════════════════════════════
+    dispatch [label="generate_unified()  (main.rs)\ncollections::all_known_collections()", fillcolor="#e0e0e0", penwidth=2];
+    build_symtab -> dispatch;
+
+    // ═════════════════════════════════════════════════
+    //  OUTPUT 1: ffi.rs  (codegen/rust.rs)
+    // ═════════════════════════════════════════════════
+    subgraph cluster_ffi {
+        label="Step 1:  codegen/rust.rs  →  ffi.rs";
+        style="filled,bold"; fillcolor="#e6f3ff";
+        labeljust="l"; fontsize=12;
+
+        gen_ffi [label="generate_unified_ffi()", fillcolor="#87ceeb", penwidth=2];
+
+        ffi_top [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2">
+            <TR><TD ALIGN="LEFT"><B>Top-level items:</B></TD></TR>
+            <TR><TD ALIGN="LEFT">  generate_unified_handle_declarations() — typedef handle&lt;T&gt; HandleT</TD></TR>
+            <TR><TD ALIGN="LEFT">  generate_unified_opaque_declarations() — referenced but undefined types</TD></TR>
+            <TR><TD ALIGN="LEFT">  generate_unified_functions() — namespace-level free functions</TD></TR>
+            <TR><TD ALIGN="LEFT">  generate_unified_unique_ptr_impls() — extern C++ impl blocks</TD></TR>
+        </TABLE>>, fillcolor="#b0d4f1"];
+
+        ffi_class [label="generate_unified_class()  (per class, full C++ names)", fillcolor="#b0d4f1"];
+
+        ffi_per_class [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2">
+            <TR><TD ALIGN="LEFT"><B>generate_unified_constructors()</B></TD><TD ALIGN="LEFT">ClassName_ctor_suffix(...) → UniquePtr</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_methods()</B></TD><TD ALIGN="LEFT">fn method(self: &amp;T) — direct CXX (primitives, const ref)</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_wrapper_methods()</B></TD><TD ALIGN="LEFT">fn Cls_method(self_: &amp;T) → UniquePtr — <I>returns used_names</I></TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_static_methods()</B></TD><TD ALIGN="LEFT">fn Cls_Method(...) — checks used_names → _static suffix</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_upcast_methods()</B></TD><TD ALIGN="LEFT">fn Derived_as_Base() → &amp;Base / Pin&lt;&amp;mut Base&gt;</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_to_owned()</B></TD><TD ALIGN="LEFT">fn ClassName_to_owned() → UniquePtr</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_to_handle_ffi()</B></TD><TD ALIGN="LEFT">fn Cls_to_handle() (Standard_Transient only)</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_handle_upcast_ffi()</B></TD><TD ALIGN="LEFT">fn HandleDerived_as_HandleBase()</TD></TR>
+        </TABLE>>, fillcolor="#cce5ff"];
+
+        ffi_coll [label="collections::generate_unified_rust_ffi_collections()  (inserted into extern C++ block)\ncollections::generate_unified_rust_impl_collections()  (appended after ffi module)", fillcolor="#ffffb0"];
+
+        gen_ffi -> ffi_top;
+        gen_ffi -> ffi_class -> ffi_per_class;
+        gen_ffi -> ffi_coll;
+    }
+
+    dispatch -> gen_ffi [label="  Step 1  ", color="#4169e1", fontcolor="#4169e1"];
+
+    // ═════════════════════════════════════════════════
+    //  OUTPUT 2: wrappers.hxx  (codegen/cpp.rs)
+    // ═════════════════════════════════════════════════
+    subgraph cluster_cpp {
+        label="Step 2:  codegen/cpp.rs  →  wrappers.hxx";
+        style="filled,bold"; fillcolor="#fff0e6";
+        labeljust="l"; fontsize=12;
+
+        gen_cpp [label="generate_unified_wrappers()", fillcolor="#ffa07a", penwidth=2];
+
+        cpp_top [label="Handle typedefs:  typedef handle<T> HandleT;\ngenerate_unified_function_wrappers()", fillcolor="#ffd4b8"];
+
+        cpp_class [label="generate_unified_class_wrappers()  (per class)", fillcolor="#ffd4b8"];
+
+        cpp_per_class [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2">
+            <TR><TD ALIGN="LEFT"><B>generate_unified_constructor_wrappers()</B></TD><TD ALIGN="LEFT">make_unique&lt;T&gt;(...)</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_return_by_value_wrappers()</B></TD><TD ALIGN="LEFT">make_unique&lt;R&gt;(self.Method(...)) → <I>returns used_names</I></TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_c_string_param_wrappers()</B></TD><TD ALIGN="LEFT">rust::Str → std::string → c_str()</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_c_string_return_wrappers()</B></TD><TD ALIGN="LEFT">const char* → rust::String</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_static_method_wrappers()</B></TD><TD ALIGN="LEFT">Class::Method(...) — checks used_names</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_upcast_wrappers()</B></TD><TD ALIGN="LEFT">const Base&amp; / Base&amp; (implicit C++ cast)</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_to_owned_wrapper()</B></TD><TD ALIGN="LEFT">make_unique&lt;T&gt;(self)</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_to_handle_wrapper()</B></TD><TD ALIGN="LEFT">make_unique&lt;Handle&gt;(obj.release())</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_handle_upcast_wrappers()</B></TD><TD ALIGN="LEFT">Handle conversion wrappers</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_unified_inherited_method_wrappers()</B></TD><TD ALIGN="LEFT">self.InheritedMethod(...) (avoids method pointer mismatch)</TD></TR>
+        </TABLE>>, fillcolor="#ffe8d6"];
+
+        cpp_coll [label="collections::generate_unified_cpp_collections()\niterator structs + next() functions", fillcolor="#ffffb0"];
+
+        gen_cpp -> cpp_top;
+        gen_cpp -> cpp_class -> cpp_per_class;
+        gen_cpp -> cpp_coll;
+    }
+
+    // Force ffi cluster above cpp cluster
+    ffi_coll -> gen_cpp [style=invis];
+    dispatch -> gen_cpp [label="  Step 2  ", color="#cd5c5c", fontcolor="#cd5c5c"];
+
+    // ═════════════════════════════════════════════════
+    //  1:1 CORRESPONDENCE
+    // ═════════════════════════════════════════════════
+    correspondence [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="3" BGCOLOR="#f0f0ff">
+        <TR><TD COLSPAN="3" ALIGN="CENTER"><B>1:1 Correspondence:  each ffi.rs wrapper declaration has a matching wrappers.hxx C++ implementation</B></TD></TR>
+        <TR><TD ALIGN="RIGHT">Rust: fn Cls_ctor(...) → UniquePtr&lt;T&gt;</TD><TD>  ↔  </TD><TD ALIGN="LEFT">C++: inline unique_ptr&lt;T&gt; Cls_ctor(...) { make_unique&lt;T&gt;(...) }</TD></TR>
+        <TR><TD ALIGN="RIGHT">Rust: fn Cls_method(self_: &amp;T) → UniquePtr&lt;R&gt;</TD><TD>  ↔  </TD><TD ALIGN="LEFT">C++: inline unique_ptr&lt;R&gt; Cls_method(const T&amp;) { make_unique&lt;R&gt;(self.M()) }</TD></TR>
+        <TR><TD ALIGN="RIGHT">Rust: fn Cls_static_method(...)</TD><TD>  ↔  </TD><TD ALIGN="LEFT">C++: inline ... Cls_static_method(...) { Class::Method(...) }</TD></TR>
+        <TR><TD ALIGN="RIGHT">Rust: fn Derived_as_Base(&amp;T) → &amp;Base</TD><TD>  ↔  </TD><TD ALIGN="LEFT">C++: inline const Base&amp; Derived_as_Base(const Derived&amp; s) { return s; }</TD></TR>
+        <TR><TD ALIGN="LEFT" COLSPAN="3"><I>Note: direct CXX methods (self: &amp;T returning primitives/const ref) have NO C++ wrapper — CXX generates the glue</I></TD></TR>
+    </TABLE>>, shape=plaintext];
+
+    cpp_per_class -> correspondence [style=invis];
+
+    // ═════════════════════════════════════════════════
+    //  OUTPUT 3: Per-module *.rs  (codegen/rust.rs)
+    // ═════════════════════════════════════════════════
+    subgraph cluster_reexport {
+        label="Step 3:  codegen/rust.rs  →  per-module *.rs (×79 modules)";
+        style="filled,bold"; fillcolor="#e6ffe6";
+        labeljust="l"; fontsize=12;
+
+        gen_reexports [label="generate_module_reexports()  (called once per module)", fillcolor="#90ee90", penwidth=2];
+
+        rx_reexport [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2">
+            <TR><TD ALIGN="LEFT"><B>Type re-exports:</B>  pub use crate::ffi::gp_Pnt as Pnt;</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>Function re-exports:</B>  pub use crate::ffi::fn_name;</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>Collection re-exports:</B>  pub use crate::ffi::TopTools_ListOfShape as ListOfShape;</TD></TR>
+        </TABLE>>, fillcolor="#b0e0b0"];
+
+        rx_impl [label="impl ShortName { ... }  (per class)", fillcolor="#b0e0b0"];
+
+        rx_per_class [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2">
+            <TR><TD ALIGN="LEFT"><B>Constructor wrappers</B></TD><TD ALIGN="LEFT">pub fn new_real3(...) → UniquePtr { ffi::Cls_ctor_real3(...) }</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>Upcast methods</B></TD><TD ALIGN="LEFT">pub fn as_base(&amp;self) → &amp;Base { ffi::Derived_as_Base(self) }</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>to_owned()</B></TD><TD ALIGN="LEFT">pub fn to_owned(&amp;self) → UniquePtr { ffi::Cls_to_owned(self) }</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>to_handle()</B></TD><TD ALIGN="LEFT">pub fn to_handle(obj: UniquePtr) → UniquePtr&lt;Handle&gt;</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_wrapper_method_impls()</B></TD><TD ALIGN="LEFT">by-value return + const char* method delegation</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_static_method_impls()</B></TD><TD ALIGN="LEFT">associated functions delegating to ffi::Cls_Method(...)</TD></TR>
+            <TR><TD ALIGN="LEFT"><B>generate_inherited_method_impls()</B></TD><TD ALIGN="LEFT">walk ancestor chain, emit non-overridden inherited wrappers</TD></TR>
+        </TABLE>>, fillcolor="#d4f0d4"];
+
+        rx_handle [label="Handle impl blocks  (upcast methods on Handle types)", fillcolor="#b0e0b0"];
+
+        gen_reexports -> rx_reexport;
+        gen_reexports -> rx_impl -> rx_per_class;
+        gen_reexports -> rx_handle;
+    }
+
+    correspondence -> gen_reexports [style=invis];
+    dispatch -> gen_reexports [label="  Step 3  ", color="#228b22", fontcolor="#228b22"];
+
+    // ═════════════════════════════════════════════════
+    //  Steps 4-5: lib.rs + rustfmt
+    // ═════════════════════════════════════════════════
+    gen_lib [label="Step 4:  generate_unified_lib_rs()  →  lib.rs\npub(crate) mod ffi;  pub mod gp;  pub mod topo_ds;  ... (×79)", fillcolor="#d3d3d3"];
+    rustfmt [label="Step 5:  rustfmt +nightly  +  postprocess_generated_code()", fillcolor="#d3d3d3"];
+
+    rx_handle -> gen_lib [style=invis];
+    dispatch -> gen_lib [label="  Step 4  "];
+    gen_lib -> rustfmt;
+
+    // ═════════════════════════════════════════════════
+    //  OUTPUT FILES
+    // ═════════════════════════════════════════════════
+    subgraph cluster_output {
+        label="Output:  crates/opencascade-sys/generated/";
+        style="filled,bold"; fillcolor="#f8f8f8";
+        labeljust="l"; fontsize=12;
+        node [shape=note, fillcolor="#ffffff"];
+
+        out_ffi [label="ffi.rs\n#[cxx::bridge] mod ffi { ... }\n~45K lines · 602 types · 6079 functions"];
+        out_cpp [label="wrappers.hxx\n#pragma once  ·  #include <*.hxx> (560 headers)\ninline C++ wrapper functions"];
+        out_mod [label="gp.rs, topo_ds.rs, b_rep_prim_api.rs, ...  (×79)\npub use ffi::X as Short;  impl Short { ... }"];
+        out_lib [label="lib.rs\npub(crate) mod ffi;  pub mod gp;  pub mod topo_ds;  ..."];
+    }
+
+    rustfmt -> out_ffi [style=bold, color="#4169e1"];
+    rustfmt -> out_cpp [style=bold, color="#cd5c5c"];
+    rustfmt -> out_mod [style=bold, color="#228b22"];
+    rustfmt -> out_lib [style=bold, color="#666666"];
+
+    // ═════════════════════════════════════════════════
+    //  LEGEND
+    // ═════════════════════════════════════════════════
+    subgraph cluster_legend {
+        label="Legend";
+        style="filled"; fillcolor="#ffffff";
+        labeljust="l"; fontsize=11;
+        node [shape=plaintext, fillcolor="#ffffff"];
+        leg [label=<
+            <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="3">
+            <TR><TD BGCOLOR="#ffe4b5">    </TD><TD ALIGN="LEFT">Parsing (libclang)</TD></TR>
+            <TR><TD BGCOLOR="#dda0dd">    </TD><TD ALIGN="LEFT">Symbol resolution (Pass 1)</TD></TR>
+            <TR><TD BGCOLOR="#87ceeb">    </TD><TD ALIGN="LEFT">Rust codegen → ffi.rs</TD></TR>
+            <TR><TD BGCOLOR="#ffa07a">    </TD><TD ALIGN="LEFT">C++ codegen → wrappers.hxx</TD></TR>
+            <TR><TD BGCOLOR="#90ee90">    </TD><TD ALIGN="LEFT">Rust codegen → per-module re-exports</TD></TR>
+            <TR><TD BGCOLOR="#ffffb0">    </TD><TD ALIGN="LEFT">Collection type codegen</TD></TR>
+            </TABLE>
+        >];
+    }
+}

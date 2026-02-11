@@ -70,7 +70,7 @@ cargo run -p opencascade-binding-generator -- \
 ```
 
 **Flags:**
-- `--unified` -- Generate unified ffi.rs (always used)
+- `--unified` -- Generate unified ffi.rs (always used; will be removed once old path is deleted)
 - `--resolve-deps` -- Auto-include header dependencies (always used)
 - `--dump-symbols` -- Dump symbol table for debugging
 - `--dry-run` -- Parse without generating
@@ -149,3 +149,223 @@ NCollection typedefs (e.g., `TopTools_ListOfShape`) get iterator wrappers:
 - [ ] Constructors with default enum parameters (e.g., `BRepFilletAPI_MakeFillet`)
 - [ ] TColgp array constructors (template instantiation typedefs)
 - [ ] System include path auto-detection (currently passed via `-I`)
+
+---
+
+## Next Steps
+
+### Step A: Remove Non-Unified Code Path
+
+The per-module architecture (each module gets its own `#[cxx::bridge]`) was superseded by the unified architecture in Step 4i. The `--unified` flag is always passed and the old path is dead code. Remove it.
+
+**What to remove:**
+
+1. **main.rs**: Remove the `--unified` CLI flag and the `if args.unified` branch. The per-module loop (lines 255-385) and `generate_lib_rs()` become dead. Inline `generate_unified()` into `main()` as the only path. Remove `generate_lib_rs()`.
+
+2. **lib.rs**: The public `generate_bindings()` API uses only the old per-module path (calls `generate_module` and `generate_module_header`). Either rewrite it to use the unified path or delete it — it has no callers outside the crate (check with `grep`). Same for `GeneratedModule`, `GeneratorConfig`, `generate_lib_rs`.
+
+3. **codegen/rust.rs**: Delete `generate_module()` (line 207) and all helper functions only used by it. Based on analysis, the old-only functions are:
+   - `generate_file_header` (line 66)
+   - `generate_module` (line 207) — the old entry point
+   - `generate_opaque_type_declarations` (line 609)
+   - `generate_type_aliases` (line 716)
+   - `generate_enum`, `screaming_snake_to_pascal_case` (dead code, never called)
+   - `generate_class` (line 823)
+   - `generate_constructors`, `generate_constructor` (old per-module versions)
+   - `generate_methods`, `generate_wrapper_methods`, `generate_wrapper_method`
+   - `generate_overload_suffix`, `generate_overload_suffix_for_wrappers`
+   - `generate_method`, `generate_method_with_suffix`
+   - `generate_static_methods`, `generate_static_method` (old per-module versions)
+   - `generate_upcast_methods` (old)
+   - `generate_to_owned`, `generate_to_handle_ffi`, `generate_handle_upcast_ffi` (old)
+   - `generate_inherited_method_ffi`, `collect_ancestor_methods`, `generate_inherited_methods`
+   - `generate_functions` (old), `generate_unique_ptr_impls` (old)
+   - `generate_re_exports`, `generate_wrapper_method_impls`, `generate_static_method_impls`
+   - `generate_inherited_method_impls`, `generate_handle_impls`, `generate_to_handle_exports`
+   - `type_to_ffi_string`
+   - `needs_explicit_lifetimes` (local copy; unified path uses `resolver::method_needs_explicit_lifetimes`)
+   - Dead code: `format_doc_comment`, `generate_doc_comments`, `extract_short_class_name`
+
+   Keep shared helpers used by the unified path: `type_uses_unknown_type`, `param_uses_unknown_handle`, `type_is_cstring`, `format_source_attribution`, `format_tokenstream`, `postprocess_generated_code`, `safe_method_name`, `safe_param_ident`, `collect_referenced_types`, `collect_types_from_type`, `is_primitive_type`, `method_uses_enum`, `constructor_uses_enum`, `static_method_uses_enum`, `function_uses_enum`, `needs_wrapper_function`, `has_unsupported_by_value_params`, `has_const_mut_return_mismatch`.
+
+4. **codegen/cpp.rs**: Delete `generate_module_header()` (line 40) and old-only helpers:
+   - `collect_required_headers` (line 104)
+   - `generate_class_wrappers` (line 265)
+   - `generate_constructor_wrappers`, `generate_return_by_value_wrappers`
+   - `generate_c_string_param_wrappers`, `generate_c_string_return_wrappers`
+   - `generate_static_method_wrappers` (old), `generate_upcast_wrappers` (old)
+   - `generate_to_handle_wrapper` (old), `generate_handle_upcast_wrappers` (old)
+   - `generate_inherited_method_wrappers` (old), `generate_function_wrappers` (old)
+   - Dead code: `extract_short_class_name`, `build_inheritance_map`
+
+   Keep shared: `type_is_cstring`, `param_uses_unknown_handle`, `collect_handle_types`, `collect_type_handles`, `collect_type_headers`, `method_uses_enum`, `type_to_cpp_param`, `param_to_cpp_arg`, `type_to_cpp`, `resolved_type_to_cpp_param`, `resolved_param_to_cpp_arg`.
+
+5. **codegen/collections.rs**: Delete old per-module functions:
+   - `collections_for_module`
+   - `generate_module_cpp_collections`
+   - `generate_module_rust_ffi_collections`, `generate_module_rust_impl_collections`
+   - `generate_collections_cpp_header` (deprecated), `generate_collections_rust_module`
+
+6. **scripts/regenerate-bindings.sh**: Remove `--unified` from the command line.
+
+7. **Test at line 4841**: Uses `generate_module`. Rewrite to use `generate_unified_ffi` or delete.
+
+8. **PLAN.md / README.md**: Remove references to `--unified` flag.
+
+**Estimated size**: ~3,100 lines deleted from rust.rs (lines 207-3100 minus shared helpers), ~1,300 lines from cpp.rs, ~200 from collections.rs, ~150 from main.rs. Net: ~4,500 lines removed.
+
+**Verification**: After deletion, `cargo build -p opencascade-binding-generator` must pass. Run `./scripts/regenerate-bindings.sh` and verify `cargo build -p opencascade-sys` still compiles.
+
+### Step B: Unify Codegen with Shared Intermediate Representation
+
+Currently the three output files (ffi.rs, wrappers.hxx, per-module *.rs) are generated by independent functions that each re-derive filtering, naming, overload suffixes, and `used_names` conflict resolution. Comments throughout say "must match X exactly". This is fragile — any change to filtering or naming must be applied identically in three places.
+
+The fix: compute all binding decisions once per class into a shared `ClassBindings` struct, then have thin emit functions for each output format consume it.
+
+#### Phase B1: Introduce `ClassBindings` intermediate representation
+
+Create a new module `crates/opencascade-binding-generator/src/codegen/bindings.rs`:
+
+```rust
+/// Computed binding decisions for a single class.
+/// All filtering, naming, and conflict resolution happens here ONCE.
+/// The emit functions for ffi.rs, wrappers.hxx, and module re-exports
+/// consume this struct without re-deriving any decisions.
+pub struct ClassBindings {
+    pub cpp_name: String,           // e.g. "gp_Pnt"
+    pub short_name: String,         // e.g. "Pnt"
+    pub module: String,             // e.g. "gp"
+    pub is_abstract: bool,
+    pub is_handle_type: bool,
+    pub doc_comment: Option<String>,
+    pub source_header: String,
+
+    pub constructors: Vec<ConstructorBinding>,
+    pub direct_methods: Vec<DirectMethodBinding>,    // CXX self methods
+    pub wrapper_methods: Vec<WrapperMethodBinding>,  // by-value return, const char*
+    pub static_methods: Vec<StaticMethodBinding>,
+    pub upcasts: Vec<UpcastBinding>,
+    pub has_to_owned: bool,
+    pub has_to_handle: bool,
+    pub handle_upcasts: Vec<HandleUpcastBinding>,
+    pub inherited_methods: Vec<InheritedMethodBinding>,
+}
+
+pub struct ConstructorBinding {
+    pub rust_method_name: String,   // e.g. "new_real3"
+    pub ffi_fn_name: String,        // e.g. "gp_Pnt_ctor_real3"
+    pub params: Vec<ParamBinding>,
+    pub doc_comment: Option<String>,
+    pub source_line: Option<u32>,
+}
+
+pub struct DirectMethodBinding {
+    pub rust_name: String,          // e.g. "x" — bound as self method by CXX
+    pub cxx_name: String,           // e.g. "X"
+    pub is_const: bool,
+    pub params: Vec<ParamBinding>,
+    pub return_type: Option<TypeBinding>,
+    pub doc_comment: Option<String>,
+}
+
+pub struct WrapperMethodBinding {
+    pub rust_name: String,          // e.g. "mirrored_pnt" — name in impl block
+    pub ffi_fn_name: String,        // e.g. "gp_Pnt_mirrored_pnt" — name in ffi.rs
+    pub is_const: bool,
+    pub params: Vec<ParamBinding>,
+    pub return_type: TypeBinding,
+    pub wrapper_kind: WrapperKind,  // ByValueReturn, CStringParam, CStringReturn
+    pub doc_comment: Option<String>,
+    pub source_line: Option<u32>,
+    pub cpp_method_name: String,    // original C++ name, e.g. "Mirrored"
+}
+
+pub struct StaticMethodBinding {
+    pub rust_name: String,          // name in impl block (may have _static suffix)
+    pub ffi_fn_name: String,        // name in ffi.rs (may have _static suffix)
+    pub params: Vec<ParamBinding>,
+    pub return_type: Option<TypeBinding>,
+    pub doc_comment: Option<String>,
+    pub cpp_method_name: String,
+}
+
+pub struct ParamBinding {
+    pub rust_name: String,
+    pub rust_type: String,          // for ffi.rs and impl blocks
+    pub cpp_type: String,           // for wrappers.hxx
+    pub cpp_arg_expr: String,       // how to pass to C++ (may need conversion)
+}
+
+pub struct TypeBinding {
+    pub rust_ffi_type: String,      // type as it appears in ffi.rs
+    pub rust_return_type: String,   // type as it appears in impl return (may differ)
+    pub cpp_type: String,           // C++ type
+}
+
+pub enum WrapperKind {
+    ByValueReturn,
+    CStringParam,
+    CStringReturn,
+}
+```
+
+The key function:
+
+```rust
+/// Compute all binding decisions for a class.
+/// This is the SINGLE place where filtering, naming, overload suffixes,
+/// and used_names conflict resolution happen.
+pub fn compute_class_bindings(
+    class: &ParsedClass,
+    ctx: &TypeContext,
+    all_enum_names: &HashSet<String>,
+) -> ClassBindings { ... }
+```
+
+This function absorbs the filtering and naming logic currently duplicated across `generate_unified_wrapper_methods` (rust.rs), `generate_unified_return_by_value_wrappers` (cpp.rs), and the wrapper section of `generate_module_reexports` (rust.rs). The `used_names` → `reserved_names` flow for static method conflict detection happens inside `compute_class_bindings` instead of being threaded between separate functions.
+
+#### Phase B2: Rewrite emit functions to consume `ClassBindings`
+
+Rewrite the three generators to be thin formatters:
+
+- **rust.rs `emit_ffi_class(bindings: &ClassBindings) -> String`**: Emits the `type` declaration, direct method declarations (with `self: &T`), wrapper function declarations (with `self_: &T`), static function declarations, upcast/to_owned/to_handle declarations.
+
+- **cpp.rs `emit_cpp_class(bindings: &ClassBindings) -> String`**: Emits the matching C++ inline wrapper functions. Each `WrapperMethodBinding` has all the info needed (cpp_method_name, params with cpp_type and cpp_arg_expr).
+
+- **rust.rs `emit_reexport_class(bindings: &ClassBindings) -> String`**: Emits the `pub use` and `impl` block. Each binding already has both `ffi_fn_name` (what to call) and `rust_name` (what to expose).
+
+The top-level generation becomes:
+
+```rust
+// In main.rs or a new top-level codegen function:
+let all_bindings: Vec<ClassBindings> = all_classes.iter()
+    .map(|c| compute_class_bindings(c, &ctx, &all_enum_names))
+    .collect();
+
+let ffi_rs = emit_ffi(&all_bindings, &function_bindings, &collection_bindings);
+let wrappers_hxx = emit_cpp(&all_bindings, &function_bindings, &collection_bindings);
+for module in modules {
+    let module_bindings: Vec<_> = all_bindings.iter()
+        .filter(|b| b.module == module.rust_name)
+        .collect();
+    let module_rs = emit_module_reexports(&module_bindings, ...);
+}
+```
+
+#### Phase B3: Switch ffi.rs generation from TokenStream to string-based
+
+Convert `emit_ffi_class` (and its callers) from `quote!`/TokenStream to `format!`/`push_str`, matching the style already used by `generate_module_reexports` and all of cpp.rs.
+
+This eliminates:
+- The `postprocess_generated_code()` regex hack that converts `#[doc = "SECTION: ..."]` → `// ...` and `#[doc = "BLANK_LINE"]` → blank lines
+- `format_tokenstream()` and `proc_macro2`/`quote`/`syn` dependencies (verify no other usage first)
+- String-to-TokenStream round-trips like `ty.rust_type.parse().unwrap_or_else(|_| quote! { () })`
+
+After this step, all three emit functions are string-based, making the codegen WYSIWYG — reading the generator shows exactly what the output looks like.
+
+#### Ordering and verification
+
+- **B1** can be done incrementally: introduce `ClassBindings` and `compute_class_bindings`, then migrate one generator at a time to consume it (e.g., start with wrappers.hxx since it's simplest).
+- **B2** follows naturally — each generator is rewritten to use `ClassBindings`.
+- **B3** is independent and can be done during B2 (convert each emit function to strings as it's written) or after.
+- After each sub-step: `cargo build -p opencascade-binding-generator`, then `./scripts/regenerate-bindings.sh`, then `cargo build -p opencascade-sys` and diff the generated output to verify no changes.
