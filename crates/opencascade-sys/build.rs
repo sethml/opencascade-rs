@@ -106,6 +106,7 @@ fn main() {
         .include(&occt_config.include_dir)
         .include(&gen_dir)
         .include(&src_dir)
+        .debug(false)
         .compile("opencascade_sys_wrapper");
 
     println!("cargo:rustc-link-lib=static=opencascade_sys_wrapper");
