@@ -953,8 +953,10 @@ pub fn generate_unified_cpp_collections(collections: &[CollectionInfo]) -> Strin
         }
     }
     
-    // Include headers
-    for header in headers {
+    // Include headers (sorted for determinism)
+    let mut sorted_headers: Vec<_> = headers.into_iter().collect();
+    sorted_headers.sort();
+    for header in sorted_headers {
         output.push_str(&format!("#include <{}>\n", header));
     }
     output.push('\n');
