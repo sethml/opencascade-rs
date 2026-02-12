@@ -74,10 +74,8 @@ fi
 # Run the generator
 # --resolve-deps: automatically include headers that our explicit headers depend on
 #                 so that all required base classes and types are parsed
-# --unified: generate unified FFI architecture (single ffi.rs and wrappers.hxx)
 "$REPO_ROOT/target/release/occt-bindgen" \
     --resolve-deps \
-    --unified \
     -I "$OCCT_INCLUDE" \
     -o "$OUTPUT_DIR" \
     "$@" \

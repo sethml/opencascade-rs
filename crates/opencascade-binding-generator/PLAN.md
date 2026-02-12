@@ -63,14 +63,13 @@ All method filtering (enum checks, lifetime issues, by-value params, etc.) is ce
 
 # Manual invocation:
 cargo run -p opencascade-binding-generator -- \
-    --unified --resolve-deps \
+    --resolve-deps \
     -I target/OCCT/include \
     -o crates/opencascade-sys/generated \
     $(cat crates/opencascade-sys/headers.txt | grep -v '^#' | grep -v '^$' | sed 's|^|target/OCCT/include/|')
 ```
 
 **Flags:**
-- `--unified` -- Generate unified ffi.rs (always used; will be removed once old path is deleted)
 - `--resolve-deps` -- Auto-include header dependencies (always used)
 - `--dump-symbols` -- Dump symbol table for debugging
 - `--dry-run` -- Parse without generating
@@ -152,69 +151,22 @@ NCollection typedefs (e.g., `TopTools_ListOfShape`) get iterator wrappers:
 
 ---
 
+## Completed Steps
+
+### Step A: Remove Non-Unified Code Path ✓
+
+Removed the old per-module code generation path. The unified architecture is now the only path.
+
+**What was removed (~4,600 lines):**
+- `main.rs`: Removed `--unified` CLI flag, old per-module code path, `generate_lib_rs()`
+- `lib.rs`: Removed `GeneratedModule`, `GeneratorConfig`, `generate_bindings()`, `generate_lib_rs()`
+- `codegen/rust.rs`: Removed `generate_module()` and ~30 old-only helper functions (~2,750 lines)
+- `codegen/cpp.rs`: Removed `generate_module_header()` and ~15 old-only helper functions (~1,100 lines)
+- `codegen/collections.rs`: Removed `collections_for_module` and 6 old per-module functions (~1,000 lines)
+- `scripts/regenerate-bindings.sh`: Removed `--unified` flag
+- Deleted the test that used `generate_module`
+
 ## Next Steps
-
-### Step A: Remove Non-Unified Code Path
-
-The per-module architecture (each module gets its own `#[cxx::bridge]`) was superseded by the unified architecture in Step 4i. The `--unified` flag is always passed and the old path is dead code. Remove it.
-
-**What to remove:**
-
-1. **main.rs**: Remove the `--unified` CLI flag and the `if args.unified` branch. The per-module loop (lines 255-385) and `generate_lib_rs()` become dead. Inline `generate_unified()` into `main()` as the only path. Remove `generate_lib_rs()`.
-
-2. **lib.rs**: The public `generate_bindings()` API uses only the old per-module path (calls `generate_module` and `generate_module_header`). Either rewrite it to use the unified path or delete it — it has no callers outside the crate (check with `grep`). Same for `GeneratedModule`, `GeneratorConfig`, `generate_lib_rs`.
-
-3. **codegen/rust.rs**: Delete `generate_module()` (line 207) and all helper functions only used by it. Based on analysis, the old-only functions are:
-   - `generate_file_header` (line 66)
-   - `generate_module` (line 207) — the old entry point
-   - `generate_opaque_type_declarations` (line 609)
-   - `generate_type_aliases` (line 716)
-   - `generate_enum`, `screaming_snake_to_pascal_case` (dead code, never called)
-   - `generate_class` (line 823)
-   - `generate_constructors`, `generate_constructor` (old per-module versions)
-   - `generate_methods`, `generate_wrapper_methods`, `generate_wrapper_method`
-   - `generate_overload_suffix`, `generate_overload_suffix_for_wrappers`
-   - `generate_method`, `generate_method_with_suffix`
-   - `generate_static_methods`, `generate_static_method` (old per-module versions)
-   - `generate_upcast_methods` (old)
-   - `generate_to_owned`, `generate_to_handle_ffi`, `generate_handle_upcast_ffi` (old)
-   - `generate_inherited_method_ffi`, `collect_ancestor_methods`, `generate_inherited_methods`
-   - `generate_functions` (old), `generate_unique_ptr_impls` (old)
-   - `generate_re_exports`, `generate_wrapper_method_impls`, `generate_static_method_impls`
-   - `generate_inherited_method_impls`, `generate_handle_impls`, `generate_to_handle_exports`
-   - `type_to_ffi_string`
-   - `needs_explicit_lifetimes` (local copy; unified path uses `resolver::method_needs_explicit_lifetimes`)
-   - Dead code: `format_doc_comment`, `generate_doc_comments`, `extract_short_class_name`
-
-   Keep shared helpers used by the unified path: `type_uses_unknown_type`, `param_uses_unknown_handle`, `type_is_cstring`, `format_source_attribution`, `format_tokenstream`, `postprocess_generated_code`, `safe_method_name`, `safe_param_ident`, `collect_referenced_types`, `collect_types_from_type`, `is_primitive_type`, `method_uses_enum`, `constructor_uses_enum`, `static_method_uses_enum`, `function_uses_enum`, `needs_wrapper_function`, `has_unsupported_by_value_params`, `has_const_mut_return_mismatch`.
-
-4. **codegen/cpp.rs**: Delete `generate_module_header()` (line 40) and old-only helpers:
-   - `collect_required_headers` (line 104)
-   - `generate_class_wrappers` (line 265)
-   - `generate_constructor_wrappers`, `generate_return_by_value_wrappers`
-   - `generate_c_string_param_wrappers`, `generate_c_string_return_wrappers`
-   - `generate_static_method_wrappers` (old), `generate_upcast_wrappers` (old)
-   - `generate_to_handle_wrapper` (old), `generate_handle_upcast_wrappers` (old)
-   - `generate_inherited_method_wrappers` (old), `generate_function_wrappers` (old)
-   - Dead code: `extract_short_class_name`, `build_inheritance_map`
-
-   Keep shared: `type_is_cstring`, `param_uses_unknown_handle`, `collect_handle_types`, `collect_type_handles`, `collect_type_headers`, `method_uses_enum`, `type_to_cpp_param`, `param_to_cpp_arg`, `type_to_cpp`, `resolved_type_to_cpp_param`, `resolved_param_to_cpp_arg`.
-
-5. **codegen/collections.rs**: Delete old per-module functions:
-   - `collections_for_module`
-   - `generate_module_cpp_collections`
-   - `generate_module_rust_ffi_collections`, `generate_module_rust_impl_collections`
-   - `generate_collections_cpp_header` (deprecated), `generate_collections_rust_module`
-
-6. **scripts/regenerate-bindings.sh**: Remove `--unified` from the command line.
-
-7. **Test at line 4841**: Uses `generate_module`. Rewrite to use `generate_unified_ffi` or delete.
-
-8. **PLAN.md / README.md**: Remove references to `--unified` flag.
-
-**Estimated size**: ~3,100 lines deleted from rust.rs (lines 207-3100 minus shared helpers), ~1,300 lines from cpp.rs, ~200 from collections.rs, ~150 from main.rs. Net: ~4,500 lines removed.
-
-**Verification**: After deletion, `cargo build -p opencascade-binding-generator` must pass. Run `./scripts/regenerate-bindings.sh` and verify `cargo build -p opencascade-sys` still compiles.
 
 ### Step B: Unify Codegen with Shared Intermediate Representation
 
