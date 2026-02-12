@@ -216,11 +216,7 @@ pub fn safe_short_name(short_name: &str) -> String {
 
 /// Extract module name from class name
 fn extract_module_from_class(class_name: &str) -> Option<String> {
-    if let Some(underscore_pos) = class_name.find('_') {
-        Some(module_to_rust_name(&class_name[..underscore_pos]))
-    } else {
-        None
-    }
+    class_name.find('_').map(|underscore_pos| module_to_rust_name(&class_name[..underscore_pos]))
 }
 
 /// Extract short class name (without module prefix)
@@ -426,8 +422,8 @@ pub fn map_cpp_type_string(cpp_type: &str) -> RustTypeMapping {
     }
 
     // Handle mutable references
-    if cpp_type.ends_with('&') {
-        let inner = cpp_type[..cpp_type.len() - 1].trim();
+    if let Some(inner) = cpp_type.strip_suffix('&') {
+        let inner = inner.trim();
         let inner_mapping = map_cpp_type_string(inner);
         return RustTypeMapping {
             rust_type: format!("Pin<&mut {}>", inner_mapping.rust_type),

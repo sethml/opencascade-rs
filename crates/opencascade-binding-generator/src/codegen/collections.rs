@@ -133,19 +133,6 @@ fn type_to_module(type_name: &str) -> String {
     }
 }
 
-/// Get the appropriate Rust FFI type name for a given OCCT type.
-/// 
-/// This checks if the type is a known collection - if so, it returns the short name
-/// (e.g., "ListOfShape" instead of "TopTools_ListOfShape").
-/// For non-collection types, it returns the full OCCT type name unchanged.
-fn ffi_type_name(occt_type: &str) -> String {
-    if let Some(info) = parse_collection_typedef(occt_type) {
-        info.short_name
-    } else {
-        occt_type.to_string()
-    }
-}
-
 /// Parse a typedef name to extract collection info if it's a known collection type
 pub fn parse_collection_typedef(typedef_name: &str) -> Option<CollectionInfo> {
     let known = known_collections();
@@ -204,8 +191,7 @@ pub fn all_known_collections() -> Vec<CollectionInfo> {
     result
 }
 
-/// Get collection types that belong to a specific module
-
+/// Generate C++ wrapper code for a single collection type
 pub fn generate_cpp_collection(info: &CollectionInfo) -> String {
     let mut output = String::new();
     
@@ -213,9 +199,9 @@ pub fn generate_cpp_collection(info: &CollectionInfo) -> String {
     let short_name = &info.short_name;
     let element_type = &info.element_type;
     
-    output.push_str(&format!("// ========================\n"));
+    output.push_str("// ========================\n");
     output.push_str(&format!("// {} - {}\n", typedef_name, collection_kind_description(info.kind)));
-    output.push_str(&format!("// ========================\n\n"));
+    output.push_str("// ========================\n\n");
     
     // Constructor
     output.push_str(&format!(
@@ -665,7 +651,6 @@ fn collection_kind_description(kind: CollectionKind) -> &'static str {
 // =============================================================================
 
 /// Generate Rust FFI code for a collection type
-
 pub fn generate_unified_rust_ffi_collections(collections: &[CollectionInfo]) -> (String, String) {
     if collections.is_empty() {
         return (String::new(), String::new());
@@ -714,56 +699,56 @@ fn generate_unified_rust_ffi_collection(info: &CollectionInfo) -> String {
     // Add/append method based on collection kind
     match info.kind {
         CollectionKind::List => {
-            output.push_str(&format!("                /// Append an element to the list\n"));
+            output.push_str("                /// Append an element to the list\n");
             output.push_str(&format!("                fn {}_append(coll: Pin<&mut {}>, item: &{});\n\n", coll_name, coll_name, info.element_type));
-            output.push_str(&format!("                /// Prepend an element to the list\n"));
+            output.push_str("                /// Prepend an element to the list\n");
             output.push_str(&format!("                fn {}_prepend(coll: Pin<&mut {}>, item: &{});\n\n", coll_name, coll_name, info.element_type));
         }
         CollectionKind::Sequence => {
-            output.push_str(&format!("                /// Append an element to the sequence\n"));
+            output.push_str("                /// Append an element to the sequence\n");
             output.push_str(&format!("                fn {}_append(coll: Pin<&mut {}>, item: &{});\n\n", coll_name, coll_name, info.element_type));
-            output.push_str(&format!("                /// Get element at 1-based index\n"));
+            output.push_str("                /// Get element at 1-based index\n");
             output.push_str(&format!("                fn {}_value(coll: &{}, index: i32) -> &{};\n\n", coll_name, coll_name, info.element_type));
         }
         CollectionKind::IndexedMap | CollectionKind::Map => {
-            output.push_str(&format!("                /// Add an element to the map/set\n"));
+            output.push_str("                /// Add an element to the map/set\n");
             output.push_str(&format!("                fn {}_add(coll: Pin<&mut {}>, item: &{}) -> i32;\n\n", coll_name, coll_name, info.element_type));
             if info.kind == CollectionKind::IndexedMap {
-                output.push_str(&format!("                /// Get element at 1-based index\n"));
+                output.push_str("                /// Get element at 1-based index\n");
                 output.push_str(&format!("                fn {}_find_key(coll: &{}, index: i32) -> &{};\n\n", coll_name, coll_name, info.element_type));
             }
         }
         CollectionKind::DataMap => {
             if let Some(ref value_type) = info.value_type {
-                output.push_str(&format!("                /// Bind a key to a value\n"));
+                output.push_str("                /// Bind a key to a value\n");
                 output.push_str(&format!("                #[cxx_name = \"{}_bind\"]\n", coll_name));
                 output.push_str(&format!("                fn {}_bind(coll: Pin<&mut {}>, key: &{}, value: &{}) -> bool;\n\n", coll_name, coll_name, info.element_type, value_type));
-                output.push_str(&format!("                /// Find a value by key (returns nullptr if not found)\n"));
+                output.push_str("                /// Find a value by key (returns nullptr if not found)\n");
                 output.push_str(&format!("                #[cxx_name = \"{}_find\"]\n", coll_name));
                 output.push_str(&format!("                fn {}_find(coll: &{}, key: &{}) -> UniquePtr<{}>;\n\n", coll_name, coll_name, info.element_type, value_type));
-                output.push_str(&format!("                /// Check if key exists\n"));
+                output.push_str("                /// Check if key exists\n");
                 output.push_str(&format!("                #[cxx_name = \"{}_contains\"]\n", coll_name));
                 output.push_str(&format!("                fn {}_contains(coll: &{}, key: &{}) -> bool;\n\n", coll_name, coll_name, info.element_type));
             }
         }
         CollectionKind::IndexedDataMap => {
             if let Some(ref value_type) = info.value_type {
-                output.push_str(&format!("                /// Add a key-value pair, returns index (existing or new)\n"));
+                output.push_str("                /// Add a key-value pair, returns index (existing or new)\n");
                 output.push_str(&format!("                #[cxx_name = \"{}_add\"]\n", coll_name));
                 output.push_str(&format!("                fn {}_add(coll: Pin<&mut {}>, key: &{}, value: &{}) -> i32;\n\n", coll_name, coll_name, info.element_type, value_type));
-                output.push_str(&format!("                /// Find value by key (returns reference)\n"));
+                output.push_str("                /// Find value by key (returns reference)\n");
                 output.push_str(&format!("                #[cxx_name = \"{}_find_from_key\"]\n", coll_name));
                 output.push_str(&format!("                fn {}_find_from_key<'a>(coll: &'a {}, key: &{}) -> &'a {};\n\n", coll_name, coll_name, info.element_type, value_type));
-                output.push_str(&format!("                /// Find value by 1-based index (returns reference)\n"));
+                output.push_str("                /// Find value by 1-based index (returns reference)\n");
                 output.push_str(&format!("                #[cxx_name = \"{}_find_from_index\"]\n", coll_name));
                 output.push_str(&format!("                fn {}_find_from_index<'a>(coll: &'a {}, index: i32) -> &'a {};\n\n", coll_name, coll_name, value_type));
-                output.push_str(&format!("                /// Find key by 1-based index\n"));
+                output.push_str("                /// Find key by 1-based index\n");
                 output.push_str(&format!("                #[cxx_name = \"{}_find_key\"]\n", coll_name));
                 output.push_str(&format!("                fn {}_find_key(coll: &{}, index: i32) -> UniquePtr<{}>;\n\n", coll_name, coll_name, info.element_type));
-                output.push_str(&format!("                /// Find index by key (returns 0 if not found)\n"));
+                output.push_str("                /// Find index by key (returns 0 if not found)\n");
                 output.push_str(&format!("                #[cxx_name = \"{}_find_index\"]\n", coll_name));
                 output.push_str(&format!("                fn {}_find_index(coll: &{}, key: &{}) -> i32;\n\n", coll_name, coll_name, info.element_type));
-                output.push_str(&format!("                /// Check if key exists\n"));
+                output.push_str("                /// Check if key exists\n");
                 output.push_str(&format!("                #[cxx_name = \"{}_contains\"]\n", coll_name));
                 output.push_str(&format!("                fn {}_contains(coll: &{}, key: &{}) -> bool;\n\n", coll_name, coll_name, info.element_type));
             }
@@ -771,7 +756,7 @@ fn generate_unified_rust_ffi_collection(info: &CollectionInfo) -> String {
     }
     
     // Iterator creation
-    output.push_str(&format!("                /// Create an iterator over the collection\n"));
+    output.push_str("                /// Create an iterator over the collection\n");
     output.push_str(&format!("                fn {}_iter(coll: &{}) -> UniquePtr<{}>;\n\n", coll_name, coll_name, iter_name));
 
     // Iterator next - DataMaps iterate over keys, others iterate over elements
@@ -780,7 +765,7 @@ fn generate_unified_rust_ffi_collection(info: &CollectionInfo) -> String {
         _ => "_next",
     };
     let next_fn_name = format!("{}{}", iter_name, next_suffix);
-    output.push_str(&format!("                /// Advance iterator and get next element (nullptr when done)\n"));
+    output.push_str("                /// Advance iterator and get next element (nullptr when done)\n");
     output.push_str(&format!("                #[cxx_name = \"{}\"]\n", next_fn_name));
     output.push_str(&format!("                fn {}(iter: Pin<&mut {}>) -> UniquePtr<{}>;\n\n", next_fn_name, iter_name, info.element_type));
     
@@ -797,7 +782,7 @@ pub fn generate_unified_rust_impl_collections(collections: &[CollectionInfo]) ->
     
     for info in collections {
         output.push_str(&generate_unified_rust_impl_collection(info));
-        output.push_str("\n");
+        output.push('\n');
     }
     
     output
@@ -812,121 +797,121 @@ fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
     // Collection impl block
     output.push_str(&format!("impl ffi::{} {{\n", coll_name));
     
-    output.push_str(&format!("    /// Create a new empty collection\n"));
-    output.push_str(&format!("    pub fn new() -> cxx::UniquePtr<Self> {{\n"));
+    output.push_str("    /// Create a new empty collection\n");
+    output.push_str("    pub fn new() -> cxx::UniquePtr<Self> {\n");
     output.push_str(&format!("        ffi::{}_new()\n", coll_name));
-    output.push_str(&format!("    }}\n\n"));
+    output.push_str("    }\n\n");
     
-    output.push_str(&format!("    /// Get number of elements\n"));
-    output.push_str(&format!("    pub fn len(&self) -> i32 {{\n"));
+    output.push_str("    /// Get number of elements\n");
+    output.push_str("    pub fn len(&self) -> i32 {\n");
     output.push_str(&format!("        ffi::{}_size(self)\n", coll_name));
-    output.push_str(&format!("    }}\n\n"));
+    output.push_str("    }\n\n");
     
-    output.push_str(&format!("    /// Check if empty\n"));
-    output.push_str(&format!("    pub fn is_empty(&self) -> bool {{\n"));
-    output.push_str(&format!("        self.len() == 0\n"));
-    output.push_str(&format!("    }}\n\n"));
+    output.push_str("    /// Check if empty\n");
+    output.push_str("    pub fn is_empty(&self) -> bool {\n");
+    output.push_str("        self.len() == 0\n");
+    output.push_str("    }\n\n");
     
-    output.push_str(&format!("    /// Remove all elements\n"));
-    output.push_str(&format!("    pub fn clear(self: std::pin::Pin<&mut Self>) {{\n"));
+    output.push_str("    /// Remove all elements\n");
+    output.push_str("    pub fn clear(self: std::pin::Pin<&mut Self>) {\n");
     output.push_str(&format!("        ffi::{}_clear(self)\n", coll_name));
-    output.push_str(&format!("    }}\n\n"));
+    output.push_str("    }\n\n");
     
     // Kind-specific methods
     match info.kind {
         CollectionKind::List => {
-            output.push_str(&format!("    /// Append an element to the list\n"));
+            output.push_str("    /// Append an element to the list\n");
             output.push_str(&format!("    pub fn append(self: std::pin::Pin<&mut Self>, item: &ffi::{}) {{\n", info.element_type));
             output.push_str(&format!("        ffi::{}_append(self, item)\n", coll_name));
-            output.push_str(&format!("    }}\n\n"));
+            output.push_str("    }\n\n");
             
-            output.push_str(&format!("    /// Prepend an element to the list\n"));
+            output.push_str("    /// Prepend an element to the list\n");
             output.push_str(&format!("    pub fn prepend(self: std::pin::Pin<&mut Self>, item: &ffi::{}) {{\n", info.element_type));
             output.push_str(&format!("        ffi::{}_prepend(self, item)\n", coll_name));
-            output.push_str(&format!("    }}\n\n"));
+            output.push_str("    }\n\n");
         }
         CollectionKind::Sequence => {
-            output.push_str(&format!("    /// Append an element to the sequence\n"));
+            output.push_str("    /// Append an element to the sequence\n");
             output.push_str(&format!("    pub fn append(self: std::pin::Pin<&mut Self>, item: &ffi::{}) {{\n", info.element_type));
             output.push_str(&format!("        ffi::{}_append(self, item)\n", coll_name));
-            output.push_str(&format!("    }}\n\n"));
+            output.push_str("    }\n\n");
             
-            output.push_str(&format!("    /// Get element at 1-based index\n"));
+            output.push_str("    /// Get element at 1-based index\n");
             output.push_str(&format!("    pub fn value(&self, index: i32) -> &ffi::{} {{\n", info.element_type));
             output.push_str(&format!("        ffi::{}_value(self, index)\n", coll_name));
-            output.push_str(&format!("    }}\n\n"));
+            output.push_str("    }\n\n");
         }
         CollectionKind::IndexedMap | CollectionKind::Map => {
-            output.push_str(&format!("    /// Add an element to the map/set\n"));
+            output.push_str("    /// Add an element to the map/set\n");
             output.push_str(&format!("    pub fn add(self: std::pin::Pin<&mut Self>, item: &ffi::{}) -> i32 {{\n", info.element_type));
             output.push_str(&format!("        ffi::{}_add(self, item)\n", coll_name));
-            output.push_str(&format!("    }}\n\n"));
+            output.push_str("    }\n\n");
             
             if info.kind == CollectionKind::IndexedMap {
-                output.push_str(&format!("    /// Get element at 1-based index\n"));
+                output.push_str("    /// Get element at 1-based index\n");
                 output.push_str(&format!("    pub fn find_key(&self, index: i32) -> &ffi::{} {{\n", info.element_type));
                 output.push_str(&format!("        ffi::{}_find_key(self, index)\n", coll_name));
-                output.push_str(&format!("    }}\n\n"));
+                output.push_str("    }\n\n");
             }
         }
         CollectionKind::DataMap => {
             if let Some(ref value_type) = info.value_type {
-                output.push_str(&format!("    /// Bind a key to a value\n"));
+                output.push_str("    /// Bind a key to a value\n");
                 output.push_str(&format!("    pub fn bind(self: std::pin::Pin<&mut Self>, key: &ffi::{}, value: &ffi::{}) -> bool {{\n", info.element_type, value_type));
                 output.push_str(&format!("        ffi::{}_bind(self, key, value)\n", coll_name));
-                output.push_str(&format!("    }}\n\n"));
+                output.push_str("    }\n\n");
 
-                output.push_str(&format!("    /// Find a value by key (returns nullptr if not found)\n"));
+                output.push_str("    /// Find a value by key (returns nullptr if not found)\n");
                 output.push_str(&format!("    pub fn find(&self, key: &ffi::{}) -> cxx::UniquePtr<ffi::{}> {{\n", info.element_type, value_type));
                 output.push_str(&format!("        ffi::{}_find(self, key)\n", coll_name));
-                output.push_str(&format!("    }}\n\n"));
+                output.push_str("    }\n\n");
 
-                output.push_str(&format!("    /// Check if key exists\n"));
+                output.push_str("    /// Check if key exists\n");
                 output.push_str(&format!("    pub fn contains(&self, key: &ffi::{}) -> bool {{\n", info.element_type));
                 output.push_str(&format!("        ffi::{}_contains(self, key)\n", coll_name));
-                output.push_str(&format!("    }}\n\n"));
+                output.push_str("    }\n\n");
             }
         }
         CollectionKind::IndexedDataMap => {
             if let Some(ref value_type) = info.value_type {
-                output.push_str(&format!("    /// Add a key-value pair, returns index (existing or new)\n"));
+                output.push_str("    /// Add a key-value pair, returns index (existing or new)\n");
                 output.push_str(&format!("    pub fn add(self: std::pin::Pin<&mut Self>, key: &ffi::{}, value: &ffi::{}) -> i32 {{\n", info.element_type, value_type));
                 output.push_str(&format!("        ffi::{}_add(self, key, value)\n", coll_name));
-                output.push_str(&format!("    }}\n\n"));
+                output.push_str("    }\n\n");
 
-                output.push_str(&format!("    /// Find value by key\n"));
+                output.push_str("    /// Find value by key\n");
                 output.push_str(&format!("    pub fn find_from_key(&self, key: &ffi::{}) -> &ffi::{} {{\n", info.element_type, value_type));
                 output.push_str(&format!("        ffi::{}_find_from_key(self, key)\n", coll_name));
-                output.push_str(&format!("    }}\n\n"));
+                output.push_str("    }\n\n");
 
-                output.push_str(&format!("    /// Find value by 1-based index\n"));
+                output.push_str("    /// Find value by 1-based index\n");
                 output.push_str(&format!("    pub fn find_from_index(&self, index: i32) -> &ffi::{} {{\n", value_type));
                 output.push_str(&format!("        ffi::{}_find_from_index(self, index)\n", coll_name));
-                output.push_str(&format!("    }}\n\n"));
+                output.push_str("    }\n\n");
 
-                output.push_str(&format!("    /// Find key by 1-based index\n"));
+                output.push_str("    /// Find key by 1-based index\n");
                 output.push_str(&format!("    pub fn find_key(&self, index: i32) -> cxx::UniquePtr<ffi::{}> {{\n", info.element_type));
                 output.push_str(&format!("        ffi::{}_find_key(self, index)\n", coll_name));
-                output.push_str(&format!("    }}\n\n"));
+                output.push_str("    }\n\n");
 
-                output.push_str(&format!("    /// Find index by key (returns 0 if not found)\n"));
+                output.push_str("    /// Find index by key (returns 0 if not found)\n");
                 output.push_str(&format!("    pub fn find_index(&self, key: &ffi::{}) -> i32 {{\n", info.element_type));
                 output.push_str(&format!("        ffi::{}_find_index(self, key)\n", coll_name));
-                output.push_str(&format!("    }}\n\n"));
+                output.push_str("    }\n\n");
 
-                output.push_str(&format!("    /// Check if key exists\n"));
+                output.push_str("    /// Check if key exists\n");
                 output.push_str(&format!("    pub fn contains(&self, key: &ffi::{}) -> bool {{\n", info.element_type));
                 output.push_str(&format!("        ffi::{}_contains(self, key)\n", coll_name));
-                output.push_str(&format!("    }}\n\n"));
+                output.push_str("    }\n\n");
             }
         }
     }
     
     // Iterator
-    output.push_str(&format!("    /// Create an iterator over the collection\n"));
+    output.push_str("    /// Create an iterator over the collection\n");
     output.push_str(&format!("    pub fn iter(&self) -> cxx::UniquePtr<ffi::{}> {{\n", iter_name));
     output.push_str(&format!("        ffi::{}_iter(self)\n", coll_name));
-    output.push_str(&format!("    }}\n"));
+    output.push_str("    }\n");
     
     output.push_str("}\n\n");
     
@@ -937,10 +922,10 @@ fn generate_unified_rust_impl_collection(info: &CollectionInfo) -> String {
     };
     let next_fn_name = format!("{}{}", iter_name, next_suffix);
     output.push_str(&format!("impl ffi::{} {{\n", iter_name));
-    output.push_str(&format!("    /// Get next element (nullptr when done)\n"));
+    output.push_str("    /// Get next element (nullptr when done)\n");
     output.push_str(&format!("    pub fn next(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<ffi::{}> {{\n", info.element_type));
     output.push_str(&format!("        ffi::{}(self)\n", next_fn_name));
-    output.push_str(&format!("    }}\n"));
+    output.push_str("    }\n");
     output.push_str("}\n");
     
     output
@@ -972,7 +957,7 @@ pub fn generate_unified_cpp_collections(collections: &[CollectionInfo]) -> Strin
     for header in headers {
         output.push_str(&format!("#include <{}>\n", header));
     }
-    output.push_str("\n");
+    output.push('\n');
     
     // Generate wrappers for each collection
     for info in collections {

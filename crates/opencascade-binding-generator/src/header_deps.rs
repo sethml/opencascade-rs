@@ -43,10 +43,7 @@ pub fn resolve_header_dependencies(
     }
     
     // Process queue, discovering dependencies
-    let mut processed = 0;
     while let Some(header_path) = queue.pop() {
-        processed += 1;
-        
         // Read the header file
         let content = match std::fs::read_to_string(&header_path) {
             Ok(c) => c,

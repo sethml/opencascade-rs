@@ -12,9 +12,6 @@
 
 use std::path::PathBuf;
 
-/// Minimum compatible version of OpenCASCADE library (major, minor)
-const OCCT_VERSION: (u8, u8) = (7, 8);
-
 /// The list of used OpenCASCADE libraries which needs to be linked with.
 const OCCT_LIBS: &[&str] = &[
     "TKMath",
@@ -130,23 +127,17 @@ impl OcctConfig {
     /// Find OpenCASCADE library using cmake
     fn detect() -> Self {
         println!("cargo:rerun-if-env-changed=DEP_OCCT_ROOT");
-        println!("cargo:warning=OcctConfig::detect() called");
 
         // Add path to builtin OCCT
         #[cfg(feature = "builtin")]
         {
-            println!("cargo:warning=Builtin feature is enabled");
-
             let builtin_occt_path = occt_sys::occt_path();
 
             // Skip building if OCCT appears to be already installed
             // Check for a key library file to determine if build is needed
             let marker_lib = builtin_occt_path.join("lib").join("libTKernel.a");
             if !marker_lib.exists() {
-                println!("cargo:warning=Building OCCT (marker not found: {:?})", marker_lib);
                 occt_sys::build_occt();
-            } else {
-                println!("cargo:warning=OCCT already built, skipping rebuild");
             }
             std::env::set_var("DEP_OCCT_ROOT", builtin_occt_path.as_os_str());
 
@@ -168,10 +159,6 @@ impl OcctConfig {
                 panic!("Builtin OCCT library directory not found at {:?}", builtin_occt_path);
             };
 
-            println!("cargo:warning=Using builtin OCCT from {}", builtin_occt_path.display());
-            println!("cargo:warning=  Include: {}", include_dir.display());
-            println!("cargo:warning=  Library: {}", library_dir.display());
-
             return Self {
                 include_dir,
                 library_dir,
@@ -182,6 +169,9 @@ impl OcctConfig {
         // Non-builtin: use cmake detection
         #[cfg(not(feature = "builtin"))]
         {
+            /// Minimum compatible version of OpenCASCADE library (major, minor)
+            const OCCT_VERSION: (u8, u8) = (7, 8);
+
             let dst =
                 std::panic::catch_unwind(|| cmake::Config::new("OCCT").register_dep("occt").build());
             let dst = dst.expect("Pre-installed OpenCASCADE library not found. You can use `builtin` feature if you do not want to install OCCT libraries system-wide.");

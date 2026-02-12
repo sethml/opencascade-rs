@@ -67,15 +67,15 @@ fn format_tokenstream(tokens: &TokenStream) -> String {
 
     // Add basic formatting by inserting newlines in key places to make it more readable
     // Note: Don't add newlines before "impl " - it would break impl blocks inside extern "C++"
-    let formatted = code
+    
+
+    code
         .replace(" # ! [", "\n#![")
         .replace(" # [cxx :: bridge]", "\n#[cxx::bridge]")
         .replace(" pub (crate) mod ffi {", "\npub(crate) mod ffi {")
         .replace(" unsafe extern \"C++\" {", "\n    unsafe extern \"C++\" {")
         .replace(" } }", "\n    }\n}")
-        .replace(" pub use ffi ::", "\npub use ffi::");
-
-    formatted
+        .replace(" pub use ffi ::", "\npub use ffi::")
 }
 
 /// Post-process generated code after rustfmt formatting:
@@ -159,7 +159,7 @@ fn safe_param_ident(name: &str) -> proc_macro2::Ident {
 /// Generate Rust CXX bridge code for a module
 ///
 /// Returns a String with properly formatted documentation.
-
+///
 /// Types collected from class interfaces
 struct CollectedTypes {
     /// Class types (e.g., "gp_Pnt", "Geom_TrimmedCurve") - sorted for deterministic output
@@ -452,7 +452,7 @@ pub fn generate_unified_ffi(
     let handle_decls = generate_unified_handle_declarations(all_classes);
 
     // Collect opaque type declarations (types referenced but not defined)
-    let collected_types = collect_referenced_types(&all_classes.iter().cloned().collect::<Vec<_>>());
+    let collected_types = collect_referenced_types(all_classes);
     let opaque_type_decls = generate_unified_opaque_declarations(
         &collected_types,
         all_classes,
@@ -559,7 +559,7 @@ pub fn generate_unified_ffi(
 
         // Append collection impl blocks
         let coll_impls = super::collections::generate_unified_rust_impl_collections(collections);
-        tokens_string.push_str("\n");
+        tokens_string.push('\n');
         tokens_string.push_str(&coll_impls);
     }
 
@@ -1472,7 +1472,7 @@ fn generate_unified_unique_ptr_impls(classes: &[&ParsedClass]) -> Vec<TokenStrea
 /// - `impl Pnt { ... }` blocks with constructor and method wrappers
 pub fn generate_module_reexports(
     module_name: &str,
-    rust_module_name: &str,
+    _rust_module_name: &str,
     classes: &[&ParsedClass],
     functions: &[&ParsedFunction],
     collections: &[&super::collections::CollectionInfo],
@@ -1553,7 +1553,7 @@ pub fn generate_module_reexports(
         }
         classes_by_header
             .entry(class.source_header.clone())
-            .or_insert_with(Vec::new)
+            .or_default()
             .push(class);
     }
 
@@ -1567,8 +1567,6 @@ pub fn generate_module_reexports(
         for class in header_classes {
             let cpp_name = &class.name;
         let short_name = class.short_name();
-        let safe_name = class.safe_short_name();
-        
         // Re-export with short name
         let doc_comment = if let Some(comment) = &class.comment {
             // Format multiline comment properly

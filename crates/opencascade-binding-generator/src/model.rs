@@ -201,11 +201,7 @@ pub struct Method {
 impl Method {
     /// Check if this method returns by value (needs wrapper)
     pub fn returns_by_value(&self) -> bool {
-        match &self.return_type {
-            Some(Type::Class(_)) => true,
-            Some(Type::Handle(_)) => true,
-            _ => false,
-        }
+        matches!(&self.return_type, Some(Type::Class(_)) | Some(Type::Handle(_)))
     }
 
     /// Check if this method has any unbindable types (streams, void pointers, etc.)
@@ -530,11 +526,7 @@ impl Type {
     pub fn module(&self) -> Option<String> {
         match self {
             Type::Class(name) | Type::Handle(name) => {
-                if let Some(underscore_pos) = name.find('_') {
-                    Some(name[..underscore_pos].to_string())
-                } else {
-                    None
-                }
+                name.find('_').map(|underscore_pos| name[..underscore_pos].to_string())
             }
             Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => inner.module(),
             _ => None,

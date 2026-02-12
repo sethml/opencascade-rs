@@ -465,7 +465,7 @@ pub fn params_use_enum(params: &[Param], all_enums: &HashSet<String>) -> bool {
 /// Check if a method uses any enum types (params or return type)
 pub fn method_uses_enum(method: &Method, all_enums: &HashSet<String>) -> bool {
     params_use_enum(&method.params, all_enums) 
-        || method.return_type.as_ref().map_or(false, |t| type_uses_enum(t, all_enums))
+        || method.return_type.as_ref().is_some_and(|t| type_uses_enum(t, all_enums))
 }
 
 /// Check if a constructor uses any enum types
@@ -476,13 +476,13 @@ pub fn constructor_uses_enum(ctor: &Constructor, all_enums: &HashSet<String>) ->
 /// Check if a static method uses any enum types
 pub fn static_method_uses_enum(method: &StaticMethod, all_enums: &HashSet<String>) -> bool {
     params_use_enum(&method.params, all_enums)
-        || method.return_type.as_ref().map_or(false, |t| type_uses_enum(t, all_enums))
+        || method.return_type.as_ref().is_some_and(|t| type_uses_enum(t, all_enums))
 }
 
 /// Check if a free function uses any enum types
 pub fn function_uses_enum(func: &ParsedFunction, all_enums: &HashSet<String>) -> bool {
     params_use_enum(&func.params, all_enums)
-        || func.return_type.as_ref().map_or(false, |t| type_uses_enum(t, all_enums))
+        || func.return_type.as_ref().is_some_and(|t| type_uses_enum(t, all_enums))
 }
 
 /// Check if a method needs explicit lifetimes (CXX limitation)
@@ -570,20 +570,12 @@ fn safe_param_name(name: &str) -> String {
 
 /// Check if a method needs a C++ wrapper (returns class by value)
 fn method_needs_wrapper(method: &Method) -> bool {
-    match &method.return_type {
-        Some(Type::Class(_)) => true,
-        Some(Type::Handle(_)) => true,
-        _ => false,
-    }
+    matches!(&method.return_type, Some(Type::Class(_)) | Some(Type::Handle(_)))
 }
 
 /// Check if a static method needs a C++ wrapper
 fn static_method_needs_wrapper(method: &StaticMethod) -> bool {
-    match &method.return_type {
-        Some(Type::Class(_)) => true,
-        Some(Type::Handle(_)) => true,
-        _ => false,
-    }
+    matches!(&method.return_type, Some(Type::Class(_)) | Some(Type::Handle(_)))
 }
 
 /// Build the symbol table from parsed headers and module graph
@@ -627,7 +619,7 @@ pub fn build_symbol_table(
             id: id.clone(),
             cpp_name: enum_decl.name.clone(),
             rust_module: crate::module_graph::module_to_rust_name(&enum_decl.module),
-            rust_name: safe_short_name(enum_decl.name.split('_').last().unwrap_or(&enum_decl.name)),
+            rust_name: safe_short_name(enum_decl.name.split('_').next_back().unwrap_or(&enum_decl.name)),
             source_header: enum_decl.source_header.clone(),
             variants: enum_decl.variants.iter().map(|v| {
                 // Convert SCREAMING_SNAKE to PascalCase for Rust
@@ -861,7 +853,7 @@ fn resolve_method(
             .map(|p| format!("{:?}", p.ty))
             .unwrap_or_default();
         BindingStatus::Excluded(ExclusionReason::UsesEnum { enum_name })
-    } else if method.return_type.as_ref().map_or(false, |t| type_uses_enum(t, all_enum_names)) {
+    } else if method.return_type.as_ref().is_some_and(|t| type_uses_enum(t, all_enum_names)) {
         let enum_name = format!("{:?}", method.return_type);
         BindingStatus::Excluded(ExclusionReason::UsesEnum { enum_name })
     } else if method_needs_explicit_lifetimes(method) {
@@ -926,7 +918,7 @@ fn resolve_static_method(
             .map(|p| format!("{:?}", p.ty))
             .unwrap_or_default();
         BindingStatus::Excluded(ExclusionReason::UsesEnum { enum_name })
-    } else if method.return_type.as_ref().map_or(false, |t| type_uses_enum(t, all_enum_names)) {
+    } else if method.return_type.as_ref().is_some_and(|t| type_uses_enum(t, all_enum_names)) {
         let enum_name = format!("{:?}", method.return_type);
         BindingStatus::Excluded(ExclusionReason::UsesEnum { enum_name })
     } else if let Some((param_name, type_name)) = static_method_has_unsupported_by_value_params(method) {
@@ -979,7 +971,7 @@ fn resolve_function(
             .map(|p| format!("{:?}", p.ty))
             .unwrap_or_default();
         BindingStatus::Excluded(ExclusionReason::UsesEnum { enum_name })
-    } else if func.return_type.as_ref().map_or(false, |t| type_uses_enum(t, all_enum_names)) {
+    } else if func.return_type.as_ref().is_some_and(|t| type_uses_enum(t, all_enum_names)) {
         let enum_name = format!("{:?}", func.return_type);
         BindingStatus::Excluded(ExclusionReason::UsesEnum { enum_name })
     } else {

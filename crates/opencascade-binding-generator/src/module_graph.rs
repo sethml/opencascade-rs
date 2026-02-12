@@ -265,11 +265,7 @@ fn collect_types_from_type(ty: &Type, deps: &mut HashSet<String>) {
 
 /// Extract module name from a type name
 fn extract_module_from_type(type_name: &str) -> Option<String> {
-    if let Some(underscore_pos) = type_name.find('_') {
-        Some(type_name[..underscore_pos].to_string())
-    } else {
-        None
-    }
+    type_name.find('_').map(|underscore_pos| type_name[..underscore_pos].to_string())
 }
 
 /// Convert C++ module name to Rust module name (snake_case)

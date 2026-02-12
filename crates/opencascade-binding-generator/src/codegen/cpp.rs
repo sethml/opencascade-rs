@@ -145,7 +145,7 @@ fn collect_type_headers(ty: &Option<Type>, headers: &mut HashSet<String>, known_
 /// This is a convenience wrapper for the cpp codegen which passes params and return_type separately
 fn method_uses_enum(params: &[Param], return_type: &Option<Type>, all_enums: &HashSet<String>) -> bool {
     resolver::params_use_enum(params, all_enums)
-        || return_type.as_ref().map_or(false, |t| resolver::type_uses_enum(t, all_enums))
+        || return_type.as_ref().is_some_and(|t| resolver::type_uses_enum(t, all_enums))
 }
 
 fn type_to_cpp_param(ty: &Type) -> String {
@@ -370,7 +370,7 @@ fn generate_unified_constructor_wrappers(
     class: &ParsedClass,
     output: &mut String,
     all_enum_names: &HashSet<String>,
-    all_class_names: &HashSet<String>,
+    _all_class_names: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
 ) {
     if class.is_abstract {
@@ -419,7 +419,7 @@ fn generate_unified_constructor_wrappers(
             .collect();
         let params_str = params_cpp.join(", ");
 
-        let args: Vec<String> = ctor.params.iter().map(|p| param_to_cpp_arg(p)).collect();
+        let args: Vec<String> = ctor.params.iter().map(param_to_cpp_arg).collect();
         let args_str = args.join(", ");
 
         writeln!(
@@ -445,7 +445,7 @@ fn generate_unified_return_by_value_wrappers(
     // First, collect all methods that need wrappers
     let wrapper_methods: Vec<&crate::model::Method> = class.methods.iter().filter(|method| {
         // Skip methods that don't return by value
-        let returns_by_value = method.return_type.as_ref().map_or(false, |ty| {
+        let returns_by_value = method.return_type.as_ref().is_some_and(|ty| {
             ty.is_class() || ty.is_handle()
         });
         if !returns_by_value {
@@ -528,7 +528,7 @@ fn generate_unified_return_by_value_wrappers(
             .collect::<Vec<_>>()
             .join(", ");
 
-        let args: Vec<String> = method.params.iter().map(|p| param_to_cpp_arg(p)).collect();
+        let args: Vec<String> = method.params.iter().map(param_to_cpp_arg).collect();
         let args_str = args.join(", ");
 
         writeln!(
@@ -629,7 +629,7 @@ fn generate_unified_static_method_wrappers(
         let needs_unique_ptr = method
             .return_type
             .as_ref()
-            .map_or(false, |ty| ty.is_class() || ty.is_handle());
+            .is_some_and(|ty| ty.is_class() || ty.is_handle());
 
         let params_cpp: Vec<String> = method
             .params
@@ -638,7 +638,7 @@ fn generate_unified_static_method_wrappers(
             .collect();
         let params_str = params_cpp.join(", ");
 
-        let args: Vec<String> = method.params.iter().map(|p| param_to_cpp_arg(p)).collect();
+        let args: Vec<String> = method.params.iter().map(param_to_cpp_arg).collect();
         let args_str = args.join(", ");
 
         if needs_unique_ptr {
@@ -902,7 +902,7 @@ fn generate_unified_c_string_param_wrappers(
         let args = method
             .params
             .iter()
-            .map(|p| param_to_cpp_arg(p))
+            .map(param_to_cpp_arg)
             .collect::<Vec<_>>()
             .join(", ");
 
@@ -1040,7 +1040,7 @@ fn generate_unified_c_string_return_wrappers(
         let args = method
             .params
             .iter()
-            .map(|p| param_to_cpp_arg(p))
+            .map(param_to_cpp_arg)
             .collect::<Vec<_>>()
             .join(", ");
 
@@ -1065,8 +1065,8 @@ fn generate_unified_inherited_method_wrappers(
     class: &ParsedClass,
     output: &mut String,
     symbol_table: &SymbolTable,
-    all_class_names: &HashSet<String>,
-    handle_able_classes: &HashSet<String>,
+    _all_class_names: &HashSet<String>,
+    _handle_able_classes: &HashSet<String>,
 ) {
     use std::collections::HashSet;
 
@@ -1145,7 +1145,7 @@ fn generate_unified_inherited_method_wrappers(
 
                 // Arguments for calling the method
                 let args: Vec<String> = resolved_method.params.iter()
-                    .map(|p| resolved_param_to_cpp_arg(p))
+                    .map(resolved_param_to_cpp_arg)
                     .collect();
                 let args_str = args.join(", ");
 
@@ -1275,7 +1275,7 @@ fn generate_unified_function_wrappers(
                 .collect();
             let params_str = params_cpp.join(", ");
 
-            let args: Vec<String> = func.params.iter().map(|p| param_to_cpp_arg(p)).collect();
+            let args: Vec<String> = func.params.iter().map(param_to_cpp_arg).collect();
             let args_str = args.join(", ");
 
             let call = format!("{}::{}({})", namespace, func.short_name, args_str);

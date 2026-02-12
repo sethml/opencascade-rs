@@ -8,7 +8,7 @@ use crate::model::{
     Type,
 };
 use anyhow::{Context, Result};
-use clang::{Accessibility, Clang, Entity, EntityKind, EntityVisitResult, Index, TypeKind};
+use clang::{Accessibility, Availability, Clang, Entity, EntityKind, EntityVisitResult, Index, TypeKind};
 use std::path::Path;
 use std::time::Instant;
 
@@ -85,11 +85,10 @@ pub fn parse_headers(
     // Check for parse errors
     let diagnostics = tu.get_diagnostics();
     for diag in &diagnostics {
-        if diag.get_severity() >= clang::diagnostic::Severity::Error {
-            if verbose {
+        if diag.get_severity() >= clang::diagnostic::Severity::Error
+            && verbose {
                 eprintln!("  Parse error: {}", diag.get_text());
             }
-        }
     }
 
     // Initialize results - one ParsedHeader per input header
@@ -235,6 +234,10 @@ fn visit_namespace_member_batch(
     };
 
     if entity.get_kind() == EntityKind::FunctionDecl {
+        // Skip deprecated functions
+        if entity.get_availability() == Availability::Deprecated {
+            return EntityVisitResult::Continue;
+        }
         if let Some(parsed) = parse_function(entity, namespace, &entity_file.file_name().unwrap_or_default().to_string_lossy(), verbose) {
             results[index].functions.push(parsed);
         }
@@ -329,6 +332,14 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
     entity.visit_children(|child, _| {
         match child.get_kind() {
             EntityKind::Constructor => {
+                // Skip deprecated constructors
+                if child.get_availability() == Availability::Deprecated {
+                    if verbose {
+                        println!("    Skipping deprecated constructor for {}", name);
+                    }
+                    return EntityVisitResult::Continue;
+                }
+
                 if is_public(&child) {
                     if let Some(ctor) = parse_constructor(&child, verbose) {
                         constructors.push(ctor);
@@ -340,7 +351,7 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
                 if child.is_pure_virtual_method() {
                     is_abstract = true;
                 }
-                
+
                 // Skip destructors, operators, and conversion functions
                 if let Some(ref method_name) = child.get_name() {
                     if method_name.starts_with('~')
@@ -350,9 +361,19 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
                     {
                         return EntityVisitResult::Continue;
                     }
-                    
+
                     // Always track all method names (even if not public) - used for filtering inherited methods
                     all_method_names.insert(method_name.clone());
+                }
+
+                // Skip deprecated methods
+                if child.get_availability() == Availability::Deprecated {
+                    if verbose {
+                        if let Some(ref method_name) = child.get_name() {
+                            println!("    Skipping deprecated method {}::{}", name, method_name);
+                        }
+                    }
+                    return EntityVisitResult::Continue;
                 }
 
                 if is_public(&child) {

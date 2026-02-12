@@ -25152,18 +25152,6 @@ mod ffi {
         /// UBNode()/SetUVNode() should be used instead in portable code.
         #[cxx_name = "InternalUVNodes"]
         fn internal_uv_nodes(self: Pin<&mut Poly_Triangulation>) -> Pin<&mut Poly_ArrayOfUVNodes>;
-        /// **Source:** `Poly_Triangulation.hxx`:335 - `Poly_Triangulation::SetNormals()`
-        #[cxx_name = "SetNormals"]
-        fn set_normals(
-            self: Pin<&mut Poly_Triangulation>,
-            theNormals: &HandleTShortHArray1OfShortReal,
-        );
-        /// **Source:** `Poly_Triangulation.hxx`:347 - `Poly_Triangulation::ChangeTriangle()`
-        #[cxx_name = "ChangeTriangle"]
-        fn change_triangle(
-            self: Pin<&mut Poly_Triangulation>,
-            theIndex: i32,
-        ) -> Pin<&mut Poly_Triangle>;
         /// **Source:** `Poly_Triangulation.hxx`:356 - `Poly_Triangulation::NbDeferredNodes()`
         ///
         /// @name late-load deferred data interface
