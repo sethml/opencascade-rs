@@ -10265,9 +10265,6 @@ inline std::unique_ptr<Message_Msg> Message_Msg_ctor_extendedstring(const TColle
 inline void Message_Msg_set(Message_Msg& self, rust::Str theMsg) {
     self.Set(std::string(theMsg).c_str());
 }
-inline Message_Msg& Message_Msg_arg(Message_Msg& self, rust::Str theString) {
-    return self.Arg(std::string(theString).c_str());
-}
 
 // ========================
 // GeomAdaptor_Curve wrappers
@@ -14231,11 +14228,11 @@ inline TopoDS_Compound& TopoDS_compound_mut(TopoDS_Shape& theShape) { return Top
 // ========================
 
 #include <TopTools_ListOfShape.hxx>
-#include <TopTools_SequenceOfShape.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <TopTools_MapOfShape.hxx>
-#include <TopoDS_Shape.hxx>
+#include <TopTools_SequenceOfShape.hxx>
 #include <TopTools_DataMapOfShapeShape.hxx>
+#include <TopoDS_Shape.hxx>
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
 
 // ========================

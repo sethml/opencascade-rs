@@ -5,12 +5,13 @@
 //! ffi.rs, wrappers.hxx, and per-module re-exports consume this struct
 //! without re-deriving any decisions.
 
-#![allow(dead_code)] // Some functions reserved for Phase B2 emit functions
-
 use crate::model::{Constructor, Method, ParsedClass, StaticMethod, Type};
+use crate::module_graph;
 use crate::resolver::{self, SymbolTable};
 use crate::type_mapping::{self, map_return_type_in_context, map_type_in_context, TypeContext};
 use heck::ToSnakeCase;
+use proc_macro2::TokenStream;
+use quote::{format_ident, quote};
 use std::collections::{HashMap, HashSet};
 
 /// Rust keywords that need suffix escaping (CXX doesn't support raw identifiers).
@@ -192,6 +193,8 @@ pub struct InheritedMethodBinding {
 /// A parameter binding with info for all three output targets.
 #[derive(Debug, Clone)]
 pub struct ParamBinding {
+    /// Original C++ parameter name (for use in C++ wrapper declarations)
+    pub cpp_name: String,
     /// Rust parameter name (keyword-escaped)
     pub rust_name: String,
     /// Type as it appears in ffi.rs (e.g. "f64", "&gp_Pnt", "Pin<&mut gp_Pnt>")
@@ -307,24 +310,6 @@ fn needs_wrapper_function(method: &Method, all_enums: &HashSet<String>) -> bool 
             is_class_or_handle && !is_enum
         })
         .unwrap_or(false)
-}
-
-/// Check if a method returns by value AND is NOT already handled as a by-value wrapper
-/// (i.e., it's a c_string param method whose return is also by-value class/handle,
-/// meaning it's already covered by the by-value wrapper)
-fn is_cstring_already_wrapped_by_value(method: &Method, all_enums: &HashSet<String>) -> bool {
-    if method.returns_by_value() {
-        let return_type_name = match &method.return_type {
-            Some(Type::Class(name)) => Some(name.as_str()),
-            _ => None,
-        };
-        let is_enum = return_type_name
-            .map(|n| all_enums.contains(n))
-            .unwrap_or(false);
-        !is_enum
-    } else {
-        false
-    }
 }
 
 /// Classify the wrapper kind for a method that needs_wrapper_function
@@ -553,6 +538,7 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> bool {
 // ── Building ParamBinding / ReturnTypeBinding ───────────────────────────────
 
 fn build_param_binding(name: &str, ty: &Type, ffi_ctx: &TypeContext) -> ParamBinding {
+    let cpp_name = name.to_string();
     let rust_name = safe_param_name(name);
     let mapped = map_type_in_context(ty, ffi_ctx);
     let rust_ffi_type = mapped.rust_type;
@@ -561,6 +547,7 @@ fn build_param_binding(name: &str, ty: &Type, ffi_ctx: &TypeContext) -> ParamBin
     let cpp_arg_expr = param_to_cpp_arg(name, ty);
 
     ParamBinding {
+        cpp_name,
         rust_name,
         rust_ffi_type,
         rust_reexport_type,
@@ -1255,6 +1242,942 @@ pub fn compute_all_class_bindings(
             compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes)
         })
         .collect()
+}
+
+// ── Emit functions ──────────────────────────────────────────────────────────
+
+/// Emit C++ wrapper code for a single class from pre-computed ClassBindings.
+///
+/// Produces the same output as the old generate_unified_class_wrappers()
+/// and its 10+ sub-functions, but consumes the pre-computed IR instead
+/// of re-deriving decisions.
+pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
+    use std::fmt::Write;
+
+    let mut output = String::new();
+    let cn = &bindings.cpp_name;
+
+    writeln!(output, "// ========================").unwrap();
+    writeln!(output, "// {} wrappers", cn).unwrap();
+    writeln!(output, "// ========================").unwrap();
+    writeln!(output).unwrap();
+
+    // 1. Constructor wrappers
+    for ctor in &bindings.constructors {
+        let params_cpp: Vec<String> = ctor
+            .params
+            .iter()
+            .map(|p| format!("{} {}", p.cpp_type, p.cpp_name))
+            .collect();
+        let params_str = params_cpp.join(", ");
+        let args_str = ctor.cpp_arg_exprs.join(", ");
+
+        writeln!(
+            output,
+            "inline std::unique_ptr<{cn}> {fn_name}({params_str}) {{",
+            fn_name = ctor.ffi_fn_name
+        )
+        .unwrap();
+        writeln!(
+            output,
+            "    return std::make_unique<{cn}>({args_str});"
+        )
+        .unwrap();
+        writeln!(output, "}}").unwrap();
+    }
+
+    // 2. ByValueReturn wrapper methods
+    for wm in bindings
+        .wrapper_methods
+        .iter()
+        .filter(|m| m.wrapper_kind == WrapperKind::ByValueReturn)
+    {
+        let self_param = if wm.is_const {
+            format!("const {cn}& self_")
+        } else {
+            format!("{cn}& self_")
+        };
+
+        let other_params: Vec<String> = wm
+            .params
+            .iter()
+            .map(|p| format!("{} {}", p.cpp_type, p.cpp_name))
+            .collect();
+        let all_params = std::iter::once(self_param)
+            .chain(other_params)
+            .collect::<Vec<_>>()
+            .join(", ");
+        let args_str = wm
+            .params
+            .iter()
+            .map(|p| p.cpp_arg_expr.as_str())
+            .collect::<Vec<_>>()
+            .join(", ");
+        let ret_cpp = &wm.return_type.as_ref().unwrap().cpp_type;
+
+        writeln!(
+            output,
+            "inline std::unique_ptr<{ret_cpp}> {fn_name}({all_params}) {{",
+            fn_name = wm.ffi_fn_name
+        )
+        .unwrap();
+        writeln!(
+            output,
+            "    return std::make_unique<{ret_cpp}>(self_.{method}({args_str}));",
+            method = wm.cpp_method_name
+        )
+        .unwrap();
+        writeln!(output, "}}").unwrap();
+    }
+
+    // 3. Static method wrappers
+    // Note: In the old code, static methods were emitted between by-value and cstring wrappers
+    // when you look at the call order in generate_unified_class_wrappers. Actually, the order is:
+    // by-value → cstring-param → cstring-return → static. Let me re-check...
+    // The actual call order in generate_unified_class_wrappers is:
+    //   1. constructor
+    //   2. return_by_value
+    //   3. c_string_param
+    //   4. c_string_return
+    //   5. static_method
+    //   6. upcast
+    //   7. to_owned
+    //   8. to_handle
+    //   9. handle_upcast
+    //   10. inherited_method
+
+    // 3. CStringParam wrapper methods
+    for wm in bindings
+        .wrapper_methods
+        .iter()
+        .filter(|m| m.wrapper_kind == WrapperKind::CStringParam)
+    {
+        let self_param = if wm.is_const {
+            format!("const {cn}& self")
+        } else {
+            format!("{cn}& self")
+        };
+
+        let other_params = wm
+            .params
+            .iter()
+            .map(|p| format!("{} {}", p.cpp_type, p.cpp_name))
+            .collect::<Vec<_>>()
+            .join(", ");
+        let params = if other_params.is_empty() {
+            self_param
+        } else {
+            format!("{}, {}", self_param, other_params)
+        };
+        let args_str = wm
+            .params
+            .iter()
+            .map(|p| p.cpp_arg_expr.as_str())
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        // Determine return behaviour
+        let returns_cstring = wm
+            .return_type
+            .as_ref()
+            .map(|rt| rt.cpp_type == "const char*")
+            .unwrap_or(false);
+        let returns_reference = wm
+            .return_type
+            .as_ref()
+            .map(|rt| rt.cpp_type.contains('&'))
+            .unwrap_or(false);
+
+        if returns_cstring {
+            writeln!(
+                output,
+                "inline rust::String {fn_name}({params}) {{",
+                fn_name = wm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return rust::String(self.{method}({args_str}));",
+                method = wm.cpp_method_name
+            )
+            .unwrap();
+        } else if returns_reference {
+            let ret_cpp = &wm.return_type.as_ref().unwrap().cpp_type;
+            writeln!(
+                output,
+                "inline {ret_cpp} {fn_name}({params}) {{",
+                fn_name = wm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return self.{method}({args_str});",
+                method = wm.cpp_method_name
+            )
+            .unwrap();
+        } else if wm.return_type.is_none() {
+            writeln!(
+                output,
+                "inline void {fn_name}({params}) {{",
+                fn_name = wm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    self.{method}({args_str});",
+                method = wm.cpp_method_name
+            )
+            .unwrap();
+        } else {
+            let ret_cpp = &wm.return_type.as_ref().unwrap().cpp_type;
+            writeln!(
+                output,
+                "inline {ret_cpp} {fn_name}({params}) {{",
+                fn_name = wm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return self.{method}({args_str});",
+                method = wm.cpp_method_name
+            )
+            .unwrap();
+        }
+        writeln!(output, "}}").unwrap();
+    }
+
+    // 4. CStringReturn wrapper methods
+    for wm in bindings
+        .wrapper_methods
+        .iter()
+        .filter(|m| m.wrapper_kind == WrapperKind::CStringReturn)
+    {
+        let self_param = if wm.is_const {
+            format!("const {cn}& self")
+        } else {
+            format!("{cn}& self")
+        };
+
+        let other_params = wm
+            .params
+            .iter()
+            .map(|p| format!("{} {}", p.cpp_type, p.cpp_name))
+            .collect::<Vec<_>>()
+            .join(", ");
+        let params = if other_params.is_empty() {
+            self_param
+        } else {
+            format!("{}, {}", self_param, other_params)
+        };
+        let args_str = wm
+            .params
+            .iter()
+            .map(|p| p.cpp_arg_expr.as_str())
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        writeln!(
+            output,
+            "inline rust::String {fn_name}({params}) {{",
+            fn_name = wm.ffi_fn_name
+        )
+        .unwrap();
+        writeln!(
+            output,
+            "    return rust::String(self.{method}({args_str}));",
+            method = wm.cpp_method_name
+        )
+        .unwrap();
+        writeln!(output, "}}").unwrap();
+    }
+
+    // 5. Static method wrappers
+    for sm in &bindings.static_methods {
+        let params_str = sm
+            .params
+            .iter()
+            .map(|p| format!("{} {}", p.cpp_type, p.cpp_name))
+            .collect::<Vec<_>>()
+            .join(", ");
+        let args_str = sm
+            .params
+            .iter()
+            .map(|p| p.cpp_arg_expr.as_str())
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        let (ret_type, needs_up) = match &sm.return_type {
+            Some(rt) => (rt.cpp_type.clone(), rt.needs_unique_ptr),
+            None => ("void".to_string(), false),
+        };
+
+        if needs_up {
+            writeln!(
+                output,
+                "inline std::unique_ptr<{ret_type}> {fn_name}({params_str}) {{",
+                fn_name = sm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return std::make_unique<{ret_type}>({cn}::{method}({args_str}));",
+                method = sm.cpp_method_name
+            )
+            .unwrap();
+        } else {
+            writeln!(
+                output,
+                "inline {ret_type} {fn_name}({params_str}) {{",
+                fn_name = sm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return {cn}::{method}({args_str});",
+                method = sm.cpp_method_name
+            )
+            .unwrap();
+        }
+        writeln!(output, "}}").unwrap();
+    }
+
+    // 6. Upcast wrappers
+    for up in &bindings.upcasts {
+        // Const upcast
+        writeln!(
+            output,
+            "inline const {base}& {fn_name}(const {cn}& self_) {{ return static_cast<const {base}&>(self_); }}",
+            base = up.base_class,
+            fn_name = up.ffi_fn_name
+        )
+        .unwrap();
+        // Mutable upcast
+        writeln!(
+            output,
+            "inline {base}& {fn_name_mut}({cn}& self_) {{ return static_cast<{base}&>(self_); }}",
+            base = up.base_class,
+            fn_name_mut = up.ffi_fn_name_mut
+        )
+        .unwrap();
+    }
+
+    // 7. to_owned wrapper
+    if bindings.has_to_owned {
+        let fn_name = format!("{cn}_to_owned");
+        writeln!(
+            output,
+            "inline std::unique_ptr<{cn}> {fn_name}(const {cn}& self_) {{ return std::make_unique<{cn}>(self_); }}"
+        )
+        .unwrap();
+    }
+
+    // 8. to_handle wrapper
+    if bindings.has_to_handle {
+        let handle_type = format!("Handle{}", cn.replace("_", ""));
+        let fn_name = format!("{cn}_to_handle");
+        writeln!(
+            output,
+            "inline std::unique_ptr<{handle_type}> {fn_name}(std::unique_ptr<{cn}> obj) {{"
+        )
+        .unwrap();
+        writeln!(
+            output,
+            "    return std::make_unique<{handle_type}>(obj.release());"
+        )
+        .unwrap();
+        writeln!(output, "}}").unwrap();
+    }
+
+    // 9. Handle upcast wrappers
+    for hup in &bindings.handle_upcasts {
+        writeln!(
+            output,
+            "inline std::unique_ptr<{base_handle}> {fn_name}(const {derived_handle}& self_) {{",
+            base_handle = hup.base_handle_name,
+            fn_name = hup.ffi_fn_name,
+            derived_handle = hup.derived_handle_name
+        )
+        .unwrap();
+        writeln!(
+            output,
+            "    return std::make_unique<{base_handle}>(self_);",
+            base_handle = hup.base_handle_name
+        )
+        .unwrap();
+        writeln!(output, "}}").unwrap();
+    }
+
+    // 10. Inherited method wrappers
+    for im in &bindings.inherited_methods {
+        let self_param = if im.is_const {
+            format!("const {cn}& self")
+        } else {
+            format!("{cn}& self")
+        };
+        let other_params: Vec<String> = im
+            .params
+            .iter()
+            .map(|p| format!("{} {}", p.cpp_type, p.name))
+            .collect();
+        let params = if other_params.is_empty() {
+            self_param
+        } else {
+            format!("{}, {}", self_param, other_params.join(", "))
+        };
+        let args_str = im
+            .params
+            .iter()
+            .map(|p| p.cpp_arg_expr.as_str())
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        let (ret_type_cpp, needs_up) = match &im.return_type {
+            Some(rt) => {
+                if rt.needs_unique_ptr {
+                    (format!("std::unique_ptr<{}>", rt.cpp_type), true)
+                } else {
+                    (rt.cpp_type.clone(), false)
+                }
+            }
+            None => ("void".to_string(), false),
+        };
+
+        writeln!(
+            output,
+            "inline {ret_type_cpp} {fn_name}({params}) {{",
+            fn_name = im.ffi_fn_name
+        )
+        .unwrap();
+
+        if needs_up {
+            writeln!(
+                output,
+                "    return std::make_unique<{inner_type}>(self.{method}({args_str}));",
+                inner_type = im.return_type.as_ref().unwrap().cpp_type,
+                method = im.cpp_method_name
+            )
+            .unwrap();
+        } else if im.return_type.is_some() {
+            writeln!(
+                output,
+                "    return self.{method}({args_str});",
+                method = im.cpp_method_name
+            )
+            .unwrap();
+        } else {
+            writeln!(
+                output,
+                "    self.{method}({args_str});",
+                method = im.cpp_method_name
+            )
+            .unwrap();
+        }
+
+        writeln!(output, "}}").unwrap();
+    }
+
+    writeln!(output).unwrap();
+
+    output
+}
+
+/// Emit a per-module re-export for a single class from pre-computed ClassBindings.
+///
+/// Produces the `pub use crate::ffi::X as ShortName;` line and the `impl ShortName { ... }`
+/// block with constructor, wrapper, static, upcast, to_owned, and to_handle methods.
+pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> String {
+    let cn = &bindings.cpp_name;
+    let short_name = &bindings.short_name;
+
+    let mut output = String::new();
+
+    // Doc comment
+    if let Some(ref comment) = bindings.doc_comment {
+        for line in comment.lines() {
+            output.push_str(&format!("/// {}\n", line.trim()));
+        }
+    }
+
+    // Type alias re-export
+    output.push_str(&format!(
+        "pub use crate::ffi::{} as {};\n\n",
+        cn, short_name
+    ));
+
+    // Build impl methods
+    let mut impl_methods: Vec<String> = Vec::new();
+
+    // 1. Constructors
+    for ctor in &bindings.constructors {
+        let params: Vec<String> = ctor
+            .params
+            .iter()
+            .map(|p| format!("{}: {}", p.rust_name, p.rust_reexport_type))
+            .collect();
+        let args: Vec<String> = ctor.params.iter().map(|p| p.rust_name.clone()).collect();
+
+        let doc = format_reexport_doc(&ctor.doc_comment);
+        impl_methods.push(format!(
+            "{}    pub fn {}({}) -> cxx::UniquePtr<Self> {{\n        crate::ffi::{}({})\n    }}\n",
+            doc,
+            ctor.impl_method_name,
+            params.join(", "),
+            ctor.ffi_fn_name,
+            args.join(", ")
+        ));
+    }
+
+    // 2. Wrapper methods (impl delegates to ffi free functions)
+    for wm in &bindings.wrapper_methods {
+        let self_param = if wm.is_const {
+            "&self".to_string()
+        } else {
+            "self: std::pin::Pin<&mut Self>".to_string()
+        };
+
+        let params: Vec<String> = std::iter::once(self_param)
+            .chain(
+                wm.params
+                    .iter()
+                    .map(|p| format!("{}: {}", p.rust_name, p.rust_reexport_type)),
+            )
+            .collect();
+        let args: Vec<String> = std::iter::once("self".to_string())
+            .chain(wm.params.iter().map(|p| p.rust_name.clone()))
+            .collect();
+
+        let return_type = wm
+            .return_type
+            .as_ref()
+            .map(|rt| format!(" -> {}", rt.rust_reexport_type))
+            .unwrap_or_default();
+
+        let doc = format_reexport_doc(&wm.doc_comment);
+        impl_methods.push(format!(
+            "{}    pub fn {}({}){} {{\n        crate::ffi::{}({})\n    }}\n",
+            doc,
+            wm.impl_method_name,
+            params.join(", "),
+            return_type,
+            wm.ffi_fn_name,
+            args.join(", ")
+        ));
+    }
+
+    // 3. Static methods
+    for sm in &bindings.static_methods {
+        let params: Vec<String> = sm
+            .params
+            .iter()
+            .map(|p| format!("{}: {}", p.rust_name, p.rust_reexport_type))
+            .collect();
+        let args: Vec<String> = sm.params.iter().map(|p| p.rust_name.clone()).collect();
+
+        let return_type = sm
+            .return_type
+            .as_ref()
+            .map(|rt| {
+                let mut ty_str = rt.rust_reexport_type.clone();
+                if sm.needs_static_lifetime
+                    && ty_str.starts_with('&')
+                    && !ty_str.contains("'static")
+                {
+                    ty_str = ty_str.replacen('&', "&'static ", 1);
+                }
+                format!(" -> {}", ty_str)
+            })
+            .unwrap_or_default();
+
+        let doc = format_reexport_doc(&sm.doc_comment);
+        impl_methods.push(format!(
+            "{}    pub fn {}({}){} {{\n        crate::ffi::{}({})\n    }}\n",
+            doc,
+            sm.impl_method_name,
+            params.join(", "),
+            return_type,
+            sm.ffi_fn_name,
+            args.join(", ")
+        ));
+    }
+
+    // 4. Upcast methods
+    for up in &bindings.upcasts {
+        let ret_type = if up.base_module == module_name {
+            up.base_short_name.clone()
+        } else {
+            let rust_mod = module_graph::module_to_rust_name(&up.base_module);
+            format!("crate::{}::{}", rust_mod, up.base_short_name)
+        };
+
+        impl_methods.push(format!(
+            "    /// Upcast to {}\n    pub fn {}(&self) -> &{} {{\n        crate::ffi::{}(self)\n    }}\n",
+            up.base_class, up.impl_method_name, ret_type, up.ffi_fn_name
+        ));
+
+        impl_methods.push(format!(
+            "    /// Upcast to {} (mutable)\n    pub fn {}_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut {}> {{\n        crate::ffi::{}(self)\n    }}\n",
+            up.base_class, up.impl_method_name, ret_type, up.ffi_fn_name_mut
+        ));
+    }
+
+    // 5. to_owned
+    if bindings.has_to_owned {
+        let ffi_fn_name = format!("{}_to_owned", cn);
+        impl_methods.push(format!(
+            "    /// Clone into a new UniquePtr via copy constructor\n    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {{\n        crate::ffi::{}(self)\n    }}\n",
+            ffi_fn_name
+        ));
+    }
+
+    // 6. to_handle
+    if bindings.has_to_handle {
+        let ffi_fn_name = format!("{}_to_handle", cn);
+        let handle_type_name = format!("Handle{}", cn.replace("_", ""));
+        impl_methods.push(format!(
+            "    /// Wrap in a Handle (reference-counted smart pointer)\n    pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::{}> {{\n        crate::ffi::{}(obj)\n    }}\n",
+            handle_type_name, ffi_fn_name
+        ));
+    }
+
+    // Generate the impl block
+    if !impl_methods.is_empty() {
+        output.push_str(&format!("impl {} {{\n", short_name));
+        for method in impl_methods {
+            output.push_str(&method);
+        }
+        output.push_str("}\n\n");
+    }
+
+    output
+}
+
+/// Format an optional doc comment for re-export impl methods (indented with 4 spaces).
+fn format_reexport_doc(doc: &Option<String>) -> String {
+    match doc {
+        Some(comment) => {
+            let formatted = comment
+                .lines()
+                .map(|line| format!("    /// {}", line.trim()))
+                .collect::<Vec<_>>()
+                .join("\n");
+            format!("{}\n", formatted)
+        }
+        None => String::new(),
+    }
+}
+
+// ── FFI TokenStream emit ────────────────────────────────────────────────────
+
+/// Format source attribution for doc comments (same as rust.rs format_source_attribution).
+fn format_source_attribution(header: &str, line: Option<u32>, cpp_name: &str) -> String {
+    match line {
+        Some(l) => format!("**Source:** `{}`:{} - `{}`", header, l, cpp_name),
+        None => format!("**Source:** `{}` - `{}`", header, cpp_name),
+    }
+}
+
+/// Create a safe parameter ident (append _ to Rust keywords).
+fn safe_param_ident(name: &str) -> proc_macro2::Ident {
+    const RUST_KW: &[&str] = &[
+        "as", "break", "const", "continue", "crate", "else", "enum", "extern", "false", "fn",
+        "for", "if", "impl", "in", "let", "loop", "match", "mod", "move", "mut", "pub", "ref",
+        "return", "self", "Self", "static", "struct", "super", "trait", "true", "type", "unsafe",
+        "use", "where", "while", "async", "await", "dyn", "abstract", "become", "box", "do",
+        "final", "macro", "override", "priv", "typeof", "unsized", "virtual", "yield", "try",
+    ];
+    if RUST_KW.contains(&name) {
+        format_ident!("{}_", name)
+    } else {
+        format_ident!("{}", name)
+    }
+}
+
+/// Emit ffi.rs TokenStream for a single class from pre-computed ClassBindings.
+///
+/// Produces the same output as the old generate_unified_class() and its
+/// sub-functions, but consumes the pre-computed IR instead of re-deriving decisions.
+pub fn emit_ffi_class(bindings: &ClassBindings) -> TokenStream {
+    let cn = &bindings.cpp_name;
+    let rust_name = format_ident!("{}", cn);
+
+    // Section header
+    let section_line = format!(
+        " ======================== {} ========================",
+        cn
+    );
+
+    // Type declaration with doc comment
+    let source_attr = format_source_attribution(&bindings.source_header, bindings.source_line, cn);
+    let type_doc = if let Some(ref comment) = bindings.doc_comment {
+        quote! {
+            #[doc = #source_attr]
+            #[doc = ""]
+            #[doc = #comment]
+        }
+    } else {
+        quote! { #[doc = #source_attr] }
+    };
+    let type_decl = quote! {
+        #type_doc
+        type #rust_name;
+    };
+
+    // ── Constructors ────────────────────────────────────────────────────
+    let ctors: Vec<TokenStream> = bindings
+        .constructors
+        .iter()
+        .map(|ctor| {
+            let fn_ident = format_ident!("{}", ctor.ffi_fn_name);
+            let params = ctor.params.iter().map(|p| {
+                let name = safe_param_ident(&p.rust_name);
+                let ty: TokenStream = p.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
+                quote! { #name: #ty }
+            });
+
+            let source = format_source_attribution(
+                &bindings.source_header,
+                ctor.source_line,
+                &format!("{}::{}()", cn, cn),
+            );
+            let doc = if let Some(ref comment) = ctor.doc_comment {
+                quote! {
+                    #[doc = #source]
+                    #[doc = ""]
+                    #[doc = #comment]
+                }
+            } else {
+                quote! { #[doc = #source] }
+            };
+
+            quote! {
+                #doc
+                fn #fn_ident(#(#params),*) -> UniquePtr<#rust_name>;
+            }
+        })
+        .collect();
+
+    // ── Direct methods (CXX self-receiver) ──────────────────────────────
+    let methods: Vec<TokenStream> = bindings
+        .direct_methods
+        .iter()
+        .map(|dm| {
+            let method_ident = format_ident!("{}", dm.rust_name);
+            let receiver = if dm.is_const {
+                quote! { self: &#rust_name }
+            } else {
+                quote! { self: Pin<&mut #rust_name> }
+            };
+
+            let params = dm.params.iter().map(|p| {
+                let name = safe_param_ident(&p.rust_name);
+                let ty: TokenStream = p.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
+                quote! { #name: #ty }
+            });
+
+            let ret_type = dm.return_type.as_ref().map(|rt| {
+                let ty: TokenStream =
+                    rt.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
+                quote! { -> #ty }
+            });
+
+            let source = format_source_attribution(
+                &bindings.source_header,
+                dm.source_line,
+                &format!("{}::{}()", cn, dm.cxx_name),
+            );
+            let doc = if let Some(ref comment) = dm.doc_comment {
+                quote! {
+                    #[doc = #source]
+                    #[doc = ""]
+                    #[doc = #comment]
+                }
+            } else {
+                quote! { #[doc = #source] }
+            };
+
+            let cxx_name = &dm.cxx_name;
+            quote! {
+                #doc
+                #[cxx_name = #cxx_name]
+                fn #method_ident(#receiver, #(#params),*) #ret_type;
+            }
+        })
+        .collect();
+
+    // ── Wrapper methods (free functions with self_ parameter) ────────────
+    let wrapper_methods: Vec<TokenStream> = bindings
+        .wrapper_methods
+        .iter()
+        .map(|wm| {
+            let fn_ident = format_ident!("{}", wm.ffi_fn_name);
+            let self_param = if wm.is_const {
+                quote! { self_: &#rust_name }
+            } else {
+                quote! { self_: Pin<&mut #rust_name> }
+            };
+
+            let params = wm.params.iter().map(|p| {
+                let name = safe_param_ident(&p.rust_name);
+                let ty: TokenStream = p.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
+                quote! { #name: #ty }
+            });
+
+            let ret_type = wm.return_type.as_ref().map(|rt| {
+                let ty: TokenStream =
+                    rt.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
+                quote! { -> #ty }
+            });
+
+            let source = format_source_attribution(
+                &bindings.source_header,
+                wm.source_line,
+                &format!("{}::{}()", cn, wm.cpp_method_name),
+            );
+            let doc = if let Some(ref comment) = wm.doc_comment {
+                quote! {
+                    #[doc = #source]
+                    #[doc = ""]
+                    #[doc = #comment]
+                }
+            } else {
+                quote! { #[doc = #source] }
+            };
+
+            quote! {
+                #doc
+                fn #fn_ident(#self_param, #(#params),*) #ret_type;
+            }
+        })
+        .collect();
+
+    // ── Static methods ──────────────────────────────────────────────────
+    let static_methods: Vec<TokenStream> = bindings
+        .static_methods
+        .iter()
+        .map(|sm| {
+            let fn_ident = format_ident!("{}", sm.ffi_fn_name);
+            let params = sm.params.iter().map(|p| {
+                let name = safe_param_ident(&p.rust_name);
+                let ty: TokenStream = p.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
+                quote! { #name: #ty }
+            });
+
+            let ret_type = sm.return_type.as_ref().map(|rt| {
+                let mut ty_str = rt.rust_ffi_type.clone();
+                // Static methods returning references need 'static lifetime
+                if sm.needs_static_lifetime
+                    && ty_str.starts_with('&')
+                    && !ty_str.contains("'static")
+                {
+                    ty_str = ty_str.replacen('&', "&'static ", 1);
+                }
+                let ty: TokenStream = ty_str.parse().unwrap_or_else(|_| quote! { () });
+                quote! { -> #ty }
+            });
+
+            let source = format_source_attribution(
+                &bindings.source_header,
+                sm.source_line,
+                &format!("{}::{}()", cn, sm.cpp_method_name),
+            );
+            let doc = if let Some(ref comment) = sm.doc_comment {
+                quote! {
+                    #[doc = #source]
+                    #[doc = ""]
+                    #[doc = #comment]
+                }
+            } else {
+                quote! { #[doc = #source] }
+            };
+
+            quote! {
+                #doc
+                fn #fn_ident(#(#params),*) #ret_type;
+            }
+        })
+        .collect();
+
+    // ── Upcasts ─────────────────────────────────────────────────────────
+    let upcast_methods: Vec<TokenStream> = bindings
+        .upcasts
+        .iter()
+        .flat_map(|up| {
+            let derived_type = format_ident!("{}", cn);
+            let base_type = format_ident!("{}", up.base_class);
+            let fn_ident = format_ident!("{}", up.ffi_fn_name);
+            let fn_ident_mut = format_ident!("{}", up.ffi_fn_name_mut);
+            let doc = format!("Upcast {} to {}", cn, up.base_class);
+            let doc_mut = format!("Upcast {} to {} (mutable)", cn, up.base_class);
+
+            vec![
+                quote! {
+                    #[doc = #doc]
+                    fn #fn_ident(self_: &#derived_type) -> &#base_type;
+                },
+                quote! {
+                    #[doc = #doc_mut]
+                    fn #fn_ident_mut(self_: Pin<&mut #derived_type>) -> Pin<&mut #base_type>;
+                },
+            ]
+        })
+        .collect();
+
+    // ── to_owned ────────────────────────────────────────────────────────
+    let to_owned = if bindings.has_to_owned {
+        let fn_name = format!("{}_to_owned", cn);
+        let fn_ident = format_ident!("{}", fn_name);
+        Some(quote! {
+            #[doc = "Clone into a new UniquePtr via copy constructor"]
+            fn #fn_ident(self_: &#rust_name) -> UniquePtr<#rust_name>;
+        })
+    } else {
+        None
+    };
+
+    // ── to_handle ───────────────────────────────────────────────────────
+    let to_handle = if bindings.has_to_handle {
+        let fn_name = format!("{}_to_handle", cn);
+        let fn_ident = format_ident!("{}", fn_name);
+        let handle_type_name = format!("Handle{}", cn.replace("_", ""));
+        let handle_type = format_ident!("{}", handle_type_name);
+        let doc = format!("Wrap {} in a Handle", cn);
+        Some(quote! {
+            #[doc = #doc]
+            fn #fn_ident(obj: UniquePtr<#rust_name>) -> UniquePtr<#handle_type>;
+        })
+    } else {
+        None
+    };
+
+    // ── Handle upcasts ──────────────────────────────────────────────────
+    let handle_upcasts: Vec<TokenStream> = bindings
+        .handle_upcasts
+        .iter()
+        .map(|hu| {
+            let handle_type = format_ident!("{}", hu.derived_handle_name);
+            let base_handle_type = format_ident!("{}", hu.base_handle_name);
+            let fn_ident = format_ident!("{}", hu.ffi_fn_name);
+            let doc = format!("Upcast Handle<{}> to Handle<{}>", cn, hu.base_class);
+            quote! {
+                #[doc = #doc]
+                fn #fn_ident(self_: &#handle_type) -> UniquePtr<#base_handle_type>;
+            }
+        })
+        .collect();
+
+    quote! {
+        #[doc = #section_line]
+        #type_decl
+
+        #(#ctors)*
+        #(#methods)*
+        #(#wrapper_methods)*
+        #(#static_methods)*
+        #(#upcast_methods)*
+        #to_owned
+        #to_handle
+        #(#handle_upcasts)*
+    }
 }
 
 #[cfg(test)]

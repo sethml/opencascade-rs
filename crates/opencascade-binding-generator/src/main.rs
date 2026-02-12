@@ -7,7 +7,7 @@ use opencascade_binding_generator::{codegen, header_deps, model, module_graph, p
 
 use anyhow::Result;
 use clap::Parser;
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use std::path::PathBuf;
 use std::process::Command;
 
@@ -371,6 +371,10 @@ fn generate_unified(
     // Get all collections
     let all_collections = codegen::collections::all_known_collections();
 
+    // Compute ClassBindings once for ALL classes — shared by all three generators
+    let all_bindings =
+        codegen::bindings::compute_all_class_bindings(all_classes, symbol_table);
+
     // Track generated files for formatting
     let mut generated_rs_files: Vec<PathBuf> = Vec::new();
 
@@ -382,6 +386,7 @@ fn generate_unified(
         &all_headers_list,
         &all_collections,
         symbol_table,
+        &all_bindings,
     );
     let ffi_path = args.output.join("ffi.rs");
     std::fs::write(&ffi_path, ffi_code)?;
@@ -397,6 +402,7 @@ fn generate_unified(
         &all_collections,
         known_headers,
         symbol_table,
+        &all_bindings,
     );
     let cpp_path = args.output.join("wrappers.hxx");
     std::fs::write(&cpp_path, &cpp_code)?;
@@ -404,6 +410,17 @@ fn generate_unified(
 
     // 3. Generate per-module re-export files
     println!("Generating module re-exports...");
+
+    // Index bindings by module for quick lookup
+    let mut bindings_by_module: HashMap<String, Vec<&codegen::bindings::ClassBindings>> =
+        HashMap::new();
+    for b in &all_bindings {
+        bindings_by_module
+            .entry(b.module.clone())
+            .or_default()
+            .push(b);
+    }
+
     let ordered = graph.modules_in_order();
     let mut generated_modules: Vec<&module_graph::Module> = Vec::new();
 
@@ -434,6 +451,12 @@ fn generate_unified(
             .filter(|c| c.module == module.rust_name)
             .collect();
 
+        // Get pre-computed bindings for this module
+        let empty_bindings = Vec::new();
+        let module_bindings = bindings_by_module
+            .get(&module.name)
+            .unwrap_or(&empty_bindings);
+
         let reexport_code = codegen::rust::generate_module_reexports(
             &module.name,
             &module.rust_name,
@@ -441,6 +464,7 @@ fn generate_unified(
             &module_functions,
             &module_collections,
             symbol_table,
+            module_bindings,
         );
 
         let module_path = args.output.join(format!("{}.rs", module.rust_name));

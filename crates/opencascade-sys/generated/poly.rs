@@ -426,7 +426,7 @@ impl Triangulation {
     /// Returns normal at the given index.
     /// @param[in] theIndex node index within [1, NbNodes()] range
     /// @return normalized 3D vector defining a surface normal
-    pub fn normal_int(&self, theIndex: i32) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
+    pub fn normal(&self, theIndex: i32) -> cxx::UniquePtr<crate::ffi::gp_Dir> {
         crate::ffi::Poly_Triangulation_normal(self, theIndex)
     }
 
