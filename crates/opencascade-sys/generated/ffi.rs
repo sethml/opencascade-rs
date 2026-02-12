@@ -44751,9 +44751,10 @@ mod ffi {
         /// Referenced type from C++
         type gp_Vec3f;
         /// Referenced type from C++
-        type math_Vector; // ========================
-                          // Collection type wrappers
-                          // ========================
+        type math_Vector;
+        // ========================
+        // Collection type wrappers
+        // ========================
 
         /// Key-value map
         type TopTools_DataMapOfShapeShape;
@@ -45010,6 +45011,7 @@ mod ffi {
         ) -> UniquePtr<TopoDS_Shape>;
 
     }
+
     impl UniquePtr<gp_Ax1> {}
     impl UniquePtr<gp_Ax2> {}
     impl UniquePtr<gp_Ax22d> {}
@@ -45386,6 +45388,7 @@ mod ffi {
     impl UniquePtr<TopoDS_TShape> {}
     impl UniquePtr<TopAbs> {}
 }
+
 impl ffi::TopTools_DataMapOfShapeShape {
     /// Create a new empty collection
     pub fn new() -> cxx::UniquePtr<Self> {
