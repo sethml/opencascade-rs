@@ -2298,19 +2298,19 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
         );
         emit_ffi_doc(&mut out, &source, &wm.doc_comment);
 
-        let self_param = if wm.is_const {
-            format!("self_: &{}", cn)
-        } else {
-            format!("self_: Pin<&mut {}>", cn)
-        };
+        let param_ffi_types: Vec<&str> = wm.params.iter().map(|p| p.rust_ffi_type.as_str()).collect();
+        let return_ffi_type = wm.return_type.as_ref().map(|rt| rt.rust_ffi_type.as_str());
+        let needs_lifetime = needs_lifetime_annotation(return_ffi_type, &param_ffi_types);
+        let lifetime_generic = if needs_lifetime { "<'a>" } else { "" };
+        let self_param = format_self_param(cn, wm.is_const, needs_lifetime);
         let params_str = format_params(&wm.params);
         let all_params = if params_str.is_empty() {
             self_param
         } else {
             format!("{}, {}", self_param, params_str)
         };
-        let ret = format_return_type(&wm.return_type);
-        writeln!(out, "        fn {}({}){};", wm.ffi_fn_name, all_params, ret).unwrap();
+        let ret = format_return_type_with_lifetime(return_ffi_type, needs_lifetime);
+        writeln!(out, "        fn {}{}({}){};", wm.ffi_fn_name, lifetime_generic, all_params, ret).unwrap();
     }
 
     // ── Static methods ──────────────────────────────────────────────────
@@ -2370,33 +2370,11 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
     for im in &bindings.inherited_methods {
         writeln!(out, "        /// Inherited from {}: {}()", im.source_class, im.cpp_method_name).unwrap();
 
-        // Detect if we need explicit lifetime annotations.
-        // Inherited methods are emitted as free functions (not using `self:` syntax),
-        // so Rust's lifetime elision fails when there are 2+ input reference lifetimes
-        // and the return type is a reference. We tie the return lifetime to self_.
-        let returns_ref = im.return_type.as_ref()
-            .map(|rt| rt.rust_ffi_type.starts_with('&') || rt.rust_ffi_type.starts_with("Pin<&"))
-            .unwrap_or(false);
-        let has_ref_params = im.params.iter().any(|p| {
-            p.rust_ffi_type.starts_with('&') || p.rust_ffi_type.starts_with("Pin<&")
-        });
-        let needs_lifetime = returns_ref && has_ref_params;
-
+        let param_ffi_types: Vec<&str> = im.params.iter().map(|p| p.rust_ffi_type.as_str()).collect();
+        let return_ffi_type = im.return_type.as_ref().map(|rt| rt.rust_ffi_type.as_str());
+        let needs_lifetime = needs_lifetime_annotation(return_ffi_type, &param_ffi_types);
         let lifetime_generic = if needs_lifetime { "<'a>" } else { "" };
-
-        let self_param = if im.is_const {
-            if needs_lifetime {
-                format!("self_: &'a {}", cn)
-            } else {
-                format!("self_: &{}", cn)
-            }
-        } else {
-            if needs_lifetime {
-                format!("self_: Pin<&'a mut {}>", cn)
-            } else {
-                format!("self_: Pin<&mut {}>", cn)
-            }
-        };
+        let self_param = format_self_param(cn, im.is_const, needs_lifetime);
         let params_str: String = im
             .params
             .iter()
@@ -2408,28 +2386,7 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
         } else {
             format!("{}, {}", self_param, params_str)
         };
-        let ret = match &im.return_type {
-            Some(rt) => {
-                if needs_lifetime {
-                    // Insert 'a after the leading & in the return type
-                    let annotated = if rt.rust_ffi_type.starts_with("Pin<&mut ") {
-                        rt.rust_ffi_type.replacen("Pin<&mut ", "Pin<&'a mut ", 1)
-                    } else if rt.rust_ffi_type.starts_with("Pin<&") {
-                        rt.rust_ffi_type.replacen("Pin<&", "Pin<&'a ", 1)
-                    } else if rt.rust_ffi_type.starts_with("&mut ") {
-                        rt.rust_ffi_type.replacen("&mut ", "&'a mut ", 1)
-                    } else if rt.rust_ffi_type.starts_with('&') {
-                        rt.rust_ffi_type.replacen('&', "&'a ", 1)
-                    } else {
-                        rt.rust_ffi_type.clone()
-                    };
-                    format!(" -> {}", annotated)
-                } else {
-                    format!(" -> {}", rt.rust_ffi_type)
-                }
-            }
-            None => String::new(),
-        };
+        let ret = format_return_type_with_lifetime(return_ffi_type, needs_lifetime);
         writeln!(out, "        fn {}{}({}){};", im.ffi_fn_name, lifetime_generic, all_params, ret).unwrap();
     }
 
@@ -2449,6 +2406,58 @@ fn format_params(params: &[ParamBinding]) -> String {
 fn format_return_type(rt: &Option<ReturnTypeBinding>) -> String {
     match rt {
         Some(rt) => format!(" -> {}", rt.rust_ffi_type),
+        None => String::new(),
+    }
+}
+
+/// Check whether a free-function-style FFI declaration needs explicit lifetime
+/// annotations. This is needed when:
+/// - The return type is a reference (`&` or `Pin<&...>`)
+/// - There are other reference parameters besides self_
+///
+/// In this case, Rust's lifetime elision cannot determine which input lifetime
+/// the return borrows from. We tie the return lifetime to self_.
+fn needs_lifetime_annotation(
+    return_ffi_type: Option<&str>,
+    param_ffi_types: &[&str],
+) -> bool {
+    let returns_ref = return_ffi_type
+        .map(|t| t.starts_with('&') || t.starts_with("Pin<&"))
+        .unwrap_or(false);
+    let has_ref_params = param_ffi_types
+        .iter()
+        .any(|t| t.starts_with('&') || t.starts_with("Pin<&"));
+    returns_ref && has_ref_params
+}
+
+/// Format a self_ parameter, optionally with a lifetime annotation.
+fn format_self_param(class_name: &str, is_const: bool, needs_lifetime: bool) -> String {
+    match (is_const, needs_lifetime) {
+        (true, true) => format!("self_: &'a {}", class_name),
+        (true, false) => format!("self_: &{}", class_name),
+        (false, true) => format!("self_: Pin<&'a mut {}>", class_name),
+        (false, false) => format!("self_: Pin<&mut {}>", class_name),
+    }
+}
+
+/// Format a return type, inserting `'a` lifetime if needed.
+fn format_return_type_with_lifetime(ffi_type: Option<&str>, needs_lifetime: bool) -> String {
+    match ffi_type {
+        Some(t) if needs_lifetime => {
+            let annotated = if t.starts_with("Pin<&mut ") {
+                t.replacen("Pin<&mut ", "Pin<&'a mut ", 1)
+            } else if t.starts_with("Pin<&") {
+                t.replacen("Pin<&", "Pin<&'a ", 1)
+            } else if t.starts_with("&mut ") {
+                t.replacen("&mut ", "&'a mut ", 1)
+            } else if t.starts_with('&') {
+                t.replacen('&', "&'a ", 1)
+            } else {
+                t.to_string()
+            };
+            format!(" -> {}", annotated)
+        }
+        Some(t) => format!(" -> {}", t),
         None => String::new(),
     }
 }
