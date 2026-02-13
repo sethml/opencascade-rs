@@ -192,7 +192,7 @@ impl MakePipe {
         crate::ffi::BRepOffsetAPI_MakePipe_last_shape(self)
     }
 
-    pub fn generated(
+    pub fn generated_shape2(
         self: std::pin::Pin<&mut Self>,
         SSpine: &crate::ffi::TopoDS_Shape,
         SProfile: &crate::ffi::TopoDS_Shape,

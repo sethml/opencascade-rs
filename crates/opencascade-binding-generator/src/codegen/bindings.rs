@@ -1500,9 +1500,13 @@ fn compute_inherited_method_bindings(
 pub fn compute_all_class_bindings(
     all_classes: &[&ParsedClass],
     symbol_table: &SymbolTable,
+    collection_names: &HashSet<String>,
 ) -> Vec<ClassBindings> {
-    let all_class_names: HashSet<String> =
+    let mut all_class_names: HashSet<String> =
         all_classes.iter().map(|c| c.name.clone()).collect();
+    // Collection typedefs are declared as opaque types in ffi.rs, so they're
+    // "known types" for method filtering purposes
+    all_class_names.extend(collection_names.iter().cloned());
     let all_enum_names = &symbol_table.all_enum_names;
 
     let handle_able_classes: HashSet<String> = all_classes

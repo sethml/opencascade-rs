@@ -1,7 +1,6 @@
 // NOTE: This file is partially blocked because:
 // - Many helper functions (cast_face_to_shape, map_shapes, outer_wire) not generated
 // - BRepFilletAPI_MakeFillet2d needs TopAbs_ShapeEnum which is blocked (enums)
-// - BRepFeat_MakeDPrism needs custom constructors not generated
 // - TopAbs_Orientation enum not generated
 // See TRANSITION_PLAN.md for details.
 
@@ -12,7 +11,7 @@ use crate::{
 };
 use cxx::UniquePtr;
 use glam::DVec3;
-use opencascade_sys::{b_rep_builder_api, b_rep_prim_api, topo_ds};
+use opencascade_sys::{b_rep_builder_api, b_rep_feat, b_rep_prim_api, topo_ds};
 
 pub struct Face {
     pub(crate) inner: UniquePtr<topo_ds::Face>,
@@ -64,20 +63,51 @@ impl Face {
         Solid::from_solid(solid)
     }
 
-    // NOTE: extrude_to_face is blocked because BRepFeat_MakeDPrism is not generated
-    #[allow(unused)]
-    pub fn extrude_to_face(&self, _shape_with_face: &Shape, _face: &Face) -> Shape {
-        unimplemented!(
-            "Face::extrude_to_face is blocked pending BRepFeat_MakeDPrism support"
+    #[must_use]
+    pub fn extrude_to_face(&self, shape_with_face: &Shape, face: &Face) -> Shape {
+        let profile_base = &self.inner;
+        let sketch_base = topo_ds::Face::new();
+        let angle = 0.0;
+        let fuse = 1; // 1 = additive (Boolean fusion)
+        let modify = false;
+
+        let mut make_prism = b_rep_feat::MakeDPrism::new_shape_face2_real_int_bool(
+            &shape_with_face.inner,
+            profile_base,
+            &sketch_base,
+            angle,
+            fuse,
+            modify,
         );
+
+        let until_shape = face.inner.as_shape();
+        make_prism.pin_mut().perform_shape(until_shape);
+
+        let make_shape = make_prism.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        Shape::from_shape(make_shape.shape())
     }
 
-    // NOTE: subtractive_extrude is blocked because BRepFeat_MakeDPrism is not generated
-    #[allow(unused)]
-    pub fn subtractive_extrude(&self, _shape_with_face: &Shape, _height: f64) -> Shape {
-        unimplemented!(
-            "Face::subtractive_extrude is blocked pending BRepFeat_MakeDPrism support"
+    #[must_use]
+    pub fn subtractive_extrude(&self, shape_with_face: &Shape, height: f64) -> Shape {
+        let profile_base = &self.inner;
+        let sketch_base = topo_ds::Face::new();
+        let angle = 0.0;
+        let fuse = 0; // 0 = subtractive (Boolean cut)
+        let modify = false;
+
+        let mut make_prism = b_rep_feat::MakeDPrism::new_shape_face2_real_int_bool(
+            &shape_with_face.inner,
+            profile_base,
+            &sketch_base,
+            angle,
+            fuse,
+            modify,
         );
+
+        make_prism.pin_mut().perform_real(height);
+
+        let make_shape = make_prism.pin_mut().as_b_rep_builder_api_make_shape_mut();
+        Shape::from_shape(make_shape.shape())
     }
 
     #[must_use]

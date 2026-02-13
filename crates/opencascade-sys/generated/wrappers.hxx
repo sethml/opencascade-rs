@@ -3096,6 +3096,12 @@ inline std::unique_ptr<TopExp_Explorer> TopExp_Explorer_ctor() {
 inline std::unique_ptr<TopExp> TopExp_ctor() {
     return std::make_unique<TopExp>();
 }
+inline void TopExp_map_shapes_shape_indexedmapofshape_bool2(const TopoDS_Shape& S, TopTools_IndexedMapOfShape& M, Standard_Boolean cumOri, Standard_Boolean cumLoc) {
+    return TopExp::MapShapes(S, M, cumOri, cumLoc);
+}
+inline void TopExp_map_shapes_shape_mapofshape_bool2(const TopoDS_Shape& S, TopTools_MapOfShape& M, Standard_Boolean cumOri, Standard_Boolean cumLoc) {
+    return TopExp::MapShapes(S, M, cumOri, cumLoc);
+}
 inline std::unique_ptr<TopoDS_Vertex> TopExp_first_vertex(const TopoDS_Edge& E, Standard_Boolean CumOri) {
     return std::make_unique<TopoDS_Vertex>(TopExp::FirstVertex(E, CumOri));
 }
@@ -4904,6 +4910,9 @@ inline Standard_Boolean BRepTools_compare_edge2(const TopoDS_Edge& E1, const Top
 inline std::unique_ptr<TopoDS_Wire> BRepTools_outer_wire(const TopoDS_Face& F) {
     return std::make_unique<TopoDS_Wire>(BRepTools::OuterWire(F));
 }
+inline void BRepTools_map3_d_edges(const TopoDS_Shape& S, TopTools_IndexedMapOfShape& M) {
+    return BRepTools::Map3DEdges(S, M);
+}
 inline Standard_Boolean BRepTools_is_really_closed(const TopoDS_Edge& E, const TopoDS_Face& F) {
     return BRepTools::IsReallyClosed(E, F);
 }
@@ -4921,6 +4930,9 @@ inline Standard_Real BRepTools_eval_and_update_tol(const TopoDS_Edge& theE, cons
 }
 inline void BRepTools_remove_internals(TopoDS_Shape& theS, Standard_Boolean theForce) {
     return BRepTools::RemoveInternals(theS, theForce);
+}
+inline void BRepTools_check_locations(const TopoDS_Shape& theS, TopTools_ListOfShape& theProblemShapes) {
+    return BRepTools::CheckLocations(theS, theProblemShapes);
 }
 
 // ========================
@@ -7302,8 +7314,11 @@ inline std::unique_ptr<ShapeAnalysis_FreeBounds> ShapeAnalysis_FreeBounds_ctor_s
 inline void ShapeAnalysis_FreeBounds_connect_edges_to_wires(opencascade::handle<TopTools_HSequenceOfShape>& edges, Standard_Real toler, Standard_Boolean shared, opencascade::handle<TopTools_HSequenceOfShape>& wires) {
     return ShapeAnalysis_FreeBounds::ConnectEdgesToWires(edges, toler, shared, wires);
 }
-inline void ShapeAnalysis_FreeBounds_connect_wires_to_wires(opencascade::handle<TopTools_HSequenceOfShape>& iwires, Standard_Real toler, Standard_Boolean shared, opencascade::handle<TopTools_HSequenceOfShape>& owires) {
+inline void ShapeAnalysis_FreeBounds_connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape(opencascade::handle<TopTools_HSequenceOfShape>& iwires, Standard_Real toler, Standard_Boolean shared, opencascade::handle<TopTools_HSequenceOfShape>& owires) {
     return ShapeAnalysis_FreeBounds::ConnectWiresToWires(iwires, toler, shared, owires);
+}
+inline void ShapeAnalysis_FreeBounds_connect_wires_to_wires_handlehsequenceofshape_real_bool_handlehsequenceofshape_datamapofshapeshape(opencascade::handle<TopTools_HSequenceOfShape>& iwires, Standard_Real toler, Standard_Boolean shared, opencascade::handle<TopTools_HSequenceOfShape>& owires, TopTools_DataMapOfShapeShape& vertices) {
+    return ShapeAnalysis_FreeBounds::ConnectWiresToWires(iwires, toler, shared, owires, vertices);
 }
 inline void ShapeAnalysis_FreeBounds_split_wires(const opencascade::handle<TopTools_HSequenceOfShape>& wires, Standard_Real toler, Standard_Boolean shared, opencascade::handle<TopTools_HSequenceOfShape>& closed, opencascade::handle<TopTools_HSequenceOfShape>& open) {
     return ShapeAnalysis_FreeBounds::SplitWires(wires, toler, shared, closed, open);

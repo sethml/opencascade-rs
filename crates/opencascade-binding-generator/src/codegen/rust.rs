@@ -165,7 +165,9 @@ pub fn generate_unified_ffi(
     all_bindings: &[super::bindings::ClassBindings],
 ) -> String {
     // Build sets for type context
-    let all_class_names: HashSet<String> = all_classes.iter().map(|c| c.name.clone()).collect();
+    let mut all_class_names: HashSet<String> = all_classes.iter().map(|c| c.name.clone()).collect();
+    // Collection typedefs are known types for filtering purposes
+    all_class_names.extend(collections.iter().map(|c| c.typedef_name.clone()));
     let all_enum_names = &symbol_table.all_enum_names;
 
     // Collect classes that will have Handle<T> declarations generated

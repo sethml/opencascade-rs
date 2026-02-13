@@ -372,8 +372,10 @@ fn generate_unified(
     let all_collections = codegen::collections::all_known_collections();
 
     // Compute ClassBindings once for ALL classes — shared by all three generators
+    let collection_type_names: std::collections::HashSet<String> =
+        all_collections.iter().map(|c| c.typedef_name.clone()).collect();
     let all_bindings =
-        codegen::bindings::compute_all_class_bindings(all_classes, symbol_table);
+        codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names);
 
     // Track generated files for formatting
     let mut generated_rs_files: Vec<PathBuf> = Vec::new();

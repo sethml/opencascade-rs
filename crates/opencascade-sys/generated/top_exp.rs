@@ -28,6 +28,36 @@ impl TopExp {
         crate::ffi::TopExp_ctor()
     }
 
+    /// Stores in the map <M> all  the sub-shapes of <S>.
+    /// - If cumOri is true, the function composes all
+    /// sub-shapes with the orientation of S.
+    /// - If cumLoc is true, the function multiplies all
+    /// sub-shapes by the location of S, i.e. it applies to
+    /// each sub-shape the transformation that is associated with S.
+    pub fn map_shapes_shape_indexedmapofshape_bool2(
+        S: &crate::ffi::TopoDS_Shape,
+        M: std::pin::Pin<&mut crate::ffi::TopTools_IndexedMapOfShape>,
+        cumOri: bool,
+        cumLoc: bool,
+    ) {
+        crate::ffi::TopExp_map_shapes_shape_indexedmapofshape_bool2(S, M, cumOri, cumLoc)
+    }
+
+    /// Stores in the map <M> all  the sub-shapes of <S>.
+    /// - If cumOri is true, the function composes all
+    /// sub-shapes with the orientation of S.
+    /// - If cumLoc is true, the function multiplies all
+    /// sub-shapes by the location of S, i.e. it applies to
+    /// each sub-shape the transformation that is associated with S.
+    pub fn map_shapes_shape_mapofshape_bool2(
+        S: &crate::ffi::TopoDS_Shape,
+        M: std::pin::Pin<&mut crate::ffi::TopTools_MapOfShape>,
+        cumOri: bool,
+        cumLoc: bool,
+    ) {
+        crate::ffi::TopExp_map_shapes_shape_mapofshape_bool2(S, M, cumOri, cumLoc)
+    }
+
     /// Returns the Vertex of orientation FORWARD in E. If
     /// there is none returns a Null Shape.
     /// CumOri = True : taking account the edge orientation
