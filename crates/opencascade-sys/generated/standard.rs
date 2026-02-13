@@ -866,3 +866,13 @@ impl TypeMismatch {
         crate::ffi::Standard_TypeMismatch_get_type_descriptor()
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    Standard_Character as Character, Standard_ExtCharacter as ExtCharacter,
+    Standard_ExtString as ExtString, Standard_JmpBuf as JmpBuf, Standard_PCharacter as PCharacter,
+    Standard_SStream as SStream, Standard_Utf16Char as Utf16Char,
+};

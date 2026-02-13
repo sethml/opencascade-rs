@@ -572,3 +572,12 @@ impl SurfData {
 }
 
 pub use crate::ffi::HandleChFiDSSurfData;
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    ChFiDS_ListOfStripe as ListOfStripe, ChFiDS_SecArray1 as SecArray1,
+    ChFiDS_SequenceOfSurfData as SequenceOfSurfData, ChFiDS_Spine as Spine,
+};

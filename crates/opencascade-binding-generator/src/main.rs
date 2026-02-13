@@ -423,6 +423,112 @@ fn generate_unified(
             .push(b);
     }
 
+    // Compute ALL types that appear in ffi.rs so we can find unreexported ones
+    // 1. Class types from ClassBindings (already re-exported via emit_reexport_class)
+    let mut already_reexported: HashSet<String> = HashSet::new();
+    for b in &all_bindings {
+        if !b.has_protected_destructor {
+            already_reexported.insert(b.cpp_name.clone());
+            // Handle types generated for this class
+            if b.has_to_handle {
+                let handle_name = format!("Handle{}", b.cpp_name.replace('_', ""));
+                already_reexported.insert(handle_name);
+            }
+            // Handle upcasts reference base handle types
+            for hu in &b.handle_upcasts {
+                already_reexported.insert(hu.base_handle_name.clone());
+            }
+        }
+    }
+
+    // 2. Collection types (re-exported via collections loop)
+    for coll in &all_collections {
+        already_reexported.insert(coll.typedef_name.clone());
+    }
+
+    // Now compute ALL types in ffi.rs and find unreexported ones:
+    // A. Handle types for all transient classes
+    let mut all_ffi_types: Vec<(String, String)> = Vec::new(); // (ffi_name, module_prefix)
+    for class in all_classes {
+        if class.is_handle_type && !class.has_protected_destructor {
+            let handle_name = format!("Handle{}", class.name.replace('_', ""));
+            if !already_reexported.contains(&handle_name) {
+                // Use the class's actual module (not derived from handle name)
+                all_ffi_types.push((handle_name, class.module.clone()));
+            }
+        }
+    }
+
+    // B. Opaque referenced types (types referenced in method signatures but not defined)
+    let collected_types = codegen::rust::collect_referenced_types(all_classes);
+    let defined_classes: HashSet<String> = all_classes.iter().map(|c| c.name.clone()).collect();
+    let all_enum_names = &symbol_table.all_enum_names;
+    let protected_destructor_classes = symbol_table.protected_destructor_class_names();
+
+    for type_name in &collected_types.classes {
+        if defined_classes.contains(type_name) { continue; }
+        if all_enum_names.contains(type_name) { continue; }
+        if protected_destructor_classes.contains(type_name) { continue; }
+        if codegen::rust::is_primitive_type(type_name) { continue; }
+        if collection_type_names.contains(type_name) { continue; }
+        if already_reexported.contains(type_name) { continue; }
+
+        // Determine module from type name prefix
+        if let Some(underscore_pos) = type_name.find('_') {
+            let module_prefix = &type_name[..underscore_pos];
+            all_ffi_types.push((type_name.clone(), module_prefix.to_string()));
+        }
+    }
+
+    // C. Collection iterator types (not currently re-exported)
+    for coll in &all_collections {
+        match coll.kind {
+            codegen::collections::CollectionKind::Array1 | codegen::collections::CollectionKind::Array2 => {
+                // Array types don't have iterator types
+            }
+            _ => {
+                let iter_name = format!("{}Iterator", coll.short_name);
+                if !already_reexported.contains(&iter_name) {
+                    // Determine module from collection module
+                    // coll.module is already a rust module name; we need the C++ module name
+                    // Extract it from the typedef_name
+                    if let Some(underscore_pos) = coll.typedef_name.find('_') {
+                        let module_prefix = &coll.typedef_name[..underscore_pos];
+                        all_ffi_types.push((iter_name, module_prefix.to_string()));
+                    }
+                }
+            }
+        }
+    }
+
+    // Group extra types by module (C++ module name)
+    let mut extra_types_by_module: HashMap<String, Vec<(String, String)>> = HashMap::new();
+    for (ffi_name, module_prefix) in &all_ffi_types {
+        // Compute short name based on type category
+        let short_name = if ffi_name.starts_with("Handle") && !ffi_name.contains('_') {
+            // Handle types like "HandleGeomEvaluatorCurve" — keep as-is (no short alias)
+            ffi_name.clone()
+        } else if ffi_name.ends_with("Iterator") && !ffi_name.contains('_') {
+            // Collection iterator types like "ListOfShapeIterator" — keep as-is
+            ffi_name.clone()
+        } else if let Some(underscore_pos) = ffi_name.find('_') {
+            // Normal types like "BRepLib_MakeEdge" → "MakeEdge"
+            ffi_name[underscore_pos + 1..].to_string()
+        } else {
+            // No underscore and not a Handle/Iterator — keep as-is
+            ffi_name.clone()
+        };
+        extra_types_by_module
+            .entry(module_prefix.clone())
+            .or_default()
+            .push((ffi_name.clone(), short_name));
+    }
+
+    // Sort each module's extra types for deterministic output
+    for types in extra_types_by_module.values_mut() {
+        types.sort();
+    }
+
     let ordered = graph.modules_in_order();
     let mut generated_modules: Vec<&module_graph::Module> = Vec::new();
 
@@ -442,7 +548,8 @@ fn generate_unified(
             .collect();
 
         let has_module_enums = symbol_table.enums_by_module.contains_key(&module.rust_name);
-        if module_classes.is_empty() && module_functions.is_empty() && !has_module_enums {
+        let has_extra_types = extra_types_by_module.contains_key(&module.name);
+        if module_classes.is_empty() && module_functions.is_empty() && !has_module_enums && !has_extra_types {
             continue;
         }
 
@@ -460,6 +567,12 @@ fn generate_unified(
             .get(&module.name)
             .unwrap_or(&empty_bindings);
 
+        // Get extra types for this module
+        let empty_extra = Vec::new();
+        let module_extra_types = extra_types_by_module
+            .get(&module.name)
+            .unwrap_or(&empty_extra);
+
         let reexport_code = codegen::rust::generate_module_reexports(
             &module.name,
             &module.rust_name,
@@ -468,17 +581,43 @@ fn generate_unified(
             &module_collections,
             symbol_table,
             module_bindings,
+            module_extra_types,
         );
 
         let module_path = args.output.join(format!("{}.rs", module.rust_name));
         std::fs::write(&module_path, reexport_code)?;
         generated_rs_files.push(module_path.clone());
-        println!("  Wrote: {} ({} types, {} functions)",
-            module_path.display(), module_classes.len(), module_functions.len());
+        println!("  Wrote: {} ({} types, {} functions, {} extra)",
+            module_path.display(), module_classes.len(), module_functions.len(), module_extra_types.len());
+    }
+
+    // Generate module files for extra types whose modules aren't in the graph
+    // (e.g., handle types, opaque references from dependency headers)
+    let graph_module_names: HashSet<&String> = ordered.iter().map(|m| &m.name).collect();
+    let mut extra_only_modules: Vec<(String, String)> = Vec::new(); // (cpp_name, rust_name)
+    for (module_name, types) in &extra_types_by_module {
+        if !graph_module_names.contains(module_name) && !types.is_empty() {
+            let rust_name = module_graph::module_to_rust_name(module_name);
+            let reexport_code = codegen::rust::generate_module_reexports(
+                module_name,
+                &rust_name,
+                &[],
+                &[],
+                &[],
+                symbol_table,
+                &[],
+                types,
+            );
+            let module_path = args.output.join(format!("{}.rs", rust_name));
+            std::fs::write(&module_path, &reexport_code)?;
+            generated_rs_files.push(module_path.clone());
+            extra_only_modules.push((module_name.clone(), rust_name.clone()));
+            println!("  Wrote: {} (extra types only, {} types)", module_path.display(), types.len());
+        }
     }
 
     // 4. Generate lib.rs with module declarations
-    let lib_rs = generate_lib_rs(&generated_modules);
+    let lib_rs = generate_lib_rs(&generated_modules, &extra_only_modules);
     let lib_rs_path = args.output.join("lib.rs");
     std::fs::write(&lib_rs_path, &lib_rs)?;
     generated_rs_files.push(lib_rs_path.clone());
@@ -508,15 +647,23 @@ fn generate_unified(
 }
 
 /// Generate lib.rs with module declarations
-fn generate_lib_rs(modules: &[&module_graph::Module]) -> String {
+fn generate_lib_rs(modules: &[&module_graph::Module], extra_modules: &[(String, String)]) -> String {
     let mut output = String::new();
     output.push_str("// Generated OCCT bindings (unified architecture)\n\n");
     output.push_str("// Core FFI module with all types (pub(crate) to prevent direct access, use module re-exports instead)\n");
     output.push_str("pub(crate) mod ffi;\n\n");
     output.push_str("// Per-module re-exports\n");
 
-    for module in modules {
-        output.push_str(&format!("pub mod {};\n", module.rust_name));
+    // Collect all module rust names and sort for deterministic output
+    let mut all_rust_names: Vec<&str> = modules.iter().map(|m| m.rust_name.as_str()).collect();
+    for (_, rust_name) in extra_modules {
+        all_rust_names.push(rust_name);
+    }
+    all_rust_names.sort();
+    all_rust_names.dedup();
+
+    for rust_name in all_rust_names {
+        output.push_str(&format!("pub mod {};\n", rust_name));
     }
 
     output

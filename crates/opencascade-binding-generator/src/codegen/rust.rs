@@ -38,15 +38,15 @@ fn safe_param_name(name: &str) -> String {
 }
 
 /// Types collected from class interfaces
-struct CollectedTypes {
+pub struct CollectedTypes {
     /// Class types (e.g., "gp_Pnt", "Geom_TrimmedCurve") - sorted for deterministic output
-    classes: BTreeSet<String>,
+    pub classes: BTreeSet<String>,
     /// Handle types with their inner class (e.g., "Geom_TrimmedCurve" for Handle<Geom_TrimmedCurve>) - sorted for deterministic output
-    handles: BTreeSet<String>,
+    pub handles: BTreeSet<String>,
 }
 
 /// Collect all referenced OCCT types from class methods and constructors
-fn collect_referenced_types(
+pub fn collect_referenced_types(
     classes: &[&ParsedClass],
 ) -> CollectedTypes {
     let mut result = CollectedTypes {
@@ -122,7 +122,7 @@ fn collect_types_from_type(ty: &Type, collected: &mut CollectedTypes) {
 }
 
 /// Check if a type name is a primitive (not an OCCT class)
-fn is_primitive_type(name: &str) -> bool {
+pub fn is_primitive_type(name: &str) -> bool {
     matches!(
         name,
         // Rust primitive names
@@ -539,6 +539,7 @@ pub fn generate_module_reexports(
     collections: &[&super::collections::CollectionInfo],
     symbol_table: &crate::resolver::SymbolTable,
     module_bindings: &[&super::bindings::ClassBindings],
+    extra_types: &[(String, String)], // (ffi_name, short_name) for types not covered by ClassBindings
 ) -> String {
     let mut output = String::new();
 
@@ -663,6 +664,25 @@ pub fn generate_module_reexports(
         for bindings in header_bindings {
             output.push_str(&super::bindings::emit_reexport_class(bindings, module_name));
         }
+    }
+
+    // Re-export additional types (handles, opaque references, collection iterators)
+    // that appear in ffi.rs but aren't covered by ClassBindings or collections
+    if !extra_types.is_empty() {
+        output.push_str("// ========================\n");
+        output.push_str("// Additional type re-exports\n");
+        output.push_str("// ========================\n\n");
+        for (ffi_name, short_name) in extra_types {
+            if ffi_name == short_name {
+                output.push_str(&format!("pub use crate::ffi::{};\n", ffi_name));
+            } else {
+                output.push_str(&format!(
+                    "pub use crate::ffi::{} as {};\n",
+                    ffi_name, short_name
+                ));
+            }
+        }
+        output.push('\n');
     }
 
     output

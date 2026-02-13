@@ -58,3 +58,11 @@ impl BasicElt {
 }
 
 pub use crate::ffi::HandleMATBasicElt;
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    MAT_Arc as Arc, MAT_Bisector as Bisector, MAT_Graph as Graph, MAT_Node as Node,
+};

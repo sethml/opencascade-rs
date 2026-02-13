@@ -603,3 +603,9 @@ impl ReShape {
 }
 
 pub use crate::ffi::HandleBRepToolsReShape;
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::BRepTools_Modification as Modification;

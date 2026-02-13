@@ -1220,3 +1220,14 @@ impl HSequenceOfXYZ {
 }
 
 pub use crate::ffi::HandleTColgpHSequenceOfXYZ;
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    TColgp_SequenceOfDir as SequenceOfDir, TColgp_SequenceOfDir2d as SequenceOfDir2d,
+    TColgp_SequenceOfPnt as SequenceOfPnt, TColgp_SequenceOfPnt2d as SequenceOfPnt2d,
+    TColgp_SequenceOfVec as SequenceOfVec, TColgp_SequenceOfVec2d as SequenceOfVec2d,
+    TColgp_SequenceOfXY as SequenceOfXY, TColgp_SequenceOfXYZ as SequenceOfXYZ,
+};

@@ -104,3 +104,9 @@ impl TryFrom<i32> for Status {
         }
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::ShapeExtend_MsgRegistrator as MsgRegistrator;

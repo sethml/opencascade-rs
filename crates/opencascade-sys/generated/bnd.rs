@@ -395,3 +395,12 @@ impl Sphere {
         crate::ffi::Bnd_Sphere_to_owned(self)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    Bnd_Array1OfBox as Array1OfBox, Bnd_Array1OfSphere as Array1OfSphere,
+    Bnd_BoundSortBox as BoundSortBox,
+};

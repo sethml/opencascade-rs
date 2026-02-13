@@ -56,3 +56,9 @@ impl MemInfo {
         crate::ffi::OSD_MemInfo_print_info()
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::OSD_FileSystem as FileSystem;

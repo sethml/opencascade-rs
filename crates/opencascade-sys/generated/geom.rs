@@ -3645,3 +3645,9 @@ impl HandleGeomTrimmedCurve {
         crate::ffi::HandleGeomTrimmedCurve_to_HandleGeomGeometry(self)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::Geom_OffsetCurve as OffsetCurve;

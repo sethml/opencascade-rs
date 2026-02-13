@@ -1329,3 +1329,11 @@ impl HandleGeom2dTrimmedCurve {
         crate::ffi::HandleGeom2dTrimmedCurve_to_HandleGeom2dGeometry(self)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    Geom2d_BSplineCurve as BSplineCurve, Geom2d_BezierCurve as BezierCurve, Geom2d_Point as Point,
+};

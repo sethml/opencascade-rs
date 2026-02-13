@@ -1659,3 +1659,13 @@ impl Report {
 }
 
 pub use crate::ffi::HandleMessageReport;
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    HandleMessagePrinter, HandleMessageProgressIndicator, Message_Attribute as Attribute,
+    Message_CompositeAlerts as CompositeAlerts, Message_ListOfAlert as ListOfAlert,
+    Message_SequenceOfPrinters as SequenceOfPrinters,
+};

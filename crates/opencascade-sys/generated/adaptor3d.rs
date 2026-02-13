@@ -406,3 +406,9 @@ impl Surface {
 }
 
 pub use crate::ffi::HandleAdaptor3dSurface;
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::Adaptor3d_TopolTool as TopolTool;

@@ -19,3 +19,12 @@ impl GeneralLib {
         crate::ffi::Interface_GeneralLib_ctor()
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    Interface_GeneralModule as GeneralModule, Interface_InterfaceModel as InterfaceModel,
+    Interface_Protocol as Protocol,
+};

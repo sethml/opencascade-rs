@@ -28,3 +28,9 @@ impl Curve {
         crate::ffi::Geom2dEvaluator_Curve_get_type_descriptor()
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::HandleGeom2dEvaluatorCurve;

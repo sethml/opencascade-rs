@@ -123,3 +123,15 @@ impl HSequenceOfShape {
 }
 
 pub use crate::ffi::HandleTopToolsHSequenceOfShape;
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    DataMapOfShapeShapeIterator, IndexedDataMapOfShapeListOfShapeIterator,
+    IndexedMapOfShapeIterator, ListOfShapeIterator, MapOfShapeIterator, SequenceOfShapeIterator,
+    TopTools_Array2OfShape as Array2OfShape,
+    TopTools_DataMapOfShapeListOfShape as DataMapOfShapeListOfShape,
+    TopTools_DataMapOfShapeReal as DataMapOfShapeReal,
+};

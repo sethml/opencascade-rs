@@ -140,3 +140,9 @@ impl Reader {
         crate::ffi::XSControl_Reader_print_check_transfer(self, failsonly, mode)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::XSControl_WorkSession as WorkSession;

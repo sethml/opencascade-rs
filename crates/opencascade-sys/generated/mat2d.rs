@@ -47,3 +47,9 @@ impl Tool2d {
         crate::ffi::MAT2d_Tool2d_geom_elt(self, Index)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::MAT2d_Circuit as Circuit;

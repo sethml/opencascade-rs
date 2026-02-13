@@ -125,3 +125,9 @@ impl SListOfItemLocation {
         crate::ffi::TopLoc_SListOfItemLocation_to_owned(self)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{TopLoc_Datum3D as Datum3D, TopLoc_ItemLocation as ItemLocation};

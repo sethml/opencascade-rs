@@ -24,3 +24,12 @@ impl ShapeProcess {
         crate::ffi::ShapeProcess_ctor()
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    ShapeProcess_Context as Context, ShapeProcess_Operator as Operator,
+    ShapeProcess_ShapeContext as ShapeContext,
+};

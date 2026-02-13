@@ -76,3 +76,12 @@ impl SpecificLib {
         crate::ffi::IGESData_SpecificLib_ctor()
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    IGESData_IGESEntity as IGESEntity, IGESData_IGESModel as IGESModel,
+    IGESData_Protocol as Protocol, IGESData_SpecificModule as SpecificModule,
+};

@@ -1106,3 +1106,12 @@ impl ToolsProvider {
         crate::ffi::BOPAlgo_ToolsProvider_inherited_UseOBB(self)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    BOPAlgo_PBuilder as PBuilder, BOPAlgo_PPaveFiller as PPaveFiller,
+    BOPAlgo_PaveFiller as PaveFiller,
+};

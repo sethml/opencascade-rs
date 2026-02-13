@@ -1688,3 +1688,9 @@ impl Wire {
         crate::ffi::TopoDS_Wire_inherited_EmptyCopied(self)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::HandleTopoDSTShape;

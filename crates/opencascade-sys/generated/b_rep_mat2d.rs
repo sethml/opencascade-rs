@@ -107,3 +107,9 @@ impl LinkTopoBilo {
         crate::ffi::BRepMAT2d_LinkTopoBilo_generating_shape(self, aBE)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::BRepMAT2d_Explorer as Explorer;

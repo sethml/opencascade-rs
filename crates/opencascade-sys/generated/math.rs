@@ -364,3 +364,9 @@ impl Matrix {
         crate::ffi::math_Matrix_opposite(self)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::math_Vector as Vector;

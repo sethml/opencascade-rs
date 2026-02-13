@@ -59,3 +59,9 @@ impl Surface {
         crate::ffi::GeomEvaluator_Surface_get_type_descriptor()
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{HandleGeomEvaluatorCurve, HandleGeomEvaluatorSurface};

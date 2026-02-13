@@ -204,3 +204,9 @@ impl HandleLawInterpol {
         crate::ffi::HandleLawInterpol_to_HandleLawFunction(self)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::Law_BSpline as BSpline;

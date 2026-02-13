@@ -86,10 +86,11 @@ The `opencascade` crate compiles with the new bindings. Many methods work fully,
 | Status | Files |
 |--------|-------|
 | Fully working | primitives.rs, bounding_box.rs, vertex.rs, boolean_shape.rs, workplane.rs, angle.rs, lib.rs, shell.rs, solid.rs, surface.rs |
-| Mostly working (few stubs) | edge.rs (arc blocked), wire.rs (sweep_with_radius blocked), compound.rs (clean blocked), section.rs (section_edges blocked) |
-| Partially working | face.rs (~8 stubs), shape.rs (~10 stubs) |
-| Fully stubbed | mesh.rs, law_function.rs, make_pipe_shell.rs |
-| Not building | kicad.rs (edge_cuts depends on from_unordered_edges cross-module type issue) |
+| Mostly working (few stubs, all unblockable) | edge.rs, wire.rs, compound.rs, section.rs, face.rs, shape.rs |
+| Stubbed (all stubs now unblockable) | mesh.rs, law_function.rs, make_pipe_shell.rs |
+| Previously blocked, now unblockable | kicad.rs (edge_cuts — Handle type mismatch resolved by unified FFI) |
+
+**Note:** Steps 8 and 9 are now resolved. All 602 types in ffi.rs have friendly re-exports. All 26 remaining stubs across the crate are now unblockable — the CXX `self:` receiver methods work through type aliases automatically, and the unified FFI architecture eliminates cross-module type identity issues. The remaining work is implementing the unstubbed methods.
 
 **Methods unstubbed in this pass:**
 - `Compound::from_shapes` — using BRep_Builder + make_compound + add
@@ -159,26 +160,16 @@ Methods taking or returning known collection types (e.g., `TopTools_ListOfShape`
 
 CXX requires `enum class` but OCCT uses unscoped enums. All methods with enum parameters/returns are skipped. This is a fundamental CXX limitation. Workaround: hand-write enum definitions if needed.
 
-### 8. Methods in FFI but not in module re-exports (NEW)
+### 8. ~~Methods in FFI but not in module re-exports~~ RESOLVED
 
-Many methods exist in `ffi.rs` but are not added to per-module re-export `impl` blocks, making them inaccessible from the `opencascade` crate (since `ffi` is `pub(crate)`). This is the **largest remaining blocker category**. Affected methods:
+All 602 types declared in `ffi.rs` are now re-exported in per-module files. This was accomplished by:
 
-| Missing Re-export | Blocks | FFI Location |
-|---|---|---|
-| `GProp_GProps::mass()` | `Face::surface_area`, `mesh.rs` | ffi.rs |
-| `GC_MakeArcOfCircle::value()` | `Edge::arc` | ffi.rs |
-| `GeomAPI_ProjectPointOnSurf::lower_distance_parameters()` | `Face::normal_at` | ffi.rs |
-| `BRepGProp_Face::normal()` | `Face::normal_at` | ffi.rs |
-| `ShapeUpgrade_UnifySameDomain::build()/shape()/allow_internal_edges()` | `Shape/Compound/Face::clean` | ffi.rs |
-| `BRepIntCurveSurface_Inter::init()/more()/next()/face()` | `Shape::faces_along_line` | ffi.rs |
-| `BRepFeat_MakeCylindricalHole::init()/perform()` | `Shape::drill_hole` | ffi.rs |
-| `Law_Interpol::set()` | `law_function`, `sweep_with_radius` | ffi.rs |
-| `BRepOffsetAPI_MakePipeShell::set_law()/add()/set_mode_bool()/build()/make_solid()` | `make_pipe_shell` | ffi.rs |
-| `HandleTopTools_HSequenceOfShape` | `Wire::from_unordered_edges`, `kicad.rs` | cross-module type mismatch |
-| `TopTools_ListOfShape` in `b_rep_algo_api` | `Section::section_edges`, boolean `new_edges` | locally-declared vs module type |
+1. Adding `extra_types` parameter to `generate_module_reexports()` in `codegen/rust.rs`
+2. Computing unreexported types in `main.rs` across three categories: handle types for transient classes, opaque referenced types, and collection iterator types
+3. Generating module files for modules not in the dependency graph (e.g., `Transfer`, `TopOpeBRepBuild`, `DE`, `IntTools`, `GCE`, `BOPDS`, `StepData`, `TColGeom`)
 
-**Root cause:** The generator's `emit_reexport_class()` only adds methods whose parent class matches the module's class. Inherited methods, wrapper functions for cross-class operations, and some method signatures don't get included. The fix would be to ensure all methods emitted in `ffi.rs` for a class also appear in the corresponding module re-export.
+Methods listed as "missing re-exports" (e.g., `GProp_GProps::mass()`, `GC_MakeArcOfCircle::value()`) were actually always accessible — they use CXX's direct `self:` receiver syntax, which works automatically through `pub use` type aliases without needing explicit delegation in `impl` blocks.
 
-### 9. Cross-module type identity issues (NEW)
+### 9. ~~Cross-module type identity issues~~ RESOLVED
 
-Some types are declared in both `ffi.rs` (as `TopTools_ListOfShape`) and locally in module-specific bridge blocks (e.g., `b_rep_algo_api::ffi::TopTools_ListOfShape`). CXX treats these as distinct types, so methods returning one can't be used where the other is expected. Affects `SectionEdges()` return type and `HandleTopTools_HSequenceOfShape` across modules.
+Previously, types were declared in both `ffi.rs` and module-specific bridge blocks. The unified FFI architecture (Step 4i) eliminated this — all types are now declared once in `ffi.rs` and re-exported via `pub use`. Cross-module type identity works correctly.

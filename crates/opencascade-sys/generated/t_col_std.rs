@@ -374,3 +374,17 @@ impl PackedMapOfInteger {
         crate::ffi::TColStd_PackedMapOfInteger_ctor_packedmapofinteger(theOther)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    TColStd_Array1OfBoolean as Array1OfBoolean, TColStd_Array1OfInteger as Array1OfInteger,
+    TColStd_Array1OfReal as Array1OfReal, TColStd_Array1OfTransient as Array1OfTransient,
+    TColStd_Array2OfReal as Array2OfReal, TColStd_HPackedMapOfInteger as HPackedMapOfInteger,
+    TColStd_SequenceOfAsciiString as SequenceOfAsciiString,
+    TColStd_SequenceOfHExtendedString as SequenceOfHExtendedString,
+    TColStd_SequenceOfInteger as SequenceOfInteger, TColStd_SequenceOfReal as SequenceOfReal,
+    TColStd_SequenceOfTransient as SequenceOfTransient,
+};

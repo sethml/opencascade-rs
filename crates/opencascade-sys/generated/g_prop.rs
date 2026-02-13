@@ -145,3 +145,9 @@ impl GProps {
         crate::ffi::GProp_GProps_to_owned(self)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::GProp_PrincipalProps as PrincipalProps;

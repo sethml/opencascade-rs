@@ -358,3 +358,9 @@ impl Vertex {
         crate::ffi::BRepMesh_Vertex_set_movability(self, theMovability)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::HandleBRepMeshDiscretRoot;

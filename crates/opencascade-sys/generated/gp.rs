@@ -5152,3 +5152,9 @@ impl XYZ {
         crate::ffi::gp_XYZ_to_owned(self)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{gp_Vec2f as Vec2f, gp_Vec3f as Vec3f};

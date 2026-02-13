@@ -597,3 +597,9 @@ impl Offset {
         crate::ffi::BRepOffset_Offset_status(self)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::BRepOffset_ListOfInterval as ListOfInterval;

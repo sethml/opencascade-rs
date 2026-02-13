@@ -26,3 +26,9 @@ impl Image {
         crate::ffi::BRepAlgo_Image_filter(self, S, ShapeType)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::BRepAlgo_AsDes as AsDes;

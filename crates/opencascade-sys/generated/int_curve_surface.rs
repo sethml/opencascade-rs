@@ -167,3 +167,12 @@ impl IntersectionSegment {
         crate::ffi::IntCurveSurface_IntersectionSegment_ctor_intersectionpoint2(P1, P2)
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    IntCurveSurface_ThePolygonOfHInter as ThePolygonOfHInter,
+    IntCurveSurface_ThePolyhedronOfHInter as ThePolyhedronOfHInter,
+};

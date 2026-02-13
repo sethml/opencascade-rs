@@ -479,3 +479,12 @@ impl Triangulation {
 }
 
 pub use crate::ffi::HandlePolyTriangulation;
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    Poly_Array1OfTriangle as Array1OfTriangle, Poly_ListOfTriangulation as ListOfTriangulation,
+    Poly_TriangulationParameters as TriangulationParameters,
+};

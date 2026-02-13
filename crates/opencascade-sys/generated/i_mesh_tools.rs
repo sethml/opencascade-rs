@@ -180,3 +180,9 @@ impl Parameters {
         crate::ffi::IMeshTools_Parameters_rel_min_size()
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::HandleIMeshToolsModelAlgo;

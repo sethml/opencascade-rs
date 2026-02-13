@@ -55,3 +55,9 @@ impl HArray1OfShortReal {
 }
 
 pub use crate::ffi::HandleTShortHArray1OfShortReal;
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::TShort_Array1OfShortReal as Array1OfShortReal;
