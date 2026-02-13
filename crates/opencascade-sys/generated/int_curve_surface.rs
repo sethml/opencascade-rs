@@ -62,6 +62,41 @@ impl HInter {
     pub fn new() -> cxx::UniquePtr<Self> {
         crate::ffi::IntCurveSurface_HInter_ctor()
     }
+
+    /// Inherited from IntCurveSurface_Intersection: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::IntCurveSurface_HInter_inherited_IsDone(self)
+    }
+
+    /// Inherited from IntCurveSurface_Intersection: NbPoints()
+    pub fn nb_points(&self) -> i32 {
+        crate::ffi::IntCurveSurface_HInter_inherited_NbPoints(self)
+    }
+
+    /// Inherited from IntCurveSurface_Intersection: Point()
+    pub fn point(&self, Index: i32) -> &crate::ffi::IntCurveSurface_IntersectionPoint {
+        crate::ffi::IntCurveSurface_HInter_inherited_Point(self, Index)
+    }
+
+    /// Inherited from IntCurveSurface_Intersection: NbSegments()
+    pub fn nb_segments(&self) -> i32 {
+        crate::ffi::IntCurveSurface_HInter_inherited_NbSegments(self)
+    }
+
+    /// Inherited from IntCurveSurface_Intersection: Segment()
+    pub fn segment(&self, Index: i32) -> &crate::ffi::IntCurveSurface_IntersectionSegment {
+        crate::ffi::IntCurveSurface_HInter_inherited_Segment(self, Index)
+    }
+
+    /// Inherited from IntCurveSurface_Intersection: IsParallel()
+    pub fn is_parallel(&self) -> bool {
+        crate::ffi::IntCurveSurface_HInter_inherited_IsParallel(self)
+    }
+
+    /// Inherited from IntCurveSurface_Intersection: Dump()
+    pub fn dump(&self) {
+        crate::ffi::IntCurveSurface_HInter_inherited_Dump(self)
+    }
 }
 
 // ========================

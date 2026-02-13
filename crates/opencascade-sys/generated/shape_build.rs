@@ -45,4 +45,60 @@ impl ReShape {
     ) -> std::pin::Pin<&mut crate::b_rep_tools::ReShape> {
         crate::ffi::ShapeBuild_ReShape_as_BRepTools_ReShape_mut(self)
     }
+
+    /// Inherited from BRepTools_ReShape: Clear()
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::ShapeBuild_ReShape_inherited_Clear(self)
+    }
+
+    /// Inherited from BRepTools_ReShape: Remove()
+    pub fn remove(self: std::pin::Pin<&mut Self>, shape: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::ShapeBuild_ReShape_inherited_Remove(self, shape)
+    }
+
+    /// Inherited from BRepTools_ReShape: Replace()
+    pub fn replace(
+        self: std::pin::Pin<&mut Self>,
+        shape: &crate::ffi::TopoDS_Shape,
+        newshape: &crate::ffi::TopoDS_Shape,
+    ) {
+        crate::ffi::ShapeBuild_ReShape_inherited_Replace(self, shape, newshape)
+    }
+
+    /// Inherited from BRepTools_ReShape: IsRecorded()
+    pub fn is_recorded(&self, shape: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::ShapeBuild_ReShape_inherited_IsRecorded(self, shape)
+    }
+
+    /// Inherited from BRepTools_ReShape: Value()
+    pub fn value(
+        &self,
+        shape: &crate::ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::ShapeBuild_ReShape_inherited_Value(self, shape)
+    }
+
+    /// Inherited from BRepTools_ReShape: ModeConsiderLocation()
+    pub fn mode_consider_location(self: std::pin::Pin<&mut Self>) -> &mut bool {
+        crate::ffi::ShapeBuild_ReShape_inherited_ModeConsiderLocation(self)
+    }
+
+    /// Inherited from BRepTools_ReShape: CopyVertex()
+    pub fn copy_vertex(
+        self: std::pin::Pin<&mut Self>,
+        theV: &crate::ffi::TopoDS_Vertex,
+        theTol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Vertex> {
+        crate::ffi::ShapeBuild_ReShape_inherited_CopyVertex(self, theV, theTol)
+    }
+
+    /// Inherited from BRepTools_ReShape: IsNewShape()
+    pub fn is_new_shape(&self, theShape: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::ShapeBuild_ReShape_inherited_IsNewShape(self, theShape)
+    }
+
+    /// Inherited from BRepTools_ReShape: History()
+    pub fn history(&self) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
+        crate::ffi::ShapeBuild_ReShape_inherited_History(self)
+    }
 }

@@ -443,6 +443,63 @@ impl Rotation {
     pub fn as_trsf_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Trsf> {
         crate::ffi::BRepSweep_Rotation_as_BRepSweep_Trsf_mut(self)
     }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: SetContinuity()
+    pub fn set_continuity(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &crate::ffi::TopoDS_Shape,
+        aDirS: &crate::ffi::Sweep_NumShape,
+    ) {
+        crate::ffi::BRepSweep_Rotation_inherited_SetContinuity(self, aGenS, aDirS)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: Shape()
+    pub fn shape(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &crate::ffi::TopoDS_Shape,
+        aDirS: &crate::ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepSweep_Rotation_inherited_Shape(self, aGenS, aDirS)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: IsUsed()
+    pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepSweep_Rotation_inherited_IsUsed(self, aGenS)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: GenIsUsed()
+    pub fn gen_is_used(&self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepSweep_Rotation_inherited_GenIsUsed(self, theS)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: FirstShape()
+    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepSweep_Rotation_inherited_FirstShape(self)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: LastShape()
+    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepSweep_Rotation_inherited_LastShape(self)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::BRepSweep_Rotation_inherited_Closed(self)
+    }
+
+    /// Inherited from BRepSweep_Trsf: Init()
+    pub fn init(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepSweep_Rotation_inherited_Init(self)
+    }
+
+    /// Inherited from BRepSweep_Trsf: Process()
+    pub fn process(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &crate::ffi::TopoDS_Shape,
+        aDirV: &crate::ffi::Sweep_NumShape,
+    ) -> bool {
+        crate::ffi::BRepSweep_Rotation_inherited_Process(self, aGenS, aDirV)
+    }
 }
 
 // ========================
@@ -563,6 +620,71 @@ impl Translation {
     pub fn as_trsf_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Trsf> {
         crate::ffi::BRepSweep_Translation_as_BRepSweep_Trsf_mut(self)
     }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: SplitShell()
+    pub fn split_shell(
+        &self,
+        aNewShape: &crate::ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepSweep_Translation_inherited_SplitShell(self, aNewShape)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: SetContinuity()
+    pub fn set_continuity(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &crate::ffi::TopoDS_Shape,
+        aDirS: &crate::ffi::Sweep_NumShape,
+    ) {
+        crate::ffi::BRepSweep_Translation_inherited_SetContinuity(self, aGenS, aDirS)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: Shape()
+    pub fn shape(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &crate::ffi::TopoDS_Shape,
+        aDirS: &crate::ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepSweep_Translation_inherited_Shape(self, aGenS, aDirS)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: IsUsed()
+    pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepSweep_Translation_inherited_IsUsed(self, aGenS)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: GenIsUsed()
+    pub fn gen_is_used(&self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepSweep_Translation_inherited_GenIsUsed(self, theS)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: FirstShape()
+    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepSweep_Translation_inherited_FirstShape(self)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: LastShape()
+    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepSweep_Translation_inherited_LastShape(self)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::BRepSweep_Translation_inherited_Closed(self)
+    }
+
+    /// Inherited from BRepSweep_Trsf: Init()
+    pub fn init(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepSweep_Translation_inherited_Init(self)
+    }
+
+    /// Inherited from BRepSweep_Trsf: Process()
+    pub fn process(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &crate::ffi::TopoDS_Shape,
+        aDirV: &crate::ffi::Sweep_NumShape,
+    ) -> bool {
+        crate::ffi::BRepSweep_Translation_inherited_Process(self, aGenS, aDirV)
+    }
 }
 
 // ========================
@@ -638,5 +760,47 @@ impl Trsf {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut NumLinearRegularSweep> {
         crate::ffi::BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep_mut(self)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: SplitShell()
+    pub fn split_shell(
+        &self,
+        aNewShape: &crate::ffi::TopoDS_Shape,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepSweep_Trsf_inherited_SplitShell(self, aNewShape)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: Shape()
+    pub fn shape(
+        self: std::pin::Pin<&mut Self>,
+        aGenS: &crate::ffi::TopoDS_Shape,
+        aDirS: &crate::ffi::Sweep_NumShape,
+    ) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepSweep_Trsf_inherited_Shape(self, aGenS, aDirS)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: IsUsed()
+    pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepSweep_Trsf_inherited_IsUsed(self, aGenS)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: GenIsUsed()
+    pub fn gen_is_used(&self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepSweep_Trsf_inherited_GenIsUsed(self, theS)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: FirstShape()
+    pub fn first_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepSweep_Trsf_inherited_FirstShape(self)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: LastShape()
+    pub fn last_shape(self: std::pin::Pin<&mut Self>) -> cxx::UniquePtr<crate::ffi::TopoDS_Shape> {
+        crate::ffi::BRepSweep_Trsf_inherited_LastShape(self)
+    }
+
+    /// Inherited from BRepSweep_NumLinearRegularSweep: Closed()
+    pub fn closed(&self) -> bool {
+        crate::ffi::BRepSweep_Trsf_inherited_Closed(self)
     }
 }

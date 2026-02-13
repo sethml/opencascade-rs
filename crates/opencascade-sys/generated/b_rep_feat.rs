@@ -240,6 +240,199 @@ impl Builder {
     ) -> std::pin::Pin<&mut crate::bop_algo::ToolsProvider> {
         crate::ffi::BRepFeat_Builder_as_BOPAlgo_ToolsProvider_mut(self)
     }
+
+    /// Inherited from BOPAlgo_Algo: Perform()
+    pub fn perform(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepFeat_Builder_inherited_Perform(self, theRange)
+    }
+
+    /// Inherited from BOPAlgo_Builder: AddArgument()
+    pub fn add_argument(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::BRepFeat_Builder_inherited_AddArgument(self, theShape)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetArguments()
+    pub fn set_arguments(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepFeat_Builder_inherited_SetArguments(self, theLS)
+    }
+
+    /// Inherited from BOPAlgo_Builder: Arguments()
+    pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_Builder_inherited_Arguments(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetNonDestructive()
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        crate::ffi::BRepFeat_Builder_inherited_SetNonDestructive(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Builder: NonDestructive()
+    pub fn non_destructive(&self) -> bool {
+        crate::ffi::BRepFeat_Builder_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetCheckInverted()
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        crate::ffi::BRepFeat_Builder_inherited_SetCheckInverted(self, theCheck)
+    }
+
+    /// Inherited from BOPAlgo_Builder: CheckInverted()
+    pub fn check_inverted(&self) -> bool {
+        crate::ffi::BRepFeat_Builder_inherited_CheckInverted(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: ShapesSD()
+    pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
+        crate::ffi::BRepFeat_Builder_inherited_ShapesSD(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Shape()
+    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFeat_Builder_inherited_Shape(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_Builder_inherited_Modified(self, theS)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_Builder_inherited_Generated(self, theS)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, theS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepFeat_Builder_inherited_IsDeleted(self, theS)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasModified()
+    pub fn has_modified(&self) -> bool {
+        crate::ffi::BRepFeat_Builder_inherited_HasModified(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasGenerated()
+    pub fn has_generated(&self) -> bool {
+        crate::ffi::BRepFeat_Builder_inherited_HasGenerated(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasDeleted()
+    pub fn has_deleted(&self) -> bool {
+        crate::ffi::BRepFeat_Builder_inherited_HasDeleted(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: History()
+    pub fn history(
+        self: std::pin::Pin<&mut Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
+        crate::ffi::BRepFeat_Builder_inherited_History(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory()
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        crate::ffi::BRepFeat_Builder_inherited_SetToFillHistory(self, theHistFlag)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasHistory()
+    pub fn has_history(&self) -> bool {
+        crate::ffi::BRepFeat_Builder_inherited_HasHistory(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: Allocator()
+    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+        crate::ffi::BRepFeat_Builder_inherited_Allocator(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: AddError()
+    pub fn add_error(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
+        crate::ffi::BRepFeat_Builder_inherited_AddError(self, theAlert)
+    }
+
+    /// Inherited from BOPAlgo_Options: AddWarning()
+    pub fn add_warning(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
+        crate::ffi::BRepFeat_Builder_inherited_AddWarning(self, theAlert)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasErrors()
+    pub fn has_errors(&self) -> bool {
+        crate::ffi::BRepFeat_Builder_inherited_HasErrors(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasError()
+    pub fn has_error(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        crate::ffi::BRepFeat_Builder_inherited_HasError(self, theType)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarnings()
+    pub fn has_warnings(&self) -> bool {
+        crate::ffi::BRepFeat_Builder_inherited_HasWarnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarning()
+    pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        crate::ffi::BRepFeat_Builder_inherited_HasWarning(self, theType)
+    }
+
+    /// Inherited from BOPAlgo_Options: GetReport()
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        crate::ffi::BRepFeat_Builder_inherited_GetReport(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: ClearWarnings()
+    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_Builder_inherited_ClearWarnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetRunParallel()
+    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        crate::ffi::BRepFeat_Builder_inherited_SetRunParallel(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Options: RunParallel()
+    pub fn run_parallel(&self) -> bool {
+        crate::ffi::BRepFeat_Builder_inherited_RunParallel(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetFuzzyValue()
+    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
+        crate::ffi::BRepFeat_Builder_inherited_SetFuzzyValue(self, theFuzz)
+    }
+
+    /// Inherited from BOPAlgo_Options: FuzzyValue()
+    pub fn fuzzy_value(&self) -> f64 {
+        crate::ffi::BRepFeat_Builder_inherited_FuzzyValue(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetUseOBB()
+    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
+        crate::ffi::BRepFeat_Builder_inherited_SetUseOBB(self, theUseOBB)
+    }
+
+    /// Inherited from BOPAlgo_Options: UseOBB()
+    pub fn use_obb(&self) -> bool {
+        crate::ffi::BRepFeat_Builder_inherited_UseOBB(self)
+    }
+
+    /// Inherited from BOPAlgo_ToolsProvider: AddTool()
+    pub fn add_tool(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::BRepFeat_Builder_inherited_AddTool(self, theShape)
+    }
+
+    /// Inherited from BOPAlgo_ToolsProvider: SetTools()
+    pub fn set_tools(self: std::pin::Pin<&mut Self>, theShapes: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepFeat_Builder_inherited_SetTools(self, theShapes)
+    }
+
+    /// Inherited from BOPAlgo_ToolsProvider: Tools()
+    pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_Builder_inherited_Tools(self)
+    }
 }
 
 // ========================
@@ -304,6 +497,26 @@ impl Form {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::b_rep_builder_api::MakeShape> {
         crate::ffi::BRepFeat_Form_as_BRepBuilderAPI_MakeShape_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepFeat_Form_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepFeat_Form_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepFeat_Form_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFeat_Form_inherited_Shape(self)
     }
 }
 
@@ -388,6 +601,258 @@ impl MakeCylindricalHole {
     /// Upcast to BRepFeat_Builder (mutable)
     pub fn as_builder_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Builder> {
         crate::ffi::BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder_mut(self)
+    }
+
+    /// Inherited from BOPAlgo_BOP: Clear()
+    pub fn clear(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Clear(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: AddArgument()
+    pub fn add_argument(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_AddArgument(self, theShape)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetArguments()
+    pub fn set_arguments(self: std::pin::Pin<&mut Self>, theLS: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetArguments(self, theLS)
+    }
+
+    /// Inherited from BOPAlgo_Builder: Arguments()
+    pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Arguments(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetNonDestructive()
+    pub fn set_non_destructive(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetNonDestructive(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Builder: NonDestructive()
+    pub fn non_destructive(&self) -> bool {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_NonDestructive(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: SetCheckInverted()
+    pub fn set_check_inverted(self: std::pin::Pin<&mut Self>, theCheck: bool) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetCheckInverted(self, theCheck)
+    }
+
+    /// Inherited from BOPAlgo_Builder: CheckInverted()
+    pub fn check_inverted(&self) -> bool {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_CheckInverted(self)
+    }
+
+    /// Inherited from BOPAlgo_Builder: ShapesSD()
+    pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_ShapesSD(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Shape()
+    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Shape(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Modified(self, theS)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        theS: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Generated(self, theS)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, theS: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_IsDeleted(self, theS)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasModified()
+    pub fn has_modified(&self) -> bool {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_HasModified(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasGenerated()
+    pub fn has_generated(&self) -> bool {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_HasGenerated(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasDeleted()
+    pub fn has_deleted(&self) -> bool {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_HasDeleted(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: History()
+    pub fn history(
+        self: std::pin::Pin<&mut Self>,
+    ) -> cxx::UniquePtr<crate::ffi::HandleBRepToolsHistory> {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_History(self)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: SetToFillHistory()
+    pub fn set_to_fill_history(self: std::pin::Pin<&mut Self>, theHistFlag: bool) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetToFillHistory(self, theHistFlag)
+    }
+
+    /// Inherited from BOPAlgo_BuilderShape: HasHistory()
+    pub fn has_history(&self) -> bool {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_HasHistory(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: Allocator()
+    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Allocator(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: AddError()
+    pub fn add_error(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_AddError(self, theAlert)
+    }
+
+    /// Inherited from BOPAlgo_Options: AddWarning()
+    pub fn add_warning(self: std::pin::Pin<&mut Self>, theAlert: &crate::ffi::HandleMessageAlert) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_AddWarning(self, theAlert)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasErrors()
+    pub fn has_errors(&self) -> bool {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_HasErrors(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasError()
+    pub fn has_error(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_HasError(self, theType)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarnings()
+    pub fn has_warnings(&self) -> bool {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_HasWarnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: HasWarning()
+    pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_HasWarning(self, theType)
+    }
+
+    /// Inherited from BOPAlgo_Options: GetReport()
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_GetReport(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: ClearWarnings()
+    pub fn clear_warnings(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_ClearWarnings(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetRunParallel()
+    pub fn set_run_parallel(self: std::pin::Pin<&mut Self>, theFlag: bool) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetRunParallel(self, theFlag)
+    }
+
+    /// Inherited from BOPAlgo_Options: RunParallel()
+    pub fn run_parallel(&self) -> bool {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_RunParallel(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetFuzzyValue()
+    pub fn set_fuzzy_value(self: std::pin::Pin<&mut Self>, theFuzz: f64) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetFuzzyValue(self, theFuzz)
+    }
+
+    /// Inherited from BOPAlgo_Options: FuzzyValue()
+    pub fn fuzzy_value(&self) -> f64 {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_FuzzyValue(self)
+    }
+
+    /// Inherited from BOPAlgo_Options: SetUseOBB()
+    pub fn set_use_obb(self: std::pin::Pin<&mut Self>, theUseOBB: bool) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetUseOBB(self, theUseOBB)
+    }
+
+    /// Inherited from BOPAlgo_Options: UseOBB()
+    pub fn use_obb(&self) -> bool {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_UseOBB(self)
+    }
+
+    /// Inherited from BOPAlgo_ToolsProvider: AddTool()
+    pub fn add_tool(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_AddTool(self, theShape)
+    }
+
+    /// Inherited from BOPAlgo_ToolsProvider: SetTools()
+    pub fn set_tools(self: std::pin::Pin<&mut Self>, theShapes: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetTools(self, theShapes)
+    }
+
+    /// Inherited from BOPAlgo_ToolsProvider: Tools()
+    pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Tools(self)
+    }
+
+    /// Inherited from BRepFeat_Builder: SetOperation()
+    pub fn set_operation(self: std::pin::Pin<&mut Self>, theFuse: i32) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetOperation(self, theFuse)
+    }
+
+    /// Inherited from BRepFeat_Builder: PartsOfTool()
+    pub fn parts_of_tool(
+        self: std::pin::Pin<&mut Self>,
+        theLT: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
+    ) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_PartsOfTool(self, theLT)
+    }
+
+    /// Inherited from BRepFeat_Builder: KeepParts()
+    pub fn keep_parts(self: std::pin::Pin<&mut Self>, theIm: &crate::ffi::TopTools_ListOfShape) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_KeepParts(self, theIm)
+    }
+
+    /// Inherited from BRepFeat_Builder: KeepPart()
+    pub fn keep_part(self: std::pin::Pin<&mut Self>, theS: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_KeepPart(self, theS)
+    }
+
+    /// Inherited from BRepFeat_Builder: PerformResult()
+    pub fn perform_result(
+        self: std::pin::Pin<&mut Self>,
+        theRange: &crate::ffi::Message_ProgressRange,
+    ) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_PerformResult(self, theRange)
+    }
+
+    /// Inherited from BRepFeat_Builder: RebuildFaces()
+    pub fn rebuild_faces(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_RebuildFaces(self)
+    }
+
+    /// Inherited from BRepFeat_Builder: RebuildEdge()
+    pub fn rebuild_edge(
+        self: std::pin::Pin<&mut Self>,
+        theE: &crate::ffi::TopoDS_Shape,
+        theF: &crate::ffi::TopoDS_Face,
+        theME: &crate::ffi::TopTools_MapOfShape,
+        aLEIm: std::pin::Pin<&mut crate::ffi::TopTools_ListOfShape>,
+    ) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_RebuildEdge(
+            self, theE, theF, theME, aLEIm,
+        )
+    }
+
+    /// Inherited from BRepFeat_Builder: CheckSolidImages()
+    pub fn check_solid_images(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_CheckSolidImages(self)
+    }
+
+    /// Inherited from BRepFeat_Builder: FillRemoved()
+    pub fn fill_removed(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeCylindricalHole_inherited_FillRemoved(self)
     }
 }
 
@@ -478,5 +943,101 @@ impl MakeDPrism {
     /// Upcast to BRepFeat_Form (mutable)
     pub fn as_form_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Form> {
         crate::ffi::BRepFeat_MakeDPrism_as_BRepFeat_Form_mut(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_IsDone(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_Command: Check()
+    pub fn check(&self) {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_Check(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Build()
+    pub fn build(self: std::pin::Pin<&mut Self>, theRange: &crate::ffi::Message_ProgressRange) {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_Build(self, theRange)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Shape()
+    pub fn shape(self: std::pin::Pin<&mut Self>) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_Shape(self)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Generated()
+    pub fn generated(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_Generated(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: Modified()
+    pub fn modified(
+        self: std::pin::Pin<&mut Self>,
+        S: &crate::ffi::TopoDS_Shape,
+    ) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_Modified(self, S)
+    }
+
+    /// Inherited from BRepBuilderAPI_MakeShape: IsDeleted()
+    pub fn is_deleted(self: std::pin::Pin<&mut Self>, S: &crate::ffi::TopoDS_Shape) -> bool {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_IsDeleted(self, S)
+    }
+
+    /// Inherited from BRepFeat_Form: FirstShape()
+    pub fn first_shape(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_FirstShape(self)
+    }
+
+    /// Inherited from BRepFeat_Form: LastShape()
+    pub fn last_shape(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_LastShape(self)
+    }
+
+    /// Inherited from BRepFeat_Form: NewEdges()
+    pub fn new_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_NewEdges(self)
+    }
+
+    /// Inherited from BRepFeat_Form: TgtEdges()
+    pub fn tgt_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_TgtEdges(self)
+    }
+
+    /// Inherited from BRepFeat_Form: BasisShapeValid()
+    pub fn basis_shape_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_BasisShapeValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: GeneratedShapeValid()
+    pub fn generated_shape_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_GeneratedShapeValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: ShapeFromValid()
+    pub fn shape_from_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_ShapeFromValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: ShapeUntilValid()
+    pub fn shape_until_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_ShapeUntilValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: GluedFacesValid()
+    pub fn glued_faces_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_GluedFacesValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: SketchFaceValid()
+    pub fn sketch_face_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_SketchFaceValid(self)
+    }
+
+    /// Inherited from BRepFeat_Form: PerfSelectionValid()
+    pub fn perf_selection_valid(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepFeat_MakeDPrism_inherited_PerfSelectionValid(self)
     }
 }

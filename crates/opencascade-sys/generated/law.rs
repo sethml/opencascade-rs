@@ -139,6 +139,36 @@ impl Interpol {
     pub fn to_handle(obj: cxx::UniquePtr<Self>) -> cxx::UniquePtr<crate::ffi::HandleLawInterpol> {
         crate::ffi::Law_Interpol_to_handle(obj)
     }
+
+    /// Inherited from Law_BSpFunc: Value()
+    pub fn value(self: std::pin::Pin<&mut Self>, X: f64) -> f64 {
+        crate::ffi::Law_Interpol_inherited_Value(self, X)
+    }
+
+    /// Inherited from Law_BSpFunc: D1()
+    pub fn d1(self: std::pin::Pin<&mut Self>, X: f64, F: &mut f64, D: &mut f64) {
+        crate::ffi::Law_Interpol_inherited_D1(self, X, F, D)
+    }
+
+    /// Inherited from Law_BSpFunc: D2()
+    pub fn d2(self: std::pin::Pin<&mut Self>, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
+        crate::ffi::Law_Interpol_inherited_D2(self, X, F, D, D2)
+    }
+
+    /// Inherited from Law_BSpFunc: Trim()
+    pub fn trim(
+        &self,
+        PFirst: f64,
+        PLast: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleLawFunction> {
+        crate::ffi::Law_Interpol_inherited_Trim(self, PFirst, PLast, Tol)
+    }
+
+    /// Inherited from Law_BSpFunc: Bounds()
+    pub fn bounds(self: std::pin::Pin<&mut Self>, PFirst: &mut f64, PLast: &mut f64) {
+        crate::ffi::Law_Interpol_inherited_Bounds(self, PFirst, PLast)
+    }
 }
 
 pub use crate::ffi::HandleLawInterpol;

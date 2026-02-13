@@ -162,6 +162,11 @@ impl FunctionWithDerivative {
     pub fn as_function_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Function> {
         crate::ffi::math_FunctionWithDerivative_as_math_Function_mut(self)
     }
+
+    /// Inherited from math_Function: GetStateNumber()
+    pub fn get_state_number(self: std::pin::Pin<&mut Self>) -> i32 {
+        crate::ffi::math_FunctionWithDerivative_inherited_GetStateNumber(self)
+    }
 }
 
 // ========================

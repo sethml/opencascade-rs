@@ -244,6 +244,36 @@ impl ElSpine {
     ) -> std::pin::Pin<&mut crate::adaptor3d::Curve> {
         crate::ffi::ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(self)
     }
+
+    /// Inherited from Adaptor3d_Curve: IsClosed()
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::ChFiDS_ElSpine_inherited_IsClosed(self)
+    }
+
+    /// Inherited from Adaptor3d_Curve: DN()
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec> {
+        crate::ffi::ChFiDS_ElSpine_inherited_DN(self, U, N)
+    }
+
+    /// Inherited from Adaptor3d_Curve: Degree()
+    pub fn degree(&self) -> i32 {
+        crate::ffi::ChFiDS_ElSpine_inherited_Degree(self)
+    }
+
+    /// Inherited from Adaptor3d_Curve: IsRational()
+    pub fn is_rational(&self) -> bool {
+        crate::ffi::ChFiDS_ElSpine_inherited_IsRational(self)
+    }
+
+    /// Inherited from Adaptor3d_Curve: NbPoles()
+    pub fn nb_poles(&self) -> i32 {
+        crate::ffi::ChFiDS_ElSpine_inherited_NbPoles(self)
+    }
+
+    /// Inherited from Adaptor3d_Curve: NbKnots()
+    pub fn nb_knots(&self) -> i32 {
+        crate::ffi::ChFiDS_ElSpine_inherited_NbKnots(self)
+    }
 }
 
 // ========================

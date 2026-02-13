@@ -719,4 +719,24 @@ impl POnSurfParams {
     pub fn as_p_on_surf_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut POnSurf> {
         crate::ffi::Extrema_POnSurfParams_as_Extrema_POnSurf_mut(self)
     }
+
+    /// Inherited from Extrema_POnSurf: Value()
+    pub fn value(&self) -> &crate::ffi::gp_Pnt {
+        crate::ffi::Extrema_POnSurfParams_inherited_Value(self)
+    }
+
+    /// Inherited from Extrema_POnSurf: SetParameters()
+    pub fn set_parameters(
+        self: std::pin::Pin<&mut Self>,
+        theU: f64,
+        theV: f64,
+        thePnt: &crate::ffi::gp_Pnt,
+    ) {
+        crate::ffi::Extrema_POnSurfParams_inherited_SetParameters(self, theU, theV, thePnt)
+    }
+
+    /// Inherited from Extrema_POnSurf: Parameter()
+    pub fn parameter(&self, U: &mut f64, V: &mut f64) {
+        crate::ffi::Extrema_POnSurfParams_inherited_Parameter(self, U, V)
+    }
 }

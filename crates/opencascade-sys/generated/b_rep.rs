@@ -45,6 +45,49 @@ impl Builder {
     ) -> std::pin::Pin<&mut crate::topo_ds::Builder> {
         crate::ffi::BRep_Builder_as_TopoDS_Builder_mut(self)
     }
+
+    /// Inherited from TopoDS_Builder: MakeWire()
+    pub fn make_wire(&self, W: std::pin::Pin<&mut crate::ffi::TopoDS_Wire>) {
+        crate::ffi::BRep_Builder_inherited_MakeWire(self, W)
+    }
+
+    /// Inherited from TopoDS_Builder: MakeShell()
+    pub fn make_shell(&self, S: std::pin::Pin<&mut crate::ffi::TopoDS_Shell>) {
+        crate::ffi::BRep_Builder_inherited_MakeShell(self, S)
+    }
+
+    /// Inherited from TopoDS_Builder: MakeSolid()
+    pub fn make_solid(&self, S: std::pin::Pin<&mut crate::ffi::TopoDS_Solid>) {
+        crate::ffi::BRep_Builder_inherited_MakeSolid(self, S)
+    }
+
+    /// Inherited from TopoDS_Builder: MakeCompSolid()
+    pub fn make_comp_solid(&self, C: std::pin::Pin<&mut crate::ffi::TopoDS_CompSolid>) {
+        crate::ffi::BRep_Builder_inherited_MakeCompSolid(self, C)
+    }
+
+    /// Inherited from TopoDS_Builder: MakeCompound()
+    pub fn make_compound(&self, C: std::pin::Pin<&mut crate::ffi::TopoDS_Compound>) {
+        crate::ffi::BRep_Builder_inherited_MakeCompound(self, C)
+    }
+
+    /// Inherited from TopoDS_Builder: Add()
+    pub fn add(
+        &self,
+        S: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
+        C: &crate::ffi::TopoDS_Shape,
+    ) {
+        crate::ffi::BRep_Builder_inherited_Add(self, S, C)
+    }
+
+    /// Inherited from TopoDS_Builder: Remove()
+    pub fn remove(
+        &self,
+        S: std::pin::Pin<&mut crate::ffi::TopoDS_Shape>,
+        C: &crate::ffi::TopoDS_Shape,
+    ) {
+        crate::ffi::BRep_Builder_inherited_Remove(self, S, C)
+    }
 }
 
 // ========================

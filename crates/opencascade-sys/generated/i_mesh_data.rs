@@ -27,6 +27,16 @@ impl Model {
     pub fn as_shape_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Shape> {
         crate::ffi::IMeshData_Model_as_IMeshData_Shape_mut(self)
     }
+
+    /// Inherited from IMeshData_Shape: SetShape()
+    pub fn set_shape(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::IMeshData_Model_inherited_SetShape(self, theShape)
+    }
+
+    /// Inherited from IMeshData_Shape: GetShape()
+    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::IMeshData_Model_inherited_GetShape(self)
+    }
 }
 
 // ========================

@@ -102,6 +102,11 @@ impl MakeArcOfCircle {
     pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
         crate::ffi::GC_MakeArcOfCircle_as_GC_Root_mut(self)
     }
+
+    /// Inherited from GC_Root: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GC_MakeArcOfCircle_inherited_IsDone(self)
+    }
 }
 
 // ========================
@@ -163,6 +168,11 @@ impl MakeSegment {
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Root> {
         crate::ffi::GC_MakeSegment_as_GC_Root_mut(self)
+    }
+
+    /// Inherited from GC_Root: IsDone()
+    pub fn is_done(&self) -> bool {
+        crate::ffi::GC_MakeSegment_inherited_IsDone(self)
     }
 }
 

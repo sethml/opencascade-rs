@@ -68,6 +68,16 @@ impl Context {
     ) -> std::pin::Pin<&mut crate::i_mesh_data::Shape> {
         crate::ffi::IMeshTools_Context_as_IMeshData_Shape_mut(self)
     }
+
+    /// Inherited from IMeshData_Shape: SetShape()
+    pub fn set_shape(self: std::pin::Pin<&mut Self>, theShape: &crate::ffi::TopoDS_Shape) {
+        crate::ffi::IMeshTools_Context_inherited_SetShape(self, theShape)
+    }
+
+    /// Inherited from IMeshData_Shape: GetShape()
+    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        crate::ffi::IMeshTools_Context_inherited_GetShape(self)
+    }
 }
 
 // ========================
@@ -110,6 +120,44 @@ impl ModelBuilder {
         self: std::pin::Pin<&mut Self>,
     ) -> std::pin::Pin<&mut crate::message::Algorithm> {
         crate::ffi::IMeshTools_ModelBuilder_as_Message_Algorithm_mut(self)
+    }
+
+    /// Inherited from Message_Algorithm: GetStatus()
+    pub fn get_status(&self) -> &crate::ffi::Message_ExecStatus {
+        crate::ffi::IMeshTools_ModelBuilder_inherited_GetStatus(self)
+    }
+
+    /// Inherited from Message_Algorithm: ChangeStatus()
+    pub fn change_status(
+        self: std::pin::Pin<&mut Self>,
+    ) -> std::pin::Pin<&mut crate::ffi::Message_ExecStatus> {
+        crate::ffi::IMeshTools_ModelBuilder_inherited_ChangeStatus(self)
+    }
+
+    /// Inherited from Message_Algorithm: ClearStatus()
+    pub fn clear_status(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::IMeshTools_ModelBuilder_inherited_ClearStatus(self)
+    }
+
+    /// Inherited from Message_Algorithm: SetMessenger()
+    pub fn set_messenger(
+        self: std::pin::Pin<&mut Self>,
+        theMsgr: &crate::ffi::HandleMessageMessenger,
+    ) {
+        crate::ffi::IMeshTools_ModelBuilder_inherited_SetMessenger(self, theMsgr)
+    }
+
+    /// Inherited from Message_Algorithm: GetMessenger()
+    pub fn get_messenger(&self) -> cxx::UniquePtr<crate::ffi::HandleMessageMessenger> {
+        crate::ffi::IMeshTools_ModelBuilder_inherited_GetMessenger(self)
+    }
+
+    /// Inherited from Message_Algorithm: AddStatus()
+    pub fn add_status(
+        self: std::pin::Pin<&mut Self>,
+        theOther: &crate::ffi::HandleMessageAlgorithm,
+    ) {
+        crate::ffi::IMeshTools_ModelBuilder_inherited_AddStatus(self, theOther)
     }
 }
 

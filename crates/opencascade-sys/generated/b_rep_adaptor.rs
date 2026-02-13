@@ -193,6 +193,159 @@ impl Curve2d {
     ) -> std::pin::Pin<&mut crate::geom2d_adaptor::Curve> {
         crate::ffi::BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve_mut(self)
     }
+
+    /// Inherited from Adaptor2d_Curve2d: FirstParameter()
+    pub fn first_parameter(&self) -> f64 {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_FirstParameter(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: LastParameter()
+    pub fn last_parameter(&self) -> f64 {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_LastParameter(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: Trim()
+    pub fn trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> cxx::UniquePtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Trim(self, First, Last, Tol)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: IsClosed()
+    pub fn is_closed(&self) -> bool {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_IsClosed(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: IsPeriodic()
+    pub fn is_periodic(&self) -> bool {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_IsPeriodic(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: Period()
+    pub fn period(&self) -> f64 {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Period(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: Value()
+    pub fn value(&self, U: f64) -> cxx::UniquePtr<crate::ffi::gp_Pnt2d> {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Value(self, U)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: D0()
+    pub fn d0(&self, U: f64, P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>) {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_D0(self, U, P)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: D1()
+    pub fn d1(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_D1(self, U, P, V)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: D2()
+    pub fn d2(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_D2(self, U, P, V1, V2)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: D3()
+    pub fn d3(
+        &self,
+        U: f64,
+        P: std::pin::Pin<&mut crate::ffi::gp_Pnt2d>,
+        V1: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V2: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+        V3: std::pin::Pin<&mut crate::ffi::gp_Vec2d>,
+    ) {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_D3(self, U, P, V1, V2, V3)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: DN()
+    pub fn dn(&self, U: f64, N: i32) -> cxx::UniquePtr<crate::ffi::gp_Vec2d> {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_DN(self, U, N)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: Resolution()
+    pub fn resolution(&self, R3d: f64) -> f64 {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Resolution(self, R3d)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: Line()
+    pub fn line(&self) -> cxx::UniquePtr<crate::ffi::gp_Lin2d> {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Line(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: Circle()
+    pub fn circle(&self) -> cxx::UniquePtr<crate::ffi::gp_Circ2d> {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Circle(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: Ellipse()
+    pub fn ellipse(&self) -> cxx::UniquePtr<crate::ffi::gp_Elips2d> {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Ellipse(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: Hyperbola()
+    pub fn hyperbola(&self) -> cxx::UniquePtr<crate::ffi::gp_Hypr2d> {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Hyperbola(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: Parabola()
+    pub fn parabola(&self) -> cxx::UniquePtr<crate::ffi::gp_Parab2d> {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Parabola(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: Degree()
+    pub fn degree(&self) -> i32 {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Degree(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: IsRational()
+    pub fn is_rational(&self) -> bool {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_IsRational(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: NbPoles()
+    pub fn nb_poles(&self) -> i32 {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_NbPoles(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: NbKnots()
+    pub fn nb_knots(&self) -> i32 {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_NbKnots(self)
+    }
+
+    /// Inherited from Adaptor2d_Curve2d: NbSamples()
+    pub fn nb_samples(&self) -> i32 {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_NbSamples(self)
+    }
+
+    /// Inherited from Geom2dAdaptor_Curve: Reset()
+    pub fn reset(self: std::pin::Pin<&mut Self>) {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Reset(self)
+    }
+
+    /// Inherited from Geom2dAdaptor_Curve: Load()
+    pub fn load(self: std::pin::Pin<&mut Self>, theCurve: &crate::ffi::HandleGeom2dCurve) {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Load(self, theCurve)
+    }
+
+    /// Inherited from Geom2dAdaptor_Curve: Curve()
+    pub fn curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+        crate::ffi::BRepAdaptor_Curve2d_inherited_Curve(self)
+    }
 }
 
 // ========================

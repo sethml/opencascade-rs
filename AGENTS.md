@@ -5,7 +5,7 @@ In order to do that, there's a work-in-progress tool
 crates/opencascade-binding-generator. The PLAN.md and TRANSITION_PLAN.md
 documents in that directory describe the progress. Use
 scripts/regenerate-bindings.sh in order to run the generator and regenerate the
-ffi files in opencascade-sys/generated. Avoid using head or tail when running
+ffi files in opencascade-sys/generated. You must regenerate bindings after modifying opencascade-binding-generator. Avoid using head or tail when running
 the script in order to avoid missing errors.
 
 Avoid using head or tail when doing builds to avoid missing compile errors. Run
@@ -14,3 +14,8 @@ the user if they want to speed them up.
 
 Do not use /tmp/ for temporary files. Use tmp/ in the project directory instead.
 
+Never git commit unless explicitly asked to do so.
+
+When resolving git merge conflicts, any code in crates/opencascade-sys/generated is generated code and should be regenerated rather than trying to resolve conflicts.
+
+Making the opencascade build is a work in progress. It should build, but some code is stubbed out, and dependencies of opencascade may not build. The goal is to unstub opencascade over time, then fix the dependencies, but none of that needs to happen this iteration.
