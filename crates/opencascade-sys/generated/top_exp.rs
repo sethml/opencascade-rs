@@ -23,6 +23,11 @@
 pub use crate::ffi::TopExp;
 
 impl TopExp {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::TopExp_ctor()
+    }
+
     /// Returns the Vertex of orientation FORWARD in E. If
     /// there is none returns a Null Shape.
     /// CumOri = True : taking account the edge orientation

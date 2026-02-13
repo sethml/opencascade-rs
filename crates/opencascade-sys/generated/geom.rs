@@ -1090,13 +1090,6 @@ impl BoundedSurface {
     pub fn as_surface_mut(self: std::pin::Pin<&mut Self>) -> std::pin::Pin<&mut Surface> {
         crate::ffi::Geom_BoundedSurface_as_Geom_Surface_mut(self)
     }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: cxx::UniquePtr<Self>,
-    ) -> cxx::UniquePtr<crate::ffi::HandleGeomBoundedSurface> {
-        crate::ffi::Geom_BoundedSurface_to_handle(obj)
-    }
 }
 
 // ========================

@@ -173,3 +173,10 @@ impl MakeSegment {
 /// This class implements the common services for
 /// all classes of gce which report error.
 pub use crate::ffi::GC_Root as Root;
+
+impl Root {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::GC_Root_ctor()
+    }
+}

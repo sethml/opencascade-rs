@@ -43,6 +43,11 @@
 pub use crate::ffi::BRepTools;
 
 impl BRepTools {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepTools_ctor()
+    }
+
     /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
     /// values in the parametric space of F.
     pub fn uv_bounds_face_real4(

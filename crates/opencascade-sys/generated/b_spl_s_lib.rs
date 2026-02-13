@@ -67,6 +67,11 @@
 pub use crate::ffi::BSplSLib;
 
 impl BSplSLib {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BSplSLib_ctor()
+    }
+
     /// this is a one dimensional function
     /// typedef  void (*EvaluatorFunction)  (
     /// Standard_Integer     // Derivative Request

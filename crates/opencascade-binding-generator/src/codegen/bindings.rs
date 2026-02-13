@@ -10,8 +10,7 @@ use crate::module_graph;
 use crate::resolver::{self, SymbolTable};
 use crate::type_mapping::{self, map_return_type_in_context, map_type_in_context, TypeContext};
 use heck::ToSnakeCase;
-use proc_macro2::TokenStream;
-use quote::{format_ident, quote};
+use std::fmt::Write as _;
 use std::collections::{HashMap, HashSet};
 
 /// Rust keywords that need suffix escaping (CXX doesn't support raw identifiers).
@@ -720,6 +719,47 @@ fn compute_static_method_names(
         .collect()
 }
 
+// ── Abstract class detection ────────────────────────────────────────────────
+
+/// Check if a class is effectively abstract by walking the inheritance chain.
+///
+/// A class is effectively abstract if:
+/// 1. It declares pure virtual methods itself (`is_abstract` flag), OR
+/// 2. It inherits pure virtual methods from ancestors that are not overridden
+///    by any class in the inheritance chain (including itself).
+fn is_effectively_abstract(
+    class: &ParsedClass,
+    all_classes_by_name: &HashMap<String, &ParsedClass>,
+    symbol_table: &SymbolTable,
+) -> bool {
+    if class.is_abstract {
+        return true;
+    }
+
+    // Collect ALL pure virtual methods from all ancestors
+    let mut all_pvms: HashSet<String> = HashSet::new();
+    // Collect ALL concrete methods from all ancestors + this class
+    let mut all_concrete: HashSet<String> = HashSet::new();
+
+    for ancestor_name in symbol_table.get_all_ancestors_by_name(&class.name) {
+        if let Some(ancestor) = all_classes_by_name.get(&ancestor_name) {
+            all_pvms.extend(ancestor.pure_virtual_methods.iter().cloned());
+            // Concrete = all methods minus pure virtual declarations
+            for m in &ancestor.all_method_names {
+                if !ancestor.pure_virtual_methods.contains(m) {
+                    all_concrete.insert(m.clone());
+                }
+            }
+        }
+    }
+
+    // This class's own methods are concrete (is_abstract is false)
+    all_concrete.extend(class.all_method_names.iter().cloned());
+
+    // If any pure virtual method is not overridden, the class is abstract
+    all_pvms.iter().any(|pvm| !all_concrete.contains(pvm))
+}
+
 // ── Main compute function ───────────────────────────────────────────────────
 
 /// Compute all binding decisions for a class.
@@ -731,13 +771,32 @@ pub fn compute_class_bindings(
     ffi_ctx: &TypeContext,
     symbol_table: &SymbolTable,
     handle_able_classes: &HashSet<String>,
+    all_classes_by_name: &HashMap<String, &ParsedClass>,
 ) -> ClassBindings {
     let cpp_name = &class.name;
     let all_enum_names = ffi_ctx.all_enums;
 
+    let effectively_abstract = is_effectively_abstract(class, all_classes_by_name, symbol_table);
+
     // ── Constructors ────────────────────────────────────────────────────
-    let constructors = if !class.is_abstract && !class.has_protected_destructor {
-        compute_constructor_bindings(class, ffi_ctx, handle_able_classes)
+    let constructors = if !effectively_abstract && !class.has_protected_destructor {
+        let mut ctors = compute_constructor_bindings(class, ffi_ctx, handle_able_classes);
+        // If no bindable constructors AND no explicit constructors at all,
+        // generate a synthetic default constructor (uses C++ implicit default).
+        // We must NOT generate synthetic constructors when:
+        // - The class has explicit constructors (even if filtered out) — C++ won't
+        //   generate an implicit default constructor in that case
+        if ctors.is_empty() && !class.has_explicit_constructors {
+            ctors.push(ConstructorBinding {
+                ffi_fn_name: format!("{}_ctor", cpp_name),
+                impl_method_name: "new".to_string(),
+                params: Vec::new(),
+                cpp_arg_exprs: Vec::new(),
+                doc_comment: Some("Default constructor".to_string()),
+                source_line: None,
+            });
+        }
+        ctors
     } else {
         Vec::new()
     };
@@ -902,11 +961,11 @@ pub fn compute_class_bindings(
     let copyable_modules = ["TopoDS", "gp", "TopLoc", "Bnd", "GProp"];
     let has_to_owned = copyable_modules.contains(&class.module.as_str())
         && !class.has_protected_destructor
-        && !class.is_abstract;
+        && !effectively_abstract;
 
     // ── to_handle ───────────────────────────────────────────────────────
     let has_to_handle =
-        class.is_handle_type && !class.has_protected_destructor && !class.is_abstract;
+        class.is_handle_type && !class.has_protected_destructor && !effectively_abstract;
 
     // ── Handle upcasts ──────────────────────────────────────────────────
     let handle_upcasts = if has_to_handle {
@@ -923,7 +982,7 @@ pub fn compute_class_bindings(
         cpp_name: cpp_name.clone(),
         short_name: class.short_name().to_string(),
         module: class.module.clone(),
-        is_abstract: class.is_abstract,
+        is_abstract: effectively_abstract,
         is_handle_type: class.is_handle_type,
         has_protected_destructor: class.has_protected_destructor,
         doc_comment: class.comment.clone(),
@@ -1236,10 +1295,15 @@ pub fn compute_all_class_bindings(
         handle_able_classes: Some(&handle_able_classes),
     };
 
+    let all_classes_by_name: HashMap<String, &ParsedClass> = all_classes
+        .iter()
+        .map(|c| (c.name.clone(), *c))
+        .collect();
+
     all_classes
         .iter()
         .map(|class| {
-            compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes)
+            compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes, &all_classes_by_name)
         })
         .collect()
 }
@@ -1876,307 +1940,170 @@ fn format_source_attribution(header: &str, line: Option<u32>, cpp_name: &str) ->
     }
 }
 
-/// Create a safe parameter ident (append _ to Rust keywords).
-fn safe_param_ident(name: &str) -> proc_macro2::Ident {
-    const RUST_KW: &[&str] = &[
-        "as", "break", "const", "continue", "crate", "else", "enum", "extern", "false", "fn",
-        "for", "if", "impl", "in", "let", "loop", "match", "mod", "move", "mut", "pub", "ref",
-        "return", "self", "Self", "static", "struct", "super", "trait", "true", "type", "unsafe",
-        "use", "where", "while", "async", "await", "dyn", "abstract", "become", "box", "do",
-        "final", "macro", "override", "priv", "typeof", "unsized", "virtual", "yield", "try",
-    ];
-    if RUST_KW.contains(&name) {
-        format_ident!("{}_", name)
-    } else {
-        format_ident!("{}", name)
-    }
-}
-
-/// Emit ffi.rs TokenStream for a single class from pre-computed ClassBindings.
+/// Emit ffi.rs code for a single class from pre-computed ClassBindings.
 ///
-/// Produces the same output as the old generate_unified_class() and its
-/// sub-functions, but consumes the pre-computed IR instead of re-deriving decisions.
-pub fn emit_ffi_class(bindings: &ClassBindings) -> TokenStream {
+/// Returns a string fragment to be inserted inside `unsafe extern "C++" { ... }`.
+/// All declarations are indented with 8 spaces to match the ffi.rs layout.
+pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
     let cn = &bindings.cpp_name;
-    let rust_name = format_ident!("{}", cn);
+    let mut out = String::new();
 
     // Section header
-    let section_line = format!(
-        " ======================== {} ========================",
-        cn
-    );
+    writeln!(out, "        /// ======================== {} ========================", cn).unwrap();
 
     // Type declaration with doc comment
     let source_attr = format_source_attribution(&bindings.source_header, bindings.source_line, cn);
-    let type_doc = if let Some(ref comment) = bindings.doc_comment {
-        quote! {
-            #[doc = #source_attr]
-            #[doc = ""]
-            #[doc = #comment]
-        }
-    } else {
-        quote! { #[doc = #source_attr] }
-    };
-    let type_decl = quote! {
-        #type_doc
-        type #rust_name;
-    };
+    emit_ffi_doc(&mut out, &source_attr, &bindings.doc_comment);
+    writeln!(out, "        type {};", cn).unwrap();
 
     // ── Constructors ────────────────────────────────────────────────────
-    let ctors: Vec<TokenStream> = bindings
-        .constructors
-        .iter()
-        .map(|ctor| {
-            let fn_ident = format_ident!("{}", ctor.ffi_fn_name);
-            let params = ctor.params.iter().map(|p| {
-                let name = safe_param_ident(&p.rust_name);
-                let ty: TokenStream = p.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
-                quote! { #name: #ty }
-            });
+    for ctor in &bindings.constructors {
+        let source = format_source_attribution(
+            &bindings.source_header,
+            ctor.source_line,
+            &format!("{}::{}()", cn, cn),
+        );
+        emit_ffi_doc(&mut out, &source, &ctor.doc_comment);
 
-            let source = format_source_attribution(
-                &bindings.source_header,
-                ctor.source_line,
-                &format!("{}::{}()", cn, cn),
-            );
-            let doc = if let Some(ref comment) = ctor.doc_comment {
-                quote! {
-                    #[doc = #source]
-                    #[doc = ""]
-                    #[doc = #comment]
-                }
-            } else {
-                quote! { #[doc = #source] }
-            };
-
-            quote! {
-                #doc
-                fn #fn_ident(#(#params),*) -> UniquePtr<#rust_name>;
-            }
-        })
-        .collect();
+        let params_str = format_params(&ctor.params);
+        writeln!(out, "        fn {}({}) -> UniquePtr<{}>;", ctor.ffi_fn_name, params_str, cn).unwrap();
+    }
 
     // ── Direct methods (CXX self-receiver) ──────────────────────────────
-    let methods: Vec<TokenStream> = bindings
-        .direct_methods
-        .iter()
-        .map(|dm| {
-            let method_ident = format_ident!("{}", dm.rust_name);
-            let receiver = if dm.is_const {
-                quote! { self: &#rust_name }
-            } else {
-                quote! { self: Pin<&mut #rust_name> }
-            };
+    for dm in &bindings.direct_methods {
+        let source = format_source_attribution(
+            &bindings.source_header,
+            dm.source_line,
+            &format!("{}::{}()", cn, dm.cxx_name),
+        );
+        emit_ffi_doc(&mut out, &source, &dm.doc_comment);
+        writeln!(out, "        #[cxx_name = \"{}\"]", dm.cxx_name).unwrap();
 
-            let params = dm.params.iter().map(|p| {
-                let name = safe_param_ident(&p.rust_name);
-                let ty: TokenStream = p.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
-                quote! { #name: #ty }
-            });
-
-            let ret_type = dm.return_type.as_ref().map(|rt| {
-                let ty: TokenStream =
-                    rt.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
-                quote! { -> #ty }
-            });
-
-            let source = format_source_attribution(
-                &bindings.source_header,
-                dm.source_line,
-                &format!("{}::{}()", cn, dm.cxx_name),
-            );
-            let doc = if let Some(ref comment) = dm.doc_comment {
-                quote! {
-                    #[doc = #source]
-                    #[doc = ""]
-                    #[doc = #comment]
-                }
-            } else {
-                quote! { #[doc = #source] }
-            };
-
-            let cxx_name = &dm.cxx_name;
-            quote! {
-                #doc
-                #[cxx_name = #cxx_name]
-                fn #method_ident(#receiver, #(#params),*) #ret_type;
-            }
-        })
-        .collect();
+        let receiver = if dm.is_const {
+            format!("self: &{}", cn)
+        } else {
+            format!("self: Pin<&mut {}>", cn)
+        };
+        let params_str = format_params(&dm.params);
+        let all_params = if params_str.is_empty() {
+            receiver
+        } else {
+            format!("{}, {}", receiver, params_str)
+        };
+        let ret = format_return_type(&dm.return_type);
+        writeln!(out, "        fn {}({}){};", dm.rust_name, all_params, ret).unwrap();
+    }
 
     // ── Wrapper methods (free functions with self_ parameter) ────────────
-    let wrapper_methods: Vec<TokenStream> = bindings
-        .wrapper_methods
-        .iter()
-        .map(|wm| {
-            let fn_ident = format_ident!("{}", wm.ffi_fn_name);
-            let self_param = if wm.is_const {
-                quote! { self_: &#rust_name }
-            } else {
-                quote! { self_: Pin<&mut #rust_name> }
-            };
+    for wm in &bindings.wrapper_methods {
+        let source = format_source_attribution(
+            &bindings.source_header,
+            wm.source_line,
+            &format!("{}::{}()", cn, wm.cpp_method_name),
+        );
+        emit_ffi_doc(&mut out, &source, &wm.doc_comment);
 
-            let params = wm.params.iter().map(|p| {
-                let name = safe_param_ident(&p.rust_name);
-                let ty: TokenStream = p.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
-                quote! { #name: #ty }
-            });
-
-            let ret_type = wm.return_type.as_ref().map(|rt| {
-                let ty: TokenStream =
-                    rt.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
-                quote! { -> #ty }
-            });
-
-            let source = format_source_attribution(
-                &bindings.source_header,
-                wm.source_line,
-                &format!("{}::{}()", cn, wm.cpp_method_name),
-            );
-            let doc = if let Some(ref comment) = wm.doc_comment {
-                quote! {
-                    #[doc = #source]
-                    #[doc = ""]
-                    #[doc = #comment]
-                }
-            } else {
-                quote! { #[doc = #source] }
-            };
-
-            quote! {
-                #doc
-                fn #fn_ident(#self_param, #(#params),*) #ret_type;
-            }
-        })
-        .collect();
+        let self_param = if wm.is_const {
+            format!("self_: &{}", cn)
+        } else {
+            format!("self_: Pin<&mut {}>", cn)
+        };
+        let params_str = format_params(&wm.params);
+        let all_params = if params_str.is_empty() {
+            self_param
+        } else {
+            format!("{}, {}", self_param, params_str)
+        };
+        let ret = format_return_type(&wm.return_type);
+        writeln!(out, "        fn {}({}){};", wm.ffi_fn_name, all_params, ret).unwrap();
+    }
 
     // ── Static methods ──────────────────────────────────────────────────
-    let static_methods: Vec<TokenStream> = bindings
-        .static_methods
-        .iter()
-        .map(|sm| {
-            let fn_ident = format_ident!("{}", sm.ffi_fn_name);
-            let params = sm.params.iter().map(|p| {
-                let name = safe_param_ident(&p.rust_name);
-                let ty: TokenStream = p.rust_ffi_type.parse().unwrap_or_else(|_| quote! { () });
-                quote! { #name: #ty }
-            });
+    for sm in &bindings.static_methods {
+        let source = format_source_attribution(
+            &bindings.source_header,
+            sm.source_line,
+            &format!("{}::{}()", cn, sm.cpp_method_name),
+        );
+        emit_ffi_doc(&mut out, &source, &sm.doc_comment);
 
-            let ret_type = sm.return_type.as_ref().map(|rt| {
-                let mut ty_str = rt.rust_ffi_type.clone();
-                // Static methods returning references need 'static lifetime
-                if sm.needs_static_lifetime
-                    && ty_str.starts_with('&')
-                    && !ty_str.contains("'static")
-                {
-                    ty_str = ty_str.replacen('&', "&'static ", 1);
-                }
-                let ty: TokenStream = ty_str.parse().unwrap_or_else(|_| quote! { () });
-                quote! { -> #ty }
-            });
-
-            let source = format_source_attribution(
-                &bindings.source_header,
-                sm.source_line,
-                &format!("{}::{}()", cn, sm.cpp_method_name),
-            );
-            let doc = if let Some(ref comment) = sm.doc_comment {
-                quote! {
-                    #[doc = #source]
-                    #[doc = ""]
-                    #[doc = #comment]
-                }
-            } else {
-                quote! { #[doc = #source] }
-            };
-
-            quote! {
-                #doc
-                fn #fn_ident(#(#params),*) #ret_type;
+        let params_str = format_params(&sm.params);
+        let ret = if let Some(ref rt) = sm.return_type {
+            let mut ty_str = rt.rust_ffi_type.clone();
+            // Static methods returning references need 'static lifetime
+            if sm.needs_static_lifetime
+                && ty_str.starts_with('&')
+                && !ty_str.contains("'static")
+            {
+                ty_str = ty_str.replacen('&', "&'static ", 1);
             }
-        })
-        .collect();
+            format!(" -> {}", ty_str)
+        } else {
+            String::new()
+        };
+        writeln!(out, "        fn {}({}){};", sm.ffi_fn_name, params_str, ret).unwrap();
+    }
 
     // ── Upcasts ─────────────────────────────────────────────────────────
-    let upcast_methods: Vec<TokenStream> = bindings
-        .upcasts
-        .iter()
-        .flat_map(|up| {
-            let derived_type = format_ident!("{}", cn);
-            let base_type = format_ident!("{}", up.base_class);
-            let fn_ident = format_ident!("{}", up.ffi_fn_name);
-            let fn_ident_mut = format_ident!("{}", up.ffi_fn_name_mut);
-            let doc = format!("Upcast {} to {}", cn, up.base_class);
-            let doc_mut = format!("Upcast {} to {} (mutable)", cn, up.base_class);
-
-            vec![
-                quote! {
-                    #[doc = #doc]
-                    fn #fn_ident(self_: &#derived_type) -> &#base_type;
-                },
-                quote! {
-                    #[doc = #doc_mut]
-                    fn #fn_ident_mut(self_: Pin<&mut #derived_type>) -> Pin<&mut #base_type>;
-                },
-            ]
-        })
-        .collect();
+    for up in &bindings.upcasts {
+        writeln!(out, "        /// Upcast {} to {}", cn, up.base_class).unwrap();
+        writeln!(out, "        fn {}(self_: &{}) -> &{};", up.ffi_fn_name, cn, up.base_class).unwrap();
+        writeln!(out, "        /// Upcast {} to {} (mutable)", cn, up.base_class).unwrap();
+        writeln!(out, "        fn {}(self_: Pin<&mut {}>) -> Pin<&mut {}>;", up.ffi_fn_name_mut, cn, up.base_class).unwrap();
+    }
 
     // ── to_owned ────────────────────────────────────────────────────────
-    let to_owned = if bindings.has_to_owned {
-        let fn_name = format!("{}_to_owned", cn);
-        let fn_ident = format_ident!("{}", fn_name);
-        Some(quote! {
-            #[doc = "Clone into a new UniquePtr via copy constructor"]
-            fn #fn_ident(self_: &#rust_name) -> UniquePtr<#rust_name>;
-        })
-    } else {
-        None
-    };
+    if bindings.has_to_owned {
+        writeln!(out, "        /// Clone into a new UniquePtr via copy constructor").unwrap();
+        writeln!(out, "        fn {}_to_owned(self_: &{}) -> UniquePtr<{}>;", cn, cn, cn).unwrap();
+    }
 
     // ── to_handle ───────────────────────────────────────────────────────
-    let to_handle = if bindings.has_to_handle {
-        let fn_name = format!("{}_to_handle", cn);
-        let fn_ident = format_ident!("{}", fn_name);
-        let handle_type_name = format!("Handle{}", cn.replace("_", ""));
-        let handle_type = format_ident!("{}", handle_type_name);
-        let doc = format!("Wrap {} in a Handle", cn);
-        Some(quote! {
-            #[doc = #doc]
-            fn #fn_ident(obj: UniquePtr<#rust_name>) -> UniquePtr<#handle_type>;
-        })
-    } else {
-        None
-    };
+    if bindings.has_to_handle {
+        let handle_type_name = format!("Handle{}", cn.replace('_', ""));
+        writeln!(out, "        /// Wrap {} in a Handle", cn).unwrap();
+        writeln!(out, "        fn {}_to_handle(obj: UniquePtr<{}>) -> UniquePtr<{}>;", cn, cn, handle_type_name).unwrap();
+    }
 
     // ── Handle upcasts ──────────────────────────────────────────────────
-    let handle_upcasts: Vec<TokenStream> = bindings
-        .handle_upcasts
+    for hu in &bindings.handle_upcasts {
+        writeln!(out, "        /// Upcast Handle<{}> to Handle<{}>", cn, hu.base_class).unwrap();
+        writeln!(out, "        fn {}(self_: &{}) -> UniquePtr<{}>;", hu.ffi_fn_name, hu.derived_handle_name, hu.base_handle_name).unwrap();
+    }
+
+    out
+}
+
+/// Format parameter list for ffi.rs declarations.
+fn format_params(params: &[ParamBinding]) -> String {
+    params
         .iter()
-        .map(|hu| {
-            let handle_type = format_ident!("{}", hu.derived_handle_name);
-            let base_handle_type = format_ident!("{}", hu.base_handle_name);
-            let fn_ident = format_ident!("{}", hu.ffi_fn_name);
-            let doc = format!("Upcast Handle<{}> to Handle<{}>", cn, hu.base_class);
-            quote! {
-                #[doc = #doc]
-                fn #fn_ident(self_: &#handle_type) -> UniquePtr<#base_handle_type>;
+        .map(|p| format!("{}: {}", safe_param_name(&p.rust_name), p.rust_ffi_type))
+        .collect::<Vec<_>>()
+        .join(", ")
+}
+
+/// Format optional return type for ffi.rs declarations.
+fn format_return_type(rt: &Option<ReturnTypeBinding>) -> String {
+    match rt {
+        Some(rt) => format!(" -> {}", rt.rust_ffi_type),
+        None => String::new(),
+    }
+}
+
+/// Emit a doc comment block for ffi.rs (indented 8 spaces).
+fn emit_ffi_doc(out: &mut String, source: &str, comment: &Option<String>) {
+    writeln!(out, "        /// {}", source).unwrap();
+    if let Some(ref comment) = comment {
+        writeln!(out, "        ///").unwrap();
+        for line in comment.lines() {
+            let trimmed = line.trim();
+            if trimmed.is_empty() {
+                writeln!(out, "        ///").unwrap();
+            } else {
+                writeln!(out, "        /// {}", trimmed).unwrap();
             }
-        })
-        .collect();
-
-    quote! {
-        #[doc = #section_line]
-        #type_decl
-
-        #(#ctors)*
-        #(#methods)*
-        #(#wrapper_methods)*
-        #(#static_methods)*
-        #(#upcast_methods)*
-        #to_owned
-        #to_handle
-        #(#handle_upcasts)*
+        }
     }
 }
 
@@ -2201,6 +2128,8 @@ mod tests {
             base_classes: Vec::new(),
             has_protected_destructor: false,
             is_abstract: false,
+            pure_virtual_methods: HashSet::new(),
+            has_explicit_constructors: false,
         };
 
         let all_class_names: HashSet<String> = ["gp_Pnt".to_string()].into();
@@ -2231,17 +2160,23 @@ mod tests {
             cross_module_types: HashMap::new(),
         };
 
+        let all_classes_by_name: HashMap<String, &ParsedClass> =
+            [("gp_Pnt".to_string(), &class)].into();
+
         let bindings = compute_class_bindings(
             &class,
             &ffi_ctx,
             &symbol_table,
             &handle_able_classes,
+            &all_classes_by_name,
         );
 
         assert_eq!(bindings.cpp_name, "gp_Pnt");
         assert_eq!(bindings.short_name, "Pnt");
         assert_eq!(bindings.module, "gp");
-        assert!(bindings.constructors.is_empty());
+        // Non-abstract class with no explicit constructors gets a synthetic default constructor
+        assert_eq!(bindings.constructors.len(), 1);
+        assert_eq!(bindings.constructors[0].impl_method_name, "new");
         assert!(bindings.direct_methods.is_empty());
         assert!(bindings.wrapper_methods.is_empty());
         assert!(bindings.static_methods.is_empty());
@@ -2271,6 +2206,8 @@ mod tests {
             base_classes: Vec::new(),
             has_protected_destructor: false,
             is_abstract: true,
+            pure_virtual_methods: HashSet::new(),
+            has_explicit_constructors: true,
         };
 
         let all_class_names: HashSet<String> =
@@ -2302,11 +2239,15 @@ mod tests {
             cross_module_types: HashMap::new(),
         };
 
+        let all_classes_by_name: HashMap<String, &ParsedClass> =
+            [("Geom_Curve".to_string(), &class)].into();
+
         let bindings = compute_class_bindings(
             &class,
             &ffi_ctx,
             &symbol_table,
             &handle_able_classes,
+            &all_classes_by_name,
         );
 
         assert!(bindings.constructors.is_empty());

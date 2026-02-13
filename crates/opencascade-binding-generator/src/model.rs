@@ -5,6 +5,7 @@
 
 #![allow(dead_code)] // Some fields/methods are reserved for future use
 
+use std::collections::HashSet;
 use std::path::PathBuf;
 
 /// A parsed header file containing class declarations
@@ -111,6 +112,11 @@ pub struct ParsedClass {
     pub has_protected_destructor: bool,
     /// Whether this class is abstract (has pure virtual methods)
     pub is_abstract: bool,
+    /// Names of pure virtual methods declared in this class
+    pub pure_virtual_methods: HashSet<String>,
+    /// Whether this class has any explicit constructor declarations (public or not).
+    /// If true, C++ won't generate an implicit default constructor.
+    pub has_explicit_constructors: bool,
 }
 
 impl ParsedClass {

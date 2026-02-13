@@ -323,6 +323,8 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
     let mut static_methods = Vec::new();
     let mut all_method_names = std::collections::HashSet::new();
     let mut is_abstract = false;
+    let mut pure_virtual_methods = std::collections::HashSet::new();
+    let mut has_explicit_constructors = false;
 
     // Check if there's a DEFINE_STANDARD_HANDLE for this class
     // This is typically done outside the class, so we check the name pattern
@@ -332,6 +334,9 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
     entity.visit_children(|child, _| {
         match child.get_kind() {
             EntityKind::Constructor => {
+                // Any explicit constructor means C++ won't generate an implicit default
+                has_explicit_constructors = true;
+
                 // Skip deprecated constructors
                 if child.get_availability() == Availability::Deprecated {
                     if verbose {
@@ -350,6 +355,9 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
                 // Check if this is a pure virtual method (makes the class abstract)
                 if child.is_pure_virtual_method() {
                     is_abstract = true;
+                    if let Some(ref method_name) = child.get_name() {
+                        pure_virtual_methods.insert(method_name.clone());
+                    }
                 }
 
                 // Skip destructors, operators, and conversion functions
@@ -413,6 +421,8 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
         base_classes,
         has_protected_destructor,
         is_abstract,
+        pure_virtual_methods,
+        has_explicit_constructors,
     })
 }
 

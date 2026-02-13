@@ -16,6 +16,11 @@
 pub use crate::ffi::BRepBndLib;
 
 impl BRepBndLib {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BRepBndLib_ctor()
+    }
+
     /// Adds the shape S to the bounding box B.
     /// More precisely are successively added to B:
     /// -   each face of S; the triangulation of the face is used if it exists,

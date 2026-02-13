@@ -26,6 +26,11 @@
 pub use crate::ffi::Adaptor3d_Curve as Curve;
 
 impl Curve {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor3d_Curve_ctor()
+    }
+
     /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dCurve> {
         crate::ffi::Adaptor3d_Curve_shallow_copy(self)
@@ -228,6 +233,11 @@ impl CurveOnSurface {
 pub use crate::ffi::Adaptor3d_Surface as Surface;
 
 impl Surface {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor3d_Surface_ctor()
+    }
+
     /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor3dSurface> {
         crate::ffi::Adaptor3d_Surface_shallow_copy(self)

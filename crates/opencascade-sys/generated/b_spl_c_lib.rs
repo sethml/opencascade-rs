@@ -88,6 +88,11 @@
 pub use crate::ffi::BSplCLib;
 
 impl BSplCLib {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::BSplCLib_ctor()
+    }
+
     /// returns the degree maxima for a BSplineCurve.
     pub fn max_degree() -> i32 {
         crate::ffi::BSplCLib_max_degree()

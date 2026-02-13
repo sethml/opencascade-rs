@@ -495,16 +495,7 @@ fn generate_unified(
             Err(e) => eprintln!("  Warning: Failed to run rustfmt: {}", e),
         }
 
-        // Post-process
-        println!("  Converting section markers to comments...");
-        for rs_file in &generated_rs_files {
-            if let Ok(content) = std::fs::read_to_string(rs_file) {
-                let processed = codegen::rust::postprocess_generated_code(&content);
-                if processed != content {
-                    let _ = std::fs::write(rs_file, &processed);
-                }
-            }
-        }
+        // No post-processing needed - string-based generation emits correct output directly
     }
 
     println!("\nCode generation complete!");

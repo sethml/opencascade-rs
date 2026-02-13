@@ -24,6 +24,11 @@
 pub use crate::ffi::Adaptor2d_Curve2d as Curve2d;
 
 impl Curve2d {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Adaptor2d_Curve2d_ctor()
+    }
+
     /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> cxx::UniquePtr<crate::ffi::HandleAdaptor2dCurve2d> {
         crate::ffi::Adaptor2d_Curve2d_shallow_copy(self)

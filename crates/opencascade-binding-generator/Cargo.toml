@@ -20,12 +20,6 @@ clang = "2.0"
 # CLI argument parsing
 clap = { version = "4.5", features = ["derive"] }
 
-# Rust code generation and formatting
-quote = "1.0"
-proc-macro2 = "1.0"
-syn = { version = "2.0", features = ["full"] }
-prettyplease = "0.2"
-
 # Case conversion (snake_case, PascalCase, etc.)
 heck = "0.5"
 

@@ -3076,6 +3076,9 @@ inline std::unique_ptr<TopoDS_Shape> TopoDS_CompSolid_inherited_EmptyCopied(cons
 // TopoDS_Builder wrappers
 // ========================
 
+inline std::unique_ptr<TopoDS_Builder> TopoDS_Builder_ctor() {
+    return std::make_unique<TopoDS_Builder>();
+}
 inline std::unique_ptr<TopoDS_Builder> TopoDS_Builder_to_owned(const TopoDS_Builder& self_) { return std::make_unique<TopoDS_Builder>(self_); }
 
 // ========================
@@ -3090,6 +3093,9 @@ inline std::unique_ptr<TopExp_Explorer> TopExp_Explorer_ctor() {
 // TopExp wrappers
 // ========================
 
+inline std::unique_ptr<TopExp> TopExp_ctor() {
+    return std::make_unique<TopExp>();
+}
 inline std::unique_ptr<TopoDS_Vertex> TopExp_first_vertex(const TopoDS_Edge& E, Standard_Boolean CumOri) {
     return std::make_unique<TopoDS_Vertex>(TopExp::FirstVertex(E, CumOri));
 }
@@ -5102,6 +5108,9 @@ inline void BRepFeat_MakeDPrism_inherited_PerfSelectionValid(BRepFeat_MakeDPrism
 // BRepTools wrappers
 // ========================
 
+inline std::unique_ptr<BRepTools> BRepTools_ctor() {
+    return std::make_unique<BRepTools>();
+}
 inline void BRepTools_uv_bounds_face_real4(const TopoDS_Face& F, Standard_Real& UMin, Standard_Real& UMax, Standard_Real& VMin, Standard_Real& VMax) {
     return BRepTools::UVBounds(F, UMin, UMax, VMin, VMax);
 }
@@ -5480,15 +5489,6 @@ inline const Geom_Geometry& Geom_BoundedSurface_as_Geom_Geometry(const Geom_Boun
 inline Geom_Geometry& Geom_BoundedSurface_as_Geom_Geometry_mut(Geom_BoundedSurface& self_) { return static_cast<Geom_Geometry&>(self_); }
 inline const Geom_Surface& Geom_BoundedSurface_as_Geom_Surface(const Geom_BoundedSurface& self_) { return static_cast<const Geom_Surface&>(self_); }
 inline Geom_Surface& Geom_BoundedSurface_as_Geom_Surface_mut(Geom_BoundedSurface& self_) { return static_cast<Geom_Surface&>(self_); }
-inline std::unique_ptr<HandleGeomBoundedSurface> Geom_BoundedSurface_to_handle(std::unique_ptr<Geom_BoundedSurface> obj) {
-    return std::make_unique<HandleGeomBoundedSurface>(obj.release());
-}
-inline std::unique_ptr<HandleGeomGeometry> HandleGeomBoundedSurface_to_HandleGeomGeometry(const HandleGeomBoundedSurface& self_) {
-    return std::make_unique<HandleGeomGeometry>(self_);
-}
-inline std::unique_ptr<HandleGeomSurface> HandleGeomBoundedSurface_to_HandleGeomSurface(const HandleGeomBoundedSurface& self_) {
-    return std::make_unique<HandleGeomSurface>(self_);
-}
 inline void Geom_BoundedSurface_inherited_Mirror(Geom_BoundedSurface& self, const gp_Pnt& P) {
     self.Mirror(P);
 }
@@ -7069,6 +7069,9 @@ inline std::unique_ptr<Bnd_OBB> Bnd_OBB_to_owned(const Bnd_OBB& self_) { return 
 // BRep_Builder wrappers
 // ========================
 
+inline std::unique_ptr<BRep_Builder> BRep_Builder_ctor() {
+    return std::make_unique<BRep_Builder>();
+}
 inline const TopoDS_Builder& BRep_Builder_as_TopoDS_Builder(const BRep_Builder& self_) { return static_cast<const TopoDS_Builder&>(self_); }
 inline TopoDS_Builder& BRep_Builder_as_TopoDS_Builder_mut(BRep_Builder& self_) { return static_cast<TopoDS_Builder&>(self_); }
 inline void BRep_Builder_inherited_MakeWire(const BRep_Builder& self, TopoDS_Wire& W) {
@@ -7097,6 +7100,9 @@ inline void BRep_Builder_inherited_Remove(const BRep_Builder& self, TopoDS_Shape
 // BRep_Tool wrappers
 // ========================
 
+inline std::unique_ptr<BRep_Tool> BRep_Tool_ctor() {
+    return std::make_unique<BRep_Tool>();
+}
 inline Standard_Boolean BRep_Tool_is_closed_shape(const TopoDS_Shape& S) {
     return BRep_Tool::IsClosed(S);
 }
@@ -7237,6 +7243,9 @@ inline std::unique_ptr<gp_Pnt2d> BRep_Tool_parameters(const TopoDS_Vertex& V, co
 // BRepBndLib wrappers
 // ========================
 
+inline std::unique_ptr<BRepBndLib> BRepBndLib_ctor() {
+    return std::make_unique<BRepBndLib>();
+}
 inline void BRepBndLib_add(const TopoDS_Shape& S, Bnd_Box& B, Standard_Boolean useTriangulation) {
     return BRepBndLib::Add(S, B, useTriangulation);
 }
@@ -7306,6 +7315,9 @@ inline Adaptor3d_Curve& BRepAdaptor_Curve_as_Adaptor3d_Curve_mut(BRepAdaptor_Cur
 // BRepGProp wrappers
 // ========================
 
+inline std::unique_ptr<BRepGProp> BRepGProp_ctor() {
+    return std::make_unique<BRepGProp>();
+}
 inline void BRepGProp_linear_properties(const TopoDS_Shape& S, GProp_GProps& LProps, Standard_Boolean SkipShared, Standard_Boolean UseTriangulation) {
     return BRepGProp::LinearProperties(S, LProps, SkipShared, UseTriangulation);
 }
@@ -8330,6 +8342,9 @@ inline Standard_Boolean StlAPI_Writer_write(StlAPI_Writer& self, const TopoDS_Sh
 // Precision wrappers
 // ========================
 
+inline std::unique_ptr<Precision> Precision_ctor() {
+    return std::make_unique<Precision>();
+}
 inline Standard_Real Precision_angular() {
     return Precision::Angular();
 }
@@ -8492,6 +8507,9 @@ inline std::unique_ptr<Extrema_GenExtPS> Extrema_GenExtPS_ctor() {
 // Adaptor3d_Curve wrappers
 // ========================
 
+inline std::unique_ptr<Adaptor3d_Curve> Adaptor3d_Curve_ctor() {
+    return std::make_unique<Adaptor3d_Curve>();
+}
 inline std::unique_ptr<opencascade::handle<Adaptor3d_Curve>> Adaptor3d_Curve_shallow_copy(const Adaptor3d_Curve& self_) {
     return std::make_unique<opencascade::handle<Adaptor3d_Curve>>(self_.ShallowCopy());
 }
@@ -8536,6 +8554,9 @@ inline std::unique_ptr<HandleAdaptor3dCurve> Adaptor3d_Curve_to_handle(std::uniq
 // Adaptor3d_Surface wrappers
 // ========================
 
+inline std::unique_ptr<Adaptor3d_Surface> Adaptor3d_Surface_ctor() {
+    return std::make_unique<Adaptor3d_Surface>();
+}
 inline std::unique_ptr<opencascade::handle<Adaptor3d_Surface>> Adaptor3d_Surface_shallow_copy(const Adaptor3d_Surface& self_) {
     return std::make_unique<opencascade::handle<Adaptor3d_Surface>>(self_.ShallowCopy());
 }
@@ -8595,6 +8616,9 @@ inline std::unique_ptr<HandleAdaptor3dSurface> Adaptor3d_Surface_to_handle(std::
 // Adaptor2d_Curve2d wrappers
 // ========================
 
+inline std::unique_ptr<Adaptor2d_Curve2d> Adaptor2d_Curve2d_ctor() {
+    return std::make_unique<Adaptor2d_Curve2d>();
+}
 inline std::unique_ptr<opencascade::handle<Adaptor2d_Curve2d>> Adaptor2d_Curve2d_shallow_copy(const Adaptor2d_Curve2d& self_) {
     return std::make_unique<opencascade::handle<Adaptor2d_Curve2d>>(self_.ShallowCopy());
 }
@@ -9072,6 +9096,9 @@ inline std::unique_ptr<Standard_DumpValue> Standard_DumpValue_ctor_asciistring_i
 // Standard_Dump wrappers
 // ========================
 
+inline std::unique_ptr<Standard_Dump> Standard_Dump_ctor() {
+    return std::make_unique<Standard_Dump>();
+}
 inline Standard_Boolean Standard_Dump_has_child_key(const TCollection_AsciiString& theSourceValue) {
     return Standard_Dump::HasChildKey(theSourceValue);
 }
@@ -9118,6 +9145,9 @@ inline const opencascade::handle<Standard_Type>& Standard_Transient_get_type_des
 // Standard wrappers
 // ========================
 
+inline std::unique_ptr<Standard> Standard_ctor() {
+    return std::make_unique<Standard>();
+}
 inline Standard_Integer Standard_purge() {
     return Standard::Purge();
 }
@@ -9391,6 +9421,9 @@ inline const opencascade::handle<Standard_Type>& Standard_NoSuchObject_get_type_
 // Message wrappers
 // ========================
 
+inline std::unique_ptr<Message> Message_ctor() {
+    return std::make_unique<Message>();
+}
 inline const opencascade::handle<Message_Messenger>& Message_default_messenger() {
     return Message::DefaultMessenger();
 }
@@ -9715,6 +9748,9 @@ inline std::unique_ptr<Message_ProgressRange> Message_ProgressIndicator_start_ha
 // ShapeProcess wrappers
 // ========================
 
+inline std::unique_ptr<ShapeProcess> ShapeProcess_ctor() {
+    return std::make_unique<ShapeProcess>();
+}
 
 // ========================
 // IGESData_BasicEditor wrappers
@@ -10470,6 +10506,9 @@ inline std::unique_ptr<BSplCLib_CacheParams> BSplCLib_CacheParams_ctor_int_bool_
 // BSplCLib wrappers
 // ========================
 
+inline std::unique_ptr<BSplCLib> BSplCLib_ctor() {
+    return std::make_unique<BSplCLib>();
+}
 inline Standard_Integer BSplCLib_max_degree() {
     return BSplCLib::MaxDegree();
 }
@@ -10847,6 +10886,9 @@ inline std::unique_ptr<HandlePolyPolygonOnTriangulation> Poly_PolygonOnTriangula
 // GC_Root wrappers
 // ========================
 
+inline std::unique_ptr<GC_Root> GC_Root_ctor() {
+    return std::make_unique<GC_Root>();
+}
 
 // ========================
 // TColStd_HArray1OfBoolean wrappers
@@ -10878,6 +10920,9 @@ inline std::unique_ptr<HandleTColStdHArray1OfBoolean> TColStd_HArray1OfBoolean_t
 // BSplSLib wrappers
 // ========================
 
+inline std::unique_ptr<BSplSLib> BSplSLib_ctor() {
+    return std::make_unique<BSplSLib>();
+}
 inline void BSplSLib_rational_derivative(Standard_Integer UDeg, Standard_Integer VDeg, Standard_Integer N, Standard_Integer M, Standard_Real& Ders, Standard_Real& RDers, Standard_Boolean All) {
     return BSplSLib::RationalDerivative(UDeg, VDeg, N, M, Ders, RDers, All);
 }
@@ -11594,6 +11639,9 @@ inline std::unique_ptr<Message_Level> Message_Level_ctor_asciistring(const TColl
 // Message_Alert wrappers
 // ========================
 
+inline std::unique_ptr<Message_Alert> Message_Alert_ctor() {
+    return std::make_unique<Message_Alert>();
+}
 inline rust::String Message_Alert_get_message_key(const Message_Alert& self) {
     return rust::String(self.GetMessageKey());
 }
@@ -14201,6 +14249,9 @@ inline const opencascade::handle<Standard_Type>& TopoDS_TShape_get_type_descript
 // TopAbs wrappers
 // ========================
 
+inline std::unique_ptr<TopAbs> TopAbs_ctor() {
+    return std::make_unique<TopAbs>();
+}
 
 // ========================
 // TopoDS namespace functions
@@ -14227,13 +14278,13 @@ inline TopoDS_Compound& TopoDS_compound_mut(TopoDS_Shape& theShape) { return Top
 // Collection type wrappers
 // ========================
 
-#include <TopTools_DataMapOfShapeShape.hxx>
+#include <TopTools_SequenceOfShape.hxx>
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
+#include <TopoDS_Shape.hxx>
 #include <TopTools_ListOfShape.hxx>
 #include <TopTools_MapOfShape.hxx>
-#include <TopTools_SequenceOfShape.hxx>
-#include <TopoDS_Shape.hxx>
+#include <TopTools_DataMapOfShapeShape.hxx>
+#include <TopTools_IndexedMapOfShape.hxx>
 
 // ========================
 // TopTools_DataMapOfShapeShape - Key-value map

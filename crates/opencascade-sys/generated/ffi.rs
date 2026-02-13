@@ -9464,6 +9464,10 @@ mod ffi {
         ///
         /// - Nothing can be added in a VERTEX.
         type TopoDS_Builder;
+        /// **Source:** `TopoDS_Builder.hxx` - `TopoDS_Builder::TopoDS_Builder()`
+        ///
+        /// Default constructor
+        fn TopoDS_Builder_ctor() -> UniquePtr<TopoDS_Builder>;
         /// **Source:** `TopoDS_Builder.hxx`:77 - `TopoDS_Builder::MakeWire()`
         ///
         /// Make an empty Wire.
@@ -9633,6 +9637,10 @@ mod ffi {
         /// Level : Public
         /// All methods of all  classes will be public.
         type TopExp;
+        /// **Source:** `TopExp.hxx` - `TopExp::TopExp()`
+        ///
+        /// Default constructor
+        fn TopExp_ctor() -> UniquePtr<TopExp>;
         /// **Source:** `TopExp.hxx`:106 - `TopExp::FirstVertex()`
         ///
         /// Returns the Vertex of orientation FORWARD in E. If
@@ -15247,6 +15255,10 @@ mod ffi {
         ///
         /// * Dump : A method to dump a BRep object.
         type BRepTools;
+        /// **Source:** `BRepTools.hxx` - `BRepTools::BRepTools()`
+        ///
+        /// Default constructor
+        fn BRepTools_ctor() -> UniquePtr<BRepTools>;
         /// **Source:** `BRepTools.hxx`:85 - `BRepTools::UVBounds()`
         ///
         /// Returns in UMin,  UMax, VMin,  VMax  the  bounding
@@ -16258,18 +16270,6 @@ mod ffi {
         fn Geom_BoundedSurface_as_Geom_Surface_mut(
             self_: Pin<&mut Geom_BoundedSurface>,
         ) -> Pin<&mut Geom_Surface>;
-        /// Wrap Geom_BoundedSurface in a Handle
-        fn Geom_BoundedSurface_to_handle(
-            obj: UniquePtr<Geom_BoundedSurface>,
-        ) -> UniquePtr<HandleGeomBoundedSurface>;
-        /// Upcast Handle<Geom_BoundedSurface> to Handle<Geom_Geometry>
-        fn HandleGeomBoundedSurface_to_HandleGeomGeometry(
-            self_: &HandleGeomBoundedSurface,
-        ) -> UniquePtr<HandleGeomGeometry>;
-        /// Upcast Handle<Geom_BoundedSurface> to Handle<Geom_Surface>
-        fn HandleGeomBoundedSurface_to_HandleGeomSurface(
-            self_: &HandleGeomBoundedSurface,
-        ) -> UniquePtr<HandleGeomSurface>;
         /// ======================== Geom_ElementarySurface ========================
         /// **Source:** `Geom_ElementarySurface.hxx`:63 - `Geom_ElementarySurface`
         ///
@@ -22727,6 +22727,10 @@ mod ffi {
         /// - an edge cannot be included within the fusion of the
         /// tolerance spheres of two vertices
         type BRep_Builder;
+        /// **Source:** `BRep_Builder.hxx` - `BRep_Builder::BRep_Builder()`
+        ///
+        /// Default constructor
+        fn BRep_Builder_ctor() -> UniquePtr<BRep_Builder>;
         /// **Source:** `BRep_Builder.hxx`:63 - `BRep_Builder::MakeFace()`
         ///
         /// Makes an undefined Face.
@@ -23247,6 +23251,10 @@ mod ffi {
         /// Provides class methods  to  access to the geometry
         /// of BRep shapes.
         type BRep_Tool;
+        /// **Source:** `BRep_Tool.hxx` - `BRep_Tool::BRep_Tool()`
+        ///
+        /// Default constructor
+        fn BRep_Tool_ctor() -> UniquePtr<BRep_Tool>;
         /// **Source:** `BRep_Tool.hxx`:54 - `BRep_Tool::IsClosed()`
         ///
         /// If S is Shell, returns True if it has no free boundaries (edges).
@@ -23630,6 +23638,10 @@ mod ffi {
         /// and surfaces from BRepAdaptor.
         /// Functions to add a topological shape to a bounding box
         type BRepBndLib;
+        /// **Source:** `BRepBndLib.hxx` - `BRepBndLib::BRepBndLib()`
+        ///
+        /// Default constructor
+        fn BRepBndLib_ctor() -> UniquePtr<BRepBndLib>;
         /// **Source:** `BRepBndLib.hxx`:52 - `BRepBndLib::Add()`
         ///
         /// Adds the shape S to the bounding box B.
@@ -23954,6 +23966,10 @@ mod ffi {
         /// - and its principal properties of inertia such as
         /// principal axis, principal moments, principal radius of gyration.
         type BRepGProp;
+        /// **Source:** `BRepGProp.hxx` - `BRepGProp::BRepGProp()`
+        ///
+        /// Default constructor
+        fn BRepGProp_ctor() -> UniquePtr<BRepGProp>;
         /// **Source:** `BRepGProp.hxx`:87 - `BRepGProp::LinearProperties()`
         ///
         /// Computes the linear global properties of the shape S,
@@ -26763,6 +26779,10 @@ mod ffi {
         /// Within an application environment, it is crucial to master precision even though this process
         /// may take a great deal of time.
         type Precision;
+        /// **Source:** `Precision.hxx` - `Precision::Precision()`
+        ///
+        /// Default constructor
+        fn Precision_ctor() -> UniquePtr<Precision>;
         /// **Source:** `Precision.hxx`:123 - `Precision::Angular()`
         ///
         /// Returns the recommended precision value
@@ -27808,6 +27828,10 @@ mod ffi {
         /// cached for better performance. Therefore these evaluations are not
         /// thread-safe and parallel evaluations need to be prevented.
         type Adaptor3d_Curve;
+        /// **Source:** `Adaptor3d_Curve.hxx` - `Adaptor3d_Curve::Adaptor3d_Curve()`
+        ///
+        /// Default constructor
+        fn Adaptor3d_Curve_ctor() -> UniquePtr<Adaptor3d_Curve>;
         /// **Source:** `Adaptor3d_Curve.hxx`:54 - `Adaptor3d_Curve::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Adaptor3d_Curve) -> &HandleStandardType;
@@ -27958,6 +27982,10 @@ mod ffi {
         /// performance. Therefore these evaluations are not thread-safe and parallel evaluations need to be
         /// prevented.
         type Adaptor3d_Surface;
+        /// **Source:** `Adaptor3d_Surface.hxx` - `Adaptor3d_Surface::Adaptor3d_Surface()`
+        ///
+        /// Default constructor
+        fn Adaptor3d_Surface_ctor() -> UniquePtr<Adaptor3d_Surface>;
         /// **Source:** `Adaptor3d_Surface.hxx`:60 - `Adaptor3d_Surface::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Adaptor3d_Surface) -> &HandleStandardType;
@@ -28191,6 +28219,10 @@ mod ffi {
         /// cached for better performance. Therefore these evaluations are not
         /// thread-safe and parallel evaluations need to be prevented.
         type Adaptor2d_Curve2d;
+        /// **Source:** `Adaptor2d_Curve2d.hxx` - `Adaptor2d_Curve2d::Adaptor2d_Curve2d()`
+        ///
+        /// Default constructor
+        fn Adaptor2d_Curve2d_ctor() -> UniquePtr<Adaptor2d_Curve2d>;
         /// **Source:** `Adaptor2d_Curve2d.hxx`:52 - `Adaptor2d_Curve2d::DynamicType()`
         #[cxx_name = "DynamicType"]
         fn dynamic_type(self: &Adaptor2d_Curve2d) -> &HandleStandardType;
@@ -30457,6 +30489,10 @@ mod ffi {
         ///
         /// This interface has some tool methods for stream (in JSON format) processing.
         type Standard_Dump;
+        /// **Source:** `Standard_Dump.hxx` - `Standard_Dump::Standard_Dump()`
+        ///
+        /// Default constructor
+        fn Standard_Dump_ctor() -> UniquePtr<Standard_Dump>;
         /// **Source:** `Standard_Dump.hxx`:370 - `Standard_Dump::HasChildKey()`
         ///
         /// Returns true if the value has bracket key
@@ -30592,6 +30628,10 @@ mod ffi {
         /// The package Standard provides global memory allocator and other basic
         /// services used by other OCCT components.
         type Standard;
+        /// **Source:** `Standard.hxx` - `Standard::Standard()`
+        ///
+        /// Default constructor
+        fn Standard_ctor() -> UniquePtr<Standard>;
         /// **Source:** `Standard.hxx`:94 - `Standard::Purge()`
         ///
         /// Deallocates the storage retained on the free list
@@ -30985,6 +31025,10 @@ mod ffi {
         /// - tools to work with messages
         /// - basic tools intended for progress indication
         type Message;
+        /// **Source:** `Message.hxx` - `Message::Message()`
+        ///
+        /// Default constructor
+        fn Message_ctor() -> UniquePtr<Message>;
         /// **Source:** `Message.hxx`:50 - `Message::DefaultMessenger()`
         ///
         /// Defines default messenger for OCCT applications.
@@ -32533,6 +32577,10 @@ mod ffi {
         /// file which defines sequence of operators to be executed
         /// and their parameters.
         type ShapeProcess;
+        /// **Source:** `ShapeProcess.hxx` - `ShapeProcess::ShapeProcess()`
+        ///
+        /// Default constructor
+        fn ShapeProcess_ctor() -> UniquePtr<ShapeProcess>;
         /// ======================== IGESData_BasicEditor ========================
         /// **Source:** `IGESData_BasicEditor.hxx`:42 - `IGESData_BasicEditor`
         ///
@@ -35490,6 +35538,10 @@ mod ffi {
         /// . Curves and Surfaces for Computer Aided Geometric Design,
         /// a practical guide Gerald Farin
         type BSplCLib;
+        /// **Source:** `BSplCLib.hxx` - `BSplCLib::BSplCLib()`
+        ///
+        /// Default constructor
+        fn BSplCLib_ctor() -> UniquePtr<BSplCLib>;
         /// **Source:** `BSplCLib.hxx`:352 - `BSplCLib::MaxDegree()`
         ///
         /// returns the degree maxima for a BSplineCurve.
@@ -37124,6 +37176,10 @@ mod ffi {
         /// This class implements the common services for
         /// all classes of gce which report error.
         type GC_Root;
+        /// **Source:** `GC_Root.hxx` - `GC_Root::GC_Root()`
+        ///
+        /// Default constructor
+        fn GC_Root_ctor() -> UniquePtr<GC_Root>;
         /// **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
         ///
         /// Returns true if the construction is successful.
@@ -37223,6 +37279,10 @@ mod ffi {
         /// . Curves and Surfaces for Computer Aided Geometric Design,
         /// a practical guide Gerald Farin
         type BSplSLib;
+        /// **Source:** `BSplSLib.hxx` - `BSplSLib::BSplSLib()`
+        ///
+        /// Default constructor
+        fn BSplSLib_ctor() -> UniquePtr<BSplSLib>;
         /// **Source:** `BSplSLib.hxx`:174 - `BSplSLib::RationalDerivative()`
         ///
         /// this is a one dimensional function
@@ -38148,6 +38208,10 @@ mod ffi {
         /// should return true if merge is supported; method Merge() should do the
         /// merge if possible and return true in that case and false otherwise.
         type Message_Alert;
+        /// **Source:** `Message_Alert.hxx` - `Message_Alert::Message_Alert()`
+        ///
+        /// Default constructor
+        fn Message_Alert_ctor() -> UniquePtr<Message_Alert>;
         /// **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
         ///
         /// Return true if this type of alert can be merged with other
@@ -44390,6 +44454,10 @@ mod ffi {
         ///
         /// * Methods to manage the enumerations.
         type TopAbs;
+        /// **Source:** `TopAbs.hxx` - `TopAbs::TopAbs()`
+        ///
+        /// Default constructor
+        fn TopAbs_ctor() -> UniquePtr<TopAbs>;
 
         // ========================
         // Free functions
@@ -44751,9 +44819,10 @@ mod ffi {
         /// Referenced type from C++
         type gp_Vec3f;
         /// Referenced type from C++
-        type math_Vector; // ========================
-                          // Collection type wrappers
-                          // ========================
+        type math_Vector;
+        // ========================
+        // Collection type wrappers
+        // ========================
 
         /// Key-value map
         type TopTools_DataMapOfShapeShape;
@@ -45010,6 +45079,7 @@ mod ffi {
         ) -> UniquePtr<TopoDS_Shape>;
 
     }
+
     impl UniquePtr<gp_Ax1> {}
     impl UniquePtr<gp_Ax2> {}
     impl UniquePtr<gp_Ax22d> {}
@@ -45386,6 +45456,7 @@ mod ffi {
     impl UniquePtr<TopoDS_TShape> {}
     impl UniquePtr<TopAbs> {}
 }
+
 impl ffi::TopTools_DataMapOfShapeShape {
     /// Create a new empty collection
     pub fn new() -> cxx::UniquePtr<Self> {

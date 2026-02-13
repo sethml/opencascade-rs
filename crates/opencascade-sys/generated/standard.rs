@@ -15,6 +15,11 @@
 pub use crate::ffi::Standard;
 
 impl Standard {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_ctor()
+    }
+
     /// Deallocates the storage retained on the free list
     /// and clears the list.
     /// Returns non-zero if some memory has been actually freed.
@@ -159,6 +164,11 @@ impl DumpValue {
 pub use crate::ffi::Standard_Dump as Dump;
 
 impl Dump {
+    /// Default constructor
+    pub fn new() -> cxx::UniquePtr<Self> {
+        crate::ffi::Standard_Dump_ctor()
+    }
+
     /// Returns true if the value has bracket key
     pub fn has_child_key(theSourceValue: &crate::ffi::TCollection_AsciiString) -> bool {
         crate::ffi::Standard_Dump_has_child_key(theSourceValue)
