@@ -6,6 +6,126 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Lists the offset modes. These are the following:
+/// - BRepOffset_Skin which describes the offset along
+/// the surface of a solid, used to obtain a manifold topological space,
+/// - BRepOffset_Pipe which describes the offset of a
+/// curve, used to obtain a pre-surface,
+/// - BRepOffset_RectoVerso which describes the offset
+/// of a given surface shell along both sides of the surface.
+/// C++ enum: `BRepOffset_Mode`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Mode {
+    Skin = 0,
+    Pipe = 1,
+    Rectoverso = 2,
+}
+
+impl From<Mode> for i32 {
+    fn from(value: Mode) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Mode {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Mode::Skin),
+            1 => Ok(Mode::Pipe),
+            2 => Ok(Mode::Rectoverso),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `BRepOffset_Error`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Error {
+    Noerror = 0,
+    Unknownerror = 1,
+    Badnormalsongeometry = 2,
+    C0geometry = 3,
+    Nulloffset = 4,
+    Notconnectedshell = 5,
+    /// < exception while trim edges
+    Cannottrimedges = 6,
+    /// < exception while fuse vertices
+    Cannotfusevertices = 7,
+    /// < exception while extent edges
+    Cannotextentedge = 8,
+    /// < user break
+    Userbreak = 9,
+    /// < Different connectivity of faces along edge: partially C0 and
+    /// < tangent
+    Mixedconnectivity = 10,
+}
+
+impl From<Error> for i32 {
+    fn from(value: Error) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Error {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Error::Noerror),
+            1 => Ok(Error::Unknownerror),
+            2 => Ok(Error::Badnormalsongeometry),
+            3 => Ok(Error::C0geometry),
+            4 => Ok(Error::Nulloffset),
+            5 => Ok(Error::Notconnectedshell),
+            6 => Ok(Error::Cannottrimedges),
+            7 => Ok(Error::Cannotfusevertices),
+            8 => Ok(Error::Cannotextentedge),
+            9 => Ok(Error::Userbreak),
+            10 => Ok(Error::Mixedconnectivity),
+            _ => Err(value),
+        }
+    }
+}
+
+/// status of an offset face
+/// Good :
+/// Reversed : e.g. Offset > Radius of a cylinder
+/// Degenerated : e.g. Offset = Radius of a cylinder
+/// Unknown : e.g. for a Beziersurf
+/// C++ enum: `BRepOffset_Status`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Status {
+    Good = 0,
+    Reversed = 1,
+    Degenerated = 2,
+    Unknown = 3,
+}
+
+impl From<Status> for i32 {
+    fn from(value: Status) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Status {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Status::Good),
+            1 => Ok(Status::Reversed),
+            2 => Ok(Status::Degenerated),
+            3 => Ok(Status::Unknown),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From BRepOffset_Analyse.hxx
 // ========================

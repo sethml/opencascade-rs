@@ -6,6 +6,69 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Error that can occur during the fillet construction on planar wire.
+/// C++ enum: `ChFi2d_ConstructionError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ConstructionError {
+    /// < the face is not planar
+    Notplanar = 0,
+    /// < the face is null
+    Noface = 1,
+    /// < the two  faces used for the initialisation are uncompatible
+    Initialisationerror = 2,
+    /// < the parameters as distances or angle for chamfer are less or equal to
+    /// < zero
+    Parameterserror = 3,
+    /// < the initialization has been successful
+    Ready = 4,
+    Isdone = 5,
+    /// < the algorithm could not find a solution
+    Computationerror = 6,
+    /// < the vertex given to locate the fillet or the chamfer is not connected
+    /// < to 2 edges
+    Connexionerror = 7,
+    /// < the two edges connected to the vertex are tangent
+    Tangencyerror = 8,
+    /// < the first edge is degenerated
+    Firstedgedegenerated = 9,
+    /// < the last edge is degenerated
+    Lastedgedegenerated = 10,
+    /// < the two edges are degenerated
+    Bothedgesdegenerated = 11,
+    /// < One or the two edges connected to the vertex is a fillet or a chamfer;
+    Notauthorized = 12,
+}
+
+impl From<ConstructionError> for i32 {
+    fn from(value: ConstructionError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ConstructionError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ConstructionError::Notplanar),
+            1 => Ok(ConstructionError::Noface),
+            2 => Ok(ConstructionError::Initialisationerror),
+            3 => Ok(ConstructionError::Parameterserror),
+            4 => Ok(ConstructionError::Ready),
+            5 => Ok(ConstructionError::Isdone),
+            6 => Ok(ConstructionError::Computationerror),
+            7 => Ok(ConstructionError::Connexionerror),
+            8 => Ok(ConstructionError::Tangencyerror),
+            9 => Ok(ConstructionError::Firstedgedegenerated),
+            10 => Ok(ConstructionError::Lastedgedegenerated),
+            11 => Ok(ConstructionError::Bothedgesdegenerated),
+            12 => Ok(ConstructionError::Notauthorized),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From ChFi2d_Builder.hxx
 // ========================

@@ -276,28 +276,13 @@ pub fn type_uses_unknown_handle(
 pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
     match ty {
         Type::Class(class_name) => {
-            // Check if this is actually an enum - enums don't need UniquePtr
+            // Enums are passed as i32 at the FFI boundary (integer pass-through)
             if ctx.all_enums.contains(class_name) {
-                let type_module = extract_module_from_class(class_name);
-                let short_name = extract_short_class_name(class_name);
-                
-                // Check if this is a same-module enum - use short name
-                if type_module.as_deref() == Some(ctx.current_module) {
-                    let safe_name = safe_short_name(&short_name);
-                    return RustTypeMapping {
-                        rust_type: safe_name,
-                        needs_unique_ptr: false, // Enums are Copy and don't need UniquePtr
-                        needs_pin: false,
-                        source_module: None, // Same module
-                    };
-                }
-                
-                // Cross-module enum - use full C++ name (will be aliased)
                 return RustTypeMapping {
-                    rust_type: class_name.clone(),
-                    needs_unique_ptr: false, // Enums are Copy and don't need UniquePtr
+                    rust_type: "i32".to_string(),
+                    needs_unique_ptr: false,
                     needs_pin: false,
-                    source_module: type_module,
+                    source_module: None,
                 };
             }
             

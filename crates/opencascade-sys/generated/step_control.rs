@@ -6,6 +6,56 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Gives you the choice of translation mode for an Open
+/// CASCADE shape that is being translated to STEP.
+/// - STEPControl_AsIs translates an Open CASCADE shape to its
+/// highest possible STEP representation.
+/// - STEPControl_ManifoldSolidBrep translates an Open CASCADE shape
+/// to a STEP manifold_solid_brep or brep_with_voids entity.
+/// - STEPControl_FacetedBrep translates an Open CASCADE shape
+/// into a STEP faceted_brep entity.
+/// -  STEPControl_ShellBasedSurfaceModel translates an Open CASCADE shape
+/// into a STEP shell_based_surface_model entity.
+/// - STEPControl_GeometricCurveSet
+/// translates an Open CASCADE shape into a STEP geometric_curve_set entity.
+/// C++ enum: `STEPControl_StepModelType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum StepModelType {
+    Asis = 0,
+    Manifoldsolidbrep = 1,
+    Brepwithvoids = 2,
+    Facetedbrep = 3,
+    Facetedbrepandbrepwithvoids = 4,
+    Shellbasedsurfacemodel = 5,
+    Geometriccurveset = 6,
+    Hybrid = 7,
+}
+
+impl From<StepModelType> for i32 {
+    fn from(value: StepModelType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for StepModelType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(StepModelType::Asis),
+            1 => Ok(StepModelType::Manifoldsolidbrep),
+            2 => Ok(StepModelType::Brepwithvoids),
+            3 => Ok(StepModelType::Facetedbrep),
+            4 => Ok(StepModelType::Facetedbrepandbrepwithvoids),
+            5 => Ok(StepModelType::Shellbasedsurfacemodel),
+            6 => Ok(StepModelType::Geometriccurveset),
+            7 => Ok(StepModelType::Hybrid),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From STEPControl_Reader.hxx
 // ========================

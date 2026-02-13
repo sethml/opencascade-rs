@@ -6,6 +6,43 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Lists the types of fillet shapes. These include the following:
+/// -   ChFi3d_Rational (default value), which is the
+/// standard NURBS representation of circles,
+/// -   ChFi3d_QuasiAngular, which is a NURBS
+/// representation of circles where the parameters
+/// match those of the circle,
+/// -   ChFi3d_Polynomial, which corresponds to a
+/// polynomial approximation of circles. This type
+/// facilitates the implementation of the construction algorithm.
+/// C++ enum: `ChFi3d_FilletShape`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum FilletShape {
+    Rational = 0,
+    Quasiangular = 1,
+    Polynomial = 2,
+}
+
+impl From<FilletShape> for i32 {
+    fn from(value: FilletShape) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for FilletShape {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(FilletShape::Rational),
+            1 => Ok(FilletShape::Quasiangular),
+            2 => Ok(FilletShape::Polynomial),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From ChFi3d_Builder.hxx
 // ========================

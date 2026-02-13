@@ -6,6 +6,76 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// This enumeration describes the repartition of the
+/// knots  sequence.   If all the knots  differ  by the
+/// same positive constant from the  preceding knot the
+/// "KnotDistribution" is    <Uniform>    else   it  is
+/// <NonUniform>
+/// C++ enum: `BSplCLib_KnotDistribution`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum KnotDistribution {
+    Nonuniform = 0,
+    Uniform = 1,
+}
+
+impl From<KnotDistribution> for i32 {
+    fn from(value: KnotDistribution) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for KnotDistribution {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(KnotDistribution::Nonuniform),
+            1 => Ok(KnotDistribution::Uniform),
+            _ => Err(value),
+        }
+    }
+}
+
+/// This   enumeration describes the   form  of  the
+/// sequence of mutiplicities.  MultDistribution is :
+///
+/// Constant if all the multiplicities have the same
+/// value.
+///
+/// QuasiConstant if all the internal knots have the
+/// same multiplicity and if the first and last knot
+/// have  a different  multiplicity.
+///
+/// NonConstant in other cases.
+/// C++ enum: `BSplCLib_MultDistribution`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum MultDistribution {
+    Nonconstant = 0,
+    Constant = 1,
+    Quasiconstant = 2,
+}
+
+impl From<MultDistribution> for i32 {
+    fn from(value: MultDistribution) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for MultDistribution {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(MultDistribution::Nonconstant),
+            1 => Ok(MultDistribution::Constant),
+            2 => Ok(MultDistribution::Quasiconstant),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From BSplCLib.hxx
 // ========================

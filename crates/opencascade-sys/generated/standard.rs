@@ -6,6 +6,81 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Kind of key in Json string
+/// C++ enum: `Standard_JsonKey`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum JsonKey {
+    /// < no key
+    JsonkeyNone = 0,
+    /// < "{"
+    JsonkeyOpenchild = 1,
+    /// < "}"
+    JsonkeyClosechild = 2,
+    /// < "["
+    JsonkeyOpencontainer = 3,
+    /// < "]"
+    JsonkeyClosecontainer = 4,
+    /// < "\""
+    JsonkeyQuote = 5,
+    /// < ": "
+    JsonkeySeparatorkeytovalue = 6,
+    /// < ", "
+    JsonkeySeparatorvaluetovalue = 7,
+}
+
+impl From<JsonKey> for i32 {
+    fn from(value: JsonKey) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for JsonKey {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(JsonKey::JsonkeyNone),
+            1 => Ok(JsonKey::JsonkeyOpenchild),
+            2 => Ok(JsonKey::JsonkeyClosechild),
+            3 => Ok(JsonKey::JsonkeyOpencontainer),
+            4 => Ok(JsonKey::JsonkeyClosecontainer),
+            5 => Ok(JsonKey::JsonkeyQuote),
+            6 => Ok(JsonKey::JsonkeySeparatorkeytovalue),
+            7 => Ok(JsonKey::JsonkeySeparatorvaluetovalue),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `Standard_HandlerStatus`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum HandlerStatus {
+    Handlervoid = 0,
+    Handlerjumped = 1,
+    Handlerprocessed = 2,
+}
+
+impl From<HandlerStatus> for i32 {
+    fn from(value: HandlerStatus) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for HandlerStatus {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(HandlerStatus::Handlervoid),
+            1 => Ok(HandlerStatus::Handlerjumped),
+            2 => Ok(HandlerStatus::Handlerprocessed),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From Standard.hxx
 // ========================

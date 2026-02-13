@@ -4,8 +4,6 @@
 //! plus per-module re-export files with short names and impl blocks.
 
 use crate::model::{ParsedClass, ParsedFunction, Type};
-
-use crate::resolver;
 use crate::type_mapping::{map_return_type_in_context, map_type_in_context, TypeContext};
 use heck::ToSnakeCase;
 use std::collections::{BTreeSet, HashMap, HashSet};
@@ -134,12 +132,6 @@ fn is_primitive_type(name: &str) -> bool {
         "long long" | "unsigned long long" | "short" | "unsigned short" |
         "signed char" | "unsigned char"
     )
-}
-
-// Filter functions - delegate to centralized implementations in resolver module
-
-fn function_uses_enum(func: &ParsedFunction, all_enums: &HashSet<String>) -> bool {
-    resolver::function_uses_enum(func, all_enums)
 }
 
 // =============================================================================
@@ -328,9 +320,6 @@ fn generate_unified_functions(functions: &[&ParsedFunction], ctx: &TypeContext) 
         if func.has_unbindable_types() {
             continue;
         }
-        if function_uses_enum(func, ctx.all_enums) {
-            continue;
-        }
 
         let base_rust_name = func.short_name.to_snake_case();
         let is_mut_version = func.params.iter().any(|p| matches!(&p.ty, Type::MutRef(_)));
@@ -368,7 +357,9 @@ fn generate_unified_function(
 
     let ret_str = func.return_type.as_ref().map(|ty| {
         let mapped = map_return_type_in_context(ty, ctx);
-        if ty.is_class() || ty.is_handle() {
+        // Enums map to i32, not UniquePtr — check needs_unique_ptr from the base mapping
+        let base_mapped = map_type_in_context(ty, ctx);
+        if base_mapped.needs_unique_ptr {
             format!(" -> UniquePtr<{}>", mapped.rust_type)
         } else {
             format!(" -> {}", mapped.rust_type)
@@ -462,6 +453,79 @@ fn generate_unified_unique_ptr_impls(classes: &[&ParsedClass]) -> String {
     out
 }
 
+/// Emit a Rust `#[repr(i32)]` enum definition with TryFrom/From impls
+fn emit_rust_enum(output: &mut String, resolved: &crate::resolver::ResolvedEnum) {
+    // Doc comment
+    if let Some(ref comment) = resolved.doc_comment {
+        for line in comment.lines() {
+            let trimmed = line.trim();
+            if trimmed.is_empty() {
+                writeln!(output, "///").unwrap();
+            } else {
+                writeln!(output, "/// {}", trimmed).unwrap();
+            }
+        }
+    }
+    writeln!(output, "/// C++ enum: `{}`", resolved.cpp_name).unwrap();
+
+    // Collect unique variants (skip duplicated values — C++ allows alias enum values, Rust doesn't)
+    let mut seen_values = std::collections::HashSet::new();
+    let mut unique_variants = Vec::new();
+    let mut next_value: i64 = 0;
+    for variant in &resolved.variants {
+        let value = variant.value.unwrap_or(next_value);
+        if seen_values.insert(value) {
+            unique_variants.push((variant, value));
+        }
+        next_value = value + 1;
+    }
+
+    writeln!(output, "#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]").unwrap();
+    writeln!(output, "#[repr(i32)]").unwrap();
+    writeln!(output, "pub enum {} {{", resolved.rust_name).unwrap();
+
+    for (variant, value) in &unique_variants {
+        if let Some(ref comment) = variant.doc_comment {
+            for line in comment.lines() {
+                let trimmed = line.trim();
+                if trimmed.is_empty() {
+                    writeln!(output, "    ///").unwrap();
+                } else {
+                    writeln!(output, "    /// {}", trimmed).unwrap();
+                }
+            }
+        }
+        writeln!(output, "    {} = {},", variant.rust_name, value).unwrap();
+    }
+    writeln!(output, "}}").unwrap();
+    writeln!(output).unwrap();
+
+    // Generate From<EnumName> for i32
+    let name = &resolved.rust_name;
+    writeln!(output, "impl From<{}> for i32 {{", name).unwrap();
+    writeln!(output, "    fn from(value: {}) -> Self {{", name).unwrap();
+    writeln!(output, "        value as i32").unwrap();
+    writeln!(output, "    }}").unwrap();
+    writeln!(output, "}}").unwrap();
+    writeln!(output).unwrap();
+
+    // Generate TryFrom<i32> for EnumName
+    // Use explicit error type to avoid ambiguity if enum has an "Error" variant
+    writeln!(output, "impl TryFrom<i32> for {} {{", name).unwrap();
+    writeln!(output, "    type Error = i32;").unwrap();
+    writeln!(output).unwrap();
+    writeln!(output, "    fn try_from(value: i32) -> Result<Self, i32> {{").unwrap();
+    writeln!(output, "        match value {{").unwrap();
+    for (variant, value) in &unique_variants {
+        writeln!(output, "            {} => Ok({}::{}),", value, name, variant.rust_name).unwrap();
+    }
+    writeln!(output, "            _ => Err(value),").unwrap();
+    writeln!(output, "        }}").unwrap();
+    writeln!(output, "    }}").unwrap();
+    writeln!(output, "}}").unwrap();
+    writeln!(output).unwrap();
+}
+
 /// Generate a module re-export file for the unified architecture
 ///
 /// This generates a file like `gp.rs` that contains:
@@ -476,8 +540,6 @@ pub fn generate_module_reexports(
     symbol_table: &crate::resolver::SymbolTable,
     module_bindings: &[&super::bindings::ClassBindings],
 ) -> String {
-    let all_enum_names = &symbol_table.all_enum_names;
-
     let mut output = String::new();
 
     // File header
@@ -493,9 +555,6 @@ pub fn generate_module_reexports(
     let mut seen_func_names: HashMap<String, usize> = HashMap::new();
     for func in functions {
         if func.has_unbindable_types() {
-            continue;
-        }
-        if function_uses_enum(func, all_enum_names) {
             continue;
         }
 
@@ -517,6 +576,19 @@ pub fn generate_module_reexports(
 
     if !functions.is_empty() {
         output.push('\n');
+    }
+
+    // Generate Rust enum definitions for enums in this module
+    let rust_module = crate::module_graph::module_to_rust_name(module_name);
+    if let Some(enum_ids) = symbol_table.enums_by_module.get(&rust_module) {
+        for enum_id in enum_ids {
+            if let Some(resolved_enum) = symbol_table.enums.get(enum_id) {
+                if !matches!(resolved_enum.status, crate::resolver::BindingStatus::Included) {
+                    continue;
+                }
+                emit_rust_enum(&mut output, resolved_enum);
+            }
+        }
     }
 
     // Re-export collection types belonging to this module

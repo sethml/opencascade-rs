@@ -6,6 +6,144 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Errors that can occur at wire construction.
+/// no error
+/// C++ enum: `BRepLib_WireError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum WireError {
+    Wiredone = 0,
+    Emptywire = 1,
+    Disconnectedwire = 2,
+    Nonmanifoldwire = 3,
+}
+
+impl From<WireError> for i32 {
+    fn from(value: WireError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for WireError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(WireError::Wiredone),
+            1 => Ok(WireError::Emptywire),
+            2 => Ok(WireError::Disconnectedwire),
+            3 => Ok(WireError::Nonmanifoldwire),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Modification type after a topologic operation.
+/// C++ enum: `BRepLib_ShapeModification`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ShapeModification {
+    Preserved = 0,
+    Deleted = 1,
+    Trimmed = 2,
+    Merged = 3,
+    Boundarymodified = 4,
+}
+
+impl From<ShapeModification> for i32 {
+    fn from(value: ShapeModification) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ShapeModification {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ShapeModification::Preserved),
+            1 => Ok(ShapeModification::Deleted),
+            2 => Ok(ShapeModification::Trimmed),
+            3 => Ok(ShapeModification::Merged),
+            4 => Ok(ShapeModification::Boundarymodified),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Errors that can occur at face construction.
+/// no error
+/// not initialised
+/// C++ enum: `BRepLib_FaceError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum FaceError {
+    Facedone = 0,
+    Noface = 1,
+    Notplanar = 2,
+    Curveprojectionfailed = 3,
+    Parametersoutofrange = 4,
+}
+
+impl From<FaceError> for i32 {
+    fn from(value: FaceError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for FaceError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(FaceError::Facedone),
+            1 => Ok(FaceError::Noface),
+            2 => Ok(FaceError::Notplanar),
+            3 => Ok(FaceError::Curveprojectionfailed),
+            4 => Ok(FaceError::Parametersoutofrange),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Errors that can occur at edge construction.
+/// no error
+/// C++ enum: `BRepLib_EdgeError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum EdgeError {
+    Edgedone = 0,
+    Pointprojectionfailed = 1,
+    Parameteroutofrange = 2,
+    Differentpointsonclosedcurve = 3,
+    Pointwithinfiniteparameter = 4,
+    Differentspointandparameter = 5,
+    Linethroughidenticpoints = 6,
+}
+
+impl From<EdgeError> for i32 {
+    fn from(value: EdgeError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for EdgeError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(EdgeError::Edgedone),
+            1 => Ok(EdgeError::Pointprojectionfailed),
+            2 => Ok(EdgeError::Parameteroutofrange),
+            3 => Ok(EdgeError::Differentpointsonclosedcurve),
+            4 => Ok(EdgeError::Pointwithinfiniteparameter),
+            5 => Ok(EdgeError::Differentspointandparameter),
+            6 => Ok(EdgeError::Linethroughidenticpoints),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From BRepLib_Command.hxx
 // ========================

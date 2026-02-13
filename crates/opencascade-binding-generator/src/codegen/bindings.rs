@@ -94,6 +94,8 @@ pub enum WrapperKind {
     CStringParam,
     /// Returns const char* → rust::String conversion wrapper
     CStringReturn,
+    /// Uses enum types (params and/or return) → int32_t/static_cast wrapper
+    EnumConversion,
 }
 
 /// A method that needs a C++ wrapper function.
@@ -217,6 +219,8 @@ pub struct ReturnTypeBinding {
     pub cpp_type: String,
     /// Whether the C++ return needs std::unique_ptr wrapping
     pub needs_unique_ptr: bool,
+    /// If this is an enum return, the original C++ enum name (for static_cast)
+    pub enum_cpp_name: Option<String>,
 }
 
 /// A resolved parameter binding (from SymbolTable, for inherited methods).
@@ -240,6 +244,8 @@ pub struct ResolvedReturnTypeBinding {
     pub rust_reexport_type: String,
     pub cpp_type: String,
     pub needs_unique_ptr: bool,
+    /// If this is an enum return, the original C++ enum name (for static_cast)
+    pub enum_cpp_name: Option<String>,
 }
 
 // ── Helper functions ────────────────────────────────────────────────────────
@@ -361,6 +367,10 @@ fn needs_wrapper_function(method: &Method, all_enums: &HashSet<String>) -> bool 
     {
         return true;
     }
+    // Methods using enum types need wrappers for int32_t <-> enum static_cast
+    if resolver::method_uses_enum(method, all_enums) {
+        return true;
+    }
     method
         .return_type
         .as_ref()
@@ -395,10 +405,11 @@ fn classify_wrapper_kind(method: &Method, all_enums: &HashSet<String>) -> Wrappe
     if returns_by_value {
         WrapperKind::ByValueReturn
     } else if has_cstring_param {
-        // Has cstring param but doesn't return by value
         WrapperKind::CStringParam
     } else if returns_cstring {
         WrapperKind::CStringReturn
+    } else if resolver::method_uses_enum(method, all_enums) {
+        WrapperKind::EnumConversion
     } else {
         // Shouldn't happen if needs_wrapper_function returned true, but default
         WrapperKind::CStringReturn
@@ -522,9 +533,6 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext) -> bool {
     if resolver::has_const_mut_return_mismatch(method) {
         return false;
     }
-    if resolver::method_uses_enum(method, ctx.all_enums) {
-        return false;
-    }
     if resolver::method_needs_explicit_lifetimes(method) {
         return false;
     }
@@ -546,7 +554,7 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext) -> bool {
 /// Filter for constructors
 fn is_constructor_bindable(
     ctor: &Constructor,
-    all_enum_names: &HashSet<String>,
+    _all_enum_names: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
 ) -> bool {
     if ctor
@@ -557,9 +565,6 @@ fn is_constructor_bindable(
         return false;
     }
     if ctor.has_unbindable_types() {
-        return false;
-    }
-    if resolver::constructor_uses_enum(ctor, all_enum_names) {
         return false;
     }
     if ctor
@@ -575,9 +580,6 @@ fn is_constructor_bindable(
 /// Filter for static methods
 fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> bool {
     if method.has_unbindable_types() {
-        return false;
-    }
-    if resolver::static_method_uses_enum(method, ctx.all_enums) {
         return false;
     }
     if method
@@ -600,9 +602,33 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> bool {
 
 // ── Building ParamBinding / ReturnTypeBinding ───────────────────────────────
 
+/// Extract the enum C++ name from a type, unwrapping references
+fn extract_enum_name(ty: &Type, all_enums: &HashSet<String>) -> Option<String> {
+    match ty {
+        Type::Class(name) if all_enums.contains(name) => Some(name.clone()),
+        Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => {
+            extract_enum_name(inner, all_enums)
+        }
+        _ => None,
+    }
+}
+
 fn build_param_binding(name: &str, ty: &Type, ffi_ctx: &TypeContext) -> ParamBinding {
     let cpp_name = name.to_string();
     let rust_name = safe_param_name(name);
+
+    // Check if this parameter is an enum type
+    if let Some(enum_cpp_name) = extract_enum_name(ty, ffi_ctx.all_enums) {
+        return ParamBinding {
+            cpp_name,
+            rust_name,
+            rust_ffi_type: "i32".to_string(),
+            rust_reexport_type: "i32".to_string(),
+            cpp_type: "int32_t".to_string(),
+            cpp_arg_expr: format!("static_cast<{}>({})", enum_cpp_name, name),
+        };
+    }
+
     let mapped = map_type_in_context(ty, ffi_ctx);
     let rust_ffi_type = mapped.rust_type;
     let rust_reexport_type = unified_type_to_string(ty);
@@ -620,6 +646,17 @@ fn build_param_binding(name: &str, ty: &Type, ffi_ctx: &TypeContext) -> ParamBin
 }
 
 fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext) -> ReturnTypeBinding {
+    // Check if this return type is an enum
+    if let Some(enum_cpp_name) = extract_enum_name(ty, ffi_ctx.all_enums) {
+        return ReturnTypeBinding {
+            rust_ffi_type: "i32".to_string(),
+            rust_reexport_type: "i32".to_string(),
+            cpp_type: "int32_t".to_string(),
+            needs_unique_ptr: false,
+            enum_cpp_name: Some(enum_cpp_name),
+        };
+    }
+
     let mapped = map_return_type_in_context(ty, ffi_ctx);
     let rust_ffi_type = mapped.rust_type;
     let rust_reexport_type = unified_return_type_to_string(ty);
@@ -631,6 +668,7 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext) -> ReturnTypeBind
         rust_reexport_type,
         cpp_type,
         needs_unique_ptr,
+        enum_cpp_name: None,
     }
 }
 
@@ -1230,9 +1268,9 @@ fn compute_constructor_bindings(
                 .map(|p| build_param_binding(&p.name, &p.ty, ffi_ctx))
                 .collect();
 
-            let cpp_arg_exprs: Vec<String> = params_slice
+            let cpp_arg_exprs: Vec<String> = params
                 .iter()
-                .map(|p| param_to_cpp_arg(&p.name, &p.ty))
+                .map(|p| p.cpp_arg_expr.clone())
                 .collect();
 
             ConstructorBinding {
@@ -1447,6 +1485,8 @@ fn compute_inherited_method_bindings(
                     .map(|p| {
                         let cpp_arg_expr = if p.ty.cpp_type == "const char*" {
                             format!("std::string({}).c_str()", p.name)
+                        } else if let Some(ref enum_name) = p.ty.enum_cpp_name {
+                            format!("static_cast<{}>({})", enum_name, p.name)
                         } else {
                             p.name.clone()
                         };
@@ -1473,6 +1513,7 @@ fn compute_inherited_method_bindings(
                             rust_reexport_type: unified_return_type_to_string(&rt.original),
                             cpp_type: rt.cpp_type.clone(),
                             needs_unique_ptr: rt.needs_unique_ptr,
+                            enum_cpp_name: rt.enum_cpp_name.clone(),
                         }
                     });
 
@@ -1721,19 +1762,29 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             )
             .unwrap();
         } else {
-            let ret_cpp = &wm.return_type.as_ref().unwrap().cpp_type;
+            let rt = wm.return_type.as_ref().unwrap();
+            let ret_cpp = &rt.cpp_type;
             writeln!(
                 output,
                 "inline {ret_cpp} {fn_name}({params}) {{",
                 fn_name = wm.ffi_fn_name
             )
             .unwrap();
-            writeln!(
-                output,
-                "    return self.{method}({args_str});",
-                method = wm.cpp_method_name
-            )
-            .unwrap();
+            if rt.enum_cpp_name.is_some() {
+                writeln!(
+                    output,
+                    "    return static_cast<int32_t>(self.{method}({args_str}));",
+                    method = wm.cpp_method_name
+                )
+                .unwrap();
+            } else {
+                writeln!(
+                    output,
+                    "    return self.{method}({args_str});",
+                    method = wm.cpp_method_name
+                )
+                .unwrap();
+            }
         }
         writeln!(output, "}}").unwrap();
     }
@@ -1783,6 +1834,76 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         writeln!(output, "}}").unwrap();
     }
 
+    // 4b. EnumConversion wrapper methods
+    for wm in bindings
+        .wrapper_methods
+        .iter()
+        .filter(|m| m.wrapper_kind == WrapperKind::EnumConversion)
+    {
+        let self_param = if wm.is_const {
+            format!("const {cn}& self_")
+        } else {
+            format!("{cn}& self_")
+        };
+
+        let other_params = wm
+            .params
+            .iter()
+            .map(|p| format!("{} {}", p.cpp_type, p.cpp_name))
+            .collect::<Vec<_>>()
+            .join(", ");
+        let params = if other_params.is_empty() {
+            self_param
+        } else {
+            format!("{}, {}", self_param, other_params)
+        };
+        let args_str = wm
+            .params
+            .iter()
+            .map(|p| p.cpp_arg_expr.as_str())
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        let call_expr = format!("self_.{}({})", wm.cpp_method_name, args_str);
+
+        if let Some(ref rt) = wm.return_type {
+            if let Some(ref _enum_name) = rt.enum_cpp_name {
+                // Enum return: cast to int32_t
+                writeln!(
+                    output,
+                    "inline int32_t {fn_name}({params}) {{",
+                    fn_name = wm.ffi_fn_name
+                )
+                .unwrap();
+                writeln!(
+                    output,
+                    "    return static_cast<int32_t>({call_expr});"
+                )
+                .unwrap();
+            } else {
+                // Non-enum return (rare for EnumConversion kind, but handle it)
+                writeln!(
+                    output,
+                    "inline {} {fn_name}({params}) {{",
+                    rt.cpp_type,
+                    fn_name = wm.ffi_fn_name
+                )
+                .unwrap();
+                writeln!(output, "    return {call_expr};").unwrap();
+            }
+        } else {
+            // Void return, enum params only
+            writeln!(
+                output,
+                "inline void {fn_name}({params}) {{",
+                fn_name = wm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(output, "    {call_expr};").unwrap();
+        }
+        writeln!(output, "}}").unwrap();
+    }
+
     // 5. Static method wrappers
     for sm in &bindings.static_methods {
         let params_str = sm
@@ -1803,6 +1924,12 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             None => ("void".to_string(), false),
         };
 
+        let has_enum_return = sm
+            .return_type
+            .as_ref()
+            .and_then(|rt| rt.enum_cpp_name.as_ref())
+            .is_some();
+
         if needs_up {
             writeln!(
                 output,
@@ -1813,6 +1940,19 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
             writeln!(
                 output,
                 "    return std::make_unique<{ret_type}>({cn}::{method}({args_str}));",
+                method = sm.cpp_method_name
+            )
+            .unwrap();
+        } else if has_enum_return {
+            writeln!(
+                output,
+                "inline int32_t {fn_name}({params_str}) {{",
+                fn_name = sm.ffi_fn_name
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    return static_cast<int32_t>({cn}::{method}({args_str}));",
                 method = sm.cpp_method_name
             )
             .unwrap();
@@ -1941,11 +2081,24 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         )
         .unwrap();
 
+        let has_enum_return = im
+            .return_type
+            .as_ref()
+            .and_then(|rt| rt.enum_cpp_name.as_ref())
+            .is_some();
+
         if needs_up {
             writeln!(
                 output,
                 "    return std::make_unique<{inner_type}>(self.{method}({args_str}));",
                 inner_type = im.return_type.as_ref().unwrap().cpp_type,
+                method = im.cpp_method_name
+            )
+            .unwrap();
+        } else if has_enum_return {
+            writeln!(
+                output,
+                "    return static_cast<int32_t>(self.{method}({args_str}));",
                 method = im.cpp_method_name
             )
             .unwrap();

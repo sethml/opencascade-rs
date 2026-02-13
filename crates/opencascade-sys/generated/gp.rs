@@ -6,6 +6,172 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Enumerates all 24 possible variants of generalized
+/// Euler angles, defining general 3d rotation by three
+/// rotations around main axes of coordinate system,
+/// in different possible orders.
+///
+/// The name of the enumeration
+/// corresponds to order of rotations, prefixed by type
+/// of coordinate system used:
+/// - Intrinsic: rotations are made around axes of rotating
+/// coordinate system associated with the object
+/// - Extrinsic: rotations are made around axes of fixed
+/// (static) coordinate system
+///
+/// Two specific values are provided for most frequently used
+/// conventions: classic Euler angles (intrinsic ZXZ) and
+/// yaw-pitch-roll (intrinsic ZYX).
+/// C++ enum: `gp_EulerSequence`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum EulerSequence {
+    /// Classic Euler angles, alias to Intrinsic_ZXZ
+    Eulerangles = 0,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    Yawpitchroll = 1,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    ExtrinsicXyz = 2,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    ExtrinsicXzy = 3,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    ExtrinsicYzx = 4,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    ExtrinsicYxz = 5,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    ExtrinsicZxy = 6,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    ExtrinsicZyx = 7,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    IntrinsicXyz = 8,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    IntrinsicXzy = 9,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    IntrinsicYzx = 10,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    IntrinsicYxz = 11,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    IntrinsicZxy = 12,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    IntrinsicZyx = 13,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    ExtrinsicXyx = 14,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    ExtrinsicXzx = 15,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    ExtrinsicYzy = 16,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    ExtrinsicYxy = 17,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    ExtrinsicZyz = 18,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    ExtrinsicZxz = 19,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    IntrinsicXyx = 20,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    IntrinsicXzx = 21,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    IntrinsicYzy = 22,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    IntrinsicYxy = 23,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    IntrinsicZxz = 24,
+    /// Yaw Pitch Roll (or nautical) angles, alias to Intrinsic_ZYX
+    IntrinsicZyz = 25,
+}
+
+impl From<EulerSequence> for i32 {
+    fn from(value: EulerSequence) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for EulerSequence {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(EulerSequence::Eulerangles),
+            1 => Ok(EulerSequence::Yawpitchroll),
+            2 => Ok(EulerSequence::ExtrinsicXyz),
+            3 => Ok(EulerSequence::ExtrinsicXzy),
+            4 => Ok(EulerSequence::ExtrinsicYzx),
+            5 => Ok(EulerSequence::ExtrinsicYxz),
+            6 => Ok(EulerSequence::ExtrinsicZxy),
+            7 => Ok(EulerSequence::ExtrinsicZyx),
+            8 => Ok(EulerSequence::IntrinsicXyz),
+            9 => Ok(EulerSequence::IntrinsicXzy),
+            10 => Ok(EulerSequence::IntrinsicYzx),
+            11 => Ok(EulerSequence::IntrinsicYxz),
+            12 => Ok(EulerSequence::IntrinsicZxy),
+            13 => Ok(EulerSequence::IntrinsicZyx),
+            14 => Ok(EulerSequence::ExtrinsicXyx),
+            15 => Ok(EulerSequence::ExtrinsicXzx),
+            16 => Ok(EulerSequence::ExtrinsicYzy),
+            17 => Ok(EulerSequence::ExtrinsicYxy),
+            18 => Ok(EulerSequence::ExtrinsicZyz),
+            19 => Ok(EulerSequence::ExtrinsicZxz),
+            20 => Ok(EulerSequence::IntrinsicXyx),
+            21 => Ok(EulerSequence::IntrinsicXzx),
+            22 => Ok(EulerSequence::IntrinsicYzy),
+            23 => Ok(EulerSequence::IntrinsicYxy),
+            24 => Ok(EulerSequence::IntrinsicZxz),
+            25 => Ok(EulerSequence::IntrinsicZyz),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Identifies the type of a geometric transformation.
+/// C++ enum: `gp_TrsfForm`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TrsfForm {
+    /// < No transformation (matrix is identity)
+    Identity = 0,
+    /// < Rotation
+    Rotation = 1,
+    /// < Translation
+    Translation = 2,
+    /// < Central symmetry
+    Pntmirror = 3,
+    /// < Rotational symmetry
+    Ax1mirror = 4,
+    /// < Bilateral symmetry
+    Ax2mirror = 5,
+    /// < Scale
+    Scale = 6,
+    /// < Combination of the above transformations
+    Compoundtrsf = 7,
+    /// < Transformation with not-orthogonal matrix
+    Other = 8,
+}
+
+impl From<TrsfForm> for i32 {
+    fn from(value: TrsfForm) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TrsfForm {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(TrsfForm::Identity),
+            1 => Ok(TrsfForm::Rotation),
+            2 => Ok(TrsfForm::Translation),
+            3 => Ok(TrsfForm::Pntmirror),
+            4 => Ok(TrsfForm::Ax1mirror),
+            5 => Ok(TrsfForm::Ax2mirror),
+            6 => Ok(TrsfForm::Scale),
+            7 => Ok(TrsfForm::Compoundtrsf),
+            8 => Ok(TrsfForm::Other),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From gp_Ax1.hxx
 // ========================

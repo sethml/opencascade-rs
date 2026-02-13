@@ -6,6 +6,108 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Errors that can occur at thrusection algorithm.
+/// C++ enum: `BRepFill_ThruSectionErrorStatus`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ThruSectionErrorStatus {
+    /// < Thrusection algorithm is done
+    ThrusectionerrorstatusDone = 0,
+    /// < Thrusection algorithm is not done
+    ThrusectionerrorstatusNotdone = 1,
+    /// < All profiles have not same topology (they
+    /// < should be all closed or all opened)
+    ThrusectionerrorstatusNotsametopology = 2,
+    /// < Profiles are inconsistent
+    ThrusectionerrorstatusProfilesinconsistent = 3,
+    /// < Wrong usage of punctual sections
+    ThrusectionerrorstatusWrongusage = 4,
+    /// < Null 3D curve in edge
+    ThrusectionerrorstatusNull3dcurve = 5,
+    /// < Thrusection algorithm has failed
+    ThrusectionerrorstatusFailed = 6,
+}
+
+impl From<ThruSectionErrorStatus> for i32 {
+    fn from(value: ThruSectionErrorStatus) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ThruSectionErrorStatus {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ThruSectionErrorStatus::ThrusectionerrorstatusDone),
+            1 => Ok(ThruSectionErrorStatus::ThrusectionerrorstatusNotdone),
+            2 => Ok(ThruSectionErrorStatus::ThrusectionerrorstatusNotsametopology),
+            3 => Ok(ThruSectionErrorStatus::ThrusectionerrorstatusProfilesinconsistent),
+            4 => Ok(ThruSectionErrorStatus::ThrusectionerrorstatusWrongusage),
+            5 => Ok(ThruSectionErrorStatus::ThrusectionerrorstatusNull3dcurve),
+            6 => Ok(ThruSectionErrorStatus::ThrusectionerrorstatusFailed),
+            _ => Err(value),
+        }
+    }
+}
+
+/// A pair of bound shapes with the result.
+/// C++ enum: `BRepFill_TypeOfContact`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TypeOfContact {
+    Nocontact = 0,
+    Contact = 1,
+    Contactonborder = 2,
+}
+
+impl From<TypeOfContact> for i32 {
+    fn from(value: TypeOfContact) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TypeOfContact {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(TypeOfContact::Nocontact),
+            1 => Ok(TypeOfContact::Contact),
+            2 => Ok(TypeOfContact::Contactonborder),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `BRepFill_TransitionStyle`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TransitionStyle {
+    Modified = 0,
+    Right = 1,
+    Round = 2,
+}
+
+impl From<TransitionStyle> for i32 {
+    fn from(value: TransitionStyle) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TransitionStyle {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(TransitionStyle::Modified),
+            1 => Ok(TransitionStyle::Right),
+            2 => Ok(TransitionStyle::Round),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From BRepFill_OffsetWire.hxx
 // ========================

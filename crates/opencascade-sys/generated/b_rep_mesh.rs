@@ -6,6 +6,42 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// C++ enum: `BRepMesh_DegreeOfFreedom`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum DegreeOfFreedom {
+    Free = 0,
+    Involume = 1,
+    Onsurface = 2,
+    Oncurve = 3,
+    Fixed = 4,
+    Frontier = 5,
+    Deleted = 6,
+}
+
+impl From<DegreeOfFreedom> for i32 {
+    fn from(value: DegreeOfFreedom) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for DegreeOfFreedom {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(DegreeOfFreedom::Free),
+            1 => Ok(DegreeOfFreedom::Involume),
+            2 => Ok(DegreeOfFreedom::Onsurface),
+            3 => Ok(DegreeOfFreedom::Oncurve),
+            4 => Ok(DegreeOfFreedom::Fixed),
+            5 => Ok(DegreeOfFreedom::Frontier),
+            6 => Ok(DegreeOfFreedom::Deleted),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From BRepMesh_Circle.hxx
 // ========================

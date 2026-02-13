@@ -6,6 +6,211 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Errors that can occur at (shell)pipe construction.
+/// C++ enum: `BRepBuilderAPI_PipeError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum PipeError {
+    Pipedone = 0,
+    Pipenotdone = 1,
+    Planenotintersectguide = 2,
+    Impossiblecontact = 3,
+}
+
+impl From<PipeError> for i32 {
+    fn from(value: PipeError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for PipeError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(PipeError::Pipedone),
+            1 => Ok(PipeError::Pipenotdone),
+            2 => Ok(PipeError::Planenotintersectguide),
+            3 => Ok(PipeError::Impossiblecontact),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Option to manage  discontinuities in  Sweep
+/// C++ enum: `BRepBuilderAPI_TransitionMode`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TransitionMode {
+    Transformed = 0,
+    Rightcorner = 1,
+    Roundcorner = 2,
+}
+
+impl From<TransitionMode> for i32 {
+    fn from(value: TransitionMode) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TransitionMode {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(TransitionMode::Transformed),
+            1 => Ok(TransitionMode::Rightcorner),
+            2 => Ok(TransitionMode::Roundcorner),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Indicates the outcome of wire
+/// construction, i.e. whether it is successful or not, as explained below:
+/// -      BRepBuilderAPI_WireDone No
+/// error occurred. The wire is correctly built.
+/// -      BRepBuilderAPI_EmptyWire No
+/// initialization of the algorithm. Only an empty constructor was used.
+/// -      BRepBuilderAPI_DisconnectedWire
+/// The last edge which you attempted to add was not connected to the wire.
+/// -      BRepBuilderAPI_NonManifoldWire
+/// The wire with some singularity.
+/// C++ enum: `BRepBuilderAPI_WireError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum WireError {
+    Wiredone = 0,
+    Emptywire = 1,
+    Disconnectedwire = 2,
+    Nonmanifoldwire = 3,
+}
+
+impl From<WireError> for i32 {
+    fn from(value: WireError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for WireError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(WireError::Wiredone),
+            1 => Ok(WireError::Emptywire),
+            2 => Ok(WireError::Disconnectedwire),
+            3 => Ok(WireError::Nonmanifoldwire),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Indicates the outcome of the
+/// construction of a face, i.e. whether it has been successful or
+/// not, as explained below:
+/// -      BRepBuilderAPI_FaceDone No error occurred. The face is
+/// correctly built.
+/// -      BRepBuilderAPI_NoFace No initialization of the
+/// algorithm; only an empty constructor was used.
+/// -      BRepBuilderAPI_NotPlanar
+/// No surface was given and the wire was not planar.
+/// -      BRepBuilderAPI_CurveProjectionFailed
+/// Not used so far.
+/// -      BRepBuilderAPI_ParametersOutOfRange
+/// The parameters given to limit the surface are out of its    bounds.
+/// C++ enum: `BRepBuilderAPI_FaceError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum FaceError {
+    Facedone = 0,
+    Noface = 1,
+    Notplanar = 2,
+    Curveprojectionfailed = 3,
+    Parametersoutofrange = 4,
+}
+
+impl From<FaceError> for i32 {
+    fn from(value: FaceError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for FaceError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(FaceError::Facedone),
+            1 => Ok(FaceError::Noface),
+            2 => Ok(FaceError::Notplanar),
+            3 => Ok(FaceError::Curveprojectionfailed),
+            4 => Ok(FaceError::Parametersoutofrange),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Indicates the outcome of the
+/// construction of an edge, i.e. whether it has been successful or
+/// not, as explained below:
+/// -      BRepBuilderAPI_EdgeDone No    error occurred; The edge is
+/// correctly built.
+/// -      BRepBuilderAPI_PointProjectionFailed No parameters were given but
+/// the projection of the 3D points on the curve failed. This
+/// happens when the point distance to the curve is greater than
+/// the precision value.
+/// -      BRepBuilderAPI_ParameterOutOfRange
+/// The given parameters are not in the parametric range
+/// C->FirstParameter(), C->LastParameter()
+/// -      BRepBuilderAPI_DifferentPointsOnClosedCurve
+/// The two vertices or points are the extremities of a closed
+/// curve but have different locations.
+/// -      BRepBuilderAPI_PointWithInfiniteParameter
+/// A finite coordinate point was associated with an infinite
+/// parameter (see the Precision package for a definition of    infinite values).
+/// -      BRepBuilderAPI_DifferentsPointAndParameter
+/// The distance between the 3D point and the point evaluated
+/// on the curve with the parameter is greater than the precision.
+/// -      BRepBuilderAPI_LineThroughIdenticPoints
+/// Two identical points were given to define a line (construction
+/// of an edge without curve); gp::Resolution is used for the    confusion test.
+/// C++ enum: `BRepBuilderAPI_EdgeError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum EdgeError {
+    Edgedone = 0,
+    Pointprojectionfailed = 1,
+    Parameteroutofrange = 2,
+    Differentpointsonclosedcurve = 3,
+    Pointwithinfiniteparameter = 4,
+    Differentspointandparameter = 5,
+    Linethroughidenticpoints = 6,
+}
+
+impl From<EdgeError> for i32 {
+    fn from(value: EdgeError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for EdgeError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(EdgeError::Edgedone),
+            1 => Ok(EdgeError::Pointprojectionfailed),
+            2 => Ok(EdgeError::Parameteroutofrange),
+            3 => Ok(EdgeError::Differentpointsonclosedcurve),
+            4 => Ok(EdgeError::Pointwithinfiniteparameter),
+            5 => Ok(EdgeError::Differentspointandparameter),
+            6 => Ok(EdgeError::Linethroughidenticpoints),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From BRepBuilderAPI_Command.hxx
 // ========================

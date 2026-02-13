@@ -15,3 +15,7 @@ the user if they want to speed them up.
 Do not use /tmp/ for temporary files. Use tmp/ in the project directory instead.
 
 Never git commit unless explicitly asked to do so.
+
+When resolving git merge conflicts, any code in crates/opencascade-sys/generated is generated code and should be regenerated rather than trying to resolve conflicts.
+
+Making the opencascade build is a work in progress. It should build, but some code is stubbed out, and dependencies of opencascade may not build. The goal is to unstub opencascade over time, then fix the dependencies, but none of that needs to happen this iteration.

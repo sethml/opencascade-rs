@@ -100,7 +100,7 @@ impl Edge {
         if let Some((start_tangent, end_tangent)) = tangents {
             let start_vec = make_vec(start_tangent);
             let end_vec = make_vec(end_tangent);
-            interpolator.pin_mut().load(&start_vec, &end_vec, false);
+            interpolator.pin_mut().load_vec2_bool(&start_vec, &end_vec, false);
         }
 
         interpolator.pin_mut().perform();
